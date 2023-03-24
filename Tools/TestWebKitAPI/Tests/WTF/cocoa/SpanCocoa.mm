@@ -26,7 +26,7 @@
 #include "config.h"
 #include <wtf/cocoa/SpanCocoa.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTFSpanCocoa, Empty)
 {

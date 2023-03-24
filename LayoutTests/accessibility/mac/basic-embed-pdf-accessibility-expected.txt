@@ -13,11 +13,11 @@ PASS pdfAxObject.parentElement().domIdentifier is 'pdfEmbed'
 PASS pdfLayerController.stringAttributeValue('AXRole') is 'AXGroup'
 PASS pdfLayerController.stringAttributeValue('AXDescription') is 'document'
 PASS pdfTextNode.stringAttributeValue('AXRole') is 'AXStaticText'
-PASS pdfTextNode.stringAttributeValue('AXValue') is 'Welcome to the website for the WebKit Open Source Project!'
+PASS pdfTextNode.stringAttributeValue('AXValue') is 'Welcome to the website for the CyberKit Open Source Project!'
 PASS hitTestResult.stringAttributeValue('AXRole') is 'AXGroup'
 PASS hitTestResult.stringAttributeValue('AXDescription') is 'document'
 PASS pdfTextNode.stringAttributeValue('AXRole') is 'AXStaticText'
-PASS pdfTextNode.stringAttributeValue('AXValue') is 'Welcome to the website for the WebKit Open Source Project!'
+PASS pdfTextNode.stringAttributeValue('AXValue') is 'Welcome to the website for the CyberKit Open Source Project!'
 PASS searchResultElement.stringAttributeValue('AXSubrole') is 'AXPDFPluginSubrole'
 PASS successfullyParsed is true
 

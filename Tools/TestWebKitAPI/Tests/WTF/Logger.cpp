@@ -26,7 +26,7 @@
 #include "config.h"
 #include "Logger.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 std::ostringstream& log()
 {

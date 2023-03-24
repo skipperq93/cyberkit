@@ -26,12 +26,12 @@
 #import "config.h"
 
 #import "Test.h"
-#import <WebKit/WKBrowsingContextController.h>
-#import <WebKit/WKBrowsingContextGroup.h>
-#import <WebKit/WKBrowsingContextLoadDelegate.h>
-#import <WebKit/WKProcessGroup.h>
-#import <WebKit/WKRetainPtr.h>
-#import <WebKit/WKWebView.h>
+#import <CyberKit/WKBrowsingContextController.h>
+#import <CyberKit/WKBrowsingContextGroup.h>
+#import <CyberKit/WKBrowsingContextLoadDelegate.h>
+#import <CyberKit/WKProcessGroup.h>
+#import <CyberKit/WKRetainPtr.h>
+#import <CyberKit/WKWebView.h>
 #import <wtf/RetainPtr.h>
 
 #import "PlatformUtilities.h"
@@ -101,11 +101,11 @@ TEST_F(WKBrowsingContextLoadDelegateTest, SimpleLoad)
     view.get().navigationDelegate = loadDelegate.get();
 
     // Load the file.
-    NSURL *nsURL = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *nsURL = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [view.get() loadFileURL:nsURL allowingReadAccessToURL:nsURL];
 
     // Wait for the load to finish.
-    TestWebKitAPI::Util::run(&simpleLoadDone);
+    TestCyberKitAPI::Util::run(&simpleLoadDone);
 
     // Tear down the delegate.
     view.get().navigationDelegate = nil;
@@ -123,7 +123,7 @@ TEST_F(WKBrowsingContextLoadDelegateTest, SimpleLoadOfHTMLString)
     [view.get() loadHTMLString:@"<html><body>Simple HTML String</body></html>" baseURL:[NSURL URLWithString:@"about:blank"]];
 
     // Wait for the load to finish.
-    TestWebKitAPI::Util::run(&simpleLoadDone);
+    TestCyberKitAPI::Util::run(&simpleLoadDone);
 
     // Tear down the delegate.
     view.get().navigationDelegate = nil;
@@ -141,7 +141,7 @@ TEST_F(WKBrowsingContextLoadDelegateTest, SimpleLoadOfHTMLString_NilBaseURL)
     [view.get() loadHTMLString:@"<html><body>Simple HTML String</body></html>" baseURL:nil];
 
     // Wait for the load to finish.
-    TestWebKitAPI::Util::run(&simpleLoadDone);
+    TestCyberKitAPI::Util::run(&simpleLoadDone);
 
     // Tear down the delegate.
     view.get().navigationDelegate = nil;
@@ -160,7 +160,7 @@ TEST_F(WKBrowsingContextLoadDelegateTest, SimpleLoadOfHTMLString_NilHTMLStringAn
     [view.get() loadHTMLString:string baseURL:nil];
 
     // Wait for the load to finish.
-    TestWebKitAPI::Util::run(&simpleLoadDone);
+    TestCyberKitAPI::Util::run(&simpleLoadDone);
 
     // Tear down the delegate.
     view.get().navigationDelegate = nil;
@@ -210,7 +210,7 @@ TEST_F(WKBrowsingContextLoadDelegateTest, SimpleLoadFail)
     [view.get() loadFileURL:nsURL allowingReadAccessToURL:nsURL];
 
     // Wait for the load to fail.
-    TestWebKitAPI::Util::run(&simpleLoadFailDone);
+    TestCyberKitAPI::Util::run(&simpleLoadFailDone);
 
     // Tear down the delegate.
     view.get().navigationDelegate = nil;

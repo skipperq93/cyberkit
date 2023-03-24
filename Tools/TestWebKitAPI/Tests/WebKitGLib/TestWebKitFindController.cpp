@@ -81,7 +81,7 @@ public:
     }
 #endif
 
-    GRefPtr<WebKitFindController> m_findController;
+    GRefPtr<CyberKitFindController> m_findController;
     bool m_textFound;
     unsigned m_matchCount;
 #if PLATFORM(GTK)
@@ -91,7 +91,7 @@ public:
 private:
     bool m_runFindUntilCompletion;
 
-    static void foundTextCallback(WebKitFindController*, guint matchCount, FindControllerTest* test)
+    static void foundTextCallback(CyberKitFindController*, guint matchCount, FindControllerTest* test)
     {
         test->m_textFound = true;
         test->m_matchCount = matchCount;
@@ -99,14 +99,14 @@ private:
             g_main_loop_quit(test->m_mainLoop);
     }
 
-    static void failedToFindTextCallback(WebKitFindController*, FindControllerTest* test)
+    static void failedToFindTextCallback(CyberKitFindController*, FindControllerTest* test)
     {
         test->m_textFound = false;
         if (test->m_runFindUntilCompletion)
             g_main_loop_quit(test->m_mainLoop);
     }
 
-    static void countedMatchesCallback(WebKitFindController*, guint matchCount, FindControllerTest* test)
+    static void countedMatchesCallback(CyberKitFindController*, guint matchCount, FindControllerTest* test)
     {
         test->m_matchCount = matchCount;
         if (test->m_runFindUntilCompletion)
@@ -302,7 +302,7 @@ static void testFindControllerHide(FindControllerTest* test, gconstpointer)
     g_assert_nonnull(highlightSurface);
     g_assert_false(Test::cairoSurfacesEqual(originalSurface, highlightSurface));
 
-    WebKitFindController* findController = webkit_web_view_get_find_controller(test->m_webView);
+    CyberKitFindController* findController = webkit_web_view_get_find_controller(test->m_webView);
     webkit_find_controller_search_finish(findController);
     webkit_web_view_execute_editing_command(test->m_webView, "Unselect");
 
@@ -318,8 +318,8 @@ static void testFindControllerHide(FindControllerTest* test, gconstpointer)
 
 static void testFindControllerInstance(FindControllerTest* test, gconstpointer)
 {
-    WebKitFindController* findController1 = webkit_web_view_get_find_controller(test->m_webView);
-    WebKitFindController* findController2 = webkit_web_view_get_find_controller(test->m_webView);
+    CyberKitFindController* findController1 = webkit_web_view_get_find_controller(test->m_webView);
+    CyberKitFindController* findController2 = webkit_web_view_get_find_controller(test->m_webView);
 
     g_assert_true(findController1 == findController2);
 }
@@ -329,7 +329,7 @@ static void testFindControllerGetters(FindControllerTest* test, gconstpointer)
     const char* searchText = "testing";
     guint maxMatchCount = 1;
     guint32 findOptions = WEBKIT_FIND_OPTIONS_WRAP_AROUND | WEBKIT_FIND_OPTIONS_AT_WORD_STARTS;
-    WebKitFindController* findController = webkit_web_view_get_find_controller(test->m_webView);
+    CyberKitFindController* findController = webkit_web_view_get_find_controller(test->m_webView);
 
     webkit_find_controller_search(findController, searchText, findOptions, maxMatchCount);
     g_assert_true(webkit_find_controller_get_web_view(findController) == test->m_webView);
@@ -340,18 +340,18 @@ static void testFindControllerGetters(FindControllerTest* test, gconstpointer)
 
 void beforeAll()
 {
-    FindControllerTest::add("WebKitFindController", "getters", testFindControllerGetters);
-    FindControllerTest::add("WebKitFindController", "instance", testFindControllerInstance);
-    FindControllerTest::add("WebKitFindController", "text-found", testFindControllerTextFound);
-    FindControllerTest::add("WebKitFindController", "text-not-found", testFindControllerTextNotFound);
-    FindControllerTest::add("WebKitFindController", "match-count", testFindControllerMatchCount);
-    FindControllerTest::add("WebKitFindController", "max-match-count", testFindControllerMaxMatchCount);
-    FindControllerTest::add("WebKitFindController", "next", testFindControllerNext);
-    FindControllerTest::add("WebKitFindController", "previous", testFindControllerPrevious);
-    FindControllerTest::add("WebKitFindController", "counted-matches", testFindControllerCountedMatches);
-    FindControllerTest::add("WebKitFindController", "options", testFindControllerOptions);
+    FindControllerTest::add("CyberKitFindController", "getters", testFindControllerGetters);
+    FindControllerTest::add("CyberKitFindController", "instance", testFindControllerInstance);
+    FindControllerTest::add("CyberKitFindController", "text-found", testFindControllerTextFound);
+    FindControllerTest::add("CyberKitFindController", "text-not-found", testFindControllerTextNotFound);
+    FindControllerTest::add("CyberKitFindController", "match-count", testFindControllerMatchCount);
+    FindControllerTest::add("CyberKitFindController", "max-match-count", testFindControllerMaxMatchCount);
+    FindControllerTest::add("CyberKitFindController", "next", testFindControllerNext);
+    FindControllerTest::add("CyberKitFindController", "previous", testFindControllerPrevious);
+    FindControllerTest::add("CyberKitFindController", "counted-matches", testFindControllerCountedMatches);
+    FindControllerTest::add("CyberKitFindController", "options", testFindControllerOptions);
 #if PLATFORM(GTK)
-    FindControllerTest::add("WebKitFindController", "hide", testFindControllerHide);
+    FindControllerTest::add("CyberKitFindController", "hide", testFindControllerHide);
 #endif
 }
 

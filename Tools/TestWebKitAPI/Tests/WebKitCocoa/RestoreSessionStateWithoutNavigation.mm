@@ -31,14 +31,14 @@
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
 #import "Test.h"
-#import <WebKit/WKBackForwardListItemRef.h>
-#import <WebKit/WKBackForwardListRef.h>
-#import <WebKit/WKData.h>
-#import <WebKit/WKPagePrivate.h>
-#import <WebKit/WKSessionStateRef.h>
-#import <WebKit/WKURL.h>
-#import <WebKit/WKURLCF.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKBackForwardListItemRef.h>
+#import <CyberKit/WKBackForwardListRef.h>
+#import <CyberKit/WKData.h>
+#import <CyberKit/WKPagePrivate.h>
+#import <CyberKit/WKSessionStateRef.h>
+#import <CyberKit/WKURL.h>
+#import <CyberKit/WKURLCF.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 @interface WKWebView ()
@@ -65,14 +65,14 @@ static bool didChangeBackForwardList;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static WKRetainPtr<WKDataRef> createSessionStateData()
 {
     auto delegate = adoptNS([SessionStateDelegate new]);
     auto view = adoptNS([WKWebView new]);
     [view setNavigationDelegate:delegate.get()];
-    [view loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [view loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     Util::run(&didFinishNavigationForSessionState);
     didFinishNavigationForSessionState = false;
 
@@ -80,7 +80,7 @@ static WKRetainPtr<WKDataRef> createSessionStateData()
     return adoptWK(WKDataCreate(static_cast<const unsigned char*>(data.bytes), data.length));
 }
 
-TEST(WebKit, RestoreSessionStateWithoutNavigation)
+TEST(CyberKit, RestoreSessionStateWithoutNavigation)
 {
     auto data = createSessionStateData();
     EXPECT_NOT_NULL(data);
@@ -98,11 +98,11 @@ TEST(WebKit, RestoreSessionStateWithoutNavigation)
     auto currentItem = WKBackForwardListGetCurrentItem(backForwardList);
     auto currentItemURL = adoptWK(WKBackForwardListItemCopyURL(currentItem));
     
-    auto expectedURL = adoptWK(WKURLCreateWithCFURL((__bridge CFURLRef)[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]));
+    auto expectedURL = adoptWK(WKURLCreateWithCFURL((__bridge CFURLRef)[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]));
     EXPECT_NOT_NULL(expectedURL);
     EXPECT_TRUE(WKURLIsEqual(currentItemURL.get(), expectedURL.get()));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

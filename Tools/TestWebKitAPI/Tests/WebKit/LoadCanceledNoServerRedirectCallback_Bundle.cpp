@@ -30,13 +30,13 @@
 #include "InjectedBundleTest.h"
 #include "PlatformUtilities.h"
 #include "Test.h"
-#include <WebKit/WKBundlePage.h>
-#include <WebKit/WKBundleFrame.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKBundlePage.h>
+#include <CyberKit/WKBundleFrame.h>
+#include <CyberKit/WKRetainPtr.h>
 
 #include <wtf/Assertions.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
     
 class LoadCanceledNoServerRedirectCallbackTest : public InjectedBundleTest {
 public:
@@ -71,6 +71,6 @@ public:
 
 static InjectedBundleTest::Register<LoadCanceledNoServerRedirectCallbackTest> registrar("LoadCanceledNoServerRedirectCallbackTest");
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -44,9 +44,9 @@ static bool didFinishLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, ContextMenuDefaultItemsHaveTags)
+TEST(CyberKitLegacy, ContextMenuDefaultItemsHaveTags)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) frameName:nil groupName:nil]);
     RetainPtr<NSWindow> window = adoptNS([[NSWindow alloc] initWithContentRect:NSMakeRect(100, 100, 800, 600) styleMask:NSWindowStyleMaskBorderless backing:NSBackingStoreBuffered defer:YES]);
@@ -70,4 +70,4 @@ TEST(WebKitLegacy, ContextMenuDefaultItemsHaveTags)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

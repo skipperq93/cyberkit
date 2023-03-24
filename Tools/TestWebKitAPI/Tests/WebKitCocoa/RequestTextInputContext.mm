@@ -33,13 +33,13 @@
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
 #import "UserInterfaceSwizzler.h"
-#import <WebKit/WKPreferencesRefPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKTextInputContext.h>
+#import <CyberKit/WKPreferencesRefPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKTextInputContext.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class TextInteractionForScope {
 public:
@@ -61,7 +61,7 @@ private:
     RetainPtr<_WKTextInputContext> m_textInputContext;
 };
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 static bool didScroll;
 
@@ -90,13 +90,13 @@ static bool didScroll;
         responder = textInputResponder;
         finished = true;
     }];
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
     return responder;
 }
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static NSString *applyStyle(NSString *HTMLString)
 {
@@ -191,8 +191,8 @@ static void webViewLoadHTMLStringAndWaitForAllFramesToPaint(TestWKWebView *webVi
     ASSERT(webView); // Make passing a nil web view a more obvious failure than a hang.
     bool didFireDOMLoadEvent = false;
     [webView performAfterLoading:[&] { didFireDOMLoadEvent = true; }];
-    [webView loadHTMLString:htmlString baseURL:[NSBundle.mainBundle.bundleURL URLByAppendingPathComponent:@"TestWebKitAPI.resources"]];
-    TestWebKitAPI::Util::run(&didFireDOMLoadEvent);
+    [webView loadHTMLString:htmlString baseURL:[NSBundle.mainBundle.bundleURL URLByAppendingPathComponent:@"TestCyberKitAPI.resources"]];
+    TestCyberKitAPI::Util::run(&didFireDOMLoadEvent);
     [webView waitForNextPresentationUpdate];
 }
 
@@ -664,7 +664,7 @@ TEST(RequestTextInputContext, TextInteraction_FocusingReadOnlyElementShouldScrol
     }
 
     EXPECT_WK_STREQ("INPUT", [webView stringByEvaluatingJavaScript:@"document.activeElement.tagName"]);
-    TestWebKitAPI::Util::run(&didScroll);
+    TestCyberKitAPI::Util::run(&didScroll);
 }
 
 TEST(RequestTextInputContext, TextInteraction_FocusElementInDetachedDocument)
@@ -925,6 +925,6 @@ TEST(RequestTextInputContext, TextInteraction_HighlightSelectedText)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

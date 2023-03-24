@@ -25,10 +25,10 @@
 
 #import "config.h"
 
-#import <WebKit/WKBundlePage.h>
-#import <WebKit/WKBundlePageResourceLoadClient.h>
-#import <WebKit/WKWebProcessPlugIn.h>
-#import <WebKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
+#import <CyberKit/WKBundlePage.h>
+#import <CyberKit/WKBundlePageResourceLoadClient.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
 
 @interface BasicProposedCredentialPlugIn : NSObject<WKWebProcessPlugIn>
 @end

@@ -24,18 +24,18 @@
  */
 
 #import "config.h"
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #if WK_HAVE_C_SPI
 
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
 #import "Test.h"
-#import <WebKit/WKPageGroup.h>
-#import <WebKit/WKUserContentControllerRef.h>
-#import <WebKit/WKPageConfigurationRef.h>
+#import <CyberKit/WKPageGroup.h>
+#import <CyberKit/WKUserContentControllerRef.h>
+#import <CyberKit/WKPageConfigurationRef.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(PageGroup, DefaultUserContentController)
 {
@@ -76,6 +76,6 @@ TEST(PageGroup, CustomUserContentController)
     EXPECT_EQ(userContentController.get(), WKPageConfigurationGetUserContentController(copiedPageConfiguration.get()));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

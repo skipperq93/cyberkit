@@ -31,10 +31,10 @@
 #import "PlatformUtilities.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKNavigationDelegate.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKNavigationDelegate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/URL.h>
 #import <wtf/Vector.h>
@@ -178,7 +178,7 @@ static bool didCloseCalled;
 
 static NSURL *resourceURL(NSString *resource)
 {
-    return [[NSBundle mainBundle] URLForResource:resource withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    return [[NSBundle mainBundle] URLForResource:resource withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
 }
 
 TEST(SafeBrowsing, Preference)
@@ -198,10 +198,10 @@ TEST(SafeBrowsing, Preference)
     [webView configuration].preferences.fraudulentWebsiteWarningEnabled = YES;
     [webView loadRequest:[NSURLRequest requestWithURL:resourceURL(@"simple")]];
     while (![webView _safeBrowsingWarning])
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     [webView configuration].preferences.fraudulentWebsiteWarningEnabled = NO;
     [webView loadRequest:[NSURLRequest requestWithURL:resourceURL(@"simple2")]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_FALSE([webView configuration].preferences.fraudulentWebsiteWarningEnabled);
     EXPECT_FALSE([webView _safeBrowsingWarning]);
 }
@@ -218,7 +218,7 @@ static RetainPtr<WKWebView> safeBrowsingView()
     [webView loadRequest:[NSURLRequest requestWithURL:resourceURL(@"simple")]];
     EXPECT_FALSE(warningShown);
     while (![webView _safeBrowsingWarning])
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     EXPECT_TRUE(warningShown);
 #if !PLATFORM(MAC)
     [[webView _safeBrowsingWarning] didMoveToWindow];
@@ -264,7 +264,7 @@ TEST(SafeBrowsing, GoBack)
 TEST(SafeBrowsing, GoBackAfterRestoreFromSessionState)
 {
     auto webView1 = adoptNS([WKWebView new]);
-    [webView1 loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView1 loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     [webView1 _test_waitForDidFinishNavigation];
     _WKSessionState *state = [webView1 _sessionState];
 
@@ -278,7 +278,7 @@ TEST(SafeBrowsing, GoBackAfterRestoreFromSessionState)
     [webView2 _restoreSessionState:state andNavigate:YES];
     EXPECT_FALSE(warningShown);
     while (![webView2 _safeBrowsingWarning])
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     EXPECT_TRUE(warningShown);
 #if !PLATFORM(MAC)
     [[webView2 _safeBrowsingWarning] didMoveToWindow];
@@ -311,16 +311,16 @@ TEST(SafeBrowsing, VisitUnsafeWebsite)
     EXPECT_FALSE(committedNavigation);
     visitUnsafeSite(warning);
     EXPECT_WK_STREQ([webView title], "");
-    TestWebKitAPI::Util::run(&committedNavigation);
+    TestCyberKitAPI::Util::run(&committedNavigation);
 }
 
 TEST(SafeBrowsing, NavigationClearsWarning)
 {
     auto webView = safeBrowsingView();
     EXPECT_NE([webView _safeBrowsingWarning], nil);
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     while ([webView _safeBrowsingWarning])
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 }
 
 TEST(SafeBrowsing, ShowWarningSPI)
@@ -341,12 +341,12 @@ TEST(SafeBrowsing, ShowWarningSPI)
 
     showWarning();
     checkTitleAndClick([webView _safeBrowsingWarning].subviews.firstObject.subviews[3], "Go Back");
-    TestWebKitAPI::Util::run(&completionHandlerCalled);
+    TestCyberKitAPI::Util::run(&completionHandlerCalled);
     EXPECT_FALSE(shouldContinueValue);
 
     showWarning();
     [[webView _safeBrowsingWarning] performSelector:NSSelectorFromString(@"clickedOnLink:") withObject:[WKWebView _visitUnsafeWebsiteSentinel]];
-    TestWebKitAPI::Util::run(&completionHandlerCalled);
+    TestCyberKitAPI::Util::run(&completionHandlerCalled);
     EXPECT_TRUE(shouldContinueValue);
 }
 
@@ -368,8 +368,8 @@ TEST(SafeBrowsing, URLObservation)
 {
     ClassMethodSwizzler swizzler(objc_getClass("SSBLookupContext"), @selector(sharedLookupContext), [TestLookupContext methodForSelector:@selector(sharedLookupContext)]);
 
-    RetainPtr<NSURL> simpleURL = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
-    RetainPtr<NSURL> simple2URL = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    RetainPtr<NSURL> simpleURL = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
+    RetainPtr<NSURL> simple2URL = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     auto observer = adoptNS([SafeBrowsingObserver new]);
 
     auto webViewWithWarning = [&] () -> RetainPtr<WKWebView> {
@@ -379,19 +379,19 @@ TEST(SafeBrowsing, URLObservation)
 
         [webView loadHTMLString:@"meaningful content to be drawn" baseURL:simpleURL.get()];
         while (![webView _safeBrowsingWarning])
-            TestWebKitAPI::Util::spinRunLoop();
+            TestCyberKitAPI::Util::spinRunLoop();
 #if !PLATFORM(MAC)
         [[webView _safeBrowsingWarning] didMoveToWindow];
 #endif
         visitUnsafeSite([webView _safeBrowsingWarning]);
         EXPECT_TRUE(!![webView _safeBrowsingWarning]);
         while ([webView _safeBrowsingWarning])
-            TestWebKitAPI::Util::spinRunLoop();
+            TestCyberKitAPI::Util::spinRunLoop();
         EXPECT_FALSE(!![webView _safeBrowsingWarning]);
 
         [webView evaluateJavaScript:[NSString stringWithFormat:@"window.location='%@'", simple2URL.get()] completionHandler:nil];
         while (![webView _safeBrowsingWarning])
-            TestWebKitAPI::Util::spinRunLoop();
+            TestCyberKitAPI::Util::spinRunLoop();
 #if !PLATFORM(MAC)
         [[webView _safeBrowsingWarning] didMoveToWindow];
 #endif
@@ -420,7 +420,7 @@ TEST(SafeBrowsing, URLObservation)
         auto webView = webViewWithWarning();
         checkURLs({ simpleURL, simple2URL });
         visitUnsafeSite([webView _safeBrowsingWarning]);
-        TestWebKitAPI::Util::spinRunLoop(5);
+        TestCyberKitAPI::Util::spinRunLoop(5);
         checkURLs({ simpleURL, simple2URL });
         [webView removeObserver:observer.get() forKeyPath:@"URL"];
     }
@@ -473,18 +473,18 @@ TEST(SafeBrowsing, WKWebViewGoBack)
     [webView configuration].preferences.fraudulentWebsiteWarningEnabled = YES;
     [webView setNavigationDelegate:delegate.get()];
     [webView loadRequest:[NSURLRequest requestWithURL:resourceURL(@"simple")]];
-    TestWebKitAPI::Util::run(&navigationFinished);
+    TestCyberKitAPI::Util::run(&navigationFinished);
 
     navigationFinished = false;
     [webView loadRequest:[NSURLRequest requestWithURL:resourceURL(@"simple2")]];
-    TestWebKitAPI::Util::run(&navigationFinished);
+    TestCyberKitAPI::Util::run(&navigationFinished);
 
     navigationFinished = false;
     [webView loadRequest:[NSURLRequest requestWithURL:resourceURL(@"simple3")]];
     while (![webView _safeBrowsingWarning])
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     [webView goBack];
-    TestWebKitAPI::Util::run(&navigationFinished);
+    TestCyberKitAPI::Util::run(&navigationFinished);
     EXPECT_TRUE([[webView URL] isEqual:resourceURL(@"simple2")]);
 }
 
@@ -498,17 +498,17 @@ TEST(SafeBrowsing, WKWebViewGoBackIFrame)
     [webView configuration].preferences._safeBrowsingEnabled = YES;
     [webView setNavigationDelegate:delegate.get()];
     [webView loadRequest:[NSURLRequest requestWithURL:resourceURL(@"simple2")]];
-    TestWebKitAPI::Util::run(&navigationFinished);
+    TestCyberKitAPI::Util::run(&navigationFinished);
 
     [webView loadRequest:[NSURLRequest requestWithURL:resourceURL(@"simple-iframe")]];
     while (![webView _safeBrowsingWarning])
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 #if !PLATFORM(MAC)
     [[webView _safeBrowsingWarning] didMoveToWindow];
 #endif
     navigationFinished = false;
     goBack([webView _safeBrowsingWarning], false);
-    TestWebKitAPI::Util::run(&navigationFinished);
+    TestCyberKitAPI::Util::run(&navigationFinished);
     EXPECT_TRUE([[webView URL] isEqual:resourceURL(@"simple2")]);
 }
 

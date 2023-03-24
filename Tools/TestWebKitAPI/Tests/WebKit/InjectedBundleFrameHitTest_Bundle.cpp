@@ -29,13 +29,13 @@
 
 #include "InjectedBundleTest.h"
 #include "PlatformUtilities.h"
-#include <WebKit/WKBundle.h>
-#include <WebKit/WKBundleFramePrivate.h>
-#include <WebKit/WKBundleHitTestResult.h>
-#include <WebKit/WKBundlePage.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKBundle.h>
+#include <CyberKit/WKBundleFramePrivate.h>
+#include <CyberKit/WKBundleHitTestResult.h>
+#include <CyberKit/WKBundlePage.h>
+#include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class InjectedBundleFrameHitTestTest : public InjectedBundleTest {
 public:
@@ -78,6 +78,6 @@ void InjectedBundleFrameHitTestTest::frameLoadFinished(WKBundleFrameRef frame)
     WKBundlePostMessage(m_bundle, Util::toWK("InjectedBundleFrameHitTestDone").get(), linkTitle.get());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -1,0 +1,5 @@
+framework module CyberKitLegacy [system] {
+  umbrella "PrivateHeaders"
+
+  explicit module * { export * }
+}

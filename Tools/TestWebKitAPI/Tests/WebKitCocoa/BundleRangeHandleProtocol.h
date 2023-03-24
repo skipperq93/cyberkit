@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 @protocol BundleRangeHandleProtocol <NSObject>
 - (void)textFromBodyRange:(NSString *)text;

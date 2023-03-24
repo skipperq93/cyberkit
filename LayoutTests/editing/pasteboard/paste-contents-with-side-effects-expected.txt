@@ -1,4 +1,4 @@
-This tests inserting content with an event handler. WebKit should never execute event handlers.
+This tests inserting content with an event handler. CyberKit should never execute event handlers.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

@@ -29,23 +29,23 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
 #import <wtf/RetainPtr.h>
 
-TEST(WebKit, BundleParameters)
+TEST(CyberKit, BundleParameters)
 {
     @autoreleasepool {
         NSString * const testPlugInClassName = @"BundleParametersPlugIn";
         auto configuration = retainPtr([WKWebViewConfiguration _test_configurationWithTestPlugInClassName:testPlugInClassName]);
         auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration.get()]);
 
-        [webView evaluateJavaScript:TestWebKitAPI::Util::TestPlugInClassNameParameter completionHandler:^(id result, NSError *error) {
+        [webView evaluateJavaScript:TestCyberKitAPI::Util::TestPlugInClassNameParameter completionHandler:^(id result, NSError *error) {
             EXPECT_TRUE([result isKindOfClass:[NSString class]]);
             EXPECT_WK_STREQ(result, testPlugInClassName);
             isDone = true;
         }];
 
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
         isDone = false;
 
         NSString * const testParameter1 = @"TestParameter1";
@@ -54,7 +54,7 @@ TEST(WebKit, BundleParameters)
             isDone = true;
         }];
 
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
         isDone = false;
 
         NSString * const testString = @"PASS";
@@ -65,7 +65,7 @@ TEST(WebKit, BundleParameters)
             isDone = true;
         }];
 
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
         isDone = false;
 
         NSDictionary * const testDictionary = @{ @"result" : @"PASS" };
@@ -76,7 +76,7 @@ TEST(WebKit, BundleParameters)
             isDone = true;
         }];
 
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
         isDone = false;
 
         [[configuration processPool] _setObject:nil forBundleParameter:testParameter1];
@@ -85,7 +85,7 @@ TEST(WebKit, BundleParameters)
             isDone = true;
         }];
 
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
         isDone = false;
 
         NSString * const testParameter2 = @"TestParameter2";
@@ -98,7 +98,7 @@ TEST(WebKit, BundleParameters)
             isDone = true;
         }];
 
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
         isDone = false;
 
         [webView evaluateJavaScript:testParameter2 completionHandler:^(id result, NSError *error) {
@@ -107,6 +107,6 @@ TEST(WebKit, BundleParameters)
             isDone = true;
         }];
 
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
     }
 }

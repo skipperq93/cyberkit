@@ -120,16 +120,16 @@ def parse_args(args):
         optparse.make_option("--accelerated-drawing", action="store_true", default=False,
             help="Use accelerated drawing (OS X only)"),
         optparse.make_option("--remote-layer-tree", action="store_true", default=False,
-            help="Use the remote layer tree drawing model (OS X WebKit2 only)"),
+            help="Use the remote layer tree drawing model (OS X CyberKit2 only)"),
         optparse.make_option("--internal-feature", type="string", action="append", default=[],
             help="Enable (disable) an internal feature (--internal-feature FeatureName[=true|false])"),
         optparse.make_option("--experimental-feature", type="string", action="append", default=[],
             help="Enable (disable) an experimental feature (--experimental-feature FeatureName[=true|false])"),
         optparse.make_option("--no-enable-all-experimental-features", action="store_false", default=True, dest="enable_all_experimental_features",
-            help="Don't enable all experimental features in WebKitTestRunner"),
+            help="Don't enable all experimental features in CyberKitTestRunner"),
     ]))
 
-    option_group_definitions.append(("WebKit Options", [
+    option_group_definitions.append(("CyberKit Options", [
         optparse.make_option("--gc-between-tests", action="store_true", default=False,
             help="Force garbage collection between each test"),
         optparse.make_option("-l", "--leaks", action="store_true", default=False,
@@ -139,7 +139,7 @@ def parse_args(args):
         optparse.make_option("--threaded", action="store_true", default=False,
             help="Run a concurrent JavaScript thread with each test"),
         optparse.make_option("--dump-render-tree", "-1", action="store_false", default=True, dest="webkit_test_runner",
-            help="Use DumpRenderTree rather than WebKitTestRunner. This runs the wk1 single-process architecture."),
+            help="Use DumpRenderTree rather than CyberKitTestRunner. This runs the wk1 single-process architecture."),
         # FIXME: We should merge this w/ --build-directory and only have one flag.
         optparse.make_option("--root", action="store",
             help="Path to a directory containing the executables needed to run tests."),
@@ -246,7 +246,7 @@ def parse_args(args):
             help="Do everything but actually run the tests or upload results."),
         optparse.make_option("--wrapper",
             help="wrapper command to insert before invocations of "
-                 "DumpRenderTree or WebKitTestRunner; option is split on whitespace before "
+                 "DumpRenderTree or CyberKitTestRunner; option is split on whitespace before "
                  "running. (Example: --wrapper='valgrind --smc-check=all')"),
         optparse.make_option("-i", "--ignore-tests", "--exclude-tests", action="append", default=[],
             help="directories or test to ignore (may specify multiple times)"),
@@ -487,7 +487,7 @@ def _set_up_derived_options(port, options):
     if options.run_singly:
         options.verbose = True
 
-    # The GTK+ and WPE ports only support WebKit2 so they always use WKTR.
+    # The GTK+ and WPE ports only support CyberKit2 so they always use WKTR.
     if options.platform in ["gtk", "wpe"]:
         options.webkit_test_runner = True
 

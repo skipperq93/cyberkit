@@ -23,7 +23,7 @@ def get_dependencies_path(platform):
     if 'WEBKIT_OUTPUTDIR' in os.environ:
         return os.path.abspath(os.path.join(os.environ['WEBKIT_OUTPUTDIR'], dependencies_dir))
     else:
-        return os.path.abspath(top_level_path('WebKitBuild', dependencies_dir))
+        return os.path.abspath(top_level_path('CyberKitBuild', dependencies_dir))
 
 
 def get_config_file_for_platform(platform):

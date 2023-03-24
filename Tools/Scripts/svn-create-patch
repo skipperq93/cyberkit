@@ -22,7 +22,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Extended "svn diff" script for WebKit Open Source Project, used to make patches.
+# Extended "svn diff" script for CyberKit Open Source Project, used to make patches.
 
 # Differences from standard "svn diff":
 #
@@ -71,7 +71,7 @@ sub testfilecmp($$);
 $ENV{'LC_ALL'} = 'C';
 
 my $showHelp;
-my $checkWebKitStyle = 0;
+my $checkCyberKitStyle = 0;
 my $ignoreChangelogs = 0;
 my $verbose = 0;
 my $devNull = File::Spec->devnull();
@@ -79,7 +79,7 @@ my $devNull = File::Spec->devnull();
 my $result = GetOptions(
     "help"       => \$showHelp,
     "ignore-changelogs" => \$ignoreChangelogs,
-    "style!" => \$checkWebKitStyle,
+    "style!" => \$checkCyberKitStyle,
     "verbose" => \$verbose,
 );
 if (!$result || $showHelp) {
@@ -115,7 +115,7 @@ for my $path (sort patchpathcmp values %diffFiles) {
     generateDiff($path, $prefix);
 }
 
-if ($checkWebKitStyle) {
+if ($checkCyberKitStyle) {
     print STDERR "  Running check-webkit-style.\n  ";
     system "$FindBin::Bin/check-webkit-style";
 }

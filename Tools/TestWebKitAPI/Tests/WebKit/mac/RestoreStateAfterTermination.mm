@@ -29,10 +29,10 @@
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
 #import "Test.h"
-#import <WebKit/WKRetainPtr.h>
+#import <CyberKit/WKRetainPtr.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool loadBeforeCrash = false;
 static bool loadAfterCrash = false;
@@ -69,7 +69,7 @@ static void didCrash(WKPageRef page, const void*)
     EXPECT_TRUE(loadBeforeCrash);
 }
 
-TEST(WebKit, RestoreStateAfterTermination)
+TEST(CyberKit, RestoreStateAfterTermination)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -128,4 +128,4 @@ TEST(WebKit, RestoreStateAfterTermination)
     EXPECT_JS_EQ(webView.page(), "getFormData()", "Important data");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

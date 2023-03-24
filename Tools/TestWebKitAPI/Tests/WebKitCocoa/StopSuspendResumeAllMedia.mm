@@ -29,12 +29,12 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WKWebView, StopAllMediaPlayback)
 {
@@ -48,12 +48,12 @@ TEST(WKWebView, StopAllMediaPlayback)
     __block bool didBeginPlaying = false;
     [webView performAfterReceivingMessage:@"playing" action:^{ didBeginPlaying = true; }];
     [webView evaluateJavaScript:@"document.querySelector('video').play()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&didBeginPlaying);
+    TestCyberKitAPI::Util::run(&didBeginPlaying);
 
     __block bool didPause = false;
     [webView performAfterReceivingMessage:@"pause" action:^{ didPause = true; }];
     [webView pauseAllMediaPlaybackWithCompletionHandler:nil];
-    TestWebKitAPI::Util::run(&didPause);
+    TestCyberKitAPI::Util::run(&didPause);
 }
 
 TEST(WKWebView, SuspendResumeAllMediaPlayback)
@@ -68,22 +68,22 @@ TEST(WKWebView, SuspendResumeAllMediaPlayback)
     __block bool didBeginPlaying = false;
     [webView performAfterReceivingMessage:@"playing" action:^{ didBeginPlaying = true; }];
     [webView evaluateJavaScript:@"document.querySelector('video').play()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&didBeginPlaying);
+    TestCyberKitAPI::Util::run(&didBeginPlaying);
 
     __block bool didPause = false;
     [webView performAfterReceivingMessage:@"pause" action:^{ didPause = true; }];
     [webView setAllMediaPlaybackSuspended:YES completionHandler:nil];
-    TestWebKitAPI::Util::run(&didPause);
+    TestCyberKitAPI::Util::run(&didPause);
 
     __block bool didReject = false;
     [webView performAfterReceivingMessage:@"rejected" action:^{ didReject = true; }];
     [webView evaluateJavaScript:@"document.querySelector('video').play().catch(() => { window.webkit.messageHandlers.testHandler.postMessage('rejected'); })" completionHandler:nil];
-    TestWebKitAPI::Util::run(&didReject);
+    TestCyberKitAPI::Util::run(&didReject);
 
     didBeginPlaying = false;
     [webView performAfterReceivingMessage:@"playing" action:^{ didBeginPlaying = true; }];
     [webView setAllMediaPlaybackSuspended:NO completionHandler:nil];
-    TestWebKitAPI::Util::run(&didBeginPlaying);
+    TestCyberKitAPI::Util::run(&didBeginPlaying);
 }
 
 TEST(WKWebView, SuspendResumeAllMediaPlaybackMultipleTimes)
@@ -98,41 +98,41 @@ TEST(WKWebView, SuspendResumeAllMediaPlaybackMultipleTimes)
     __block bool didBeginPlaying = false;
     [webView performAfterReceivingMessage:@"playing" action:^{ didBeginPlaying = true; }];
     [webView evaluateJavaScript:@"document.querySelector('video').play()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&didBeginPlaying);
+    TestCyberKitAPI::Util::run(&didBeginPlaying);
 
     __block bool didPause = false;
     [webView performAfterReceivingMessage:@"pause" action:^{ didPause = true; }];
     [webView setAllMediaPlaybackSuspended:YES completionHandler:nil];
-    TestWebKitAPI::Util::run(&didPause);
+    TestCyberKitAPI::Util::run(&didPause);
 
     __block bool didReject = false;
     [webView performAfterReceivingMessage:@"rejected" action:^{ didReject = true; }];
     [webView evaluateJavaScript:@"document.querySelector('video').play().catch(() => { window.webkit.messageHandlers.testHandler.postMessage('rejected'); })" completionHandler:nil];
-    TestWebKitAPI::Util::run(&didReject);
+    TestCyberKitAPI::Util::run(&didReject);
 
     // Suspend again to increment the counter.
     __block bool isDone = false;
     [webView setAllMediaPlaybackSuspended:YES completionHandler:^{
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     isDone = false;
     [webView setAllMediaPlaybackSuspended:NO completionHandler:^{
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     // Make sure the media is still suspended.
     didReject = false;
     [webView performAfterReceivingMessage:@"rejected" action:^{ didReject = true; }];
     [webView evaluateJavaScript:@"document.querySelector('video').play().catch(() => { window.webkit.messageHandlers.testHandler.postMessage('rejected'); })" completionHandler:nil];
-    TestWebKitAPI::Util::run(&didReject);
+    TestCyberKitAPI::Util::run(&didReject);
 
     didBeginPlaying = false;
     [webView performAfterReceivingMessage:@"playing" action:^{ didBeginPlaying = true; }];
     [webView setAllMediaPlaybackSuspended:NO completionHandler:nil];
-    TestWebKitAPI::Util::run(&didBeginPlaying);
+    TestCyberKitAPI::Util::run(&didBeginPlaying);
 }
 
 TEST(WKWebView, CheckMediaPlaybackSuspended)
@@ -147,31 +147,31 @@ TEST(WKWebView, CheckMediaPlaybackSuspended)
     __block bool didBeginPlaying = false;
     [webView performAfterReceivingMessage:@"playing" action:^{ didBeginPlaying = true; }];
     [webView evaluateJavaScript:@"document.querySelector('video').play()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&didBeginPlaying);
+    TestCyberKitAPI::Util::run(&didBeginPlaying);
 
     __block bool didPause = false;
     [webView performAfterReceivingMessage:@"pause" action:^{ didPause = true; }];
     [webView setAllMediaPlaybackSuspended:YES completionHandler:nil];
-    TestWebKitAPI::Util::run(&didPause);
+    TestCyberKitAPI::Util::run(&didPause);
 
     __block bool isDone = false;
     [webView requestMediaPlaybackStateWithCompletionHandler:^(WKMediaPlaybackState state) {
         EXPECT_EQ(state, WKMediaPlaybackStateSuspended);
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     didBeginPlaying = false;
     [webView performAfterReceivingMessage:@"playing" action:^{ didBeginPlaying = true; }];
     [webView setAllMediaPlaybackSuspended:NO completionHandler:nil];
-    TestWebKitAPI::Util::run(&didBeginPlaying);
+    TestCyberKitAPI::Util::run(&didBeginPlaying);
     
     isDone = false;
     [webView requestMediaPlaybackStateWithCompletionHandler:^(WKMediaPlaybackState state) {
         EXPECT_EQ(state, WKMediaPlaybackStatePlaying);
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(WKWebView, CheckMediaPlaybackExists)
@@ -186,7 +186,7 @@ TEST(WKWebView, CheckMediaPlaybackExists)
         EXPECT_EQ(state, WKMediaPlaybackStateNone);
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     
     [webView synchronouslyLoadHTMLString:@"<video src=\"video-with-audio.mp4\" webkit-playsinline></video>"];
 
@@ -195,7 +195,7 @@ TEST(WKWebView, CheckMediaPlaybackExists)
         EXPECT_EQ(state, WKMediaPlaybackStatePlaying);
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     
     [webView synchronouslyLoadHTMLString:@"<body></body>"];
     isDone = false;
@@ -203,7 +203,7 @@ TEST(WKWebView, CheckMediaPlaybackExists)
         EXPECT_EQ(state, WKMediaPlaybackStateNone);
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(WKWebView, CheckMediaPlaybackPaused)
@@ -218,28 +218,28 @@ TEST(WKWebView, CheckMediaPlaybackPaused)
     __block bool didBeginPlaying = false;
     [webView performAfterReceivingMessage:@"playing" action:^{ didBeginPlaying = true; }];
     [webView evaluateJavaScript:@"document.querySelector('video').play()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&didBeginPlaying);
+    TestCyberKitAPI::Util::run(&didBeginPlaying);
 
     __block bool isDone = false;
     [webView requestMediaPlaybackStateWithCompletionHandler:^(WKMediaPlaybackState state) {
         EXPECT_EQ(state, WKMediaPlaybackStatePlaying);
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     
     __block bool didPause = false;
     [webView performAfterReceivingMessage:@"pause" action:^{ didPause = true; }];
     [webView pauseAllMediaPlaybackWithCompletionHandler:nil];
-    TestWebKitAPI::Util::run(&didPause);
+    TestCyberKitAPI::Util::run(&didPause);
     
     isDone = false;
     [webView requestMediaPlaybackStateWithCompletionHandler:^(WKMediaPlaybackState state) {
         EXPECT_TRUE(WKMediaPlaybackStatePaused);
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

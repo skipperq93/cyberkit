@@ -30,8 +30,8 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestNavigationDelegate.h"
-#import <WebKit/WKFoundation.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/cocoa/NSURLExtras.h>
 
@@ -70,15 +70,15 @@ TEST(WKWebView, LoadAlternateHTMLStringFromProvisionalLoadError)
     [webView setNavigationDelegate:controller.get()];
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:unloadableURL]]];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:loadableURL]]];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     [webView goBack];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     WKBackForwardList *list = [webView backForwardList];
@@ -92,7 +92,7 @@ TEST(WKWebView, LoadAlternateHTMLStringFromProvisionalLoadError)
         return;
 
     [webView goForward];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     EXPECT_EQ((NSUInteger)1, list.backList.count);
@@ -115,7 +115,7 @@ TEST(WKWebView, LoadAlternateHTMLStringFromProvisionalLoadErrorBackToBack)
         [webView loadRequest:[NSURLRequest requestWithURL:targetURL]];
 
         isDone = false;
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
         // In success, we should only start 2 provisional loads: 1 for the second loadRequest, and 1 for the _loadAlternateHTMLString.
         // The second loadRequest cancels the first one before its provisional load starts.
         EXPECT_EQ(2, provisionalLoadCount);
@@ -138,7 +138,7 @@ TEST(WKWebView, LoadNilAlternateHTMLStringDoesNotCrash)
     [webView _loadAlternateHTMLString:nil baseURL:nil forUnreachableURL:[NSURL URLWithString:@"https://www.example.com"]];
     IGNORE_NULL_CHECK_WARNINGS_END
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(WKWebView, LoadAlternateHTMLStringFromProvisionalLoadErrorReload)
@@ -149,19 +149,19 @@ TEST(WKWebView, LoadAlternateHTMLStringFromProvisionalLoadErrorReload)
 
     NSURL *invalidURL = [NSURL URLWithString:@"https://www.example.com%3C%3E/"];
     [webView loadRequest:[NSURLRequest requestWithURL:invalidURL]];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     [webView reload];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     [webView reloadFromOrigin];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     [webView _reloadExpiredOnly];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     WKBackForwardList *list = [webView backForwardList];
@@ -170,7 +170,7 @@ TEST(WKWebView, LoadAlternateHTMLStringFromProvisionalLoadErrorReload)
 
 TEST(WKWebView, LoadHTMLStringOrigin)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     bool done = false;
     HTTPServer server([&](Connection connection) {
         connection.receiveHTTPRequest([&](Vector<char>&& request) {
@@ -189,7 +189,7 @@ TEST(WKWebView, LoadHTMLStringOrigin)
     Util::run(&done);
 }
 
-TEST(WebKit, LoadHTMLStringWithInvalidBaseURL)
+TEST(CyberKit, LoadHTMLStringWithInvalidBaseURL)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSZeroRect]);
 
@@ -207,7 +207,7 @@ TEST(WebKit, LoadHTMLStringWithInvalidBaseURL)
     };
 
     [webView loadHTMLString:@"test" baseURL:[NSURL URLWithString:@"invalid"]];
-    TestWebKitAPI::Util::run(&didFinishNavigation);
+    TestCyberKitAPI::Util::run(&didFinishNavigation);
     EXPECT_WK_STREQ([webView URL].absoluteString, "invalid");
 
     EXPECT_FALSE(didCrash);

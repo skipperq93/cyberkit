@@ -26,7 +26,7 @@
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/text/CString.h>
 
-class WebKitTestServer {
+class CyberKitTestServer {
     WTF_MAKE_FAST_ALLOCATED;
 public:
 
@@ -36,9 +36,9 @@ public:
     };
     using ServerOptionsBitSet = std::bitset<2>;
 
-    WebKitTestServer(ServerOptionsBitSet = 0);
-    WebKitTestServer(ServerOptions option)
-        : WebKitTestServer(ServerOptionsBitSet().set(option)) { }
+    CyberKitTestServer(ServerOptionsBitSet = 0);
+    CyberKitTestServer(ServerOptions option)
+        : CyberKitTestServer(ServerOptionsBitSet().set(option)) { }
 
     SoupServer* soupServer() const { return m_soupServer.get(); }
     const URL& baseURL() const { return m_baseURL; }

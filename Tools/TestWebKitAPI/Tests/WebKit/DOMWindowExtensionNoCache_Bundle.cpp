@@ -28,17 +28,17 @@
 #if WK_HAVE_C_SPI
 
 #include "InjectedBundleTest.h"
-#include <WebKit/WKBundleDOMWindowExtension.h>
-#include <WebKit/WKBundleFrame.h>
-#include <WebKit/WKBundlePage.h>
-#include <WebKit/WKBundlePagePrivate.h>
-#include <WebKit/WKBundlePrivate.h>
-#include <WebKit/WKBundleScriptWorld.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKBundleDOMWindowExtension.h>
+#include <CyberKit/WKBundleFrame.h>
+#include <CyberKit/WKBundlePage.h>
+#include <CyberKit/WKBundlePagePrivate.h>
+#include <CyberKit/WKBundlePrivate.h>
+#include <CyberKit/WKBundleScriptWorld.h>
+#include <CyberKit/WKRetainPtr.h>
 #include <wtf/HashMap.h>
 #include <assert.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void didFinishLoadForFrameCallback(WKBundlePageRef, WKBundleFrameRef, WKTypeRef*, const void* clientInfo);
 static void globalObjectIsAvailableForFrameCallback(WKBundlePageRef, WKBundleFrameRef, WKBundleScriptWorldRef, const void* clientInfo);
@@ -271,6 +271,6 @@ static void willDestroyGlobalObjectForDOMWindowExtensionCallback(WKBundlePageRef
     ((DOMWindowExtensionNoCache*)clientInfo)->willDestroyGlobalObjectForDOMWindowExtension(extension);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

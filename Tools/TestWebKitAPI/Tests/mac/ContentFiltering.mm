@@ -28,12 +28,12 @@
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
 #import "TestProtocol.h"
-#import <WebCore/MockContentFilterSettings.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/WebKitErrorsPrivate.h>
+#import <CyberCore/MockContentFilterSettings.h>
+#import <CyberKit/CyberKit.h>
+#import <CyberKit/CyberKitErrorsPrivate.h>
 
-using Decision = WebCore::MockContentFilterSettings::Decision;
-using DecisionPoint = WebCore::MockContentFilterSettings::DecisionPoint;
+using Decision = CyberCore::MockContentFilterSettings::Decision;
+using DecisionPoint = CyberCore::MockContentFilterSettings::DecisionPoint;
 
 @interface LoadAlternateFrameLoadDelegate : NSObject <WebFrameLoadDelegate>
 @end
@@ -42,8 +42,8 @@ using DecisionPoint = WebCore::MockContentFilterSettings::DecisionPoint;
 
 - (void)webView:(WebView *)sender didFailProvisionalLoadWithError:(NSError *)error forFrame:(WebFrame *)frame
 {
-    EXPECT_WK_STREQ(WebKitErrorDomain, error.domain);
-    EXPECT_EQ(WebKitErrorFrameLoadBlockedByContentFilter, error.code);
+    EXPECT_WK_STREQ(CyberKitErrorDomain, error.domain);
+    EXPECT_EQ(CyberKitErrorFrameLoadBlockedByContentFilter, error.code);
     [frame loadAlternateHTMLString:@"FAIL" baseURL:nil forUnreachableURL:[error.userInfo objectForKey:NSURLErrorFailingURLErrorKey]];
 }
 
@@ -55,12 +55,12 @@ using DecisionPoint = WebCore::MockContentFilterSettings::DecisionPoint;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void loadAlternateTest(Decision decision, DecisionPoint decisionPoint)
 {
     @autoreleasepool {
-        auto& settings = WebCore::MockContentFilterSettings::singleton();
+        auto& settings = CyberCore::MockContentFilterSettings::singleton();
         settings.setEnabled(true);
         settings.setDecision(decision);
         settings.setDecisionPoint(decisionPoint);
@@ -73,7 +73,7 @@ static void loadAlternateTest(Decision decision, DecisionPoint decisionPoint)
         [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://redirect/?result"]]];
 
         isDone = false;
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
 
         settings.setEnabled(false);
         [TestProtocol unregister];
@@ -105,4 +105,4 @@ TEST(ContentFiltering, LoadAlternateAfterFinishedAddingDataWK1)
     loadAlternateTest(Decision::Block, DecisionPoint::AfterFinishedAddingData);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

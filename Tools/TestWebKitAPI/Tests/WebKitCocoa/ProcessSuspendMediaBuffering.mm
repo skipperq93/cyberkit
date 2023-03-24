@@ -29,13 +29,13 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 
-TEST(WebKit, ProcessSuspendMediaBuffering)
+TEST(CyberKit, ProcessSuspendMediaBuffering)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
-    WKRetainPtr<WKContextRef> context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+    WKRetainPtr<WKContextRef> context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
     configuration.get().processPool = (WKProcessPool *)context.get();
     configuration.get()._mediaDataLoadsAutomatically = YES;
     configuration.get().mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeNone;
@@ -46,7 +46,7 @@ TEST(WebKit, ProcessSuspendMediaBuffering)
 
     [webView synchronouslyLoadTestPageNamed:@"video-with-audio"];
 
-    TestWebKitAPI::Util::run(&isPlaying);
+    TestCyberKitAPI::Util::run(&isPlaying);
 
     auto isElementAllowedToBuffer = [&] {
         return [webView stringByEvaluatingJavaScript:@"window.internals.elementShouldBufferData(document.querySelector('video'))"].boolValue;

@@ -30,13 +30,13 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebsiteDataRecordPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/_WKWebsiteDataSize.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebsiteDataRecordPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/CyberKit.h>
+#import <CyberKit/_WKWebsiteDataSize.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/WeakObjCPtr.h>
 #import <wtf/text/WTFString.h>
 
@@ -62,7 +62,7 @@ static bool usePersistentCredentialStorage = false;
 
 - (void)waitForDidFinishNavigation
 {
-    TestWebKitAPI::Util::run(&_hasFinishedNavigation);
+    TestCyberKitAPI::Util::run(&_hasFinishedNavigation);
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
@@ -95,7 +95,7 @@ static bool usePersistentCredentialStorage = false;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 
 // FIXME: Re-enable this test once webkit.org/b/208451 is resolved.
@@ -106,14 +106,14 @@ TEST(WKWebsiteDataStore, RemoveAndFetchData)
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:[WKWebsiteDataStore _allWebsiteDataTypesIncludingPrivate] modifiedSince:[NSDate distantPast] completionHandler:^() {
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
     
     readyToContinue = false;
     [[WKWebsiteDataStore defaultDataStore] fetchDataRecordsOfTypes:[WKWebsiteDataStore _allWebsiteDataTypesIncludingPrivate] completionHandler:^(NSArray<WKWebsiteDataRecord *> *dataRecords) {
         EXPECT_EQ(0u, dataRecords.count);
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 }
 #endif // !PLATFORM(IOS)
 
@@ -127,7 +127,7 @@ TEST(WKWebsiteDataStore, RemoveEphemeralData)
     [[configuration websiteDataStore] removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler: ^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(WKWebsiteDataStore, FetchNonPersistentCredentials)
@@ -152,7 +152,7 @@ TEST(WKWebsiteDataStore, FetchNonPersistentCredentials)
             ASSERT_TRUE([[record displayName] isEqualToString:@"127.0.0.1"]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(WKWebsiteDataStore, FetchPersistentCredentials)
@@ -178,7 +178,7 @@ TEST(WKWebsiteDataStore, FetchPersistentCredentials)
         EXPECT_EQ(credentialCount, 0);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     // Clear persistent credentials created by this test.
     [[webView configuration].processPool _clearPermanentCredentialsForProtectionSpace:protectionSpace.get()];
@@ -213,13 +213,13 @@ TEST(WKWebsiteDataStore, RemoveNonPersistentCredentials)
         EXPECT_TRUE(expectedRecord);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [websiteDataStore removeDataOfTypes:[NSSet setWithObject:_WKWebsiteDataTypeCredentials] forDataRecords:@[expectedRecord.get()] completionHandler:^(void) {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [websiteDataStore fetchDataRecordsOfTypes:[NSSet setWithObject:_WKWebsiteDataTypeCredentials] completionHandler:^(NSArray<WKWebsiteDataRecord *> *dataRecords) {
@@ -234,10 +234,10 @@ TEST(WKWebsiteDataStore, RemoveNonPersistentCredentials)
         EXPECT_FALSE(foundLocalHostRecord);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
-TEST(WebKit, SettingNonPersistentDataStorePathsThrowsException)
+TEST(CyberKit, SettingNonPersistentDataStorePathsThrowsException)
 {
     auto configuration = adoptNS([[_WKWebsiteDataStoreConfiguration alloc] initNonPersistentConfiguration]);
 
@@ -291,7 +291,7 @@ TEST(WKWebsiteDataStore, FetchPersistentWebStorage)
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:^{
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 
     @autoreleasepool {
         auto webView = adoptNS([[WKWebView alloc] init]);
@@ -307,7 +307,7 @@ TEST(WKWebsiteDataStore, FetchPersistentWebStorage)
         EXPECT_TRUE([[[records firstObject] dataTypes] isEqualToSet:localStorageType]);
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 }
 
 TEST(WKWebsiteDataStore, FetchNonPersistentWebStorage)
@@ -326,14 +326,14 @@ TEST(WKWebsiteDataStore, FetchNonPersistentWebStorage)
         EXPECT_TRUE([@"storage" isEqualToString:result]);
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 
     readyToContinue = false;
     [webView evaluateJavaScript:@"window.localStorage.getItem('local')" completionHandler:^(id result, NSError *) {
         EXPECT_TRUE([@"storage" isEqualToString:result]);
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 
     readyToContinue = false;
     [nonPersistentDataStore fetchDataRecordsOfTypes:[NSSet setWithObject:WKWebsiteDataTypeSessionStorage] completionHandler:^(NSArray<WKWebsiteDataRecord *> *dataRecords) {
@@ -341,7 +341,7 @@ TEST(WKWebsiteDataStore, FetchNonPersistentWebStorage)
         EXPECT_TRUE([[[dataRecords objectAtIndex:0] displayName] isEqualToString:@"localhost"]);
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 
     readyToContinue = false;
     [nonPersistentDataStore fetchDataRecordsOfTypes:[NSSet setWithObject:WKWebsiteDataTypeLocalStorage] completionHandler:^(NSArray<WKWebsiteDataRecord *> *dataRecords) {
@@ -349,7 +349,7 @@ TEST(WKWebsiteDataStore, FetchNonPersistentWebStorage)
         EXPECT_TRUE([[[dataRecords objectAtIndex:0] displayName] isEqualToString:@"localhost"]);
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 }
 
 TEST(WKWebsiteDataStore, SessionSetCount)
@@ -361,7 +361,7 @@ TEST(WKWebsiteDataStore, SessionSetCount)
             result = count;
             done = true;
         }];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         return result;
     };
     @autoreleasepool {
@@ -393,7 +393,7 @@ TEST(WKWebsiteDataStore, ReferenceCycle)
         cookieStore = [dataStore httpCookieStore];
     }
     while (dataStore.get() || cookieStore.get())
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 }
 
 TEST(WKWebsiteDataStore, ClearCustomDataStoreNoWebViews)
@@ -495,14 +495,14 @@ static RetainPtr<WKWebsiteDataStore> createWebsiteDataStoreAndPrepare(NSUUID *uu
         </script>";
         receivedScriptMessage = false;
         [webView loadHTMLString:htmlString baseURL:[NSURL URLWithString:@"https://webkit.org/"]];
-        TestWebKitAPI::Util::run(&receivedScriptMessage);
+        TestCyberKitAPI::Util::run(&receivedScriptMessage);
         webprocessIdentifier = [webView _webProcessIdentifier];
         EXPECT_NE(webprocessIdentifier, 0);
     }
 
     // Running web process may hold WebsiteDataStore alive, so make ensure it exits before return.
     while (!kill(webprocessIdentifier, 0))
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 
     return websiteDataStore;
 }
@@ -536,7 +536,7 @@ TEST(WKWebsiteDataStore, RemoveDataStoreWithIdentifier)
         done = true;
         EXPECT_NULL(error);
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_FALSE([fileManager fileExistsAtPath:generalStorageDirectory.get().path]);
 }
 
@@ -553,7 +553,7 @@ TEST(WKWebsiteDataStore, RemoveDataStoreWithIdentifierRemoveCredentials)
         [websiteDataStore removeDataOfTypes:[WKWebsiteDataStore _allWebsiteDataTypesIncludingPrivate] modifiedSince:[NSDate distantPast] completionHandler:^{
             done = true;
         }];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
 
         HTTPServer server(HTTPServer::respondWithChallengeThenOK);
@@ -571,7 +571,7 @@ TEST(WKWebsiteDataStore, RemoveDataStoreWithIdentifierRemoveCredentials)
                 EXPECT_WK_STREQ([record displayName], @"127.0.0.1");
             done = true;
         }];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
         networkProcessIdentifier = [websiteDataStore.get() _networkProcessIdentifier];
         EXPECT_NE(networkProcessIdentifier, 0);
@@ -579,13 +579,13 @@ TEST(WKWebsiteDataStore, RemoveDataStoreWithIdentifierRemoveCredentials)
 
     // Wait until network process exits so we are sure website data files are not in use during removal.
     while (!kill(networkProcessIdentifier, 0))
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 
     [WKWebsiteDataStore _removeDataStoreWithIdentifier:uuid.get() completionHandler:^(NSError *error) {
         done = true;
         EXPECT_NULL(error);
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto websiteDataStore = adoptNS([[WKWebsiteDataStore alloc] _initWithConfiguration:websiteDataStoreConfiguration.get()]);
@@ -594,7 +594,7 @@ TEST(WKWebsiteDataStore, RemoveDataStoreWithIdentifierRemoveCredentials)
         EXPECT_EQ(credentialCount, 0);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(WKWebsiteDataStore, RemoveDataStoreWithIdentifierErrorWhenInUse)
@@ -612,7 +612,7 @@ TEST(WKWebsiteDataStore, RemoveDataStoreWithIdentifierErrorWhenInUse)
         EXPECT_TRUE(!!error);
         EXPECT_TRUE([[error description] containsString:@"in use"]);
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(WKWebsiteDataStore, ListIdentifiers)
@@ -628,7 +628,7 @@ TEST(WKWebsiteDataStore, ListIdentifiers)
         done = true;
         EXPECT_TRUE([identifiers containsObject:uuid]);
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     // Clean up to not leave data on disk.
     done = false;
@@ -636,7 +636,7 @@ TEST(WKWebsiteDataStore, ListIdentifiers)
         done = true;
         EXPECT_NULL(error);
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(WKWebsiteDataStorePrivate, FetchWithSize)
@@ -645,7 +645,7 @@ TEST(WKWebsiteDataStorePrivate, FetchWithSize)
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:^{
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 
     auto handler = adoptNS([[TestMessageHandler alloc] init]);
     [handler addMessage:@"continue" withHandler:^{
@@ -662,7 +662,7 @@ TEST(WKWebsiteDataStorePrivate, FetchWithSize)
     </script>";
     receivedScriptMessage = false;
     [webView loadHTMLString:htmlString baseURL:[NSURL URLWithString:@"https://webkit.org/"]];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
 
     readyToContinue = false;
     [[WKWebsiteDataStore defaultDataStore] _fetchDataRecordsOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] withOptions:_WKWebsiteDataStoreFetchOptionComputeSizes completionHandler:^(NSArray<WKWebsiteDataRecord *> * records) {
@@ -677,7 +677,7 @@ TEST(WKWebsiteDataStorePrivate, FetchWithSize)
         EXPECT_GT([dataSize sizeOfDataTypes:indexedDBType], 0u);
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 }
 
 TEST(WKWebsiteDataStore, DataStoreForNilIdentifier)
@@ -746,8 +746,8 @@ TEST(WKWebsiteDataStoreConfiguration, OriginQuotaRatio)
     </script>";
     receivedScriptMessage = false;
     [webView loadHTMLString:htmlString baseURL:[NSURL URLWithString:@"http://webkit.org/"]];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     EXPECT_WK_STREQ(@"QuotaExceededError", [lastScriptMessage body]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

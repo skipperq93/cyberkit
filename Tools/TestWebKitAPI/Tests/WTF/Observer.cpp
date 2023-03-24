@@ -26,7 +26,7 @@
 #include "config.h"
 #include <wtf/Observer.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_Observer, Basic)
 {

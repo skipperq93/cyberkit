@@ -29,14 +29,14 @@
 
 #import "InjectedBundleTest.h"
 
-#import "WebCoreTestSupport.h"
-#import <WebKit/WKBundle.h>
-#import <WebKit/WKBundleFrame.h>
-#import <WebKit/WKBundlePage.h>
+#import "CyberCoreTestSupport.h"
+#import <CyberKit/WKBundle.h>
+#import <CyberKit/WKBundleFrame.h>
+#import <CyberKit/WKBundlePage.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-class InternalsInjectedBundleTest : public TestWebKitAPI::InjectedBundleTest {
+class InternalsInjectedBundleTest : public TestCyberKitAPI::InjectedBundleTest {
 public:
     InternalsInjectedBundleTest(const std::string& identifier)
         : InjectedBundleTest(identifier)
@@ -46,7 +46,7 @@ public:
 private:
     virtual void initialize(WKBundleRef bundle, WKTypeRef)
     {
-        WKBundleSetServiceWorkerProxyCreationCallback(bundle, WebCoreTestSupport::setupNewlyCreatedServiceWorker);
+        WKBundleSetServiceWorkerProxyCreationCallback(bundle, CyberCoreTestSupport::setupNewlyCreatedServiceWorker);
     }
 
     virtual void didCreatePage(WKBundleRef, WKBundlePageRef page)
@@ -63,12 +63,12 @@ private:
     static void didClearWindowForFrame(WKBundlePageRef, WKBundleFrameRef frame, WKBundleScriptWorldRef world, const void*)
     {
         JSGlobalContextRef context = WKBundleFrameGetJavaScriptContextForWorld(frame, world);
-        WebCoreTestSupport::injectInternalsObject(context);
+        CyberCoreTestSupport::injectInternalsObject(context);
     }
 };
 
-static TestWebKitAPI::InjectedBundleTest::Register<InternalsInjectedBundleTest> registrar("InternalsInjectedBundleTest");
+static TestCyberKitAPI::InjectedBundleTest::Register<InternalsInjectedBundleTest> registrar("InternalsInjectedBundleTest");
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

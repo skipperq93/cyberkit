@@ -27,12 +27,12 @@
 
 #import "PlatformUtilities.h"
 #import "Test.h"
-#import <WebKit/WebViewPrivate.h>
-#import <WebKit/DOM.h>
+#import <CyberKit/WebViewPrivate.h>
+#import <CyberKit/DOM.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, WebViewCanPasteURL)
+TEST(CyberKitLegacy, WebViewCanPasteURL)
 {
     auto webView = adoptNS([[WebView alloc] initWithFrame:NSZeroRect frameName:nil groupName:nil]);
     [webView setEditable:YES];
@@ -49,4 +49,4 @@ TEST(WebKitLegacy, WebViewCanPasteURL)
     EXPECT_EQ(String(text), "http://www.webkit.org/"_s);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

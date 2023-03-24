@@ -26,12 +26,12 @@ from buildbot.steps import trigger
 
 from steps import (AddReviewerToCommitMessage, ApplyPatch, ApplyWatchList, Canonicalize, CommitPatch,
                    CheckOutPullRequest, CheckOutSource, CheckOutSpecificRevision, CheckChangeRelevance,
-                   CheckStatusOnEWSQueues, CheckStyle, CleanGitRepo, CompileJSC, CompileWebKit, ConfigureBuild,
+                   CheckStatusOnEWSQueues, CheckStyle, CleanGitRepo, CompileJSC, CompileCyberKit, ConfigureBuild,
                    DownloadBuiltProduct, ExtractBuiltProduct, FetchBranches, FindModifiedLayoutTests,
-                   InstallGtkDependencies, InstallWpeDependencies, KillOldProcesses, PrintConfiguration, PushCommitToWebKitRepo, PushPullRequestBranch,
-                   MapBranchAlias, RunAPITests, RunBindingsTests, RunBuildWebKitOrgUnitTests, RunBuildbotCheckConfigForBuildWebKit, RunBuildbotCheckConfigForEWS,
-                   RunEWSUnitTests, RunResultsdbpyTests, RunJavaScriptCoreTests, RunWebKit1Tests, RunWebKitPerlTests, RunWebKitPyPython2Tests,
-                   RunWebKitPyPython3Tests, RunWebKitTests, RunWebKitTestsRedTree, RunWebKitTestsInStressMode, RunWebKitTestsInStressGuardmallocMode,
+                   InstallGtkDependencies, InstallWpeDependencies, KillOldProcesses, PrintConfiguration, PushCommitToCyberKitRepo, PushPullRequestBranch,
+                   MapBranchAlias, RunAPITests, RunBindingsTests, RunBuildCyberKitOrgUnitTests, RunBuildbotCheckConfigForBuildCyberKit, RunBuildbotCheckConfigForEWS,
+                   RunEWSUnitTests, RunResultsdbpyTests, RunCyberScriptCoreTests, RunCyberKit1Tests, RunCyberKitPerlTests, RunCyberKitPyPython2Tests,
+                   RunCyberKitPyPython3Tests, RunCyberKitTests, RunCyberKitTestsRedTree, RunCyberKitTestsInStressMode, RunCyberKitTestsInStressGuardmallocMode,
                    SetBuildSummary, ShowIdentifier, TriggerCrashLogSubmission, UpdateWorkingDirectory, UpdatePullRequest,
                    ValidateCommitMessage, ValidateChange, ValidateCommitterAndReviewer, WaitForCrashCollection,
                    InstallBuiltProduct, ValidateRemote, ValidateSquashed)
@@ -100,19 +100,19 @@ class BindingsFactory(Factory):
         self.addStep(RunBindingsTests())
 
 
-class WebKitPerlFactory(Factory):
+class CyberKitPerlFactory(Factory):
     def __init__(self, platform, configuration=None, architectures=None, additionalArguments=None, **kwargs):
         Factory.__init__(self, platform=platform, configuration=configuration, architectures=architectures, buildOnly=False, additionalArguments=additionalArguments)
         self.addStep(ValidateChange(addURLs=False))
-        self.addStep(RunWebKitPerlTests())
+        self.addStep(RunCyberKitPerlTests())
 
 
-class WebKitPyFactory(Factory):
+class CyberKitPyFactory(Factory):
     def __init__(self, platform, configuration=None, architectures=None, additionalArguments=None, **kwargs):
         Factory.__init__(self, platform=platform, configuration=configuration, architectures=architectures, buildOnly=False, additionalArgument=additionalArguments, checkRelevance=True)
         self.addStep(ValidateChange(addURLs=False))
-        self.addStep(RunWebKitPyPython2Tests())
-        self.addStep(RunWebKitPyPython3Tests())
+        self.addStep(RunCyberKitPyPython2Tests())
+        self.addStep(RunCyberKitPyPython3Tests())
         self.addStep(SetBuildSummary())
 
 
@@ -127,7 +127,7 @@ class BuildFactory(Factory):
         elif platform == 'wpe':
             self.addStep(InstallWpeDependencies())
         self.addStep(ValidateChange(addURLs=False))
-        self.addStep(CompileWebKit(skipUpload=self.skipUpload))
+        self.addStep(CompileCyberKit(skipUpload=self.skipUpload))
         if platform == 'gtk':
             self.addStep(InstallBuiltProduct())
 
@@ -153,7 +153,7 @@ class TestFactory(Factory):
         self.addStep(KillOldProcesses())
         if self.LayoutTestClass:
             self.addStep(FindModifiedLayoutTests(skipBuildIfNoResult=False))
-            self.addStep(RunWebKitTestsInStressMode(num_iterations=10))
+            self.addStep(RunCyberKitTestsInStressMode(num_iterations=10))
             self.addStep(self.LayoutTestClass())
         if self.APITestClass:
             self.addStep(self.APITestClass())
@@ -171,7 +171,7 @@ class StressTestFactory(TestFactory):
         self.getProduct()
         self.addStep(WaitForCrashCollection())
         self.addStep(KillOldProcesses())
-        self.addStep(RunWebKitTestsInStressMode())
+        self.addStep(RunCyberKitTestsInStressMode())
         self.addStep(TriggerCrashLogSubmission())
         self.addStep(SetBuildSummary())
 
@@ -191,7 +191,7 @@ class JSCBuildAndTestsFactory(Factory):
         self.addStep(ValidateChange(addURLs=False))
         self.addStep(CompileJSC(skipUpload=True))
         if runTests.lower() == 'true':
-            self.addStep(RunJavaScriptCoreTests())
+            self.addStep(RunCyberScriptCoreTests())
 
 
 class JSCTestsFactory(Factory):
@@ -200,7 +200,7 @@ class JSCTestsFactory(Factory):
         self.addStep(DownloadBuiltProduct())
         self.addStep(ExtractBuiltProduct())
         self.addStep(KillOldProcesses())
-        self.addStep(RunJavaScriptCoreTests())
+        self.addStep(RunCyberScriptCoreTests())
 
 
 class APITestsFactory(TestFactory):
@@ -216,7 +216,7 @@ class iOSEmbeddedBuildFactory(BuildFactory):
 
 
 class iOSTestsFactory(TestFactory):
-    LayoutTestClass = RunWebKitTests
+    LayoutTestClass = RunCyberKitTests
     willTriggerCrashLogSubmission = True
 
 
@@ -240,7 +240,7 @@ class tvOSBuildFactory(BuildFactory):
 
 
 class macOSWK1Factory(TestFactory):
-    LayoutTestClass = RunWebKit1Tests
+    LayoutTestClass = RunCyberKit1Tests
     willTriggerCrashLogSubmission = True
 
     def __init__(self, platform, configuration=None, architectures=None, additionalArguments=None, checkRelevance=False, **kwargs):
@@ -248,7 +248,7 @@ class macOSWK1Factory(TestFactory):
 
 
 class macOSWK2Factory(TestFactory):
-    LayoutTestClass = RunWebKitTests
+    LayoutTestClass = RunCyberKitTests
     willTriggerCrashLogSubmission = True
 
 
@@ -257,7 +257,7 @@ class WinCairoFactory(Factory):
         Factory.__init__(self, platform=platform, configuration=configuration, architectures=architectures, buildOnly=True, triggers=triggers, additionalArguments=additionalArguments)
         self.addStep(KillOldProcesses())
         self.addStep(ValidateChange(verifyBugClosed=False, addURLs=False))
-        self.addStep(CompileWebKit(skipUpload=True))
+        self.addStep(CompileCyberKit(skipUpload=True))
 
 
 class GTKBuildFactory(BuildFactory):
@@ -265,7 +265,7 @@ class GTKBuildFactory(BuildFactory):
 
 
 class GTKTestsFactory(TestFactory):
-    LayoutTestClass = RunWebKitTestsRedTree
+    LayoutTestClass = RunCyberKitTestsRedTree
 
 
 class WPEBuildFactory(BuildFactory):
@@ -273,15 +273,15 @@ class WPEBuildFactory(BuildFactory):
 
 
 class WPETestsFactory(TestFactory):
-    LayoutTestClass = RunWebKitTestsRedTree
+    LayoutTestClass = RunCyberKitTestsRedTree
 
 
 class ServicesFactory(Factory):
     def __init__(self, platform, configuration=None, architectures=None, additionalArguments=None, **kwargs):
         Factory.__init__(self, platform=platform, configuration=configuration, architectures=architectures, buildOnly=False, additionalArguments=additionalArguments, checkRelevance=True)
         self.addStep(ValidateChange(verifyBugClosed=False, addURLs=False))
-        self.addStep(RunBuildWebKitOrgUnitTests())
-        self.addStep(RunBuildbotCheckConfigForBuildWebKit())
+        self.addStep(RunBuildCyberKitOrgUnitTests())
+        self.addStep(RunBuildbotCheckConfigForBuildCyberKit())
         self.addStep(RunEWSUnitTests())
         self.addStep(RunBuildbotCheckConfigForEWS())
         self.addStep(RunResultsdbpyTests())
@@ -306,16 +306,16 @@ class CommitQueueFactory(factory.BuildFactory):
         self.addStep(ValidateCommitMessage())
 
         self.addStep(KillOldProcesses())
-        self.addStep(CompileWebKit(skipUpload=True))
+        self.addStep(CompileCyberKit(skipUpload=True))
         self.addStep(KillOldProcesses())
 
         self.addStep(ValidateChange(addURLs=False, verifycqplus=True))
         self.addStep(CheckStatusOnEWSQueues())
-        self.addStep(RunWebKitTests())
+        self.addStep(RunCyberKitTests())
         self.addStep(ValidateChange(addURLs=False, verifycqplus=True))
 
         self.addStep(Canonicalize())
-        self.addStep(PushCommitToWebKitRepo())
+        self.addStep(PushCommitToCyberKitRepo())
         self.addStep(SetBuildSummary())
 
 
@@ -344,18 +344,18 @@ class MergeQueueFactory(MergeQueueFactoryBase):
         super(MergeQueueFactory, self).__init__(platform, **kwargs)
 
         self.addStep(KillOldProcesses())
-        self.addStep(CompileWebKit(skipUpload=True))
+        self.addStep(CompileCyberKit(skipUpload=True))
         self.addStep(KillOldProcesses())
 
         self.addStep(ValidateChange(verifyMergeQueue=True, verifyNoDraftForMergeQueue=True, enableSkipEWSLabel=False))
         self.addStep(CheckStatusOnEWSQueues())
-        self.addStep(RunWebKitTests())
+        self.addStep(RunCyberKitTests())
 
         self.addStep(ValidateChange(verifyMergeQueue=True, verifyNoDraftForMergeQueue=True, enableSkipEWSLabel=False))
         self.addStep(Canonicalize())
         self.addStep(PushPullRequestBranch())
         self.addStep(UpdatePullRequest())
-        self.addStep(PushCommitToWebKitRepo())
+        self.addStep(PushCommitToCyberKitRepo())
         self.addStep(SetBuildSummary())
 
 
@@ -367,5 +367,5 @@ class UnsafeMergeQueueFactory(MergeQueueFactoryBase):
         self.addStep(ValidateChange(verifyMergeQueue=True, verifyNoDraftForMergeQueue=True, enableSkipEWSLabel=False))
         self.addStep(PushPullRequestBranch())
         self.addStep(UpdatePullRequest())
-        self.addStep(PushCommitToWebKitRepo())
+        self.addStep(PushCommitToCyberKitRepo())
         self.addStep(SetBuildSummary())

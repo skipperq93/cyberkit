@@ -29,7 +29,7 @@
 #include <wtf/LEBDecoder.h>
 #include <wtf/Vector.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static std::string toString(const Vector<uint8_t>& vector)
 {
@@ -275,4 +275,4 @@ TEST(WTF, LEBDecoderInt64)
 }
 
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

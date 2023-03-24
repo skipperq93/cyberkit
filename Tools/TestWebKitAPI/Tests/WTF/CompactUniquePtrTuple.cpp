@@ -31,7 +31,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 namespace CompactUniquePtrTupleTest {
 
@@ -329,4 +329,4 @@ TEST(WTF_CompactUniquePtrTuple, Deleter)
 
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

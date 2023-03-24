@@ -31,10 +31,10 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
 
 @interface PreferenceTestMessageHandler : NSObject <WKScriptMessageHandler>
 @end
@@ -48,7 +48,7 @@
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class AVFoundationPref : public testing::Test {
 public:
@@ -78,7 +78,7 @@ public:
 
         [webView stringByEvaluatingJavaScript:[NSString stringWithFormat:@"test('%s')", elementType == ElementType::Audio ? "audio" : "video"]];
 
-        TestWebKitAPI::Util::run(&receivedScriptMessage);
+        TestCyberKitAPI::Util::run(&receivedScriptMessage);
         auto type = [webView stringByEvaluatingJavaScript:@"elementType()"];
 
         if (elementType == ElementType::Audio)
@@ -104,6 +104,6 @@ TEST_F(AVFoundationPref, PrefTest)
     testWithPreference(ElementType::Video, false);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(COCOA)

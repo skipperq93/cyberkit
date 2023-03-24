@@ -30,7 +30,7 @@
 #define ENABLE_DATA_MUTEX_CHECKS 1
 #include <wtf/DataMutex.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 struct MyStructure {
     int number;
@@ -83,4 +83,4 @@ TEST(WTF_DataMutex, DoubleLockDeathTest)
 }
 #endif
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

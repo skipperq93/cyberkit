@@ -19,20 +19,20 @@
 
 #include "config.h"
 #include "LoadTrackingTest.h"
-#include "WebKitTestServer.h"
-#include <WebCore/SoupVersioning.h>
+#include "CyberKitTestServer.h"
+#include <CyberCore/SoupVersioning.h>
 #include <wtf/glib/GRefPtr.h>
 
-static WebKitTestServer* kServer;
+static CyberKitTestServer* kServer;
 
 static const char authTestUsername[] = "username";
 static const char authTestPassword[] = "password";
-static const char authExpectedSuccessTitle[] = "WebKit2Gtk+ Authentication test";
+static const char authExpectedSuccessTitle[] = "CyberKit2Gtk+ Authentication test";
 static const char authExpectedFailureTitle[] = "401 Authorization Required";
 static const char authExpectedAuthorization[] = "Basic dXNlcm5hbWU6cGFzc3dvcmQ="; // Base64 encoding of "username:password".
 static const char authSuccessHTMLString[] =
     "<html>"
-    "<head><title>WebKit2Gtk+ Authentication test</title></head>"
+    "<head><title>CyberKit2Gtk+ Authentication test</title></head>"
     "<body></body></html>";
 static const char authFailureHTMLString[] =
     "<html>"
@@ -63,7 +63,7 @@ public:
         LoadTrackingTest::loadURI(uri);
     }
 
-    static gboolean runAuthenticationCallback(WebKitWebView*, WebKitAuthenticationRequest* request, AuthenticationTest* test)
+    static gboolean runAuthenticationCallback(CyberKitWebView*, CyberKitAuthenticationRequest* request, AuthenticationTest* test)
     {
         g_signal_connect(request, "authenticated", G_CALLBACK(authenticationSucceededCallback), test);
         g_signal_connect(request, "cancelled", G_CALLBACK(authenticationCancelledCallback), test);
@@ -71,7 +71,7 @@ public:
         return TRUE;
     }
 
-    static void authenticationSucceededCallback(WebKitAuthenticationRequest*, WebKitCredential* credential, AuthenticationTest* test)
+    static void authenticationSucceededCallback(CyberKitAuthenticationRequest*, CyberKitCredential* credential, AuthenticationTest* test)
     {
         g_assert_nonnull(credential);
         g_assert_cmpstr(webkit_credential_get_username(credential), ==, authTestUsername);
@@ -82,27 +82,27 @@ public:
         test->m_authenticationSucceededReceived = true;
     }
 
-    static void authenticationCancelledCallback(WebKitAuthenticationRequest*, AuthenticationTest* test)
+    static void authenticationCancelledCallback(CyberKitAuthenticationRequest*, AuthenticationTest* test)
     {
         g_assert_false(test->m_authenticationSucceededReceived);
         g_assert_false(test->m_authenticationCancelledReceived);
         test->m_authenticationCancelledReceived = true;
     }
 
-    void runAuthentication(WebKitAuthenticationRequest* request)
+    void runAuthentication(CyberKitAuthenticationRequest* request)
     {
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(request));
         m_authenticationRequest = request;
         g_main_loop_quit(m_mainLoop);
     }
 
-    WebKitAuthenticationRequest* waitForAuthenticationRequest()
+    CyberKitAuthenticationRequest* waitForAuthenticationRequest()
     {
         g_main_loop_run(m_mainLoop);
         return m_authenticationRequest.get();
     }
 
-    GRefPtr<WebKitAuthenticationRequest> m_authenticationRequest;
+    GRefPtr<CyberKitAuthenticationRequest> m_authenticationRequest;
     bool m_authenticationSucceededReceived { false };
     bool m_authenticationCancelledReceived { false };
 };
@@ -128,7 +128,7 @@ static void testWebViewAuthenticationRequest(AuthenticationTest* test, gconstpoi
 {
     // Test authentication request getters match soup authentication header.
     test->loadURI(kServer->getURIForPath("/auth-test.html").data());
-    WebKitAuthenticationRequest* request = test->waitForAuthenticationRequest();
+    CyberKitAuthenticationRequest* request = test->waitForAuthenticationRequest();
     ASSERT_CMP_CSTRING(webkit_authentication_request_get_host(request), ==, kServer->baseURL().host().toString().utf8());
     g_assert_cmpuint(webkit_authentication_request_get_port(request), ==, kServer->port());
     g_assert_cmpstr(webkit_authentication_request_get_realm(request), ==, "my realm");
@@ -147,7 +147,7 @@ static void testWebViewAuthenticationCancel(AuthenticationTest* test, gconstpoin
 {
     // Test cancel.
     test->loadURI(kServer->getURIForPath("/auth-test.html").data());
-    WebKitAuthenticationRequest* request = test->waitForAuthenticationRequest();
+    CyberKitAuthenticationRequest* request = test->waitForAuthenticationRequest();
     webkit_authentication_request_cancel(request);
     // Server doesn't ask for new credentials.
     test->waitUntilLoadFinished();
@@ -184,9 +184,9 @@ static void testWebViewAuthenticationFailure(AuthenticationTest* test, gconstpoi
 {
     // Test authentication failures.
     test->loadURI(kServer->getURIForPath("/auth-test.html").data());
-    WebKitAuthenticationRequest* request = test->waitForAuthenticationRequest();
+    CyberKitAuthenticationRequest* request = test->waitForAuthenticationRequest();
     g_assert_false(webkit_authentication_request_is_retry(request));
-    WebKitCredential* credential = webkit_credential_new(authTestUsername, "wrongpassword", WEBKIT_CREDENTIAL_PERSISTENCE_NONE);
+    CyberKitCredential* credential = webkit_credential_new(authTestUsername, "wrongpassword", WEBKIT_CREDENTIAL_PERSISTENCE_NONE);
     webkit_authentication_request_authenticate(request, credential);
     webkit_credential_free(credential);
     // Expect a second authentication request.
@@ -212,7 +212,7 @@ static void testWebViewAuthenticationNoCredential(AuthenticationTest* test, gcon
 {
     // Test continue without credentials.
     test->loadURI(kServer->getURIForPath("/auth-test.html").data());
-    WebKitAuthenticationRequest* request = test->waitForAuthenticationRequest();
+    CyberKitAuthenticationRequest* request = test->waitForAuthenticationRequest();
     webkit_authentication_request_authenticate(request, 0);
     // Server doesn't ask for new credentials.
     test->waitUntilTitleChanged();
@@ -238,9 +238,9 @@ static void testWebViewAuthenticationEphemeral(EphemeralAuthenticationTest* test
 
 static void testWebViewAuthenticationStorage(AuthenticationTest* test, gconstpointer)
 {
-    WebKitAuthenticationRequest* request = nullptr;
+    CyberKitAuthenticationRequest* request = nullptr;
 #if USE(LIBSECRET)
-    // If WebKit has been compiled with libsecret, and private browsing is disabled
+    // If CyberKit has been compiled with libsecret, and private browsing is disabled
     // then check that credentials can be saved.
     test->loadURI(kServer->getURIForPath("/auth-test.html").data());
     request = test->waitForAuthenticationRequest();
@@ -298,8 +298,8 @@ static void testWebViewAuthenticationSuccess(AuthenticationTest* test, gconstpoi
 {
     // Test correct authentication.
     test->loadURI(kServer->getURIForPath("/auth-test.html").data());
-    WebKitAuthenticationRequest* request = test->waitForAuthenticationRequest();
-    WebKitCredential* credential = webkit_credential_new(authTestUsername, authTestPassword, WEBKIT_CREDENTIAL_PERSISTENCE_FOR_SESSION);
+    CyberKitAuthenticationRequest* request = test->waitForAuthenticationRequest();
+    CyberKitCredential* credential = webkit_credential_new(authTestUsername, authTestPassword, WEBKIT_CREDENTIAL_PERSISTENCE_FOR_SESSION);
     webkit_authentication_request_authenticate(request, credential);
     webkit_credential_free(credential);
     test->waitUntilTitleChanged();
@@ -330,8 +330,8 @@ static void testWebViewAuthenticationSuccess(AuthenticationTest* test, gconstpoi
 static void testWebViewAuthenticationEmptyRealm(AuthenticationTest* test, gconstpointer)
 {
     test->loadURI(kServer->getURIForPath("/empty-realm.html").data());
-    WebKitAuthenticationRequest* request = test->waitForAuthenticationRequest();
-    WebKitCredential* credential = webkit_credential_new(authTestUsername, authTestPassword, WEBKIT_CREDENTIAL_PERSISTENCE_FOR_SESSION);
+    CyberKitAuthenticationRequest* request = test->waitForAuthenticationRequest();
+    CyberKitCredential* credential = webkit_credential_new(authTestUsername, authTestPassword, WEBKIT_CREDENTIAL_PERSISTENCE_FOR_SESSION);
     webkit_authentication_request_authenticate(request, credential);
     webkit_credential_free(credential);
     test->waitUntilTitleChanged();
@@ -477,7 +477,7 @@ public:
         m_proxyServer.run(serverCallback);
         g_assert_false(m_proxyServer.baseURL().isNull());
         gProxyServerPort = m_proxyServer.port();
-        WebKitNetworkProxySettings* settings = webkit_network_proxy_settings_new(m_proxyServer.baseURL().string().utf8().data(), nullptr);
+        CyberKitNetworkProxySettings* settings = webkit_network_proxy_settings_new(m_proxyServer.baseURL().string().utf8().data(), nullptr);
 #if ENABLE(2022_GLIB_API)
         webkit_network_session_set_proxy_settings(m_networkSession.get(), WEBKIT_NETWORK_PROXY_MODE_CUSTOM, settings);
 #else
@@ -498,13 +498,13 @@ public:
         return port;
     }
 
-    WebKitTestServer m_proxyServer;
+    CyberKitTestServer m_proxyServer;
 };
 
 static void testWebViewAuthenticationProxy(ProxyAuthenticationTest* test, gconstpointer)
 {
     test->loadURI(kServer->getURIForPath("/proxy/auth-test.html").data());
-    WebKitAuthenticationRequest* request = test->waitForAuthenticationRequest();
+    CyberKitAuthenticationRequest* request = test->waitForAuthenticationRequest();
 #if USE(SOUP2)
     // FIXME: the uri and host should the proxy ones, not the requested ones.
     ASSERT_CMP_CSTRING(webkit_authentication_request_get_host(request), ==, kServer->baseURL().host().toString().utf8());
@@ -532,11 +532,11 @@ static void testWebViewAuthenticationProxy(ProxyAuthenticationTest* test, gconst
 
 static void testWebViewAuthenticationProxyHTTPS(ProxyAuthenticationTest* test, gconstpointer)
 {
-    auto httpsServer = makeUnique<WebKitTestServer>(WebKitTestServer::ServerHTTPS);
+    auto httpsServer = makeUnique<CyberKitTestServer>(CyberKitTestServer::ServerHTTPS);
     httpsServer->run(serverCallback);
 
     test->loadURI(httpsServer->getURIForPath("/proxy/auth-test.html").data());
-    WebKitAuthenticationRequest* request = test->waitForAuthenticationRequest();
+    CyberKitAuthenticationRequest* request = test->waitForAuthenticationRequest();
 #if USE(SOUP2)
     // FIXME: the uri and host should the proxy ones, not the requested ones.
     ASSERT_CMP_CSTRING(webkit_authentication_request_get_host(request), ==, httpsServer->baseURL().host().toString().utf8());
@@ -564,7 +564,7 @@ static void testWebViewAuthenticationProxyHTTPS(ProxyAuthenticationTest* test, g
 
 void beforeAll()
 {
-    kServer = new WebKitTestServer();
+    kServer = new CyberKitTestServer();
     kServer->run(serverCallback);
 
     AuthenticationTest::add("Authentication", "authentication-request", testWebViewAuthenticationRequest);

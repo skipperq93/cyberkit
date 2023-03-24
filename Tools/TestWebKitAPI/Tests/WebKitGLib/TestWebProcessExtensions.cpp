@@ -49,11 +49,11 @@ static void checkTitle(WebViewTest* test, GDBusProxy* proxy, const char* expecte
 
 static void testWebProcessExtensionGetTitle(WebViewTest* test, gconstpointer)
 {
-    test->loadHtml("<html><head><title>WebKitGTK Web Extensions Test</title></head><body></body></html>", "http://bar.com");
+    test->loadHtml("<html><head><title>CyberKitGTK Web Extensions Test</title></head><body></body></html>", "http://bar.com");
     test->waitUntilLoadFinished();
 
     auto proxy = test->extensionProxy();
-    checkTitle(test, proxy.get(), "WebKitGTK Web Extensions Test");
+    checkTitle(test, proxy.get(), "CyberKitGTK Web Extensions Test");
 }
 
 #if PLATFORM(GTK)
@@ -130,12 +130,12 @@ static void testDocumentLoadedSignal(WebViewTest* test, gconstpointer)
         nullptr);
     g_assert_cmpuint(id, !=, 0);
 
-    test->loadHtml("<html><head><title>WebKitGTK Web Process Extensions Test</title></head><body></body></html>", nullptr);
+    test->loadHtml("<html><head><title>CyberKitGTK Web Process Extensions Test</title></head><body></body></html>", nullptr);
     g_main_loop_run(test->m_mainLoop);
     g_dbus_connection_signal_unsubscribe(connection, id);
 }
 
-static gboolean webProcessTerminatedCallback(WebKitWebView*, WebKitWebProcessTerminationReason reason, WebViewTest* test)
+static gboolean webProcessTerminatedCallback(CyberKitWebView*, CyberKitWebProcessTerminationReason reason, WebViewTest* test)
 {
     g_assert_cmpuint(reason, ==, WEBKIT_WEB_PROCESS_CRASHED);
     test->quitMainLoop();
@@ -143,7 +143,7 @@ static gboolean webProcessTerminatedCallback(WebKitWebView*, WebKitWebProcessTer
     return FALSE;
 }
 
-static void testWebKitWebViewProcessCrashed(WebViewTest* test, gconstpointer)
+static void testCyberKitWebViewProcessCrashed(WebViewTest* test, gconstpointer)
 {
     test->loadHtml("<html></html>", nullptr);
     test->waitUntilLoadFinished();
@@ -167,7 +167,7 @@ static void testWebKitWebViewProcessCrashed(WebViewTest* test, gconstpointer)
     test->m_expectedWebProcessCrash = false;
 }
 
-static gboolean scriptDialogCallback(WebKitWebView*, WebKitScriptDialog* dialog, gpointer)
+static gboolean scriptDialogCallback(CyberKitWebView*, CyberKitScriptDialog* dialog, gpointer)
 {
     g_assert_cmpuint(webkit_script_dialog_get_dialog_type(dialog), ==, WEBKIT_SCRIPT_DIALOG_ALERT);
     scriptDialogResult.reset(g_strdup(webkit_script_dialog_get_message(dialog)));
@@ -246,7 +246,7 @@ static void testWebProcessExtensionFormControlsAssociated(WebViewTest* test, gco
         nullptr);
     g_assert_cmpuint(id, !=, 0);
 
-    test->loadHtml("<!DOCTYPE html><head><title>WebKitGTK Web Extensions Test</title></head><div id=\"placeholder\"/>", 0);
+    test->loadHtml("<!DOCTYPE html><head><title>CyberKitGTK Web Extensions Test</title></head><div id=\"placeholder\"/>", 0);
     test->waitUntilLoadFinished();
 
     static const char* addFormScript =
@@ -402,7 +402,7 @@ static void testWebProcessExtensionFormSubmissionSteps(FormSubmissionTest* test,
     test->waitUntilLoadFinished();
 }
 
-static void webViewPageIDChanged(WebKitWebView* webView, GParamSpec*, bool* pageIDChangedEmitted)
+static void webViewPageIDChanged(CyberKitWebView* webView, GParamSpec*, bool* pageIDChangedEmitted)
 {
     *pageIDChangedEmitted = true;
     g_assert_nonnull(Test::s_dbusConnectionPageMap.get(webkit_web_view_get_page_id(webView)));
@@ -446,7 +446,7 @@ static void testWebProcessExtensionPageID(WebViewTest* test, gconstpointer)
 
     // Register a custom URI scheme to test history navigation.
     webkit_web_context_register_uri_scheme(test->m_webContext.get(), "foo",
-        [](WebKitURISchemeRequest* request, gpointer) {
+        [](CyberKitURISchemeRequest* request, gpointer) {
             URL url = URL(String::fromLatin1(webkit_uri_scheme_request_get_uri(request)));
             GRefPtr<GInputStream> inputStream = adoptGRef(g_memory_input_stream_new());
             char* html = g_strdup_printf("<html><head><title>%s</title></head><body></body></html>", url.host() == "host5"_s ? "Title5" : "Title6");
@@ -495,12 +495,12 @@ class UserMessageTest : public WebViewTest {
 public:
     MAKE_GLIB_TEST_FIXTURE(UserMessageTest);
 
-    static gboolean webViewUserMessageReceivedCallback(WebKitWebView*, WebKitUserMessage* message, UserMessageTest* test)
+    static gboolean webViewUserMessageReceivedCallback(CyberKitWebView*, CyberKitUserMessage* message, UserMessageTest* test)
     {
         return test->viewUserMessageReceived(message);
     }
 
-    static gboolean webContextUserMessageReceivedCallback(WebKitWebContext*, WebKitUserMessage* message, UserMessageTest* test)
+    static gboolean webContextUserMessageReceivedCallback(CyberKitWebContext*, CyberKitUserMessage* message, UserMessageTest* test)
     {
         return test->contextUserMessageReceived(message);
     }
@@ -517,7 +517,7 @@ public:
         g_signal_handlers_disconnect_matched(m_webView, G_SIGNAL_MATCH_DATA, 0, 0, nullptr, nullptr, this);
     }
 
-    WebKitUserMessage* sendMessage(WebKitUserMessage* message, GError** error = nullptr)
+    CyberKitUserMessage* sendMessage(CyberKitUserMessage* message, GError** error = nullptr)
     {
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(message));
         m_receivedViewMessages = { };
@@ -536,13 +536,13 @@ public:
         return m_receivedViewMessages.first().get();
     }
 
-    void sendMessageToAllExtensions(WebKitUserMessage* message)
+    void sendMessageToAllExtensions(CyberKitUserMessage* message)
     {
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(message));
         webkit_web_context_send_message_to_all_extensions(m_webContext.get(), message);
     }
 
-    bool viewUserMessageReceived(WebKitUserMessage* message)
+    bool viewUserMessageReceived(CyberKitUserMessage* message)
     {
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(message));
         if (m_expectedViewMessageNames.isEmpty())
@@ -557,7 +557,7 @@ public:
         return false;
     }
 
-    bool contextUserMessageReceived(WebKitUserMessage* message)
+    bool contextUserMessageReceived(CyberKitUserMessage* message)
     {
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(message));
         if (!g_strcmp0(m_expectedContextMessageName.data(), webkit_user_message_get_name(message))) {
@@ -570,7 +570,7 @@ public:
         return false;
     }
 
-    const Vector<GRefPtr<WebKitUserMessage>>& waitUntilViewMessagesReceived(Vector<CString>&& messageNames)
+    const Vector<GRefPtr<CyberKitUserMessage>>& waitUntilViewMessagesReceived(Vector<CString>&& messageNames)
     {
         m_expectedViewMessageNames = WTFMove(messageNames);
         m_receivedViewMessages = { };
@@ -579,12 +579,12 @@ public:
         return m_receivedViewMessages;
     }
 
-    WebKitUserMessage* waitUntilViewMessageReceived(const char* messageName)
+    CyberKitUserMessage* waitUntilViewMessageReceived(const char* messageName)
     {
         return waitUntilViewMessagesReceived({ messageName }).first().get();
     }
 
-    WebKitUserMessage* waitUntilContextMessageReceived(const char* messageName)
+    CyberKitUserMessage* waitUntilContextMessageReceived(const char* messageName)
     {
         m_expectedContextMessageName = messageName;
         g_main_loop_run(m_mainLoop);
@@ -592,8 +592,8 @@ public:
         return m_receivedContextMessage.get();
     }
 
-    Vector<GRefPtr<WebKitUserMessage>> m_receivedViewMessages;
-    GRefPtr<WebKitUserMessage> m_receivedContextMessage;
+    Vector<GRefPtr<CyberKitUserMessage>> m_receivedViewMessages;
+    GRefPtr<CyberKitUserMessage> m_receivedContextMessage;
     GUniqueOutPtr<GError> m_receivedError;
     Vector<CString> m_expectedViewMessageNames;
     CString m_expectedViewMessageName;
@@ -707,7 +707,7 @@ static void testWebProcessExtensionUserMessages(UserMessageTest* test, gconstpoi
     g_assert_error(messageError, WEBKIT_USER_MESSAGE_ERROR, WEBKIT_USER_MESSAGE_UNHANDLED_MESSAGE);
 
     // Message that is never replied.
-    GRefPtr<WebKitWebView> webView = WEBKIT_WEB_VIEW(Test::createWebView(test->m_webContext.get()));
+    GRefPtr<CyberKitWebView> webView = WEBKIT_WEB_VIEW(Test::createWebView(test->m_webContext.get()));
     webkit_web_view_send_message_to_page(webView.get(), webkit_user_message_new("Test.Infinite", nullptr), nullptr,
         [](GObject* object, GAsyncResult* result, gpointer userData) {
             auto* test = static_cast<UserMessageTest*>(userData);
@@ -749,8 +749,8 @@ static void testWebProcessExtensionUserMessages(UserMessageTest* test, gconstpoi
     // Request to start a ping to all processes.
     test->sendMessageToAllExtensions(webkit_user_message_new("Test.RequestPing", nullptr));
     // We should received two ping requests.
-    GRefPtr<WebKitUserMessage> ping1 = test->waitUntilContextMessageReceived("Ping");
-    GRefPtr<WebKitUserMessage> ping2 = test->waitUntilContextMessageReceived("Ping");
+    GRefPtr<CyberKitUserMessage> ping1 = test->waitUntilContextMessageReceived("Ping");
+    GRefPtr<CyberKitUserMessage> ping2 = test->waitUntilContextMessageReceived("Ping");
     webkit_user_message_send_reply(ping1.get(), webkit_user_message_new("Pong", nullptr));
     test->waitUntilContextMessageReceived("Test.FinishedPingRequest");
     webkit_user_message_send_reply(ping2.get(), webkit_user_message_new("Pong", nullptr));
@@ -781,18 +781,18 @@ static void testWebProcessExtensionWindowObjectCleared(UserMessageTest* test, gc
 
 void beforeAll()
 {
-    WebViewTest::add("WebKitWebProcessExtension", "dom-document-title", testWebProcessExtensionGetTitle);
+    WebViewTest::add("CyberKitWebProcessExtension", "dom-document-title", testWebProcessExtensionGetTitle);
 #if PLATFORM(GTK)
-    WebViewTest::add("WebKitWebProcessExtension", "dom-input-element-is-user-edited", testWebProcessExtensionInputElementIsUserEdited);
+    WebViewTest::add("CyberKitWebProcessExtension", "dom-input-element-is-user-edited", testWebProcessExtensionInputElementIsUserEdited);
 #endif
-    WebViewTest::add("WebKitWebProcessExtension", "document-loaded-signal", testDocumentLoadedSignal);
-    WebViewTest::add("WebKitWebView", "web-process-crashed", testWebKitWebViewProcessCrashed);
-    UserMessageTest::add("WebKitWebProcessExtension", "window-object-cleared", testWebProcessExtensionWindowObjectCleared);
-    WebViewTest::add("WebKitWebProcessExtension", "isolated-world", testWebProcessExtensionIsolatedWorld);
-    WebViewTest::add("WebKitWebProcessExtension", "form-controls-associated-signal", testWebProcessExtensionFormControlsAssociated);
-    FormSubmissionTest::add("WebKitWebProcessExtension", "form-submission-steps", testWebProcessExtensionFormSubmissionSteps);
-    WebViewTest::add("WebKitWebProcessExtension", "page-id", testWebProcessExtensionPageID);
-    UserMessageTest::add("WebKitWebProcessExtension", "user-messages", testWebProcessExtensionUserMessages);
+    WebViewTest::add("CyberKitWebProcessExtension", "document-loaded-signal", testDocumentLoadedSignal);
+    WebViewTest::add("CyberKitWebView", "web-process-crashed", testCyberKitWebViewProcessCrashed);
+    UserMessageTest::add("CyberKitWebProcessExtension", "window-object-cleared", testWebProcessExtensionWindowObjectCleared);
+    WebViewTest::add("CyberKitWebProcessExtension", "isolated-world", testWebProcessExtensionIsolatedWorld);
+    WebViewTest::add("CyberKitWebProcessExtension", "form-controls-associated-signal", testWebProcessExtensionFormControlsAssociated);
+    FormSubmissionTest::add("CyberKitWebProcessExtension", "form-submission-steps", testWebProcessExtensionFormSubmissionSteps);
+    WebViewTest::add("CyberKitWebProcessExtension", "page-id", testWebProcessExtensionPageID);
+    UserMessageTest::add("CyberKitWebProcessExtension", "user-messages", testWebProcessExtensionUserMessages);
 }
 
 void afterAll()

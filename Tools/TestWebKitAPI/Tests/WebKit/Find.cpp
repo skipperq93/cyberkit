@@ -29,9 +29,9 @@
 
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didFinishLoad = false;
 static bool didCallCountStringMatches = false;
@@ -49,7 +49,7 @@ static void didCountStringMatches(WKPageRef page, WKStringRef string, unsigned n
     didCallCountStringMatches = true;
 }
 
-TEST(WebKit, Find)
+TEST(CyberKit, Find)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -81,6 +81,6 @@ TEST(WebKit, Find)
     Util::run(&didCallCountStringMatches);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

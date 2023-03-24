@@ -29,7 +29,7 @@
 #include <utility>
 #include <vector>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 template <typename T>
 class WTF_UInt128IntegerTraitsTest : public ::testing::Test {
@@ -1363,4 +1363,4 @@ TEST(WTF_Int128, VsNativeInt128)
 
 #endif
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

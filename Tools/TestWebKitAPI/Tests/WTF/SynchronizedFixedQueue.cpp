@@ -34,7 +34,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/threads/BinarySemaphore.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static char const* textItem(size_t index)
 {

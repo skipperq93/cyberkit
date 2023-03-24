@@ -26,8 +26,8 @@
 #import "config.h"
 #import "PlatformUtilities.h"
 #import <CoreFoundation/CFRunLoop.h>
-#import <WebKit/WebFrameLoadDelegate.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebFrameLoadDelegate.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Vector.h>
 
@@ -46,9 +46,9 @@ static size_t loadsFinished;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, ScheduleInRunLoop)
+TEST(CyberKitLegacy, ScheduleInRunLoop)
 {
     const size_t webViewCount = 50;
     Vector<RetainPtr<WebView>> webViews;
@@ -58,7 +58,7 @@ TEST(WebKitLegacy, ScheduleInRunLoop)
         [webView setFrameLoadDelegate:delegate.get()];
         [webView unscheduleFromRunLoop:[NSRunLoop currentRunLoop] forMode:(NSString *)kCFRunLoopCommonModes];
         [webView scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:@"TestRunLoopMode"];
-        [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+        [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
         webViews.append(WTFMove(webView));
     }
 
@@ -66,4 +66,4 @@ TEST(WebKitLegacy, ScheduleInRunLoop)
         CFRunLoopRunInMode(CFSTR("TestRunLoopMode"), .001, true);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

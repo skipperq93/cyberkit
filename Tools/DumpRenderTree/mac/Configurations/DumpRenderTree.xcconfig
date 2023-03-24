@@ -24,17 +24,17 @@
 #include "BaseTarget.xcconfig"
 
 OTHER_LDFLAGS = $(inherited) $(OTHER_LDFLAGS_$(WK_COCOA_TOUCH));
-OTHER_LDFLAGS_cocoatouch = -framework JavaScriptCore;
-OTHER_LDFLAGS_ = -lWebCoreTestSupport -force_load $(BUILT_PRODUCTS_DIR)/libDumpRenderTree.a -framework Carbon -framework Cocoa -framework JavaScriptCore -framework OpenGL -framework QuartzCore -framework WebKit;
+OTHER_LDFLAGS_cocoatouch = -framework CyberScriptCore;
+OTHER_LDFLAGS_ = -lCyberCoreTestSupport -force_load $(BUILT_PRODUCTS_DIR)/libDumpRenderTree.a -framework Carbon -framework Cocoa -framework CyberScriptCore -framework OpenGL -framework QuartzCore -framework CyberKit;
 
 LD_RUNPATH_SEARCH_PATHS = "@loader_path/.";
 STRIP_STYLE = debugging;
 PRODUCT_NAME = DumpRenderTree;
-PRODUCT_BUNDLE_IDENTIFIER = com.apple.WebKit.DumpRenderTree;
+PRODUCT_BUNDLE_IDENTIFIER = com.apple.CyberKit.DumpRenderTree;
 
 SKIP_INSTALL[sdk=embedded*] = YES;
 
-INSTALL_PATH = $(PRODUCTION_PUBLIC_FRAMEWORKS_DIR)/WebKit.framework/Versions/A/Resources;
+INSTALL_PATH = $(PRODUCTION_PUBLIC_FRAMEWORKS_DIR)/CyberKit.framework/Versions/A/Resources;
 
 CODE_SIGN_ENTITLEMENTS[sdk=macosx*] = mac/Configurations/DumpRenderTree.entitlements;
 

@@ -31,10 +31,10 @@
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKRemoteObjectInterface.h>
-#import <WebKit/_WKRemoteObjectRegistry.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKRemoteObjectInterface.h>
+#import <CyberKit/_WKRemoteObjectRegistry.h>
 
 #import <wtf/SoftLinking.h>
 
@@ -51,7 +51,7 @@ SOFT_LINK(libAccessibility, _AXSApplicationAccessibilitySetEnabled, void, (Boole
         selectionRects = rects;
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     return selectionRects.autorelease();
 }
 @end
@@ -66,7 +66,7 @@ static void checkCGRectValueAtIndex(NSArray<NSValue *> *rectValues, CGRect expec
     EXPECT_EQ(expectedRect.size.height, observedRect.size.height);
 }
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(AccessibilityTests, RectsForSpeakingSelectionBasic)
 {
@@ -179,13 +179,13 @@ TEST(AccessibilityTests, WebProcessLoaderBundleLoaded)
 #endif // PLATFORM(IOS_FAMILY)
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     _AXSZoomTouchSetEnabled(false);
     _AXSApplicationAccessibilitySetEnabled(false);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)
 

@@ -29,7 +29,7 @@
 #include <wtf/Vector.h>
 #include <wtf/threads/BinarySemaphore.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 #if USE(PTHREADS)
 TEST(WTF, ThreadingThreadIdentity)
@@ -77,7 +77,7 @@ struct AssertionTestHolder {
         BinarySemaphore memberInitialized;
         BinarySemaphore threadInitialized;
 
-        thread = Thread::create("com.apple.WebKit.Test.ThreadThreadSafetyAnalysisAssertIsCurrentWorks", [&] {
+        thread = Thread::create("com.apple.CyberKit.Test.ThreadThreadSafetyAnalysisAssertIsCurrentWorks", [&] {
             memberInitialized.wait(); // Wait for `AssertionTestHolder::thread` assignment to complete.
             threadInitialized.signal();
 // Enable to see "writing variable 'counter' requires holding mutex 'thread' exclusively".
@@ -121,4 +121,4 @@ TEST(WTF_Thread, ThreadSafetyAnalysisAssertIsCurrentWorks)
         EXPECT_EQ(2u, holder.result);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

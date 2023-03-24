@@ -42,39 +42,39 @@
 #if defined(BUILDING_WITH_CMAKE)
 
 // CMake path
-#if defined(BUILDING_TestJSC) || defined(BUILDING_TestJavaScriptCore)
-#include <JavaScriptCore/JSExportMacros.h>
+#if defined(BUILDING_TestJSC) || defined(BUILDING_TestCyberScriptCore)
+#include <CyberScriptCore/JSExportMacros.h>
 #endif
 
-#if defined(BUILDING_TestWebCore)
-#include <JavaScriptCore/JSExportMacros.h>
-#include <WebCore/PlatformExportMacros.h>
+#if defined(BUILDING_TestCyberCore)
+#include <CyberScriptCore/JSExportMacros.h>
+#include <CyberCore/PlatformExportMacros.h>
 #include <pal/ExportMacros.h>
 #endif
 
-#if defined(BUILDING_TestWebKit)
-#include <JavaScriptCore/JSExportMacros.h>
-#include <WebCore/PlatformExportMacros.h>
+#if defined(BUILDING_TestCyberKit)
+#include <CyberScriptCore/JSExportMacros.h>
+#include <CyberCore/PlatformExportMacros.h>
 #include <pal/ExportMacros.h>
-#include <WebKit/WebKit2_C.h>
+#include <CyberKit/CyberKit2_C.h>
 #endif
 
 #else
 
 // XCode path
-#include <JavaScriptCore/JSExportMacros.h>
-#include <WebCore/PlatformExportMacros.h>
+#include <CyberScriptCore/JSExportMacros.h>
+#include <CyberCore/PlatformExportMacros.h>
 #include <pal/ExportMacros.h>
 #if !PLATFORM(IOS_FAMILY)
-#include <WebKit/WebKit2_C.h>
+#include <CyberKit/CyberKit2_C.h>
 #endif
 #if PLATFORM(COCOA) && defined(__OBJC__)
-#import <WebKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #if PLATFORM(MACCATALYST)
-// Many tests depend on WebKitLegacy.h being implicitly included; however,
-// on macCatalyst, WebKit.h does not include WebKitLegacy.h, so we need
+// Many tests depend on CyberKitLegacy.h being implicitly included; however,
+// on macCatalyst, CyberKit.h does not include CyberKitLegacy.h, so we need
 // to do it explicitly here.
-#import <WebKit/WebKitLegacy.h>
+#import <CyberKit/CyberKitLegacy.h>
 #endif
 #endif
 

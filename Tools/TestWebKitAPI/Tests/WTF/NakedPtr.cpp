@@ -28,7 +28,7 @@
 #include "RefLogger.h"
 #include <wtf/NakedPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // For these tests, we need a base class and a derived class. For this purpose,
 // we reuse the RefLogger and DerivedRefLogger classes.
@@ -244,4 +244,4 @@ TEST(WTF_NakedPtr, ReturnValue)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

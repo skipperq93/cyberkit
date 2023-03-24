@@ -89,7 +89,7 @@ static void dispatchEventNotifyCallback(const gchar *key, const gchar *value, gc
     }
 }
 
-static void testWebKitDOMDOMWindowSignals(WebViewTest* test, gconstpointer)
+static void testCyberKitDOMDOMWindowSignals(WebViewTest* test, gconstpointer)
 {
     status.loaded = FALSE;
     status.clicked = FALSE;
@@ -103,11 +103,11 @@ static void testWebKitDOMDOMWindowSignals(WebViewTest* test, gconstpointer)
     GVariantBuilder builder;
     g_variant_builder_init(&builder, G_VARIANT_TYPE_VARDICT);
     g_variant_builder_add(&builder, "{sv}", "pageID", g_variant_new_uint64(webkit_web_view_get_page_id(status.test->m_webView)));
-    status.testRunner->runTestAndWait("WebKitDOMDOMWindow", "signals", g_variant_builder_end(&builder));
+    status.testRunner->runTestAndWait("CyberKitDOMDOMWindow", "signals", g_variant_builder_end(&builder));
     g_assert_true(status.testRunner->getTestResult());
 }
 
-static void testWebKitDOMDOMWindowDispatchEvent(WebViewTest* test, gconstpointer)
+static void testCyberKitDOMDOMWindowDispatchEvent(WebViewTest* test, gconstpointer)
 {
     status.loaded = FALSE;
     status.clicked = FALSE;
@@ -121,11 +121,11 @@ static void testWebKitDOMDOMWindowDispatchEvent(WebViewTest* test, gconstpointer
     GVariantBuilder builder;
     g_variant_builder_init(&builder, G_VARIANT_TYPE_VARDICT);
     g_variant_builder_add(&builder, "{sv}", "pageID", g_variant_new_uint64(webkit_web_view_get_page_id(status.test->m_webView)));
-    status.testRunner->runTestAndWait("WebKitDOMDOMWindow", "dispatch-event", g_variant_builder_end(&builder));
+    status.testRunner->runTestAndWait("CyberKitDOMDOMWindow", "dispatch-event", g_variant_builder_end(&builder));
     g_assert_true(status.testRunner->getTestResult());
 }
 
-static void testWebKitDOMDOMWindowGetComputedStyle(WebViewTest* test, gconstpointer)
+static void testCyberKitDOMDOMWindowGetComputedStyle(WebViewTest* test, gconstpointer)
 {
     status.loaded = FALSE;
     status.clicked = FALSE;
@@ -138,7 +138,7 @@ static void testWebKitDOMDOMWindowGetComputedStyle(WebViewTest* test, gconstpoin
     GVariantBuilder builder;
     g_variant_builder_init(&builder, G_VARIANT_TYPE_VARDICT);
     g_variant_builder_add(&builder, "{sv}", "pageID", g_variant_new_uint64(webkit_web_view_get_page_id(status.test->m_webView)));
-    g_assert_true(status.testRunner->runTest("WebKitDOMDOMWindow", "get-computed-style", g_variant_builder_end(&builder)));
+    g_assert_true(status.testRunner->runTest("CyberKitDOMDOMWindow", "get-computed-style", g_variant_builder_end(&builder)));
 }
 
 void beforeAll()
@@ -151,9 +151,9 @@ void beforeAll()
     webkit_web_context_set_web_extensions_directory(webkit_web_context_get_default(), WEBKIT_TEST_WEB_PROCESS_EXTENSIONS_DIR);
 #endif
 
-    WebViewTest::add("WebKitDOMDOMWindow", "signals", testWebKitDOMDOMWindowSignals);
-    WebViewTest::add("WebKitDOMDOMWindow", "dispatch-event", testWebKitDOMDOMWindowDispatchEvent);
-    WebViewTest::add("WebKitDOMDOMWindow", "get-computed-style", testWebKitDOMDOMWindowGetComputedStyle);
+    WebViewTest::add("CyberKitDOMDOMWindow", "signals", testCyberKitDOMDOMWindowSignals);
+    WebViewTest::add("CyberKitDOMDOMWindow", "dispatch-event", testCyberKitDOMDOMWindowDispatchEvent);
+    WebViewTest::add("CyberKitDOMDOMWindow", "get-computed-style", testCyberKitDOMDOMWindowGetComputedStyle);
 }
 
 void afterAll()

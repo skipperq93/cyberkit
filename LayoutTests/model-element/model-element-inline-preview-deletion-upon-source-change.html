@@ -4,7 +4,7 @@
 <script>
 
 promise_test(async test => {
-    assert_own_property(window, "internals", "This test only work within the WebKit testing environment.");
+    assert_own_property(window, "internals", "This test only work within the CyberKit testing environment.");
 
     // First, we load a <model> with an existing resource.
     const model = await readyModel(test);

@@ -26,14 +26,14 @@
 #import "config.h"
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
-#import <WebKit/WKContextPrivate.h>
-#import <WebKit/WKRetainPtr.h>
+#import <CyberKit/WKContextPrivate.h>
+#import <CyberKit/WKRetainPtr.h>
 
 @interface WKWebView ()
 - (void)attributedSubstringForProposedRange:(NSRange)nsRange completionHandler:(void(^)(NSAttributedString *attrString, NSRange actualRange))completionHandlerPtr;
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didFinishLoad = false;
 static bool didFinishTest = false;
@@ -55,7 +55,7 @@ static void invalidMessageFunction(WKStringRef messageName)
     didReceiveInvalidMessage = true;
 }
 
-TEST(WebKit, AttributedSubstringForProposedRangeWithImage)
+TEST(CyberKit, AttributedSubstringForProposedRangeWithImage)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextWithInjectedBundle());
     WKRetainPtr<WKPageGroupRef> pageGroup = adoptWK(WKPageGroupCreateWithIdentifier(Util::toWK("AttributedSubstringForProposedRangeWithImagePageGroup").get()));
@@ -83,4 +83,4 @@ TEST(WebKit, AttributedSubstringForProposedRangeWithImage)
     EXPECT_EQ(didReceiveInvalidMessage, false);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

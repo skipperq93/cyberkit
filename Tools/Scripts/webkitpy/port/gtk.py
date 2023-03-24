@@ -202,7 +202,7 @@ class GtkPort(GLibPort):
             if not candidates:
                 return False
             if len(candidates) > 1:
-                _log.warning("Multiple WebKit2GTK libraries found. Skipping GTK4 detection.")
+                _log.warning("Multiple CyberKit2GTK libraries found. Skipping GTK4 detection.")
                 return False
             return os.path.basename(candidates[0]) == 'libwebkit2gtk-5.0.so'
 

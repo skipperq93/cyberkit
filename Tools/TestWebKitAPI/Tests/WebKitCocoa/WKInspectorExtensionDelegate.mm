@@ -33,13 +33,13 @@
 #import "TestInspectorURLSchemeHandler.h"
 #import "TestNavigationDelegate.h"
 #import "Utilities.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKInspector.h>
-#import <WebKit/_WKInspectorConfiguration.h>
-#import <WebKit/_WKInspectorExtension.h>
-#import <WebKit/_WKInspectorExtensionDelegate.h>
-#import <WebKit/_WKInspectorPrivateForTesting.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKInspector.h>
+#import <CyberKit/_WKInspectorConfiguration.h>
+#import <CyberKit/_WKInspectorExtension.h>
+#import <CyberKit/_WKInspectorExtensionDelegate.h>
+#import <CyberKit/_WKInspectorPrivateForTesting.h>
 #import <wtf/RetainPtr.h>
 
 static RetainPtr<NSURL> sharedNewURLAfterNavigation;
@@ -112,7 +112,7 @@ TEST(WKInspectorExtensionDelegate, DISABLED_ShowAndHideTabCallbacks)
     [webView loadHTMLString:@"<head><title>Test page to be inspected</title></head><body><p>Filler content</p></body>" baseURL:[NSURL URLWithString:@"http://example.com/"]];
 
     [[webView _inspector] show];
-    TestWebKitAPI::Util::run(&didAttachLocalInspectorCalled);
+    TestCyberKitAPI::Util::run(&didAttachLocalInspectorCalled);
 
     auto extensionID = [NSUUID UUID].UUIDString;
     auto extensionBundleIdentifier = @"com.apple.webkit.FirstExtension";
@@ -127,7 +127,7 @@ TEST(WKInspectorExtensionDelegate, DISABLED_ShowAndHideTabCallbacks)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     auto extensionDelegate = adoptNS([InspectorExtensionDelegateForTesting new]);
     [sharedInspectorExtension setDelegate:extensionDelegate.get()];
@@ -144,7 +144,7 @@ TEST(WKInspectorExtensionDelegate, DISABLED_ShowAndHideTabCallbacks)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     pendingCallbackWasCalled = false;
     [[webView _inspector] showExtensionTabWithIdentifier:sharedExtensionTabIdentifier.get() completionHandler:^(NSError * _Nullable error) {
@@ -152,11 +152,11 @@ TEST(WKInspectorExtensionDelegate, DISABLED_ShowAndHideTabCallbacks)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
-    TestWebKitAPI::Util::run(&didShowExtensionTabWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&didShowExtensionTabWasCalled);
 
     [[webView _inspector] showConsole];
-    TestWebKitAPI::Util::run(&didHideExtensionTabWasCalled);
+    TestCyberKitAPI::Util::run(&didHideExtensionTabWasCalled);
 
     // Unregister the test extension.
     pendingCallbackWasCalled = false;
@@ -165,7 +165,7 @@ TEST(WKInspectorExtensionDelegate, DISABLED_ShowAndHideTabCallbacks)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 }
 
 // FIXME: Re-enable this test for debug once webkit.org/b/231847 is fixed.
@@ -191,7 +191,7 @@ TEST(WKInspectorExtensionDelegate, InspectedPageNavigatedCallbacks)
     [webView setUIDelegate:uiDelegate.get()];
 
     [[webView _inspector] show];
-    TestWebKitAPI::Util::run(&didAttachLocalInspectorCalled);
+    TestCyberKitAPI::Util::run(&didAttachLocalInspectorCalled);
 
     // Register the test extension.
     auto extensionID = [NSUUID UUID].UUIDString;
@@ -205,7 +205,7 @@ TEST(WKInspectorExtensionDelegate, InspectedPageNavigatedCallbacks)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     auto extensionDelegate = adoptNS([InspectorExtensionDelegateForTesting new]);
     [sharedInspectorExtension setDelegate:extensionDelegate.get()];
@@ -214,7 +214,7 @@ TEST(WKInspectorExtensionDelegate, InspectedPageNavigatedCallbacks)
     [webView _test_waitForDidFinishNavigation];
 
     inspectedPageDidNavigateWasCalled = false;
-    TestWebKitAPI::Util::run(&inspectedPageDidNavigateWasCalled);
+    TestCyberKitAPI::Util::run(&inspectedPageDidNavigateWasCalled);
     EXPECT_NS_EQUAL(sharedNewURLAfterNavigation.get().absoluteString, @"http://example.com/");
     inspectedPageDidNavigateWasCalled = false;
 
@@ -224,11 +224,11 @@ TEST(WKInspectorExtensionDelegate, InspectedPageNavigatedCallbacks)
     EXPECT_NOT_NULL(result);
 
     inspectedPageDidNavigateWasCalled = false;
-    TestWebKitAPI::Util::run(&inspectedPageDidNavigateWasCalled);
+    TestCyberKitAPI::Util::run(&inspectedPageDidNavigateWasCalled);
     EXPECT_NS_EQUAL(sharedNewURLAfterNavigation.get().absoluteString, @"about:blank");
 
     inspectedPageDidNavigateWasCalled = false;
-    TestWebKitAPI::Util::run(&inspectedPageDidNavigateWasCalled);
+    TestCyberKitAPI::Util::run(&inspectedPageDidNavigateWasCalled);
     EXPECT_NS_EQUAL(sharedNewURLAfterNavigation.get().absoluteString, newURL.absoluteString);
 
     // Unregister the test extension.
@@ -238,7 +238,7 @@ TEST(WKInspectorExtensionDelegate, InspectedPageNavigatedCallbacks)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 }
 
 // FIXME: Re-enable this test for debug once webkit.org/b/231847 is fixed.
@@ -264,7 +264,7 @@ TEST(WKInspectorExtensionDelegate, ExtensionTabNavigatedCallbacks)
     [webView setUIDelegate:uiDelegate.get()];
 
     [[webView _inspector] show];
-    TestWebKitAPI::Util::run(&didAttachLocalInspectorCalled);
+    TestCyberKitAPI::Util::run(&didAttachLocalInspectorCalled);
 
     // Register the test extension.
     auto extensionID = [NSUUID UUID].UUIDString;
@@ -278,7 +278,7 @@ TEST(WKInspectorExtensionDelegate, ExtensionTabNavigatedCallbacks)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     auto extensionDelegate = adoptNS([InspectorExtensionDelegateForTesting new]);
     [sharedInspectorExtension setDelegate:extensionDelegate.get()];
@@ -288,7 +288,7 @@ TEST(WKInspectorExtensionDelegate, ExtensionTabNavigatedCallbacks)
     [webView _test_waitForDidFinishNavigation];
 
     inspectedPageDidNavigateWasCalled = false;
-    TestWebKitAPI::Util::run(&inspectedPageDidNavigateWasCalled);
+    TestCyberKitAPI::Util::run(&inspectedPageDidNavigateWasCalled);
     EXPECT_NS_EQUAL(sharedNewURLAfterNavigation.get().absoluteString, baseURL.absoluteString);
     inspectedPageDidNavigateWasCalled = false;
 
@@ -304,7 +304,7 @@ TEST(WKInspectorExtensionDelegate, ExtensionTabNavigatedCallbacks)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     pendingCallbackWasCalled = false;
     [[webView _inspector] showExtensionTabWithIdentifier:sharedExtensionTabIdentifier.get() completionHandler:^(NSError *error) {
@@ -312,7 +312,7 @@ TEST(WKInspectorExtensionDelegate, ExtensionTabNavigatedCallbacks)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 
     pendingCallbackWasCalled = false;
     extensionTabDidNavigateWasCalled = false;
@@ -322,8 +322,8 @@ TEST(WKInspectorExtensionDelegate, ExtensionTabNavigatedCallbacks)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
-    TestWebKitAPI::Util::run(&extensionTabDidNavigateWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&extensionTabDidNavigateWasCalled);
 
     // Unregister the test extension.
     pendingCallbackWasCalled = false;
@@ -332,7 +332,7 @@ TEST(WKInspectorExtensionDelegate, ExtensionTabNavigatedCallbacks)
 
         pendingCallbackWasCalled = true;
     }];
-    TestWebKitAPI::Util::run(&pendingCallbackWasCalled);
+    TestCyberKitAPI::Util::run(&pendingCallbackWasCalled);
 }
 
 #endif // ENABLE(INSPECTOR_EXTENSIONS)

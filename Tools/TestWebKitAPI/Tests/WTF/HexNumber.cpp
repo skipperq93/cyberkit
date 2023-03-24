@@ -28,7 +28,7 @@
 #include "Test.h"
 #include <wtf/HexNumber.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // Not using builder.toString() or builder.toStringPreserveCapacity() because they all
 // change internal state of builder.

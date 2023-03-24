@@ -61,7 +61,7 @@ TEST(WTF, CStringEmptyEmptyConstructor)
 
 TEST(WTF, CStringEmptyRegularConstructor)
 {
-    const char* referenceString = "WebKit";
+    const char* referenceString = "CyberKit";
 
     CString string(referenceString);
     ASSERT_FALSE(string.isNull());
@@ -91,7 +91,7 @@ TEST(WTF, CStringUninitializedConstructor)
 
 TEST(WTF, CStringZeroTerminated)
 {
-    const char* referenceString = "WebKit";
+    const char* referenceString = "CyberKit";
     CString stringWithLength(referenceString, 3);
     ASSERT_EQ(stringWithLength.data()[3], 0);
 }
@@ -104,7 +104,7 @@ TEST(WTF, CStringCopyOnWrite)
 
     string.mutableData()[3] = 'K';
     ASSERT_TRUE(string != copy);
-    ASSERT_STREQ(string.data(), "WebKit");
+    ASSERT_STREQ(string.data(), "CyberKit");
     ASSERT_STREQ(copy.data(), initialString);
 }
 

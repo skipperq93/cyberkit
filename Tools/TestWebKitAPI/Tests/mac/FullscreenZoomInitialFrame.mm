@@ -27,15 +27,15 @@
 
 #import "JavaScriptTest.h"
 #import "Test.h"
-#import "WebKitAgnosticTest.h"
+#import "CyberKitAgnosticTest.h"
 #import <Carbon/Carbon.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WebViewPrivate.h>
-#import <WebKit/WebPreferencesPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
+#import <CyberKit/WebPreferencesPrivate.h>
 #import <wtf/RetainPtr.h>
 
-@interface NSWindowController (WebKitFullScreenAdditions)
+@interface NSWindowController (CyberKitFullScreenAdditions)
 - (NSRect)initialFrame;
 - (NSRect)finalFrame;
 @end
@@ -55,7 +55,7 @@ static bool didGetPageSignalToContinue = false;
 }
 @end
 
-// WebKit2 WKPageUIClient
+// CyberKit2 WKPageUIClient
 
 static void runJavaScriptAlert(WKPageRef page, WKStringRef alertText, WKFrameRef frame, const void* clientInfo)
 {
@@ -64,16 +64,16 @@ static void runJavaScriptAlert(WKPageRef page, WKStringRef alertText, WKFrameRef
     didGetPageSignalToContinue = true;
 }
 
-// WebKitAgnosticTest
+// CyberKitAgnosticTest
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-class FullscreenZoomInitialFrame : public WebKitAgnosticTest {
+class FullscreenZoomInitialFrame : public CyberKitAgnosticTest {
 public:
     template <typename View> void runTest(View);
 
-    // WebKitAgnosticTest
-    NSURL *url() const override { return [[NSBundle mainBundle] URLForResource:@"FullscreenZoomInitialFrame" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]; }
+    // CyberKitAgnosticTest
+    NSURL *url() const override { return [[NSBundle mainBundle] URLForResource:@"FullscreenZoomInitialFrame" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]; }
     void didLoadURL(WebView *webView) override { runTest(webView); }
     void didLoadURL(WKWebView *wkView) override { runTest(wkView); }
 
@@ -184,15 +184,15 @@ void FullscreenZoomInitialFrame::runTest(View view)
     Util::run(&didGetPageSignalToContinue);
 }
 
-TEST_F(FullscreenZoomInitialFrame, WebKit)
+TEST_F(FullscreenZoomInitialFrame, CyberKit)
 {
-    runWebKit1Test();
+    runCyberKit1Test();
 }
 
 // FIXME:<rdar://problem/20504403>
-TEST_F(FullscreenZoomInitialFrame, DISABLED_WebKit2)
+TEST_F(FullscreenZoomInitialFrame, DISABLED_CyberKit2)
 {
-    runWebKit2Test();
+    runCyberKit2Test();
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

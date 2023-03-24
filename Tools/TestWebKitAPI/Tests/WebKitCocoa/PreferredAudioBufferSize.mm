@@ -30,11 +30,11 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import "WebCoreTestSupport.h"
-#import <JavaScriptCore/JSContext.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/_WKFullscreenDelegate.h>
+#import "CyberCoreTestSupport.h"
+#import <CyberScriptCore/JSContext.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/_WKFullscreenDelegate.h>
 #import <wtf/RetainPtr.h>
 
 class PreferredAudioBufferSize : public testing::Test {
@@ -42,7 +42,7 @@ public:
     void SetUp() override
     {
         configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
-        WKRetainPtr<WKContextRef> context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+        WKRetainPtr<WKContextRef> context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
         configuration.get().processPool = (WKProcessPool *)context.get();
         configuration.get().preferences._lowPowerVideoAudioBufferSizeEnabled = YES;
     }
@@ -63,7 +63,7 @@ public:
         __block bool isPlaying = false;
         [webView performAfterReceivingMessage:@"playing" action:^() { isPlaying = true; }];
         [webView synchronouslyLoadTestPageNamed:name];
-        TestWebKitAPI::Util::run(&isPlaying);
+        TestCyberKitAPI::Util::run(&isPlaying);
         EXPECT_EQ(expectedAudioBufferSize, preferredAudioBufferSize());
     }
 

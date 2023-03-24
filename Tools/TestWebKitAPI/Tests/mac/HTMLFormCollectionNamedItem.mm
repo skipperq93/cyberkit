@@ -29,8 +29,8 @@
 #import "PlatformWebView.h"
 #import <wtf/RetainPtr.h>
 
-#import <WebKit/DOM.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/DOM.h>
+#import <CyberKit/WebViewPrivate.h>
 
 @interface HTMLFormCollectionNamedItemTest : NSObject <WebFrameLoadDelegate> {
 }
@@ -46,16 +46,16 @@ static bool didFinishLoad;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, HTMLFormCollectionNamedItemTest)
+TEST(CyberKitLegacy, HTMLFormCollectionNamedItemTest)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<HTMLFormCollectionNamedItemTest> testController = adoptNS([HTMLFormCollectionNamedItemTest new]);
 
     webView.get().frameLoadDelegate = testController.get();
     [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle]
-        URLForResource:@"HTMLFormCollectionNamedItem" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+        URLForResource:@"HTMLFormCollectionNamedItem" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
     Util::run(&didFinishLoad);
     didFinishLoad = false;
@@ -72,4 +72,4 @@ TEST(WebKitLegacy, HTMLFormCollectionNamedItemTest)
     EXPECT_WK_STREQ([(DOMHTMLInputElement *)[collection item:0] value], @"firstItem");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

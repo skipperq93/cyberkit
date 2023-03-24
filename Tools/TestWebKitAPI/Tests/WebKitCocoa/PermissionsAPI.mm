@@ -27,9 +27,9 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKSecurityOriginRef.h>
-#import <WebKit/WKString.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKSecurityOriginRef.h>
+#import <CyberKit/WKString.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/text/StringBuilder.h>
 
 static unsigned clientPermissionRequestCount;
@@ -85,7 +85,7 @@ static RetainPtr<WKScriptMessage> scriptMessage;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void urlEncodeIfNeeded(uint8_t byte, StringBuilder& buffer)
 {
@@ -127,7 +127,7 @@ TEST(PermissionsAPI, DataURL)
 
     auto request = [NSURLRequest requestWithURL:[NSURL URLWithString:buffer.toString()]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&didReceiveMessage);
+    TestCyberKitAPI::Util::run(&didReceiveMessage);
     EXPECT_FALSE(didReceiveQueryPermission);
 }
 
@@ -155,7 +155,7 @@ TEST(PermissionsAPI, OnChange)
 
     [webView synchronouslyLoadHTMLString:script baseURL:[NSURL URLWithString:@"https://example.com/"]];
 
-    TestWebKitAPI::Util::run(&didReceiveMessage);
+    TestCyberKitAPI::Util::run(&didReceiveMessage);
     didReceiveMessage = false;
     EXPECT_STREQ(((NSString *)[scriptMessage body]).UTF8String, "granted");
     shouldSetPermissionToGranted = false;
@@ -164,8 +164,8 @@ TEST(PermissionsAPI, OnChange)
     auto origin = adoptWK(WKSecurityOriginCreateFromString(originString.get()));
     [WKWebView _permissionChanged:@"geolocation" forOrigin:(__bridge WKSecurityOrigin *)origin.get()];
 
-    TestWebKitAPI::Util::run(&didReceiveMessage);
+    TestCyberKitAPI::Util::run(&didReceiveMessage);
     EXPECT_STREQ(((NSString *)[scriptMessage body]).UTF8String, "prompt");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #import "DeprecatedGlobalValues.h"
 #import "HTTPServer.h"
@@ -36,22 +36,22 @@
 #import "TestProtocol.h"
 #import "TestWKWebView.h"
 #import <Foundation/NSURLResponse.h>
-#import <WebKit/WKDownload.h>
-#import <WebKit/WKErrorPrivate.h>
-#import <WebKit/WKNavigationDelegatePrivate.h>
-#import <WebKit/WKNavigationResponsePrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewConfiguration.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebpagePreferences.h>
-#import <WebKit/WKWebpagePreferencesPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKDownload.h>
-#import <WebKit/_WKDownloadDelegate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKDownload.h>
+#import <CyberKit/WKErrorPrivate.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/WKNavigationResponsePrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebpagePreferences.h>
+#import <CyberKit/WKWebpagePreferencesPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKDownload.h>
+#import <CyberKit/_WKDownloadDelegate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/FileSystem.h>
 #import <wtf/MainThread.h>
@@ -66,7 +66,7 @@
 
 static unsigned redirectCount = 0;
 static bool hasReceivedResponse;
-static NSURL *sourceURL = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+static NSURL *sourceURL = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
 static WKWebView* expectedOriginatingWebView;
 static bool expectedUserInitiatedState = false;
 
@@ -113,7 +113,7 @@ IGNORE_WARNINGS_END
     EXPECT_EQ(_download, download);
 
     FileSystem::PlatformFileHandle fileHandle;
-    _destinationPath = FileSystem::openTemporaryFile("TestWebKitAPI"_s, fileHandle);
+    _destinationPath = FileSystem::openTemporaryFile("TestCyberKitAPI"_s, fileHandle);
     EXPECT_TRUE(fileHandle != FileSystem::invalidPlatformFileHandle);
     FileSystem::closeFile(fileHandle);
 
@@ -157,7 +157,7 @@ static void runTest(id <WKNavigationDelegate> navigationDelegate, id <_WKDownloa
     hasReceivedResponse = false;
     expectedUserInitiatedState = false;
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 @interface DownloadNavigationDelegate : NSObject <WKNavigationDelegate>
@@ -297,7 +297,7 @@ TEST(_WKDownload, OriginatingWebView)
     }
 
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 @interface DownloadRequestOriginalURLDelegate : NSObject <_WKDownloadDelegate>
@@ -343,13 +343,13 @@ TEST(_WKDownload, OriginatingWebView)
 
 TEST(_WKDownload, DownloadRequestOriginalURL)
 {
-    NSURL *originalURL = [[NSBundle mainBundle] URLForResource:@"DownloadRequestOriginalURL" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *originalURL = [[NSBundle mainBundle] URLForResource:@"DownloadRequestOriginalURL" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     runTest(adoptNS([[DownloadRequestOriginalURLNavigationDelegate alloc] init]).get(), adoptNS([[DownloadRequestOriginalURLDelegate alloc] initWithExpectedOriginalURL:originalURL]).get(), originalURL);
 }
 
 TEST(_WKDownload, DownloadRequestOriginalURLFrame)
 {
-    NSURL *originalURL = [[NSBundle mainBundle] URLForResource:@"DownloadRequestOriginalURL2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *originalURL = [[NSBundle mainBundle] URLForResource:@"DownloadRequestOriginalURL2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     runTest(adoptNS([[DownloadRequestOriginalURLNavigationDelegate alloc] init]).get(), adoptNS([[DownloadRequestOriginalURLDelegate alloc] initWithExpectedOriginalURL:originalURL]).get(), originalURL);
 }
 
@@ -367,13 +367,13 @@ TEST(_WKDownload, DownloadRequestOriginalURLDirectDownloadWithLoadedContent)
     [[[webView configuration] processPool] _setDownloadDelegate:downloadDelegate.get()];
 
     expectedUserInitiatedState = false;
-    NSURL *contentURL = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *contentURL = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     // Here is to test if the original URL can be set correctly when the current document
     // is completely unrelated to the download.
     [webView loadRequest:[NSURLRequest requestWithURL:contentURL]];
     [webView loadRequest:[NSURLRequest requestWithURL:sourceURL]];
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 @interface BlobDownloadDelegate : NSObject <_WKDownloadDelegate>
@@ -419,7 +419,7 @@ IGNORE_WARNINGS_END
     EXPECT_EQ(_download, download);
 
     FileSystem::PlatformFileHandle fileHandle;
-    _destinationPath = FileSystem::openTemporaryFile("TestWebKitAPI"_s, fileHandle);
+    _destinationPath = FileSystem::openTemporaryFile("TestCyberKitAPI"_s, fileHandle);
     EXPECT_TRUE(fileHandle != FileSystem::invalidPlatformFileHandle);
     FileSystem::closeFile(fileHandle);
 
@@ -456,7 +456,7 @@ IGNORE_WARNINGS_END
 
 TEST(_WKDownload, DownloadRequestBlobURL)
 {
-    NSURL *originalURL = [[NSBundle mainBundle] URLForResource:@"DownloadRequestBlobURL" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *originalURL = [[NSBundle mainBundle] URLForResource:@"DownloadRequestBlobURL" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     runTest(adoptNS([[DownloadBlobURLNavigationDelegate alloc] init]).get(), adoptNS([[BlobDownloadDelegate alloc] init]).get(), originalURL);
 }
 
@@ -479,7 +479,7 @@ IGNORE_WARNINGS_BEGIN("deprecated-implementations")
 IGNORE_WARNINGS_END
 {
     FileSystem::PlatformFileHandle fileHandle;
-    _destinationPath = FileSystem::openTemporaryFile("TestWebKitAPI"_s, fileHandle);
+    _destinationPath = FileSystem::openTemporaryFile("TestCyberKitAPI"_s, fileHandle);
     EXPECT_TRUE(fileHandle != FileSystem::invalidPlatformFileHandle);
     FileSystem::closeFile(fileHandle);
     *allowOverwrite = YES;
@@ -538,7 +538,7 @@ TEST(_WKDownload, RedirectedDownload)
     [webView objectByEvaluatingJavaScriptWithUserGesture:@"document.getElementById('link').click();"];
 
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     EXPECT_EQ(1U, redirectCount);
 
     [TestProtocol unregister];
@@ -561,7 +561,7 @@ TEST(_WKDownload, RedirectedLoadConvertedToDownload)
     redirectCount = 0;
     hasReceivedResponse = false;
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://redirect/?redirect/?pass"]]];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     EXPECT_EQ(0U, redirectCount);
 
     [TestProtocol unregister];
@@ -584,7 +584,7 @@ TEST(_WKDownload, RedirectedSubframeLoadConvertedToDownload)
     redirectCount = 0;
     hasReceivedResponse = false;
     [webView loadHTMLString:@"<body><iframe src='http://redirect/?redirect/?pass'></iframe></body>" baseURL:nil];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     EXPECT_EQ(0U, redirectCount);
 
     [TestProtocol unregister];
@@ -616,8 +616,8 @@ static bool downloadHasDecidedDestination;
 - (void)_download:(_WKDownload *)download decideDestinationWithSuggestedFilename:(NSString *)filename completionHandler:(void (^)(BOOL allowOverwrite, NSString *destination))completionHandler
 {
     [download cancel];
-    TestWebKitAPI::Util::run(&isDone);
-    completionHandler(YES, @"/tmp/WebKitAPITest/_WKDownload");
+    TestCyberKitAPI::Util::run(&isDone);
+    completionHandler(YES, @"/tmp/CyberKitAPITest/_WKDownload");
     downloadHasDecidedDestination = true;
 }
 @end
@@ -637,7 +637,7 @@ TEST(_WKDownload, DownloadCanceledWhileDecidingDestination)
     downloadHasDecidedDestination = false;
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://pass"]]];
 
-    TestWebKitAPI::Util::run(&downloadHasDecidedDestination);
+    TestCyberKitAPI::Util::run(&downloadHasDecidedDestination);
 
     [TestProtocol unregister];
 }
@@ -671,7 +671,7 @@ TEST(_WKDownload, DownloadCanceledWhileDecidingDestination)
 
 TEST(_WKDownload, SystemPreviewUSDZBlobNaming)
 {
-    NSURL *originalURL = [[NSBundle mainBundle] URLForResource:@"SystemPreviewBlobNaming" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *originalURL = [[NSBundle mainBundle] URLForResource:@"SystemPreviewBlobNaming" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     runTest(adoptNS([[DownloadBlobURLNavigationDelegate alloc] init]).get(), adoptNS([[BlobWithUSDZExtensionDownloadDelegate alloc] init]).get(), originalURL);
 }
 
@@ -694,14 +694,14 @@ TEST(_WKDownload, SystemPreviewUSDZBlobNaming)
 
 - (void)waitForDidFinishNavigation
 {
-    TestWebKitAPI::Util::run(&_didFinishNavigation);
+    TestCyberKitAPI::Util::run(&_didFinishNavigation);
     _didStartProvisionalNavigation = false;
     _didFinishNavigation = false;
 }
 
 - (void)waitForDownloadDidStart
 {
-    TestWebKitAPI::Util::run(&_downloadDidStart);
+    TestCyberKitAPI::Util::run(&_downloadDidStart);
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
@@ -800,11 +800,11 @@ TEST(_WKDownload, CrashAfterDownloadDidFinishWhenDownloadProxyHoldsTheLastRefOnW
         [webView loadRequest:[NSURLRequest requestWithURL:sourceURL]];
 
         didDownloadStart = false;
-        TestWebKitAPI::Util::run(&didDownloadStart);
+        TestCyberKitAPI::Util::run(&didDownloadStart);
     }
 
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     EXPECT_NULL(processPool.get());
 }
 
@@ -836,7 +836,7 @@ static RetainPtr<NSString> destination;
 {
     didFail = false;
     while (!didFail)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 }
 
 - (void)stopWaitingForDidFail
@@ -859,7 +859,7 @@ static RetainPtr<NSString> destination;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 void respondSlowly(const Connection& connection, double kbps)
 {
@@ -957,7 +957,7 @@ TEST(_WKDownload, DownloadMonitorReturnToForeground)
     EXPECT_TRUE(timeoutReached);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 @interface TestDownloadNavigationResponseFromMemoryCacheDelegate : NSObject <WKNavigationDelegate, _WKDownloadDelegate>
 @property (nonatomic) WKNavigationResponsePolicy responsePolicy;
@@ -1007,7 +1007,7 @@ TEST(_WKDownload, DownloadMonitorReturnToForeground)
 
 @end
 
-TEST(WebKit, DownloadNavigationResponseFromMemoryCache)
+TEST(CyberKit, DownloadNavigationResponseFromMemoryCache)
 {
     [TestProtocol registerWithScheme:@"http"];
     TestProtocol.additionalResponseHeaders = @{ @"Cache-Control" : @"max-age=3600" };
@@ -1021,7 +1021,7 @@ TEST(WebKit, DownloadNavigationResponseFromMemoryCache)
     [delegate setResponsePolicy:WKNavigationResponsePolicyAllow];
     [webView loadRequest:[NSURLRequest requestWithURL:firstURL]];
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     EXPECT_FALSE([delegate didFailProvisionalNavigation]);
     EXPECT_FALSE([delegate didStartDownload]);
     EXPECT_TRUE([delegate didFinishNavigation]);
@@ -1031,7 +1031,7 @@ TEST(WebKit, DownloadNavigationResponseFromMemoryCache)
     [delegate setResponsePolicy:WKNavigationResponsePolicyDownload];
     [webView loadRequest:[NSURLRequest requestWithURL:secondURL]];
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     EXPECT_FALSE([delegate didFinishNavigation]);
     EXPECT_TRUE([delegate didFailProvisionalNavigation]);
     EXPECT_TRUE([delegate didStartDownload]);
@@ -1040,7 +1040,7 @@ TEST(WebKit, DownloadNavigationResponseFromMemoryCache)
     [delegate setResponsePolicy:WKNavigationResponsePolicyAllow];
     [webView loadRequest:[NSURLRequest requestWithURL:secondURL]];
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     EXPECT_FALSE([delegate didFailProvisionalNavigation]);
     EXPECT_FALSE([delegate didStartDownload]);
     EXPECT_TRUE([delegate didFinishNavigation]);
@@ -1049,7 +1049,7 @@ TEST(WebKit, DownloadNavigationResponseFromMemoryCache)
     [delegate setResponsePolicy:WKNavigationResponsePolicyAllow];
     [webView goBack];
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     EXPECT_FALSE([delegate didFailProvisionalNavigation]);
     EXPECT_FALSE([delegate didStartDownload]);
     EXPECT_TRUE([delegate didFinishNavigation]);
@@ -1058,7 +1058,7 @@ TEST(WebKit, DownloadNavigationResponseFromMemoryCache)
     [delegate setResponsePolicy:WKNavigationResponsePolicyDownload];
     [webView loadRequest:[NSURLRequest requestWithURL:secondURL]];
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     EXPECT_FALSE([delegate didFinishNavigation]);
     EXPECT_TRUE([delegate didFailProvisionalNavigation]);
     EXPECT_TRUE([delegate didStartDownload]);
@@ -1078,7 +1078,7 @@ TEST(WebKit, DownloadNavigationResponseFromMemoryCache)
 - (void)_download:(_WKDownload *)download decideDestinationWithSuggestedFilename:(NSString *)filename completionHandler:(void (^)(BOOL allowOverwrite, NSString *destination))completionHandler
 {
     FileSystem::PlatformFileHandle fileHandle;
-    _path = FileSystem::openTemporaryFile("TestWebKitAPI"_s, fileHandle);
+    _path = FileSystem::openTemporaryFile("TestCyberKitAPI"_s, fileHandle);
     EXPECT_TRUE(fileHandle != FileSystem::invalidPlatformFileHandle);
     FileSystem::closeFile(fileHandle);
     completionHandler(YES, _path.get());
@@ -1122,7 +1122,7 @@ TEST(WebKit, DownloadNavigationResponseFromMemoryCache)
 
 TEST(_WKDownload, ResumedDownloadCanHandleAuthenticationChallenge)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
 
     HTTPServer server([receivedFirstConnection = false] (Connection connection) mutable {
         if (!std::exchange(receivedFirstConnection, true)) {
@@ -1188,9 +1188,9 @@ String longString(LChar c)
 enum class IncludeETag : bool { No, Yes };
 enum class TerminateAfterFirstReply : bool { No, Yes };
 
-static TestWebKitAPI::HTTPServer downloadTestServer(IncludeETag includeETag = IncludeETag::Yes, Function<void(TestWebKitAPI::Connection)>&& terminator = nullptr)
+static TestCyberKitAPI::HTTPServer downloadTestServer(IncludeETag includeETag = IncludeETag::Yes, Function<void(TestCyberKitAPI::Connection)>&& terminator = nullptr)
 {
-    return { [includeETag, terminator = WTFMove(terminator), connectionCount = 0](TestWebKitAPI::Connection connection) mutable {
+    return { [includeETag, terminator = WTFMove(terminator), connectionCount = 0](TestCyberKitAPI::Connection connection) mutable {
         switch (++connectionCount) {
         case 1:
             connection.receiveHTTPRequest([includeETag, connection, terminator = WTFMove(terminator)] (Vector<char>&&) mutable {
@@ -1238,9 +1238,9 @@ static void checkResumedDownloadContents(NSURL *file)
     }
 }
 
-static TestWebKitAPI::HTTPServer simpleDownloadTestServer()
+static TestCyberKitAPI::HTTPServer simpleDownloadTestServer()
 {
-    return { [](TestWebKitAPI::Connection connection) {
+    return { [](TestCyberKitAPI::Connection connection) {
         connection.receiveHTTPRequest([connection](Vector<char>&&) {
             connection.send(makeString(
                 "HTTP/1.1 200 OK\r\n"
@@ -1290,7 +1290,7 @@ static NSURL *tempUSDZThatDoesNotExist()
 
 TEST(_WKDownload, Resume)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     auto server = downloadTestServer();
 
     NSURL *expectedDownloadFile = tempFileThatDoesNotExist();
@@ -1423,7 +1423,7 @@ TEST(_WKDownload, SubframeSecurityOrigin)
     [webView setNavigationDelegate:navigationDelegate.get()];
     [[[webView configuration] processPool] _setDownloadDelegate:downloadDelegate.get()];
 
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/page"_s, { documentText } },
         { "/download"_s, { documentText } },
     });
@@ -1432,7 +1432,7 @@ TEST(_WKDownload, SubframeSecurityOrigin)
 
     isDone = false;
     [webView loadHTMLString:[NSString stringWithFormat:@"<body><iframe src='http://127.0.0.1:%d/page'></iframe></body>", server.port()] baseURL:nil];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 @interface DownloadObserver : NSObject
@@ -1451,7 +1451,7 @@ TEST(_WKDownload, SubframeSecurityOrigin)
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void checkCallbackRecord(TestDownloadDelegate *delegate, Vector<DownloadCallback> expectedCallbacks)
 {
@@ -1629,7 +1629,7 @@ TEST(WKDownload, FailAndResume)
 {
     auto delegate = adoptNS([TestDownloadDelegate new]);
     RetainPtr<WKDownload> retainedDownload;
-    auto server = downloadTestServer(IncludeETag::Yes, [&] (TestWebKitAPI::Connection connection) {
+    auto server = downloadTestServer(IncludeETag::Yes, [&] (TestCyberKitAPI::Connection connection) {
         waitForFirst5k(retainedDownload);
         connection.terminate();
     });
@@ -1704,7 +1704,7 @@ TEST(WKDownload, FailNoResumeData)
 {
     auto delegate = adoptNS([TestDownloadDelegate new]);
     RetainPtr<WKDownload> retainedDownload;
-    auto server = downloadTestServer(IncludeETag::No, [&] (TestWebKitAPI::Connection connection) {
+    auto server = downloadTestServer(IncludeETag::No, [&] (TestCyberKitAPI::Connection connection) {
         waitForFirst5k(retainedDownload);
         connection.terminate();
     });
@@ -1743,8 +1743,8 @@ TEST(WKDownload, FailNoResumeData)
 
 TEST(WKDownload, ResumeAfterZeroBytesReceived)
 {
-    std::optional<TestWebKitAPI::Connection> serverConnection;
-    HTTPServer server([connectionCount = 0, &serverConnection](TestWebKitAPI::Connection connection) mutable {
+    std::optional<TestCyberKitAPI::Connection> serverConnection;
+    HTTPServer server([connectionCount = 0, &serverConnection](TestCyberKitAPI::Connection connection) mutable {
         switch (++connectionCount) {
         case 1:
             serverConnection = connection;
@@ -1869,7 +1869,7 @@ void testResumeAfterMutatingDisk(NSURLRequest *serverRequest, NSURL *expectedDow
 
 TEST(WKDownload, ResumeWithoutInitialDataOnDisk)
 {
-    HTTPServer server([connectionCount = 0](TestWebKitAPI::Connection connection) mutable {
+    HTTPServer server([connectionCount = 0](TestCyberKitAPI::Connection connection) mutable {
         switch (++connectionCount) {
         case 1:
             connection.receiveHTTPRequest([=](Vector<char>&&) {
@@ -1912,7 +1912,7 @@ TEST(WKDownload, ResumeWithoutInitialDataOnDisk)
 
 TEST(WKDownload, ResumeWithExtraInitialDataOnDisk)
 {
-    HTTPServer server([connectionCount = 0](TestWebKitAPI::Connection connection) mutable {
+    HTTPServer server([connectionCount = 0](TestCyberKitAPI::Connection connection) mutable {
         switch (++connectionCount) {
         case 1:
             connection.receiveHTTPRequest([=](Vector<char>&&) {
@@ -2208,7 +2208,7 @@ TEST(WKDownload, DownloadRequestFailure)
     [webView startDownloadUsingRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ftp:///"]] completionHandler:^(WKDownload *download) {
         download.delegate = delegate.get();
         delegate.get().didFailWithError = ^(WKDownload *download, NSError *error, NSData *resumeData) {
-            EXPECT_WK_STREQ(error.domain, WebKitErrorDomain);
+            EXPECT_WK_STREQ(error.domain, CyberKitErrorDomain);
             EXPECT_EQ(error.code, 101);
             failed = true;
         };
@@ -2667,9 +2667,9 @@ TEST(WKDownload, SubframeOriginator)
 }
 
 
-static TestWebKitAPI::HTTPServer simplePDFTestServer()
+static TestCyberKitAPI::HTTPServer simplePDFTestServer()
 {
-    return { [](TestWebKitAPI::Connection connection) {
+    return { [](TestCyberKitAPI::Connection connection) {
         connection.receiveHTTPRequest([connection](Vector<char>&&) {
             connection.send(makeString(
                 "HTTP/1.1 200 OK\r\n"
@@ -2715,9 +2715,9 @@ TEST(WKDownload, LockdownModePDF)
     });
 }
 
-static TestWebKitAPI::HTTPServer simpleUSDZTestServer()
+static TestCyberKitAPI::HTTPServer simpleUSDZTestServer()
 {
-    return { [](TestWebKitAPI::Connection connection) {
+    return { [](TestCyberKitAPI::Connection connection) {
         connection.receiveHTTPRequest([connection](Vector<char>&&) {
             connection.send(makeString(
                 "HTTP/1.1 200 OK\r\n"

@@ -27,11 +27,11 @@
 
 #if PLATFORM(MAC)
 
-#import <WebKit/WKBundlePage.h>
-#import <WebKit/WKBundlePageUIClient.h>
-#import <WebKit/WKRetainPtr.h>
-#import <WebKit/WKWebProcessPlugIn.h>
-#import <WebKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
+#import <CyberKit/WKBundlePage.h>
+#import <CyberKit/WKBundlePageUIClient.h>
+#import <CyberKit/WKRetainPtr.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
 
 void willAddMessageToConsoleCallback(WKBundlePageRef page, WKStringRef message, uint32_t lineNumber, const void *)
 {

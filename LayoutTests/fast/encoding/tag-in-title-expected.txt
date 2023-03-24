@@ -1,4 +1,4 @@
-This test checks that WebKit doesn't stop looking for a charset defined in an HTTP-EQUIV meta when it encounters a tag within <title>.
+This test checks that CyberKit doesn't stop looking for a charset defined in an HTTP-EQUIV meta when it encounters a tag within <title>.
 
 The first letter should look like a Latin "K" here:
 

@@ -25,12 +25,12 @@
 
 #pragma once
 
-#include <WebKit/WKBundle.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKBundle.h>
+#include <CyberKit/WKRetainPtr.h>
 #include <map>
 #include <string>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class InjectedBundleTest;
 
@@ -64,4 +64,4 @@ private:
     std::unique_ptr<InjectedBundleTest> m_currentTest;
 };
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

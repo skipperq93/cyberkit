@@ -1,0 +1,144 @@
+/*
+ * Copyright (C) 2022 Igalia S.L.
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Library General Public
+ * License as published by the Free Software Foundation; either
+ * version 2 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Library General Public License for more details.
+ *
+ * You should have received a copy of the GNU Library General Public License
+ * along with this library; see the file COPYING.LIB.  If not, write to
+ * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
+ */
+
+#if PLATFORM(GTK) && USE(GTK4)
+#ifdef __WEBKIT_WEB_PROCESS_EXTENSION_H__
+#error "Headers <webkit/webkit.h> and <webkit/webkit-web-process-extension.h> cannot be included together."
+#endif
+#elif PLATFORM(GTK)
+#ifdef __WEBKIT_WEB_EXTENSION_H__
+#error "Headers <webkit2/webkit2.h> and <webkit/webkit-web-extension.h> cannot be included together."
+#endif
+#elif PLATFORM(WPE) && ENABLE(2022_GLIB_API)
+#ifdef __WEBKIT_WEB_PROCESS_EXTENSION_H__
+#error "Headers <wpe/webkit.h> and <wpe/webkit-web-process-extension.h> cannot be included together."
+#endif
+#elif PLATFORM(WPE)
+#ifdef __WEBKIT_WEB_EXTENSION_H__
+#error "Headers <wpe/webkit.h> and <wpe/webkit-web-extension.h> cannot be included together."
+#endif
+#endif
+
+#ifndef __WEBKIT_H__
+#define __WEBKIT_H__
+
+#define __WEBKIT_H_INSIDE__
+
+#include <@API_INCLUDE_PREFIX@/CyberKitApplicationInfo.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitAuthenticationRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitAutomationSession.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitBackForwardList.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitBackForwardListItem.h>
+#if PLATFORM(GTK)
+#include <@API_INCLUDE_PREFIX@/CyberKitColorChooserRequest.h>
+#endif
+#include <@API_INCLUDE_PREFIX@/CyberKitContextMenu.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitContextMenuActions.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitContextMenuItem.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitCookieManager.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitCredential.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDeviceInfoPermissionRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDownload.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitEditingCommands.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitEditorState.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitEnumTypes.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitError.h>
+#if PLATFORM(GTK) || (PLATFORM(WPE) && !ENABLE(2022_GLIB_API))
+#include <@API_INCLUDE_PREFIX@/CyberKitFaviconDatabase.h>
+#endif
+#if PLATFORM(GTK)
+#include <@API_INCLUDE_PREFIX@/CyberKitFileChooserRequest.h>
+#endif
+#include <@API_INCLUDE_PREFIX@/CyberKitFindController.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitFormSubmissionRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitGeolocationManager.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitGeolocationPermissionRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitHitTestResult.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitInputMethodContext.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitInstallMissingMediaPluginsPermissionRequest.h>
+#if !ENABLE(2022_GLIB_API)
+#include <@API_INCLUDE_PREFIX@/CyberKitJavascriptResult.h>
+#endif
+#include <@API_INCLUDE_PREFIX@/CyberKitMediaKeySystemPermissionRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitMemoryPressureSettings.h>
+#if !ENABLE(2022_GLIB_API)
+#include <@API_INCLUDE_PREFIX@/CyberKitMimeInfo.h>
+#endif
+#include <@API_INCLUDE_PREFIX@/CyberKitNavigationAction.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitNavigationPolicyDecision.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitNetworkProxySettings.h>
+#if ENABLE(2022_GLIB_API)
+#include <@API_INCLUDE_PREFIX@/CyberKitNetworkSession.h>
+#endif
+#include <@API_INCLUDE_PREFIX@/CyberKitNotification.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitNotificationPermissionRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitOptionMenu.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitOptionMenuItem.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitPermissionRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitPermissionStateQuery.h>
+#if !ENABLE(2022_GLIB_API)
+#include <@API_INCLUDE_PREFIX@/CyberKitPlugin.h>
+#endif
+#if PLATFORM(GTK)
+#include <@API_INCLUDE_PREFIX@/CyberKitPointerLockPermissionRequest.h>
+#if !ENABLE(2022_GLIB_API)
+#include <@API_INCLUDE_PREFIX@/CyberKitPrintCustomWidget.h>
+#endif
+#include <@API_INCLUDE_PREFIX@/CyberKitPrintOperation.h>
+#endif
+#include <@API_INCLUDE_PREFIX@/CyberKitResponsePolicyDecision.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitScriptDialog.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitSecurityManager.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitSecurityOrigin.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitSettings.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitURIRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitURIResponse.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitURISchemeRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitURISchemeResponse.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitURIUtilities.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitUserContent.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitUserContentFilterStore.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitUserContentManager.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitUserMediaPermissionRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitUserMessage.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitVersion.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebContext.h>
+#if PLATFORM(GTK)
+#include <@API_INCLUDE_PREFIX@/CyberKitWebInspector.h>
+#endif
+#include <@API_INCLUDE_PREFIX@/CyberKitWebResource.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebView.h>
+#if PLATFORM(WPE)
+#include <wpe/CyberKitWebViewBackend.h>
+#endif
+#if PLATFORM(GTK)
+#include <@API_INCLUDE_PREFIX@/CyberKitWebViewBase.h>
+#endif
+#include <@API_INCLUDE_PREFIX@/CyberKitWebViewSessionState.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebsiteData.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebsiteDataAccessPermissionRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebsiteDataManager.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWindowProperties.h>
+
+#include <@API_INCLUDE_PREFIX@/CyberKitAutocleanups.h>
+
+#undef __WEBKIT_H_INSIDE__
+
+#endif /* __WEBKIT_H__ */

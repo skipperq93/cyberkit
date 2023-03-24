@@ -5,7 +5,7 @@ $(PROJECT_DIR)/../TestRunnerShared/UIScriptContext/Bindings/UIScriptController.i
 $(PROJECT_DIR)/Bindings/CodeGeneratorDumpRenderTree.pm
 $(PROJECT_DIR)/DerivedSources.make
 $(PROJECT_DIR)/Scripts/PreferencesTemplates/TestOptionsGeneratedKeys.h.erb
-$(PROJECT_DIR)/Scripts/PreferencesTemplates/TestOptionsGeneratedWebKitLegacyKeyMapping.cpp.erb
+$(PROJECT_DIR)/Scripts/PreferencesTemplates/TestOptionsGeneratedCyberKitLegacyKeyMapping.cpp.erb
 $(PROJECT_DIR)/Scripts/generate-derived-sources.sh
 $(WEBCORE_PRIVATE_HEADERS_DIR)/CodeGenerator.pm
 $(WEBCORE_PRIVATE_HEADERS_DIR)/IDLAttributes.json

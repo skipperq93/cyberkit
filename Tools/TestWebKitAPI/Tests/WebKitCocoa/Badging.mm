@@ -34,17 +34,17 @@
 #import "TestNotificationProvider.h"
 #import "TestURLSchemeHandler.h"
 #import "TestWKWebView.h"
-#import <WebCore/RegistrationDatabase.h>
-#import <WebKit/WKNotificationProvider.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKSecurityOriginPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKNotificationData.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
-#import <WebKit/_WKWebsiteDataStoreDelegate.h>
+#import <CyberCore/RegistrationDatabase.h>
+#import <CyberKit/WKNotificationProvider.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKSecurityOriginPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKNotificationData.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/_WKWebsiteDataStoreDelegate.h>
 #import <wtf/HexNumber.h>
 
 static constexpr auto simpleMainBytes = R"SWRESOURCE(
@@ -168,9 +168,9 @@ return "DONE";
 
 TEST(Badging, APIWindow)
 {
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { simpleMainBytes } },
-    }, TestWebKitAPI::HTTPServer::Protocol::Http);
+    }, TestCyberKitAPI::HTTPServer::Protocol::Http);
 
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
 
@@ -207,7 +207,7 @@ TEST(Badging, APIWindow)
         EXPECT_NULL(error);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     webView.get().configuration.preferences._appBadgeEnabled = YES;
     webView.get().configuration.preferences._clientBadgeEnabled = NO;
@@ -219,7 +219,7 @@ TEST(Badging, APIWindow)
         EXPECT_NULL(error);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     webView.get().configuration.preferences._appBadgeEnabled = NO;
     webView.get().configuration.preferences._clientBadgeEnabled = YES;
@@ -231,7 +231,7 @@ TEST(Badging, APIWindow)
         EXPECT_NULL(error);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     webView.get().configuration.preferences._appBadgeEnabled = YES;
     webView.get().configuration.preferences._clientBadgeEnabled = YES;
@@ -243,7 +243,7 @@ TEST(Badging, APIWindow)
         EXPECT_NULL(error);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     NSString *nsExerciseBadgeFunctions = [NSString stringWithUTF8String:exerciseBadgeFunctions];
     done = false;
@@ -252,8 +252,8 @@ TEST(Badging, APIWindow)
         EXPECT_NULL(error);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
-    TestWebKitAPI::Util::run(&messagesDone);
+    TestCyberKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&messagesDone);
 
     EXPECT_EQ(badgeDelegate.get().appBadgeIndex, 5);
     EXPECT_EQ(badgeDelegate.get().clientBadgeIndex, 5);
@@ -287,7 +287,7 @@ self.postMessage('RUNNING');
 
 TEST(Badging, DedicatedWorker)
 {
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { workerMainBytes } },
         { "/worker.js"_s, { { { "Content-Type"_s, "text/javascript"_s } }, workerBytes } }
     });
@@ -316,14 +316,14 @@ TEST(Badging, DedicatedWorker)
 
     [webView synchronouslyLoadRequest:server.request("/"_s)];
 
-    TestWebKitAPI::Util::run(&workerRunning);
+    TestCyberKitAPI::Util::run(&workerRunning);
 
     [webView callAsyncJavaScript:@"window.worker.postMessage('updateBadge');" arguments:nil inFrame:nil inContentWorld:WKContentWorld.pageWorld completionHandler:^(id result, NSError *error) {
         EXPECT_NULL(error);
         javascriptDone = true;
     }];
-    TestWebKitAPI::Util::run(&javascriptDone);
-    TestWebKitAPI::Util::run(&badgingDone);
+    TestCyberKitAPI::Util::run(&javascriptDone);
+    TestCyberKitAPI::Util::run(&badgingDone);
 
     EXPECT_EQ(badgeDelegate.get().appBadgeIndex, 2);
     EXPECT_EQ(badgeDelegate.get().clientBadgeIndex, 0);
@@ -358,7 +358,7 @@ onconnect = (e) => {
 
 TEST(Badging, SharedWorker)
 {
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { sharedWorkerMainBytes } },
         { "/sharedworker.js"_s, { { { "Content-Type"_s, "text/javascript"_s } }, sharedWorkerBytes } }
     });
@@ -387,14 +387,14 @@ TEST(Badging, SharedWorker)
 
     [webView synchronouslyLoadRequest:server.request("/"_s)];
 
-    TestWebKitAPI::Util::run(&workerRunning);
+    TestCyberKitAPI::Util::run(&workerRunning);
 
     [webView callAsyncJavaScript:@"window.sharedWorker.port.postMessage('updateBadge');" arguments:nil inFrame:nil inContentWorld:WKContentWorld.pageWorld completionHandler:^(id result, NSError *error) {
         EXPECT_NULL(error);
         javascriptDone = true;
     }];
-    TestWebKitAPI::Util::run(&javascriptDone);
-    TestWebKitAPI::Util::run(&badgingDone);
+    TestCyberKitAPI::Util::run(&javascriptDone);
+    TestCyberKitAPI::Util::run(&badgingDone);
 
     EXPECT_EQ(badgeDelegate.get().appBadgeIndex, 2);
     EXPECT_EQ(badgeDelegate.get().clientBadgeIndex, 0);
@@ -444,7 +444,7 @@ self.addEventListener("message", (event) => {
 
 TEST(Badging, ServiceWorker)
 {
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { serviceWorkerMainBytes } },
         { "/sw.js"_s, { { { "Content-Type"_s, "text/javascript"_s } }, serviceWorkerScriptBytes } }
     });
@@ -473,14 +473,14 @@ TEST(Badging, ServiceWorker)
 
     [webView synchronouslyLoadRequest:server.request("/"_s)];
 
-    TestWebKitAPI::Util::run(&workerRunning);
+    TestCyberKitAPI::Util::run(&workerRunning);
 
     [webView callAsyncJavaScript:@"channel.port1.postMessage('updateBadge');" arguments:nil inFrame:nil inContentWorld:WKContentWorld.pageWorld completionHandler:^(id result, NSError *error) {
         EXPECT_NULL(error);
         javascriptDone = true;
     }];
-    TestWebKitAPI::Util::run(&javascriptDone);
-    TestWebKitAPI::Util::run(&badgingDone);
+    TestCyberKitAPI::Util::run(&javascriptDone);
+    TestCyberKitAPI::Util::run(&badgingDone);
 
     EXPECT_EQ(badgeDelegate.get().appBadgeIndex, 2);
     EXPECT_EQ(badgeDelegate.get().clientBadgeIndex, 0);
@@ -530,7 +530,7 @@ TEST(Badging, Origin)
 
 TEST(Badging, ServiceWorkerOverride)
 {
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { serviceWorkerMainBytes } },
         { "/sw.js"_s, { { { "Content-Type"_s, "text/javascript"_s } }, serviceWorkerScriptBytes } }
     });
@@ -564,7 +564,7 @@ TEST(Badging, ServiceWorkerOverride)
 
     [webView synchronouslyLoadRequest:server.request("/"_s)];
 
-    TestWebKitAPI::Util::run(&workerRunning);
+    TestCyberKitAPI::Util::run(&workerRunning);
 
     // Confirm that the WKWebView's window object does NOT have the badging functions exposed
     NSString *nsCheckForBadgeFunctions = [NSString stringWithUTF8String:checkForBadgeFunctions];
@@ -574,15 +574,15 @@ TEST(Badging, ServiceWorkerOverride)
         EXPECT_NULL(error);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     // But then confirm that they DO work as expected in the service worker
     [webView callAsyncJavaScript:@"channel.port1.postMessage('updateBadge');" arguments:nil inFrame:nil inContentWorld:WKContentWorld.pageWorld completionHandler:^(id result, NSError *error) {
         EXPECT_NULL(error);
         javascriptDone = true;
     }];
-    TestWebKitAPI::Util::run(&javascriptDone);
-    TestWebKitAPI::Util::run(&badgingDone);
+    TestCyberKitAPI::Util::run(&javascriptDone);
+    TestCyberKitAPI::Util::run(&badgingDone);
 
     EXPECT_EQ(badgeDelegate.get().appBadgeIndex, 2);
     EXPECT_EQ(badgeDelegate.get().clientBadgeIndex, 0);

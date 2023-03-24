@@ -25,8 +25,8 @@
 
 #import "config.h"
 
-#import <WebKit/WKBundlePage.h>
-#import <WebKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKBundlePage.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
 
 @interface SkipDecidePolicyForResponsePlugIn : NSObject <WKWebProcessPlugIn>
 @end

@@ -28,8 +28,8 @@
 #import "PlatformUtilities.h"
 #import "TestInputDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 
 #if PLATFORM(IOS_FAMILY)
 
@@ -57,7 +57,7 @@
     _inputField = adoptNS([[UITextField alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(frame), 44)]);
     [self.scrollView addSubview:_inputField.get()];
     [self synchronouslyLoadHTMLString:@"<body contenteditable><script>document.body.focus()</script>"];
-    TestWebKitAPI::Util::run(&doneFocusing);
+    TestCyberKitAPI::Util::run(&doneFocusing);
     return self;
 }
 
@@ -68,7 +68,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WKWebViewFirstResponderTests, ContentViewIsFirstResponder)
 {
@@ -88,6 +88,6 @@ TEST(WKWebViewFirstResponderTests, ContentViewIsFirstResponder)
     EXPECT_FALSE([webView inputField].isFirstResponder);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

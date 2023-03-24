@@ -30,7 +30,7 @@
 #include <wtf/UniqueArray.h>
 #include <wtf/WordLock.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 struct LockInspector {
     template<typename LockType>
@@ -223,4 +223,4 @@ TEST(WTF_Lock, Basic)
     v.maybeSetOtherValue(34);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

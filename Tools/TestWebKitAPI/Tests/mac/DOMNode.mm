@@ -26,8 +26,8 @@
 #import "config.h"
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
-#import <WebKit/DOM.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/DOM.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/RetainPtr.h>
     
 @interface DOMNodeTest : NSObject <WebFrameLoadDelegate> {
@@ -44,9 +44,9 @@ static bool didFinishLoad;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, DOMNodeCompareDocumentPosition)
+TEST(CyberKitLegacy, DOMNodeCompareDocumentPosition)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<DOMNodeTest> testController = adoptNS([DOMNodeTest new]);
@@ -62,4 +62,4 @@ TEST(WebKitLegacy, DOMNodeCompareDocumentPosition)
     
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

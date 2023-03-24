@@ -32,11 +32,11 @@
 #import "TestNavigationDelegate.h"
 #import "TestURLSchemeHandler.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKURLSchemeHandler.h>
-#import <WebKit/WKURLSchemeTaskPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WebKit.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKURLSchemeHandler.h>
+#import <CyberKit/WKURLSchemeTaskPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/CyberKit.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/HashMap.h>
 #import <wtf/RetainPtr.h>
@@ -200,7 +200,7 @@ TEST(WKWebView, JavascriptURLNavigation)
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"jsurl://host1/main.html"]]];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 #endif // PLATFORM(MAC)

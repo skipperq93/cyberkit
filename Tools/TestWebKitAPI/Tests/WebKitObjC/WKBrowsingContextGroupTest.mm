@@ -26,7 +26,7 @@
 #import "config.h"
 
 #import "Test.h"
-#import <WebKit/WKBrowsingContextGroup.h>
+#import <CyberKit/WKBrowsingContextGroup.h>
 #import <wtf/RetainPtr.h>
 
 #if PLATFORM(MAC)

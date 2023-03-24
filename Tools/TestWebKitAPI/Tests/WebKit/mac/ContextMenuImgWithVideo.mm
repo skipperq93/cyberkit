@@ -29,7 +29,7 @@
 #import "Test.h"
 #import "TestWKWebView.h"
 #import <Carbon/Carbon.h>
-#import <WebKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
 
 static bool contextMenuShown = false;
 
@@ -50,9 +50,9 @@ static bool contextMenuShown = false;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, ContextMenuImgWithVideo)
+TEST(CyberKit, ContextMenuImgWithVideo)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600)]);
     auto uiDelegate = adoptNS([[ContextMenuImgWithVideoDelegate alloc] init]);
@@ -79,4 +79,4 @@ TEST(WebKit, ContextMenuImgWithVideo)
     Util::run(&contextMenuShown);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

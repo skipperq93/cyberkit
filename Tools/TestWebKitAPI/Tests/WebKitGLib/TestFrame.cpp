@@ -21,40 +21,40 @@
 
 #include "WebViewTest.h"
 
-static void testWebKitFrameMainFrame(WebViewTest* test, gconstpointer)
+static void testCyberKitFrameMainFrame(WebViewTest* test, gconstpointer)
 {
-    g_assert_true(test->runWebProcessTest("WebKitFrame", "main-frame"));
+    g_assert_true(test->runWebProcessTest("CyberKitFrame", "main-frame"));
 }
 
-static void testWebKitFrameURI(WebViewTest* test, gconstpointer)
+static void testCyberKitFrameURI(WebViewTest* test, gconstpointer)
 {
-    g_assert_true(test->runWebProcessTest("WebKitFrame", "uri"));
+    g_assert_true(test->runWebProcessTest("CyberKitFrame", "uri"));
 }
 
-static void testWebKitFrameJavaScriptContext(WebViewTest* test, gconstpointer)
+static void testCyberKitFrameJavaScriptContext(WebViewTest* test, gconstpointer)
 {
-    g_assert_true(test->runWebProcessTest("WebKitFrame", "javascript-context"));
+    g_assert_true(test->runWebProcessTest("CyberKitFrame", "javascript-context"));
 }
 
-static void testWebKitFrameJavaScriptValues(WebViewTest* test, gconstpointer)
+static void testCyberKitFrameJavaScriptValues(WebViewTest* test, gconstpointer)
 {
     static const char* testHTML = "<html><body><p id='paragraph'>This is a test</p><img id='image' src='foo.png'></body></html>";
-    g_assert_true(test->runWebProcessTest("WebKitFrame", "javascript-values", testHTML));
+    g_assert_true(test->runWebProcessTest("CyberKitFrame", "javascript-values", testHTML));
 }
 
-static void testWebKitFrameSubframe(WebViewTest* test, gconstpointer)
+static void testCyberKitFrameSubframe(WebViewTest* test, gconstpointer)
 {
     static const char* testHTML = "<html><body><iframe src='resource:///org/webkit/glib/tests/form-in-frame.html' id='frame'></iframe></body></html>";
-    g_assert_true(test->runWebProcessTest("WebKitFrame", "subframe", testHTML));
+    g_assert_true(test->runWebProcessTest("CyberKitFrame", "subframe", testHTML));
 }
 
 void beforeAll()
 {
-    WebViewTest::add("WebKitFrame", "main-frame", testWebKitFrameMainFrame);
-    WebViewTest::add("WebKitFrame", "uri", testWebKitFrameURI);
-    WebViewTest::add("WebKitFrame", "javascript-context", testWebKitFrameJavaScriptContext);
-    WebViewTest::add("WebKitFrame", "javascript-values", testWebKitFrameJavaScriptValues);
-    WebViewTest::add("WebKitFrame", "subframe", testWebKitFrameSubframe);
+    WebViewTest::add("CyberKitFrame", "main-frame", testCyberKitFrameMainFrame);
+    WebViewTest::add("CyberKitFrame", "uri", testCyberKitFrameURI);
+    WebViewTest::add("CyberKitFrame", "javascript-context", testCyberKitFrameJavaScriptContext);
+    WebViewTest::add("CyberKitFrame", "javascript-values", testCyberKitFrameJavaScriptValues);
+    WebViewTest::add("CyberKitFrame", "subframe", testCyberKitFrameSubframe);
 }
 
 void afterAll()

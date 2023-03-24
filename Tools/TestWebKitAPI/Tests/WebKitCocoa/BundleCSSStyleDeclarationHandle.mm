@@ -24,17 +24,17 @@
  */
 
 #import "config.h"
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #import "BundleCSSStyleDeclarationHandleProtocol.h"
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestNavigationDelegate.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKRemoteObjectInterface.h>
-#import <WebKit/_WKRemoteObjectRegistry.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKRemoteObjectInterface.h>
+#import <CyberKit/_WKRemoteObjectRegistry.h>
 #import <wtf/RetainPtr.h>
 
 static bool didVerifyStyle;
@@ -53,7 +53,7 @@ static bool didVerifyStyle;
 
 @end
 
-TEST(WebKit, WKWebProcessPlugInCSSStyleDeclarationHandle)
+TEST(CyberKit, WKWebProcessPlugInCSSStyleDeclarationHandle)
 {
     auto configuration = retainPtr([WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"BundleCSSStyleDeclarationHandlePlugIn"]);
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
@@ -71,5 +71,5 @@ TEST(WebKit, WKWebProcessPlugInCSSStyleDeclarationHandle)
     );
     [webView loadHTMLString:html baseURL:nil];
 
-    TestWebKitAPI::Util::run(&didVerifyStyle);
+    TestCyberKitAPI::Util::run(&didVerifyStyle);
 }

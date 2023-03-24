@@ -31,7 +31,7 @@
 
 #include "PlatformUtilities.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class ResponsivenessTimerDoesntFireEarlyTest : public InjectedBundleTest {
 public:
@@ -59,6 +59,6 @@ void ResponsivenessTimerDoesntFireEarlyTest::didReceiveMessage(WKBundleRef bundl
     WKBundlePostMessage(bundle, Util::toWK("DidBrieflyPause").get(), 0);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

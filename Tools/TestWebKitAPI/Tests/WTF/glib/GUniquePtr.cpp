@@ -82,7 +82,7 @@ static void (* _g_key_file_free)(GKeyFile*) = g_key_file_free;
 
 #include <wtf/glib/GUniquePtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_GUniquePtr, Basic)
 {
@@ -192,4 +192,4 @@ TEST(WTF_GUniquePtr, OutPtr)
     actual.str("");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -50,7 +50,7 @@ from webkitpy.common.checkout.changelog import ChangeLogEntry
 from webkitpy.common.checkout.scm import Git
 from webkitpy.common.net.bugzilla import Bugzilla
 
-# WebKit includes a built copy of BeautifulSoup in Scripts/webkitpy
+# CyberKit includes a built copy of BeautifulSoup in Scripts/webkitpy
 # so this import should always succeed.
 from webkitpy.thirdparty.BeautifulSoup import BeautifulSoup
 
@@ -173,7 +173,7 @@ class CommitterListFromGit(object):
         'oliver' : 'oliver@apple.com',
         'ouch' : 'ouch@apple.com', # John Louch
         'pewtermoose' : 'dev+webkit@mattlilek.com',
-        'pyeh' : 'patti@apple.com', # Patti Yeh, did VoiceOver work in WebKit
+        'pyeh' : 'patti@apple.com', # Patti Yeh, did VoiceOver work in CyberKit
         'rjw' : 'rjw@apple.com',
         'rwlbuis' : 'rwlbuis@gmail.com',
         'seangies' : 'seangies@apple.com', # Sean Gies?, only 5 commits: r16600, r16592, r16511, r16489, r16484
@@ -188,7 +188,7 @@ class CommitterListFromGit(object):
         'trey' : 'trey@usa.net',
         'tristan' : 'tristan@apple.com',
         'vicki' : 'vicki@apple.com',
-        'voas' : 'voas@apple.com', # Ed Voas, did some Carbon work in WebKit
+        'voas' : 'voas@apple.com', # Ed Voas, did some Carbon work in CyberKit
         'weinig' : 'sam@webkit.org',
         'zack' : 'zack@kde.org',
         'zecke' : 'zecke@selfish.org',

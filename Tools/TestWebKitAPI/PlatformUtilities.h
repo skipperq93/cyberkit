@@ -28,8 +28,8 @@
 #ifndef PlatformUtilities_h
 #define PlatformUtilities_h
 
-#include <WebKit/WKNativeEvent.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKNativeEvent.h>
+#include <CyberKit/WKRetainPtr.h>
 
 #include "Utilities.h"
 #include <string>
@@ -40,7 +40,7 @@ OBJC_CLASS NSDictionary;
 typedef double NSTimeInterval;
 #endif
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 namespace Util {
 
 std::string toSTD(const char*);
@@ -84,13 +84,13 @@ static inline ::testing::AssertionResult assertWKStringEqual(const char* expecte
 }
 
 #define EXPECT_WK_STREQ(expected, actual) \
-    EXPECT_PRED_FORMAT2(TestWebKitAPI::Util::assertWKStringEqual, expected, actual)
+    EXPECT_PRED_FORMAT2(TestCyberKitAPI::Util::assertWKStringEqual, expected, actual)
 
 #if PLATFORM(COCOA)
 extern NSString * const TestPlugInClassNameParameter;
 #endif
 
 } // namespace Util
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PlatformUtilities_h

@@ -29,12 +29,12 @@
 
 #include "InjectedBundleTest.h"
 #include "PlatformUtilities.h"
-#include <WebKit/WKBundle.h>
-#include <WebKit/WKBundleFramePrivate.h>
-#include <WebKit/WKBundlePage.h>
-#include <WebKit/WKBundlePagePrivate.h>
+#include <CyberKit/WKBundle.h>
+#include <CyberKit/WKBundleFramePrivate.h>
+#include <CyberKit/WKBundlePage.h>
+#include <CyberKit/WKBundlePagePrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class StopLoadingDuringDidFailProvisionalLoadTest : public InjectedBundleTest {
 public:
@@ -76,6 +76,6 @@ void StopLoadingDuringDidFailProvisionalLoadTest::didFailProvisionalLoad(WKBundl
     WKBundlePostMessage(m_bundle, Util::toWK("StopLoadingDuringDidFailProvisionalLoadTestDone").get(), nullptr);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

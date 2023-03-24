@@ -29,9 +29,9 @@
 
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
-#include <WebKit/WKContextPrivate.h>
+#include <CyberKit/WKContextPrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didUnlockFistMeaningfulPaintMilestone = false;
 
@@ -52,7 +52,7 @@ static void setPageLoaderClient(WKPageRef page)
     WKPageSetPageNavigationClient(page, &loaderClient.base);
 }
 
-TEST(WebKit, FirstMeaningfulPaint)
+TEST(CyberKit, FirstMeaningfulPaint)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("FirstMeaningfulPaintMilestoneTest"));
 
@@ -65,6 +65,6 @@ TEST(WebKit, FirstMeaningfulPaint)
     EXPECT_TRUE(didUnlockFistMeaningfulPaintMilestone);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

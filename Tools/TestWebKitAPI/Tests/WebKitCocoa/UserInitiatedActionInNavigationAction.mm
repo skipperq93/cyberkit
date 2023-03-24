@@ -29,9 +29,9 @@
 
 #import "PlatformUtilities.h"
 #import "Test.h"
-#import <WebKit/WKNavigationActionPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKUserInitiatedAction.h>
+#import <CyberKit/WKNavigationActionPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKUserInitiatedAction.h>
 #import <wtf/RetainPtr.h>
 
 static bool finishedNavigation;
@@ -76,7 +76,7 @@ public:
         delegate = adoptNS([[UserInitiatedActionInNavigationActionDelegate alloc] init]);
         [webView setNavigationDelegate:delegate.get()];
 
-        URL = [[NSBundle mainBundle] URLForResource:@"open-multiple-external-url" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+        URL = [[NSBundle mainBundle] URLForResource:@"open-multiple-external-url" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     }
 
     NSURL *URLWithFragment(NSString *fragment)
@@ -89,7 +89,7 @@ public:
     void loadTest(NSString *test)
     {
         [webView loadRequest:[NSURLRequest requestWithURL:URLWithFragment(test)]];
-        TestWebKitAPI::Util::run(&finishedNavigation);
+        TestCyberKitAPI::Util::run(&finishedNavigation);
         finishedNavigation = false;
     }
 
@@ -140,7 +140,7 @@ TEST_F(UserInitiatedActionTest, MailtoInNormalLoop)
 
     click();
 
-    TestWebKitAPI::Util::run(&finishedPolicy);
+    TestCyberKitAPI::Util::run(&finishedPolicy);
 }
 
 TEST_F(UserInitiatedActionTest, MailtoInLoopAfterTimer)
@@ -181,7 +181,7 @@ TEST_F(UserInitiatedActionTest, MailtoInLoopAfterTimer)
 
     click();
 
-    TestWebKitAPI::Util::run(&finishedPolicy);
+    TestCyberKitAPI::Util::run(&finishedPolicy);
 }
 
 TEST_F(UserInitiatedActionTest, MailtoInLoopAfterPostMessage)
@@ -222,7 +222,7 @@ TEST_F(UserInitiatedActionTest, MailtoInLoopAfterPostMessage)
 
     click();
 
-    TestWebKitAPI::Util::run(&finishedPolicy);
+    TestCyberKitAPI::Util::run(&finishedPolicy);
 }
 
 TEST_F(UserInitiatedActionTest, MailtoInLoopAfterLongTimer)
@@ -251,7 +251,7 @@ TEST_F(UserInitiatedActionTest, MailtoInLoopAfterLongTimer)
 
     click();
 
-    TestWebKitAPI::Util::run(&finishedPolicy);
+    TestCyberKitAPI::Util::run(&finishedPolicy);
 }
 
 #endif

@@ -34,7 +34,7 @@ use LoadAsModule qw(PrepareChangeLog prepare-ChangeLog);
 #
 #     <long_desc isprivate="0">
 #       <commentid>1153467</commentid>
-#       <who name="Radar WebKit Bug Importer">webkit-bug-importer</who>
+#       <who name="Radar CyberKit Bug Importer">webkit-bug-importer</who>
 #       <bug_when>2016-01-07 11:06:14 -0800</bug_when>
 #       <thetext>&lt;rdar://problem/24093563&gt;</thetext>
 #     </long_desc>

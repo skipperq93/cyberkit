@@ -27,7 +27,7 @@
 #import "TestUIDelegate.h"
 
 #import "Utilities.h"
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/RetainPtr.h>
 
 @implementation TestUIDelegate {
@@ -107,7 +107,7 @@
         completionHandler();
     };
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 
     self.runJavaScriptAlertPanelWithMessage = nil;
     return result.autorelease();
@@ -125,7 +125,7 @@
         completionHandler(YES);
     };
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 
     self.runJavaScriptConfirmPanelWithMessage = nil;
     return result.autorelease();
@@ -144,7 +144,7 @@
         completionHandler(@"foo");
     };
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 
     self.runJavaScriptPromptPanelWithMessage = nil;
     return result.autorelease();
@@ -158,7 +158,7 @@
 - (void)waitForInspectorToShow
 {
     while (!_showedInspector)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 }
 
 @end

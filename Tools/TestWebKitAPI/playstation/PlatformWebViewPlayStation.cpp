@@ -27,13 +27,13 @@
 #include "PlatformWebView.h"
 
 #include <KeyboardEvents.h>
-#include <WebKit/WKContextConfigurationPlayStation.h>
-#include <WebKit/WKPageConfigurationRef.h>
-#include <WebKit/WKPagePrivatePlayStation.h>
-#include <WebKit/WKRetainPtr.h>
-#include <WebKit/WebKit2_C.h>
+#include <CyberKit/WKContextConfigurationPlayStation.h>
+#include <CyberKit/WKPageConfigurationRef.h>
+#include <CyberKit/WKPagePrivatePlayStation.h>
+#include <CyberKit/WKRetainPtr.h>
+#include <CyberKit/CyberKit2_C.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 PlatformWebView::PlatformWebView(WKContextRef contextRef, WKPageGroupRef pageGroupRef)
 {
     WKRetainPtr<WKPageConfigurationRef> configuration = adoptWK(WKPageConfigurationCreate());
@@ -102,4 +102,4 @@ void PlatformWebView::simulateButtonClick(WKEventMouseButton button, unsigned x,
     WKPageHandleMouseEvent(page(), WKMouseEventMake(kWKEventMouseUp, button, WKPointMake(x, y), 0, modifiers));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

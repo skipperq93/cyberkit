@@ -26,14 +26,14 @@
 #import "config.h"
 
 #import "PlatformUtilities.h"
-#import <WebCore/SQLiteDatabase.h>
-#import <WebCore/SQLiteStatement.h>
-#import <WebCore/SQLiteTransaction.h>
-#import <WebKit/WKFoundation.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberCore/SQLiteDatabase.h>
+#import <CyberCore/SQLiteStatement.h>
+#import <CyberCore/SQLiteTransaction.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/RetainPtr.h>
 
 static RetainPtr<WKWebView> webViewWithResourceLoadStatisticsEnabledInNetworkProcess()
@@ -54,7 +54,7 @@ static RetainPtr<WKWebView> webViewWithResourceLoadStatisticsEnabledInNetworkPro
 }
 
 template<size_t size>
-void addValuesToTable(WebCore::SQLiteDatabase& database, ASCIILiteral query, std::array<std::variant<StringView, int, double>, size> values)
+void addValuesToTable(CyberCore::SQLiteDatabase& database, ASCIILiteral query, std::array<std::variant<StringView, int, double>, size> values)
 {
     auto statement = database.prepareStatement(query);
     EXPECT_TRUE(!!statement);
@@ -79,7 +79,7 @@ static double earliestTimeToSend()
     return (WallTime::now() + Seconds(24 * 60 * 60)).secondsSinceEpoch().seconds();
 }
 
-static void addAttributedPCMv1(WebCore::SQLiteDatabase& database)
+static void addAttributedPCMv1(CyberCore::SQLiteDatabase& database)
 {
     constexpr auto createAttributedPrivateClickMeasurementV1 = "CREATE TABLE AttributedPrivateClickMeasurement ("
         "sourceSiteDomainID INTEGER NOT NULL, attributeOnSiteDomainID INTEGER NOT NULL, sourceID INTEGER NOT NULL, "
@@ -94,7 +94,7 @@ static void addAttributedPCMv1(WebCore::SQLiteDatabase& database)
     addValuesToTable<7>(database, insertAttributedPrivateClickMeasurementQueryV1, { 1, 2, 42, 14, 7, 1.0, earliestTimeToSend() });
 }
 
-static void addUnattributedPCMv1(WebCore::SQLiteDatabase& database)
+static void addUnattributedPCMv1(CyberCore::SQLiteDatabase& database)
 {
     constexpr auto createUnattributedPrivateClickMeasurementV1 = "CREATE TABLE UnattributedPrivateClickMeasurement ("
         "sourceSiteDomainID INTEGER NOT NULL, attributeOnSiteDomainID INTEGER NOT NULL, sourceID INTEGER NOT NULL, "
@@ -108,7 +108,7 @@ static void addUnattributedPCMv1(WebCore::SQLiteDatabase& database)
     addValuesToTable<4>(database, insertUnattributedPrivateClickMeasurementQueryV1, { 2, 3, 43, 1.0 });
 }
 
-static void addAttributedPCMv2(WebCore::SQLiteDatabase& database)
+static void addAttributedPCMv2(CyberCore::SQLiteDatabase& database)
 {
     constexpr auto createAttributedPrivateClickMeasurementV2 = "CREATE TABLE AttributedPrivateClickMeasurement ("
         "sourceSiteDomainID INTEGER NOT NULL, attributeOnSiteDomainID INTEGER NOT NULL, sourceID INTEGER NOT NULL, "
@@ -123,7 +123,7 @@ static void addAttributedPCMv2(WebCore::SQLiteDatabase& database)
     addValuesToTable<10>(database, insertAttributedPrivateClickMeasurementQueryV2, { 1, 2, 42, 14, 7, 1.0, earliestTimeToSend(), "test token"_s, "test signature"_s, "test key id"_s });
 }
 
-static void addUnattributedPCMv2(WebCore::SQLiteDatabase& database)
+static void addUnattributedPCMv2(CyberCore::SQLiteDatabase& database)
 {
     constexpr auto createUnattributedPrivateClickMeasurementV2 = "CREATE TABLE UnattributedPrivateClickMeasurement ("
         "sourceSiteDomainID INTEGER NOT NULL, attributeOnSiteDomainID INTEGER NOT NULL, sourceID INTEGER NOT NULL, "
@@ -137,7 +137,7 @@ static void addUnattributedPCMv2(WebCore::SQLiteDatabase& database)
     addValuesToTable<7>(database, insertUnattributedPrivateClickMeasurementQueryV2, { 2, 3, 43, 1.0, "test token"_s, "test signature"_s, "test key id"_s });
 }
 
-static void addAttributedPCMv3(WebCore::SQLiteDatabase& database)
+static void addAttributedPCMv3(CyberCore::SQLiteDatabase& database)
 {
     constexpr auto createAttributedPrivateClickMeasurementV3 = "CREATE TABLE AttributedPrivateClickMeasurement ("
         "sourceSiteDomainID INTEGER NOT NULL, destinationSiteDomainID INTEGER NOT NULL, sourceID INTEGER NOT NULL, "
@@ -152,7 +152,7 @@ static void addAttributedPCMv3(WebCore::SQLiteDatabase& database)
     addValuesToTable<11>(database, insertAttributedPrivateClickMeasurementQueryV3, { 1, 2, 42, 14, 7, 1.0, earliestTimeToSend(), "test token"_s, "test signature"_s, "test key id"_s, earliestTimeToSend() });
 }
 
-static void addUnattributedPCMv3(WebCore::SQLiteDatabase& database)
+static void addUnattributedPCMv3(CyberCore::SQLiteDatabase& database)
 {
     constexpr auto createUnattributedPrivateClickMeasurementV3 = "CREATE TABLE UnattributedPrivateClickMeasurement ("
         "sourceSiteDomainID INTEGER NOT NULL, destinationSiteDomainID INTEGER NOT NULL, sourceID INTEGER NOT NULL, "
@@ -166,7 +166,7 @@ static void addUnattributedPCMv3(WebCore::SQLiteDatabase& database)
     addValuesToTable<7>(database, insertUnattributedPrivateClickMeasurementQueryV3, { 2, 3, 43, 1.0, "test token"_s, "test signature"_s, "test key id"_s });
 }
 
-static void addUnattributedPCMv4(WebCore::SQLiteDatabase& database)
+static void addUnattributedPCMv4(CyberCore::SQLiteDatabase& database)
 {
     constexpr auto createUnattributedPrivateClickMeasurementV4 = "CREATE TABLE UnattributedPrivateClickMeasurement ("
         "sourceSiteDomainID INTEGER NOT NULL, destinationSiteDomainID INTEGER NOT NULL, sourceID INTEGER NOT NULL, "
@@ -187,7 +187,7 @@ static void addUnattributedPCMv4(WebCore::SQLiteDatabase& database)
     addValuesToTable<8>(database, insertUnattributedPrivateClickMeasurementQueryV4, { 2, 3, 43, 1.0, "test token"_s, "test signature"_s, "test key id"_s, bundleID });
 }
 
-static void addAttributedPCMv4(WebCore::SQLiteDatabase& database)
+static void addAttributedPCMv4(CyberCore::SQLiteDatabase& database)
 {
     constexpr auto createAttributedPrivateClickMeasurementV4 = "CREATE TABLE AttributedPrivateClickMeasurement ("
         "sourceSiteDomainID INTEGER NOT NULL, destinationSiteDomainID INTEGER NOT NULL, sourceID INTEGER NOT NULL, "
@@ -209,7 +209,7 @@ static void addAttributedPCMv4(WebCore::SQLiteDatabase& database)
     addValuesToTable<12>(database, insertAttributedPrivateClickMeasurementQueryV4, { 1, 2, 42, 14, 7, 1.0, earliestTimeToSend(), "test token"_s, "test signature"_s, "test key id"_s, earliestTimeToSend(), bundleID });
 }
 
-static void addAttributedPCMv5(WebCore::SQLiteDatabase& database)
+static void addAttributedPCMv5(CyberCore::SQLiteDatabase& database)
 {
     constexpr auto createAttributedPrivateClickMeasurementV5 = "CREATE TABLE AttributedPrivateClickMeasurement ("
         "sourceSiteDomainID INTEGER NOT NULL, destinationSiteDomainID INTEGER NOT NULL, sourceID INTEGER NOT NULL, "
@@ -237,7 +237,7 @@ static RetainPtr<NSString> dumpedPCM(WKWebView *webView)
         pcm = privateClickMeasurement;
     }];
     while (!pcm)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     
     return pcm;
 }
@@ -254,7 +254,7 @@ static void pollUntilPCMIsMigrated(WKWebView *webView, MigratingFromResourceLoad
 
     NSString *expectedMigratedPCMDatabase = @""
         "Unattributed Private Click Measurements:\n"
-        "WebCore::PrivateClickMeasurement 1\n"
+        "CyberCore::PrivateClickMeasurement 1\n"
         "Source site: webkit.org\n"
         "Attribute on site: www.webkit.org\n"
         "Source ID: 43\n"
@@ -266,7 +266,7 @@ static void pollUntilPCMIsMigrated(WKWebView *webView, MigratingFromResourceLoad
 #endif
         "\n"
         "Attributed Private Click Measurements:\n"
-        "WebCore::PrivateClickMeasurement 2\n"
+        "CyberCore::PrivateClickMeasurement 2\n"
         "Source site: example.com\n"
         "Attribute on site: webkit.org\n"
         "Source ID: 42\n"
@@ -325,10 +325,10 @@ static void cleanUp(RetainPtr<WKWebView> webView)
             usleep(10000);
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
-static void createAndPopulateObservedDomainTable(WebCore::SQLiteDatabase& database)
+static void createAndPopulateObservedDomainTable(CyberCore::SQLiteDatabase& database)
 {
     auto addObservedDomain = [&](ASCIILiteral domain) {
         constexpr auto insertObservedDomainQuery = "INSERT INTO ObservedDomains (registrableDomain, lastSeen, hadUserInteraction,"
@@ -350,7 +350,7 @@ static void createAndPopulateObservedDomainTable(WebCore::SQLiteDatabase& databa
     addObservedDomain("www.webkit.org"_s);
 }
 
-static void createAndPopulatePCMObservedDomainTable(WebCore::SQLiteDatabase& database)
+static void createAndPopulatePCMObservedDomainTable(CyberCore::SQLiteDatabase& database)
 {
     auto addObservedDomain = [&](ASCIILiteral domain) {
         constexpr auto insertObservedDomainQuery = "INSERT INTO PCMObservedDomains (registrableDomain) VALUES (?)"_s;
@@ -366,9 +366,9 @@ static void createAndPopulatePCMObservedDomainTable(WebCore::SQLiteDatabase& dat
     addObservedDomain("www.webkit.org"_s);
 }
 
-void setUpFromResourceLoadStatisticsDatabase(void(*addUnattributedPCM)(WebCore::SQLiteDatabase&), void(*addAttributedPCM)(WebCore::SQLiteDatabase&))
+void setUpFromResourceLoadStatisticsDatabase(void(*addUnattributedPCM)(CyberCore::SQLiteDatabase&), void(*addAttributedPCM)(CyberCore::SQLiteDatabase&))
 {
-    WebCore::SQLiteDatabase database;
+    CyberCore::SQLiteDatabase database;
     EXPECT_TRUE(database.open(emptyObservationsDBPath()));
     createAndPopulateObservedDomainTable(database);
     addUnattributedPCM(database);
@@ -376,9 +376,9 @@ void setUpFromResourceLoadStatisticsDatabase(void(*addUnattributedPCM)(WebCore::
     database.close();
 }
 
-void setUpFromPCMDatabase(void(*addUnattributedPCM)(WebCore::SQLiteDatabase&), void(*addAttributedPCM)(WebCore::SQLiteDatabase&))
+void setUpFromPCMDatabase(void(*addUnattributedPCM)(CyberCore::SQLiteDatabase&), void(*addAttributedPCM)(CyberCore::SQLiteDatabase&))
 {
-    WebCore::SQLiteDatabase database;
+    CyberCore::SQLiteDatabase database;
     EXPECT_TRUE(database.open(emptyPcmDBPath()));
     createAndPopulatePCMObservedDomainTable(database);
     addUnattributedPCM(database);

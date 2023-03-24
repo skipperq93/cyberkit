@@ -30,9 +30,9 @@
 #import "PasteboardUtilities.h"
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKPreferencesRefPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKPreferencesRefPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/text/WTFString.h>
 
@@ -96,7 +96,7 @@ TEST(PasteWebArchive, SanitizesHTML)
 TEST(PasteWebArchive, PreservesMSOList)
 {
     auto *url = [NSURL URLWithString:@"file:///some-file.html"];
-    auto *markup = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"mso-list" ofType:@"html" inDirectory:@"TestWebKitAPI.resources"]];
+    auto *markup = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"mso-list" ofType:@"html" inDirectory:@"TestCyberKitAPI.resources"]];
     auto mainResource = adoptNS([[WebResource alloc] initWithData:markup URL:url MIMEType:@"text/html" textEncodingName:@"utf-8" frameName:nil]);
     auto archive = adoptNS([[WebArchive alloc] initWithMainResource:mainResource.get() subresources:nil subframeArchives:nil]);
 
@@ -112,7 +112,7 @@ TEST(PasteWebArchive, PreservesMSOList)
     [webView stringByEvaluatingJavaScript:@"window.pastedHTML = editor.innerHTML"];
 
     EXPECT_FALSE([webView stringByEvaluatingJavaScript:@"pastedHTML.startsWith('<html xmlns:o=\"urn:schemas-microsoft-com:office:office\"')"].boolValue);
-    EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"pastedHTML.includes('<style class=\"WebKit-mso-list-quirks-style\">\\n<!--\\n')"].boolValue);
+    EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"pastedHTML.includes('<style class=\"CyberKit-mso-list-quirks-style\">\\n<!--\\n')"].boolValue);
     EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"pastedHTML.includes('/* Style Definitions */')"].boolValue);
     EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"pastedHTML.includes('/* List Definitions */')"].boolValue);
     EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"pastedHTML.includes('@list l0:level1')"].boolValue);
@@ -127,7 +127,7 @@ TEST(PasteWebArchive, PreservesMSOList)
     EXPECT_WK_STREQ("rgb(255, 0, 0)", [webView stringByEvaluatingJavaScript:@"document.queryCommandValue('foreColor')"]);
 
     EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"htmlInDataTransfer.startsWith('<html xmlns:o=\"urn:schemas-microsoft-com:office:office\"')"].boolValue);
-    EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"htmlInDataTransfer.includes('<head><style class=\"WebKit-mso-list-quirks-style\">\\n<!--\\n')"].boolValue);
+    EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"htmlInDataTransfer.includes('<head><style class=\"CyberKit-mso-list-quirks-style\">\\n<!--\\n')"].boolValue);
     EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"htmlInDataTransfer.includes('/* Style Definitions */')"].boolValue);
     EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"htmlInDataTransfer.includes('/* List Definitions */')"].boolValue);
     EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"htmlInDataTransfer.includes('@list l0:level1')"].boolValue);
@@ -147,7 +147,7 @@ TEST(PasteWebArchive, PreservesMSOList)
 TEST(PasteWebArchive, PreservesMSOListInCompatibilityMode)
 {
     auto *url = [NSURL URLWithString:@"file:///some-file.html"];
-    auto *markup = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"mso-list-compat-mode" ofType:@"html" inDirectory:@"TestWebKitAPI.resources"]];
+    auto *markup = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"mso-list-compat-mode" ofType:@"html" inDirectory:@"TestCyberKitAPI.resources"]];
     auto mainResource = adoptNS([[WebResource alloc] initWithData:markup URL:url MIMEType:@"text/html" textEncodingName:@"utf-8" frameName:nil]);
     auto archive = adoptNS([[WebArchive alloc] initWithMainResource:mainResource.get() subresources:nil subframeArchives:nil]);
 
@@ -163,7 +163,7 @@ TEST(PasteWebArchive, PreservesMSOListInCompatibilityMode)
     [webView stringByEvaluatingJavaScript:@"window.pastedHTML = editor.innerHTML"];
 
     EXPECT_FALSE([webView stringByEvaluatingJavaScript:@"pastedHTML.startsWith('<html xmlns:o=\"urn:schemas-microsoft-com:office:office\"')"].boolValue);
-    EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"pastedHTML.includes('<style class=\"WebKit-mso-list-quirks-style\">\\n<!--\\n')"].boolValue);
+    EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"pastedHTML.includes('<style class=\"CyberKit-mso-list-quirks-style\">\\n<!--\\n')"].boolValue);
     EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"pastedHTML.includes('/* Style Definitions */')"].boolValue);
     EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"pastedHTML.includes('/* List Definitions */')"].boolValue);
     EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"pastedHTML.includes('@list l0:level1')"].boolValue);
@@ -174,7 +174,7 @@ TEST(PasteWebArchive, PreservesMSOListInCompatibilityMode)
     EXPECT_FALSE([webView stringByEvaluatingJavaScript:@"pastedHTML.includes('/Users/webkitten/Library/')"].boolValue);
 
     EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"htmlInDataTransfer.startsWith('<html xmlns:o=\"urn:schemas-microsoft-com:office:office\"')"].boolValue);
-    EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"htmlInDataTransfer.includes('<head><style class=\"WebKit-mso-list-quirks-style\">\\n<!--\\n')"].boolValue);
+    EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"htmlInDataTransfer.includes('<head><style class=\"CyberKit-mso-list-quirks-style\">\\n<!--\\n')"].boolValue);
     EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"htmlInDataTransfer.includes('/* Style Definitions */')"].boolValue);
     EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"htmlInDataTransfer.includes('/* List Definitions */')"].boolValue);
     EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"htmlInDataTransfer.includes('@list l0:level1')"].boolValue);
@@ -187,7 +187,7 @@ TEST(PasteWebArchive, PreservesMSOListInCompatibilityMode)
 
 static NSData *msoListMarkupWithoutProperHTMLElement()
 {
-    auto *markup = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"mso-list" ofType:@"html" inDirectory:@"TestWebKitAPI.resources"]];
+    auto *markup = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"mso-list" ofType:@"html" inDirectory:@"TestCyberKitAPI.resources"]];
     auto *markupBytes = (uint8_t *)markup.bytes;
     unsigned length = markup.length;
     for (unsigned i = 0; i < length; i++) {
@@ -215,7 +215,7 @@ TEST(PasteWebArchive, StripsMSOListWhenMissingMSOHTMLElement)
     EXPECT_WK_STREQ("[\"text/html\"]", [webView stringByEvaluatingJavaScript:@"JSON.stringify(clipboardData.types)"]);
     [webView stringByEvaluatingJavaScript:@"window.htmlInDataTransfer = clipboardData.values[0]"];
     EXPECT_FALSE([webView stringByEvaluatingJavaScript:@"htmlInDataTransfer.startsWith('<html xmlns:o=\"urn:schemas-microsoft-com:office:office\"')"].boolValue);
-    EXPECT_FALSE([webView stringByEvaluatingJavaScript:@"htmlInDataTransfer.includes('<head><style class=\"WebKit-mso-list-quirks-style\">\\n<!--\\n')"].boolValue);
+    EXPECT_FALSE([webView stringByEvaluatingJavaScript:@"htmlInDataTransfer.includes('<head><style class=\"CyberKit-mso-list-quirks-style\">\\n<!--\\n')"].boolValue);
     EXPECT_FALSE([webView stringByEvaluatingJavaScript:@"htmlInDataTransfer.includes('/* Style Definitions */')"].boolValue);
     EXPECT_FALSE([webView stringByEvaluatingJavaScript:@"htmlInDataTransfer.includes('/* List Definitions */')"].boolValue);
     EXPECT_FALSE([webView stringByEvaluatingJavaScript:@"htmlInDataTransfer.includes('@list l0:level1')"].boolValue);

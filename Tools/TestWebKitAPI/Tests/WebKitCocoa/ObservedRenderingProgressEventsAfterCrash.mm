@@ -27,13 +27,13 @@
 
 #import "PlatformUtilities.h"
 #import "TestNavigationDelegate.h"
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 #if PLATFORM(MAC)
 
-TEST(WebKit, ObservedRenderingProgressEventsAfterCrash)
+TEST(CyberKit, ObservedRenderingProgressEventsAfterCrash)
 {
     __block bool done = false;
     RetainPtr<WKWebViewConfiguration> configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
@@ -54,7 +54,7 @@ TEST(WebKit, ObservedRenderingProgressEventsAfterCrash)
     [webView _setObservedRenderingProgressEvents:_WKRenderingProgressEventFirstPaintAfterSuppressedIncrementalRendering];
     [webView _killWebContentProcessAndResetState];
     [webView loadHTMLString:@"content" baseURL:nil];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 #endif

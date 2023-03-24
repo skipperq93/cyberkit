@@ -27,8 +27,8 @@
 #import "HTTPServer.h"
 
 #import "Utilities.h"
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/CallbackAggregator.h>
 #import <wtf/CompletionHandler.h>
@@ -39,7 +39,7 @@
 #import <wtf/text/StringBuilder.h>
 #import <wtf/text/WTFString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 struct HTTPServer::RequestData : public ThreadSafeRefCounted<RequestData, WTF::DestructionThread::MainRunLoop> {
     RequestData(std::initializer_list<std::pair<String, HTTPResponse>> responses)
@@ -776,4 +776,4 @@ Vector<uint8_t> HTTPServer::testPrivateKey()
     return WTFMove(*decodedPrivateKey);
 }
     
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

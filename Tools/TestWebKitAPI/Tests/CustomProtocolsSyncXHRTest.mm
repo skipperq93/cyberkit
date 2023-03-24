@@ -32,18 +32,18 @@
 #import "Test.h"
 #import "TestBrowsingContextLoadDelegate.h"
 #import "TestProtocol.h"
-#import <WebKit/WKBrowsingContextGroupPrivate.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKRetainPtr.h>
-#import <WebKit/WKString.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKBrowsingContextGroupPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKRetainPtr.h>
+#import <CyberKit/WKString.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 static bool testFinished = false;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit2CustomProtocolsTest, SyncXHR)
+TEST(CyberKit2CustomProtocolsTest, SyncXHR)
 {
     [TestProtocol registerWithScheme:@"http"];
 
@@ -58,10 +58,10 @@ TEST(WebKit2CustomProtocolsTest, SyncXHR)
 
     WKPageLoadURL(wkView.get()._pageRefForTransitionToWKWebView, Util::createURLForResource("custom-protocol-sync-xhr", "html"));
 
-    TestWebKitAPI::Util::run(&testFinished);
+    TestCyberKitAPI::Util::run(&testFinished);
     [TestProtocol unregister];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

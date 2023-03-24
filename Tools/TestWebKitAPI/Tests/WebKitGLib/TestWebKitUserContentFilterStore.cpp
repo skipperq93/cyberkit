@@ -60,14 +60,14 @@ static const char* kSimpleJSONSource =
 
 namespace WTF {
 
-template <> WebKitUserContentFilter* refGPtr(WebKitUserContentFilter* ptr)
+template <> CyberKitUserContentFilter* refGPtr(CyberKitUserContentFilter* ptr)
 {
     if (ptr)
         webkit_user_content_filter_ref(ptr);
     return ptr;
 }
 
-template <> void derefGPtr(WebKitUserContentFilter* ptr)
+template <> void derefGPtr(CyberKitUserContentFilter* ptr)
 {
     if (ptr)
         webkit_user_content_filter_unref(ptr);
@@ -103,7 +103,7 @@ public:
         return m_filterIds.get();
     }
 
-    WebKitUserContentFilter* saveFilter(const char* filterId, const char* source)
+    CyberKitUserContentFilter* saveFilter(const char* filterId, const char* source)
     {
         GRefPtr<GBytes> sourceBytes = adoptGRef(g_bytes_new_static(source, strlen(source)));
         webkit_user_content_filter_store_save(m_filterStore.get(), filterId, sourceBytes.get(), nullptr, [](GObject* sourceObject, GAsyncResult* result, void* userData) {
@@ -115,7 +115,7 @@ public:
         return m_filter.get();
     }
 
-    WebKitUserContentFilter* saveFilterFromFile(const char* filterId, GFile* file)
+    CyberKitUserContentFilter* saveFilterFromFile(const char* filterId, GFile* file)
     {
         webkit_user_content_filter_store_save_from_file(m_filterStore.get(), filterId, file, nullptr, [](GObject* sourceObject, GAsyncResult* result, void* userData) {
             auto* test = static_cast<UserContentFilterStoreTest*>(userData);
@@ -126,7 +126,7 @@ public:
         return m_filter.get();
     }
 
-    WebKitUserContentFilter* loadFilter(const char* filterId)
+    CyberKitUserContentFilter* loadFilter(const char* filterId)
     {
         webkit_user_content_filter_store_load(m_filterStore.get(), filterId, nullptr, [](GObject* sourceObject, GAsyncResult* result, void* userData) {
             auto* test = static_cast<UserContentFilterStoreTest*>(userData);
@@ -149,7 +149,7 @@ public:
     }
 
 private:
-    GRefPtr<WebKitUserContentFilterStore> newStore()
+    GRefPtr<CyberKitUserContentFilterStore> newStore()
     {
         GUniquePtr<char> storagePath(g_build_filename(dataDirectory(), "content-filters", nullptr));
         auto store = adoptGRef(webkit_user_content_filter_store_new(storagePath.get()));
@@ -159,9 +159,9 @@ private:
         return store;
     }
 
-    GRefPtr<WebKitUserContentFilterStore> m_filterStore { newStore() };
+    GRefPtr<CyberKitUserContentFilterStore> m_filterStore { newStore() };
     GRefPtr<GMainLoop> m_mainLoop { adoptGRef(g_main_loop_new(nullptr, FALSE)) };
-    GRefPtr<WebKitUserContentFilter> m_filter;
+    GRefPtr<CyberKitUserContentFilter> m_filter;
     GUniquePtr<char*> m_filterIds;
     GUniqueOutPtr<GError> m_error;
     bool m_completedOk;
@@ -282,14 +282,14 @@ static void testFilterPersistence(UserContentFilterStoreTest* test, gconstpointe
 
 void beforeAll()
 {
-    UserContentFilterStoreTest::add("WebKitUserContentFilterStore", "empty-store", testEmptyStore);
-    UserContentFilterStoreTest::add("WebKitUserContentFilterStore", "invalid-filter-source", testSaveInvalidFilter);
-    UserContentFilterStoreTest::add("WebKitUserContentFilterStore", "filter-save-load", testSaveLoadFilter);
-    UserContentFilterStoreTest::add("WebKitUserContentFilterStore", "saved-filter-identifier-match", testSavedFilterIdentifierMatch);
-    UserContentFilterStoreTest::add("WebKitUserContentFilterStore", "remove-filter", testRemoveFilter);
-    UserContentFilterStoreTest::add("WebKitUserContentFilterStore", "save-multiple-filters", testSaveMultipleFilters);
-    UserContentFilterStoreTest::add("WebKitUserContentFilterStore", "save-from-file", testSaveFilterFromFile);
-    UserContentFilterStoreTest::add("WebKitUserContentFilterStore", "filter-persistence", testFilterPersistence);
+    UserContentFilterStoreTest::add("CyberKitUserContentFilterStore", "empty-store", testEmptyStore);
+    UserContentFilterStoreTest::add("CyberKitUserContentFilterStore", "invalid-filter-source", testSaveInvalidFilter);
+    UserContentFilterStoreTest::add("CyberKitUserContentFilterStore", "filter-save-load", testSaveLoadFilter);
+    UserContentFilterStoreTest::add("CyberKitUserContentFilterStore", "saved-filter-identifier-match", testSavedFilterIdentifierMatch);
+    UserContentFilterStoreTest::add("CyberKitUserContentFilterStore", "remove-filter", testRemoveFilter);
+    UserContentFilterStoreTest::add("CyberKitUserContentFilterStore", "save-multiple-filters", testSaveMultipleFilters);
+    UserContentFilterStoreTest::add("CyberKitUserContentFilterStore", "save-from-file", testSaveFilterFromFile);
+    UserContentFilterStoreTest::add("CyberKitUserContentFilterStore", "filter-persistence", testFilterPersistence);
 }
 
 void afterAll()

@@ -1,0 +1,89 @@
+# Copyright (C) 2022 Apple Inc. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1.  Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+# 2.  Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in the
+#     documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+header: "SessionState.h"
+[CustomHeader] struct CyberKit::HTTPBody {
+    String contentType;
+    Vector<CyberKit::HTTPBody::Element> elements;
+};
+
+[Nested] struct CyberKit::HTTPBody::Element {
+    std::variant<Vector<uint8_t>, CyberKit::HTTPBody::Element::FileData, String> data;
+};
+
+[Nested] struct CyberKit::HTTPBody::Element::FileData {
+    String filePath;
+    int64_t fileStart;
+    std::optional<int64_t> fileLength;
+    std::optional<WallTime> expectedFileModificationTime;
+};
+
+[CustomHeader, LegacyPopulateFromEmptyConstructor] class CyberKit::FrameState {
+    String urlString;
+    String originalURLString;
+    String referrer;
+    AtomString target;
+
+    std::optional<Vector<uint8_t>> stateObjectData;
+
+    int64_t documentSequenceNumber;
+    int64_t itemSequenceNumber;
+
+    CyberCore::IntPoint scrollPosition;
+    bool shouldRestoreScrollPosition;
+    float pageScaleFactor;
+
+    std::optional<CyberKit::HTTPBody> httpBody;
+
+#if PLATFORM(IOS_FAMILY)
+    CyberCore::FloatRect exposedContentRect;
+    CyberCore::IntRect unobscuredContentRect;
+    CyberCore::FloatSize minimumLayoutSizeInScrollViewCoordinates;
+    CyberCore::IntSize contentSize;
+    bool scaleIsInitial;
+    CyberCore::FloatBoxExtent obscuredInsets;
+#endif
+
+    Vector<CyberKit::FrameState> children;
+    [Validator='CyberKit::FrameState::validateDocumentState(*m_documentState)'] Vector<AtomString> m_documentState;
+};
+
+[CustomHeader] struct CyberKit::PageState {
+    String title;
+    CyberKit::FrameState mainFrameState;
+    CyberCore::ShouldOpenExternalURLsPolicy shouldOpenExternalURLsPolicy;
+    RefPtr<CyberCore::SerializedScriptValue> sessionStateObject;
+    bool wasCreatedByJSWithoutUserInteraction;
+};
+
+[CustomHeader] struct CyberKit::BackForwardListItemState {
+    CyberCore::BackForwardItemIdentifier identifier;
+
+    CyberKit::PageState pageState;
+    bool hasCachedPage;
+    # snapshot is not serialized.
+};
+
+[CustomHeader] struct CyberKit::BackForwardListState {
+    Vector<CyberKit::BackForwardListItemState> items;
+    std::optional<uint32_t> currentIndex;
+};

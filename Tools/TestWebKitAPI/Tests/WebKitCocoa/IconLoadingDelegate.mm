@@ -27,13 +27,13 @@
 
 #import "PlatformUtilities.h"
 #import "Test.h"
-#import <WebKit/WKURLSchemeHandler.h>
-#import <WebKit/WKURLSchemeTask.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/_WKIconLoadingDelegate.h>
-#import <WebKit/_WKLinkIconParameters.h>
+#import <CyberKit/WKURLSchemeHandler.h>
+#import <CyberKit/WKURLSchemeTask.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/CyberKit.h>
+#import <CyberKit/_WKIconLoadingDelegate.h>
+#import <CyberKit/_WKLinkIconParameters.h>
 #import <wtf/RetainPtr.h>
 
 static bool doneWithIcons;
@@ -173,8 +173,8 @@ TEST(IconLoading, DefaultFavicon)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"testing:///main"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&doneWithIcons);
-    TestWebKitAPI::Util::run(&iconDelegate.get()->receivedFaviconDataCallback);
+    TestCyberKitAPI::Util::run(&doneWithIcons);
+    TestCyberKitAPI::Util::run(&iconDelegate.get()->receivedFaviconDataCallback);
 
     auto* faviconParameters = iconDelegate.get()->favicon.get();
     EXPECT_WK_STREQ("testing:///favicon.ico", faviconParameters.url.absoluteString);
@@ -202,7 +202,7 @@ TEST(IconLoading, AlreadyCachedIcon)
     NSData *mainData = [NSData dataWithBytesNoCopy:(void*)mainBytes2 length:sizeof(mainBytes2) freeWhenDone:NO];
     RetainPtr<IconLoadingSchemeHandler> handler = adoptNS([[IconLoadingSchemeHandler alloc] initWithData:mainData]);
 
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"large-red-square-image" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"large-red-square-image" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     RetainPtr<NSData> iconDataFromDisk = [NSData dataWithContentsOfURL:url];
     [handler.get() setFaviconData:iconDataFromDisk.get()];
 
@@ -216,7 +216,7 @@ TEST(IconLoading, AlreadyCachedIcon)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"testing:///main"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&iconDelegate.get()->receivedFaviconDataCallback);
+    TestCyberKitAPI::Util::run(&iconDelegate.get()->receivedFaviconDataCallback);
 
     EXPECT_TRUE([iconDataFromDisk.get() isEqual:iconDelegate.get()->receivedFaviconData.get()]);
 
@@ -227,7 +227,7 @@ TEST(IconLoading, AlreadyCachedIcon)
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"testing:///main2"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&iconDelegate.get()->receivedFaviconDataCallback);
+    TestCyberKitAPI::Util::run(&iconDelegate.get()->receivedFaviconDataCallback);
 
     EXPECT_TRUE([iconDataFromDisk.get() isEqual:iconDelegate.get()->receivedFaviconData.get()]);
 }
@@ -249,15 +249,15 @@ TEST(IconLoading, IconLoadCancelledCallback)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"testing:///main"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&handler.get()->receivedFaviconTask);
+    TestCyberKitAPI::Util::run(&handler.get()->receivedFaviconTask);
 
     // Our scheme handler never replies to the favicon task, so our icon delegate load callback is still pending.
     // Stop the documentloader's loading and verify the icon delegate callback is called.
     [webView stopLoading];
 
     // Wait until the data callback is called, *and* the task is stopped
-    TestWebKitAPI::Util::run(&handler.get()->faviconTaskStopped);
-    TestWebKitAPI::Util::run(&iconDelegate.get()->receivedFaviconDataCallback);
+    TestCyberKitAPI::Util::run(&handler.get()->faviconTaskStopped);
+    TestCyberKitAPI::Util::run(&iconDelegate.get()->receivedFaviconDataCallback);
 
     EXPECT_EQ(iconDelegate.get()->receivedFaviconData.get().length, (unsigned long)0);
 }
@@ -279,7 +279,7 @@ TEST(IconLoading, IconLoadCancelledCallback2)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"testing:///main"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&iconDelegate.get()->didSaveCallback);
+    TestCyberKitAPI::Util::run(&iconDelegate.get()->didSaveCallback);
 
     // Our scheme handler never replies to the favicon task, so our icon delegate load callback is still pending.
     // Stop the documentloader's loading and verify the icon delegate callback is called.
@@ -295,5 +295,5 @@ TEST(IconLoading, IconLoadCancelledCallback2)
         *iconCallbackCalled = true;
     });
 
-    TestWebKitAPI::Util::run(&iconCallbackCalled);
+    TestCyberKitAPI::Util::run(&iconCallbackCalled);
 }

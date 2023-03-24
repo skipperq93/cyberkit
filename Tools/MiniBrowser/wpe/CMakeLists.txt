@@ -6,8 +6,8 @@ set(MiniBrowser_PRIVATE_INCLUDE_DIRECTORIES
     ${CMAKE_BINARY_DIR}
     ${DERIVED_SOURCES_WPE_API_DIR}
     ${FORWARDING_HEADERS_WPE_DIR}
-    ${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}
-    ${JavaScriptCoreGLib_FRAMEWORK_HEADERS_DIR}
+    ${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}
+    ${CyberScriptCoreGLib_FRAMEWORK_HEADERS_DIR}
 )
 
 set(MiniBrowser_SYSTEM_INCLUDE_DIRECTORIES
@@ -19,11 +19,11 @@ set(MiniBrowser_SYSTEM_INCLUDE_DIRECTORIES
 
 set(MiniBrowser_PRIVATE_LIBRARIES
     ${ATK_LIBRARIES}
-    ${JavaScriptCore_LIBRARY_NAME}
+    ${CyberScriptCore_LIBRARY_NAME}
     ${WPEBACKEND_FDO_LIBRARIES}
     WPE::libwpe
-    WebKit::WPEToolingBackends
-    WebKit::WebKit
+    CyberKit::WPEToolingBackends
+    CyberKit::CyberKit
 )
 
 if (NOT USE_GSTREAMER_FULL)

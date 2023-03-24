@@ -31,7 +31,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_CompactRefPtrTuple, Basic)
 {
@@ -126,4 +126,4 @@ TEST(WTF_CompactRefPtrTuple, Basic)
     EXPECT_STREQ("ref(a) deref(a) ", takeLogStr().c_str());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

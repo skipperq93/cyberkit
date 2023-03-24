@@ -28,7 +28,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-"""Run unit tests of WebKit's Perl, Python, and Ruby scripts."""
+"""Run unit tests of CyberKit's Perl, Python, and Ruby scripts."""
 
 # The docstring above is passed as the "description" to the OptionParser
 # used in this script's __main__ block.
@@ -44,7 +44,7 @@ from optparse import OptionParser
 
 class ScriptsTester(object):
 
-    """Supports running unit tests of WebKit scripts."""
+    """Supports running unit tests of CyberKit scripts."""
 
     def __init__(self, scripts_directory):
         self.scripts_directory = scripts_directory

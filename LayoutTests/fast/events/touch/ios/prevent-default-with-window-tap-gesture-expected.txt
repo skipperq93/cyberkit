@@ -1,4 +1,4 @@
-This test verifies that a gesture recognizer installed on the window containing the web view is not prevented from recognizing if the web page prevents default on touchstart. This test requires WebKitTestRunner.
+This test verifies that a gesture recognizer installed on the window containing the web view is not prevented from recognizing if the web page prevents default on touchstart. This test requires CyberKitTestRunner.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

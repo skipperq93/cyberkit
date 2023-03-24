@@ -37,19 +37,19 @@ public:
     void platformDestroy();
 
     virtual void loadURI(const char* uri);
-    virtual void loadHtml(const char* html, const char* baseURI, WebKitWebView* = nullptr);
+    virtual void loadHtml(const char* html, const char* baseURI, CyberKitWebView* = nullptr);
     virtual void loadPlainText(const char* plainText);
-    virtual void loadRequest(WebKitURIRequest*);
+    virtual void loadRequest(CyberKitURIRequest*);
     virtual void loadBytes(GBytes*, const char* mimeType, const char* encoding, const char* baseURI);
     void loadAlternateHTML(const char* html, const char* contentURI, const char* baseURI);
     void goBack();
     void goForward();
-    void goToBackForwardListItem(WebKitBackForwardListItem*);
+    void goToBackForwardListItem(CyberKitBackForwardListItem*);
 
     void quitMainLoop();
     void quitMainLoopAfterProcessingPendingEvents();
     void wait(double seconds);
-    void waitUntilLoadFinished(WebKitWebView* = nullptr);
+    void waitUntilLoadFinished(CyberKitWebView* = nullptr);
     void waitUntilTitleChangedTo(const char* expectedTitle);
     void waitUntilTitleChanged();
     void waitUntilIsWebProcessResponsiveChanged();
@@ -73,7 +73,7 @@ public:
     void emitPopupMenuSignal();
 #endif
 
-    JSCValue* runJavaScriptAndWaitUntilFinished(const char* javascript, GError**, WebKitWebView* = nullptr);
+    JSCValue* runJavaScriptAndWaitUntilFinished(const char* javascript, GError**, CyberKitWebView* = nullptr);
     JSCValue* runJavaScriptAndWaitUntilFinished(const char* javascript, gsize, GError**);
     JSCValue* runJavaScriptFromGResourceAndWaitUntilFinished(const char* resource, GError**);
     JSCValue* runJavaScriptInWorldAndWaitUntilFinished(const char* javascript, const char* world, const char* sourceURI, GError**);
@@ -88,15 +88,15 @@ public:
     static bool javascriptResultIsNull(JSCValue*);
     static bool javascriptResultIsUndefined(JSCValue*);
 #if !ENABLE(2022_GLIB_API)
-    static char* javascriptResultToCString(WebKitJavascriptResult*);
-    static double javascriptResultToNumber(WebKitJavascriptResult*);
-    static bool javascriptResultToBoolean(WebKitJavascriptResult*);
-    static bool javascriptResultIsNull(WebKitJavascriptResult*);
-    static bool javascriptResultIsUndefined(WebKitJavascriptResult*);
+    static char* javascriptResultToCString(CyberKitJavascriptResult*);
+    static double javascriptResultToNumber(CyberKitJavascriptResult*);
+    static bool javascriptResultToBoolean(CyberKitJavascriptResult*);
+    static bool javascriptResultIsNull(CyberKitJavascriptResult*);
+    static bool javascriptResultIsUndefined(CyberKitJavascriptResult*);
 #endif
 
 #if PLATFORM(GTK)
-    cairo_surface_t* getSnapshotAndWaitUntilReady(WebKitSnapshotRegion, WebKitSnapshotOptions);
+    cairo_surface_t* getSnapshotAndWaitUntilReady(CyberKitSnapshotRegion, CyberKitSnapshotOptions);
 #endif
 
     bool runWebProcessTest(const char* suiteName, const char* testName, const char* contents = nullptr, const char* contentType = nullptr);
@@ -105,12 +105,12 @@ public:
     // in our constructor, before a derived class's vtable is ready.
     void initializeWebProcessExtensions() final { Test::initializeWebProcessExtensions(); }
 
-    static gboolean webProcessTerminated(WebKitWebView*, WebKitWebProcessTerminationReason, WebViewTest*);
+    static gboolean webProcessTerminated(CyberKitWebView*, CyberKitWebProcessTerminationReason, WebViewTest*);
 
     GRefPtr<GDBusProxy> extensionProxy();
 
-    GRefPtr<WebKitUserContentManager> m_userContentManager;
-    WebKitWebView* m_webView { nullptr };
+    GRefPtr<CyberKitUserContentManager> m_userContentManager;
+    CyberKitWebView* m_webView { nullptr };
     GMainLoop* m_mainLoop;
     CString m_activeURI;
     CString m_expectedTitle;

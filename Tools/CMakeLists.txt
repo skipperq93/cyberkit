@@ -17,10 +17,10 @@ if (ENABLE_LAYOUT_TESTS)
     endif ()
 
     if (ENABLE_WEBKIT)
-        add_subdirectory(WebKitTestRunner)
+        add_subdirectory(CyberKitTestRunner)
     endif ()
 endif ()
 
 if (ENABLE_API_TESTS)
-    add_subdirectory(TestWebKitAPI)
+    add_subdirectory(TestCyberKitAPI)
 endif ()

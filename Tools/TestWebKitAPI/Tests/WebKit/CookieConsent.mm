@@ -26,9 +26,9 @@
 #import "config.h"
 
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WebKitPrivate.h>
-#import <WebKit/_WKFeature.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/CyberKitPrivate.h>
+#import <CyberKit/_WKFeature.h>
 
 @interface CookieConsentDelegate : NSObject<WKUIDelegatePrivate>
 @property (nonatomic) BOOL decision;
@@ -43,7 +43,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static RetainPtr<TestWKWebView> createWebViewForTestingCookieConsent()
 {
@@ -99,4 +99,4 @@ TEST(CookieConsent, ThrowsExceptionWithoutDelegate)
     checkForString(webView.get(), @"threw exception: NotSupportedError: The operation is not supported");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

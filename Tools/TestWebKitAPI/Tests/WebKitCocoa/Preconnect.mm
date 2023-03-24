@@ -31,8 +31,8 @@
 #import "TestUIDelegate.h"
 #import "Utilities.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/RetainPtr.h>
 
@@ -48,7 +48,7 @@
 @end
 #endif
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(Preconnect, HTTP)
 {
@@ -196,7 +196,7 @@ TEST(Preconnect, H2Ping)
     EXPECT_EQ(headersCount, 1u);
 }
 
-TEST(Preconnect, H2PingFromWebCoreNSURLSession)
+TEST(Preconnect, H2PingFromCyberCoreNSURLSession)
 {
     size_t headersCount = 0;
     HTTPServer server([headersCount = &headersCount] (Connection tlsConnection) {

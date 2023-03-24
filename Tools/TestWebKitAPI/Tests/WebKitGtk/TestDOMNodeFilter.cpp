@@ -31,20 +31,20 @@
 static const char* testHTML = "<html id='root'><head><title>DOMNodeTreeWalker</title></head>"
     "<body><input type='button' name='push' value='push'><input type='button' name='clear' value='clear'><br></body></html>";
 
-static void testWebKitDOMNodeFilterTreeWalker(WebViewTest* test, gconstpointer)
+static void testCyberKitDOMNodeFilterTreeWalker(WebViewTest* test, gconstpointer)
 {
-    g_assert_true(test->runWebProcessTest("WebKitDOMNodeFilter", "tree-walker", testHTML));
+    g_assert_true(test->runWebProcessTest("CyberKitDOMNodeFilter", "tree-walker", testHTML));
 }
 
-static void testWebKitDOMNodeFilterNodeIterator(WebViewTest* test, gconstpointer)
+static void testCyberKitDOMNodeFilterNodeIterator(WebViewTest* test, gconstpointer)
 {
-    g_assert_true(test->runWebProcessTest("WebKitDOMNodeFilter", "node-iterator", testHTML));
+    g_assert_true(test->runWebProcessTest("CyberKitDOMNodeFilter", "node-iterator", testHTML));
 }
 
 void beforeAll()
 {
-    WebViewTest::add("WebKitDOMNodeFilter", "tree-walker", testWebKitDOMNodeFilterTreeWalker);
-    WebViewTest::add("WebKitDOMNodeFilter", "node-iterator", testWebKitDOMNodeFilterNodeIterator);
+    WebViewTest::add("CyberKitDOMNodeFilter", "tree-walker", testCyberKitDOMNodeFilterTreeWalker);
+    WebViewTest::add("CyberKitDOMNodeFilter", "node-iterator", testCyberKitDOMNodeFilterNodeIterator);
 }
 
 void afterAll()

@@ -28,12 +28,12 @@
 #import "TestWKWebView.h"
 #import "Utilities.h"
 #import <Foundation/NSProgress.h>
-#import <WebKit/WKBrowsingContextController.h>
-#import <WebKit/WKNavigationDelegatePrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewConfiguration.h>
-#import <WebKit/_WKDownload.h>
-#import <WebKit/_WKDownloadDelegate.h>
+#import <CyberKit/WKBrowsingContextController.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewConfiguration.h>
+#import <CyberKit/_WKDownload.h>
+#import <CyberKit/_WKDownloadDelegate.h>
 #import <pal/spi/cocoa/NSProgressSPI.h>
 #import <sys/xattr.h>
 #import <wtf/BlockPtr.h>
@@ -231,12 +231,12 @@ static void* progressObservingContext = &progressObservingContext;
         m_progressSubscriber = [NSProgress addSubscriberForFileURL:m_progressURL.get() withPublishingHandler:publishingHandler.get()];
 #endif
     }
-    TestWebKitAPI::Util::run(&m_hasProgress);
+    TestCyberKitAPI::Util::run(&m_hasProgress);
 }
 
 - (void)waitToLoseProgress
 {
-    TestWebKitAPI::Util::run(&m_lostProgress);
+    TestCyberKitAPI::Util::run(&m_lostProgress);
 }
 
 - (void)startDownload:(DownloadStartType)startType expectedLength:(NSInteger)expectedLength
@@ -261,7 +261,7 @@ static void* progressObservingContext = &progressObservingContext;
         break;
     }
 
-    TestWebKitAPI::Util::run(&m_downloadStarted);
+    TestCyberKitAPI::Util::run(&m_downloadStarted);
 }
 
 - (void)publishProgress
@@ -294,22 +294,22 @@ static void* progressObservingContext = &progressObservingContext;
 
 - (void)waitForDownloadDidCreateDestination
 {
-    TestWebKitAPI::Util::run(&m_downloadDidCreateDestination);
+    TestCyberKitAPI::Util::run(&m_downloadDidCreateDestination);
 }
 
 - (void)waitForDownloadFinished
 {
-    TestWebKitAPI::Util::run(&m_downloadFinished);
+    TestCyberKitAPI::Util::run(&m_downloadFinished);
 }
 
 - (void)waitForDownloadCanceled
 {
-    TestWebKitAPI::Util::run(&m_downloadCanceled);
+    TestCyberKitAPI::Util::run(&m_downloadCanceled);
 }
 
 - (void)waitForDownloadFailed
 {
-    TestWebKitAPI::Util::run(&m_downloadFailed);
+    TestCyberKitAPI::Util::run(&m_downloadFailed);
 }
 
 - (NSURL *)progressURL
@@ -319,7 +319,7 @@ static void* progressObservingContext = &progressObservingContext;
 
 - (int64_t)waitForUpdatedCompletedUnitCount
 {
-    TestWebKitAPI::Util::run(&m_hasUpdatedCompletedUnitCount);
+    TestCyberKitAPI::Util::run(&m_hasUpdatedCompletedUnitCount);
     m_hasUpdatedCompletedUnitCount = false;
 
     return m_progress.get().completedUnitCount;
@@ -393,7 +393,7 @@ static void* progressObservingContext = &progressObservingContext;
     EXPECT_EQ(download, m_download.get());
 
     FileSystem::PlatformFileHandle fileHandle;
-    RetainPtr<NSString> path = (NSString *)FileSystem::openTemporaryFile("TestWebKitAPI"_s, fileHandle);
+    RetainPtr<NSString> path = (NSString *)FileSystem::openTemporaryFile("TestCyberKitAPI"_s, fileHandle);
     EXPECT_TRUE(fileHandle != FileSystem::invalidPlatformFileHandle);
     FileSystem::closeFile(fileHandle);
 

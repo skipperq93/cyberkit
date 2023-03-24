@@ -38,7 +38,7 @@
 // The benchmark was originally implemented in BCPL by
 // Martin Richards. It was then ported to JavaScript by the
 // V8 project authors, and then subsequently it was modified
-// to use getters and setters by WebKit authors.
+// to use getters and setters by CyberKit authors.
 
 let __exceptionCounter = 0;
 function randomException() {

@@ -27,7 +27,7 @@
 
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
-#import <WebKit/WebBackForwardList.h>
+#import <CyberKit/WebBackForwardList.h>
 #import <wtf/RetainPtr.h>
 
 @interface BackForwardListTest : NSObject <WebFrameLoadDelegate> {
@@ -50,9 +50,9 @@ static bool didFinishLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, ReloadBackForward)
+TEST(CyberKitLegacy, ReloadBackForward)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<BackForwardListTest> testController = adoptNS([BackForwardListTest new]);
@@ -69,4 +69,4 @@ TEST(WebKitLegacy, ReloadBackForward)
     EXPECT_EQ(0, [bfList backListCount]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

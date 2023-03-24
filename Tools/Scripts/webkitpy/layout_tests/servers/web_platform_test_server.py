@@ -170,7 +170,7 @@ class WebPlatformTestServer(http_server_base.HttpServerBase):
         self._output_log_path = self._filesystem.join(self._output_dir, self._log_file_name)
         self._wsout = self._filesystem.open_text_file_for_writing(self._output_log_path)
 
-        _log.debug('Copying WebKit web platform server config.json')
+        _log.debug('Copying CyberKit web platform server config.json')
         config = wpt_config_json(self._port_obj)
         if config:
             self._filesystem.write_text_file(self._config_filename, json.dumps(config))

@@ -26,7 +26,7 @@
 #include "config.h"
 #include <wtf/cf/VectorCF.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(VectorCF, CreateCFArray_CFString)
 {
@@ -168,4 +168,4 @@ TEST(VectorCF, VectorFromCFData)
     EXPECT_TRUE(&bytes[0] != &vectorData[0]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

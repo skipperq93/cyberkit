@@ -138,7 +138,7 @@ sub main()
     my $gitCommit = 0;
     my $gitIndex = "";
     my $gitReviewer = "";
-    my $checkWebKitStyle = 0;
+    my $checkCyberKitStyle = 0;
     my $openChangeLogs = 0;
     my $writeChangeLogs = 1;
     my $delimiters = 0;
@@ -158,7 +158,7 @@ sub main()
                    "git-index" => \$gitIndex,
                    "git-reviewer:s" => \$gitReviewer,
                    "help|h!" => \$showHelp,
-                   "style!" => \$checkWebKitStyle,
+                   "style!" => \$checkCyberKitStyle,
                    "open|o!" => \$openChangeLogs,
                    "write!" => \$writeChangeLogs,
                    "update!" => \$updateChangeLogs,
@@ -184,7 +184,7 @@ sub main()
         return 1;
     }
 
-    if ($checkWebKitStyle) {
+    if ($checkCyberKitStyle) {
         print STDERR "  Running check-webkit-style.\n  ";
         system "$FindBin::Bin/check-webkit-style";
     }
@@ -569,9 +569,9 @@ sub findChangeLogs($$)
         } elsif ($prefixDir eq "Tools") {
             $sortKey = "-, just after top level";
         } elsif ($prefixDir eq "WebBrowser") {
-            $sortKey = lc "WebKit, WebBrowser after";
-        } elsif ($prefixDir eq "Source/WebCore") {
-            $sortKey = lc "WebFoundation, WebCore after";
+            $sortKey = lc "CyberKit, WebBrowser after";
+        } elsif ($prefixDir eq "Source/CyberCore") {
+            $sortKey = lc "WebFoundation, CyberCore after";
         } elsif ($prefixDir eq "LayoutTests") {
             $sortKey = lc "~, LayoutTests last";
         }
@@ -645,10 +645,10 @@ sub generateNewChangeLogs($$$$$$$$$$$$$$$)
 {
     my ($prefixes, $filesInChangeLog, $addedRegressionTests, $requiresTests, $functionLists, $bugURL, $bugDescription, $bugRadarURL, $name, $emailAddress, $gitReviewer, $gitCommit, $writeChangeLogs, $delimiters, $onlyFiles) = @_;
 
-    my $hasWebCoreChange = 0;
+    my $hasCyberCoreChange = 0;
     foreach my $prefix (@$prefixes) {
-        if (unixPath($prefix) =~ m|/WebCore/$|) {
-            $hasWebCoreChange = 1;
+        if (unixPath($prefix) =~ m|/CyberCore/$|) {
+            $hasCyberCoreChange = 1;
         }
     }
 
@@ -703,8 +703,8 @@ sub generateNewChangeLogs($$$$$$$$$$$$$$$)
         }
 
         my $shouldMentionTests = @$requiresTests;
-        $shouldMentionTests |= !$hasWebCoreChange && unixPath($prefix) =~ m|/WebKit/$|;
-        $shouldMentionTests |= unixPath($prefix) =~ m|/WebCore/$|;
+        $shouldMentionTests |= !$hasCyberCoreChange && unixPath($prefix) =~ m|/CyberKit/$|;
+        $shouldMentionTests |= unixPath($prefix) =~ m|/CyberCore/$|;
 
         if ($shouldMentionTests) {
             if (@$addedRegressionTests) {

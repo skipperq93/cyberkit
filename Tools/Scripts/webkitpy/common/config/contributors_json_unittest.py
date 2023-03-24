@@ -24,13 +24,13 @@ import json
 import os
 import unittest
 from webkitpy.common.system.filesystem import FileSystem
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 
 
 class ContributorsJsonTest(unittest.TestCase):
     def load_json(self):
         json_path = os.path.join(
-            WebKitFinder(FileSystem()).webkit_base(),
+            CyberKitFinder(FileSystem()).webkit_base(),
             'metadata', 'contributors.json',
         )
         try:

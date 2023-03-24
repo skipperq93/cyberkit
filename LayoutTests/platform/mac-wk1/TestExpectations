@@ -1,5 +1,5 @@
 # This file should contain entries for expectations that are specific
-# to the Apple Mac port running WebKit1 (DumpRenderTree)
+# to the Apple Mac port running CyberKit1 (DumpRenderTree)
 
 #//////////////////////////////////////////////////////////////////////////////////////////
 # Platform-specific tests. Skipped globally, then re-enabled here.
@@ -48,7 +48,7 @@ imported/w3c/web-platform-tests/webcodecs [ Skip ]
 #//////////////////////////////////////////////////////////////////////////////////////////
 
 #//////////////////////////////////////////////////////////////////////////////////////////
-# Features not supported in WebKit1
+# Features not supported in CyberKit1
 #//////////////////////////////////////////////////////////////////////////////////////////
 
 fast/css-custom-paint [ Skip ]
@@ -72,21 +72,21 @@ http/tests/navigation/page-cache-mediastream.html [ Skip ]
 media/audio-session-category.html [ Skip ]
 media/audio-session-category-at-most-recent-playback.html [ Skip ]
 
-# No support for the Clear-Site-Data header in WebKit1.
+# No support for the Clear-Site-Data header in CyberKit1.
 imported/w3c/web-platform-tests/clear-site-data [ Skip ]
 http/tests/clear-site-data [ Skip ]
 
-# The Screen Wake Lock API is not supportted in WebKit1.
+# The Screen Wake Lock API is not supportted in CyberKit1.
 imported/w3c/web-platform-tests/screen-wake-lock [ Skip ]
 
-# The Screen Orientation API is not supportted in WebKit1.
+# The Screen Orientation API is not supportted in CyberKit1.
 imported/w3c/web-platform-tests/screen-orientation [ Skip ]
 
 # WPT Fetch has a large number of failures on WK1. Skip them all for now
 # webkit.org/b/247981
 imported/w3c/web-platform-tests/fetch [ Skip ]
 
-# Shared workers are only implemented for WebKit2.
+# Shared workers are only implemented for CyberKit2.
 http/tests/navigation/page-cache-shared-worker.html [ Skip ]
 http/tests/workers/shared [ Skip ]
 imported/w3c/web-platform-tests/WebCryptoAPI/historical.any.sharedworker.html [ Skip ]
@@ -769,12 +769,12 @@ imported/w3c/web-platform-tests/fetch/content-encoding/gzip-body.any.servicework
 imported/w3c/web-platform-tests/fetch/content-encoding/gzip-body.any.sharedworker.html [ Skip ]
 imported/w3c/web-platform-tests/fetch/content-encoding/gzip-body.any.worker.html [ Skip ]
 
-# WebKitLegacy doesn't support https-based WPT
+# CyberKitLegacy doesn't support https-based WPT
 webkit.org/b/246719 imported/w3c/web-platform-tests/reporting/generateTestReport-honors-endpoint.https.sub.html [ Failure ]
 webkit.org/b/246719 imported/w3c/web-platform-tests/reporting/cross-origin-report-no-credentials.https.sub.html [ Failure ]
 webkit.org/b/246719 imported/w3c/web-platform-tests/reporting/cross-origin-reports-isolated.https.sub.html [ Failure ]
 
-# WebKitLegacy is flaky on reporting API
+# CyberKitLegacy is flaky on reporting API
 webkit.org/b/246350 imported/w3c/web-platform-tests/content-security-policy/reporting-api/reporting-api-sends-reports-on-violation.https.sub.html [ Pass Failure ]
 webkit.org/b/246350 imported/w3c/web-platform-tests/content-security-policy/reporting-api/report-to-directive-allowed-in-meta.https.sub.html [ Pass Failure ]
 
@@ -813,7 +813,7 @@ accessibility/mac/date-input-increment-decrement.html [ Skip ]
 
 accessibility/display-contents-dynamically-added-children.html [ Skip ]
 
-# DOM paste access requests are not implemented in WebKit1.
+# DOM paste access requests are not implemented in CyberKit1.
 editing/async-clipboard/clipboard-change-data-while-reading.html [ Skip ]
 editing/async-clipboard/clipboard-do-not-read-text-from-platform-if-text-changes.html [ Skip ]
 editing/async-clipboard/clipboard-read-text-from-platform.html [ Skip ]
@@ -967,11 +967,11 @@ media/now-playing-status-without-media.html [ Skip ]
 # WebM not supported in WK1 on macOS.
 http/tests/media/video-webm-stall.html
 
-# Screenshots timeline does not capture screenshots for changes in WebKitLegacy.
+# Screenshots timeline does not capture screenshots for changes in CyberKitLegacy.
 webkit.org/b/251113 inspector/timeline/timeline-event-screenshots.html [ Skip ]
 
 #//////////////////////////////////////////////////////////////////////////////////////////
-# End features not supported in WebKit1
+# End features not supported in CyberKit1
 #//////////////////////////////////////////////////////////////////////////////////////////
 
 ###### This file has two sections. When adding new tests, make sure to
@@ -983,10 +983,10 @@ webkit.org/b/251113 inspector/timeline/timeline-event-screenshots.html [ Skip ]
 ########################################
 ### START OF (1) Failures with bug reports
 
-# Asserts in WebKit1-debug due to a preexisting issue with overflow rect computation
+# Asserts in CyberKit1-debug due to a preexisting issue with overflow rect computation
 webkit.org/b/118269 compositing/geometry/fixed-position-flipped-writing-mode.html
 
-# Before Yosemite, the test did not actually test compositing vs. non-compositing on WebKit1, so it passed accidentally.
+# Before Yosemite, the test did not actually test compositing vs. non-compositing on CyberKit1, so it passed accidentally.
 webkit.org/b/132421 fast/multicol/fixed-stack.html [ ImageOnlyFailure ]
 
 webkit.org/b/104104 fast/overflow/scrollbar-click-retains-focus.html [ Failure ]
@@ -1050,7 +1050,7 @@ webkit.org/b/187230 editing/mac/pasteboard/can-copy-url-without-title.html [ Ski
 ########################################
 ### START OF (2) Failures without bug reports
 
-# Fails with WebKit1 only.
+# Fails with CyberKit1 only.
 editing/secure-input/reset-state-on-navigation.html [ Failure ]
 
 # Context menu API is not exposed on DumpRenderTree.
@@ -1323,8 +1323,8 @@ css3/masking/mask-repeat-space-padding.html [ ImageOnlyFailure ]
 
 webkit.org/b/152178 fast/replaced/replaced-breaking.html [ Failure ]
 
-# DRT can open way more files than the DatabaseProcess with WebKitTestRunner, and the number is reasonable.
-# So we shouldn't bother with this test in WebKit1.
+# DRT can open way more files than the DatabaseProcess with CyberKitTestRunner, and the number is reasonable.
+# So we shouldn't bother with this test in CyberKit1.
 storage/indexeddb/modern/exceed-open-file-limit.html
 
 # Only fails in WK1
@@ -1333,7 +1333,7 @@ imported/w3c/web-platform-tests/cookies/secure/set-from-ws.sub.html [ Failure ]
 
 webkit.org/b/244308 imported/w3c/web-platform-tests/cookies/attributes/attributes-ctl.sub.html [ Pass Failure ]
 
-# WebKit1 frames use native scrollbars causing these tests to fail.
+# CyberKit1 frames use native scrollbars causing these tests to fail.
 imported/w3c/web-platform-tests/css/css-scroll-snap/scroll-target-padding-001.html [ ImageOnlyFailure ]
 imported/w3c/web-platform-tests/css/css-scroll-snap/scroll-snap-stop-change.html [ Failure ]
 
@@ -1347,11 +1347,11 @@ imported/w3c/web-platform-tests/fetch/metadata/unload.https.sub.html [ Skip ]
 ### END OF (2) Failures without bug reports
 ########################################
 
-# These tests are WebKit2-only
+# These tests are CyberKit2-only
 http/tests/contentfiltering/load-substitute-data-from-appcache.html
 fast/dom/Window/child-window-focus.html
 
-# Testing the system language declaratively only makes sense in WK2, because it's implemented in WebKitTestRunner by launching a new WebContent process.
+# Testing the system language declaratively only makes sense in WK2, because it's implemented in CyberKitTestRunner by launching a new WebContent process.
 fast/text/international/system-language [ Pass Failure ImageOnlyFailure ]
 
 # Imported Blink tests which have not been investigated.
@@ -1373,7 +1373,7 @@ imported/blink/svg/custom/marker-layout-invalidation.html [ Pass Timeout ]
 imported/blink/fast/css/crash-corner-present.html [ Pass Timeout ]
 imported/blink/compositing/layer-creation/iframe-clip-removed.html [ Pass Timeout ]
 
-# Lacking WK1 TestRunner API that evaluates JavaScript through JSC APIs and not WebCore APIs.
+# Lacking WK1 TestRunner API that evaluates JavaScript through JSC APIs and not CyberCore APIs.
 inspector/script-profiler/event-type-API.html [ Skip ]
 
 # WK1 Inspector running in the same VM as the inspected page skews heap snapshot results.
@@ -1490,7 +1490,7 @@ webkit.org/b/163361 imported/w3c/web-platform-tests/html/webappapis/animation-fr
 webkit.org/b/163361 imported/w3c/web-platform-tests/html/webappapis/animation-frames/callback-invoked.html [ Pass Failure ]
 webkit.org/b/163361 imported/w3c/web-platform-tests/html/webappapis/animation-frames/callback-multicalls.html [ Pass Failure ]
 
-# Resource Metrics data not available in WebKit1.
+# Resource Metrics data not available in CyberKit1.
 http/wpt/resource-timing/rt-nextHopProtocol.html [ Failure ]
 http/wpt/resource-timing/rt-nextHopProtocol.worker.html [ Failure ]
 http/tests/inspector/network/resource-request-headers.html [ Failure ]
@@ -1499,12 +1499,12 @@ http/tests/inspector/network/resource-sizes-memory-cache.html [ Failure ]
 [ Release ] http/tests/inspector/network/har/har-page-aggressive-gc.html [ Failure ]
 [ Debug ] http/tests/inspector/network/har/har-page-aggressive-gc.html [ Slow Failure ]
 
-# Paint Timing is not available in WebKit1
+# Paint Timing is not available in CyberKit1
 imported/w3c/web-platform-tests/paint-timing [ Skip ]
 performance-api/paint-timing [ Skip ]
 http/tests/performance/paint-timing [ Skip ]
 
-# Network interception is not available in WebKit1
+# Network interception is not available in CyberKit1
 http/tests/inspector/network/intercept-request-fragment.html [ Skip ]
 http/tests/inspector/network/intercept-request-main-resource.html [ Skip ]
 http/tests/inspector/network/intercept-request-main-resource-with-response.html [ Skip ]
@@ -1605,7 +1605,7 @@ fast/images/low-memory-decode.html [ Skip ]
 http/tests/workers/service [ Skip ]
 http/tests/inspector/network/resource-response-service-worker.html [ Skip ]
 
-# Link preconnect is disabled on WebKit1 because it does not use NETWORK_SESSION.
+# Link preconnect is disabled on CyberKit1 because it does not use NETWORK_SESSION.
 http/tests/preconnect [ Skip ]
 
 webkit.org/b/175345 fast/images/animated-gif-scrolling-crash.html [ Pass Timeout ]
@@ -1896,7 +1896,7 @@ accessibility/mac/mathml-root.html [ Skip ]
 accessibility/deep-tree.html [ Skip ]
 accessibility/mac/table-wrapped-by-role-grid.html [ Skip ]
 
-# <rdar://problem/61066929> [ Stress GC ] flaky JSC::ExceptionScope::assertNoException crash under WebCore::ReadableStreamDefaultController
+# <rdar://problem/61066929> [ Stress GC ] flaky JSC::ExceptionScope::assertNoException crash under CyberCore::ReadableStreamDefaultController
 webkit.org/b/211923 imported/w3c/web-platform-tests/fetch/api/basic/stream-safe-creation.any.html [ Pass Crash ]
 
 webkit.org/b/212665 svg/custom/textPath-insert-path.svg [ Pass ImageOnlyFailure ]
@@ -1967,10 +1967,10 @@ webkit.org/b/215452 [ Debug ] imported/w3c/web-platform-tests/css/css-grid/grid-
 
 webkit.org/b/231103 imported/w3c/web-platform-tests/css/css-multicol/multicol-gap-percentage-001.html [ Pass Failure ]
 
-# <rdar://problem/30897457> [StressGC] ASSERTION FAILED: view in com.apple.WebCore: WebCore::Widget::getOuterView const + 132
+# <rdar://problem/30897457> [StressGC] ASSERTION FAILED: view in com.apple.CyberCore: CyberCore::Widget::getOuterView const + 132
 [ HighSierra Debug ] fast/frames/insert-frame-unload-handler.html [ Skip ]
 
-# rdar://problem/52515114 REGRESSION: CrashTracer: com.apple.WebKit.WebContent.Development at com.apple.Photos: +[AVAssetCollection(Utilities) fragmentParamsFromURL:]
+# rdar://problem/52515114 REGRESSION: CrashTracer: com.apple.CyberKit.WebContent.Development at com.apple.Photos: +[AVAssetCollection(Utilities) fragmentParamsFromURL:]
 media/media-fragments/TC0034.html [ Pass Crash ]
 
 # <rdar://problem/62472844> [ Mac wk1 ] fast/dom/Window/window-open-self-disallow-close.html is flaky crashing and timing out.
@@ -1984,7 +1984,7 @@ webkit.org/b/68278 http/tests/history/back-with-fragment-change.py [ Failure ]
 # <rdar://problem/60169524> REGRESSION: (20A211?) [ wk1 ] fast/scrolling/scrollable-area-frame-zero-size-and-border.html is failing.
 [ BigSur+ ] fast/scrolling/scrollable-area-frame-zero-size-and-border.html [ Pass Failure ]
 
-# <rdar://problem/48603627> FuzzDragon -- Null Ptr Deref @ WebCore::genericFamily -- DOS parseWebKit
+# <rdar://problem/48603627> FuzzDragon -- Null Ptr Deref @ CyberCore::genericFamily -- DOS parseCyberKit
 [ BigSur+ ] imported/w3c/web-platform-tests/css/css-text/i18n/ja/css-text-line-break-ja-cj-loose.html [ Pass Crash ]
 
 # <rdar://problem/63022026> REGRESSION: [ 20A267-20A279 ]: multiple fast tests are failing with scrolling related diffs.
@@ -2326,7 +2326,7 @@ imported/w3c/web-platform-tests/mixed-content/gen/top.http-rp/opt-in/video-tag.h
 imported/w3c/web-platform-tests/mixed-content/gen/top.meta/unset/audio-tag.https.html [ Failure ]
 imported/w3c/web-platform-tests/mixed-content/gen/top.meta/unset/video-tag.https.html [ Failure ]
 
-# WebKitLegacy does not support Shared Workers, so skip related tests.
+# CyberKitLegacy does not support Shared Workers, so skip related tests.
 imported/w3c/web-platform-tests/mixed-content/gen/sharedworker-classic-data.http-rp [ Skip ]
 imported/w3c/web-platform-tests/mixed-content/gen/sharedworker-classic-data.meta [ Skip ]
 imported/w3c/web-platform-tests/mixed-content/gen/sharedworker-classic.http-rp [ Skip ]

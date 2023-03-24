@@ -31,7 +31,7 @@
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/Vector.h>
 
 @interface ScrollViewDelegate : NSObject<UIScrollViewDelegate> {
@@ -88,7 +88,7 @@
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static const CGFloat viewHeight = 500;
 static NSString *veryTallDocumentMarkup = @"<meta name='viewport' content='width=device-width, initial-scale=1'><body style='width: 100%; height: 5000px'>";
@@ -196,7 +196,7 @@ TEST(ScrollViewInsetTests, RestoreInitialContentOffsetAfterCrashWithAsyncPolicyD
     [webView scrollView].contentInset = UIEdgeInsetsMake(400, 0, 0, 0);
     [webView setNavigationDelegate:delegate.get()];
     delegate->_navigationComplete = false;
-    NSURL *testResourceURL = [[[NSBundle mainBundle] bundleURL] URLByAppendingPathComponent:@"TestWebKitAPI.resources"];
+    NSURL *testResourceURL = [[[NSBundle mainBundle] bundleURL] URLByAppendingPathComponent:@"TestCyberKitAPI.resources"];
     [webView loadHTMLString:veryTallDocumentMarkup baseURL:testResourceURL];
     Util::run(&delegate->_navigationComplete);
 
@@ -204,7 +204,7 @@ TEST(ScrollViewInsetTests, RestoreInitialContentOffsetAfterCrashWithAsyncPolicyD
     [webView _doAfterNextPresentationUpdate:^{
         presentationUpdateHappened = true;
     }];
-    TestWebKitAPI::Util::run(&presentationUpdateHappened);
+    TestCyberKitAPI::Util::run(&presentationUpdateHappened);
 
     CGPoint initialContentOffset = [webView scrollView].contentOffset;
     __block CGPoint contentOffsetAfterCrash = CGPointZero;
@@ -250,7 +250,7 @@ TEST(ScrollViewInsetTests, ChangeInsetWithoutAutomaticAdjustmentWhileWebProcessI
         done = true;
     });
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     [webView waitForNextPresentationUpdate];
 
     EXPECT_EQ(2U, scrollViewDelegate->_contentOffsetHistory.size());
@@ -347,6 +347,6 @@ TEST(ScrollViewInsetTests, ScrollabilityWithMaxOverrideSize)
     EXPECT_TRUE([webView scrollView].scrollEnabled);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

@@ -26,10 +26,10 @@
 #import "config.h"
 
 #import "PlatformUtilities.h"
-#import <WebKit/WKWebProcessPlugIn.h>
-#import <WebKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
-#import <WebKit/WKWebProcessPlugInFrame.h>
-#import <WebKit/WKWebProcessPlugInLoadDelegate.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
+#import <CyberKit/WKWebProcessPlugInFrame.h>
+#import <CyberKit/WKWebProcessPlugInLoadDelegate.h>
 #import <wtf/RetainPtr.h>
 
 @interface DoubleDefersLoadingPlugIn : NSObject <WKWebProcessPlugIn, WKWebProcessPlugInLoadDelegate>

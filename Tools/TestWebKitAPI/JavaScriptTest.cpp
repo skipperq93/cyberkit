@@ -31,14 +31,14 @@
 
 #include "PlatformUtilities.h"
 #include "Test.h"
-#include <JavaScriptCore/JSContextRef.h>
-#include <JavaScriptCore/JSRetainPtr.h>
-#include <WebKit/WKRetainPtr.h>
-#include <WebKit/WKSerializedScriptValue.h>
+#include <CyberScriptCore/JSContextRef.h>
+#include <CyberScriptCore/JSRetainPtr.h>
+#include <CyberKit/WKRetainPtr.h>
+#include <CyberKit/WKSerializedScriptValue.h>
 #include <wtf/StdLibExtras.h>
 #include <wtf/UniqueArray.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 struct JavaScriptCallbackContext {
     JavaScriptCallbackContext() : didFinish(false) { }
@@ -93,6 +93,6 @@ static void javaScriptCallback(WKSerializedScriptValueRef resultSerializedScript
         << "     Expected: " << expectedResult;
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

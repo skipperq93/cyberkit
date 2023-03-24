@@ -31,8 +31,8 @@
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
 #import "UserInterfaceSwizzler.h"
-#import <WebKit/WKWebpagePreferences.h>
-#import <WebKit/WKWebpagePreferencesPrivate.h>
+#import <CyberKit/WKWebpagePreferences.h>
+#import <CyberKit/WKWebpagePreferencesPrivate.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/text/WTFString.h>
 
@@ -139,7 +139,7 @@
     };
 
     [self loadTestPageNamed:pageName];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     navigationDelegate.didFailProvisionalNavigation = didFailProvisionalNavigation.get();
     navigationDelegate.didStartProvisionalNavigation = didStartProvisionalNavigation.get();
@@ -166,10 +166,10 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 template <typename ViewClass>
-RetainPtr<ViewClass> setUpWebViewForPreferredContentModeTestingWithoutNavigationDelegate(std::optional<WKContentMode> defaultContentMode = { }, std::optional<String> applicationNameForUserAgent = { "TestWebKitAPI"_s }, CGSize size = CGSizeMake(1024, 768))
+RetainPtr<ViewClass> setUpWebViewForPreferredContentModeTestingWithoutNavigationDelegate(std::optional<WKContentMode> defaultContentMode = { }, std::optional<String> applicationNameForUserAgent = { "TestCyberKitAPI"_s }, CGSize size = CGSizeMake(1024, 768))
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     if (defaultContentMode)
@@ -182,7 +182,7 @@ RetainPtr<ViewClass> setUpWebViewForPreferredContentModeTestingWithoutNavigation
 }
 
 template <typename ViewClass>
-std::pair<RetainPtr<ViewClass>, RetainPtr<ContentModeNavigationDelegate>> setUpWebViewForPreferredContentModeTesting(std::optional<WKContentMode> defaultContentMode = { }, std::optional<String> applicationNameForUserAgent = { "TestWebKitAPI"_s }, CGSize size = CGSizeMake(1024, 768))
+std::pair<RetainPtr<ViewClass>, RetainPtr<ContentModeNavigationDelegate>> setUpWebViewForPreferredContentModeTesting(std::optional<WKContentMode> defaultContentMode = { }, std::optional<String> applicationNameForUserAgent = { "TestCyberKitAPI"_s }, CGSize size = CGSizeMake(1024, 768))
 {
     auto webView = setUpWebViewForPreferredContentModeTestingWithoutNavigationDelegate<ViewClass>(defaultContentMode, applicationNameForUserAgent, size);
     auto navigationDelegate = adoptNS([[ContentModeNavigationDelegate alloc] init]);
@@ -207,7 +207,7 @@ TEST(PreferredContentMode, SetDefaultWebpagePreferences)
             EXPECT_EQ(WKContentModeRecommended, defaultPreferences.preferredContentMode);
             decisionHandler(WKNavigationActionPolicyAllow, defaultPreferences);
         }];
-        [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (Mac", @"TestWebKitAPI", nil];
+        [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (Mac", @"TestCyberKitAPI", nil];
         EXPECT_WK_STREQ("MacIntel", [webView navigatorPlatform]);
     }
 
@@ -217,14 +217,14 @@ TEST(PreferredContentMode, SetDefaultWebpagePreferences)
             EXPECT_EQ(WKContentModeDesktop, defaultPreferences.preferredContentMode);
             decisionHandler(WKNavigationActionPolicyAllow, defaultPreferences);
         }];
-        [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (Mac", @"TestWebKitAPI", nil];
+        [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (Mac", @"TestCyberKitAPI", nil];
         EXPECT_WK_STREQ("MacIntel", [webView navigatorPlatform]);
 
         [webView loadHTMLString:@"<pre>Baz</pre>" withPolicyDecisionHandler:^(WKNavigationAction *, WKWebpagePreferences *defaultPreferences, void (^decisionHandler)(WKNavigationActionPolicy, WKWebpagePreferences *)) {
             EXPECT_EQ(WKContentModeDesktop, defaultPreferences.preferredContentMode);
             decisionHandler(WKNavigationActionPolicyAllow, [WKWebpagePreferences preferencesWithContentMode:WKContentModeMobile]);
         }];
-        [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (iP", @"TestWebKitAPI", nil];
+        [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (iP", @"TestCyberKitAPI", nil];
         EXPECT_TRUE([[webView navigatorPlatform] containsString:@"iP"]);
     }
 }
@@ -242,7 +242,7 @@ TEST(PreferredContentMode, DesktopModeWithoutNavigationDelegate)
     }];
     Util::run(&finished);
 
-    [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (Mac", @"TestWebKitAPI", nil];
+    [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (Mac", @"TestCyberKitAPI", nil];
     EXPECT_WK_STREQ("MacIntel", [webView navigatorPlatform]);
 }
 
@@ -255,13 +255,13 @@ TEST(PreferredContentMode, DesktopModeOnPhone)
         EXPECT_EQ(WKContentModeRecommended, defaultPreferences.preferredContentMode);
         decisionHandler(WKNavigationActionPolicyAllow, [WKWebpagePreferences preferencesWithContentMode:WKContentModeDesktop]);
     }];
-    [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (Mac", @"TestWebKitAPI", nil];
+    [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (Mac", @"TestCyberKitAPI", nil];
     EXPECT_WK_STREQ("MacIntel", [webView navigatorPlatform]);
     EXPECT_EQ(980, [[webView objectByEvaluatingJavaScript:@"innerWidth"] intValue]);
 
     webView = setUpWebViewForPreferredContentModeTestingWithoutNavigationDelegate<WKWebView>(WKContentModeMobile);
     [webView synchronouslyLoadHTMLString:@"<body>Hello world</body>"];
-    [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (iP", @"TestWebKitAPI", nil];
+    [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (iP", @"TestCyberKitAPI", nil];
     EXPECT_TRUE([[webView navigatorPlatform] containsString:@"iP"]);
     EXPECT_EQ(980, [[webView objectByEvaluatingJavaScript:@"innerWidth"] intValue]);
 }
@@ -288,7 +288,7 @@ TEST(PreferredContentMode, DesktopModeTopLevelFrameSupercedesSubframe)
 
     EXPECT_TRUE(decidedPolicyForMainFrame);
     EXPECT_TRUE(decidedPolicyForSubFrame);
-    [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (Mac", @"TestWebKitAPI", nil];
+    [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (Mac", @"TestCyberKitAPI", nil];
     EXPECT_WK_STREQ("MacIntel", [webView navigatorPlatform]);
 }
 
@@ -316,14 +316,14 @@ TEST(PreferredContentMode, CustomUserAgentOverridesDesktopContentModeUserAgent)
 
     auto [webView, delegate] = setUpWebViewForPreferredContentModeTesting<TestWKWebView>(WKContentModeDesktop);
 
-    NSString *customUserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36";
+    NSString *customUserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleCyberKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36";
     [webView setCustomUserAgent:customUserAgent];
     [webView loadTestPageNamed:@"simple" withPolicyDecisionHandler:nil];
     EXPECT_WK_STREQ(customUserAgent, [webView navigatorUserAgent]);
 
     [webView setCustomUserAgent:@""];
     [webView loadTestPageNamed:@"simple2" withPolicyDecisionHandler:nil];
-    [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (Mac", @"TestWebKitAPI", nil];
+    [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (Mac", @"TestCyberKitAPI", nil];
 }
 
 TEST(PreferredContentMode, DoNotAllowChangingDefaultWebpagePreferencesInDelegateMethod)
@@ -337,13 +337,13 @@ TEST(PreferredContentMode, DoNotAllowChangingDefaultWebpagePreferencesInDelegate
         defaultPreferences.preferredContentMode = WKContentModeMobile;
         decisionHandler(WKNavigationActionPolicyAllow, defaultPreferences);
     }];
-    [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (iP", @"TestWebKitAPI", nil];
+    [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (iP", @"TestCyberKitAPI", nil];
 
     [webView loadTestPageNamed:@"simple2" withPolicyDecisionHandler:^(WKNavigationAction *, WKWebpagePreferences *defaultPreferences, void (^decisionHandler)(WKNavigationActionPolicy, WKWebpagePreferences *)) {
         EXPECT_EQ(WKContentModeDesktop, defaultPreferences.preferredContentMode);
         decisionHandler(WKNavigationActionPolicyAllow, defaultPreferences);
     }];
-    [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (Mac", @"TestWebKitAPI", nil];
+    [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (Mac", @"TestCyberKitAPI", nil];
 }
 
 TEST(PreferredContentMode, EffectiveContentModeOnIPad)
@@ -372,17 +372,17 @@ TEST(PreferredContentMode, RecommendedContentModeAtVariousViewWidths)
 {
     IPadUserInterfaceSwizzler iPadUserInterface;
 
-    auto [webView, delegate] = setUpWebViewForPreferredContentModeTesting<WKWebView>({ }, { "TestWebKitAPI"_s }, CGSizeZero);
+    auto [webView, delegate] = setUpWebViewForPreferredContentModeTesting<WKWebView>({ }, { "TestCyberKitAPI"_s }, CGSizeZero);
     [webView loadTestPageNamed:@"simple" andExpectEffectiveContentMode:WKContentModeDesktop withPolicyDecisionHandler:nil];
-    [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (Macintosh", @"TestWebKitAPI", nil];
+    [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (Macintosh", @"TestCyberKitAPI", nil];
 
     [webView setFrame:CGRectMake(0, 0, 320, 768)];
     [webView loadTestPageNamed:@"simple2" andExpectEffectiveContentMode:WKContentModeMobile withPolicyDecisionHandler:nil];
-    [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (iP", @"TestWebKitAPI", nil];
+    [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (iP", @"TestCyberKitAPI", nil];
 
     [webView setFrame:CGRectMake(0, 0, 1024, 768)];
     [webView loadTestPageNamed:@"simple3" andExpectEffectiveContentMode:WKContentModeDesktop withPolicyDecisionHandler:nil];
-    [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (Macintosh", @"TestWebKitAPI", nil];
+    [[webView navigatorUserAgent] shouldContainStrings:@"Mozilla/5.0 (Macintosh", @"TestCyberKitAPI", nil];
 }
 
 TEST(PreferredContentMode, ApplicationNameForDesktopUserAgent)
@@ -448,6 +448,6 @@ TEST(PreferredContentMode, IdempotentModeAutosizingOnlyHonorsPercentages)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

@@ -29,9 +29,9 @@
 OBJC_CLASS WebView;
 OBJC_CLASS WKWebView;
 #endif
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // These macros execute |script| in the page and wait until it has run, then compare its return
 // value to the expected result.
@@ -47,4 +47,4 @@ namespace TestWebKitAPI {
 ::testing::AssertionResult runJSTest(const char* viewExpr, const char* scriptExpr, const char* expectedResultExpr, WKWebView *, const char* script, const char* expectedResult);
 #endif
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

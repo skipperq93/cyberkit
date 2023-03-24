@@ -32,9 +32,9 @@
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
 #import <UIKit/UIKit.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static const CGFloat viewHeight = 500;
 
@@ -211,7 +211,7 @@ TEST(ScrollViewBouncesTests, OverscrollBehaviorContainSetY)
     EXPECT_EQ([[webView scrollView] bounces], NO);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)
 

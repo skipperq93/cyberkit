@@ -28,7 +28,7 @@
 #import "PlatformUtilities.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
 #import <wtf/BlockPtr.h>
 
 @interface MissingResourceSchemeHandler : NSObject<WKURLSchemeHandler>
@@ -62,11 +62,11 @@ TEST(RenderingProgressTests, DidRenderSignificantAmountOfText)
 
     [webView setNavigationDelegate:navigationDelegate.get()];
     [webView loadTestPageNamed:@"significant-text-milestone"];
-    TestWebKitAPI::Util::run(&observedSignificantRenderedText);
+    TestCyberKitAPI::Util::run(&observedSignificantRenderedText);
 
     observedSignificantRenderedText = false;
     [webView loadTestPageNamed:@"significant-text-milestone-article"];
-    TestWebKitAPI::Util::run(&observedSignificantRenderedText);
+    TestCyberKitAPI::Util::run(&observedSignificantRenderedText);
 }
 
 #endif // PLATFORM(IOS_FAMILY)
@@ -91,7 +91,7 @@ TEST(RenderingProgressTests, FirstPaintWithSignificantArea)
 
     [webView setNavigationDelegate:navigationDelegate.get()];
     [webView loadTestPageNamed:@"paint-significant-area-milestone"];
-    TestWebKitAPI::Util::run(&observedSignificantPaint);
+    TestCyberKitAPI::Util::run(&observedSignificantPaint);
 }
 
 #endif // PLATFORM(WATCHOS)

@@ -24,8 +24,8 @@
 */
 
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JSLockRefPrivate.h>
-#import <JavaScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/JSLockRefPrivate.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 #import <QuartzCore/QuartzCore.h>
 
 static unsigned ID_HANDLER_A = 2;

@@ -10,7 +10,7 @@ ifneq (,$(WORKSPACE_PATH))
 CONFIG_OPTIONS += --workspace=$(WORKSPACE_PATH)
 endif
 
-# FIXME: Move this setting to xcconfigs once all local Xcode builds of WebKit
+# FIXME: Move this setting to xcconfigs once all local Xcode builds of CyberKit
 # happen in the workspace. When this is only passed on the command line, it
 # invalidates build results made in the IDE (rdar://88135402).
 #XCODE_OPTIONS += WK_VALIDATE_DEPENDENCIES=YES_ERROR

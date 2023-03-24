@@ -39,7 +39,7 @@ bool gigacageEnabledForProcess()
 
     @autoreleasepool {
         if (NSString *appName = [[NSBundle mainBundle] bundleIdentifier]) {
-            bool isWebProcess = [appName hasPrefix:@"com.apple.WebKit.WebContent"];
+            bool isWebProcess = [appName hasPrefix:@"com.apple.CyberKit.WebContent"];
             return isWebProcess;
         }
 
@@ -57,14 +57,14 @@ bool gigacageEnabledForProcess()
 
 bool shouldAllowMiniMode()
 {
-    // Mini mode is mainly meant for constraining memory usage in bursty daemons that use JavaScriptCore.
+    // Mini mode is mainly meant for constraining memory usage in bursty daemons that use CyberScriptCore.
     // It's also contributed to power regressions when enabled for large application processes and in the
-    // WebKit GPU process. So we disable mini mode for those processes.
+    // CyberKit GPU process. So we disable mini mode for those processes.
     bool isApplication = false;
     bool isGPUProcess = false;
     if (const char* serviceName = getenv("XPC_SERVICE_NAME")) {
         static constexpr char appPrefix[] = "application.";
-        static constexpr char gpuProcessPrefix[] = "com.apple.WebKit.GPU";
+        static constexpr char gpuProcessPrefix[] = "com.apple.CyberKit.GPU";
         isApplication = !strncmp(serviceName, appPrefix, sizeof(appPrefix) - 1);
         isGPUProcess = !strncmp(serviceName, gpuProcessPrefix, sizeof(gpuProcessPrefix) - 1);
     }
@@ -82,7 +82,7 @@ bool shouldProcessUnconditionallyUseBmalloc()
                 auto contains = [&] (NSString *string) {
                     return [appName rangeOfString:string options:NSCaseInsensitiveSearch].location != NSNotFound;
                 };
-                result = contains(@"com.apple.WebKit") || contains(@"safari");
+                result = contains(@"com.apple.CyberKit") || contains(@"safari");
             } else {
                 NSString *processName = [[NSProcessInfo processInfo] processName];
                 result = [processName isEqualToString:@"jsc"]

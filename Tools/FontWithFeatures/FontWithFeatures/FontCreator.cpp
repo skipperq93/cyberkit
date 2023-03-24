@@ -901,7 +901,7 @@ private:
         append16(clampTo<uint16_t>(500)); // Weight class
         append16(5); // Width class
         append16(0); // Protected font
-        // WebKit handles these superscripts and subscripts
+        // CyberKit handles these superscripts and subscripts
         append16(0); // Subscript X Size
         append16(0); // Subscript Y Size
         append16(0); // Subscript X Offset
@@ -1051,13 +1051,13 @@ private:
         append32(0x00010000); // Version
         append16(clampTo<int16_t>(unitsPerEm)); // ascent
         append16(clampTo<int16_t>(-1)); // descent
-        // WebKit SVG font rendering has hard coded the line gap to be 1/10th of the font size since 2008 (see r29719).
+        // CyberKit SVG font rendering has hard coded the line gap to be 1/10th of the font size since 2008 (see r29719).
         append16(clampTo<int16_t>(unitsPerEm / 10)); // line gap
         append16(clampTo<uint16_t>(unitsPerEm)); // advance width max
         append16(clampTo<int16_t>(0)); // Minimum left side bearing
         append16(clampTo<int16_t>(0)); // Minimum right side bearing
         append16(clampTo<int16_t>(unitsPerEm)); // X maximum extent
-        // Since WebKit draws the caret and ignores the following values, it doesn't matter what we set them to.
+        // Since CyberKit draws the caret and ignores the following values, it doesn't matter what we set them to.
         append16(1); // Vertical caret
         append16(0); // Vertical caret
         append16(0); // "Set value to 0 for non-slanted fonts"

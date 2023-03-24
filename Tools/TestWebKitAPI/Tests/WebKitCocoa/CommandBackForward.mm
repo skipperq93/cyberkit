@@ -33,8 +33,8 @@
 #import "Test.h"
 #import "TestNavigationDelegate.h"
 #import <Carbon/Carbon.h> // for GetCurrentEventTime()
-#import <WebKit/WKRetainPtr.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKRetainPtr.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 enum ArrowDirection {
@@ -77,7 +77,7 @@ static void simulateCommandArrow(NSView *view, ArrowDirection direction)
     [view keyUp:event];
 }
 
-class WebKit2_CommandBackForwardTest : public testing::Test {
+class CyberKit2_CommandBackForwardTest : public testing::Test {
 public:
     RetainPtr<NSWindow> window;
 
@@ -87,7 +87,7 @@ public:
     }
 };
 
-class WebKit2_CommandBackForwardTestWKView : public WebKit2_CommandBackForwardTest {
+class CyberKit2_CommandBackForwardTestWKView : public CyberKit2_CommandBackForwardTest {
 public:
     RetainPtr<WKWebView> webView;
     WKRetainPtr<WKURLRef> file1;
@@ -95,7 +95,7 @@ public:
 
     virtual void SetUp()
     {
-        WebKit2_CommandBackForwardTest::SetUp();
+        CyberKit2_CommandBackForwardTest::SetUp();
 
         webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 100, 100)]);
 
@@ -109,30 +109,30 @@ public:
 
         WKPageSetPageNavigationClient([webView _pageRefForTransitionToWKWebView], &loaderClient.base);
         
-        file1 = adoptWK(TestWebKitAPI::Util::createURLForResource("simple", "html"));
-        file2 = adoptWK(TestWebKitAPI::Util::createURLForResource("simple2", "html"));
+        file1 = adoptWK(TestCyberKitAPI::Util::createURLForResource("simple", "html"));
+        file2 = adoptWK(TestCyberKitAPI::Util::createURLForResource("simple2", "html"));
 
     }
 
     void loadFiles()
     {
         WKPageLoadFile([webView _pageRefForTransitionToWKWebView], file1.get(), nullptr);
-        TestWebKitAPI::Util::run(&didFinishNavigationBoolean);
+        TestCyberKitAPI::Util::run(&didFinishNavigationBoolean);
         didFinishNavigationBoolean = false;
 
         WKPageLoadFile([webView _pageRefForTransitionToWKWebView], file2.get(), nullptr);
-        TestWebKitAPI::Util::run(&didFinishNavigationBoolean);
+        TestCyberKitAPI::Util::run(&didFinishNavigationBoolean);
         didFinishNavigationBoolean = false;
     }
 };
 
-class WebKit2_CommandBackForwardTestWKWebView : public WebKit2_CommandBackForwardTest {
+class CyberKit2_CommandBackForwardTestWKWebView : public CyberKit2_CommandBackForwardTest {
 public:
     RetainPtr<WKWebView> webView;
 
     virtual void SetUp()
     {
-        WebKit2_CommandBackForwardTest::SetUp();
+        CyberKit2_CommandBackForwardTest::SetUp();
 
         webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 100, 100)]);
         [[window contentView] addSubview:webView.get()];
@@ -140,17 +140,17 @@ public:
     
     void loadFiles()
     {
-        NSURL *file1 = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+        NSURL *file1 = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
         [webView loadFileURL:file1 allowingReadAccessToURL:file1];
         [webView _test_waitForDidFinishNavigation];
 
-        NSURL *file2 = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+        NSURL *file2 = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
         [webView loadFileURL:file2 allowingReadAccessToURL:file2];
         [webView _test_waitForDidFinishNavigation];
     }
 };
 
-TEST_F(WebKit2_CommandBackForwardTestWKWebView, LTR)
+TEST_F(CyberKit2_CommandBackForwardTestWKWebView, LTR)
 {
     EXPECT_EQ(NSUserInterfaceLayoutDirectionLeftToRight, [webView userInterfaceLayoutDirection]);
     
@@ -171,7 +171,7 @@ TEST_F(WebKit2_CommandBackForwardTestWKWebView, LTR)
     EXPECT_WK_STREQ([webView URL].path.lastPathComponent, @"simple2.html");
 }
 
-TEST_F(WebKit2_CommandBackForwardTestWKWebView, RTL)
+TEST_F(CyberKit2_CommandBackForwardTestWKWebView, RTL)
 {
     // Override the layout direction to be RTL.
     [webView setUserInterfaceLayoutDirection:NSUserInterfaceLayoutDirectionRightToLeft];
@@ -193,7 +193,7 @@ TEST_F(WebKit2_CommandBackForwardTestWKWebView, RTL)
     EXPECT_WK_STREQ([webView URL].path.lastPathComponent, @"simple2.html");
 }
 
-TEST_F(WebKit2_CommandBackForwardTestWKView, LTR)
+TEST_F(CyberKit2_CommandBackForwardTestWKView, LTR)
 {
     EXPECT_EQ(NSUserInterfaceLayoutDirectionLeftToRight, [webView userInterfaceLayoutDirection]);
     
@@ -204,7 +204,7 @@ TEST_F(WebKit2_CommandBackForwardTestWKView, LTR)
 
     // Attempt to go back (using command-left).
     simulateCommandArrow(webView.get(), Left);
-    TestWebKitAPI::Util::run(&didFinishNavigationBoolean);
+    TestCyberKitAPI::Util::run(&didFinishNavigationBoolean);
     didFinishNavigationBoolean = false;
 
     auto currentURL2 = adoptWK(WKPageCopyActiveURL([webView _pageRefForTransitionToWKWebView]));
@@ -212,14 +212,14 @@ TEST_F(WebKit2_CommandBackForwardTestWKView, LTR)
 
     // Attempt to go back (using command-right).
     simulateCommandArrow(webView.get(), Right);
-    TestWebKitAPI::Util::run(&didFinishNavigationBoolean);
+    TestCyberKitAPI::Util::run(&didFinishNavigationBoolean);
     didFinishNavigationBoolean = false;
 
     auto currentURL3 = adoptWK(WKPageCopyActiveURL([webView _pageRefForTransitionToWKWebView]));
     EXPECT_TRUE(WKURLIsEqual(file2.get(), currentURL3.get()));
 }
 
-TEST_F(WebKit2_CommandBackForwardTestWKView, RTL)
+TEST_F(CyberKit2_CommandBackForwardTestWKView, RTL)
 {
     // Override the layout direction to be RTL.
     [webView setUserInterfaceLayoutDirection:NSUserInterfaceLayoutDirectionRightToLeft];
@@ -231,7 +231,7 @@ TEST_F(WebKit2_CommandBackForwardTestWKView, RTL)
 
     // Attempt to go back (using command-right)
     simulateCommandArrow(webView.get(), Right);
-    TestWebKitAPI::Util::run(&didFinishNavigationBoolean);
+    TestCyberKitAPI::Util::run(&didFinishNavigationBoolean);
     didFinishNavigationBoolean = false;
 
     auto currentURL2 = adoptWK(WKPageCopyActiveURL([webView _pageRefForTransitionToWKWebView]));
@@ -239,7 +239,7 @@ TEST_F(WebKit2_CommandBackForwardTestWKView, RTL)
 
     // Attempt to go back (using command-left).
     simulateCommandArrow(webView.get(), Left);
-    TestWebKitAPI::Util::run(&didFinishNavigationBoolean);
+    TestCyberKitAPI::Util::run(&didFinishNavigationBoolean);
     didFinishNavigationBoolean = false;
 
     auto currentURL3 = adoptWK(WKPageCopyActiveURL([webView _pageRefForTransitionToWKWebView]));

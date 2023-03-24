@@ -28,14 +28,14 @@
 #import "InstanceMethodSwizzler.h"
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
-#import <WebCore/FontCacheCoreText.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKPreferencesRef.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberCore/FontCacheCoreText.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKPreferencesRef.h>
+#import <CyberKit/WKWebViewPrivate.h>
 
 #if PLATFORM(IOS_FAMILY)
 
-#include <WebCore/RenderThemeIOS.h>
+#include <CyberCore/RenderThemeIOS.h>
 
 static auto contentSizeCategory = kCTFontContentSizeCategoryXXXL;
 
@@ -69,11 +69,11 @@ TEST(TextStyleFontSize, Startup)
 
 TEST(TextStyleFontSize, AfterCrash)
 {
-    auto *originalContentSizeCategory = static_cast<NSString *>(WebCore::contentSizeCategory());
+    auto *originalContentSizeCategory = static_cast<NSString *>(CyberCore::contentSizeCategory());
     auto *preferredContentSizeCategory = [[UIApplication sharedApplication] preferredContentSizeCategory];
     ASSERT_TRUE((!originalContentSizeCategory && !preferredContentSizeCategory) || [originalContentSizeCategory isEqualToString:preferredContentSizeCategory]);
 
-    WebCore::setContentSizeCategory(contentSizeCategory);
+    CyberCore::setContentSizeCategory(contentSizeCategory);
 
     auto descriptor = adoptCF(CTFontDescriptorCreateWithTextStyle(kCTUIFontTextStyleBody, contentSizeCategory, nullptr));
     auto sizeNumber = adoptCF(CTFontDescriptorCopyAttribute(descriptor.get(), kCTFontSizeAttribute));
@@ -89,7 +89,7 @@ TEST(TextStyleFontSize, AfterCrash)
     
     ASSERT_EQ(actual, expected);
 
-    WebCore::setContentSizeCategory(String());
+    CyberCore::setContentSizeCategory(String());
 }
 
 #endif // PLATFORM(IOS_FAMILY)

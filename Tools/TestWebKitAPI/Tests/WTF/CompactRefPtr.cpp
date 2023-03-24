@@ -35,7 +35,7 @@
 #include <wtf/ThreadSafeRefCounted.h>
 #include <wtf/Threading.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_CompactRefPtr, Basic)
 {
@@ -564,4 +564,4 @@ TEST(WTF_CompactRefPtr, ReleaseNonNullBeforeDeref)
     EXPECT_STREQ("ref(a) slot=null deref(a) ", takeLogStr().c_str());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

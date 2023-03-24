@@ -35,18 +35,18 @@
 #import "TestWKWebView.h"
 #import "Utilities.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKMain.h>
-#import <WebKit/WKNavigationActionPrivate.h>
-#import <WebKit/WKPage.h>
-#import <WebKit/WKPageInjectedBundleClient.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKString.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKFeature.h>
-#import <WebKit/_WKInspector.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKMain.h>
+#import <CyberKit/WKNavigationActionPrivate.h>
+#import <CyberKit/WKPage.h>
+#import <CyberKit/WKPageInjectedBundleClient.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKString.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKFeature.h>
+#import <CyberKit/_WKInspector.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/spi/darwin/XPCSPI.h>
 #import <wtf/text/StringConcatenateNumbers.h>
 
@@ -54,7 +54,7 @@
 
 #include "CoreCryptoSPI.h"
 
-#include <WebCore/PrivateClickMeasurement.h>
+#include <CyberCore/PrivateClickMeasurement.h>
 #include <wtf/spi/cocoa/SecuritySPI.h>
 
 #endif // HAVE(RSA_BSSA)
@@ -92,7 +92,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static RetainPtr<SecTrustRef> secTrustFromCertificateChain(NSArray *chain)
 {
@@ -505,7 +505,7 @@ static void attemptConnectionInProcessWithoutEntitlement()
     xpc_connection_activate(connection.get());
     auto dictionary = adoptNS(xpc_dictionary_create(nullptr, nullptr, 0));
     xpc_connection_send_message(connection.get(), dictionary.get());
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 #endif
 }
 
@@ -671,4 +671,4 @@ TEST(PrivateClickMeasurement, BasicWithEphemeralIOSSPI)
 
 #endif // HAVE(UI_EVENT_ATTRIBUTION)
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

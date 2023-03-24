@@ -24,17 +24,17 @@
  */
 
 #import "config.h"
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #import "BundleRangeHandleProtocol.h"
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestNavigationDelegate.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKRemoteObjectInterface.h>
-#import <WebKit/_WKRemoteObjectRegistry.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKRemoteObjectInterface.h>
+#import <CyberKit/_WKRemoteObjectRegistry.h>
 #import <wtf/RetainPtr.h>
 
 static bool didGetTextFromBodyRange;
@@ -60,7 +60,7 @@ static bool didGetBodyInnerHTMLAfterDetectingData;
 @end
 
 // FIXME: Re-enable this test once webkit.org/b/167594 is fixed.
-TEST(WebKit, DISABLED_WKWebProcessPlugInRangeHandle)
+TEST(CyberKit, DISABLED_WKWebProcessPlugInRangeHandle)
 {
     RetainPtr<WKWebViewConfiguration> configuration = retainPtr([WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"BundleRangeHandlePlugIn"]);
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
@@ -71,8 +71,8 @@ TEST(WebKit, DISABLED_WKWebProcessPlugInRangeHandle)
 
     [webView loadHTMLString:@"Visit webkit.org   <em>  or</em> email webkit-dev@lists.webkit.org." baseURL:nil];
 
-    TestWebKitAPI::Util::run(&didGetTextFromBodyRange);
+    TestCyberKitAPI::Util::run(&didGetTextFromBodyRange);
 #if PLATFORM(IOS_FAMILY)
-    TestWebKitAPI::Util::run(&didGetBodyInnerHTMLAfterDetectingData);
+    TestCyberKitAPI::Util::run(&didGetBodyInnerHTMLAfterDetectingData);
 #endif
 }

@@ -28,7 +28,7 @@
 
 #include "InjectedBundleController.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class InjectedBundleTest {
 public:
@@ -66,6 +66,6 @@ protected:
     std::string m_identifier;
 };
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // InjectedBundleTest_h

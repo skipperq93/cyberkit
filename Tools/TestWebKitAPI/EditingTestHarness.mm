@@ -28,7 +28,7 @@
 #import "EditingTestHarness.h"
 
 #import "PlatformUtilities.h"
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 
 @implementation EditingTestHarness
 
@@ -188,7 +188,7 @@
         result = success;
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_TRUE(result);
     if (!result)

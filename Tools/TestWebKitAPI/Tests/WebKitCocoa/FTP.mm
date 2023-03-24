@@ -33,14 +33,14 @@
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/WKWebpagePreferencesPrivate.h>
-#import <WebKit/WebKit.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebpagePreferencesPrivate.h>
+#import <CyberKit/CyberKit.h>
 #import <wtf/text/WTFString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static RetainPtr<NSMutableArray> consoleMessages;
 
@@ -140,6 +140,6 @@ TEST(WKWebView, FTPSubresourceRedirect)
     EXPECT_TRUE([consoleMessages.get()[0] isEqualToString:@"FTP URLs are disabled"]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(MAC)

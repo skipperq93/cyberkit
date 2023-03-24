@@ -30,8 +30,8 @@
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
 #import <Carbon/Carbon.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/WebKitPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/CyberKitPrivate.h>
 
 static NSString *GetInputValueJSExpression = @"document.querySelector('input').value";
 static NSString *GetDocumentScrollTopJSExpression = @"document.body.scrollTop";
@@ -84,7 +84,7 @@ static NSString *GetDocumentScrollTopJSExpression = @"document.body.scrollTop";
 {
     _isDoneWaitingForCandidate = false;
     [self _handleAcceptedCandidate:[[TestCandidate alloc] initWithReplacementString:replacementString inRange:range]];
-    TestWebKitAPI::Util::run(&_isDoneWaitingForCandidate);
+    TestCyberKitAPI::Util::run(&_isDoneWaitingForCandidate);
 }
 
 - (void)_didHandleAcceptedCandidate

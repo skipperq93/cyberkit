@@ -30,7 +30,7 @@
 #include "Logger.h"
 #include <wtf/BoxPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 struct BoxPtrLogger {
     BoxPtrLogger(const char* name);
@@ -54,11 +54,11 @@ void boxPtrLoggerDeleter(BoxPtrLogger* logger)
 
 namespace WTF {
 
-WTF_DEFINE_BOXPTR_DELETER(TestWebKitAPI::BoxPtrLogger, TestWebKitAPI::boxPtrLoggerDeleter);
+WTF_DEFINE_BOXPTR_DELETER(TestCyberKitAPI::BoxPtrLogger, TestCyberKitAPI::boxPtrLoggerDeleter);
 
 }
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_BoxPtr, Basic)
 {

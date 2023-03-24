@@ -30,18 +30,18 @@
 #import "Test.h"
 #import "TestWKWebView.h"
 #import "Utilities.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKFeature.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKFeature.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 enum class ShouldUseSameProcess : bool { No, Yes };
 
 static void runSnapshotAcrossPagesTest(ShouldUseSameProcess shouldUseSameProcess)
 {
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { "foo"_s } }
     });
 
@@ -67,7 +67,7 @@ static void runSnapshotAcrossPagesTest(ShouldUseSameProcess shouldUseSameProcess
     [webView1 evaluateJavaScript:@"navigator.locks.request('foo', lock => { webkit.messageHandlers.testHandler.postMessage('ACQUIRED'); return new Promise(() => {}); }) && 1" completionHandler:^(id result, NSError *error) {
         EXPECT_NULL(error);
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto configuration2 = adoptNS([[WKWebViewConfiguration alloc] init]);
     configuration2.get().processPool = [configuration1 processPool];
@@ -97,7 +97,7 @@ static void runSnapshotAcrossPagesTest(ShouldUseSameProcess shouldUseSameProcess
     [webView2 evaluateJavaScript:@"navigator.locks.request('bar', lock => { webkit.messageHandlers.testHandler.postMessage('ACQUIRED'); return new Promise(() => {}); }) && 1" completionHandler:^(id result, NSError *error) {
         EXPECT_NULL(error);
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [webView1 performAfterReceivingAnyMessage:^(NSString *message) {
@@ -108,7 +108,7 @@ static void runSnapshotAcrossPagesTest(ShouldUseSameProcess shouldUseSameProcess
     [webView1 evaluateJavaScript:@"navigator.locks.query().then(snapshot => { webkit.messageHandlers.testHandler.postMessage('' + snapshot.pending.length + '-' + snapshot.held.length); }) && 1" completionHandler:^(id result, NSError *error) {
         EXPECT_NULL(error);
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [webView2 performAfterReceivingAnyMessage:^(NSString *message) {
@@ -119,7 +119,7 @@ static void runSnapshotAcrossPagesTest(ShouldUseSameProcess shouldUseSameProcess
     [webView2 evaluateJavaScript:@"navigator.locks.query().then(snapshot => { webkit.messageHandlers.testHandler.postMessage('' + snapshot.pending.length + '-' + snapshot.held.length); }) && 1" completionHandler:^(id result, NSError *error) {
         EXPECT_NULL(error);
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(WebLocks, SnapshotAcrossPagesInDifferentProcesses)
@@ -134,7 +134,7 @@ TEST(WebLocks, SnapshotAcrossPagesInSameProcess)
 
 static void runLockRequestWaitingOnAnotherPage(ShouldUseSameProcess shouldUseSameProcess)
 {
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { "foo"_s } }
     });
 
@@ -160,7 +160,7 @@ static void runLockRequestWaitingOnAnotherPage(ShouldUseSameProcess shouldUseSam
     [webView1 evaluateJavaScript:@"navigator.locks.request('foo', lock => { webkit.messageHandlers.testHandler.postMessage('ACQUIRED'); return new Promise(() => {}); }) && 1" completionHandler:^(id result, NSError *error) {
         EXPECT_NULL(error);
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto configuration2 = adoptNS([[WKWebViewConfiguration alloc] init]);
     configuration2.get().processPool = [configuration1 processPool];
@@ -192,7 +192,7 @@ static void runLockRequestWaitingOnAnotherPage(ShouldUseSameProcess shouldUseSam
         EXPECT_NULL(error);
     }];
 
-    TestWebKitAPI::Util::runFor(0.5_s);
+    TestCyberKitAPI::Util::runFor(0.5_s);
     EXPECT_FALSE(lockAcquired);
 
     done = false;
@@ -204,7 +204,7 @@ static void runLockRequestWaitingOnAnotherPage(ShouldUseSameProcess shouldUseSam
     [webView2 evaluateJavaScript:@"navigator.locks.query().then(snapshot => { webkit.messageHandlers.testHandler.postMessage('' + snapshot.pending.length + '-' + snapshot.held.length); }) && 1" completionHandler:^(id result, NSError *error) {
         EXPECT_NULL(error);
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     [webView2 performAfterReceivingAnyMessage:^(NSString *message) {
         EXPECT_WK_STREQ(message, @"ACQUIRED");
@@ -214,7 +214,7 @@ static void runLockRequestWaitingOnAnotherPage(ShouldUseSameProcess shouldUseSam
     // Now close the webView1. This should release the 'foo' lock and allow webView2 to acquire it.
     [webView1 _close];
 
-    TestWebKitAPI::Util::run(&lockAcquired);
+    TestCyberKitAPI::Util::run(&lockAcquired);
 
     done = false;
     [webView2 performAfterReceivingAnyMessage:^(NSString *message) {
@@ -225,7 +225,7 @@ static void runLockRequestWaitingOnAnotherPage(ShouldUseSameProcess shouldUseSam
     [webView2 evaluateJavaScript:@"navigator.locks.query().then(snapshot => { webkit.messageHandlers.testHandler.postMessage('' + snapshot.pending.length + '-' + snapshot.held.length); }) && 1" completionHandler:^(id result, NSError *error) {
         EXPECT_NULL(error);
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(WebLocks, LockRequestWaitingOnAnotherPageInOtherProcess)
@@ -238,4 +238,4 @@ TEST(WebLocks, LockRequestWaitingOnAnotherPageInSameProcess)
     runLockRequestWaitingOnAnotherPage(ShouldUseSameProcess::Yes);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

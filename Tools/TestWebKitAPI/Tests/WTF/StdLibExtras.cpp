@@ -29,7 +29,7 @@
 #include <wtf/CryptographicallyRandomNumber.h>
 #include <wtf/MathExtras.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 template<typename WordType>
 void testFindBitInWord()
@@ -127,4 +127,4 @@ TEST(WTF_StdLibExtras, MakeUniqueFunctionLocalTypeCompiles)
     auto c = makeUnique<LocalClass>();
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

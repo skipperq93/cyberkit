@@ -27,12 +27,12 @@
 
 #if WK_HAVE_C_SPI
 
-#include <WebKit/WKStringPrivate.h>
-#include <JavaScriptCore/JSStringRef.h>
+#include <CyberKit/WKStringPrivate.h>
+#include <CyberScriptCore/JSStringRef.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, WKStringJSString)
+TEST(CyberKit, WKStringJSString)
 {
     WKStringRef wkString = WKStringCreateWithUTF8CString("hello");
     JSStringRef jsString = JSStringCreateWithUTF8CString("hello");
@@ -50,6 +50,6 @@ TEST(WebKit, WKStringJSString)
     JSStringRelease(convertedWKString);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

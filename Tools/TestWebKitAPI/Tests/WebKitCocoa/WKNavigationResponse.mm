@@ -31,9 +31,9 @@
 #import "TestNavigationDelegate.h"
 #import "Utilities.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKNavigationResponsePrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WebKit.h>
+#import <CyberKit/WKNavigationResponsePrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/CyberKit.h>
 #import <wtf/RetainPtr.h>
 
 @interface WKNavigationResponseTestNavigationDelegate : NSObject <WKNavigationDelegate>
@@ -73,7 +73,7 @@
 
 @end
 
-TEST(WebKit, WKNavigationResponseJSONMIMEType)
+TEST(CyberKit, WKNavigationResponseJSONMIMEType)
 {
     isDone = false;
     auto schemeHandler = adoptNS([[WKNavigationResponseTestSchemeHandler alloc] init]);
@@ -88,10 +88,10 @@ TEST(WebKit, WKNavigationResponseJSONMIMEType)
 
     NSURL *testURL = [NSURL URLWithString:@"test:///json-response"];
     [webView loadRequest:[NSURLRequest requestWithURL:testURL]];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
-TEST(WebKit, WKNavigationResponseJSONMIMEType2)
+TEST(CyberKit, WKNavigationResponseJSONMIMEType2)
 {
     isDone = false;
     auto schemeHandler = adoptNS([[WKNavigationResponseTestSchemeHandler alloc] init]);
@@ -106,10 +106,10 @@ TEST(WebKit, WKNavigationResponseJSONMIMEType2)
 
     NSURL *testURL = [NSURL URLWithString:@"test:///json-response"];
     [webView loadRequest:[NSURLRequest requestWithURL:testURL]];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
-TEST(WebKit, WKNavigationResponseUnknownMIMEType)
+TEST(CyberKit, WKNavigationResponseUnknownMIMEType)
 {
     isDone = false;
     auto schemeHandler = adoptNS([[WKNavigationResponseTestSchemeHandler alloc] init]);
@@ -124,10 +124,10 @@ TEST(WebKit, WKNavigationResponseUnknownMIMEType)
 
     NSURL *testURL = [NSURL URLWithString:@"test:///json-response"];
     [webView loadRequest:[NSURLRequest requestWithURL:testURL]];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
-TEST(WebKit, WKNavigationResponsePDFType)
+TEST(CyberKit, WKNavigationResponsePDFType)
 {
     isDone = false;
     auto schemeHandler = adoptNS([[WKNavigationResponseTestSchemeHandler alloc] init]);
@@ -144,7 +144,7 @@ TEST(WebKit, WKNavigationResponsePDFType)
 
     NSURL *testURL = [NSURL URLWithString:@"test:///pdf-response"];
     [webView loadRequest:[NSURLRequest requestWithURL:testURL]];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 @interface NavigationResponseTestDelegate : NSObject <WKNavigationDelegate>
@@ -168,13 +168,13 @@ TEST(WebKit, WKNavigationResponsePDFType)
 - (void)waitForNavigationResponseCallback
 {
     _hasReceivedResponseCallback = false;
-    TestWebKitAPI::Util::run(&_hasReceivedResponseCallback);
+    TestCyberKitAPI::Util::run(&_hasReceivedResponseCallback);
 }
 
 - (void)waitForNavigationFinishedCallback
 {
     _hasReceivedNavigationFinishedCallback = false;
-    TestWebKitAPI::Util::run(&_hasReceivedNavigationFinishedCallback);
+    TestCyberKitAPI::Util::run(&_hasReceivedNavigationFinishedCallback);
 }
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
@@ -196,10 +196,10 @@ TEST(WebKit, WKNavigationResponsePDFType)
 
 @end
 
-TEST(WebKit, WKNavigationResponseDownloadAttribute)
+TEST(CyberKit, WKNavigationResponseDownloadAttribute)
 {
     auto getDownloadResponse = [] (RetainPtr<NSString> body) -> RetainPtr<WKNavigationResponse> {
-        using namespace TestWebKitAPI;
+        using namespace TestCyberKitAPI;
         HTTPServer server([body](Connection connection) {
             connection.receiveHTTPRequest([=](Vector<char>&&) {
                 unsigned bodyLength = [body length];
@@ -244,9 +244,9 @@ TEST(WebKit, WKNavigationResponseDownloadAttribute)
 }
 
 #if WK_HAVE_C_SPI
-TEST(WebKit, SkipDecidePolicyForResponse)
+TEST(CyberKit, SkipDecidePolicyForResponse)
 {
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/1"_s, { { { "Content-Type"_s, "text/HTML"_s } }, "hi"_s } },
         { "/2"_s, { { { "Content-Type"_s, "text/plain"_s } }, "hi"_s } },
         { "/3"_s, { "hi"_s } },
@@ -270,7 +270,7 @@ TEST(WebKit, SkipDecidePolicyForResponse)
     [delegate waitForDidFinishNavigation];
     EXPECT_FALSE(responseDelegateCalled);
 
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSBundle.mainBundle URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSBundle.mainBundle URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     [delegate waitForDidFinishNavigation];
     EXPECT_TRUE(std::exchange(responseDelegateCalled, false));
 

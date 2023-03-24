@@ -165,7 +165,7 @@ class YoctoCrossBuilder():
         self._targets_config = targets_config
         self._target = target
         self._webkit_dir = top_level_directory
-        self._webkitbuild_dir = os.path.join(self._webkit_dir, 'WebKitBuild')
+        self._webkitbuild_dir = os.path.join(self._webkit_dir, 'CyberKitBuild')
         self._workdir = os.path.join(self._webkitbuild_dir, 'CrossToolChains', target)
         self._workdir_version_file = os.path.join(self._workdir, '.target-info-version')
         self._workdir_path_file = os.path.join(self._workdir, '.path')
@@ -186,7 +186,7 @@ class YoctoCrossBuilder():
 
     def _maybe_clean_webkit_build_caches(self, no_wipe):
         target_suffix = '_' + self._target
-        # Get a list of directories in WebKitBuild/* and WebKitBuild/*/*
+        # Get a list of directories in CyberKitBuild/* and CyberKitBuild/*/*
         first_level_candidate_dirs_for_target_builds = [d.path for d in os.scandir(self._webkitbuild_dir) if d.is_dir()]
         second_level_candidate_dirs_for_target_builds = []
         for subdir in first_level_candidate_dirs_for_target_builds:
@@ -244,7 +244,7 @@ class YoctoCrossBuilder():
             os.makedirs(poky_wk_recipe_dir)
         wk_helper_version_recipe_path = os.path.join(poky_wk_recipe_dir, 'wk-target-info-ver.bb')
         with open(wk_helper_version_recipe_path, 'w') as f:
-            f.write('DESCRIPTION = "Include the version of the target from the WebKit script cross-toolchain-helper on the image."\n')
+            f.write('DESCRIPTION = "Include the version of the target from the CyberKit script cross-toolchain-helper on the image."\n')
             f.write('LICENSE = "MIT"\n')
             f.write('LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"\n')
             f.write('S = "${WORKDIR}"\n')
@@ -443,7 +443,7 @@ class YoctoCrossBuilder():
                                 fw.write(line)
                     # When building cog, meson tries to load the wpe headers that are on the repo from the sysroot path.
                     # That is not really a bug on meson as system libraries should be loaded from the sysroot when cross-building.
-                    # Workaround the issue by creating a symlink that also resolves this WebKit repository path inside the sysroot.
+                    # Workaround the issue by creating a symlink that also resolves this CyberKit repository path inside the sysroot.
                     fw.write('\nif ! test -d "${{OECORE_TARGET_SYSROOT}}/{webkit_dir}"; then\n'
                              '    mkdir -p "${{OECORE_TARGET_SYSROOT}}/{webkit_dir_up}"\n'
                              '    ln -s "{webkit_dir}" "${{OECORE_TARGET_SYSROOT}}/{webkit_dir_up}"\n'
@@ -563,7 +563,7 @@ def main(args):
     cross_targets_available = targets_config.list_target_configs_available()
 
     parser = argparse.ArgumentParser('usage: %prog [options]', allow_abbrev=False,
-                                    epilog='NOTE: The script "build-webkit" will call this script when the flag "--cross-target" is passed to it. That allows to cross-build WebKit for the target directly with the script build-webkit. '
+                                    epilog='NOTE: The script "build-webkit" will call this script when the flag "--cross-target" is passed to it. That allows to cross-build CyberKit for the target directly with the script build-webkit. '
                                     'Any environment variables this script recognizes like WEBKIT_CROSS_WIPE_ON_CHANGE or WEBKIT_CROSS_EXPORT_ENV can be also used with the build-webkit script.'
                                     'If you want to know more details check the documentation at: "{doc_path}"'.format(doc_path=os.path.join(conf_sub_dir,'README.md')))
     action = parser.add_argument_group('action')
@@ -587,7 +587,7 @@ def main(args):
     action.add_argument('--bitbake-dev-shell', action='store_true', dest='bitbake_dev_shell',
                         help='Start a shell to develop with bitbake inside the built-in Yocto environment.')
     action.add_argument('--cross-dev-shell', action='store_true', dest='cross_dev_shell',
-                        help='Start a shell to directly build WebKit or any other software for the target.')
+                        help='Start a shell to directly build CyberKit or any other software for the target.')
     action.add_argument(run_cmd_key, action='store', dest='execute_inside_cross_toolchain_environment_cmd', nargs=argparse.REMAINDER,
                         help='Build the cross toolchain (only if still not built) and then execute \"command\" inside cross environment. '
                              '\033[91mIMPORTANT\033[0m: This argument is the last one, any strings after it, even if separated by spaces or quotes will be considered part of the command to be executed. '

@@ -28,9 +28,9 @@
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <wtf/RetainPtr.h>
 
 @interface ResponsivenessTimerDelegate : NSObject <WKNavigationDelegate>
@@ -50,9 +50,9 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, ResponsivenessTimerShouldNotFireAfterTearDown)
+TEST(CyberKit, ResponsivenessTimerShouldNotFireAfterTearDown)
 {
     auto processPoolConfiguration = adoptNS([_WKProcessPoolConfiguration new]);
     auto processPool = adoptNS([[WKProcessPool alloc] _initWithConfiguration:processPoolConfiguration.get()]);
@@ -62,7 +62,7 @@ TEST(WebKit, ResponsivenessTimerShouldNotFireAfterTearDown)
     [configuration setProcessPool:processPool.get()];
     auto webView1 = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
     [webView1 setNavigationDelegate:delegate.get()];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView1 loadRequest:request];
     Util::run(&didFinishLoad);
 
@@ -88,4 +88,4 @@ TEST(WebKit, ResponsivenessTimerShouldNotFireAfterTearDown)
     EXPECT_FALSE(didBecomeUnresponsive);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

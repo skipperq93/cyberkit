@@ -25,7 +25,7 @@
 
 #import "config.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 static bool didFinishLoad;
@@ -71,34 +71,34 @@ static bool didStartProvisionalLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, NoDecidePolicyForMIMETypeDecision)
+TEST(CyberKitLegacy, NoDecidePolicyForMIMETypeDecision)
 {
     auto webView = adoptNS([[WebView alloc] initWithFrame:NSZeroRect frameName:nil groupName:nil]);
     auto delegate = adoptNS([NoDecidePolicyForMIMETypeDecisionDelegate new]);
 
     webView.get().frameLoadDelegate = delegate.get();
     webView.get().policyDelegate = delegate.get();
-    [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"verboseMarkup" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"verboseMarkup" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
     Util::run(&didFinishLoad);
 
     EXPECT_TRUE(didNavigationResponseCheck);
 }
 
-TEST(WebKitLegacy, NoDecidePolicyForNavigationActionDecision)
+TEST(CyberKitLegacy, NoDecidePolicyForNavigationActionDecision)
 {
     auto webView = adoptNS([[WebView alloc] initWithFrame:NSZeroRect frameName:nil groupName:nil]);
     auto delegate = adoptNS([NoDecidePolicyForNavigationActionDecisionDelegate new]);
 
     webView.get().frameLoadDelegate = delegate.get();
     webView.get().policyDelegate = delegate.get();
-    [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"verboseMarkup" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"verboseMarkup" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
     Util::run(&didNavigationActionCheck);
 
     EXPECT_FALSE(didStartProvisionalLoad);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

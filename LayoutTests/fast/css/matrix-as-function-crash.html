@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Calling WebKitCSSMatrix constructor as function should not cause a crash</title>
+    <title>Calling CyberKitCSSMatrix constructor as function should not cause a crash</title>
     <script>
         if (window.testRunner)
             testRunner.dumpAsText();
@@ -9,7 +9,7 @@
         {
             var result = document.getElementById("result");
             try {
-                WebKitCSSMatrix();
+                CyberKitCSSMatrix();
                 
             }
             catch (e) {
@@ -22,6 +22,6 @@
     </script>
 </head>
 <body onload="runTest()">
-    <p>Calling <code>WebKitCSSMatrix</code> constructor as function should throw an exception and not cause a crash.</p>
+    <p>Calling <code>CyberKitCSSMatrix</code> constructor as function should throw an exception and not cause a crash.</p>
     <div id="result"></div>
 </html>

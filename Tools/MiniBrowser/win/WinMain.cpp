@@ -31,7 +31,7 @@
 #include "stdafx.h"
 #include "Common.h"
 #include "MiniBrowserLibResource.h"
-#include "WebKitBrowserWindow.h"
+#include "CyberKitBrowserWindow.h"
 #include <wtf/win/SoftLinking.h>
 
 SOFT_LINK_LIBRARY(user32);
@@ -66,7 +66,7 @@ int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
     else
         ::SetProcessDPIAware();
 
-    auto factory = WebKitBrowserWindow::create;
+    auto factory = CyberKitBrowserWindow::create;
     auto& mainWindow = MainWindow::create().leakRef();
     HRESULT hr = mainWindow.init(factory, hInst, options.usesLayeredWebView);
     if (FAILED(hr))

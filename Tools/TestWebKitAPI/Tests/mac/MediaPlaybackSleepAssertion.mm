@@ -28,13 +28,13 @@
 #if JSC_OBJC_API_ENABLED
 
 #import "PlatformUtilities.h"
-#import "WebCoreTestSupport.h"
+#import "CyberCoreTestSupport.h"
 #import <Carbon/Carbon.h>
 #import <IOKit/pwr_mgt/IOPMLib.h>
-#import <JavaScriptCore/JSCConfig.h>
-#import <JavaScriptCore/JSContext.h>
-#import <WebCore/Settings.h>
-#import <WebKit/WebKitLegacy.h>
+#import <CyberScriptCore/JSCConfig.h>
+#import <CyberScriptCore/JSContext.h>
+#import <CyberCore/Settings.h>
+#import <CyberKit/CyberKitLegacy.h>
 #import <wtf/RetainPtr.h>
 
 static bool didFinishLoad = false;
@@ -49,7 +49,7 @@ static bool didEndRemotePlayback = false;
 @implementation MediaPlaybackSleepAssertionLoadDelegate
 - (void)webView:(WebView *)webView didCreateJavaScriptContext:(JSContext *)context forFrame:(WebFrame *)frame
 {
-    WebCoreTestSupport::injectInternalsObject(context.JSGlobalContextRef);
+    CyberCoreTestSupport::injectInternalsObject(context.JSGlobalContextRef);
 }
 @end
 
@@ -85,7 +85,7 @@ static bool didEndRemotePlayback = false;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void simulateKeyDown(NSWindow *window)
 {
@@ -141,7 +141,7 @@ static bool hasAssertionType(CFStringRef type)
     return false;
 }
 
-TEST(WebKitLegacy, MediaPlaybackSleepAssertion)
+TEST(CyberKitLegacy, MediaPlaybackSleepAssertion)
 {
     JSC::Config::configureForTesting();
 
@@ -164,7 +164,7 @@ TEST(WebKitLegacy, MediaPlaybackSleepAssertion)
         webView.get().frameLoadDelegate = frameLoadDelegate.get();
         WebFrame *mainFrame = webView.get().mainFrame;
 
-        NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"MediaPlaybackSleepAssertion" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"MediaPlaybackSleepAssertion" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
         [mainFrame loadRequest:request];
 
         Util::run(&didFinishLoad);

@@ -36,7 +36,7 @@
 #include <sstream>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void expectBuilderContent(StringView expected, const StringBuilder& builder)
 {
@@ -415,7 +415,7 @@ TEST(StringBuilderTest, ToAtomStringOnEmpty)
     }
     { // Cleared StringBuilder.
         StringBuilder builder;
-        builder.append("WebKit");
+        builder.append("CyberKit");
         builder.clear();
         AtomString atomString = builder.toAtomString();
         EXPECT_EQ(emptyAtom(), atomString);

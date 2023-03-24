@@ -30,9 +30,9 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool testDone;
 
@@ -56,7 +56,7 @@ static void didFinishNavigation(WKPageRef page, WKNavigationRef, WKTypeRef userD
     testDone = true;
 }
 
-TEST(WebKit, FrameMIMETypeHTML)
+TEST(CyberKit, FrameMIMETypeHTML)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -77,6 +77,6 @@ TEST(WebKit, FrameMIMETypeHTML)
     Util::run(&testDone);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

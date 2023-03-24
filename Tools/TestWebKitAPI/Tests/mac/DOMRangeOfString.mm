@@ -25,8 +25,8 @@
 
 #import "config.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WebViewPrivate.h>
-#import <WebKit/DOM.h>
+#import <CyberKit/WebViewPrivate.h>
+#import <CyberKit/DOM.h>
 #import <wtf/RetainPtr.h>
 
 @interface DOMRangeOfStringFrameLoadDelegate : NSObject <WebFrameLoadDelegate> {
@@ -44,15 +44,15 @@ static bool didFinishLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, DOMRangeOfString)
+TEST(CyberKitLegacy, DOMRangeOfString)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSZeroRect frameName:nil groupName:nil]);
     RetainPtr<DOMRangeOfStringFrameLoadDelegate> frameLoadDelegate = adoptNS([DOMRangeOfStringFrameLoadDelegate new]);
 
     webView.get().frameLoadDelegate = frameLoadDelegate.get();
-    [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"DOMRangeOfString" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"DOMRangeOfString" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
     Util::run(&didFinishLoad);
 
@@ -89,4 +89,4 @@ TEST(WebKitLegacy, DOMRangeOfString)
     EXPECT_EQ(6, resultRange.startOffset);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

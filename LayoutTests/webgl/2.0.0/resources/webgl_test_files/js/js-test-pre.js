@@ -32,7 +32,7 @@
 
     /* -- plaform specific code -- */
 
-    // WebKit Specific code. Add your code here.
+    // CyberKit Specific code. Add your code here.
     if (window.testRunner && !window.layoutTestController) {
       window.layoutTestController = window.testRunner;
     }
@@ -42,7 +42,7 @@
       window.layoutTestController.waitUntilDone();
     }
     if (window.internals) {
-      // The WebKit testing system compares console output.
+      // The CyberKit testing system compares console output.
       // Because the output of the WebGL Tests is GPU dependent
       // we turn off console messages.
       window.console.log = function() { };
@@ -99,7 +99,7 @@ if (typeof quietMode == 'undefined') {
 }
 
 function nonKhronosFrameworkNotifyDone() {
-  // WebKit Specific code. Add your code here.
+  // CyberKit Specific code. Add your code here.
   if (window.layoutTestController) {
     window.layoutTestController.notifyDone();
   }
@@ -707,7 +707,7 @@ function webglHarnessCollectGarbage() {
         return;
     }
 
-    // WebKit's MiniBrowser
+    // CyberKit's MiniBrowser
     if (window.$vm) {
         window.$vm.gc();
         return;

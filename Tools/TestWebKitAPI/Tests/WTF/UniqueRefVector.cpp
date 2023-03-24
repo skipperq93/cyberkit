@@ -31,7 +31,7 @@
 
 #define MAKE(x) makeUniqueRefWithoutFastMallocCheck<int>(x)
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_UniqueRefVector, Basic)
 {
@@ -208,4 +208,4 @@ TEST(WTF_UniqueRefVector, FindIf)
     EXPECT_EQ(2U, v.findIf([](int value) { return value == 2; }));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

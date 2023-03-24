@@ -30,10 +30,10 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <WebKit/WKRetainPtr.h>
-#include <WebKit/WKSerializedScriptValue.h>
+#include <CyberKit/WKRetainPtr.h>
+#include <CyberKit/WKSerializedScriptValue.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool testDone;
 
@@ -49,7 +49,7 @@ static void didRunJavaScript(WKSerializedScriptValueRef resultSerializedScriptVa
     testDone = true;
 }
 
-TEST(WebKit, EvaluateJavaScriptThatThrowsAnException)
+TEST(CyberKit, EvaluateJavaScriptThatThrowsAnException)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -71,7 +71,7 @@ static void didCreateBlob(WKSerializedScriptValueRef serializedScriptValue, WKEr
     testDone = true;
 }
 
-TEST(WebKit, EvaluateJavaScriptThatCreatesBlob)
+TEST(CyberKit, EvaluateJavaScriptThatCreatesBlob)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -82,6 +82,6 @@ TEST(WebKit, EvaluateJavaScriptThatCreatesBlob)
     Util::run(&testDone);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

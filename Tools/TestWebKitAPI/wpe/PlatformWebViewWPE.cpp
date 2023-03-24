@@ -27,10 +27,10 @@
 #include "PlatformWebView.h"
 
 #include <WPEToolingBackends/HeadlessViewBackend.h>
-#include <WebKit/WKRetainPtr.h>
-#include <WebKit/WKView.h>
+#include <CyberKit/WKRetainPtr.h>
+#include <CyberKit/WKView.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 PlatformWebView::PlatformWebView(WKContextRef contextRef, WKPageGroupRef pageGroupRef)
     : m_window(nullptr)
@@ -100,4 +100,4 @@ void PlatformWebView::simulateMouseMove(unsigned x, unsigned y, WKEventModifiers
     // FIXME: implement this.
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

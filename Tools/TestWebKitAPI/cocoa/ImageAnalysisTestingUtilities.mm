@@ -235,7 +235,7 @@
 
 #endif // ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 RetainPtr<VKQuad> createQuad(CGPoint topLeft, CGPoint topRight, CGPoint bottomLeft, CGPoint bottomRight)
 {
@@ -287,6 +287,6 @@ RemoveBackgroundSwizzler::RemoveBackgroundSwizzler(CGImageRef image, CGRect crop
 
 #endif // ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // HAVE(VK_IMAGE_ANALYSIS)

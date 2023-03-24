@@ -28,16 +28,16 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebsiteDataRecordPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/CyberKit.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebsiteDataRecordPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/text/WTFString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 #if PLATFORM(MAC)
 static void checkUntilDisplayNameIs(WKWebView *webView, NSString *expectedName, bool* done, size_t iterations = 20)
@@ -55,7 +55,7 @@ static void checkUntilDisplayNameIs(WKWebView *webView, NSString *expectedName, 
 
 // The network process requires a private entitlement to get and set the process name for the web process.
 #if !ENABLE(SET_WEBCONTENT_PROCESS_INFORMATION_IN_NETWORK_PROCESS) || USE(APPLE_INTERNAL_SDK)
-TEST(WebKit, CustomDisplayName)
+TEST(CyberKit, CustomDisplayName)
 {
     auto configuration = adoptNS([WKWebViewConfiguration new]);
     NSString *displayNameToSet = @"test display name";
@@ -68,13 +68,13 @@ TEST(WebKit, CustomDisplayName)
     Util::run(&done);
 }
 
-TEST(WebKit, DefaultDisplayName)
+TEST(CyberKit, DefaultDisplayName)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 500)]);
     [webView synchronouslyLoadHTMLString:@"start web process"];
 
     __block bool done = false;
-    checkUntilDisplayNameIs(webView.get(), @"TestWebKitAPI Web Content", &done);
+    checkUntilDisplayNameIs(webView.get(), @"TestCyberKitAPI Web Content", &done);
     Util::run(&done);
 }
 #endif // !ENABLE(SET_WEBCONTENT_PROCESS_INFORMATION_IN_NETWORK_PROCESS) || USE(APPLE_INTERNAL_SDK)

@@ -29,16 +29,16 @@
 #import "PlatformUtilities.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebCore/SQLiteDatabase.h>
-#import <WebCore/SQLiteStatement.h>
-#import <WebKit/WKFoundation.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebsiteDataRecordPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberCore/SQLiteDatabase.h>
+#import <CyberCore/SQLiteStatement.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebsiteDataRecordPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/text/StringConcatenateNumbers.h>
@@ -89,7 +89,7 @@ TEST(ResourceLoadStatistics, GrandfatherCallback)
     dataStoreConfiguration.get().pcmMachServiceName = nil;
     auto dataStore = adoptNS([[WKWebsiteDataStore alloc] _initWithConfiguration:dataStoreConfiguration.get()]);
 
-    NSURL *statisticsDirectoryURL = [NSURL fileURLWithPath:[@"~/Library/WebKit/com.apple.WebKit.TestWebKitAPI/WebsiteData/ResourceLoadStatistics" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *statisticsDirectoryURL = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/ResourceLoadStatistics" stringByExpandingTildeInPath] isDirectory:YES];
     NSURL *fileURL = [statisticsDirectoryURL URLByAppendingPathComponent:@"observations.db"];
     [[NSFileManager defaultManager] removeItemAtURL:fileURL error:nil];
     [[NSFileManager defaultManager] removeItemAtURL:statisticsDirectoryURL error:nil];
@@ -107,14 +107,14 @@ TEST(ResourceLoadStatistics, GrandfatherCallback)
     [dataStore _setResourceLoadStatisticsEnabled:YES];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
 
-    TestWebKitAPI::Util::run(&grandfatheredFlag);
+    TestCyberKitAPI::Util::run(&grandfatheredFlag);
 
     // Spin the runloop until the resource load statistics file has written to disk.
     // If the test enters a spin loop here, it has failed.
     while (true) {
         if ([[NSFileManager defaultManager] fileExistsAtPath:fileURL.path])
             break;
-        TestWebKitAPI::Util::spinRunLoop(1);
+        TestCyberKitAPI::Util::spinRunLoop(1);
     }
 
     grandfatheredFlag = false;
@@ -123,8 +123,8 @@ TEST(ResourceLoadStatistics, GrandfatherCallback)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
-    TestWebKitAPI::Util::spinRunLoop(10);
+    TestCyberKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::spinRunLoop(10);
 
     // The website data store remove should have completed, but since we removed all of the data types that are monitored by resource load statistics,
     // no grandfathering call should have been made. Note that the database file will not be deleted like in the persistent storage case, only cleared.
@@ -137,8 +137,8 @@ TEST(ResourceLoadStatistics, GrandfatherCallback)
 
     // Since we did not remove every data type covered by resource load statistics, we do expect that grandfathering took place again.
     // If the test hangs waiting on either of these conditions, it has failed.
-    TestWebKitAPI::Util::run(&grandfatheredFlag);
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&grandfatheredFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 }
 
 TEST(ResourceLoadStatistics, ShouldNotGrandfatherOnStartup)
@@ -159,7 +159,7 @@ TEST(ResourceLoadStatistics, ShouldNotGrandfatherOnStartup)
     [dataStore _setResourceLoadStatisticsEnabled:YES];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
 
-    TestWebKitAPI::Util::run(&callbackFlag);
+    TestCyberKitAPI::Util::run(&callbackFlag);
 }
 
 TEST(ResourceLoadStatistics, ChildProcessesNotLaunched)
@@ -171,7 +171,7 @@ TEST(ResourceLoadStatistics, ChildProcessesNotLaunched)
 
     auto *dataStore = [WKWebsiteDataStore defaultDataStore];
 
-    NSURL *statisticsDirectoryURL = [NSURL fileURLWithPath:[@"~/Library/WebKit/com.apple.WebKit.TestWebKitAPI/WebsiteData/ResourceLoadStatistics" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *statisticsDirectoryURL = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/ResourceLoadStatistics" stringByExpandingTildeInPath] isDirectory:YES];
     NSURL *targetURL = [statisticsDirectoryURL URLByAppendingPathComponent:@"observations.db"];
 
     ensureITPFileIsCreated();
@@ -189,7 +189,7 @@ TEST(ResourceLoadStatistics, ChildProcessesNotLaunched)
     [dataStore _setResourceLoadStatisticsEnabled:YES];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
 
-    TestWebKitAPI::Util::run(&callbackFlag);
+    TestCyberKitAPI::Util::run(&callbackFlag);
 
     EXPECT_TRUE([[NSFileManager defaultManager] fileExistsAtPath:targetURL.path]);
 
@@ -206,7 +206,7 @@ TEST(ResourceLoadStatistics, IPCAfterStoreDestruction)
 
     // Test page requires window.internals.
 #if WK_HAVE_C_SPI
-    WKRetainPtr<WKContextRef> context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+    WKRetainPtr<WKContextRef> context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
     configuration.get().processPool = (WKProcessPool *)context.get();
 #endif
 
@@ -215,9 +215,9 @@ TEST(ResourceLoadStatistics, IPCAfterStoreDestruction)
     auto navigationDelegate = adoptNS([[DisableITPDuringNavigationDelegate alloc] init]);
     [webView setNavigationDelegate:navigationDelegate.get()];
 
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"notify-resourceLoadObserver" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"notify-resourceLoadObserver" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 }
 
 static void cleanupITPDatabase(WKWebsiteDataStore *dataStore)
@@ -237,17 +237,17 @@ static void cleanupITPDatabase(WKWebsiteDataStore *dataStore)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     // Trigger ITP to process its data to force a sync to persistent storage.
     [dataStore _processStatisticsAndDataRecords: ^(void) {
         doneFlag = true;
     }];
     
-    TestWebKitAPI::Util::run(&doneFlag);
-    TestWebKitAPI::Util::run(&dataSyncCompleted);
+    TestCyberKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&dataSyncCompleted);
     
-    TestWebKitAPI::Util::spinRunLoop(1);
+    TestCyberKitAPI::Util::spinRunLoop(1);
 
     [dataStore _setResourceLoadStatisticsEnabled:NO];
 }
@@ -264,7 +264,7 @@ TEST(ResourceLoadStatistics, EnableDisableITP)
 
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
     
-    [webView loadHTMLString:@"WebKit Test" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
+    [webView loadHTMLString:@"CyberKit Test" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
     [webView _test_waitForDidFinishNavigation];
 
     cleanupITPDatabase(dataStore);
@@ -276,12 +276,12 @@ TEST(ResourceLoadStatistics, EnableDisableITP)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     // Turn it on
     [dataStore _setResourceLoadStatisticsEnabled:YES];
 
-    [webView loadHTMLString:@"WebKit Test" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
+    [webView loadHTMLString:@"CyberKit Test" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
     [webView _test_waitForDidFinishNavigation];
     
     // ITP should be on, but nothing was registered as prevalent yet.
@@ -291,7 +291,7 @@ TEST(ResourceLoadStatistics, EnableDisableITP)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     // Teach ITP about a bad origin:
     doneFlag = false;
@@ -299,9 +299,9 @@ TEST(ResourceLoadStatistics, EnableDisableITP)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
-    [webView loadHTMLString:@"WebKit Test" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
+    [webView loadHTMLString:@"CyberKit Test" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
     [webView _test_waitForDidFinishNavigation];
 
     // ITP should be on, and know about 'evil.com'
@@ -311,12 +311,12 @@ TEST(ResourceLoadStatistics, EnableDisableITP)
         doneFlag = true;
     }];
     
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     // Turn it off
     [dataStore _setResourceLoadStatisticsEnabled:NO];
 
-    [webView loadHTMLString:@"WebKit Test" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
+    [webView loadHTMLString:@"CyberKit Test" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
     [webView _test_waitForDidFinishNavigation];
 
     // ITP should be off, no URLs are prevalent.
@@ -326,7 +326,7 @@ TEST(ResourceLoadStatistics, EnableDisableITP)
         doneFlag = true;
     }];
     
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 }
 
 TEST(ResourceLoadStatistics, NetworkProcessRestart)
@@ -341,7 +341,7 @@ TEST(ResourceLoadStatistics, NetworkProcessRestart)
 
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    [webView loadHTMLString:@"WebKit Test" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
+    [webView loadHTMLString:@"CyberKit Test" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
     [webView _test_waitForDidFinishNavigation];
 
     cleanupITPDatabase(dataStore);
@@ -349,7 +349,7 @@ TEST(ResourceLoadStatistics, NetworkProcessRestart)
     // Turn it on
     [dataStore _setResourceLoadStatisticsEnabled:YES];
 
-    [webView loadHTMLString:@"WebKit Test" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
+    [webView loadHTMLString:@"CyberKit Test" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
     [webView _test_waitForDidFinishNavigation];
 
     // ITP should be on, but nothing was registered as prevalent yet.
@@ -359,7 +359,7 @@ TEST(ResourceLoadStatistics, NetworkProcessRestart)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     // Teach ITP about a bad origin:
     doneFlag = false;
@@ -367,9 +367,9 @@ TEST(ResourceLoadStatistics, NetworkProcessRestart)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
-    [webView loadHTMLString:@"WebKit Test" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
+    [webView loadHTMLString:@"CyberKit Test" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
     [webView _test_waitForDidFinishNavigation];
 
     // ITP should be on, and know about 'evil.com'
@@ -379,7 +379,7 @@ TEST(ResourceLoadStatistics, NetworkProcessRestart)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     static bool dataSyncCompleted;
     [dataStore _setResourceLoadStatisticsTestingCallback:^(WKWebsiteDataStore *, NSString *message) {
@@ -393,16 +393,16 @@ TEST(ResourceLoadStatistics, NetworkProcessRestart)
         doneFlag = true;
      }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
-    TestWebKitAPI::Util::run(&dataSyncCompleted);
+    TestCyberKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&dataSyncCompleted);
 
-    TestWebKitAPI::Util::spinRunLoop(1);
+    TestCyberKitAPI::Util::spinRunLoop(1);
 
     [configuration.get().websiteDataStore _terminateNetworkProcess];
 
     auto webView2 = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    [webView2 loadHTMLString:@"WebKit Test 2" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
+    [webView2 loadHTMLString:@"CyberKit Test 2" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
     [webView2 _test_waitForDidFinishNavigation];
 
     // ITP should be on, and know about 'evil.com'
@@ -412,12 +412,12 @@ TEST(ResourceLoadStatistics, NetworkProcessRestart)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     // Turn it off
     [dataStore _setResourceLoadStatisticsEnabled:NO];
 
-    [webView loadHTMLString:@"WebKit Test" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
+    [webView loadHTMLString:@"CyberKit Test" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
     [webView _test_waitForDidFinishNavigation];
 
     // ITP should be off, no URLs are prevalent.
@@ -427,18 +427,18 @@ TEST(ResourceLoadStatistics, NetworkProcessRestart)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
-    TestWebKitAPI::Util::spinRunLoop(1);
+    TestCyberKitAPI::Util::spinRunLoop(1);
 
     [configuration.get().websiteDataStore _terminateNetworkProcess];
 
     auto webView3 = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    [webView3 loadHTMLString:@"WebKit Test 3" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
+    [webView3 loadHTMLString:@"CyberKit Test 3" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
     [webView3 _test_waitForDidFinishNavigation];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     // ITP should still be off, and should not know about 'evil.com'
     doneFlag = false;
@@ -447,7 +447,7 @@ TEST(ResourceLoadStatistics, NetworkProcessRestart)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 }
 
 @interface DataTaskIdentifierCollisionDelegate : NSObject <WKNavigationDelegate, WKUIDelegate>
@@ -467,7 +467,7 @@ TEST(ResourceLoadStatistics, NetworkProcessRestart)
 - (Vector<String>)waitForMessages:(size_t)messageCount
 {
     while (_messages.size() < messageCount)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     return std::exchange(_messages, { });
 }
 
@@ -491,7 +491,7 @@ void waitUntilTwoServersConnected(const unsigned& serversConnected, CompletionHa
 
 TEST(ResourceLoadStatistics, DataTaskIdentifierCollision)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
 
     unsigned serversConnected { 0 };
     const char* header = "HTTP/1.1 200 OK\r\nContent-Length: 27\r\n\r\n";
@@ -541,7 +541,7 @@ TEST(ResourceLoadStatistics, DataTaskIdentifierCollision)
             }];
         }];
     }];
-    TestWebKitAPI::Util::run(&isolatedSessionDomain);
+    TestCyberKitAPI::Util::run(&isolatedSessionDomain);
 
     [webView1 loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://127.0.0.1:%d/", httpServer.port()]]]];
     [webView2 loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://prevalent-example.com/"]]];
@@ -580,7 +580,7 @@ TEST(ResourceLoadStatistics, FlushObserverWhenWebPageIsClosedByJavaScript)
 
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    [webView loadHTMLString:@"WebKit Test" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
+    [webView loadHTMLString:@"CyberKit Test" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
     [webView _test_waitForDidFinishNavigation];
 
     [dataStore _setResourceLoadStatisticsEnabled:YES];
@@ -597,7 +597,7 @@ TEST(ResourceLoadStatistics, FlushObserverWhenWebPageIsClosedByJavaScript)
         statisticsUpdated = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     // Seed test data in the web process' observer.
     doneFlag = false;
@@ -605,7 +605,7 @@ TEST(ResourceLoadStatistics, FlushObserverWhenWebPageIsClosedByJavaScript)
         doneFlag = true;
     }];
     
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     // Check that the third-party is not yet registered.
     doneFlag = false;
@@ -614,13 +614,13 @@ TEST(ResourceLoadStatistics, FlushObserverWhenWebPageIsClosedByJavaScript)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     statisticsUpdated = false;
     [webView loadHTMLString:@"<body><script>close();</script></body>" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
 
     // Wait for the statistics to be updated in the network process.
-    TestWebKitAPI::Util::run(&statisticsUpdated);
+    TestCyberKitAPI::Util::run(&statisticsUpdated);
 
     // Check that the third-party is now registered.
     doneFlag = false;
@@ -629,7 +629,7 @@ TEST(ResourceLoadStatistics, FlushObserverWhenWebPageIsClosedByJavaScript)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 }
 
 TEST(ResourceLoadStatistics, GetResourceLoadStatisticsDataSummary)
@@ -645,11 +645,11 @@ TEST(ResourceLoadStatistics, GetResourceLoadStatisticsDataSummary)
     auto webView2 = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
     auto webView3 = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    [webView1 loadHTMLString:@"WebKit Test" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
+    [webView1 loadHTMLString:@"CyberKit Test" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
     [webView1 _test_waitForDidFinishNavigation];
-    [webView2 loadHTMLString:@"WebKit Test" baseURL:[NSURL URLWithString:@"http://webkit2.org"]];
+    [webView2 loadHTMLString:@"CyberKit Test" baseURL:[NSURL URLWithString:@"http://webkit2.org"]];
     [webView2 _test_waitForDidFinishNavigation];
-    [webView3 loadHTMLString:@"WebKit Test" baseURL:[NSURL URLWithString:@"http://webkit3.org"]];
+    [webView3 loadHTMLString:@"CyberKit Test" baseURL:[NSURL URLWithString:@"http://webkit3.org"]];
     [webView3 _test_waitForDidFinishNavigation];
 
     [dataStore _setResourceLoadStatisticsEnabled:YES];
@@ -659,7 +659,7 @@ TEST(ResourceLoadStatistics, GetResourceLoadStatisticsDataSummary)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     doneFlag = false;
     [dataStore _clearResourceLoadStatistics:^(void) {
@@ -673,7 +673,7 @@ TEST(ResourceLoadStatistics, GetResourceLoadStatisticsDataSummary)
         statisticsUpdated = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     // Set two third parties to be prevalent, leave evil1.com as non-prevalent to ensure
     // this call returns all third parties.
@@ -682,14 +682,14 @@ TEST(ResourceLoadStatistics, GetResourceLoadStatisticsDataSummary)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     doneFlag = false;
     [dataStore _setPrevalentDomain:[NSURL URLWithString:@"http://evil3.com"] completionHandler: ^(void) {
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     // Capture time for comparison later.
     NSTimeInterval beforeUpdatingTime = [[NSDate date] timeIntervalSince1970];
@@ -701,37 +701,37 @@ TEST(ResourceLoadStatistics, GetResourceLoadStatisticsDataSummary)
     [sharedProcessPool _seedResourceLoadStatisticsForTestingWithFirstParty:[NSURL URLWithString:@"http://webkit.org"] thirdParty:[NSURL URLWithString:@"http://evil1.com"] shouldScheduleNotification:NO completionHandler: ^() {
         doneFlag = true;
     }];
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     doneFlag = false;
     [sharedProcessPool _seedResourceLoadStatisticsForTestingWithFirstParty:[NSURL URLWithString:@"http://webkit2.org"] thirdParty:[NSURL URLWithString:@"http://evil1.com"] shouldScheduleNotification:NO completionHandler: ^() {
         doneFlag = true;
     }];
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     // evil2
     doneFlag = false;
     [sharedProcessPool _seedResourceLoadStatisticsForTestingWithFirstParty:[NSURL URLWithString:@"http://webkit.org"] thirdParty:[NSURL URLWithString:@"http://evil2.com"] shouldScheduleNotification:NO completionHandler: ^() {
         doneFlag = true;
     }];
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     // evil3
     doneFlag = false;
     [sharedProcessPool _seedResourceLoadStatisticsForTestingWithFirstParty:[NSURL URLWithString:@"http://webkit.org"] thirdParty:[NSURL URLWithString:@"http://evil3.com"] shouldScheduleNotification:NO completionHandler: ^() {
         doneFlag = true;
     }];
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
     doneFlag = false;
     [sharedProcessPool _seedResourceLoadStatisticsForTestingWithFirstParty:[NSURL URLWithString:@"http://webkit2.org"] thirdParty:[NSURL URLWithString:@"http://evil3.com"] shouldScheduleNotification:NO completionHandler: ^() {
         doneFlag = true;
     }];
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
     doneFlag = false;
     [sharedProcessPool _seedResourceLoadStatisticsForTestingWithFirstParty:[NSURL URLWithString:@"http://webkit3.org"] thirdParty:[NSURL URLWithString:@"http://evil3.com"] shouldScheduleNotification:NO completionHandler: ^() {
         doneFlag = true;
     }];
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     statisticsUpdated = false;
     [webView1 loadHTMLString:@"<body><script>close();</script></body>" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
@@ -739,7 +739,7 @@ TEST(ResourceLoadStatistics, GetResourceLoadStatisticsDataSummary)
     [webView3 loadHTMLString:@"<body><script>close();</script></body>" baseURL:[NSURL URLWithString:@"http://webkit3.org"]];
 
     // Wait for the statistics to be updated in the network process.
-    TestWebKitAPI::Util::run(&statisticsUpdated);
+    TestCyberKitAPI::Util::run(&statisticsUpdated);
 
     // Check that the third-party evil1 is now registered as subresource.
     doneFlag = false;
@@ -747,13 +747,13 @@ TEST(ResourceLoadStatistics, GetResourceLoadStatisticsDataSummary)
         EXPECT_TRUE(isRegistered);
         doneFlag = true;
     }];
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
     doneFlag = false;
     [dataStore _isRegisteredAsSubresourceUnderFirstParty:[NSURL URLWithString:@"http://webkit2.org"] thirdParty:[NSURL URLWithString:@"http://evil1.com"] completionHandler: ^(BOOL isRegistered) {
         EXPECT_TRUE(isRegistered);
         doneFlag = true;
     }];
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     // Check that the third-party evil2 is now registered as subresource.
     doneFlag = false;
@@ -761,7 +761,7 @@ TEST(ResourceLoadStatistics, GetResourceLoadStatisticsDataSummary)
         EXPECT_TRUE(isRegistered);
         doneFlag = true;
     }];
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     // Check that the third-party evil3 is now registered as subresource.
     doneFlag = false;
@@ -769,19 +769,19 @@ TEST(ResourceLoadStatistics, GetResourceLoadStatisticsDataSummary)
         EXPECT_TRUE(isRegistered);
         doneFlag = true;
     }];
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
     doneFlag = false;
     [dataStore _isRegisteredAsSubresourceUnderFirstParty:[NSURL URLWithString:@"http://webkit2.org"] thirdParty:[NSURL URLWithString:@"http://evil3.com"] completionHandler: ^(BOOL isRegistered) {
         EXPECT_TRUE(isRegistered);
         doneFlag = true;
     }];
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
     doneFlag = false;
     [dataStore _isRegisteredAsSubresourceUnderFirstParty:[NSURL URLWithString:@"http://webkit3.org"] thirdParty:[NSURL URLWithString:@"http://evil3.com"] completionHandler: ^(BOOL isRegistered) {
         EXPECT_TRUE(isRegistered);
         doneFlag = true;
     }];
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     // Collect the ITP data summary which should include all third parties in the
     // order: [evil3.com, evil1.com, evil2.com] sorted by number of first parties
@@ -877,7 +877,7 @@ TEST(ResourceLoadStatistics, GetResourceLoadStatisticsDataSummary)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 }
 
 TEST(ResourceLoadStatistics, MigrateDataFromIncorrectCreateTableSchema)
@@ -894,7 +894,7 @@ TEST(ResourceLoadStatistics, MigrateDataFromIncorrectCreateTableSchema)
     // Load an incorrect database schema with pre-seeded ITP data.
     // This data should be migrated into the new database.
     [defaultFileManager createDirectoryAtURL:itpRootURL withIntermediateDirectories:YES attributes:nil error:nil];
-    NSURL *newFileURL = [[NSBundle mainBundle] URLForResource:@"incorrectCreateTableSchema" withExtension:@"db" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *newFileURL = [[NSBundle mainBundle] URLForResource:@"incorrectCreateTableSchema" withExtension:@"db" subdirectory:@"TestCyberKitAPI.resources"];
     EXPECT_TRUE([defaultFileManager fileExistsAtPath:newFileURL.path]);
     [defaultFileManager copyItemAtPath:newFileURL.path toPath:fileURL.path error:nil];
     EXPECT_TRUE([defaultFileManager fileExistsAtPath:fileURL.path]);
@@ -915,7 +915,7 @@ TEST(ResourceLoadStatistics, MigrateDataFromIncorrectCreateTableSchema)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
     
     // To make sure creation of unique indices is maintained, try to insert the same data
     // again and make sure the timestamp is replaced, and there is only one entry.
@@ -931,13 +931,13 @@ TEST(ResourceLoadStatistics, MigrateDataFromIncorrectCreateTableSchema)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
     
     statisticsUpdated = false;
     [webView loadHTMLString:@"<body><script>close();</script></body>" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
 
     // Wait for the statistics to be updated in the network process.
-    TestWebKitAPI::Util::run(&statisticsUpdated);
+    TestCyberKitAPI::Util::run(&statisticsUpdated);
 
     doneFlag = false;
     [dataStore _getResourceLoadStatisticsDataSummary:^void(NSArray<_WKResourceLoadStatisticsThirdParty *> *thirdPartyData)
@@ -960,7 +960,7 @@ TEST(ResourceLoadStatistics, MigrateDataFromIncorrectCreateTableSchema)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 }
 
 TEST(ResourceLoadStatistics, MigrateDataFromMissingTopFrameUniqueRedirectSameSiteStrictTableSchema)
@@ -976,7 +976,7 @@ TEST(ResourceLoadStatistics, MigrateDataFromMissingTopFrameUniqueRedirectSameSit
 
     // Load an incorrect database schema with pre-seeded ITP data.
     [defaultFileManager createDirectoryAtURL:itpRootURL withIntermediateDirectories:YES attributes:nil error:nil];
-    NSURL *newFileURL = [[NSBundle mainBundle] URLForResource:@"missingTopFrameUniqueRedirectSameSiteStrictTableSchema" withExtension:@"db" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *newFileURL = [[NSBundle mainBundle] URLForResource:@"missingTopFrameUniqueRedirectSameSiteStrictTableSchema" withExtension:@"db" subdirectory:@"TestCyberKitAPI.resources"];
     EXPECT_TRUE([defaultFileManager fileExistsAtPath:newFileURL.path]);
     [defaultFileManager copyItemAtPath:newFileURL.path toPath:fileURL.path error:nil];
     EXPECT_TRUE([defaultFileManager fileExistsAtPath:fileURL.path]);
@@ -998,7 +998,7 @@ TEST(ResourceLoadStatistics, MigrateDataFromMissingTopFrameUniqueRedirectSameSit
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
     
     // Check to make sure all tables are accounted for.
     doneFlag = false;
@@ -1007,7 +1007,7 @@ TEST(ResourceLoadStatistics, MigrateDataFromMissingTopFrameUniqueRedirectSameSit
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 }
 
 TEST(ResourceLoadStatistics, CanAccessDataSummaryWithNoProcessPool)
@@ -1020,7 +1020,7 @@ TEST(ResourceLoadStatistics, CanAccessDataSummaryWithNoProcessPool)
 
     // Load a a pre-seeded ITP database.
     [defaultFileManager createDirectoryAtURL:itpRootURL withIntermediateDirectories:YES attributes:nil error:nil];
-    NSURL *newFileURL = [[NSBundle mainBundle] URLForResource:@"basicITPDatabase" withExtension:@"db" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *newFileURL = [[NSBundle mainBundle] URLForResource:@"basicITPDatabase" withExtension:@"db" subdirectory:@"TestCyberKitAPI.resources"];
     EXPECT_TRUE([defaultFileManager fileExistsAtPath:newFileURL.path]);
     [defaultFileManager copyItemAtPath:newFileURL.path toPath:fileURL.path error:nil];
     EXPECT_TRUE([defaultFileManager fileExistsAtPath:fileURL.path]);
@@ -1047,7 +1047,7 @@ TEST(ResourceLoadStatistics, CanAccessDataSummaryWithNoProcessPool)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 }
 
 TEST(ResourceLoadStatistics, StoreSuspension)
@@ -1073,17 +1073,17 @@ TEST(ResourceLoadStatistics, StoreSuspension)
     auto webView1 = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration1.get()]);
     auto webView2 = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration2.get()]);
 
-    [webView1 loadHTMLString:@"WebKit Test" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
+    [webView1 loadHTMLString:@"CyberKit Test" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
     [webView1 _test_waitForDidFinishNavigation];
 
-    [webView2 loadHTMLString:@"WebKit Test" baseURL:[NSURL URLWithString:@"http://webkit2.org"]];
+    [webView2 loadHTMLString:@"CyberKit Test" baseURL:[NSURL URLWithString:@"http://webkit2.org"]];
     [webView2 _test_waitForDidFinishNavigation];
 
     __block bool doneFlag = false;
     [dataStore1 _sendNetworkProcessPrepareToSuspend:^{
         doneFlag = true;
     }];
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     [dataStore1 _sendNetworkProcessDidResume];
 }
@@ -1164,7 +1164,7 @@ TEST(ResourceLoadStatistics, DataSummaryWithCachedProcess)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
     
     [WKWebsiteDataStore _setCachedProcessSuspensionDelayForTesting:30];
 }
@@ -1193,7 +1193,7 @@ TEST(ResourceLoadStatistics, BackForwardPerPageData)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     // Seed the page with a third party.
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"resource-load-statistics://fp1/fp-load-one"]]];
@@ -1206,7 +1206,7 @@ TEST(ResourceLoadStatistics, BackForwardPerPageData)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     // Navigate somewhere else and load a different third party.
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"resource-load-statistics://fp2/fp-load-two"]]];
@@ -1219,7 +1219,7 @@ TEST(ResourceLoadStatistics, BackForwardPerPageData)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     // Go back, check for the cached third party example1.com.
     [webView goBack];
@@ -1232,7 +1232,7 @@ TEST(ResourceLoadStatistics, BackForwardPerPageData)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     // Go forward, check for the cached third party example2.com.
     [webView goForward];
@@ -1245,7 +1245,7 @@ TEST(ResourceLoadStatistics, BackForwardPerPageData)
         doneFlag = true;
     }];
     
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 }
 
 TEST(ResourceLoadStatistics, MigrateDistinctDataFromTableWithMissingIndexes)
@@ -1263,7 +1263,7 @@ TEST(ResourceLoadStatistics, MigrateDistinctDataFromTableWithMissingIndexes)
     // repeatedly stored as subframes, subresources, and unique redirects. It also has them as repeated source and destination sites for PCM.
     // Once we add unique indexes, each entry should be migrated exactly once. Debug asserts when running the test will indicate failure.
     [defaultFileManager createDirectoryAtURL:itpRootURL withIntermediateDirectories:YES attributes:nil error:nil];
-    NSURL *newFileURL = [[NSBundle mainBundle] URLForResource:@"resourceLoadStatisticsMissingUniqueIndex" withExtension:@"db" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *newFileURL = [[NSBundle mainBundle] URLForResource:@"resourceLoadStatisticsMissingUniqueIndex" withExtension:@"db" subdirectory:@"TestCyberKitAPI.resources"];
     EXPECT_TRUE([defaultFileManager fileExistsAtPath:newFileURL.path]);
     [defaultFileManager copyItemAtPath:newFileURL.path toPath:fileURL.path error:nil];
     EXPECT_TRUE([defaultFileManager fileExistsAtPath:fileURL.path]);
@@ -1283,7 +1283,7 @@ TEST(ResourceLoadStatistics, MigrateDistinctDataFromTableWithMissingIndexes)
         EXPECT_TRUE(result);
         doneFlag = true;
     }];
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
 
     doneFlag = false;
     // Check that the apple.com is stored as appearing under webkit.org exactly once.
@@ -1292,13 +1292,13 @@ TEST(ResourceLoadStatistics, MigrateDistinctDataFromTableWithMissingIndexes)
         doneFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&doneFlag);
+    TestCyberKitAPI::Util::run(&doneFlag);
     
     // Clear pre-filled database.
     [defaultFileManager removeItemAtPath:itpRootURL.path error:nil];
 }
 
-static Vector<String> columnsForTable(WebCore::SQLiteDatabase& database, ASCIILiteral tableName)
+static Vector<String> columnsForTable(CyberCore::SQLiteDatabase& database, ASCIILiteral tableName)
 {
     auto statement = database.prepareStatementSlow(makeString("PRAGMA table_info(", tableName, ")"));
     EXPECT_NOT_NULL(statement);
@@ -1322,7 +1322,7 @@ TEST(ResourceLoadStatistics, DatabaseSchemeUpdate)
     EXPECT_NULL(error);
     
     NSURL *targetURL = [dataStoreConfiguration.get()._resourceLoadStatisticsDirectory URLByAppendingPathComponent:@"observations.db"];
-    WebCore::SQLiteDatabase database;
+    CyberCore::SQLiteDatabase database;
     EXPECT_TRUE(database.open(targetURL.path));
 
     constexpr auto createObservedDomain = "CREATE TABLE ObservedDomains ("
@@ -1341,9 +1341,9 @@ TEST(ResourceLoadStatistics, DatabaseSchemeUpdate)
     [dataStore _setPrevalentDomain:[NSURL URLWithString:@"https://example.com/"] completionHandler:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     
-    WebCore::SQLiteDatabase databaseAfterMigration;
+    CyberCore::SQLiteDatabase databaseAfterMigration;
     EXPECT_TRUE(databaseAfterMigration.open(targetURL.path));
     auto columns = columnsForTable(databaseAfterMigration, "ObservedDomains"_s);
     databaseAfterMigration.close();

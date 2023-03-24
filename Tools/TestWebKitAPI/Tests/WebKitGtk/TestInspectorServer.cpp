@@ -81,7 +81,7 @@ public:
     void startTestServer()
     {
         // Prepare argv[] for spawning the server process.
-        GUniquePtr<char> testServerPath(g_build_filename(WEBKIT_EXEC_PATH, "TestWebKitAPI", "WebKitGTK", "InspectorTestServer", nullptr));
+        GUniquePtr<char> testServerPath(g_build_filename(WEBKIT_EXEC_PATH, "TestCyberKitAPI", "CyberKitGTK", "InspectorTestServer", nullptr));
 
         int eventFD = eventfd(0, 0);
         g_assert_cmpint(eventFD, !=, -1);
@@ -228,8 +228,8 @@ void beforeAll()
         kill(gActiveServerPid, SIGTERM);
     });
 
-    InspectorServerTest::add("WebKitWebInspectorServer", "test-page-list", testInspectorServerPageList);
-    InspectorHTTPServerTest::add("WebKitWebInspectorServer", "http-test-page-list", testInspectorHTTPServerPageList);
+    InspectorServerTest::add("CyberKitWebInspectorServer", "test-page-list", testInspectorServerPageList);
+    InspectorHTTPServerTest::add("CyberKitWebInspectorServer", "http-test-page-list", testInspectorHTTPServerPageList);
 }
 
 void afterAll()

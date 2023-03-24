@@ -34,7 +34,7 @@
 typedef struct _SoupServer SoupServer;
 #elif USE(INSPECTOR_SOCKET_SERVER)
 #include "HTTPParser.h"
-#include <JavaScriptCore/RemoteInspectorSocketEndpoint.h>
+#include <CyberScriptCore/RemoteInspectorSocketEndpoint.h>
 
 using Inspector::ConnectionID;
 using Inspector::PlatformSocketType;

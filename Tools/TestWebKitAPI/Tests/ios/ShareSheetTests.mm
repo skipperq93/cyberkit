@@ -30,10 +30,10 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKActivatedElementInfo.h>
-#import <WebKit/_WKElementAction.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKActivatedElementInfo.h>
+#import <CyberKit/_WKElementAction.h>
 #import <wtf/BlockPtr.h>
 
 @interface ShareSheetObserver : NSObject<WKUIDelegatePrivate>
@@ -56,7 +56,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 #if !PLATFORM(WATCHOS) && !PLATFORM(APPLETV)
 
@@ -75,7 +75,7 @@ static void showShareSheet(WKWebView *webView, ShareSheetObserver *observer, CGP
         return @[ copyAction.get() ];
     }];
     [webView _simulateLongPressActionAtLocation:location];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_TRUE(!!copyAction);
     EXPECT_TRUE(!!copyElement);
@@ -98,7 +98,7 @@ TEST(ShareSheetTests, ShareImgElementWithBase64URL)
     }];
 
     showShareSheet(webView.get(), observer.get(), CGPointMake(100, 100));
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(ShareSheetTests, ShareAnchorElementAsURL)
@@ -116,11 +116,11 @@ TEST(ShareSheetTests, ShareAnchorElementAsURL)
     }];
 
     showShareSheet(webView.get(), observer.get(), CGPointMake(100, 100));
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 #endif // !PLATFORM(WATCHOS) && !PLATFORM(APPLETV)
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY) && !PLATFORM(MACCATALYST)

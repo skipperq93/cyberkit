@@ -36,13 +36,13 @@
 #import <UIKit/UIDragItem.h>
 #import <UIKit/UIDropInteraction.h>
 #import <UIKit/UIInteraction.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKFocusedElementInfo.h>
-#import <WebKit/_WKFormInputSession.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKFocusedElementInfo.h>
+#import <CyberKit/_WKFormInputSession.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/SoftLinking.h>
 
-using namespace TestWebKitAPI;
+using namespace TestCyberKitAPI;
 
 @implementation WKWebView (DragAndDropTesting)
 
@@ -267,7 +267,7 @@ using namespace TestWebKitAPI;
 
 static double progressIncrementStep = 0.033;
 static double progressTimeStep = 0.016;
-static NSString *TestWebKitAPISimulateCancelAllTouchesNotificationName = @"TestWebKitAPISimulateCancelAllTouchesNotificationName";
+static NSString *TestCyberKitAPISimulateCancelAllTouchesNotificationName = @"TestCyberKitAPISimulateCancelAllTouchesNotificationName";
 
 static NSArray *dragAndDropEventNames()
 {
@@ -287,7 +287,7 @@ static NSArray *dragAndDropEventNames()
 IGNORE_WARNINGS_BEGIN("deprecated-implementations")
 - (void)_cancelAllTouches
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:TestWebKitAPISimulateCancelAllTouchesNotificationName object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TestCyberKitAPISimulateCancelAllTouchesNotificationName object:nil];
 }
 IGNORE_WARNINGS_END
 
@@ -426,7 +426,7 @@ IGNORE_WARNINGS_END
 - (void)runFrom:(CGPoint)startLocation to:(CGPoint)endLocation additionalItemRequestLocations:(ProgressToCGPointValueMap)additionalItemRequestLocations
 {
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
-    [defaultCenter addObserver:self selector:@selector(simulateAllTouchesCanceled:) name:TestWebKitAPISimulateCancelAllTouchesNotificationName object:nil];
+    [defaultCenter addObserver:self selector:@selector(simulateAllTouchesCanceled:) name:TestCyberKitAPISimulateCancelAllTouchesNotificationName object:nil];
 
     if (_shouldEnsureUIApplication)
         UIApplicationInstantiateSingleton([DragAndDropSimulatorApplication class]);
@@ -455,7 +455,7 @@ IGNORE_WARNINGS_END
     } else {
         _dragSession = adoptNS([[MockDragSession alloc] initWithWindow:[_webView window] allowMove:self.shouldAllowMoveOperation]);
         [_dragSession setMockLocationInWindow:_startLocation];
-        [(id <UIDragInteractionDelegate_ForWebKitOnly>)[_webView dragInteractionDelegate] _dragInteraction:[_webView dragInteraction] prepareForSession:_dragSession.get() completion:[strongSelf = retainPtr(self)] {
+        [(id <UIDragInteractionDelegate_ForCyberKitOnly>)[_webView dragInteractionDelegate] _dragInteraction:[_webView dragInteraction] prepareForSession:_dragSession.get() completion:[strongSelf = retainPtr(self)] {
             if (strongSelf->_phase == DragAndDropPhaseCancelled)
                 return;
 
@@ -575,7 +575,7 @@ IGNORE_WARNINGS_END
     [_queuedAdditionalItemRequestLocations removeObjectAtIndex:0];
 
     auto requestLocation = [[_webView window] convertPoint:[requestLocationValue CGPointValue] toView:_webView.get()];
-    [(id <UIDragInteractionDelegate_ForWebKitOnly>)[_webView dragInteractionDelegate] _dragInteraction:[_webView dragInteraction] itemsForAddingToSession:_dragSession.get() withTouchAtPoint:requestLocation completion:[dragSession = _dragSession, dropSession = _dropSession] (NSArray *items) {
+    [(id <UIDragInteractionDelegate_ForCyberKitOnly>)[_webView dragInteractionDelegate] _dragInteraction:[_webView dragInteraction] itemsForAddingToSession:_dragSession.get() withTouchAtPoint:requestLocation completion:[dragSession = _dragSession, dropSession = _dropSession] (NSArray *items) {
         [dragSession addItems:items];
         [dropSession addItems:items];
     }];
@@ -822,7 +822,7 @@ IGNORE_WARNINGS_END
 
 - (void)addAnimations:(void (^)())animations
 {
-    // This is not implemented by the drag-and-drop simulator yet, since WebKit doesn't make use of
+    // This is not implemented by the drag-and-drop simulator yet, since CyberKit doesn't make use of
     // "alongside" animations during drop.
     ASSERT_NOT_REACHED();
 }

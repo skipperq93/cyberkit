@@ -43,7 +43,7 @@
 #define OS_OBJECT_PTR_TEST_NAME OSObjectPtr
 #endif
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(OS_OBJECT_PTR_TEST_NAME, AdoptOSObject)
 {
@@ -93,4 +93,4 @@ TEST(OS_OBJECT_PTR_TEST_NAME, LeakRef)
     WTF::releaseOSObject(queue);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

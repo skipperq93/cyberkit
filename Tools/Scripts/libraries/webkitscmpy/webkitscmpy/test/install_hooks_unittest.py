@@ -36,18 +36,18 @@ class TestInstallHooks(testing.PathTestCase):
 
     def test_regex(self):
         self.assertEqual(
-            program.InstallHooks.REMOTE_RE.match('https://github.com/WebKit/WebKit').groups(),
-            ('https://', None, 'github.com', '/', 'WebKit/WebKit', None),
+            program.InstallHooks.REMOTE_RE.match('https://github.com/CyberKit/CyberKit').groups(),
+            ('https://', None, 'github.com', '/', 'CyberKit/CyberKit', None),
         )
         self.assertEqual(
-            program.InstallHooks.REMOTE_RE.match('ssh://github.com/WebKit/WebKit').groups(),
-            ('ssh://', None, 'github.com', '/', 'WebKit/WebKit', None),
+            program.InstallHooks.REMOTE_RE.match('ssh://github.com/CyberKit/CyberKit').groups(),
+            ('ssh://', None, 'github.com', '/', 'CyberKit/CyberKit', None),
         )
         self.assertEqual(
-            program.InstallHooks.REMOTE_RE.match('git@github.com:WebKit/WebKit.git').groups(),
-            (None, 'git@', 'github.com', ':', 'WebKit/WebKit', '.git'),
+            program.InstallHooks.REMOTE_RE.match('git@github.com:CyberKit/CyberKit.git').groups(),
+            (None, 'git@', 'github.com', ':', 'CyberKit/CyberKit', '.git'),
         )
         self.assertEqual(
-            program.InstallHooks.REMOTE_RE.match('ssh://git@github.com/WebKit/WebKit').groups(),
-            ('ssh://', 'git@', 'github.com', '/', 'WebKit/WebKit', None),
+            program.InstallHooks.REMOTE_RE.match('ssh://git@github.com/CyberKit/CyberKit').groups(),
+            ('ssh://', 'git@', 'github.com', '/', 'CyberKit/CyberKit', None),
         )

@@ -29,7 +29,7 @@
 #include <wtf/RefCounter.h>
 #include <wtf/text/WTFString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static const int IncrementExpected = 0xC0FFEE1;
 static const int DecrementExpected = 0xC0FFEE2;
@@ -182,4 +182,4 @@ TEST(WTF, RefCounterDeleteCounterWithOutstandingTokens)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

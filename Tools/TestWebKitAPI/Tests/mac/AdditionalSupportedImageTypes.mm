@@ -28,9 +28,9 @@
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
 
-#import <WebKit/DOM.h>
-#import <WebKit/WebPreferencesPrivate.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/DOM.h>
+#import <CyberKit/WebPreferencesPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 @interface AdditionalSupportedImageTypesTest : NSObject <WebFrameLoadDelegate> {
@@ -47,7 +47,7 @@ static bool didFinishLoad;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void runTest(NSArray *additionalSupportedImageTypes, Boolean expectedToLoad)
 {
@@ -60,7 +60,7 @@ static void runTest(NSArray *additionalSupportedImageTypes, Boolean expectedToLo
     RetainPtr<AdditionalSupportedImageTypesTest> testController = adoptNS([AdditionalSupportedImageTypesTest new]);
     webView.get().frameLoadDelegate = testController.get();
 
-    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"AdditionalSupportedImageTypes" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"AdditionalSupportedImageTypes" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:testURL.get()]];
 
     Util::run(&didFinishLoad);
@@ -75,29 +75,29 @@ static void runTest(NSArray *additionalSupportedImageTypes, Boolean expectedToLo
         EXPECT_EQ([image width], 100);
 }
 
-TEST(WebKitLegacy, AdditionalSupportedStringImageType)
+TEST(CyberKitLegacy, AdditionalSupportedStringImageType)
 {
     runTest(@[@"com.truevision.tga-image"], true);
 }
 
-TEST(WebKitLegacy, AdditionalBogusStringImageType)
+TEST(CyberKitLegacy, AdditionalBogusStringImageType)
 {
     runTest(@[@"public.bogus"], false);
 }
 
-TEST(WebKitLegacy, AdditionalEmptyArrayImageType)
+TEST(CyberKitLegacy, AdditionalEmptyArrayImageType)
 {
     runTest(@[], false);
 }
 
-TEST(WebKitLegacy, AdditionalArryOfNullImageType)
+TEST(CyberKitLegacy, AdditionalArryOfNullImageType)
 {
     runTest(@[[NSNull null]], false);
 }
 
-TEST(WebKitLegacy, AdditionalArrayOfArrayImageType)
+TEST(CyberKitLegacy, AdditionalArrayOfArrayImageType)
 {
     runTest(@[@[@"com.truevision.tga-image"]], false);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

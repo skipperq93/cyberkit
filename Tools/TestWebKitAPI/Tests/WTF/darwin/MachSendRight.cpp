@@ -28,7 +28,7 @@
 
 #include <mach/mach.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static unsigned getSendRefs(mach_port_t port)
 {

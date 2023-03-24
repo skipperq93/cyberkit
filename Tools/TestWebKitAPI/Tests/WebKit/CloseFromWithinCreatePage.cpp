@@ -29,9 +29,9 @@
 
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
-#include <WebKit/WKPreferencesRefPrivate.h>
+#include <CyberKit/WKPreferencesRefPrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool testDone;
 static std::unique_ptr<PlatformWebView> openedWebView;
@@ -61,7 +61,7 @@ static WKPageRef createNewPageThenClose(WKPageRef page, WKURLRequestRef urlReque
     return openedWebView->page();
 }
 
-TEST(WebKit, CloseFromWithinCreatePage)
+TEST(CyberKit, CloseFromWithinCreatePage)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -106,7 +106,7 @@ static WKPageRef createNewPage(WKPageRef page, WKURLRequestRef urlRequest, WKDic
     return openedWebView->page();
 }
 
-TEST(WebKit, CreatePageThenDocumentOpenMIMEType)
+TEST(CyberKit, CreatePageThenDocumentOpenMIMEType)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 

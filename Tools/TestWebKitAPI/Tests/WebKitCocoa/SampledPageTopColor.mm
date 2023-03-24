@@ -28,11 +28,11 @@
 #import "TestCocoa.h"
 #import "TestWKWebView.h"
 #import "Utilities.h"
-#import <WebCore/Color.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKFeature.h>
+#import <CyberCore/Color.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKFeature.h>
 #import <wtf/Function.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/text/StringBuilder.h>
@@ -100,7 +100,7 @@ static void waitForSampledPageTopColorToChange(TestWKWebView *webView, Function<
     if (trigger)
         trigger();
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 static void waitForSampledPageTopColorToChangeForHTML(TestWKWebView *webView, String&& html)
@@ -149,7 +149,7 @@ TEST(SampledPageTopColor, SolidColor)
     EXPECT_NULL([webView _sampledPageTopColor]);
 
     waitForSampledPageTopColorToChangeForHTML(webView.get(), createHTMLGradientWithColorStops("right"_s, { "red"_s, "red"_s }));
-    EXPECT_EQ(WebCore::roundAndClampToSRGBALossy([webView _sampledPageTopColor].CGColor), WebCore::Color::red);
+    EXPECT_EQ(CyberCore::roundAndClampToSRGBALossy([webView _sampledPageTopColor].CGColor), CyberCore::Color::red);
 }
 
 TEST(SampledPageTopColor, DifferentColorsWithoutOutlierBelowMaxDifference)
@@ -301,7 +301,7 @@ TEST(SampledPageTopColor, HitTestHTMLCanvasWithoutRenderingContext)
     EXPECT_NULL([webView _sampledPageTopColor]);
 
     waitForSampledPageTopColorToChangeForHTML(webView.get(), @"<body style='margin: 0'><canvas style='width: 100%; height: 100%; background-color: red'></canvas>Test");
-    EXPECT_EQ(WebCore::roundAndClampToSRGBALossy([webView _sampledPageTopColor].CGColor), WebCore::Color::red);
+    EXPECT_EQ(CyberCore::roundAndClampToSRGBALossy([webView _sampledPageTopColor].CGColor), CyberCore::Color::red);
 }
 
 TEST(SampledPageTopColor, HitTestHTMLCanvasWithRenderingContext)
@@ -328,7 +328,7 @@ TEST(SampledPageTopColor, HitTestBeforeCSSTransition)
     EXPECT_NULL([webView _sampledPageTopColor]);
 
     waitForSampledPageTopColorToChangeForHTML(webView.get(), @"<body style='margin: 0; transition: background-color 1s'>Test");
-    EXPECT_EQ(WebCore::roundAndClampToSRGBALossy([webView _sampledPageTopColor].CGColor), WebCore::Color::white);
+    EXPECT_EQ(CyberCore::roundAndClampToSRGBALossy([webView _sampledPageTopColor].CGColor), CyberCore::Color::white);
 }
 
 TEST(SampledPageTopColor, HitTestDuringCSSTransition)
@@ -339,7 +339,7 @@ TEST(SampledPageTopColor, HitTestDuringCSSTransition)
     [webView synchronouslyLoadHTMLStringAndWaitUntilAllImmediateChildFramesPaint:@"<body style='margin: 0; transition: background-color 1000s'>"];
     [webView objectByEvaluatingJavaScript:@"document.body.style.setProperty('background-color', 'red')"];
 
-    TestWebKitAPI::Util::runFor(1_s);
+    TestCyberKitAPI::Util::runFor(1_s);
 
     // Not setting this until now prevents the sampling logic from running because without it the page isn't considered contentful.
     [webView objectByEvaluatingJavaScript:@"document.body.textContent = 'Test'"];
@@ -355,12 +355,12 @@ TEST(SampledPageTopColor, HitTestAfterCSSTransition)
     [webView synchronouslyLoadHTMLStringAndWaitUntilAllImmediateChildFramesPaint:@"<body style='margin: 0; transition: background-color 0.1s'>"];
     [webView objectByEvaluatingJavaScript:@"document.body.style.setProperty('background-color', 'red')"];
 
-    TestWebKitAPI::Util::runFor(1_s);
+    TestCyberKitAPI::Util::runFor(1_s);
 
     // Not setting this until now prevents the sampling logic from running because without it the page isn't considered contentful.
     [webView objectByEvaluatingJavaScript:@"document.body.textContent = 'Test'"];
     waitForSampledPageTopColorToChange(webView.get());
-    EXPECT_EQ(WebCore::roundAndClampToSRGBALossy([webView _sampledPageTopColor].CGColor), WebCore::Color::red);
+    EXPECT_EQ(CyberCore::roundAndClampToSRGBALossy([webView _sampledPageTopColor].CGColor), CyberCore::Color::red);
 }
 
 TEST(SampledPageTopColor, HitTestBeforeCSSAnimation)
@@ -369,7 +369,7 @@ TEST(SampledPageTopColor, HitTestBeforeCSSAnimation)
     EXPECT_NULL([webView _sampledPageTopColor]);
 
     waitForSampledPageTopColorToChangeForHTML(webView.get(), @"<style>@keyframes changeBackgroundRed { to { background-color: red; } }</style><body style='margin: 0; animation: changeBackgroundRed 1s forwards paused'>Test");
-    EXPECT_EQ(WebCore::roundAndClampToSRGBALossy([webView _sampledPageTopColor].CGColor), WebCore::Color::white);
+    EXPECT_EQ(CyberCore::roundAndClampToSRGBALossy([webView _sampledPageTopColor].CGColor), CyberCore::Color::white);
 }
 
 TEST(SampledPageTopColor, HitTestDuringCSSAnimation)
@@ -379,7 +379,7 @@ TEST(SampledPageTopColor, HitTestDuringCSSAnimation)
 
     [webView synchronouslyLoadHTMLStringAndWaitUntilAllImmediateChildFramesPaint:@"<style>@keyframes changeBackgroundRed { to { background-color: red; } }</style><body style='margin: 0; animation: changeBackgroundRed 1000s forwards'>"];
 
-    TestWebKitAPI::Util::runFor(1_s);
+    TestCyberKitAPI::Util::runFor(1_s);
 
     // Not setting this until now prevents the sampling logic from running because without it the page isn't considered contentful.
     [webView objectByEvaluatingJavaScript:@"document.body.textContent = 'Test'"];
@@ -394,12 +394,12 @@ TEST(SampledPageTopColor, HitTestAfterCSSAnimation)
 
     [webView synchronouslyLoadHTMLStringAndWaitUntilAllImmediateChildFramesPaint:@"<style>@keyframes changeBackgroundRed { to { background-color: red; } }</style><body style='margin: 0; animation: changeBackgroundRed 0.1s forwards'>"];
 
-    TestWebKitAPI::Util::runFor(1_s);
+    TestCyberKitAPI::Util::runFor(1_s);
 
     // Not setting this until now prevents the sampling logic from running because without it the page isn't considered contentful.
     [webView objectByEvaluatingJavaScript:@"document.body.textContent = 'Test'"];
     waitForSampledPageTopColorToChange(webView.get());
-    EXPECT_EQ(WebCore::roundAndClampToSRGBALossy([webView _sampledPageTopColor].CGColor), WebCore::Color::red);
+    EXPECT_EQ(CyberCore::roundAndClampToSRGBALossy([webView _sampledPageTopColor].CGColor), CyberCore::Color::red);
 }
 
 TEST(SampledPageTopColor, HitTestCSSPointerEventsNone)
@@ -408,7 +408,7 @@ TEST(SampledPageTopColor, HitTestCSSPointerEventsNone)
     EXPECT_NULL([webView _sampledPageTopColor]);
 
     [webView synchronouslyLoadHTMLStringAndWaitUntilAllImmediateChildFramesPaint:@"<body style='margin: 0'><div style='width: 100%; height: 100%; background-color: red; pointer-events: none'></div>Test"];
-    EXPECT_EQ(WebCore::roundAndClampToSRGBALossy([webView _sampledPageTopColor].CGColor), WebCore::Color::red);
+    EXPECT_EQ(CyberCore::roundAndClampToSRGBALossy([webView _sampledPageTopColor].CGColor), CyberCore::Color::red);
 }
 
 // FIXME: <https://webkit.org/b/225167> (Sampled Page Top Color: hook into painting logic instead of taking snapshots)
@@ -443,13 +443,13 @@ TEST(SampledPageTopColor, MainDocumentChange)
     }]);
 
     [webView synchronouslyLoadHTMLStringAndWaitUntilAllImmediateChildFramesPaint:@"<body>Test"];
-    EXPECT_EQ(WebCore::roundAndClampToSRGBALossy([webView _sampledPageTopColor].CGColor), WebCore::Color::white);
+    EXPECT_EQ(CyberCore::roundAndClampToSRGBALossy([webView _sampledPageTopColor].CGColor), CyberCore::Color::white);
     EXPECT_EQ(notificationCount, 1UL);
 
     notificationCount = 0;
 
     [webView synchronouslyLoadHTMLStringAndWaitUntilAllImmediateChildFramesPaint:@"<body>Test"];
-    EXPECT_EQ(WebCore::roundAndClampToSRGBALossy([webView _sampledPageTopColor].CGColor), WebCore::Color::white);
+    EXPECT_EQ(CyberCore::roundAndClampToSRGBALossy([webView _sampledPageTopColor].CGColor), CyberCore::Color::white);
     // Depending on timing, a notification can be sent for when the main document changes and then
     // when the new main document renders or both can be coalesced if rendering is fast enough.
     EXPECT_TRUE(notificationCount == 0 || notificationCount == 2);
@@ -469,6 +469,6 @@ TEST(SampledPageTopColor, MainDocumentChange)
     notificationCount = 0;
 
     [webView synchronouslyLoadHTMLStringAndWaitUntilAllImmediateChildFramesPaint:@"<body>Test"];
-    EXPECT_EQ(WebCore::roundAndClampToSRGBALossy([webView _sampledPageTopColor].CGColor), WebCore::Color::white);
+    EXPECT_EQ(CyberCore::roundAndClampToSRGBALossy([webView _sampledPageTopColor].CGColor), CyberCore::Color::white);
     EXPECT_EQ(notificationCount, 1UL);
 }

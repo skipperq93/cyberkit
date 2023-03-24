@@ -25,12 +25,12 @@
 
 #import "config.h"
 
-#import <WebKit/_WKVisitedLinkStore.h>
+#import <CyberKit/_WKVisitedLinkStore.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, VisitedLinkStore_Add)
+TEST(CyberKit, VisitedLinkStore_Add)
 {
     auto visitedLinkStore = adoptNS([[_WKVisitedLinkStore alloc] init]);
     NSURL *appleURL = [NSURL URLWithString:@"https://www.apple.com"];
@@ -49,7 +49,7 @@ TEST(WebKit, VisitedLinkStore_Add)
     EXPECT_TRUE([visitedLinkStore containsVisitedLinkWithURL:bugzillaURL]);
 }
 
-TEST(WebKit, VisitedLinkStore_RemoveAll)
+TEST(CyberKit, VisitedLinkStore_RemoveAll)
 {
     auto visitedLinkStore = adoptNS([[_WKVisitedLinkStore alloc] init]);
     NSURL *appleURL = [NSURL URLWithString:@"https://www.apple.com"];
@@ -67,7 +67,7 @@ TEST(WebKit, VisitedLinkStore_RemoveAll)
     EXPECT_FALSE([visitedLinkStore containsVisitedLinkWithURL:bugzillaURL]);
 }
 
-TEST(WebKit, VisitedLinkStore_Remove)
+TEST(CyberKit, VisitedLinkStore_Remove)
 {
     auto visitedLinkStore = adoptNS([[_WKVisitedLinkStore alloc] init]);
     NSURL *appleURL = [NSURL URLWithString:@"https://www.apple.com"];
@@ -95,7 +95,7 @@ TEST(WebKit, VisitedLinkStore_Remove)
     EXPECT_FALSE([visitedLinkStore containsVisitedLinkWithURL:appleURL]);
 }
 
-TEST(WebKit, VisitedLinkStore_AddAndRemove)
+TEST(CyberKit, VisitedLinkStore_AddAndRemove)
 {
     auto visitedLinkStore = adoptNS([[_WKVisitedLinkStore alloc] init]);
     NSURL *appleURL = [NSURL URLWithString:@"https://www.apple.com"];

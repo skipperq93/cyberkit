@@ -28,9 +28,9 @@
 #if WK_HAVE_C_SPI
 
 #include "InjectedBundleTest.h"
-#include <WebKit/WKBundlePage.h>
+#include <CyberKit/WKBundlePage.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class CustomProtocolInvalidSchemeTest : public InjectedBundleTest {
 public:
@@ -42,6 +42,6 @@ public:
 
 static InjectedBundleTest::Register<CustomProtocolInvalidSchemeTest> registrar("CustomProtocolInvalidSchemeTest");
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -33,16 +33,16 @@
 #import "TestUIDelegate.h"
 #import "TestURLSchemeHandler.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKBackForwardListPrivate.h>
-#import <WebKit/WKErrorPrivate.h>
-#import <WebKit/WKNavigationActionPrivate.h>
-#import <WebKit/WKNavigationDelegatePrivate.h>
-#import <WebKit/WKNavigationPrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebpagePreferencesPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKBackForwardListPrivate.h>
+#import <CyberKit/WKErrorPrivate.h>
+#import <CyberKit/WKNavigationActionPrivate.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/WKNavigationPrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebpagePreferencesPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Vector.h>
 
@@ -98,14 +98,14 @@ TEST(WKNavigation, LoadRequest)
     RetainPtr<NavigationDelegate> delegate = adoptNS([[NavigationDelegate alloc] init]);
     [webView setNavigationDelegate:delegate.get()];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
 
     currentNavigation = [webView loadRequest:request];
     ASSERT_NOT_NULL(currentNavigation);
     ASSERT_TRUE([[currentNavigation _request] isEqual:request]);
 
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(WKNavigation, HTTPBody)
@@ -123,12 +123,12 @@ TEST(WKNavigation, HTTPBody)
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"test:///willNotActuallyLoad"]];
     [request setHTTPBody:testData];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(WKNavigation, UserAgentAndAccept)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer server([](Connection) { });
     __block bool done = false;
     auto delegate = adoptNS([TestNavigationDelegate new]);
@@ -142,7 +142,7 @@ TEST(WKNavigation, UserAgentAndAccept)
     webView.get().customUserAgent = @"testUserAgent";
     [webView setNavigationDelegate:delegate.get()];
     [webView loadRequest:server.request()];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 @interface FrameNavigationDelegate : NSObject <WKNavigationDelegate>
@@ -162,7 +162,7 @@ TEST(WKNavigation, UserAgentAndAccept)
 - (void)waitForNavigations:(size_t)expectedNavigationCount
 {
     while (_navigationCount < expectedNavigationCount)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 }
 
 - (NSArray<NSURLRequest *> *)requests
@@ -371,7 +371,7 @@ TEST(WKNavigation, DidFailProvisionalNavigation)
     ASSERT_TRUE([[currentNavigation _request] isEqual:request]);
 
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 @interface CrashReasonDelegate : NSObject <WKNavigationDelegate>
@@ -397,7 +397,7 @@ TEST(WKNavigation, CrashReason)
     [webView loadHTMLString:@"<html>start the web process</html>" baseURL:[NSURL URLWithString:@"https://webkit.org/"]];
     [webView _killWebContentProcessAndResetState];
     
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 @interface DecidePolicyForPageCacheNavigationDelegate : NSObject <WKNavigationDelegate>
@@ -432,17 +432,17 @@ TEST(WKNavigation, DecidePolicyForPageCacheNavigation)
 
     isDone = false;
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"data:text/html,2"]];
 
     isDone = false;
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     isDone = false;
     [webView goBack];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     ASSERT_TRUE([delegate decidedPolicyForBackForwardNavigation]);
 }
@@ -480,7 +480,7 @@ TEST(WKNavigation, NavigationActionHasNavigation)
 
     isDone = false;
     delegate->navigation = [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 @interface ClientRedirectNavigationDelegate : NSObject<WKNavigationDelegatePrivate>
@@ -517,7 +517,7 @@ TEST(WKNavigation, WebViewWillPerformClientRedirect)
     redirectURL = nil;
     redirectDelay = 0;
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     ASSERT_DOUBLE_EQ(redirectDelay, 123);
     ASSERT_STREQ(redirectURL.get().absoluteString.UTF8String, "data:text/html,Page1");
@@ -527,7 +527,7 @@ TEST(WKNavigation, WebViewWillPerformClientRedirect)
     redirectURL = nil;
     redirectDelay = NSTimeIntervalSince1970; // Use any non-zero value, we will test that the delegate receives a delay of 0.
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     ASSERT_DOUBLE_EQ(redirectDelay, 0);
     ASSERT_STREQ(redirectURL.get().absoluteString.UTF8String, "data:text/html,Page2");
@@ -549,7 +549,7 @@ TEST(WKNavigation, WebViewDidCancelClientRedirect)
     isDone = false;
     didCancelRedirect = false;
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     ASSERT_FALSE(didCancelRedirect);
 
@@ -560,12 +560,12 @@ TEST(WKNavigation, WebViewDidCancelClientRedirect)
     isDone = false;
     didCancelRedirect = false;
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     ASSERT_FALSE(didCancelRedirect);
 
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     ASSERT_TRUE(didCancelRedirect);
 
@@ -577,14 +577,14 @@ TEST(WKNavigation, WebViewDidCancelClientRedirect)
     isDone = false;
     didCancelRedirect = false;
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     ASSERT_FALSE(didCancelRedirect);
 
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"data:text/html,Page4"]];
     isDone = false;
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     ASSERT_TRUE(didCancelRedirect);
 }
@@ -621,7 +621,7 @@ TEST(WKNavigation, NavigationActionSPI)
     auto delegate = adoptNS([[NavigationActionSPIDelegate alloc] init]);
     [webView setNavigationDelegate:delegate.get()];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"data:text/html,1"]]];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     EXPECT_TRUE([delegate spiCalled]);
 }
 
@@ -632,7 +632,7 @@ static bool navigationComplete;
 @implementation BackForwardDelegate
 - (void)_webView:(WKWebView *)webView willGoToBackForwardListItem:(WKBackForwardListItem *)item inPageCache:(BOOL)inPageCache
 {
-    const char* expectedURL = [[[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"] absoluteString] UTF8String];
+    const char* expectedURL = [[[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"] absoluteString] UTF8String];
     EXPECT_STREQ(item.URL.absoluteString.UTF8String, expectedURL);
     EXPECT_TRUE(item.title == nil);
     EXPECT_STREQ(item.initialURL.absoluteString.UTF8String, expectedURL);
@@ -650,13 +650,13 @@ TEST(WKNavigation, WillGoToBackForwardListItem)
     auto webView = adoptNS([[WKWebView alloc] init]);
     auto delegate = adoptNS([[BackForwardDelegate alloc] init]);
     [webView setNavigationDelegate:delegate.get()];
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
-    TestWebKitAPI::Util::run(&navigationComplete);
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
+    TestCyberKitAPI::Util::run(&navigationComplete);
     navigationComplete = false;
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
-    TestWebKitAPI::Util::run(&navigationComplete);
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
+    TestCyberKitAPI::Util::run(&navigationComplete);
     [webView goBack];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 #if PLATFORM(MAC)
@@ -669,8 +669,8 @@ RetainPtr<WKBackForwardListItem> secondItem;
 @implementation ListItemDelegate
 - (void)_webView:(WKWebView *)webView backForwardListItemAdded:(WKBackForwardListItem *)itemAdded removed:(NSArray<WKBackForwardListItem *> *)itemsRemoved
 {
-    NSString *firstURL = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"].absoluteString;
-    NSString *secondURL = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"].absoluteString;
+    NSString *firstURL = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"].absoluteString;
+    NSString *secondURL = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"].absoluteString;
 
     if (!firstItem) {
         EXPECT_NULL(firstItem);
@@ -708,13 +708,13 @@ TEST(WKNavigation, ListItemAddedRemoved)
     auto webView = adoptNS([[WKWebView alloc] init]);
     auto delegate = adoptNS([[ListItemDelegate alloc] init]);
     [webView setNavigationDelegate:delegate.get()];
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
-    TestWebKitAPI::Util::run(&navigationComplete);
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
+    TestCyberKitAPI::Util::run(&navigationComplete);
     navigationComplete = false;
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
-    TestWebKitAPI::Util::run(&navigationComplete);
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
+    TestCyberKitAPI::Util::run(&navigationComplete);
     [[webView backForwardList] _removeAllItems];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 #endif // PLATFORM(MAC)
@@ -742,7 +742,7 @@ TEST(WKNavigation, ListItemAddedRemoved)
 
 TEST(WKNavigation, FrameBackLoading)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer server({
         { "/"_s, { "<iframe src='frame1.html'></iframe>"_s } },
         { "/frame1.html"_s, { "<a href='frame2.html'>link</a>"_s } },
@@ -799,9 +799,9 @@ TEST(WKNavigation, SimultaneousNavigationWithFontsFinishes)
     "</body>"
     "</html>"_s;
 
-    NSString *svg = [NSString stringWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AllAhem" withExtension:@"svg" subdirectory:@"TestWebKitAPI.resources"] encoding:NSUTF8StringEncoding error:nil];
+    NSString *svg = [NSString stringWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AllAhem" withExtension:@"svg" subdirectory:@"TestCyberKitAPI.resources"] encoding:NSUTF8StringEncoding error:nil];
 
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer server({
         { "/"_s, { mainHTML } },
         { "/Ahem.svg"_s, { svg } },
@@ -834,7 +834,7 @@ TEST(WKNavigation, LoadRadarURLFromSandboxedFrameAllowPopups)
     constexpr auto mainHTML = "<iframe src='frame.html' sandbox='allow-scripts allow-popups'></iframe>"_s;
     constexpr auto frameHTML = "<a id='testLink' href='rdar://84498192'>Link</a><script>setTimeout(() => { document.getElementById('testLink').click() }, 0);</script>"_s;
 
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer server({
         { "/"_s, { mainHTML } },
         { "/frame.html"_s, { frameHTML } },
@@ -869,7 +869,7 @@ TEST(WKNavigation, LoadRadarURLFromSandboxedFrameAllowTopNavigation)
     constexpr auto mainHTML = "<iframe src='frame.html' sandbox='allow-scripts allow-top-navigation'></iframe>"_s;
     constexpr auto frameHTML = "<a id='testLink' href='rdar://84498192'>Link</a><script>setTimeout(() => { document.getElementById('testLink').click() }, 0);</script>"_s;
 
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer server({
         { "/"_s, { mainHTML } },
         { "/frame.html"_s, { frameHTML } },
@@ -904,7 +904,7 @@ TEST(WKNavigation, LoadRadarURLFromSandboxedFrameAllowCustomProtocolsNavigation)
     constexpr auto mainHTML = "<iframe src='frame.html' sandbox='allow-scripts allow-top-navigation-to-custom-protocols'></iframe>"_s;
     constexpr auto frameHTML = "<a id='testLink' href='rdar://84498192'>Link</a><script>setTimeout(() => { document.getElementById('testLink').click() }, 0);</script>"_s;
 
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer server({
         { "/"_s, { mainHTML } },
         { "/frame.html"_s, { frameHTML } },
@@ -939,7 +939,7 @@ TEST(WKNavigation, LoadRadarURLFromSandboxedFrameWithUserGesture)
     constexpr auto mainHTML = "<iframe src='frame.html' sandbox='allow-scripts allow-top-navigation-by-user-activation'></iframe>"_s;
     constexpr auto frameHTML = "<a id='testLink' href='rdar://84498192'>Link</a></script>"_s;
 
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer server({
         { "/"_s, { mainHTML } },
         { "/frame.html"_s, { frameHTML } },
@@ -982,7 +982,7 @@ TEST(WKNavigation, LoadRadarURLFromSandboxedFrame)
     constexpr auto mainHTML = "<iframe src='frame.html' sandbox='allow-scripts'></iframe>"_s;
     constexpr auto frameHTML = "<a id='testLink' href='rdar://84498192'>Link</a><script>setTimeout(() => { document.getElementById('testLink').click() }, 0);</script>"_s;
 
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer server({
         { "/"_s, { mainHTML } },
         { "/frame.html"_s, { frameHTML } },
@@ -1019,7 +1019,7 @@ TEST(WKNavigation, LoadRadarURLFromSandboxedFrameMissingUserGesture)
     constexpr auto mainHTML = "<iframe src='frame.html' sandbox='allow-scripts allow-top-navigation-by-user-activation'></iframe>"_s;
     constexpr auto frameHTML = "<a id='testLink' href='rdar://84498192'>Link</a><script>setTimeout(() => { document.getElementById('testLink').click() }, 0);</script>"_s;
 
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer server({
         { "/"_s, { mainHTML } },
         { "/frame.html"_s, { frameHTML } },
@@ -1053,7 +1053,7 @@ TEST(WKNavigation, LoadRadarURLFromSandboxedFrameMissingUserGesture)
 
 TEST(WKNavigation, CrossOriginCOOPCancelResponseFailProvisionalNavigationCallback)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer server({
         { "/path1"_s, { "hi"_s } },
         { "/path2"_s, { "hi"_s } },
@@ -1091,7 +1091,7 @@ TEST(WKNavigation, CrossOriginCOOPCancelResponseFailProvisionalNavigationCallbac
         [webView setNavigationDelegate:delegate.get()];
         [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
         while (finishedSuccessfullyCallbacks.size() == callbacksSizeBefore)
-            TestWebKitAPI::Util::spinRunLoop(10);
+            TestCyberKitAPI::Util::spinRunLoop(10);
     };
 
     loadWithResponsePolicy(webView.get(), @"https://webkit.org/path1", WKNavigationResponsePolicyAllow);
@@ -1104,7 +1104,7 @@ TEST(WKNavigation, CrossOriginCOOPCancelResponseFailProvisionalNavigationCallbac
 
 TEST(WKNavigation, HTTPSFirstHTTPDowngrade)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer httpsServer({
         { "/secure"_s, { { }, "hi"_s } }
     }, HTTPServer::Protocol::HttpsProxy);
@@ -1144,7 +1144,7 @@ TEST(WKNavigation, HTTPSFirstHTTPDowngrade)
     [webView setNavigationDelegate:delegate.get()];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://site.example/secure"]]];
     while (!finishedSuccessfully)
-        TestWebKitAPI::Util::spinRunLoop(5);
+        TestCyberKitAPI::Util::spinRunLoop(5);
 
     EXPECT_EQ(errorCode, 0);
     EXPECT_TRUE(finishedSuccessfully);
@@ -1159,7 +1159,7 @@ TEST(WKNavigation, HTTPSFirstHTTPDowngrade)
         EXPECT_WK_STREQ(@"http:", value);
         doneEvaluatingJavaScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
 
     doneEvaluatingJavaScript = false;
     [webView evaluateJavaScript:@"window.location.toString()" completionHandler:^(id value, NSError *error) {
@@ -1170,7 +1170,7 @@ TEST(WKNavigation, HTTPSFirstHTTPDowngrade)
         EXPECT_WK_STREQ(@"http://site.example/secure", value);
         doneEvaluatingJavaScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
 
     doneEvaluatingJavaScript = false;
     [webView evaluateJavaScript:@"window.hasOwnProperty('crypto')" completionHandler:^(id value, NSError *error) {
@@ -1178,7 +1178,7 @@ TEST(WKNavigation, HTTPSFirstHTTPDowngrade)
         EXPECT_TRUE([value boolValue]);
         doneEvaluatingJavaScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
 
     doneEvaluatingJavaScript = false;
     [webView evaluateJavaScript:@"window.crypto.hasOwnProperty('subtle')" completionHandler:^(id value, NSError *error) {
@@ -1186,7 +1186,7 @@ TEST(WKNavigation, HTTPSFirstHTTPDowngrade)
         EXPECT_FALSE([value boolValue]);
         doneEvaluatingJavaScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
 
     doneEvaluatingJavaScript = false;
     [webView evaluateJavaScript:@"window.location.href" completionHandler:^(id value, NSError *error) {
@@ -1195,13 +1195,13 @@ TEST(WKNavigation, HTTPSFirstHTTPDowngrade)
         EXPECT_WK_STREQ(@"http://site.example/secure", (NSString *)value);
         doneEvaluatingJavaScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
     EXPECT_WK_STREQ(@"http://site.example/secure", [webView _mainFrameURL].absoluteString);
 }
 
 TEST(WKNavigation, HTTPSFirstHTTPDowngradeRedirect)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer httpsServer({
         { "/secure"_s, { { }, "hi"_s } }
     }, HTTPServer::Protocol::HttpsProxy);
@@ -1241,7 +1241,7 @@ TEST(WKNavigation, HTTPSFirstHTTPDowngradeRedirect)
     [webView setNavigationDelegate:delegate.get()];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://site.example/secure"]]];
     while (!errorCode)
-        TestWebKitAPI::Util::spinRunLoop(5);
+        TestCyberKitAPI::Util::spinRunLoop(5);
 
     EXPECT_EQ(errorCode, NSURLErrorServerCertificateUntrusted);
     EXPECT_FALSE(finishedSuccessfully);
@@ -1250,7 +1250,7 @@ TEST(WKNavigation, HTTPSFirstHTTPDowngradeRedirect)
 
 TEST(WKNavigation, HTTPSFirstRedirectNoHTTPDowngradeRedirect)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer httpsServer({
         { "/redirect"_s, { 302, {{ "Location"_s, "https://site2.example/page1"_s }}, "redirecting..."_s } },
         { "/page1"_s, { { }, "hi"_s } }
@@ -1300,7 +1300,7 @@ TEST(WKNavigation, HTTPSFirstRedirectNoHTTPDowngradeRedirect)
     [webView setNavigationDelegate:delegate.get()];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://site.example/redirect"]]];
     while (!errorCode)
-        TestWebKitAPI::Util::spinRunLoop(5);
+        TestCyberKitAPI::Util::spinRunLoop(5);
 
     EXPECT_EQ(errorCode, NSURLErrorServerCertificateUntrusted);
     EXPECT_FALSE(finishedSuccessfully);
@@ -1309,7 +1309,7 @@ TEST(WKNavigation, HTTPSFirstRedirectNoHTTPDowngradeRedirect)
 
 TEST(WKNavigation, HTTPSOnlyInitialLoad)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer httpsServer({
         { "/secure"_s, { { }, "hi"_s } }
     }, HTTPServer::Protocol::HttpsProxy);
@@ -1354,7 +1354,7 @@ TEST(WKNavigation, HTTPSOnlyInitialLoad)
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://site.example/secure"]]];
 
     while (!errorCode && !finishedSuccessfully)
-        TestWebKitAPI::Util::spinRunLoop(5);
+        TestCyberKitAPI::Util::spinRunLoop(5);
 
     EXPECT_EQ(errorCode, 0);
     EXPECT_TRUE(finishedSuccessfully);
@@ -1369,13 +1369,13 @@ TEST(WKNavigation, HTTPSOnlyInitialLoad)
         EXPECT_WK_STREQ(@"https://site.example/secure", (NSString *)value);
         doneEvaluatingJavaScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
     EXPECT_WK_STREQ(@"https://site.example/secure", [webView _mainFrameURL].absoluteString);
 }
 
 TEST(WKNavigation, HTTPSOnlyHTTPFallback)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer httpsServer({
         { "/secure"_s, { { }, "hi"_s } }
     }, HTTPServer::Protocol::HttpsProxy);
@@ -1414,7 +1414,7 @@ TEST(WKNavigation, HTTPSOnlyHTTPFallback)
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://site.example/secure"]]];
 
     while (!errorCode)
-        TestWebKitAPI::Util::spinRunLoop(5);
+        TestCyberKitAPI::Util::spinRunLoop(5);
 
     EXPECT_EQ(errorCode, NSURLErrorServerCertificateUntrusted);
     EXPECT_FALSE(finishedSuccessfully);
@@ -1430,13 +1430,13 @@ TEST(WKNavigation, HTTPSOnlyHTTPFallback)
         EXPECT_WK_STREQ(@"about:blank", (NSString *)value);
         doneEvaluatingJavaScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
     EXPECT_WK_STREQ(@"", [webView _mainFrameURL].absoluteString);
 }
 
 TEST(WKNavigation, HTTPSOnlyHTTPFallbackBypassEnabled)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer httpsServer({
         { "/secure"_s, { { }, "hi"_s } }
     }, HTTPServer::Protocol::HttpsProxy);
@@ -1475,7 +1475,7 @@ TEST(WKNavigation, HTTPSOnlyHTTPFallbackBypassEnabled)
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://site.example/secure"]]];
 
     while (!errorCode)
-        TestWebKitAPI::Util::spinRunLoop(5);
+        TestCyberKitAPI::Util::spinRunLoop(5);
 
     EXPECT_EQ(errorCode, NSURLErrorServerCertificateUntrusted);
     EXPECT_FALSE(finishedSuccessfully);
@@ -1491,13 +1491,13 @@ TEST(WKNavigation, HTTPSOnlyHTTPFallbackBypassEnabled)
         EXPECT_WK_STREQ(@"about:blank", (NSString *)value);
         doneEvaluatingJavaScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
     EXPECT_WK_STREQ(@"", [webView _mainFrameURL].absoluteString);
 }
 
 TEST(WKNavigation, HTTPSOnlyWithSameSiteBypass)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer httpsServer({
         { "/secure"_s, { { }, "hi"_s } },
         { "/secure2"_s, { { }, "hi"_s } }
@@ -1547,7 +1547,7 @@ TEST(WKNavigation, HTTPSOnlyWithSameSiteBypass)
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://site.example/secure"]]];
 
     while (!errorCode)
-        TestWebKitAPI::Util::spinRunLoop(5);
+        TestCyberKitAPI::Util::spinRunLoop(5);
 
     EXPECT_EQ(errorCode, NSURLErrorServerCertificateUntrusted);
     EXPECT_FALSE(finishedSuccessfully);
@@ -1571,7 +1571,7 @@ TEST(WKNavigation, HTTPSOnlyWithSameSiteBypass)
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://site.example/secure"]]];
 
     while (!errorCode && !finishedSuccessfully)
-        TestWebKitAPI::Util::spinRunLoop(5);
+        TestCyberKitAPI::Util::spinRunLoop(5);
 
     EXPECT_EQ(errorCode, 0);
     EXPECT_TRUE(finishedSuccessfully);
@@ -1584,7 +1584,7 @@ TEST(WKNavigation, HTTPSOnlyWithSameSiteBypass)
         EXPECT_WK_STREQ(@"http://site.example/secure", (NSString *)value);
         doneEvaluatingJavaScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
     EXPECT_WK_STREQ(@"http://site.example/secure", [webView _mainFrameURL].absoluteString);
 
     // Step 3: Attempt http load with same-site HTTPS-bypass enabled
@@ -1598,10 +1598,10 @@ TEST(WKNavigation, HTTPSOnlyWithSameSiteBypass)
         EXPECT_WK_STREQ(@"http://www2.site.example/secure", (NSString *)value);
         doneEvaluatingJavaScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
 
     while (!errorCode && !finishedSuccessfully)
-        TestWebKitAPI::Util::spinRunLoop(5);
+        TestCyberKitAPI::Util::spinRunLoop(5);
 
     EXPECT_EQ(errorCode, 0);
     EXPECT_TRUE(finishedSuccessfully);
@@ -1616,7 +1616,7 @@ TEST(WKNavigation, HTTPSOnlyWithSameSiteBypass)
         EXPECT_WK_STREQ(@"http://www2.site.example/secure", (NSString *)value);
         doneEvaluatingJavaScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
     EXPECT_WK_STREQ(@"http://www2.site.example/secure", [webView _mainFrameURL].absoluteString);
 
     // Step 4: Attempt cross-site http load with HTTPS-bypass enabled
@@ -1641,10 +1641,10 @@ TEST(WKNavigation, HTTPSOnlyWithSameSiteBypass)
         EXPECT_WK_STREQ(@"http://site2.example/secure", (NSString *)value);
         doneEvaluatingJavaScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
 
     while (!errorCode && !finishedSuccessfully)
-        TestWebKitAPI::Util::spinRunLoop(5);
+        TestCyberKitAPI::Util::spinRunLoop(5);
 
     EXPECT_EQ(errorCode, NSURLErrorServerCertificateUntrusted);
     EXPECT_FALSE(finishedSuccessfully);
@@ -1659,13 +1659,13 @@ TEST(WKNavigation, HTTPSOnlyWithSameSiteBypass)
         EXPECT_WK_STREQ(@"http://www2.site.example/secure", (NSString *)value);
         doneEvaluatingJavaScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
     EXPECT_WK_STREQ(@"http://www2.site.example/secure", [webView _mainFrameURL].absoluteString);
 }
 
 TEST(WKNavigation, HTTPSOnlyWithHTTPRedirect)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer httpsServer({
         { "/secure"_s, { 302, {{ "Location"_s, "http://site.example/secure"_s }}, "redirecting..."_s } },
         { "/secure2"_s, { 302, {{ "Location"_s, "http://site2.example/secure3"_s }}, "redirecting..."_s } },
@@ -1718,7 +1718,7 @@ TEST(WKNavigation, HTTPSOnlyWithHTTPRedirect)
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://site.example/secure"]]];
 
     while (!errorCode && !finishedSuccessfully)
-        TestWebKitAPI::Util::spinRunLoop(5);
+        TestCyberKitAPI::Util::spinRunLoop(5);
 
     EXPECT_EQ(errorCode, _WKErrorCodeHTTPSUpgradeRedirectLoop);
     EXPECT_FALSE(finishedSuccessfully);
@@ -1739,7 +1739,7 @@ TEST(WKNavigation, HTTPSOnlyWithHTTPRedirect)
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://site.example/secure2"]]];
 
     while (!errorCode && !finishedSuccessfully)
-        TestWebKitAPI::Util::spinRunLoop(5);
+        TestCyberKitAPI::Util::spinRunLoop(5);
 
     [webView waitForNextPresentationUpdate];
 

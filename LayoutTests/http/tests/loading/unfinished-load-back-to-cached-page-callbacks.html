@@ -29,10 +29,10 @@ if (window.testRunner) {
     testRunner.dumpAsText();
     testRunner.waitUntilDone();
 } else
-    document.write('This test must be run by WebKitTestRunner!');
+    document.write('This test must be run by CyberKitTestRunner!');
 </script>
 
-This test dumps frame load callbacks.  It is only useful inside of WebKitTestRunner.<br><br>
+This test dumps frame load callbacks.  It is only useful inside of CyberKitTestRunner.<br><br>
 <a id="linkToSlowPage" href="resources/page-with-slow-loading-subresource.html">This link goes to a page with a slow loading subresource.</a>
 Bug <a href="https://bugs.webkit.org/show_bug.cgi?id=119416">119416 - Going "back" to a cached page from a page with outstanding subresource loads breaks scrolling, amongst other issues.</a><br><br>
 In the broken case, the second page gets a didFinishLoad callback intertwined with the restoration of the cached page, even though it's already gotten a didFailLoad callback.<br>

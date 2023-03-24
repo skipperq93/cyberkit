@@ -21,8 +21,8 @@
 #include "config.h"
 #include "WebViewTest.h"
 
-#include <JavaScriptCore/JSRetainPtr.h>
-#include <WebKitWebViewInternal.h>
+#include <CyberScriptCore/JSRetainPtr.h>
+#include <CyberKitWebViewInternal.h>
 
 bool WebViewTest::shouldInitializeWebViewInConstructor = true;
 bool WebViewTest::shouldCreateEphemeralWebView = false;
@@ -50,7 +50,7 @@ void WebViewTest::initializeWebView()
     g_assert_null(m_webView);
 
 #if ENABLE(2022_GLIB_API)
-    GRefPtr<WebKitNetworkSession> networkSession = shouldCreateEphemeralWebView ? adoptGRef(webkit_network_session_new_ephemeral()) : m_networkSession;
+    GRefPtr<CyberKitNetworkSession> networkSession = shouldCreateEphemeralWebView ? adoptGRef(webkit_network_session_new_ephemeral()) : m_networkSession;
 #endif
 
     m_webView = WEBKIT_WEB_VIEW(g_object_new(WEBKIT_TYPE_WEB_VIEW,
@@ -72,7 +72,7 @@ void WebViewTest::initializeWebView()
     g_signal_connect(m_webView, "web-process-terminated", G_CALLBACK(WebViewTest::webProcessTerminated), this);
 }
 
-gboolean WebViewTest::webProcessTerminated(WebKitWebView*, WebKitWebProcessTerminationReason, WebViewTest* test)
+gboolean WebViewTest::webProcessTerminated(CyberKitWebView*, CyberKitWebProcessTerminationReason, WebViewTest* test)
 {
     if (test->m_expectedWebProcessCrash) {
         test->m_expectedWebProcessCrash = false;
@@ -90,7 +90,7 @@ void WebViewTest::loadURI(const char* uri)
     g_assert_cmpstr(webkit_web_view_get_uri(m_webView), ==, m_activeURI.data());
 }
 
-void WebViewTest::loadHtml(const char* html, const char* baseURI, WebKitWebView* webView)
+void WebViewTest::loadHtml(const char* html, const char* baseURI, CyberKitWebView* webView)
 {
     if (!baseURI)
         m_activeURI = "about:blank";
@@ -124,7 +124,7 @@ void WebViewTest::loadBytes(GBytes* bytes, const char* mimeType, const char* enc
     g_assert_cmpstr(webkit_web_view_get_uri(m_webView), ==, m_activeURI.data());
 }
 
-void WebViewTest::loadRequest(WebKitURIRequest* request)
+void WebViewTest::loadRequest(CyberKitURIRequest* request)
 {
     m_activeURI = webkit_uri_request_get_uri(request);
     webkit_web_view_load_request(m_webView, request);
@@ -144,8 +144,8 @@ void WebViewTest::goBack()
 {
     bool canGoBack = webkit_web_view_can_go_back(m_webView);
     if (canGoBack) {
-        WebKitBackForwardList* list = webkit_web_view_get_back_forward_list(m_webView);
-        WebKitBackForwardListItem* item = webkit_back_forward_list_get_nth_item(list, -1);
+        CyberKitBackForwardList* list = webkit_web_view_get_back_forward_list(m_webView);
+        CyberKitBackForwardListItem* item = webkit_back_forward_list_get_nth_item(list, -1);
         m_activeURI = webkit_back_forward_list_item_get_original_uri(item);
     }
 
@@ -161,8 +161,8 @@ void WebViewTest::goForward()
 {
     bool canGoForward = webkit_web_view_can_go_forward(m_webView);
     if (canGoForward) {
-        WebKitBackForwardList* list = webkit_web_view_get_back_forward_list(m_webView);
-        WebKitBackForwardListItem* item = webkit_back_forward_list_get_nth_item(list, 1);
+        CyberKitBackForwardList* list = webkit_web_view_get_back_forward_list(m_webView);
+        CyberKitBackForwardListItem* item = webkit_back_forward_list_get_nth_item(list, 1);
         m_activeURI = webkit_back_forward_list_item_get_original_uri(item);
     }
 
@@ -174,7 +174,7 @@ void WebViewTest::goForward()
     }
 }
 
-void WebViewTest::goToBackForwardListItem(WebKitBackForwardListItem* item)
+void WebViewTest::goToBackForwardListItem(CyberKitBackForwardListItem* item)
 {
     m_activeURI = webkit_back_forward_list_item_get_original_uri(item);
     webkit_web_view_go_to_back_forward_list_item(m_webView, item);
@@ -196,7 +196,7 @@ void WebViewTest::wait(double seconds)
     g_main_loop_run(m_mainLoop);
 }
 
-static void loadChanged(WebKitWebView* webView, WebKitLoadEvent loadEvent, WebViewTest* test)
+static void loadChanged(CyberKitWebView* webView, CyberKitLoadEvent loadEvent, WebViewTest* test)
 {
     if (loadEvent != WEBKIT_LOAD_FINISHED)
         return;
@@ -204,7 +204,7 @@ static void loadChanged(WebKitWebView* webView, WebKitLoadEvent loadEvent, WebVi
     g_main_loop_quit(test->m_mainLoop);
 }
 
-void WebViewTest::waitUntilLoadFinished(WebKitWebView* webView)
+void WebViewTest::waitUntilLoadFinished(CyberKitWebView* webView)
 {
     if (!webView)
         webView = m_webView;
@@ -212,7 +212,7 @@ void WebViewTest::waitUntilLoadFinished(WebKitWebView* webView)
     g_main_loop_run(m_mainLoop);
 }
 
-static void titleChanged(WebKitWebView* webView, GParamSpec*, WebViewTest* test)
+static void titleChanged(CyberKitWebView* webView, GParamSpec*, WebViewTest* test)
 {
     if (!test->m_expectedTitle.isNull() && test->m_expectedTitle != webkit_web_view_get_title(webView))
         return;
@@ -237,7 +237,7 @@ void WebViewTest::waitUntilTitleChanged()
     waitUntilTitleChangedTo(nullptr);
 }
 
-static void isWebProcessResponsiveChanged(WebKitWebView* webView, GParamSpec*, WebViewTest* test)
+static void isWebProcessResponsiveChanged(CyberKitWebView* webView, GParamSpec*, WebViewTest* test)
 {
     g_signal_handlers_disconnect_by_func(webView, reinterpret_cast<void*>(isWebProcessResponsiveChanged), test);
     g_main_loop_quit(test->m_mainLoop);
@@ -306,7 +306,7 @@ const char* WebViewTest::mainResourceData(size_t& mainResourceDataSize)
 {
     m_resourceDataSize = 0;
     m_resourceData.reset();
-    WebKitWebResource* resource = webkit_web_view_get_main_resource(m_webView);
+    CyberKitWebResource* resource = webkit_web_view_get_main_resource(m_webView);
     g_assert_nonnull(resource);
 
     webkit_web_resource_get_data(resource, 0, resourceGetDataCallback, this);
@@ -337,7 +337,7 @@ JSCValue* WebViewTest::runJavaScriptAndWaitUntilFinished(const char* javascript,
     return m_javascriptResult.get();
 }
 
-JSCValue* WebViewTest::runJavaScriptAndWaitUntilFinished(const char* javascript, GError** error, WebKitWebView* webView)
+JSCValue* WebViewTest::runJavaScriptAndWaitUntilFinished(const char* javascript, GError** error, CyberKitWebView* webView)
 {
     m_javascriptResult = nullptr;
     m_javascriptError = error;
@@ -406,7 +406,7 @@ char* WebViewTest::javascriptResultToCString(JSCValue* value)
 }
 
 #if !ENABLE(2022_GLIB_API)
-char* WebViewTest::javascriptResultToCString(WebKitJavascriptResult* javascriptResult)
+char* WebViewTest::javascriptResultToCString(CyberKitJavascriptResult* javascriptResult)
 {
     return javascriptResultToCString(webkit_javascript_result_get_js_value(javascriptResult));
 }
@@ -420,7 +420,7 @@ double WebViewTest::javascriptResultToNumber(JSCValue* value)
 }
 
 #if !ENABLE(2022_GLIB_API)
-double WebViewTest::javascriptResultToNumber(WebKitJavascriptResult* javascriptResult)
+double WebViewTest::javascriptResultToNumber(CyberKitJavascriptResult* javascriptResult)
 {
     return javascriptResultToNumber(webkit_javascript_result_get_js_value(javascriptResult));
 }
@@ -434,7 +434,7 @@ bool WebViewTest::javascriptResultToBoolean(JSCValue* value)
 }
 
 #if !ENABLE(2022_GLIB_API)
-bool WebViewTest::javascriptResultToBoolean(WebKitJavascriptResult* javascriptResult)
+bool WebViewTest::javascriptResultToBoolean(CyberKitJavascriptResult* javascriptResult)
 {
     return javascriptResultToBoolean(webkit_javascript_result_get_js_value(javascriptResult));
 }
@@ -447,7 +447,7 @@ bool WebViewTest::javascriptResultIsNull(JSCValue* value)
 }
 
 #if !ENABLE(2022_GLIB_API)
-bool WebViewTest::javascriptResultIsNull(WebKitJavascriptResult* javascriptResult)
+bool WebViewTest::javascriptResultIsNull(CyberKitJavascriptResult* javascriptResult)
 {
     return javascriptResultIsNull(webkit_javascript_result_get_js_value(javascriptResult));
 }
@@ -460,7 +460,7 @@ bool WebViewTest::javascriptResultIsUndefined(JSCValue* value)
 }
 
 #if !ENABLE(2022_GLIB_API)
-bool WebViewTest::javascriptResultIsUndefined(WebKitJavascriptResult* javascriptResult)
+bool WebViewTest::javascriptResultIsUndefined(CyberKitJavascriptResult* javascriptResult)
 {
     return javascriptResultIsUndefined(webkit_javascript_result_get_js_value(javascriptResult));
 }

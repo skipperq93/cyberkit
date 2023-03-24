@@ -25,7 +25,7 @@ promise_test(async (t) => {
 }, "Cloning a response succeeds even if its body is stream based");
 
 promise_test(async (t) => {
-    let frame = await with_iframe('/WebKit/fetch/resources/clone-realm-iframe.html');
+    let frame = await with_iframe('/CyberKit/fetch/resources/clone-realm-iframe.html');
 
     if (window.internals) {
         assert_false(internals.isFetchObjectContextStopped(testResponse), "response before");

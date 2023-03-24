@@ -95,30 +95,30 @@ public:
         m_connection->sendMessage("SendMessageToBackend", g_variant_new("(tts)", m_connectionID, m_target.id, messageBuilder.toString().utf8().data()));
     }
 
-    static WebKitWebView* createWebViewCallback(WebKitAutomationSession* session, AutomationTest* test)
+    static CyberKitWebView* createWebViewCallback(CyberKitAutomationSession* session, AutomationTest* test)
     {
         test->m_createWebViewWasCalled = true;
         return test->m_webViewForAutomation;
     }
 
-    static WebKitWebView* createWebViewInWindowCallback(WebKitAutomationSession* session, AutomationTest* test)
+    static CyberKitWebView* createWebViewInWindowCallback(CyberKitAutomationSession* session, AutomationTest* test)
     {
         test->m_createWebViewInWindowWasCalled = true;
         return test->m_webViewForAutomation;
     }
 
-    static WebKitWebView* createWebViewInTabCallback(WebKitAutomationSession* session, AutomationTest* test)
+    static CyberKitWebView* createWebViewInTabCallback(CyberKitAutomationSession* session, AutomationTest* test)
     {
         test->m_createWebViewInTabWasCalled = true;
         return test->m_webViewForAutomation;
     }
 
-    void automationStarted(WebKitAutomationSession* session)
+    void automationStarted(CyberKitAutomationSession* session)
     {
         m_session = session;
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(m_session));
         g_assert_null(webkit_automation_session_get_application_info(session));
-        WebKitApplicationInfo* info = webkit_application_info_new();
+        CyberKitApplicationInfo* info = webkit_application_info_new();
         webkit_application_info_set_name(info, "AutomationTestBrowser");
         webkit_application_info_set_version(info, WEBKIT_MAJOR_VERSION, WEBKIT_MINOR_VERSION, WEBKIT_MICRO_VERSION);
         webkit_automation_session_set_application_info(session, info);
@@ -126,7 +126,7 @@ public:
         g_assert_true(webkit_automation_session_get_application_info(session) == info);
     }
 
-    static void automationStartedCallback(WebKitWebContext* webContext, WebKitAutomationSession* session, AutomationTest* test)
+    static void automationStartedCallback(CyberKitWebContext* webContext, CyberKitAutomationSession* session, AutomationTest* test)
     {
         g_assert_true(webContext == test->m_webContext.get());
         g_assert_true(WEBKIT_IS_AUTOMATION_SESSION(session));
@@ -158,7 +158,7 @@ public:
         g_assert_cmpstr(browserVersion, ==, versionString.get());
     }
 
-    WebKitAutomationSession* requestSession(const char* sessionID)
+    CyberKitAutomationSession* requestSession(const char* sessionID)
     {
         auto signalID = g_signal_connect(m_webContext.get(), "automation-started", G_CALLBACK(automationStartedCallback), this);
         m_connection->sendMessage("StartAutomationSession", g_variant_new("(sa{sv})", sessionID, nullptr));
@@ -185,7 +185,7 @@ public:
         g_assert_true(m_target.isPaired);
     }
 
-    bool createTopLevelBrowsingContext(WebKitWebView* webView)
+    bool createTopLevelBrowsingContext(CyberKitWebView* webView)
     {
         setupIfNeeded();
         m_webViewForAutomation = webView;
@@ -206,7 +206,7 @@ public:
         return false;
     }
 
-    bool createNewWindow(WebKitWebView* webView)
+    bool createNewWindow(CyberKitWebView* webView)
     {
         m_webViewForAutomation = webView;
         m_createWebViewInWindowWasCalled = false;
@@ -224,7 +224,7 @@ public:
         return false;
     }
 
-    bool createNewTab(WebKitWebView* webView)
+    bool createNewTab(CyberKitWebView* webView)
     {
         m_webViewForAutomation = webView;
         m_createWebViewInTabWasCalled = false;
@@ -244,11 +244,11 @@ public:
 
     GRefPtr<GMainLoop> m_mainLoop;
     RefPtr<SocketConnection> m_connection;
-    WebKitAutomationSession* m_session;
+    CyberKitAutomationSession* m_session;
     guint64 m_connectionID { 0 };
     Target m_target;
 
-    WebKitWebView* m_webViewForAutomation { nullptr };
+    CyberKitWebView* m_webViewForAutomation { nullptr };
     bool m_createWebViewWasCalled { false };
     bool m_createWebViewInWindowWasCalled { false };
     bool m_createWebViewInTabWasCalled { false };
@@ -301,7 +301,7 @@ const SocketConnection::MessageHandlers AutomationTest::s_messageHandlers = {
 static void testAutomationSessionRequestSession(AutomationTest* test, gconstpointer)
 {
     String sessionID = createVersion4UUIDString();
-    // WebKitAutomationSession::automation-started is never emitted if automation is not enabled.
+    // CyberKitAutomationSession::automation-started is never emitted if automation is not enabled.
     g_assert_false(webkit_web_context_is_automation_allowed(test->m_webContext.get()));
 #if ENABLE(2022_GLIB_API)
     // Network session for automation is nullptr if automation is not enabled.
@@ -321,7 +321,7 @@ static void testAutomationSessionRequestSession(AutomationTest* test, gconstpoin
 #endif
 
     // There can't be more than one context with automation enabled
-    GRefPtr<WebKitWebContext> otherContext = adoptGRef(webkit_web_context_new());
+    GRefPtr<CyberKitWebContext> otherContext = adoptGRef(webkit_web_context_new());
     Test::removeLogFatalFlag(G_LOG_LEVEL_WARNING);
     webkit_web_context_set_automation_allowed(otherContext.get(), TRUE);
     Test::addLogFatalFlag(G_LOG_LEVEL_WARNING);
@@ -394,10 +394,10 @@ static void testAutomationSessionRequestSession(AutomationTest* test, gconstpoin
 
 static void testAutomationSessionApplicationInfo(Test* test, gconstpointer)
 {
-    WebKitApplicationInfo* info = webkit_application_info_new();
+    CyberKitApplicationInfo* info = webkit_application_info_new();
     g_assert_cmpstr(webkit_application_info_get_name(info), ==, g_get_prgname());
-    webkit_application_info_set_name(info, "WebKitGTKBrowser");
-    g_assert_cmpstr(webkit_application_info_get_name(info), ==, "WebKitGTKBrowser");
+    webkit_application_info_set_name(info, "CyberKitGTKBrowser");
+    g_assert_cmpstr(webkit_application_info_get_name(info), ==, "CyberKitGTKBrowser");
     webkit_application_info_set_name(info, nullptr);
     g_assert_cmpstr(webkit_application_info_get_name(info), ==, g_get_prgname());
 
@@ -418,8 +418,8 @@ void beforeAll()
 {
     g_setenv("WEBKIT_INSPECTOR_SERVER", "127.0.0.1:2229", TRUE);
 
-    AutomationTest::add("WebKitAutomationSession", "request-session", testAutomationSessionRequestSession);
-    Test::add("WebKitAutomationSession", "application-info", testAutomationSessionApplicationInfo);
+    AutomationTest::add("CyberKitAutomationSession", "request-session", testAutomationSessionRequestSession);
+    Test::add("CyberKitAutomationSession", "application-info", testAutomationSessionApplicationInfo);
 }
 
 void afterAll()

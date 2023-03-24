@@ -26,7 +26,7 @@
 #import "config.h"
 #import "TestProtocol.h"
 
-#import <WebKit/WKBrowsingContextController.h>
+#import <CyberKit/WKBrowsingContextController.h>
 #import <wtf/NeverDestroyed.h>
 #import <wtf/RetainPtr.h>
 
@@ -130,7 +130,7 @@ static NSString *contentTypeForFileExtension(NSString *fileExtension)
         NSString *fileName = requestURL.lastPathComponent;
         NSString *fileExtension = fileName.pathExtension;
         contentType = contentTypeForFileExtension(fileExtension);
-        data = [NSData dataWithContentsOfURL:[NSBundle.mainBundle URLForResource:fileName.stringByDeletingPathExtension withExtension:fileExtension subdirectory:@"TestWebKitAPI.resources"]];
+        data = [NSData dataWithContentsOfURL:[NSBundle.mainBundle URLForResource:fileName.stringByDeletingPathExtension withExtension:fileExtension subdirectory:@"TestCyberKitAPI.resources"]];
     } else {
         contentType = @"text/html";
         data = [@"PASS" dataUsingEncoding:NSASCIIStringEncoding];

@@ -29,17 +29,17 @@
 #import "PlatformUtilities.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import "WebCoreTestSupport.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import "CyberCoreTestSupport.h"
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/CyberKit.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/text/StringConcatenateNumbers.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebKit/WebUIKitSupport.h>
-#import <WebKit/WebCoreThread.h>
+#import <CyberKit/WebUIKitSupport.h>
+#import <CyberKit/CyberCoreThread.h>
 #endif
 
 @interface TLSObserver : NSObject
@@ -60,7 +60,7 @@
 {
     _negotiatedLegacyTLSChanged = false;
     while (!_negotiatedLegacyTLSChanged)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 }
 
 @end
@@ -83,19 +83,19 @@
 - (void)waitForDidFinishNavigation
 {
     while (!_navigationFinished)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 }
 
 - (void)waitForDidFailProvisionalNavigation
 {
     while (!_navigationFailed)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 }
 
 - (NSURL *)waitForDidNegotiateModernTLS
 {
     while (!_negotiatedModernTLS)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     return _negotiatedModernTLS.autorelease();
 }
 
@@ -134,7 +134,7 @@
 @end
 
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 const uint16_t tls1_1 = 0x0302;
 
@@ -193,7 +193,7 @@ TEST(TLSVersion, NetworkSession)
 
 TEST(TLSVersion, NetworkSessionNSUserDefaults)
 {
-    NSString *defaultsKey = @"WebKitEnableLegacyTLS";
+    NSString *defaultsKey = @"CyberKitEnableLegacyTLS";
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:defaultsKey];
 
     HTTPServer server(HTTPServer::respondWithOK, HTTPServer::Protocol::HttpsWithLegacyTLS);
@@ -250,7 +250,7 @@ TEST(TLSVersion, Preconnect)
         callback(NSURLSessionAuthChallengeUseCredential, nil);
     }];
 
-    TestWebKitAPI::Util::run(&connectionAttempted);
+    TestCyberKitAPI::Util::run(&connectionAttempted);
 }
 
 #endif // HAVE(TLS_VERSION_DURING_CHALLENGE)
@@ -284,7 +284,7 @@ TEST(TLSVersion, NegotiatedLegacyTLS)
     [observer waitUntilNegotiatedLegacyTLSChanged];
     EXPECT_TRUE([webView _negotiatedLegacyTLS]);
 
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     [observer waitUntilNegotiatedLegacyTLSChanged];
     EXPECT_FALSE([webView _negotiatedLegacyTLS]);
 
@@ -347,7 +347,7 @@ TEST(TLSVersion, BackForwardNegotiatedLegacyTLS)
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://localhost:%d/", mixedContentServer.port()]]]];
     [delegate waitForDidFinishNavigation];
     while (![webView _negotiatedLegacyTLS])
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     EXPECT_TRUE([webView _negotiatedLegacyTLS]);
 
     [webView goBack];
@@ -357,7 +357,7 @@ TEST(TLSVersion, BackForwardNegotiatedLegacyTLS)
     [webView goForward];
     [delegate waitForDidFinishNavigation];
     while (![webView _negotiatedLegacyTLS])
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     EXPECT_TRUE([webView _negotiatedLegacyTLS]);
 }
 
@@ -434,7 +434,7 @@ TEST(TLSVersion, BackForwardHasOnlySecureContent)
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://localhost:%d/", mixedContentServer.port()]]]];
     [delegate waitForDidFinishNavigation];
     while ([webView hasOnlySecureContent])
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     EXPECT_FALSE([webView hasOnlySecureContent]);
 
     [webView goBack];
@@ -444,7 +444,7 @@ TEST(TLSVersion, BackForwardHasOnlySecureContent)
     [webView goForward];
     [delegate waitForDidFinishNavigation];
     while ([webView hasOnlySecureContent])
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     EXPECT_FALSE([webView hasOnlySecureContent]);
 }
 

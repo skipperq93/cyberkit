@@ -35,7 +35,7 @@
 #import <Carbon/Carbon.h>
 #import <wtf/BlockPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
     
 static void runTest(NSEventModifierFlags flags, NSEventType mouseDownType, NSEventType mouseUpType)
 {
@@ -88,6 +88,6 @@ TEST(ContextMenuMouseEvents, RightClick)
     runTest(0, NSEventTypeRightMouseDown, NSEventTypeRightMouseUp);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(MAC)

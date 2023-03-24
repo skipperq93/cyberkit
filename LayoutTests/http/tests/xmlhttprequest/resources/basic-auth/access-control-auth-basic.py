@@ -34,7 +34,7 @@ else:
 
     else:
         sys.stdout.write(
-            'WWW-Authenticate: Basic realm="WebKit Test Realm/Cross Origin"\r\n'
+            'WWW-Authenticate: Basic realm="CyberKit Test Realm/Cross Origin"\r\n'
             'status: 401\r\n'
             '\r\n'
             'Authentication canceled'

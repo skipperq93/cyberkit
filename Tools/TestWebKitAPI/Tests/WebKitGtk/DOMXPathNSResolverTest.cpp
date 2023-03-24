@@ -31,15 +31,15 @@
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-typedef struct _WebKitXPathNSResolver {
+typedef struct _CyberKitXPathNSResolver {
     GObject parent;
-} WebKitXPathNSResolver;
+} CyberKitXPathNSResolver;
 
-typedef struct _WebKitXPathNSResolverClass {
+typedef struct _CyberKitXPathNSResolverClass {
     GObjectClass parentClass;
-} WebKitXPathNSResolverClass;
+} CyberKitXPathNSResolverClass;
 
-static char* webkitXPathNSResolverLookupNamespaceURI(WebKitDOMXPathNSResolver* resolver, const char* prefix)
+static char* webkitXPathNSResolverLookupNamespaceURI(CyberKitDOMXPathNSResolver* resolver, const char* prefix)
 {
     if (!g_strcmp0(prefix, "foo"))
         return g_strdup("http://www.example.com");
@@ -47,37 +47,37 @@ static char* webkitXPathNSResolverLookupNamespaceURI(WebKitDOMXPathNSResolver* r
     return nullptr;
 }
 
-static void webkitXPathNSResolverDOMXPathNSResolverIfaceInit(WebKitDOMXPathNSResolverIface* iface)
+static void webkitXPathNSResolverDOMXPathNSResolverIfaceInit(CyberKitDOMXPathNSResolverIface* iface)
 {
     iface->lookup_namespace_uri = webkitXPathNSResolverLookupNamespaceURI;
 }
 
-G_DEFINE_TYPE_WITH_CODE(WebKitXPathNSResolver, webkit_xpath_ns_resolver, G_TYPE_OBJECT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_XPATH_NS_RESOLVER, webkitXPathNSResolverDOMXPathNSResolverIfaceInit))
+G_DEFINE_TYPE_WITH_CODE(CyberKitXPathNSResolver, webkit_xpath_ns_resolver, G_TYPE_OBJECT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_XPATH_NS_RESOLVER, webkitXPathNSResolverDOMXPathNSResolverIfaceInit))
 
-static void webkit_xpath_ns_resolver_init(WebKitXPathNSResolver*)
+static void webkit_xpath_ns_resolver_init(CyberKitXPathNSResolver*)
 {
 }
 
-static void webkit_xpath_ns_resolver_class_init(WebKitXPathNSResolverClass*)
+static void webkit_xpath_ns_resolver_class_init(CyberKitXPathNSResolverClass*)
 {
 }
 
-class WebKitDOMXPathNSResolverTest : public WebProcessTest {
+class CyberKitDOMXPathNSResolverTest : public WebProcessTest {
 public:
-    static std::unique_ptr<WebProcessTest> create() { return std::unique_ptr<WebProcessTest>(new WebKitDOMXPathNSResolverTest()); }
+    static std::unique_ptr<WebProcessTest> create() { return std::unique_ptr<WebProcessTest>(new CyberKitDOMXPathNSResolverTest()); }
 
 private:
-    void evaluateFooChildTextAndCheckResult(WebKitDOMDocument* document, WebKitDOMXPathNSResolver* resolver)
+    void evaluateFooChildTextAndCheckResult(CyberKitDOMDocument* document, CyberKitDOMXPathNSResolver* resolver)
     {
-        WebKitDOMElement* documentElement = webkit_dom_document_get_document_element(document);
+        CyberKitDOMElement* documentElement = webkit_dom_document_get_document_element(document);
         g_assert_true(WEBKIT_DOM_IS_ELEMENT(documentElement));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(documentElement));
 
-        GRefPtr<WebKitDOMXPathResult> result = adoptGRef(webkit_dom_document_evaluate(document, "foo:child/text()", WEBKIT_DOM_NODE(documentElement), resolver, WEBKIT_DOM_XPATH_RESULT_ORDERED_NODE_ITERATOR_TYPE, nullptr, nullptr));
+        GRefPtr<CyberKitDOMXPathResult> result = adoptGRef(webkit_dom_document_evaluate(document, "foo:child/text()", WEBKIT_DOM_NODE(documentElement), resolver, WEBKIT_DOM_XPATH_RESULT_ORDERED_NODE_ITERATOR_TYPE, nullptr, nullptr));
         g_assert_true(WEBKIT_DOM_IS_XPATH_RESULT(result.get()));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(result.get()));
 
-        WebKitDOMNode* nodeResult = webkit_dom_xpath_result_iterate_next(result.get(), nullptr);
+        CyberKitDOMNode* nodeResult = webkit_dom_xpath_result_iterate_next(result.get(), nullptr);
         g_assert_true(WEBKIT_DOM_IS_NODE(nodeResult));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(nodeResult));
 
@@ -85,13 +85,13 @@ private:
         g_assert_cmpstr(nodeValue.get(), ==, "SUCCESS");
     }
 
-    bool testXPathNSResolverNative(WebKitWebPage* page)
+    bool testXPathNSResolverNative(CyberKitWebPage* page)
     {
-        WebKitDOMDocument* document = webkit_web_page_get_dom_document(page);
+        CyberKitDOMDocument* document = webkit_web_page_get_dom_document(page);
         g_assert_true(WEBKIT_DOM_IS_DOCUMENT(document));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(document));
 
-        GRefPtr<WebKitDOMXPathNSResolver> resolver = adoptGRef(webkit_dom_document_create_ns_resolver(document, WEBKIT_DOM_NODE(webkit_dom_document_get_document_element(document))));
+        GRefPtr<CyberKitDOMXPathNSResolver> resolver = adoptGRef(webkit_dom_document_create_ns_resolver(document, WEBKIT_DOM_NODE(webkit_dom_document_get_document_element(document))));
         g_assert_true(WEBKIT_DOM_IS_XPATH_NS_RESOLVER(resolver.get()));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(resolver.get()));
         evaluateFooChildTextAndCheckResult(document, resolver.get());
@@ -99,20 +99,20 @@ private:
         return true;
     }
 
-    bool testXPathNSResolverCustom(WebKitWebPage* page)
+    bool testXPathNSResolverCustom(CyberKitWebPage* page)
     {
-        WebKitDOMDocument* document = webkit_web_page_get_dom_document(page);
+        CyberKitDOMDocument* document = webkit_web_page_get_dom_document(page);
         g_assert_true(WEBKIT_DOM_IS_DOCUMENT(document));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(document));
 
-        GRefPtr<WebKitDOMXPathNSResolver> resolver = adoptGRef(WEBKIT_DOM_XPATH_NS_RESOLVER(g_object_new(webkit_xpath_ns_resolver_get_type(), nullptr)));
+        GRefPtr<CyberKitDOMXPathNSResolver> resolver = adoptGRef(WEBKIT_DOM_XPATH_NS_RESOLVER(g_object_new(webkit_xpath_ns_resolver_get_type(), nullptr)));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(resolver.get()));
         evaluateFooChildTextAndCheckResult(document, resolver.get());
 
         return true;
     }
 
-    bool runTest(const char* testName, WebKitWebPage* page) override
+    bool runTest(const char* testName, CyberKitWebPage* page) override
     {
         if (!strcmp(testName, "native"))
             return testXPathNSResolverNative(page);
@@ -126,8 +126,8 @@ private:
 
 static void __attribute__((constructor)) registerTests()
 {
-    REGISTER_TEST(WebKitDOMXPathNSResolverTest, "WebKitDOMXPathNSResolver/native");
-    REGISTER_TEST(WebKitDOMXPathNSResolverTest, "WebKitDOMXPathNSResolver/custom");
+    REGISTER_TEST(CyberKitDOMXPathNSResolverTest, "CyberKitDOMXPathNSResolver/native");
+    REGISTER_TEST(CyberKitDOMXPathNSResolverTest, "CyberKitDOMXPathNSResolver/custom");
 }
 
 G_GNUC_END_IGNORE_DEPRECATIONS;

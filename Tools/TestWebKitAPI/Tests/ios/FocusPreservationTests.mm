@@ -32,9 +32,9 @@
 #import "TestInputDelegate.h"
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKInputDelegate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKInputDelegate.h>
 #import <wtf/BlockPtr.h>
 
 static std::pair<RetainPtr<TestWKWebView>, RetainPtr<TestInputDelegate>> webViewForTestingFocusPreservation(void(^focusHandler)(id <_WKFocusedElementInfo>))
@@ -51,7 +51,7 @@ static std::pair<RetainPtr<TestWKWebView>, RetainPtr<TestInputDelegate>> webView
     return { webView, inputDelegate };
 }
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(FocusPreservationTests, PreserveAndRestoreFocus)
 {
@@ -110,6 +110,6 @@ TEST(FocusPreservationTests, DISABLED_ChangingFocusedNodeResetsFocusPreservation
     [webView.textInputContentView _restoreFocusWithToken:focusToken];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

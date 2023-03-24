@@ -25,14 +25,14 @@
 
 #import "config.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WebFramePrivate.h>
-#import <WebKit/WebPreferencesPrivate.h>
-#import <WebKit/WebScriptWorld.h>
-#import <JavaScriptCore/JSContextRef.h>
-#import <JavaScriptCore/JSRetainPtr.h>
-#import <JavaScriptCore/JSStringRef.h>
-#import <JavaScriptCore/JSValueRef.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WebFramePrivate.h>
+#import <CyberKit/WebPreferencesPrivate.h>
+#import <CyberKit/WebScriptWorld.h>
+#import <CyberScriptCore/JSContextRef.h>
+#import <CyberScriptCore/JSRetainPtr.h>
+#import <CyberScriptCore/JSStringRef.h>
+#import <CyberScriptCore/JSValueRef.h>
 #import <wtf/RetainPtr.h>
 
 @interface JSWrapperForNodeFrameLoadDelegate : NSObject <WebFrameLoadDelegate> {
@@ -50,9 +50,9 @@ static bool didFinishLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, JSWrapperForNode)
+TEST(CyberKitLegacy, JSWrapperForNode)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<JSWrapperForNodeFrameLoadDelegate> frameLoadDelegate = adoptNS([[JSWrapperForNodeFrameLoadDelegate alloc] init]);
@@ -97,7 +97,7 @@ TEST(WebKitLegacy, JSWrapperForNode)
     EXPECT_TRUE(JSValueIsUndefined(isolatedCtx, JSObjectGetProperty(isolatedCtx, isolatedNodeJSObject, normalPropertyJSString.get(), 0)));
 }
 
-TEST(WebKitLegacy, JSDOMWindowWrapperBeforeOriginInitialization)
+TEST(CyberKitLegacy, JSDOMWindowWrapperBeforeOriginInitialization)
 {
     [WKProcessPool _setLinkedOnOrBeforeEverythingForTesting];
     auto webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
@@ -121,4 +121,4 @@ TEST(WebKitLegacy, JSDOMWindowWrapperBeforeOriginInitialization)
     EXPECT_WK_STREQ(result, @"1");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

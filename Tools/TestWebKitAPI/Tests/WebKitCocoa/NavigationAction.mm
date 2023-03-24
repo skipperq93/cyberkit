@@ -30,7 +30,7 @@
 #import "Test.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKNavigationActionPrivate.h>
+#import <CyberKit/WKNavigationActionPrivate.h>
 #import <wtf/RetainPtr.h>
 
 @interface NavigationActionTestDelegate : NSObject <WKNavigationDelegate>
@@ -65,13 +65,13 @@
 {
     _navigationAction = nullptr;
     _hasReceivedNavigationCallback = false;
-    TestWebKitAPI::Util::run(&_hasReceivedNavigationCallback);
+    TestCyberKitAPI::Util::run(&_hasReceivedNavigationCallback);
 }
 
 - (void)waitForDidFinishNavigation
 {
     _hasFinishedNavigation = false;
-    TestWebKitAPI::Util::run(&_hasFinishedNavigation);
+    TestCyberKitAPI::Util::run(&_hasFinishedNavigation);
 }
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
@@ -213,12 +213,12 @@ TEST(WKNavigationAction, BlobRequestBody)
         }
     };
     [webView loadHTMLString:html baseURL:nil];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(WKNavigationAction, NonMainThread)
 {
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { "hi"_s } },
     });
 
@@ -241,5 +241,5 @@ TEST(WKNavigationAction, NonMainThread)
     };
 
     [webView loadRequest:server.request()];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }

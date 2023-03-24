@@ -1,0 +1,50 @@
+# Copyright (C) 2017 Apple Inc. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1.  Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+# 2.  Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in the
+#     documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+#if ENABLE(SERVICE_WORKER)
+
+messages -> WebSWClientConnection {
+    # When possible, these messages can be implemented directly by CyberCore::SWServer::Connection
+    JobRejectedInServer(CyberCore::ServiceWorkerJobIdentifier jobDataIdentifier, struct CyberCore::ExceptionData exception)
+    RegistrationJobResolvedInServer(CyberCore::ServiceWorkerJobIdentifier jobDataIdentifier, struct CyberCore::ServiceWorkerRegistrationData registration, enum:bool CyberCore::ShouldNotifyWhenResolved shouldNotifyWhenResolved)
+    StartScriptFetchForServer(CyberCore::ServiceWorkerJobIdentifier jobDataIdentifier, CyberCore::ServiceWorkerRegistrationKey registrationKey, enum:uint8_t CyberCore::FetchOptions::Cache cachePolicy)
+    UpdateRegistrationState(CyberCore::ServiceWorkerRegistrationIdentifier identifier, enum:uint8_t CyberCore::ServiceWorkerRegistrationState state, std::optional<CyberCore::ServiceWorkerData> serviceWorkerIdentifier)
+    UpdateWorkerState(CyberCore::ServiceWorkerIdentifier serviceWorkerIdentifier, enum:uint8_t CyberCore::ServiceWorkerState state)
+    FireUpdateFoundEvent(CyberCore::ServiceWorkerRegistrationIdentifier identifier)
+    SetRegistrationLastUpdateTime(CyberCore::ServiceWorkerRegistrationIdentifier identifier, WallTime lastUpdateTime)
+    SetRegistrationUpdateViaCache(CyberCore::ServiceWorkerRegistrationIdentifier identifier, enum:uint8_t CyberCore::ServiceWorkerUpdateViaCache updateViaCache)
+    NotifyClientsOfControllerChange(HashSet<CyberCore::ScriptExecutionContextIdentifier> contextIdentifiers, struct CyberCore::ServiceWorkerData newController)
+    UpdateBackgroundFetchRegistration(struct CyberCore::BackgroundFetchInformation information)
+
+    SetSWOriginTableIsImported()
+    SetSWOriginTableSharedMemory(CyberKit::SharedMemory::Handle handle)
+    PostMessageToServiceWorkerClient(CyberCore::ScriptExecutionContextIdentifier destinationContextIdentifier, struct CyberCore::MessageWithMessagePorts message, struct CyberCore::ServiceWorkerData source, String sourceOrigin)
+
+    SetServiceWorkerClientIsControlled(CyberCore::ScriptExecutionContextIdentifier workerIdentifier, struct CyberCore::ServiceWorkerRegistrationData data) -> (bool isSuccess)
+
+    FocusServiceWorkerClient(CyberCore::ScriptExecutionContextIdentifier clientIdentifier) -> (std::optional<CyberCore::ServiceWorkerClientData> result)
+
+    NotifyRecordResponseBodyChunk(CyberKit::RetrieveRecordResponseBodyCallbackIdentifier identifier, IPC::SharedBufferReference data);
+    NotifyRecordResponseBodyEnd(CyberKit::RetrieveRecordResponseBodyCallbackIdentifier identifier, CyberCore::ResourceError error);
+}
+
+#endif // ENABLE(SERVICE_WORKER)

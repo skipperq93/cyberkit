@@ -31,9 +31,9 @@
 #import "PlatformWebView.h"
 #import "Test.h"
 
-#import <WebKit/WKString.h>
+#import <CyberKit/WKString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool finished = false;
 
@@ -58,7 +58,7 @@ static void setInjectedBundleClient(WKContextRef context)
     WKContextSetInjectedBundleClient(context, &injectedBundleClient.base);
 }
 
-TEST(WebKit, PasteboardNotifications)
+TEST(CyberKit, PasteboardNotifications)
 {
     [[NSPasteboard generalPasteboard] clearContents];
     
@@ -77,6 +77,6 @@ TEST(WebKit, PasteboardNotifications)
     Util::run(&finished);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

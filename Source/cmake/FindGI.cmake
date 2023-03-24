@@ -256,7 +256,7 @@ function(GI_INTROSPECT namespace nsversion header)
     # Each dependency can be:
     #   * GI include, i.e. "GObject-2.0", implies --include=GObject-2.0, --pkg=gobject-2.0
     #   * GI include ":" pkgconfig module, i.e. "Gtk-4.0:gtk4", implies --include=Gtk-4.0, --pkg=gtk4
-    #   * CMake target, i.e. "JavaScriptCore", implies --include-uninstalled=<girfile>. The target
+    #   * CMake target, i.e. "CyberScriptCore", implies --include-uninstalled=<girfile>. The target
     #     must have been previously used with GI_INTROSPECT(), and for each use on the target the
     #     corresponding <girfile> will be picked automatically.
     foreach (dep IN LISTS opt_DEPENDENCIES)

@@ -29,12 +29,12 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/PreferenceObserver.h>
+#import <CyberKit/PreferenceObserver.h>
 #import <wtf/ObjCRuntimeExtras.h>
 #import <wtf/cocoa/VectorCocoa.h>
 #import <wtf/text/StringBuilder.h>
 
-TEST(WebKit, OverrideAppleLanguagesPreference)
+TEST(CyberKit, OverrideAppleLanguagesPreference)
 {
     NSDictionary *dict = @{
         @"AppleLanguages": @[ @"en-GB" ],
@@ -43,7 +43,7 @@ TEST(WebKit, OverrideAppleLanguagesPreference)
     [[NSUserDefaults standardUserDefaults] setVolatileDomain:dict forName:NSArgumentDomain];
 
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
-    WKRetainPtr<WKContextRef> context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+    WKRetainPtr<WKContextRef> context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
     configuration.get().processPool = (WKProcessPool *)context.get();
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 300, 300) configuration:configuration.get() addToWindow:YES]);
 
@@ -130,7 +130,7 @@ TEST_F(AppleLanguagesTest, DISABLED_UpdateAppleLanguages)
     };
     unsigned timeout = 0;
     while (getLanguageFromNSUserDefaults() != "en-GB"_s && ++timeout < 100)
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
     EXPECT_WK_STREQ(@"en-GB", getLanguageFromNSUserDefaults());
 
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
@@ -141,7 +141,7 @@ TEST_F(AppleLanguagesTest, DISABLED_UpdateAppleLanguages)
     [[NSNotificationCenter defaultCenter] postNotificationName:NSApplicationDidBecomeActiveNotification object:NSApp userInfo:nil];
     timeout = 0;
     while (!preferenceObserverSharedInstanceCalled && ++timeout < 100)
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
     EXPECT_TRUE(preferenceObserverSharedInstanceCalled);
     if (!preferenceObserverSharedInstanceCalled)
         return;
@@ -163,7 +163,7 @@ TEST_F(AppleLanguagesTest, DISABLED_UpdateAppleLanguages)
         EXPECT_TRUE(!error);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     // Switch system language from "en-GB" to "en-US". Make sure that we fire a languagechange event at the Window and that navigator.language
@@ -175,7 +175,7 @@ TEST_F(AppleLanguagesTest, DISABLED_UpdateAppleLanguages)
         done = true;
     });
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_TRUE(didChangeLanguage);
     EXPECT_TRUE(preferenceObserverPreferenceDidChangeCalled);
     EXPECT_WK_STREQ(@"en-US", preferredLanguage());

@@ -1,9 +1,9 @@
 The tests in this directory were imported from the W3C repository.
-Do NOT modify these tests directly in WebKit.
+Do NOT modify these tests directly in CyberKit.
 Instead, create a pull request on the WPT github:
 	https://github.com/web-platform-tests/wpt
 
-Then run the Tools/Scripts/import-w3c-tests in WebKit to reimport
+Then run the Tools/Scripts/import-w3c-tests in CyberKit to reimport
 
 Do NOT modify or remove this file.
 
@@ -34,8 +34,8 @@ List of files:
 /LayoutTests/imported/w3c/web-platform-tests/css/geometry/DOMRect-nan.html
 /LayoutTests/imported/w3c/web-platform-tests/css/geometry/DOMRectList.html
 /LayoutTests/imported/w3c/web-platform-tests/css/geometry/META.yml
-/LayoutTests/imported/w3c/web-platform-tests/css/geometry/WebKitCSSMatrix.html
-/LayoutTests/imported/w3c/web-platform-tests/css/geometry/WebKitCSSMatrix.worker.js
+/LayoutTests/imported/w3c/web-platform-tests/css/geometry/CyberKitCSSMatrix.html
+/LayoutTests/imported/w3c/web-platform-tests/css/geometry/CyberKitCSSMatrix.worker.js
 /LayoutTests/imported/w3c/web-platform-tests/css/geometry/historical.html
 /LayoutTests/imported/w3c/web-platform-tests/css/geometry/idlharness.html
 /LayoutTests/imported/w3c/web-platform-tests/css/geometry/idlharness.worker.js

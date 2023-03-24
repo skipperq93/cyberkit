@@ -14,7 +14,7 @@
 <div id="log"></div>
 <script>
 promise_test(function(t) {
-    let rejectedImageURL = crossOriginURL("csp-denied", "WebKit/resource-timing/resources/resource.png");
+    let rejectedImageURL = crossOriginURL("csp-denied", "CyberKit/resource-timing/resources/resource.png");
     let allowedImageURL = uniqueImageURL("csp-allowed");
 
     let rejectedImg = document.body.appendChild(document.createElement("img"));
@@ -29,8 +29,8 @@ promise_test(function(t) {
 }, "Content-Security-Policy rejections do not create entries");
 
 promise_test(function(t) {
-    let rejectedDataURL = crossOriginURL("cors-denied", "WebKit/resource-timing/resources/data.json");
-    let allowedDataURL = crossOriginURL("cors-allowed", "WebKit/resource-timing/resources/data.json") + "&pipe=header(Access-Control-Allow-Origin,*)";
+    let rejectedDataURL = crossOriginURL("cors-denied", "CyberKit/resource-timing/resources/data.json");
+    let allowedDataURL = crossOriginURL("cors-allowed", "CyberKit/resource-timing/resources/data.json") + "&pipe=header(Access-Control-Allow-Origin,*)";
 
     fetch(rejectedDataURL).catch(function(){});
     fetch(allowedDataURL);

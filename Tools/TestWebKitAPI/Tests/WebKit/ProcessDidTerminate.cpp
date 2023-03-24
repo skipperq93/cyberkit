@@ -30,11 +30,11 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <WebKit/WKPagePrivate.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKPagePrivate.h>
+#include <CyberKit/WKRetainPtr.h>
 #include <signal.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool loadBeforeCrash = false;
 static bool clientTerminationHandlerCalled = false;
@@ -76,7 +76,7 @@ static void webProcessCrashed(WKPageRef page, WKProcessTerminationReason reason,
     crashHandlerCalled = true;
 }
 
-TEST(WebKit, ProcessDidTerminateRequestedByClient)
+TEST(CyberKit, ProcessDidTerminateRequestedByClient)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -100,7 +100,7 @@ TEST(WebKit, ProcessDidTerminateRequestedByClient)
     Util::run(&clientTerminationHandlerCalled);
 }
 
-TEST(WebKit, ProcessDidTerminateWithReasonCrash)
+TEST(CyberKit, ProcessDidTerminateWithReasonCrash)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -125,6 +125,6 @@ TEST(WebKit, ProcessDidTerminateWithReasonCrash)
     Util::run(&crashHandlerCalled);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

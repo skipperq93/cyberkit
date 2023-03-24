@@ -120,10 +120,10 @@ def ensure_extracted_build(args):
 def run(path, build_type, args):
     env = {
         "FLATPAK_BWRAP": os.path.realpath(__file__),
-        "WEBKIT_BUILD_DIR_BIND_MOUNT": f"/app/webkit/WebKitBuild/{build_type}:{path}",
+        "WEBKIT_BUILD_DIR_BIND_MOUNT": f"/app/webkit/CyberKitBuild/{build_type}:{path}",
     }
     flatpak("run", "--die-with-parent", "--user",
-            f"--env=PATH=/app/webkit/WebKitBuild/{build_type}/bin:/usr/bin",
+            f"--env=PATH=/app/webkit/CyberKitBuild/{build_type}/bin:/usr/bin",
             "--device=dri",
             "--share=ipc",
             "--share=network",

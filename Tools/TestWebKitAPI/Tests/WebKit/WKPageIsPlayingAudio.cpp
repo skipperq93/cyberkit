@@ -30,18 +30,18 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <JavaScriptCore/JavaScriptCore.h>
-#include <WebKit/WKSerializedScriptValue.h>
-#include <WebKit/WKPagePrivate.h>
-#include <WebKit/WKPreferencesRef.h>
-#include <WebKit/WKPreferencesRefPrivate.h>
+#include <CyberScriptCore/CyberScriptCore.h>
+#include <CyberKit/WKSerializedScriptValue.h>
+#include <CyberKit/WKPagePrivate.h>
+#include <CyberKit/WKPreferencesRef.h>
+#include <CyberKit/WKPreferencesRefPrivate.h>
 
 // This test loads file-with-video.html. It first checks to make sure WKPageIsPlayingAudio() returns
 // false for the page. Then it calls a JavaScript method to play the video, waits for
 // WKPageUIClient::isPlayingAudioDidChange() to get called, and checks that WKPageIsPlayingAudio() now
 // returns true for the page.
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool isMSEEnabledChanged;
 static bool isMSEEnabled;
@@ -94,7 +94,7 @@ static void setUpClients(WKPageRef page)
     WKPageSetPageUIClient(page, &uiClient.base);
 }
 
-TEST(WebKit, WKPageIsPlayingAudio)
+TEST(CyberKit, WKPageIsPlayingAudio)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -113,7 +113,7 @@ TEST(WebKit, WKPageIsPlayingAudio)
     EXPECT_TRUE(WKPageIsPlayingAudio(webView.page()));
 }
 
-TEST(WebKit, MSEIsPlayingAudio)
+TEST(CyberKit, MSEIsPlayingAudio)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -148,6 +148,6 @@ TEST(WebKit, MSEIsPlayingAudio)
     EXPECT_TRUE(WKPageIsPlayingAudio(webView.page()));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

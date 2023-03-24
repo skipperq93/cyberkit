@@ -27,7 +27,7 @@
 
 #import "PlatformUtilities.h"
 #import "Test.h"
-#import <WebKit/WKWebView.h>
+#import <CyberKit/WKWebView.h>
 #import <wtf/RetainPtr.h>
 
 static bool shouldAccept = true;
@@ -73,11 +73,11 @@ static bool navigationFailed = false;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, RespondToPolicyForNavigationResponseAsynchronously)
+TEST(CyberKit, RespondToPolicyForNavigationResponseAsynchronously)
 {
-    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
 
     auto webView = adoptNS([[WKWebView alloc] init]);
     auto delegate = adoptNS([[TestAsyncNavigationDelegate alloc] init]);
@@ -88,14 +88,14 @@ TEST(WebKit, RespondToPolicyForNavigationResponseAsynchronously)
     navigationFailed = false;
     navigationComplete = false;
     [webView loadRequest:[NSURLRequest requestWithURL:testURL.get()]];
-    TestWebKitAPI::Util::run(&navigationComplete);
+    TestCyberKitAPI::Util::run(&navigationComplete);
 
     EXPECT_FALSE(navigationFailed);
 }
 
-TEST(WebKit, PolicyForNavigationResponseCancelAsynchronously)
+TEST(CyberKit, PolicyForNavigationResponseCancelAsynchronously)
 {
-    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
 
     auto webView = adoptNS([[WKWebView alloc] init]);
     auto delegate = adoptNS([[TestAsyncNavigationDelegate alloc] init]);
@@ -106,9 +106,9 @@ TEST(WebKit, PolicyForNavigationResponseCancelAsynchronously)
     navigationFailed = false;
     navigationComplete = false;
     [webView loadRequest:[NSURLRequest requestWithURL:testURL.get()]];
-    TestWebKitAPI::Util::run(&navigationComplete);
+    TestCyberKitAPI::Util::run(&navigationComplete);
 
     EXPECT_TRUE(navigationFailed);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

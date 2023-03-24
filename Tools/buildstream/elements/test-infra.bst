@@ -1,5 +1,5 @@
 kind: stack
-description: Stack of components needed to run WebKit tests
+description: Stack of components needed to run CyberKit tests
 
 depends:
 - test-infra/apr.bst

@@ -30,10 +30,10 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <WebKit/WKContextPrivate.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKContextPrivate.h>
+#include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didHitRelevantRepaintedObjectsAreaThresholdMoreThanOnce;
 static unsigned didHitRelevantRepaintedObjectsAreaThresholdCounter;
@@ -74,7 +74,7 @@ static void setPageLoaderClient(WKPageRef page)
     WKPageSetPageNavigationClient(page, &loaderClient.base);
 }
 
-TEST(WebKit, NewFirstVisuallyNonEmptyLayoutFrames)
+TEST(CyberKit, NewFirstVisuallyNonEmptyLayoutFrames)
 {
     didHitRelevantRepaintedObjectsAreaThresholdCounter = 0;
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("NewFirstVisuallyNonEmptyLayoutFramesTest"));
@@ -92,6 +92,6 @@ TEST(WebKit, NewFirstVisuallyNonEmptyLayoutFrames)
     EXPECT_FALSE(didHitRelevantRepaintedObjectsAreaThresholdMoreThanOnce);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

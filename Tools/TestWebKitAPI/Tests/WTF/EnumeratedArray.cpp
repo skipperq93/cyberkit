@@ -26,7 +26,7 @@
 #include "config.h"
 #include <wtf/EnumeratedArray.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 enum class Foo {
     One,
@@ -146,4 +146,4 @@ TEST(WTF_EnumeratedArray, Iteration)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

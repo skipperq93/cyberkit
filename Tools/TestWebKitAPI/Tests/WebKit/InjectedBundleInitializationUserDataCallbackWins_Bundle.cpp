@@ -29,9 +29,9 @@
 
 #include "InjectedBundleTest.h"
 #include "PlatformUtilities.h"
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class InjectedBundleInitializationUserDataCallbackWinsTest : public InjectedBundleTest {
 public:
@@ -48,6 +48,6 @@ public:
 
 static InjectedBundleTest::Register<InjectedBundleInitializationUserDataCallbackWinsTest> registrar("InjectedBundleInitializationUserDataCallbackWinsTest");
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

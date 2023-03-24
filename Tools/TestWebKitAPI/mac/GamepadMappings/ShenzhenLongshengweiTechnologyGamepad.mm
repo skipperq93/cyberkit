@@ -30,7 +30,7 @@
 
 #import <HID/HIDUserDevice.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 const uint8_t SLTGamepadDescriptor[] = {
     0x05, 0x01,        // Usage Page (Generic Desktop Ctrls)
@@ -152,6 +152,6 @@ GamepadMapping VirtualGamepad::shenzhenLongshengweiTechnologyGamepadMapping()
     };
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // USE(APPLE_INTERNAL_SDK)

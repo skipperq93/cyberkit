@@ -20,7 +20,7 @@
 #include "config.h"
 #include "LoadTrackingTest.h"
 
-static void loadChangedCallback(WebKitWebView* webView, WebKitLoadEvent loadEvent, LoadTrackingTest* test)
+static void loadChangedCallback(CyberKitWebView* webView, CyberKitLoadEvent loadEvent, LoadTrackingTest* test)
 {
     switch (loadEvent) {
     case WEBKIT_LOAD_STARTED:
@@ -41,7 +41,7 @@ static void loadChangedCallback(WebKitWebView* webView, WebKitLoadEvent loadEven
         test->m_activeURI = webkit_web_view_get_uri(webView);
 
         // Check that on committed we always have a main resource with a response.
-        WebKitWebResource* resource = webkit_web_view_get_main_resource(webView);
+        CyberKitWebResource* resource = webkit_web_view_get_main_resource(webView);
         g_assert_nonnull(resource);
         g_assert_nonnull(webkit_web_resource_get_response(resource));
 
@@ -65,7 +65,7 @@ static void loadChangedCallback(WebKitWebView* webView, WebKitLoadEvent loadEven
     }
 }
 
-static gboolean loadFailedCallback(WebKitWebView* webView, WebKitLoadEvent loadEvent, const char* failingURI, GError* error, LoadTrackingTest* test)
+static gboolean loadFailedCallback(CyberKitWebView* webView, CyberKitLoadEvent loadEvent, const char* failingURI, GError* error, LoadTrackingTest* test)
 {
     test->m_loadFailed = true;
 
@@ -94,7 +94,7 @@ static gboolean loadFailedCallback(WebKitWebView* webView, WebKitLoadEvent loadE
     return TRUE;
 }
 
-static gboolean loadFailedWithTLSErrorsCallback(WebKitWebView* webView, const char* failingURI, GTlsCertificate* certificate, GTlsCertificateFlags tlsErrors, LoadTrackingTest* test)
+static gboolean loadFailedWithTLSErrorsCallback(CyberKitWebView* webView, const char* failingURI, GTlsCertificate* certificate, GTlsCertificateFlags tlsErrors, LoadTrackingTest* test)
 {
     test->m_loadFailed = true;
     g_assert_false(webkit_web_view_is_loading(webView));
@@ -184,7 +184,7 @@ void LoadTrackingTest::loadURI(const char* uri)
     WebViewTest::loadURI(uri);
 }
 
-void LoadTrackingTest::loadHtml(const char* html, const char* baseURI, WebKitWebView* webView)
+void LoadTrackingTest::loadHtml(const char* html, const char* baseURI, CyberKitWebView* webView)
 {
     reset();
     WebViewTest::loadHtml(html, baseURI, webView);
@@ -202,7 +202,7 @@ void LoadTrackingTest::loadBytes(GBytes* bytes, const char* mimeType, const char
     WebViewTest::loadBytes(bytes, mimeType, encoding, baseURI);
 }
 
-void LoadTrackingTest::loadRequest(WebKitURIRequest* request)
+void LoadTrackingTest::loadRequest(CyberKitURIRequest* request)
 {
     reset();
     WebViewTest::loadRequest(request);

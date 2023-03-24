@@ -20,17 +20,17 @@
 #include "config.h"
 
 #include "WebViewTest.h"
-#include <WebKitSettingsPrivate.h>
+#include <CyberKitSettingsPrivate.h>
 #include <wtf/HashSet.h>
 #include <wtf/RunLoop.h>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/text/StringHash.h>
 
-static const char* kAlertDialogMessage = "WebKitGTK alert dialog message";
-static const char* kConfirmDialogMessage = "WebKitGTK confirm dialog message";
-static const char* kPromptDialogMessage = "WebKitGTK prompt dialog message";
-static const char* kPromptDialogReturnedText = "WebKitGTK prompt dialog returned text";
-static const char* kBeforeUnloadConfirmDialogMessage = "WebKitGTK beforeunload dialog message";
+static const char* kAlertDialogMessage = "CyberKitGTK alert dialog message";
+static const char* kConfirmDialogMessage = "CyberKitGTK confirm dialog message";
+static const char* kPromptDialogMessage = "CyberKitGTK prompt dialog message";
+static const char* kPromptDialogReturnedText = "CyberKitGTK prompt dialog returned text";
+static const char* kBeforeUnloadConfirmDialogMessage = "CyberKitGTK beforeunload dialog message";
 
 class UIClientTest: public WebViewTest {
 public:
@@ -60,7 +60,7 @@ public:
 #endif
         }
 
-        WindowProperties(WebKitWindowProperties* windowProperties)
+        WindowProperties(CyberKitWindowProperties* windowProperties)
             : m_isNull(false)
             , m_toolbarVisible(webkit_window_properties_get_toolbar_visible(windowProperties))
             , m_statusbarVisible(webkit_window_properties_get_statusbar_visible(windowProperties))
@@ -130,22 +130,22 @@ public:
         test->m_windowPropertiesChanged.add(String::fromLatin1(g_param_spec_get_name(paramSpec)));
     }
 
-    static WebKitWebView* viewCreateCallback(WebKitWebView* webView, WebKitNavigationAction* navigation, UIClientTest* test)
+    static CyberKitWebView* viewCreateCallback(CyberKitWebView* webView, CyberKitNavigationAction* navigation, UIClientTest* test)
     {
         return test->viewCreate(webView, navigation);
     }
 
-    static void viewReadyToShowCallback(WebKitWebView* webView, UIClientTest* test)
+    static void viewReadyToShowCallback(CyberKitWebView* webView, UIClientTest* test)
     {
         test->viewReadyToShow(webView);
     }
 
-    static void viewCloseCallback(WebKitWebView* webView, UIClientTest* test)
+    static void viewCloseCallback(CyberKitWebView* webView, UIClientTest* test)
     {
         test->viewClose(webView);
     }
 
-    void scriptAlert(WebKitScriptDialog* dialog)
+    void scriptAlert(CyberKitScriptDialog* dialog)
     {
         switch (m_scriptDialogType) {
         case WEBKIT_SCRIPT_DIALOG_ALERT:
@@ -175,28 +175,28 @@ public:
             g_main_loop_quit(m_mainLoop);
     }
 
-    void scriptConfirm(WebKitScriptDialog* dialog)
+    void scriptConfirm(CyberKitScriptDialog* dialog)
     {
         g_assert_cmpstr(webkit_script_dialog_get_message(dialog), ==, kConfirmDialogMessage);
         m_scriptDialogConfirmed = !m_scriptDialogConfirmed;
         webkit_script_dialog_confirm_set_confirmed(dialog, m_scriptDialogConfirmed);
     }
 
-    void scriptPrompt(WebKitScriptDialog* dialog)
+    void scriptPrompt(CyberKitScriptDialog* dialog)
     {
         g_assert_cmpstr(webkit_script_dialog_get_message(dialog), ==, kPromptDialogMessage);
         g_assert_cmpstr(webkit_script_dialog_prompt_get_default_text(dialog), ==, "default");
         webkit_script_dialog_prompt_set_text(dialog, kPromptDialogReturnedText);
     }
 
-    void scriptBeforeUnloadConfirm(WebKitScriptDialog* dialog)
+    void scriptBeforeUnloadConfirm(CyberKitScriptDialog* dialog)
     {
         g_assert_cmpstr(webkit_script_dialog_get_message(dialog), ==, kBeforeUnloadConfirmDialogMessage);
         m_scriptDialogConfirmed = true;
         webkit_script_dialog_confirm_set_confirmed(dialog, m_scriptDialogConfirmed);
     }
 
-    static gboolean scriptDialog(WebKitWebView*, WebKitScriptDialog* dialog, UIClientTest* test)
+    static gboolean scriptDialog(CyberKitWebView*, CyberKitScriptDialog* dialog, UIClientTest* test)
     {
         switch (webkit_script_dialog_get_dialog_type(dialog)) {
         case WEBKIT_SCRIPT_DIALOG_ALERT:
@@ -216,7 +216,7 @@ public:
         return TRUE;
     }
 
-    static void mouseTargetChanged(WebKitWebView*, WebKitHitTestResult* hitTestResult, guint modifiers, UIClientTest* test)
+    static void mouseTargetChanged(CyberKitWebView*, CyberKitHitTestResult* hitTestResult, guint modifiers, UIClientTest* test)
     {
         g_assert_true(WEBKIT_IS_HIT_TEST_RESULT(hitTestResult));
         test->assertObjectIsDeletedWhenTestFinishes(G_OBJECT(hitTestResult));
@@ -227,13 +227,13 @@ public:
             g_main_loop_quit(test->m_mainLoop);
     }
 
-    static gboolean permissionRequested(WebKitWebView*, WebKitPermissionRequest* request, UIClientTest* test)
+    static gboolean permissionRequested(CyberKitWebView*, CyberKitPermissionRequest* request, UIClientTest* test)
     {
         g_assert_true(WEBKIT_IS_PERMISSION_REQUEST(request));
         test->assertObjectIsDeletedWhenTestFinishes(G_OBJECT(request));
 
         if (test->m_verifyMediaTypes && WEBKIT_IS_USER_MEDIA_PERMISSION_REQUEST(request)) {
-            WebKitUserMediaPermissionRequest* userMediaRequest = WEBKIT_USER_MEDIA_PERMISSION_REQUEST(request);
+            CyberKitUserMediaPermissionRequest* userMediaRequest = WEBKIT_USER_MEDIA_PERMISSION_REQUEST(request);
             g_assert_true(webkit_user_media_permission_is_for_audio_device(userMediaRequest) == test->m_expectedAudioMedia);
             g_assert_true(webkit_user_media_permission_is_for_video_device(userMediaRequest) == test->m_expectedVideoMedia);
             g_assert_true(webkit_user_media_permission_is_for_display_device(userMediaRequest) == test->m_expectedDisplayMedia);
@@ -248,21 +248,21 @@ public:
     }
 
 #if ENABLE(2022_GLIB_API)
-    static void permissionResultMessageReceivedCallback(WebKitUserContentManager* userContentManager, JSCValue* result, UIClientTest* test)
+    static void permissionResultMessageReceivedCallback(CyberKitUserContentManager* userContentManager, JSCValue* result, UIClientTest* test)
 #else
-    static void permissionResultMessageReceivedCallback(WebKitUserContentManager* userContentManager, WebKitJavascriptResult* result, UIClientTest* test)
+    static void permissionResultMessageReceivedCallback(CyberKitUserContentManager* userContentManager, CyberKitJavascriptResult* result, UIClientTest* test)
 #endif
     {
         test->m_permissionResult.reset(WebViewTest::javascriptResultToCString(result));
         g_main_loop_quit(test->m_mainLoop);
     }
 
-    static gboolean queryPermissionStateCallback(WebKitWebView*, WebKitPermissionStateQuery* query, UIClientTest* test)
+    static gboolean queryPermissionStateCallback(CyberKitWebView*, CyberKitPermissionStateQuery* query, UIClientTest* test)
     {
         if (!g_strcmp0(test->m_expectedQueryPermissionReply, "prompt-default"))
             return FALSE;
 
-        WebKitPermissionState state = WEBKIT_PERMISSION_STATE_PROMPT;
+        CyberKitPermissionState state = WEBKIT_PERMISSION_STATE_PROMPT;
 
         if (!g_strcmp0(test->m_expectedQueryPermissionReply, "granted"))
             state = WEBKIT_PERMISSION_STATE_GRANTED;
@@ -279,16 +279,16 @@ public:
     }
 
 #if ENABLE(2022_GLIB_API)
-    static void queryPermissionResultMessageReceivedCallback(WebKitUserContentManager* userContentManager, JSCValue* result, UIClientTest* test)
+    static void queryPermissionResultMessageReceivedCallback(CyberKitUserContentManager* userContentManager, JSCValue* result, UIClientTest* test)
 #else
-    static void queryPermissionResultMessageReceivedCallback(WebKitUserContentManager* userContentManager, WebKitJavascriptResult* result, UIClientTest* test)
+    static void queryPermissionResultMessageReceivedCallback(CyberKitUserContentManager* userContentManager, CyberKitJavascriptResult* result, UIClientTest* test)
 #endif
     {
         test->m_queryPermissionResult.reset(WebViewTest::javascriptResultToCString(result));
         g_main_loop_quit(test->m_mainLoop);
     }
 
-    static void displayCaptureChanged(WebKitWebView* webView, GParamSpec*, UIClientTest* test)
+    static void displayCaptureChanged(CyberKitWebView* webView, GParamSpec*, UIClientTest* test)
     {
         if (test->m_expectedDisplayCaptureState && *test->m_expectedDisplayCaptureState != webkit_web_view_get_display_capture_state(webView))
             return;
@@ -297,7 +297,7 @@ public:
         g_main_loop_quit(test->m_mainLoop);
     }
 
-    void waitUntilDisplayCaptureStateChangedTo(WebKitMediaCaptureState expectedCaptureState)
+    void waitUntilDisplayCaptureStateChangedTo(CyberKitMediaCaptureState expectedCaptureState)
     {
         *m_expectedDisplayCaptureState = expectedCaptureState;
         g_signal_connect(m_webView, "notify::display-capture-state", G_CALLBACK(displayCaptureChanged), this);
@@ -306,7 +306,7 @@ public:
         m_expectedDisplayCaptureState.reset();
     }
 
-    static void microphoneCaptureChanged(WebKitWebView* webView, GParamSpec*, UIClientTest* test)
+    static void microphoneCaptureChanged(CyberKitWebView* webView, GParamSpec*, UIClientTest* test)
     {
         if (test->m_expectedMicrophoneCaptureState && *test->m_expectedMicrophoneCaptureState != webkit_web_view_get_microphone_capture_state(webView))
             return;
@@ -315,7 +315,7 @@ public:
         g_main_loop_quit(test->m_mainLoop);
     }
 
-    void waitUntilMicrophoneCaptureStateChangedTo(WebKitMediaCaptureState expectedCaptureState)
+    void waitUntilMicrophoneCaptureStateChangedTo(CyberKitMediaCaptureState expectedCaptureState)
     {
         *m_expectedMicrophoneCaptureState = expectedCaptureState;
         g_signal_connect(m_webView, "notify::microphone-capture-state", G_CALLBACK(microphoneCaptureChanged), this);
@@ -324,7 +324,7 @@ public:
         m_expectedMicrophoneCaptureState.reset();
     }
 
-    static void cameraCaptureChanged(WebKitWebView* webView, GParamSpec*, UIClientTest* test)
+    static void cameraCaptureChanged(CyberKitWebView* webView, GParamSpec*, UIClientTest* test)
     {
         if (test->m_expectedCameraCaptureState && *test->m_expectedCameraCaptureState != webkit_web_view_get_camera_capture_state(webView))
             return;
@@ -333,7 +333,7 @@ public:
         g_main_loop_quit(test->m_mainLoop);
     }
 
-    void waitUntilCameraCaptureStateChangedTo(WebKitMediaCaptureState expectedCaptureState)
+    void waitUntilCameraCaptureStateChangedTo(CyberKitMediaCaptureState expectedCaptureState)
     {
         *m_expectedCameraCaptureState = expectedCaptureState;
         g_signal_connect(m_webView, "notify::camera-capture-state", G_CALLBACK(cameraCaptureChanged), this);
@@ -434,7 +434,7 @@ public:
     }
 #endif
 
-    WebKitHitTestResult* moveMouseAndWaitUntilMouseTargetChanged(int x, int y, unsigned mouseModifiers = 0)
+    CyberKitHitTestResult* moveMouseAndWaitUntilMouseTargetChanged(int x, int y, unsigned mouseModifiers = 0)
     {
         m_waitingForMouseTargetChange = true;
         mouseMoveTo(x, y, mouseModifiers);
@@ -455,7 +455,7 @@ public:
 #endif
     }
 
-    virtual WebKitWebView* viewCreate(WebKitWebView* webView, WebKitNavigationAction* navigation)
+    virtual CyberKitWebView* viewCreate(CyberKitWebView* webView, CyberKitNavigationAction* navigation)
     {
         g_assert_true(webView == m_webView);
         g_assert_nonnull(navigation);
@@ -467,7 +467,7 @@ public:
 
         m_webViewEvents.append(Create);
 
-        WebKitWindowProperties* windowProperties = webkit_web_view_get_window_properties(WEBKIT_WEB_VIEW(newWebView));
+        CyberKitWindowProperties* windowProperties = webkit_web_view_get_window_properties(WEBKIT_WEB_VIEW(newWebView));
         g_assert_nonnull(windowProperties);
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(windowProperties));
         m_windowPropertiesChanged.clear();
@@ -494,11 +494,11 @@ public:
         return WEBKIT_WEB_VIEW(newWebView);
     }
 
-    virtual void viewReadyToShow(WebKitWebView* webView)
+    virtual void viewReadyToShow(CyberKitWebView* webView)
     {
         g_assert_true(webView != m_webView);
 
-        WebKitWindowProperties* windowProperties = webkit_web_view_get_window_properties(webView);
+        CyberKitWindowProperties* windowProperties = webkit_web_view_get_window_properties(webView);
         g_assert_nonnull(windowProperties);
         if (!m_windowProperties.isNull())
             WindowProperties(windowProperties).assertEqual(m_windowProperties);
@@ -506,7 +506,7 @@ public:
         m_webViewEvents.append(ReadyToShow);
     }
 
-    virtual void viewClose(WebKitWebView* webView)
+    virtual void viewClose(CyberKitWebView* webView)
     {
         g_assert_true(webView != m_webView);
 
@@ -517,7 +517,7 @@ public:
     }
 
     Vector<WebViewEvents> m_webViewEvents;
-    WebKitScriptDialogType m_scriptDialogType;
+    CyberKitScriptDialogType m_scriptDialogType;
     bool m_scriptDialogConfirmed;
     bool m_delayedScriptDialogs { false };
     bool m_allowPermissionRequests;
@@ -528,7 +528,7 @@ public:
     gboolean m_expectedDisplayMedia;
     WindowProperties m_windowProperties;
     HashSet<WTF::String> m_windowPropertiesChanged;
-    GRefPtr<WebKitHitTestResult> m_mouseTargetHitTestResult;
+    GRefPtr<CyberKitHitTestResult> m_mouseTargetHitTestResult;
     unsigned m_mouseTargetModifiers;
     GUniquePtr<char> m_permissionResult;
     GUniquePtr<char> m_queryPermissionResult;
@@ -539,9 +539,9 @@ public:
     cairo_rectangle_int_t m_defaultGeometryNewWindows;
 #endif
 
-    std::optional<WebKitMediaCaptureState> m_expectedCameraCaptureState;
-    std::optional<WebKitMediaCaptureState> m_expectedDisplayCaptureState;
-    std::optional<WebKitMediaCaptureState> m_expectedMicrophoneCaptureState;
+    std::optional<CyberKitMediaCaptureState> m_expectedCameraCaptureState;
+    std::optional<CyberKitMediaCaptureState> m_expectedDisplayCaptureState;
+    std::optional<CyberKitMediaCaptureState> m_expectedMicrophoneCaptureState;
 };
 
 static void testWebViewCreateReadyClose(UIClientTest* test, gconstpointer)
@@ -578,7 +578,7 @@ public:
         m_navigation = nullptr;
     }
 
-    WebKitWebView* viewCreate(WebKitWebView* webView, WebKitNavigationAction* navigation)
+    CyberKitWebView* viewCreate(CyberKitWebView* webView, CyberKitNavigationAction* navigation)
     {
         g_assert_nonnull(navigation);
         g_assert_null(m_navigation);
@@ -600,7 +600,7 @@ public:
         g_main_loop_run(m_mainLoop);
     }
 
-    WebKitNavigationAction* m_navigation;
+    CyberKitNavigationAction* m_navigation;
 };
 
 static void testWebViewCreateNavigationData(CreateNavigationDataTest* test, gconstpointer)
@@ -662,13 +662,13 @@ class ModalDialogsTest: public UIClientTest {
 public:
     MAKE_GLIB_TEST_FIXTURE(ModalDialogsTest);
 
-    static void dialogRunAsModalCallback(WebKitWebView* webView, ModalDialogsTest* test)
+    static void dialogRunAsModalCallback(CyberKitWebView* webView, ModalDialogsTest* test)
     {
         g_assert_true(webView != test->m_webView);
         test->m_webViewEvents.append(RunAsModal);
     }
 
-    WebKitWebView* viewCreate(WebKitWebView* webView, WebKitNavigationAction* navigation)
+    CyberKitWebView* viewCreate(CyberKitWebView* webView, CyberKitNavigationAction* navigation)
     {
         g_assert_true(webView == m_webView);
 
@@ -677,7 +677,7 @@ public:
         return newWebView;
     }
 
-    void viewReadyToShow(WebKitWebView* webView)
+    void viewReadyToShow(CyberKitWebView* webView)
     {
         g_assert_true(webView != m_webView);
         m_webViewEvents.append(ReadyToShow);
@@ -838,9 +838,9 @@ static void testWebViewMouseTarget(UIClientTest* test, gconstpointer)
         "    }"
         " </script>"
         "</head><body>"
-        " <a style='position:absolute; left:1; top:1' href='http://www.webkitgtk.org' title='WebKitGTK Title'>WebKitGTK Website</a>"
+        " <a style='position:absolute; left:1; top:1' href='http://www.webkitgtk.org' title='CyberKitGTK Title'>CyberKitGTK Website</a>"
         " <img style='position:absolute; left:1; top:10' src='0xdeadbeef' width=5 height=5></img>"
-        " <a style='position:absolute; left:1; top:20' href='http://www.webkitgtk.org/logo' title='WebKitGTK Logo'><img src='0xdeadbeef' width=5 height=5></img></a>"
+        " <a style='position:absolute; left:1; top:20' href='http://www.webkitgtk.org/logo' title='CyberKitGTK Logo'><img src='0xdeadbeef' width=5 height=5></img></a>"
         " <input style='position:absolute; left:1; top:30' size='10'></input>"
         " <video style='position:absolute; left:1; top:100' width='300' height='300' controls='controls' preload='none'><source src='movie.ogg' type='video/ogg' /></video>"
         " <p style='position:absolute; left:1; top:120' id='text_to_select'>Lorem ipsum.</p>"
@@ -850,15 +850,15 @@ static void testWebViewMouseTarget(UIClientTest* test, gconstpointer)
     test->waitUntilLoadFinished();
 
     // Move over link.
-    WebKitHitTestResult* hitTestResult = test->moveMouseAndWaitUntilMouseTargetChanged(1, 1);
+    CyberKitHitTestResult* hitTestResult = test->moveMouseAndWaitUntilMouseTargetChanged(1, 1);
     g_assert_true(webkit_hit_test_result_context_is_link(hitTestResult));
     g_assert_false(webkit_hit_test_result_context_is_image(hitTestResult));
     g_assert_false(webkit_hit_test_result_context_is_media(hitTestResult));
     g_assert_false(webkit_hit_test_result_context_is_editable(hitTestResult));
     g_assert_false(webkit_hit_test_result_context_is_selection(hitTestResult));
     g_assert_cmpstr(webkit_hit_test_result_get_link_uri(hitTestResult), ==, "http://www.webkitgtk.org/");
-    g_assert_cmpstr(webkit_hit_test_result_get_link_title(hitTestResult), ==, "WebKitGTK Title");
-    g_assert_cmpstr(webkit_hit_test_result_get_link_label(hitTestResult), ==, "WebKitGTK Website");
+    g_assert_cmpstr(webkit_hit_test_result_get_link_title(hitTestResult), ==, "CyberKitGTK Title");
+    g_assert_cmpstr(webkit_hit_test_result_get_link_label(hitTestResult), ==, "CyberKitGTK Website");
     g_assert_cmpuint(test->m_mouseTargetModifiers, ==, 0);
 
     // Move out of the link.
@@ -891,7 +891,7 @@ static void testWebViewMouseTarget(UIClientTest* test, gconstpointer)
     g_assert_false(webkit_hit_test_result_context_is_selection(hitTestResult));
     g_assert_cmpstr(webkit_hit_test_result_get_link_uri(hitTestResult), ==, "http://www.webkitgtk.org/logo");
     g_assert_cmpstr(webkit_hit_test_result_get_image_uri(hitTestResult), ==, "file:///0xdeadbeef");
-    g_assert_cmpstr(webkit_hit_test_result_get_link_title(hitTestResult), ==, "WebKitGTK Logo");
+    g_assert_cmpstr(webkit_hit_test_result_get_link_title(hitTestResult), ==, "CyberKitGTK Logo");
     g_assert_false(webkit_hit_test_result_get_link_label(hitTestResult));
     g_assert_cmpuint(test->m_mouseTargetModifiers, ==, 0);
 
@@ -1066,7 +1066,7 @@ static void testWebViewQueryPermissionRequests(UIClientTest* test, gconstpointer
 #if ENABLE(MEDIA_STREAM)
 static void testWebViewUserMediaEnumerateDevicesPermissionCheck(UIClientTest* test, gconstpointer)
 {
-    WebKitSettings* settings = webkit_web_view_get_settings(test->m_webView);
+    CyberKitSettings* settings = webkit_web_view_get_settings(test->m_webView);
     gboolean enabled = webkit_settings_get_enable_media_stream(settings);
     webkit_settings_set_enable_media_stream(settings, TRUE);
     webkitSettingsSetMediaCaptureRequiresSecureConnection(settings, FALSE);
@@ -1111,7 +1111,7 @@ static void testWebViewUserMediaEnumerateDevicesPermissionCheck(UIClientTest* te
 
 static void testWebViewUserMediaPermissionRequests(UIClientTest* test, gconstpointer)
 {
-    WebKitSettings* settings = webkit_web_view_get_settings(test->m_webView);
+    CyberKitSettings* settings = webkit_web_view_get_settings(test->m_webView);
     gboolean enabled = webkit_settings_get_enable_media_stream(settings);
     webkit_settings_set_enable_media_stream(settings, TRUE);
     webkit_settings_set_enable_mock_capture_devices(settings, TRUE);
@@ -1181,7 +1181,7 @@ static void testWebViewUserMediaPermissionRequests(UIClientTest* test, gconstpoi
 
 static void testWebViewAudioOnlyUserMediaPermissionRequests(UIClientTest* test, gconstpointer)
 {
-    WebKitSettings* settings = webkit_web_view_get_settings(test->m_webView);
+    CyberKitSettings* settings = webkit_web_view_get_settings(test->m_webView);
     gboolean enabled = webkit_settings_get_enable_media_stream(settings);
     webkit_settings_set_enable_media_stream(settings, TRUE);
     webkit_settings_set_enable_mock_capture_devices(settings, TRUE);
@@ -1222,7 +1222,7 @@ static void testWebViewAudioOnlyUserMediaPermissionRequests(UIClientTest* test, 
 
 static void testWebViewDisplayUserMediaPermissionRequests(UIClientTest* test, gconstpointer)
 {
-    WebKitSettings* settings = webkit_web_view_get_settings(test->m_webView);
+    CyberKitSettings* settings = webkit_web_view_get_settings(test->m_webView);
     gboolean enabled = webkit_settings_get_enable_media_stream(settings);
     webkit_settings_set_enable_media_stream(settings, TRUE);
     webkit_settings_set_enable_mock_capture_devices(settings, TRUE);
@@ -1332,20 +1332,20 @@ public:
         g_signal_connect(m_webView, "run-file-chooser", G_CALLBACK(runFileChooserCallback), this);
     }
 
-    static gboolean runFileChooserCallback(WebKitWebView*, WebKitFileChooserRequest* request, FileChooserTest* test)
+    static gboolean runFileChooserCallback(CyberKitWebView*, CyberKitFileChooserRequest* request, FileChooserTest* test)
     {
         test->runFileChooser(request);
         return TRUE;
     }
 
-    void runFileChooser(WebKitFileChooserRequest* request)
+    void runFileChooser(CyberKitFileChooserRequest* request)
     {
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(request));
         m_fileChooserRequest = request;
         g_main_loop_quit(m_mainLoop);
     }
 
-    WebKitFileChooserRequest* clickMouseButtonAndWaitForFileChooserRequest(int x, int y)
+    CyberKitFileChooserRequest* clickMouseButtonAndWaitForFileChooserRequest(int x, int y)
     {
         clickMouseButton(x, y);
         g_main_loop_run(m_mainLoop);
@@ -1353,7 +1353,7 @@ public:
     }
 
 private:
-    GRefPtr<WebKitFileChooserRequest> m_fileChooserRequest;
+    GRefPtr<CyberKitFileChooserRequest> m_fileChooserRequest;
 };
 
 static void testWebViewFileChooserRequest(FileChooserTest* test, gconstpointer)
@@ -1365,7 +1365,7 @@ static void testWebViewFileChooserRequest(FileChooserTest* test, gconstpointer)
     GUniquePtr<char> simpleFileUploadHTML(g_strdup_printf(fileChooserHTMLFormat, ""));
     test->loadHtml(simpleFileUploadHTML.get(), 0);
     test->waitUntilLoadFinished();
-    WebKitFileChooserRequest* fileChooserRequest = test->clickMouseButtonAndWaitForFileChooserRequest(5, 5);
+    CyberKitFileChooserRequest* fileChooserRequest = test->clickMouseButtonAndWaitForFileChooserRequest(5, 5);
     g_assert_false(webkit_file_chooser_request_get_select_multiple(fileChooserRequest));
 
     const gchar* const* mimeTypes = webkit_file_chooser_request_get_mime_types(fileChooserRequest);
@@ -1450,13 +1450,13 @@ class ColorChooserTest: public WebViewTest {
 public:
     MAKE_GLIB_TEST_FIXTURE(ColorChooserTest);
 
-    static gboolean runColorChooserCallback(WebKitWebView*, WebKitColorChooserRequest* request, ColorChooserTest* test)
+    static gboolean runColorChooserCallback(CyberKitWebView*, CyberKitColorChooserRequest* request, ColorChooserTest* test)
     {
         test->runColorChooser(request);
         return TRUE;
     }
 
-    static void requestFinishedCallback(WebKitColorChooserRequest* request, ColorChooserTest* test)
+    static void requestFinishedCallback(CyberKitColorChooserRequest* request, ColorChooserTest* test)
     {
         g_assert_true(test->m_request.get() == request);
         test->m_request = nullptr;
@@ -1469,7 +1469,7 @@ public:
         g_signal_connect(m_webView, "run-color-chooser", G_CALLBACK(runColorChooserCallback), this);
     }
 
-    void runColorChooser(WebKitColorChooserRequest* request)
+    void runColorChooser(CyberKitColorChooserRequest* request)
     {
         g_assert_true(WEBKIT_IS_COLOR_CHOOSER_REQUEST(request));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(request));
@@ -1492,7 +1492,7 @@ public:
         g_assert_null(m_request);
     }
 
-    WebKitColorChooserRequest* clickMouseButtonAndWaitForColorChooserRequest(int x, int y)
+    CyberKitColorChooserRequest* clickMouseButtonAndWaitForColorChooserRequest(int x, int y)
     {
         clickMouseButton(x, y);
         g_main_loop_run(m_mainLoop);
@@ -1501,7 +1501,7 @@ public:
     }
 
 private:
-    GRefPtr<WebKitColorChooserRequest> m_request;
+    GRefPtr<CyberKitColorChooserRequest> m_request;
 };
 
 static void testWebViewColorChooserRequest(ColorChooserTest* test, gconstpointer)
@@ -1512,7 +1512,7 @@ static void testWebViewColorChooserRequest(ColorChooserTest* test, gconstpointer
     GUniquePtr<char> defaultColorHTML(g_strdup_printf(colorChooserHTMLFormat, ""));
     test->loadHtml(defaultColorHTML.get(), nullptr);
     test->waitUntilLoadFinished();
-    WebKitColorChooserRequest* request = test->clickMouseButtonAndWaitForColorChooserRequest(5, 5);
+    CyberKitColorChooserRequest* request = test->clickMouseButtonAndWaitForColorChooserRequest(5, 5);
 
     // Default color is black (#000000).
     GdkRGBA rgba1;
@@ -1551,42 +1551,42 @@ static void testWebViewColorChooserRequest(ColorChooserTest* test, gconstpointer
 
 void beforeAll()
 {
-    UIClientTest::add("WebKitWebView", "create-ready-close", testWebViewCreateReadyClose);
+    UIClientTest::add("CyberKitWebView", "create-ready-close", testWebViewCreateReadyClose);
     // FIXME: Implement mouse clicks in WPE.
 #if PLATFORM(GTK)
-    CreateNavigationDataTest::add("WebKitWebView", "create-navigation-data", testWebViewCreateNavigationData);
+    CreateNavigationDataTest::add("CyberKitWebView", "create-navigation-data", testWebViewCreateNavigationData);
 #endif
-    UIClientTest::add("WebKitWebView", "javascript-dialogs", testWebViewJavaScriptDialogs);
-    UIClientTest::add("WebKitWebView", "window-properties", testWebViewWindowProperties);
+    UIClientTest::add("CyberKitWebView", "javascript-dialogs", testWebViewJavaScriptDialogs);
+    UIClientTest::add("CyberKitWebView", "window-properties", testWebViewWindowProperties);
 #if PLATFORM(GTK)
     // FIXME: Implement webkit_window_properties_get_geometry() in WPE.
-    UIClientTest::add("WebKitWebView", "open-window-default-size", testWebViewOpenWindowDefaultSize);
-    UIClientTest::add("WebKitWebView", "open-window-no-default-size", testWebViewOpenWindowNoDefaultSize);
+    UIClientTest::add("CyberKitWebView", "open-window-default-size", testWebViewOpenWindowDefaultSize);
+    UIClientTest::add("CyberKitWebView", "open-window-no-default-size", testWebViewOpenWindowNoDefaultSize);
 #endif
     // FIXME: Implement mouse move in WPE.
 #if PLATFORM(GTK)
-    UIClientTest::add("WebKitWebView", "mouse-target", testWebViewMouseTarget);
+    UIClientTest::add("CyberKitWebView", "mouse-target", testWebViewMouseTarget);
 #endif
-    UIClientTest::add("WebKitWebView", "geolocation-permission-requests", testWebViewGeolocationPermissionRequests);
+    UIClientTest::add("CyberKitWebView", "geolocation-permission-requests", testWebViewGeolocationPermissionRequests);
 #if ENABLE(ENCRYPTED_MEDIA)
-    UIClientTest::add("WebKitWebView", "mediaKeySystem-permission-requests", testWebViewMediaKeySystemPermissionRequests);
+    UIClientTest::add("CyberKitWebView", "mediaKeySystem-permission-requests", testWebViewMediaKeySystemPermissionRequests);
 #endif
-    UIClientTest::add("WebKitWebView", "query-permission-requests", testWebViewQueryPermissionRequests);
+    UIClientTest::add("CyberKitWebView", "query-permission-requests", testWebViewQueryPermissionRequests);
 #if ENABLE(MEDIA_STREAM)
-    UIClientTest::add("WebKitWebView", "usermedia-enumeratedevices-permission-check", testWebViewUserMediaEnumerateDevicesPermissionCheck);
-    UIClientTest::add("WebKitWebView", "usermedia-permission-requests", testWebViewUserMediaPermissionRequests);
-    UIClientTest::add("WebKitWebView", "audio-usermedia-permission-request", testWebViewAudioOnlyUserMediaPermissionRequests);
-    UIClientTest::add("WebKitWebView", "display-usermedia-permission-request", testWebViewDisplayUserMediaPermissionRequests);
+    UIClientTest::add("CyberKitWebView", "usermedia-enumeratedevices-permission-check", testWebViewUserMediaEnumerateDevicesPermissionCheck);
+    UIClientTest::add("CyberKitWebView", "usermedia-permission-requests", testWebViewUserMediaPermissionRequests);
+    UIClientTest::add("CyberKitWebView", "audio-usermedia-permission-request", testWebViewAudioOnlyUserMediaPermissionRequests);
+    UIClientTest::add("CyberKitWebView", "display-usermedia-permission-request", testWebViewDisplayUserMediaPermissionRequests);
 #endif
     // FIXME: Implement mouse click in WPE.
 #if PLATFORM(GTK)
-    FileChooserTest::add("WebKitWebView", "file-chooser-request", testWebViewFileChooserRequest);
+    FileChooserTest::add("CyberKitWebView", "file-chooser-request", testWebViewFileChooserRequest);
 #endif
 #if PLATFORM(GTK)
-    ColorChooserTest::add("WebKitWebView", "color-chooser-request", testWebViewColorChooserRequest);
+    ColorChooserTest::add("CyberKitWebView", "color-chooser-request", testWebViewColorChooserRequest);
 #endif
 #if ENABLE(POINTER_LOCK)
-    UIClientTest::add("WebKitWebView", "pointer-lock-permission-request", testWebViewPointerLockPermissionRequest);
+    UIClientTest::add("CyberKitWebView", "pointer-lock-permission-request", testWebViewPointerLockPermissionRequest);
 #endif
 }
 

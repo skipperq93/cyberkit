@@ -29,13 +29,13 @@
 #import "TestNavigationDelegate.h"
 #import "Utilities.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/_WKRemoteObjectInterface.h>
-#import <WebKit/_WKRemoteObjectRegistry.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/CyberKit.h>
+#import <CyberKit/_WKRemoteObjectInterface.h>
+#import <CyberKit/_WKRemoteObjectRegistry.h>
 #import <wtf/RetainPtr.h>
 
-using namespace TestWebKitAPI;
+using namespace TestCyberKitAPI;
 
 static void runTestWithWidth(NSNumber *width, CGSize expectedSize)
 {
@@ -45,7 +45,7 @@ static void runTestWithWidth(NSNumber *width, CGSize expectedSize)
     _WKRemoteObjectInterface *interface = [_WKRemoteObjectInterface remoteObjectInterfaceWithProtocol:@protocol(RenderedImageWithOptionsProtocol)];
     auto remoteObject = retainPtr([[webView _remoteObjectRegistry] remoteObjectProxyWithInterface:interface]);
 
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"rendered-image-excluding-overflow" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"rendered-image-excluding-overflow" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     [webView _test_waitForDidFinishNavigation];
 
     __block bool testFinished = false;
@@ -63,12 +63,12 @@ static void runTestWithWidth(NSNumber *width, CGSize expectedSize)
     Util::run(&testFinished);
 }
 
-TEST(WebKit, NodeHandleRenderedImageExcludingOverflow)
+TEST(CyberKit, NodeHandleRenderedImageExcludingOverflow)
 {
     runTestWithWidth(nil, { 720, 540 });
 }
 
-TEST(WebKit, NodeHandleRenderedImageWithWidth)
+TEST(CyberKit, NodeHandleRenderedImageWithWidth)
 {
     runTestWithWidth(@(-1), { 0, 0 });
     runTestWithWidth(@0, { 0, 0 });

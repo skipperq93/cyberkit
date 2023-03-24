@@ -27,10 +27,10 @@
 
 #import "InjectedBundleTest.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WKBundlePage.h>
+#import <CyberKit/WKBundlePage.h>
 #import <assert.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class GetBackingScaleFactorTest : public InjectedBundleTest {
 public:
@@ -66,4 +66,4 @@ void GetBackingScaleFactorTest::didReceiveMessage(WKBundleRef bundle, WKStringRe
     WKBundlePostMessage(bundle, Util::toWK("DidGetBackingScaleFactor").get(), backingScaleFactor.get());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

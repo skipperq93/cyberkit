@@ -28,13 +28,13 @@
 
 #import "OffscreenWindow.h"
 #import <Carbon/Carbon.h>
-#import <WebKit/WKPagePrivateMac.h>
-#import <WebKit/WKRetainPtr.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKPagePrivateMac.h>
+#import <CyberKit/WKRetainPtr.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 void PlatformWebView::initialize(WKPageConfigurationRef pageConfiguration, Class wkViewSubclass)
 {
@@ -233,4 +233,4 @@ void PlatformWebView::simulateButtonClick(WKEventMouseButton button, unsigned x,
     [m_view mouseDown:event];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -29,9 +29,9 @@
 
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
-#import <WebKit/WebDocumentPrivate.h>
-#import <WebKit/DOMPrivate.h>
-#import <WebKit/WKImage.h>
+#import <CyberKit/WebDocumentPrivate.h>
+#import <CyberKit/DOMPrivate.h>
+#import <CyberKit/WKImage.h>
 #import <wtf/RetainPtr.h>
 
 @interface FindMatchesWK1FrameLoadDelegate : NSObject <WebFrameLoadDelegate> {
@@ -49,7 +49,7 @@ static bool didFinishLoadWK1;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didFinishLoad = false;
 static bool didCallFindStringMatches = false;
@@ -116,7 +116,7 @@ static void didGetImageForMatchResult(WKPageRef page, WKImageRef image, uint32_t
     didCallGetImage = true;
 }
 
-TEST(WebKit, FindMatches)
+TEST(CyberKit, FindMatches)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -175,6 +175,6 @@ TEST(WebKit, FindMatches)
     WKPageHideFindUI(webView.page());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

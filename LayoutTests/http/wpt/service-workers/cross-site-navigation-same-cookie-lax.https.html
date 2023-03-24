@@ -14,7 +14,7 @@ var scope = "";
 async function doTest()
 {
     if (window.origin == "https://127.0.0.1:9443") {
-        window.location = "https://localhost:9443/WebKit/service-workers/resources/get-document-cookie.py?fetchTest";
+        window.location = "https://localhost:9443/CyberKit/service-workers/resources/get-document-cookie.py?fetchTest";
         return;
     }
 
@@ -31,7 +31,7 @@ async function doTest()
     const cookieValue = "PASS: got samesite-cookie-test";
     await fetch("resources/set-cookie-lax.py?name=" + cookieValue);
 
-    window.location = "https://127.0.0.1:9443/WebKit/service-workers/cross-site-navigation-same-cookie-lax.https.html?fetchTest";
+    window.location = "https://127.0.0.1:9443/CyberKit/service-workers/cross-site-navigation-same-cookie-lax.https.html?fetchTest";
 }
 doTest();
 </script>

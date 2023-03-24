@@ -28,12 +28,12 @@
 #ifndef UIScriptContext_h
 #define UIScriptContext_h
 
-#include <JavaScriptCore/JSRetainPtr.h>
+#include <CyberScriptCore/JSRetainPtr.h>
 #include <wtf/HashMap.h>
 #include <wtf/Ref.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class FloatRect;
 }
 
@@ -95,7 +95,7 @@ public:
 
     unsigned nextTaskCallbackID(CallbackType);
 
-    JSObjectRef objectFromRect(const WebCore::FloatRect&) const;
+    JSObjectRef objectFromRect(const CyberCore::FloatRect&) const;
 
     JSGlobalContextRef jsContext() const { return m_context.get(); }
 

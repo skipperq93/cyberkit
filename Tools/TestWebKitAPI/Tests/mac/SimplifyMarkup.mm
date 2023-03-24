@@ -28,8 +28,8 @@
 #import "PlatformWebView.h"
 #import <wtf/RetainPtr.h>
 
-#import <WebKit/DOM.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/DOM.h>
+#import <CyberKit/WebViewPrivate.h>
 
 @interface SimplifyMarkupTest : NSObject <WebFrameLoadDelegate> {
 }
@@ -45,22 +45,22 @@ static bool didFinishLoad;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, SimplifyMarkupTest)
+TEST(CyberKitLegacy, SimplifyMarkupTest)
 {
     RetainPtr<WebView> webView1 = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<WebView> webView2 = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<SimplifyMarkupTest> testController = adoptNS([SimplifyMarkupTest new]);
     
     webView1.get().frameLoadDelegate = testController.get();
-    [[webView1.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"verboseMarkup" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [[webView1.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"verboseMarkup" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     
     Util::run(&didFinishLoad);
     didFinishLoad = false;
 
     webView2.get().frameLoadDelegate = testController.get();
-    [[webView2.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"verboseMarkup" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [[webView2.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"verboseMarkup" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     
     Util::run(&didFinishLoad);
     didFinishLoad = false;
@@ -110,4 +110,4 @@ TEST(WebKitLegacy, SimplifyMarkupTest)
     EXPECT_GT([markupBefore length], [markupAfter length]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

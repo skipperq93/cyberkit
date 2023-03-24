@@ -29,9 +29,9 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPagePrivateMac.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKPagePrivateMac.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/HashSet.h>
 #import <wtf/RetainPtr.h>
 
@@ -68,9 +68,9 @@ static bool webViewSeen;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, ResponsivenessTimerCrash)
+TEST(CyberKit, ResponsivenessTimerCrash)
 {
     RetainPtr<ResponsivenessTimerObserver> observer = adoptNS([[ResponsivenessTimerObserver alloc] init]);
     @autoreleasepool {
@@ -95,7 +95,7 @@ TEST(WebKit, ResponsivenessTimerCrash)
     [webView removeObserver:observer.get() forKeyPath:@"_webProcessIsResponsive"];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // defined(NDEBUG) && !ASAN_ENABLED
 

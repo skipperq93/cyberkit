@@ -1,4 +1,4 @@
-This tests mutating shadow tree inside execCommand. WebKit should not dispach DOM mutation events.
+This tests mutating shadow tree inside execCommand. CyberKit should not dispach DOM mutation events.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

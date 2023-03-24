@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Configurations">
+   </FileRef>
+   <FileRef
+      location = "group:Source/bmalloc/bmalloc.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Source/WTF/WTF.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Source/CyberScriptCore/CyberScriptCore.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Source/ThirdParty/ANGLE/ANGLE.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Source/ThirdParty/libwebrtc/libwebrtc.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Source/WebGPU/WebGPU.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Source/CyberCore/CyberCore.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Source/WebInspectorUI/WebInspectorUI.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Source/CyberKitLegacy/CyberKitLegacy.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Source/CyberKit/CyberKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Tools/DumpRenderTree/DumpRenderTree.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Source/ThirdParty/gtest/xcode/gtest.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Tools/lldb/lldbCyberKitTester/lldbCyberKitTester.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Tools/MiniBrowser/MiniBrowser.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Tools/MobileMiniBrowser/MobileMiniBrowser.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Tools/TestCyberKitAPI/TestCyberKitAPI.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Tools/CyberKitTestRunner/CyberKitTestRunner.xcodeproj">
+   </FileRef>
+</Workspace>

@@ -186,9 +186,9 @@ CSSMatrix.prototype.rotateAxisAngle =
  * @constructor
  * @param {string=} opt_matrix
  * @extends {CSSMatrix}
- * @see http://developer.apple.com/safari/library/documentation/AudioVideo/Reference/WebKitCSSMatrixClassReference/WebKitCSSMatrix/WebKitCSSMatrix.html#//apple_ref/javascript/instm/WebKitCSSMatrix/setMatrixValue
+ * @see http://developer.apple.com/safari/library/documentation/AudioVideo/Reference/CyberKitCSSMatrixClassReference/CyberKitCSSMatrix/CyberKitCSSMatrix.html#//apple_ref/javascript/instm/CyberKitCSSMatrix/setMatrixValue
  */
-function WebKitCSSMatrix(opt_matrix) {}
+function CyberKitCSSMatrix(opt_matrix) {}
 
 /**
  * @constructor

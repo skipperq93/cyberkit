@@ -29,19 +29,19 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 
-TEST(WebKit, IOKitOpenSandboxAccessForDeviceWithAGXCompilerService)
+TEST(CyberKit, IOKitOpenSandboxAccessForDeviceWithAGXCompilerService)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
-    auto context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+    auto context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
     configuration.get().processPool = (WKProcessPool *)context.get();
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 300, 300) configuration:configuration.get() addToWindow:YES]);
 
     [webView _setDeviceHasAGXCompilerServiceForTesting];
 
     auto sandboxAccess = [&] {
-        return [webView stringByEvaluatingJavaScript:@"window.internals.internals.hasSandboxIOKitOpenAccessToClass('com.apple.WebKit.WebContent', 'AGXCommandQueue')"].boolValue;
+        return [webView stringByEvaluatingJavaScript:@"window.internals.internals.hasSandboxIOKitOpenAccessToClass('com.apple.CyberKit.WebContent', 'AGXCommandQueue')"].boolValue;
     };
 
     ASSERT_TRUE(sandboxAccess());

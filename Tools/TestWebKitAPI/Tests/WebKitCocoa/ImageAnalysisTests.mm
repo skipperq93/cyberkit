@@ -36,12 +36,12 @@
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebCore/Color.h>
-#import <WebCore/LocalizedStrings.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKFeature.h>
+#import <CyberCore/Color.h>
+#import <CyberCore/LocalizedStrings.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKFeature.h>
 #import <pal/cocoa/VisionKitCoreSoftLink.h>
 #import <pal/spi/cocoa/VisionKitCoreSPI.h>
 
@@ -76,7 +76,7 @@ static CGPoint swizzledLocationInView(id, SEL, UIView *)
 
 - (void)waitForImageAnalysisRequests:(unsigned)numberOfRequests
 {
-    TestWebKitAPI::Util::waitForConditionWithLogging([&] {
+    TestCyberKitAPI::Util::waitForConditionWithLogging([&] {
         return gDidProcessRequestCount == numberOfRequests;
     }, 3, @"Timed out waiting for %u image analysis requests to complete.", numberOfRequests);
 
@@ -102,7 +102,7 @@ static CGPoint swizzledLocationInView(id, SEL, UIView *)
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // FIXME: We can unify most of this helper class with the logic in `TestPDFPage::colorAtPoint`, and deploy this
 // helper class in several other tests that read pixel data from CGImages.
@@ -124,14 +124,14 @@ public:
 
     bool isTransparentBlack(unsigned x, unsigned y) const
     {
-        return at(x, y) == WebCore::Color::transparentBlack;
+        return at(x, y) == CyberCore::Color::transparentBlack;
     }
 
-    WebCore::Color at(unsigned x, unsigned y) const
+    CyberCore::Color at(unsigned x, unsigned y) const
     {
         auto* data = reinterpret_cast<uint8_t*>(CGBitmapContextGetData(m_context.get()));
         auto offset = 4 * (width() * y + x);
-        return WebCore::makeFromComponentsClampingExceptAlpha<WebCore::SRGBA<uint8_t>>(data[offset], data[offset + 1], data[offset + 2], data[offset + 3]);
+        return CyberCore::makeFromComponentsClampingExceptAlpha<CyberCore::SRGBA<uint8_t>>(data[offset], data[offset + 1], data[offset + 2], data[offset + 3]);
     }
 
     unsigned width() const { return m_width; }
@@ -360,7 +360,7 @@ TEST(ImageAnalysisTests, ImageAnalysisWithTransparentImages)
 
 static RetainPtr<CGImageRef> iconImage()
 {
-    auto iconPath = [NSBundle.mainBundle pathForResource:@"icon" ofType:@"png" inDirectory:@"TestWebKitAPI.resources"];
+    auto iconPath = [NSBundle.mainBundle pathForResource:@"icon" ofType:@"png" inDirectory:@"TestCyberKitAPI.resources"];
 #if PLATFORM(IOS_FAMILY)
     return [UIImage imageWithContentsOfFile:iconPath].CGImage;
 #else
@@ -400,7 +400,7 @@ static void invokeRemoveBackgroundAction(TestWKWebView *webView)
 
     auto menuBuilder = adoptNS([[TestUIMenuBuilder alloc] init]);
     [webView buildMenuWithBuilder:menuBuilder.get()];
-    [[menuBuilder actionWithTitle:WebCore::contextMenuItemTitleRemoveBackground()] performWithSender:nil target:nil];
+    [[menuBuilder actionWithTitle:CyberCore::contextMenuItemTitleRemoveBackground()] performWithSender:nil target:nil];
     [webView waitForNextPresentationUpdate];
 }
 
@@ -417,7 +417,7 @@ TEST(ImageAnalysisTests, RemoveBackgroundUsingContextMenu)
 
     auto menuBuilder = adoptNS([[TestUIMenuBuilder alloc] init]);
     [webView buildMenuWithBuilder:menuBuilder.get()];
-    EXPECT_NOT_NULL([menuBuilder actionWithTitle:WebCore::contextMenuItemTitleRemoveBackground()]);
+    EXPECT_NOT_NULL([menuBuilder actionWithTitle:CyberCore::contextMenuItemTitleRemoveBackground()]);
 }
 
 TEST(ImageAnalysisTests, MenuControllerItems)
@@ -440,7 +440,7 @@ TEST(ImageAnalysisTests, MenuControllerItems)
 
     auto menuBuilder = adoptNS([[TestUIMenuBuilder alloc] init]);
     [webView buildMenuWithBuilder:menuBuilder.get()];
-    EXPECT_NOT_NULL([menuBuilder actionWithTitle:WebCore::contextMenuItemTitleRemoveBackground()]);
+    EXPECT_NOT_NULL([menuBuilder actionWithTitle:CyberCore::contextMenuItemTitleRemoveBackground()]);
 
     [webView selectAll:nil];
     [webView waitForNextPresentationUpdate];
@@ -448,7 +448,7 @@ TEST(ImageAnalysisTests, MenuControllerItems)
 
     [menuBuilder reset];
     [webView buildMenuWithBuilder:menuBuilder.get()];
-    EXPECT_NULL([menuBuilder actionWithTitle:WebCore::contextMenuItemTitleRemoveBackground()]);
+    EXPECT_NULL([menuBuilder actionWithTitle:CyberCore::contextMenuItemTitleRemoveBackground()]);
 
     [webView objectByEvaluatingJavaScript:@"getSelection().setBaseAndExtent(document.body, 0, image.parentNode, nodeIndex + 1);"];
     [webView waitForNextPresentationUpdate];
@@ -456,7 +456,7 @@ TEST(ImageAnalysisTests, MenuControllerItems)
 
     [menuBuilder reset];
     [webView buildMenuWithBuilder:menuBuilder.get()];
-    EXPECT_NOT_NULL([menuBuilder actionWithTitle:WebCore::contextMenuItemTitleRemoveBackground()]);
+    EXPECT_NOT_NULL([menuBuilder actionWithTitle:CyberCore::contextMenuItemTitleRemoveBackground()]);
 }
 
 static RetainPtr<TestWKWebView> runMarkupTest(NSString *testPage, NSString *scriptToSelectText, Function<void(TestWKWebView *, NSString *)>&& checkWebView = { })
@@ -521,7 +521,7 @@ TEST(ImageAnalysisTests, AllowRemoveBackgroundOnce)
     auto menuBuilder = adoptNS([TestUIMenuBuilder new]);
     [webView buildMenuWithBuilder:menuBuilder.get()];
 
-    EXPECT_NULL([menuBuilder actionWithTitle:WebCore::contextMenuItemTitleRemoveBackground()]);
+    EXPECT_NULL([menuBuilder actionWithTitle:CyberCore::contextMenuItemTitleRemoveBackground()]);
 }
 
 #endif // ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS) && PLATFORM(IOS_FAMILY)
@@ -544,7 +544,7 @@ TEST(ImageAnalysisTests, RemoveBackgroundItemInServicesMenu)
     RetainPtr timer = [NSTimer timerWithTimeInterval:0.1 repeats:YES block:^(NSTimer *) {
         NSMenu *menu = [webView _activeMenu];
         for (NSMenuItem *item in menu.itemArray) {
-            if ([item.title isEqualToString:WebCore::contextMenuItemTitleRemoveBackground()]) {
+            if ([item.title isEqualToString:CyberCore::contextMenuItemTitleRemoveBackground()]) {
                 foundRemoveBackgroundItem = true;
                 [menu cancelTracking];
                 break;
@@ -558,6 +558,6 @@ TEST(ImageAnalysisTests, RemoveBackgroundItemInServicesMenu)
 
 #endif // ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS) && ENABLE(SERVICE_CONTROLS)
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(IMAGE_ANALYSIS)

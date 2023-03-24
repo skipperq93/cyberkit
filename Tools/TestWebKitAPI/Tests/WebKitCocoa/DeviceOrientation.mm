@@ -33,9 +33,9 @@
 #import "TestNavigationDelegate.h"
 #import "TestURLSchemeHandler.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/Function.h>
 #import <wtf/HashMap.h>
 #import <wtf/RetainPtr.h>
@@ -111,14 +111,14 @@ static void runDeviceOrientationTest(DeviceOrientationPermission deviceOrientati
     }
     [webView setUIDelegate:uiDelegate.get()];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
     [webView _test_waitForDidFinishNavigation];
 
     [webView evaluateJavaScript:@"DeviceOrientationEvent.requestPermission().then((granted) => { webkit.messageHandlers.testHandler.postMessage(granted) });" completionHandler: [&] (id result, NSError *error) { }];
 
-    TestWebKitAPI::Util::run(&didReceiveMessage);
+    TestCyberKitAPI::Util::run(&didReceiveMessage);
     didReceiveMessage = false;
 
     switch (deviceOrientationPermission) {
@@ -137,16 +137,16 @@ static void runDeviceOrientationTest(DeviceOrientationPermission deviceOrientati
         addedEventListener = true;
     }];
 
-    TestWebKitAPI::Util::run(&addedEventListener);
+    TestCyberKitAPI::Util::run(&addedEventListener);
     addedEventListener = false;
 
     [webView _simulateDeviceOrientationChangeWithAlpha:1.0 beta:2.0 gamma:3.0];
 
     if (deviceOrientationPermission == DeviceOrientationPermission::GrantedByClient || deviceOrientationPermission == DeviceOrientationPermission::GrantedByUser) {
-        TestWebKitAPI::Util::run(&didReceiveMessage);
+        TestCyberKitAPI::Util::run(&didReceiveMessage);
         EXPECT_WK_STREQ(@"received-event", receivedMessages.get()[1]);
     } else {
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
         EXPECT_FALSE(didReceiveMessage);
     }
     didReceiveMessage = false;
@@ -184,13 +184,13 @@ TEST(DeviceOrientation, RememberPermissionForSession)
     RetainPtr<DeviceOrientationPermissionUIDelegate> uiDelegate = adoptNS([[DeviceOrientationPermissionUIDelegate alloc] initWithHandler:[] { return true; }]);
     [webView setUIDelegate:uiDelegate.get()];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
     [webView evaluateJavaScript:@"DeviceOrientationEvent.requestPermission().then((granted) => { webkit.messageHandlers.testHandler.postMessage(granted) });" completionHandler: [&] (id result, NSError *error) { }];
 
-    TestWebKitAPI::Util::run(&didReceiveMessage);
+    TestCyberKitAPI::Util::run(&didReceiveMessage);
     didReceiveMessage = false;
 
     EXPECT_TRUE(askedClientForPermission);
@@ -206,7 +206,7 @@ TEST(DeviceOrientation, RememberPermissionForSession)
 
     [webView _evaluateJavaScriptWithoutUserGesture:@"DeviceOrientationEvent.requestPermission().then((granted) => { webkit.messageHandlers.testHandler.postMessage(granted) }, (error) => { webkit.messageHandlers.testHandler.postMessage('error'); });" completionHandler: [&] (id result, NSError *error) { }];
 
-    TestWebKitAPI::Util::run(&didReceiveMessage);
+    TestCyberKitAPI::Util::run(&didReceiveMessage);
     didReceiveMessage = false;
 
     EXPECT_WK_STREQ(@"granted", receivedMessages.get()[1]);
@@ -229,7 +229,7 @@ TEST(DeviceOrientation, RememberPermissionForSession)
 
     [webView evaluateJavaScript:@"DeviceOrientationEvent.requestPermission().then((granted) => { webkit.messageHandlers.testHandler.postMessage(granted) });" completionHandler: [&] (id result, NSError *error) { }];
 
-    TestWebKitAPI::Util::run(&didReceiveMessage);
+    TestCyberKitAPI::Util::run(&didReceiveMessage);
     didReceiveMessage = false;
 
     EXPECT_TRUE(askedClientForPermission);
@@ -243,7 +243,7 @@ TEST(DeviceOrientation, RememberPermissionForSession)
 
     [webView evaluateJavaScript:@"DeviceOrientationEvent.requestPermission().then((granted) => { webkit.messageHandlers.testHandler.postMessage(granted) });" completionHandler: [&] (id result, NSError *error) { }];
 
-    TestWebKitAPI::Util::run(&didReceiveMessage);
+    TestCyberKitAPI::Util::run(&didReceiveMessage);
     didReceiveMessage = false;
 
     EXPECT_TRUE(askedClientForPermission);
@@ -259,7 +259,7 @@ TEST(DeviceOrientation, RememberPermissionForSession)
 
     [webView _evaluateJavaScriptWithoutUserGesture:@"DeviceOrientationEvent.requestPermission().then((granted) => { webkit.messageHandlers.testHandler.postMessage(granted) }, (error) => { webkit.messageHandlers.testHandler.postMessage('error'); });" completionHandler: [&] (id result, NSError *error) { }];
 
-    TestWebKitAPI::Util::run(&didReceiveMessage);
+    TestCyberKitAPI::Util::run(&didReceiveMessage);
     didReceiveMessage = false;
 
     EXPECT_WK_STREQ(@"granted", receivedMessages.get()[4]);
@@ -279,14 +279,14 @@ TEST(DeviceOrientation, FireOrientationEventsRightAwayIfPermissionAlreadyGranted
     RetainPtr<DeviceOrientationPermissionUIDelegate> uiDelegate = adoptNS([[DeviceOrientationPermissionUIDelegate alloc] initWithHandler:[] { return true; }]);
     [webView setUIDelegate:uiDelegate.get()];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
     // Request permission.
     [webView evaluateJavaScript:@"DeviceOrientationEvent.requestPermission().then((granted) => { webkit.messageHandlers.testHandler.postMessage(granted) });" completionHandler: [&] (id result, NSError *error) { }];
 
-    TestWebKitAPI::Util::run(&didReceiveMessage);
+    TestCyberKitAPI::Util::run(&didReceiveMessage);
     didReceiveMessage = false;
 
     EXPECT_TRUE(askedClientForPermission);
@@ -306,14 +306,14 @@ TEST(DeviceOrientation, FireOrientationEventsRightAwayIfPermissionAlreadyGranted
         addedEventListener = true;
     }];
 
-    TestWebKitAPI::Util::run(&addedEventListener);
+    TestCyberKitAPI::Util::run(&addedEventListener);
     addedEventListener = false;
 
     // Simulate a device orientation event. The page's event listener should get called even though it did not request permission,
     // because it was previously granted permission during this browsing session.
     [webView _simulateDeviceOrientationChangeWithAlpha:1.0 beta:2.0 gamma:3.0];
 
-    TestWebKitAPI::Util::run(&didReceiveMessage);
+    TestCyberKitAPI::Util::run(&didReceiveMessage);
     EXPECT_WK_STREQ(@"received-event", receivedMessages.get()[1]);
 }
 
@@ -336,7 +336,7 @@ function requestPermission() {
 
 TEST(DeviceOrientation, PermissionSecureContextCheck)
 {
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { mainBytes } }
     });
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
@@ -354,7 +354,7 @@ TEST(DeviceOrientation, PermissionSecureContextCheck)
     
     [webView evaluateJavaScript:@"requestPermission();" completionHandler:nil];
     
-    TestWebKitAPI::Util::run(&didReceiveMessage);
+    TestCyberKitAPI::Util::run(&didReceiveMessage);
     didReceiveMessage = false;
 
     EXPECT_WK_STREQ(@"granted", receivedMessages.get()[0]);
@@ -364,14 +364,14 @@ TEST(DeviceOrientation, PermissionSecureContextCheck)
         addedEventListener = true;
     }];
 
-    TestWebKitAPI::Util::run(&addedEventListener);
+    TestCyberKitAPI::Util::run(&addedEventListener);
     addedEventListener = false;
 
     // Simulate a device orientation event. The page's event listener should get called even though it did not request permission,
     // because it was previously granted permission during this browsing session.
     [webView _simulateDeviceOrientationChangeWithAlpha:1.0 beta:2.0 gamma:3.0];
 
-    TestWebKitAPI::Util::run(&didReceiveMessage);
+    TestCyberKitAPI::Util::run(&didReceiveMessage);
     EXPECT_WK_STREQ(@"received-event", receivedMessages.get()[1]);
 }
 
@@ -404,15 +404,15 @@ static constexpr auto frameText = R"DOCDOCDOC(
 <html><body></body></html>
 )DOCDOCDOC"_s;
 
-TEST(WebKit, DeviceOrientationPermissionInIFrame)
+TEST(CyberKit, DeviceOrientationPermissionInIFrame)
 {
-    TestWebKitAPI::HTTPServer server1({
+    TestCyberKitAPI::HTTPServer server1({
         { "/"_s, { mainFrameText } }
-    }, TestWebKitAPI::HTTPServer::Protocol::Https, nullptr, nullptr, 9090);
+    }, TestCyberKitAPI::HTTPServer::Protocol::Https, nullptr, nullptr, 9090);
 
-    TestWebKitAPI::HTTPServer server2({
+    TestCyberKitAPI::HTTPServer server2({
         { "/frame"_s, { frameText } },
-    }, TestWebKitAPI::HTTPServer::Protocol::Https, nullptr, nullptr, 9091);
+    }, TestCyberKitAPI::HTTPServer::Protocol::Https, nullptr, nullptr, 9091);
 
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:configuration.get()]);
@@ -439,7 +439,7 @@ TEST(WebKit, DeviceOrientationPermissionInIFrame)
     webView.get().navigationDelegate = navigationDelegate.get();
 
     [webView loadRequest:server1.request()];
-    TestWebKitAPI::Util::run(&didFinishNavigation);
+    TestCyberKitAPI::Util::run(&didFinishNavigation);
 
     [permissionDelegate setValidationHandler:[&webView](WKSecurityOrigin *origin, WKFrameInfo *frame) {
         EXPECT_WK_STREQ(origin.protocol, @"https");
@@ -455,7 +455,7 @@ TEST(WebKit, DeviceOrientationPermissionInIFrame)
 
     [webView evaluateJavaScript:@"DeviceOrientationEvent.requestPermission()" inFrame:frame.get() inContentWorld:WKContentWorld.pageWorld completionHandler: [&] (id result, NSError *error) { }];
 
-    TestWebKitAPI::Util::run(&askedClientForPermission);
+    TestCyberKitAPI::Util::run(&askedClientForPermission);
 
 }
 

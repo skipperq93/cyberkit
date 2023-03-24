@@ -30,7 +30,7 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <wtf/RetainPtr.h>
 
 @interface TestWKContentViewTargetForActionView : TestWKWebView
@@ -44,7 +44,7 @@
 
 @end
 
-TEST(WebKit, WKContentViewTargetForAction)
+TEST(CyberKit, WKContentViewTargetForAction)
 {
     auto webView = adoptNS([[TestWKContentViewTargetForActionView alloc] init]);
     [webView synchronouslyLoadTestPageNamed:@"rich-and-plain-text"];

@@ -72,9 +72,9 @@ IGNORE_WARNINGS_END
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, SetTimeoutFunction)
+TEST(CyberKitLegacy, SetTimeoutFunction)
 {
     RetainPtr<UIWindow> uiWindow = adoptNS([[UIWindow alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
     RetainPtr<UIWebView> uiWebView = adoptNS([[UIWebView alloc] initWithFrame:[uiWindow frame]]);
@@ -83,7 +83,7 @@ TEST(WebKitLegacy, SetTimeoutFunction)
     RetainPtr<SetTimeoutFunctionWebViewDelegate> uiDelegate = adoptNS([[SetTimeoutFunctionWebViewDelegate alloc] init]);
     uiWebView.get().delegate = uiDelegate.get();
 
-    RetainPtr<NSURL> url = [[NSBundle mainBundle] URLForResource:@"set-timeout-function" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    RetainPtr<NSURL> url = [[NSBundle mainBundle] URLForResource:@"set-timeout-function" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [uiWebView loadRequest:[NSURLRequest requestWithURL:url.get()]];
     Util::run(&loadComplete);
     EXPECT_TRUE(loadComplete);

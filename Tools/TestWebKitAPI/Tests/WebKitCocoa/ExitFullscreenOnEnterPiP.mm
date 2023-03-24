@@ -31,9 +31,9 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/_WKFullscreenDelegate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/_WKFullscreenDelegate.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Seconds.h>
 
@@ -64,7 +64,7 @@ static bool didExitFullscreen;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // FIXME: Re-enable this test once webkit.org/b/248093 is resolved.
 #if !defined(NDEBUG)
@@ -85,19 +85,19 @@ TEST(ExitFullscreenOnEnterPiP, VideoFullscreen)
 
     didEnterFullscreen = false;
     [webView evaluateJavaScript:@"document.getElementById('enter-video-fullscreen').click()" completionHandler: nil];
-    TestWebKitAPI::Util::run(&didEnterFullscreen);
+    TestCyberKitAPI::Util::run(&didEnterFullscreen);
     ASSERT_TRUE(didEnterFullscreen);
 
     didEnterPiP = false;
     didExitFullscreen = false;
     [webView evaluateJavaScript:@"document.getElementById('enter-pip').click()" completionHandler: nil];
-    TestWebKitAPI::Util::run(&didEnterPiP);
-    TestWebKitAPI::Util::run(&didExitFullscreen);
+    TestCyberKitAPI::Util::run(&didEnterPiP);
+    TestCyberKitAPI::Util::run(&didExitFullscreen);
 
     sleep(1_s); // Wait for PIPAgent to launch, or it won't call -pipDidClose: callback.
 
     [webView evaluateJavaScript:@"document.getElementById('exit-pip').click()" completionHandler: nil];
-    TestWebKitAPI::Util::run(&didExitPiP);
+    TestCyberKitAPI::Util::run(&didExitPiP);
 }
 
 // FIXME: Re-enable this test for Big Sur once webkit.org/b/245241 is resolved
@@ -105,8 +105,8 @@ TEST(ExitFullscreenOnEnterPiP, VideoFullscreen)
 TEST(ExitFullscreenOnEnterPiP, DISABLED_ElementFullscreen)
 {
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
-        @"WebCoreLogging": @"Fullscreen=debug",
-        @"WebKit2Logging": @"Fullscreen=debug",
+        @"CyberCoreLogging": @"Fullscreen=debug",
+        @"CyberKit2Logging": @"Fullscreen=debug",
     }];
     RetainPtr<WKWebViewConfiguration> configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [configuration preferences]._fullScreenEnabled = YES;
@@ -119,34 +119,34 @@ TEST(ExitFullscreenOnEnterPiP, DISABLED_ElementFullscreen)
     [webView synchronouslyLoadTestPageNamed:@"ExitFullscreenOnEnterPiP"];
 
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
-        @"WebCoreLogging": @"",
-        @"WebKit2Logging": @"",
+        @"CyberCoreLogging": @"",
+        @"CyberKit2Logging": @"",
     }];
 
     didEnterFullscreen = false;
     [webView evaluateJavaScript:@"document.getElementById('enter-element-fullscreen').click()" completionHandler: nil];
-    ASSERT_TRUE(TestWebKitAPI::Util::runFor(&didEnterFullscreen, 10_s));
+    ASSERT_TRUE(TestCyberKitAPI::Util::runFor(&didEnterFullscreen, 10_s));
     ASSERT_TRUE(didEnterFullscreen);
 
     // Make the video the "main content" by playing with a user gesture.
     __block bool didBeginPlaying = false;
     [webView performAfterReceivingMessage:@"playing" action:^{ didBeginPlaying = true; }];
     [webView evaluateJavaScript:@"document.getElementById('play').click()" completionHandler:nil];
-    ASSERT_TRUE(TestWebKitAPI::Util::runFor(&didBeginPlaying, 10_s));
+    ASSERT_TRUE(TestCyberKitAPI::Util::runFor(&didBeginPlaying, 10_s));
 
     didEnterPiP = false;
     didExitFullscreen = false;
     [webView evaluateJavaScript:@"document.getElementById('enter-pip').click()" completionHandler: nil];
-    ASSERT_TRUE(TestWebKitAPI::Util::runFor(&didEnterPiP, 10_s));
-    ASSERT_TRUE(TestWebKitAPI::Util::runFor(&didExitFullscreen, 10_s));
+    ASSERT_TRUE(TestCyberKitAPI::Util::runFor(&didEnterPiP, 10_s));
+    ASSERT_TRUE(TestCyberKitAPI::Util::runFor(&didExitFullscreen, 10_s));
 
     sleep(1_s); // Wait for PIPAgent to launch, or it won't call -pipDidClose: callback.
 
     [webView evaluateJavaScript:@"document.getElementById('exit-pip').click()" completionHandler: nil];
-    ASSERT_TRUE(TestWebKitAPI::Util::runFor(&didExitPiP, 10_s));
+    ASSERT_TRUE(TestCyberKitAPI::Util::runFor(&didExitPiP, 10_s));
 
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -444,7 +444,7 @@ class Tracker(GenericTracker):
         if not version:
             # This is the default option, aligned to webkit-patch behavior.
             # FIXME: We should make this class project agnostic by specifying this in trackers.json.
-            version = "WebKit Nightly Build"
+            version = "CyberKit Nightly Build"
             if version not in self.projects[project]['versions']:
                 # If the default option does not exist on the list, we pick the last one from versions.
                 version = self.projects[project]['versions'][-1]

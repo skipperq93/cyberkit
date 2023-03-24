@@ -29,7 +29,7 @@
 #include <glib-object.h>
 #include <wtf/glib/GRefPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class GWeakPtr {
 public:
@@ -268,4 +268,4 @@ TEST(WTF_GRefPtr, LeakRef)
     g_object_unref(obj);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

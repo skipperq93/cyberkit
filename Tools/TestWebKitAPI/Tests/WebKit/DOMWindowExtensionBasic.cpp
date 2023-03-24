@@ -30,10 +30,10 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKRetainPtr.h>
 #include <wtf/Vector.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool finished;
 
@@ -80,7 +80,7 @@ static void didReceiveMessageFromInjectedBundle(WKContextRef, WKStringRef messag
         finished = true;
 }
 
-TEST(WebKit, DISABLED_DOMWindowExtensionBasic)
+TEST(CyberKit, DISABLED_DOMWindowExtensionBasic)
 {
     WKRetainPtr<WKPageGroupRef> pageGroup = adoptWK(WKPageGroupCreateWithIdentifier(WKStringCreateWithUTF8CString("DOMWindowExtensionBasicPageGroup"))); 
 
@@ -135,7 +135,7 @@ TEST(WebKit, DISABLED_DOMWindowExtensionBasic)
         EXPECT_WK_STREQ(expectedMessages[i], messages[i].get());
 }
 
-TEST(WebKit, DOMWindowExtensionCrashOnReload)
+TEST(CyberKit, DOMWindowExtensionCrashOnReload)
 {
     WKRetainPtr<WKPageGroupRef> pageGroup = adoptWK(WKPageGroupCreateWithIdentifier(WKStringCreateWithUTF8CString("DOMWindowExtensionBasicPageGroup")));
 
@@ -168,6 +168,6 @@ TEST(WebKit, DOMWindowExtensionCrashOnReload)
     Util::run(&finished);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -27,11 +27,11 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 
-#include <WebKit/WKContextPrivate.h>
-#include <WebKit/WKPagePrivate.h>
-#include <WebKit/WKPagePrivateMac.h>
+#include <CyberKit/WKContextPrivate.h>
+#include <CyberKit/WKPagePrivate.h>
+#include <CyberKit/WKPagePrivateMac.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool loaded;
 
@@ -40,7 +40,7 @@ static void didFinishNavigation(WKPageRef page, WKNavigationRef, WKTypeRef userD
     loaded = true;
 }
 
-TEST(WebKit, GetPIDAfterAbortedProcessLaunch)
+TEST(CyberKit, GetPIDAfterAbortedProcessLaunch)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -69,5 +69,5 @@ TEST(WebKit, GetPIDAfterAbortedProcessLaunch)
     EXPECT_EQ(0, WKPageGetProcessIdentifier(webView.page()));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 

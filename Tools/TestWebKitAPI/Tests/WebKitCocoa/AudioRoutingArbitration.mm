@@ -30,10 +30,10 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/WallTime.h>
 
 class AudioRoutingArbitration : public testing::Test {
@@ -43,7 +43,7 @@ public:
     void SetUp() final
     {
         auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
-        WKRetainPtr<WKContextRef> context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+        WKRetainPtr<WKContextRef> context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
         configuration.get().processPool = (WKProcessPool *)context.get();
         configuration.get()._mediaDataLoadsAutomatically = YES;
         configuration.get().mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeNone;
@@ -52,7 +52,7 @@ public:
         bool isPlaying = false;
         [webView performAfterReceivingMessage:@"playing" action:[&] { isPlaying = true; }];
         [webView synchronouslyLoadTestPageNamed:@"video-with-audio"];
-        TestWebKitAPI::Util::run(&isPlaying);
+        TestCyberKitAPI::Util::run(&isPlaying);
     }
 
     void TearDown() final
@@ -69,7 +69,7 @@ public:
 
             if (forceGC)
                 [webView.get().configuration.processPool _garbageCollectJavaScriptObjectsForTesting];
-            TestWebKitAPI::Util::runFor(0.1_s);
+            TestCyberKitAPI::Util::runFor(0.1_s);
         } while (++tries <= 100);
 
         EXPECT_EQ(status, [webView _audioRoutingArbitrationStatus]) << message;
@@ -146,7 +146,7 @@ TEST_F(AudioRoutingArbitration, Updating)
         if ([webView _audioRoutingArbitrationUpdateTime] > arbitrationUpdateTime)
             break;
 
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
     } while (++tries <= 100);
 
     EXPECT_LT(arbitrationUpdateTime, [webView _audioRoutingArbitrationUpdateTime]) << "Arbitration was not updated";

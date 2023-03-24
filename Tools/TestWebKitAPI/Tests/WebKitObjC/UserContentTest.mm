@@ -31,12 +31,12 @@
 
 #import "PlatformUtilities.h"
 #import "TestBrowsingContextLoadDelegate.h"
-#import <JavaScriptCore/JSRetainPtr.h>
-#import <JavaScriptCore/JavaScriptCore.h>
-#import <WebKit/WKSerializedScriptValue.h>
-#import <WebKit/WKUserContentControllerPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKUserStyleSheet.h>
+#import <CyberScriptCore/JSRetainPtr.h>
+#import <CyberScriptCore/CyberScriptCore.h>
+#import <CyberKit/WKSerializedScriptValue.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKUserStyleSheet.h>
 #import <wtf/RetainPtr.h>
 
 static bool testFinished = false;
@@ -48,12 +48,12 @@ static const char* redInRGB = "rgb(255, 0, 0)";
 static const char* userScriptTestProperty = "window._userScriptInstalled";
 
 namespace {
-    class WebKit2UserContentTest : public ::testing::Test {
+    class CyberKit2UserContentTest : public ::testing::Test {
     public:
         RetainPtr<WKProcessGroup> processGroup;
         RetainPtr<WKBrowsingContextGroup> browsingContextGroup;
 
-        WebKit2UserContentTest() = default;
+        CyberKit2UserContentTest() = default;
         
         virtual void SetUp()
         {
@@ -117,7 +117,7 @@ static void runJavaScriptInMainFrame(WKPageRef pageRef, WKStringRef scriptRef, R
     WKPageRunJavaScriptInMainFrame(pageRef, scriptRef, Block_copy(block), callRunJavaScriptBlockAndRelease);
 }
 
-TEST_F(WebKit2UserContentTest, AddUserStyleSheetBeforeCreatingView)
+TEST_F(CyberKit2UserContentTest, AddUserStyleSheetBeforeCreatingView)
 {
     testFinished = false;
     
@@ -136,10 +136,10 @@ TEST_F(WebKit2UserContentTest, AddUserStyleSheetBeforeCreatingView)
     
     [wkView loadHTMLString:htmlString baseURL:nil];
     
-    TestWebKitAPI::Util::run(&testFinished);
+    TestCyberKitAPI::Util::run(&testFinished);
 }
 
-TEST_F(WebKit2UserContentTest, AddUserStyleSheetAfterCreatingView)
+TEST_F(CyberKit2UserContentTest, AddUserStyleSheetAfterCreatingView)
 {
     testFinished = false;
     
@@ -158,10 +158,10 @@ TEST_F(WebKit2UserContentTest, AddUserStyleSheetAfterCreatingView)
 
     [wkView loadHTMLString:htmlString baseURL:nil];
 
-    TestWebKitAPI::Util::run(&testFinished);
+    TestCyberKitAPI::Util::run(&testFinished);
 }
 
-TEST_F(WebKit2UserContentTest, RemoveAllUserStyleSheets)
+TEST_F(CyberKit2UserContentTest, RemoveAllUserStyleSheets)
 {
     testFinished = false;
     auto sheet = adoptNS([[_WKUserStyleSheet alloc] initWithSource:userStyleSheet forMainFrameOnly:YES]);
@@ -181,10 +181,10 @@ TEST_F(WebKit2UserContentTest, RemoveAllUserStyleSheets)
     
     [wkView loadHTMLString:htmlString baseURL:nil];
     
-    TestWebKitAPI::Util::run(&testFinished);
+    TestCyberKitAPI::Util::run(&testFinished);
 }
 
-TEST_F(WebKit2UserContentTest, AddUserScriptBeforeCreatingView)
+TEST_F(CyberKit2UserContentTest, AddUserScriptBeforeCreatingView)
 {
     testFinished = false;
     auto script = adoptNS([[WKUserScript alloc] initWithSource:[NSString stringWithFormat:@"%s = true;", userScriptTestProperty] injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:YES]);
@@ -202,10 +202,10 @@ TEST_F(WebKit2UserContentTest, AddUserScriptBeforeCreatingView)
     
     [wkView loadHTMLString:@"" baseURL:nil];
     
-    TestWebKitAPI::Util::run(&testFinished);
+    TestCyberKitAPI::Util::run(&testFinished);
 }
 
-TEST_F(WebKit2UserContentTest, AddUserScriptAfterCreatingView)
+TEST_F(CyberKit2UserContentTest, AddUserScriptAfterCreatingView)
 {
     testFinished = false;
     
@@ -224,10 +224,10 @@ TEST_F(WebKit2UserContentTest, AddUserScriptAfterCreatingView)
     
     [wkView loadHTMLString:@"" baseURL:nil];
     
-    TestWebKitAPI::Util::run(&testFinished);
+    TestCyberKitAPI::Util::run(&testFinished);
 }
 
-TEST_F(WebKit2UserContentTest, RemoveAllUserScripts)
+TEST_F(CyberKit2UserContentTest, RemoveAllUserScripts)
 {
     testFinished = false;
     auto script = adoptNS([[WKUserScript alloc] initWithSource:[NSString stringWithFormat:@"%s = true;", userScriptTestProperty] injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:YES]);
@@ -247,7 +247,7 @@ TEST_F(WebKit2UserContentTest, RemoveAllUserScripts)
     
     [wkView loadHTMLString:htmlString baseURL:nil];
     
-    TestWebKitAPI::Util::run(&testFinished);
+    TestCyberKitAPI::Util::run(&testFinished);
 }
 
 #endif 

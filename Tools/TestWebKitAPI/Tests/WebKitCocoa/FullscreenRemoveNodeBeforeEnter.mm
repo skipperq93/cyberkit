@@ -31,11 +31,11 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(Fullscreen, RemoveNodeBeforeEnter)
 {
@@ -62,22 +62,22 @@ TEST(Fullscreen, RemoveNodeBeforeEnter)
 
     [webView evaluateJavaScript:@"enterFullscreenThenRemove()" completionHandler:nil];
 
-    TestWebKitAPI::Util::run(&nodeRemoved);
+    TestCyberKitAPI::Util::run(&nodeRemoved);
 
     // Allow the potential negative result time to occur.
-    TestWebKitAPI::Util::runFor(0.5_s);
+    TestCyberKitAPI::Util::runFor(0.5_s);
 
     // Fullscreen mode should eventually close.
     int tries = 0;
     do {
         if (![webView _isInFullscreen])
             break;
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
     } while (++tries <= 100);
 
     ASSERT_FALSE([webView _isInFullscreen]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

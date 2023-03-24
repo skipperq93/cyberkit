@@ -31,14 +31,14 @@
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
 #import "Test.h"
-#import <JavaScriptCore/JSContextRef.h>
-#import <WebKit/WKContextPrivate.h>
-#import <WebKit/WKPagePrivate.h>
-#import <WebKit/WKPreferencesRefPrivate.h>
-#import <WebKit/WKSerializedScriptValue.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberScriptCore/JSContextRef.h>
+#import <CyberKit/WKContextPrivate.h>
+#import <CyberKit/WKPagePrivate.h>
+#import <CyberKit/WKPreferencesRefPrivate.h>
+#import <CyberKit/WKSerializedScriptValue.h>
+#import <CyberKit/WKWebViewPrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didLoad;
 
@@ -47,7 +47,7 @@ static void didFinishNavigation(WKPageRef page, WKNavigationRef, WKTypeRef userD
     didLoad = true;
 }
 
-TEST(WebKit, ScrollPinningBehaviors)
+TEST(CyberKit, ScrollPinningBehaviors)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -137,6 +137,6 @@ TEST(WebKit, ScrollPinningBehaviors)
     EXPECT_JS_EQ(webView.page(), "window.scrollY", "200");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

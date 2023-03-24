@@ -33,16 +33,16 @@
 #import "TestProtocol.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebCore/MockContentFilterSettings.h>
-#import <WebKit/WKErrorRef.h>
-#import <WebKit/WKNavigationDelegatePrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKDownloadDelegate.h>
-#import <WebKit/_WKRemoteObjectInterface.h>
-#import <WebKit/_WKRemoteObjectRegistry.h>
+#import <CyberCore/MockContentFilterSettings.h>
+#import <CyberKit/WKErrorRef.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKDownloadDelegate.h>
+#import <CyberKit/_WKRemoteObjectInterface.h>
+#import <CyberKit/_WKRemoteObjectRegistry.h>
 #import <pal/spi/cocoa/NEFilterSourceSPI.h>
 #import <pal/spi/cocoa/WebFilterEvaluatorSPI.h>
 #import <wtf/RetainPtr.h>
@@ -54,8 +54,8 @@ SOFT_LINK_CLASS_OPTIONAL(NetworkExtension, NEFilterSource);
 SOFT_LINK_PRIVATE_FRAMEWORK(WebContentAnalysis);
 SOFT_LINK_CLASS(WebContentAnalysis, WebFilterEvaluator);
 
-using Decision = WebCore::MockContentFilterSettings::Decision;
-using DecisionPoint = WebCore::MockContentFilterSettings::DecisionPoint;
+using Decision = CyberCore::MockContentFilterSettings::Decision;
+using DecisionPoint = CyberCore::MockContentFilterSettings::DecisionPoint;
 
 @interface MockContentFilterEnabler : NSObject <NSCopying, NSSecureCoding>
 - (instancetype)initWithDecision:(Decision)decision decisionPoint:(DecisionPoint)decisionPoint;
@@ -139,7 +139,7 @@ TEST(ContentFiltering, URLAfterServerRedirect)
         auto navigationDelegate = adoptNS([[ServerRedirectNavigationDelegate alloc] init]);
         [webView setNavigationDelegate:navigationDelegate.get()];
         [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://redirect?pass"]]];
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
 
         [TestProtocol unregister];
     }
@@ -198,9 +198,9 @@ static void downloadTest(Decision decision, DecisionPoint decisionPoint)
         downloadDidStart = false;
         const bool downloadShouldStart = decision == Decision::Allow || decisionPoint > DecisionPoint::AfterResponse;
         if (downloadShouldStart)
-            TestWebKitAPI::Util::run(&downloadDidStart);
+            TestCyberKitAPI::Util::run(&downloadDidStart);
         else
-            TestWebKitAPI::Util::run(&isDone);
+            TestCyberKitAPI::Util::run(&isDone);
 
         EXPECT_EQ(downloadShouldStart, downloadDidStart);
 
@@ -275,7 +275,7 @@ TEST(ContentFiltering, BlockDownloadNever)
 
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error
 {
-    EXPECT_WK_STREQ(WebKitErrorDomain, error.domain);
+    EXPECT_WK_STREQ(CyberKitErrorDomain, error.domain);
     EXPECT_EQ(kWKErrorCodeFrameLoadBlockedByContentFilter, error.code);
     [webView _loadAlternateHTMLString:@"FAIL" baseURL:nil forUnreachableURL:[error.userInfo objectForKey:NSURLErrorFailingURLErrorKey]];
 }
@@ -308,7 +308,7 @@ static void loadAlternateTest(Decision decision, DecisionPoint decisionPoint)
         [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://redirect/?result"]]];
 
         isDone = false;
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
 
         [TestProtocol unregister];
     }
@@ -347,7 +347,7 @@ TEST(ContentFiltering, CookieAccessFromReplacementData)
     loadAlternateTest(Decision::Block, DecisionPoint::AfterWillSendRequest);
     auto pidAfter = networkProcessStarter.get().configuration.websiteDataStore._networkProcessIdentifier;
     EXPECT_EQ(pidBefore, pidAfter);
-    TestWebKitAPI::Util::runFor(Seconds(0.1));
+    TestCyberKitAPI::Util::runFor(Seconds(0.1));
 }
 
 @interface LazilyLoadPlatformFrameworksController : NSObject <WKNavigationDelegate>
@@ -389,7 +389,7 @@ TEST(ContentFiltering, CookieAccessFromReplacementData)
 #endif
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
@@ -425,31 +425,31 @@ TEST(ContentFiltering, LazilyLoadPlatformFrameworks)
 
         isDone = false;
         [[controller webView] loadHTMLString:@"PASS" baseURL:[NSURL URLWithString:@"about:blank"]];
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
         [controller expectParentalControlsLoaded:NO];
 
         isDone = false;
         [[controller webView] loadData:[NSData dataWithBytes:"PASS" length:4] MIMEType:@"text/html" characterEncodingName:@"UTF-8" baseURL:[NSURL URLWithString:@"about:blank"]];
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
         [controller expectParentalControlsLoaded:NO];
 
         isDone = false;
-        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"ContentFiltering" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"ContentFiltering" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
         [[controller webView] loadFileURL:fileURL allowingReadAccessToURL:fileURL];
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
         [controller expectParentalControlsLoaded:NO];
 
         isDone = false;
         [TestProtocol registerWithScheme:@"custom"];
         [[controller webView] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"custom://test"]]];
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
         [controller expectParentalControlsLoaded:NO];
         [TestProtocol unregister];
 
         isDone = false;
         [TestProtocol registerWithScheme:@"http"];
         [[controller webView] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://test"]]];
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
 #if PLATFORM(MAC) || ENABLE(CONTENT_FILTERING_IN_NETWORKING_PROCESS)
         [controller expectParentalControlsLoaded:NO];
 #else
@@ -461,7 +461,7 @@ TEST(ContentFiltering, LazilyLoadPlatformFrameworks)
         isDone = false;
         [TestProtocol registerWithScheme:@"https"];
         [[controller webView] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://test"]]];
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
 #if ENABLE(CONTENT_FILTERING_IN_NETWORKING_PROCESS)
         [controller expectParentalControlsLoaded:NO];
 #else

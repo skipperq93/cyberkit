@@ -100,12 +100,12 @@ class Test {
 public:
     MAKE_GLIB_TEST_FIXTURE(Test);
 
-    static GRefPtr<WebKitWebView> adoptView(gpointer view)
+    static GRefPtr<CyberKitWebView> adoptView(gpointer view)
     {
         g_assert_true(WEBKIT_IS_WEB_VIEW(view));
 #if PLATFORM(GTK)
         g_assert_true(g_object_is_floating(view));
-        return GRefPtr<WebKitWebView>(WEBKIT_WEB_VIEW(view));
+        return GRefPtr<CyberKitWebView>(WEBKIT_WEB_VIEW(view));
 #elif PLATFORM(WPE)
         return adoptGRef(WEBKIT_WEB_VIEW(view));
 #endif
@@ -113,7 +113,7 @@ public:
 
     static const char* dataDirectory();
 
-    static void initializeWebProcessExtensionsCallback(WebKitWebContext* context, Test* test)
+    static void initializeWebProcessExtensionsCallback(CyberKitWebContext* context, Test* test)
     {
         test->initializeWebProcessExtensions();
     }
@@ -126,7 +126,7 @@ public:
 
         m_webContext = adoptGRef(WEBKIT_WEB_CONTEXT(g_object_new(WEBKIT_TYPE_WEB_CONTEXT, "memory-pressure-settings", s_memoryPressureSettings, nullptr)));
 #else
-        GRefPtr<WebKitWebsiteDataManager> websiteDataManager = adoptGRef(webkit_website_data_manager_new(
+        GRefPtr<CyberKitWebsiteDataManager> websiteDataManager = adoptGRef(webkit_website_data_manager_new(
             "base-data-directory", dataDirectory(),
             "base-cache-directory", dataDirectory(),
             nullptr));
@@ -181,7 +181,7 @@ public:
     }
 
 #if PLATFORM(WPE)
-    static WebKitWebViewBackend* createWebViewBackend()
+    static CyberKitWebViewBackend* createWebViewBackend()
     {
         // Don't make warnings fatal when creating the backend, since atk produces warnings when a11y bus is not running.
         removeLogFatalFlag(G_LOG_LEVEL_WARNING);
@@ -195,7 +195,7 @@ public:
     }
 #endif
 
-    static WebKitWebView* createWebView()
+    static CyberKitWebView* createWebView()
     {
 #if PLATFORM(GTK)
         return WEBKIT_WEB_VIEW(webkit_web_view_new());
@@ -204,7 +204,7 @@ public:
 #endif
     }
 
-    static WebKitWebView* createWebView(WebKitWebContext* context)
+    static CyberKitWebView* createWebView(CyberKitWebContext* context)
     {
         return WEBKIT_WEB_VIEW(g_object_new(WEBKIT_TYPE_WEB_VIEW,
 #if PLATFORM(WPE)
@@ -214,7 +214,7 @@ public:
                                             nullptr));
     }
 
-    static WebKitWebView* createWebView(WebKitWebView* relatedView)
+    static CyberKitWebView* createWebView(CyberKitWebView* relatedView)
     {
         return WEBKIT_WEB_VIEW(g_object_new(WEBKIT_TYPE_WEB_VIEW,
 #if PLATFORM(WPE)
@@ -224,7 +224,7 @@ public:
             nullptr));
     }
 
-    static WebKitWebView* createWebView(WebKitUserContentManager* contentManager)
+    static CyberKitWebView* createWebView(CyberKitUserContentManager* contentManager)
     {
         return WEBKIT_WEB_VIEW(g_object_new(WEBKIT_TYPE_WEB_VIEW,
 #if PLATFORM(WPE)
@@ -234,7 +234,7 @@ public:
                                             nullptr));
     }
 
-    static WebKitWebView* createWebView(WebKitSettings* settings)
+    static CyberKitWebView* createWebView(CyberKitSettings* settings)
     {
         return WEBKIT_WEB_VIEW(g_object_new(WEBKIT_TYPE_WEB_VIEW,
 #if PLATFORM(WPE)
@@ -257,19 +257,19 @@ public:
 
 
     enum ResourcesDir {
-        WebKitGLibResources,
-        WebKit2Resources,
+        CyberKitGLibResources,
+        CyberKit2Resources,
     };
 
-    static CString getResourcesDir(ResourcesDir resourcesDir = WebKitGLibResources)
+    static CString getResourcesDir(ResourcesDir resourcesDir = CyberKitGLibResources)
     {
         switch (resourcesDir) {
-        case WebKitGLibResources: {
-            GUniquePtr<char> resourcesDir(g_build_filename(WEBKIT_SRC_DIR, "Tools", "TestWebKitAPI", "Tests", "WebKitGLib", "resources", nullptr));
+        case CyberKitGLibResources: {
+            GUniquePtr<char> resourcesDir(g_build_filename(WEBKIT_SRC_DIR, "Tools", "TestCyberKitAPI", "Tests", "CyberKitGLib", "resources", nullptr));
             return resourcesDir.get();
         }
-        case WebKit2Resources: {
-            GUniquePtr<char> resourcesDir(g_build_filename(WEBKIT_SRC_DIR, "Tools", "TestWebKitAPI", "Tests", "WebKit", nullptr));
+        case CyberKit2Resources: {
+            GUniquePtr<char> resourcesDir(g_build_filename(WEBKIT_SRC_DIR, "Tools", "TestCyberKitAPI", "Tests", "CyberKit", nullptr));
             return resourcesDir.get();
         }
         }
@@ -302,12 +302,12 @@ public:
     }
 
     HashSet<GObject*> m_watchedObjects;
-    GRefPtr<WebKitWebContext> m_webContext;
+    GRefPtr<CyberKitWebContext> m_webContext;
 #if ENABLE(2022_GLIB_API)
-    GRefPtr<WebKitNetworkSession> m_networkSession;
+    GRefPtr<CyberKitNetworkSession> m_networkSession;
 #endif
     static GRefPtr<GDBusServer> s_dbusServer;
     static Vector<GRefPtr<GDBusConnection>> s_dbusConnections;
     static HashMap<uint64_t, GDBusConnection*> s_dbusConnectionPageMap;
-    static WebKitMemoryPressureSettings* s_memoryPressureSettings;
+    static CyberKitMemoryPressureSettings* s_memoryPressureSettings;
 };

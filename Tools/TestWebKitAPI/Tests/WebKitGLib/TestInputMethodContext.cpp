@@ -24,9 +24,9 @@
 #include <wtf/glib/GUniquePtr.h>
 
 #if PLATFORM(GTK)
-#include <WebCore/GtkVersioning.h>
+#include <CyberCore/GtkVersioning.h>
 #if USE(GTK4)
-#include <webkit/WebKitWebViewBaseInternal.h>
+#include <webkit/CyberKitWebViewBaseInternal.h>
 using PlatformEventKey = GdkEvent;
 #else
 using PlatformEventKey = GdkEventKey;
@@ -41,8 +41,8 @@ using PlatformEventKey = struct wpe_input_keyboard_event;
 #define SHIFT_MASK wpe_input_keyboard_modifier_shift
 #endif
 
-typedef struct _WebKitInputMethodContextMock {
-    WebKitInputMethodContext parent;
+typedef struct _CyberKitInputMethodContextMock {
+    CyberKitInputMethodContext parent;
 
     bool enabled;
     GString* preedit;
@@ -50,13 +50,13 @@ typedef struct _WebKitInputMethodContextMock {
     char* surroundingText;
     unsigned surroundingCursorIndex;
     unsigned surroundingSelectionIndex;
-} WebKitInputMethodContextMock;
+} CyberKitInputMethodContextMock;
 
-typedef struct _WebKitInputMethodContextMockClass {
-    WebKitInputMethodContextClass parent;
-} WebKitInputMethodContextMockClass;
+typedef struct _CyberKitInputMethodContextMockClass {
+    CyberKitInputMethodContextClass parent;
+} CyberKitInputMethodContextMockClass;
 
-G_DEFINE_TYPE(WebKitInputMethodContextMock, webkit_input_method_context_mock, WEBKIT_TYPE_INPUT_METHOD_CONTEXT)
+G_DEFINE_TYPE(CyberKitInputMethodContextMock, webkit_input_method_context_mock, WEBKIT_TYPE_INPUT_METHOD_CONTEXT)
 
 static const char* testHTML = "<html><body><textarea id='editable' rows='3', cols='50' onkeydown='logKeyDown()' onkeyup='logKeyUp()' onkeypress='logKeyPress()'></textarea><script>"
     "var input = document.getElementById('editable');"
@@ -71,7 +71,7 @@ static const char* testHTML = "<html><body><textarea id='editable' rows='3', col
 
 static void webkitInputMethodContextMockFinalize(GObject* object)
 {
-    auto* mock = reinterpret_cast<WebKitInputMethodContextMock*>(object);
+    auto* mock = reinterpret_cast<CyberKitInputMethodContextMock*>(object);
     if (mock->preedit) {
         g_string_free(mock->preedit, TRUE);
         mock->preedit = nullptr;
@@ -80,9 +80,9 @@ static void webkitInputMethodContextMockFinalize(GObject* object)
     G_OBJECT_CLASS(webkit_input_method_context_mock_parent_class)->finalize(object);
 }
 
-static void webkitInputMethodContextMockGetPreedit(WebKitInputMethodContext* context, char** text, GList** underlines, guint* cursorOffset)
+static void webkitInputMethodContextMockGetPreedit(CyberKitInputMethodContext* context, char** text, GList** underlines, guint* cursorOffset)
 {
-    auto* mock = reinterpret_cast<WebKitInputMethodContextMock*>(context);
+    auto* mock = reinterpret_cast<CyberKitInputMethodContextMock*>(context);
     if (text)
         *text = mock->preedit ? g_strdup(mock->preedit->str) : g_strdup("");
     if (underlines)
@@ -91,9 +91,9 @@ static void webkitInputMethodContextMockGetPreedit(WebKitInputMethodContext* con
         *cursorOffset = mock->preedit ? mock->preedit->len : 0;
 }
 
-static gboolean webkitInputMethodContextMockFilterKeyEvent(WebKitInputMethodContext* context, PlatformEventKey* keyEvent)
+static gboolean webkitInputMethodContextMockFilterKeyEvent(CyberKitInputMethodContext* context, PlatformEventKey* keyEvent)
 {
-    auto* mock = reinterpret_cast<WebKitInputMethodContextMock*>(context);
+    auto* mock = reinterpret_cast<CyberKitInputMethodContextMock*>(context);
     if (!mock->enabled)
         return FALSE;
 
@@ -154,9 +154,9 @@ static gboolean webkitInputMethodContextMockFilterKeyEvent(WebKitInputMethodCont
 
     if (isComposeEnd) {
         if (!g_strcmp0(mock->preedit->str, "wgtk"))
-            g_signal_emit_by_name(context, "committed", "WebKitGTK", nullptr);
+            g_signal_emit_by_name(context, "committed", "CyberKitGTK", nullptr);
         else if (!g_strcmp0(mock->preedit->str, "wwpe"))
-            g_signal_emit_by_name(context, "committed", "WPEWebKit", nullptr);
+            g_signal_emit_by_name(context, "committed", "WPECyberKit", nullptr);
         else
             g_signal_emit_by_name(context, "committed", mock->preedit->str + 1, nullptr);
 
@@ -178,19 +178,19 @@ static gboolean webkitInputMethodContextMockFilterKeyEvent(WebKitInputMethodCont
     return FALSE;
 }
 
-static void webkitInputMethodContextMockNotifyFocusIn(WebKitInputMethodContext* context)
+static void webkitInputMethodContextMockNotifyFocusIn(CyberKitInputMethodContext* context)
 {
-    reinterpret_cast<WebKitInputMethodContextMock*>(context)->enabled = true;
+    reinterpret_cast<CyberKitInputMethodContextMock*>(context)->enabled = true;
 }
 
-static void webkitInputMethodContextMockNotifyFocusOut(WebKitInputMethodContext* context)
+static void webkitInputMethodContextMockNotifyFocusOut(CyberKitInputMethodContext* context)
 {
-    reinterpret_cast<WebKitInputMethodContextMock*>(context)->enabled = false;
+    reinterpret_cast<CyberKitInputMethodContextMock*>(context)->enabled = false;
 }
 
-static void webkitInputMethodContextMockNotifySurrounding(WebKitInputMethodContext* context, const gchar *text, unsigned length, unsigned cursorIndex, unsigned selectionIndex)
+static void webkitInputMethodContextMockNotifySurrounding(CyberKitInputMethodContext* context, const gchar *text, unsigned length, unsigned cursorIndex, unsigned selectionIndex)
 {
-    auto* mock = reinterpret_cast<WebKitInputMethodContextMock*>(context);
+    auto* mock = reinterpret_cast<CyberKitInputMethodContextMock*>(context);
     g_clear_pointer(&mock->surroundingText, g_free);
 
     if (!mock->preedit && cursorIndex >= 3 && text[cursorIndex - 3] == ':' && text[cursorIndex - 2] == '-' && text[cursorIndex - 1] == ')') {
@@ -202,9 +202,9 @@ static void webkitInputMethodContextMockNotifySurrounding(WebKitInputMethodConte
     mock->surroundingSelectionIndex = selectionIndex;
 }
 
-static void webkitInputMethodContextMockReset(WebKitInputMethodContext* context)
+static void webkitInputMethodContextMockReset(CyberKitInputMethodContext* context)
 {
-    auto* mock = reinterpret_cast<WebKitInputMethodContextMock*>(context);
+    auto* mock = reinterpret_cast<CyberKitInputMethodContextMock*>(context);
     if (!mock->preedit)
         return;
 
@@ -218,7 +218,7 @@ static void webkitInputMethodContextMockReset(WebKitInputMethodContext* context)
     g_signal_emit_by_name(context, "preedit-finished", nullptr);
 }
 
-static void webkit_input_method_context_mock_class_init(WebKitInputMethodContextMockClass* klass)
+static void webkit_input_method_context_mock_class_init(CyberKitInputMethodContextMockClass* klass)
 {
     GObjectClass* objectClass = G_OBJECT_CLASS(klass);
     objectClass->finalize = webkitInputMethodContextMockFinalize;
@@ -232,7 +232,7 @@ static void webkit_input_method_context_mock_class_init(WebKitInputMethodContext
     imClass->reset = webkitInputMethodContextMockReset;
 }
 
-static void webkit_input_method_context_mock_init(WebKitInputMethodContextMock*)
+static void webkit_input_method_context_mock_init(CyberKitInputMethodContextMock*)
 {
 }
 
@@ -256,19 +256,19 @@ public:
     };
 
 #if ENABLE(2022_GLIB_API)
-    static void imEventCallback(WebKitUserContentManager*, JSCValue* result, InputMethodTest* test)
+    static void imEventCallback(CyberKitUserContentManager*, JSCValue* result, InputMethodTest* test)
     {
         test->imEvent(result);
     }
 #else
-    static void imEventCallback(WebKitUserContentManager*, WebKitJavascriptResult* result, InputMethodTest* test)
+    static void imEventCallback(CyberKitUserContentManager*, CyberKitJavascriptResult* result, InputMethodTest* test)
     {
         test->imEvent(webkit_javascript_result_get_js_value(result));
     }
 #endif
 
     InputMethodTest()
-        : m_context(adoptGRef(static_cast<WebKitInputMethodContextMock*>(g_object_new(webkit_input_method_context_mock_get_type(), nullptr))))
+        : m_context(adoptGRef(static_cast<CyberKitInputMethodContextMock*>(g_object_new(webkit_input_method_context_mock_get_type(), nullptr))))
     {
         WebViewTest::showInWindow();
 #if PLATFORM(GTK)
@@ -441,12 +441,12 @@ public:
         m_eventsExpected = 0;
     }
 
-    WebKitInputPurpose purpose() const
+    CyberKitInputPurpose purpose() const
     {
         return webkit_input_method_context_get_input_purpose(WEBKIT_INPUT_METHOD_CONTEXT(m_context.get()));
     }
 
-    WebKitInputHints hints() const
+    CyberKitInputHints hints() const
     {
         return webkit_input_method_context_get_input_hints(WEBKIT_INPUT_METHOD_CONTEXT(m_context.get()));
     }
@@ -482,13 +482,13 @@ public:
         m_expectedSurroundingText = { };
     }
 
-    GRefPtr<WebKitInputMethodContextMock> m_context;
+    GRefPtr<CyberKitInputMethodContextMock> m_context;
     Vector<Event> m_events;
     unsigned m_eventsExpected { 0 };
     CString m_expectedSurroundingText;
 };
 
-static void testWebKitInputMethodContextSimple(InputMethodTest* test, gconstpointer)
+static void testCyberKitInputMethodContextSimple(InputMethodTest* test, gconstpointer)
 {
     test->loadHtml(testHTML, nullptr);
     test->waitUntilLoadFinished();
@@ -534,7 +534,7 @@ static void testWebKitInputMethodContextSimple(InputMethodTest* test, gconstpoin
     test->resetEditable();
 }
 
-static void testWebKitInputMethodContextSequence(InputMethodTest* test, gconstpointer)
+static void testCyberKitInputMethodContextSequence(InputMethodTest* test, gconstpointer)
 {
     test->loadHtml(testHTML, nullptr);
     test->waitUntilLoadFinished();
@@ -598,14 +598,14 @@ static void testWebKitInputMethodContextSequence(InputMethodTest* test, gconstpo
     g_assert_cmpstr(test->m_events[0].key.data(), ==, "Unidentified");
     g_assert_true(test->m_events[0].isComposing);
     g_assert_true(test->m_events[1].type == InputMethodTest::Event::Type::CompositionEnd);
-    g_assert_cmpstr(test->m_events[1].data.data(), ==, "WebKitGTK");
+    g_assert_cmpstr(test->m_events[1].data.data(), ==, "CyberKitGTK");
     g_assert_true(test->m_events[2].type == InputMethodTest::Event::Type::KeyUp);
     g_assert_cmpuint(test->m_events[2].keyCode, ==, 13);
     g_assert_cmpstr(test->m_events[2].key.data(), ==, "Enter");
     g_assert_false(test->m_events[2].isComposing);
     {
         auto editableValue = test->editableValue();
-        g_assert_cmpstr(editableValue.get(), ==, "WebKitGTK");
+        g_assert_cmpstr(editableValue.get(), ==, "CyberKitGTK");
     }
     test->resetEditable();
 
@@ -666,19 +666,19 @@ static void testWebKitInputMethodContextSequence(InputMethodTest* test, gconstpo
     g_assert_cmpstr(test->m_events[0].key.data(), ==, "Unidentified");
     g_assert_true(test->m_events[0].isComposing);
     g_assert_true(test->m_events[1].type == InputMethodTest::Event::Type::CompositionEnd);
-    g_assert_cmpstr(test->m_events[1].data.data(), ==, "WPEWebKit");
+    g_assert_cmpstr(test->m_events[1].data.data(), ==, "WPECyberKit");
     g_assert_true(test->m_events[2].type == InputMethodTest::Event::Type::KeyUp);
     g_assert_cmpuint(test->m_events[2].keyCode, ==, 32);
     g_assert_cmpstr(test->m_events[2].key.data(), ==, " ");
     g_assert_false(test->m_events[2].isComposing);
     {
         auto editableValue = test->editableValue();
-        g_assert_cmpstr(editableValue.get(), ==, "WPEWebKit");
+        g_assert_cmpstr(editableValue.get(), ==, "WPECyberKit");
     }
     test->resetEditable();
 }
 
-static void testWebKitInputMethodContextInvalidSequence(InputMethodTest* test, gconstpointer)
+static void testCyberKitInputMethodContextInvalidSequence(InputMethodTest* test, gconstpointer)
 {
     test->loadHtml(testHTML, nullptr);
     test->waitUntilLoadFinished();
@@ -730,7 +730,7 @@ static void testWebKitInputMethodContextInvalidSequence(InputMethodTest* test, g
     test->resetEditable();
 }
 
-static void testWebKitInputMethodContextCancelSequence(InputMethodTest* test, gconstpointer)
+static void testCyberKitInputMethodContextCancelSequence(InputMethodTest* test, gconstpointer)
 {
     test->loadHtml(testHTML, nullptr);
     test->waitUntilLoadFinished();
@@ -770,7 +770,7 @@ static void testWebKitInputMethodContextCancelSequence(InputMethodTest* test, gc
     test->resetEditable();
 }
 
-static void testWebKitInputMethodContextSurrounding(InputMethodTest* test, gconstpointer)
+static void testCyberKitInputMethodContextSurrounding(InputMethodTest* test, gconstpointer)
 {
     test->loadHtml(testHTML, nullptr);
     test->waitUntilLoadFinished();
@@ -809,23 +809,23 @@ static void testWebKitInputMethodContextSurrounding(InputMethodTest* test, gcons
     g_assert_cmpuint(test->surroundingCursorIndex(), ==, 0);
     g_assert_cmpuint(test->surroundingSelectionIndex(), ==, test->surroundingCursorIndex());
     test->keyStrokeAndWaitForEvents(KEY(ISO_Enter), 16);
-    g_assert_cmpstr(test->surroundingText(), ==, "WebKitGTKabc");
+    g_assert_cmpstr(test->surroundingText(), ==, "CyberKitGTKabc");
     g_assert_cmpuint(test->surroundingCursorIndex(), ==, 9);
     g_assert_cmpuint(test->surroundingSelectionIndex(), ==, test->surroundingCursorIndex());
     test->m_events.clear();
     // 2. Preedit string in the middle of context.
     test->keyStrokeAndWaitForEvents(KEY(w), 4, CONTROL_MASK | SHIFT_MASK);
-    g_assert_cmpstr(test->surroundingText(), ==, "WebKitGTKabc");
+    g_assert_cmpstr(test->surroundingText(), ==, "CyberKitGTKabc");
     g_assert_cmpuint(test->surroundingCursorIndex(), ==, 9);
     g_assert_cmpuint(test->surroundingSelectionIndex(), ==, test->surroundingCursorIndex());
     test->keyStrokeAndWaitForEvents(KEY(w), 7);
     test->keyStrokeAndWaitForEvents(KEY(p), 10);
     test->keyStrokeAndWaitForEvents(KEY(e), 13);
-    g_assert_cmpstr(test->surroundingText(), ==, "WebKitGTKabc");
+    g_assert_cmpstr(test->surroundingText(), ==, "CyberKitGTKabc");
     g_assert_cmpuint(test->surroundingCursorIndex(), ==, 9);
     g_assert_cmpuint(test->surroundingSelectionIndex(), ==, test->surroundingCursorIndex());
     test->keyStrokeAndWaitForEvents(KEY(space), 16);
-    g_assert_cmpstr(test->surroundingText(), ==, "WebKitGTKWPEWebKitabc");
+    g_assert_cmpstr(test->surroundingText(), ==, "CyberKitGTKWPECyberKitabc");
     g_assert_cmpuint(test->surroundingCursorIndex(), ==, 18);
     g_assert_cmpuint(test->surroundingSelectionIndex(), ==, test->surroundingCursorIndex());
     test->m_events.clear();
@@ -833,29 +833,29 @@ static void testWebKitInputMethodContextSurrounding(InputMethodTest* test, gcons
     test->keyStrokeAndWaitForEvents(KEY(Right), 2);
     test->keyStrokeAndWaitForEvents(KEY(Right), 4);
     test->keyStrokeAndWaitForEvents(KEY(Right), 6);
-    g_assert_cmpstr(test->surroundingText(), ==, "WebKitGTKWPEWebKitabc");
+    g_assert_cmpstr(test->surroundingText(), ==, "CyberKitGTKWPECyberKitabc");
     g_assert_cmpuint(test->surroundingCursorIndex(), ==, 21);
     g_assert_cmpuint(test->surroundingSelectionIndex(), ==, test->surroundingCursorIndex());
     test->m_events.clear();
     test->keyStrokeAndWaitForEvents(KEY(w), 4, CONTROL_MASK | SHIFT_MASK);
-    g_assert_cmpstr(test->surroundingText(), ==, "WebKitGTKWPEWebKitabc");
+    g_assert_cmpstr(test->surroundingText(), ==, "CyberKitGTKWPECyberKitabc");
     g_assert_cmpuint(test->surroundingCursorIndex(), ==, 21);
     g_assert_cmpuint(test->surroundingSelectionIndex(), ==, test->surroundingCursorIndex());
     test->keyStrokeAndWaitForEvents(KEY(g), 7);
     test->keyStrokeAndWaitForEvents(KEY(t), 10);
     test->keyStrokeAndWaitForEvents(KEY(k), 13);
-    g_assert_cmpstr(test->surroundingText(), ==, "WebKitGTKWPEWebKitabc");
+    g_assert_cmpstr(test->surroundingText(), ==, "CyberKitGTKWPECyberKitabc");
     g_assert_cmpuint(test->surroundingCursorIndex(), ==, 21);
     g_assert_cmpuint(test->surroundingSelectionIndex(), ==, test->surroundingCursorIndex());
     test->keyStrokeAndWaitForEvents(KEY(ISO_Enter), 16);
-    g_assert_cmpstr(test->surroundingText(), ==, "WebKitGTKWPEWebKitabcWebKitGTK");
+    g_assert_cmpstr(test->surroundingText(), ==, "CyberKitGTKWPECyberKitabcCyberKitGTK");
     g_assert_cmpuint(test->surroundingCursorIndex(), ==, 30);
     g_assert_cmpuint(test->surroundingSelectionIndex(), ==, test->surroundingCursorIndex());
     test->m_events.clear();
 
     // Check selection cursor.
     test->keyStrokeAndWaitForEvents(KEY(Left), 2, SHIFT_MASK);
-    g_assert_cmpstr(test->surroundingText(), ==, "WebKitGTKWPEWebKitabcWebKitGTK");
+    g_assert_cmpstr(test->surroundingText(), ==, "CyberKitGTKWPECyberKitabcCyberKitGTK");
     g_assert_cmpuint(test->surroundingCursorIndex(), ==, 29);
     g_assert_cmpuint(test->surroundingSelectionIndex(), ==, 30);
     test->keyStrokeAndWaitForEvents(KEY(Home), 4, SHIFT_MASK);
@@ -866,14 +866,14 @@ static void testWebKitInputMethodContextSurrounding(InputMethodTest* test, gcons
     g_assert_cmpuint(test->surroundingSelectionIndex(), ==, test->surroundingCursorIndex());
     test->m_events.clear();
     test->keyStrokeAndWaitForEvents(KEY(Right), 2, SHIFT_MASK);
-    g_assert_cmpstr(test->surroundingText(), ==, "WebKitGTKWPEWebKitabcWebKitGTK");
+    g_assert_cmpstr(test->surroundingText(), ==, "CyberKitGTKWPECyberKitabcCyberKitGTK");
     g_assert_cmpuint(test->surroundingCursorIndex(), ==, 0);
     g_assert_cmpuint(test->surroundingSelectionIndex(), ==, 1);
     test->keyStrokeAndWaitForEvents(KEY(End), 4, SHIFT_MASK);
     g_assert_cmpuint(test->surroundingCursorIndex(), ==, 0);
     g_assert_cmpuint(test->surroundingSelectionIndex(), ==, 30);
     test->keyStrokeAndWaitForEvents(KEY(Right), 6);
-    g_assert_cmpstr(test->surroundingText(), ==, "WebKitGTKWPEWebKitabcWebKitGTK");
+    g_assert_cmpstr(test->surroundingText(), ==, "CyberKitGTKWPECyberKitabcCyberKitGTK");
     g_assert_cmpuint(test->surroundingCursorIndex(), ==, 30);
     g_assert_cmpuint(test->surroundingSelectionIndex(), ==, test->surroundingCursorIndex());
     test->m_events.clear();
@@ -882,8 +882,8 @@ static void testWebKitInputMethodContextSurrounding(InputMethodTest* test, gcons
     test->keyStrokeAndWaitForEvents(KEY(colon), 3);
     test->keyStrokeAndWaitForEvents(KEY(minus), 6);
     test->keyStrokeAndWaitForEvents(KEY(parenright), 9);
-    test->waitForSurroundingText("WebKitGTKWPEWebKitabcWebKitGTK😀️");
-    g_assert_cmpstr(test->surroundingText(), ==, "WebKitGTKWPEWebKitabcWebKitGTK😀️");
+    test->waitForSurroundingText("CyberKitGTKWPECyberKitabcCyberKitGTK😀️");
+    g_assert_cmpstr(test->surroundingText(), ==, "CyberKitGTKWPECyberKitabcCyberKitGTK😀️");
     g_assert_cmpuint(test->surroundingCursorIndex(), ==, 37);
     g_assert_cmpuint(test->surroundingSelectionIndex(), ==, test->surroundingCursorIndex());
     test->m_events.clear();
@@ -891,14 +891,14 @@ static void testWebKitInputMethodContextSurrounding(InputMethodTest* test, gcons
     // Check multiline context.
     test->keyStrokeAndWaitForEvents(KEY(Return), 3);
     test->keyStrokeAndWaitForEvents(KEY(a), 6);
-    test->waitForSurroundingText("WebKitGTKWPEWebKitabcWebKitGTK😀️\na");
-    g_assert_cmpstr(test->surroundingText(), ==, "WebKitGTKWPEWebKitabcWebKitGTK😀️\na");
+    test->waitForSurroundingText("CyberKitGTKWPECyberKitabcCyberKitGTK😀️\na");
+    g_assert_cmpstr(test->surroundingText(), ==, "CyberKitGTKWPECyberKitabcCyberKitGTK😀️\na");
     g_assert_cmpuint(test->surroundingCursorIndex(), ==, 39);
     g_assert_cmpuint(test->surroundingSelectionIndex(), ==, test->surroundingCursorIndex());
     test->m_events.clear();
 }
 
-static void testWebKitInputMethodContextReset(InputMethodTest* test, gconstpointer)
+static void testCyberKitInputMethodContextReset(InputMethodTest* test, gconstpointer)
 {
     test->loadHtml(testHTML, nullptr);
     test->waitUntilLoadFinished();
@@ -930,7 +930,7 @@ static void testWebKitInputMethodContextReset(InputMethodTest* test, gconstpoint
     test->resetEditable();
 }
 
-static void testWebKitInputMethodContextContentType(InputMethodTest* test, gconstpointer)
+static void testCyberKitInputMethodContextContentType(InputMethodTest* test, gconstpointer)
 {
     test->loadHtml("<input id='editable' spellcheck='false'></input>", nullptr);
     test->waitUntilLoadFinished();
@@ -1082,13 +1082,13 @@ static void testWebKitInputMethodContextContentType(InputMethodTest* test, gcons
 
 void beforeAll()
 {
-    InputMethodTest::add("WebKitInputMethodContext", "simple", testWebKitInputMethodContextSimple);
-    InputMethodTest::add("WebKitInputMethodContext", "sequence", testWebKitInputMethodContextSequence);
-    InputMethodTest::add("WebKitInputMethodContext", "invalid-sequence", testWebKitInputMethodContextInvalidSequence);
-    InputMethodTest::add("WebKitInputMethodContext", "cancel-sequence", testWebKitInputMethodContextCancelSequence);
-    InputMethodTest::add("WebKitInputMethodContext", "surrounding", testWebKitInputMethodContextSurrounding);
-    InputMethodTest::add("WebKitInputMethodContext", "reset", testWebKitInputMethodContextReset);
-    InputMethodTest::add("WebKitInputMethodContext", "content-type", testWebKitInputMethodContextContentType);
+    InputMethodTest::add("CyberKitInputMethodContext", "simple", testCyberKitInputMethodContextSimple);
+    InputMethodTest::add("CyberKitInputMethodContext", "sequence", testCyberKitInputMethodContextSequence);
+    InputMethodTest::add("CyberKitInputMethodContext", "invalid-sequence", testCyberKitInputMethodContextInvalidSequence);
+    InputMethodTest::add("CyberKitInputMethodContext", "cancel-sequence", testCyberKitInputMethodContextCancelSequence);
+    InputMethodTest::add("CyberKitInputMethodContext", "surrounding", testCyberKitInputMethodContextSurrounding);
+    InputMethodTest::add("CyberKitInputMethodContext", "reset", testCyberKitInputMethodContextReset);
+    InputMethodTest::add("CyberKitInputMethodContext", "content-type", testCyberKitInputMethodContextContentType);
 }
 
 void afterAll()

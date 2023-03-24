@@ -5,7 +5,7 @@ layer at (0,0) size 800x317
     RenderBody {BODY} at (8,8) size 784x293
       RenderBlock (anonymous) at (0,0) size 784x60
         RenderText {#text} at (0,0) size 776x59
-          text run at (0,0) width 527: "Tests of WebKit's intepretation of font sizes when no absolute font size is specified. "
+          text run at (0,0) width 527: "Tests of CyberKit's intepretation of font sizes when no absolute font size is specified. "
           text run at (527,0) width 249: "Percentages and logical keywords scale"
           text run at (0,20) width 161: "to reflect the family type. "
           text run at (161,20) width 608: "Opera 9 matches this behavior as well (except it has a bug with multiple font-family mappings as"

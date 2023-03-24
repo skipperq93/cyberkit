@@ -30,11 +30,11 @@
 #include "InjectedBundleTest.h"
 #include "PlatformUtilities.h"
 #include "Test.h"
-#include <WebKit/WKBundleFrame.h>
-#include <WebKit/WKBundlePage.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKBundleFrame.h>
+#include <CyberKit/WKBundlePage.h>
+#include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class ProvisionalURLAfterWillSendRequestCallbackTest : public InjectedBundleTest {
 public:
@@ -51,7 +51,7 @@ public:
         }
 
         // Change the main frame URL.
-        auto previousURL = TestWebKitAPI::Util::toSTD(adoptWK(WKURLCopyString(adoptWK(WKURLRequestCopyURL(request)).get())));
+        auto previousURL = TestCyberKitAPI::Util::toSTD(adoptWK(WKURLCopyString(adoptWK(WKURLRequestCopyURL(request)).get())));
         previousURL += "?query";
         auto url = adoptWK(WKURLCreateWithUTF8CString(previousURL.c_str()));
         return WKURLRequestCreateWithWKURL(url.get());
@@ -82,6 +82,6 @@ public:
 
 static InjectedBundleTest::Register<ProvisionalURLAfterWillSendRequestCallbackTest> registrar("ProvisionalURLAfterWillSendRequestCallbackTest");
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

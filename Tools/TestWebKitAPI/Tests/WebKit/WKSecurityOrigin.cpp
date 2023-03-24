@@ -29,11 +29,11 @@
 
 #include "PlatformUtilities.h"
 #include "Test.h"
-#include <WebKit/WKSecurityOriginRef.h>
+#include <CyberKit/WKSecurityOriginRef.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, WKSecurityOriginCreateInvalidPortZero)
+TEST(CyberKit, WKSecurityOriginCreateInvalidPortZero)
 {
     auto protocol = adoptWK(WKStringCreateWithUTF8CString("https"));
     auto host = adoptWK(WKStringCreateWithUTF8CString("www.apple.com"));
@@ -48,7 +48,7 @@ TEST(WebKit, WKSecurityOriginCreateInvalidPortZero)
     EXPECT_EQ(0U, WKSecurityOriginGetPort(origin.get()));
 }
 
-TEST(WebKit, WKSecurityOriginCreateInvalidPortTooLarge)
+TEST(CyberKit, WKSecurityOriginCreateInvalidPortTooLarge)
 {
     auto protocol = adoptWK(WKStringCreateWithUTF8CString("https"));
     auto host = adoptWK(WKStringCreateWithUTF8CString("www.apple.com"));
@@ -63,6 +63,6 @@ TEST(WebKit, WKSecurityOriginCreateInvalidPortTooLarge)
     EXPECT_EQ(0U, WKSecurityOriginGetPort(origin.get()));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // WK_HAVE_C_SPI

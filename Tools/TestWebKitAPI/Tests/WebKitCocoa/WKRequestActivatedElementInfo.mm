@@ -29,15 +29,15 @@
 #import "Test.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKActivatedElementInfo.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKActivatedElementInfo.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Vector.h>
 
 #if PLATFORM(IOS_FAMILY)
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void checkElementTypeAndBoundingRect(_WKActivatedElementInfo *elementInfo, _WKActivatedElementType expectedType, CGRect expectedBoundingRect)
 {
@@ -71,13 +71,13 @@ TEST(_WKActivatedElementInfo, InfoForLink)
         finished = true;
     }];
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 }
 
 TEST(_WKActivatedElementInfo, InfoForImage)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 215, 174)]);
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"image" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"image" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -91,13 +91,13 @@ TEST(_WKActivatedElementInfo, InfoForImage)
         finished = true;
     }];
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 }
 
 TEST(_WKActivatedElementInfo, InfoForMediaDocument)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 215, 174)]);
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -115,13 +115,13 @@ TEST(_WKActivatedElementInfo, InfoForMediaDocument)
         finished = true;
     }];
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 }
 
 TEST(_WKActivatedElementInfo, InfoForLinkAroundImage)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 500)]);
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"link-with-image" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"link-with-image" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -139,7 +139,7 @@ TEST(_WKActivatedElementInfo, InfoForLinkAroundImage)
         finished = true;
     }];
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 }
 
 
@@ -213,7 +213,7 @@ TEST(_WKActivatedElementInfo, InfoForBlank)
         finished = true;
     }];
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 }
 
 TEST(_WKActivatedElementInfo, InfoForBrokenImage)
@@ -232,7 +232,7 @@ TEST(_WKActivatedElementInfo, InfoForBrokenImage)
         finished = true;
     }];
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 }
 
 TEST(_WKActivatedElementInfo, InfoForAttachment)
@@ -251,7 +251,7 @@ TEST(_WKActivatedElementInfo, InfoForAttachment)
         finished = true;
     }];
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 }
 
 TEST(_WKActivatedElementInfo, InfoWithNestedSynchronousUpdates)
@@ -266,7 +266,7 @@ TEST(_WKActivatedElementInfo, InfoWithNestedSynchronousUpdates)
         checkElementTypeAndBoundingRect(elementInfo, _WKActivatedElementTypeLink, CGRectMake(0, 0, 200, 200));
         finished = true;
     }];
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 
     finished = false;
     [webView _requestActivatedElementAtPosition:CGPointMake(100, 100) completionBlock:^(_WKActivatedElementInfo *elementInfo) {
@@ -275,7 +275,7 @@ TEST(_WKActivatedElementInfo, InfoWithNestedSynchronousUpdates)
         checkElementTypeAndBoundingRect(elementInfo, _WKActivatedElementTypeLink, CGRectMake(0, 0, 200, 200));
         finished = true;
     }];
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 }
 
 TEST(_WKActivatedElementInfo, InfoWithNestedRequests)
@@ -293,8 +293,8 @@ TEST(_WKActivatedElementInfo, InfoWithNestedRequests)
         checkElementTypeAndBoundingRect(outerElementInfo, _WKActivatedElementTypeImage, CGRectMake(0, 0, 200, 200));
         finishedWithOuter = true;
     }];
-    TestWebKitAPI::Util::run(&finishedWithOuter);
-    TestWebKitAPI::Util::run(&finishedWithInner);
+    TestCyberKitAPI::Util::run(&finishedWithOuter);
+    TestCyberKitAPI::Util::run(&finishedWithInner);
 
     finishedWithInner = false;
     finishedWithOuter = false;
@@ -306,8 +306,8 @@ TEST(_WKActivatedElementInfo, InfoWithNestedRequests)
         checkElementTypeAndBoundingRect(outerElementInfo, _WKActivatedElementTypeImage, CGRectMake(0, 0, 200, 200));
         finishedWithOuter = true;
     }];
-    TestWebKitAPI::Util::run(&finishedWithOuter);
-    TestWebKitAPI::Util::run(&finishedWithInner);
+    TestCyberKitAPI::Util::run(&finishedWithOuter);
+    TestCyberKitAPI::Util::run(&finishedWithInner);
 }
 
 TEST(_WKActivatedElementInfo, HitTestPointOutsideView)

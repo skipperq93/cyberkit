@@ -30,12 +30,12 @@
 GRefPtr<GDBusServer> Test::s_dbusServer;
 Vector<GRefPtr<GDBusConnection>> Test::s_dbusConnections;
 HashMap<uint64_t, GDBusConnection*> Test::s_dbusConnectionPageMap;
-WebKitMemoryPressureSettings* Test::s_memoryPressureSettings = nullptr;
+CyberKitMemoryPressureSettings* Test::s_memoryPressureSettings = nullptr;
 
 void beforeAll();
 void afterAll();
 
-static GUniquePtr<char> testDataDirectory(g_dir_make_tmp("WebKitGLibTests-XXXXXX", nullptr));
+static GUniquePtr<char> testDataDirectory(g_dir_make_tmp("CyberKitGLibTests-XXXXXX", nullptr));
 
 const char* Test::dataDirectory()
 {

@@ -27,9 +27,9 @@
 
 #import "PlatformUtilities.h"
 #import "TestNavigationDelegate.h"
-#import <WebKit/WKBrowsingContextController.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKBrowsingContextController.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <wtf/RetainPtr.h>
 
 static NSString * const customScheme = @"custom";
@@ -72,7 +72,7 @@ static size_t loadsStarted;
 
 @end
 
-TEST(WebKit, AlwaysRevalidatedURLSchemes)
+TEST(CyberKit, AlwaysRevalidatedURLSchemes)
 {
     @autoreleasepool {
         [NSURLProtocol registerClass:[AlwaysRevalidatedURLSchemeProtocol class]];

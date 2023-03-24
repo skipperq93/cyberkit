@@ -29,12 +29,12 @@
 #import "Test.h"
 #import "TestNavigationDelegate.h"
 
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WebKit.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/CyberKit.h>
 #import <wtf/RetainPtr.h>
 
-TEST(WebKit, WebProcessTerminate)
+TEST(CyberKit, WebProcessTerminate)
 {
     RetainPtr<WKWebViewConfiguration> configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
 
@@ -50,7 +50,7 @@ TEST(WebKit, WebProcessTerminate)
     EXPECT_TRUE(pid != pid2);
 }
 
-TEST(WebKit, TerminateAllProcessesDuringLaunch)
+TEST(CyberKit, TerminateAllProcessesDuringLaunch)
 {
     auto webView = adoptNS([WKWebView new]);
 
@@ -60,7 +60,7 @@ TEST(WebKit, TerminateAllProcessesDuringLaunch)
     // Call terminateAllProcesses while the process is still launching.
     [webView.get().configuration.processPool _terminateAllWebContentProcesses];
 
-    TestWebKitAPI::Util::runFor(0.5_s);
+    TestCyberKitAPI::Util::runFor(0.5_s);
 
     // The WKWebView should be able to recover from the WebProcess termination and navigation should succeed.
     [webView loadHTMLString:@"test" baseURL:nil];

@@ -27,7 +27,7 @@
 #include <wtf/ScopedLambda.h>
 #include <wtf/Vector.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // This test relies on this module being compiled with -fno-elide-constructors
 TEST(WTF_ScopedLambda, NoRVOLivenessBug)
@@ -45,5 +45,5 @@ TEST(WTF_ScopedLambda, NoRVOLivenessBug)
         EXPECT_EQ(i, static_cast<unsigned>(lambda(i)));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 

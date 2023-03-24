@@ -27,12 +27,12 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <wtf/RetainPtr.h>
 
-TEST(WebKit, ReparentWebViewTimeout)
+TEST(CyberKit, ReparentWebViewTimeout)
 {
     auto processPoolConfiguration = adoptNS([[_WKProcessPoolConfiguration alloc] init]);
     [processPoolConfiguration setIgnoreSynchronousMessagingTimeoutsForTesting:YES];
@@ -59,7 +59,7 @@ TEST(WebKit, ReparentWebViewTimeout)
             });
         });
 
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         done = false;
     };
 

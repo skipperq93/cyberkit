@@ -32,22 +32,22 @@
 #import "TestUIDelegate.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKContentRuleListStorePrivate.h>
-#import <WebKit/WKMutableDictionary.h>
-#import <WebKit/WKNavigationDelegatePrivate.h>
-#import <WebKit/WKPagePrivate.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKPreferencesRefPrivate.h>
-#import <WebKit/WKString.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKURLSchemeTaskPrivate.h>
-#import <WebKit/WKUserContentControllerPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebpagePreferencesPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/WKWebsitePolicies.h>
-#import <WebKit/_WKCustomHeaderFields.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKContentRuleListStorePrivate.h>
+#import <CyberKit/WKMutableDictionary.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/WKPagePrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKPreferencesRefPrivate.h>
+#import <CyberKit/WKString.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKURLSchemeTaskPrivate.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebpagePreferencesPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/WKWebsitePolicies.h>
+#import <CyberKit/_WKCustomHeaderFields.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/Function.h>
 #import <wtf/HashMap.h>
 #import <wtf/MainThread.h>
@@ -56,7 +56,7 @@
 #import <wtf/text/WTFString.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
 #endif
 
 @interface WKWebView ()
@@ -151,7 +151,7 @@ TEST(WebpagePreferences, WebsitePoliciesContentBlockersEnabled)
         [[configuration userContentController] addContentRuleList:list];
         doneCompiling = true;
     }];
-    TestWebKitAPI::Util::run(&doneCompiling);
+    TestCyberKitAPI::Util::run(&doneCompiling);
 
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
@@ -159,19 +159,19 @@ TEST(WebpagePreferences, WebsitePoliciesContentBlockersEnabled)
     [webView setNavigationDelegate:delegate.get()];
     [webView setUIDelegate:delegate.get()];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"contentBlockerCheck" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"contentBlockerCheck" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     alertCount = 0;
     receivedAlert = false;
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&receivedAlert);
+    TestCyberKitAPI::Util::run(&receivedAlert);
 
     receivedAlert = false;
     [webView reload];
-    TestWebKitAPI::Util::run(&receivedAlert);
+    TestCyberKitAPI::Util::run(&receivedAlert);
 
     receivedAlert = false;
     [webView _reloadWithoutContentBlockers];
-    TestWebKitAPI::Util::run(&receivedAlert);
+    TestCyberKitAPI::Util::run(&receivedAlert);
 
     [[WKContentRuleListStore defaultStore] _removeAllContentRuleLists];
 }
@@ -272,12 +272,12 @@ TEST(WebpagePreferences, WebsitePoliciesAutoplayEnabled)
     auto delegate = adoptNS([[AutoplayPoliciesDelegate alloc] init]);
     [webView setNavigationDelegate:delegate.get()];
 
-    NSURLRequest *requestWithAudio = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-check" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
-    NSURLRequest *requestWithoutAudio = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-no-audio-check" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *requestWithAudio = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-check" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
+    NSURLRequest *requestWithoutAudio = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-no-audio-check" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
 
     // iOS does not support volume changes to media elements.
 #if PLATFORM(MAC)
-    NSURLRequest *requestWithoutVolume = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-zero-volume-check" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *requestWithoutVolume = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-zero-volume-check" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
 #endif
 
     [delegate setAutoplayPolicyForURL:^(NSURL *) {
@@ -330,7 +330,7 @@ TEST(WebpagePreferences, WebsitePoliciesAutoplayEnabled)
     [webView waitForMessage:@"autoplayed"];
 #endif
 
-    NSURLRequest *requestWithAudioInIFrame = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-check-in-iframe" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *requestWithAudioInIFrame = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-check-in-iframe" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
 
     // If the top-level document allows autoplay, any iframes should also autoplay.
     [delegate setAutoplayPolicyForURL:^(NSURL *url) {
@@ -375,7 +375,7 @@ TEST(WebpagePreferences, WebsitePoliciesPlayAfterPreventedAutoplay)
     NSPoint playButtonClickPoint = NSMakePoint(20, 256);
 
     receivedAutoplayEvent = std::nullopt;
-    NSURLRequest *jsPlayRequest = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"js-play-with-controls" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *jsPlayRequest = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"js-play-with-controls" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:jsPlayRequest];
     [webView waitForMessage:@"loaded"];
     runUntilReceivesAutoplayEvent(_WKAutoplayEventDidPreventFromAutoplaying);
@@ -389,7 +389,7 @@ TEST(WebpagePreferences, WebsitePoliciesPlayAfterPreventedAutoplay)
     receivedAutoplayEvent = std::nullopt;
     [webView loadHTMLString:@"" baseURL:nil];
 
-    NSURLRequest *autoplayRequest = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-with-controls" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *autoplayRequest = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-with-controls" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:autoplayRequest];
     [webView waitForMessage:@"loaded"];
     runUntilReceivesAutoplayEvent(_WKAutoplayEventDidPreventFromAutoplaying);
@@ -404,7 +404,7 @@ TEST(WebpagePreferences, WebsitePoliciesPlayAfterPreventedAutoplay)
     receivedAutoplayEvent = std::nullopt;
     [webView loadHTMLString:@"" baseURL:nil];
 
-    NSURLRequest *noAutoplayRequest = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"no-autoplay-with-controls" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *noAutoplayRequest = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"no-autoplay-with-controls" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:noAutoplayRequest];
     [webView waitForMessage:@"loaded"];
     [webView mouseDownAtPoint:playButtonClickPoint simulatePressure:NO];
@@ -419,7 +419,7 @@ TEST(WebpagePreferences, WebsitePoliciesPlayAfterPreventedAutoplay)
         return _WKWebsiteAutoplayPolicyAllowWithoutSound;
     }];
 
-    NSURLRequest *autoplayMutedRequest = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-muted-with-controls" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *autoplayMutedRequest = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-muted-with-controls" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:autoplayMutedRequest];
     [webView waitForMessage:@"loaded"];
     runUntilReceivesAutoplayEvent(_WKAutoplayEventDidPreventFromAutoplaying);
@@ -455,7 +455,7 @@ TEST(WebpagePreferences, WebsitePoliciesPlayingWithUserGesture)
     NSPoint playButtonClickPoint = NSMakePoint(20, 580);
 #endif
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"audio-with-play-button" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"audio-with-play-button" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView waitForMessage:@"loaded"];
 
@@ -472,7 +472,7 @@ TEST(WebpagePreferences, WebsitePoliciesPlayingWithUserGesture)
 
     receivedAutoplayEvent = std::nullopt;
 
-    request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"video-with-play-button" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"video-with-play-button" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView waitForMessage:@"loaded"];
 
@@ -506,7 +506,7 @@ TEST(WebpagePreferences, WebsitePoliciesPlayingWithoutInterference)
     [webView setUIDelegate:delegate.get()];
 
     receivedAutoplayEvent = std::nullopt;
-    NSURLRequest *jsPlayRequest = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"js-autoplay-audio" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *jsPlayRequest = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"js-autoplay-audio" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:jsPlayRequest];
     runUntilReceivesAutoplayEvent(_WKAutoplayEventDidAutoplayMediaPastThresholdWithoutUserInterference);
     ASSERT_TRUE(*receivedAutoplayEventFlags & _WKAutoplayEventFlagsHasAudio);
@@ -530,7 +530,7 @@ TEST(WebpagePreferences, WebsitePoliciesUserInterferenceWithPlaying)
     [webView setUIDelegate:delegate.get()];
 
     receivedAutoplayEvent = std::nullopt;
-    NSURLRequest *jsPlayRequest = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"js-play-with-controls" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *jsPlayRequest = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"js-play-with-controls" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:jsPlayRequest];
     [webView waitForMessage:@"playing"];
     ASSERT_TRUE(receivedAutoplayEvent == std::nullopt);
@@ -593,7 +593,7 @@ TEST(WebpagePreferences, WebsitePoliciesPerDocumentAutoplayBehaviorMediaLoading)
 
     [webView loadTestPageNamed:@"media-loading"];
 
-    TestWebKitAPI::Util::run(&receivedSuspendEvent);
+    TestCyberKitAPI::Util::run(&receivedSuspendEvent);
     EXPECT_FALSE(receivedLoadedEvent);
 
     [webView loadHTMLString:@"" baseURL:nil];
@@ -610,7 +610,7 @@ TEST(WebpagePreferences, WebsitePoliciesPerDocumentAutoplayBehaviorMediaLoading)
 
     [webView loadTestPageNamed:@"media-loading"];
 
-    TestWebKitAPI::Util::run(&receivedLoadedEvent);
+    TestCyberKitAPI::Util::run(&receivedLoadedEvent);
 }
 
 TEST(WebpagePreferences, WebsitePoliciesWithBridgingCast)
@@ -685,7 +685,7 @@ struct ParsedRange {
     if ([task.request.URL.path isEqualToString:@"/should-redirect"]) {
         [(id<WKURLSchemeTaskPrivate>)task _didPerformRedirection:adoptNS([[NSURLResponse alloc] initWithURL:task.request.URL MIMEType:nil expectedContentLength:0 textEncodingName:nil]).get() newRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"test:///autoplay-check.html"]]];
         
-        NSData *data = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"autoplay-check" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+        NSData *data = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"autoplay-check" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
         [task didReceiveResponse:adoptNS([[NSURLResponse alloc] initWithURL:task.request.URL MIMEType:@"text/html" expectedContentLength:data.length textEncodingName:nil]).get()];
         [task didReceiveData:data];
         [task didFinish];
@@ -714,7 +714,7 @@ struct ParsedRange {
 TEST(WebpagePreferences, WebsitePoliciesDuringRedirect)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
-    auto videoData = adoptNS([[NSData alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"mp4" subdirectory:@"TestWebKitAPI.resources"]]);
+    auto videoData = adoptNS([[NSData alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"mp4" subdirectory:@"TestCyberKitAPI.resources"]]);
     [configuration setURLSchemeHandler:adoptNS([[TestSchemeHandler alloc] initWithVideoData:WTFMove(videoData)]).get() forURLScheme:@"test"];
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
     
@@ -745,7 +745,7 @@ TEST(WebpagePreferences, WebsitePoliciesUpdates)
     [webView setNavigationDelegate:delegate.get()];
     [webView setUIDelegate:delegate.get()];
 
-    NSURLRequest *requestWithAudio = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-check" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *requestWithAudio = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-check" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
 
     [delegate setAutoplayPolicyForURL:^(NSURL *) {
         return _WKWebsiteAutoplayPolicyDeny;
@@ -786,7 +786,7 @@ TEST(WebpagePreferences, WebsitePoliciesAutoplayQuirks)
     WKPreferencesSetNeedsSiteSpecificQuirks(preferences.get(), true);
     WKPageGroupSetPreferences(WKPageGetPageGroup([webView _pageForTesting]), preferences.get());
 
-    NSURLRequest *requestWithAudio = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-check" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *requestWithAudio = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-check" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
 
     [delegate setAllowedAutoplayQuirksForURL:^_WKWebsiteAutoplayQuirk(NSURL *url) {
         return _WKWebsiteAutoplayQuirkSynthesizedPauseEvents;
@@ -801,7 +801,7 @@ TEST(WebpagePreferences, WebsitePoliciesAutoplayQuirks)
     receivedAutoplayEvent = std::nullopt;
     [webView loadHTMLString:@"" baseURL:nil];
 
-    NSURLRequest *requestWithAudioInFrame = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-check-in-iframe" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *requestWithAudioInFrame = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-check-in-iframe" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
 
     [delegate setAllowedAutoplayQuirksForURL:^_WKWebsiteAutoplayQuirk(NSURL *url) {
         if ([url.lastPathComponent isEqualToString:@"autoplay-check-frame.html"])
@@ -819,7 +819,7 @@ TEST(WebpagePreferences, WebsitePoliciesAutoplayQuirks)
     receivedAutoplayEvent = std::nullopt;
     [webView loadHTMLString:@"" baseURL:nil];
 
-    NSURLRequest *requestThatInheritsGesture = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-inherits-gesture-from-document" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *requestThatInheritsGesture = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-inherits-gesture-from-document" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:requestThatInheritsGesture];
     [webView waitForMessage:@"loaded"];
 
@@ -846,7 +846,7 @@ TEST(WebpagePreferences, WebsitePoliciesPerDocumentAutoplayBehaviorQuirks)
 
     receivedAutoplayEvent = std::nullopt;
 
-    NSURLRequest *requestWithMultipleMediaElements = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplaying-multiple-media-elements" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *requestWithMultipleMediaElements = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplaying-multiple-media-elements" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
 
     [delegate setAllowedAutoplayQuirksForURL:^_WKWebsiteAutoplayQuirk(NSURL *url) {
         return _WKWebsiteAutoplayQuirkPerDocumentAutoplayBehavior;
@@ -899,7 +899,7 @@ TEST(WebpagePreferences, WebsitePoliciesPerDocumentAutoplayBehaviorQuirks)
     [webView _evaluateJavaScriptWithoutUserGesture:@"window.internals.consumeTransientActivation()" completionHandler:^(id, NSError*) {
         ranJS = true;
     }];
-    TestWebKitAPI::Util::run(&ranJS);
+    TestCyberKitAPI::Util::run(&ranJS);
 
     [webView _evaluateJavaScriptWithoutUserGesture:@"playVideo('video3')" completionHandler:nil];
     [webView waitForMessage:@"did-not-play-video3"];
@@ -920,7 +920,7 @@ TEST(WebpagePreferences, DISABLED_WebsitePoliciesAutoplayQuirksAsyncPolicyDelega
     auto delegate = adoptNS([[AsyncAutoplayPoliciesDelegate alloc] init]);
     [webView setNavigationDelegate:delegate.get()];
 
-    NSURLRequest *requestWithAudio = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-check" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *requestWithAudio = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-check" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
 
     [delegate setAllowedAutoplayQuirksForURL:^_WKWebsiteAutoplayQuirk(NSURL *url) {
         return _WKWebsiteAutoplayQuirkSynthesizedPauseEvents;
@@ -935,7 +935,7 @@ TEST(WebpagePreferences, DISABLED_WebsitePoliciesAutoplayQuirksAsyncPolicyDelega
     receivedAutoplayEvent = std::nullopt;
     [webView loadHTMLString:@"" baseURL:nil];
 
-    NSURLRequest *requestWithAudioInFrame = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-check-in-iframe" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *requestWithAudioInFrame = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"autoplay-check-in-iframe" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
 
     [delegate setAllowedAutoplayQuirksForURL:^_WKWebsiteAutoplayQuirk(NSURL *url) {
         if ([url.lastPathComponent isEqualToString:@"autoplay-check-frame.html"])
@@ -1078,16 +1078,16 @@ TEST(WebpagePreferences, CustomHeaderFields)
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
     [webView setNavigationDelegate:delegate.get()];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"test:///mainresource"]]];
-    TestWebKitAPI::Util::run(&firstTestDone);
+    TestCyberKitAPI::Util::run(&firstTestDone);
     
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"test://mainframeorigin/mainresourcewithiframe"]]];
-    TestWebKitAPI::Util::run(&secondTestDone);
+    TestCyberKitAPI::Util::run(&secondTestDone);
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"test://toporigin/nestedtop"]]];
-    TestWebKitAPI::Util::run(&thirdTestDone);
+    TestCyberKitAPI::Util::run(&thirdTestDone);
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"test://host/testcustomheaderfieldhosts"]]];
-    TestWebKitAPI::Util::run(&fifthTestDone);
+    TestCyberKitAPI::Util::run(&fifthTestDone);
 }
 
 static unsigned loadCount;
@@ -1209,17 +1209,17 @@ TEST(WebpagePreferences, WebsitePoliciesCustomUserAgent)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"test://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
     finishedNavigation = false;
 
     while (loadCount != 9U)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     loadCount = 0;
 
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"test://www.google.com/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
     finishedNavigation = false;
 
     EXPECT_EQ(1U, loadCount);
@@ -1275,11 +1275,11 @@ TEST(WebpagePreferences, WebsitePoliciesCustomUserAgentAsSiteSpecificQuirksDisab
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"test://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
     finishedNavigation = false;
 
     while (loadCount != 9U)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 
     auto* userAgentString = [webView stringByEvaluatingJavaScript:@"navigator.userAgent"];
     EXPECT_TRUE([userAgentString hasPrefix:@"Mozilla/5.0 "]);
@@ -1313,11 +1313,11 @@ TEST(WebpagePreferences, WebsitePoliciesCustomUserAgentAsSiteSpecificQuirks)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"test://www.webkit.org/main.html"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
     finishedNavigation = false;
 
     while (loadCount != 9U)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 
     EXPECT_STREQ("Foo Site Specific Quriks UserAgent", [[webView stringByEvaluatingJavaScript:@"navigator.userAgent"] UTF8String]);
     EXPECT_STREQ("Foo Site Specific Quriks UserAgent", [[webView stringByEvaluatingJavaScript:@"subframeUserAgent"] UTF8String]);
@@ -1357,7 +1357,7 @@ TEST(WebpagePreferences, WebsitePoliciesCustomNavigatorPlatform)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"data:text/html,hello"]];
     [webView loadRequest:request];
     
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
     finishedNavigation = false;
 
     EXPECT_STREQ("Test Custom Platform", [[webView stringByEvaluatingJavaScript:@"navigator.platform"] UTF8String]);
@@ -1436,14 +1436,14 @@ static void runWebsitePoliciesDeviceOrientationEventTest(_WKWebsiteDeviceOrienta
 
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"test://localhost/main.html"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
     finishedNavigation = false;
 
     bool askedForPermission = false;
     [webView evaluateJavaScript:@"DeviceOrientationEvent.requestPermission()" completionHandler: [&] (id result, NSError *error) {
         askedForPermission = true;
     }];
-    TestWebKitAPI::Util::run(&askedForPermission);
+    TestCyberKitAPI::Util::run(&askedForPermission);
 
     __block bool didReceiveMessage = false;
     [webView performAfterReceivingMessage:@"received-device-orientation-event" action:^{
@@ -1458,9 +1458,9 @@ static void runWebsitePoliciesDeviceOrientationEventTest(_WKWebsiteDeviceOrienta
         EXPECT_FALSE(calledShouldAllowDeviceOrientationAndMotionAccessDelegate);
 
     if (accessPolicy != _WKWebsiteDeviceOrientationAndMotionAccessPolicyDeny)
-        TestWebKitAPI::Util::run(&didReceiveMessage);
+        TestCyberKitAPI::Util::run(&didReceiveMessage);
     else {
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
         EXPECT_FALSE(didReceiveMessage);
     }
 }
@@ -1520,7 +1520,7 @@ TEST(WebpagePreferences, WebsitePoliciesPopUp)
     [webView setNavigationDelegate:delegate.get()];
     [webView setUIDelegate:delegate.get()];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"pop-up-check" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"pop-up-check" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
 
     [delegate setPopUpPolicyForURL:^_WKWebsitePopUpPolicy(NSURL *) {
         return _WKWebsitePopUpPolicyBlock;
@@ -1630,11 +1630,11 @@ TEST(WebpagePreferences, UpdateWebsitePoliciesInvalid)
     EXPECT_TRUE(sawException);
     
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"test:///invalid"]]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     
     done = false;
     [webView loadHTMLString:@"<iframe src='subFrame'></iframe>" baseURL:[NSURL URLWithString:@"http://webkit.org/mainFrame"]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(WebpagePreferences, WebsitePoliciesDataStore)
@@ -1642,13 +1642,13 @@ TEST(WebpagePreferences, WebsitePoliciesDataStore)
     auto cookieWebView = websiteDataStoreTestWebView();
     NSString *alertOldCookie = @"<script>var oldCookie = document.cookie; document.cookie = 'key=value'; alert('old value: <' + oldCookie + '>');</script>";
     [cookieWebView loadHTMLString:alertOldCookie baseURL:[NSURL URLWithString:@"http://example.com/checkCookies"]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto pid1 = [cookieWebView _webProcessIdentifier];
 
     [cookieWebView loadHTMLString:alertOldCookie baseURL:[NSURL URLWithString:@"http://example.com/checkCookies"]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_NE(pid1, [cookieWebView _webProcessIdentifier]);
 }
@@ -1691,7 +1691,7 @@ TEST(WebpagePreferences, WebsitePoliciesUserContentController)
 
     [webView loadTestPageNamed:@"simple-iframe"];
     EXPECT_WK_STREQ([uiDelegate waitForAlert], "testAlert1");
-    TestWebKitAPI::Util::run(&iframeExceptionThrown);
+    TestCyberKitAPI::Util::run(&iframeExceptionThrown);
 
     [webView loadTestPageNamed:@"simple2"];
     EXPECT_WK_STREQ([uiDelegate waitForAlert], "testAlert2");
@@ -1726,8 +1726,8 @@ TEST(WebpagePreferences, ContentRuleListEnablement)
 {
     [TestProtocol registerWithScheme:@"https"];
 
-    NSString *identifierToDisable = @"org.TestWebKitAPI.Disabled";
-    NSString *identifierToEnable = @"org.TestWebKitAPI.Enabled";
+    NSString *identifierToDisable = @"org.TestCyberKitAPI.Disabled";
+    NSString *identifierToEnable = @"org.TestCyberKitAPI.Enabled";
 
     auto directory = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"ContentRuleLists"] isDirectory:YES];
     auto store = [WKContentRuleListStore storeWithURL:directory];
@@ -1740,7 +1740,7 @@ TEST(WebpagePreferences, ContentRuleListEnablement)
             result = rules;
             done = true;
         }];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         return result;
     };
 
@@ -1776,7 +1776,7 @@ TEST(WebpagePreferences, ContentRuleListEnablement)
             result = loaded.boolValue;
             done = true;
         }];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         return result;
     };
 

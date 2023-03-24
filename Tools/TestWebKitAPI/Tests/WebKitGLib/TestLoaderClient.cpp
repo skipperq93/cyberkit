@@ -22,14 +22,14 @@
 #include "config.h"
 
 #include "LoadTrackingTest.h"
-#include "WebKitTestServer.h"
+#include "CyberKitTestServer.h"
 #include "WebViewTest.h"
-#include <WebCore/SoupVersioning.h>
+#include <CyberCore/SoupVersioning.h>
 #include <libsoup/soup.h>
 #include <wtf/Vector.h>
 #include <wtf/text/CString.h>
 
-static WebKitTestServer* kServer;
+static CyberKitTestServer* kServer;
 
 const char* kDNTHeaderNotPresent = "DNT header not present";
 
@@ -69,7 +69,7 @@ static void assertNormalLoadHappened(Vector<LoadTrackingTest::LoadEvents>& event
 
 static void testLoadHtml(LoadTrackingTest* test, gconstpointer)
 {
-    test->loadHtml("<html><body>Hello WebKit-GTK+</body></html>", 0);
+    test->loadHtml("<html><body>Hello CyberKit-GTK+</body></html>", 0);
     test->waitUntilLoadFinished();
     assertNormalLoadHappened(test->m_loadEvents);
 }
@@ -90,7 +90,7 @@ static void testLoadAlternateHTMLForLocalPage(LoadTrackingTest* test, gconstpoin
 
 static void testLoadPlainText(LoadTrackingTest* test, gconstpointer)
 {
-    test->loadPlainText("Hello WebKit-GTK+");
+    test->loadPlainText("Hello CyberKit-GTK+");
     test->waitUntilLoadFinished();
     assertNormalLoadHappened(test->m_loadEvents);
 }
@@ -109,7 +109,7 @@ static void testLoadBytes(LoadTrackingTest* test, gconstpointer)
 
 static void testLoadRequest(LoadTrackingTest* test, gconstpointer)
 {
-    GRefPtr<WebKitURIRequest> request(webkit_uri_request_new(kServer->getURIForPath("/normal").data()));
+    GRefPtr<CyberKitURIRequest> request(webkit_uri_request_new(kServer->getURIForPath("/normal").data()));
     test->loadRequest(request.get());
     test->waitUntilLoadFinished();
     assertNormalLoadHappened(test->m_loadEvents);
@@ -117,7 +117,7 @@ static void testLoadRequest(LoadTrackingTest* test, gconstpointer)
 
 static void testLoadFromGResource(LoadTrackingTest* test, gconstpointer)
 {
-    GRefPtr<WebKitURIRequest> request(webkit_uri_request_new("resource:///org/webkit/glib/tests/boring.html"));
+    GRefPtr<CyberKitURIRequest> request(webkit_uri_request_new("resource:///org/webkit/glib/tests/boring.html"));
     test->loadRequest(request.get());
     test->waitUntilLoadFinished();
     assertNormalLoadHappened(test->m_loadEvents);
@@ -155,9 +155,9 @@ static void testLoadCancelled(LoadStopTrackingTest* test, gconstpointer)
 static void testWebViewTitle(LoadTrackingTest* test, gconstpointer)
 {
     g_assert_null(webkit_web_view_get_title(test->m_webView));
-    test->loadHtml("<html><head><title>Welcome to WebKit-GTK+!</title></head></html>", 0);
+    test->loadHtml("<html><head><title>Welcome to CyberKit-GTK+!</title></head></html>", 0);
     test->waitUntilTitleChanged();
-    g_assert_cmpstr(webkit_web_view_get_title(test->m_webView), ==, "Welcome to WebKit-GTK+!");
+    g_assert_cmpstr(webkit_web_view_get_title(test->m_webView), ==, "Welcome to CyberKit-GTK+!");
 }
 
 static void testWebViewReload(LoadTrackingTest* test, gconstpointer)
@@ -206,7 +206,7 @@ class LoadTwiceAndReloadTest : public WebViewTest {
 public:
     MAKE_GLIB_TEST_FIXTURE(LoadTwiceAndReloadTest);
 
-    static void reloadOnFinishLoad(WebKitWebView* view, WebKitLoadEvent loadEvent, LoadTwiceAndReloadTest* test)
+    static void reloadOnFinishLoad(CyberKitWebView* view, CyberKitLoadEvent loadEvent, LoadTwiceAndReloadTest* test)
     {
         if (++test->m_loadsCount == 3)
             test->quitMainLoop();
@@ -239,7 +239,7 @@ static void testWebViewLoadTwiceAndReload(LoadTwiceAndReloadTest* test, gconstpo
     test->waitUntilFinished();
 }
 
-static void uriChanged(WebKitWebView* webView, GParamSpec*, LoadTrackingTest* test)
+static void uriChanged(CyberKitWebView* webView, GParamSpec*, LoadTrackingTest* test)
 {
     const char* uri = webkit_web_view_get_uri(webView);
     if (g_str_has_suffix(uri, "/normal"))
@@ -368,7 +368,7 @@ static void testWebViewActiveURI(ViewURITrackingTest* test, gconstpointer)
     test->checkURIAtState(ViewURITrackingTest::State::Commited, "/normal");
     test->checkURIAtState(ViewURITrackingTest::State::Finished, "/normal");
 
-    // Normal load, URL changed by WebKitPage::send-request.
+    // Normal load, URL changed by CyberKitPage::send-request.
     test->loadURI(kServer->getURIForPath("/normal-change-request").data());
     test->waitUntilLoadFinished();
     test->checkURIAtState(ViewURITrackingTest::State::Provisional, "/normal-change-request");
@@ -376,7 +376,7 @@ static void testWebViewActiveURI(ViewURITrackingTest* test, gconstpointer)
     test->checkURIAtState(ViewURITrackingTest::State::Commited, "/request-changed");
     test->checkURIAtState(ViewURITrackingTest::State::Finished, "/request-changed");
 
-    // Redirect, URL changed by WebKitPage::send-request.
+    // Redirect, URL changed by CyberKitPage::send-request.
     test->loadURI(kServer->getURIForPath("/redirect-to-change-request").data());
     test->waitUntilLoadFinished();
     test->checkURIAtState(ViewURITrackingTest::State::Provisional, "/redirect-to-change-request");
@@ -592,7 +592,7 @@ static void testWebPageURI(WebPageURITest* test, gconstpointer)
     ASSERT_CMP_CSTRING(test->m_webPageURIs[0], ==, kServer->getURIForPath("/redirect"));
     ASSERT_CMP_CSTRING(test->m_webPageURIs[1], ==, kServer->getURIForPath("/normal"));
 
-    // Normal load, URL changed by WebKitPage::send-request.
+    // Normal load, URL changed by CyberKitPage::send-request.
     test->loadURI(kServer->getURIForPath("/normal-change-request").data());
     test->waitUntilLoadFinished();
     test->checkViewAndPageURIsMatch();
@@ -600,7 +600,7 @@ static void testWebPageURI(WebPageURITest* test, gconstpointer)
     ASSERT_CMP_CSTRING(test->m_webPageURIs[0], ==, kServer->getURIForPath("/normal-change-request"));
     ASSERT_CMP_CSTRING(test->m_webPageURIs[1], ==, kServer->getURIForPath("/request-changed"));
 
-    // Redirect, URL changed by WebKitPage::send-request.
+    // Redirect, URL changed by CyberKitPage::send-request.
     test->loadURI(kServer->getURIForPath("/redirect-to-change-request").data());
     test->waitUntilLoadFinished();
     test->checkViewAndPageURIsMatch();
@@ -612,7 +612,7 @@ static void testWebPageURI(WebPageURITest* test, gconstpointer)
 
 static void testURIRequestHTTPHeaders(WebViewTest* test, gconstpointer)
 {
-    GRefPtr<WebKitURIRequest> uriRequest = adoptGRef(webkit_uri_request_new("file:///foo/bar"));
+    GRefPtr<CyberKitURIRequest> uriRequest = adoptGRef(webkit_uri_request_new("file:///foo/bar"));
     g_assert_nonnull(uriRequest.get());
     g_assert_cmpstr(webkit_uri_request_get_uri(uriRequest.get()), ==, "file:///foo/bar");
     g_assert_null(webkit_uri_request_get_http_headers(uriRequest.get()));
@@ -649,7 +649,7 @@ static void testURIRequestHTTPHeaders(WebViewTest* test, gconstpointer)
 
 static void testURIRequestHTTPMethod(WebViewTest* test, gconstpointer)
 {
-    GRefPtr<WebKitURIRequest> uriRequest = adoptGRef(webkit_uri_request_new("file:///foo/bar"));
+    GRefPtr<CyberKitURIRequest> uriRequest = adoptGRef(webkit_uri_request_new("file:///foo/bar"));
     g_assert_nonnull(uriRequest.get());
     g_assert_cmpstr(webkit_uri_request_get_uri(uriRequest.get()), ==, "file:///foo/bar");
     g_assert_null(webkit_uri_request_get_http_method(uriRequest.get()));
@@ -665,9 +665,9 @@ static void testURIResponseHTTPHeaders(WebViewTest* test, gconstpointer)
 {
     test->loadHtml("<html><body>No HTTP headers</body></html>", "file:///");
     test->waitUntilLoadFinished();
-    WebKitWebResource* resource = webkit_web_view_get_main_resource(test->m_webView);
+    CyberKitWebResource* resource = webkit_web_view_get_main_resource(test->m_webView);
     g_assert_true(WEBKIT_IS_WEB_RESOURCE(resource));
-    WebKitURIResponse* response = webkit_web_resource_get_response(resource);
+    CyberKitURIResponse* response = webkit_web_resource_get_response(resource);
     g_assert_true(WEBKIT_IS_URI_RESPONSE(response));
     g_assert_null(webkit_uri_response_get_http_headers(response));
 
@@ -825,36 +825,36 @@ static void serverCallback(SoupServer* server, SoupServerMessage* message, const
 
 void beforeAll()
 {
-    kServer = new WebKitTestServer();
+    kServer = new CyberKitTestServer();
     kServer->run(serverCallback);
 
-    LoadTrackingTest::add("WebKitWebView", "loading-status", testLoadingStatus);
-    LoadTrackingTest::add("WebKitWebView", "loading-error", testLoadingError);
-    LoadTrackingTest::add("WebKitWebView", "load-html", testLoadHtml);
-    LoadTrackingTest::add("WebKitWebView", "load-alternate-html", testLoadAlternateHTML);
-    LoadTrackingTest::add("WebKitWebView", "load-alternate-html-for-local-page", testLoadAlternateHTMLForLocalPage);
-    LoadTrackingTest::add("WebKitWebView", "load-plain-text", testLoadPlainText);
-    LoadTrackingTest::add("WebKitWebView", "load-bytes", testLoadBytes);
-    LoadTrackingTest::add("WebKitWebView", "load-request", testLoadRequest);
-    LoadTrackingTest::add("WebKitWebView", "load-gresource", testLoadFromGResource);
-    LoadStopTrackingTest::add("WebKitWebView", "stop-loading", testLoadCancelled);
-    LoadTrackingTest::add("WebKitWebView", "title", testWebViewTitle);
-    LoadTrackingTest::add("WebKitWebView", "progress", testLoadProgress);
-    LoadTrackingTest::add("WebKitWebView", "reload", testWebViewReload);
-    LoadTrackingTest::add("WebKitWebView", "history-load", testWebViewHistoryLoad);
-    LoadTwiceAndReloadTest::add("WebKitWebView", "load-twice-and-reload", testWebViewLoadTwiceAndReload);
-    LoadTrackingTest::add("WebKitWebView", "unfinished-subresource-load", testUnfinishedSubresourceLoad);
+    LoadTrackingTest::add("CyberKitWebView", "loading-status", testLoadingStatus);
+    LoadTrackingTest::add("CyberKitWebView", "loading-error", testLoadingError);
+    LoadTrackingTest::add("CyberKitWebView", "load-html", testLoadHtml);
+    LoadTrackingTest::add("CyberKitWebView", "load-alternate-html", testLoadAlternateHTML);
+    LoadTrackingTest::add("CyberKitWebView", "load-alternate-html-for-local-page", testLoadAlternateHTMLForLocalPage);
+    LoadTrackingTest::add("CyberKitWebView", "load-plain-text", testLoadPlainText);
+    LoadTrackingTest::add("CyberKitWebView", "load-bytes", testLoadBytes);
+    LoadTrackingTest::add("CyberKitWebView", "load-request", testLoadRequest);
+    LoadTrackingTest::add("CyberKitWebView", "load-gresource", testLoadFromGResource);
+    LoadStopTrackingTest::add("CyberKitWebView", "stop-loading", testLoadCancelled);
+    LoadTrackingTest::add("CyberKitWebView", "title", testWebViewTitle);
+    LoadTrackingTest::add("CyberKitWebView", "progress", testLoadProgress);
+    LoadTrackingTest::add("CyberKitWebView", "reload", testWebViewReload);
+    LoadTrackingTest::add("CyberKitWebView", "history-load", testWebViewHistoryLoad);
+    LoadTwiceAndReloadTest::add("CyberKitWebView", "load-twice-and-reload", testWebViewLoadTwiceAndReload);
+    LoadTrackingTest::add("CyberKitWebView", "unfinished-subresource-load", testUnfinishedSubresourceLoad);
 
     // This test checks that web view notify::uri signal is correctly emitted
     // and the uri is already updated when loader client signals are emitted.
-    ViewURITrackingTest::add("WebKitWebView", "active-uri", testWebViewActiveURI);
+    ViewURITrackingTest::add("CyberKitWebView", "active-uri", testWebViewActiveURI);
 
-    ViewIsLoadingTest::add("WebKitWebView", "is-loading", testWebViewIsLoading);
-    WebPageURITest::add("WebKitWebPage", "get-uri", testWebPageURI);
-    WebViewTest::add("WebKitURIRequest", "http-headers", testURIRequestHTTPHeaders);
-    WebViewTest::add("WebKitURIRequest", "http-method", testURIRequestHTTPMethod);
-    WebViewTest::add("WebKitURIResponse", "http-headers", testURIResponseHTTPHeaders);
-    WebViewTest::add("WebKitWebView", "user-agent", testUserAgent);
+    ViewIsLoadingTest::add("CyberKitWebView", "is-loading", testWebViewIsLoading);
+    WebPageURITest::add("CyberKitWebPage", "get-uri", testWebPageURI);
+    WebViewTest::add("CyberKitURIRequest", "http-headers", testURIRequestHTTPHeaders);
+    WebViewTest::add("CyberKitURIRequest", "http-method", testURIRequestHTTPMethod);
+    WebViewTest::add("CyberKitURIResponse", "http-headers", testURIResponseHTTPHeaders);
+    WebViewTest::add("CyberKitWebView", "user-agent", testUserAgent);
 }
 
 void afterAll()

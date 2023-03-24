@@ -29,7 +29,7 @@
 #include "StreamServerConnectionBuffer.h"
 #include "Test.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(StreamConnectionBufferTests, CreateWorks)
 {

@@ -27,7 +27,7 @@
 
 #include <wtf/text/TextBreakIterator.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static String makeUTF16(std::vector<UChar> input)
 {
@@ -143,4 +143,4 @@ TEST(WTF, TextBreakIteratorNumCodeUnitsInGraphemeClusters)
     EXPECT_EQ(4U, numCodeUnitsInGraphemeClusters(makeUTF16({ 'g', 0x308, 'b', 'c' }), 5));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

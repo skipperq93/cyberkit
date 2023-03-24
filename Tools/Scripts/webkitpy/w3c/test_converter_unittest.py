@@ -33,7 +33,7 @@ import unittest
 from webkitcorepy import unicode
 
 from webkitpy.common.host import Host
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 from webkitpy.thirdparty.BeautifulSoup import BeautifulSoup
 from webkitpy.w3c.test_converter import _W3CTestConverter
 
@@ -49,7 +49,7 @@ class W3CTestConverterTest(unittest.TestCase):
     #        then we can just pass in a dummy dir path
     def fake_dir_path(self, dirname):
         filesystem = Host().filesystem
-        webkit_root = WebKitFinder(filesystem).webkit_base()
+        webkit_root = CyberKitFinder(filesystem).webkit_base()
         return filesystem.abspath(filesystem.join(webkit_root, "LayoutTests", "css", dirname))
 
     def test_read_prefixed_property_list(self):

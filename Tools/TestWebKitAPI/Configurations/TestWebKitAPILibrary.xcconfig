@@ -23,8 +23,8 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#include "TestWebKitAPI.xcconfig"
+#include "TestCyberKitAPI.xcconfig"
 
-PRODUCT_NAME = TestWebKitAPI;
+PRODUCT_NAME = TestCyberKitAPI;
 SKIP_INSTALL = YES;
 GCC_SYMBOLS_PRIVATE_EXTERN = YES;

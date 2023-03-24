@@ -20,7 +20,7 @@ layer at (0,0) size 800x600
           RenderText {#text} at (498,3) size 64x16
             text run at (498,3) width 64: "absolute"
         RenderText {#text} at (562,0) size 151x19
-          text run at (562,0) width 151: " does not crash WebKit."
+          text run at (562,0) width 151: " does not crash CyberKit."
       RenderBlock {P} at (0,36) size 784x20
         RenderText {#text} at (0,0) size 126x19
           text run at (0,0) width 126: "There should be no "

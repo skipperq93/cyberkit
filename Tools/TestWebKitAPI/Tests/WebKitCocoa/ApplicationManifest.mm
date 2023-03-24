@@ -32,13 +32,13 @@
 #import "TestCocoa.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebCore/ApplicationManifest.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKApplicationManifest.h>
+#import <CyberCore/ApplicationManifest.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKApplicationManifest.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(ApplicationManifest, Coding)
 {
@@ -129,7 +129,7 @@ TEST(ApplicationManifest, DisplayMode)
         @"fullscreen": @"(display-mode) (display-mode: fullscreen)",
     };
 
-    NSURL *baseURL = [[[NSBundle mainBundle] bundleURL] URLByAppendingPathComponent:@"TestWebKitAPI.resources"];
+    NSURL *baseURL = [[[NSBundle mainBundle] bundleURL] URLByAppendingPathComponent:@"TestCyberKitAPI.resources"];
     [displayModesAndExpectedContent enumerateKeysAndObjectsUsingBlock:^(NSString *displayMode, NSString *expectedPageContent, BOOL* stop) {
         @autoreleasepool {
             NSString *m2 = displayMode.length ? [NSString stringWithFormat:@"{\"display\": \"%@\"}", displayMode] : @"{}";
@@ -366,7 +366,7 @@ TEST(ApplicationManifest, IconCoding)
 {
     static constexpr auto testURL = "https://example.com/images/touch/homescreen128.jpg"_s;
 
-    WebCore::ApplicationManifest::Icon icon = { URL { testURL }, makeVector<String>(@[@"96x96", @"128x128"]), "image/jpg"_s, { WebCore::ApplicationManifest::Icon::Purpose::Monochrome, WebCore::ApplicationManifest::Icon::Purpose::Maskable } };
+    CyberCore::ApplicationManifest::Icon icon = { URL { testURL }, makeVector<String>(@[@"96x96", @"128x128"]), "image/jpg"_s, { CyberCore::ApplicationManifest::Icon::Purpose::Monochrome, CyberCore::ApplicationManifest::Icon::Purpose::Maskable } };
 
     IGNORE_WARNINGS_BEGIN("objc-method-access")
     auto manifestIcon = adoptNS([[_WKApplicationManifestIcon alloc] initWithCoreIcon:&icon]);
@@ -389,6 +389,6 @@ TEST(ApplicationManifest, IconCoding)
     EXPECT_EQ(decodedIcon.purposes[1].unsignedLongValue, 4ul);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(APPLICATION_MANIFEST)

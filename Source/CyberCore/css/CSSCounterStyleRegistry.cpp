@@ -1,0 +1,229 @@
+/*
+ * Copyright (C) 2023 Apple Inc.  All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY APPLE INC. ``AS IS'' AND ANY
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL APPLE INC. OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+ * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+#include "config.h"
+#include "CSSCounterStyleRegistry.h"
+
+#include "CSSCounterStyle.h"
+#include "CSSCounterStyleRule.h"
+#include "CSSPrimitiveValue.h"
+#include "CSSValuePair.h"
+
+namespace CyberCore {
+
+
+void CSSCounterStyleRegistry::resolveUserAgentReferences()
+{
+    for (auto& [name, counter] : userAgentCounterStyles()) {
+        // decimal counter has no fallback or extended references because it is the last resource for both cases.
+        if (counter->name() == "decimal"_s)
+            continue;
+        if (counter->isFallbackUnresolved())
+            resolveFallbackReference(*counter);
+        if (counter->isExtendsSystem() && counter->isExtendsUnresolved())
+            resolveExtendsReference(*counter);
+    }
+}
+void CSSCounterStyleRegistry::resolveReferencesIfNeeded()
+{
+    if (!hasUnresolvedReferences)
+        return;
+
+    for (auto& [name, counter] : m_authorCounterStyles) {
+        if (counter->isFallbackUnresolved())
+            resolveFallbackReference(*counter, &m_authorCounterStyles);
+        if (counter->isExtendsSystem() && counter->isExtendsUnresolved())
+            resolveExtendsReference(*counter, &m_authorCounterStyles);
+    }
+    hasUnresolvedReferences = false;
+}
+
+void CSSCounterStyleRegistry::resolveExtendsReference(CSSCounterStyle& counterStyle, CounterStyleMap* map)
+{
+    HashSet<CSSCounterStyle*> countersInChain;
+    resolveExtendsReference(counterStyle, countersInChain, map);
+}
+
+void CSSCounterStyleRegistry::resolveExtendsReference(CSSCounterStyle& counter, HashSet<CSSCounterStyle*>& countersInChain, CounterStyleMap* map)
+{
+    ASSERT(counter.isExtendsSystem() && counter.isExtendsUnresolved());
+    if (!(counter.isExtendsSystem() && counter.isExtendsUnresolved()))
+        return;
+
+    if (countersInChain.contains(&counter)) {
+        // Chain of references forms a circle. Treat all as extending decimal (https://www.w3.org/TR/css-counter-styles-3/#extends-system).
+        auto decimal = decimalCounter();
+        for (const auto counterInChain : countersInChain) {
+            ASSERT(counterInChain);
+            if (!counterInChain)
+                continue;
+            counterInChain->extendAndResolve(*decimal);
+        }
+        // Recursion return for circular chain.
+        return;
+    }
+    countersInChain.add(&counter);
+
+    auto extendedCounter = counterStyle(counter.extendsName(), map);
+    ASSERT(extendedCounter);
+    if (!extendedCounter)
+        return;
+
+    if (extendedCounter->isExtendsSystem() && extendedCounter->isExtendsUnresolved())
+        resolveExtendsReference(*extendedCounter, countersInChain, map);
+
+    // Recursion return for non-circular chain. Calling resolveExtendsReference() for the extendedCounter might have already resolved this counter style if a circle was formed. If it is still unresolved, it should get resolved here.
+    if (counter.isExtendsUnresolved())
+        counter.extendAndResolve(*extendedCounter);
+}
+
+void CSSCounterStyleRegistry::resolveFallbackReference(CSSCounterStyle& counter, CounterStyleMap* map)
+{
+    counter.setFallbackReference(counterStyle(counter.fallbackName(), map));
+}
+
+void CSSCounterStyleRegistry::addCounterStyle(const CSSCounterStyleDescriptors& descriptors)
+{
+    hasUnresolvedReferences = true;
+    m_authorCounterStyles.set(descriptors.m_name, CSSCounterStyle::create(descriptors, false));
+}
+
+void CSSCounterStyleRegistry::addUserAgentCounterStyle(const CSSCounterStyleDescriptors& descriptors)
+{
+    userAgentCounterStyles().set(descriptors.m_name, CSSCounterStyle::create(descriptors, true));
+}
+
+RefPtr<CSSCounterStyle> CSSCounterStyleRegistry::decimalCounter()
+{
+    auto& userAgentCounters = userAgentCounterStyles();
+    auto iterator = userAgentCounters.find("decimal"_s);
+    if (iterator != userAgentCounters.end())
+        return iterator->value.get();
+    // user agent counter style should always be populated with a counter named decimal if counter-style-at-rule is enabled
+    return nullptr;
+}
+
+// A valid map means that the search begins at the author counter style map, otherwise we skip the search to the UA counter styles.
+RefPtr<CSSCounterStyle> CSSCounterStyleRegistry::counterStyle(const AtomString& name, CounterStyleMap* map)
+{
+    if (name.isEmpty())
+        return decimalCounter();
+
+    auto getCounter = [&](const AtomString& counterName, const CounterStyleMap& map) {
+        auto counterIterator = map.find(counterName);
+        return counterIterator != map.end() ? counterIterator->value.get() : nullptr;
+    };
+
+    // If there is a map, the search starts from the given map.
+    if (map) {
+        auto counter = getCounter(name, *map);
+        if (counter)
+            return counter;
+    }
+    // If there was no map (called for user-agent references resolution), or the counter was not found in the given map, we search at the user-agent map.
+    auto userAgentCounter = getCounter(name, userAgentCounterStyles());
+    return userAgentCounter ? userAgentCounter : decimalCounter();
+}
+
+RefPtr<CSSCounterStyle> CSSCounterStyleRegistry::resolvedCounterStyle(const AtomString& name)
+{
+    resolveReferencesIfNeeded();
+    return counterStyle(name, &m_authorCounterStyles);
+}
+
+CounterStyleMap& CSSCounterStyleRegistry::userAgentCounterStyles()
+{
+    static NeverDestroyed<CounterStyleMap> counters;
+    return counters;
+}
+
+bool CSSCounterStyleRegistry::operator==(const CSSCounterStyleRegistry& other) const
+{
+    return m_authorCounterStyles == other.m_authorCounterStyles;
+}
+
+bool isCounterStyleUnsupportedByUserAgent(CSSValueID valueID)
+{
+    // This list has to be in sync with styles defined in counterStyles.css, once a style is added there, remove it from here.
+    switch (valueID) {
+    // FIXME: transform hard-coded styles into @counter-styles when possible (rdar://106708729).
+    case CSSValueBinary:
+    case CSSValueLowerHexadecimal:
+    case CSSValueOctal:
+    case CSSValueOriya:
+    case CSSValueUrdu:
+    case CSSValueUpperHexadecimal:
+    case CSSValueAfar:
+    case CSSValueEthiopicHalehameAaEt:
+    case CSSValueEthiopicHalehameAaEr:
+    case CSSValueAmharic:
+    case CSSValueEthiopicHalehameAmEt:
+    case CSSValueAmharicAbegede:
+    case CSSValueEthiopicAbegedeAmEt:
+    case CSSValueEthiopic:
+    case CSSValueEthiopicHalehameGez:
+    case CSSValueEthiopicAbegede:
+    case CSSValueEthiopicAbegedeGez:
+    case CSSValueHangulConsonant:
+    case CSSValueHangul:
+    case CSSValueLowerNorwegian:
+    case CSSValueOromo:
+    case CSSValueEthiopicHalehameOmEt:
+    case CSSValueSidama:
+    case CSSValueEthiopicHalehameSidEt:
+    case CSSValueSomali:
+    case CSSValueEthiopicHalehameSoEt:
+    case CSSValueTigre:
+    case CSSValueEthiopicHalehameTig:
+    case CSSValueTigrinyaEr:
+    case CSSValueEthiopicHalehameTiEr:
+    case CSSValueTigrinyaErAbegede:
+    case CSSValueEthiopicAbegedeTiEr:
+    case CSSValueTigrinyaEt:
+    case CSSValueEthiopicHalehameTiEt:
+    case CSSValueTigrinyaEtAbegede:
+    case CSSValueEthiopicAbegedeTiEt:
+    case CSSValueUpperGreek:
+    case CSSValueUpperNorwegian:
+    case CSSValueAsterisks:
+    case CSSValueFootnotes:
+    case CSSValueCjkIdeographic:
+    case CSSValueSimpChineseInformal:
+    case CSSValueSimpChineseFormal:
+    case CSSValueTradChineseInformal:
+    case CSSValueTradChineseFormal:
+    case CSSValueEthiopicNumeric:
+    // FIXME: enable korean styles rdar://106193134.
+    case CSSValueKoreanHangulFormal:
+    case CSSValueKoreanHanjaFormal:
+    case CSSValueKoreanHanjaInformal:
+    case CSSValueNone:
+        return true;
+    default:
+        return false;
+    }
+}
+
+}

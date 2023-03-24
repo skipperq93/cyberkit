@@ -30,7 +30,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/Vector.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 namespace {
 
@@ -315,4 +315,4 @@ TEST(WTF_CheckedRef, HashSet)
 
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

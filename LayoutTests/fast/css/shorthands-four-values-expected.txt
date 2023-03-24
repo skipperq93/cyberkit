@@ -1,4 +1,4 @@
-Test for WebKit bug 7987: Inspector displays incorrect summary for padding information
+Test for CyberKit bug 7987: Inspector displays incorrect summary for padding information
 
 PASS test0.style.padding is "20px"
 PASS test1.style.padding is "20px 30px"

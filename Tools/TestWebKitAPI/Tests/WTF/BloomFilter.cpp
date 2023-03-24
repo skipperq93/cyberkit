@@ -29,7 +29,7 @@
 #include <wtf/CryptographicallyRandomNumber.h>
 #include <wtf/SHA1.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static Vector<unsigned> generateRandomHashes(size_t hashCount)
 {

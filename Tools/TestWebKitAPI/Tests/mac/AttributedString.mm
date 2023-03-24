@@ -28,26 +28,26 @@
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
 #import "Test.h"
-#import "WebKitAgnosticTest.h"
+#import "CyberKitAgnosticTest.h"
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static NSAttributedString *attributedString(WebView *webView, NSRange range)
 {
     return [(NSView <NSTextInput> *)[[[webView mainFrame] frameView] documentView] attributedSubstringFromRange:range];
 }
 
-class AttributedStringTest_CustomFont : public WebKitAgnosticTest {
+class AttributedStringTest_CustomFont : public CyberKitAgnosticTest {
 public:
     template <typename View> void runSyncTest(View);
 
-    // WebKitAgnosticTest
+    // CyberKitAgnosticTest
     virtual void didLoadURL(WebView *webView) { runSyncTest(webView); }
     // FIXME: Reimplement the test using async NSTextInputClient interface.
     virtual void didLoadURL(WKWebView *wkView) { }
 
-    virtual NSURL *url() const { return [[NSBundle mainBundle] URLForResource:@"attributedStringCustomFont" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]; }
+    virtual NSURL *url() const { return [[NSBundle mainBundle] URLForResource:@"attributedStringCustomFont" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]; }
 };
 
 template <typename View>
@@ -57,21 +57,21 @@ void AttributedStringTest_CustomFont::runSyncTest(View view)
     EXPECT_WK_STREQ("Lorem", [attrString string]);
 }
 
-TEST_F(AttributedStringTest_CustomFont, WebKit)
+TEST_F(AttributedStringTest_CustomFont, CyberKit)
 {
-    runWebKit1Test();
+    runCyberKit1Test();
 }
 
-class AttributedStringTest_Strikethrough : public WebKitAgnosticTest {
+class AttributedStringTest_Strikethrough : public CyberKitAgnosticTest {
 public:
     template <typename View> void runSyncTest(View);
 
-    // WebKitAgnosticTest
+    // CyberKitAgnosticTest
     virtual void didLoadURL(WebView *webView) { runSyncTest(webView); }
     // FIXME: Reimplement the test using async NSTextInputClient interface.
     virtual void didLoadURL(WKWebView *wkView) { }
 
-    virtual NSURL *url() const { return [[NSBundle mainBundle] URLForResource:@"attributedStringStrikethrough" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]; }
+    virtual NSURL *url() const { return [[NSBundle mainBundle] URLForResource:@"attributedStringStrikethrough" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]; }
 };
 
 template <typename View>
@@ -87,19 +87,19 @@ void AttributedStringTest_Strikethrough::runSyncTest(View view)
     ASSERT_EQ(NSUnderlineStyleSingle, [(NSNumber *)[attributes objectForKey:NSStrikethroughStyleAttributeName] intValue]);
 }
 
-TEST_F(AttributedStringTest_Strikethrough, WebKit)
+TEST_F(AttributedStringTest_Strikethrough, CyberKit)
 {
-    runWebKit1Test();
+    runCyberKit1Test();
 }
 
-class AttributedStringTest_NewlineAtEndOfDocument : public WebKitAgnosticTest {
+class AttributedStringTest_NewlineAtEndOfDocument : public CyberKitAgnosticTest {
 public:
     template <typename View> void runSyncTest(View);
 
     virtual void didLoadURL(WebView *webView) { runSyncTest(webView); }
     virtual void didLoadURL(WKWebView *wkView) { }
 
-    virtual NSURL *url() const { return [[NSBundle mainBundle] URLForResource:@"attributedStringNewlineAtEndOfDocument" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]; }
+    virtual NSURL *url() const { return [[NSBundle mainBundle] URLForResource:@"attributedStringNewlineAtEndOfDocument" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]; }
 };
 
 template <typename View>
@@ -108,9 +108,9 @@ void AttributedStringTest_NewlineAtEndOfDocument::runSyncTest(View view)
     EXPECT_WK_STREQ("a\n", attributedString(view, NSMakeRange(0, 2)).string);
 }
 
-TEST_F(AttributedStringTest_NewlineAtEndOfDocument, WebKit)
+TEST_F(AttributedStringTest_NewlineAtEndOfDocument, CyberKit)
 {
-    runWebKit1Test();
+    runCyberKit1Test();
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -34,15 +34,15 @@
 #import "TestURLSchemeHandler.h"
 #import "TestWKWebView.h"
 #import "Utilities.h"
-#import <WebCore/PushSubscriptionIdentifier.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebsiteDataRecordPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/WebPushDaemonConstants.h>
-#import <WebKit/_WKFeature.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberCore/PushSubscriptionIdentifier.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebsiteDataRecordPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/WebPushDaemonConstants.h>
+#import <CyberKit/_WKFeature.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <mach/mach_init.h>
 #import <mach/task.h>
 #import <wtf/BlockPtr.h>
@@ -55,8 +55,8 @@
 // FIXME: Work through enabling on iOS
 #if ENABLE(NOTIFICATIONS) && ENABLE(NOTIFICATION_EVENT) && PLATFORM(MAC)
 
-using WebKit::WebPushD::MessageType;
-using WebKit::WebPushD::RawXPCMessageType;
+using CyberKit::WebPushD::MessageType;
+using CyberKit::WebPushD::RawXPCMessageType;
 
 static bool alertReceived = false;
 @interface NotificationPermissionDelegate : NSObject<WKUIDelegatePrivate>
@@ -77,7 +77,7 @@ static bool alertReceived = false;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static RetainPtr<NSURL> testWebPushDaemonLocation()
 {
@@ -164,27 +164,27 @@ static void cleanUpTestWebPushD(NSURL *tempDir)
 template <typename T>
 static void addMessageHeaders(xpc_object_t request, T messageType, uint64_t version)
 {
-    xpc_dictionary_set_uint64(request, WebKit::WebPushD::protocolMessageTypeKey, static_cast<uint64_t>(messageType));
-    xpc_dictionary_set_uint64(request, WebKit::WebPushD::protocolVersionKey, version);
+    xpc_dictionary_set_uint64(request, CyberKit::WebPushD::protocolMessageTypeKey, static_cast<uint64_t>(messageType));
+    xpc_dictionary_set_uint64(request, CyberKit::WebPushD::protocolVersionKey, version);
 }
 
-void sendMessageToDaemon(xpc_connection_t connection, MessageType messageType, const Vector<uint8_t>& message, uint64_t version = WebKit::WebPushD::protocolVersionValue)
+void sendMessageToDaemon(xpc_connection_t connection, MessageType messageType, const Vector<uint8_t>& message, uint64_t version = CyberKit::WebPushD::protocolVersionValue)
 {
     auto request = adoptNS(xpc_dictionary_create(nullptr, nullptr, 0));
     addMessageHeaders(request.get(), messageType, version);
-    xpc_dictionary_set_data(request.get(), WebKit::WebPushD::protocolEncodedMessageKey, message.data(), message.size());
+    xpc_dictionary_set_data(request.get(), CyberKit::WebPushD::protocolEncodedMessageKey, message.data(), message.size());
     xpc_connection_send_message(connection, request.get());
 }
 
-xpc_object_t sendMessageToDaemonWithReplySync(xpc_connection_t connection, MessageType messageType, const Vector<uint8_t>& message, uint64_t version = WebKit::WebPushD::protocolVersionValue)
+xpc_object_t sendMessageToDaemonWithReplySync(xpc_connection_t connection, MessageType messageType, const Vector<uint8_t>& message, uint64_t version = CyberKit::WebPushD::protocolVersionValue)
 {
     auto request = adoptNS(xpc_dictionary_create(nullptr, nullptr, 0));
     addMessageHeaders(request.get(), messageType, version);
-    xpc_dictionary_set_data(request.get(), WebKit::WebPushD::protocolEncodedMessageKey, message.data(), message.size());
+    xpc_dictionary_set_data(request.get(), CyberKit::WebPushD::protocolEncodedMessageKey, message.data(), message.size());
     return xpc_connection_send_message_with_reply_sync(connection, request.get());
 }
 
-xpc_object_t sendRawMessageToDaemonWithReplySync(xpc_connection_t connection, RawXPCMessageType messageType, xpc_object_t request, uint64_t version = WebKit::WebPushD::protocolVersionValue)
+xpc_object_t sendRawMessageToDaemonWithReplySync(xpc_connection_t connection, RawXPCMessageType messageType, xpc_object_t request, uint64_t version = CyberKit::WebPushD::protocolVersionValue)
 {
     addMessageHeaders(request, messageType, version);
     return xpc_connection_send_message_with_reply_sync(connection, request);
@@ -281,7 +281,7 @@ TEST(WebPushD, BasicCommunication)
         if ([nsMessage hasPrefix:@"[webpushtool "])
             return;
 
-        bool stringMatches = [nsMessage hasPrefix:@"[com.apple.WebKit.TestWebKitAPI"] || [nsMessage hasPrefix:@"[TestWebKitAPI"];
+        bool stringMatches = [nsMessage hasPrefix:@"[com.apple.CyberKit.TestCyberKitAPI"] || [nsMessage hasPrefix:@"[TestCyberKitAPI"];
         stringMatches = stringMatches && [nsMessage hasSuffix:@" Turned Debug Mode on"];
 
         EXPECT_TRUE(stringMatches);
@@ -300,15 +300,15 @@ TEST(WebPushD, BasicCommunication)
         Vector<uint8_t> encodedMessage(1);
         encodedMessage[0] = 1;
         sendMessageToDaemon(connection.get(), MessageType::SetDebugModeIsEnabled, encodedMessage);
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
     }
 
     // Echo and wait for a reply
     auto dictionary = adoptNS(xpc_dictionary_create(nullptr, nullptr, 0));
     auto encodedString = encodeString("hello"_s);
-    xpc_dictionary_set_uint64(dictionary.get(), WebKit::WebPushD::protocolVersionKey, WebKit::WebPushD::protocolVersionValue);
-    xpc_dictionary_set_uint64(dictionary.get(), WebKit::WebPushD::protocolMessageTypeKey, static_cast<uint64_t>(MessageType::EchoTwice));
-    xpc_dictionary_set_data(dictionary.get(), WebKit::WebPushD::protocolEncodedMessageKey, encodedString.data(), encodedString.size());
+    xpc_dictionary_set_uint64(dictionary.get(), CyberKit::WebPushD::protocolVersionKey, CyberKit::WebPushD::protocolVersionValue);
+    xpc_dictionary_set_uint64(dictionary.get(), CyberKit::WebPushD::protocolMessageTypeKey, static_cast<uint64_t>(MessageType::EchoTwice));
+    xpc_dictionary_set_data(dictionary.get(), CyberKit::WebPushD::protocolEncodedMessageKey, encodedString.data(), encodedString.size());
 
     done = false;
     xpc_connection_send_message_with_reply(connection.get(), dictionary.get(), dispatch_get_main_queue(), ^(xpc_object_t reply) {
@@ -326,10 +326,10 @@ TEST(WebPushD, BasicCommunication)
         EXPECT_FALSE(memcmp(data, expectedReply.data(), expectedReply.size()));
         done = true;
     });
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     // Sending a message with a higher protocol version should cause the connection to be terminated
-    auto reply = sendMessageToDaemonWithReplySync(connection.get(), MessageType::EchoTwice, { }, WebKit::WebPushD::protocolVersionValue + 1);
+    auto reply = sendMessageToDaemonWithReplySync(connection.get(), MessageType::EchoTwice, { }, CyberKit::WebPushD::protocolVersionValue + 1);
     EXPECT_EQ(reply, XPC_ERROR_CONNECTION_INTERRUPTED);
 
     cleanUpTestWebPushD(tempDir);
@@ -343,7 +343,7 @@ static void clearWebsiteDataStore(WKWebsiteDataStore *store)
             clearedStore = true;
         }];
     }];
-    TestWebKitAPI::Util::run(&clearedStore);
+    TestCyberKitAPI::Util::run(&clearedStore);
 }
 
 static ASCIILiteral validServerKey = "BA1Hxzyi1RUM1b5wjxsn7nGxAszw2u61m164i3MrAIxHF6YK5h4SDYic-dRuU_RCPCfA5aq9ojSwk5Y2EmClBPs"_s;
@@ -467,10 +467,10 @@ public:
             ready = true;
         }];
 
-        m_server.reset(new TestWebKitAPI::HTTPServer({
+        m_server.reset(new TestCyberKitAPI::HTTPServer({
             { "/"_s, { htmlSource } },
             { "/sw.js"_s, { { { "Content-Type"_s, "application/javascript"_s } }, serviceWorkerScriptSource } }
-        }, TestWebKitAPI::HTTPServer::Protocol::HttpsProxy));
+        }, TestCyberKitAPI::HTTPServer::Protocol::HttpsProxy));
 
         RetainPtr<_WKWebsiteDataStoreConfiguration> dataStoreConfiguration;
         if (dataStoreIdentifier)
@@ -526,7 +526,7 @@ public:
 
         [m_webView loadRequest:[NSURLRequest requestWithURL:m_url.get()]];
 
-        TestWebKitAPI::Util::run(&ready);
+        TestCyberKitAPI::Util::run(&ready);
     }
 
     std::optional<UUID> dataStoreIdentifier() { return m_dataStoreIdentifier; }
@@ -575,7 +575,7 @@ public:
             done = true;
         }];
 
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
         return result;
     }
 
@@ -607,12 +607,12 @@ public:
     void injectPushMessage(NSDictionary *apsUserInfo)
     {
         String scope = [m_url absoluteString];
-        WebCore::PushSubscriptionSetIdentifier subscriptionSetIdentifier {
-            .bundleIdentifier = "com.apple.WebKit.TestWebKitAPI"_s,
+        CyberCore::PushSubscriptionSetIdentifier subscriptionSetIdentifier {
+            .bundleIdentifier = "com.apple.CyberKit.TestCyberKitAPI"_s,
             .pushPartition = m_pushPartition,
             .dataStoreIdentifier = m_dataStoreIdentifier
         };
-        auto topic = WebCore::makePushTopic(subscriptionSetIdentifier, scope);
+        auto topic = CyberCore::makePushTopic(subscriptionSetIdentifier, scope);
         id obj = @{
             @"topic": (NSString *)topic,
             @"userInfo": apsUserInfo
@@ -634,7 +634,7 @@ public:
             messages = rawMessages;
             gotMessages = true;
         }];
-        TestWebKitAPI::Util::run(&gotMessages);
+        TestCyberKitAPI::Util::run(&gotMessages);
 
         return messages;
     }
@@ -653,8 +653,8 @@ public:
             pushMessageProcessedResult = result;
             pushMessageProcessed = true;
         }];
-        TestWebKitAPI::Util::run(&pushMessageProcessed);
-        TestWebKitAPI::Util::run(&gotExpectedMessage);
+        TestCyberKitAPI::Util::run(&pushMessageProcessed);
+        TestCyberKitAPI::Util::run(&gotExpectedMessage);
 
         return pushMessageProcessedResult;
     }
@@ -675,7 +675,7 @@ public:
             gotNotificationClick = true;
         }];
         ASSERT_TRUE(m_notificationProvider.simulateNotificationClick());
-        TestWebKitAPI::Util::run(&gotNotificationClick);
+        TestCyberKitAPI::Util::run(&gotNotificationClick);
     }
 
     void setITPTimeAdvance(unsigned daysToAdvance)
@@ -687,7 +687,7 @@ public:
         [m_dataStore _setResourceLoadStatisticsTimeAdvanceForTesting:advance.value() completionHandler:^{
             done = true;
         }];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
 
         done = false;
         [m_dataStore _processStatisticsAndDataRecords:^{
@@ -723,7 +723,7 @@ private:
     RetainPtr<NSURL> m_url;
     RetainPtr<WKWebsiteDataStore> m_dataStore;
     RetainPtr<TestMessageHandler> m_testMessageHandler;
-    std::unique_ptr<TestWebKitAPI::HTTPServer> m_server;
+    std::unique_ptr<TestCyberKitAPI::HTTPServer> m_server;
     TestNotificationProvider& m_notificationProvider;
     RetainPtr<WKWebView> m_webView;
 };
@@ -740,7 +740,7 @@ public:
         auto processPoolConfiguration = adoptNS([[_WKProcessPoolConfiguration alloc] init]);
         auto processPool = adoptNS([[WKProcessPool alloc] _initWithConfiguration:processPoolConfiguration.get()]);
 
-        m_notificationProvider = makeUnique<TestWebKitAPI::TestNotificationProvider>(Vector<WKNotificationManagerRef> { [processPool _notificationManagerForTesting], WKNotificationManagerGetSharedServiceWorkerNotificationManager() });
+        m_notificationProvider = makeUnique<TestCyberKitAPI::TestNotificationProvider>(Vector<WKNotificationManagerRef> { [processPool _notificationManagerForTesting], WKNotificationManagerGetSharedServiceWorkerNotificationManager() });
 
         auto webView = makeUniqueRef<WebPushDTestWebView>(emptyString(), std::nullopt, processPool.get(), *m_notificationProvider);
         m_webViews.append(WTFMove(webView));
@@ -781,7 +781,7 @@ public:
 
 protected:
     RetainPtr<NSURL> m_tempDirectory;
-    std::unique_ptr<TestWebKitAPI::TestNotificationProvider> m_notificationProvider;
+    std::unique_ptr<TestCyberKitAPI::TestNotificationProvider> m_notificationProvider;
     Vector<UniqueRef<WebPushDTestWebView>> m_webViews;
 };
 
@@ -820,11 +820,11 @@ TEST_F(WebPushDTest, SubscribeTest)
     std::sort(subscribed.begin(), subscribed.end(), lessThan);
 
     Vector<String> expected {
-        "com.apple.WebKit.TestWebKitAPI ds:0bf5053b-164c-4b7d-8179-832e6bf158df https://example.com/"_s,
-        "com.apple.WebKit.TestWebKitAPI ds:940e7729-738e-439f-a366-1a8719e23b2d https://example.com/"_s,
-        "com.apple.WebKit.TestWebKitAPI https://example.com/"_s,
-        "com.apple.WebKit.TestWebKitAPI part:testPartition ds:940e7729-738e-439f-a366-1a8719e23b2d https://example.com/"_s,
-        "com.apple.WebKit.TestWebKitAPI part:testPartition https://example.com/"_s
+        "com.apple.CyberKit.TestCyberKitAPI ds:0bf5053b-164c-4b7d-8179-832e6bf158df https://example.com/"_s,
+        "com.apple.CyberKit.TestCyberKitAPI ds:940e7729-738e-439f-a366-1a8719e23b2d https://example.com/"_s,
+        "com.apple.CyberKit.TestCyberKitAPI https://example.com/"_s,
+        "com.apple.CyberKit.TestCyberKitAPI part:testPartition ds:940e7729-738e-439f-a366-1a8719e23b2d https://example.com/"_s,
+        "com.apple.CyberKit.TestCyberKitAPI part:testPartition https://example.com/"_s
     };
     ASSERT_EQ(subscribed, expected);
 
@@ -904,7 +904,7 @@ TEST_F(WebPushDTest, UnsubscribesOnClearingAllWebsiteData)
         [v->dataStore() removeDataOfTypes:[NSSet setWithObject:WKWebsiteDataTypeServiceWorkerRegistrations] modifiedSince:[NSDate distantPast] completionHandler:^(void) {
             removedData = true;
         }];
-        TestWebKitAPI::Util::run(&removedData);
+        TestCyberKitAPI::Util::run(&removedData);
 
         ASSERT_FALSE(v->hasPushSubscription());
 
@@ -931,7 +931,7 @@ TEST_F(WebPushDTest, UnsubscribesOnClearingWebsiteDataForOrigin)
             records = dataRecords;
             fetchedRecords = true;
         }];
-        TestWebKitAPI::Util::run(&fetchedRecords);
+        TestCyberKitAPI::Util::run(&fetchedRecords);
 
         WKWebsiteDataRecord *filteredRecord = nil;
         for (WKWebsiteDataRecord *record in records.get()) {
@@ -948,7 +948,7 @@ TEST_F(WebPushDTest, UnsubscribesOnClearingWebsiteDataForOrigin)
         [v->dataStore() removeDataOfTypes:[NSSet setWithObject:WKWebsiteDataTypeServiceWorkerRegistrations] forDataRecords:[NSArray arrayWithObject:filteredRecord] completionHandler:^(void) {
             removedData = true;
         }];
-        TestWebKitAPI::Util::run(&removedData);
+        TestCyberKitAPI::Util::run(&removedData);
 
         ASSERT_FALSE(v->hasPushSubscription());
 
@@ -969,7 +969,7 @@ TEST_F(WebPushDTest, UnsubscribesOnPermissionReset)
     v->resetPermission();
 
     bool isSubscribed = true;
-    TestWebKitAPI::Util::waitForConditionWithLogging([&v, &isSubscribed]() mutable {
+    TestCyberKitAPI::Util::waitForConditionWithLogging([&v, &isSubscribed]() mutable {
         isSubscribed = v->hasPushSubscription();
         if (!isSubscribed)
             return true;
@@ -993,7 +993,7 @@ TEST_F(WebPushDTest, IgnoresSubscriptionOnPermissionDenied)
     v->setPermission(false);
 
     bool isIgnored = false;
-    TestWebKitAPI::Util::waitForConditionWithLogging([this, &isIgnored] {
+    TestCyberKitAPI::Util::waitForConditionWithLogging([this, &isIgnored] {
         auto [enabledTopics, ignoredTopics] = getPushTopics();
         if (!enabledTopics.size() && ignoredTopics.size()) {
             isIgnored = true;
@@ -1011,7 +1011,7 @@ TEST_F(WebPushDTest, IgnoresSubscriptionOnPermissionDenied)
     v->setPermission(true);
 
     bool isEnabled = false;
-    TestWebKitAPI::Util::waitForConditionWithLogging([this, &isEnabled] {
+    TestCyberKitAPI::Util::waitForConditionWithLogging([this, &isEnabled] {
         auto [enabledTopics, ignoredTopics] = getPushTopics();
         if (enabledTopics.size() && !ignoredTopics.size()) {
             isEnabled = true;
@@ -1038,7 +1038,7 @@ TEST_F(WebPushDTest, TooManySilentPushesCausesUnsubscribe)
     for (auto& v : webViews()) {
         ASSERT_TRUE(v->hasPushSubscription());
 
-        for (unsigned i = 0; i < WebKit::WebPushD::maxSilentPushCount; i++) {
+        for (unsigned i = 0; i < CyberKit::WebPushD::maxSilentPushCount; i++) {
             v->injectPushMessage(@{ });
             auto messages = v->fetchPushMessages();
             ASSERT_EQ([messages count], 1u);
@@ -1216,7 +1216,7 @@ TEST(WebPushD, PermissionManagement)
     [webView setUIDelegate:uiDelegate.get()];
     [webView synchronouslyLoadHTMLString:@"" baseURL:[NSURL URLWithString:@"https://example.org"]];
     [webView evaluateJavaScript:@"Notification.requestPermission().then(() => { alert('done') })" completionHandler:nil];
-    TestWebKitAPI::Util::run(&alertReceived);
+    TestCyberKitAPI::Util::run(&alertReceived);
 
     static bool originOperationDone = false;
     static RetainPtr<WKSecurityOrigin> origin;
@@ -1226,7 +1226,7 @@ TEST(WebPushD, PermissionManagement)
         originOperationDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&originOperationDone);
+    TestCyberKitAPI::Util::run(&originOperationDone);
 
     EXPECT_WK_STREQ(origin.get().protocol, "https");
     EXPECT_WK_STREQ(origin.get().host, "example.org");
@@ -1243,14 +1243,14 @@ TEST(WebPushD, PermissionManagement)
         originOperationDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&originOperationDone);
+    TestCyberKitAPI::Util::run(&originOperationDone);
 
     originOperationDone = false;
     [dataStore _getOriginsWithPushAndNotificationPermissions:^(NSSet<WKSecurityOrigin *> *origins) {
         EXPECT_EQ([origins count], 0u);
         originOperationDone = true;
     }];
-    TestWebKitAPI::Util::run(&originOperationDone);
+    TestCyberKitAPI::Util::run(&originOperationDone);
 
     cleanUpTestWebPushD(tempDirectory);
 }
@@ -1263,7 +1263,7 @@ static void deleteAllRegistrationsForDataStore(WKWebsiteDataStore *dataStore)
         originSet = origins;
         originOperationDone = true;
     }];
-    TestWebKitAPI::Util::run(&originOperationDone);
+    TestCyberKitAPI::Util::run(&originOperationDone);
 
     if (![originSet count])
         return;
@@ -1277,14 +1277,14 @@ static void deleteAllRegistrationsForDataStore(WKWebsiteDataStore *dataStore)
                 originOperationDone = true;
         }];
     }
-    TestWebKitAPI::Util::run(&originOperationDone);
+    TestCyberKitAPI::Util::run(&originOperationDone);
 
     originOperationDone = false;
     [dataStore _getOriginsWithPushAndNotificationPermissions:^(NSSet<WKSecurityOrigin *> *origins) {
         EXPECT_EQ([origins count], 0u);
         originOperationDone = true;
     }];
-    TestWebKitAPI::Util::run(&originOperationDone);
+    TestCyberKitAPI::Util::run(&originOperationDone);
 
 }
 
@@ -1323,11 +1323,11 @@ TEST(WebPushD, InstallCoordinationBundles)
     [webView setUIDelegate:uiDelegate.get()];
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"testing://main/index.html"]]];
-    TestWebKitAPI::Util::run(&alertReceived);
+    TestCyberKitAPI::Util::run(&alertReceived);
 
     alertReceived = false;
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"testing://secondary/index.html"]]];
-    TestWebKitAPI::Util::run(&alertReceived);
+    TestCyberKitAPI::Util::run(&alertReceived);
 
     static bool originOperationDone = false;
     static RetainPtr<NSSet<WKSecurityOrigin *>> origins;
@@ -1336,7 +1336,7 @@ TEST(WebPushD, InstallCoordinationBundles)
         origins = rawOrigins;
         originOperationDone = true;
     }];
-    TestWebKitAPI::Util::run(&originOperationDone);
+    TestCyberKitAPI::Util::run(&originOperationDone);
 
     for (WKSecurityOrigin *origin in origins.get()) {
         EXPECT_TRUE([origin.protocol isEqualToString:@"testing"]);
@@ -1349,6 +1349,6 @@ TEST(WebPushD, InstallCoordinationBundles)
 #endif // #if USE(APPLE_INTERNAL_SDK)
 #endif // ENABLE(INSTALL_COORDINATION_BUNDLES)
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(NOTIFICATIONS) && ENABLE(NOTIFICATION_EVENT) && (PLATFORM(MAC)

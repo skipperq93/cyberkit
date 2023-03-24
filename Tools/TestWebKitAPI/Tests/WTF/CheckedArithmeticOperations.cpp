@@ -26,7 +26,7 @@
 #include "config.h"
 #include <wtf/CheckedArithmetic.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class OverflowCrashLogger {
 protected:
@@ -498,4 +498,4 @@ TEST(CheckedArithmeticTest, Division)
     EXPECT_EQ(100U, size.value());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

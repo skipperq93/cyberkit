@@ -34,7 +34,7 @@
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/GUniquePtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_WorkQueue, AsyncIO)
 {
@@ -44,7 +44,7 @@ TEST(WTF_WorkQueue, AsyncIO)
         GMainContext* m_mainContext;
     } context;
 
-    auto queue = WorkQueue::create("com.apple.WebKit.Test.AsyncIO");
+    auto queue = WorkQueue::create("com.apple.CyberKit.Test.AsyncIO");
     context.m_mainContext = g_main_context_default();
     EXPECT_FALSE(g_main_context_get_thread_default());
 
@@ -68,4 +68,4 @@ TEST(WTF_WorkQueue, AsyncIO)
     context.m_testCompleted.wait(context.m_lock);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

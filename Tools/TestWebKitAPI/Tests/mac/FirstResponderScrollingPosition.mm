@@ -27,13 +27,13 @@
 #import "JavaScriptTest.h"
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
-#import <WebKit/WKRetainPtr.h>
-#import <WebKit/WKPage.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKRetainPtr.h>
+#import <CyberKit/WKPage.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
     
 static bool didFinishLoad;
 
@@ -42,7 +42,7 @@ static void didFinishNavigation(WKPageRef, WKNavigationRef, WKTypeRef, const voi
     didFinishLoad = true;
 }
 
-TEST(WebKit, FirstResponderScrollingPosition)
+TEST(CyberKit, FirstResponderScrollingPosition)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextWithInjectedBundle());
 
@@ -107,4 +107,4 @@ TEST(WebKit, FirstResponderScrollingPosition)
     EXPECT_JS_EQ(newWebView.page(), "window.scrollY", "0");
 }
     
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

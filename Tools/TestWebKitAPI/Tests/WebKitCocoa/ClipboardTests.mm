@@ -29,9 +29,9 @@
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
 #import <CoreServices/CoreServices.h>
-#import <WebCore/LegacyNSPasteboardTypes.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/_WKFeature.h>
+#import <CyberCore/LegacyNSPasteboardTypes.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/_WKFeature.h>
 
 @interface TestWKWebView (ClipboardTests)
 
@@ -48,7 +48,7 @@
         done = true;
     }];
     [self evaluateJavaScript:@"readClipboard()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 - (void)writeString:(NSString *)string toClipboardWithType:(NSString *)type
@@ -58,7 +58,7 @@
         done = true;
     }];
     [self evaluateJavaScript:[NSString stringWithFormat:@"writeStringToClipboard(`%@`, `%@`)", type, string] completionHandler:nil];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 @end
@@ -101,7 +101,7 @@ static void writeMultipleObjectsToPlatformPasteboard()
     [thirdItem setString:@"<strong style='color: rgb(0, 255, 0);'>Hello world</strong>" forType:NSPasteboardTypeHTML];
 
     auto fourthItem = adoptNS([[NSPasteboardItem alloc] init]);
-    [fourthItem setString:@"WebKit" forType:NSPasteboardTypeString];
+    [fourthItem setString:@"CyberKit" forType:NSPasteboardTypeString];
     [fourthItem setString:@"https://webkit.org/" forType:NSPasteboardTypeURL];
     [fourthItem setString:@"<a href='https://webkit.org/'>Hello world</a>" forType:NSPasteboardTypeHTML];
 
@@ -118,7 +118,7 @@ static void writeMultipleObjectsToPlatformPasteboard()
     }];
 
     auto fourthItem = adoptNS([[NSItemProvider alloc] init]);
-    [fourthItem registerObject:@"WebKit" visibility:NSItemProviderRepresentationVisibilityAll];
+    [fourthItem registerObject:@"CyberKit" visibility:NSItemProviderRepresentationVisibilityAll];
     [fourthItem registerObject:[NSURL URLWithString:@"https://webkit.org/"] visibility:NSItemProviderRepresentationVisibilityAll];
     [fourthItem registerDataRepresentationForTypeIdentifier:(__bridge NSString *)kUTTypeHTML visibility:NSItemProviderRepresentationVisibilityAll loadHandler:[&] (void (^completionHandler)(NSData *, NSError *)) -> NSProgress * {
         completionHandler([@"<a href='https://webkit.org/'>Hello world</a>" dataUsingEncoding:NSUTF8StringEncoding], nil);
@@ -132,7 +132,7 @@ static void writeMultipleObjectsToPlatformPasteboard()
 static RetainPtr<NSString> readMarkupFromPasteboard()
 {
 #if PLATFORM(MAC)
-    NSData *rawData = [NSPasteboard.generalPasteboard dataForType:WebCore::legacyHTMLPasteboardType()];
+    NSData *rawData = [NSPasteboard.generalPasteboard dataForType:CyberCore::legacyHTMLPasteboardType()];
 #else
     NSData *rawData = [UIPasteboard.generalPasteboard dataForPasteboardType:(__bridge NSString *)kUTTypeHTML];
 #endif
@@ -150,7 +150,7 @@ TEST(ClipboardTests, ReadMultipleItems)
     EXPECT_WK_STREQ("Hello", [webView stringByEvaluatingJavaScript:@"clipboardData[0]['text/plain']"]);
     EXPECT_WK_STREQ("https://apple.com/", [webView stringByEvaluatingJavaScript:@"clipboardData[1]['text/uri-list']"]);
     EXPECT_WK_STREQ("rgb(0, 255, 0)", [webView stringByEvaluatingJavaScript:@"getComputedStyle(clipboardData[2]['text/html'].querySelector('strong')).color"]);
-    EXPECT_WK_STREQ("WebKit", [webView stringByEvaluatingJavaScript:@"clipboardData[3]['text/plain']"]);
+    EXPECT_WK_STREQ("CyberKit", [webView stringByEvaluatingJavaScript:@"clipboardData[3]['text/plain']"]);
     EXPECT_WK_STREQ("https://webkit.org/", [webView objectByEvaluatingJavaScript:@"clipboardData[3]['text/uri-list']"]);
     EXPECT_WK_STREQ("https://webkit.org/", [webView stringByEvaluatingJavaScript:@"clipboardData[3]['text/html'].querySelector('a').href"]);
 }
@@ -171,7 +171,7 @@ TEST(ClipboardTests, WriteSanitizedMarkup)
 TEST(ClipboardTests, ConvertTIFFToPNGWhenPasting)
 {
     auto webView = createWebViewForClipboardTests();
-    auto url = [[NSBundle mainBundle] URLForResource:@"sunset-in-cupertino-100px" withExtension:@"tiff" subdirectory:@"TestWebKitAPI.resources"];
+    auto url = [[NSBundle mainBundle] URLForResource:@"sunset-in-cupertino-100px" withExtension:@"tiff" subdirectory:@"TestCyberKitAPI.resources"];
     auto pasteboard = NSPasteboard.generalPasteboard;
     [pasteboard clearContents];
     [pasteboard setData:[NSData dataWithContentsOfURL:url] forType:NSPasteboardTypeTIFF];

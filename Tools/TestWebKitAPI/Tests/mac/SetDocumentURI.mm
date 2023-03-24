@@ -28,8 +28,8 @@
 #import "PlatformWebView.h"
 #import <wtf/RetainPtr.h>
 
-#import <WebKit/DOM.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/DOM.h>
+#import <CyberKit/WebViewPrivate.h>
 
 @interface SetDocumentURITest : NSObject <WebFrameLoadDelegate> {
 }
@@ -45,14 +45,14 @@ static bool didFinishLoad;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, SetDocumentURITestFile)
+TEST(CyberKitLegacy, SetDocumentURITestFile)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<SetDocumentURITest> testController = adoptNS([SetDocumentURITest new]);
     webView.get().frameLoadDelegate = testController.get();
-    [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"SetDocumentURI" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"SetDocumentURI" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     Util::run(&didFinishLoad);
     didFinishLoad = false;
     DOMDocument *document = webView.get().mainFrameDocument;
@@ -64,12 +64,12 @@ TEST(WebKitLegacy, SetDocumentURITestFile)
     EXPECT_WK_STREQ(@"file:///test", [document baseURI]);
 }
 
-TEST(WebKitLegacy, SetDocumentURITestURL)
+TEST(CyberKitLegacy, SetDocumentURITestURL)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<SetDocumentURITest> testController = adoptNS([SetDocumentURITest new]);
     webView.get().frameLoadDelegate = testController.get();
-    [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"SetDocumentURI" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"SetDocumentURI" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     Util::run(&didFinishLoad);
     didFinishLoad = false;
     DOMDocument *document = webView.get().mainFrameDocument;
@@ -84,12 +84,12 @@ TEST(WebKitLegacy, SetDocumentURITestURL)
     EXPECT_WK_STREQ(@"http://example.com/relativeURL.html", result);
 }
 
-TEST(WebKitLegacy, SetDocumentURITestString)
+TEST(CyberKitLegacy, SetDocumentURITestString)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<SetDocumentURITest> testController = adoptNS([SetDocumentURITest new]);
     webView.get().frameLoadDelegate = testController.get();
-    [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"SetDocumentURI" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"SetDocumentURI" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     Util::run(&didFinishLoad);
     didFinishLoad = false;
     DOMDocument *document = webView.get().mainFrameDocument;
@@ -100,12 +100,12 @@ TEST(WebKitLegacy, SetDocumentURITestString)
     EXPECT_WK_STREQ(@"about:blank", [document baseURI]);
 }
 
-TEST(WebKitLegacy, SetDocumentURITestNull)
+TEST(CyberKitLegacy, SetDocumentURITestNull)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<SetDocumentURITest> testController = adoptNS([SetDocumentURITest new]);
     webView.get().frameLoadDelegate = testController.get();
-    [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"SetDocumentURI" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"SetDocumentURI" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     Util::run(&didFinishLoad);
     didFinishLoad = false;
     DOMDocument *document = webView.get().mainFrameDocument;
@@ -116,4 +116,4 @@ TEST(WebKitLegacy, SetDocumentURITestNull)
     EXPECT_WK_STREQ(@"about:blank", [document baseURI]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

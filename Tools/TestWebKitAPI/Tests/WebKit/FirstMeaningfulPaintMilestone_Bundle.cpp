@@ -30,10 +30,10 @@
 #include "InjectedBundleTest.h"
 
 #include "PlatformUtilities.h"
-#include <WebKit/WKBundlePage.h>
-#include <WebKit/WKBundlePagePrivate.h>
+#include <CyberKit/WKBundlePage.h>
+#include <CyberKit/WKBundlePagePrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class FirstMeaningfulPaintMilestoneTest : public InjectedBundleTest {
 public:
@@ -51,6 +51,6 @@ public:
 
 static InjectedBundleTest::Register<FirstMeaningfulPaintMilestoneTest> registrar("FirstMeaningfulPaintMilestoneTest");
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -1,4 +1,4 @@
-#PID UNRESPONSIVE - WebKitTestRunner (pid 80906)
+#PID UNRESPONSIVE - CyberKitTestRunner (pid 80906)
 FAIL: Timed out waiting for notifyDone to be called
 
 #EOF

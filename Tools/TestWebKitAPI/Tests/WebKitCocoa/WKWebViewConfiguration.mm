@@ -31,16 +31,16 @@
 #import "TestProtocol.h"
 #import "TestUIDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKUserContentControllerPrivate.h>
-#import <WebKit/WKUserScriptPrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/WKUserScriptPrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/Function.h>
 #import <wtf/RetainPtr.h>
 
-TEST(WebKit, InvalidConfiguration)
+TEST(CyberKit, InvalidConfiguration)
 {
     auto shouldThrowExceptionWhenUsed = [](Function<void(WKWebViewConfiguration *)>&& modifier) {
         @try {
@@ -81,7 +81,7 @@ TEST(WebKit, InvalidConfiguration)
     });
 }
 
-TEST(WebKit, ConfigurationGroupIdentifierIsCopied)
+TEST(CyberKit, ConfigurationGroupIdentifierIsCopied)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [configuration _setGroupIdentifier:@"TestGroupIdentifier"];
@@ -90,23 +90,23 @@ TEST(WebKit, ConfigurationGroupIdentifierIsCopied)
     EXPECT_STREQ([configuration _groupIdentifier].UTF8String, [configuationCopy _groupIdentifier].UTF8String);
 }
 
-TEST(WebKit, DefaultConfigurationEME)
+TEST(CyberKit, DefaultConfigurationEME)
 {
     auto configuration = adoptNS([WKWebViewConfiguration new]);
     EXPECT_TRUE([configuration _legacyEncryptedMediaAPIEnabled]);
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 100, 100) configuration:configuration.get()]);
     [webView loadHTMLString:@"<html>hi</html>" baseURL:nil];
     __block bool done = false;
-    [webView evaluateJavaScript:@"window.WebKitMediaKeys ? 'ENABLED' : 'DISABLED'" completionHandler:^(id result, NSError *){
+    [webView evaluateJavaScript:@"window.CyberKitMediaKeys ? 'ENABLED' : 'DISABLED'" completionHandler:^(id result, NSError *){
         EXPECT_TRUE([result isEqualToString:@"ENABLED"]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
-TEST(WebKit, ConfigurationHTTPSUpgrade)
+TEST(CyberKit, ConfigurationHTTPSUpgrade)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     bool done = false;
     Vector<char> requestBytes;
     HTTPServer server([&] (Connection connection) {
@@ -155,7 +155,7 @@ TEST(WebKit, ConfigurationHTTPSUpgrade)
     EXPECT_FALSE([WKWebView _willUpgradeToHTTPS:[NSURL URLWithString:@"http://example.com/"]]);
 }
 
-TEST(WebKit, ConfigurationDisableJavaScript)
+TEST(CyberKit, ConfigurationDisableJavaScript)
 {
     auto configuration = adoptNS([WKWebViewConfiguration new]);
     EXPECT_TRUE([configuration _allowsJavaScriptMarkup]);
@@ -166,7 +166,7 @@ TEST(WebKit, ConfigurationDisableJavaScript)
     EXPECT_WK_STREQ(bodyHTML, @"PASS");
 }
 
-TEST(WebKit, ConfigurationDisableJavaScriptNestedBody)
+TEST(CyberKit, ConfigurationDisableJavaScriptNestedBody)
 {
     auto configuration = adoptNS([WKWebViewConfiguration new]);
     EXPECT_TRUE([configuration _allowsJavaScriptMarkup]);
@@ -177,7 +177,7 @@ TEST(WebKit, ConfigurationDisableJavaScriptNestedBody)
     EXPECT_WK_STREQ(bodyHTML, @"<table></table>");
 }
 
-TEST(WebKit, ConfigurationDisableJavaScriptSVGAnimateElement)
+TEST(CyberKit, ConfigurationDisableJavaScriptSVGAnimateElement)
 {
     auto configuration = adoptNS([WKWebViewConfiguration new]);
     EXPECT_TRUE([configuration _allowsJavaScriptMarkup]);
@@ -188,7 +188,7 @@ TEST(WebKit, ConfigurationDisableJavaScriptSVGAnimateElement)
     EXPECT_WK_STREQ(bodyHTML, @"<svg><a><rect fill=\"green\" width=\"10\" height=\"10\"></rect><animate attributeName=\"href\"></animate></a></svg>");
 }
 
-TEST(WebKit, ConfigurationDisableJavaScriptSVGAnimateElementComplex)
+TEST(CyberKit, ConfigurationDisableJavaScriptSVGAnimateElementComplex)
 {
     auto configuration = adoptNS([WKWebViewConfiguration new]);
     EXPECT_TRUE([configuration _allowsJavaScriptMarkup]);
@@ -199,7 +199,7 @@ TEST(WebKit, ConfigurationDisableJavaScriptSVGAnimateElementComplex)
     EXPECT_WK_STREQ(bodyHTML, @"<svg><a><rect fill=\"green\" width=\"10\" height=\"10\"></rect><animate attributeName=\"href\" dur=\"4s\" calcMode=\"spline\" repeatCount=\"indefinite\" keyTimes=\"0; 0.25; 0.5; 0.75; 1\" keySplines=\"0.5 0 0.5 1; 0.5 0 0.5 1; 0.5 0 0.5 1; 0.5 0 0.5 1\"></animate></a></svg>");
 }
 
-TEST(WebKit, ConfigurationMaskedURLSchemes)
+TEST(CyberKit, ConfigurationMaskedURLSchemes)
 {
     [TestProtocol registerWithScheme:@"https"];
 
@@ -288,7 +288,7 @@ TEST(WebKit, ConfigurationMaskedURLSchemes)
     EXPECT_WK_STREQ([delegate waitForAlert], "global code@https://example.com/foo.js:1:17");
 }
 
-TEST(WebKit, ConfigurationWebViewToCloneSessionStorageFrom)
+TEST(CyberKit, ConfigurationWebViewToCloneSessionStorageFrom)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
@@ -305,5 +305,5 @@ TEST(WebKit, ConfigurationWebViewToCloneSessionStorageFrom)
         EXPECT_WK_STREQ(@"value", result);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }

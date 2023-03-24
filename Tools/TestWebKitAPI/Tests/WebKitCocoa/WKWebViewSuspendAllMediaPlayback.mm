@@ -27,8 +27,8 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewConfiguration.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKWebViewPrivate.h>
 
 TEST(WKWebViewSuspendAllMediaPlayback, BeforeLoading)
 {
@@ -43,7 +43,7 @@ TEST(WKWebViewSuspendAllMediaPlayback, BeforeLoading)
     __block bool notPlaying = false;
     [webView performAfterReceivingMessage:@"not playing" action:^{ notPlaying = true; }];
     [webView synchronouslyLoadTestPageNamed:@"video-with-audio"];
-    TestWebKitAPI::Util::run(&notPlaying);
+    TestCyberKitAPI::Util::run(&notPlaying);
 }
 
 
@@ -61,19 +61,19 @@ TEST(WKWebViewSuspendAllMediaPlayback, AfterLoading)
 
     [webView synchronouslyLoadTestPageNamed:@"video-with-audio"];
 
-    TestWebKitAPI::Util::run(&isPlaying);
+    TestCyberKitAPI::Util::run(&isPlaying);
 
     __block bool isPaused = false;
     [webView performAfterReceivingMessage:@"paused" action:^{ isPaused = true; }];
     [webView stringByEvaluatingJavaScript:@"document.querySelector('video').addEventListener('pause', paused);"];
     [webView _suspendAllMediaPlayback];
 
-    TestWebKitAPI::Util::run(&isPaused);
+    TestCyberKitAPI::Util::run(&isPaused);
 
     isPlaying = false;
     [webView performAfterReceivingMessage:@"playing" action:^{ isPlaying = true; }];
     [webView stringByEvaluatingJavaScript:@"document.querySelector('video').addEventListener('playing', playing);"];
     [webView _resumeAllMediaPlayback];
 
-    TestWebKitAPI::Util::run(&isPlaying);
+    TestCyberKitAPI::Util::run(&isPlaying);
 }

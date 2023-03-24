@@ -31,7 +31,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/SuspendableWorkQueue.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_SuspendableWorkQueue, Suspend)
 {
@@ -45,7 +45,7 @@ TEST(WTF_SuspendableWorkQueue, Suspend)
     bool suspendCompletionHandlerCalled = false;
     bool allTasksAreCompleted = false;
 
-    auto queue = SuspendableWorkQueue::create("com.apple.WebKit.Test.simple");
+    auto queue = SuspendableWorkQueue::create("com.apple.CyberKit.Test.simple");
     // Schedule first batch of tasks.
     for (; scheduledTaskCount < taskCount / 2; ++scheduledTaskCount) {
         queue->dispatch([&]() mutable {
@@ -104,7 +104,7 @@ TEST(WTF_SuspendableWorkQueue, SuspendTwice)
     Lock lock;
     bool suspendCompletionHandlerCalled = false;
     int suspendCount = 0;
-    auto queue = SuspendableWorkQueue::create("com.apple.WebKit.Test.simple");
+    auto queue = SuspendableWorkQueue::create("com.apple.CyberKit.Test.simple");
     queue->suspend([&]() {
         Locker locker { lock };
         ++suspendCount;
@@ -129,4 +129,4 @@ TEST(WTF_SuspendableWorkQueue, SuspendTwice)
     EXPECT_EQ(1, suspendCount);
 }
 
-} // namesapce TestWebKitAPI
+} // namesapce TestCyberKitAPI

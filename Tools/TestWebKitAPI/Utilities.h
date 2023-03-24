@@ -29,7 +29,7 @@
 
 #include <wtf/Seconds.h>
 
-namespace TestWebKitAPI::Util {
+namespace TestCyberKitAPI::Util {
 
 // Runs a platform runloop until the 'done' flag is true.
 void run(bool* done);

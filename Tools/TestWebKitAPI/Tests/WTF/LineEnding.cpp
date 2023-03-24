@@ -28,7 +28,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/LineEnding.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 const uint8_t null = 0;
 const uint8_t CR = '\r';
@@ -117,4 +117,4 @@ TEST(WTF, LineEndingNormalizeToCRLF)
     EXPECT_STREQ("a<CR><LF><CR><LF>b", stringify(normalizeLineEndingsToCRLF({ letterA, LF, CR, letterB })));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

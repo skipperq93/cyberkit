@@ -29,12 +29,12 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKUserContentControllerPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/CyberKit.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <wtf/RetainPtr.h>
 
 @interface UserMediaMessageHandler : NSObject <WKScriptMessageHandler>
@@ -93,7 +93,7 @@ public:
         wasPrompted = false;
         receivedScriptMessage = false;
         [m_webView loadTestPageNamed:@"disableGetUserMedia"];
-        TestWebKitAPI::Util::run(&receivedScriptMessage);
+        TestCyberKitAPI::Util::run(&receivedScriptMessage);
         EXPECT_STREQ([(NSString *)[lastScriptMessage body] UTF8String], message);
     }
 
@@ -127,6 +127,6 @@ TEST_F(MediaCaptureDisabledTest, UnsecureContext)
     receivedScriptMessage = false;
     [m_webView loadHTMLString:@"<html><body><script>window.webkit.messageHandlers.testHandler.postMessage(Navigator.prototype.hasOwnProperty('mediaDevices') ? 'has' : 'none');</script></body></html>" baseURL:adoptNS([[NSURL alloc] initWithString:@"http://test.org"]).get()];
 
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     EXPECT_STREQ([(NSString *)[lastScriptMessage body] UTF8String], "none");
 }

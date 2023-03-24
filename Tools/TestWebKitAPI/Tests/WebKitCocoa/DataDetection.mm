@@ -30,7 +30,7 @@
 #import "Test.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <wtf/RetainPtr.h>
 
 #if PLATFORM(IOS_FAMILY)
@@ -48,7 +48,7 @@
     [self _detectDataWithTypes:types completionHandler:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 - (void)synchronouslyRemoveDataDetectedLinks
@@ -57,7 +57,7 @@
     [self _removeDataDetectedLinks:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 @end
@@ -94,12 +94,12 @@ void expectLinkCount(WKWebView *webView, NSString *HTMLString, unsigned linkCoun
         ranScript = true;
     }];
 
-    TestWebKitAPI::Util::run(&ranScript);
+    TestCyberKitAPI::Util::run(&ranScript);
     ranScript = false;
 }
 
 // FIXME: Re-enable this test once webkit.org/b/161967 is fixed.
-TEST(WebKit, DISABLED_DataDetectionReferenceDate)
+TEST(CyberKit, DISABLED_DataDetectionReferenceDate)
 {
     RetainPtr<WKWebViewConfiguration> configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [configuration setDataDetectorTypes:WKDataDetectorTypeCalendarEvent];
@@ -128,7 +128,7 @@ TEST(WebKit, DISABLED_DataDetectionReferenceDate)
 
 #if PLATFORM(IOS)
 
-TEST(WebKit, AddAndRemoveDataDetectors)
+TEST(CyberKit, AddAndRemoveDataDetectors)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 500)]);
     [webView synchronouslyLoadTestPageNamed:@"data-detectors"];
@@ -164,7 +164,7 @@ TEST(WebKit, AddAndRemoveDataDetectors)
     checkDataDetectionResults([webView _dataDetectionResults]);
 }
 
-TEST(WebKit, DoNotCrashWhenDetectingDataAfterWebProcessTerminates)
+TEST(CyberKit, DoNotCrashWhenDetectingDataAfterWebProcessTerminates)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 500)]);
     [webView synchronouslyLoadTestPageNamed:@"data-detectors"];

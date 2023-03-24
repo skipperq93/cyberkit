@@ -29,12 +29,12 @@
 #include <wtf/FileSystem.h>
 #include <wtf/URL.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 namespace Util {
 
 WKStringRef createInjectedBundlePath()
 {
-    return WKStringCreateWithUTF8CString("/app0/libTestWebKitAPIInjectedBundle.sprx");
+    return WKStringCreateWithUTF8CString("/app0/libTestCyberKitAPIInjectedBundle.sprx");
 }
 
 WKURLRef createURLForResource(const char* resource, const char* extension)
@@ -56,4 +56,4 @@ bool isKeyDown(WKNativeEventPtr event)
 }
 
 } // namespace Util
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

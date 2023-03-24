@@ -31,7 +31,7 @@
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
 #import <Carbon/Carbon.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 enum class TabDirection : uint8_t {
@@ -55,7 +55,7 @@ enum class TabDirection : uint8_t {
 
 @end
 
-TEST(WebKit, TabOutOfWebView)
+TEST(CyberKit, TabOutOfWebView)
 {
     RetainPtr<FocusableView> beforeView = adoptNS([[FocusableView alloc] initWithFrame:NSMakeRect(0, 200, 100, 100)]);
     RetainPtr<WKWebViewConfiguration> configuration = adoptNS([[WKWebViewConfiguration alloc] init]);

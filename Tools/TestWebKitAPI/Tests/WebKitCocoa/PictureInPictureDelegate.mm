@@ -32,15 +32,15 @@
 #import "PlatformWebView.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <JavaScriptCore/JavaScriptCore.h>
-#import <WebKit/WKPagePrivateMac.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKSerializedScriptValue.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKURLCF.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberScriptCore/CyberScriptCore.h>
+#import <CyberKit/WKPagePrivateMac.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKSerializedScriptValue.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKURLCF.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Seconds.h>
 
@@ -70,8 +70,8 @@ static void waitUntilOnLoadIsCompleted(WKPageRef page)
     onLoadCompleted = false;
     while (!onLoadCompleted) {
         fetchOnLoadedCompletedDone = false;
-        WKPageRunJavaScriptInMainFrame(page, TestWebKitAPI::Util::toWK("window.onloadcompleted !== undefined").get(), 0, onLoadedCompletedCallback);
-        TestWebKitAPI::Util::run(&fetchOnLoadedCompletedDone);
+        WKPageRunJavaScriptInMainFrame(page, TestCyberKitAPI::Util::toWK("window.onloadcompleted !== undefined").get(), 0, onLoadedCompletedCallback);
+        TestCyberKitAPI::Util::run(&fetchOnLoadedCompletedDone);
     }
 }
 
@@ -105,7 +105,7 @@ static void hasVideoInPictureInPictureDidChange(WKPageRef, bool hasVideoInPictur
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
     
 TEST(PictureInPicture, WKUIDelegate)
 {
@@ -126,12 +126,12 @@ TEST(PictureInPicture, WKUIDelegate)
     [[window contentView] addSubview:webView.get()];
     [window makeKeyAndOrderFront:nil];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"PictureInPictureDelegate" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"PictureInPictureDelegate" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
 
     receivedLoadedMessage = false;
     
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&receivedLoadedMessage);
+    TestCyberKitAPI::Util::run(&receivedLoadedMessage);
 
     hasVideoInPictureInPictureValue = false;
     hasVideoInPictureInPictureCalled = false;
@@ -147,7 +147,7 @@ TEST(PictureInPicture, WKUIDelegate)
     [webView mouseDown:event];
 #endif
 
-    TestWebKitAPI::Util::run(&hasVideoInPictureInPictureCalled);
+    TestCyberKitAPI::Util::run(&hasVideoInPictureInPictureCalled);
     ASSERT_TRUE(hasVideoInPictureInPictureValue);
 
     // Wait for PIPAgent to launch, or it won't call -pipDidClose: callback.
@@ -166,7 +166,7 @@ TEST(PictureInPicture, WKUIDelegate)
     [webView mouseDown:event];
 #endif
 
-    TestWebKitAPI::Util::run(&hasVideoInPictureInPictureCalled);
+    TestCyberKitAPI::Util::run(&hasVideoInPictureInPictureCalled);
     ASSERT_FALSE(hasVideoInPictureInPictureValue);
 }
 
@@ -228,23 +228,23 @@ TEST(PictureInPicture, WKPageUIClient)
     receivedLoadedMessage = false;
     WKRetainPtr<WKURLRef> url = adoptWK(Util::createURLForResource("PictureInPictureDelegate", "html"));
     WKPageLoadURL(webView.page(), url.get());
-    TestWebKitAPI::Util::run(&receivedLoadedMessage);
+    TestCyberKitAPI::Util::run(&receivedLoadedMessage);
     waitUntilOnLoadIsCompleted(webView.page());
     
     hasVideoInPictureInPictureValue = false;
     hasVideoInPictureInPictureCalled = false;
     webView.simulateButtonClick(kWKEventMouseButtonLeftButton, 5, 5, 0);
-    TestWebKitAPI::Util::run(&hasVideoInPictureInPictureCalled);
+    TestCyberKitAPI::Util::run(&hasVideoInPictureInPictureCalled);
     ASSERT_TRUE(hasVideoInPictureInPictureValue);
     
     sleep(1_s); // Wait for PIPAgent to launch, or it won't call -pipDidClose: callback.
     
     hasVideoInPictureInPictureCalled = false;
     webView.simulateButtonClick(kWKEventMouseButtonLeftButton, 5, 5, 0);
-    TestWebKitAPI::Util::run(&hasVideoInPictureInPictureCalled);
+    TestCyberKitAPI::Util::run(&hasVideoInPictureInPictureCalled);
     ASSERT_FALSE(hasVideoInPictureInPictureValue);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

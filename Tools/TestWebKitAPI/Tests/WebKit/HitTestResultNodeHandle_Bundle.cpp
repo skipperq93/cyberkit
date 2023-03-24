@@ -32,11 +32,11 @@
 #include "InjectedBundleTest.h"
 #include "InjectedBundleController.h"
 #include "PlatformUtilities.h"
-#include <WebKit/WKBundlePage.h>
-#include <WebKit/WKBundleHitTestResult.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKBundlePage.h>
+#include <CyberKit/WKBundleHitTestResult.h>
+#include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class HitTestResultNodeHandleTest : public InjectedBundleTest {
 public:
@@ -68,7 +68,7 @@ public:
 
 static InjectedBundleTest::Register<HitTestResultNodeHandleTest> registrar("HitTestResultNodeHandleTest");
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif
 

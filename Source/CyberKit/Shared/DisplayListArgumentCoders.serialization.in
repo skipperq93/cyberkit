@@ -1,0 +1,115 @@
+# Copyright (C) 2023 Apple Inc. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1.  Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+# 2.  Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in the
+#     documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+headers: <CyberCore/DisplayListItems.h>
+
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::DisplayList::SetState {
+    CyberCore::GraphicsContextState state();
+};
+
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::DisplayList::SetLineDash {
+    CyberCore::DashArray dashArray();
+    float dashOffset();
+};
+
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::DisplayList::ClipOutToPath {
+    CyberCore::Path path();
+};
+
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::DisplayList::ClipPath {
+    CyberCore::Path path();
+    CyberCore::WindRule windRule();
+};
+
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::DisplayList::DrawGlyphs {
+    CyberCore::RenderingResourceIdentifier fontIdentifier();
+    CyberCore::PositionedGlyphs positionedGlyphs();
+};
+
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::DisplayList::DrawSystemImage {
+    Ref<CyberCore::SystemImage> systemImage();
+    CyberCore::FloatRect destinationRect();
+};
+
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::DisplayList::DrawLinesForText {
+    CyberCore::FloatPoint blockLocation();
+    CyberCore::FloatSize localAnchor();
+    CyberCore::DashArray widths();
+    float thickness();
+    bool isPrinting();
+    bool doubleLines();
+    CyberCore::StrokeStyle style();
+};
+
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::DisplayList::DrawPath {
+    CyberCore::Path path();
+};
+
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::DisplayList::DrawFocusRingPath {
+    CyberCore::Path path();
+    float outlineWidth();
+    CyberCore::Color color();
+};
+
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::DisplayList::DrawFocusRingRects {
+    Vector<CyberCore::FloatRect> rects();
+    float outlineOffset();
+    float outlineWidth();
+    CyberCore::Color color();
+};
+
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::DisplayList::FillRectWithColor {
+    CyberCore::FloatRect rect();
+    CyberCore::Color color();
+};
+
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::DisplayList::FillRectWithGradient {
+    CyberCore::FloatRect rect();
+    Ref<CyberCore::Gradient> gradient();
+};
+
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::DisplayList::FillCompositedRect {
+    CyberCore::FloatRect rect();
+    CyberCore::Color color();
+    CyberCore::CompositeOperator compositeOperator();
+    CyberCore::BlendMode blendMode();
+};
+
+[CustomHeader] class CyberCore::DisplayList::FillRoundedRect {
+    CyberCore::FloatRoundedRect roundedRect();
+    CyberCore::Color color();
+    CyberCore::BlendMode blendMode();
+};
+
+[CustomHeader] class CyberCore::DisplayList::FillRectWithRoundedHole {
+    CyberCore::FloatRect rect();
+    CyberCore::FloatRoundedRect roundedHoleRect();
+    CyberCore::Color color();
+};
+
+[CustomHeader] class CyberCore::DisplayList::FillPath {
+    CyberCore::Path path();
+};
+
+[CustomHeader] class CyberCore::DisplayList::StrokePath {
+    CyberCore::Path path();
+};

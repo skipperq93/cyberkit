@@ -29,9 +29,9 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 
-TEST(WebKit, GrantAccessToMobileAssetsCrash)
+TEST(CyberKit, GrantAccessToMobileAssetsCrash)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 300, 300)]);
 

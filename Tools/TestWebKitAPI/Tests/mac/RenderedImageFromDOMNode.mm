@@ -25,8 +25,8 @@
 
 #import "config.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WebDocumentPrivate.h>
-#import <WebKit/DOMPrivate.h>
+#import <CyberKit/WebDocumentPrivate.h>
+#import <CyberKit/DOMPrivate.h>
 #import <wtf/RetainPtr.h>
 
 @interface RenderedImageFromDOMNodeFrameLoadDelegate : NSObject <WebFrameLoadDelegate> {
@@ -44,9 +44,9 @@ static bool didFinishLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, RenderedImageFromDOMNode)
+TEST(CyberKitLegacy, RenderedImageFromDOMNode)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 400, 400) frameName:nil groupName:nil]);
     RetainPtr<RenderedImageFromDOMNodeFrameLoadDelegate> frameLoadDelegate = adoptNS([RenderedImageFromDOMNodeFrameLoadDelegate new]);
@@ -63,4 +63,4 @@ TEST(WebKitLegacy, RenderedImageFromDOMNode)
     EXPECT_TRUE([image1.TIFFRepresentation isEqual:image2.TIFFRepresentation]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

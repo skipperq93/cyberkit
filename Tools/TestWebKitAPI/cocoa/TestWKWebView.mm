@@ -31,14 +31,14 @@
 #import "TestNavigationDelegate.h"
 #import "Utilities.h"
 
-#import <WebKit/WKContentWorld.h>
-#import <WebKit/WKUIDelegate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/WebKitPrivate.h>
-#import <WebKit/_WKActivatedElementInfo.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
-#import <WebKit/_WKTextInputContext.h>
+#import <CyberKit/WKContentWorld.h>
+#import <CyberKit/WKUIDelegate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/CyberKitPrivate.h>
+#import <CyberKit/_WKActivatedElementInfo.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/_WKTextInputContext.h>
 #import <objc/runtime.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RetainPtr.h>
@@ -57,15 +57,15 @@ SOFT_LINK_CLASS(UIKit, UIWindow)
 
 static NSString *overrideBundleIdentifier(id, SEL)
 {
-    return @"com.apple.TestWebKitAPI";
+    return @"com.apple.TestCyberKitAPI";
 }
 #endif // PLATFORM(IOS_FAMILY)
 
-@implementation WKWebView (TestWebKitAPI)
+@implementation WKWebView (TestCyberKitAPI)
 
 - (void)loadTestPageNamed:(NSString *)pageName
 {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:pageName withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:pageName withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [self loadRequest:request];
 }
 
@@ -107,12 +107,12 @@ static NSString *overrideBundleIdentifier(id, SEL)
 
 - (void)synchronouslyLoadHTMLString:(NSString *)html
 {
-    [self synchronouslyLoadHTMLString:html baseURL:[[[NSBundle mainBundle] bundleURL] URLByAppendingPathComponent:@"TestWebKitAPI.resources"]];
+    [self synchronouslyLoadHTMLString:html baseURL:[[[NSBundle mainBundle] bundleURL] URLByAppendingPathComponent:@"TestCyberKitAPI.resources"]];
 }
 
 - (void)synchronouslyLoadHTMLString:(NSString *)html preferences:(WKWebpagePreferences *)preferences
 {
-    [self loadHTMLString:html baseURL:[[[NSBundle mainBundle] bundleURL] URLByAppendingPathComponent:@"TestWebKitAPI.resources"]];
+    [self loadHTMLString:html baseURL:[[[NSBundle mainBundle] bundleURL] URLByAppendingPathComponent:@"TestCyberKitAPI.resources"]];
     [self _test_waitForDidFinishNavigationWithPreferences:preferences];
 }
 
@@ -130,7 +130,7 @@ static NSString *overrideBundleIdentifier(id, SEL)
         done = true;
         success = completionSuccess;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     return success;
 }
 
@@ -149,7 +149,7 @@ static NSString *overrideBundleIdentifier(id, SEL)
         result = contexts;
         finished = true;
     }];
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
     return result.autorelease();
 }
 
@@ -163,7 +163,7 @@ static NSString *overrideBundleIdentifier(id, SEL)
         done = true;
         count = result;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     return count;
 }
 
@@ -175,7 +175,7 @@ static NSString *overrideBundleIdentifier(id, SEL)
         result = contents;
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     return result.autorelease();
 }
 
@@ -231,7 +231,7 @@ static NSString *overrideBundleIdentifier(id, SEL)
         if (error)
             NSLog(@"Encountered error: %@ while evaluating script: %@", error, script);
     }];
-    TestWebKitAPI::Util::run(&callbackComplete);
+    TestCyberKitAPI::Util::run(&callbackComplete);
     return evalResult.autorelease();
 }
 
@@ -246,7 +246,7 @@ static NSString *overrideBundleIdentifier(id, SEL)
         if (error)
             NSLog(@"Encountered error: %@ while evaluating script: %@", error, script);
     }];
-    TestWebKitAPI::Util::run(&callbackComplete);
+    TestCyberKitAPI::Util::run(&callbackComplete);
     return evalResult.autorelease();
 }
 
@@ -263,7 +263,7 @@ static NSString *overrideBundleIdentifier(id, SEL)
         strongError = error;
         callbackComplete = true;
     }];
-    TestWebKitAPI::Util::run(&callbackComplete);
+    TestCyberKitAPI::Util::run(&callbackComplete);
 
     if (errorOut)
         *errorOut = strongError.autorelease();
@@ -282,7 +282,7 @@ static NSString *overrideBundleIdentifier(id, SEL)
     unsigned clientWidth = 0;
     do {
         if (timeout != 10)
-            TestWebKitAPI::Util::runFor(0.1_s);
+            TestCyberKitAPI::Util::runFor(0.1_s);
 
         id result = [self objectByEvaluatingJavaScript:@"function ___forceLayoutAndGetClientWidth___() { document.body.offsetTop; return document.body.clientWidth; }; ___forceLayoutAndGetClientWidth___();"];
         clientWidth = [result integerValue];
@@ -586,8 +586,8 @@ static UICalloutBar *suppressUICalloutBar()
 {
     bool didFireDOMLoadEvent = false;
     [self performAfterLoading:[&] { didFireDOMLoadEvent = true; }];
-    [self loadHTMLString:html baseURL:[NSBundle.mainBundle.bundleURL URLByAppendingPathComponent:@"TestWebKitAPI.resources"]];
-    TestWebKitAPI::Util::run(&didFireDOMLoadEvent);
+    [self loadHTMLString:html baseURL:[NSBundle.mainBundle.bundleURL URLByAppendingPathComponent:@"TestCyberKitAPI.resources"]];
+    TestCyberKitAPI::Util::run(&didFireDOMLoadEvent);
     [self waitForNextPresentationUpdate];
 }
 
@@ -598,7 +598,7 @@ static UICalloutBar *suppressUICalloutBar()
     {
         isDoneWaiting = true;
     }];
-    TestWebKitAPI::Util::run(&isDoneWaiting);
+    TestCyberKitAPI::Util::run(&isDoneWaiting);
 }
 
 - (void)performAfterLoading:(dispatch_block_t)actions
@@ -619,7 +619,7 @@ static UICalloutBar *suppressUICalloutBar()
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 - (void)waitUntilActivityStateUpdateDone
@@ -629,7 +629,7 @@ static UICalloutBar *suppressUICalloutBar()
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 - (void)forceDarkMode
@@ -678,7 +678,7 @@ static UICalloutBar *suppressUICalloutBar()
             matches = false;
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     return matches;
 }
@@ -694,7 +694,7 @@ static UICalloutBar *suppressUICalloutBar()
     [self _doAfterProcessingAllPendingMouseEvents:^{
         doneProcessingMouseEvents = true;
     }];
-    TestWebKitAPI::Util::run(&doneProcessingMouseEvents);
+    TestCyberKitAPI::Util::run(&doneProcessingMouseEvents);
 }
 
 - (void)focus
@@ -757,7 +757,7 @@ static UICalloutBar *suppressUICalloutBar()
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     return selectionRects;
 }
 
@@ -786,7 +786,7 @@ static UICalloutBar *suppressUICalloutBar()
         finished = true;
     }];
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
     return info.autorelease();
 }
 

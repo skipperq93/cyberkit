@@ -28,8 +28,8 @@
 #import "ClassMethodSwizzler.h"
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 
 #if PLATFORM(IOS_FAMILY)
 #import "UIKitSPI.h"
@@ -81,7 +81,7 @@
 
 #endif // PLATFORM(IOS_FAMILY)
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static RetainPtr<TestWKWebView> webViewForEditActionTesting(NSString *markup)
 {
@@ -105,7 +105,7 @@ static RetainPtr<TestWKWebView> webViewForEditActionTestingWithPageNamed(NSStrin
 
 static RetainPtr<TestWKWebView> webViewForEditActionTesting()
 {
-    return webViewForEditActionTesting(@"<div>WebKit</div>");
+    return webViewForEditActionTesting(@"<div>CyberKit</div>");
 }
 
 TEST(WKWebViewEditActions, ModifyListLevel)
@@ -265,7 +265,7 @@ TEST(WKWebViewEditActions, PasteAndMatchStyle)
     EXPECT_FALSE([destination stringByEvaluatingJavaScript:@"document.queryCommandState('bold')"].boolValue);
     EXPECT_FALSE([destination stringByEvaluatingJavaScript:@"document.queryCommandState('italic')"].boolValue);
     EXPECT_FALSE([destination stringByEvaluatingJavaScript:@"document.queryCommandState('underline')"].boolValue);
-    EXPECT_WK_STREQ("WebKit", [destination stringByEvaluatingJavaScript:@"getSelection().toString()"]);
+    EXPECT_WK_STREQ("CyberKit", [destination stringByEvaluatingJavaScript:@"getSelection().toString()"]);
 }
 
 #if PLATFORM(IOS_FAMILY)
@@ -356,7 +356,7 @@ TEST(WKWebViewEditActions, SetFontFamily)
 
 #if HAVE(TRANSLATION_UI_SERVICES)
 
-TEST(WebKit, CanInvokeTranslateWithTextSelection)
+TEST(CyberKit, CanInvokeTranslateWithTextSelection)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)]);
     [webView synchronouslyLoadTestPageNamed:@"simple"];
@@ -395,7 +395,7 @@ TEST(WebKit, CanInvokeTranslateWithTextSelection)
 
 TEST(WKWebViewEditActions, ModifyTextWritingDirection)
 {
-    auto webView = webViewForEditActionTesting(@"<div id='text' style='direction: rtl; unicode-bidi: bidi-override;'>WebKit</div>");
+    auto webView = webViewForEditActionTesting(@"<div id='text' style='direction: rtl; unicode-bidi: bidi-override;'>CyberKit</div>");
     [webView selectAll:nil];
     [webView makeTextWritingDirectionNatural:nil];
     EXPECT_WK_STREQ("normal", [webView stringByEvaluatingJavaScript:@"getComputedStyle(text).unicodeBidi"]);
@@ -433,4 +433,4 @@ TEST(WKWebViewEditActions, CopyFontAtCaretSelection)
 
 #endif
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -27,10 +27,10 @@
 
 #import "PlatformUtilities.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKFoundation.h>
-#import <WebKit/WKNavigationDelegate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WebKit.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/WKNavigationDelegate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/CyberKit.h>
 #import <wtf/RetainPtr.h>
 
 const char* successfulResult = "Pass: A cross partition resource was blocked from loading";
@@ -83,13 +83,13 @@ void cleanUp()
 }
 
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // Re-enable this test for Catalina once webkit.org/b/206956 is resolved
 #if __MAC_OS_X_VERSION_MIN_REQUIRED >= 101600
-TEST(WebKitLegacy, CrossPartitionFileSchemeAccess)
+TEST(CyberKitLegacy, CrossPartitionFileSchemeAccess)
 {
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"CrossPartitionFileSchemeAccess" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"CrossPartitionFileSchemeAccess" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     const char *filePath = [url fileSystemRepresentation];
     WTFLogAlways("Cleaning up from previous run...");
     cleanUp();

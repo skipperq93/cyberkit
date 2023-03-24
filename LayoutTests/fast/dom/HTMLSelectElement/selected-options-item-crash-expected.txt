@@ -1,4 +1,4 @@
-This tests accesses a particular index in selectedOptions via HTMLSelectElement's item. WebKit should not crash.
+This tests accesses a particular index in selectedOptions via HTMLSelectElement's item. CyberKit should not crash.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

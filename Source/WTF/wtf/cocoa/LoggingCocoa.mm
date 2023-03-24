@@ -39,6 +39,6 @@ String logLevelString()
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

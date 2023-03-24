@@ -52,8 +52,8 @@ static bool linkedBefore(dyld_build_version_t version, uint32_t fallbackIOSVersi
 #endif
 }
 
-#if USE(APPLE_INTERNAL_SDK) && __has_include(<WebKitAdditions/RuntimeApplicationChecksCocoaAdditions.cpp>)
-#import <WebKitAdditions/RuntimeApplicationChecksCocoaAdditions.cpp>
+#if USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/RuntimeApplicationChecksCocoaAdditions.cpp>)
+#import <CyberKitAdditions/RuntimeApplicationChecksCocoaAdditions.cpp>
 #else
 static void disableAdditionalSDKAlignedBehaviors(SDKAlignedBehaviors&)
 {
@@ -139,9 +139,9 @@ static SDKAlignedBehaviors computeSDKAlignedBehaviors()
 
     if (linkedBefore(dyld_fall_2020_os_versions, DYLD_IOS_VERSION_14_0, DYLD_MACOSX_VERSION_10_16)) {
         disableBehavior(SDKAlignedBehavior::SessionCleanupByDefault);
-        disableBehavior(SDKAlignedBehavior::InitializeWebKit2MainThreadAssertion);
+        disableBehavior(SDKAlignedBehavior::InitializeCyberKit2MainThreadAssertion);
         disableBehavior(SDKAlignedBehavior::WKWebsiteDataStoreInitReturningNil);
-        disableBehavior(SDKAlignedBehavior::WebSQLDisabledByDefaultInLegacyWebKit);
+        disableBehavior(SDKAlignedBehavior::WebSQLDisabledByDefaultInLegacyCyberKit);
         disableBehavior(SDKAlignedBehavior::NoLaBanquePostaleQuirks);
         disableBehavior(SDKAlignedBehavior::NoPokerBrosBuiltInTagQuirk);
     }

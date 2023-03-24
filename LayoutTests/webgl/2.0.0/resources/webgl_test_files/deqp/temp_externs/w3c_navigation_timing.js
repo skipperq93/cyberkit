@@ -84,7 +84,7 @@ function PerformanceNavigation() {}
 /** @type {number} */ PerformanceNavigation.prototype.type;
 /** @type {number} */ PerformanceNavigation.prototype.redirectCount;
 
-// Only available in WebKit, and only with the --enable-memory-info flag.
+// Only available in CyberKit, and only with the --enable-memory-info flag.
 /** @constructor */
 function PerformanceMemory() {}
 /** @type {number} */ PerformanceMemory.prototype.jsHeapSizeLimit;
@@ -142,7 +142,7 @@ Performance.prototype.getEntriesByType = function(entryType) {};
  */
 Performance.prototype.getEntriesByName = function(name, opt_entryType) {};
 
-// Only available in WebKit, and only with the --enable-memory-info flag.
+// Only available in CyberKit, and only with the --enable-memory-info flag.
 /** @type {PerformanceMemory} */ Performance.prototype.memory;
 
 /**

@@ -30,11 +30,11 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <WebKit/WKFrame.h>
-#include <WebKit/WKRetainPtr.h>
-#include <WebKit/WKSecurityOriginRef.h>
+#include <CyberKit/WKFrame.h>
+#include <CyberKit/WKRetainPtr.h>
+#include <CyberKit/WKSecurityOriginRef.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool done;
 static unsigned dialogsSeen;
@@ -120,7 +120,7 @@ static WKPageRef createNewPage(WKPageRef page, WKURLRequestRef urlRequest, WKDic
     return openedWebView->page();
 }
 
-TEST(WebKit, ModalAlertsSPI)
+TEST(CyberKit, ModalAlertsSPI)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -149,7 +149,7 @@ static WKPageRef checkFrameLoadStateAndCreateNewPage(WKPageRef page, WKURLReques
     return createNewPage(page, urlRequest, features, modifiers, mouseButton, clientInfo);
 }
 
-TEST(WebKit, CreateNewPageDelegateFrameLoadState)
+TEST(CyberKit, CreateNewPageDelegateFrameLoadState)
 {
     for (unsigned i = 0; i < 25; ++i) {
         done = false;
@@ -169,6 +169,6 @@ TEST(WebKit, CreateNewPageDelegateFrameLoadState)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

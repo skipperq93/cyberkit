@@ -30,9 +30,9 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 struct TestStatesData {
     TestStatesData(WKContextRef context)
@@ -73,7 +73,7 @@ static void didCrash(WKPageRef page, const void* clientInfo)
     WKPageReload(page);
 }
 
-TEST(WebKit, ResizeWindowAfterCrash)
+TEST(CyberKit, ResizeWindowAfterCrash)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     TestStatesData states(context.get());
@@ -99,6 +99,6 @@ TEST(WebKit, ResizeWindowAfterCrash)
     Util::run(&states.resizeAfterCrash);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

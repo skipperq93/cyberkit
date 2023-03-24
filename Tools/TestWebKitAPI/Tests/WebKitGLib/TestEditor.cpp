@@ -21,15 +21,15 @@
 
 #include "WebViewTest.h"
 
-static void testWebKitWebEditorSelectionChanged(WebViewTest* test, gconstpointer)
+static void testCyberKitWebEditorSelectionChanged(WebViewTest* test, gconstpointer)
 {
     static const gchar* testHTML = "<html><body>All work and no play make Jack a dull boy.</body></html>";
-    g_assert_true(test->runWebProcessTest("WebKitWebEditor", "selection-changed", testHTML));
+    g_assert_true(test->runWebProcessTest("CyberKitWebEditor", "selection-changed", testHTML));
 }
 
 void beforeAll()
 {
-    WebViewTest::add("WebKitWebEditor", "selection-changed", testWebKitWebEditorSelectionChanged);
+    WebViewTest::add("CyberKitWebEditor", "selection-changed", testCyberKitWebEditorSelectionChanged);
 }
 
 void afterAll()

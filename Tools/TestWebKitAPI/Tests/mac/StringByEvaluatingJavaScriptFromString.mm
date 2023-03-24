@@ -27,9 +27,9 @@
 #import "PlatformUtilities.h"
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, StringByEvaluatingJavaScriptFromString)
+TEST(CyberKitLegacy, StringByEvaluatingJavaScriptFromString)
 {
     // maps expected result <= JavaScript expression
     RetainPtr<NSDictionary> expressions = adoptNS([[NSDictionary alloc] initWithObjectsAndKeys:
@@ -68,4 +68,4 @@ TEST(WebKitLegacy, StringByEvaluatingJavaScriptFromString)
     [webView.get() close];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

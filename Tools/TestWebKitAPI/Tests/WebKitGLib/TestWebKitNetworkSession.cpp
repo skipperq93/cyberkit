@@ -21,13 +21,13 @@
 
 #include "config.h"
 
-#include "WebKitTestServer.h"
+#include "CyberKitTestServer.h"
 #include "WebViewTest.h"
 #include <libsoup/soup.h>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/GUniquePtr.h>
 
-static WebKitTestServer* kServer;
+static CyberKitTestServer* kServer;
 
 static void testNetworkSessionDefault(Test* test, gconstpointer)
 {
@@ -42,7 +42,7 @@ static void testNetworkSessionEphemeral(Test* test, gconstpointer)
     g_assert_false(webkit_network_session_is_ephemeral(webkit_network_session_get_default()));
     g_assert_false(webkit_network_session_is_ephemeral(test->m_networkSession.get()));
 
-    WebKitWebsiteDataManager* manager = webkit_network_session_get_website_data_manager(webkit_network_session_get_default());
+    CyberKitWebsiteDataManager* manager = webkit_network_session_get_website_data_manager(webkit_network_session_get_default());
     g_assert_true(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager));
     g_assert_false(webkit_website_data_manager_is_ephemeral(manager));
     manager = webkit_network_session_get_website_data_manager(test->m_networkSession.get());
@@ -61,7 +61,7 @@ static void testNetworkSessionEphemeral(Test* test, gconstpointer)
         nullptr));
     g_assert_true(webkit_web_view_get_network_session(webView.get()) == test->m_networkSession.get());
 
-    GRefPtr<WebKitNetworkSession> session = adoptGRef(webkit_network_session_new_ephemeral());
+    GRefPtr<CyberKitNetworkSession> session = adoptGRef(webkit_network_session_new_ephemeral());
     g_assert_true(webkit_network_session_is_ephemeral(session.get()));
     manager = webkit_network_session_get_website_data_manager(session.get());
     g_assert_true(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager));
@@ -156,7 +156,7 @@ public:
         return m_webSocketRequestReceived;
     }
 
-    WebKitTestServer m_proxyServer;
+    CyberKitTestServer m_proxyServer;
     WebSocketServerType m_webSocketRequestReceived { WebSocketServerType::Unknown };
 };
 
@@ -165,7 +165,7 @@ static void webSocketServerCallback(SoupServer*, SoupServerMessage*, const char*
     static_cast<ProxyTest*>(userData)->webSocketConnected(ProxyTest::WebSocketServerType::NoProxy);
 }
 
-static void ephemeralViewloadChanged(WebKitWebView* webView, WebKitLoadEvent loadEvent, ProxyTest* test)
+static void ephemeralViewloadChanged(CyberKitWebView* webView, CyberKitLoadEvent loadEvent, ProxyTest* test)
 {
     if (loadEvent != WEBKIT_LOAD_FINISHED)
         return;
@@ -186,7 +186,7 @@ static void testNetworkSessionProxySettings(ProxyTest* test, gconstpointer)
     g_assert_true(serverType == ProxyTest::WebSocketServerType::NoProxy);
 
     // Set default proxy URI to point to proxyServer. Requests to kServer should be received by proxyServer instead.
-    WebKitNetworkProxySettings* settings = webkit_network_proxy_settings_new(test->m_proxyServer.baseURL().string().utf8().data(), nullptr);
+    CyberKitNetworkProxySettings* settings = webkit_network_proxy_settings_new(test->m_proxyServer.baseURL().string().utf8().data(), nullptr);
     webkit_network_session_set_proxy_settings(test->m_networkSession.get(), WEBKIT_NETWORK_PROXY_MODE_CUSTOM, settings);
     GUniquePtr<char> proxyServerPortAsString = test->proxyServerPortAsString();
     mainResourceData = test->loadURIAndGetMainResourceData(kServer->getURIForPath("/echoPort").data());
@@ -197,7 +197,7 @@ static void testNetworkSessionProxySettings(ProxyTest* test, gconstpointer)
     g_assert_true(serverType == ProxyTest::WebSocketServerType::Proxy);
 
     // Proxy settings also affect ephemeral web views.
-    GRefPtr<WebKitNetworkSession> ephemeralSession = adoptGRef(webkit_network_session_new_ephemeral());
+    GRefPtr<CyberKitNetworkSession> ephemeralSession = adoptGRef(webkit_network_session_new_ephemeral());
     webkit_network_session_set_proxy_settings(ephemeralSession.get(), WEBKIT_NETWORK_PROXY_MODE_CUSTOM, settings);
     webkit_network_proxy_settings_free(settings);
     auto webView = Test::adoptView(g_object_new(WEBKIT_TYPE_WEB_VIEW,
@@ -212,7 +212,7 @@ static void testNetworkSessionProxySettings(ProxyTest* test, gconstpointer)
     g_signal_connect(webView.get(), "load-changed", G_CALLBACK(ephemeralViewloadChanged), test);
     webkit_web_view_load_uri(webView.get(), kServer->getURIForPath("/echoPort").data());
     g_main_loop_run(test->m_mainLoop);
-    WebKitWebResource* resource = webkit_web_view_get_main_resource(webView.get());
+    CyberKitWebResource* resource = webkit_web_view_get_main_resource(webView.get());
     g_assert_true(WEBKIT_IS_WEB_RESOURCE(resource));
     webkit_web_resource_get_data(resource, nullptr, [](GObject* object, GAsyncResult* result, gpointer userData) {
         size_t dataSize;
@@ -264,12 +264,12 @@ static void testNetworkSessionProxySettings(ProxyTest* test, gconstpointer)
 
 void beforeAll()
 {
-    kServer = new WebKitTestServer();
+    kServer = new CyberKitTestServer();
     kServer->run(serverCallback);
 
-    Test::add("WebKitNetworkSession", "default-session", testNetworkSessionDefault);
-    Test::add("WebKitNetworkSession", "ephemeral", testNetworkSessionEphemeral);
-    ProxyTest::add("WebKitNetworkSession", "proxy", testNetworkSessionProxySettings);
+    Test::add("CyberKitNetworkSession", "default-session", testNetworkSessionDefault);
+    Test::add("CyberKitNetworkSession", "ephemeral", testNetworkSessionEphemeral);
+    ProxyTest::add("CyberKitNetworkSession", "proxy", testNetworkSessionProxySettings);
 }
 
 void afterAll()

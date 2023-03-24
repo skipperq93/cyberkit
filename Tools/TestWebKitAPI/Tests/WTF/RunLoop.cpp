@@ -31,7 +31,7 @@
 #include <wtf/Threading.h>
 #include <wtf/threads/BinarySemaphore.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool testFinished;
 static int count = 100;
@@ -372,4 +372,4 @@ TEST(WTF_RunLoop, MAYBE_DispatchInRunLoopIterationDispatchesOnNextIteration2)
         runLoop.cycle();
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

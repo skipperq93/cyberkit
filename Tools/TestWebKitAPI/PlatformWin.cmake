@@ -17,24 +17,24 @@ WEBKIT_WRAP_EXECUTABLE(TestWTF
 )
 target_compile_definitions(TestWTF PRIVATE ${wrapper_DEFINITIONS})
 
-# TestWebCore
-list(APPEND TestWebCore_SOURCES
+# TestCyberCore
+list(APPEND TestCyberCore_SOURCES
     ${test_main_SOURCES}
 
-    Tests/WebCore/CryptoDigest.cpp
+    Tests/CyberCore/CryptoDigest.cpp
 
-    Tests/WebCore/curl/Cookies.cpp
-    Tests/WebCore/curl/OpenSSLHelperTests.cpp
+    Tests/CyberCore/curl/Cookies.cpp
+    Tests/CyberCore/curl/OpenSSLHelperTests.cpp
 
-    Tests/WebCore/win/BitmapImage.cpp
-    Tests/WebCore/win/DIBPixelData.cpp
-    Tests/WebCore/win/LinkedFonts.cpp
-    Tests/WebCore/win/WebCoreBundle.cpp
+    Tests/CyberCore/win/BitmapImage.cpp
+    Tests/CyberCore/win/DIBPixelData.cpp
+    Tests/CyberCore/win/LinkedFonts.cpp
+    Tests/CyberCore/win/CyberCoreBundle.cpp
 
-    win/TestWebCoreStubs.cpp
+    win/TestCyberCoreStubs.cpp
 )
 
-list(APPEND TestWebCore_LIBRARIES
+list(APPEND TestCyberCore_LIBRARIES
     Crypt32
     D2d1
     Dwrite
@@ -46,58 +46,58 @@ list(APPEND TestWebCore_LIBRARIES
     dxguid
 )
 
-WEBKIT_WRAP_EXECUTABLE(TestWebCore
+WEBKIT_WRAP_EXECUTABLE(TestCyberCore
     SOURCES ${TOOLS_DIR}/win/DLLLauncher/DLLLauncherMain.cpp
     LIBRARIES shlwapi
 )
-target_compile_definitions(TestWebCore PRIVATE ${wrapper_DEFINITIONS})
+target_compile_definitions(TestCyberCore PRIVATE ${wrapper_DEFINITIONS})
 
-# TestWebKitLegacy
+# TestCyberKitLegacy
 if (ENABLE_WEBKIT_LEGACY)
-    list(APPEND TestWebKitLegacy_SOURCES
+    list(APPEND TestCyberKitLegacy_SOURCES
         ${test_main_SOURCES}
 
-        Tests/WebKitLegacy/win/ScaleWebView.cpp
-        Tests/WebKitLegacy/win/WebViewDestruction.cpp
+        Tests/CyberKitLegacy/win/ScaleWebView.cpp
+        Tests/CyberKitLegacy/win/WebViewDestruction.cpp
 
         win/HostWindow.cpp
     )
 
-    list(APPEND TestWebKitLegacy_LIBRARIES
-        WebKit::WTF
+    list(APPEND TestCyberKitLegacy_LIBRARIES
+        CyberKit::WTF
     )
 
-    list(APPEND TestWebKitLegacy_PRIVATE_INCLUDE_DIRECTORIES
+    list(APPEND TestCyberKitLegacy_PRIVATE_INCLUDE_DIRECTORIES
         ${TESTWEBKITAPI_DIR}/win
     )
 
-    WEBKIT_WRAP_EXECUTABLE(TestWebKitLegacy
+    WEBKIT_WRAP_EXECUTABLE(TestCyberKitLegacy
         SOURCES ${TOOLS_DIR}/win/DLLLauncher/DLLLauncherMain.cpp
         LIBRARIES shlwapi
     )
-    target_compile_definitions(TestWebKitLegacy PRIVATE ${wrapper_DEFINITIONS})
+    target_compile_definitions(TestCyberKitLegacy PRIVATE ${wrapper_DEFINITIONS})
 endif ()
 
-# TestWebKit
+# TestCyberKit
 if (ENABLE_WEBKIT)
-    target_sources(TestWebKitAPIInjectedBundle PRIVATE
+    target_sources(TestCyberKitAPIInjectedBundle PRIVATE
         win/PlatformUtilitiesWin.cpp
     )
 
-    list(APPEND TestWebKit_SOURCES
+    list(APPEND TestCyberKit_SOURCES
         ${test_main_SOURCES}
 
-        Tests/WebKit/CookieStorageFile.cpp
+        Tests/CyberKit/CookieStorageFile.cpp
 
-        Tests/WebKit/curl/Certificates.cpp
+        Tests/CyberKit/curl/Certificates.cpp
 
         win/PlatformUtilitiesWin.cpp
         win/PlatformWebViewWin.cpp
     )
 
-    WEBKIT_WRAP_EXECUTABLE(TestWebKit
+    WEBKIT_WRAP_EXECUTABLE(TestCyberKit
         SOURCES ${TOOLS_DIR}/win/DLLLauncher/DLLLauncherMain.cpp
         LIBRARIES shlwapi
     )
-    target_compile_definitions(TestWebKit PRIVATE ${wrapper_DEFINITIONS})
+    target_compile_definitions(TestCyberKit PRIVATE ${wrapper_DEFINITIONS})
 endif ()

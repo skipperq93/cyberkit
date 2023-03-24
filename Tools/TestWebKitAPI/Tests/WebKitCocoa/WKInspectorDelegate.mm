@@ -28,16 +28,16 @@
 #import "DeprecatedGlobalValues.h"
 #import "Test.h"
 #import "Utilities.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKURLSchemeHandler.h>
-#import <WebKit/WKURLSchemeTask.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKInspector.h>
-#import <WebKit/_WKInspectorConfiguration.h>
-#import <WebKit/_WKInspectorDebuggableInfo.h>
-#import <WebKit/_WKInspectorDelegate.h>
-#import <WebKit/_WKInspectorPrivateForTesting.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKURLSchemeHandler.h>
+#import <CyberKit/WKURLSchemeTask.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKInspector.h>
+#import <CyberKit/_WKInspectorConfiguration.h>
+#import <CyberKit/_WKInspectorDebuggableInfo.h>
+#import <CyberKit/_WKInspectorDelegate.h>
+#import <CyberKit/_WKInspectorPrivateForTesting.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/SetForScope.h>
 
@@ -181,12 +181,12 @@ TEST(WKInspectorDelegate, InspectorLifecycleCallbacks)
 
     [[webView _inspector] show];
 
-    TestWebKitAPI::Util::run(&didAttachLocalInspectorCalled);
-    TestWebKitAPI::Util::run(&browserDomainEnabledForInspectorCalled);
+    TestCyberKitAPI::Util::run(&didAttachLocalInspectorCalled);
+    TestCyberKitAPI::Util::run(&browserDomainEnabledForInspectorCalled);
 
     [[webView _inspector] close];
-    TestWebKitAPI::Util::run(&browserDomainDisabledForInspectorCalled);
-    TestWebKitAPI::Util::run(&willCloseLocalInspectorCalled);
+    TestCyberKitAPI::Util::run(&browserDomainDisabledForInspectorCalled);
+    TestCyberKitAPI::Util::run(&willCloseLocalInspectorCalled);
 }
 
 TEST(WKInspectorDelegate, InspectorCloseCalledReentrantly)
@@ -204,12 +204,12 @@ TEST(WKInspectorDelegate, InspectorCloseCalledReentrantly)
     EXPECT_FALSE(webView.get()._isBeingInspected);
 
     [[webView _inspector] show];
-    TestWebKitAPI::Util::run(&didAttachLocalInspectorCalled);
+    TestCyberKitAPI::Util::run(&didAttachLocalInspectorCalled);
 
     {
         SetForScope closeReentrantlyFromDelegate(shouldCallInspectorCloseReentrantly, true);
         [[webView _inspector] close];
-        TestWebKitAPI::Util::run(&willCloseLocalInspectorCalled);
+        TestCyberKitAPI::Util::run(&willCloseLocalInspectorCalled);
     }
 }
 
@@ -226,18 +226,18 @@ TEST(WKInspectorDelegate, ShowURLExternally)
     [webView loadHTMLString:@"<head><title>Test page to be inspected</title></head><body><p>Filler content</p></body>" baseURL:[NSURL URLWithString:@"http://example.com/"]];
 
     [[webView _inspector] show];
-    TestWebKitAPI::Util::run(&didAttachLocalInspectorCalled);
-    TestWebKitAPI::Util::run(&inspectorFrontendLoadedCalled);
+    TestCyberKitAPI::Util::run(&didAttachLocalInspectorCalled);
+    TestCyberKitAPI::Util::run(&inspectorFrontendLoadedCalled);
 
     urlToOpen = [NSURL URLWithString:@"https://www.webkit.org/"];
 
     // Check the case where the load is intercepted by the navigation delegate.
     [[webView _inspector] _openURLExternallyForTesting:urlToOpen.get() useFrontendAPI:NO];
-    TestWebKitAPI::Util::run(&openURLExternallyCalled);
+    TestCyberKitAPI::Util::run(&openURLExternallyCalled);
 
     // Check the case where the frontend calls InspectorFrontendHost.openURLExternally().
     [[webView _inspector] _openURLExternallyForTesting:urlToOpen.get() useFrontendAPI:YES];
-    TestWebKitAPI::Util::run(&openURLExternallyCalled);
+    TestCyberKitAPI::Util::run(&openURLExternallyCalled);
 }
 
 TEST(WKInspectorDelegate, InspectorConfiguration)
@@ -255,17 +255,17 @@ TEST(WKInspectorDelegate, InspectorConfiguration)
     EXPECT_FALSE(webView.get()._isBeingInspected);
 
     [[webView _inspector] show];
-    TestWebKitAPI::Util::run(&configurationForLocalInspectorCalled);
-    TestWebKitAPI::Util::run(&didAttachLocalInspectorCalled);
-    TestWebKitAPI::Util::run(&inspectorFrontendLoadedCalled);
+    TestCyberKitAPI::Util::run(&configurationForLocalInspectorCalled);
+    TestCyberKitAPI::Util::run(&didAttachLocalInspectorCalled);
+    TestCyberKitAPI::Util::run(&inspectorFrontendLoadedCalled);
 
     urlToOpen = [NSURL URLWithString:@"testing:main1"];
     sharedSimpleURLSchemeHandler.get().expectedURL = urlToOpen.get();
     [[webView _inspector] _fetchURLForTesting:urlToOpen.get()];
-    TestWebKitAPI::Util::run(&startURLSchemeTaskCalled);
+    TestCyberKitAPI::Util::run(&startURLSchemeTaskCalled);
 
     [[webView _inspector] close];
-    TestWebKitAPI::Util::run(&willCloseLocalInspectorCalled);
+    TestCyberKitAPI::Util::run(&willCloseLocalInspectorCalled);
 }
 
 #endif // PLATFORM(MAC)

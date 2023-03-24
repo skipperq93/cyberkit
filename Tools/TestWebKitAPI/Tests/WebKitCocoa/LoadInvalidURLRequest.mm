@@ -28,8 +28,8 @@
 #import "PlatformUtilities.h"
 #import "TestNavigationDelegate.h"
 #import "TestURLSchemeHandler.h"
-#import <WebKit/WKNavigationPrivate.h>
-#import <WebKit/WKWebView.h>
+#import <CyberKit/WKNavigationPrivate.h>
+#import <CyberKit/WKWebView.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/cocoa/NSURLExtras.h>
@@ -55,7 +55,7 @@ static NSURL *literalURL(const char* literal)
 
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error
 {
-    EXPECT_WK_STREQ(error.domain, @"WebKitErrorDomain");
+    EXPECT_WK_STREQ(error.domain, @"CyberKitErrorDomain");
     EXPECT_EQ(error.code, 101);
     EXPECT_TRUE([error.userInfo[@"NSErrorFailingURLKey"] isEqual:literalURL(literal)]);
 
@@ -82,9 +82,9 @@ static NSURL *literalURL(const char* literal)
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, LoadInvalidURLRequest)
+TEST(CyberKit, LoadInvalidURLRequest)
 {
     @autoreleasepool {
         RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
@@ -101,7 +101,7 @@ TEST(WebKit, LoadInvalidURLRequest)
     }
 }
 
-TEST(WebKit, LoadInvalidURLRequestNonASCII)
+TEST(CyberKit, LoadInvalidURLRequestNonASCII)
 {
     __block bool done = false;
     auto delegate = adoptNS([TestNavigationDelegate new]);
@@ -109,8 +109,8 @@ TEST(WebKit, LoadInvalidURLRequestNonASCII)
         ASSERT_NOT_REACHED();
     };
     delegate.get().didFailProvisionalNavigation = ^(WKWebView *, WKNavigation *, NSError *error) {
-        EXPECT_WK_STREQ(error.domain, @"WebKitErrorDomain");
-        EXPECT_EQ(error.code, WebKitErrorCannotShowURL);
+        EXPECT_WK_STREQ(error.domain, @"CyberKitErrorDomain");
+        EXPECT_EQ(error.code, CyberKitErrorCannotShowURL);
         EXPECT_WK_STREQ([error.userInfo[@"NSErrorFailingURLKey"] absoluteString], "http://%C3%A2%C2%80%C2%80");
         done = true;
     };
@@ -123,7 +123,7 @@ TEST(WebKit, LoadInvalidURLRequestNonASCII)
     Util::run(&done);
 }
 
-TEST(WebKit, LoadNSURLRequestSubclass)
+TEST(CyberKit, LoadNSURLRequestSubclass)
 {
     auto request = adoptNS([[TestURLRequest alloc] initWithURL:[NSURL URLWithString:@"test:///"]]);
     auto handler = adoptNS([TestURLSchemeHandler new]);
@@ -137,5 +137,5 @@ TEST(WebKit, LoadNSURLRequestSubclass)
     [webView _test_waitForDidFinishNavigation];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 

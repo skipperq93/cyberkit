@@ -2,15 +2,15 @@
 <html>
 <body>
 <p>This tests selecting content starting in a shadow tree inside a non-editable region in an editable region to outside the editable region.<br>
-To manually test, select "hello world WebKit" below by a mouse drag from the bottom right to the top left.<br>
-WebKit should not extend the selection to outside the shadow tree.</p>
+To manually test, select "hello world CyberKit" below by a mouse drag from the bottom right to the top left.<br>
+CyberKit should not extend the selection to outside the shadow tree.</p>
 <div id="container" contenteditable>hello <div contenteditable="false">world</div></div>
 <script>
 
 const host = document.createElement('div');
 container.lastChild.append(host);
 const shadowRoot = host.attachShadow({mode: 'closed'});
-shadowRoot.textContent = ' WebKit';
+shadowRoot.textContent = ' CyberKit';
 
 if (window.eventSender) {
     eventSender.dragMode = false;

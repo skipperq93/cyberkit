@@ -199,7 +199,7 @@ class MacPort(DarwinPort):
         self._filesystem.rmtree(os.path.expanduser('~/Library/' + self.driver_name()))
         self._filesystem.rmtree(os.path.expanduser('~/Library/Application Support/' + self.driver_name()))
         self._filesystem.rmtree(os.path.expanduser('~/Library/Caches/' + self.driver_name()))
-        self._filesystem.rmtree(os.path.expanduser('~/Library/WebKit/' + self.driver_name()))
+        self._filesystem.rmtree(os.path.expanduser('~/Library/CyberKit/' + self.driver_name()))
 
     def _path_to_user_cache_directory(self, suffix=None):
         DIRHELPER_USER_DIR_SUFFIX = 'DIRHELPER_USER_DIR_SUFFIX'
@@ -239,7 +239,7 @@ class MacPort(DarwinPort):
             default_count = int(.75 * default_count)
 
         if should_throttle_for_wk2 and self.get_option('guard_malloc'):
-            # Some 12 core Macs get a lot of tests time out when running 18 WebKitTestRunner processes (it's not clear what this depends on).
+            # Some 12 core Macs get a lot of tests time out when running 18 CyberKitTestRunner processes (it's not clear what this depends on).
             # <rdar://problem/25750302>
             default_count = min(default_count, 12)
 
@@ -278,7 +278,7 @@ class MacPort(DarwinPort):
     def reset_preferences(self):
         _log.debug("Resetting persistent preferences")
 
-        for domain in ["com.apple.WebKit.DumpRenderTree", "com.apple.WebKit.WebKitTestRunner"]:
+        for domain in ["com.apple.CyberKit.DumpRenderTree", "com.apple.CyberKit.CyberKitTestRunner"]:
             try:
                 self._executive.run_command(["defaults", "delete", domain])
             except ScriptError as e:

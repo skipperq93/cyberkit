@@ -57,7 +57,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(KeyboardEventTests, FunctionKeyCommand)
 {
@@ -75,6 +75,6 @@ TEST(KeyboardEventTests, FunctionKeyCommand)
     EXPECT_WK_STREQ("", [webView stringByEvaluatingJavaScript:@"document.body.textContent"]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(MAC)

@@ -4,7 +4,7 @@ import sys
 
 sys.stdout.write(
     'Content-Security-Policy-Report-Only: script-src \'sha256-AJqUvsXuHfMNXALcBPVqeiKkFk8OLvn3U7ksHP/QQ90=\' \'nonce-dump-as-text\'\r\n'
-    'X-WebKit-CSP: script-src \'nonce-dump-as-text\'; report-uri ../resources/save-report.py?test=/security/contentSecurityPolicy/1.1/scripthash-blocked-by-legacy-enforced-policy-and-allowed-by-report-policy.py\r\n'
+    'X-CyberKit-CSP: script-src \'nonce-dump-as-text\'; report-uri ../resources/save-report.py?test=/security/contentSecurityPolicy/1.1/scripthash-blocked-by-legacy-enforced-policy-and-allowed-by-report-policy.py\r\n'
     'Content-Type: text/html\r\n\r\n'
     '<!DOCTYPE html>\n'
     '<html>\n'

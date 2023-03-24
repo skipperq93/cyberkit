@@ -61,7 +61,7 @@ class TestResultWriter(object):
     FILENAME_SUFFIX_PRETTY_PATCH = "-pretty-diff.html"
     FILENAME_SUFFIX_IMAGE_DIFF = "-diff.png"
     FILENAME_SUFFIX_IMAGE_DIFFS_HTML = "-diffs.html"
-    PROCESS_NAME_RE = re.compile(r'(com\.apple|org\.WebKit)\..+')
+    PROCESS_NAME_RE = re.compile(r'(com\.apple|org\.CyberKit)\..+')
 
     @staticmethod
     def expected_filename(test_name, filesystem, port_name=None, suffix='txt'):
@@ -181,7 +181,7 @@ class TestResultWriter(object):
         diff_filename = self.output_filename(self.FILENAME_SUFFIX_DIFF + file_type)
         self._write_binary_file(diff_filename, diff)
 
-        # Use WebKit's PrettyPatch.rb to get an HTML diff.
+        # Use CyberKit's PrettyPatch.rb to get an HTML diff.
         if self._port.pretty_patch.pretty_patch_available():
             pretty_patch = self._port.pretty_patch.pretty_patch_text(diff_filename)
             pretty_patch_filename = self.output_filename(self.FILENAME_SUFFIX_PRETTY_PATCH)

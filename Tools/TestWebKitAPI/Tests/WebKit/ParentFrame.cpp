@@ -29,9 +29,9 @@
 
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
-#include <WebKit/WKContextPrivate.h>
+#include <CyberKit/WKContextPrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didReceiveMessage;
 static bool isParentFrameCheckSuccessful;
@@ -57,7 +57,7 @@ static void setInjectedBundleClient(WKContextRef context)
     WKContextSetInjectedBundleClient(context, &injectedBundleClient.base);
 }
 
-TEST(WebKit, ParentFrame)
+TEST(CyberKit, ParentFrame)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("ParentFrameTest"));
     setInjectedBundleClient(context.get());
@@ -70,6 +70,6 @@ TEST(WebKit, ParentFrame)
     EXPECT_TRUE(isParentFrameCheckSuccessful);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -9,7 +9,7 @@ Author URI:  http://webkit.org
 
 defined('WPINC') || header('HTTP/1.1 403') & exit; // Prevent direct access
 
-class WebKit_Meeting_Registration {
+class CyberKit_Meeting_Registration {
 
     const COOKIE_PREFIX = 'wkmr_';
     const ADMIN_PAGE_SLUG = 'meeting-registration';
@@ -17,7 +17,7 @@ class WebKit_Meeting_Registration {
     const MEETING_TAXONOMY = 'webkit_meeting';
     const CURRENT_MEETING_OPTION = 'current_webkit_meeting';
     const MEETING_REGISTRATION_STATE_SETTING = 'meeting-registration-state';
-    const CONTRIBUTORS_JSON = 'https://github.com/WebKit/WebKit/raw/main/metadata/contributors.json';
+    const CONTRIBUTORS_JSON = 'https://github.com/CyberKit/CyberKit/raw/main/metadata/contributors.json';
     const EXTRA_FIELDS = [
         'slack'       => FILTER_SANITIZE_STRING,
         'affiliation' => FILTER_SANITIZE_STRING,
@@ -31,39 +31,39 @@ class WebKit_Meeting_Registration {
     static $registration_state = 'closed';
 
     public static function init() {
-        add_action('init', ['WebKit_Meeting_Registration', 'register_post_type']);
-        add_action('init', ['WebKit_Meeting_Registration', 'register_shortcodes']);
-        add_action('admin_menu', ['WebKit_Meeting_Registration', 'register_admin_page']);
+        add_action('init', ['CyberKit_Meeting_Registration', 'register_post_type']);
+        add_action('init', ['CyberKit_Meeting_Registration', 'register_shortcodes']);
+        add_action('admin_menu', ['CyberKit_Meeting_Registration', 'register_admin_page']);
         self::$current_meeting = get_option(self::CURRENT_MEETING_OPTION);
         self::$registration_state = get_option(self::MEETING_REGISTRATION_STATE_SETTING);
     }
 
     public static function register_post_type() {
         register_taxonomy(self::MEETING_TAXONOMY, [self::CUSTOM_POST_TYPE], [
-            'label' => __('WebKit Meeting'),
+            'label' => __('CyberKit Meeting'),
             'hierarchical' => false,
             'rewrite' => ['slug' => 'webkit-meeting'],
             'show_admin_column' => false,
             'show_in_rest' => false,
             'labels' => [
-                'singular_name' => __('WebKit Meeting'),
-                'all_items' => __('All WebKit Meetings'),
-                'edit_item' => __('Edit WebKit Meeting'),
-                'view_item' => __('View WebKit Meeting'),
-                'update_item' => __('Update WebKit Meeting'),
-                'add_new_item' => __('Add New WebKit Meeting'),
-                'new_item_name' => __('New WebKit Meeting Name'),
-                'search_items' => __('Search WebKit Meetings'),
-                'popular_items' => __('Popular WebKit Meetings'),
-                'separate_items_with_commas' => __('Separate WebKit Meeting names with a comma'),
-                'choose_from_most_used' => __('Choose from most used WebKit Meetings'),
-                'not_found' => __('No WebKit Meetings found'),
+                'singular_name' => __('CyberKit Meeting'),
+                'all_items' => __('All CyberKit Meetings'),
+                'edit_item' => __('Edit CyberKit Meeting'),
+                'view_item' => __('View CyberKit Meeting'),
+                'update_item' => __('Update CyberKit Meeting'),
+                'add_new_item' => __('Add New CyberKit Meeting'),
+                'new_item_name' => __('New CyberKit Meeting Name'),
+                'search_items' => __('Search CyberKit Meetings'),
+                'popular_items' => __('Popular CyberKit Meetings'),
+                'separate_items_with_commas' => __('Separate CyberKit Meeting names with a comma'),
+                'choose_from_most_used' => __('Choose from most used CyberKit Meetings'),
+                'not_found' => __('No CyberKit Meetings found'),
             ]
         ]);
 
         register_post_type(self::CUSTOM_POST_TYPE, [
             'label'                 => 'Registration',
-            'description'           => 'WebKit Contributors Meeting registrations.',
+            'description'           => 'CyberKit Contributors Meeting registrations.',
             'taxonomies'            => ['webkit_meeting'],
             'hierarchical'          => false,
             'public'                => false,
@@ -114,8 +114,8 @@ class WebKit_Meeting_Registration {
     }
 
     public static function register_shortcodes() {
-        add_shortcode('meeting-registration', ['WebKit_Meeting_Registration', 'registration_shortcode']);
-        add_shortcode('contributors-meeting-registration-form', ['WebKit_Meeting_Registration', 'form_shortcode']);
+        add_shortcode('meeting-registration', ['CyberKit_Meeting_Registration', 'registration_shortcode']);
+        add_shortcode('contributors-meeting-registration-form', ['CyberKit_Meeting_Registration', 'form_shortcode']);
     }
 
     public function registration_shortcode($atts, $content) {
@@ -161,7 +161,7 @@ class WebKit_Meeting_Registration {
             return true;
 
         if (!wp_verify_nonce(filter_input(INPUT_POST, '_nonce'), self::$current_meeting))
-            wp_die('Invalid WebKit Meeting Registration submission.');
+            wp_die('Invalid CyberKit Meeting Registration submission.');
 
         $User = self::get_github_user();
         if (!$User)
@@ -235,7 +235,7 @@ class WebKit_Meeting_Registration {
     }
 
     public static function full_registration($entry = false) {
-        $index = WebKit_Meeting_Registration::get_indexed_contributors();
+        $index = CyberKit_Meeting_Registration::get_indexed_contributors();
 
         $registration = !empty($entry) ? self::registration_data_from_post($entry) : self::registration();
         if (!$registration)
@@ -316,7 +316,7 @@ class WebKit_Meeting_Registration {
         if ($pageslug == self::ADMIN_PAGE_SLUG && $download == "csv")
             self::download() && exit;
 
-        add_dashboard_page(__('Contributors Meeting'), __('Contributors Meeting'), 'read', self::ADMIN_PAGE_SLUG, ['WebKit_Meeting_Registration', 'admin_page']);
+        add_dashboard_page(__('Contributors Meeting'), __('Contributors Meeting'), 'read', self::ADMIN_PAGE_SLUG, ['CyberKit_Meeting_Registration', 'admin_page']);
     }
 
     public static function process_admin() {
@@ -433,4 +433,4 @@ class WebKit_Meeting_Registration {
 
 }
 
-WebKit_Meeting_Registration::init();
+CyberKit_Meeting_Registration::init();

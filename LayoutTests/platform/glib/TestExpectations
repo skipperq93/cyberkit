@@ -1,8 +1,8 @@
-# These are the layout test expectations for the glib-based ports: WebKitGTK and WPE.
+# These are the layout test expectations for the glib-based ports: CyberKitGTK and WPE.
 #
 # This file is used to track common expectations to both ports.
 #
-# The bots of WebKitGTK+/WPE running layout tests (GTK Release Test, GTK Debug Test,
+# The bots of CyberKitGTK+/WPE running layout tests (GTK Release Test, GTK Debug Test,
 # GTK Release Wayland Test, WPE Release Test, and WPE Debug Test)
 # are currently running on Debian 10 (Buster) x86_64.
 #
@@ -1194,11 +1194,11 @@ webkit.org/b/251344 imported/w3c/web-platform-tests/html/cross-origin-opener-pol
 #////////////////////////////////////////////////////////////////////////////////////////
 
 #////////////////////////////////////////////////////////////////////////////////////////
-# JavaScriptCore-related bugs
+# CyberScriptCore-related bugs
 #////////////////////////////////////////////////////////////////////////////////////////
 
 #////////////////////////////////////////////////////////////////////////////////////////
-# End of JavaScriptCore-related bugs
+# End of CyberScriptCore-related bugs
 #////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -1666,7 +1666,7 @@ webrtc/video-av1.html [ Skip ]
 # GStreamer's DTLS agent currently generates RSA certificates only. DTLS 1.2 is not supported yet (AFAIK).
 webrtc/datachannel/dtls10.html [ Failure ]
 
-# Too slow with filtering implemented in WebKit. Should be done directly by GstWebRTC.
+# Too slow with filtering implemented in CyberKit. Should be done directly by GstWebRTC.
 webrtc/datachannel/filter-ice-candidate.html [ Skip ]
 webrtc/datachannel/mdns-ice-candidates.html [ Skip ]
 http/tests/webrtc/filtering-ice-candidate-cross-origin-frame.html [ Skip ]

@@ -25,7 +25,7 @@ class ConsoleMessageTest : public WebViewTest {
 public:
     MAKE_GLIB_TEST_FIXTURE(ConsoleMessageTest);
 
-    // This should be keep in sync with the public enums in WebKitConsoleMessage.h.
+    // This should be keep in sync with the public enums in CyberKitConsoleMessage.h.
     enum class MessageSource { JavaScript, Network, ConsoleAPI, Security, Other };
     enum class MessageLevel { Info, Log, Warning, Error, Debug };
     struct ConsoleMessage {
@@ -46,9 +46,9 @@ public:
     };
 
 #if ENABLE(2022_GLIB_API)
-    static void consoleMessageReceivedCallback(WebKitUserContentManager*, JSCValue* message, ConsoleMessageTest* test)
+    static void consoleMessageReceivedCallback(CyberKitUserContentManager*, JSCValue* message, ConsoleMessageTest* test)
 #else
-    static void consoleMessageReceivedCallback(WebKitUserContentManager*, WebKitJavascriptResult* message, ConsoleMessageTest* test)
+    static void consoleMessageReceivedCallback(CyberKitUserContentManager*, CyberKitJavascriptResult* message, ConsoleMessageTest* test)
 #endif
     {
         g_assert_nonnull(message);
@@ -89,7 +89,7 @@ public:
     ConsoleMessage m_consoleMessage;
 };
 
-static void testWebKitConsoleMessageConsoleAPI(ConsoleMessageTest* test, gconstpointer)
+static void testCyberKitConsoleMessageConsoleAPI(ConsoleMessageTest* test, gconstpointer)
 {
     ConsoleMessageTest::ConsoleMessage referenceMessage = { ConsoleMessageTest::MessageSource::ConsoleAPI, ConsoleMessageTest::MessageLevel::Log, "Log Console Message", 1, "http://foo.com/bar" };
     test->loadHtml("<html><body onload='console.log(\"Log Console Message\");'></body></html>", "http://foo.com/bar");
@@ -121,7 +121,7 @@ static void testWebKitConsoleMessageConsoleAPI(ConsoleMessageTest* test, gconstp
     g_assert_true(test->m_consoleMessage == referenceMessage);
 }
 
-static void testWebKitConsoleMessageJavaScriptException(ConsoleMessageTest* test, gconstpointer)
+static void testCyberKitConsoleMessageJavaScriptException(ConsoleMessageTest* test, gconstpointer)
 {
     ConsoleMessageTest::ConsoleMessage referenceMessage = { ConsoleMessageTest::MessageSource::JavaScript, ConsoleMessageTest::MessageLevel::Error,
         "ReferenceError: Can't find variable: foo", 1, "http://foo.com/bar" };
@@ -130,7 +130,7 @@ static void testWebKitConsoleMessageJavaScriptException(ConsoleMessageTest* test
     g_assert_true(test->m_consoleMessage == referenceMessage);
 }
 
-static void testWebKitConsoleMessageNetworkError(ConsoleMessageTest* test, gconstpointer)
+static void testCyberKitConsoleMessageNetworkError(ConsoleMessageTest* test, gconstpointer)
 {
     ConsoleMessageTest::ConsoleMessage referenceMessage = { ConsoleMessageTest::MessageSource::Network, ConsoleMessageTest::MessageLevel::Error,
         "Failed to load resource: The resource at “/org/webkit/glib/tests/not-found.css” does not exist", 0, "resource:///org/webkit/glib/tests/not-found.css" };
@@ -139,7 +139,7 @@ static void testWebKitConsoleMessageNetworkError(ConsoleMessageTest* test, gcons
     g_assert_true(test->m_consoleMessage == referenceMessage);
 }
 
-static void testWebKitConsoleMessageSecurityError(ConsoleMessageTest* test, gconstpointer)
+static void testCyberKitConsoleMessageSecurityError(ConsoleMessageTest* test, gconstpointer)
 {
     ConsoleMessageTest::ConsoleMessage referenceMessage = { ConsoleMessageTest::MessageSource::Security, ConsoleMessageTest::MessageLevel::Error,
         "Not allowed to load local resource: file:///foo/bar/source.png", 1, "http://foo.com/bar" };
@@ -150,10 +150,10 @@ static void testWebKitConsoleMessageSecurityError(ConsoleMessageTest* test, gcon
 
 void beforeAll()
 {
-    ConsoleMessageTest::add("WebKitConsoleMessage", "console-api", testWebKitConsoleMessageConsoleAPI);
-    ConsoleMessageTest::add("WebKitConsoleMessage", "js-exception", testWebKitConsoleMessageJavaScriptException);
-    ConsoleMessageTest::add("WebKitConsoleMessage", "network-error", testWebKitConsoleMessageNetworkError);
-    ConsoleMessageTest::add("WebKitConsoleMessage", "security-error", testWebKitConsoleMessageSecurityError);
+    ConsoleMessageTest::add("CyberKitConsoleMessage", "console-api", testCyberKitConsoleMessageConsoleAPI);
+    ConsoleMessageTest::add("CyberKitConsoleMessage", "js-exception", testCyberKitConsoleMessageJavaScriptException);
+    ConsoleMessageTest::add("CyberKitConsoleMessage", "network-error", testCyberKitConsoleMessageNetworkError);
+    ConsoleMessageTest::add("CyberKitConsoleMessage", "security-error", testCyberKitConsoleMessageSecurityError);
 }
 
 void afterAll()

@@ -31,10 +31,10 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <WebKit/WKSessionStateRef.h>
+#include <CyberKit/WKSessionStateRef.h>
 #include <wtf/RunLoop.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didFinishLoad;
 
@@ -83,7 +83,7 @@ static WKRetainPtr<WKDataRef> createSessionStateData(WKContextRef context)
     return adoptWK(WKSessionStateCopyData(sessionState.get()));
 }
 
-TEST(WebKit, RestoreSessionStateContainingScrollRestorationDefault)
+TEST(CyberKit, RestoreSessionStateContainingScrollRestorationDefault)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -101,7 +101,7 @@ TEST(WebKit, RestoreSessionStateContainingScrollRestorationDefault)
     EXPECT_JS_EQ(webView.page(), "history.scrollRestoration", "auto");
 }
 
-TEST(WebKit, RestoreSessionStateContainingScrollRestorationDefaultWithAsyncPolicyDelegates)
+TEST(CyberKit, RestoreSessionStateContainingScrollRestorationDefaultWithAsyncPolicyDelegates)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -126,7 +126,7 @@ TEST(WebKit, RestoreSessionStateContainingScrollRestorationDefaultWithAsyncPolic
     EXPECT_JS_EQ(webView.page(), "history.scrollRestoration", "auto");
 }
 
-TEST(WebKit, RestoreSessionStateAfterClose)
+TEST(CyberKit, RestoreSessionStateAfterClose)
 {
     auto context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -138,7 +138,7 @@ TEST(WebKit, RestoreSessionStateAfterClose)
     WKPageRestoreFromSessionState(webView.page(), sessionState.get());
 }
 
-TEST(WebKit, PendingURLAfterRestoreSessionState)
+TEST(CyberKit, PendingURLAfterRestoreSessionState)
 {
     auto context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -156,6 +156,6 @@ TEST(WebKit, PendingURLAfterRestoreSessionState)
     EXPECT_WK_STREQ(adoptWK(WKURLCopyString(expectedURL.get())).get(), adoptWK(WKURLCopyString(pendingURL.get())).get());
 }
     
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

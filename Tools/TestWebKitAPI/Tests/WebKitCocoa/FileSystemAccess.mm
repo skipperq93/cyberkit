@@ -34,12 +34,12 @@
 #import "TestUIDelegate.h"
 #import "TestURLSchemeHandler.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebsiteDataRecordPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebsiteDataRecordPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 
 @interface FileSystemAccessMessageHandler : NSObject <WKScriptMessageHandler>
 @end
@@ -122,24 +122,24 @@ TEST(FileSystemAccess, WebProcessCrashDuringWrite)
 
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:configuration.get()]);
     [webView loadHTMLString:workerFrameString baseURL:[NSURL URLWithString:@"webkit://webkit.org"]];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     EXPECT_WK_STREQ(@"page is loaded", [lastScriptMessage body]);
 
     [webView evaluateJavaScript:@"start()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     EXPECT_WK_STREQ(@"success: write 10 bytes", [lastScriptMessage body]);
 
     auto secondWebView = adoptNS([[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:configuration.get()]);
     [secondWebView loadHTMLString:workerFrameString baseURL:[NSURL URLWithString:@"webkit://webkit.org"]];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     EXPECT_WK_STREQ(@"page is loaded", [lastScriptMessage body]);
 
     // Access handle cannot be created when there is an open one.
     [secondWebView evaluateJavaScript:@"start()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     EXPECT_WK_STREQ(@"error: InvalidStateError - The object is in an invalid state.", [lastScriptMessage body]);
 
@@ -147,7 +147,7 @@ TEST(FileSystemAccess, WebProcessCrashDuringWrite)
     [webView _killWebContentProcess];
 
     [secondWebView evaluateJavaScript:@"start()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     EXPECT_WK_STREQ(@"success: write 10 bytes", [lastScriptMessage body]);
 }
 
@@ -175,12 +175,12 @@ TEST(FileSystemAccess, NetworkProcessCrashDuringWrite)
 
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:configuration.get()]);
     [webView loadHTMLString:workerFrameString baseURL:[NSURL URLWithString:@"webkit://webkit.org"]];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     EXPECT_WK_STREQ(@"page is loaded", [lastScriptMessage body]);
 
     [webView evaluateJavaScript:@"start()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     EXPECT_WK_STREQ(@"success: write 10 bytes", [lastScriptMessage body]);
 
@@ -188,13 +188,13 @@ TEST(FileSystemAccess, NetworkProcessCrashDuringWrite)
     [[configuration websiteDataStore] _terminateNetworkProcess];
 
     // Open access handle should be closed when network process crashes.
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     EXPECT_WK_STREQ(@"error: InvalidStateError - AccessHandle is closed", [lastScriptMessage body]);
 
     // Access handle can be created after network process is relaunched.
     [webView evaluateJavaScript:@"start()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     EXPECT_WK_STREQ(@"success: write 10 bytes", [lastScriptMessage body]);
 }
 
@@ -221,12 +221,12 @@ TEST(FileSystemAccess, DeleteDataDuringWrite)
 
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:configuration.get()]);
     [webView loadHTMLString:workerFrameString baseURL:[NSURL URLWithString:@"webkit://webkit.org"]];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     EXPECT_WK_STREQ(@"page is loaded", [lastScriptMessage body]);
 
     [webView evaluateJavaScript:@"start()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     EXPECT_WK_STREQ(@"success: write 10 bytes", [lastScriptMessage body]);
 
@@ -238,10 +238,10 @@ TEST(FileSystemAccess, DeleteDataDuringWrite)
             done = true;
         }];
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     // Open access handle should be when website data is removed.
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     EXPECT_WK_STREQ(@"error: InvalidStateError - AccessHandle is closed", [lastScriptMessage body]);
 }
 
@@ -268,7 +268,7 @@ TEST(FileSystemAccess, MigrateToNewStorageDirectory)
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
     // This is old value returned by WebsiteDataStore::defaultGeneralStorageDirectory().
-    NSString *oldStorageDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Caches/com.apple.WebKit.TestWebKitAPI/WebKit/Storage/"];
+    NSString *oldStorageDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Caches/com.apple.CyberKit.TestCyberKitAPI/CyberKit/Storage/"];
     [fileManager removeItemAtPath:oldStorageDirectory error:nil];
     EXPECT_FALSE([[NSFileManager defaultManager] fileExistsAtPath:oldStorageDirectory]);
     
@@ -279,13 +279,13 @@ TEST(FileSystemAccess, MigrateToNewStorageDirectory)
     [fileManager createFileAtPath:oldFilePath contents:nil attributes:nil];
     EXPECT_TRUE([fileManager fileExistsAtPath:oldFilePath]);
 
-    NSString *resourceSaltPath = [[NSBundle mainBundle] URLForResource:@"file-system-access" withExtension:@"salt" subdirectory:@"TestWebKitAPI.resources"].path;
+    NSString *resourceSaltPath = [[NSBundle mainBundle] URLForResource:@"file-system-access" withExtension:@"salt" subdirectory:@"TestCyberKitAPI.resources"].path;
     NSString *oldSaltPath = [oldStorageDirectory stringByAppendingPathComponent:@"salt"];
     [fileManager copyItemAtPath:resourceSaltPath toPath:oldSaltPath error:nil];
     EXPECT_TRUE([[NSFileManager defaultManager] fileExistsAtPath:oldSaltPath]);
 
     // This is current value returned by WebsiteDataStore::defaultGeneralStorageDirectory().
-    NSString *newStorageDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/WebKit/com.apple.WebKit.TestWebKitAPI/WebsiteData/Default/"];
+    NSString *newStorageDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/Default/"];
     [fileManager removeItemAtPath:newStorageDirectory error:nil];
     NSString *newFilePath = [NSString pathWithComponents:@[newStorageDirectory, hashedOrigin, hashedOrigin, storageType, fileName]];
     EXPECT_FALSE([fileManager fileExistsAtPath:newFilePath]);
@@ -306,7 +306,7 @@ TEST(FileSystemAccess, MigrateToNewStorageDirectory)
 
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:configuration.get()]);
     [webView loadHTMLString:basicString baseURL:[NSURL URLWithString:@"https://webkit.org"]];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     EXPECT_WK_STREQ(@"file is opened", [lastScriptMessage body]);
 }
@@ -338,14 +338,14 @@ TEST(FileSystemAccess, FetchAndRemoveData)
     [websiteDataStore removeDataOfTypes:types modifiedSince:[NSDate distantPast] completionHandler:^ {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto preferences = [configuration preferences];
     preferences._fileSystemAccessEnabled = YES;
     preferences._storageAPIEnabled = YES;
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:configuration.get()]);
     [webView loadHTMLString:testString baseURL:[NSURL URLWithString:@"https://webkit.org"]];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     EXPECT_WK_STREQ(@"file is opened", [lastScriptMessage body]);
 
@@ -361,7 +361,7 @@ TEST(FileSystemAccess, FetchAndRemoveData)
             done = true;
         }];
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     // Fetch data after removal.
     done = false;
@@ -372,7 +372,7 @@ TEST(FileSystemAccess, FetchAndRemoveData)
 
     // File cannot be opened after data removal.
     [webView evaluateJavaScript:@"open(false)" completionHandler:nil];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     EXPECT_WK_STREQ(@"error: NotFoundError - The object can not be found here.", [lastScriptMessage body]);
 }
@@ -387,7 +387,7 @@ TEST(FileSystemAccess, RemoveDataByModificationTime)
     preferences._storageAPIEnabled = YES;
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:configuration.get()]);
     [webView loadHTMLString:testString baseURL:[NSURL URLWithString:@"https://webkit.org"]];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     EXPECT_WK_STREQ(@"file is opened", [lastScriptMessage body]);
 
@@ -400,7 +400,7 @@ TEST(FileSystemAccess, RemoveDataByModificationTime)
         EXPECT_GT(recordsCount, 0u);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [websiteDataStore removeDataOfTypes:types modifiedSince:[NSDate now] completionHandler:^ {
@@ -410,7 +410,7 @@ TEST(FileSystemAccess, RemoveDataByModificationTime)
             done = true;
         }];
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [websiteDataStore removeDataOfTypes:types modifiedSince:[NSDate distantPast] completionHandler:^ {
@@ -419,7 +419,7 @@ TEST(FileSystemAccess, RemoveDataByModificationTime)
             done = true;
         }];
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 static NSString *mainFrameString = @"<script> \
@@ -453,9 +453,9 @@ open();
 
 TEST(FileSystemAccess, FetchDataForThirdParty)
 {
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { frameBytes } },
-    }, TestWebKitAPI::HTTPServer::Protocol::Https, nullptr, nullptr, 9091);
+    }, TestCyberKitAPI::HTTPServer::Protocol::Https, nullptr, nullptr, 9091);
 
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto handler = adoptNS([[FileSystemAccessMessageHandler alloc] init]);
@@ -470,7 +470,7 @@ TEST(FileSystemAccess, FetchDataForThirdParty)
     [websiteDataStore removeDataOfTypes:types modifiedSince:[NSDate distantPast] completionHandler:^ {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 800, 600) configuration:configuration.get()]);
     auto navigationDelegate = adoptNS([TestNavigationDelegate new]);
@@ -484,7 +484,7 @@ TEST(FileSystemAccess, FetchDataForThirdParty)
     [webView setNavigationDelegate:navigationDelegate.get()];
 
     [webView loadHTMLString:mainFrameString baseURL:[NSURL URLWithString:@"https://webkit.org"]];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     receivedScriptMessage = false;
     EXPECT_WK_STREQ(@"file is opened", [lastScriptMessage body]);
 
@@ -500,7 +500,7 @@ TEST(FileSystemAccess, FetchDataForThirdParty)
         EXPECT_WK_STREQ(@"webkit.org", [sortedRecords objectAtIndex:1].displayName);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 #endif // USE(APPLE_INTERNAL_SDK)

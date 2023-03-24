@@ -28,14 +28,14 @@
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
 #import "Test.h"
-#import <WebCore/SQLiteFileSystem.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKUserContentControllerPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
-#import <WebKit/_WKUserStyleSheet.h>
+#import <CyberCore/SQLiteFileSystem.h>
+#import <CyberKit/CyberKit.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/_WKUserStyleSheet.h>
 #import <wtf/RetainPtr.h>
 
 @interface StoreBlobMessageHandler : NSObject <WKScriptMessageHandler>
@@ -57,13 +57,13 @@ TEST(IndexedDB, StoreBlobThenRemoveData)
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [[configuration userContentController] addScriptMessageHandler:handler.get() name:@"testHandler"];
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"StoreBlobToBeDeleted" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"StoreBlobToBeDeleted" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
     EXPECT_WK_STREQ(@"Success", (NSString *)[lastScriptMessage body]);
 
-    NSString *hash = WebCore::SQLiteFileSystem::computeHashForFileName("StoreBlobToBeDeleted"_s);
+    NSString *hash = CyberCore::SQLiteFileSystem::computeHashForFileName("StoreBlobToBeDeleted"_s);
     NSURL *originURL = [NSURL URLWithString:@"file://"];
     __block NSString *originDirectoryString = nil;
     readyToContinue = false;
@@ -71,7 +71,7 @@ TEST(IndexedDB, StoreBlobThenRemoveData)
         originDirectoryString = result;
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
     NSURL *originDirectory = [NSURL fileURLWithPath:originDirectoryString isDirectory:YES];
     NSURL *databaseDirectory = [originDirectory URLByAppendingPathComponent:hash];
     NSURL *blobFileURL = [databaseDirectory URLByAppendingPathComponent:@"1.blob"];
@@ -86,7 +86,7 @@ TEST(IndexedDB, StoreBlobThenRemoveData)
     // 1 - Create the path for a fake database that won't actively be in use
     // 2 - Move -wal and -shm files into that directory
     // 3 - Make sure the entire directory is deleted
-    NSString *fakeHash = WebCore::SQLiteFileSystem::computeHashForFileName("FakeDatabasePath"_s);
+    NSString *fakeHash = CyberCore::SQLiteFileSystem::computeHashForFileName("FakeDatabasePath"_s);
     NSURL *fakeDatabaseDirectory = [originDirectory URLByAppendingPathComponent:fakeHash];
     NSURL *fakeShmURL = [fakeDatabaseDirectory URLByAppendingPathComponent:@"IndexedDB.sqlite3-wal"];
     NSURL *fakeWalURL = [fakeDatabaseDirectory URLByAppendingPathComponent:@"IndexedDB.sqlite3-shm"];
@@ -128,7 +128,7 @@ TEST(IndexedDB, StoreBlobThenRemoveData)
 
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 }
 
 TEST(IndexedDB, StoreBlobThenDeleteDatabase)
@@ -137,12 +137,12 @@ TEST(IndexedDB, StoreBlobThenDeleteDatabase)
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [[configuration userContentController] addScriptMessageHandler:handler.get() name:@"testHandler"];
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"StoreBlobToBeDeleted" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"StoreBlobToBeDeleted" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
     EXPECT_WK_STREQ(@"Success", (NSString *)[lastScriptMessage body]);
 
-    NSString *hash = WebCore::SQLiteFileSystem::computeHashForFileName("StoreBlobToBeDeleted"_s);
+    NSString *hash = CyberCore::SQLiteFileSystem::computeHashForFileName("StoreBlobToBeDeleted"_s);
     NSURL *originURL = [NSURL URLWithString:@"file://"];
     __block NSString *originDirectoryString = nil;
     readyToContinue = false;
@@ -150,7 +150,7 @@ TEST(IndexedDB, StoreBlobThenDeleteDatabase)
         originDirectoryString = result;
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
     NSURL *originDirectory = [NSURL fileURLWithPath:originDirectoryString isDirectory:YES];
     NSURL *databaseDirectory = [originDirectory URLByAppendingPathComponent:hash];
     NSURL *blobFileURL = [databaseDirectory URLByAppendingPathComponent:@"1.blob"];
@@ -165,7 +165,7 @@ TEST(IndexedDB, StoreBlobThenDeleteDatabase)
 
     readyToContinue = false;
     [webView evaluateJavaScript:@"deleteDatabase(() => { sendMessage('Delete success'); })" completionHandler:nil];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
     EXPECT_WK_STREQ(@"Delete success", (NSString *)[lastScriptMessage body]);
 
     EXPECT_FALSE([[NSFileManager defaultManager] fileExistsAtPath:blobFileURL.path]);

@@ -134,7 +134,7 @@ class ExecutiveTest(unittest.TestCase):
         """Validate that it is safe to pass unicode() objects
         to Executive.run* methods, and they will return unicode()
         objects by default unless decode_output=False"""
-        unicode_tor_input = u"WebKit \u2661 Tor Arne Vestb\u00F8!"
+        unicode_tor_input = u"CyberKit \u2661 Tor Arne Vestb\u00F8!"
         if sys.platform.startswith('win'):
             encoding = 'mbcs'
         else:

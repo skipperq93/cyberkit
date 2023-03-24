@@ -28,9 +28,9 @@
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
 #import "Test.h"
-#import <WebKit/WebViewPrivate.h>
-#import <WebKit/WebURLsWithTitles.h>
-#import <WebKit/DOM.h>
+#import <CyberKit/WebViewPrivate.h>
+#import <CyberKit/WebURLsWithTitles.h>
+#import <CyberKit/DOM.h>
 #import <Carbon/Carbon.h>
 #import <wtf/RetainPtr.h>
 
@@ -50,7 +50,7 @@ static bool didFinishLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void contextMenuCopyLink(WebView* webView, int itemIndex)
 {
@@ -85,7 +85,7 @@ static void contextMenuCopyLink(WebView* webView, int itemIndex)
     }
 }
 
-TEST(WebKitLegacy, ContextMenuCanCopyURL)
+TEST(CyberKitLegacy, ContextMenuCanCopyURL)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0,0,800,600) frameName:nil groupName:nil]);
     RetainPtr<NSWindow> window = adoptNS([[NSWindow alloc] initWithContentRect:NSMakeRect(100, 100, 800, 600) styleMask:NSWindowStyleMaskBorderless backing:NSBackingStoreBuffered defer:YES]);
@@ -94,7 +94,7 @@ TEST(WebKitLegacy, ContextMenuCanCopyURL)
     [window.get().contentView addSubview:webView.get()];
     webView.get().frameLoadDelegate = delegate.get();
 
-    [webView.get().mainFrame loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"ContextMenuCanCopyURL" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView.get().mainFrame loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"ContextMenuCanCopyURL" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     
     Util::run(&didFinishLoad);
 
@@ -125,4 +125,4 @@ TEST(WebKitLegacy, ContextMenuCanCopyURL)
     EXPECT_WK_STREQ(@"File:Texas_Wheelers_cast.JPG", [titles objectAtIndex:0]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -32,10 +32,10 @@
 #import "Test.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebCore/ColorCocoa.h>
-#import <WebCore/FontCocoa.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberCore/ColorCocoa.h>
+#import <CyberCore/FontCocoa.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <cmath>
 #import <pal/spi/cf/CoreTextSPI.h>
 #import <pal/spi/cocoa/NSAttributedStringSPI.h>
@@ -111,7 +111,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 struct ListExpectation {
     NSString *markerFormat { nil };
@@ -140,7 +140,7 @@ struct FontExpectation {
     CGFloat fontSize { 0 };
 };
 
-static void checkColor(WebCore::CocoaColor *color, std::optional<ColorExpectation> expectation)
+static void checkColor(CyberCore::CocoaColor *color, std::optional<ColorExpectation> expectation)
 {
     if (!expectation) {
         EXPECT_NULL(color);
@@ -175,7 +175,7 @@ static void checkShadow(NSShadow *shadow, std::optional<ShadowExpectation> expec
     EXPECT_EQ(expectation->blurRadius, shadow.shadowBlurRadius);
 }
 
-static void checkFont(WebCore::CocoaFont *font, FontExpectation expectation)
+static void checkFont(CyberCore::CocoaFont *font, FontExpectation expectation)
 {
     EXPECT_WK_STREQ(expectation.fontName, font.fontName);
     EXPECT_EQ(expectation.fontSize, font.pointSize);
@@ -465,9 +465,9 @@ TEST(FontAttributes, FontTextStyle)
 
     EXPECT_WK_STREQ("UICTFontTextStyleTitle1", [webView stylePropertyAtSelectionStart:@"font-family"]);
 
-    TestWebKitAPI::Util::run(&uiDelegate->_done);
+    TestCyberKitAPI::Util::run(&uiDelegate->_done);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -30,14 +30,14 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <WebKit/WKContextPrivate.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKContextPrivate.h>
+#include <CyberKit/WKRetainPtr.h>
 #include <string.h>
 #include <vector>
 
 using namespace std;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 enum class GeolocationEvent {
     StartUpdating,
@@ -159,7 +159,7 @@ struct GeolocationBasicStateTracker : GeolocationStateTracker {
     }
 };
 
-TEST(WebKit, GeolocationBasic)
+TEST(CyberKit, GeolocationBasic)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -201,7 +201,7 @@ struct GeolocationBasicWithHighAccuracyStateTracker : GeolocationStateTracker {
     }
 };
 
-TEST(WebKit, GeolocationBasicWithHighAccuracy)
+TEST(CyberKit, GeolocationBasicWithHighAccuracy)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -254,7 +254,7 @@ struct GeolocationTransitionToHighAccuracyStateTracker : GeolocationStateTracker
     }
 };
 
-TEST(WebKit, GeolocationTransitionToHighAccuracy)
+TEST(CyberKit, GeolocationTransitionToHighAccuracy)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -327,7 +327,7 @@ static void runJavaScriptAlert(WKPageRef page, WKStringRef alertText, WKFrameRef
     context->alertText = Util::toSTD(alertText);
 }
 
-TEST(WebKit, GeolocationTransitionToLowAccuracy)
+TEST(CyberKit, GeolocationTransitionToLowAccuracy)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -369,7 +369,7 @@ TEST(WebKit, GeolocationTransitionToLowAccuracy)
     clearGeolocationProvider(context.get());
 }
 
-TEST(WebKit, GeolocationWatchMultiprocess)
+TEST(CyberKit, GeolocationWatchMultiprocess)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -405,6 +405,6 @@ TEST(WebKit, GeolocationWatchMultiprocess)
     clearGeolocationProvider(context.get());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -28,7 +28,7 @@
 #include <windows.h>
 #include <wtf/Noncopyable.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class HostWindow {
     WTF_MAKE_NONCOPYABLE(HostWindow);
@@ -47,6 +47,6 @@ private:
     HWND m_window;
 };
 
-} // namespace WebKitAPITest
+} // namespace CyberKitAPITest
 
 #endif // HostWindow_h

@@ -324,13 +324,13 @@
       "workernames": ["ews151", "webkit-misc"]
     },
     {
-      "name": "WebKitPy-Tests-EWS", "shortname": "webkitpy", "icon": "testOnly",
-      "factory": "WebKitPyFactory", "platform": "*",
+      "name": "CyberKitPy-Tests-EWS", "shortname": "webkitpy", "icon": "testOnly",
+      "factory": "CyberKitPyFactory", "platform": "*",
       "workernames": ["ews151", "webkit-misc"]
     },
     {
-      "name": "WebKitPerl-Tests-EWS", "shortname": "webkitperl", "icon": "testOnly",
-      "factory": "WebKitPerlFactory", "platform": "*",
+      "name": "CyberKitPerl-Tests-EWS", "shortname": "webkitperl", "icon": "testOnly",
+      "factory": "CyberKitPerlFactory", "platform": "*",
       "workernames": ["ews151", "webkit-misc"]
     },
     {
@@ -384,7 +384,7 @@
             "JSC-ARMv7-32bits-Build-EWS", "JSC-i386-32bits-EWS", "JSC-MIPSEL-32bits-Build-EWS", "JSC-Tests-EWS", "JSC-Tests-arm64-EWS",
             "macOS-AppleSilicon-Ventura-Debug-Build-EWS", "macOS-Monterey-Release-Build-EWS",
             "Services-EWS", "Style-EWS", "tvOS-16-Build-EWS", "tvOS-16-Simulator-Build-EWS", "watchOS-9-Build-EWS",
-            "watchOS-9-Simulator-Build-EWS", "WPE-Build-EWS", "WebKitPerl-Tests-EWS", "WebKitPy-Tests-EWS", "WinCairo-EWS"
+            "watchOS-9-Simulator-Build-EWS", "WPE-Build-EWS", "CyberKitPerl-Tests-EWS", "CyberKitPy-Tests-EWS", "WinCairo-EWS"
       ]
     },
     {
@@ -398,7 +398,7 @@
             "JSC-ARMv7-32bits-Build-EWS", "JSC-i386-32bits-EWS", "JSC-MIPSEL-32bits-Build-EWS", "JSC-Tests-EWS", "JSC-Tests-arm64-EWS",
             "macOS-AppleSilicon-Ventura-Debug-Build-EWS", "macOS-Monterey-Release-Build-EWS",
             "Services-EWS", "Style-EWS", "Style-EWS", "tvOS-16-Build-EWS", "tvOS-16-Simulator-Build-EWS", "watchOS-9-Build-EWS",
-            "watchOS-9-Simulator-Build-EWS", "WPE-Build-EWS", "WebKitPerl-Tests-EWS", "WebKitPy-Tests-EWS", "WinCairo-EWS"
+            "watchOS-9-Simulator-Build-EWS", "WPE-Build-EWS", "CyberKitPerl-Tests-EWS", "CyberKitPy-Tests-EWS", "WinCairo-EWS"
       ]
     },
     {

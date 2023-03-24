@@ -18,18 +18,18 @@
  */
 
 #include "config.h"
-#include "WebKitTestServer.h"
+#include "CyberKitTestServer.h"
 
 #include "TestMain.h"
 #include <wtf/Threading.h>
 #include <wtf/glib/GUniquePtr.h>
 #include <wtf/threads/BinarySemaphore.h>
 
-WebKitTestServer::WebKitTestServer(ServerOptionsBitSet options)
+CyberKitTestServer::CyberKitTestServer(ServerOptionsBitSet options)
 {
     if (options[ServerRunInThread]) {
         WTF::initialize();
-        m_queue = WorkQueue::create("WebKitTestServer");
+        m_queue = WorkQueue::create("CyberKitTestServer");
     }
 
     GRefPtr<GTlsCertificate> certificate;
@@ -42,10 +42,10 @@ WebKitTestServer::WebKitTestServer(ServerOptionsBitSet options)
         g_assert_no_error(error.get());
     }
 
-    m_soupServer = adoptGRef(soup_server_new("server-header", "WebKitTestServer ", "tls-certificate", certificate.get(), nullptr));
+    m_soupServer = adoptGRef(soup_server_new("server-header", "CyberKitTestServer ", "tls-certificate", certificate.get(), nullptr));
 }
 
-void WebKitTestServer::run(SoupServerCallback serverCallback)
+void CyberKitTestServer::run(SoupServerCallback serverCallback)
 {
     soup_server_add_handler(m_soupServer.get(), nullptr, serverCallback, nullptr, nullptr);
 
@@ -72,7 +72,7 @@ void WebKitTestServer::run(SoupServerCallback serverCallback)
 #endif
 }
 
-void WebKitTestServer::addWebSocketHandler(SoupServerWebsocketCallback callback, gpointer userData)
+void CyberKitTestServer::addWebSocketHandler(SoupServerWebsocketCallback callback, gpointer userData)
 {
     m_baseWebSocketURL = URL(m_baseURL, "/websocket/"_s);
     m_baseWebSocketURL.setProtocol(m_baseWebSocketURL.protocolIs("http"_s) ? "ws"_s : "wss"_s);
@@ -85,7 +85,7 @@ void WebKitTestServer::addWebSocketHandler(SoupServerWebsocketCallback callback,
         soup_server_add_websocket_handler(m_soupServer.get(), "/websocket", nullptr, nullptr, callback, userData, nullptr);
 }
 
-void WebKitTestServer::removeWebSocketHandler()
+void CyberKitTestServer::removeWebSocketHandler()
 {
     m_baseWebSocketURL = { };
 
@@ -97,19 +97,19 @@ void WebKitTestServer::removeWebSocketHandler()
         soup_server_remove_handler(m_soupServer.get(), "/websocket");
 }
 
-CString WebKitTestServer::getWebSocketURIForPath(const char* path) const
+CString CyberKitTestServer::getWebSocketURIForPath(const char* path) const
 {
     g_assert_false(m_baseWebSocketURL.isNull());
     g_assert_true(path && *path == '/');
     return URL(m_baseWebSocketURL, String::fromLatin1(path + 1)).string().utf8(); // Ignore the leading slash.
 }
 
-CString WebKitTestServer::getURIForPath(const char* path) const
+CString CyberKitTestServer::getURIForPath(const char* path) const
 {
     return URL(m_baseURL, String::fromLatin1(path)).string().utf8();
 }
 
-unsigned WebKitTestServer::port() const
+unsigned CyberKitTestServer::port() const
 {
     return m_baseURL.port().value_or(0);
 }

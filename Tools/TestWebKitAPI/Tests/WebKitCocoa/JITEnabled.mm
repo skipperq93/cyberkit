@@ -26,12 +26,12 @@
 #import "config.h"
 
 #import "PlatformUtilities.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <wtf/RetainPtr.h>
 
-TEST(WebKit, JITEnabled)
+TEST(CyberKit, JITEnabled)
 {
     auto checkJITEnabled = [] (RetainPtr<WKWebView>&& webView, BOOL expectedValue) {
         __block bool done = false;
@@ -43,7 +43,7 @@ TEST(WebKit, JITEnabled)
                 done = true;
             }];
         }];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
     };
 
     auto processPoolConfiguration = adoptNS([_WKProcessPoolConfiguration new]);

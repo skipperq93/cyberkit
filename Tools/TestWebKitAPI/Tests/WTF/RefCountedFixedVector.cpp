@@ -29,7 +29,7 @@
 #include <array>
 #include <wtf/RefCountedFixedVector.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_RefCountedFixedVector, Empty)
 {

@@ -26,7 +26,7 @@
 #import "config.h"
 #import "TestDownloadDelegate.h"
 
-#import <WebKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
 
 @implementation TestDownloadDelegate {
     Vector<DownloadCallback> _callbackRecord;
@@ -117,7 +117,7 @@
     _downloadDidFinish = ^(WKDownload *) {
         finished = true;
     };
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 }
 
 - (Vector<DownloadCallback>)takeCallbackRecord

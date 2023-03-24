@@ -21,15 +21,15 @@
 
 #include "WebViewTest.h"
 
-static void testWebKitDOMElementAutoFill(WebViewTest* test, gconstpointer)
+static void testCyberKitDOMElementAutoFill(WebViewTest* test, gconstpointer)
 {
     static const gchar* testHTML = "<html><body><form action='#'><input id='auto-fill'></input></form></body></html>";
-    g_assert_true(test->runWebProcessTest("WebKitDOMElement", "auto-fill", testHTML));
+    g_assert_true(test->runWebProcessTest("CyberKitDOMElement", "auto-fill", testHTML));
 }
 
 void beforeAll()
 {
-    WebViewTest::add("WebKitDOMElement", "auto-fill", testWebKitDOMElementAutoFill);
+    WebViewTest::add("CyberKitDOMElement", "auto-fill", testCyberKitDOMElementAutoFill);
 }
 
 void afterAll()

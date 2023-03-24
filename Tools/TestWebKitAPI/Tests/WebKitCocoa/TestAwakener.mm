@@ -32,7 +32,7 @@
 
 - (id)awakeAfterUsingCoder:(NSCoder *)coder
 {
-    // Note: This memory management, although unusual in WebKit, matches NS_REPLACES_RECEIVER.
+    // Note: This memory management, although unusual in CyberKit, matches NS_REPLACES_RECEIVER.
     TestAwakener *replacement = [[TestAwakener alloc] initWithValue:self.value];
     [self release];
     return replacement;

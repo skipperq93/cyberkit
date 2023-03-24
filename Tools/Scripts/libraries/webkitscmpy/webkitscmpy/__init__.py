@@ -42,7 +42,7 @@ try:
 except ImportError:
     raise ImportError(
         "'webkitcorepy' could not be found on your Python path.\n" +
-        "You are not running from a WebKit checkout.\n" +
+        "You are not running from a CyberKit checkout.\n" +
         "Please install webkitcorepy with `pip install webkitcorepy --extra-index-url <package index URL>`"
     )
 

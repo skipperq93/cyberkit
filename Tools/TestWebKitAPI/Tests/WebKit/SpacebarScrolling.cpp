@@ -30,11 +30,11 @@
 #include "JavaScriptTest.h"
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
-#include <WebKit/WKPreferencesRefPrivate.h>
-#include <WebKit/WKRetainPtr.h>
-#include <WebKit/WKSerializedScriptValue.h>
+#include <CyberKit/WKPreferencesRefPrivate.h>
+#include <CyberKit/WKRetainPtr.h>
+#include <CyberKit/WKSerializedScriptValue.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didFinishLoad;
 static bool didNotHandleKeyDownEvent;
@@ -64,7 +64,7 @@ static void didRunJavascript(WKSerializedScriptValueRef serializedScriptValue, W
     JSGlobalContextRelease(scriptContext);
 }
 
-TEST(WebKit, SpacebarScrolling)
+TEST(CyberKit, SpacebarScrolling)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextWithInjectedBundle());
 
@@ -129,6 +129,6 @@ TEST(WebKit, SpacebarScrolling)
 #endif
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

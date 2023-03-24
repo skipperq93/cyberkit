@@ -25,14 +25,14 @@
 
 #pragma once
 
-#include <WebKit/WKNotificationManager.h>
-#include <WebKit/WKNotificationProvider.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKNotificationManager.h>
+#include <CyberKit/WKNotificationProvider.h>
+#include <CyberKit/WKRetainPtr.h>
 #include <wtf/FastMalloc.h>
 #include <wtf/HashMap.h>
 #include <wtf/Vector.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class TestNotificationProvider {
     WTF_MAKE_FAST_ALLOCATED;

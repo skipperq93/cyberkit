@@ -25,16 +25,16 @@
 
 #import "config.h"
 
-#import <JavaScriptCore/JSRetainPtr.h>
-#import <WebKit/DOMPrivate.h>
-#import <WebKit/WebFramePrivate.h>
-#import <WebKit/WebScriptWorld.h>
+#import <CyberScriptCore/JSRetainPtr.h>
+#import <CyberKit/DOMPrivate.h>
+#import <CyberKit/WebFramePrivate.h>
+#import <CyberKit/WebScriptWorld.h>
 #import <objc/runtime.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, DOMNodeFromJSObject)
+TEST(CyberKitLegacy, DOMNodeFromJSObject)
 {
     auto webView = adoptNS([[WebView alloc] initWithFrame:NSZeroRect frameName:nil groupName:nil]);
 
@@ -57,4 +57,4 @@ TEST(WebKitLegacy, DOMNodeFromJSObject)
     EXPECT_TRUE([[objcBody valueForKey:@"mainWorldProperty"] boolValue]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -31,12 +31,12 @@
 #import "Test.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKNavigationDelegatePrivate.h>
-#import <WebKit/WKNavigationPrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/WKNavigationPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Vector.h>
 
@@ -126,7 +126,7 @@ TEST(WKNavigation, FailureToStartWebProcessRecovery)
     shouldLoadAgainOnCrash = true;
 
     [webView loadHTMLString:testHTML baseURL:nil];
-    TestWebKitAPI::Util::run(&finishedLoad);
+    TestCyberKitAPI::Util::run(&finishedLoad);
 
     EXPECT_TRUE(didCrash);
     EXPECT_TRUE(!!webView.get()._webProcessIdentifier);
@@ -149,7 +149,7 @@ TEST(WKNavigation, FailureToStartWebProcessAfterCrashRecovery)
     didCrash = false;
 
     [webView loadHTMLString:testHTML baseURL:nil];
-    TestWebKitAPI::Util::run(&finishedLoad);
+    TestCyberKitAPI::Util::run(&finishedLoad);
 
     EXPECT_FALSE(didCrash);
     EXPECT_TRUE(!!webView.get()._webProcessIdentifier);
@@ -160,7 +160,7 @@ TEST(WKNavigation, FailureToStartWebProcessAfterCrashRecovery)
     expectedCrashReason = _WKProcessTerminationReasonRequestedByClient;
     [webView _killWebContentProcessAndResetState];
 
-    TestWebKitAPI::Util::run(&didCrash);
+    TestCyberKitAPI::Util::run(&didCrash);
     EXPECT_TRUE(!webView.get()._webProcessIdentifier);
     EXPECT_FALSE(receivedScriptMessage);
 
@@ -173,7 +173,7 @@ TEST(WKNavigation, FailureToStartWebProcessAfterCrashRecovery)
     [configuration.get().processPool _makeNextWebProcessLaunchFailForTesting];
     [webView loadHTMLString:testHTML baseURL:nil];
 
-    TestWebKitAPI::Util::run(&finishedLoad);
+    TestCyberKitAPI::Util::run(&finishedLoad);
 
     EXPECT_TRUE(didCrash);
     EXPECT_TRUE(!!webView.get()._webProcessIdentifier);
@@ -191,8 +191,8 @@ TEST(WKNavigation, AutomaticVisibleViewReloadAfterWebProcessCrash)
     startedLoad = false;
     finishedLoad = false;
 
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"rich-and-plain-text" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
-    TestWebKitAPI::Util::run(&finishedLoad);
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"rich-and-plain-text" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
+    TestCyberKitAPI::Util::run(&finishedLoad);
 
     startedLoad = false;
     finishedLoad = false;
@@ -200,8 +200,8 @@ TEST(WKNavigation, AutomaticVisibleViewReloadAfterWebProcessCrash)
     // Simulate crash.
     [webView _killWebContentProcess];
 
-    // Since we do not deal with the crash, WebKit should attempt a reload.
-    TestWebKitAPI::Util::run(&finishedLoad);
+    // Since we do not deal with the crash, CyberKit should attempt a reload.
+    TestCyberKitAPI::Util::run(&finishedLoad);
 
     startedLoad = false;
     finishedLoad = false;
@@ -209,9 +209,9 @@ TEST(WKNavigation, AutomaticVisibleViewReloadAfterWebProcessCrash)
     // Simulate another crash.
     [webView _killWebContentProcess];
 
-    // WebKit should not attempt to reload again.
+    // CyberKit should not attempt to reload again.
     EXPECT_FALSE(startedLoad);
-    TestWebKitAPI::Util::runFor(0.5_s);
+    TestCyberKitAPI::Util::runFor(0.5_s);
     EXPECT_FALSE(startedLoad);
 }
 
@@ -229,8 +229,8 @@ TEST(WKNavigation, AutomaticHiddenViewDelayedReloadAfterWebProcessCrash)
     startedLoad = false;
     finishedLoad = false;
 
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"rich-and-plain-text" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
-    TestWebKitAPI::Util::run(&finishedLoad);
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"rich-and-plain-text" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
+    TestCyberKitAPI::Util::run(&finishedLoad);
 
     startedLoad = false;
     finishedLoad = false;
@@ -238,9 +238,9 @@ TEST(WKNavigation, AutomaticHiddenViewDelayedReloadAfterWebProcessCrash)
     // Simulate crash.
     [webView _killWebContentProcess];
 
-    TestWebKitAPI::Util::runFor(0.5_s);
+    TestCyberKitAPI::Util::runFor(0.5_s);
 
-    // WebKit should not have attempted a reload since the view is not visible.
+    // CyberKit should not have attempted a reload since the view is not visible.
     EXPECT_FALSE(startedLoad);
     EXPECT_FALSE(finishedLoad);
 
@@ -248,8 +248,8 @@ TEST(WKNavigation, AutomaticHiddenViewDelayedReloadAfterWebProcessCrash)
     [webView addToTestWindow];
     [webView focus];
 
-    // WebKit should have triggered a reload when the view became visible.
-    TestWebKitAPI::Util::run(&finishedLoad);
+    // CyberKit should have triggered a reload when the view became visible.
+    TestCyberKitAPI::Util::run(&finishedLoad);
 }
 
 TEST(WKNavigation, ProcessCrashDuringCallback)
@@ -262,8 +262,8 @@ TEST(WKNavigation, ProcessCrashDuringCallback)
     startedLoad = false;
     finishedLoad = false;
 
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"rich-and-plain-text" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
-    TestWebKitAPI::Util::run(&finishedLoad);
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"rich-and-plain-text" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
+    TestCyberKitAPI::Util::run(&finishedLoad);
 
     startedLoad = false;
     finishedLoad = false;
@@ -319,8 +319,8 @@ TEST(WKNavigation, ProcessCrashDuringCallback)
     // Simulate a crash, which should invalidate all pending callbacks.
     [webView _killWebContentProcess];
 
-    TestWebKitAPI::Util::run(&calledAllCallbacks);
-    TestWebKitAPI::Util::runFor(0.5_s);
+    TestCyberKitAPI::Util::run(&calledAllCallbacks);
+    TestCyberKitAPI::Util::runFor(0.5_s);
     EXPECT_EQ(6U, callbackCount);
 }
 
@@ -371,7 +371,7 @@ TEST(WKNavigation, ReloadRelatedViewsInProcessDidTerminate)
     for (auto& webView : webViews)
         [webView loadHTMLString:@"foo" baseURL:nil];
 
-    TestWebKitAPI::Util::run(&finishedLoad);
+    TestCyberKitAPI::Util::run(&finishedLoad);
     EXPECT_EQ(0U, crashHandlerCount);
 
     auto pidBefore = [webView1 _webProcessIdentifier];
@@ -385,7 +385,7 @@ TEST(WKNavigation, ReloadRelatedViewsInProcessDidTerminate)
     // Kill the WebContent process. The crash handler should reload all views.
     kill(pidBefore, 9);
 
-    TestWebKitAPI::Util::run(&finishedLoad);
+    TestCyberKitAPI::Util::run(&finishedLoad);
     EXPECT_EQ(numberOfViews, crashHandlerCount);
 
     auto pidAfter = [webView1 _webProcessIdentifier];
@@ -413,7 +413,7 @@ TEST(WKNavigation, WebViewURLInProcessDidTerminate)
         done = true;
     };
     kill([webView _webProcessIdentifier], 9);
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(WKNavigation, WebProcessLimit)
@@ -431,7 +431,7 @@ TEST(WKNavigation, WebProcessLimit)
         [webView setNavigationDelegate:navigationDelegate.get()];
         finishedLoad = false;
         [webView loadTestPageNamed:@"simple"];
-        TestWebKitAPI::Util::run(&finishedLoad);
+        TestCyberKitAPI::Util::run(&finishedLoad);
         return webView;
     };
 
@@ -494,8 +494,8 @@ TEST(WKNavigation, MultipleProcessCrashesRelatedWebViews)
     }];
 
     webview1FinishedLoad = false;
-    [webView1 loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
-    TestWebKitAPI::Util::run(&webview1FinishedLoad);
+    [webView1 loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
+    TestCyberKitAPI::Util::run(&webview1FinishedLoad);
 
     configuration.get()._relatedWebView = webView1.get();
     auto webView2 = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 100, 100) configuration:configuration.get()]);
@@ -509,8 +509,8 @@ TEST(WKNavigation, MultipleProcessCrashesRelatedWebViews)
     }];
 
     webview2FinishedLoad = false;
-    [webView2 loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
-    TestWebKitAPI::Util::run(&webview2FinishedLoad);
+    [webView2 loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
+    TestCyberKitAPI::Util::run(&webview2FinishedLoad);
 
     // The 2 WebViews should use the same process since they're related.
     EXPECT_EQ([webView1 _webProcessIdentifier], [webView2 _webProcessIdentifier]);
@@ -520,8 +520,8 @@ TEST(WKNavigation, MultipleProcessCrashesRelatedWebViews)
         decisionHandler(_WKNavigationActionPolicyAllowInNewProcess);
     };
     webview1FinishedLoad = false;
-    [webView1 loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
-    TestWebKitAPI::Util::run(&webview1FinishedLoad);
+    [webView1 loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
+    TestCyberKitAPI::Util::run(&webview1FinishedLoad);
 
     navigationDelegate.get().decidePolicyForNavigationAction = nil;
     EXPECT_NE([webView1 _webProcessIdentifier], [webView2 _webProcessIdentifier]);
@@ -544,10 +544,10 @@ TEST(WKNavigation, MultipleProcessCrashesRelatedWebViews)
     kill([webView1 _webProcessIdentifier], 9);
 
     // The views should get reloaded automatically.
-    TestWebKitAPI::Util::run(&webview1FinishedLoad);
-    TestWebKitAPI::Util::run(&webview2FinishedLoad);
+    TestCyberKitAPI::Util::run(&webview1FinishedLoad);
+    TestCyberKitAPI::Util::run(&webview2FinishedLoad);
 
-    TestWebKitAPI::Util::spinRunLoop(10);
+    TestCyberKitAPI::Util::spinRunLoop(10);
 
     EXPECT_EQ(webView1CrashCount, 1U);
     EXPECT_EQ(webView2CrashCount, 1U);
@@ -558,7 +558,7 @@ TEST(WKNavigation, MultipleProcessCrashesRelatedWebViews)
 
 TEST(WKNavigation, CrashRecoveryRightAfterLoadRequest)
 {
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/index.html"_s, { "foo"_s } },
     });
 
@@ -574,7 +574,7 @@ TEST(WKNavigation, CrashRecoveryRightAfterLoadRequest)
     [webView _isJITEnabled:^(BOOL enabled) {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto webProcessPID = [webView _webProcessIdentifier];
     EXPECT_NE(webProcessPID, 0);
@@ -587,7 +587,7 @@ TEST(WKNavigation, CrashRecoveryRightAfterLoadRequest)
     [webView loadRequest:[NSURLRequest requestWithURL:request.URL]];
 
     // Navigation should complete.
-    TestWebKitAPI::Util::run(&finishedLoad);
+    TestCyberKitAPI::Util::run(&finishedLoad);
 
     EXPECT_WK_STREQ([webView URL].absoluteString, request.URL.absoluteString);
     EXPECT_EQ([webView backForwardList].backList.count, 0U);

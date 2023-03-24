@@ -128,7 +128,7 @@ class URLFactoryTest(WaitForDockerTestCase):
                 paused=False,
                 workerinfo=dict(
                     access_uri='ssh://buildbot@builder1',
-                    admin='WebKit Operations <email@webkit.org>',
+                    admin='CyberKit Operations <email@webkit.org>',
                     host='?',
                     version='1.1.1'
                 ),
@@ -147,7 +147,7 @@ class URLFactoryTest(WaitForDockerTestCase):
                 paused=False,
                 workerinfo=dict(
                     access_uri='ssh://buildbot@builder2',
-                    admin='WebKit Operations <email@webkit.org>',
+                    admin='CyberKit Operations <email@webkit.org>',
                     host='?',
                     version='1.1.1'
                 ),
@@ -170,7 +170,7 @@ class URLFactoryTest(WaitForDockerTestCase):
                 paused=False,
                 workerinfo=dict(
                     access_uri='ssh://buildbot@bot1',
-                    admin='WebKit Operations <email@webkit.org>',
+                    admin='CyberKit Operations <email@webkit.org>',
                     host='?',
                     version='1.1.1'
                 ),
@@ -193,7 +193,7 @@ class URLFactoryTest(WaitForDockerTestCase):
                 paused=False,
                 workerinfo=dict(
                     access_uri='ssh://buildbot@bot2',
-                    admin='WebKit Operations <email@webkit.org>',
+                    admin='CyberKit Operations <email@webkit.org>',
                     host='?',
                     version='1.1.1'
                 ),

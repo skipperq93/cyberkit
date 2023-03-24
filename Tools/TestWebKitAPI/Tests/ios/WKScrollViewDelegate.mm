@@ -30,7 +30,7 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebView.h>
+#import <CyberKit/WKWebView.h>
 
 // WKScrollViewDelegateCrash
 
@@ -50,7 +50,7 @@ static bool delegateIsDeallocated;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WKWebView, WKScrollViewDelegateCrash)
 {
@@ -61,7 +61,7 @@ TEST(WKWebView, WKScrollViewDelegateCrash)
     }
     delegateIsDeallocated = false;
     delegateForScrollView = nil;
-    TestWebKitAPI::Util::run(&delegateIsDeallocated);
+    TestCyberKitAPI::Util::run(&delegateIsDeallocated);
 
     EXPECT_NULL([webView scrollView].delegate);
 }
@@ -89,7 +89,7 @@ static BOOL didCallViewForZoomingInScrollView;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WKWebView, WKScrollViewDelegateCannotOverrideViewForZooming)
 {

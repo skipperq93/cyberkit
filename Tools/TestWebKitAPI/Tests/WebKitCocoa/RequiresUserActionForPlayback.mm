@@ -29,8 +29,8 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestNavigationDelegate.h"
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WebKit.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/CyberKit.h>
 #import <wtf/RetainPtr.h>
 
 #if TARGET_OS_IPHONE
@@ -77,31 +77,31 @@ public:
 
     void testVideoWithAudio()
     {
-        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"video-with-audio" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"video-with-audio" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
         [webView loadFileURL:fileURL allowingReadAccessToURL:fileURL];
         [webView _test_waitForDidFinishNavigation];
 
-        TestWebKitAPI::Util::run(&receivedScriptMessage);
+        TestCyberKitAPI::Util::run(&receivedScriptMessage);
         receivedScriptMessage = false;
     }
 
     void testVideoWithoutAudio()
     {
-        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"video-without-audio" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"video-without-audio" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
         [webView loadFileURL:fileURL allowingReadAccessToURL:fileURL];
         [webView _test_waitForDidFinishNavigation];
 
-        TestWebKitAPI::Util::run(&receivedScriptMessage);
+        TestCyberKitAPI::Util::run(&receivedScriptMessage);
         receivedScriptMessage = false;
     }
 
     void testAudioOnly()
     {
-        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"audio-only" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"audio-only" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
         [webView loadFileURL:fileURL allowingReadAccessToURL:fileURL];
         [webView _test_waitForDidFinishNavigation];
 
-        TestWebKitAPI::Util::run(&receivedScriptMessage);
+        TestCyberKitAPI::Util::run(&receivedScriptMessage);
         receivedScriptMessage = false;
     }
 

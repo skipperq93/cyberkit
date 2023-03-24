@@ -85,7 +85,7 @@ function createTestMediaPlayer(d) {
         };
 }
 
-//FIXME This call of initKeyboardEvent works for WebKit-only.
+//FIXME This call of initKeyboardEvent works for CyberKit-only.
 //See https://bugs.webkit.org/show_bug.cgi?id=16735
 // and https://bugs.webkit.org/show_bug.cgi?id=13368. Add check for browser here
 function fireKeyboardEvent(doc, element, key) {

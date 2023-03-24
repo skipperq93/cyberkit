@@ -1,8 +1,8 @@
 Test: Confirm the plugin is present.
 
-Name: WebKit Test PlugIn
+Name: CyberKit Test PlugIn
 
-Description: Simple Netscape plug-in that handles test content for WebKit
+Description: Simple Netscape plug-in that handles test content for CyberKit
 
 Filename: TestNetscapePlugIn.plugin
 

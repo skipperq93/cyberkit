@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 @protocol AccessibilityTestSupportProtocol <NSObject>
 - (void)checkAccessibilityWebProcessLoaderBundleIsLoaded:(void (^)(BOOL bundleLoaded, NSString *loadedPath))completionHandler;

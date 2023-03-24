@@ -180,13 +180,13 @@ typedef struct {
 #define JOIN_LOG_CHANNEL_WITH_PREFIX_LEVEL_2(prefix, channel) prefix ## channel
 
 #if PLATFORM(GTK)
-#define LOG_CHANNEL_WEBKIT_SUBSYSTEM "WebKitGTK"
+#define LOG_CHANNEL_WEBKIT_SUBSYSTEM "CyberKitGTK"
 #elif PLATFORM(WPE)
-#define LOG_CHANNEL_WEBKIT_SUBSYSTEM "WPEWebKit"
+#define LOG_CHANNEL_WEBKIT_SUBSYSTEM "WPECyberKit"
 #elif PLATFORM(PLAYSTATION)
-#define LOG_CHANNEL_WEBKIT_SUBSYSTEM "SceNKWebKit"
+#define LOG_CHANNEL_WEBKIT_SUBSYSTEM "SceNKCyberKit"
 #else
-#define LOG_CHANNEL_WEBKIT_SUBSYSTEM "com.apple.WebKit"
+#define LOG_CHANNEL_WEBKIT_SUBSYSTEM "com.apple.CyberKit"
 #endif
 
 #define DECLARE_LOG_CHANNEL(name) \

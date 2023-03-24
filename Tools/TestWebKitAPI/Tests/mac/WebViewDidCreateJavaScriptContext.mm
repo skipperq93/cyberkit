@@ -25,10 +25,10 @@
 
 #import "config.h"
 #import "PlatformUtilities.h"
-#import <JavaScriptCore/JSExport.h>
-#import <JavaScriptCore/JSContext.h>
-#import <WebKit/WebFrameLoadDelegatePrivate.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberScriptCore/JSExport.h>
+#import <CyberScriptCore/JSContext.h>
+#import <CyberKit/WebFrameLoadDelegatePrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 #if JSC_OBJC_API_ENABLED
@@ -133,9 +133,9 @@ static bool didReportException = false;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, DidCreateJavaScriptContextSanity1)
+TEST(CyberKitLegacy, DidCreateJavaScriptContextSanity1)
 {
     didFinishLoad = false;
     @autoreleasepool {
@@ -161,7 +161,7 @@ TEST(WebKitLegacy, DidCreateJavaScriptContextSanity1)
     }
 }
 
-TEST(WebKitLegacy, DidCreateJavaScriptContextSanity2)
+TEST(CyberKitLegacy, DidCreateJavaScriptContextSanity2)
 {
     didCallWindowCallback = false;
     @autoreleasepool {
@@ -184,7 +184,7 @@ TEST(WebKitLegacy, DidCreateJavaScriptContextSanity2)
     }
 }
 
-TEST(WebKitLegacy, DidCreateJavaScriptContextCallJSFunctionFromObjCCallbackTest)
+TEST(CyberKitLegacy, DidCreateJavaScriptContextCallJSFunctionFromObjCCallbackTest)
 {
     @autoreleasepool {
         RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
@@ -208,7 +208,7 @@ TEST(WebKitLegacy, DidCreateJavaScriptContextCallJSFunctionFromObjCCallbackTest)
     }
 }
 
-TEST(WebKitLegacy, DidCreateJavaScriptContextAddCustomPropertiesFromJSTest)
+TEST(CyberKitLegacy, DidCreateJavaScriptContextAddCustomPropertiesFromJSTest)
 {
     didFindMyCustomProperty = false;
     @autoreleasepool {
@@ -234,7 +234,7 @@ TEST(WebKitLegacy, DidCreateJavaScriptContextAddCustomPropertiesFromJSTest)
     }
 }
 
-TEST(WebKitLegacy, DidCreateJavaScriptContextAddCustomPropertiesFromObjCTest)
+TEST(CyberKitLegacy, DidCreateJavaScriptContextAddCustomPropertiesFromObjCTest)
 {
     didFindMyCustomProperty = false;
     @autoreleasepool {
@@ -262,7 +262,7 @@ TEST(WebKitLegacy, DidCreateJavaScriptContextAddCustomPropertiesFromObjCTest)
     }
 }
 
-TEST(WebKitLegacy, DidCreateJavaScriptContextBackForwardCacheTest)
+TEST(CyberKitLegacy, DidCreateJavaScriptContextBackForwardCacheTest)
 {
     didInsertMyCustomProperty = false;
     didFindMyCustomProperty = false;
@@ -277,13 +277,13 @@ TEST(WebKitLegacy, DidCreateJavaScriptContextBackForwardCacheTest)
 
         NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"JSContextBackForwardCache1" 
                                               withExtension:@"html" 
-                                               subdirectory:@"TestWebKitAPI.resources"];
+                                               subdirectory:@"TestCyberKitAPI.resources"];
         [mainFrame loadRequest:[NSURLRequest requestWithURL:url1]];
         Util::run(&didInsertMyCustomProperty);
 
         NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"JSContextBackForwardCache2" 
                                               withExtension:@"html" 
-                                               subdirectory:@"TestWebKitAPI.resources"];
+                                               subdirectory:@"TestCyberKitAPI.resources"];
         [mainFrame loadRequest:[NSURLRequest requestWithURL:url2]];
         Util::run(&didCompleteTestSuccessfully);
 
@@ -305,7 +305,7 @@ TEST(WebKitLegacy, DidCreateJavaScriptContextBackForwardCacheTest)
     }
 }
 
-TEST(WebKitLegacy, ReportExceptionTest)
+TEST(CyberKitLegacy, ReportExceptionTest)
 {
     didReportException = false;
     @autoreleasepool {
@@ -328,6 +328,6 @@ TEST(WebKitLegacy, ReportExceptionTest)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(JSC_OBJC_API)

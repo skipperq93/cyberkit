@@ -26,25 +26,25 @@
 #import "config.h"
 #import "PlatformUtilities.h"
 
-#import <WebKit/WKRetainPtr.h>
-#import <WebKit/WKStringCF.h>
-#import <WebKit/WKURLCF.h>
-#import <WebKit/WKURLResponseNS.h>
+#import <CyberKit/WKRetainPtr.h>
+#import <CyberKit/WKStringCF.h>
+#import <CyberKit/WKURLCF.h>
+#import <CyberKit/WKURLResponseNS.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/StdLibExtras.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 namespace Util {
 
 WKStringRef createInjectedBundlePath()
 {
-    NSString *nsString = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"InjectedBundleTestWebKitAPI.bundle"];
+    NSString *nsString = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"InjectedBundleTestCyberKitAPI.bundle"];
     return WKStringCreateWithCFString((__bridge CFStringRef)nsString);
 }
 
 WKURLRef createURLForResource(const char* resource, const char* extension)
 {
-    NSURL *nsURL = [[NSBundle mainBundle] URLForResource:[NSString stringWithUTF8String:resource] withExtension:[NSString stringWithUTF8String:extension] subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *nsURL = [[NSBundle mainBundle] URLForResource:[NSString stringWithUTF8String:resource] withExtension:[NSString stringWithUTF8String:extension] subdirectory:@"TestCyberKitAPI.resources"];
     return WKURLCreateWithCFURL((__bridge CFURLRef)nsURL);
 }
 
@@ -66,4 +66,4 @@ bool isKeyDown(WKNativeEventPtr event)
 }
 
 } // namespace Util
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

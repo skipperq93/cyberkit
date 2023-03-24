@@ -30,8 +30,8 @@
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WebFrame.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WebFrame.h>
 #import <wtf/RetainPtr.h>
 
 @interface MessagePortFrameLoadDelegate : NSObject <WebFrameLoadDelegate> {
@@ -46,7 +46,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(MessagePort, Providers)
 {
@@ -65,6 +65,6 @@ TEST(MessagePort, Providers)
     [webView synchronouslyLoadHTMLString:@"<script>new MessageChannel;</script>"];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(MAC)

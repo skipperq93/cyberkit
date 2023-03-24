@@ -27,10 +27,10 @@
 
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WKHTTPCookieStorePrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKHTTPCookieStorePrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewConfiguration.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/RetainPtr.h>
 
@@ -47,7 +47,7 @@
 
 @end
 
-TEST(WebKit, CookieAcceptPolicy)
+TEST(CyberKit, CookieAcceptPolicy)
 {
     auto originalCookieAcceptPolicy = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookieAcceptPolicy];
 
@@ -58,26 +58,26 @@ TEST(WebKit, CookieAcceptPolicy)
 
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"CookieMessage" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"CookieMessage" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     __block bool setPolicy = false;
     [configuration.get().websiteDataStore.httpCookieStore _setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyNever completionHandler:^{
         setPolicy = true;
     }];
-    TestWebKitAPI::Util::run(&setPolicy);
+    TestCyberKitAPI::Util::run(&setPolicy);
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     EXPECT_STREQ([(NSString *)[lastScriptMessage body] UTF8String], "COOKIE:");
 
     setPolicy = false;
     [configuration.get().websiteDataStore.httpCookieStore _setCookieAcceptPolicy:originalCookieAcceptPolicy completionHandler:^{
         setPolicy = true;
     }];
-    TestWebKitAPI::Util::run(&setPolicy);
+    TestCyberKitAPI::Util::run(&setPolicy);
 }
 
 TEST(WKHTTPCookieStore, CookiePolicy)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
 
     __block bool done { false };
     auto configuration = adoptNS([WKWebViewConfiguration new]);
@@ -138,7 +138,7 @@ TEST(WKHTTPCookieStore, CookiePolicy)
 
 TEST(WKHTTPCookieStore, CookiePolicyAllowIsOnlyFromMainDocumentDomain)
 {
-    TestWebKitAPI::HTTPServer server([connectionCount = 0] (TestWebKitAPI::Connection connection) mutable {
+    TestCyberKitAPI::HTTPServer server([connectionCount = 0] (TestCyberKitAPI::Connection connection) mutable {
         ++connectionCount;
         connection.receiveHTTPRequest([connectionCount, connection] (Vector<char>&& request) {
             String reply;
@@ -180,12 +180,12 @@ TEST(WKHTTPCookieStore, CookiePolicyAllowIsOnlyFromMainDocumentDomain)
     [cookieStore setCookiePolicy:WKCookiePolicyAllow completionHandler:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [configuration setWebsiteDataStore:dataStore.get()];
-    // Relax WebKit's third-party cookies blocking policy so the WebKit will use cookie storage's policy
+    // Relax CyberKit's third-party cookies blocking policy so the CyberKit will use cookie storage's policy
     // to decide whether third-party cookeis can be stored.
     [configuration _setShouldRelaxThirdPartyCookieBlocking:true];
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 100, 100) configuration:configuration.get()]);
@@ -198,5 +198,5 @@ TEST(WKHTTPCookieStore, CookiePolicyAllowIsOnlyFromMainDocumentDomain)
         EXPECT_WK_STREQ([[cookies firstObject] domain], @"www.webkit.org");
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }

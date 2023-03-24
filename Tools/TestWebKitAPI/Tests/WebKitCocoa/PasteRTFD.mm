@@ -30,9 +30,9 @@
 #import "PasteboardUtilities.h"
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKPreferencesRefPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKPreferencesRefPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/text/WTFString.h>
 
@@ -142,7 +142,7 @@ TEST(PasteRTFD, ImageElementUsesBlobURL)
     auto webView = createWebViewWithCustomPasteboardDataEnabled();
     [webView synchronouslyLoadTestPageNamed:@"paste-rtfd"];
 
-    auto *pngData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"sunset-in-cupertino-200px" ofType:@"png" inDirectory:@"TestWebKitAPI.resources"]];
+    auto *pngData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"sunset-in-cupertino-200px" ofType:@"png" inDirectory:@"TestCyberKitAPI.resources"]];
     auto attachment = adoptNS([[NSTextAttachment alloc] initWithData:pngData ofType:(__bridge NSString *)kUTTypePNG]);
     NSAttributedString *string = [NSAttributedString attributedStringWithAttachment:attachment.get()];
     NSData *RTFDData = [string RTFDFromRange:NSMakeRange(0, [string length]) documentAttributes:@{ }];
@@ -160,7 +160,7 @@ TEST(PasteRTFD, ImageElementUsesBlobURLInHTML)
     auto webView = createWebViewWithCustomPasteboardDataEnabled();
     [webView synchronouslyLoadTestPageNamed:@"paste-rtfd"];
 
-    auto *pngData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"sunset-in-cupertino-200px" ofType:@"png" inDirectory:@"TestWebKitAPI.resources"]];
+    auto *pngData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"sunset-in-cupertino-200px" ofType:@"png" inDirectory:@"TestCyberKitAPI.resources"]];
     auto attachment = adoptNS([[NSTextAttachment alloc] initWithData:pngData ofType:(__bridge NSString *)kUTTypePNG]);
     NSAttributedString *string = [NSAttributedString attributedStringWithAttachment:attachment.get()];
     NSData *RTFDData = [string RTFDFromRange:NSMakeRange(0, [string length]) documentAttributes:@{ }];

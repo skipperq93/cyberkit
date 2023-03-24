@@ -31,9 +31,9 @@
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
 #import "UserInterfaceSwizzler.h"
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(UserInterfaceIdiomUpdate, SelectPopoverCrash)
 {
@@ -51,6 +51,6 @@ TEST(UserInterfaceIdiomUpdate, SelectPopoverCrash)
     [webView stringByEvaluatingJavaScript:@"select.focus()"];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

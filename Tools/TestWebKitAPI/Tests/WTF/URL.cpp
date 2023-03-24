@@ -35,7 +35,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/StringHash.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class WTF_URL : public testing::Test {
 public:
@@ -619,4 +619,4 @@ TEST_F(WTF_URL, IsolatedCopy)
     EXPECT_EQ(url2Copy.string().impl(), originalStringImpl); // Should have adopted the StringImpl of url2.
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -32,7 +32,7 @@
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
 #import "Utilities.h"
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 static size_t putPDFBytesCallback(void* info, void* buffer, size_t count)
 {
@@ -70,9 +70,9 @@ static RetainPtr<NSData> createPDFWithLinkToURL(NSURL *url)
     return pdfData;
 }
 
-TEST(WebKit, PDFLinkReferrer)
+TEST(CyberKit, PDFLinkReferrer)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer server([] (Connection connection) {
         connection.receiveHTTPRequest([=](Vector<char>&& requestBytes) {
             requestBytes.append('\0');

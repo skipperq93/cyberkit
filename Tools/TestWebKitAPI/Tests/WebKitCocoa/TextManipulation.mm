@@ -29,12 +29,12 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKTextManipulationConfiguration.h>
-#import <WebKit/_WKTextManipulationDelegate.h>
-#import <WebKit/_WKTextManipulationExclusionRule.h>
-#import <WebKit/_WKTextManipulationItem.h>
-#import <WebKit/_WKTextManipulationToken.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKTextManipulationConfiguration.h>
+#import <CyberKit/_WKTextManipulationDelegate.h>
+#import <CyberKit/_WKTextManipulationExclusionRule.h>
+#import <CyberKit/_WKTextManipulationItem.h>
+#import <CyberKit/_WKTextManipulationToken.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/text/StringConcatenate.h>
@@ -116,7 +116,7 @@ typedef void(^ItemListCallback)(NSArray<_WKTextManipulationItem *> *);
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(TextManipulation, StartTextManipulationExitEarlyWithoutDelegate)
 {
@@ -124,13 +124,13 @@ TEST(TextManipulation, StartTextManipulationExitEarlyWithoutDelegate)
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 400, 400)]);
 
     [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html>"
-        "<html><body>hello<br>world<div>WebKit</div></body></html>"];
+        "<html><body>hello<br>world<div>CyberKit</div></body></html>"];
 
     done = false;
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ([delegate items].count, 0UL);
 }
@@ -142,13 +142,13 @@ TEST(TextManipulation, StartTextManipulationFindSimpleParagraphs)
     [webView _setTextManipulationDelegate:delegate.get()];
 
     [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html>"
-        "<html><body>hello<br>world<div>WebKit</div></body></html>"];
+        "<html><body>hello<br>world<div>CyberKit</div></body></html>"];
 
     done = false;
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 3UL);
@@ -159,7 +159,7 @@ TEST(TextManipulation, StartTextManipulationFindSimpleParagraphs)
     EXPECT_STREQ("world", items[1].tokens[0].content.UTF8String);
 
     EXPECT_EQ(items[2].tokens.count, 1UL);
-    EXPECT_STREQ("WebKit", items[2].tokens[0].content.UTF8String);
+    EXPECT_STREQ("CyberKit", items[2].tokens[0].content.UTF8String);
 }
 
 TEST(TextManipulation, StartTextManipulationFindMultipleParagraphsInSingleTextNode)
@@ -169,13 +169,13 @@ TEST(TextManipulation, StartTextManipulationFindMultipleParagraphsInSingleTextNo
     [webView _setTextManipulationDelegate:delegate.get()];
 
     [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html>"
-        "<html><body><pre>hello\nworld\nWebKit</pre></body></html>"];
+        "<html><body><pre>hello\nworld\nCyberKit</pre></body></html>"];
 
     done = false;
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -184,7 +184,7 @@ TEST(TextManipulation, StartTextManipulationFindMultipleParagraphsInSingleTextNo
     EXPECT_STREQ("\n", items[0].tokens[1].content.UTF8String);
     EXPECT_STREQ("world", items[0].tokens[2].content.UTF8String);
     EXPECT_STREQ("\n", items[0].tokens[3].content.UTF8String);
-    EXPECT_STREQ("WebKit", items[0].tokens[4].content.UTF8String);
+    EXPECT_STREQ("CyberKit", items[0].tokens[4].content.UTF8String);
 }
 
 TEST(TextManipulation, StartTextManipulationFindParagraphsWithMultipleTokens)
@@ -200,7 +200,7 @@ TEST(TextManipulation, StartTextManipulationFindParagraphsWithMultipleTokens)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -226,7 +226,7 @@ TEST(TextManipulation, StartTextManipulationFindAttributeContent)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 4UL);
@@ -253,13 +253,13 @@ TEST(TextManipulation, StartTextManipulationSupportsLegacyDelegateCallback)
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 400, 400)]);
     [webView _setTextManipulationDelegate:delegate.get()];
 
-    [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html><html><body><p>hello, <span>world</span></p><p>WebKit</p></body></html>"];
+    [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html><html><body><p>hello, <span>world</span></p><p>CyberKit</p></body></html>"];
 
     done = false;
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     __block auto *items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -267,7 +267,7 @@ TEST(TextManipulation, StartTextManipulationSupportsLegacyDelegateCallback)
     EXPECT_STREQ("hello, ", items[0].tokens[0].content.UTF8String);
     EXPECT_STREQ("world", items[0].tokens[1].content.UTF8String);
     EXPECT_EQ(items[1].tokens.count, 1UL);
-    EXPECT_STREQ("WebKit", items[1].tokens[0].content.UTF8String);
+    EXPECT_STREQ("CyberKit", items[1].tokens[0].content.UTF8String);
 }
 
 TEST(TextManipulation, StartTextManipulationFindNewlyInsertedParagraph)
@@ -282,7 +282,7 @@ TEST(TextManipulation, StartTextManipulationFindNewlyInsertedParagraph)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     __block auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -295,7 +295,7 @@ TEST(TextManipulation, StartTextManipulationFindNewlyInsertedParagraph)
             done = true;
     };
     [webView stringByEvaluatingJavaScript:@"document.body.appendChild(document.createElement('div')).innerHTML = 'world<br><b>Web</b>Kit';"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ(items.count, 3UL);
     EXPECT_EQ(items[1].tokens.count, 1UL);
@@ -325,7 +325,7 @@ TEST(TextManipulation, StartTextManipulationFindNewlyDisplayedParagraph)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     __block auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -337,7 +337,7 @@ TEST(TextManipulation, StartTextManipulationFindNewlyDisplayedParagraph)
         done = true;
     };
     [webView stringByEvaluatingJavaScript:@"document.querySelectorAll('span.hidden').forEach((span) => span.classList.remove('hidden'));"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ(items.count, 2UL);
     EXPECT_EQ(items[1].tokens.count, 2UL);
@@ -350,7 +350,7 @@ TEST(TextManipulation, StartTextManipulationFindNewlyDisplayedParagraph)
         done = true;
     };
     [webView stringByEvaluatingJavaScript:@"document.querySelectorAll('div.hidden').forEach((div) => div.classList.remove('hidden'));"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ(items.count, 3UL);
     EXPECT_EQ(items[2].tokens.count, 1UL);
@@ -369,7 +369,7 @@ TEST(TextManipulation, StartTextManipulationFindSameParagraphWithNewContent)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -385,7 +385,7 @@ TEST(TextManipulation, StartTextManipulationFindSameParagraphWithNewContent)
         "b.textContent = ' world';"
         "document.querySelector('p').appendChild(b); ''"];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ(items.count, 2UL);
     EXPECT_EQ(items[1].tokens.count, 1UL);
@@ -410,7 +410,7 @@ TEST(TextManipulation, StartTextManipulationApplySingleExcluionRuleForElement)
     [webView _startTextManipulationsWithConfiguration:configuration.get() completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -447,7 +447,7 @@ TEST(TextManipulation, StartTextManipulationApplyInclusionExclusionRulesForAttri
     [webView _startTextManipulationsWithConfiguration:configuration.get() completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -474,7 +474,7 @@ TEST(TextManipulation, StartTextManipulationApplyInclusionExclusionRulesForClass
     [webView _startTextManipulationsWithConfiguration:configuration.get() completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -503,7 +503,7 @@ TEST(TextManipulation, StartTextManipulationApplyInclusionExclusionRulesForClass
     [webView _startTextManipulationsWithConfiguration:configuration.get() completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -540,7 +540,7 @@ TEST(TextManipulation, StartTextManipulationBreaksParagraphInBetweenListItems)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     NSArray<_WKTextManipulationItem *> *items = [delegate items];
     EXPECT_EQ(items.count, 7UL);
@@ -593,14 +593,14 @@ TEST(TextManipulation, StartTextManipulationBreaksParagraphInBetweenFloatingList
         "<ul>"
         "<li>hello</li>"
         "<li>world</li>"
-        "<li>WebKit</li>"
+        "<li>CyberKit</li>"
         "</ul>"];
 
     done = false;
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     NSArray<_WKTextManipulationItem *> *items = [delegate items];
     EXPECT_EQ(items.count, 3UL);
@@ -612,7 +612,7 @@ TEST(TextManipulation, StartTextManipulationBreaksParagraphInBetweenFloatingList
     EXPECT_WK_STREQ("world", items[1].tokens[0].content);
 
     EXPECT_EQ(items[2].tokens.count, 1UL);
-    EXPECT_WK_STREQ("WebKit", items[2].tokens[0].content);
+    EXPECT_WK_STREQ("CyberKit", items[2].tokens[0].content);
 }
 
 TEST(TextManipulation, StartTextManipulationIncludesFullyClippedText)
@@ -638,7 +638,7 @@ TEST(TextManipulation, StartTextManipulationIncludesFullyClippedText)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     NSArray<_WKTextManipulationItem *> *items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -670,7 +670,7 @@ TEST(TextManipulation, StartTextManipulationFindsInsertedClippedText)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -683,7 +683,7 @@ TEST(TextManipulation, StartTextManipulationFindsInsertedClippedText)
     [webView stringByEvaluatingJavaScript:@"var beforeElement = document.createElement('span');"
         "beforeElement.innerHTML='before';"
         "document.querySelector('div').before(beforeElement);"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     delegate.get().itemCallback = ^(_WKTextManipulationItem *item) {
@@ -693,7 +693,7 @@ TEST(TextManipulation, StartTextManipulationFindsInsertedClippedText)
     [webView stringByEvaluatingJavaScript:@"var afterElement = document.createElement('p');"
         "afterElement.innerHTML='after';"
         "document.querySelector('div').after(afterElement)"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ(items[0].tokens.count, 1UL);
     EXPECT_WK_STREQ("hello, world", items[0].tokens[0].content);
@@ -732,7 +732,7 @@ TEST(TextManipulation, StartTextManipulationTreatsInlineBlockLinksAndButtonsAndS
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     NSArray<_WKTextManipulationItem *> *items = [delegate items];
     EXPECT_EQ(items.count, 7UL);
@@ -783,7 +783,7 @@ TEST(TextManipulation, StartTextManipulationTreatsLinksInNavigationElementsAsPar
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     NSArray<_WKTextManipulationItem *> *items = [delegate items];
     EXPECT_EQ(items.count, 4UL);
@@ -819,7 +819,7 @@ TEST(TextManipulation, StartTextManipulationTreatsNestedInlineBlockListItemsAndL
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 4UL);
@@ -855,7 +855,7 @@ TEST(TextManipulation, StartTextManipulationExtractsUserInfo)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 5UL);
@@ -871,32 +871,32 @@ TEST(TextManipulation, StartTextManipulationExtractsUserInfo)
     EXPECT_WK_STREQ("Fourth", items[4].tokens[0].content);
     {
         auto userInfo = items[0].tokens[0].userInfo;
-        EXPECT_WK_STREQ("TestWebKitAPI.resources", [(NSURL *)userInfo[_WKTextManipulationTokenUserInfoDocumentURLKey] lastPathComponent]);
+        EXPECT_WK_STREQ("TestCyberKitAPI.resources", [(NSURL *)userInfo[_WKTextManipulationTokenUserInfoDocumentURLKey] lastPathComponent]);
         EXPECT_WK_STREQ("TITLE", (NSString *)userInfo[_WKTextManipulationTokenUserInfoTagNameKey]);
         EXPECT_FALSE([userInfo[_WKTextManipulationTokenUserInfoVisibilityKey] boolValue]);
     }
     {
         auto userInfo = items[1].tokens[0].userInfo;
-        EXPECT_WK_STREQ("TestWebKitAPI.resources", [(NSURL *)userInfo[_WKTextManipulationTokenUserInfoDocumentURLKey] lastPathComponent]);
+        EXPECT_WK_STREQ("TestCyberKitAPI.resources", [(NSURL *)userInfo[_WKTextManipulationTokenUserInfoDocumentURLKey] lastPathComponent]);
         EXPECT_WK_STREQ("P", (NSString *)userInfo[_WKTextManipulationTokenUserInfoTagNameKey]);
         EXPECT_FALSE([userInfo[_WKTextManipulationTokenUserInfoVisibilityKey] boolValue]);
     }
     {
         auto userInfo = items[2].tokens[0].userInfo;
-        EXPECT_WK_STREQ("TestWebKitAPI.resources", [(NSURL *)userInfo[_WKTextManipulationTokenUserInfoDocumentURLKey] lastPathComponent]);
+        EXPECT_WK_STREQ("TestCyberKitAPI.resources", [(NSURL *)userInfo[_WKTextManipulationTokenUserInfoDocumentURLKey] lastPathComponent]);
         EXPECT_WK_STREQ("DIV", (NSString *)userInfo[_WKTextManipulationTokenUserInfoTagNameKey]);
         EXPECT_WK_STREQ("button", (NSString *)userInfo[_WKTextManipulationTokenUserInfoRoleAttributeKey]);
         EXPECT_FALSE([userInfo[_WKTextManipulationTokenUserInfoVisibilityKey] boolValue]);
     }
     {
         auto userInfo = items[3].tokens[0].userInfo;
-        EXPECT_WK_STREQ("TestWebKitAPI.resources", [(NSURL *)userInfo[_WKTextManipulationTokenUserInfoDocumentURLKey] lastPathComponent]);
+        EXPECT_WK_STREQ("TestCyberKitAPI.resources", [(NSURL *)userInfo[_WKTextManipulationTokenUserInfoDocumentURLKey] lastPathComponent]);
         EXPECT_WK_STREQ("SPAN", (NSString *)userInfo[_WKTextManipulationTokenUserInfoTagNameKey]);
         EXPECT_FALSE([userInfo[_WKTextManipulationTokenUserInfoVisibilityKey] boolValue]);
     }
     {
         auto userInfo = items[4].tokens[0].userInfo;
-        EXPECT_WK_STREQ("TestWebKitAPI.resources", [(NSURL *)userInfo[_WKTextManipulationTokenUserInfoDocumentURLKey] lastPathComponent]);
+        EXPECT_WK_STREQ("TestCyberKitAPI.resources", [(NSURL *)userInfo[_WKTextManipulationTokenUserInfoDocumentURLKey] lastPathComponent]);
         EXPECT_WK_STREQ("DIV", (NSString *)userInfo[_WKTextManipulationTokenUserInfoTagNameKey]);
         EXPECT_TRUE([userInfo[_WKTextManipulationTokenUserInfoVisibilityKey] boolValue]);
     }
@@ -921,7 +921,7 @@ TEST(TextManipulation, StartTextManipulationExtractsValuesFromButtonInputs)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -958,7 +958,7 @@ TEST(TextManipulation, StartTextManipulationExtractsValuesFromTextInputs)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -979,7 +979,7 @@ TEST(TextManipulation, StartTextManipulationDoesNotExtractUserModifiedText)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ([delegate items].count, 0UL);
 
@@ -1020,7 +1020,7 @@ TEST(TextManipulation, StartTextManipulationExtractsVisibleLineBreaksInTextAsExc
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -1049,7 +1049,7 @@ TEST(TextManipulation, StartTextManipulationExtractsPrivateUseCharactersAsExclud
     [webView _startTextManipulationsWithConfiguration:configuration.get() completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -1085,7 +1085,7 @@ TEST(TextManipulation, StartTextManipulationExtractsValuesByNode)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -1133,7 +1133,7 @@ TEST(TextManipulation, StartTextManipulationExcludesTextRenderedAsIcons)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -1161,7 +1161,7 @@ TEST(TextManipulation, StartTextManipulationAvoidCrashWhenExtractingOrphanedPosi
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -1184,7 +1184,7 @@ TEST(TextManipulation, StartTextManipulationAvoidCrashWhenExtractingOrphanedPosi
         "    document.body.appendChild(container);"
         "})();"];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(TextManipulation, RemovedElements)
@@ -1199,7 +1199,7 @@ TEST(TextManipulation, RemovedElements)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -1223,7 +1223,7 @@ TEST(TextManipulation, RemovedElements)
         "    document.body.appendChild(container);"
         "})();"];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ(items.count, 2UL);
     EXPECT_EQ(items[1].tokens.count, 1UL);
@@ -1249,7 +1249,7 @@ TEST(TextManipulation, StartTextManipulationExtractsHeadingElementsAsSeparateIte
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -1274,7 +1274,7 @@ TEST(TextManipulation, StartTextManipulationIgnoresSpaces)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -1316,7 +1316,7 @@ TEST(TextManipulation, StartTextManipulationExtractsTableCellsAsSeparateItems)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 5UL);
@@ -1339,13 +1339,13 @@ TEST(TextManipulation, StartTextManipulationDoesNotFindContentInIframeIfIncludeS
     [webView _setTextManipulationDelegate:delegate.get()];
     auto configuration = adoptNS([[_WKTextManipulationConfiguration alloc] init]);
     configuration.get().includeSubframes = YES;
-    [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html><div>hello</div><div>world</div><iframe src='data:text/html,<p>WebKit</p>'>"];
+    [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html><div>hello</div><div>world</div><iframe src='data:text/html,<p>CyberKit</p>'>"];
 
     done = false;
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -1365,13 +1365,13 @@ TEST(TextManipulation, StartTextManipulationFindsContentInIframeIfIncludeSubfram
     auto configuration = adoptNS([[_WKTextManipulationConfiguration alloc] init]);
     configuration.get().includeSubframes = YES;
 
-    [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html><div>hello</div><div>world</div><iframe src='data:text/html,<p>WebKit</p>'>"];
+    [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html><div>hello</div><div>world</div><iframe src='data:text/html,<p>CyberKit</p>'>"];
 
     done = false;
     [webView _startTextManipulationsWithConfiguration:configuration.get() completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 3UL);
@@ -1386,7 +1386,7 @@ TEST(TextManipulation, StartTextManipulationFindsContentInIframeIfIncludeSubfram
     EXPECT_EQ(items[2].isSubframe, YES);
     EXPECT_EQ(items[2].isCrossSiteSubframe, YES);
     EXPECT_EQ(items[2].tokens.count, 1UL);
-    EXPECT_WK_STREQ("WebKit", items[2].tokens[0].content);
+    EXPECT_WK_STREQ("CyberKit", items[2].tokens[0].content);
 }
 
 TEST(TextManipulation, StartTextManipulationFindsContentInIframeInsertedLater)
@@ -1403,7 +1403,7 @@ TEST(TextManipulation, StartTextManipulationFindsContentInIframeInsertedLater)
     [webView _startTextManipulationsWithConfiguration:configuration.get() completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -1423,9 +1423,9 @@ TEST(TextManipulation, StartTextManipulationFindsContentInIframeInsertedLater)
     };
 
     [webView objectByEvaluatingJavaScript:@"frame = document.createElement('iframe');"
-        "document.body.appendChild(frame); frame.contentDocument.body.innerHTML = '<p>WebKit</p>';"];
+        "document.body.appendChild(frame); frame.contentDocument.body.innerHTML = '<p>CyberKit</p>';"];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     items = [delegate items];
     EXPECT_EQ(items.count, 3UL);
@@ -1440,7 +1440,7 @@ TEST(TextManipulation, StartTextManipulationFindsContentInIframeInsertedLater)
     EXPECT_EQ(items[2].isSubframe, YES);
     EXPECT_EQ(items[2].isCrossSiteSubframe, NO);
     EXPECT_EQ(items[2].tokens.count, 1UL);
-    EXPECT_WK_STREQ("WebKit", items[2].tokens[0].content);
+    EXPECT_WK_STREQ("CyberKit", items[2].tokens[0].content);
 
 }
 
@@ -1475,7 +1475,7 @@ TEST(TextManipulation, CompleteTextManipulationReplaceSimpleSingleParagraph)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -1489,7 +1489,7 @@ TEST(TextManipulation, CompleteTextManipulationReplaceSimpleSingleParagraph)
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("<p>hello, world</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
 
@@ -1505,7 +1505,7 @@ TEST(TextManipulation, LegacyCompleteTextManipulationReplaceSimpleSingleParagrap
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -1519,7 +1519,7 @@ TEST(TextManipulation, LegacyCompleteTextManipulationReplaceSimpleSingleParagrap
         EXPECT_TRUE(success);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("<p>hello, world</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
 
@@ -1530,13 +1530,13 @@ TEST(TextManipulation, CompleteTextManipulationDisgardsTokens)
     [webView _setTextManipulationDelegate:delegate.get()];
 
     [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html>"
-        "<html><body><p>hello, <b>world</b>. <i>WebKit</i></p></body></html>"];
+        "<html><body><p>hello, <b>world</b>. <i>CyberKit</i></p></body></html>"];
 
     done = false;
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -1544,18 +1544,18 @@ TEST(TextManipulation, CompleteTextManipulationDisgardsTokens)
     EXPECT_STREQ("hello, ", items[0].tokens[0].content.UTF8String);
     EXPECT_STREQ("world", items[0].tokens[1].content.UTF8String);
     EXPECT_STREQ(". ", items[0].tokens[2].content.UTF8String);
-    EXPECT_STREQ("WebKit", items[0].tokens[3].content.UTF8String);
+    EXPECT_STREQ("CyberKit", items[0].tokens[3].content.UTF8String);
 
     done = false;
     [webView _completeTextManipulationForItems:@[(_WKTextManipulationItem *)createItem(items[0].identifier, {
         { items[0].tokens[0].identifier, @"hello, " },
-        { items[0].tokens[3].identifier, @"WebKit" },
+        { items[0].tokens[3].identifier, @"CyberKit" },
     })] completion:^(NSArray<NSError *> *errors) {
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
-    EXPECT_WK_STREQ("<p>hello, <i>WebKit</i></p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
+    TestCyberKitAPI::Util::run(&done);
+    EXPECT_WK_STREQ("<p>hello, <i>CyberKit</i></p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
 
 TEST(TextManipulation, CompleteTextManipulationReplaceTwoSimpleParagraphs)
@@ -1570,7 +1570,7 @@ TEST(TextManipulation, CompleteTextManipulationReplaceTwoSimpleParagraphs)
     [webView _startTextManipulationsWithConfiguration:configuration.get() completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -1587,7 +1587,7 @@ TEST(TextManipulation, CompleteTextManipulationReplaceTwoSimpleParagraphs)
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_WK_STREQ("<p>Hello</p>World", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
@@ -1605,7 +1605,7 @@ TEST(TextManipulation, CompleteTextManipulationReplaceMultipleSimpleParagraphs)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -1628,7 +1628,7 @@ TEST(TextManipulation, CompleteTextManipulationReplaceMultipleSimpleParagraphs)
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("<p>helllo, wooorld</p><p>Hello, <b>kittens</b> are <em>cute</em></p>",
         [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 
@@ -1639,7 +1639,7 @@ TEST(TextManipulation, CompleteTextManipulationReplaceMultipleSimpleParagraphs)
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("<p>Hello, world.</p><p>Hello, <b>kittens</b> are <em>cute</em></p>",
         [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
@@ -1657,7 +1657,7 @@ TEST(TextManipulation, CompleteTextManipulationReplaceMultipleSimpleParagraphsAt
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -1682,7 +1682,7 @@ TEST(TextManipulation, CompleteTextManipulationReplaceMultipleSimpleParagraphsAt
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("<p>Hello, world.</p><p>Hello, <b>kittens</b> are <em>cute</em></p>",
         [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
@@ -1700,7 +1700,7 @@ TEST(TextManipulation, CompleteTextManipulationReplaceMultipleSimpleParagraphsSe
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -1713,13 +1713,13 @@ TEST(TextManipulation, CompleteTextManipulationReplaceMultipleSimpleParagraphsSe
     [webView _completeTextManipulationForItems:@[(_WKTextManipulationItem *)createItem(items[0].identifier, {
         { items[0].tokens[0].identifier, @"Hello, World" },
     }), (_WKTextManipulationItem *)createItem(items[1].identifier, {
-        { items[1].tokens[0].identifier, @"WebKit" },
+        { items[1].tokens[0].identifier, @"CyberKit" },
     })] completion:^(NSArray<NSError *> *errors) {
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
-    EXPECT_WK_STREQ("<p>Hello, World<br>WebKit</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
+    TestCyberKitAPI::Util::run(&done);
+    EXPECT_WK_STREQ("<p>Hello, World<br>CyberKit</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
 
 TEST(TextManipulation, CompleteTextManipulationReplaceParagraphsSeparatedByWrappedBR)
@@ -1735,7 +1735,7 @@ TEST(TextManipulation, CompleteTextManipulationReplaceParagraphsSeparatedByWrapp
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -1750,13 +1750,13 @@ TEST(TextManipulation, CompleteTextManipulationReplaceParagraphsSeparatedByWrapp
         { items[0].tokens[1].identifier, @"Hello, " },
         { items[0].tokens[0].identifier, @"World" },
     }), (_WKTextManipulationItem *)createItem(items[1].identifier, {
-        { items[1].tokens[0].identifier, @"WebKit" },
+        { items[1].tokens[0].identifier, @"CyberKit" },
     })] completion:^(NSArray<NSError *> *errors) {
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
-    EXPECT_WK_STREQ("<p><b>Hello, </b>World<b><br></b>WebKit</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
+    TestCyberKitAPI::Util::run(&done);
+    EXPECT_WK_STREQ("<p><b>Hello, </b>World<b><br></b>CyberKit</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
 
 TEST(TextManipulation, CompleteTextManipulationFailWhenBRIsInserted)
@@ -1771,7 +1771,7 @@ TEST(TextManipulation, CompleteTextManipulationFailWhenBRIsInserted)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -1793,7 +1793,7 @@ TEST(TextManipulation, CompleteTextManipulationFailWhenBRIsInserted)
         EXPECT_EQ(errors.firstObject.userInfo[_WKTextManipulationItemErrorItemKey], item.get());
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("<p>helllo, <br><b>worrld</b></p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
 
@@ -1809,7 +1809,7 @@ TEST(TextManipulation, CompleteTextManipulationAvoidCrashingWhenContentIsRemoved
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -1826,7 +1826,7 @@ TEST(TextManipulation, CompleteTextManipulationAvoidCrashingWhenContentIsRemoved
         "paragraph.textContent = 'Hello world';"
         "document.body.appendChild(paragraph);"
         "setTimeout(() => { paragraph.remove(); webkit.messageHandlers.testHandler.postMessage('DoneRemovingParagraph') })"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [webView _completeTextManipulationForItems:@[(_WKTextManipulationItem *)createItem(items[0].identifier, {
@@ -1835,7 +1835,7 @@ TEST(TextManipulation, CompleteTextManipulationAvoidCrashingWhenContentIsRemoved
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_WK_STREQ("Simple HTML file!", [webView stringByEvaluatingJavaScript:@"document.body.textContent"]);
 }
@@ -1852,7 +1852,7 @@ TEST(TextManipulation, CompleteTextManipulationShouldPreserveImagesAsExcludedTok
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -1874,7 +1874,7 @@ TEST(TextManipulation, CompleteTextManipulationShouldPreserveImagesAsExcludedTok
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("<div>this is <img src=\"apple.gif\"> a test</div>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
 
@@ -1894,7 +1894,7 @@ TEST(TextManipulation, CompleteTextManipulationShouldPreserveSVGAsExcludedTokens
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -1915,13 +1915,13 @@ TEST(TextManipulation, CompleteTextManipulationShouldPreserveSVGAsExcludedTokens
     [webView _completeTextManipulationForItems:@[(_WKTextManipulationItem *)createItem(items[0].identifier, {
         { tokens[0].identifier, @"hey" },
         { tokens[1].identifier, nil },
-        { tokens[2].identifier, @"WebKit" },
+        { tokens[2].identifier, @"CyberKit" },
     })] completion:^(NSArray<NSError *> *errors) {
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
-    EXPECT_WK_STREQ("<section><div style=\"display: inline-block;\">hey<span style=\"display: inline-flex;\"><svg viewBox=\"0 0 20 20\" width=\"20\" height=\"20\"><rect width=\"20\" height=\"20\" fill=\"#06f\"></rect></svg></span>WebKit</div></section><p>world</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
+    TestCyberKitAPI::Util::run(&done);
+    EXPECT_WK_STREQ("<section><div style=\"display: inline-block;\">hey<span style=\"display: inline-flex;\"><svg viewBox=\"0 0 20 20\" width=\"20\" height=\"20\"><rect width=\"20\" height=\"20\" fill=\"#06f\"></rect></svg></span>CyberKit</div></section><p>world</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
 
 TEST(TextManipulation, CompleteTextManipulationShouldPreserveOrderOfBlockImage)
@@ -1939,7 +1939,7 @@ TEST(TextManipulation, CompleteTextManipulationShouldPreserveOrderOfBlockImage)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -1954,7 +1954,7 @@ TEST(TextManipulation, CompleteTextManipulationShouldPreserveOrderOfBlockImage)
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("<svg viewBox=\"0 0 10 10\" width=\"100\" height=\"100\"><rect width=\"10\" height=\"10\" fill=\"red\"></rect></svg>"
     "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAAxJREFUCN"
     "djYKhnAAABAgCAbV7tZwAAAABJRU5ErkJggg==\" style=\"display: block; width: 100px;\"><section>hello, world</section>",
@@ -1974,7 +1974,7 @@ TEST(TextManipulation, CompleteTextManipulationShouldReplaceAttributeContent)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 4UL);
@@ -1999,7 +1999,7 @@ TEST(TextManipulation, CompleteTextManipulationShouldReplaceAttributeContent)
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("<head><title>Hello</title></head><body><div><span aria-label=\"This is a greeting\">hello</span>"
         "<img src=\"apple.gif\" alt=\"Apple\"></div></body>", [webView stringByEvaluatingJavaScript:@"document.documentElement.innerHTML"]);
 }
@@ -2018,7 +2018,7 @@ TEST(TextManipulation, CompleteTextManipulationShouldReplaceContentFollowedAfter
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -2032,7 +2032,7 @@ TEST(TextManipulation, CompleteTextManipulationShouldReplaceContentFollowedAfter
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("<div style=\"display: table\"><div style=\"float: left;\"><img src=\"apple.gif\" style=\"display: flex;\"></div>"
         "<div><span style=\"display: block\">hello, world</span></div></div>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
@@ -2057,7 +2057,7 @@ TEST(TextManipulation, CompleteTextManipulationShouldReplaceTextContentWithMulti
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 6UL);
@@ -2091,7 +2091,7 @@ TEST(TextManipulation, CompleteTextManipulationShouldReplaceTextContentWithMulti
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     NSArray<NSString *> *options = [webView objectByEvaluatingJavaScript:@"Array.from(document.querySelector('select').options).map(option => option.textContent)"];
     EXPECT_WK_STREQ("Replacement option", options.firstObject);
@@ -2113,7 +2113,7 @@ TEST(TextManipulation, CompleteTextManipulationShouldReplaceContentsAroundParagr
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -2130,7 +2130,7 @@ TEST(TextManipulation, CompleteTextManipulationShouldReplaceContentsAroundParagr
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("<div>hello</div><div><img src=\"apple.gif\"></div><span>world</span>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
 
@@ -2152,7 +2152,7 @@ TEST(TextManipulation, CompleteTextManipulationShouldBatchItemCallback)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_GE(itemListCallbackCount, 2UL);
 
     auto *items = [delegate items];    
@@ -2176,7 +2176,7 @@ TEST(TextManipulation, CompleteTextManipulationReordersContent)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -2195,7 +2195,7 @@ TEST(TextManipulation, CompleteTextManipulationReordersContent)
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("<p><i>I</i>'m a <a href=\"https://en.wikipedia.org/wiki/Cat\">cat</a></p>",
         [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
@@ -2207,32 +2207,32 @@ TEST(TextManipulation, CompleteTextManipulationCanSplitContent)
     [webView _setTextManipulationDelegate:delegate.get()];
 
     [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html>"
-        "<html><body><p id=\"paragraph\"><b class=\"hello-world\">hello world</b> WebKit</p></body></html>"];
+        "<html><body><p id=\"paragraph\"><b class=\"hello-world\">hello world</b> CyberKit</p></body></html>"];
     [webView stringByEvaluatingJavaScript:@"paragraph.firstChild.addEventListener('click', () => window.didClick = true)"];
 
     done = false;
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
     EXPECT_EQ(items[0].tokens.count, 2UL);
     EXPECT_STREQ("hello world", items[0].tokens[0].content.UTF8String);
-    EXPECT_STREQ(" WebKit", items[0].tokens[1].content.UTF8String);
+    EXPECT_STREQ(" CyberKit", items[0].tokens[1].content.UTF8String);
 
     done = false;
     [webView _completeTextManipulationForItems:@[(_WKTextManipulationItem *)createItem(items[0].identifier, {
         { items[0].tokens[0].identifier, @"hello" },
-        { items[0].tokens[1].identifier, @" WebKit " },
+        { items[0].tokens[1].identifier, @" CyberKit " },
         { items[0].tokens[0].identifier, @"world" },
     })] completion:^(NSArray<NSError *> *errors) {
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
-    EXPECT_WK_STREQ("<p id=\"paragraph\"><b class=\"hello-world\">hello</b> WebKit <b class=\"hello-world\">world</b></p>",
+    TestCyberKitAPI::Util::run(&done);
+    EXPECT_WK_STREQ("<p id=\"paragraph\"><b class=\"hello-world\">hello</b> CyberKit <b class=\"hello-world\">world</b></p>",
         [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
     EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"didClick = false; paragraph.firstChild.click(); didClick"].boolValue);
     EXPECT_TRUE([webView stringByEvaluatingJavaScript:@"didClick = false; paragraph.lastChild.click(); didClick"].boolValue);
@@ -2244,20 +2244,20 @@ TEST(TextManipulation, CompleteTextManipulationCanMergeContent)
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 400, 400)]);
     [webView _setTextManipulationDelegate:delegate.get()];
 
-    [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html><html><body><p><b>hello <i>world</i> WebKit</b></p></body></html>"];
+    [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html><html><body><p><b>hello <i>world</i> CyberKit</b></p></body></html>"];
 
     done = false;
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
     EXPECT_EQ(items[0].tokens.count, 3UL);
     EXPECT_STREQ("hello ", items[0].tokens[0].content.UTF8String);
     EXPECT_STREQ("world", items[0].tokens[1].content.UTF8String);
-    EXPECT_STREQ(" WebKit", items[0].tokens[2].content.UTF8String);
+    EXPECT_STREQ(" CyberKit", items[0].tokens[2].content.UTF8String);
 
     done = false;
     [webView _completeTextManipulationForItems:@[(_WKTextManipulationItem *)createItem(items[0].identifier, {
@@ -2267,7 +2267,7 @@ TEST(TextManipulation, CompleteTextManipulationCanMergeContent)
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("<p><b>hello world</b></p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
 
@@ -2283,7 +2283,7 @@ TEST(TextManipulation, CompleteTextManipulationFailWhenItemIdentifierIsDuplicate
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -2301,7 +2301,7 @@ TEST(TextManipulation, CompleteTextManipulationFailWhenItemIdentifierIsDuplicate
         EXPECT_EQ(errors.firstObject.userInfo[_WKTextManipulationItemErrorItemKey], secondItem.get());
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("<p>done</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
 
@@ -2317,7 +2317,7 @@ TEST(TextManipulation, CompleteTextManipulationCanHandleSubsetOfItemsToFail)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -2338,7 +2338,7 @@ TEST(TextManipulation, CompleteTextManipulationCanHandleSubsetOfItemsToFail)
         EXPECT_EQ(errors.firstObject.userInfo[_WKTextManipulationItemErrorItemKey], firstItem.get());
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("<p>hey, <b>dude</b></p><p>good</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
 
@@ -2359,7 +2359,7 @@ TEST(TextManipulation, CompleteTextManipulationReplaceContentInIframe)
     [webView _startTextManipulationsWithConfiguration:configuration.get() completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -2380,7 +2380,7 @@ TEST(TextManipulation, CompleteTextManipulationReplaceContentInIframe)
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("<p>hello</p>", [webView stringByEvaluatingJavaScript:@"container.innerHTML"]);
     EXPECT_WK_STREQ("<p>world</p>", [webView stringByEvaluatingJavaScript:@"frame.contentDocument.body.innerHTML"]);
 }
@@ -2398,7 +2398,7 @@ TEST(TextManipulation, CompleteTextManipulationFailWhenContentIsChanged)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -2422,7 +2422,7 @@ TEST(TextManipulation, CompleteTextManipulationFailWhenContentIsChanged)
         EXPECT_EQ(errors.firstObject.userInfo[_WKTextManipulationItemErrorItemKey], item.get());
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("<p> what <em>time</em> is it now in London?</p>",
         [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
@@ -2439,7 +2439,7 @@ TEST(TextManipulation, CompleteTextManipulationFailWhenContentIsRemoved)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -2459,7 +2459,7 @@ TEST(TextManipulation, CompleteTextManipulationFailWhenContentIsRemoved)
         EXPECT_EQ(errors.firstObject.userInfo[_WKTextManipulationItemErrorItemKey], item.get());
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("new content", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
 
@@ -2475,7 +2475,7 @@ TEST(TextManipulation, CompleteTextManipulationFailWhenContentIsAdded)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -2489,7 +2489,7 @@ TEST(TextManipulation, CompleteTextManipulationFailWhenContentIsAdded)
     };
     [webView stringByEvaluatingJavaScript:@"document.querySelector('p').innerHTML = 'hello, world &#10; bye';"
         "document.body.appendChild(document.createElement('div')).innerHTML = 'end'"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     __block auto item = createItem(items[0].identifier, {{ items[0].tokens[0].identifier, @"Hello, World" }});
@@ -2500,7 +2500,7 @@ TEST(TextManipulation, CompleteTextManipulationFailWhenContentIsAdded)
         EXPECT_EQ(errors.firstObject.userInfo[_WKTextManipulationItemErrorItemKey], item.get());
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_WK_STREQ("<p>hello, world \n bye</p><div>end</div>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
@@ -2521,7 +2521,7 @@ TEST(TextManipulation, CompleteTextManipulationFailWhenContentIsChangedInIframe)
     [webView _startTextManipulationsWithConfiguration:configuration.get() completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -2546,7 +2546,7 @@ TEST(TextManipulation, CompleteTextManipulationFailWhenContentIsChangedInIframe)
         EXPECT_EQ(errors.firstObject.userInfo[_WKTextManipulationItemErrorItemKey], item1.get());
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("new content", [webView stringByEvaluatingJavaScript:@"frame.contentDocument.body.innerHTML"]);
 }
 
@@ -2563,7 +2563,7 @@ TEST(TextManipulation, CompleteTextManipulationSuccedsWhenContentOutOfParagraphI
     [webView _startTextManipulationsWithConfiguration:configuration.get() completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -2579,7 +2579,7 @@ TEST(TextManipulation, CompleteTextManipulationSuccedsWhenContentOutOfParagraphI
     [webView stringByEvaluatingJavaScript:@"var element = document.createElement('span');"
         "element.innerHTML='inserted';"
         "document.querySelector('u').before(element)"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [webView _completeTextManipulationForItems:@[
@@ -2588,7 +2588,7 @@ TEST(TextManipulation, CompleteTextManipulationSuccedsWhenContentOutOfParagraphI
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_WK_STREQ("<p style=\"white-space:pre;background-color:blue;\"><span>Hello World</span><span>inserted</span><u>   </u></p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
@@ -2606,7 +2606,7 @@ TEST(TextManipulation, CompleteTextManipulationFailWhenDocumentHasBeenNavigatedA
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -2621,7 +2621,7 @@ TEST(TextManipulation, CompleteTextManipulationFailWhenDocumentHasBeenNavigatedA
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     __block auto item = createItem(items[0].identifier, {
@@ -2636,7 +2636,7 @@ TEST(TextManipulation, CompleteTextManipulationFailWhenDocumentHasBeenNavigatedA
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(TextManipulation, CompleteTextManipulationFailWhenExclusionIsViolated)
@@ -2646,7 +2646,7 @@ TEST(TextManipulation, CompleteTextManipulationFailWhenExclusionIsViolated)
     [webView _setTextManipulationDelegate:delegate.get()];
 
     [webView synchronouslyLoadTestPageNamed:@"simple"];
-    [webView stringByEvaluatingJavaScript:@"document.body.innerHTML = '<p>hi, <em>WebKitten</em> bye</p>'"];
+    [webView stringByEvaluatingJavaScript:@"document.body.innerHTML = '<p>hi, <em>CyberKitten</em> bye</p>'"];
 
     RetainPtr<_WKTextManipulationConfiguration> configuration = adoptNS([[_WKTextManipulationConfiguration alloc] init]);
     [configuration setExclusionRules:@[
@@ -2657,19 +2657,19 @@ TEST(TextManipulation, CompleteTextManipulationFailWhenExclusionIsViolated)
     [webView _startTextManipulationsWithConfiguration:configuration.get() completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
     EXPECT_EQ(items[0].tokens.count, 3UL);
     EXPECT_STREQ("hi, ", items[0].tokens[0].content.UTF8String);
-    EXPECT_STREQ("WebKitten", items[0].tokens[1].content.UTF8String);
+    EXPECT_STREQ("CyberKitten", items[0].tokens[1].content.UTF8String);
     EXPECT_STREQ(" bye", items[0].tokens[2].content.UTF8String);
 
     done = false;
     __block auto item = createItem(items[0].identifier, {
         { items[0].tokens[0].identifier, @"Hello," },
-        { items[0].tokens[1].identifier, @"WebKit" },
+        { items[0].tokens[1].identifier, @"CyberKit" },
         { items[0].tokens[2].identifier, @"Bye" },
     });
     [webView _completeTextManipulationForItems:@[item.get()] completion:^(NSArray<NSError *> *errors) {
@@ -2680,8 +2680,8 @@ TEST(TextManipulation, CompleteTextManipulationFailWhenExclusionIsViolated)
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
-    EXPECT_WK_STREQ("<p>hi, <em>WebKitten</em> bye</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
+    TestCyberKitAPI::Util::run(&done);
+    EXPECT_WK_STREQ("<p>hi, <em>CyberKitten</em> bye</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
 
 TEST(TextManipulation, CompleteTextManipulationFailWhenExcludedContentAppearsMoreThanOnce)
@@ -2691,7 +2691,7 @@ TEST(TextManipulation, CompleteTextManipulationFailWhenExcludedContentAppearsMor
     [webView _setTextManipulationDelegate:delegate.get()];
 
     [webView synchronouslyLoadTestPageNamed:@"simple"];
-    [webView stringByEvaluatingJavaScript:@"document.body.innerHTML = '<p>hi, <em>WebKitten</em> bye</p>'"];
+    [webView stringByEvaluatingJavaScript:@"document.body.innerHTML = '<p>hi, <em>CyberKitten</em> bye</p>'"];
 
     RetainPtr<_WKTextManipulationConfiguration> configuration = adoptNS([[_WKTextManipulationConfiguration alloc] init]);
     [configuration setExclusionRules:@[
@@ -2702,13 +2702,13 @@ TEST(TextManipulation, CompleteTextManipulationFailWhenExcludedContentAppearsMor
     [webView _startTextManipulationsWithConfiguration:configuration.get() completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
     EXPECT_EQ(items[0].tokens.count, 3UL);
     EXPECT_STREQ("hi, ", items[0].tokens[0].content.UTF8String);
-    EXPECT_STREQ("WebKitten", items[0].tokens[1].content.UTF8String);
+    EXPECT_STREQ("CyberKitten", items[0].tokens[1].content.UTF8String);
     EXPECT_STREQ(" bye", items[0].tokens[2].content.UTF8String);
 
     done = false;
@@ -2726,8 +2726,8 @@ TEST(TextManipulation, CompleteTextManipulationFailWhenExcludedContentAppearsMor
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
-    EXPECT_WK_STREQ("<p>hi, <em>WebKitten</em> bye</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
+    TestCyberKitAPI::Util::run(&done);
+    EXPECT_WK_STREQ("<p>hi, <em>CyberKitten</em> bye</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
 
 TEST(TextManipulation, CompleteTextManipulationPreservesExcludedContent)
@@ -2736,7 +2736,7 @@ TEST(TextManipulation, CompleteTextManipulationPreservesExcludedContent)
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 400, 400)]);
     [webView _setTextManipulationDelegate:delegate.get()];
 
-    [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html><html><body><p>hi, <em>WebKitten</em> bye</p></body></html>"];
+    [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html><html><body><p>hi, <em>CyberKitten</em> bye</p></body></html>"];
 
     RetainPtr<_WKTextManipulationConfiguration> configuration = adoptNS([[_WKTextManipulationConfiguration alloc] init]);
     [configuration setExclusionRules:@[
@@ -2747,13 +2747,13 @@ TEST(TextManipulation, CompleteTextManipulationPreservesExcludedContent)
     [webView _startTextManipulationsWithConfiguration:configuration.get() completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
     EXPECT_EQ(items[0].tokens.count, 3UL);
     EXPECT_STREQ("hi, ", items[0].tokens[0].content.UTF8String);
-    EXPECT_STREQ("WebKitten", items[0].tokens[1].content.UTF8String);
+    EXPECT_STREQ("CyberKitten", items[0].tokens[1].content.UTF8String);
     EXPECT_STREQ(" bye", items[0].tokens[2].content.UTF8String);
 
     done = false;
@@ -2766,8 +2766,8 @@ TEST(TextManipulation, CompleteTextManipulationPreservesExcludedContent)
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
-    EXPECT_WK_STREQ("<p>Hello, <em>WebKitten</em> Bye</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
+    TestCyberKitAPI::Util::run(&done);
+    EXPECT_WK_STREQ("<p>Hello, <em>CyberKitten</em> Bye</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
 
 TEST(TextManipulation, CompleteTextManipulationDoesNotCreateMoreTextManipulationItems)
@@ -2784,7 +2784,7 @@ TEST(TextManipulation, CompleteTextManipulationDoesNotCreateMoreTextManipulation
     [webView _startTextManipulationsWithConfiguration:configuration.get() completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -2807,7 +2807,7 @@ TEST(TextManipulation, CompleteTextManipulationDoesNotCreateMoreTextManipulation
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     [webView waitForNextPresentationUpdate];
 
     EXPECT_FALSE(foundNewItemAfterCompletingTextManipulation);
@@ -2827,7 +2827,7 @@ TEST(TextManipulation, CompleteTextManipulationCorrectParagraphRange)
     [webView _startTextManipulationsWithConfiguration:configuration.get() completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -2844,7 +2844,7 @@ TEST(TextManipulation, CompleteTextManipulationCorrectParagraphRange)
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_WK_STREQ("<div class=\"frame\"><div class=\"subframe\"></div></div><style></style><div class=\"inline\"><div><li><a href=\"#\">hello</a></li><li><a href=\"#\">world</a></li></div></div><div class=\"frame\"><div class=\"subframe\"></div></div>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
@@ -2864,7 +2864,7 @@ TEST(TextManipulation, CompleteTextManipulationCanMergeContentAndPreserveLineBre
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -2883,7 +2883,7 @@ TEST(TextManipulation, CompleteTextManipulationCanMergeContentAndPreserveLineBre
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_WK_STREQ("<span style=\"white-space:pre;\">ONE \n TWO \n</span>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
@@ -2910,7 +2910,7 @@ TEST(TextManipulation, CompleteTextManipulationIgnoreWhiteSpacesBetweenParagraph
     [webView _startTextManipulationsWithConfiguration:configuration.get() completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -2927,7 +2927,7 @@ TEST(TextManipulation, CompleteTextManipulationIgnoreWhiteSpacesBetweenParagraph
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(TextManipulation, CompleteTextManipulationShouldPreserveNodesAfterParagraphRange)
@@ -2945,7 +2945,7 @@ TEST(TextManipulation, CompleteTextManipulationShouldPreserveNodesAfterParagraph
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -2957,7 +2957,7 @@ TEST(TextManipulation, CompleteTextManipulationShouldPreserveNodesAfterParagraph
 
     auto replacementItems = retainPtr(@[
         createItem(items[0].identifier, { { items[0].tokens[0].identifier, @"Hello" }, { items[0].tokens[1].identifier, @"World" } }).get(),
-        createItem(items[1].identifier, { { items[1].tokens[0].identifier, @"From WebKit" } }).get(),
+        createItem(items[1].identifier, { { items[1].tokens[0].identifier, @"From CyberKit" } }).get(),
     ]);
 
     done = false;
@@ -2965,9 +2965,9 @@ TEST(TextManipulation, CompleteTextManipulationShouldPreserveNodesAfterParagraph
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
-    EXPECT_WK_STREQ("<p>Hello<b>World<br><br><i>From WebKit</i></b></p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
+    EXPECT_WK_STREQ("<p>Hello<b>World<br><br><i>From CyberKit</i></b></p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
 
 TEST(TextManipulation, CompleteTextManipulationSPreserveNodesBeforeParagraphRange)
@@ -2985,7 +2985,7 @@ TEST(TextManipulation, CompleteTextManipulationSPreserveNodesBeforeParagraphRang
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -2995,7 +2995,7 @@ TEST(TextManipulation, CompleteTextManipulationSPreserveNodesBeforeParagraphRang
     EXPECT_STREQ("from", items[0].tokens[2].content.UTF8String);
 
     auto replacementItems = retainPtr(@[
-        createItem(items[0].identifier, { { items[0].tokens[0].identifier, @"Hello" }, { items[0].tokens[1].identifier, @"World" }, { items[0].tokens[2].identifier, @"From WebKit" } }).get()
+        createItem(items[0].identifier, { { items[0].tokens[0].identifier, @"Hello" }, { items[0].tokens[1].identifier, @"World" }, { items[0].tokens[2].identifier, @"From CyberKit" } }).get()
     ]);
 
     done = false;
@@ -3003,9 +3003,9 @@ TEST(TextManipulation, CompleteTextManipulationSPreserveNodesBeforeParagraphRang
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
-    EXPECT_WK_STREQ("<p><b><br><br>Hello<i>World</i></b>From WebKit</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
+    EXPECT_WK_STREQ("<p><b><br><br>Hello<i>World</i></b>From CyberKit</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
 
 TEST(TextManipulation, InsertingContentIntoAlreadyManipulatedContentCreatesTextManipulationItem)
@@ -3022,7 +3022,7 @@ TEST(TextManipulation, InsertingContentIntoAlreadyManipulatedContentCreatesTextM
     [webView _startTextManipulationsWithConfiguration:configuration.get() completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -3040,17 +3040,17 @@ TEST(TextManipulation, InsertingContentIntoAlreadyManipulatedContentCreatesTextM
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     [delegate setItemCallback:^(_WKTextManipulationItem *) {
         done = true;
     }];
-    [webView stringByEvaluatingJavaScript:@"span = document.createElement('span'); span.textContent = ' WebKit!'; document.querySelector('b').after(span);"];
-    TestWebKitAPI::Util::run(&done);
+    [webView stringByEvaluatingJavaScript:@"span = document.createElement('span'); span.textContent = ' CyberKit!'; document.querySelector('b').after(span);"];
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ(items.count, 2UL);
-    EXPECT_WK_STREQ("<p><i><b>hello,</b><span> WebKit!</span></i> world</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
+    EXPECT_WK_STREQ("<p><i><b>hello,</b><span> CyberKit!</span></i> world</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
 
 TEST(TextManipulation, CompleteTextManipulationInButtonsAndTextFields)
@@ -3065,7 +3065,7 @@ TEST(TextManipulation, CompleteTextManipulationInButtonsAndTextFields)
     [webView _startTextManipulationsWithConfiguration:configuration.get() completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -3086,7 +3086,7 @@ TEST(TextManipulation, CompleteTextManipulationInButtonsAndTextFields)
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_WK_STREQ("world1", [webView stringByEvaluatingJavaScript:@"document.querySelector('input[type=text]').value"]);
     EXPECT_WK_STREQ("world2", [webView stringByEvaluatingJavaScript:@"document.querySelector('input[type=submit]').value"]);
@@ -3113,7 +3113,7 @@ TEST(TextManipulation, CompleteTextManipulationForNewlyDisplayedParagraph)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -3123,19 +3123,19 @@ TEST(TextManipulation, CompleteTextManipulationForNewlyDisplayedParagraph)
 
     done = false;
     [webView _completeTextManipulationForItems:@[
-        createItem(items[0].identifier, {{ items[0].tokens[0].identifier, @"WebKit!" }, { items[0].tokens[1].identifier, @"Hello World" }}).get(),
+        createItem(items[0].identifier, {{ items[0].tokens[0].identifier, @"CyberKit!" }, { items[0].tokens[1].identifier, @"Hello World" }}).get(),
     ] completion:^(NSArray<NSError *> *errors) {
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     done = false;
     delegate.get().itemCallback = ^(_WKTextManipulationItem *item) {
         done = true;
     };
     [webView stringByEvaluatingJavaScript:@"document.querySelector('i').removeAttribute('class');"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ(items.count, 2UL);
     EXPECT_EQ(items[1].tokens.count, 1UL);
@@ -3148,9 +3148,9 @@ TEST(TextManipulation, CompleteTextManipulationForNewlyDisplayedParagraph)
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
-    EXPECT_WK_STREQ("<b>WebKit!</b><span>Hello World<i>Bye</i></span>", [webView stringByEvaluatingJavaScript:@"document.querySelector('div').innerHTML"]);
+    EXPECT_WK_STREQ("<b>CyberKit!</b><span>Hello World<i>Bye</i></span>", [webView stringByEvaluatingJavaScript:@"document.querySelector('div').innerHTML"]);
 }
 
 TEST(TextManipulation, CompleteTextManipulationForNewlyDisplayedText)
@@ -3169,7 +3169,7 @@ TEST(TextManipulation, CompleteTextManipulationForNewlyDisplayedText)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -3183,7 +3183,7 @@ TEST(TextManipulation, CompleteTextManipulationForNewlyDisplayedText)
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("<a>Hello World</a>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 
     done = false;
@@ -3193,7 +3193,7 @@ TEST(TextManipulation, CompleteTextManipulationForNewlyDisplayedText)
     };
     NSString *scriptString = @"document.querySelector('a').innerHTML=''; document.querySelector('a').innerHTML='hello world again';";
     [webView evaluateJavaScript:scriptString completionHandler:nil];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_EQ(items[1].tokens.count, 1UL);
     EXPECT_WK_STREQ("hello world again", items[1].tokens[0].content);
 
@@ -3204,7 +3204,7 @@ TEST(TextManipulation, CompleteTextManipulationForNewlyDisplayedText)
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("<a>Hello World Again</a>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
 
@@ -3224,7 +3224,7 @@ TEST(TextManipulation, CompleteTextManipulationForManipulatedTextWithNewContent)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -3236,13 +3236,13 @@ TEST(TextManipulation, CompleteTextManipulationForManipulatedTextWithNewContent)
     done = false;
     [webView _completeTextManipulationForItems:@[
         createItem(items[0].identifier, {{ items[0].tokens[0].identifier, @"Hello World" }}).get(),
-        createItem(items[1].identifier, {{ items[1].tokens[0].identifier, @"Hello WebKit" }}).get()
+        createItem(items[1].identifier, {{ items[1].tokens[0].identifier, @"Hello CyberKit" }}).get()
     ] completion:^(NSArray<NSError *> *errors) {
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
-    EXPECT_WK_STREQ("<span>Hello World</span><p>Hello WebKit</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
+    TestCyberKitAPI::Util::run(&done);
+    EXPECT_WK_STREQ("<span>Hello World</span><p>Hello CyberKit</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 
     done = false;
     delegate.get().itemCallback = ^(_WKTextManipulationItem *item) {
@@ -3251,7 +3251,7 @@ TEST(TextManipulation, CompleteTextManipulationForManipulatedTextWithNewContent)
     };
     [webView stringByEvaluatingJavaScript:@"document.querySelector('span').innerHTML='hello world again';"];
     [webView stringByEvaluatingJavaScript:@"document.querySelector('p').childNodes[0].nodeValue='hello webkit again';"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ(items[2].tokens.count, 1UL);
     EXPECT_WK_STREQ("hello world again", items[2].tokens[0].content);
@@ -3261,13 +3261,13 @@ TEST(TextManipulation, CompleteTextManipulationForManipulatedTextWithNewContent)
     done = false;
     [webView _completeTextManipulationForItems:@[
         createItem(items[2].identifier, {{ items[2].tokens[0].identifier, @"Hello World Again" }}).get(),
-        createItem(items[3].identifier, {{ items[3].tokens[0].identifier, @"Hello WebKit Again" }}).get()
+        createItem(items[3].identifier, {{ items[3].tokens[0].identifier, @"Hello CyberKit Again" }}).get()
     ] completion:^(NSArray<NSError *> *errors) {
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
-    EXPECT_WK_STREQ("<span>Hello World Again</span><p>Hello WebKit Again</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
+    TestCyberKitAPI::Util::run(&done);
+    EXPECT_WK_STREQ("<span>Hello World Again</span><p>Hello CyberKit Again</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
 
 TEST(TextManipulation, CompleteTextManipulationForTitleElement)
@@ -3281,7 +3281,7 @@ TEST(TextManipulation, CompleteTextManipulationForTitleElement)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 0UL);
 
@@ -3291,7 +3291,7 @@ TEST(TextManipulation, CompleteTextManipulationForTitleElement)
         if (items.count == 1)
             done = true;
     };
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_EQ(items[0].tokens.count, 1UL);
     EXPECT_WK_STREQ("page title", items[0].tokens[0].content);
 
@@ -3302,7 +3302,7 @@ TEST(TextManipulation, CompleteTextManipulationForTitleElement)
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("Page Title", [webView stringByEvaluatingJavaScript:@"document.title"]);
     EXPECT_WK_STREQ("<head><title>Page Title</title></head><body></body>", [webView stringByEvaluatingJavaScript:@"document.documentElement.innerHTML"]);
 
@@ -3312,7 +3312,7 @@ TEST(TextManipulation, CompleteTextManipulationForTitleElement)
         if (items.count == 2)
             done = true;
     };
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_EQ(items[1].tokens.count, 1UL);
     EXPECT_WK_STREQ("new page title", items[1].tokens[0].content);
 
@@ -3323,7 +3323,7 @@ TEST(TextManipulation, CompleteTextManipulationForTitleElement)
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("New Page Title", [webView stringByEvaluatingJavaScript:@"document.title"]);
     EXPECT_WK_STREQ("<head><title>New Page Title</title></head><body></body>", [webView stringByEvaluatingJavaScript:@"document.documentElement.innerHTML"]);
 }
@@ -3340,7 +3340,7 @@ TEST(TextManipulation, CompleteTextManipulationAvoidExtractingManipulatedTextAft
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -3357,7 +3357,7 @@ TEST(TextManipulation, CompleteTextManipulationAvoidExtractingManipulatedTextAft
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_WK_STREQ("<p>FOO<br>BAR</p>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 
@@ -3371,7 +3371,7 @@ TEST(TextManipulation, CompleteTextManipulationAvoidExtractingManipulatedTextAft
     delegate.get().itemCallback = ^(_WKTextManipulationItem *item) {
         done = true;
     };
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_EQ(items.count, 3UL);
     EXPECT_EQ(items[2].tokens.count, 1UL);
@@ -3414,7 +3414,7 @@ TEST(TextManipulation, CompleteTextManipulationAddsOverflowHiddenToAvoidBreaking
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -3431,7 +3431,7 @@ TEST(TextManipulation, CompleteTextManipulationAddsOverflowHiddenToAvoidBreaking
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_WK_STREQ("This is a long translation Foo bar", [webView stringByEvaluatingJavaScript:@"document.querySelector('a').textContent.trim()"]);
     EXPECT_WK_STREQ("hidden", [webView stringByEvaluatingJavaScript:@"getComputedStyle(document.querySelector('span')).overflowX"]);
@@ -3458,7 +3458,7 @@ TEST(TextManipulation, CompleteTextManipulationParagraphsContainCollapsedSpaces)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -3475,7 +3475,7 @@ TEST(TextManipulation, CompleteTextManipulationParagraphsContainCollapsedSpaces)
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_WK_STREQ("<span>Hello</span><span>World</span>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
@@ -3498,7 +3498,7 @@ TEST(TextManipulation, CompleteTextManipulationParagraphContainsCollapsedSpaces)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -3515,7 +3515,7 @@ TEST(TextManipulation, CompleteTextManipulationParagraphContainsCollapsedSpaces)
     done = false;
     [webView _completeTextManipulationForItems:@[
         createItem(items[0].identifier, {
-            { items[0].tokens[0].identifier, @"WebKit" },
+            { items[0].tokens[0].identifier, @"CyberKit" },
             { items[0].tokens[1].identifier, @" And " },
             { items[0].tokens[2].identifier, @"Apple" }
         }).get()
@@ -3523,9 +3523,9 @@ TEST(TextManipulation, CompleteTextManipulationParagraphContainsCollapsedSpaces)
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
-    EXPECT_WK_STREQ("<div id=\"div\" style=\"width: 9ch;\"><a href=\"https://www.webkit.org\">WebKit</a> And <a href=\"https://www.apple.com\">Apple</a></div>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
+    EXPECT_WK_STREQ("<div id=\"div\" style=\"width: 9ch;\"><a href=\"https://www.webkit.org\">CyberKit</a> And <a href=\"https://www.apple.com\">Apple</a></div>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
 
 
@@ -3548,7 +3548,7 @@ TEST(TextManipulation, CompleteTextManipulationShouldReplaceContentIgnoredByEdit
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -3566,7 +3566,7 @@ TEST(TextManipulation, CompleteTextManipulationShouldReplaceContentIgnoredByEdit
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_WK_STREQ("<div role=\"img\">Images<a>Link</a><img src=\"hello.png\"><img src=\"webkit.png\"></div>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
@@ -3592,7 +3592,7 @@ TEST(TextManipulation, CompleteTextManipulationShouldOnlyChangeNodesInParagraphR
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto *items = [delegate items];
     EXPECT_EQ(items.count, 2UL);
@@ -3614,7 +3614,7 @@ TEST(TextManipulation, CompleteTextManipulationShouldOnlyChangeNodesInParagraphR
         EXPECT_EQ(errors, nil);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("<span>zero \n</span>one<span><b>two</b></span><i>three</i><span><b>four</b></span>",
         [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
@@ -3632,7 +3632,7 @@ TEST(TextManipulation, CompleteTextManipulationParagraphBecomesHidden)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -3654,7 +3654,7 @@ TEST(TextManipulation, CompleteTextManipulationParagraphBecomesHidden)
         EXPECT_EQ(errors.firstObject.userInfo[_WKTextManipulationItemErrorItemKey], item.get());
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_WK_STREQ("<span class=\"hidden\">hello</span>", [webView stringByEvaluatingJavaScript:@"document.body.innerHTML"]);
 }
@@ -3671,7 +3671,7 @@ TEST(TextManipulation, CompleteTextManipulationSkipsEmptyContainers)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -3690,7 +3690,7 @@ TEST(TextManipulation, CompleteTextManipulationSkipsEmptyContainers)
         EXPECT_EQ(errors.count, 0UL);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_WK_STREQ("SECTION", [webView stringByEvaluatingJavaScript:@"document.getElementById('target').parentElement.tagName"]);
     NSArray<NSString *> *textContents = [webView objectByEvaluatingJavaScript:@"Array.from(document.links).map(a => a.textContent)"];
@@ -3710,7 +3710,7 @@ TEST(TextManipulation, CompleteTextManipulationReplacesShadowDOMContent)
     [webView _startTextManipulationsWithConfiguration:nil completion:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     auto items = [delegate items];
     EXPECT_EQ(items.count, 1UL);
@@ -3723,7 +3723,7 @@ TEST(TextManipulation, CompleteTextManipulationReplacesShadowDOMContent)
         EXPECT_EQ(errors.count, 0UL);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_WK_STREQ([webView stringByEvaluatingJavaScript:@"document.getElementById('host').shadowRoot.textContent"], "world");
 }
@@ -4214,5 +4214,5 @@ TEST(TextManipulation, TextManipulationItemNSObjectEqualityWithNonToken)
     EXPECT_FALSE([token isEqual:nil]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 

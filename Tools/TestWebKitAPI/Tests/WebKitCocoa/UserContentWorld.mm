@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #import "PlatformUtilities.h"
 #import "Test.h"
@@ -32,16 +32,16 @@
 #import "TestURLSchemeHandler.h"
 #import "UserContentWorldProtocol.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKUserContentControllerPrivate.h>
-#import <WebKit/WKUserScriptPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
-#import <WebKit/_WKRemoteObjectInterface.h>
-#import <WebKit/_WKRemoteObjectRegistry.h>
-#import <WebKit/_WKUserContentWorld.h>
-#import <WebKit/_WKUserStyleSheet.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/WKUserScriptPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/CyberKit.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/_WKRemoteObjectInterface.h>
+#import <CyberKit/_WKRemoteObjectRegistry.h>
+#import <CyberKit/_WKUserContentWorld.h>
+#import <CyberKit/_WKUserStyleSheet.h>
 #import <wtf/RetainPtr.h>
 
 TEST(ContentWorld, NormalWorld)
@@ -74,7 +74,7 @@ TEST(ContentWorld, NormalWorldUserScript)
     }];
 
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(ContentWorld, IsolatedWorld)
@@ -110,7 +110,7 @@ TEST(ContentWorld, IsolatedWorldUserScript)
     }];
 
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 static bool didObserveNormalWorld;
@@ -179,8 +179,8 @@ TEST(UserContentWorld, IsolatedWorldPlugIn)
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"testscheme:///mainresource"]]];
 
-    TestWebKitAPI::Util::run(&didObserveNormalWorld);
-    TestWebKitAPI::Util::run(&didObserveWorldWithName);
-    TestWebKitAPI::Util::run(&didObserveMainFrame);
-    TestWebKitAPI::Util::run(&didObserveSubframe);
+    TestCyberKitAPI::Util::run(&didObserveNormalWorld);
+    TestCyberKitAPI::Util::run(&didObserveWorldWithName);
+    TestCyberKitAPI::Util::run(&didObserveMainFrame);
+    TestCyberKitAPI::Util::run(&didObserveSubframe);
 }

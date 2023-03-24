@@ -886,7 +886,7 @@ function assertNodesEqual(actual, expected, msg) {
 /**
  * Given a DOMException, return the name (e.g., "HIERARCHY_REQUEST_ERR").  In
  * theory this should be just e.name, but in practice it's not.  So I could
- * legitimately just return e.name, but then every engine but WebKit would fail
+ * legitimately just return e.name, but then every engine but CyberKit would fail
  * every test, since no one seems to care much for standardizing DOMExceptions.
  * Instead I mangle it to account for browser bugs, so as not to fail
  * insertNode() tests (for instance) for insertBefore() bugs.  Of course, a
@@ -924,7 +924,7 @@ function getDomExceptionName(e) {
  */
 function rangeFromEndpoints(endpoints) {
     // If we just use document instead of the ownerDocument of endpoints[0],
-    // WebKit will throw on setStart/setEnd.  This is a WebKit bug, but it's in
+    // CyberKit will throw on setStart/setEnd.  This is a CyberKit bug, but it's in
     // range, not selection, so we don't want to fail anything for it.
     var range = ownerDocument(endpoints[0]).createRange();
     range.setStart(endpoints[0], endpoints[1]);

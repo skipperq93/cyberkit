@@ -29,8 +29,8 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <pal/spi/mac/MediaRemoteSPI.h>
 #import <wtf/Function.h>
 #import <wtf/HashMap.h>
@@ -73,7 +73,7 @@ static RetainPtr<MRNowPlayingClientRef> getNowPlayingClient()
             nowPlayingClient = player;
         gotNowPlaying = true;
     });
-    TestWebKitAPI::Util::run(&gotNowPlaying);
+    TestCyberKitAPI::Util::run(&gotNowPlaying);
     return nowPlayingClient;
 }
 
@@ -117,14 +117,14 @@ public:
     {
         bool complete = false;
         [_webView evaluateJavaScript:script completionHandler:[&] (id, NSError *) { complete = true; }];
-        TestWebKitAPI::Util::run(&complete);
+        TestCyberKitAPI::Util::run(&complete);
     }
 
     void runScriptWithoutUserGesture(NSString *script)
     {
         bool complete = false;
         [_webView _evaluateJavaScriptWithoutUserGesture:script completionHandler:[&] (id, NSError *) { complete = true; }];
-        TestWebKitAPI::Util::run(&complete);
+        TestCyberKitAPI::Util::run(&complete);
     }
 
     void executeAndWaitForPlaying(Function<void()>&& callback)
@@ -132,7 +132,7 @@ public:
         bool isPlaying = false;
         [_webView performAfterReceivingMessage:@"playing" action:[&] { isPlaying = true; }];
         callback();
-        TestWebKitAPI::Util::run(&isPlaying);
+        TestCyberKitAPI::Util::run(&isPlaying);
     }
 
     void executeAndWaitForWebViewToBecomeNowPlaying(Function<void()>&& callback)
@@ -146,7 +146,7 @@ public:
             return true;
         });
         callback();
-        TestWebKitAPI::Util::run(&becameNowPlaying);
+        TestCyberKitAPI::Util::run(&becameNowPlaying);
     }
 
 private:

@@ -1,12 +1,12 @@
-set(TESTWEBKITAPI_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/TestWebKitAPI")
+set(TESTWEBKITAPI_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/TestCyberKitAPI")
 
-add_custom_target(TestWebKitAPI-forwarding-headers
+add_custom_target(TestCyberKitAPI-forwarding-headers
     COMMAND ${PERL_EXECUTABLE} ${WEBKIT_DIR}/Scripts/generate-forwarding-headers.pl --include-path ${TESTWEBKITAPI_DIR} --output ${FORWARDING_HEADERS_DIR} --platform wpe --platform soup
     DEPENDS webkitwpe-forwarding-headers
 )
 
-list(APPEND TestWebKit_DEPENDENCIES TestWebKitAPI-forwarding-headers)
-add_dependencies(TestWebKitAPIInjectedBundle TestWebKitAPI-forwarding-headers)
+list(APPEND TestCyberKit_DEPENDENCIES TestCyberKitAPI-forwarding-headers)
+add_dependencies(TestCyberKitAPIInjectedBundle TestCyberKitAPI-forwarding-headers)
 
 set(test_main_SOURCES generic/main.cpp)
 
@@ -24,22 +24,22 @@ list(APPEND TestWTF_SYSTEM_INCLUDE_DIRECTORIES
     ${GLIB_INCLUDE_DIRS}
 )
 
-# TestJavaScriptCore
-list(APPEND TestJavaScriptCore_SYSTEM_INCLUDE_DIRECTORIES
+# TestCyberScriptCore
+list(APPEND TestCyberScriptCore_SYSTEM_INCLUDE_DIRECTORIES
     ${GLIB_INCLUDE_DIRS}
 )
 
-# TestWebCore
-list(APPEND TestWebCore_SOURCES
+# TestCyberCore
+list(APPEND TestCyberCore_SOURCES
     ${test_main_SOURCES}
 
-    Tests/WebCore/UserAgentQuirks.cpp
-    Tests/WebCore/gstreamer/GStreamerTest.cpp
-    Tests/WebCore/gstreamer/GstElementHarness.cpp
-    Tests/WebCore/gstreamer/GstMappedBuffer.cpp
+    Tests/CyberCore/UserAgentQuirks.cpp
+    Tests/CyberCore/gstreamer/GStreamerTest.cpp
+    Tests/CyberCore/gstreamer/GstElementHarness.cpp
+    Tests/CyberCore/gstreamer/GstMappedBuffer.cpp
 )
 
-list(APPEND TestWebCore_SYSTEM_INCLUDE_DIRECTORIES
+list(APPEND TestCyberCore_SYSTEM_INCLUDE_DIRECTORIES
     ${GLIB_INCLUDE_DIRS}
     ${GSTREAMER_INCLUDE_DIRS}
     ${GSTREAMER_AUDIO_INCLUDE_DIRS}
@@ -48,41 +48,41 @@ list(APPEND TestWebCore_SYSTEM_INCLUDE_DIRECTORIES
     ${LIBSOUP_INCLUDE_DIRS}
 )
 
-# TestWebKit
-list(APPEND TestWebKit_SOURCES
+# TestCyberKit
+list(APPEND TestCyberKit_SOURCES
     ${test_main_SOURCES}
 
     wpe/PlatformUtilitiesWPE.cpp
     wpe/PlatformWebViewWPE.cpp
 )
 
-list(APPEND TestWebKit_PRIVATE_INCLUDE_DIRECTORIES
+list(APPEND TestCyberKit_PRIVATE_INCLUDE_DIRECTORIES
     ${CMAKE_SOURCE_DIR}/Source
     ${FORWARDING_HEADERS_DIR}
     ${WPEBACKEND_FDO_INCLUDE_DIRS}
 )
 
-list(APPEND TestWebKit_SYSTEM_INCLUDE_DIRECTORIES
+list(APPEND TestCyberKit_SYSTEM_INCLUDE_DIRECTORIES
     ${GIO_UNIX_INCLUDE_DIRS}
     ${GLIB_INCLUDE_DIRS}
 )
 
-list(APPEND TestWebKit_LIBRARIES
+list(APPEND TestCyberKit_LIBRARIES
     ${WPEBACKEND_FDO_LIBRARIES}
-    WebKit::WPEToolingBackends
+    CyberKit::WPEToolingBackends
 )
 
-# TestWebKitAPIBase
-target_include_directories(TestWebKitAPIBase PRIVATE
+# TestCyberKitAPIBase
+target_include_directories(TestCyberKitAPIBase PRIVATE
     ${CMAKE_SOURCE_DIR}/Source
     ${FORWARDING_HEADERS_DIR}
 )
 
-# TestWebKitAPIInjectedBundle
-target_sources(TestWebKitAPIInjectedBundle PRIVATE
+# TestCyberKitAPIInjectedBundle
+target_sources(TestCyberKitAPIInjectedBundle PRIVATE
     wpe/PlatformUtilitiesWPE.cpp
 )
-target_include_directories(TestWebKitAPIInjectedBundle PRIVATE
+target_include_directories(TestCyberKitAPIInjectedBundle PRIVATE
     ${CMAKE_SOURCE_DIR}/Source
     ${FORWARDING_HEADERS_DIR}
     ${GLIB_INCLUDE_DIRS}
@@ -90,7 +90,7 @@ target_include_directories(TestWebKitAPIInjectedBundle PRIVATE
 
 # TestJSC
 set(TestJSC_SOURCES
-    Tests/JavaScriptCore/glib/TestJSC.cpp
+    Tests/CyberScriptCore/glib/TestJSC.cpp
 )
 
 set(TestJSC_SYSTEM_INCLUDE_DIRECTORIES
@@ -100,7 +100,7 @@ set(TestJSC_SYSTEM_INCLUDE_DIRECTORIES
 set(TestJSC_PRIVATE_INCLUDE_DIRECTORIES
     ${CMAKE_BINARY_DIR}
     ${TESTWEBKITAPI_DIR}
-    "${JavaScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc"
+    "${CyberScriptCoreGLib_DERIVED_SOURCES_DIR}/jsc"
 )
 
 set(TestJSC_LIBRARIES
@@ -109,7 +109,7 @@ set(TestJSC_LIBRARIES
 )
 
 set(TestJSC_FRAMEWORKS
-    JavaScriptCore
+    CyberScriptCore
     WTF
 )
 

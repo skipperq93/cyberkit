@@ -24,20 +24,20 @@
  */
 
 #import "config.h"
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #if WK_HAVE_C_SPI
 
-#import <WebKit/WKMutableDictionary.h>
+#import <CyberKit/WKMutableDictionary.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, WKNSDictionaryEmptyDictionaryCrash)
+TEST(CyberKit, WKNSDictionaryEmptyDictionaryCrash)
 {
     NSDictionary *dictionary = (NSDictionary *)WKMutableDictionaryCreate();
     RELEASE_ASSERT([dictionary objectForKey:@"key"] == nil);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

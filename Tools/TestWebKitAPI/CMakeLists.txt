@@ -1,5 +1,5 @@
-set(TESTWEBKITAPI_DIR "${TOOLS_DIR}/TestWebKitAPI")
-set(TestWebKitAPI_DISABLED_WARNINGS
+set(TESTWEBKITAPI_DIR "${TOOLS_DIR}/TestCyberKitAPI")
+set(TestCyberKitAPI_DISABLED_WARNINGS
     -Wno-dangling-else
     -Wno-sign-compare
     -Wno-undef
@@ -15,7 +15,7 @@ macro(WEBKIT_TEST _target)
     )
 
     if (COMPILER_IS_GCC_OR_CLANG)
-        WEBKIT_ADD_TARGET_CXX_FLAGS(${_target} ${TestWebKitAPI_DISABLED_WARNINGS})
+        WEBKIT_ADD_TARGET_CXX_FLAGS(${_target} ${TestCyberKitAPI_DISABLED_WARNINGS})
     endif ()
 endmacro()
 
@@ -133,7 +133,7 @@ set(TestWTF_PRIVATE_INCLUDE_DIRECTORIES
 )
 
 set(TestWTF_LIBRARIES
-    WebKit::gtest
+    CyberKit::gtest
 )
 
 set(TestWTF_FRAMEWORKS
@@ -145,255 +145,255 @@ endif ()
 
 WEBKIT_EXECUTABLE_DECLARE(TestWTF)
 
-# TestJavaScriptCore definitions
+# TestCyberScriptCore definitions
 if (ENABLE_JAVASCRIPTCORE)
-    set(TestJavaScriptCore_SOURCES
+    set(TestCyberScriptCore_SOURCES
         TestsController.cpp
 
-        Tests/JavaScriptCore/DisallowVMEntry.cpp
-        Tests/JavaScriptCore/InspectorConsoleMessage.cpp
-        Tests/JavaScriptCore/PropertySlot.cpp
+        Tests/CyberScriptCore/DisallowVMEntry.cpp
+        Tests/CyberScriptCore/InspectorConsoleMessage.cpp
+        Tests/CyberScriptCore/PropertySlot.cpp
     )
 
-    set(TestJavaScriptCore_LIBRARIES
-        WebKit::gtest
+    set(TestCyberScriptCore_LIBRARIES
+        CyberKit::gtest
     )
-    set(TestJavaScriptCore_FRAMEWORKS
-        JavaScriptCore
+    set(TestCyberScriptCore_FRAMEWORKS
+        CyberScriptCore
         WTF
     )
     if (NOT USE_SYSTEM_MALLOC)
-        list(APPEND TestJavaScriptCore_FRAMEWORKS bmalloc)
+        list(APPEND TestCyberScriptCore_FRAMEWORKS bmalloc)
     endif ()
 
-    set(TestJavaScriptCore_PRIVATE_INCLUDE_DIRECTORIES
+    set(TestCyberScriptCore_PRIVATE_INCLUDE_DIRECTORIES
         ${CMAKE_BINARY_DIR}
         ${TESTWEBKITAPI_DIR}
     )
 
-    WEBKIT_EXECUTABLE_DECLARE(TestJavaScriptCore)
+    WEBKIT_EXECUTABLE_DECLARE(TestCyberScriptCore)
 endif ()
 
-# TestWebCore definitions
+# TestCyberCore definitions
 if (ENABLE_WEBCORE)
-    set(TestWebCore_SOURCES
+    set(TestCyberCore_SOURCES
         TestsController.cpp
         Utilities.cpp
 
-        Tests/WebCore/AffineTransform.cpp
-        Tests/WebCore/CSSParser.cpp
-        Tests/WebCore/CalculationValue.cpp
-        Tests/WebCore/ColorTests.cpp
-        Tests/WebCore/ComplexTextController.cpp
-        Tests/WebCore/ContextMenuAction.cpp
-        Tests/WebCore/FileMonitor.cpp
-        Tests/WebCore/FloatPointTests.cpp
-        Tests/WebCore/FloatRectTests.cpp
-        Tests/WebCore/FloatSizeTests.cpp
-        Tests/WebCore/GridPosition.cpp
-        Tests/WebCore/HTMLParserIdioms.cpp
-        Tests/WebCore/HTTPParsers.cpp
-        Tests/WebCore/IntPointTests.cpp
-        Tests/WebCore/IntRectTests.cpp
-        Tests/WebCore/IntSizeTests.cpp
-        Tests/WebCore/KeyedCoding.cpp
-        Tests/WebCore/LayoutUnitTests.cpp
-        Tests/WebCore/MIMETypeRegistry.cpp
-        Tests/WebCore/NowPlayingInfoTests.cpp
-        Tests/WebCore/ParsedContentRange.cpp
-        Tests/WebCore/PublicSuffix.cpp
-        Tests/WebCore/SecurityOrigin.cpp
-        Tests/WebCore/SharedBuffer.cpp
-        Tests/WebCore/SharedBufferTest.cpp
-        Tests/WebCore/TimeRanges.cpp
-        Tests/WebCore/TransformationMatrix.cpp
-        Tests/WebCore/URLParserTextEncoding.cpp
-        Tests/WebCore/WritingModeTests.cpp
+        Tests/CyberCore/AffineTransform.cpp
+        Tests/CyberCore/CSSParser.cpp
+        Tests/CyberCore/CalculationValue.cpp
+        Tests/CyberCore/ColorTests.cpp
+        Tests/CyberCore/ComplexTextController.cpp
+        Tests/CyberCore/ContextMenuAction.cpp
+        Tests/CyberCore/FileMonitor.cpp
+        Tests/CyberCore/FloatPointTests.cpp
+        Tests/CyberCore/FloatRectTests.cpp
+        Tests/CyberCore/FloatSizeTests.cpp
+        Tests/CyberCore/GridPosition.cpp
+        Tests/CyberCore/HTMLParserIdioms.cpp
+        Tests/CyberCore/HTTPParsers.cpp
+        Tests/CyberCore/IntPointTests.cpp
+        Tests/CyberCore/IntRectTests.cpp
+        Tests/CyberCore/IntSizeTests.cpp
+        Tests/CyberCore/KeyedCoding.cpp
+        Tests/CyberCore/LayoutUnitTests.cpp
+        Tests/CyberCore/MIMETypeRegistry.cpp
+        Tests/CyberCore/NowPlayingInfoTests.cpp
+        Tests/CyberCore/ParsedContentRange.cpp
+        Tests/CyberCore/PublicSuffix.cpp
+        Tests/CyberCore/SecurityOrigin.cpp
+        Tests/CyberCore/SharedBuffer.cpp
+        Tests/CyberCore/SharedBufferTest.cpp
+        Tests/CyberCore/TimeRanges.cpp
+        Tests/CyberCore/TransformationMatrix.cpp
+        Tests/CyberCore/URLParserTextEncoding.cpp
+        Tests/CyberCore/WritingModeTests.cpp
     )
 
-    set(TestWebCore_LIBRARIES
-        WebKit::gtest
+    set(TestCyberCore_LIBRARIES
+        CyberKit::gtest
     )
-    set(TestWebCore_FRAMEWORKS
-        JavaScriptCore
+    set(TestCyberCore_FRAMEWORKS
+        CyberScriptCore
         PAL
         WTF
-        WebCore
+        CyberCore
     )
     if (NOT USE_SYSTEM_MALLOC)
-        list(APPEND TestWebCore_FRAMEWORKS bmalloc)
+        list(APPEND TestCyberCore_FRAMEWORKS bmalloc)
     endif ()
 
-    set(TestWebCore_PRIVATE_INCLUDE_DIRECTORIES
+    set(TestCyberCore_PRIVATE_INCLUDE_DIRECTORIES
         ${CMAKE_BINARY_DIR}
         ${TESTWEBKITAPI_DIR}
     )
 
-    set(TestWebCore_DEFINITIONS
+    set(TestCyberCore_DEFINITIONS
       WEBKIT_SRC_DIR="${CMAKE_SOURCE_DIR}"
     )
 
-    WEBKIT_EXECUTABLE_DECLARE(TestWebCore)
-    target_compile_definitions(TestWebCore PUBLIC TestWebCore_DEFINITIONS)
+    WEBKIT_EXECUTABLE_DECLARE(TestCyberCore)
+    target_compile_definitions(TestCyberCore PUBLIC TestCyberCore_DEFINITIONS)
 endif ()
 
-# TestWebKitLegacy definitions
+# TestCyberKitLegacy definitions
 if (ENABLE_WEBKIT_LEGACY)
-    set(TestWebKitLegacy_SOURCES
+    set(TestCyberKitLegacy_SOURCES
         TestsController.cpp
     )
 
-    set(TestWebKitLegacy_LIBRARIES
-        WebKit::gtest
+    set(TestCyberKitLegacy_LIBRARIES
+        CyberKit::gtest
     )
 
-    set(TestWebKitLegacy_FRAMEWORKS
-        JavaScriptCore
+    set(TestCyberKitLegacy_FRAMEWORKS
+        CyberScriptCore
         PAL
         WTF
-        WebCore
+        CyberCore
     )
     if (NOT USE_SYSTEM_MALLOC)
-        list(APPEND TestWebKitLegacy_FRAMEWORKS bmalloc)
+        list(APPEND TestCyberKitLegacy_FRAMEWORKS bmalloc)
     endif ()
     if (NOT APPLE)
-        list(APPEND TestWebKitLegacy_FRAMEWORKS WebKitLegacy)
+        list(APPEND TestCyberKitLegacy_FRAMEWORKS CyberKitLegacy)
     endif ()
 
-    set(TestWebKitLegacy_PRIVATE_INCLUDE_DIRECTORIES
+    set(TestCyberKitLegacy_PRIVATE_INCLUDE_DIRECTORIES
         ${CMAKE_BINARY_DIR}
         ${TESTWEBKITAPI_DIR}
     )
 
-    WEBKIT_EXECUTABLE_DECLARE(TestWebKitLegacy)
+    WEBKIT_EXECUTABLE_DECLARE(TestCyberKitLegacy)
 endif ()
 
-# TestWebKit definitions
+# TestCyberKit definitions
 if (ENABLE_WEBKIT)
-    set(TestWebKit_SOURCES
+    set(TestCyberKit_SOURCES
         Utilities.cpp
 
-        Tests/WebKit/AboutBlankLoad.cpp
-        Tests/WebKit/CanHandleRequest.cpp
-        Tests/WebKit/DOMWindowExtensionBasic.cpp
-        Tests/WebKit/DOMWindowExtensionNoCache.cpp
-        Tests/WebKit/DidNotHandleKeyDown.cpp
-        Tests/WebKit/DocumentStartUserScriptAlertCrash.cpp
-        Tests/WebKit/DownloadDecideDestinationCrash.cpp
-        Tests/WebKit/EnumerateMediaDevices.cpp
-        Tests/WebKit/EvaluateJavaScript.cpp
-        Tests/WebKit/FailedLoad.cpp
-        Tests/WebKit/Find.cpp
-        Tests/WebKit/FirstMeaningfulPaintMilestone.cpp
-        Tests/WebKit/ForceRepaint.cpp
-        Tests/WebKit/FrameMIMETypeHTML.cpp
-        Tests/WebKit/FrameMIMETypePNG.cpp
-        Tests/WebKit/Geolocation.cpp
-        Tests/WebKit/GetInjectedBundleInitializationUserDataCallback.cpp
-        Tests/WebKit/HitTestResultNodeHandle.cpp
-        Tests/WebKit/InjectedBundleBasic.cpp
-        Tests/WebKit/InjectedBundleFrameHitTest.cpp
-        Tests/WebKit/InjectedBundleInitializationUserDataCallbackWins.cpp
-        Tests/WebKit/LoadAlternateHTMLStringWithNonDirectoryURL.cpp
-        Tests/WebKit/LoadCanceledNoServerRedirectCallback.cpp
-        Tests/WebKit/LoadPageOnCrash.cpp
-        Tests/WebKit/MouseMoveAfterCrash.cpp
-        Tests/WebKit/NewFirstVisuallyNonEmptyLayout.cpp
-        Tests/WebKit/NewFirstVisuallyNonEmptyLayoutFails.cpp
-        Tests/WebKit/NewFirstVisuallyNonEmptyLayoutForImages.cpp
-        Tests/WebKit/NewFirstVisuallyNonEmptyLayoutFrames.cpp
-        Tests/WebKit/PageLoadBasic.cpp
-        Tests/WebKit/PageLoadDidChangeLocationWithinPageForFrame.cpp
-        Tests/WebKit/PageLoadState.cpp
-        Tests/WebKit/ParentFrame.cpp
-        Tests/WebKit/PendingAPIRequestURL.cpp
-        Tests/WebKit/PreventEmptyUserAgent.cpp
-        Tests/WebKit/PrivateBrowsingPushStateNoHistoryCallback.cpp
-        Tests/WebKit/ProvisionalURLAfterWillSendRequestCallback.cpp
-        Tests/WebKit/ReloadPageAfterCrash.cpp
-        Tests/WebKit/ResizeWindowAfterCrash.cpp
-        Tests/WebKit/RestoreSessionStateContainingFormData.cpp
-        Tests/WebKit/TextFieldDidBeginAndEndEditing.cpp
-        Tests/WebKit/UserMedia.cpp
-        Tests/WebKit/UserMessage.cpp
-        Tests/WebKit/WKPageCopySessionStateWithFiltering.cpp
-        Tests/WebKit/WKPageGetScaleFactorNotZero.cpp
-        Tests/WebKit/WKPreferences.cpp
-        Tests/WebKit/WKRetainPtr.cpp
-        Tests/WebKit/WKString.cpp
-        Tests/WebKit/WKStringJSString.cpp
-        Tests/WebKit/WKURL.cpp
-        Tests/WebKit/WillSendSubmitEvent.cpp
+        Tests/CyberKit/AboutBlankLoad.cpp
+        Tests/CyberKit/CanHandleRequest.cpp
+        Tests/CyberKit/DOMWindowExtensionBasic.cpp
+        Tests/CyberKit/DOMWindowExtensionNoCache.cpp
+        Tests/CyberKit/DidNotHandleKeyDown.cpp
+        Tests/CyberKit/DocumentStartUserScriptAlertCrash.cpp
+        Tests/CyberKit/DownloadDecideDestinationCrash.cpp
+        Tests/CyberKit/EnumerateMediaDevices.cpp
+        Tests/CyberKit/EvaluateJavaScript.cpp
+        Tests/CyberKit/FailedLoad.cpp
+        Tests/CyberKit/Find.cpp
+        Tests/CyberKit/FirstMeaningfulPaintMilestone.cpp
+        Tests/CyberKit/ForceRepaint.cpp
+        Tests/CyberKit/FrameMIMETypeHTML.cpp
+        Tests/CyberKit/FrameMIMETypePNG.cpp
+        Tests/CyberKit/Geolocation.cpp
+        Tests/CyberKit/GetInjectedBundleInitializationUserDataCallback.cpp
+        Tests/CyberKit/HitTestResultNodeHandle.cpp
+        Tests/CyberKit/InjectedBundleBasic.cpp
+        Tests/CyberKit/InjectedBundleFrameHitTest.cpp
+        Tests/CyberKit/InjectedBundleInitializationUserDataCallbackWins.cpp
+        Tests/CyberKit/LoadAlternateHTMLStringWithNonDirectoryURL.cpp
+        Tests/CyberKit/LoadCanceledNoServerRedirectCallback.cpp
+        Tests/CyberKit/LoadPageOnCrash.cpp
+        Tests/CyberKit/MouseMoveAfterCrash.cpp
+        Tests/CyberKit/NewFirstVisuallyNonEmptyLayout.cpp
+        Tests/CyberKit/NewFirstVisuallyNonEmptyLayoutFails.cpp
+        Tests/CyberKit/NewFirstVisuallyNonEmptyLayoutForImages.cpp
+        Tests/CyberKit/NewFirstVisuallyNonEmptyLayoutFrames.cpp
+        Tests/CyberKit/PageLoadBasic.cpp
+        Tests/CyberKit/PageLoadDidChangeLocationWithinPageForFrame.cpp
+        Tests/CyberKit/PageLoadState.cpp
+        Tests/CyberKit/ParentFrame.cpp
+        Tests/CyberKit/PendingAPIRequestURL.cpp
+        Tests/CyberKit/PreventEmptyUserAgent.cpp
+        Tests/CyberKit/PrivateBrowsingPushStateNoHistoryCallback.cpp
+        Tests/CyberKit/ProvisionalURLAfterWillSendRequestCallback.cpp
+        Tests/CyberKit/ReloadPageAfterCrash.cpp
+        Tests/CyberKit/ResizeWindowAfterCrash.cpp
+        Tests/CyberKit/RestoreSessionStateContainingFormData.cpp
+        Tests/CyberKit/TextFieldDidBeginAndEndEditing.cpp
+        Tests/CyberKit/UserMedia.cpp
+        Tests/CyberKit/UserMessage.cpp
+        Tests/CyberKit/WKPageCopySessionStateWithFiltering.cpp
+        Tests/CyberKit/WKPageGetScaleFactorNotZero.cpp
+        Tests/CyberKit/WKPreferences.cpp
+        Tests/CyberKit/WKRetainPtr.cpp
+        Tests/CyberKit/WKString.cpp
+        Tests/CyberKit/WKStringJSString.cpp
+        Tests/CyberKit/WKURL.cpp
+        Tests/CyberKit/WillSendSubmitEvent.cpp
     )
 
-    set(TestWebKit_PRIVATE_INCLUDE_DIRECTORIES
+    set(TestCyberKit_PRIVATE_INCLUDE_DIRECTORIES
         ${CMAKE_BINARY_DIR}
-        ${JavaScriptCore_PRIVATE_FRAMEWORK_HEADERS_DIR}
+        ${CyberScriptCore_PRIVATE_FRAMEWORK_HEADERS_DIR}
         ${PAL_FRAMEWORK_HEADERS_DIR}
         ${TESTWEBKITAPI_DIR}
-        ${WebCore_PRIVATE_FRAMEWORK_HEADERS_DIR}
-        ${WebKit_FRAMEWORK_HEADERS_DIR}
+        ${CyberCore_PRIVATE_FRAMEWORK_HEADERS_DIR}
+        ${CyberKit_FRAMEWORK_HEADERS_DIR}
     )
 
-    set(TestWebKit_LIBRARIES
-        TestWebKitAPIBase
-        WebKit::gtest
+    set(TestCyberKit_LIBRARIES
+        TestCyberKitAPIBase
+        CyberKit::gtest
     )
-    set(TestWebKit_FRAMEWORKS
-        WebKit
-    )
-
-    set(TestWebKit_DEPENDENCIES
-        TestWebKitAPIInjectedBundle
+    set(TestCyberKit_FRAMEWORKS
+        CyberKit
     )
 
-    add_library(TestWebKitAPIBase STATIC
+    set(TestCyberKit_DEPENDENCIES
+        TestCyberKitAPIInjectedBundle
+    )
+
+    add_library(TestCyberKitAPIBase STATIC
         JavaScriptTest.cpp
         PlatformUtilities.cpp
         TestsController.cpp
     )
-    target_compile_definitions(TestWebKitAPIBase PRIVATE BUILDING_TestWebKit)
-    target_include_directories(TestWebKitAPIBase PRIVATE ${TestWebKit_PRIVATE_INCLUDE_DIRECTORIES})
-    target_link_libraries(TestWebKitAPIBase PRIVATE WebKit::WebKit WebKit::gtest)
+    target_compile_definitions(TestCyberKitAPIBase PRIVATE BUILDING_TestCyberKit)
+    target_include_directories(TestCyberKitAPIBase PRIVATE ${TestCyberKit_PRIVATE_INCLUDE_DIRECTORIES})
+    target_link_libraries(TestCyberKitAPIBase PRIVATE CyberKit::CyberKit CyberKit::gtest)
 
     if (COMPILER_IS_GCC_OR_CLANG)
-        WEBKIT_ADD_TARGET_CXX_FLAGS(TestWebKitAPIBase ${TestWebKitAPI_DISABLED_WARNINGS} -Wno-deprecated-declarations)
+        WEBKIT_ADD_TARGET_CXX_FLAGS(TestCyberKitAPIBase ${TestCyberKitAPI_DISABLED_WARNINGS} -Wno-deprecated-declarations)
     endif ()
 
-    set(TestWebKitAPIInjectedBundle_SOURCES
+    set(TestCyberKitAPIInjectedBundle_SOURCES
         InjectedBundleController.cpp
         InjectedBundleMain.cpp
         PlatformUtilities.cpp
         Utilities.cpp
 
-        Tests/WebKit/CanHandleRequest_Bundle.cpp
-        Tests/WebKit/DidAssociateFormControls_Bundle.cpp
-        Tests/WebKit/DOMWindowExtensionBasic_Bundle.cpp
-        Tests/WebKit/DOMWindowExtensionNoCache_Bundle.cpp
-        Tests/WebKit/DocumentStartUserScriptAlertCrash_Bundle.cpp
-        Tests/WebKit/GetInjectedBundleInitializationUserDataCallback_Bundle.cpp
-        Tests/WebKit/HitTestResultNodeHandle_Bundle.cpp
-        Tests/WebKit/InjectedBundleBasic_Bundle.cpp
-        Tests/WebKit/InjectedBundleFrameHitTest_Bundle.cpp
-        Tests/WebKit/InjectedBundleInitializationUserDataCallbackWins_Bundle.cpp
-        Tests/WebKit/LoadCanceledNoServerRedirectCallback_Bundle.cpp
-        Tests/WebKit/MouseMoveAfterCrash_Bundle.cpp
-        Tests/WebKit/NewFirstVisuallyNonEmptyLayoutFails_Bundle.cpp
-        Tests/WebKit/NewFirstVisuallyNonEmptyLayoutForImages_Bundle.cpp
-        Tests/WebKit/NewFirstVisuallyNonEmptyLayoutFrames_Bundle.cpp
-        Tests/WebKit/NewFirstVisuallyNonEmptyLayout_Bundle.cpp
-        Tests/WebKit/FirstMeaningfulPaintMilestone_Bundle.cpp
-        Tests/WebKit/ParentFrame_Bundle.cpp
-        Tests/WebKit/ProvisionalURLAfterWillSendRequestCallback_Bundle.cpp
-        Tests/WebKit/ResponsivenessTimerDoesntFireEarly_Bundle.cpp
-        Tests/WebKit/TextFieldDidBeginAndEndEditing_Bundle.cpp
-        Tests/WebKit/UserMessage_Bundle.cpp
-        Tests/WebKit/WillLoad_Bundle.cpp
-        Tests/WebKit/WillSendSubmitEvent_Bundle.cpp
+        Tests/CyberKit/CanHandleRequest_Bundle.cpp
+        Tests/CyberKit/DidAssociateFormControls_Bundle.cpp
+        Tests/CyberKit/DOMWindowExtensionBasic_Bundle.cpp
+        Tests/CyberKit/DOMWindowExtensionNoCache_Bundle.cpp
+        Tests/CyberKit/DocumentStartUserScriptAlertCrash_Bundle.cpp
+        Tests/CyberKit/GetInjectedBundleInitializationUserDataCallback_Bundle.cpp
+        Tests/CyberKit/HitTestResultNodeHandle_Bundle.cpp
+        Tests/CyberKit/InjectedBundleBasic_Bundle.cpp
+        Tests/CyberKit/InjectedBundleFrameHitTest_Bundle.cpp
+        Tests/CyberKit/InjectedBundleInitializationUserDataCallbackWins_Bundle.cpp
+        Tests/CyberKit/LoadCanceledNoServerRedirectCallback_Bundle.cpp
+        Tests/CyberKit/MouseMoveAfterCrash_Bundle.cpp
+        Tests/CyberKit/NewFirstVisuallyNonEmptyLayoutFails_Bundle.cpp
+        Tests/CyberKit/NewFirstVisuallyNonEmptyLayoutForImages_Bundle.cpp
+        Tests/CyberKit/NewFirstVisuallyNonEmptyLayoutFrames_Bundle.cpp
+        Tests/CyberKit/NewFirstVisuallyNonEmptyLayout_Bundle.cpp
+        Tests/CyberKit/FirstMeaningfulPaintMilestone_Bundle.cpp
+        Tests/CyberKit/ParentFrame_Bundle.cpp
+        Tests/CyberKit/ProvisionalURLAfterWillSendRequestCallback_Bundle.cpp
+        Tests/CyberKit/ResponsivenessTimerDoesntFireEarly_Bundle.cpp
+        Tests/CyberKit/TextFieldDidBeginAndEndEditing_Bundle.cpp
+        Tests/CyberKit/UserMessage_Bundle.cpp
+        Tests/CyberKit/WillLoad_Bundle.cpp
+        Tests/CyberKit/WillSendSubmitEvent_Bundle.cpp
     )
     if (APPLE)
-        list(APPEND TestWebKitAPIInjectedBundle_SOURCES
-            Tests/WebKit/DOMWindowExtensionBasic_Bundle.cpp
+        list(APPEND TestCyberKitAPIInjectedBundle_SOURCES
+            Tests/CyberKit/DOMWindowExtensionBasic_Bundle.cpp
 
             cocoa/UtilitiesCocoa.mm
 
@@ -401,17 +401,17 @@ if (ENABLE_WEBKIT)
             mac/PlatformUtilitiesMac.mm
         )
     endif ()
-    add_library(TestWebKitAPIInjectedBundle SHARED ${TestWebKitAPIInjectedBundle_SOURCES})
+    add_library(TestCyberKitAPIInjectedBundle SHARED ${TestCyberKitAPIInjectedBundle_SOURCES})
 
-    target_compile_definitions(TestWebKitAPIInjectedBundle PRIVATE BUILDING_TestWebKit)
-    target_include_directories(TestWebKitAPIInjectedBundle PRIVATE ${TestWebKit_PRIVATE_INCLUDE_DIRECTORIES})
-    target_link_libraries(TestWebKitAPIInjectedBundle PRIVATE WebKit::WebKit WebKit::gtest)
+    target_compile_definitions(TestCyberKitAPIInjectedBundle PRIVATE BUILDING_TestCyberKit)
+    target_include_directories(TestCyberKitAPIInjectedBundle PRIVATE ${TestCyberKit_PRIVATE_INCLUDE_DIRECTORIES})
+    target_link_libraries(TestCyberKitAPIInjectedBundle PRIVATE CyberKit::CyberKit CyberKit::gtest)
 
     if (COMPILER_IS_GCC_OR_CLANG)
-        WEBKIT_ADD_TARGET_CXX_FLAGS(TestWebKitAPIInjectedBundle ${TestWebKitAPI_DISABLED_WARNINGS})
+        WEBKIT_ADD_TARGET_CXX_FLAGS(TestCyberKitAPIInjectedBundle ${TestCyberKitAPI_DISABLED_WARNINGS})
     endif ()
 
-    WEBKIT_EXECUTABLE_DECLARE(TestWebKit)
+    WEBKIT_EXECUTABLE_DECLARE(TestCyberKit)
 endif ()
 
 # Include platform specific files
@@ -420,22 +420,22 @@ WEBKIT_INCLUDE_CONFIG_FILES_IF_EXISTS()
 # TestWTF target
 WEBKIT_TEST(TestWTF)
 
-# TestJavaScriptCore target
+# TestCyberScriptCore target
 if (ENABLE_JAVASCRIPTCORE)
-    WEBKIT_TEST(TestJavaScriptCore)
+    WEBKIT_TEST(TestCyberScriptCore)
 endif ()
 
-# TestWebCore target
+# TestCyberCore target
 if (ENABLE_WEBCORE)
-    WEBKIT_TEST(TestWebCore)
+    WEBKIT_TEST(TestCyberCore)
 endif ()
 
-# TestWebKitLegacy target
+# TestCyberKitLegacy target
 if (ENABLE_WEBKIT_LEGACY)
-    WEBKIT_TEST(TestWebKitLegacy)
+    WEBKIT_TEST(TestCyberKitLegacy)
 endif ()
 
-# TestWebKit target
+# TestCyberKit target
 if (ENABLE_WEBKIT)
-    WEBKIT_TEST(TestWebKit)
+    WEBKIT_TEST(TestCyberKit)
 endif ()

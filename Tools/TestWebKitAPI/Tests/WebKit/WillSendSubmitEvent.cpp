@@ -31,7 +31,7 @@
 #include "PlatformWebView.h"
 #include "Test.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didReceiveMessage;
 
@@ -77,7 +77,7 @@ static void setInjectedBundleClient(WKContextRef context)
     WKContextSetInjectedBundleClient(context, &injectedBundleClient.base);
 }
 
-TEST(WebKit, WillSendSubmitEvent)
+TEST(CyberKit, WillSendSubmitEvent)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("WillSendSubmitEventTest"));
     setInjectedBundleClient(context.get());
@@ -87,6 +87,6 @@ TEST(WebKit, WillSendSubmitEvent)
     Util::run(&didReceiveMessage);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

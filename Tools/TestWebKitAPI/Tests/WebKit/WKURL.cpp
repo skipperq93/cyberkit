@@ -25,9 +25,9 @@
 
 #include "config.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit2, WKURL)
+TEST(CyberKit2, WKURL)
 {        
     WKURLRef baseURL = WKURLCreateWithUTF8CString("http://trac.webkit.org");
     WKURLRef URL = WKURLCreateWithBaseURL(baseURL, "wiki");
@@ -40,4 +40,4 @@ TEST(WebKit2, WKURL)
     WKRelease(URL);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

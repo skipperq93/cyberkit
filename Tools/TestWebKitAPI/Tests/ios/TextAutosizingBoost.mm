@@ -28,8 +28,8 @@
 #import "InstanceMethodSwizzler.h"
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKPreferencesRef.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKPreferencesRef.h>
 
 #if PLATFORM(IOS_FAMILY)
 

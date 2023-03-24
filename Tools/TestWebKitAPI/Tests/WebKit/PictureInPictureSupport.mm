@@ -29,12 +29,12 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebCore/PictureInPictureSupport.h>
+#import <CyberCore/PictureInPictureSupport.h>
 
-TEST(WebKit, PictureInPictureSupport)
+TEST(CyberKit, PictureInPictureSupport)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
-    WKRetainPtr<WKContextRef> context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+    WKRetainPtr<WKContextRef> context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
     configuration.get().processPool = (WKProcessPool *)context.get();
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 300, 300) configuration:configuration.get() addToWindow:YES]);
 
@@ -42,7 +42,7 @@ TEST(WebKit, PictureInPictureSupport)
         return [webView stringByEvaluatingJavaScript:@"window.internals.supportsPictureInPicture()"].boolValue;
     };
 
-    ASSERT_TRUE(supportsPictureInPicture() == WebCore::supportsPictureInPicture());
+    ASSERT_TRUE(supportsPictureInPicture() == CyberCore::supportsPictureInPicture());
 }
 
 #endif // WK_HAVE_C_SPI

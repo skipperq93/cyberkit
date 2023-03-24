@@ -8,7 +8,7 @@ set(MiniBrowser_SOURCES
     Common2.cpp
     MainWindow.cpp
     MiniBrowserLib.rc
-    WebKitBrowserWindow.cpp
+    CyberKitBrowserWindow.cpp
     WinMain.cpp
     stdafx.cpp
 )
@@ -20,18 +20,18 @@ set(MiniBrowser_PRIVATE_LIBRARIES
     user32
 )
 set(MiniBrowser_FRAMEWORKS
-    JavaScriptCore
+    CyberScriptCore
     PAL
     WTF
-    WebCore
-    WebKit
+    CyberCore
+    CyberKit
 )
 
 add_library(MiniBrowserInjectedBundle SHARED
     Common2.cpp
     InjectedBundle.cpp
 )
-target_link_libraries(MiniBrowserInjectedBundle WebKit::WebKit)
+target_link_libraries(MiniBrowserInjectedBundle CyberKit::CyberKit)
 target_include_directories(MiniBrowserInjectedBundle PRIVATE ${CMAKE_BINARY_DIR})
 
 WEBKIT_EXECUTABLE_DECLARE(MiniBrowser)

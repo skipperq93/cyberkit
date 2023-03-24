@@ -28,13 +28,13 @@
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
 #import "Test.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKUserContentControllerPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
-#import <WebKit/_WKUserStyleSheet.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/CyberKit.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/_WKUserStyleSheet.h>
 #import <wtf/RetainPtr.h>
 
 @interface IDBDeleteRecoveryMessageHandler : NSObject <WKScriptMessageHandler>
@@ -59,11 +59,11 @@ TEST(IndexedDB, DeleteRecovery)
     [configuration.get().websiteDataStore _terminateNetworkProcess];
 
     // Copy the inconsistent database files to the database directory
-    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"IDBDeleteRecovery" withExtension:@"sqlite3" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"IDBDeleteRecovery" withExtension:@"sqlite3-shm" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *url3 = [[NSBundle mainBundle] URLForResource:@"IDBDeleteRecovery" withExtension:@"sqlite3-wal" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"IDBDeleteRecovery" withExtension:@"sqlite3" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"IDBDeleteRecovery" withExtension:@"sqlite3-shm" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *url3 = [[NSBundle mainBundle] URLForResource:@"IDBDeleteRecovery" withExtension:@"sqlite3-wal" subdirectory:@"TestCyberKitAPI.resources"];
 
-    NSURL *targetURL = [NSURL fileURLWithPath:[@"~/Library/WebKit/com.apple.WebKit.TestWebKitAPI/WebsiteData/IndexedDB/file__0/IDBDeleteRecovery" stringByExpandingTildeInPath]];
+    NSURL *targetURL = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/IndexedDB/file__0/IDBDeleteRecovery" stringByExpandingTildeInPath]];
     [[NSFileManager defaultManager] createDirectoryAtURL:targetURL withIntermediateDirectories:YES attributes:nil error:nil];
 
     [[NSFileManager defaultManager] copyItemAtURL:url1 toURL:[targetURL URLByAppendingPathComponent:@"IndexedDB.sqlite3"] error:nil];
@@ -72,10 +72,10 @@ TEST(IndexedDB, DeleteRecovery)
 
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IDBDeleteRecovery" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IDBDeleteRecovery" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
 
     EXPECT_WK_STREQ(@"Deleted database", [lastScriptMessage body]);
 }

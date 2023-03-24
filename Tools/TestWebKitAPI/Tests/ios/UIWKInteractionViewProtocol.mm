@@ -32,9 +32,9 @@
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
 #import "UserInterfaceSwizzler.h"
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/RetainPtr.h>
 
 @interface TestWKWebView (UIWKInteractionViewTesting)
@@ -52,7 +52,7 @@
     [self.textInputContentView selectTextWithGranularity:granularity atPoint:point completionHandler:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 - (void)updateSelectionWithExtentPoint:(CGPoint)point
@@ -61,7 +61,7 @@
     [self.textInputContentView updateSelectionWithExtentPoint:point completionHandler:^(BOOL) {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 - (void)updateSelectionWithExtentPoint:(CGPoint)point withBoundary:(UITextGranularity)granularity
@@ -70,7 +70,7 @@
     [self.textInputContentView updateSelectionWithExtentPoint:point withBoundary:granularity completionHandler:^(BOOL) {
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 - (void)selectPositionAtPoint:(CGPoint)point
@@ -79,7 +79,7 @@
     [self.textInputContentView selectPositionAtPoint:point completionHandler:^{
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 @end
@@ -110,7 +110,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(UIWKInteractionViewProtocol, SelectTextWithCharacterGranularity)
 {
@@ -177,13 +177,13 @@ TEST(UIWKInteractionViewProtocol, SelectPositionAtPointInFocusedElementStartsInp
     // 1. Focus element
     [webView synchronouslyLoadHTMLString:@"<body style='margin: 0; padding: 0'><div contenteditable='true' style='height: 200px; width: 200px'></div></body>"];
     [webView stringByEvaluatingJavaScript:@"document.querySelector('div').focus()"];
-    TestWebKitAPI::Util::run(&didCallDecidePolicyForFocusedElement);
+    TestCyberKitAPI::Util::run(&didCallDecidePolicyForFocusedElement);
 
     // 2. Focus the element again via selecting a position at a point inside it.
     didCallDecidePolicyForFocusedElement = false;
     [webView becomeFirstResponder];
     [webView selectPositionAtPoint:CGPointMake(8, 8)];
-    TestWebKitAPI::Util::run(&didCallDecidePolicyForFocusedElement);
+    TestCyberKitAPI::Util::run(&didCallDecidePolicyForFocusedElement);
 }
 
 TEST(UIWKInteractionViewProtocol, SelectPositionAtPointInElementInNonFocusedFrame)
@@ -203,7 +203,7 @@ TEST(UIWKInteractionViewProtocol, SelectPositionAtPointInElementInNonFocusedFram
 
     [webView becomeFirstResponder];
     [webView selectPositionAtPoint:CGPointMake(0, 0)];
-    TestWebKitAPI::Util::run(&didStartInputSession);
+    TestCyberKitAPI::Util::run(&didStartInputSession);
     EXPECT_WK_STREQ("DIV", [webView stringByEvaluatingJavaScript:@"document.querySelector('iframe').contentDocument.activeElement.tagName"]);
 }
 
@@ -220,7 +220,7 @@ static std::pair<RetainPtr<TestWKWebView>, RetainPtr<TestInputDelegate>> setUpEd
     }];
 
     [webView synchronouslyLoadTestPageNamed:@"editable-responsive-body"];
-    TestWebKitAPI::Util::run(&didStartInputSession);
+    TestCyberKitAPI::Util::run(&didStartInputSession);
     return { WTFMove(webView), WTFMove(inputDelegate) };
 }
 
@@ -271,6 +271,6 @@ TEST(UIWKInteractionViewProtocol, SuppressSelectionChangesDuringDictation)
     EXPECT_EQ(1U, [observer changeCount]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

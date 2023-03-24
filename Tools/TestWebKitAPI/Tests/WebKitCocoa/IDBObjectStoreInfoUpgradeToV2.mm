@@ -28,14 +28,14 @@
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
 #import "Test.h"
-#import <WebCore/SQLiteFileSystem.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKUserContentControllerPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
-#import <WebKit/_WKUserStyleSheet.h>
+#import <CyberCore/SQLiteFileSystem.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/CyberKit.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/_WKUserStyleSheet.h>
 #import <wtf/RetainPtr.h>
 
 @interface IDBObjectStoreInfoUpgradeToV2MessageHandler : NSObject <WKScriptMessageHandler>
@@ -59,10 +59,10 @@ TEST(IndexedDB, IDBObjectStoreInfoUpgradeToV2)
     [configuration.get().websiteDataStore _terminateNetworkProcess];
 
     // Copy database files with old ObjectStoreInfo schema to the database directory.
-    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"IDBObjectStoreInfoUpgrade" withExtension:@"sqlite3" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"IDBObjectStoreInfoUpgrade" withExtension:@"sqlite3" subdirectory:@"TestCyberKitAPI.resources"];
 
-    NSString *hash = WebCore::SQLiteFileSystem::computeHashForFileName("objectstoreinfo-upgrade-test"_s);
-    NSString *originDirectory = @"~/Library/WebKit/com.apple.WebKit.TestWebKitAPI/WebsiteData/IndexedDB/v1/file__0/";
+    NSString *hash = CyberCore::SQLiteFileSystem::computeHashForFileName("objectstoreinfo-upgrade-test"_s);
+    NSString *originDirectory = @"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/IndexedDB/v1/file__0/";
     NSString *databaseDirectory = [[originDirectory stringByAppendingString:hash] stringByExpandingTildeInPath];
     NSURL *targetURL = [NSURL fileURLWithPath:databaseDirectory];
     [[NSFileManager defaultManager] removeItemAtURL:targetURL error:nil];
@@ -72,10 +72,10 @@ TEST(IndexedDB, IDBObjectStoreInfoUpgradeToV2)
 
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IDBObjectStoreInfoUpgradeToV2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IDBObjectStoreInfoUpgradeToV2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
 
     EXPECT_WK_STREQ(@"Success", [lastScriptMessage body]);
 }

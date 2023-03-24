@@ -34,7 +34,7 @@
 #include <wtf/glib/SocketConnection.h>
 typedef struct _GSubprocess GSubprocess;
 #elif USE(INSPECTOR_SOCKET_SERVER)
-#include <JavaScriptCore/RemoteInspectorConnectionClient.h>
+#include <CyberScriptCore/RemoteInspectorConnectionClient.h>
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 #endif

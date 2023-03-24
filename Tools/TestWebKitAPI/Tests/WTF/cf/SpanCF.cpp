@@ -26,7 +26,7 @@
 #include "config.h"
 #include <wtf/cf/SpanCF.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTFSpanCF, Empty)
 {

@@ -30,10 +30,10 @@
 #include "InjectedBundleTest.h"
 
 #include "PlatformUtilities.h"
-#include <WebKit/WKBundle.h>
-#include <WebKit/WKBundlePage.h>
+#include <CyberKit/WKBundle.h>
+#include <CyberKit/WKBundlePage.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class DidAssociateFormControlsTest : public InjectedBundleTest {
 public:
@@ -78,6 +78,6 @@ void DidAssociateFormControlsTest::didCreatePage(WKBundleRef bundle, WKBundlePag
     WKBundlePageSetFormClient(page, &formClient.base);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

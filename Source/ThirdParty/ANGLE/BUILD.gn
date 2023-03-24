@@ -284,8 +284,8 @@ config("extra_warnings") {
       "-Wsuggest-destructor-override",
       "-Wsuggest-override",
 
-      # The below warnings are used by WebKit. We enable them to make rolling
-      # ANGLE in WebKit easier.
+      # The below warnings are used by CyberKit. We enable them to make rolling
+      # ANGLE in CyberKit easier.
       "-Wparentheses",
       "-Wrange-loop-analysis",
       "-Wstrict-prototypes",

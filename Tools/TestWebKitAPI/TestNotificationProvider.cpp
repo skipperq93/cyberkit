@@ -26,18 +26,18 @@
 #include "config.h"
 #include "TestNotificationProvider.h"
 
-#include <WebKit/WKArray.h>
-#include <WebKit/WKContext.h>
-#include <WebKit/WKMutableDictionary.h>
-#include <WebKit/WKNotification.h>
-#include <WebKit/WKNotificationManager.h>
-#include <WebKit/WKNumber.h>
-#include <WebKit/WKPage.h>
-#include <WebKit/WKSecurityOriginRef.h>
-#include <WebKit/WKString.h>
+#include <CyberKit/WKArray.h>
+#include <CyberKit/WKContext.h>
+#include <CyberKit/WKMutableDictionary.h>
+#include <CyberKit/WKNotification.h>
+#include <CyberKit/WKNotificationManager.h>
+#include <CyberKit/WKNumber.h>
+#include <CyberKit/WKPage.h>
+#include <CyberKit/WKSecurityOriginRef.h>
+#include <CyberKit/WKString.h>
 #include <wtf/text/WTFString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void showWebNotification(WKPageRef page, WKNotificationRef notification, const void* clientInfo)
 {
@@ -59,12 +59,12 @@ TestNotificationProvider::TestNotificationProvider(Vector<WKNotificationManagerR
 {
     m_provider = {
         WKNotificationProviderBase { 0, this },
-        &TestWebKitAPI::showWebNotification,
-        &TestWebKitAPI::closeWebNotification,
+        &TestCyberKitAPI::showWebNotification,
+        &TestCyberKitAPI::closeWebNotification,
         0, // didDestroyNotification
         0, // addNotificationManager
         0, // removeNotificationManager
-        &TestWebKitAPI::notificationPermissions,
+        &TestCyberKitAPI::notificationPermissions,
         0, // clearNotifications
     };
 
@@ -179,4 +179,4 @@ bool TestNotificationProvider::simulateNotificationClose()
     return true;
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

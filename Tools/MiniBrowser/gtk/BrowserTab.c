@@ -41,7 +41,7 @@ enum {
 struct _BrowserTab {
     GtkBox parent;
 
-    WebKitWebView *webView;
+    CyberKitWebView *webView;
     GtkWidget *searchBar;
     GtkWidget *statusLabel;
     gboolean wasSearchingWhenEnteredFullscreen;
@@ -68,11 +68,11 @@ struct _BrowserTabClass {
 G_DEFINE_TYPE(BrowserTab, browser_tab, GTK_TYPE_BOX)
 
 typedef struct {
-    WebKitPermissionRequest *request;
+    CyberKitPermissionRequest *request;
     gchar *origin;
 } PermissionRequestData;
 
-static PermissionRequestData *permissionRequestDataNew(WebKitPermissionRequest *request, gchar *origin)
+static PermissionRequestData *permissionRequestDataNew(CyberKitPermissionRequest *request, gchar *origin)
 {
     PermissionRequestData *data = g_malloc0(sizeof(PermissionRequestData));
 
@@ -89,23 +89,23 @@ static void permissionRequestDataFree(PermissionRequestData *data)
     g_free(data);
 }
 
-static gchar *getWebViewOrigin(WebKitWebView *webView)
+static gchar *getWebViewOrigin(CyberKitWebView *webView)
 {
-    WebKitSecurityOrigin *origin = webkit_security_origin_new_for_uri(webkit_web_view_get_uri(webView));
+    CyberKitSecurityOrigin *origin = webkit_security_origin_new_for_uri(webkit_web_view_get_uri(webView));
     gchar *originStr = webkit_security_origin_to_string(origin);
     webkit_security_origin_unref(origin);
 
     return originStr;
 }
 
-static void titleChanged(WebKitWebView *webView, GParamSpec *pspec, BrowserTab *tab)
+static void titleChanged(CyberKitWebView *webView, GParamSpec *pspec, BrowserTab *tab)
 {
     const char *title = webkit_web_view_get_title(webView);
     if (title && *title)
         gtk_label_set_text(GTK_LABEL(tab->titleLabel), title);
 }
 
-static void isLoadingChanged(WebKitWebView *webView, GParamSpec *paramSpec, BrowserTab *tab)
+static void isLoadingChanged(CyberKitWebView *webView, GParamSpec *paramSpec, BrowserTab *tab)
 {
     if (webkit_web_view_is_loading(webView)) {
         gtk_spinner_start(GTK_SPINNER(tab->titleSpinner));
@@ -116,12 +116,12 @@ static void isLoadingChanged(WebKitWebView *webView, GParamSpec *paramSpec, Brow
     }
 }
 
-static gboolean decidePolicy(WebKitWebView *webView, WebKitPolicyDecision *decision, WebKitPolicyDecisionType decisionType, BrowserTab *tab)
+static gboolean decidePolicy(CyberKitWebView *webView, CyberKitPolicyDecision *decision, CyberKitPolicyDecisionType decisionType, BrowserTab *tab)
 {
     if (decisionType != WEBKIT_POLICY_DECISION_TYPE_RESPONSE)
         return FALSE;
 
-    WebKitResponsePolicyDecision *responseDecision = WEBKIT_RESPONSE_POLICY_DECISION(decision);
+    CyberKitResponsePolicyDecision *responseDecision = WEBKIT_RESPONSE_POLICY_DECISION(decision);
     if (webkit_response_policy_decision_is_mime_type_supported(responseDecision))
         return FALSE;
 
@@ -140,7 +140,7 @@ static void removeChildIfInfoBar(GtkWidget *child, GtkContainer *tab)
 }
 #endif
 
-static void loadChanged(WebKitWebView *webView, WebKitLoadEvent loadEvent, BrowserTab *tab)
+static void loadChanged(CyberKitWebView *webView, CyberKitLoadEvent loadEvent, BrowserTab *tab)
 {
     if (loadEvent != WEBKIT_LOAD_STARTED)
         return;
@@ -238,7 +238,7 @@ static void tlsErrorsDialogResponse(GtkWidget *dialog, gint response, BrowserTab
 #endif
 }
 
-static gboolean loadFailedWithTLSerrors(WebKitWebView *webView, const char *failingURI, GTlsCertificate *certificate, GTlsCertificateFlags errors, BrowserTab *tab)
+static gboolean loadFailedWithTLSerrors(CyberKitWebView *webView, const char *failingURI, GTlsCertificate *certificate, GTlsCertificateFlags errors, BrowserTab *tab)
 {
     gchar *text = g_strdup_printf("Failed to load %s: Do you want to continue ignoring the TLS errors?", failingURI);
     GtkWidget *dialog = createInfoBarQuestionMessage("Invalid TLS Certificate", text);
@@ -295,7 +295,7 @@ static void permissionRequestDialogResponse(GtkWidget *dialog, gint response, Pe
     g_clear_pointer(&requestData, permissionRequestDataFree);
 }
 
-static gboolean decidePermissionRequest(WebKitWebView *webView, WebKitPermissionRequest *request, BrowserTab *tab)
+static gboolean decidePermissionRequest(CyberKitWebView *webView, CyberKitPermissionRequest *request, BrowserTab *tab)
 {
     const gchar *title = NULL;
     gchar *text = NULL;
@@ -343,11 +343,11 @@ static gboolean decidePermissionRequest(WebKitWebView *webView, WebKitPermission
         gtk_widget_show(tab->pointerLockMessageLabel);
 
         tab->pointerLockMessageLabelId = g_timeout_add_seconds(2, (GSourceFunc)pointerLockMessageTimeoutCallback, tab);
-        g_source_set_name_by_id(tab->pointerLockMessageLabelId, "[WebKit]pointerLockMessageTimeoutCallback");
+        g_source_set_name_by_id(tab->pointerLockMessageLabelId, "[CyberKit]pointerLockMessageTimeoutCallback");
         return TRUE;
     } else if (WEBKIT_IS_WEBSITE_DATA_ACCESS_PERMISSION_REQUEST(request)) {
         title = "WebsiteData access request";
-        WebKitWebsiteDataAccessPermissionRequest *websiteDataAccessRequest = WEBKIT_WEBSITE_DATA_ACCESS_PERMISSION_REQUEST(request);
+        CyberKitWebsiteDataAccessPermissionRequest *websiteDataAccessRequest = WEBKIT_WEBSITE_DATA_ACCESS_PERMISSION_REQUEST(request);
         const gchar *requestingDomain = webkit_website_data_access_permission_request_get_requesting_domain(websiteDataAccessRequest);
         const gchar *currentDomain = webkit_website_data_access_permission_request_get_current_domain(websiteDataAccessRequest);
         text = g_strdup_printf("Do you want to allow \"%s\" to use cookies while browsing \"%s\"? This will allow \"%s\" to track your activity",
@@ -383,19 +383,19 @@ static gboolean decidePermissionRequest(WebKitWebView *webView, WebKitPermission
     return TRUE;
 }
 
-static void colorChooserRGBAChanged(GtkColorChooser *colorChooser, GParamSpec *paramSpec, WebKitColorChooserRequest *request)
+static void colorChooserRGBAChanged(GtkColorChooser *colorChooser, GParamSpec *paramSpec, CyberKitColorChooserRequest *request)
 {
     GdkRGBA rgba;
     gtk_color_chooser_get_rgba(colorChooser, &rgba);
     webkit_color_chooser_request_set_rgba(request, &rgba);
 }
 
-static void popoverColorClosed(GtkWidget *popover, WebKitColorChooserRequest *request)
+static void popoverColorClosed(GtkWidget *popover, CyberKitColorChooserRequest *request)
 {
     webkit_color_chooser_request_finish(request);
 }
 
-static void colorChooserRequestFinished(WebKitColorChooserRequest *request, GtkWidget *popover)
+static void colorChooserRequestFinished(CyberKitColorChooserRequest *request, GtkWidget *popover)
 {
     g_object_unref(request);
 #if GTK_CHECK_VERSION(3, 98, 5)
@@ -405,7 +405,7 @@ static void colorChooserRequestFinished(WebKitColorChooserRequest *request, GtkW
 #endif
 }
 
-static gboolean runColorChooserCallback(WebKitWebView *webView, WebKitColorChooserRequest *request, BrowserTab *tab)
+static gboolean runColorChooserCallback(CyberKitWebView *webView, CyberKitColorChooserRequest *request, BrowserTab *tab)
 {
 #if GTK_CHECK_VERSION(3, 98, 5)
     GtkWidget *popover = gtk_popover_new();
@@ -438,13 +438,13 @@ static gboolean runColorChooserCallback(WebKitWebView *webView, WebKitColorChoos
     return TRUE;
 }
 
-static void webProcessTerminatedCallback(WebKitWebView *webView, WebKitWebProcessTerminationReason reason)
+static void webProcessTerminatedCallback(CyberKitWebView *webView, CyberKitWebProcessTerminationReason reason)
 {
     if (reason == WEBKIT_WEB_PROCESS_CRASHED)
         g_warning("WebProcess CRASHED");
 }
 
-static void certificateDialogResponse(GtkDialog *dialog, int response, WebKitAuthenticationRequest *request)
+static void certificateDialogResponse(GtkDialog *dialog, int response, CyberKitAuthenticationRequest *request)
 {
     if (response == GTK_RESPONSE_ACCEPT) {
         GFile *file = gtk_file_chooser_get_file(GTK_FILE_CHOOSER(dialog));
@@ -453,7 +453,7 @@ static void certificateDialogResponse(GtkDialog *dialog, int response, WebKitAut
             GError *error = NULL;
             GTlsCertificate *certificate = g_tls_certificate_new_from_file(path, &error);
             if (certificate) {
-                WebKitCredential *credential = webkit_credential_new_for_certificate(certificate, WEBKIT_CREDENTIAL_PERSISTENCE_FOR_SESSION);
+                CyberKitCredential *credential = webkit_credential_new_for_certificate(certificate, WEBKIT_CREDENTIAL_PERSISTENCE_FOR_SESSION);
                 webkit_authentication_request_authenticate(request, credential);
                 webkit_credential_free(credential);
                 g_object_unref(certificate);
@@ -476,7 +476,7 @@ static void certificateDialogResponse(GtkDialog *dialog, int response, WebKitAut
 #endif
 }
 
-static gboolean webViewAuthenticate(WebKitWebView *webView, WebKitAuthenticationRequest *request, BrowserTab *tab)
+static gboolean webViewAuthenticate(CyberKitWebView *webView, CyberKitAuthenticationRequest *request, BrowserTab *tab)
 {
     if (webkit_authentication_request_get_scheme(request) != WEBKIT_AUTHENTICATION_SCHEME_CLIENT_CERTIFICATE_REQUESTED)
         return FALSE;
@@ -499,13 +499,13 @@ static gboolean webViewAuthenticate(WebKitWebView *webView, WebKitAuthentication
     return TRUE;
 }
 
-static gboolean inspectorOpenedInWindow(WebKitWebInspector *inspector, BrowserTab *tab)
+static gboolean inspectorOpenedInWindow(CyberKitWebInspector *inspector, BrowserTab *tab)
 {
     tab->inspectorIsVisible = TRUE;
     return FALSE;
 }
 
-static gboolean inspectorClosed(WebKitWebInspector *inspector, BrowserTab *tab)
+static gboolean inspectorClosed(CyberKitWebInspector *inspector, BrowserTab *tab)
 {
     tab->inspectorIsVisible = FALSE;
     return FALSE;
@@ -519,7 +519,7 @@ static void audioClicked(GtkButton *button, gpointer userData)
     webkit_web_view_set_is_muted(tab->webView, !muted);
 }
 
-static void audioMutedChanged(WebKitWebView *webView, GParamSpec *pspec, gpointer userData)
+static void audioMutedChanged(CyberKitWebView *webView, GParamSpec *pspec, gpointer userData)
 {
     BrowserTab *tab = BROWSER_TAB(userData);
     gboolean muted = webkit_web_view_get_is_muted(tab->webView);
@@ -714,7 +714,7 @@ static void browserTabConstructed(GObject *gObject)
     g_object_bind_property(tab->webView, "is-playing-audio", tab->titleAudioButton, "visible", G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
     g_signal_connect(tab->webView, "notify::is-muted", G_CALLBACK(audioMutedChanged), tab);
 
-    WebKitWebInspector *inspector = webkit_web_view_get_inspector(tab->webView);
+    CyberKitWebInspector *inspector = webkit_web_view_get_inspector(tab->webView);
     g_signal_connect(inspector, "open-window", G_CALLBACK(inspectorOpenedInWindow), tab);
     g_signal_connect(inspector, "closed", G_CALLBACK(inspectorClosed), tab);
 
@@ -750,7 +750,7 @@ static char *getInternalURI(const char *uri)
     if (g_str_equal(uri, "about:gpu"))
         return g_strdup("webkit://gpu");
 
-    /* Internally we use minibrowser-about: as about: prefix is ignored by WebKit. */
+    /* Internally we use minibrowser-about: as about: prefix is ignored by CyberKit. */
     if (g_str_has_prefix(uri, "about:") && !g_str_equal(uri, "about:blank"))
         return g_strconcat(BROWSER_ABOUT_SCHEME, uri + strlen ("about"), NULL);
 
@@ -758,14 +758,14 @@ static char *getInternalURI(const char *uri)
 }
 
 /* Public API. */
-GtkWidget *browser_tab_new(WebKitWebView *view)
+GtkWidget *browser_tab_new(CyberKitWebView *view)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_VIEW(view), NULL);
 
     return GTK_WIDGET(g_object_new(BROWSER_TYPE_TAB, "view", view, NULL));
 }
 
-WebKitWebView *browser_tab_get_web_view(BrowserTab *tab)
+CyberKitWebView *browser_tab_get_web_view(BrowserTab *tab)
 {
     g_return_val_if_fail(BROWSER_IS_TAB(tab), NULL);
 
@@ -806,7 +806,7 @@ void browser_tab_toggle_inspector(BrowserTab *tab)
 {
     g_return_if_fail(BROWSER_IS_TAB(tab));
 
-    WebKitWebInspector *inspector = webkit_web_view_get_inspector(tab->webView);
+    CyberKitWebInspector *inspector = webkit_web_view_get_inspector(tab->webView);
     if (!tab->inspectorIsVisible) {
         webkit_web_inspector_show(inspector);
         tab->inspectorIsVisible = TRUE;
@@ -860,7 +860,7 @@ void browser_tab_enter_fullscreen(BrowserTab *tab)
     gtk_widget_show(tab->fullScreenMessageLabel);
 
     tab->fullScreenMessageLabelId = g_timeout_add_seconds(2, (GSourceFunc)fullScreenMessageTimeoutCallback, tab);
-    g_source_set_name_by_id(tab->fullScreenMessageLabelId, "[WebKit] fullScreenMessageTimeoutCallback");
+    g_source_set_name_by_id(tab->fullScreenMessageLabelId, "[CyberKit] fullScreenMessageTimeoutCallback");
 
     tab->wasSearchingWhenEnteredFullscreen = browserTabIsSearchBarOpen(tab);
     browser_tab_stop_search(tab);

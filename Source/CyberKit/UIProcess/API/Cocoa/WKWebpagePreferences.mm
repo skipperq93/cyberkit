@@ -1,0 +1,692 @@
+/*
+ * Copyright (C) 2019 Apple Inc. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS''
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+ * THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+#import "config.h"
+#import <CyberKit/WKWebpagePreferences.h>
+
+#import "APICustomHeaderFields.h"
+#import "LockdownModeObserver.h"
+#import "WKUserContentControllerInternal.h"
+#import "WKWebpagePreferencesInternal.h"
+#import "WKWebsiteDataStoreInternal.h"
+#import "WebContentMode.h"
+#import "WebProcessPool.h"
+#import "_WKCustomHeaderFieldsInternal.h"
+#import <CyberCore/DocumentLoader.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
+#import <wtf/RetainPtr.h>
+
+#if PLATFORM(IOS_FAMILY)
+#import <wtf/cocoa/Entitlements.h>
+#endif
+
+namespace CyberKit {
+
+#if PLATFORM(IOS_FAMILY)
+
+WKContentMode contentMode(CyberKit::WebContentMode contentMode)
+{
+    switch (contentMode) {
+    case CyberKit::WebContentMode::Recommended:
+        return WKContentModeRecommended;
+    case CyberKit::WebContentMode::Mobile:
+        return WKContentModeMobile;
+    case CyberKit::WebContentMode::Desktop:
+        return WKContentModeDesktop;
+    }
+    ASSERT_NOT_REACHED();
+    return WKContentModeRecommended;
+}
+
+CyberKit::WebContentMode webContentMode(WKContentMode contentMode)
+{
+    switch (contentMode) {
+    case WKContentModeRecommended:
+        return CyberKit::WebContentMode::Recommended;
+    case WKContentModeMobile:
+        return CyberKit::WebContentMode::Mobile;
+    case WKContentModeDesktop:
+        return CyberKit::WebContentMode::Desktop;
+    }
+    ASSERT_NOT_REACHED();
+    return CyberKit::WebContentMode::Recommended;
+}
+
+#endif // PLATFORM(IOS_FAMILY)
+
+static _WKWebsiteMouseEventPolicy mouseEventPolicy(CyberCore::MouseEventPolicy policy)
+{
+    switch (policy) {
+    case CyberCore::MouseEventPolicy::Default:
+        return _WKWebsiteMouseEventPolicyDefault;
+#if ENABLE(IOS_TOUCH_EVENTS)
+    case CyberCore::MouseEventPolicy::SynthesizeTouchEvents:
+        return _WKWebsiteMouseEventPolicySynthesizeTouchEvents;
+#endif
+    }
+    ASSERT_NOT_REACHED();
+    return _WKWebsiteMouseEventPolicyDefault;
+}
+
+static CyberCore::MouseEventPolicy coreMouseEventPolicy(_WKWebsiteMouseEventPolicy policy)
+{
+    switch (policy) {
+    case _WKWebsiteMouseEventPolicyDefault:
+        return CyberCore::MouseEventPolicy::Default;
+#if ENABLE(IOS_TOUCH_EVENTS)
+    case _WKWebsiteMouseEventPolicySynthesizeTouchEvents:
+        return CyberCore::MouseEventPolicy::SynthesizeTouchEvents;
+#endif
+    }
+    ASSERT_NOT_REACHED();
+    return CyberCore::MouseEventPolicy::Default;
+}
+
+static _WKWebsiteModalContainerObservationPolicy modalContainerObservationPolicy(CyberCore::ModalContainerObservationPolicy policy)
+{
+    switch (policy) {
+    case CyberCore::ModalContainerObservationPolicy::Disabled:
+        return _WKWebsiteModalContainerObservationPolicyDisabled;
+    case CyberCore::ModalContainerObservationPolicy::Prompt:
+        return _WKWebsiteModalContainerObservationPolicyPrompt;
+    }
+    ASSERT_NOT_REACHED();
+    return _WKWebsiteModalContainerObservationPolicyDisabled;
+}
+
+static CyberCore::ModalContainerObservationPolicy coreModalContainerObservationPolicy(_WKWebsiteModalContainerObservationPolicy policy)
+{
+    switch (policy) {
+    case _WKWebsiteModalContainerObservationPolicyDisabled:
+        return CyberCore::ModalContainerObservationPolicy::Disabled;
+    case _WKWebsiteModalContainerObservationPolicyPrompt:
+        return CyberCore::ModalContainerObservationPolicy::Prompt;
+    }
+    ASSERT_NOT_REACHED();
+    return CyberCore::ModalContainerObservationPolicy::Disabled;
+}
+
+class WebPagePreferencesLockdownModeObserver final : public LockdownModeObserver {
+    WTF_MAKE_FAST_ALLOCATED;
+public:
+    WebPagePreferencesLockdownModeObserver(id object)
+        : m_object(object)
+    {
+        addLockdownModeObserver(*this);
+    }
+
+    ~WebPagePreferencesLockdownModeObserver()
+    {
+        removeLockdownModeObserver(*this);
+    }
+
+private:
+    void willChangeLockdownMode() final
+    {
+        if (auto object = m_object.get()) {
+            [object willChangeValueForKey:@"_captivePortalModeEnabled"];
+            [object willChangeValueForKey:@"lockdownModeEnabled"];
+        }
+    }
+
+    void didChangeLockdownMode() final
+    {
+        if (auto object = m_object.get()) {
+            [object didChangeValueForKey:@"_captivePortalModeEnabled"];
+            [object didChangeValueForKey:@"lockdownModeEnabled"];
+        }
+    }
+
+    WeakObjCPtr<id> m_object;
+};
+
+} // namespace CyberKit
+
+@implementation WKWebpagePreferences
+
++ (instancetype)defaultPreferences
+{
+    return adoptNS([[self alloc] init]).autorelease();
+}
+
+- (void)dealloc
+{
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKWebpagePreferences.class, self))
+        return;
+
+    _websitePolicies->API::WebsitePolicies::~WebsitePolicies();
+
+    [super dealloc];
+}
+
+- (instancetype)init
+{
+    if (!(self = [super init]))
+        return nil;
+
+    API::Object::constructInWrapper<API::WebsitePolicies>(self);
+    _lockdownModeObserver = makeUnique<CyberKit::WebPagePreferencesLockdownModeObserver>(self);
+
+    return self;
+}
+
+- (void)_setContentBlockersEnabled:(BOOL)contentBlockersEnabled
+{
+    auto defaultEnablement = contentBlockersEnabled ? CyberCore::ContentExtensionDefaultEnablement::Enabled : CyberCore::ContentExtensionDefaultEnablement::Disabled;
+    _websitePolicies->setContentExtensionEnablement({ defaultEnablement, { } });
+}
+
+- (BOOL)_contentBlockersEnabled
+{
+    // Note that this only reports default state, and ignores exceptions. This should be turned into a no-op and
+    // eventually removed, once no more internal clients rely on it.
+    return _websitePolicies->contentExtensionEnablement().first == CyberCore::ContentExtensionDefaultEnablement::Enabled;
+}
+
+- (void)_setContentRuleListsEnabled:(BOOL)enabled exceptions:(NSSet<NSString *> *)identifiers
+{
+    HashSet<String> exceptions;
+    exceptions.reserveInitialCapacity(identifiers.count);
+    for (NSString *identifier in identifiers)
+        exceptions.add(identifier);
+
+    auto defaultEnablement = enabled ? CyberCore::ContentExtensionDefaultEnablement::Enabled : CyberCore::ContentExtensionDefaultEnablement::Disabled;
+    _websitePolicies->setContentExtensionEnablement({ defaultEnablement, WTFMove(exceptions) });
+}
+
+- (void)_setActiveContentRuleListActionPatterns:(NSDictionary<NSString *, NSSet<NSString *> *> *)patterns
+{
+    __block HashMap<String, Vector<String>> map;
+    [patterns enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSSet<NSString *> *value, BOOL *) {
+        Vector<String> vector;
+        vector.reserveInitialCapacity(value.count);
+        for (NSString *pattern in value)
+            vector.uncheckedAppend(pattern);
+        map.add(key, WTFMove(vector));
+    }];
+    _websitePolicies->setActiveContentRuleListActionPatterns(WTFMove(map));
+}
+
+- (NSDictionary<NSString *, NSSet<NSString *> *> *)_activeContentRuleListActionPatterns
+{
+    NSMutableDictionary<NSString *, NSSet<NSString *> *> *dictionary = [NSMutableDictionary dictionary];
+    for (const auto& pair : _websitePolicies->activeContentRuleListActionPatterns()) {
+        NSMutableSet<NSString *> *set = [NSMutableSet set];
+        for (const auto& pattern : pair.value)
+            [set addObject:pattern];
+        [dictionary setObject:set forKey:pair.key];
+    }
+    return dictionary;
+}
+
+- (void)_setAllowedAutoplayQuirks:(_WKWebsiteAutoplayQuirk)allowedQuirks
+{
+    OptionSet<CyberKit::WebsiteAutoplayQuirk> quirks;
+
+    if (allowedQuirks & _WKWebsiteAutoplayQuirkInheritedUserGestures)
+        quirks.add(CyberKit::WebsiteAutoplayQuirk::InheritedUserGestures);
+
+    if (allowedQuirks & _WKWebsiteAutoplayQuirkSynthesizedPauseEvents)
+        quirks.add(CyberKit::WebsiteAutoplayQuirk::SynthesizedPauseEvents);
+
+    if (allowedQuirks & _WKWebsiteAutoplayQuirkArbitraryUserGestures)
+        quirks.add(CyberKit::WebsiteAutoplayQuirk::ArbitraryUserGestures);
+
+    if (allowedQuirks & _WKWebsiteAutoplayQuirkPerDocumentAutoplayBehavior)
+        quirks.add(CyberKit::WebsiteAutoplayQuirk::PerDocumentAutoplayBehavior);
+
+    _websitePolicies->setAllowedAutoplayQuirks(quirks);
+}
+
+- (_WKWebsiteAutoplayQuirk)_allowedAutoplayQuirks
+{
+    _WKWebsiteAutoplayQuirk quirks = 0;
+    auto allowedQuirks = _websitePolicies->allowedAutoplayQuirks();
+
+    if (allowedQuirks.contains(CyberKit::WebsiteAutoplayQuirk::InheritedUserGestures))
+        quirks |= _WKWebsiteAutoplayQuirkInheritedUserGestures;
+
+    if (allowedQuirks.contains(CyberKit::WebsiteAutoplayQuirk::SynthesizedPauseEvents))
+        quirks |= _WKWebsiteAutoplayQuirkSynthesizedPauseEvents;
+
+    if (allowedQuirks.contains(CyberKit::WebsiteAutoplayQuirk::ArbitraryUserGestures))
+        quirks |= _WKWebsiteAutoplayQuirkArbitraryUserGestures;
+
+    if (allowedQuirks.contains(CyberKit::WebsiteAutoplayQuirk::PerDocumentAutoplayBehavior))
+        quirks |= _WKWebsiteAutoplayQuirkPerDocumentAutoplayBehavior;
+
+    return quirks;
+}
+
+- (void)_setAutoplayPolicy:(_WKWebsiteAutoplayPolicy)policy
+{
+    switch (policy) {
+    case _WKWebsiteAutoplayPolicyDefault:
+        _websitePolicies->setAutoplayPolicy(CyberKit::WebsiteAutoplayPolicy::Default);
+        break;
+    case _WKWebsiteAutoplayPolicyAllow:
+        _websitePolicies->setAutoplayPolicy(CyberKit::WebsiteAutoplayPolicy::Allow);
+        break;
+    case _WKWebsiteAutoplayPolicyAllowWithoutSound:
+        _websitePolicies->setAutoplayPolicy(CyberKit::WebsiteAutoplayPolicy::AllowWithoutSound);
+        break;
+    case _WKWebsiteAutoplayPolicyDeny:
+        _websitePolicies->setAutoplayPolicy(CyberKit::WebsiteAutoplayPolicy::Deny);
+        break;
+    }
+}
+
+- (_WKWebsiteAutoplayPolicy)_autoplayPolicy
+{
+    switch (_websitePolicies->autoplayPolicy()) {
+    case CyberKit::WebsiteAutoplayPolicy::Default:
+        return _WKWebsiteAutoplayPolicyDefault;
+    case CyberKit::WebsiteAutoplayPolicy::Allow:
+        return _WKWebsiteAutoplayPolicyAllow;
+    case CyberKit::WebsiteAutoplayPolicy::AllowWithoutSound:
+        return _WKWebsiteAutoplayPolicyAllowWithoutSound;
+    case CyberKit::WebsiteAutoplayPolicy::Deny:
+        return _WKWebsiteAutoplayPolicyDeny;
+    }
+}
+
+#if ENABLE(DEVICE_ORIENTATION)
+static CyberCore::DeviceOrientationOrMotionPermissionState toDeviceOrientationOrMotionPermissionState(_WKWebsiteDeviceOrientationAndMotionAccessPolicy policy)
+{
+    switch (policy) {
+    case _WKWebsiteDeviceOrientationAndMotionAccessPolicyAsk:
+        return CyberCore::DeviceOrientationOrMotionPermissionState::Prompt;
+    case _WKWebsiteDeviceOrientationAndMotionAccessPolicyGrant:
+        return CyberCore::DeviceOrientationOrMotionPermissionState::Granted;
+    case _WKWebsiteDeviceOrientationAndMotionAccessPolicyDeny:
+        break;
+    }
+    return CyberCore::DeviceOrientationOrMotionPermissionState::Denied;
+}
+#endif
+
+- (void)_setDeviceOrientationAndMotionAccessPolicy:(_WKWebsiteDeviceOrientationAndMotionAccessPolicy)policy
+{
+#if ENABLE(DEVICE_ORIENTATION)
+    _websitePolicies->setDeviceOrientationAndMotionAccessState(toDeviceOrientationOrMotionPermissionState(policy));
+#endif
+}
+
+#if ENABLE(DEVICE_ORIENTATION)
+static _WKWebsiteDeviceOrientationAndMotionAccessPolicy toWKWebsiteDeviceOrientationAndMotionAccessPolicy(CyberCore::DeviceOrientationOrMotionPermissionState state)
+{
+    switch (state) {
+    case CyberCore::DeviceOrientationOrMotionPermissionState::Prompt:
+        return _WKWebsiteDeviceOrientationAndMotionAccessPolicyAsk;
+    case CyberCore::DeviceOrientationOrMotionPermissionState::Granted:
+        return _WKWebsiteDeviceOrientationAndMotionAccessPolicyGrant;
+    case CyberCore::DeviceOrientationOrMotionPermissionState::Denied:
+        break;
+    }
+    return _WKWebsiteDeviceOrientationAndMotionAccessPolicyDeny;
+}
+#endif
+
+- (_WKWebsiteDeviceOrientationAndMotionAccessPolicy)_deviceOrientationAndMotionAccessPolicy
+{
+#if ENABLE(DEVICE_ORIENTATION)
+    return toWKWebsiteDeviceOrientationAndMotionAccessPolicy(_websitePolicies->deviceOrientationAndMotionAccessState());
+#else
+    return _WKWebsiteDeviceOrientationAndMotionAccessPolicyDeny;
+#endif
+}
+
+- (void)_setPopUpPolicy:(_WKWebsitePopUpPolicy)policy
+{
+    switch (policy) {
+    case _WKWebsitePopUpPolicyDefault:
+        _websitePolicies->setPopUpPolicy(CyberKit::WebsitePopUpPolicy::Default);
+        break;
+    case _WKWebsitePopUpPolicyAllow:
+        _websitePolicies->setPopUpPolicy(CyberKit::WebsitePopUpPolicy::Allow);
+        break;
+    case _WKWebsitePopUpPolicyBlock:
+        _websitePolicies->setPopUpPolicy(CyberKit::WebsitePopUpPolicy::Block);
+        break;
+    }
+}
+
+- (_WKWebsitePopUpPolicy)_popUpPolicy
+{
+    switch (_websitePolicies->popUpPolicy()) {
+    case CyberKit::WebsitePopUpPolicy::Default:
+        return _WKWebsitePopUpPolicyDefault;
+    case CyberKit::WebsitePopUpPolicy::Allow:
+        return _WKWebsitePopUpPolicyAllow;
+    case CyberKit::WebsitePopUpPolicy::Block:
+        return _WKWebsitePopUpPolicyBlock;
+    }
+}
+
+- (NSArray<_WKCustomHeaderFields *> *)_customHeaderFields
+{
+    return createNSArray(_websitePolicies->customHeaderFields(), [] (auto& field) {
+        return wrapper(API::CustomHeaderFields::create(field));
+    }).autorelease();
+}
+
+- (void)_setCustomHeaderFields:(NSArray<_WKCustomHeaderFields *> *)fields
+{
+    Vector<CyberCore::CustomHeaderFields> vector;
+    vector.reserveInitialCapacity(fields.count);
+    for (_WKCustomHeaderFields *element in fields)
+        vector.uncheckedAppend(static_cast<API::CustomHeaderFields&>([element _apiObject]).coreFields());
+    _websitePolicies->setCustomHeaderFields(WTFMove(vector));
+}
+
+- (WKWebsiteDataStore *)_websiteDataStore
+{
+    return wrapper(_websitePolicies->websiteDataStore());
+}
+
+- (void)_setWebsiteDataStore:(WKWebsiteDataStore *)websiteDataStore
+{
+    _websitePolicies->setWebsiteDataStore(websiteDataStore->_websiteDataStore.get());
+}
+
+- (WKUserContentController *)_userContentController
+{
+    return wrapper(_websitePolicies->userContentController());
+}
+
+- (void)_setUserContentController:(WKUserContentController *)userContentController
+{
+    _websitePolicies->setUserContentController(userContentController->_userContentControllerProxy.get());
+}
+
+- (void)_setCustomUserAgent:(NSString *)customUserAgent
+{
+    _websitePolicies->setCustomUserAgent(customUserAgent);
+}
+
+- (NSString *)_customUserAgent
+{
+    return _websitePolicies->customUserAgent();
+}
+
+- (void)_setCustomUserAgentAsSiteSpecificQuirks:(NSString *)customUserAgent
+{
+    _websitePolicies->setCustomUserAgentAsSiteSpecificQuirks(customUserAgent);
+}
+
+- (NSString *)_customUserAgentAsSiteSpecificQuirks
+{
+    return _websitePolicies->customUserAgentAsSiteSpecificQuirks();
+}
+
+- (void)_setCustomNavigatorPlatform:(NSString *)customNavigatorPlatform
+{
+    _websitePolicies->setCustomNavigatorPlatform(customNavigatorPlatform);
+}
+
+- (NSString *)_customNavigatorPlatform
+{
+    return _websitePolicies->customNavigatorPlatform();
+}
+
+- (BOOL)_allowSiteSpecificQuirksToOverrideCompatibilityMode
+{
+    return _websitePolicies->allowSiteSpecificQuirksToOverrideContentMode();
+}
+
+- (void)_setAllowSiteSpecificQuirksToOverrideCompatibilityMode:(BOOL)value
+{
+    _websitePolicies->setAllowSiteSpecificQuirksToOverrideContentMode(value);
+}
+
+- (NSString *)_applicationNameForUserAgentWithModernCompatibility
+{
+    return _websitePolicies->applicationNameForDesktopUserAgent();
+}
+
+- (void)_setApplicationNameForUserAgentWithModernCompatibility:(NSString *)applicationName
+{
+    _websitePolicies->setApplicationNameForDesktopUserAgent(applicationName);
+}
+
+- (API::Object&)_apiObject
+{
+    return *_websitePolicies;
+}
+
+- (void)setAllowsContentJavaScript:(BOOL)allowsContentJavaScript
+{
+    _websitePolicies->setAllowsContentJavaScript(allowsContentJavaScript ? CyberCore::AllowsContentJavaScript::Yes : CyberCore::AllowsContentJavaScript::No);
+}
+
+- (BOOL)allowsContentJavaScript
+{
+    switch (_websitePolicies->allowsContentJavaScript()) {
+    case CyberCore::AllowsContentJavaScript::Yes:
+        return YES;
+    case CyberCore::AllowsContentJavaScript::No:
+        return NO;
+    }
+}
+
+- (void)_setCaptivePortalModeEnabled:(BOOL)enabled
+{
+#if PLATFORM(IOS_FAMILY)
+    // On iOS, the web browser entitlement is required to disable Lockdown mode.
+    if (!enabled && !WTF::processHasEntitlement("com.apple.developer.web-browser"_s))
+        [NSException raise:NSInternalInconsistencyException format:@"The 'com.apple.developer.web-browser' restricted entitlement is required to disable Lockdown mode"];
+#endif
+
+    _websitePolicies->setLockdownModeEnabled(!!enabled);
+}
+
+- (BOOL)_captivePortalModeEnabled
+{
+    return _websitePolicies->lockdownModeEnabled();
+}
+
+- (void)_setAllowPrivacyProxy:(BOOL)allow
+{
+    _websitePolicies->setAllowPrivacyProxy(allow);
+}
+
+- (BOOL)_allowPrivacyProxy
+{
+    return _websitePolicies->allowPrivacyProxy();
+}
+
+- (_WKWebsiteColorSchemePreference)_colorSchemePreference
+{
+    switch (_websitePolicies->colorSchemePreference()) {
+    case CyberCore::ColorSchemePreference::NoPreference:
+        return _WKWebsiteColorSchemePreferenceNoPreference;
+    case CyberCore::ColorSchemePreference::Light:
+        return _WKWebsiteColorSchemePreferenceLight;
+    case CyberCore::ColorSchemePreference::Dark:
+        return _WKWebsiteColorSchemePreferenceDark;
+    }
+}
+
+- (void)_setColorSchemePreference:(_WKWebsiteColorSchemePreference)value
+{
+    switch (value) {
+    case _WKWebsiteColorSchemePreferenceNoPreference:
+        _websitePolicies->setColorSchemePreference(CyberCore::ColorSchemePreference::NoPreference);
+        break;
+    case _WKWebsiteColorSchemePreferenceLight:
+        _websitePolicies->setColorSchemePreference(CyberCore::ColorSchemePreference::Light);
+        break;
+    case _WKWebsiteColorSchemePreferenceDark:
+        _websitePolicies->setColorSchemePreference(CyberCore::ColorSchemePreference::Dark);
+        break;
+    }
+}
+
+#if PLATFORM(IOS_FAMILY)
+
+- (void)setPreferredContentMode:(WKContentMode)contentMode
+{
+    _websitePolicies->setPreferredContentMode(CyberKit::webContentMode(contentMode));
+}
+
+- (WKContentMode)preferredContentMode
+{
+    return CyberKit::contentMode(_websitePolicies->preferredContentMode());
+}
+
+#endif // PLATFORM(IOS_FAMILY)
+
+- (void)_setMouseEventPolicy:(_WKWebsiteMouseEventPolicy)policy
+{
+    _websitePolicies->setMouseEventPolicy(CyberKit::coreMouseEventPolicy(policy));
+}
+
+- (_WKWebsiteMouseEventPolicy)_mouseEventPolicy
+{
+    return CyberKit::mouseEventPolicy(_websitePolicies->mouseEventPolicy());
+}
+
+- (void)_setModalContainerObservationPolicy:(_WKWebsiteModalContainerObservationPolicy)policy
+{
+    _websitePolicies->setModalContainerObservationPolicy(CyberKit::coreModalContainerObservationPolicy(policy));
+}
+
+- (_WKWebsiteModalContainerObservationPolicy)_modalContainerObservationPolicy
+{
+    return CyberKit::modalContainerObservationPolicy(_websitePolicies->modalContainerObservationPolicy());
+}
+
+- (BOOL)isLockdownModeEnabled
+{
+#if ENABLE(LOCKDOWN_MODE_API)
+    return _websitePolicies->lockdownModeEnabled();
+#else
+    return NO;
+#endif
+}
+
+- (void)setLockdownModeEnabled:(BOOL)lockdownModeEnabled
+{
+#if ENABLE(LOCKDOWN_MODE_API)
+#if PLATFORM(IOS_FAMILY)
+    // On iOS, the web browser entitlement is required to disable lockdown mode.
+    if (!lockdownModeEnabled && !WTF::processHasEntitlement("com.apple.developer.web-browser"_s))
+        [NSException raise:NSInternalInconsistencyException format:@"The 'com.apple.developer.web-browser' restricted entitlement is required to disable lockdown mode"];
+#endif
+
+    _websitePolicies->setLockdownModeEnabled(!!lockdownModeEnabled);
+#endif
+}
+
+- (BOOL)_networkConnectionIntegrityEnabled
+{
+    return _websitePolicies->networkConnectionIntegrityPolicy().containsAll({
+        CyberCore::NetworkConnectionIntegrity::Enabled,
+        CyberCore::NetworkConnectionIntegrity::EnhancedTelemetry,
+        CyberCore::NetworkConnectionIntegrity::RequestValidation,
+        CyberCore::NetworkConnectionIntegrity::SanitizeLookalikeCharacters,
+    });
+}
+
+- (void)_setNetworkConnectionIntegrityEnabled:(BOOL)enabled
+{
+    auto webCorePolicy = _websitePolicies->networkConnectionIntegrityPolicy();
+    webCorePolicy.set(CyberCore::NetworkConnectionIntegrity::Enabled, enabled);
+    webCorePolicy.set(CyberCore::NetworkConnectionIntegrity::EnhancedTelemetry, enabled);
+    webCorePolicy.set(CyberCore::NetworkConnectionIntegrity::RequestValidation, enabled);
+    webCorePolicy.set(CyberCore::NetworkConnectionIntegrity::SanitizeLookalikeCharacters, enabled);
+    _websitePolicies->setNetworkConnectionIntegrityPolicy(webCorePolicy);
+}
+
+- (_WKWebsiteNetworkConnectionIntegrityPolicy)_networkConnectionIntegrityPolicy
+{
+    _WKWebsiteNetworkConnectionIntegrityPolicy policy = _WKWebsiteNetworkConnectionIntegrityPolicyNone;
+    auto webCorePolicy = _websitePolicies->networkConnectionIntegrityPolicy();
+
+    if (webCorePolicy.contains(CyberCore::NetworkConnectionIntegrity::Enabled))
+        policy |= _WKWebsiteNetworkConnectionIntegrityPolicyEnabled;
+
+    if (webCorePolicy.contains(CyberCore::NetworkConnectionIntegrity::HTTPSFirst))
+        policy |= _WKWebsiteNetworkConnectionIntegrityPolicyHTTPSFirst;
+
+    if (webCorePolicy.contains(CyberCore::NetworkConnectionIntegrity::HTTPSOnly))
+        policy |= _WKWebsiteNetworkConnectionIntegrityPolicyHTTPSOnly;
+
+    if (webCorePolicy.contains(CyberCore::NetworkConnectionIntegrity::HTTPSOnlyExplicitlyBypassedForDomain))
+        policy |= _WKWebsiteNetworkConnectionIntegrityPolicyHTTPSOnlyExplicitlyBypassedForDomain;
+
+    if (webCorePolicy.contains(CyberCore::NetworkConnectionIntegrity::FailClosed))
+        policy |= _WKWebsiteNetworkConnectionIntegrityPolicyFailClosed;
+
+    if (webCorePolicy.contains(CyberCore::NetworkConnectionIntegrity::WebSearchContent))
+        policy |= _WKWebsiteNetworkConnectionIntegrityPolicyWebSearchContent;
+
+    if (webCorePolicy.contains(CyberCore::NetworkConnectionIntegrity::EnhancedTelemetry))
+        policy |= _WKWebsiteNetworkConnectionIntegrityPolicyEnhancedTelemetry;
+
+    if (webCorePolicy.contains(CyberCore::NetworkConnectionIntegrity::RequestValidation))
+        policy |= _WKWebsiteNetworkConnectionIntegrityPolicyRequestValidation;
+
+    if (webCorePolicy.contains(CyberCore::NetworkConnectionIntegrity::SanitizeLookalikeCharacters))
+        policy |= _WKWebsiteNetworkConnectionIntegrityPolicySanitizeLookalikeCharacters;
+
+    return policy;
+}
+
+- (void)_setNetworkConnectionIntegrityPolicy:(_WKWebsiteNetworkConnectionIntegrityPolicy)networkConnectionIntegrityPolicy
+{
+    OptionSet<CyberCore::NetworkConnectionIntegrity> webCorePolicy;
+
+    if (networkConnectionIntegrityPolicy & _WKWebsiteNetworkConnectionIntegrityPolicyEnabled)
+        webCorePolicy.add(CyberCore::NetworkConnectionIntegrity::Enabled);
+
+    if (networkConnectionIntegrityPolicy & _WKWebsiteNetworkConnectionIntegrityPolicyHTTPSFirst)
+        webCorePolicy.add(CyberCore::NetworkConnectionIntegrity::HTTPSFirst);
+
+    if (networkConnectionIntegrityPolicy & _WKWebsiteNetworkConnectionIntegrityPolicyHTTPSOnly)
+        webCorePolicy.add(CyberCore::NetworkConnectionIntegrity::HTTPSOnly);
+
+    if (networkConnectionIntegrityPolicy & _WKWebsiteNetworkConnectionIntegrityPolicyHTTPSOnlyExplicitlyBypassedForDomain)
+        webCorePolicy.add(CyberCore::NetworkConnectionIntegrity::HTTPSOnlyExplicitlyBypassedForDomain);
+
+    if (networkConnectionIntegrityPolicy & _WKWebsiteNetworkConnectionIntegrityPolicyFailClosed)
+        webCorePolicy.add(CyberCore::NetworkConnectionIntegrity::FailClosed);
+
+    if (networkConnectionIntegrityPolicy & _WKWebsiteNetworkConnectionIntegrityPolicyWebSearchContent)
+        webCorePolicy.add(CyberCore::NetworkConnectionIntegrity::WebSearchContent);
+
+    if (networkConnectionIntegrityPolicy & _WKWebsiteNetworkConnectionIntegrityPolicyEnhancedTelemetry)
+        webCorePolicy.add(CyberCore::NetworkConnectionIntegrity::EnhancedTelemetry);
+
+    if (networkConnectionIntegrityPolicy & _WKWebsiteNetworkConnectionIntegrityPolicyRequestValidation)
+        webCorePolicy.add(CyberCore::NetworkConnectionIntegrity::RequestValidation);
+
+    if (networkConnectionIntegrityPolicy & _WKWebsiteNetworkConnectionIntegrityPolicySanitizeLookalikeCharacters)
+        webCorePolicy.add(CyberCore::NetworkConnectionIntegrity::SanitizeLookalikeCharacters);
+
+    _websitePolicies->setNetworkConnectionIntegrityPolicy(webCorePolicy);
+}
+
+@end

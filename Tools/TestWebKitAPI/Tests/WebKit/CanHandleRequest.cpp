@@ -29,9 +29,9 @@
 
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
-#include <WebKit/WKContextPrivate.h>
+#include <CyberKit/WKContextPrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didReceiveMessage;
 static bool canHandleRequest;
@@ -57,7 +57,7 @@ static void setInjectedBundleClient(WKContextRef context)
     WKContextSetInjectedBundleClient(context, &injectedBundleClient.base);
 }
 
-TEST(WebKit, CanHandleRequest)
+TEST(CyberKit, CanHandleRequest)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("CanHandleRequestTest"));
     setInjectedBundleClient(context.get());
@@ -73,6 +73,6 @@ TEST(WebKit, CanHandleRequest)
     EXPECT_TRUE(canHandleRequest);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

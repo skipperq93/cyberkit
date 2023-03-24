@@ -30,9 +30,9 @@
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 @interface FullscreenStateChangeMessageHandler : NSObject <WKScriptMessageHandler>
@@ -49,7 +49,7 @@
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(Fullscreen, LayoutConstraints)
 {
@@ -69,27 +69,27 @@ TEST(Fullscreen, LayoutConstraints)
     
     NSArray* originalConstraints = [[window contentView] constraints];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"FullscreenLayoutConstraints" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"FullscreenLayoutConstraints" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&receivedLoadedMessage);
+    TestCyberKitAPI::Util::run(&receivedLoadedMessage);
 
     NSEvent *event = [NSEvent mouseEventWithType:NSEventTypeLeftMouseDown location:NSMakePoint(5, 5) modifierFlags:0 timestamp:0 windowNumber:window.get().windowNumber context:0 eventNumber:0 clickCount:0 pressure:0];
     [webView mouseDown:event];
 
-    TestWebKitAPI::Util::run(&receivedFullscreenChangeMessage);
+    TestCyberKitAPI::Util::run(&receivedFullscreenChangeMessage);
 
     receivedFullscreenChangeMessage = false;
     
     NSEvent *exitFSEvent = [NSEvent mouseEventWithType:NSEventTypeLeftMouseDown location:NSMakePoint(5, 5) modifierFlags:0 timestamp:0 windowNumber:window.get().windowNumber context:0 eventNumber:0 clickCount:0 pressure:0];
     [webView mouseDown:exitFSEvent];
     
-    TestWebKitAPI::Util::run(&receivedFullscreenChangeMessage);
+    TestCyberKitAPI::Util::run(&receivedFullscreenChangeMessage);
 
     NSArray* finalConstraints = [[window contentView] constraints];
     EXPECT_EQ(originalConstraints.count, 4u);
     ASSERT_TRUE([originalConstraints isEqual:[finalConstraints subarrayWithRange:NSMakeRange(0, 4)]]);
 }
     
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -26,7 +26,7 @@
 #include "config.h"
 #include <wtf/Scope.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_Scope, ScopeExit)
 {

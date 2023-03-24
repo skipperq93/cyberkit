@@ -28,8 +28,8 @@
 #import "PlatformWebView.h"
 #import <wtf/RetainPtr.h>
 
-#import <WebKit/DOMPrivate.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/DOMPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 
 @interface HTMLTableCellElementCellAboveTest : NSObject <WebFrameLoadDelegate>
 @end
@@ -44,7 +44,7 @@ static bool didFinishLoad;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void expectCellAboveCell(DOMDocument *document, NSString *cellID, NSString *cellAboveID)
 {
@@ -54,14 +54,14 @@ static void expectCellAboveCell(DOMDocument *document, NSString *cellID, NSStrin
     EXPECT_WK_STREQ(cellAboveID, [cellAbove getAttribute:@"id"]);
 }
 
-TEST(WebKitLegacy, HTMLTableCellElementCellAbove)
+TEST(CyberKitLegacy, HTMLTableCellElementCellAbove)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<HTMLTableCellElementCellAboveTest> testController = adoptNS([HTMLTableCellElementCellAboveTest new]);
 
     webView.get().frameLoadDelegate = testController.get();
     [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle]
-        URLForResource:@"DOMHTMLTableCellElementCellAbove" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+        URLForResource:@"DOMHTMLTableCellElementCellAbove" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
     Util::run(&didFinishLoad);
     didFinishLoad = false;
@@ -74,4 +74,4 @@ TEST(WebKitLegacy, HTMLTableCellElementCellAbove)
     expectCellAboveCell(document, @"cell-1-2", @"cell-h-2");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

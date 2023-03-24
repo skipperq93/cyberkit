@@ -48,9 +48,9 @@ static bool didFinishLoad;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, InspectorBarTest)
+TEST(CyberKitLegacy, InspectorBarTest)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<InspectorBarController> inspectorBarController = adoptNS([InspectorBarController new]);
@@ -87,4 +87,4 @@ TEST(WebKitLegacy, InspectorBarTest)
     EXPECT_WK_STREQ(@"rgb(0, 0, 0)", [style color]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

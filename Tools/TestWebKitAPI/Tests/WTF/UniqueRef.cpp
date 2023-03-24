@@ -28,7 +28,7 @@
 #include <wtf/UniqueRef.h>
 #include <wtf/Vector.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 namespace UniqueRefTest {
 
@@ -92,4 +92,4 @@ TEST(WTF, UniqueRef)
     UNUSED_PARAM(j);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

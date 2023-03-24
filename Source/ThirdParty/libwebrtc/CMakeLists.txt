@@ -1914,12 +1914,12 @@ if (APPLE)
 
         Source/webrtc/rtc_base/system/cocoa_threading.mm
 
-        Source/webrtc/sdk/WebKit/WebKitUtilities.mm
-        Source/webrtc/sdk/WebKit/WebKitVP8Decoder.cpp
-        Source/webrtc/sdk/WebKit/WebKitVP9Decoder.cpp
-        Source/webrtc/sdk/WebKit/WebKitDecoder.mm
-        Source/webrtc/sdk/WebKit/WebKitEncoder.mm
-        Source/webrtc/sdk/WebKit/WebKitDecoderReceiver.cpp
+        Source/webrtc/sdk/CyberKit/CyberKitUtilities.mm
+        Source/webrtc/sdk/CyberKit/CyberKitVP8Decoder.cpp
+        Source/webrtc/sdk/CyberKit/CyberKitVP9Decoder.cpp
+        Source/webrtc/sdk/CyberKit/CyberKitDecoder.mm
+        Source/webrtc/sdk/CyberKit/CyberKitEncoder.mm
+        Source/webrtc/sdk/CyberKit/CyberKitDecoderReceiver.cpp
 
         Source/webrtc/sdk/objc/api/peerconnection/RTCVideoEncoderSettings+Private.mm
         Source/webrtc/sdk/objc/api/video_codec/RTCVideoCodecConstants.mm
@@ -2061,7 +2061,7 @@ else ()
     endif ()
 
     add_definitions(-DWEBKIT_LIBWEBRTC_OPENH264_ENCODER=${WEBKIT_LIBWEBRTC_OPENH264_ENCODER})
-    configure_file(LibWebRTCWebKitMacros.h.in LibWebRTCWebKitMacros.h @ONLY)
+    configure_file(LibWebRTCCyberKitMacros.h.in LibWebRTCCyberKitMacros.h @ONLY)
 
     list(APPEND webrtc_SOURCES
         Source/third_party/boringssl/src/crypto/cpu-aarch64-linux.c

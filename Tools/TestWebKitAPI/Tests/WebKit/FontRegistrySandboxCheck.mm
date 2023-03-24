@@ -29,20 +29,20 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 
-TEST(WebKit, FontdSandboxCheck)
+TEST(CyberKit, FontdSandboxCheck)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     configuration.get().preferences._shouldAllowUserInstalledFonts = NO;
-    auto context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+    auto context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
     configuration.get().processPool = (WKProcessPool *)context.get();
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 300, 300) configuration:configuration.get() addToWindow:YES]);
 
     auto sandboxAccess = [&] {
-        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToXPCServiceName('com.apple.WebKit.WebContent', 'com.apple.fonts')"].boolValue;
+        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToXPCServiceName('com.apple.CyberKit.WebContent', 'com.apple.fonts')"].boolValue;
     };
 
 #if HAVE(STATIC_FONT_REGISTRY)
@@ -54,13 +54,13 @@ TEST(WebKit, FontdSandboxCheck)
     ASSERT_TRUE(sandboxAccess());
 }
 
-TEST(WebKit, UserInstalledFontsWork)
+TEST(CyberKit, UserInstalledFontsWork)
 {
-    NSURL *fontURL = [[NSBundle mainBundle] URLForResource:@"Ahem" withExtension:@"ttf" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *fontURL = [[NSBundle mainBundle] URLForResource:@"Ahem" withExtension:@"ttf" subdirectory:@"TestCyberKitAPI.resources"];
     CFErrorRef error = nil;
     auto registrationSucceeded = CTFontManagerRegisterFontsForURL(static_cast<CFURLRef>(fontURL), kCTFontManagerScopeUser, &error);
 
-    auto context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+    auto context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
     WKContextSetUsesSingleWebProcess(context.get(), true);
 
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);

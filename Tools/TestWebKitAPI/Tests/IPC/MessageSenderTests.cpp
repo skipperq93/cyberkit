@@ -29,7 +29,7 @@
 #include "IPCTestUtilities.h"
 #include "Test.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class MessageSenderTest : public ConnectionTestABBA {
 };

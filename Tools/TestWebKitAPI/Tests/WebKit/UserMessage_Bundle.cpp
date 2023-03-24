@@ -31,7 +31,7 @@
 
 #include "PlatformUtilities.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class UserMessageTest : public InjectedBundleTest {
 public:
@@ -52,6 +52,6 @@ private:
 
 static InjectedBundleTest::Register<UserMessageTest> registrar("UserMessageTest");
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -37,7 +37,7 @@ OBJC_CLASS HIDDevice;
 OBJC_CLASS HIDUserDevice;
 OBJC_CLASS NSString;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 enum class HIDVendorID : uint16_t {
     Google = 0x18d1,
@@ -121,6 +121,6 @@ private:
 
     GamepadMapping m_gamepadMapping;
 };
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // USE(APPLE_INTERNAL_SDK)

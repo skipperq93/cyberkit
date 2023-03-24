@@ -30,9 +30,9 @@
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
 #import "Test.h"
-#import <WebKit/WKContextPrivate.h>
+#import <CyberKit/WKContextPrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didFinishLoad;
 static bool messageReceived;
@@ -55,7 +55,7 @@ static void didReceiveMessageFromInjectedBundle(WKContextRef context, WKStringRe
     EXPECT_WK_STREQ("rgb(0, 0, 0)", messageBodyString);
 }
 
-TEST(WebKit, ForceLightAppearanceInBundle)
+TEST(CyberKit, ForceLightAppearanceInBundle)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("ForceLightAppearanceInBundleTest"));
 
@@ -87,6 +87,6 @@ TEST(WebKit, ForceLightAppearanceInBundle)
     messageReceived = false;
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

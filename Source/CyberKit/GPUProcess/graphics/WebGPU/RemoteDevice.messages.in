@@ -1,0 +1,48 @@
+/* Copyright (C) 2021-2023 Apple Inc. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1.  Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ * 2.  Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in the
+ *     documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS BE LIABLE FOR
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+#if ENABLE(GPU_PROCESS)
+
+messages -> RemoteDevice NotRefCounted Stream {
+    void Destroy()
+    void CreateBuffer(CyberKit::WebGPU::BufferDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void CreateTexture(CyberKit::WebGPU::TextureDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void CreateSampler(CyberKit::WebGPU::SamplerDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void ImportExternalTexture(CyberKit::WebGPU::ExternalTextureDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void CreateBindGroupLayout(CyberKit::WebGPU::BindGroupLayoutDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void CreatePipelineLayout(CyberKit::WebGPU::PipelineLayoutDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void CreateBindGroup(CyberKit::WebGPU::BindGroupDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void CreateShaderModule(CyberKit::WebGPU::ShaderModuleDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void CreateComputePipeline(CyberKit::WebGPU::ComputePipelineDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void CreateRenderPipeline(CyberKit::WebGPU::RenderPipelineDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void CreateComputePipelineAsync(CyberKit::WebGPU::ComputePipelineDescriptor descriptor, CyberKit::WebGPUIdentifier identifier) -> (bool success)
+    void CreateRenderPipelineAsync(CyberKit::WebGPU::RenderPipelineDescriptor descriptor, CyberKit::WebGPUIdentifier identifier) -> (bool success)
+    void CreateCommandEncoder(std::optional<CyberKit::WebGPU::CommandEncoderDescriptor> descriptor, CyberKit::WebGPUIdentifier identifier)
+    void CreateRenderBundleEncoder(CyberKit::WebGPU::RenderBundleEncoderDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void CreateQuerySet(CyberKit::WebGPU::QuerySetDescriptor descriptor, CyberKit::WebGPUIdentifier identifier)
+    void PushErrorScope(PAL::WebGPU::ErrorFilter errorFilter)
+    void PopErrorScope() -> (std::optional<CyberKit::WebGPU::Error> error)
+    void SetLabel(String label)
+}
+
+#endif

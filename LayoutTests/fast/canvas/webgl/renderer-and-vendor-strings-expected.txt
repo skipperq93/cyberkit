@@ -2,8 +2,8 @@ Verifies the contents of the RENDERER and VENDOR strings to avoid regressions.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 
-PASS gl.getParameter(gl.RENDERER) is "WebKit WebGL"
-PASS gl.getParameter(gl.VENDOR) is "WebKit"
+PASS gl.getParameter(gl.RENDERER) is "CyberKit WebGL"
+PASS gl.getParameter(gl.VENDOR) is "CyberKit"
 PASS successfullyParsed is true
 
 TEST COMPLETE

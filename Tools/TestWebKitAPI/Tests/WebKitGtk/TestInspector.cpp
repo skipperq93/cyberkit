@@ -35,27 +35,27 @@ public:
         Detach
     };
 
-    static gboolean openWindowCallback(WebKitWebInspector*, InspectorTest* test)
+    static gboolean openWindowCallback(CyberKitWebInspector*, InspectorTest* test)
     {
         return test->openWindow();
     }
 
-    static gboolean bringToFrontCallback(WebKitWebInspector*, InspectorTest* test)
+    static gboolean bringToFrontCallback(CyberKitWebInspector*, InspectorTest* test)
     {
         return test->bringToFront();
     }
 
-    static void closedCallback(WebKitWebInspector*, InspectorTest* test)
+    static void closedCallback(CyberKitWebInspector*, InspectorTest* test)
     {
         return test->closed();
     }
 
-    static gboolean attachCallback(WebKitWebInspector*, InspectorTest* test)
+    static gboolean attachCallback(CyberKitWebInspector*, InspectorTest* test)
     {
         return test->attach();
     }
 
-    static gboolean detachCallback(WebKitWebInspector*, InspectorTest* test)
+    static gboolean detachCallback(CyberKitWebInspector*, InspectorTest* test)
     {
         return test->detach();
     }
@@ -161,7 +161,7 @@ public:
         webkit_web_inspector_close(m_inspector);
     }
 
-    WebKitWebInspector* m_inspector;
+    CyberKitWebInspector* m_inspector;
     Vector<InspectorEvents> m_events;
 };
 
@@ -169,12 +169,12 @@ static void testInspectorDefault(InspectorTest* test, gconstpointer)
 {
     test->showInWindow();
     test->resizeView(200, 200);
-    test->loadHtml("<html><body><p>WebKitGTK Inspector test</p></body></html>", 0);
+    test->loadHtml("<html><body><p>CyberKitGTK Inspector test</p></body></html>", 0);
     test->waitUntilLoadFinished();
 
     test->show();
     // We don't add the view to a container, so consume the weak ref with GRefPtr.
-    GRefPtr<WebKitWebViewBase> inspectorView = webkit_web_inspector_get_web_view(test->m_inspector);
+    GRefPtr<CyberKitWebViewBase> inspectorView = webkit_web_inspector_get_web_view(test->m_inspector);
     g_assert_nonnull(inspectorView.get());
     test->assertObjectIsDeletedWhenTestFinishes(G_OBJECT(inspectorView.get()));
     g_assert_false(webkit_web_inspector_is_attached(test->m_inspector));
@@ -238,7 +238,7 @@ public:
     bool openWindow()
     {
         g_assert_null(m_inspectorWindow);
-        WebKitWebViewBase* inspectorView = webkit_web_inspector_get_web_view(m_inspector);
+        CyberKitWebViewBase* inspectorView = webkit_web_inspector_get_web_view(m_inspector);
         g_assert_nonnull(inspectorView);
 #if USE(GTK4)
         m_inspectorWindow = gtk_window_new();
@@ -266,7 +266,7 @@ public:
 
     bool attach()
     {
-        GRefPtr<WebKitWebViewBase> inspectorView = webkit_web_inspector_get_web_view(m_inspector);
+        GRefPtr<CyberKitWebViewBase> inspectorView = webkit_web_inspector_get_web_view(m_inspector);
         if (m_inspectorWindow) {
 #if USE(GTK4)
             gtk_window_set_child(GTK_WINDOW(m_inspectorWindow), nullptr);
@@ -281,7 +281,7 @@ public:
         GtkWidget* pane;
 #if USE(GTK4)
         if (gtk_window_get_child(GTK_WINDOW(m_parentWindow)) == GTK_WIDGET(m_webView)) {
-            GRefPtr<WebKitWebView> inspectedView = m_webView;
+            GRefPtr<CyberKitWebView> inspectedView = m_webView;
             gtk_window_set_child(GTK_WINDOW(m_parentWindow), nullptr);
             pane = gtk_paned_new(GTK_ORIENTATION_VERTICAL);
             gtk_paned_set_start_child(GTK_PANED(pane), GTK_WIDGET(m_webView));
@@ -292,7 +292,7 @@ public:
         gtk_paned_set_end_child(GTK_PANED(pane), GTK_WIDGET(inspectorView.get()));
 #else
         if (gtk_bin_get_child(GTK_BIN(m_parentWindow)) == GTK_WIDGET(m_webView)) {
-            GRefPtr<WebKitWebView> inspectedView = m_webView;
+            GRefPtr<CyberKitWebView> inspectedView = m_webView;
             gtk_container_remove(GTK_CONTAINER(m_parentWindow), GTK_WIDGET(m_webView));
             pane = gtk_paned_new(GTK_ORIENTATION_VERTICAL);
             gtk_paned_add1(GTK_PANED(pane), GTK_WIDGET(m_webView));
@@ -309,7 +309,7 @@ public:
 
     bool detach()
     {
-        GRefPtr<WebKitWebViewBase> inspectorView = webkit_web_inspector_get_web_view(m_inspector);
+        GRefPtr<CyberKitWebViewBase> inspectorView = webkit_web_inspector_get_web_view(m_inspector);
 #if USE(GTK4)
         GtkWidget* pane = gtk_window_get_child(GTK_WINDOW(m_parentWindow));
         g_assert_true(GTK_IS_PANED(pane));
@@ -339,7 +339,7 @@ static void testInspectorManualAttachDetach(CustomInspectorTest* test, gconstpoi
 {
     test->showInWindow();
     test->resizeView(200, 200);
-    test->loadHtml("<html><body><p>WebKitGTK Inspector test</p></body></html>", 0);
+    test->loadHtml("<html><body><p>CyberKitGTK Inspector test</p></body></html>", 0);
     test->waitUntilLoadFinished();
 
     test->show();
@@ -381,7 +381,7 @@ static void testInspectorCustomContainerDestroyed(CustomInspectorTest* test, gco
 {
     test->showInWindow();
     test->resizeView(200, 200);
-    test->loadHtml("<html><body><p>WebKitGTK Inspector test</p></body></html>", 0);
+    test->loadHtml("<html><body><p>CyberKitGTK Inspector test</p></body></html>", 0);
     test->waitUntilLoadFinished();
 
     test->show();
@@ -398,9 +398,9 @@ static void testInspectorCustomContainerDestroyed(CustomInspectorTest* test, gco
 
 void beforeAll()
 {
-    InspectorTest::add("WebKitWebInspector", "default", testInspectorDefault);
-    CustomInspectorTest::add("WebKitWebInspector", "manual-attach-detach", testInspectorManualAttachDetach);
-    CustomInspectorTest::add("WebKitWebInspector", "custom-container-destroyed", testInspectorCustomContainerDestroyed);
+    InspectorTest::add("CyberKitWebInspector", "default", testInspectorDefault);
+    CustomInspectorTest::add("CyberKitWebInspector", "manual-attach-detach", testInspectorManualAttachDetach);
+    CustomInspectorTest::add("CyberKitWebInspector", "custom-container-destroyed", testInspectorCustomContainerDestroyed);
 }
 
 void afterAll()

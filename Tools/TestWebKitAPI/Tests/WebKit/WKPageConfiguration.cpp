@@ -30,11 +30,11 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <WebKit/WKWebsiteDataStoreRef.h>
+#include <CyberKit/WKWebsiteDataStoreRef.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, WKPageConfigurationEmpty)
+TEST(CyberKit, WKPageConfigurationEmpty)
 {
     WKRetainPtr<WKPageConfigurationRef> configuration = adoptWK(WKPageConfigurationCreate());
 
@@ -63,7 +63,7 @@ static void setPageLoaderClient(WKPageRef page)
     WKPageSetPageNavigationClient(page, &loaderClient.base);
 }
 
-TEST(WebKit, WKPageConfigurationBasic)
+TEST(CyberKit, WKPageConfigurationBasic)
 {
     WKRetainPtr<WKPageConfigurationRef> configuration = adoptWK(WKPageConfigurationCreate());
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
@@ -82,7 +82,7 @@ TEST(WebKit, WKPageConfigurationBasic)
     Util::run(&didFinishLoad);
 }
 
-TEST(WebKit, WKPageConfigurationBasicWithDataStore)
+TEST(CyberKit, WKPageConfigurationBasicWithDataStore)
 {
     WKRetainPtr<WKPageConfigurationRef> configuration = adoptWK(WKPageConfigurationCreate());
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
@@ -104,7 +104,7 @@ TEST(WebKit, WKPageConfigurationBasicWithDataStore)
     Util::run(&didFinishLoad);
 }
 
-TEST(WebKit, WKPageConfigurationBasicWithNonPersistentDataStore)
+TEST(CyberKit, WKPageConfigurationBasicWithNonPersistentDataStore)
 {
     WKRetainPtr<WKPageConfigurationRef> configuration = adoptWK(WKPageConfigurationCreate());
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
@@ -126,6 +126,6 @@ TEST(WebKit, WKPageConfigurationBasicWithNonPersistentDataStore)
     Util::run(&didFinishLoad);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

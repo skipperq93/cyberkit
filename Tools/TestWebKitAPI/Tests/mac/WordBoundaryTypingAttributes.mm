@@ -25,7 +25,7 @@
 
 #import "config.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 @interface WordBoundaryTypingAttributesController : NSObject <WebFrameLoadDelegate> {
@@ -43,9 +43,9 @@ static bool didFinishLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, WordBoundaryTypingAttributes)
+TEST(CyberKitLegacy, WordBoundaryTypingAttributes)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<WordBoundaryTypingAttributesController> controller = adoptNS([WordBoundaryTypingAttributesController new]);
@@ -67,4 +67,4 @@ TEST(WebKitLegacy, WordBoundaryTypingAttributes)
     EXPECT_TRUE([attributes[NSUnderlineStyleAttributeName] intValue] != 0);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

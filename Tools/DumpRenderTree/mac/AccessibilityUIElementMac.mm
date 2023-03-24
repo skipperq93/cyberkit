@@ -31,9 +31,9 @@
 #import "DumpRenderTree.h"
 #import "JSBasics.h"
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JSStringRefCF.h>
-#import <WebKit/WebFrame.h>
-#import <WebKit/WebHTMLView.h>
+#import <CyberScriptCore/JSStringRefCF.h>
+#import <CyberKit/WebFrame.h>
+#import <CyberKit/WebHTMLView.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Vector.h>
 #import <wtf/cocoa/VectorCocoa.h>
@@ -73,7 +73,7 @@
 
 typedef void (*AXPostedNotificationCallback)(id element, NSString* notification, void* context);
 
-@interface NSObject (WebKitAccessibilityAdditions)
+@interface NSObject (CyberKitAccessibilityAdditions)
 - (BOOL)accessibilityReplaceRange:(NSRange)range withText:(NSString *)string;
 - (BOOL)accessibilityInsertText:(NSString *)text;
 - (NSArray *)accessibilityArrayAttributeValues:(NSString *)attribute index:(NSUInteger)index maxCount:(NSUInteger)maxCount;

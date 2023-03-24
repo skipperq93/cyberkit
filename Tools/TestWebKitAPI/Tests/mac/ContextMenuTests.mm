@@ -35,12 +35,12 @@
 #import "TestUIDelegate.h"
 #import "TestWKWebView.h"
 #import "Utilities.h"
-#import <WebKit/WKMenuItemIdentifiersPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKContextMenuElementInfo.h>
-#import <WebKit/_WKHitTestResult.h>
+#import <CyberKit/WKMenuItemIdentifiersPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKContextMenuElementInfo.h>
+#import <CyberKit/_WKHitTestResult.h>
 #import <wtf/BlockPtr.h>
 
 @interface PopoverNotificationListener : NSObject
@@ -147,7 +147,7 @@ static NSMenuItem *itemMatchingFilter(NSMenu *menu, MenuItemFilter filter)
     [self.window orderFrontRegardless];
     [self mouseDownAtPoint:NSMakePoint(50, 350) simulatePressure:NO withFlags:0 eventType:NSEventTypeRightMouseDown];
     [self mouseUpAtPoint:NSMakePoint(50, 350) withFlags:0 eventType:NSEventTypeRightMouseUp];
-    TestWebKitAPI::Util::run(&selectedItem);
+    TestCyberKitAPI::Util::run(&selectedItem);
 }
 
 - (_WKContextMenuElementInfo *)rightClickAtPointAndWaitForContextMenu:(NSPoint)clickLocation
@@ -165,7 +165,7 @@ static NSMenuItem *itemMatchingFilter(NSMenu *menu, MenuItemFilter filter)
     EXPECT_NULL(self.UIDelegate);
     self.UIDelegate = uiDelegate.get();
     [self rightClickAtPoint:clickLocation];
-    TestWebKitAPI::Util::run(&gotProposedMenu);
+    TestCyberKitAPI::Util::run(&gotProposedMenu);
     [self waitForNextPresentationUpdate];
 
     self.UIDelegate = nil;
@@ -174,7 +174,7 @@ static NSMenuItem *itemMatchingFilter(NSMenu *menu, MenuItemFilter filter)
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(ContextMenuTests, ProposedMenuContainsSpellingMenu)
 {
@@ -210,7 +210,7 @@ TEST(ContextMenuTests, NavigationTypeWhenOpeningLink)
     auto navigationDelegate = adoptNS([[TestNavigationDelegate alloc] init]);
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 400, 400)]);
     [webView setNavigationDelegate:navigationDelegate.get()];
-    [webView loadHTMLString:@"<a href='simple.html' style='font-size: 100px;'>Hello world</a>" baseURL:[NSBundle.mainBundle.bundleURL URLByAppendingPathComponent:@"TestWebKitAPI.resources"]];
+    [webView loadHTMLString:@"<a href='simple.html' style='font-size: 100px;'>Hello world</a>" baseURL:[NSBundle.mainBundle.bundleURL URLByAppendingPathComponent:@"TestCyberKitAPI.resources"]];
     [navigationDelegate waitForDidFinishNavigation];
 
     __block bool didDecideNavigationPolicy = false;
@@ -274,7 +274,7 @@ TEST(ContextMenuTests, SharePopoverDoesNotClearSelection)
         return [item.title containsString:@"Share"];
     }];
 
-    TestWebKitAPI::Util::run(&didShowPopover);
+    TestCyberKitAPI::Util::run(&didShowPopover);
     EXPECT_WK_STREQ("Hello world this is a test", [webView selectedText]);
 }
 
@@ -484,6 +484,6 @@ TEST(ContextMenuTests, ContextMenuElementInfoHasEntireImage)
     EXPECT_FALSE(elementInfo.hasEntireImage);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(MAC)

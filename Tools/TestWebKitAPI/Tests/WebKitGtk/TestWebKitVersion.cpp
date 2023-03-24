@@ -28,14 +28,14 @@
 #include <webkit2/webkit2.h>
 #endif
 
-static void testWebKitVersion(Test*, gconstpointer)
+static void testCyberKitVersion(Test*, gconstpointer)
 {
     g_assert_cmpuint(webkit_get_major_version(), ==, WEBKIT_MAJOR_VERSION);
     g_assert_cmpuint(webkit_get_minor_version(), ==, WEBKIT_MINOR_VERSION);
     g_assert_cmpuint(webkit_get_micro_version(), ==, WEBKIT_MICRO_VERSION);
 }
 
-static void testWebKitCheckVersion(Test*, gconstpointer)
+static void testCyberKitCheckVersion(Test*, gconstpointer)
 {
     g_assert_true(WEBKIT_CHECK_VERSION(WEBKIT_MAJOR_VERSION, WEBKIT_MINOR_VERSION, WEBKIT_MICRO_VERSION));
     g_assert_false(WEBKIT_CHECK_VERSION(WEBKIT_MAJOR_VERSION + 1, WEBKIT_MINOR_VERSION, WEBKIT_MICRO_VERSION));
@@ -45,8 +45,8 @@ static void testWebKitCheckVersion(Test*, gconstpointer)
 
 void beforeAll()
 {
-    Test::add("WebKitVersion", "version", testWebKitVersion);
-    Test::add("WebKitVersion", "check-version", testWebKitCheckVersion);
+    Test::add("CyberKitVersion", "version", testCyberKitVersion);
+    Test::add("CyberKitVersion", "check-version", testCyberKitCheckVersion);
 }
 
 void afterAll()

@@ -36,7 +36,7 @@ TEST(YoutubeReplacementPlugin, CannotRunScript)
     [webView synchronouslyLoadHTMLString:body];
     NSString *bodyHTML = [webView stringByEvaluatingJavaScript:@"document.body.innerText"];
     EXPECT_WK_STREQ(bodyHTML, @"PASS");
-    TestWebKitAPI::Util::spinRunLoop(100);
+    TestCyberKitAPI::Util::spinRunLoop(100);
     bodyHTML = [webView stringByEvaluatingJavaScript:@"document.body.innerText"];
     EXPECT_WK_STREQ(bodyHTML, @"PASS");
 }

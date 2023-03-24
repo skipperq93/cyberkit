@@ -28,15 +28,15 @@
 #include <webkit2/webkit2.h>
 #endif
 
-static void testWebKitDOMNodeHierarchyNavigation(WebViewTest* test, gconstpointer)
+static void testCyberKitDOMNodeHierarchyNavigation(WebViewTest* test, gconstpointer)
 {
     static const char* testHTML = "<html><head><title>This is the title</title></head><body><p>1</p><p>2</p><p>3</p></body></html>";
-    g_assert_true(test->runWebProcessTest("WebKitDOMNode", "hierarchy-navigation", testHTML));
+    g_assert_true(test->runWebProcessTest("CyberKitDOMNode", "hierarchy-navigation", testHTML));
 }
 
-static void testWebKitDOMNodeInsertion(WebViewTest* test, gconstpointer)
+static void testCyberKitDOMNodeInsertion(WebViewTest* test, gconstpointer)
 {
-    g_assert_true(test->runWebProcessTest("WebKitDOMNode", "insertion"));
+    g_assert_true(test->runWebProcessTest("CyberKitDOMNode", "insertion"));
 }
 
 static const char* tagNamesTestHTML = "<html><head></head><body>"
@@ -50,30 +50,30 @@ static const char* tagNamesTestHTML = "<html><head></head><body>"
     "</video>"
     "<input type='hidden' id='test' name='finish' value='false'></body></html>";
 
-static void testWebKitDOMNodeTagNamesNodeList(WebViewTest* test, gconstpointer)
+static void testCyberKitDOMNodeTagNamesNodeList(WebViewTest* test, gconstpointer)
 {
-    g_assert_true(test->runWebProcessTest("WebKitDOMNode", "tag-names-node-list", tagNamesTestHTML));
+    g_assert_true(test->runWebProcessTest("CyberKitDOMNode", "tag-names-node-list", tagNamesTestHTML));
 }
 
-static void testWebKitDOMNodeTagNamesHTMLCollection(WebViewTest* test, gconstpointer)
+static void testCyberKitDOMNodeTagNamesHTMLCollection(WebViewTest* test, gconstpointer)
 {
-    g_assert_true(test->runWebProcessTest("WebKitDOMNode", "tag-names-html-collection", tagNamesTestHTML));
+    g_assert_true(test->runWebProcessTest("CyberKitDOMNode", "tag-names-html-collection", tagNamesTestHTML));
 }
 
-static void testWebKitDOMObjectCache(WebViewTest* test, gconstpointer)
+static void testCyberKitDOMObjectCache(WebViewTest* test, gconstpointer)
 {
     static const char* testHTML = "<html><body><div id='container'><p>DOM Cache test</p><a id='link href='#'>link</a></div></body></html>";
-    g_assert_true(test->runWebProcessTest("WebKitDOMNode", "dom-cache", testHTML));
+    g_assert_true(test->runWebProcessTest("CyberKitDOMNode", "dom-cache", testHTML));
 }
 
 
 void beforeAll()
 {
-    WebViewTest::add("WebKitDOMNode", "hierarchy-navigation", testWebKitDOMNodeHierarchyNavigation);
-    WebViewTest::add("WebKitDOMNode", "insertion", testWebKitDOMNodeInsertion);
-    WebViewTest::add("WebKitDOMNode", "tag-names-node-list", testWebKitDOMNodeTagNamesNodeList);
-    WebViewTest::add("WebKitDOMNode", "tag-names-html-collection", testWebKitDOMNodeTagNamesHTMLCollection);
-    WebViewTest::add("WebKitDOMNode", "dom-cache", testWebKitDOMObjectCache);
+    WebViewTest::add("CyberKitDOMNode", "hierarchy-navigation", testCyberKitDOMNodeHierarchyNavigation);
+    WebViewTest::add("CyberKitDOMNode", "insertion", testCyberKitDOMNodeInsertion);
+    WebViewTest::add("CyberKitDOMNode", "tag-names-node-list", testCyberKitDOMNodeTagNamesNodeList);
+    WebViewTest::add("CyberKitDOMNode", "tag-names-html-collection", testCyberKitDOMNodeTagNamesHTMLCollection);
+    WebViewTest::add("CyberKitDOMNode", "dom-cache", testCyberKitDOMObjectCache);
 }
 
 void afterAll()

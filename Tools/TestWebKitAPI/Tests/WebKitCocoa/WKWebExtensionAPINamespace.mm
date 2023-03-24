@@ -29,7 +29,7 @@
 
 #import "WebExtensionUtilities.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WKWebExtensionAPINamespace, NoWebNavigationObjectWithoutPermission)
 {
@@ -59,6 +59,6 @@ TEST(WKWebExtensionAPINamespace, WebNavigationObjectWithPermission)
     Util::loadAndRunExtension(manifest, @{ @"background.js": backgroundScript });
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

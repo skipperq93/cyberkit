@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <JavaScriptCore/JSRetainPtr.h>
-#include <JavaScriptCore/JavaScript.h>
+#include <CyberScriptCore/JSRetainPtr.h>
+#include <CyberScriptCore/JavaScript.h>
 #include <initializer_list>
 #include <optional>
 

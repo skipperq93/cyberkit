@@ -31,15 +31,15 @@
 #import "Test.h"
 #import "TestWKWebView.h"
 #import "UserMediaCaptureUIDelegate.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewConfiguration.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 
 #import <wtf/RetainPtr.h>
 #import <wtf/Seconds.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 double waitForBufferSizeChange(WKWebView* webView, double oldSize)
 {
@@ -49,17 +49,17 @@ double waitForBufferSizeChange(WKWebView* webView, double oldSize)
         if (size != oldSize)
             return size;
 
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
     } while (++tries <= 100);
 
     ASSERT_NOT_REACHED();
     return 0;
 }
 
-TEST(WebKit, AudioBufferSize)
+TEST(CyberKit, AudioBufferSize)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
-    auto context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+    auto context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
 
 #if PLATFORM(IOS)
     configuration.get().allowsInlineMediaPlayback = YES;
@@ -83,7 +83,7 @@ TEST(WebKit, AudioBufferSize)
     __block bool gotMessage = false;
     [webView performAfterReceivingMessage:@"playing" action:^{ gotMessage = true; }];
     [webView evaluateJavaScript:@"playVideo()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&gotMessage);
+    TestCyberKitAPI::Util::run(&gotMessage);
     auto bufferSizePlayingAudio = [webView stringByEvaluatingJavaScript:@"window.internals.currentAudioBufferSize()"].doubleValue;
 
     [webView evaluateJavaScript:@"startCapture()" completionHandler:nil];
@@ -108,6 +108,6 @@ TEST(WebKit, AudioBufferSize)
     [webView removeFromSuperview];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // WK_HAVE_C_SPI

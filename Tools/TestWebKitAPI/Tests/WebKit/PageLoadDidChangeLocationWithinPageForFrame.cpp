@@ -29,9 +29,9 @@
 
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void nullJavaScriptCallback(WKSerializedScriptValueRef, WKErrorRef error, void*)
 {
@@ -54,7 +54,7 @@ static void didSameDocumentNavigation(WKPageRef, WKNavigationRef, WKSameDocument
     didChangeLocationWithinPage = true;
 }
 
-TEST(WebKit, PageLoadDidChangeLocationWithinPage)
+TEST(CyberKit, PageLoadDidChangeLocationWithinPage)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -84,6 +84,6 @@ TEST(WebKit, PageLoadDidChangeLocationWithinPage)
     EXPECT_FALSE(WKURLIsEqual(initialURL.get(), urlAfterAnchorClick.get()));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

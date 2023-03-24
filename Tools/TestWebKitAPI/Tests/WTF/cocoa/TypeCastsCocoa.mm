@@ -46,7 +46,7 @@
 @implementation MyObjectSubtype
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 using namespace WTF;
 
@@ -332,4 +332,4 @@ TEST(TypeCastsCocoa, dynamic_objc_cast_RetainPtr)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -268,7 +268,7 @@ Token Lexer<T>::lex()
             shift();
             while (isValidIdentifierCharacter(m_current))
                 shift();
-            // FIXME: a trie would be more efficient here, look at JavaScriptCore/KeywordLookupGenerator.py for an example of code autogeneration that produces such a trie.
+            // FIXME: a trie would be more efficient here, look at CyberScriptCore/KeywordLookupGenerator.py for an example of code autogeneration that produces such a trie.
             String view(StringImpl::createWithoutCopying(startOfToken, currentTokenLength()));
             // FIXME: I don't think that true/false/f32/u32/i32/bool need to be their own tokens, they could just be regular identifiers.
 

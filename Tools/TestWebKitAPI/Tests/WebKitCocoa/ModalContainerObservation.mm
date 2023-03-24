@@ -31,11 +31,11 @@
 #import "TestProtocol.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebpagePreferencesPrivate.h>
-#import <WebKit/_WKModalContainerInfo.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebpagePreferencesPrivate.h>
+#import <CyberKit/_WKModalContainerInfo.h>
 #import <objc/runtime.h>
 #import <wtf/FastMalloc.h>
 #import <wtf/SetForScope.h>
@@ -50,7 +50,7 @@
 {
     if ([name isEqualToString:@"ModalContainerControls"] && [extension isEqualToString:@"mlmodelc"]) {
         // Override the default CoreML model with a smaller dataset that's limited to testing purposes.
-        return [NSBundle.mainBundle URLForResource:@"TestModalContainerControls" withExtension:@"mlmodelc" subdirectory:@"TestWebKitAPI.resources"];
+        return [NSBundle.mainBundle URLForResource:@"TestModalContainerControls" withExtension:@"mlmodelc" subdirectory:@"TestCyberKitAPI.resources"];
     }
     // Call through to the original method implementation if we're not specifically requesting ModalContainerControls.mlmodelc.
     return [self swizzled_URLForResource:name withExtension:extension];
@@ -58,7 +58,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class ClassifierModelSwizzler {
     WTF_MAKE_FAST_ALLOCATED;
@@ -86,7 +86,7 @@ private:
     IMP m_swizzledImplementation;
 };
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 @interface ModalContainerWebView : TestWKWebView <WKUIDelegatePrivate>
 @property (nonatomic) _WKModalContainerDecision decision;
@@ -94,7 +94,7 @@ private:
 @end
 
 @implementation ModalContainerWebView {
-    std::unique_ptr<TestWebKitAPI::ClassifierModelSwizzler> _classifierModelSwizzler;
+    std::unique_ptr<TestCyberKitAPI::ClassifierModelSwizzler> _classifierModelSwizzler;
     RetainPtr<TestNavigationDelegate> _navigationDelegate;
     RetainPtr<_WKModalContainerInfo> _lastModalContainerInfo;
     bool _doneWaitingForDecisionHandler;
@@ -111,7 +111,7 @@ private:
     });
 
     _decision = _WKModalContainerDecisionShow;
-    _classifierModelSwizzler = makeUnique<TestWebKitAPI::ClassifierModelSwizzler>();
+    _classifierModelSwizzler = makeUnique<TestCyberKitAPI::ClassifierModelSwizzler>();
     _navigationDelegate = adoptNS([[TestNavigationDelegate alloc] init]);
     _doneWaitingForDecisionHandler = true;
     [self setNavigationDelegate:_navigationDelegate.get()];
@@ -126,7 +126,7 @@ private:
 
     [self loadBundlePage:page];
 
-    TestWebKitAPI::Util::run(&_doneWaitingForDecisionHandler);
+    TestCyberKitAPI::Util::run(&_doneWaitingForDecisionHandler);
     [self waitForNextPresentationUpdate];
 }
 
@@ -137,13 +137,13 @@ private:
 
     [self objectByEvaluatingJavaScript:script];
 
-    TestWebKitAPI::Util::run(&_doneWaitingForDecisionHandler);
+    TestCyberKitAPI::Util::run(&_doneWaitingForDecisionHandler);
     [self waitForNextPresentationUpdate];
 }
 
 - (void)loadBundlePage:(NSString *)page
 {
-    NSURL *bundleURL = [NSBundle.mainBundle URLForResource:page withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *bundleURL = [NSBundle.mainBundle URLForResource:page withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     NSURLRequest *fakeRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://webkit.org"]];
     [self loadSimulatedRequest:fakeRequest responseHTMLString:[NSString stringWithContentsOfURL:bundleURL]];
 
@@ -164,7 +164,7 @@ private:
 
 - (void)waitForText:(NSString *)text
 {
-    TestWebKitAPI::Util::waitForConditionWithLogging([&]() -> bool {
+    TestCyberKitAPI::Util::waitForConditionWithLogging([&]() -> bool {
         return [self.contentsAsString containsString:text];
     }, 3, @"Timed out waiting for '%@'", text);
 }
@@ -183,7 +183,7 @@ private:
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static RetainPtr<ModalContainerWebView> createModalContainerWebView()
 {
@@ -342,4 +342,4 @@ TEST(ModalContainerObservation, DetectControlsWithEventListenersOnModalContainer
     EXPECT_TRUE([[webView objectByEvaluatingJavaScript:@"window.testPassed"] boolValue]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

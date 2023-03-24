@@ -25,8 +25,8 @@
 
 #import "config.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WebFrameLoadDelegate.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebFrameLoadDelegate.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 static bool didCloseWhileCommittingLoad;
@@ -45,18 +45,18 @@ static bool didCloseWhileCommittingLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, CloseWhileCommittingLoad)
+TEST(CyberKitLegacy, CloseWhileCommittingLoad)
 {
     auto webView = adoptNS([WebView new]);
     auto delegate = adoptNS([CloseWhileCommittingLoadDelegate new]);
     [webView setFrameLoadDelegate:delegate.get()];
 
     didCloseWhileCommittingLoad = false;
-    [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
     Util::run(&didCloseWhileCommittingLoad);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

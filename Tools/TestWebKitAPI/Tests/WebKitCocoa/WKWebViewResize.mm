@@ -27,7 +27,7 @@
 
 #import "TestCocoa.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/RetainPtr.h>
 
 #if HAVE(MAC_CATALYST_LIVE_RESIZE)

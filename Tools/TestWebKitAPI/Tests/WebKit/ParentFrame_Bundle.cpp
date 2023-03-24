@@ -30,11 +30,11 @@
 #include "InjectedBundleTest.h"
 
 #include "PlatformUtilities.h"
-#include <WebKit/WKBundlePage.h>
-#include <WebKit/WKBundleFrame.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKBundlePage.h>
+#include <CyberKit/WKBundleFrame.h>
+#include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static WKRetainPtr<WKBundleRef> testBundle;
 static WKRetainPtr<WKBundleFrameRef> childFrame;
@@ -79,6 +79,6 @@ void ParentFrameTest::didCreatePage(WKBundleRef bundle, WKBundlePageRef page)
     WKBundlePageSetPageLoaderClient(page, &pageLoaderClient.base);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

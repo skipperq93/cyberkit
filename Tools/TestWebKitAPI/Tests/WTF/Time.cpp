@@ -66,7 +66,7 @@ std::basic_ostream<char>& operator<<(std::basic_ostream<char>& out, TimeWithDyna
 
 } // namespace WTF
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 namespace {
 
@@ -423,5 +423,5 @@ TEST(WTF_Time, constexprMonotonicTime)
 }
 
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 

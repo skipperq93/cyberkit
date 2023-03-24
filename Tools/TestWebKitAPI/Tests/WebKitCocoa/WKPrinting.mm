@@ -28,8 +28,8 @@
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
 #import "Utilities.h"
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKFrameHandle.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKFrameHandle.h>
 #import <wtf/RetainPtr.h>
 
 typedef void (^CallCompletionBlock)();
@@ -67,7 +67,7 @@ typedef void (^CallCompletionBlock)();
 
 - (void)waitForPagination
 {
-    TestWebKitAPI::Util::run(&_isDone);
+    TestCyberKitAPI::Util::run(&_isDone);
 }
 
 @end
@@ -79,7 +79,7 @@ TEST(Printing, PrintWithDelayedCompletion)
     auto delegate = adoptNS([PrintWithSimulatedPageComputationUIDelegate new]);
     [webView setUIDelegate:delegate.get()];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -102,7 +102,7 @@ TEST(Printing, PrintWithDelayedCompletion)
 
 - (void)_waitUntilPageBorderDrawn
 {
-    TestWebKitAPI::Util::run(&_didDrawPageBorder);
+    TestCyberKitAPI::Util::run(&_didDrawPageBorder);
 }
 
 @end
@@ -138,7 +138,7 @@ TEST(Printing, PrintPageBorders)
     auto delegate = adoptNS([PrintShowingPrintPanelUIDelegate new]);
     [webView setUIDelegate:delegate.get()];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 

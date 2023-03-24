@@ -27,7 +27,7 @@
 
 #include <wtf/text/AtomString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF, AtomStringCreationFromLiteral)
 {
@@ -104,4 +104,4 @@ TEST(WTF, AtomStringNumberDouble)
     EXPECT_STREQ("1.1e+30", testAtomStringNumber(1.1e30));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

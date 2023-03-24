@@ -23,8 +23,8 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKNavigationDelegatePrivate.h>
-#import <WebKit/WebKit.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/CyberKit.h>
 
 @class _WKContentRuleListAction;
 
@@ -51,7 +51,7 @@
 
 @end
 
-@interface WKWebView (TestWebKitAPIExtras)
+@interface WKWebView (TestCyberKitAPIExtras)
 - (void)_test_waitForDidStartProvisionalNavigation;
 - (void)_test_waitForDidFinishNavigation;
 - (void)_test_waitForDidFinishNavigationWithPreferences:(WKWebpagePreferences *)preferences;

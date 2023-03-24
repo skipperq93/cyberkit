@@ -28,7 +28,7 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 
 #if PLATFORM(IOS_FAMILY)
 
@@ -36,7 +36,7 @@
 - (BOOL)hasSelectablePositionAtPoint:(CGPoint)point;
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(SynchronousTimeoutTests, UnresponsivePageDoesNotCausePositionInformationToHangUI)
 {
@@ -49,6 +49,6 @@ TEST(SynchronousTimeoutTests, UnresponsivePageDoesNotCausePositionInformationToH
     [[webView wkContentView] hasSelectablePositionAtPoint:CGPointMake(100, 100)];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

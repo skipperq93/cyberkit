@@ -33,8 +33,8 @@
 #import "TestURLSchemeHandler.h"
 #import "TestWKWebView.h"
 #import "VirtualGamepad.h"
-#import <WebCore/GameControllerSoftLink.h>
-#import <WebKit/WKProcessPoolPrivate.h>
+#import <CyberCore/GameControllerSoftLink.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
 
 @interface GamepadMessageHandler : NSObject <WKScriptMessageHandler>
 @property (readonly, nonatomic) Vector<RetainPtr<NSString>> messages;
@@ -51,7 +51,7 @@ static bool didReceiveMessage = false;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static const char* mainBytes = R"GAMEPADRESOURCE(
 <script>
@@ -80,7 +80,7 @@ static NSWindow *getKeyWindowForTesting()
 
 TEST(Gamepad, Basic)
 {
-    [WebCore::getGCControllerClass() setShouldMonitorBackgroundEvents:YES];
+    [CyberCore::getGCControllerClass() setShouldMonitorBackgroundEvents:YES];
 
     auto keyWindowSwizzler = makeUnique<InstanceMethodSwizzler>([NSApplication class], @selector(keyWindow), reinterpret_cast<IMP>(getKeyWindowForTesting));
 
@@ -260,7 +260,7 @@ TEST(Gamepad, GamepadState)
     Vector<double> expectedButtons2 = { 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0 };
 #endif
 
-    [WebCore::getGCControllerClass() setShouldMonitorBackgroundEvents:YES];
+    [CyberCore::getGCControllerClass() setShouldMonitorBackgroundEvents:YES];
 
     auto keyWindowSwizzler = makeUnique<InstanceMethodSwizzler>([NSApplication class], @selector(keyWindow), reinterpret_cast<IMP>(getKeyWindowForTesting));
 
@@ -381,7 +381,7 @@ TEST(Gamepad, Dualshock3Basic)
     NSString *expectedName = @"\"54c-268-Virtual Dualshock3\"";
 #endif
 
-    [WebCore::getGCControllerClass() setShouldMonitorBackgroundEvents:YES];
+    [CyberCore::getGCControllerClass() setShouldMonitorBackgroundEvents:YES];
 
     auto keyWindowSwizzler = makeUnique<InstanceMethodSwizzler>([NSApplication class], @selector(keyWindow), reinterpret_cast<IMP>(getKeyWindowForTesting));
 
@@ -448,7 +448,7 @@ TEST(Gamepad, Dualshock3Basic)
 #if !HAVE(WIDE_GAMECONTROLLER_SUPPORT)
 TEST(Gamepad, Stadia)
 {
-    [WebCore::getGCControllerClass() setShouldMonitorBackgroundEvents:YES];
+    [CyberCore::getGCControllerClass() setShouldMonitorBackgroundEvents:YES];
 
     auto keyWindowSwizzler = makeUnique<InstanceMethodSwizzler>([NSApplication class], @selector(keyWindow), reinterpret_cast<IMP>(getKeyWindowForTesting));
 
@@ -534,7 +534,7 @@ TEST(Gamepad, LogitechBasic)
         @"\"46d-c216-Virtual Logitech F310\"",
         @"\"46d-c219-Virtual Logitech F710\""]];
 #endif
-    [WebCore::getGCControllerClass() setShouldMonitorBackgroundEvents:YES];
+    [CyberCore::getGCControllerClass() setShouldMonitorBackgroundEvents:YES];
 
     auto keyWindowSwizzler = makeUnique<InstanceMethodSwizzler>([NSApplication class], @selector(keyWindow), reinterpret_cast<IMP>(getKeyWindowForTesting));
 
@@ -609,7 +609,7 @@ TEST(Gamepad, LogitechBasic)
 
 TEST(Gamepad, FullInfoAfterConnection)
 {
-    [WebCore::getGCControllerClass() setShouldMonitorBackgroundEvents:YES];
+    [CyberCore::getGCControllerClass() setShouldMonitorBackgroundEvents:YES];
 
     auto keyWindowSwizzler = makeUnique<InstanceMethodSwizzler>([NSApplication class], @selector(keyWindow), reinterpret_cast<IMP>(getKeyWindowForTesting));
 
@@ -692,6 +692,6 @@ TEST(Gamepad, FullInfoAfterConnection)
 }
 
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // USE(APPLE_INTERNAL_SDK)

@@ -39,20 +39,20 @@ public:
         std::optional<double> speed;
     };
 
-    static gboolean startCallback(WebKitGeolocationManager* manager, GeolocationTest* test)
+    static gboolean startCallback(CyberKitGeolocationManager* manager, GeolocationTest* test)
     {
         g_assert_true(test->m_manager == manager);
         test->start();
         return TRUE;
     }
 
-    static void stopCallback(WebKitGeolocationManager* manager, GeolocationTest* test)
+    static void stopCallback(CyberKitGeolocationManager* manager, GeolocationTest* test)
     {
         g_assert_true(test->m_manager == manager);
         test->stop();
     }
 
-    static gboolean permissionRequested(WebKitWebView*, WebKitPermissionRequest* request, GeolocationTest* test)
+    static gboolean permissionRequested(CyberKitWebView*, CyberKitPermissionRequest* request, GeolocationTest* test)
     {
         g_assert_true(WEBKIT_IS_PERMISSION_REQUEST(request));
         test->assertObjectIsDeletedWhenTestFinishes(G_OBJECT(request));
@@ -154,7 +154,7 @@ public:
         return result;
     }
 
-    Position checkCurrentPosition(WebKitGeolocationPosition* position, bool enableHighAccuracy = false)
+    Position checkCurrentPosition(CyberKitGeolocationPosition* position, bool enableHighAccuracy = false)
     {
         g_clear_pointer(&m_checkPosition, webkit_geolocation_position_free);
         m_checkPosition = position;
@@ -241,10 +241,10 @@ public:
         m_watching = false;
     }
 
-    WebKitGeolocationManager* m_manager;
+    CyberKitGeolocationManager* m_manager;
     bool m_updating { false };
     bool m_watching { false };
-    WebKitGeolocationPosition* m_checkPosition { nullptr };
+    CyberKitGeolocationPosition* m_checkPosition { nullptr };
     GUniquePtr<char> m_errorMessage;
 };
 
@@ -254,7 +254,7 @@ static void testGeolocationManagerCurrentPosition(GeolocationTest* test, gconstp
     test->loadHtml("<html><body></body></html>", "https://foo.com/bar");
     test->waitUntilLoadFinished();
 
-    WebKitGeolocationPosition* position = webkit_geolocation_position_new(37.1760783, -3.59033, 17);
+    CyberKitGeolocationPosition* position = webkit_geolocation_position_new(37.1760783, -3.59033, 17);
     g_assert_false(test->m_updating);
     auto result = test->checkCurrentPosition(position);
     g_assert_false(test->m_updating);
@@ -304,7 +304,7 @@ static void testGeolocationManagerWatchPosition(GeolocationTest* test, gconstpoi
     test->startWatch();
     g_assert_true(test->m_updating);
 
-    WebKitGeolocationPosition* position = webkit_geolocation_position_new(37.1760783, -3.59033, 17);
+    CyberKitGeolocationPosition* position = webkit_geolocation_position_new(37.1760783, -3.59033, 17);
     webkit_geolocation_manager_update_position(test->m_manager, position);
     webkit_geolocation_position_free(position);
     auto result = test->lastPosition();
@@ -326,8 +326,8 @@ static void testGeolocationManagerWatchPosition(GeolocationTest* test, gconstpoi
 
 void beforeAll()
 {
-    GeolocationTest::add("WebKitGeolocationManager", "current-position", testGeolocationManagerCurrentPosition);
-    GeolocationTest::add("WebKitGeolocationManager", "watch-position", testGeolocationManagerWatchPosition);
+    GeolocationTest::add("CyberKitGeolocationManager", "current-position", testGeolocationManagerCurrentPosition);
+    GeolocationTest::add("CyberKitGeolocationManager", "watch-position", testGeolocationManagerWatchPosition);
 }
 
 void afterAll()

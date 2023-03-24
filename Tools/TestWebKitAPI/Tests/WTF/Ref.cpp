@@ -28,7 +28,7 @@
 #include "RefLogger.h"
 #include <wtf/RefPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_Ref, Basic)
 {
@@ -288,4 +288,4 @@ TEST(WTF_Ref, StaticReferenceCastFromRValueReference)
     EXPECT_STREQ("ref(a) ", takeLogStr().c_str());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

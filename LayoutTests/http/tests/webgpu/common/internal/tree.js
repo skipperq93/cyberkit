@@ -23,7 +23,7 @@ import { StacklessError } from './util.js';
 // A node is considered "collapsible" if none of the subqueriesToExpand is a StrictSubset
 // of that node.
 //
-// In WebKit/Blink-style web_tests, an expectation file marks individual cts.https.html "variants
+// In CyberKit/Blink-style web_tests, an expectation file marks individual cts.https.html "variants
 // as "Failure", "Crash", etc. By passing in the list of expectations as the subqueriesToExpand,
 // we can programmatically subdivide the cts.https.html "variants" list to be able to implement
 // arbitrarily-fine suppressions (instead of having to suppress entire test files, which would

@@ -32,9 +32,9 @@
 #include "Test.h"
 #include <wtf/StdLibExtras.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-struct WebKit2TextFieldBeginAndEditEditingTest : public ::testing::Test {
+struct CyberKit2TextFieldBeginAndEditEditingTest : public ::testing::Test {
     std::unique_ptr<PlatformWebView> webView;
 
     WKRetainPtr<WKStringRef> messageName;
@@ -44,14 +44,14 @@ struct WebKit2TextFieldBeginAndEditEditingTest : public ::testing::Test {
 
     static void didReceiveMessageFromInjectedBundle(WKContextRef, WKStringRef messageName, WKTypeRef, const void* clientInfo)
     {
-        WebKit2TextFieldBeginAndEditEditingTest& client = *static_cast<WebKit2TextFieldBeginAndEditEditingTest*>(const_cast<void*>(clientInfo));
+        CyberKit2TextFieldBeginAndEditEditingTest& client = *static_cast<CyberKit2TextFieldBeginAndEditEditingTest*>(const_cast<void*>(clientInfo));
         client.messageName = messageName;
         client.didReceiveMessage = true;
     }
 
     static void didFinishNavigation(WKPageRef, WKNavigationRef, WKTypeRef, const void* clientInfo)
     {
-        WebKit2TextFieldBeginAndEditEditingTest& client = *static_cast<WebKit2TextFieldBeginAndEditEditingTest*>(const_cast<void*>(clientInfo));
+        CyberKit2TextFieldBeginAndEditEditingTest& client = *static_cast<CyberKit2TextFieldBeginAndEditEditingTest*>(const_cast<void*>(clientInfo));
         client.didFinishLoad = true;
     }
 
@@ -108,30 +108,30 @@ struct WebKit2TextFieldBeginAndEditEditingTest : public ::testing::Test {
     }
 };
 
-TEST_F(WebKit2TextFieldBeginAndEditEditingTest, TextFieldDidBeginAndEndEditingEvents)
+TEST_F(CyberKit2TextFieldBeginAndEditEditingTest, TextFieldDidBeginAndEndEditingEvents)
 {
     executeJavaScriptAndCheckDidReceiveMessage("focusTextField('input')", "DidReceiveTextFieldDidBeginEditing");
     executeJavaScriptAndCheckDidReceiveMessage("blurTextField('input')", "DidReceiveTextFieldDidEndEditing");
 }
 
-TEST_F(WebKit2TextFieldBeginAndEditEditingTest, TextFieldDidBeginAndEndEditingEventsInReadOnlyField)
+TEST_F(CyberKit2TextFieldBeginAndEditEditingTest, TextFieldDidBeginAndEndEditingEventsInReadOnlyField)
 {
     executeJavaScriptAndCheckDidReceiveMessage("focusTextField('readonly')", "DidReceiveTextFieldDidBeginEditing");
     executeJavaScriptAndCheckDidReceiveMessage("blurTextField('readonly')", "DidReceiveTextFieldDidEndEditing");
 }
 
-TEST_F(WebKit2TextFieldBeginAndEditEditingTest, TextFieldDidBeginShouldNotBeDispatchedForAlreadyFocusedField)
+TEST_F(CyberKit2TextFieldBeginAndEditEditingTest, TextFieldDidBeginShouldNotBeDispatchedForAlreadyFocusedField)
 {
     executeJavaScriptAndCheckDidReceiveMessage("focusTextField('input'); focusTextField('input')", "DidReceiveTextFieldDidBeginEditing");
     executeJavaScriptAndCheckDidReceiveMessage("blurTextField('input')", "DidReceiveTextFieldDidEndEditing");
 }
 
-TEST_F(WebKit2TextFieldBeginAndEditEditingTest, TextFieldDidEndShouldBeDispatchedForRemovedFocusField)
+TEST_F(CyberKit2TextFieldBeginAndEditEditingTest, TextFieldDidEndShouldBeDispatchedForRemovedFocusField)
 {
     executeJavaScriptAndCheckDidReceiveMessage("focusTextField('input')", "DidReceiveTextFieldDidBeginEditing");
     executeJavaScriptAndCheckDidReceiveMessage("removeTextField('input')", "DidReceiveTextFieldDidEndEditing");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

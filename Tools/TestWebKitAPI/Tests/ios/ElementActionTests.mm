@@ -30,9 +30,9 @@
 
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void runTest(TestWKWebView *webView, TestNavigationDelegate *navigationDelegate, NSString *selector)
 {
@@ -81,6 +81,6 @@ TEST(ElementActionTests, OpenLinkWithHoverMenu)
     runTest(webView.get(), navigationDelegate.get(), @"#link");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

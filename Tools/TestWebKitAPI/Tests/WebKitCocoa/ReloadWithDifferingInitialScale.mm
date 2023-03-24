@@ -33,12 +33,12 @@
 #import "Test.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, ReloadWithDifferingInitialScale)
+TEST(CyberKit, ReloadWithDifferingInitialScale)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
 
@@ -77,6 +77,6 @@ TEST(WebKit, ReloadWithDifferingInitialScale)
     EXPECT_EQ([webView scrollView].zoomScale, 0.25);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

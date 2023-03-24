@@ -24,8 +24,8 @@
  */
 
 #if ENABLE(MEDIA_STREAM)
-#import <WebKit/WKUIDelegate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKUIDelegate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
 
 @interface UserMediaCaptureUIDelegate : NSObject<WKUIDelegate> {
     bool _wasPrompted;

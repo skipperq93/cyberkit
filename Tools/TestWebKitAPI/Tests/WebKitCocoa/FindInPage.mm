@@ -31,8 +31,8 @@
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKFindDelegate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKFindDelegate.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RetainPtr.h>
 
@@ -83,7 +83,7 @@ static FindResult findMatches(WKWebView *webView, NSString *findString, NSTextFi
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     return result;
 }
@@ -98,16 +98,16 @@ static NSUInteger replaceMatches(WKWebView *webView, NSArray<FindMatch> *matches
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     return result;
 }
 
-TEST(WebKit, FindInPage)
+TEST(CyberKit, FindInPage)
 {
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 200, 200)]);
     [webView _setOverrideDeviceScaleFactor:2];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"lots-of-text" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"lots-of-text" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -125,7 +125,7 @@ TEST(WebKit, FindInPage)
         EXPECT_EQ(image.size.height, CGImageGetHeight(CGImage) / 2);
         generateTextImageDone = true;
     }];
-    TestWebKitAPI::Util::run(&generateTextImageDone);
+    TestCyberKitAPI::Util::run(&generateTextImageDone);
 
     // Find one match, doing an incremental search.
     result = findMatches(webView.get(), @"Birthday", noFindOptions, 1);
@@ -152,7 +152,7 @@ TEST(WebKit, FindInPage)
     EXPECT_EQ((NSUInteger)1000, [result.matches count]);
 }
 
-TEST(WebKit, FindInPageWithPlatformPresentation)
+TEST(CyberKit, FindInPageWithPlatformPresentation)
 {
     // This should be the same as above, but does not generate rects or images, so that AppKit won't paint its find UI.
 
@@ -160,7 +160,7 @@ TEST(WebKit, FindInPageWithPlatformPresentation)
     [webView _setOverrideDeviceScaleFactor:2];
     [webView _setUsePlatformFindUI:NO];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"lots-of-text" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"lots-of-text" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -176,14 +176,14 @@ TEST(WebKit, FindInPageWithPlatformPresentation)
         EXPECT_EQ(image, nullptr);
         generateTextImageDone = true;
     }];
-    TestWebKitAPI::Util::run(&generateTextImageDone);
+    TestCyberKitAPI::Util::run(&generateTextImageDone);
 
     // Ensure that we cap the number of matches. There are actually 1600, but we only get the first 1000.
     result = findMatches(webView.get(), @" ");
     EXPECT_EQ((NSUInteger)1000, [result.matches count]);
 }
 
-TEST(WebKit, FindInPageWrapping)
+TEST(CyberKit, FindInPageWrapping)
 {
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 100, 100)]);
     [webView _setOverrideDeviceScaleFactor:2];
@@ -211,7 +211,7 @@ TEST(WebKit, FindInPageWrapping)
     EXPECT_TRUE(result.didWrap);
 }
 
-TEST(WebKit, FindInPageWrappingDisabled)
+TEST(CyberKit, FindInPageWrappingDisabled)
 {
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 100, 100)]);
     [webView _setOverrideDeviceScaleFactor:2];
@@ -234,7 +234,7 @@ TEST(WebKit, FindInPageWrappingDisabled)
     EXPECT_FALSE(result.didWrap);
 }
 
-TEST(WebKit, FindInPageBackwardsFirst)
+TEST(CyberKit, FindInPageBackwardsFirst)
 {
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 100, 100)]);
     [webView _setOverrideDeviceScaleFactor:2];
@@ -250,7 +250,7 @@ TEST(WebKit, FindInPageBackwardsFirst)
     EXPECT_EQ((NSUInteger)1, [result.matches count]);
 }
 
-TEST(WebKit, FindInPageWrappingSubframe)
+TEST(CyberKit, FindInPageWrappingSubframe)
 {
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 100, 100)]);
     [webView _setOverrideDeviceScaleFactor:2];
@@ -278,7 +278,7 @@ TEST(WebKit, FindInPageWrappingSubframe)
     EXPECT_TRUE(result.didWrap);
 }
 
-TEST(WebKit, FindAndReplace)
+TEST(CyberKit, FindAndReplace)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 400, 400)]);
     [webView synchronouslyLoadHTMLString:@"<body contenteditable><input id='first' value='hello'>hello world<input id='second' value='world'></body>"];
@@ -307,7 +307,7 @@ TEST(WebKit, FindAndReplace)
 
 #if ENABLE(IMAGE_ANALYSIS)
 
-TEST(WebKit, FindTextInImageOverlay)
+TEST(CyberKit, FindTextInImageOverlay)
 {
     auto configuration = retainPtr([WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"WebProcessPlugInWithInternals" configureJSCForTesting:YES]);
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 400, 400) configuration:configuration.get()]);
@@ -531,7 +531,7 @@ static void testPerformTextSearchWithQueryStringInWebView(WKWebView *webView, NS
 
     [webView performTextSearchWithQueryString:query usingOptions:searchOptions resultAggregator:aggregator.get()];
 
-    TestWebKitAPI::Util::run(&finishedSearching);
+    TestCyberKitAPI::Util::run(&finishedSearching);
 
     EXPECT_EQ([aggregator count], expectedMatches);
 }
@@ -546,16 +546,16 @@ static RetainPtr<NSOrderedSet<UITextRange *>> textRangesForQueryString(WKWebView
     auto options = adoptNS([[UITextSearchOptions alloc] init]);
     [webView performTextSearchWithQueryString:query usingOptions:options.get() resultAggregator:aggregator.get()];
 
-    TestWebKitAPI::Util::run(&finishedSearching);
+    TestCyberKitAPI::Util::run(&finishedSearching);
 
     return adoptNS([[aggregator allFoundRanges] copy]);
 }
 
-TEST(WebKit, FindInPage)
+TEST(CyberKit, FindInPage)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"lots-of-text" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"lots-of-text" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -563,11 +563,11 @@ TEST(WebKit, FindInPage)
     testPerformTextSearchWithQueryStringInWebView(webView.get(), @"Birthday", searchOptions.get(), 360UL);
 }
 
-TEST(WebKit, FindInPageCaseInsensitive)
+TEST(CyberKit, FindInPageCaseInsensitive)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"lots-of-text" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"lots-of-text" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -578,11 +578,11 @@ TEST(WebKit, FindInPageCaseInsensitive)
     testPerformTextSearchWithQueryStringInWebView(webView.get(), @"birthday", searchOptions.get(), 360UL);
 }
 
-TEST(WebKit, FindInPageStartsWith)
+TEST(CyberKit, FindInPageStartsWith)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"lots-of-text" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"lots-of-text" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -597,11 +597,11 @@ TEST(WebKit, FindInPageStartsWith)
     testPerformTextSearchWithQueryStringInWebView(webView.get(), @"day", searchOptions.get(), 0UL);
 }
 
-TEST(WebKit, FindInPageFullWord)
+TEST(CyberKit, FindInPageFullWord)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"lots-of-text" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"lots-of-text" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -615,11 +615,11 @@ TEST(WebKit, FindInPageFullWord)
     testPerformTextSearchWithQueryStringInWebView(webView.get(), @"Birth", searchOptions.get(), 0UL);
 }
 
-TEST(WebKit, FindInPageDoNotCrashWhenUsingMutableString)
+TEST(CyberKit, FindInPageDoNotCrashWhenUsingMutableString)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"lots-of-text" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"lots-of-text" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -635,12 +635,12 @@ TEST(WebKit, FindInPageDoNotCrashWhenUsingMutableString)
         [webView performTextSearchWithQueryString:searchString.get() usingOptions:searchOptions.get() resultAggregator:aggregator.get()];
     }
 
-    TestWebKitAPI::Util::run(&finishedSearching);
+    TestCyberKitAPI::Util::run(&finishedSearching);
 
     EXPECT_EQ([aggregator count], 360UL);
 }
 
-TEST(WebKit, FindAndReplace)
+TEST(CyberKit, FindAndReplace)
 {
     NSString *originalContent = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
     NSString *searchString = @"dolor";
@@ -666,7 +666,7 @@ TEST(WebKit, FindAndReplace)
     EXPECT_WK_STREQ(replacedContent, [webView stringByEvaluatingJavaScript:@"document.body.innerText"]);
 }
 
-TEST(WebKit, FindInteraction)
+TEST(CyberKit, FindInteraction)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)]);
 
@@ -687,7 +687,7 @@ TEST(WebKit, FindInteraction)
     EXPECT_NULL([webView findInteraction]);
 }
 
-TEST(WebKit, RequestRectForFoundTextRange)
+TEST(CyberKit, RequestRectForFoundTextRange)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
     [webView synchronouslyLoadHTMLString:@"<iframe srcdoc='<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus in metus vulputate eu scelerisque felis imperdiet. Mi quis hendrerit dolor magna eget est lorem ipsum dolor. In cursus turpis massa tincidunt dui ut ornare. Sapien et ligula ullamcorper malesuada. Maecenas volutpat blandit aliquam etiam erat. Turpis egestas integer eget aliquet nibh praesent tristique. Ipsum dolor sit amet consectetur adipiscing. Tellus cras adipiscing enim eu turpis egestas pretium aenean pharetra. Sem fringilla ut morbi tincidunt augue interdum velit euismod. Habitant morbi tristique senectus et netus. Aenean euismod elementum nisi quis. Facilisi nullam vehicula ipsum a. Elementum facilisis leo vel fringilla. Molestie nunc non blandit massa enim. Orci ac auctor augue mauris. Pellentesque pulvinar pellentesque habitant morbi tristique senectus et. Magnis dis parturient montes nascetur ridiculus mus mauris vitae. Id leo in vitae turpis massa sed. Netus et malesuada fames ac turpis egestas sed tempus. Morbi quis commodo odio aenean sed adipiscing diam donec. Sit amet purus gravida quis blandit turpis. Odio euismod lacinia at quis risus sed vulputate. Varius duis at consectetur lorem donec massa. Sit amet consectetur adipiscing elit pellentesque habitant. Feugiat in fermentum posuere urna nec tincidunt praesent.</p>'></iframe>"];
@@ -699,7 +699,7 @@ TEST(WebKit, RequestRectForFoundTextRange)
         EXPECT_TRUE(CGRectEqualToRect(rect, CGRectMake(252, 146, 44, 19)));
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     ranges = textRangesForQueryString(webView.get(), @"fermentum");
 
@@ -708,7 +708,7 @@ TEST(WebKit, RequestRectForFoundTextRange)
         EXPECT_TRUE(CGRectEqualToRect(rect, CGRectMake(229, 646, 72, 19)));
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     [webView scrollRangeToVisible:[ranges firstObject] inDocument:nil];
     done = false;
@@ -716,10 +716,10 @@ TEST(WebKit, RequestRectForFoundTextRange)
         EXPECT_TRUE(CGRectEqualToRect(rect, CGRectMake(229, 104, 72, 19)));
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
-TEST(WebKit, ScrollToFoundRangeWithExistingSelection)
+TEST(CyberKit, ScrollToFoundRangeWithExistingSelection)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)]);
     [webView synchronouslyLoadHTMLString:@"<meta name='viewport' content='width=device-width,initial-scale=1'><div contenteditable><p>Top</p><p style='margin-top: 800px'>Bottom</p></div>"];
@@ -731,11 +731,11 @@ TEST(WebKit, ScrollToFoundRangeWithExistingSelection)
     auto ranges = textRangesForQueryString(webView.get(), @"Bottom");
     [webView scrollRangeToVisible:[ranges firstObject] inDocument:nil];
 
-    TestWebKitAPI::Util::run(&scrollViewDelegate->_finishedScrolling);
+    TestCyberKitAPI::Util::run(&scrollViewDelegate->_finishedScrolling);
     EXPECT_TRUE(CGPointEqualToPoint([webView scrollView].contentOffset, CGPointMake(0, 664)));
 }
 
-TEST(WebKit, ScrollToFoundRangeDoesNotFocusElement)
+TEST(CyberKit, ScrollToFoundRangeDoesNotFocusElement)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)]);
     [webView synchronouslyLoadHTMLString:@"<meta name='viewport' content='width=device-width,initial-scale=1'><input id='input'><div id='editor' contenteditable><p>Top</p><p style='margin-top: 800px'>Bottom</p></div>"];
@@ -761,15 +761,15 @@ TEST(WebKit, ScrollToFoundRangeDoesNotFocusElement)
     [webView _setInputDelegate:inputDelegate.get()];
 
     [webView evaluateJavaScript:@"document.getElementById('input').focus()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&inputFocused);
+    TestCyberKitAPI::Util::run(&inputFocused);
 
     auto ranges = textRangesForQueryString(webView.get(), @"Bottom");
     [webView scrollRangeToVisible:[ranges firstObject] inDocument:nil];
 
-    TestWebKitAPI::Util::run(&scrollViewDelegate->_finishedScrolling);
+    TestCyberKitAPI::Util::run(&scrollViewDelegate->_finishedScrolling);
 }
 
-TEST(WebKit, ScrollToFoundRangeRepeated)
+TEST(CyberKit, ScrollToFoundRangeRepeated)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)]);
     [webView synchronouslyLoadHTMLString:@"<meta name='viewport' content='width=device-width,initial-scale=1'><div contenteditable><p>Top</p><p style='margin-top: 800px'>Bottom</p></div>"];
@@ -781,7 +781,7 @@ TEST(WebKit, ScrollToFoundRangeRepeated)
     auto ranges = textRangesForQueryString(webView.get(), @"Bottom");
     [webView scrollRangeToVisible:[ranges firstObject] inDocument:nil];
 
-    TestWebKitAPI::Util::run(&scrollViewDelegate->_finishedScrolling);
+    TestCyberKitAPI::Util::run(&scrollViewDelegate->_finishedScrolling);
 
     EXPECT_TRUE(CGPointEqualToPoint([webView scrollView].contentOffset, CGPointMake(0, 664)));
 
@@ -792,11 +792,11 @@ TEST(WebKit, ScrollToFoundRangeRepeated)
     EXPECT_TRUE(CGPointEqualToPoint([webView scrollView].contentOffset, CGPointMake(0, 664)));
 }
 
-TEST(WebKit, CannotHaveMultipleFindOverlays)
+TEST(CyberKit, CannotHaveMultipleFindOverlays)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"lots-of-text" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"lots-of-text" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -820,14 +820,14 @@ TEST(WebKit, CannotHaveMultipleFindOverlays)
     EXPECT_EQ(overlayCount(webView.get()), 1U);
 }
 
-TEST(WebKit, FindOverlaySPI)
+TEST(CyberKit, FindOverlaySPI)
 {
     auto findDelegate = adoptNS([[TestFindDelegate alloc] init]);
 
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)]);
     [webView _setFindDelegate:findDelegate.get()];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"lots-of-text" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"lots-of-text" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -837,7 +837,7 @@ TEST(WebKit, FindOverlaySPI)
     }];
     [webView _addLayerForFindOverlay];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_NOT_NULL([webView _layerForFindOverlay]);
 
     done = false;
@@ -847,7 +847,7 @@ TEST(WebKit, FindOverlaySPI)
     }];
 
     [webView _removeLayerForFindOverlay];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_NULL([webView _layerForFindOverlay]);
 
     done = false;
@@ -857,7 +857,7 @@ TEST(WebKit, FindOverlaySPI)
 
     [webView _addLayerForFindOverlay];
     [webView _addLayerForFindOverlay];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_NOT_NULL([webView _layerForFindOverlay]);
     EXPECT_EQ(overlayCount(webView.get()), 1U);
 }
@@ -870,15 +870,15 @@ static void swizzledPerformTextSearchWithQueryString(id, SEL, NSString *, UIText
     hasPerformedTextSearchWithQueryString = true;
 }
 
-TEST(WebKit, FindInPDF)
+TEST(CyberKit, FindInPDF)
 {
     // Swizzle out the method that performs searching, since PDFHostViewController (a remote view
-    // (controller) cannot be created in TestWebKitAPI, and we cannot actually search the PDF.
+    // (controller) cannot be created in TestCyberKitAPI, and we cannot actually search the PDF.
     std::unique_ptr<InstanceMethodSwizzler> performTextSearchInPDFWithQueryStringSwizzler = makeUnique<InstanceMethodSwizzler>(NSClassFromString(@"WKPDFView"), @selector(performTextSearchWithQueryString:usingOptions:resultAggregator:), reinterpret_cast<IMP>(swizzledPerformTextSearchWithQueryString));
 
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -888,16 +888,16 @@ TEST(WebKit, FindInPDF)
     hasPerformedTextSearchWithQueryString = false;
 }
 
-TEST(WebKit, FindInPDFAfterReload)
+TEST(CyberKit, FindInPDFAfterReload)
 {
     // Swizzle out the method that performs searching, since PDFHostViewController (a remote view
-    // (controller) cannot be created in TestWebKitAPI, and we cannot actually search the PDF.
+    // (controller) cannot be created in TestCyberKitAPI, and we cannot actually search the PDF.
     std::unique_ptr<InstanceMethodSwizzler> performTextSearchInPDFWithQueryStringSwizzler = makeUnique<InstanceMethodSwizzler>(NSClassFromString(@"WKPDFView"), @selector(performTextSearchWithQueryString:usingOptions:resultAggregator:), reinterpret_cast<IMP>(swizzledPerformTextSearchWithQueryString));
 
     auto webView = adoptNS([[FindInPageTestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
     auto searchForText = [&] {
-        NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestWebKitAPI.resources"]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestCyberKitAPI.resources"]];
         [webView loadRequest:request];
         [webView _test_waitForDidFinishNavigation];
 
@@ -908,7 +908,7 @@ TEST(WebKit, FindInPDFAfterReload)
         auto *findSession = [findInteraction activeFindSession];
         [findSession performSearchWithQuery:@"Birthday" options:0];
 
-        TestWebKitAPI::Util::run(&hasPerformedTextSearchWithQueryString);
+        TestCyberKitAPI::Util::run(&hasPerformedTextSearchWithQueryString);
 
         [findInteraction dismissFindNavigator];
         [webView waitForNextPresentationUpdate];
@@ -920,7 +920,7 @@ TEST(WebKit, FindInPDFAfterReload)
     searchForText();
 }
 
-TEST(WebKit, FindInPDFAfterFindInPage)
+TEST(CyberKit, FindInPDFAfterFindInPage)
 {
     auto webView = adoptNS([[FindInPageTestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)]);
     [webView synchronouslyLoadTestPageNamed:@"lots-of-text"];
@@ -932,7 +932,7 @@ TEST(WebKit, FindInPDFAfterFindInPage)
     [findInteraction dismissFindNavigator];
     [webView waitForNextPresentationUpdate];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -943,7 +943,7 @@ TEST(WebKit, FindInPDFAfterFindInPage)
     [webView waitForNextPresentationUpdate];
 }
 
-TEST(WebKit, FindInteractionSupportsTextReplacement)
+TEST(CyberKit, FindInteractionSupportsTextReplacement)
 {
     auto webView = adoptNS([[FindInPageTestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)]);
     [webView synchronouslyLoadTestPageNamed:@"lots-of-text"];

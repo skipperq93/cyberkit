@@ -48,7 +48,7 @@ extern "C" {
 WTF_WEAK_LINK_FORCE_IMPORT(TestWTFAlwaysMissingWithoutAttributeWeakImport);
 WTF_WEAK_LINK_FORCE_IMPORT(close);
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WeakLinking, WeakImport)
 {

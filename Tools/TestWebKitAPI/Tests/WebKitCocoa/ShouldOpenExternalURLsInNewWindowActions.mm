@@ -31,8 +31,8 @@
 #import "PlatformUtilities.h"
 #import "TestNavigationDelegate.h"
 #import "TestURLSchemeHandler.h"
-#import <WebKit/WKNavigationActionPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKNavigationActionPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 static bool decidedPolicy;
@@ -69,7 +69,7 @@ static RetainPtr<WKWebView> newWebView;
 
 @end
 
-TEST(WebKit, ShouldOpenExternalURLsInWindowOpen)
+TEST(CyberKit, ShouldOpenExternalURLsInWindowOpen)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
@@ -81,14 +81,14 @@ TEST(WebKit, ShouldOpenExternalURLsInWindowOpen)
     [webView setUIDelegate:controller.get()];
 
     [webView loadHTMLString:@"<body onclick=\"window.open('https://webkit.org/destination')\">" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
     finishedNavigation = false;
 
     NSPoint clickPoint = NSMakePoint(100, 100);
 
     [[webView hitTest:clickPoint] mouseDown:[NSEvent mouseEventWithType:NSEventTypeLeftMouseDown location:clickPoint modifierFlags:0 timestamp:0 windowNumber:[window windowNumber] context:nil eventNumber:0 clickCount:1 pressure:1]];
     [[webView hitTest:clickPoint] mouseUp:[NSEvent mouseEventWithType:NSEventTypeLeftMouseUp location:clickPoint modifierFlags:0 timestamp:0 windowNumber:[window windowNumber] context:nil eventNumber:0 clickCount:1 pressure:1]];
-    TestWebKitAPI::Util::run(&didCreateWebView);
+    TestCyberKitAPI::Util::run(&didCreateWebView);
     didCreateWebView = false;
 
     // User-initiated window.open to the same host should allow external schemes but not App Links.
@@ -97,7 +97,7 @@ TEST(WebKit, ShouldOpenExternalURLsInWindowOpen)
 
     decidedPolicy = false;
     [newWebView setNavigationDelegate:controller.get()];
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
     decidedPolicy = false;
 
     // User-initiated window.open to the same host should allow external schemes but not App Links.
@@ -105,12 +105,12 @@ TEST(WebKit, ShouldOpenExternalURLsInWindowOpen)
     ASSERT_FALSE([action _shouldOpenAppLinks]);
 
     [webView loadHTMLString:@"<body onclick=\"window.open('http://apple.com/destination')\">" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
     finishedNavigation = false;
 
     [[webView hitTest:clickPoint] mouseDown:[NSEvent mouseEventWithType:NSEventTypeLeftMouseDown location:clickPoint modifierFlags:0 timestamp:0 windowNumber:[window windowNumber] context:nil eventNumber:0 clickCount:1 pressure:1]];
     [[webView hitTest:clickPoint] mouseUp:[NSEvent mouseEventWithType:NSEventTypeLeftMouseUp location:clickPoint modifierFlags:0 timestamp:0 windowNumber:[window windowNumber] context:nil eventNumber:0 clickCount:1 pressure:1]];
-    TestWebKitAPI::Util::run(&didCreateWebView);
+    TestCyberKitAPI::Util::run(&didCreateWebView);
     didCreateWebView = false;
 
     // User-initiated window.open to different host should allow external schemes and App Links.
@@ -119,7 +119,7 @@ TEST(WebKit, ShouldOpenExternalURLsInWindowOpen)
 
     decidedPolicy = false;
     [newWebView setNavigationDelegate:controller.get()];
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
     decidedPolicy = false;
 
     // User-initiated window.open to different host should allow external schemes and App Links.
@@ -130,7 +130,7 @@ TEST(WebKit, ShouldOpenExternalURLsInWindowOpen)
     action = nullptr;
 }
 
-TEST(WebKit, ShouldOpenExternalURLsInTargetedLink)
+TEST(CyberKit, ShouldOpenExternalURLsInTargetedLink)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
@@ -142,7 +142,7 @@ TEST(WebKit, ShouldOpenExternalURLsInTargetedLink)
     [webView setUIDelegate:controller.get()];
 
     [webView loadHTMLString:@"<a style=\"display: block; height: 100%\" href=\"https://webkit.org/destination.html\" target=\"_blank\">" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
     finishedNavigation = false;
 
     NSPoint clickPoint = NSMakePoint(100, 100);
@@ -150,14 +150,14 @@ TEST(WebKit, ShouldOpenExternalURLsInTargetedLink)
     decidedPolicy = false;
     [[webView hitTest:clickPoint] mouseDown:[NSEvent mouseEventWithType:NSEventTypeLeftMouseDown location:clickPoint modifierFlags:0 timestamp:0 windowNumber:[window windowNumber] context:nil eventNumber:0 clickCount:1 pressure:1]];
     [[webView hitTest:clickPoint] mouseUp:[NSEvent mouseEventWithType:NSEventTypeLeftMouseUp location:clickPoint modifierFlags:0 timestamp:0 windowNumber:[window windowNumber] context:nil eventNumber:0 clickCount:1 pressure:1]];
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
     decidedPolicy = false;
 
     // User-initiated targeted navigation to the same host should allow external schemes but not App Links.
     ASSERT_TRUE([action _shouldOpenExternalSchemes]);
     ASSERT_FALSE([action _shouldOpenAppLinks]);
 
-    TestWebKitAPI::Util::run(&didCreateWebView);
+    TestCyberKitAPI::Util::run(&didCreateWebView);
     didCreateWebView = false;
 
     // User-initiated targeted navigation to the same host should allow external schemes but not App Links.
@@ -166,7 +166,7 @@ TEST(WebKit, ShouldOpenExternalURLsInTargetedLink)
 
     decidedPolicy = false;
     [newWebView setNavigationDelegate:controller.get()];
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
     decidedPolicy = false;
 
     // User-initiated targeted navigation to the same host should allow external schemes but not App Links.
@@ -174,20 +174,20 @@ TEST(WebKit, ShouldOpenExternalURLsInTargetedLink)
     ASSERT_FALSE([action _shouldOpenAppLinks]);
 
     [webView loadHTMLString:@"<a style=\"display: block; height: 100%\" href=\"http://apple.com/destination.html\" target=\"_blank\">" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
     finishedNavigation = false;
 
     decidedPolicy = false;
     [[webView hitTest:clickPoint] mouseDown:[NSEvent mouseEventWithType:NSEventTypeLeftMouseDown location:clickPoint modifierFlags:0 timestamp:0 windowNumber:[window windowNumber] context:nil eventNumber:0 clickCount:1 pressure:1]];
     [[webView hitTest:clickPoint] mouseUp:[NSEvent mouseEventWithType:NSEventTypeLeftMouseUp location:clickPoint modifierFlags:0 timestamp:0 windowNumber:[window windowNumber] context:nil eventNumber:0 clickCount:1 pressure:1]];
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
     decidedPolicy = false;
 
     // User-initiated targeted navigation to different host should allow external schemes and App Links.
     ASSERT_TRUE([action _shouldOpenExternalSchemes]);
     ASSERT_TRUE([action _shouldOpenAppLinks]);
 
-    TestWebKitAPI::Util::run(&didCreateWebView);
+    TestCyberKitAPI::Util::run(&didCreateWebView);
     didCreateWebView = false;
 
     // User-initiated targeted navigation to different host should allow external schemes and App Links.
@@ -196,7 +196,7 @@ TEST(WebKit, ShouldOpenExternalURLsInTargetedLink)
 
     decidedPolicy = false;
     [newWebView setNavigationDelegate:controller.get()];
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
     decidedPolicy = false;
 
     // User-initiated targeted navigation to different host should allow external schemes and App Links.
@@ -207,7 +207,7 @@ TEST(WebKit, ShouldOpenExternalURLsInTargetedLink)
     action = nullptr;
 }
 
-TEST(WebKit, RestoreShouldOpenExternalURLsPolicyAfterCrash)
+TEST(CyberKit, RestoreShouldOpenExternalURLsPolicyAfterCrash)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
     auto window = adoptNS([[NSWindow alloc] initWithContentRect:[webView frame] styleMask:NSWindowStyleMaskBorderless backing:NSBackingStoreBuffered defer:YES]);
@@ -217,15 +217,15 @@ TEST(WebKit, RestoreShouldOpenExternalURLsPolicyAfterCrash)
     [webView setUIDelegate:controller.get()];
 
     finishedNavigation = false;
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"should-open-external-schemes" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"should-open-external-schemes" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
     finishedNavigation = false;
 
     // Before crash
     decidedPolicy = false;
     [webView evaluateJavaScript:@"navigateToTelURLInNestedZeroTimer()" completionHandler:nil]; // Non-user initiated navigation because it is performed in a nested timer callback.
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
     decidedPolicy = false;
 
     ASSERT_TRUE([action _shouldOpenExternalSchemes]);
@@ -236,13 +236,13 @@ TEST(WebKit, RestoreShouldOpenExternalURLsPolicyAfterCrash)
     [webView reload];
 
     finishedNavigation = false;
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
     finishedNavigation = false;
 
     // After crash
     decidedPolicy = false;
     [webView evaluateJavaScript:@"navigateToTelURLInNestedZeroTimer()" completionHandler:nil]; // Non-user initiated navigation because it is performed in a nested timer callback.
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
     decidedPolicy = false;
 
     ASSERT_TRUE([action _shouldOpenExternalSchemes]);
@@ -269,7 +269,7 @@ function clicked() {
 <a style="display: block; height: 100%" onclick="clicked();">Click to start iframe dance</a>
 )schemeresource";
 
-TEST(WebKit, IFrameWithSameOriginAsMainFramePropagates)
+TEST(CyberKit, IFrameWithSameOriginAsMainFramePropagates)
 {
     auto schemeHandler = adoptNS([[TestURLSchemeHandler alloc] init]);
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
@@ -319,7 +319,7 @@ TEST(WebKit, IFrameWithSameOriginAsMainFramePropagates)
     [[webView hitTest:clickPoint] mouseDown:[NSEvent mouseEventWithType:NSEventTypeLeftMouseDown location:clickPoint modifierFlags:0 timestamp:0 windowNumber:[webView.get().window windowNumber] context:nil eventNumber:0 clickCount:1 pressure:1]];
     [[webView hitTest:clickPoint] mouseUp:[NSEvent mouseEventWithType:NSEventTypeLeftMouseUp location:clickPoint modifierFlags:0 timestamp:0 windowNumber:[webView.get().window windowNumber] context:nil eventNumber:0 clickCount:1 pressure:1]];
 
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
     
     ASSERT_TRUE(openAppLinks);
     ASSERT_TRUE(externalSchemes);

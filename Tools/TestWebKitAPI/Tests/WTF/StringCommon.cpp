@@ -34,7 +34,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/StringCommon.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 #if CPU(ARM64)
 TEST(WTF_StringCommon, Find8NonASCII)

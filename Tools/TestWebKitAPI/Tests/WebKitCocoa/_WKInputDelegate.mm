@@ -30,10 +30,10 @@
 #import "Test.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKFocusedElementInfo.h>
-#import <WebKit/_WKFormInputSession.h>
-#import <WebKit/_WKInputDelegate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKFocusedElementInfo.h>
+#import <CyberKit/_WKFormInputSession.h>
+#import <CyberKit/_WKInputDelegate.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RetainPtr.h>
 
@@ -97,7 +97,7 @@ static bool willSubmitFormValuesCalled;
 
 @end
 
-TEST(WebKit, FormSubmission)
+TEST(CyberKit, FormSubmission)
 {
     auto delegate = adoptNS([[InputDelegate alloc] init]);
     WKWebViewConfiguration *configuration = [WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"BundleFormDelegatePlugInWithUserInfo"];
@@ -109,12 +109,12 @@ TEST(WebKit, FormSubmission)
         "<input type='password' name='testname2' value='testvalue2'/>"
         "<input type='hidden' name='testname3' value='testvalue3'/>"
     "</form></body>" baseURL:nil];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 #if PLATFORM(IOS_FAMILY)
 
-TEST(WebKit, FocusedElementInfo)
+TEST(CyberKit, FocusedElementInfo)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 500)]);
     auto delegate = adoptNS([[InputDelegate alloc] init]);

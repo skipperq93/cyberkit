@@ -28,7 +28,7 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 namespace Util {
 
 template<typename T, typename U>
@@ -40,10 +40,10 @@ static inline ::testing::AssertionResult assertNSObjectsAreEqual(const char* exp
 }
 
 } // namespace Util
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #define EXPECT_NS_EQUAL(expected, actual) \
-    EXPECT_PRED_FORMAT2(TestWebKitAPI::Util::assertNSObjectsAreEqual, expected, actual)
+    EXPECT_PRED_FORMAT2(TestCyberKitAPI::Util::assertNSObjectsAreEqual, expected, actual)
 
 #if USE(CG)
 

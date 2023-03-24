@@ -30,7 +30,7 @@
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
 
 @interface WKWebView (AnimationTesting)
 - (void)_pauseAllAnimationsWithCompletionHandler:(void(^_Nullable)(void))completionHandler;
@@ -44,7 +44,7 @@ static bool isAnimating(NSString *domID, RetainPtr<TestWKWebView> webView)
     return [webView stringByEvaluatingJavaScript:js].boolValue;
 }
 
-TEST(WebKit, PlayAllPauseAllAnimationSupport)
+TEST(CyberKit, PlayAllPauseAllAnimationSupport)
 {
     WKWebViewConfiguration *configuration = [WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"WebProcessPlugInWithInternals" configureJSCForTesting:YES];
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration addToWindow:YES]);
@@ -57,7 +57,7 @@ TEST(WebKit, PlayAllPauseAllAnimationSupport)
     [webView _pauseAllAnimationsWithCompletionHandler:^{
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     ASSERT_FALSE([webView _allowsAnyAnimationToPlay]);
 
@@ -66,11 +66,11 @@ TEST(WebKit, PlayAllPauseAllAnimationSupport)
     [webView _playAllAnimationsWithCompletionHandler:^{
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     ASSERT_TRUE([webView _allowsAnyAnimationToPlay]);
 }
 
-TEST(WebKit, IsAnyAnimationAllowedToPlayBehaviorWithIndividualAnimationControl)
+TEST(CyberKit, IsAnyAnimationAllowedToPlayBehaviorWithIndividualAnimationControl)
 {
     WKWebViewConfiguration *configuration = [WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"WebProcessPlugInWithInternals" configureJSCForTesting:YES];
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration addToWindow:YES]);
@@ -80,12 +80,12 @@ TEST(WebKit, IsAnyAnimationAllowedToPlayBehaviorWithIndividualAnimationControl)
 
     [webView _pauseAllAnimationsWithCompletionHandler:nil];
     while (isAnimating(@"imgOne", webView) || isAnimating(@"imgTwo", webView))
-        TestWebKitAPI::Util::runFor(0.05_s);
+        TestCyberKitAPI::Util::runFor(0.05_s);
     ASSERT_FALSE([webView _allowsAnyAnimationToPlay]);
 
     [webView stringByEvaluatingJavaScript:@"internals.resumeImageAnimation(document.getElementById('imgOne'))"];
     while (!isAnimating(@"imgOne", webView))
-        TestWebKitAPI::Util::runFor(0.05_s);
+        TestCyberKitAPI::Util::runFor(0.05_s);
     // imgOne is now playing despite the rest of the animations on the page being paused, so _allowsAnyAnimationToPlay should be true.
     ASSERT_TRUE([webView _allowsAnyAnimationToPlay]);
 
@@ -93,12 +93,12 @@ TEST(WebKit, IsAnyAnimationAllowedToPlayBehaviorWithIndividualAnimationControl)
     [webView stringByEvaluatingJavaScript:@"document.getElementById('imgOne').remove()"];
     [configuration.processPool _garbageCollectJavaScriptObjectsForTesting];
     while ([webView _allowsAnyAnimationToPlay])
-        TestWebKitAPI::Util::runFor(0.05_s);
+        TestCyberKitAPI::Util::runFor(0.05_s);
     ASSERT_FALSE([webView _allowsAnyAnimationToPlay]);
 
     [webView _playAllAnimationsWithCompletionHandler:nil];
     while (![webView _allowsAnyAnimationToPlay])
-        TestWebKitAPI::Util::runFor(0.05_s);
+        TestCyberKitAPI::Util::runFor(0.05_s);
     ASSERT_TRUE([webView _allowsAnyAnimationToPlay]);
 }
 #endif // ENABLE(ACCESSIBILITY_ANIMATION_CONTROL)

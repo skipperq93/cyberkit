@@ -27,13 +27,13 @@
 
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, SubresourceErrorCrash)
+TEST(CyberKitLegacy, SubresourceErrorCrash)
 {
     auto webView = adoptNS([[WebView alloc] initWithFrame:NSZeroRect frameName:@"" groupName:@""]);
     [[webView mainFrame] loadHTMLString:@"<link rel=stylesheet href='x-error:error'>" baseURL:nil];
     webView = nil;
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

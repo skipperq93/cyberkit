@@ -29,15 +29,15 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestNavigationDelegate.h"
-#import <WebKit/WKBrowsingContextController.h>
-#import <WebKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKBrowsingContextController.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
 #import <wtf/RetainPtr.h>
 
 #if WK_HAVE_C_SPI
 #import "PlatformWebView.h"
-#import <WebKit/WKBrowsingContextLoadDelegate.h>
-#import <WebKit/WKContextPrivate.h>
-#import <WebKit/WKPageUIClient.h>
+#import <CyberKit/WKBrowsingContextLoadDelegate.h>
+#import <CyberKit/WKContextPrivate.h>
+#import <CyberKit/WKPageUIClient.h>
 #endif
 
 static NSString * const echoScheme = @"echo";
@@ -104,9 +104,9 @@ static RetainPtr<NSURL> lastEchoedURL;
 
 #endif
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, RegisterAsCanDisplayOnlyIfCanRequest_SameOriginLoad)
+TEST(CyberKit, RegisterAsCanDisplayOnlyIfCanRequest_SameOriginLoad)
 {
     @autoreleasepool {
         [NSURLProtocol registerClass:[EchoURLProtocol class]];
@@ -131,7 +131,7 @@ TEST(WebKit, RegisterAsCanDisplayOnlyIfCanRequest_SameOriginLoad)
     }
 }
 
-TEST(WebKit, RegisterAsCanDisplayOnlyIfCanRequest_CrossOriginLoad)
+TEST(CyberKit, RegisterAsCanDisplayOnlyIfCanRequest_CrossOriginLoad)
 {
     @autoreleasepool {
         [NSURLProtocol registerClass:[EchoURLProtocol class]];
@@ -156,7 +156,7 @@ TEST(WebKit, RegisterAsCanDisplayOnlyIfCanRequest_CrossOriginLoad)
     }
 }
 
-TEST(WebKit, LoadAlternateHTMLStringAllowsFirstPartyForCookies)
+TEST(CyberKit, LoadAlternateHTMLStringAllowsFirstPartyForCookies)
 {
     @autoreleasepool {
         [NSURLProtocol registerClass:[EchoURLProtocol class]];
@@ -176,7 +176,7 @@ TEST(WebKit, LoadAlternateHTMLStringAllowsFirstPartyForCookies)
 
 #if WK_HAVE_C_SPI
 
-TEST(WebKit, WKContextRegisterURLSchemeAsCanDisplayOnlyIfCanRequest_SameOriginLoad)
+TEST(CyberKit, WKContextRegisterURLSchemeAsCanDisplayOnlyIfCanRequest_SameOriginLoad)
 {
     @autoreleasepool {
         [NSURLProtocol registerClass:[EchoURLProtocol class]];
@@ -200,7 +200,7 @@ TEST(WebKit, WKContextRegisterURLSchemeAsCanDisplayOnlyIfCanRequest_SameOriginLo
     }
 }
 
-TEST(WebKit, WKContextRegisterURLSchemeAsCanDisplayOnlyIfCanRequest_CrossOriginLoad)
+TEST(CyberKit, WKContextRegisterURLSchemeAsCanDisplayOnlyIfCanRequest_CrossOriginLoad)
 {
     @autoreleasepool {
         [NSURLProtocol registerClass:[EchoURLProtocol class]];
@@ -226,4 +226,4 @@ TEST(WebKit, WKContextRegisterURLSchemeAsCanDisplayOnlyIfCanRequest_CrossOriginL
 
 #endif // WK_HAVE_C_SPI
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

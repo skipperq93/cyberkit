@@ -30,12 +30,12 @@
 #include "InjectedBundleTest.h"
 
 #include "PlatformUtilities.h"
-#include <WebKit/WKArray.h>
-#include <WebKit/WKBundlePage.h>
-#include <WebKit/WKBundleBackForwardListItem.h>
-#include <WebKit/WKWebArchive.h>
+#include <CyberKit/WKArray.h>
+#include <CyberKit/WKBundlePage.h>
+#include <CyberKit/WKBundleBackForwardListItem.h>
+#include <CyberKit/WKWebArchive.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class PasteboardNotificationsTest : public InjectedBundleTest {
 public:
@@ -84,6 +84,6 @@ void PasteboardNotificationsTest::didCreatePage(WKBundleRef bundle, WKBundlePage
     WKBundlePageSetEditorClient(page, &pageEditorClient.base);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

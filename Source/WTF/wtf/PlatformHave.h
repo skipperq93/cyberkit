@@ -447,7 +447,7 @@
 #endif
 
 #if PLATFORM(IOS)
-/* FIXME: SafariServices.framework exists on macOS. It is only used by WebKit on iOS, so the behavior is correct, but the name is misleading. */
+/* FIXME: SafariServices.framework exists on macOS. It is only used by CyberKit on iOS, so the behavior is correct, but the name is misleading. */
 #define HAVE_SAFARI_SERVICES_FRAMEWORK 1
 #endif
 
@@ -1371,7 +1371,7 @@
 #define HAVE_VPIO_DUCKING_LEVEL_API 1
 #endif
 
-// Set for GCC in Source/cmake/OptionsCommon.cmake and WebKitCompilerFlags.cmake.
+// Set for GCC in Source/cmake/OptionsCommon.cmake and CyberKitCompilerFlags.cmake.
 #if !defined(HAVE_STD_SPAN) && (COMPILER(CLANG) || COMPILER(MSVC))
 #define HAVE_STD_SPAN 1
 #endif

@@ -36,12 +36,12 @@
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebCore/LocalizedStrings.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WebKit.h>
+#import <CyberCore/LocalizedStrings.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/CyberKit.h>
 #import <wtf/RetainPtr.h>
 
-TEST(WebKit, WKContentViewEditingActions)
+TEST(CyberKit, WKContentViewEditingActions)
 {
     [UIPasteboard generalPasteboard].items = @[];
 
@@ -64,12 +64,12 @@ TEST(WebKit, WKContentViewEditingActions)
         }];
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_WK_STREQ("Hello world", [[UIPasteboard generalPasteboard] string]);
 }
 
-TEST(WebKit, InvokeShareWithoutSelection)
+TEST(CyberKit, InvokeShareWithoutSelection)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)]);
     [webView synchronouslyLoadTestPageNamed:@"simple"];
@@ -77,7 +77,7 @@ TEST(WebKit, InvokeShareWithoutSelection)
     [webView waitForNextPresentationUpdate];
 }
 
-TEST(WebKit, CopyInAutoFilledAndViewablePasswordField)
+TEST(CyberKit, CopyInAutoFilledAndViewablePasswordField)
 {
     RetainPtr configuration = [WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"WebProcessPlugInWithInternals" configureJSCForTesting:YES];
 
@@ -100,7 +100,7 @@ TEST(WebKit, CopyInAutoFilledAndViewablePasswordField)
 
 #if ENABLE(APP_HIGHLIGHTS)
 
-TEST(WebKit, AppHighlightsInImageOverlays)
+TEST(CyberKit, AppHighlightsInImageOverlays)
 {
     auto configuration = retainPtr([WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"WebProcessPlugInWithInternals" configureJSCForTesting:YES]);
     [configuration _setAppHighlightsEnabled:YES];
@@ -112,8 +112,8 @@ TEST(WebKit, AppHighlightsInImageOverlays)
 
     auto menuBuilder = adoptNS([[TestUIMenuBuilder alloc] init]);
     [webView buildMenuWithBuilder:menuBuilder.get()];
-    EXPECT_NULL([menuBuilder actionWithTitle:WebCore::contextMenuItemTagAddHighlightToNewQuickNote()]);
-    EXPECT_NULL([menuBuilder actionWithTitle:WebCore::contextMenuItemTagAddHighlightToCurrentQuickNote()]);
+    EXPECT_NULL([menuBuilder actionWithTitle:CyberCore::contextMenuItemTagAddHighlightToNewQuickNote()]);
+    EXPECT_NULL([menuBuilder actionWithTitle:CyberCore::contextMenuItemTagAddHighlightToCurrentQuickNote()]);
 
     [webView synchronouslyLoadTestPageNamed:@"simple"];
     [webView selectAll:nil];
@@ -121,8 +121,8 @@ TEST(WebKit, AppHighlightsInImageOverlays)
 
     [menuBuilder reset];
     [webView buildMenuWithBuilder:menuBuilder.get()];
-    EXPECT_NOT_NULL([menuBuilder actionWithTitle:WebCore::contextMenuItemTagAddHighlightToNewQuickNote()]);
-    EXPECT_NULL([menuBuilder actionWithTitle:WebCore::contextMenuItemTagAddHighlightToCurrentQuickNote()]);
+    EXPECT_NOT_NULL([menuBuilder actionWithTitle:CyberCore::contextMenuItemTagAddHighlightToNewQuickNote()]);
+    EXPECT_NULL([menuBuilder actionWithTitle:CyberCore::contextMenuItemTagAddHighlightToCurrentQuickNote()]);
 }
 
 #endif // ENABLE(APP_HIGHLIGHTS)
@@ -133,7 +133,7 @@ static BOOL canPerformActionWithSender(id /* instance */, SEL, SEL /* action */,
     return gCanPerformActionWithSenderResult;
 }
 
-TEST(WebKit, CaptureTextFromCamera)
+TEST(CyberKit, CaptureTextFromCamera)
 {
     gCanPerformActionWithSenderResult = YES;
     InstanceMethodSwizzler swizzler { UIResponder.class, @selector(canPerformAction:withSender:), reinterpret_cast<IMP>(canPerformActionWithSender) };
@@ -178,7 +178,7 @@ TEST(WebKit, CaptureTextFromCamera)
         EXPECT_FALSE([webView canPerformAction:@selector(captureTextFromCamera:) withSender:nil]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 #endif
 }
 

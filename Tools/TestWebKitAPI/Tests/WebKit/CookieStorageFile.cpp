@@ -28,13 +28,13 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <WebKit/WKPageConfigurationRef.h>
-#include <WebKit/WKRetainPtr.h>
-#include <WebKit/WKWebsiteDataStoreConfigurationRef.h>
-#include <WebKit/WKWebsiteDataStoreRef.h>
+#include <CyberKit/WKPageConfigurationRef.h>
+#include <CyberKit/WKRetainPtr.h>
+#include <CyberKit/WKWebsiteDataStoreConfigurationRef.h>
+#include <CyberKit/WKWebsiteDataStoreRef.h>
 #include <wtf/FileSystem.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class CookieStorageFile : public testing::Test {
 public:
@@ -94,4 +94,4 @@ TEST_F(CookieStorageFile, CustomPath)
     ASSERT_TRUE(FileSystem::fileExists(cookieStorageFile));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

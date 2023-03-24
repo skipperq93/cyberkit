@@ -7,7 +7,7 @@ my $cgi = new CGI;
 print "Content-Type: text/html; charset=UTF-8\n";
 my $experimental = $cgi->param('experimental') || "";
 if ($experimental eq 'true') {
-    print "X-WebKit-CSP: " . $cgi->param('csp') . "\n\n";
+    print "X-CyberKit-CSP: " . $cgi->param('csp') . "\n\n";
 } else {
     print "Content-Security-Policy: " . $cgi->param('csp') . "\n\n";
 }

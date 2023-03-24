@@ -28,9 +28,9 @@
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebCore/PictureInPictureSupport.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberCore/PictureInPictureSupport.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 // We can enable the test for old iOS versions after <rdar://problem/63572534> is fixed.
@@ -41,8 +41,8 @@ static void loadPictureInPicture(RetainPtr<TestWKWebView> webView)
     [webView synchronouslyLoadHTMLString:@"<video src=video-with-audio.mp4 webkit-playsinline playsinline loop></video>"];
 
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
-        @"WebCoreLogging": @"",
-        @"WebKit2Logging": @"",
+        @"CyberCoreLogging": @"",
+        @"CyberKit2Logging": @"",
     }];
 
     [webView objectByEvaluatingJavaScript:@"document.querySelector('video').addEventListener('webkitpresentationmodechanged', event => { window.webkit.messageHandlers.testHandler.postMessage('presentationmodechanged'); });"];
@@ -51,12 +51,12 @@ static void loadPictureInPicture(RetainPtr<TestWKWebView> webView)
     [webView performAfterReceivingMessage:@"presentationmodechanged" action:^{ presentationModeChanged = true; }];
 
     [webView objectByEvaluatingJavaScriptWithUserGesture:@"document.querySelector('video').webkitSetPresentationMode('picture-in-picture')"];
-    ASSERT_UNUSED(presentationModeChanged, TestWebKitAPI::Util::runFor(&presentationModeChanged, 10_s));
+    ASSERT_UNUSED(presentationModeChanged, TestCyberKitAPI::Util::runFor(&presentationModeChanged, 10_s));
     do {
         if (![webView stringByEvaluatingJavaScript:@"window.internals.isChangingPresentationMode(document.querySelector('video'))"].boolValue)
             break;
 
-        TestWebKitAPI::Util::runFor(0.5_s);
+        TestCyberKitAPI::Util::runFor(0.5_s);
     } while (true);
 }
 
@@ -67,12 +67,12 @@ TEST(WKWebViewCloseAllMediaPresentations, DISABLED_PictureInPicture)
 TEST(WKWebViewCloseAllMediaPresentations, PictureInPicture)
 #endif
 {
-    if (!WebCore::supportsPictureInPicture())
+    if (!CyberCore::supportsPictureInPicture())
         return;
 
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
-        @"WebCoreLogging": @"Fullscreen=debug",
-        @"WebKit2Logging": @"Fullscreen=debug",
+        @"CyberCoreLogging": @"Fullscreen=debug",
+        @"CyberKit2Logging": @"Fullscreen=debug",
     }];
 
     auto *configuration = [WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"WebProcessPlugInWithInternals" configureJSCForTesting:YES];
@@ -85,7 +85,7 @@ TEST(WKWebViewCloseAllMediaPresentations, PictureInPicture)
     [webView closeAllMediaPresentationsWithCompletionHandler:^{
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     EXPECT_TRUE([webView _allMediaPresentationsClosed]);
 }
@@ -97,12 +97,12 @@ TEST(WKWebViewCloseAllMediaPresentationsInternal, DISABLED_PictureInPicture)
 TEST(WKWebViewCloseAllMediaPresentationsInternal, PictureInPicture)
 #endif
 {
-    if (!WebCore::supportsPictureInPicture())
+    if (!CyberCore::supportsPictureInPicture())
         return;
 
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
-        @"WebCoreLogging": @"Fullscreen=debug",
-        @"WebKit2Logging": @"Fullscreen=debug",
+        @"CyberCoreLogging": @"Fullscreen=debug",
+        @"CyberKit2Logging": @"Fullscreen=debug",
     }];
 
     auto *configuration = [WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"WebProcessPlugInWithInternals" configureJSCForTesting:YES];
@@ -117,7 +117,7 @@ TEST(WKWebViewCloseAllMediaPresentationsInternal, PictureInPicture)
         if (![webView stringByEvaluatingJavaScript:@"window.internals.isChangingPresentationMode(document.querySelector('video'))"].boolValue)
             break;
 
-        TestWebKitAPI::Util::runFor(0.5_s);
+        TestCyberKitAPI::Util::runFor(0.5_s);
     } while (true);
 
     EXPECT_TRUE([webView _allMediaPresentationsClosed]);
@@ -142,19 +142,19 @@ TEST(WKWebViewCloseAllMediaPresentations, VideoFullscreen)
     [webView objectByEvaluatingJavaScriptWithUserGesture:@"document.querySelector('video').webkitEnterFullscreen()"];
     [webView objectByEvaluatingJavaScript:@"window.internals.setMockVideoPresentationModeEnabled(true)"];
 
-    TestWebKitAPI::Util::run(&presentationModeChanged);
+    TestCyberKitAPI::Util::run(&presentationModeChanged);
     do {
         if (![webView stringByEvaluatingJavaScript:@"window.internals.isChangingPresentationMode(document.querySelector('video'))"].boolValue)
             break;
 
-        TestWebKitAPI::Util::runFor(0.5_s);
+        TestCyberKitAPI::Util::runFor(0.5_s);
     } while (true);
 
     static bool isDone = false;
     [webView closeAllMediaPresentationsWithCompletionHandler:^{
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     
     EXPECT_TRUE([webView _allMediaPresentationsClosed]);
 }
@@ -173,7 +173,7 @@ TEST(WKWebViewCloseAllMediaPresentations, ElementFullscreen)
 
     [webView objectByEvaluatingJavaScriptWithUserGesture:@"document.querySelector('#target').webkitRequestFullscreen()"];
 
-    TestWebKitAPI::Util::run(&fullscreenModeChanged);
+    TestCyberKitAPI::Util::run(&fullscreenModeChanged);
 
     fullscreenModeChanged = false;
     [webView performAfterReceivingMessage:@"fullscreenchange" action:^{ fullscreenModeChanged = true; }];
@@ -182,7 +182,7 @@ TEST(WKWebViewCloseAllMediaPresentations, ElementFullscreen)
     [webView closeAllMediaPresentationsWithCompletionHandler:^{
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     
     EXPECT_TRUE([webView _allMediaPresentationsClosed]);
 }
@@ -194,12 +194,12 @@ TEST(WKWebViewCloseAllMediaPresentations, DISABLED_MultipleSequentialCloseAllMed
 TEST(WKWebViewCloseAllMediaPresentations, MultipleSequentialCloseAllMediaPresentations)
 #endif
 {
-    if (!WebCore::supportsPictureInPicture())
+    if (!CyberCore::supportsPictureInPicture())
         return;
 
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
-        @"WebCoreLogging": @"Fullscreen=debug",
-        @"WebKit2Logging": @"Fullscreen=debug",
+        @"CyberCoreLogging": @"Fullscreen=debug",
+        @"CyberKit2Logging": @"Fullscreen=debug",
     }];
 
     auto *configuration = [WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"WebProcessPlugInWithInternals" configureJSCForTesting:YES];
@@ -218,8 +218,8 @@ TEST(WKWebViewCloseAllMediaPresentations, MultipleSequentialCloseAllMediaPresent
         secondIsDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&firstIsDone);
-    TestWebKitAPI::Util::run(&secondIsDone);
+    TestCyberKitAPI::Util::run(&firstIsDone);
+    TestCyberKitAPI::Util::run(&secondIsDone);
 
     EXPECT_TRUE([webView _allMediaPresentationsClosed]);
 }

@@ -28,7 +28,7 @@
 #include "Test.h"
 #include <wtf/JSONValues.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(JSONValue, Construct)
 {
@@ -811,4 +811,4 @@ TEST(JSONValue, MemoryCost)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

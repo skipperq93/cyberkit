@@ -49,17 +49,17 @@ Function<void(WKScriptMessage*)> _messageHandler;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool isReady = false;
 
-TEST(WebKit2, RTCDataChannelPostMessage)
+TEST(CyberKit2, RTCDataChannelPostMessage)
 {
     __block bool removedAnyExistingData = false;
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:^() {
         removedAnyExistingData = true;
     }];
-    TestWebKitAPI::Util::run(&removedAnyExistingData);
+    TestCyberKitAPI::Util::run(&removedAnyExistingData);
 
     static constexpr auto main =
     "<script>"
@@ -149,7 +149,7 @@ TEST(WebKit2, RTCDataChannelPostMessage)
     }];
     isReady = false;
     [webView1 loadRequest:request];
-    TestWebKitAPI::Util::run(&isReady);
+    TestCyberKitAPI::Util::run(&isReady);
 
     auto webView2 = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 500) configuration:configuration.get()]);
     webView2.get().navigationDelegate = navigationDelegate.get();
@@ -160,7 +160,7 @@ TEST(WebKit2, RTCDataChannelPostMessage)
     }];
     isReady = false;
     [webView2 loadRequest:request];
-    TestWebKitAPI::Util::run(&isReady);
+    TestCyberKitAPI::Util::run(&isReady);
 
     [messageHandler setMessageHandler:[](WKScriptMessage *message) {
         EXPECT_WK_STREQ(@"TRANSFERED", [message body]);
@@ -170,14 +170,14 @@ TEST(WebKit2, RTCDataChannelPostMessage)
     // Transfer is probably in-process.
     isReady = false;
     [webView1 stringByEvaluatingJavaScript:@"transferDataChannel()"];
-    TestWebKitAPI::Util::run(&isReady);
+    TestCyberKitAPI::Util::run(&isReady);
 
     // Transfer is probably out-of-process.
     isReady = false;
     [webView2 stringByEvaluatingJavaScript:@"transferDataChannel()"];
-    TestWebKitAPI::Util::run(&isReady);
+    TestCyberKitAPI::Util::run(&isReady);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(WEB_RTC)

@@ -16,7 +16,7 @@
         <script type="text/ecmascript" xlink:href="resources/timer.js"/>
         <script type="text/ecmascript" xlink:href="resources/window.js"/>
         <script type="text/ecmascript"><![CDATA[
-        // WebKit modification: do not terminate before all create functions
+        // CyberKit modification: do not terminate before all create functions
         // have been called. This call, the notifyDone() below, and all calls
         // to createCalled() were added to prevent a race in which the test may
         // terminate before the final window decoration is added.

@@ -25,7 +25,7 @@
 
 #import "config.h"
 
-#import <WebKit/WebView.h>
+#import <CyberKit/WebView.h>
 #import <wtf/RetainPtr.h>
 
 @interface EarlyKVOCrashResponder : NSResponder {
@@ -76,9 +76,9 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, EarlyKVOCrash)
+TEST(CyberKitLegacy, EarlyKVOCrash)
 {
     auto webView = adoptNS([[WebView alloc] initWithFrame:NSZeroRect frameName:nil groupName:nil]);
     auto earlyKVOCrashResponder = adoptNS([[EarlyKVOCrashResponder alloc] initWithWebView:webView.get()]);
@@ -96,4 +96,4 @@ TEST(WebKitLegacy, EarlyKVOCrash)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

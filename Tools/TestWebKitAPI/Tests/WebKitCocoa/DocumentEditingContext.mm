@@ -31,8 +31,8 @@
 #import "TestCocoa.h"
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKTextInputContext.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKTextInputContext.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Vector.h>
 
@@ -126,7 +126,7 @@ static UIWKDocumentRequest *makeRequest(UIWKDocumentRequestFlags flags, UITextGr
         result = context;
         finished = true;
     }];
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
     return result.autorelease();
 }
 
@@ -136,7 +136,7 @@ static UIWKDocumentRequest *makeRequest(UIWKDocumentRequestFlags flags, UITextGr
     [self _adjustSelectionWithDelta:range completionHandler:^() {
         finished = true;
     }];
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 }
 
 - (UITextPlaceholder *)synchronouslyInsertTextPlaceholderWithSize:(CGSize)size
@@ -147,7 +147,7 @@ static UIWKDocumentRequest *makeRequest(UIWKDocumentRequestFlags flags, UITextGr
         result = placeholder;
         finished = true;
     }];
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
     return result.autorelease();
 }
 
@@ -157,7 +157,7 @@ static UIWKDocumentRequest *makeRequest(UIWKDocumentRequestFlags flags, UITextGr
     [self.textInputContentView removeTextPlaceholder:placeholder willInsertText:willInsertText completionHandler:^(void) {
         finished = true;
     }];
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 }
 
 @end

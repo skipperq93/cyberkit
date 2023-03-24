@@ -79,7 +79,7 @@
 
     var result = retrieveComputedStyle(element,property);
 
-    // Test against WebKit's getComputedStyle bug, where it does not return absolute values
+    // Test against CyberKit's getComputedStyle bug, where it does not return absolute values
     // As required here: http://www.w3.org/TR/1998/REC-CSS2-19980512/cascade.html#computed-value
     // If it returns a pixel value, but this value is 0px then it is considered a fail, too.
     var px_result = result.search(/^[-\d\.]+px$/) !== -1 && result !== '0px' ? 'non-zero px-based value' : result;

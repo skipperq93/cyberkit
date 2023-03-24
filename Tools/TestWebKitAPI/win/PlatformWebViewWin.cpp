@@ -26,12 +26,12 @@
 #include "config.h"
 #include "PlatformWebView.h"
 
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-static const wchar_t* hostWindowClassName = L"org.WebKit.TestWebKitAPI.PlatformWebViewHostWindow";
-static const wchar_t* webViewPointerProperty = L"org.WebKit.TestWebKitAPI.PlatformWebView.InstancePointer";
+static const wchar_t* hostWindowClassName = L"org.CyberKit.TestCyberKitAPI.PlatformWebViewHostWindow";
+static const wchar_t* webViewPointerProperty = L"org.CyberKit.TestCyberKitAPI.PlatformWebView.InstancePointer";
 
 // These offsets come from rom <http://msdn.microsoft.com/en-us/library/ms646280(VS.85).aspx>.
 static const size_t repeatCountBitOffset = 0;
@@ -86,7 +86,7 @@ void PlatformWebView::initialize(WKPageConfigurationRef configuration)
     registerWindowClass();
 
     RECT viewRect = {0, 0, 800, 600};
-    m_window = CreateWindowExW(0, hostWindowClassName, L"TestWebKitAPI", WS_OVERLAPPEDWINDOW, viewRect.left, viewRect.top, viewRect.right, viewRect.bottom, 0, 0, 0, this);
+    m_window = CreateWindowExW(0, hostWindowClassName, L"TestCyberKitAPI", WS_OVERLAPPEDWINDOW, viewRect.left, viewRect.top, viewRect.right, viewRect.bottom, 0, 0, 0, this);
     m_view = WKViewCreate(viewRect, configuration, m_window);
 }
 
@@ -156,4 +156,4 @@ LRESULT PlatformWebView::wndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
     return ::DefWindowProcW(hWnd, message, wParam, lParam);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

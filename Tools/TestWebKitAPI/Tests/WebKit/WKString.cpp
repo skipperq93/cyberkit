@@ -27,9 +27,9 @@
 
 #if WK_HAVE_C_SPI
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, WKString)
+TEST(CyberKit, WKString)
 {
     WKStringRef string = WKStringCreateWithUTF8CString("hello");
     EXPECT_TRUE(!WKStringIsEmpty(string));
@@ -70,6 +70,6 @@ TEST(WebKit, WKString)
     WKRelease(string);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

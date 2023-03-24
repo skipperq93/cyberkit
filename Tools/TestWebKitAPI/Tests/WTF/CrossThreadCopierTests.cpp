@@ -32,7 +32,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/WTFString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_CrossThreadCopier, CopyLVString)
 {
@@ -202,4 +202,4 @@ TEST(WTF_CrossThreadCopier, Optional)
     EXPECT_EQ(copy2->impl(), impl);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

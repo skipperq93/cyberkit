@@ -33,7 +33,7 @@
 #import <wtf/cocoa/VectorCocoa.h>
 #import <wtf/text/WTFString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static NSData *literalAsData(const char* literal)
 {
@@ -326,5 +326,5 @@ TEST(WTF_URLExtras, CreateNSArray)
     EXPECT_TRUE([array.get()[0] isKindOfClass:NSURL.class]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 

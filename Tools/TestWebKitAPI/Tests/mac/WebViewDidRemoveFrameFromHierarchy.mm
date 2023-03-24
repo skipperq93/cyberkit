@@ -25,7 +25,7 @@
 
 #import "config.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WebFrameLoadDelegatePrivate.h>
+#import <CyberKit/WebFrameLoadDelegatePrivate.h>
 #import <wtf/RetainPtr.h>
 
 @interface DidRemoveFrameFromHierarchyFrameLoadDelegate : NSObject <WebFrameLoadDelegate>
@@ -48,9 +48,9 @@ static bool didRemoveFrame;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, DidRemoveFrameFromHierarchy)
+TEST(CyberKitLegacy, DidRemoveFrameFromHierarchy)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<DidRemoveFrameFromHierarchyFrameLoadDelegate> frameLoadDelegate = adoptNS([[DidRemoveFrameFromHierarchyFrameLoadDelegate alloc] init]);
@@ -80,4 +80,4 @@ TEST(WebKitLegacy, DidRemoveFrameFromHierarchy)
     EXPECT_FALSE(didRemoveFrame);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

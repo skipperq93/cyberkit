@@ -28,10 +28,10 @@
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
 #import "Test.h"
-#import <WebCore/SQLiteFileSystem.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberCore/SQLiteFileSystem.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/CyberKit.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/RetainPtr.h>
 
 @interface IndexedDBFileNameMessageHandler : NSObject <WKScriptMessageHandler>
@@ -55,26 +55,26 @@ static void runTest()
     auto websiteDataStoreConfiguration = adoptNS([[_WKWebsiteDataStoreConfiguration alloc] init]);
     websiteDataStoreConfiguration.get().unifiedOriginStorageLevel = _WKUnifiedOriginStorageLevelNone;
     // Custom WebsiteDataStore must have a different general storage directory than default WebsiteDataStore.
-    websiteDataStoreConfiguration.get().generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/WebKit/com.apple.WebKit.TestWebKitAPI/CustomWebsiteData/Default" stringByExpandingTildeInPath] isDirectory:YES];
+    websiteDataStoreConfiguration.get().generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/Default" stringByExpandingTildeInPath] isDirectory:YES];
     [configuration setWebsiteDataStore:adoptNS([[WKWebsiteDataStore alloc] _initWithConfiguration:websiteDataStoreConfiguration.get()]).get()];
     [[configuration userContentController] addScriptMessageHandler:handler.get() name:@"testHandler"];
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
     
     // Open a database which does not have a database file on disk yet.
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBFileName-1" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBFileName-1" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     
     receivedScriptMessage = false;
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     RetainPtr<NSString> string = (NSString *)[lastScriptMessage body];
     EXPECT_WK_STREQ(@"Success", string.get());
 
     // Open a database which already has a database file on disk.
-    request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBFileName-2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBFileName-2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
     receivedScriptMessage = false;
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     RetainPtr<NSString> string2 = (NSString *)[lastScriptMessage body];
     EXPECT_WK_STREQ(@"Success", string2.get());
 
@@ -83,9 +83,9 @@ static void runTest()
     NSString *existingDatabaseName = @"IndexedDBTest";
     NSString *createdDatabaseName = @"IndexedDBOther";
     NSString *unusedDatabaseName = @"IndexedDBUnused";
-    NSString *existingDatbaseHash = WebCore::SQLiteFileSystem::computeHashForFileName(String { existingDatabaseName });
-    NSString *createdDatabaseHash = WebCore::SQLiteFileSystem::computeHashForFileName(String { createdDatabaseName });
-    NSString *unusedDatabaseHash = WebCore::SQLiteFileSystem::computeHashForFileName(String { createdDatabaseName });
+    NSString *existingDatbaseHash = CyberCore::SQLiteFileSystem::computeHashForFileName(String { existingDatabaseName });
+    NSString *createdDatabaseHash = CyberCore::SQLiteFileSystem::computeHashForFileName(String { createdDatabaseName });
+    NSString *unusedDatabaseHash = CyberCore::SQLiteFileSystem::computeHashForFileName(String { createdDatabaseName });
     NSURL *idbRootURL = [websiteDataStoreConfiguration.get() _indexedDBDatabaseDirectory];
     NSURL *oldVersionDirectoryURL = [idbRootURL URLByAppendingPathComponent:@"v0"];
     NSURL *newVersionDirectoryURL = [idbRootURL URLByAppendingPathComponent:@"v1"];
@@ -119,7 +119,7 @@ static void createDirectories(StringView testName)
     NSURL *directOriginDirectoryURL = [idbRootURL URLByAppendingPathComponent:@"file__0"];
     NSURL *directExistingDatabaseDirectoryURL = [directOriginDirectoryURL URLByAppendingPathComponent:existingDatabaseName];
     NSURL *directUnusedDatabaseDirectoryURL = [directOriginDirectoryURL URLByAppendingPathComponent:unusedDatabaseName];
-    NSURL *resourceDatabaseFileURL = [[NSBundle mainBundle] URLForResource:@"IndexedDB" withExtension:@"sqlite3" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *resourceDatabaseFileURL = [[NSBundle mainBundle] URLForResource:@"IndexedDB" withExtension:@"sqlite3" subdirectory:@"TestCyberKitAPI.resources"];
     [defaultFileManager createDirectoryAtURL:directExistingDatabaseDirectoryURL withIntermediateDirectories:YES attributes:nil error:nil];
     [defaultFileManager createDirectoryAtURL:directUnusedDatabaseDirectoryURL withIntermediateDirectories:YES attributes:nil error:nil];
     [defaultFileManager copyItemAtURL:resourceDatabaseFileURL toURL:[directExistingDatabaseDirectoryURL URLByAppendingPathComponent:@"IndexedDB.sqlite3"] error:nil];
@@ -127,8 +127,8 @@ static void createDirectories(StringView testName)
     if (testName == "none"_s)
         return;
     
-    NSString *existingDatbaseHash = WebCore::SQLiteFileSystem::computeHashForFileName(String { existingDatabaseName });
-    NSString *createdDatabaseHash = WebCore::SQLiteFileSystem::computeHashForFileName(String { createdDatabaseName });
+    NSString *existingDatbaseHash = CyberCore::SQLiteFileSystem::computeHashForFileName(String { existingDatabaseName });
+    NSString *createdDatabaseHash = CyberCore::SQLiteFileSystem::computeHashForFileName(String { createdDatabaseName });
     NSURL *oldVersionDirectoryURL = [idbRootURL URLByAppendingPathComponent:@"v0"];
     NSURL *newVersionDirectoryURL = [idbRootURL URLByAppendingPathComponent:@"v1"];
     NSURL *newVersionOriginDirectoryURL = [newVersionDirectoryURL URLByAppendingPathComponent: @"file__0"];
@@ -183,7 +183,7 @@ TEST(IndexedDB, IndexedDBFileNameAPI)
     auto types = adoptNS([[NSSet alloc] initWithObjects:WKWebsiteDataTypeIndexedDBDatabases, nil]);
     auto websiteDataStoreConfiguration = adoptNS([[_WKWebsiteDataStoreConfiguration alloc] init]);
     websiteDataStoreConfiguration.get().unifiedOriginStorageLevel = _WKUnifiedOriginStorageLevelNone;
-    websiteDataStoreConfiguration.get().generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/WebKit/com.apple.WebKit.TestWebKitAPI/CustomWebsiteData/Default" stringByExpandingTildeInPath] isDirectory:YES];
+    websiteDataStoreConfiguration.get().generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/Default" stringByExpandingTildeInPath] isDirectory:YES];
     auto dataStore = adoptNS([[WKWebsiteDataStore alloc] _initWithConfiguration:websiteDataStoreConfiguration.get()]);
 
     [dataStore fetchDataRecordsOfTypes:types.get() completionHandler:^(NSArray<WKWebsiteDataRecord *> * records) {
@@ -191,13 +191,13 @@ TEST(IndexedDB, IndexedDBFileNameAPI)
         readyToContinue = true;
     }];
     readyToContinue = false;
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 
     [dataStore removeDataOfTypes:[NSSet setWithObjects:WKWebsiteDataTypeIndexedDBDatabases, nil] modifiedSince:[NSDate distantPast] completionHandler:^() {
         readyToContinue = true;
     }];
     readyToContinue = false;
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
     
     auto defaultFileManager = [NSFileManager defaultManager];
     NSURL *idbRootURL = [[[WKWebsiteDataStore defaultDataStore] _configuration] _indexedDBDatabaseDirectory];
@@ -219,11 +219,11 @@ TEST(IndexedDB, IndexedDBFileHashCollision)
     [[configuration userContentController] addScriptMessageHandler:handler.get() name:@"testHandler"];
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBFileName-1" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBFileName-1" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
     receivedScriptMessage = false;
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     RetainPtr<NSString> string = (NSString *)[lastScriptMessage body];
     EXPECT_WK_STREQ(@"Error", string.get());
 }

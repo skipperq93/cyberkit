@@ -31,11 +31,11 @@
 #import "TestUIDelegate.h"
 #import "TestWKWebView.h"
 #import <CoreLocation/CLLocation.h>
-#import <WebCore/SecurityOriginData.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/_WKGeolocationCoreLocationProvider.h>
-#import <WebKit/_WKGeolocationPosition.h>
+#import <CyberCore/SecurityOriginData.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/_WKGeolocationCoreLocationProvider.h>
+#import <CyberKit/_WKGeolocationPosition.h>
 #import <wtf/MainThread.h>
 #import <wtf/NeverDestroyed.h>
 #import <wtf/RetainPtr.h>
@@ -150,7 +150,7 @@ static void expectException(void (^completionHandler)())
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // These tests need to use TestWKWebView because it sets up a visible window for the web
 // view. Without this, the web process would wait until the page is visible before sending
@@ -173,7 +173,7 @@ TEST(Geolocation, DeniedByLocationProvider)
     hasReceivedAlert = false;
     [webView loadTestPageNamed:@"GeolocationGetCurrentPositionResult"];
 
-    TestWebKitAPI::Util::run(&hasReceivedAlert);
+    TestCyberKitAPI::Util::run(&hasReceivedAlert);
 
     EXPECT_WK_STREQ(uiDelegate.get().alertMessage, "ERROR:1");
     EXPECT_TRUE(coreLocationProvider.get().authorizationWasRequested);
@@ -197,7 +197,7 @@ TEST(Geolocation, DeniedByAPI)
     hasReceivedAlert = false;
     [webView loadTestPageNamed:@"GeolocationGetCurrentPositionResult"];
 
-    TestWebKitAPI::Util::run(&hasReceivedAlert);
+    TestCyberKitAPI::Util::run(&hasReceivedAlert);
 
     EXPECT_WK_STREQ(uiDelegate.get().alertMessage, "ERROR:1");
     EXPECT_TRUE(coreLocationProvider.get().authorizationWasRequested);
@@ -221,7 +221,7 @@ TEST(Geolocation, AllowedByAPI)
     hasReceivedAlert = false;
     [webView loadTestPageNamed:@"GeolocationGetCurrentPositionResult"];
 
-    TestWebKitAPI::Util::run(&hasReceivedAlert);
+    TestCyberKitAPI::Util::run(&hasReceivedAlert);
 
     EXPECT_WK_STREQ(uiDelegate.get().alertMessage, "SUCCESS");
     EXPECT_TRUE(coreLocationProvider.get().authorizationWasRequested);
@@ -246,7 +246,7 @@ TEST(Geolocation, Error)
     hasReceivedAlert = false;
     [webView loadTestPageNamed:@"GeolocationGetCurrentPositionResult"];
 
-    TestWebKitAPI::Util::run(&hasReceivedAlert);
+    TestCyberKitAPI::Util::run(&hasReceivedAlert);
 
     EXPECT_WK_STREQ(uiDelegate.get().alertMessage, "ERROR:2");
     EXPECT_TRUE(coreLocationProvider.get().authorizationWasRequested);
@@ -271,7 +271,7 @@ TEST(Geolocation, DuplicateAuthorizationCallbackCalls)
     hasReceivedAlert = false;
     [webView loadTestPageNamed:@"GeolocationGetCurrentPositionResult"];
 
-    TestWebKitAPI::Util::run(&hasReceivedAlert);
+    TestCyberKitAPI::Util::run(&hasReceivedAlert);
 
     EXPECT_WK_STREQ(uiDelegate.get().alertMessage, "SUCCESS");
     EXPECT_TRUE(coreLocationProvider.get().authorizationWasRequested);
@@ -294,6 +294,6 @@ TEST(Geolocation, DelegateNotImplemented)
     EXPECT_TRUE(didShowGeolocationPrompt);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

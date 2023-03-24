@@ -1,0 +1,284 @@
+/*
+ * Copyright (C) 2005-2023 Apple Inc. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * 1.  Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ * 2.  Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in the
+ *     documentation and/or other materials provided with the distribution.
+ * 3.  Neither the name of Apple Inc. ("Apple") nor the names of
+ *     its contributors may be used to endorse or promote products derived
+ *     from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY APPLE AND ITS CONTRIBUTORS "AS IS" AND ANY
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL APPLE OR ITS CONTRIBUTORS BE LIABLE FOR ANY
+ * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+// These are private because callers should be using the cover methods. They are in
+// a Private (as opposed to Internal) header file because Safari uses some of them
+// for managed preferences.
+#define CyberKitStandardFontPreferenceKey @"CyberKitStandardFont"
+#define CyberKitFixedFontPreferenceKey @"CyberKitFixedFont"
+#define CyberKitSerifFontPreferenceKey @"CyberKitSerifFont"
+#define CyberKitSansSerifFontPreferenceKey @"CyberKitSansSerifFont"
+#define CyberKitCursiveFontPreferenceKey @"CyberKitCursiveFont"
+#define CyberKitFantasyFontPreferenceKey @"CyberKitFantasyFont"
+#define CyberKitPictographFontPreferenceKey @"CyberKitPictographFont"
+#define CyberKitMinimumFontSizePreferenceKey @"CyberKitMinimumFontSize"
+#define CyberKitMinimumLogicalFontSizePreferenceKey @"CyberKitMinimumLogicalFontSize"
+#define CyberKitDefaultFontSizePreferenceKey @"CyberKitDefaultFontSize"
+#define CyberKitDefaultFixedFontSizePreferenceKey @"CyberKitDefaultFixedFontSize"
+#define CyberKitDefaultTextEncodingNamePreferenceKey @"CyberKitDefaultTextEncodingName"
+#define CyberKitUsesEncodingDetectorPreferenceKey @"CyberKitUsesEncodingDetector"
+#define CyberKitUserStyleSheetEnabledPreferenceKey @"CyberKitUserStyleSheetEnabledPreferenceKey"
+#define CyberKitUserStyleSheetLocationPreferenceKey @"CyberKitUserStyleSheetLocationPreferenceKey"
+#define CyberKitShouldPrintBackgroundsPreferenceKey @"CyberKitShouldPrintBackgroundsPreferenceKey"
+#if !TARGET_OS_IPHONE
+#define CyberKitTextAreasAreResizablePreferenceKey @"CyberKitTextAreasAreResizable"
+#endif
+#define CyberKitShrinksStandaloneImagesToFitPreferenceKey @"CyberKitShrinksStandaloneImagesToFit"
+#define CyberKitJavaScriptEnabledPreferenceKey @"CyberKitJavaScriptEnabled"
+#define CyberKitJavaScriptMarkupEnabledPreferenceKey @"CyberKitJavaScriptMarkupEnabled"
+#define CyberKitWebSecurityEnabledPreferenceKey @"CyberKitWebSecurityEnabled"
+#define CyberKitAllowUniversalAccessFromFileURLsPreferenceKey @"CyberKitAllowUniversalAccessFromFileURLs"
+#define CyberKitAllowFileAccessFromFileURLsPreferenceKey @"CyberKitAllowFileAccessFromFileURLs"
+#define CyberKitAllowCrossOriginSubresourcesToAskForCredentialsKey @"CyberKitAllowCrossOriginSubresourcesToAskForCredentials"
+#define CyberKitAllowTopNavigationToDataURLsPreferenceKey @"CyberKitAllowTopNavigationToDataURLs"
+#define CyberKitNeedsStorageAccessFromFileURLsQuirkKey @"CyberKitNeedsStorageAccessFromFileURLsQuirk"
+#define CyberKitJavaScriptCanOpenWindowsAutomaticallyPreferenceKey @"CyberKitJavaScriptCanOpenWindowsAutomatically"
+#define CyberKitPluginsEnabledPreferenceKey @"CyberKitPluginsEnabled"
+#define CyberKitDatabasesEnabledPreferenceKey @"CyberKitDatabasesEnabledPreferenceKey"
+#define CyberKitLocalStorageEnabledPreferenceKey @"CyberKitLocalStorageEnabledPreferenceKey"
+#define CyberKitAllowAnimatedImagesPreferenceKey @"CyberKitAllowAnimatedImagesPreferenceKey"
+#define CyberKitAllowAnimatedImageLoopingPreferenceKey @"CyberKitAllowAnimatedImageLoopingPreferenceKey"
+#define CyberKitDisplayImagesKey @"CyberKitDisplayImagesKey"
+#define CyberKitAdditionalSupportedImageTypesKey  @"CyberKitAdditionalSupportedImageTypesKey"
+#define CyberKitLoadSiteIconsKey @"CyberKitLoadSiteIconsKey"
+#define CyberKitBackForwardCacheExpirationIntervalKey @"CyberKitBackForwardCacheExpirationIntervalKey"
+#if !TARGET_OS_IPHONE
+#define CyberKitTabToLinksPreferenceKey @"CyberKitTabToLinksPreferenceKey"
+#endif
+#define CyberKitPrivateBrowsingEnabledPreferenceKey @"CyberKitPrivateBrowsingEnabled"
+#define WebSmartInsertDeleteEnabled @"WebSmartInsertDeleteEnabled"
+#if !TARGET_OS_IPHONE
+#define WebContinuousSpellCheckingEnabled @"WebContinuousSpellCheckingEnabled"
+#define WebGrammarCheckingEnabled @"WebGrammarCheckingEnabled"
+#endif
+#define WebAutomaticQuoteSubstitutionEnabled @"WebAutomaticQuoteSubstitutionEnabled"
+#define WebAutomaticLinkDetectionEnabled @"WebAutomaticLinkDetectionEnabled"
+#define WebAutomaticDashSubstitutionEnabled @"WebAutomaticDashSubstitutionEnabled"
+#define WebAutomaticTextReplacementEnabled @"WebAutomaticTextReplacementEnabled"
+#define WebAutomaticSpellingCorrectionEnabled @"WebAutomaticSpellingCorrectionEnabled"
+#define CyberKitDOMPasteAllowedPreferenceKey @"CyberKitDOMPasteAllowedPreferenceKey"
+#define CyberKitUsesPageCachePreferenceKey @"CyberKitUsesPageCachePreferenceKey"
+#define CyberKitPageCacheSupportsPluginsPreferenceKey @"CyberKitPageCacheSupportsPluginsPreferenceKey"
+#define CyberKitFTPDirectoryTemplatePath @"CyberKitFTPDirectoryTemplatePath"
+#define CyberKitForceFTPDirectoryListings @"CyberKitForceFTPDirectoryListings"
+#define CyberKitDeveloperExtrasEnabledPreferenceKey @"CyberKitDeveloperExtrasEnabledPreferenceKey"
+#define CyberKitJavaScriptRuntimeFlagsPreferenceKey @"CyberKitJavaScriptRuntimeFlagsPreferenceKey"
+#define CyberKitAuthorAndUserStylesEnabledPreferenceKey @"CyberKitAuthorAndUserStylesEnabledPreferenceKey"
+#define CyberKitDOMTimersThrottlingEnabledPreferenceKey @"CyberKitDOMTimersThrottlingEnabledPreferenceKey"
+#define CyberKitWebArchiveDebugModeEnabledPreferenceKey @"CyberKitWebArchiveDebugModeEnabledPreferenceKey"
+#define CyberKitLocalFileContentSniffingEnabledPreferenceKey @"CyberKitLocalFileContentSniffingEnabledPreferenceKey"
+#define CyberKitLocalStorageDatabasePathPreferenceKey @"CyberKitLocalStorageDatabasePathPreferenceKey"
+#define CyberKitEnableFullDocumentTeardownPreferenceKey @"CyberKitEnableFullDocumentTeardown"
+#define CyberKitOfflineWebApplicationCacheEnabledPreferenceKey @"CyberKitOfflineWebApplicationCacheEnabled"
+#define CyberKitApplicationCacheTotalQuota @"CyberKitApplicationCacheTotalQuota"
+#define CyberKitApplicationCacheDefaultOriginQuota @"CyberKitApplicationCacheDefaultOriginQuota"
+#define CyberKitZoomsTextOnlyPreferenceKey @"CyberKitZoomsTextOnly"
+#define CyberKitJavaScriptCanAccessClipboardPreferenceKey @"CyberKitJavaScriptCanAccessClipboard"
+#define CyberKitAcceleratedDrawingEnabledPreferenceKey @"CyberKitAcceleratedDrawingEnabled"
+#define CyberKitDisplayListDrawingEnabledPreferenceKey @"CyberKitDisplayListDrawingEnabled"
+#define CyberKitCanvasUsesAcceleratedDrawingPreferenceKey @"CyberKitCanvasUsesAcceleratedDrawing"
+#define CyberKitAcceleratedCompositingEnabledPreferenceKey @"CyberKitAcceleratedCompositingEnabled"
+#define CyberKitShowDebugBordersPreferenceKey @"CyberKitShowDebugBorders"
+#define CyberKitSubpixelAntialiasedLayerTextEnabledPreferenceKey @"CyberKitSubpixelAntialiasedLayerTextEnabled"
+#define CyberKitSimpleLineLayoutEnabledPreferenceKey @"CyberKitSimpleLineLayoutEnabled"
+#define CyberKitLegacyLineLayoutVisualCoverageEnabledPreferenceKey @"CyberKitLegacyLineLayoutVisualCoverageEnabled"
+#define CyberKitContentChangeObserverEnabledPreferenceKey @"CyberKitContentChangeObserverEnabled"
+#define CyberKitShowRepaintCounterPreferenceKey @"CyberKitShowRepaintCounter"
+#define CyberKitWebAudioEnabledPreferenceKey @"CyberKitWebAudioEnabled"
+#define CyberKitWebGLEnabledPreferenceKey @"CyberKitWebGLEnabled"
+#define CyberKitForceWebGLUsesLowPowerPreferenceKey @"CyberKitForceWebGLUsesLowPower"
+#define CyberKitAccelerated2dCanvasEnabledPreferenceKey @"CyberKitAccelerated2dCanvasEnabled"
+#define CyberKitFrameFlatteningPreferenceKey @"CyberKitFrameFlattening"
+#define CyberKitAsyncFrameScrollingEnabledPreferenceKey @"CyberKitAsyncFrameScrollingEnabled"
+#define CyberKitSpatialNavigationEnabledPreferenceKey @"CyberKitSpatialNavigationEnabled"
+#define CyberKitDNSPrefetchingEnabledPreferenceKey @"CyberKitDNSPrefetchingEnabled"
+#define CyberKitFullScreenEnabledPreferenceKey @"CyberKitFullScreenEnabled"
+#define CyberKitAsynchronousSpellCheckingEnabledPreferenceKey @"CyberKitAsynchronousSpellCheckingEnabled"
+#define CyberKitHyperlinkAuditingEnabledPreferenceKey @"CyberKitHyperlinkAuditingEnabled"
+#define CyberKitAVFoundationEnabledKey @"CyberKitAVFoundationEnabled"
+#define CyberKitRequiresUserGestureForMediaPlaybackPreferenceKey @"CyberKitMediaPlaybackRequiresUserGesture"
+#define CyberKitRequiresUserGestureForVideoPlaybackPreferenceKey @"CyberKitVideoPlaybackRequiresUserGesture"
+#define CyberKitRequiresUserGestureForAudioPlaybackPreferenceKey @"CyberKitAudioPlaybackRequiresUserGesture"
+#define CyberKitMainContentUserGestureOverrideEnabledPreferenceKey @"CyberKitMainContentUserGestureOverrideEnabled"
+#define CyberKitAllowsInlineMediaPlaybackPreferenceKey @"CyberKitMediaPlaybackAllowsInline"
+#define CyberKitAllowsInlineMediaPlaybackAfterFullscreenPreferenceKey @"CyberKitAllowsInlineMediaPlaybackAfterFullscreen"
+#define CyberKitInlineMediaPlaybackRequiresPlaysInlineAttributeKey @"InlineMediaPlaybackRequiresPlaysInlineAttribute"
+#define CyberKitInvisibleAutoplayNotPermittedKey @"InvisibleAutoplayNotPermitted"
+#define CyberKitAllowsPictureInPictureMediaPlaybackPreferenceKey @"CyberKitAllowsPictureInPictureMediaPlayback"
+#define CyberKitAllowsAirPlayForMediaPlaybackPreferenceKey @"CyberKitMediaPlaybackAllowsAirPlay"
+#define CyberKitMediaControlsScaleWithPageZoomPreferenceKey @"CyberKitMediaControlsScaleWithPageZoom"
+#define CyberKitMockScrollbarsEnabledPreferenceKey @"CyberKitMockScrollbarsEnabled"
+#define CyberKitShouldDisplaySubtitlesPreferenceKey @"CyberKitShouldDisplaySubtitles"
+#define CyberKitShouldDisplayCaptionsPreferenceKey @"CyberKitShouldDisplayCaptions"
+#define CyberKitShouldDisplayTextDescriptionsPreferenceKey @"CyberKitShouldDisplayTextDescriptions"
+#define CyberKitNotificationsEnabledKey @"CyberKitNotificationsEnabled"
+#define CyberKitSuppressesIncrementalRenderingKey @"CyberKitSuppressesIncrementalRendering"
+#define CyberKitResourceLoadStatisticsEnabledPreferenceKey @"CyberKitResourceLoadStatisticsEnabled"
+#define CyberKitLargeImageAsyncDecodingEnabledPreferenceKey @"CyberKitLargeImageAsyncDecodingEnabled"
+#define CyberKitAnimatedImageAsyncDecodingEnabledPreferenceKey @"CyberKitAnimatedImageAsyncDecodingEnabled"
+#if TARGET_OS_IPHONE
+#define CyberKitAudioSessionCategoryOverride @"CyberKitAudioSessionCategoryOverride"
+#endif
+#define CyberKitShouldRespectImageOrientationKey @"CyberKitShouldRespectImageOrientation"
+#define CyberKitRequestAnimationFrameEnabledPreferenceKey @"CyberKitRequestAnimationFrameEnabled"
+#define CyberKitDiagnosticLoggingEnabledKey @"CyberKitDiagnosticLoggingEnabled"
+#define CyberKitStorageBlockingPolicyKey @"CyberKitStorageBlockingPolicy"
+#define CyberKitPlugInSnapshottingEnabledPreferenceKey @"CyberKitPlugInSnapshottingEnabled"
+#define CyberKitHiddenPageDOMTimerThrottlingEnabledPreferenceKey @"CyberKitHiddenPageDOMTimerThrottlingEnabled"
+#define CyberKitHiddenPageCSSAnimationSuspensionEnabledPreferenceKey @"CyberKitHiddenPageCSSAnimationSuspensionEnabled"
+#define CyberKitLowPowerVideoAudioBufferSizeEnabledPreferenceKey @"CyberKitLowPowerVideoAudioBufferSizeEnabled"
+#define CyberKitUseLegacyTextAlignPositionedElementBehaviorPreferenceKey @"CyberKitUseLegacyTextAlignPositionedElementBehavior"
+#define CyberKitMediaSourceEnabledPreferenceKey @"CyberKitMediaSourceEnabled"
+#define CyberKitSourceBufferChangeTypeEnabledPreferenceKey @"CyberKitSourceBufferChangeTypeEnabled"
+#define CyberKitShouldConvertPositionStyleOnCopyPreferenceKey @"CyberKitShouldConvertPositionStyleOnCopy"
+#define CyberKitGamepadsEnabledPreferenceKey @"CyberKitGamepadsEnabled"
+#define CyberKitServiceControlsEnabledPreferenceKey @"CyberKitServiceControlsEnabled"
+#define CyberKitMediaKeysStorageDirectoryKey @"CyberKitMediaKeysStorageDirectory"
+#define CyberKitDataTransferItemsEnabledPreferenceKey @"CyberKitDataTransferItemsEnabled"
+#define CyberKitCustomPasteboardDataEnabledPreferenceKey @"CyberKitCustomPasteboardDataEnabled"
+#define CyberKitKeygenElementEnabledPreferenceKey @"CyberKitKeygenElementEnabledPreferenceKey"
+#define CyberKitCacheAPIEnabledPreferenceKey @"CyberKitCacheAPIEnabled"
+#define CyberKitDownloadAttributeEnabledPreferenceKey @"CyberKitDownloadAttributeEnabled"
+#define CyberKitDirectoryUploadEnabledPreferenceKey @"CyberKitDirectoryUploadEnabled"
+#define CyberKitCSSOMViewScrollingAPIEnabledPreferenceKey @"CyberKitCSSOMViewScrollingAPIEnabled"
+#define CyberKitSubtleCryptoEnabledPreferenceKey @"CyberKitSubtleCryptoEnabled"
+#define CyberKitMediaDevicesEnabledPreferenceKey @"CyberKitMediaDevicesEnabled"
+#define CyberKitMediaStreamEnabledPreferenceKey @"CyberKitMediaStreamEnabled"
+#define CyberKitPeerConnectionEnabledPreferenceKey @"CyberKitPeerConnectionEnabled"
+#define CyberKitLinkPreloadEnabledPreferenceKey @"CyberKitLinkPreloadEnabled"
+#define CyberKitMediaPreloadingEnabledPreferenceKey @"CyberKitMediaPreloadingEnabled"
+#define CyberKitMediaUserGestureInheritsFromDocument @"CyberKitMediaUserGestureInheritsFromDocument"
+#define CyberKitConstantPropertiesEnabledPreferenceKey @"CyberKitConstantPropertiesEnabled"
+#define CyberKitColorFilterEnabledPreferenceKey @"CyberKitColorFilterEnabled"
+#define CyberKitPunchOutWhiteBackgroundsInDarkModePreferenceKey @"CyberKitPunchOutWhiteBackgroundsInDarkMode"
+#define CyberKitLayoutFormattingContextIntegrationEnabledPreferenceKey @"CyberKitLayoutFormattingContextIntegrationEnabled"
+#define CyberKitWebSQLEnabledPreferenceKey @"CyberKitWebSQLEnabled"
+
+#if !TARGET_OS_IPHONE
+// These are private both because callers should be using the cover methods and because the
+// cover methods themselves are private.
+#define CyberKitRespectStandardStyleKeyEquivalentsPreferenceKey @"CyberKitRespectStandardStyleKeyEquivalents"
+#define CyberKitShowsURLsInToolTipsPreferenceKey @"CyberKitShowsURLsInToolTips"
+#define CyberKitShowsToolTipOverTruncatedTextPreferenceKey @"CyberKitShowsToolTipOverTruncatedText"
+#define CyberKitPDFDisplayModePreferenceKey @"CyberKitPDFDisplayMode"
+#define CyberKitPDFScaleFactorPreferenceKey @"CyberKitPDFScaleFactor"
+#endif
+
+#define CyberKitUseSiteSpecificSpoofingPreferenceKey @"CyberKitUseSiteSpecificSpoofing"
+#define CyberKitEditableLinkBehaviorPreferenceKey @"CyberKitEditableLinkBehavior"
+#define CyberKitCacheModelPreferenceKey @"CyberKitCacheModelPreferenceKey"
+#define CyberKitTextDirectionSubmenuInclusionBehaviorPreferenceKey @"CyberKitTextDirectionSubmenuInclusionBehaviorPreferenceKey"
+#define CyberKitUsePreHTML5ParserQuirksKey @"CyberKitUsePreHTML5ParserQuirks"
+#define CyberKitBackspaceKeyNavigationEnabledKey @"CyberKitBackspaceKeyNavigationEnabled"
+#define CyberKitIncrementalRenderingSuppressionTimeoutInSecondsKey @"CyberKitIncrementalRenderingSuppressionTimeoutInSeconds"
+#define CyberKitWantsBalancedSetDefersLoadingBehaviorKey @"CyberKitWantsBalancedSetDefersLoadingBehavior"
+#define CyberKitDebugFullPageZoomPreferenceKey @"CyberKitDebugFullPageZoomPreferenceKey"
+#define CyberKitMinimumZoomFontSizePreferenceKey @"CyberKitMinimumZoomFontSizePreferenceKey"
+#define CyberKitTextAutosizingEnabledPreferenceKey @"CyberKitTextAutosizingEnabled"
+#define CyberKitHTTPEquivEnabledPreferenceKey @"CyberKitHTTPEquivEnabled"
+
+#if TARGET_OS_IPHONE
+#define CyberKitStandalonePreferenceKey @"CyberKitStandalonePreferenceKey"
+#define CyberKitTelephoneParsingEnabledPreferenceKey @"CyberKitTelephoneParsingEnabledPreferenceKey"
+#define CyberKitAllowMultiElementImplicitFormSubmissionPreferenceKey @"CyberKitAllowMultiElementImplicitFormSubmissionPreferenceKey"
+#define CyberKitAlwaysRequestGeolocationPermissionPreferenceKey @"CyberKitAlwaysRequestGeolocationPermission"
+#define CyberKitMaxParseDurationPreferenceKey @"CyberKitMaxParseDurationPreferenceKey"
+#define CyberKitStorageTrackerEnabledPreferenceKey @"CyberKitStorageTrackerEnabledPreferenceKey"
+#define CyberKitInterpolationQualityPreferenceKey @"CyberKitInterpolationQualityPreferenceKey"
+#define CyberKitPasswordEchoEnabledPreferenceKey @"CyberKitEnablePasswordEchoPreferenceKey"
+#define CyberKitPasswordEchoDurationPreferenceKey @"CyberKitPasswordEchoDurationPreferenceKey"
+#define CyberKitNetworkDataUsageTrackingEnabledPreferenceKey @"CyberKitNetworkDataUsageTrackingEnabledPreferenceKey"
+#define CyberKitNetworkInterfaceNamePreferenceKey @"CyberKitNetworkInterfaceNamePreferenceKey"
+#define CyberKitQuickLookDocumentSavingPreferenceKey @"CyberKitQuickLookDocumentSavingPreferenceKey"
+#endif
+
+#define CyberKitEnableInheritURIQueryComponentPreferenceKey @"CyberKitEnableInheritURIQueryComponent"
+#define CyberKitMediaDataLoadsAutomaticallyPreferenceKey @"CyberKitMediaDataLoadsAutomatically"
+#define CyberKitMockCaptureDevicesEnabledPreferenceKey @"CyberKitMockCaptureDevicesEnabled"
+#define CyberKitMockCaptureDevicesPromptEnabledPreferenceKey @"CyberKitMockCaptureDevicesPromptEnabled"
+#define CyberKitEnumeratingAllNetworkInterfacesEnabledPreferenceKey @"CyberKitEnumeratingAllNetworkInterfacesEnabled"
+#define CyberKitICECandidateFilteringEnabledPreferenceKey @"CyberKitICECandidateFilteringEnabled"
+#define CyberKitMediaCaptureRequiresSecureConnectionPreferenceKey @"CyberKitMediaCaptureRequiresSecureConnection"
+#define CyberKitAttachmentElementEnabledPreferenceKey @"CyberKitAttachmentElementEnabled"
+#define CyberKitMenuItemElementEnabledPreferenceKey @"CyberKitMenuItemElementEnabled"
+#define CyberKitUserTimingEnabledPreferenceKey @"CyberKitUserTimingEnabled"
+#define CyberKitResourceTimingEnabledPreferenceKey @"CyberKitResourceTimingEnabled"
+#define CyberKitMediaContentTypesRequiringHardwareSupportPreferenceKey @"CyberKitMediaContentTypesRequiringHardwareSupport"
+#define CyberKitLegacyEncryptedMediaAPIEnabledKey @"CyberKitLegacyEncryptedMediaAPIEnabled"
+#define CyberKitEncryptedMediaAPIEnabledKey @"CyberKitEncryptedMediaAPIEnabled"
+#define CyberKitPictureInPictureAPIEnabledKey @"CyberKitPictureInPictureAPIEnabled"
+#define CyberKitAllowMediaContentTypesRequiringHardwareSupportAsFallbackKey @"CyberKitAllowMediaContentTypesRequiringHardwareSupportAsFallback"
+#define CyberKitMediaCapabilitiesEnabledPreferenceKey @"CyberKitMediaCapabilitiesEnabled"
+#define CyberKitLineHeightUnitsEnabledPreferenceKey @"CyberKitLineHeightUnitsEnabled"
+#define CyberKitDebugInAppBrowserPrivacyEnabledPreferenceKey @"CyberKitDebugInAppBrowserPrivacyEnabled"
+
+
+// These are all now generated via GeneratePreferences.rb
+// FIXME: If these are not used anywhere, we should remove them and only use WebFeature mechanism for the preference.
+#define CyberKitUserGesturePromisePropagationEnabledPreferenceKey @"CyberKitUserGesturePromisePropagationEnabled"
+#define CyberKitRequestIdleCallbackEnabledPreferenceKey @"CyberKitRequestIdleCallbackEnabled"
+#define CyberKitHighlightAPIEnabledPreferenceKey @"CyberKitHighlightAPIEnabled"
+#define CyberKitAsyncClipboardAPIEnabledPreferenceKey @"CyberKitAsyncClipboardAPIEnabled"
+#define CyberKitIntersectionObserverEnabledPreferenceKey @"CyberKitIntersectionObserverEnabled"
+#define CyberKitVisualViewportAPIEnabledPreferenceKey @"CyberKitVisualViewportAPIEnabled"
+#define CyberKitSyntheticEditingCommandsEnabledPreferenceKey @"CyberKitSyntheticEditingCommandsEnabled"
+#define CyberKitCSSOMViewSmoothScrollingEnabledPreferenceKey @"CyberKitCSSOMViewSmoothScrollingEnabled"
+#define CyberKitWebAnimationsCompositeOperationsEnabledPreferenceKey @"CyberKitWebAnimationsCompositeOperationsEnabled"
+#define CyberKitWebAnimationsMutableTimelinesEnabledPreferenceKey @"CyberKitWebAnimationsMutableTimelinesEnabled"
+#define CyberKitMaskWebGLStringsEnabledPreferenceKey @"CyberKitMaskWebGLStringsEnabled"
+#define CyberKitServerTimingEnabledPreferenceKey @"CyberKitServerTimingEnabled"
+#define CyberKitCSSCustomPropertiesAndValuesEnabledPreferenceKey @"CyberKitCSSCustomPropertiesAndValuesEnabled"
+#define CyberKitResizeObserverEnabledPreferenceKey @"CyberKitResizeObserverEnabled"
+#define CyberKitPrivateClickMeasurementEnabledPreferenceKey @"CyberKitPrivateClickMeasurementEnabled"
+#define CyberKitFetchAPIKeepAliveEnabledPreferenceKey @"CyberKitFetchAPIKeepAliveEnabled"
+#define CyberKitGenericCueAPIEnabledKey @"CyberKitGenericCueAPIEnabled"
+#define CyberKitAspectRatioOfImgFromWidthAndHeightEnabledPreferenceKey @"CyberKitAspectRatioOfImgFromWidthAndHeightEnabled"
+#define CyberKitReferrerPolicyAttributeEnabledPreferenceKey @"CyberKitReferrerPolicyAttributeEnabled"
+#define CyberKitCoreMathMLEnabledPreferenceKey @"CyberKitCoreMathMLEnabled"
+#define CyberKitLinkPreloadResponsiveImagesEnabledPreferenceKey @"CyberKitLinkPreloadResponsiveImagesEnabled"
+#define CyberKitRemotePlaybackEnabledPreferenceKey @"CyberKitRemotePlaybackEnabled"
+#define CyberKitReadableByteStreamAPIEnabledPreferenceKey @"CyberKitReadableByteStreamAPIEnabled"
+#define CyberKitTransformStreamAPIEnabledPreferenceKey @"CyberKitTransformStreamAPIEnabled"
+#define CyberKitMediaRecorderEnabledPreferenceKey @"CyberKitMediaRecorderEnabled"
+#define CyberKitCSSIndividualTransformPropertiesEnabledPreferenceKey @"CyberKitCSSIndividualTransformPropertiesEnabled"
+#define CyberKitContactPickerAPIEnabledPreferenceKey @"CyberKitContactPickerAPIEnabled"
+#define CyberKitSpeechRecognitionEnabledPreferenceKey @"CyberKitSpeechRecognitionEnabled"
+#define CyberKitPitchCorrectionAlgorithmPreferenceKey @"CyberKitPitchCorrectionAlgorithm"
+
+// The preference keys below this point are deprecated and have no effect. They should
+// be removed when it is considered safe to do so.
+#define CyberKitShadowDOMEnabledPreferenceKey @"CyberKitShadowDOMEnabled"
+#define CyberKitHixie76WebSocketProtocolEnabledKey @"CyberKitHixie76WebSocketProtocolEnabled"
+#define CyberKitCustomElementsEnabledPreferenceKey @"CyberKitCustomElementsEnabled"
+#define CyberKitFetchAPIEnabledPreferenceKey @"CyberKitFetchAPIEnabled"
+#define CyberKitIsSecureContextAttributeEnabledPreferenceKey @"CyberKitIsSecureContextAttributeEnabled"
+#define CyberKitCSSShadowPartsEnabledPreferenceKey @"CyberKitCSSShadowPartsEnabled"
+#define CyberKitSubpixelCSSOMElementMetricsEnabledPreferenceKey @"CyberKitSubpixelCSSOMElementMetricsEnabled"
+#define CyberKitExperimentalNotificationsEnabledPreferenceKey @"CyberKitExperimentalNotificationsEnabledPreferenceKey"
+#define CyberKitXSSAuditorEnabledPreferenceKey @"CyberKitXSSAuditorEnabled"
+#define CyberKitAVFoundationNSURLSessionEnabledKey @"CyberKitAVFoundationNSURLSessionEnabled"

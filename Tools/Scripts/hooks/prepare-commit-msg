@@ -18,7 +18,7 @@ from webkitbugspy import radar
 
 
 def get_bugs_string():
-    """Determines what bug URLs to fill or suggest in a WebKit commit message."""
+    """Determines what bug URLs to fill or suggest in a CyberKit commit message."""
     env = os.environ
     need_the_bug_url = 'Need the bug URL (OOPS!).'
     need_the_radar = 'Include a Radar link (OOPS!).'

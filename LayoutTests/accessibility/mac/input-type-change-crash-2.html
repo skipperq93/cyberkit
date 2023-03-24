@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <body>
-<p>This tests changing the password field's type to text while the accessibility tree is turned on. WebKit should not crash.</p> 
+<p>This tests changing the password field's type to text while the accessibility tree is turned on. CyberKit should not crash.</p> 
 <input type="password" value="hello" onmouseup="this.setAttribute('type', 'text')">
 <script>
 if (!window.accessibilityController) {
-    document.write('Click the text input on the left. WebKit should not crash.');
+    document.write('Click the text input on the left. CyberKit should not crash.');
 } else {
     testRunner.dumpAsText();
     accessibilityController.enableEnhancedAccessibility(true);
@@ -13,7 +13,7 @@ if (!window.accessibilityController) {
     const input = document.querySelector('input');
     input.type = 'text';
     input.remove();
-    document.write('PASS - WebKit did not crash.');
+    document.write('PASS - CyberKit did not crash.');
 }
 
 </script>

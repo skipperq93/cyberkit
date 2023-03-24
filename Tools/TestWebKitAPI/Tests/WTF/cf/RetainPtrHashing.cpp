@@ -32,7 +32,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(RetainPtrHashing, HashSet)
 {
@@ -88,4 +88,4 @@ TEST(RetainPtrHashing, HashMapValue)
     EXPECT_EQ(foo2, map.get(2));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

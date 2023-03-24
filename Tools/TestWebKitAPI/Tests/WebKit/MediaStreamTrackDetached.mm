@@ -31,11 +31,11 @@
 #import "Test.h"
 #import "TestWKWebView.h"
 #import "UserMediaCaptureUIDelegate.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewConfiguration.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 
 static bool hasReceivedCorrectCaptureState = false;
 
@@ -51,9 +51,9 @@ static bool hasReceivedCorrectCaptureState = false;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, MediaStreamTrackDetached)
+TEST(CyberKit, MediaStreamTrackDetached)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto processPoolConfig = adoptNS([[_WKProcessPoolConfiguration alloc] init]);
@@ -69,9 +69,9 @@ TEST(WebKit, MediaStreamTrackDetached)
     hasReceivedCorrectCaptureState = false;
     [webView loadTestPageNamed:@"mediastreamtrack-detached"];
 
-    TestWebKitAPI::Util::run(&hasReceivedCorrectCaptureState);
+    TestCyberKitAPI::Util::run(&hasReceivedCorrectCaptureState);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(MEDIA_STREAM)

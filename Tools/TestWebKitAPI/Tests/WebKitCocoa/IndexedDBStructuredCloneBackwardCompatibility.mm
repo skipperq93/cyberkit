@@ -28,12 +28,12 @@
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
 #import "Test.h"
-#import <WebKit/WKUserContentControllerPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/CyberKit.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/Deque.h>
 #import <wtf/RetainPtr.h>
 
@@ -73,11 +73,11 @@ TEST(IndexedDB, StructuredCloneBackwardCompatibility)
     [[configuration userContentController] addScriptMessageHandler:handler.get() name:@"testHandler"];
 
     // Copy the baked database files to the database directory
-    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"IndexedDBStructuredCloneBackwardCompatibility" withExtension:@"sqlite3" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"IndexedDBStructuredCloneBackwardCompatibility" withExtension:@"sqlite3-shm" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *url3 = [[NSBundle mainBundle] URLForResource:@"IndexedDBStructuredCloneBackwardCompatibility" withExtension:@"sqlite3-wal" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"IndexedDBStructuredCloneBackwardCompatibility" withExtension:@"sqlite3" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"IndexedDBStructuredCloneBackwardCompatibility" withExtension:@"sqlite3-shm" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *url3 = [[NSBundle mainBundle] URLForResource:@"IndexedDBStructuredCloneBackwardCompatibility" withExtension:@"sqlite3-wal" subdirectory:@"TestCyberKitAPI.resources"];
 
-    NSURL *idbPath = [NSURL fileURLWithPath:[@"~/Library/WebKit/com.apple.WebKit.TestWebKitAPI/CustomWebsiteData/IndexedDB/" stringByExpandingTildeInPath]];
+    NSURL *idbPath = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/IndexedDB/" stringByExpandingTildeInPath]];
     [[NSFileManager defaultManager] removeItemAtURL:idbPath error:nil];
     EXPECT_FALSE([[NSFileManager defaultManager] fileExistsAtPath:idbPath.path]);
 
@@ -96,7 +96,7 @@ TEST(IndexedDB, StructuredCloneBackwardCompatibility)
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
     auto delegate = adoptNS([[StructuredCloneBackwardCompatibilityNavigationDelegate alloc] init]);
     [webView setNavigationDelegate:delegate.get()];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBStructuredCloneBackwardCompatibilityRead" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"IndexedDBStructuredCloneBackwardCompatibilityRead" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
     EXPECT_STREQ([getNextMessage().body UTF8String], "Pass");

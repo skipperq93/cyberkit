@@ -31,7 +31,7 @@
 
 #include "PlatformUtilities.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class MouseMoveAfterCrashTest : public InjectedBundleTest {
 public:
@@ -56,6 +56,6 @@ void MouseMoveAfterCrashTest::didReceiveMessage(WKBundleRef bundle, WKStringRef 
     Util::runFor(30_s);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

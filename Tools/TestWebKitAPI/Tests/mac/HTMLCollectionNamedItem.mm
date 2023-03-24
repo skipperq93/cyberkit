@@ -29,8 +29,8 @@
 #import "PlatformWebView.h"
 #import <wtf/RetainPtr.h>
 
-#import <WebKit/DOM.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/DOM.h>
+#import <CyberKit/WebViewPrivate.h>
 
 @interface HTMLCollectionNamedItemTest : NSObject <WebFrameLoadDelegate> {
 }
@@ -46,16 +46,16 @@ static bool didFinishLoad;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, HTMLCollectionNamedItemTest)
+TEST(CyberKitLegacy, HTMLCollectionNamedItemTest)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<HTMLCollectionNamedItemTest> testController = adoptNS([HTMLCollectionNamedItemTest new]);
 
     webView.get().frameLoadDelegate = testController.get();
     [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle]
-        URLForResource:@"HTMLCollectionNamedItem" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+        URLForResource:@"HTMLCollectionNamedItem" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
     Util::run(&didFinishLoad);
     didFinishLoad = false;
@@ -77,4 +77,4 @@ TEST(WebKitLegacy, HTMLCollectionNamedItemTest)
     EXPECT_WK_STREQ([(DOMHTMLElement *)[collection item:2] title], @"thirdItem");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

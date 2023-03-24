@@ -26,10 +26,10 @@
 #import "config.h"
 
 #import "TestNavigationDelegate.h"
-#import <WebKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <wtf/RetainPtr.h>
 
-TEST(WebKit, LoadDataWithNilMIMEType)
+TEST(CyberKit, LoadDataWithNilMIMEType)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSZeroRect]);
     NSString *mimeType = nil;

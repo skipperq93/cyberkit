@@ -30,11 +30,11 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <WebKit/WKPreferencesRefPrivate.h>
-#include <WebKit/WKRetainPtr.h>
-#include <WebKit/WKWebsiteDataStoreRef.h>
+#include <CyberKit/WKPreferencesRefPrivate.h>
+#include <CyberKit/WKRetainPtr.h>
+#include <CyberKit/WKWebsiteDataStoreRef.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool testDone;
 
@@ -49,7 +49,7 @@ static void didSameDocumentNavigation(WKPageRef page, WKNavigationRef, WKSameDoc
     testDone = true;
 }
 
-TEST(WebKit, EphemeralSessionPushStateNoHistoryCallback)
+TEST(CyberKit, EphemeralSessionPushStateNoHistoryCallback)
 {
     auto configuration = adoptWK(WKPageConfigurationCreate());
 
@@ -89,6 +89,6 @@ TEST(WebKit, EphemeralSessionPushStateNoHistoryCallback)
     Util::run(&testDone);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

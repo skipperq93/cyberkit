@@ -29,13 +29,13 @@
 #import "RemoteObjectRegistry.h"
 #import "TestWKWebView.h"
 #import "Utilities.h"
-#import <WebKit/WKNavigationDelegatePrivate.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKFeature.h>
-#import <WebKit/_WKRemoteObjectInterface.h>
-#import <WebKit/_WKRemoteObjectRegistry.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKFeature.h>
+#import <CyberKit/_WKRemoteObjectInterface.h>
+#import <CyberKit/_WKRemoteObjectRegistry.h>
 #import <wtf/RetainPtr.h>
 
 static bool didCrash = false;
@@ -92,7 +92,7 @@ TEST(IPCTestingAPI, IsDisabledByDefault)
 
     done = false;
     [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html><script>alert(typeof(IPC));</script>"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_STREQ([alertMessage UTF8String], "undefined");
 }
 
@@ -160,7 +160,7 @@ TEST(IPCTestingAPI, CanDetectNilReplyBlocks)
         // mostly zero objects + "v@?c" (objective-C method signature)
         "0x0,0x0,0x1,0x0,0x0,0x0,0x2c,0x0,0x0,0x0,0x59,0x1,0x0,0x0,0x0,0x9b,0x0,0x0,0x4,0x0,0x0,0x0,0x1,0x76,0x40,0x3f,0x63,0x0,]);"
         "for(var x=0; x<100; x++) IPC.sendMessage('UI', x, IPC.messages.RemoteObjectRegistry_InvokeMethod.name, [buf]);</script>"];
-    TestWebKitAPI::Util::runFor(&done, 1_s);
+    TestCyberKitAPI::Util::runFor(&done, 1_s);
 
     // Make sure sayHello was not called, as the reply block was nil.
     EXPECT_FALSE([delegate.get() sayHelloWasCalled]);
@@ -178,7 +178,7 @@ TEST(IPCTestingAPI, CanSendAlert)
     done = false;
     [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html><script>IPC.sendSyncMessage('UI', IPC.webPageProxyID, IPC.messages.WebPageProxy_RunJavaScriptAlert.name, 100,"
         "[{type: 'FrameID', value: IPC.frameID}, {type: 'FrameInfoData', value: IPC}, {'type': 'String', 'value': 'hi'}]);</script>"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_STREQ([alertMessage UTF8String], "hi");
 }
@@ -192,7 +192,7 @@ TEST(IPCTestingAPI, AlertIsSyncMessage)
 
     done = false;
     [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html><script>alert(IPC.messages.WebPageProxy_RunJavaScriptAlert.isSync);</script>"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_STREQ([alertMessage UTF8String], "true");
 }
@@ -208,7 +208,7 @@ TEST(IPCTestingAPI, CanSendInvalidAsyncMessageToUIProcessWithoutTermination)
     [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html><script>"
         "IPC.sendMessage('UI', IPC.webPageProxyID, IPC.messages.WebPageProxy_ShowShareSheet.name, []);"
         "alert('hi')</script>"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_STREQ([alertMessage UTF8String], "hi");
 }
@@ -224,7 +224,7 @@ TEST(IPCTestingAPI, CanSendInvalidSyncMessageToUIProcessWithoutTermination)
     [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html><script>"
         "IPC.sendSyncMessage('UI', IPC.webPageProxyID, IPC.messages.WebPageProxy_RunJavaScriptAlert.name, 100, [{type: 'FrameID', value: IPC.frameID}]);"
         "alert('hi')</script>"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_STREQ([alertMessage UTF8String], "hi");
 }
@@ -242,7 +242,7 @@ TEST(IPCTestingAPI, CanSendSyncMessageToGPUProcess)
     [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html><script>"
         "result = !!IPC.sendSyncMessage('GPU', 0, IPC.messages.GPUConnectionToWebProcess_EnsureAudioSession.name, 100, []);"
         "alert(result)</script>"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_TRUE([alertMessage boolValue]);
 }
@@ -259,7 +259,7 @@ TEST(IPCTestingAPI, CanSendAsyncMessageToGPUProcess)
         "window.result = await IPC.sendMessage('GPU', 0, IPC.messages.RemoteAudioDestinationManager_StartAudioDestination.name, [{type: 'uint64_t', value: 12345}]);"
         "alert(!!result)"
         "})();</script>"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_TRUE([alertMessage boolValue]);
     EXPECT_STREQ([webView stringByEvaluatingJavaScript:@"result.arguments[0].type"].UTF8String, "bool");
@@ -279,7 +279,7 @@ TEST(IPCTestingAPI, CanSendInvalidAsyncMessageToGPUProcessWithoutTermination)
         "window.result = await IPC.sendMessage('GPU', 0, IPC.messages.RemoteAudioDestinationManager_StartAudioDestination.name, [{type: 'uint64_t', value: 12345}]);"
         "alert(!!result)"
         "})();</script>"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_TRUE([alertMessage boolValue]);
     EXPECT_STREQ([webView stringByEvaluatingJavaScript:@"result.arguments[0].type"].UTF8String, "bool");
@@ -297,7 +297,7 @@ TEST(IPCTestingAPI, CanCreateSharedMemory)
 
     done = false;
     [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html><script>const sharedMemory = IPC.createSharedMemory(8); alert(sharedMemory.toString());</script>"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_STREQ([alertMessage UTF8String], "[object SharedMemory]");
     EXPECT_EQ([webView stringByEvaluatingJavaScript:@"new Int8Array(sharedMemory.readBytes(0))[0]"].intValue, 0);
@@ -331,7 +331,7 @@ alert(result.arguments.length + ':' + JSON.stringify(result.arguments[0]) + ',' 
 
     done = false;
     [webView synchronouslyLoadHTMLString:html];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_STREQ([alertMessage UTF8String], "2:{\"type\":\"int64_t\",\"value\":8},{\"type\":\"String\",\"value\":\"hello\\u0000\\u0000\\u0000\"}");
 }
@@ -348,7 +348,7 @@ TEST(IPCTestingAPI, DecodesReplyArgumentsForPrompt)
     promptResult = @"foo";
     [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html><script>result = IPC.sendSyncMessage('UI', IPC.webPageProxyID, IPC.messages.WebPageProxy_RunJavaScriptPrompt.name, 100,"
         "[{type: 'FrameID', value: IPC.frameID}, {type: 'FrameInfoData', value: IPC}, {'type': 'String', 'value': 'hi'}, {'type': 'String', 'value': 'bar'}]);</script>"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_STREQ([promptDefault UTF8String], "bar");
     EXPECT_STREQ([[webView stringByEvaluatingJavaScript:@"JSON.stringify(result.arguments)"] UTF8String], "[{\"type\":\"String\",\"value\":\"foo\"}]");
@@ -367,7 +367,7 @@ TEST(IPCTestingAPI, DecodesReplyArgumentsForAsyncMessage)
     [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html><script>IPC.sendMessage(\"Networking\", 0, IPC.messages.NetworkConnectionToWebProcess_HasStorageAccess.name,"
         "[{type: 'RegistrableDomain', value: 'https://ipctestingapi.com'}, {type: 'RegistrableDomain', value: 'https://webkit.org'}, {type: 'FrameID', value: IPC.frameID},"
         "{type: 'uint64_t', value: IPC.pageID}]).then((result) => alert(JSON.stringify(result.arguments)));</script>"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_STREQ([alertMessage UTF8String], "[{\"type\":\"bool\",\"value\":false}]");
 }
@@ -382,11 +382,11 @@ TEST(IPCTestingAPI, DescribesArguments)
 
     done = false;
     [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html><script>window.args = IPC.messages.WebPageProxy_RunJavaScriptAlert.arguments; alert('ok')</script>"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_STREQ([[webView stringByEvaluatingJavaScript:@"args.length"] UTF8String], "3");
-    EXPECT_STREQ([[webView stringByEvaluatingJavaScript:@"args[0].type"] UTF8String], "WebCore::FrameIdentifier");
-    EXPECT_STREQ([[webView stringByEvaluatingJavaScript:@"args[1].type"] UTF8String], "WebKit::FrameInfoData");
+    EXPECT_STREQ([[webView stringByEvaluatingJavaScript:@"args[0].type"] UTF8String], "CyberCore::FrameIdentifier");
+    EXPECT_STREQ([[webView stringByEvaluatingJavaScript:@"args[1].type"] UTF8String], "CyberKit::FrameInfoData");
     EXPECT_STREQ([[webView stringByEvaluatingJavaScript:@"args[2].name"] UTF8String], "message");
     EXPECT_STREQ([[webView stringByEvaluatingJavaScript:@"args[2].type"] UTF8String], "String");
 }
@@ -400,7 +400,7 @@ TEST(IPCTestingAPI, CanInterceptAlert)
 
     done = false;
     [webView synchronouslyLoadHTMLString:@"<!DOCTYPE html><script>messages = []; IPC.addOutgoingMessageListener('UI', (message) => messages.push(message)); alert('ok');</script>"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_STREQ([alertMessage UTF8String], "ok");
     EXPECT_STREQ([webView stringByEvaluatingJavaScript:@"messages = messages.filter((message) => message.name == IPC.messages.WebPageProxy_RunJavaScriptAlert.name); messages.length"].UTF8String, "1");
@@ -430,7 +430,7 @@ TEST(IPCTestingAPI, CanInterceptHasStorageAccess)
         "IPC.addOutgoingMessageListener('Networking', (currentMessage) => { if (currentMessage.name == messageName) targetMessage = currentMessage; });"
         "IPC.sendMessage('Networking', 0, messageName, [{type: 'RegistrableDomain', value: 'https://ipctestingapi.com'}, {type: 'RegistrableDomain', value: 'https://webkit.org'},"
         "{type: 'FrameID', value: IPC.frameID}, {type: 'uint64_t', value: IPC.pageID}]).then((result) => alert(JSON.stringify(result.arguments)));</script>"];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_STREQ([alertMessage UTF8String], "[{\"type\":\"bool\",\"value\":false}]");
     EXPECT_STREQ([webView stringByEvaluatingJavaScript:@"targetMessage.description"].UTF8String, "NetworkConnectionToWebProcess_HasStorageAccess");
@@ -464,7 +464,7 @@ TEST(IPCTestingAPI, CanInterceptFindString)
         EXPECT_TRUE([webView selectionRangeHasStartOffset:0 endOffset:5]);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_STREQ([webView stringByEvaluatingJavaScript:@"messages = messages.filter((message) => message.name == IPC.messages.WebPage_FindString.name); messages.length"].UTF8String, "1");
     EXPECT_STREQ([webView stringByEvaluatingJavaScript:@"messages[0].description"].UTF8String, "WebPage_FindString");
@@ -529,7 +529,7 @@ static NSMutableSet<NSString *> *extractTypesFromContainers(NSSet<NSString *> *i
             @"std::optional",
             @"OptionSet",
             @"RetainPtr",
-            @"WebCore::RectEdges"
+            @"CyberCore::RectEdges"
         ];
         for (NSString *container in containerTypes) {
             if ([input hasPrefix:[container stringByAppendingString:@"<"]]
@@ -560,7 +560,7 @@ TEST(IPCTestingAPI, SerializedTypeInfo)
         @"name": @"ignoreVary",
         @"type": @"bool"
     }];
-    EXPECT_TRUE([typeInfo[@"WebCore::CacheQueryOptions"] isEqualToArray:expectedArray]);
+    EXPECT_TRUE([typeInfo[@"CyberCore::CacheQueryOptions"] isEqualToArray:expectedArray]);
     NSDictionary *expectedDictionary = @{
         @"isOptionSet" : @1,
         @"size" : @1,
@@ -568,10 +568,10 @@ TEST(IPCTestingAPI, SerializedTypeInfo)
     };
 
     NSDictionary *enumInfo = [webView objectByEvaluatingJavaScript:@"IPC.serializedEnumInfo"];
-    EXPECT_TRUE([enumInfo[@"WebKit::WebsiteDataFetchOption"] isEqualToDictionary:expectedDictionary]);
+    EXPECT_TRUE([enumInfo[@"CyberKit::WebsiteDataFetchOption"] isEqualToDictionary:expectedDictionary]);
 
     NSArray *objectIdentifiers = [webView objectByEvaluatingJavaScript:@"IPC.objectIdentifiers"];
-    EXPECT_TRUE([objectIdentifiers containsObject:@"WebCore::PageIdentifier"]);
+    EXPECT_TRUE([objectIdentifiers containsObject:@"CyberCore::PageIdentifier"]);
 
     NSMutableSet<NSString *> *typesNeedingDescriptions = NSMutableSet.set;
     NSDictionary *messages = [webView objectByEvaluatingJavaScript:@"IPC.messages"];

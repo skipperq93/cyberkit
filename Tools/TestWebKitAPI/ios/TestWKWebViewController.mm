@@ -33,7 +33,7 @@
 @implementation TestWKWebViewControllerWindow
 
 // These internal methods need to be stubbed out to prevent UIKit from throwing inconsistency
-// exceptions when making a UIWindow the key window, since TestWebKitAPI is not a UI application.
+// exceptions when making a UIWindow the key window, since TestCyberKitAPI is not a UI application.
 // These stubs and this class can be removed once https://webkit.org/b/175204 is fixed.
 - (void)_beginKeyWindowDeferral
 {

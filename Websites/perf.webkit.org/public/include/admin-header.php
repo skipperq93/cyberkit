@@ -6,13 +6,13 @@ require_once('manifest-generator.php');
 ?><!DOCTYPE html>
 <html>
 <head>
-<title>WebKit Perf Monitor</title>
+<title>CyberKit Perf Monitor</title>
 <link rel="stylesheet" href="/common.css">
 <link rel="stylesheet" href="/admin/admin.css">
 </head>
 <body>
 <header id="title">
-<h1><a href="/">WebKit Perf Monitor</a></h1>
+<h1><a href="/">CyberKit Perf Monitor</a></h1>
 <ul>
     <li><a href="/admin/platforms">Platforms</a></li>
     <li><a href="/admin/platform-groups">Platform Groups</a></li>

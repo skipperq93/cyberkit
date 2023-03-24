@@ -28,7 +28,7 @@
 #if PLATFORM(IOS_FAMILY)
 
 #import "TestWKWebView.h"
-#import <WebKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
 #import <wtf/RetainPtr.h>
 
 @interface UIFocusDelegate : NSObject<WKUIDelegatePrivate>
@@ -48,7 +48,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(UIFocusTests, ContentViewCanBecomeFocused)
 {
@@ -67,6 +67,6 @@ TEST(UIFocusTests, ContentViewCanBecomeFocused)
     EXPECT_FALSE(contentView.canBecomeFocused);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

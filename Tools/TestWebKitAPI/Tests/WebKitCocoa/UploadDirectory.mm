@@ -32,7 +32,7 @@
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
 #import "Utilities.h"
-#import <WebKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/text/WTFString.h>
 
@@ -67,7 +67,7 @@
 
 @end
 
-TEST(WebKit, UploadDirectory)
+TEST(CyberKit, UploadDirectory)
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSError *error = nil;
@@ -79,7 +79,7 @@ TEST(WebKit, UploadDirectory)
     EXPECT_TRUE([fileManager createFileAtPath:[directory.path stringByAppendingPathComponent:@"testfile"] contents:testData attributes:nil]);
 
     {
-        using namespace TestWebKitAPI;
+        using namespace TestCyberKitAPI;
         HTTPServer server([] (Connection connection) {
             connection.receiveHTTPRequest([=](Vector<char>&&) {
                 constexpr auto response =
@@ -111,7 +111,7 @@ TEST(WebKit, UploadDirectory)
         auto chooseFileButtonLocation = NSMakePoint(10, 590);
         [webView sendClickAtPoint:chooseFileButtonLocation];
         while (![delegate sentDirectory])
-            TestWebKitAPI::Util::spinRunLoop();
+            TestCyberKitAPI::Util::spinRunLoop();
         [webView evaluateJavaScript:@"document.getElementById('form').submit()" completionHandler:nil];
         [webView _test_waitForDidFinishNavigation];
     }

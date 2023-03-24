@@ -28,13 +28,13 @@
 #import "PlatformUtilities.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferences.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKPreferences.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 #if PLATFORM(IOS_FAMILY)
 
-TEST(WebKit, OverrideMinimumLayoutSizeWithNegativeHeight)
+TEST(CyberKit, OverrideMinimumLayoutSizeWithNegativeHeight)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 500)]);
     [webView _overrideLayoutParametersWithMinimumLayoutSize:CGSizeMake(320, -1000) maximumUnobscuredSizeOverride:CGSizeMake(0, 0)];
@@ -48,7 +48,7 @@ static bool fixedLayoutSizeDone;
 static bool fixedLayoutSizeAfterNavigationDone;
 static bool fixedLayoutSizeDisabledDone;
 
-TEST(WebKit, FixedLayoutSize)
+TEST(CyberKit, FixedLayoutSize)
 {
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 100, 100)]);
 
@@ -65,9 +65,9 @@ TEST(WebKit, FixedLayoutSize)
         }];
     }];
 
-    TestWebKitAPI::Util::run(&fixedLayoutSizeDone);
+    TestCyberKitAPI::Util::run(&fixedLayoutSizeDone);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -77,7 +77,7 @@ TEST(WebKit, FixedLayoutSize)
         fixedLayoutSizeAfterNavigationDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&fixedLayoutSizeAfterNavigationDone);
+    TestCyberKitAPI::Util::run(&fixedLayoutSizeAfterNavigationDone);
 
     [webView _setLayoutMode:_WKLayoutModeViewSize];
     [webView evaluateJavaScript:@"document.body.clientWidth" completionHandler:^(id result, NSError *error) {
@@ -85,7 +85,7 @@ TEST(WebKit, FixedLayoutSize)
         fixedLayoutSizeDisabledDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&fixedLayoutSizeDisabledDone);
+    TestCyberKitAPI::Util::run(&fixedLayoutSizeDisabledDone);
 }
 
 #endif

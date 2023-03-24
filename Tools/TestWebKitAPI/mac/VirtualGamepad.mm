@@ -37,7 +37,7 @@
 #import <HID/HIDUserDevice.h>
 #import <IOKit/hid/IOHIDDeviceKeys.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 VirtualGamepad::VirtualGamepad(const GamepadMapping& gamepadMapping)
     : m_gamepadMapping(gamepadMapping)
@@ -95,6 +95,6 @@ void VirtualGamepad::publishReport()
     m_gamepadMapping.publishReportCallback(m_buttonValues, m_axisValues, m_userDevice.get());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // USE(APPLE_INTERNAL_SDK)

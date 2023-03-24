@@ -27,7 +27,7 @@
 
 #import "PlatformUtilities.h"
 #import "TestNavigationDelegate.h"
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 #if !PLATFORM(IOS_FAMILY)
@@ -36,7 +36,7 @@ static bool shrinkToFitDone;
 static bool shrinkToFitAfterNavigationDone;
 static bool shrinkToFitDisabledDone;
 
-TEST(WebKit, ShrinkToFit)
+TEST(CyberKit, ShrinkToFit)
 {
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 100, 100)]);
 
@@ -47,9 +47,9 @@ TEST(WebKit, ShrinkToFit)
         shrinkToFitDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&shrinkToFitDone);
+    TestCyberKitAPI::Util::run(&shrinkToFitDone);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"lots-of-text" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"lots-of-text" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -59,7 +59,7 @@ TEST(WebKit, ShrinkToFit)
         shrinkToFitAfterNavigationDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&shrinkToFitAfterNavigationDone);
+    TestCyberKitAPI::Util::run(&shrinkToFitAfterNavigationDone);
 
     [webView _setLayoutMode:_WKLayoutModeViewSize];
     [webView evaluateJavaScript:@"document.body.clientWidth" completionHandler:^(id result, NSError *error) {
@@ -68,7 +68,7 @@ TEST(WebKit, ShrinkToFit)
         shrinkToFitDisabledDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&shrinkToFitDisabledDone);
+    TestCyberKitAPI::Util::run(&shrinkToFitDisabledDone);
 }
 
 #endif

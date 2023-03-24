@@ -28,13 +28,13 @@
 #if WK_HAVE_C_SPI
 
 #include "InjectedBundleTest.h"
-#include <WebKit/WKBundlePagePrivate.h>
-#include <WebKit/WKBundlePrivate.h>
-#include <WebKit/WKBundleScriptWorld.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKBundlePagePrivate.h>
+#include <CyberKit/WKBundlePrivate.h>
+#include <CyberKit/WKBundleScriptWorld.h>
+#include <CyberKit/WKRetainPtr.h>
 #include <assert.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class InjectedBundleMakeAllShadowRootOpenTest : public InjectedBundleTest {
 public:
@@ -90,6 +90,6 @@ public:
 
 static InjectedBundleTest::Register<InjectedBundleMakeAllShadowRootOpenTest> registrar("InjectedBundleMakeAllShadowRootOpenTest");
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

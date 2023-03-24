@@ -28,10 +28,10 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewConfiguration.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 
 static bool testDone;
 
@@ -67,9 +67,9 @@ static bool testDone;
 @end
 #endif
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, NoHistoryItemScrollToFragment)
+TEST(CyberKit, NoHistoryItemScrollToFragment)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto processPoolConfig = adoptNS([[_WKProcessPoolConfiguration alloc] init]);
@@ -84,11 +84,11 @@ TEST(WebKit, NoHistoryItemScrollToFragment)
     [webView scrollView].delegate = delegateForScrollView.get();
 #endif
 
-    NSURL* resourceURL = [[NSBundle mainBundle] URLForResource:@"scroll-to-anchor" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL* resourceURL = [[NSBundle mainBundle] URLForResource:@"scroll-to-anchor" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     NSString *testFileContents = [NSString stringWithContentsOfURL:resourceURL encoding:NSUTF8StringEncoding error:nil];
     [webView synchronouslyLoadHTMLString:testFileContents];
 
-    TestWebKitAPI::Util::run(&testDone);
+    TestCyberKitAPI::Util::run(&testDone);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

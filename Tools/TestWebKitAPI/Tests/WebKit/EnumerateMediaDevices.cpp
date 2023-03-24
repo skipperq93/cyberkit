@@ -24,14 +24,14 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <WebKit/WKPreferencesRef.h>
-#include <WebKit/WKPreferencesRefPrivate.h>
-#include <WebKit/WKRetainPtr.h>
-#include <WebKit/WKUserMediaPermissionCheck.h>
+#include <CyberKit/WKPreferencesRef.h>
+#include <CyberKit/WKPreferencesRefPrivate.h>
+#include <CyberKit/WKRetainPtr.h>
+#include <CyberKit/WKUserMediaPermissionCheck.h>
 #include <string.h>
 #include <vector>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool loadedFirstTime;
 static bool loadedSecondTime;
@@ -47,7 +47,7 @@ void checkUserMediaPermissionCallback(WKPageRef, WKFrameRef, WKSecurityOriginRef
     loadedSecondTime = true;
 }
 
-TEST(WebKit, EnumerateDevices)
+TEST(CyberKit, EnumerateDevices)
 {
     auto context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -78,7 +78,7 @@ TEST(WebKit, EnumerateDevices)
     Util::run(&loadedSecondTime);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(MEDIA_STREAM)
 

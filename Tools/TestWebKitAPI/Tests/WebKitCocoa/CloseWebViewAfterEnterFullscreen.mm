@@ -30,9 +30,9 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKFullscreenDelegate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKFullscreenDelegate.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Seconds.h>
 
@@ -55,7 +55,7 @@ static bool didExitFullscreen;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CloseWebViewAfterEnterFullscreen, VideoFullscreen)
 {
@@ -69,7 +69,7 @@ TEST(CloseWebViewAfterEnterFullscreen, VideoFullscreen)
 
     didEnterFullscreen = false;
     [webView evaluateJavaScript:@"document.querySelector('video').webkitEnterFullscreen()" completionHandler: nil];
-    TestWebKitAPI::Util::run(&didEnterFullscreen);
+    TestCyberKitAPI::Util::run(&didEnterFullscreen);
     ASSERT_TRUE(didEnterFullscreen);
 
     // Should not crash:
@@ -89,13 +89,13 @@ TEST(CloseWebViewAfterEnterFullscreen, ElementFullscreen)
 
     didEnterFullscreen = false;
     [webView evaluateJavaScript:@"document.querySelector('div').webkitRequestFullscreen()" completionHandler: nil];
-    TestWebKitAPI::Util::run(&didEnterFullscreen);
+    TestCyberKitAPI::Util::run(&didEnterFullscreen);
     ASSERT_TRUE(didEnterFullscreen);
 
     // Should not crash:
     [webView _close];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -23,8 +23,8 @@ objc/*.h diff=objcppheader
 *.sln eol=crlf
 
 # For best performance, place rules for deep paths in the parent directory.
-# For example: instead of "Source/WebCore/inspector/Inspector.json -crlf" here,
-# place "Inspector.json -crlf" in Source/WebCore/inspector/.gitattributes
+# For example: instead of "Source/CyberCore/inspector/Inspector.json -crlf" here,
+# place "Inspector.json -crlf" in Source/CyberCore/inspector/.gitattributes
 
 # Exclude these git specific files from archives created via git-archive.
 .gitignore      export-ignore

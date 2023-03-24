@@ -28,11 +28,11 @@
 #include "TestCocoa.h"
 #include "Utilities.h"
 #include "WTFTestUtilities.h"
-#include <WebKit/_WKWebExtensionContextPrivate.h>
-#include <WebKit/_WKWebExtensionControllerConfigurationPrivate.h>
-#include <WebKit/_WKWebExtensionControllerDelegatePrivate.h>
-#include <WebKit/_WKWebExtensionControllerPrivate.h>
-#include <WebKit/_WKWebExtensionPrivate.h>
+#include <CyberKit/_WKWebExtensionContextPrivate.h>
+#include <CyberKit/_WKWebExtensionControllerConfigurationPrivate.h>
+#include <CyberKit/_WKWebExtensionControllerDelegatePrivate.h>
+#include <CyberKit/_WKWebExtensionControllerPrivate.h>
+#include <CyberKit/_WKWebExtensionPrivate.h>
 
 #ifdef __OBJC__
 
@@ -59,7 +59,7 @@ OBJC_CLASS TestWebExtensionManager;
 
 #endif // __OBJC__
 
-namespace TestWebKitAPI::Util {
+namespace TestCyberKitAPI::Util {
 
 #ifdef __OBJC__
 
@@ -72,4 +72,4 @@ RetainPtr<TestWebExtensionManager> loadAndRunExtension(NSDictionary *manifest, N
 RetainPtr<TestWebExtensionManager> loadAndRunExtension(NSDictionary *resources);
 RetainPtr<TestWebExtensionManager> loadAndRunExtension(NSURL *baseURL);
 
-} // namespace TestWebKitAPI::Util
+} // namespace TestCyberKitAPI::Util

@@ -48,8 +48,8 @@ typedef struct _BrowserTabClass   BrowserTabClass;
 
 GType browser_tab_get_type(void);
 
-GtkWidget* browser_tab_new(WebKitWebView*);
-WebKitWebView* browser_tab_get_web_view(BrowserTab*);
+GtkWidget* browser_tab_new(CyberKitWebView*);
+CyberKitWebView* browser_tab_get_web_view(BrowserTab*);
 void browser_tab_load_uri(BrowserTab*, const char* uri);
 GtkWidget *browser_tab_get_title_widget(BrowserTab*);
 void browser_tab_set_status_text(BrowserTab*, const char* text);

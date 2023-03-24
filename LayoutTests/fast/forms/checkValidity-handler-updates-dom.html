@@ -20,7 +20,7 @@ var handler = function(event) {
 };
 document.getElementById('i').addEventListener('invalid', handler, false);
 // The specificiation doesn't define the behavior in this case.
-// It's ok if WebKit doesn't crash.
+// It's ok if CyberKit doesn't crash.
 shouldBeFalse('document.getElementById("f1").checkValidity()');
 
 // ----------------------------------------------------------------

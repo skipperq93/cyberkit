@@ -28,11 +28,11 @@
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <wtf/RetainPtr.h>
 
 static bool shouldGrantPermissionRequest = true;
@@ -108,9 +108,9 @@ static RetainPtr<WKWebView> createdWebView;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit2, SpeechRecognitionUserPermissionPersistence)
+TEST(CyberKit2, SpeechRecognitionUserPermissionPersistence)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto handler = adoptNS([[SpeechRecognitionMessageHandler alloc] init]);
@@ -126,7 +126,7 @@ TEST(WebKit2, SpeechRecognitionUserPermissionPersistence)
     permissionRequested = false;
     receivedScriptMessage = false;
     [webView loadTestPageNamed:@"speechrecognition-user-permission-persistence"];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     EXPECT_WK_STREQ(@"Error: not-allowed - User permission check has failed", [lastScriptMessage body]);
     EXPECT_TRUE(permissionRequested);
 
@@ -134,7 +134,7 @@ TEST(WebKit2, SpeechRecognitionUserPermissionPersistence)
     permissionRequested = false;
     receivedScriptMessage = false;
     [webView stringByEvaluatingJavaScript:@"start()"];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     EXPECT_WK_STREQ(@"Error: not-allowed - User permission check has failed", [lastScriptMessage body]);
     EXPECT_FALSE(permissionRequested);
 
@@ -145,12 +145,12 @@ TEST(WebKit2, SpeechRecognitionUserPermissionPersistence)
     permissionRequested = false;
     receivedScriptMessage = false;
     [webView loadTestPageNamed:@"speechrecognition-user-permission-persistence"];
-    TestWebKitAPI::Util::run(&permissionRequested);
+    TestCyberKitAPI::Util::run(&permissionRequested);
     // Should not get error message as permission is granted.
     EXPECT_FALSE(receivedScriptMessage);
 }
 
-TEST(WebKit2, SpeechRecognitionErrorWhenStartingAudioCaptureOnDifferentPage)
+TEST(CyberKit2, SpeechRecognitionErrorWhenStartingAudioCaptureOnDifferentPage)
 {
     shouldGrantPermissionRequest = true;
 
@@ -173,40 +173,40 @@ TEST(WebKit2, SpeechRecognitionErrorWhenStartingAudioCaptureOnDifferentPage)
     receivedScriptMessage = false;
     [firstWebView synchronouslyLoadTestPageNamed:@"speechrecognition-basic"];
     [firstWebView stringByEvaluatingJavaScript:@"start()"];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     EXPECT_WK_STREQ(@"Start", [lastScriptMessage body]);
 
     // First page is muted when second page starts recognition.
     // Load html string instead of test page to make sure message only comes from one page.
     receivedScriptMessage = false;
     [secondWebView synchronouslyLoadHTMLString:@"<script>speechRecognition = new webkitSpeechRecognition(); speechRecognition.start();</script>" baseURL:[NSURL URLWithString:@"https://webkit.org"]];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     EXPECT_WK_STREQ(@"Error: audio-capture - Source is muted", [lastScriptMessage body]);
 
     // First page restarts recognition successfully.
     receivedScriptMessage = false;
     [firstWebView stringByEvaluatingJavaScript:@"start()"];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     EXPECT_WK_STREQ(@"Start", [lastScriptMessage body]);
 
     // First page is muted when second page starts media recorder.
     receivedScriptMessage = false;
     [secondWebView synchronouslyLoadTestPageNamed:@"speechrecognition-basic"];
     [secondWebView stringByEvaluatingJavaScript:@"startAudio()"];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     EXPECT_WK_STREQ(@"Error: audio-capture - Source is muted", [lastScriptMessage body]);
 
     // Second page is muted when first page starts recognition.
     receivedScriptMessage = false;
     [firstWebView synchronouslyLoadHTMLString:@"<script>speechRecognition = new webkitSpeechRecognition(); speechRecognition.start();</script>" baseURL:[NSURL URLWithString:@"https://webkit.org"]];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     EXPECT_WK_STREQ(@"Audio Mute", [lastScriptMessage body]);
 }
 
 // FIXME: test this on iOS when https://webkit.org/b/175204 is fixed.
 #if PLATFORM(MAC)
 
-TEST(WebKit2, SpeechRecognitionPageBecomesInvisible)
+TEST(CyberKit2, SpeechRecognitionPageBecomesInvisible)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto handler = adoptNS([[SpeechRecognitionMessageHandler alloc] init]);
@@ -223,7 +223,7 @@ TEST(WebKit2, SpeechRecognitionPageBecomesInvisible)
     receivedScriptMessage = false;
     [webView synchronouslyLoadTestPageNamed:@"speechrecognition-basic"];
     [webView evaluateJavaScript:@"setShouldHandleEndEvent(true); start();" completionHandler:nil];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     EXPECT_WK_STREQ(@"Start", [lastScriptMessage body]);
 
     // Hide page.
@@ -233,17 +233,17 @@ TEST(WebKit2, SpeechRecognitionPageBecomesInvisible)
     // Ongoing recognition does not stop automatically.
     EXPECT_FALSE(receivedScriptMessage);
     [webView stringByEvaluatingJavaScript:@"stop()"];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     EXPECT_WK_STREQ(@"End", [lastScriptMessage body]);
 
     // Page is invisible.
     receivedScriptMessage = false;
     [webView evaluateJavaScript:@"start()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&receivedScriptMessage);
+    TestCyberKitAPI::Util::run(&receivedScriptMessage);
     EXPECT_WK_STREQ(@"Error: not-allowed - Page is not visible to user", [lastScriptMessage body]);
 }
 
-TEST(WebKit2, SpeechRecognitionPageIsDestroyed)
+TEST(CyberKit2, SpeechRecognitionPageIsDestroyed)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto preferences = [configuration preferences];
@@ -262,22 +262,22 @@ TEST(WebKit2, SpeechRecognitionPageIsDestroyed)
 
         didFinishNavigationBoolean = false;
         [webView loadHTMLString:@"<script>speechRecognition = new webkitSpeechRecognition(); speechRecognition.start(); speechRecognition = null;</script>" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
-        TestWebKitAPI::Util::run(&didFinishNavigationBoolean);
+        TestCyberKitAPI::Util::run(&didFinishNavigationBoolean);
         [configuration.get().processPool _garbageCollectJavaScriptObjectsForTesting];
 
         bool finishedRunningScript = false;
         [webView evaluateJavaScript:@"open('http://webkit.org')" completionHandler: [&] (id result, NSError *error) {
             finishedRunningScript = true;
         }];
-        TestWebKitAPI::Util::run(&finishedRunningScript);
+        TestCyberKitAPI::Util::run(&finishedRunningScript);
     }
 
-    TestWebKitAPI::Util::runFor(0.5_s);
+    TestCyberKitAPI::Util::runFor(0.5_s);
 
     EXPECT_TRUE(!!createdWebView);
 }
 
-TEST(WebKit2, SpeechRecognitionMediaCaptureStateChange)
+TEST(CyberKit2, SpeechRecognitionMediaCaptureStateChange)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto handler = adoptNS([[SpeechRecognitionMessageHandler alloc] init]);
@@ -293,18 +293,18 @@ TEST(WebKit2, SpeechRecognitionMediaCaptureStateChange)
     captureStateDidChange = false;
     [webView synchronouslyLoadTestPageNamed:@"speechrecognition-basic"];
     [webView stringByEvaluatingJavaScript:@"start()"];
-    TestWebKitAPI::Util::run(&captureStateDidChange);
+    TestCyberKitAPI::Util::run(&captureStateDidChange);
     EXPECT_TRUE(isCapturing);
 
     captureStateDidChange = false;
     [webView stringByEvaluatingJavaScript:@"stop()"];
-    TestWebKitAPI::Util::run(&captureStateDidChange);
+    TestCyberKitAPI::Util::run(&captureStateDidChange);
     EXPECT_FALSE(isCapturing);
 }
 
 #endif
 
-TEST(WebKit2, SpeechRecognitionWebProcessCrash)
+TEST(CyberKit2, SpeechRecognitionWebProcessCrash)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto handler = adoptNS([[SpeechRecognitionMessageHandler alloc] init]);
@@ -322,13 +322,13 @@ TEST(WebKit2, SpeechRecognitionWebProcessCrash)
         receivedScriptMessage = false;
         [webView synchronouslyLoadTestPageNamed:@"speechrecognition-basic"];
         [webView evaluateJavaScript:@"start();" completionHandler:nil];
-        TestWebKitAPI::Util::run(&receivedScriptMessage);
+        TestCyberKitAPI::Util::run(&receivedScriptMessage);
         EXPECT_WK_STREQ(@"Start", [lastScriptMessage body]);
 
         [webView _killWebContentProcess];
     }
 
-    TestWebKitAPI::Util::runFor(0.5_s);
+    TestCyberKitAPI::Util::runFor(0.5_s);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

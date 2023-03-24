@@ -39,7 +39,7 @@ messages -> GoodName {
 \tBadHandler(Vector<WTF::String> list) -> (bool result)
 
     # GoodHandler is OK
-    GoodHandler(Vector<String> list, WebKit::SomeClass data) -> (bool result)
+    GoodHandler(Vector<String> list, CyberKit::SomeClass data) -> (bool result)
 }
 
 #endif

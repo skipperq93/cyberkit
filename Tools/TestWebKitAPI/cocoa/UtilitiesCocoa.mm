@@ -26,7 +26,7 @@
 #import "config.h"
 #import "Utilities.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 namespace Util {
 
 void run(bool* done)
@@ -58,4 +58,4 @@ void runFor(Seconds duration)
 }
 
 } // namespace Util
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

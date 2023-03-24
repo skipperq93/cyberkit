@@ -30,7 +30,7 @@
 
 #import <HID/HIDUserDevice.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 const uint8_t F710Descriptor[] = {
     0x05, 0x01,         // Usage Page (Generic Desktop Ctrls)
@@ -154,6 +154,6 @@ GamepadMapping VirtualGamepad::logitechF710Mapping()
     };
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // USE(APPLE_INTERNAL_SDK)

@@ -32,11 +32,11 @@
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
 #import <Foundation/NSURLRequest.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKSessionState.h>
-#import <WebCore/ResourceRequest.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKSessionState.h>
+#import <CyberCore/ResourceRequest.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/RunLoop.h>
 #import <wtf/text/WTFString.h>
@@ -44,7 +44,7 @@
 #if ENABLE(APP_PRIVACY_REPORT)
 TEST(AppPrivacyReport, DefaultRequestIsAppInitiated)
 {
-    TestWebKitAPI::HTTPServer server(TestWebKitAPI::HTTPServer::respondWithChallengeThenOK);
+    TestCyberKitAPI::HTTPServer server(TestCyberKitAPI::HTTPServer::respondWithChallengeThenOK);
 
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
 
@@ -61,7 +61,7 @@ TEST(AppPrivacyReport, DefaultRequestIsAppInitiated)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     isDone = false;
     [webView _appPrivacyReportTestingData:^(struct WKAppPrivacyReportTestingData data) {
@@ -70,12 +70,12 @@ TEST(AppPrivacyReport, DefaultRequestIsAppInitiated)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(AppPrivacyReport, AppInitiatedRequest)
 {
-    TestWebKitAPI::HTTPServer server(TestWebKitAPI::HTTPServer::respondWithChallengeThenOK);
+    TestCyberKitAPI::HTTPServer server(TestCyberKitAPI::HTTPServer::respondWithChallengeThenOK);
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
 
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectZero configuration:configuration.get()]);
@@ -93,7 +93,7 @@ TEST(AppPrivacyReport, AppInitiatedRequest)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     isDone = false;
     [webView _appPrivacyReportTestingData:^(struct WKAppPrivacyReportTestingData data) {
@@ -102,12 +102,12 @@ TEST(AppPrivacyReport, AppInitiatedRequest)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(AppPrivacyReport, NonAppInitiatedRequest)
 {
-    TestWebKitAPI::HTTPServer server(TestWebKitAPI::HTTPServer::respondWithChallengeThenOK);
+    TestCyberKitAPI::HTTPServer server(TestCyberKitAPI::HTTPServer::respondWithChallengeThenOK);
 
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
 
@@ -126,7 +126,7 @@ TEST(AppPrivacyReport, NonAppInitiatedRequest)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     isDone = false;
     [webView _appPrivacyReportTestingData:^(struct WKAppPrivacyReportTestingData data) {
@@ -135,12 +135,12 @@ TEST(AppPrivacyReport, NonAppInitiatedRequest)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(AppPrivacyReport, AppInitiatedRequestWithNavigation)
 {
-    TestWebKitAPI::HTTPServer server(TestWebKitAPI::HTTPServer::respondWithChallengeThenOK);
+    TestCyberKitAPI::HTTPServer server(TestCyberKitAPI::HTTPServer::respondWithChallengeThenOK);
 
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
 
@@ -160,7 +160,7 @@ TEST(AppPrivacyReport, AppInitiatedRequestWithNavigation)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     isDone = false;
     [webView _appPrivacyReportTestingData:^(struct WKAppPrivacyReportTestingData data) {
@@ -169,7 +169,7 @@ TEST(AppPrivacyReport, AppInitiatedRequestWithNavigation)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     isDone = false;
     NSMutableURLRequest *nonAppInitiatedRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:nonAppInitiatedURL]];
@@ -180,7 +180,7 @@ TEST(AppPrivacyReport, AppInitiatedRequestWithNavigation)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     // Load a non app initated request and confirm the loads are marked correctly.
     [webView loadRequest:nonAppInitiatedRequest];
@@ -191,7 +191,7 @@ TEST(AppPrivacyReport, AppInitiatedRequestWithNavigation)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     isDone = false;
     [webView _appPrivacyReportTestingData:^(struct WKAppPrivacyReportTestingData data) {
@@ -200,7 +200,7 @@ TEST(AppPrivacyReport, AppInitiatedRequestWithNavigation)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(AppPrivacyReport, AppInitiatedRequestWithSubFrame)
@@ -210,7 +210,7 @@ TEST(AppPrivacyReport, AppInitiatedRequestWithSubFrame)
 
     __block bool isDone = false;
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
-    NSMutableURLRequest *appInitiatedRequest = [NSMutableURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"page-with-csp" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSMutableURLRequest *appInitiatedRequest = [NSMutableURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"page-with-csp" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     appInitiatedRequest.attribution = NSURLRequestAttributionDeveloper;
 
     [webView loadRequest:appInitiatedRequest];
@@ -224,7 +224,7 @@ TEST(AppPrivacyReport, AppInitiatedRequestWithSubFrame)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(AppPrivacyReport, NonAppInitiatedRequestWithSubFrame)
@@ -234,7 +234,7 @@ TEST(AppPrivacyReport, NonAppInitiatedRequestWithSubFrame)
 
     __block bool isDone = false;
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
-    NSMutableURLRequest *nonAppInitiatedRequest = [NSMutableURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"page-with-csp" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSMutableURLRequest *nonAppInitiatedRequest = [NSMutableURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"page-with-csp" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     nonAppInitiatedRequest.attribution = NSURLRequestAttributionUser;
 
     [webView loadRequest:nonAppInitiatedRequest];
@@ -248,7 +248,7 @@ TEST(AppPrivacyReport, NonAppInitiatedRequestWithSubFrame)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 static constexpr auto mainSWBytes = R"SWRESOURCE(
@@ -281,7 +281,7 @@ static void runTest(ResponseType responseType, IsAppInitiated isAppInitiated)
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:^() {
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     ASCIILiteral js;
     const char* expectedAlert = nullptr;
@@ -297,11 +297,11 @@ static void runTest(ResponseType responseType, IsAppInitiated isAppInitiated)
         break;
     }
 
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { mainSWBytes } },
         { "/sw.js"_s, { {{ "Content-Type"_s, "application/javascript"_s }}, js } },
         { "/fetched.html"_s, { "<script>alert('fetched from server')</script>"_s } },
-    }, TestWebKitAPI::HTTPServer::Protocol::Https);
+    }, TestCyberKitAPI::HTTPServer::Protocol::Https);
 
     auto webView = adoptNS([WKWebView new]);
 
@@ -335,7 +335,7 @@ static void runTest(ResponseType responseType, IsAppInitiated isAppInitiated)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     [webView reload];
     EXPECT_WK_STREQ([webView _test_waitForAlert], expectedAlert);
@@ -352,7 +352,7 @@ static void runTest(ResponseType responseType, IsAppInitiated isAppInitiated)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(AppPrivacyReport, NonAppInitiatedRequestWithServiceWorker)
@@ -374,16 +374,16 @@ TEST(AppPrivacyReport, MultipleWebViewsWithSharedServiceWorker)
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:^() {
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     constexpr auto js = "self.addEventListener('fetch', (event) => { event.respondWith(fetch('/fetched.html')) })"_s;
     const char* expectedAlert = "fetched from server";
 
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { mainSWBytes } },
         { "/sw.js"_s, { {{ "Content-Type"_s, "application/javascript"_s }}, js } },
         { "/fetched.html"_s, { "<script>alert('fetched from server')</script>"_s } },
-    }, TestWebKitAPI::HTTPServer::Protocol::Https);
+    }, TestCyberKitAPI::HTTPServer::Protocol::Https);
 
     auto webView1 = adoptNS([WKWebView new]);
     auto webView2 = adoptNS([WKWebView new]);
@@ -411,14 +411,14 @@ TEST(AppPrivacyReport, MultipleWebViewsWithSharedServiceWorker)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     isDone = false;
     [webView1 _clearAppPrivacyReportTestingData:^{
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     isDone = false;
     NSMutableURLRequest *nonAppInitiatedRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://127.0.0.1:%d/", server.port()]]];
@@ -434,7 +434,7 @@ TEST(AppPrivacyReport, MultipleWebViewsWithSharedServiceWorker)
         EXPECT_TRUE(data.hasLoadedNonAppInitiatedRequestTesting);
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 static void softUpdateTest(IsAppInitiated isAppInitiated)
@@ -443,7 +443,7 @@ static void softUpdateTest(IsAppInitiated isAppInitiated)
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:^() {
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     auto delegate = adoptNS([TestNavigationDelegate new]);
     [delegate setDidReceiveAuthenticationChallenge:^(WKWebView *, NSURLAuthenticationChallenge *challenge, void (^callback)(NSURLSessionAuthChallengeDisposition, NSURLCredential *)) {
@@ -462,10 +462,10 @@ static void softUpdateTest(IsAppInitiated isAppInitiated)
     static constexpr auto js = "self.addEventListener('fetch', (event) => { event.respondWith(new Response(new Blob(['<script>alert(\"synthetic response\")</script>'], {type: 'text/html'}))); })"_s;
 
     {
-        TestWebKitAPI::HTTPServer server1({
+        TestCyberKitAPI::HTTPServer server1({
             { "/"_s, { mainSWBytes } },
             { "/sw.js"_s, { {{ "Content-Type"_s, "application/javascript"_s }}, js } },
-        }, TestWebKitAPI::HTTPServer::Protocol::Https, nullptr, testIdentity());
+        }, TestCyberKitAPI::HTTPServer::Protocol::Https, nullptr, testIdentity());
         serverPort = server1.port();
 
         NSURLRequest *request = server1.request();
@@ -482,10 +482,10 @@ static void softUpdateTest(IsAppInitiated isAppInitiated)
     }
 
     {
-        TestWebKitAPI::HTTPServer server2({
+        TestCyberKitAPI::HTTPServer server2({
             { "/"_s, { mainSWBytes } },
             { "/sw.js"_s, { {{ "Content-Type"_s, "application/javascript"_s }}, js } }
-        }, TestWebKitAPI::HTTPServer::Protocol::Https, nullptr, testIdentity2(), serverPort);
+        }, TestCyberKitAPI::HTTPServer::Protocol::Https, nullptr, testIdentity2(), serverPort);
 
         NSMutableURLRequest *request2 = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://127.0.0.1:%d/", server2.port()]]];
         auto attributionValue = isAppInitiated == IsAppInitiated::Yes ? NSURLRequestAttributionDeveloper : NSURLRequestAttributionUser;
@@ -496,7 +496,7 @@ static void softUpdateTest(IsAppInitiated isAppInitiated)
             isDone = true;
         }];
 
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
 
         [webView2 loadRequest:request2];
         EXPECT_WK_STREQ([webView2 _test_waitForAlert], "synthetic response");
@@ -513,7 +513,7 @@ static void softUpdateTest(IsAppInitiated isAppInitiated)
             EXPECT_EQ(data.hasLoadedNonAppInitiatedRequestTesting, !expectingAppInitiatedRequests);
             isDone = true;
         }];
-        TestWebKitAPI::Util::spinRunLoop(1);
+        TestCyberKitAPI::Util::spinRunLoop(1);
     }
 }
 
@@ -529,7 +529,7 @@ TEST(AppPrivacyReport, NonAppInitiatedRequestWithServiceWorkerSoftUpdate)
 
 static void runWebProcessPlugInTest(IsAppInitiated isAppInitiated)
 {
-    TestWebKitAPI::HTTPServer server(TestWebKitAPI::HTTPServer::respondWithChallengeThenOK);
+    TestCyberKitAPI::HTTPServer server(TestCyberKitAPI::HTTPServer::respondWithChallengeThenOK);
 
     WKWebViewConfiguration *configuration = [WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"AppPrivacyReportPlugIn"];
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 500) configuration:configuration]);
@@ -552,7 +552,7 @@ static void runWebProcessPlugInTest(IsAppInitiated isAppInitiated)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(AppPrivacyReport, WebProcessPluginTestAppInitiated)
@@ -653,10 +653,10 @@ TEST(AppPrivacyReport, RegisterServiceWorkerClientUpdatesAppInitiatedValue)
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:^() {
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     WKWebViewConfiguration *configuration = [WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"WebProcessPlugInWithInternals" configureJSCForTesting:YES];
-    WKRetainPtr<WKContextRef> context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+    WKRetainPtr<WKContextRef> context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
     configuration.processPool = (WKProcessPool *)context.get();
 
     RetainPtr<SWAppInitiatedRequestMessageHandler> messageHandler = adoptNS([[SWAppInitiatedRequestMessageHandler alloc] init]);
@@ -674,7 +674,7 @@ TEST(AppPrivacyReport, RegisterServiceWorkerClientUpdatesAppInitiatedValue)
     webView1.get().navigationDelegate = delegate.get();
     webView2.get().navigationDelegate = delegate.get();
 
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/main.html"_s, { mainSWBytesDefaultValue } },
         { "/sw.js"_s, { { { "Content-Type"_s, "application/javascript"_s } }, scriptBytesDefaultValue } },
     });
@@ -682,7 +682,7 @@ TEST(AppPrivacyReport, RegisterServiceWorkerClientUpdatesAppInitiatedValue)
     // Load WebView with an app initiated request. We expect the ServiceWorkerThreadProxy to be app initiated.
     expectedMessage = "app initiated";
     [webView1 loadRequest:server.request("/main.html")];
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
 
     // Load WebView with a non app initiated request. We expect the ServiceWorkerThreadProxy to be app initiated
     // at first, but then become non app initiated once the second webView is closed and its client is unregistered.
@@ -692,7 +692,7 @@ TEST(AppPrivacyReport, RegisterServiceWorkerClientUpdatesAppInitiatedValue)
     nonAppInitiatedRequest.attribution = NSURLRequestAttributionUser;
 
     [webView2 loadRequest:nonAppInitiatedRequest];
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
 
     // Close the app initiated view. We expect that the existing worker will become non app initiated
     // now that all app initiated clients have been removed.
@@ -701,7 +701,7 @@ TEST(AppPrivacyReport, RegisterServiceWorkerClientUpdatesAppInitiatedValue)
     [webView1 _close];
     webView1 = nullptr;
 
-    TestWebKitAPI::Util::run(&receivedMessage);
+    TestCyberKitAPI::Util::run(&receivedMessage);
 }
 
 #endif // WK_HAVE_C_SPI
@@ -728,7 +728,7 @@ static void loadSimulatedRequestTest(IsAppInitiated isAppInitiated)
         EXPECT_EQ(data.hasLoadedNonAppInitiatedRequestTesting, !expectingAppInitiatedRequests);
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 // FIXME: Re-enable these two tests once webkit.org/b/232166 is resolved.
@@ -759,7 +759,7 @@ static void restoreFromSessionStateTest(IsAppInitiated isAppInitiated)
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:^() {
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     auto webView2 = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
     [webView2 _restoreSessionState:sessionState.get() andNavigate:YES];
@@ -774,7 +774,7 @@ static void restoreFromSessionStateTest(IsAppInitiated isAppInitiated)
         EXPECT_EQ(data.hasLoadedNonAppInitiatedRequestTesting, !expectingAppInitiatedRequests);
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(AppPrivacyReport, RestoreFromSessionStateIsAppInitiated)
@@ -804,7 +804,7 @@ static void restoreFromInteractionStateTest(IsAppInitiated isAppInitiated)
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:^() {
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     auto webView2 = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
     [webView2 setInteractionState:interactionState];
@@ -819,7 +819,7 @@ static void restoreFromInteractionStateTest(IsAppInitiated isAppInitiated)
         EXPECT_EQ(data.hasLoadedNonAppInitiatedRequestTesting, !expectingAppInitiatedRequests);
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(AppPrivacyReport, RestoreFromInteractionStateIsAppInitiated)
@@ -836,7 +836,7 @@ static void loadFileTest(IsAppInitiated isAppInitiated)
 {
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 500)]);
 
-    NSURL *file = [[NSBundle mainBundle] URLForResource:@"file-with-iframe" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *file = [[NSBundle mainBundle] URLForResource:@"file-with-iframe" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:file];
     request.attribution = isAppInitiated == IsAppInitiated::Yes ? NSURLRequestAttributionDeveloper : NSURLRequestAttributionUser;
 
@@ -850,7 +850,7 @@ static void loadFileTest(IsAppInitiated isAppInitiated)
         EXPECT_EQ(data.hasLoadedNonAppInitiatedRequestTesting, !expectingAppInitiatedRequests);
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(AppPrivacyReport, LoadFileRequestIsAppInitiated)
@@ -870,45 +870,45 @@ TEST(AppPrivacyReport, NSURLRequestConstructorAttribution)
     NSMutableURLRequest *appInitiatedRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     EXPECT_EQ(appInitiatedRequest.attribution, NSURLRequestAttributionDeveloper);
 
-    WebCore::ResourceRequest testRequest(appInitiatedRequest);
+    CyberCore::ResourceRequest testRequest(appInitiatedRequest);
     EXPECT_TRUE(testRequest.isAppInitiated());
 
-    WebCore::ResourceRequest testRequestCopy(testRequest);
+    CyberCore::ResourceRequest testRequestCopy(testRequest);
     EXPECT_TRUE(testRequestCopy.isAppInitiated());
 
-    auto nsRequestFromCopy = testRequestCopy.nsURLRequest(WebCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
+    auto nsRequestFromCopy = testRequestCopy.nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
     EXPECT_EQ(nsRequestFromCopy.attribution, NSURLRequestAttributionDeveloper);
     
     appInitiatedRequest.attribution = NSURLRequestAttributionUser;
-    WebCore::ResourceRequest testRequest2(appInitiatedRequest);
+    CyberCore::ResourceRequest testRequest2(appInitiatedRequest);
     EXPECT_FALSE(testRequest2.isAppInitiated());
 
-    WebCore::ResourceRequest testRequestCopy2(testRequest2);
+    CyberCore::ResourceRequest testRequestCopy2(testRequest2);
     EXPECT_FALSE(testRequestCopy2.isAppInitiated());
 
-    auto nsRequestFromCopy2 = testRequestCopy2.nsURLRequest(WebCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
+    auto nsRequestFromCopy2 = testRequestCopy2.nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
     EXPECT_EQ(nsRequestFromCopy2.attribution, NSURLRequestAttributionUser);
 
     appInitiatedRequest.attribution = NSURLRequestAttributionDeveloper;
-    WebCore::ResourceRequest testRequest3(appInitiatedRequest);
+    CyberCore::ResourceRequest testRequest3(appInitiatedRequest);
     EXPECT_TRUE(testRequest3.isAppInitiated());
 
-    auto nsRequestFromModifiedRequest = testRequest3.nsURLRequest(WebCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
+    auto nsRequestFromModifiedRequest = testRequest3.nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
     EXPECT_EQ(nsRequestFromModifiedRequest.attribution, NSURLRequestAttributionDeveloper);
 
     testRequest3.setIsAppInitiated(false);
-    auto nsRequestFromModifiedRequest2 = testRequest3.nsURLRequest(WebCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
+    auto nsRequestFromModifiedRequest2 = testRequest3.nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
     EXPECT_EQ(nsRequestFromModifiedRequest2.attribution, NSURLRequestAttributionUser);
 
     testRequest3.setIsAppInitiated(true);
-    auto nsRequestFromModifiedRequest3 = testRequest3.nsURLRequest(WebCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
+    auto nsRequestFromModifiedRequest3 = testRequest3.nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
     EXPECT_EQ(nsRequestFromModifiedRequest3.attribution, NSURLRequestAttributionDeveloper);
 
     // Changing the nsURLRequest copy generated by the accessor doesn't change the ResourceRequest
     appInitiatedRequest.attribution = NSURLRequestAttributionUser;
     EXPECT_TRUE(testRequest.isAppInitiated());
 
-    WebCore::ResourceRequest testRequest4(appInitiatedRequest);
+    CyberCore::ResourceRequest testRequest4(appInitiatedRequest);
     EXPECT_FALSE(testRequest4.isAppInitiated());
 }
 

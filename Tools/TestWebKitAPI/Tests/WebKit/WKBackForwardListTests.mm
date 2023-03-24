@@ -29,12 +29,12 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestNavigationDelegate.h"
-#import <WebKit/WKBackForwardListPrivate.h>
-#import <WebKit/WKNavigationDelegatePrivate.h>
-#import <WebKit/WKNavigationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKSessionState.h>
+#import <CyberKit/WKBackForwardListPrivate.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/WKNavigationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKSessionState.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/text/WTFString.h>
 
@@ -161,13 +161,13 @@ static size_t navigations;
 
 TEST(WKBackForwardList, WindowLocationAsyncPolicyDecision)
 {
-    NSURL *simple = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *simple2 = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *simple = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *simple2 = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     auto webView = adoptNS([[WKWebView alloc] init]);
     auto delegate = adoptNS([[AsyncPolicyDecisionDelegate alloc] init]);
     [webView setNavigationDelegate:delegate.get()];
     [webView loadHTMLString:@"<script>window.location='simple.html'</script>" baseURL:simple2];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_STREQ(webView.get().backForwardList.currentItem.URL.absoluteString.UTF8String, simple.absoluteString.UTF8String);
 }
 
@@ -175,9 +175,9 @@ TEST(WKBackForwardList, InteractionStateRestoration)
 {
     auto webView = adoptNS([[WKWebView alloc] init]);
 
-    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *url3 = [[NSBundle mainBundle] URLForResource:@"simple3" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *url3 = [[NSBundle mainBundle] URLForResource:@"simple3" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
 
     [webView loadRequest:[NSURLRequest requestWithURL:url1]];
     [webView _test_waitForDidFinishNavigation];
@@ -225,7 +225,7 @@ TEST(WKBackForwardList, InteractionStateRestoration)
         EXPECT_WK_STREQ(@"Third simple HTML file.", bodyText);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     [webView goBack];
     [webView _test_waitForDidFinishNavigation];
@@ -237,7 +237,7 @@ TEST(WKBackForwardList, InteractionStateRestoration)
         EXPECT_WK_STREQ(@"Second simple HTML file.", bodyText);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     [webView goBack];
     [webView _test_waitForDidFinishNavigation];
@@ -249,16 +249,16 @@ TEST(WKBackForwardList, InteractionStateRestoration)
         EXPECT_WK_STREQ(@"Simple HTML file.", bodyText);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(WKBackForwardList, InteractionStateRestorationNil)
 {
     auto webView = adoptNS([[WKWebView alloc] init]);
 
-    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *url3 = [[NSBundle mainBundle] URLForResource:@"simple3" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *url3 = [[NSBundle mainBundle] URLForResource:@"simple3" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
 
     [webView loadRequest:[NSURLRequest requestWithURL:url1]];
     [webView _test_waitForDidFinishNavigation];
@@ -286,9 +286,9 @@ TEST(WKBackForwardList, InteractionStateRestorationInvalid)
 {
     auto webView = adoptNS([[WKWebView alloc] init]);
 
-    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *url3 = [[NSBundle mainBundle] URLForResource:@"simple3" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *url3 = [[NSBundle mainBundle] URLForResource:@"simple3" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
 
     [webView loadRequest:[NSURLRequest requestWithURL:url1]];
     [webView _test_waitForDidFinishNavigation];
@@ -348,13 +348,13 @@ static RetainPtr<WKNavigation> lastNavigation;
 - (void)waitForDidFinishNavigationOrDidSameDocumentNavigation
 {
     _navigated = false;
-    TestWebKitAPI::Util::run(&_navigated);
+    TestCyberKitAPI::Util::run(&_navigated);
 }
 
 - (void)waitForDidFinishNavigation
 {
     _didFinishNavigation = false;
-    TestWebKitAPI::Util::run(&_didFinishNavigation);
+    TestCyberKitAPI::Util::run(&_didFinishNavigation);
 }
 
 @end
@@ -371,8 +371,8 @@ TEST(WKBackForwardList, BackSwipeNavigationSkipsItemsWithoutUserGesture)
     auto navigationDelegate = adoptNS([WKBackForwardNavigationDelegate new]);
     webView.get().navigationDelegate = navigationDelegate.get();
 
-    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
 
     [webView loadRequest:[NSURLRequest requestWithURL:url1]];
     [navigationDelegate waitForDidFinishNavigationOrDidSameDocumentNavigation];
@@ -413,8 +413,8 @@ TEST(WKBackForwardList, BackSwipeNavigationDoesNotSkipItemsWithUserGesture)
     auto navigationDelegate = adoptNS([WKBackForwardNavigationDelegate new]);
     webView.get().navigationDelegate = navigationDelegate.get();
 
-    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
 
     [webView loadRequest:[NSURLRequest requestWithURL:url1]];
     [navigationDelegate waitForDidFinishNavigationOrDidSameDocumentNavigation];
@@ -449,9 +449,9 @@ static void runBackForwardNavigationSkipsItemsWithoutUserGestureTest(Function<vo
     auto navigationDelegate = adoptNS([WKBackForwardNavigationDelegate new]);
     webView.get().navigationDelegate = navigationDelegate.get();
 
-    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *url3 = [[NSBundle mainBundle] URLForResource:@"simple3" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *url3 = [[NSBundle mainBundle] URLForResource:@"simple3" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
 
     [webView loadRequest:[NSURLRequest requestWithURL:url1]];
     [navigationDelegate waitForDidFinishNavigationOrDidSameDocumentNavigation];
@@ -566,8 +566,8 @@ static void runBackForwardNavigationDoesNotSkipItemsWithUserGestureTest(Function
     // Test case: url1 -> url2 -> url2#a (with user gesture)
     // No item should be skipped when navigating backwards or forwards.
 
-    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
 
     [webView loadRequest:[NSURLRequest requestWithURL:url1]];
     [navigationDelegate waitForDidFinishNavigationOrDidSameDocumentNavigation];
@@ -653,8 +653,8 @@ TEST(WKBackForwardList, BackForwardNavigationDoesNotSkipUpdatedItemWithRecentUse
     auto navigationDelegate = adoptNS([WKBackForwardNavigationDelegate new]);
     webView.get().navigationDelegate = navigationDelegate.get();
 
-    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"fragment-navigation-before-load-event" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"fragment-navigation-before-load-event" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
 
     [webView loadRequest:[NSURLRequest requestWithURL:url1]];
     [navigationDelegate waitForDidFinishNavigationOrDidSameDocumentNavigation];
@@ -684,8 +684,8 @@ TEST(WKBackForwardList, BackNavigationHijacking)
     auto navigationDelegate = adoptNS([WKBackForwardNavigationDelegate new]);
     webView.get().navigationDelegate = navigationDelegate.get();
 
-    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
 
     [webView loadRequest:[NSURLRequest requestWithURL:url1]];
     [navigationDelegate waitForDidFinishNavigationOrDidSameDocumentNavigation];
@@ -696,7 +696,7 @@ TEST(WKBackForwardList, BackNavigationHijacking)
         ranJS = true;
     }];
     [navigationDelegate waitForDidFinishNavigationOrDidSameDocumentNavigation];
-    TestWebKitAPI::Util::run(&ranJS);
+    TestCyberKitAPI::Util::run(&ranJS);
 
     [webView loadRequest:[NSURLRequest requestWithURL:url2]];
     [navigationDelegate waitForDidFinishNavigationOrDidSameDocumentNavigation];
@@ -706,25 +706,25 @@ TEST(WKBackForwardList, BackNavigationHijacking)
     [navigationDelegate waitForDidFinishNavigationOrDidSameDocumentNavigation];
     EXPECT_STREQ([webView URL].absoluteString.UTF8String, url1.absoluteString.UTF8String);
 
-    TestWebKitAPI::Util::spinRunLoop(10);
+    TestCyberKitAPI::Util::spinRunLoop(10);
     usleep(100000);
-    TestWebKitAPI::Util::spinRunLoop(10);
+    TestCyberKitAPI::Util::spinRunLoop(10);
 
     EXPECT_STREQ([webView URL].absoluteString.UTF8String, url1.absoluteString.UTF8String);
 }
 
 TEST(WKBackForwardList, SessionStateTitleTruncation)
 {
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { "<script>document.title='a'.repeat(10000);window.history.pushState({}, '', window.location+'?a=b');</script>"_s } }
     });
 
     auto webView = adoptNS([WKWebView new]);
     [webView loadRequest:server.request()];
     while (!webView.get().canGoBack)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     while (webView.get()._sessionState.data.length < 1000u)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     _WKSessionState *sessionState = webView.get()._sessionState;
     NSData *stateData = sessionState.data;
     EXPECT_LT(stateData.length, 2000u);

@@ -51,18 +51,18 @@ typedef struct _BrowserWindowClass   BrowserWindowClass;
 GType browser_window_get_type(void);
 
 #if GTK_CHECK_VERSION(3, 98, 0)
-GtkWidget* browser_window_new(GtkWindow*, WebKitWebContext*, WebKitNetworkSession*);
-WebKitNetworkSession* browser_window_get_network_session(BrowserWindow*);
+GtkWidget* browser_window_new(GtkWindow*, CyberKitWebContext*, CyberKitNetworkSession*);
+CyberKitNetworkSession* browser_window_get_network_session(BrowserWindow*);
 #else
-GtkWidget* browser_window_new(GtkWindow*, WebKitWebContext*);
+GtkWidget* browser_window_new(GtkWindow*, CyberKitWebContext*);
 #endif
-WebKitWebContext* browser_window_get_web_context(BrowserWindow*);
-void browser_window_append_view(BrowserWindow*, WebKitWebView*);
+CyberKitWebContext* browser_window_get_web_context(BrowserWindow*);
+void browser_window_append_view(BrowserWindow*, CyberKitWebView*);
 void browser_window_load_uri(BrowserWindow*, const char *uri);
 void browser_window_load_session(BrowserWindow *, const char *sessionFile);
 void browser_window_set_background_color(BrowserWindow*, GdkRGBA*);
-WebKitWebView* browser_window_get_or_create_web_view_for_automation(BrowserWindow*);
-WebKitWebView *browser_window_create_web_view_in_new_tab_for_automation(BrowserWindow*);
+CyberKitWebView* browser_window_get_or_create_web_view_for_automation(BrowserWindow*);
+CyberKitWebView *browser_window_create_web_view_in_new_tab_for_automation(BrowserWindow*);
 
 G_END_DECLS
 

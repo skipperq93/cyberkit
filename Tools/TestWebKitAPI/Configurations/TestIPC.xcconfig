@@ -23,7 +23,7 @@
 
 PRODUCT_NAME = TestIPC;
 
-PROJECT_HEADER_SEARCH_PATHS = $(SRCROOT)/../../Source/WebKit/Platform $(SRCROOT)/../../Source/WebKit/Platform/IPC $(SRCROOT)/../../Source/WebKit/Platform/IPC/darwin $(SRCROOT)/../../Source/WebKit/Platform/IPC/cocoa $(BUILT_PRODUCTS_DIR)/DerivedSources/WebKit $(inherited);
+PROJECT_HEADER_SEARCH_PATHS = $(SRCROOT)/../../Source/CyberKit/Platform $(SRCROOT)/../../Source/CyberKit/Platform/IPC $(SRCROOT)/../../Source/CyberKit/Platform/IPC/darwin $(SRCROOT)/../../Source/CyberKit/Platform/IPC/cocoa $(BUILT_PRODUCTS_DIR)/DerivedSources/CyberKit $(inherited);
 
 GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 

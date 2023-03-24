@@ -36,10 +36,10 @@
 #import "UIKitSPI.h"
 #import "UserInterfaceSwizzler.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKActivatedElementInfo.h>
-#import <WebKit/_WKElementAction.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKActivatedElementInfo.h>
+#import <CyberKit/_WKElementAction.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/SoftLinking.h>
@@ -63,7 +63,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static RetainPtr<UIViewController> gOverrideViewControllerForFullscreenPresentation;
 static void setOverrideViewControllerForFullscreenPresentation(UIViewController *viewController)
@@ -96,7 +96,7 @@ TEST(ActionSheetTests, DISABLED_DismissingActionSheetShouldNotDismissPresentingV
     [webView setNavigationDelegate:navigationDelegate.get()];
     [rootViewController presentViewController:webViewController.get() animated:NO completion:nil];
 
-    // Since TestWebKitAPI is not a UI application, +[UIViewController _viewControllerForFullScreenPresentationFromView:]
+    // Since TestCyberKitAPI is not a UI application, +[UIViewController _viewControllerForFullScreenPresentationFromView:]
     // returns nil. To ensure that we actually present the action sheet from the web view controller, we mock this for the
     // time being until https://webkit.org/b/175204 is fixed.
     setOverrideViewControllerForFullscreenPresentation(webViewController.get());
@@ -122,7 +122,7 @@ TEST(ActionSheetTests, DISABLED_DismissingActionSheetShouldNotDismissPresentingV
     }];
 
     [webView _simulateLongPressActionAtLocation:CGPointMake(100, 100)];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_FALSE(didDismissWebViewController);
     EXPECT_NULL([webViewController presentedViewController]);
@@ -147,7 +147,7 @@ TEST(ActionSheetTests, ImageMapDoesNotDestroySelection)
         return actions;
     }];
     [webView _simulateLongPressActionAtLocation:CGPointMake(200, 200)];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_WK_STREQ("Hello world", [webView stringByEvaluatingJavaScript:@"getSelection().toString()"]);
 }
@@ -187,7 +187,7 @@ TEST(ActionSheetTests, DataDetectorsLinkIsNotPresentedAsALink)
             return @[ ];
         }];
         [webView _simulateLongPressActionAtLocation:CGPointMake(5, 5)];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
 
         return succeeded;
     };
@@ -221,7 +221,7 @@ static void presentActionSheetAndChooseAction(WKWebView *webView, ActionSheetObs
         return @[ copyAction.get() ];
     }];
     [webView _simulateLongPressActionAtLocation:location];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_TRUE(!!copyAction);
     EXPECT_TRUE(!!copyElement);
@@ -256,7 +256,7 @@ TEST(ActionSheetTests, CopyImageElementWithHREFAndTitle)
         EXPECT_WK_STREQ((__bridge NSString *)kUTTypeURL, [itemProvider registeredTypeIdentifiers].lastObject);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     __block bool doneLoading = false;
     [itemProvider loadObjectOfClass:[NSURL class] completionHandler:^(id <NSItemProviderReading> result, NSError *) {
@@ -266,7 +266,7 @@ TEST(ActionSheetTests, CopyImageElementWithHREFAndTitle)
         EXPECT_WK_STREQ("hello world", url._title);
         doneLoading = true;
     }];
-    TestWebKitAPI::Util::run(&doneLoading);
+    TestCyberKitAPI::Util::run(&doneLoading);
 }
 
 TEST(ActionSheetTests, CopyImageElementWithHREF)
@@ -296,7 +296,7 @@ TEST(ActionSheetTests, CopyImageElementWithHREF)
         EXPECT_WK_STREQ((__bridge NSString *)kUTTypeURL, [itemProvider registeredTypeIdentifiers].lastObject);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     __block bool doneLoading = false;
     [itemProvider loadObjectOfClass:[NSURL class] completionHandler:^(id <NSItemProviderReading> result, NSError *) {
@@ -306,7 +306,7 @@ TEST(ActionSheetTests, CopyImageElementWithHREF)
         EXPECT_WK_STREQ("https://www.apple.com/", url._title);
         doneLoading = true;
     }];
-    TestWebKitAPI::Util::run(&doneLoading);
+    TestCyberKitAPI::Util::run(&doneLoading);
 }
 
 TEST(ActionSheetTests, CopyImageElementWithoutHREF)
@@ -333,7 +333,7 @@ TEST(ActionSheetTests, CopyImageElementWithoutHREF)
         EXPECT_WK_STREQ((__bridge NSString *)kUTTypePNG, itemProvider.registeredTypeIdentifiers.firstObject);
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(ActionSheetTests, CopyLinkWritesURLAndPlainText)
@@ -362,6 +362,6 @@ TEST(ActionSheetTests, CopyLinkWritesURLAndPlainText)
 
 #endif // !PLATFORM(WATCHOS) && !PLATFORM(APPLETV)
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY) && !PLATFORM(MACCATALYST)

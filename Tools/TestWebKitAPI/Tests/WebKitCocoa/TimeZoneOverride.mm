@@ -30,9 +30,9 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <wtf/Function.h>
 #import <wtf/text/WTFString.h>
 
@@ -55,7 +55,7 @@ public:
             callback(result);
             complete = true;
         }];
-        TestWebKitAPI::Util::run(&complete);
+        TestCyberKitAPI::Util::run(&complete);
     }
 
     void callAsyncFunctionBody(const String& functionBody, Function<void(id)>&& callback)
@@ -66,7 +66,7 @@ public:
             callback(result);
             complete = true;
         }];
-        TestWebKitAPI::Util::run(&complete);
+        TestCyberKitAPI::Util::run(&complete);
     }
 
 

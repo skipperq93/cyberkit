@@ -31,7 +31,7 @@
 #import "TestInputDelegate.h"
 #import "TestWKWebView.h"
 #import "UserInterfaceSwizzler.h"
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/Vector.h>
 
 #if PLATFORM(IOS_FAMILY)
@@ -84,7 +84,7 @@ static void* const SelectionAttributesObservationContext = (void*)&SelectionAttr
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static RetainPtr<EditingTestHarness> setUpEditorStateTestHarness()
 {
@@ -528,4 +528,4 @@ TEST(EditorStateTests, MarkedTextRange_VerticalRangeSelection)
 
 #endif // PLATFORM(IOS_FAMILY)
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

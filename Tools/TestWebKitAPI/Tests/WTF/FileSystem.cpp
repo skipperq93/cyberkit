@@ -32,7 +32,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/StringExtras.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 const char* FileSystemTestData = "This is a test";
 
@@ -638,12 +638,12 @@ static void runGetFileModificationTimeTest(const String& path, Function<std::opt
 
     unsigned timeout = 0;
     while (*modificationTime >= WallTime::now() && ++timeout < 20)
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
     EXPECT_LT(modificationTime->secondsSinceEpoch().value(), WallTime::now().secondsSinceEpoch().value());
 
     auto timeBeforeModification = WallTime::now();
 
-    TestWebKitAPI::Util::runFor(2_s);
+    TestCyberKitAPI::Util::runFor(2_s);
 
     // Modify the file.
     auto fileHandle = FileSystem::openFile(path, FileSystem::FileOpenMode::ReadWrite);
@@ -674,10 +674,10 @@ TEST_F(FileSystemTest, updateFileModificationTime)
 
     unsigned timeout = 0;
     while (*modificationTime >= WallTime::now() && ++timeout < 20)
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
     EXPECT_LT(modificationTime->secondsSinceEpoch().value(), WallTime::now().secondsSinceEpoch().value());
 
-    TestWebKitAPI::Util::runFor(1_s);
+    TestCyberKitAPI::Util::runFor(1_s);
 
     EXPECT_TRUE(FileSystem::updateFileModificationTime(tempFilePath()));
     auto newModificationTime = FileSystem::fileModificationTime(tempFilePath());
@@ -847,4 +847,4 @@ TEST_F(FileSystemTest, makeSafeToUseMemoryMapForPath)
 #endif
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -1,4 +1,4 @@
-None of these scripts should execute, as all the nonces are invalid. Update: Since we no longer support X-WebKit-CSP all the scripts should run.
+None of these scripts should execute, as all the nonces are invalid. Update: Since we no longer support X-CyberKit-CSP all the scripts should run.
 
 
 

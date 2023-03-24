@@ -26,7 +26,7 @@
 #import "config.h"
 
 #import "PlatformUtilities.h"
-#import <WebKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
 #import <wtf/RetainPtr.h>
 
 @interface WebProcessPlugIn : NSObject <WKWebProcessPlugIn>
@@ -43,7 +43,7 @@
 
 - (void)webProcessPlugIn:(WKWebProcessPlugInController *)plugInController initializeWithObject:(id)initializationObject
 {
-    NSString *testPlugInClassName = [plugInController.parameters valueForKey:TestWebKitAPI::Util::TestPlugInClassNameParameter];
+    NSString *testPlugInClassName = [plugInController.parameters valueForKey:TestCyberKitAPI::Util::TestPlugInClassNameParameter];
     ASSERT(testPlugInClassName);
     ASSERT([testPlugInClassName isKindOfClass:[NSString class]]);
 

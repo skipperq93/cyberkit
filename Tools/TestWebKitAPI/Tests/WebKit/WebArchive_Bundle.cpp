@@ -30,10 +30,10 @@
 #include "InjectedBundleTest.h"
 
 #include "PlatformUtilities.h"
-#include <WebKit/WKBundlePage.h>
-#include <WebKit/WKBundleFrame.h>
+#include <CyberKit/WKBundlePage.h>
+#include <CyberKit/WKBundleFrame.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class WebArchiveTest : public InjectedBundleTest {
 public:
@@ -64,6 +64,6 @@ void WebArchiveTest::didReceiveMessage(WKBundleRef bundle, WKStringRef messageNa
     WKBundlePostMessage(bundle, Util::toWK("DidGetWebArchive").get(), adoptWK(WKBundleFrameCopyWebArchive(frame)).get());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

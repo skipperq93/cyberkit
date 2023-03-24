@@ -29,11 +29,11 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKHTTPCookieStorePrivate.h>
-#import <WebKit/WKProcessPool.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKHTTPCookieStorePrivate.h>
+#import <CyberKit/WKProcessPool.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewConfiguration.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/text/StringConcatenateNumbers.h>
@@ -55,7 +55,7 @@ static bool didRunJavaScriptAlertForCookiePrivateBrowsing;
 
 @end
 
-TEST(WebKit, CookiePrivateBrowsing)
+TEST(CyberKit, CookiePrivateBrowsing)
 {
     auto delegate = adoptNS([[CookiePrivateBrowsingDelegate alloc] init]);
 
@@ -70,19 +70,19 @@ TEST(WebKit, CookiePrivateBrowsing)
     [view2 setUIDelegate:delegate.get()];
     NSString *alertOldCookie = @"<script>var oldCookie = document.cookie; document.cookie = 'key=value'; alert('old cookie: <' + oldCookie + '>');</script>";
     [view1 loadHTMLString:alertOldCookie baseURL:[NSURL URLWithString:@"http://example.com/"]];
-    TestWebKitAPI::Util::run(&didRunJavaScriptAlertForCookiePrivateBrowsing);
+    TestCyberKitAPI::Util::run(&didRunJavaScriptAlertForCookiePrivateBrowsing);
     didRunJavaScriptAlertForCookiePrivateBrowsing = false;
     [view2 loadHTMLString:alertOldCookie baseURL:[NSURL URLWithString:@"http://example.com/"]];
-    TestWebKitAPI::Util::run(&didRunJavaScriptAlertForCookiePrivateBrowsing);
+    TestCyberKitAPI::Util::run(&didRunJavaScriptAlertForCookiePrivateBrowsing);
 }
 
-TEST(WebKit, CookieCacheSyncAcrossProcess)
+TEST(CyberKit, CookieCacheSyncAcrossProcess)
 {
     __block bool setDefaultCookieAcceptPolicy = false;
     [[WKWebsiteDataStore defaultDataStore].httpCookieStore _setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain completionHandler:^{
         setDefaultCookieAcceptPolicy = true;
     }];
-    TestWebKitAPI::Util::run(&setDefaultCookieAcceptPolicy);
+    TestCyberKitAPI::Util::run(&setDefaultCookieAcceptPolicy);
 
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [configuration setWebsiteDataStore:[WKWebsiteDataStore nonPersistentDataStore]];
@@ -99,7 +99,7 @@ TEST(WebKit, CookieCacheSyncAcrossProcess)
         EXPECT_WK_STREQ("", (NSString *)cookie);
         doneEvaluatingJavaScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
 
     // Cache DOM cookies in second WebView.
     doneEvaluatingJavaScript = false;
@@ -109,7 +109,7 @@ TEST(WebKit, CookieCacheSyncAcrossProcess)
         EXPECT_WK_STREQ("", (NSString *)cookie);
         doneEvaluatingJavaScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
 
     // Setting cookie in first Webview / process.
     doneEvaluatingJavaScript = false;
@@ -119,13 +119,13 @@ TEST(WebKit, CookieCacheSyncAcrossProcess)
         EXPECT_WK_STREQ("foo=bar", (NSString *)cookie);
         doneEvaluatingJavaScript = true;
     }];
-    TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+    TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
 
     // Making sure new cookie gets sync'd to second WebView process.
     int timeout = 0;
     __block String cookieString;
     do {
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
         doneEvaluatingJavaScript = false;
         [view2 evaluateJavaScript:@"document.cookie;" completionHandler:^(id _Nullable cookie, NSError * _Nullable error) {
             EXPECT_NULL(error);
@@ -133,13 +133,13 @@ TEST(WebKit, CookieCacheSyncAcrossProcess)
             cookieString = (NSString *)cookie;
             doneEvaluatingJavaScript = true;
         }];
-        TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+        TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
         ++timeout;
     } while (!cookieString.isEmpty() && timeout < 50);
     EXPECT_WK_STREQ("foo=bar", cookieString);
 }
 
-TEST(WebKit, CookieCachePruning)
+TEST(CyberKit, CookieCachePruning)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto view = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
@@ -154,15 +154,15 @@ TEST(WebKit, CookieCachePruning)
             EXPECT_WK_STREQ("", (NSString *)cookie);
             doneEvaluatingJavaScript = true;
         }];
-        TestWebKitAPI::Util::run(&doneEvaluatingJavaScript);
+        TestCyberKitAPI::Util::run(&doneEvaluatingJavaScript);
     }
 }
 
 // FIXME: Re-enable this test for iOS once webkit.org/b/253387 is resolved
 #if PLATFORM(IOS)
-TEST(WebKit, DISABLED_CookieAccessFromPDFInAboutBlank)
+TEST(CyberKit, DISABLED_CookieAccessFromPDFInAboutBlank)
 #else
-TEST(WebKit, CookieAccessFromPDFInAboutBlank)
+TEST(CyberKit, CookieAccessFromPDFInAboutBlank)
 #endif
 {
     auto delegate = adoptNS([TestUIDelegate new]);
@@ -175,7 +175,7 @@ TEST(WebKit, CookieAccessFromPDFInAboutBlank)
     auto webProcessStarter = adoptNS([TestWKWebView new]);
     [webProcessStarter synchronouslyLoadHTMLString:@"start network process so the creation of the second web view doesn't send NetworkProcessCreationParameters" baseURL:nil];
 
-    TestWebKitAPI::HTTPServer server({ { "/"_s, { "hi"_s } } });
+    TestCyberKitAPI::HTTPServer server({ { "/"_s, { "hi"_s } } });
     auto webView = adoptNS([TestWKWebView new]);
     webView.get().UIDelegate = delegate.get();
     NSString *html = [NSString stringWithFormat:@"<script>"
@@ -185,5 +185,5 @@ TEST(WebKit, CookieAccessFromPDFInAboutBlank)
     [webView loadHTMLString:html baseURL:server.request().URL];
 
     while (!server.totalRequests())
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 }

@@ -28,19 +28,19 @@
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
 #import "Test.h"
-#import <JavaScriptCore/JavaScriptCore.h>
-#import <WebKit/WKPagePrivate.h>
-#import <WebKit/WKPreferencesPrivate.h>
+#import <CyberScriptCore/CyberScriptCore.h>
+#import <CyberKit/WKPagePrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
 #import <notify.h>
 
 // This test loads file-with-video.html. Then it calls a JavaScript method to create a source buffer and play the video,
 // waits for WKMediaNetworkingActivity notification to be fired.
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-static const char *WebKitMediaStreamingActivity = "com.apple.WebKit.mediaStreamingActivity";
+static const char *CyberKitMediaStreamingActivity = "com.apple.CyberKit.mediaStreamingActivity";
 
-TEST(WebKit, MSEHasMediaStreamingActivity)
+TEST(CyberKit, MSEHasMediaStreamingActivity)
 {
     auto configuration = adoptNS([WKWebViewConfiguration new]);
     [[configuration preferences] _setMediaSourceEnabled:YES];
@@ -56,13 +56,13 @@ TEST(WebKit, MSEHasMediaStreamingActivity)
     if (!typeSupported)
         return;
     int token = NOTIFY_TOKEN_INVALID;
-    if (notify_register_check(WebKitMediaStreamingActivity, &token) != NOTIFY_STATUS_OK)
+    if (notify_register_check(CyberKitMediaStreamingActivity, &token) != NOTIFY_STATUS_OK)
         return;
 
     __block bool isMediaStreamingChanged = false;
     __block bool isMediaStreaming = false;
 
-    int status = notify_register_dispatch(WebKitMediaStreamingActivity, &token, dispatch_get_main_queue(), ^(int token) {
+    int status = notify_register_dispatch(CyberKitMediaStreamingActivity, &token, dispatch_get_main_queue(), ^(int token) {
         uint64_t state = 0;
         notify_get_state(token, &state);
         isMediaStreamingChanged = true;
@@ -83,4 +83,4 @@ TEST(WebKit, MSEHasMediaStreamingActivity)
     notify_cancel(token);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -29,7 +29,7 @@
 #import <wtf/RetainPtr.h>
 
 #if !defined(BUILDING_TEST_IPC) && !defined(BUILDING_TEST_WTF) && !defined(BUILDING_TEST_WGSL)
-#import <WebKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
 #endif
 
 int main(int argc, char** argv)
@@ -40,7 +40,7 @@ int main(int argc, char** argv)
         UINSApplicationInstantiate();
 #endif
 
-        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:@"TestWebKitAPI"];
+        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:@"TestCyberKitAPI"];
 
         // Set up user defaults.
         auto argumentDomain = adoptNS([[[NSUserDefaults standardUserDefaults] volatileDomainForName:NSArgumentDomain] mutableCopy]);
@@ -53,7 +53,7 @@ int main(int argc, char** argv)
         [WKProcessPool _setLinkedOnOrAfterEverythingForTesting];
 #endif
 
-        passed = TestWebKitAPI::TestsController::singleton().run(argc, argv);
+        passed = TestCyberKitAPI::TestsController::singleton().run(argc, argv);
     }
 
     // FIXME: Work-around for <rdar://problem/77922262>

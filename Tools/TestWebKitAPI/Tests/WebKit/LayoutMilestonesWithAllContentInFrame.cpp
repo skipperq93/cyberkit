@@ -30,10 +30,10 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <WebKit/WKContextPrivate.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKContextPrivate.h>
+#include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didFirstVisuallyNonEmptyLayout;
 static bool didNavigate;
@@ -51,7 +51,7 @@ static void didFinishNavigation(WKPageRef page, WKNavigationRef navigation, WKTy
     didNavigate = true;
 }
 
-TEST(WebKit, LayoutMilestonesWithAllContentInFrame)
+TEST(CyberKit, LayoutMilestonesWithAllContentInFrame)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -72,7 +72,7 @@ TEST(WebKit, LayoutMilestonesWithAllContentInFrame)
     EXPECT_TRUE(didFirstVisuallyNonEmptyLayout);
 }
 
-TEST(WebKit, FirstVisuallyNonEmptyLayoutAfterPageCacheRestore)
+TEST(CyberKit, FirstVisuallyNonEmptyLayoutAfterPageCacheRestore)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -117,7 +117,7 @@ TEST(WebKit, FirstVisuallyNonEmptyLayoutAfterPageCacheRestore)
     didNavigate = false;
 }
 
-TEST(WebKit, FirstVisuallyNonEmptyMilestoneWithLoadComplete)
+TEST(CyberKit, FirstVisuallyNonEmptyMilestoneWithLoadComplete)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -139,6 +139,6 @@ TEST(WebKit, FirstVisuallyNonEmptyMilestoneWithLoadComplete)
     EXPECT_TRUE(didFirstVisuallyNonEmptyLayout);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

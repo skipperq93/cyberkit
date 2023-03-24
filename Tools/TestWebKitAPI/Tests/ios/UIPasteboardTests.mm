@@ -35,8 +35,8 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <UIKit/UIPasteboard.h>
 #import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <pal/ios/ManagedConfigurationSoftLink.h>
 
 typedef void (^DataLoadCompletionBlock)(NSData *, NSError *);
@@ -45,7 +45,7 @@ typedef void (^DataLoadCompletionBlock)(NSData *, NSError *);
 
 static void checkJSONWithLogging(NSString *jsonString, NSDictionary *expected)
 {
-    BOOL success = TestWebKitAPI::Util::jsonMatchesExpectedValues(jsonString, expected);
+    BOOL success = TestCyberKitAPI::Util::jsonMatchesExpectedValues(jsonString, expected);
     EXPECT_TRUE(success);
     if (!success)
         NSLog(@"Expected JSON: %@ to match values: %@", jsonString, expected);
@@ -81,7 +81,7 @@ static _UIDataOwner gLastKnownDataOwner = _UIDataOwnerUndefined;
 
 #endif // PLATFORM(IOS)
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 NSData *dataForPasteboardType(CFStringRef type)
 {
@@ -221,8 +221,8 @@ TEST(UIPasteboardTests, DataTransferGetDataWhenPastingPlatformRepresentations)
 
     // This simulates how a native app on iOS might write to the pasteboard when copying.
     RetainPtr<NSURL> testURL = [NSURL URLWithString:@"https://www.apple.com/"];
-    RetainPtr<NSString> testPlainTextString = @"WebKit";
-    RetainPtr<NSString> testMarkupString = @"<a href=\"https://www.webkit.org/\">The WebKit Project</a>";
+    RetainPtr<NSString> testPlainTextString = @"CyberKit";
+    RetainPtr<NSString> testMarkupString = @"<a href=\"https://www.webkit.org/\">The CyberKit Project</a>";
     auto itemProvider = adoptNS([[NSItemProvider alloc] init]);
     [itemProvider registerDataRepresentationForTypeIdentifier:(__bridge NSString *)kUTTypeHTML visibility:NSItemProviderRepresentationVisibilityAll loadHandler:^NSProgress *(DataLoadCompletionBlock completionHandler)
     {
@@ -250,7 +250,7 @@ TEST(UIPasteboardTests, DataTransferGetDataWhenPastingImageAndText)
     auto copiedText = retainPtr(@"Apple Inc.");
     auto itemProvider = adoptNS([[NSItemProvider alloc] init]);
     [itemProvider registerDataRepresentationForTypeIdentifier:(__bridge NSString *)kUTTypePNG visibility:NSItemProviderRepresentationVisibilityAll loadHandler:[] (DataLoadCompletionBlock completionHandler) -> NSProgress * {
-        completionHandler([NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestWebKitAPI.resources"]], nil);
+        completionHandler([NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestCyberKitAPI.resources"]], nil);
         return nil;
     }];
     [itemProvider registerDataRepresentationForTypeIdentifier:(__bridge NSString *)kUTTypeUTF8PlainText visibility:NSItemProviderRepresentationVisibilityAll loadHandler:[copiedText] (DataLoadCompletionBlock completionHandler) -> NSProgress * {
@@ -304,7 +304,7 @@ TEST(UIPasteboardTests, DataTransferGetDataCannotReadArbitraryPlatformTypes)
         completionHandler([@"this is a test" dataUsingEncoding:NSUTF8StringEncoding], nil);
         return nil;
     }];
-    [itemProvider registerDataRepresentationForTypeIdentifier:@"org.WebKit.TestWebKitAPI.custom-pasteboard-type" visibility:NSItemProviderRepresentationVisibilityAll loadHandler:^NSProgress *(DataLoadCompletionBlock completionHandler)
+    [itemProvider registerDataRepresentationForTypeIdentifier:@"org.CyberKit.TestCyberKitAPI.custom-pasteboard-type" visibility:NSItemProviderRepresentationVisibilityAll loadHandler:^NSProgress *(DataLoadCompletionBlock completionHandler)
     {
         completionHandler([@"this is another test" dataUsingEncoding:NSUTF8StringEncoding], nil);
         return nil;
@@ -363,7 +363,7 @@ TEST(UIPasteboardTests, ValidPreferredPresentationSizeForImage)
     auto itemProvider = adoptNS([[NSItemProvider alloc] init]);
     [itemProvider setPreferredPresentationSize:CGSizeMake(10, 20)];
     [itemProvider registerDataRepresentationForTypeIdentifier:(__bridge NSString *)kUTTypePNG visibility:NSItemProviderRepresentationVisibilityAll loadHandler:[] (DataLoadCompletionBlock completionHandler) -> NSProgress * {
-        completionHandler([NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestWebKitAPI.resources"]], nil);
+        completionHandler([NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestCyberKitAPI.resources"]], nil);
         return nil;
     }];
     [UIPasteboard generalPasteboard].itemProviders = @[ itemProvider.get() ];
@@ -379,7 +379,7 @@ TEST(UIPasteboardTests, InvalidPreferredPresentationSizeForImage)
     auto itemProvider = adoptNS([[NSItemProvider alloc] init]);
     [itemProvider setPreferredPresentationSize:CGSizeMake(-10, -20)];
     [itemProvider registerDataRepresentationForTypeIdentifier:(__bridge NSString *)kUTTypePNG visibility:NSItemProviderRepresentationVisibilityAll loadHandler:[] (DataLoadCompletionBlock completionHandler) -> NSProgress * {
-        completionHandler([NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestWebKitAPI.resources"]], nil);
+        completionHandler([NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestCyberKitAPI.resources"]], nil);
         return nil;
     }];
     [UIPasteboard generalPasteboard].itemProviders = @[ itemProvider.get() ];
@@ -394,7 +394,7 @@ TEST(UIPasteboardTests, MissingPreferredPresentationSizeForImage)
     auto webView = setUpWebViewForPasteboardTests(@"autofocus-contenteditable");
     auto itemProvider = adoptNS([[NSItemProvider alloc] init]);
     [itemProvider registerDataRepresentationForTypeIdentifier:(__bridge NSString *)kUTTypePNG visibility:NSItemProviderRepresentationVisibilityAll loadHandler:[] (DataLoadCompletionBlock completionHandler) -> NSProgress * {
-        completionHandler([NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestWebKitAPI.resources"]], nil);
+        completionHandler([NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestCyberKitAPI.resources"]], nil);
         return nil;
     }];
     [UIPasteboard generalPasteboard].itemProviders = @[ itemProvider.get() ];
@@ -475,6 +475,6 @@ TEST(UIPasteboardTests, PerformAsDataOwnerWithManagedURL)
 
 #endif // PLATFORM(IOS)
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

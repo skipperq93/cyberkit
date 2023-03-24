@@ -28,7 +28,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/StringView.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 StringView stringViewFromLiteral(const char* characters)
 {
@@ -1000,4 +1000,4 @@ TEST(WTF, StringViewUpconvert)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

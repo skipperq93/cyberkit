@@ -31,12 +31,12 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebCore/LocalizedDeviceModel.h>
+#import <CyberCore/LocalizedDeviceModel.h>
 
-TEST(WebKit, LocalizedDeviceModel)
+TEST(CyberKit, LocalizedDeviceModel)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
-    WKRetainPtr<WKContextRef> context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+    WKRetainPtr<WKContextRef> context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
     configuration.get().processPool = (WKProcessPool *)context.get();
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 300, 300) configuration:configuration.get() addToWindow:YES]);
 
@@ -44,7 +44,7 @@ TEST(WebKit, LocalizedDeviceModel)
         return [webView stringByEvaluatingJavaScript:@"window.internals.localizedDeviceModel()"].boolValue;
     };
 
-    ASSERT_TRUE(localizedDeviceModel() == WebCore::localizedDeviceModel());
+    ASSERT_TRUE(localizedDeviceModel() == CyberCore::localizedDeviceModel());
 }
 
 #endif // WK_HAVE_C_SPI

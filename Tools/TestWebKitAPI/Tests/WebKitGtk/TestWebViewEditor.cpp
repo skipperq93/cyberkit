@@ -189,7 +189,7 @@ public:
         return m_clipboard.readText();
     }
 
-    WebKitEditorState* editorState()
+    CyberKitEditorState* editorState()
     {
         if (m_editorState)
             return m_editorState;
@@ -219,7 +219,7 @@ public:
 
     Clipboard m_clipboard;
     bool m_canExecuteEditingCommand { false };
-    WebKitEditorState* m_editorState { nullptr };
+    CyberKitEditorState* m_editorState { nullptr };
 };
 
 static const char* selectedSpanHTMLFormat =
@@ -553,14 +553,14 @@ static void testWebViewEditorCreateLink(EditorTest* test, gconstpointer)
 
 void beforeAll()
 {
-    EditorTest::add("WebKitWebView", "editable/editable", testWebViewEditorEditable);
-    EditorTest::add("WebKitWebView", "cut-copy-paste/non-editable", testWebViewEditorCutCopyPasteNonEditable);
-    EditorTest::add("WebKitWebView", "cut-copy-paste/editable", testWebViewEditorCutCopyPasteEditable);
-    EditorTest::add("WebKitWebView", "select-all/non-editable", testWebViewEditorSelectAllNonEditable);
-    EditorTest::add("WebKitWebView", "select-all/editable", testWebViewEditorSelectAllEditable);
-    EditorTest::add("WebKitWebView", "editor-state/typing-attributes", testWebViewEditorEditorStateTypingAttributes);
-    EditorTest::add("WebKitWebView", "insert/image", testWebViewEditorInsertImage);
-    EditorTest::add("WebKitWebView", "insert/link", testWebViewEditorCreateLink);
+    EditorTest::add("CyberKitWebView", "editable/editable", testWebViewEditorEditable);
+    EditorTest::add("CyberKitWebView", "cut-copy-paste/non-editable", testWebViewEditorCutCopyPasteNonEditable);
+    EditorTest::add("CyberKitWebView", "cut-copy-paste/editable", testWebViewEditorCutCopyPasteEditable);
+    EditorTest::add("CyberKitWebView", "select-all/non-editable", testWebViewEditorSelectAllNonEditable);
+    EditorTest::add("CyberKitWebView", "select-all/editable", testWebViewEditorSelectAllEditable);
+    EditorTest::add("CyberKitWebView", "editor-state/typing-attributes", testWebViewEditorEditorStateTypingAttributes);
+    EditorTest::add("CyberKitWebView", "insert/image", testWebViewEditorInsertImage);
+    EditorTest::add("CyberKitWebView", "insert/link", testWebViewEditorCreateLink);
 }
 
 void afterAll()

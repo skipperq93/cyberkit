@@ -33,11 +33,11 @@
 #import <wtf/Vector.h>
 #import <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Color;
 }
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // Annotations aren't ref counted. They remain valid as long as their containing TestPDFPage remains valid
 class TestPDFAnnotation {
@@ -63,7 +63,7 @@ public:
     size_t characterIndexAtPoint(CGPoint) const;
     CGRect bounds() const;
 
-    WebCore::Color colorAtPoint(int x, int y) const;
+    CyberCore::Color colorAtPoint(int x, int y) const;
     
 private:
     TestPDFPage(PDFPage *);
@@ -88,5 +88,5 @@ private:
     Vector<RefPtr<TestPDFPage>> m_pages;
 };
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 #endif // HAVE(PDFKIT)

@@ -30,4 +30,4 @@ getComputedStyle(text).textAlign = 'justify'
 PASS successfullyParsed is true
 
 TEST COMPLETE
-WebKit
+CyberKit

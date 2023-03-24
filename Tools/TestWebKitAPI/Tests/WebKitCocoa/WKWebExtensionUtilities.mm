@@ -28,10 +28,10 @@
 #if ENABLE(WK_WEB_EXTENSIONS)
 
 #import "TestCocoa.h"
-#import <WebKit/WKFoundation.h>
-#import <WebKit/_WKWebExtensionUtilities.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/_WKWebExtensionUtilities.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WKWebExtensionUtilities, TestRequiredKeys)
 {
@@ -212,6 +212,6 @@ TEST(WKWebExtensionUtilities, TestExpectedTypeArrayOfTypes)
     EXPECT_NS_EQUAL(error, @"Expected an array for 'A'.");
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

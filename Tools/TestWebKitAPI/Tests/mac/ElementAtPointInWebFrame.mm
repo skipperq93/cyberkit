@@ -25,7 +25,7 @@
 
 #import "config.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WebFramePrivate.h>
+#import <CyberKit/WebFramePrivate.h>
 #import <wtf/RetainPtr.h>
 
 @interface ElementAtPointFrameLoadDelegate : NSObject <WebFrameLoadDelegate>
@@ -42,9 +42,9 @@ static bool didFinishLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, ElementAtPoint)
+TEST(CyberKitLegacy, ElementAtPoint)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<ElementAtPointFrameLoadDelegate> frameLoadDelegate = adoptNS([[ElementAtPointFrameLoadDelegate alloc] init]);
@@ -70,4 +70,4 @@ TEST(WebKitLegacy, ElementAtPoint)
     EXPECT_WK_STREQ(@"BODY", [domElement tagName]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -69,8 +69,8 @@ def init(jhbuildrc_globals, jhbuild_platform):
         jhbuildrc_globals["checkoutroot"] = checkoutroot = os.path.abspath(os.path.join(os.environ['WEBKIT_OUTPUTDIR'], 'Dependencies' + jhbuild_platform.upper(), 'Source'))
         jhbuildrc_globals["prefix"] = os.path.abspath(os.path.join(os.environ['WEBKIT_OUTPUTDIR'], 'Dependencies' + jhbuild_platform.upper(), 'Root'))
     else:
-        jhbuildrc_globals["checkoutroot"] = checkoutroot = os.path.abspath(top_level_path('WebKitBuild', 'Dependencies' + jhbuild_platform.upper(), 'Source'))
-        jhbuildrc_globals["prefix"] = os.path.abspath(top_level_path('WebKitBuild', 'Dependencies' + jhbuild_platform.upper(), 'Root'))
+        jhbuildrc_globals["checkoutroot"] = checkoutroot = os.path.abspath(top_level_path('CyberKitBuild', 'Dependencies' + jhbuild_platform.upper(), 'Source'))
+        jhbuildrc_globals["prefix"] = os.path.abspath(top_level_path('CyberKitBuild', 'Dependencies' + jhbuild_platform.upper(), 'Root'))
 
     jhbuildrc_globals["nonotify"] = True
     jhbuildrc_globals["notrayicon"] = True

@@ -56,9 +56,9 @@ void nsObjectDescriptionTest(NSObject *object)
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, WebScriptObjectDescription)
+TEST(CyberKitLegacy, WebScriptObjectDescription)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<WebScriptDescriptionTest> testController = adoptNS([WebScriptDescriptionTest new]);
@@ -66,7 +66,7 @@ TEST(WebKitLegacy, WebScriptObjectDescription)
 
     webView.get().frameLoadDelegate = testController.get();
     [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle]
-        URLForResource:@"WebScriptObjectDescription" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+        URLForResource:@"WebScriptObjectDescription" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
     Util::run(&didFinishLoad);
     didFinishLoad = false;
@@ -81,5 +81,5 @@ TEST(WebKitLegacy, WebScriptObjectDescription)
     EXPECT_EQ(failedObjCDescription, false);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 

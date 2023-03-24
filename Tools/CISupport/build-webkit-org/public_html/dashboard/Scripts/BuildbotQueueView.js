@@ -113,7 +113,7 @@ BuildbotQueueView.prototype = {
         return false;
     },
 
-    _popoverContentForJavaScriptCoreTestRegressions: function(iteration, testName)
+    _popoverContentForCyberScriptCoreTestRegressions: function(iteration, testName)
     {
         var content = document.createElement("div");
         content.className = "test-results-popover";
@@ -145,14 +145,14 @@ BuildbotQueueView.prototype = {
         return content;
     },
 
-    _presentPopoverForJavaScriptCoreTestRegressions: function(testName, element, popover, iteration)
+    _presentPopoverForCyberScriptCoreTestRegressions: function(testName, element, popover, iteration)
     {
         if (iteration.javaScriptCoreTestResults.regressions)
-            var content = this._popoverContentForJavaScriptCoreTestRegressions(iteration, testName);
+            var content = this._popoverContentForCyberScriptCoreTestRegressions(iteration, testName);
         else {
             var content = this._createLoadingIndicator(iteration, "javascriptcore test failures");
-            iteration.loadJavaScriptCoreTestResults(testName, function() {
-                popover.content = this._popoverContentForJavaScriptCoreTestRegressions(iteration, testName);
+            iteration.loadCyberScriptCoreTestResults(testName, function() {
+                popover.content = this._popoverContentForCyberScriptCoreTestRegressions(iteration, testName);
             }.bind(this));
         }
 

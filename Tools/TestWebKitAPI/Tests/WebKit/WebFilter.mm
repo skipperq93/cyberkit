@@ -27,8 +27,8 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 
 #if PLATFORM(IOS_FAMILY) && WK_HAVE_C_SPI
 
@@ -45,7 +45,7 @@ static BOOL isManagedSessionMethodOverride(id self, SEL selector)
     return YES;
 }
 
-TEST(WebKit, WebFilterFeatureHasFrontboardServiceAccess)
+TEST(CyberKit, WebFilterFeatureHasFrontboardServiceAccess)
 {
     Method isManagedSessionMethod = class_getClassMethod(getWebFilterEvaluatorClass(), @selector(isManagedSession));
     ASSERT(isManagedSessionMethod);
@@ -53,14 +53,14 @@ TEST(WebKit, WebFilterFeatureHasFrontboardServiceAccess)
     ASSERT(isManagedSessionMethodOriginal);
 
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
-    WKRetainPtr<WKContextRef> context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+    WKRetainPtr<WKContextRef> context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
     configuration.get().processPool = (WKProcessPool *)context.get();
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 300, 300) configuration:configuration.get() addToWindow:YES]);
 
     [webView synchronouslyLoadTestPageNamed:@"simple"];
 
     auto sandboxAccess = [&] {
-        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToGlobalName('com.apple.WebKit.WebContent', 'com.apple.frontboard.systemappservices')"].boolValue;
+        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToGlobalName('com.apple.CyberKit.WebContent', 'com.apple.frontboard.systemappservices')"].boolValue;
     };
 
     ASSERT_TRUE(sandboxAccess());

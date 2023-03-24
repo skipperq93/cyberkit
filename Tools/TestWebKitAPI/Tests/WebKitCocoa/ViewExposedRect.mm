@@ -28,9 +28,9 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPage.h>
-#import <WebKit/WKPagePrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKPage.h>
+#import <CyberKit/WKPagePrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 #if PLATFORM(MAC)
@@ -47,7 +47,7 @@ static void forceRepaintCallback(WKErrorRef error, void*)
     didForceRepaint = true;
 }
 
-TEST(WebKit, InitialTileCoverageUsesViewExposedRect)
+TEST(CyberKit, InitialTileCoverageUsesViewExposedRect)
 {
     RetainPtr<TestWKWebView> webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 5000000, 5000000)]);
     [webView _setClipsToVisibleRect:YES];
@@ -57,7 +57,7 @@ TEST(WebKit, InitialTileCoverageUsesViewExposedRect)
 
     didForceRepaint = false;
     WKPageForceRepaint([webView _pageForTesting], 0, forceRepaintCallback);
-    TestWebKitAPI::Util::run(&didForceRepaint);
+    TestCyberKitAPI::Util::run(&didForceRepaint);
 }
 
 #endif // PLATFORM(MAC)

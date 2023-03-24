@@ -25,7 +25,7 @@
 #if PLATFORM(GTK)
 using PlatformRectangle = GdkRectangle;
 #elif PLATFORM(WPE)
-using PlatformRectangle = WebKitRectangle;
+using PlatformRectangle = CyberKitRectangle;
 #endif
 
 class OptionMenuTest : public WebViewTest {
@@ -53,7 +53,7 @@ public:
         m_menu = nullptr;
     }
 
-    static gboolean showOptionMenuCallback(WebKitWebView* webView, WebKitOptionMenu* menu,
+    static gboolean showOptionMenuCallback(CyberKitWebView* webView, CyberKitOptionMenu* menu,
 #if PLATFORM(GTK) && !USE(GTK4)
         GdkEvent* event,
 #endif
@@ -70,13 +70,13 @@ public:
         return TRUE;
     }
 
-    static void menuCloseCallback(WebKitOptionMenu* menu, OptionMenuTest* test)
+    static void menuCloseCallback(CyberKitOptionMenu* menu, OptionMenuTest* test)
     {
         g_assert_true(test->m_menu.get() == menu);
         test->destroyMenu();
     }
 
-    void showOptionMenu(WebKitOptionMenu* menu, PlatformRectangle* rect)
+    void showOptionMenu(CyberKitOptionMenu* menu, PlatformRectangle* rect)
     {
         m_rectangle = *rect;
         m_menu = menu;
@@ -112,7 +112,7 @@ public:
         g_assert_nonnull(m_menu.get());
     }
 
-    GRefPtr<WebKitOptionMenu> m_menu;
+    GRefPtr<CyberKitOptionMenu> m_menu;
     PlatformRectangle m_rectangle;
 };
 
@@ -307,10 +307,10 @@ static void testOptionMenuSelect(OptionMenuTest* test, gconstpointer)
 
 void beforeAll()
 {
-    OptionMenuTest::add("WebKitWebView", "option-menu-simple", testOptionMenuSimple);
-    OptionMenuTest::add("WebKitWebView", "option-menu-groups", testOptionMenuGroups);
-    OptionMenuTest::add("WebKitWebView", "option-menu-activate", testOptionMenuActivate);
-    OptionMenuTest::add("WebKitWebView", "option-menu-select", testOptionMenuSelect);
+    OptionMenuTest::add("CyberKitWebView", "option-menu-simple", testOptionMenuSimple);
+    OptionMenuTest::add("CyberKitWebView", "option-menu-groups", testOptionMenuGroups);
+    OptionMenuTest::add("CyberKitWebView", "option-menu-activate", testOptionMenuActivate);
+    OptionMenuTest::add("CyberKitWebView", "option-menu-select", testOptionMenuSelect);
 }
 
 void afterAll()

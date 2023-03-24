@@ -33,17 +33,17 @@
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
 #import <Foundation/NSURLRequest.h>
-#import <WebCore/RegistrableDomain.h>
-#import <WebCore/RuntimeApplicationChecks.h>
-#import <WebKit/WKHTTPCookieStorePrivate.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKURLSchemeTaskPrivate.h>
-#import <WebKit/WKUserContentControllerPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKUserContentWorld.h>
-#import <WebKit/_WKUserStyleSheet.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberCore/RegistrableDomain.h>
+#import <CyberCore/RuntimeApplicationChecks.h>
+#import <CyberKit/WKHTTPCookieStorePrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKURLSchemeTaskPrivate.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKUserContentWorld.h>
+#import <CyberKit/_WKUserStyleSheet.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/RunLoop.h>
 #import <wtf/text/WTFString.h>
 
@@ -71,13 +71,13 @@
 
 - (void)waitForDidFinishNavigation
 {
-    TestWebKitAPI::Util::run(&_navigationFinished);
+    TestCyberKitAPI::Util::run(&_navigationFinished);
 }
 
 - (NSError *)waitForDidFailProvisionalNavigationError
 {
     while (!_provisionalNavigationFailedError)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     return _provisionalNavigationFailedError.autorelease();
 }
 
@@ -131,15 +131,15 @@ static bool subFrameReceivedScriptSource = false;
 
 static void cleanUpInAppBrowserPrivacyTestSettings()
 {
-    WebCore::clearApplicationBundleIdentifierTestingOverride();
-    WebCore::setApplicationBundleIdentifier("com.apple.WebKit.TestWebKitAPI"_s);
+    CyberCore::clearApplicationBundleIdentifierTestingOverride();
+    CyberCore::setApplicationBundleIdentifier("com.apple.CyberKit.TestCyberKitAPI"_s);
 }
 
 static void initializeInAppBrowserPrivacyTestSettings()
 {
     WTF::initializeMainThread();
-    WebCore::clearApplicationBundleIdentifierTestingOverride();
-    WebCore::setApplicationBundleIdentifier("inAppBrowserPrivacyTestIdentifier"_s);
+    CyberCore::clearApplicationBundleIdentifierTestingOverride();
+    CyberCore::setApplicationBundleIdentifier("inAppBrowserPrivacyTestIdentifier"_s);
 }
 
 TEST(InAppBrowserPrivacy, NonAppBoundDomainFailedUserScriptAtStart)
@@ -167,7 +167,7 @@ TEST(InAppBrowserPrivacy, NonAppBoundDomainFailedUserScriptAtStart)
     }];
 
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     // Disable script injection blocking to check that original attempt to set this variable was rejected.
     [[[webView configuration] preferences] _setNeedsInAppBrowserPrivacyQuirks:YES];
@@ -179,7 +179,7 @@ TEST(InAppBrowserPrivacy, NonAppBoundDomainFailedUserScriptAtStart)
     }];
 
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(InAppBrowserPrivacy, NonAppBoundDomainFailedUserScriptAtEnd)
@@ -207,7 +207,7 @@ TEST(InAppBrowserPrivacy, NonAppBoundDomainFailedUserScriptAtEnd)
     }];
 
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     // Disable script injection blocking to check that original attempt to set this variable was rejected.
     [[[webView configuration] preferences] _setNeedsInAppBrowserPrivacyQuirks:YES];
@@ -219,7 +219,7 @@ TEST(InAppBrowserPrivacy, NonAppBoundDomainFailedUserScriptAtEnd)
     }];
 
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(InAppBrowserPrivacy, NonAppBoundDomainFailedUserAgentScripts)
@@ -244,7 +244,7 @@ TEST(InAppBrowserPrivacy, NonAppBoundDomainFailedUserAgentScripts)
     }];
 
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     
     // Enable blocking of restricted APIs.
     [[configuration preferences] _setNeedsInAppBrowserPrivacyQuirks:NO];
@@ -263,7 +263,7 @@ TEST(InAppBrowserPrivacy, NonAppBoundDomainFailedUserAgentScripts)
     }];
 
     isDone = false;
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(InAppBrowserPrivacy, AppBoundDomains)
@@ -283,7 +283,7 @@ TEST(InAppBrowserPrivacy, AppBoundDomains)
         cleanUpInAppBrowserPrivacyTestSettings();
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(InAppBrowserPrivacy, AppBoundSchemes)
@@ -303,7 +303,7 @@ TEST(InAppBrowserPrivacy, AppBoundSchemes)
         cleanUpInAppBrowserPrivacyTestSettings();
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(InAppBrowserPrivacy, LocalFilesAreAppBound)
@@ -312,7 +312,7 @@ TEST(InAppBrowserPrivacy, LocalFilesAreAppBound)
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
 
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:CGRectZero configuration:configuration.get()]);
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"in-app-browser-privacy-local-file" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"in-app-browser-privacy-local-file" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
@@ -322,7 +322,7 @@ TEST(InAppBrowserPrivacy, LocalFilesAreAppBound)
         cleanUpInAppBrowserPrivacyTestSettings();
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(InAppBrowserPrivacy, DataProtocolIsAppBound)
@@ -340,7 +340,7 @@ TEST(InAppBrowserPrivacy, DataProtocolIsAppBound)
         cleanUpInAppBrowserPrivacyTestSettings();
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(InAppBrowserPrivacy, AboutProtocolIsAppBound)
@@ -358,7 +358,7 @@ TEST(InAppBrowserPrivacy, AboutProtocolIsAppBound)
         cleanUpInAppBrowserPrivacyTestSettings();
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(InAppBrowserPrivacy, LocalHostIsAppBound)
@@ -384,7 +384,7 @@ TEST(InAppBrowserPrivacy, LocalHostIsAppBound)
         cleanUpInAppBrowserPrivacyTestSettings();
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(InAppBrowserPrivacy, LoopbackIPAddressIsAppBound)
@@ -410,7 +410,7 @@ TEST(InAppBrowserPrivacy, LoopbackIPAddressIsAppBound)
         cleanUpInAppBrowserPrivacyTestSettings();
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 static NSString *styleSheetSource = @"body { background-color: green !important; }";
@@ -428,7 +428,7 @@ static void expectScriptEvaluatesToColor(WKWebView *webView, NSString *script, c
         didCheckBackgroundColor = true;
     }];
 
-    TestWebKitAPI::Util::run(&didCheckBackgroundColor);
+    TestCyberKitAPI::Util::run(&didCheckBackgroundColor);
     didCheckBackgroundColor = false;
 }
 
@@ -550,11 +550,11 @@ TEST(InAppBrowserPrivacy, AppBoundDomainCanAccessMessageHandlers)
     }];
 
     // Navigate to an app-bound domain and wait for the 'pass' message to test the handler is working fine.
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"in-app-browser-privacy-local-file" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"in-app-browser-privacy-local-file" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
     [webView _test_waitForDidFinishNavigation];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     [webView performAfterReceivingMessage:@"Failed" action:^() {
         FAIL();
@@ -588,7 +588,7 @@ static void setUpCookieTestWithWebsiteDataStore(WKWebsiteDataStore* dataStore)
     [dataStore removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:[] {
         gotFlag = true;
     }];
-    TestWebKitAPI::Util::run(&gotFlag);
+    TestCyberKitAPI::Util::run(&gotFlag);
 
     observerCallbacks = 0;
     globalCookieStore = dataStore.httpCookieStore;
@@ -600,7 +600,7 @@ static void setUpCookieTestWithWebsiteDataStore(WKWebsiteDataStore* dataStore)
         gotFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&gotFlag);
+    TestCyberKitAPI::Util::run(&gotFlag);
 
     // Make sure the cookie store starts out empty.
     ASSERT_EQ([cookies count], 0u);
@@ -643,7 +643,7 @@ TEST(InAppBrowserPrivacy, SetCookieForNonAppBoundDomainFails)
         gotFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&gotFlag);
+    TestCyberKitAPI::Util::run(&gotFlag);
     gotFlag = false;
 
     // This should successfully set a cookie.
@@ -651,7 +651,7 @@ TEST(InAppBrowserPrivacy, SetCookieForNonAppBoundDomainFails)
         gotFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&gotFlag);
+    TestCyberKitAPI::Util::run(&gotFlag);
 
     cleanUpInAppBrowserPrivacyTestSettings();
     gotFlag = false;
@@ -663,19 +663,19 @@ TEST(InAppBrowserPrivacy, SetCookieForNonAppBoundDomainFails)
         gotFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&gotFlag);
+    TestCyberKitAPI::Util::run(&gotFlag);
 
     ASSERT_EQ([cookies count], 1u);
     EXPECT_WK_STREQ(cookies.get()[0].domain, @"www.webkit.org");
     while (observerCallbacks != 1u)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 
     gotFlag = false;
     [globalCookieStore deleteCookie:appBoundCookie.get() completionHandler:[]() {
         gotFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&gotFlag);
+    TestCyberKitAPI::Util::run(&gotFlag);
     [globalCookieStore removeObserver:observer.get()];
     cleanUpInAppBrowserPrivacyTestSettings();
 }
@@ -713,14 +713,14 @@ TEST(InAppBrowserPrivacy, GetCookieForNonAppBoundDomainFails)
         gotFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&gotFlag);
+    TestCyberKitAPI::Util::run(&gotFlag);
     gotFlag = false;
 
     [globalCookieStore setCookie:appBoundCookie.get() completionHandler:[]() {
         gotFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&gotFlag);
+    TestCyberKitAPI::Util::run(&gotFlag);
 
     gotFlag = false;
     RetainPtr<NSArray<NSHTTPCookie *>> cookies;
@@ -729,7 +729,7 @@ TEST(InAppBrowserPrivacy, GetCookieForNonAppBoundDomainFails)
         gotFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&gotFlag);
+    TestCyberKitAPI::Util::run(&gotFlag);
 
     // Confirm both cookies are in the store.
     ASSERT_EQ([cookies count], 2u);
@@ -744,7 +744,7 @@ TEST(InAppBrowserPrivacy, GetCookieForNonAppBoundDomainFails)
         gotFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&gotFlag);
+    TestCyberKitAPI::Util::run(&gotFlag);
 
     ASSERT_EQ([cookies count], 1u);
 
@@ -753,7 +753,7 @@ TEST(InAppBrowserPrivacy, GetCookieForNonAppBoundDomainFails)
         gotFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&gotFlag);
+    TestCyberKitAPI::Util::run(&gotFlag);
 
     gotFlag = false;
     [globalCookieStore deleteCookie:appBoundCookie.get() completionHandler:[]() {
@@ -761,7 +761,7 @@ TEST(InAppBrowserPrivacy, GetCookieForNonAppBoundDomainFails)
         gotFlag = true;
     }];
 
-    TestWebKitAPI::Util::run(&gotFlag);
+    TestCyberKitAPI::Util::run(&gotFlag);
 }
 
 TEST(InAppBrowserPrivacy, GetCookieForURLFails)
@@ -810,7 +810,7 @@ TEST(InAppBrowserPrivacy, GetCookieForURLFails)
             }];
         }];
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 static String expectedMessage;
@@ -928,7 +928,7 @@ static RetainPtr<WKWebView> setUpSWTest(WKWebsiteDataStore *dataStore)
     [dataStore removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:^() {
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     return webView;
@@ -943,13 +943,13 @@ static void cleanUpSWTest(WKWebView *webView)
         cleanUpInAppBrowserPrivacyTestSettings();
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:^() {
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 }
 
@@ -959,7 +959,7 @@ TEST(InAppBrowserPrivacy, AppBoundDomainAllowsServiceWorkers)
 
     auto webView = setUpSWTest([WKWebsiteDataStore defaultDataStore]);
 
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/main.html"_s, { mainBytes } },
         { "/sw.js"_s, { { { "Content-Type"_s, "application/javascript"_s } }, scriptBytes } },
     });
@@ -967,7 +967,7 @@ TEST(InAppBrowserPrivacy, AppBoundDomainAllowsServiceWorkers)
     // Expect the service worker load to complete successfully.
     expectedMessage = "Message from worker: ServiceWorker received: Hello from an app-bound domain"_s;
     [webView loadRequest:server.requestWithLocalhost("/main.html"_s)];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     [[WKWebsiteDataStore defaultDataStore] fetchDataRecordsOfTypes:[NSSet setWithObject:WKWebsiteDataTypeServiceWorkerRegistrations] completionHandler:^(NSArray<WKWebsiteDataRecord *> *websiteDataRecords) {
@@ -976,7 +976,7 @@ TEST(InAppBrowserPrivacy, AppBoundDomainAllowsServiceWorkers)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     cleanUpSWTest(webView.get());
 }
 
@@ -987,14 +987,14 @@ TEST(InAppBrowserPrivacy, UnregisterServiceWorker)
 
     auto webView = setUpSWTest([WKWebsiteDataStore defaultDataStore]);
 
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/main.html"_s, { mainUnregisterBytes } },
         { "/sw.js"_s, { { { "Content-Type"_s, "application/javascript"_s } }, scriptBytes } },
     });
 
     expectedMessage = "Unregistration success"_s;
     [webView loadRequest:server.requestWithLocalhost("/main.html"_s)];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     isDone = false;
 
@@ -1003,7 +1003,7 @@ TEST(InAppBrowserPrivacy, UnregisterServiceWorker)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     cleanUpSWTest(webView.get());
 }
 
@@ -1015,14 +1015,14 @@ TEST(InAppBrowserPrivacy, UnregisterServiceWorkerMaxRegistrationCount)
     auto dataStore = adoptNS([[WKWebsiteDataStore alloc] _initWithConfiguration:websiteDataStoreConfiguration.get()]);
     auto webView = setUpSWTest(dataStore.get());
 
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/main.html"_s, { mainUnregisterBytes } },
         { "/sw.js"_s, { { { "Content-Type"_s, "application/javascript"_s } }, scriptBytes } },
     });
 
     expectedMessage = "Unregistration success"_s;
     [webView loadRequest:server.requestWithLocalhost("/main.html"_s)];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     isDone = false;
 
@@ -1031,7 +1031,7 @@ TEST(InAppBrowserPrivacy, UnregisterServiceWorkerMaxRegistrationCount)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     cleanUpSWTest(webView.get());
 }
 
@@ -1043,7 +1043,7 @@ TEST(InAppBrowserPrivacy, ReregisterServiceWorkerMaxRegistrationCount)
     auto dataStore = adoptNS([[WKWebsiteDataStore alloc] _initWithConfiguration:websiteDataStoreConfiguration.get()]);
     auto webView = setUpSWTest(dataStore.get());
 
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/main.html"_s, { mainReregisterBytes } },
         { "/sw.js?v1"_s, { { { "Content-Type"_s, "application/javascript"_s } }, scriptBytes } },
         { "/sw.js?v2"_s, { { { "Content-Type"_s, "application/javascript"_s } }, scriptBytes } },
@@ -1051,7 +1051,7 @@ TEST(InAppBrowserPrivacy, ReregisterServiceWorkerMaxRegistrationCount)
 
     expectedMessage = "Reregistration success"_s;
     [webView loadRequest:server.requestWithLocalhost("/main.html"_s)];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     isDone = false;
 
@@ -1060,7 +1060,7 @@ TEST(InAppBrowserPrivacy, ReregisterServiceWorkerMaxRegistrationCount)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     cleanUpSWTest(webView.get());
 }
 
@@ -1088,14 +1088,14 @@ TEST(InAppBrowserPrivacy, NonAppBoundDomainDoesNotAllowServiceWorkers)
         EXPECT_FALSE(enabled);
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     
     // Reset service worker entitlement.
     [webView _clearServiceWorkerEntitlementOverride:^(void) {
         cleanUpInAppBrowserPrivacyTestSettings();
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 }
 
@@ -1182,7 +1182,7 @@ TEST(InAppBrowserPrivacy, AppBoundDomainWithoutFlagTreatedAsNonAppBound)
         cleanUpInAppBrowserPrivacyTestSettings();
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(InAppBrowserPrivacy, WebViewWithoutAppBoundFlagCanFreelyNavigate)
@@ -1208,7 +1208,7 @@ TEST(InAppBrowserPrivacy, WebViewWithoutAppBoundFlagCanFreelyNavigate)
         EXPECT_FALSE(isAppBound);
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     // Navigate to an non app-bound domain and expect a successful load.
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"in-app-browser://in-app-browser-privacy-test-user-style-sheets"]];
@@ -1220,7 +1220,7 @@ TEST(InAppBrowserPrivacy, WebViewWithoutAppBoundFlagCanFreelyNavigate)
         EXPECT_FALSE(isAppBound);
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     // Navigation should be successful, but this WebView should not get app-bound domain
     // privileges like script injection.
@@ -1231,7 +1231,7 @@ TEST(InAppBrowserPrivacy, WebViewWithoutAppBoundFlagCanFreelyNavigate)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     cleanUpInAppBrowserPrivacyTestSettings();
 }
 
@@ -1259,7 +1259,7 @@ TEST(InAppBrowserPrivacy, WebViewCannotUpdateAppBoundFlagOnceSet)
         EXPECT_TRUE(isAppBound);
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 
     [[webView configuration] setLimitsNavigationsToAppBoundDomains:NO];
     // Now try to load a non-app bound domain and make sure it fails.
@@ -1293,7 +1293,7 @@ TEST(InAppBrowserPrivacy, InjectScriptThenNavigateToNonAppBoundDomainFails)
         isDone = true;
     }];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     
     // Load a non-app bound domain.
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"in-app-browser:///in-app-browser-privacy-test-user-agent-script"]];
@@ -1370,7 +1370,7 @@ TEST(InAppBrowserPrivacy, JavaScriptInNonAppBoundFrameFails)
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"in-app-browser://apple.com/in-app-browser-privacy-test-user-script-nested-iframe"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&didFinishNavigation);
+    TestCyberKitAPI::Util::run(&didFinishNavigation);
 
     EXPECT_EQ([allFrames count], 3u);
 
@@ -1409,7 +1409,7 @@ TEST(InAppBrowserPrivacy, JavaScriptInNonAppBoundFrameFails)
         }];
     }
     
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     cleanUpInAppBrowserPrivacyTestSettings();
 }
 
@@ -1458,7 +1458,7 @@ TEST(InAppBrowserPrivacy, LoadFromHTMLStringNoBaseURLIsAppBound)
         cleanUpInAppBrowserPrivacyTestSettings();
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(InAppBrowserPrivacy, LoadFromHTMLStringsFailsIfNotAppBound)
@@ -1486,7 +1486,7 @@ TEST(InAppBrowserPrivacy, LoadFromHTMLStringsFailsIfNotAppBound)
         cleanUpInAppBrowserPrivacyTestSettings();
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 TEST(InAppBrowserPrivacy, AppBoundCustomScheme)
@@ -1519,7 +1519,7 @@ TEST(InAppBrowserPrivacy, AppBoundCustomScheme)
         cleanUpInAppBrowserPrivacyTestSettings();
         isDone = true;
     }];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     
     // Make sure app-bound behavior works for this webview.
     isDone = false;
@@ -1531,7 +1531,7 @@ TEST(InAppBrowserPrivacy, AppBoundCustomScheme)
         isDone = true;
     }];
     
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 static void loadRequest(RetainPtr<TestWKWebView> webView, NSString *url)
@@ -1555,7 +1555,7 @@ static void loadRequest(RetainPtr<TestWKWebView> webView, NSString *url)
     // Load an app-bound domain with an about:blank iframe.
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     [webView loadRequest:request];
-    TestWebKitAPI::Util::run(&didFinishNavigation);
+    TestCyberKitAPI::Util::run(&didFinishNavigation);
     cleanUpInAppBrowserPrivacyTestSettings();
 }
 
@@ -1594,7 +1594,7 @@ TEST(InAppBrowserPrivacy, AboutBlankSubFrameMatchesTopFrameAppBound)
                 isDone = true;
         }];
     }
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     cleanUpInAppBrowserPrivacyTestSettings();
 }
 
@@ -1623,7 +1623,7 @@ TEST(InAppBrowserPrivacy, AboutBlankSubFrameMatchesTopFrameNonAppBound)
                 isDone = true;
         }];
     }
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     cleanUpInAppBrowserPrivacyTestSettings();
 }
 

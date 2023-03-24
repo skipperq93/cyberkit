@@ -31,13 +31,13 @@
 #import "TestCocoa.h"
 #import "TestNavigationDelegate.h"
 #import "WebExtensionUtilities.h"
-#import <WebKit/WKFoundation.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/_WKWebExtensionContextPrivate.h>
-#import <WebKit/_WKWebExtensionControllerPrivate.h>
-#import <WebKit/_WKWebExtensionPrivate.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/_WKWebExtensionContextPrivate.h>
+#import <CyberKit/_WKWebExtensionControllerPrivate.h>
+#import <CyberKit/_WKWebExtensionPrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WKWebExtensionController, Configuration)
 {
@@ -155,7 +155,7 @@ TEST(WKWebExtensionController, BackgroundPageLoading)
     EXPECT_NULL(error);
 
     // Wait for the background to load.
-    TestWebKitAPI::Util::runFor(4_s);
+    TestCyberKitAPI::Util::runFor(4_s);
 
     // No errors means success.
     EXPECT_EQ(testExtension.errors.count, 0ul);;
@@ -176,7 +176,7 @@ TEST(WKWebExtensionController, BackgroundPageLoading)
     EXPECT_NULL(error);
 
     // Wait for the background to load.
-    TestWebKitAPI::Util::runFor(4_s);
+    TestCyberKitAPI::Util::runFor(4_s);
 
     // No errors means success.
     EXPECT_EQ(testExtension.errors.count, 0ul);;
@@ -192,7 +192,7 @@ TEST(WKWebExtensionController, BackgroundPageLoading)
     EXPECT_NULL(error);
 
     // Wait for the background to load.
-    TestWebKitAPI::Util::runFor(4_s);
+    TestCyberKitAPI::Util::runFor(4_s);
 
     // No errors means success.
     EXPECT_EQ(testExtension.errors.count, 0ul);;
@@ -223,7 +223,7 @@ TEST(WKWebExtensionController, BackgroundPageWithModulesLoading)
     EXPECT_NULL(error);
 
     // Wait for the background to load.
-    TestWebKitAPI::Util::runFor(4_s);
+    TestCyberKitAPI::Util::runFor(4_s);
 
     // No errors means success.
     EXPECT_EQ(testExtension.errors.count, 0ul);;
@@ -244,7 +244,7 @@ TEST(WKWebExtensionController, BackgroundPageWithModulesLoading)
     EXPECT_NULL(error);
 
     // Wait for the background to load.
-    TestWebKitAPI::Util::runFor(4_s);
+    TestCyberKitAPI::Util::runFor(4_s);
 
     // No errors means success.
     EXPECT_EQ(testExtension.errors.count, 0ul);;
@@ -252,9 +252,9 @@ TEST(WKWebExtensionController, BackgroundPageWithModulesLoading)
 
 TEST(WKWebExtensionController, ContentScriptLoading)
 {
-    TestWebKitAPI::HTTPServer server({
+    TestCyberKitAPI::HTTPServer server({
         { "/"_s, { { { "Content-Type"_s, "text/html"_s } }, "Hello World"_s } },
-    }, TestWebKitAPI::HTTPServer::Protocol::Https);
+    }, TestCyberKitAPI::HTTPServer::Protocol::Https);
 
     auto *manifest = @{ @"manifest_version": @3, @"content_scripts": @[ @{ @"js": @[ @"content.js" ], @"matches": @[ @"*://localhost/*" ] } ] };
 
@@ -296,6 +296,6 @@ TEST(WKWebExtensionController, ContentScriptLoading)
     [manager loadAndRun];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

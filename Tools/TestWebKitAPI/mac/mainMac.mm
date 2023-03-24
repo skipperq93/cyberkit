@@ -28,7 +28,7 @@
 #import <wtf/RetainPtr.h>
 
 #if !defined(BUILDING_TEST_IPC) && !defined(BUILDING_TEST_WTF) && !defined(BUILDING_TEST_WGSL)
-#import <WebKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
 #endif
 
 extern "C" void _BeginEventReceiptOnThread(void);
@@ -43,9 +43,9 @@ void buildArgumentDefaults(int argc, char** argv, NSMutableDictionary *argumentD
     for (int i = 1; i < argc; ++i) {
         // These defaults are not propagated manually but are only consulted in the UI process.
         if (strcmp(argv[i], "--remote-layer-tree") == 0)
-            argumentDefaults[@"WebKit2UseRemoteLayerTreeDrawingArea"] = @YES;
+            argumentDefaults[@"CyberKit2UseRemoteLayerTreeDrawingArea"] = @YES;
         else if (strcmp(argv[i], "--use-gpu-process") == 0)
-            argumentDefaults[@"WebKit2GPUProcessForDOMRendering"] = @YES;
+            argumentDefaults[@"CyberKit2GPUProcessForDOMRendering"] = @YES;
     }
 }
 
@@ -53,9 +53,9 @@ int main(int argc, char** argv)
 {
     bool passed = false;
     @autoreleasepool {
-        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:@"TestWebKitAPI"];
+        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:@"TestCyberKitAPI"];
 
-        // Set a user default for TestWebKitAPI to bypass all linked-on-or-after checks in WebKit
+        // Set a user default for TestCyberKitAPI to bypass all linked-on-or-after checks in CyberKit
         auto argumentDomain = adoptNS([[[NSUserDefaults standardUserDefaults] volatileDomainForName:NSArgumentDomain] mutableCopy]);
         if (!argumentDomain)
             argumentDomain = adoptNS([[NSMutableDictionary alloc] init]);
@@ -76,7 +76,7 @@ int main(int argc, char** argv)
         [NSApplication sharedApplication];
         _BeginEventReceiptOnThread(); // Makes window visibility notifications work (and possibly more).
 
-        passed = TestWebKitAPI::TestsController::singleton().run(argc, argv);
+        passed = TestCyberKitAPI::TestsController::singleton().run(argc, argv);
     }
 
     return passed ? EXIT_SUCCESS : EXIT_FAILURE;

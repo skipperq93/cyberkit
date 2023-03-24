@@ -32,9 +32,9 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebCore/PictureInPictureSupport.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
+#import <CyberCore/PictureInPictureSupport.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Seconds.h>
 
@@ -53,17 +53,17 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 // FIXME: Re-enable after webkit.org/b/242014 is resolved
 TEST(PictureInPicture, DISABLED_ExitPiPOnSuspendVideoElement)
 {
-    if (!WebCore::supportsPictureInPicture())
+    if (!CyberCore::supportsPictureInPicture())
         return;
 
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
-        @"WebCoreLogging": @"Fullscreen=debug",
-        @"WebKit2Logging": @"Fullscreen=debug",
+        @"CyberCoreLogging": @"Fullscreen=debug",
+        @"CyberKit2Logging": @"Fullscreen=debug",
     }];
 
     RetainPtr<WKWebViewConfiguration> configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
@@ -76,21 +76,21 @@ TEST(PictureInPicture, DISABLED_ExitPiPOnSuspendVideoElement)
     [webView synchronouslyLoadTestPageNamed:@"ExitFullscreenOnEnterPiP"];
 
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
-        @"WebCoreLogging": @"",
-        @"WebKit2Logging": @"",
+        @"CyberCoreLogging": @"",
+        @"CyberKit2Logging": @"",
     }];
 
     didEnterPiP = false;
     [webView evaluateJavaScript:@"document.getElementById('enter-pip').click()" completionHandler: nil];
-    ASSERT_TRUE(TestWebKitAPI::Util::runFor(&didEnterPiP, 10_s));
+    ASSERT_TRUE(TestCyberKitAPI::Util::runFor(&didEnterPiP, 10_s));
 
     sleep(1_s);
 
     didExitPiP = false;
     [webView synchronouslyLoadHTMLString:@"<body>Hello world</body>"];
-    ASSERT_TRUE(TestWebKitAPI::Util::runFor(&didExitPiP, 10_s));
+    ASSERT_TRUE(TestCyberKitAPI::Util::runFor(&didExitPiP, 10_s));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

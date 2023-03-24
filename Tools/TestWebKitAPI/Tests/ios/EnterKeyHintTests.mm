@@ -30,8 +30,8 @@
 #import "TestInputDelegate.h"
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKInputDelegate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKInputDelegate.h>
 #import <wtf/text/WTFString.h>
 
 @interface TestWKWebView (EnterKeyHintTests)
@@ -50,7 +50,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 using EnterKeyHintTestCase = std::pair<RetainPtr<NSString>, UIReturnKeyType>;
 
@@ -122,6 +122,6 @@ TEST(EnterKeyHintTests, EnterKeyHintInTextArea)
         [webView test:@"textarea" enterKeyHint:test.first.get() returnKeyType:test.second];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

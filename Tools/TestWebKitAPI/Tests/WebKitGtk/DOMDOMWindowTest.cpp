@@ -27,16 +27,16 @@
 #include <webkit/webkit-web-process-extension.h>
 #else
 #include <webkit2/webkit-web-extension.h>
-typedef _WebKitWebExtension WebKitWebProcessExtension;
+typedef _CyberKitWebExtension CyberKitWebProcessExtension;
 #endif
 
-class WebKitDOMDOMWindowTest;
-static gboolean loadedCallback(WebKitDOMDOMWindow*, WebKitDOMEvent*, WebKitDOMDOMWindowTest*);
-static gboolean clickedCallback(WebKitDOMDOMWindow*, WebKitDOMEvent*, WebKitDOMDOMWindowTest*);
+class CyberKitDOMDOMWindowTest;
+static gboolean loadedCallback(CyberKitDOMDOMWindow*, CyberKitDOMEvent*, CyberKitDOMDOMWindowTest*);
+static gboolean clickedCallback(CyberKitDOMDOMWindow*, CyberKitDOMEvent*, CyberKitDOMDOMWindowTest*);
 
-class WebKitDOMDOMWindowTest : public WebProcessTest {
+class CyberKitDOMDOMWindowTest : public WebProcessTest {
 public:
-    static std::unique_ptr<WebProcessTest> create() { return makeUnique<WebKitDOMDOMWindowTest>(); }
+    static std::unique_ptr<WebProcessTest> create() { return makeUnique<CyberKitDOMDOMWindowTest>(); }
 
 private:
     guint64 webPageFromArgs(GVariant* args)
@@ -55,23 +55,23 @@ private:
         return 0;
     }
 
-    bool testSignals(WebKitWebProcessExtension* extension, GVariant* args)
+    bool testSignals(CyberKitWebProcessExtension* extension, GVariant* args)
     {
         notify("ready", "");
 
 #if ENABLE(2022_GLIB_API)
-        WebKitWebPage* page = webkit_web_process_extension_get_page(extension, webPageFromArgs(args));
+        CyberKitWebPage* page = webkit_web_process_extension_get_page(extension, webPageFromArgs(args));
 #else
-        WebKitWebPage* page = webkit_web_extension_get_page(extension, webPageFromArgs(args));
+        CyberKitWebPage* page = webkit_web_extension_get_page(extension, webPageFromArgs(args));
 #endif
         g_assert_true(WEBKIT_IS_WEB_PAGE(page));
-        WebKitDOMDocument* document = webkit_web_page_get_dom_document(page);
+        CyberKitDOMDocument* document = webkit_web_page_get_dom_document(page);
         g_assert_true(WEBKIT_DOM_IS_DOCUMENT(document));
 
-        WebKitDOMDOMWindow* domWindow = webkit_dom_document_get_default_view(document);
+        CyberKitDOMDOMWindow* domWindow = webkit_dom_document_get_default_view(document);
         g_assert_nonnull(domWindow);
 
-        // The "load" WebKitDOMDOMWindow signal is issued before this test is
+        // The "load" CyberKitDOMDOMWindow signal is issued before this test is
         // called. There's no way to capture it here. We simply assume that
         // the document is loaded and notify the uiprocess accordingly
         // notify("loaded", "");
@@ -89,7 +89,7 @@ private:
         document = webkit_web_page_get_dom_document(page);
         g_assert_true(WEBKIT_DOM_IS_DOCUMENT(document));
 
-        WebKitDOMElement* element = webkit_dom_document_get_element_by_id(document, "test");
+        CyberKitDOMElement* element = webkit_dom_document_get_element_by_id(document, "test");
         g_assert_nonnull(element);
 
         webkit_dom_event_target_add_event_listener(
@@ -107,23 +107,23 @@ private:
         return true;
     }
 
-    bool testDispatchEvent(WebKitWebProcessExtension* extension, GVariant* args)
+    bool testDispatchEvent(CyberKitWebProcessExtension* extension, GVariant* args)
     {
         notify("ready", "");
 
 #if ENABLE(2022_GLIB_API)
-        WebKitWebPage* page = webkit_web_process_extension_get_page(extension, webPageFromArgs(args));
+        CyberKitWebPage* page = webkit_web_process_extension_get_page(extension, webPageFromArgs(args));
 #else
-        WebKitWebPage* page = webkit_web_extension_get_page(extension, webPageFromArgs(args));
+        CyberKitWebPage* page = webkit_web_extension_get_page(extension, webPageFromArgs(args));
 #endif
         g_assert_true(WEBKIT_IS_WEB_PAGE(page));
-        WebKitDOMDocument* document = webkit_web_page_get_dom_document(page);
+        CyberKitDOMDocument* document = webkit_web_page_get_dom_document(page);
         g_assert_true(WEBKIT_DOM_IS_DOCUMENT(document));
 
-        WebKitDOMDOMWindow* domWindow = webkit_dom_document_get_default_view(document);
+        CyberKitDOMDOMWindow* domWindow = webkit_dom_document_get_default_view(document);
         g_assert_nonnull(domWindow);
 
-        // The "load" WebKitDOMDOMWindow signal is issued before this test is
+        // The "load" CyberKitDOMDOMWindow signal is issued before this test is
         // called. There's no way to capture it here. We simply assume that
         // the document is loaded and notify the uiprocess accordingly
         // notify("loaded", "");
@@ -141,10 +141,10 @@ private:
         document = webkit_web_page_get_dom_document(page);
         g_assert_true(WEBKIT_DOM_IS_DOCUMENT(document));
 
-        WebKitDOMElement* element = webkit_dom_document_get_element_by_id(document, "test");
+        CyberKitDOMElement* element = webkit_dom_document_get_element_by_id(document, "test");
         g_assert_nonnull(element);
 
-        WebKitDOMEvent* event = webkit_dom_document_create_event(document, "MouseEvent", 0);
+        CyberKitDOMEvent* event = webkit_dom_document_create_event(document, "MouseEvent", 0);
         g_assert_nonnull(event);
         g_assert_true(WEBKIT_DOM_IS_EVENT(event));
         g_assert_true(WEBKIT_DOM_IS_MOUSE_EVENT(event));
@@ -174,29 +174,29 @@ private:
         return true;
     }
 
-    bool testGetComputedStyle(WebKitWebProcessExtension* extension, GVariant* args)
+    bool testGetComputedStyle(CyberKitWebProcessExtension* extension, GVariant* args)
     {
 #if ENABLE(2022_GLIB_API)
-        WebKitWebPage* page = webkit_web_process_extension_get_page(extension, webPageFromArgs(args));
+        CyberKitWebPage* page = webkit_web_process_extension_get_page(extension, webPageFromArgs(args));
 #else
-        WebKitWebPage* page = webkit_web_extension_get_page(extension, webPageFromArgs(args));
+        CyberKitWebPage* page = webkit_web_extension_get_page(extension, webPageFromArgs(args));
 #endif
         g_assert_true(WEBKIT_IS_WEB_PAGE(page));
-        WebKitDOMDocument* document = webkit_web_page_get_dom_document(page);
+        CyberKitDOMDocument* document = webkit_web_page_get_dom_document(page);
         g_assert_true(WEBKIT_DOM_IS_DOCUMENT(document));
-        WebKitDOMDOMWindow* domWindow = webkit_dom_document_get_default_view(document);
+        CyberKitDOMDOMWindow* domWindow = webkit_dom_document_get_default_view(document);
         g_assert_nonnull(domWindow);
-        WebKitDOMElement* element = webkit_dom_document_get_element_by_id(document, "test");
+        CyberKitDOMElement* element = webkit_dom_document_get_element_by_id(document, "test");
         g_assert_nonnull(element);
         g_assert_true(WEBKIT_DOM_IS_ELEMENT(element));
-        WebKitDOMCSSStyleDeclaration* cssStyle = webkit_dom_dom_window_get_computed_style(domWindow, element, 0);
+        CyberKitDOMCSSStyleDeclaration* cssStyle = webkit_dom_dom_window_get_computed_style(domWindow, element, 0);
         gchar* fontSize = webkit_dom_css_style_declaration_get_property_value(cssStyle, "font-size");
         g_assert_cmpstr(fontSize, ==, "16px");
 
         return true;
     }
 
-    virtual bool runTest(const char* testName, WebKitWebProcessExtension* extension, GVariant* args)
+    virtual bool runTest(const char* testName, CyberKitWebProcessExtension* extension, GVariant* args)
     {
         if (!strcmp(testName, "signals"))
             return testSignals(extension, args);
@@ -212,12 +212,12 @@ private:
 
 static void __attribute__((constructor)) registerTests()
 {
-    REGISTER_TEST(WebKitDOMDOMWindowTest, "WebKitDOMDOMWindow/signals");
-    REGISTER_TEST(WebKitDOMDOMWindowTest, "WebKitDOMDOMWindow/dispatch-event");
-    REGISTER_TEST(WebKitDOMDOMWindowTest, "WebKitDOMDOMWindow/get-computed-style");
+    REGISTER_TEST(CyberKitDOMDOMWindowTest, "CyberKitDOMDOMWindow/signals");
+    REGISTER_TEST(CyberKitDOMDOMWindowTest, "CyberKitDOMDOMWindow/dispatch-event");
+    REGISTER_TEST(CyberKitDOMDOMWindowTest, "CyberKitDOMDOMWindow/get-computed-style");
 }
 
-static gboolean loadedCallback(WebKitDOMDOMWindow* view, WebKitDOMEvent* event, WebKitDOMDOMWindowTest* test)
+static gboolean loadedCallback(CyberKitDOMDOMWindow* view, CyberKitDOMEvent* event, CyberKitDOMDOMWindowTest* test)
 {
     test->notify("loaded", "");
 
@@ -227,7 +227,7 @@ static gboolean loadedCallback(WebKitDOMDOMWindow* view, WebKitDOMEvent* event, 
     return FALSE;
 }
 
-static gboolean clickedCallback(WebKitDOMDOMWindow* view, WebKitDOMEvent* event, WebKitDOMDOMWindowTest* test)
+static gboolean clickedCallback(CyberKitDOMDOMWindow* view, CyberKitDOMEvent* event, CyberKitDOMDOMWindowTest* test)
 {
     test->notify("clicked", "");
     test->notify("finish", "");

@@ -29,8 +29,8 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 static void *audioStateObserverChangeKVOContext = &audioStateObserverChangeKVOContext;
@@ -80,14 +80,14 @@ static bool stateDidChange;
         if ([self _mediaMutedState] == state)
             return YES;
 
-        TestWebKitAPI::Util::spinRunLoop(10);
+        TestCyberKitAPI::Util::spinRunLoop(10);
     }
 
     return NO;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WKWebView, MediaMuted)
 {
@@ -101,7 +101,7 @@ TEST(WKWebView, MediaMuted)
 
     stateDidChange = false;
     [webView evaluateJavaScript:@"document.querySelector('video').play()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&stateDidChange);
+    TestCyberKitAPI::Util::run(&stateDidChange);
 
     EXPECT_EQ([webView _mediaMutedState], _WKMediaNoneMuted);
 
@@ -112,6 +112,6 @@ TEST(WKWebView, MediaMuted)
     EXPECT_EQ([webView _mediaMutedState], _WKMediaNoneMuted);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -20,9 +20,9 @@
 #include "config.h"
 
 #include "LoadTrackingTest.h"
-#include "WebKitTestServer.h"
-#include "WebKitWebViewInternal.h"
-#include <WebCore/SoupVersioning.h>
+#include "CyberKitTestServer.h"
+#include "CyberKitWebViewInternal.h"
+#include <CyberCore/SoupVersioning.h>
 #include <libsoup/soup.h>
 #include <limits.h>
 #include <stdlib.h>
@@ -32,7 +32,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/StringHash.h>
 
-static WebKitTestServer* kServer;
+static CyberKitTestServer* kServer;
 
 static void testWebContextDefault(Test* test, gconstpointer)
 {
@@ -48,7 +48,7 @@ static void testWebContextEphemeral(Test* test, gconstpointer)
     g_assert_false(webkit_web_context_is_ephemeral(webkit_web_context_get_default()));
     g_assert_false(webkit_web_context_is_ephemeral(test->m_webContext.get()));
 
-    WebKitWebsiteDataManager* manager = webkit_web_context_get_website_data_manager(webkit_web_context_get_default());
+    CyberKitWebsiteDataManager* manager = webkit_web_context_get_website_data_manager(webkit_web_context_get_default());
     g_assert_true(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager));
     g_assert_false(webkit_website_data_manager_is_ephemeral(manager));
     manager = webkit_web_context_get_website_data_manager(test->m_webContext.get());
@@ -63,7 +63,7 @@ static void testWebContextEphemeral(Test* test, gconstpointer)
     g_assert_false(webkit_web_view_is_ephemeral(webView.get()));
     g_assert_true(webkit_web_view_get_website_data_manager(webView.get()) == manager);
 
-    GRefPtr<WebKitWebContext> context = adoptGRef(webkit_web_context_new_ephemeral());
+    GRefPtr<CyberKitWebContext> context = adoptGRef(webkit_web_context_new_ephemeral());
     g_assert_true(webkit_web_context_is_ephemeral(context.get()));
     manager = webkit_web_context_get_website_data_manager(context.get());
     g_assert_true(WEBKIT_IS_WEBSITE_DATA_MANAGER(manager));
@@ -74,7 +74,7 @@ static void testWebContextEphemeral(Test* test, gconstpointer)
     g_assert_true(webkit_web_view_is_ephemeral(webView.get()));
     g_assert_true(webkit_web_view_get_website_data_manager(webView.get()) == manager);
 
-    GRefPtr<WebKitWebsiteDataManager> ephemeralManager = adoptGRef(webkit_website_data_manager_new_ephemeral());
+    GRefPtr<CyberKitWebsiteDataManager> ephemeralManager = adoptGRef(webkit_website_data_manager_new_ephemeral());
     g_assert_true(webkit_website_data_manager_is_ephemeral(ephemeralManager.get()));
     context = adoptGRef(webkit_web_context_new_with_website_data_manager(ephemeralManager.get()));
     g_assert_true(webkit_web_context_is_ephemeral(context.get()));
@@ -113,7 +113,7 @@ public:
         int statusCode;
     };
 
-    static void uriSchemeRequestCallback(WebKitURISchemeRequest* request, gpointer userData)
+    static void uriSchemeRequestCallback(CyberKitURISchemeRequest* request, gpointer userData)
     {
         URISchemeTest* test = static_cast<URISchemeTest*>(userData);
         test->m_uriSchemeRequest = request;
@@ -198,7 +198,7 @@ public:
         webkit_web_context_register_uri_scheme(m_webContext.get(), scheme, uriSchemeRequestCallback, this, 0);
     }
 
-    GRefPtr<WebKitURISchemeRequest> m_uriSchemeRequest;
+    GRefPtr<CyberKitURISchemeRequest> m_uriSchemeRequest;
     HashMap<String, URISchemeHandler> m_handlersMap;
     bool m_uriSchemeRequestCallbackUsesTestWebView { true };
     int m_loadCounter { 0 };
@@ -231,9 +231,9 @@ String generateHTMLContent(unsigned contentLength)
     return builder.toString();
 }
 
-static GRefPtr<WebKitWebView> createTestWebViewWithWebContext(WebKitWebContext* context)
+static GRefPtr<CyberKitWebView> createTestWebViewWithWebContext(CyberKitWebContext* context)
 {
-    WebKitWebView* view = WEBKIT_WEB_VIEW(g_object_new(WEBKIT_TYPE_WEB_VIEW,
+    CyberKitWebView* view = WEBKIT_WEB_VIEW(g_object_new(WEBKIT_TYPE_WEB_VIEW,
 #if PLATFORM(WPE)
         "backend", Test::createWebViewBackend(),
 #endif
@@ -304,7 +304,7 @@ static void testWebContextURIScheme(URISchemeTest* test, gconstpointer)
     g_assert_false(test->m_loadEvents.contains(LoadTrackingTest::LoadFailed));
 
     // Anything over 8192 bytes will get multiple calls to g_input_stream_read_async in
-    // WebKitURISchemeRequest when reading data, but we still need way more than that to
+    // CyberKitURISchemeRequest when reading data, but we still need way more than that to
     // ensure that we reach the load-committed state before failing, so we use an 8MB HTML.
     String longHTMLContent = generateHTMLContent(8 * 1024 * 1024);
     test->registerURISchemeHandler("error", longHTMLContent.utf8().data(), -1, "text/html");
@@ -379,13 +379,13 @@ static void testWebContextURIScheme(URISchemeTest* test, gconstpointer)
     // Torture test time: make sure it still works if we issue a bunch of different requests all at
     // once. Each request should finish and return exactly the same data.
     int numIterations = 25;
-    GRefPtr<WebKitWebView> views[numIterations];
+    GRefPtr<CyberKitWebView> views[numIterations];
     test->m_uriSchemeRequestCallbackUsesTestWebView = false;
     for (int i = 0; i < numIterations; i++) {
         views[i] = createTestWebViewWithWebContext(test->m_webContext.get());
         test->assertObjectIsDeletedWhenTestFinishes(G_OBJECT(views[i].get()));
         webkit_web_view_load_uri(views[i].get(), "foo:blank");
-        g_signal_connect(views[i].get(), "load-changed", G_CALLBACK(+[] (WebKitWebView* webView, WebKitLoadEvent loadEvent, gpointer userData) {
+        g_signal_connect(views[i].get(), "load-changed", G_CALLBACK(+[] (CyberKitWebView* webView, CyberKitLoadEvent loadEvent, gpointer userData) {
             auto* test = static_cast<URISchemeTest*>(userData);
             if (loadEvent != WEBKIT_LOAD_FINISHED)
                 return;
@@ -398,7 +398,7 @@ static void testWebContextURIScheme(URISchemeTest* test, gconstpointer)
     g_main_loop_run(test->m_mainLoop);
 
     for (int i = 0; i < numIterations; i++) {
-        WebKitWebResource* resource = webkit_web_view_get_main_resource(views[i].get());
+        CyberKitWebResource* resource = webkit_web_view_get_main_resource(views[i].get());
         g_assert_nonnull(resource);
         webkit_web_resource_get_data(resource, nullptr, +[] (GObject* object, GAsyncResult* result, gpointer userData) {
             auto* test = static_cast<URISchemeTest*>(userData);
@@ -415,7 +415,7 @@ static void testWebContextURIScheme(URISchemeTest* test, gconstpointer)
 #if PLATFORM(GTK)
 static void testWebContextSpellChecker(Test* test, gconstpointer)
 {
-    WebKitWebContext* webContext = test->m_webContext.get();
+    CyberKitWebContext* webContext = test->m_webContext.get();
 
     // Check what happens if no spell checking language has been set.
     const gchar* const* currentLanguage = webkit_web_context_get_spell_checking_languages(webContext);
@@ -603,7 +603,7 @@ public:
             g_assert_false(webkit_security_manager_uri_scheme_is_empty_document(m_manager, scheme));
     }
 
-    WebKitSecurityManager* m_manager;
+    CyberKitSecurityManager* m_manager;
 };
 
 static void testWebContextSecurityPolicy(SecurityPolicyTest* test, gconstpointer)
@@ -635,9 +635,9 @@ static void testWebContextSecurityPolicy(SecurityPolicyTest* test, gconstpointer
 }
 
 #if ENABLE(2022_GLIB_API)
-static void xhrMessageReceivedCallback(WebKitUserContentManager*, JSCValue* message, JSCValue** result)
+static void xhrMessageReceivedCallback(CyberKitUserContentManager*, JSCValue* message, JSCValue** result)
 #else
-static void xhrMessageReceivedCallback(WebKitUserContentManager*, WebKitJavascriptResult* message, JSCValue** result)
+static void xhrMessageReceivedCallback(CyberKitUserContentManager*, CyberKitJavascriptResult* message, JSCValue** result)
 #endif
 {
     g_assert_nonnull(message);
@@ -653,7 +653,7 @@ static void xhrMessageReceivedCallback(WebKitUserContentManager*, WebKitJavascri
 
 static void testWebContextSecurityFileXHR(WebViewTest* test, gconstpointer)
 {
-    GUniquePtr<char> fileURL(g_strdup_printf("file://%s/simple.html", Test::getResourcesDir(Test::WebKit2Resources).data()));
+    GUniquePtr<char> fileURL(g_strdup_printf("file://%s/simple.html", Test::getResourcesDir(Test::CyberKit2Resources).data()));
     test->loadURI(fileURL.get());
     test->waitUntilLoadFinished();
 
@@ -787,7 +787,7 @@ public:
     }
 #endif
 
-    WebKitTestServer m_proxyServer;
+    CyberKitTestServer m_proxyServer;
 
 #if SOUP_CHECK_VERSION(2, 61, 90)
     WebSocketServerType m_webSocketRequestReceived { WebSocketServerType::Unknown };
@@ -806,7 +806,7 @@ static void webSocketServerCallback(SoupServer*, SoupServerMessage*, const char*
 }
 #endif
 
-static void ephemeralViewloadChanged(WebKitWebView* webView, WebKitLoadEvent loadEvent, WebViewTest* test)
+static void ephemeralViewloadChanged(CyberKitWebView* webView, CyberKitLoadEvent loadEvent, WebViewTest* test)
 {
     if (loadEvent != WEBKIT_LOAD_FINISHED)
         return;
@@ -829,7 +829,7 @@ static void testWebContextProxySettings(ProxyTest* test, gconstpointer)
 #endif
 
     // Set default proxy URI to point to proxyServer. Requests to kServer should be received by proxyServer instead.
-    WebKitNetworkProxySettings* settings = webkit_network_proxy_settings_new(test->m_proxyServer.baseURL().string().utf8().data(), nullptr);
+    CyberKitNetworkProxySettings* settings = webkit_network_proxy_settings_new(test->m_proxyServer.baseURL().string().utf8().data(), nullptr);
     auto* dataManager = webkit_web_context_get_website_data_manager(test->m_webContext.get());
     webkit_website_data_manager_set_network_proxy_settings(dataManager, WEBKIT_NETWORK_PROXY_MODE_CUSTOM, settings);
     GUniquePtr<char> proxyServerPortAsString = test->proxyServerPortAsString();
@@ -857,7 +857,7 @@ static void testWebContextProxySettings(ProxyTest* test, gconstpointer)
     g_signal_connect(webView.get(), "load-changed", G_CALLBACK(ephemeralViewloadChanged), test);
     webkit_web_view_load_uri(webView.get(), kServer->getURIForPath("/echoPort").data());
     g_main_loop_run(test->m_mainLoop);
-    WebKitWebResource* resource = webkit_web_view_get_main_resource(webView.get());
+    CyberKitWebResource* resource = webkit_web_view_get_main_resource(webView.get());
     g_assert_true(WEBKIT_IS_WEB_RESOURCE(resource));
     webkit_web_resource_get_data(resource, nullptr, [](GObject* object, GAsyncResult* result, gpointer userData) {
         size_t dataSize;
@@ -930,7 +930,7 @@ public:
         Test::s_memoryPressureSettings = nullptr;
     }
 
-    static void webProcessTerminatedCallback(WebKitWebView* webView, WebKitWebProcessTerminationReason reason, MemoryPressureTest* test)
+    static void webProcessTerminatedCallback(CyberKitWebView* webView, CyberKitWebProcessTerminationReason reason, MemoryPressureTest* test)
     {
         test->m_terminationReason = reason;
         g_signal_handlers_disconnect_by_func(webView, reinterpret_cast<void*>(webProcessTerminatedCallback), test);
@@ -943,14 +943,14 @@ public:
         g_main_loop_run(m_mainLoop);
     }
 
-    WebKitWebProcessTerminationReason m_terminationReason { WEBKIT_WEB_PROCESS_CRASHED };
+    CyberKitWebProcessTerminationReason m_terminationReason { WEBKIT_WEB_PROCESS_CRASHED };
 };
 
 static void testMemoryPressureSettings(MemoryPressureTest* test, gconstpointer)
 {
     // Before testing the settings that have been set to the context, use a new instance
-    // of WebKitMemoryPressureSettings to test the default values, getters and setters.
-    WebKitMemoryPressureSettings* settings = webkit_memory_pressure_settings_new();
+    // of CyberKitMemoryPressureSettings to test the default values, getters and setters.
+    CyberKitMemoryPressureSettings* settings = webkit_memory_pressure_settings_new();
 
     // We can't exactly know the default value for the memory limit, as it depends on
     // the hardware of the machine, so just ensure that it's something > 0 and <= 3GB.
@@ -1062,11 +1062,11 @@ static void testWebContextTimeZoneOverrideInWorker(WebViewTest* test, gconstpoin
     g_assert_cmpstr(WebViewTest::javascriptResultToCString(value), ==, "Europe/Berlin, Europe/Berlin, Europe/Berlin, Europe/Berlin");
 }
 
-static void testNoWebProcessLeakAfterWebKitWebContextDestroy(WebViewTest* test, gconstpointer)
+static void testNoWebProcessLeakAfterCyberKitWebContextDestroy(WebViewTest* test, gconstpointer)
 {
     webkitSetCachedProcessSuspensionDelayForTesting(0);
-    GRefPtr<WebKitWebContext> webContext = adoptGRef(WEBKIT_WEB_CONTEXT(g_object_new(WEBKIT_TYPE_WEB_CONTEXT, nullptr)));
-    GRefPtr<WebKitWebView> webView = Test::adoptView(Test::createWebView(webContext.get()));
+    GRefPtr<CyberKitWebContext> webContext = adoptGRef(WEBKIT_WEB_CONTEXT(g_object_new(WEBKIT_TYPE_WEB_CONTEXT, nullptr)));
+    GRefPtr<CyberKitWebView> webView = Test::adoptView(Test::createWebView(webContext.get()));
     webkit_web_view_load_uri(webView.get(), kServer->getURIForPath("/").data());
     test->waitUntilLoadFinished(webView.get());
     bool didRunForceRepaintCallback = false;
@@ -1090,28 +1090,28 @@ static void testNoWebProcessLeakAfterWebKitWebContextDestroy(WebViewTest* test, 
 
 void beforeAll()
 {
-    kServer = new WebKitTestServer();
+    kServer = new CyberKitTestServer();
     kServer->run(serverCallback);
 
-    Test::add("WebKitWebContext", "default-context", testWebContextDefault);
+    Test::add("CyberKitWebContext", "default-context", testWebContextDefault);
 #if !ENABLE(2022_GLIB_API)
-    Test::add("WebKitWebContext", "ephemeral", testWebContextEphemeral);
+    Test::add("CyberKitWebContext", "ephemeral", testWebContextEphemeral);
 #endif
-    URISchemeTest::add("WebKitWebContext", "uri-scheme", testWebContextURIScheme);
+    URISchemeTest::add("CyberKitWebContext", "uri-scheme", testWebContextURIScheme);
     // FIXME: implement spellchecker in WPE.
 #if PLATFORM(GTK)
-    Test::add("WebKitWebContext", "spell-checker", testWebContextSpellChecker);
+    Test::add("CyberKitWebContext", "spell-checker", testWebContextSpellChecker);
 #endif
-    WebViewTest::add("WebKitWebContext", "languages", testWebContextLanguages);
-    SecurityPolicyTest::add("WebKitSecurityManager", "security-policy", testWebContextSecurityPolicy);
-    WebViewTest::add("WebKitSecurityManager", "file-xhr", testWebContextSecurityFileXHR);
+    WebViewTest::add("CyberKitWebContext", "languages", testWebContextLanguages);
+    SecurityPolicyTest::add("CyberKitSecurityManager", "security-policy", testWebContextSecurityPolicy);
+    WebViewTest::add("CyberKitSecurityManager", "file-xhr", testWebContextSecurityFileXHR);
 #if !ENABLE(2022_GLIB_API)
-    ProxyTest::add("WebKitWebContext", "proxy", testWebContextProxySettings);
+    ProxyTest::add("CyberKitWebContext", "proxy", testWebContextProxySettings);
 #endif
-    MemoryPressureTest::add("WebKitWebContext", "memory-pressure", testMemoryPressureSettings);
-    WebViewTest::add("WebKitWebContext", "timezone", testWebContextTimeZoneOverride);
-    WebViewTest::add("WebKitWebContext", "timezone-worker", testWebContextTimeZoneOverrideInWorker);
-    WebViewTest::add("WebKitWebContext", "no-web-process-leak", testNoWebProcessLeakAfterWebKitWebContextDestroy);
+    MemoryPressureTest::add("CyberKitWebContext", "memory-pressure", testMemoryPressureSettings);
+    WebViewTest::add("CyberKitWebContext", "timezone", testWebContextTimeZoneOverride);
+    WebViewTest::add("CyberKitWebContext", "timezone-worker", testWebContextTimeZoneOverrideInWorker);
+    WebViewTest::add("CyberKitWebContext", "no-web-process-leak", testNoWebProcessLeakAfterCyberKitWebContextDestroy);
 }
 
 void afterAll()

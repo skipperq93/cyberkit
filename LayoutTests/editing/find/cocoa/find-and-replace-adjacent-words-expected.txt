@@ -1,4 +1,4 @@
-Verifies that find and replace can be used to replace adjacent words in an editable area. This test requires WebKitTestRunner.
+Verifies that find and replace can be used to replace adjacent words in an editable area. This test requires CyberKitTestRunner.
 
 After replacing 'apple' with an empty string:
 | <#selection-caret>

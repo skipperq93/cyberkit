@@ -26,10 +26,10 @@
 #import "config.h"
 
 #import "PlatformUtilities.h"
-#import <WebKit/WKWebProcessPlugIn.h>
-#import <WebKit/WKWebProcessPlugInBrowserContextController.h>
-#import <WebKit/WKWebProcessPlugInFrame.h>
-#import <WebKit/WKWebProcessPlugInScriptWorld.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKWebProcessPlugInBrowserContextController.h>
+#import <CyberKit/WKWebProcessPlugInFrame.h>
+#import <CyberKit/WKWebProcessPlugInScriptWorld.h>
 #import <wtf/RetainPtr.h>
 
 static NSString * const testParameter1 = @"TestParameter1";
@@ -51,14 +51,14 @@ static NSString * const testParameter2 = @"TestParameter2";
     _plugInController = plugInController;
     [plugInController.parameters addObserver:self forKeyPath:testParameter1 options:NSKeyValueObservingOptionInitial context:NULL];
     [plugInController.parameters addObserver:self forKeyPath:testParameter2 options:NSKeyValueObservingOptionInitial context:NULL];
-    [plugInController.parameters addObserver:self forKeyPath:TestWebKitAPI::Util::TestPlugInClassNameParameter options:NSKeyValueObservingOptionInitial context:NULL];
+    [plugInController.parameters addObserver:self forKeyPath:TestCyberKitAPI::Util::TestPlugInClassNameParameter options:NSKeyValueObservingOptionInitial context:NULL];
 }
 
 - (void)dealloc
 {
     [[_plugInController parameters] removeObserver:self forKeyPath:testParameter1];
     [[_plugInController parameters] removeObserver:self forKeyPath:testParameter2];
-    [[_plugInController parameters] removeObserver:self forKeyPath:TestWebKitAPI::Util::TestPlugInClassNameParameter];
+    [[_plugInController parameters] removeObserver:self forKeyPath:TestCyberKitAPI::Util::TestPlugInClassNameParameter];
     [super dealloc];
 }
 

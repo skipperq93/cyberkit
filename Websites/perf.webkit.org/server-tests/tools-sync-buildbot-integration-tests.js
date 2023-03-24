@@ -25,12 +25,12 @@ function configWithOneTesterTwoBuilders(testConfigurationsOverride = [{types: ['
         workerPassword: 'password',
         repositoryGroups: {
             'webkit': {
-                repositories: {'WebKit': {acceptsPatch: true}},
-                testProperties: {'wk': {'revision': 'WebKit'}, 'roots': {'roots': {}}},
-                buildProperties: {'wk': {'revision': 'WebKit'}, 'wk-patch': {'patch': 'WebKit'},
-                    'checkbox': {'ifRepositorySet': ['WebKit'], 'value': 'build-wk'},
-                    'build-wk': {'ifRepositorySet': ['WebKit'], 'value': true},
-                    'owned-commits': {'ownedRevisions': 'WebKit'}},
+                repositories: {'CyberKit': {acceptsPatch: true}},
+                testProperties: {'wk': {'revision': 'CyberKit'}, 'roots': {'roots': {}}},
+                buildProperties: {'wk': {'revision': 'CyberKit'}, 'wk-patch': {'patch': 'CyberKit'},
+                    'checkbox': {'ifRepositorySet': ['CyberKit'], 'value': 'build-wk'},
+                    'build-wk': {'ifRepositorySet': ['CyberKit'], 'value': true},
+                    'owned-commits': {'ownedRevisions': 'CyberKit'}},
                 acceptsRoots: true,
             }
         },
@@ -77,12 +77,12 @@ const configWithPlatformName = {
     platformArgument: 'platform-name',
     repositoryGroups: {
         'webkit': {
-            repositories: {'WebKit': {acceptsPatch: true}},
-            testProperties: {'wk': {'revision': 'WebKit'}, 'roots': {'roots': {}}},
-            buildProperties: {'wk': {'revision': 'WebKit'}, 'wk-patch': {'patch': 'WebKit'},
-                'checkbox': {'ifRepositorySet': ['WebKit'], 'value': 'build-wk'},
-                'build-wk': {'ifRepositorySet': ['WebKit'], 'value': true},
-                'owned-commits': {'ownedRevisions': 'WebKit'}},
+            repositories: {'CyberKit': {acceptsPatch: true}},
+            testProperties: {'wk': {'revision': 'CyberKit'}, 'roots': {'roots': {}}},
+            buildProperties: {'wk': {'revision': 'CyberKit'}, 'wk-patch': {'patch': 'CyberKit'},
+                'checkbox': {'ifRepositorySet': ['CyberKit'], 'value': 'build-wk'},
+                'build-wk': {'ifRepositorySet': ['CyberKit'], 'value': true},
+                'owned-commits': {'ownedRevisions': 'CyberKit'}},
             acceptsRoots: true,
         }
     },
@@ -134,12 +134,12 @@ const configWithTwoTesters = {
     workerPassword: 'password',
     repositoryGroups: {
         'webkit': {
-            repositories: {'WebKit': {acceptsPatch: true}},
-            testProperties: {'wk': {'revision': 'WebKit'}, 'roots': {'roots': {}}},
-            buildProperties: {'wk': {'revision': 'WebKit'}, 'wk-patch': {'patch': 'WebKit'},
-                'checkbox': {'ifRepositorySet': ['WebKit'], 'value': 'build-wk'},
-                'build-wk': {'ifRepositorySet': ['WebKit'], 'value': true},
-                'owned-commits': {'ownedRevisions': 'WebKit'}},
+            repositories: {'CyberKit': {acceptsPatch: true}},
+            testProperties: {'wk': {'revision': 'CyberKit'}, 'roots': {'roots': {}}},
+            buildProperties: {'wk': {'revision': 'CyberKit'}, 'wk-patch': {'patch': 'CyberKit'},
+                'checkbox': {'ifRepositorySet': ['CyberKit'], 'value': 'build-wk'},
+                'build-wk': {'ifRepositorySet': ['CyberKit'], 'value': true},
+                'owned-commits': {'ownedRevisions': 'CyberKit'}},
             acceptsRoots: true,
         }
     },
@@ -242,7 +242,7 @@ function createTestGroupWihOwnedCommit()
     });
 }
 
-function uploadRoot(buildRequestId, buildTag, repositoryList = ["WebKit"], buildTime = '2017-05-10T02:54:08.666')
+function uploadRoot(buildRequestId, buildTag, repositoryList = ["CyberKit"], buildTime = '2017-05-10T02:54:08.666')
 {
     return TemporaryFile.makeTemporaryFile(`root${buildTag}.dat`, `root for build ${buildTag} and repository list at ${buildTime}`).then((rootFile) => {
         return TestServer.remoteAPI().postFormData('/api/upload-root/', {
@@ -436,7 +436,7 @@ describe('sync-buildbot', function () {
         assert.strictEqual(requests.length, 13);
         assertAndResolveRequest(requests[10], 'GET', MockData.recentBuildsUrl('some tester', 2), {});
         assertAndResolveRequest(requests[11], 'GET', MockData.recentBuildsUrl('some builder', 2),
-            MockData.runningBuild({builderId: MockData.builderIDForName('some builder'), buildRequestId: 1, buildNumber: firstBuildNumber, statusDescription: 'Building WebKit'}));
+            MockData.runningBuild({builderId: MockData.builderIDForName('some builder'), buildRequestId: 1, buildNumber: firstBuildNumber, statusDescription: 'Building CyberKit'}));
         assertAndResolveRequest(requests[12], 'GET', MockData.recentBuildsUrl('other builder', 2), {});
         await syncPromise;
 
@@ -452,7 +452,7 @@ describe('sync-buildbot', function () {
         assert(!buildRequest.isTest());
         assert.strictEqual(buildRequest.statusLabel(), 'Running');
         assert.strictEqual(buildRequest.statusUrl(), MockData.statusUrl('some builder', 124));
-        assert.strictEqual(buildRequest.statusDescription(), 'Building WebKit');
+        assert.strictEqual(buildRequest.statusDescription(), 'Building CyberKit');
         assert.strictEqual(buildRequest.buildId(), null);
 
         commitSet = buildRequest.commitSet();
@@ -1815,7 +1815,7 @@ describe('sync-buildbot', function () {
             assert.strictEqual(requests.length, 7);
             assertAndResolveRequest(requests[6], 'POST', '/api/v2/forceschedulers/force-ab-builds', 'OK');
             assert.deepEqual(requests[6].data, {'id': '1', 'jsonrpc': '2.0', 'method': 'force', 'params':
-                {'wk': '191622', 'build-request-id': '1', 'forcescheduler': 'force-ab-builds', 'owned-commits': `{"WebKit":[{"revision":"owned-jsc-6161","repository":"JavaScriptCore","ownerRevision":"191622"}]}`}});
+                {'wk': '191622', 'build-request-id': '1', 'forcescheduler': 'force-ab-builds', 'owned-commits': `{"CyberKit":[{"revision":"owned-jsc-6161","repository":"CyberScriptCore","ownerRevision":"191622"}]}`}});
             return MockRemoteAPI.waitForRequest();
         }).then(() => {
             assert.strictEqual(requests.length, 10);
@@ -1870,7 +1870,7 @@ describe('sync-buildbot', function () {
             assert.strictEqual(otherCommitSet.ownerRevisionForRepository(ownedJSC), otherCommitSet.revisionForRepository(webkit));
             assert.deepEqual(otherCommitSet.allRootFiles(), []);
 
-            return uploadRoot(parseInt(buildRequest.id()), 123).then(() => uploadRoot(parseInt(buildRequest.id()), 123, [{ownerRepository: 'WebKit', ownedRepository: 'JavaScriptCore'}], '2017-05-10T02:54:09.666'));
+            return uploadRoot(parseInt(buildRequest.id()), 123).then(() => uploadRoot(parseInt(buildRequest.id()), 123, [{ownerRepository: 'CyberKit', ownedRepository: 'CyberScriptCore'}], '2017-05-10T02:54:09.666'));
         }).then(() => {
             return TestGroup.fetchForTask(taskId, true);
         }).then((testGroups) => {
@@ -1937,7 +1937,7 @@ describe('sync-buildbot', function () {
             assert.strictEqual(requests.length, 7);
             assertAndResolveRequest(requests[6], 'POST', '/api/v2/forceschedulers/force-ab-builds', 'OK');
             assert.deepEqual(requests[6].data, {'id': '2', 'jsonrpc': '2.0', 'method': 'force', 'params':
-                {'wk': '192736', 'build-request-id': '2', 'forcescheduler': 'force-ab-builds', 'owned-commits': `{"WebKit":[{"revision":"owned-jsc-9191","repository":"JavaScriptCore","ownerRevision":"192736"}]}`}});
+                {'wk': '192736', 'build-request-id': '2', 'forcescheduler': 'force-ab-builds', 'owned-commits': `{"CyberKit":[{"revision":"owned-jsc-9191","repository":"CyberScriptCore","ownerRevision":"192736"}]}`}});
             return MockRemoteAPI.waitForRequest();
         }).then(() => {
             assert.strictEqual(requests.length, 10);
@@ -1999,7 +1999,7 @@ describe('sync-buildbot', function () {
             assert.strictEqual(otherCommitSet.ownerRevisionForRepository(ownedJSC), otherCommitSet.revisionForRepository(webkit));
             assert.deepEqual(otherCommitSet.allRootFiles(), []);
 
-            return uploadRoot(parseInt(otherBuildRequest.id()), 124).then(() => uploadRoot(parseInt(otherBuildRequest.id()), 124, [{ownerRepository: 'WebKit', ownedRepository: 'JavaScriptCore'}], '2017-05-10T02:54:09.666'));
+            return uploadRoot(parseInt(otherBuildRequest.id()), 124).then(() => uploadRoot(parseInt(otherBuildRequest.id()), 124, [{ownerRepository: 'CyberKit', ownedRepository: 'CyberScriptCore'}], '2017-05-10T02:54:09.666'));
         }).then(() => {
             return TestGroup.fetchForTask(taskId, true);
         }).then((testGroups) => {
@@ -2115,7 +2115,7 @@ describe('sync-buildbot', function () {
             assert.strictEqual(requests.length, 7);
             assertAndResolveRequest(requests[6], 'POST', '/api/v2/forceschedulers/force-ab-builds', 'OK');
             assert.deepEqual(requests[6].data, {'id': '1', 'jsonrpc': '2.0', 'method': 'force', 'params':
-                {'wk': '191622', 'build-request-id': '1', 'forcescheduler': 'force-ab-builds', 'owned-commits': `{"WebKit":[{"revision":"owned-jsc-6161","repository":"JavaScriptCore","ownerRevision":"191622"}]}`}});
+                {'wk': '191622', 'build-request-id': '1', 'forcescheduler': 'force-ab-builds', 'owned-commits': `{"CyberKit":[{"revision":"owned-jsc-6161","repository":"CyberScriptCore","ownerRevision":"191622"}]}`}});
             return MockRemoteAPI.waitForRequest();
         }).then(() => {
             assert.strictEqual(requests.length, 10);
@@ -2211,7 +2211,7 @@ describe('sync-buildbot', function () {
             assert.strictEqual(otherCommitSet.ownerRevisionForRepository(webkit), null);
             assert.strictEqual(otherCommitSet.ownerRevisionForRepository(ownedJSC), otherCommitSet.revisionForRepository(webkit));
             assert.deepEqual(otherCommitSet.allRootFiles(), []);
-            return uploadRoot(parseInt(buildRequest.id()), 123, [{ownerRepository: 'WebKit', ownedRepository: 'JavaScriptCore'}], '2017-05-10T02:54:09.666');
+            return uploadRoot(parseInt(buildRequest.id()), 123, [{ownerRepository: 'CyberKit', ownedRepository: 'CyberScriptCore'}], '2017-05-10T02:54:09.666');
         }).then(() => {
             return TestGroup.fetchForTask(taskId, true);
         }).then((testGroups) => {
@@ -2278,7 +2278,7 @@ describe('sync-buildbot', function () {
             assert.strictEqual(requests.length, 7);
             assertAndResolveRequest(requests[6], 'POST', '/api/v2/forceschedulers/force-ab-builds', 'OK');
             assert.deepEqual(requests[6].data, {'id': '2', 'jsonrpc': '2.0', 'method': 'force', 'params':
-                {'wk': '192736', 'build-request-id': '2', 'forcescheduler': 'force-ab-builds', 'owned-commits': `{"WebKit":[{"revision":"owned-jsc-9191","repository":"JavaScriptCore","ownerRevision":"192736"}]}`}});
+                {'wk': '192736', 'build-request-id': '2', 'forcescheduler': 'force-ab-builds', 'owned-commits': `{"CyberKit":[{"revision":"owned-jsc-9191","repository":"CyberScriptCore","ownerRevision":"192736"}]}`}});
             return MockRemoteAPI.waitForRequest();
         }).then(() => {
             assert.strictEqual(requests.length, 10);
@@ -2386,7 +2386,7 @@ describe('sync-buildbot', function () {
             assert(otherWebkitRoot instanceof UploadedFile);
             assert.strictEqual(otherWebkitRoot.filename(), 'root124.dat');
             assert.deepEqual(otherCommitSet.allRootFiles(), [otherWebkitRoot]);
-            return uploadRoot(parseInt(otherBuildRequest.id()), 124, [{ownerRepository: 'WebKit', ownedRepository: 'JavaScriptCore'}], '2017-05-10T02:54:09.666');
+            return uploadRoot(parseInt(otherBuildRequest.id()), 124, [{ownerRepository: 'CyberKit', ownedRepository: 'CyberScriptCore'}], '2017-05-10T02:54:09.666');
         }).then(() => {
             return TestGroup.fetchForTask(taskId, true);
         }).then((testGroups) => {

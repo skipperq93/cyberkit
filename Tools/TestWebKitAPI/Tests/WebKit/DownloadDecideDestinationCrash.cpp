@@ -29,9 +29,9 @@
 
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
-#include <WebKit/WKDownloadRef.h>
+#include <CyberKit/WKDownloadRef.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool didDecideDestination;
 
@@ -44,7 +44,7 @@ static WKStringRef decideDestinationWithSuggestedFilename(WKDownloadRef download
 {
     didDecideDestination = true;
     WKDownloadCancel(download, nullptr, nullptr);
-    return Util::toWK("/tmp/WebKitAPITest/DownloadDecideDestinationCrash").leakRef();
+    return Util::toWK("/tmp/CyberKitAPITest/DownloadDecideDestinationCrash").leakRef();
 }
 
 static void navigationResponseDidBecomeDownload(WKPageRef page, WKNavigationResponseRef navigationResponse, WKDownloadRef download, const void* clientInfo)
@@ -68,7 +68,7 @@ static void setPagePolicyClient(WKPageRef page)
     WKPageSetPageNavigationClient(page, &navigationClient.base);
 }
 
-TEST(WebKit, DownloadDecideDestinationCrash)
+TEST(CyberKit, DownloadDecideDestinationCrash)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
@@ -83,6 +83,6 @@ TEST(WebKit, DownloadDecideDestinationCrash)
     Util::run(&didDecideDestination);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

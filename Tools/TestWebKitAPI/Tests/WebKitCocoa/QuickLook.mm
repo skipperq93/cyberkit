@@ -33,21 +33,21 @@
 #import "TestProtocol.h"
 #import "TestWKWebView.h"
 #import <CoreServices/CoreServices.h>
-#import <WebCore/WebCoreThread.h>
-#import <WebKit/WKNavigationDelegatePrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WebDataSourcePrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/WebPreferencesPrivate.h>
-#import <WebKit/WebUIKitSupport.h>
-#import <WebKit/WebViewPrivate.h>
-#import <WebKit/_WKDownload.h>
-#import <WebKit/_WKDownloadDelegate.h>
+#import <CyberCore/CyberCoreThread.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WebDataSourcePrivate.h>
+#import <CyberKit/CyberKit.h>
+#import <CyberKit/WebPreferencesPrivate.h>
+#import <CyberKit/WebUIKitSupport.h>
+#import <CyberKit/WebViewPrivate.h>
+#import <CyberKit/_WKDownload.h>
+#import <CyberKit/_WKDownloadDelegate.h>
 #import <wtf/NeverDestroyed.h>
 #import <wtf/cocoa/TypeCastsCocoa.h>
 
-using namespace TestWebKitAPI;
+using namespace TestCyberKitAPI;
 
 static bool downloadIsDone;
 
@@ -55,7 +55,7 @@ static NSString * const pagesDocumentPreviewMIMEType = @"application/pdf";
 
 static RetainPtr<NSURL> pagesDocumentURL()
 {
-    static NeverDestroyed<RetainPtr<NSURL>> pagesDocumentURL = [NSBundle.mainBundle URLForResource:@"pages" withExtension:@"pages" subdirectory:@"TestWebKitAPI.resources"];
+    static NeverDestroyed<RetainPtr<NSURL>> pagesDocumentURL = [NSBundle.mainBundle URLForResource:@"pages" withExtension:@"pages" subdirectory:@"TestCyberKitAPI.resources"];
     return pagesDocumentURL;
 }
 
@@ -348,7 +348,7 @@ TEST(QuickLook, CancelResponseBeforeLoadingPreview)
 {
     auto delegate = adoptNS([[QuickLookDelegate alloc] initWithExpectedFileURL:pagesDocumentURL().get() responsePolicy:WKNavigationResponsePolicyCancel]);
     runTestDecideBeforeLoading(delegate.get(), [NSURLRequest requestWithURL:pagesDocumentURL().get()]);
-    EXPECT_EQ(WebKitErrorFrameLoadInterruptedByPolicyChange, [delegate navigationError].code);
+    EXPECT_EQ(CyberKitErrorFrameLoadInterruptedByPolicyChange, [delegate navigationError].code);
     EXPECT_FALSE([delegate didFinishNavigation]);
     EXPECT_FALSE([delegate didFinishQuickLookLoad]);
     EXPECT_FALSE([delegate didStartQuickLookLoad]);
@@ -360,7 +360,7 @@ TEST(QuickLook, CancelResponseAfterLoadingPreview)
 {
     auto delegate = adoptNS([[QuickLookDelegate alloc] initWithExpectedFileURL:pagesDocumentURL().get() previewMIMEType:pagesDocumentPreviewMIMEType responsePolicy:WKNavigationResponsePolicyCancel]);
     runTestDecideAfterLoading(delegate.get(), [NSURLRequest requestWithURL:pagesDocumentURL().get()]);
-    EXPECT_EQ(WebKitErrorFrameLoadInterruptedByPolicyChange, [delegate navigationError].code);
+    EXPECT_EQ(CyberKitErrorFrameLoadInterruptedByPolicyChange, [delegate navigationError].code);
     EXPECT_FALSE([delegate didFinishNavigation]);
     EXPECT_TRUE([delegate didFailNavigation]);
     EXPECT_TRUE([delegate didFinishQuickLookLoad]);
@@ -372,7 +372,7 @@ TEST(QuickLook, DownloadResponseBeforeLoadingPreview)
 {
     auto delegate = adoptNS([[QuickLookDelegate alloc] initWithExpectedFileURL:pagesDocumentURL().get() responsePolicy:WKNavigationResponsePolicyDownload]);
     runTestDecideBeforeLoading(delegate.get(), [NSURLRequest requestWithURL:pagesDocumentURL().get()]);
-    EXPECT_EQ(WebKitErrorFrameLoadInterruptedByPolicyChange, [delegate navigationError].code);
+    EXPECT_EQ(CyberKitErrorFrameLoadInterruptedByPolicyChange, [delegate navigationError].code);
     EXPECT_FALSE([delegate didFinishNavigation]);
     EXPECT_FALSE([delegate didFinishQuickLookLoad]);
     EXPECT_FALSE([delegate didStartQuickLookLoad]);
@@ -387,7 +387,7 @@ TEST(QuickLook, DownloadResponseAfterLoadingPreview)
 {
     auto delegate = adoptNS([[QuickLookDelegate alloc] initWithExpectedFileURL:pagesDocumentURL().get() previewMIMEType:pagesDocumentPreviewMIMEType responsePolicy:WKNavigationResponsePolicyDownload]);
     runTestDecideAfterLoading(delegate.get(), [NSURLRequest requestWithURL:pagesDocumentURL().get()]);
-    EXPECT_EQ(WebKitErrorFrameLoadInterruptedByPolicyChange, [delegate navigationError].code);
+    EXPECT_EQ(CyberKitErrorFrameLoadInterruptedByPolicyChange, [delegate navigationError].code);
     EXPECT_FALSE([delegate didFinishNavigation]);
     EXPECT_TRUE([delegate didFailNavigation]);
     EXPECT_TRUE([delegate didFinishQuickLookLoad]);
@@ -412,7 +412,7 @@ TEST(QuickLook, DownloadResponseAfterLoadingPreview)
 #if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED > 130400
 TEST(QuickLook, RequestPasswordBeforeLoadingPreview)
 {
-    NSURL *passwordProtectedDocumentURL = [NSBundle.mainBundle URLForResource:@"password-protected" withExtension:@"pages" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *passwordProtectedDocumentURL = [NSBundle.mainBundle URLForResource:@"password-protected" withExtension:@"pages" subdirectory:@"TestCyberKitAPI.resources"];
     auto delegate = adoptNS([[QuickLookPasswordDelegate alloc] initWithExpectedFileURL:passwordProtectedDocumentURL responsePolicy:WKNavigationResponsePolicyAllow]);
     runTestDecideBeforeLoading(delegate.get(), [NSURLRequest requestWithURL:passwordProtectedDocumentURL]);
     EXPECT_FALSE([delegate didFailNavigation]);
@@ -424,7 +424,7 @@ TEST(QuickLook, RequestPasswordBeforeLoadingPreview)
 
 TEST(QuickLook, RequestPasswordAfterLoadingPreview)
 {
-    NSURL *passwordProtectedDocumentURL = [NSBundle.mainBundle URLForResource:@"password-protected" withExtension:@"pages" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *passwordProtectedDocumentURL = [NSBundle.mainBundle URLForResource:@"password-protected" withExtension:@"pages" subdirectory:@"TestCyberKitAPI.resources"];
     auto delegate = adoptNS([[QuickLookPasswordDelegate alloc] initWithExpectedFileURL:passwordProtectedDocumentURL previewMIMEType:pagesDocumentPreviewMIMEType responsePolicy:WKNavigationResponsePolicyAllow]);
     runTestDecideAfterLoading(delegate.get(), [NSURLRequest requestWithURL:passwordProtectedDocumentURL]);
     EXPECT_FALSE([delegate didFailNavigation]);
@@ -482,7 +482,7 @@ TEST(QuickLook, ReloadAndSameDocumentNavigation)
 #if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED > 130400
 TEST(QuickLook, LegacyQuickLookContent)
 {
-    WebKitInitialize();
+    CyberKitInitialize();
     WebThreadLock();
 
     auto webView = adoptNS([[WebView alloc] init]);

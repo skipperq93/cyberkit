@@ -24,7 +24,7 @@ aptIfExists() {
 }
 
 PACKAGES=(
-    # These are dependencies necessary for building WebKitGTK/WPE.
+    # These are dependencies necessary for building CyberKitGTK/WPE.
     autoconf
     automake
     autopoint

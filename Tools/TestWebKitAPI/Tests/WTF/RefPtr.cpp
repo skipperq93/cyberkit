@@ -35,7 +35,7 @@
 #include <wtf/ThreadSafeRefCounted.h>
 #include <wtf/Threading.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_RefPtr, Basic)
 {
@@ -549,7 +549,7 @@ TEST(WTF_RefPtr, ReleaseNonNullBeforeDeref)
     EXPECT_STREQ("ref(a) slot=null deref(a) ", takeLogStr().c_str());
 }
 
-// FIXME: Enable these tests once Win platform supports TestWebKitAPI::Util::run
+// FIXME: Enable these tests once Win platform supports TestCyberKitAPI::Util::run
 #if! PLATFORM(WIN)
 
 static bool done;
@@ -578,7 +578,7 @@ TEST(WTF_RefPtr, ReleaseInNonMainThread)
 {
     done = false;
     Thread::create("", [object = ThreadSafeRefCountedObject::create()] { });
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_FALSE(isDestroyedInMainThread);
 }
@@ -588,11 +588,11 @@ TEST(WTF_RefPtr, ReleaseInNonMainThreadDestroyInMainThread)
     WTF::initializeMainThread();
     done = false;
     Thread::create("", [object = MainThreadSafeRefCountedObject::create()] { });
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 
     EXPECT_TRUE(isDestroyedInMainThread);
 }
 
 #endif
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

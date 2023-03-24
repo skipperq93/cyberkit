@@ -1,0 +1,110 @@
+# Copyright (C) 2012-2020 Apple Inc. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1.  Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+# 2.  Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in the
+#     documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+messages -> NetworkProcessProxy LegacyReceiver {
+    DidReceiveAuthenticationChallenge(PAL::SessionID sessionID, CyberKit::WebPageProxyIdentifier pageID, std::optional<CyberCore::SecurityOriginData> topOrigin, CyberCore::AuthenticationChallenge challenge, bool negotiatedLegacyTLS, CyberKit::AuthenticationChallengeIdentifier challengeID)
+    NegotiatedLegacyTLS(CyberKit::WebPageProxyIdentifier pageID)
+    DidNegotiateModernTLS(CyberKit::WebPageProxyIdentifier pageID, URL url)
+
+    DidFailLoadDueToNetworkConnectionIntegrity(CyberKit::WebPageProxyIdentifier pageID, URL url)
+
+    TestProcessIncomingSyncMessagesWhenWaitingForSyncReply(CyberKit::WebPageProxyIdentifier pageID) -> (bool handled) Synchronous
+    TerminateUnresponsiveServiceWorkerProcesses(CyberCore::ProcessIdentifier processIdentifier)
+
+    # Diagnostic messages logging
+    LogDiagnosticMessage(CyberKit::WebPageProxyIdentifier pageID, String message, String description, enum:bool CyberCore::ShouldSample shouldSample)
+    LogDiagnosticMessageWithResult(CyberKit::WebPageProxyIdentifier pageID, String message, String description, uint32_t result, enum:bool CyberCore::ShouldSample shouldSample)
+    LogDiagnosticMessageWithValue(CyberKit::WebPageProxyIdentifier pageID, String message, String description, double value, unsigned significantFigures, enum:bool CyberCore::ShouldSample shouldSample)
+
+#if ENABLE(TRACKING_PREVENTION)
+    LogTestingEvent(PAL::SessionID sessionID, String event)
+    NotifyResourceLoadStatisticsProcessed()
+    NotifyWebsiteDataDeletionForRegistrableDomainsFinished()
+    NotifyWebsiteDataScanForRegistrableDomainsFinished()
+    RequestStorageAccessConfirm(CyberKit::WebPageProxyIdentifier pageID, CyberCore::FrameIdentifier frameID, CyberCore::RegistrableDomain subFrameDomain, CyberCore::RegistrableDomain topFrameDomain) -> (bool userDidGrantAccess)
+    DeleteWebsiteDataInUIProcessForRegistrableDomains(PAL::SessionID sessionID, OptionSet<CyberKit::WebsiteDataType> dataTypes, OptionSet<CyberKit::WebsiteDataFetchOption> fetchOptions, Vector<CyberCore::RegistrableDomain> domains) -> (HashSet<CyberCore::RegistrableDomain> domainsWithMatchingDataRecords)
+    DidCommitCrossSiteLoadWithDataTransferFromPrevalentResource(CyberKit::WebPageProxyIdentifier pageID)
+    SetDomainsWithUserInteraction(HashSet<CyberCore::RegistrableDomain> domains)
+    SetDomainsWithCrossPageStorageAccess(HashMap<CyberCore::RegistrableDomain, CyberCore::RegistrableDomain> domains) -> ()
+#endif
+#if ENABLE(CONTENT_EXTENSIONS)
+    ContentExtensionRules(CyberKit::UserContentControllerIdentifier identifier)
+#endif
+
+    TerminateWebProcess(CyberCore::ProcessIdentifier webProcessIdentifier)
+
+#if ENABLE(SERVICE_WORKER)
+    StartServiceWorkerBackgroundProcessing(CyberCore::ProcessIdentifier serviceWorkerProcessIdentifier)
+    EndServiceWorkerBackgroundProcessing(CyberCore::ProcessIdentifier serviceWorkerProcessIdentifier)
+    RequestBackgroundFetchPermission(PAL::SessionID sessionID, struct CyberCore::ClientOrigin origin) -> (bool result)
+    NotifyBackgroundFetchChange(PAL::SessionID sessionID, String backgroundFetchIdentifier, enum:uint8_t CyberKit::BackgroundFetchChange change)
+#endif
+    EstablishRemoteWorkerContextConnectionToNetworkProcess(enum:bool CyberKit::RemoteWorkerType workerType, CyberCore::RegistrableDomain registrableDomain, std::optional<CyberCore::ProcessIdentifier> requestingProcessIdentifier, std::optional<CyberCore::ScriptExecutionContextIdentifier> serviceWorkerPageIdentifier, PAL::SessionID sessionID) -> (CyberCore::ProcessIdentifier remoteProcessIdentifier)
+    RemoteWorkerContextConnectionNoLongerNeeded(enum:bool CyberKit::RemoteWorkerType workerType, CyberCore::ProcessIdentifier identifier)
+    RegisterRemoteWorkerClientProcess(enum:bool CyberKit::RemoteWorkerType workerType, CyberCore::ProcessIdentifier clientProcessIdentifier, CyberCore::ProcessIdentifier remoteWorkerProcessIdentifier);
+    UnregisterRemoteWorkerClientProcess(enum:bool CyberKit::RemoteWorkerType workerType, CyberCore::ProcessIdentifier clientProcessIdentifier, CyberCore::ProcessIdentifier remoteWorkerProcessIdentifier);
+
+    SetWebProcessHasUploads(CyberCore::ProcessIdentifier processID, bool hasUpload)
+
+#if ENABLE(APP_BOUND_DOMAINS)
+    GetAppBoundDomains(PAL::SessionID sessionID) -> (HashSet<CyberCore::RegistrableDomain> appBoundDomains)
+#endif
+
+    RequestStorageSpace(PAL::SessionID sessionID, struct CyberCore::ClientOrigin origin, uint64_t quota, uint64_t currentSize, uint64_t spaceRequired) -> (std::optional<uint64_t> newQuota)
+    IncreaseQuota(PAL::SessionID sessionID, struct CyberCore::ClientOrigin origin, CyberKit::QuotaIncreaseRequestIdentifier identifier, uint64_t quota, uint64_t currentSize, uint64_t spaceRequested)
+    
+    ResourceLoadDidSendRequest(CyberKit::WebPageProxyIdentifier pageIdentifier, struct CyberKit::ResourceLoadInfo resourceLoadInfo, CyberCore::ResourceRequest request, std::optional<IPC::FormDataReference> httpBody)
+    ResourceLoadDidPerformHTTPRedirection(CyberKit::WebPageProxyIdentifier pageIdentifier, struct CyberKit::ResourceLoadInfo resourceLoadInfo, CyberCore::ResourceResponse resourceResponse, CyberCore::ResourceRequest request)
+    ResourceLoadDidReceiveChallenge(CyberKit::WebPageProxyIdentifier pageIdentifier, struct CyberKit::ResourceLoadInfo resourceLoadInfo, CyberCore::AuthenticationChallenge challenge)
+    ResourceLoadDidReceiveResponse(CyberKit::WebPageProxyIdentifier pageIdentifier, struct CyberKit::ResourceLoadInfo resourceLoadInfo, CyberCore::ResourceResponse response)
+    ResourceLoadDidCompleteWithError(CyberKit::WebPageProxyIdentifier pageIdentifier, struct CyberKit::ResourceLoadInfo resourceLoadInfo, CyberCore::ResourceResponse response, CyberCore::ResourceError error)
+    
+    TriggerBrowsingContextGroupSwitchForNavigation(CyberKit::WebPageProxyIdentifier pageIdentifier, uint64_t navigationID, enum:uint8_t CyberCore::BrowsingContextGroupSwitchDecision browsingContextGroupSwitchDecision, CyberCore::RegistrableDomain responseDomain, CyberKit::NetworkResourceLoadIdentifier existingNetworkResourceLoadIdentifierToResume) -> (bool success)
+
+#if USE(SOUP)
+    DidExceedMemoryLimit()
+#endif
+
+#if ENABLE(APPLE_PAY_REMOTE_UI_USES_SCENE)
+    GetWindowSceneIdentifierForPaymentPresentation(CyberKit::WebPageProxyIdentifier webPageProxyIdentifier) -> (String sceneID)
+#endif
+
+    DataTaskReceivedChallenge(CyberKit::DataTaskIdentifier identifier, CyberCore::AuthenticationChallenge challenge) -> (enum:uint8_t CyberKit::AuthenticationChallengeDisposition disposition, CyberCore::Credential credential)
+    DataTaskWillPerformHTTPRedirection(CyberKit::DataTaskIdentifier identifier, CyberCore::ResourceResponse response, CyberCore::ResourceRequest request) -> (bool allowed)
+    DataTaskDidReceiveResponse(CyberKit::DataTaskIdentifier identifier, CyberCore::ResourceResponse response) -> (bool allowed)
+    DataTaskDidReceiveData(CyberKit::DataTaskIdentifier identifier, IPC::DataReference data)
+    DataTaskDidCompleteWithError(CyberKit::DataTaskIdentifier identifier, CyberCore::ResourceError error)
+
+    OpenWindowFromServiceWorker(PAL::SessionID sessionID, String urlString, CyberCore::SecurityOriginData serviceWorkerOrigin) -> (std::optional<CyberCore::PageIdentifier> newPage)
+    NavigateServiceWorkerClient(CyberCore::FrameIdentifier frameIdentifier, CyberCore::ScriptExecutionContextIdentifier documentIdentifier, URL url) -> (std::optional<CyberCore::PageIdentifier> page, std::optional<CyberCore::FrameIdentifier> frame)
+
+    CookiesDidChange(PAL::SessionID sessionID)
+
+    DeleteWebsiteDataInWebProcessesForOrigin(OptionSet<CyberKit::WebsiteDataType> websiteDataTypes, struct CyberCore::ClientOrigin origin, PAL::SessionID sessionID, CyberKit::WebPageProxyIdentifier webPageProxyID) -> ()
+    ReloadExecutionContextsForOrigin(struct CyberCore::ClientOrigin origin, PAL::SessionID sessionID, std::optional<CyberCore::FrameIdentifier> triggeringFrame) -> ()
+
+#if ENABLE(NETWORK_ISSUE_REPORTING)
+    ReportNetworkIssue(CyberKit::WebPageProxyIdentifier webPageProxyIdentifier, URL requestURL)
+#endif
+}
+
+}

@@ -30,7 +30,7 @@
 #import "AppKitSPI.h"
 #import "InstanceMethodSwizzler.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <pal/spi/mac/NSTextInputContextSPI.h>
 #import <wtf/RetainPtr.h>
 
@@ -85,7 +85,7 @@ static bool candidatesWereRequested = false;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(CandidateTests, DISABLED_DoNotLeakViewThatLoadsEditableArea)
 {
@@ -93,11 +93,11 @@ TEST(CandidateTests, DISABLED_DoNotLeakViewThatLoadsEditableArea)
     auto delegate = adoptNS([[DoNotLeakFrameLoadDelegate alloc] init]);
     [webView setFrameLoadDelegate:delegate.get()];
     
-    NSURL *contentURL = [[NSBundle mainBundle] URLForResource:@"autofocused-text-input" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *contentURL = [[NSBundle mainBundle] URLForResource:@"autofocused-text-input" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:contentURL]];
     
-    TestWebKitAPI::Util::run(&didFinishLoad);
-    TestWebKitAPI::Util::run(&didCallShowCandidates);
+    TestCyberKitAPI::Util::run(&didFinishLoad);
+    TestCyberKitAPI::Util::run(&didCallShowCandidates);
 
     webView = nil;
     EXPECT_TRUE(webViewWasDeallocated);
@@ -110,10 +110,10 @@ TEST(CandidateTests, DISABLED_RequestCandidatesForTextInput)
     auto delegate = adoptNS([[CandidateRequestFrameLoadDelegate alloc] init]);
     [webView setFrameLoadDelegate:delegate.get()];
     
-    NSURL *contentURL = [[NSBundle mainBundle] URLForResource:@"focus-inputs" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *contentURL = [[NSBundle mainBundle] URLForResource:@"focus-inputs" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:contentURL]];
     
-    TestWebKitAPI::Util::run(&didFinishLoad);
+    TestCyberKitAPI::Util::run(&didFinishLoad);
     
     [webView forceRequestCandidatesForTesting];
 
@@ -131,10 +131,10 @@ TEST(CandidateTests, DoNotRequestCandidatesForPasswordInput)
     auto delegate = adoptNS([[CandidateRequestFrameLoadDelegate alloc] init]);
     [webView setFrameLoadDelegate:delegate.get()];
     
-    NSURL *contentURL = [[NSBundle mainBundle] URLForResource:@"focus-inputs" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *contentURL = [[NSBundle mainBundle] URLForResource:@"focus-inputs" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:contentURL]];
     
-    TestWebKitAPI::Util::run(&didFinishLoad);
+    TestCyberKitAPI::Util::run(&didFinishLoad);
     
     [webView forceRequestCandidatesForTesting];
     [webView stringByEvaluatingJavaScriptFromString:@"focusPasswordField()"];
@@ -165,7 +165,7 @@ TEST(CandidateTests, DoNotHideCandidatesDuringTextReplacement)
     auto delegate = adoptNS([[CandidateRequestFrameLoadDelegate alloc] init]);
     [webView setFrameLoadDelegate:delegate.get()];
     [[webView mainFrame] loadHTMLString:@"<body contenteditable>Hello world<script>document.body.focus()</script>" baseURL:nil];
-    TestWebKitAPI::Util::run(&didFinishLoad);
+    TestCyberKitAPI::Util::run(&didFinishLoad);
 
     auto textToInsert = adoptNS([[NSMutableAttributedString alloc] initWithString:@"Goodbye"]);
     [textToInsert addAttribute:NSTextInputReplacementRangeAttributeName value:NSStringFromRange(NSMakeRange(0, 5)) range:NSMakeRange(0, 7)];

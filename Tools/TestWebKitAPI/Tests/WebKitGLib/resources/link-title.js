@@ -1,1 +1,1 @@
-window.document.getElementById('WebKitLink').title;
+window.document.getElementById('CyberKitLink').title;

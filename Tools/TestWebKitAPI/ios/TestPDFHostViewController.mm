@@ -117,7 +117,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void swizzledCreateHostViewForExtensionIdentifier(id, SEL, void (^callback)(PDFHostViewController *), NSString *)
 {
@@ -129,6 +129,6 @@ std::unique_ptr<ClassMethodSwizzler> createPDFHostViewControllerSwizzler()
     return WTF::makeUnique<ClassMethodSwizzler>([PDFHostViewController class], @selector(createHostView:forExtensionIdentifier:), reinterpret_cast<IMP>(swizzledCreateHostViewForExtensionIdentifier));
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // HAVE(PDFKIT) && PLATFORM(IOS_FAMILY)

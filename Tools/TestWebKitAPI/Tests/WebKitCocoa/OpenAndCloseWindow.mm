@@ -30,12 +30,12 @@
 #import "TestNavigationDelegate.h"
 #import "TestUIDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKNavigationActionPrivate.h>
-#import <WebKit/WKPreferences.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewConfiguration.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWindowFeaturesPrivate.h>
+#import <CyberKit/WKNavigationActionPrivate.h>
+#import <CyberKit/WKPreferences.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWindowFeaturesPrivate.h>
 #import <wtf/RetainPtr.h>
 
 @class OpenAndCloseWindowUIDelegate;
@@ -79,7 +79,7 @@ static void resetToConsistentState()
 
 @end
 
-TEST(WebKit, OpenAndCloseWindow)
+TEST(CyberKit, OpenAndCloseWindow)
 {
     resetToConsistentState();
 
@@ -90,10 +90,10 @@ TEST(WebKit, OpenAndCloseWindow)
 
     [webView configuration].preferences.javaScriptCanOpenWindowsAutomatically = YES;
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"open-and-close-window" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"open-and-close-window" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 @interface OpenAndCloseWindowUIDelegateAsync : OpenAndCloseWindowUIDelegate
@@ -141,7 +141,7 @@ TEST(WebKit, OpenAndCloseWindow)
 
 @end
 
-TEST(WebKit, OpenAndCloseWindowAsync)
+TEST(CyberKit, OpenAndCloseWindowAsync)
 {
     resetToConsistentState();
 
@@ -153,13 +153,13 @@ TEST(WebKit, OpenAndCloseWindowAsync)
 
     [webView configuration].preferences.javaScriptCanOpenWindowsAutomatically = YES;
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"open-and-close-window" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"open-and-close-window" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
-TEST(WebKit, OpenAsyncWithNil)
+TEST(CyberKit, OpenAsyncWithNil)
 {
     resetToConsistentState();
 
@@ -172,14 +172,14 @@ TEST(WebKit, OpenAsyncWithNil)
 
     [webView configuration].preferences.javaScriptCanOpenWindowsAutomatically = YES;
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"open-and-close-window" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"open-and-close-window" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }
 
 // https://bugs.webkit.org/show_bug.cgi?id=171083 - Try to figure out why this fails for some configs but not others, and resolve.
-//TEST(WebKit, OpenAndCloseWindowAsyncCallbackException)
+//TEST(CyberKit, OpenAndCloseWindowAsyncCallbackException)
 //{
 //    resetToConsistentState();
 //
@@ -191,10 +191,10 @@ TEST(WebKit, OpenAsyncWithNil)
 //
 //    [webView configuration].preferences.javaScriptCanOpenWindowsAutomatically = YES;
 //
-//    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"open-and-close-window" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"open-and-close-window" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
 //    [webView loadRequest:request];
 //
-//    TestWebKitAPI::Util::run(&isDone);
+//    TestCyberKitAPI::Util::run(&isDone);
 //
 //    bool caughtException = false;
 //    @try {
@@ -230,7 +230,7 @@ TEST(WebKit, OpenAsyncWithNil)
 
 @end
 
-TEST(WebKit, OpenWindowFeatures)
+TEST(CyberKit, OpenWindowFeatures)
 {
     resetToConsistentState();
 
@@ -242,10 +242,10 @@ TEST(WebKit, OpenWindowFeatures)
     constexpr NSString *windowOpenFormatString = @"window.open(\"about:blank\", \"_blank\", \"%@\")";
 
     [webView evaluateJavaScript:@"window.open(\"about:blank\")" completionHandler:nil];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
-//  https://bugs.webkit.org/show_bug.cgi?id=174271 - WebCore currently doesn't distinguish between unspecified (nil) and false
+//  https://bugs.webkit.org/show_bug.cgi?id=174271 - CyberCore currently doesn't distinguish between unspecified (nil) and false
 //  for the following window features.
 //  EXPECT_TRUE([openWindowFeatures menuBarVisibility] == nil);
 //  EXPECT_TRUE([openWindowFeatures statusBarVisibility] == nil);
@@ -259,7 +259,7 @@ TEST(WebKit, OpenWindowFeatures)
 
     NSString *featuresStringAllSpecifiedAndTrue = @"menubar=yes,status=yes,toolbar=yes,resizable=yes,location=yes,scrollbars=yes,fullscreen=yes";
     [webView evaluateJavaScript:[NSString stringWithFormat:windowOpenFormatString, featuresStringAllSpecifiedAndTrue] completionHandler:nil];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     EXPECT_TRUE([openWindowFeatures menuBarVisibility].boolValue);
@@ -273,7 +273,7 @@ TEST(WebKit, OpenWindowFeatures)
 
     NSString *featuresStringAllSpecifiedAndFalse = @"menubar=no,status=no,toolbar=no,resizable=no,location=no,scrollbars=no,fullscreen=no";
     [webView evaluateJavaScript:[NSString stringWithFormat:windowOpenFormatString, featuresStringAllSpecifiedAndFalse] completionHandler:nil];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
     isDone = false;
 
     EXPECT_FALSE([openWindowFeatures menuBarVisibility].boolValue);
@@ -301,7 +301,7 @@ TEST(WebKit, OpenWindowFeatures)
 
 @end
 
-TEST(WebKit, OpenWindowThenDocumentOpen)
+TEST(CyberKit, OpenWindowThenDocumentOpen)
 {
     resetToConsistentState();
 
@@ -311,20 +311,20 @@ TEST(WebKit, OpenWindowThenDocumentOpen)
     [webView setUIDelegate:uiDelegate.get()];
     [webView configuration].preferences.javaScriptCanOpenWindowsAutomatically = YES;
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"open-window-then-write-to-it" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"open-window-then-write-to-it" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
     while (!openedWebView)
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
 
     // Both WebViews should have the same URL because of document.open().
     while (![[[openedWebView URL] absoluteString] isEqualToString:[[webView URL] absoluteString]])
-        TestWebKitAPI::Util::runFor(0.1_s);
+        TestCyberKitAPI::Util::runFor(0.1_s);
 
     EXPECT_TRUE([[[openedWebView _mainFrameURL] absoluteString] isEqualToString:[[webView URL] absoluteString]]);
 }
 
-TEST(WebKit, OpenFileURLWithHost)
+TEST(CyberKit, OpenFileURLWithHost)
 {
     resetToConsistentState();
 
@@ -334,17 +334,17 @@ TEST(WebKit, OpenFileURLWithHost)
     [webView setUIDelegate:uiDelegate.get()];
     [webView configuration].preferences.javaScriptCanOpenWindowsAutomatically = YES;
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"open-window-with-file-url-with-host" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"open-window-with-file-url-with-host" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]];
     [webView loadRequest:request];
 
     while (![[[webView URL] absoluteString] hasSuffix:@"#test"])
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 
     while (![[[webView URL] absoluteString] hasPrefix:@"file:///"])
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 }
 
-TEST(WebKit, TryClose)
+TEST(CyberKit, TryClose)
 {
     auto webView = adoptNS([TestWKWebView new]);
     [webView synchronouslyLoadHTMLString:@"load something"];
@@ -384,7 +384,7 @@ TEST(WEBKIT, NavigationActionHasOpener)
         decidedPolicyInPopup = false;
         [webView synchronouslyLoadHTMLString:js];
         [webView evaluateJavaScript:@"runTest()" completionHandler:^(id result, NSError *error) { }];
-        TestWebKitAPI::Util::run(&decidedPolicyInPopup);
+        TestCyberKitAPI::Util::run(&decidedPolicyInPopup);
         EXPECT_EQ(popupHasOpenerInCreateWebView, expectsOpener);
         EXPECT_EQ(popupHasOpenerInDecidePolicyForNavigationAction, expectsOpener);
     };

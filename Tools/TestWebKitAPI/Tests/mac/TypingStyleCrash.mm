@@ -27,13 +27,13 @@
 
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, TypingStyleCrash)
+TEST(CyberKitLegacy, TypingStyleCrash)
 {
     auto webView = adoptNS([[WebView alloc] init]);
     (void)[webView typingStyle];
     webView = nil;
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

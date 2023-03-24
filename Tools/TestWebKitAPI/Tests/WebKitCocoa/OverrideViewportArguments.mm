@@ -28,13 +28,13 @@
 #import "PlatformUtilities.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferences.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKPreferences.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 #if PLATFORM(IOS_FAMILY)
 
-TEST(WebKit, OverrideViewportArguments)
+TEST(CyberKit, OverrideViewportArguments)
 {
     RetainPtr<TestWKWebView> webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 20, 20)]);
 

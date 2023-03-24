@@ -36,7 +36,7 @@
 #include <wtf/text/StringConcatenateNumbers.h>
 #include <wtf/text/StringHash.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 template<int initialCapacity>
 struct InitialCapacityTestHashTraits : public WTF::UnsignedWithZeroKeyHashTraits<int> {
@@ -850,4 +850,4 @@ TEST(WTF_HashSet, FormSymmetricDifference)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

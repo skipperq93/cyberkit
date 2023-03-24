@@ -33,20 +33,20 @@ static const char* testHTML = "<html><head></head><body>"
     "</style>"
     "<div id=rect></div></body></html>";
 
-static void testWebKitDOMClientRectDivBoundingClientRectPosition(WebViewTest* test, gconstpointer)
+static void testCyberKitDOMClientRectDivBoundingClientRectPosition(WebViewTest* test, gconstpointer)
 {
-    g_assert_true(test->runWebProcessTest("WebKitDOMClientRect", "div-bounding-client-rect-position", testHTML));
+    g_assert_true(test->runWebProcessTest("CyberKitDOMClientRect", "div-bounding-client-rect-position", testHTML));
 }
 
-static void testWebKitDOMClientRectDivClientRectsPositionAndLength(WebViewTest* test, gconstpointer)
+static void testCyberKitDOMClientRectDivClientRectsPositionAndLength(WebViewTest* test, gconstpointer)
 {
-    g_assert_true(test->runWebProcessTest("WebKitDOMClientRect", "div-client-rects-position-and-length", testHTML));
+    g_assert_true(test->runWebProcessTest("CyberKitDOMClientRect", "div-client-rects-position-and-length", testHTML));
 }
 
 void beforeAll()
 {
-    WebViewTest::add("WebKitDOMClientRect", "div-bounding-client-rect-position", testWebKitDOMClientRectDivBoundingClientRectPosition);
-    WebViewTest::add("WebKitDOMClientRect", "div-client-rects-position-and-length", testWebKitDOMClientRectDivClientRectsPositionAndLength);
+    WebViewTest::add("CyberKitDOMClientRect", "div-bounding-client-rect-position", testCyberKitDOMClientRectDivBoundingClientRectPosition);
+    WebViewTest::add("CyberKitDOMClientRect", "div-client-rects-position-and-length", testCyberKitDOMClientRectDivClientRectsPositionAndLength);
 }
 
 void afterAll()

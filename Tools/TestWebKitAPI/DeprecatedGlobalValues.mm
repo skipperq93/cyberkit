@@ -39,7 +39,7 @@ WKScriptMessage *getNextMessage()
 {
     if (scriptMessages.isEmpty()) {
         receivedScriptMessage = false;
-        TestWebKitAPI::Util::run(&receivedScriptMessage);
+        TestCyberKitAPI::Util::run(&receivedScriptMessage);
     }
 
     return scriptMessages.takeFirst().autorelease();

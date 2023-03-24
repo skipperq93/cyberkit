@@ -28,11 +28,11 @@
 #import "PlatformUtilities.h"
 #import "SyntheticBackingScaleFactorWindow.h"
 #import "Test.h"
-#import <WebKit/WKBrowsingContextController.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKBrowsingContextController.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool messageReceived;
 static double backingScaleFactor;
@@ -64,7 +64,7 @@ static RetainPtr<SyntheticBackingScaleFactorWindow> createWindow()
     return window;
 }
 
-TEST(WebKit, GetBackingScaleFactor)
+TEST(CyberKit, GetBackingScaleFactor)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("GetBackingScaleFactorTest"));
     setInjectedBundleClient(context.get());
@@ -100,4 +100,4 @@ TEST(WebKit, GetBackingScaleFactor)
     EXPECT_EQ(3, backingScaleFactor);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

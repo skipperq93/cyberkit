@@ -29,8 +29,8 @@
 #import "Test.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKFoundation.h>
-#import <WebKit/WKWebView.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/WKWebView.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Vector.h>
 #import <wtf/cocoa/NSURLExtras.h>
@@ -127,14 +127,14 @@ TEST(WKWebView, LoadSimulatedRequestDelegateCallbacks)
     webView.get().navigationDelegate = delegate.get();
     NSURL *url = [NSURL URLWithString:@"https://webkit.org/"];
     [webView loadHTMLString:@"hi!" baseURL:url];
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
 
     checkCallbacks(callbacks);
     callbacks = { };
     finished = false;
 
     [webView loadSimulatedRequest:[NSURLRequest requestWithURL:url] response:adoptNS([[NSURLResponse alloc] initWithURL:url MIMEType:@"text/html" expectedContentLength:3 textEncodingName:nil]).get() responseData:[NSData dataWithBytes:"hi!" length:3]];
-    TestWebKitAPI::Util::run(&finished);
+    TestCyberKitAPI::Util::run(&finished);
     checkCallbacks(callbacks);
 }
 
@@ -145,7 +145,7 @@ TEST(WKWebView, LoadFileRequest)
     auto delegate = adoptNS([[TestNavigationDelegate alloc] init]);
     [webView setNavigationDelegate:delegate.get()];
 
-    NSURL *file = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *file = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     NSURLRequest *request = [NSURLRequest requestWithURL:file];
     [webView loadFileRequest:request allowingReadAccessToURL:file.URLByDeletingLastPathComponent];
     [delegate waitForDidFinishNavigation];

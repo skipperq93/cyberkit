@@ -1,0 +1,109 @@
+# Copyright (C) 2021-2022 Apple Inc. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1.  Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+# 2.  Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in the
+#     documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+#if ENABLE(GPU_PROCESS)
+
+messages -> RemoteDisplayListRecorder NotRefCounted Stream {
+    Save() StreamBatched
+    Restore() StreamBatched
+    Translate(float x, float y) StreamBatched
+    Rotate(float angle) StreamBatched
+    Scale(CyberCore::FloatSize scale) StreamBatched
+    SetCTM(CyberCore::AffineTransform ctm) StreamBatched
+    ConcatenateCTM(CyberCore::AffineTransform ctm) StreamBatched
+    SetInlineFillColor(CyberCore::DisplayList::SetInlineFillColor item) StreamBatched
+    SetInlineStrokeColor(CyberCore::DisplayList::SetInlineStrokeColor item) StreamBatched
+    SetStrokeThickness(float thickness) StreamBatched
+    SetState(CyberCore::DisplayList::SetState item) StreamBatched
+    SetLineCap(enum:uint8_t CyberCore::LineCap lineCap) StreamBatched
+    SetLineDash(CyberCore::DisplayList::SetLineDash item) StreamBatched
+    SetLineJoin(enum:uint8_t CyberCore::LineJoin lineJoin) StreamBatched
+    SetMiterLimit(float limit) StreamBatched
+    ClearShadow()
+    Clip(CyberCore::FloatRect rect)
+    ClipOut(CyberCore::FloatRect rect)
+    ClipToImageBuffer(CyberCore::RenderingResourceIdentifier renderingResourceIdentifier, CyberCore::FloatRect destinationRect)
+    ClipOutToPath(CyberCore::Path path)
+    ClipPath(CyberCore::Path path, enum:bool CyberCore::WindRule windRule)
+    DrawGlyphs(CyberCore::DisplayList::DrawGlyphs item)
+    DrawDecomposedGlyphs(CyberCore::RenderingResourceIdentifier fontIdentifier, CyberCore::RenderingResourceIdentifier decomposedGlyphsIdentifier)
+    DrawFilteredImageBuffer(std::optional<CyberCore::RenderingResourceIdentifier> sourceImageIdentifier, CyberCore::FloatRect sourceImageRect, Ref<CyberCore::Filter> filter)
+    DrawImageBuffer(CyberCore::RenderingResourceIdentifier imageBufferIdentifier, CyberCore::FloatRect destinationRect, CyberCore::FloatRect srcRect, struct CyberCore::ImagePaintingOptions options)
+    DrawNativeImage(CyberCore::RenderingResourceIdentifier imageIdentifier, CyberCore::FloatSize imageSize, CyberCore::FloatRect destRect, CyberCore::FloatRect srcRect, struct CyberCore::ImagePaintingOptions options)
+    DrawSystemImage(Ref<CyberCore::SystemImage> systemImage, CyberCore::FloatRect destinationRect)
+    DrawPattern(CyberCore::RenderingResourceIdentifier imageIdentifier, CyberCore::FloatRect destRect, CyberCore::FloatRect tileRect, CyberCore::AffineTransform transform, CyberCore::FloatPoint phase, CyberCore::FloatSize spacing, struct CyberCore::ImagePaintingOptions options)
+    BeginTransparencyLayer(float opacity)
+    EndTransparencyLayer()
+    DrawRect(CyberCore::FloatRect rect, float borderThickness)
+    DrawLine(CyberCore::FloatPoint point1, CyberCore::FloatPoint point2)
+    DrawLinesForText(CyberCore::DisplayList::DrawLinesForText item)
+    DrawDotsForDocumentMarker(CyberCore::FloatRect rect, struct CyberCore::DocumentMarkerLineStyle style)
+    DrawEllipse(CyberCore::FloatRect rect)
+    DrawPath(CyberCore::Path path)
+    DrawFocusRingPath(CyberCore::Path path, float outlineWidth, CyberCore::Color color)
+    DrawFocusRingRects(Vector<CyberCore::FloatRect> rects, float outlineOffset, float outlineWidth, CyberCore::Color color)
+    FillRect(CyberCore::FloatRect rect)
+    FillRectWithColor(CyberCore::FloatRect rect, CyberCore::Color color)
+    FillRectWithGradient(CyberCore::DisplayList::FillRectWithGradient item)
+    FillCompositedRect(CyberCore::FloatRect rect, CyberCore::Color color, enum:uint8_t CyberCore::CompositeOperator op, enum:uint8_t CyberCore::BlendMode blendMode)
+    FillRoundedRect(CyberCore::FloatRoundedRect rect, CyberCore::Color color, enum:uint8_t CyberCore::BlendMode blendMode)
+    FillRectWithRoundedHole(CyberCore::FloatRect rect, CyberCore::FloatRoundedRect roundedHoleRect, CyberCore::Color color)
+#if ENABLE(INLINE_PATH_DATA)
+    FillLine(struct CyberCore::LineData data)
+    FillArc(struct CyberCore::ArcData data)
+    FillQuadCurve(struct CyberCore::QuadCurveData data)
+    FillBezierCurve(struct CyberCore::BezierCurveData data)
+#endif
+    FillPath(CyberCore::Path path)
+    FillEllipse(CyberCore::FloatRect rect)
+    ConvertToLuminanceMask()
+    TransformToColorSpace(CyberCore::DestinationColorSpace colorSpace)
+#if ENABLE(VIDEO)
+    PaintFrameForMedia(CyberCore::MediaPlayerIdentifier identifier, CyberCore::FloatRect destination)
+#endif
+    StrokeRect(CyberCore::FloatRect rect, float lineWidth)
+#if ENABLE(INLINE_PATH_DATA)
+    StrokeLine(struct CyberCore::LineData data) StreamBatched
+    StrokeLineWithColorAndThickness(CyberCore::DisplayList::SetInlineStrokeColor color, float thickness, struct CyberCore::LineData data) StreamBatched
+    StrokeArc(struct CyberCore::ArcData data) StreamBatched
+    StrokeQuadCurve(struct CyberCore::QuadCurveData data) StreamBatched
+    StrokeBezierCurve(struct CyberCore::BezierCurveData data) StreamBatched
+#endif
+    StrokePath(CyberCore::Path path) StreamBatched
+    StrokeEllipse(CyberCore::FloatRect rect) StreamBatched
+    ClearRect(CyberCore::FloatRect rect)
+    DrawControlPart(Ref<CyberCore::ControlPart> part, CyberCore::FloatRoundedRect borderRect, float deviceScaleFactor, CyberCore::ControlStyle style)
+#if USE(CG)
+    ApplyStrokePattern()
+    ApplyFillPattern()
+#endif
+    ApplyDeviceScaleFactor(float scaleFactor)
+    FlushContext(CyberKit::DisplayListRecorderFlushIdentifier identifier)
+
+#if PLATFORM(COCOA) && ENABLE(VIDEO)
+    PaintVideoFrame(struct CyberKit::SharedVideoFrame frame, CyberCore::FloatRect rect, bool shouldDiscardAlpha) NotStreamEncodable
+    SetSharedVideoFrameSemaphore(IPC::Semaphore semaphore) NotStreamEncodable
+    SetSharedVideoFrameMemory(CyberKit::SharedMemory::Handle storageHandle) NotStreamEncodable
+#endif
+}
+
+#endif // ENABLE(GPU_PROCESS)

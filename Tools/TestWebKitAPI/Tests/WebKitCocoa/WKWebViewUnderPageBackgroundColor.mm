@@ -27,8 +27,8 @@
 
 #import "TestCocoa.h"
 #import "TestWKWebView.h"
-#import <WebCore/ColorCocoa.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberCore/ColorCocoa.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 #define EXPECT_IN_RANGE(actual, min, max) \
@@ -46,11 +46,11 @@ static RetainPtr<CGColor> defaultBackgroundColor()
 #elif HAVE(OS_DARK_MODE_SUPPORT) && PLATFORM(IOS_FAMILY)
     auto color = retainPtr(UIColor.systemBackgroundColor);
 #else
-    auto color = retainPtr([WebCore::CocoaColor whiteColor]);
+    auto color = retainPtr([CyberCore::CocoaColor whiteColor]);
 #endif
 
     // Some of the above can sometimes be a monochrome color, so convert it to sRGB so the comparisons below work.
-    // `WebCore::ColorSpace` doesn't have an equivalent monochrome enum value, but treats `CGColor` with only two components as monochrome and converts them to `SRGB`.
+    // `CyberCore::ColorSpace` doesn't have an equivalent monochrome enum value, but treats `CGColor` with only two components as monochrome and converts them to `SRGB`.
     auto sRGBColorSpace = adoptCF(CGColorSpaceCreateWithName(kCGColorSpaceSRGB));
     auto sRGBColor = adoptCF(CGColorCreateCopyByMatchingToColorSpace(sRGBColorSpace.get(), kCGRenderingIntentDefault, [color CGColor], NULL));
     return sRGBColor.get();
@@ -196,7 +196,7 @@ TEST(WKWebViewUnderPageBackgroundColor, KVO)
     EXPECT_TRUE(CGColorEqualToColor([webView underPageBackgroundColor].CGColor, redColor.get()));
 
     [underPageBackgroundColorObserver setState:@"should-not-change"];
-    [webView setUnderPageBackgroundColor:[WebCore::CocoaColor colorWithCGColor:redColor.get()]];
+    [webView setUnderPageBackgroundColor:[CyberCore::CocoaColor colorWithCGColor:redColor.get()]];
     EXPECT_NSSTRING_EQ("should-not-change", [underPageBackgroundColorObserver state]);
     EXPECT_TRUE(CGColorEqualToColor([webView underPageBackgroundColor].CGColor, redColor.get()));
 
@@ -212,7 +212,7 @@ TEST(WKWebViewUnderPageBackgroundColor, KVO)
     EXPECT_TRUE(CGColorEqualToColor([webView underPageBackgroundColor].CGColor, blueColor.get()));
 
     [underPageBackgroundColorObserver setState:@"should-not-change"];
-    [webView setUnderPageBackgroundColor:[WebCore::CocoaColor colorWithCGColor:blueColor.get()]];
+    [webView setUnderPageBackgroundColor:[CyberCore::CocoaColor colorWithCGColor:blueColor.get()]];
     EXPECT_NSSTRING_EQ("should-not-change", [underPageBackgroundColorObserver state]);
     EXPECT_TRUE(CGColorEqualToColor([webView underPageBackgroundColor].CGColor, blueColor.get()));
 
@@ -228,7 +228,7 @@ TEST(WKWebViewUnderPageBackgroundColor, KVO)
     EXPECT_TRUE(CGColorEqualToColor([webView underPageBackgroundColor].CGColor, defaultBackgroundColor().get()));
 
     [underPageBackgroundColorObserver setState:@"should-not-change"];
-    [webView setUnderPageBackgroundColor:[WebCore::CocoaColor colorWithCGColor:defaultBackgroundColor().get()]];
+    [webView setUnderPageBackgroundColor:[CyberCore::CocoaColor colorWithCGColor:defaultBackgroundColor().get()]];
     EXPECT_NSSTRING_EQ("should-not-change", [underPageBackgroundColorObserver state]);
     EXPECT_TRUE(CGColorEqualToColor([webView underPageBackgroundColor].CGColor, defaultBackgroundColor().get()));
 
@@ -238,12 +238,12 @@ TEST(WKWebViewUnderPageBackgroundColor, KVO)
     EXPECT_TRUE(CGColorEqualToColor([webView underPageBackgroundColor].CGColor, defaultBackgroundColor().get()));
 
     [underPageBackgroundColorObserver setState:@"before-nonnull-override"];
-    [webView setUnderPageBackgroundColor:[WebCore::CocoaColor colorWithCGColor:redColor.get()]];
+    [webView setUnderPageBackgroundColor:[CyberCore::CocoaColor colorWithCGColor:redColor.get()]];
     EXPECT_NSSTRING_EQ("after-nonnull-override", [underPageBackgroundColorObserver state]);
     EXPECT_TRUE(CGColorEqualToColor([webView underPageBackgroundColor].CGColor, redColor.get()));
 
     [underPageBackgroundColorObserver setState:@"should-not-change"];
-    [webView setUnderPageBackgroundColor:[WebCore::CocoaColor colorWithCGColor:redColor.get()]];
+    [webView setUnderPageBackgroundColor:[CyberCore::CocoaColor colorWithCGColor:redColor.get()]];
     EXPECT_NSSTRING_EQ("should-not-change", [underPageBackgroundColorObserver state]);
     EXPECT_TRUE(CGColorEqualToColor([webView underPageBackgroundColor].CGColor, redColor.get()));
 
@@ -293,13 +293,13 @@ TEST(WKWebViewUnderPageBackgroundColor, MatchesScrollView)
     EXPECT_TRUE(CGColorEqualToColor([webView scrollView].backgroundColor.CGColor, redColor.get()));
     EXPECT_EQ([webView scrollView].indicatorStyle, UIScrollViewIndicatorStyleWhite);
 
-    [webView setUnderPageBackgroundColor:[WebCore::CocoaColor colorWithCGColor:blueColor.get()]];
+    [webView setUnderPageBackgroundColor:[CyberCore::CocoaColor colorWithCGColor:blueColor.get()]];
     [webView waitForNextPresentationUpdate];
     EXPECT_TRUE(CGColorEqualToColor([webView underPageBackgroundColor].CGColor, blueColor.get()));
     EXPECT_TRUE(CGColorEqualToColor([webView scrollView].backgroundColor.CGColor, blueColor.get()));
     EXPECT_EQ([webView scrollView].indicatorStyle, UIScrollViewIndicatorStyleWhite);
 
-    [webView setUnderPageBackgroundColor:[WebCore::CocoaColor colorWithCGColor:whiteColor.get()]];
+    [webView setUnderPageBackgroundColor:[CyberCore::CocoaColor colorWithCGColor:whiteColor.get()]];
     [webView waitForNextPresentationUpdate];
     EXPECT_TRUE(CGColorEqualToColor([webView underPageBackgroundColor].CGColor, whiteColor.get()));
     EXPECT_TRUE(CGColorEqualToColor([webView scrollView].backgroundColor.CGColor, whiteColor.get()));

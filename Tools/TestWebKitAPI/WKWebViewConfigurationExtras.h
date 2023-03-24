@@ -23,9 +23,9 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKWebViewConfiguration.h>
 
-@interface WKWebViewConfiguration (TestWebKitAPIExtras)
+@interface WKWebViewConfiguration (TestCyberKitAPIExtras)
 + (instancetype)_test_configurationWithTestPlugInClassName:(NSString *)className;
 + (instancetype)_test_configurationWithTestPlugInClassName:(NSString *)className configureJSCForTesting:(BOOL)value;
 @end

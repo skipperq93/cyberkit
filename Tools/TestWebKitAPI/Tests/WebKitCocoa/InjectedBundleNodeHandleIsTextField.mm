@@ -25,14 +25,14 @@
 
 #import "config.h"
 
-#import <WebKit/WKDOMDocument.h>
-#import <WebKit/WKDOMElement.h>
-#import <WebKit/WKDOMNodePrivate.h>
-#import <WebKit/WKWebProcessPlugIn.h>
-#import <WebKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
-#import <WebKit/WKWebProcessPlugInFrame.h>
-#import <WebKit/WKWebProcessPlugInNodeHandlePrivate.h>
-#import <WebKit/WKWebProcessPlugInScriptWorld.h>
+#import <CyberKit/WKDOMDocument.h>
+#import <CyberKit/WKDOMElement.h>
+#import <CyberKit/WKDOMNodePrivate.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
+#import <CyberKit/WKWebProcessPlugInFrame.h>
+#import <CyberKit/WKWebProcessPlugInNodeHandlePrivate.h>
+#import <CyberKit/WKWebProcessPlugInScriptWorld.h>
 
 @interface InjectedBundleNodeHandleIsTextField : NSObject <WKWebProcessPlugIn>
 @end

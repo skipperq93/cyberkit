@@ -29,12 +29,12 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKFeature.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKFeature.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/HashSet.h>
 #import <wtf/RetainPtr.h>
@@ -181,7 +181,7 @@
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class MediaSessionCoordinatorTest : public testing::Test {
 public:
@@ -215,7 +215,7 @@ public:
             result = success;
             done = true;
         }];
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
 
         listenForEventMessages({ "coordinatorstatechange"_s });
 
@@ -581,6 +581,6 @@ TEST_F(MediaSessionCoordinatorTest, JoinAndPrivateLeave)
     EXPECT_STREQ("closed", [state UTF8String]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(MEDIA_SESSION_COORDINATOR)

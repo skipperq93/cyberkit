@@ -30,11 +30,11 @@
 #import "CustomBundleObject.h"
 #import "InjectedBundleTest.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WKBundlePrivate.h>
-#import <WebKit/WKRetainPtr.h>
-#import <WebKit/WKStringCF.h>
+#import <CyberKit/WKBundlePrivate.h>
+#import <CyberKit/WKRetainPtr.h>
+#import <CyberKit/WKStringCF.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
     
 class CustomBundleParameterTest : public InjectedBundleTest {
 public:
@@ -57,6 +57,6 @@ public:
 
 static InjectedBundleTest::Register<CustomBundleParameterTest> registrar("CustomBundleParameterTest");
     
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

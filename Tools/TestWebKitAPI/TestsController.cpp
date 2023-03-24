@@ -31,7 +31,7 @@
 #include <wtf/Threading.h>
 #include <wtf/text/AtomString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class Printer : public ::testing::EmptyTestEventListener {
     virtual void OnTestPartResult(const ::testing::TestPartResult& test_part_result)
@@ -89,4 +89,4 @@ bool TestsController::run(int argc, char** argv)
     return !RUN_ALL_TESTS();
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

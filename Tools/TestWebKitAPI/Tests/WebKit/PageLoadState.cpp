@@ -30,9 +30,9 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool test1Done;
 static bool titleChangeDone;
@@ -192,7 +192,7 @@ static void didFinishNavigation(WKPageRef page, WKNavigationRef, WKTypeRef userD
     test1Done = true;
 }
 
-TEST(WebKit, PageLoadState)
+TEST(CyberKit, PageLoadState)
 {
     PageLoadTestState state;
 
@@ -301,6 +301,6 @@ TEST(WebKit, PageLoadState)
     WKPageSetPageStateClient(webView.page(), &stateClient.base);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

@@ -28,19 +28,19 @@
 #if PLATFORM(MAC)
 
 #import "PlatformUtilities.h"
-#import <WebKit/WKBundlePage.h>
-#import <WebKit/WKBundlePageUIClient.h>
-#import <WebKit/WKRetainPtr.h>
-#import <WebKit/WKStringCF.h>
-#import <WebKit/WKWebProcessPlugIn.h>
-#import <WebKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
+#import <CyberKit/WKBundlePage.h>
+#import <CyberKit/WKBundlePageUIClient.h>
+#import <CyberKit/WKRetainPtr.h>
+#import <CyberKit/WKStringCF.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
 
 static NSArray<NSString *> *stringsArrayFromWKArrayRef(WKArrayRef wkArray)
 {
     size_t itemCount = WKArrayGetSize(wkArray);
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:itemCount];
     for (size_t i = 0; i < itemCount; ++i)
-        [array addObject:TestWebKitAPI::Util::toNS((WKStringRef)WKArrayGetItemAtIndex(wkArray, i))];
+        [array addObject:TestCyberKitAPI::Util::toNS((WKStringRef)WKArrayGetItemAtIndex(wkArray, i))];
 
     return array;
 }
@@ -49,7 +49,7 @@ static void willAddMessageWithDetailsToConsoleCallback(WKBundlePageRef page, WKS
 {
     WKRetainPtr<WKStringRef> messageName = adoptWK(WKStringCreateWithUTF8CString("ConsoleMessage"));
 
-    NSString *nsMessage = message ? TestWebKitAPI::Util::toNS(message) : @"";
+    NSString *nsMessage = message ? TestCyberKitAPI::Util::toNS(message) : @"";
     NSArray<NSString *> *nsMessageArguments = stringsArrayFromWKArrayRef(messageArguments);
     if (nsMessageArguments.count) {
         nsMessage = [nsMessage stringByAppendingString:@", arguments: "];

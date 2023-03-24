@@ -30,7 +30,7 @@
 #include <wtf/Threading.h>
 #include <wtf/WorkerPool.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF, WorkerPoolDecrease)
 {
@@ -48,4 +48,4 @@ TEST(WTF, WorkerPoolDecrease)
     EXPECT_EQ(counter.load(), 10000U);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

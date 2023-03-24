@@ -38,7 +38,7 @@
 #include <wtf/text/StringConcatenateNumbers.h>
 #include <wtf/text/StringHash.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 typedef WTF::HashMap<int, int> IntHashMap;
 
@@ -1215,4 +1215,4 @@ TEST(WTF_HashMap, Clear_Reenter)
     EXPECT_TRUE(map.isEmpty());
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

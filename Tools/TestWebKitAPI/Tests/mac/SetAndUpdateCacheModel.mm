@@ -26,21 +26,21 @@
 #import "config.h"
 #import <wtf/RetainPtr.h>
 
-#import <WebKit/WebView.h>
-#import <WebKit/WebPreferences.h>
+#import <CyberKit/WebView.h>
+#import <CyberKit/WebPreferences.h>
 
 @interface WebView (WebViewOtherInternal)
 + (WebCacheModel)_cacheModel;
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void resetTestState()
 {
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"WebKitCacheModelPreferenceKey"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"CyberKitCacheModelPreferenceKey"];
 }
 
-TEST(WebKitLegacy, SetAndUpdateCacheModelInitialModel)
+TEST(CyberKitLegacy, SetAndUpdateCacheModelInitialModel)
 {
     resetTestState();
 
@@ -51,7 +51,7 @@ TEST(WebKitLegacy, SetAndUpdateCacheModelInitialModel)
     EXPECT_EQ((int)WebCacheModelDocumentViewer, (int)[WebView _cacheModel]);
 }
 
-TEST(WebKitLegacy, SetAndUpdateCacheModelStandardPreferenceChange)
+TEST(CyberKitLegacy, SetAndUpdateCacheModelStandardPreferenceChange)
 {
     resetTestState();
 
@@ -67,7 +67,7 @@ TEST(WebKitLegacy, SetAndUpdateCacheModelStandardPreferenceChange)
     EXPECT_EQ((int)WebCacheModelDocumentViewer, (int)[WebView _cacheModel]);
 }
 
-TEST(WebKitLegacy, SetAndUpdateCacheModelPreferencesChangeMix)
+TEST(CyberKitLegacy, SetAndUpdateCacheModelPreferencesChangeMix)
 {
     resetTestState();
 
@@ -111,4 +111,4 @@ TEST(WebKitLegacy, SetAndUpdateCacheModelPreferencesChangeMix)
     EXPECT_EQ((int)WebCacheModelDocumentViewer, (int)[WebView _cacheModel]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

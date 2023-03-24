@@ -28,7 +28,7 @@
 #include "MoveOnly.h"
 #include <wtf/Deque.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF_Deque, Iterator)
 {
@@ -188,4 +188,4 @@ TEST(WTF_Deque, MoveAssignmentOperator)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

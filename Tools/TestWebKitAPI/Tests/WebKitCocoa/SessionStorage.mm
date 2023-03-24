@@ -29,10 +29,10 @@
 #import "PlatformUtilities.h"
 #import "TestUIDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewConfiguration.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
 #import <wtf/RetainPtr.h>
 
 enum class ShouldSessionBeCloned : bool { No, Yes };
@@ -59,7 +59,7 @@ static void runSessionStorageInNewWindowTest(NSString* createWindowJS, ShouldSes
         EXPECT_TRUE(!error);
         ranScript = true;
     }];
-    TestWebKitAPI::Util::run(&ranScript);
+    TestCyberKitAPI::Util::run(&ranScript);
 
     // Create the new window.
     [webView evaluateJavaScript:createWindowJS completionHandler: [&] (id result, NSError *error) {
@@ -67,7 +67,7 @@ static void runSessionStorageInNewWindowTest(NSString* createWindowJS, ShouldSes
         ranScript = true;
     }];
     [uiDelegate waitForAlert];
-    TestWebKitAPI::Util::run(&ranScript);
+    TestCyberKitAPI::Util::run(&ranScript);
     EXPECT_TRUE(!!openedWebView);
 
     // Check if the session storage was cloned or not.
@@ -80,7 +80,7 @@ static void runSessionStorageInNewWindowTest(NSString* createWindowJS, ShouldSes
             EXPECT_WK_STREQ(@"", sessionValue);
         ranScript = true;
     }];
-    TestWebKitAPI::Util::run(&ranScript);
+    TestCyberKitAPI::Util::run(&ranScript);
 }
 
 TEST(SessionStorage, WindowOpenClonesSession)
@@ -132,18 +132,18 @@ TEST(SessionStorage, ClearByModificationTime)
         EXPECT_WK_STREQ("webkit.org", [[dataRecords firstObject] displayName]);
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 
     readyToContinue = false;
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes.get() modifiedSince:[NSDate distantPast] completionHandler:^() {
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 
     readyToContinue = false;
     [[WKWebsiteDataStore defaultDataStore] fetchDataRecordsOfTypes:websiteDataTypes.get() completionHandler:^(NSArray<WKWebsiteDataRecord *> *dataRecords) {
         EXPECT_EQ(0u, dataRecords.count);
         readyToContinue = true;
     }];
-    TestWebKitAPI::Util::run(&readyToContinue);
+    TestCyberKitAPI::Util::run(&readyToContinue);
 }

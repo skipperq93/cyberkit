@@ -54,19 +54,19 @@ if ($showHelp) {
 
 checkRequiredSystemConfig();
 setConfiguration();
-chdirWebKit();
+chdirCyberKit();
 
 # Build
-chdir "Tools/WebKitTestRunner" or die;
+chdir "Tools/CyberKitTestRunner" or die;
 
 my $result;
-if (isAppleCocoaWebKit()) {
-    $result = buildXcodeScheme("WebKitTestRunner", $clean, XcodeOptions(), @ARGV);
+if (isAppleCocoaCyberKit()) {
+    $result = buildXcodeScheme("CyberKitTestRunner", $clean, XcodeOptions(), @ARGV);
 } elsif (isGtk() || isWPE() || isPlayStation() || isAnyWindows()) {
     # GTK+, WPE, PlayStation, and Windows build everything in one shot. No need to build anything here.
     $result = 0;
 } else {
-    die "WebKitTestRunner is not supported on this platform.\n";
+    die "CyberKitTestRunner is not supported on this platform.\n";
 }
 
 exit exitStatus($result);

@@ -139,7 +139,7 @@
                   ],
                   "workernames": ["bot245", "bot246"]
                   },
-                  { "name": "Apple-Ventura-Release-WK1-Tests", "factory": "TestWebKit1AllButJSCFactory",
+                  { "name": "Apple-Ventura-Release-WK1-Tests", "factory": "TestCyberKit1AllButJSCFactory",
                   "platform": "mac-ventura", "configuration": "release", "architectures": ["x86_64", "arm64"],
                   "additionalArguments": ["--no-retry-failures"],
                   "workernames": ["bot212"]
@@ -149,7 +149,7 @@
                   "additionalArguments": ["--no-retry-failures"],
                   "workernames": ["bot256"]
                   },
-                  { "name": "Apple-Ventura-Release-AppleSilicon-WK1-Tests", "factory": "TestWebKit1AllButJSCFactory",
+                  { "name": "Apple-Ventura-Release-AppleSilicon-WK1-Tests", "factory": "TestCyberKit1AllButJSCFactory",
                   "platform": "mac-ventura", "configuration": "release", "architectures": ["x86_64", "arm64"],
                   "additionalArguments": ["--no-retry-failures"],
                   "workernames": ["bot257"]
@@ -171,7 +171,7 @@
                   ],
                   "workernames": ["bot249", "bot254"]
                   },
-                  { "name": "Apple-Ventura-Debug-WK1-Tests", "factory": "TestWebKit1AllButJSCFactory",
+                  { "name": "Apple-Ventura-Debug-WK1-Tests", "factory": "TestCyberKit1AllButJSCFactory",
                   "platform": "mac-ventura", "configuration": "debug", "architectures": ["x86_64", "arm64"],
                   "additionalArguments": ["--no-retry-failures"],
                   "workernames": ["bot216"]
@@ -181,7 +181,7 @@
                   "additionalArguments": ["--no-retry-failures"],
                   "workernames": ["bot215"]
                   },
-                  { "name": "Apple-Ventura-Debug-AppleSilicon-WK1-Tests", "factory": "TestWebKit1AllButJSCFactory",
+                  { "name": "Apple-Ventura-Debug-AppleSilicon-WK1-Tests", "factory": "TestCyberKit1AllButJSCFactory",
                   "platform": "mac-ventura", "configuration": "debug", "architectures": ["x86_64", "arm64"],
                   "additionalArguments": ["--no-retry-failures"],
                   "workernames": ["bot260"]
@@ -218,7 +218,7 @@
                     "platform": "mac-monterey", "configuration": "release", "architectures": ["x86_64", "arm64"],
                     "workernames": ["bot632"]
                   },
-                  { "name": "Apple-Monterey-Release-WK1-Tests", "factory": "TestWebKit1AllButJSCFactory",
+                  { "name": "Apple-Monterey-Release-WK1-Tests", "factory": "TestCyberKit1AllButJSCFactory",
                     "platform": "mac-monterey", "configuration": "release", "architectures": ["x86_64", "arm64"],
                     "additionalArguments": ["--no-retry-failures"],
                     "workernames": ["bot1021"]
@@ -228,7 +228,7 @@
                     "additionalArguments": ["--no-retry-failures"],
                     "workernames": ["bot135"]
                   },
-                  { "name": "Apple-Monterey-Release-AppleSilicon-WK1-Tests", "factory": "TestWebKit1AllButJSCFactory",
+                  { "name": "Apple-Monterey-Release-AppleSilicon-WK1-Tests", "factory": "TestCyberKit1AllButJSCFactory",
                     "platform": "mac-monterey", "configuration": "release", "architectures": ["x86_64", "arm64"],
                     "additionalArguments": ["--no-retry-failures"],
                     "workernames": ["bot138"]
@@ -255,7 +255,7 @@
                     "platform": "mac-monterey", "configuration": "debug", "architectures": ["x86_64", "arm64"],
                     "workernames": ["bot603"]
                   },
-                  { "name": "Apple-Monterey-Debug-WK1-Tests", "factory": "TestWebKit1AllButJSCFactory",
+                  { "name": "Apple-Monterey-Debug-WK1-Tests", "factory": "TestCyberKit1AllButJSCFactory",
                     "platform": "mac-monterey", "configuration": "debug", "architectures": ["x86_64", "arm64"],
                     "additionalArguments": ["--no-retry-failures"],
                     "workernames": ["bot1025"]
@@ -265,7 +265,7 @@
                     "additionalArguments": ["--no-retry-failures"],
                     "workernames": ["bot1026"]
                   },
-                  { "name": "Apple-Monterey-Debug-AppleSilicon-WK1-Tests", "factory": "TestWebKit1AllButJSCFactory",
+                  { "name": "Apple-Monterey-Debug-AppleSilicon-WK1-Tests", "factory": "TestCyberKit1AllButJSCFactory",
                     "platform": "mac-monterey", "configuration": "debug", "architectures": ["x86_64", "arm64"],
                     "additionalArguments": ["--no-retry-failures"],
                     "workernames": ["bot139"]
@@ -459,7 +459,7 @@
                     "workernames": ["wincairo-release-build-01"]
                   },
                   {
-                    "name": "WinCairo-64-bit-WKL-Release-Tests", "factory": "TestWebKit1AllButJSCFactory",
+                    "name": "WinCairo-64-bit-WKL-Release-Tests", "factory": "TestCyberKit1AllButJSCFactory",
                     "platform": "wincairo", "configuration": "release", "architectures": ["x86_64"],
                     "workernames": ["wincairo-wkl-release-tests-01", "wincairo-wkl-release-tests-02"]
                   },
@@ -480,7 +480,7 @@
                     "workernames": ["wincairo-debug-build-01"]
                   },
                   {
-                    "name": "WinCairo-64-bit-WKL-Debug-Tests", "factory": "TestWebKit1AllButJSCFactory",
+                    "name": "WinCairo-64-bit-WKL-Debug-Tests", "factory": "TestCyberKit1AllButJSCFactory",
                     "platform": "wincairo", "configuration": "debug", "architectures": ["x86_64"],
                     "workernames": ["wincairo-wkl-debug-tests-01", "wincairo-wkl-debug-tests-02"]
                   },

@@ -28,8 +28,8 @@
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
 #import "Test.h"
-#import <WebKit/WebFormDelegate.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebFormDelegate.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 static bool didFinishLoad;
@@ -55,9 +55,9 @@ static bool didFinishLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, WillSendSubmitEvent)
+TEST(CyberKitLegacy, WillSendSubmitEvent)
 {
     @autoreleasepool {
         RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
@@ -65,7 +65,7 @@ TEST(WebKitLegacy, WillSendSubmitEvent)
         RetainPtr<FormDelegate> formDelegate = adoptNS([[FormDelegate alloc] init]);
         [webView _setFormDelegate:formDelegate.get()];
 
-        [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"auto-submitting-form" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+        [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"auto-submitting-form" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
         Util::run(&didFinishLoad);
     }

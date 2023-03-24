@@ -32,11 +32,11 @@
 #import "TestAwakener.h"
 #import "TestNavigationDelegate.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKRemoteObjectInterface.h>
-#import <WebKit/_WKRemoteObjectRegistry.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKRemoteObjectInterface.h>
+#import <CyberKit/_WKRemoteObjectRegistry.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RefCounted.h>
 #import <wtf/RetainPtr.h>
@@ -64,7 +64,7 @@ TEST(RemoteObjectRegistry, Basic)
             EXPECT_WK_STREQ(result, @"Hello, World!");
             isDone = true;
         }];
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
 
         isDone = false;
         [object sayHello:@"Hello Again!" completionHandler:^(NSString *result) {
@@ -72,14 +72,14 @@ TEST(RemoteObjectRegistry, Basic)
             EXPECT_WK_STREQ(result, @"Your string was 'Hello Again!'");
             isDone = true;
         }];
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
 
         isDone = false;
         [object selectionAndClickInformationForClickAtPoint:[NSValue valueWithPoint:NSMakePoint(12, 34)] completionHandler:^(NSDictionary *result) {
             EXPECT_TRUE([result isEqual:@{ @"URL": [NSURL URLWithString:@"http://www.webkit.org/"] }]);
             isDone = true;
         }];
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
 
         isDone = false;
         [object takeRange:NSMakeRange(345, 123) completionHandler:^(NSUInteger location, NSUInteger length) {
@@ -87,7 +87,7 @@ TEST(RemoteObjectRegistry, Basic)
             EXPECT_EQ(123U, length);
             isDone = true;
         }];
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
 
         isDone = false;
         auto initialAwakener = adoptNS([[TestAwakener alloc] initWithValue:42]);
@@ -95,7 +95,7 @@ TEST(RemoteObjectRegistry, Basic)
             EXPECT_EQ(awakener.value, 42);
             isDone = true;
         }];
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
 
         isDone = false;
         [object takeSize:CGSizeMake(123.45, 678.91) completionHandler:^(CGFloat width, CGFloat height) {
@@ -103,7 +103,7 @@ TEST(RemoteObjectRegistry, Basic)
             EXPECT_EQ(678.91, height);
             isDone = true;
         }];
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
 
         isDone = false;
 
@@ -111,7 +111,7 @@ TEST(RemoteObjectRegistry, Basic)
             EXPECT_EQ(std::numeric_limits<unsigned long long>::max(), value);
             isDone = true;
         }];
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
 
         isDone = false;
 
@@ -119,7 +119,7 @@ TEST(RemoteObjectRegistry, Basic)
             EXPECT_EQ(std::numeric_limits<long long>::max(), value);
             isDone = true;
         }];
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
 
         isDone = false;
 
@@ -127,7 +127,7 @@ TEST(RemoteObjectRegistry, Basic)
             EXPECT_EQ(std::numeric_limits<unsigned long>::max(), value);
             isDone = true;
         }];
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
 
         isDone = false;
 
@@ -135,7 +135,7 @@ TEST(RemoteObjectRegistry, Basic)
             EXPECT_EQ(std::numeric_limits<long>::max(), value);
             isDone = true;
         }];
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
 
         isDone = false;
 
@@ -153,7 +153,7 @@ TEST(RemoteObjectRegistry, Basic)
             EXPECT_WK_STREQ(deserializedError.domain, "testDomain");
             isDone = true;
         }];
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
 
         isDone = false;
         
@@ -161,7 +161,7 @@ TEST(RemoteObjectRegistry, Basic)
             EXPECT_WK_STREQ(identifier, "testGroupIdentifier");
             isDone = true;
         }];
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
 
         isDone = false;
 
@@ -174,7 +174,7 @@ TEST(RemoteObjectRegistry, Basic)
                 EXPECT_TRUE(!value.count);
                 isDone = true;
             }];
-            TestWebKitAPI::Util::run(&isDone);
+            TestCyberKitAPI::Util::run(&isDone);
             isDone = false;
         } @catch (NSException *e) {
             exceptionThrown = true;
@@ -196,7 +196,7 @@ TEST(RemoteObjectRegistry, Basic)
             }];
         }
 
-        TestWebKitAPI::Util::run(&isDone);
+        TestCyberKitAPI::Util::run(&isDone);
     }
 }
 
@@ -235,7 +235,7 @@ TEST(RemoteObjectRegistry, CallReplyBlockAfterOriginatingWebViewDeallocates)
 
         [object callUIProcessMethodWithReplyBlock];
 
-        TestWebKitAPI::Util::run(&localObject->hasCompletionHandler);
+        TestCyberKitAPI::Util::run(&localObject->hasCompletionHandler);
     }
 
     while (true) {
@@ -243,7 +243,7 @@ TEST(RemoteObjectRegistry, CallReplyBlockAfterOriginatingWebViewDeallocates)
             if (!weakWebViewPtr.get())
                 break;
 
-            TestWebKitAPI::Util::spinRunLoop();
+            TestCyberKitAPI::Util::spinRunLoop();
         }
     }
 
@@ -252,7 +252,7 @@ TEST(RemoteObjectRegistry, CallReplyBlockAfterOriginatingWebViewDeallocates)
 
 TEST(RemoteObjectRegistry, SerializeErrorWithCertificates)
 {
-    TestWebKitAPI::HTTPServer server({ }, TestWebKitAPI::HTTPServer::Protocol::Https);
+    TestCyberKitAPI::HTTPServer server({ }, TestCyberKitAPI::HTTPServer::Protocol::Https);
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:CGRectZero configuration:[WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"RemoteObjectRegistryPlugIn"]]);
     auto delegate = adoptNS([TestNavigationDelegate new]);
     webView.get().navigationDelegate = delegate.get();
@@ -272,5 +272,5 @@ TEST(RemoteObjectRegistry, SerializeErrorWithCertificates)
         EXPECT_EQ(CFGetTypeID(chain[0]), SecCertificateGetTypeID());
         roundTripComplete = true;
     }];
-    TestWebKitAPI::Util::run(&roundTripComplete);
+    TestCyberKitAPI::Util::run(&roundTripComplete);
 }

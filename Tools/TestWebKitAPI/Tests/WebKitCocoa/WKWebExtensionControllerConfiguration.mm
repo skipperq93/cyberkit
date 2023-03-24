@@ -28,10 +28,10 @@
 #if ENABLE(WK_WEB_EXTENSIONS)
 
 #import "TestCocoa.h"
-#import <WebKit/WKFoundation.h>
-#import <WebKit/_WKWebExtensionControllerConfigurationPrivate.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/_WKWebExtensionControllerConfigurationPrivate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WKWebExtensionControllerConfiguration, Initialization)
 {
@@ -121,6 +121,6 @@ TEST(WKWebExtensionControllerConfiguration, Copying)
     EXPECT_NS_EQUAL(configuration, copy);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

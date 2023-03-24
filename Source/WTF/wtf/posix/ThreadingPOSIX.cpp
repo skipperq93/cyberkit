@@ -210,7 +210,7 @@ void Thread::initializePlatformThreading()
             return false;
         // It has signal already.
         if (oldAction.sa_handler != SIG_DFL || bitwise_cast<void*>(oldAction.sa_sigaction) != bitwise_cast<void*>(SIG_DFL))
-            WTFLogAlways("Overriding existing handler for signal %d. Set JSC_SIGNAL_FOR_GC if you want WebKit to use a different signal", signal);
+            WTFLogAlways("Overriding existing handler for signal %d. Set JSC_SIGNAL_FOR_GC if you want CyberKit to use a different signal", signal);
         return !sigaction(signal, &action, 0);
     };
 

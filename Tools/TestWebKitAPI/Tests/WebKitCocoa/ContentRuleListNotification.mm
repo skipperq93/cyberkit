@@ -32,15 +32,15 @@
 #import "TestUIDelegate.h"
 #import "TestURLSchemeHandler.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKContentRuleListPrivate.h>
-#import <WebKit/WKContentRuleListStorePrivate.h>
-#import <WebKit/WKNavigationDelegatePrivate.h>
-#import <WebKit/WKURLSchemeHandler.h>
-#import <WebKit/WKUserContentController.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKContentRuleListAction.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKContentRuleListPrivate.h>
+#import <CyberKit/WKContentRuleListStorePrivate.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/WKURLSchemeHandler.h>
+#import <CyberKit/WKUserContentController.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKContentRuleListAction.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/URL.h>
 #import <wtf/cocoa/VectorCocoa.h>
@@ -121,7 +121,7 @@ static RetainPtr<WKContentRuleList> makeContentRuleList(NSString *source, NSStri
         contentRuleList = list;
         doneCompiling = true;
     }];
-    TestWebKitAPI::Util::run(&doneCompiling);
+    TestCyberKitAPI::Util::run(&doneCompiling);
     return contentRuleList;
 }
 
@@ -134,7 +134,7 @@ TEST(ContentRuleList, NotificationMainResource)
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
     [webView setNavigationDelegate:delegate.get()];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"apitest:///match"]]];
-    TestWebKitAPI::Util::run(&receivedNotification);
+    TestCyberKitAPI::Util::run(&receivedNotification);
     EXPECT_STREQ([notificationURL absoluteString].UTF8String, "apitest:///match");
     EXPECT_STREQ([notificationIdentifier UTF8String], "testidentifier");
 }
@@ -149,7 +149,7 @@ TEST(ContentRuleList, NotificationSubresource)
     [webView setNavigationDelegate:delegate.get()];
     [webView setUIDelegate:delegate.get()];
     [webView loadHTMLString:@"<script>fetch('match').then(function(response){alert('fetch complete')})</script>" baseURL:[NSURL URLWithString:@"apitest:///"]];
-    TestWebKitAPI::Util::run(&receivedAlert);
+    TestCyberKitAPI::Util::run(&receivedAlert);
     EXPECT_TRUE(receivedNotification);
     EXPECT_STREQ([notificationURL absoluteString].UTF8String, "apitest:///match");
     EXPECT_STREQ([notificationIdentifier UTF8String], "testidentifier");
@@ -207,9 +207,9 @@ TEST(ContentRuleList, PerformedActionForURL)
     [webView setNavigationDelegate:delegate.get()];
     [webView setUIDelegate:delegate.get()];
     [webView loadHTMLString:@"<script>fetch('notify').then(function(){fetch('block').then().catch(function(){alert('test complete')})})</script>" baseURL:[NSURL URLWithString:@"apitest:///"]];
-    TestWebKitAPI::Util::run(&receivedAlert);
+    TestCyberKitAPI::Util::run(&receivedAlert);
     while (notificationList.size() < 2)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 
     Vector<Notification> expectedNotifications {
         { "firstList"_s, "apitest:///notify"_s, false, false, false, { "testnotification"_s } },
@@ -220,7 +220,7 @@ TEST(ContentRuleList, PerformedActionForURL)
 
 TEST(ContentRuleList, ResourceTypes)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer webSocketServer([](Connection connection) {
         connection.webSocketHandshake();
     });
@@ -293,8 +293,8 @@ TEST(ContentRuleList, ThirdParty)
         NSString *path = task.request.URL.path;
         if ([path isEqualToString:@"/main.html"]) {
             return respond(task, "<script>"
-                "function testWebKit() { fetch('test://webkit.org/resource.txt', {mode:'no-cors'}).then(()=>{alert('webkit.org loaded');}).catch(()=>{alert('webkit.org blocked');}) };"
-                "fetch('test://sub.example.com/resource.txt', {mode:'no-cors'}).then(()=>{alert('sub.example.com loaded');testWebKit();}).catch(()=>{alert('sub.example.com blocked');testWebKit();})"
+                "function testCyberKit() { fetch('test://webkit.org/resource.txt', {mode:'no-cors'}).then(()=>{alert('webkit.org loaded');}).catch(()=>{alert('webkit.org blocked');}) };"
+                "fetch('test://sub.example.com/resource.txt', {mode:'no-cors'}).then(()=>{alert('sub.example.com loaded');testCyberKit();}).catch(()=>{alert('sub.example.com blocked');testCyberKit();})"
             "</script>");
         }
         if ([path isEqualToString:@"/resource.txt"])
@@ -456,7 +456,7 @@ TEST(ContentRuleList, TopFrameChildFrame)
 
 TEST(ContentRuleList, CSPReport)
 {
-    TestWebKitAPI::HTTPServer server({ { "/"_s, { {
+    TestCyberKitAPI::HTTPServer server({ { "/"_s, { {
         { "Content-Security-Policy"_s, "frame-src 'none'; report-uri resources/save-report.py"_s }
     }, "<iframe src=\"https://webkit.org/\"></iframe>"_s } } });
 
@@ -467,7 +467,7 @@ TEST(ContentRuleList, CSPReport)
     [webView setNavigationDelegate:delegate.get()];
     [webView loadRequest:server.request()];
     while (notificationList.isEmpty())
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
 
     URL expectedURL = server.request().URL;
     expectedURL.setPath("/resources/save-report.py"_s);
@@ -514,7 +514,7 @@ TEST(ContentRuleList, LegacyVersionAndName)
         retainedList = list;
     }];
     while (!retainedList)
-        TestWebKitAPI::Util::spinRunLoop();
+        TestCyberKitAPI::Util::spinRunLoop();
     auto configuration = [[WKWebViewConfiguration new] autorelease];
     [configuration setURLSchemeHandler:handler forURLScheme:@"test"];
     [configuration setURLSchemeHandler:handler forURLScheme:@"scheme"];
@@ -533,26 +533,26 @@ TEST(ContentRuleList, LegacyVersionAndName)
         EXPECT_FALSE(legacyFileExists());
         removed = true;
     }];
-    TestWebKitAPI::Util::run(&removed);
+    TestCyberKitAPI::Util::run(&removed);
     
     setupLegacyContentRuleList();
     [store getAvailableContentRuleListIdentifiers:^(NSArray<NSString *> *identifiers) {
         EXPECT_EQ(identifiers.count, 1u);
         EXPECT_WK_STREQ(identifiers[0], @"test");
     }];
-    TestWebKitAPI::Util::run(&removed);
+    TestCyberKitAPI::Util::run(&removed);
 
     __block bool gotSource = false;
     [store _getContentRuleListSourceForIdentifier:@"test" completionHandler:^(NSString *source) {
         EXPECT_WK_STREQ(source, "[{\"action\":{\"type\":\"block\"},\"trigger\":{\"url-filter\":\"test\"}}]");
         gotSource = true;
     }];
-    TestWebKitAPI::Util::run(&gotSource);
+    TestCyberKitAPI::Util::run(&gotSource);
 }
 
-TEST(WebKit, RedirectToPlaintextHTTPSUpgrade)
+TEST(CyberKit, RedirectToPlaintextHTTPSUpgrade)
 {
-    using namespace TestWebKitAPI;
+    using namespace TestCyberKitAPI;
     HTTPServer plaintextServer({ { "http://download/redirectTarget"_s, { "<script>alert('success!')</script>"_s } } });
     HTTPServer secureServer({ { "/originalRequest"_s, { 302, { { "Location"_s, "http://download/redirectTarget"_s } }, emptyString() } } }, HTTPServer::Protocol::HttpsProxy);
 

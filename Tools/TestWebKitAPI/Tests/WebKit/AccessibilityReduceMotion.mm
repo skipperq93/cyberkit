@@ -30,9 +30,9 @@
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/PreferenceObserver.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/PreferenceObserver.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 
 #if PLATFORM(MAC)
 #import <pal/spi/mac/HIServicesSPI.h>
@@ -71,7 +71,7 @@ static bool receivedPreferenceNotification = false;
 }
 @end
 
-TEST(WebKit, AccessibilityReduceMotion)
+TEST(CyberKit, AccessibilityReduceMotion)
 {
     WKWebViewConfiguration *configuration = [WKWebViewConfiguration _test_configurationWithTestPlugInClassName:@"WebProcessPlugInWithInternals" configureJSCForTesting:YES];
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 300, 300) configuration:configuration addToWindow:YES]);
@@ -90,7 +90,7 @@ TEST(WebKit, AccessibilityReduceMotion)
 
     CFPreferencesSetAppValue(REDUCED_MOTION_PREFERENCE, kCFBooleanTrue, ACCESSIBILITY_DOMAIN);
 
-    TestWebKitAPI::Util::run(&receivedPreferenceNotification);
+    TestCyberKitAPI::Util::run(&receivedPreferenceNotification);
 
     [webView synchronouslyLoadTestPageNamed:@"simple"];
 

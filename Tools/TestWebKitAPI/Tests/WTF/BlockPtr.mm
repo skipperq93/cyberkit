@@ -28,7 +28,7 @@
 #import "MoveOnly.h"
 #import <wtf/BlockPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(BlockPtr, FromBlock)
 {

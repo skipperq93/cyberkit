@@ -118,7 +118,7 @@ class TestPickable(testing.PathTestCase):
                     author=repo.commits['main'][3].author,
                     timestamp=int(time.time()) - 100,
                     branch='safari-xxx-branch',
-                    message='[WebKit] Some change\n',
+                    message='[CyberKit] Some change\n',
                     identifier='4.2@safari-xxx-branch',
                 ), Commit(
                     hash='d10204abba135b5b9588936d7eec7cd001d07d0f',
@@ -141,7 +141,7 @@ class TestPickable(testing.PathTestCase):
 
         self.assertEqual(
             captured.stdout.getvalue(),
-            '4.2@safari-xxx-branch | efbdb34cc145 | [WebKit] Some change\n',
+            '4.2@safari-xxx-branch | efbdb34cc145 | [CyberKit] Some change\n',
         )
 
     def test_branch_diverged_cherry_pick(self):
@@ -160,7 +160,7 @@ class TestPickable(testing.PathTestCase):
                     author=repo.commits['main'][3].author,
                     timestamp=int(time.time()) - 100,
                     branch='safari-xxx-branch',
-                    message='[WebKit] Some change\n',
+                    message='[CyberKit] Some change\n',
                     identifier='4.2@safari-xxx-branch',
                 ), Commit(
                     hash='d10204abba135b5b9588936d7eec7cd001d07d0f',
@@ -184,7 +184,7 @@ class TestPickable(testing.PathTestCase):
         self.assertEqual(
             captured.stdout.getvalue(),
             '4.3@safari-xxx-branch | d10204abba13 | Cherry-pick 790725a6d79e.\n'
-            '4.2@safari-xxx-branch | efbdb34cc145 | [WebKit] Some change\n',
+            '4.2@safari-xxx-branch | efbdb34cc145 | [CyberKit] Some change\n',
         )
 
     def test_branch_none(self):
@@ -293,7 +293,7 @@ class TestPickable(testing.PathTestCase):
                 classifier=CommitClassifier([CommitClassifier.CommitClass(
                     name='Gardening',
                     headers=[r"[GARDENING]"],
-                    paths=['LayoutTests/', 'Tools/TestWebKitAPI'],
+                    paths=['LayoutTests/', 'Tools/TestCyberKitAPI'],
                     pickable=False,
                 )]),
             ))

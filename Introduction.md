@@ -1,79 +1,79 @@
-#  Introduction to WebKit
+#  Introduction to CyberKit
 
-## What is WebKit?
+## What is CyberKit?
 
-[WebKit](https://webkit.org/) is an open-source Web browser engine.
+[CyberKit](https://webkit.org/) is an open-source Web browser engine.
 It’s a framework in macOS and iOS, and used by many first party and third party applications including Safari, Mail, Notes, Books, News, and App Store.
 
-The WebKit codebase is mostly written in C++ with bits of C and assembly, primarily in JavaScriptCore, and some Objective-C to integrate with Cocoa platforms.
+The CyberKit codebase is mostly written in C++ with bits of C and assembly, primarily in CyberScriptCore, and some Objective-C to integrate with Cocoa platforms.
 
-It primarily consists of the following components, each inside its own directory in [Source](https://github.com/WebKit/WebKit/tree/main/Source):
+It primarily consists of the following components, each inside its own directory in [Source](https://github.com/CyberKit/CyberKit/tree/main/Source):
 
-* **bmalloc** - WebKit’s malloc implementation as a bump pointer allocator. It provides an important security feature, called IsoHeap,
+* **bmalloc** - CyberKit’s malloc implementation as a bump pointer allocator. It provides an important security feature, called IsoHeap,
     which segregates each type of object into its own page to prevent type confusion attacks upon use-after-free.
-* **WTF** - Stands for Web Template Framework. WebKit’s template library.
-    The rest of the WebKit codebase is built using this template library in addition to, and often in place of, similar class templates in the C++ standard library.
-    It contains common container classes such as Vector, HashMap (unordered), HashSet, and smart pointer types such as Ref, RefPtr, and WeakPtr used throughout the rest of WebKit.
-* **JavaScriptCore** - WebKit’s JavaScript engine; often abbreviated as JSC.
+* **WTF** - Stands for Web Template Framework. CyberKit’s template library.
+    The rest of the CyberKit codebase is built using this template library in addition to, and often in place of, similar class templates in the C++ standard library.
+    It contains common container classes such as Vector, HashMap (unordered), HashSet, and smart pointer types such as Ref, RefPtr, and WeakPtr used throughout the rest of CyberKit.
+* **CyberScriptCore** - CyberKit’s JavaScript engine; often abbreviated as JSC.
     JSC parses JavaScript and generates byte code, which is then executed by one of the following four tiers.
     Many tiers are needed to balance between compilation time and execution time.
-    Also see Phil's blog post about [Speculation in JavaScriptCore](https://webkit.org/blog/10308/speculation-in-javascriptcore/).
+    Also see Phil's blog post about [Speculation in CyberScriptCore](https://webkit.org/blog/10308/speculation-in-javascriptcore/).
     * **Interpreter** - This tier reads and executes instructions in byte code in C++.
     * **Baseline JIT** - The first Just In Time compiler tier serves as the profiler as well as a significant speed up from the interpreter.
     * **DFG JIT** - Data Flow Graph Just In Time compiler uses the data flow analysis to generate optimized machine code.
     * **FTL JIT** - Faster than Light Just In Time compiler which uses [B3 backend](https://webkit.org/blog/5852/introducing-the-b3-jit-compiler/).
         It’s the fastest tier of JSC.
-    JavaScriptCode also implements JavaScriptCore API for macOS and iOS applications.
-* **WebCore** - The largest component of WebKit, this layer implements most of the Web APIs and their behaviors.
+    JavaScriptCode also implements CyberScriptCore API for macOS and iOS applications.
+* **CyberCore** - The largest component of CyberKit, this layer implements most of the Web APIs and their behaviors.
     Most importantly, this component implements HTML, XML, and CSS parsers and implements HTML, SVG, and MathML elements as well as CSS.
     It also implements [CSS JIT](https://webkit.org/blog/3271/webkit-css-selector-jit-compiler/), the only Just In Time compiler for CSS in existence.
     It works with a few tree data structures:
     * **Document Object Model** - This is the tree data structure we create from parsing HTML.
     * **Render Tree** - This tree represents the visual representation of each element in DOM tree computed from CSS and also stores the geometric layout information of each element.
-* **WebCore/PAL and WebCore/platform** - Whilst technically a part of WebCore, this is a platform abstraction layer for WebCore
-    so that the rest of WebCore code can remain platform independent / agnostic across all the platforms WebKit can run on: macOS, iOS, Windows, Linux, etc...
-    Historically, most of this code resided in WebCore/platform.
-    There is an ongoing multi-year project to slowly migrate code to PAL as we remove the reverse dependencies to WebCore.
-* **WebKitLegacy** (a.k.a. WebKit1) - This layer interfaces WebCore with the rest of operating systems in single process and implements WebView on macOS and UIWebView on iOS.
-* **WebKit** (a.k.a. WebKit2) - This layer implements the multi-process architecture of WebKit, and implements WKWebView on macOS and iOS.
-    WebKit’s multi-process architecture consists of the following processes:
+* **CyberCore/PAL and CyberCore/platform** - Whilst technically a part of CyberCore, this is a platform abstraction layer for CyberCore
+    so that the rest of CyberCore code can remain platform independent / agnostic across all the platforms CyberKit can run on: macOS, iOS, Windows, Linux, etc...
+    Historically, most of this code resided in CyberCore/platform.
+    There is an ongoing multi-year project to slowly migrate code to PAL as we remove the reverse dependencies to CyberCore.
+* **CyberKitLegacy** (a.k.a. CyberKit1) - This layer interfaces CyberCore with the rest of operating systems in single process and implements WebView on macOS and UIWebView on iOS.
+* **CyberKit** (a.k.a. CyberKit2) - This layer implements the multi-process architecture of CyberKit, and implements WKWebView on macOS and iOS.
+    CyberKit’s multi-process architecture consists of the following processes:
     * **UI process** - This is the application process. e.g. Safari and Mail
     * **WebContent process** - This process loads & runs code loaded from websites.
         Each tab in Safari typically has its own WebContent process.
         This is important to keep each tab responsive and protect websites from one another.
     * **Networking process** - This process is responsible for handling network requests as well as storage management.
         All WebContent processes in a single session (default vs. private browsing) share a single networking session in the networking process.
-* **WebInspector / WebDriver** - WebKit’s developer tool & automation tool for Web developers.
+* **WebInspector / WebDriver** - CyberKit’s developer tool & automation tool for Web developers.
 
-## Contributing to WebKit
+## Contributing to CyberKit
 
-There are many ways to get involved and contribute to the WebKit Project.
+There are many ways to get involved and contribute to the CyberKit Project.
 Filing a new bug, fixing a bug, or adding a new feature.
 
-There are three different kinds of contributors in the WebKit project.
+There are three different kinds of contributors in the CyberKit project.
 
  * Contributor - This category encompasses everyone. Anyone who files a bug or contributes a code change or reviews a code change is considered as a contributor
- * Committer - A committer is someone who has write access to [WebKit's repository](https://github.com/WebKit/WebKit).
+ * Committer - A committer is someone who has write access to [CyberKit's repository](https://github.com/CyberKit/CyberKit).
  * Reviewer - A reviewer is someone who has the right to review and approve code changes other contributors proposed.
 
 See [Commit and Review Policy](https://webkit.org/commit-and-review-policy/) for more details on how to become a committer or a reviewer.
 
 ### Staying in Touch
 
-Before getting in touch with WebKit developers using any of the avenues below, make sure that you have checked our page on how to ask [questions about WebKit](https://webkit.org/asking-questions/).
+Before getting in touch with CyberKit developers using any of the avenues below, make sure that you have checked our page on how to ask [questions about CyberKit](https://webkit.org/asking-questions/).
 
-You can find WebKit developers, testers, and other interested parties on the [#WebKit Slack workspace](https://webkit.slack.com/).
-[Join the WebKit slack](https://join.slack.com/t/webkit/shared_invite/enQtOTU3NzQ3NTAzNjA0LTc5NmZlZWIwN2MxN2VjODVjNzEyZjBkOWQ4NTM3OTk0ZTc0ZGRjY2MyYmY2MWY1N2IzNTI2MTIwOGVjNzVhMWE),
+You can find CyberKit developers, testers, and other interested parties on the [#CyberKit Slack workspace](https://webkit.slack.com/).
+[Join the CyberKit slack](https://join.slack.com/t/webkit/shared_invite/enQtOTU3NzQ3NTAzNjA0LTc5NmZlZWIwN2MxN2VjODVjNzEyZjBkOWQ4NTM3OTk0ZTc0ZGRjY2MyYmY2MWY1N2IzNTI2MTIwOGVjNzVhMWE),
 and stay in touch.
 
-## Bug tracking in WebKit
+## Bug tracking in CyberKit
 
 [bugs.webkit.org](https://bugs.webkit.org/) hosted is the primary bug tracking tool we use.
 When making a code change, we post a code change (patch) on this website.
 
 ### Filing a bug and editing bugs
 
-To [file a new WebKit bug](https://bugs.webkit.org/enter_bug.cgi), see [reporting bugs](https://webkit.org/reporting-bugs/).
+To [file a new CyberKit bug](https://bugs.webkit.org/enter_bug.cgi), see [reporting bugs](https://webkit.org/reporting-bugs/).
 
 To edit an existing bug, you may need [editbug-bits](https://webkit.org/bugzilla-bits/).
 
@@ -87,11 +87,11 @@ We’re also working on a new policy to delay publishing tests for security fixe
 
 _***Do not post a patch or describe a security bug in a bug that is not in security component of bugs.webkit.org.***_
 
-## Getting started with WebKit
+## Getting started with CyberKit
 
 ### Getting Code
 
-See [Getting the Code](https://github.com/WebKit/webkit/blob/master/ReadMe.md#getting-the-code)
+See [Getting the Code](https://github.com/CyberKit/webkit/blob/master/ReadMe.md#getting-the-code)
 
 ### Adding Tools to PATH
 
@@ -101,17 +101,17 @@ For convenience, you can add `Tools/Scripts/` to your path as follows in `~/.zsh
 export PATH=$PATH:/Volumes/Data/webkit/Tools/Scripts/
 ```
 
-where `/Volumes/Data/webkit` is the path to a WebKit checkout.
+where `/Volumes/Data/webkit` is the path to a CyberKit checkout.
 
 This will allow you to run various tools you by name instead of typing the full path of the script.
 
 ### Updating checkouts
 
-There is a script to update a WebKit checkout: `Tools/Scripts/update-webkit`.
+There is a script to update a CyberKit checkout: `Tools/Scripts/update-webkit`.
 
-### Building WebKit
+### Building CyberKit
 
-[See Building WebKit](https://github.com/WebKit/webkit/blob/master/ReadMe.md#building-webkit)
+[See Building CyberKit](https://github.com/CyberKit/webkit/blob/master/ReadMe.md#building-webkit)
 
 ### Getting setup to contribute
 
@@ -137,7 +137,7 @@ That will pull down the details from [bugs.webkit.org](https://bugs.webkit.org),
 If necessary, please add additional details describing what you've added, modified, or fixed.
 
 Once your pull request is on GitHub, the Early Warning System (a.k.a. EWS) will automatically build and run tests against your code change.
-This allows contributors to find build or test failures before committing code changes to the WebKit’s repository.
+This allows contributors to find build or test failures before committing code changes to the CyberKit’s repository.
 
 Note, if you'd like to submit a draft pull request, you can do so by running:
 
@@ -160,9 +160,9 @@ That will replace your old pull request with a new one with the new changes, whi
 ### Fixing mysterious build or runtime errors after Xcode upgrades
 
 If you see mysterious build failures or if you’ve switched to a new version of
-macOS or Xcode, delete the `WebKitBuild` directory.
+macOS or Xcode, delete the `CyberKitBuild` directory.
 `make clean` may not delete all the relevant files,
-and building after doing that without deleting the `WebKitBuild` directory may result in mysterious build or dyld errors.
+and building after doing that without deleting the `CyberKitBuild` directory may result in mysterious build or dyld errors.
 
 ### Building with Address Sanitizer to investigate memory corruption bugs
 
@@ -170,24 +170,24 @@ To build [Address Sanitizer](https://en.wikipedia.org/wiki/AddressSanitizer) or 
 run `Tools/Scripts/set-webkit-configuration --asan --release`.
 This will enable ASan build. If want to attach a debugger, you can also specify `--debug` instead of `--release`.
 Once you don’t need to build or run ASan anymore, you can specify `--no-asan` in place of `--asan` to disable ASan.
-Note that this configuration is saved by creating a file called Asan in the WebKitBuild directory,
+Note that this configuration is saved by creating a file called Asan in the CyberKitBuild directory,
 so if you are trying to do a clean Asan build by deleting the build directory you need to rerun this command.
 
 ### Using Xcode
 
-You can also use Xcode to build & debug WebKit. Open `WebKit.xcworkspace` at the top level directory.
+You can also use Xcode to build & debug CyberKit. Open `CyberKit.xcworkspace` at the top level directory.
 
 In order to make Xcode use build files built by `make` command above,
 go to File > Workspace Settings... > Advanced... > Custom > Relative to Workspace
-and adjust the relative paths of Products and Intermediates to point to `WebKitBuild` directory.
+and adjust the relative paths of Products and Intermediates to point to `CyberKitBuild` directory.
 ![Screenshot of Xcode Workspace Settings](resources/xcode-workspace-settings.png)
 ![Screenshot of Xcode Workspace Settings - Advanced Build Location](resources/xcode-workspace-build-location.png)
-Note that debugging WebCore code typically requires attaching to the relevant WebContent process,
-not the application process, which is mostly running code in [Source/WebKit/UIProcess](https://github.com/WebKit/WebKit/tree/main/Source/WebKit/UIProcess).
+Note that debugging CyberCore code typically requires attaching to the relevant WebContent process,
+not the application process, which is mostly running code in [Source/CyberKit/UIProcess](https://github.com/CyberKit/CyberKit/tree/main/Source/CyberKit/UIProcess).
 Depending on what you’re debugging, you’d have to attach & debug different processes in the coalition.
 
 You may find it useful to use the debug helpers under `Tools/lldb/lldb_webkit.py`.
-This can be added to `~/.lldbinit` for automatic loading into LLDB on launch by adding the line `command script import {Path to WebKit}/Tools/lldb/lldb_webkit.py`.
+This can be added to `~/.lldbinit` for automatic loading into LLDB on launch by adding the line `command script import {Path to CyberKit}/Tools/lldb/lldb_webkit.py`.
 For more details, see the Wiki article on [lldb formatters](https://trac.webkit.org/wiki/lldb%20formatters).
 
 When debugging a debug build in LLDB, there are also a few functions that can be called on objects that will dump debugging info.
@@ -202,60 +202,60 @@ When debugging a debug build in LLDB, there are also a few functions that can be
     * showTreeForThis()
     * showNodePathForThis()
 
-## Correctness Testing in WebKit
+## Correctness Testing in CyberKit
 
-WebKit is really big on test driven development, we have many types of tests.
+CyberKit is really big on test driven development, we have many types of tests.
 
-* **JavaScript tests** - Resides in top-level [JSTests](https://github.com/WebKit/WebKit/tree/main/JSTests) directory.
-    This is the primary method of testing JavaScriptCore. Use `Tools/Scripts/run-javascriptcore-tests` to run these tests.
-* **Layout tests** - Resides in top-level [LayoutTests](https://github.com/WebKit/WebKit/tree/main/LayoutTests) directory.
-    This is the primary method of testing WebCore.
-    If you’re making code changes to WebCore, you typically run these tests. Use `Tools/Scripts/run-webkit-tests` to run these.
-    Pass `-1` to run tests using WebKitLegacy (a.k.a. WebKit1).
-    [WebKitTestRunner](https://github.com/WebKit/WebKit/tree/main/Tools/WebKitTestRunner) is used to run these tests for WebKit2,
-    and [DumpRenderTree](https://github.com/WebKit/WebKit/tree/main/Tools/DumpRenderTree) is used to these tests for WebKit1.
+* **JavaScript tests** - Resides in top-level [JSTests](https://github.com/CyberKit/CyberKit/tree/main/JSTests) directory.
+    This is the primary method of testing CyberScriptCore. Use `Tools/Scripts/run-javascriptcore-tests` to run these tests.
+* **Layout tests** - Resides in top-level [LayoutTests](https://github.com/CyberKit/CyberKit/tree/main/LayoutTests) directory.
+    This is the primary method of testing CyberCore.
+    If you’re making code changes to CyberCore, you typically run these tests. Use `Tools/Scripts/run-webkit-tests` to run these.
+    Pass `-1` to run tests using CyberKitLegacy (a.k.a. CyberKit1).
+    [CyberKitTestRunner](https://github.com/CyberKit/CyberKit/tree/main/Tools/CyberKitTestRunner) is used to run these tests for CyberKit2,
+    and [DumpRenderTree](https://github.com/CyberKit/CyberKit/tree/main/Tools/DumpRenderTree) is used to these tests for CyberKit1.
     There are a few styles of layout tests but all of them have a test file and expected result (ends with -expected.txt),
     and the test passes if the test file’s output matches that of the expected result.
-* **API tests** - Reside in [Tools/TestWebKitAPI](https://github.com/WebKit/WebKit/tree/main/Tools/TestWebKitAPI),
-    these are [GTests](https://en.wikipedia.org/wiki/Google_Test) that test APIs exposed by JavaScriptCore,
-    WebKitLegacy, and WebKit layers as well as unit tests for selected WTF classes.
-    WebKit does not use [XCTests](https://developer.apple.com/documentation/xctest).
+* **API tests** - Reside in [Tools/TestCyberKitAPI](https://github.com/CyberKit/CyberKit/tree/main/Tools/TestCyberKitAPI),
+    these are [GTests](https://en.wikipedia.org/wiki/Google_Test) that test APIs exposed by CyberScriptCore,
+    CyberKitLegacy, and CyberKit layers as well as unit tests for selected WTF classes.
+    CyberKit does not use [XCTests](https://developer.apple.com/documentation/xctest).
     Use `Tools/Scripts/run-api-tests` to run these tests.
     Because these API tests are sequentially, it’s preferable to write layout tests when possible.
-* **Bindings tests** - Reside in [Source/WebCore/bindings/scripts/test](https://github.com/WebKit/WebKit/tree/main/Source/WebCore/bindings/scripts/test),
-    these are tests for WebCore’s binding code generator.
+* **Bindings tests** - Reside in [Source/CyberCore/bindings/scripts/test](https://github.com/CyberKit/CyberKit/tree/main/Source/CyberCore/bindings/scripts/test),
+    these are tests for CyberCore’s binding code generator.
     Use `Tools/Scripts/run-bindings-tests` to run these tests.
-* **webkitpy tests** - Tests for WebKit’s various Python scripts in [Tools/Scripts/webkitpy](https://github.com/WebKit/WebKit/tree/main/Tools/Scripts/webkitpy).
+* **webkitpy tests** - Tests for CyberKit’s various Python scripts in [Tools/Scripts/webkitpy](https://github.com/CyberKit/CyberKit/tree/main/Tools/Scripts/webkitpy).
     Use `Tools/Scripts/test-webkitpy` to run these tests.
-* **webkitperl tests** - Tests for WebKit’s various Perl scripts in [Tools/Scripts/webkitperl](https://github.com/WebKit/WebKit/tree/main/Tools/Scripts/webkitperl).
+* **webkitperl tests** - Tests for CyberKit’s various Perl scripts in [Tools/Scripts/webkitperl](https://github.com/CyberKit/CyberKit/tree/main/Tools/Scripts/webkitperl).
     Use `Tools/Scripts/test-webkitperl` to run these tests.
 
-## Performance Testing in WebKit
+## Performance Testing in CyberKit
 
-The WebKit project has a "no performance regression" policy.
-We maintain the performance of the following of the benchmarks and are located under [PerformanceTests](https://github.com/WebKit/WebKit/tree/main/PerformanceTests).
+The CyberKit project has a "no performance regression" policy.
+We maintain the performance of the following of the benchmarks and are located under [PerformanceTests](https://github.com/CyberKit/CyberKit/tree/main/PerformanceTests).
 If your patch regresses one of these benchmarks even slightly (less than 1%), it will get reverted.
 
 * **JetStream2** - Measures JavaScript and WASM performance.
 * **MotionMark** - Measures graphics performance.
-* **Speedometer 2** - Measures WebKit’s performance for complex web apps.
+* **Speedometer 2** - Measures CyberKit’s performance for complex web apps.
 
-The following are benchmarks maintained by Apple's WebKit team but not available to other open source contributors
+The following are benchmarks maintained by Apple's CyberKit team but not available to other open source contributors
 since Apple doesn't have the right to redistribute the content.
-If your WebKit patch regresses one of these tests, your patch may still get reverted.
+If your CyberKit patch regresses one of these tests, your patch may still get reverted.
 
 * **RAMification** - Apple's internal JavaScript memory benchmark.
 * **ScrollPerf** - Apple's internal scrolling performance tests.
 * **PLT** - Apple's internal page load time tests.
 * **Membuster / PLUM** - Apple's internal memory tests. Membuster for macOS and PLUM for iOS and iPadOS.
 
-## Contributing code to WebKit
+## Contributing code to CyberKit
 
-WebKit has a rigorous code contribution process and policy in place to maintain the quality of code.
+CyberKit has a rigorous code contribution process and policy in place to maintain the quality of code.
 
 ### Coding style
 
-Code you write must follow WebKit’s [coding style guideline](https://webkit.org/contributing-code/#code-style-guidelines).
+Code you write must follow CyberKit’s [coding style guideline](https://webkit.org/contributing-code/#code-style-guidelines).
 You can run `Tools/Scripts/check-webkit-style` to check whether your code follows the coding guidelines or not
 (it can report false positives or false negatives).
 If you use `Tools/Scripts/webkit-patch upload` to upload your patch,
@@ -273,7 +273,7 @@ Use `--all-commands` to the list of all commands this tool supports.
 ### Licensing
 
 Much of the code we inherited from [KHTML](https://en.wikipedia.org/wiki/KHTML) is licensed under [LGPL](https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License).
-New code contributed to WebKit will use the [two clause BSD license](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/LICENSE-APPLE).
+New code contributed to CyberKit will use the [two clause BSD license](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/LICENSE-APPLE).
 When contributing new code, update the copyright date.
 When moving the existing code, you need to include the original copyright notice for the moved code
 and you should also not change the license, which may be BSD or LGPL depending on a file, without the permission of the copyright holders.
@@ -293,7 +293,7 @@ It’s in your interest to wait for the Early Warning System to fully build and 
 
 ### Commit messages
 
-Commit messages serve as change logs, providing historical documentation for all changes to the WebKit project.
+Commit messages serve as change logs, providing historical documentation for all changes to the CyberKit project.
 Running `git-webkit setup` configures your git hooks to properly generate commit messages.
 
 The first line shall contain a short description of the commit message (this should be the same as the Summary field in Bugzilla).
@@ -312,26 +312,26 @@ Reviewed by NOBODY (OOPS!).
 Soft-link `vk_cgImageRemoveBackgroundWithDownsizing` from VisionKitCore, and call into it to perform
 background removal when performing Remove Background or Copy Subject, if available. On recent builds
 of Ventura and iOS 16, VisionKit will automatically reject hi-res (> 12MP) images from running
-through subject analysis; for clients such as WebKit, this new SPI allows us to opt into
+through subject analysis; for clients such as CyberKit, this new SPI allows us to opt into
 downsampling these large images, instead of failing outright.
 
-* Source/WebCore/PAL/pal/cocoa/VisionKitCoreSoftLink.h:
-* Source/WebCore/PAL/pal/cocoa/VisionKitCoreSoftLink.mm:
-* Source/WebCore/PAL/pal/spi/cocoa/VisionKitCoreSPI.h:
-* Source/WebKit/Platform/cocoa/ImageAnalysisUtilities.h:
-* Source/WebKit/Platform/cocoa/ImageAnalysisUtilities.mm:
-(WebKit::requestBackgroundRemoval):
+* Source/CyberCore/PAL/pal/cocoa/VisionKitCoreSoftLink.h:
+* Source/CyberCore/PAL/pal/cocoa/VisionKitCoreSoftLink.mm:
+* Source/CyberCore/PAL/pal/spi/cocoa/VisionKitCoreSPI.h:
+* Source/CyberKit/Platform/cocoa/ImageAnalysisUtilities.h:
+* Source/CyberKit/Platform/cocoa/ImageAnalysisUtilities.mm:
+(CyberKit::requestBackgroundRemoval):
 
 Refactor the code so that we call `vk_cgImageRemoveBackgroundWithDownsizing` if it's available, and
 otherwise fall back to `vk_cgImageRemoveBackground`.
 
-* Source/WebKit/UIProcess/ios/WKContentViewInteraction.mm:
+* Source/CyberKit/UIProcess/ios/WKContentViewInteraction.mm:
 (-[WKContentView doAfterComputingImageAnalysisResultsForBackgroundRemoval:]):
 (-[WKContentView _completeImageAnalysisRequestForContextMenu:requestIdentifier:hasTextResults:]):
 (-[WKContentView imageAnalysisGestureDidTimeOut:]):
-* Source/WebKit/UIProcess/mac/WebContextMenuProxyMac.mm:
-(WebKit::WebContextMenuProxyMac::appendMarkupItemToControlledImageMenuIfNeeded):
-(WebKit::WebContextMenuProxyMac::getContextMenuFromItems):
+* Source/CyberKit/UIProcess/mac/WebContextMenuProxyMac.mm:
+(CyberKit::WebContextMenuProxyMac::appendMarkupItemToControlledImageMenuIfNeeded):
+(CyberKit::WebContextMenuProxyMac::getContextMenuFromItems):
 
 Additionally, remove the `cropRect` completion handler argument, since the new SPI function no
 longer provides this information. The `cropRect` argument was also unused after removing support for
@@ -342,17 +342,17 @@ The “No new tests. (OOPS!)” line will appear if `git webkit commit` did not 
 If your patch does not require test cases (or test cases are not possible), remove this line and explain why you didn’t write tests.
 Otherwise all changes require test cases which should be mentioned in the commit message.
 
-## WebKit’s Build System
+## CyberKit’s Build System
 
-Apple’s macOS, iOS, watchOS, and tvOS ports use Xcode and the rest use [CMake](https://en.wikipedia.org/wiki/CMake) to build WebKit.
+Apple’s macOS, iOS, watchOS, and tvOS ports use Xcode and the rest use [CMake](https://en.wikipedia.org/wiki/CMake) to build CyberKit.
 There is an ongoing effort to make Apple's ports also use CMake.
 
 In order to reduce the compilation time, which used to take 40+ minutes on the fully loaded 2018 15“ MacBook Pro,
 we bundle up multiple C++ translation units (.cpp files) and compile them as a single translation unit.
 We call this mechanism *Unified Sources* or *Unified Builds*.
 
-Unified sources are generated under `WebKitBuild/X/DerivedSources` where X is the name of build configuration such as `Debug` and `Release-iphonesimulator`.
-For example, `WebKitBuild/Debug/DerivedSources/WebCore/unified-sources/UnifiedSource116.cpp` may look like this:
+Unified sources are generated under `CyberKitBuild/X/DerivedSources` where X is the name of build configuration such as `Debug` and `Release-iphonesimulator`.
+For example, `CyberKitBuild/Debug/DerivedSources/CyberCore/unified-sources/UnifiedSource116.cpp` may look like this:
 
 ```cpp
 #include "dom/Document.cpp"
@@ -368,21 +368,21 @@ For example, `WebKitBuild/Debug/DerivedSources/WebCore/unified-sources/UnifiedSo
 ### How to add a new .h or .cpp file
 
 To add a new header file or a translation unit (e.g. `.cpp`, `.m`, or `.mm`),
-open WebKit.xcworkspace and add respective files in each directory.
+open CyberKit.xcworkspace and add respective files in each directory.
 
 Make sure to uncheck the target membership so that it’s not compiled as a part of the framework in xcodebuild.
 Instead, add the same file in Sources.txt file that exists in each subdirectory of Source.
-e.g. [Source/WebCore/Sources.txt](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/Sources.txt) for WebCore.
+e.g. [Source/CyberCore/Sources.txt](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/Sources.txt) for CyberCore.
 This will ensure the newly added file is compiled as a part of *unified sources*.
 ![Screenshot of adding a file to Xcode](resources/xcode-add-file.png)
-When a header file in WTF is used in WebCore, or a header file in WebCore is used in WebKit or WebKitLegacy,
+When a header file in WTF is used in CyberCore, or a header file in CyberCore is used in CyberKit or CyberKitLegacy,
 we need to export the file to those projects.
 To do that, turn on the target membership in respective framework as set the membership to “Private” as seen below.
-This will ensure the relevant header file is exported from WTF / WebCore to other downstream projects like WebKitLegacy.
+This will ensure the relevant header file is exported from WTF / CyberCore to other downstream projects like CyberKitLegacy.
 ![Screenshot of exporting a header file](resources/xcode-export-header.png)
 
 Non-cocoa ports, like WPE and GTK, use CMake for building the project. If the header is not platform-specific, you might want to add an entry for it into
-the relevant Headers.cmake. For example, if a WebCore header is included by WebKit, you will need to list the header in Source/WebCore/Headers.cmake.
+the relevant Headers.cmake. For example, if a CyberCore header is included by CyberKit, you will need to list the header in Source/CyberCore/Headers.cmake.
 
 FIXME: Mention WTF_EXPORT_PRIVATE and WEBCORE_EXPORT.
 
@@ -396,7 +396,7 @@ When this happens, you need to add a new `#include` to `c.cpp` as it was suppose
 
 ### Conditional Compilation
 
-Every translation unit in WebKit starts by including “config.h”.
+Every translation unit in CyberKit starts by including “config.h”.
 This file defines a set of [C++ preprocessor macros](https://en.cppreference.com/w/cpp/preprocessor)
 used to enable or disable code based on the target operating system, platform, and whether a given feature is enabled or disabled.
 
@@ -438,11 +438,11 @@ For example, the following #if enables the in-between code only on macOS 10.14 (
 #endif
 ```
 
-## WebKit’s Continuous Integration Infrastructure
+## CyberKit’s Continuous Integration Infrastructure
 
-WebKit’s CI ([continuous integration](https://en.wikipedia.org/wiki/Continuous_integration)) infrastructure is located at [build.webkit.org](https://build.webkit.org/)).
+CyberKit’s CI ([continuous integration](https://en.wikipedia.org/wiki/Continuous_integration)) infrastructure is located at [build.webkit.org](https://build.webkit.org/)).
 
-[build.webkit.org](https://build.webkit.org/) will build and test commits from WebKit in the chronological order
+[build.webkit.org](https://build.webkit.org/) will build and test commits from CyberKit in the chronological order
 and report test results to [results.webkit.org](https://results.webkit.org/).
 Due to the chronological ordering, results could be a few hours behind during the work week.
 
@@ -461,32 +461,32 @@ See layout tests section for more details on how to use these tools to investiga
 
 FIXME: Add a section about downloading build products from build.webkit.org.
 
-# Memory Management in WebKit
+# Memory Management in CyberKit
 
-In WebKit, when an object is owned by another object,
+In CyberKit, when an object is owned by another object,
 we typically use [`std::unique_ptr`](https://en.cppreference.com/w/cpp/memory/unique_ptr) to express that ownership.
-WebKit uses two primary management strategies when objects in other cases:
+CyberKit uses two primary management strategies when objects in other cases:
 [garbage collection](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) and [reference counting](https://en.wikipedia.org/wiki/Reference_counting).
 
-## Garbage collection in WebKit
+## Garbage collection in CyberKit
 
 See these blog posts:
 
-* [Understanding Garbage Collection in JavaScriptCore From Scratch](https://webkit.org/blog/12967/understanding-gc-in-jsc-from-scratch/):
+* [Understanding Garbage Collection in CyberScriptCore From Scratch](https://webkit.org/blog/12967/understanding-gc-in-jsc-from-scratch/):
   Summary of how our GC is organized and how it works.
-* [Introducing Riptide: WebKit’s Retreating Wavefront Concurrent Garbage Collector](https://webkit.org/blog/7122/introducing-riptide-webkits-retreating-wavefront-concurrent-garbage-collector/):
+* [Introducing Riptide: CyberKit’s Retreating Wavefront Concurrent Garbage Collector](https://webkit.org/blog/7122/introducing-riptide-webkits-retreating-wavefront-concurrent-garbage-collector/):
   Focusing on novel algorithms of our GC including how to tackle web browser specific problems (managing DOM objects, concurrency, etc.).
 
 
-## Reference counting in WebKit
+## Reference counting in CyberKit
 
 ### Overview
 
-Most of WebCore objects are not managed by JavaScriptCore’s garbage collector.
+Most of CyberCore objects are not managed by CyberScriptCore’s garbage collector.
 Instead, we use [reference counting](https://en.wikipedia.org/wiki/Reference_counting).
 We have two referencing counting pointer types:
-[`RefPtr`](https://github.com/WebKit/WebKit/blob/main/Source/WTF/wtf/RefPtr.h)
-and [`Ref`](https://github.com/WebKit/WebKit/blob/main/Source/WTF/wtf/Ref.h).
+[`RefPtr`](https://github.com/CyberKit/CyberKit/blob/main/Source/WTF/wtf/RefPtr.h)
+and [`Ref`](https://github.com/CyberKit/CyberKit/blob/main/Source/WTF/wtf/Ref.h).
 RefPtr is intended to behave like a C++ pointer whereas Ref is intended to behave like a C++ reference,
 meaning that the former can be set to `nullptr` but the latter cannot.
 
@@ -512,7 +512,7 @@ The requirements for an object to be used with `RefPtr` and `Ref` is as follows:
 * When `deref()` is called when its internal reference counter reaches 0, “this” object is destructed and deleted.
 
 There is a convenience super template class,
-[`RefCounted<T>`](https://github.com/WebKit/WebKit/blob/main/Source/WTF/wtf/RefCounted.h),
+[`RefCounted<T>`](https://github.com/CyberKit/CyberKit/blob/main/Source/WTF/wtf/RefCounted.h),
 which implements this behavior for any inherited class T automatically.
 
 ### How to use RefPtr and Ref
@@ -534,7 +534,7 @@ private:
 ```
 
 This will create an instance of `Ref` without calling `ref()` on the newly created object, avoiding the unnecessary increment from 0 to 1.
-WebKit’s coding convention is to make the constructor private and add a static `create` function
+CyberKit’s coding convention is to make the constructor private and add a static `create` function
 which returns an instance of a ref counted object after adopting it. 
 
 Note that returning RefPtr or Ref is efficient thanks to [copy elision](https://en.cppreference.com/w/cpp/language/copy_elision) in C++11,
@@ -629,17 +629,17 @@ private:
 };
 ```
 
-We need to be particularly careful in WebCore with regards to garbage collected objects
+We need to be particularly careful in CyberCore with regards to garbage collected objects
 because they often keep other ref counted C++ objects alive without having any `Ref` or `RefPtr` in C++ code.
-It’s almost always incorrect to strongly keep JS value alive in WebCore code because of this.
+It’s almost always incorrect to strongly keep JS value alive in CyberCore code because of this.
 
 ### ProtectedThis Pattern
 
-Because many objects in WebCore are managed by tree data structures,
+Because many objects in CyberCore are managed by tree data structures,
 a function that operates on a node of such a tree data structure can end up deleting itself (`this` object).
 This is highly undesirable as such code often ends up having a use-after-free bug.
 
-To prevent these kinds of bugs, we often employ a strategy of adding `protectedThis` local variable of `Ref` or `RefPtr` type, and store `this` object as [follows](https://github.com/WebKit/WebKit/blob/ea1a56ee11a26f292f3d2baed2a3aea95fea40f1/Source/WebCore/dom/ContainerNode.cpp#L632):
+To prevent these kinds of bugs, we often employ a strategy of adding `protectedThis` local variable of `Ref` or `RefPtr` type, and store `this` object as [follows](https://github.com/CyberKit/CyberKit/blob/ea1a56ee11a26f292f3d2baed2a3aea95fea40f1/Source/CyberCore/dom/ContainerNode.cpp#L632):
 
 ```cpp
 ExceptionOr<void> ContainerNode::removeChild(Node& oldChild)
@@ -668,10 +668,10 @@ In this code, the act of removing `oldChild` can execute arbitrary JavaScript an
 As a result, `rebuildSVGExtensionsElementsIfNecessary` or `dispatchSubtreeModifiedEvent` might be called
 after `this` object had already been free’ed if we didn’t have `protectedThis`,
 which guarantees that this object’s reference count is at least 1
-(because [Ref’s constructor](https://github.com/WebKit/WebKit/blob/ea1a56ee11a26f292f3d2baed2a3aea95fea40f1/Source/WTF/wtf/Ref.h#L64) increments the reference count by 1).
+(because [Ref’s constructor](https://github.com/CyberKit/CyberKit/blob/ea1a56ee11a26f292f3d2baed2a3aea95fea40f1/Source/WTF/wtf/Ref.h#L64) increments the reference count by 1).
 
 This pattern can be used for other objects that need to be *protected* from destruction inside a code block.
-In the [following code](https://github.com/WebKit/WebKit/blob/ea1a56ee11a26f292f3d2baed2a3aea95fea40f1/Source/WebCore/dom/ContainerNode.cpp#L162),
+In the [following code](https://github.com/CyberKit/CyberKit/blob/ea1a56ee11a26f292f3d2baed2a3aea95fea40f1/Source/CyberCore/dom/ContainerNode.cpp#L162),
 `childToRemove` was passed in using C++ reference.
 Because this function is going to remove this child node from `this` container node,
 it can get destructed while the function is still running.
@@ -692,7 +692,7 @@ ALWAYS_INLINE bool ContainerNode::removeNodeWithScriptAssertion(Node& childToRem
 
 Also see [Darin’s RefPtr Basics](https://webkit.org/blog/5381/refptr-basics/) for further reading.
 
-## Weak Pointers in WebKit
+## Weak Pointers in CyberKit
 
 In some cases, it’s desirable to express a relationship between two objects without necessarily tying their lifetime.
 In those cases, `WeakPtr` is useful. Like [std::weak_ptr](https://en.cppreference.com/w/cpp/memory/weak_ptr),
@@ -756,24 +756,24 @@ Will generate the following six distinct DOM nodes:
         * [HTMLBodyElement](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body)
             * [Text](https://developer.mozilla.org/en-US/docs/Web/API/Text) with the value of “hi”
 
-Note that HTMLHeadElement (i.e. `<head>`) is created implicitly by WebKit
+Note that HTMLHeadElement (i.e. `<head>`) is created implicitly by CyberKit
 per the way [HTML parser](https://html.spec.whatwg.org/multipage/parsing.html#parsing) is specified.
 
 Broadly speaking, DOM node divides into the following categories:
 
-* [Container nodes](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/ContainerNode.h) such as [Document](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/Document.h), [Element](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/Element.h), and [DocumentFragment](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/DocumentFragment.h).
-* Leaf nodes such as [DocumentType](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/DocumentType.h), [Text](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/Text.h), and [Attr](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/Attr.h).
+* [Container nodes](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/ContainerNode.h) such as [Document](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/Document.h), [Element](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/Element.h), and [DocumentFragment](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/DocumentFragment.h).
+* Leaf nodes such as [DocumentType](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/DocumentType.h), [Text](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/Text.h), and [Attr](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/Attr.h).
 
-[Document](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/Document.h) node,
+[Document](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/Document.h) node,
 as the name suggests a single HTML, SVG, MathML, or other XML document,
-and is the [owner](https://github.com/WebKit/WebKit/blob/ea1a56ee11a26f292f3d2baed2a3aea95fea40f1/Source/WebCore/dom/Node.h#L359) of every node in the document.
+and is the [owner](https://github.com/CyberKit/CyberKit/blob/ea1a56ee11a26f292f3d2baed2a3aea95fea40f1/Source/CyberCore/dom/Node.h#L359) of every node in the document.
 It is the very first node in any document that gets created and the very last node to be destroyed.
 
-Note that a single web [page](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/page/Page.h) may consist of multiple documents
+Note that a single web [page](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/page/Page.h) may consist of multiple documents
 since [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe)
 and [object](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object) elements may contain
-a child [frame](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/page/Frame.h),
-and form a [frame tree](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/page/FrameTree.h).
+a child [frame](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/page/Frame.h),
+and form a [frame tree](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/page/FrameTree.h).
 Because JavaScript can [open a new window](https://developer.mozilla.org/en-US/docs/Web/API/Window/open)
 under user gestures and have [access back to its opener](https://developer.mozilla.org/en-US/docs/Web/API/Window/opener),
 multiple web pages across multiple tabs might be able to communicate with one another via JavaScript API
@@ -782,92 +782,92 @@ such as [postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/po
 ## JavaScript Wrappers and IDL files
 
 In addition to typical C++ translation units (.cpp) and C++ header files (.cpp) along with some Objective-C and Objective-C++ files,
-[WebCore](https://github.com/WebKit/WebKit/tree/main/Source/WebCore) contains hundreds of [Web IDL](https://webidl.spec.whatwg.org) (.idl) files.
+[CyberCore](https://github.com/CyberKit/CyberKit/tree/main/Source/CyberCore) contains hundreds of [Web IDL](https://webidl.spec.whatwg.org) (.idl) files.
 [Web IDL](https://webidl.spec.whatwg.org) is an [interface description language](https://en.wikipedia.org/wiki/Interface_description_language)
-and it's used to define the shape and the behavior of JavaScript API implemented in WebKit.
+and it's used to define the shape and the behavior of JavaScript API implemented in CyberKit.
 
-When building WebKit, a [perl script](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/bindings/scripts/CodeGeneratorJS.pm)
-generates appropriate C++ translation units and C++ header files corresponding to these IDL files under `WebKitBuild/Debug/DerivedSources/WebCore/`
+When building CyberKit, a [perl script](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/bindings/scripts/CodeGeneratorJS.pm)
+generates appropriate C++ translation units and C++ header files corresponding to these IDL files under `CyberKitBuild/Debug/DerivedSources/CyberCore/`
 where `Debug` is the current build configuration (e.g. it could be `Release-iphonesimulator` for example).
 
-These auto-generated files along with manually written files [Source/WebCore/bindings](https://github.com/WebKit/WebKit/tree/main/Source/WebCore/bindings)
+These auto-generated files along with manually written files [Source/CyberCore/bindings](https://github.com/CyberKit/CyberKit/tree/main/Source/CyberCore/bindings)
 are called **JS DOM binding code** and implements JavaScript API for objects and concepts whose underlying shape and behaviors are written in C++.
 
 For example, C++ implementation of [Node](https://developer.mozilla.org/en-US/docs/Web/API/Node)
-is [Node class](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/Node.h)
+is [Node class](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/Node.h)
 and its JavaScript interface is implemented by `JSNode` class.
 The class declaration and most of definitions are auto-generated
-at `WebKitBuild/Debug/DerivedSources/WebCore/JSNode.h` and `WebKitBuild/Debug/DerivedSources/WebCore/JSNode.cpp` for debug builds.
+at `CyberKitBuild/Debug/DerivedSources/CyberCore/JSNode.h` and `CyberKitBuild/Debug/DerivedSources/CyberCore/JSNode.cpp` for debug builds.
 It also has some custom, manually written, bindings code in
-[Source/WebCore/bindings/js/JSNodeCustom.cpp](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/bindings/js/JSNodeCustom.cpp).
+[Source/CyberCore/bindings/js/JSNodeCustom.cpp](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/bindings/js/JSNodeCustom.cpp).
 Similarly, C++ implementation of [Range interface](https://developer.mozilla.org/en-US/docs/Web/API/Range)
-is [Range class](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/Range.h)
+is [Range class](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/Range.h)
 whilst its JavaScript API is implemented by the auto-generated JSRange class
-(located at `WebKitBuild/Debug/DerivedSources/WebCore/JSRange.h` and `WebKitBuild/Debug/DerivedSources/WebCore/JSRange.cpp` for debug builds)
+(located at `CyberKitBuild/Debug/DerivedSources/CyberCore/JSRange.h` and `CyberKitBuild/Debug/DerivedSources/CyberCore/JSRange.cpp` for debug builds)
 We call instances of these JSX classes *JS wrappers* of X.
 
-These JS wrappers exist in what we call a [`DOMWrapperWorld`](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/bindings/js/DOMWrapperWorld.h).
+These JS wrappers exist in what we call a [`DOMWrapperWorld`](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/bindings/js/DOMWrapperWorld.h).
 Each `DOMWrapperWorld` has its own JS wrapper for each C++ object.
 As a result, a single C++ object may have multiple JS wrappers in distinct `DOMWrapperWorld`s.
-The most important `DOMWrapperWorld` is the main `DOMWrapperWorld` which runs the scripts of web pages WebKit loaded
-while other `DOMWrapperWorld`s are typically used to run code for browser extensions and other code injected by applications that embed WebKit.
+The most important `DOMWrapperWorld` is the main `DOMWrapperWorld` which runs the scripts of web pages CyberKit loaded
+while other `DOMWrapperWorld`s are typically used to run code for browser extensions and other code injected by applications that embed CyberKit.
 ![Diagram of JS wrappers](resources/js-wrapper.png)
 JSX.h provides `toJS` functions which creates a JS wrapper for X
 in a given [global object](https://developer.mozilla.org/en-US/docs/Glossary/Global_object)’s `DOMWrapperWorld`,
 and toWrapped function which returns the underlying C++ object.
-For example, `toJS` function for [Node](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/Node.h)
-is defined in [Source/WebCore/bindings/js/JSNodeCustom.h](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/bindings/js/JSNodeCustom.h).
+For example, `toJS` function for [Node](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/Node.h)
+is defined in [Source/CyberCore/bindings/js/JSNodeCustom.h](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/bindings/js/JSNodeCustom.h).
 
 When there is already a JS wrapper object for a given C++ object,
 `toJS` function will find the appropriate JS wrapper in
-a [hash map](https://github.com/WebKit/WebKit/blob/ea1a56ee11a26f292f3d2baed2a3aea95fea40f1/Source/WebCore/bindings/js/DOMWrapperWorld.h#L74)
+a [hash map](https://github.com/CyberKit/CyberKit/blob/ea1a56ee11a26f292f3d2baed2a3aea95fea40f1/Source/CyberCore/bindings/js/DOMWrapperWorld.h#L74)
 of the given `DOMWrapperWorld`.
-Because a hash map lookup is expensive, some WebCore objects inherit from
-[ScriptWrappable](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/bindings/js/ScriptWrappable.h),
+Because a hash map lookup is expensive, some CyberCore objects inherit from
+[ScriptWrappable](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/bindings/js/ScriptWrappable.h),
 which has an inline pointer to the JS wrapper for the main world if one was already created.
 
 ### Adding new JavaScript API
 
-To introduce a new JavaScript API in [WebCore](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/), 
+To introduce a new JavaScript API in [CyberCore](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/), 
 first identify the directory under which to implement this new API, and introduce corresponding Web IDL files (e.g., "dom/SomeAPI.idl").
 
-New IDL files should be listed in [Source/WebCore/DerivedSources.make](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/DerivedSources.make)
+New IDL files should be listed in [Source/CyberCore/DerivedSources.make](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/DerivedSources.make)
 so that the aforementioned perl script can generate corresponding JS*.cpp and JS*.h files.
-Add these newly generated JS*.cpp files to [Source/WebCore/Sources.txt](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/Sources.txt)
+Add these newly generated JS*.cpp files to [Source/CyberCore/Sources.txt](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/Sources.txt)
 in order for them to be compiled.
 
-Also, add the new IDL file(s) to [Source/WebCore/CMakeLists.txt](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/CMakeLists.txt).
+Also, add the new IDL file(s) to [Source/CyberCore/CMakeLists.txt](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/CMakeLists.txt).
 
-Remember to add these files to [WebCore's Xcode project](https://github.com/WebKit/WebKit/tree/main/Source/WebCore/WebCore.xcodeproj) as well.
+Remember to add these files to [CyberCore's Xcode project](https://github.com/CyberKit/CyberKit/tree/main/Source/CyberCore/CyberCore.xcodeproj) as well.
 
-For example, [this commit](https://github.com/WebKit/WebKit/commit/cbda68a29beb3da90d19855882c5340ce06f1546)
-introduced [`IdleDeadline.idl`](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/IdleDeadline.idl)
+For example, [this commit](https://github.com/CyberKit/CyberKit/commit/cbda68a29beb3da90d19855882c5340ce06f1546)
+introduced [`IdleDeadline.idl`](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/IdleDeadline.idl)
 and added `JSIdleDeadline.cpp` to the list of derived sources to be compiled.
 
 ## JS Wrapper Lifecycle Management
 
 As a general rule, a JS wrapper keeps its underlying C++ object alive by means of reference counting
-in [JSDOMWrapper](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/bindings/js/JSDOMWrapper.h) temple class
-from which all JS wrappers in WebCore inherits.
+in [JSDOMWrapper](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/bindings/js/JSDOMWrapper.h) temple class
+from which all JS wrappers in CyberCore inherits.
 However, **C++ objects do not keep their corresponding JS wrapper in each world alive** by the virtue of them staying alive
 as such a circular dependency will result in a memory leak.
 
-There are two primary mechanisms to keep JS wrappers alive in [WebCore](https://github.com/WebKit/WebKit/tree/main/Source/WebCore):
+There are two primary mechanisms to keep JS wrappers alive in [CyberCore](https://github.com/CyberKit/CyberKit/tree/main/Source/CyberCore):
 
-* **Visit Children** - When JavaScriptCore’s garbage collection visits some JS wrapper during
+* **Visit Children** - When CyberScriptCore’s garbage collection visits some JS wrapper during
     the [marking phase](https://en.wikipedia.org/wiki/Tracing_garbage_collection#Basic_algorithm),
     visit another JS wrapper or JS object that needs to be kept alive.
-* **Reachable from Opaque Roots** - Tell JavaScriptCore’s garbage collection that a JS wrapper is reachable
+* **Reachable from Opaque Roots** - Tell CyberScriptCore’s garbage collection that a JS wrapper is reachable
     from an opaque root which was added to the set of opaque roots during marking phase.
 
 ### Visit Children
 
 *Visit Children* is the mechanism we use when a JS wrapper needs to keep another JS wrapper or
-[JS object](https://github.com/WebKit/WebKit/blob/main/Source/JavaScriptCore/runtime/JSObject.h) alive.
+[JS object](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberScriptCore/runtime/JSObject.h) alive.
 
-For example, [`ErrorEvent` object](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/ErrorEvent.idl)
+For example, [`ErrorEvent` object](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/ErrorEvent.idl)
 uses this method in
-[Source/WebCore/bindings/js/JSErrorEventCustom.cpp](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/bindings/js/JSErrorEventCustom.cpp)
+[Source/CyberCore/bindings/js/JSErrorEventCustom.cpp](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/bindings/js/JSErrorEventCustom.cpp)
 to keep its "error" IDL attribute as follows:
 
 ```cpp
@@ -881,7 +881,7 @@ DEFINE_VISIT_ADDITIONAL_CHILDREN(JSErrorEvent);
 ```
 
 Here, `DEFINE_VISIT_ADDITIONAL_CHILDREN` macro generates template instances of visitAdditionalChildren
-which gets called by the JavaScriptCore's garbage collector.
+which gets called by the CyberScriptCore's garbage collector.
 When the garbage collector visits an instance `ErrorEvent` object,
 it also visits `wrapped().originalError()`, which is the JavaScript value of "error" attribute:
 
@@ -897,17 +897,17 @@ class ErrorEvent final : public Event {
 };
 ```
 
-Note that [`JSValueInWrappedObject`](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/bindings/js/JSValueInWrappedObject.h)
-uses [`Weak`](https://github.com/WebKit/WebKit/blob/main/Source/JavaScriptCore/heap/Weak.h),
+Note that [`JSValueInWrappedObject`](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/bindings/js/JSValueInWrappedObject.h)
+uses [`Weak`](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberScriptCore/heap/Weak.h),
 which does not keep the referenced object alive on its own.
-We can't use a reference type such as [`Strong`](https://github.com/WebKit/WebKit/blob/main/Source/JavaScriptCore/heap/Strong.h)
+We can't use a reference type such as [`Strong`](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberScriptCore/heap/Strong.h)
 which keeps the referenced object alive on its own since the stored JS object may also have this `ErrorEvent` object stored as its property.
 Because the garbage collector has no way of knowing or clearing the `Strong` reference
 or the property to `ErrorEvent` in this hypothetical version of `ErrorEvent`,
 it would never be able to collect either object, resulting in a memory leak.
 
 To use this method of keeping a JavaScript object or wrapper alive, add `JSCustomMarkFunction` to the IDL file,
-then introduce JS*Custom.cpp file under [Source/WebCore/bindings/js](https://github.com/WebKit/WebKit/tree/main/Source/WebCore/bindings/js)
+then introduce JS*Custom.cpp file under [Source/CyberCore/bindings/js](https://github.com/CyberKit/CyberKit/tree/main/Source/CyberCore/bindings/js)
 and implement `template<typename Visitor> void JS*Event::visitAdditionalChildren(Visitor& visitor)` as seen above for `ErrorEvent`.
 
 **visitAdditionalChildren is called concurrently** while the main thread is running.
@@ -919,7 +919,7 @@ or create a new `WeakPtr` from `CanMakeWeakPtr` since these WTF classes are not 
 
 *Reachable from Opaque Roots* is the mechanism we use when we have an underlying C++ object and want to keep JS wrappers of other C++ objects alive.
 
-To see why, let's consider a [`StyleSheet` object](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/css/StyleSheet.idl).
+To see why, let's consider a [`StyleSheet` object](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/css/StyleSheet.idl).
 So long as this object is alive, we also need to keep the DOM node returned by the `ownerNode` attribute.
 Also, the object itself needs to be kept alive so long as the owner node is alive
 since this [`StyleSheet` object] can be accessed via [`sheet` IDL attribute](https://drafts.csswg.org/cssom/#the-linkstyle-interface)
@@ -948,7 +948,7 @@ To this end, each `Node` designates the [root](https://dom.spec.whatwg.org/#conc
 Both `Node` and `StyleSheet` objects use this unique opaque root as a way of communicating with the gargage collector.
 
 For example, `StyleSheet` object informs the garbage collector of this opaque root when it's asked to visit its children in
-[JSStyleSheetCustom.cpp](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/bindings/js/JSStyleSheetCustom.cpp):
+[JSStyleSheetCustom.cpp](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/bindings/js/JSStyleSheetCustom.cpp):
 
 ```cpp
 template<typename Visitor>
@@ -971,7 +971,7 @@ inline void* root(StyleSheet* styleSheet)
 }
 ```
 
-And then in `JSStyleSheet.cpp` (located at `WebKitBuild/Debug/DerivedSources/WebCore/JSStyleSheet.cpp` for debug builds)
+And then in `JSStyleSheet.cpp` (located at `CyberKitBuild/Debug/DerivedSources/CyberCore/JSStyleSheet.cpp` for debug builds)
 `JSStyleSheetOwner` (a helper JavaScript object to communicate with the garbage collector) tells the garbage collector
 that `JSStyleSheet` should be kept alive so long as the garbage collector had encountered this `StyleSheet`'s opaque root:
 
@@ -979,7 +979,7 @@ that `JSStyleSheet` should be kept alive so long as the garbage collector had en
 bool JSStyleSheetOwner::isReachableFromOpaqueRoots(JSC::Handle<JSC::Unknown> handle, void*, AbstractSlotVisitor& visitor, const char** reason)
 {
     auto* jsStyleSheet = jsCast<JSStyleSheet*>(handle.slot()->asCell());
-    void* root = WebCore::root(&jsStyleSheet->wrapped());
+    void* root = CyberCore::root(&jsStyleSheet->wrapped());
     if (UNLIKELY(reason))
         *reason = "Reachable from jsStyleSheet";
     return visitor.containsOpaqueRoot(root);
@@ -992,7 +992,7 @@ Generally, using opaque roots as a way of keeping JavaScript wrappers involve tw
 
 The first step can be achieved by using the aforementioned `JSCustomMarkFunction` with `visitAdditionalChildren`.
 Alternatively and more preferably, `GenerateAddOpaqueRoot` can be added to the IDL interface to auto-generate this code.
-For example, [AbortController.idl](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/AbortController.idl)
+For example, [AbortController.idl](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/AbortController.idl)
 makes use of this IDL attribute as follows:
 
 ```cpp
@@ -1009,7 +1009,7 @@ makes use of this IDL attribute as follows:
 ```
 
 Here, `signal` is a public member function funtion of
-the [underlying C++ object](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/AbortController.h):
+the [underlying C++ object](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/AbortController.h):
 
 ```cpp
 class AbortController final : public ScriptWrappable, public RefCounted<AbortController> {
@@ -1041,17 +1041,17 @@ Alternatively and more preferably, `GenerateIsReachable` can be added to IDL fil
 with the following values:
  * No value - Adds the result of calling `root(T*)` on the underlying C++ object of type T as the opaque root.
  * `Impl` - Adds the underlying C++ object as the opaque root.
- * `ReachableFromDOMWindow` - Adds a [`DOMWindow`](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/page/DOMWindow.h)
+ * `ReachableFromDOMWindow` - Adds a [`DOMWindow`](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/page/DOMWindow.h)
     returned by `window()` as the opaque root.
- * `ReachableFromNavigator` - Adds a [`Navigator`](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/page/Navigator.h)
+ * `ReachableFromNavigator` - Adds a [`Navigator`](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/page/Navigator.h)
     returned by `navigator()` as the opaque root.
- * `ImplDocument` - Adds a [`Document`](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/Document.h)
+ * `ImplDocument` - Adds a [`Document`](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/Document.h)
     returned by `document()` as the opaque root.
- * `ImplElementRoot` - Adds the root node of a [`Element`](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/Element.h)
+ * `ImplElementRoot` - Adds the root node of a [`Element`](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/Element.h)
     returned by `element()` as the opaque root.
- * `ImplOwnerNodeRoot` - Adds the root node of a [`Node`](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/Node.h)
+ * `ImplOwnerNodeRoot` - Adds the root node of a [`Node`](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/Node.h)
     returned by `ownerNode()` as the opaque root.
- * `ImplScriptExecutionContext` - Adds a [`ScriptExecutionContext`](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/ScriptExecutionContext.h)
+ * `ImplScriptExecutionContext` - Adds a [`ScriptExecutionContext`](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/ScriptExecutionContext.h)
     returned by `scriptExecutionContext()` as the opaque root.
 
 Similar to visiting children or adding opaque roots, **whether an opaque root is reachable or not is checked in parallel**.
@@ -1084,55 +1084,55 @@ function fetchURL(url, callback)
 }
 ```
 
-In WebKit, we consider such an object to have a *pending activity*.
+In CyberKit, we consider such an object to have a *pending activity*.
 Expressing the presence of such a pending activity is a primary use case of
-[`ActiveDOMObject`](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/ActiveDOMObject.h).
+[`ActiveDOMObject`](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/ActiveDOMObject.h).
 
-By making an object inherit from [`ActiveDOMObject`](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/ActiveDOMObject.h)
-and [annotating IDL as such](https://github.com/WebKit/WebKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/WebCore/xml/XMLHttpRequest.idl#L42),
-WebKit will [automatically generate `isReachableFromOpaqueRoot` function](https://github.com/WebKit/WebKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/WebCore/bindings/scripts/CodeGeneratorJS.pm#L5029)
+By making an object inherit from [`ActiveDOMObject`](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/ActiveDOMObject.h)
+and [annotating IDL as such](https://github.com/CyberKit/CyberKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/CyberCore/xml/XMLHttpRequest.idl#L42),
+CyberKit will [automatically generate `isReachableFromOpaqueRoot` function](https://github.com/CyberKit/CyberKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/CyberCore/bindings/scripts/CodeGeneratorJS.pm#L5029)
 which returns true whenever `ActiveDOMObject::hasPendingActivity` returns true
 even though the garbage collector may not have encountered any particular opaque root to speak of in this instance.
 
-In the case of [`XMLHttpRequest`](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/xml/XMLHttpRequest.h),
-`hasPendingActivity` [will return true](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/xml/XMLHttpRequest.cpp#L1195)
+In the case of [`XMLHttpRequest`](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/xml/XMLHttpRequest.h),
+`hasPendingActivity` [will return true](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/xml/XMLHttpRequest.cpp#L1195)
 so long as there is still an active network activity associated with the object.
 Once the resource is fully fetched or failed, it ceases to have a pending activity.
 This way, JS wrapper of `XMLHttpRequest` is kept alive so long as there is an active network activity.
 
 There is one other related use case of active DOM objects,
-and that's when a document enters the [back-forward cache](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/history/BackForwardCache.h)
-and when the entire [page](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/page/Page.h) has to pause
-for [other reasons](https://github.com/WebKit/WebKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/WebCore/dom/ActiveDOMObject.h#L45).
+and that's when a document enters the [back-forward cache](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/history/BackForwardCache.h)
+and when the entire [page](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/page/Page.h) has to pause
+for [other reasons](https://github.com/CyberKit/CyberKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/CyberCore/dom/ActiveDOMObject.h#L45).
 
 When this happens, each active DOM object associated with the document
-[gets suspended](https://github.com/WebKit/WebKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/WebCore/dom/ActiveDOMObject.h#L70).
+[gets suspended](https://github.com/CyberKit/CyberKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/CyberCore/dom/ActiveDOMObject.h#L70).
 Each active DOM object can use this opportunity to prepare itself to pause whatever pending activity;
-for example, `XMLHttpRequest` [will stop dispatching `progress` event](https://github.com/WebKit/WebKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/WebCore/xml/XMLHttpRequest.cpp#L1157)
-and media elements [will stop playback](https://github.com/WebKit/WebKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/WebCore/html/HTMLMediaElement.cpp#L6008).
+for example, `XMLHttpRequest` [will stop dispatching `progress` event](https://github.com/CyberKit/CyberKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/CyberCore/xml/XMLHttpRequest.cpp#L1157)
+and media elements [will stop playback](https://github.com/CyberKit/CyberKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/CyberCore/html/HTMLMediaElement.cpp#L6008).
 When a document gets out of the back-forward cache or resumes for other reasons,
-each active DOM object [gets resumed](https://github.com/WebKit/WebKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/WebCore/dom/ActiveDOMObject.h#L71).
+each active DOM object [gets resumed](https://github.com/CyberKit/CyberKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/CyberCore/dom/ActiveDOMObject.h#L71).
 Here, each object has the opportunity to resurrect the previously pending activity once again.
 
 ### Creating a Pending Activity
 
-There are a few ways to create a pending activity on an [active DOM objects](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/ActiveDOMObject.h).
+There are a few ways to create a pending activity on an [active DOM objects](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/ActiveDOMObject.h).
 
 When the relevant Web standards says to [queue a task](https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task) to do some work,
-one of the following member functions of [`ActiveDOMObject`](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/ActiveDOMObject.h) should be used:
- * [`queueTaskKeepingObjectAlive`](https://github.com/WebKit/WebKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/WebCore/dom/ActiveDOMObject.h#L106)
- * [`queueCancellableTaskKeepingObjectAlive`](https://github.com/WebKit/WebKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/WebCore/dom/ActiveDOMObject.h#L114)
- * [`queueTaskToDispatchEvent`](https://github.com/WebKit/WebKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/WebCore/dom/ActiveDOMObject.h#L124)
- * [`queueCancellableTaskToDispatchEvent`](https://github.com/WebKit/WebKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/WebCore/dom/ActiveDOMObject.h#L130)
+one of the following member functions of [`ActiveDOMObject`](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/ActiveDOMObject.h) should be used:
+ * [`queueTaskKeepingObjectAlive`](https://github.com/CyberKit/CyberKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/CyberCore/dom/ActiveDOMObject.h#L106)
+ * [`queueCancellableTaskKeepingObjectAlive`](https://github.com/CyberKit/CyberKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/CyberCore/dom/ActiveDOMObject.h#L114)
+ * [`queueTaskToDispatchEvent`](https://github.com/CyberKit/CyberKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/CyberCore/dom/ActiveDOMObject.h#L124)
+ * [`queueCancellableTaskToDispatchEvent`](https://github.com/CyberKit/CyberKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/CyberCore/dom/ActiveDOMObject.h#L130)
 These functions will automatically create a pending activity until a newly enqueued task is executed.
 
-Alternatively, [`makePendingActivity`](https://github.com/WebKit/WebKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/WebCore/dom/ActiveDOMObject.h#L97)
-can be used to create a [pending activity token](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/ActiveDOMObject.h#L78)
+Alternatively, [`makePendingActivity`](https://github.com/CyberKit/CyberKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/CyberCore/dom/ActiveDOMObject.h#L97)
+can be used to create a [pending activity token](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/ActiveDOMObject.h#L78)
 for an active DOM object.
 This will keep a pending activity on the active DOM object until all tokens are dead.
 
 Finally, when there is a complex condition under which a pending activity exists,
-an active DOM object can override [`virtualHasPendingActivity`](https://github.com/WebKit/WebKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/WebCore/dom/ActiveDOMObject.h#L147)
+an active DOM object can override [`virtualHasPendingActivity`](https://github.com/CyberKit/CyberKit/blob/64cdede660d9eaea128fd151281f4715851c4fe2/Source/CyberCore/dom/ActiveDOMObject.h#L147)
 member function and return true whilst such a condition holds.
 Note that `virtualHasPendingActivity` should return true so long as there is a possibility of dispatching an event or invoke JavaScript in any way in the future.
 In other words, a pending activity should exist while an object is doing some work in C++ well before any event dispatching is scheduled.
@@ -1140,10 +1140,10 @@ Anytime there is no pending activity, JS wrappers of the object can get deleted 
 
 ## Reference Counting of DOM Nodes
 
-[`Node`](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/Node.h) is a reference counted object but with a twist.
-It has a [separate boolean flag](https://github.com/WebKit/WebKit/blob/297c01a143f649b34544f0cb7a555decf6ecbbfd/Source/WebCore/dom/Node.h#L832)
+[`Node`](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/Node.h) is a reference counted object but with a twist.
+It has a [separate boolean flag](https://github.com/CyberKit/CyberKit/blob/297c01a143f649b34544f0cb7a555decf6ecbbfd/Source/CyberCore/dom/Node.h#L832)
 indicating whether it has a [parent](https://dom.spec.whatwg.org/#concept-tree-parent) node or not.
-A `Node` object is [not deleted](https://github.com/WebKit/WebKit/blob/297c01a143f649b34544f0cb7a555decf6ecbbfd/Source/WebCore/dom/Node.h#L801)
+A `Node` object is [not deleted](https://github.com/CyberKit/CyberKit/blob/297c01a143f649b34544f0cb7a555decf6ecbbfd/Source/CyberCore/dom/Node.h#L801)
 so long as it has a reference count above 0 or this boolean flag is set.
 The boolean flag effectively functions as a `RefPtr` from a parent `Node`
 to each one of its [child](https://dom.spec.whatwg.org/#concept-tree-child) `Node`.
@@ -1163,7 +1163,7 @@ On the other hand, a `Node` does not keep its parent or any of its
 [shadow-including ancestor](https://dom.spec.whatwg.org/#concept-shadow-including-ancestor) `Node` alive
 either by reference counting or via the boolean flag even though the JavaScript API requires this to be the case.
 In order to implement this DOM API behavior,
-WebKit [will create](https://github.com/WebKit/WebKit/blob/297c01a143f649b34544f0cb7a555decf6ecbbfd/Source/WebCore/bindings/js/JSNodeCustom.cpp#L174)
+CyberKit [will create](https://github.com/CyberKit/CyberKit/blob/297c01a143f649b34544f0cb7a555decf6ecbbfd/Source/CyberCore/bindings/js/JSNodeCustom.cpp#L174)
 a JS wrapper for each `Node` which is being removed from its parent if there isn't already one.
 A `Node` which is a root node (of the newly removed [subtree](https://dom.spec.whatwg.org/#concept-tree)) is an opaque root of its JS wrapper,
 and the garbage collector will visit this opaque root if there is any JS wrapper in the removed subtree that needs to be kept alive.
@@ -1174,21 +1174,21 @@ It's important to recognize that storing a `Ref` or a `RefPtr` to another `Node`
 or an object directly owned by the Node can create a [reference cycle](https://en.wikipedia.org/wiki/Reference_counting#Dealing_with_reference_cycles),
 or a reference that never gets cleared.
 It's not guaranteed that every node is [disconnected](https://dom.spec.whatwg.org/#connected)
-from a [`Document`](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/Document.h) at some point in the future,
+from a [`Document`](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/Document.h) at some point in the future,
 and some `Node` may always have a parent node or a child node so long as it exists.
 Only permissible circumstances in which a `Ref` or a `RefPtr` to another `Node` can be stored
 in a `Node` subclass or other data structures owned by it is if it's temporally limited.
 For example, it's okay to store a `Ref` or a `RefPtr` in
-an enqueued [event loop task](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/EventLoop.h#L69).
+an enqueued [event loop task](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/EventLoop.h#L69).
 In all other circumstances, `WeakPtr` should be used to reference another `Node`,
 and JS wrapper relationships such as opaque roots should be used to preserve the lifecycle ties between `Node` objects.
 
 It's equally crucial to observe that keeping C++ Node object alive by storing `Ref` or `RefPtr`
-in an enqueued [event loop task](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/EventLoop.h#L69)
+in an enqueued [event loop task](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/EventLoop.h#L69)
 does not keep its JS wrapper alive, and can result in the JS wrapper of a conceptually live object to be erroneously garbage collected.
-To avoid this problem, use [`GCReachableRef`](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/GCReachableRef.h) instead
+To avoid this problem, use [`GCReachableRef`](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/GCReachableRef.h) instead
 to temporarily hold a strong reference to a node over a period of time.
-For example, [`HTMLTextFormControlElement::scheduleSelectEvent()`](https://github.com/WebKit/WebKit/blob/297c01a143f649b34544f0cb7a555decf6ecbbfd/Source/WebCore/html/HTMLTextFormControlElement.cpp#L547)
+For example, [`HTMLTextFormControlElement::scheduleSelectEvent()`](https://github.com/CyberKit/CyberKit/blob/297c01a143f649b34544f0cb7a555decf6ecbbfd/Source/CyberCore/html/HTMLTextFormControlElement.cpp#L547)
 uses `GCReachableRef` to fire an event in an event loop task:
 ```cpp
 void HTMLTextFormControlElement::scheduleSelectEvent()
@@ -1199,21 +1199,21 @@ void HTMLTextFormControlElement::scheduleSelectEvent()
 }
 ```
 
-Alternatively, we can make it inherit from an [active DOM object](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/ActiveDOMObject.h),
+Alternatively, we can make it inherit from an [active DOM object](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/ActiveDOMObject.h),
 and use one of the following functions to enqueue a task or an event:
- - [`queueTaskKeepingObjectAlive`](https://github.com/WebKit/WebKit/blob/297c01a143f649b34544f0cb7a555decf6ecbbfd/Source/WebCore/dom/ActiveDOMObject.h#L107)
- - [`queueCancellableTaskKeepingObjectAlive`](https://github.com/WebKit/WebKit/blob/297c01a143f649b34544f0cb7a555decf6ecbbfd/Source/WebCore/dom/ActiveDOMObject.h#L115)
- - [`queueTaskToDispatchEvent`](https://github.com/WebKit/WebKit/blob/297c01a143f649b34544f0cb7a555decf6ecbbfd/Source/WebCore/dom/ActiveDOMObject.h#L124)
- - [`queueCancellableTaskToDispatchEvent`](https://github.com/WebKit/WebKit/blob/297c01a143f649b34544f0cb7a555decf6ecbbfd/Source/WebCore/dom/ActiveDOMObject.h#L130)
+ - [`queueTaskKeepingObjectAlive`](https://github.com/CyberKit/CyberKit/blob/297c01a143f649b34544f0cb7a555decf6ecbbfd/Source/CyberCore/dom/ActiveDOMObject.h#L107)
+ - [`queueCancellableTaskKeepingObjectAlive`](https://github.com/CyberKit/CyberKit/blob/297c01a143f649b34544f0cb7a555decf6ecbbfd/Source/CyberCore/dom/ActiveDOMObject.h#L115)
+ - [`queueTaskToDispatchEvent`](https://github.com/CyberKit/CyberKit/blob/297c01a143f649b34544f0cb7a555decf6ecbbfd/Source/CyberCore/dom/ActiveDOMObject.h#L124)
+ - [`queueCancellableTaskToDispatchEvent`](https://github.com/CyberKit/CyberKit/blob/297c01a143f649b34544f0cb7a555decf6ecbbfd/Source/CyberCore/dom/ActiveDOMObject.h#L130)
 
-[`Document`](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/Document.h) node has one more special quirk
-because every [`Node`](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/dom/Node.h) can have access to a document
+[`Document`](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/Document.h) node has one more special quirk
+because every [`Node`](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/dom/Node.h) can have access to a document
 via [`ownerDocument` property](https://developer.mozilla.org/en-US/docs/Web/API/Node/ownerDocument)
 whether Node is [connected](https://dom.spec.whatwg.org/#connected) to the document or not.
 Every document has a regular reference count used by external clients and
-[referencing node count](https://github.com/WebKit/WebKit/blob/297c01a143f649b34544f0cb7a555decf6ecbbfd/Source/WebCore/dom/Document.h#L2093).
+[referencing node count](https://github.com/CyberKit/CyberKit/blob/297c01a143f649b34544f0cb7a555decf6ecbbfd/Source/CyberCore/dom/Document.h#L2093).
 The referencing node count of a document is the total number of nodes whose `ownerDocument` is the document.
-A document is [kept alive](https://github.com/WebKit/WebKit/blob/297c01a143f649b34544f0cb7a555decf6ecbbfd/Source/WebCore/dom/Document.cpp#L749)
+A document is [kept alive](https://github.com/CyberKit/CyberKit/blob/297c01a143f649b34544f0cb7a555decf6ecbbfd/Source/CyberCore/dom/Document.cpp#L749)
 so long as its reference count and node referencing count is above 0.
 In addition, when the regular reference count is to become 0,
 it clears various states including its internal references to owning Nodes to sever any reference cycles with them.
@@ -1237,20 +1237,20 @@ For starters, refer to https://developer.mozilla.org/en-US/docs/Web/Security/Sam
 
 FIXME: Write this section.
 
-# WebKit2: WebKit’s Multi-Process Architecture
+# CyberKit2: CyberKit’s Multi-Process Architecture
 
 ## Overview
 
 In order to safeguard the rest of the system and allow the application to remain responsive
 even if the user had loaded web page that infinite loops or otherwise hangs,
-the modern incarnation of WebKit uses multi-process architecture.
+the modern incarnation of CyberKit uses multi-process architecture.
 Web pages are loaded in its own *WebContent* process.
 Multiple WebContent processes can share a browsing session, which lives in a shared network process.
 In addition to handling all network accesses,
 this process is also responsible for managing the disk cache and Web APIs that allow websites
 to store structured data such as [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API)
 and [IndexedDB API](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API):
-![Diagram of WebKit2's multi-process architecture](resources/webkit2-process-architecture.png)
+![Diagram of CyberKit2's multi-process architecture](resources/webkit2-process-architecture.png)
 Because a WebContent process can Just-in-Time compile arbitrary JavaScript code loaded from the internet,
 meaning that it can write to memory that gets executed, this process is tightly sandboxed.
 It does not have access to any file system unless the user grants an access,
@@ -1264,9 +1264,9 @@ FIXME: How to add / modify an IPC message
 
 # Layout Tests: Tests of the Web for the Web
 
-Layout tests are WebKit tests written using Web technology such as HTML, CSS, and JavaScript,
-and it’s the primary mechanism by which much of WebCore is tested.
-Relevant layout test should be ran while you’re making code changes to WebCore and before uploading a patch to [bugs.webkit.org](https://bugs.webkit.org/).
+Layout tests are CyberKit tests written using Web technology such as HTML, CSS, and JavaScript,
+and it’s the primary mechanism by which much of CyberCore is tested.
+Relevant layout test should be ran while you’re making code changes to CyberCore and before uploading a patch to [bugs.webkit.org](https://bugs.webkit.org/).
 While [bugs.webkit.org](https://bugs.webkit.org/)’s Early Warning System will build and run tests on a set of configurations,
 individual patch authors are ultimately responsible for any test failures that their patches cause.
 
@@ -1274,9 +1274,9 @@ individual patch authors are ultimately responsible for any test failures that t
 
 ### Directory Structure
 
-[LayoutTests](https://github.com/WebKit/WebKit/tree/main/LayoutTests) directory is organized by the category of tests.
-For example, [LayoutTests/accessibility](https://github.com/WebKit/WebKit/tree/main/LayoutTests/accessibility) contains accessibility related tests,
-and [LayoutTests/fast/dom/HTMLAnchorElement](https://github.com/WebKit/WebKit/tree/main/LayoutTests/fast/dom/HTMLAnchorElement) contains
+[LayoutTests](https://github.com/CyberKit/CyberKit/tree/main/LayoutTests) directory is organized by the category of tests.
+For example, [LayoutTests/accessibility](https://github.com/CyberKit/CyberKit/tree/main/LayoutTests/accessibility) contains accessibility related tests,
+and [LayoutTests/fast/dom/HTMLAnchorElement](https://github.com/CyberKit/CyberKit/tree/main/LayoutTests/fast/dom/HTMLAnchorElement) contains
 tests for [the HTML anchor element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a).
 
 Any file that ends in `.html`, `.htm`, `.shtml`, `.xhtml`, `.mht`, `.xht`, `.xml`, `.svg`, or `.php` is considered as a test
@@ -1287,46 +1287,46 @@ When layout tests are ran, the test runner generates an output in the form of a 
 and it is compared against these expected results.
 
 In the case expected results may differ from one platform to another,
-the expected results for each test is stored in [LayoutTests/platform](https://github.com/WebKit/WebKit/tree/main/LayoutTests/platform).
+the expected results for each test is stored in [LayoutTests/platform](https://github.com/CyberKit/CyberKit/tree/main/LayoutTests/platform).
 The expected result of a given test exists in the corresponding directory in
-each subdirectory of [LayoutTests/platform](https://github.com/WebKit/WebKit/tree/main/LayoutTests/platform).
-For example, the expected result of [LayoutTests/svg/W3C-SVG-1.1/animate-elem-46-t.svg](https://github.com/WebKit/WebKit/blob/main/LayoutTests/svg/W3C-SVG-1.1/animate-elem-46-t.svg)
-for macOS Mojave is located at [LayoutTests/platform/mac-mojave/svg/W3C-SVG-1.1/animate-elem-46-t-expected.txt](https://github.com/WebKit/WebKit/blob/main/LayoutTests/platform/mac-mojave/svg/W3C-SVG-1.1/animate-elem-46-t-expected.txt).
+each subdirectory of [LayoutTests/platform](https://github.com/CyberKit/CyberKit/tree/main/LayoutTests/platform).
+For example, the expected result of [LayoutTests/svg/W3C-SVG-1.1/animate-elem-46-t.svg](https://github.com/CyberKit/CyberKit/blob/main/LayoutTests/svg/W3C-SVG-1.1/animate-elem-46-t.svg)
+for macOS Mojave is located at [LayoutTests/platform/mac-mojave/svg/W3C-SVG-1.1/animate-elem-46-t-expected.txt](https://github.com/CyberKit/CyberKit/blob/main/LayoutTests/platform/mac-mojave/svg/W3C-SVG-1.1/animate-elem-46-t-expected.txt).
 
 These platform directories have a fallback order.
-For example, running tests for WebKit2 on macOS Catalina will use the following fallback path from the most specific to most generic:
+For example, running tests for CyberKit2 on macOS Catalina will use the following fallback path from the most specific to most generic:
 
-* platform/mac-catalina-wk2 - Results for WebKit2 on macOS Catalina.
-* platform/mac-catalina - Results for WebKit2 and WebKitLegacy on macOS Catalina.
-* platform/mac-wk2 - Results for WebKit2 on all macOS.
+* platform/mac-catalina-wk2 - Results for CyberKit2 on macOS Catalina.
+* platform/mac-catalina - Results for CyberKit2 and CyberKitLegacy on macOS Catalina.
+* platform/mac-wk2 - Results for CyberKit2 on all macOS.
 * platform/mac - Results for all macOS.
-* platform/wk2 - Results for WebKit2 on every operating system.
+* platform/wk2 - Results for CyberKit2 on every operating system.
 * generic - Next to the test file.
 
 ### Imported Tests
 
-Tests under [LayoutTests/imported](https://github.com/WebKit/WebKit/tree/main/LayoutTests/imported) are imported from other repositories.
-**They should not be modified by WebKit patches** unless the change is made in respective repositories first.
+Tests under [LayoutTests/imported](https://github.com/CyberKit/CyberKit/tree/main/LayoutTests/imported) are imported from other repositories.
+**They should not be modified by CyberKit patches** unless the change is made in respective repositories first.
 
 Most notable is [Web Platform Tests](https://web-platform-tests.org/),
-which are imported under [LayoutTests/imported/w3c/web-platform-tests](https://github.com/WebKit/WebKit/tree/main/LayoutTests/imported/w3c/web-platform-tests).
+which are imported under [LayoutTests/imported/w3c/web-platform-tests](https://github.com/CyberKit/CyberKit/tree/main/LayoutTests/imported/w3c/web-platform-tests).
 These are cross browser vendor tests developed by W3C. Mozilla, Google, and Apple all contribute many tests to this shared test repository.
 
 ### HTTP Tests
 
-To open tests under [LayoutTests/http](https://github.com/WebKit/WebKit/tree/main/LayoutTests/http) or
-[LayoutTests/imported/w3c/web-platform-tests](https://github.com/WebKit/WebKit/tree/main/LayoutTests/imported/w3c/web-platform-tests),
-use [Tools/Scripts/open-layout-test](https://github.com/WebKit/WebKit/blob/main/Tools/Scripts/open-layout-test) with the path to a test.
+To open tests under [LayoutTests/http](https://github.com/CyberKit/CyberKit/tree/main/LayoutTests/http) or
+[LayoutTests/imported/w3c/web-platform-tests](https://github.com/CyberKit/CyberKit/tree/main/LayoutTests/imported/w3c/web-platform-tests),
+use [Tools/Scripts/open-layout-test](https://github.com/CyberKit/CyberKit/blob/main/Tools/Scripts/open-layout-test) with the path to a test.
 
-You can also manually start HTTP servers with [`Tools/Scripts/run-webkit-httpd`](https://github.com/WebKit/WebKit/blob/main/Tools/Scripts/run-webkit-httpd).
+You can also manually start HTTP servers with [`Tools/Scripts/run-webkit-httpd`](https://github.com/CyberKit/CyberKit/blob/main/Tools/Scripts/run-webkit-httpd).
 To stop the HTTP servers, exit the script (e.g. Control + C on macOS).
 
-Tests under [LayoutTests/http](https://github.com/WebKit/WebKit/tree/main/LayoutTests/http) are accessible at [http://127.0.0.1:8000](http://127.0.0.1:8000)
-except tests in [LayoutTests/http/wpt](https://github.com/WebKit/WebKit/tree/main/LayoutTests/http/wpt),
-which are available at [http://localhost:8800/WebKit/](http://localhost:8800/WebKit/) instead.
+Tests under [LayoutTests/http](https://github.com/CyberKit/CyberKit/tree/main/LayoutTests/http) are accessible at [http://127.0.0.1:8000](http://127.0.0.1:8000)
+except tests in [LayoutTests/http/wpt](https://github.com/CyberKit/CyberKit/tree/main/LayoutTests/http/wpt),
+which are available at [http://localhost:8800/CyberKit/](http://localhost:8800/CyberKit/) instead.
 
 The [Web Platform Tests](https://web-platform-tests.org/) imported under
-[LayoutTests/imported/w3c/web-platform-tests](https://github.com/WebKit/WebKit/tree/main/LayoutTests/imported/w3c/web-platform-tests)
+[LayoutTests/imported/w3c/web-platform-tests](https://github.com/CyberKit/CyberKit/tree/main/LayoutTests/imported/w3c/web-platform-tests)
 are accessible under HTTP at [http://localhost:8800/](http://localhost:8800/) and HTTPS at [http://localhost:9443/](http://localhost:9443/)
 
 Note that it's important to use the exact host names such as `127.0.0.1` and `localhost` above verbatim
@@ -1346,7 +1346,7 @@ For example, in order to just run `LayoutTests/fast/dom/Element/element-traversa
 Tools/Scripts/run-webkit-tests fast/dom/Element/element-traversal.html
 ```
 
-Because there are 50,000+ tests in WebKit,
+Because there are 50,000+ tests in CyberKit,
 you typically want to run a subset of tests that are relevant to your code change
 (e.g. `LayoutTests/storage/indexeddb/` if you’re working on IndexedDB) while developing the code change,
 and run all layout tests at the end on your local machine or rely on the Early Warning System on [bugs.webkit.org](https://bugs.webkit.org/) for more thorough testing.
@@ -1380,12 +1380,12 @@ so that `run-webkit-tests` will stop when the failure actually happens for the f
 
 ### Test Results
 
-Whenever tests do fail, run-webkit-tests will store results in `WebKitBuild/Debug/layout-test-results`
+Whenever tests do fail, run-webkit-tests will store results in `CyberKitBuild/Debug/layout-test-results`
 mirroring the same directory structure as `LayoutTests`.
 For example, the actual output produced for `LayoutTests/editing/inserting/typing-001.html`,
-if failed, will appear in `WebKitBuild/Debug/layout-test-results/editing/inserting/typing-001-actual.txt`.
+if failed, will appear in `CyberKitBuild/Debug/layout-test-results/editing/inserting/typing-001-actual.txt`.
 run-webkit-tests also generates a web page with the summary of results in
-`WebKitBuild/Debug/layout-test-results/results.html` and automatically tries to open it in Safari using the local build of WebKit.
+`CyberKitBuild/Debug/layout-test-results/results.html` and automatically tries to open it in Safari using the local build of CyberKit.
 
 > If Safari fails to launch, specify `--no-show-results` and open results.html file manually.
 
@@ -1405,13 +1405,13 @@ You can disable this feature by specifying `--no-new-test-results` e.g. when the
 
 ## Different Styles of Layout Tests
 
-There are multiple styles of layout tests in WebKit.
+There are multiple styles of layout tests in CyberKit.
 
 ### **Render tree dumps**
 
 This is the oldest style of layout tests, and the default mode of layout tests.
-It’s a text serialization of WebKit’s render tree and its output looks like
-[this](https://github.com/WebKit/WebKit/blob/main/LayoutTests/platform/mac/fast/dom/anchor-text-expected.txt):
+It’s a text serialization of CyberKit’s render tree and its output looks like
+[this](https://github.com/CyberKit/CyberKit/blob/main/LayoutTests/platform/mac/fast/dom/anchor-text-expected.txt):
 
 ```
 layer at (0,0) size 800x600
@@ -1445,7 +1445,7 @@ effectively enabling `--pixel` option for retries.
 These are tests that uses the plain text serialization of the test page as the output (as if the entire page’s content is copied as plain text).
 All these tests call `testRunner.dumpAsText` to trigger this behavior.
 The output typically contains a log of text or other informative output scripts in the page produced.
-For example, [LayoutTests/fast/dom/anchor-toString.html](https://github.com/WebKit/WebKit/blob/main/LayoutTests/fast/dom/anchor-toString.html) is written as follows:
+For example, [LayoutTests/fast/dom/anchor-toString.html](https://github.com/CyberKit/CyberKit/blob/main/LayoutTests/fast/dom/anchor-toString.html) is written as follows:
 
 ```html
 <a href="http://localhost/sometestfile.html" id="anchor">
@@ -1470,7 +1470,7 @@ A link!
 </script>
 ```
 
- and generates the following [output](https://github.com/WebKit/WebKit/blob/main/LayoutTests/fast/dom/anchor-toString-expected.txt):
+ and generates the following [output](https://github.com/CyberKit/CyberKit/blob/main/LayoutTests/fast/dom/anchor-toString-expected.txt):
 
 ```
 A link! 
@@ -1484,15 +1484,15 @@ Writing the result of the anchor's toString() method - http://localhost/sometest
 
 ### js-test.js and js-test-pre.js tests
 
-These are variants of dumpAsText test which uses WebKit’s assertion library:
-[LayoutTests/resources/js-test.js](https://github.com/WebKit/WebKit/blob/main/LayoutTests/resources/js-test.js)
-and [LayoutTests/resources/js-test-pre.js](https://github.com/WebKit/WebKit/blob/main/LayoutTests/resources/js-test-pre.js).
+These are variants of dumpAsText test which uses CyberKit’s assertion library:
+[LayoutTests/resources/js-test.js](https://github.com/CyberKit/CyberKit/blob/main/LayoutTests/resources/js-test.js)
+and [LayoutTests/resources/js-test-pre.js](https://github.com/CyberKit/CyberKit/blob/main/LayoutTests/resources/js-test-pre.js).
 It consists of shouldX function calls which takes two JavaScript code snippet which are then executed and outputs of which are compared.
 js-test.js is simply a new variant of js-test-pre.js that doesn’t require
-the inclusion of [LayoutTests/resources/js-test-post.js](https://github.com/WebKit/WebKit/blob/main/LayoutTests/resources/js-test-post.js) at the end.
+the inclusion of [LayoutTests/resources/js-test-post.js](https://github.com/CyberKit/CyberKit/blob/main/LayoutTests/resources/js-test-post.js) at the end.
 **Use js-test.js in new tests**, not js-test-pre.js.
 
-For example, [LayoutTests/fast/dom/Comment/remove.html](https://github.com/WebKit/WebKit/blob/main/LayoutTests/fast/dom/Comment/remove.html)
+For example, [LayoutTests/fast/dom/Comment/remove.html](https://github.com/CyberKit/CyberKit/blob/main/LayoutTests/fast/dom/Comment/remove.html)
 which tests [remove()](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove) method
 on [Comment node](https://developer.mozilla.org/en-US/docs/Web/API/Comment) is written as:
 
@@ -1517,7 +1517,7 @@ shouldBe('testDiv.childNodes.length', '0');
 <script src="../../../resources/js-test-post.js"></script>
 ```
 
-with the following [expected result](https://github.com/WebKit/WebKit/blob/main/LayoutTests/fast/dom/Comment/remove-expected.txt) (output):
+with the following [expected result](https://github.com/CyberKit/CyberKit/blob/main/LayoutTests/fast/dom/Comment/remove-expected.txt) (output):
 
 ```
 This tests the DOM 4 remove method on a Comment.
@@ -1538,7 +1538,7 @@ both of which are evaluated as JavaScript and then compared.
 
 Some old js-test-pre.js tests may put its test code in a separate JS file but we don’t do that anymore to keep all the test code in one place.
 
-[js-test.js](https://github.com/WebKit/WebKit/blob/main/LayoutTests/resources/js-test.js) and [js-test-pre.js](https://github.com/WebKit/WebKit/blob/main/LayoutTests/resources/js-test-pre.js) provide all kinds of other assertion and helper functions.
+[js-test.js](https://github.com/CyberKit/CyberKit/blob/main/LayoutTests/resources/js-test.js) and [js-test-pre.js](https://github.com/CyberKit/CyberKit/blob/main/LayoutTests/resources/js-test-pre.js) provide all kinds of other assertion and helper functions.
 Here are some examples:
 
 * `debug(msg)` - Inserts a debug / log string in the output.
@@ -1550,13 +1550,13 @@ Here are some examples:
 * `shouldBeNull(code)` - Shorthand for `shouldBe(code, 'null')`.
 * `shouldBeZero(code)` - Shorthand for `shouldBe(code, '0')`.
 * `shouldBeEqualToString(code, string)` - Similar to `shouldBe` but the second argument is not evaluated as string.
-* `finishJSTest()` - When js-test.js style test needs to do some async work, define the global variable named jsTestIsAsync and set it to true. When the test is done, call this function to notify the test runner (don’t call `testRunner.notifyDone` mentioned later directly). See [an example](https://github.com/WebKit/WebKit/blob/main/LayoutTests/fast/dom/iframe-innerWidth.html).
+* `finishJSTest()` - When js-test.js style test needs to do some async work, define the global variable named jsTestIsAsync and set it to true. When the test is done, call this function to notify the test runner (don’t call `testRunner.notifyDone` mentioned later directly). See [an example](https://github.com/CyberKit/CyberKit/blob/main/LayoutTests/fast/dom/iframe-innerWidth.html).
 
 **It’s important to note that these shouldX functions only add output strings that say PASS or FAIL. If the expected result also contains the same FAIL strings, then run-webkit-tests will consider the whole test file to have passed.**
 
 Another way to think about this is that `-expected.txt` files are baseline outputs, and baseline outputs can contain known failures.
 
-There is a helper script to create a template for a new js-test.js test. The following will create new test named `new-test.html` in [LayoutTests/fast/dom](https://github.com/WebKit/WebKit/tree/main/LayoutTests/fast/dom):
+There is a helper script to create a template for a new js-test.js test. The following will create new test named `new-test.html` in [LayoutTests/fast/dom](https://github.com/CyberKit/CyberKit/tree/main/LayoutTests/fast/dom):
 
 ```sh
 Tools/Scripts/make-new-script-test fast/dom/new-test.html
@@ -1565,9 +1565,9 @@ Tools/Scripts/make-new-script-test fast/dom/new-test.html
 ### dump-as-markup.js Tests
 
 A dump-as-markup.js test is yet another variant of dumpAsText test,
-which uses [LayoutTests/resources/dump-as-markup.js](https://github.com/WebKit/WebKit/blob/main/LayoutTests/resources/dump-as-markup.js).
+which uses [LayoutTests/resources/dump-as-markup.js](https://github.com/CyberKit/CyberKit/blob/main/LayoutTests/resources/dump-as-markup.js).
 This style of test is used when it’s desirable to compare the state of the DOM tree before and after some operations.
-For example, many tests under [LayoutTests/editing](https://github.com/WebKit/WebKit/tree/main/LayoutTests/editing)
+For example, many tests under [LayoutTests/editing](https://github.com/CyberKit/CyberKit/tree/main/LayoutTests/editing)
 use this style of testing to test complex DOM mutation operations such as pasting HTML from the users’ clipboard.
 dump-as-markup.js adds `Markup` on the global object and exposes a few helper functions.
 Like js-test.js tests, a test description can be specified via `Markup.description`.
@@ -1575,7 +1575,7 @@ The test then involves `Markup.dump(node, description)` to serialize the state o
 where `element` is either a DOM [node](https://developer.mozilla.org/en-US/docs/Web/API/Node)
 under which the state should be serialized or its [id](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id).
 
-For example, [LayoutTests/editing/inserting/insert-list-in-table-cell-01.html](https://github.com/WebKit/WebKit/blob/main/LayoutTests/editing/inserting/insert-list-in-table-cell-01.html) is written as follows:
+For example, [LayoutTests/editing/inserting/insert-list-in-table-cell-01.html](https://github.com/CyberKit/CyberKit/blob/main/LayoutTests/editing/inserting/insert-list-in-table-cell-01.html) is written as follows:
 
 ```html
 <!DOCTYPE html>
@@ -1594,7 +1594,7 @@ For example, [LayoutTests/editing/inserting/insert-list-in-table-cell-01.html](h
 </script>
 ```
 
-with the following [expected result](https://github.com/WebKit/WebKit/blob/main/LayoutTests/editing/inserting/insert-list-in-table-cell-01-expected.txt):
+with the following [expected result](https://github.com/CyberKit/CyberKit/blob/main/LayoutTests/editing/inserting/insert-list-in-table-cell-01-expected.txt):
 
 ```
 Insert list items in a single table cell:
@@ -1641,7 +1641,7 @@ This is yet another variant of dumpAsText test which uses the test harness of [W
 which is [W3C](https://www.w3.org/)’s official tests for the Web.
 There is an [extensive documentation](https://web-platform-tests.org/writing-tests/testharness-api.html) on how this harness works.
 
-> As mentioned above, do not modify tests in [LayoutTests/imported/w3c/web-platform-tests](https://github.com/WebKit/WebKit/tree/main/LayoutTests/imported/w3c/web-platform-tests)
+> As mentioned above, do not modify tests in [LayoutTests/imported/w3c/web-platform-tests](https://github.com/CyberKit/CyberKit/tree/main/LayoutTests/imported/w3c/web-platform-tests)
 unless the same test changes are made in Web Platform Tests’ primary repository.
 
 ### Reference Tests
@@ -1659,7 +1659,7 @@ A matching expected result or a mismatching expected result can be specified in 
 * The file specified by a HTML link element in the test file with `match` relation: `<link rel=match href=X>` where X is the relative file path is a matching expected result.
 * The file specified by a HTML link element in the test file with `mismatch` relation: `<link rel=mismatch href=X>` where X is the relative file path is a mismatching expected result.
 
-For example, [LayoutTests/imported/w3c/web-platform-tests/html/rendering/replaced-elements/images/space.html](https://github.com/WebKit/WebKit/blob/main/LayoutTests/imported/w3c/web-platform-tests/html/rendering/replaced-elements/images/space.html) specifies [space-ref.html](https://github.com/WebKit/WebKit/blob/main/LayoutTests/imported/w3c/web-platform-tests/html/rendering/replaced-elements/images/space-ref.html) in the same directory as the matching expected result as follows:
+For example, [LayoutTests/imported/w3c/web-platform-tests/html/rendering/replaced-elements/images/space.html](https://github.com/CyberKit/CyberKit/blob/main/LayoutTests/imported/w3c/web-platform-tests/html/rendering/replaced-elements/images/space.html) specifies [space-ref.html](https://github.com/CyberKit/CyberKit/blob/main/LayoutTests/imported/w3c/web-platform-tests/html/rendering/replaced-elements/images/space-ref.html) in the same directory as the matching expected result as follows:
 
 ```html
 <!doctype html>
@@ -1682,49 +1682,49 @@ span { background: blue; }
 
 Most layout tests are designed to be runnable inside a browser but run-webkit-tests uses a special program to run them.
 Our continuous integration system as well as the Early Warning System uses run-webkit-tests to run layout tests.
-In WebKit2, this is appropriately named [WebKitTestRunner](https://github.com/WebKit/WebKit/tree/main/Tools/WebKitTestRunner).
-In WebKit1 or WebKitLegacy, it’s [DumpRenderTree](https://github.com/WebKit/WebKit/tree/main/Tools/DumpRenderTree),
+In CyberKit2, this is appropriately named [CyberKitTestRunner](https://github.com/CyberKit/CyberKit/tree/main/Tools/CyberKitTestRunner).
+In CyberKit1 or CyberKitLegacy, it’s [DumpRenderTree](https://github.com/CyberKit/CyberKit/tree/main/Tools/DumpRenderTree),
 which is named after the very first type of layout tests, which generated the text representation of the render tree.
 
 ### Extra Interfaces Available in Test Runners
 
-Both WebKitTestRunner and DumpRenderTree expose a few extra interfaces to JavaScript on `window` (i.e. global object) in order to emulate user inputs,
+Both CyberKitTestRunner and DumpRenderTree expose a few extra interfaces to JavaScript on `window` (i.e. global object) in order to emulate user inputs,
 enable or disable a feature, or to improve the reliability of testing.
 
-* **[GCController](https://github.com/WebKit/WebKit/blob/main/Tools/WebKitTestRunner/InjectedBundle/Bindings/GCController.idl)**
+* **[GCController](https://github.com/CyberKit/CyberKit/blob/main/Tools/CyberKitTestRunner/InjectedBundle/Bindings/GCController.idl)**
     - `GCController.collect()` triggers a synchronous full garbage collection.
     This function is useful for testing crashes or erroneous premature collection of JS wrappers and leaks.
-* **[testRunner](https://github.com/WebKit/WebKit/blob/main/Tools/WebKitTestRunner/InjectedBundle/Bindings/TestRunner.idl)**
-    - TestRunner interface exposes many methods to control the behaviors of WebKitTestRunner and DumpRenderTree.
+* **[testRunner](https://github.com/CyberKit/CyberKit/blob/main/Tools/CyberKitTestRunner/InjectedBundle/Bindings/TestRunner.idl)**
+    - TestRunner interface exposes many methods to control the behaviors of CyberKitTestRunner and DumpRenderTree.
     Some the most commonly used methods are as follows:
     * `waitUntilDone()` / `notifyDone()` - These functions are useful when writing tests that involve asynchronous tasks
         which may require the test to continue running beyond when it finished loading.
-        `testRunner.waitUntilDone()` makes WebKitTestRunner and DumpRenderTree not end the test when a layout test has finished loading.
+        `testRunner.waitUntilDone()` makes CyberKitTestRunner and DumpRenderTree not end the test when a layout test has finished loading.
         The test continues until `testRunner.notifyDone()` is called.
-    * `dumpAsText(boolean dumpPixels)` - Makes WebKitTestRunner and DumpRenderTree output the plain text of the loaded page instead of the state of the render tree.
-    * `overridePreference(DOMString preference, DOMString value)` - Overrides WebKit’s [preferences](https://github.com/WebKit/WebKit/tree/main/Source/WTF/Scripts/Preferences).
-        For WebKitLegacy, these are defined in [Source/WebKitLegacy/mac/WebView/WebPreferences.h](https://github.com/WebKit/WebKit/tree/main/Source/WebKitLegacy/mac/WebView/WebPreferences.h) for macOS
-        and [Source/WebKitLegacy/win/WebPreferences.h](https://github.com/WebKit/WebKit/tree/main/Source/WebKitLegacy/win/WebPreferences.h) for Windows.
-* **[eventSender](https://github.com/WebKit/WebKit/blob/main/Tools/WebKitTestRunner/InjectedBundle/Bindings/EventSendingController.idl)**
+    * `dumpAsText(boolean dumpPixels)` - Makes CyberKitTestRunner and DumpRenderTree output the plain text of the loaded page instead of the state of the render tree.
+    * `overridePreference(DOMString preference, DOMString value)` - Overrides CyberKit’s [preferences](https://github.com/CyberKit/CyberKit/tree/main/Source/WTF/Scripts/Preferences).
+        For CyberKitLegacy, these are defined in [Source/CyberKitLegacy/mac/WebView/WebPreferences.h](https://github.com/CyberKit/CyberKit/tree/main/Source/CyberKitLegacy/mac/WebView/WebPreferences.h) for macOS
+        and [Source/CyberKitLegacy/win/WebPreferences.h](https://github.com/CyberKit/CyberKit/tree/main/Source/CyberKitLegacy/win/WebPreferences.h) for Windows.
+* **[eventSender](https://github.com/CyberKit/CyberKit/blob/main/Tools/CyberKitTestRunner/InjectedBundle/Bindings/EventSendingController.idl)**
     - Exposes methods to emulate mouse, keyboard, and touch actions.
-    **Use [ui-helpers.js](https://github.com/WebKit/WebKit/blob/main/LayoutTests/resources/ui-helper.js) script** instead of directly calling methods on this function.
+    **Use [ui-helpers.js](https://github.com/CyberKit/CyberKit/blob/main/LayoutTests/resources/ui-helper.js) script** instead of directly calling methods on this function.
     This will ensure the test will be most compatible with all the test configurations we have.
-* [**UIScriptController**](https://github.com/WebKit/WebKit/tree/main/Tools/TestRunnerShared/UIScriptContext/Bindings/UIScriptController.idl)
-     - Exposes methods to emulate user inputs like eventSender mostly on iOS WebKit2.
-     **Use [ui-helpers.js](https://github.com/WebKit/WebKit/blob/main/LayoutTests/resources/ui-helper.js) script** instead of directly calling methods on this function.
+* [**UIScriptController**](https://github.com/CyberKit/CyberKit/tree/main/Tools/TestRunnerShared/UIScriptContext/Bindings/UIScriptController.idl)
+     - Exposes methods to emulate user inputs like eventSender mostly on iOS CyberKit2.
+     **Use [ui-helpers.js](https://github.com/CyberKit/CyberKit/blob/main/LayoutTests/resources/ui-helper.js) script** instead of directly calling methods on this function.
      This will ensure the test will be most compatible with all the test configurations we have.
-* **[textInputController](https://github.com/WebKit/WebKit/blob/main/Tools/WebKitTestRunner/InjectedBundle/Bindings/TextInputController.idl)**
+* **[textInputController](https://github.com/CyberKit/CyberKit/blob/main/Tools/CyberKitTestRunner/InjectedBundle/Bindings/TextInputController.idl)**
     - Exposes methods to test [input methods](https://en.wikipedia.org/wiki/Input_method).
 
-Additionally, [WebCore/testing](https://github.com/WebKit/WebKit/tree/main/Source/WebCore/testing) exposes a few testing hooks to test its internals:
+Additionally, [CyberCore/testing](https://github.com/CyberKit/CyberKit/tree/main/Source/CyberCore/testing) exposes a few testing hooks to test its internals:
 
-* **[internals](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/testing/Internals.idl)**
-    - Exposes various hooks into WebCore that shouldn’t be part of WebKit or WebKitLegacy API.
-* [**internals.settings**](https://github.com/WebKit/WebKit/blob/main/Source/WebCore/testing/InternalSettings.idl)
-    - Exposes various WebCore settings and let tests override them.
-    Note that WebKit layer code may depend on preferences in UI process and the aforementioned `testRunner.overridePreference` may need to be used instead.
+* **[internals](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/testing/Internals.idl)**
+    - Exposes various hooks into CyberCore that shouldn’t be part of CyberKit or CyberKitLegacy API.
+* [**internals.settings**](https://github.com/CyberKit/CyberKit/blob/main/Source/CyberCore/testing/InternalSettings.idl)
+    - Exposes various CyberCore settings and let tests override them.
+    Note that CyberKit layer code may depend on preferences in UI process and the aforementioned `testRunner.overridePreference` may need to be used instead.
     It’s in fact preferable to override the equivalent preference via `testRunner.overridePreference`
-    unless you know for sure WebKit or WebKitLegacy layer of code isn’t affected by the setting you’re overriding.
+    unless you know for sure CyberKit or CyberKitLegacy layer of code isn’t affected by the setting you’re overriding.
 
 ### Enabling or Disabling a Feature in Test Runners
 
@@ -1745,23 +1745,23 @@ FIXME: Write how to investigate a test failure.
 
 ## Debugging Layout Tests in Xcode
 
-The easiest way to debug a layout test is with WebKitTestRunner or DumpRenderTree.
-In Product > Scheme, select “Everything up to WebKit + Tools”.
+The easiest way to debug a layout test is with CyberKitTestRunner or DumpRenderTree.
+In Product > Scheme, select “Everything up to CyberKit + Tools”.
 
 In Product > Scheme > Edit Scheme, open “Run” tab.
-Pick WebKitTestRunner or DumpRenderTree, whichever is desired in “Executable”.
+Pick CyberKitTestRunner or DumpRenderTree, whichever is desired in “Executable”.
 
 ![Screenshot of specifying DumpRenderTree as the target of "Run" scheme](resources/xcode-scheme-dumprendertree.png)
 Go to Arguments and specify the path to the layout tests being debugged relative to where the build directory is located.
-e.g. `../../LayoutTests/fast/dom/Element/element-traversal.html` if `WebKitBuild/Debug` is the build directory.
+e.g. `../../LayoutTests/fast/dom/Element/element-traversal.html` if `CyberKitBuild/Debug` is the build directory.
 ![Screenshot of Xcode specifying a layout test in an argument to DumpRenderTree](resources/xcode-scheme-layout-test.png)
 You may want to specify OS_ACTIVITY_MODE environmental variable to “disable”
 in order to suppress all the system logging that happens during the debugging session.
 
-You may also want to specify `--no-timeout` option to prevent WebKitTestRunner or DumpRenderTree
+You may also want to specify `--no-timeout` option to prevent CyberKitTestRunner or DumpRenderTree
 to stop the test after 30 seconds if you’re stepping through code.
 
-Once this is done, you can run WebKitTestRunner or DumpRenderTree by going to Product > Perform Action > Run without Building.
+Once this is done, you can run CyberKitTestRunner or DumpRenderTree by going to Product > Perform Action > Run without Building.
 
 Clicking on “Run” button may be significantly slower due to Xcode re-building every project and framework each time.
 You can disable this behavior by going to “Build” tab and unchecking boxes for all the frameworks involved for “Run”:
@@ -1769,20 +1769,20 @@ You can disable this behavior by going to “Build” tab and unchecking boxes f
 
 ### Attaching to WebContent Process
 
-You may find Xcode fails to attach to WebContent or Networking process in the case of WebKitTestRunner.
+You may find Xcode fails to attach to WebContent or Networking process in the case of CyberKitTestRunner.
 In those cases, attach a breakpoint in UIProcess code
-such as [`TestController::runTest` in WebKitTestRunner right before `TestInvocation::invoke` is called](https://github.com/WebKit/WebKit/blob/5f4c01f41527547ce2f82b812ad478e12b51239d/Tools/WebKitTestRunner/TestController.cpp#L1522).
+such as [`TestController::runTest` in CyberKitTestRunner right before `TestInvocation::invoke` is called](https://github.com/CyberKit/CyberKit/blob/5f4c01f41527547ce2f82b812ad478e12b51239d/Tools/CyberKitTestRunner/TestController.cpp#L1522).
 Once breakpoint is hit in the UIProcess, attach to `WebContent.Development` or `Networking.Development` process manually in Xcode via Debug > Attach to Process.
 
 # Dive into API tests
 
 FIXME: Talk about how to debug API tests.
 
-# Logging in WebKit
+# Logging in CyberKit
 
 ## Setup
 
-Each framework (WebCore, WebKit, WebKitLegacy, WTF) enable their own logging infrastructure independently (though the infrastructure itself is shared). If you want to log a message, `#include` the relevant framework's `Logging.h` header. Then, you can use the macros below.
+Each framework (CyberCore, CyberKit, CyberKitLegacy, WTF) enable their own logging infrastructure independently (though the infrastructure itself is shared). If you want to log a message, `#include` the relevant framework's `Logging.h` header. Then, you can use the macros below.
 
 Beware that you can't `#include` multiple framework's `Logging.h` headers at the same time - they each define a macro `LOG_CHANNEL_PREFIX` which will conflict with each other. Only `#include` the `Logging.h` header from your specific framework.
 
@@ -1790,11 +1790,11 @@ If you want to do more advanced operations, like searching through the list of l
 
 ```
 #include "LogInitialization.h"
-#include <WebCore/LogInitialization.h>
+#include <CyberCore/LogInitialization.h>
 #include <WTF/LogInitialization.h>
 ```
 
-Indeed, WebKit does this to initialize all frameworks' log channels during Web Process startup.
+Indeed, CyberKit does this to initialize all frameworks' log channels during Web Process startup.
 
 ## Logging messages
 
@@ -1866,24 +1866,24 @@ WEBKIT_DEBUG=Scrolling Tools/Scripts/run-minibrowser --gtk --debug
 On macOS, you can, for example, enable the `Language` log channel with these terminal commands:
 
 ```
-for identifier in com.apple.WebKit.WebContent.Development com.apple.WebKit.WebContent org.webkit.MiniBrowser com.apple.WebKit.WebKitTestRunner org.webkit.DumpRenderTree -g /Users/$USER/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari.plist; do
-    for key in WTFLogging WebCoreLogging WebKitLogging WebKit2Logging; do
+for identifier in com.apple.CyberKit.WebContent.Development com.apple.CyberKit.WebContent org.webkit.MiniBrowser com.apple.CyberKit.CyberKitTestRunner org.webkit.DumpRenderTree -g /Users/$USER/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari.plist; do
+    for key in WTFLogging CyberCoreLogging CyberKitLogging CyberKit2Logging; do
         defaults write ${identifier} "${key}" "Language"
     done
 done
 ```
 
-You may also need to specify these strings to `com.apple.WebKit.WebContent.Development`, the global domain, or the Safari container, depending on what you're running.
+You may also need to specify these strings to `com.apple.CyberKit.WebContent.Development`, the global domain, or the Safari container, depending on what you're running.
 
 You may also pass this key and value as an argument:
 
 ```
-Tools/Scripts/run-minibrowser --debug -WebCoreLogging Scrolling
+Tools/Scripts/run-minibrowser --debug -CyberCoreLogging Scrolling
 ```
 
 ### Windows
 
-Set the `WebCoreLogging` environment variable.
+Set the `CyberCoreLogging` environment variable.
 
 ## Adding a new log channel
 

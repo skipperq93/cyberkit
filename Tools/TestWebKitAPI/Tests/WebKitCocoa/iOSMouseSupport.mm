@@ -33,11 +33,11 @@
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/WKWebpagePreferencesPrivate.h>
-#import <WebKit/WebKit.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebpagePreferencesPrivate.h>
+#import <CyberKit/CyberKit.h>
 #import <pal/spi/cocoa/RevealSPI.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/MonotonicTime.h>
@@ -170,7 +170,7 @@ TEST(iOSMouseSupport, DoNotChangeSelectionWithRightClick)
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(iOSMouseSupport, RightClickOutsideOfTextNodeDoesNotSelect)
@@ -189,7 +189,7 @@ TEST(iOSMouseSupport, RightClickOutsideOfTextNodeDoesNotSelect)
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(iOSMouseSupport, RightClickDoesNotShowMenuIfPreventDefault)
@@ -225,7 +225,7 @@ TEST(iOSMouseSupport, RightClickDoesNotShowMenuIfPreventDefault)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(iOSMouseSupport, TrackButtonMaskFromTouchStart)
@@ -266,7 +266,7 @@ TEST(iOSMouseSupport, TrackButtonMaskFromTouchStart)
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(iOSMouseSupport, MouseTimestampTimebase)
@@ -311,7 +311,7 @@ TEST(iOSMouseSupport, MouseTimestampTimebase)
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 TEST(iOSMouseSupport, EndedTouchesTriggerClick)
@@ -409,7 +409,7 @@ TEST(iOSMouseSupport, MouseDidMoveOverElement)
     [gesture _hoverEntered:touchSet.get() withEvent:event.get()];
     [contentView mouseGestureRecognizerChanged:gesture];
 
-    TestWebKitAPI::Util::run(&mouseDidMoveOverElement);
+    TestCyberKitAPI::Util::run(&mouseDidMoveOverElement);
 
     EXPECT_TRUE(mouseDidMoveOverElement);
     EXPECT_NOT_NULL(hitTestResult);
@@ -438,7 +438,7 @@ TEST(iOSMouseSupport, SelectionUpdatesBeforeContextMenuAppears)
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 constexpr auto largeResponsiveHelloMarkup = "<meta name='viewport' content='width=device-width'><span style='font-size: 400px;'>Hello</span>";
@@ -456,7 +456,7 @@ TEST(iOSMouseSupport, DisablingTextIteractionPreventsSelectionWhenShowingContext
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("", [webView stringByEvaluatingJavaScript:@"getSelection().toString()"]);
 }
 
@@ -471,7 +471,7 @@ TEST(iOSMouseSupport, ShowingContextMenuSelectsEditableText)
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("Hello", [webView stringByEvaluatingJavaScript:@"getSelection().toString()"]);
     EXPECT_FALSE(CGRectIsEmpty([webView _uiTextSelectionRects].firstObject.CGRectValue));
 }
@@ -486,7 +486,7 @@ TEST(iOSMouseSupport, ShowingContextMenuSelectsNonEditableText)
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     EXPECT_WK_STREQ("Hello", [webView stringByEvaluatingJavaScript:@"getSelection().toString()"]);
     EXPECT_FALSE(CGRectIsEmpty([webView _uiTextSelectionRects].firstObject.CGRectValue));
 }
@@ -522,7 +522,7 @@ TEST(iOSMouseSupport, WebsiteMouseEventPolicies)
             done = true;
         }];
 
-        TestWebKitAPI::Util::run(&done);
+        TestCyberKitAPI::Util::run(&done);
     };
 
     // By default, a mouse should generate mouse events.
@@ -573,7 +573,7 @@ TEST(iOSMouseSupport, MouseInitiallyDisconnected)
     [mouseDeviceObserver startWithCompletionHandler:^{
         didStartMouseDeviceObserver = true;
     }];
-    TestWebKitAPI::Util::run(&didStartMouseDeviceObserver);
+    TestCyberKitAPI::Util::run(&didStartMouseDeviceObserver);
 
     [mouseDeviceObserver _setHasMouseDeviceForTesting:NO];
 
@@ -608,7 +608,7 @@ TEST(iOSMouseSupport, MouseInitiallyConnected)
     [mouseDeviceObserver startWithCompletionHandler:^{
         didStartMouseDeviceObserver = true;
     }];
-    TestWebKitAPI::Util::run(&didStartMouseDeviceObserver);
+    TestCyberKitAPI::Util::run(&didStartMouseDeviceObserver);
 
     [mouseDeviceObserver _setHasMouseDeviceForTesting:YES];
 
@@ -643,7 +643,7 @@ TEST(iOSMouseSupport, MouseLaterDisconnected)
     [mouseDeviceObserver startWithCompletionHandler:^{
         didStartMouseDeviceObserver = true;
     }];
-    TestWebKitAPI::Util::run(&didStartMouseDeviceObserver);
+    TestCyberKitAPI::Util::run(&didStartMouseDeviceObserver);
 
     [mouseDeviceObserver _setHasMouseDeviceForTesting:YES];
 
@@ -680,7 +680,7 @@ TEST(iOSMouseSupport, MouseLaterConnected)
     [mouseDeviceObserver startWithCompletionHandler:^{
         didStartMouseDeviceObserver = true;
     }];
-    TestWebKitAPI::Util::run(&didStartMouseDeviceObserver);
+    TestCyberKitAPI::Util::run(&didStartMouseDeviceObserver);
 
     [mouseDeviceObserver _setHasMouseDeviceForTesting:NO];
 

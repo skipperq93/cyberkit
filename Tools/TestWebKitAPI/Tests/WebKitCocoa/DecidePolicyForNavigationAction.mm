@@ -31,10 +31,10 @@
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
 #import "TestProtocol.h"
-#import <WebKit/WKNavigationActionPrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/_WKHitTestResult.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKNavigationActionPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/_WKHitTestResult.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RetainPtr.h>
 
@@ -96,7 +96,7 @@ static NSString *secondURL = @"data:text/html,Second";
 
 @end
 
-TEST(WebKit, DecidePolicyForNavigationActionReload)
+TEST(CyberKit, DecidePolicyForNavigationActionReload)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
@@ -109,11 +109,11 @@ TEST(WebKit, DecidePolicyForNavigationActionReload)
 
     finishedNavigation = false;
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:firstURL]]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     decidedPolicy = false;
     [webView reload];
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
 
     EXPECT_EQ(WKNavigationTypeReload, [action navigationType]);
     EXPECT_TRUE([action sourceFrame] != [action targetFrame]);
@@ -126,7 +126,7 @@ TEST(WebKit, DecidePolicyForNavigationActionReload)
     action = nullptr;
 }
 
-TEST(WebKit, DecidePolicyForNavigationActionReloadFromOrigin)
+TEST(CyberKit, DecidePolicyForNavigationActionReloadFromOrigin)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
@@ -139,11 +139,11 @@ TEST(WebKit, DecidePolicyForNavigationActionReloadFromOrigin)
 
     finishedNavigation = false;
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:firstURL]]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     decidedPolicy = false;
     [webView reloadFromOrigin];
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
 
     EXPECT_EQ(WKNavigationTypeReload, [action navigationType]);
     EXPECT_TRUE([action sourceFrame] != [action targetFrame]);
@@ -156,7 +156,7 @@ TEST(WebKit, DecidePolicyForNavigationActionReloadFromOrigin)
     action = nullptr;
 }
 
-TEST(WebKit, DecidePolicyForNavigationActionGoBack)
+TEST(CyberKit, DecidePolicyForNavigationActionGoBack)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
@@ -169,15 +169,15 @@ TEST(WebKit, DecidePolicyForNavigationActionGoBack)
 
     finishedNavigation = false;
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:firstURL]]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     finishedNavigation = false;
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:secondURL]]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     decidedPolicy = false;
     [webView goBack];
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
 
     EXPECT_EQ(WKNavigationTypeBackForward, [action navigationType]);
     EXPECT_TRUE([action sourceFrame] != [action targetFrame]);
@@ -190,7 +190,7 @@ TEST(WebKit, DecidePolicyForNavigationActionGoBack)
     action = nullptr;
 }
 
-TEST(WebKit, DecidePolicyForNavigationActionGoForward)
+TEST(CyberKit, DecidePolicyForNavigationActionGoForward)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
@@ -203,19 +203,19 @@ TEST(WebKit, DecidePolicyForNavigationActionGoForward)
 
     finishedNavigation = false;
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:firstURL]]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     finishedNavigation = false;
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:secondURL]]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     finishedNavigation = false;
     [webView goBack];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     decidedPolicy = false;
     [webView goForward];
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
 
     EXPECT_EQ(WKNavigationTypeBackForward, [action navigationType]);
     EXPECT_TRUE([action sourceFrame] != [action targetFrame]);
@@ -228,7 +228,7 @@ TEST(WebKit, DecidePolicyForNavigationActionGoForward)
     action = nullptr;
 }
 
-TEST(WebKit, DecidePolicyForNavigationActionOpenNewWindowAndDeallocSourceWebView)
+TEST(CyberKit, DecidePolicyForNavigationActionOpenNewWindowAndDeallocSourceWebView)
 {
     auto controller = adoptNS([[DecidePolicyForNavigationActionController alloc] init]);
 
@@ -243,12 +243,12 @@ TEST(WebKit, DecidePolicyForNavigationActionOpenNewWindowAndDeallocSourceWebView
 
         didCreateWebView = false;
         [webView loadHTMLString:@"<script>window.open('http://webkit.org/destination.html')</script>" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
-        TestWebKitAPI::Util::run(&didCreateWebView);
+        TestCyberKitAPI::Util::run(&didCreateWebView);
     }
 
     decidedPolicy = false;
     [newWebView setNavigationDelegate:controller.get()];
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
 
     EXPECT_EQ(WKNavigationTypeOther, [action navigationType]);
     EXPECT_TRUE([action sourceFrame] != [action targetFrame]);
@@ -260,11 +260,11 @@ TEST(WebKit, DecidePolicyForNavigationActionOpenNewWindowAndDeallocSourceWebView
 }
 
 #if WK_HAVE_C_SPI
-TEST(WebKit, DecidePolicyForNewWindowAction)
+TEST(CyberKit, DecidePolicyForNewWindowAction)
 {
     auto context = adoptWK(WKContextCreateWithConfiguration(nullptr));
 
-    TestWebKitAPI::PlatformWebView webView(context.get());
+    TestCyberKitAPI::PlatformWebView webView(context.get());
 
     WKPagePolicyClientV1 policyClient;
     memset(&policyClient, 0, sizeof(policyClient));
@@ -278,11 +278,11 @@ TEST(WebKit, DecidePolicyForNewWindowAction)
 
     WKPageLoadHTMLString(webView.page(), adoptWK(WKStringCreateWithUTF8CString("<body onload='anchorTag.click()'><a href='https://webkit.org/' id='anchorTag' target=_blank>link</a></body>")).get(), nullptr);
 
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
 }
 #endif // WK_HAVE_C_SPI
 
-TEST(WebKit, DecidePolicyForNavigationActionForTargetedHyperlink)
+TEST(CyberKit, DecidePolicyForNavigationActionForTargetedHyperlink)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
@@ -295,11 +295,11 @@ TEST(WebKit, DecidePolicyForNavigationActionForTargetedHyperlink)
 
     finishedNavigation = false;
     [webView loadHTMLString:@"<a style=\"display: block; height: 100%\" href=\"https://webkit.org/destination2.html\" target=\"B\">" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     didCreateWebView = false;
     [webView evaluateJavaScript:@"window.open(\"https://webkit.org/destination1.html\", \"B\")" completionHandler:nil];
-    TestWebKitAPI::Util::run(&didCreateWebView);
+    TestCyberKitAPI::Util::run(&didCreateWebView);
 
     EXPECT_EQ(WKNavigationTypeOther, [action navigationType]);
     EXPECT_TRUE([action sourceFrame] != [action targetFrame]);
@@ -312,14 +312,14 @@ TEST(WebKit, DecidePolicyForNavigationActionForTargetedHyperlink)
     // Wait for newWebView to ask to load its initial document.
     decidedPolicy = false;
     [newWebView setNavigationDelegate:controller.get()];
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
 
     decidedPolicy = false;
     [newWebView setNavigationDelegate:controller.get()];
     NSPoint clickPoint = NSMakePoint(100, 100);
     [[webView hitTest:clickPoint] mouseDown:[NSEvent mouseEventWithType:NSEventTypeLeftMouseDown location:clickPoint modifierFlags:0 timestamp:0 windowNumber:[window windowNumber] context:nil eventNumber:0 clickCount:1 pressure:1]];
     [[webView hitTest:clickPoint] mouseUp:[NSEvent mouseEventWithType:NSEventTypeLeftMouseUp location:clickPoint modifierFlags:0 timestamp:0 windowNumber:[window windowNumber] context:nil eventNumber:0 clickCount:1 pressure:1]];
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
 
     EXPECT_EQ(WKNavigationTypeLinkActivated, [action navigationType]);
     EXPECT_TRUE([action sourceFrame] != [action targetFrame]);
@@ -338,7 +338,7 @@ TEST(WebKit, DecidePolicyForNavigationActionForTargetedHyperlink)
     action = nullptr;
 }
 
-TEST(WebKit, DecidePolicyForNavigationActionForLoadHTMLStringAllow)
+TEST(CyberKit, DecidePolicyForNavigationActionForLoadHTMLStringAllow)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
@@ -352,11 +352,11 @@ TEST(WebKit, DecidePolicyForNavigationActionForLoadHTMLStringAllow)
     finishedNavigation = false;
     decidedPolicy = false;
     [webView loadHTMLString:@"TEST" baseURL:[NSURL URLWithString:@"about:blank"]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
     EXPECT_TRUE(decidedPolicy);
 }
 
-TEST(WebKit, DecidePolicyForNavigationActionForLoadHTMLStringDeny)
+TEST(CyberKit, DecidePolicyForNavigationActionForLoadHTMLStringDeny)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
@@ -371,12 +371,12 @@ TEST(WebKit, DecidePolicyForNavigationActionForLoadHTMLStringDeny)
     finishedNavigation = false;
     decidedPolicy = false;
     [webView loadHTMLString:@"TEST" baseURL:[NSURL URLWithString:@"about:blank"]];
-    TestWebKitAPI::Util::runFor(0.5_s);
+    TestCyberKitAPI::Util::runFor(0.5_s);
     EXPECT_FALSE(finishedNavigation);
     shouldCancelNavigation = false;
 }
 
-TEST(WebKit, DecidePolicyForNavigationActionForTargetedWindowOpen)
+TEST(CyberKit, DecidePolicyForNavigationActionForTargetedWindowOpen)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
@@ -389,11 +389,11 @@ TEST(WebKit, DecidePolicyForNavigationActionForTargetedWindowOpen)
 
     finishedNavigation = false;
     [webView loadHTMLString:@"<a style=\"display: block; height: 100%\" href=\"javascript:window.open('https://webkit.org/destination2.html', 'B')\">" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     didCreateWebView = false;
     [webView evaluateJavaScript:@"window.open(\"https://webkit.org/destination1.html\", \"B\")" completionHandler:nil];
-    TestWebKitAPI::Util::run(&didCreateWebView);
+    TestCyberKitAPI::Util::run(&didCreateWebView);
 
     EXPECT_EQ(WKNavigationTypeOther, [action navigationType]);
     EXPECT_TRUE([action sourceFrame] != [action targetFrame]);
@@ -406,14 +406,14 @@ TEST(WebKit, DecidePolicyForNavigationActionForTargetedWindowOpen)
     // Wait for newWebView to ask to load its initial document.
     decidedPolicy = false;
     [newWebView setNavigationDelegate:controller.get()];
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
 
     decidedPolicy = false;
     [newWebView setNavigationDelegate:controller.get()];
     NSPoint clickPoint = NSMakePoint(100, 100);
     [[webView hitTest:clickPoint] mouseDown:[NSEvent mouseEventWithType:NSEventTypeLeftMouseDown location:clickPoint modifierFlags:0 timestamp:0 windowNumber:[window windowNumber] context:nil eventNumber:0 clickCount:1 pressure:1]];
     [[webView hitTest:clickPoint] mouseUp:[NSEvent mouseEventWithType:NSEventTypeLeftMouseUp location:clickPoint modifierFlags:0 timestamp:0 windowNumber:[window windowNumber] context:nil eventNumber:0 clickCount:1 pressure:1]];
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
 
     EXPECT_EQ(WKNavigationTypeOther, [action navigationType]);
     EXPECT_TRUE([action sourceFrame] != [action targetFrame]);
@@ -427,7 +427,7 @@ TEST(WebKit, DecidePolicyForNavigationActionForTargetedWindowOpen)
     action = nullptr;
 }
 
-TEST(WebKit, DecidePolicyForNavigationActionForTargetedFormSubmission)
+TEST(CyberKit, DecidePolicyForNavigationActionForTargetedFormSubmission)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
@@ -440,11 +440,11 @@ TEST(WebKit, DecidePolicyForNavigationActionForTargetedFormSubmission)
 
     finishedNavigation = false;
     [webView loadHTMLString:@"<form action=\"https://webkit.org/destination1.html\" target=\"B\"><input type=\"submit\" name=\"submit\" value=\"Submit\" style=\"-webkit-appearance: none; height: 100%; width: 100%\"></form>" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     didCreateWebView = false;
     [webView evaluateJavaScript:@"window.open(\"https://webkit.org/destination2.html\", \"B\")" completionHandler:nil];
-    TestWebKitAPI::Util::run(&didCreateWebView);
+    TestCyberKitAPI::Util::run(&didCreateWebView);
 
     EXPECT_EQ(WKNavigationTypeOther, [action navigationType]);
     EXPECT_TRUE([action sourceFrame] != [action targetFrame]);
@@ -457,13 +457,13 @@ TEST(WebKit, DecidePolicyForNavigationActionForTargetedFormSubmission)
     // Wait for newWebView to ask to load its initial document.
     decidedPolicy = false;
     [newWebView setNavigationDelegate:controller.get()];
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
 
     decidedPolicy = false;
     NSPoint clickPoint = NSMakePoint(100, 100);
     [[webView hitTest:clickPoint] mouseDown:[NSEvent mouseEventWithType:NSEventTypeLeftMouseDown location:clickPoint modifierFlags:0 timestamp:0 windowNumber:[window windowNumber] context:nil eventNumber:0 clickCount:1 pressure:1]];
     [[webView hitTest:clickPoint] mouseUp:[NSEvent mouseEventWithType:NSEventTypeLeftMouseUp location:clickPoint modifierFlags:0 timestamp:0 windowNumber:[window windowNumber] context:nil eventNumber:0 clickCount:1 pressure:1]];
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
 
     EXPECT_EQ(WKNavigationTypeFormSubmitted, [action navigationType]);
     EXPECT_TRUE([action sourceFrame] != [action targetFrame]);
@@ -504,14 +504,14 @@ static void runDecidePolicyForNavigationActionForHyperlinkThatRedirects(ShouldEn
     [TestProtocol registerWithScheme:@"http"];
     finishedNavigation = false;
     [webView loadHTMLString:@"<a style=\"display: block; height: 100%\" href=\"http://redirect/?result\">" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     decidedPolicy = false;
     [newWebView setNavigationDelegate:controller.get()];
     NSPoint clickPoint = NSMakePoint(100, 100);
     [[webView hitTest:clickPoint] mouseDown:[NSEvent mouseEventWithType:NSEventTypeLeftMouseDown location:clickPoint modifierFlags:0 timestamp:0 windowNumber:[window windowNumber] context:nil eventNumber:0 clickCount:1 pressure:1]];
     [[webView hitTest:clickPoint] mouseUp:[NSEvent mouseEventWithType:NSEventTypeLeftMouseUp location:clickPoint modifierFlags:0 timestamp:0 windowNumber:[window windowNumber] context:nil eventNumber:0 clickCount:1 pressure:1]];
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
 
     EXPECT_EQ(WKNavigationTypeLinkActivated, [action navigationType]);
     EXPECT_TRUE([action sourceFrame] == [action targetFrame]);
@@ -530,7 +530,7 @@ static void runDecidePolicyForNavigationActionForHyperlinkThatRedirects(ShouldEn
 
     // Wait to decide policy for redirect.
     decidedPolicy = false;
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
 
     EXPECT_EQ(WKNavigationTypeLinkActivated, [action navigationType]);
     EXPECT_TRUE([action sourceFrame] == [action targetFrame]);
@@ -546,17 +546,17 @@ static void runDecidePolicyForNavigationActionForHyperlinkThatRedirects(ShouldEn
     action = nullptr;
 }
 
-TEST(WebKit, DecidePolicyForNavigationActionForHyperlinkThatRedirectsWithoutPSON)
+TEST(CyberKit, DecidePolicyForNavigationActionForHyperlinkThatRedirectsWithoutPSON)
 {
     runDecidePolicyForNavigationActionForHyperlinkThatRedirects(ShouldEnableProcessSwap::No);
 }
 
-TEST(WebKit, DecidePolicyForNavigationActionForHyperlinkThatRedirectsWithPSON)
+TEST(CyberKit, DecidePolicyForNavigationActionForHyperlinkThatRedirectsWithPSON)
 {
     runDecidePolicyForNavigationActionForHyperlinkThatRedirects(ShouldEnableProcessSwap::Yes);
 }
 
-TEST(WebKit, DecidePolicyForNavigationActionForPOSTFormSubmissionThatRedirectsToGET)
+TEST(CyberKit, DecidePolicyForNavigationActionForPOSTFormSubmissionThatRedirectsToGET)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
@@ -569,12 +569,12 @@ TEST(WebKit, DecidePolicyForNavigationActionForPOSTFormSubmissionThatRedirectsTo
 
     finishedNavigation = false;
     [webView loadHTMLString:@"<form action=\"http://redirect/?result\" method=\"POST\"><input type=\"submit\" name=\"submitButton\" value=\"Submit\"></form>" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     [TestProtocol registerWithScheme:@"http"];
     decidedPolicy = false;
     [webView evaluateJavaScript:@"document.forms[0].submit()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
 
     EXPECT_EQ(WKNavigationTypeFormSubmitted, [action navigationType]);
     EXPECT_TRUE([action sourceFrame] == [action targetFrame]);
@@ -587,7 +587,7 @@ TEST(WebKit, DecidePolicyForNavigationActionForPOSTFormSubmissionThatRedirectsTo
 
     // Wait to decide policy for redirect.
     decidedPolicy = false;
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
 
     EXPECT_EQ(WKNavigationTypeFormSubmitted, [action navigationType]);
     EXPECT_TRUE([action sourceFrame] == [action targetFrame]);
@@ -603,7 +603,7 @@ TEST(WebKit, DecidePolicyForNavigationActionForPOSTFormSubmissionThatRedirectsTo
     action = nullptr;
 }
 
-TEST(WebKit, DecidePolicyForNavigationActionForPOSTFormSubmissionThatRedirectsToPOST)
+TEST(CyberKit, DecidePolicyForNavigationActionForPOSTFormSubmissionThatRedirectsToPOST)
 {
     auto webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
 
@@ -616,12 +616,12 @@ TEST(WebKit, DecidePolicyForNavigationActionForPOSTFormSubmissionThatRedirectsTo
 
     finishedNavigation = false;
     [webView loadHTMLString:@"<form action=\"http://307-redirect/?result\" method=\"POST\"><input type=\"submit\" name=\"submitButton\" value=\"Submit\"></form>" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
-    TestWebKitAPI::Util::run(&finishedNavigation);
+    TestCyberKitAPI::Util::run(&finishedNavigation);
 
     [TestProtocol registerWithScheme:@"http"];
     decidedPolicy = false;
     [webView evaluateJavaScript:@"document.forms[0].submit()" completionHandler:nil];
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
 
     EXPECT_EQ(WKNavigationTypeFormSubmitted, [action navigationType]);
     EXPECT_TRUE([action sourceFrame] == [action targetFrame]);
@@ -634,7 +634,7 @@ TEST(WebKit, DecidePolicyForNavigationActionForPOSTFormSubmissionThatRedirectsTo
 
     // Wait to decide policy for redirect.
     decidedPolicy = false;
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
 
     EXPECT_EQ(WKNavigationTypeFormSubmitted, [action navigationType]);
     EXPECT_TRUE([action sourceFrame] == [action targetFrame]);
@@ -650,7 +650,7 @@ TEST(WebKit, DecidePolicyForNavigationActionForPOSTFormSubmissionThatRedirectsTo
     action = nullptr;
 }
 
-TEST(WebKit, DelayDecidePolicyForNavigationAction)
+TEST(CyberKit, DelayDecidePolicyForNavigationAction)
 {
     shouldDelayDecision = true;
 
@@ -658,11 +658,11 @@ TEST(WebKit, DelayDecidePolicyForNavigationAction)
     auto controller = adoptNS([[DecidePolicyForNavigationActionController alloc] init]);
     [webView setNavigationDelegate:controller.get()];
 
-    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    RetainPtr<NSURL> testURL = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     [webView loadRequest:[NSURLRequest requestWithURL:testURL.get()]];
-    TestWebKitAPI::Util::run(&decidedPolicy);
+    TestCyberKitAPI::Util::run(&decidedPolicy);
     [webView loadRequest:[NSURLRequest requestWithURL:testURL.get()]];
-    TestWebKitAPI::Util::runFor(0.5_s); // Wait until the pending api request gets clear.
+    TestCyberKitAPI::Util::runFor(0.5_s); // Wait until the pending api request gets clear.
     EXPECT_TRUE([[webView URL] isEqual:testURL.get()]);
 
     shouldDelayDecision = false;
@@ -694,13 +694,13 @@ static size_t calls;
 
 @end
 
-TEST(WebKit, DecidePolicyForNavigationActionFragment)
+TEST(CyberKit, DecidePolicyForNavigationActionFragment)
 {
     auto webView = adoptNS([[WKWebView alloc] init]);
     auto delegate = adoptNS([[DecidePolicyForNavigationActionFragmentDelegate alloc] init]);
     [webView setNavigationDelegate:delegate.get()];
     [webView loadHTMLString:@"<script>window.location.href='#fragment';</script>" baseURL:[NSURL URLWithString:@"http://webkit.org"]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
 #endif

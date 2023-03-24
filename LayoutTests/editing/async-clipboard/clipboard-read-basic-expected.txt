@@ -1,4 +1,4 @@
-This test verifies that clipboard items can be read with their expected types, and that the wrapper for clipboard items is the same between calls to Clipboard.read. This test requires WebKitTestRunner or DumpRenderTree.
+This test verifies that clipboard items can be read with their expected types, and that the wrapper for clipboard items is the same between calls to Clipboard.read. This test requires CyberKitTestRunner or DumpRenderTree.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

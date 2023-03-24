@@ -31,7 +31,7 @@
 #include <wtf/text/SymbolImpl.h>
 #include <wtf/text/WTFString.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF, StringImplCreationFromLiteral)
 {
@@ -867,4 +867,4 @@ TEST(WTF, ExternalStringToSymbol)
     ASSERT_TRUE(freeFunctionCalled);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

@@ -1,0 +1,636 @@
+# Copyright (C) 2010-2022 Apple Inc. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1.  Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+# 2.  Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in the
+#     documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+messages -> WebPageProxy {
+    # UI messages
+    CreateNewPage(struct CyberKit::FrameInfoData originatingFrameInfoData, CyberKit::WebPageProxyIdentifier originatingPageID, CyberCore::ResourceRequest request, struct CyberCore::WindowFeatures windowFeatures, struct CyberKit::NavigationActionData navigationActionData) -> (std::optional<CyberCore::PageIdentifier> newPageID, std::optional<CyberKit::WebPageCreationParameters> newPageParameters) Synchronous
+    ShowPage()
+    ClosePage()
+    RunJavaScriptAlert(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, String message) -> () Synchronous
+    RunJavaScriptConfirm(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, String message) -> (bool result) Synchronous
+    RunJavaScriptPrompt(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, String message, String defaultValue) -> (String result) Synchronous
+    MouseDidMoveOverElement(struct CyberKit::WebHitTestResultData hitTestResultData, uint32_t modifiers, CyberKit::UserData userData)
+
+    DidChangeViewportProperties(struct CyberCore::ViewportAttributes attributes)
+    DidReceiveEvent(enum:int8_t CyberKit::WebEventType eventType, bool handled)
+    SetCursor(CyberCore::Cursor cursor)
+    SetCursorHiddenUntilMouseMoves(bool hiddenUntilMouseMoves)
+    SetStatusText(String statusText)
+    SetFocus(bool focused)
+    TakeFocus(enum:uint8_t CyberCore::FocusDirection direction)
+    FocusFromServiceWorker() -> ()
+    FocusedFrameChanged(std::optional<CyberCore::FrameIdentifier> frameID)
+    SetRenderTreeSize(uint64_t treeSize)
+    SetToolbarsAreVisible(bool toolbarsAreVisible)
+    GetToolbarsAreVisible() -> (bool toolbarsAreVisible) Synchronous
+    SetMenuBarIsVisible(bool menuBarIsVisible)
+    GetMenuBarIsVisible() -> (bool menuBarIsVisible) Synchronous
+    SetStatusBarIsVisible(bool statusBarIsVisible)
+    GetStatusBarIsVisible() -> (bool statusBarIsVisible) Synchronous
+    SetIsResizable(bool isResizable)
+    SetWindowFrame(CyberCore::FloatRect windowFrame)
+    GetWindowFrame() -> (CyberCore::FloatRect windowFrame) Synchronous
+    ScreenToRootView(CyberCore::IntPoint screenPoint) -> (CyberCore::IntPoint windowPoint) Synchronous
+    RootViewToScreen(CyberCore::IntRect rect) -> (CyberCore::IntRect screenFrame) Synchronous
+    AccessibilityScreenToRootView(CyberCore::IntPoint screenPoint) -> (CyberCore::IntPoint windowPoint) Synchronous
+    RootViewToAccessibilityScreen(CyberCore::IntRect rect) -> (CyberCore::IntRect screenFrame) Synchronous
+
+#if PLATFORM(COCOA) || PLATFORM(GTK)
+    ShowValidationMessage(CyberCore::IntRect anchorRect, String message)
+    HideValidationMessage()
+#endif
+
+    RunBeforeUnloadConfirmPanel(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, String message) -> (bool shouldClose) Synchronous
+    PageDidScroll(CyberCore::IntPoint scrollPosition)
+    SetHasActiveAnimatedScrolls(bool hasActiveAnimatedScrolls)
+    RunOpenPanel(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, struct CyberCore::FileChooserSettings parameters)
+    ShowShareSheet(struct CyberCore::ShareDataWithParsedURL shareData) -> (bool granted)
+    ShowContactPicker(struct CyberCore::ContactsRequestData requestData) -> (std::optional<Vector<CyberCore::ContactInfo>> info)
+    PrintFrame(CyberCore::FrameIdentifier frameID, String title, CyberCore::FloatSize pdfFirstPageSize) -> () Synchronous
+    RunModal()
+    NotifyScrollerThumbIsVisibleInRect(CyberCore::IntRect scrollerThumb)
+    RecommendedScrollbarStyleDidChange(int32_t newStyle)
+    DidChangeScrollbarsForMainFrame(bool hasHorizontalScrollbar, bool hasVerticalScrollbar)
+    DidChangeScrollOffsetPinningForMainFrame(CyberCore::RectEdges<bool> pinnedState)
+    DidChangePageCount(unsigned pageCount)
+    ThemeColorChanged(CyberCore::Color themeColor)
+    PageExtendedBackgroundColorDidChange(CyberCore::Color backgroundColor)
+    SampledPageTopColorChanged(CyberCore::Color sampledPageTopColor)
+    SetCanShortCircuitHorizontalWheelEvents(bool canShortCircuitHorizontalWheelEvents)
+
+    DidChangeContentSize(CyberCore::IntSize newSize)
+    DidChangeIntrinsicContentSize(CyberCore::IntSize newIntrinsicContentSize)
+
+#if ENABLE(INPUT_TYPE_COLOR)
+    ShowColorPicker(CyberCore::Color initialColor, CyberCore::IntRect elementRect, Vector<CyberCore::Color> suggestions);
+    SetColorPickerColor(CyberCore::Color color);
+    EndColorPicker();
+#endif
+
+#if ENABLE(DATALIST_ELEMENT)
+    ShowDataListSuggestions(struct CyberCore::DataListSuggestionInformation suggestionInformation);
+    HandleKeydownInDataList(String key);
+    EndDataListSuggestions();
+#endif
+
+#if ENABLE(DATE_AND_TIME_INPUT_TYPES)
+    ShowDateTimePicker(struct CyberCore::DateTimeChooserParameters params);
+    EndDateTimePicker();
+#endif
+
+    # Policy messages
+    DecidePolicyForResponse(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, CyberCore::PolicyCheckIdentifier policyCheckIdentifier, uint64_t navigationID, CyberCore::ResourceResponse response, CyberCore::ResourceRequest request, bool canShowMIMEType, String downloadAttribute, uint64_t listenerID)
+    DecidePolicyForNavigationActionAsync(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, CyberCore::PolicyCheckIdentifier policyCheckIdentifier, uint64_t navigationID, struct CyberKit::NavigationActionData navigationActionData, struct CyberKit::FrameInfoData originatingFrameInfoData, std::optional<CyberKit::WebPageProxyIdentifier> originatingPageID, CyberCore::ResourceRequest originalRequest, CyberCore::ResourceRequest request, IPC::FormDataReference requestBody, CyberCore::ResourceResponse redirectResponse, uint64_t listenerID)
+    DecidePolicyForNavigationActionSync(CyberCore::FrameIdentifier frameID, bool isMainFrame, struct CyberKit::FrameInfoData frameInfo, CyberCore::PolicyCheckIdentifier policyCheckIdentifier, uint64_t navigationID, struct CyberKit::NavigationActionData navigationActionData, struct CyberKit::FrameInfoData originatingFrameInfoData, std::optional<CyberKit::WebPageProxyIdentifier> originatingPageID, CyberCore::ResourceRequest originalRequest, CyberCore::ResourceRequest request, IPC::FormDataReference requestBody, CyberCore::ResourceResponse redirectResponse) -> (struct CyberKit::PolicyDecision PolicyDecision) Synchronous
+    DecidePolicyForNewWindowAction(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, CyberCore::PolicyCheckIdentifier policyCheckIdentifier, struct CyberKit::NavigationActionData navigationActionData, CyberCore::ResourceRequest request, String frameName, uint64_t listenerID)
+
+    # Progress messages
+    DidChangeProgress(double value)
+    DidFinishProgress()
+    DidStartProgress()
+
+    SetNetworkRequestsInProgress(bool networkRequestsInProgress)
+
+    # Frame lifetime messages
+    DidCreateMainFrame(CyberCore::FrameIdentifier frameID)
+
+    # Frame load messages
+    DidStartProvisionalLoadForFrame(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, CyberCore::ResourceRequest request, uint64_t navigationID, URL url, URL unreachableURL, CyberKit::UserData userData)
+    DidReceiveServerRedirectForProvisionalLoadForFrame(CyberCore::FrameIdentifier frameID, uint64_t navigationID, CyberCore::ResourceRequest request, CyberKit::UserData userData)
+    WillPerformClientRedirectForFrame(CyberCore::FrameIdentifier frameID, String url, double delay, enum:bool CyberCore::LockBackForwardList lockBackForwardList)
+    DidCancelClientRedirectForFrame(CyberCore::FrameIdentifier frameID)
+    DidChangeProvisionalURLForFrame(CyberCore::FrameIdentifier frameID, uint64_t navigationID, URL url)
+    DidFailProvisionalLoadForFrame(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, CyberCore::ResourceRequest request, uint64_t navigationID, String provisionalURL, CyberCore::ResourceError error, enum:bool CyberCore::WillContinueLoading willContinueLoading, CyberKit::UserData userData, enum:bool CyberCore::WillInternallyHandleFailure willInternallyHandleFailure)
+    DidCommitLoadForFrame(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, CyberCore::ResourceRequest request, uint64_t navigationID, String mimeType, bool hasCustomContentProvider, enum:uint8_t CyberCore::FrameLoadType loadType, CyberCore::CertificateInfo certificateInfo, bool usedLegacyTLS, bool wasPrivateRelayed, bool containsPluginDocument, enum:bool CyberCore::HasInsecureContent hasInsecureContent, enum:uint8_t CyberCore::MouseEventPolicy mouseEventPolicy, CyberKit::UserData userData)
+    DidFailLoadForFrame(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, CyberCore::ResourceRequest request, uint64_t navigationID, CyberCore::ResourceError error, CyberKit::UserData userData)
+    DidFinishDocumentLoadForFrame(CyberCore::FrameIdentifier frameID, uint64_t navigationID, CyberKit::UserData userData)
+    DidFinishLoadForFrame(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, CyberCore::ResourceRequest request, uint64_t navigationID, CyberKit::UserData userData)
+    DidFirstLayoutForFrame(CyberCore::FrameIdentifier frameID, CyberKit::UserData userData)
+    DidFirstVisuallyNonEmptyLayoutForFrame(CyberCore::FrameIdentifier frameID, CyberKit::UserData userData)
+    DidReachLayoutMilestone(OptionSet<CyberCore::LayoutMilestone> layoutMilestones)
+    DidReceiveTitleForFrame(CyberCore::FrameIdentifier frameID, String title, CyberKit::UserData userData)
+    DidDisplayInsecureContentForFrame(CyberCore::FrameIdentifier frameID, CyberKit::UserData userData)
+    DidRunInsecureContentForFrame(CyberCore::FrameIdentifier frameID, CyberKit::UserData userData)
+    DidSameDocumentNavigationForFrame(CyberCore::FrameIdentifier frameID, uint64_t navigationID, enum:uint8_t CyberKit::SameDocumentNavigationType type, URL url, CyberKit::UserData userData)
+    DidSameDocumentNavigationForFrameViaJSHistoryAPI(CyberCore::FrameIdentifier frameID, enum:uint8_t CyberKit::SameDocumentNavigationType type, URL url, struct CyberKit::NavigationActionData navigationActionData, CyberKit::UserData userData);
+    DidChangeMainDocument(CyberCore::FrameIdentifier frameID)
+    DidExplicitOpenForFrame(CyberCore::FrameIdentifier frameID, URL url, String mimeType)
+    DidDestroyNavigation(uint64_t navigationID)
+
+    UpdateRemoteFrameSize(CyberCore::FrameIdentifier frameID, CyberCore::IntSize size)
+
+    MainFramePluginHandlesPageScaleGestureDidChange(bool mainFramePluginHandlesPageScaleGesture)
+
+#if PLATFORM(GTK) || PLATFORM(WPE)
+    # Resource load messages
+    DidInitiateLoadForResource(CyberCore::ResourceLoaderIdentifier resourceID, CyberCore::FrameIdentifier frameID, CyberCore::ResourceRequest request)
+    DidSendRequestForResource(CyberCore::ResourceLoaderIdentifier resourceID, CyberCore::FrameIdentifier frameID, CyberCore::ResourceRequest request, CyberCore::ResourceResponse redirectResponse)
+    DidReceiveResponseForResource(CyberCore::ResourceLoaderIdentifier resourceID, CyberCore::FrameIdentifier frameID, CyberCore::ResourceResponse response)
+    DidFinishLoadForResource(CyberCore::ResourceLoaderIdentifier resourceID, CyberCore::FrameIdentifier frameID, CyberCore::ResourceError error)
+#endif
+
+    # History client messages.
+    DidNavigateWithNavigationData(struct CyberKit::WebNavigationDataStore store, CyberCore::FrameIdentifier frameID)
+    DidPerformClientRedirect(String sourceURLString, String destinationURLString, CyberCore::FrameIdentifier frameID)
+    DidPerformServerRedirect(String sourceURLString, String destinationURLString, CyberCore::FrameIdentifier frameID)
+    DidUpdateHistoryTitle(String title, String url, CyberCore::FrameIdentifier frameID)
+
+    # Custom representations
+    DidFinishLoadingDataForCustomContentProvider(String suggestedFilename, IPC::DataReference data)
+
+    # Forms messages
+    WillSubmitForm(CyberCore::FrameIdentifier frameID, CyberCore::FrameIdentifier sourceFrameID, Vector<std::pair<String, String>> textFieldValues, CyberKit::FormSubmitListenerIdentifier listenerID, CyberKit::UserData userData)
+
+#if PLATFORM(IOS_FAMILY)
+    InterpretKeyEvent(struct CyberKit::EditorState state, bool isCharEvent) -> (bool handled) Synchronous
+    DidReceivePositionInformation(struct CyberKit::InteractionInformationAtPosition information)
+    SaveImageToLibrary(CyberKit::SharedMemory::Handle handle, String authorizationToken)
+    ShowPlaybackTargetPicker(bool hasVideo, CyberCore::IntRect elementRect, enum:uint8_t CyberCore::RouteSharingPolicy policy, String routingContextUID)
+    CommitPotentialTapFailed()
+    DidNotHandleTapAsClick(CyberCore::IntPoint point)
+    DidCompleteSyntheticClick()
+    DisableDoubleTapGesturesDuringTapIfNecessary(CyberKit::TapIdentifier requestID)
+    HandleSmartMagnificationInformationForPotentialTap(CyberKit::TapIdentifier requestID, CyberCore::FloatRect renderRect, bool fitEntireRect, double viewportMinimumScale, double viewportMaximumScale, bool nodeIsRootLevel)
+#endif
+#if ENABLE(DATA_DETECTION)
+    SetDataDetectionResult(struct CyberKit::DataDetectionResult dataDetectionResult)
+    HandleClickForDataDetectionResult(struct CyberCore::DataDetectorElementInfo info, CyberCore::IntPoint location)
+#endif
+
+    PageScaleFactorDidChange(double scaleFactor)
+    PluginScaleFactorDidChange(double zoomFactor)
+    PluginZoomFactorDidChange(double zoomFactor)
+
+#if PLATFORM(GTK) || PLATFORM(WPE)
+    # Support for connecting the Accessibility worlds of the UI and the Web processes
+    BindAccessibilityTree(String plugID)
+
+    SetInputMethodState(std::optional<CyberKit::InputMethodState> state);
+#endif
+
+    # BackForward messages
+    BackForwardAddItem(struct CyberKit::BackForwardListItemState itemState)
+    BackForwardGoToItem(CyberCore::BackForwardItemIdentifier itemID) -> (struct CyberKit::WebBackForwardListCounts counts) Synchronous
+    BackForwardItemAtIndex(int32_t itemIndex) -> (std::optional<CyberCore::BackForwardItemIdentifier> itemID) Synchronous
+    BackForwardListContainsItem(CyberCore::BackForwardItemIdentifier itemID) -> (bool contains) Synchronous
+    BackForwardListCounts() -> (struct CyberKit::WebBackForwardListCounts counts) Synchronous
+    BackForwardClear()
+    WillGoToBackForwardListItem(CyberCore::BackForwardItemIdentifier itemID, bool inBackForwardCache)
+
+    # Undo/Redo messages
+    RegisterEditCommandForUndo(uint64_t commandID, String label) AllowedWhenWaitingForSyncReply
+    ClearAllEditCommands()
+    RegisterInsertionUndoGrouping()
+    CanUndoRedo(enum:bool CyberKit::UndoOrRedo undoOrRedo) -> (bool result) Synchronous
+    ExecuteUndoRedo(enum:bool CyberKit::UndoOrRedo undoOrRedo) -> () Synchronous
+
+    # Diagnostic messages logging
+    LogDiagnosticMessageFromWebProcess(String message, String description, enum:bool CyberCore::ShouldSample shouldSample)
+    LogDiagnosticMessageWithResultFromWebProcess(String message, String description, uint32_t result, enum:bool CyberCore::ShouldSample shouldSample)
+    LogDiagnosticMessageWithValueFromWebProcess(String message, String description, double value, unsigned significantFigures, enum:bool CyberCore::ShouldSample shouldSample)
+    LogDiagnosticMessageWithEnhancedPrivacyFromWebProcess(String message, String description, enum:bool CyberCore::ShouldSample shouldSample)
+    LogDiagnosticMessageWithValueDictionaryFromWebProcess(String message, String description, CyberCore::DiagnosticLoggingClient::ValueDictionary value, enum:bool CyberCore::ShouldSample shouldSample)
+    LogDiagnosticMessageWithDomainFromWebProcess(String message, CyberCore::DiagnosticLoggingDomain domain)
+
+    # Performance logging
+    LogScrollingEvent(uint32_t eventType, MonotonicTime timestamp, uint64_t data)
+
+    # Editor notifications
+    EditorStateChanged(struct CyberKit::EditorState editorState)
+    CompositionWasCanceled()
+    SetHasHadSelectionChangesFromUserInteraction(bool hasHadUserSelectionChanges)
+
+#if ENABLE(IMAGE_ANALYSIS)
+    RequestTextRecognition(URL imageURL, CyberKit::ShareableBitmapHandle imageData, String source, String target) -> (struct CyberCore::TextRecognitionResult result)
+#endif
+
+#if HAVE(TRANSLATION_UI_SERVICES) && ENABLE(CONTEXT_MENUS)
+    HandleContextMenuTranslation(struct CyberCore::TranslationContextMenuInfo info)
+#endif
+
+#if ENABLE(MEDIA_CONTROLS_CONTEXT_MENUS) && USE(UICONTEXTMENU)
+    ShowMediaControlsContextMenu(CyberCore::FloatRect targetFrame, Vector<CyberCore::MediaControlsContextMenuItem> items) -> (CyberCore::MediaControlsContextMenuItem::ID selectedItemID)
+#endif // ENABLE(MEDIA_CONTROLS_CONTEXT_MENUS) && USE(UICONTEXTMENU)
+
+#if HAVE(TOUCH_BAR)
+    SetIsTouchBarUpdateSupressedForHiddenContentEditable(bool isTouchBarUpdateSupressed)
+    SetIsNeverRichlyEditableForTouchBar(bool isNeverRichlyEditable)
+#endif
+
+    RequestDOMPasteAccess(enum:uint8_t CyberCore::DOMPasteAccessCategory pasteAccessCategory, CyberCore::IntRect elementRect, String originIdentifier) -> (enum:uint8_t CyberCore::DOMPasteAccessResponse response) Synchronous
+
+    # Find messages
+    DidCountStringMatches(String string, uint32_t matchCount)
+    SetTextIndicator(struct CyberCore::TextIndicatorData indicator, uint64_t lifetime)
+    ClearTextIndicator()
+    DidFindString(String string, Vector<CyberCore::IntRect> matchRect, uint32_t matchCount, int32_t matchIndex, bool didWrapAround)
+    DidFailToFindString(String string)
+    DidFindStringMatches(String string, Vector<Vector<CyberCore::IntRect>> matches, int32_t firstIndexAfterSelection)
+    DidGetImageForFindMatch(struct CyberCore::ImageBufferBackendParameters parameters, CyberKit::ShareableBitmapHandle contentImageHandle, uint32_t matchIndex)
+
+    # PopupMenu messages
+    ShowPopupMenu(CyberCore::IntRect rect, uint64_t textDirection, Vector<CyberKit::WebPopupItem> items, int32_t selectedIndex, struct CyberKit::PlatformPopupMenuData data)
+    HidePopupMenu()
+
+#if ENABLE(CONTEXT_MENUS)
+    ShowContextMenu(CyberKit::ContextMenuContextData contextMenuContextData, CyberKit::UserData userData)
+#endif
+
+#if ENABLE(SERVICE_WORKER)
+    DidFinishServiceWorkerPageRegistration(bool success)
+#endif
+
+    # Database messages
+    ExceededDatabaseQuota(CyberCore::FrameIdentifier frameID, String originIdentifier, String databaseName, String databaseDisplayName, uint64_t currentQuota, uint64_t currentOriginUsage, uint64_t currentDatabaseUsage, uint64_t expectedUsage) -> (uint64_t newQuota) Synchronous
+
+    # Application cache messages
+    ReachedApplicationCacheOriginQuota(String originIdentifier, uint64_t currentQuota, uint64_t totalBytesNeeded) -> (uint64_t newQuota) Synchronous
+
+    # Geolocation messages
+    RequestGeolocationPermissionForFrame(CyberKit::GeolocationIdentifier geolocationID, struct CyberKit::FrameInfoData frameInfo)
+    RevokeGeolocationAuthorizationToken(String authorizationToken);
+
+#if ENABLE(MEDIA_STREAM)
+    # MediaSteam messages
+    RequestUserMediaPermissionForFrame(CyberCore::UserMediaRequestIdentifier userMediaID, CyberCore::FrameIdentifier frameID, CyberCore::SecurityOriginData userMediaDocumentOriginIdentifier, CyberCore::SecurityOriginData topLevelDocumentOriginIdentifier, struct CyberCore::MediaStreamRequest request)
+    EnumerateMediaDevicesForFrame(CyberCore::FrameIdentifier frameID, CyberCore::SecurityOriginData userMediaDocumentOriginIdentifier, CyberCore::SecurityOriginData topLevelDocumentOriginIdentifier) -> (Vector<CyberCore::CaptureDeviceWithCapabilities> devices, struct CyberCore::MediaDeviceHashSalts mediaDeviceIdentifierHashSalts)
+    BeginMonitoringCaptureDevices()
+#endif
+
+#if ENABLE(ENCRYPTED_MEDIA)
+    RequestMediaKeySystemPermissionForFrame(CyberCore::MediaKeySystemRequestIdentifier mediaKeySystemID, CyberCore::FrameIdentifier frameID, CyberCore::SecurityOriginData topLevelDocumentOriginIdentifier, String keySystem)
+#endif
+
+    # Notification messages
+    RequestNotificationPermission(String originIdentifier) -> (bool allowed)
+
+    # Spelling and grammar messages
+#if USE(UNIFIED_TEXT_CHECKING)
+    CheckTextOfParagraph(String text, OptionSet<CyberCore::TextCheckingType> checkingTypes, int32_t insertionPoint) -> (Vector<CyberCore::TextCheckingResult> results) Synchronous
+#endif
+    CheckSpellingOfString(String text) -> (int32_t misspellingLocation, int32_t misspellingLength) Synchronous
+    CheckGrammarOfString(String text) -> (Vector<CyberCore::GrammarDetail> results, int32_t badGrammarLocation, int32_t badGrammarLength) Synchronous
+    SpellingUIIsShowing() -> (bool isShowing) Synchronous
+    UpdateSpellingUIWithMisspelledWord(String misspelledWord)
+    UpdateSpellingUIWithGrammarString(String badGrammarPhrase, struct CyberCore::GrammarDetail grammarDetail)
+    GetGuessesForWord(String word, String context, int32_t insertionPoint) -> (Vector<String> guesses) Synchronous
+    LearnWord(String word)
+    IgnoreWord(String word)
+    RequestCheckingOfString(CyberKit::TextCheckerRequestID requestID, CyberCore::TextCheckingRequestData request, int32_t insertionPoint)
+
+    # Drag and drop messages
+#if ENABLE(DRAG_SUPPORT)
+    DidPerformDragControllerAction(std::optional<CyberCore::DragOperation> dragOperation, enum:uint8_t CyberCore::DragHandlingMethod dragHandlingMethod, bool mouseIsOverFileInput, unsigned numberOfItemsToBeAccepted, CyberCore::IntRect insertionRect, CyberCore::IntRect editableElementRect)
+    DidEndDragging();
+#endif
+#if PLATFORM(COCOA) && ENABLE(DRAG_SUPPORT)
+    StartDrag(struct CyberCore::DragItem dragItem, CyberKit::ShareableBitmapHandle dragImage)
+    SetPromisedDataForImage(String pasteboardName, CyberKit::SharedMemory::Handle imageHandle, String filename, String extension, String title, String url, String visibleURL, CyberKit::SharedMemory::Handle archiveHandle, String originIdentifier)
+#endif
+#if PLATFORM(GTK) && ENABLE(DRAG_SUPPORT)
+    StartDrag(CyberCore::SelectionData selectionData, OptionSet<CyberCore::DragOperation> dragOperationMask, CyberKit::ShareableBitmapHandle dragImage, CyberCore::IntPoint dragImageHotspot)
+#endif
+
+#if ENABLE(DRAG_SUPPORT)
+    DidPerformDragOperation(bool handled)
+#endif
+
+#if PLATFORM(IOS_FAMILY) && ENABLE(DRAG_SUPPORT)
+    DidHandleDragStartRequest(bool started)
+    DidHandleAdditionalDragItemsRequest(bool added)
+    WillReceiveEditDragSnapshot()
+    DidReceiveEditDragSnapshot(std::optional<CyberCore::TextIndicatorData> textIndicator)
+#endif
+
+#if PLATFORM(COCOA)
+    # Dictionary support.
+    DidPerformDictionaryLookup(struct CyberCore::DictionaryPopupInfo dictionaryPopupInfo)
+
+    # Keyboard input support messages
+    ExecuteSavedCommandBySelector(String selector) -> (bool handled) Synchronous
+
+    # Remote accessibility messages
+    RegisterWebProcessAccessibilityToken(IPC::DataReference data)
+
+    # Speech messages
+    GetIsSpeaking() -> (bool isSpeaking) Synchronous
+    Speak(String string)
+    StopSpeaking()
+
+    MakeFirstResponder()
+    AssistiveTechnologyMakeFirstResponder()
+
+    # Spotlight
+    SearchWithSpotlight(String string)
+
+    SearchTheWeb(String string)
+#endif
+
+#if HAVE(TOUCH_BAR)
+    TouchBarMenuDataChanged(CyberKit::TouchBarMenuData touchBarMenuData)
+    TouchBarMenuItemDataAdded(struct CyberKit::TouchBarMenuItemData touchBarMenuItemData)
+    TouchBarMenuItemDataRemoved(struct CyberKit::TouchBarMenuItemData touchBarMenuItemData)
+#endif
+
+#if USE(APPKIT)
+    SubstitutionsPanelIsShowing() -> (bool isShowing) Synchronous
+#endif
+#if USE(AUTOMATIC_TEXT_REPLACEMENT)
+    toggleSmartInsertDelete()
+    toggleAutomaticQuoteSubstitution()
+    toggleAutomaticLinkDetection()
+    toggleAutomaticDashSubstitution()
+    toggleAutomaticTextReplacement()
+#endif
+#if PLATFORM(MAC)
+    # Autocorrection messages
+    ShowCorrectionPanel(enum:uint8_t CyberCore::AlternativeTextType panelType, CyberCore::FloatRect boundingBoxOfReplacedString, String replacedString, String replacementString, Vector<String> alternativeReplacementStrings)
+    DismissCorrectionPanel(enum:uint8_t CyberCore::ReasonForDismissingAlternativeText reason)
+    DismissCorrectionPanelSoon(enum:uint8_t CyberCore::ReasonForDismissingAlternativeText reason) -> (String result) Synchronous
+    RecordAutocorrectionResponse(enum:uint8_t CyberCore::AutocorrectionResponse response, String replacedString, String replacementString);
+
+    SetEditableElementIsFocused(bool editableElementIsFocused)
+
+    SetCaretDecorationVisibility(bool visibility)
+
+    HandleAcceptsFirstMouse(bool acceptsFirstMouse)
+#endif
+
+    DidUpdateRenderingAfterCommittingLoad()
+
+#if USE(DICTATION_ALTERNATIVES)
+    ShowDictationAlternativeUI(CyberCore::FloatRect boundingBoxOfDictatedText, CyberCore::DictationContext dictationContext)
+    RemoveDictationAlternatives(CyberCore::DictationContext dictationContext)
+    DictationAlternatives(CyberCore::DictationContext dictationContext) -> (Vector<String> alternatives) Synchronous
+#endif
+
+#if ENABLE(VIDEO)
+    BeginTextRecognitionForVideoInElementFullScreen(CyberCore::MediaPlayerIdentifier identifier, CyberCore::FloatRect videoBounds)
+    CancelTextRecognitionForVideoInElementFullScreen()
+#endif
+
+#if PLATFORM(IOS_FAMILY)
+    CouldNotRestorePageState()
+    RestorePageState(std::optional<CyberCore::FloatPoint> scrollPosition, CyberCore::FloatPoint scrollOrigin, CyberCore::RectEdges<float> obscuredInsetsOnSave, double scale)
+    RestorePageCenterAndScale(std::optional<CyberCore::FloatPoint> unobscuredCenter, double scale)
+    DidGetTapHighlightGeometries(CyberKit::TapIdentifier requestID, CyberCore::Color color, Vector<CyberCore::FloatQuad> geometries, CyberCore::IntSize topLeftRadius, CyberCore::IntSize topRightRadius, CyberCore::IntSize bottomLeftRadius, CyberCore::IntSize bottomRightRadius, bool nodeHasBuiltInClickHandling)
+
+    ElementDidFocus(struct CyberKit::FocusedElementInformation information, bool userIsInteracting, bool blurPreviousNode, OptionSet<CyberCore::ActivityState::Flag> activityStateChanges, CyberKit::UserData userData)
+    ElementDidBlur()
+    UpdateInputContextAfterBlurringAndRefocusingElement()
+    FocusedElementDidChangeInputMode(enum:uint8_t CyberCore::InputMode mode)
+    ScrollingNodeScrollWillStartScroll(uint64_t nodeID)
+    ScrollingNodeScrollDidEndScroll(uint64_t nodeID)
+    ShowInspectorHighlight(struct CyberCore::InspectorOverlay::Highlight highlight)
+    HideInspectorHighlight()
+
+    ShowInspectorIndication()
+    HideInspectorIndication()
+
+    EnableInspectorNodeSearch()
+    DisableInspectorNodeSearch()
+
+    UpdateStringForFind(String findString)
+    HandleAutocorrectionContext(struct CyberKit::WebAutocorrectionContext context)
+
+    ShowDataDetectorsUIForPositionInformation(struct CyberKit::InteractionInformationAtPosition information)
+#endif
+
+    DidChangeInspectorFrontendCount(uint32_t count)
+
+    CreateInspectorTarget(String targetId, enum:uint8_t Inspector::InspectorTargetType type)
+    DestroyInspectorTarget(String targetId)
+    SendMessageToInspectorFrontend(String targetId, String message)
+
+    # Search popup menus
+    SaveRecentSearches(String name, Vector<CyberCore::RecentSearch> searchItems)
+    LoadRecentSearches(String name) -> (Vector<CyberCore::RecentSearch> result) Synchronous
+
+#if ENABLE(PDFKIT_PLUGIN) && !ENABLE(UI_PROCESS_PDF_HUD)
+    SavePDFToFileInDownloadsFolder(String suggestedFilename, URL originatingURL, IPC::DataReference data)
+    SavePDFToTemporaryFolderAndOpenWithNativeApplication(String suggestedFilename, struct CyberKit::FrameInfoData sourceFrameInfo, IPC::DataReference data, String pdfUUID)
+    OpenPDFFromTemporaryFolderWithNativeApplication(struct CyberKit::FrameInfoData sourceFrameInfo, String pdfUUID)
+#endif
+
+#if ENABLE(PDFKIT_PLUGIN)
+    ShowPDFContextMenu(struct CyberKit::PDFContextMenu contextMenu, CyberKit::PDFPluginIdentifier identifier) -> (std::optional<int32_t> selectedItem) Synchronous
+#endif
+
+    DidUpdateActivityState()
+
+#if ENABLE(WEB_CRYPTO)
+    WrapCryptoKey(Vector<uint8_t> key) -> (bool succeeded, Vector<uint8_t> wrappedKey) Synchronous
+    UnwrapCryptoKey(Vector<uint8_t> wrappedKey) -> (bool succeeded, Vector<uint8_t> key) Synchronous
+#endif
+
+
+#if ENABLE(TELEPHONE_NUMBER_DETECTION)
+#if PLATFORM(MAC)
+    ShowTelephoneNumberMenu(String telephoneNumber, CyberCore::IntPoint point, CyberCore::IntRect rect)
+#endif
+#endif
+
+#if USE(QUICK_LOOK)
+    DidStartLoadForQuickLookDocumentInMainFrame(String fileName, String uti)
+    DidFinishLoadForQuickLookDocumentInMainFrame(CyberKit::ShareableResource::Handle resource)
+    RequestPasswordForQuickLookDocumentInMainFrame(String fileName) -> (String password)
+#endif
+
+#if ENABLE(CONTENT_FILTERING)
+    ContentFilterDidBlockLoadForFrame(CyberCore::ContentFilterUnblockHandler unblockHandler, CyberCore::FrameIdentifier frameID)
+#endif
+
+#if ENABLE(ACCESSIBILITY_ANIMATION_CONTROL)
+    IsAnyAnimationAllowedToPlayDidChange(bool anyAnimationCanPlay)
+#endif
+    IsPlayingMediaDidChange(OptionSet<CyberCore::MediaProducerMediaState> state)
+    HandleAutoplayEvent(enum:uint8_t CyberCore::AutoplayEvent event, OptionSet<CyberCore::AutoplayEventFlags> flags)
+
+#if PLATFORM(MAC)
+    DidPerformImmediateActionHitTest(struct CyberKit::WebHitTestResultData result, bool contentPreventsDefault, CyberKit::UserData userData)
+#endif
+    HandleMessage(String messageName, CyberKit::UserData messageBody)
+    HandleSynchronousMessage(String messageName, CyberKit::UserData messageBody) -> (CyberKit::UserData returnData) Synchronous
+
+    HandleAutoFillButtonClick(CyberKit::UserData userData)
+
+    DidResignInputElementStrongPasswordAppearance(CyberKit::UserData userData)
+
+#if ENABLE(CONTENT_EXTENSIONS)
+    ContentRuleListNotification(URL url, struct CyberCore::ContentRuleListResults results)
+#endif
+
+#if ENABLE(WIRELESS_PLAYBACK_TARGET) && !PLATFORM(IOS_FAMILY)
+    AddPlaybackTargetPickerClient(CyberCore::PlaybackTargetClientContextIdentifier contextId)
+    RemovePlaybackTargetPickerClient(CyberCore::PlaybackTargetClientContextIdentifier contextId)
+    ShowPlaybackTargetPicker(CyberCore::PlaybackTargetClientContextIdentifier contextId, CyberCore::FloatRect pickerLocation, bool hasVideo)
+    PlaybackTargetPickerClientStateDidChange(CyberCore::PlaybackTargetClientContextIdentifier contextId, OptionSet<CyberCore::MediaProducerMediaState> mediaState)
+    SetMockMediaPlaybackTargetPickerEnabled(bool enabled)
+    SetMockMediaPlaybackTargetPickerState(String name, enum:uint8_t CyberCore::MediaPlaybackTargetContext::MockState pickerState)
+    MockMediaPlaybackTargetPickerDismissPopup()
+#endif
+
+#if ENABLE(VIDEO_PRESENTATION_MODE)
+    SetMockVideoPresentationModeEnabled(bool enabled)
+#endif
+
+#if ENABLE(POINTER_LOCK)
+    RequestPointerLock()
+    RequestPointerUnlock()
+#endif
+
+    DidFailToSuspendAfterProcessSwap()
+    DidSuspendAfterProcessSwap()
+
+    ImageOrMediaDocumentSizeChanged(CyberCore::IntSize newSize)
+
+    UseFixedLayoutDidChange(bool useFixedLayout)
+    FixedLayoutSizeDidChange(CyberCore::IntSize fixedLayoutSize)
+
+    DidRestoreScrollPosition()
+    
+    RequestScrollToRect(CyberCore::FloatRect targetRect, CyberCore::FloatPoint origin)
+
+    GetLoadDecisionForIcon(struct CyberCore::LinkIcon icon, CyberKit::CallbackID callbackID)
+
+#if PLATFORM(MAC)
+    DidHandleAcceptedCandidate()
+#endif
+
+    SetIsUsingHighPerformanceWebGL(bool isUsingHighPerformanceWebGL)
+
+    StartURLSchemeTask(struct CyberKit::URLSchemeTaskParameters parameters)
+    StopURLSchemeTask(CyberKit::WebURLSchemeHandlerIdentifier handlerIdentifier, CyberCore::ResourceLoaderIdentifier taskIdentifier)
+    LoadSynchronousURLSchemeTask(struct CyberKit::URLSchemeTaskParameters parameters) -> (CyberCore::ResourceResponse response, CyberCore::ResourceError error, Vector<uint8_t> data) Synchronous
+
+#if ENABLE(DEVICE_ORIENTATION)
+    ShouldAllowDeviceOrientationAndMotionAccess(CyberCore::FrameIdentifier frameID, struct CyberKit::FrameInfoData frameInfo, bool mayPrompt) -> (enum:uint8_t CyberCore::DeviceOrientationOrMotionPermissionState permissionState)
+#endif
+
+#if ENABLE(ATTACHMENT_ELEMENT)
+    RegisterAttachmentIdentifierFromData(String identifier, String contentType, String preferredFileName, IPC::SharedBufferReference data)
+    RegisterAttachmentIdentifierFromFilePath(String identifier, String contentType, String filePath)
+    RegisterAttachmentIdentifier(String identifier)
+    RegisterAttachmentsFromSerializedData(Vector<CyberCore::SerializedAttachmentData> data)
+    CloneAttachmentData(String fromIdentifier, String toIdentifier)
+    DidInsertAttachmentWithIdentifier(String identifier, String source, bool hasEnclosingImage)
+    DidRemoveAttachmentWithIdentifier(String identifier)
+    SerializedAttachmentDataForIdentifiers(Vector<String> identifiers) -> (Vector<CyberCore::SerializedAttachmentData> seralizedData) Synchronous
+#if PLATFORM(IOS_FAMILY)
+    WritePromisedAttachmentToPasteboard(struct CyberCore::PromisedAttachmentInfo info, String authorizationToken)
+#endif
+    RequestAttachmentIcon(String identifier, String contentType, String path, String title, CyberCore::FloatSize size)
+#endif
+
+#if ENABLE(APP_HIGHLIGHTS)
+    StoreAppHighlight(struct CyberCore::AppHighlight info)
+#endif
+
+#if ENABLE(SPEECH_SYNTHESIS)
+    SpeechSynthesisVoiceList() -> (Vector<CyberKit::WebSpeechSynthesisVoice> voiceList) Synchronous
+    SpeechSynthesisSpeak(String text, String lang, float volume, float rate, float pitch, MonotonicTime startTime, String voiceURI, String voiceName, String voiceLang, bool localService, bool defaultVoice) -> ()
+    SpeechSynthesisSetFinishedCallback() -> ()
+    SpeechSynthesisCancel()
+    SpeechSynthesisPause() -> ()
+    SpeechSynthesisResume() -> ()
+    SpeechSynthesisResetState()
+#endif
+
+#if ENABLE(UI_PROCESS_PDF_HUD)
+    CreatePDFHUD(CyberKit::PDFPluginIdentifier identifier, CyberCore::IntRect boundingBox)
+    UpdatePDFHUDLocation(CyberKit::PDFPluginIdentifier identifier, CyberCore::IntRect boundingBox)
+    RemovePDFHUD(CyberKit::PDFPluginIdentifier identifier)
+#endif
+
+    ConfigureLoggingChannel(String channelName, enum:uint8_t WTFLogChannelState state, enum:uint8_t WTFLogLevel level)
+
+#if PLATFORM(GTK)
+    ShowEmojiPicker(CyberCore::IntRect caretRect) -> (String result)
+#endif
+
+#if HAVE(VISIBILITY_PROPAGATION_VIEW)
+    DidCreateContextInWebProcessForVisibilityPropagation(CyberKit::LayerHostingContextID contextID);
+#endif
+
+#if ENABLE(WEB_AUTHN)
+    SetMockWebAuthenticationConfiguration(struct CyberCore::MockWebAuthenticationConfiguration configuration);
+#endif
+
+#if PLATFORM(GTK) || PLATFORM(WPE)
+    SendMessageToWebView(struct CyberKit::UserMessage userMessage)
+    SendMessageToWebViewWithReply(struct CyberKit::UserMessage userMessage) -> (struct CyberKit::UserMessage replyMessage)
+#endif
+
+    DidFindTextManipulationItems(Vector<CyberCore::TextManipulationItem> items)
+
+#if ENABLE(MEDIA_USAGE)
+    AddMediaUsageManagerSession(CyberCore::MediaSessionIdentifier identifier, String bundleIdentifier, URL pageURL);
+    UpdateMediaUsageManagerSessionState(CyberCore::MediaSessionIdentifier identifier, struct CyberCore::MediaUsageInfo info);
+    RemoveMediaUsageManagerSession(CyberCore::MediaSessionIdentifier identifier);
+#endif
+
+    SetHasExecutedAppBoundBehaviorBeforeNavigation()
+    
+#if PLATFORM(MAC)
+    ChangeUniversalAccessZoomFocus(CyberCore::IntRect viewRect, CyberCore::IntRect caretRect)
+#endif
+
+#if ENABLE(ARKIT_INLINE_PREVIEW_IOS)
+    TakeModelElementFullscreen(struct CyberKit::ModelIdentifier modelIdentifier)
+    ModelElementSetInteractionEnabled(struct CyberKit::ModelIdentifier modelIdentifier, bool isInteractionEnabled)
+#endif
+#if ENABLE(ARKIT_INLINE_PREVIEW_MAC)
+    ModelElementCreateRemotePreview(String uuid, CyberCore::FloatSize size) -> (Expected<std::pair<String, uint32_t>, CyberCore::ResourceError> result)
+    ModelElementLoadRemotePreview(String uuid, URL url) -> (std::optional<CyberCore::ResourceError> error)
+    ModelElementDestroyRemotePreview(String uuid)
+    ModelElementSizeDidChange(String uuid, CyberCore::FloatSize size) -> (Expected<MachSendRight, CyberCore::ResourceError> result)
+    HandleMouseDownForModelElement(String uuid, CyberCore::LayoutPoint flippedLocationInElement, MonotonicTime timestamp)
+    HandleMouseMoveForModelElement(String uuid, CyberCore::LayoutPoint flippedLocationInElement, MonotonicTime timestamp)
+    HandleMouseUpForModelElement(String uuid, CyberCore::LayoutPoint flippedLocationInElement, MonotonicTime timestamp)
+    ModelInlinePreviewUUIDs() -> (Vector<String> uuids)
+#endif
+#if ENABLE(ARKIT_INLINE_PREVIEW)
+    ModelElementGetCamera(struct CyberKit::ModelIdentifier modelIdentifier) -> (Expected<CyberCore::HTMLModelElementCamera, CyberCore::ResourceError> result)
+    ModelElementSetCamera(struct CyberKit::ModelIdentifier modelIdentifier, struct CyberCore::HTMLModelElementCamera camera) -> (bool success)
+    ModelElementIsPlayingAnimation(struct CyberKit::ModelIdentifier modelIdentifier) -> (Expected<bool, CyberCore::ResourceError> result)
+    ModelElementSetAnimationIsPlaying(struct CyberKit::ModelIdentifier modelIdentifier, bool isPlaying) -> (bool success)
+    ModelElementIsLoopingAnimation(struct CyberKit::ModelIdentifier modelIdentifier) -> (Expected<bool, CyberCore::ResourceError> result)
+    ModelElementSetIsLoopingAnimation(struct CyberKit::ModelIdentifier modelIdentifier, bool isLooping) -> (bool success)
+    ModelElementAnimationDuration(struct CyberKit::ModelIdentifier modelIdentifier) -> (Expected<Seconds, CyberCore::ResourceError> result)
+    ModelElementAnimationCurrentTime(struct CyberKit::ModelIdentifier modelIdentifier) -> (Expected<Seconds, CyberCore::ResourceError> result)
+    ModelElementSetAnimationCurrentTime(struct CyberKit::ModelIdentifier modelIdentifier, Seconds currentTime) -> (bool success)
+    ModelElementHasAudio(struct CyberKit::ModelIdentifier modelIdentifier) -> (Expected<bool, CyberCore::ResourceError> result)
+    ModelElementIsMuted(struct CyberKit::ModelIdentifier modelIdentifier) -> (Expected<bool, CyberCore::ResourceError> result)
+    ModelElementSetIsMuted(struct CyberKit::ModelIdentifier modelIdentifier, bool isMuted) -> (bool success)
+#endif
+
+#if ENABLE(APPLE_PAY_AMS_UI)
+    StartApplePayAMSUISession(URL originatingURL, struct CyberCore::ApplePayAMSUIRequest request) -> (std::optional<bool> result)
+    AbortApplePayAMSUISession()
+#endif
+
+    RequestCookieConsent() -> (enum:uint8_t CyberCore::CookieConsentDecisionResult result)
+    ClassifyModalContainerControls(Vector<String> texts) -> (Vector<CyberCore::ModalContainerControlType> types)
+    DecidePolicyForModalContainer(OptionSet<CyberCore::ModalContainerControlType> types) -> (enum:uint8_t CyberCore::ModalContainerDecision decision)
+
+    DidChangeLookalikeCharacters(URL originalURL, URL adjustedURL)
+}

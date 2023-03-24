@@ -108,12 +108,12 @@ function parseRevisionProperty(property, key, fallbackKey)
     var value = property[0];
 
     // The property got_revision may have the following forms in Buildbot v0.8:
-    // ["got_revision",{"Internal":"1357","WebKitOpenSource":"2468"},"Source"]
+    // ["got_revision",{"Internal":"1357","CyberKitOpenSource":"2468"},"Source"]
     // OR
     // ["got_revision","2468","Source"]
     //
     // It may have the following forms in Buildbot v0.9:
-    // [{"Internal":"1357","WebKitOpenSource":"2468"}, "Source"]
+    // [{"Internal":"1357","CyberKitOpenSource":"2468"}, "Source"]
     // OR
     // ["2468", "Source"]
     if (isMultiCodebaseGotRevisionProperty(property))
@@ -205,7 +205,7 @@ BuildbotIteration.prototype = {
             var fallbackKey;
 
             if (repository === Dashboard.Repository.OpenSource) {
-                key = "WebKit";
+                key = "CyberKit";
                 fallbackKey = "opensource";
             } else {
                 key = repositoryName;
@@ -419,14 +419,14 @@ BuildbotIteration.prototype = {
         }.bind(this), {jsonpCallbackName: "ADD_RESULTS", withCredentials: this.queue.buildbot.needsAuthentication});
     },
 
-    loadJavaScriptCoreTestResults: function(testName, callback)
+    loadCyberScriptCoreTestResults: function(testName, callback)
     {
         if (this.queue.buildbot.needsAuthentication && this.queue.buildbot.authenticationStatus === Buildbot.AuthenticationStatus.InvalidCredentials)
             return;
 
         JSON.load(this.queue.buildbot.javaScriptCoreTestFailuresURLForIteration(this, testName), function(data) {
             this.queue.buildbot.isAuthenticated = true;
-            this.javaScriptCoreTestResults.addJavaScriptCoreTestFailures(data);
+            this.javaScriptCoreTestResults.addCyberScriptCoreTestFailures(data);
             callback();
         }.bind(this),
         function(data) {

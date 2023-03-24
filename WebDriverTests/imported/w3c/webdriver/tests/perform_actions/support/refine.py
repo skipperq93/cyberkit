@@ -10,7 +10,7 @@ def get_events(session):
             hex_suffix = key[key.index("+") + 1:]
             e["key"] = unichr(int(hex_suffix, 16))
 
-        # WebKit sets code as 'Unidentified' for unidentified key codes, but
+        # CyberKit sets code as 'Unidentified' for unidentified key codes, but
         # tests expect ''.
         if "code" in e and e["code"] == "Unidentified":
             e["code"] = ""

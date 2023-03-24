@@ -26,8 +26,8 @@
 #import "config.h"
 
 #import "PlatformUtilities.h"
-#import <WebKit/WKNavigationPrivate.h>
-#import <WebKit/WKWebView.h>
+#import <CyberKit/WKNavigationPrivate.h>
+#import <CyberKit/WKWebView.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/cocoa/NSURLExtras.h>
 
@@ -47,8 +47,8 @@ static bool didFailProvisionalLoad;
 
 - (void)webView:(WebView *)sender didFailProvisionalLoadWithError:(NSError *)error forFrame:(WebFrame *)frame
 {
-    EXPECT_WK_STREQ(error.domain, @"WebKitErrorDomain");
-    EXPECT_EQ(error.code, WebKitErrorCannotShowURL);
+    EXPECT_WK_STREQ(error.domain, @"CyberKitErrorDomain");
+    EXPECT_EQ(error.code, CyberKitErrorCannotShowURL);
 
     static char literal[] = "https://www.example.com$/";
     NSURL *failedURL = WTF::URLWithData([NSData dataWithBytes:literal length:strlen(literal)], nil);
@@ -60,9 +60,9 @@ static bool didFailProvisionalLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, LoadInvalidURLRequest)
+TEST(CyberKitLegacy, LoadInvalidURLRequest)
 {
     @autoreleasepool {
         RetainPtr<WebView> webView = adoptNS([[WebView alloc] init]);
@@ -70,7 +70,7 @@ TEST(WebKitLegacy, LoadInvalidURLRequest)
         RetainPtr<LoadInvalidURLWebFrameLoadDelegate> delegate = adoptNS([[LoadInvalidURLWebFrameLoadDelegate alloc] init]);
         [webView setFrameLoadDelegate:delegate.get()];
 
-        NSURL *contentURL = [[NSBundle mainBundle] URLForResource:@"LoadInvalidURLRequest" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+        NSURL *contentURL = [[NSBundle mainBundle] URLForResource:@"LoadInvalidURLRequest" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
         [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:contentURL]];
 
         didFinishTest = false;
@@ -81,5 +81,5 @@ TEST(WebKitLegacy, LoadInvalidURLRequest)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 

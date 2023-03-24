@@ -26,7 +26,7 @@
 #include "config.h"
 #include <wtf/Bitmap.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 constexpr size_t size = 128;
 constexpr size_t smallSize = 9;
@@ -1466,4 +1466,4 @@ TEST(WTF_Bitmap, Hash_uint64_t) { testBitmapHash<uint64_t>(); }
 
 #endif // CPU(REGISTER64)
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

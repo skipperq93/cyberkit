@@ -30,10 +30,10 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <pal/spi/mac/MediaRemoteSPI.h>
 #import <wtf/Function.h>
 #import <wtf/HashSet.h>
@@ -73,7 +73,7 @@ SOFT_LINK_CONSTANT(MediaRemote, kMRMediaRemoteOptionPlaybackPosition, CFStringRe
 @end
 #endif
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class MediaSessionTest : public testing::Test {
 public:
@@ -108,7 +108,7 @@ public:
                 nowPlayingClient = player;
             gotNowPlaying = true;
         });
-        TestWebKitAPI::Util::run(&gotNowPlaying);
+        TestCyberKitAPI::Util::run(&gotNowPlaying);
         return nowPlayingClient;
     }
 
@@ -137,7 +137,7 @@ public:
     {
         bool complete = false;
         [_webView evaluateJavaScript:script completionHandler:[&] (id, NSError *) { complete = true; }];
-        TestWebKitAPI::Util::run(&complete);
+        TestCyberKitAPI::Util::run(&complete);
     }
 
     void play()
@@ -165,7 +165,7 @@ public:
             success = !error;
             completed = true;
         });
-        TestWebKitAPI::Util::run(&completed);
+        TestCyberKitAPI::Util::run(&completed);
 
         return success;
     }
@@ -248,7 +248,7 @@ public:
             completed = true;
         });
 
-        TestWebKitAPI::Util::run(&completed);
+        TestCyberKitAPI::Util::run(&completed);
 
         return result;
     }

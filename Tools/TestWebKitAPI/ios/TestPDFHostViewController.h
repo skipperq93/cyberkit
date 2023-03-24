@@ -29,10 +29,10 @@
 
 class ClassMethodSwizzler;
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 std::unique_ptr<ClassMethodSwizzler> createPDFHostViewControllerSwizzler();
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // HAVE(PDFKIT) && PLATFORM(IOS_FAMILY)

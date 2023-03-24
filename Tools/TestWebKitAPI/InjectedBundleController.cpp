@@ -34,7 +34,7 @@
 #include <algorithm>
 #include <assert.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 InjectedBundleController& InjectedBundleController::singleton()
 {
@@ -137,6 +137,6 @@ void InjectedBundleController::platformInitialize()
 }
 #endif
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

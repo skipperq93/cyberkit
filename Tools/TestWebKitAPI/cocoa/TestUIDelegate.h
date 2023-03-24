@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
 
 @interface TestUIDelegate : NSObject <WKUIDelegate>
 

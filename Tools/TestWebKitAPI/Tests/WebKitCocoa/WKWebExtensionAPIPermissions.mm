@@ -31,12 +31,12 @@
 #import "TestWKWebView.h"
 #import "TestWebExtensionsDelegate.h"
 #import "WebExtensionUtilities.h"
-#import <WebCore/UserGestureIndicator.h>
-#import <WebKit/WKFoundation.h>
-#import <WebKit/_WKWebExtensionContextPrivate.h>
-#import <WebKit/_WKWebExtensionControllerDelegate.h>
+#import <CyberCore/UserGestureIndicator.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/_WKWebExtensionContextPrivate.h>
+#import <CyberKit/_WKWebExtensionControllerDelegate.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void runScriptWithUserGesture(const String& script, WKWebView *backgroundWebView)
 {
@@ -49,7 +49,7 @@ static void runScriptWithUserGesture(const String& script, WKWebView *background
         if (error)
             NSLog(@"Encountered error: %@ while evaluating script: %@", error, static_cast<NSString *>(script));
     }];
-    TestWebKitAPI::Util::run(&callbackComplete);
+    TestCyberKitAPI::Util::run(&callbackComplete);
 }
 
 
@@ -153,7 +153,7 @@ TEST(WKWebExtensionAPIPermissions, AcceptPermissionsRequestTest)
 
     runScriptWithUserGesture("await browser.test.assertTrue(await browser.permissions.request({'permissions': ['declarativeNetRequest'], 'origins': ['*://*.apple.com/*']}))"_s, manager.get().context._backgroundWebView);
 
-    TestWebKitAPI::Util::run(&requestComplete);
+    TestCyberKitAPI::Util::run(&requestComplete);
 }
 
 TEST(WKWebExtensionAPIPermissions, DenyPermissionsRequestTest)
@@ -196,7 +196,7 @@ TEST(WKWebExtensionAPIPermissions, DenyPermissionsRequestTest)
 
     runScriptWithUserGesture("await browser.test.assertFalse(await browser.permissions.request({'permissions': ['declarativeNetRequest'], 'origins': ['*://*.apple.com/*']}))"_s, manager.get().context._backgroundWebView);
 
-    TestWebKitAPI::Util::run(&requestComplete);
+    TestCyberKitAPI::Util::run(&requestComplete);
 }
 
 TEST(WKWebExtensionAPIPermissions, AcceptPermissionsDenyMatchPatternsRequestTest)
@@ -239,7 +239,7 @@ TEST(WKWebExtensionAPIPermissions, AcceptPermissionsDenyMatchPatternsRequestTest
 
     runScriptWithUserGesture("await browser.test.assertFalse(await browser.permissions.request({'permissions': ['declarativeNetRequest'], 'origins': ['*://*.apple.com/*']}))"_s, manager.get().context._backgroundWebView);
 
-    TestWebKitAPI::Util::run(&requestComplete);
+    TestCyberKitAPI::Util::run(&requestComplete);
 }
 
 TEST(WKWebExtensionAPIPermissions, RequestPermissionsOnlyTest)
@@ -282,7 +282,7 @@ TEST(WKWebExtensionAPIPermissions, RequestPermissionsOnlyTest)
 
     runScriptWithUserGesture("await browser.test.assertTrue(await browser.permissions.request({'permissions': ['declarativeNetRequest']}))"_s, manager.get().context._backgroundWebView);
 
-    TestWebKitAPI::Util::run(&requestComplete);
+    TestCyberKitAPI::Util::run(&requestComplete);
 }
 
 TEST(WKWebExtensionAPIPermissions, RequestMatchPatternsOnlyTest)
@@ -325,9 +325,9 @@ TEST(WKWebExtensionAPIPermissions, RequestMatchPatternsOnlyTest)
 
     runScriptWithUserGesture("await browser.test.assertTrue(await browser.permissions.request({'origins': ['*://*.apple.com/*']}))"_s, manager.get().context._backgroundWebView);
 
-    TestWebKitAPI::Util::run(&requestComplete);
+    TestCyberKitAPI::Util::run(&requestComplete);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

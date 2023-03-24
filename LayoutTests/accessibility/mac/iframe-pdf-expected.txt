@@ -17,7 +17,7 @@ At index 0, got AXRole: AXStaticText
 
 Found object:
 AXRole: AXStaticText
-AXValue: Welcome to the website for the WebKit Open Source Project!
+AXValue: Welcome to the website for the CyberKit Open Source Project!
 
 PASS successfullyParsed is true
 

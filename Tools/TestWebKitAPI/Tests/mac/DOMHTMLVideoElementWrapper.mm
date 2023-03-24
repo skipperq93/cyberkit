@@ -25,9 +25,9 @@
 
 #import "config.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WebDocumentPrivate.h>
-#import <WebKit/DOMHTMLVideoElement.h>
-#import <WebKit/DOMPrivate.h>
+#import <CyberKit/WebDocumentPrivate.h>
+#import <CyberKit/DOMHTMLVideoElement.h>
+#import <CyberKit/DOMPrivate.h>
 #import <wtf/RetainPtr.h>
 
 @interface VideoWrapperFrameLoadDelegate : NSObject <WebFrameLoadDelegate> {
@@ -45,9 +45,9 @@ static bool didFinishLoad;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, DOMHTMLVideoElementWrapper)
+TEST(CyberKitLegacy, DOMHTMLVideoElementWrapper)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<VideoWrapperFrameLoadDelegate> frameLoadDelegate = adoptNS([VideoWrapperFrameLoadDelegate new]);
@@ -62,4 +62,4 @@ TEST(WebKitLegacy, DOMHTMLVideoElementWrapper)
     EXPECT_TRUE([video isKindOfClass:[DOMHTMLVideoElement class]]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

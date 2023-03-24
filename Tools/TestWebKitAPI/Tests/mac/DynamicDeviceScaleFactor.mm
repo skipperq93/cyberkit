@@ -28,19 +28,19 @@
 #import "JavaScriptTest.h"
 #import "PlatformUtilities.h"
 #import "SyntheticBackingScaleFactorWindow.h"
-#import "WebKitAgnosticTest.h"
+#import "CyberKitAgnosticTest.h"
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-class DynamicDeviceScaleFactor : public WebKitAgnosticTest {
+class DynamicDeviceScaleFactor : public CyberKitAgnosticTest {
 public:
     RetainPtr<SyntheticBackingScaleFactorWindow> createWindow();
 
     template <typename View> void runTest(View);
 
-    // WebKitAgnosticTest
-    virtual NSURL *url() const { return [[NSBundle mainBundle] URLForResource:@"devicePixelRatio" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]; }
+    // CyberKitAgnosticTest
+    virtual NSURL *url() const { return [[NSBundle mainBundle] URLForResource:@"devicePixelRatio" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]; }
     virtual void didLoadURL(WebView *webView) { runTest(webView); }
     virtual void didLoadURL(WKWebView *wkView) { runTest(wkView); }
 };
@@ -77,14 +77,14 @@ void DynamicDeviceScaleFactor::runTest(View view)
     [view removeFromSuperview];
 }
 
-TEST_F(DynamicDeviceScaleFactor, WebKit)
+TEST_F(DynamicDeviceScaleFactor, CyberKit)
 {
-    runWebKit1Test();
+    runCyberKit1Test();
 }
 
-TEST_F(DynamicDeviceScaleFactor, WebKit2)
+TEST_F(DynamicDeviceScaleFactor, CyberKit2)
 {
-    runWebKit2Test();
+    runCyberKit2Test();
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

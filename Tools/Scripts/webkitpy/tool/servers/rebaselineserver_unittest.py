@@ -292,7 +292,7 @@ class GetBaselinesTest(unittest.TestCase):
 def get_test_config(test_files=[], result_files=[]):
     # We could grab this from port.layout_tests_dir(), but instantiating a fully mocked port is a pain.
     layout_tests_directory = "/mock-checkout/LayoutTests"
-    results_directory = '/WebKitBuild/Debug/layout-test-results'
+    results_directory = '/CyberKitBuild/Debug/layout-test-results'
     host = MockHost()
     for file in test_files:
         host.filesystem.write_binary_file(host.filesystem.join(layout_tests_directory, file), '')

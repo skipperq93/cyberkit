@@ -25,17 +25,17 @@
 
 #import "config.h"
 
-#import "WebCoreTestSupport.h"
-#import <WebKit/WKBundleNodeHandlePrivate.h>
-#import <WebKit/WKDOMDocument.h>
-#import <WebKit/WKDOMElement.h>
-#import <WebKit/WKDOMNodePrivate.h>
-#import <WebKit/WKWebProcessPlugIn.h>
-#import <WebKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
-#import <WebKit/WKWebProcessPlugInFrame.h>
-#import <WebKit/WKWebProcessPlugInLoadDelegate.h>
-#import <WebKit/WKWebProcessPlugInNodeHandlePrivate.h>
-#import <WebKit/WKWebProcessPlugInScriptWorld.h>
+#import "CyberCoreTestSupport.h"
+#import <CyberKit/WKBundleNodeHandlePrivate.h>
+#import <CyberKit/WKDOMDocument.h>
+#import <CyberKit/WKDOMElement.h>
+#import <CyberKit/WKDOMNodePrivate.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
+#import <CyberKit/WKWebProcessPlugInFrame.h>
+#import <CyberKit/WKWebProcessPlugInLoadDelegate.h>
+#import <CyberKit/WKWebProcessPlugInNodeHandlePrivate.h>
+#import <CyberKit/WKWebProcessPlugInScriptWorld.h>
 
 @interface DisableSpellcheckPlugIn : NSObject <WKWebProcessPlugIn, WKWebProcessPlugInLoadDelegate>
 @end
@@ -49,7 +49,7 @@
 
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)controller didClearWindowObjectForFrame:(WKWebProcessPlugInFrame *)frame inScriptWorld:(WKWebProcessPlugInScriptWorld *)scriptWorld
 {
-    WebCoreTestSupport::injectInternalsObject([frame jsContextForWorld:scriptWorld].JSGlobalContextRef);
+    CyberCoreTestSupport::injectInternalsObject([frame jsContextForWorld:scriptWorld].JSGlobalContextRef);
 }
 
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)controller didFinishLoadForFrame:(WKWebProcessPlugInFrame *)frame

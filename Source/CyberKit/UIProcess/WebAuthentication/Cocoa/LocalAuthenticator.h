@@ -1,0 +1,94 @@
+/*
+ * Copyright (C) 2018 Apple Inc. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS''
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+ * THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+#pragma once
+
+#if ENABLE(WEB_AUTHN)
+
+#include "Authenticator.h"
+#include "LocalConnection.h"
+#include <wtf/UniqueRef.h>
+
+OBJC_CLASS LAContext;
+
+namespace CyberCore {
+class AuthenticatorAttestationResponse;
+class AuthenticatorAssertionResponse;
+}
+
+namespace CyberKit {
+
+class LocalAuthenticator final : public Authenticator {
+public:
+    // Here is the FSM.
+    // MakeCredential: Init => RequestReceived => PolicyDecided => UserVerified => (Attested) => End
+    // GetAssertion: Init => RequestReceived => ResponseSelected => UserVerified => End
+    enum class State {
+        Init,
+        RequestReceived,
+        UserVerified,
+        Attested,
+        ResponseSelected,
+        PolicyDecided,
+    };
+
+    static Ref<LocalAuthenticator> create(UniqueRef<LocalConnection>&& connection)
+    {
+        return adoptRef(*new LocalAuthenticator(WTFMove(connection)));
+    }
+
+    static void clearAllCredentials();
+
+private:
+    explicit LocalAuthenticator(UniqueRef<LocalConnection>&&);
+
+    std::optional<CyberCore::ExceptionData> processClientExtensions(std::variant<Ref<CyberCore::AuthenticatorAttestationResponse>, Ref<CyberCore::AuthenticatorAssertionResponse>>);
+
+    void makeCredential() final;
+    void continueMakeCredentialAfterReceivingLAContext(LAContext *);
+    void continueMakeCredentialAfterUserVerification(SecAccessControlRef, LocalConnection::UserVerification, LAContext *);
+    void continueMakeCredentialAfterAttested(Vector<uint8_t>&& credentialId, Vector<uint8_t>&& authData, NSArray *certificates, NSError *);
+    void finishMakeCredential(Vector<uint8_t>&& credentialId, Vector<uint8_t>&& attestationObject, std::optional<CyberCore::ExceptionData>);
+
+    void getAssertion() final;
+    void continueGetAssertionAfterResponseSelected(Ref<CyberCore::AuthenticatorAssertionResponse>&&);
+    void continueGetAssertionAfterUserVerification(Ref<CyberCore::AuthenticatorAssertionResponse>&&, LocalConnection::UserVerification, LAContext *);
+
+    void receiveException(CyberCore::ExceptionData&&, WebAuthenticationStatus = WebAuthenticationStatus::LAError) const;
+    void deleteDuplicateCredential() const;
+    bool validateUserVerification(LocalConnection::UserVerification) const;
+
+    std::optional<CyberCore::ExceptionData> processLargeBlobExtension(const CyberCore::PublicKeyCredentialCreationOptions&, CyberCore::AuthenticationExtensionsClientOutputs& extensionOutputs);
+    std::optional<CyberCore::ExceptionData> processLargeBlobExtension(const CyberCore::PublicKeyCredentialRequestOptions&, CyberCore::AuthenticationExtensionsClientOutputs& extensionOutputs, const Ref<CyberCore::AuthenticatorAssertionResponse>&);
+
+    State m_state { State::Init };
+    UniqueRef<LocalConnection> m_connection;
+    Vector<Ref<CyberCore::AuthenticatorAssertionResponse>> m_existingCredentials;
+    RetainPtr<NSData> m_provisionalCredentialId;
+};
+
+} // namespace CyberKit
+
+#endif // ENABLE(WEB_AUTHN)

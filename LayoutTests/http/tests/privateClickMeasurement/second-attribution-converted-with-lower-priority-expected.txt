@@ -2,7 +2,7 @@ Tests that a second attribution with lower priority does not replace an older wi
 
 
 Attributed Private Click Measurements:
-WebCore::PrivateClickMeasurement 1
+CyberCore::PrivateClickMeasurement 1
 Source site: 127.0.0.1
 Attribute on site: localhost
 Source ID: 3
@@ -10,4 +10,4 @@ Attribution trigger data: 12
 Attribution priority: 4
 Attribution earliest time to send: Within 24-48 hours
 Destination token: Not set
-Application bundle identifier: com.apple.WebKit.WebKitTestRunner
+Application bundle identifier: com.apple.CyberKit.CyberKitTestRunner

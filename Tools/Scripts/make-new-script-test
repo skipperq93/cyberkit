@@ -51,7 +51,7 @@ if (!$result || $showHelp || !scalar(@ARGV) || $ARGV[0] !~ m/\.html$/) {
     print STDERR "\nExamples:\n";
     print STDERR "    " . basename($0) . " new-test.html (will create the test in current directory)\n";
     print STDERR "    " . basename($0) . " fast/loader/new-test.html (a relative path is always from LayoutTests directory)\n";
-    print STDERR "    " . basename($0) . " /Volumes/Data/WebKit/LayoutTests/fast/loader/new-test.html\n";
+    print STDERR "    " . basename($0) . " /Volumes/Data/CyberKit/LayoutTests/fast/loader/new-test.html\n";
     exit 1;
 }
 
@@ -63,7 +63,7 @@ my $testAbsolutePath;
 $testAbsolutePath = File::Spec->rel2abs($providedPath) if (!(File::Spec->splitpath($providedPath))[1]);
 
 # Otherwise, it's either absolute, or relative to LayoutTests directory.
-chdirWebKit();
+chdirCyberKit();
 chdir "LayoutTests";
 $testAbsolutePath = File::Spec->rel2abs($providedPath) if (!$testAbsolutePath);
 

@@ -1,4 +1,4 @@
-set(TESTWEBKITAPI_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/TestWebKitAPI")
+set(TESTWEBKITAPI_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/TestCyberKitAPI")
 
 set(test_main_SOURCES
     playstation/main.cpp
@@ -13,66 +13,66 @@ list(APPEND TestWTF_PRIVATE_INCLUDE_DIRECTORIES
 
 WEBKIT_ADD_TARGET_CXX_FLAGS(TestWTF -Wno-unused-function)
 
-list(APPEND TestJavaScriptCore_SOURCES
+list(APPEND TestCyberScriptCore_SOURCES
     ${test_main_SOURCES}
 )
-list(APPEND TestJavaScriptCore_PRIVATE_INCLUDE_DIRECTORIES
+list(APPEND TestCyberScriptCore_PRIVATE_INCLUDE_DIRECTORIES
     ${WEBKIT_LIBRARIES_DIR}/include
 )
 
-WEBKIT_ADD_TARGET_CXX_FLAGS(TestJavaScriptCore -Wno-unused-function)
+WEBKIT_ADD_TARGET_CXX_FLAGS(TestCyberScriptCore -Wno-unused-function)
 
-list(APPEND TestWebCore_SOURCES
+list(APPEND TestCyberCore_SOURCES
     ${test_main_SOURCES}
 
-    Tests/WebCore/curl/OpenSSLHelperTests.cpp
+    Tests/CyberCore/curl/OpenSSLHelperTests.cpp
 )
-list(APPEND TestWebCore_PRIVATE_INCLUDE_DIRECTORIES
+list(APPEND TestCyberCore_PRIVATE_INCLUDE_DIRECTORIES
     ${WEBKIT_LIBRARIES_DIR}/include
 )
 
-# TestWebKit
+# TestCyberKit
 if (ENABLE_WEBKIT)
-    target_sources(TestWebKitAPIInjectedBundle PRIVATE
+    target_sources(TestCyberKitAPIInjectedBundle PRIVATE
         playstation/PlatformUtilitiesPlayStation.cpp
     )
 
-    list(APPEND TestWebKit_SOURCES
+    list(APPEND TestCyberKit_SOURCES
         ${test_main_SOURCES}
 
-        Tests/WebKit/curl/Certificates.cpp
+        Tests/CyberKit/curl/Certificates.cpp
 
         playstation/PlatformUtilitiesPlayStation.cpp
         playstation/PlatformWebViewPlayStation.cpp
     )
-    list(APPEND TestWebKit_PRIVATE_INCLUDE_DIRECTORIES
+    list(APPEND TestCyberKit_PRIVATE_INCLUDE_DIRECTORIES
         ${WEBKIT_LIBRARIES_DIR}/include
     )
 
     # Exclude tests which don't finish.
-    list(REMOVE_ITEM TestWebKit_SOURCES
-        Tests/WebKit/ForceRepaint.cpp
-        Tests/WebKit/Geolocation.cpp
+    list(REMOVE_ITEM TestCyberKit_SOURCES
+        Tests/CyberKit/ForceRepaint.cpp
+        Tests/CyberKit/Geolocation.cpp
     )
 
-    list(APPEND TestWebKit_PRIVATE_LIBRARIES
+    list(APPEND TestCyberKit_PRIVATE_LIBRARIES
         ${ProcessLauncher_LIBRARY}
     )
 
-    WEBKIT_ADD_TARGET_CXX_FLAGS(TestWebKit -Wno-deprecated-declarations)
+    WEBKIT_ADD_TARGET_CXX_FLAGS(TestCyberKit -Wno-deprecated-declarations)
 endif ()
 
 # Set the debugger working directory for Visual Studio
 if (${CMAKE_GENERATOR} MATCHES "Visual Studio")
     set_target_properties(TestWTF PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
     if (ENABLE_WEBCORE)
-        set_target_properties(TestWebCore PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+        set_target_properties(TestCyberCore PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
     endif ()
     if (ENABLE_WEBCORE)
-        set_target_properties(TestWebKit PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+        set_target_properties(TestCyberKit PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
     endif ()
 endif ()
 
 add_definitions(
-    -DTEST_WEBKIT_RESOURCES_DIR=\"${TOOLS_DIR}/TestWebKitAPI/Tests/WebKit\"
+    -DTEST_WEBKIT_RESOURCES_DIR=\"${TOOLS_DIR}/TestCyberKitAPI/Tests/CyberKit\"
 )

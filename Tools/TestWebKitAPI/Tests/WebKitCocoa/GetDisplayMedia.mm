@@ -31,12 +31,12 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewConfiguration.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 
 static bool shouldDeny = false;
 static bool systemCanPromptForCapture = false;
@@ -78,14 +78,14 @@ static bool systemCanPromptForCapture = false;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 class GetDisplayMediaTest : public testing::Test {
 public:
     virtual void SetUp()
     {
         m_configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
-        auto context = adoptWK(TestWebKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
+        auto context = adoptWK(TestCyberKitAPI::Util::createContextForInjectedBundleTest("InternalsInjectedBundleTest"));
         m_configuration.get().processPool = (WKProcessPool *)context.get();
 
         auto handler = adoptNS([[GetDisplayMediaMessageHandler alloc] init]);
@@ -114,7 +114,7 @@ public:
             if (result.boolValue == expected)
                 return YES;
 
-            TestWebKitAPI::Util::spinRunLoop(10);
+            TestCyberKitAPI::Util::spinRunLoop(10);
         }
 
         return NO;
@@ -135,7 +135,7 @@ public:
         NSString *script = [NSString stringWithFormat:@"promptForCapture(%@)", constraints];
         [m_webView stringByEvaluatingJavaScript:script];
 
-        TestWebKitAPI::Util::run(&receivedScriptMessage);
+        TestCyberKitAPI::Util::run(&receivedScriptMessage);
         auto getDisplayMediaResult = [(NSString *)[lastScriptMessage body] UTF8String];
         if (shouldSucceed) {
             EXPECT_STREQ(getDisplayMediaResult, "allowed") << " with contraint " << constraintString;
@@ -194,6 +194,6 @@ TEST_F(GetDisplayMediaTest, SystemCanPrompt)
 }
 
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(MEDIA_STREAM) && PLATFORM(MAC)

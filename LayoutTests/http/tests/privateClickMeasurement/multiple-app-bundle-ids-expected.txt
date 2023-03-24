@@ -27,7 +27,7 @@ Request body:
 {"source_engagement_type":"click","source_site":"127.0.0.1","source_id":33,"attributed_on_site":"localhost","trigger_data":12,"version":3}
 
 Unattributed Private Click Measurements:
-WebCore::PrivateClickMeasurement 1
+CyberCore::PrivateClickMeasurement 1
 Source site: 127.0.0.1
 Attribute on site: localhost
 Source ID: 23

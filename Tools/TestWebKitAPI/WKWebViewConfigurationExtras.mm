@@ -27,11 +27,11 @@
 #import "WKWebViewConfigurationExtras.h"
 
 #import "PlatformUtilities.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <wtf/RetainPtr.h>
 
-@implementation WKWebViewConfiguration (TestWebKitAPIExtras)
+@implementation WKWebViewConfiguration (TestCyberKitAPIExtras)
 
 + (instancetype)_test_configurationWithTestPlugInClassName:(NSString *)className
 {
@@ -41,11 +41,11 @@
 + (instancetype)_test_configurationWithTestPlugInClassName:(NSString *)className configureJSCForTesting:(BOOL)value
 {
     auto processPoolConfiguration = adoptNS([[_WKProcessPoolConfiguration alloc] init]);
-    [processPoolConfiguration setInjectedBundleURL:[[NSBundle mainBundle] URLForResource:@"TestWebKitAPI" withExtension:@"wkbundle"]];
+    [processPoolConfiguration setInjectedBundleURL:[[NSBundle mainBundle] URLForResource:@"TestCyberKitAPI" withExtension:@"wkbundle"]];
     [processPoolConfiguration setConfigureJSCForTesting:value];
     
     auto processPool = adoptNS([[WKProcessPool alloc] _initWithConfiguration:processPoolConfiguration.get()]);
-    [processPool _setObject:className forBundleParameter:TestWebKitAPI::Util::TestPlugInClassNameParameter];
+    [processPool _setObject:className forBundleParameter:TestCyberKitAPI::Util::TestPlugInClassNameParameter];
 
     auto webViewConfiguration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [webViewConfiguration setProcessPool:processPool.get()];

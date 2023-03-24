@@ -34,7 +34,7 @@
 #include <mach/vm_param.h>
 #endif
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 struct PackedPair {
     PackedPtr<uint8_t> key { nullptr };
@@ -125,4 +125,4 @@ TEST(WTF_Packed, HashMap)
 }
 
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

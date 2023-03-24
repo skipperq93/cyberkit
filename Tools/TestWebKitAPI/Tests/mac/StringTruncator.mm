@@ -26,11 +26,11 @@
 #import "config.h"
 #import "PlatformUtilities.h"
 
-#import <WebKit/WebStringTruncator.h>
+#import <CyberKit/WebStringTruncator.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, StringTruncator)
+TEST(CyberKitLegacy, StringTruncator)
 {
     @autoreleasepool {
         EXPECT_EQ(nil, [WebStringTruncator centerTruncateString:@"abcdefghijklmnopqrstuvwxyz" toWidth:100 withFont:nil]);
@@ -46,4 +46,4 @@ TEST(WebKitLegacy, StringTruncator)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

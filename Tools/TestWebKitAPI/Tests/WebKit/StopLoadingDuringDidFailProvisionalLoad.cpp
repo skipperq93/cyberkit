@@ -30,9 +30,9 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool done;
 static bool receivedMessageFromBundle;
@@ -60,7 +60,7 @@ static void didFailProvisionalNavigation(WKPageRef, WKNavigationRef, WKErrorRef,
     done = true;
 }
 
-TEST(WebKit, StopLoadingDuringDidFailProvisionalLoadTest)
+TEST(CyberKit, StopLoadingDuringDidFailProvisionalLoadTest)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("StopLoadingDuringDidFailProvisionalLoadTest"));
     setInjectedBundleClient(context.get());
@@ -78,6 +78,6 @@ TEST(WebKit, StopLoadingDuringDidFailProvisionalLoadTest)
     Util::run(&done);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

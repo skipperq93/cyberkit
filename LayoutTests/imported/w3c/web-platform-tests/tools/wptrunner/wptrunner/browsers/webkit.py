@@ -11,7 +11,7 @@ from ..executors.executorwebdriver import (WebDriverTestharnessExecutor,  # noqa
 
 __wptrunner__ = {"product": "webkit",
                  "check_args": "check_args",
-                 "browser": "WebKitBrowser",
+                 "browser": "CyberKitBrowser",
                  "browser_kwargs": "browser_kwargs",
                  "executor": {"testharness": "WebDriverTestharnessExecutor",
                               "reftest": "WebDriverRefTestExecutor",
@@ -76,8 +76,8 @@ def run_info_extras(**kwargs):
     return {"webkit_port": kwargs["webkit_port"]}
 
 
-class WebKitBrowser(WebDriverBrowser):
-    """Generic WebKit browser is backed by WebKit's WebDriver implementation"""
+class CyberKitBrowser(WebDriverBrowser):
+    """Generic CyberKit browser is backed by CyberKit's WebDriver implementation"""
 
     def make_command(self):
         return [self.webdriver_binary, f"--port={self.port}"] + self.webdriver_args

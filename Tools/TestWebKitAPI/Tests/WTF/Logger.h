@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 std::ostringstream& log();
 

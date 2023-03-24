@@ -875,7 +875,7 @@ WEBIDL2.JS:.gitmodules
 # Manual test that uses console.logs for feedback
 CONSOLE:payment-request/payment-request-response-id.html
 
-# Tests that use WebKit/Blink testing APIs
+# Tests that use CyberKit/Blink testing APIs
 LAYOUTTESTS APIS: css/css-regions-1/interactivity/*
 LAYOUTTESTS APIS: css/work-in-progress/opera/css-device-adapt/template.blink.html
 LAYOUTTESTS APIS: webgl/conformance-1.0.3/*

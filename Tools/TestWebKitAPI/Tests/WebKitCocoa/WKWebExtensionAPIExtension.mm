@@ -29,7 +29,7 @@
 
 #import "WebExtensionUtilities.h"
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WKWebExtensionAPIExtension, GetURL)
 {
@@ -93,6 +93,6 @@ TEST(WKWebExtensionAPIExtension, GetURL)
     Util::loadAndRunExtension(manifest, @{ @"background.js": backgroundScript });
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(WK_WEB_EXTENSIONS)

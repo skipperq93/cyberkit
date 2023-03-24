@@ -45,7 +45,7 @@ setup(
         'Topic :: Software Development :: Testing',
     ],
     keywords='database history results testing webkit',
-    url='https://github.com/WebKit/WebKit/tree/main/Tools/Scripts/libraries/resultsdbpy',
+    url='https://github.com/CyberKit/CyberKit/tree/main/Tools/Scripts/libraries/resultsdbpy',
     author='Jonathan Bedard',
     author_email='jbedard@apple.com',
     license='Modified BSD',

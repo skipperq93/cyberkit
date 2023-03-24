@@ -34,31 +34,31 @@ public:
     static std::unique_ptr<WebProcessTest> create() { return std::unique_ptr<WebProcessTest>(new AutocleanupsTest()); }
 
 private:
-    bool testWebProcessAutocleanups(WebKitWebPage* webPage)
+    bool testWebProcessAutocleanups(CyberKitWebPage* webPage)
     {
         // Transfer none
-        g_autoptr(WebKitWebPage) page = WEBKIT_WEB_PAGE(g_object_ref(G_OBJECT(webPage)));
+        g_autoptr(CyberKitWebPage) page = WEBKIT_WEB_PAGE(g_object_ref(G_OBJECT(webPage)));
         g_assert_true(WEBKIT_IS_WEB_PAGE(page));
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(page));
 
 #if !USE(GTK4)
         // Transfer none
         G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-        g_autoptr(WebKitDOMDocument) document = WEBKIT_DOM_DOCUMENT(g_object_ref(G_OBJECT(webkit_web_page_get_dom_document(page))));
+        g_autoptr(CyberKitDOMDocument) document = WEBKIT_DOM_DOCUMENT(g_object_ref(G_OBJECT(webkit_web_page_get_dom_document(page))));
         g_assert_true(WEBKIT_DOM_IS_DOCUMENT(document));
         G_GNUC_END_IGNORE_DEPRECATIONS;
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(document));
 
         // Transfer full
         G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-        g_autoptr(WebKitDOMDOMWindow) window = webkit_dom_document_get_default_view(document);
+        g_autoptr(CyberKitDOMDOMWindow) window = webkit_dom_document_get_default_view(document);
         g_assert_true(WEBKIT_DOM_IS_DOM_WINDOW(window));
         G_GNUC_END_IGNORE_DEPRECATIONS;
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(window));
 
         // Transfer full
         G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-        g_autoptr(WebKitDOMRange) range = webkit_dom_document_create_range(document);
+        g_autoptr(CyberKitDOMRange) range = webkit_dom_document_create_range(document);
         g_assert_true(WEBKIT_DOM_IS_RANGE(range));
         G_GNUC_END_IGNORE_DEPRECATIONS;
         assertObjectIsDeletedWhenTestFinishes(G_OBJECT(range));
@@ -67,7 +67,7 @@ private:
         return true;
     }
 
-    bool runTest(const char* testName, WebKitWebPage* page) override
+    bool runTest(const char* testName, CyberKitWebPage* page) override
     {
         if (!strcmp(testName, "web-process-autocleanups"))
             return testWebProcessAutocleanups(page);

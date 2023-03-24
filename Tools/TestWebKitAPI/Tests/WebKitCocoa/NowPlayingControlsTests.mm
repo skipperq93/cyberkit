@@ -27,8 +27,8 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 
 #if PLATFORM(IOS_FAMILY)
 
@@ -63,7 +63,7 @@
 
     [self _requestActiveNowPlayingSessionInfo:completionHandler];
 
-    TestWebKitAPI::Util::run(&_receivedNowPlayingInfoResponse);
+    TestCyberKitAPI::Util::run(&_receivedNowPlayingInfoResponse);
 
     return _hasActiveNowPlayingSession;
 }
@@ -87,7 +87,7 @@
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 #if PLATFORM(MAC)
 TEST(NowPlayingControlsTests, NowPlayingControlsDoNotShowForForegroundPage)
@@ -235,6 +235,6 @@ TEST(NowPlayingControlsTests, DISABLED_NowPlayingControlsIOS)
 }
 #endif
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // PLATFORM(IOS_FAMILY)

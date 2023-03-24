@@ -26,12 +26,12 @@ import argparse, os, re
 
 # For now: Searches all files in current directory tree.
 # Reads every file so it does take a while.
-# On my fast computer takes about 15 seconds for WebCore.
+# On my fast computer takes about 15 seconds for CyberCore.
 
 # Things to do next:
 #
-#   Clever default for use on WebKit source tree instead of current directory by default.
-#   Report third party sources separately from WebKit project files.
+#   Clever default for use on CyberKit source tree instead of current directory by default.
+#   Report third party sources separately from CyberKit project files.
 
 # Hard-coded for now, could read these out of a file instead.
 # Term, then the regular expression for that term.

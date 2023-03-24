@@ -25,14 +25,14 @@
 
 #import "WK2WebDocumentController.h"
 
-#import <WebKit/WKFrameInfo.h>
-#import <WebKit/WKNavigationDelegate.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKUIDelegate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKWebsiteDataStore.h>
+#import <CyberKit/WKFrameInfo.h>
+#import <CyberKit/WKNavigationDelegate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKUIDelegate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKWebsiteDataStore.h>
 
 @interface WK2WebDocumentController () <WKUIDelegate, NSTextFinderBarContainer>
 @property (nonatomic, strong) WKWebView *webView;

@@ -27,7 +27,7 @@
 
 #include <wtf/SetForScope.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WTF, SetForScopeNested)
 {
@@ -44,4 +44,4 @@ TEST(WTF, SetForScopeNested)
     EXPECT_FALSE(originallyFalse);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

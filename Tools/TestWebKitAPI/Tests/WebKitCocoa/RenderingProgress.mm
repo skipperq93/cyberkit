@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #import "PlatformUtilities.h"
 #import "RenderingProgressProtocol.h"
@@ -32,13 +32,13 @@
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKUserContentControllerPrivate.h>
-#import <WebKit/WKUserScriptPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/_WKRemoteObjectInterface.h>
-#import <WebKit/_WKRemoteObjectRegistry.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/WKUserScriptPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/CyberKit.h>
+#import <CyberKit/_WKRemoteObjectInterface.h>
+#import <CyberKit/_WKRemoteObjectRegistry.h>
 #import <wtf/RetainPtr.h>
 
 static bool didObserveFirstMeaningfulPaint;
@@ -69,5 +69,5 @@ TEST(RenderingProgress, FirstMeaningfulPaint)
 
     [webView loadHTMLString:@"<body style='background-color: red;'></body>" baseURL:nil];
 
-    TestWebKitAPI::Util::run(&didObserveFirstMeaningfulPaint);
+    TestCyberKitAPI::Util::run(&didObserveFirstMeaningfulPaint);
 }

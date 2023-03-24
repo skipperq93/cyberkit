@@ -28,17 +28,17 @@
 #import "PlatformUtilities.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKFindConfiguration.h>
-#import <WebKit/WKFindResult.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/_WKFindDelegate.h>
+#import <CyberKit/WKFindConfiguration.h>
+#import <CyberKit/WKFindResult.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/_WKFindDelegate.h>
 #import <wtf/RetainPtr.h>
 
 #if ENABLE(IMAGE_ANALYSIS)
 #import "ImageAnalysisTestingUtilities.h"
 #import "InstanceMethodSwizzler.h"
-#import <WebKit/_WKFeature.h>
+#import <CyberKit/_WKFeature.h>
 #import <pal/cocoa/VisionKitCoreSoftLink.h>
 #endif
 
@@ -59,7 +59,7 @@ TEST(WKWebView, FindAPIForwardsNoMatch)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 
@@ -78,7 +78,7 @@ TEST(WKWebView, FindAPIForwardsWrap)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView findString:@"word" withConfiguration:configuration.get() completionHandler:^(WKFindResult *result) {
@@ -87,7 +87,7 @@ TEST(WKWebView, FindAPIForwardsWrap)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView findString:@"word" withConfiguration:configuration.get() completionHandler:^(WKFindResult *result) {
@@ -96,7 +96,7 @@ TEST(WKWebView, FindAPIForwardsWrap)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 
@@ -116,7 +116,7 @@ TEST(WKWebView, FindAPIForwardsNoWrap)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView findString:@"word" withConfiguration:configuration.get() completionHandler:^(WKFindResult *result) {
@@ -125,7 +125,7 @@ TEST(WKWebView, FindAPIForwardsNoWrap)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView findString:@"word" withConfiguration:configuration.get() completionHandler:^(WKFindResult *result) {
@@ -134,7 +134,7 @@ TEST(WKWebView, FindAPIForwardsNoWrap)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 
@@ -156,7 +156,7 @@ TEST(WKWebView, FindAPIBackwardsWrap)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView findString:@"word" withConfiguration:configuration.get() completionHandler:^(WKFindResult *result) {
@@ -165,7 +165,7 @@ TEST(WKWebView, FindAPIBackwardsWrap)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView findString:@"word" withConfiguration:configuration.get() completionHandler:^(WKFindResult *result) {
@@ -174,7 +174,7 @@ TEST(WKWebView, FindAPIBackwardsWrap)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 
@@ -197,7 +197,7 @@ TEST(WKWebView, FindAPIBackwardsNoWrap)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView findString:@"word" withConfiguration:configuration.get() completionHandler:^(WKFindResult *result) {
@@ -206,7 +206,7 @@ TEST(WKWebView, FindAPIBackwardsNoWrap)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView findString:@"word" withConfiguration:configuration.get() completionHandler:^(WKFindResult *result) {
@@ -215,7 +215,7 @@ TEST(WKWebView, FindAPIBackwardsNoWrap)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 
@@ -235,7 +235,7 @@ TEST(WKWebView, FindAPIForwardsCaseSensitive)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView findString:@"word" withConfiguration:configuration.get() completionHandler:^(WKFindResult *result) {
@@ -244,7 +244,7 @@ TEST(WKWebView, FindAPIForwardsCaseSensitive)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView findString:@"word" withConfiguration:configuration.get() completionHandler:^(WKFindResult *result) {
@@ -253,7 +253,7 @@ TEST(WKWebView, FindAPIForwardsCaseSensitive)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [webView findString:@"Word" withConfiguration:configuration.get() completionHandler:^(WKFindResult *result) {
@@ -262,7 +262,7 @@ TEST(WKWebView, FindAPIForwardsCaseSensitive)
 
         done = true;
     }];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 }
 #if PLATFORM(MAC)
@@ -285,12 +285,12 @@ static unsigned gDidProcessRequestCount = 0;
 static void processRequestWithResults(id, SEL, VKImageAnalyzerRequest *, void (^)(double progress), void (^completion)(VKImageAnalysis *, NSError *))
 {
     gDidProcessRequestCount++;
-    completion(TestWebKitAPI::createImageAnalysisWithSimpleFixedResults().get(), nil);
+    completion(TestCyberKitAPI::createImageAnalysisWithSimpleFixedResults().get(), nil);
 }
 
 static VKImageAnalyzerRequest *makeFakeRequest(id, SEL, CGImageRef image, VKImageOrientation orientation, VKAnalysisTypes requestTypes)
 {
-    return TestWebKitAPI::createRequest(image, orientation, requestTypes).leakRef();
+    return TestCyberKitAPI::createRequest(image, orientation, requestTypes).leakRef();
 }
 
 template <typename FunctionType>
@@ -329,8 +329,8 @@ TEST(WKWebView, FindAPITextInImage)
         done = true;
     }];
 
-    TestWebKitAPI::Util::run(&done);
-    TestWebKitAPI::Util::waitForConditionWithLogging([&] {
+    TestCyberKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::waitForConditionWithLogging([&] {
         return gDidProcessRequestCount == 1 && [findDelegate numberOfCallsToDidFindMatches] == 2;
     }, 1, @"Timed out waiting for image analysis to start and for search for string to be performed twice.");
 }

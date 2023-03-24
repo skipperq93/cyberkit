@@ -166,10 +166,10 @@ TEST(CopyRTF, StripsDataDetectorsLinks)
 TEST(CopyRTF, StripsUserSelectNone)
 {
     auto attributedString = copyAttributedStringFromHTML(@"hello <span style='-webkit-user-select: none; user-select: none;'>world "
-        "<span style='-webkit-user-select: initial; user-select: initial;'>WebKit </span></span>"
+        "<span style='-webkit-user-select: initial; user-select: initial;'>CyberKit </span></span>"
         "<div style='-webkit-user-select: none; user-select: none;'>some<br>user-select-none<br>content</div><span inert>foo </span>bar", false);
 
-    EXPECT_WK_STREQ([attributedString string].UTF8String, "hello WebKit bar");
+    EXPECT_WK_STREQ([attributedString string].UTF8String, "hello CyberKit bar");
 }
 
 #endif // PLATFORM(COCOA)

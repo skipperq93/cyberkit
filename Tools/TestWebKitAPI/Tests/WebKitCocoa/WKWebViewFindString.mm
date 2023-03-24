@@ -28,9 +28,9 @@
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKFindDelegate.h>
-#import <WebKit/_WKInputDelegate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKFindDelegate.h>
+#import <CyberKit/_WKInputDelegate.h>
 
 #if PLATFORM(IOS_FAMILY)
 #import "ClassMethodSwizzler.h"
@@ -116,7 +116,7 @@ static BOOL viewIsFirstResponder(NSView *view)
 }
 #endif
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 TEST(WKWebViewFindString, DoNotFocusMatchWhenWebViewResignedAndHardwareKeyboardAttached)
 {
@@ -189,4 +189,4 @@ TEST(WKWebViewFindString, DoNotUpdateMatchIndexWhenGivenNoIndexChangeOption)
     EXPECT_EQ(0, [findDelegate matchIndex]);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

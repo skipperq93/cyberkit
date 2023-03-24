@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #if PLATFORM(MAC)
 
@@ -33,16 +33,16 @@
 #import "Test.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKBackForwardListItemPrivate.h>
-#import <WebKit/WKPage.h>
-#import <WebKit/WKPagePrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKBackForwardListItemPrivate.h>
+#import <CyberKit/WKPage.h>
+#import <CyberKit/WKPagePrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/RetainPtr.h>
 
 static bool didForceRepaint;
 
-using namespace TestWebKitAPI;
+using namespace TestCyberKitAPI;
 
 @interface WKWebView ()
 - (WKPageRef)_pageForTesting;
@@ -77,7 +77,7 @@ static void forceRepaintCallback(WKErrorRef error, void*)
 {
     didForceRepaint = false;
     WKPageForceRepaint([self _pageForTesting], 0, forceRepaintCallback);
-    TestWebKitAPI::Util::run(&didForceRepaint);
+    TestCyberKitAPI::Util::run(&didForceRepaint);
 }
 
 - (void)synchronouslyLoadTestPageAndForceRepaint:(NSString *)testPageName

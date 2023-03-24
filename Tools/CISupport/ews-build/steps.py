@@ -64,7 +64,7 @@ WithProperties = properties.WithProperties
 Interpolate = properties.Interpolate
 GITHUB_URL = 'https://github.com/'
 # First project is treated as the default
-GITHUB_PROJECTS = ['WebKit/WebKit', 'apple/WebKit', 'WebKit/WebKit-security']
+GITHUB_PROJECTS = ['CyberKit/CyberKit', 'apple/CyberKit', 'CyberKit/CyberKit-security']
 HASH_LENGTH_TO_DISPLAY = 8
 DEFAULT_BRANCH = 'main'
 DEFAULT_REMOTE = 'origin'
@@ -523,7 +523,7 @@ class AddToLogMixin(object):
 
 
 class Contributors(object):
-    url = 'https://raw.githubusercontent.com/WebKit/WebKit/main/metadata/contributors.json'
+    url = 'https://raw.githubusercontent.com/CyberKit/CyberKit/main/metadata/contributors.json'
     contributors = {}
     last_update = 0
     REFRESH = 4 * 60 * 60
@@ -1181,7 +1181,7 @@ class CheckChangeRelevance(AnalyzeChange):
     MAX_LINE_SIZE = 250
 
     bindings_path_regexes = [
-        re.compile(rb'Source/WebCore', re.IGNORECASE),
+        re.compile(rb'Source/CyberCore', re.IGNORECASE),
         re.compile(rb'Tools', re.IGNORECASE),
     ]
 
@@ -1207,13 +1207,13 @@ class CheckChangeRelevance(AnalyzeChange):
     ]
 
     wk1_path_regexes = [
-        re.compile(rb'Source/WebKitLegacy', re.IGNORECASE),
-        re.compile(rb'Source/WebCore', re.IGNORECASE),
+        re.compile(rb'Source/CyberKitLegacy', re.IGNORECASE),
+        re.compile(rb'Source/CyberCore', re.IGNORECASE),
         re.compile(rb'Source/WebInspectorUI', re.IGNORECASE),
         re.compile(rb'Source/WebDriver', re.IGNORECASE),
         re.compile(rb'Source/WTF', re.IGNORECASE),
         re.compile(rb'Source/bmalloc', re.IGNORECASE),
-        re.compile(rb'Source/JavaScriptCore', re.IGNORECASE),
+        re.compile(rb'Source/CyberScriptCore', re.IGNORECASE),
         re.compile(rb'Source/ThirdParty', re.IGNORECASE),
         re.compile(rb'LayoutTests', re.IGNORECASE),
         re.compile(rb'Tools', re.IGNORECASE),
@@ -1227,7 +1227,7 @@ class CheckChangeRelevance(AnalyzeChange):
         re.compile(rb'Tools/Scripts/webkitpy', re.IGNORECASE),
         re.compile(rb'Tools/Scripts/libraries', re.IGNORECASE),
         re.compile(rb'Tools/Scripts/commit-log-editor', re.IGNORECASE),
-        re.compile(rb'Source/WebKit/Scripts', re.IGNORECASE),
+        re.compile(rb'Source/CyberKit/Scripts', re.IGNORECASE),
         re.compile(rb'metadata/contributors.json', re.IGNORECASE),
     ]
 
@@ -1822,7 +1822,7 @@ class ValidateChange(buildstep.BuildStep, BugzillaMixin, GitHubMixin):
             email_text += ' while testing <a href="{}">{}</a>'.format(GitHub.commit_url(sha, repository), change_string)
             email_text += ' for <a href="{}">PR #{}: {}</a>.'.format(GitHub.pr_url(pr_number, repository), pr_number, title)
             email_text += '\n\nFull details are available at: {}\n\nChange author: {}'.format(build_url, change_author)
-            email_text += '\n\nPlease contact one of the WebKit administrators on Slack or email admin@webkit.org to fix the issue.'
+            email_text += '\n\nPlease contact one of the CyberKit administrators on Slack or email admin@webkit.org to fix the issue.'
             yield self._addToLog('stdio', 'Sending email notification to {}.\nPlease contact an admin to fix the issue.\n'.format(change_author))
             send_email_to_patch_author(change_author, email_subject, email_text, self.getProperty('github.head.sha', ''))
         except Exception as e:
@@ -1943,8 +1943,8 @@ class ValidateCommitterAndReviewer(buildstep.BuildStep, GitHubMixin, AddToLogMix
             defer.returnValue(rc)
             return
 
-        # Validators are a special case, not all validators are WebKit reviewers. If we have a reviewer that
-        # is a validator but NOT a WebKit reviewer, remove them
+        # Validators are a special case, not all validators are CyberKit reviewers. If we have a reviewer that
+        # is a validator but NOT a CyberKit reviewer, remove them
         def filter_out_non_reviewer_validators(candidate):
             if candidate.lower() not in validators:
                 return True
@@ -2223,7 +2223,7 @@ class RevertPullRequestChanges(steps.ShellSequence):
             # Force cmake reconfigure to ensure the recovery after patches breaking cmake configure step
             platform = platform.upper()
             config = self.getProperty('configuration').capitalize()
-            target = os.path.join("WebKitBuild", platform, config, "build-webkit-options.txt")
+            target = os.path.join("CyberKitBuild", platform, config, "build-webkit-options.txt")
             self.commands.append(util.ShellArg(command=['rm', '-f', target], logname='stdio'))
         return super().run()
 
@@ -2361,7 +2361,7 @@ class RunBindingsTests(shell.ShellCommand, AddToLogMixin):
         return {'step': message}
 
 
-class RunWebKitPerlTests(shell.ShellCommandNewStyle):
+class RunCyberKitPerlTests(shell.ShellCommandNewStyle):
     name = 'webkitperl-tests'
     description = ['webkitperl-tests running']
     descriptionDone = ['webkitperl-tests']
@@ -2382,11 +2382,11 @@ class RunWebKitPerlTests(shell.ShellCommandNewStyle):
     def evaluateCommand(self, cmd):
         rc = shell.ShellCommandNewStyle.evaluateCommand(self, cmd)
         if rc == FAILURE:
-            self.build.addStepsAfterCurrentStep([KillOldProcesses(), ReRunWebKitPerlTests()])
+            self.build.addStepsAfterCurrentStep([KillOldProcesses(), ReRunCyberKitPerlTests()])
         return rc
 
 
-class ReRunWebKitPerlTests(RunWebKitPerlTests):
+class ReRunCyberKitPerlTests(RunCyberKitPerlTests):
     name = 're-run-webkitperl-tests'
     flunkOnFailure = True
     haltOnFailure = True
@@ -2395,7 +2395,7 @@ class ReRunWebKitPerlTests(RunWebKitPerlTests):
         return shell.ShellCommandNewStyle.evaluateCommand(self, cmd)
 
 
-class RunBuildWebKitOrgUnitTests(shell.ShellCommandNewStyle):
+class RunBuildCyberKitOrgUnitTests(shell.ShellCommandNewStyle):
     name = 'build-webkit-org-unit-tests'
     description = ['build-webkit-unit-tests running']
     command = ['python3', 'runUnittests.py', 'build-webkit-org']
@@ -2448,7 +2448,7 @@ class RunBuildbotCheckConfigForEWS(RunBuildbotCheckConfig):
     directory = 'build/Tools/CISupport/ews-build'
 
 
-class RunBuildbotCheckConfigForBuildWebKit(RunBuildbotCheckConfig):
+class RunBuildbotCheckConfigForBuildCyberKit(RunBuildbotCheckConfig):
     name = 'buildbot-check-config-for-build-webkit'
     directory = 'build/Tools/CISupport/build-webkit-org'
 
@@ -2473,7 +2473,7 @@ class RunResultsdbpyTests(shell.ShellCommandNewStyle):
         return {'step': 'Failed resultsdbpy unit tests'}
 
 
-class WebKitPyTest(shell.ShellCommandNewStyle, AddToLogMixin):
+class CyberKitPyTest(shell.ShellCommandNewStyle, AddToLogMixin):
     language = 'python'
     descriptionDone = ['webkitpy-tests']
     flunkOnFailure = True
@@ -2527,7 +2527,7 @@ class WebKitPyTest(shell.ShellCommandNewStyle, AddToLogMixin):
         return {'step': message}
 
 
-class RunWebKitPyPython2Tests(WebKitPyTest):
+class RunCyberKitPyPython2Tests(CyberKitPyTest):
     language = 'python2'
     name = 'webkitpy-tests-{}'.format(language)
     description = ['webkitpy-tests running ({})'.format(language)]
@@ -2536,7 +2536,7 @@ class RunWebKitPyPython2Tests(WebKitPyTest):
     command = ['python', 'Tools/Scripts/test-webkitpy', '--verbose', '--json-output={0}'.format(jsonFileName)]
 
 
-class RunWebKitPyPython3Tests(WebKitPyTest):
+class RunCyberKitPyPython3Tests(CyberKitPyTest):
     language = 'python3'
     name = 'webkitpy-tests-{}'.format(language)
     description = ['webkitpy-tests running ({})'.format(language)]
@@ -2608,10 +2608,10 @@ class BuildLogLineObserver(logobserver.LogLineObserver, object):
             self.error_context_buffer = []
 
 
-class CompileWebKit(shell.Compile, AddToLogMixin):
+class CompileCyberKit(shell.Compile, AddToLogMixin):
     name = 'compile-webkit'
     description = ['compiling']
-    descriptionDone = ['Compiled WebKit']
+    descriptionDone = ['Compiled CyberKit']
     env = {'MFLAGS': ''}
     warningPattern = '.*arning: .*'
     haltOnFailure = False
@@ -2652,11 +2652,11 @@ class CompileWebKit(shell.Compile, AddToLogMixin):
                 # For build-only bots, the expectation is that tests will be run on separate machines,
                 # so we need to package debug info as dSYMs. Only generating line tables makes
                 # this much faster than full debug info, and crash logs still have line numbers.
-                # Some projects (namely lldbWebKitTester) require full debug info, and may override this.
+                # Some projects (namely lldbCyberKitTester) require full debug info, and may override this.
                 self.setCommand(self.command + ['DEBUG_INFORMATION_FORMAT=dwarf-with-dsym'])
                 self.setCommand(self.command + ['CLANG_DEBUG_INFORMATION_LEVEL=$(WK_OVERRIDE_DEBUG_INFORMATION_LEVEL:default=line-tables-only)'])
         if platform == 'gtk':
-            prefix = os.path.join("/app", "webkit", "WebKitBuild", self.getProperty("configuration"), "install")
+            prefix = os.path.join("/app", "webkit", "CyberKitBuild", self.getProperty("configuration"), "install")
             self.setCommand(self.command + [f'--prefix={prefix}'])
 
         self.setCommand(self.command + customBuildFlag(platform, self.getProperty('fullPlatform')))
@@ -2677,8 +2677,8 @@ class CompileWebKit(shell.Compile, AddToLogMixin):
             if self.getProperty('group') == 'jsc':
                 steps_to_add.append(CompileJSCWithoutChange())
             else:
-                steps_to_add.append(CompileWebKitWithoutChange())
-            steps_to_add.append(AnalyzeCompileWebKitResults())
+                steps_to_add.append(CompileCyberKitWithoutChange())
+            steps_to_add.append(AnalyzeCompileCyberKitResults())
             # Using a single addStepsAfterCurrentStep because of https://github.com/buildbot/buildbot/issues/4874
             self.build.addStepsAfterCurrentStep(steps_to_add)
         else:
@@ -2697,15 +2697,15 @@ class CompileWebKit(shell.Compile, AddToLogMixin):
 
     def getResultSummary(self):
         if self.results == FAILURE:
-            return {'step': 'Failed to compile WebKit'}
+            return {'step': 'Failed to compile CyberKit'}
         if self.results == SKIPPED:
             if self.getProperty('fast_commit_queue'):
-                return {'step': 'Skipped compiling WebKit in fast-cq mode'}
-            return {'step': 'Skipped compiling WebKit'}
+                return {'step': 'Skipped compiling CyberKit in fast-cq mode'}
+            return {'step': 'Skipped compiling CyberKit'}
         return shell.Compile.getResultSummary(self)
 
 
-class CompileWebKitWithoutChange(CompileWebKit):
+class CompileCyberKitWithoutChange(CompileCyberKit):
     name = 'compile-webkit-without-change'
     haltOnFailure = False
 
@@ -2716,7 +2716,7 @@ class CompileWebKitWithoutChange(CompileWebKit):
     def evaluateCommand(self, cmd):
         rc = shell.Compile.evaluateCommand(self, cmd)
         if rc == FAILURE and self.retry_build_on_failure:
-            message = 'Unable to build WebKit without change, retrying build'
+            message = 'Unable to build CyberKit without change, retrying build'
             self.descriptionDone = message
             self.send_email_for_unexpected_build_failure()
             self.build.buildFinished([message], RETRY)
@@ -2727,8 +2727,8 @@ class CompileWebKitWithoutChange(CompileWebKit):
             builder_name = self.getProperty('buildername', '')
             worker_name = self.getProperty('workername', '')
             build_url = '{}#/builders/{}/builds/{}'.format(self.master.config.buildbotURL, self.build._builderid, self.build.number)
-            email_subject = '{} might be in bad state, unable to build WebKit'.format(worker_name)
-            email_text = '{} might be in bad state. It is unable to build WebKit.'.format(worker_name)
+            email_subject = '{} might be in bad state, unable to build CyberKit'.format(worker_name)
+            email_text = '{} might be in bad state. It is unable to build CyberKit.'.format(worker_name)
             email_text += ' Same patch was built successfuly on builder queue previously.\n\nBuild: {}\n\nBuilder: {}'.format(build_url, builder_name)
             reference = 'build-failure-{}'.format(worker_name)
             send_email_to_bot_watchers(email_subject, email_text, builder_name, reference)
@@ -2736,7 +2736,7 @@ class CompileWebKitWithoutChange(CompileWebKit):
             print('Error in sending email for unexpected build failure: {}'.format(e))
 
 
-class AnalyzeCompileWebKitResults(buildstep.BuildStep, BugzillaMixin, GitHubMixin):
+class AnalyzeCompileCyberKitResults(buildstep.BuildStep, BugzillaMixin, GitHubMixin):
     name = 'analyze-compile-webkit-results'
     description = ['analyze-compile-webkit-results']
     descriptionDone = ['analyze-compile-webkit-results']
@@ -2744,14 +2744,14 @@ class AnalyzeCompileWebKitResults(buildstep.BuildStep, BugzillaMixin, GitHubMixi
     @defer.inlineCallbacks
     def run(self):
         self.error_logs = {}
-        self.compile_webkit_step = CompileWebKit.name
+        self.compile_webkit_step = CompileCyberKit.name
         if self.getProperty('group') == 'jsc':
             self.compile_webkit_step = CompileJSC.name
         yield self.getResults(self.compile_webkit_step)
         defer.returnValue(self.analyzeResults())
 
     def analyzeResults(self):
-        compile_without_patch_step = CompileWebKitWithoutChange.name
+        compile_without_patch_step = CompileCyberKitWithoutChange.name
         if self.getProperty('group') == 'jsc':
             compile_without_patch_step = CompileJSCWithoutChange.name
         compile_without_patch_result = self.getStepResult(compile_without_patch_step)
@@ -2761,12 +2761,12 @@ class AnalyzeCompileWebKitResults(buildstep.BuildStep, BugzillaMixin, GitHubMixi
 
         if compile_without_patch_result == FAILURE:
             if pr_number and self.getProperty('github.base.ref') != 'main':
-                message = 'Unable to build WebKit without PR, please check manually'
+                message = 'Unable to build CyberKit without PR, please check manually'
                 self.descriptionDone = message
                 self.build.buildFinished([message], FAILURE)
                 return FAILURE
 
-            message = 'Unable to build WebKit without {}, retrying build'.format('PR' if pr_number else 'patch')
+            message = 'Unable to build CyberKit without {}, retrying build'.format('PR' if pr_number else 'patch')
             self.descriptionDone = message
             self.send_email_for_preexisting_build_failure()
             self.build.buildFinished([message], RETRY)
@@ -2912,7 +2912,7 @@ class AnalyzeCompileWebKitResults(buildstep.BuildStep, BugzillaMixin, GitHubMixi
                 logs = self.filter_logs_containing_error(logs)
 
             email_subject = 'Build failure on trunk on {}'.format(builder_name)
-            email_text = 'Failed to build WebKit without patch in {}\n\nBuilder: {}\n\nWorker: {}'.format(build_url, builder_name, worker_name)
+            email_text = 'Failed to build CyberKit without patch in {}\n\nBuilder: {}\n\nWorker: {}'.format(build_url, builder_name, worker_name)
             if logs:
                 logs = logs.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
                 email_text += '\n\nError lines:\n\n<code>{}</code>'.format(logs)
@@ -2922,14 +2922,14 @@ class AnalyzeCompileWebKitResults(buildstep.BuildStep, BugzillaMixin, GitHubMixi
             print('Error in sending email for build failure: {}'.format(e))
 
 
-class CompileJSC(CompileWebKit):
+class CompileJSC(CompileCyberKit):
     name = 'compile-jsc'
     descriptionDone = ['Compiled JSC']
     command = ['perl', 'Tools/Scripts/build-jsc', WithProperties('--%(configuration)s')]
 
     def start(self):
         self.setProperty('group', 'jsc')
-        return CompileWebKit.start(self)
+        return CompileCyberKit.start(self)
 
     def getResultSummary(self):
         if self.results == FAILURE:
@@ -2944,7 +2944,7 @@ class CompileJSCWithoutChange(CompileJSC):
         return shell.Compile.evaluateCommand(self, cmd)
 
 
-class RunJavaScriptCoreTests(shell.Test, AddToLogMixin):
+class RunCyberScriptCoreTests(shell.Test, AddToLogMixin):
     name = 'jscore-test'
     description = ['jscore-tests running']
     descriptionDone = ['jscore-tests']
@@ -3057,7 +3057,7 @@ class RunJavaScriptCoreTests(shell.Test, AddToLogMixin):
         return super().getResultSummary()
 
 
-class RunJSCTestsWithoutChange(RunJavaScriptCoreTests):
+class RunJSCTestsWithoutChange(RunCyberScriptCoreTests):
     name = 'jscore-test-without-change'
     prefix = 'jsc_clean_tree_'
 
@@ -3191,9 +3191,9 @@ class InstallBuiltProduct(shell.ShellCommand):
 
 
 class CleanBuild(shell.Compile):
-    name = 'delete-WebKitBuild-directory'
-    description = ['deleting WebKitBuild directory']
-    descriptionDone = ['Deleted WebKitBuild directory']
+    name = 'delete-CyberKitBuild-directory'
+    description = ['deleting CyberKitBuild directory']
+    descriptionDone = ['Deleted CyberKitBuild directory']
     command = ['python3', 'Tools/CISupport/clean-build', WithProperties('--platform=%(fullPlatform)s'), WithProperties('--%(configuration)s')]
 
 
@@ -3252,7 +3252,7 @@ class WaitForCrashCollection(shell.Compile):
         return shell.Compile.getResultSummary(self)
 
 
-class RunWebKitTests(shell.Test, AddToLogMixin):
+class RunCyberKitTests(shell.Test, AddToLogMixin):
     name = 'layout-tests'
     description = ['layout-tests running']
     descriptionDone = ['layout-tests']
@@ -3325,7 +3325,7 @@ class RunWebKitTests(shell.Test, AddToLogMixin):
             return match_object.group('message')
         return line
 
-    def _parseRunWebKitTestsOutput(self, logText):
+    def _parseRunCyberKitTestsOutput(self, logText):
         incorrectLayoutLines = []
         expressions = [
             ('flakes', re.compile(r'Unexpected flakiness.+\((\d+)\)')),
@@ -3375,7 +3375,7 @@ class RunWebKitTests(shell.Test, AddToLogMixin):
                 self.setProperty('first_run_failures_filtered', sorted(self.failing_tests_filtered))
                 self.setProperty('results-db_first_run_pre_existing', sorted(self.preexisting_failures_in_results_db))
 
-        self._parseRunWebKitTestsOutput(logText)
+        self._parseRunCyberKitTestsOutput(logText)
 
     @defer.inlineCallbacks
     def filter_failures_using_results_db(self, failing_tests):
@@ -3461,7 +3461,7 @@ class RunWebKitTests(shell.Test, AddToLogMixin):
                 ExtractTestResults(),
                 ValidateChange(verifyBugClosed=False, addURLs=False),
                 KillOldProcesses(),
-                ReRunWebKitTests(),
+                ReRunCyberKitTests(),
             ])
         return rc
 
@@ -3483,7 +3483,7 @@ class RunWebKitTests(shell.Test, AddToLogMixin):
         return super().getResultSummary()
 
 
-class RunWebKitTestsInStressMode(RunWebKitTests):
+class RunCyberKitTestsInStressMode(RunCyberKitTests):
     name = 'run-layout-tests-in-stress-mode'
     suffix = 'stress-mode'
     EXIT_AFTER_FAILURES = '10'
@@ -3493,7 +3493,7 @@ class RunWebKitTestsInStressMode(RunWebKitTests):
         super().__init__()
 
     def setLayoutTestCommand(self):
-        RunWebKitTests.setLayoutTestCommand(self)
+        RunCyberKitTests.setLayoutTestCommand(self)
 
         self.setCommand(self.command + ['--iterations', self.num_iterations])
         modified_tests = self.getProperty('modified_tests')
@@ -3520,13 +3520,13 @@ class RunWebKitTestsInStressMode(RunWebKitTests):
         return self.getProperty('modified_tests', False)
 
 
-class RunWebKitTestsInStressGuardmallocMode(RunWebKitTestsInStressMode):
+class RunCyberKitTestsInStressGuardmallocMode(RunCyberKitTestsInStressMode):
     name = 'run-layout-tests-in-guard-malloc-stress-mode'
     suffix = 'guard-malloc'
     ENABLE_GUARD_MALLOC = True
 
 
-class ReRunWebKitTests(RunWebKitTests):
+class ReRunCyberKitTests(RunCyberKitTests):
     name = 're-run-layout-tests'
     NUM_FAILURES_TO_DISPLAY = 10
 
@@ -3587,10 +3587,10 @@ class ReRunWebKitTests(RunWebKitTests):
                                                 UnApplyPatch(),
                                                 RevertPullRequestChanges(),
                                                 ValidateChange(verifyBugClosed=False, addURLs=False),
-                                                CompileWebKitWithoutChange(retry_build_on_failure=True),
+                                                CompileCyberKitWithoutChange(retry_build_on_failure=True),
                                                 ValidateChange(verifyBugClosed=False, addURLs=False),
                                                 KillOldProcesses(),
-                                                RunWebKitTestsWithoutChange()])
+                                                RunCyberKitTestsWithoutChange()])
         return rc
 
     @defer.inlineCallbacks
@@ -3614,7 +3614,7 @@ class ReRunWebKitTests(RunWebKitTests):
                 yield self.filter_failures_using_results_db(second_results.failing_tests)
                 self.setProperty('second_run_failures_filtered', sorted(self.failing_tests_filtered))
                 self.setProperty('results-db_second_run_pre_existing', sorted(self.preexisting_failures_in_results_db))
-        self._parseRunWebKitTestsOutput(logText)
+        self._parseRunCyberKitTestsOutput(logText)
 
     def send_email_for_flaky_failure(self, test_name):
         try:
@@ -3633,7 +3633,7 @@ class ReRunWebKitTests(RunWebKitTests):
             print('Error in sending email for flaky failures: {}'.format(e))
 
 
-class RunWebKitTestsWithoutChange(RunWebKitTests):
+class RunCyberKitTestsWithoutChange(RunCyberKitTests):
     name = 'run-layout-tests-without-change'
 
     def start(self):
@@ -3665,7 +3665,7 @@ class RunWebKitTestsWithoutChange(RunWebKitTests):
             self.setProperty('clean_tree_run_flakies', sorted(clean_tree_results.flaky_tests))
             if clean_tree_results.failing_tests:
                 self._addToLog(self.test_failures_log_name, '\n'.join(clean_tree_results.failing_tests))
-        self._parseRunWebKitTestsOutput(logText)
+        self._parseRunCyberKitTestsOutput(logText)
 
     def setLayoutTestCommand(self):
         super().setLayoutTestCommand()
@@ -3961,16 +3961,16 @@ class AnalyzeLayoutTestsResults(buildstep.BuildStep, BugzillaMixin, GitHubMixin)
         return self.report_pre_existing_failures(clean_tree_results_failing_tests, flaky_failures)
 
 
-class RunWebKit1Tests(RunWebKitTests):
+class RunCyberKit1Tests(RunCyberKitTests):
     def start(self):
         self.setProperty('use-dump-render-tree', True)
-        return RunWebKitTests.start(self)
+        return RunCyberKitTests.start(self)
 
 
 # This is a specialized class designed to cope with a tree that is not always green.
 # It tries hard to avoid reporting any false positive, so it will only report new
 # consistent failures (fail always with the patch and pass always without it).
-class RunWebKitTestsRedTree(RunWebKitTests):
+class RunCyberKitTestsRedTree(RunCyberKitTests):
     EXIT_AFTER_FAILURES = 500
 
     def _did_command_timed_out(self, logHeadersText):
@@ -3988,7 +3988,7 @@ class RunWebKitTestsRedTree(RunWebKitTests):
         rc = self.evaluateResult(cmd)
         next_steps = [ArchiveTestResults(), UploadTestResults(), ExtractTestResults()]
         if first_results_failing_tests:
-            next_steps.extend([ValidateChange(verifyBugClosed=False, addURLs=False), KillOldProcesses(), RunWebKitTestsRepeatFailuresRedTree()])
+            next_steps.extend([ValidateChange(verifyBugClosed=False, addURLs=False), KillOldProcesses(), RunCyberKitTestsRepeatFailuresRedTree()])
         elif first_results_flaky_tests:
             next_steps.append(AnalyzeLayoutTestsResultsRedTree())
         elif rc == SUCCESS or rc == WARNINGS:
@@ -4008,16 +4008,16 @@ class RunWebKitTestsRedTree(RunWebKitTests):
                 next_steps.extend([
                     UnApplyPatch(),
                     RevertPullRequestChanges(),
-                    CompileWebKitWithoutChange(retry_build_on_failure=True),
+                    CompileCyberKitWithoutChange(retry_build_on_failure=True),
                     ValidateChange(verifyBugClosed=False, addURLs=False),
-                    RunWebKitTestsWithoutChangeRedTree(),
+                    RunCyberKitTestsWithoutChangeRedTree(),
                 ])
         if next_steps:
             self.build.addStepsAfterCurrentStep(next_steps)
         return rc
 
 
-class RunWebKitTestsRepeatFailuresRedTree(RunWebKitTestsRedTree):
+class RunCyberKitTestsRepeatFailuresRedTree(RunCyberKitTestsRedTree):
     name = 'layout-tests-repeat-failures'
     NUM_REPEATS_PER_TEST = 10
     EXIT_AFTER_FAILURES = None
@@ -4047,9 +4047,9 @@ class RunWebKitTestsRepeatFailuresRedTree(RunWebKitTestsRedTree):
                 KillOldProcesses(),
                 UnApplyPatch(),
                 RevertPullRequestChanges(),
-                CompileWebKitWithoutChange(retry_build_on_failure=True),
+                CompileCyberKitWithoutChange(retry_build_on_failure=True),
                 ValidateChange(verifyBugClosed=False, addURLs=False),
-                RunWebKitTestsRepeatFailuresWithoutChangeRedTree(),
+                RunCyberKitTestsRepeatFailuresWithoutChangeRedTree(),
             ])
         else:
             next_steps.append(AnalyzeLayoutTestsResultsRedTree())
@@ -4071,14 +4071,14 @@ class RunWebKitTestsRepeatFailuresRedTree(RunWebKitTestsRedTree):
                 self._addToLog(self.test_failures_log_name, '\n'.join(with_change_repeat_failures_results.failing_tests))
         command_timedout = self._did_command_timed_out(self.log_observer.getHeaders())
         self.setProperty('with_change_repeat_failures_timedout', command_timedout)
-        self._parseRunWebKitTestsOutput(logText)
+        self._parseRunCyberKitTestsOutput(logText)
 
     def start(self):
         # buildbot messages about timeout reached appear on the header stream of BufferLog
         return super().start(BufferLogObserverClass=BufferLogHeaderObserver)
 
 
-class RunWebKitTestsRepeatFailuresWithoutChangeRedTree(RunWebKitTestsRedTree):
+class RunCyberKitTestsRepeatFailuresWithoutChangeRedTree(RunCyberKitTestsRedTree):
     name = 'layout-tests-repeat-failures-without-change'
     NUM_REPEATS_PER_TEST = 10
     EXIT_AFTER_FAILURES = None
@@ -4121,14 +4121,14 @@ class RunWebKitTestsRepeatFailuresWithoutChangeRedTree(RunWebKitTestsRedTree):
                 self._addToLog(self.test_failures_log_name, '\n'.join(without_change_repeat_failures_results.failing_tests))
         command_timedout = self._did_command_timed_out(self.log_observer.getHeaders())
         self.setProperty('without_change_repeat_failures_timedout', command_timedout)
-        self._parseRunWebKitTestsOutput(logText)
+        self._parseRunCyberKitTestsOutput(logText)
 
     def start(self):
         # buildbot messages about timeout reached appear on the header stream of BufferLog
         return super().start(BufferLogObserverClass=BufferLogHeaderObserver)
 
 
-class RunWebKitTestsWithoutChangeRedTree(RunWebKitTestsWithoutChange):
+class RunCyberKitTestsWithoutChangeRedTree(RunCyberKitTestsWithoutChange):
     EXIT_AFTER_FAILURES = 500
 
     def evaluateCommand(self, cmd):
@@ -4317,7 +4317,7 @@ class ArchiveBuiltProduct(shell.ShellCommand):
 
 class UploadBuiltProduct(transfer.FileUpload):
     name = 'upload-built-product'
-    workersrc = WithProperties('WebKitBuild/%(configuration)s.zip')
+    workersrc = WithProperties('CyberKitBuild/%(configuration)s.zip')
     masterdest = WithProperties('public_html/archives/%(fullPlatform)s-%(architecture)s-%(configuration)s/%(change_id)s.zip')
     descriptionDone = ['Uploaded built product']
     haltOnFailure = True
@@ -4409,7 +4409,7 @@ class DownloadBuiltProduct(shell.ShellCommand):
 
 class DownloadBuiltProductFromMaster(transfer.FileDownload):
     mastersrc = WithProperties('public_html/archives/%(fullPlatform)s-%(architecture)s-%(configuration)s/%(change_id)s.zip')
-    workerdest = WithProperties('WebKitBuild/%(configuration)s.zip')
+    workerdest = WithProperties('CyberKitBuild/%(configuration)s.zip')
     name = 'download-built-product-from-master'
     description = ['downloading built product from buildbot master']
     descriptionDone = ['Downloaded built product']
@@ -4595,7 +4595,7 @@ class ReRunAPITests(RunAPITests):
             steps_to_add.append(InstallWpeDependencies())
         elif platform == 'gtk':
             steps_to_add.append(InstallGtkDependencies())
-        steps_to_add.append(CompileWebKitWithoutChange(retry_build_on_failure=True))
+        steps_to_add.append(CompileCyberKitWithoutChange(retry_build_on_failure=True))
         steps_to_add.append(ValidateChange(verifyBugClosed=False, addURLs=False))
         steps_to_add.append(KillOldProcesses())
         steps_to_add.append(RunAPITestsWithoutChange())
@@ -4822,7 +4822,7 @@ class ExtractTestResults(master.MasterShellCommand):
         return None
 
     def addCustomURLs(self):
-        step = self.getLastBuildStepByName(RunWebKitTests.name)
+        step = self.getLastBuildStepByName(RunCyberKitTests.name)
         if not step:
             step = self
         step.addURL('view layout test results', self.resultDirectoryURL() + 'results.html')
@@ -4982,9 +4982,9 @@ class SetBuildSummary(buildstep.BuildStep):
         return defer.succeed(None)
 
 
-class PushCommitToWebKitRepo(shell.ShellCommand):
+class PushCommitToCyberKitRepo(shell.ShellCommand):
     name = 'push-commit-to-webkit-repo'
-    descriptionDone = ['Pushed commit to WebKit repository']
+    descriptionDone = ['Pushed commit to CyberKit repository']
     haltOnFailure = False
     MAX_RETRY = 2
     HASH_RE = re.compile(r'\s+[0-9a-f]+\.\.+(?P<hash>[0-9a-f]+)\s+')
@@ -5038,7 +5038,7 @@ class PushCommitToWebKitRepo(shell.ShellCommand):
                         ValidateChange(verifyMergeQueue=True, verifyNoDraftForMergeQueue=True, verifyObsolete=False, enableSkipEWSLabel=False),
                         PushPullRequestBranch(),
                         UpdatePullRequest(),
-                        PushCommitToWebKitRepo(),
+                        PushCommitToCyberKitRepo(),
                     ])
                 else:
                     self.build.addStepsAfterCurrentStep([
@@ -5051,7 +5051,7 @@ class PushCommitToWebKitRepo(shell.ShellCommand):
                         AddReviewerToCommitMessage(),
                         Canonicalize(),
                         ValidateChange(addURLs=False, verifycqplus=True),
-                        PushCommitToWebKitRepo(),
+                        PushCommitToCyberKitRepo(),
                     ])
                 return rc
 
@@ -5059,9 +5059,9 @@ class PushCommitToWebKitRepo(shell.ShellCommand):
                 self.setProperty('comment_text', 'merge-queue failed to commit PR to repository. To retry, remove any blocking labels and re-apply merge-queue label')
             else:
                 patch_id = self.getProperty('patch_id', '')
-                self.setProperty('comment_text', f'commit-queue failed to commit attachment {patch_id} to WebKit repository. To retry, please set cq+ flag again.')
+                self.setProperty('comment_text', f'commit-queue failed to commit attachment {patch_id} to CyberKit repository. To retry, please set cq+ flag again.')
 
-            self.setProperty('build_finish_summary', 'Failed to commit to WebKit repository')
+            self.setProperty('build_finish_summary', 'Failed to commit to CyberKit repository')
             self.build.addStepsAfterCurrentStep([LeaveComment(), SetCommitQueueMinusFlagOnPatch(), BlockPullRequest()])
         return rc
 
@@ -5560,7 +5560,7 @@ class ValidateCommitMessage(steps.ShellSequence, ShellMixin, AddToLogMixin):
         author = self.getProperty('author', '')
 
         if any(os.path.basename(file).startswith('ChangeLog') for file in self._files()):
-            self.summary = 'ChangeLog modified, WebKit only allows commit messages'
+            self.summary = 'ChangeLog modified, CyberKit only allows commit messages'
             rc = FAILURE
         elif log_text:
             self.summary = log_text
@@ -5631,7 +5631,7 @@ class Canonicalize(steps.ShellSequence, ShellMixin, AddToLogMixin):
             committer = self.getProperty('patch_committer', '').lower()
 
         contributor = self.contributors.get(committer.lower()) if committer else {}
-        committer_name = contributor.get('name', committer or 'WebKit Commit Queue')
+        committer_name = contributor.get('name', committer or 'CyberKit Commit Queue')
         committer_email = contributor.get('email', committer or FROM_EMAIL)
 
         gmtoffset = int(time.localtime().tm_gmtoff * 100 / (60 * 60))

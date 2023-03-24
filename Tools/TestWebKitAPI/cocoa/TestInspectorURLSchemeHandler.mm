@@ -26,8 +26,8 @@
 #import "config.h"
 #import "TestInspectorURLSchemeHandler.h"
 
-#import <WebCore/MIMETypeRegistry.h>
-#import <WebKit/WKURLSchemeTask.h>
+#import <CyberCore/MIMETypeRegistry.h>
+#import <CyberKit/WKURLSchemeTask.h>
 #import <wtf/Assertions.h>
 
 // Note: this class is a simplified version of WKResourceURLSchemeHandler for testing purposes.
@@ -64,7 +64,7 @@
         });
 
         NSURL *requestURL = urlSchemeTask.request.URL;
-        NSURL *fileURLForRequest = [_cachedBundle URLForResource:requestURL.relativePath withExtension:@"" subdirectory:@"TestWebKitAPI.resources"];
+        NSURL *fileURLForRequest = [_cachedBundle URLForResource:requestURL.relativePath withExtension:@"" subdirectory:@"TestCyberKitAPI.resources"];
         if (!fileURLForRequest) {
             [urlSchemeTask didFailWithError:[NSError errorWithDomain:NSCocoaErrorDomain code:NSURLErrorFileDoesNotExist userInfo:nil]];
             return;
@@ -79,7 +79,7 @@
             return;
         }
 
-        NSString *mimeType = WebCore::MIMETypeRegistry::mimeTypeForExtension(String(fileURLForRequest.pathExtension));
+        NSString *mimeType = CyberCore::MIMETypeRegistry::mimeTypeForExtension(String(fileURLForRequest.pathExtension));
         if (!mimeType)
             mimeType = @"application/octet-stream";
 

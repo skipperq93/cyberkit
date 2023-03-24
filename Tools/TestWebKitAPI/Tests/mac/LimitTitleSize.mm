@@ -27,8 +27,8 @@
 
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
-#import <WebKit/DOMPrivate.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/DOMPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 @interface LimitTitleSizeTest : NSObject <WebFrameLoadDelegate>
@@ -56,16 +56,16 @@ static size_t maxTitleLength = 4096;
 }
 @end
 
-TEST(WebKitLegacy, LimitTitleSize)
+TEST(CyberKitLegacy, LimitTitleSize)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<LimitTitleSizeTest> testController = adoptNS([LimitTitleSizeTest new]);
 
     webView.get().frameLoadDelegate = testController.get();
     [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle]
-        URLForResource:@"set-long-title" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+        URLForResource:@"set-long-title" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
-    TestWebKitAPI::Util::run(&didFinishLoad);
+    TestCyberKitAPI::Util::run(&didFinishLoad);
 }
 
 @interface LimitTitleSizeTestObserver : NSObject
@@ -83,14 +83,14 @@ TEST(WebKitLegacy, LimitTitleSize)
 
 @end
 
-TEST(WebKit, LimitTitleSize)
+TEST(CyberKit, LimitTitleSize)
 {
     auto webView = adoptNS([[WKWebView alloc] init]);
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"set-long-title" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"set-long-title" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     
     auto observer = adoptNS([LimitTitleSizeTestObserver new]);
     [webView addObserver:observer.get() forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
     
-    TestWebKitAPI::Util::run(&waitUntilLongTitleReceived);
+    TestCyberKitAPI::Util::run(&waitUntilLongTitleReceived);
     [webView removeObserver:observer.get() forKeyPath:@"title"];
 }

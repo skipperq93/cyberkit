@@ -28,11 +28,11 @@
 #if USE(CURL)
 
 #include "Test.h"
-#include <WebKit/WKCertificateInfo.h>
-#include <WebKit/WKCertificateInfoCurl.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKCertificateInfo.h>
+#include <CyberKit/WKCertificateInfoCurl.h>
+#include <CyberKit/WKRetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 namespace Curl {
 
@@ -97,6 +97,6 @@ TEST(Curl, CertificateAPI)
 
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // USE(CURL)

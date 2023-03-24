@@ -24,16 +24,16 @@
  */
 
 #import "config.h"
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, MemoryPressureHandler)
+TEST(CyberKitLegacy, MemoryPressureHandler)
 {
     WebInstallMemoryPressureHandler();
     auto webView = adoptNS([[WebView alloc] initWithFrame:NSZeroRect frameName:nil groupName:nil]);
     // This test passes if it does not assert.
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

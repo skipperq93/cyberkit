@@ -69,9 +69,9 @@ static void setInjectedBundleClient(WKContextRef context)
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKit, ResponsivenessTimerDoesntFireEarly)
+TEST(CyberKit, ResponsivenessTimerDoesntFireEarly)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(Util::createContextForInjectedBundleTest("ResponsivenessTimerDoesntFireEarlyTest"));
     setInjectedBundleClient(context.get());
@@ -82,7 +82,7 @@ TEST(WebKit, ResponsivenessTimerDoesntFireEarly)
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
     [webView setNavigationDelegate:delegate.get()];
 
-    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
     Util::run(&didFinishLoad);
 
     WKContextPostMessageToInjectedBundle(context.get(), Util::toWK("BrieflyPause").get(), 0);
@@ -97,6 +97,6 @@ TEST(WebKit, ResponsivenessTimerDoesntFireEarly)
     EXPECT_FALSE(didBecomeUnresponsive);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

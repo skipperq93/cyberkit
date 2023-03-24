@@ -24,7 +24,7 @@
 
 static void testSecurityOriginBasicConstructor(Test*, gconstpointer)
 {
-    WebKitSecurityOrigin* origin = webkit_security_origin_new("http", "127.0.0.1", 1234);
+    CyberKitSecurityOrigin* origin = webkit_security_origin_new("http", "127.0.0.1", 1234);
     g_assert_nonnull(origin);
     GUniquePtr<char> asString(webkit_security_origin_to_string(origin));
     g_assert_cmpstr(asString.get(), ==, "http://127.0.0.1:1234");
@@ -36,7 +36,7 @@ static void testSecurityOriginBasicConstructor(Test*, gconstpointer)
 
 static void testSecurityOriginURIConstructor(Test*, gconstpointer)
 {
-    WebKitSecurityOrigin* origin = webkit_security_origin_new_for_uri("http://127.0.0.1:1234");
+    CyberKitSecurityOrigin* origin = webkit_security_origin_new_for_uri("http://127.0.0.1:1234");
     g_assert_nonnull(origin);
     GUniquePtr<char> asString(webkit_security_origin_to_string(origin));
     g_assert_cmpstr(asString.get(), ==, "http://127.0.0.1:1234");
@@ -57,7 +57,7 @@ static void testSecurityOriginURIConstructor(Test*, gconstpointer)
 
 static void testSecurityOriginDefaultPort(Test*, gconstpointer)
 {
-    WebKitSecurityOrigin* origin = webkit_security_origin_new("http", "127.0.0.1", 0);
+    CyberKitSecurityOrigin* origin = webkit_security_origin_new("http", "127.0.0.1", 0);
     g_assert_nonnull(origin);
     GUniquePtr<char> asString(webkit_security_origin_to_string(origin));
     g_assert_cmpstr(asString.get(), ==, "http://127.0.0.1");
@@ -96,7 +96,7 @@ static void testSecurityOriginDefaultPort(Test*, gconstpointer)
 
 static void testSecurityOriginFileURI(Test*, gconstpointer)
 {
-    WebKitSecurityOrigin* origin = webkit_security_origin_new_for_uri("file:///abcdefg");
+    CyberKitSecurityOrigin* origin = webkit_security_origin_new_for_uri("file:///abcdefg");
     g_assert_nonnull(origin);
     GUniquePtr<char> asString(webkit_security_origin_to_string(origin));
     g_assert_cmpstr(asString.get(), ==, "file://");
@@ -108,7 +108,7 @@ static void testSecurityOriginFileURI(Test*, gconstpointer)
 
 static void testSecurityOriginDataURI(Test*, gconstpointer)
 {
-    WebKitSecurityOrigin* origin = webkit_security_origin_new_for_uri("data:Lali ho!");
+    CyberKitSecurityOrigin* origin = webkit_security_origin_new_for_uri("data:Lali ho!");
     g_assert_nonnull(origin);
     GUniquePtr<char> asString(webkit_security_origin_to_string(origin));
     g_assert_cmpstr(asString.get(), ==, "data://");
@@ -120,7 +120,7 @@ static void testSecurityOriginDataURI(Test*, gconstpointer)
 
 static void testCustomProtocolOrigin(Test*, gconstpointer)
 {
-    WebKitSecurityOrigin* origin = webkit_security_origin_new_for_uri("squirrel://fish");
+    CyberKitSecurityOrigin* origin = webkit_security_origin_new_for_uri("squirrel://fish");
     g_assert_nonnull(origin);
     GUniquePtr<char> asString(webkit_security_origin_to_string(origin));
     g_assert_cmpstr(asString.get(), ==, "squirrel://fish");
@@ -132,7 +132,7 @@ static void testCustomProtocolOrigin(Test*, gconstpointer)
 
 static void testBogusURI(Test*, gconstpointer)
 {
-    WebKitSecurityOrigin* origin = webkit_security_origin_new_for_uri("http://localhost:2984375932");
+    CyberKitSecurityOrigin* origin = webkit_security_origin_new_for_uri("http://localhost:2984375932");
     g_assert_nonnull(origin);
     GUniquePtr<char> asString(webkit_security_origin_to_string(origin));
     g_assert_null(asString.get());
@@ -144,13 +144,13 @@ static void testBogusURI(Test*, gconstpointer)
 
 void beforeAll()
 {
-    Test::add("WebKitSecurityOrigin", "basic-constructor", testSecurityOriginBasicConstructor);
-    Test::add("WebKitSecurityOrigin", "uri-constructor", testSecurityOriginURIConstructor);
-    Test::add("WebKitSecruityOrigin", "default-port", testSecurityOriginDefaultPort);
-    Test::add("WebKitSecurityOrigin", "file-uri", testSecurityOriginFileURI);
-    Test::add("WebKitSecurityOrigin", "blob-uri", testSecurityOriginDataURI);
-    Test::add("WebKitSecurityOrigin", "custom-protocol-origin", testCustomProtocolOrigin);
-    Test::add("WebKitSecurityOrigin", "bogus-uri", testBogusURI);
+    Test::add("CyberKitSecurityOrigin", "basic-constructor", testSecurityOriginBasicConstructor);
+    Test::add("CyberKitSecurityOrigin", "uri-constructor", testSecurityOriginURIConstructor);
+    Test::add("CyberKitSecruityOrigin", "default-port", testSecurityOriginDefaultPort);
+    Test::add("CyberKitSecurityOrigin", "file-uri", testSecurityOriginFileURI);
+    Test::add("CyberKitSecurityOrigin", "blob-uri", testSecurityOriginDataURI);
+    Test::add("CyberKitSecurityOrigin", "custom-protocol-origin", testCustomProtocolOrigin);
+    Test::add("CyberKitSecurityOrigin", "bogus-uri", testBogusURI);
 }
 
 void afterAll()

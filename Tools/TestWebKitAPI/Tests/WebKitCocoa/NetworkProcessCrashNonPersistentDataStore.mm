@@ -29,9 +29,9 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/RetainPtr.h>
 
 @interface CrashDelegate : NSObject <WKNavigationDelegate>
@@ -58,8 +58,8 @@
 
 static void checkRecoveryAfterCrash(WKWebsiteDataStore *dataStore)
 {
-    NSURL *simple = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
-    NSURL *simple2 = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *simple = [[NSBundle mainBundle] URLForResource:@"simple" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
+    NSURL *simple2 = [[NSBundle mainBundle] URLForResource:@"simple2" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"];
     
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [configuration setWebsiteDataStore:dataStore];
@@ -68,20 +68,20 @@ static void checkRecoveryAfterCrash(WKWebsiteDataStore *dataStore)
     [webView setNavigationDelegate:delegate.get()];
 
     [webView loadRequest:[NSURLRequest requestWithURL:simple]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
     done = false;
 
     [[webView configuration].websiteDataStore _terminateNetworkProcess];
     [webView loadRequest:[NSURLRequest requestWithURL:simple2]];
-    TestWebKitAPI::Util::run(&done);
+    TestCyberKitAPI::Util::run(&done);
 }
 
-TEST(WebKit, NetworkProcessCrashNonPersistentDataStore)
+TEST(CyberKit, NetworkProcessCrashNonPersistentDataStore)
 {
     checkRecoveryAfterCrash([WKWebsiteDataStore nonPersistentDataStore]);
 }
 
-TEST(WebKit, NetworkProcessCrashNonDefaultPersistentDataStore)
+TEST(CyberKit, NetworkProcessCrashNonDefaultPersistentDataStore)
 {
     checkRecoveryAfterCrash(adoptNS([[WKWebsiteDataStore alloc] _initWithConfiguration:adoptNS([[_WKWebsiteDataStoreConfiguration alloc] init]).get()]).get());
 }

@@ -30,9 +30,9 @@
 #import "Test.h"
 #import "TestNavigationDelegate.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKDiagnosticLoggingDelegate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKDiagnosticLoggingDelegate.h>
 #import <wtf/RetainPtr.h>
 
 @interface TestLoggingDelegate : NSObject <_WKDiagnosticLoggingDelegate>
@@ -92,5 +92,5 @@ TEST(WKWebView, DiagnosticLoggingDictionary)
     [webView configuration].preferences._diagnosticLoggingEnabled = YES;
 
     [webView loadHTMLString:@"<script>window.internals.testDictionaryLogging()</script>" baseURL:nil];
-    TestWebKitAPI::Util::run(&isDone);
+    TestCyberKitAPI::Util::run(&isDone);
 }

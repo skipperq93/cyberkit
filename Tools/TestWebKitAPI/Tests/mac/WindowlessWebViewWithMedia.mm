@@ -44,7 +44,7 @@ static bool didFinishLoad;
 @end
 
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void spinLoop(NSTimeInterval timeout, BOOL (^block)())
 {
@@ -61,13 +61,13 @@ static void spinLoop(NSTimeInterval timeout, BOOL (^block)())
     }
 }
 
-TEST(WebKitLegacy, WindowlessWebViewWithMedia)
+TEST(CyberKitLegacy, WindowlessWebViewWithMedia)
 {
     @autoreleasepool {
         auto webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
         auto testController = adoptNS([WindowlessWebViewWithMediaFrameLoadDelegate new]);
         webView.get().frameLoadDelegate = testController.get();
-        [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"WindowlessWebViewWithMedia" withExtension:@"html" subdirectory:@"TestWebKitAPI.resources"]]];
+        [[webView.get() mainFrame] loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"WindowlessWebViewWithMedia" withExtension:@"html" subdirectory:@"TestCyberKitAPI.resources"]]];
 
         EXPECT_EQ(nil, [webView.get() window]);
 
@@ -81,4 +81,4 @@ TEST(WebKitLegacy, WindowlessWebViewWithMedia)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

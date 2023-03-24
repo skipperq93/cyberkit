@@ -40,7 +40,7 @@ function webkitGitCommitWithRevisionIdentifier()
 
 }
 
-function oldWebKitCommit()
+function oldCyberKitCommit()
 {
     return new CommitLog(2, {
         id: 2,
@@ -50,7 +50,7 @@ function oldWebKitCommit()
     });
 }
 
-function oldWebKitCommitWithRevisionIdentifier()
+function oldCyberKitCommitWithRevisionIdentifier()
 {
     return new CommitLog(2, {
         id: 2,
@@ -61,7 +61,7 @@ function oldWebKitCommitWithRevisionIdentifier()
     });
 }
 
-function oldWebKitGitCommitWithRevisionIdentifier()
+function oldCyberKitGitCommitWithRevisionIdentifier()
 {
     return new CommitLog(2, {
         id: 2,
@@ -72,7 +72,7 @@ function oldWebKitGitCommitWithRevisionIdentifier()
     });
 }
 
-function gitWebKitCommit()
+function gitCyberKitCommit()
 {
     return new CommitLog(3, {
         id: 3,
@@ -82,7 +82,7 @@ function gitWebKitCommit()
     });
 }
 
-function gitWebKitCommitWithRevisionIdentifier()
+function gitCyberKitCommitWithRevisionIdentifier()
 {
     return new CommitLog(3, {
         id: 3,
@@ -93,7 +93,7 @@ function gitWebKitCommitWithRevisionIdentifier()
     });
 }
 
-function oldGitWebKitCommit()
+function oldGitCyberKitCommit()
 {
     return new CommitLog(4, {
         id: 4,
@@ -103,7 +103,7 @@ function oldGitWebKitCommit()
     });
 }
 
-function oldGitWebKitCommitWithRevisionIdentifier()
+function oldGitCyberKitCommitWithRevisionIdentifier()
 {
     return new CommitLog(4, {
         id: 4,
@@ -219,11 +219,11 @@ describe('CommitLog', function () {
         });
 
         it('should truncate a Git hash at 12th character', function () {
-            assert.equal(gitWebKitCommit().label(), '6f8b0dbbda95');
+            assert.equal(gitCyberKitCommit().label(), '6f8b0dbbda95');
         });
 
         it('should display revision label followed by git hash truncated', () => {
-            assert.strictEqual(gitWebKitCommitWithRevisionIdentifier().label(), '184276@main (6f8b0dbbda95)')
+            assert.strictEqual(gitCyberKitCommitWithRevisionIdentifier().label(), '184276@main (6f8b0dbbda95)')
         });
 
         it('should not modify OS X version', function () {
@@ -233,19 +233,19 @@ describe('CommitLog', function () {
 
     describe('title', function () {
         it('should prefix SVN revision with "r"', function () {
-            assert.equal(webkitCommit().title(), 'WebKit at r200805');
+            assert.equal(webkitCommit().title(), 'CyberKit at r200805');
         });
 
         it('should include revision label', () => {
-            assert.strictEqual(webkitCommitWithRevisionIdentifier().title(), 'WebKit at 184276@main (r200805)');
+            assert.strictEqual(webkitCommitWithRevisionIdentifier().title(), 'CyberKit at 184276@main (r200805)');
         });
 
         it('should truncate a Git hash at 12th character', function () {
-            assert.equal(gitWebKitCommit().title(), 'WebKit at 6f8b0dbbda95');
+            assert.equal(gitCyberKitCommit().title(), 'CyberKit at 6f8b0dbbda95');
         });
 
         it('should display revision label followed by git hash truncated',  () => {
-            assert.strictEqual(gitWebKitCommitWithRevisionIdentifier().title(), 'WebKit at 184276@main (6f8b0dbbda95)');
+            assert.strictEqual(gitCyberKitCommitWithRevisionIdentifier().title(), 'CyberKit at 184276@main (6f8b0dbbda95)');
         });
 
         it('should not modify OS X version', function () {
@@ -270,7 +270,7 @@ describe('CommitLog', function () {
                 repository: MockModels.webkit
             });
 
-            assert.deepEqual(gitWebKitCommit().diff(), {
+            assert.deepEqual(gitCyberKitCommit().diff(), {
                 label: '6f8b0dbbda95',
                 url: 'http://trac.webkit.org/changeset/6f8b0dbbda95a440503b88db1dd03dad3a7b07fb',
                 repository: MockModels.webkit,
@@ -284,7 +284,7 @@ describe('CommitLog', function () {
         });
 
         it('should use increment the old SVN revision by 1', function () {
-            assert.deepEqual(webkitCommit().diff(oldWebKitCommit()), {
+            assert.deepEqual(webkitCommit().diff(oldCyberKitCommit()), {
                 label: 'r200574-r200805',
                 url: '',
                 repository: MockModels.webkit
@@ -292,7 +292,7 @@ describe('CommitLog', function () {
         });
 
         it('should truncate a Git hash at 8th character', function () {
-            assert.deepEqual(gitWebKitCommit().diff(oldGitWebKitCommit()), {
+            assert.deepEqual(gitCyberKitCommit().diff(oldGitCyberKitCommit()), {
                 label: 'ffda14e6db07..6f8b0dbbda95',
                 url: '',
                 repository: MockModels.webkit
@@ -308,7 +308,7 @@ describe('CommitLog', function () {
         });
 
         it('should display revision label followed with revison and  connect with "-", if both have revision label', () => {
-            assert.deepStrictEqual(webkitCommitWithRevisionIdentifier().diff(oldWebKitCommitWithRevisionIdentifier()), {
+            assert.deepStrictEqual(webkitCommitWithRevisionIdentifier().diff(oldCyberKitCommitWithRevisionIdentifier()), {
                 label: '175605-184276@main (r200574-r200805)',
                 url: '',
                 repository: MockModels.webkit
@@ -316,7 +316,7 @@ describe('CommitLog', function () {
         });
 
         it('should display revision label followed with revison and  connect with "-", if both have revision label', () => {
-            assert.deepStrictEqual(gitWebKitCommitWithRevisionIdentifier().diff(oldGitWebKitCommitWithRevisionIdentifier()), {
+            assert.deepStrictEqual(gitCyberKitCommitWithRevisionIdentifier().diff(oldGitCyberKitCommitWithRevisionIdentifier()), {
                 label: '175605-184276@main (ffda14e6db07..6f8b0dbbda95)',
                 url: '',
                 repository: MockModels.webkit
@@ -324,7 +324,7 @@ describe('CommitLog', function () {
         });
 
         it('should contain revision label, if one of the commits doesn`t have the revision label', () => {
-            assert.deepStrictEqual(webkitCommitWithRevisionIdentifier().diff(oldWebKitCommit()), {
+            assert.deepStrictEqual(webkitCommitWithRevisionIdentifier().diff(oldCyberKitCommit()), {
                 label: 'r200574 - 184276@main (r200805)',
                 url: '',
                 repository: MockModels.webkit
@@ -332,7 +332,7 @@ describe('CommitLog', function () {
         });
 
         it('should prefer using identifiers create blame URL', () => {
-            assert.deepStrictEqual(webkitGitCommitWithRevisionIdentifier().diff((oldWebKitGitCommitWithRevisionIdentifier())), {
+            assert.deepStrictEqual(webkitGitCommitWithRevisionIdentifier().diff((oldCyberKitGitCommitWithRevisionIdentifier())), {
                 label: '175605-184276@main (r200574-r200805)',
                 url: 'https://commits.webkit.org/compare/175605@main...184276@main',
                 repository: MockModels.webkitGit
@@ -347,7 +347,7 @@ describe('CommitLog', function () {
         });
 
         it('should return "true" when both commits have commit time', () => {
-            assert.ok(CommitLog.hasOrdering(webkitCommit(), oldWebKitCommit()));
+            assert.ok(CommitLog.hasOrdering(webkitCommit(), oldCyberKitCommit()));
         });
 
         it('should return "false" when neither commit time nor commit order exists', () => {
@@ -381,7 +381,7 @@ describe('CommitLog', function () {
 
     describe('orderTowCommits', () => {
         it('should order by time when both commits have time', () => {
-            const startCommit = oldWebKitCommit();
+            const startCommit = oldCyberKitCommit();
             const endCommit = webkitCommit();
             assert.deepEqual(CommitLog.orderTwoCommits(endCommit, startCommit), [startCommit, endCommit]);
             assert.deepEqual(CommitLog.orderTwoCommits(startCommit, endCommit), [startCommit, endCommit]);
@@ -568,7 +568,7 @@ describe('CommitLog', function () {
         "status":"OK"
     };
 
-    const commitsAPIResponseForOwnedWebKit = {
+    const commitsAPIResponseForOwnedCyberKit = {
         "commits":[{
             "id": "1831151",
             "revision": "236643",
@@ -649,7 +649,7 @@ describe('CommitLog', function () {
             assert.equal(requests.length, 1);
             assert.equal(requests[0].url, `/api/commits/${MockModels.ownedWebkit.id()}/236643`);
 
-            requests[0].resolve(commitsAPIResponseForOwnedWebKit);
+            requests[0].resolve(commitsAPIResponseForOwnedCyberKit);
             const newCommits = await fetchingPromise;
             assert.equal(newCommits.length, 1);
 

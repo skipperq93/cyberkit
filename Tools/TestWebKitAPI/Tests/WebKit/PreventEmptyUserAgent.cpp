@@ -30,11 +30,11 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <JavaScriptCore/JSContextRef.h>
-#include <WebKit/WKRetainPtr.h>
-#include <WebKit/WKSerializedScriptValue.h>
+#include <CyberScriptCore/JSContextRef.h>
+#include <CyberKit/WKRetainPtr.h>
+#include <CyberKit/WKSerializedScriptValue.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static bool testDone;
 
@@ -58,7 +58,7 @@ static void didRunJavaScript(WKSerializedScriptValueRef resultSerializedScriptVa
     testDone = true;
 }
 
-TEST(WebKit, PreventEmptyUserAgent)
+TEST(CyberKit, PreventEmptyUserAgent)
 {
     WKRetainPtr<WKContextRef> context = adoptWK(WKContextCreateWithConfiguration(nullptr));
     PlatformWebView webView(context.get());
@@ -70,6 +70,6 @@ TEST(WebKit, PreventEmptyUserAgent)
     Util::run(&testDone);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif

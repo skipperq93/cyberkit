@@ -30,13 +30,13 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKUIDelegate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewConfiguration.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKUIDelegate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 
 static bool okToProceed = false;
 static bool shouldReleaseInEnumerate = false;
@@ -65,7 +65,7 @@ static bool shouldReleaseInEnumerate = false;
 }
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
 static void initializeMediaCaptureConfiguration(WKWebViewConfiguration* configuration)
 {
@@ -77,7 +77,7 @@ static void initializeMediaCaptureConfiguration(WKWebViewConfiguration* configur
     preferences._getUserMediaRequiresFocus = NO;
 }
 
-TEST(WebKit, NavigateDuringGetUserMediaPrompt)
+TEST(CyberKit, NavigateDuringGetUserMediaPrompt)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto processPoolConfig = adoptNS([[_WKProcessPoolConfiguration alloc] init]);
@@ -91,10 +91,10 @@ TEST(WebKit, NavigateDuringGetUserMediaPrompt)
 
     shouldReleaseInEnumerate = false;
     [webView loadTestPageNamed:@"getUserMedia"];
-    TestWebKitAPI::Util::run(&okToProceed);
+    TestCyberKitAPI::Util::run(&okToProceed);
 }
 
-TEST(WebKit, NavigateDuringDeviceEnumeration)
+TEST(CyberKit, NavigateDuringDeviceEnumeration)
 {
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     auto processPoolConfig = adoptNS([[_WKProcessPoolConfiguration alloc] init]);
@@ -105,10 +105,10 @@ TEST(WebKit, NavigateDuringDeviceEnumeration)
 
     shouldReleaseInEnumerate = true;
     [webView loadTestPageNamed:@"enumerateMediaDevices"];
-    TestWebKitAPI::Util::run(&okToProceed);
+    TestCyberKitAPI::Util::run(&okToProceed);
 }
 
-TEST(WebKit, DefaultDeviceIdHashSaltsDirectory)
+TEST(CyberKit, DefaultDeviceIdHashSaltsDirectory)
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
@@ -138,7 +138,7 @@ TEST(WebKit, DefaultDeviceIdHashSaltsDirectory)
     EXPECT_FALSE(error);
 }
 
-TEST(WebKit, DeviceIdHashSaltsDirectory)
+TEST(CyberKit, DeviceIdHashSaltsDirectory)
 {
     NSURL *tempDir = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"CustomPathsTest"] isDirectory:YES];
     NSURL *hashSaltLocation = [tempDir URLByAppendingPathComponent:@"1"];
@@ -165,6 +165,6 @@ TEST(WebKit, DeviceIdHashSaltsDirectory)
     EXPECT_FALSE(error);
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
 
 #endif // ENABLE(MEDIA_STREAM)

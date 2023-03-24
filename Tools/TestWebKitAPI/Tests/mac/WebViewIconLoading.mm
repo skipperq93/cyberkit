@@ -26,8 +26,8 @@
 
 #import "config.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WebFrameLoadDelegate.h>
-#import <WebKit/WebView.h>
+#import <CyberKit/WebFrameLoadDelegate.h>
+#import <CyberKit/WebView.h>
 #import <wtf/RetainPtr.h>
 
 static NSString *MainFrameIconKeyPath = @"mainFrameIcon";
@@ -50,13 +50,13 @@ static NSData *mainResourceData()
 
 static NSData *defaultFaviconData()
 {
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"icon" withExtension:@"png" subdirectory:@"TestCyberKitAPI.resources"];
     return [NSData dataWithContentsOfURL:url];
 }
 
 static NSData *customFaviconData()
 {
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"large-red-square" withExtension:@"png" subdirectory:@"TestWebKitAPI.resources"];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"large-red-square" withExtension:@"png" subdirectory:@"TestCyberKitAPI.resources"];
     return [NSData dataWithContentsOfURL:url];
 }
 
@@ -153,9 +153,9 @@ static NSImage *imageFromData(NSData *data)
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, IconLoadingDelegateDefaultFirst)
+TEST(CyberKitLegacy, IconLoadingDelegateDefaultFirst)
 {
     [NSURLProtocol registerClass:[IconLoadingProtocol class]];
 
@@ -196,7 +196,7 @@ TEST(WebKitLegacy, IconLoadingDelegateDefaultFirst)
     [NSURLProtocol unregisterClass:[IconLoadingProtocol class]];
 }
 
-TEST(WebKitLegacy, IconLoadingDelegateCustomFirst)
+TEST(CyberKitLegacy, IconLoadingDelegateCustomFirst)
 {
     [NSURLProtocol registerClass:[IconLoadingProtocol class]];
 
@@ -236,4 +236,4 @@ TEST(WebKitLegacy, IconLoadingDelegateCustomFirst)
     [NSURLProtocol unregisterClass:[IconLoadingProtocol class]];
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI

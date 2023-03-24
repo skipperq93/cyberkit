@@ -21,13 +21,13 @@
 #include "config.h"
 
 #include "LoadTrackingTest.h"
-#include "WebKitTestServer.h"
-#include "WebKitWebsitePolicies.h"
-#include <WebCore/SoupVersioning.h>
+#include "CyberKitTestServer.h"
+#include "CyberKitWebsitePolicies.h"
+#include <CyberCore/SoupVersioning.h>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/text/CString.h>
 
-static WebKitTestServer* kServer;
+static CyberKitTestServer* kServer;
 
 class PolicyClientTest: public LoadTrackingTest {
 public:
@@ -42,9 +42,9 @@ public:
     };
 
 #if ENABLE(2022_GLIB_API)
-    static void testHandlerMessageReceivedCallback(WebKitUserContentManager* userContentManager, JSCValue* result, PolicyClientTest* test)
+    static void testHandlerMessageReceivedCallback(CyberKitUserContentManager* userContentManager, JSCValue* result, PolicyClientTest* test)
 #else
-    static void testHandlerMessageReceivedCallback(WebKitUserContentManager* userContentManager, WebKitJavascriptResult* result, PolicyClientTest* test)
+    static void testHandlerMessageReceivedCallback(CyberKitUserContentManager* userContentManager, CyberKitJavascriptResult* result, PolicyClientTest* test)
 #endif
     {
         GUniquePtr<char> valueString(WebViewTest::javascriptResultToCString(result));
@@ -62,7 +62,7 @@ public:
         return FALSE;
     }
 
-    static void respondToPolicyDecision(PolicyClientTest* test, WebKitPolicyDecision* decision)
+    static void respondToPolicyDecision(PolicyClientTest* test, CyberKitPolicyDecision* decision)
     {
         switch (test->m_policyDecisionResponse) {
         case Use:
@@ -92,7 +92,7 @@ public:
         return FALSE;
     }
 
-    static gboolean decidePolicyCallback(WebKitWebView* webView, WebKitPolicyDecision* decision, WebKitPolicyDecisionType type, PolicyClientTest* test)
+    static gboolean decidePolicyCallback(CyberKitWebView* webView, CyberKitPolicyDecision* decision, CyberKitPolicyDecisionType type, PolicyClientTest* test)
     {
         if (test->m_policyDecisionTypeFilter != type)
             return FALSE;
@@ -122,7 +122,7 @@ public:
         g_signal_connect(m_userContentManager.get(), "script-message-received::testHandler", G_CALLBACK(testHandlerMessageReceivedCallback), this);
     }
 
-    bool loadURIAndWaitForAutoPlayed(const char* uri, WebKitAutoplayPolicy policy)
+    bool loadURIAndWaitForAutoPlayed(const char* uri, CyberKitAutoplayPolicy policy)
     {
         m_autoplayed = std::nullopt;
         m_websitePolicies = adoptGRef(webkit_website_policies_new_with_policies("autoplay", policy, nullptr));
@@ -151,8 +151,8 @@ public:
     bool m_respondToPolicyDecisionAsynchronously { false };
     bool m_haltMainLoopAfterMakingDecision { false };
     std::optional<bool> m_autoplayed;
-    GRefPtr<WebKitPolicyDecision> m_previousPolicyDecision;
-    GRefPtr<WebKitWebsitePolicies> m_websitePolicies;
+    GRefPtr<CyberKitPolicyDecision> m_previousPolicyDecision;
+    GRefPtr<CyberKitWebsitePolicies> m_websitePolicies;
 };
 
 static void testNavigationPolicy(PolicyClientTest* test, gconstpointer)
@@ -165,15 +165,15 @@ static void testNavigationPolicy(PolicyClientTest* test, gconstpointer)
     g_assert_cmpint(test->m_loadEvents.size(), ==, 3);
 
     // Ideally we'd like to have a more intensive test here, but it's still pretty tricky
-    // to trigger different types of navigations with the GTK+ WebKit2 API.
-    WebKitNavigationPolicyDecision* decision = WEBKIT_NAVIGATION_POLICY_DECISION(test->m_previousPolicyDecision.get());
-    WebKitNavigationAction* navigationAction = webkit_navigation_policy_decision_get_navigation_action(decision);
+    // to trigger different types of navigations with the GTK+ CyberKit2 API.
+    CyberKitNavigationPolicyDecision* decision = WEBKIT_NAVIGATION_POLICY_DECISION(test->m_previousPolicyDecision.get());
+    CyberKitNavigationAction* navigationAction = webkit_navigation_policy_decision_get_navigation_action(decision);
     g_assert_cmpint(webkit_navigation_action_get_navigation_type(navigationAction), ==, WEBKIT_NAVIGATION_TYPE_OTHER);
     g_assert_cmpint(webkit_navigation_action_get_mouse_button(navigationAction), ==, 0);
     g_assert_cmpint(webkit_navigation_action_get_modifiers(navigationAction), ==, 0);
     g_assert_false(webkit_navigation_action_is_redirect(navigationAction));
     g_assert_null(webkit_navigation_action_get_frame_name(navigationAction));
-    WebKitURIRequest* request = webkit_navigation_action_get_request(navigationAction);
+    CyberKitURIRequest* request = webkit_navigation_action_get_request(navigationAction);
     g_assert_cmpstr(webkit_uri_request_get_uri(request), ==, "http://webkitgtk.org/");
 
     test->m_policyDecisionResponse = PolicyClientTest::Use;
@@ -222,11 +222,11 @@ static void testResponsePolicy(PolicyClientTest* test, gconstpointer)
     g_assert_cmpint(test->m_loadEvents[1], ==, LoadTrackingTest::LoadCommitted);
     g_assert_cmpint(test->m_loadEvents[2], ==, LoadTrackingTest::LoadFinished);
 
-    WebKitResponsePolicyDecision* decision = WEBKIT_RESPONSE_POLICY_DECISION(test->m_previousPolicyDecision.get());
-    WebKitURIRequest* request = webkit_response_policy_decision_get_request(decision);
+    CyberKitResponsePolicyDecision* decision = WEBKIT_RESPONSE_POLICY_DECISION(test->m_previousPolicyDecision.get());
+    CyberKitURIRequest* request = webkit_response_policy_decision_get_request(decision);
     g_assert_true(WEBKIT_IS_URI_REQUEST(request));
     ASSERT_CMP_CSTRING(webkit_uri_request_get_uri(request), ==, kServer->getURIForPath("/"));
-    WebKitURIResponse* response = webkit_response_policy_decision_get_response(decision);
+    CyberKitURIResponse* response = webkit_response_policy_decision_get_response(decision);
     g_assert_true(WEBKIT_IS_URI_RESPONSE(response));
     ASSERT_CMP_CSTRING(webkit_uri_response_get_uri(response), ==, kServer->getURIForPath("/"));
     g_assert_cmpint(webkit_web_view_can_show_mime_type(test->m_webView, webkit_uri_response_get_mime_type(response)), ==,
@@ -257,7 +257,7 @@ struct CreateCallbackData {
     GMainLoop* mainLoop;
 };
 
-static WebKitWebView* createCallback(WebKitWebView* webView, WebKitNavigationAction*, CreateCallbackData* data)
+static CyberKitWebView* createCallback(CyberKitWebView* webView, CyberKitNavigationAction*, CreateCallbackData* data)
 {
     data->triedToOpenWindow = true;
     g_main_loop_quit(data->mainLoop);
@@ -288,8 +288,8 @@ static void testNewWindowPolicy(PolicyClientTest* test, gconstpointer)
     test->wait(1);
     g_assert_true(data.triedToOpenWindow);
 
-    WebKitNavigationPolicyDecision* decision = WEBKIT_NAVIGATION_POLICY_DECISION(test->m_previousPolicyDecision.get());
-    WebKitNavigationAction* navigationAction = webkit_navigation_policy_decision_get_navigation_action(decision);
+    CyberKitNavigationPolicyDecision* decision = WEBKIT_NAVIGATION_POLICY_DECISION(test->m_previousPolicyDecision.get());
+    CyberKitNavigationAction* navigationAction = webkit_navigation_policy_decision_get_navigation_action(decision);
     g_assert_cmpstr(webkit_navigation_action_get_frame_name(navigationAction), ==, "_blank");
 
     // Using a short timeout is a bit ugly here, but it's hard to get around because if we block
@@ -334,7 +334,7 @@ static void testAutoplayPolicy(PolicyClientTest* test, gconstpointer)
     test->m_policyDecisionTypeFilter = WEBKIT_POLICY_DECISION_TYPE_NAVIGATION_ACTION;
 
     const char* resourceName = "autoplay-check.html";
-    GUniquePtr<char> resourcePath(g_build_filename(Test::getResourcesDir(Test::WebKit2Resources).data(), resourceName, nullptr));
+    GUniquePtr<char> resourcePath(g_build_filename(Test::getResourcesDir(Test::CyberKit2Resources).data(), resourceName, nullptr));
     GUniquePtr<char> resourceURL(g_filename_to_uri(resourcePath.get(), nullptr, nullptr));
 
     g_assert_false(test->loadURIAndWaitForAutoPlayed(resourceURL.get(), WEBKIT_AUTOPLAY_DENY));
@@ -353,7 +353,7 @@ static void testAutoplayPolicy(PolicyClientTest* test, gconstpointer)
 
     // Silent audio track tests
     resourceName = "autoplay-no-audio-check.html";
-    resourcePath.reset(g_build_filename(Test::getResourcesDir(Test::WebKit2Resources).data(), resourceName, nullptr));
+    resourcePath.reset(g_build_filename(Test::getResourcesDir(Test::CyberKit2Resources).data(), resourceName, nullptr));
     resourceURL.reset(g_filename_to_uri(resourcePath.get(), nullptr, nullptr));
 
     g_assert_false(test->loadURIAndWaitForAutoPlayed(resourceURL.get(), WEBKIT_AUTOPLAY_DENY));
@@ -363,16 +363,16 @@ static void testAutoplayPolicy(PolicyClientTest* test, gconstpointer)
 
 void beforeAll()
 {
-    kServer = new WebKitTestServer();
+    kServer = new CyberKitTestServer();
     kServer->run(serverCallback);
 
-    PolicyClientTest::add("WebKitPolicyClient", "navigation-policy", testNavigationPolicy);
-    PolicyClientTest::add("WebKitPolicyClient", "response-policy", testResponsePolicy);
-    PolicyClientTest::add("WebKitPolicyClient", "autoplay-policy", testAutoplayPolicy);
+    PolicyClientTest::add("CyberKitPolicyClient", "navigation-policy", testNavigationPolicy);
+    PolicyClientTest::add("CyberKitPolicyClient", "response-policy", testResponsePolicy);
+    PolicyClientTest::add("CyberKitPolicyClient", "autoplay-policy", testAutoplayPolicy);
     // WARNING: This test must come last, it uses racey constructs that
     // interfere nondeterminisically with any test running after it.
     // https://bugs.webkit.org/show_bug.cgi?id=213190
-    PolicyClientTest::add("WebKitPolicyClient", "new-window-policy", testNewWindowPolicy);
+    PolicyClientTest::add("CyberKitPolicyClient", "new-window-policy", testNewWindowPolicy);
 }
 
 void afterAll()

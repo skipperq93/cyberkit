@@ -25,8 +25,8 @@
 
 #import "config.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WebFrameLoadDelegate.h>
-#import <WebKit/WebView.h>
+#import <CyberKit/WebFrameLoadDelegate.h>
+#import <CyberKit/WebView.h>
 #import <wtf/RetainPtr.h>
 
 static bool didFinishLoad = false;
@@ -46,9 +46,9 @@ static bool didFinishLoad = false;
 
 @end
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 
-TEST(WebKitLegacy, WebViewCloseInsideDidFinishLoadForFrame)
+TEST(CyberKitLegacy, WebViewCloseInsideDidFinishLoadForFrame)
 {
     @autoreleasepool {
         RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
@@ -61,4 +61,4 @@ TEST(WebKitLegacy, WebViewCloseInsideDidFinishLoadForFrame)
     }
 }
 
-} // namespace TestWebKitAPI
+} // namespace TestCyberKitAPI
