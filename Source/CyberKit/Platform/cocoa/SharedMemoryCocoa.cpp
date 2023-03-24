@@ -79,7 +79,7 @@ void SharedMemory::Handle::takeOwnershipOfMemory(MemoryLedger memoryLedger) cons
 
 void SharedMemory::Handle::setOwnershipOfMemory(const CyberCore::ProcessIdentity& processIdentity, MemoryLedger memoryLedger) const
 {
-#if HAVE(TASK_IDENTITY_TOKEN) && HAVE(MACH_MEMORY_ENTRY_OWNERSHIP_IDENTITY_TOKEN_SUPPORT)
+#if HAVE(TASK_IDENTITY_TOKEN) && HAVE(MACH_MEMORY_ENTRY_OWNERSHIP_IDENTITY_TOKEN_SUPPORT) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140500)
     if (!m_handle)
         return;
 

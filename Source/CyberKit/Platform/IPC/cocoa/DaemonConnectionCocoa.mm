@@ -65,7 +65,7 @@ void ConnectionToMachService<Traits>::initializeConnectionIfNeeded() const
         if (!weakThis)
             return;
         if (event == XPC_ERROR_CONNECTION_INVALID) {
-#if HAVE(XPC_CONNECTION_COPY_INVALIDATION_REASON)
+#if HAVE(XPC_CONNECTION_COPY_INVALIDATION_REASON) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
             auto reason = std::unique_ptr<char[]>(xpc_connection_copy_invalidation_reason(weakThis->m_connection.get()));
             WTFLogAlways("Failed to connect to mach service %s, reason: %s", weakThis->m_machServiceName.data(), reason.get());
 #else

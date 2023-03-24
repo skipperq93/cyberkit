@@ -421,7 +421,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 #else
     UNUSED_PARAM(displayID);
 #endif
-#if HAVE(CG_CONTEXT_SET_OWNER_IDENTITY)
+#if HAVE(CG_CONTEXT_SET_OWNER_IDENTITY) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000)
     if (m_resourceOwner && CGContextSetOwnerIdentity)
         CGContextSetOwnerIdentity(cgContext.get(), m_resourceOwner.taskIdToken());
 #endif

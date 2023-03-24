@@ -216,7 +216,7 @@ static CGFloat mapWidth(FontSelectionValue width)
         FontSelectionValue input;
         CGFloat output;
     } piecewisePoints[] = {
-#if HAVE(LEVEL_3_SYSTEM_FONT_WIDTH_VALUES)
+#if HAVE(LEVEL_3_SYSTEM_FONT_WIDTH_VALUES) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
         {FontSelectionValue(37.5f), kCTFontWidthUltraCompressed},
         {FontSelectionValue(50), kCTFontWidthExtraCompressed}, // ultra condensed
         {FontSelectionValue(62.5f), kCTFontWidthExtraCondensed},
