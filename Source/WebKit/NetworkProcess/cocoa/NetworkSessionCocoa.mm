@@ -2008,7 +2008,7 @@ Vector<WebCore::SecurityOriginData> NetworkSessionCocoa::hostNamesWithAlternativ
 
 void NetworkSessionCocoa::donateToSKAdNetwork(WebCore::PrivateClickMeasurement&& pcm)
 {
-#if HAVE(SKADNETWORK_v4)
+#if HAVE(SKADNETWORK_v4) && (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000)
     auto config = adoptNS([ASDInstallWebAttributionParamsConfig new]);
     config.get().appAdamId = @(*pcm.adamID());
     config.get().adNetworkRegistrableDomain = pcm.destinationSite().registrableDomain.string();
