@@ -211,16 +211,20 @@ extern const CGFloat kCTFontWeightBold;
 extern const CGFloat kCTFontWeightHeavy;
 extern const CGFloat kCTFontWeightBlack;
 
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 extern const CGFloat kCTFontWidthUltraCompressed;
 extern const CGFloat kCTFontWidthExtraCompressed;
 extern const CGFloat kCTFontWidthCompressed;
+#endif
 extern const CGFloat kCTFontWidthExtraCondensed;
 extern const CGFloat kCTFontWidthCondensed;
 extern const CGFloat kCTFontWidthSemiCondensed;
 extern const CGFloat kCTFontWidthStandard;
 extern const CGFloat kCTFontWidthSemiExpanded;
 extern const CGFloat kCTFontWidthExpanded;
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 extern const CGFloat kCTFontWidthExtraExpanded;
+#endif
 
 extern const CFStringRef kCTUIFontTextStyleTitle0;
 extern const CFStringRef kCTUIFontTextStyleTitle1;

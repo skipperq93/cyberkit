@@ -27,7 +27,7 @@
 
 #include <optional>
 
-#if HAVE(TASK_IDENTITY_TOKEN)
+#if HAVE(TASK_IDENTITY_TOKEN) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140500)
 #include <wtf/ArgumentCoder.h>
 #include <wtf/MachSendRight.h>
 #else
@@ -52,12 +52,12 @@ public:
     // Returns true for a process identity or false on empty identity.
     WEBCORE_EXPORT operator bool() const;
 
-#if HAVE(TASK_IDENTITY_TOKEN)
+#if HAVE(TASK_IDENTITY_TOKEN) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140500)
     task_id_token_t taskIdToken() const { return m_taskIdToken.sendRight(); }
 #endif
 
 private:
-#if HAVE(TASK_IDENTITY_TOKEN)
+#if HAVE(TASK_IDENTITY_TOKEN) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140500)
     friend struct IPC::ArgumentCoder<ProcessIdentity, void>;
     WEBCORE_EXPORT ProcessIdentity(MachSendRight&& taskIdToken);
     MachSendRight m_taskIdToken;

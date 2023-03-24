@@ -382,7 +382,7 @@ typedef void (^CFCachedURLResponseCallBackBlock)(CFCachedURLResponseRef);
 void _CFCachedURLResponseSetBecameFileBackedCallBackBlock(CFCachedURLResponseRef, CFCachedURLResponseCallBackBlock, dispatch_queue_t);
 #endif
 
-#if HAVE(CFNETWORK_DISABLE_CACHE_SPI)
+#if HAVE(CFNETWORK_DISABLE_CACHE_SPI) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150400)
 void _CFURLStorageSessionDisableCache(CFURLStorageSessionRef);
 #endif
 CFURLStorageSessionRef _CFURLStorageSessionCreate(CFAllocatorRef, CFStringRef, CFDictionaryRef);

@@ -28,7 +28,7 @@
 
 #include "Logging.h"
 
-#if HAVE(TASK_IDENTITY_TOKEN)
+#if HAVE(TASK_IDENTITY_TOKEN) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140500)
 #include <mach/mach.h>
 #endif
 
@@ -36,7 +36,7 @@ namespace WebCore {
 
 ProcessIdentity::ProcessIdentity(CurrentProcessTag)
 {
-#if HAVE(TASK_IDENTITY_TOKEN)
+#if HAVE(TASK_IDENTITY_TOKEN) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140500)
     task_id_token_t identityToken;
     kern_return_t kr = task_create_identity_token(mach_task_self(), &identityToken);
     if (kr == KERN_SUCCESS)
@@ -48,14 +48,14 @@ ProcessIdentity::ProcessIdentity(CurrentProcessTag)
 
 ProcessIdentity::operator bool() const
 {
-#if HAVE(TASK_IDENTITY_TOKEN)
+#if HAVE(TASK_IDENTITY_TOKEN) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140500)
     return static_cast<bool>(m_taskIdToken);
 #else
     return false;
 #endif
 }
 
-#if HAVE(TASK_IDENTITY_TOKEN)
+#if HAVE(TASK_IDENTITY_TOKEN) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140500)
 ProcessIdentity::ProcessIdentity(MachSendRight&& taskIdToken)
     : m_taskIdToken(WTFMove(taskIdToken))
 {

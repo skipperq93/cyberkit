@@ -45,7 +45,7 @@
     WKContentView *_view;
     CGPoint _interactionPoint;
     RetainPtr<UIDatePicker> _datePicker;
-#if HAVE(UIDATEPICKER_OVERLAY_PRESENTATION)
+#if HAVE(UIDATEPICKER_OVERLAY_PRESENTATION) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
     BOOL _isDismissingDatePicker;
 
     RetainPtr<_UIDatePickerOverlayPresentation> _datePickerPresentation;
@@ -113,7 +113,7 @@ static const CGFloat kDateTimePickerToolbarHeight = 44;
         [_datePicker setPreferredDatePickerStyle:UIDatePickerStyleInline];
 #endif
 
-#if HAVE(UIDATEPICKER_OVERLAY_PRESENTATION)
+#if HAVE(UIDATEPICKER_OVERLAY_PRESENTATION) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
     _isDismissingDatePicker = NO;
 
     _accessoryView = adoptNS([[UIToolbar alloc] init]);
@@ -134,7 +134,7 @@ static const CGFloat kDateTimePickerToolbarHeight = 44;
     return self;
 }
 
-#if HAVE(UIDATEPICKER_OVERLAY_PRESENTATION)
+#if HAVE(UIDATEPICKER_OVERLAY_PRESENTATION) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 
 - (void)handleDatePickerPresentationDismissal
 {
@@ -189,7 +189,7 @@ static const CGFloat kDateTimePickerToolbarHeight = 44;
 
 - (void)done:(id)sender
 {
-#if HAVE(UIDATEPICKER_OVERLAY_PRESENTATION)
+#if HAVE(UIDATEPICKER_OVERLAY_PRESENTATION) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
     [_datePickerPresentation dismissPresentationAnimated:YES];
 #endif
 }
@@ -204,7 +204,7 @@ static const CGFloat kDateTimePickerToolbarHeight = 44;
 
 - (void)dealloc
 {
-#if HAVE(UIDATEPICKER_OVERLAY_PRESENTATION)
+#if HAVE(UIDATEPICKER_OVERLAY_PRESENTATION) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
     [self removeDatePickerPresentation];
 #endif
     [super dealloc];
@@ -277,7 +277,7 @@ static const CGFloat kDateTimePickerToolbarHeight = 44;
     _initialValue = _view.focusedElementInformation.value;
     [self setDateTimePickerToInitialValue];
 
-#if HAVE(UIDATEPICKER_OVERLAY_PRESENTATION)
+#if HAVE(UIDATEPICKER_OVERLAY_PRESENTATION) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
     [self showDateTimePicker];
 #endif
 }
@@ -286,7 +286,7 @@ static const CGFloat kDateTimePickerToolbarHeight = 44;
 {
     [_view stopRelinquishingFirstResponderToFocusedElement];
 
-#if HAVE(UIDATEPICKER_OVERLAY_PRESENTATION)
+#if HAVE(UIDATEPICKER_OVERLAY_PRESENTATION) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
     [self removeDatePickerPresentation];
 #endif
 }
