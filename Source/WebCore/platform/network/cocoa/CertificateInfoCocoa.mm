@@ -33,7 +33,7 @@ void CertificateInfo::dump() const
 {
     if (m_trust) {
 
-#if HAVE(SEC_TRUST_COPY_CERTIFICATE_CHAIN) && (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(SEC_TRUST_COPY_CERTIFICATE_CHAIN) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
         auto chain = adoptCF(SecTrustCopyCertificateChain(trust().get()));
         CFIndex entries = CFArrayGetCount(chain.get());
 #else
@@ -42,7 +42,7 @@ void CertificateInfo::dump() const
         NSLog(@"CertificateInfo SecTrust\n");
         NSLog(@"  Entries: %ld\n", entries);
         for (CFIndex i = 0; i < entries; ++i) {
-#if HAVE(SEC_TRUST_COPY_CERTIFICATE_CHAIN) && (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(SEC_TRUST_COPY_CERTIFICATE_CHAIN) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
             RetainPtr<CFStringRef> summary = adoptCF(SecCertificateCopySubjectSummary(checked_cf_cast<SecCertificateRef>(CFArrayGetValueAtIndex(chain.get(), i))));
 #else
             RetainPtr<CFStringRef> summary = adoptCF(SecCertificateCopySubjectSummary(SecTrustGetCertificateAtIndex(trust().get(), i)));

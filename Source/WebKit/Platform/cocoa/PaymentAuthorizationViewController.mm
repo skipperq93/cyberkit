@@ -81,7 +81,7 @@
     [self _didSelectPaymentMethod:paymentMethod completion:completion];
 }
 
-#if HAVE(PASSKIT_COUPON_CODE) && (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(PASSKIT_COUPON_CODE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 
 - (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)controller didChangeCouponCode:(NSString *)couponCode handler:(void (^)(PKPaymentRequestCouponCodeUpdate *update))completion
 {
