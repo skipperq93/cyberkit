@@ -35,7 +35,7 @@
 #import <pal/cf/CoreMediaSoftLink.h>
 
 // Added in macOS 11, iOS 14.
-#if (PLATFORM(MAC) && __MAC_OS_X_VERSION_MIN_REQUIRED < 110000) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 140000)
+#if (PLATFORM(MAC) && __MAC_OS_X_VERSION_MIN_REQUIRED < 110000) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MAX_ALLOWED < 140000)
 constexpr CMVideoCodecType kCMVideoCodecType_VP9 { 'vp09' };
 #endif
 
