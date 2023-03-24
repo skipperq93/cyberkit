@@ -28,14 +28,17 @@
 
 #import "DestinationColorSpace.h"
 #import "HostWindow.h"
+#import "ImageBufferBackend.h"
 #import "IOSurfacePool.h"
 #import "Logging.h"
+#import "PixelBufferConversion.h"
 #import "PlatformScreen.h"
 #import "ProcessCapabilities.h"
 #import "ProcessIdentity.h"
 #import <pal/cocoa/QuartzCoreSoftLink.h>
 #import <pal/spi/cg/CoreGraphicsSPI.h>
 #import <wtf/Assertions.h>
+#import <wtf/cocoa/TypeCastsCocoa.h>
 #import <wtf/MachSendRight.h>
 #import <wtf/MathExtras.h>
 #import <wtf/text/TextStream.h>
