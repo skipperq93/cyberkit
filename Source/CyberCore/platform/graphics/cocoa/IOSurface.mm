@@ -549,7 +549,7 @@ void IOSurface::setOwnershipIdentity(const ProcessIdentity& resourceOwner)
 
 void IOSurface::setOwnershipIdentity(IOSurfaceRef surface, const ProcessIdentity& resourceOwner)
 {
-#if HAVE(IOSURFACE_SET_OWNERSHIP_IDENTITY) && HAVE(TASK_IDENTITY_TOKEN)
+#if HAVE(IOSURFACE_SET_OWNERSHIP_IDENTITY) && HAVE(TASK_IDENTITY_TOKEN) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
     ASSERT(resourceOwner);
     ASSERT(surface);
     task_id_token_t ownerTaskIdToken = resourceOwner.taskIdToken();
