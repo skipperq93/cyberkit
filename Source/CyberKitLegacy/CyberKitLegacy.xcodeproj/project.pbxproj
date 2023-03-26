@@ -3597,7 +3597,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKitLegacy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.CyberKitLegacy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
@@ -3609,7 +3609,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKitLegacy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.CyberKitLegacy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
@@ -3621,7 +3621,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKitLegacy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.CyberKitLegacy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Production;

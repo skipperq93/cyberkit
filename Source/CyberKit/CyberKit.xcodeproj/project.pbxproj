@@ -17593,7 +17593,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.CyberKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
@@ -17605,7 +17605,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.CyberKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
@@ -17657,7 +17657,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.GPU;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.CyberKit.GPU;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
@@ -17669,7 +17669,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.GPU;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.CyberKit.GPU;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
@@ -17688,7 +17688,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.WebContent.Development;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.CyberKit.WebContent.Development;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
@@ -17700,7 +17700,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.WebContent.Development;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.CyberKit.WebContent.Development;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
@@ -17837,7 +17837,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.CyberKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Production;
@@ -17854,7 +17854,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				MARKETING_VERSION = "615+";
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.WebContent.Crashy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.CyberKit.WebContent.Crashy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
@@ -17870,7 +17870,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				MARKETING_VERSION = "615+";
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.WebContent.Crashy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.CyberKit.WebContent.Crashy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
@@ -17891,7 +17891,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.WebContent.CaptivePortal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.CyberKit.WebContent.CaptivePortal;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
@@ -17903,7 +17903,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.WebContent.CaptivePortal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.CyberKit.WebContent.CaptivePortal;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
@@ -18009,7 +18009,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.WebContent;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.CyberKit.WebContent;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
@@ -18021,7 +18021,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ape.CyberKit.WebContent;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.CyberKit.WebContent;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
@@ -18040,7 +18040,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.Networking;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.CyberKit.Networking;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
@@ -18052,7 +18052,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.Networking;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.CyberKit.Networking;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
