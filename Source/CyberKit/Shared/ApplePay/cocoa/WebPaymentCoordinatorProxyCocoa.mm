@@ -62,7 +62,7 @@ namespace CyberKit {
 
 WebPaymentCoordinatorProxy::WebPaymentCoordinatorProxy(WebPaymentCoordinatorProxy::Client& client)
     : m_client(client)
-    , m_canMakePaymentsQueue(WorkQueue::create("com.apple.CyberKit.CanMakePayments"))
+    , m_canMakePaymentsQueue(WorkQueue::create("com.matthewbenedict.CyberKit.CanMakePayments"))
 {
     m_client.paymentCoordinatorAddMessageReceiver(*this, Messages::WebPaymentCoordinatorProxy::messageReceiverName(), *this);
 }

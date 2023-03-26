@@ -223,7 +223,7 @@ WK_MAC_PUBLIC_IOS_PRIVATE_HEADERS_DIR = $(WK_MAC_PUBLIC_IOS_PRIVATE_HEADERS_DIR_
 WK_MAC_PUBLIC_IOS_PRIVATE_HEADERS_DIR_ = $(PUBLIC_HEADERS_FOLDER_PATH);
 WK_MAC_PUBLIC_IOS_PRIVATE_HEADERS_DIR_cocoatouch = $(PRIVATE_HEADERS_FOLDER_PATH);
 
-EXCLUDED_MACOS_PLUGIN_FILE_NAMES[sdk=iphone*] = SecItemShim.dylib WebProcessShim.dylib *.pdf Resources/mac/* com.apple.CyberKit.NetworkProcess.sb com.apple.CyberKit.GPUProcess.sb com.apple.CyberKit.webpushd.mac.sb com.apple.WebProcess.sb;
+EXCLUDED_MACOS_PLUGIN_FILE_NAMES[sdk=iphone*] = SecItemShim.dylib WebProcessShim.dylib *.pdf Resources/mac/* com.matthewbenedict.CyberKit.NetworkProcess.sb com.matthewbenedict.CyberKit.GPUProcess.sb com.matthewbenedict.CyberKit.webpushd.mac.sb com.apple.WebProcess.sb;
 
 INSTALLHDRS_SCRIPT_PHASE = YES;
 APPLY_RULES_IN_COPY_HEADERS = $(WK_USE_NEW_BUILD_SYSTEM);
@@ -246,8 +246,8 @@ WK_HAVE_URL_FORMATTING_macosx = $(WK_HAVE_URL_FORMATTING$(WK_MACOS_1014));
 WK_HAVE_URL_FORMATTING_MACOS_SINCE_1014 = YES;
 
 WK_LOGGING_PREFERENCES_OUTPUT_PATH = $(WK_LOGGING_PREFERENCES_OUTPUT_PATH_USE_OVERRIDE_FRAMEWORKS_DIR_$(WK_USE_OVERRIDE_FRAMEWORKS_DIR)_$(WK_PLATFORM_NAME));
-WK_LOGGING_PREFERENCES_OUTPUT_PATH_USE_OVERRIDE_FRAMEWORKS_DIR_NO_macosx = $(DSTROOT)/System/Library/Preferences/Logging/Subsystems/com.apple.CyberKit.plist;
-WK_LOGGING_PREFERENCES_OUTPUT_PATH_USE_OVERRIDE_FRAMEWORKS_DIR_NO_iphoneos = $(DSTROOT)/System/Library/Preferences/Logging/Subsystems/com.apple.CyberKit.plist;
+WK_LOGGING_PREFERENCES_OUTPUT_PATH_USE_OVERRIDE_FRAMEWORKS_DIR_NO_macosx = $(DSTROOT)/System/Library/Preferences/Logging/Subsystems/com.matthewbenedict.CyberKit.plist;
+WK_LOGGING_PREFERENCES_OUTPUT_PATH_USE_OVERRIDE_FRAMEWORKS_DIR_NO_iphoneos = $(DSTROOT)/System/Library/Preferences/Logging/Subsystems/com.matthewbenedict.CyberKit.plist;
 
 WK_TRACE_POINTS_OUTPUT_PATH = $(WK_TRACE_POINTS_OUTPUT_PATH_USE_OVERRIDE_FRAMEWORKS_DIR_$(WK_USE_OVERRIDE_FRAMEWORKS_DIR)_$(WK_PLATFORM_NAME));
 WK_TRACE_POINTS_OUTPUT_PATH_USE_OVERRIDE_FRAMEWORKS_DIR_NO_macosx = $(DSTROOT)/AppleInternal/Library/Ariadne/Plists/CyberKit.plist;

@@ -30,7 +30,7 @@ OTHER_LDFLAGS_ = -lCyberCoreTestSupport -force_load $(BUILT_PRODUCTS_DIR)/libDum
 LD_RUNPATH_SEARCH_PATHS = "@loader_path/.";
 STRIP_STYLE = debugging;
 PRODUCT_NAME = DumpRenderTree;
-PRODUCT_BUNDLE_IDENTIFIER = com.apple.CyberKit.DumpRenderTree;
+PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.DumpRenderTree;
 
 SKIP_INSTALL[sdk=embedded*] = YES;
 

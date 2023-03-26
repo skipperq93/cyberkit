@@ -7488,7 +7488,7 @@ void HTMLMediaElement::updateSleepDisabling()
     else if (shouldDisableSleep != SleepType::None) {
         auto type = shouldDisableSleep == SleepType::Display ? PAL::SleepDisabler::Type::Display : PAL::SleepDisabler::Type::System;
         if (!m_sleepDisabler || m_sleepDisabler->type() != type)
-            m_sleepDisabler = makeUnique<SleepDisabler>("com.apple.CyberCore: HTMLMediaElement playback"_s, type);
+            m_sleepDisabler = makeUnique<SleepDisabler>("com.matthewbenedict.CyberCore: HTMLMediaElement playback"_s, type);
     }
 
     if (m_player)

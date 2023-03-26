@@ -227,7 +227,7 @@ Engine::Engine(NetworkSession& networkSession, const String& rootPath)
     , m_rootPath(rootPath)
 {
     if (!m_rootPath.isNull())
-        m_ioQueue = WorkQueue::create("com.apple.CyberKit.CacheStorageEngine.serial.default", WorkQueue::QOS::Default);
+        m_ioQueue = WorkQueue::create("com.matthewbenedict.CyberKit.CacheStorageEngine.serial.default", WorkQueue::QOS::Default);
 }
 
 void Engine::open(const CyberCore::ClientOrigin& origin, const String& cacheName, CacheIdentifierCallback&& callback)

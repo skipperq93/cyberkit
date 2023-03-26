@@ -78,7 +78,7 @@ void GPUProcess::initializeSandbox(const AuxiliaryProcessInitializationParameter
     CyberCore::registerVorbisDecoderIfNeeded();
 #endif
 
-    sandboxParameters.setOverrideSandboxProfilePath([webKit2Bundle pathForResource:@"com.apple.CyberKit.GPUProcess" ofType:@"sb"]);
+    sandboxParameters.setOverrideSandboxProfilePath([webKit2Bundle pathForResource:@"com.matthewbenedict.CyberKit.GPUProcess" ofType:@"sb"]);
 
     AuxiliaryProcess::initializeSandbox(parameters, sandboxParameters);
 }

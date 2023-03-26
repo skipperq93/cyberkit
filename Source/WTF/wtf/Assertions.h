@@ -186,7 +186,7 @@ typedef struct {
 #elif PLATFORM(PLAYSTATION)
 #define LOG_CHANNEL_WEBKIT_SUBSYSTEM "SceNKCyberKit"
 #else
-#define LOG_CHANNEL_WEBKIT_SUBSYSTEM "com.apple.CyberKit"
+#define LOG_CHANNEL_WEBKIT_SUBSYSTEM "com.matthewbenedict.CyberKit"
 #endif
 
 #define DECLARE_LOG_CHANNEL(name) \

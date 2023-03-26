@@ -281,7 +281,7 @@ TEST(WebPushD, BasicCommunication)
         if ([nsMessage hasPrefix:@"[webpushtool "])
             return;
 
-        bool stringMatches = [nsMessage hasPrefix:@"[com.apple.CyberKit.TestCyberKitAPI"] || [nsMessage hasPrefix:@"[TestCyberKitAPI"];
+        bool stringMatches = [nsMessage hasPrefix:@"[com.matthewbenedict.CyberKit.TestCyberKitAPI"] || [nsMessage hasPrefix:@"[TestCyberKitAPI"];
         stringMatches = stringMatches && [nsMessage hasSuffix:@" Turned Debug Mode on"];
 
         EXPECT_TRUE(stringMatches);
@@ -608,7 +608,7 @@ public:
     {
         String scope = [m_url absoluteString];
         CyberCore::PushSubscriptionSetIdentifier subscriptionSetIdentifier {
-            .bundleIdentifier = "com.apple.CyberKit.TestCyberKitAPI"_s,
+            .bundleIdentifier = "com.matthewbenedict.CyberKit.TestCyberKitAPI"_s,
             .pushPartition = m_pushPartition,
             .dataStoreIdentifier = m_dataStoreIdentifier
         };
@@ -820,11 +820,11 @@ TEST_F(WebPushDTest, SubscribeTest)
     std::sort(subscribed.begin(), subscribed.end(), lessThan);
 
     Vector<String> expected {
-        "com.apple.CyberKit.TestCyberKitAPI ds:0bf5053b-164c-4b7d-8179-832e6bf158df https://example.com/"_s,
-        "com.apple.CyberKit.TestCyberKitAPI ds:940e7729-738e-439f-a366-1a8719e23b2d https://example.com/"_s,
-        "com.apple.CyberKit.TestCyberKitAPI https://example.com/"_s,
-        "com.apple.CyberKit.TestCyberKitAPI part:testPartition ds:940e7729-738e-439f-a366-1a8719e23b2d https://example.com/"_s,
-        "com.apple.CyberKit.TestCyberKitAPI part:testPartition https://example.com/"_s
+        "com.matthewbenedict.CyberKit.TestCyberKitAPI ds:0bf5053b-164c-4b7d-8179-832e6bf158df https://example.com/"_s,
+        "com.matthewbenedict.CyberKit.TestCyberKitAPI ds:940e7729-738e-439f-a366-1a8719e23b2d https://example.com/"_s,
+        "com.matthewbenedict.CyberKit.TestCyberKitAPI https://example.com/"_s,
+        "com.matthewbenedict.CyberKit.TestCyberKitAPI part:testPartition ds:940e7729-738e-439f-a366-1a8719e23b2d https://example.com/"_s,
+        "com.matthewbenedict.CyberKit.TestCyberKitAPI part:testPartition https://example.com/"_s
     };
     ASSERT_EQ(subscribed, expected);
 

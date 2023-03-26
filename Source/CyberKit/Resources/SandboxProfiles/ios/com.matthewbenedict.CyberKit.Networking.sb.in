@@ -339,8 +339,8 @@
     ;; <rdar://problem/46716068>
     (deny mach-lookup
            (with message "Create a radar and set it as a blocker to rdar://problem/48527566")
-           (xpc-service-name "com.apple.CyberKit.Networking"
-                             "com.apple.CyberKit.WebContent")
+           (xpc-service-name "com.matthewbenedict.CyberKit.Networking"
+                             "com.matthewbenedict.CyberKit.WebContent")
 ))
 
 (deny file-map-executable)
@@ -899,6 +899,6 @@
     (apply subpath issue-extension-secondary-paths))
 #endif
 
-#if USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/com.apple.CyberKit.NetworkingAdditions.sb.in>)
-#include <CyberKitAdditions/com.apple.CyberKit.NetworkingAdditions.sb.in>
+#if USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/com.matthewbenedict.CyberKit.NetworkingAdditions.sb.in>)
+#include <CyberKitAdditions/com.matthewbenedict.CyberKit.NetworkingAdditions.sb.in>
 #endif

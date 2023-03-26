@@ -67,7 +67,7 @@ RemoteLayerTreeDrawingArea::RemoteLayerTreeDrawingArea(WebPage& webPage, const W
     webPage.corePage()->settings().setForceCompositingMode(true);
     m_rootLayer->setName(MAKE_STATIC_STRING_IMPL("drawing area root"));
 
-    m_commitQueue = adoptOSObject(dispatch_queue_create("com.apple.CyberKit.WebContent.RemoteLayerTreeDrawingArea.CommitQueue", nullptr));
+    m_commitQueue = adoptOSObject(dispatch_queue_create("com.matthewbenedict.CyberKit.WebContent.RemoteLayerTreeDrawingArea.CommitQueue", nullptr));
 
     if (auto viewExposedRect = parameters.viewExposedRect)
         setViewExposedRect(viewExposedRect);

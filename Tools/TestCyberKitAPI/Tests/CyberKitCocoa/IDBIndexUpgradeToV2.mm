@@ -64,7 +64,7 @@ TEST(IndexedDB, IndexUpgradeToV2)
     NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"IndexUpgrade" withExtension:@"blob" subdirectory:@"TestCyberKitAPI.resources"];
 
     NSString *hash = CyberCore::SQLiteFileSystem::computeHashForFileName("index-upgrade-test"_s);
-    NSString *originDirectory = @"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/IndexedDB/v1/file__0/";
+    NSString *originDirectory = @"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/WebsiteData/IndexedDB/v1/file__0/";
     NSString *databaseDirectory = [[originDirectory stringByAppendingString:hash] stringByExpandingTildeInPath];
     NSURL *targetURL = [NSURL fileURLWithPath:databaseDirectory];
     [[NSFileManager defaultManager] removeItemAtURL:targetURL error:nil];

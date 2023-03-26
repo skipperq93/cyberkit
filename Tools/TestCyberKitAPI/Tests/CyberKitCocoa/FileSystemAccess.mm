@@ -268,7 +268,7 @@ TEST(FileSystemAccess, MigrateToNewStorageDirectory)
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
     // This is old value returned by WebsiteDataStore::defaultGeneralStorageDirectory().
-    NSString *oldStorageDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Caches/com.apple.CyberKit.TestCyberKitAPI/CyberKit/Storage/"];
+    NSString *oldStorageDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Caches/com.matthewbenedict.CyberKit.TestCyberKitAPI/CyberKit/Storage/"];
     [fileManager removeItemAtPath:oldStorageDirectory error:nil];
     EXPECT_FALSE([[NSFileManager defaultManager] fileExistsAtPath:oldStorageDirectory]);
     
@@ -285,7 +285,7 @@ TEST(FileSystemAccess, MigrateToNewStorageDirectory)
     EXPECT_TRUE([[NSFileManager defaultManager] fileExistsAtPath:oldSaltPath]);
 
     // This is current value returned by WebsiteDataStore::defaultGeneralStorageDirectory().
-    NSString *newStorageDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/Default/"];
+    NSString *newStorageDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/WebsiteData/Default/"];
     [fileManager removeItemAtPath:newStorageDirectory error:nil];
     NSString *newFilePath = [NSString pathWithComponents:@[newStorageDirectory, hashedOrigin, hashedOrigin, storageType, fileName]];
     EXPECT_FALSE([fileManager fileExistsAtPath:newFilePath]);

@@ -508,7 +508,7 @@ void WebProcessProxy::getLaunchOptions(ProcessLauncher::LaunchOptions& launchOpt
 
 #if ENABLE(WEBCONTENT_CRASH_TESTING)
     if (isCrashyProcess()) {
-        launchOptions.customWebContentServiceBundleIdentifier = toCString("com.apple.CyberKit.WebContent.Crashy");
+        launchOptions.customWebContentServiceBundleIdentifier = toCString("com.matthewbenedict.CyberKit.WebContent.Crashy");
         launchOptions.extraInitializationData.add<HashTranslatorASCIILiteral>("is-webcontent-crashy"_s, "1"_s);
     }
 #endif

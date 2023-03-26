@@ -59,7 +59,7 @@ WorkQueue& BlocklistUpdater::queue()
     static NeverDestroyed<RefPtr<WorkQueue>> queue;
     static dispatch_once_t once;
     dispatch_once(&once, ^{
-        queue.get() = WorkQueue::create("com.apple.CyberKit.Blocklist");
+        queue.get() = WorkQueue::create("com.matthewbenedict.CyberKit.Blocklist");
     });
 
     return *queue.get();

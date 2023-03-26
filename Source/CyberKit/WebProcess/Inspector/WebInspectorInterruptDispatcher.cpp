@@ -35,7 +35,7 @@
 namespace CyberKit {
 
 WebInspectorInterruptDispatcher::WebInspectorInterruptDispatcher()
-    : m_queue(WorkQueue::create("com.apple.CyberKit.WebInspectorInterruptDispatcher"))
+    : m_queue(WorkQueue::create("com.matthewbenedict.CyberKit.WebInspectorInterruptDispatcher"))
 {
 }
 

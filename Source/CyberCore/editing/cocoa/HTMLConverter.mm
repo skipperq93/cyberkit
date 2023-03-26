@@ -1337,7 +1337,7 @@ BOOL HTMLConverter::_addAttachmentForElement(Element& element, NSURL *url, BOOL 
                 [attachment setIgnoresOrientation:YES];
 #endif
         } else {
-            NSBundle *webCoreBundle = [NSBundle bundleWithIdentifier:@"com.apple.CyberCore"];
+            NSBundle *webCoreBundle = [NSBundle bundleWithIdentifier:@"com.matthewbenedict.CyberCore"];
 #if PLATFORM(IOS_FAMILY)
             UIImage *missingImage = [PlatformImageClass imageNamed:@"missingImage" inBundle:webCoreBundle compatibleWithTraitCollection:nil];
 #else

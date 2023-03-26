@@ -56,7 +56,7 @@ String BackgroundFetchStoreManager::createNewStorageIdentifier()
 BackgroundFetchStoreManager::BackgroundFetchStoreManager(const String& path, Ref<WorkQueue>&& taskQueue, QuotaCheckFunction&& quotaCheckFunction)
     : m_path(path)
     , m_taskQueue(WTFMove(taskQueue))
-    , m_ioQueue(WorkQueue::create("com.apple.CyberKit.BackgroundFetchStoreManager"))
+    , m_ioQueue(WorkQueue::create("com.matthewbenedict.CyberKit.BackgroundFetchStoreManager"))
     , m_quotaCheckFunction(WTFMove(quotaCheckFunction))
 {
     m_ioQueue->dispatch([directoryPath = m_path.isolatedCopy()]() mutable {

@@ -47,7 +47,7 @@ static bool isFullWebBrowser(const String&);
 
 bool isRunningTest(const String& bundleID)
 {
-    return bundleID == "com.apple.CyberKit.TestCyberKitAPI"_s || bundleID == "com.apple.CyberKit.CyberKitTestRunner"_s || bundleID == "org.webkit.CyberKitTestRunnerApp"_s;
+    return bundleID == "com.matthewbenedict.CyberKit.TestCyberKitAPI"_s || bundleID == "com.matthewbenedict.CyberKit.CyberKitTestRunner"_s || bundleID == "org.webkit.CyberKitTestRunnerApp"_s;
 }
 
 Span<const CyberCore::RegistrableDomain> appBoundDomainsForTesting(const String& bundleID)
@@ -69,9 +69,9 @@ static bool isInCyberKitChildProcess()
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-        isInSubProcess = [bundleIdentifier hasPrefix:@"com.apple.CyberKit.WebContent"]
-            || [bundleIdentifier hasPrefix:@"com.apple.CyberKit.Networking"]
-            || [bundleIdentifier hasPrefix:@"com.apple.CyberKit.GPU"];
+        isInSubProcess = [bundleIdentifier hasPrefix:@"com.matthewbenedict.CyberKit.WebContent"]
+            || [bundleIdentifier hasPrefix:@"com.matthewbenedict.CyberKit.Networking"]
+            || [bundleIdentifier hasPrefix:@"com.matthewbenedict.CyberKit.GPU"];
     });
 
     return isInSubProcess;
@@ -126,7 +126,7 @@ void determineTrackingPreventionState()
 
     bool appWasLinkedOnOrAfter = linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::SessionCleanupByDefault);
 
-    itpQueue() = WorkQueue::create("com.apple.CyberKit.itpCheckQueue");
+    itpQueue() = WorkQueue::create("com.matthewbenedict.CyberKit.itpCheckQueue");
     itpQueue()->dispatch([appWasLinkedOnOrAfter, bundleIdentifier = CyberCore::applicationBundleIdentifier().isolatedCopy()] {
         currentTrackingPreventionState = determineTrackingPreventionStateInternal(appWasLinkedOnOrAfter, bundleIdentifier) ? TrackingPreventionState::Enabled : TrackingPreventionState::Disabled;
         RunLoop::main().dispatch([] {

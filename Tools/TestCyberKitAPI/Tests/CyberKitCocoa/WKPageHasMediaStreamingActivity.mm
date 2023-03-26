@@ -38,7 +38,7 @@
 
 namespace TestCyberKitAPI {
 
-static const char *CyberKitMediaStreamingActivity = "com.apple.CyberKit.mediaStreamingActivity";
+static const char *CyberKitMediaStreamingActivity = "com.matthewbenedict.CyberKit.mediaStreamingActivity";
 
 TEST(CyberKit, MSEHasMediaStreamingActivity)
 {

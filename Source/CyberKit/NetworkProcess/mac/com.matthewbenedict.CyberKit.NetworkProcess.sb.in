@@ -776,6 +776,6 @@
             (machtrap-number MSC_mach_msg2_trap))))
 #endif // HAVE(SANDBOX_MESSAGE_FILTERING)
 
-#if USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/com.apple.CyberKit.NetworkingAdditions.sb.in>)
-#include <CyberKitAdditions/com.apple.CyberKit.NetworkingAdditions.sb.in>
+#if USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/com.matthewbenedict.CyberKit.NetworkingAdditions.sb.in>)
+#include <CyberKitAdditions/com.matthewbenedict.CyberKit.NetworkingAdditions.sb.in>
 #endif

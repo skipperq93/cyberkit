@@ -1413,7 +1413,7 @@ static CyberKit::AttributionOverrideTesting toAttributionOverrideTesting(_WKAttr
 
 - (void)_setShouldRelaxThirdPartyCookieBlocking:(BOOL)relax
 {
-    bool allowed = CyberCore::applicationBundleIdentifier() == "com.apple.CyberKit.TestCyberKitAPI"_s;
+    bool allowed = CyberCore::applicationBundleIdentifier() == "com.matthewbenedict.CyberKit.TestCyberKitAPI"_s;
 #if PLATFORM(MAC)
     allowed = allowed || CyberCore::MacApplication::isSafari();
 #elif PLATFORM(IOS_FAMILY)

@@ -387,8 +387,8 @@ OptionSet<AvoidanceReason> canUseForLineLayoutWithReason(const RenderBlockFlow& 
 #ifndef NDEBUG
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [] {
-        PAL::registerNotifyCallback("com.apple.CyberKit.showModernLineLayoutCoverage"_s, Function<void()> { printModernLineLayoutCoverage });
-        PAL::registerNotifyCallback("com.apple.CyberKit.showModernLineLayoutReasons"_s, Function<void()> { printModernLineLayoutBlockList });
+        PAL::registerNotifyCallback("com.matthewbenedict.CyberKit.showModernLineLayoutCoverage"_s, Function<void()> { printModernLineLayoutCoverage });
+        PAL::registerNotifyCallback("com.matthewbenedict.CyberKit.showModernLineLayoutReasons"_s, Function<void()> { printModernLineLayoutBlockList });
     });
 #endif
     OptionSet<AvoidanceReason> reasons;

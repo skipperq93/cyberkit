@@ -63,7 +63,7 @@ TEST(IndexedDB, DeleteRecovery)
     NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"IDBDeleteRecovery" withExtension:@"sqlite3-shm" subdirectory:@"TestCyberKitAPI.resources"];
     NSURL *url3 = [[NSBundle mainBundle] URLForResource:@"IDBDeleteRecovery" withExtension:@"sqlite3-wal" subdirectory:@"TestCyberKitAPI.resources"];
 
-    NSURL *targetURL = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/IndexedDB/file__0/IDBDeleteRecovery" stringByExpandingTildeInPath]];
+    NSURL *targetURL = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/WebsiteData/IndexedDB/file__0/IDBDeleteRecovery" stringByExpandingTildeInPath]];
     [[NSFileManager defaultManager] createDirectoryAtURL:targetURL withIntermediateDirectories:YES attributes:nil error:nil];
 
     [[NSFileManager defaultManager] copyItemAtURL:url1 toURL:[targetURL URLByAppendingPathComponent:@"IndexedDB.sqlite3"] error:nil];

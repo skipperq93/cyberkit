@@ -105,10 +105,10 @@ void registerMemoryReleaseNotifyCallbacks()
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [] {
         int dummy;
-        notify_register_dispatch("com.apple.CyberKit.fullGC", &dummy, dispatch_get_main_queue(), ^(int) {
+        notify_register_dispatch("com.matthewbenedict.CyberKit.fullGC", &dummy, dispatch_get_main_queue(), ^(int) {
             GCController::singleton().garbageCollectNow();
         });
-        notify_register_dispatch("com.apple.CyberKit.deleteAllCode", &dummy, dispatch_get_main_queue(), ^(int) {
+        notify_register_dispatch("com.matthewbenedict.CyberKit.deleteAllCode", &dummy, dispatch_get_main_queue(), ^(int) {
             GCController::singleton().deleteAllCode(JSC::PreventCollectionAndDeleteAllCode);
             GCController::singleton().garbageCollectNow();
         });

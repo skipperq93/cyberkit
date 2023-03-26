@@ -66,7 +66,7 @@ TEST(CyberKit, AccessibilityHasPreferencesServiceAccess)
     [NSApp accessibilitySetEnhancedUserInterfaceAttribute:@(YES)];
 
     auto sandboxAccess = [&] {
-        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToGlobalName('com.apple.CyberKit.WebContent', 'com.apple.cfprefsd.daemon')"].boolValue;
+        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToGlobalName('com.matthewbenedict.CyberKit.WebContent', 'com.apple.cfprefsd.daemon')"].boolValue;
     };
 
     [webView synchronouslyLoadTestPageNamed:@"simple"];
@@ -93,7 +93,7 @@ TEST(CyberKit, AccessibilityHasNoPreferencesServiceAccessWhenPostingNotification
     [[NSNotificationCenter defaultCenter] postNotificationName:NSApplicationDidChangeAccessibilityEnhancedUserInterfaceNotification object:nil userInfo:nil];
 
     auto sandboxAccess = [&] {
-        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToGlobalName('com.apple.CyberKit.WebContent', 'com.apple.cfprefsd.daemon')"].boolValue;
+        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToGlobalName('com.matthewbenedict.CyberKit.WebContent', 'com.apple.cfprefsd.daemon')"].boolValue;
     };
 
     [webView synchronouslyLoadTestPageNamed:@"simple"];
@@ -115,7 +115,7 @@ TEST(CyberKit, AccessibilityHasFrontboardServiceAccess)
     [[NSNotificationCenter defaultCenter] postNotificationName:NSApplicationDidChangeAccessibilityEnhancedUserInterfaceNotification object:nil userInfo:nil];
 
     auto sandboxAccess = [&] {
-        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToGlobalName('com.apple.CyberKit.WebContent', 'com.apple.frontboard.systemappservices')"].boolValue;
+        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToGlobalName('com.matthewbenedict.CyberKit.WebContent', 'com.apple.frontboard.systemappservices')"].boolValue;
     };
 
     ASSERT_TRUE(sandboxAccess());

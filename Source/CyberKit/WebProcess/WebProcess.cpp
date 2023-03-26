@@ -495,13 +495,13 @@ void WebProcess::initializeWebProcess(WebProcessCreationParameters&& parameters)
         });
         memoryPressureHandler.install();
 
-        PAL::registerNotifyCallback("com.apple.CyberKit.logMemStats"_s, [] {
+        PAL::registerNotifyCallback("com.matthewbenedict.CyberKit.logMemStats"_s, [] {
             CyberCore::logMemoryStatistics(LogMemoryStatisticsReason::DebugNotification);
         });
     }
 
 #if !RELEASE_LOG_DISABLED
-    PAL::registerNotifyCallback("com.apple.CyberKit.logPageState"_s, [this] {
+    PAL::registerNotifyCallback("com.matthewbenedict.CyberKit.logPageState"_s, [this] {
         for (auto& page : m_pageMap.values()) {
             int64_t loadCommitTime = 0;
 #if USE(OS_STATE)

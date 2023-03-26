@@ -70,12 +70,12 @@ TEST(WKWebView, LocalStorageClear)
         webView = nil;
     }
 
-    NSString *dbPath = [@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/LocalStorage/file__0.localstorage" stringByExpandingTildeInPath];
-    NSString *dbSHMPath = [@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/LocalStorage/file__0.localstorage-shm" stringByExpandingTildeInPath];
-    NSString *dbWALPath = [@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/LocalStorage/file__0.localstorage-wal" stringByExpandingTildeInPath];
-    NSString *trackerPath = [@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/LocalStorage/StorageTracker.db" stringByExpandingTildeInPath];
-    NSString *trackerSHMPath = [@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/LocalStorage/StorageTracker.db-shm" stringByExpandingTildeInPath];
-    NSString *trackerWALPath = [@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/LocalStorage/StorageTracker.db-wal" stringByExpandingTildeInPath];
+    NSString *dbPath = [@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/WebsiteData/LocalStorage/file__0.localstorage" stringByExpandingTildeInPath];
+    NSString *dbSHMPath = [@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/WebsiteData/LocalStorage/file__0.localstorage-shm" stringByExpandingTildeInPath];
+    NSString *dbWALPath = [@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/WebsiteData/LocalStorage/file__0.localstorage-wal" stringByExpandingTildeInPath];
+    NSString *trackerPath = [@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/WebsiteData/LocalStorage/StorageTracker.db" stringByExpandingTildeInPath];
+    NSString *trackerSHMPath = [@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/WebsiteData/LocalStorage/StorageTracker.db-shm" stringByExpandingTildeInPath];
+    NSString *trackerWALPath = [@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/WebsiteData/LocalStorage/StorageTracker.db-wal" stringByExpandingTildeInPath];
 
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:[NSDate distantPast] completionHandler:^() {
         EXPECT_FALSE([[NSFileManager defaultManager] fileExistsAtPath:dbPath]);
@@ -109,7 +109,7 @@ NSString *defaultWebsiteCacheDirectory()
 #if PLATFORM(IOS_FAMILY)
     return nil;
 #else
-    return @"~/Library/Caches/com.apple.CyberKit.TestCyberKitAPI/CyberKit";
+    return @"~/Library/Caches/com.matthewbenedict.CyberKit.TestCyberKitAPI/CyberKit";
 #endif
 }
 

@@ -120,7 +120,7 @@ bool CocoaApplication::isIBooks()
 
 bool CocoaApplication::isWebkitTestRunner()
 {
-    static bool isWebkitTestRunner = applicationBundleIsEqualTo("com.apple.CyberKit.CyberKitTestRunner"_s);
+    static bool isWebkitTestRunner = applicationBundleIsEqualTo("com.matthewbenedict.CyberKit.CyberKitTestRunner"_s);
     return isWebkitTestRunner;
 }
 

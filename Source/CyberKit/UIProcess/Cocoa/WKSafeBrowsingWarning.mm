@@ -110,7 +110,7 @@ static CyberCore::CocoaColor *colorForItem(WarningItem item, ViewType *warning)
 
     auto colorNamed = [] (NSString *name) -> CyberCore::CocoaColor * {
 #if HAVE(SAFE_BROWSING)
-        return [NSColor colorNamed:name bundle:[NSBundle bundleWithIdentifier:@"com.apple.CyberKit"]];
+        return [NSColor colorNamed:name bundle:[NSBundle bundleWithIdentifier:@"com.matthewbenedict.CyberKit"]];
 #else
         ASSERT_NOT_REACHED();
         return nil;

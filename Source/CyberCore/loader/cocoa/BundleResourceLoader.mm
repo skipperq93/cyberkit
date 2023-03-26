@@ -52,7 +52,7 @@ void loadResourceFromBundle(ResourceLoader& loader, const String& subdirectory)
 
     loadQueue().dispatch([protectedLoader = Ref { loader }, url = loader.request().url().isolatedCopy(), subdirectory = subdirectory.isolatedCopy()]() mutable {
         auto *relativePath = [subdirectory stringByAppendingString: url.path().toString()];
-        auto *bundle = [NSBundle bundleWithIdentifier:@"com.apple.CyberCore"];
+        auto *bundle = [NSBundle bundleWithIdentifier:@"com.matthewbenedict.CyberCore"];
         auto *path = [bundle pathForResource:relativePath ofType:nil];
         auto *data = [NSData dataWithContentsOfFile:path];
 

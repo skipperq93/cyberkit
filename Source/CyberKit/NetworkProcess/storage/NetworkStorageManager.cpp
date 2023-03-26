@@ -130,7 +130,7 @@ Ref<NetworkStorageManager> NetworkStorageManager::create(PAL::SessionID sessionI
 
 NetworkStorageManager::NetworkStorageManager(PAL::SessionID sessionID, IPC::Connection::UniqueID connection, const String& path, const String& customLocalStoragePath, const String& customIDBStoragePath, const String& customCacheStoragePath, uint64_t defaultOriginQuota, uint64_t defaultThirdPartyOriginQuota, std::optional<double> originQuotaRatio, UnifiedOriginStorageLevel level)
     : m_sessionID(sessionID)
-    , m_queue(SuspendableWorkQueue::create("com.apple.CyberKit.Storage", SuspendableWorkQueue::QOS::Default, SuspendableWorkQueue::ShouldLog::Yes))
+    , m_queue(SuspendableWorkQueue::create("com.matthewbenedict.CyberKit.Storage", SuspendableWorkQueue::QOS::Default, SuspendableWorkQueue::ShouldLog::Yes))
     , m_defaultOriginQuota(defaultOriginQuota)
     , m_defaultThirdPartyOriginQuota(defaultThirdPartyOriginQuota)
     , m_originQuotaRatio(originQuotaRatio)

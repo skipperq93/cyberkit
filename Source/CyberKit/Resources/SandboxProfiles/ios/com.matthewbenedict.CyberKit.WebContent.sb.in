@@ -647,7 +647,7 @@
 
 (deny file-read* (with no-report)
     (home-literal
-        "/Library/Preferences/com.apple.CyberKit.WebContent.plist"
+        "/Library/Preferences/com.matthewbenedict.CyberKit.WebContent.plist"
         "/Library/Preferences/com.apple.CFNetwork.plist"
         "/Library/Preferences/com.apple.AppSupport.plist"
     )
@@ -890,9 +890,9 @@
 (deny iokit-open-service)
 #elif HAVE(SANDBOX_STATE_FLAGS)
 ;; This rule enables the WebContent process to enable the "BlockIOKitInWebContentSandbox" sandbox variable
-;; by reading a preference from the domain "com.apple.CyberKit.WebContent.BlockIOKitInWebContentSandbox".
+;; by reading a preference from the domain "com.matthewbenedict.CyberKit.WebContent.BlockIOKitInWebContentSandbox".
 (deny user-preference-read (with enable-state-flag "BlockIOKitInWebContentSandbox")
-    (preference-domain "com.apple.CyberKit.WebContent.BlockIOKitInWebContentSandbox"))
+    (preference-domain "com.matthewbenedict.CyberKit.WebContent.BlockIOKitInWebContentSandbox"))
 
 (with-filter (state-flag "BlockIOKitInWebContentSandbox")
     (deny iokit-open-service)
@@ -1211,9 +1211,9 @@
             
 #if HAVE(SANDBOX_STATE_FLAGS)
     ;; This rule enables the WebContent process to flip the "AppCacheDisabled" sandbox variable
-    ;; by reading a preference from the domain "com.apple.CyberKit.WebContent.AppCacheDisabled".
+    ;; by reading a preference from the domain "com.matthewbenedict.CyberKit.WebContent.AppCacheDisabled".
     (deny user-preference-read (with enable-state-flag "AppCacheDisabled")
-        (preference-domain "com.apple.CyberKit.WebContent.AppCacheDisabled"))
+        (preference-domain "com.matthewbenedict.CyberKit.WebContent.AppCacheDisabled"))
  
     (with-filter (require-not (state-flag "AppCacheDisabled"))
         (allow system-fcntl (appcache-fcntl-commands)))

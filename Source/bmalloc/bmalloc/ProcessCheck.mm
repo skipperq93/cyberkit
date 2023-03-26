@@ -39,7 +39,7 @@ bool gigacageEnabledForProcess()
 
     @autoreleasepool {
         if (NSString *appName = [[NSBundle mainBundle] bundleIdentifier]) {
-            bool isWebProcess = [appName hasPrefix:@"com.apple.CyberKit.WebContent"];
+            bool isWebProcess = [appName hasPrefix:@"com.matthewbenedict.CyberKit.WebContent"];
             return isWebProcess;
         }
 
@@ -64,7 +64,7 @@ bool shouldAllowMiniMode()
     bool isGPUProcess = false;
     if (const char* serviceName = getenv("XPC_SERVICE_NAME")) {
         static constexpr char appPrefix[] = "application.";
-        static constexpr char gpuProcessPrefix[] = "com.apple.CyberKit.GPU";
+        static constexpr char gpuProcessPrefix[] = "com.matthewbenedict.CyberKit.GPU";
         isApplication = !strncmp(serviceName, appPrefix, sizeof(appPrefix) - 1);
         isGPUProcess = !strncmp(serviceName, gpuProcessPrefix, sizeof(gpuProcessPrefix) - 1);
     }
@@ -82,7 +82,7 @@ bool shouldProcessUnconditionallyUseBmalloc()
                 auto contains = [&] (NSString *string) {
                     return [appName rangeOfString:string options:NSCaseInsensitiveSearch].location != NSNotFound;
                 };
-                result = contains(@"com.apple.CyberKit") || contains(@"safari");
+                result = contains(@"com.matthewbenedict.CyberKit") || contains(@"safari");
             } else {
                 NSString *processName = [[NSProcessInfo processInfo] processName];
                 result = [processName isEqualToString:@"jsc"]

@@ -135,9 +135,9 @@
 *ContentExtension* @b-weinstein @xeenon
 *InspectorExtension* @b-weinstein @xeenon
 *WebExtension* @b-weinstein @xeenon
-/Source/CyberKit/GPUProcess/mac/com.apple.CyberKit.GPUProcess.sb.in @brentfulgham @pvollan
+/Source/CyberKit/GPUProcess/mac/com.matthewbenedict.CyberKit.GPUProcess.sb.in @brentfulgham @pvollan
 /Source/CyberKit/NetworkProcess @cdumez
-/Source/CyberKit/NetworkProcess/mac/com.apple.CyberKit.NetworkProcess.sb.in @brentfulgham @pvollan
+/Source/CyberKit/NetworkProcess/mac/com.matthewbenedict.CyberKit.NetworkProcess.sb.in @brentfulgham @pvollan
 /Source/CyberKit/Platform @cdumez
 /Source/CyberKit/Resources/SandboxProfiles @brentfulgham @pvollan
 /Source/CyberKit/Shared/Sandbox @brentfulgham @pvollan

@@ -132,7 +132,7 @@ static bool subFrameReceivedScriptSource = false;
 static void cleanUpInAppBrowserPrivacyTestSettings()
 {
     CyberCore::clearApplicationBundleIdentifierTestingOverride();
-    CyberCore::setApplicationBundleIdentifier("com.apple.CyberKit.TestCyberKitAPI"_s);
+    CyberCore::setApplicationBundleIdentifier("com.matthewbenedict.CyberKit.TestCyberKitAPI"_s);
 }
 
 static void initializeInAppBrowserPrivacyTestSettings()

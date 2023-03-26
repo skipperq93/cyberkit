@@ -62,7 +62,7 @@ bool ResourceLoadStatisticsClassifierCocoa::classify(unsigned subresourceUnderTo
 
 String ResourceLoadStatisticsClassifierCocoa::storagePath()
 {
-    CFBundleRef webKitBundle = CFBundleGetBundleWithIdentifier(CFSTR("com.apple.CyberKit"));
+    CFBundleRef webKitBundle = CFBundleGetBundleWithIdentifier(CFSTR("com.matthewbenedict.CyberKit"));
     RetainPtr<CFURLRef> resourceUrl = adoptCF(CFBundleCopyResourcesDirectoryURL(webKitBundle));
     resourceUrl = adoptCF(CFURLCreateCopyAppendingPathComponent(nullptr, resourceUrl.get(), CFSTR("corePrediction_model"), false));
     CFErrorRef error = nullptr;

@@ -62,7 +62,7 @@ TEST(IndexedDB, IDBObjectStoreInfoUpgradeToV2)
     NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"IDBObjectStoreInfoUpgrade" withExtension:@"sqlite3" subdirectory:@"TestCyberKitAPI.resources"];
 
     NSString *hash = CyberCore::SQLiteFileSystem::computeHashForFileName("objectstoreinfo-upgrade-test"_s);
-    NSString *originDirectory = @"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/IndexedDB/v1/file__0/";
+    NSString *originDirectory = @"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/WebsiteData/IndexedDB/v1/file__0/";
     NSString *databaseDirectory = [[originDirectory stringByAppendingString:hash] stringByExpandingTildeInPath];
     NSURL *targetURL = [NSURL fileURLWithPath:databaseDirectory];
     [[NSFileManager defaultManager] removeItemAtURL:targetURL error:nil];

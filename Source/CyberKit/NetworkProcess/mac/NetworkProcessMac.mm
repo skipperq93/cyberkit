@@ -76,9 +76,9 @@ void NetworkProcess::platformInitializeNetworkProcess(const NetworkProcessCreati
 void NetworkProcess::initializeSandbox(const AuxiliaryProcessInitializationParameters& parameters, SandboxInitializationParameters& sandboxParameters)
 {
     // Need to overide the default, because service has a different bundle ID.
-    auto webKitBundle = [NSBundle bundleWithIdentifier:@"com.apple.CyberKit"];
+    auto webKitBundle = [NSBundle bundleWithIdentifier:@"com.matthewbenedict.CyberKit"];
 
-    sandboxParameters.setOverrideSandboxProfilePath(makeString(String([webKitBundle resourcePath]), "/com.apple.CyberKit.NetworkProcess.sb"));
+    sandboxParameters.setOverrideSandboxProfilePath(makeString(String([webKitBundle resourcePath]), "/com.matthewbenedict.CyberKit.NetworkProcess.sb"));
 
     AuxiliaryProcess::initializeSandbox(parameters, sandboxParameters);
 }

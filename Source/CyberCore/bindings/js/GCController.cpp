@@ -59,7 +59,7 @@ GCController::GCController()
 {
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [] {
-        PAL::registerNotifyCallback("com.apple.CyberKit.dumpGCHeap"_s, [] {
+        PAL::registerNotifyCallback("com.matthewbenedict.CyberKit.dumpGCHeap"_s, [] {
             GCController::singleton().dumpHeap();
         });
     });

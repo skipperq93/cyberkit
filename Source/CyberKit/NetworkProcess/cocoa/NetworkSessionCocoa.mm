@@ -1318,7 +1318,7 @@ void SessionWrapper::initialize(NSURLSessionConfiguration *configuration, Networ
     isFullBrowser = CyberCore::MacApplication::isSafari();
 #endif
     if (!configuration._sourceApplicationSecondaryIdentifier && isFullBrowser)
-        configuration._sourceApplicationSecondaryIdentifier = @"com.apple.CyberKit.InAppBrowser";
+        configuration._sourceApplicationSecondaryIdentifier = @"com.matthewbenedict.CyberKit.InAppBrowser";
 
     delegate = adoptNS([[WKNetworkSessionDelegate alloc] initWithNetworkSession:networkSession wrapper:*this withCredentials:storedCredentialsPolicy == CyberCore::StoredCredentialsPolicy::Use]);
     session = [NSURLSession sessionWithConfiguration:configuration delegate:delegate.get() delegateQueue:[NSOperationQueue mainQueue]];

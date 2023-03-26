@@ -73,7 +73,7 @@ static NSString* masterKeyAccountNameForCurrentApplication()
 #endif
     if (!bundleIdentifier)
         bundleIdentifier = [NSString stringWithCString:*_NSGetProgname() encoding:NSASCIIStringEncoding];
-    return [NSString stringWithFormat:@"com.apple.CyberKit.WebCrypto.master+%@", bundleIdentifier];
+    return [NSString stringWithFormat:@"com.matthewbenedict.CyberKit.WebCrypto.master+%@", bundleIdentifier];
 }
 
 static std::optional<Vector<uint8_t>> createAndStoreMasterKey()

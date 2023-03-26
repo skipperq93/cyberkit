@@ -81,13 +81,13 @@ static void runWebsiteDataStoreCustomPaths(ShouldEnableProcessPrewarming shouldE
     auto configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [[configuration userContentController] addScriptMessageHandler:handler.get() name:@"testHandler"];
 
-    NSURL *idbPath = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/IndexedDB/" stringByExpandingTildeInPath] isDirectory:YES];
-    NSURL *localStoragePath = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/LocalStorage/" stringByExpandingTildeInPath] isDirectory:YES];
-    NSURL *cookieStorageFile = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/CookieStorage/Cookie.File" stringByExpandingTildeInPath] isDirectory:NO];
-    NSURL *resourceLoadStatisticsPath = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/ResourceLoadStatistics/" stringByExpandingTildeInPath] isDirectory:YES];
-    NSURL *defaultIDBPath = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/IndexedDB/" stringByExpandingTildeInPath] isDirectory:YES];
-    NSURL *defaultLocalStoragePath = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/LocalStorage/" stringByExpandingTildeInPath] isDirectory:YES];
-    NSURL *defaultResourceLoadStatisticsPath = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/ResourceLoadStatistics/" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *idbPath = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/CustomWebsiteData/IndexedDB/" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *localStoragePath = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/CustomWebsiteData/LocalStorage/" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *cookieStorageFile = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/CustomWebsiteData/CookieStorage/Cookie.File" stringByExpandingTildeInPath] isDirectory:NO];
+    NSURL *resourceLoadStatisticsPath = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/CustomWebsiteData/ResourceLoadStatistics/" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *defaultIDBPath = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/WebsiteData/IndexedDB/" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *defaultLocalStoragePath = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/WebsiteData/LocalStorage/" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *defaultResourceLoadStatisticsPath = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/WebsiteData/ResourceLoadStatistics/" stringByExpandingTildeInPath] isDirectory:YES];
 
     [[NSFileManager defaultManager] removeItemAtURL:idbPath error:nil];
     [[NSFileManager defaultManager] removeItemAtURL:localStoragePath error:nil];
@@ -278,7 +278,7 @@ TEST(CyberKit, WebsiteDataStoreCustomPathsWithPrewarming)
 
 TEST(CyberKit, CustomDataStoreDestroyWhileFetchingNetworkProcessData)
 {
-    NSURL *cookieStorageFile = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/CookieStorage/Cookie.File" stringByExpandingTildeInPath] isDirectory:NO];
+    NSURL *cookieStorageFile = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/CustomWebsiteData/CookieStorage/Cookie.File" stringByExpandingTildeInPath] isDirectory:NO];
     [[NSFileManager defaultManager] removeItemAtURL:cookieStorageFile error:nil];
 
     auto websiteDataTypes = adoptNS([[NSSet alloc] initWithArray:@[WKWebsiteDataTypeCookies]]);
@@ -335,7 +335,7 @@ TEST(CyberKit, WebsiteDataStoreEphemeral)
     RetainPtr<WKWebViewConfiguration> configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [[configuration userContentController] addScriptMessageHandler:handler.get() name:@"testHandler"];
 
-    NSURL *defaultResourceLoadStatisticsPath = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/ResourceLoadStatistics/" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *defaultResourceLoadStatisticsPath = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/WebsiteData/ResourceLoadStatistics/" stringByExpandingTildeInPath] isDirectory:YES];
 
     [[NSFileManager defaultManager] removeItemAtURL:defaultResourceLoadStatisticsPath error:nil];
 
@@ -346,7 +346,7 @@ TEST(CyberKit, WebsiteDataStoreEphemeral)
 
     EXPECT_FALSE([[NSFileManager defaultManager] fileExistsAtPath:defaultResourceLoadStatisticsPath.path]);
 
-    NSURL *defaultResourceLoadStatisticsFilePath = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/ResourceLoadStatistics/full_browsing_session_resourceLog.plist" stringByExpandingTildeInPath] isDirectory:NO];
+    NSURL *defaultResourceLoadStatisticsFilePath = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/WebsiteData/ResourceLoadStatistics/full_browsing_session_resourceLog.plist" stringByExpandingTildeInPath] isDirectory:NO];
     EXPECT_FALSE([[NSFileManager defaultManager] fileExistsAtPath:defaultResourceLoadStatisticsFilePath.path]);
 
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
@@ -378,7 +378,7 @@ TEST(CyberKit, WebsiteDataStoreEphemeral)
 
 TEST(CyberKit, AlternativeServicesDefaultDirectoryCreation)
 {
-    NSURL *defaultDirectory = [NSURL fileURLWithPath:[@"~/Library/Caches/com.apple.CyberKit.TestCyberKitAPI/CyberKit/AlternativeServices" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *defaultDirectory = [NSURL fileURLWithPath:[@"~/Library/Caches/com.matthewbenedict.CyberKit.TestCyberKitAPI/CyberKit/AlternativeServices" stringByExpandingTildeInPath] isDirectory:YES];
     [[NSFileManager defaultManager] removeItemAtURL:defaultDirectory error:nil];
     EXPECT_FALSE([[NSFileManager defaultManager] fileExistsAtPath:defaultDirectory.path]);
 
@@ -406,7 +406,7 @@ TEST(CyberKit, WebsiteDataStoreEphemeralViaConfiguration)
     RetainPtr<WKWebViewConfiguration> configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
     [[configuration userContentController] addScriptMessageHandler:handler.get() name:@"testHandler"];
 
-    NSURL *defaultResourceLoadStatisticsPath = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/ResourceLoadStatistics/" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *defaultResourceLoadStatisticsPath = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/WebsiteData/ResourceLoadStatistics/" stringByExpandingTildeInPath] isDirectory:YES];
 
     [[NSFileManager defaultManager] removeItemAtURL:defaultResourceLoadStatisticsPath error:nil];
 
@@ -418,7 +418,7 @@ TEST(CyberKit, WebsiteDataStoreEphemeralViaConfiguration)
 
     EXPECT_FALSE([[NSFileManager defaultManager] fileExistsAtPath:defaultResourceLoadStatisticsPath.path]);
 
-    NSURL *defaultResourceLoadStatisticsFilePath = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/ResourceLoadStatistics/full_browsing_session_resourceLog.plist" stringByExpandingTildeInPath] isDirectory:NO];
+    NSURL *defaultResourceLoadStatisticsFilePath = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/WebsiteData/ResourceLoadStatistics/full_browsing_session_resourceLog.plist" stringByExpandingTildeInPath] isDirectory:NO];
     EXPECT_FALSE([[NSFileManager defaultManager] fileExistsAtPath:defaultResourceLoadStatisticsFilePath.path]);
 
     RetainPtr<WKWebView> webView = adoptNS([[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600) configuration:configuration.get()]);
@@ -795,9 +795,9 @@ TEST(CyberKit, MediaCache)
 
 TEST(CyberKit, MigrateLocalStorageDataToGeneralStorageDirectory)
 {
-    NSURL *localStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/LocalStorage/" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *localStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/CustomWebsiteData/LocalStorage/" stringByExpandingTildeInPath] isDirectory:YES];
     NSURL *localStorageFile = [localStorageDirectory URLByAppendingPathComponent:@"https_webkit.org_0.localstorage"];
-    NSURL *generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/Default" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/CustomWebsiteData/Default" stringByExpandingTildeInPath] isDirectory:YES];
     NSURL *resourceSalt = [[NSBundle mainBundle] URLForResource:@"general-storage-directory" withExtension:@"salt" subdirectory:@"TestCyberKitAPI.resources"];
     NSURL *newLocalStorageFile = [generalStorageDirectory URLByAppendingPathComponent:@"YUn_wgR51VLVo9lc5xiivAzZ8TMmojoa0IbW323qibs/YUn_wgR51VLVo9lc5xiivAzZ8TMmojoa0IbW323qibs/LocalStorage/localstorage.sqlite3"];
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -855,13 +855,13 @@ TEST(CyberKit, MigrateLocalStorageDataToGeneralStorageDirectory)
 
 TEST(CyberKit, MigrateIndexedDBDataToGeneralStorageDirectory)
 {
-    NSURL *indexedDBDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/IndexedDB" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *indexedDBDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/CustomWebsiteData/IndexedDB" stringByExpandingTildeInPath] isDirectory:YES];
     NSURL *indexedDBOriginDirectory = [indexedDBDirectory URLByAppendingPathComponent:@"v1/https_webkit.org_0"];
     static constexpr auto indexedDBDatabaseName = "TestDatabase"_s;
     NSString *hashedIndexedDBDatabaseName = CyberCore::SQLiteFileSystem::computeHashForFileName(indexedDBDatabaseName);
     NSURL *indexedDBDatabaseDirectory = [indexedDBOriginDirectory URLByAppendingPathComponent:hashedIndexedDBDatabaseName];
     NSURL *indexedDBFile = [indexedDBDatabaseDirectory URLByAppendingPathComponent:@"IndexedDB.sqlite3"];
-    NSURL *generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/Default" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/CustomWebsiteData/Default" stringByExpandingTildeInPath] isDirectory:YES];
     NSURL *resourceSalt = [[NSBundle mainBundle] URLForResource:@"general-storage-directory" withExtension:@"salt" subdirectory:@"TestCyberKitAPI.resources"];
     NSURL *newIndexedDBOriginDirectory = [generalStorageDirectory URLByAppendingPathComponent:@"YUn_wgR51VLVo9lc5xiivAzZ8TMmojoa0IbW323qibs/YUn_wgR51VLVo9lc5xiivAzZ8TMmojoa0IbW323qibs/IndexedDB/"];
     NSURL *newIndexedDBDirectory = [newIndexedDBOriginDirectory URLByAppendingPathComponent:hashedIndexedDBDatabaseName];
@@ -939,13 +939,13 @@ TEST(CyberKit, FetchDataAfterEnablingGeneralStorageDirectory)
     NSURL *resourceIndexedDBFile = [[NSBundle mainBundle] URLForResource:@"general-storage-directory-indexeddb" withExtension:@"sqlite3" subdirectory:@"TestCyberKitAPI.resources"];
     NSURL *resourceOriginFile = [[NSBundle mainBundle] URLForResource:@"general-storage-directory" withExtension:@"origin" subdirectory:@"TestCyberKitAPI.resources"];
 
-    NSURL *customLocalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/LocalStorage/" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *customLocalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/CustomWebsiteData/LocalStorage/" stringByExpandingTildeInPath] isDirectory:YES];
     NSURL *appleCustomLocalStorageFile = [customLocalStorageDirectory URLByAppendingPathComponent:@"https_apple.com_0.localstorage"];
-    NSURL *customIndexedDBStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/IndexedDB/" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *customIndexedDBStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/CustomWebsiteData/IndexedDB/" stringByExpandingTildeInPath] isDirectory:YES];
     NSURL *appleCustomIndexedDBDatabaseDirectory = [customIndexedDBStorageDirectory URLByAppendingPathComponent:@"v1/https_apple.com_0/620AD548000B0A49C02D2E8D75C32E0F85697B54DF86146ECAE360DE104AB3F9"];
     NSURL *appleCustomIndexedDBDatabaseFile = [appleCustomIndexedDBDatabaseDirectory URLByAppendingPathComponent:@"IndexedDB.sqlite3"];
 
-    NSURL *generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/Default" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/CustomWebsiteData/Default" stringByExpandingTildeInPath] isDirectory:YES];
     NSURL *webkitGeneralStorageDirectory = [generalStorageDirectory URLByAppendingPathComponent:@"YUn_wgR51VLVo9lc5xiivAzZ8TMmojoa0IbW323qibs/YUn_wgR51VLVo9lc5xiivAzZ8TMmojoa0IbW323qibs"];
     NSURL *webkitGeneralLocalStorageDirectory = [webkitGeneralStorageDirectory URLByAppendingPathComponent:@"LocalStorage"];
     NSURL *webKitGeneralLocalStorageFile = [webkitGeneralLocalStorageDirectory URLByAppendingPathComponent:@"localstorage.sqlite3"];
@@ -1019,13 +1019,13 @@ TEST(CyberKit, DeleteDataAfterEnablingGeneralStorageDirectory)
     NSURL *resourceIndexedDBFile = [[NSBundle mainBundle] URLForResource:@"general-storage-directory-indexeddb" withExtension:@"sqlite3" subdirectory:@"TestCyberKitAPI.resources"];
     NSURL *resourceOriginFile = [[NSBundle mainBundle] URLForResource:@"general-storage-directory" withExtension:@"origin" subdirectory:@"TestCyberKitAPI.resources"];
 
-    NSURL *customLocalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/LocalStorage/" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *customLocalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/CustomWebsiteData/LocalStorage/" stringByExpandingTildeInPath] isDirectory:YES];
     NSURL *appleCustomLocalStorageFile = [customLocalStorageDirectory URLByAppendingPathComponent:@"https_apple.com_0.localstorage"];
-    NSURL *customIndexedDBStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/IndexedDB/" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *customIndexedDBStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/CustomWebsiteData/IndexedDB/" stringByExpandingTildeInPath] isDirectory:YES];
     NSURL *appleCustomIndexedDBDatabaseDirectory = [customIndexedDBStorageDirectory URLByAppendingPathComponent:@"v1/https_apple.com_0/620AD548000B0A49C02D2E8D75C32E0F85697B54DF86146ECAE360DE104AB3F9"];
     NSURL *appleCustomIndexedDBDatabaseFile = [appleCustomIndexedDBDatabaseDirectory URLByAppendingPathComponent:@"IndexedDB.sqlite3"];
 
-    NSURL *generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/Default" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/CustomWebsiteData/Default" stringByExpandingTildeInPath] isDirectory:YES];
     NSURL *webkitGeneralStorageDirectory = [generalStorageDirectory URLByAppendingPathComponent:@"YUn_wgR51VLVo9lc5xiivAzZ8TMmojoa0IbW323qibs/YUn_wgR51VLVo9lc5xiivAzZ8TMmojoa0IbW323qibs"];
     NSURL *webkitGeneralLocalStorageDirectory = [webkitGeneralStorageDirectory URLByAppendingPathComponent:@"LocalStorage"];
     NSURL *webKitGeneralLocalStorageFile = [webkitGeneralLocalStorageDirectory URLByAppendingPathComponent:@"localstorage.sqlite3"];
@@ -1081,7 +1081,7 @@ TEST(CyberKit, DeleteDataAfterEnablingGeneralStorageDirectory)
 
 TEST(CyberKit, CreateOriginFileWhenNeeded)
 {
-    NSURL *generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/Default" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/CustomWebsiteData/Default" stringByExpandingTildeInPath] isDirectory:YES];
     NSURL *resourceSalt = [[NSBundle mainBundle] URLForResource:@"general-storage-directory" withExtension:@"salt" subdirectory:@"TestCyberKitAPI.resources"];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     [fileManager removeItemAtURL:generalStorageDirectory error:nil];
@@ -1119,7 +1119,7 @@ TEST(WKWebsiteDataStoreConfiguration, SameCustomPathForDifferentTypes)
     auto websiteDataStoreConfiguration = adoptNS([[_WKWebsiteDataStoreConfiguration alloc] init]);
     auto dataTypes = [NSSet setWithObjects:WKWebsiteDataTypeLocalStorage, WKWebsiteDataTypeIndexedDBDatabases, WKWebsiteDataTypeCookies, nil];
 
-    NSURL *sharedDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/SamePathForDifferentTypes" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *sharedDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/SamePathForDifferentTypes" stringByExpandingTildeInPath] isDirectory:YES];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     [fileManager removeItemAtURL:sharedDirectory error:nil];
     websiteDataStoreConfiguration.get()._webSQLDatabaseDirectory = sharedDirectory;
@@ -1170,7 +1170,7 @@ TEST(WKWebsiteDataStoreConfiguration, SameCustomPathForDifferentTypes)
 
 TEST(CyberKit, DeleteEmptyOriginDirectoryWhenFetchData)
 {
-    NSURL *generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/Default" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/CustomWebsiteData/Default" stringByExpandingTildeInPath] isDirectory:YES];
     NSURL *topOriginDirectory = [generalStorageDirectory URLByAppendingPathComponent:@"YUn_wgR51VLVo9lc5xiivAzZ8TMmojoa0IbW323qibs"];
     NSURL *originDirectory = [topOriginDirectory URLByAppendingPathComponent:@"YUn_wgR51VLVo9lc5xiivAzZ8TMmojoa0IbW323qibs"];
     NSURL *resourceSalt = [[NSBundle mainBundle] URLForResource:@"general-storage-directory" withExtension:@"salt" subdirectory:@"TestCyberKitAPI.resources"];
@@ -1198,7 +1198,7 @@ TEST(CyberKit, DeleteEmptyOriginDirectoryWhenFetchData)
 
 TEST(CyberKit, DeleteEmptyOriginDirectoryWhenOriginIsGone)
 {
-    NSURL *generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/Default" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/CustomWebsiteData/Default" stringByExpandingTildeInPath] isDirectory:YES];
     NSURL *topOriginDirectory = [generalStorageDirectory URLByAppendingPathComponent:@"YUn_wgR51VLVo9lc5xiivAzZ8TMmojoa0IbW323qibs"];
     NSURL *originDirectory = [topOriginDirectory URLByAppendingPathComponent:@"YUn_wgR51VLVo9lc5xiivAzZ8TMmojoa0IbW323qibs"];
     NSURL *resourceSalt = [[NSBundle mainBundle] URLForResource:@"general-storage-directory" withExtension:@"salt" subdirectory:@"TestCyberKitAPI.resources"];
@@ -1246,7 +1246,7 @@ TEST(CyberKit, DeleteEmptyOriginDirectoryWhenOriginIsGone)
 TEST(CyberKit, OriginDirectoryExcludedFromBackup)
 {
     NSURL *resourceSalt = [[NSBundle mainBundle] URLForResource:@"general-storage-directory" withExtension:@"salt" subdirectory:@"TestCyberKitAPI.resources"];
-    NSURL *generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/Default" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/CustomWebsiteData/Default" stringByExpandingTildeInPath] isDirectory:YES];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     [fileManager removeItemAtURL:generalStorageDirectory error:nil];
     [fileManager createDirectoryAtURL:generalStorageDirectory withIntermediateDirectories:YES attributes:nil error:nil];
@@ -1302,7 +1302,7 @@ TEST(CyberKit, RemoveStaleWebSQLData)
     NSURL *resourceWebSQLDatabaseTrackerFile = [[NSBundle mainBundle] URLForResource:@"websql-database-tracker" withExtension:@"db" subdirectory:@"TestCyberKitAPI.resources"];
     NSURL *resourceWebSQLDatabaseFile = [[NSBundle mainBundle] URLForResource:@"websql-database" withExtension:@"db" subdirectory:@"TestCyberKitAPI.resources"];
     NSURL *resourceSalt = [[NSBundle mainBundle] URLForResource:@"general-storage-directory" withExtension:@"salt" subdirectory:@"TestCyberKitAPI.resources"];
-    NSURL *customWebSQLDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebSQL" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *customWebSQLDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/CustomWebSQL" stringByExpandingTildeInPath] isDirectory:YES];
     NSURL *databaseTrackerFile = [customWebSQLDirectory URLByAppendingPathComponent:@"Databases.db"];
     NSURL *webkitSQLDirectory = [customWebSQLDirectory URLByAppendingPathComponent:@"http_webkit.org_0"];
     NSURL *databaseFile = [webkitSQLDirectory URLByAppendingPathComponent:@"f3013c11-b9f1-4534-a9d6-f3426f777eb3.db"];
@@ -1504,7 +1504,7 @@ TEST(WKWebsiteDataStoreConfiguration, SetPathOnConfigurationWithIdentifier)
     @try {
         auto uuid = adoptNS([[NSUUID alloc] initWithUUIDString:@"68753A44-4D6F-1226-9C60-0050E4C00067"]);
         auto websiteDataStoreConfiguration = adoptNS([[_WKWebsiteDataStoreConfiguration alloc] initWithIdentifier:uuid.get()]);
-        NSURL *cookieStorageFile = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/CookieStorage/Cookies.binarycookies" stringByExpandingTildeInPath] isDirectory:NO];
+        NSURL *cookieStorageFile = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/CustomWebsiteData/CookieStorage/Cookies.binarycookies" stringByExpandingTildeInPath] isDirectory:NO];
         websiteDataStoreConfiguration.get()._cookieStorageFile = cookieStorageFile;
     } @catch (NSException *exception) {
         EXPECT_WK_STREQ(NSGenericException, exception.name);
@@ -1516,8 +1516,8 @@ TEST(WKWebsiteDataStoreConfiguration, SetPathOnConfigurationWithIdentifier)
 TEST(WKWebsiteDataStore, MigrateCacheStorageDataToGeneralStorageDirectory)
 {
     RetainPtr<NSURL> cacheStorageOriginDirectory = nullptr;
-    NSURL *cacheStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/CacheStorage" stringByExpandingTildeInPath] isDirectory:YES];
-    NSURL *generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/CustomWebsiteData/Origins" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *cacheStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/CustomWebsiteData/CacheStorage" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *generalStorageDirectory = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/CustomWebsiteData/Origins" stringByExpandingTildeInPath] isDirectory:YES];
     NSURL *resourceSalt = [[NSBundle mainBundle] URLForResource:@"general-storage-directory" withExtension:@"salt" subdirectory:@"TestCyberKitAPI.resources"];
     NSURL *newCacheStorageOriginDirectory = [generalStorageDirectory URLByAppendingPathComponent:@"YUn_wgR51VLVo9lc5xiivAzZ8TMmojoa0IbW323qibs/YUn_wgR51VLVo9lc5xiivAzZ8TMmojoa0IbW323qibs/CacheStorage/"];
     NSURL *newCacheStorageCachesListFile = [newCacheStorageOriginDirectory URLByAppendingPathComponent:@"cacheslist"];

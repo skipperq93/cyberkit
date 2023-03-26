@@ -124,7 +124,7 @@ RemoteInspector& RemoteInspector::singleton()
 }
 
 RemoteInspector::RemoteInspector()
-    : m_xpcQueue(dispatch_queue_create("com.apple.CyberScriptCore.remote-inspector-xpc", DISPATCH_QUEUE_SERIAL))
+    : m_xpcQueue(dispatch_queue_create("com.matthewbenedict.CyberScriptCore.remote-inspector-xpc", DISPATCH_QUEUE_SERIAL))
 {
 }
 

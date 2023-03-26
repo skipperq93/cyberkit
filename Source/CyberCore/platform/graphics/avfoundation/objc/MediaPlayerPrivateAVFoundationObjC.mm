@@ -2888,7 +2888,7 @@ void MediaPlayerPrivateAVFoundationObjC::outputObscuredDueToInsufficientExternal
 {
 #if ENABLE(LEGACY_ENCRYPTED_MEDIA)
     if (m_session && newValue)
-        m_session->playerDidReceiveError([NSError errorWithDomain:@"com.apple.CyberKit" code:'HDCP' userInfo:nil]);
+        m_session->playerDidReceiveError([NSError errorWithDomain:@"com.matthewbenedict.CyberKit" code:'HDCP' userInfo:nil]);
 #endif
 
 #if ENABLE(ENCRYPTED_MEDIA) && HAVE(AVCONTENTKEYSESSION)

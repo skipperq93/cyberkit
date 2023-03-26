@@ -33,7 +33,7 @@
 #import <CyberKitAdditions/LockdownModeSoftLinkAdditions.mm>
 #endif
 
-constexpr auto CaptivePortalConfigurationIgnoreFileName = @"com.apple.CyberKit.cpmconfig_ignore";
+constexpr auto CaptivePortalConfigurationIgnoreFileName = @"com.matthewbenedict.CyberKit.cpmconfig_ignore";
 
 @implementation _WKSystemPreferences
 

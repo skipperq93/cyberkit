@@ -39,7 +39,7 @@
 namespace CyberKit {
 
 ViewUpdateDispatcher::ViewUpdateDispatcher()
-    : m_queue(WorkQueue::create("com.apple.CyberKit.ViewUpdateDispatcher"))
+    : m_queue(WorkQueue::create("com.matthewbenedict.CyberKit.ViewUpdateDispatcher"))
 {
 }
 

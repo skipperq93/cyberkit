@@ -125,7 +125,7 @@ struct PermissionRequest {
     if (!self)
         return nil;
 
-    _diskDispatchQueue = adoptNS(dispatch_queue_create("com.apple.CyberKit.WKWebGeolocationPolicyDecider", DISPATCH_QUEUE_SERIAL));
+    _diskDispatchQueue = adoptNS(dispatch_queue_create("com.matthewbenedict.CyberKit.WKWebGeolocationPolicyDecider", DISPATCH_QUEUE_SERIAL));
 
     CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), self, clearGeolocationCache, CLAppResetChangedNotification, NULL, CFNotificationSuspensionBehaviorCoalesce);
 

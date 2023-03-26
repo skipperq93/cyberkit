@@ -33,7 +33,7 @@
 #import <wtf/NeverDestroyed.h>
 #import <wtf/RetainPtr.h>
 
-WebLocalizableStringsBundle CyberKitLocalizableStringsBundle = { "com.apple.CyberKit", 0 };
+WebLocalizableStringsBundle CyberKitLocalizableStringsBundle = { "com.matthewbenedict.CyberKit", 0 };
 
 NSString *WebLocalizedString(WebLocalizableStringsBundle *stringsBundle, const char *key)
 {

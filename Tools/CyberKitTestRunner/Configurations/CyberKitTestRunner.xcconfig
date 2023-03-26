@@ -28,7 +28,7 @@
 LD_RUNPATH_SEARCH_PATHS = "@loader_path";
 
 PRODUCT_NAME = CyberKitTestRunner;
-PRODUCT_BUNDLE_IDENTIFIER = com.apple.CyberKit.CyberKitTestRunner;
+PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.CyberKitTestRunner;
 GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 OTHER_LDFLAGS[sdk=macosx*] = $(inherited) -lCyberKitTestRunner -framework Carbon -framework Cocoa -framework CyberScriptCore -framework CyberKit;
 STRIP_STYLE = debugging;

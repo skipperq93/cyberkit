@@ -267,7 +267,7 @@ AVCaptureDeviceManager& AVCaptureDeviceManager::singleton()
 AVCaptureDeviceManager::AVCaptureDeviceManager()
     : m_objcObserver(adoptNS([[CyberCoreAVCaptureDeviceManagerObserver alloc] initWithCallback:this]))
     , m_avCaptureDeviceTypes(adoptNS(cameraCaptureDeviceTypes()))
-    , m_dispatchQueue(WorkQueue::create("com.apple.CyberKit.AVCaptureDeviceManager"))
+    , m_dispatchQueue(WorkQueue::create("com.matthewbenedict.CyberKit.AVCaptureDeviceManager"))
 {
 }
 

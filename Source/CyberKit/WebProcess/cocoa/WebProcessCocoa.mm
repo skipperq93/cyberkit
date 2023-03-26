@@ -488,7 +488,7 @@ void WebProcess::platformSetWebsiteDataStoreParameters(WebProcessDataStoreParame
 
     if (!parameters.javaScriptConfigurationDirectory.isEmpty()) {
         String javaScriptConfigFile = parameters.javaScriptConfigurationDirectory + "/JSC.config";
-        JSC::processConfigFile(javaScriptConfigFile.latin1().data(), "com.apple.CyberKit.WebContent", m_uiProcessBundleIdentifier.latin1().data());
+        JSC::processConfigFile(javaScriptConfigFile.latin1().data(), "com.matthewbenedict.CyberKit.WebContent", m_uiProcessBundleIdentifier.latin1().data());
     }
 }
 
@@ -748,7 +748,7 @@ void WebProcess::initializeSandbox(const AuxiliaryProcessInitializationParameter
 {
 #if PLATFORM(MAC) || PLATFORM(MACCATALYST)
     // Need to override the default, because service has a different bundle ID.
-    auto webKitBundle = [NSBundle bundleWithIdentifier:@"com.apple.CyberKit"];
+    auto webKitBundle = [NSBundle bundleWithIdentifier:@"com.matthewbenedict.CyberKit"];
 
 #if defined(USE_VORBIS_AUDIOCOMPONENT_WORKAROUND)
     // We need to initialize the Vorbis decoder before the sandbox gets setup; this is a one off action.
@@ -1085,7 +1085,7 @@ void WebProcess::backlightLevelDidChange(float backlightLevel)
 void WebProcess::accessibilityPreferencesDidChange(const AccessibilityPreferences& preferences)
 {
 #if HAVE(PER_APP_ACCESSIBILITY_PREFERENCES) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
-    auto appID = CFSTR("com.apple.CyberKit.WebContent");
+    auto appID = CFSTR("com.matthewbenedict.CyberKit.WebContent");
     auto reduceMotionEnabled = preferences.reduceMotionEnabled;
     if (_AXSReduceMotionEnabledApp(appID) != reduceMotionEnabled)
         _AXSSetReduceMotionEnabledApp(reduceMotionEnabled, appID);

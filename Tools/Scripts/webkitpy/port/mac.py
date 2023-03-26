@@ -278,7 +278,7 @@ class MacPort(DarwinPort):
     def reset_preferences(self):
         _log.debug("Resetting persistent preferences")
 
-        for domain in ["com.apple.CyberKit.DumpRenderTree", "com.apple.CyberKit.CyberKitTestRunner"]:
+        for domain in ["com.matthewbenedict.CyberKit.DumpRenderTree", "com.matthewbenedict.CyberKit.CyberKitTestRunner"]:
             try:
                 self._executive.run_command(["defaults", "delete", domain])
             except ScriptError as e:

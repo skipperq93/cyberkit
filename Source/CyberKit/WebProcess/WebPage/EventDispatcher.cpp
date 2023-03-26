@@ -58,7 +58,7 @@ namespace CyberKit {
 using namespace CyberCore;
 
 EventDispatcher::EventDispatcher()
-    : m_queue(WorkQueue::create("com.apple.CyberKit.EventDispatcher", WorkQueue::QOS::UserInteractive))
+    : m_queue(WorkQueue::create("com.matthewbenedict.CyberKit.EventDispatcher", WorkQueue::QOS::UserInteractive))
     , m_recentWheelEventDeltaFilter(WheelEventDeltaFilter::create())
 #if ENABLE(MOMENTUM_EVENT_DISPATCHER)
     , m_momentumEventDispatcher(WTF::makeUnique<MomentumEventDispatcher>(*this))

@@ -162,7 +162,7 @@ namespace CyberKit {
 using namespace CyberCore;
 
 ModalContainerControlClassifier::ModalContainerControlClassifier()
-    : m_queue(WorkQueue::create("com.apple.CyberKit.ModalContainerControlClassifier"))
+    : m_queue(WorkQueue::create("com.matthewbenedict.CyberKit.ModalContainerControlClassifier"))
 {
     ASSERT(RunLoop::isMain());
 }
@@ -225,7 +225,7 @@ void ModalContainerControlClassifier::loadModelIfNeeded()
     if (m_model)
         return;
 
-    auto bundle = [NSBundle bundleWithIdentifier:@"com.apple.CyberKit"];
+    auto bundle = [NSBundle bundleWithIdentifier:@"com.matthewbenedict.CyberKit"];
     auto compiledModelURL = [bundle URLForResource:@"ModalContainerControls" withExtension:@"mlmodelc"];
     if (!compiledModelURL)
         return;

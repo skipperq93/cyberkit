@@ -65,9 +65,9 @@ namespace CyberKit {
 static const char* webContentServiceName(bool nonValidInjectedCodeAllowed, ProcessLauncher::Client* client)
 {
     if (client && client->shouldEnableLockdownMode())
-        return "com.apple.CyberKit.WebContent.CaptivePortal";
+        return "com.matthewbenedict.CyberKit.WebContent.CaptivePortal";
 
-    return nonValidInjectedCodeAllowed ? "com.apple.CyberKit.WebContent.Development" : "com.apple.CyberKit.WebContent";
+    return nonValidInjectedCodeAllowed ? "com.matthewbenedict.CyberKit.WebContent.Development" : "com.matthewbenedict.CyberKit.WebContent";
 }
 
 static const char* serviceName(const ProcessLauncher::LaunchOptions& launchOptions, ProcessLauncher::Client* client)
@@ -76,10 +76,10 @@ static const char* serviceName(const ProcessLauncher::LaunchOptions& launchOptio
     case ProcessLauncher::ProcessType::Web:
         return webContentServiceName(launchOptions.nonValidInjectedCodeAllowed, client);
     case ProcessLauncher::ProcessType::Network:
-        return "com.apple.CyberKit.Networking";
+        return "com.matthewbenedict.CyberKit.Networking";
 #if ENABLE(GPU_PROCESS)
     case ProcessLauncher::ProcessType::GPU:
-        return "com.apple.CyberKit.GPU";
+        return "com.matthewbenedict.CyberKit.GPU";
 #endif
     }
 }
@@ -128,7 +128,7 @@ void ProcessLauncher::launchProcess()
     }
 
 #if PLATFORM(MAC) || PLATFORM(MACCATALYST)
-    xpc_dictionary_set_string(initializationMessage.get(), "CyberKitBundleVersion", [[NSBundle bundleWithIdentifier:@"com.apple.CyberKit"].infoDictionary[(__bridge NSString *)kCFBundleVersionKey] UTF8String]);
+    xpc_dictionary_set_string(initializationMessage.get(), "CyberKitBundleVersion", [[NSBundle bundleWithIdentifier:@"com.matthewbenedict.CyberKit"].infoDictionary[(__bridge NSString *)kCFBundleVersionKey] UTF8String]);
 #endif
     xpc_connection_set_bootstrap(m_xpcConnection.get(), initializationMessage.get());
 
@@ -192,7 +192,7 @@ void ProcessLauncher::launchProcess()
         xpc_dictionary_set_bool(bootstrapMessage.get(), "disable-logging", disableLogging);
     }
 
-    bool isCyberKitDevelopmentBuild = ![[[[NSBundle bundleWithIdentifier:@"com.apple.CyberKit"] bundlePath] stringByDeletingLastPathComponent] hasPrefix:FileSystem::systemDirectoryPath()];
+    bool isCyberKitDevelopmentBuild = ![[[[NSBundle bundleWithIdentifier:@"com.matthewbenedict.CyberKit"] bundlePath] stringByDeletingLastPathComponent] hasPrefix:FileSystem::systemDirectoryPath()];
     if (isCyberKitDevelopmentBuild) {
         xpc_dictionary_set_fd(bootstrapMessage.get(), "stdout", STDOUT_FILENO);
         xpc_dictionary_set_fd(bootstrapMessage.get(), "stderr", STDERR_FILENO);

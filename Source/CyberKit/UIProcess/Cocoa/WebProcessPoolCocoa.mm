@@ -345,7 +345,7 @@ void WebProcessPool::platformInitialize()
     [WKWebInspectorPreferenceObserver sharedInstance];
 #endif
 
-    PAL::registerNotifyCallback("com.apple.CyberKit.logProcessState"_s, ^{
+    PAL::registerNotifyCallback("com.matthewbenedict.CyberKit.logProcessState"_s, ^{
         for (const auto& pool : WebProcessPool::allProcessPools())
             logProcessPoolState(pool.get());
     });

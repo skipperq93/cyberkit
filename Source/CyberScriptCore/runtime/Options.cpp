@@ -199,7 +199,7 @@ static void initializeDatafileToUseOSLog()
 {
     static bool alreadyInitialized = false;
     RELEASE_ASSERT(!alreadyInitialized);
-    WTF::setDataFile(OSLogPrintStream::open("com.apple.CyberScriptCore", "DataLog", asDarwinOSLogType(Options::useOSLog())));
+    WTF::setDataFile(OSLogPrintStream::open("com.matthewbenedict.CyberScriptCore", "DataLog", asDarwinOSLogType(Options::useOSLog())));
     alreadyInitialized = true;
     // Make sure no one jumped here for nefarious reasons...
     RELEASE_ASSERT(Options::useOSLog() != OSLogType::None);

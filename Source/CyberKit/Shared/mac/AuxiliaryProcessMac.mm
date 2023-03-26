@@ -286,10 +286,10 @@ static String sandboxDirectory(CyberCore::AuxiliaryProcessType processType, cons
     directory.append(parentDirectory);
     switch (processType) {
     case CyberCore::AuxiliaryProcessType::WebContent:
-        directory.append("/com.apple.CyberKit.WebContent.Sandbox");
+        directory.append("/com.matthewbenedict.CyberKit.WebContent.Sandbox");
         break;
     case CyberCore::AuxiliaryProcessType::Network:
-        directory.append("/com.apple.CyberKit.Networking.Sandbox");
+        directory.append("/com.matthewbenedict.CyberKit.Networking.Sandbox");
         break;
     case CyberCore::AuxiliaryProcessType::Plugin:
         WTFLogAlways("sandboxDirectory: Unexpected Plugin process initialization.");
@@ -297,7 +297,7 @@ static String sandboxDirectory(CyberCore::AuxiliaryProcessType processType, cons
         break;
 #if ENABLE(GPU_PROCESS)
     case CyberCore::AuxiliaryProcessType::GPU:
-        directory.append("/com.apple.CyberKit.GPU.Sandbox");
+        directory.append("/com.matthewbenedict.CyberKit.GPU.Sandbox");
         break;
 #endif
     }
@@ -524,7 +524,7 @@ static bool tryApplyCachedSandbox(const SandboxInfo& info)
 
 static inline const NSBundle *webKit2Bundle()
 {
-    const static NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.apple.CyberKit"];
+    const static NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.matthewbenedict.CyberKit"];
     return bundle;
 }
 

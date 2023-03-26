@@ -270,9 +270,9 @@ Storage::Storage(const String& baseDirectoryPath, Mode mode, Salt salt, size_t c
     , m_capacity(capacity)
     , m_readOperationTimeoutTimer(*this, &Storage::cancelAllReadOperations)
     , m_writeOperationDispatchTimer(*this, &Storage::dispatchPendingWriteOperations)
-    , m_ioQueue(ConcurrentWorkQueue::create("com.apple.CyberKit.Cache.Storage"))
-    , m_backgroundIOQueue(ConcurrentWorkQueue::create("com.apple.CyberKit.Cache.Storage.background", WorkQueue::QOS::Background))
-    , m_serialBackgroundIOQueue(WorkQueue::create("com.apple.CyberKit.Cache.Storage.serialBackground", WorkQueue::QOS::Background))
+    , m_ioQueue(ConcurrentWorkQueue::create("com.matthewbenedict.CyberKit.Cache.Storage"))
+    , m_backgroundIOQueue(ConcurrentWorkQueue::create("com.matthewbenedict.CyberKit.Cache.Storage.background", WorkQueue::QOS::Background))
+    , m_serialBackgroundIOQueue(WorkQueue::create("com.matthewbenedict.CyberKit.Cache.Storage.serialBackground", WorkQueue::QOS::Background))
     , m_blobStorage(makeBlobDirectoryPath(baseDirectoryPath), m_salt)
 {
     ASSERT(RunLoop::isMain());

@@ -37,7 +37,7 @@ namespace CyberCore {
 
 WorkQueue& sharedImageTranscodingQueue()
 {
-    static NeverDestroyed<Ref<WorkQueue>> queue(WorkQueue::create("com.apple.CyberKit.ImageTranscoding"));
+    static NeverDestroyed<Ref<WorkQueue>> queue(WorkQueue::create("com.matthewbenedict.CyberKit.ImageTranscoding"));
     return queue.get();
 }
 

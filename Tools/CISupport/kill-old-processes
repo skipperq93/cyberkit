@@ -154,10 +154,10 @@ def main(user=None):
         "TestCyberKitAPI Web Content",
         "TestCyberKitAPI",
         "PluginProcess",
-        "com.apple.CyberKit.Plugin.64",
-        "com.apple.CyberKit.Plugin.32",
-        "com.apple.CyberKit.PluginProcess",
-        "com.apple.CyberKit.PluginProcess.Development"
+        "com.matthewbenedict.CyberKit.Plugin.64",
+        "com.matthewbenedict.CyberKit.Plugin.32",
+        "com.matthewbenedict.CyberKit.PluginProcess",
+        "com.matthewbenedict.CyberKit.PluginProcess.Development"
         "CyberKitTestRunner Web Content",
         "CyberKitTestRunner",
         "WebProcess",

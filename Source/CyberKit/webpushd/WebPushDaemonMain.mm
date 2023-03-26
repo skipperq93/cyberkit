@@ -77,14 +77,14 @@ namespace CyberKit {
 static void applySandbox()
 {
 #if PLATFORM(MAC)
-    NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.apple.CyberKit"];
-    auto profilePath = makeString(String([bundle resourcePath]), "/com.apple.CyberKit.webpushd.mac.sb"_s);
+    NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.matthewbenedict.CyberKit"];
+    auto profilePath = makeString(String([bundle resourcePath]), "/com.matthewbenedict.CyberKit.webpushd.mac.sb"_s);
     if (FileSystem::fileExists(profilePath)) {
         AuxiliaryProcess::applySandboxProfileForDaemon(profilePath, "com.apple.webkit.webpushd"_s);
         return;
     }
 
-    auto oldProfilePath = makeString(String([bundle resourcePath]), "/com.apple.CyberKit.webpushd.sb"_s);
+    auto oldProfilePath = makeString(String([bundle resourcePath]), "/com.matthewbenedict.CyberKit.webpushd.sb"_s);
     AuxiliaryProcess::applySandboxProfileForDaemon(oldProfilePath, "com.apple.webkit.webpushd"_s);
 #endif
 }

@@ -367,7 +367,7 @@ function ios_family_process_webcontent_shared_entitlements()
     plistbuddy Add :com.apple.tcc.delegated-services array
     plistbuddy Add :com.apple.tcc.delegated-services:0 string kTCCServiceCamera
     plistbuddy Add :com.apple.tcc.delegated-services:1 string kTCCServiceMicrophone
-    plistbuddy Add :com.apple.private.sandbox.profile string com.apple.CyberKit.WebContent
+    plistbuddy Add :com.apple.private.sandbox.profile string com.matthewbenedict.CyberKit.WebContent
     webcontent_sandbox_entitlements
 }
 
@@ -423,7 +423,7 @@ function ios_family_process_gpu_entitlements()
     plistbuddy Add :com.apple.springboard.statusbarstyleoverrides.coordinator:0 string UIStatusBarStyleOverrideWebRTCAudioCapture
     plistbuddy Add :com.apple.springboard.statusbarstyleoverrides.coordinator:1 string UIStatusBarStyleOverrideWebRTCCapture
 
-    plistbuddy Add :com.apple.private.sandbox.profile string com.apple.CyberKit.GPU
+    plistbuddy Add :com.apple.private.sandbox.profile string com.matthewbenedict.CyberKit.GPU
 
     plistbuddy Add :com.apple.systemstatus.activityattribution bool YES
     plistbuddy Add :com.apple.security.exception.mach-lookup.global-name array
@@ -434,12 +434,12 @@ function ios_family_process_gpu_entitlements()
 
 function ios_family_process_adattributiond_entitlements()
 {
-    plistbuddy Add :com.apple.private.sandbox.profile string com.apple.CyberKit.adattributiond
+    plistbuddy Add :com.apple.private.sandbox.profile string com.matthewbenedict.CyberKit.adattributiond
 }
 
 function ios_family_process_webpushd_entitlements()
 {
-    plistbuddy Add :com.apple.private.sandbox.profile string com.apple.CyberKit.webpushd
+    plistbuddy Add :com.apple.private.sandbox.profile string com.matthewbenedict.CyberKit.webpushd
     plistbuddy Add :aps-connection-initiate bool YES
     plistbuddy Add :com.apple.private.launchservices.allowopenwithanyhandler bool YES
     plistbuddy Add :com.apple.springboard.opensensitiveurl bool YES
@@ -466,7 +466,7 @@ function ios_family_process_network_entitlements()
     plistbuddy Add :com.apple.private.appstored array
     plistbuddy Add :com.apple.private.appstored:0 string InstallAttribution
 
-    plistbuddy Add :com.apple.private.sandbox.profile string com.apple.CyberKit.Networking
+    plistbuddy Add :com.apple.private.sandbox.profile string com.matthewbenedict.CyberKit.Networking
     plistbuddy Add :com.apple.symptom_analytics.configure bool YES
 
     plistbuddy Add :com.apple.private.assets.bypass-asset-types-check bool YES
@@ -487,37 +487,37 @@ elif [[ "${WK_PLATFORM_NAME}" == macosx ]]
 then
     [[ "${RC_XBS}" != YES ]] && plistbuddy Add :com.apple.security.get-task-allow bool YES
 
-    if [[ "${PRODUCT_NAME}" == com.apple.CyberKit.WebContent.Development ]]; then mac_process_webcontent_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.CyberKit.WebContent ]]; then mac_process_webcontent_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.CyberKit.WebContent.CaptivePortal ]]; then mac_process_webcontent_captiveportal_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.CyberKit.WebContent.Crashy ]]; then mac_process_webcontent_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.CyberKit.Networking ]]; then mac_process_network_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.CyberKit.GPU ]]; then mac_process_gpu_entitlements
+    if [[ "${PRODUCT_NAME}" == com.matthewbenedict.CyberKit.WebContent.Development ]]; then mac_process_webcontent_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.CyberKit.WebContent ]]; then mac_process_webcontent_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.CyberKit.WebContent.CaptivePortal ]]; then mac_process_webcontent_captiveportal_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.CyberKit.WebContent.Crashy ]]; then mac_process_webcontent_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.CyberKit.Networking ]]; then mac_process_network_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.CyberKit.GPU ]]; then mac_process_gpu_entitlements
     elif [[ "${PRODUCT_NAME}" == webpushd ]]; then mac_process_webpushd_entitlements
     elif [[ "${PRODUCT_NAME}" != adattributiond ]]; then echo "Unsupported/unknown product: ${PRODUCT_NAME}"
     fi
 elif [[ "${WK_PLATFORM_NAME}" == maccatalyst || "${WK_PLATFORM_NAME}" == iosmac ]]
 then
-    [[ "${RC_XBS}" != YES && ( "${PRODUCT_NAME}" == com.apple.CyberKit.WebContent.Development ) ]] && plistbuddy Add :com.apple.security.get-task-allow bool YES
+    [[ "${RC_XBS}" != YES && ( "${PRODUCT_NAME}" == com.matthewbenedict.CyberKit.WebContent.Development ) ]] && plistbuddy Add :com.apple.security.get-task-allow bool YES
 
-    if [[ "${PRODUCT_NAME}" == com.apple.CyberKit.WebContent.Development ]]; then maccatalyst_process_webcontent_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.CyberKit.WebContent ]]; then maccatalyst_process_webcontent_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.CyberKit.WebContent.CaptivePortal ]]; then maccatalyst_process_webcontent_captiveportal_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.CyberKit.WebContent.Crashy ]]; then maccatalyst_process_webcontent_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.CyberKit.Networking ]]; then maccatalyst_process_network_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.CyberKit.GPU ]]; then maccatalyst_process_gpu_entitlements
+    if [[ "${PRODUCT_NAME}" == com.matthewbenedict.CyberKit.WebContent.Development ]]; then maccatalyst_process_webcontent_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.CyberKit.WebContent ]]; then maccatalyst_process_webcontent_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.CyberKit.WebContent.CaptivePortal ]]; then maccatalyst_process_webcontent_captiveportal_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.CyberKit.WebContent.Crashy ]]; then maccatalyst_process_webcontent_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.CyberKit.Networking ]]; then maccatalyst_process_network_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.CyberKit.GPU ]]; then maccatalyst_process_gpu_entitlements
     else echo "Unsupported/unknown product: ${PRODUCT_NAME}"
     fi
 elif [[ "${WK_PLATFORM_NAME}" == iphoneos ||
         "${WK_PLATFORM_NAME}" == appletvos ||
         "${WK_PLATFORM_NAME}" == watchos ]]
 then
-    if [[ "${PRODUCT_NAME}" == com.apple.CyberKit.WebContent.Development ]]; then true
-    elif [[ "${PRODUCT_NAME}" == com.apple.CyberKit.WebContent ]]; then ios_family_process_webcontent_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.CyberKit.WebContent.CaptivePortal ]]; then ios_family_process_webcontent_captiveportal_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.CyberKit.WebContent.Crashy ]]; then ios_family_process_webcontent_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.CyberKit.Networking ]]; then ios_family_process_network_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.CyberKit.GPU ]]; then ios_family_process_gpu_entitlements
+    if [[ "${PRODUCT_NAME}" == com.matthewbenedict.CyberKit.WebContent.Development ]]; then true
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.CyberKit.WebContent ]]; then ios_family_process_webcontent_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.CyberKit.WebContent.CaptivePortal ]]; then ios_family_process_webcontent_captiveportal_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.CyberKit.WebContent.Crashy ]]; then ios_family_process_webcontent_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.CyberKit.Networking ]]; then ios_family_process_network_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.CyberKit.GPU ]]; then ios_family_process_gpu_entitlements
     elif [[ "${PRODUCT_NAME}" == adattributiond ]]; then
         ios_family_process_adattributiond_entitlements
     elif [[ "${PRODUCT_NAME}" == webpushd ]]; then

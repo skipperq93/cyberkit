@@ -720,7 +720,7 @@ void Daemon::notifyClientPushMessageIsAvailable(const CyberCore::PushSubscriptio
     NSDictionary *options = @{
         FBSOpenApplicationOptionKeyActivateForEvent: @{ FBSActivateForEventOptionTypeBackgroundContentFetching: @{ } },
         FBSOpenApplicationOptionKeyPayloadURL : launchURL,
-        FBSOpenApplicationOptionKeyPayloadOptions : @{ UIApplicationLaunchOptionsSourceApplicationKey : @"com.apple.CyberKit.webpushd" },
+        FBSOpenApplicationOptionKeyPayloadOptions : @{ UIApplicationLaunchOptionsSourceApplicationKey : @"com.matthewbenedict.CyberKit.webpushd" },
     };
 
     _LSOpenConfiguration *configuration = [[_LSOpenConfiguration alloc] init];

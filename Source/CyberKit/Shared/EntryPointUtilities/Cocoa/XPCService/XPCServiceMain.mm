@@ -147,18 +147,18 @@ static void XPCServiceEventHandler(xpc_connection_t peer)
                 return;
             }
             CFStringRef entryPointFunctionName = nullptr;
-            if (!strncmp(serviceName, "com.apple.CyberKit.WebContent", strlen("com.apple.CyberKit.WebContent")))
+            if (!strncmp(serviceName, "com.matthewbenedict.CyberKit.WebContent", strlen("com.matthewbenedict.CyberKit.WebContent")))
                 entryPointFunctionName = CFSTR(STRINGIZE_VALUE_OF(WEBCONTENT_SERVICE_INITIALIZER));
-            else if (!strcmp(serviceName, "com.apple.CyberKit.Networking"))
+            else if (!strcmp(serviceName, "com.matthewbenedict.CyberKit.Networking"))
                 entryPointFunctionName = CFSTR(STRINGIZE_VALUE_OF(NETWORK_SERVICE_INITIALIZER));
-            else if (!strcmp(serviceName, "com.apple.CyberKit.GPU"))
+            else if (!strcmp(serviceName, "com.matthewbenedict.CyberKit.GPU"))
                 entryPointFunctionName = CFSTR(STRINGIZE_VALUE_OF(GPU_SERVICE_INITIALIZER));
             else {
                 RELEASE_LOG_ERROR(IPC, "XPCServiceEventHandler: Unexpected 'service-name': %{public}s", serviceName);
                 return;
             }
 
-            CFBundleRef webKitBundle = CFBundleGetBundleWithIdentifier(CFSTR("com.apple.CyberKit"));
+            CFBundleRef webKitBundle = CFBundleGetBundleWithIdentifier(CFSTR("com.matthewbenedict.CyberKit"));
             typedef void (*InitializerFunction)(xpc_connection_t, xpc_object_t);
             InitializerFunction initializerFunctionPtr = reinterpret_cast<InitializerFunction>(CFBundleGetFunctionPointerForName(webKitBundle, entryPointFunctionName));
             if (!initializerFunctionPtr) {
@@ -243,7 +243,7 @@ int XPCServiceMain(int, const char**)
         }
 #endif
         auto webKitBundleVersion = String::fromLatin1(xpc_dictionary_get_string(bootstrap.get(), "CyberKitBundleVersion"));
-        String expectedBundleVersion = [NSBundle bundleWithIdentifier:@"com.apple.CyberKit"].infoDictionary[(__bridge NSString *)kCFBundleVersionKey];
+        String expectedBundleVersion = [NSBundle bundleWithIdentifier:@"com.matthewbenedict.CyberKit"].infoDictionary[(__bridge NSString *)kCFBundleVersionKey];
         if (!webKitBundleVersion.isNull() && !expectedBundleVersion.isNull() && webKitBundleVersion != expectedBundleVersion) {
             auto errorMessage = makeString("CyberKit framework version mismatch: ", webKitBundleVersion, " != ", expectedBundleVersion);
             logAndSetCrashLogMessage(errorMessage.utf8().data());

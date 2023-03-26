@@ -61,7 +61,7 @@ TEST(WKWebView, LocalStorageNullEntries)
     NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"LocalStorageNullEntries" withExtension:@"localstorage" subdirectory:@"TestCyberKitAPI.resources"];
     NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"LocalStorageNullEntries" withExtension:@"localstorage-shm" subdirectory:@"TestCyberKitAPI.resources"];
 
-    NSURL *targetURL = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.apple.CyberKit.TestCyberKitAPI/WebsiteData/LocalStorage/" stringByExpandingTildeInPath]];
+    NSURL *targetURL = [NSURL fileURLWithPath:[@"~/Library/CyberKit/com.matthewbenedict.CyberKit.TestCyberKitAPI/WebsiteData/LocalStorage/" stringByExpandingTildeInPath]];
     [[NSFileManager defaultManager] createDirectoryAtURL:targetURL withIntermediateDirectories:YES attributes:nil error:nil];
 
     [[NSFileManager defaultManager] copyItemAtURL:url1 toURL:[targetURL URLByAppendingPathComponent:@"file__0.localstorage"] error:nil];
