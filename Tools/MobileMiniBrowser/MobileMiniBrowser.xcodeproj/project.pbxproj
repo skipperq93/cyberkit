@@ -26,6 +26,10 @@
 		4818242E29CE2F3F000D8834 /* CyberKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4818242D29CE2F3F000D8834 /* CyberKit.framework */; };
 		4818243129CE2F80000D8834 /* CyberScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4818243029CE2F80000D8834 /* CyberScriptCore.framework */; };
 		4818243229CE2F80000D8834 /* CyberScriptCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4818243029CE2F80000D8834 /* CyberScriptCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48BE1D8729CFAE0F00511588 /* libANGLE-shared.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 48BE1D8629CFAE0F00511588 /* libANGLE-shared.dylib */; };
+		48BE1D8829CFAE0F00511588 /* libANGLE-shared.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48BE1D8629CFAE0F00511588 /* libANGLE-shared.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		48BE1D8A29CFAE2300511588 /* libwebrtc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 48BE1D8929CFAE2300511588 /* libwebrtc.dylib */; };
+		48BE1D8B29CFAE2300511588 /* libwebrtc.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48BE1D8929CFAE2300511588 /* libwebrtc.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		48D3CF6129CE2CA000608A0E /* CyberCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D3CF6029CE2CA000608A0E /* CyberCore.framework */; };
 		48D3CF6229CE2CA100608A0E /* CyberCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48D3CF6029CE2CA000608A0E /* CyberCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		48D3CF6429CE2CA300608A0E /* CyberKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1DAFC11D70E12D00017CF0 /* CyberKit.framework */; };
@@ -84,6 +88,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				48BE1D8829CFAE0F00511588 /* libANGLE-shared.dylib in Embed Frameworks */,
+				48BE1D8B29CFAE2300511588 /* libwebrtc.dylib in Embed Frameworks */,
 				4818243229CE2F80000D8834 /* CyberScriptCore.framework in Embed Frameworks */,
 				48D3CF6229CE2CA100608A0E /* CyberCore.framework in Embed Frameworks */,
 				48D3CF6829CE2CB500608A0E /* CyberKitLegacy.framework in Embed Frameworks */,
@@ -110,6 +116,8 @@
 		457D0F7829088D4000AE5914 /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		4818242D29CE2F3F000D8834 /* CyberKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4818243029CE2F80000D8834 /* CyberScriptCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberScriptCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48BE1D8629CFAE0F00511588 /* libANGLE-shared.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = "libANGLE-shared.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
+		48BE1D8929CFAE2300511588 /* libwebrtc.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libwebrtc.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		48D3CF6029CE2CA000608A0E /* CyberCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48D3CF6629CE2CB500608A0E /* CyberKitLegacy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberKitLegacy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD1DAF921D709E3600017CF0 /* MobileMiniBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileMiniBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,6 +170,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48BE1D8729CFAE0F00511588 /* libANGLE-shared.dylib in Frameworks */,
+				48BE1D8A29CFAE2300511588 /* libwebrtc.dylib in Frameworks */,
 				4818243129CE2F80000D8834 /* CyberScriptCore.framework in Frameworks */,
 				48D3CF6129CE2CA000608A0E /* CyberCore.framework in Frameworks */,
 				48D3CF6729CE2CB500608A0E /* CyberKitLegacy.framework in Frameworks */,
@@ -218,6 +228,8 @@
 		CD1DAFC01D70E12D00017CF0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				48BE1D8929CFAE2300511588 /* libwebrtc.dylib */,
+				48BE1D8629CFAE0F00511588 /* libANGLE-shared.dylib */,
 				CD1DAFC11D70E12D00017CF0 /* CyberKit.framework */,
 				48D3CF6029CE2CA000608A0E /* CyberCore.framework */,
 				4818243029CE2F80000D8834 /* CyberScriptCore.framework */,
@@ -511,6 +523,7 @@
 			baseConfigurationReference = CD4DEEE41D78C6FF00625986 /* MobileMiniBrowser.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
@@ -531,6 +544,7 @@
 			baseConfigurationReference = CD4DEEE41D78C6FF00625986 /* MobileMiniBrowser.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
