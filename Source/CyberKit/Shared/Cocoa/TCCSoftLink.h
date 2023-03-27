@@ -35,7 +35,7 @@ SOFT_LINK_CONSTANT_FOR_HEADER(CyberKit, TCC, kTCCServiceAccessibility, CFStringR
 SOFT_LINK_CONSTANT_FOR_HEADER(CyberKit, TCC, kTCCServiceCamera, CFStringRef)
 SOFT_LINK_CONSTANT_FOR_HEADER(CyberKit, TCC, kTCCServiceMicrophone, CFStringRef)
 SOFT_LINK_CONSTANT_FOR_HEADER(CyberKit, TCC, kTCCServicePhotos, CFStringRef)
-SOFT_LINK_CONSTANT_FOR_HEADER(CyberKit, TCC, kTCCServiceCyberKitIntelligentTrackingPrevention, CFStringRef)
+SOFT_LINK_CONSTANT_FOR_HEADER(CyberKit, TCC, kTCCServiceWebKitIntelligentTrackingPrevention, CFStringRef)
 
 SOFT_LINK_FUNCTION_FOR_HEADER(CyberKit, TCC, TCCAccessCheckAuditToken, Boolean, (CFStringRef service, audit_token_t auditToken, CFDictionaryRef options), (service, auditToken, options))
 #define TCCAccessCheckAuditToken CyberKit::softLink_TCC_TCCAccessCheckAuditToken

@@ -538,7 +538,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.apple.MobileMiniBrowser;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.MobileMiniBrowser;
 				PRODUCT_NAME = MobileMiniBrowser;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -559,7 +559,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.apple.MobileMiniBrowser;
+				PRODUCT_BUNDLE_IDENTIFIER = com..MobileMiniBrowser;
 				PRODUCT_NAME = MobileMiniBrowser;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

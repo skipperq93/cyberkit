@@ -142,7 +142,7 @@ function mac_process_network_entitlements()
         then
             plistbuddy Add :com.apple.private.security.message-filter bool YES
             plistbuddy Add :com.apple.private.tcc.manager.check-by-audit-token array
-            plistbuddy Add :com.apple.private.tcc.manager.check-by-audit-token:0 string kTCCServiceCyberKitIntelligentTrackingPrevention
+            plistbuddy Add :com.apple.private.tcc.manager.check-by-audit-token:0 string kTCCServiceWebKitIntelligentTrackingPrevention
         fi
 
         if (( "${TARGET_MAC_OS_X_VERSION_MAJOR}" >= 110000 ))
@@ -329,7 +329,7 @@ function maccatalyst_process_network_entitlements()
     plistbuddy Add :com.apple.private.webkit.use-xpc-endpoint bool YES
 
     plistbuddy Add :com.apple.private.tcc.manager.check-by-audit-token array
-    plistbuddy Add :com.apple.private.tcc.manager.check-by-audit-token:0 string kTCCServiceCyberKitIntelligentTrackingPrevention
+    plistbuddy Add :com.apple.private.tcc.manager.check-by-audit-token:0 string kTCCServiceWebKitIntelligentTrackingPrevention
 
     if [[ "${WK_USE_RESTRICTED_ENTITLEMENTS}" == YES ]]
     then
@@ -461,7 +461,7 @@ function ios_family_process_network_entitlements()
     plistbuddy Add :com.apple.runningboard.assertions.webkit bool YES
 
     plistbuddy Add :com.apple.private.tcc.manager.check-by-audit-token array
-    plistbuddy Add :com.apple.private.tcc.manager.check-by-audit-token:0 string kTCCServiceCyberKitIntelligentTrackingPrevention
+    plistbuddy Add :com.apple.private.tcc.manager.check-by-audit-token:0 string kTCCServiceWebKitIntelligentTrackingPrevention
 
     plistbuddy Add :com.apple.private.appstored array
     plistbuddy Add :com.apple.private.appstored:0 string InstallAttribution

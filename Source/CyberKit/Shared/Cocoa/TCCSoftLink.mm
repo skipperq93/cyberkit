@@ -35,7 +35,7 @@ SOFT_LINK_CONSTANT_FOR_SOURCE(CyberKit, TCC, kTCCServiceAccessibility, CFStringR
 SOFT_LINK_CONSTANT_FOR_SOURCE(CyberKit, TCC, kTCCServiceCamera, CFStringRef)
 SOFT_LINK_CONSTANT_FOR_SOURCE(CyberKit, TCC, kTCCServiceMicrophone, CFStringRef)
 SOFT_LINK_CONSTANT_FOR_SOURCE(CyberKit, TCC, kTCCServicePhotos, CFStringRef)
-SOFT_LINK_CONSTANT_FOR_SOURCE(CyberKit, TCC, kTCCServiceCyberKitIntelligentTrackingPrevention, CFStringRef)
+SOFT_LINK_CONSTANT_FOR_SOURCE(CyberKit, TCC, kTCCServiceWebKitIntelligentTrackingPrevention, CFStringRef)
 
 SOFT_LINK_FUNCTION_FOR_SOURCE(CyberKit, TCC, TCCAccessCheckAuditToken, Boolean, (CFStringRef service, audit_token_t auditToken, CFDictionaryRef options), (service, auditToken, options))
 SOFT_LINK_FUNCTION_FOR_SOURCE(CyberKit, TCC, TCCAccessPreflight, TCCAccessPreflightResult, (CFStringRef service, CFDictionaryRef options), (service, options))

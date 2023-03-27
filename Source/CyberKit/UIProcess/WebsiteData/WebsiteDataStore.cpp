@@ -1835,14 +1835,17 @@ WebsiteDataStoreParameters WebsiteDataStore::parameters()
 
     auto resourceLoadStatisticsDirectory = resolvedResourceLoadStatisticsDirectory();
     SandboxExtension::Handle resourceLoadStatisticsDirectoryHandle;
+    fprintf(stderr, "Attempting to create handle for directory %s", resourceLoadStatisticsDirectory.utf8().data());
     createHandleFromResolvedPathIfPossible(resourceLoadStatisticsDirectory, resourceLoadStatisticsDirectoryHandle);
 
     auto networkCacheDirectory = resolvedNetworkCacheDirectory();
     SandboxExtension::Handle networkCacheDirectoryExtensionHandle;
+    fprintf(stderr, "Attempting to create handle for directory %s", networkCacheDirectory.utf8().data());
     createHandleFromResolvedPathIfPossible(networkCacheDirectory, networkCacheDirectoryExtensionHandle);
 
     auto hstsStorageDirectory = resolvedHSTSStorageDirectory();
     SandboxExtension::Handle hstsStorageDirectoryExtensionHandle;
+    fprintf(stderr, "Attempting to create handle for directory %s", hstsStorageDirectory.utf8().data());
     createHandleFromResolvedPathIfPossible(hstsStorageDirectory, hstsStorageDirectoryExtensionHandle);
 
     bool shouldIncludeLocalhostInResourceLoadStatistics = false;
