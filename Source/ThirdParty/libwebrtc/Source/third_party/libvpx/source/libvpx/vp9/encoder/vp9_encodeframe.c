@@ -6339,6 +6339,7 @@ static int compute_frame_aq_offset(struct VP9_COMP *cpi) {
   int mi_row, mi_col;
   int sum_delta = 0;
   int map_index = 0;
+    (void)map_index;
   int qdelta_index;
   int segment_id;
 
