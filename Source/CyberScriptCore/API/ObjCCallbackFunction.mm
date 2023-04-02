@@ -698,6 +698,7 @@ static JSObjectRef objCCallbackFunctionForInvocation(JSContext *context, NSInvoc
     std::unique_ptr<CallbackArgument> arguments;
     auto* nextArgument = &arguments;
     unsigned argumentCount = 0;
+    (void)argumentCount;
     while (*position) {
         auto argument = parseObjCType<ArgumentTypeDelegate>(position);
         if (!argument || !skipNumber(position))

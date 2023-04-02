@@ -41,6 +41,8 @@
 	<array>
 		<string>InstallAttribution</string>
 	</array>
+	<key>com.apple.private.aps-connection-initiate</key>
+	<true/>
 	<key>com.apple.private.assets.accessible-asset-types</key>
 	<array>
 		<string>com.apple.MobileAsset.WebContentRestrictions</string>
@@ -66,6 +68,8 @@
 	<key>com.apple.private.pac.exception</key>
 	<true/>
 	<key>com.apple.private.persona-mgmt</key>
+	<true/>
+	<key>com.apple.private.secure-apsclient</key>
 	<true/>
 	<key>com.apple.private.security.disk-device-access</key>
 	<true/>
