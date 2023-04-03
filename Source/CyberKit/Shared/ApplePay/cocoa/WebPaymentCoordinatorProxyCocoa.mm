@@ -353,7 +353,7 @@ RetainPtr<PKPaymentRequest> WebPaymentCoordinatorProxy::platformPaymentRequest(c
         [result setMultiTokenContexts:platformPaymentTokenContexts(*multiTokenContexts).get()];
 #endif
 
-#if HAVE(PASSKIT_DEFERRED_PAYMENTS)
+#if HAVE(PASSKIT_DEFERRED_PAYMENTS) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160400)
     if (auto& deferredPaymentRequest = paymentRequest.deferredPaymentRequest())
         [result setDeferredPaymentRequest:platformDeferredPaymentRequest(*deferredPaymentRequest).get()];
 #endif
