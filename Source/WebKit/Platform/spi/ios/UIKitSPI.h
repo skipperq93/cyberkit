@@ -517,6 +517,7 @@ typedef struct CGSVGDocument *CGSVGDocumentRef;
 @property (nonatomic, setter=_setMagnifierEnabled:) BOOL _magnifierEnabled;
 @end
 
+API_AVAILABLE(ios(14.5))
 @interface UIPrintPageRenderer ()
 @property (readonly) UIPrintRenderingQuality requestedRenderingQuality;
 @end

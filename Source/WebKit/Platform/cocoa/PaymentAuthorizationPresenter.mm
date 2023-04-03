@@ -250,7 +250,7 @@ void PaymentAuthorizationPresenter::completePaymentMethodSelection(std::optional
     [paymentMethodUpdate setInstallmentGroupIdentifier:WTFMove(update->installmentGroupIdentifier)];
 #endif // HAVE(PASSKIT_INSTALLMENTS) && ENABLE(APPLE_PAY_INSTALLMENTS)
     [platformDelegate() completePaymentMethodSelection:paymentMethodUpdate.get()];
-#if HAVE(PASSKIT_DEFERRED_PAYMENTS)
+#if HAVE(PASSKIT_DEFERRED_PAYMENTS) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160400)
     if (auto& deferredPaymentRequest = update->newDeferredPaymentRequest)
         [paymentMethodUpdate setDeferredPaymentRequest:platformDeferredPaymentRequest(WTFMove(*deferredPaymentRequest)).get()];
 #endif
@@ -304,7 +304,7 @@ void PaymentAuthorizationPresenter::completeShippingContactSelection(std::option
     if (auto& multiTokenContexts = update->newMultiTokenContexts)
         [shippingContactUpdate setMultiTokenContexts:platformPaymentTokenContexts(WTFMove(*multiTokenContexts)).get()];
 #endif
-#if HAVE(PASSKIT_DEFERRED_PAYMENTS)
+#if HAVE(PASSKIT_DEFERRED_PAYMENTS) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160400)
     if (auto& deferredPaymentRequest = update->newDeferredPaymentRequest)
         [shippingContactUpdate setDeferredPaymentRequest:platformDeferredPaymentRequest(WTFMove(*deferredPaymentRequest)).get()];
 #endif
@@ -339,7 +339,7 @@ void PaymentAuthorizationPresenter::completeShippingMethodSelection(std::optiona
     if (auto& multiTokenContexts = update->newMultiTokenContexts)
         [shippingMethodUpdate setMultiTokenContexts:platformPaymentTokenContexts(WTFMove(*multiTokenContexts)).get()];
 #endif
-#if HAVE(PASSKIT_DEFERRED_PAYMENTS)
+#if HAVE(PASSKIT_DEFERRED_PAYMENTS) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160400)
     if (auto& deferredPaymentRequest = update->newDeferredPaymentRequest)
         [shippingMethodUpdate setDeferredPaymentRequest:platformDeferredPaymentRequest(WTFMove(*deferredPaymentRequest)).get()];
 #endif
@@ -377,7 +377,7 @@ void PaymentAuthorizationPresenter::completeCouponCodeChange(std::optional<WebCo
     if (auto& multiTokenContexts = update->newMultiTokenContexts)
         [couponCodeUpdate setMultiTokenContexts:platformPaymentTokenContexts(WTFMove(*multiTokenContexts)).get()];
 #endif
-#if HAVE(PASSKIT_DEFERRED_PAYMENTS)
+#if HAVE(PASSKIT_DEFERRED_PAYMENTS) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160400)
     if (auto& deferredPaymentRequest = update->newDeferredPaymentRequest)
         [couponCodeUpdate setDeferredPaymentRequest:platformDeferredPaymentRequest(WTFMove(*deferredPaymentRequest)).get()];
 #endif

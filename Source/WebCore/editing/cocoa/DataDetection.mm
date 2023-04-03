@@ -363,6 +363,7 @@ static void buildQuery(DDScanQueryRef scanQuery, const SimpleRange& contextRange
     
     CFIndex iteratorCount = 0;
     CFIndex fragmentCount = 0;
+    UNUSED_VARIABLE(fragmentCount);
     
     // Build the scan query adding separators.
     // For each fragment the iterator increment is stored as metadata.
