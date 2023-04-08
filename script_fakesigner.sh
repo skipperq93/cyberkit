@@ -18,23 +18,17 @@ else
       echo "[!] brew install ldid"
     fi
 fi
-if [ -z "$1" ]
-  then
-    echo "[!] No .ipa or .app file supplied!"
-    exit
-fi
 
 # Prepare payload directory
 SOURCE_DIR=$(realpath "$(dirname "${BASH_SOURCE[0]}")")
-if [[ $1 == *.ipa ]]; then
-ipa=$1
+ipa=$SOURCE_DIR/CyberKitBuild/Debug-iphoneos/MobileMiniBrowser.app
+if [[ $ipa == *.ipa ]]; then
 echo [*] unpacking..
 cd $(dirname $ipa)
 unzip "$ipa"
 cd Payload
 app=$(ls -1 -d *.app)
-elif [[ $1 == *.app ]]; then
-ipa=$1
+elif [[ $ipa == *.app ]]; then
 cd $(dirname $ipa)
 mkdir Payload
 cp -R $ipa $(dirname $ipa)/Payload
