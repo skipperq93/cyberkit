@@ -53,8 +53,6 @@
 	<true/>
 	<key>com.apple.private.coremedia.pidinheritance.allow</key>
 	<true/>
-	<key>com.apple.private.cs.debugger</key>
-	<true/>
 	<key>com.apple.private.dmd.policy</key>
 	<true/>
 	<key>com.apple.private.gain-map-access</key>
@@ -67,11 +65,7 @@
 	<true/>
 	<key>com.apple.private.pac.exception</key>
 	<true/>
-	<key>com.apple.private.persona-mgmt</key>
-	<true/>
 	<key>com.apple.private.secure-apsclient</key>
-	<true/>
-	<key>com.apple.private.security.disk-device-access</key>
 	<true/>
 	<key>com.apple.private.security.enable-state-flags</key>
 	<array>
@@ -95,11 +89,7 @@
 	</array>
 	<key>com.apple.private.security.no-sandbox</key>
 	<true/>
-	<key>com.apple.private.security.storage.AppDataContainers</key>
-	<true/>
 	<key>com.apple.private.security.system-application</key>
-	<true/>
-	<key>com.apple.private.skip-library-validation</key>
 	<true/>
 	<key>com.apple.private.tcc.manager.check-by-audit-token</key>
 	<array>
@@ -144,10 +134,6 @@
 		<string>/private/var/db/MobileIdentityData/</string>
 		<string>/private/var/containers/Bundle/Application/</string>
 		<string>/Applications/</string>
-	</array>
-	<key>com.apple.security.exception.files.absolute-path.read-write</key>
-	<array>
-		<string>/</string>
 	</array>
 	<key>com.apple.security.exception.files.home-relative-path.read-only</key>
 	<array>
@@ -212,8 +198,6 @@
 		<string>com.apple.AuthenticationServices.AutoFill</string>
 		<string>com.apple.donotdisturb.appconfiguration.service</string>
 	</array>
-	<key>com.apple.security.files.all</key>
-	<true/>
 	<key>com.apple.security.get-task-allow</key>
 	<true/>
 	<key>com.apple.security.iokit-user-client-class</key>
@@ -249,8 +233,6 @@
 	<key>com.apple.webkit.extension.camera</key>
 	<true/>
 	<key>com.apple.webkit.extension.microphone</key>
-	<true/>
-	<key>dynamic-codesigning</key>
 	<true/>
 	<key>platform-application</key>
 	<true/>
