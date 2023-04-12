@@ -224,7 +224,16 @@ auto SandboxExtension::createHandleWithoutResolvingPath(StringView path, Type ty
 
     handle.m_sandboxExtension = SandboxExtensionImpl::create(path.utf8().data(), type, std::nullopt, Flags::DoNotCanonicalize);
     if (!handle.m_sandboxExtension) {
-        LOG_ERROR("Could not create a sandbox extension for '%s'", path.utf8().data());
+        NSString* t;
+        if (type == Type::ReadOnly) { t = @"ReadOnly"; }
+        else if (type == Type::ReadWrite) { t = @"ReadWrite"; }
+        else if (type == Type::Mach) { t = @"Mach"; }
+        else if (type == Type::IOKit) { t = @"IOKit"; }
+        else if (type == Type::Generic) { t = @"Generic"; }
+        else if (type == Type::ReadByProcess) { t = @"ReadByProcess"; }
+        else { t = @"Unknown"; }
+        NSLog(@"Could not create a type %@ sandbox extension for '%s'", t, path.utf8().data());
+        NSLog(@"%@", NSThread.callStackSymbols);
         return std::nullopt;
     }
     return WTFMove(handle);
