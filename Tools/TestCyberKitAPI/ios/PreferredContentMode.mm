@@ -316,7 +316,7 @@ TEST(PreferredContentMode, CustomUserAgentOverridesDesktopContentModeUserAgent)
 
     auto [webView, delegate] = setUpWebViewForPreferredContentModeTesting<TestWKWebView>(WKContentModeDesktop);
 
-    NSString *customUserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleCyberKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36";
+    NSString *customUserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36";
     [webView setCustomUserAgent:customUserAgent];
     [webView loadTestPageNamed:@"simple" withPolicyDecisionHandler:nil];
     EXPECT_WK_STREQ(customUserAgent, [webView navigatorUserAgent]);

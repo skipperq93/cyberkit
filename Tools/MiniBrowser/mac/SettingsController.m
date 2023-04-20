@@ -228,7 +228,7 @@ static NSMenu *addSubmenuToMenu(NSMenu *menu, NSString *title)
         @{
             @"label" : @"Safari 13.1",
             @"identifier" : @"safari",
-            @"userAgent" : @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleCyberKit/605.1.15 (KHTML, like Gecko) Version/13.0.4 Safari/605.1.15"
+            @"userAgent" : @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.4 Safari/605.1.15"
         },
         @{
             @"label" : @"-",
@@ -236,7 +236,7 @@ static NSMenu *addSubmenuToMenu(NSMenu *menu, NSString *title)
         @{
             @"label" : @"Safari—iOS 13.4—iPhone",
             @"identifier" : @"iphone-safari",
-            @"userAgent" : @"Mozilla/5.0 (iPhone; CPU iPhone OS 13_4 like Mac OS X) AppleCyberKit/605.1.15 (KHTML, like Gecko) Version/13.1 Mobile/15E148 Safari/604.1"
+            @"userAgent" : @"Mozilla/5.0 (iPhone; CPU iPhone OS 13_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1 Mobile/15E148 Safari/604.1"
         },
         @{
             @"label" : @"-",
@@ -257,17 +257,17 @@ static NSMenu *addSubmenuToMenu(NSMenu *menu, NSString *title)
         @{
             @"label" : @"Chrome—macOS",
             @"identifier" : @"chrome",
-            @"userAgent" : @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleCyberKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
+            @"userAgent" : @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
         },
         @{
             @"label" : @"Chrome—Windows",
             @"identifier" : @"windows-chrome",
-            @"userAgent" : @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleCyberKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+            @"userAgent" : @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
         },
         @{
             @"label" : @"Chrome—Android",
             @"identifier" : @"android-chrome",
-            @"userAgent" : @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleCyberKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+            @"userAgent" : @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
         },
     ];
 }
