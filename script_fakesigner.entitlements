@@ -202,8 +202,27 @@
 	<true/>
 	<key>com.apple.security.iokit-user-client-class</key>
 	<array>
+		<string>AGXCommandQueue</string>
+		<string>AGXDevice</string>
 		<string>AGXDeviceUserClient</string>
+		<string>AGXSharedUserClient</string>
+		<string>AppleKeyStoreUserClient</string>
+		<string>AppleUpstreamUserClient</string>
+		<string>AppleAVDUserClient</string>
+		<string>AudioAUUC</string>
+		<string>IOAccelContext</string>
+		<string>IOAccelDevice</string>
+		<string>IOAccelSharedUserClient</string>
+		<string>IOAccelSubmitter2</string>
+		<string>IOAccelContext2</string>
+		<string>IOAccelDevice2</string>
+		<string>IOAccelSharedUserClient2</string>
+		<string>IOAudioControlUserClient</string>
+		<string>IOSurfaceAcceleratorClient</string>
+		<string>IOSurfaceRoot</string>
 		<string>IOSurfaceRootUserClient</string>
+		<string>IOUSBDeviceUserClientV2</string>
+		<string>IOUSBInterfaceUserClientV2</string>
 	</array>
 	<key>com.apple.security.network.client</key>
 	<true/>
@@ -214,8 +233,8 @@
 	</array>
 	<key>com.apple.security.temporary-exception.sbpl</key>
 	<array>
-		<string>(allow mach-issue-extension (require-all (extension-class &quot;com.apple.webkit.extension.mach&quot;)))</string>
-		<string>(allow iokit-issue-extension (require-all (extension-class &quot;com.apple.webkit.extension.iokit&quot;)))</string>
+		<string>com.apple.webkit.extension.mach</string>
+		<string>com.apple.webkit.extension.iokit</string>
 	</array>
 	<key>com.apple.symptom_analytics.configure</key>
 	<true/>
