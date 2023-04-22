@@ -133,19 +133,12 @@ PKPaymentSummaryItem *platformSummaryItem(const ApplePayLineItem& lineItem)
 
 #if HAVE(PASSKIT_RECURRING_SUMMARY_ITEM)
     case ApplePayPaymentTiming::Recurring:
-#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
         return platformRecurringSummaryItem(lineItem);
-#else
-        break;
-#endif
 #endif
 
 #if HAVE(PASSKIT_DEFERRED_SUMMARY_ITEM)
     case ApplePayPaymentTiming::Deferred:
         return platformDeferredSummaryItem(lineItem);
-#else
-    case ApplePayPaymentTiming::Deferred:
-        break;
 #endif
 
 #if HAVE(PASSKIT_AUTOMATIC_RELOAD_SUMMARY_ITEM)
