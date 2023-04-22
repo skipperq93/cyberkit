@@ -40,7 +40,7 @@ void nw_parameters_set_attributed_bundle_identifier(nw_parameters_t, const char*
 nw_endpoint_t nw_endpoint_create_host_with_numeric_port(const char* hostname, uint16_t port_host_order);
 bool nw_nat64_does_interface_index_support_nat64(uint32_t ifindex);
 
-#if HAVE(NWPARAMETERS_TRACKER_API) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(NWPARAMETERS_TRACKER_API)
 void nw_parameters_set_is_third_party_web_content(nw_parameters_t, bool is_third_party_web_content);
 void nw_parameters_set_is_known_tracker(nw_parameters_t, bool is_known_tracker);
 void nw_parameters_allow_sharing_port_with_listener(nw_parameters_t, nw_listener_t);

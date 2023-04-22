@@ -79,7 +79,7 @@ public:
     void completePaymentSession(WebCore::ApplePayPaymentAuthorizationResult&&);
     void completeShippingContactSelection(std::optional<WebCore::ApplePayShippingContactUpdate>&&);
     void completeShippingMethodSelection(std::optional<WebCore::ApplePayShippingMethodUpdate>&&);
-#if HAVE(PASSKIT_COUPON_CODE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(PASSKIT_COUPON_CODE)
     void completeCouponCodeChange(std::optional<WebCore::ApplePayCouponCodeUpdate>&&);
 #endif
 

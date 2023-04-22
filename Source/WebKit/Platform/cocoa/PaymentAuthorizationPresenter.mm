@@ -346,7 +346,7 @@ void PaymentAuthorizationPresenter::completeShippingMethodSelection(std::optiona
     [platformDelegate() completeShippingMethodSelection:shippingMethodUpdate.get()];
 }
 
-#if HAVE(PASSKIT_COUPON_CODE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(PASSKIT_COUPON_CODE)
 
 void PaymentAuthorizationPresenter::completeCouponCodeChange(std::optional<WebCore::ApplePayCouponCodeUpdate>&& update)
 {

@@ -1505,14 +1505,10 @@ inline OptionSet<WebKit::FindOptions> toFindOptions(WKFindConfiguration *configu
 #endif
 }
 
-#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000
+#if HAVE(UIFINDINTERACTION)
 - (UIFindInteraction *)findInteraction
 {
-#if HAVE(UIFINDINTERACTION)
     return _findInteraction.get();
-#else
-    return nil;
-#endif
 }
 #endif
 
