@@ -115,7 +115,7 @@
 #import <UIKit/UIMenu_Private.h>
 #endif
 
-#if HAVE(UIDATEPICKER_OVERLAY_PRESENTATION) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(UIDATEPICKER_OVERLAY_PRESENTATION)
 #import <UIKit/_UIDatePickerOverlayPresentation.h>
 #endif
 
@@ -258,7 +258,7 @@ typedef NS_ENUM(NSInteger, UIDatePickerStyle) {
 - (UIEdgeInsets)_appliedInsetsToEdgeOfContent;
 @end
 
-#if HAVE(UIDATEPICKER_OVERLAY_PRESENTATION) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(UIDATEPICKER_OVERLAY_PRESENTATION)
 
 typedef NS_ENUM(NSInteger, _UIDatePickerOverlayAnchor) {
     _UIDatePickerOverlayAnchorSourceRect = 2

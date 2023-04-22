@@ -120,14 +120,14 @@ extern "C" void xpc_activity_register(const char *identifier, xpc_object_t crite
 #if USE(APPLE_INTERNAL_SDK)
 #include <os/transaction_private.h>
 #include <xpc/private.h>
-#if HAVE(OS_LAUNCHD_JOB) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(OS_LAUNCHD_JOB)
 #include <AppServerSupport/OSLaunchdJob.h>
 #endif // HAVE(OS_LAUNCHD_JOB)
 #else // USE(APPLE_INTERNAL_SDK)
 
 #ifdef __OBJC__
 #import <Foundation/NSError.h>
-#if HAVE(OS_LAUNCHD_JOB) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(OS_LAUNCHD_JOB)
 @interface OSLaunchdJob : NSObject
 - (instancetype)initWithPlist:(xpc_object_t)plist;
 - (BOOL)submit:(NSError **)errorOut;
@@ -138,7 +138,7 @@ extern "C" void xpc_activity_register(const char *identifier, xpc_object_t crite
 extern "C" const char * const XPC_ACTIVITY_RANDOM_INITIAL_DELAY;
 extern "C" const char * const XPC_ACTIVITY_REQUIRE_NETWORK_CONNECTIVITY;
 
-#if HAVE(XPC_CONNECTION_COPY_INVALIDATION_REASON) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(XPC_CONNECTION_COPY_INVALIDATION_REASON)
 extern "C" char * xpc_connection_copy_invalidation_reason(xpc_connection_t connection);
 #endif
 

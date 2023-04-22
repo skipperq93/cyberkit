@@ -54,7 +54,7 @@ static PKPaymentSummaryItemType toPKPaymentSummaryItemType(ApplePayLineItem::Typ
 
 namespace CyberCore {
 
-#if (HAVE(PASSKIT_RECURRING_SUMMARY_ITEM) || HAVE(PASSKIT_DEFERRED_SUMMARY_ITEM)) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(PASSKIT_RECURRING_SUMMARY_ITEM) || HAVE(PASSKIT_DEFERRED_SUMMARY_ITEM)
 
 static NSDate *toDate(WallTime date)
 {
@@ -63,7 +63,7 @@ static NSDate *toDate(WallTime date)
 
 #endif // HAVE(PASSKIT_RECURRING_SUMMARY_ITEM) || HAVE(PASSKIT_DEFERRED_SUMMARY_ITEM)
 
-#if HAVE(PASSKIT_RECURRING_SUMMARY_ITEM) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(PASSKIT_RECURRING_SUMMARY_ITEM)
 
 static NSCalendarUnit toCalendarUnit(ApplePayRecurringPaymentDateUnit unit)
 {
@@ -100,7 +100,7 @@ PKRecurringPaymentSummaryItem *platformRecurringSummaryItem(const ApplePayLineIt
 
 #endif // HAVE(PASSKIT_RECURRING_SUMMARY_ITEM)
 
-#if HAVE(PASSKIT_DEFERRED_SUMMARY_ITEM) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(PASSKIT_DEFERRED_SUMMARY_ITEM)
 
 PKDeferredPaymentSummaryItem *platformDeferredSummaryItem(const ApplePayLineItem& lineItem)
 {
@@ -142,11 +142,10 @@ PKPaymentSummaryItem *platformSummaryItem(const ApplePayLineItem& lineItem)
 
 #if HAVE(PASSKIT_DEFERRED_SUMMARY_ITEM)
     case ApplePayPaymentTiming::Deferred:
-#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
         return platformDeferredSummaryItem(lineItem);
 #else
-            break;
-#endif
+    case ApplePayPaymentTiming::Deferred:
+        break;
 #endif
 
 #if HAVE(PASSKIT_AUTOMATIC_RELOAD_SUMMARY_ITEM)

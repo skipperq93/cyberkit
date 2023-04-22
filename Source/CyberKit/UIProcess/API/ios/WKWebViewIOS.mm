@@ -3173,10 +3173,9 @@ static bool isLockdownModeWarningNeeded()
 
 @implementation WKWebView (WKPrivateIOS)
 
-#if !PLATFORM(WATCHOS) && !PLATFORM(APPLETV) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(UI_EVENT_ATTRIBUTION)
 - (void)_setUIEventAttribution:(UIEventAttribution *)attribution
 {
-#if HAVE(UI_EVENT_ATTRIBUTION)
     if (attribution) {
         CyberCore::PrivateClickMeasurement measurement(
             CyberCore::PrivateClickMeasurement::SourceID(attribution.sourceIdentifier),
@@ -3189,21 +3188,16 @@ static bool isLockdownModeWarningNeeded()
         _page->setPrivateClickMeasurement({{ WTFMove(measurement), attribution.sourceDescription, attribution.purchaser }});
     } else
         _page->setPrivateClickMeasurement(std::nullopt);
-#endif
 }
 
 - (UIEventAttribution *)_uiEventAttribution
 {
-#if HAVE(UI_EVENT_ATTRIBUTION)
     auto& measurement = _page->privateClickMeasurement();
     if (!measurement)
         return nil;
 
     URL destinationURL { makeString("https://", measurement->pcm.destinationSite().registrableDomain.string()) };
     return adoptNS([[UIEventAttribution alloc] initWithSourceIdentifier:measurement->pcm.sourceID() destinationURL:destinationURL sourceDescription:measurement->sourceDescription purchaser:measurement->purchaser]).autorelease();
-#else
-    return nil;
-#endif
 }
 
 - (void)_setEphemeralUIEventAttribution:(UIEventAttribution *)attribution
@@ -3214,7 +3208,6 @@ static bool isLockdownModeWarningNeeded()
 
 - (void)_setEphemeralUIEventAttribution:(UIEventAttribution *)attribution forApplicationWithBundleID:(NSString *)bundleID
 {
-#if HAVE(UI_EVENT_ATTRIBUTION)
     if (attribution) {
         CyberCore::PrivateClickMeasurement measurement(
             CyberCore::PrivateClickMeasurement::SourceID(attribution.sourceIdentifier),
@@ -3227,7 +3220,6 @@ static bool isLockdownModeWarningNeeded()
         _page->setPrivateClickMeasurement({{ WTFMove(measurement), attribution.sourceDescription, attribution.purchaser }});
     } else
         _page->setPrivateClickMeasurement(std::nullopt);
-#endif
 }
 
 - (UIEventAttribution *)_ephemeralUIEventAttribution
@@ -3235,7 +3227,7 @@ static bool isLockdownModeWarningNeeded()
     return self._uiEventAttribution;
 }
 
-#endif // !PLATFORM(WATCHOS) && !PLATFORM(APPLETV)
+#endif // HAVE(UI_EVENT_ATTRIBUTION)
 
 - (CGRect)_contentVisibleRect
 {

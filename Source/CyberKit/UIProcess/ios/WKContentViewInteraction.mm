@@ -4745,7 +4745,7 @@ static void selectionChangedWithTouch(WKContentView *view, const CyberCore::IntP
     });
 }
 
-#if HAVE(UI_EDIT_MENU_INTERACTION) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000)
+#if HAVE(UI_EDIT_MENU_INTERACTION)
 
 - (void)requestPreferredArrowDirectionForEditMenuWithCompletionHandler:(void(^)(UIEditMenuArrowDirection))completion
 {
@@ -11560,7 +11560,7 @@ static BOOL shouldUseMachineReadableCodeMenuFromImageAnalysisResult(CocoaImageAn
     return _page && _page->editorState().selectionIsRangeInsideImageOverlay;
 }
 
-#if HAVE(UI_EDIT_MENU_INTERACTION) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000)
+#if HAVE(UI_EDIT_MENU_INTERACTION)
 
 - (void)willPresentEditMenuWithAnimator:(id<UIEditMenuInteractionAnimating>)animator
 {

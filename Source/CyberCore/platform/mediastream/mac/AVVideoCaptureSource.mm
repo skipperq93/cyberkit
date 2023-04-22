@@ -294,7 +294,7 @@ const RealtimeMediaSourceCapabilities& AVVideoCaptureSource::capabilities()
     if ([videoDevice position] == AVCaptureDevicePositionBack)
         capabilities.addFacingMode(VideoFacingMode::Environment);
 
-#if HAVE(AVCAPTUREDEVICE_MINFOCUSLENGTH) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(AVCAPTUREDEVICE_MINFOCUSLENGTH)
     double minimumFocusDistance = [videoDevice minimumFocusDistance];
     if (minimumFocusDistance != -1.0) {
         ASSERT(minimumFocusDistance >= 0);

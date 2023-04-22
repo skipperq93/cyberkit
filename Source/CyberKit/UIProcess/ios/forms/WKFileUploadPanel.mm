@@ -408,7 +408,7 @@ static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, U
     RetainPtr<WKFileUploadMediaTranscoder> _mediaTranscoder;
 #endif
     RetainPtr<UIImagePickerController> _cameraPicker;
-#if HAVE(PHOTOS_UI) && ((PLATFORM(MAC) && __MAC_OS_X_VERSION_MIN_REQUIRED >= 130000) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000))
+#if HAVE(PHOTOS_UI)
     RetainPtr<PHPickerViewController> _photoPicker;
 #endif
     RetainPtr<UIViewController> _presentationViewController;
@@ -579,7 +579,7 @@ static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, U
 {
     if (_presentationViewController) {
         UIViewController *currentPresentedViewController = [_presentationViewController presentedViewController];
-#if HAVE(PHOTOS_UI) && ((PLATFORM(MAC) && __MAC_OS_X_VERSION_MIN_REQUIRED >= 130000) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000))
+#if HAVE(PHOTOS_UI)
         if (currentPresentedViewController == self || currentPresentedViewController == _cameraPicker.get() || currentPresentedViewController == _photoPicker.get()) {
 #else
         if (currentPresentedViewController == self || currentPresentedViewController == _cameraPicker.get()) {
@@ -967,7 +967,7 @@ static NSString *displayStringForDocumentsAtURLs(NSArray<NSURL *> *urls)
 
 #pragma mark - PHPickerViewControllerDelegate implementation
 
-#if HAVE(PHOTOS_UI) && ((PLATFORM(MAC) && __MAC_OS_X_VERSION_MIN_REQUIRED >= 130000) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000))
+#if HAVE(PHOTOS_UI)
 - (void)picker:(PHPickerViewController *)picker didFinishPicking:(NSArray<PHPickerResult *> *)results
 {
     [self _processPickerResults:results successBlock:^(NSArray<_WKFileUploadItem *> *items) {
@@ -1056,7 +1056,7 @@ static NSString *displayStringForDocumentsAtURLs(NSArray<NSURL *> *urls)
     [self _processMediaInfoDictionaries:infos atIndex:0 processedResults:[NSMutableArray array] successBlock:successBlock failureBlock:failureBlock];
 }
 
-#if HAVE(PHOTOS_UI) && ((PLATFORM(MAC) && __MAC_OS_X_VERSION_MIN_REQUIRED >= 130000) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000))
+#if HAVE(PHOTOS_UI)
 - (void)_processPickerResults:(NSArray<PHPickerResult *> *)results successBlock:(void (^)(NSArray<_WKFileUploadItem *> *processedResults))successBlock failureBlock:(void (^)(void))failureBlock
 {
     [self _processPickerResults:results atIndex:0 processedResults:[NSMutableArray array] successBlock:successBlock failureBlock:failureBlock];

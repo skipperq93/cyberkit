@@ -1395,7 +1395,7 @@
         mach_vm_map_external
         semaphore_create
         semaphore_destroy
-#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140500)
+#if HAVE(TASK_IDENTITY_TOKEN)
         task_create_identity_token
 #endif
         task_get_special_port_from_user

@@ -128,7 +128,7 @@ CF_ENUM(CFHTTPCookieStorageAcceptPolicy)
     CFHTTPCookieStorageAcceptPolicyExclusivelyFromMainDocumentDomain = 3,
 };
 
-#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE)
 typedef enum {
     nw_connection_privacy_stance_unknown = 0,
     nw_connection_privacy_stance_not_eligible = 1,
@@ -220,7 +220,7 @@ typedef enum {
 - (BOOL)_schemeWasUpgradedDueToDynamicHSTS;
 - (BOOL)_preventHSTSStorage;
 - (BOOL)_ignoreHSTS;
-#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE)
 @property (setter=_setPrivacyProxyFailClosed:) BOOL _privacyProxyFailClosed;
 #endif
 @end
@@ -280,7 +280,7 @@ typedef NS_ENUM(NSInteger, NSURLSessionCompanionProxyPreference) {
 @property (readwrite, assign) BOOL _allowsHTTP3;
 #endif
 @property (nullable, retain) _NSHSTSStorage *_hstsStorage;
-#if HAVE(NETWORK_LOADER) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(NETWORK_LOADER)
 @property BOOL _usesNWLoader;
 #endif
 #if HAVE(CFNETWORK_NSURLSESSION_CONNECTION_CACHE_LIMITS)
@@ -321,7 +321,7 @@ typedef NS_ENUM(NSInteger, NSURLSessionCompanionProxyPreference) {
 @property (assign, readonly) NSInteger _responseHeaderBytesReceived;
 @property (assign, readonly) int64_t _responseBodyBytesReceived;
 @property (assign, readonly) int64_t _responseBodyBytesDecoded;
-#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE)
 @property (assign, readonly) nw_connection_privacy_stance_t _privacyStance;
 #endif
 @end
@@ -382,7 +382,7 @@ typedef void (^CFCachedURLResponseCallBackBlock)(CFCachedURLResponseRef);
 void _CFCachedURLResponseSetBecameFileBackedCallBackBlock(CFCachedURLResponseRef, CFCachedURLResponseCallBackBlock, dispatch_queue_t);
 #endif
 
-#if HAVE(CFNETWORK_DISABLE_CACHE_SPI) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150400)
+#if HAVE(CFNETWORK_DISABLE_CACHE_SPI)
 void _CFURLStorageSessionDisableCache(CFURLStorageSessionRef);
 #endif
 CFURLStorageSessionRef _CFURLStorageSessionCreate(CFAllocatorRef, CFStringRef, CFDictionaryRef);
