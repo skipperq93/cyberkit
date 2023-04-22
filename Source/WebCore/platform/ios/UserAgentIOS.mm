@@ -61,7 +61,7 @@ ASCIILiteral osNameForUserAgent()
     return "iPhone OS"_s;
 }
 
-#if !USE(STATIC_IPAD_USER_AGENT_VALUE)
+#if 0 && !USE(STATIC_IPAD_USER_AGENT_VALUE)
 static StringView deviceNameForUserAgent()
 {
     if (isClassic()) {
@@ -88,9 +88,8 @@ String standardUserAgentWithApplicationName(const String& applicationName, const
     auto separator = applicationName.isEmpty() ? "" : " ";
 
     if (type == UserAgentType::Desktop)
-        return makeString("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko)", separator, applicationName);
-
-#if USE(STATIC_IPAD_USER_AGENT_VALUE)
+        return makeString("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Safari/605.1.15");
+#if 1 || USE(STATIC_IPAD_USER_AGENT_VALUE)
     UNUSED_PARAM(userAgentOSVersion);
     UNUSED_PARAM(separator);
     return makeString("Mozilla/5.0 (iPad; CPU OS 16_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Mobile/15E148 Safari/604.1");
