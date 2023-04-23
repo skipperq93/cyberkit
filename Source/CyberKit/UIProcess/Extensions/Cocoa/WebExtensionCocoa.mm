@@ -59,6 +59,10 @@ SOFT_LINK(CoreSVG, CGSVGDocumentCreateFromData, CGSVGDocumentRef, (CFDataRef dat
 SOFT_LINK(CoreSVG, CGSVGDocumentRelease, void, (CGSVGDocumentRef document), (document))
 #endif
 
+#if !HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
+#import <MobileCoreServices/MobileCoreServices.h>
+#endif
+
 namespace CyberKit {
 
 static NSString * const manifestVersionManifestKey = @"manifest_version";
@@ -747,10 +751,20 @@ CocoaImage *WebExtension::imageForPath(NSString *imagePath)
 
     NSURL *imageURL = resourceFileURLForPath(imagePath);
 
+#if HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
     UTType *imageType;
     [imageURL getResourceValue:&imageType forKey:NSURLContentTypeKey error:nil];
 
     if ([imageType.identifier isEqualToString:UTTypeSVG.identifier]) {
+#else
+ALLOW_DEPRECATED_DECLARATIONS_BEGIN
+    static CFStringRef kUTTagClassFilenameExtension;
+    static CFStringRef kUTTypeSVG;
+    CFStringRef fileExtension = (__bridge CFStringRef)((NSURL *)imageURL).pathExtension;
+    CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension, nullptr);
+    if (UTTypeConformsTo(UTI, kUTTypeSVG)) {
+ALLOW_DEPRECATED_DECLARATIONS_END
+#endif
 #if PLATFORM(MAC)
 #if USE(NSIMAGE_FOR_SVG_SUPPORT)
         return [[NSImage alloc] initWithData:imageData];

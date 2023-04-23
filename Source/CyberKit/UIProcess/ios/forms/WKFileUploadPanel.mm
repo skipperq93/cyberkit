@@ -74,6 +74,10 @@ SOFT_LINK_CLASS(PhotosUI, PHPickerResult)
 #endif
 #endif
 
+#if !HAVE(UNIFORM_TYPE_IDENTIFERS_FRAMEWORK)
+#import <MobileCoreServices/MobileCoreServices.h>
+#endif
+
 enum class WKFileUploadPanelImagePickerType : uint8_t {
     Image = 1 << 0,
     Video  = 1 << 1,
@@ -98,14 +102,18 @@ static bool setContainsUTIThatConformsTo(NSSet<NSString *> *typeIdentifiers, UTT
 }
 #endif
 
-/*static bool setContainsUTIThatConformsTo(NSSet<NSString *> *typeIdentifiers, CFStringRef conformToUTI)
+static bool setContainsUTIThatConformsTo(NSSet<NSString *> *typeIdentifiers, NSString* conformToUTI)
 {
+#if HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
+    return setContainsUTIThatConformsTo(typeIdentifiers, [UTType typeWithIdentifier:conformToUTI]);
+#else
     for (NSString *uti in typeIdentifiers) {
-        if ([UTTypeConformance conforms:(__bridge CFStringRef)uti :conformToUTI])
+        if (UTTypeConformsTo((__bridge CFStringRef)uti, (__bridge CFStringRef)conformToUTI))
             return true;
     }
     return false;
-}*/
+#endif
+}
 
 #if HAVE(PHOTOS_UI)
 
@@ -121,14 +129,18 @@ static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, U
 }
 #endif
 
-/*static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, CFStringRef conformToUTI)
+static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, NSString* conformToUTI)
 {
+#if HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
+    return firstUTIThatConformsTo(typeIdentifiers, [UTType typeWithIdentifier:conformToUTI]);
+#else
     for (NSString *uti in typeIdentifiers) {
-        if ([UTTypeConformance conforms:(__bridge CFStringRef)uti :conformToUTI])
+        if (UTTypeConformsTo((__bridge CFStringRef)uti, (__bridge CFStringRef)conformToUTI))
             return uti;
     }
     return nil;
-}*/
+#endif
+}
 
 #endif
 
@@ -267,7 +279,20 @@ static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, U
     _progressController = adoptNS([allocPUActivityProgressControllerInstance() init]);
 #endif
     [_progressController setTitle:WEB_UI_STRING_KEY("Preparing…", "Preparing (file upload)", "Title for file upload progress view")];
-    [_progressController showAnimated:YES allowDelay:YES];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+    SEL selector = @selector(showAnimated:allowDelay:);
+    if ([_progressController respondsToSelector:selector]) {
+        BOOL myBoolValue = YES;
+        NSMethodSignature* signature = [[_progressController.get() class] instanceMethodSignatureForSelector:selector];
+        NSInvocation* invocation = [NSInvocation invocationWithMethodSignature: signature];
+        [invocation setTarget: _progressController.get()];
+        [invocation setSelector: selector ];
+        [invocation setArgument: &myBoolValue atIndex: 2];
+        [invocation setArgument: &myBoolValue atIndex: 3];
+        [invocation invoke];
+    }
+#pragma clang diagnostic pop
 
     [_progressController setCancellationHandler:makeBlockPtr([weakSelf = WeakObjCPtr<WKFileUploadMediaTranscoder>(self)] {
         auto strongSelf = weakSelf.get();
@@ -313,7 +338,14 @@ static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, U
         return;
     }
 
-    NSString *fileName = [item.fileURL.lastPathComponent.stringByDeletingPathExtension stringByAppendingPathExtension:UTTypeQuickTimeMovie.preferredFilenameExtension.uppercaseString];
+    NSString* QTExtension;
+#if HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
+    QTExtension = UTTypeQuickTimeMovie.preferredFilenameExtension;
+#else
+    static CFStringRef kUTTagClassFilenameExtension;
+    QTExtension = (NSString *)UTTypeCopyPreferredTagWithClass((__bridge CFStringRef)@"com.apple.quicktime-movie", kUTTagClassFilenameExtension);
+#endif
+    NSString *fileName = [item.fileURL.lastPathComponent.stringByDeletingPathExtension stringByAppendingPathExtension:QTExtension.uppercaseString];
     NSString *filePath = [temporaryDirectory stringByAppendingPathComponent:fileName];
     NSURL *outputURL = [NSURL fileURLWithPath:filePath isDirectory:NO];
 
@@ -357,13 +389,32 @@ static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, U
 - (void)_dismissProgress
 {
     [_progressTimer invalidate];
-    [_progressController hideAnimated:NO allowDelay:NO];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+    SEL selector = @selector(hideAnimated:allowDelay:);
+    if ([_progressController respondsToSelector:selector]) {
+        BOOL myBoolValue = NO;
+        NSMethodSignature* signature = [[_progressController.get() class] instanceMethodSignatureForSelector:selector];
+        NSInvocation* invocation = [NSInvocation invocationWithMethodSignature: signature];
+        [invocation setTarget: _progressController.get()];
+        [invocation setSelector: selector ];
+        [invocation setArgument: &myBoolValue atIndex: 2];
+        [invocation setArgument: &myBoolValue atIndex: 3];
+        [invocation invoke];
+    }
+#pragma clang diagnostic pop
 }
 
 - (void)_updateProgress:(NSTimer *)timer
 {
     auto currentSessionProgress = [_exportSession progress];
-    [_progressController setFractionCompleted:(currentSessionProgress + _processedVideoCount) / _videoCount];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+    SEL selector = @selector(setFractionCompleted:);
+    if ([_progressController respondsToSelector:selector]) {
+        [_progressController performSelector:selector withObject:@((currentSessionProgress + _processedVideoCount) / _videoCount)];
+    }
+#pragma clang diagnostic pop
 }
 
 - (NSString *)_temporaryDirectoryCreateIfNecessary
@@ -534,9 +585,9 @@ static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, U
     if (![_acceptedUTIs count])
         _allowedImagePickerTypes.add({ WKFileUploadPanelImagePickerType::Image, WKFileUploadPanelImagePickerType::Video });
     else {
-        if (setContainsUTIThatConformsTo(_acceptedUTIs.get(), UTTypeImage))
+        if (setContainsUTIThatConformsTo(_acceptedUTIs.get(), @"public.image"))
             _allowedImagePickerTypes.add({ WKFileUploadPanelImagePickerType::Image });
-        if (setContainsUTIThatConformsTo(_acceptedUTIs.get(), UTTypeMovie))
+        if (setContainsUTIThatConformsTo(_acceptedUTIs.get(), @"public.movie"))
             _allowedImagePickerTypes.add({ WKFileUploadPanelImagePickerType::Video });
     }
 
@@ -623,17 +674,25 @@ static NSSet<NSString *> *UTIsForMIMETypes(NSArray *mimeTypes)
             return [NSSet set];
 
         if ([mimeType caseInsensitiveCompare:@"image/*"] == NSOrderedSame)
-            [mediaTypes addObject:UTTypeImage.identifier];
+            [mediaTypes addObject:@"public.image"];
         else if ([mimeType caseInsensitiveCompare:@"video/*"] == NSOrderedSame)
-            [mediaTypes addObject:UTTypeMovie.identifier];
+            [mediaTypes addObject:@"public.movie"];
         else if ([mimeType caseInsensitiveCompare:@"audio/*"] == NSOrderedSame)
             // UIImagePickerController doesn't allow audio-only recording, so show the video
             // recorder for "audio/*".
-            [mediaTypes addObject:UTTypeMovie.identifier];
+            [mediaTypes addObject:@"public.movie"];
         else {
+#if HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
             auto uti = [UTType typeWithMIMEType:mimeType];
             if (uti)
                 [mediaTypes addObject:uti.identifier];
+#else
+            static CFStringRef kUTTagClassMIMEType;
+            NSString *uti = (NSString *)UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType,
+                                                                              (__bridge CFStringRef)mimeType, nullptr);
+            if (uti)
+                [mediaTypes addObject:uti];
+#endif
         }
     }
     return mediaTypes;
@@ -649,6 +708,7 @@ static NSSet<NSString *> *UTIsForMIMETypes(NSArray *mimeTypes)
             if ([acceptedMediaTypeUTIs containsObject:availableMediaTypeUTI])
                 [mediaTypes addObject:availableMediaTypeUTI];
             else {
+#if HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
                 UTType *availableMediaType = [UTType typeWithIdentifier:availableMediaTypeUTI];
                 for (NSString *acceptedMediaTypeUTI in acceptedMediaTypeUTIs) {
                     UTType *acceptedMediaType = [UTType typeWithIdentifier:acceptedMediaTypeUTI];
@@ -657,6 +717,15 @@ static NSSet<NSString *> *UTIsForMIMETypes(NSArray *mimeTypes)
                         break;
                     }
                 }
+#else
+                for (NSString *acceptedMediaTypeUTI in acceptedMediaTypeUTIs) {
+                    if (UTTypeConformsTo((__bridge CFStringRef)acceptedMediaTypeUTI,
+                                         (__bridge CFStringRef)availableMediaTypeUTI)) {
+                        [mediaTypes addObject:availableMediaTypeUTI];
+                        break;
+                    }
+                }
+#endif
             }
         }
 
@@ -814,7 +883,7 @@ static NSSet<NSString *> *UTIsForMIMETypes(NSArray *mimeTypes)
 - (void)showFilePickerMenu
 {
     NSArray *mediaTypes = [_acceptedUTIs allObjects];
-    NSArray *documentTypes = mediaTypes.count ? mediaTypes : @[ UTTypeItem.identifier ];
+    NSArray *documentTypes = mediaTypes.count ? mediaTypes : @[ @"public.item" ];
 
     _uploadFileManager = adoptNS([[NSFileManager alloc] init]);
     _uploadFileCoordinator = adoptNS([[NSFileCoordinator alloc] init]);
@@ -1212,10 +1281,17 @@ static NSString *displayStringForDocumentsAtURLs(NSArray<NSURL *> *urls)
 - (void)_uploadItemFromMediaInfo:(NSDictionary *)info successBlock:(void (^)(_WKFileUploadItem *))successBlock failureBlock:(void (^)(void))failureBlock
 {
     NSString *mediaTypeUTI = [info objectForKey:UIImagePickerControllerMediaType];
+#if HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
     UTType *mediaType = [UTType typeWithIdentifier:mediaTypeUTI];
+    auto isMovie = [mediaType conformsToType:UTTypeMovie];
+    auto isImage = [mediaType conformsToType:UTTypeImage];
+#else
+    auto isMovie = UTTypeConformsTo((__bridge CFStringRef)mediaTypeUTI, (__bridge CFStringRef)@"public.movie");
+    auto isImage = UTTypeConformsTo((__bridge CFStringRef)mediaTypeUTI, (__bridge CFStringRef)@"public.image");
+#endif
 
     // For videos from the existing library or camera, the media URL will give us a file path.
-    if ([mediaType conformsToType:UTTypeMovie]) {
+    if (isMovie) {
         NSURL *mediaURL = [info objectForKey:UIImagePickerControllerMediaURL];
         if (![mediaURL isFileURL]) {
             LOG_ERROR("WKFileUploadPanel: Expected media URL to be a file path, it was not");
@@ -1228,8 +1304,8 @@ static NSString *displayStringForDocumentsAtURLs(NSArray<NSURL *> *urls)
         return;
     }
 
-    if (![mediaType conformsToType:UTTypeImage]) {
-        LOG_ERROR("WKFileUploadPanel: Unexpected media type. Expected image or video, got: %@", mediaType);
+    if (!isImage) {
+        LOG_ERROR("WKFileUploadPanel: Unexpected media type. Expected image or video, got: %@", mediaTypeUTI);
         ASSERT_NOT_REACHED();
         failureBlock();
         return;

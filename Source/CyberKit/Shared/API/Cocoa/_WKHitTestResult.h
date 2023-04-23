@@ -25,7 +25,7 @@
 
 #import <CyberKit/WKFoundation.h>
 
-#if TARGET_OS_OSX || TARGET_OS_IOS
+#if TARGET_OS_OSX || (TARGET_OS_IOS && __IPHONE_OS_VERSION_MIN_REQUIRED >= 130400)
 
 #import <Foundation/Foundation.h>
 

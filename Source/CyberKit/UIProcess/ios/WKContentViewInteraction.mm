@@ -5357,7 +5357,9 @@ static void logTextInteractionAssistantSelectionChange(const char* methodName, U
 
     _page->setFocusedElementValue(_focusedElementInformation.elementContext, valueAsString);
     _focusedElementInformation.value = valueAsString;
+#if ENABLE(INPUT_TYPE_COLOR)
     _focusedElementInformation.colorValue = color;
+#endif
 }
 
 - (void)updateFocusedElementSelectedIndex:(uint32_t)index allowsMultipleSelection:(bool)allowsMultipleSelection
@@ -10902,7 +10904,7 @@ static RetainPtr<NSItemProvider> createItemProvider(const CyberKit::WebPageProxy
 {
     ASSERT(controller == _visualSearchPreviewController);
     ASSERT(!index);
-    auto item = adoptNS([PAL::allocQLItemInstance() initWithDataProvider:self contentType:UTTypeTIFF.identifier previewTitle:_visualSearchPreviewTitle.get()]);
+    auto item = adoptNS([PAL::allocQLItemInstance() initWithDataProvider:self contentType:@"public.tiff" previewTitle:_visualSearchPreviewTitle.get()]);
     if ([item respondsToSelector:@selector(setPreviewOptions:)]) {
         auto previewOptions = adoptNS([[NSMutableDictionary alloc] initWithCapacity:2]);
         if (_visualSearchPreviewImageURL)
@@ -10920,7 +10922,7 @@ static RetainPtr<NSItemProvider> createItemProvider(const CyberKit::WebPageProxy
 - (NSData *)provideDataForItem:(QLItem *)item
 {
     ASSERT(_visualSearchPreviewImage);
-    return CyberKit::transcode([_visualSearchPreviewImage CGImage], (__bridge CFStringRef)UTTypeTIFF.identifier).autorelease();
+    return CyberKit::transcode([_visualSearchPreviewImage CGImage], (__bridge CFStringRef)@"public.tiff").autorelease();
 }
 
 #pragma mark - WKActionSheetAssistantDelegate
@@ -11686,8 +11688,10 @@ static BOOL shouldUseMachineReadableCodeMenuFromImageAnalysisResult(CocoaImageAn
 
 - (void)setSelectedColorForColorPicker:(UIColor *)color
 {
+#if ENABLE(INPUT_TYPE_COLOR)
     if ([_inputPeripheral isKindOfClass:[WKFormColorControl class]])
         [(WKFormColorControl *)_inputPeripheral selectColor:color];
+#endif
 }
 
 - (NSString *)textContentTypeForTesting

@@ -304,8 +304,15 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
 static bool shouldTreatAsAttachmentByDefault(const String& typeIdentifier)
 {
-    auto type = [UTType typeWithIdentifier:typeIdentifier];
-    return [type conformsToType:UTTypeVCard] || [type conformsToType:UTTypePDF];
+    if (@available(iOS 14.0, *)) {
+        auto type = [UTType typeWithIdentifier:typeIdentifier];
+        return [type conformsToType:UTTypeVCard] || [type conformsToType:UTTypePDF];
+    } else {
+ALLOW_DEPRECATED_DECLARATIONS_BEGIN
+        CFStringRef type = (__bridge CFStringRef)typeIdentifier.utf8().data();
+        return UTTypeConformsTo(type, kUTTypeVCard) || UTTypeConformsTo(type, kUTTypePDF);
+ALLOW_DEPRECATED_DECLARATIONS_END
+    }
 }
 
 static bool prefersAttachmentRepresentation(const PasteboardItemInfo& info)
