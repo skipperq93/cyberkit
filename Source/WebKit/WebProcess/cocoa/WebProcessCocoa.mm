@@ -1084,7 +1084,7 @@ void WebProcess::backlightLevelDidChange(float backlightLevel)
 
 void WebProcess::accessibilityPreferencesDidChange(const AccessibilityPreferences& preferences)
 {
-#if HAVE(PER_APP_ACCESSIBILITY_PREFERENCES) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(PER_APP_ACCESSIBILITY_PREFERENCES)
     auto appID = CFSTR("com.apple.WebKit.WebContent");
     auto reduceMotionEnabled = preferences.reduceMotionEnabled;
     if (_AXSReduceMotionEnabledApp(appID) != reduceMotionEnabled)

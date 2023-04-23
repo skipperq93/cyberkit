@@ -254,7 +254,7 @@ NSMutableDictionary *WebProcessPool::ensureBundleParameters()
 static AccessibilityPreferences accessibilityPreferences()
 {
     AccessibilityPreferences preferences;
-#if HAVE(PER_APP_ACCESSIBILITY_PREFERENCES) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(PER_APP_ACCESSIBILITY_PREFERENCES)
     auto appId = WebCore::applicationBundleIdentifier().createCFString();
 
     preferences.reduceMotionEnabled = _AXSReduceMotionEnabledApp(appId.get());
@@ -819,7 +819,7 @@ void WebProcessPool::registerNotificationObservers()
     addCFNotificationObserver(lockdownModeConfigurationUpdateCallback, (__bridge CFStringRef)WKLockdownModeContainerConfigurationChangedNotification);
 #endif
 
-#if HAVE(PER_APP_ACCESSIBILITY_PREFERENCES) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(PER_APP_ACCESSIBILITY_PREFERENCES)
     addCFNotificationObserver(accessibilityPreferencesChangedCallback, kAXSReduceMotionChangedNotification);
     addCFNotificationObserver(accessibilityPreferencesChangedCallback, kAXSIncreaseButtonLegibilityNotification);
     addCFNotificationObserver(accessibilityPreferencesChangedCallback, kAXSEnhanceTextLegibilityChangedNotification);
@@ -876,7 +876,7 @@ void WebProcessPool::unregisterNotificationObservers()
     removeCFNotificationObserver((__bridge CFStringRef)WKLockdownModeContainerConfigurationChangedNotification);
 #endif
 
-#if HAVE(PER_APP_ACCESSIBILITY_PREFERENCES) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(PER_APP_ACCESSIBILITY_PREFERENCES)
     removeCFNotificationObserver(kAXSReduceMotionChangedNotification);
     removeCFNotificationObserver(kAXSIncreaseButtonLegibilityNotification);
     removeCFNotificationObserver(kAXSEnhanceTextLegibilityChangedNotification);
