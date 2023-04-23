@@ -1080,7 +1080,7 @@
 #define HAVE_AVSAMPLEBUFFERVIDEOOUTPUT 1
 #endif
 
-#if PLATFORM(IOS)
+#if PLATFORM(IOS) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
 #define HAVE_PHOTOS_UI 1
 // FIXME (102246762): Remove this have (and make it true everywhere) when possible.
 #if __has_include(<PhotosUICore/PXActivityProgressController.h>)
@@ -1143,7 +1143,8 @@
 #define HAVE_UNIFIED_SPEECHSYNTHESIS_FIX_FOR_81465164 1
 #endif
 
-#if PLATFORM(COCOA)
+#if PLATFORM(COCOA) \
+    && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
 #define HAVE_UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK 1
 #endif
 
