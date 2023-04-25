@@ -28,6 +28,7 @@
 
 int main(int argc, char * argv[])
 {
+    //system("sudo jetsamctl -l 840 MiniBrowser");
     [WKProcessPool _setLinkedOnOrAfterEverythingForTesting];
 
     @autoreleasepool {

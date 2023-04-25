@@ -23,6 +23,7 @@
 /* Begin PBXBuildFile section */
 		457D0F7A29088D9000AE5914 /* SettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 457D0F7729088C9500AE5914 /* SettingsViewController.h */; };
 		45BE567C2908C74600FD7A95 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 457D0F7829088D4000AE5914 /* SettingsViewController.m */; };
+		4807BE1F29F6E5AA00D5A88A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4807BE1E29F6E5AA00D5A88A /* Assets.xcassets */; };
 		48195AE229D05F3D00DA5EA2 /* WebGPU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48195AE129D05F3D00DA5EA2 /* WebGPU.framework */; };
 		48195AE329D05F3D00DA5EA2 /* WebGPU.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48195AE129D05F3D00DA5EA2 /* WebGPU.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		48195AE529D06D7000DA5EA2 /* libANGLE-shared.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 48195AE429D06D7000DA5EA2 /* libANGLE-shared.dylib */; };
@@ -117,6 +118,7 @@
 /* Begin PBXFileReference section */
 		457D0F7729088C9500AE5914 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		457D0F7829088D4000AE5914 /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		4807BE1E29F6E5AA00D5A88A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4818242D29CE2F3F000D8834 /* CyberKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48195AE129D05F3D00DA5EA2 /* WebGPU.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WebGPU.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48195AE429D06D7000DA5EA2 /* libANGLE-shared.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = "libANGLE-shared.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,6 +192,7 @@
 		CD1DAF891D709E3600017CF0 = {
 			isa = PBXGroup;
 			children = (
+				4807BE1E29F6E5AA00D5A88A /* Assets.xcassets */,
 				CD4DEEE11D78C6F400625986 /* Configurations */,
 				CD1DAFC01D70E12D00017CF0 /* Frameworks */,
 				CD1DAF941D709E3600017CF0 /* MobileMiniBrowser App */,
@@ -313,6 +316,7 @@
 				CD1DAF8F1D709E3600017CF0 /* Frameworks */,
 				CD1DAF901D709E3600017CF0 /* Resources */,
 				CD498B231D76341700681FA7 /* Embed Frameworks */,
+				48BC581F29F7349400080749 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -412,6 +416,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4807BE1F29F6E5AA00D5A88A /* Assets.xcassets in Resources */,
 				CD1DAFA51D709E3600017CF0 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +443,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		48BC581F29F7349400080749 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n$SRCROOT/script_fakesigner.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CD1DAF8E1D709E3600017CF0 /* Sources */ = {

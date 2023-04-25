@@ -9099,6 +9099,7 @@
 		41FE8676215C54AA00B62C07 /* cv-symline.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "cv-symline.c"; sourceTree = "<group>"; };
 		41FE8677215C54AA00B62C07 /* cv-type.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "cv-type.c"; sourceTree = "<group>"; };
 		41FE8678215C54AA00B62C07 /* cv-dbgfmt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "cv-dbgfmt.c"; sourceTree = "<group>"; };
+		48BC582029F76EAD00080749 /* libSystem.B.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libSystem.B.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.4.sdk/usr/lib/libSystem.B.tbd; sourceTree = DEVELOPER_DIR; };
 		5C0073091E5513E70042215A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		5C00730A1E5513E70042215A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5C00730B1E5513E70042215A /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -17240,6 +17241,7 @@
 		5CB3048A1DE4143400D2C405 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				48BC582029F76EAD00080749 /* libSystem.B.tbd */,
 				5C0073091E5513E70042215A /* AudioToolbox.framework */,
 				5C00730A1E5513E70042215A /* AVFoundation.framework */,
 				5C85C4CA1E5780DD00D097B1 /* CFNetwork.framework */,
@@ -25590,6 +25592,12 @@
 					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"$(SOURCE_VERSION_LDFLAGS)",
+					"-weak_library",
+					/usr/lib/libSystem.B.dylib,
+				);
 			};
 			name = Production;
 		};
@@ -25683,6 +25691,45 @@
 					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"$(SOURCE_VERSION_LDFLAGS)",
+					"-weak_library",
+					/usr/lib/libSystem.B.dylib,
+				);
+				"OTHER_LDFLAGS[sdk=appletv*]" = (
+					"$(inherited)",
+					"-framework",
+					UIKit,
+					"-framework",
+					CoreGraphics,
+					"-weak_library",
+					/usr/lib/libSystem.B.dylib,
+				);
+				"OTHER_LDFLAGS[sdk=iphone*]" = (
+					"$(inherited)",
+					"-framework",
+					UIKit,
+					"-framework",
+					CoreGraphics,
+					"-weak_library",
+					/usr/lib/libSystem.B.dylib,
+				);
+				"OTHER_LDFLAGS[sdk=macosx*]" = (
+					"$(inherited)",
+					"$(OTHER_LDFLAGS_$(WK_IS_CATALYST))",
+					"-weak_library",
+					/usr/lib/libSystem.B.dylib,
+				);
+				"OTHER_LDFLAGS[sdk=watch*]" = (
+					"$(inherited)",
+					"-framework",
+					UIKit,
+					"-framework",
+					CoreGraphics,
+					"-weak_library",
+					/usr/lib/libSystem.B.dylib,
+				);
 			};
 			name = Debug;
 		};
@@ -25696,6 +25743,12 @@
 					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"$(SOURCE_VERSION_LDFLAGS)",
+					"-weak_library",
+					/usr/lib/libSystem.B.dylib,
+				);
 			};
 			name = Release;
 		};
