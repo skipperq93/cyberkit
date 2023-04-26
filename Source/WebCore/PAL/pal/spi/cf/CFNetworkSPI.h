@@ -243,6 +243,7 @@ typedef NS_ENUM(NSInteger, NSURLSessionCompanionProxyPreference) {
 @class _NSHTTPAlternativeServicesStorage;
 #endif
 
+#if HAVE(HSTS_STORAGE)
 @interface _NSHSTSStorage : NSObject
 - (instancetype)initPersistentStoreWithURL:(nullable NSURL*)path;
 - (BOOL)shouldPromoteHostToHTTPS:(NSString *)host;
@@ -250,6 +251,7 @@ typedef NS_ENUM(NSInteger, NSURLSessionCompanionProxyPreference) {
 - (void)resetHSTSForHost:(NSString *)host;
 - (void)resetHSTSHostsSinceDate:(NSDate *)date;
 @end
+#endif
 
 @interface NSURLSessionConfiguration ()
 @property (assign) _TimingDataOptions _timingDataOptions;
@@ -279,7 +281,9 @@ typedef NS_ENUM(NSInteger, NSURLSessionCompanionProxyPreference) {
 @property (nullable, retain) _NSHTTPAlternativeServicesStorage *_alternativeServicesStorage;
 @property (readwrite, assign) BOOL _allowsHTTP3;
 #endif
+#if HAVE(HSTS_STORAGE)
 @property (nullable, retain) _NSHSTSStorage *_hstsStorage;
+#endif
 #if HAVE(NETWORK_LOADER)
 @property BOOL _usesNWLoader;
 #endif
