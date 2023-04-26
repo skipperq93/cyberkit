@@ -3045,7 +3045,7 @@ sub iosSimulatorRuntime()
 {
     my $xcodeSDKVersion = xcodeSDKVersion();
     $xcodeSDKVersion =~ s/\./-/;
-    my $runtime = "com.apple.CoreSimulator.SimRuntime.iOS-14-0";
+    my $runtime = "com.apple.CoreSimulator.SimRuntime.iOS-13-7";
 =for comment
     open(TEST, "-|", "xcrun --sdk iphonesimulator simctl list 2>&1") or die "Failed to run find simulator runtime";
     while ( my $line = <TEST> ) {
