@@ -57,7 +57,7 @@ NSString *pushBundleAppManagementDomain = @"com.matthewbenedict.CyberKit.PushBun
     return self;
 }
 
-- (void)coordinatorDidCompleteSuccessfully:(nonnull IXAppInstallCoordinator *)coordinator forApplicationRecord:(nullable LSApplicationRecord *)appRecord
+- (void)coordinatorDidCompleteSuccessfully:(nonnull IXAppInstallCoordinator *)coordinator
 {
     callOnMainRunLoop([self, protectedSelf = RetainPtr<id>(self)] {
         if (_bundle)
@@ -151,7 +151,7 @@ void ICAppBundle::getOriginsWithRegistrations(ClientConnection& connection, Comp
     Vector<String> results;
 
     RetainPtr<NSString> bundleIdentifierPrefix = (NSString *)bundlePrefixForHostAppIdentifier(connection.hostAppCodeSigningIdentifier());
-
+#if PLATFORM(IOS) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
     LSEnumerator<LSApplicationRecord *> *enumerator = [LSApplicationRecord enumeratorWithOptions:LSApplicationEnumerationOptionsEnumeratePlaceholders];
     for (LSApplicationRecord *record = [enumerator nextObject]; record; record = [enumerator nextObject]) {
         if (![record.managementDomain isEqualToString:pushBundleAppManagementDomain])
@@ -172,7 +172,9 @@ void ICAppBundle::getOriginsWithRegistrations(ClientConnection& connection, Comp
 
         results.append(originString);
     }
-    
+#else
+    originStringFromEncodedBundleIdentifier(@"");
+#endif
     completionHandler(results);
 }
 
@@ -186,11 +188,13 @@ const String& ICAppBundle::getBundleIdentifier()
 
 void ICAppBundle::checkForExistingBundle()
 {
+#if PLATFORM(IOS) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
     NSError *error = nil;
     RetainPtr<LSApplicationRecord> appRecord = adoptNS([[LSApplicationRecord alloc] initWithBundleIdentifier:(NSString *)getBundleIdentifier() allowPlaceholder:YES error:&error]);
 
     if (m_client)
         m_client->didCheckForExistingBundle(*this, appRecord ? PushAppBundleExists::Yes : PushAppBundleExists::No);
+#endif
 }
 
 void ICAppBundle::deleteExistingBundle()

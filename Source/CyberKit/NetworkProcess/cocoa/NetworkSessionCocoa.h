@@ -33,7 +33,9 @@ OBJC_CLASS NSURLSessionDownloadTask;
 OBJC_CLASS NSOperationQueue;
 OBJC_CLASS WKNetworkSessionDelegate;
 OBJC_CLASS WKNetworkSessionWebSocketDelegate;
+#if HAVE(HSTS_STORAGE)
 OBJC_CLASS _NSHSTSStorage;
+#endif
 OBJC_CLASS NSURLCredentialStorage;
 
 #include "DownloadID.h"
@@ -140,7 +142,9 @@ public:
     SessionWrapper& sessionWrapperForTask(WebPageProxyIdentifier, const CyberCore::ResourceRequest&, CyberCore::StoredCredentialsPolicy, std::optional<NavigatingToAppBoundDomain>);
     bool preventsSystemHTTPProxyAuthentication() const { return m_preventsSystemHTTPProxyAuthentication; }
     
+#if HAVE(HSTS_STORAGE)
     _NSHSTSStorage *hstsStorage() const;
+#endif
     NSURLCredentialStorage *nsCredentialStorage() const;
 
     void removeNetworkWebsiteData(std::optional<WallTime>, std::optional<HashSet<CyberCore::RegistrableDomain>>&&, CompletionHandler<void()>&&) override;

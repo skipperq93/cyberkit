@@ -1247,11 +1247,13 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     return configuration;
 }
 
+#if HAVE(HSTS_STORAGE)
 _NSHSTSStorage *NetworkSessionCocoa::hstsStorage() const
 {
     NSURLSessionConfiguration *configuration = m_defaultSessionSet->sessionWithCredentialStorage.session.get().configuration;
     return configuration._hstsStorage;
 }
+#endif
 
 NSURLCredentialStorage *NetworkSessionCocoa::nsCredentialStorage() const
 {
@@ -1380,7 +1382,9 @@ NetworkSessionCocoa::NetworkSessionCocoa(NetworkProcess& networkProcess, const N
 
     if (!!parameters.hstsStorageDirectory && !m_sessionID.isEphemeral()) {
         SandboxExtension::consumePermanently(parameters.hstsStorageDirectoryExtensionHandle);
+#if HAVE(HSTS_STORAGE)
         configuration._hstsStorage = adoptNS([[_NSHSTSStorage alloc] initPersistentStoreWithURL:[NSURL fileURLWithPath:parameters.hstsStorageDirectory isDirectory:YES]]).get();
+#endif
     }
 
 #if HAVE(CFNETWORK_SEPARATE_CREDENTIAL_STORAGE)
