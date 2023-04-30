@@ -92,7 +92,7 @@ String standardUserAgentWithApplicationName(const String& applicationName, const
 #if 1 || USE(STATIC_IPAD_USER_AGENT_VALUE)
     UNUSED_PARAM(userAgentOSVersion);
     UNUSED_PARAM(separator);
-    return makeString("Mozilla/5.0 (iPad; CPU OS 16_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Mobile/15E148 Safari/604.1");
+    return makeString("Mozilla/5.0 (iPad; CPU OS 16_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Mobile/15E148 Safari/604.1");
 #else
     // FIXME: We should deprecate and remove this override; see https://bugs.webkit.org/show_bug.cgi?id=217927 for details.
     if (auto override = dynamic_cf_cast<CFStringRef>(adoptCF(CFPreferencesCopyAppValue(CFSTR("UserAgent"), CFSTR("com.apple.WebFoundation")))))
