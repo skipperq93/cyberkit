@@ -119,7 +119,7 @@ TestCommand parseInputLine(const std::string& inputLine)
     return result;
 }
 
-std::filesystem::path testPath(const std::string& pathOrURL)
+WTF::filesystem::path testPath(const std::string& pathOrURL)
 {
     if (pathOrURL.find("http://") == 0 || pathOrURL.find("https://") == 0)
         return { };
@@ -128,7 +128,7 @@ std::filesystem::path testPath(const std::string& pathOrURL)
         return pathOrURL.substr(strlen("file:/"));
 
     std::error_code ec;
-    return std::filesystem::absolute(pathOrURL, ec);
+    return WTF::filesystem::absolute(pathOrURL, ec);
 }
 
 std::string testURLString(const std::string& pathOrURL)
@@ -137,7 +137,7 @@ std::string testURLString(const std::string& pathOrURL)
         return pathOrURL;
 
     std::error_code ec;
-    return "file://" + std::filesystem::absolute(pathOrURL, ec).generic_string();
+    return "file://" + WTF::filesystem::absolute(pathOrURL, ec).generic_string();
 }
 
 }

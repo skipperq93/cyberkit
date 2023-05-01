@@ -1,0 +1,10 @@
+Package: com.matthewbenedict.mobileminibrowser
+Name: CyberKit MobileMiniBrowser
+Maintainer: UInt2048
+Version: 0.0.7-alpha
+Section: Tweaks
+Depends: firmware (>=12.0)
+Architecture: all
+Description: CyberKit MobileMiniBrowser allows you to test the CyberKit backport of newer WebKit in a minimal browser.
+Depiction: https://uint2048.github.io/depictions/?p=com.matthewbenedict.mobileminibrowser
+Icon: https://uint2048.github.io/CydiaIcon.png

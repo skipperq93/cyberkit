@@ -42,6 +42,10 @@ OBJC_CLASS RBSAssertion;
 OBJC_CLASS WKRBSAssertionDelegate;
 #endif // USE(RUNNINGBOARD)
 
+#if !HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
+OBJC_CLASS BKSProcessAssertion;
+#endif
+
 namespace CyberKit {
 
 enum class ProcessAssertionType {
@@ -101,6 +105,9 @@ private:
     RetainPtr<RBSAssertion> m_rbsAssertion;
     RetainPtr<WKRBSAssertionDelegate> m_delegate;
     bool m_wasInvalidated { false };
+#endif
+#if !HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
+    RetainPtr<BKSProcessAssertion> m_bksAssertion;
 #endif
     Function<void()> m_prepareForInvalidationHandler;
     Function<void()> m_invalidationHandler;
