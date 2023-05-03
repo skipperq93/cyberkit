@@ -38,7 +38,9 @@
 #import "WebExtensionContext.h"
 #import "WebExtensionController.h"
 #import "WebURLSchemeTask.h"
+#if HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
 #import <UniformTypeIdentifiers/UTType.h>
+#endif
 #import <wtf/BlockPtr.h>
 
 #if !HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)

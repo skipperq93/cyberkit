@@ -46,7 +46,9 @@
 #import "_WKInspectorWindowInternal.h"
 #import <SecurityInterface/SFCertificatePanel.h>
 #import <SecurityInterface/SFCertificateView.h>
+#if HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
 #import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
+#endif
 #import <CyberCore/CertificateInfo.h>
 #import <CyberCore/Color.h>
 #import <CyberCore/InspectorFrontendClientLocal.h>

@@ -37,8 +37,10 @@
 #import "_WKWebExtensionInternal.h"
 #import "_WKWebExtensionPermission.h"
 #import <CoreFoundation/CFBundle.h>
+#if HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
 #import <UniformTypeIdentifiers/UTCoreTypes.h>
 #import <UniformTypeIdentifiers/UTType.h>
+#endif
 #import <CyberCore/LocalizedStrings.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/HashSet.h>

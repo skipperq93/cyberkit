@@ -38,7 +38,9 @@
 #import "UTIUtilities.h"
 #import "WebNSAttributedStringExtras.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#if HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
 #import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
+#endif
 #import <pal/ios/UIKitSoftLink.h>
 #import <wtf/URL.h>
 #import <wtf/text/StringHash.h>
@@ -304,15 +306,19 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
 static bool shouldTreatAsAttachmentByDefault(const String& typeIdentifier)
 {
+#if HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
     if (@available(iOS 14.0, *)) {
         auto type = [UTType typeWithIdentifier:typeIdentifier];
         return [type conformsToType:UTTypeVCard] || [type conformsToType:UTTypePDF];
     } else {
+#endif
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
         CFStringRef type = (__bridge CFStringRef)typeIdentifier.utf8().data();
         return UTTypeConformsTo(type, kUTTypeVCard) || UTTypeConformsTo(type, kUTTypePDF);
 ALLOW_DEPRECATED_DECLARATIONS_END
+#if HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
     }
+#endif
 }
 
 static bool prefersAttachmentRepresentation(const PasteboardItemInfo& info)

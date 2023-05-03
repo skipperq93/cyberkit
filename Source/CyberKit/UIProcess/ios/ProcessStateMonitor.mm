@@ -26,7 +26,7 @@
 #import "config.h"
 #import "ProcessStateMonitor.h"
 
-#if PLATFORM(IOS_FAMILY)
+#if HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
 
 #import "Logging.h"
 #import "NetworkProcessMessages.h"
@@ -132,4 +132,4 @@ void ProcessStateMonitor::checkRemainingRunTime()
 
 } // namespace CyberKit
 
-#endif // PLATFORM(IOS_FAMILY)
+#endif // HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)

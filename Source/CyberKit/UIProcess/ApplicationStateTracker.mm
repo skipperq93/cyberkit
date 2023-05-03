@@ -34,6 +34,7 @@
 #import "SandboxUtilities.h"
 #import "UIKitSPI.h"
 #import <wtf/ObjCRuntimeExtras.h>
+#import <wtf/WeakHashSet.h>
 #import <wtf/cocoa/Entitlements.h>
 #import <wtf/spi/cocoa/SecuritySPI.h>
 
@@ -161,8 +162,9 @@ ApplicationStateTracker::ApplicationStateTracker(UIView *view, SEL didEnterBackg
 
         pid_t applicationPID = serviceViewController._hostProcessIdentifier;
         ASSERT(applicationPID);
-
+#if HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
         m_isInBackground = !EndowmentStateTracker::isApplicationForeground(applicationPID);
+#endif
 
         // Workaround for <rdar://problem/34028921>. If the host application is StoreKitUIService then it is also a ViewService
         // and is always in the background. We need to treat StoreKitUIService as foreground for the purpose of process suspension
