@@ -38,6 +38,7 @@
 		48195AF129D06DC700DA5EA2 /* CyberKitLegacy.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48195AEF29D06DC700DA5EA2 /* CyberKitLegacy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		48195AF329D06DCC00DA5EA2 /* CyberScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48195AF229D06DCC00DA5EA2 /* CyberScriptCore.framework */; };
 		48195AF429D06DCC00DA5EA2 /* CyberScriptCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48195AF229D06DCC00DA5EA2 /* CyberScriptCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48D32DDA2A05899D00A2DD75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4807BE1E29F6E5AA00D5A88A /* Assets.xcassets */; };
 		48D3CF6429CE2CA300608A0E /* CyberKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1DAFC11D70E12D00017CF0 /* CyberKit.framework */; };
 		CD1DAF971D709E3600017CF0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1DAF961D709E3600017CF0 /* main.m */; };
 		CD1DAFA51D709E3600017CF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD1DAFA31D709E3600017CF0 /* LaunchScreen.storyboard */; };
@@ -438,6 +439,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD498B521D763D8800681FA7 /* Assets.xcassets in Resources */,
+				48D32DDA2A05899D00A2DD75 /* Assets.xcassets in Resources */,
 				CD498B511D763D7F00681FA7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

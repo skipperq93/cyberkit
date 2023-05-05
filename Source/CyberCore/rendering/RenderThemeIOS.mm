@@ -1391,21 +1391,13 @@ static const Vector<CSSValueSystemColorInformation>& cssValueSystemColorInformat
         initializeOnce,
         [] {
         cssValueSystemColorInformationList.get() = Vector(std::initializer_list<CSSValueSystemColorInformation> {
+#if HAVE(OS_DARK_MODE_SUPPORT)
             { CSSValueCanvas, @selector(systemBackgroundColor) },
             { CSSValueCanvastext, @selector(labelColor) },
             { CSSValueText, @selector(labelColor) },
             { CSSValueWebkitControlBackground, @selector(systemBackgroundColor) },
-            { CSSValueAppleSystemBlue, @selector(systemBlueColor) },
             { CSSValueAppleSystemBrown, @selector(systemBrownColor) },
-            { CSSValueAppleSystemGray, @selector(systemGrayColor) },
-            { CSSValueAppleSystemGreen, @selector(systemGreenColor) },
             { CSSValueAppleSystemIndigo, @selector(systemIndigoColor) },
-            { CSSValueAppleSystemOrange, @selector(systemOrangeColor) },
-            { CSSValueAppleSystemPink, @selector(systemPinkColor) },
-            { CSSValueAppleSystemPurple, @selector(systemPurpleColor) },
-            { CSSValueAppleSystemRed, @selector(systemRedColor) },
-            { CSSValueAppleSystemTeal, @selector(systemTealColor) },
-            { CSSValueAppleSystemYellow, @selector(systemYellowColor) },
             { CSSValueAppleSystemBackground, @selector(systemBackgroundColor) },
             { CSSValueAppleSystemSecondaryBackground, @selector(secondarySystemBackgroundColor) },
             { CSSValueAppleSystemTertiaryBackground, @selector(tertiarySystemBackgroundColor) },
@@ -1433,6 +1425,16 @@ static const Vector<CSSValueSystemColorInformation>& cssValueSystemColorInformat
             { CSSValueAppleSystemTextBackground, @selector(systemBackgroundColor) },
             { CSSValueAppleSystemUnemphasizedSelectedContentBackground, @selector(tableCellDefaultSelectionTintColor) },
             { CSSValueAppleWirelessPlaybackTargetActive, @selector(systemBlueColor) },
+#endif
+            { CSSValueAppleSystemBlue, @selector(systemBlueColor) },
+            { CSSValueAppleSystemGray, @selector(systemGrayColor) },
+            { CSSValueAppleSystemGreen, @selector(systemGreenColor) },
+            { CSSValueAppleSystemOrange, @selector(systemOrangeColor) },
+            { CSSValueAppleSystemPink, @selector(systemPinkColor) },
+            { CSSValueAppleSystemPurple, @selector(systemPurpleColor) },
+            { CSSValueAppleSystemRed, @selector(systemRedColor) },
+            { CSSValueAppleSystemTeal, @selector(systemTealColor) },
+            { CSSValueAppleSystemYellow, @selector(systemYellowColor) },
         });
     });
 
