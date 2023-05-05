@@ -97,7 +97,7 @@ static PAS_ALWAYS_INLINE pas_thread_local_cache* pas_thread_local_cache_try_get_
 static inline pas_thread_local_cache* pas_thread_local_cache_try_get(void)
 {
     pas_thread_local_cache* cache = pas_thread_local_cache_try_get_impl();
-#if !PAS_OS(DARWIN)
+#ifndef PAS_THREAD_LOCAL_CACHE_CAN_DETECT_THREAD_EXIT
     if (((uintptr_t)cache) == PAS_THREAD_LOCAL_CACHE_DESTROYED)
         return NULL;
 #endif
@@ -106,7 +106,7 @@ static inline pas_thread_local_cache* pas_thread_local_cache_try_get(void)
 
 static inline bool pas_thread_local_cache_can_set(void)
 {
-#if PAS_OS(DARWIN)
+#ifdef PAS_THREAD_LOCAL_CACHE_CAN_DETECT_THREAD_EXIT
     return !pthread_self_is_exiting_np() && !pas_msl_is_enabled();
 #else
     return ((uintptr_t)pas_thread_local_cache_try_get_impl()) != PAS_THREAD_LOCAL_CACHE_DESTROYED;

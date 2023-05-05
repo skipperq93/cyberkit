@@ -779,7 +779,9 @@ static const CGFloat groupHeaderCollapseButtonTransitionDuration = 0.3f;
     [self addSubview:_label.get()];
 
     _collapseIndicatorView = adoptNS([[UIImageView alloc] initWithImage:[UIImage systemImageNamed:@"chevron.down"]]);
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
     [_collapseIndicatorView setPreferredSymbolConfiguration:[UIImageSymbolConfiguration configurationWithFont:WKSelectPickerGroupHeaderView.preferredFont scale:UIImageSymbolScaleSmall]];
+#endif
     [_collapseIndicatorView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
     [self addSubview:_collapseIndicatorView.get()];
 
@@ -1069,7 +1071,9 @@ static NSString *optionCellReuseIdentifier = @"WKSelectPickerTableViewCell";
     [cell textLabel].text = option->text;
     [cell textLabel].enabled = !option->disabled;
     [cell setUserInteractionEnabled:!option->disabled];
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
     [cell imageView].preferredSymbolConfiguration = [UIImageSymbolConfiguration configurationWithTextStyle:UIFontTextStyleBody scale:UIImageSymbolScaleLarge];
+#endif
 
     if (option->isSelected)
         [cell imageView].image = [UIImage systemImageNamed:@"checkmark.circle.fill"];
@@ -1172,6 +1176,7 @@ static NSString *optionCellReuseIdentifier = @"WKSelectPickerTableViewCell";
 
         UIPresentationController *presentationController = [_navigationController presentationController];
         presentationController.delegate = self;
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
         ALLOW_DEPRECATED_DECLARATIONS_BEGIN
         if ([presentationController isKindOfClass:[_UISheetPresentationController class]]) {
             _UISheetPresentationController *sheetPresentationController = (_UISheetPresentationController *)presentationController;
@@ -1180,6 +1185,7 @@ static NSString *optionCellReuseIdentifier = @"WKSelectPickerTableViewCell";
             sheetPresentationController._widthFollowsPreferredContentSizeWhenBottomAttached = YES;
             sheetPresentationController._wantsBottomAttachedInCompactHeight = YES;
         }
+#endif
     } else {
         [_navigationController setModalPresentationStyle:UIModalPresentationPopover];
         [_navigationController setNavigationBarHidden:YES];

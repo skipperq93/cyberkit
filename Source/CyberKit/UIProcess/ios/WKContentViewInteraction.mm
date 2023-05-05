@@ -192,6 +192,12 @@
 #import <pal/ios/ManagedConfigurationSoftLink.h>
 #import <pal/ios/QuickLookSoftLink.h>
 
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
+#else
+SOFT_LINK_FRAMEWORK_FOR_SOURCE(CyberKit, UIKit)
+SOFT_LINK_CONSTANT_FOR_SOURCE(CyberKit, UIKit, UIPreviewDataAttachmentListSourceIsManaged, NSString *)
+#endif
+
 #if HAVE(LINK_PREVIEW) && USE(UICONTEXTMENU)
 static NSString * const webkitShowLinkPreviewsPreferenceKey = @"CyberKitShowLinkPreviews";
 #endif
@@ -8335,7 +8341,7 @@ static bool canUseQuickboardControllerFor(UITextContentType type)
     if (!context)
         context = adoptNS([[NSMutableDictionary alloc] init]);
 
-#if ENABLE(DATA_DETECTION)
+#if ENABLE(DATA_DETECTION) && USE(UICONTEXTMENU)
     if (!positionInformation.textBefore.isEmpty())
         context.get()[getkDataDetectorsLeadingText()] = positionInformation.textBefore;
     if (!positionInformation.textAfter.isEmpty())
@@ -9488,7 +9494,7 @@ static CyberKit::DocumentEditingContextRequest toWebRequest(UIWKDocumentRequest 
 }
 
 #endif
-
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
 - (void)insertTextPlaceholderWithSize:(CGSize)size completionHandler:(void (^)(UITextPlaceholder *))completionHandler
 {
     _page->insertTextPlaceholder(CyberCore::IntSize { size }, [weakSelf = WeakObjCPtr<WKContentView>(self), completionHandler = makeBlockPtr(completionHandler)](const std::optional<CyberCore::ElementContext>& placeholder) {
@@ -9511,7 +9517,7 @@ static CyberKit::DocumentEditingContextRequest toWebRequest(UIWKDocumentRequest 
     else
         completionHandler();
 }
-
+#endif
 static Vector<CyberCore::IntSize> sizesOfPlaceholderElementsToInsertWhenDroppingItems(NSArray<NSItemProvider *> *itemProviders)
 {
     Vector<CyberCore::IntSize> sizes;
@@ -10139,6 +10145,7 @@ static Vector<CyberCore::IntSize> sizesOfPlaceholderElementsToInsertWhenDropping
 #endif
 }
 
+#if USE(UICONTEXTMENU)
 - (UIMenu *)menuWithInlineAction:(NSString *)title image:(UIImage *)image identifier:(NSString *)identifier handler:(Function<void(WKContentView *)>&&)handler
 {
     auto action = [UIAction actionWithTitle:title image:image identifier:identifier handler:makeBlockPtr([handler = WTFMove(handler), weakSelf = WeakObjCPtr<WKContentView>(self)](UIAction *) mutable {
@@ -10147,6 +10154,7 @@ static Vector<CyberCore::IntSize> sizesOfPlaceholderElementsToInsertWhenDropping
     }).get()];
     return [UIMenu menuWithTitle:@"" image:nil identifier:nil options:UIMenuOptionsDisplayInline children:@[ action ]];
 }
+#endif
 
 #if ENABLE(APP_HIGHLIGHTS)
 
@@ -11213,6 +11221,7 @@ static BOOL shouldUseMachineReadableCodeMenuFromImageAnalysisResult(CocoaImageAn
 
         strongSelf->_waitingForDynamicImageAnalysisContextMenuActions = NO;
         strongSelf->_imageAnalysisContextMenuActionData = WTFMove(*data);
+#if USE(UICONTEXTMENU)
         [[strongSelf contextMenuInteraction] updateVisibleMenuWithBlock:makeBlockPtr([strongSelf](UIMenu *menu) -> UIMenu * {
             __block auto indexOfPlaceholder = NSNotFound;
             __block BOOL foundCopyItem = NO;
@@ -11254,6 +11263,7 @@ static BOOL shouldUseMachineReadableCodeMenuFromImageAnalysisResult(CocoaImageAn
             [adjustedChildren replaceObjectsInRange:NSMakeRange(indexOfPlaceholder, 1) withObjectsFromArray:replacements.get()];
             return [menu menuByReplacingChildren:adjustedChildren.get()];
         }).get()];
+#endif
     });
 
     auto request = [self createImageAnalyzerRequest:VKAnalysisTypeVisualSearch | VKAnalysisTypeMachineReadableCode | VKAnalysisTypeAppClip image:image];
@@ -11336,10 +11346,13 @@ static BOOL shouldUseMachineReadableCodeMenuFromImageAnalysisResult(CocoaImageAn
             auto strongSelf = weakSelf.get();
             if (!strongSelf)
                 return;
-
+#if USE(UICONTEXTMENU)
             strongSelf->_contextMenuWasTriggeredByImageAnalysisTimeout = YES;
             strongSelf->_imageAnalysisContextMenuActionData = WTFMove(*data);
             [strongSelf presentContextMenu:[strongSelf contextMenuInteraction] atLocation:location];
+#else
+            (void)location;
+#endif
         });
 
         auto visualSearchAnalysisStartTime = MonotonicTime::now();
@@ -11763,11 +11776,13 @@ static BOOL shouldUseMachineReadableCodeMenuFromImageAnalysisResult(CocoaImageAn
 #if HAVE(LINK_PREVIEW)
     if ([userInterfaceItem isEqualToString:@"contextMenu"]) {
         auto itemTitles = adoptNS([NSMutableArray<NSString *> new]);
+#if USE(UICONTEXTMENU)
         [self.contextMenuInteraction updateVisibleMenuWithBlock:[&itemTitles](UIMenu *menu) -> UIMenu * {
             for (UIMenuElement *child in menu.children)
                 [itemTitles addObject:child.title];
             return menu;
         }];
+#endif
         if (self._shouldUseContextMenus) {
             return @{ userInterfaceItem: @{
                 @"url": _positionInformation.url.isValid() ? WTF::userVisibleString(_positionInformation.url) : @"",
@@ -12731,7 +12746,11 @@ static UIMenu *menuFromLegacyPreviewOrDefaultActions(UIViewController *previewVi
             else
                 dataForPreview.get()[UIPreviewDataAttachmentList] = [uiDelegate _attachmentListForWebView:self.webView];
             dataForPreview.get()[UIPreviewDataAttachmentIndex] = [NSNumber numberWithUnsignedInteger:index];
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
             dataForPreview.get()[UIPreviewDataAttachmentListIsContentManaged] = [NSNumber numberWithBool:sourceIsManaged];
+#else
+            dataForPreview.get()[CyberKit::get_UIKit_UIPreviewDataAttachmentListSourceIsManaged()] = [NSNumber numberWithBool:sourceIsManaged];
+#endif
         }
     }
 

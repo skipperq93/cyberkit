@@ -134,7 +134,7 @@ void NetworkStorageSession::hasCookies(const RegistrableDomain& domain, Completi
 void NetworkStorageSession::setAllCookiesToSameSiteStrict(const RegistrableDomain& domain, CompletionHandler<void()>&& completionHandler)
 {
     ASSERT(hasProcessPrivilege(ProcessPrivilege::CanAccessRawCookies));
-
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
     RetainPtr<NSMutableArray<NSHTTPCookie *>> oldCookiesToDelete = adoptNS([[NSMutableArray alloc] init]);
     RetainPtr<NSMutableArray<NSHTTPCookie *>> newCookiesToAdd = adoptNS([[NSMutableArray alloc] init]);
 
@@ -160,6 +160,10 @@ void NetworkStorageSession::setAllCookiesToSameSiteStrict(const RegistrableDomai
     for (NSHTTPCookie *oldCookie in oldCookiesToDelete.get())
         deleteHTTPCookie(cookieStorage().get(), oldCookie, [aggregator] { });
     END_BLOCK_OBJC_EXCEPTIONS
+#else
+    UNUSED_PARAM(domain);
+    completionHandler();
+#endif
 }
 
 NSHTTPCookieStorage *NetworkStorageSession::nsCookieStorage() const
