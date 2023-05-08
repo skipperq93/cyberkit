@@ -25,11 +25,11 @@
  *                 ICU C and C++ APIs from C++ user code.
  */
 
-#include "unicode/utypes.h"
+#include "utypes.h"
 
 #if U_SHOW_CPLUSPLUS_API
 
-#include "unicode/uobject.h"
+#include "uobject.h"
 
 U_NAMESPACE_BEGIN
 

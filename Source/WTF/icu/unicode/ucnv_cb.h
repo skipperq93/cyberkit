@@ -15,8 +15,8 @@
  */
 
 /**
- * \file 
- * \brief C UConverter functions to aid the writers of callbacks
+ * \file
+ * \brief C API: UConverter functions to aid the writers of callbacks
  *
  * <h2> Callback API for UConverter </h2>
  * 
@@ -63,12 +63,12 @@
 #ifndef UCNV_CB_H
 #define UCNV_CB_H
 
-#include "unicode/utypes.h"
+#include "utypes.h"
 
 #if !UCONFIG_NO_CONVERSION
 
-#include "unicode/ucnv.h"
-#include "unicode/ucnv_err.h"
+#include "ucnv.h"
+#include "ucnv_err.h"
 
 /**
  * ONLY used by FromU callback functions.
@@ -84,7 +84,7 @@
  * @see ucnv_cbFromUWriteSub
  * @stable ICU 2.0
  */
-U_STABLE void U_EXPORT2
+U_CAPI void U_EXPORT2
 ucnv_cbFromUWriteBytes (UConverterFromUnicodeArgs *args,
                         const char* source,
                         int32_t length,
@@ -104,7 +104,7 @@ ucnv_cbFromUWriteBytes (UConverterFromUnicodeArgs *args,
  * @see ucnv_cbFromUWriteBytes
  * @stable ICU 2.0
  */
-U_STABLE void U_EXPORT2 
+U_CAPI void U_EXPORT2 
 ucnv_cbFromUWriteSub (UConverterFromUnicodeArgs *args,
                       int32_t offsetIndex,
                       UErrorCode * err);
@@ -121,7 +121,7 @@ ucnv_cbFromUWriteSub (UConverterFromUnicodeArgs *args,
  * @see ucnv_cbToUWriteSub
  * @stable ICU 2.0
  */
-U_STABLE void U_EXPORT2 ucnv_cbFromUWriteUChars(UConverterFromUnicodeArgs *args,
+U_CAPI void U_EXPORT2 ucnv_cbFromUWriteUChars(UConverterFromUnicodeArgs *args,
                              const UChar** source,
                              const UChar*  sourceLimit,
                              int32_t offsetIndex,
@@ -140,7 +140,7 @@ U_STABLE void U_EXPORT2 ucnv_cbFromUWriteUChars(UConverterFromUnicodeArgs *args,
  * @see ucnv_cbToUWriteSub
  * @stable ICU 2.0
  */
-U_STABLE void U_EXPORT2 ucnv_cbToUWriteUChars (UConverterToUnicodeArgs *args,
+U_CAPI void U_EXPORT2 ucnv_cbToUWriteUChars (UConverterToUnicodeArgs *args,
                                              const UChar* source,
                                              int32_t length,
                                              int32_t offsetIndex,
@@ -156,7 +156,7 @@ U_STABLE void U_EXPORT2 ucnv_cbToUWriteUChars (UConverterToUnicodeArgs *args,
  * @see ucnv_cbToUWriteUChars
  * @stable ICU 2.0
  */
-U_STABLE void U_EXPORT2 ucnv_cbToUWriteSub (UConverterToUnicodeArgs *args,
+U_CAPI void U_EXPORT2 ucnv_cbToUWriteSub (UConverterToUnicodeArgs *args,
                        int32_t offsetIndex,
                        UErrorCode * err);
 #endif

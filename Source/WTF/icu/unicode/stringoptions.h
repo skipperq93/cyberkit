@@ -7,7 +7,7 @@
 #ifndef __STRINGOPTIONS_H__
 #define __STRINGOPTIONS_H__
 
-#include "unicode/utypes.h"
+#include "utypes.h"
 
 /**
  * \file

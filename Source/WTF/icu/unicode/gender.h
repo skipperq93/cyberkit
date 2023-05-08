@@ -23,15 +23,15 @@
  * \brief C++ API: GenderInfo computes the gender of a list.
  */
 
-#include "unicode/utypes.h"
+#include "utypes.h"
 
 #if U_SHOW_CPLUSPLUS_API
 
 #if !UCONFIG_NO_FORMATTING
 
-#include "unicode/locid.h"
-#include "unicode/ugender.h"
-#include "unicode/uobject.h"
+#include "locid.h"
+#include "ugender.h"
+#include "uobject.h"
 
 class GenderInfoTest;
 
@@ -91,12 +91,12 @@ private:
      * Copy constructor. One object per locale invariant. Clients
      * must never copy GenderInfo objects.
      */
-    GenderInfo(const GenderInfo& other);
+    GenderInfo(const GenderInfo& other) = delete;
 
     /**
       * Assignment operator. Not applicable to immutable objects.
       */
-    GenderInfo& operator=(const GenderInfo&);
+    GenderInfo& operator=(const GenderInfo&) = delete;
 
     GenderInfo();
 

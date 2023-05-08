@@ -10,7 +10,7 @@
 #ifndef LOCDSPNM_H
 #define LOCDSPNM_H
 
-#include "unicode/utypes.h"
+#include "utypes.h"
 
 #if U_SHOW_CPLUSPLUS_API
 
@@ -21,11 +21,11 @@
 
 #if !UCONFIG_NO_FORMATTING
 
-#include "unicode/locid.h"
-#include "unicode/strenum.h"
-#include "unicode/uscript.h"
-#include "unicode/uldnames.h"
-#include "unicode/udisplaycontext.h"
+#include "locid.h"
+#include "strenum.h"
+#include "uscript.h"
+#include "uldnames.h"
+#include "udisplaycontext.h"
 
 U_NAMESPACE_BEGIN
 

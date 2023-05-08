@@ -9,7 +9,7 @@
 #ifndef CURRPINF_H
 #define CURRPINF_H
 
-#include "unicode/utypes.h"
+#include "utypes.h"
 
 #if U_SHOW_CPLUSPLUS_API
 
@@ -20,7 +20,7 @@
 
 #if !UCONFIG_NO_FORMATTING
 
-#include "unicode/unistr.h"
+#include "unistr.h"
 
 U_NAMESPACE_BEGIN
 
@@ -92,7 +92,7 @@ public:
      *
      * @stable ICU 4.2
      */
-    UBool operator==(const CurrencyPluralInfo& info) const;
+    bool operator==(const CurrencyPluralInfo& info) const;
 
 
     /**
@@ -100,7 +100,7 @@ public:
      *
      * @stable ICU 4.2
      */
-    UBool operator!=(const CurrencyPluralInfo& info) const;
+    bool operator!=(const CurrencyPluralInfo& info) const;
 
 
     /**
@@ -184,7 +184,7 @@ public:
      *
      * @stable ICU 4.2
      */
-    virtual UClassID getDynamicClassID() const;
+    virtual UClassID getDynamicClassID() const override;
 
     /**
      * ICU "poor man's RTTI", returns a UClassID for this class.
@@ -259,7 +259,7 @@ private:
 };
 
 
-inline UBool
+inline bool
 CurrencyPluralInfo::operator!=(const CurrencyPluralInfo& info) const {
     return !operator==(info);
 }  

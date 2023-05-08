@@ -16,11 +16,11 @@
 #ifndef REP_H
 #define REP_H
 
-#include "unicode/utypes.h"
+#include "utypes.h"
 
 #if U_SHOW_CPLUSPLUS_API
 
-#include "unicode/uobject.h"
+#include "uobject.h"
 
 /**
  * \file 
@@ -192,7 +192,7 @@ public:
      * Clone this object, an instance of a subclass of Replaceable.
      * Clones can be used concurrently in multiple threads.
      * If a subclass does not implement clone(), or if an error occurs,
-     * then NULL is returned.
+     * then nullptr is returned.
      * The caller must delete the clone.
      *
      * @return a clone of this object

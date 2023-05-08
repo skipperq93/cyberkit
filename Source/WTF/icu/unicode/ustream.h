@@ -17,11 +17,11 @@
 #ifndef USTREAM_H
 #define USTREAM_H
 
-#include "unicode/utypes.h"
+#include "utypes.h"
 
 #if U_SHOW_CPLUSPLUS_API
 
-#include "unicode/unistr.h"
+#include "unistr.h"
 
 #if !UCONFIG_NO_CONVERSION  // not available without conversion
 
