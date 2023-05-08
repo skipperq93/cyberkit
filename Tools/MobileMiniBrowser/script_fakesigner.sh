@@ -46,6 +46,7 @@ ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.
 ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.WebContent.xpc
 cp ../adattributiond $app/Frameworks/CyberKit.framework/Daemons
 cp ../webpushd $app/Frameworks/CyberKit.framework/Daemons
+cp ../../../Source/WTF/icu/unicode/data/out/*.dat $app
 plutil -convert xml1 $app/Info.plist
 gsed -i -e 's/com.matthewbenedict.ios.Fennec/com.matthewbenedict.MobileMiniBrowser/g' $app/Info.plist
 plutil -convert binary1 $app/Info.plist

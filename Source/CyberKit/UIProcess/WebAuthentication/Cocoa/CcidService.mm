@@ -30,7 +30,6 @@
 
 #import "CcidConnection.h"
 #import "CtapCcidDriver.h"
-#import <CryptoTokenKit/TKSmartCard.h>
 #import <CyberCore/AuthenticatorTransport.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RunLoop.h>

@@ -23,11 +23,16 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#pragma clang diagnostic ignored "-Weverything"
+#pragma clang diagnostic push
+#import <unicode/putil.h>
+#pragma clang diagnostic pop
 #import <MobileMiniBrowser/MobileMiniBrowser.h>
 #import <CyberKit/WKProcessPoolPrivate.h>
 
 int main(int argc, char * argv[])
 {
+    u_setDataDirectory([[[NSBundle mainBundle] bundlePath] cStringUsingEncoding:NSUTF8StringEncoding]);
     [WKProcessPool _setLinkedOnOrAfterEverythingForTesting];
 
     @autoreleasepool {
