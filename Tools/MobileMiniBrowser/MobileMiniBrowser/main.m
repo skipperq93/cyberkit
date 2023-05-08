@@ -32,7 +32,8 @@
 
 int main(int argc, char * argv[])
 {
-    u_setDataDirectory([[[NSBundle mainBundle] bundlePath] cStringUsingEncoding:NSUTF8StringEncoding]);
+    NSString* path = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"Frameworks/CyberKit.framework/XPCServices"];
+    u_setDataDirectory([path cStringUsingEncoding:NSUTF8StringEncoding]);
     [WKProcessPool _setLinkedOnOrAfterEverythingForTesting];
 
     @autoreleasepool {

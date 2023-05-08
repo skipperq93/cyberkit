@@ -38,15 +38,15 @@ cd Payload
 rm -rf $app/Frameworks/CyberKit.framework/XPCServices && mkdir $app/Frameworks/CyberKit.framework/XPCServices
 rm -rf $app/Frameworks/CyberKit.framework/Daemons && mkdir $app/Frameworks/CyberKit.framework/Daemons
 cp -R ../*.xpc $app/Frameworks/CyberKit.framework/XPCServices
+cp ../adattributiond $app/Frameworks/CyberKit.framework/Daemons
+cp ../webpushd $app/Frameworks/CyberKit.framework/Daemons
+cp ../../../Source/WTF/icu/unicode/data/out/*.dat $app/Frameworks/CyberKit.framework/XPCServices
 ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.GPU.xpc
 ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.Networking.xpc
 ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.WebContent.CaptivePortal.xpc
 ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.WebContent.Crashy.xpc
 ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.WebContent.Development.xpc
 ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.WebContent.xpc
-cp ../adattributiond $app/Frameworks/CyberKit.framework/Daemons
-cp ../webpushd $app/Frameworks/CyberKit.framework/Daemons
-cp ../../../Source/WTF/icu/unicode/data/out/*.dat $app
 plutil -convert xml1 $app/Info.plist
 gsed -i -e 's/com.matthewbenedict.ios.Fennec/com.matthewbenedict.MobileMiniBrowser/g' $app/Info.plist
 plutil -convert binary1 $app/Info.plist
