@@ -120,14 +120,14 @@ extern "C" void xpc_activity_register(const char *identifier, xpc_object_t crite
 #if USE(APPLE_INTERNAL_SDK)
 #include <os/transaction_private.h>
 #include <xpc/private.h>
-#if HAVE(OS_LAUNCHD_JOB)
+#if HAVE(OS_LAUNCHD_JOB) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 #include <AppServerSupport/OSLaunchdJob.h>
 #endif // HAVE(OS_LAUNCHD_JOB)
 #else // USE(APPLE_INTERNAL_SDK)
 
 #ifdef __OBJC__
 #import <Foundation/NSError.h>
-#if HAVE(OS_LAUNCHD_JOB)
+#if HAVE(OS_LAUNCHD_JOB) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 @interface OSLaunchdJob : NSObject
 - (instancetype)initWithPlist:(xpc_object_t)plist;
 - (BOOL)submit:(NSError **)errorOut;

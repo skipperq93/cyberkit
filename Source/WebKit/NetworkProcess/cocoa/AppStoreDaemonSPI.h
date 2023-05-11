@@ -25,7 +25,7 @@
 
 #pragma once
 
-#if HAVE(SKADNETWORK_v4)
+#if HAVE(SKADNETWORK_v4) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000)
 #if USE(APPLE_INTERNAL_SDK)
 
 #import <AppStoreDaemon/ASDInstallAttribution.h>

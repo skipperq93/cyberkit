@@ -164,7 +164,7 @@ private:
     void platformCompleteShippingMethodSelection(std::optional<WebCore::ApplePayShippingMethodUpdate>&&);
     void platformCompleteShippingContactSelection(std::optional<WebCore::ApplePayShippingContactUpdate>&&);
     void platformCompletePaymentMethodSelection(std::optional<WebCore::ApplePayPaymentMethodUpdate>&&);
-#if ENABLE(APPLE_PAY_COUPON_CODE)
+#if ENABLE(APPLE_PAY_COUPON_CODE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
     void platformCompleteCouponCodeChange(std::optional<WebCore::ApplePayCouponCodeUpdate>&&);
 #endif
     void platformCompletePaymentSession(WebCore::ApplePayPaymentAuthorizationResult&&);

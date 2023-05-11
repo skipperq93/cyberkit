@@ -655,6 +655,10 @@ void GraphicsContextGLCocoa::destroyPbufferAndDetachIOSurface(void* handle)
 #if !PLATFORM(IOS_FAMILY_SIMULATOR)
 GraphicsContextGLCocoa::IOSurfaceTextureAttachment GraphicsContextGLCocoa::attachIOSurfaceToSharedTexture(GCGLenum target, IOSurface* surface)
 {
+#if 1
+    NSLog(@"%u %p", target, surface);
+    return std::nullopt;
+#else
     constexpr EGLint emptyAttributes[] = { EGL_NONE };
 
     // Create a MTLTexture out of the IOSurface.
@@ -694,6 +698,7 @@ GraphicsContextGLCocoa::IOSurfaceTextureAttachment GraphicsContextGLCocoa::attac
     GL_EGLImageTargetTexture2DOES(target, eglImage);
 
     return std::make_tuple(eglImage, textureWidth, textureHeight);
+#endif
 }
 
 void GraphicsContextGLCocoa::detachIOSurfaceFromSharedTexture(void* handle)

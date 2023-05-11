@@ -3192,7 +3192,7 @@ static bool isLockdownModeWarningNeeded()
 
 @implementation WKWebView (WKPrivateIOS)
 
-#if !PLATFORM(WATCHOS) && !PLATFORM(APPLETV)
+#if !PLATFORM(WATCHOS) && !PLATFORM(APPLETV) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 - (void)_setUIEventAttribution:(UIEventAttribution *)attribution
 {
 #if HAVE(UI_EVENT_ATTRIBUTION)

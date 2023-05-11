@@ -175,7 +175,7 @@ static PKShippingType toPKShippingType(WebCore::ApplePaySessionPaymentRequest::S
     }
 }
 
-#if HAVE(PASSKIT_SHIPPING_METHOD_DATE_COMPONENTS_RANGE)
+#if HAVE(PASSKIT_SHIPPING_METHOD_DATE_COMPONENTS_RANGE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 
 static RetainPtr<NSDateComponents> toNSDateComponents(const WebCore::ApplePayDateComponents& dateComponents)
 {
@@ -204,7 +204,7 @@ PKShippingMethod *toPKShippingMethod(const WebCore::ApplePayShippingMethod& ship
     PKShippingMethod *result = [PAL::getPKShippingMethodClass() summaryItemWithLabel:shippingMethod.label amount:toDecimalNumber(shippingMethod.amount)];
     [result setIdentifier:shippingMethod.identifier];
     [result setDetail:shippingMethod.detail];
-#if HAVE(PASSKIT_SHIPPING_METHOD_DATE_COMPONENTS_RANGE)
+#if HAVE(PASSKIT_SHIPPING_METHOD_DATE_COMPONENTS_RANGE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
     if (auto& dateComponentsRange = shippingMethod.dateComponentsRange)
         [result setDateComponentsRange:toPKDateComponentsRange(*dateComponentsRange).get()];
 #endif
@@ -227,7 +227,7 @@ PKShippingMethods *toPKShippingMethods(const Vector<WebCore::ApplePayShippingMet
 
 #endif // HAVE(PASSKIT_DEFAULT_SHIPPING_METHOD)
 
-#if HAVE(PASSKIT_SHIPPING_CONTACT_EDITING_MODE)
+#if HAVE(PASSKIT_SHIPPING_CONTACT_EDITING_MODE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 
 static PKShippingContactEditingMode toPKShippingContactEditingMode(WebCore::ApplePayShippingContactEditingMode shippingContactEditingMode)
 {
@@ -370,7 +370,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     }
 #endif
 
-#if HAVE(PASSKIT_COUPON_CODE)
+#if HAVE(PASSKIT_COUPON_CODE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
     if (auto supportsCouponCode = paymentRequest.supportsCouponCode())
         [result setSupportsCouponCode:*supportsCouponCode];
 
@@ -378,7 +378,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
         [result setCouponCode:couponCode];
 #endif
 
-#if HAVE(PASSKIT_SHIPPING_CONTACT_EDITING_MODE)
+#if HAVE(PASSKIT_SHIPPING_CONTACT_EDITING_MODE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
     if (auto& shippingContactEditingMode = paymentRequest.shippingContactEditingMode())
         [result setShippingContactEditingMode:toPKShippingContactEditingMode(*shippingContactEditingMode)];
 #endif
@@ -439,7 +439,7 @@ void WebPaymentCoordinatorProxy::platformCompletePaymentMethodSelection(std::opt
     m_authorizationPresenter->completePaymentMethodSelection(WTFMove(update));
 }
 
-#if ENABLE(APPLE_PAY_COUPON_CODE)
+#if ENABLE(APPLE_PAY_COUPON_CODE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 
 void WebPaymentCoordinatorProxy::platformCompleteCouponCodeChange(std::optional<WebCore::ApplePayCouponCodeUpdate>&& update)
 {

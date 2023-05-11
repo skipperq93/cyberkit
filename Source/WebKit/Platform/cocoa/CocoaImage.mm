@@ -53,7 +53,7 @@ RetainPtr<NSData> transcode(CGImageRef image, CFStringRef typeIdentifier)
 std::pair<RetainPtr<NSData>, RetainPtr<CFStringRef>> transcodeWithPreferredMIMEType(CGImageRef image, CFStringRef preferredMIMEType)
 {
     ASSERT(CFStringGetLength(preferredMIMEType));
-#if HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
+#if HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
     auto preferredTypeIdentifier = RetainPtr { (__bridge CFStringRef)[UTType typeWithMIMEType:(__bridge NSString *)preferredMIMEType conformingToType:UTTypeImage].identifier };
 #else
     auto preferredTypeIdentifier = adoptCF(UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, preferredMIMEType, kUTTypeImage));

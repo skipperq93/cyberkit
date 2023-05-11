@@ -528,7 +528,7 @@ typedef NS_OPTIONS(NSUInteger, WKDisplayCaptureSurfaces) {
 @interface WKWebView (WKPrivateIOS)
 #endif
 
-#if !TARGET_OS_TV && !TARGET_OS_WATCH
+#if !TARGET_OS_TV && !TARGET_OS_WATCH && (!TARGET_OS_IOS || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 @property (nonatomic, copy, setter=_setUIEventAttribution:) UIEventAttribution *_uiEventAttribution WK_API_AVAILABLE(ios(15.0));
 @property (nonatomic, copy, setter=_setEphemeralUIEventAttribution:) UIEventAttribution *_ephemeralUIEventAttribution WK_API_AVAILABLE(ios(16.0));
 - (void)_setEphemeralUIEventAttribution:(UIEventAttribution *)attribution forApplicationWithBundleID:(NSString *)bundleID WK_API_AVAILABLE(ios(16.0));

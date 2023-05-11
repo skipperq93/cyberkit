@@ -66,10 +66,12 @@ SOFT_LINK_CLASS(PhotosUIPrivate, PUActivityProgressController)
 
 #if HAVE(PHOTOS_UI)
 SOFT_LINK_FRAMEWORK(PhotosUI)
+#if (PLATFORM(MAC) && __MAC_OS_X_VERSION_MIN_REQUIRED >= 130000) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
 SOFT_LINK_CLASS(PhotosUI, PHPickerConfiguration)
 SOFT_LINK_CLASS(PhotosUI, PHPickerFilter)
 SOFT_LINK_CLASS(PhotosUI, PHPickerResult)
 SOFT_LINK_CLASS(PhotosUI, PHPickerViewController)
+#endif
 #endif
 
 enum class WKFileUploadPanelImagePickerType : uint8_t {
@@ -84,6 +86,7 @@ static inline UIImagePickerControllerCameraDevice cameraDeviceForMediaCaptureTyp
     return mediaCaptureType == WebCore::MediaCaptureType::MediaCaptureTypeUser ? UIImagePickerControllerCameraDeviceFront : UIImagePickerControllerCameraDeviceRear;
 }
 
+#if (PLATFORM(MAC) && __MAC_OS_X_VERSION_MIN_REQUIRED >= 110000) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
 static bool setContainsUTIThatConformsTo(NSSet<NSString *> *typeIdentifiers, UTType *conformToUTType)
 {
     for (NSString *uti in typeIdentifiers) {
@@ -93,9 +96,11 @@ static bool setContainsUTIThatConformsTo(NSSet<NSString *> *typeIdentifiers, UTT
     }
     return false;
 }
+#endif
 
 #if HAVE(PHOTOS_UI)
 
+#if (PLATFORM(MAC) && __MAC_OS_X_VERSION_MIN_REQUIRED >= 110000) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
 static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, UTType *conformToUTType)
 {
     for (NSString *uti in typeIdentifiers) {
@@ -105,6 +110,7 @@ static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, U
     }
     return nil;
 }
+#endif
 
 #endif
 
@@ -384,7 +390,7 @@ static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, U
     RetainPtr<WKFileUploadMediaTranscoder> _mediaTranscoder;
 #endif
     RetainPtr<UIImagePickerController> _cameraPicker;
-#if HAVE(PHOTOS_UI)
+#if HAVE(PHOTOS_UI) && ((PLATFORM(MAC) && __MAC_OS_X_VERSION_MIN_REQUIRED >= 130000) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000))
     RetainPtr<PHPickerViewController> _photoPicker;
 #endif
     RetainPtr<UIViewController> _presentationViewController;
@@ -555,7 +561,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 {
     if (_presentationViewController) {
         UIViewController *currentPresentedViewController = [_presentationViewController presentedViewController];
-#if HAVE(PHOTOS_UI)
+#if HAVE(PHOTOS_UI) && ((PLATFORM(MAC) && __MAC_OS_X_VERSION_MIN_REQUIRED >= 130000) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000))
         if (currentPresentedViewController == self || currentPresentedViewController == _cameraPicker.get() || currentPresentedViewController == _photoPicker.get()) {
 #else
         if (currentPresentedViewController == self || currentPresentedViewController == _cameraPicker.get()) {
@@ -950,8 +956,7 @@ static NSString *displayStringForDocumentsAtURLs(NSArray<NSURL *> *urls)
 
 #pragma mark - PHPickerViewControllerDelegate implementation
 
-#if HAVE(PHOTOS_UI)
-
+#if HAVE(PHOTOS_UI) && ((PLATFORM(MAC) && __MAC_OS_X_VERSION_MIN_REQUIRED >= 130000) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000))
 - (void)picker:(PHPickerViewController *)picker didFinishPicking:(NSArray<PHPickerResult *> *)results
 {
     [self _processPickerResults:results successBlock:^(NSArray<_WKFileUploadItem *> *items) {
@@ -966,7 +971,6 @@ static NSString *displayStringForDocumentsAtURLs(NSArray<NSURL *> *urls)
         });
     }];
 }
-
 #endif // HAVE(PHOTOS_UI)
 
 #pragma mark - UIImagePickerControllerDelegate implementation
@@ -1041,8 +1045,7 @@ static NSString *displayStringForDocumentsAtURLs(NSArray<NSURL *> *urls)
     [self _processMediaInfoDictionaries:infos atIndex:0 processedResults:[NSMutableArray array] successBlock:successBlock failureBlock:failureBlock];
 }
 
-#if HAVE(PHOTOS_UI)
-
+#if HAVE(PHOTOS_UI) && ((PLATFORM(MAC) && __MAC_OS_X_VERSION_MIN_REQUIRED >= 130000) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000))
 - (void)_processPickerResults:(NSArray<PHPickerResult *> *)results successBlock:(void (^)(NSArray<_WKFileUploadItem *> *processedResults))successBlock failureBlock:(void (^)(void))failureBlock
 {
     [self _processPickerResults:results atIndex:0 processedResults:[NSMutableArray array] successBlock:successBlock failureBlock:failureBlock];
@@ -1121,7 +1124,6 @@ static NSString *displayStringForDocumentsAtURLs(NSArray<NSURL *> *urls)
         successBlock(adoptNS([[_WKImageFileUploadItem alloc] initWithFileURL:maybeMovedURL.get()]).get());
     }];
 }
-
 #endif // HAVE(PHOTOS_UI)
 
 - (void)_processMediaInfoDictionaries:(NSArray *)infos atIndex:(NSUInteger)index processedResults:(NSMutableArray<_WKFileUploadItem *> *)processedResults successBlock:(void (^)(NSArray<_WKFileUploadItem *> *processedResults))successBlock failureBlock:(void (^)(void))failureBlock

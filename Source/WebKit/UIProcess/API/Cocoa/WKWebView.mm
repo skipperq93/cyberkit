@@ -1509,6 +1509,7 @@ inline OptionSet<WebKit::FindOptions> toFindOptions(WKFindConfiguration *configu
 #endif
 }
 
+#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000
 - (UIFindInteraction *)findInteraction
 {
 #if HAVE(UIFINDINTERACTION)
@@ -1517,6 +1518,7 @@ inline OptionSet<WebKit::FindOptions> toFindOptions(WKFindConfiguration *configu
     return nil;
 #endif
 }
+#endif
 
 #endif // !PLATFORM(WATCHOS) && !PLATFORM(APPLETV)
 

@@ -51,7 +51,7 @@
     WebKit::DidSelectPaymentMethodCompletion _didSelectPaymentMethodCompletion;
     WebKit::DidSelectShippingContactCompletion _didSelectShippingContactCompletion;
     WebKit::DidSelectShippingMethodCompletion _didSelectShippingMethodCompletion;
-#if HAVE(PASSKIT_COUPON_CODE)
+#if HAVE(PASSKIT_COUPON_CODE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
     WebKit::DidChangeCouponCodeCompletion _didChangeCouponCodeCompletion;
 #endif
 }
@@ -144,7 +144,7 @@
     std::exchange(_didSelectShippingMethodCompletion, nil)(update.get());
 }
 
-#if HAVE(PASSKIT_COUPON_CODE)
+#if HAVE(PASSKIT_COUPON_CODE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 
 - (void)completeCouponCodeChange:(PKPaymentRequestCouponCodeUpdate *)couponCodeUpdate
 {
@@ -261,7 +261,7 @@
     presenter->client().presenterDidSelectShippingContact(*presenter, WebCore::PaymentContact(contact));
 }
 
-#if HAVE(PASSKIT_SHIPPING_METHOD_DATE_COMPONENTS_RANGE)
+#if HAVE(PASSKIT_SHIPPING_METHOD_DATE_COMPONENTS_RANGE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 
 static WebCore::ApplePayDateComponents toDateComponents(NSDateComponents *dateComponents)
 {
@@ -296,7 +296,7 @@ static WebCore::ApplePayShippingMethod toShippingMethod(PKShippingMethod *shippi
     result.detail = shippingMethod.detail;
     result.identifier = shippingMethod.identifier;
     result.label = shippingMethod.label;
-#if HAVE(PASSKIT_SHIPPING_METHOD_DATE_COMPONENTS_RANGE)
+#if HAVE(PASSKIT_SHIPPING_METHOD_DATE_COMPONENTS_RANGE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
     if (shippingMethod.dateComponentsRange)
         result.dateComponentsRange = toDateComponentsRange(shippingMethod.dateComponentsRange);
 #endif
@@ -320,7 +320,7 @@ static WebCore::ApplePayShippingMethod toShippingMethod(PKShippingMethod *shippi
     presenter->client().presenterDidSelectShippingMethod(*presenter, toShippingMethod(shippingMethod, true));
 }
 
-#if HAVE(PASSKIT_COUPON_CODE)
+#if HAVE(PASSKIT_COUPON_CODE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 
 - (void)_didChangeCouponCode:(NSString *)couponCode completion:(void (^)(PKPaymentRequestCouponCodeUpdate *update))completion
 {

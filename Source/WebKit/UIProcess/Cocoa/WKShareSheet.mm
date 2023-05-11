@@ -299,7 +299,7 @@ static void appendFilesAsShareableURLs(RetainPtr<NSMutableArray>&& shareDataArra
 #else
     _shareSheetViewController = adoptNS([[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil]);
 
-#if HAVE(UIACTIVITYTYPE_SHAREPLAY)
+#if HAVE(UIACTIVITYTYPE_SHAREPLAY) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150400)
     [_shareSheetViewController setExcludedActivityTypes:@[ UIActivityTypeSharePlay ]];
 #endif
 
