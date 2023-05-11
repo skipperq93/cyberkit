@@ -50,6 +50,18 @@ ASCIILiteral processAssertionTypeDescription(ProcessAssertionType type)
     return "unknown"_s;
 }
 
+#if !HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
+void ProcessAssertion::acquireAsync(CompletionHandler<void()>&& completionHandler)
+{
+    if (completionHandler)
+        RunLoop::main().dispatch(WTFMove(completionHandler));
+}
+
+void ProcessAssertion::acquireSync()
+{
+}
+#endif
+
 #if !PLATFORM(COCOA) || !USE(RUNNINGBOARD)
 
 ProcessAssertion::ProcessAssertion(ProcessID pid, const String& reason, ProcessAssertionType assertionType, const String&)
@@ -69,16 +81,6 @@ double ProcessAssertion::remainingRunTimeInSeconds(ProcessID)
 bool ProcessAssertion::isValid() const
 {
     return true;
-}
-
-void ProcessAssertion::acquireAsync(CompletionHandler<void()>&& completionHandler)
-{
-    if (completionHandler)
-        RunLoop::main().dispatch(WTFMove(completionHandler));
-}
-
-void ProcessAssertion::acquireSync()
-{
 }
 
 ProcessAndUIAssertion::ProcessAndUIAssertion(ProcessID pid, const String& reason, ProcessAssertionType assertionType, const String& environmentIdentifier)

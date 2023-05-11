@@ -68,10 +68,12 @@ static NSDate * __nullable networkLoadMetricsDate(MonotonicTime time)
 @property (nullable, copy, readonly) NSDate *responseEndDate;
 @property (nullable, copy, readonly) NSString *networkProtocolName;
 @property (assign, readonly, getter=isReusedConnection) BOOL reusedConnection;
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
 @property (readonly, getter=isCellular) BOOL cellular;
 @property (readonly, getter=isExpensive) BOOL expensive;
 @property (readonly, getter=isConstrained) BOOL constrained;
 @property (readonly, getter=isMultipath) BOOL multipath;
+#endif
 #if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE)
 @property (assign, readonly) nw_connection_privacy_stance_t _privacyStance;
 #endif
@@ -196,6 +198,7 @@ static NSDate * __nullable networkLoadMetricsDate(MonotonicTime time)
 }
 #endif
 
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
 @dynamic cellular;
 - (BOOL)cellular
 {
@@ -219,6 +222,7 @@ static NSDate * __nullable networkLoadMetricsDate(MonotonicTime time)
 {
     return _metrics.multipath;
 }
+#endif
 
 @end
 

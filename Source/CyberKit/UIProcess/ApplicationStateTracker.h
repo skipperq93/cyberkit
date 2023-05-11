@@ -60,6 +60,8 @@ private:
     SEL m_didCompleteSnapshotSequenceSelector;
 
     bool m_isInBackground;
+    
+    RetainPtr<BKSApplicationStateMonitor> m_applicationStateMonitor;
 
     id m_didEnterBackgroundObserver;
     id m_didFinishSnapshottingAfterEnteringBackgroundObserver;

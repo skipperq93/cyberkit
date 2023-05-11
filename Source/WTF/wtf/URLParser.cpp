@@ -25,7 +25,6 @@
 
 #include "config.h"
 #include <wtf/URLParser.h>
-#include <sys/syslog.h>
 
 #include <array>
 #include <functional>
@@ -2954,7 +2953,6 @@ const UIDNA& URLParser::internationalDomainNameTranscoder()
     std::call_once(onceFlag, [] {
         UErrorCode error = U_ZERO_ERROR;
         encoder = uidna_openUTS46(UIDNA_CHECK_BIDI | UIDNA_CHECK_CONTEXTJ | UIDNA_NONTRANSITIONAL_TO_UNICODE | UIDNA_NONTRANSITIONAL_TO_ASCII, &error);
-        syslog(LOG_WARNING, "UIDNA error code: %u, %s", error, u_getDataDirectory());
         if (UNLIKELY(U_FAILURE(error)))
             CRASH_WITH_INFO(error);
         RELEASE_ASSERT(encoder);

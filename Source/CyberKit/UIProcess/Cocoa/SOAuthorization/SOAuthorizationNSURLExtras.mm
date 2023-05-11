@@ -26,7 +26,9 @@
 #import "config.h"
 #import "SOAuthorizationNSURLExtras.h"
 
+#if HAVE(APP_SSO)
 #import <pal/cocoa/AppSSOSoftLink.h>
+#endif
 
 @implementation NSURL (SOAuthorizationExtras)
 

@@ -74,6 +74,10 @@
 #import <wtf/BlockPtr.h>
 #import <wtf/cocoa/Entitlements.h>
 
+#if !HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
+#import "AssertionServicesSPI.h"
+#endif
+
 #define MESSAGE_CHECK(assertion) MESSAGE_CHECK_BASE(assertion, m_webView.get()->_page->process().connection())
 
 @interface UIWindow ()
@@ -178,7 +182,10 @@ bool PageClientImpl::canTakeForegroundAssertions()
         pid_t applicationPID = serviceViewController._hostProcessIdentifier;
         ASSERT(applicationPID);
 
-    return true;
+    auto applicationStateMonitor = adoptNS([[BKSApplicationStateMonitor alloc] init]);
+    auto applicationState = [applicationStateMonitor mostElevatedApplicationStateForPID:applicationPID];
+    [applicationStateMonitor invalidate];
+    return applicationState != BKSApplicationStateBackgroundRunning && applicationState != BKSApplicationStateBackgroundTaskSuspended;
 #endif
 }
 
