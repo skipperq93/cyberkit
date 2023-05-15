@@ -112,7 +112,7 @@ static bool determineTrackingPreventionStateInternal(bool appWasLinkedOnOrAfter,
 
     TCCAccessPreflightResult result = kTCCAccessPreflightDenied;
 #if (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000) || (PLATFORM(MAC) && __MAC_OS_X_VERSION_MIN_REQUIRED >= 110000)
-    result = TCCAccessPreflight(get_TCC_kTCCServiceCyberKitIntelligentTrackingPrevention(), nullptr);
+    result = TCCAccessPreflight(get_TCC_kTCCServiceWebKitIntelligentTrackingPrevention(), nullptr);
 #endif
     return result != kTCCAccessPreflightDenied;
 }
@@ -178,7 +178,7 @@ bool doesParentProcessHaveTrackingPreventionEnabled(AuxiliaryProcess& auxiliaryP
             RELEASE_LOG_ERROR(IPC, "Unable to get parent process audit token");
             return;
         }
-        result = TCCAccessPreflightWithAuditToken(get_TCC_kTCCServiceCyberKitIntelligentTrackingPrevention(), auditToken.value(), nullptr);
+        result = TCCAccessPreflightWithAuditToken(get_TCC_kTCCServiceWebKitIntelligentTrackingPrevention(), auditToken.value(), nullptr);
 #endif
         trackingPreventionEnabled = result != kTCCAccessPreflightDenied;
     });
