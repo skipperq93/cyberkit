@@ -21,9 +21,17 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		4484520429424D840059B0FE /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1DAFC11D70E12D00017CF0 /* WebKit.framework */; };
 		457D0F7A29088D9000AE5914 /* SettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 457D0F7729088C9500AE5914 /* SettingsViewController.h */; };
 		45BE567C2908C74600FD7A95 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 457D0F7829088D4000AE5914 /* SettingsViewController.m */; };
+		4818242E29CE2F3F000D8834 /* CyberKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4818242D29CE2F3F000D8834 /* CyberKit.framework */; };
+		4818243129CE2F80000D8834 /* CyberScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4818243029CE2F80000D8834 /* CyberScriptCore.framework */; };
+		4818243229CE2F80000D8834 /* CyberScriptCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4818243029CE2F80000D8834 /* CyberScriptCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48D3CF6129CE2CA000608A0E /* CyberCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D3CF6029CE2CA000608A0E /* CyberCore.framework */; };
+		48D3CF6229CE2CA100608A0E /* CyberCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48D3CF6029CE2CA000608A0E /* CyberCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48D3CF6429CE2CA300608A0E /* CyberKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1DAFC11D70E12D00017CF0 /* CyberKit.framework */; };
+		48D3CF6529CE2CA300608A0E /* CyberKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD1DAFC11D70E12D00017CF0 /* CyberKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48D3CF6729CE2CB500608A0E /* CyberKitLegacy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D3CF6629CE2CB500608A0E /* CyberKitLegacy.framework */; };
+		48D3CF6829CE2CB500608A0E /* CyberKitLegacy.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48D3CF6629CE2CB500608A0E /* CyberKitLegacy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD1DAF971D709E3600017CF0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1DAF961D709E3600017CF0 /* main.m */; };
 		CD1DAFA51D709E3600017CF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD1DAFA31D709E3600017CF0 /* LaunchScreen.storyboard */; };
 		CD1DAFB01D709E3600017CF0 /* MobileMiniBrowserUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1DAFAF1D709E3600017CF0 /* MobileMiniBrowserUITests.m */; };
@@ -43,7 +51,6 @@
 		CDC2792C2935418400151088 /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = CDC279282935417100151088 /* test.mp4 */; };
 		CDC2792D2935418400151088 /* looping2s.html in Resources */ = {isa = PBXBuildFile; fileRef = CDC279292935417100151088 /* looping2s.html */; };
 		CDC2792E2935418400151088 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = CDC279262935417100151088 /* index.html */; };
-		DD403C5828500FE300D899FC /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1DAFC11D70E12D00017CF0 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +78,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		48D3CF6329CE2CA100608A0E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4818243229CE2F80000D8834 /* CyberScriptCore.framework in Embed Frameworks */,
+				48D3CF6229CE2CA100608A0E /* CyberCore.framework in Embed Frameworks */,
+				48D3CF6829CE2CB500608A0E /* CyberKitLegacy.framework in Embed Frameworks */,
+				48D3CF6529CE2CA300608A0E /* CyberKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CD498B231D76341700681FA7 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -87,6 +108,10 @@
 /* Begin PBXFileReference section */
 		457D0F7729088C9500AE5914 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		457D0F7829088D4000AE5914 /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		4818242D29CE2F3F000D8834 /* CyberKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4818243029CE2F80000D8834 /* CyberScriptCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberScriptCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48D3CF6029CE2CA000608A0E /* CyberCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48D3CF6629CE2CB500608A0E /* CyberKitLegacy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberKitLegacy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD1DAF921D709E3600017CF0 /* MobileMiniBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileMiniBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD1DAF961D709E3600017CF0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CD1DAF981D709E3600017CF0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -122,7 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD498B421D76348000681FA7 /* MobileMiniBrowser.framework in Frameworks */,
-				4484520429424D840059B0FE /* WebKit.framework in Frameworks */,
+				4818242E29CE2F3F000D8834 /* CyberKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +162,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD403C5828500FE300D899FC /* WebKit.framework in Frameworks */,
+				4818243129CE2F80000D8834 /* CyberScriptCore.framework in Frameworks */,
+				48D3CF6129CE2CA000608A0E /* CyberCore.framework in Frameworks */,
+				48D3CF6729CE2CB500608A0E /* CyberKitLegacy.framework in Frameworks */,
+				48D3CF6429CE2CA300608A0E /* CyberKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,7 +218,11 @@
 		CD1DAFC01D70E12D00017CF0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CD1DAFC11D70E12D00017CF0 /* WebKit.framework */,
+				CD1DAFC11D70E12D00017CF0 /* CyberKit.framework */,
+				48D3CF6029CE2CA000608A0E /* CyberCore.framework */,
+				4818243029CE2F80000D8834 /* CyberScriptCore.framework */,
+				4818242D29CE2F3F000D8834 /* CyberKit.framework */,
+				48D3CF6629CE2CB500608A0E /* CyberKitLegacy.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -300,6 +332,7 @@
 				CD498B371D76348000681FA7 /* Frameworks */,
 				CD498B381D76348000681FA7 /* Headers */,
 				CD498B391D76348000681FA7 /* Resources */,
+				48D3CF6329CE2CA100608A0E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
