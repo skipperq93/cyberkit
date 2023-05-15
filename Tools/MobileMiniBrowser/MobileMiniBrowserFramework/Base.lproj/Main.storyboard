@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21663" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ohh-6U-lsQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ohh-6U-lsQ">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment version="5632" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21654"/>
+        <deployment version="2304" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -49,7 +49,7 @@
                                             <action selector="showTabs:" destination="Ohh-6U-lsQ" id="ZZT-Jw-TR7"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem image="gear" catalog="system" style="plain" id="yi7-p4-xpL" userLabel="Settings Button">
+                                    <barButtonItem image="_settings" style="plain" id="yi7-p4-xpL" userLabel="Settings Button">
                                         <connections>
                                             <action selector="showSettings:" destination="Ohh-6U-lsQ" id="SPY-9P-WOw"/>
                                         </connections>
@@ -144,7 +144,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="idTabViewController" id="KyF-2k-9Cc" customClass="TabViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Pid-8n-Ixq">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -180,26 +180,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="UK0-Lb-N0g">
-                                <rect key="frame" x="55" y="341" width="280" height="170.33333333333337"/>
+                                <rect key="frame" x="55" y="341" width="291" height="170.33333333333337"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Eu-Zz-uaZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="291" height="128"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ua5-lh-IpN">
-                                                <rect key="frame" x="0.0" y="0.0" width="40" height="128"/>
-                                                <buttonConfiguration key="configuration" style="plain"/>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ua5-lh-IpN">
+                                                <rect key="frame" x="0.0" y="0.0" width="48" height="128"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="_close"/>
                                                 <connections>
                                                     <action selector="closeModal:" destination="aJ5-0L-JDf" eventType="touchUpInside" id="h5A-RA-TNO"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="V0B-v2-13O">
-                                                <rect key="frame" x="40" y="0.0" width="240" height="128"/>
+                                                <rect key="frame" x="48" y="0.0" width="243" height="128"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVm-uk-liS" userLabel="Default URL Button">
-                                        <rect key="frame" x="0.0" y="136" width="280" height="34.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="136" width="291" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Set Current URL As Default URL"/>
                                         <connections>
@@ -222,7 +222,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gear" catalog="system" width="128" height="122"/>
+        <image name="_close" width="24" height="24"/>
+        <image name="_settings" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

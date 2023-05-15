@@ -274,12 +274,16 @@ static WebCore::IntDegrees deviceOrientationForUIInterfaceOrientation(UIInterfac
 - (WebCore::IntDegrees)_deviceOrientationIgnoringOverrides
 {
     auto orientation = UIInterfaceOrientationUnknown;
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
     auto application = UIApplication.sharedApplication;
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
     if (!application._appAdoptsUISceneLifecycle)
         orientation = application.statusBarOrientation;
 ALLOW_DEPRECATED_DECLARATIONS_END
     else if (auto windowScene = self.window.windowScene)
+#else
+    if (auto windowScene = self.window.windowScene)
+#endif
         orientation = windowScene.interfaceOrientation;
     return deviceOrientationForUIInterfaceOrientation(orientation);
 }

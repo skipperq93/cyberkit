@@ -235,7 +235,9 @@ WTF_EXTERN_C_END
 - (void)_enqueueHIDEvent:(IOHIDEventRef)event;
 - (void)_handleHIDEvent:(IOHIDEventRef)event;
 - (void)handleKeyUIEvent:(UIEvent *)event;
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
 - (BOOL)_appAdoptsUISceneLifecycle;
+#endif
 @end
 
 @interface UIColor ()
