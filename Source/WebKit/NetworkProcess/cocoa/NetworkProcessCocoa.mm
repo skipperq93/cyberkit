@@ -123,19 +123,23 @@ std::optional<audit_token_t> NetworkProcess::sourceApplicationAuditToken() const
 HashSet<String> NetworkProcess::hostNamesWithHSTSCache(PAL::SessionID sessionID) const
 {
     HashSet<String> hostNames;
+#if HAVE(HSTS_STORAGE)
     if (auto* networkSession = static_cast<NetworkSessionCocoa*>(this->networkSession(sessionID))) {
         for (NSString *host in networkSession->hstsStorage().nonPreloadedHosts)
             hostNames.add(host);
     }
+#endif
     return hostNames;
 }
 
 void NetworkProcess::deleteHSTSCacheForHostNames(PAL::SessionID sessionID, const Vector<String>& hostNames)
 {
+#if HAVE(HSTS_STORAGE)
     if (auto* networkSession = static_cast<NetworkSessionCocoa*>(this->networkSession(sessionID))) {
         for (auto& hostName : hostNames)
             [networkSession->hstsStorage() resetHSTSForHost:hostName];
     }
+#endif
 }
 
 void NetworkProcess::allowSpecificHTTPSCertificateForHost(PAL::SessionID, const WebCore::CertificateInfo& certificateInfo, const String& host)
@@ -146,10 +150,12 @@ void NetworkProcess::allowSpecificHTTPSCertificateForHost(PAL::SessionID, const 
 
 void NetworkProcess::clearHSTSCache(PAL::SessionID sessionID, WallTime modifiedSince)
 {
+#if HAVE(HSTS_STORAGE)
     NSTimeInterval timeInterval = modifiedSince.secondsSinceEpoch().seconds();
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval];
     if (auto* networkSession = static_cast<NetworkSessionCocoa*>(this->networkSession(sessionID)))
         [networkSession->hstsStorage() resetHSTSHostsSinceDate:date];
+#endif
 }
 
 void NetworkProcess::clearDiskCache(WallTime modifiedSince, CompletionHandler<void()>&& completionHandler)
