@@ -1576,6 +1576,8 @@ std::optional<CDMKeyStatus> CDMInstanceSessionFairPlayStreamingAVFObjC::protecti
         ALWAYS_LOG(LOGIDENTIFIER, "request { ", keyIDsForRequest(request), " } willOutputBeObscured...forDisplays:[ nil ] = ", obscured ? "true" : "false");
         return obscured ? CDMKeyStatus::OutputRestricted : CDMKeyStatus::Usable;
     }
+#else
+    UNUSED_PARAM(request);
 #endif
 
     // Only use the non-request-specific "outputObscuredDueToInsufficientExternalProtection" status if

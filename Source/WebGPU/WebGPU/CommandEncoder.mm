@@ -74,10 +74,13 @@ Ref<CommandEncoder> Device::createCommandEncoder(const WGPUCommandEncoderDescrip
 
     captureFrameIfNeeded();
     // https://gpuweb.github.io/gpuweb/#dom-gpudevice-createcommandencoder
-
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
     auto *commandBufferDescriptor = [MTLCommandBufferDescriptor new];
     commandBufferDescriptor.errorOptions = MTLCommandBufferErrorOptionEncoderExecutionStatus;
     id<MTLCommandBuffer> commandBuffer = [getQueue().commandQueue() commandBufferWithDescriptor:commandBufferDescriptor];
+#else
+    id<MTLCommandBuffer> commandBuffer = [getQueue().commandQueue() commandBuffer];
+#endif
     if (!commandBuffer)
         return CommandEncoder::createInvalid(*this);
 
@@ -111,6 +114,7 @@ void CommandEncoder::ensureBlitCommandEncoder()
     if (m_blitCommandEncoder && !pendingTimestampWrites.isEmpty())
         finalizeBlitCommandEncoder();
 
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
     MTLBlitPassDescriptor *descriptor = [MTLBlitPassDescriptor new];
     ASSERT(pendingTimestampWrites.isEmpty() || m_device->baseCapabilities().counterSamplingAPI == HardwareCapabilities::BaseCapabilities::CounterSamplingAPI::StageBoundary);
     // FIXME: rdar://91371495 This approach won't actually work; we need to work around this limitation.
@@ -120,6 +124,9 @@ void CommandEncoder::ensureBlitCommandEncoder()
         descriptor.sampleBufferAttachments[i].startOfEncoderSampleIndex = pendingTimestampWrite.queryIndex;
     }
     m_blitCommandEncoder = [m_commandBuffer blitCommandEncoderWithDescriptor:descriptor];
+#else
+    m_blitCommandEncoder = [m_commandBuffer blitCommandEncoder];
+#endif
 }
 
 void CommandEncoder::finalizeBlitCommandEncoder()
@@ -163,6 +170,7 @@ Ref<ComputePassEncoder> CommandEncoder::beginComputePass(const WGPUComputePassDe
 
     finalizeBlitCommandEncoder();
 
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
     MTLComputePassDescriptor* computePassDescriptor = [MTLComputePassDescriptor new];
     computePassDescriptor.dispatchType = MTLDispatchTypeSerial;
 
@@ -193,7 +201,6 @@ Ref<ComputePassEncoder> CommandEncoder::beginComputePass(const WGPUComputePassDe
         // When rdar://91372549 is fixed, we'll be able to do a pre-pass over descriptor.timestampWrites to see which of these is actually necessary.
         computePassDescriptor.sampleBufferAttachments[0].startOfEncoderSampleIndex = startIndex;
         computePassDescriptor.sampleBufferAttachments[0].endOfEncoderSampleIndex = endIndex;
-
         for (uint32_t i = 0; i < descriptor.timestampWriteCount; ++i) {
             const auto& timestampWrite = descriptor.timestampWrites[i];
             uint32_t otherIndex = 0;
@@ -214,6 +221,9 @@ Ref<ComputePassEncoder> CommandEncoder::beginComputePass(const WGPUComputePassDe
     }
 
     id<MTLComputeCommandEncoder> computeCommandEncoder = [m_commandBuffer computeCommandEncoderWithDescriptor:computePassDescriptor];
+#else
+    id<MTLComputeCommandEncoder> computeCommandEncoder = [m_commandBuffer computeCommandEncoder];
+#endif
     computeCommandEncoder.label = fromAPI(descriptor.label);
 
     return ComputePassEncoder::create(computeCommandEncoder, descriptor, m_device);

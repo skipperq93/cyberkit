@@ -67,10 +67,13 @@ void Queue::ensureBlitCommandEncoder()
 {
     if (m_blitCommandEncoder)
         return;
-
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
     auto *commandBufferDescriptor = [MTLCommandBufferDescriptor new];
     commandBufferDescriptor.errorOptions = MTLCommandBufferErrorOptionEncoderExecutionStatus;
     m_commandBuffer = [m_commandQueue commandBufferWithDescriptor:commandBufferDescriptor];
+#else
+    m_commandBuffer = [m_commandQueue commandBuffer];
+#endif
     m_blitCommandEncoder = [m_commandBuffer blitCommandEncoder];
 }
 
