@@ -498,6 +498,7 @@ int X509_NAME_print(BIO *bp, const X509_NAME *name, int obase)
 {
     char *s, *c, *b;
     int ret = 0, l, i;
+    (void)l;
 
     l = 80 - 2 - obase;
 

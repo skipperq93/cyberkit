@@ -3214,6 +3214,7 @@ static void encode_frame_to_data_rate(VP8_COMP *cpi, size_t *size,
 
   int Loop = 0;
   int loop_count;
+    (void)loop_count;
 
   VP8_COMMON *cm = &cpi->common;
   int active_worst_qchanged = 0;
