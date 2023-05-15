@@ -197,12 +197,10 @@ void* URLContext = &URLContext;
     WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
 
     configuration.preferences._mockCaptureDevicesEnabled = YES;
-    if (@available(iOS 15.4, *)) {
-        configuration.preferences.elementFullscreenEnabled = YES;
-    }
+    configuration.preferences.elementFullscreenEnabled = YES;
 
     WKWebView *webView = [[WKWebView alloc] initWithFrame:self.webViewContainer.bounds configuration:configuration];
-    //webView.inspectable = YES;
+    webView.inspectable = YES;
     webView.navigationDelegate = self;
     webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [webView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:TitleContext];
