@@ -46,31 +46,26 @@
 #include <gio/gio.h>
 #endif
 
-#if HAVE(STD_FILESYSTEM) || HAVE(STD_EXPERIMENTAL_FILESYSTEM)
 #include <wtf/StdFilesystem.h>
-#endif
 
 namespace WTF::FileSystemImpl {
 
-#if HAVE(STD_FILESYSTEM) || HAVE(STD_EXPERIMENTAL_FILESYSTEM)
-
-static std::filesystem::path toStdFileSystemPath(StringView path)
+static WTF::filesystem::path toStdFileSystemPath(StringView path)
 {
 #if HAVE(MISSING_STD_FILESYSTEM_PATH_CONSTRUCTOR)
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
-    return std::filesystem::u8path(path.utf8().data());
+    return WTF::filesystem::u8path(path.utf8().data());
 ALLOW_DEPRECATED_DECLARATIONS_END
 #else
     return { std::u8string(reinterpret_cast<const char8_t*>(path.utf8().data())) };
 #endif
 }
 
-static String fromStdFileSystemPath(const std::filesystem::path& path)
+static String fromStdFileSystemPath(const WTF::filesystem::path& path)
 {
     return String::fromUTF8(reinterpret_cast<const LChar*>(path.u8string().c_str()));
 }
 
-#endif // HAVE(STD_FILESYSTEM) || HAVE(STD_EXPERIMENTAL_FILESYSTEM)
 
 // The following lower-ASCII characters need escaping to be used in a filename
 // across all systems, including Windows:
@@ -128,11 +123,10 @@ static inline bool shouldEscapeUChar(UChar character, UChar previousCharacter, U
     return false;
 }
 
-#if HAVE(STD_FILESYSTEM) || HAVE(STD_EXPERIMENTAL_FILESYSTEM)
 
 template<typename, typename = void> inline constexpr bool HasToTimeT = false;
 template<typename ClockType> inline constexpr bool HasToTimeT<ClockType, std::void_t<
-    std::enable_if_t<std::is_same_v<std::time_t, decltype(ClockType::to_time_t(std::filesystem::file_time_type()))>>
+    std::enable_if_t<std::is_same_v<std::time_t, decltype(ClockType::to_time_t(WTF::filesystem::file_time_type()))>>
 >> = true;
 
 template <typename FileTimeType>
@@ -144,13 +138,12 @@ typename std::time_t toTimeT(FileTimeType fileTime)
         return std::chrono::system_clock::to_time_t(std::chrono::time_point_cast<std::chrono::system_clock::duration>(fileTime - decltype(fileTime)::clock::now() + std::chrono::system_clock::now()));
 }
 
-static WallTime toWallTime(std::filesystem::file_time_type fileTime)
+static WallTime toWallTime(WTF::filesystem::file_time_type fileTime)
 {
     // FIXME: Use std::chrono::file_clock::to_sys() once we can use C++20.
     return WallTime::fromRawSeconds(toTimeT(fileTime));
 }
 
-#endif // HAVE(STD_FILESYSTEM) || HAVE(STD_EXPERIMENTAL_FILESYSTEM)
 
 String encodeForFileName(const String& inputString)
 {
@@ -619,21 +612,20 @@ void deleteAllFilesModifiedSince(const String& directory, WallTime time)
     FileSystem::deleteEmptyDirectory(directory);
 }
 
-#if HAVE(STD_FILESYSTEM) || HAVE(STD_EXPERIMENTAL_FILESYSTEM)
 
 bool deleteEmptyDirectory(const String& path)
 {
     std::error_code ec;
     auto fsPath = toStdFileSystemPath(path);
 
-    auto fileStatus = std::filesystem::symlink_status(fsPath, ec);
-    if (ec || fileStatus.type() != std::filesystem::file_type::directory)
+    auto fileStatus = WTF::filesystem::symlink_status(fsPath, ec);
+    if (ec || fileStatus.type() != WTF::filesystem::file_type::directory)
         return false;
 
 #if PLATFORM(MAC)
     bool containsSingleDSStoreFile = false;
-    auto entries = std::filesystem::directory_iterator(fsPath, ec);
-    for (auto it = std::filesystem::begin(entries), end = std::filesystem::end(entries); !ec && it != end; it.increment(ec)) {
+    auto entries = WTF::filesystem::directory_iterator(fsPath, ec);
+    for (auto it = WTF::filesystem::begin(entries), end = WTF::filesystem::end(entries); !ec && it != end; it.increment(ec)) {
         if (it->path().filename() == ".DS_Store")
             containsSingleDSStoreFile = true;
         else {
@@ -642,11 +634,11 @@ bool deleteEmptyDirectory(const String& path)
         }
     }
     if (containsSingleDSStoreFile)
-        std::filesystem::remove(fsPath / ".DS_Store", ec);
+        WTF::filesystem::remove(fsPath / ".DS_Store", ec);
 #endif
 
     // remove() returns false on error so no need to check ec.
-    return std::filesystem::remove(fsPath, ec);
+    return WTF::filesystem::remove(fsPath, ec);
 }
 
 #if !PLATFORM(PLAYSTATION)
@@ -656,23 +648,23 @@ bool moveFile(const String& oldPath, const String& newPath)
     auto fsNewPath = toStdFileSystemPath(newPath);
 
     std::error_code ec;
-    std::filesystem::rename(fsOldPath, fsNewPath, ec);
+    WTF::filesystem::rename(fsOldPath, fsNewPath, ec);
     if (!ec)
         return true;
 
     // Fall back to copying and then deleting source as rename() does not work across volumes.
     ec = { };
-    std::filesystem::copy(fsOldPath, fsNewPath, std::filesystem::copy_options::overwrite_existing | std::filesystem::copy_options::recursive, ec);
+    WTF::filesystem::copy(fsOldPath, fsNewPath, WTF::filesystem::copy_options::overwrite_existing | WTF::filesystem::copy_options::recursive, ec);
     if (ec)
         return false;
-    return std::filesystem::remove_all(fsOldPath, ec);
+    return WTF::filesystem::remove_all(fsOldPath, ec);
 }
 #endif
 
 std::optional<uint64_t> fileSize(const String& path)
 {
     std::error_code ec;
-    auto size = std::filesystem::file_size(toStdFileSystemPath(path), ec);
+    auto size = WTF::filesystem::file_size(toStdFileSystemPath(path), ec);
     if (ec)
         return std::nullopt;
     return size;
@@ -685,13 +677,15 @@ std::optional<uint64_t> directorySize(const String& path)
 
     std::error_code ec;
     auto stdPath = toStdFileSystemPath(path);
-    if (!std::filesystem::is_directory(stdPath, ec))
+    if (!WTF::filesystem::is_directory(stdPath, ec))
         return std::nullopt;
 
     CheckedUint64 size = 0;
-    for (auto& entry : std::filesystem::recursive_directory_iterator(stdPath, ec)) {
+    auto i = WTF::filesystem::recursive_directory_iterator(stdPath, ec);
+    for (i = WTF::filesystem::begin(i); i != WTF::filesystem::end(i); i = i.increment(ec)) {
         if (ec)
             return std::nullopt;
+        auto entry = *i;
         auto filePath = fromStdFileSystemPath(entry.path());
         if (entry.is_regular_file(ec) && !ec)
             size += entry.file_size(ec);
@@ -708,7 +702,7 @@ std::optional<uint64_t> directorySize(const String& path)
 std::optional<uint64_t> volumeFreeSpace(const String& path)
 {
     std::error_code ec;
-    auto spaceInfo = std::filesystem::space(toStdFileSystemPath(path), ec);
+    auto spaceInfo = WTF::filesystem::space(toStdFileSystemPath(path), ec);
     if (ec)
         return std::nullopt;
     return spaceInfo.available;
@@ -717,7 +711,7 @@ std::optional<uint64_t> volumeFreeSpace(const String& path)
 std::optional<uint64_t> volumeCapacity(const String& path)
 {
     std::error_code ec;
-    auto spaceInfo = std::filesystem::space(toStdFileSystemPath(path), ec);
+    auto spaceInfo = WTF::filesystem::space(toStdFileSystemPath(path), ec);
     if (ec)
         return std::nullopt;
     return spaceInfo.capacity;
@@ -727,14 +721,14 @@ std::optional<uint64_t> volumeCapacity(const String& path)
 bool createSymbolicLink(const String& targetPath, const String& symbolicLinkPath)
 {
     std::error_code ec;
-    std::filesystem::create_symlink(toStdFileSystemPath(targetPath), toStdFileSystemPath(symbolicLinkPath), ec);
+    WTF::filesystem::create_symlink(toStdFileSystemPath(targetPath), toStdFileSystemPath(symbolicLinkPath), ec);
     return !ec;
 }
 
 bool hardLink(const String& targetPath, const String& linkPath)
 {
     std::error_code ec;
-    std::filesystem::create_hard_link(toStdFileSystemPath(targetPath), toStdFileSystemPath(linkPath), ec);
+    WTF::filesystem::create_hard_link(toStdFileSystemPath(targetPath), toStdFileSystemPath(linkPath), ec);
     return !ec;
 }
 
@@ -744,18 +738,18 @@ bool hardLinkOrCopyFile(const String& targetPath, const String& linkPath)
     auto fsLinkPath = toStdFileSystemPath(linkPath);
 
     std::error_code ec;
-    std::filesystem::create_hard_link(fsTargetPath, fsLinkPath, ec);
+    WTF::filesystem::create_hard_link(fsTargetPath, fsLinkPath, ec);
     if (!ec)
         return true;
 
-    std::filesystem::copy_file(fsTargetPath, fsLinkPath, ec);
+    WTF::filesystem::copy_file(fsTargetPath, fsLinkPath, ec);
     return !ec;
 }
 
 std::optional<uint64_t> hardLinkCount(const String& path)
 {
     std::error_code ec;
-    uint64_t linkCount = std::filesystem::hard_link_count(toStdFileSystemPath(path), ec);
+    uint64_t linkCount = WTF::filesystem::hard_link_count(toStdFileSystemPath(path), ec);
     return ec ? std::nullopt : std::make_optional(linkCount);
 }
 
@@ -763,7 +757,7 @@ std::optional<uint64_t> hardLinkCount(const String& path)
 bool deleteNonEmptyDirectory(const String& path)
 {
     std::error_code ec;
-    std::filesystem::remove_all(toStdFileSystemPath(path), ec);
+    WTF::filesystem::remove_all(toStdFileSystemPath(path), ec);
     return !ec;
 }
 #endif
@@ -771,7 +765,7 @@ bool deleteNonEmptyDirectory(const String& path)
 std::optional<WallTime> fileModificationTime(const String& path)
 {
     std::error_code ec;
-    auto modificationTime = std::filesystem::last_write_time(toStdFileSystemPath(path), ec);
+    auto modificationTime = WTF::filesystem::last_write_time(toStdFileSystemPath(path), ec);
     if (ec)
         return std::nullopt;
     return toWallTime(modificationTime);
@@ -780,7 +774,7 @@ std::optional<WallTime> fileModificationTime(const String& path)
 bool updateFileModificationTime(const String& path)
 {
     std::error_code ec;
-    std::filesystem::last_write_time(toStdFileSystemPath(path), std::filesystem::file_time_type::clock::now(), ec);
+    WTF::filesystem::last_write_time(toStdFileSystemPath(path), WTF::filesystem::file_time_type::clock::now(), ec);
     return !ec;
 }
 
@@ -788,7 +782,7 @@ bool isHiddenFile(const String& path)
 {
 #if OS(UNIX)
     auto fsPath = toStdFileSystemPath(path);
-    std::filesystem::path::string_type filename = fsPath.filename();
+    WTF::filesystem::path::string_type filename = fsPath.filename();
     return !filename.empty() && filename[0] == '.';
 #else
     UNUSED_PARAM(path);
@@ -800,13 +794,13 @@ enum class ShouldFollowSymbolicLinks : bool { No, Yes };
 static std::optional<FileType> fileTypePotentiallyFollowingSymLinks(const String& path, ShouldFollowSymbolicLinks shouldFollowSymbolicLinks)
 {
     std::error_code ec;
-    auto status = shouldFollowSymbolicLinks == ShouldFollowSymbolicLinks::Yes ? std::filesystem::status(toStdFileSystemPath(path), ec) : std::filesystem::symlink_status(toStdFileSystemPath(path), ec);
+    auto status = shouldFollowSymbolicLinks == ShouldFollowSymbolicLinks::Yes ? WTF::filesystem::status(toStdFileSystemPath(path), ec) : WTF::filesystem::symlink_status(toStdFileSystemPath(path), ec);
     if (ec)
         return std::nullopt;
     switch (status.type()) {
-    case std::filesystem::file_type::directory:
+    case WTF::filesystem::file_type::directory:
         return FileType::Directory;
-    case std::filesystem::file_type::symlink:
+    case WTF::filesystem::file_type::symlink:
         return FileType::SymbolicLink;
     default:
         break;
@@ -838,7 +832,7 @@ String parentPath(const String& path)
 String realPath(const String& path)
 {
     std::error_code ec;
-    auto canonicalPath = std::filesystem::canonical(toStdFileSystemPath(path), ec);
+    auto canonicalPath = WTF::filesystem::canonical(toStdFileSystemPath(path), ec);
     return ec ? path : fromStdFileSystemPath(canonicalPath);
 }
 #endif
@@ -848,8 +842,8 @@ Vector<String> listDirectory(const String& path)
 {
     Vector<String> fileNames;
     std::error_code ec;
-    auto entries = std::filesystem::directory_iterator(toStdFileSystemPath(path), ec);
-    for (auto it = std::filesystem::begin(entries), end = std::filesystem::end(entries); !ec && it != end; it.increment(ec)) {
+    auto entries = WTF::filesystem::directory_iterator(toStdFileSystemPath(path), ec);
+    for (auto it = WTF::filesystem::begin(entries), end = WTF::filesystem::end(entries); !ec && it != end; it.increment(ec)) {
         auto fileName = fromStdFileSystemPath(it->path().filename());
         if (!fileName.isNull())
             fileNames.append(WTFMove(fileName));
@@ -864,7 +858,7 @@ bool fileExists(const String& path)
 {
     std::error_code ec;
     // exists() returns false on error so no need to check ec.
-    return std::filesystem::exists(toStdFileSystemPath(path), ec);
+    return WTF::filesystem::exists(toStdFileSystemPath(path), ec);
 }
 
 bool deleteFile(const String& path)
@@ -872,18 +866,18 @@ bool deleteFile(const String& path)
     std::error_code ec;
     auto fsPath = toStdFileSystemPath(path);
 
-    auto fileStatus = std::filesystem::symlink_status(fsPath, ec);
-    if (ec || fileStatus.type() == std::filesystem::file_type::directory)
+    auto fileStatus = WTF::filesystem::symlink_status(fsPath, ec);
+    if (ec || fileStatus.type() == WTF::filesystem::file_type::directory)
         return false;
 
     // remove() returns false on error so no need to check ec.
-    return std::filesystem::remove(fsPath, ec);
+    return WTF::filesystem::remove(fsPath, ec);
 }
 
 bool makeAllDirectories(const String& path)
 {
     std::error_code ec;
-    std::filesystem::create_directories(toStdFileSystemPath(path), ec);
+    WTF::filesystem::create_directories(toStdFileSystemPath(path), ec);
     return !ec;
 }
 
@@ -907,7 +901,7 @@ String pathByAppendingComponents(StringView path, const Vector<StringView>& comp
 String createTemporaryDirectory()
 {
     std::error_code ec;
-    std::string tempDir = std::filesystem::temp_directory_path(ec);
+    std::string tempDir = WTF::filesystem::temp_directory_path(ec);
     if (ec)
         return String();
 
@@ -921,7 +915,5 @@ String createTemporaryDirectory()
 }
 
 #endif // !OS(WINDOWS) && !PLATFORM(COCOA)
-
-#endif // HAVE(STD_FILESYSTEM) || HAVE(STD_EXPERIMENTAL_FILESYSTEM)
 
 } // namespace WTF::FileSystemImpl

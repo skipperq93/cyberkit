@@ -976,6 +976,9 @@
 		46EE3E8B2763FD2F0060C70F /* WebSharedWorkerServerConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 468386672763FAB100CF9182 /* WebSharedWorkerServerConnection.h */; };
 		46F38E8C2416E6730059375A /* RunningBoardServicesSPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 46F38E8B2416E66D0059375A /* RunningBoardServicesSPI.h */; };
 		46F9B26323526EF3006FE5FA /* WebBackForwardCacheEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 46F9B26223526ED0006FE5FA /* WebBackForwardCacheEntry.h */; };
+		48704BB22A003A0A00B3F507 /* AssertionServicesSPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 48704BB12A003A0A00B3F507 /* AssertionServicesSPI.h */; };
+		48704BB52A003AB400B3F507 /* ProcessTaskStateObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 48704BB32A003AB300B3F507 /* ProcessTaskStateObserver.h */; };
+		48704BB62A003AB400B3F507 /* ProcessTaskStateObserver.mm in Sources */ = {isa = PBXBuildFile; fileRef = 48704BB42A003AB300B3F507 /* ProcessTaskStateObserver.mm */; };
 		493102BD2683F3D0002BB885 /* AppPrivacyReport.h in Headers */ = {isa = PBXBuildFile; fileRef = 493102BC2683F3A5002BB885 /* AppPrivacyReport.h */; };
 		4955A6E628076D4D00BB91C4 /* ArrayReferenceTuple.h in Headers */ = {isa = PBXBuildFile; fileRef = 4955A6E528076D4C00BB91C4 /* ArrayReferenceTuple.h */; };
 		4973DF482422941F00E4C26A /* NavigatingToAppBoundDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = 4973DF472422941F00E4C26A /* NavigatingToAppBoundDomain.h */; };
@@ -4746,6 +4749,9 @@
 		46EE3E8A2763FD2A0060C70F /* WebSharedWorkerServerConnection.messages.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = WebSharedWorkerServerConnection.messages.in; sourceTree = "<group>"; };
 		46F38E8B2416E66D0059375A /* RunningBoardServicesSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunningBoardServicesSPI.h; sourceTree = "<group>"; };
 		46F9B26223526ED0006FE5FA /* WebBackForwardCacheEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebBackForwardCacheEntry.h; sourceTree = "<group>"; };
+		48704BB12A003A0A00B3F507 /* AssertionServicesSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssertionServicesSPI.h; sourceTree = "<group>"; };
+		48704BB32A003AB300B3F507 /* ProcessTaskStateObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessTaskStateObserver.h; sourceTree = "<group>"; };
+		48704BB42A003AB300B3F507 /* ProcessTaskStateObserver.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ProcessTaskStateObserver.mm; sourceTree = "<group>"; };
 		493102BC2683F3A5002BB885 /* AppPrivacyReport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppPrivacyReport.h; sourceTree = "<group>"; };
 		4955A6E528076D4C00BB91C4 /* ArrayReferenceTuple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayReferenceTuple.h; sourceTree = "<group>"; };
 		4973DF472422941F00E4C26A /* NavigatingToAppBoundDomain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigatingToAppBoundDomain.h; sourceTree = "<group>"; };
@@ -10186,6 +10192,8 @@
 		37C4C0901814B37B003688B9 /* cocoa */ = {
 			isa = PBXGroup;
 			children = (
+				48704BB32A003AB300B3F507 /* ProcessTaskStateObserver.h */,
+				48704BB42A003AB300B3F507 /* ProcessTaskStateObserver.mm */,
 				1A1EF1971A1D5B420023200A /* APIDataCocoa.mm */,
 				378E1A3B181ED6FF0031007A /* APIObject.mm */,
 				A175C44921AA3170000037D0 /* ArgumentCodersCocoa.h */,
@@ -13729,6 +13737,7 @@
 		CE1A0BCB1A48E6C60054EF74 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				48704BB12A003A0A00B3F507 /* AssertionServicesSPI.h */,
 				CDA041F31ACE2105004A13EC /* BackBoardServicesSPI.h */,
 				95C943902523C0D00054F3D5 /* BaseBoardSPI.h */,
 				2D4AF0882044C3C4006C8817 /* FrontBoardServicesSPI.h */,
@@ -14327,6 +14336,7 @@
 				9EC532A32447FBAD00215216 /* GeolocationIdentifier.h in Headers */,
 				BC06F42F12DBB9B6002D78DE /* GeolocationPermissionRequestManager.h in Headers */,
 				BC06F44A12DBD1F5002D78DE /* GeolocationPermissionRequestManagerProxy.h in Headers */,
+				48704BB22A003A0A00B3F507 /* AssertionServicesSPI.h in Headers */,
 				BC06F43A12DBCCFB002D78DE /* GeolocationPermissionRequestProxy.h in Headers */,
 				F4CF1E9D25E40DCC000F9D73 /* GestureRecognizerConsistencyEnforcer.h in Headers */,
 				2DA944A41884E4F000ED86DB /* GestureTypes.h in Headers */,
@@ -15010,6 +15020,7 @@
 				417915B12256C0D600D6F97E /* WebSocketChannelManager.h in Headers */,
 				93D6B773254BB8C70058DD3A /* WebSpeechRecognitionConnection.h in Headers */,
 				93D6B787254CCD8C0058DD3A /* WebSpeechRecognitionConnectionMessages.h in Headers */,
+				48704BB52A003AB400B3F507 /* ProcessTaskStateObserver.h in Headers */,
 				C149380922347104000CD707 /* WebSpeechSynthesisClient.h in Headers */,
 				836034A01ACB34D600626549 /* WebSQLiteDatabaseTracker.h in Headers */,
 				93085DC026E19313000EC6A7 /* WebStorageConnection.h in Headers */,
@@ -17130,6 +17141,7 @@
 				2D11B78F2126A283006F8878 /* UnifiedSource32-mm.mm in Sources */,
 				2D11B7902126A283006F8878 /* UnifiedSource32.cpp in Sources */,
 				2D11B7912126A283006F8878 /* UnifiedSource33-mm.mm in Sources */,
+				48704BB62A003AB400B3F507 /* ProcessTaskStateObserver.mm in Sources */,
 				2D11B7922126A283006F8878 /* UnifiedSource33.cpp in Sources */,
 				2D11B7932126A283006F8878 /* UnifiedSource34-mm.mm in Sources */,
 				2D11B7942126A283006F8878 /* UnifiedSource34.cpp in Sources */,

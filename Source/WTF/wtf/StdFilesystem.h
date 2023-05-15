@@ -27,11 +27,17 @@
 
 #if HAVE(STD_FILESYSTEM)
 #include <filesystem>
+namespace WTF {
+namespace filesystem = std::filesystem;
+}
 #elif HAVE(STD_EXPERIMENTAL_FILESYSTEM)
 #include <experimental/filesystem>
-namespace std {
+namespace WTF {
 namespace filesystem = std::experimental::filesystem;
 }
 #else
-#error "Missing support for std::filesystem or std::experimental::filesystem"
+#include "filesystem.hpp"
+namespace WTF {
+namespace filesystem = ghc::filesystem;
+}
 #endif

@@ -170,7 +170,7 @@ static uint32_t parseUInt32TestHeaderValue(const std::string& value)
     return std::stoi(value);
 }
 
-static std::string parseStringTestHeaderValueAsRelativePath(const std::string& value, const std::filesystem::path& testPath)
+static std::string parseStringTestHeaderValueAsRelativePath(const std::string& value, const WTF::filesystem::path& testPath)
 {
     auto basePath = testPath.parent_path();
     return (basePath / value).generic_string();
@@ -201,7 +201,7 @@ static std::vector<std::string> parseStringTestHeaderValueAsStringVector(const s
     return result;
 }
 
-bool parseTestHeaderFeature(TestFeatures& features, std::string key, std::string value, std::filesystem::path path, const std::unordered_map<std::string, TestHeaderKeyType>& keyTypeMap)
+bool parseTestHeaderFeature(TestFeatures& features, std::string key, std::string value, WTF::filesystem::path path, const std::unordered_map<std::string, TestHeaderKeyType>& keyTypeMap)
 {
     auto keyType = [&keyTypeMap](auto& key) {
         auto it = keyTypeMap.find(key);
@@ -250,7 +250,7 @@ bool parseTestHeaderFeature(TestFeatures& features, std::string key, std::string
     return false;
 }
 
-static TestFeatures parseTestHeaderString(const std::string& pairString, std::filesystem::path path, const std::unordered_map<std::string, TestHeaderKeyType>& keyTypeMap)
+static TestFeatures parseTestHeaderString(const std::string& pairString, WTF::filesystem::path path, const std::unordered_map<std::string, TestHeaderKeyType>& keyTypeMap)
 {
     TestFeatures features;
 
@@ -276,10 +276,10 @@ static TestFeatures parseTestHeaderString(const std::string& pairString, std::fi
     return features;
 }
 
-static TestFeatures parseTestHeader(std::filesystem::path path, const std::unordered_map<std::string, TestHeaderKeyType>& keyTypeMap)
+static TestFeatures parseTestHeader(WTF::filesystem::path path, const std::unordered_map<std::string, TestHeaderKeyType>& keyTypeMap)
 {
     std::error_code ec;
-    if (!std::filesystem::exists(path, ec))
+    if (!WTF::filesystem::exists(path, ec))
         return { };
 
     std::ifstream file(path);
