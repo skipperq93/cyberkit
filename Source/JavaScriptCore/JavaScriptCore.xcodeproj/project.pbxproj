@@ -837,6 +837,7 @@
 		467DC2F02906EE3600726988 /* WasmAirIRGeneratorBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 467DC2ED2906EE3600726988 /* WasmAirIRGeneratorBase.h */; };
 		467DC2F12906EE3600726988 /* WasmAirIRGenerator32_64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 467DC2EE2906EE3600726988 /* WasmAirIRGenerator32_64.cpp */; };
 		473DA4A4764C45FE871B0485 /* DefinePropertyAttributes.h in Headers */ = {isa = PBXBuildFile; fileRef = 169948EDE68D4054B01EF797 /* DefinePropertyAttributes.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		4800B4562A0903E400C90B4D /* libunicode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4800B4552A0903E400C90B4D /* libunicode.a */; };
 		4B1F22F62900BFC700CB5E66 /* Width.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BBA4CD428FF5FE5003EBFC4 /* Width.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		4B46940328984FA800512FDF /* MacroAssemblerARM64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FEB137561BB11EEE00CD5100 /* MacroAssemblerARM64.cpp */; };
 		4B46940428984FEE00512FDF /* MacroAssemblerX86Common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A7A4AE0717973B26005612B1 /* MacroAssemblerX86Common.cpp */; };
@@ -1319,7 +1320,6 @@
 		93052C350FB792190048FDC3 /* ParserArena.h in Headers */ = {isa = PBXBuildFile; fileRef = 93052C330FB792190048FDC3 /* ParserArena.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		932F5BD30822A1C700736975 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6560A4CF04B3B3E7008AE952 /* CoreFoundation.framework */; };
 		932F5BD60822A1C700736975 /* libobjc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F0EC0705C86C9A00E6DF1B /* libobjc.dylib */; };
-		932F5BD70822A1C700736975 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9322A00306C341D3009067BB /* libicucore.dylib */; };
 		932F5BDD0822A1C700736975 /* jsc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45E12D8806A49B0F00E9DF84 /* jsc.cpp */; };
 		932F5BEA0822A1C700736975 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932F5BD90822A1C700736975 /* JavaScriptCore.framework */; };
 		933040040E6A749400786E6A /* SmallStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 93303FEA0E6A72C000786E6A /* SmallStrings.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -3707,6 +3707,8 @@
 		467DC2EC2906EE3600726988 /* WasmAirIRGenerator64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WasmAirIRGenerator64.cpp; sourceTree = "<group>"; };
 		467DC2ED2906EE3600726988 /* WasmAirIRGeneratorBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WasmAirIRGeneratorBase.h; sourceTree = "<group>"; };
 		467DC2EE2906EE3600726988 /* WasmAirIRGenerator32_64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WasmAirIRGenerator32_64.cpp; sourceTree = "<group>"; };
+		4800B4552A0903E400C90B4D /* libunicode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libunicode.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4890C8AD2A0285F6000D0E84 /* libicu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libicu.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B78E098294427D2003C6682 /* B3SIMDValue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = B3SIMDValue.cpp; path = b3/B3SIMDValue.cpp; sourceTree = "<group>"; };
 		4B78E099294427D2003C6682 /* B3Const128Value.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = B3Const128Value.h; path = b3/B3Const128Value.h; sourceTree = "<group>"; };
 		4B78E09A294427D2003C6682 /* B3SIMDValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = B3SIMDValue.h; path = b3/B3SIMDValue.h; sourceTree = "<group>"; };
@@ -5849,9 +5851,9 @@
 			files = (
 				932F5BD30822A1C700736975 /* CoreFoundation.framework in Frameworks */,
 				A731B25A130093880040A7FA /* Foundation.framework in Frameworks */,
-				932F5BD70822A1C700736975 /* libicucore.dylib in Frameworks */,
 				932F5BD60822A1C700736975 /* libobjc.dylib in Frameworks */,
 				DDB04F42278E56A2008D3678 /* libWTF.a in Frameworks */,
+				4800B4562A0903E400C90B4D /* libunicode.a in Frameworks */,
 				A5098B041C16AA0200087797 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5953,6 +5955,8 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4800B4552A0903E400C90B4D /* libunicode.a */,
+				4890C8AD2A0285F6000D0E84 /* libicu.a */,
 				6560A4CF04B3B3E7008AE952 /* CoreFoundation.framework */,
 				51F0EB6105C86C6B00E6DF1B /* Foundation.framework */,
 				5D5D8AD00E0D0EBE00F9C692 /* libedit.dylib */,
@@ -12660,6 +12664,8 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberScriptCore;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -12672,6 +12678,8 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberScriptCore;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -12685,6 +12693,8 @@
 				BUILD_VARIANTS = normal;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberScriptCore;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -13074,6 +13084,8 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberScriptCore;
 				PROVISIONING_PROFILE_SPECIFIER = "";

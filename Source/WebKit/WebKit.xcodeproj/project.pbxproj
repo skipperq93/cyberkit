@@ -979,6 +979,7 @@
 		48704BB22A003A0A00B3F507 /* AssertionServicesSPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 48704BB12A003A0A00B3F507 /* AssertionServicesSPI.h */; };
 		48704BB52A003AB400B3F507 /* ProcessTaskStateObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 48704BB32A003AB300B3F507 /* ProcessTaskStateObserver.h */; };
 		48704BB62A003AB400B3F507 /* ProcessTaskStateObserver.mm in Sources */ = {isa = PBXBuildFile; fileRef = 48704BB42A003AB300B3F507 /* ProcessTaskStateObserver.mm */; };
+		487963E62A064A07007E9E9D /* CryptoTokenKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A69BE9286CFFAC00893E8F /* CryptoTokenKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		493102BD2683F3D0002BB885 /* AppPrivacyReport.h in Headers */ = {isa = PBXBuildFile; fileRef = 493102BC2683F3A5002BB885 /* AppPrivacyReport.h */; };
 		4955A6E628076D4D00BB91C4 /* ArrayReferenceTuple.h in Headers */ = {isa = PBXBuildFile; fileRef = 4955A6E528076D4C00BB91C4 /* ArrayReferenceTuple.h */; };
 		4973DF482422941F00E4C26A /* NavigatingToAppBoundDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = 4973DF472422941F00E4C26A /* NavigatingToAppBoundDomain.h */; };
@@ -17684,6 +17685,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -17696,6 +17698,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -17928,6 +17931,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";

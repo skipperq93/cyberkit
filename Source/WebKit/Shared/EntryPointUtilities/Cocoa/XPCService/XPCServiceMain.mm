@@ -114,6 +114,7 @@ static void initializeLogd(bool disableLogging)
 
 static void XPCServiceEventHandler(xpc_connection_t peer)
 {
+    u_setDataDirectory([[[[NSBundle mainBundle] bundlePath] stringByDeletingLastPathComponent] cStringUsingEncoding:NSUTF8StringEncoding]);
     OSObjectPtr<xpc_connection_t> retainedPeerConnection(peer);
 
     xpc_connection_set_target_queue(peer, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0));
