@@ -67,6 +67,7 @@ public:
     static Ref<ProcessAssertion> create(ProcessID pid, const String& reason, ProcessAssertionType type, Mode mode = Mode::Async, const String& environmentIdentifier = emptyString(), CompletionHandler<void()>&& acquisisionHandler = nullptr)
     {
         auto assertion = adoptRef(*new ProcessAssertion(pid, reason, type, environmentIdentifier));
+#if HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
         if (mode == Mode::Async)
             assertion->acquireAsync(WTFMove(acquisisionHandler));
         else {
@@ -74,6 +75,7 @@ public:
             if (acquisisionHandler)
                 acquisisionHandler();
         }
+#endif
         return assertion;
     }
     static double remainingRunTimeInSeconds(ProcessID);
@@ -119,6 +121,7 @@ public:
     static Ref<ProcessAndUIAssertion> create(ProcessID pid, const String& reason, ProcessAssertionType type, Mode mode = Mode::Async, const String& environmentIdentifier = emptyString(), CompletionHandler<void()>&& acquisisionHandler = nullptr)
     {
         auto assertion = adoptRef(*new ProcessAndUIAssertion(pid, reason, type, environmentIdentifier));
+#if HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
         if (mode == Mode::Async)
             assertion->acquireAsync(WTFMove(acquisisionHandler));
         else {
@@ -126,6 +129,7 @@ public:
             if (acquisisionHandler)
                 acquisisionHandler();
         }
+#endif
         return assertion;
     }
     ~ProcessAndUIAssertion();
@@ -140,7 +144,7 @@ public:
 private:
     ProcessAndUIAssertion(ProcessID, const String& reason, ProcessAssertionType, const String& environmentIdentifier);
 
-#if PLATFORM(IOS_FAMILY)
+#if USE(RUNNINGBOARD)
     void processAssertionWasInvalidated() final;
 #endif
     void updateRunInBackgroundCount();
