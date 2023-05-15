@@ -3504,8 +3504,12 @@ static void cancelPotentialTapIfNecessary(WKContentView* contentView)
 
 - (void)_didEndScrollingOrZooming
 {
-    if (!_needsDeferredEndScrollingSelectionUpdate)
-        [_textInteractionAssistant didEndScrollingOrZooming];
+    if (!_needsDeferredEndScrollingSelectionUpdate) {
+        if ([_textInteractionAssistant respondsToSelector:@selector(didEndScrollingOrZooming)])
+            [_textInteractionAssistant didEndScrollingOrZooming];
+        else
+            [_textInteractionAssistant didEndScrollingOverflow];
+    }
     _page->setIsScrollingOrZooming(false);
 
     [self _resetPanningPreventionFlags];

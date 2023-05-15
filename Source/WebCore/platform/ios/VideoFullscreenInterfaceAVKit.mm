@@ -1242,7 +1242,7 @@ void VideoFullscreenInterfaceAVKit::doSetup()
     [CATransaction begin];
     [CATransaction setDisableActions:YES];
 
-#if !PLATFORM(WATCHOS)
+#if !PLATFORM(WATCHOS) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
     if (![[m_parentView window] _isHostedInAnotherProcess] && !m_window) {
         m_window = adoptNS([PAL::allocUIWindowInstance() initWithWindowScene:[[m_parentView window] windowScene]]);
         [m_window setBackgroundColor:clearUIColor()];

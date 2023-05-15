@@ -73,8 +73,12 @@ std::optional<ScreenOrientationType> ScreenOrientationProvider::platformCurrentO
     if (!window)
         return std::nullopt;
 
-    UIWindowScene *scene = window.get().windowScene;
-    switch ([scene interfaceOrientation]) {
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
+    UIInterfaceOrientation orientation = [window.get().windowScene interfaceOrientation];
+#else
+    UIInterfaceOrientation orientation = [[PAL::getUIApplicationClass() sharedApplication] statusBarOrientation];
+#endif
+    switch (orientation) {
     case UIInterfaceOrientationUnknown:
     case UIInterfaceOrientationPortrait:
         break;

@@ -49,7 +49,11 @@ namespace WebKit {
 
 SOAuthorizationCoordinator::SOAuthorizationCoordinator()
 {
+#if HAVE(APP_SSO)
     m_hasAppSSO = !!PAL::getSOAuthorizationClass();
+#else
+    m_hasAppSSO = false;
+#endif
 #if PLATFORM(MAC)
     // In the case of base system, which doesn't have AppSSO.framework.
     if (!m_hasAppSSO)
@@ -61,7 +65,11 @@ SOAuthorizationCoordinator::SOAuthorizationCoordinator()
 
 bool SOAuthorizationCoordinator::canAuthorize(const URL& url) const
 {
+#if HAVE(APP_SSO)
     return m_hasAppSSO && [PAL::getSOAuthorizationClass() canPerformAuthorizationWithURL:url responseCode:0];
+#else
+    return false;
+#endif
 }
 
 void SOAuthorizationCoordinator::tryAuthorize(Ref<API::NavigationAction>&& navigationAction, WebPageProxy& page, Function<void(bool)>&& completionHandler)
