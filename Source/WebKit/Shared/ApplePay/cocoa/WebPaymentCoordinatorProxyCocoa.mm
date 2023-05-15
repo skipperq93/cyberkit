@@ -406,7 +406,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
         [result setMultiTokenContexts:platformPaymentTokenContexts(*multiTokenContexts).get()];
 #endif
 
-#if HAVE(PASSKIT_DEFERRED_PAYMENTS) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160400)
+#if HAVE(PASSKIT_DEFERRED_PAYMENTS)
     if (auto& deferredPaymentRequest = paymentRequest.deferredPaymentRequest())
         [result setDeferredPaymentRequest:platformDeferredPaymentRequest(*deferredPaymentRequest).get()];
 #endif
@@ -439,7 +439,7 @@ void WebPaymentCoordinatorProxy::platformCompletePaymentMethodSelection(std::opt
     m_authorizationPresenter->completePaymentMethodSelection(WTFMove(update));
 }
 
-#if ENABLE(APPLE_PAY_COUPON_CODE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if ENABLE(APPLE_PAY_COUPON_CODE)
 
 void WebPaymentCoordinatorProxy::platformCompleteCouponCodeChange(std::optional<WebCore::ApplePayCouponCodeUpdate>&& update)
 {

@@ -27,14 +27,14 @@
 
 #include "ArgumentCoders.h"
 
-#if HAVE(PER_APP_ACCESSIBILITY_PREFERENCES) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(PER_APP_ACCESSIBILITY_PREFERENCES)
 #include "AccessibilitySupportSPI.h"
 #endif
 
 namespace WebKit {
 
 struct AccessibilityPreferences {
-#if HAVE(PER_APP_ACCESSIBILITY_PREFERENCES) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(PER_APP_ACCESSIBILITY_PREFERENCES)
     AXValueState reduceMotionEnabled { AXValueStateEmpty };
     AXValueState increaseButtonLegibility { AXValueStateEmpty };
     AXValueState enhanceTextLegibility { AXValueStateEmpty };
@@ -54,7 +54,7 @@ template<> struct ArgumentCoder<WebKit::AccessibilityPreferences> {
 };
 }
 
-#if HAVE(PER_APP_ACCESSIBILITY_PREFERENCES) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(PER_APP_ACCESSIBILITY_PREFERENCES)
 namespace WTF {
 
 template<> struct EnumTraits<AXValueState> {

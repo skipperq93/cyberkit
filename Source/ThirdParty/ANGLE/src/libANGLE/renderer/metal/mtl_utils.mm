@@ -1282,7 +1282,7 @@ bool DeviceHasMaximumRenderTargetSize(id<MTLDevice> device)
 
 bool SupportsAppleGPUFamily(id<MTLDevice> device, uint8_t appleFamily)
 {
-#if (__MAC_OS_X_VERSION_MAX_ALLOWED >= 101500 || __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000) || \
+#if (__MAC_OS_X_VERSION_MAX_ALLOWED >= 101500 || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000) || \
     (__TV_OS_VERSION_MAX_ALLOWED >= 130000)
     // If device supports [MTLDevice supportsFamily:], then use it.
     if (ANGLE_APPLE_AVAILABLE_XC(10.15, 13.0))
@@ -1338,7 +1338,7 @@ bool SupportsAppleGPUFamily(id<MTLDevice> device, uint8_t appleFamily)
         case 4:
             featureSet = MTLFeatureSet_iOS_GPUFamily4_v1;
             break;
-#        if __IPHONE_OS_VERSION_MAX_ALLOWED >= 120000
+#        if __IPHONE_OS_VERSION_MIN_REQUIRED >= 120000
         case 5:
             featureSet = MTLFeatureSet_iOS_GPUFamily5_v1;
             break;
