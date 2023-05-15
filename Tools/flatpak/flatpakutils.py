@@ -65,7 +65,7 @@ FLATPAK_REQUIRED_VERSION = "1.4.4"
 
 _log = logging.getLogger(__name__)
 
-BUILD_ROOT_DIR_NAME = 'WebKitBuild'
+BUILD_ROOT_DIR_NAME = 'CyberKitBuild'
 
 # This path doesn't take $WEBKIT_OUTPUTDIR in account because the standalone toolchains
 # paths depend on it and those are also hard-coded in the generated sccache config.
@@ -212,7 +212,7 @@ def check_flatpak(verbose=True):
 
 
 def convert_webkit_source_path_to_sandbox_path(source_path):
-    '''Convert a path in the WebKit source directory to the same path in the
+    '''Convert a path in the CyberKit source directory to the same path in the
        sandboxed source diretory. '''
     return source_path.replace(WEBKIT_SOURCE_DIR, SANDBOX_SOURCE_ROOT)
 
@@ -269,7 +269,7 @@ class FlatpakObject:
             self.flatpak("remote-ls", remote, gather_output=True)
         except subprocess.CalledProcessError as error:
             if error.output.lower().find(b"key expired"):
-                Console.message("WebKit SDK GPG key expired, synchronizing with remote")
+                Console.message("CyberKit SDK GPG key expired, synchronizing with remote")
                 with tempfile.NamedTemporaryFile() as tmpfile:
                     fd = urlopen(WEBKIT_SDK_GPG_PUBKEY_URL)
                     tmpfile.write(fd.read())
@@ -909,7 +909,7 @@ class WebkitFlatpak:
             "CXX",
             "CXXFLAGS",
             "DISPLAY",
-            "JavaScriptCoreUseJIT",
+            "CyberScriptCoreUseJIT",
             "LDFLAGS",
             "MAX_CPU_LOAD",
             "Malloc",
@@ -1089,7 +1089,7 @@ class WebkitFlatpak:
                     Console.message("Removing webkitpy auto-installed dependencies, new Python runtime might be incompatible with them.")
                     shutil.rmtree(os.path.join(WEBKIT_SOURCE_DIR, 'Tools', 'Scripts', 'libraries', 'autoinstalled'))
 
-                    Console.message("Forcing next WebKit build to re-run CMake")
+                    Console.message("Forcing next CyberKit build to re-run CMake")
                     for platform in ('GTK', 'WPE'):
                         for build_type in ('Release', 'Debug'):
                             cache_path = os.path.join(get_build_dir(platform, build_type), 'CMakeCache.txt')
@@ -1119,7 +1119,7 @@ class WebkitFlatpak:
         result = self.setup_dev_env()
         if regenerate_toolchains:
 
-            # Toolchains used to be stored in WebKitBuild/Toolchains. Remove this path if found, to save
+            # Toolchains used to be stored in CyberKitBuild/Toolchains. Remove this path if found, to save
             # up disk space.
             old_toolchains_path = os.path.join(DEFAULT_BUILD_ROOT, "Toolchains")
             if os.path.isdir(old_toolchains_path):
@@ -1180,7 +1180,7 @@ class WebkitFlatpak:
                                                 'token': self.sccache_token},
                                        'toolchains': toolchains}}
             toml.dump(sccache_config, config)
-            Console.message("Created %s sccache config file. It will automatically be used when building WebKit", self.sccache_config_file)
+            Console.message("Created %s sccache config file. It will automatically be used when building CyberKit", self.sccache_config_file)
 
     def purge_unused_toolchains(self, allow_list):
         for filename in os.listdir(self.toolchains_directory):

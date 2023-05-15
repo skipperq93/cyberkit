@@ -78,7 +78,7 @@
 		BCA8CBDD11E578A000812FB7 /* Base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
 		BCA8CBDE11E578A000812FB7 /* DebugRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = DebugRelease.xcconfig; sourceTree = "<group>"; };
 		BCA8CBDF11E578A000812FB7 /* MiniBrowser.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = MiniBrowser.xcconfig; sourceTree = "<group>"; };
-		DD403C5328500F6400D899FC /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD403C5328500F6400D899FC /* CyberKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CyberKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +166,7 @@
 				1AFFEF761860EE6800DA465E /* Cocoa.framework */,
 				72945D0129B7F204006ACF75 /* QuartzCore.framework */,
 				5C9332AE24C1349C0036DECE /* SecurityInterface.framework */,
-				DD403C5328500F6400D899FC /* WebKit.framework */,
+				DD403C5328500F6400D899FC /* CyberKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

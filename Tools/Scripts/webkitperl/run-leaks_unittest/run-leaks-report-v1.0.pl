@@ -36,27 +36,27 @@ use LoadAsModule qw(RunLeaks run-leaks);
 my @input = split(/\n/, <<EOF);
 Process 1602: 86671 nodes malloced for 13261 KB
 Process 1602: 8 leaks for 160 total leaked bytes.
-Leak: 0x114d54708  size=24  zone: JavaScriptCore FastMalloc_0x7fff70a09d20
+Leak: 0x114d54708  size=24  zone: CyberScriptCore FastMalloc_0x7fff70a09d20
 	
 	0x18571798 0x00000001 0x00000000 0x00000000 	..W.............
-Leak: 0x1184b92b8  size=24  zone: JavaScriptCore FastMalloc_0x7fff70a09d20
+Leak: 0x1184b92b8  size=24  zone: CyberScriptCore FastMalloc_0x7fff70a09d20
 	
 	0x184b9048 0x00000001 0x00000000 0x00000000 	H.K.............
-Leak: 0x1184c84c8  size=24  zone: JavaScriptCore FastMalloc_0x7fff70a09d20
+Leak: 0x1184c84c8  size=24  zone: CyberScriptCore FastMalloc_0x7fff70a09d20
 	
 	0x1854e3d8 0x00000001 0x00000000 0x00000000 	..T.............
-Leak: 0x11854e3d8  size=24  zone: JavaScriptCore FastMalloc_0x7fff70a09d20
+Leak: 0x11854e3d8  size=24  zone: CyberScriptCore FastMalloc_0x7fff70a09d20
 	
 	0x1854e360 0x00000001 0x00000000 0x00000000 	`.T.............
-Leak: 0x118571798  size=24  zone: JavaScriptCore FastMalloc_0x7fff70a09d20
+Leak: 0x118571798  size=24  zone: CyberScriptCore FastMalloc_0x7fff70a09d20
 	
 	0x184c84c8 0x00000001 0x00000000 0x00000000 	..L.............
-Leak: 0x11858b498  size=24  zone: JavaScriptCore FastMalloc_0x7fff70a09d20
+Leak: 0x11858b498  size=24  zone: CyberScriptCore FastMalloc_0x7fff70a09d20
 	
 	0x1858b4e0 0x00000001 0x00000000 0x00000000 	..X.............
-Leak: 0x118572530  size=8  zone: JavaScriptCore FastMalloc_0x7fff70a09d20
+Leak: 0x118572530  size=8  zone: CyberScriptCore FastMalloc_0x7fff70a09d20
 	
-Leak: 0x118572538  size=8  zone: JavaScriptCore FastMalloc_0x7fff70a09d20
+Leak: 0x118572538  size=8  zone: CyberScriptCore FastMalloc_0x7fff70a09d20
 	
 EOF
 
@@ -70,7 +70,7 @@ my $expectedOutput =
   },
   {
     'leaksOutput' => join('', split(/\n/, <<EOF)),
-Leak: 0x114d54708  size=24  zone: JavaScriptCore FastMalloc_0x7fff70a09d20
+Leak: 0x114d54708  size=24  zone: CyberScriptCore FastMalloc_0x7fff70a09d20
 	
 	0x18571798 0x00000001 0x00000000 0x00000000 	..W.............
 EOF
@@ -81,7 +81,7 @@ EOF
   },
   {
     'leaksOutput' => join('', split(/\n/, <<EOF)),
-Leak: 0x1184b92b8  size=24  zone: JavaScriptCore FastMalloc_0x7fff70a09d20
+Leak: 0x1184b92b8  size=24  zone: CyberScriptCore FastMalloc_0x7fff70a09d20
 	
 	0x184b9048 0x00000001 0x00000000 0x00000000 	H.K.............
 EOF
@@ -93,7 +93,7 @@ EOF
 
   {
     'leaksOutput' => join('', split(/\n/, <<EOF)),
-Leak: 0x1184c84c8  size=24  zone: JavaScriptCore FastMalloc_0x7fff70a09d20
+Leak: 0x1184c84c8  size=24  zone: CyberScriptCore FastMalloc_0x7fff70a09d20
 	
 	0x1854e3d8 0x00000001 0x00000000 0x00000000 	..T.............
 EOF
@@ -105,7 +105,7 @@ EOF
 
   {
     'leaksOutput' => join('', split(/\n/, <<EOF)),
-Leak: 0x11854e3d8  size=24  zone: JavaScriptCore FastMalloc_0x7fff70a09d20
+Leak: 0x11854e3d8  size=24  zone: CyberScriptCore FastMalloc_0x7fff70a09d20
 	
 	0x1854e360 0x00000001 0x00000000 0x00000000 	`.T.............
 EOF
@@ -117,7 +117,7 @@ EOF
 
   {
     'leaksOutput' => join('', split(/\n/, <<EOF)),
-Leak: 0x118571798  size=24  zone: JavaScriptCore FastMalloc_0x7fff70a09d20
+Leak: 0x118571798  size=24  zone: CyberScriptCore FastMalloc_0x7fff70a09d20
 	
 	0x184c84c8 0x00000001 0x00000000 0x00000000 	..L.............
 EOF
@@ -129,7 +129,7 @@ EOF
 
   {
     'leaksOutput' => join('', split(/\n/, <<EOF)),
-Leak: 0x11858b498  size=24  zone: JavaScriptCore FastMalloc_0x7fff70a09d20
+Leak: 0x11858b498  size=24  zone: CyberScriptCore FastMalloc_0x7fff70a09d20
 	
 	0x1858b4e0 0x00000001 0x00000000 0x00000000 	..X.............
 EOF
@@ -141,7 +141,7 @@ EOF
 
   {
     'leaksOutput' => join('', split(/\n/, <<EOF)),
-Leak: 0x118572530  size=8  zone: JavaScriptCore FastMalloc_0x7fff70a09d20
+Leak: 0x118572530  size=8  zone: CyberScriptCore FastMalloc_0x7fff70a09d20
 	
 EOF
     'callStack' => '',
@@ -152,7 +152,7 @@ EOF
 
   {
     'leaksOutput' => join('', split(/\n/, <<EOF)),
-Leak: 0x118572538  size=8  zone: JavaScriptCore FastMalloc_0x7fff70a09d20
+Leak: 0x118572538  size=8  zone: CyberScriptCore FastMalloc_0x7fff70a09d20
 	
 EOF
     'callStack' => '',

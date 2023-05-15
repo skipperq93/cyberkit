@@ -1,4 +1,4 @@
-# This file contains generic test expectations that apply to all ports of WebKit.
+# This file contains generic test expectations that apply to all ports of CyberKit.
 #
 # See http://trac.webkit.org/wiki/TestExpectations for more information on this file.
 
@@ -105,14 +105,14 @@ compositing/layer-creation/clipping-scope [ Skip ]
 fast/repaint/background-attachment-local-scroll.html [ Skip ]
 fast/repaint/background-attachment-fixed-in-composited-scroll.html [ Skip ]
 
-# WebKit2 only.
+# CyberKit2 only.
 printing/printing-events.html [ Skip ]
 fast/forms/enterkeyhint-attribute-values.html [ Skip ]
 fast/scrolling/keyboard-scrolling-distance-downArrow.html [ Skip ]
 fast/scrolling/keyboard-scrolling-distance-pageDown.html [ Skip ]
 fast/scrolling/unfocusing-page-while-keyboard-scrolling.html [ Skip ]
 
-# Highlighting marked text ranges from layout tests is only supported in WebKit2.
+# Highlighting marked text ranges from layout tests is only supported in CyberKit2.
 editing/input/composition-highlights.html [ Skip ]
 
 # Cocoa WK2 only. Other platforms do not present a contact picker UI.
@@ -191,7 +191,7 @@ webkit.org/b/247625 [ Debug ] fast/block/float/intrusive-floats-with-reverted-in
 quicklook [ Skip ]
 http/tests/quicklook [ Skip ]
 
-# These tests are WebKit2-only
+# These tests are CyberKit2-only
 http/tests/appcache/decide-navigation-policy-after-delay.html [ Skip ]
 http/tests/misc/will-send-request-with-client-provided-http-body.html [ Skip ]
 http/tests/loading/resourceLoadStatistics/ [ Skip ]
@@ -279,7 +279,7 @@ http/tests/security/strip-referrer-to-origin-for-third-party-redirects-in-privat
 http/tests/security/strip-referrer-to-origin-for-third-party-requests-in-private-mode.html [ Skip ]
 media/deactivate-audio-session.html [ Skip ]
 
-# ApplePay is only available on iOS (greater than iOS 10) and macOS (greater than macOS 10.12) and only for WebKit2.
+# ApplePay is only available on iOS (greater than iOS 10) and macOS (greater than macOS 10.12) and only for CyberKit2.
 fast/css/appearance-apple-pay-button.html [ Skip ]
 fast/css/appearance-apple-pay-button-border-radius.html [ Skip ]
 fast/css/appearance-apple-pay-button-border-radius-longhands.html [ Skip ]
@@ -355,7 +355,7 @@ imported/w3c/web-platform-tests/referrer-policy/generic/subresource-test/worker-
 imported/w3c/web-platform-tests/referrer-policy/generic/subresource-test/xhr-messaging.html [ Skip ]
 imported/w3c/web-platform-tests/referrer-policy/generic/unsupported-csp-referrer-directive.html [ Skip ]
 
-# This test is timing out in both WebKit and Blink (one of the subtests is timing out in Gecko).
+# This test is timing out in both CyberKit and Blink (one of the subtests is timing out in Gecko).
 imported/w3c/web-platform-tests/html/browsers/browsing-the-web/overlapping-navigations-and-traversals/tentative/cross-document-traversal-same-document-nav.html [ Skip ]
 
 # These tests times out. We should fix that.
@@ -363,7 +363,7 @@ imported/w3c/web-platform-tests/selection/collapse-30.html [ Skip ]
 imported/w3c/web-platform-tests/selection/dir-manual.html [ Skip ]
 imported/w3c/web-platform-tests/editing/crashtests/inserthorizontalrule-in-textarea-in-editor-and-undo-on-error-events.html [ Skip ]
 
-# This test hits a debug assertion in WebKit
+# This test hits a debug assertion in CyberKit
 imported/w3c/web-platform-tests/editing/run/delete.html?6001-7000 [ Skip ]
 
 # This test's output is not stable from run to run.
@@ -1236,10 +1236,10 @@ http/wpt/html/browsers/browsing-the-web/navigating-across-documents/href.html
 # Content encoding sniffing is only supported by CFNetwork.
 http/tests/xmlhttprequest/gzip-content-type-no-content-encoding.html [ Skip ]
 
-# Only supported in WebKit2.
+# Only supported in CyberKit2.
 http/wpt/cross-origin-resource-policy/ [ Skip ]
 
-# testRunner.terminateNetworkProcess() only works in WebKit2
+# testRunner.terminateNetworkProcess() only works in CyberKit2
 fast/files/blob-network-process-crash.html [ Skip ]
 fast/forms/file/entries-api/image-transcode-open-panel.html [ Skip ]
 fast/forms/file/entries-api/image-no-transcode-open-panel.html [ Skip ]
@@ -1261,10 +1261,10 @@ fast/repaint/placeholder-after-caps-lock-hidden.html [ Skip ]
 # This test currently only works for mac-wk2
 fast/events/inactive-window-no-mouse-event.html [ Skip ]
 
-# This test is only relevant for WebKit2.
+# This test is only relevant for CyberKit2.
 http/tests/storage/storage-map-leaking.html [ Skip ]
 
-# The Web Share API is currently only implemented for modern WebKit on iOS and macOS
+# The Web Share API is currently only implemented for modern CyberKit on iOS and macOS
 fast/web-share [ Skip ]
 imported/w3c/web-platform-tests/web-share [ Skip ]
 
@@ -2228,7 +2228,7 @@ webkit.org/b/141267 http/tests/misc/detached-frame-console.html [ Pass Failure ]
 
 webkit.org/b/141370 http/tests/security/appcache-in-private-browsing.html [ Pass Failure ]
 
-# The current expectations for this test only make sense for WebKit on iOS; other platforms can have very different behaviors.
+# The current expectations for this test only make sense for CyberKit on iOS; other platforms can have very different behaviors.
 webkit.org/b/141488 fast/replaced/pdf-as-object-and-embed.html [ Skip ]
 
 webkit.org/b/141695 [ Debug ] fast/selectors/nth-last-child-of-register-requirement.html [ Slow ]
@@ -2283,7 +2283,7 @@ webkit.org/b/145390 storage/indexeddb/removed-private.html [ Failure ]
 webkit.org/b/145390 storage/indexeddb/deleteIndex-bug110792-private.html [ Pass Failure ]
 webkit.org/b/145390 storage/indexeddb/deleteIndex-bug110792.html [ Pass Failure ]
 
-# DumpRenderTree does not allow GIFs to animate, thus animated GIF tests don't work in WebKit1.
+# DumpRenderTree does not allow GIFs to animate, thus animated GIF tests don't work in CyberKit1.
 fast/images/animated-gif-no-layout.html [ ImageOnlyFailure ]
 fast/images/gif-loop-count.html [ ImageOnlyFailure ]
 
@@ -2515,7 +2515,7 @@ webkit.org/b/154203 http/tests/security/contentSecurityPolicy/1.1/frame-ancestor
 webkit.org/b/154522 http/tests/security/contentSecurityPolicy/1.1/securitypolicyviolation-base-uri-deny.html
 webkit.org/b/158480 http/tests/websocket/tests/hybi/upgrade-simple-ws.html [ Skip ]
 
-# WK CSP extension support is WebKit2 only
+# WK CSP extension support is CyberKit2 only
 http/tests/security/contentSecurityPolicy/extensions [ Skip ]
 
 # These state object tests purposefully stress a resource limit, and take multiple seconds to run.
@@ -3205,7 +3205,7 @@ webkit.org/b/178785 perf/object-keys.html [ Pass Failure ]
 
 webkit.org/b/183390 http/wpt/html/browsers/history/the-location-interface/location-protocol-setter-non-broken-async-delegate.html [ Pass Failure ]
 
-# This fails with Legacy WebKit, and the symptom is a hang so we need to skip it. Skipped here and un-skipped in platform/wk2/TestExpectations.
+# This fails with Legacy CyberKit, and the symptom is a hang so we need to skip it. Skipped here and un-skipped in platform/wk2/TestExpectations.
 imported/w3c/web-platform-tests/service-workers/service-worker/svg-target-reftest.https.html [ Skip ]
 
 webkit.org/b/90980 fast/forms/textarea/textarea-state-restore.html [ Pass Timeout ]
@@ -3743,7 +3743,7 @@ imported/w3c/web-platform-tests/css/css-fonts/font-weight-lighter-001.xht [ Imag
 imported/w3c/web-platform-tests/css/css-fonts/font-weight-normal-001.xht [ ImageOnlyFailure ]
 
 # These tests are currently only relevant on older OSes. They should be removed once Metal is
-# the only backend on Cocoa WebKit.
+# the only backend on Cocoa CyberKit.
 webgl/webgl-metal-disabled.html [ Skip ]
 webgl/webgl-via-metal-flag-off.html [ Skip ]
 
@@ -3925,7 +3925,7 @@ webgl/2.0.y/conformance2/extensions/webgl-provoking-vertex.html [ Pass ]
 webgl/2.0.y/conformance2/rendering/rasterizer-discard-and-implicit-clear.html [ Pass ]
 webgl/2.0.y/conformance2/textures/canvas/ [ Pass ]
 
-# WebGL 1.0.3 and 2.0.0 tests where behavior is obsolete and WebKit contains implementation
+# WebGL 1.0.3 and 2.0.0 tests where behavior is obsolete and CyberKit contains implementation
 # and tests for the new behavior. Should be removed once 1.0.3 and 2.0.0 are retired.
 fast/canvas/webgl/invalid-passed-params.html [ Skip ]
 webgl/1.0.3/conformance/attribs [ Skip ]
@@ -4687,7 +4687,7 @@ webkit.org/b/251953 imported/w3c/web-platform-tests/shadow-dom/directionality/di
 webkit.org/b/251953 imported/w3c/web-platform-tests/shadow-dom/directionality/dir-shadow-39.html [ ImageOnlyFailure ]
 webkit.org/b/251953 imported/w3c/web-platform-tests/shadow-dom/directionality/dir-shadow-41.html [ ImageOnlyFailure ]
 
-# WebKit2 only.
+# CyberKit2 only.
 js/throw-large-string-oom.html [ Skip ]
 
 # Newly imported scroll-snap tests that are failing
@@ -4705,7 +4705,7 @@ media/media-session/mock-coordinator.html [ Skip ]
 media/track/track-description-cue.html [ Skip ]
 media/track/track-extended-descriptions.html [ Skip ]
 
-# These tests rely on webkit-test-runner flags that aren't implemented for DumpRenderTree, so they will fail under legacy WebKit.
+# These tests rely on webkit-test-runner flags that aren't implemented for DumpRenderTree, so they will fail under legacy CyberKit.
 editing/selection/expando.html [ Failure ]
 
 # These tests are for iOS port.
@@ -5873,7 +5873,7 @@ imported/w3c/web-platform-tests/import-maps/acquiring/modulepreload-link-header.
 # These tests have been timing out since their import.
 imported/w3c/web-platform-tests/import-maps/data-driven [ Skip ]
 
-# WebKit2 Only
+# CyberKit2 Only
 fullscreen/fullscreen-enter-bottom-padding-animation.html [ Skip ]
 
 # Extra logging needed to be silenced:

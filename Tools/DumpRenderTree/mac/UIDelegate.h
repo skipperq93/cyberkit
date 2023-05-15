@@ -31,10 +31,10 @@
 #if !PLATFORM(IOS_FAMILY)
 #import <Cocoa/Cocoa.h>
 #else
-#import <WebKit/WAKView.h>
+#import <CyberKit/WAKView.h>
 #endif
 
-#import <WebKit/WebUIDelegate.h>
+#import <CyberKit/WebUIDelegate.h>
 #import <wtf/RetainPtr.h>
 
 @interface UIDelegate : NSObject <WebUIDelegate> {

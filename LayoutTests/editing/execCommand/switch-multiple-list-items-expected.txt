@@ -1,4 +1,4 @@
-This tests switching the list type of multiple list items at once. WebKit should not crash.
+This tests switching the list type of multiple list items at once. CyberKit should not crash.
 
 One, Two, and Three should all be in a single ol, each followed by a single br.:
 | <ol>

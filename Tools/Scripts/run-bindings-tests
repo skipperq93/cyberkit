@@ -41,12 +41,12 @@ if sys.platform.startswith('linux'):
     flatpakutils.run_in_sandbox_if_available(sys.argv)
 
 def main(argv):
-    """Runs WebCore bindings code generators on test IDL files and compares
+    """Runs CyberCore bindings code generators on test IDL files and compares
     the results with reference files.
     """
 
     option_parser = optparse.OptionParser(usage='run-bindings-test [options] [patterns-to-test...]',
-        description="Runs WebCore bindings code generators on test IDL files and compares the results with reference files")
+        description="Runs CyberCore bindings code generators on test IDL files and compares the results with reference files")
     option_parser.add_option('--no-verbose', action='store_true', default=False,
         help='Disable verobse output')
     option_parser.add_option('--reset-results', action='store_true', default=False,

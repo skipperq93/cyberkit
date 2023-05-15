@@ -628,7 +628,7 @@ template<typename CharacterType1, typename CharacterType2> int codePointCompare(
 int codePointCompare(const StringImpl*, const StringImpl*);
 
 // FIXME: Should rename this to make clear it uses the Unicode definition of whitespace.
-// Most WebKit callers don't want that would use isASCIISpace or isHTMLSpace instead.
+// Most CyberKit callers don't want that would use isASCIISpace or isHTMLSpace instead.
 bool isSpaceOrNewline(UChar32);
 bool isNotSpaceOrNewline(UChar32);
 // FIXME: rdar://99002825 (Investigate if isSpaceOrNewline should be including 0xA0 non-breaking space in check.)

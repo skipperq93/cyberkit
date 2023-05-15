@@ -93,7 +93,7 @@ HeapSnapshot = class HeapSnapshot
         snapshotDataString = null;
 
         let {version, type, nodes, nodeClassNames, edges, edgeTypes, edgeNames} = json;
-        console.assert(version === 1 || version === 2, "Expect JavaScriptCore Heap Snapshot version 1 or 2");
+        console.assert(version === 1 || version === 2, "Expect CyberScriptCore Heap Snapshot version 1 or 2");
         console.assert(!type || (type === "Inspector" || type === "GCDebugging"), "Expect an Inspector / GCDebugging Heap Snapshot");
 
         this._nodeFieldCount = type === "GCDebugging" ? gcDebuggingNodeFieldCount : nodeFieldCount;

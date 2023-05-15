@@ -1,5 +1,5 @@
 
-Verifies that programmatically changing text field values with user interaction invokes the -didChangeInTextField injected bundle method. This test requires WebKitTestRunner.
+Verifies that programmatically changing text field values with user interaction invokes the -didChangeInTextField injected bundle method. This test requires CyberKitTestRunner.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

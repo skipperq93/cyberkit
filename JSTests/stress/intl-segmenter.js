@@ -70,12 +70,12 @@ function shouldNotThrow(func) {
 {
     let segmenter = new Intl.Segmenter("en", {granularity: "sentence"});
 
-    let input = "Performance is a top priority for WebKit. We adhere to a simple directive for all work we do on WebKit: The way to make a program faster is to never let it get slower.";
+    let input = "Performance is a top priority for CyberKit. We adhere to a simple directive for all work we do on CyberKit: The way to make a program faster is to never let it get slower.";
     let segments = segmenter.segment(input);
 
     let results = [
-        [ 0, 42, "Performance is a top priority for WebKit. ", undefined ],
-        [ 42, 167, "We adhere to a simple directive for all work we do on WebKit: The way to make a program faster is to never let it get slower.", undefined ],
+        [ 0, 42, "Performance is a top priority for CyberKit. ", undefined ],
+        [ 42, 167, "We adhere to a simple directive for all work we do on CyberKit: The way to make a program faster is to never let it get slower.", undefined ],
     ];
     let cursor = 0;
     for (let {segment, index, isWordLike} of segments) {

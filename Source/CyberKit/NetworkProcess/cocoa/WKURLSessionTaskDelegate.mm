@@ -1,0 +1,112 @@
+/*
+ * Copyright (C) 2022 Apple Inc. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS''
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+ * THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+#import "config.h"
+#import "WKURLSessionTaskDelegate.h"
+
+#import "AuthenticationChallengeDispositionCocoa.h"
+#import "Connection.h"
+#import "NetworkProcess.h"
+#import "NetworkProcessProxyMessages.h"
+#import "NetworkSessionCocoa.h"
+#import "CyberCoreArgumentCoders.h"
+#import <Foundation/NSURLSession.h>
+#import <CyberCore/AuthenticationChallenge.h>
+#import <CyberCore/Credential.h>
+#import <CyberCore/ResourceError.h>
+#import <CyberCore/ResourceRequest.h>
+#import <CyberCore/ResourceResponse.h>
+#import <wtf/BlockPtr.h>
+
+@implementation WKURLSessionTaskDelegate {
+    CyberKit::DataTaskIdentifier _identifier;
+    WeakPtr<CyberKit::NetworkSessionCocoa> _session;
+}
+
+- (instancetype)initWithIdentifier:(CyberKit::DataTaskIdentifier)identifier session:(CyberKit::NetworkSessionCocoa&)session
+{
+    if (!(self = [super init]))
+        return nil;
+    _identifier = identifier;
+    _session = WeakPtr { session };
+    return self;
+}
+
+- (IPC::Connection*)connection
+{
+    if (!_session)
+        return nil;
+    return _session->networkProcess().parentProcessConnection();
+}
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler
+{
+    auto* connection = [self connection];
+    if (!connection)
+        return completionHandler(NSURLSessionAuthChallengeRejectProtectionSpace, nil);
+    connection->sendWithAsyncReply(Messages::NetworkProcessProxy::DataTaskReceivedChallenge(_identifier, challenge), [completionHandler = makeBlockPtr(completionHandler)](CyberKit::AuthenticationChallengeDisposition disposition, CyberCore::Credential&& credential) {
+        completionHandler(fromAuthenticationChallengeDisposition(disposition), credential.nsCredential());
+    });
+}
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task willPerformHTTPRedirection:(NSHTTPURLResponse *)response newRequest:(NSURLRequest *)request completionHandler:(void (^)(NSURLRequest *))completionHandler
+{
+    auto* connection = [self connection];
+    if (!connection)
+        return completionHandler(nil);
+    connection->sendWithAsyncReply(Messages::NetworkProcessProxy::DataTaskWillPerformHTTPRedirection(_identifier, response, request), [completionHandler = makeBlockPtr(completionHandler), request = RetainPtr { request }] (bool allowed) {
+        completionHandler(allowed ? request.get() : nil);
+    });
+}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler
+{
+    auto* connection = [self connection];
+    if (!connection)
+        return completionHandler(NSURLSessionResponseCancel);
+    connection->sendWithAsyncReply(Messages::NetworkProcessProxy::DataTaskDidReceiveResponse(_identifier, response), [completionHandler = makeBlockPtr(completionHandler)] (bool allowed) {
+        completionHandler(allowed ? NSURLSessionResponseAllow : NSURLSessionResponseCancel);
+    });
+}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data
+{
+    auto* connection = [self connection];
+    if (!connection)
+        return;
+    connection->send(Messages::NetworkProcessProxy::DataTaskDidReceiveData(_identifier, { reinterpret_cast<const uint8_t*>(data.bytes), data.length }), 0);
+}
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
+{
+    auto* connection = [self connection];
+    if (!connection)
+        return;
+    connection->send(Messages::NetworkProcessProxy::DataTaskDidCompleteWithError(_identifier, error), 0);
+    if (_session)
+        _session->removeDataTask(_identifier);
+}
+
+@end

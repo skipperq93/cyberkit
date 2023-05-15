@@ -67,12 +67,12 @@ class StashRepository(Repository):
         return ['hash', 'identifier']
 
 
-class WebKitRepository(Repository):
+class CyberKitRepository(Repository):
 
     def __init__(self):
         self.svn = remote.Svn('https://svn.webkit.org/repository/webkit')
-        self.github = remote.GitHub('https://github.com/WebKit/WebKit')
-        super(WebKitRepository, self).__init__(
+        self.github = remote.GitHub('https://github.com/CyberKit/CyberKit')
+        super(CyberKitRepository, self).__init__(
             key='webkit',
             default_branch=self.github.default_branch,
         )

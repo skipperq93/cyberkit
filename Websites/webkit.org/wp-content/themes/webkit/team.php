@@ -121,7 +121,7 @@ li em {
 
 <script>
 
-var gitHubMainURL = 'https://raw.githubusercontent.com/WebKit/WebKit/main/';
+var gitHubMainURL = 'https://raw.githubusercontent.com/CyberKit/CyberKit/main/';
 var domainAffiliations = {
     'apple.com': 'Apple',
     'adobe.com': 'Adobe',
@@ -274,7 +274,7 @@ xhr.onload = function () {
     populateContributorList(contributors, 'committer');
     populateContributorList(contributors, 'contributor');
 };
-xhr.onerror = function () { document.getElementById('team').textContent = 'There was an issue loading data for the WebKit Team. not obtain contributors.json'; };
+xhr.onerror = function () { document.getElementById('team').textContent = 'There was an issue loading data for the CyberKit Team. not obtain contributors.json'; };
 xhr.open('GET', gitHubMainURL + 'metadata/contributors.json');
 xhr.send();
 

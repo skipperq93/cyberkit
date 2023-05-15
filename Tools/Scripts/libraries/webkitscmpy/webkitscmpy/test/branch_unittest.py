@@ -110,7 +110,7 @@ class TestBranch(testing.PathTestCase):
                 BUGS_EXAMPLE_COM_PASSWORD='password',
             ),
         ), bmocks.Radar(issues=bmocks.ISSUES), patch('webkitbugspy.Tracker._trackers', [
-            bugzilla.Tracker(self.BUGZILLA, radar_importer=bmocks.USERS['Radar WebKit Bug Importer']),
+            bugzilla.Tracker(self.BUGZILLA, radar_importer=bmocks.USERS['Radar CyberKit Bug Importer']),
             radar.Tracker(),
         ]), mocks.local.Svn(), MockTime:
             self.assertEqual(0, program.main(args=('branch', '-v'), path=self.path))
@@ -123,7 +123,7 @@ class TestBranch(testing.PathTestCase):
 
         self.assertEqual(
             captured.root.log.getvalue(),
-            "CCing Radar WebKit Bug Importer\n"
+            "CCing Radar CyberKit Bug Importer\n"
             "Creating the local development branch 'eng/Example-feature-1'...\n",
         )
         self.assertEqual(
@@ -144,7 +144,7 @@ class TestBranch(testing.PathTestCase):
                 BUGS_EXAMPLE_COM_PASSWORD='password',
             ),
         ), bmocks.Radar(issues=bmocks.ISSUES), patch('webkitbugspy.Tracker._trackers', [
-            bugzilla.Tracker(self.BUGZILLA, radar_importer=bmocks.USERS['Radar WebKit Bug Importer']),
+            bugzilla.Tracker(self.BUGZILLA, radar_importer=bmocks.USERS['Radar CyberKit Bug Importer']),
             radar.Tracker(),
         ]), mocks.local.Svn(), MockTime:
             self.assertEqual(0, program.main(args=('branch', '-v'), path=self.path))
@@ -157,7 +157,7 @@ class TestBranch(testing.PathTestCase):
 
         self.assertEqual(
             captured.root.log.getvalue(),
-            "CCing Radar WebKit Bug Importer\n"
+            "CCing Radar CyberKit Bug Importer\n"
             "Creating the local development branch 'eng/Example-feature-1'...\n",
         )
         self.assertEqual(
@@ -178,7 +178,7 @@ class TestBranch(testing.PathTestCase):
                 BUGS_EXAMPLE_COM_PASSWORD='password',
             ),
         ), bmocks.Radar(issues=bmocks.ISSUES), patch('webkitbugspy.Tracker._trackers', [
-            bugzilla.Tracker(self.BUGZILLA, radar_importer=bmocks.USERS['Radar WebKit Bug Importer']),
+            bugzilla.Tracker(self.BUGZILLA, radar_importer=bmocks.USERS['Radar CyberKit Bug Importer']),
             radar.Tracker(),
         ]), mocks.local.Svn(), MockTime:
             self.assertEqual(0, program.main(args=('branch', '-v'), path=self.path))
@@ -191,7 +191,7 @@ class TestBranch(testing.PathTestCase):
 
         self.assertEqual(
             captured.root.log.getvalue(),
-            "CCing Radar WebKit Bug Importer\n"
+            "CCing Radar CyberKit Bug Importer\n"
             "Creating the local development branch 'eng/Example-feature-1'...\n",
         )
         self.assertEqual(
@@ -212,7 +212,7 @@ class TestBranch(testing.PathTestCase):
                 BUGS_EXAMPLE_COM_PASSWORD='password',
             ),
         ), bmocks.Radar(issues=bmocks.ISSUES), patch('webkitbugspy.Tracker._trackers', [
-            bugzilla.Tracker(self.BUGZILLA, radar_importer=bmocks.USERS['Radar WebKit Bug Importer']),
+            bugzilla.Tracker(self.BUGZILLA, radar_importer=bmocks.USERS['Radar CyberKit Bug Importer']),
             radar.Tracker(),
         ]), mocks.local.Svn(), MockTime:
             project_config = os.path.join(self.path, 'metadata', local.Git.GIT_CONFIG_EXTENSION)
@@ -248,7 +248,7 @@ class TestBranch(testing.PathTestCase):
                 BUGS_EXAMPLE_COM_PASSWORD='password',
             ),
         ), bmocks.Radar(issues=bmocks.ISSUES), patch('webkitbugspy.Tracker._trackers', [
-            bugzilla.Tracker(self.BUGZILLA, radar_importer=bmocks.USERS['Radar WebKit Bug Importer']),
+            bugzilla.Tracker(self.BUGZILLA, radar_importer=bmocks.USERS['Radar CyberKit Bug Importer']),
             radar.Tracker(),
         ]), mocks.local.Svn(), MockTime:
             project_config = os.path.join(self.path, 'metadata', local.Git.GIT_CONFIG_EXTENSION)
@@ -267,7 +267,7 @@ class TestBranch(testing.PathTestCase):
 
         self.assertEqual(
             captured.root.log.getvalue(),
-            "CCing Radar WebKit Bug Importer\n"
+            "CCing Radar CyberKit Bug Importer\n"
             "Creating the local development branch 'eng/Example-feature-1'...\n",
         )
         self.assertEqual(
@@ -288,7 +288,7 @@ class TestBranch(testing.PathTestCase):
                 BUGS_EXAMPLE_COM_PASSWORD='password',
             ),
         ), bmocks.Radar(issues=bmocks.ISSUES), patch('webkitbugspy.Tracker._trackers', [
-            bugzilla.Tracker(self.BUGZILLA, radar_importer=bmocks.USERS['Radar WebKit Bug Importer']),
+            bugzilla.Tracker(self.BUGZILLA, radar_importer=bmocks.USERS['Radar CyberKit Bug Importer']),
             radar.Tracker(),
         ]), mocks.local.Svn(), MockTime:
             self.assertEqual(0, program.main(args=('branch', '-v', '--no-cc-radar'), path=self.path))
@@ -355,7 +355,7 @@ class TestBranch(testing.PathTestCase):
             issue = bugzilla.Tracker(self.BUGZILLA).issue(4)
             self.assertEqual(issue.title, '[Area] New Issue')
             self.assertEqual(issue.description, 'Issue created via command line prompts.')
-            self.assertEqual(issue.project, 'WebKit')
+            self.assertEqual(issue.project, 'CyberKit')
             self.assertEqual(issue.component, 'SVG')
 
         self.assertEqual(
@@ -364,9 +364,9 @@ class TestBranch(testing.PathTestCase):
 Issue description: 
 What project should the bug be associated with?:
     1) CFNetwork
-    2) WebKit
+    2) CyberKit
 : 
-What component in 'WebKit' should the bug be associated with?:
+What component in 'CyberKit' should the bug be associated with?:
     1) SVG
     2) Scrolling
     3) Tables
@@ -382,7 +382,7 @@ Created the local development branch 'eng/Area-New-Issue'
         with OutputCapture(level=logging.INFO) as captured, mocks.local.Git(self.path), Environment(RADAR_USERNAME='tcontributor'), bmocks.Radar(
             issues=bmocks.ISSUES,
             projects=bmocks.PROJECTS,
-        ), patch('webkitbugspy.Tracker._trackers', [radar.Tracker(project='WebKit')]), mocks.local.Svn(), MockTime, wkmocks.Terminal.input(
+        ), patch('webkitbugspy.Tracker._trackers', [radar.Tracker(project='CyberKit')]), mocks.local.Svn(), MockTime, wkmocks.Terminal.input(
             '[Area] New Issue', 'Issue created via command line prompts.',
             '1', '2',
         ):
@@ -392,10 +392,10 @@ Created the local development branch 'eng/Area-New-Issue'
             ))
             self.assertEqual(local.Git(self.path).branch, 'eng/4')
 
-            issue = radar.Tracker(project='WebKit').issue(4)
+            issue = radar.Tracker(project='CyberKit').issue(4)
             self.assertEqual(issue.title, '[Area] New Issue')
             self.assertEqual(issue.description, 'Issue created via command line prompts.')
-            self.assertEqual(issue.project, 'WebKit')
+            self.assertEqual(issue.project, 'CyberKit')
             self.assertEqual(issue.component, 'SVG')
             self.assertEqual(issue.version, 'Safari 15')
 
@@ -403,17 +403,17 @@ Created the local development branch 'eng/Area-New-Issue'
             captured.stdout.getvalue(),
             '''Enter issue URL or title of new issue: 
 Issue description: 
-What component in 'WebKit' should the bug be associated with?:
+What component in 'CyberKit' should the bug be associated with?:
     1) SVG
     2) Scrolling
     3) Tables
     4) Text
 : 
-What version of 'WebKit SVG' should the bug be associated with?:
+What version of 'CyberKit SVG' should the bug be associated with?:
     1) Other
     2) Safari 15
     3) Safari Technology Preview
-    4) WebKit Local Build
+    4) CyberKit Local Build
 : 
 Created 'rdar://4 [Area] New Issue'
 Created the local development branch 'eng/4'

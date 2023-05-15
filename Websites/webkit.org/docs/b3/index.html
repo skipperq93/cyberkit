@@ -7,17 +7,17 @@
   <div id="banner">
     <a href="http://www.webkit.org/" class="banner-link">
       <div id="logo" class="site-logo">
-        WebKit
+        CyberKit
         <span class="tagline">Open Source Web Browser Engine</span>
       </div>
     </a>
   </div>
   <div id="contents">
     <h1>Bare Bones Backend</h1>
-    <p>The Bare Bones Backend, or B3 for short, is WebKit's optimizing JIT for procedures
+    <p>The Bare Bones Backend, or B3 for short, is CyberKit's optimizing JIT for procedures
       containing C-like code.  It's currently used as the default backend for the
       <a href="https://trac.webkit.org/wiki/FTLJIT">FTL JIT</a> inside
-      <a href="https://trac.webkit.org/wiki/JavaScriptCore">JavaScriptCore</a>.</p>
+      <a href="https://trac.webkit.org/wiki/CyberScriptCore">CyberScriptCore</a>.</p>
 
     <p>B3 comprises a <a href="intermediate-representation.html">C-like
         SSA IR</a> known as "B3 IR", optimizations on B3 IR, an
@@ -203,7 +203,7 @@ Patch &Branch8(3,SameAsRep), LessThan, (%tmp1,%tmp2,2), $42, @10</code></pre>
     <p>The final form of Air contains no unallocated temporaries or abstract stack slots.  Therefore,
       it maps directly to machine code.  The final code generation step is a very fast transformation
       from Air's object-oriented way of representing those instructions to the target's machine
-      code.  We use JavaScriptCore's macro assembler for this purpose.</p>
+      code.  We use CyberScriptCore's macro assembler for this purpose.</p>
 
   </div>
 </body>

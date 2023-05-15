@@ -20,7 +20,7 @@ if os.environ.get('HTTP_AUTHORIZATION'):
 
 else:
     sys.stdout.write(
-        'WWW-Authenticate: Basic realm="WebKit xmlhttprequest/cross-origin-no-authorization"\r\n'
+        'WWW-Authenticate: Basic realm="CyberKit xmlhttprequest/cross-origin-no-authorization"\r\n'
         'status: 401\r\n'
         '\r\n'
         'Authentication canceled'

@@ -10,7 +10,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <JavaScriptCore/JavaScriptCore.h>
+#include <CyberScriptCore/CyberScriptCore.h>
 #include <QuartzCore/QuartzCore.h>
 
 #if 1

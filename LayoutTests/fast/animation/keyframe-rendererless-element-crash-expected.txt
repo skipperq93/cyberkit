@@ -1,1 +1,1 @@
-Test keyframeEffect on an element that does not have a renderer. The test passes if WebKit doesn't crash or hit an assertion.
+Test keyframeEffect on an element that does not have a renderer. The test passes if CyberKit doesn't crash or hit an assertion.

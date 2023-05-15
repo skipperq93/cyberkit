@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/HashSet.h>
 #import <wtf/RetainPtr.h>
 

@@ -1,4 +1,4 @@
-# This TestExpectations file reflects the current status of the 'Layer-Based SVG Engine' (LBSE) in WebKit
+# This TestExpectations file reflects the current status of the 'Layer-Based SVG Engine' (LBSE) in CyberKit
 #
 # 1. Run tests against legacy SVG engine
 #    $ run-webkit-tests --additional-platform-directory=$PWD/LayoutTests/platform/mac-ventura-wk2-pixel \

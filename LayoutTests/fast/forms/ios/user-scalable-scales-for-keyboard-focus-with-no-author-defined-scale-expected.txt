@@ -1,5 +1,5 @@
 
-This test has to run in iOS WebKitTestRunner.
+This test has to run in iOS CyberKitTestRunner.
 
 This tests that when the author does not define a scale or set user-scalable=no, that zooming in on focused nodes changes the scale.
 

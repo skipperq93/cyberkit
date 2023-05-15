@@ -1,0 +1,145 @@
+// Copyright (C) 2022 Igalia S.L.
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions
+// are met:
+// 1. Redistributions of source code must retain the above copyright
+//    notice, this list of conditions and the following disclaimer.
+// 2. Redistributions in binary form must reproduce the above copyright
+//    notice, this list of conditions and the following disclaimer in the
+//    documentation and/or other materials provided with the distribution.
+//
+// THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS''
+// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+// THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+// PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS
+// BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+// CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+// SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+// INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+// CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+// THE POSSIBILITY OF SUCH DAMAGE.
+
+UIProcess/API/glib/CyberKitJavascriptResult.cpp @no-unify
+UIProcess/API/glib/CyberKitMimeInfo.cpp @no-unify
+UIProcess/API/glib/CyberKitPlugin.cpp @no-unify
+
+UIProcess/API/gtk/CyberKitPrintCustomWidget.cpp @no-unify
+
+WebProcess/InjectedBundle/API/glib/CyberKitConsoleMessage.cpp @no-unify
+
+WebProcess/InjectedBundle/API/glib/DOM/DOMObjectCache.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/DOM/CyberKitDOMDocument.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/DOM/CyberKitDOMElement.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/DOM/CyberKitDOMNode.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/DOM/CyberKitDOMObject.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/DOM/CyberKitDOMPrivate.cpp @no-unify
+
+WebProcess/InjectedBundle/API/gtk/DOM/ConvertToUTF8String.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/GObjectEventListener.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/GObjectNodeFilterCondition.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/GObjectXPathNSResolver.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMAttr.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMBlob.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMCDATASection.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMCSSRule.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMCSSRuleList.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMCSSStyleDeclaration.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMCSSStyleSheet.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMCSSValue.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMCharacterData.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMClientRect.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMClientRectList.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMComment.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMDOMImplementation.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMDOMSelection.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMDOMTokenList.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMDOMWindow.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMDeprecated.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMDocumentGtk.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMDocumentFragment.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMDocumentType.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMElementGtk.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMEvent.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMEventTarget.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMFile.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMFileList.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLAnchorElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLAppletElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLAreaElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLBRElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLBaseElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLBodyElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLButtonElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLCanvasElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLCollection.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLDListElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLDirectoryElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLDivElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLDocument.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLEmbedElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLFieldSetElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLFontElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLFormElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLFrameElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLFrameSetElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLHRElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLHeadElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLHeadingElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLHtmlElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLIFrameElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLImageElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLInputElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLLIElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLLabelElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLLegendElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLLinkElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLMapElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLMarqueeElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLMenuElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLMetaElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLModElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLOListElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLObjectElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLOptGroupElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLOptionElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLOptionsCollection.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLParagraphElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLParamElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLPreElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLPrivate.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLQuoteElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLScriptElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLSelectElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLStyleElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLTableCaptionElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLTableCellElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLTableColElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLTableElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLTableRowElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLTableSectionElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLTextAreaElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLTitleElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLUListElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMKeyboardEvent.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMMediaList.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMMouseEvent.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMNamedNodeMap.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMNodeGtk.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMNodeFilter.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMNodeIterator.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMNodeList.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMPrivateGtk.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMProcessingInstruction.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMRange.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMStyleSheet.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMStyleSheetList.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMText.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMTreeWalker.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMUIEvent.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMWheelEvent.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMXPathExpression.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMXPathNSResolver.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMXPathResult.cpp

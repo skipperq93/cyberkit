@@ -1,5 +1,5 @@
 This tests inserting an empty iframe after scheduling a microtask.
-WebKit should not perform a microtask checkpoint.
+CyberKit should not perform a microtask checkpoint.
 
 
 empty

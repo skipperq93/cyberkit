@@ -32,7 +32,7 @@ if (jsshell) {
     engine = ENGINE_JAVASCRIPTCORE;
   }
 } else {
-  if (navigator.userAgent.indexOf("WebKit") != -1) {
+  if (navigator.userAgent.indexOf("CyberKit") != -1) {
     
     engine = ENGINE_JAVASCRIPTCORE;
     
@@ -82,7 +82,7 @@ else if (engine == ENGINE_SPIDERMONKEY_TRUNK)
 else if (engine == ENGINE_SPIDERMONKEY_MOZILLA45)
   printImportant("Targeting SpiderMonkey / Gecko (ESR45 branch).");
 else if (engine == ENGINE_JAVASCRIPTCORE)
-  printImportant("Targeting JavaScriptCore / WebKit.");
+  printImportant("Targeting CyberScriptCore / CyberKit.");
 function whatToTestSpidermonkeyTrunk(code)
 {
   /* jshint laxcomma: true */
@@ -180,7 +180,7 @@ function whatToTestSpidermonkeyTrunk(code)
         && code.indexOf("arguments") == -1               
         && code.indexOf(".splice") == -1                 
         && !( codeL.match(/\/.*[\u0000\u0080-\uffff]/))    };
-}function whatToTestJavaScriptCore(code)
+}function whatToTestCyberScriptCore(code)
 {
   return {    allowParse: true,
     allowExec: unlikelyToHang(code),
@@ -204,7 +204,7 @@ if (engine == ENGINE_SPIDERMONKEY_TRUNK)
 else if (engine == ENGINE_SPIDERMONKEY_MOZILLA45)
   whatToTest = whatToTestSpidermonkeyMozilla45;
 else if (engine == ENGINE_JAVASCRIPTCORE)
-  whatToTest = whatToTestJavaScriptCore;
+  whatToTest = whatToTestCyberScriptCore;
 else
   whatToTest = whatToTestGeneric;
 function unlikelyToHang(code)

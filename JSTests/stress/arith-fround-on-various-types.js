@@ -19,7 +19,7 @@ let validInputTestCases = [
     ["Infinity", "Infinity"],
     ["-Infinity", "-Infinity"],
     ["NaN", "NaN"],
-    ["\"WebKit\"", "NaN"],
+    ["\"CyberKit\"", "NaN"],
     ["\"" + Math.PI + "\"", "" + froundOfPi],
     ["{ valueOf: () => { return Math.E; } }", "" + froundOfE],
     ["{ valueOf: () => { return 1; } }", "1"],

@@ -1,0 +1,202 @@
+/*
+ * Copyright (C) 2014-2020 Apple Inc. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS''
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+ * THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+#pragma once
+
+#if ENABLE(VIDEO_PRESENTATION_MODE)
+
+#include "Connection.h"
+#include "MessageReceiver.h"
+#include "PlaybackSessionContextIdentifier.h"
+#include <CyberCore/EventListener.h>
+#include <CyberCore/HTMLMediaElementEnums.h>
+#include <CyberCore/PlatformCALayer.h>
+#include <CyberCore/VideoFullscreenModelVideoElement.h>
+#include <wtf/CompletionHandler.h>
+#include <wtf/HashMap.h>
+#include <wtf/RefCounted.h>
+#include <wtf/RefPtr.h>
+
+namespace IPC {
+class Connection;
+class Decoder;
+class MessageReceiver;
+}
+
+namespace WTF {
+class MachSendRight;
+}
+
+namespace CyberCore {
+class FloatSize;
+class Node;
+}
+
+namespace CyberKit {
+
+using LayerHostingContextID = uint32_t;
+
+class LayerHostingContext;
+class WebPage;
+class PlaybackSessionInterfaceContext;
+class PlaybackSessionManager;
+class ShareableBitmapHandle;
+class VideoFullscreenManager;
+
+class VideoFullscreenInterfaceContext
+    : public RefCounted<VideoFullscreenInterfaceContext>
+    , public CyberCore::VideoFullscreenModelClient {
+public:
+    static Ref<VideoFullscreenInterfaceContext> create(VideoFullscreenManager& manager, PlaybackSessionContextIdentifier contextId)
+    {
+        return adoptRef(*new VideoFullscreenInterfaceContext(manager, contextId));
+    }
+    virtual ~VideoFullscreenInterfaceContext();
+
+    void invalidate() { m_manager = nullptr; }
+
+    LayerHostingContext* layerHostingContext() { return m_layerHostingContext.get(); }
+    void setLayerHostingContext(std::unique_ptr<LayerHostingContext>&&);
+
+    enum class AnimationType { None, IntoFullscreen, FromFullscreen };
+    AnimationType animationState() const { return m_animationType; }
+    void setAnimationState(AnimationType flag) { m_animationType = flag; }
+
+    bool targetIsFullscreen() const { return m_targetIsFullscreen; }
+    void setTargetIsFullscreen(bool flag) { m_targetIsFullscreen = flag; }
+
+    CyberCore::HTMLMediaElementEnums::VideoFullscreenMode fullscreenMode() const { return m_fullscreenMode; }
+    void setFullscreenMode(CyberCore::HTMLMediaElementEnums::VideoFullscreenMode mode) { m_fullscreenMode = mode; }
+
+    bool fullscreenStandby() const { return m_fullscreenStandby; }
+    void setFullscreenStandby(bool value) { m_fullscreenStandby = value; }
+
+    bool isFullscreen() const { return m_isFullscreen; }
+    void setIsFullscreen(bool flag) { m_isFullscreen = flag; }
+
+    RetainPtr<CALayer> rootLayer() const { return m_rootLayer; }
+    void setRootLayer(RetainPtr<CALayer>);
+
+private:
+    // VideoFullscreenModelClient
+    void hasVideoChanged(bool) override;
+    void videoDimensionsChanged(const CyberCore::FloatSize&) override;
+    void setPlayerIdentifier(std::optional<CyberCore::MediaPlayerIdentifier>) final;
+
+    VideoFullscreenInterfaceContext(VideoFullscreenManager&, PlaybackSessionContextIdentifier);
+
+    VideoFullscreenManager* m_manager;
+    PlaybackSessionContextIdentifier m_contextId;
+    std::unique_ptr<LayerHostingContext> m_layerHostingContext;
+    AnimationType m_animationType { AnimationType::None };
+    bool m_targetIsFullscreen { false };
+    CyberCore::HTMLMediaElementEnums::VideoFullscreenMode m_fullscreenMode { CyberCore::HTMLMediaElementEnums::VideoFullscreenModeNone };
+    bool m_fullscreenStandby { false };
+    bool m_isFullscreen { false };
+    RetainPtr<CALayer> m_rootLayer;
+};
+
+class VideoFullscreenManager : public RefCounted<VideoFullscreenManager>, private IPC::MessageReceiver {
+public:
+    static Ref<VideoFullscreenManager> create(WebPage&, PlaybackSessionManager&);
+    virtual ~VideoFullscreenManager();
+
+    void invalidate();
+
+    bool hasVideoPlayingInPictureInPicture() const;
+
+    void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;
+
+    void setupRemoteLayerHosting(CyberCore::HTMLVideoElement&);
+    void willRemoveLayerForID(PlaybackSessionContextIdentifier);
+
+    // Interface to WebChromeClient
+    bool canEnterVideoFullscreen(CyberCore::HTMLMediaElementEnums::VideoFullscreenMode) const;
+    bool supportsVideoFullscreen(CyberCore::HTMLMediaElementEnums::VideoFullscreenMode) const;
+    bool supportsVideoFullscreenStandby() const;
+    void enterVideoFullscreenForVideoElement(CyberCore::HTMLVideoElement&, CyberCore::HTMLMediaElementEnums::VideoFullscreenMode, bool standby);
+    void exitVideoFullscreenForVideoElement(CyberCore::HTMLVideoElement&, WTF::CompletionHandler<void(bool)>&& = [](bool) { });
+    void exitVideoFullscreenToModeWithoutAnimation(CyberCore::HTMLVideoElement&, CyberCore::HTMLMediaElementEnums::VideoFullscreenMode);
+
+    void updateTextTrackRepresentationForVideoElement(CyberCore::HTMLVideoElement&, const ShareableBitmapHandle&);
+    void setTextTrackRepresentationContentScaleForVideoElement(CyberCore::HTMLVideoElement&, float scale);
+    void setTextTrackRepresentationIsHiddenForVideoElement(CyberCore::HTMLVideoElement&, bool hidden);
+
+    bool videoElementInPictureInPicture() const { return !!m_videoElementInPictureInPicture; }
+
+protected:
+    friend class VideoFullscreenInterfaceContext;
+
+    explicit VideoFullscreenManager(WebPage&, PlaybackSessionManager&);
+
+    typedef std::tuple<RefPtr<CyberCore::VideoFullscreenModelVideoElement>, RefPtr<VideoFullscreenInterfaceContext>> ModelInterfaceTuple;
+    ModelInterfaceTuple createModelAndInterface(PlaybackSessionContextIdentifier, bool createLayerHostingContext);
+    ModelInterfaceTuple& ensureModelAndInterface(PlaybackSessionContextIdentifier, bool createLayerHostingContext = true);
+    CyberCore::VideoFullscreenModelVideoElement& ensureModel(PlaybackSessionContextIdentifier);
+    VideoFullscreenInterfaceContext& ensureInterface(PlaybackSessionContextIdentifier);
+    void removeContext(PlaybackSessionContextIdentifier);
+    void addClientForContext(PlaybackSessionContextIdentifier);
+    void removeClientForContext(PlaybackSessionContextIdentifier);
+
+    // Interface to VideoFullscreenInterfaceContext
+    void hasVideoChanged(PlaybackSessionContextIdentifier, bool hasVideo);
+    void videoDimensionsChanged(PlaybackSessionContextIdentifier, const CyberCore::FloatSize&);
+    void setPlayerIdentifier(PlaybackSessionContextIdentifier, std::optional<CyberCore::MediaPlayerIdentifier>);
+
+    // Messages from VideoFullscreenManagerProxy
+    void requestFullscreenMode(PlaybackSessionContextIdentifier, CyberCore::HTMLMediaElementEnums::VideoFullscreenMode, bool finishedWithMedia);
+    void requestUpdateInlineRect(PlaybackSessionContextIdentifier);
+    void requestVideoContentLayer(PlaybackSessionContextIdentifier);
+    void returnVideoContentLayer(PlaybackSessionContextIdentifier);
+#if !PLATFORM(IOS_FAMILY)
+    void didSetupFullscreen(PlaybackSessionContextIdentifier);
+#endif
+    void willExitFullscreen(PlaybackSessionContextIdentifier);
+    void didExitFullscreen(PlaybackSessionContextIdentifier);
+    void didEnterFullscreen(PlaybackSessionContextIdentifier, std::optional<CyberCore::FloatSize>);
+    void failedToEnterFullscreen(PlaybackSessionContextIdentifier);
+    void didCleanupFullscreen(PlaybackSessionContextIdentifier);
+    void setVideoLayerFrameFenced(PlaybackSessionContextIdentifier, CyberCore::FloatRect bounds, const WTF::MachSendRight&);
+    void setVideoLayerGravityEnum(PlaybackSessionContextIdentifier, unsigned gravity);
+    void fullscreenModeChanged(PlaybackSessionContextIdentifier, CyberCore::HTMLMediaElementEnums::VideoFullscreenMode);
+    void fullscreenMayReturnToInline(PlaybackSessionContextIdentifier, bool isPageVisible);
+    void requestRouteSharingPolicyAndContextUID(PlaybackSessionContextIdentifier, CompletionHandler<void(CyberCore::RouteSharingPolicy, String)>&&);
+
+    void setCurrentlyInFullscreen(VideoFullscreenInterfaceContext&, bool);
+
+    WebPage* m_page;
+    Ref<PlaybackSessionManager> m_playbackSessionManager;
+    HashMap<CyberCore::HTMLVideoElement*, PlaybackSessionContextIdentifier> m_videoElements;
+    HashMap<PlaybackSessionContextIdentifier, ModelInterfaceTuple> m_contextMap;
+    PlaybackSessionContextIdentifier m_controlsManagerContextId;
+    HashMap<PlaybackSessionContextIdentifier, int> m_clientCounts;
+    WeakPtr<CyberCore::HTMLVideoElement, CyberCore::WeakPtrImplWithEventTargetData> m_videoElementInPictureInPicture;
+    bool m_currentlyInFullscreen { false };
+    WTF::Function<void(LayerHostingContextID, const CyberCore::FloatSize&)> m_setupFullscreenHandler;
+};
+
+} // namespace CyberKit
+
+#endif // ENABLE(VIDEO_PRESENTATION_MODE)

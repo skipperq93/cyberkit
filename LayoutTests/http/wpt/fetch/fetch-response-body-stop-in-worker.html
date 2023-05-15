@@ -9,7 +9,7 @@
 promise_test(async (t) => {
     const script = `
         let streamReader;
-        fetch('${window.location.origin}/WebKit/fetch/resources/lengthy-pass.py?delay=1').then(response => {
+        fetch('${window.location.origin}/CyberKit/fetch/resources/lengthy-pass.py?delay=1').then(response => {
             streamReader = response.body.getReader();
             self.postMessage('ready');
         });

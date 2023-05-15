@@ -11,7 +11,7 @@
         jsTestIsAsync = true;
 
         async function runTest() {
-            description("This test verifies that it's still possible to read from the clipboard, after attempting to read data from stale items. Requires DumpRenderTree or WebKitTestRunner.");
+            description("This test verifies that it's still possible to read from the clipboard, after attempting to read data from stale items. Requires DumpRenderTree or CyberKitTestRunner.");
 
             await UIHelper.copyText("Hello");
             itemsBeforeChange = await navigator.clipboard.read();

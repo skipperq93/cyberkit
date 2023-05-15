@@ -21,8 +21,8 @@ cache_frame.src = victim_url;
 
 function runTest()
 {
-  if (window.testRunner && !testRunner.isWebKit2 && !window.internals) {
-    // This test does not run (times out) on WebKit1 and requires internals API.
+  if (window.testRunner && !testRunner.isCyberKit2 && !window.internals) {
+    // This test does not run (times out) on CyberKit1 and requires internals API.
     testRunner.notifyDone();
     return;
   }

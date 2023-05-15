@@ -23,7 +23,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-"""Supports checking WebKit style in cmake files.(.cmake, CMakeLists.txt)"""
+"""Supports checking CyberKit style in cmake files.(.cmake, CMakeLists.txt)"""
 
 from webkitpy.style.checkers.common import TabChecker, match, search, searchIgnorecase
 

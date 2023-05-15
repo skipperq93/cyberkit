@@ -78,15 +78,15 @@ class RedirectorUnittest(unittest.TestCase):
         )
 
     def test_github(self):
-        redir = Redirector('https://github.com/WebKit/WebKit')
+        redir = Redirector('https://github.com/CyberKit/CyberKit')
         self.assertEqual(redir.type, 'github')
         self.assertEqual(
             redir(None).headers.get('location'),
-            'https://github.com/WebKit/WebKit/commits',
+            'https://github.com/CyberKit/CyberKit/commits',
         )
         self.assertEqual(
             redir(Commit(hash='deadbeef')).headers.get('location'),
-            'https://github.com/WebKit/WebKit/commit/deadbeef',
+            'https://github.com/CyberKit/CyberKit/commit/deadbeef',
         )
 
         transfered = Redirector.from_json(json.dumps([redir], cls=Redirector.Encoder))[0]
@@ -98,33 +98,33 @@ class RedirectorUnittest(unittest.TestCase):
         )
 
     def test_fallback(self):
-        redir = Redirector('https://github.com/WebKit/WebKit', fallback=Redirector('https://github.com/WebKit/WebKit-security'))
+        redir = Redirector('https://github.com/CyberKit/CyberKit', fallback=Redirector('https://github.com/CyberKit/CyberKit-security'))
         self.assertEqual(
             redir(None).headers.get('location'),
-            'https://github.com/WebKit/WebKit/commits',
+            'https://github.com/CyberKit/CyberKit/commits',
         )
         self.assertEqual(
             redir(Commit(hash='deadbeef', message='defined')).headers.get('location'),
-            'https://github.com/WebKit/WebKit/commit/deadbeef',
+            'https://github.com/CyberKit/CyberKit/commit/deadbeef',
         )
         self.assertEqual(
             redir(Commit(hash='deadbeef')).headers.get('location'),
-            'https://github.com/WebKit/WebKit-security/commit/deadbeef',
+            'https://github.com/CyberKit/CyberKit-security/commit/deadbeef',
         )
 
     def test_fallback_compare(self):
-        redir = Redirector('https://github.com/WebKit/WebKit', fallback=Redirector('https://github.com/WebKit/WebKit-security'))
+        redir = Redirector('https://github.com/CyberKit/CyberKit', fallback=Redirector('https://github.com/CyberKit/CyberKit-security'))
         self.assertEqual(
             redir(None).headers.get('location'),
-            'https://github.com/WebKit/WebKit/commits',
+            'https://github.com/CyberKit/CyberKit/commits',
         )
         self.assertEqual(
             redir.compare(Commit(hash='deadbeef', message='defined'), Commit(hash='beefdead', message='defined')).headers.get('location'),
-            'https://github.com/WebKit/WebKit/compare/beefdead...deadbeef',
+            'https://github.com/CyberKit/CyberKit/compare/beefdead...deadbeef',
         )
         self.assertEqual(
             redir.compare(Commit(hash='deadbeef'), Commit(hash='beefdead')).headers.get('location'),
-            'https://github.com/WebKit/WebKit-security/compare/beefdead...deadbeef',
+            'https://github.com/CyberKit/CyberKit-security/compare/beefdead...deadbeef',
         )
 
 
@@ -166,14 +166,14 @@ class CheckoutRouteUnittest(testing.PathTestCase):
         with mocks.local.Git(self.path) as repo:
             app.register_blueprint(CheckoutRoute(
                 Checkout(path=self.path, url=repo.remote, sentinal=False),
-                redirectors=[Redirector('https://github.com/WebKit/WebKit')],
+                redirectors=[Redirector('https://github.com/CyberKit/CyberKit')],
             ))
 
             response = client.get('1@branch-a')
             self.assertEqual(response.status_code, 302)
             self.assertEqual(
                 response.headers.get('location'),
-                'https://github.com/WebKit/WebKit/commit/a30ce8494bf1ac2807a69844f726be4a9843ca55',
+                'https://github.com/CyberKit/CyberKit/commit/a30ce8494bf1ac2807a69844f726be4a9843ca55',
             )
 
     @mock_app
@@ -181,7 +181,7 @@ class CheckoutRouteUnittest(testing.PathTestCase):
         with mocks.local.Git(self.path, git_svn=True) as repo, OutputCapture():
             app.register_blueprint(CheckoutRoute(
                 Checkout(path=self.path, url=repo.remote, sentinal=False),
-                redirectors=[Redirector('https://github.com/WebKit/WebKit'), Redirector('https://trac.webkit.org')],
+                redirectors=[Redirector('https://github.com/CyberKit/CyberKit'), Redirector('https://trac.webkit.org')],
             ))
 
             response = client.get('a30ce849/trac')
@@ -196,14 +196,14 @@ class CheckoutRouteUnittest(testing.PathTestCase):
         with mocks.local.Git(self.path, git_svn=True) as repo, OutputCapture():
             app.register_blueprint(CheckoutRoute(
                 Checkout(path=self.path, url=repo.remote, sentinal=False),
-                redirectors=[Redirector('https://github.com/WebKit/WebKit')],
+                redirectors=[Redirector('https://github.com/CyberKit/CyberKit')],
             ))
 
             response = client.get('/changeset/6/webkit')
             self.assertEqual(response.status_code, 302)
             self.assertEqual(
                 response.headers.get('location'),
-                'https://github.com/WebKit/WebKit/commit/621652add7fc416099bd2063366cc38ff61afe36',
+                'https://github.com/CyberKit/CyberKit/commit/621652add7fc416099bd2063366cc38ff61afe36',
             )
 
     @mock_app
@@ -211,14 +211,14 @@ class CheckoutRouteUnittest(testing.PathTestCase):
         with mocks.local.Git(self.path) as repo:
             app.register_blueprint(CheckoutRoute(
                 Checkout(path=self.path, url=repo.remote, sentinal=False),
-                redirectors=[Redirector('https://github.com/WebKit/WebKit')],
+                redirectors=[Redirector('https://github.com/CyberKit/CyberKit')],
             ))
 
             response = client.get('compare/2@main...4@main')
             self.assertEqual(response.status_code, 302)
             self.assertEqual(
                 response.headers.get('location'),
-                'https://github.com/WebKit/WebKit/compare/fff83bb2d9171b4d9196e977eb0508fd57e7a08d...bae5d1e90999d4f916a8a15810ccfa43f37a2fd6',
+                'https://github.com/CyberKit/CyberKit/compare/fff83bb2d9171b4d9196e977eb0508fd57e7a08d...bae5d1e90999d4f916a8a15810ccfa43f37a2fd6',
             )
 
     @mock_app
@@ -226,12 +226,12 @@ class CheckoutRouteUnittest(testing.PathTestCase):
         with mocks.local.Git(self.path) as repo:
             app.register_blueprint(CheckoutRoute(
                 Checkout(path=self.path, url=repo.remote, sentinal=False),
-                redirectors=[Redirector('https://github.com/WebKit/WebKit'), Redirector('https://trac.webkit.org')],
+                redirectors=[Redirector('https://github.com/CyberKit/CyberKit'), Redirector('https://trac.webkit.org')],
             ))
 
             response = client.get('compare/2@main...4@main')
             self.assertEqual(response.status_code, 302)
             self.assertEqual(
                 response.headers.get('location'),
-                'https://github.com/WebKit/WebKit/compare/fff83bb2d9171b4d9196e977eb0508fd57e7a08d...bae5d1e90999d4f916a8a15810ccfa43f37a2fd6',
+                'https://github.com/CyberKit/CyberKit/compare/fff83bb2d9171b4d9196e977eb0508fd57e7a08d...bae5d1e90999d4f916a8a15810ccfa43f37a2fd6',
             )

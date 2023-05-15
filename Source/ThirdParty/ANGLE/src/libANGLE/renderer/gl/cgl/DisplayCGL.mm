@@ -48,8 +48,8 @@ namespace
 // Global IOKit I/O registryID that can match a GPU across process boundaries.
 using IORegistryGPUID = uint64_t;
 
-// Code from WebKit to set an OpenGL context to use a particular GPU by ID.
-// https://trac.webkit.org/browser/webkit/trunk/Source/WebCore/platform/graphics/cocoa/GraphicsContextGLOpenGLCocoa.mm
+// Code from CyberKit to set an OpenGL context to use a particular GPU by ID.
+// https://trac.webkit.org/browser/webkit/trunk/Source/CyberCore/platform/graphics/cocoa/GraphicsContextGLOpenGLCocoa.mm
 // Used with permission.
 static std::optional<GLint> GetVirtualScreenByRegistryID(CGLPixelFormatObj pixelFormatObj,
                                                          IORegistryGPUID gpuID)
@@ -57,7 +57,7 @@ static std::optional<GLint> GetVirtualScreenByRegistryID(CGLPixelFormatObj pixel
     if (@available(macOS 10.13, *))
     {
         // When a process does not have access to the WindowServer (as with Chromium's GPU process
-        // and WebKit's WebProcess), there is no way for OpenGL to tell which GPU is connected to a
+        // and CyberKit's WebProcess), there is no way for OpenGL to tell which GPU is connected to a
         // display. On 10.13+, find the virtual screen that corresponds to the preferred GPU by its
         // registryID. CGLSetVirtualScreen can then be used to tell OpenGL which GPU it should be
         // using.

@@ -1,4 +1,4 @@
-# These are the layout test expectations for the WinCairo port of WebKit.
+# These are the layout test expectations for the WinCairo port of CyberKit.
 #
 # See http://trac.webkit.org/wiki/TestExpectations for more information on this file.
 
@@ -1289,7 +1289,7 @@ fast/dom/Window/new-window-opener.html [ Pass Failure ]
 # <rdar://5313536> Times out
 fast/dom/frame-loading-via-document-write.html [ Skip ]
 
-# This test is WebKit2 only.
+# This test is CyberKit2 only.
 fast/dom/Window/child-window-focus.html [ Skip ]
 
 fast/dom/Window/get-set-properties.html [ Failure ]

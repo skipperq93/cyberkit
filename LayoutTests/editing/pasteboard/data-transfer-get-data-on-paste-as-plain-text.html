@@ -4,7 +4,7 @@
 <script src="../../resources/js-test-pre.js"></script>
 <div id="container">
 <button onclick="runTest()">Copy</button>
-<div id="source" contenteditable="true">hello, <b>world</b><br>WebKit</div>
+<div id="source" contenteditable="true">hello, <b>world</b><br>CyberKit</div>
 <div id="destination" onpaste="check(event)" contenteditable="true" style="width: 500px; height: 100px; border: solid red 1px"></div>
 </div>
 </body>
@@ -29,7 +29,7 @@ function runTest()
 function check(event)
 {
     shouldBeEqualToString('JSON.stringify(event.clipboardData.types)', '["text/plain"]');
-    shouldBeEqualToString('event.clipboardData.getData("text/plain")', 'hello, world\nWebKit');
+    shouldBeEqualToString('event.clipboardData.getData("text/plain")', 'hello, world\nCyberKit');
     shouldBeEqualToString('event.clipboardData.getData("text/html")', '');
     shouldBe('event.clipboardData.items.length', '1');
     shouldBeEqualToString('item = event.clipboardData.items[0]; item.kind', 'string');

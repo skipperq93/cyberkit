@@ -107,10 +107,10 @@
 J3DIHasCSSMatrix = false;
 J3DIHasCSSMatrixCopy = false;
 /*
-if ("WebKitCSSMatrix" in window && ("media" in window && window.media.matchMedium("(-webkit-transform-3d)")) ||
+if ("CyberKitCSSMatrix" in window && ("media" in window && window.media.matchMedium("(-webkit-transform-3d)")) ||
                                    ("styleMedia" in window && window.styleMedia.matchMedium("(-webkit-transform-3d)"))) {
     J3DIHasCSSMatrix = true;
-    if ("copy" in WebKitCSSMatrix.prototype)
+    if ("copy" in CyberKitCSSMatrix.prototype)
         J3DIHasCSSMatrixCopy = true;
 }
 */
@@ -124,7 +124,7 @@ if ("WebKitCSSMatrix" in window && ("media" in window && window.media.matchMediu
 J3DIMatrix4 = function(m)
 {
     if (J3DIHasCSSMatrix)
-        this.$matrix = new WebKitCSSMatrix;
+        this.$matrix = new CyberKitCSSMatrix;
     else
         this.$matrix = new Object;
 

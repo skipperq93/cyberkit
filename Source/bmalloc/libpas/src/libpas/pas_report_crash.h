@@ -28,7 +28,7 @@
 #define PAS_REPORT_CRASH_H
 
 /* These functions should never be called directly; they should instead use the SPI
- * defined in JavaScriptCore PasReportCrashPrivate.h. */
+ * defined in CyberScriptCore PasReportCrashPrivate.h. */
 
 #ifdef __APPLE__
 #include "pas_report_crash_pgm_report.h"

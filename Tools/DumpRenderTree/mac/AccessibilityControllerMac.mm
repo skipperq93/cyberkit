@@ -33,11 +33,11 @@
 #import "JSBasics.h"
 #import <AppKit/NSColor.h>
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JSStringRef.h>
-#import <JavaScriptCore/JSStringRefCF.h>
-#import <WebKit/WebFramePrivate.h>
-#import <WebKit/WebFrameView.h>
-#import <WebKit/WebHTMLView.h>
+#import <CyberScriptCore/JSStringRef.h>
+#import <CyberScriptCore/JSStringRefCF.h>
+#import <CyberKit/WebFramePrivate.h>
+#import <CyberKit/WebFrameView.h>
+#import <CyberKit/WebHTMLView.h>
 
 AccessibilityController::AccessibilityController()
 {

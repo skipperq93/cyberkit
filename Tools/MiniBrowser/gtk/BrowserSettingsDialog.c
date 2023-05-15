@@ -46,7 +46,7 @@ struct _BrowserSettingsDialog {
     GtkDialog parent;
 
     GtkWidget *settingsList;
-    WebKitSettings *settings;
+    CyberKitSettings *settings;
 };
 
 struct _BrowserSettingsDialogClass {
@@ -55,7 +55,7 @@ struct _BrowserSettingsDialogClass {
 
 G_DEFINE_TYPE(BrowserSettingsDialog, browser_settings_dialog, GTK_TYPE_DIALOG)
 
-static const char *hardwareAccelerationPolicyToString(WebKitHardwareAccelerationPolicy policy)
+static const char *hardwareAccelerationPolicyToString(CyberKitHardwareAccelerationPolicy policy)
 {
     switch (policy) {
     case WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS:
@@ -135,7 +135,7 @@ static void browser_settings_dialog_init(BrowserSettingsDialog *dialog)
 #if !GTK_CHECK_VERSION(3, 98, 5)
     gtk_window_set_type_hint(GTK_WINDOW(dialog), GDK_WINDOW_TYPE_HINT_DIALOG);
 #endif
-    gtk_window_set_title(GTK_WINDOW(dialog), "WebKit View Settings");
+    gtk_window_set_title(GTK_WINDOW(dialog), "CyberKit View Settings");
     gtk_window_set_destroy_with_parent(GTK_WINDOW(dialog), TRUE);
     gtk_dialog_add_button(GTK_DIALOG(dialog), "_Close", GTK_RESPONSE_CLOSE);
     gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_CLOSE);
@@ -192,7 +192,7 @@ static void browserSettingsDialogConstructed(GObject *object)
     G_OBJECT_CLASS(browser_settings_dialog_parent_class)->constructed(object);
 
     BrowserSettingsDialog *dialog = BROWSER_SETTINGS_DIALOG(object);
-    WebKitSettings *settings = dialog->settings;
+    CyberKitSettings *settings = dialog->settings;
     GtkListStore *model = gtk_list_store_new(SETTINGS_LIST_N_COLUMNS, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING,
                                              G_TYPE_VALUE, G_TYPE_OBJECT);
     guint propertiesCount;
@@ -256,7 +256,7 @@ static void browser_settings_dialog_class_init(BrowserSettingsDialogClass *klass
                                                         G_PARAM_WRITABLE | G_PARAM_CONSTRUCT_ONLY));
 }
 
-GtkWidget *browser_settings_dialog_new(WebKitSettings *settings)
+GtkWidget *browser_settings_dialog_new(CyberKitSettings *settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), NULL);
 

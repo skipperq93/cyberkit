@@ -2,7 +2,7 @@
 function selectKeySystem(version, mimeType)
 {
     var keySystem;
-    if (WebKitMediaKeys.isTypeSupported("com.apple.fps." + version + "_0", mimeType))
+    if (CyberKitMediaKeys.isTypeSupported("com.apple.fps." + version + "_0", mimeType))
         keySystem = "com.apple.fps." + version + "_0";
     return keySystem;
 }
@@ -16,7 +16,7 @@ async function startLegacyEME(options) {
         throw 'keySystem error';
     }
 
-    let keys = new WebKitMediaKeys(keySystem);
+    let keys = new CyberKitMediaKeys(keySystem);
     if (!keys) {
         consoleWrite('FAIL: Could not create MediaKeys');
         throw 'MediaKeys error';

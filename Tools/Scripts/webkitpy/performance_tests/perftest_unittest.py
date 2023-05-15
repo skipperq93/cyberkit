@@ -128,11 +128,11 @@ median= 1101.0 ms, stdev= 13.3140211016 ms, min= 1080.0 ms, max= 1120.0 ms
 
     def test_parse_output_with_ignored_stderr(self):
         output = DriverOutput(":Time -> [1080, 1120, 1095, 1101, 1104] ms", image=None, image_hash=None, audio=None, error="""
-Jan 22 14:09:24  WebKitTestRunner[1296] <Error>: CGContextSetFillColorWithColor: invalid context 0x0. If you want to see the backtrace, please set CG_CONTEXT_SHOW_BACKTRACE environmental variable.
-Jan 22 14:09:24  WebKitTestRunner[1296] <Error>: CGContextSetStrokeColorWithColor: invalid context 0x0. If you want to see the backtrace, please set CG_CONTEXT_SHOW_BACKTRACE environmental variable.
-Jan 22 14:09:24  WebKitTestRunner[1296] <Error>: CGContextGetCompositeOperation: invalid context 0x0. If you want to see the backtrace, please set CG_CONTEXT_SHOW_BACKTRACE environmental variable.
-Jan 22 14:09:24  WebKitTestRunner[1296] <Error>: CGContextSetCompositeOperation: invalid context 0x0. If you want to see the backtrace, please set CG_CONTEXT_SHOW_BACKTRACE environmental variable.
-Jan 22 14:09:24  WebKitTestRunner[1296] <Error>: CGContextFillRects: invalid context 0x0. If you want to see the backtrace, please set CG_CONTEXT_SHOW_BACKTRACE environmental variable.
+Jan 22 14:09:24  CyberKitTestRunner[1296] <Error>: CGContextSetFillColorWithColor: invalid context 0x0. If you want to see the backtrace, please set CG_CONTEXT_SHOW_BACKTRACE environmental variable.
+Jan 22 14:09:24  CyberKitTestRunner[1296] <Error>: CGContextSetStrokeColorWithColor: invalid context 0x0. If you want to see the backtrace, please set CG_CONTEXT_SHOW_BACKTRACE environmental variable.
+Jan 22 14:09:24  CyberKitTestRunner[1296] <Error>: CGContextGetCompositeOperation: invalid context 0x0. If you want to see the backtrace, please set CG_CONTEXT_SHOW_BACKTRACE environmental variable.
+Jan 22 14:09:24  CyberKitTestRunner[1296] <Error>: CGContextSetCompositeOperation: invalid context 0x0. If you want to see the backtrace, please set CG_CONTEXT_SHOW_BACKTRACE environmental variable.
+Jan 22 14:09:24  CyberKitTestRunner[1296] <Error>: CGContextFillRects: invalid context 0x0. If you want to see the backtrace, please set CG_CONTEXT_SHOW_BACKTRACE environmental variable.
 """)
 
         class MockPortWithSierraName(MockPort):

@@ -33,13 +33,13 @@ import sys
 import time
 
 
-def listAllWebKitPrograms(builddir_bin):
-    foundWebKitPrograms = []
+def listAllCyberKitPrograms(builddir_bin):
+    foundCyberKitPrograms = []
     for root, dirs, files in os.walk(builddir_bin):
         for file in files:
             if os.access(os.path.join(root, file), os.X_OK):
-                foundWebKitPrograms.append(file)
-    return foundWebKitPrograms
+                foundCyberKitPrograms.append(file)
+    return foundCyberKitPrograms
 
 def removeOrphanShmSegments():
     # When Apache2 is not gracefully shut down, it may leave orphaned shared memory segments
@@ -119,12 +119,12 @@ def main(user=None):
         "testapi_debug.exe",
         "VcBuildHelper.exe",
         "wdiff.exe",
-        "WebKitNetworkProcess.exe",
-        "WebKitNetworkProcess_debug.exe",
-        "WebKitWebProcess.exe",
-        "WebKitWebProcess_debug.exe",
-        "WebKitTestRunner.exe",
-        "WebKitTestRunner_debug.exe",
+        "CyberKitNetworkProcess.exe",
+        "CyberKitNetworkProcess_debug.exe",
+        "CyberKitWebProcess.exe",
+        "CyberKitWebProcess_debug.exe",
+        "CyberKitTestRunner.exe",
+        "CyberKitTestRunner_debug.exe",
     ]
 
     tasksToKillMac = [
@@ -151,15 +151,15 @@ def main(user=None):
         "Safari",
         "svn",
         "DumpRenderTree",
-        "TestWebKitAPI Web Content",
-        "TestWebKitAPI",
+        "TestCyberKitAPI Web Content",
+        "TestCyberKitAPI",
         "PluginProcess",
-        "com.apple.WebKit.Plugin.64",
-        "com.apple.WebKit.Plugin.32",
-        "com.apple.WebKit.PluginProcess",
-        "com.apple.WebKit.PluginProcess.Development"
-        "WebKitTestRunner Web Content",
-        "WebKitTestRunner",
+        "com.matthewbenedict.CyberKit.Plugin.64",
+        "com.matthewbenedict.CyberKit.Plugin.32",
+        "com.matthewbenedict.CyberKit.PluginProcess",
+        "com.matthewbenedict.CyberKit.PluginProcess.Development"
+        "CyberKitTestRunner Web Content",
+        "CyberKitTestRunner",
         "WebProcess",
         "xcodebuild",
         # FIXME: Consider moving iOS-specific tasks to their own list.
@@ -179,7 +179,7 @@ def main(user=None):
         "ruby",
         "apache2",
         "httpd",
-        # WebKit related process names are automatically generated for GTK+/WPE/JSCOnly
+        # CyberKit related process names are automatically generated for GTK+/WPE/JSCOnly
     ]
 
     # This allows to specify on the environment of the bot a list of process that should be killed.
@@ -211,8 +211,8 @@ def main(user=None):
             os.system("taskkill /t /f /im " + task)
     elif sys.platform.startswith('linux'):
         os.system("ps aux")
-        builddir_bin = "WebKitBuild/Release/bin" if os.path.isdir("WebKitBuild/Release/bin") else "WebKitBuild/Debug/bin"
-        for task in tasksToKill + taskToKillUnix + listAllWebKitPrograms(builddir_bin):
+        builddir_bin = "CyberKitBuild/Release/bin" if os.path.isdir("CyberKitBuild/Release/bin") else "CyberKitBuild/Debug/bin"
+        for task in tasksToKill + taskToKillUnix + listAllCyberKitPrograms(builddir_bin):
             os.system("killall -9 -v " + task)
         os.system("ps aux | grep -P '.+/python3? .+(run_webkit_tests|run-webkit-tests|mod_pywebsocket)' | grep -v grep | awk '{print $2}' | xargs -r kill")
         removeOrphanShmSegments()

@@ -69,7 +69,7 @@ class HttpServerBase(object):
         if port_obj.host.platform.is_mac():
             tmpdir = '/tmp'
 
-        self._runtime_path = self._filesystem.join(tmpdir, "WebKit")
+        self._runtime_path = self._filesystem.join(tmpdir, "CyberKit")
         self._filesystem.maybe_make_directory(self._runtime_path)
 
     def ports_to_forward(self):

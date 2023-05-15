@@ -92,7 +92,7 @@ class GitHubOAuthPlugin {
 
         $contributor = false;
         foreach ($Teams as $Team) {
-            if ($Team->name == "Contributors" && $Team->organization->login == "WebKit") {
+            if ($Team->name == "Contributors" && $Team->organization->login == "CyberKit") {
                 $contributor = true;
                 break;
             }

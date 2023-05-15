@@ -90,7 +90,7 @@ promise_test(async (test) => {
 
 promise_test(async (test) => {
     const promise = new Promise(resolve => window.onmessage = resolve);
-    fileFrame = await with_iframe("/WebKit/service-workers/resources/create-temp-file-iframe.html");
+    fileFrame = await with_iframe("/CyberKit/service-workers/resources/create-temp-file-iframe.html");
     let event = await promise;
     tempFilePath = event.data;
 }, "Setup file to upload");
@@ -105,7 +105,7 @@ promise_test(async (test) => {
     formData.append("blob", blob, "blob.file");
     formData.append("name", "value");
 
-    const response = await frame.contentWindow.fetch("/WebKit/service-workers/resources/file-upload-check.py", {method: "POST", body: formData});
+    const response = await frame.contentWindow.fetch("/CyberKit/service-workers/resources/file-upload-check.py", {method: "POST", body: formData});
     const text = await response.text();
 
     assert_true(text.includes(tempFileContent), "content");
@@ -125,7 +125,7 @@ promise_test(async (test) => {
 
     const messagePromise = new Promise(resolve => channel.port2.onmessage = (e) => resolve(e.data));
 
-    const response = await frame.contentWindow.fetch("/WebKit/service-workers/resources/file-upload-check.py?clone", {method: "POST", body: formData});
+    const response = await frame.contentWindow.fetch("/CyberKit/service-workers/resources/file-upload-check.py?clone", {method: "POST", body: formData});
     const text = await response.text();
 
     const messageText = await messagePromise;
@@ -139,7 +139,7 @@ promise_test(async (test) => {
 }, "Upload cloned by service worker");
 
 promise_test(async (test) => {
-    await with_iframe("/WebKit/resources/delete-temp-file-iframe.html");
+    await with_iframe("/CyberKit/resources/delete-temp-file-iframe.html");
 }, "Delete temporary file");
 </script>
 </body>

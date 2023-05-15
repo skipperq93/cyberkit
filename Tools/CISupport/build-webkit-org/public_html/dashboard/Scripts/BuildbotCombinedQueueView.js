@@ -114,7 +114,7 @@ BuildbotCombinedQueueView.prototype = {
                         var URL = mostRecentFinishedIteration.queue.buildbot.javaScriptCoreTestStdioUrlForIteration(mostRecentFinishedIteration, failedStep.name);
                         var statusView = new StatusLineView(message, StatusLineView.Status.Bad, this._testStepFailureDescription(failedStep), failedStep.failureCount, URL);
                         this.element.appendChild(statusView.element);
-                        new PopoverTracker(statusView.statusBubbleElement, this._presentPopoverForJavaScriptCoreTestRegressions.bind(this, failedStep.name), mostRecentFinishedIteration);
+                        new PopoverTracker(statusView.statusBubbleElement, this._presentPopoverForCyberScriptCoreTestRegressions.bind(this, failedStep.name), mostRecentFinishedIteration);
                         return;
                     } else {
                         // Direct links to some common logs.

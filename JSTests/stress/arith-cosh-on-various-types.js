@@ -17,7 +17,7 @@ let validInputTestCases = [
     ["Infinity", "Infinity"],
     ["-Infinity", "Infinity"],
     ["NaN", "NaN"],
-    ["\"WebKit\"", "NaN"],
+    ["\"CyberKit\"", "NaN"],
     ["\"4\"", "" + coshOfFour],
     ["{ valueOf: () => { return 4; } }", "" + coshOfFour],
 ];

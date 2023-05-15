@@ -385,7 +385,7 @@ load("./resources/harmony-support.js");
   assertThrows(() => C.getA(), SyntaxError);
 }
 
-// Additional tests by the WebKit project.
+// Additional tests by the CyberKit project.
 function shouldThrowSyntaxError(script) {
     let error;
     try {

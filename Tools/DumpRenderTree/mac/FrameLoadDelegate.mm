@@ -41,17 +41,17 @@
 #import "TestRunner.h"
 #import "TextInputController.h"
 #import "WPTFunctions.h"
-#import "WebCoreTestSupport.h"
+#import "CyberCoreTestSupport.h"
 #import "WorkQueue.h"
 #import "WorkQueueItem.h"
 #import <Foundation/NSNotification.h>
-#import <JavaScriptCore/JavaScriptCore.h>
-#import <WebKit/WebFramePrivate.h>
-#import <WebKit/WebHTMLViewPrivate.h>
-#import <WebKit/WebNSURLExtras.h>
-#import <WebKit/WebScriptWorld.h>
-#import <WebKit/WebSecurityOriginPrivate.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberScriptCore/CyberScriptCore.h>
+#import <CyberKit/WebFramePrivate.h>
+#import <CyberKit/WebHTMLViewPrivate.h>
+#import <CyberKit/WebNSURLExtras.h>
+#import <CyberKit/WebScriptWorld.h>
+#import <CyberKit/WebSecurityOriginPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/Assertions.h>
 
 #if !PLATFORM(IOS_FAMILY)
@@ -59,7 +59,7 @@
 #endif
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebKit/WebCoreThreadMessage.h>
+#import <CyberKit/CyberCoreThreadMessage.h>
 #endif
 
 #ifndef NSEC_PER_MSEC
@@ -251,7 +251,7 @@ IGNORE_WARNINGS_END
     if (!done && gTestRunner->dumpFrameLoadCallbacks()) {
         NSString *string = [NSString stringWithFormat:@"%@ - didFailProvisionalLoadWithError", [frame _drt_descriptionSuitableForTestResult]];
         printf("%s\n", [string UTF8String]);
-        if (error.code == WebKitErrorCannotShowURL) {
+        if (error.code == CyberKitErrorCannotShowURL) {
             string = [NSString stringWithFormat:@"%@ - (ErrorCodeCannotShowURL)", [frame _drt_descriptionSuitableForTestResult]];
             printf("%s\n", [string UTF8String]);
         }
@@ -319,7 +319,7 @@ IGNORE_WARNINGS_END
     gcController->makeWindowObject(context);
     accessibilityController->makeWindowObject(context);
 
-    WebCoreTestSupport::injectInternalsObject(context);
+    CyberCoreTestSupport::injectInternalsObject(context);
 
 #if PLATFORM(MAC)
     [windowObject setValue:adoptNS([[AppleScriptController alloc] initWithWebView:webView]).get() forKey:@"appleScriptController"];

@@ -210,7 +210,7 @@ class MacTest(darwin_testcase.DarwinTest):
 
     def test_factory_with_future_version(self):
         port = self.make_port(options=MockOptions(webkit_test_runner=True), os_version=MacTest.FUTURE_VERSION, os_name='mac', port_name='mac')
-        self.assertEqual(port.driver_name(), 'WebKitTestRunner')
+        self.assertEqual(port.driver_name(), 'CyberKitTestRunner')
         self.assertEqual(port.version_name(), VersionNameMap().to_name(MacPort.CURRENT_VERSION, platform=MacPort.port_name))
 
         port = self.make_port(options=MockOptions(webkit_test_runner=False), os_version=MacTest.FUTURE_VERSION, os_name='mac', port_name='mac')
@@ -218,17 +218,17 @@ class MacTest(darwin_testcase.DarwinTest):
         self.assertEqual(port.version_name(), VersionNameMap().to_name(MacPort.CURRENT_VERSION, platform=MacPort.port_name))
 
         port = self.make_port(options=MockOptions(webkit_test_runner=False), os_version=MacTest.FUTURE_VERSION, os_name='mac', port_name='mac-wk2')
-        self.assertEqual(port.driver_name(), 'WebKitTestRunner')
+        self.assertEqual(port.driver_name(), 'CyberKitTestRunner')
         self.assertEqual(port.version_name(), VersionNameMap().to_name(MacPort.CURRENT_VERSION, platform=MacPort.port_name))
 
         port = self.make_port(options=MockOptions(webkit_test_runner=True), os_version=MacTest.FUTURE_VERSION, os_name='mac', port_name='mac-wk2')
-        self.assertEqual(port.driver_name(), 'WebKitTestRunner')
+        self.assertEqual(port.driver_name(), 'CyberKitTestRunner')
         self.assertEqual(port.version_name(), VersionNameMap().to_name(MacPort.CURRENT_VERSION, platform=MacPort.port_name))
 
     def test_factory_with_future_version_and_apple_additions(self):
         with port_testcase.bind_mock_apple_additions():
             port = self.make_port(options=MockOptions(webkit_test_runner=True), os_version=MacTest.FUTURE_VERSION, os_name='mac', port_name='mac')
-            self.assertEqual(port.driver_name(), 'WebKitTestRunner')
+            self.assertEqual(port.driver_name(), 'CyberKitTestRunner')
             self.assertEqual(port.version_name(), None)
 
             port = self.make_port(options=MockOptions(webkit_test_runner=False), os_version=MacTest.FUTURE_VERSION, os_name='mac', port_name='mac')
@@ -236,11 +236,11 @@ class MacTest(darwin_testcase.DarwinTest):
             self.assertEqual(port.version_name(), None)
 
             port = self.make_port(options=MockOptions(webkit_test_runner=False), os_version=MacTest.FUTURE_VERSION, os_name='mac', port_name='mac-wk2')
-            self.assertEqual(port.driver_name(), 'WebKitTestRunner')
+            self.assertEqual(port.driver_name(), 'CyberKitTestRunner')
             self.assertEqual(port.version_name(), None)
 
             port = self.make_port(options=MockOptions(webkit_test_runner=True), os_version=MacTest.FUTURE_VERSION, os_name='mac', port_name='mac-wk2')
-            self.assertEqual(port.driver_name(), 'WebKitTestRunner')
+            self.assertEqual(port.driver_name(), 'CyberKitTestRunner')
             self.assertEqual(port.version_name(), None)
 
     def test_factory_with_portname_version(self):
@@ -249,15 +249,15 @@ class MacTest(darwin_testcase.DarwinTest):
         self.assertEqual(port.version_name(), 'Mountain Lion')
 
         port = self.make_port(options=MockOptions(webkit_test_runner=True), port_name='mac-mountainlion')
-        self.assertEqual(port.driver_name(), 'WebKitTestRunner')
+        self.assertEqual(port.driver_name(), 'CyberKitTestRunner')
         self.assertEqual(port.version_name(), 'Mountain Lion')
 
         port = self.make_port(options=MockOptions(webkit_test_runner=True), port_name='mac-mountainlion-wk2')
-        self.assertEqual(port.driver_name(), 'WebKitTestRunner')
+        self.assertEqual(port.driver_name(), 'CyberKitTestRunner')
         self.assertEqual(port.version_name(), 'Mountain Lion')
 
         port = self.make_port(options=MockOptions(webkit_test_runner=False), port_name='mac-mountainlion-wk2')
-        self.assertEqual(port.driver_name(), 'WebKitTestRunner')
+        self.assertEqual(port.driver_name(), 'CyberKitTestRunner')
         self.assertEqual(port.version_name(), 'Mountain Lion')
 
     def test_factory_with_portname_wk2(self):
@@ -265,13 +265,13 @@ class MacTest(darwin_testcase.DarwinTest):
         self.assertEqual(port.driver_name(), 'DumpRenderTree')
 
         port = self.make_port(options=MockOptions(webkit_test_runner=True), port_name='mac')
-        self.assertEqual(port.driver_name(), 'WebKitTestRunner')
+        self.assertEqual(port.driver_name(), 'CyberKitTestRunner')
 
         port = self.make_port(options=MockOptions(webkit_test_runner=True), port_name='mac-wk2')
-        self.assertEqual(port.driver_name(), 'WebKitTestRunner')
+        self.assertEqual(port.driver_name(), 'CyberKitTestRunner')
 
         port = self.make_port(options=MockOptions(webkit_test_runner=False), port_name='mac-wk2')
-        self.assertEqual(port.driver_name(), 'WebKitTestRunner')
+        self.assertEqual(port.driver_name(), 'CyberKitTestRunner')
 
     def test_configuration_for_upload(self):
         port = self.make_port()

@@ -338,4 +338,4 @@ MemoryPressureHandler::Configuration::Configuration(size_t base, double conserva
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

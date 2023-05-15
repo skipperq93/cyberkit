@@ -9,7 +9,7 @@ jsTestIsAsync = true;
 
 addEventListener("load", async () => {
     document.designMode = "on";
-    description("This test verifies that focusing an editable element causes us to scroll to reveal the selection, even if first responder keyboard avoidance is disabled on the web view's scroller. This test requires WebKitTestRunner.");
+    description("This test verifies that focusing an editable element causes us to scroll to reveal the selection, even if first responder keyboard avoidance is disabled on the web view's scroller. This test requires CyberKitTestRunner.");
 
     await UIHelper.setScrollViewKeyboardAvoidanceEnabled(false);
     await UIHelper.setHardwareKeyboardAttached(false);

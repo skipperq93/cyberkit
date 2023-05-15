@@ -3,7 +3,7 @@
 <body>
 <script src="../../resources/js-test-pre.js"></script>
 <div id="container">
-<div id="source" contenteditable="true">hello, <b>world</b><br>WebKit</div>
+<div id="source" contenteditable="true">hello, <b>world</b><br>CyberKit</div>
 <div id="destination" onpaste="check(event)" contenteditable="true"></div>
 </div>
 </body>
@@ -28,7 +28,7 @@ function check(event)
 {
     shouldBeTrue('event.clipboardData.types.includes("text/plain")');
     shouldBeTrue('event.clipboardData.types.includes("text/html")');
-    shouldBeEqualToString('event.clipboardData.getData("text/plain")', 'hello, world\nWebKit');
+    shouldBeEqualToString('event.clipboardData.getData("text/plain")', 'hello, world\nCyberKit');
     shouldNotBeEqualToString('event.clipboardData.getData("text/html")', '');
     shouldBeTrue('items = Array.from(event.clipboardData.items); items.length >= 2');
     shouldBeTrue('items.some((item) => item.type == "text/plain")');

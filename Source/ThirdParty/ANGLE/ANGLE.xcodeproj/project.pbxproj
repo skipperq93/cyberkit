@@ -1437,13 +1437,13 @@
 		6ED7BDF52432CD6200E01503 /* ProgramExecutable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramExecutable.h; sourceTree = "<group>"; };
 		6EE2FD2C22BAE99C001D369E /* eglext_angle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eglext_angle.h; path = include/EGL/eglext_angle.h; sourceTree = "<group>"; };
 		6EE2FD2E22BAE9CD001D369E /* gl2ext_angle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gl2ext_angle.h; path = include/GLES2/gl2ext_angle.h; sourceTree = "<group>"; };
-		7B037F8F29E98CF100D23E74 /* SourcesEAGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SourcesEAGL.cpp; path = WebKit/SourcesEAGL.cpp; sourceTree = "<group>"; };
-		7B037F9029E98CF100D23E74 /* SourcesEAGL1-mm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "SourcesEAGL1-mm.mm"; path = "WebKit/SourcesEAGL1-mm.mm"; sourceTree = "<group>"; };
-		7B037F9129E98CF100D23E74 /* SourcesCGL-mm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "SourcesCGL-mm.mm"; path = "WebKit/SourcesCGL-mm.mm"; sourceTree = "<group>"; };
-		7B037F9229E98CF100D23E74 /* SourcesGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SourcesGL.cpp; path = WebKit/SourcesGL.cpp; sourceTree = "<group>"; };
-		7B037F9329E98CF100D23E74 /* SourcesCGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SourcesCGL.cpp; path = WebKit/SourcesCGL.cpp; sourceTree = "<group>"; };
-		7B037F9429E98CF200D23E74 /* SourcesPlatform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SourcesPlatform.cpp; path = WebKit/SourcesPlatform.cpp; sourceTree = "<group>"; };
-		7B037F9529E98CF200D23E74 /* SourcesPlatform-mm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "SourcesPlatform-mm.mm"; path = "WebKit/SourcesPlatform-mm.mm"; sourceTree = "<group>"; };
+		7B037F8F29E98CF100D23E74 /* SourcesEAGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SourcesEAGL.cpp; path = CyberKit/SourcesEAGL.cpp; sourceTree = "<group>"; };
+		7B037F9029E98CF100D23E74 /* SourcesEAGL1-mm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "SourcesEAGL1-mm.mm"; path = "CyberKit/SourcesEAGL1-mm.mm"; sourceTree = "<group>"; };
+		7B037F9129E98CF100D23E74 /* SourcesCGL-mm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "SourcesCGL-mm.mm"; path = "CyberKit/SourcesCGL-mm.mm"; sourceTree = "<group>"; };
+		7B037F9229E98CF100D23E74 /* SourcesGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SourcesGL.cpp; path = CyberKit/SourcesGL.cpp; sourceTree = "<group>"; };
+		7B037F9329E98CF100D23E74 /* SourcesCGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SourcesCGL.cpp; path = CyberKit/SourcesCGL.cpp; sourceTree = "<group>"; };
+		7B037F9429E98CF200D23E74 /* SourcesPlatform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SourcesPlatform.cpp; path = CyberKit/SourcesPlatform.cpp; sourceTree = "<group>"; };
+		7B037F9529E98CF200D23E74 /* SourcesPlatform-mm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "SourcesPlatform-mm.mm"; path = "CyberKit/SourcesPlatform-mm.mm"; sourceTree = "<group>"; };
 		7B24C80928D9A20D00E2DDB1 /* ImmutableString_ESSL_autogen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImmutableString_ESSL_autogen.cpp; sourceTree = "<group>"; };
 		7B24C80B28D9A25000E2DDB1 /* SymbolTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SymbolTable.cpp; sourceTree = "<group>"; };
 		7B24C80C28D9A25000E2DDB1 /* SymbolTable_ESSL_autogen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SymbolTable_ESSL_autogen.cpp; sourceTree = "<group>"; };
@@ -1460,7 +1460,7 @@
 		7BCF49C228AD1C8C0090D34A /* apple_platform_utils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = apple_platform_utils.mm; sourceTree = "<group>"; };
 		7BCF49C328AD1C8C0090D34A /* CircularBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircularBuffer.h; sourceTree = "<group>"; };
 		7BCF49C428AD1C8C0090D34A /* apple_platform_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = apple_platform_utils.h; sourceTree = "<group>"; };
-		7BDC2D8029E9951900DF385C /* SourcesEAGL2-mm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "SourcesEAGL2-mm.mm"; path = "WebKit/SourcesEAGL2-mm.mm"; sourceTree = "<group>"; };
+		7BDC2D8029E9951900DF385C /* SourcesEAGL2-mm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "SourcesEAGL2-mm.mm"; path = "CyberKit/SourcesEAGL2-mm.mm"; sourceTree = "<group>"; };
 		7BDC8C792993A4B000C2BDDF /* FixedQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FixedQueue.h; sourceTree = "<group>"; };
 		7BDC8C7A2993A4CB00C2BDDF /* mtl_library_cache.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = mtl_library_cache.mm; sourceTree = "<group>"; };
 		7BDC8C7B2993A4CB00C2BDDF /* mtl_library_cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mtl_library_cache.h; sourceTree = "<group>"; };
@@ -2816,7 +2816,7 @@
 			name = GLES;
 			sourceTree = "<group>";
 		};
-		7B037F8E29E98CDC00D23E74 /* WebKit */ = {
+		7B037F8E29E98CDC00D23E74 /* CyberKit */ = {
 			isa = PBXGroup;
 			children = (
 				7B037F9129E98CF100D23E74 /* SourcesCGL-mm.mm */,
@@ -2828,7 +2828,7 @@
 				7B037F9529E98CF200D23E74 /* SourcesPlatform-mm.mm */,
 				7B037F9429E98CF200D23E74 /* SourcesPlatform.cpp */,
 			);
-			name = WebKit;
+			name = CyberKit;
 			sourceTree = "<group>";
 		};
 		A08C3CD816D6CB35003F0B83 /* third_party */ = {
@@ -2926,7 +2926,7 @@
 		FB39D06E1200ED9200088E69 = {
 			isa = PBXGroup;
 			children = (
-				7B037F8E29E98CDC00D23E74 /* WebKit */,
+				7B037F8E29E98CDC00D23E74 /* CyberKit */,
 				5D7C59C41208C68B001C873E /* Configurations */,
 				5CB3048A1DE4143400D2C405 /* Frameworks */,
 				A29B15E916978B7D00111D97 /* include */,

@@ -42,7 +42,7 @@ class DarwinPort(ApplePort):
     CURRENT_VERSION = None
     SDK = None
 
-    API_TEST_BINARY_NAMES = ['TestWTF', 'TestWebKitAPI', 'TestIPC', 'TestWGSL']
+    API_TEST_BINARY_NAMES = ['TestWTF', 'TestCyberKitAPI', 'TestIPC', 'TestWGSL']
 
     def __init__(self, host, port_name, **kwargs):
         ApplePort.__init__(self, host, port_name, **kwargs)
@@ -83,7 +83,7 @@ class DarwinPort(ApplePort):
         _log.info("%s unique leaks found." % unique_leaks)
 
     def _path_to_webcore_library(self):
-        return self._build_path('WebCore.framework/Versions/A/WebCore')
+        return self._build_path('CyberCore.framework/Versions/A/CyberCore')
 
     def show_results_html_file(self, results_filename):
         # We don't use self._run_script() because we don't want to wait for the script

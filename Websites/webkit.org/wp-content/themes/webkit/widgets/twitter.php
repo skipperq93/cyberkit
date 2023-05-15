@@ -1,6 +1,6 @@
 <?php
 /**
- * WebKitTwitterTileWidget class
+ * CyberKitTwitterTileWidget class
  * A WordPress widget to show a Twitter tile on the home page
  **/
 
@@ -8,7 +8,7 @@ defined('WPINC') || header('HTTP/1.1 403') & exit; // Prevent direct access
 
 if ( ! class_exists('WP_Widget') ) return;
 
-class WebKitTwitterTileWidget extends WebKitPostTileWidget {
+class CyberKitTwitterTileWidget extends CyberKitPostTileWidget {
 
     const CACHEKEY = 'webkit_twitter_feed';
     const ENDPOINT = 'https://api.twitter.com/1.1/statuses/user_timeline.json';
@@ -185,11 +185,11 @@ class WebKitTwitterTileWidget extends WebKitPostTileWidget {
         return $pushedTweet;
     }
 
-    function isWebKitLink ($Tweet) {
+    function isCyberKitLink ($Tweet) {
         return ( ! empty($Tweet->entities->urls[0]->expanded_url)
                 && preg_match('!webkit.org/.+?!', $Tweet->entities->urls[0]->expanded_url) == 1 );
     }
 
-} // END class WebKitTwitterTileWidget
+} // END class CyberKitTwitterTileWidget
 
-register_widget('WebKitTwitterTileWidget');
+register_widget('CyberKitTwitterTileWidget');

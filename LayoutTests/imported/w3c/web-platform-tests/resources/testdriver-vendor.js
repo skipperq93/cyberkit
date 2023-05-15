@@ -223,7 +223,7 @@ window.test_driver_internal.send_keys = async function(element, keys)
           modifiers.push(convertedKey.modifier);
     }
 
-    if (testRunner.isIOSFamily && testRunner.isWebKit2) {
+    if (testRunner.isIOSFamily && testRunner.isCyberKit2) {
         await new Promise((resolve) => {
             testRunner.runUIScript(`
                 const keyList = JSON.parse('${JSON.stringify(keyList)}');
@@ -245,7 +245,7 @@ window.test_driver_internal.send_keys = async function(element, keys)
  */
 window.test_driver_internal.click = async function (element, coords)
 {
-    if (testRunner.isIOSFamily && testRunner.isWebKit2) {
+    if (testRunner.isIOSFamily && testRunner.isCyberKit2) {
         await new Promise((resolve) => {
             testRunner.runUIScript(`
                 uiController.singleTapAtPoint(${coords.x}, ${coords.y}, function() {
@@ -288,7 +288,7 @@ window.test_driver_internal.action_sequence = async function(sources)
     }
 
     if (keySource && pointerSource)
-        throw new Error("testdriver-vendor.js for WebKit does not yet support mixing key and pointer sources");
+        throw new Error("testdriver-vendor.js for CyberKit does not yet support mixing key and pointer sources");
 
     if (keySource) {
         let modifiersInEffect = [];
@@ -313,7 +313,7 @@ window.test_driver_internal.action_sequence = async function(sources)
             }
             case 'pause':
                 // FIXME: Use eventSender.leapForward.
-                throw new Error('testdriver-vendor.js for WebKit does not yet support pause key action');
+                throw new Error('testdriver-vendor.js for CyberKit does not yet support pause key action');
             default:
                 throw new Error(`Unknown key action type "${action.type}" encountered in testdriver-vendor.js`);
             }
@@ -329,7 +329,7 @@ window.test_driver_internal.action_sequence = async function(sources)
             });
         }
 
-        if (testRunner.isIOSFamily && testRunner.isWebKit2) {
+        if (testRunner.isIOSFamily && testRunner.isCyberKit2) {
             return await new Promise((resolve) => {
                 testRunner.runUIScript(`
                     const events = JSON.parse('${JSON.stringify(events)}');

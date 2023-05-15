@@ -777,7 +777,7 @@ bool protocolHostAndPortAreEqual(const URL& a, const URL& b)
 
 bool URL::isMatchingDomain(StringView domain) const
 {
-    // FIXME: Consider moving this to an appropriate place in WebCore's plug-in code; don't want people tempted to use this instead of SecurityOrigin.
+    // FIXME: Consider moving this to an appropriate place in CyberCore's plug-in code; don't want people tempted to use this instead of SecurityOrigin.
 
     if (isNull())
         return false;

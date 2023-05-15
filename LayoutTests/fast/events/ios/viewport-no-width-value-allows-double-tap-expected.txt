@@ -3,6 +3,6 @@ PASS successfullyParsed is true
 TEST COMPLETE
 Double tapping on the image should scroll.
 
-This test is best run in WebKitTestRunner. If you are running this test manually, verify that double tapping on the bottom of the viewport caused a scroll.
+This test is best run in CyberKitTestRunner. If you are running this test manually, verify that double tapping on the bottom of the viewport caused a scroll.
 
 

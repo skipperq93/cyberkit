@@ -9,6 +9,6 @@ shouldBeFalse("Object.getOwnPropertyDescriptor(String.prototype, 'normalize').en
 shouldBeTrue("Object.getOwnPropertyDescriptor(String.prototype, 'normalize').writable");
 
 debug("Invokes ToString on the argument.");
-var listener = { callCount: 0, toString: function() { this.callCount++; return "WebKit"; } }
-shouldBeEqualToString("String.prototype.normalize.call(listener)", "WebKit");
+var listener = { callCount: 0, toString: function() { this.callCount++; return "CyberKit"; } }
+shouldBeEqualToString("String.prototype.normalize.call(listener)", "CyberKit");
 shouldBe("listener.callCount", "1");

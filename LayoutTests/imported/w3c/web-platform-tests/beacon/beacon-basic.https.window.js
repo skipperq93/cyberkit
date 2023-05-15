@@ -4,7 +4,7 @@
 
 'use strict';
 
-// TODO(yhirano): Check the sec-fetch-mode request header once WebKit supports
+// TODO(yhirano): Check the sec-fetch-mode request header once CyberKit supports
 // the feature.
 
 parallelPromiseTest(async (t) => {

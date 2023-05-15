@@ -1,0 +1,245 @@
+/*
+ * Copyright (C) 2014-2018 Apple Inc. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS''
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+ * THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+#pragma once
+
+#include "APIInspectorConfiguration.h"
+#include "APISecurityOrigin.h"
+#include "WKPage.h"
+#include "WebEvent.h"
+#include "WebHitTestResultData.h"
+#include <CyberCore/CookieConsentDecisionResult.h>
+#include <CyberCore/FloatRect.h>
+#include <CyberCore/ModalContainerTypes.h>
+#include <CyberCore/PermissionState.h>
+#include <CyberCore/ScreenOrientationType.h>
+#include <wtf/CompletionHandler.h>
+
+#if PLATFORM(COCOA)
+#include <CyberCore/PlatformViewController.h>
+#endif
+
+#if PLATFORM(IOS_FAMILY)
+OBJC_CLASS NSArray;
+OBJC_CLASS _WKActivatedElementInfo;
+OBJC_CLASS UIViewController;
+#endif
+
+#if ENABLE(WEB_AUTHN)
+#include "WebAuthenticationFlags.h"
+#endif
+
+#if ENABLE(WEBXR) && PLATFORM(COCOA)
+#include <CyberCore/PlatformXR.h>
+#endif
+
+namespace CyberCore {
+class RegistrableDomain;
+class ResourceRequest;
+class SecurityOriginData;
+enum class AutoplayEvent : uint8_t;
+enum class AutoplayEventFlags : uint8_t;
+enum class MediaProducerMediaState : uint32_t;
+struct FontAttributes;
+struct WindowFeatures;
+using MediaProducerMediaStateFlags = OptionSet<MediaProducerMediaState>;
+}
+
+namespace CyberKit {
+class NativeWebKeyboardEvent;
+class NativeWebWheelEvent;
+class UserMediaPermissionCheckProxy;
+class UserMediaPermissionRequestProxy;
+class WebColorPickerResultListenerProxy;
+class WebFrameProxy;
+class WebInspectorUIProxy;
+class WebOpenPanelResultListenerProxy;
+class WebPageProxy;
+struct FrameInfoData;
+struct NavigationActionData;
+}
+
+namespace API {
+
+class Data;
+class Dictionary;
+class NavigationAction;
+class Object;
+class OpenPanelParameters;
+class SecurityOrigin;
+class WebAuthenticationPanel;
+
+class UIClient {
+    WTF_MAKE_FAST_ALLOCATED;
+public:
+    virtual ~UIClient() { }
+
+    virtual void createNewPage(CyberKit::WebPageProxy&, CyberCore::WindowFeatures&&, Ref<NavigationAction>&&, CompletionHandler<void(RefPtr<CyberKit::WebPageProxy>&&)>&&);
+    virtual void showPage(CyberKit::WebPageProxy*) { }
+    virtual void fullscreenMayReturnToInline(CyberKit::WebPageProxy*) { }
+    virtual void didEnterFullscreen(CyberKit::WebPageProxy*) { }
+    virtual void didExitFullscreen(CyberKit::WebPageProxy*) { }
+    virtual void hasVideoInPictureInPictureDidChange(CyberKit::WebPageProxy*, bool) { }
+    virtual void close(CyberKit::WebPageProxy*) { }
+
+    virtual bool takeFocus(CyberKit::WebPageProxy*, WKFocusDirection) { return false; }
+    virtual void focus(CyberKit::WebPageProxy*) { }
+    virtual void unfocus(CyberKit::WebPageProxy*) { }
+    virtual bool focusFromServiceWorker(CyberKit::WebPageProxy&) { return false; }
+
+    virtual void runJavaScriptAlert(CyberKit::WebPageProxy&, const WTF::String&, CyberKit::WebFrameProxy*, CyberKit::FrameInfoData&&, Function<void()>&& completionHandler) { completionHandler(); }
+    virtual void runJavaScriptConfirm(CyberKit::WebPageProxy&, const WTF::String&, CyberKit::WebFrameProxy*, CyberKit::FrameInfoData&&, Function<void(bool)>&& completionHandler) { completionHandler(false); }
+    virtual void runJavaScriptPrompt(CyberKit::WebPageProxy&, const WTF::String&, const WTF::String&, CyberKit::WebFrameProxy*, CyberKit::FrameInfoData&&, Function<void(const WTF::String&)>&& completionHandler) { completionHandler(WTF::String()); }
+
+    virtual void setStatusText(CyberKit::WebPageProxy*, const WTF::String&) { }
+    virtual void mouseDidMoveOverElement(CyberKit::WebPageProxy&, const CyberKit::WebHitTestResultData&, OptionSet<CyberKit::WebEventModifier>, Object*) { }
+
+    virtual void didNotHandleKeyEvent(CyberKit::WebPageProxy*, const CyberKit::NativeWebKeyboardEvent&) { }
+    virtual void didNotHandleWheelEvent(CyberKit::WebPageProxy*, const CyberKit::NativeWebWheelEvent&) { }
+
+    virtual void toolbarsAreVisible(CyberKit::WebPageProxy&, Function<void(bool)>&& completionHandler) { completionHandler(true); }
+    virtual void setToolbarsAreVisible(CyberKit::WebPageProxy&, bool) { }
+    virtual void menuBarIsVisible(CyberKit::WebPageProxy&, Function<void(bool)>&& completionHandler) { completionHandler(true); }
+    virtual void setMenuBarIsVisible(CyberKit::WebPageProxy&, bool) { }
+    virtual void statusBarIsVisible(CyberKit::WebPageProxy&, Function<void(bool)>&& completionHandler) { completionHandler(true); }
+    virtual void setStatusBarIsVisible(CyberKit::WebPageProxy&, bool) { }
+    virtual void setIsResizable(CyberKit::WebPageProxy&, bool) { }
+
+    virtual void setWindowFrame(CyberKit::WebPageProxy&, const CyberCore::FloatRect&) { }
+    virtual void windowFrame(CyberKit::WebPageProxy&, Function<void(CyberCore::FloatRect)>&& completionHandler) { completionHandler({ }); }
+
+    virtual bool canRunBeforeUnloadConfirmPanel() const { return false; }
+    virtual void runBeforeUnloadConfirmPanel(CyberKit::WebPageProxy&, const WTF::String&, CyberKit::WebFrameProxy*, CyberKit::FrameInfoData&&, Function<void(bool)>&& completionHandler) { completionHandler(true); }
+
+    virtual void pageDidScroll(CyberKit::WebPageProxy*) { }
+
+    virtual void exceededDatabaseQuota(CyberKit::WebPageProxy*, CyberKit::WebFrameProxy*, SecurityOrigin*, const WTF::String&, const WTF::String&, unsigned long long currentQuota, unsigned long long, unsigned long long, unsigned long long, Function<void (unsigned long long)>&& completionHandler)
+    {
+        completionHandler(currentQuota);
+    }
+
+    virtual void reachedApplicationCacheOriginQuota(CyberKit::WebPageProxy*, const CyberCore::SecurityOrigin&, uint64_t currentQuota, uint64_t, Function<void (unsigned long long)>&& completionHandler)
+    {
+        completionHandler(currentQuota);
+    }
+
+    virtual bool lockScreenOrientation(CyberKit::WebPageProxy&, CyberCore::ScreenOrientationType) { return false; }
+    virtual void unlockScreenOrientation(CyberKit::WebPageProxy&) { }
+
+    virtual bool needsFontAttributes() const { return false; }
+    virtual void didChangeFontAttributes(const CyberCore::FontAttributes&) { }
+
+    virtual bool runOpenPanel(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy*, CyberKit::FrameInfoData&&, OpenPanelParameters*, CyberKit::WebOpenPanelResultListenerProxy*) { return false; }
+    virtual void decidePolicyForGeolocationPermissionRequest(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy&, const CyberKit::FrameInfoData&, Function<void(bool)>&) { }
+    virtual void decidePolicyForUserMediaPermissionRequest(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy&, SecurityOrigin&, SecurityOrigin&, CyberKit::UserMediaPermissionRequestProxy&);
+    virtual void checkUserMediaPermissionForOrigin(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy&, SecurityOrigin&, SecurityOrigin&, CyberKit::UserMediaPermissionCheckProxy&);
+    virtual void decidePolicyForNotificationPermissionRequest(CyberKit::WebPageProxy&, SecurityOrigin&, CompletionHandler<void(bool allowed)>&& completionHandler) { completionHandler(false); }
+    virtual void requestStorageAccessConfirm(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy*, const CyberCore::RegistrableDomain& requestingDomain, const CyberCore::RegistrableDomain& currentDomain, CompletionHandler<void(bool)>&& completionHandler) { completionHandler(true); }
+    virtual void requestCookieConsent(CompletionHandler<void(CyberCore::CookieConsentDecisionResult)>&& completionHandler) { completionHandler(CyberCore::CookieConsentDecisionResult::NotSupported); }
+    virtual void decidePolicyForModalContainer(OptionSet<CyberCore::ModalContainerControlType>, CompletionHandler<void(CyberCore::ModalContainerDecision)>&& completion) { completion(CyberCore::ModalContainerDecision::Show); }
+
+    // Printing.
+    virtual float headerHeight(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy&) { return 0; }
+    virtual float footerHeight(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy&) { return 0; }
+    virtual void drawHeader(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy&, CyberCore::FloatRect&&) { }
+    virtual void drawFooter(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy&, CyberCore::FloatRect&&) { }
+    virtual void printFrame(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy&, const CyberCore::FloatSize& pdfFirstPageSize, CompletionHandler<void()>&& completionHandler) { completionHandler(); }
+
+    virtual bool canRunModal() const { return false; }
+    virtual void runModal(CyberKit::WebPageProxy&) { }
+
+    virtual void saveDataToFileInDownloadsFolder(CyberKit::WebPageProxy*, const WTF::String&, const WTF::String&, const WTF::URL&, Data&) { }
+
+    virtual void pinnedStateDidChange(CyberKit::WebPageProxy&) { }
+
+    virtual void isPlayingMediaDidChange(CyberKit::WebPageProxy&) { }
+    virtual void mediaCaptureStateDidChange(CyberCore::MediaProducerMediaStateFlags) { }
+    virtual void handleAutoplayEvent(CyberKit::WebPageProxy&, CyberCore::AutoplayEvent, OptionSet<CyberCore::AutoplayEventFlags>) { }
+
+#if PLATFORM(IOS_FAMILY)
+#if HAVE(APP_LINKS)
+    virtual bool shouldIncludeAppLinkActionsForElement(_WKActivatedElementInfo *) { return true; }
+#endif
+    virtual RetainPtr<NSArray> actionsForElement(_WKActivatedElementInfo *, RetainPtr<NSArray> defaultActions) { return defaultActions; }
+    virtual void didNotHandleTapAsClick(const CyberCore::IntPoint&) { }
+    virtual void statusBarWasTapped() { }
+#endif
+#if PLATFORM(COCOA)
+    virtual PlatformViewController *presentingViewController() { return nullptr; }
+    virtual std::optional<double> dataDetectionReferenceDate() { return std::nullopt; }
+#endif
+
+#if ENABLE(POINTER_LOCK)
+    virtual void requestPointerLock(CyberKit::WebPageProxy*) { }
+    virtual void didLosePointerLock(CyberKit::WebPageProxy*) { }
+#endif
+
+#if ENABLE(DEVICE_ORIENTATION)
+    virtual void shouldAllowDeviceOrientationAndMotionAccess(CyberKit::WebPageProxy&, CyberKit::WebFrameProxy& webFrameProxy, CyberKit::FrameInfoData&&, CompletionHandler<void(bool)>&& completionHandler) { completionHandler(false); }
+#endif
+
+    virtual void didClickAutoFillButton(CyberKit::WebPageProxy&, Object*) { }
+
+    virtual void didResignInputElementStrongPasswordAppearance(CyberKit::WebPageProxy&, Object*) { }
+
+    virtual void imageOrMediaDocumentSizeChanged(const CyberCore::IntSize&) { }
+
+    virtual void didShowSafeBrowsingWarning() { }
+
+    virtual void confirmPDFOpening(CyberKit::WebPageProxy&, const WTF::URL&, CyberKit::FrameInfoData&&, CompletionHandler<void(bool)>&& completionHandler) { completionHandler(true); }
+
+#if ENABLE(WEB_AUTHN)
+    virtual void runWebAuthenticationPanel(CyberKit::WebPageProxy&, WebAuthenticationPanel&, CyberKit::WebFrameProxy&, CyberKit::FrameInfoData&&, CompletionHandler<void(CyberKit::WebAuthenticationPanelResult)>&& completionHandler) { completionHandler(CyberKit::WebAuthenticationPanelResult::Unavailable); }
+
+    virtual void requestWebAuthenticationNoGesture(SecurityOrigin& origin, CompletionHandler<void(bool)>&& completionHandler)
+    {
+        completionHandler(true);
+    }
+#endif
+
+    virtual void didAttachLocalInspector(CyberKit::WebPageProxy&, CyberKit::WebInspectorUIProxy&) { }
+    virtual void willCloseLocalInspector(CyberKit::WebPageProxy&, CyberKit::WebInspectorUIProxy&) { }
+    virtual Ref<InspectorConfiguration> configurationForLocalInspector(CyberKit::WebPageProxy&, CyberKit::WebInspectorUIProxy&)
+    {
+        return InspectorConfiguration::create();
+    }
+    virtual void didEnableInspectorBrowserDomain(CyberKit::WebPageProxy&) { }
+    virtual void didDisableInspectorBrowserDomain(CyberKit::WebPageProxy&) { }
+
+    virtual void decidePolicyForMediaKeySystemPermissionRequest(CyberKit::WebPageProxy&, SecurityOrigin&, const WTF::String& keySystem, CompletionHandler<void(bool)>&&);
+
+    virtual void queryPermission(const WTF::String& permissionName, SecurityOrigin& origin, CompletionHandler<void(std::optional<CyberCore::PermissionState>)>&& completionHandler) { completionHandler({ }); }
+
+#if ENABLE(WEBXR) && PLATFORM(COCOA)
+    virtual void requestPermissionOnXRSessionFeatures(CyberKit::WebPageProxy&, const CyberCore::SecurityOriginData&, PlatformXR::SessionMode, const PlatformXR::Device::FeatureList& granted, const PlatformXR::Device::FeatureList& /* consentRequired */, const PlatformXR::Device::FeatureList& /* consentOptional */, CompletionHandler<void(std::optional<PlatformXR::Device::FeatureList>&&)>&& completionHandler) { completionHandler(granted); }    
+    virtual void startXRSession(CyberKit::WebPageProxy&, CompletionHandler<void(RetainPtr<id>)>&& completionHandler) { completionHandler(nil); }
+    virtual void endXRSession(CyberKit::WebPageProxy&) { }
+#endif
+
+    virtual void updateAppBadge(CyberKit::WebPageProxy&, const CyberCore::SecurityOriginData&, std::optional<uint64_t>) { }
+    virtual void updateClientBadge(CyberKit::WebPageProxy&, const CyberCore::SecurityOriginData&, std::optional<uint64_t>) { }
+};
+
+} // namespace API

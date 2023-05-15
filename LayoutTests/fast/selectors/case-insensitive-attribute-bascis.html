@@ -12,18 +12,18 @@
 </head>
 <body>
     <div style="display:none" id="test-root">
-        <div data-attribute="WebKit" id="target1"></div>
+        <div data-attribute="CyberKit" id="target1"></div>
         <div data-attribute="webkit" id="target2"></div>
         <div data-attribute="WEBKIT" id="target3"></div>
-        <div data-attribute="WebKit rocks" id="target4"></div>
+        <div data-attribute="CyberKit rocks" id="target4"></div>
         <div data-attribute="webkit Rocks" id="target5"></div>
         <div data-attribute="WEBKIT ROCKS" id="target6"></div>
-        <div data-attribute="WebKit-rocks" id="target7"></div>
+        <div data-attribute="CyberKit-rocks" id="target7"></div>
         <div data-attribute="webkit-Rocks" id="target8"></div>
         <div data-attribute="WEBKIT-ROCKS" id="target9"></div>
         <div data-attribute="WEBKIT webkit" id="target10"></div>
-        <div data-attribute="WEBKIT WebKit" id="target11"></div>
-        <div data-attribute="webkit WebKit" id="target12"></div>
+        <div data-attribute="WEBKIT CyberKit" id="target11"></div>
+        <div data-attribute="webkit CyberKit" id="target12"></div>
     </div>
 </body>
 <script>
@@ -56,41 +56,41 @@ function testSelector(selector, expectedIds) {
 }
 
 var testCases = [
-    ['[data-attribute=WebKit]', [1]],
+    ['[data-attribute=CyberKit]', [1]],
 
-    ['[data-attribute=WebKit i]', [1, 2, 3]],
-    ['[data-attribute=WebKit I]', [1, 2, 3]],
-    ['[data-attribute="WebKit" i]', [1, 2, 3]],
-    ['[data-attribute="WebKit" I]', [1, 2, 3]],
-    ['[data-attribute=WebKit i  ]', [1, 2, 3]],
-    ['[data-attribute=WebKit I  ]', [1, 2, 3]],
+    ['[data-attribute=CyberKit i]', [1, 2, 3]],
+    ['[data-attribute=CyberKit I]', [1, 2, 3]],
+    ['[data-attribute="CyberKit" i]', [1, 2, 3]],
+    ['[data-attribute="CyberKit" I]', [1, 2, 3]],
+    ['[data-attribute=CyberKit i  ]', [1, 2, 3]],
+    ['[data-attribute=CyberKit I  ]', [1, 2, 3]],
 
-    ['[data-attribute~=WebKit]', [1, 4, 11, 12]],
+    ['[data-attribute~=CyberKit]', [1, 4, 11, 12]],
 
-    ['[data-attribute~=WebKit i]', [1, 2, 3, 4, 5, 6, 10, 11, 12]],
-    ['[data-attribute~=WebKit I]', [1, 2, 3, 4, 5, 6, 10, 11, 12]],
-    ['[data-attribute~="WebKit" i]', [1, 2, 3, 4, 5, 6, 10, 11, 12]],
-    ['[data-attribute~="WebKit" I]', [1, 2, 3, 4, 5, 6, 10, 11, 12]],
-    ['[data-attribute~=WebKit i  ]', [1, 2, 3, 4, 5, 6, 10, 11, 12]],
-    ['[data-attribute~=WebKit I  ]', [1, 2, 3, 4, 5, 6, 10, 11, 12]],
+    ['[data-attribute~=CyberKit i]', [1, 2, 3, 4, 5, 6, 10, 11, 12]],
+    ['[data-attribute~=CyberKit I]', [1, 2, 3, 4, 5, 6, 10, 11, 12]],
+    ['[data-attribute~="CyberKit" i]', [1, 2, 3, 4, 5, 6, 10, 11, 12]],
+    ['[data-attribute~="CyberKit" I]', [1, 2, 3, 4, 5, 6, 10, 11, 12]],
+    ['[data-attribute~=CyberKit i  ]', [1, 2, 3, 4, 5, 6, 10, 11, 12]],
+    ['[data-attribute~=CyberKit I  ]', [1, 2, 3, 4, 5, 6, 10, 11, 12]],
 
-    ['[data-attribute|=WebKit]', [1, 7]],
+    ['[data-attribute|=CyberKit]', [1, 7]],
 
-    ['[data-attribute|=WebKit i]', [1, 2, 3, 7, 8, 9]],
-    ['[data-attribute|=WebKit I]', [1, 2, 3, 7, 8, 9]],
-    ['[data-attribute|="WebKit" i]', [1, 2, 3, 7, 8, 9]],
-    ['[data-attribute|="WebKit" I]', [1, 2, 3, 7, 8, 9]],
-    ['[data-attribute|=WebKit i  ]', [1, 2, 3, 7, 8, 9]],
-    ['[data-attribute|=WebKit I  ]', [1, 2, 3, 7, 8, 9]],
+    ['[data-attribute|=CyberKit i]', [1, 2, 3, 7, 8, 9]],
+    ['[data-attribute|=CyberKit I]', [1, 2, 3, 7, 8, 9]],
+    ['[data-attribute|="CyberKit" i]', [1, 2, 3, 7, 8, 9]],
+    ['[data-attribute|="CyberKit" I]', [1, 2, 3, 7, 8, 9]],
+    ['[data-attribute|=CyberKit i  ]', [1, 2, 3, 7, 8, 9]],
+    ['[data-attribute|=CyberKit I  ]', [1, 2, 3, 7, 8, 9]],
 
-    ['[data-attribute^=WebKit]', [1, 4, 7]],
+    ['[data-attribute^=CyberKit]', [1, 4, 7]],
 
-    ['[data-attribute^=WebKit i]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
-    ['[data-attribute^=WebKit I]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
-    ['[data-attribute^="WebKit" i]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
-    ['[data-attribute^="WebKit" I]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
-    ['[data-attribute^=WebKit i  ]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
-    ['[data-attribute^=WebKit I  ]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
+    ['[data-attribute^=CyberKit i]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
+    ['[data-attribute^=CyberKit I]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
+    ['[data-attribute^="CyberKit" i]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
+    ['[data-attribute^="CyberKit" I]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
+    ['[data-attribute^=CyberKit i  ]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
+    ['[data-attribute^=CyberKit I  ]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
 
     ['[data-attribute^=WebKi i]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
     ['[data-attribute^=WebKi I]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
@@ -99,14 +99,14 @@ var testCases = [
     ['[data-attribute^=WebKi i  ]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
     ['[data-attribute^=WebKi I  ]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
 
-    ['[data-attribute$=WebKit]', [1, 11, 12]],
+    ['[data-attribute$=CyberKit]', [1, 11, 12]],
 
-    ['[data-attribute$=WebKit i]', [1, 2, 3, 10, 11, 12]],
-    ['[data-attribute$=WebKit I]', [1, 2, 3, 10, 11, 12]],
-    ['[data-attribute$="WebKit" i]', [1, 2, 3, 10, 11, 12]],
-    ['[data-attribute$="WebKit" I]', [1, 2, 3, 10, 11, 12]],
-    ['[data-attribute$=WebKit i  ]', [1, 2, 3, 10, 11, 12]],
-    ['[data-attribute$=WebKit I  ]', [1, 2, 3, 10, 11, 12]],
+    ['[data-attribute$=CyberKit i]', [1, 2, 3, 10, 11, 12]],
+    ['[data-attribute$=CyberKit I]', [1, 2, 3, 10, 11, 12]],
+    ['[data-attribute$="CyberKit" i]', [1, 2, 3, 10, 11, 12]],
+    ['[data-attribute$="CyberKit" I]', [1, 2, 3, 10, 11, 12]],
+    ['[data-attribute$=CyberKit i  ]', [1, 2, 3, 10, 11, 12]],
+    ['[data-attribute$=CyberKit I  ]', [1, 2, 3, 10, 11, 12]],
 
     ['[data-attribute$=ebKit i]', [1, 2, 3, 10, 11, 12]],
     ['[data-attribute$=ebKit I]', [1, 2, 3, 10, 11, 12]],
@@ -115,14 +115,14 @@ var testCases = [
     ['[data-attribute$=ebKit i  ]', [1, 2, 3, 10, 11, 12]],
     ['[data-attribute$=ebKit I  ]', [1, 2, 3, 10, 11, 12]],
 
-    ['[data-attribute*=WebKit]', [1, 4, 7, 11, 12]],
+    ['[data-attribute*=CyberKit]', [1, 4, 7, 11, 12]],
 
-    ['[data-attribute*=WebKit i]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
-    ['[data-attribute*=WebKit I]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
-    ['[data-attribute*="WebKit" i]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
-    ['[data-attribute*="WebKit" I]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
-    ['[data-attribute*=WebKit i  ]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
-    ['[data-attribute*=WebKit I  ]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
+    ['[data-attribute*=CyberKit i]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
+    ['[data-attribute*=CyberKit I]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
+    ['[data-attribute*="CyberKit" i]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
+    ['[data-attribute*="CyberKit" I]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
+    ['[data-attribute*=CyberKit i  ]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
+    ['[data-attribute*=CyberKit I  ]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
 ];
 
 for (var testCase of testCases) {

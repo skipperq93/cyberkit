@@ -36,9 +36,9 @@ CWD=$(pwd)
 
 cd /mnt/git
 
-echo "Cloning WebKit git repository, process takes ~30m."
+echo "Cloning CyberKit git repository, process takes ~30m."
 echo "Note: No status output will be shown via remote pipe."
-git clone git://git.webkit.org/WebKit.git webkit-$1
+git clone git://git.webkit.org/CyberKit.git webkit-$1
 cd webkit-$1
 
 cat >> .git/config <<EOF

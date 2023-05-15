@@ -413,7 +413,7 @@ argGeneratorTestRunner = function(argGen, testFunction, numberOfTests) {
 };
 
 // TODO: Remove this
-// WebKit or at least Chrome is really slow at laying out strings with
+// CyberKit or at least Chrome is really slow at laying out strings with
 // unprintable characters. Without this tests can take 30-90 seconds.
 // With this they're instant.
 sanitize = function(str) {

@@ -58,4 +58,4 @@ target_link_libraries(gtestFramework INTERFACE gtest)
 target_include_directories(gtestFramework INTERFACE "${GTEST_DIR}/include")
 target_compile_definitions(gtestFramework INTERFACE ${gtest_DEFINITIONS})
 
-add_library(WebKit::gtest ALIAS gtestFramework)
+add_library(CyberKit::gtest ALIAS gtestFramework)

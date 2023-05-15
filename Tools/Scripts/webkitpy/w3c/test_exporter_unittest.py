@@ -131,15 +131,15 @@ class TestExporterTest(unittest.TestCase):
         exporter = WebPlatformTestExporter(host, options, TestExporterTest.MockGit, TestExporterTest.MockBugzilla, MockWPTGitHub, TestExporterTest.MockWPTLinter)
         exporter.do_export()
         self.assertEqual(exporter._github.calls, ['create_pr', 'add_label "webkit-export"'])
-        self.assertTrue('WebKit export' in exporter._github.pull_requests_created[0][1])
+        self.assertTrue('CyberKit export' in exporter._github.pull_requests_created[0][1])
         self.assertEqual(exporter._git.calls, [
-            '/mock-checkout/WebKitBuild/w3c-tests/web-platform-tests',
+            '/mock-checkout/CyberKitBuild/w3c-tests/web-platform-tests',
             'fetch',
             'checkout master',
             'reset hard origin/master',
             'checkout new branch wpt-export-for-webkit-1234',
             'apply_mail_patch patch.temp -3',
-            'commit -a -m WebKit export of https://bugs.webkit.org/show_bug.cgi?id=1234',
+            'commit -a -m CyberKit export of https://bugs.webkit.org/show_bug.cgi?id=1234',
             'remote ',
             'remote add USER https://USER@github.com/USER/wpt.git',
             'remote get-url USER',
@@ -152,7 +152,7 @@ class TestExporterTest(unittest.TestCase):
             'fetch bug 1234',
             'Append https://github.com/web-platform-tests/wpt/pull/5678 to see also list',
             'post comment to bug 1234 : Submitted web-platform-tests pull request: https://github.com/web-platform-tests/wpt/pull/5678'])
-        self.assertEqual(mock_linter.calls, ['/mock-checkout/WebKitBuild/w3c-tests/web-platform-tests', 'lint'])
+        self.assertEqual(mock_linter.calls, ['/mock-checkout/CyberKitBuild/w3c-tests/web-platform-tests', 'lint'])
 
     def test_export_with_specific_branch(self):
         host = TestExporterTest.MyMockHost()
@@ -161,13 +161,13 @@ class TestExporterTest(unittest.TestCase):
         exporter = WebPlatformTestExporter(host, options, TestExporterTest.MockGit, TestExporterTest.MockBugzilla, MockWPTGitHub, TestExporterTest.MockWPTLinter)
         exporter.do_export()
         self.assertEqual(exporter._git.calls, [
-            '/mock-checkout/WebKitBuild/w3c-tests/web-platform-tests',
+            '/mock-checkout/CyberKitBuild/w3c-tests/web-platform-tests',
             'fetch',
             'checkout master',
             'reset hard origin/master',
             'checkout new branch wpt-export-for-webkit-1234',
             'apply_mail_patch patch.temp -3',
-            'commit -a -m WebKit export of https://bugs.webkit.org/show_bug.cgi?id=1234',
+            'commit -a -m CyberKit export of https://bugs.webkit.org/show_bug.cgi?id=1234',
             'remote ',
             'remote add USER https://USER@github.com/USER/wpt.git',
             'remote get-url USER',

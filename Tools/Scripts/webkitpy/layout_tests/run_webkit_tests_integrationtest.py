@@ -689,8 +689,8 @@ class RunTest(unittest.TestCase, StreamTestingMixin):
         if self._platform.is_mac() or self._platform.is_win():
             # FIXME: Need to rewrite these tests to not be mac-specific, or move them elsewhere.
             # Currently CrashLog uploading only works on Darwin and Windows.
-            mock_crash_report = make_mock_crash_report_darwin('WebKitTestRunner', 12345)
-            host.filesystem.write_text_file('/tmp/layout-test-results/WebKitTestRunner_2011-06-13-150719_quadzen.crash', mock_crash_report)
+            mock_crash_report = make_mock_crash_report_darwin('CyberKitTestRunner', 12345)
+            host.filesystem.write_text_file('/tmp/layout-test-results/CyberKitTestRunner_2011-06-13-150719_quadzen.crash', mock_crash_report)
 
         details, regular_output, _ = logging_run(['imported/w3c/web-platform-tests/', '--reset-results'], tests_included=True, host=host, new_results=True)
         actual_dictionary = json.loads(host.filesystem.read_text_file('/tmp/layout-test-results/full_results.json')[len('ADD_RESULTS('):-2])

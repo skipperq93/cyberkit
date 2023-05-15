@@ -41,10 +41,10 @@
 #import <wtf/Assertions.h>
 #import <wtf/RefPtr.h>
 
-#import <WebKit/WebCoreStatistics.h>
-#import <WebKit/WebDocumentPrivate.h>
-#import <WebKit/WebHTMLViewPrivate.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/CyberCoreStatistics.h>
+#import <CyberKit/WebDocumentPrivate.h>
+#import <CyberKit/WebHTMLViewPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 
 @interface WebView ()
 - (BOOL)_flushCompositingChanges;

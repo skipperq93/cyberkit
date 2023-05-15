@@ -344,7 +344,7 @@ No pre-PR checks to run""")
     def test_github(self):
         with OutputCapture(level=logging.INFO) as captured, mocks.remote.GitHub() as remote, mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn(), patch('webkitbugspy.Tracker._trackers', []):
 
             repo.staged['added.txt'] = 'added'
@@ -358,7 +358,7 @@ No pre-PR checks to run""")
             captured.stdout.getvalue(),
             "Created the local development branch 'eng/pr-branch'\n"
             "Created 'PR 1 | [Testing] Creating commits'!\n"
-            "https://github.example.com/WebKit/WebKit/pull/1\n",
+            "https://github.example.com/CyberKit/CyberKit/pull/1\n",
         )
         self.assertEqual(captured.stderr.getvalue(), '')
         log = captured.root.log.getvalue().splitlines()
@@ -372,7 +372,7 @@ No pre-PR checks to run""")
                 'No pre-PR checks to run',
                 'Checking if PR already exists...',
                 'PR not found.',
-                "Updating 'main' on 'https://github.example.com/Contributor/WebKit'",
+                "Updating 'main' on 'https://github.example.com/Contributor/CyberKit'",
                 "Pushing 'eng/pr-branch' to 'fork'...",
                 "Creating pull-request for 'eng/pr-branch'...",
             ],
@@ -381,7 +381,7 @@ No pre-PR checks to run""")
     def test_github_draft(self):
         with OutputCapture(level=logging.INFO) as captured, mocks.remote.GitHub() as remote, mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn(), patch('webkitbugspy.Tracker._trackers', []):
 
             repo.staged['added.txt'] = 'added'
@@ -395,7 +395,7 @@ No pre-PR checks to run""")
             captured.stdout.getvalue(),
             "Created the local development branch 'eng/pr-branch'\n"
             "Created 'PR 1 | [Testing] Creating commits'!\n"
-            "https://github.example.com/WebKit/WebKit/pull/1\n",
+            "https://github.example.com/CyberKit/CyberKit/pull/1\n",
         )
         self.assertEqual(captured.stderr.getvalue(), '')
         log = captured.root.log.getvalue().splitlines()
@@ -409,7 +409,7 @@ No pre-PR checks to run""")
                 'No pre-PR checks to run',
                 'Checking if PR already exists...',
                 'PR not found.',
-                "Updating 'main' on 'https://github.example.com/Contributor/WebKit'",
+                "Updating 'main' on 'https://github.example.com/Contributor/CyberKit'",
                 "Pushing 'eng/pr-branch' to 'fork'...",
                 "Creating pull-request for 'eng/pr-branch'...",
             ],
@@ -420,7 +420,7 @@ No pre-PR checks to run""")
             'merging-blocked': dict(color='c005E5', description='Applied to prevent a change from being merged'),
         }) as remote, mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn(), patch('webkitbugspy.Tracker._trackers', []):
             with OutputCapture():
                 repo.staged['added.txt'] = 'added'
@@ -445,7 +445,7 @@ No pre-PR checks to run""")
         self.assertEqual(
             captured.stdout.getvalue(),
             "Updated 'PR 1 | [Testing] Amending commits'!\n"
-            "https://github.example.com/WebKit/WebKit/pull/1\n",
+            "https://github.example.com/CyberKit/CyberKit/pull/1\n",
         )
         self.assertEqual(captured.stderr.getvalue(), '')
         log = captured.root.log.getvalue().splitlines()
@@ -461,19 +461,19 @@ No pre-PR checks to run""")
                 'PR #1 found.',
                 'Checking PR labels for active labels...',
                 "Removing 'merging-blocked' from PR #1...",
-                "Updating 'main' on 'https://github.example.com/Contributor/WebKit'",
+                "Updating 'main' on 'https://github.example.com/Contributor/CyberKit'",
                 "Pushing 'eng/pr-branch' to 'fork'...",
                 "Updating pull-request for 'eng/pr-branch'...",
             ],
         )
 
     def test_github_sticky_remote(self):
-        with mocks.remote.GitHub(remote='github.example.com/WebKit/WebKit-security') as remote, mocks.local.Git(
+        with mocks.remote.GitHub(remote='github.example.com/CyberKit/CyberKit-security') as remote, mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
             remotes={
-                'fork': 'https://{}/Contributor/WebKit'.format(remote.hosts[0]),
-                'security': 'https://{}/WebKit/WebKit-security'.format(remote.hosts[0]),
-                'security-fork': 'https://{}/Contributor/WebKit-security'.format(remote.hosts[0]),
+                'fork': 'https://{}/Contributor/CyberKit'.format(remote.hosts[0]),
+                'security': 'https://{}/CyberKit/CyberKit-security'.format(remote.hosts[0]),
+                'security-fork': 'https://{}/Contributor/CyberKit-security'.format(remote.hosts[0]),
             },
         ) as repo, mocks.local.Svn(), patch('webkitbugspy.Tracker._trackers', []):
             with OutputCapture():
@@ -510,12 +510,12 @@ No pre-PR checks to run""")
         )
 
     def test_github_sticky_remote_prompt(self):
-        with mocks.remote.GitHub(remote='github.example.com/WebKit/WebKit-security') as remote, mocks.local.Git(
+        with mocks.remote.GitHub(remote='github.example.com/CyberKit/CyberKit-security') as remote, mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
             remotes={
-                'fork': 'https://{}/Contributor/WebKit'.format(remote.hosts[0]),
-                'security': 'https://{}/WebKit/WebKit-security'.format(remote.hosts[0]),
-                'security-fork': 'https://{}/Contributor/WebKit-security'.format(remote.hosts[0]),
+                'fork': 'https://{}/Contributor/CyberKit'.format(remote.hosts[0]),
+                'security': 'https://{}/CyberKit/CyberKit-security'.format(remote.hosts[0]),
+                'security-fork': 'https://{}/Contributor/CyberKit-security'.format(remote.hosts[0]),
             },
         ) as repo, mocks.local.Svn(), patch('webkitbugspy.Tracker._trackers', []):
             with OutputCapture():
@@ -542,7 +542,7 @@ No pre-PR checks to run""")
             ": \n"
             "Making the PR against the 'security' remote\n"
             "Updated 'PR 1 | [Testing] Amending commits'!\n"
-            "https://github.example.com/WebKit/WebKit-security/pull/1\n",
+            "https://github.example.com/CyberKit/CyberKit-security/pull/1\n",
         )
         self.assertEqual(captured.stderr.getvalue(), '')
         log = captured.root.log.getvalue().splitlines()
@@ -557,7 +557,7 @@ No pre-PR checks to run""")
                 'Checking if PR already exists...',
                 'PR #1 found.',
                 'Checking PR labels for active labels...',
-                "Updating 'main' on 'https://github.example.com/Contributor/WebKit-security'",
+                "Updating 'main' on 'https://github.example.com/Contributor/CyberKit-security'",
                 "Pushing 'eng/pr-branch' to 'security-fork'...",
                 "Updating pull-request for 'eng/pr-branch'...",
             ],
@@ -566,7 +566,7 @@ No pre-PR checks to run""")
     def test_github_append(self):
         with mocks.remote.GitHub() as remote, mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn(), patch('webkitbugspy.Tracker._trackers', []):
             with OutputCapture():
                 repo.staged['added.txt'] = 'added'
@@ -585,7 +585,7 @@ No pre-PR checks to run""")
         self.assertEqual(
             captured.stdout.getvalue(),
             "Updated 'PR 1 | [Testing] Creating commits'!\n"
-            "https://github.example.com/WebKit/WebKit/pull/1\n",
+            "https://github.example.com/CyberKit/CyberKit/pull/1\n",
         )
         self.assertEqual(captured.stderr.getvalue(), '')
         log = captured.root.log.getvalue().splitlines()
@@ -600,7 +600,7 @@ No pre-PR checks to run""")
                 'Checking if PR already exists...',
                 'PR #1 found.',
                 'Checking PR labels for active labels...',
-                "Updating 'main' on 'https://github.example.com/Contributor/WebKit'",
+                "Updating 'main' on 'https://github.example.com/Contributor/CyberKit'",
                 "Pushing 'eng/pr-branch' to 'fork'...",
                 "Updating pull-request for 'eng/pr-branch'...",
             ],
@@ -609,7 +609,7 @@ No pre-PR checks to run""")
     def test_github_reopen(self):
         with mocks.remote.GitHub() as remote, mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn(), patch('webkitbugspy.Tracker._trackers', []):
             with OutputCapture():
                 repo.staged['added.txt'] = 'added'
@@ -635,7 +635,7 @@ No pre-PR checks to run""")
             "'eng/pr-branch' is already associated with 'PR 1 | [Testing] Creating commits', which is closed.\n"
             'Would you like to create a new pull-request? (Yes/[No]): \n'
             "Updated 'PR 1 | [Testing] Amending commits'!\n"
-            "https://github.example.com/WebKit/WebKit/pull/1\n",
+            "https://github.example.com/CyberKit/CyberKit/pull/1\n",
         )
         self.assertEqual(captured.stderr.getvalue(), '')
         log = captured.root.log.getvalue().splitlines()
@@ -650,7 +650,7 @@ No pre-PR checks to run""")
                 'Checking if PR already exists...',
                 'PR #1 found.',
                 'Checking PR labels for active labels...',
-                "Updating 'main' on 'https://github.example.com/Contributor/WebKit'",
+                "Updating 'main' on 'https://github.example.com/Contributor/CyberKit'",
                 "Pushing 'eng/pr-branch' to 'fork'...",
                 "Updating pull-request for 'eng/pr-branch'...",
             ],
@@ -667,7 +667,7 @@ No pre-PR checks to run""")
                 'webkitbugspy.Tracker._trackers', [bugzilla.Tracker(self.BUGZILLA)],
         ), mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn():
 
             repo.commits['eng/pr-branch'] = [
@@ -689,17 +689,17 @@ No pre-PR checks to run""")
 
             self.assertEqual(
                 Tracker.instance().issue(1).comments[-1].content,
-                'Pull request: https://github.example.com/WebKit/WebKit/pull/1',
+                'Pull request: https://github.example.com/CyberKit/CyberKit/pull/1',
             )
-            gh_issue = github.Tracker('https://github.example.com/WebKit/WebKit').issue(1)
-            self.assertEqual(gh_issue.project, 'WebKit')
+            gh_issue = github.Tracker('https://github.example.com/CyberKit/CyberKit').issue(1)
+            self.assertEqual(gh_issue.project, 'CyberKit')
             self.assertEqual(gh_issue.component, 'Text')
 
         self.assertEqual(
             captured.stdout.getvalue(),
             "Created 'PR 1 | [Testing] Existing commit'!\n"
             'Posted pull request link to https://bugs.example.com/show_bug.cgi?id=1\n'
-            'https://github.example.com/WebKit/WebKit/pull/1\n',
+            'https://github.example.com/CyberKit/CyberKit/pull/1\n',
         )
         self.assertEqual(captured.stderr.getvalue(), '')
         log = captured.root.log.getvalue().splitlines()
@@ -713,7 +713,7 @@ No pre-PR checks to run""")
                 'No pre-PR checks to run',
                 'Checking if PR already exists...',
                 'PR not found.',
-                "Updating 'main' on 'https://github.example.com/Contributor/WebKit'",
+                "Updating 'main' on 'https://github.example.com/Contributor/CyberKit'",
                 "Pushing 'eng/pr-branch' to 'fork'...",
                 "Creating pull-request for 'eng/pr-branch'...",
                 'Checking issue assignee...',
@@ -735,7 +735,7 @@ No pre-PR checks to run""")
             'webkitbugspy.Tracker._trackers', [bugzilla.Tracker(self.BUGZILLA)],
         ), mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn():
             repo.staged['added.txt'] = 'added'
             self.assertEqual(0, program.main(
@@ -745,10 +745,10 @@ No pre-PR checks to run""")
 
             self.assertEqual(
                 Tracker.instance().issue(1).comments[-1].content,
-                'Pull request: https://github.example.com/WebKit/WebKit/pull/1',
+                'Pull request: https://github.example.com/CyberKit/CyberKit/pull/1',
             )
-            gh_issue = github.Tracker('https://github.example.com/WebKit/WebKit').issue(1)
-            self.assertEqual(gh_issue.project, 'WebKit')
+            gh_issue = github.Tracker('https://github.example.com/CyberKit/CyberKit').issue(1)
+            self.assertEqual(gh_issue.project, 'CyberKit')
             self.assertEqual(gh_issue.component, 'Text')
 
         self.assertEqual(
@@ -756,7 +756,7 @@ No pre-PR checks to run""")
             "Created the local development branch 'eng/Example-issue-1'\n"
             "Created 'PR 1 | Example issue 1'!\n"
             "Posted pull request link to https://bugs.example.com/show_bug.cgi?id=1\n"
-            "https://github.example.com/WebKit/WebKit/pull/1\n",
+            "https://github.example.com/CyberKit/CyberKit/pull/1\n",
         )
         self.assertEqual(captured.stderr.getvalue(), '')
         log = captured.root.log.getvalue().splitlines()
@@ -770,7 +770,7 @@ No pre-PR checks to run""")
                 'No pre-PR checks to run',
                 'Checking if PR already exists...',
                 'PR not found.',
-                "Updating 'main' on 'https://github.example.com/Contributor/WebKit'",
+                "Updating 'main' on 'https://github.example.com/Contributor/CyberKit'",
                 "Pushing 'eng/Example-issue-1' to 'fork'...",
                 "Creating pull-request for 'eng/Example-issue-1'...",
                 'Checking issue assignee...',
@@ -792,7 +792,7 @@ No pre-PR checks to run""")
                 'webkitbugspy.Tracker._trackers', [bugzilla.Tracker(self.BUGZILLA)],
         ), mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn():
 
             repo.commits['main'].append(Commit(
@@ -832,7 +832,7 @@ No pre-PR checks to run""")
                 'webkitbugspy.Tracker._trackers', [bugzilla.Tracker(self.BUGZILLA, redact={'.*': True})],
         ), mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn(), MockTerminal.input('y'):
 
             repo.staged['added.txt'] = 'added'
@@ -843,10 +843,10 @@ No pre-PR checks to run""")
 
             self.assertEqual(
                 Tracker.instance().issue(1).comments[-1].content,
-                'Pull request: https://github.example.com/WebKit/WebKit/pull/1',
+                'Pull request: https://github.example.com/CyberKit/CyberKit/pull/1',
             )
-            gh_issue = github.Tracker('https://github.example.com/WebKit/WebKit').issue(1)
-            self.assertEqual(gh_issue.project, 'WebKit')
+            gh_issue = github.Tracker('https://github.example.com/CyberKit/CyberKit').issue(1)
+            self.assertEqual(gh_issue.project, 'CyberKit')
             self.assertEqual(gh_issue.component, 'Text')
 
         self.assertEqual(
@@ -854,7 +854,7 @@ No pre-PR checks to run""")
             "Created the local development branch 'eng/1'\n"
             "Created 'PR 1 | Example issue 1'!\n"
             "Posted pull request link to https://bugs.example.com/show_bug.cgi?id=1\n"
-            "https://github.example.com/WebKit/WebKit/pull/1\n",
+            "https://github.example.com/CyberKit/CyberKit/pull/1\n",
         )
         self.assertEqual(captured.stderr.getvalue(), '')
         log = captured.root.log.getvalue().splitlines()
@@ -868,7 +868,7 @@ No pre-PR checks to run""")
                 'No pre-PR checks to run',
                 'Checking if PR already exists...',
                 'PR not found.',
-                "Updating 'main' on 'https://github.example.com/Contributor/WebKit'",
+                "Updating 'main' on 'https://github.example.com/Contributor/CyberKit'",
                 "Pushing 'eng/1' to 'fork'...",
                 "Creating pull-request for 'eng/1'...",
                 'Checking issue assignee...',
@@ -889,7 +889,7 @@ No pre-PR checks to run""")
                 'webkitbugspy.Tracker._trackers', [bugzilla.Tracker(self.BUGZILLA, redact={'.*': True})],
         ), mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn():
 
             repo.staged['added.txt'] = 'added'
@@ -934,7 +934,7 @@ No pre-PR checks to run""")
             'webkitbugspy.Tracker._trackers', [bugzilla.Tracker(self.BUGZILLA, redact={'component:Text': True})]
         ), mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn(), MockTerminal.input('y'):
 
             repo.commits['eng/pr-branch'] = [
@@ -994,7 +994,7 @@ No pre-PR checks to run""")
             )]
         ), mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn():
 
             repo.commits['eng/pr-branch'] = [
@@ -1017,10 +1017,10 @@ No pre-PR checks to run""")
 
             self.assertEqual(
                 Tracker.instance().issue(2).comments[-1].content,
-                'Pull request: https://github.example.com/WebKit/WebKit/pull/1',
+                'Pull request: https://github.example.com/CyberKit/CyberKit/pull/1',
             )
-            gh_issue = github.Tracker('https://github.example.com/WebKit/WebKit').issue(1)
-            self.assertEqual(gh_issue.project, 'WebKit')
+            gh_issue = github.Tracker('https://github.example.com/CyberKit/CyberKit').issue(1)
+            self.assertEqual(gh_issue.project, 'CyberKit')
             self.assertEqual(gh_issue.component, 'Scrolling')
 
         self.maxDiff = None
@@ -1030,7 +1030,7 @@ No pre-PR checks to run""")
             "https://bugs.example.com/show_bug.cgi?id=1 matches 'component:Text' and is exempt from redaction\n"
             "Created 'PR 1 | [Testing] Existing commit'!\n"
             "Posted pull request link to https://bugs.example.com/show_bug.cgi?id=2\n"
-            "https://github.example.com/WebKit/WebKit/pull/1\n",
+            "https://github.example.com/CyberKit/CyberKit/pull/1\n",
         )
         self.assertEqual(
             captured.stderr.getvalue(),
@@ -1048,7 +1048,7 @@ No pre-PR checks to run""")
                 'No pre-PR checks to run',
                 'Checking if PR already exists...',
                 'PR not found.',
-                "Updating 'main' on 'https://github.example.com/Contributor/WebKit'",
+                "Updating 'main' on 'https://github.example.com/Contributor/CyberKit'",
                 "Pushing 'eng/pr-branch' to 'fork'...",
                 "Creating pull-request for 'eng/pr-branch'...",
                 'Checking issue assignee...',
@@ -1069,7 +1069,7 @@ No pre-PR checks to run""")
                 'webkitbugspy.Tracker._trackers', [bugzilla.Tracker(self.BUGZILLA)],
         ), mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn():
 
             Tracker.instance().issue(1).close(why='Looks like we will not get to this')
@@ -1092,14 +1092,14 @@ No pre-PR checks to run""")
 
             self.assertEqual(
                 Tracker.instance().issue(1).comments[-1].content,
-                'Re-opening for pull request https://github.example.com/WebKit/WebKit/pull/1',
+                'Re-opening for pull request https://github.example.com/CyberKit/CyberKit/pull/1',
             )
 
         self.assertEqual(
             captured.stdout.getvalue(),
             "Created 'PR 1 | [Testing] Existing commit'!\n"
             'Posted pull request link to https://bugs.example.com/show_bug.cgi?id=1\n'
-            'https://github.example.com/WebKit/WebKit/pull/1\n',
+            'https://github.example.com/CyberKit/CyberKit/pull/1\n',
         )
         self.assertEqual(captured.stderr.getvalue(), '')
         log = captured.root.log.getvalue().splitlines()
@@ -1113,7 +1113,7 @@ No pre-PR checks to run""")
                 'No pre-PR checks to run',
                 'Checking if PR already exists...',
                 'PR not found.',
-                "Updating 'main' on 'https://github.example.com/Contributor/WebKit'",
+                "Updating 'main' on 'https://github.example.com/Contributor/CyberKit'",
                 "Pushing 'eng/pr-branch' to 'fork'...",
                 "Creating pull-request for 'eng/pr-branch'...",
                 'Checking issue assignee...',
@@ -1133,12 +1133,12 @@ No pre-PR checks to run""")
             ),
         ), bmocks.Radar(issues=bmocks.ISSUES), patch(
             'webkitbugspy.Tracker._trackers', [
-                bugzilla.Tracker(self.BUGZILLA, radar_importer=bmocks.USERS['Radar WebKit Bug Importer']),
+                bugzilla.Tracker(self.BUGZILLA, radar_importer=bmocks.USERS['Radar CyberKit Bug Importer']),
                 radar.Tracker(),
             ],
         ), mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn():
 
             repo.commits['eng/pr-branch'] = [
@@ -1164,17 +1164,17 @@ No pre-PR checks to run""")
             )
             self.assertEqual(
                 Tracker.instance().issue(1).comments[-1].content,
-                'Pull request: https://github.example.com/WebKit/WebKit/pull/1',
+                'Pull request: https://github.example.com/CyberKit/CyberKit/pull/1',
             )
-            gh_issue = github.Tracker('https://github.example.com/WebKit/WebKit').issue(1)
-            self.assertEqual(gh_issue.project, 'WebKit')
+            gh_issue = github.Tracker('https://github.example.com/CyberKit/CyberKit').issue(1)
+            self.assertEqual(gh_issue.project, 'CyberKit')
             self.assertEqual(gh_issue.component, 'Text')
 
         self.assertEqual(
             captured.stdout.getvalue(),
             "Created 'PR 1 | [Testing] Existing commit'!\n"
             'Posted pull request link to https://bugs.example.com/show_bug.cgi?id=1\n'
-            'https://github.example.com/WebKit/WebKit/pull/1\n',
+            'https://github.example.com/CyberKit/CyberKit/pull/1\n',
         )
         self.assertEqual(captured.stderr.getvalue(), '')
         log = captured.root.log.getvalue().splitlines()
@@ -1186,10 +1186,10 @@ No pre-PR checks to run""")
                 "Rebased 'eng/pr-branch' on 'main!'",
                 'Running pre-PR checks...',
                 'No pre-PR checks to run',
-                'CCing Radar WebKit Bug Importer',
+                'CCing Radar CyberKit Bug Importer',
                 'Checking if PR already exists...',
                 'PR not found.',
-                "Updating 'main' on 'https://github.example.com/Contributor/WebKit'",
+                "Updating 'main' on 'https://github.example.com/Contributor/CyberKit'",
                 "Pushing 'eng/pr-branch' to 'fork'...",
                 "Creating pull-request for 'eng/pr-branch'...",
                 'Checking issue assignee...',
@@ -1209,12 +1209,12 @@ No pre-PR checks to run""")
             ),
         ), bmocks.Radar(issues=bmocks.ISSUES), patch(
             'webkitbugspy.Tracker._trackers', [
-                bugzilla.Tracker(self.BUGZILLA, radar_importer=bmocks.USERS['Radar WebKit Bug Importer']),
+                bugzilla.Tracker(self.BUGZILLA, radar_importer=bmocks.USERS['Radar CyberKit Bug Importer']),
                 radar.Tracker(),
             ],
         ), mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn():
             project_config = os.path.join(self.path, 'metadata', local.Git.GIT_CONFIG_EXTENSION)
             os.mkdir(os.path.dirname(project_config))
@@ -1241,17 +1241,17 @@ No pre-PR checks to run""")
 
             self.assertEqual(
                 Tracker.instance().issue(1).comments[-1].content,
-                'Pull request: https://github.example.com/WebKit/WebKit/pull/1',
+                'Pull request: https://github.example.com/CyberKit/CyberKit/pull/1',
             )
-            gh_issue = github.Tracker('https://github.example.com/WebKit/WebKit').issue(1)
-            self.assertEqual(gh_issue.project, 'WebKit')
+            gh_issue = github.Tracker('https://github.example.com/CyberKit/CyberKit').issue(1)
+            self.assertEqual(gh_issue.project, 'CyberKit')
             self.assertEqual(gh_issue.component, 'Text')
 
         self.assertEqual(
             captured.stdout.getvalue(),
             "Created 'PR 1 | [Testing] Existing commit'!\n"
             'Posted pull request link to https://bugs.example.com/show_bug.cgi?id=1\n'
-            'https://github.example.com/WebKit/WebKit/pull/1\n',
+            'https://github.example.com/CyberKit/CyberKit/pull/1\n',
         )
         self.assertEqual(captured.stderr.getvalue(), '')
         log = captured.root.log.getvalue().splitlines()
@@ -1265,7 +1265,7 @@ No pre-PR checks to run""")
                 'No pre-PR checks to run',
                 'Checking if PR already exists...',
                 'PR not found.',
-                "Updating 'main' on 'https://github.example.com/Contributor/WebKit'",
+                "Updating 'main' on 'https://github.example.com/Contributor/CyberKit'",
                 "Pushing 'eng/pr-branch' to 'fork'...",
                 "Creating pull-request for 'eng/pr-branch'...",
                 'Checking issue assignee...',
@@ -1285,12 +1285,12 @@ No pre-PR checks to run""")
             ),
         ), bmocks.Radar(issues=bmocks.ISSUES), patch(
             'webkitbugspy.Tracker._trackers', [
-                bugzilla.Tracker(self.BUGZILLA, radar_importer=bmocks.USERS['Radar WebKit Bug Importer']),
+                bugzilla.Tracker(self.BUGZILLA, radar_importer=bmocks.USERS['Radar CyberKit Bug Importer']),
                 radar.Tracker(),
             ],
         ), mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn():
             project_config = os.path.join(self.path, 'metadata', local.Git.GIT_CONFIG_EXTENSION)
             os.mkdir(os.path.dirname(project_config))
@@ -1321,17 +1321,17 @@ No pre-PR checks to run""")
             )
             self.assertEqual(
                 Tracker.instance().issue(1).comments[-1].content,
-                'Pull request: https://github.example.com/WebKit/WebKit/pull/1',
+                'Pull request: https://github.example.com/CyberKit/CyberKit/pull/1',
             )
-            gh_issue = github.Tracker('https://github.example.com/WebKit/WebKit').issue(1)
-            self.assertEqual(gh_issue.project, 'WebKit')
+            gh_issue = github.Tracker('https://github.example.com/CyberKit/CyberKit').issue(1)
+            self.assertEqual(gh_issue.project, 'CyberKit')
             self.assertEqual(gh_issue.component, 'Text')
 
         self.assertEqual(
             captured.stdout.getvalue(),
             "Created 'PR 1 | [Testing] Existing commit'!\n"
             'Posted pull request link to https://bugs.example.com/show_bug.cgi?id=1\n'
-            'https://github.example.com/WebKit/WebKit/pull/1\n',
+            'https://github.example.com/CyberKit/CyberKit/pull/1\n',
         )
         self.assertEqual(captured.stderr.getvalue(), '')
         log = captured.root.log.getvalue().splitlines()
@@ -1343,10 +1343,10 @@ No pre-PR checks to run""")
                 "Rebased 'eng/pr-branch' on 'main!'",
                 'Running pre-PR checks...',
                 'No pre-PR checks to run',
-                'CCing Radar WebKit Bug Importer',
+                'CCing Radar CyberKit Bug Importer',
                 'Checking if PR already exists...',
                 'PR not found.',
-                "Updating 'main' on 'https://github.example.com/Contributor/WebKit'",
+                "Updating 'main' on 'https://github.example.com/Contributor/CyberKit'",
                 "Pushing 'eng/pr-branch' to 'fork'...",
                 "Creating pull-request for 'eng/pr-branch'...",
                 'Checking issue assignee...',
@@ -1366,12 +1366,12 @@ No pre-PR checks to run""")
             ),
         ), bmocks.Radar(issues=bmocks.ISSUES), patch(
             'webkitbugspy.Tracker._trackers', [
-                bugzilla.Tracker(self.BUGZILLA, radar_importer=bmocks.USERS['Radar WebKit Bug Importer']),
+                bugzilla.Tracker(self.BUGZILLA, radar_importer=bmocks.USERS['Radar CyberKit Bug Importer']),
                 radar.Tracker(),
             ],
         ), mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn():
             repo.commits['eng/pr-branch'] = [
                 repo.commits[repo.default_branch][-1],
@@ -1392,17 +1392,17 @@ No pre-PR checks to run""")
 
             self.assertEqual(
                 Tracker.instance().issue(1).comments[-1].content,
-                'Pull request: https://github.example.com/WebKit/WebKit/pull/1',
+                'Pull request: https://github.example.com/CyberKit/CyberKit/pull/1',
             )
-            gh_issue = github.Tracker('https://github.example.com/WebKit/WebKit').issue(1)
-            self.assertEqual(gh_issue.project, 'WebKit')
+            gh_issue = github.Tracker('https://github.example.com/CyberKit/CyberKit').issue(1)
+            self.assertEqual(gh_issue.project, 'CyberKit')
             self.assertEqual(gh_issue.component, 'Text')
 
         self.assertEqual(
             captured.stdout.getvalue(),
             "Created 'PR 1 | [Testing] Existing commit'!\n"
             'Posted pull request link to https://bugs.example.com/show_bug.cgi?id=1\n'
-            'https://github.example.com/WebKit/WebKit/pull/1\n',
+            'https://github.example.com/CyberKit/CyberKit/pull/1\n',
         )
         self.assertEqual(captured.stderr.getvalue(), '')
         log = captured.root.log.getvalue().splitlines()
@@ -1416,7 +1416,7 @@ No pre-PR checks to run""")
                 'No pre-PR checks to run',
                 'Checking if PR already exists...',
                 'PR not found.',
-                "Updating 'main' on 'https://github.example.com/Contributor/WebKit'",
+                "Updating 'main' on 'https://github.example.com/Contributor/CyberKit'",
                 "Pushing 'eng/pr-branch' to 'fork'...",
                 "Creating pull-request for 'eng/pr-branch'...",
                 'Checking issue assignee...',
@@ -1729,7 +1729,7 @@ No pre-PR checks to run""")
 
 
 class TestNetworkPullRequestGitHub(unittest.TestCase):
-    remote = 'https://github.example.com/WebKit/WebKit'
+    remote = 'https://github.example.com/CyberKit/CyberKit'
 
     @classmethod
     def webserver(cls):

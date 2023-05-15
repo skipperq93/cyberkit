@@ -18,10 +18,10 @@ function sampleiOSConfig()
         'buildRequestArgument': 'build_request_id',
         'repositoryGroups': {
             'ios-svn-webkit': {
-                'repositories': {'WebKit': {}, 'iOS': {}},
+                'repositories': {'CyberKit': {}, 'iOS': {}},
                 'testProperties': {
                     'desired_image': {'revision': 'iOS'},
-                    'opensource': {'revision': 'WebKit'},
+                    'opensource': {'revision': 'CyberKit'},
                 }
             }
         },
@@ -142,10 +142,10 @@ function smallConfiguration()
         'buildRequestArgument': 'id',
         'repositoryGroups': {
             'ios-svn-webkit': {
-                'repositories': {'iOS': {}, 'WebKit': {}},
+                'repositories': {'iOS': {}, 'CyberKit': {}},
                 'testProperties': {
                     'os': {'revision': 'iOS'},
-                    'wk': {'revision': 'WebKit'}
+                    'wk': {'revision': 'CyberKit'}
                 }
             }
         },
@@ -176,10 +176,10 @@ function smallConfigurationWithCustomRepetitionTypes(supportedRepetitionTypes)
         'buildRequestArgument': 'id',
         'repositoryGroups': {
             'ios-svn-webkit': {
-                'repositories': {'iOS': {}, 'WebKit': {}},
+                'repositories': {'iOS': {}, 'CyberKit': {}},
                 'testProperties': {
                     'os': {'revision': 'iOS'},
-                    'wk': {'revision': 'WebKit'}
+                    'wk': {'revision': 'CyberKit'}
                 }
             }
         },
@@ -509,7 +509,7 @@ describe('BuildbotSyncer', () => {
             }, /Build properties "some" specifies a non-string value of type "object"/);
             assert.throws(() => {
                 const config = smallConfiguration();
-                config.types[firstType].properties = {'some': {'revision': 'WebKit'}};
+                config.types[firstType].properties = {'some': {'revision': 'CyberKit'}};
                 BuildbotSyncer._loadConfig(RemoteAPI, config, builderNameToIDMap());
             }, /Build properties "some" specifies a non-string value of type "object"/);
             assert.throws(() => {
@@ -538,7 +538,7 @@ describe('BuildbotSyncer', () => {
             }, /Build properties "some" specifies a non-string value of type "object"/);
             assert.throws(() => {
                 const config = smallConfiguration();
-                config.builders[firstBuilder].properties = {'some': {'revision': 'WebKit'}};
+                config.builders[firstBuilder].properties = {'some': {'revision': 'CyberKit'}};
                 BuildbotSyncer._loadConfig(RemoteAPI, config, builderNameToIDMap());
             }, /Build properties "some" specifies a non-string value of type "object"/);
             assert.throws(() => {
@@ -697,20 +697,20 @@ describe('BuildbotSyncer', () => {
         it('should throw when a repository group specifies a repository with a non-dictionary value', () => {
             assert.throws(() => {
                 const config = smallConfiguration();
-                config.repositoryGroups = {'some-group': {repositories: {'WebKit': 1}}};
+                config.repositoryGroups = {'some-group': {repositories: {'CyberKit': 1}}};
                 BuildbotSyncer._loadConfig(MockRemoteAPI, config, builderNameToIDMap());
-            }, /"WebKit" specifies a non-dictionary value/);
+            }, /"CyberKit" specifies a non-dictionary value/);
         });
 
         it('should throw when the description of a repository group is not a string', () => {
             assert.throws(() => {
                 const config = smallConfiguration();
-                config.repositoryGroups = {'some-group': {repositories: {'WebKit': {}}, description: 1}};
+                config.repositoryGroups = {'some-group': {repositories: {'CyberKit': {}}, description: 1}};
                 BuildbotSyncer._loadConfig(MockRemoteAPI, config, builderNameToIDMap());
             }, /Repository group "some-group" have an invalid description/);
             assert.throws(() => {
                 const config = smallConfiguration();
-                config.repositoryGroups = {'some-group': {repositories: {'WebKit': {}}, description: [1, 2]}};
+                config.repositoryGroups = {'some-group': {repositories: {'CyberKit': {}}, description: [1, 2]}};
                 BuildbotSyncer._loadConfig(MockRemoteAPI, config, builderNameToIDMap());
             }, /Repository group "some-group" have an invalid description/);
         });
@@ -718,12 +718,12 @@ describe('BuildbotSyncer', () => {
         it('should throw when a repository group does not specify a dictionary of properties', () => {
             assert.throws(() => {
                 const config = smallConfiguration();
-                config.repositoryGroups = {'some-group': {repositories: {'WebKit': {}}, testProperties: 1}};
+                config.repositoryGroups = {'some-group': {repositories: {'CyberKit': {}}, testProperties: 1}};
                 BuildbotSyncer._loadConfig(MockRemoteAPI, config, builderNameToIDMap());
             }, /Repository group "some-group" specifies the test configurations with an invalid type/);
             assert.throws(() => {
                 const config = smallConfiguration();
-                config.repositoryGroups = {'some-group': {repositories: {'WebKit': {}}, testProperties: 'hello'}};
+                config.repositoryGroups = {'some-group': {repositories: {'CyberKit': {}}, testProperties: 'hello'}};
                 BuildbotSyncer._loadConfig(MockRemoteAPI, config, builderNameToIDMap());
             }, /Repository group "some-group" specifies the test configurations with an invalid type/);
         });
@@ -731,7 +731,7 @@ describe('BuildbotSyncer', () => {
         it('should throw when a repository group refers to a non-existent repository in the properties dictionary', () => {
             assert.throws(() => {
                 const config = smallConfiguration();
-                config.repositoryGroups = {'some-group': {repositories: {'WebKit': {}}, testProperties: {'wk': {revision: 'InvalidRepository'}}}};
+                config.repositoryGroups = {'some-group': {repositories: {'CyberKit': {}}, testProperties: {'wk': {revision: 'InvalidRepository'}}}};
                 BuildbotSyncer._loadConfig(MockRemoteAPI, config, builderNameToIDMap());
             }, /Repository group "some-group" an invalid repository "InvalidRepository"/);
         });
@@ -739,14 +739,14 @@ describe('BuildbotSyncer', () => {
         it('should throw when a repository group refers to a repository which is not listed in the list of repositories', () => {
             assert.throws(() => {
                 const config = smallConfiguration();
-                config.repositoryGroups = {'some-group': {repositories: {'WebKit': {}}, testProperties: {'os': {revision: 'iOS'}}}};
+                config.repositoryGroups = {'some-group': {repositories: {'CyberKit': {}}, testProperties: {'os': {revision: 'iOS'}}}};
                 BuildbotSyncer._loadConfig(MockRemoteAPI, config, builderNameToIDMap());
             }, /Repository group "some-group" an invalid repository "iOS"/);
             assert.throws(() => {
                 const config = smallConfiguration();
                 config.repositoryGroups = {'some-group': {
-                    repositories: {'WebKit': {acceptsPatch: true}},
-                    testProperties: {'wk': {revision: 'WebKit'}, 'install-roots': {'roots': {}}},
+                    repositories: {'CyberKit': {acceptsPatch: true}},
+                    testProperties: {'wk': {revision: 'CyberKit'}, 'install-roots': {'roots': {}}},
                     buildProperties: {'os': {revision: 'iOS'}},
                     acceptsRoots: true}};
                 BuildbotSyncer._loadConfig(MockRemoteAPI, config, builderNameToIDMap());
@@ -757,9 +757,9 @@ describe('BuildbotSyncer', () => {
             assert.throws(() => {
                 const config = smallConfiguration();
                 config.repositoryGroups = {'some-group': {
-                    repositories: {'WebKit': {acceptsPatch: true}, 'iOS': {}},
-                    testProperties: {'wk': {revision: 'WebKit'}, 'ios': {revision: 'iOS'}, 'install-roots': {'roots': {}}},
-                    buildProperties: {'wk': {revision: 'WebKit'}, 'ios': {revision: 'iOS'}, 'wk-patch': {patch: 'iOS'}},
+                    repositories: {'CyberKit': {acceptsPatch: true}, 'iOS': {}},
+                    testProperties: {'wk': {revision: 'CyberKit'}, 'ios': {revision: 'iOS'}, 'install-roots': {'roots': {}}},
+                    buildProperties: {'wk': {revision: 'CyberKit'}, 'ios': {revision: 'iOS'}, 'wk-patch': {patch: 'iOS'}},
                     acceptsRoots: true}};
                 BuildbotSyncer._loadConfig(MockRemoteAPI, config, builderNameToIDMap());
             }, /Repository group "some-group" specifies a patch for "iOS" but it does not accept a patch/);
@@ -769,25 +769,25 @@ describe('BuildbotSyncer', () => {
             assert.throws(() => {
                 const config = smallConfiguration();
                 config.repositoryGroups = {'some-group': {
-                    repositories: {'WebKit': {acceptsPatch: true}},
-                    testProperties: {'wk': {revision: 'WebKit'}, 'install-roots': {'roots': {}}},
-                    buildProperties: {'wk-patch': {patch: 'WebKit'}},
+                    repositories: {'CyberKit': {acceptsPatch: true}},
+                    testProperties: {'wk': {revision: 'CyberKit'}, 'install-roots': {'roots': {}}},
+                    buildProperties: {'wk-patch': {patch: 'CyberKit'}},
                     acceptsRoots: true}};
                 BuildbotSyncer._loadConfig(MockRemoteAPI, config, builderNameToIDMap());
-            }, /Repository group "some-group" specifies a patch for "WebKit" but does not specify a revision/);
+            }, /Repository group "some-group" specifies a patch for "CyberKit" but does not specify a revision/);
         });
 
         it('should throw when a repository group does not use a listed repository', () => {
             assert.throws(() => {
                 const config = smallConfiguration();
-                config.repositoryGroups = {'some-group': {'repositories': {'WebKit': {}}, testProperties: {}}};
+                config.repositoryGroups = {'some-group': {'repositories': {'CyberKit': {}}, testProperties: {}}};
                 BuildbotSyncer._loadConfig(MockRemoteAPI, config, builderNameToIDMap());
             }, /Repository group "some-group" does not use some of the repositories listed in testing/);
             assert.throws(() => {
                 const config = smallConfiguration();
                 config.repositoryGroups = {'some-group': {
-                    repositories: {'WebKit': {acceptsPatch: true}},
-                    testProperties: {'wk': {revision: 'WebKit'}, 'install-roots': {'roots': {}}},
+                    repositories: {'CyberKit': {acceptsPatch: true}},
+                    testProperties: {'wk': {revision: 'CyberKit'}, 'install-roots': {'roots': {}}},
                     buildProperties: {},
                     acceptsRoots: true}};
                 BuildbotSyncer._loadConfig(MockRemoteAPI, config, builderNameToIDMap());
@@ -797,12 +797,12 @@ describe('BuildbotSyncer', () => {
         it('should throw when a repository group specifies non-boolean value to acceptsRoots', () => {
             assert.throws(() => {
                 const config = smallConfiguration();
-                config.repositoryGroups = {'some-group': {'repositories': {'WebKit': {}}, 'testProperties': {'webkit': {'revision': 'WebKit'}}, acceptsRoots: 1}};
+                config.repositoryGroups = {'some-group': {'repositories': {'CyberKit': {}}, 'testProperties': {'webkit': {'revision': 'CyberKit'}}, acceptsRoots: 1}};
                 BuildbotSyncer._loadConfig(MockRemoteAPI, config, builderNameToIDMap());
             }, /Repository group "some-group" contains invalid acceptsRoots value:/);
             assert.throws(() => {
                 const config = smallConfiguration();
-                config.repositoryGroups = {'some-group': {'repositories': {'WebKit': {}}, 'testProperties': {'webkit': {'revision': 'WebKit'}}, acceptsRoots: []}};
+                config.repositoryGroups = {'some-group': {'repositories': {'CyberKit': {}}, 'testProperties': {'webkit': {'revision': 'CyberKit'}}, acceptsRoots: []}};
                 BuildbotSyncer._loadConfig(MockRemoteAPI, config, builderNameToIDMap());
             }, /Repository group "some-group" contains invalid acceptsRoots value:/);
         });
@@ -810,32 +810,32 @@ describe('BuildbotSyncer', () => {
         it('should throw when a repository group specifies non-boolean value to acceptsPatch', () => {
             assert.throws(() => {
                 const config = smallConfiguration();
-                config.repositoryGroups = {'some-group': {'repositories': {'WebKit': {acceptsPatch: 1}}, 'testProperties': {'webkit': {'revision': 'WebKit'}}}};
+                config.repositoryGroups = {'some-group': {'repositories': {'CyberKit': {acceptsPatch: 1}}, 'testProperties': {'webkit': {'revision': 'CyberKit'}}}};
                 BuildbotSyncer._loadConfig(MockRemoteAPI, config, builderNameToIDMap());
-            }, /"WebKit" contains invalid acceptsPatch value:/);
+            }, /"CyberKit" contains invalid acceptsPatch value:/);
             assert.throws(() => {
                 const config = smallConfiguration();
-                config.repositoryGroups = {'some-group': {'repositories': {'WebKit': {acceptsPatch: []}}, 'testProperties': {'webkit': {'revision': 'WebKit'}}}};
+                config.repositoryGroups = {'some-group': {'repositories': {'CyberKit': {acceptsPatch: []}}, 'testProperties': {'webkit': {'revision': 'CyberKit'}}}};
                 BuildbotSyncer._loadConfig(MockRemoteAPI, config, builderNameToIDMap());
-            }, /"WebKit" contains invalid acceptsPatch value:/);
+            }, /"CyberKit" contains invalid acceptsPatch value:/);
         });
 
         it('should throw when a repository group specifies a patch in testProperties', () => {
             assert.throws(() => {
                 const config = smallConfiguration();
-                config.repositoryGroups = {'some-group': {'repositories': {'WebKit': {acceptsPatch: true}},
-                    'testProperties': {'webkit': {'revision': 'WebKit'}, 'webkit-patch': {'patch': 'WebKit'}}}};
+                config.repositoryGroups = {'some-group': {'repositories': {'CyberKit': {acceptsPatch: true}},
+                    'testProperties': {'webkit': {'revision': 'CyberKit'}, 'webkit-patch': {'patch': 'CyberKit'}}}};
                 BuildbotSyncer._loadConfig(MockRemoteAPI, config, builderNameToIDMap());
-            }, /Repository group "some-group" specifies a patch for "WebKit" in the properties for testing/);
+            }, /Repository group "some-group" specifies a patch for "CyberKit" in the properties for testing/);
         });
 
         it('should throw when a repository group specifies roots in buildProperties', () => {
             assert.throws(() => {
                 const config = smallConfiguration();
                 config.repositoryGroups = {'some-group': {
-                    repositories: {'WebKit': {acceptsPatch: true}},
-                    testProperties: {'webkit': {revision: 'WebKit'}, 'install-roots': {'roots': {}}},
-                    buildProperties: {'webkit': {revision: 'WebKit'}, 'patch': {patch: 'WebKit'}, 'install-roots': {roots: {}}},
+                    repositories: {'CyberKit': {acceptsPatch: true}},
+                    testProperties: {'webkit': {revision: 'CyberKit'}, 'install-roots': {'roots': {}}},
+                    buildProperties: {'webkit': {revision: 'CyberKit'}, 'patch': {patch: 'CyberKit'}, 'install-roots': {roots: {}}},
                     acceptsRoots: true}};
                 BuildbotSyncer._loadConfig(MockRemoteAPI, config, builderNameToIDMap());
             }, /Repository group "some-group" specifies roots in the properties for building/);
@@ -845,8 +845,8 @@ describe('BuildbotSyncer', () => {
             assert.throws(() => {
                 const config = smallConfiguration();
                 config.repositoryGroups = {'some-group': {
-                    repositories: {'WebKit': {}},
-                    testProperties: {'webkit': {'revision': 'WebKit'}, 'install-roots': {'roots': {}}}}};
+                    repositories: {'CyberKit': {}},
+                    testProperties: {'webkit': {'revision': 'CyberKit'}, 'install-roots': {'roots': {}}}}};
                 BuildbotSyncer._loadConfig(MockRemoteAPI, config, builderNameToIDMap());
             }, /Repository group "some-group" specifies roots in a property but it does not accept roots/);
         });
@@ -855,9 +855,9 @@ describe('BuildbotSyncer', () => {
             assert.throws(() => {
                 const config = smallConfiguration();
                 config.repositoryGroups = {'some-group': {
-                    repositories: {'WebKit': {acceptsPatch: true}},
-                    testProperties: {'webkit': {revision: 'WebKit'}},
-                    buildProperties: {'webkit': {revision: 'WebKit'}, 'webkit-patch': {patch: 'WebKit'}}}};
+                    repositories: {'CyberKit': {acceptsPatch: true}},
+                    testProperties: {'webkit': {revision: 'CyberKit'}},
+                    buildProperties: {'webkit': {revision: 'CyberKit'}, 'webkit-patch': {patch: 'CyberKit'}}}};
                 BuildbotSyncer._loadConfig(MockRemoteAPI, config, builderNameToIDMap());
             }, /Repository group "some-group" specifies the properties for building but does not accept roots in testing/);
         });
@@ -866,9 +866,9 @@ describe('BuildbotSyncer', () => {
             assert.throws(() => {
                 const config = smallConfiguration();
                 config.repositoryGroups = {'some-group': {
-                    repositories: {'WebKit': {}},
-                    testProperties: {'webkit': {'revision': 'WebKit'}, 'install-roots': {'roots': {}}},
-                    buildProperties: {'webkit': {'revision': 'WebKit'}},
+                    repositories: {'CyberKit': {}},
+                    testProperties: {'webkit': {'revision': 'CyberKit'}, 'install-roots': {'roots': {}}},
+                    buildProperties: {'webkit': {'revision': 'CyberKit'}},
                     acceptsRoots: true}};
                 BuildbotSyncer._loadConfig(MockRemoteAPI, config, builderNameToIDMap());
             }, /Repository group "some-group" specifies the properties for building but does not accept any patches/);
@@ -878,9 +878,9 @@ describe('BuildbotSyncer', () => {
             assert.throws(() => {
                 const config = smallConfiguration();
                 config.repositoryGroups = {'some-group': {
-                    repositories: {'WebKit': {acceptsPatch: true}},
-                    testProperties: {'webkit': {revision: 'WebKit'}},
-                    buildProperties: {'webkit': {revision: 'WebKit'}, 'webkit-patch': {patch: 'WebKit'}},
+                    repositories: {'CyberKit': {acceptsPatch: true}},
+                    testProperties: {'webkit': {revision: 'CyberKit'}},
+                    buildProperties: {'webkit': {revision: 'CyberKit'}, 'webkit-patch': {patch: 'CyberKit'}},
                     acceptsRoots: true}};
                 BuildbotSyncer._loadConfig(MockRemoteAPI, config, builderNameToIDMap());
             }, /Repository group "some-group" accepts roots but does not specify roots in testProperties/);
@@ -925,18 +925,18 @@ describe('BuildbotSyncer', () => {
         it('should resolve "patch"', () => {
             const config = sampleiOSConfig();
             config.repositoryGroups['ios-svn-webkit'] = {
-                'repositories': {'WebKit': {'acceptsPatch': true}, 'Shared': {}, 'iOS': {}},
+                'repositories': {'CyberKit': {'acceptsPatch': true}, 'Shared': {}, 'iOS': {}},
                 'testProperties': {
                     'os': {'revision': 'iOS'},
-                    'webkit': {'revision': 'WebKit'},
+                    'webkit': {'revision': 'CyberKit'},
                     'shared': {'revision': 'Shared'},
                     'roots': {'roots': {}},
                 },
                 'buildProperties': {
-                    'webkit': {'revision': 'WebKit'},
-                    'webkit-patch': {'patch': 'WebKit'},
-                    'checkbox': {'ifRepositorySet': ['WebKit'], 'value': 'build-webkit'},
-                    'build-webkit': {'ifRepositorySet': ['WebKit'], 'value': true},
+                    'webkit': {'revision': 'CyberKit'},
+                    'webkit-patch': {'patch': 'CyberKit'},
+                    'checkbox': {'ifRepositorySet': ['CyberKit'], 'value': 'build-webkit'},
+                    'build-webkit': {'ifRepositorySet': ['CyberKit'], 'value': true},
                     'shared': {'revision': 'Shared'},
                 },
                 'acceptsRoots': true,
@@ -953,10 +953,10 @@ describe('BuildbotSyncer', () => {
         it('should resolve "ifBuilt"', () => {
             const config = sampleiOSConfig();
             config.repositoryGroups['ios-svn-webkit'] = {
-                'repositories': {'WebKit': {}, 'Shared': {}, 'iOS': {}},
+                'repositories': {'CyberKit': {}, 'Shared': {}, 'iOS': {}},
                 'testProperties': {
                     'os': {'revision': 'iOS'},
-                    'webkit': {'revision': 'WebKit'},
+                    'webkit': {'revision': 'CyberKit'},
                     'shared': {'revision': 'Shared'},
                     'roots': {'roots': {}},
                     'test-custom-build': {'ifBuilt': [], 'value': ''},
@@ -992,20 +992,20 @@ describe('BuildbotSyncer', () => {
         it('should set the value for "ifBuilt" if the repository in the list appears', () => {
             const config = sampleiOSConfig();
             config.repositoryGroups['ios-svn-webkit'] = {
-                'repositories': {'WebKit': {'acceptsPatch': true}, 'Shared': {}, 'iOS': {}},
+                'repositories': {'CyberKit': {'acceptsPatch': true}, 'Shared': {}, 'iOS': {}},
                 'testProperties': {
                     'os': {'revision': 'iOS'},
-                    'webkit': {'revision': 'WebKit'},
+                    'webkit': {'revision': 'CyberKit'},
                     'shared': {'revision': 'Shared'},
                     'roots': {'roots': {}},
-                    'checkbox': {'ifBuilt': ['WebKit'], 'value': 'test-webkit'},
-                    'test-webkit': {'ifBuilt': ['WebKit'], 'value': true}
+                    'checkbox': {'ifBuilt': ['CyberKit'], 'value': 'test-webkit'},
+                    'test-webkit': {'ifBuilt': ['CyberKit'], 'value': true}
                 },
                 'buildProperties': {
-                    'webkit': {'revision': 'WebKit'},
-                    'webkit-patch': {'patch': 'WebKit'},
-                    'checkbox': {'ifRepositorySet': ['WebKit'], 'value': 'build-webkit'},
-                    'build-webkit': {'ifRepositorySet': ['WebKit'], 'value': true},
+                    'webkit': {'revision': 'CyberKit'},
+                    'webkit-patch': {'patch': 'CyberKit'},
+                    'checkbox': {'ifRepositorySet': ['CyberKit'], 'value': 'build-webkit'},
+                    'build-webkit': {'ifRepositorySet': ['CyberKit'], 'value': true},
                     'shared': {'revision': 'Shared'},
                 },
                 'acceptsRoots': true,
@@ -1023,21 +1023,21 @@ describe('BuildbotSyncer', () => {
         it('should not set the value for "ifBuilt" if no build for the repository in the list appears', () => {
             const config = sampleiOSConfig();
             config.repositoryGroups['ios-svn-webkit-with-owned-commit'] = {
-                'repositories': {'WebKit': {'acceptsPatch': true}, 'Owner Repository': {}, 'iOS': {}},
+                'repositories': {'CyberKit': {'acceptsPatch': true}, 'Owner Repository': {}, 'iOS': {}},
                 'testProperties': {
                     'os': {'revision': 'iOS'},
-                    'webkit': {'revision': 'WebKit'},
+                    'webkit': {'revision': 'CyberKit'},
                     'owner-repo': {'revision': 'Owner Repository'},
                     'roots': {'roots': {}},
-                    'checkbox': {'ifBuilt': ['WebKit'], 'value': 'test-webkit'},
-                    'test-webkit': {'ifBuilt': ['WebKit'], 'value': true}
+                    'checkbox': {'ifBuilt': ['CyberKit'], 'value': 'test-webkit'},
+                    'test-webkit': {'ifBuilt': ['CyberKit'], 'value': true}
                 },
                 'buildProperties': {
-                    'webkit': {'revision': 'WebKit'},
-                    'webkit-patch': {'patch': 'WebKit'},
+                    'webkit': {'revision': 'CyberKit'},
+                    'webkit-patch': {'patch': 'CyberKit'},
                     'owner-repo': {'revision': 'Owner Repository'},
-                    'checkbox': {'ifRepositorySet': ['WebKit'], 'value': 'build-webkit'},
-                    'build-webkit': {'ifRepositorySet': ['WebKit'], 'value': true},
+                    'checkbox': {'ifRepositorySet': ['CyberKit'], 'value': 'build-webkit'},
+                    'build-webkit': {'ifRepositorySet': ['CyberKit'], 'value': true},
                     'owned-commits': {'ownedRevisions': 'Owner Repository'}
                 },
                 'acceptsRoots': true,
@@ -1056,19 +1056,19 @@ describe('BuildbotSyncer', () => {
         it('should resolve "ifRepositorySet" and "requiresBuild"', () => {
             const config = sampleiOSConfig();
             config.repositoryGroups['ios-svn-webkit-with-owned-commit'] = {
-                'repositories': {'WebKit': {'acceptsPatch': true}, 'Owner Repository': {}, 'iOS': {}},
+                'repositories': {'CyberKit': {'acceptsPatch': true}, 'Owner Repository': {}, 'iOS': {}},
                 'testProperties': {
                     'os': {'revision': 'iOS'},
-                    'webkit': {'revision': 'WebKit'},
+                    'webkit': {'revision': 'CyberKit'},
                     'owner-repo': {'revision': 'Owner Repository'},
                     'roots': {'roots': {}},
                 },
                 'buildProperties': {
-                    'webkit': {'revision': 'WebKit'},
-                    'webkit-patch': {'patch': 'WebKit'},
+                    'webkit': {'revision': 'CyberKit'},
+                    'webkit-patch': {'patch': 'CyberKit'},
                     'owner-repo': {'revision': 'Owner Repository'},
-                    'checkbox': {'ifRepositorySet': ['WebKit'], 'value': 'build-webkit'},
-                    'build-webkit': {'ifRepositorySet': ['WebKit'], 'value': true},
+                    'checkbox': {'ifRepositorySet': ['CyberKit'], 'value': 'build-webkit'},
+                    'build-webkit': {'ifRepositorySet': ['CyberKit'], 'value': true},
                     'owned-commits': {'ownedRevisions': 'Owner Repository'}
                 },
                 'acceptsRoots': true,
@@ -1087,19 +1087,19 @@ describe('BuildbotSyncer', () => {
 
             const config = sampleiOSConfig();
             config.repositoryGroups['ios-svn-webkit-with-owned-commit'] = {
-                'repositories': {'WebKit': {'acceptsPatch': true}, 'Owner Repository': {}, 'iOS': {}},
+                'repositories': {'CyberKit': {'acceptsPatch': true}, 'Owner Repository': {}, 'iOS': {}},
                 'testProperties': {
                     'os': {'revision': 'iOS'},
-                    'webkit': {'revision': 'WebKit'},
+                    'webkit': {'revision': 'CyberKit'},
                     'owner-repo': {'revision': 'Owner Repository'},
                     'roots': {'roots': {}},
                 },
                 'buildProperties': {
-                    'webkit': {'revision': 'WebKit'},
-                    'webkit-patch': {'patch': 'WebKit'},
+                    'webkit': {'revision': 'CyberKit'},
+                    'webkit-patch': {'patch': 'CyberKit'},
                     'owner-repo': {'revision': 'Owner Repository'},
-                    'checkbox': {'ifRepositorySet': ['WebKit'], 'value': 'build-webkit'},
-                    'build-webkit': {'ifRepositorySet': ['WebKit'], 'value': true},
+                    'checkbox': {'ifRepositorySet': ['CyberKit'], 'value': 'build-webkit'},
+                    'build-webkit': {'ifRepositorySet': ['CyberKit'], 'value': true},
                     'owned-commits': {'ownedRevisions': 'Owner Repository'}
                 },
                 'acceptsRoots': true,

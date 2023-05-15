@@ -15,7 +15,7 @@ Markup.description(description.textContent);
 Markup.waitUntilDone();
 
 const shadowRoot = host.attachShadow({mode: 'open'});
-shadowRoot.innerHTML = '<slot></slot> WebKit';
+shadowRoot.innerHTML = '<slot></slot> CyberKit';
 getSelection().selectAllChildren(source);
 
 destination.addEventListener('paste', (event) => {

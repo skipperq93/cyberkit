@@ -57,11 +57,11 @@
     }
 </style>
 <?php 
-    $SurveyResults = WebKit_Survey::calculate_results();
+    $SurveyResults = CyberKit_Survey::calculate_results();
     foreach ($SurveyResults->survey as $id => $Entry): $total = isset($Entry->scores['total']) ? $Entry->scores['total'] : 1; 
     
     $results_classes = ['webkit-survey-results'];
-    if ($SurveyResults->status == 'closed' || $SurveyResults->results == 'visible' || WebKit_Survey::responded() || is_admin()) 
+    if ($SurveyResults->status == 'closed' || $SurveyResults->results == 'visible' || CyberKit_Survey::responded() || is_admin()) 
         $results_classes[] = 'visible';
 ?>
 <div class="<?php esc_attr_e(join(' ', $results_classes)); ?>">

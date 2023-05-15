@@ -1,4 +1,4 @@
-This tests focusing an element of zero width or height. WebKit should allow focusing such an element
+This tests focusing an element of zero width or height. CyberKit should allow focusing such an element
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

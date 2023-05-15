@@ -33,7 +33,7 @@ use Getopt::Long;
 use lib $FindBin::Bin;
 use webkitdirs;
 
-chdirWebKit();
+chdirCyberKit();
 chdir "JSTests/mozilla" or die;
 
 my $force = 0;

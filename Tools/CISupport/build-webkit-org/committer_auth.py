@@ -20,7 +20,7 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-"""An implementation of buildbot.status.web.auth.IAuth for authenticating WebKit committers"""
+"""An implementation of buildbot.status.web.auth.IAuth for authenticating CyberKit committers"""
 
 import ConfigParser
 import buildbot.status.web.auth
@@ -66,9 +66,9 @@ class CommitterAuth(buildbot.status.web.auth.AuthBase):
                 return False
             return True
         except ConfigParser.Error:
-            raise Error('Error parsing WebKit committers file')
+            raise Error('Error parsing CyberKit committers file')
         except IOError as e:
-            raise Error('Error opening WebKit committers file: {0}'.format(e.strerror))
+            raise Error('Error opening CyberKit committers file: {0}'.format(e.strerror))
 
     def is_webkit_trac_user(self, username, password):
         try:

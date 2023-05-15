@@ -12,21 +12,21 @@
             "project:Security": true,
             "component:Security": true
         }, "radar_importer": {
-            "name": "Radar WebKit Bug Importer",
+            "name": "Radar CyberKit Bug Importer",
             "emails": ["webkit-bug-importer@group.apple.com"],
             "username": "webkit-bug-importer@group.apple.com"
         }
     },
     {
         "type" : "radar",
-        "projects" : ["JavaScriptCore", "WebKit"],
+        "projects" : ["CyberScriptCore", "CyberKit"],
         "redact" : {
             "classification:Security": true,
             "tentpole:.*Security.*": true
         },
         "redact_exemption" : {
-            "keywords:[^:]*WebKit Security Does Not Repro in Shipping" : true,
-            "keywords:[^:]*WebKit Security Merge-Back Approved" : true
+            "keywords:[^:]*CyberKit Security Does Not Repro in Shipping" : true,
+            "keywords:[^:]*CyberKit Security Merge-Back Approved" : true
         }
     }
 ]

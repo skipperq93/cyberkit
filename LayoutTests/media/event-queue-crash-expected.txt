@@ -1,3 +1,3 @@
-When an element containing video is removed, WebKit should not crash.
+When an element containing video is removed, CyberKit should not crash.
 
-PASS. WebKit didn't crash.
+PASS. CyberKit didn't crash.

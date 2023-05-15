@@ -25,7 +25,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-struct WebKitMessageRecord {
+struct CyberKitMessageRecord {
     uint8_t sourceProcessType;
     pid_t sourceProcessID;
 
@@ -46,9 +46,9 @@ struct WebKitMessageRecord {
     bool isIncoming;
 };
 
-WebKitMessageRecorder*:::message_*
+CyberKitMessageRecorder*:::message_*
 {
-    this->record = (struct WebKitMessageRecord*)copyin(arg0, sizeof(struct WebKitMessageRecord));
+    this->record = (struct CyberKitMessageRecord*)copyin(arg0, sizeof(struct CyberKitMessageRecord));
     printf("{");
 
     printf("\"sourceProcessType\": %d, ", this->record->sourceProcessType);

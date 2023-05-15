@@ -42,7 +42,7 @@ class TestSquash(testing.PathTestCase):
     def test_github_with_previous_history(self):
         with OutputCapture(level=logging.INFO) as captured, mocks.remote.GitHub() as remote, mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn(), patch('webkitbugspy.Tracker._trackers', []):
             repo.checkout('eng/squash-branch')
             result = program.main(
@@ -64,7 +64,7 @@ class TestSquash(testing.PathTestCase):
         self.assertEqual(
             captured.stdout.getvalue(),
             "Created 'PR 1 | [Testing] Creating commits'!\n"
-            "https://github.example.com/WebKit/WebKit/pull/1\n",
+            "https://github.example.com/CyberKit/CyberKit/pull/1\n",
         )
         self.assertEqual(captured.stderr.getvalue(), '')
         log = captured.root.log.getvalue().splitlines()
@@ -81,7 +81,7 @@ class TestSquash(testing.PathTestCase):
                 'No pre-PR checks to run',
                 'Checking if PR already exists...',
                 'PR not found.',
-                "Updating 'main' on 'https://github.example.com/Contributor/WebKit'",
+                "Updating 'main' on 'https://github.example.com/Contributor/CyberKit'",
                 "Pushing 'eng/squash-branch' to 'fork'...",
                 "Creating pull-request for 'eng/squash-branch'..."
             ],
@@ -90,7 +90,7 @@ class TestSquash(testing.PathTestCase):
     def test_github_without_previous_history(self):
         with OutputCapture(level=logging.INFO) as captured, mocks.remote.GitHub() as remote, mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn(), patch('webkitbugspy.Tracker._trackers', []):
             repo.checkout('eng/squash-branch')
             result = program.main(
@@ -112,7 +112,7 @@ class TestSquash(testing.PathTestCase):
         self.assertEqual(
             captured.stdout.getvalue(),
             "Created 'PR 1 | [Testing] Creating commits'!\n"
-            "https://github.example.com/WebKit/WebKit/pull/1\n",
+            "https://github.example.com/CyberKit/CyberKit/pull/1\n",
         )
         self.assertEqual(captured.stderr.getvalue(), '')
         log = captured.root.log.getvalue().splitlines()
@@ -129,7 +129,7 @@ class TestSquash(testing.PathTestCase):
                 'No pre-PR checks to run',
                 'Checking if PR already exists...',
                 'PR not found.',
-                "Updating 'main' on 'https://github.example.com/Contributor/WebKit'",
+                "Updating 'main' on 'https://github.example.com/Contributor/CyberKit'",
                 "Pushing 'eng/squash-branch' to 'fork'...",
                 "Creating pull-request for 'eng/squash-branch'..."
             ],
@@ -138,7 +138,7 @@ class TestSquash(testing.PathTestCase):
     def test_github_two_step(self):
         with OutputCapture(level=logging.INFO) as captured, mocks.remote.GitHub() as remote, mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn(), patch('webkitbugspy.Tracker._trackers', []):
             repo.checkout('eng/squash-branch')
             result = program.main(
@@ -156,7 +156,7 @@ class TestSquash(testing.PathTestCase):
         self.assertEqual(
             captured.stdout.getvalue(),
             "Created 'PR 1 | [Testing] Creating commits'!\n"
-            "https://github.example.com/WebKit/WebKit/pull/1\n",
+            "https://github.example.com/CyberKit/CyberKit/pull/1\n",
         )
         self.assertEqual(captured.stderr.getvalue(), '')
         log = captured.root.log.getvalue().splitlines()
@@ -174,7 +174,7 @@ class TestSquash(testing.PathTestCase):
                 'No pre-PR checks to run',
                 'Checking if PR already exists...',
                 'PR not found.',
-                "Updating 'main' on 'https://github.example.com/Contributor/WebKit'",
+                "Updating 'main' on 'https://github.example.com/Contributor/CyberKit'",
                 "Pushing 'eng/squash-branch' to 'fork'...",
                 "Creating pull-request for 'eng/squash-branch'..."
             ],

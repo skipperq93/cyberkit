@@ -167,7 +167,7 @@ Node.prototype.definition;
 
 /**
  * IE5 used document instead of ownerDocument.
- * Old versions of WebKit used document instead of contentDocument.
+ * Old versions of CyberKit used document instead of contentDocument.
  * @type {Document}
  */
 Node.prototype.document;

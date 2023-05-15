@@ -78,9 +78,9 @@ testSingleToggle("bold", "<b style=\"font-weight: bold\">test</b>", "test");
 testSingleToggle("bold", "<b foo=\"bar\">test</b>", "<span foo=\"bar\">test</span>");
 testSingleToggle("bold", "<b style='invalid'>test</b>", "test"); // It's OK to remove invalid styles
 
-// FIXME: We have to call undo here to prevent WebKit from trying to
+// FIXME: We have to call undo here to prevent CyberKit from trying to
 // undo all of our previous commands at once.  We have no way to
-// "clear the undo stack" in WebKit.
+// "clear the undo stack" in CyberKit.
 document.execCommand("undo", false, null);
 // That filled testContainer with lots of junk, but it will be cleared
 // when testCommandAndUndo is called.

@@ -1,4 +1,4 @@
-Verifies that find and replace can be used to replace words in different frames on the same page, as well as inside text fields. This test requires WebKitTestRunner.
+Verifies that find and replace can be used to replace words in different frames on the same page, as well as inside text fields. This test requires CyberKitTestRunner.
 
 After replacing 'bar' with 'hello':
 | "\n        "

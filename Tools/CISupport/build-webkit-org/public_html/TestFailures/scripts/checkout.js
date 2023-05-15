@@ -27,7 +27,7 @@ var checkout = checkout || {};
 
 (function() {
 
-var kWebKitTrunk = 'https://svn.webkit.org/repository/webkit/trunk/';
+var kCyberKitTrunk = 'https://svn.webkit.org/repository/webkit/trunk/';
 
 var g_haveSeenCheckoutAvailable = false;
 
@@ -50,7 +50,7 @@ function callIfCheckoutAvailable(callback, checkoutUnavailable)
 
 checkout.subversionURLForTest = function(testName)
 {
-    return kWebKitTrunk + 'LayoutTests/' + testName;
+    return kCyberKitTrunk + 'LayoutTests/' + testName;
 };
 
 checkout.isAvailable = function(callback)

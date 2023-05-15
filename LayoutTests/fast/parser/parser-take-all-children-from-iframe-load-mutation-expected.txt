@@ -6,7 +6,7 @@
 |     "\n"
 |   <body>
 |     <p>
-|       "This test passes if WebKit does not crash."
+|       "This test passes if CyberKit does not crash."
 |     "\n"
 |     <a>
 |     <menu>

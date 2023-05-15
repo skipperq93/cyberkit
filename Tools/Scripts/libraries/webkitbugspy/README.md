@@ -13,7 +13,7 @@ The `webkitbugspy` library implements a generic issue tracker API compatible wit
 ```
 from webkitbugspy import github
 
-tracker = github.Tracker('https://github.com/WebKit/WebKit')
+tracker = github.Tracker('https://github.com/CyberKit/CyberKit')
 issue = tracker.issue(1)
 ```
 
@@ -26,7 +26,7 @@ Tracker.register(bugzilla.Tracker('https://bugs.webkit.org', res=[
     re.compile(r'\Ahttps?://webkit.org/b/(?P<id>\d+)\Z'),
     re.compile(r'\Awebkit.org/b/(?P<id>\d+)\Z'),
 ]))
-Tracker.register(github.Tracker('https://github.com/WebKit/WebKit'))
+Tracker.register(github.Tracker('https://github.com/CyberKit/CyberKit'))
 
-print(Tracker.from_string('https://github.com/WebKit/WebKit/issues/47').references)
+print(Tracker.from_string('https://github.com/CyberKit/CyberKit/issues/47').references)
 ```

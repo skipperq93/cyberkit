@@ -226,7 +226,7 @@ class TestExpectationParser(object):
     def _check_test_exists(self, expectation_line):
         # type: (TestExpectationLine) -> bool
         assert expectation_line.name is not None
-        # WebKit's way of skipping tests is to add a -disabled suffix.
+        # CyberKit's way of skipping tests is to add a -disabled suffix.
         # So we should consider the path existing if the path or the
         # -disabled version exists.
         if not self._port.test_exists(expectation_line.name) and not self._port.test_exists(expectation_line.name + '-disabled'):

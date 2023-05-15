@@ -32,7 +32,7 @@
         shouldBe("newObject.offsetWidth", "302");
 
         // Switch to document: "<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200"><rect width="400" height="200" fill="green"/></svg>".
-        // FIXME: This currently fails in WebKit trunk. We don't react on dataAttr changes at all. When manually relayouting using eg. zoom in/out it takes affect.
+        // FIXME: This currently fails in CyberKit trunk. We don't react on dataAttr changes at all. When manually relayouting using eg. zoom in/out it takes affect.
         newObject.setAttribute("data", "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iZ3JlZW4iLz48L3N2Zz4=");
         shouldBe("newObject.offsetWidth", "502");
         shouldBe("newObject.offsetWidth", "502");

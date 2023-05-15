@@ -40,7 +40,7 @@ class InspectorGeneratorTests:
 
     def generate_from_json(self, json_file, output_directory):
         cmd = [sys.executable,
-               'JavaScriptCore/inspector/scripts/generate-inspector-protocol-bindings.py',
+               'CyberScriptCore/inspector/scripts/generate-inspector-protocol-bindings.py',
                '--outputDir', output_directory,
                '--force',
                '--framework', 'Test',
@@ -120,7 +120,7 @@ class InspectorGeneratorTests:
 
         all_tests_passed = True
 
-        base_directory = os.path.join('JavaScriptCore', 'inspector', 'scripts', 'tests')
+        base_directory = os.path.join('CyberScriptCore', 'inspector', 'scripts', 'tests')
         input_directory = base_directory
         reference_directory = os.path.join(input_directory, 'expected')
         if os.path.isdir(input_directory) and os.path.isdir(reference_directory):

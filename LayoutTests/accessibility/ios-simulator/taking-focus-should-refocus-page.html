@@ -33,8 +33,8 @@
         shouldBe("getComputedStyle(textInput).getPropertyValue('outline-width')", "'3px'");
 
         debug("\nMaking the entire page un-focused");
-        // This simulates situations in which WebKit is embedded in another app and focus is not properly handed
-        // over to WebKit when necessary, i.e. a full-keyboard access user tabbing into the embedded web view.
+        // This simulates situations in which CyberKit is embedded in another app and focus is not properly handed
+        // over to CyberKit when necessary, i.e. a full-keyboard access user tabbing into the embedded web view.
         if (window.internals)
             internals.setPageIsFocused(false);
         else

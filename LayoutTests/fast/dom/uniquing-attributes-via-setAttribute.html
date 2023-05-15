@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-<p>Tests uniquing attributes via setAttribute. WebKit shouldn't crash under GuardMalloc or ASAN builds.</p>
+<p>Tests uniquing attributes via setAttribute. CyberKit shouldn't crash under GuardMalloc or ASAN builds.</p>
 <div></div>
 <script>
 
@@ -17,7 +17,7 @@ document.body.appendChild(divClone);
 div.setAttribute('name', 'b');
 divClone.setAttribute('name', 'b');
 
-document.write("PASS. WebKit didn't crash.");
+document.write("PASS. CyberKit didn't crash.");
 
 </script>
 </body>

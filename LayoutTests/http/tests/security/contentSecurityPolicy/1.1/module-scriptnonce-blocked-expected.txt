@@ -1,4 +1,4 @@
-Only the first two of these scripts should execute even though there are parse errors in the policy. Update: Since we no longer support X-WebKit-CSP all the scripts should run.
+Only the first two of these scripts should execute even though there are parse errors in the policy. Update: Since we no longer support X-CyberKit-CSP all the scripts should run.
 
 
 

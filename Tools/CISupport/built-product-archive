@@ -38,8 +38,8 @@ _configurationBuildDirectory = None
 _topLevelBuildDirectory = None
 _hostBuildDirectory = None
 
-PATH_TO_LAUNCHER = './Tools/WebKitArchiveSupport/run-webkit-archive'
-PATH_TO_README = './Tools/WebKitArchiveSupport/README'
+PATH_TO_LAUNCHER = './Tools/CyberKitArchiveSupport/run-webkit-archive'
+PATH_TO_README = './Tools/CyberKitArchiveSupport/README'
 
 def main():
     parser = optparse.OptionParser("usage: %prog [options] [action]")
@@ -68,7 +68,7 @@ def main():
             options.cross_target = env_target
 
     genericPlatform = 'jsc-only' if options.platform.startswith('jsc') else options.platform.split('-', 1)[0]
-    determineWebKitBuildDirectories(genericPlatform, options.platform, options.configuration, options.cross_target)
+    determineCyberKitBuildDirectories(genericPlatform, options.platform, options.configuration, options.cross_target)
     if not _topLevelBuildDirectory:
         print('Could not determine top-level build directory', file=sys.stderr)
         return 1
@@ -97,7 +97,7 @@ def webkitBuildDirectoryForConfigurationAndPlatform(configuration, platform, ful
     return subprocess.Popen(command, stdout=subprocess.PIPE).communicate()[0].strip().decode('utf-8')
 
 
-def determineWebKitBuildDirectories(platform, fullPlatform, configuration, cross_target=None):
+def determineCyberKitBuildDirectories(platform, fullPlatform, configuration, cross_target=None):
     global _configurationBuildDirectory
     global _topLevelBuildDirectory
     global _hostBuildDirectory
@@ -160,7 +160,7 @@ def addFilesToArchive(archiveFile, pathToLauncher, pathToReadme):
     return subprocess.call(command)
 
 def createZip(directoryToZip, configuration, excludePatterns=None, embedParentDirectoryNameOnDarwin=False):
-    archiveDir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "WebKitBuild"))
+    archiveDir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "CyberKitBuild"))
     archiveFile = os.path.join(archiveDir, configuration + ".zip")
 
     try:
@@ -265,8 +265,8 @@ def archiveBuiltProduct(configuration, platform, fullPlatform, minify=False):
         # Save WinCairoRequirements version for test bot use
         if platform == 'wincairo':
             shutil.copy(
-                os.path.join(os.getenv('WEBKIT_LIBRARIES'), 'WebKitRequirementsWin64.zip.version'),
-                os.path.join(thinDirectory, 'WebKitRequirementsWin64.zip.config'))
+                os.path.join(os.getenv('WEBKIT_LIBRARIES'), 'CyberKitRequirementsWin64.zip.version'),
+                os.path.join(thinDirectory, 'CyberKitRequirementsWin64.zip.config'))
 
         if createZip(thinDirectory, configuration):
             return 1
@@ -282,7 +282,7 @@ def archiveBuiltProduct(configuration, platform, fullPlatform, minify=False):
         # Don't pack files named with following prefixes, unless they are resolved from a symbolic
         # link. This helps reducing the zip file size in situations where the build directory
         # contains old library files.
-        ignoreList = ('libwebkit2gtk-', 'libwebkitgtk-', 'libjavascriptcoregtk', 'libWPEWebKit')
+        ignoreList = ('libwebkit2gtk-', 'libwebkitgtk-', 'libjavascriptcoregtk', 'libWPECyberKit')
         absoluteLibDirectory = os.path.join(_configurationBuildDirectory, 'lib')
         for filename in os.listdir(absoluteLibDirectory):
             path = os.path.join(absoluteLibDirectory, filename)
@@ -324,7 +324,7 @@ def archiveBuiltProduct(configuration, platform, fullPlatform, minify=False):
         return createZipFromList(contents, configuration, excludePatterns=['*.o', '*.a'])
 
 def unzipArchive(directoryToExtractTo, configuration):
-    archiveDir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "WebKitBuild"))
+    archiveDir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "CyberKitBuild"))
     assert os.path.isdir(archiveDir)
     archiveFile = os.path.join(archiveDir, configuration + ".zip")
 
@@ -361,7 +361,7 @@ def extractBuiltProduct(configuration, platform):
         if platform == 'wincairo':
             assert 'WEBKIT_LIBRARIES' in os.environ
             os.makedirs(os.getenv('WEBKIT_LIBRARIES'), exist_ok=True)
-            shutil.copy(os.path.join(_configurationBuildDirectory, 'WebKitRequirementsWin64.zip.config'), os.getenv('WEBKIT_LIBRARIES'))
+            shutil.copy(os.path.join(_configurationBuildDirectory, 'CyberKitRequirementsWin64.zip.config'), os.getenv('WEBKIT_LIBRARIES'))
 
 
 if __name__ == '__main__':

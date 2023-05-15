@@ -48,7 +48,7 @@ class TestCommitClassifier(unittest.TestCase):
             headers=[dict(value='gardening', ratio=85)],
             paths=[
                 'LayoutTests/',
-                'Tools/TestWebKitAPI',
+                'Tools/TestCyberKitAPI',
             ],
         )
         self.assertEqual(c.name, 'Gardening')

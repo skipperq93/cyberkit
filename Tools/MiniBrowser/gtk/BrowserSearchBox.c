@@ -29,7 +29,7 @@
 struct _BrowserSearchBox {
     GtkBox parent;
 
-    WebKitWebView *webView;
+    CyberKitWebView *webView;
     GtkWidget *entry;
     GtkWidget *prevButton;
     GtkWidget *nextButton;
@@ -64,7 +64,7 @@ static void doSearch(BrowserSearchBox *searchBox)
     if (!gtk_entry_get_icon_name(entry, GTK_ENTRY_ICON_SECONDARY))
         gtk_entry_set_icon_from_icon_name(entry, GTK_ENTRY_ICON_SECONDARY, "edit-clear-symbolic");
 
-    WebKitFindOptions options = WEBKIT_FIND_OPTIONS_WRAP_AROUND;
+    CyberKitFindOptions options = WEBKIT_FIND_OPTIONS_WRAP_AROUND;
     GAction *action = g_action_map_lookup_action(G_ACTION_MAP(searchBox->actionGroup), "case-sensitive");
     GVariant *state = g_action_get_state(action);
     if (!g_variant_get_boolean(state))
@@ -312,14 +312,14 @@ static void browser_search_box_class_init(BrowserSearchBoxClass *klass)
 #endif
 }
 
-GtkWidget *browser_search_box_new(WebKitWebView *webView)
+GtkWidget *browser_search_box_new(CyberKitWebView *webView)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_VIEW(webView), NULL);
 
     GtkWidget *searchBox = GTK_WIDGET(g_object_new(BROWSER_TYPE_SEARCH_BOX, NULL));
     BROWSER_SEARCH_BOX(searchBox)->webView = g_object_ref(webView);
 
-    WebKitFindController *controller = webkit_web_view_get_find_controller(webView);
+    CyberKitFindController *controller = webkit_web_view_get_find_controller(webView);
     g_signal_connect_swapped(controller, "failed-to-find-text", G_CALLBACK(findControllerFailedToFindTextCallback), searchBox);
     g_signal_connect_swapped(controller, "found-text", G_CALLBACK(findControllerFoundTextCallback), searchBox);
 

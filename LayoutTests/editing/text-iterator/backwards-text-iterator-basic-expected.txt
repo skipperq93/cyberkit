@@ -9,14 +9,14 @@ PASS plainTextWithBackwardsTextIterator("<div>hello</div>world") is "\nhello\nwo
 PASS plainTextWithTextIterator("<div>hello</div><div>world</div>") is "hello\nworld"
 PASS plainTextWithBackwardsTextIterator("<div>hello</div><div>world</div>") is "\nhello\nworld"
 
-PASS plainTextWithTextIterator("<div><b>h</b>ello <span>world</span></div>WebKit") is "hello world\nWebKit"
-PASS plainTextWithBackwardsTextIterator("<div><b>h</b>ello <span>world</span></div>WebKit") is "\nhello world\nWebKit"
+PASS plainTextWithTextIterator("<div><b>h</b>ello <span>world</span></div>CyberKit") is "hello world\nCyberKit"
+PASS plainTextWithBackwardsTextIterator("<div><b>h</b>ello <span>world</span></div>CyberKit") is "\nhello world\nCyberKit"
 
 PASS plainTextWithTextIterator("hello<br>world<br>") is "hello\nworld\n"
 PASS plainTextWithBackwardsTextIterator("hello<br>world<br>") is "hello\nworld"
 
-PASS plainTextWithTextIterator("<ul><li>hello<li>world</ul>WebKit") is "hello\nworld\nWebKit"
-PASS plainTextWithBackwardsTextIterator("<ul><li>hello<li>world</ul>WebKit") is "\n\nhello\nworld\nWebKit"
+PASS plainTextWithTextIterator("<ul><li>hello<li>world</ul>CyberKit") is "hello\nworld\nCyberKit"
+PASS plainTextWithBackwardsTextIterator("<ul><li>hello<li>world</ul>CyberKit") is "\n\nhello\nworld\nCyberKit"
 
 PASS plainTextWithTextIterator("<table><tr><td>hello</td><td>world</td></table>") is "hello	world"
 PASS plainTextWithBackwardsTextIterator("<table><tr><td>hello</td><td>world</td></table>") is "\n\nhello\tworld\t"

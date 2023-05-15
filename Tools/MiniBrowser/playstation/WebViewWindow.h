@@ -26,8 +26,8 @@
 #pragma once
 
 #include "WebContext.h"
-#include <WebKit/WKRetainPtr.h>
-#include <WebKit/WKView.h>
+#include <CyberKit/WKRetainPtr.h>
+#include <CyberKit/WKView.h>
 #include <memory>
 #include <toolkitten/Widget.h>
 

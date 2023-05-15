@@ -8,7 +8,7 @@ username = base64.b64decode(os.environ.get('HTTP_AUTHORIZATION', ' Og==').split(
 
 if not username:
     sys.stdout.write(
-        'WWW-Authenticate: Basic realm="WebKit AppCache Test Realm"\r\n'
+        'WWW-Authenticate: Basic realm="CyberKit AppCache Test Realm"\r\n'
         'status: 401\r\n'
         'Content-Type: text/html\r\n\r\n'
         'Authentication canceled'

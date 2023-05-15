@@ -10,7 +10,7 @@
 const HOST = get_host_info();
 const BASE = "/html/cross-origin-embedder-policy/resources";
 
-// WebKit-specific version of the test because the original WPT test was assuming that REMOTE_ORIGIN was same-site.
+// CyberKit-specific version of the test because the original WPT test was assuming that REMOTE_ORIGIN was same-site.
 HOST.SAME_SITE_ORIGIN = "https://" + HOST.ORIGINAL_HOST + ":" + HOST.HTTPS_PORT2;
 
 async_test(t => {

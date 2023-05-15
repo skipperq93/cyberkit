@@ -12,7 +12,7 @@ sys.stdout.write('Content-Type: text/html\r\n')
 
 if not username:
     sys.stdout.write(
-        'WWW-Authenticate: Basic realm="WebKit test - credentials-in-main-resource"\r\n'
+        'WWW-Authenticate: Basic realm="CyberKit test - credentials-in-main-resource"\r\n'
         'status: 401\r\n\r\n'
     )
     sys.exit(0)

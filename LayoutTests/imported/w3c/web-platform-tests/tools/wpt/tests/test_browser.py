@@ -324,19 +324,19 @@ def test_safari_find_downloads_stp_20220707(mocked_get):
 
 @mock.patch('subprocess.check_output')
 def test_webkitgtk_minibrowser_version(mocked_check_output):
-    webkitgtk_minibrowser = browser.WebKitGTKMiniBrowser(logger)
+    webkitgtk_minibrowser = browser.CyberKitGTKMiniBrowser(logger)
 
     # stable version
-    mocked_check_output.return_value = b'WebKitGTK 2.26.1\n'
+    mocked_check_output.return_value = b'CyberKitGTK 2.26.1\n'
     assert webkitgtk_minibrowser.version(binary='MiniBrowser') == '2.26.1'
 
     # nightly version
-    mocked_check_output.return_value = b'WebKitGTK 2.27.1 (r250823)\n'
+    mocked_check_output.return_value = b'CyberKitGTK 2.27.1 (r250823)\n'
     assert webkitgtk_minibrowser.version(binary='MiniBrowser') == '2.27.1 (r250823)'
 
 @mock.patch('subprocess.check_output')
 def test_webkitgtk_minibrowser_version_errors(mocked_check_output):
-    webkitgtk_minibrowser = browser.WebKitGTKMiniBrowser(logger)
+    webkitgtk_minibrowser = browser.CyberKitGTKMiniBrowser(logger)
 
     # No binary
     assert webkitgtk_minibrowser.version() is None
@@ -353,11 +353,11 @@ def test_webkitgtk_minibrowser_version_errors(mocked_check_output):
 
 # The test below doesn't work on Windows because distutils find_binary()
 # on Windows only works if the binary name ends with a ".exe" suffix.
-# But, WebKitGTK itself doesn't support Windows, so lets skip the test.
+# But, CyberKitGTK itself doesn't support Windows, so lets skip the test.
 @pytest.mark.skipif(sys.platform.startswith('win'), reason='test not needed on Windows')
 @mock.patch('os.path.isfile')
 def test_webkitgtk_minibrowser_find_binary(mocked_os_path_isfile):
-    webkitgtk_minibrowser = browser.WebKitGTKMiniBrowser(logger)
+    webkitgtk_minibrowser = browser.CyberKitGTKMiniBrowser(logger)
 
     # No MiniBrowser found
     mocked_os_path_isfile.side_effect = lambda path: path == '/etc/passwd'

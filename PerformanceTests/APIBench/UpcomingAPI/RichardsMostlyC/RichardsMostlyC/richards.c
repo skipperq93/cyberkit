@@ -10,8 +10,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <JavaScriptCore/JSLockRefPrivate.h>
-#include <JavaScriptCore/JavaScriptCore.h>
+#include <CyberScriptCore/JSLockRefPrivate.h>
+#include <CyberScriptCore/CyberScriptCore.h>
 #include <QuartzCore/QuartzCore.h>
 
 #if 1

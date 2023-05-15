@@ -1,4 +1,4 @@
-This test verifies that focusing an editable element causes us to scroll to reveal the selection, even if first responder keyboard avoidance is disabled on the web view's scroller. This test requires WebKitTestRunner.
+This test verifies that focusing an editable element causes us to scroll to reveal the selection, even if first responder keyboard avoidance is disabled on the web view's scroller. This test requires CyberKitTestRunner.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

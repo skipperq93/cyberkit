@@ -6,7 +6,7 @@
 description("Tests document.readyState() for documents created by JavaScript");
 
 evalAndLog("htmlDocument = document.implementation.createHTMLDocument()");
-shouldBeEqualToString("htmlDocument.readyState", "loading"); // WebKit and Blink say "loading", Gecko says "complete".
+shouldBeEqualToString("htmlDocument.readyState", "loading"); // CyberKit and Blink say "loading", Gecko says "complete".
 evalAndLog("htmlDocument.close()");
 shouldBeEqualToString("htmlDocument.readyState", "complete");
 

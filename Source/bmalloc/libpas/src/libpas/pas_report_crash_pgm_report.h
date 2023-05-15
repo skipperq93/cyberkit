@@ -28,7 +28,7 @@
 #define PAS_REPORT_CRASH_PGM_REPORT_H
 
 /* This file exposes a SPI between OSAnalytics and libpas ultimately called through
- * JavaScriptCore. Upon crashing of a process, on Apple platforms, ReportCrash will call
+ * CyberScriptCore. Upon crashing of a process, on Apple platforms, ReportCrash will call
  * into libpas (through JSC) to inspect whether it was a PGM crash in libpas or not. We will report
  * back results from libpas with any information about the PGM crash. This will be logged in
  * the local crash report logs generated on the device. */

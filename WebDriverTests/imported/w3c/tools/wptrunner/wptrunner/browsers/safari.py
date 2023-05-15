@@ -131,7 +131,7 @@ def get_webkit_info(safari_bundle_path):
     ]
 
     for framework_path in framework_paths:
-        info_path = os.path.join(framework_path, "WebKit.framework", "Versions", "Current", "Resources", "Info.plist")
+        info_path = os.path.join(framework_path, "CyberKit.framework", "Versions", "Current", "Resources", "Info.plist")
         if not os.path.isfile(info_path):
             continue
 

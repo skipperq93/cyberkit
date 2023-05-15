@@ -1,4 +1,4 @@
-Verifies that the 'list type change' editing command works as expected. This test requires WebKitTestRunner or DumpRenderTree.
+Verifies that the 'list type change' editing command works as expected. This test requires CyberKitTestRunner or DumpRenderTree.
 
 After making the outer list ordered:
 | "\n        "

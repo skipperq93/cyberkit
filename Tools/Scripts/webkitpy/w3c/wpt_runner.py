@@ -27,7 +27,7 @@ import sys
 
 from webkitpy.common.host import Host
 from webkitpy.common.system.logutils import configure_logging
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 from webkitpy.w3c.common import WPTPaths
 from webkitpy.w3c.test_downloader import TestDownloader
 from webkitpy.webdriver_tests.webdriver_driver import create_driver
@@ -138,7 +138,7 @@ class WPTRunner(object):
         create_webdriver_func=create_webdriver, spawn_wpt_func=spawn_wpt):
         self._port = port
         self._host = host
-        self._finder = WebKitFinder(self._host.filesystem)
+        self._finder = CyberKitFinder(self._host.filesystem)
 
         self._script_name = script_name
         self._options = options

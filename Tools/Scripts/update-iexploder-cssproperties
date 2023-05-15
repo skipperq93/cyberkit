@@ -28,8 +28,8 @@
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 # This script updates Tools/iExploder/iExploder-1.3.2/htdocs/*.in based on
-# WebCore/css/CSSPropertyNames.in, WebCore/html/HTMLTagNames.in
-# and WebCore/html/HTMLAttributeNames.in
+# CyberCore/css/CSSPropertyNames.in, CyberCore/html/HTMLTagNames.in
+# and CyberCore/html/HTMLAttributeNames.in
 
 use warnings;
 use strict;
@@ -60,7 +60,7 @@ sub generateEntityListFromFile($)
 
     my $revision = svnRevisionForDirectory(dirname($filename));
     my $path = File::Spec->abs2rel($filename, sourceDir());
-    my $result = "# From WebKit svn r" . $revision . " (" . $path . ")\n";
+    my $result = "# From CyberKit svn r" . $revision . " (" . $path . ")\n";
 
     my @entities = ();
     my $in_namespace = 0;
@@ -111,7 +111,7 @@ sub update($$)
     my ($iexploderPath, $webcorePath) = @_;
 
     $iexploderPath = File::Spec->catfile(sourceDir(), "Tools", "iExploder", "iExploder-1.3.2", "htdocs", split("/", $iexploderPath));
-    $webcorePath = File::Spec->catfile(sourceDir(), "Source", "WebCore", split("/", $webcorePath));
+    $webcorePath = File::Spec->catfile(sourceDir(), "Source", "CyberCore", split("/", $webcorePath));
 
     my @sections = readiExploderFile($iexploderPath);
     $sections[0] = generateEntityListFromFile($webcorePath);

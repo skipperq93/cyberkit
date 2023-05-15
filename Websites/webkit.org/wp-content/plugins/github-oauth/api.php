@@ -37,12 +37,12 @@ class GitHubAPI {
     }
 
     public function get_repo() {
-        return $this->call('/repos/WebKit/WebKit');
+        return $this->call('/repos/CyberKit/CyberKit');
     }
 
     public function get_collab($username) {
-        echo "/repos/WebKit/WebKit/collaborators/$username";
-        return $this->call("/repos/WebKit/WebKit/collaborators/$username");
+        echo "/repos/CyberKit/CyberKit/collaborators/$username";
+        return $this->call("/repos/CyberKit/CyberKit/collaborators/$username");
     }
 
     public function get_hovercard($username) {

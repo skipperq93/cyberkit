@@ -36,7 +36,7 @@ SET_AND_EXPOSE_TO_BUILD(ENABLE_DEVELOPER_MODE ${DEVELOPER_MODE})
 
 include(GStreamerDefinitions)
 
-# Public options shared with other WebKit ports. Do not add any options here
+# Public options shared with other CyberKit ports. Do not add any options here
 # without approval from a WPE reviewer. There must be strong reason to support
 # changing the value of the option.
 WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_ACCESSIBILITY PUBLIC ON)
@@ -48,8 +48,8 @@ WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_XSLT PUBLIC ON)
 
 WEBKIT_OPTION_DEFAULT_PORT_VALUE(USE_AVIF PUBLIC ON)
 
-# Private options shared with other WebKit ports. Add options here only if
-# we need a value different from the default defined in WebKitFeatures.cmake.
+# Private options shared with other CyberKit ports. Add options here only if
+# we need a value different from the default defined in CyberKitFeatures.cmake.
 # Changing these options is completely unsupported.
 WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_ASYNC_SCROLLING PRIVATE ON)
 WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_AUTOCAPITALIZE PRIVATE ON)
@@ -91,7 +91,7 @@ endif ()
 
 # Public options specific to the WPE port. Do not add any options here unless
 # there is a strong reason we should support changing the value of the option,
-# and the option is not relevant to other WebKit ports.
+# and the option is not relevant to other CyberKit ports.
 WEBKIT_OPTION_DEFINE(ENABLE_DOCUMENTATION "Whether to generate documentation." PUBLIC ON)
 WEBKIT_OPTION_DEFINE(ENABLE_INTROSPECTION "Whether to enable GObject introspection." PUBLIC ON)
 WEBKIT_OPTION_DEFINE(ENABLE_JOURNALD_LOG "Whether to enable journald logging" PUBLIC ON)
@@ -206,8 +206,8 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 set(CMAKE_VISIBILITY_INLINES_HIDDEN ON)
 set(bmalloc_LIBRARY_TYPE OBJECT)
 set(WTF_LIBRARY_TYPE OBJECT)
-set(JavaScriptCore_LIBRARY_TYPE OBJECT)
-set(WebCore_LIBRARY_TYPE OBJECT)
+set(CyberScriptCore_LIBRARY_TYPE OBJECT)
+set(CyberCore_LIBRARY_TYPE OBJECT)
 
 # These are shared variables, but we special case their definition so that we can use the
 # CMAKE_INSTALL_* variables that are populated by the GNUInstallDirs macro.
@@ -390,7 +390,7 @@ endif ()
 
 # Using DERIVED_SOURCES_DIR is deprecated
 set(DERIVED_SOURCES_DIR "${CMAKE_BINARY_DIR}/DerivedSources")
-set(DERIVED_SOURCES_WEBKIT_DIR ${DERIVED_SOURCES_DIR}/WebKit)
+set(DERIVED_SOURCES_WEBKIT_DIR ${DERIVED_SOURCES_DIR}/CyberKit)
 set(DERIVED_SOURCES_WPE_API_DIR ${DERIVED_SOURCES_WEBKIT_DIR}/wpe)
 set(DERIVED_SOURCES_WPETOOLINGBACKENDS_DIR "${CMAKE_BINARY_DIR}/DerivedSources/WPEToolingBackends")
 
@@ -402,17 +402,17 @@ set(FORWARDING_HEADERS_WPE_DOM_DIR ${FORWARDING_HEADERS_DIR}/wpe-dom)
 set(FORWARDING_HEADERS_WPE_JSC_DIR ${FORWARDING_HEADERS_DIR}/wpe-jsc)
 
 # FIXME: Remove in https://bugs.webkit.org/show_bug.cgi?id=210891
-set(WebKit_FRAMEWORK_HEADERS_DIR ${FORWARDING_HEADERS_DIR})
-set(WebKit_PRIVATE_FRAMEWORK_HEADERS_DIR ${FORWARDING_HEADERS_DIR})
-set(WebKit_DERIVED_SOURCES_DIR "${CMAKE_BINARY_DIR}/DerivedSources/WebKit")
+set(CyberKit_FRAMEWORK_HEADERS_DIR ${FORWARDING_HEADERS_DIR})
+set(CyberKit_PRIVATE_FRAMEWORK_HEADERS_DIR ${FORWARDING_HEADERS_DIR})
+set(CyberKit_DERIVED_SOURCES_DIR "${CMAKE_BINARY_DIR}/DerivedSources/CyberKit")
 set(PAL_DERIVED_SOURCES_DIR "${CMAKE_BINARY_DIR}/DerivedSources/PAL")
 set(PAL_FRAMEWORK_HEADERS_DIR "${CMAKE_BINARY_DIR}/PAL/Headers")
-set(JavaScriptCore_FRAMEWORK_HEADERS_DIR "${CMAKE_BINARY_DIR}/JavaScriptCore/Headers")
-set(JavaScriptCore_PRIVATE_FRAMEWORK_HEADERS_DIR "${CMAKE_BINARY_DIR}/JavaScriptCore/PrivateHeaders")
+set(CyberScriptCore_FRAMEWORK_HEADERS_DIR "${CMAKE_BINARY_DIR}/CyberScriptCore/Headers")
+set(CyberScriptCore_PRIVATE_FRAMEWORK_HEADERS_DIR "${CMAKE_BINARY_DIR}/CyberScriptCore/PrivateHeaders")
 set(WTF_FRAMEWORK_HEADERS_DIR "${CMAKE_BINARY_DIR}/WTF/Headers")
 
-set(JavaScriptCoreGLib_FRAMEWORK_HEADERS_DIR "${CMAKE_BINARY_DIR}/JavaScriptCoreGLib/Headers")
-set(JavaScriptCoreGLib_DERIVED_SOURCES_DIR "${CMAKE_BINARY_DIR}/JavaScriptCoreGLib/DerivedSources")
+set(CyberScriptCoreGLib_FRAMEWORK_HEADERS_DIR "${CMAKE_BINARY_DIR}/CyberScriptCoreGLib/Headers")
+set(CyberScriptCoreGLib_DERIVED_SOURCES_DIR "${CMAKE_BINARY_DIR}/CyberScriptCoreGLib/DerivedSources")
 
 set(WPE_PKGCONFIG_FILE ${CMAKE_BINARY_DIR}/wpe-webkit-${WPE_API_VERSION}.pc)
 set(WPE_Uninstalled_PKGCONFIG_FILE ${CMAKE_BINARY_DIR}/wpe-webkit-${WPE_API_VERSION}-uninstalled.pc)

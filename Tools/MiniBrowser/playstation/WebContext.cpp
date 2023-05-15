@@ -26,13 +26,13 @@
 #include "WebContext.h"
 
 #include "StringUtils.h"
-#include <WebKit/WKContextConfigurationPlayStation.h>
-#include <WebKit/WKContextPrivate.h>
-#include <WebKit/WKPreferencesRef.h>
-#include <WebKit/WKPreferencesRefPrivate.h>
-#include <WebKit/WKWebsiteDataStoreConfigurationRef.h>
-#include <WebKit/WKWebsiteDataStoreRef.h>
-#include <WebKit/WKWebsiteDataStoreRefCurl.h>
+#include <CyberKit/WKContextConfigurationPlayStation.h>
+#include <CyberKit/WKContextPrivate.h>
+#include <CyberKit/WKPreferencesRef.h>
+#include <CyberKit/WKPreferencesRefPrivate.h>
+#include <CyberKit/WKWebsiteDataStoreConfigurationRef.h>
+#include <CyberKit/WKWebsiteDataStoreRef.h>
+#include <CyberKit/WKWebsiteDataStoreRefCurl.h>
 
 #define MAKE_PROCESS_PATH(x) "/app0/" #x ".self"
 

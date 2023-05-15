@@ -40,7 +40,7 @@ namespace WTF {
 // Windows. Second, the GNU version is incompatible with the POSIX version, and it is impossible to
 // use correctly unless you know which version you have. Both strerror_s and strerror_r are
 // cumbersome because they force you to allocate the buffer for the result manually. It's all such a
-// mess that we should deal with the complexity here rather than elsewhere in WebKit.
+// mess that we should deal with the complexity here rather than elsewhere in CyberKit.
 WTF_EXPORT_PRIVATE CString safeStrerror(int errnum);
 
 }

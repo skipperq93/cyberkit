@@ -1,0 +1,896 @@
+/*
+ * Copyright (C) 2007 Holger Hans Peter Freyther
+ * Copyright (C) 2007, 2008 Alp Toker <alp@atoker.com>
+ * Copyright (C) 2008 Collabora Ltd.
+ * Copyright (C) 2011, 2017 Igalia S.L.
+ * Portions Copyright (c) 2011 Motorola Mobility, Inc.  All rights reserved.
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Library General Public
+ * License as published by the Free Software Foundation; either
+ * version 2 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Library General Public License for more details.
+ *
+ * You should have received a copy of the GNU Library General Public License
+ * along with this library; see the file COPYING.LIB.  If not, write to
+ * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
+ */
+
+@API_SINGLE_HEADER_CHECK@
+
+#ifndef CyberKitWebView_h
+#define CyberKitWebView_h
+
+#include <@API_INCLUDE_PREFIX@/CyberKitAuthenticationRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitBackForwardList.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitContextMenu.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitEditorState.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitFileChooserRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitFindController.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitFormSubmissionRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitHitTestResult.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitInputMethodContext.h>
+#if !ENABLE(2022_GLIB_API)
+#include <@API_INCLUDE_PREFIX@/CyberKitJavascriptResult.h>
+#endif
+#include <@API_INCLUDE_PREFIX@/CyberKitNavigationAction.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitNotification.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitOptionMenu.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitPermissionRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitPermissionStateQuery.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitPolicyDecision.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitScriptDialog.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitSettings.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitURIRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitUserContentManager.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitUserMessage.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebContext.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebResource.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebViewSessionState.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebsitePolicies.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWindowProperties.h>
+
+#if ENABLE(2022_GLIB_API)
+#include <@API_INCLUDE_PREFIX@/CyberKitNetworkSession.h>
+#endif
+
+#if PLATFORM(GTK)
+#if !ENABLE(2022_GLIB_API)
+#include <CyberScriptCore/JSBase.h>
+#endif
+#include <webkit/CyberKitColorChooserRequest.h>
+#include <webkit/CyberKitWebInspector.h>
+#include <webkit/CyberKitWebViewBase.h>
+#elif PLATFORM(WPE)
+#include <wpe/CyberKitColor.h>
+#include <wpe/CyberKitRectangle.h>
+#include <wpe/CyberKitWebViewBackend.h>
+#endif
+
+G_BEGIN_DECLS
+
+#define WEBKIT_TYPE_WEB_VIEW            (webkit_web_view_get_type())
+#if !ENABLE(2022_GLIB_API)
+#define WEBKIT_WEB_VIEW(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_WEB_VIEW, CyberKitWebView))
+#define WEBKIT_IS_WEB_VIEW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_WEB_VIEW))
+#define WEBKIT_WEB_VIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_WEB_VIEW, CyberKitWebViewClass))
+#define WEBKIT_IS_WEB_VIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_WEB_VIEW))
+#define WEBKIT_WEB_VIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_WEB_VIEW, CyberKitWebViewClass))
+#endif
+
+#if PLATFORM(GTK)
+WEBKIT_DECLARE_DERIVABLE_TYPE (CyberKitWebView, webkit_web_view, WEBKIT, WEB_VIEW, CyberKitWebViewBase)
+#elif PLATFORM(WPE)
+WEBKIT_DECLARE_DERIVABLE_TYPE (CyberKitWebView, webkit_web_view, WEBKIT, WEB_VIEW, GObject)
+#else
+#endif
+
+typedef struct _CyberKitPrintOperation CyberKitPrintOperation;
+
+/**
+ * CyberKitPolicyDecisionType:
+ * @WEBKIT_POLICY_DECISION_TYPE_NAVIGATION_ACTION: This type of policy decision
+ *   is requested when CyberKit is about to navigate to a new page in either the
+ *   main frame or a subframe. Acceptable policy decisions are either
+ *   webkit_policy_decision_use() or webkit_policy_decision_ignore(). This
+ *   type of policy decision is always a #CyberKitNavigationPolicyDecision.
+ * @WEBKIT_POLICY_DECISION_TYPE_NEW_WINDOW_ACTION: This type of policy decision
+ *   is requested when CyberKit is about to create a new window. Acceptable policy
+ *   decisions are either webkit_policy_decision_use() or
+ *   webkit_policy_decision_ignore(). This type of policy decision is always
+ *   a #CyberKitNavigationPolicyDecision. These decisions are useful for implementing
+ *   special actions for new windows, such as forcing the new window to open
+ *   in a tab when a keyboard modifier is active or handling a special
+ *   target attribute on <a> elements.
+ * @WEBKIT_POLICY_DECISION_TYPE_RESPONSE: This type of decision is used when CyberKit has
+ *   received a response for a network resource and is about to start the load.
+ *   Note that these resources include all subresources of a page such as images
+ *   and stylesheets as well as main documents. Appropriate policy responses to
+ *   this decision are webkit_policy_decision_use(), webkit_policy_decision_ignore(),
+ *   or webkit_policy_decision_download(). This type of policy decision is always
+ *   a #CyberKitResponsePolicyDecision. This decision is useful for forcing
+ *   some types of resources to be downloaded rather than rendered in the WebView
+ *   or to block the transfer of resources entirely.
+ *
+ * Enum values used for determining the type of a policy decision during
+ * #CyberKitWebView::decide-policy.
+ */
+typedef enum {
+    WEBKIT_POLICY_DECISION_TYPE_NAVIGATION_ACTION,
+    WEBKIT_POLICY_DECISION_TYPE_NEW_WINDOW_ACTION,
+    WEBKIT_POLICY_DECISION_TYPE_RESPONSE,
+} CyberKitPolicyDecisionType;
+
+/**
+ * CyberKitLoadEvent:
+ * @WEBKIT_LOAD_STARTED: A new load request has been made.
+ * No data has been received yet, empty structures have
+ * been allocated to perform the load; the load may still
+ * fail due to transport issues such as not being able to
+ * resolve a name, or connect to a port.
+ * @WEBKIT_LOAD_REDIRECTED: A provisional data source received
+ * a server redirect.
+ * @WEBKIT_LOAD_COMMITTED: The content started arriving for a page load.
+ * The necessary transport requirements are established, and the
+ * load is being performed.
+ * @WEBKIT_LOAD_FINISHED: Load completed. All resources are done loading
+ * or there was an error during the load operation.
+ *
+ * Enum values used to denote the different events that happen during a
+ * #CyberKitWebView load operation.
+ */
+typedef enum {
+    WEBKIT_LOAD_STARTED,
+    WEBKIT_LOAD_REDIRECTED,
+    WEBKIT_LOAD_COMMITTED,
+    WEBKIT_LOAD_FINISHED
+} CyberKitLoadEvent;
+
+/**
+ * CyberKitSaveMode:
+ * @WEBKIT_SAVE_MODE_MHTML: Save the current page using the MHTML format.
+ *
+ * Enum values to specify the different ways in which a #CyberKitWebView
+ * can save its current web page into a self-contained file.
+ */
+typedef enum {
+    WEBKIT_SAVE_MODE_MHTML
+} CyberKitSaveMode;
+
+/**
+ * CyberKitInsecureContentEvent:
+ * @WEBKIT_INSECURE_CONTENT_RUN: Insecure content has been detected by
+ * trying to execute any kind of logic (e.g. a script) from an
+ * untrusted source.
+ * @WEBKIT_INSECURE_CONTENT_DISPLAYED: Insecure content has been
+ * detected by trying to display any kind of resource (e.g. an image)
+ * from an untrusted source.
+ *
+ * Enum values used to denote the different events which can trigger
+ * the detection of insecure content.
+ */
+typedef enum {
+    WEBKIT_INSECURE_CONTENT_RUN,
+    WEBKIT_INSECURE_CONTENT_DISPLAYED
+} CyberKitInsecureContentEvent;
+
+#if PLATFORM(GTK)
+/**
+ * CyberKitSnapshotOptions:
+ * @WEBKIT_SNAPSHOT_OPTIONS_NONE: Do not include any special options.
+ * @WEBKIT_SNAPSHOT_OPTIONS_INCLUDE_SELECTION_HIGHLIGHTING: Whether to include in the
+ * snapshot the highlight of the selected content.
+ * @WEBKIT_SNAPSHOT_OPTIONS_TRANSPARENT_BACKGROUND: Do not fill the background with white before
+ * rendering the snapshot. Since 2.8
+ *
+ * Enum values used to specify options when taking a snapshot
+ * from a #CyberKitWebView.
+ */
+typedef enum {
+  WEBKIT_SNAPSHOT_OPTIONS_NONE = 0,
+  WEBKIT_SNAPSHOT_OPTIONS_INCLUDE_SELECTION_HIGHLIGHTING = 1 << 0,
+  WEBKIT_SNAPSHOT_OPTIONS_TRANSPARENT_BACKGROUND = 1 << 1,
+} CyberKitSnapshotOptions;
+
+/**
+ * CyberKitSnapshotRegion:
+ * @WEBKIT_SNAPSHOT_REGION_VISIBLE: Specifies a snapshot only for the area that is
+ * visible in the webview
+ * @WEBKIT_SNAPSHOT_REGION_FULL_DOCUMENT: A snapshot of the entire document.
+ *
+ * Enum values used to specify the region from which to get a #CyberKitWebView
+ * snapshot
+ */
+typedef enum {
+  WEBKIT_SNAPSHOT_REGION_VISIBLE = 0,
+  WEBKIT_SNAPSHOT_REGION_FULL_DOCUMENT,
+} CyberKitSnapshotRegion;
+#endif
+
+/**
+ * CyberKitWebProcessTerminationReason:
+ * @WEBKIT_WEB_PROCESS_CRASHED: the web process crashed.
+ * @WEBKIT_WEB_PROCESS_EXCEEDED_MEMORY_LIMIT: the web process exceeded the memory limit.
+ * @WEBKIT_WEB_PROCESS_TERMINATED_BY_API: the web process termination was requested by an API call. Since: 2.34
+ *
+ * Enum values used to specify the reason why the web process terminated abnormally.
+ *
+ * Since: 2.20
+ */
+typedef enum {
+    WEBKIT_WEB_PROCESS_CRASHED,
+    WEBKIT_WEB_PROCESS_EXCEEDED_MEMORY_LIMIT,
+    WEBKIT_WEB_PROCESS_TERMINATED_BY_API
+} CyberKitWebProcessTerminationReason;
+
+/**
+ * CyberKitMediaCaptureState:
+ * @WEBKIT_MEDIA_CAPTURE_STATE_NONE: Media capture is disabled.
+ * @WEBKIT_MEDIA_CAPTURE_STATE_ACTIVE: Media capture is active.
+ * @WEBKIT_MEDIA_CAPTURE_STATE_MUTED: Media capture is muted.
+ *
+ * Enum values used to specify the capture state of a media device.
+ *
+ * Since: 2.34
+ */
+typedef enum {
+    WEBKIT_MEDIA_CAPTURE_STATE_NONE,
+    WEBKIT_MEDIA_CAPTURE_STATE_ACTIVE,
+    WEBKIT_MEDIA_CAPTURE_STATE_MUTED,
+} CyberKitMediaCaptureState;
+
+/**
+ * CyberKitWebExtensionMode:
+ * @WEBKIT_WEB_EXTENSION_MODE_NONE: Not for an extension.
+ * @WEBKIT_WEB_EXTENSION_MODE_MANIFESTV2: For a ManifestV2 extension.
+ * @WEBKIT_WEB_EXTENSION_MODE_MANIFESTV3: For a ManifestV3 extension.
+ *
+ * Enum values used for setting if a #CyberKitWebView is intended for
+ * WebExtensions.
+ *
+ * Since: 2.38
+ */
+typedef enum {
+    WEBKIT_WEB_EXTENSION_MODE_NONE,
+    WEBKIT_WEB_EXTENSION_MODE_MANIFESTV2,
+    WEBKIT_WEB_EXTENSION_MODE_MANIFESTV3,
+} CyberKitWebExtensionMode;
+
+#if PLATFORM(WPE)
+/**
+ * CyberKitFrameDisplayedCallback:
+ * @web_view: a #CyberKitWebView
+ * @user_data: user data
+ *
+ * Callback to be called when a frame is displayed in a #CyberKitWebView.
+ *
+ * Since: 2.24
+ */
+typedef void (* CyberKitFrameDisplayedCallback) (CyberKitWebView *web_view,
+                                               gpointer       user_data);
+#endif
+
+struct _CyberKitWebViewClass {
+#if PLATFORM(GTK)
+    CyberKitWebViewBaseClass parent;
+#elif PLATFORM(WPE)
+    GObjectClass parent;
+#endif
+
+    /*< public >*/
+    void       (* load_changed)                (CyberKitWebView               *web_view,
+                                                CyberKitLoadEvent              load_event);
+    gboolean   (* load_failed)                 (CyberKitWebView               *web_view,
+                                                CyberKitLoadEvent              load_event,
+                                                const gchar                 *failing_uri,
+                                                GError                      *error);
+
+#if PLATFORM(GTK)
+    GtkWidget *(* create)                      (CyberKitWebView               *web_view,
+                                                CyberKitNavigationAction      *navigation_action);
+#elif PLATFORM(WPE)
+    CyberKitWebView *(* create)                  (CyberKitWebView               *web_view,
+                                                CyberKitNavigationAction      *navigation_action);
+#endif
+
+    void       (* ready_to_show)               (CyberKitWebView               *web_view);
+    void       (* run_as_modal)                (CyberKitWebView               *web_view);
+    void       (* close)                       (CyberKitWebView               *web_view);
+
+    gboolean   (* script_dialog)               (CyberKitWebView               *web_view,
+                                                CyberKitScriptDialog          *dialog)  ;
+
+    gboolean   (* decide_policy)               (CyberKitWebView               *web_view,
+                                                CyberKitPolicyDecision        *decision,
+                                                CyberKitPolicyDecisionType     type);
+    gboolean   (* permission_request)          (CyberKitWebView               *web_view,
+                                                CyberKitPermissionRequest     *permission_request);
+    void       (* mouse_target_changed)        (CyberKitWebView               *web_view,
+                                                CyberKitHitTestResult         *hit_test_result,
+                                                guint                        modifiers);
+
+#if PLATFORM(GTK)
+    gboolean   (* print)                       (CyberKitWebView               *web_view,
+                                                CyberKitPrintOperation        *print_operation);
+#endif
+
+    void       (* resource_load_started)       (CyberKitWebView               *web_view,
+                                                CyberKitWebResource           *resource,
+                                                CyberKitURIRequest            *request);
+    gboolean   (* enter_fullscreen)            (CyberKitWebView               *web_view);
+    gboolean   (* leave_fullscreen)            (CyberKitWebView               *web_view);
+    gboolean   (* run_file_chooser)            (CyberKitWebView               *web_view,
+                                                CyberKitFileChooserRequest    *request);
+
+    gboolean   (* context_menu)                (CyberKitWebView               *web_view,
+                                                CyberKitContextMenu           *context_menu,
+#if !ENABLE(2022_GLIB_API)
+#if PLATFORM(GTK)
+                                                GdkEvent                    *event,
+#elif PLATFORM(WPE)
+                                                void                        *event,
+#endif
+#endif
+                                                CyberKitHitTestResult         *hit_test_result);
+
+    void       (* context_menu_dismissed)      (CyberKitWebView               *web_view);
+    void       (* submit_form)                 (CyberKitWebView               *web_view,
+                                                CyberKitFormSubmissionRequest *request);
+    void       (* insecure_content_detected)   (CyberKitWebView               *web_view,
+                                                CyberKitInsecureContentEvent   event);
+    gboolean   (* web_process_crashed)         (CyberKitWebView               *web_view);
+
+    gboolean   (* authenticate)                (CyberKitWebView               *web_view,
+                                                CyberKitAuthenticationRequest *request);
+    gboolean   (* load_failed_with_tls_errors) (CyberKitWebView               *web_view,
+                                                const gchar                 *failing_uri,
+                                                GTlsCertificate             *certificate,
+                                                GTlsCertificateFlags         errors);
+    gboolean   (* show_notification)           (CyberKitWebView               *web_view,
+                                                CyberKitNotification          *notification);
+
+#if PLATFORM(GTK)
+    gboolean   (* run_color_chooser)           (CyberKitWebView               *web_view,
+                                                CyberKitColorChooserRequest   *request);
+    gboolean   (* show_option_menu)            (CyberKitWebView               *web_view,
+                                                CyberKitOptionMenu            *menu,
+#if !USE(GTK4)
+                                                GdkEvent                    *event,
+#endif
+                                                GdkRectangle                *rectangle);
+#endif
+
+    void       (* web_process_terminated)      (CyberKitWebView               *web_view,
+                                                CyberKitWebProcessTerminationReason reason);
+    gboolean   (* user_message_received)       (CyberKitWebView               *web_view,
+                                                CyberKitUserMessage           *message);
+
+#if PLATFORM(WPE)
+    gboolean   (* show_option_menu)            (CyberKitWebView               *web_view,
+                                                CyberKitOptionMenu            *menu,
+                                                CyberKitRectangle             *rectangle);
+#endif
+
+    gboolean   (* query_permission_state)      (CyberKitWebView               *web_view,
+                                                CyberKitPermissionStateQuery  *query);
+
+#if PLATFORM(WPE) && !ENABLE(2022_GLIB_API)
+    /*< private >*/
+    void (*_webkit_reserved0) (void);
+    void (*_webkit_reserved1) (void);
+    void (*_webkit_reserved2) (void);
+    void (*_webkit_reserved3) (void);
+    void (*_webkit_reserved4) (void);
+#endif
+
+#if ENABLE(2022_GLIB_API)
+    /*< private >*/
+    void (*_webkit_reserved0)  (void);
+    void (*_webkit_reserved1)  (void);
+    void (*_webkit_reserved2)  (void);
+    void (*_webkit_reserved3)  (void);
+    void (*_webkit_reserved4)  (void);
+    void (*_webkit_reserved5)  (void);
+    void (*_webkit_reserved6)  (void);
+    void (*_webkit_reserved7)  (void);
+    void (*_webkit_reserved8)  (void);
+    void (*_webkit_reserved9)  (void);
+    void (*_webkit_reserved10) (void);
+    void (*_webkit_reserved11) (void);
+    void (*_webkit_reserved12) (void);
+    void (*_webkit_reserved13) (void);
+    void (*_webkit_reserved14) (void);
+    void (*_webkit_reserved15) (void);
+    void (*_webkit_reserved16) (void);
+    void (*_webkit_reserved17) (void);
+    void (*_webkit_reserved18) (void);
+    void (*_webkit_reserved19) (void);
+    void (*_webkit_reserved20) (void);
+    void (*_webkit_reserved21) (void);
+    void (*_webkit_reserved22) (void);
+    void (*_webkit_reserved23) (void);
+    void (*_webkit_reserved24) (void);
+    void (*_webkit_reserved25) (void);
+    void (*_webkit_reserved26) (void);
+    void (*_webkit_reserved27) (void);
+    void (*_webkit_reserved28) (void);
+    void (*_webkit_reserved29) (void);
+    void (*_webkit_reserved30) (void);
+#endif
+};
+
+#if PLATFORM(GTK)
+WEBKIT_API GtkWidget *
+webkit_web_view_new                                  (void);
+
+#if !ENABLE(2022_GLIB_API)
+WEBKIT_API GtkWidget *
+webkit_web_view_new_with_related_view                (CyberKitWebView             *web_view);
+
+WEBKIT_API GtkWidget *
+webkit_web_view_new_with_context                     (CyberKitWebContext          *context);
+
+WEBKIT_API GtkWidget *
+webkit_web_view_new_with_settings                    (CyberKitSettings            *settings);
+
+WEBKIT_API GtkWidget *
+webkit_web_view_new_with_user_content_manager        (CyberKitUserContentManager  *user_content_manager);
+#endif
+#endif
+
+#if PLATFORM(WPE)
+WEBKIT_API CyberKitWebView *
+webkit_web_view_new                                  (CyberKitWebViewBackend      *backend);
+
+#if !ENABLE(2022_GLIB_API)
+WEBKIT_API CyberKitWebView *
+webkit_web_view_new_with_related_view                (CyberKitWebViewBackend      *backend,
+                                                      CyberKitWebView             *web_view);
+
+WEBKIT_API CyberKitWebView *
+webkit_web_view_new_with_context                     (CyberKitWebViewBackend      *backend,
+                                                      CyberKitWebContext          *context);
+
+WEBKIT_API CyberKitWebView *
+webkit_web_view_new_with_settings                    (CyberKitWebViewBackend      *backend,
+                                                      CyberKitSettings            *settings);
+
+WEBKIT_API CyberKitWebView *
+webkit_web_view_new_with_user_content_manager        (CyberKitWebViewBackend      *backend,
+                                                      CyberKitUserContentManager  *user_content_manager);
+#endif
+
+WEBKIT_API CyberKitWebViewBackend *
+webkit_web_view_get_backend                          (CyberKitWebView             *web_view);
+#endif
+
+#if !ENABLE(2022_GLIB_API)
+WEBKIT_API gboolean
+webkit_web_view_is_ephemeral                         (CyberKitWebView             *web_view);
+#endif
+
+WEBKIT_API gboolean
+webkit_web_view_is_controlled_by_automation          (CyberKitWebView             *web_view);
+
+WEBKIT_API CyberKitAutomationBrowsingContextPresentation
+webkit_web_view_get_automation_presentation_type     (CyberKitWebView             *web_view);
+
+#if ENABLE(2022_GLIB_API)
+WEBKIT_API CyberKitNetworkSession *
+webkit_web_view_get_network_session                  (CyberKitWebView             *web_view);
+#else
+WEBKIT_API CyberKitWebsiteDataManager *
+webkit_web_view_get_website_data_manager             (CyberKitWebView             *web_view);
+#endif
+
+WEBKIT_API CyberKitWebContext *
+webkit_web_view_get_context                          (CyberKitWebView             *web_view);
+
+WEBKIT_API void
+webkit_web_view_try_close                            (CyberKitWebView             *web_view);
+
+WEBKIT_API void
+webkit_web_view_load_uri                             (CyberKitWebView             *web_view,
+                                                      const gchar               *uri);
+
+WEBKIT_API void
+webkit_web_view_load_html                            (CyberKitWebView             *web_view,
+                                                      const gchar               *content,
+                                                      const gchar               *base_uri);
+WEBKIT_API void
+webkit_web_view_load_alternate_html                  (CyberKitWebView             *web_view,
+                                                      const gchar               *content,
+                                                      const gchar               *content_uri,
+                                                      const gchar               *base_uri);
+WEBKIT_API void
+webkit_web_view_load_plain_text                      (CyberKitWebView             *web_view,
+                                                      const gchar               *plain_text);
+
+WEBKIT_API void
+webkit_web_view_load_bytes                           (CyberKitWebView             *web_view,
+                                                      GBytes                    *bytes,
+                                                      const gchar               *mime_type,
+                                                      const gchar               *encoding,
+                                                      const gchar               *base_uri);
+
+WEBKIT_API void
+webkit_web_view_load_request                         (CyberKitWebView             *web_view,
+                                                      CyberKitURIRequest          *request);
+
+WEBKIT_API void
+webkit_web_view_stop_loading                         (CyberKitWebView             *web_view);
+
+WEBKIT_API gboolean
+webkit_web_view_is_loading                           (CyberKitWebView             *web_view);
+
+WEBKIT_API gboolean
+webkit_web_view_is_playing_audio                     (CyberKitWebView             *web_view);
+
+WEBKIT_API void
+webkit_web_view_set_is_muted                         (CyberKitWebView             *web_view,
+                                                      gboolean                   muted);
+
+WEBKIT_API gboolean
+webkit_web_view_get_is_muted                         (CyberKitWebView             *web_view);
+
+WEBKIT_API guint64
+webkit_web_view_get_page_id                          (CyberKitWebView             *web_view);
+
+WEBKIT_API const gchar *
+webkit_web_view_get_title                            (CyberKitWebView             *web_view);
+
+WEBKIT_API void
+webkit_web_view_reload                               (CyberKitWebView             *web_view);
+
+WEBKIT_API void
+webkit_web_view_reload_bypass_cache                  (CyberKitWebView             *web_view);
+
+WEBKIT_API gdouble
+webkit_web_view_get_estimated_load_progress          (CyberKitWebView             *web_view);
+
+WEBKIT_API void
+webkit_web_view_go_back                              (CyberKitWebView             *web_view);
+
+WEBKIT_API gboolean
+webkit_web_view_can_go_back                          (CyberKitWebView             *web_view);
+
+WEBKIT_API void
+webkit_web_view_go_forward                           (CyberKitWebView             *web_view);
+
+WEBKIT_API gboolean
+webkit_web_view_can_go_forward                       (CyberKitWebView             *web_view);
+
+WEBKIT_API CyberKitBackForwardList *
+webkit_web_view_get_back_forward_list                (CyberKitWebView             *web_view);
+
+WEBKIT_API void
+webkit_web_view_go_to_back_forward_list_item         (CyberKitWebView             *web_view,
+                                                      CyberKitBackForwardListItem *list_item);
+WEBKIT_API const gchar *
+webkit_web_view_get_uri                              (CyberKitWebView             *web_view);
+
+#if PLATFORM(GTK)
+#if USE(GTK4)
+WEBKIT_API GdkTexture *
+webkit_web_view_get_favicon                          (CyberKitWebView             *web_view);
+#else
+WEBKIT_API cairo_surface_t *
+webkit_web_view_get_favicon                          (CyberKitWebView             *web_view);
+#endif
+#endif
+
+WEBKIT_API const gchar *
+webkit_web_view_get_custom_charset                   (CyberKitWebView             *web_view);
+
+WEBKIT_API void
+webkit_web_view_set_custom_charset                   (CyberKitWebView             *web_view,
+                                                      const gchar               *charset);
+
+WEBKIT_API void
+webkit_web_view_set_settings                         (CyberKitWebView             *web_view,
+                                                      CyberKitSettings            *settings);
+
+WEBKIT_API CyberKitSettings *
+webkit_web_view_get_settings                         (CyberKitWebView             *web_view);
+
+WEBKIT_API CyberKitWindowProperties *
+webkit_web_view_get_window_properties                (CyberKitWebView             *web_view);
+
+WEBKIT_API void
+webkit_web_view_set_zoom_level                       (CyberKitWebView             *web_view,
+                                                      gdouble                    zoom_level);
+WEBKIT_API gdouble
+webkit_web_view_get_zoom_level                       (CyberKitWebView             *web_view);
+
+WEBKIT_API void
+webkit_web_view_can_execute_editing_command          (CyberKitWebView             *web_view,
+                                                      const gchar               *command,
+                                                      GCancellable              *cancellable,
+                                                      GAsyncReadyCallback        callback,
+                                                      gpointer                   user_data);
+
+WEBKIT_API gboolean
+webkit_web_view_can_execute_editing_command_finish   (CyberKitWebView             *web_view,
+                                                      GAsyncResult              *result,
+                                                      GError                   **error);
+
+WEBKIT_API void
+webkit_web_view_execute_editing_command              (CyberKitWebView             *web_view,
+                                                      const gchar               *command);
+
+WEBKIT_API void
+webkit_web_view_execute_editing_command_with_argument(CyberKitWebView             *web_view,
+                                                      const char                *command,
+                                                      const char                *argument);
+
+WEBKIT_API CyberKitFindController *
+webkit_web_view_get_find_controller                  (CyberKitWebView             *web_view);
+
+#if PLATFORM(GTK) && !ENABLE(2022_GLIB_API)
+WEBKIT_DEPRECATED JSGlobalContextRef
+webkit_web_view_get_javascript_global_context        (CyberKitWebView             *web_view);
+#endif
+
+WEBKIT_API void
+webkit_web_view_evaluate_javascript                  (CyberKitWebView             *web_view,
+                                                      const char                *script,
+                                                      gssize                     length,
+                                                      const char                *world_name,
+                                                      const char                *source_uri,
+                                                      GCancellable              *cancellable,
+                                                      GAsyncReadyCallback        callback,
+                                                      gpointer                   user_data);
+
+WEBKIT_API JSCValue *
+webkit_web_view_evaluate_javascript_finish           (CyberKitWebView             *web_view,
+                                                      GAsyncResult              *result,
+                                                      GError                   **error);
+
+WEBKIT_API void
+webkit_web_view_call_async_javascript_function       (CyberKitWebView             *web_view,
+                                                      const char                *body,
+                                                      gssize                     length,
+                                                      GVariant                  *arguments,
+                                                      const char                *world_name,
+                                                      const char                *source_uri,
+                                                      GCancellable              *cancellable,
+                                                      GAsyncReadyCallback        callback,
+                                                      gpointer                   user_data);
+
+WEBKIT_API JSCValue *
+webkit_web_view_call_async_javascript_function_finish(CyberKitWebView             *web_view,
+                                                      GAsyncResult              *result,
+                                                      GError                   **error);
+
+#if !ENABLE(2022_GLIB_API)
+WEBKIT_DEPRECATED_FOR(webkit_web_view_evaluate_javascript) void
+webkit_web_view_run_javascript                       (CyberKitWebView             *web_view,
+                                                      const gchar               *script,
+                                                      GCancellable              *cancellable,
+                                                      GAsyncReadyCallback        callback,
+                                                      gpointer                   user_data);
+WEBKIT_DEPRECATED_FOR(webkit_web_view_evaluate_javascript_finish) CyberKitJavascriptResult *
+webkit_web_view_run_javascript_finish                (CyberKitWebView             *web_view,
+                                                      GAsyncResult              *result,
+                                                      GError                   **error);
+
+WEBKIT_DEPRECATED_FOR(webkit_web_view_evaluate_javascript) void
+webkit_web_view_run_javascript_in_world              (CyberKitWebView             *web_view,
+                                                      const gchar               *script,
+                                                      const gchar               *world_name,
+                                                      GCancellable              *cancellable,
+                                                      GAsyncReadyCallback        callback,
+                                                      gpointer                   user_data);
+WEBKIT_DEPRECATED_FOR(webkit_web_view_evaluate_javascript_finish) CyberKitJavascriptResult *
+webkit_web_view_run_javascript_in_world_finish       (CyberKitWebView             *web_view,
+                                                      GAsyncResult              *result,
+                                                      GError                   **error);
+
+WEBKIT_DEPRECATED_FOR(webkit_web_view_call_async_javascript_function) void
+webkit_web_view_run_async_javascript_function_in_world (CyberKitWebView           *web_view,
+                                                        const gchar             *body,
+                                                        GVariant                *arguments,
+                                                        const char              *world_name,
+                                                        GCancellable            *cancellable,
+                                                        GAsyncReadyCallback      callback,
+                                                        gpointer                 user_data);
+
+WEBKIT_DEPRECATED_FOR(webkit_web_view_evaluate_javascript) void
+webkit_web_view_run_javascript_from_gresource        (CyberKitWebView             *web_view,
+                                                      const gchar               *resource,
+                                                      GCancellable              *cancellable,
+                                                      GAsyncReadyCallback        callback,
+                                                      gpointer                   user_data);
+
+WEBKIT_DEPRECATED_FOR(webkit_web_view_evaluate_javascript_finish) CyberKitJavascriptResult *
+webkit_web_view_run_javascript_from_gresource_finish (CyberKitWebView             *web_view,
+                                                      GAsyncResult              *result,
+                                                      GError                   **error);
+#endif
+
+WEBKIT_API CyberKitWebResource *
+webkit_web_view_get_main_resource                    (CyberKitWebView             *web_view);
+
+#if PLATFORM(GTK)
+WEBKIT_API CyberKitWebInspector *
+webkit_web_view_get_inspector                        (CyberKitWebView             *web_view);
+#endif
+
+WEBKIT_API gboolean
+webkit_web_view_can_show_mime_type                   (CyberKitWebView             *web_view,
+                                                      const gchar               *mime_type);
+
+WEBKIT_API void
+webkit_web_view_save                                 (CyberKitWebView             *web_view,
+                                                      CyberKitSaveMode             save_mode,
+                                                      GCancellable              *cancellable,
+                                                      GAsyncReadyCallback        callback,
+                                                      gpointer                   user_data);
+
+WEBKIT_API GInputStream *
+webkit_web_view_save_finish                          (CyberKitWebView             *web_view,
+                                                      GAsyncResult              *result,
+                                                      GError                   **error);
+
+WEBKIT_API void
+webkit_web_view_save_to_file                         (CyberKitWebView             *web_view,
+                                                      GFile                     *file,
+                                                      CyberKitSaveMode             save_mode,
+                                                      GCancellable              *cancellable,
+                                                      GAsyncReadyCallback        callback,
+                                                      gpointer                   user_data);
+
+WEBKIT_API gboolean
+webkit_web_view_save_to_file_finish                  (CyberKitWebView             *web_view,
+                                                      GAsyncResult              *result,
+                                                      GError                   **error);
+
+WEBKIT_API CyberKitDownload *
+webkit_web_view_download_uri                         (CyberKitWebView             *web_view,
+                                                      const char                *uri);
+
+WEBKIT_API gboolean
+webkit_web_view_get_tls_info                         (CyberKitWebView             *web_view,
+                                                      GTlsCertificate          **certificate,
+                                                      GTlsCertificateFlags      *errors);
+
+#if PLATFORM(GTK)
+WEBKIT_API void
+webkit_web_view_get_snapshot                         (CyberKitWebView             *web_view,
+                                                      CyberKitSnapshotRegion       region,
+                                                      CyberKitSnapshotOptions      options,
+                                                      GCancellable              *cancellable,
+                                                      GAsyncReadyCallback        callback,
+                                                      gpointer                   user_data);
+#if USE(GTK4)
+WEBKIT_API GdkTexture *
+webkit_web_view_get_snapshot_finish                  (CyberKitWebView             *web_view,
+                                                      GAsyncResult              *result,
+                                                      GError                   **error);
+#else
+WEBKIT_API cairo_surface_t *
+webkit_web_view_get_snapshot_finish                  (CyberKitWebView             *web_view,
+                                                      GAsyncResult              *result,
+                                                      GError                   **error);
+#endif
+#endif
+
+WEBKIT_API CyberKitUserContentManager *
+webkit_web_view_get_user_content_manager             (CyberKitWebView             *web_view);
+
+#if PLATFORM(GTK)
+WEBKIT_API void
+webkit_web_view_set_background_color                 (CyberKitWebView             *web_view,
+                                                      const GdkRGBA             *rgba);
+
+WEBKIT_API void
+webkit_web_view_get_background_color                 (CyberKitWebView             *web_view,
+                                                      GdkRGBA                   *rgba);
+#endif
+
+#if PLATFORM(WPE)
+WEBKIT_API void
+webkit_web_view_set_background_color                 (CyberKitWebView               *web_view,
+                                                      CyberKitColor                 *color);
+WEBKIT_API void
+webkit_web_view_get_background_color                 (CyberKitWebView               *web_view,
+                                                      CyberKitColor                 *color);
+#endif
+
+WEBKIT_API gboolean
+webkit_web_view_is_editable                          (CyberKitWebView             *web_view);
+
+WEBKIT_API void
+webkit_web_view_set_editable                         (CyberKitWebView             *web_view,
+                                                      gboolean                  editable);
+
+WEBKIT_API CyberKitEditorState *
+webkit_web_view_get_editor_state                     (CyberKitWebView             *web_view);
+
+WEBKIT_API CyberKitWebViewSessionState *
+webkit_web_view_get_session_state                    (CyberKitWebView             *web_view);
+
+WEBKIT_API void
+webkit_web_view_restore_session_state                (CyberKitWebView             *web_view,
+                                                      CyberKitWebViewSessionState *state);
+
+#if PLATFORM(WPE)
+WEBKIT_API guint
+webkit_web_view_add_frame_displayed_callback         (CyberKitWebView               *web_view,
+                                                      CyberKitFrameDisplayedCallback callback,
+                                                      gpointer                     user_data,
+                                                      GDestroyNotify               destroy_notify);
+
+WEBKIT_API void
+webkit_web_view_remove_frame_displayed_callback      (CyberKitWebView               *web_view,
+                                                      guint                        id);
+#endif
+
+WEBKIT_API void
+webkit_web_view_send_message_to_page                 (CyberKitWebView             *web_view,
+                                                      CyberKitUserMessage         *message,
+                                                      GCancellable              *cancellable,
+                                                      GAsyncReadyCallback        callback,
+                                                      gpointer                   user_data);
+
+WEBKIT_API CyberKitUserMessage *
+webkit_web_view_send_message_to_page_finish          (CyberKitWebView             *web_view,
+                                                      GAsyncResult              *result,
+                                                      GError                   **error);
+
+WEBKIT_API void
+webkit_web_view_set_input_method_context             (CyberKitWebView             *web_view,
+                                                      CyberKitInputMethodContext  *context);
+
+WEBKIT_API CyberKitInputMethodContext *
+webkit_web_view_get_input_method_context             (CyberKitWebView             *web_view);
+
+WEBKIT_API void
+webkit_web_view_set_cors_allowlist                   (CyberKitWebView             *web_view,
+                                                      const gchar * const       *allowlist);
+
+WEBKIT_API CyberKitWebsitePolicies *
+webkit_web_view_get_website_policies                 (CyberKitWebView             *web_view);
+
+WEBKIT_API gboolean
+webkit_web_view_get_is_web_process_responsive        (CyberKitWebView             *web_view);
+
+WEBKIT_API void
+webkit_web_view_terminate_web_process                (CyberKitWebView             *web_view);
+
+WEBKIT_API CyberKitMediaCaptureState
+webkit_web_view_get_camera_capture_state             (CyberKitWebView             *web_view);
+
+WEBKIT_API void
+webkit_web_view_set_camera_capture_state             (CyberKitWebView             *web_view,
+                                                      CyberKitMediaCaptureState    state);
+
+WEBKIT_API CyberKitMediaCaptureState
+webkit_web_view_get_microphone_capture_state         (CyberKitWebView             *web_view);
+
+WEBKIT_API void
+webkit_web_view_set_microphone_capture_state         (CyberKitWebView             *web_view,
+                                                      CyberKitMediaCaptureState    state);
+
+WEBKIT_API CyberKitMediaCaptureState
+webkit_web_view_get_display_capture_state            (CyberKitWebView             *web_view);
+
+WEBKIT_API void
+webkit_web_view_set_display_capture_state            (CyberKitWebView             *web_view,
+                                                      CyberKitMediaCaptureState    state);
+
+WEBKIT_API CyberKitWebExtensionMode
+webkit_web_view_get_web_extension_mode               (CyberKitWebView             *web_view);
+
+WEBKIT_API const gchar*
+webkit_web_view_get_default_content_security_policy  (CyberKitWebView             *web_view);
+
+G_END_DECLS
+
+#endif

@@ -5,6 +5,6 @@ AXTextStateChangeType=1 AXTextChangeValues=[{"AXTextChangeValue":"a","AXTextEdit
 AXTextStateChangeType=1 AXTextChangeValues=[{"AXTextChangeValue":"b","AXTextEditType":3}]
 AXTextStateChangeType=1 AXTextChangeValues=[{"AXTextChangeValue":"hellob","AXTextEditType":1},{"AXTextChangeValue":"world","AXTextEditType":2}]
 AXTextStateChangeType=1 AXTextChangeValues=[{"AXTextChangeValue":"c","AXTextEditType":3}]
-AXTextStateChangeType=1 AXTextChangeValues=[{"AXTextChangeValue":"worldc","AXTextEditType":1},{"AXTextChangeValue":"WebKit","AXTextEditType":2}]
+AXTextStateChangeType=1 AXTextChangeValues=[{"AXTextChangeValue":"worldc","AXTextEditType":1},{"AXTextChangeValue":"CyberKit","AXTextEditType":2}]
 AXTextStateChangeType=1 AXTextChangeValues=[{"AXTextChangeValue":"d","AXTextEditType":3}]
 

@@ -1,5 +1,5 @@
 /* Taken from
-   https://raw.github.com/WebKit/webkit/master/LayoutTests/webaudio/resources/buffer-loader.js */
+   https://raw.github.com/CyberKit/webkit/master/LayoutTests/webaudio/resources/buffer-loader.js */
 
 function BufferLoader(context, urlList, callback) {
   this.context = context;

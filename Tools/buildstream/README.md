@@ -1,4 +1,4 @@
-# The WebKit Linux Developer SDK
+# The CyberKit Linux Developer SDK
 
 ## Tips and Tricks
 
@@ -6,7 +6,7 @@ This is aimed to replace the JHBuild setup, as announced in [webkit-dev](https:/
 of the time developers won't need to manually build the SDK, they will download
 already-built versions of it.
 
-Rebuilding the SDK is needed when you have to update WebKit test dependencies or
+Rebuilding the SDK is needed when you have to update CyberKit test dependencies or
 add new dependencies to the SDK.
 
 To build the SDK, run:
@@ -29,7 +29,7 @@ dependency:
 Tools/Scripts/bst-wrapper shell sdk/gtk.bst
 ```
 
-To test your changes in WebKit:
+To test your changes in CyberKit:
 
 ```bash
 Tools/Scripts/webkit-flatpak -u --repo=$PWD/Tools/buildstream/repo
@@ -61,7 +61,7 @@ $ Tools/Scripts/bst-wrapper build sdk/openxr.bst
 $ cd ~/Projects/openxr
 $ git commit -a ...
 $ git format-patch -1
-$ mv *.patch ~/WebKit/Tools/buildstream/patches/
+$ mv *.patch ~/CyberKit/Tools/buildstream/patches/
 # finally add patches as sources in openxr.bst
 # and close the workspace
 $ Tools/Scripts/bst-wrapper workspace close sdk/openxr.bst
@@ -74,7 +74,7 @@ though, in theory direct access to the pipenv environment shouldn't be needed.
 
 ## Maintenance
 
-This section attempts to document how to do yearly major version upgrades of the SDK. The WebKit SDK
+This section attempts to document how to do yearly major version upgrades of the SDK. The CyberKit SDK
 inherits from the FDO SDK, which has one year release cycle. They release a new major version around
 end of August, beginning of September. When the time has come, here are the steps to follow to
 synchronize our SDK with its parent.
@@ -123,7 +123,7 @@ remote flatpak repo has been updated to the new version (which is documented in 
 2. Run `webkit-flatpak -u --repo=$PWD/Tools/buildstream/repo` which will detect a version
    upgrade, remove the UserFlatpak.Local and install the new SDK, from scratch.
 3. Update your WPE and GTK builds, don't forget to set the
-   `WEBKIT_FLATPAK_USER_DIR=$HOME/WebKit/WebKitBuild/UserFlatpak.Local` environment variable so that
+   `WEBKIT_FLATPAK_USER_DIR=$HOME/CyberKit/CyberKitBuild/UserFlatpak.Local` environment variable so that
    the local SDK is used. This goes for the test runs below as well.
 4. Run the layout tests: `run-webkit-tests --gtk`
 5. Run the API tests: `webkit-flatpak -c $PWD/Tools/Scripts/run-gtk-tests` and `run-wpe-tests`
@@ -145,7 +145,7 @@ webkit-flatpak-sdk --build push-repo
 ```
 
 Once the remote repository is updated, the new version is available and can even be installed with a
-manual `flatpak install` call. The next step is to teach the WebKit tooling to use this new
+manual `flatpak install` call. The next step is to teach the CyberKit tooling to use this new
 version. You can proceed to next section.
 
 ### Making the update available to all users
@@ -153,12 +153,12 @@ version. You can proceed to next section.
 Submit the `SDK_BRANCH` update of `flatpakutils.py` to review in a new PR. Additional changes might
 be needed, like layout tests rebaselines for instance.
 
-Once this PR has landed, all bots and developers pulling from WebKit's git main branch and running
+Once this PR has landed, all bots and developers pulling from CyberKit's git main branch and running
 `webkit-flatpak -u` will get the new version.
 
 ### Update the Epiphany Canary flatpak manifest
 
-The Epiphany Canary flavour depends on the WebKit SDK Platform runtime. So the [Canary
+The Epiphany Canary flavour depends on the CyberKit SDK Platform runtime. So the [Canary
 manifest](https://gitlab.gnome.org/GNOME/epiphany/-/blob/master/org.gnome.Epiphany.Canary.json.in)
 needs to be updated, the `runtime-version` should point to the new SDK version.
 

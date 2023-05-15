@@ -17,18 +17,18 @@ set(DumpRenderTree_SOURCES
 )
 
 set(DumpRenderTree_LIBRARIES
-    WebKit::TestRunnerShared
-    WebKit::WebCoreTestSupport
+    CyberKit::TestRunnerShared
+    CyberKit::CyberCoreTestSupport
 )
 set(DumpRenderTree_FRAMEWORKS
-    JavaScriptCore
+    CyberScriptCore
     PAL
     WTF
-    WebCore
-    WebKitLegacy
+    CyberCore
+    CyberKitLegacy
 )
 if (NOT USE_SYSTEM_MALLOC)
-    list(APPEND WebKitTestRunner_FRAMEWORKS bmalloc)
+    list(APPEND CyberKitTestRunner_FRAMEWORKS bmalloc)
 endif ()
 
 set(DumpRenderTree_PRIVATE_INCLUDE_DIRECTORIES
@@ -38,7 +38,7 @@ set(DumpRenderTree_PRIVATE_INCLUDE_DIRECTORIES
 )
 
 set(DumpRenderTree_WEB_PREFERENCES_TEMPLATES
-    ${DumpRenderTree_DIR}/Scripts/PreferencesTemplates/TestOptionsGeneratedWebKitLegacyKeyMapping.cpp.erb
+    ${DumpRenderTree_DIR}/Scripts/PreferencesTemplates/TestOptionsGeneratedCyberKitLegacyKeyMapping.cpp.erb
     ${DumpRenderTree_DIR}/Scripts/PreferencesTemplates/TestOptionsGeneratedKeys.h.erb
 )
 
@@ -49,13 +49,13 @@ set(DumpRenderTree_WEB_PREFERENCES
 set_source_files_properties(${DumpRenderTree_WEB_PREFERENCES} PROPERTIES GENERATED TRUE)
 
 add_custom_command(
-    OUTPUT ${DumpRenderTree_DERIVED_SOURCES_DIR}/TestOptionsGeneratedWebKitLegacyKeyMapping.cpp ${DumpRenderTree_DERIVED_SOURCES_DIR}/TestOptionsGeneratedKeys.h
+    OUTPUT ${DumpRenderTree_DERIVED_SOURCES_DIR}/TestOptionsGeneratedCyberKitLegacyKeyMapping.cpp ${DumpRenderTree_DERIVED_SOURCES_DIR}/TestOptionsGeneratedKeys.h
     DEPENDS ${DumpRenderTree_WEB_PREFERENCES_TEMPLATES} ${DumpRenderTree_WEB_PREFERENCES} WTF_CopyPreferences
-    COMMAND ${RUBY_EXECUTABLE} ${WTF_SCRIPTS_DIR}/GeneratePreferences.rb --frontend WebKitLegacy --outputDir "${DumpRenderTree_DERIVED_SOURCES_DIR}" --template ${DumpRenderTree_DIR}/Scripts/PreferencesTemplates/TestOptionsGeneratedWebKitLegacyKeyMapping.cpp.erb --template ${DumpRenderTree_DIR}/Scripts/PreferencesTemplates/TestOptionsGeneratedKeys.h.erb ${DumpRenderTree_WEB_PREFERENCES}
+    COMMAND ${RUBY_EXECUTABLE} ${WTF_SCRIPTS_DIR}/GeneratePreferences.rb --frontend CyberKitLegacy --outputDir "${DumpRenderTree_DERIVED_SOURCES_DIR}" --template ${DumpRenderTree_DIR}/Scripts/PreferencesTemplates/TestOptionsGeneratedCyberKitLegacyKeyMapping.cpp.erb --template ${DumpRenderTree_DIR}/Scripts/PreferencesTemplates/TestOptionsGeneratedKeys.h.erb ${DumpRenderTree_WEB_PREFERENCES}
     VERBATIM)
 
 list(APPEND DumpRenderTree_SOURCES
-    ${DumpRenderTree_DERIVED_SOURCES_DIR}/TestOptionsGeneratedWebKitLegacyKeyMapping.cpp
+    ${DumpRenderTree_DERIVED_SOURCES_DIR}/TestOptionsGeneratedCyberKitLegacyKeyMapping.cpp
     ${DumpRenderTree_DERIVED_SOURCES_DIR}/TestOptionsGeneratedKeys.h
 )
 

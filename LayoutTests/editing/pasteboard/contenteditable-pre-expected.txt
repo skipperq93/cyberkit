@@ -1,6 +1,6 @@
-This test copies and pastes content inside pre that is an editing host. WebKit should not clone pre.
+This test copies and pastes content inside pre that is an editing host. CyberKit should not clone pre.
 To manually test, copy and paste "hello" and then paste it into the boxes below.
-WebKit should not clone pre (nest pre) and the pasted content should not have nested borders.
+CyberKit should not clone pre (nest pre) and the pasted content should not have nested borders.
 
 Pasting into pre; the pre should not be listed below:
 | "hello<#selection-caret>"

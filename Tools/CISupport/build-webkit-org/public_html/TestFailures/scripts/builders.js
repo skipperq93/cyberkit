@@ -30,7 +30,7 @@ var builders = builders || {};
 var kUpdateStepName = 'update';
 var kUpdateScriptsStepName = 'update_scripts';
 var kCompileStepName = 'compile';
-var kWebKitTestsStepNames = ['webkit_tests', 'layout-test'];
+var kCyberKitTestsStepNames = ['webkit_tests', 'layout-test'];
 
 var kCrashedOrHungOutputMarker = 'crashed or hung';
 
@@ -51,7 +51,7 @@ function urlForBuildInfo(platform, builderName, buildNumber)
 
 function didFail(step)
 {
-    if (kWebKitTestsStepNames.indexOf(step.name) != -1) {
+    if (kCyberKitTestsStepNames.indexOf(step.name) != -1) {
         // run-webkit-tests fails to generate test coverage when it crashes or hangs.
         // FIXME: Do build.webkit.org bots output this marker when the tests fail to run?
         return step.text.indexOf(kCrashedOrHungOutputMarker) != -1;

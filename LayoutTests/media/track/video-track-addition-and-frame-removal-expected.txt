@@ -1,4 +1,4 @@
 This tests removing a frame immediately after inserting a new track element.
-WebKit should not hit any assertions.
+CyberKit should not hit any assertions.
 
 

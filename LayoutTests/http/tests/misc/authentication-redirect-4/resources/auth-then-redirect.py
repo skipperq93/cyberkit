@@ -12,7 +12,7 @@ sys.stdout.write('Content-Type: text/html\r\n')
 
 if not username or not password:
     sys.stdout.write(
-        'WWW-Authenticate: Basic realm="WebKit Authentication Redirect 4"\r\n'
+        'WWW-Authenticate: Basic realm="CyberKit Authentication Redirect 4"\r\n'
         'status: 401\r\n\r\n'
     )
 else:

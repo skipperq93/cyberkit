@@ -2,7 +2,7 @@
 <html>
 <body>
 <p>This tests inserting a slot child under a shadow host.<br>
-WebKit should not hit any assertion or crash and you should see 1, 2, & PASS below each on its own line.</p>
+CyberKit should not hit any assertion or crash and you should see 1, 2, & PASS below each on its own line.</p>
 <div id="outerHost"><div slot="slot1">1</div><div slot="slot2">2</div></div>
 <script>
 
@@ -18,7 +18,7 @@ innerHost.attachShadow({mode: 'closed'}).innerHTML = '<slot></slot>';
 innerHost.getBoundingClientRect();
 innerHost.innerHTML = '<slot name="slot2"></slot>';
 
-document.write('<div>PASS - WebKit did not crash</div>');
+document.write('<div>PASS - CyberKit did not crash</div>');
 
 </script>
 </body>

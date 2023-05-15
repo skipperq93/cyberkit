@@ -1,0 +1,37 @@
+# Copyright (C) 2017 Apple Inc. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1.  Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+# 2.  Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in the
+#     documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+messages -> CacheStorageEngineConnection {
+    Reference(CyberCore::DOMCacheIdentifier cacheIdentifier)
+    Dereference(CyberCore::DOMCacheIdentifier cacheIdentifier)
+
+    Open(struct CyberCore::ClientOrigin origin, String cacheName) -> (CyberCore::DOMCacheEngine::CacheIdentifierOrError result)
+    Remove(CyberCore::DOMCacheIdentifier cacheIdentifier) -> (CyberCore::DOMCacheEngine::RemoveCacheIdentifierOrError result)
+    Caches(struct CyberCore::ClientOrigin origin, uint64_t updateCounter) -> (CyberCore::DOMCacheEngine::CacheInfosOrError result)
+
+    RetrieveRecords(CyberCore::DOMCacheIdentifier cacheIdentifier, struct CyberCore::RetrieveRecordsOptions options) -> (CyberCore::DOMCacheEngine::RecordsOrError result)
+    DeleteMatchingRecords(CyberCore::DOMCacheIdentifier cacheIdentifier, CyberCore::ResourceRequest request, struct CyberCore::CacheQueryOptions options) -> (CyberCore::DOMCacheEngine::RecordIdentifiersOrError result)
+    PutRecords(CyberCore::DOMCacheIdentifier cacheIdentifier, Vector<CyberCore::DOMCacheEngine::Record> record) -> (CyberCore::DOMCacheEngine::RecordIdentifiersOrError result)
+
+    ClearMemoryRepresentation(struct CyberCore::ClientOrigin origin) -> (std::optional<CyberCore::DOMCacheEngine::Error> error)
+    EngineRepresentation() -> (String representation)
+}

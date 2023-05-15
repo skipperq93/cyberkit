@@ -34,7 +34,7 @@ async function runTest() {
 
     await new Promise((resolve) => requestAnimationFrame(() => setTimeout(resolve, 0)));
 
-    if (UIHelper.isWebKit2())
+    if (UIHelper.isCyberKit2())
         await UIHelper.resignFirstResponder();
     else
         window.testRunner.setMainFrameIsFirstResponder(false);

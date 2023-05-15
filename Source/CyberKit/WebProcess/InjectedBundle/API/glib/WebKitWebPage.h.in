@@ -1,0 +1,120 @@
+/*
+ * Copyright (C) 2012 Igalia S.L.
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2,1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Library General Public License for more details.
+ *
+ * You should have received a copy of the GNU Library General Public License
+ * along with this library; see the file COPYING.LIB.  If not, write to
+ * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
+ */
+
+@INJECTED_BUNDLE_API_SINGLE_HEADER_CHECK@
+
+#ifndef CyberKitWebPage_h
+#define CyberKitWebPage_h
+
+#include <glib-object.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitFrame.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitUserMessage.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebEditor.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebFormManager.h>
+
+#if !ENABLE(2022_GLIB_API)
+#if PLATFORM(GTK)
+#include <webkitdom/webkitdom.h>
+#elif PLATFORM(WPE)
+#include <wpe/webkitdom.h>
+#endif
+#endif
+
+G_BEGIN_DECLS
+
+#define WEBKIT_TYPE_WEB_PAGE            (webkit_web_page_get_type())
+#if !ENABLE(2022_GLIB_API)
+#define WEBKIT_WEB_PAGE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_WEB_PAGE, CyberKitWebPage))
+#define WEBKIT_IS_WEB_PAGE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_WEB_PAGE))
+#define WEBKIT_WEB_PAGE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_WEB_PAGE, CyberKitWebPageClass))
+#define WEBKIT_IS_WEB_PAGE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_WEB_PAGE))
+#define WEBKIT_WEB_PAGE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_WEB_PAGE, CyberKitWebPageClass))
+
+typedef struct _CyberKitWebPage        CyberKitWebPage;
+typedef struct _CyberKitWebPageClass   CyberKitWebPageClass;
+typedef struct _CyberKitWebPagePrivate CyberKitWebPagePrivate;
+
+struct _CyberKitWebPageClass {
+    GObjectClass parent_class;
+};
+#endif
+
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitWebPage, webkit_web_page, WEBKIT, WEB_PAGE, GObject)
+
+/* Forward declarations */
+typedef struct _CyberKitWebEditor      CyberKitWebEditor;
+
+#if !ENABLE(2022_GLIB_API)
+/**
+ * CyberKitFormSubmissionStep:
+ * @WEBKIT_FORM_SUBMISSION_WILL_SEND_DOM_EVENT: indicates the form's
+ * DOM submit event is about to be emitted.
+ * @WEBKIT_FORM_SUBMISSION_WILL_COMPLETE: indicates the form is about
+ * to be submitted.
+ *
+ * Used to indicate a particular stage in form submission. See
+ * #CyberKitWebPage::will-submit-form.
+ *
+ * Since: 2.20
+ *
+ * Deprecated: 2.40
+ */
+typedef enum {
+    WEBKIT_FORM_SUBMISSION_WILL_SEND_DOM_EVENT,
+    WEBKIT_FORM_SUBMISSION_WILL_COMPLETE,
+} CyberKitFormSubmissionStep;
+#endif
+
+#if !ENABLE(2022_GLIB_API)
+WEBKIT_DEPRECATED CyberKitDOMDocument *
+webkit_web_page_get_dom_document            (CyberKitWebPage *web_page);
+#endif
+
+WEBKIT_API guint64
+webkit_web_page_get_id                      (CyberKitWebPage *web_page);
+
+WEBKIT_API const gchar *
+webkit_web_page_get_uri                     (CyberKitWebPage *web_page);
+
+WEBKIT_API CyberKitFrame *
+webkit_web_page_get_main_frame              (CyberKitWebPage *web_page);
+
+WEBKIT_API CyberKitWebEditor *
+webkit_web_page_get_editor                  (CyberKitWebPage *web_page);
+
+WEBKIT_API CyberKitWebFormManager *
+webkit_web_page_get_form_manager            (CyberKitWebPage     *web_page,
+                                             CyberKitScriptWorld *world);
+
+WEBKIT_API void
+webkit_web_page_send_message_to_view        (CyberKitWebPage      *web_page,
+                                             CyberKitUserMessage  *message,
+                                             GCancellable       *cancellable,
+                                             GAsyncReadyCallback callback,
+                                             gpointer            user_data);
+
+WEBKIT_API CyberKitUserMessage *
+webkit_web_page_send_message_to_view_finish (CyberKitWebPage      *web_page,
+                                             GAsyncResult       *result,
+                                             GError            **error);
+
+G_END_DECLS
+
+#endif

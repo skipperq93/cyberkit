@@ -25,4 +25,4 @@
 
 #pragma once
 
-#include <JavaScriptCore/JSLockRefPrivate.h>
+#include <CyberScriptCore/JSLockRefPrivate.h>

@@ -32,12 +32,12 @@
 #import "EventSendingController.h"
 #import "LayoutTestSpellChecker.h"
 #import "UIScriptContext.h"
-#import <JavaScriptCore/JSContext.h>
-#import <JavaScriptCore/JSStringRefCF.h>
-#import <JavaScriptCore/JSValue.h>
-#import <JavaScriptCore/OpaqueJSString.h>
-#import <WebKit/WebPreferences.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberScriptCore/JSContext.h>
+#import <CyberScriptCore/JSStringRefCF.h>
+#import <CyberScriptCore/JSValue.h>
+#import <CyberScriptCore/OpaqueJSString.h>
+#import <CyberKit/WebPreferences.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <mach/mach_time.h>
 #import <pal/spi/mac/NSTextInputContextSPI.h>
 #import <wtf/WorkQueue.h>
@@ -121,7 +121,7 @@ void UIScriptControllerMac::overridePreference(JSStringRef preferenceRef, JSStri
     WebPreferences *preferences = mainFrame.webView.preferences;
 
     RetainPtr<CFStringRef> value = adoptCF(JSStringCopyCFString(kCFAllocatorDefault, valueRef));
-    if (JSStringIsEqualToUTF8CString(preferenceRef, "WebKitMinimumFontSize"))
+    if (JSStringIsEqualToUTF8CString(preferenceRef, "CyberKitMinimumFontSize"))
         preferences.minimumFontSize = [(__bridge NSString *)value.get() doubleValue];
 }
 

@@ -28,8 +28,8 @@
 #import "DumpRenderTree.h"
 #import "TestRunner.h"
 
-#import <WebKit/WebNavigationData.h>
-#import <WebKit/WebView.h>
+#import <CyberKit/WebNavigationData.h>
+#import <CyberKit/WebView.h>
 
 @interface NSURL (DRTExtras)
 - (NSString *)_drt_descriptionSuitableForTestResult;

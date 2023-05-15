@@ -556,7 +556,7 @@ def ttest(benchmarkType, a, b):
         print("Results ARE NOT significant")
 
 def getOptions():
-    parser = argparse.ArgumentParser(description="Compare two WebKit benchmark results. Pass in at least two JSON result files to compare them. This script prints the pValue along with the magnitude of the change. If more than one JSON is passed as a/b they will be merged when computing the breakdown.")
+    parser = argparse.ArgumentParser(description="Compare two CyberKit benchmark results. Pass in at least two JSON result files to compare them. This script prints the pValue along with the magnitude of the change. If more than one JSON is passed as a/b they will be merged when computing the breakdown.")
 
     parser.add_argument("-a",
         type=str,

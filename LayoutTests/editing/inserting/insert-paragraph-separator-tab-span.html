@@ -8,14 +8,14 @@
 <script src="../../resources/dump-as-markup.js"></script>
 <script>
 
-Markup.description('This test ensures WebKit avoids cloning Apple tab span when inserting a paragraph separator.\n'+
+Markup.description('This test ensures CyberKit avoids cloning Apple tab span when inserting a paragraph separator.\n'+
     'Only tab should be inside a Apple tab span in the following tests.');
 
 function runTest(div) {
     var offset = div.title.substr(0, div.title.indexOf(':'));
     window.getSelection().setPosition(div, offset);
     document.execCommand("InsertParagraph");
-    document.execCommand("InsertText", false, "hello world WebKit ");
+    document.execCommand("InsertText", false, "hello world CyberKit ");
     Markup.dump(div, div.title.substr(div.title.indexOf(': ') + 2));
 }
 

@@ -14,18 +14,18 @@ debug("");
 debug("CSSMatrix constructors");
 
 
-var m = new WebKitCSSMatrix();
+var m = new CyberKitCSSMatrix();
 shouldBeNonNull('m');
-shouldBeNonNull('new WebKitCSSMatrix()');
-shouldBeNonNull('new WebKitCSSMatrix(m)');
-shouldBeNonNull('new WebKitCSSMatrix("matrix(1, 0, 0, 1, 0, 0)")');
-shouldBeNonNull('new WebKitCSSMatrix("")');
-shouldBeNonNull('new WebKitCSSMatrix("none")');
-shouldBeNonNull('new WebKitCSSMatrix("   none   ")');
+shouldBeNonNull('new CyberKitCSSMatrix()');
+shouldBeNonNull('new CyberKitCSSMatrix(m)');
+shouldBeNonNull('new CyberKitCSSMatrix("matrix(1, 0, 0, 1, 0, 0)")');
+shouldBeNonNull('new CyberKitCSSMatrix("")');
+shouldBeNonNull('new CyberKitCSSMatrix("none")');
+shouldBeNonNull('new CyberKitCSSMatrix("   none   ")');
 
 debug("");
 debug("Test toString");
-var m = new WebKitCSSMatrix("matrix(1, 0, 0, 1, 0, 0)");
+var m = new CyberKitCSSMatrix("matrix(1, 0, 0, 1, 0, 0)");
 var s = m.toString();
 var a = s.split('(');
 shouldBe('a[0]', '"matrix"');
@@ -41,11 +41,11 @@ shouldBe('a3[1]', '""');
 
 debug("");
 debug("Test bad input to string constructor");
-shouldThrow('new WebKitCSSMatrix("banana")');
+shouldThrow('new CyberKitCSSMatrix("banana")');
 
 debug("");
 debug("Test attributes on default matrix");
-m = new WebKitCSSMatrix();
+m = new CyberKitCSSMatrix();
 shouldBe('m.a', '1');
 shouldBe('m.b', '0');
 shouldBe('m.c', '0');
@@ -55,7 +55,7 @@ shouldBe('m.f', '0');
 
 debug("");
 debug("Test attributes on custom matrix");
-m = new WebKitCSSMatrix("matrix(11, 12, 21, 22, 41, 42)");
+m = new CyberKitCSSMatrix("matrix(11, 12, 21, 22, 41, 42)");
 shouldBe('m.a', '11');
 shouldBe('m.b', '12');
 shouldBe('m.c', '21');
@@ -65,7 +65,7 @@ shouldBe('m.f', '42');
 
 debug("");
 debug("Test setMatrixValue - set to matrix()");
-m = new WebKitCSSMatrix();
+m = new CyberKitCSSMatrix();
 m.setMatrixValue("matrix(11, 12, 21, 22, 41, 42)");
 shouldBe('m.a', '11');
 shouldBe('m.b', '12');
@@ -76,7 +76,7 @@ shouldBe('m.f', '42');
 
 debug("");
 debug("Test setMatrixValue - set to translate(10px, 20px) scale(2, 3)");
-m = new WebKitCSSMatrix();
+m = new CyberKitCSSMatrix();
 m.setMatrixValue("translate(10px, 20px) scale(2, 3)");
 shouldBe('m.a', '2');
 shouldBe('m.b', '0');
@@ -93,7 +93,7 @@ shouldThrow('m.setMatrixValue("translate(10px, 20px) scale()")');
 
 debug("");
 debug("Test attributes on translate() and accumulation");
-m = new WebKitCSSMatrix();
+m = new CyberKitCSSMatrix();
 var m2 = m.translate(50,0);
 m2 = m2.translate(50,50);
 shouldBe('m2.a', '1');
@@ -152,7 +152,7 @@ shouldBe('parseFloat(m3.f)', '50');
 
 debug("");
 debug("Test rotate");
-m = new WebKitCSSMatrix();
+m = new CyberKitCSSMatrix();
 m2 = m.rotate(10);
 shouldBe('parseFloat(m2.a.toPrecision(6))', '0.984808');
 shouldBe('parseFloat(m2.b.toPrecision(6))', '0.173648');
@@ -172,7 +172,7 @@ shouldBe('parseFloat(m.f)', '0');
 
 debug("");
 debug("Test skew in horizontal direction");
-m = new WebKitCSSMatrix();
+m = new CyberKitCSSMatrix();
 m2 = m.skewX(10);
 shouldBe('parseFloat(m2.a)', '1');
 shouldBe('parseFloat(m2.b)', '0');
@@ -192,7 +192,7 @@ shouldBe('parseFloat(m.f)', '0');
 
 debug("");
 debug("Test skew in vertical direction");
-m = new WebKitCSSMatrix();
+m = new CyberKitCSSMatrix();
 m2 = m.skewY(35);
 shouldBe('parseFloat(m2.a)', '1');
 shouldBe('parseFloat(m2.b.toPrecision(6))', '0.700208');
@@ -212,8 +212,8 @@ shouldBe('parseFloat(m.f)', '0');
 
 debug("");
 debug("Test multiply");
-m = new WebKitCSSMatrix("matrix(1, 2, 3, 4, 5, 6)");
-m2 = new WebKitCSSMatrix("matrix(7, 8, 9, 10, 11, 12)");
+m = new CyberKitCSSMatrix("matrix(1, 2, 3, 4, 5, 6)");
+m2 = new CyberKitCSSMatrix("matrix(7, 8, 9, 10, 11, 12)");
 var m3 = m.multiply(m2);
 shouldBe('parseFloat(m3.a)', '31');
 shouldBe('parseFloat(m3.b)', '46');
@@ -224,8 +224,8 @@ shouldBe('parseFloat(m3.f)', '76');
 
 debug("");
 debug("Test that multiply works in the right direction");
-var tx = new WebKitCSSMatrix();
-var sx = new WebKitCSSMatrix();
+var tx = new CyberKitCSSMatrix();
+var sx = new CyberKitCSSMatrix();
 tx = tx.translate(100,0);
 sx = sx.scale(2,1);
 m = tx.multiply(sx);
@@ -253,7 +253,7 @@ shouldBe('sx.f', '0');
 
 debug("");
 debug("Test multiply with missing argument");
-m = new WebKitCSSMatrix("matrix(1, 2, 3, 4, 5, 6)");
+m = new CyberKitCSSMatrix("matrix(1, 2, 3, 4, 5, 6)");
 m2 = m.multiply();
 shouldBe('m2.a', '1');
 shouldBe('m2.b', '2');
@@ -264,7 +264,7 @@ shouldBe('m2.f', '6');
 
 debug("");
 debug("Test inverse");
-m = new WebKitCSSMatrix("matrix(2, 0, 0, 2, 10, 20)");
+m = new CyberKitCSSMatrix("matrix(2, 0, 0, 2, 10, 20)");
 m2 = m.inverse();
 
 shouldBe('parseFloat(m2.a)', '0.5');
@@ -285,7 +285,7 @@ shouldBe('parseFloat(m.f)', '20');
 
 debug("");
 debug("Test throwing exception from inverse");
-m = new WebKitCSSMatrix("matrix(0, 0, 0, 0, 0, 0)"); // not invertible
+m = new CyberKitCSSMatrix("matrix(0, 0, 0, 0, 0, 0)"); // not invertible
 m2 = m.inverse();
 
 shouldBeNaN('m2.a');

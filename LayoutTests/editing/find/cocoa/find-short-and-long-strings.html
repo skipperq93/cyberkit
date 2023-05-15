@@ -28,7 +28,7 @@
       window.getSelection().removeAllRanges();
       shouldBeTrue("window.find('a'.repeat(2**16 - 1))");
 
-      // Verify that find fails when reaching WebKit's hardcoded limit.
+      // Verify that find fails when reaching CyberKit's hardcoded limit.
       window.getSelection().removeAllRanges();
       shouldBeFalse("window.find('a'.repeat(2**16))");
 

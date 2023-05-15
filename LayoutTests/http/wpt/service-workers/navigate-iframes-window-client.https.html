@@ -9,15 +9,15 @@
 </head>
 <body>
 <script>
-var url = new URL("/WebKit/service-workers/resources/", location);
+var url = new URL("/CyberKit/service-workers/resources/", location);
 url = url.toString();
 var activeWorker;
 
 promise_test(async (test) => {
-    let registration = await navigator.serviceWorker.register("/WebKit/service-workers/navigate-window-client-worker.js", { scope : url });
+    let registration = await navigator.serviceWorker.register("/CyberKit/service-workers/navigate-window-client-worker.js", { scope : url });
     if (!registration.installing) {
         registration.unregister();
-        registration = await navigator.serviceWorker.register("/WebKit/service-workers/navigate-window-client-worker.js", { scope : url });
+        registration = await navigator.serviceWorker.register("/CyberKit/service-workers/navigate-window-client-worker.js", { scope : url });
     }
     activeWorker = registration.installing;
     await waitForState(activeWorker, "activating");

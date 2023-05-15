@@ -31,7 +31,7 @@
 		],
 		"paths": [
 			"LayoutTests/",
-			"Tools/TestWebKitAPI"
+			"Tools/TestCyberKitAPI"
 		]
 	},
 	{

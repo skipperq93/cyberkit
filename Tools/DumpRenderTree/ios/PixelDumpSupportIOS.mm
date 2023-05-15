@@ -38,11 +38,11 @@
 #import <CommonCrypto/CommonDigest.h>
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <QuartzCore/QuartzCore.h>
-#import <WebCore/DestinationColorSpace.h>
-#import <WebCore/GraphicsContextCG.h>
-#import <WebCore/IOSurface.h>
-#import <WebCore/PlatformScreen.h>
-#import <WebKit/WebCoreThread.h>
+#import <CyberCore/DestinationColorSpace.h>
+#import <CyberCore/GraphicsContextCG.h>
+#import <CyberCore/IOSurface.h>
+#import <CyberCore/PlatformScreen.h>
+#import <CyberKit/CyberCoreThread.h>
 #import <pal/spi/cg/CoreGraphicsSPI.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/BlockObjCExceptions.h>
@@ -64,15 +64,15 @@ RefPtr<BitmapContext> createBitmapContextFromWebView(bool onscreen, bool increme
     int bufferWidth = ceil(viewSize.width * deviceScaleFactor);
     int bufferHeight = ceil(viewSize.height * deviceScaleFactor);
 
-    WebCore::FloatSize snapshotSize(viewSize);
+    CyberCore::FloatSize snapshotSize(viewSize);
     snapshotSize.scale(deviceScaleFactor);
 
 #if HAVE(IOSURFACE_RGB10)
-    WebCore::IOSurface::Format snapshotFormat = WebCore::screenSupportsExtendedColor() ? WebCore::IOSurface::Format::RGB10 : WebCore::IOSurface::Format::BGRA;
+    CyberCore::IOSurface::Format snapshotFormat = CyberCore::screenSupportsExtendedColor() ? CyberCore::IOSurface::Format::RGB10 : CyberCore::IOSurface::Format::BGRA;
 #else
-    WebCore::IOSurface::Format snapshotFormat = WebCore::IOSurface::Format::BGRA;
+    CyberCore::IOSurface::Format snapshotFormat = CyberCore::IOSurface::Format::BGRA;
 #endif
-    auto surface = WebCore::IOSurface::create(nullptr, WebCore::expandedIntSize(snapshotSize), WebCore::DestinationColorSpace::SRGB(), WebCore::IOSurface::Name::Snapshot, snapshotFormat);
+    auto surface = CyberCore::IOSurface::create(nullptr, CyberCore::expandedIntSize(snapshotSize), CyberCore::DestinationColorSpace::SRGB(), CyberCore::IOSurface::Name::Snapshot, snapshotFormat);
     // FIXME: Something is missing here, nothing draws to surface.
     auto context = surface->createPlatformContext();
     RetainPtr<CGImageRef> cgImage = surface->createImage(context.get());

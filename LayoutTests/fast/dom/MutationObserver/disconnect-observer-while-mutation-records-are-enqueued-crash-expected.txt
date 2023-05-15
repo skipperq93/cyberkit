@@ -1,9 +1,9 @@
-This tests disconnecting a MutationObserver while a mutation record is enqueued. WebKit should not crash.
+This tests disconnecting a MutationObserver while a mutation record is enqueued. CyberKit should not crash.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 
 
-PASS WebKit did not crash
+PASS CyberKit did not crash
 PASS successfullyParsed is true
 
 TEST COMPLETE

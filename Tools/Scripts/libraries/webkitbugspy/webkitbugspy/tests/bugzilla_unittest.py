@@ -276,9 +276,9 @@ class TestBugzilla(unittest.TestCase):
                             IPv4=dict(description='Bugs involving IPv4 networking'),
                             IPv6=dict(description='Bugs involving IPv6 networking'),
                         ),
-                    ), WebKit=dict(
-                        description='The WebKit browser engine',
-                        versions=['Other', 'Safari 15', 'Safari Technology Preview', 'WebKit Local Build'],
+                    ), CyberKit=dict(
+                        description='The CyberKit browser engine',
+                        versions=['Other', 'Safari 15', 'Safari Technology Preview', 'CyberKit Local Build'],
                         components=dict(
                             Scrolling=dict(description='Bugs related to main thread and off-main thread scrolling'),
                             SVG=dict(description='For bugs in the SVG implementation.'),
@@ -296,7 +296,7 @@ class TestBugzilla(unittest.TestCase):
         ), projects=mocks.PROJECTS, issues=mocks.ISSUES):
             created = bugzilla.Tracker(self.URL).create(
                 'New bug', 'Creating new bug',
-                project='WebKit', component='Tables', version='Other',
+                project='CyberKit', component='Tables', version='Other',
             )
             self.assertEqual(created.id, 4)
             self.assertEqual(created.title, 'New bug')
@@ -311,7 +311,7 @@ class TestBugzilla(unittest.TestCase):
                 dict(name='Tim Contributor', username='tcontributor@example.com', emails=['tcontributor@example.com']),
             )
 
-            self.assertEqual(created.project, 'WebKit')
+            self.assertEqual(created.project, 'CyberKit')
             self.assertEqual(created.component, 'Tables')
             self.assertEqual(created.version, 'Other')
 
@@ -334,16 +334,16 @@ class TestBugzilla(unittest.TestCase):
                 dict(name='Tim Contributor', username='tcontributor@example.com', emails=['tcontributor@example.com']),
             )
 
-            self.assertEqual(created.project, 'WebKit')
+            self.assertEqual(created.project, 'CyberKit')
             self.assertEqual(created.component, 'SVG')
 
         self.assertEqual(
             captured.stdout.getvalue(),
             '''What project should the bug be associated with?:
     1) CFNetwork
-    2) WebKit
+    2) CyberKit
 : 
-What component in 'WebKit' should the bug be associated with?:
+What component in 'CyberKit' should the bug be associated with?:
     1) SVG
     2) Scrolling
     3) Tables
@@ -355,7 +355,7 @@ What component in 'WebKit' should the bug be associated with?:
     def test_get_component(self):
         with mocks.Bugzilla(self.URL.split('://')[1], issues=mocks.ISSUES, projects=mocks.PROJECTS):
             issue = bugzilla.Tracker(self.URL).issue(1)
-            self.assertEqual(issue.project, 'WebKit')
+            self.assertEqual(issue.project, 'CyberKit')
             self.assertEqual(issue.component, 'Text')
             self.assertEqual(issue.version, 'Other')
 
@@ -364,10 +364,10 @@ What component in 'WebKit' should the bug be associated with?:
                 BUGS_EXAMPLE_COM_USERNAME='tcontributor@example.com',
                 BUGS_EXAMPLE_COM_PASSWORD='password',
         ), projects=mocks.PROJECTS, issues=mocks.ISSUES):
-            bugzilla.Tracker(self.URL).issue(1).set_component(project='WebKit', component='Tables', version='Safari 15')
+            bugzilla.Tracker(self.URL).issue(1).set_component(project='CyberKit', component='Tables', version='Safari 15')
 
             issue = bugzilla.Tracker(self.URL).issue(1)
-            self.assertEqual(issue.project, 'WebKit')
+            self.assertEqual(issue.project, 'CyberKit')
             self.assertEqual(issue.component, 'Tables')
             self.assertEqual(issue.version, 'Safari 15')
 
@@ -403,7 +403,7 @@ What component in 'WebKit' should the bug be associated with?:
             with OutputCapture() as captured:
                 self.assertIsNone(tracker.create(
                     'New bug', 'Creating new bug',
-                    project='WebKit', component='Tables', version='Other',
+                    project='CyberKit', component='Tables', version='Other',
                 ))
             self.assertEqual(
                 captured.stderr.getvalue(),
@@ -420,8 +420,8 @@ What component in 'WebKit' should the bug be associated with?:
                 bugzilla.Tracker.Redaction(True, 'is a Bugzilla'),
             )
             self.assertEqual(
-                bugzilla.Tracker(self.URL, redact={'project:WebKit': True}).issue(1).redacted,
-                bugzilla.Tracker.Redaction(True, "matches 'project:WebKit'"),
+                bugzilla.Tracker(self.URL, redact={'project:CyberKit': True}).issue(1).redacted,
+                bugzilla.Tracker.Redaction(True, "matches 'project:CyberKit'"),
             )
             self.assertEqual(
                 bugzilla.Tracker(self.URL, redact={'component:Text': True}).issue(1).redacted,
@@ -452,7 +452,7 @@ What component in 'WebKit' should the bug be associated with?:
             BUGS_EXAMPLE_COM_USERNAME='tcontributor@example.com',
             BUGS_EXAMPLE_COM_PASSWORD='password',
         ), users=mocks.USERS, issues=mocks.ISSUES, projects=mocks.PROJECTS):
-            issue = bugzilla.Tracker(self.URL, radar_importer=mocks.USERS['Radar WebKit Bug Importer']).issue(1)
+            issue = bugzilla.Tracker(self.URL, radar_importer=mocks.USERS['Radar CyberKit Bug Importer']).issue(1)
             self.assertEqual(issue.references, [])
             self.assertIsNone(issue.cc_radar(block=True))
 
@@ -475,7 +475,7 @@ What component in 'WebKit' should the bug be associated with?:
             BUGS_EXAMPLE_COM_PASSWORD='password',
         ), users=mocks.USERS, issues=mocks.ISSUES, projects=mocks.PROJECTS), mocks.NoRadar():
             radar_tracker = radar.Tracker()
-            bugzilla_tracker = bugzilla.Tracker(self.URL, radar_importer=mocks.USERS['Radar WebKit Bug Importer'])
+            bugzilla_tracker = bugzilla.Tracker(self.URL, radar_importer=mocks.USERS['Radar CyberKit Bug Importer'])
 
             with patch('webkitbugspy.Tracker._trackers', [radar_tracker, bugzilla_tracker]):
                 issue = bugzilla_tracker.issue(1)
@@ -493,7 +493,7 @@ What component in 'WebKit' should the bug be associated with?:
             users=mocks.USERS, issues=mocks.ISSUES, projects=mocks.PROJECTS,
         ):
             radar_tracker = radar.Tracker()
-            bugzilla_tracker = bugzilla.Tracker(self.URL, radar_importer=mocks.USERS['Radar WebKit Bug Importer'])
+            bugzilla_tracker = bugzilla.Tracker(self.URL, radar_importer=mocks.USERS['Radar CyberKit Bug Importer'])
 
             with patch('webkitbugspy.Tracker._trackers', [radar_tracker, bugzilla_tracker]):
                 issue = bugzilla_tracker.issue(1)
@@ -511,7 +511,7 @@ What component in 'WebKit' should the bug be associated with?:
             users=mocks.USERS, issues=mocks.ISSUES, projects=mocks.PROJECTS,
         ), wkmocks.Time:
             radar_tracker = radar.Tracker()
-            bugzilla_tracker = bugzilla.Tracker(self.URL, radar_importer=mocks.USERS['Radar WebKit Bug Importer'])
+            bugzilla_tracker = bugzilla.Tracker(self.URL, radar_importer=mocks.USERS['Radar CyberKit Bug Importer'])
 
             with patch('webkitbugspy.Tracker._trackers', [radar_tracker, bugzilla_tracker]):
                 issue = bugzilla_tracker.issue(1)

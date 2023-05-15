@@ -18,7 +18,7 @@
                     overflowElement.addEventListener("wheel", mousewheelHandler, false);
 
                     var wheelEvent = document.createEvent("WheelEvent");
-                    wheelEvent.initWebKitWheelEvent(-window.expectedScrollLeft, -window.expectedScrollTop, window, 0, 0, 0, 0, false, false, false, false);
+                    wheelEvent.initCyberKitWheelEvent(-window.expectedScrollLeft, -window.expectedScrollTop, window, 0, 0, 0, 0, false, false, false, false);
                     overflowElement.dispatchEvent(wheelEvent);
                 }
 

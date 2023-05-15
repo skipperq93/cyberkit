@@ -1,0 +1,5129 @@
+# Copyright (C) 2022-2023 Apple Inc. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1.  Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+# 2.  Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in the
+#     documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+header: <CyberCore/DOMCacheEngine.h>
+[CustomHeader] struct CyberCore::DOMCacheEngine::CacheInfo {
+    CyberCore::DOMCacheIdentifier identifier
+    String name
+}
+
+[CustomHeader] struct CyberCore::DOMCacheEngine::CacheInfos {
+    Vector<CyberCore::DOMCacheEngine::CacheInfo> infos;
+    uint64_t updateCounter;
+};
+
+[CustomHeader] struct CyberCore::DOMCacheEngine::CacheIdentifierOperationResult {
+    CyberCore::DOMCacheIdentifier identifier;
+    bool hadStorageError;
+};
+
+[CustomHeader] struct CyberCore::DOMCacheEngine::CrossThreadRecord {
+    uint64_t identifier;
+    uint64_t updateResponseCounter;
+    CyberCore::FetchHeadersGuard requestHeadersGuard;
+    CyberCore::ResourceRequest request;
+    CyberCore::FetchOptions options;
+    String referrer;
+    CyberCore::FetchHeadersGuard responseHeadersGuard;
+    CyberCore::ResourceResponse::CrossThreadData response;
+    std::variant<std::nullptr_t, Ref<CyberCore::FormData>, Ref<CyberCore::SharedBuffer>> responseBody;
+    uint64_t responseBodySize;
+};
+
+[AdditionalEncoder=StreamConnectionEncoder] class CyberCore::TransformationMatrix {
+    double m11()
+    double m12()
+    double m13()
+    double m14()
+    double m21()
+    double m22()
+    double m23()
+    double m24()
+    double m31()
+    double m32()
+    double m33()
+    double m34()
+    double m41()
+    double m42()
+    double m43()
+    double m44()
+}
+
+struct CyberCore::CacheQueryOptions {
+    bool ignoreSearch;
+    bool ignoreMethod;
+    bool ignoreVary;
+}
+
+struct CyberCore::CharacterRange {
+    uint64_t location
+    uint64_t length
+}
+
+[AdditionalEncoder=StreamConnectionEncoder] class CyberCore::AffineTransform {
+    double a()
+    double b()
+    double c()
+    double d()
+    double e()
+    double f()
+}
+
+[AdditionalEncoder=StreamConnectionEncoder] class CyberCore::FloatPoint {
+    float x()
+    float y()
+}
+
+[AdditionalEncoder=StreamConnectionEncoder] class CyberCore::FloatPoint3D {
+    float x()
+    float y()
+    float z()
+}
+
+class CyberCore::FloatQuad {
+    CyberCore::FloatPoint p1();
+    CyberCore::FloatPoint p2();
+    CyberCore::FloatPoint p3();
+    CyberCore::FloatPoint p4();
+}
+
+struct CyberCore::IDBCursorRecord {
+    CyberCore::IDBKeyData key;
+    CyberCore::IDBKeyData primaryKey;
+    CyberCore::IDBValue value;
+}
+
+class CyberCore::IDBCursorInfo {
+    CyberCore::IDBResourceIdentifier identifier();
+    CyberCore::IDBResourceIdentifier transactionIdentifier();
+    uint64_t objectStoreIdentifier();
+    uint64_t sourceIdentifier();
+
+    CyberCore::IDBKeyRangeData range();
+
+    CyberCore::IndexedDB::CursorSource cursorSource();
+    CyberCore::IndexedDB::CursorDirection cursorDirection();
+    CyberCore::IndexedDB::CursorType cursorType();
+};
+
+class CyberCore::IDBError {
+    std::optional<CyberCore::ExceptionCode> code()
+    String messageForSerialization()
+}
+
+struct CyberCore::IDBGetAllRecordsData {
+    CyberCore::IDBKeyRangeData keyRangeData;
+    CyberCore::IndexedDB::GetAllType getAllType;
+    std::optional<uint32_t> count;
+    uint64_t objectStoreIdentifier;
+    uint64_t indexIdentifier;
+}
+
+class CyberCore::IDBGetResult {
+    CyberCore::IDBKeyData keyData()
+    CyberCore::IDBKeyData primaryKeyData()
+    CyberCore::IDBValue value()
+    std::optional<CyberCore::IDBKeyPath> keyPath()
+    Vector<CyberCore::IDBCursorRecord> prefetchedRecords()
+    bool isDefined()
+}
+
+class CyberCore::IDBGetAllResult {
+    CyberCore::IndexedDB::GetAllType type()
+    Vector<CyberCore::IDBKeyData> keys()
+    Vector<CyberCore::IDBValue> values()
+    std::optional<CyberCore::IDBKeyPath> keyPath()
+}
+
+class CyberCore::IDBDatabaseInfo {
+    String m_name
+    uint64_t m_version
+    uint64_t m_maxIndexID
+    uint64_t m_maxObjectStoreID
+    HashMap<uint64_t, CyberCore::IDBObjectStoreInfo> m_objectStoreMap
+}
+
+struct CyberCore::IDBKeyRangeData {
+    CyberCore::IDBKeyData lowerKey;
+    CyberCore::IDBKeyData upperKey;
+
+    bool lowerOpen;
+    bool upperOpen;
+};
+
+class CyberCore::IDBTransactionInfo {
+    CyberCore::IDBResourceIdentifier identifier();
+    CyberCore::IDBTransactionMode mode();
+    CyberCore::IDBTransactionDurability durability();
+    uint64_t newVersion();
+    Vector<String> objectStores();
+    std::unique_ptr<CyberCore::IDBDatabaseInfo> originalDatabaseInfo();
+};
+
+struct CyberCore::IDBGetRecordData {
+    CyberCore::IDBKeyRangeData keyRangeData;
+    CyberCore::IDBGetRecordDataType type;
+}
+
+class CyberCore::IDBIndexInfo {
+    uint64_t identifier()
+    uint64_t objectStoreIdentifier()
+    String name()
+    CyberCore::IDBKeyPath keyPath()
+    bool unique()
+    bool multiEntry()
+}
+
+class CyberCore::IDBObjectStoreInfo {
+    uint64_t identifier()
+    String name()
+    std::optional<CyberCore::IDBKeyPath> keyPath()
+    bool autoIncrement()
+    HashMap<uint64_t, CyberCore::IDBIndexInfo> indexMap()
+}
+
+struct CyberCore::IDBIterateCursorData {
+    CyberCore::IDBKeyData keyData;
+    CyberCore::IDBKeyData primaryKeyData;
+    unsigned count;
+    CyberCore::IndexedDB::CursorIterateOption option;
+}
+
+class CyberCore::IDBResourceIdentifier {
+    CyberCore::IDBConnectionIdentifier m_idbConnectionIdentifier
+    uint64_t m_resourceNumber
+}
+
+class CyberCore::IDBValue {
+    CyberCore::ThreadSafeDataBuffer data()
+    Vector<String> blobURLs()
+    Vector<String> blobFilePaths()
+};
+
+class CyberCore::IDBRequestData {
+    CyberCore::IDBConnectionIdentifier m_serverConnectionIdentifier;
+    CyberCore::IDBResourceIdentifier m_requestIdentifier;
+    std::optional<CyberCore::IDBResourceIdentifier> m_transactionIdentifier;
+    std::optional<CyberCore::IDBResourceIdentifier> m_cursorIdentifier;
+    uint64_t m_objectStoreIdentifier;
+    uint64_t m_indexIdentifier;
+    CyberCore::IndexedDB::IndexRecordType m_indexRecordType;
+    std::optional<CyberCore::IDBDatabaseIdentifier> m_databaseIdentifier;
+    uint64_t m_requestedVersion;
+    CyberCore::IndexedDB::RequestType m_requestType;
+}
+
+# FIXME: When decoding from IPC, databaseName can be null, and the non-empty constructor asserts that this is not the case.
+[LegacyPopulateFromEmptyConstructor] class CyberCore::IDBDatabaseIdentifier {
+    String m_databaseName
+    CyberCore::ClientOrigin m_origin
+    bool m_isTransient
+}
+
+struct CyberCore::IDBDatabaseNameAndVersion {
+    String name;
+    uint64_t version;
+}
+
+[LegacyPopulateFromEmptyConstructor] class CyberCore::IDBResultData {
+    CyberCore::IDBResultType m_type;
+    CyberCore::IDBResourceIdentifier m_requestIdentifier;
+    CyberCore::IDBError m_error;
+    uint64_t m_databaseConnectionIdentifier;
+    std::unique_ptr<CyberCore::IDBDatabaseInfo> m_databaseInfo;
+    std::unique_ptr<CyberCore::IDBTransactionInfo> m_transactionInfo;
+    std::unique_ptr<CyberCore::IDBKeyData> m_resultKey;
+    std::unique_ptr<CyberCore::IDBGetResult> m_getResult;
+    std::unique_ptr<CyberCore::IDBGetAllResult> m_getAllResult;
+    uint64_t m_resultInteger;
+}
+
+class CyberCore::IDBKeyData {
+    std::variant<std::nullptr_t, CyberCore::IDBKeyData::Invalid, Vector<CyberCore::IDBKeyData>, String, double, CyberCore::IDBKeyData::Date, CyberCore::ThreadSafeDataBuffer, CyberCore::IDBKeyData::Min, CyberCore::IDBKeyData::Max> value()
+}
+
+[Nested] struct CyberCore::IDBKeyData::Invalid {
+}
+
+[Nested] struct CyberCore::IDBKeyData::Min {
+}
+
+[Nested] struct CyberCore::IDBKeyData::Max {
+}
+
+[Nested] struct CyberCore::IDBKeyData::Date {
+    double value
+}
+
+enum class CyberCore::IndexedDB::KeyType : int8_t {
+    Max,
+    Invalid,
+    Array,
+    Binary,
+    String,
+    Date,
+    Number,
+    Min,
+};
+
+enum class CyberCore::IndexedDB::CursorDirection : uint8_t {
+    Next,
+    Nextunique,
+    Prev,
+    Prevunique,
+};
+
+enum class CyberCore::IndexedDB::ObjectStoreOverwriteMode : uint8_t {
+    Overwrite,
+    OverwriteForCursor,
+    NoOverwrite,
+};
+
+enum class CyberCore::IndexedDB::RequestType : uint8_t {
+    Open,
+    Delete,
+    Other,
+};
+
+#if USE(CG)
+headers: <CoreGraphics/CGGeometry.h> <CoreGraphics/CGAffineTransform.h>
+[AdditionalEncoder=StreamConnectionEncoder] struct CGSize {
+    CGFloat width
+    CGFloat height
+};
+
+struct CGPoint {
+    CGFloat x
+    CGFloat y
+};
+
+struct CGRect {
+    CGPoint origin
+    CGSize size
+};
+
+struct CGAffineTransform {
+  CGFloat a
+  CGFloat b
+  CGFloat c
+  CGFloat d
+  CGFloat tx
+  CGFloat ty
+};
+#endif
+
+[AdditionalEncoder=StreamConnectionEncoder] class CyberCore::FloatRect {
+    CyberCore::FloatPoint location()
+    CyberCore::FloatSize size()
+}
+
+[RefCounted, CustomHeader] class CyberCore::LinearTimingFunction {
+};
+
+[Nested] enum class CyberCore::CubicBezierTimingFunction::TimingFunctionPreset : uint8_t {
+    Ease,
+    EaseIn,
+    EaseOut,
+    EaseInOut,
+    Custom
+};
+
+[RefCounted, CustomHeader] class CyberCore::CubicBezierTimingFunction {
+    CyberCore::CubicBezierTimingFunction::TimingFunctionPreset timingFunctionPreset()
+    double x1()
+    double y1()
+    double x2()
+    double y2()
+};
+
+[Nested] enum class CyberCore::StepsTimingFunction::StepPosition : uint8_t {
+    JumpStart,
+    JumpEnd,
+    JumpNone,
+    JumpBoth,
+    Start,
+    End,
+};
+
+[RefCounted, CustomHeader] class CyberCore::StepsTimingFunction {
+    int numberOfSteps()
+    std::optional<CyberCore::StepsTimingFunction::StepPosition> stepPosition()
+};
+
+[RefCounted, CustomHeader] class CyberCore::SpringTimingFunction {
+    double mass()
+    double stiffness()
+    double damping()
+    double initialVelocity()
+};
+
+[LegacyPopulateFromEmptyConstructor] struct CyberCore::ResourceLoadStatistics {
+    CyberCore::RegistrableDomain registrableDomain;
+    WallTime lastSeen;
+    bool hadUserInteraction;
+    WallTime mostRecentUserInteractionTime;
+    bool grandfathered;
+    HashSet<CyberCore::RegistrableDomain> storageAccessUnderTopFrameDomains;
+    HashSet<CyberCore::RegistrableDomain> topFrameUniqueRedirectsTo;
+    HashSet<CyberCore::RegistrableDomain> topFrameUniqueRedirectsToSinceSameSiteStrictEnforcement;
+    HashSet<CyberCore::RegistrableDomain> topFrameUniqueRedirectsFrom;
+    HashSet<CyberCore::RegistrableDomain> topFrameLinkDecorationsFrom;
+    bool gotLinkDecorationFromPrevalentResource;
+    HashSet<CyberCore::RegistrableDomain> topFrameLoadedThirdPartyScripts;
+    HashSet<CyberCore::RegistrableDomain> subframeUnderTopFrameDomains;
+    HashSet<CyberCore::RegistrableDomain> subresourceUnderTopFrameDomains;
+    HashSet<CyberCore::RegistrableDomain> subresourceUniqueRedirectsTo;
+    HashSet<CyberCore::RegistrableDomain> subresourceUniqueRedirectsFrom;
+    bool isPrevalentResource;
+    bool isVeryPrevalentResource;
+    unsigned dataRecordsRemoved;
+    unsigned timesAccessedAsFirstPartyDueToUserInteraction;
+    unsigned timesAccessedAsFirstPartyDueToStorageAccessAPI;
+#if ENABLE(WEB_API_STATISTICS)
+    HashSet<CyberCore::RegistrableDomain> topFrameRegistrableDomainsWhichAccessedWebAPIs;
+    HashSet<String> fontsFailedToLoad;
+    HashSet<String> fontsSuccessfullyLoaded;
+    CyberCore::CanvasActivityRecord canvasActivityRecord;
+    OptionSet<CyberCore::NavigatorAPIsAccessed> navigatorFunctionsAccessed;
+    OptionSet<CyberCore::ScreenAPIsAccessed> screenFunctionsAccessed;
+#endif
+};
+
+[OptionSet] enum class CyberCore::NavigatorAPIsAccessed : uint64_t {
+    AppVersion,
+    UserAgent,
+    Plugins,
+    MimeTypes,
+    CookieEnabled
+};
+
+[OptionSet] enum class CyberCore::ScreenAPIsAccessed : uint64_t {
+    Height,
+    Width,
+    ColorDepth,
+    AvailLeft,
+    AvailTop,
+    AvailHeight,
+    AvailWidth
+};
+
+#if ENABLE(GPU_PROCESS) && ENABLE(WEBGL)
+header: <CyberCore/GraphicsContextGLActiveInfo.h>
+[AdditionalEncoder=StreamConnectionEncoder, CustomHeader] struct CyberCore::GraphicsContextGLActiveInfo {
+    String name;
+    GCGLenum type;
+    GCGLint size;
+};
+#endif
+
+enum class CyberCore::ViewportFit : uint8_t {
+    Auto,
+    Contain,
+    Cover,
+};
+
+header: <CyberCore/ViewportArguments.h>
+[CustomHeader] struct CyberCore::ViewportAttributes {
+    CyberCore::FloatSize layoutSize;
+
+    float initialScale;
+    float minimumScale;
+    float maximumScale;
+
+    float userScalable;
+    float orientation;
+    float shrinkToFit;
+
+    CyberCore::ViewportFit viewportFit;
+};
+
+header: <CyberCore/ShareData.h>
+[CustomHeader] struct CyberCore::ShareDataWithParsedURL {
+    CyberCore::ShareData shareData;
+    std::optional<URL> url;
+    Vector<CyberCore::RawFile> files;
+    CyberCore::ShareDataOriginator originator;
+};
+
+struct CyberCore::ShareData {
+    String title;
+    String text;
+    String url;
+    [NotSerialized] Vector<RefPtr<CyberCore::File>> files;
+};
+
+enum class CyberCore::ShareDataOriginator : bool
+
+[CustomHeader] struct CyberCore::RawFile {
+    String fileName;
+    RefPtr<CyberCore::SharedBuffer> fileData;
+};
+
+[AdditionalEncoder=StreamConnectionEncoder] class CyberCore::FloatRoundedRect {
+    CyberCore::FloatRect rect();
+    CyberCore::FloatSize radii().topLeft();
+    CyberCore::FloatSize radii().topRight();
+    CyberCore::FloatSize radii().bottomLeft();
+    CyberCore::FloatSize radii().bottomRight();
+}
+
+[AdditionalEncoder=StreamConnectionEncoder] class CyberCore::IntRect {
+    CyberCore::IntPoint location();
+    [Validator='CyberCore::IntRect { *location, *size }.isValid()'] CyberCore::IntSize size();
+}
+
+[AdditionalEncoder=StreamConnectionEncoder] class CyberCore::IntPoint {
+    int x();
+    int y();
+}
+
+[AdditionalEncoder=StreamConnectionEncoder] class CyberCore::IntSize {
+    int width();
+    int height();
+}
+
+[AdditionalEncoder=StreamConnectionEncoder] class CyberCore::FloatSize {
+    float width();
+    float height();
+}
+
+[AdditionalEncoder=StreamConnectionEncoder, CreateUsing=fromRawValue] class CyberCore::LayoutUnit {
+    int rawValue()
+}
+
+[AdditionalEncoder=StreamConnectionEncoder] class CyberCore::LayoutPoint {
+    CyberCore::LayoutUnit x();
+    CyberCore::LayoutUnit y();
+}
+
+[AdditionalEncoder=StreamConnectionEncoder] class CyberCore::LayoutSize {
+    CyberCore::LayoutUnit width();
+    CyberCore::LayoutUnit height();
+}
+
+struct CyberCore::DictionaryPopupInfo {
+    CyberCore::FloatPoint origin;
+    CyberCore::TextIndicatorData textIndicator;
+#if PLATFORM(COCOA)
+    CyberCore::DictionaryPopupInfoCocoa platformData;
+#endif
+};
+
+enum class CyberCore::PCM::AttributionEphemeral : bool
+enum class CyberCore::PCM::WasSent : bool
+
+class CyberCore::PrivateClickMeasurement {
+    uint8_t sourceID()
+    CyberCore::PCM::SourceSite sourceSite()
+    CyberCore::PCM::AttributionDestinationSite destinationSite()
+    WallTime timeOfAdClick()
+    CyberCore::PCM::AttributionEphemeral isEphemeral()
+    std::optional<uint64_t> adamID()
+    std::optional<CyberCore::PCM::AttributionTriggerData> attributionTriggerData()
+    CyberCore::PCM::AttributionTimeToSendData timesToSend()
+    std::optional<CyberCore::PCM::EphemeralNonce> ephemeralSourceNonce()
+    String sourceApplicationBundleID()
+}
+
+[CustomHeader] struct CyberCore::PCM::SourceSite {
+    CyberCore::RegistrableDomain registrableDomain
+}
+
+[CustomHeader] struct CyberCore::PCM::AttributionDestinationSite {
+    CyberCore::RegistrableDomain registrableDomain
+}
+
+[CustomHeader] struct CyberCore::PCM::EphemeralNonce {
+    String nonce
+}
+
+[CustomHeader] struct CyberCore::PCM::AttributionTriggerData {
+    uint8_t data
+    uint8_t priority;
+    CyberCore::PCM::WasSent wasSent;
+    std::optional<CyberCore::RegistrableDomain> sourceRegistrableDomain;
+    std::optional<CyberCore::PCM::EphemeralNonce> ephemeralDestinationNonce;
+    std::optional<CyberCore::RegistrableDomain> destinationSite;
+    [NotSerialized] std::optional<CyberCore::PCM::DestinationUnlinkableToken> destinationUnlinkableToken;
+    [NotSerialized] std::optional<CyberCore::PCM::DestinationSecretToken> destinationSecretToken;
+}
+
+[CustomHeader] struct CyberCore::PCM::AttributionTimeToSendData {
+    std::optional<WallTime> sourceEarliestTimeToSend;
+    std::optional<WallTime> destinationEarliestTimeToSend;
+}
+
+#if ENABLE(APPLE_PAY_RECURRING_PAYMENTS)
+struct CyberCore::ApplePayRecurringPaymentRequest {
+    String paymentDescription
+    CyberCore::ApplePayLineItem regularBilling
+    std::optional<CyberCore::ApplePayLineItem> trialBilling
+    String billingAgreement
+    String managementURL
+    String tokenNotificationURL
+};
+#endif
+
+#if ENABLE(APPLE_PAY_MULTI_MERCHANT_PAYMENTS)
+struct CyberCore::ApplePayPaymentTokenContext {
+    String merchantIdentifier
+    String externalIdentifier
+    String merchantName
+    String merchantDomain
+    String amount
+}
+#endif
+
+#if ENABLE(APPLE_PAY_DEFERRED_PAYMENTS)
+struct CyberCore::ApplePayDeferredPaymentRequest {
+    String billingAgreement
+    CyberCore::ApplePayLineItem deferredBilling
+    WallTime freeCancellationDate
+    String freeCancellationDateTimeZone
+    String managementURL
+    String paymentDescription
+    String tokenNotificationURL
+};
+#endif
+
+#if ENABLE(APPLE_PAY_PAYMENT_ORDER_DETAILS)
+struct CyberCore::ApplePayPaymentOrderDetails {
+    String orderTypeIdentifier
+    String orderIdentifier
+    String webServiceURL
+    String authenticationToken
+}
+#endif
+
+#if ENABLE(APPLE_PAY_AMS_UI) && ENABLE(PAYMENT_REQUEST)
+struct CyberCore::ApplePayAMSUIRequest {
+    String engagementRequest
+}
+#endif
+
+#if ENABLE(APPLE_PAY_AUTOMATIC_RELOAD_PAYMENTS)
+struct CyberCore::ApplePayAutomaticReloadPaymentRequest {
+    String paymentDescription
+    CyberCore::ApplePayLineItem automaticReloadBilling
+    String billingAgreement
+    String managementURL
+    String tokenNotificationURL
+}
+#endif
+
+#if ENABLE(APPLE_PAY_SHIPPING_METHOD_DATE_COMPONENTS_RANGE)
+struct CyberCore::ApplePayDateComponents {
+    std::optional<unsigned> years;
+    std::optional<unsigned> months;
+    std::optional<unsigned> days;
+    std::optional<unsigned> hours;
+}
+
+struct CyberCore::ApplePayDateComponentsRange {
+    CyberCore::ApplePayDateComponents startDateComponents;
+    CyberCore::ApplePayDateComponents endDateComponents;
+}
+#endif // ENABLE(APPLE_PAY_SHIPPING_METHOD_DATE_COMPONENTS_RANGE)
+
+#if ENABLE(APPLE_PAY)
+struct CyberCore::ApplePaySetupConfiguration {
+    String merchantIdentifier;
+    String referrerIdentifier;
+    String signature;
+    Vector<String> signedFields;
+};
+
+[Nested] enum class CyberCore::ApplePayLineItem::Type : bool;
+
+struct CyberCore::ApplePayLineItem {
+    CyberCore::ApplePayLineItem::Type type
+    String label
+    String amount
+    CyberCore::ApplePayPaymentTiming paymentTiming
+#if ENABLE(APPLE_PAY_RECURRING_LINE_ITEM)
+    WallTime recurringPaymentStartDate
+    CyberCore::ApplePayRecurringPaymentDateUnit recurringPaymentIntervalUnit
+    unsigned recurringPaymentIntervalCount
+    WallTime recurringPaymentEndDate
+#endif
+#if ENABLE(APPLE_PAY_DEFERRED_LINE_ITEM)
+    WallTime deferredPaymentDate
+#endif
+#if ENABLE(APPLE_PAY_AUTOMATIC_RELOAD_LINE_ITEM)
+    String automaticReloadPaymentThresholdAmount
+#endif
+}
+
+struct CyberCore::ApplePayShippingMethod {
+    String label
+    String detail
+    String amount
+    String identifier
+#if ENABLE(APPLE_PAY_SHIPPING_METHOD_DATE_COMPONENTS_RANGE)
+    std::optional<CyberCore::ApplePayDateComponentsRange> dateComponentsRange
+#endif
+#if ENABLE(APPLE_PAY_SELECTED_SHIPPING_METHOD)
+    bool selected
+#endif
+}
+
+[RefCounted] class CyberCore::ApplePayError {
+    CyberCore::ApplePayErrorCode code()
+    std::optional<CyberCore::ApplePayErrorContactField> contactField()
+    String message()
+}
+
+enum class CyberCore::ApplePayLogoStyle : bool
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::ApplePayLogoSystemImage {
+    CyberCore::ApplePayLogoStyle applePayLogoStyle()
+}
+
+struct CyberCore::ApplePayDetailsUpdateBase {
+    CyberCore::ApplePayLineItem newTotal;
+    Vector<CyberCore::ApplePayLineItem> newLineItems;
+#if ENABLE(APPLE_PAY_RECURRING_PAYMENTS)
+    std::optional<CyberCore::ApplePayRecurringPaymentRequest> newRecurringPaymentRequest;
+#endif
+#if ENABLE(APPLE_PAY_AUTOMATIC_RELOAD_PAYMENTS)
+    std::optional<CyberCore::ApplePayAutomaticReloadPaymentRequest> newAutomaticReloadPaymentRequest;
+#endif
+#if ENABLE(APPLE_PAY_MULTI_MERCHANT_PAYMENTS)
+    std::optional<Vector<CyberCore::ApplePayPaymentTokenContext>> newMultiTokenContexts;
+#endif
+#if ENABLE(APPLE_PAY_DEFERRED_PAYMENTS)
+    std::optional<CyberCore::ApplePayDeferredPaymentRequest> newDeferredPaymentRequest;
+#endif
+}
+
+struct CyberCore::ApplePayPaymentMethodUpdate : CyberCore::ApplePayDetailsUpdateBase {
+#if ENABLE(APPLE_PAY_UPDATE_SHIPPING_METHODS_WHEN_CHANGING_LINE_ITEMS)
+    Vector<RefPtr<CyberCore::ApplePayError>> errors;
+    Vector<CyberCore::ApplePayShippingMethod> newShippingMethods;
+#endif
+#if ENABLE(APPLE_PAY_INSTALLMENTS)
+    String installmentGroupIdentifier;
+#endif
+};
+
+struct CyberCore::ApplePayShippingContactUpdate : CyberCore::ApplePayDetailsUpdateBase {
+    Vector<RefPtr<CyberCore::ApplePayError>> errors;
+    Vector<CyberCore::ApplePayShippingMethod> newShippingMethods;
+};
+
+struct CyberCore::ApplePayShippingMethodUpdate : CyberCore::ApplePayDetailsUpdateBase {
+#if ENABLE(APPLE_PAY_UPDATE_SHIPPING_METHODS_WHEN_CHANGING_LINE_ITEMS)
+    Vector<CyberCore::ApplePayShippingMethod> newShippingMethods;
+#endif
+};
+
+struct CyberCore::ApplePayPaymentAuthorizationResult {
+    unsigned short status;
+    Vector<RefPtr<CyberCore::ApplePayError>> errors;
+#if ENABLE(APPLE_PAY_PAYMENT_ORDER_DETAILS)
+    std::optional<CyberCore::ApplePayPaymentOrderDetails> orderDetails;
+#endif
+}
+
+enum class CyberCore::ApplePayErrorContactField : uint8_t {
+    PhoneNumber,
+    EmailAddress,
+    Name,
+    PhoneticName,
+    PostalAddress,
+    AddressLines,
+    SubLocality,
+    Locality,
+    PostalCode,
+    SubAdministrativeArea,
+    AdministrativeArea,
+    Country,
+    CountryCode,
+};
+
+enum class CyberCore::ApplePayErrorCode : uint8_t {
+    Unknown,
+    ShippingContactInvalid,
+    BillingContactInvalid,
+    AddressUnserviceable,
+#if ENABLE(APPLE_PAY_COUPON_CODE)
+    CouponCodeInvalid,
+    CouponCodeExpired,
+#endif
+};
+#endif // ENABLE(APPLE_PAY)
+
+#if ENABLE(APPLE_PAY_COUPON_CODE)
+struct CyberCore::ApplePayCouponCodeUpdate : CyberCore::ApplePayDetailsUpdateBase {
+    Vector<RefPtr<CyberCore::ApplePayError>> errors;
+    Vector<CyberCore::ApplePayShippingMethod> newShippingMethods;
+};
+#endif
+
+header: <CyberCore/ScreenOrientationLockType.h>
+enum class CyberCore::ScreenOrientationLockType : uint8_t {
+    Any
+    Natural
+    Landscape
+    Portrait
+    PortraitPrimary
+    PortraitSecondary
+    LandscapePrimary
+    LandscapeSecondary
+};
+
+#if ENABLE(APPLICATION_MANIFEST)
+[Nested] enum class CyberCore::ApplicationManifest::Display : uint8_t {
+    Browser
+    MinimalUI
+    Standalone
+    Fullscreen
+};
+
+[Nested, OptionSet] enum class CyberCore::ApplicationManifest::Icon::Purpose : uint8_t {
+    Any
+    Monochrome
+    Maskable
+}
+
+[Nested] struct CyberCore::ApplicationManifest::Icon {
+    URL src
+    Vector<String> sizes
+    String type
+    OptionSet<CyberCore::ApplicationManifest::Icon::Purpose> purposes
+}
+
+struct CyberCore::ApplicationManifest {
+    String name
+    String shortName
+    String description
+    URL scope
+    CyberCore::ApplicationManifest::Display display
+    std::optional<CyberCore::ScreenOrientationLockType> orientation
+    URL startURL
+    URL id
+    CyberCore::Color backgroundColor
+    CyberCore::Color themeColor
+    Vector<CyberCore::ApplicationManifest::Icon> icons
+}
+#endif // ENABLE(APPLICATION_MANIFEST)
+
+enum class CyberCore::DOMCacheEngine::Error : uint8_t {
+    NotImplemented,
+    ReadDisk,
+    WriteDisk,
+    QuotaExceeded,
+    Internal,
+    Stopped,
+    CORP
+};
+
+struct CyberCore::RetrieveRecordsOptions {
+    CyberCore::ResourceRequest request;
+    CyberCore::CrossOriginEmbedderPolicy crossOriginEmbedderPolicy;
+    Ref<CyberCore::SecurityOrigin> sourceOrigin;
+    bool ignoreSearch;
+    bool ignoreMethod;
+    bool ignoreVary;
+    bool shouldProvideResponse;
+};
+
+struct CyberCore::ContactInfo {
+    Vector<String> name;
+    Vector<String> email;
+    Vector<String> tel;
+};
+
+struct CyberCore::ContactsRequestData {
+    Vector<CyberCore::ContactProperty> properties;
+    bool multiple;
+    String url;
+};
+
+#if ENABLE(MEDIA_SESSION)
+struct CyberCore::MediaPositionState {
+    double duration;
+    double playbackRate;
+    double position;
+};
+#endif // ENABLE(MEDIA_SESSION)
+
+#if ENABLE(WEB_RTC)
+struct CyberCore::DetachedRTCDataChannel {
+    CyberCore::RTCDataChannelIdentifier identifier;
+    String label;
+    CyberCore::RTCDataChannelInit options;
+    CyberCore::RTCDataChannelState state;
+};
+#endif
+
+header: <CyberCore/WebCodecsEncodedVideoChunk.h>
+#if ENABLE(WEB_CODECS)
+struct CyberCore::WebCodecsEncodedVideoChunkData {
+    CyberCore::WebCodecsEncodedVideoChunkType type;
+    int64_t timestamp;
+    std::optional<uint64_t> duration;
+    Vector<uint8_t> buffer;
+};
+#endif
+
+struct CyberCore::HTMLModelElementCamera {
+    double pitch;
+    double yaw;
+    double scale;
+};
+
+struct CyberCore::NotificationData {
+    String title;
+    String body;
+    String iconURL;
+    String tag;
+    String language;
+    CyberCore::NotificationDirection direction;
+    String originString;
+    URL serviceWorkerRegistrationURL;
+    UUID notificationID;
+    CyberCore::ScriptExecutionContextIdentifier contextIdentifier;
+    PAL::SessionID sourceSession;
+    MonotonicTime creationTime;
+    Vector<uint8_t> data;
+    std::optional<bool> silent;
+};
+
+struct CyberCore::PermissionDescriptor {
+    CyberCore::PermissionName name;
+}
+
+#if ENABLE(SERVICE_WORKER)
+struct CyberCore::PushSubscriptionData {
+    CyberCore::PushSubscriptionIdentifier identifier;
+    String endpoint;
+    std::optional<CyberCore::EpochTimeStamp> expirationTime;
+    Vector<uint8_t> serverVAPIDPublicKey;
+    Vector<uint8_t> clientECDHPublicKey;
+    Vector<uint8_t> sharedAuthenticationSecret;
+};
+#endif
+
+[RefCounted] class CyberCore::DeprecationReportBody {
+    String id()
+    WallTime anticipatedRemoval()
+    String message()
+    String sourceFile()
+    std::optional<unsigned> lineNumber()
+    std::optional<unsigned> columnNumber()
+};
+
+[RefCounted] class CyberCore::Report {
+    String type()
+    String url()
+    RefPtr<CyberCore::ReportBody> body()
+};
+
+[RefCounted] class CyberCore::TestReportBody {
+    String message()
+}
+
+enum class CyberCore::SpeechRecognitionErrorType : uint8_t {
+    NoSpeech,
+    Aborted,
+    AudioCapture,
+    Network,
+    NotAllowed,
+    ServiceNotAllowed,
+    BadGrammar,
+    LanguageNotSupported
+};
+
+struct CyberCore::SpeechRecognitionError {
+    CyberCore::SpeechRecognitionErrorType type;
+    String message;
+};
+
+struct CyberCore::SpeechRecognitionRequestInfo {
+    CyberCore::SpeechRecognitionConnectionClientIdentifier clientIdentifier;
+    String lang;
+    bool continuous;
+    bool interimResults;
+    uint64_t maxAlternatives;
+    CyberCore::ClientOrigin clientOrigin;
+    CyberCore::FrameIdentifier frameIdentifier;
+};
+
+[CustomHeader] struct CyberCore::SpeechRecognitionAlternativeData {
+    String transcript;
+    double confidence;
+};
+
+struct CyberCore::SpeechRecognitionResultData {
+    Vector<CyberCore::SpeechRecognitionAlternativeData> alternatives;
+    bool isFinal;
+};
+
+struct CyberCore::WebLockManagerSnapshot {
+    Vector<CyberCore::WebLockManagerSnapshot::Info> held;
+    Vector<CyberCore::WebLockManagerSnapshot::Info> pending;
+};
+
+[Nested] struct CyberCore::WebLockManagerSnapshot::Info {
+    String name;
+    CyberCore::WebLockMode mode;
+    String clientId;
+};
+
+#if ENABLE(WEB_AUTHN)
+[Nested] struct CyberCore::AuthenticationExtensionsClientInputs::LargeBlobInputs {
+    String support;
+    std::optional<bool> read;
+    std::optional<CyberCore::BufferSource> write;
+}
+
+[LegacyPopulateFromEmptyConstructor] struct CyberCore::AuthenticationExtensionsClientInputs {
+    String appid;
+    [NotSerialized] bool credProps;
+    std::optional<CyberCore::AuthenticationExtensionsClientInputs::LargeBlobInputs> largeBlob;
+}
+
+[Nested] struct CyberCore::AuthenticationExtensionsClientOutputs::CredentialPropertiesOutput {
+    bool rk;
+};
+
+[Nested] struct CyberCore::AuthenticationExtensionsClientOutputs::LargeBlobOutputs {
+    std::optional<bool> supported;
+    RefPtr<JSC::ArrayBuffer> blob;
+    std::optional<bool> written;
+};
+
+struct CyberCore::AuthenticationExtensionsClientOutputs {
+    std::optional<bool> appid;
+    std::optional<CyberCore::AuthenticationExtensionsClientOutputs::CredentialPropertiesOutput> credProps;
+    std::optional<CyberCore::AuthenticationExtensionsClientOutputs::LargeBlobOutputs> largeBlob;
+}
+
+[Nested] struct CyberCore::PublicKeyCredentialCreationOptions::Parameters {
+    CyberCore::PublicKeyCredentialType type;
+    int64_t alg;
+};
+
+[Nested] struct CyberCore::PublicKeyCredentialCreationOptions::AuthenticatorSelectionCriteria {
+    std::optional<CyberCore::AuthenticatorAttachment> authenticatorAttachment;
+    std::optional<CyberCore::ResidentKeyRequirement> residentKey;
+    bool requireResidentKey;
+    CyberCore::UserVerificationRequirement userVerification;
+};
+
+[Nested] struct CyberCore::PublicKeyCredentialCreationOptions::Entity {
+    String name;
+    String icon;
+};
+
+[Nested] struct CyberCore::PublicKeyCredentialCreationOptions::RpEntity : CyberCore::PublicKeyCredentialCreationOptions::Entity {
+    std::optional<String> id;
+};
+
+[Nested] struct CyberCore::PublicKeyCredentialCreationOptions::UserEntity : CyberCore::PublicKeyCredentialCreationOptions::Entity {
+    CyberCore::BufferSource id;
+    String displayName;
+};
+
+struct CyberCore::PublicKeyCredentialDescriptor {
+    CyberCore::PublicKeyCredentialType type;
+    CyberCore::BufferSource id;
+    Vector<CyberCore::AuthenticatorTransport> transports;
+};
+#endif // ENABLE(WEB_AUTHN)
+
+#if ENABLE(WEB_AUTHN)
+enum class CyberCore::AttestationConveyancePreference : uint8_t {
+    None,
+    Indirect,
+    Direct,
+    Enterprise
+};
+#endif
+
+struct CyberCore::PublicKeyCredentialCreationOptions {
+#if ENABLE(WEB_AUTHN)
+    CyberCore::PublicKeyCredentialCreationOptions::RpEntity rp;
+    CyberCore::PublicKeyCredentialCreationOptions::UserEntity user;
+
+    CyberCore::BufferSource challenge;
+    Vector<CyberCore::PublicKeyCredentialCreationOptions::Parameters> pubKeyCredParams;
+
+    std::optional<unsigned> timeout;
+    Vector<CyberCore::PublicKeyCredentialDescriptor> excludeCredentials;
+    std::optional<CyberCore::PublicKeyCredentialCreationOptions::AuthenticatorSelectionCriteria> authenticatorSelection;
+    CyberCore::AttestationConveyancePreference attestation;
+    std::optional<CyberCore::AuthenticationExtensionsClientInputs> extensions;
+#endif // ENABLE(WEB_AUTHN)
+};
+
+struct CyberCore::PublicKeyCredentialRequestOptions {
+#if ENABLE(WEB_AUTHN)
+    CyberCore::BufferSource challenge;
+    std::optional<unsigned> timeout;
+    String rpId;
+    Vector<CyberCore::PublicKeyCredentialDescriptor> allowCredentials;
+    CyberCore::UserVerificationRequirement userVerification;
+    std::optional<CyberCore::AuthenticationExtensionsClientInputs> extensions;
+    [NotSerialized] std::optional<CyberCore::AuthenticatorAttachment> authenticatorAttachment;
+#endif // ENABLE(WEB_AUTHN)
+};
+
+[CreateUsing=fromRawString] class CyberCore::RegistrableDomain {
+    String string()
+}
+
+struct CyberCore::AudioConfiguration {
+    String contentType;
+    String channels;
+    std::optional<uint64_t> bitrate;
+    std::optional<uint32_t> samplerate;
+    std::optional<bool> spatialRendering;
+};
+
+[Nested] enum class CyberCore::Cookie::SameSitePolicy : uint8_t {
+    None
+    Lax
+    Strict
+};
+
+struct CyberCore::Cookie {
+    String name;
+    String value;
+    String domain;
+    String path;
+    double created;
+    std::optional<double> expires;
+    bool httpOnly;
+    bool secure;
+    bool session;
+    String comment;
+    URL commentURL;
+    Vector<uint16_t> ports;
+    CyberCore::Cookie::SameSitePolicy sameSite;
+};
+
+#if ENABLE(VIDEO)
+struct CyberCore::VideoFrameMetadata {
+    double presentationTime;
+    double expectedDisplayTime;
+
+    unsigned width;
+    unsigned height;
+    double mediaTime;
+
+    unsigned presentedFrames;
+    std::optional<double> processingDuration;
+
+    std::optional<double> captureTime;
+    std::optional<double> receiveTime;
+    std::optional<unsigned> rtpTimestamp;
+};
+#endif // ENABLE(VIDEO)
+
+#if ENABLE(SERVICE_WORKER)
+struct CyberCore::NavigationPreloadState {
+    bool enabled;
+    String headerValue;
+};
+#endif // ENABLE(SERVICE_WORKER)
+
+enum class CyberCore::RenderingMode : bool
+
+enum class CyberCore::RenderingPurpose : uint8_t {
+    Unspecified,
+    Canvas,
+    DOM,
+    LayerBacking,
+    Snapshot,
+    ShareableSnapshot,
+    MediaPainting
+};
+
+#if ENABLE(CONTENT_FILTERING_IN_NETWORKING_PROCESS)
+[LegacyPopulateFromEmptyConstructor] class CyberCore::MockContentFilterSettings {
+    bool m_enabled;
+    CyberCore::MockContentFilterSettings::DecisionPoint m_decisionPoint;
+    CyberCore::MockContentFilterSettings::Decision m_decision;
+    CyberCore::MockContentFilterSettings::Decision m_unblockRequestDecision;
+    String m_blockedString;
+    String m_modifiedRequestURL;
+}
+[Nested] enum class CyberCore::MockContentFilterSettings::DecisionPoint : uint8_t {
+    AfterWillSendRequest,
+    AfterRedirect,
+    AfterResponse,
+    AfterAddData,
+    AfterFinishedAddingData,
+    Never
+};
+[Nested] enum class CyberCore::MockContentFilterSettings::Decision : bool
+#endif
+
+enum class CyberCore::AutoplayEvent : uint8_t {
+    DidPreventMediaFromPlaying,
+    DidPlayMediaWithUserGesture,
+    DidAutoplayMediaPastThresholdWithoutUserInterference,
+    UserDidInterfereWithPlayback
+};
+
+enum class CyberCore::InputMode : uint8_t {
+    Unspecified,
+    None,
+    Text,
+    Telephone,
+    Url,
+    Email,
+    Numeric,
+    Decimal,
+    Search
+};
+
+enum class CyberCore::NotificationDirection : uint8_t {
+    Auto,
+    Ltr,
+    Rtl
+};
+
+enum class CyberCore::IndexedDB::GetAllType : bool
+
+enum class CyberCore::WorkerType : bool
+
+enum class CyberCore::StoredCredentialsPolicy : uint8_t {
+    DoNotUse,
+    Use,
+    EphemeralStateless
+};
+
+enum class CyberCore::ContentSniffingPolicy : bool;
+enum class CyberCore::ContentEncodingSniffingPolicy : bool;
+enum class CyberCore::ClientCredentialPolicy : bool;
+enum class CyberCore::ShouldRelaxThirdPartyCookieBlocking : bool;
+
+enum class CyberCore::PreflightPolicy : uint8_t {
+    Consider,
+    Force,
+    Prevent
+};
+
+enum class WTFLogChannelState : uint8_t {
+    Off,
+    On,
+    OnWithAccumulation
+};
+
+enum class CyberCore::ScrollSnapStrictness : uint8_t {
+    None,
+    Proximity,
+    Mandatory
+};
+
+enum class CyberCore::LengthType : uint8_t {
+    Auto,
+    Relative,
+    Percent,
+    Fixed,
+    Intrinsic,
+    MinIntrinsic,
+    MinContent,
+    MaxContent,
+    FillAvailable,
+    FitContent,
+    Calculated,
+    Undefined
+};
+
+enum class CyberCore::OverscrollBehavior : uint8_t {
+    Auto,
+    Contain,
+    None
+};
+
+enum class CyberCore::ScrollPinningBehavior : uint8_t {
+    DoNotPin,
+    PinToTop,
+    PinToBottom
+};
+
+header: <CyberCore/PlatformWheelEvent.h>
+enum class CyberCore::WheelScrollGestureState : uint8_t {
+    Blocking,
+    NonBlocking
+};
+
+struct CyberCore::ExceptionDetails {
+    String message;
+    int lineNumber;
+    int columnNumber;
+    CyberCore::ExceptionDetails::Type type;
+    String sourceURL;
+};
+
+header: <CyberCore/RectEdges.h>
+[Alias=class RectEdges<float>, AdditionalEncoder=StreamConnectionEncoder, CustomHeader] alias CyberCore::FloatBoxExtent {
+    float top()
+    float right()
+    float bottom()
+    float left()
+};
+
+header: <CyberCore/DisplayListItems.h>
+[AdditionalEncoder=StreamConnectionEncoder, CustomHeader] class CyberCore::DisplayList::SetInlineFillColor {
+    uint8_t colorData().resolved().red
+    uint8_t colorData().resolved().green
+    uint8_t colorData().resolved().blue
+    uint8_t colorData().resolved().alpha
+}
+
+[AdditionalEncoder=StreamConnectionEncoder, CustomHeader] class CyberCore::DisplayList::SetInlineStrokeColor {
+    uint8_t colorData().resolved().red
+    uint8_t colorData().resolved().green
+    uint8_t colorData().resolved().blue
+    uint8_t colorData().resolved().alpha
+}
+
+header: <CyberCore/HTTPHeaderMap.h>
+[Nested, CustomHeader] struct CyberCore::HTTPHeaderMap::CommonHeader {
+    CyberCore::HTTPHeaderName key;
+    String value;
+};
+
+header: <CyberCore/HTTPHeaderMap.h>
+[Nested, CustomHeader] struct CyberCore::HTTPHeaderMap::UncommonHeader {
+    String key;
+    String value;
+};
+
+class CyberCore::HTTPHeaderMap {
+    Vector<CyberCore::HTTPHeaderMap::CommonHeader, 0, CrashOnOverflow, 6> commonHeaders();
+    Vector<CyberCore::HTTPHeaderMap::UncommonHeader, 0, CrashOnOverflow, 0> uncommonHeaders();
+}
+
+struct CyberCore::ElementContext {
+    CyberCore::FloatRect boundingRect;
+    CyberCore::PageIdentifier webPageIdentifier;
+    CyberCore::ScriptExecutionContextIdentifier documentIdentifier;
+    CyberCore::ElementIdentifier elementIdentifier;
+};
+
+header: <CyberCore/FrameLoaderTypes.h>
+[CustomHeader] struct CyberCore::SystemPreviewInfo {
+    CyberCore::ElementContext element;
+    CyberCore::IntRect previewRect;
+    bool isPreview;
+};
+
+header: <CyberCore/ResourceRequest.h>
+[CustomHeader, Nested] class CyberCore::ResourceRequest::RequestData {
+    URL m_url;
+    URL m_firstPartyForCookies;
+    double m_timeoutInterval;
+    String m_httpMethod;
+    CyberCore::HTTPHeaderMap m_httpHeaderFields;
+    Vector<String> m_responseContentDispositionEncodingFallbackArray;
+    CyberCore::ResourceRequestCachePolicy m_cachePolicy;
+    CyberCore::ResourceRequestBase::SameSiteDisposition m_sameSiteDisposition;
+    CyberCore::ResourceLoadPriority m_priority;
+    CyberCore::ResourceRequestRequester m_requester;
+    [BitField] bool m_allowCookies;
+    [BitField] bool m_isTopSite;
+    [BitField] bool m_isAppInitiated;
+};
+
+#if USE(SOUP)
+header: <CyberCore/ResourceRequest.h>
+[CustomHeader] struct CyberCore::ResourceRequestPlatformData {
+    CyberCore::ResourceRequest::RequestData requestData;
+    bool acceptEncoding;
+    uint16_t redirectCount;
+};
+#endif
+
+#if PLATFORM(COCOA) && USE(SYSTEM_PREVIEW)
+[CreateUsing=fromResourceRequestData] class CyberCore::ResourceRequest {
+    std::variant<CyberCore::ResourceRequest::RequestData, CyberCore::ResourceRequestPlatformData> getRequestDataToSerialize();
+    String cachePartition();
+    bool hiddenFromInspector();
+    std::optional<CyberCore::SystemPreviewInfo> systemPreviewInfo();
+};
+#endif
+
+#if PLATFORM(COCOA) && !USE(SYSTEM_PREVIEW)
+[CreateUsing=fromResourceRequestData] class CyberCore::ResourceRequest {
+    std::variant<CyberCore::ResourceRequest::RequestData, CyberCore::ResourceRequestPlatformData> getRequestDataToSerialize();
+    String cachePartition();
+    bool hiddenFromInspector();
+};
+#endif
+
+#if USE(CURL)
+[CreateUsing=fromResourceRequestData] class CyberCore::ResourceRequest {
+    CyberCore::ResourceRequest::RequestData getRequestDataToSerialize();
+};
+#endif
+
+#if !USE(CURL) && !PLATFORM(COCOA)
+header: <CyberCore/ResourceRequest.h>
+[CreateUsing=fromResourceRequestData] class CyberCore::ResourceRequest {
+    std::variant<CyberCore::ResourceRequest::RequestData, CyberCore::ResourceRequestPlatformData> getRequestDataToSerialize();
+};
+#endif
+
+header: <CyberCore/DiagnosticLoggingDomain.h>
+enum class CyberCore::DiagnosticLoggingDomain : uint8_t {
+    Media
+};
+
+#if !USE(CG)
+[Nested] enum class CyberCore::PlatformColorSpace::Name : uint8_t {
+        SRGB
+#if ENABLE(DESTINATION_COLOR_SPACE_LINEAR_SRGB)
+        , LinearSRGB
+#endif
+#if ENABLE(DESTINATION_COLOR_SPACE_DISPLAY_P3)
+        , DisplayP3
+#endif
+};
+
+[AdditionalEncoder=StreamConnectionEncoder] class CyberCore::PlatformColorSpace {
+    CyberCore::PlatformColorSpace::Name get();
+};
+#endif
+
+[AdditionalEncoder=StreamConnectionEncoder] class CyberCore::DestinationColorSpace {
+        CyberCore::PlatformColorSpace serializableColorSpace();
+};
+
+struct CyberCore::WindowFeatures {
+    std::optional<float> x;
+    std::optional<float> y;
+    std::optional<float> width;
+    std::optional<float> height;
+
+    bool menuBarVisible;
+    bool statusBarVisible;
+    bool toolBarVisible;
+    bool locationBarVisible;
+    bool scrollbarsVisible;
+    bool resizable;
+
+    bool fullscreen;
+    bool dialog;
+    [NotSerialized] bool noopener;
+    [NotSerialized] bool noreferrer;
+
+    [NotSerialized] Vector<String> additionalFeatures;
+};
+
+[Nested] enum class CyberCore::CompositionUnderlineColor : bool
+
+struct CyberCore::CompositionUnderline {
+    unsigned startOffset;
+    unsigned endOffset;
+    CyberCore::CompositionUnderlineColor compositionUnderlineColor;
+    CyberCore::Color color;
+    bool thick;
+};
+
+enum class CyberCore::MediaCaptureType : uint8_t {
+    MediaCaptureTypeNone,
+    MediaCaptureTypeUser,
+    MediaCaptureTypeEnvironment
+};
+
+header: <CyberCore/FileChooser.h>
+[CustomHeader] struct CyberCore::FileChooserSettings {
+    bool allowsDirectories;
+    bool allowsMultipleFiles;
+    Vector<String> acceptMIMETypes;
+    Vector<String> acceptFileExtensions;
+    Vector<String> selectedFiles;
+#if ENABLE(MEDIA_CAPTURE)
+    CyberCore::MediaCaptureType mediaCaptureType;
+#endif
+};
+
+header: <CyberCore/TextChecking.h>
+[CustomHeader] struct CyberCore::GrammarDetail {
+    CyberCore::CharacterRange range;
+    Vector<String> guesses;
+    String userDescription;
+};
+
+header: <CyberCore/TextChecking.h>
+[CustomHeader] struct CyberCore::TextCheckingResult {
+    OptionSet<CyberCore::TextCheckingType> type;
+    CyberCore::CharacterRange range;
+    Vector<CyberCore::GrammarDetail> details;
+    String replacement;
+};
+
+header: <CyberCore/TextChecking.h>
+[CustomHeader] enum class CyberCore::TextCheckingProcessType : bool
+
+header: <CyberCore/TextChecking.h>
+[CustomHeader] class CyberCore::TextCheckingRequestData {
+    std::optional<CyberCore::TextCheckingRequestIdentifier> identifier();
+    String text();
+    OptionSet<CyberCore::TextCheckingType> checkingTypes();
+    CyberCore::TextCheckingProcessType processType();
+};
+
+class CyberCore::LayoutRect {
+    CyberCore::LayoutPoint m_location;
+    CyberCore::LayoutSize m_size;
+};
+
+header: <CyberCore/VP9Utilities.h>
+[CustomHeader] struct CyberCore::ScreenDataOverrides {
+    double width;
+    double height;
+    double scale;
+}
+
+struct CyberCore::MediaCapabilitiesInfo {
+    bool supported;
+    bool smooth;
+    bool powerEfficient;
+}
+header: <CyberCore/MediaStreamRequest.h>
+[Nested, CustomHeader] enum class CyberCore::MediaStreamRequest::Type : uint8_t {
+    UserMedia,
+    DisplayMedia,
+    DisplayMediaWithAudio
+}
+#if ENABLE(MEDIA_STREAM)
+struct CyberCore::MediaStreamRequest {
+    CyberCore::MediaStreamRequest::Type type;
+    CyberCore::MediaConstraints audioConstraints;
+    CyberCore::MediaConstraints videoConstraints;
+    bool isUserGesturePriviledged;
+    CyberCore::PageIdentifier pageIdentifier;
+}
+[LegacyPopulateFromEmptyConstructor, CustomHeader] class CyberCore::MediaTrackConstraintSetMap {
+    std::optional<CyberCore::IntConstraint> m_width;
+    std::optional<CyberCore::IntConstraint> m_height;
+    std::optional<CyberCore::IntConstraint> m_sampleRate;
+    std::optional<CyberCore::IntConstraint> m_sampleSize;
+    std::optional<CyberCore::DoubleConstraint> m_aspectRatio;
+    std::optional<CyberCore::DoubleConstraint> m_zoom;
+    std::optional<CyberCore::DoubleConstraint> m_frameRate;
+    std::optional<CyberCore::DoubleConstraint> m_volume;
+    std::optional<CyberCore::BooleanConstraint> m_echoCancellation;
+    std::optional<CyberCore::BooleanConstraint> m_displaySurface;
+    std::optional<CyberCore::BooleanConstraint> m_logicalSurface;
+    std::optional<CyberCore::StringConstraint> m_facingMode;
+    std::optional<CyberCore::StringConstraint> m_deviceId;
+    std::optional<CyberCore::StringConstraint> m_groupId;
+}
+#endif
+
+#if ! ENABLE(MEDIA_STREAM)
+struct CyberCore::MediaStreamRequest {
+    CyberCore::MediaStreamRequest::Type type;
+};
+#endif
+struct CyberCore::MediaCapabilitiesDecodingInfo : CyberCore::MediaCapabilitiesInfo {
+    CyberCore::MediaDecodingConfiguration supportedConfiguration;
+}
+
+struct CyberCore::MediaCapabilitiesEncodingInfo : CyberCore::MediaCapabilitiesInfo {
+    CyberCore::MediaEncodingConfiguration supportedConfiguration;
+}
+
+header: <CyberCore/FormData.h>
+[CustomHeader] struct CyberCore::FormDataElement {
+    std::variant<Vector<uint8_t>, CyberCore::FormDataElement::EncodedFileData, CyberCore::FormDataElement::EncodedBlobData> data
+}
+
+[Nested] struct CyberCore::FormDataElement::EncodedFileData {
+    String filename;
+    int64_t fileStart;
+    int64_t fileLength;
+    std::optional<WallTime> expectedFileModificationTime;
+}
+
+[Nested] struct CyberCore::FormDataElement::EncodedBlobData {
+    URL url;
+}
+
+header: <CyberCore/NetworkLoadInformation.h>
+[CustomHeader] struct CyberCore::NetworkTransactionInformation {
+    CyberCore::NetworkTransactionInformation::Type type;
+    CyberCore::ResourceRequest request;
+    CyberCore::ResourceResponse response;
+    CyberCore::NetworkLoadMetrics metrics;
+};
+
+[Nested] enum class CyberCore::NetworkTransactionInformation::Type : bool
+
+class CyberCore::ContentType {
+    String raw()
+}
+
+#if ENABLE(DATE_AND_TIME_INPUT_TYPES)
+struct CyberCore::DateTimeChooserParameters {
+    AtomString type;
+    CyberCore::IntRect anchorRectInRootView;
+    AtomString locale;
+    String currentValue;
+    Vector<String> suggestionValues;
+    Vector<String> localizedSuggestionValues;
+    Vector<String> suggestionLabels;
+    double minimum;
+    double maximum;
+    double step;
+    double stepBase;
+    bool required;
+    bool isAnchorElementRTL;
+    bool useDarkAppearance;
+    bool hasSecondField;
+    bool hasMillisecondField;
+}
+#endif
+
+header: <CyberCore/ScreenProperties.h>
+[CustomHeader] struct CyberCore::ScreenData {
+    CyberCore::FloatRect screenAvailableRect;
+    CyberCore::FloatRect screenRect;
+    CyberCore::DestinationColorSpace colorSpace;
+    int screenDepth;
+    int screenDepthPerComponent;
+    bool screenSupportsExtendedColor;
+    bool screenHasInvertedColors;
+    bool screenSupportsHighDynamicRange;
+#if PLATFORM(MAC)
+    bool screenIsMonochrome;
+    uint32_t displayMask;
+    CyberCore::PlatformGPUID gpuID;
+    CyberCore::DynamicRangeMode preferredDynamicRangeMode;
+#endif
+#if PLATFORM(MAC) || PLATFORM(IOS_FAMILY)
+    float scaleFactor;
+#endif
+};
+
+using CyberCore::PlatformDisplayID = uint32_t;
+struct CyberCore::ScreenProperties {
+    CyberCore::PlatformDisplayID primaryDisplayID;
+    HashMap<CyberCore::PlatformDisplayID, CyberCore::ScreenData> screenDataMap;
+};
+
+class CyberCore::PlatformTimeRanges {
+    Vector<CyberCore::PlatformTimeRanges::Range> m_ranges;
+}
+
+[Nested] struct CyberCore::PlatformTimeRanges::Range {
+    MediaTime start;
+    MediaTime end;
+}
+
+#if ENABLE(VIDEO)
+struct CyberCore::VideoPlaybackQualityMetrics {
+    uint32_t totalVideoFrames;
+    uint32_t droppedVideoFrames;
+    uint32_t corruptedVideoFrames;
+    double totalFrameDelay;
+    uint32_t displayCompositedVideoFrames;
+}
+#endif
+
+#if ENABLE(WEB_AUTHN)
+enum class CyberCore::AuthenticatorTransport : uint8_t {
+    Usb,
+    Nfc,
+    Ble,
+    Internal,
+    Cable,
+    Hybrid,
+    SmartCard
+};
+
+enum class CyberCore::PublicKeyCredentialType : bool
+#endif
+
+#if PLATFORM(IOS_FAMILY)
+class CyberCore::SelectionGeometry {
+    CyberCore::FloatQuad quad();
+    CyberCore::SelectionRenderingBehavior behavior();
+    CyberCore::TextDirection direction();
+    int minX();
+    int maxX();
+    int maxY();
+    int lineNumber();
+    bool isLineBreak();
+    bool isFirstOnLine();
+    bool isLastOnLine();
+    bool containsStart();
+    bool containsEnd();
+    bool isHorizontal();
+};
+#endif
+
+#if ENABLE(DATALIST_ELEMENT)
+header: <CyberCore/DataListSuggestionInformation.h>
+[CustomHeader] enum class CyberCore::DataListSuggestionActivationType : uint8_t {
+    ControlClicked,
+    IndicatorClicked,
+    TextChanged,
+};
+
+header: <CyberCore/DataListSuggestionInformation.h>
+[CustomHeader] struct CyberCore::DataListSuggestion {
+    String value;
+    String label;
+};
+
+struct CyberCore::DataListSuggestionInformation {
+    CyberCore::DataListSuggestionActivationType activationType;
+    Vector<CyberCore::DataListSuggestion> suggestions;
+    CyberCore::IntRect elementRect;
+};
+#endif
+
+struct CyberCore::ClientOrigin {
+    [Validator='!topOrigin->isNull()'] CyberCore::SecurityOriginData topOrigin;
+    [Validator='!topOrigin->isNull()'] CyberCore::SecurityOriginData clientOrigin;
+};
+
+enum class CyberCore::AlphaPremultiplication : uint8_t {
+    Premultiplied,
+    Unpremultiplied
+};
+
+enum class CyberCore::PixelFormat : uint8_t {
+    RGBA8,
+    BGRX8,
+    BGRA8,
+    RGB10,
+    RGB10A8,
+};
+
+[AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::PixelBufferFormat {
+    CyberCore::AlphaPremultiplication alphaFormat;
+    CyberCore::PixelFormat pixelFormat;
+    CyberCore::DestinationColorSpace colorSpace;
+};
+
+[RefCounted] class CyberCore::TextIndicator {
+    CyberCore::TextIndicatorData data();
+};
+
+#if USE(SOUP)
+header: "ArgumentCodersGLib.h"
+#endif
+class CyberCore::CertificateInfo {
+#if PLATFORM(COCOA)
+    RetainPtr<SecTrustRef> trust()
+#endif
+#if USE(CURL)
+    int verificationError()
+    Vector<Vector<uint8_t>> certificateChain()
+#endif
+#if USE(SOUP)
+    GRefPtr<GTlsCertificate> certificate()
+    GTlsCertificateFlags tlsErrors()
+#endif
+}
+
+[Nested] struct CyberCore::PasteboardCustomData::Entry {
+    String type;
+    String customData;
+    std::variant<String, Ref<CyberCore::SharedBuffer>> platformData;
+};
+
+class CyberCore::PasteboardCustomData {
+    String origin();
+    Vector<CyberCore::PasteboardCustomData::Entry> data();
+};
+
+class CyberCore::DatabaseDetails {
+    String name();
+    String displayName();
+    uint64_t expectedUsage();
+    uint64_t currentUsage();
+    std::optional<WallTime> creationTime();
+    std::optional<WallTime> modificationTime();
+};
+
+[RefCounted] class CyberCore::DecomposedGlyphs {
+    CyberCore::PositionedGlyphs positionedGlyphs();
+    CyberCore::RenderingResourceIdentifier renderingResourceIdentifier();
+}
+
+header: <CyberCore/TextIndicator.h>
+[CustomHeader] struct CyberCore::TextIndicatorData {
+    CyberCore::FloatRect selectionRectInRootViewCoordinates;
+    CyberCore::FloatRect textBoundingRectInRootViewCoordinates;
+    CyberCore::FloatRect contentImageWithoutSelectionRectInRootViewCoordinates;
+    Vector<CyberCore::FloatRect> textRectsInBoundingRectCoordinates;
+    float contentImageScaleFactor;
+    RefPtr<CyberCore::Image> contentImageWithHighlight;
+    RefPtr<CyberCore::Image> contentImageWithoutSelection;
+    RefPtr<CyberCore::Image> contentImage;
+    CyberCore::Color estimatedBackgroundColor;
+    CyberCore::TextIndicatorPresentationTransition presentationTransition;
+    OptionSet<CyberCore::TextIndicatorOption> options;
+}
+
+#if ENABLE(MEDIA_STREAM)
+struct CyberCore::MediaConstraints {
+    CyberCore::MediaTrackConstraintSetMap mandatoryConstraints;
+    Vector<CyberCore::MediaTrackConstraintSetMap> advancedConstraints;
+    bool isValid;
+};
+#endif
+
+struct CyberCore::PromisedAttachmentInfo {
+#if ENABLE(ATTACHMENT_ELEMENT)
+    String attachmentIdentifier;
+#endif
+    Vector<String> additionalTypes;
+    Vector<RefPtr<CyberCore::SharedBuffer>> additionalData;
+}
+
+header: <CyberCore/SearchPopupMenu.h>
+[CustomHeader] struct CyberCore::RecentSearch {
+    String string;
+    WallTime time;
+};
+
+[Nested] enum class CyberCore::EventTrackingRegions::EventType : uint8_t {
+    Mousedown,
+    Mousemove,
+    Mouseup,
+    Mousewheel,
+    Pointerdown,
+    Pointerenter,
+    Pointerleave,
+    Pointermove,
+    Pointerout,
+    Pointerover,
+    Pointerup,
+    Touchend,
+    Touchforcechange,
+    Touchmove,
+    Touchstart,
+    Wheel
+};
+
+struct CyberCore::EventTrackingRegions {
+    CyberCore::Region asynchronousDispatchRegion;
+    HashMap<CyberCore::EventTrackingRegions::EventType, CyberCore::Region, WTF::IntHash<CyberCore::EventTrackingRegions::EventType>, WTF::StrongEnumHashTraits<CyberCore::EventTrackingRegions::EventType>> eventSpecificSynchronousDispatchRegions;
+};
+
+enum class CyberCore::HasInsecureContent : bool
+
+struct CyberCore::TextManipulationItem {
+    CyberCore::FrameIdentifier frameID;
+    bool isSubframe;
+    bool isCrossSiteSubframe;
+    CyberCore::TextManipulationItemIdentifier identifier;
+    Vector<CyberCore::TextManipulationToken> tokens;
+}
+
+header: <CyberCore/TextManipulationToken.h>
+[CustomHeader] struct CyberCore::TextManipulationToken {
+    CyberCore::TextManipulationTokenIdentifier identifier;
+    String content;
+    std::optional<CyberCore::TextManipulationTokenInfo> info;
+    bool isExcluded;
+};
+
+header: <CyberCore/TextManipulationToken.h>
+[CustomHeader] struct CyberCore::TextManipulationTokenInfo {
+    String tagName;
+    String roleAttribute;
+    URL documentURL;
+    bool isVisible;
+};
+
+struct CyberCore::VelocityData {
+    float horizontalVelocity;
+    float verticalVelocity;
+    float scaleChangeRate;
+    MonotonicTime lastUpdateTime;
+};
+
+header: <CyberCore/PluginData.h>
+[CustomHeader] struct CyberCore::MimeClassInfo {
+    AtomString type;
+    String desc;
+    Vector<String> extensions;
+};
+
+class CyberCore::AuthenticationChallenge {
+    CyberCore::ProtectionSpace protectionSpace();
+    CyberCore::Credential proposedCredential();
+    unsigned previousFailureCount();
+    CyberCore::ResourceResponse failureResponse();
+    CyberCore::ResourceError error();
+
+#if USE(SOUP)
+    uint32_t tlsPasswordFlags();
+#endif
+};
+
+#if ENABLE(DRAG_SUPPORT)
+class CyberCore::DragData {
+#if PLATFORM(COCOA)
+    String pasteboardName();
+#endif
+    CyberCore::IntPoint clientPosition();
+    CyberCore::IntPoint globalPosition();
+#if PLATFORM(COCOA)
+    Vector<String> fileNames();
+#endif
+    OptionSet<CyberCore::DragOperation> draggingSourceOperationMask();
+    OptionSet<CyberCore::DragApplicationFlags> flags();
+    OptionSet<CyberCore::DragDestinationAction> dragDestinationActionMask();
+    std::optional<CyberCore::PageIdentifier> pageID();
+};
+#endif
+
+struct CyberCore::DictationAlternative {
+    CyberCore::CharacterRange range;
+    CyberCore::DictationContext context;
+};
+
+class CyberCore::UserStyleSheet {
+    String source();
+    URL url();
+    Vector<String> allowlist();
+    Vector<String> blocklist();
+    CyberCore::UserContentInjectedFrames injectedFrames();
+    CyberCore::UserStyleLevel level();
+    std::optional<CyberCore::PageIdentifier> pageID();
+};
+
+header: <CyberCore/ScrollTypes.h>
+[CustomHeader] enum class CyberCore::ScrollElasticity : uint8_t {
+    Automatic,
+    None,
+    Allowed
+};
+
+header: <CyberCore/ScrollTypes.h>
+[CustomHeader] enum class CyberCore::ScrollbarMode : uint8_t {
+    Auto,
+    AlwaysOff,
+    AlwaysOn
+};
+
+header: <CyberCore/ScrollTypes.h>
+[CustomHeader] enum class CyberCore::NativeScrollbarVisibility : uint8_t {
+    Visible,
+    HiddenByStyle,
+    ReplacedByCustomScrollbar
+};
+
+header: <CyberCore/ScrollingCoordinatorTypes.h>
+[CustomHeader] struct CyberCore::ScrollableAreaParameters {
+    CyberCore::ScrollElasticity horizontalScrollElasticity;
+    CyberCore::ScrollElasticity verticalScrollElasticity;
+    CyberCore::ScrollbarMode horizontalScrollbarMode;
+    CyberCore::ScrollbarMode verticalScrollbarMode;
+    CyberCore::OverscrollBehavior horizontalOverscrollBehavior;
+    CyberCore::OverscrollBehavior verticalOverscrollBehavior;
+    bool allowsHorizontalScrolling;
+    bool allowsVerticalScrolling;
+    CyberCore::NativeScrollbarVisibility horizontalNativeScrollbarVisibility;
+    CyberCore::NativeScrollbarVisibility verticalNativeScrollbarVisibility;
+    bool useDarkAppearanceForScrollbars;
+};
+
+header: <CyberCore/ScrollingCoordinatorTypes.h>
+[CustomHeader] struct CyberCore::RequestedKeyboardScrollData {
+    CyberCore::KeyboardScrollAction action;
+    std::optional<CyberCore::KeyboardScroll> keyboardScroll;
+};
+
+header: <CyberCore/ScrollingCoordinatorTypes.h>
+[OptionSet] enum class CyberCore::WheelEventProcessingSteps : uint8_t {
+    AsyncScrolling,
+    SynchronousScrolling,
+    NonBlockingDOMEventDispatch,
+    BlockingDOMEventDispatch,
+};
+
+header: <CyberCore/ScrollingConstraints.h>
+[CustomHeader] class CyberCore::AbsolutePositionConstraints {
+    CyberCore::FloatSize alignmentOffset();
+    CyberCore::FloatPoint layerPositionAtLastLayout();
+};
+
+header: <CyberCore/KeyboardScroll.h>
+[CustomHeader] struct CyberCore::KeyboardScroll {
+    CyberCore::FloatSize offset;
+    CyberCore::FloatSize maximumVelocity;
+    CyberCore::FloatSize force;
+    CyberCore::ScrollGranularity granularity;
+    CyberCore::ScrollDirection direction;
+};
+
+[RefCounted] class CyberCore::NotificationResources {
+    RefPtr<CyberCore::Image> icon();
+};
+
+[RefCounted] class CyberCore::IdentityTransformOperation {
+    [NotSerialized] CyberCore::TransformOperation::Type type();
+}
+
+[RefCounted] class CyberCore::TranslateTransformOperation {
+    CyberCore::Length x();
+    CyberCore::Length y();
+    CyberCore::Length z();
+    CyberCore::TransformOperation::Type type();
+}
+
+[RefCounted] class CyberCore::RotateTransformOperation {
+    double x();
+    double y();
+    double z();
+    double angle();
+    CyberCore::TransformOperation::Type type();
+}
+
+[RefCounted] class CyberCore::ScaleTransformOperation {
+    double x();
+    double y();
+    double z();
+    CyberCore::TransformOperation::Type type();
+}
+
+[RefCounted] class CyberCore::SkewTransformOperation {
+    double angleX();
+    double angleY();
+    CyberCore::TransformOperation::Type type();
+}
+
+[RefCounted] class CyberCore::PerspectiveTransformOperation {
+    std::optional<CyberCore::Length> perspective();
+}
+
+[RefCounted] class CyberCore::MatrixTransformOperation {
+    CyberCore::TransformationMatrix matrix();
+}
+
+[RefCounted] class CyberCore::Matrix3DTransformOperation {
+    CyberCore::TransformationMatrix matrix();
+}
+
+class CyberCore::TransformOperations {
+    Vector<RefPtr<CyberCore::TransformOperation>> operations();
+}
+
+[Nested, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::Gradient::LinearData {
+    CyberCore::FloatPoint point0;
+    CyberCore::FloatPoint point1;
+};
+
+[Nested, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::Gradient::RadialData {
+    CyberCore::FloatPoint point0;
+    CyberCore::FloatPoint point1;
+    float startRadius;
+    float endRadius;
+    float aspectRatio;
+};
+
+[Nested, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::Gradient::ConicData {
+    CyberCore::FloatPoint point0;
+    float angleRadians;
+};
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::Gradient {
+    std::variant<CyberCore::Gradient::LinearData, CyberCore::Gradient::RadialData, CyberCore::Gradient::ConicData> data();
+    CyberCore::ColorInterpolationMethod colorInterpolationMethod();
+    CyberCore::GradientSpreadMethod spreadMethod();
+    CyberCore::GradientColorStops stops();
+}
+
+[Nested, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::Pattern::Parameters {
+    bool repeatX;
+    bool repeatY;
+    CyberCore::AffineTransform patternSpaceTransform;
+}
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::Pattern {
+    CyberCore::SourceImage tileImage();
+    CyberCore::Pattern::Parameters parameters();
+}
+
+[Nested, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::SourceBrush::Brush {
+    std::variant<CyberCore::SourceBrush::Brush::LogicalGradient, Ref<CyberCore::Pattern>> brush;
+}
+
+[AdditionalEncoder=StreamConnectionEncoder] class CyberCore::SourceBrush {
+    CyberCore::Color color();
+    std::optional<CyberCore::SourceBrush::Brush> brush();
+}
+
+#if ENABLE(GPU_PROCESS) && ENABLE(WEBGL)
+header: <CyberCore/GraphicsContextGLAttributes.h>
+[CustomHeader] enum class CyberCore::GraphicsContextGLPowerPreference : uint8_t {
+    Default,
+    LowPower,
+    HighPerformance
+};
+
+header: <CyberCore/GraphicsContextGLAttributes.h>
+[CustomHeader] enum class CyberCore::GraphicsContextGLWebGLVersion : uint8_t {
+    WebGL1,
+    WebGL2
+};
+
+struct CyberCore::GraphicsContextGLAttributes {
+    bool alpha;
+    bool depth;
+    bool stencil;
+    bool antialias;
+    bool premultipliedAlpha;
+    bool preserveDrawingBuffer;
+    bool failIfMajorPerformanceCaveat;
+    CyberCore::GraphicsContextGLPowerPreference powerPreference;
+    bool shareResources;
+    bool noExtensions;
+    float devicePixelRatio;
+    CyberCore::GraphicsContextGLPowerPreference initialPowerPreference;
+    CyberCore::GraphicsContextGLWebGLVersion webGLVersion;
+    bool forceRequestForHighPerformanceGPU;
+#if PLATFORM(MAC) || PLATFORM(MACCATALYST)
+    uint64_t windowGPUID;
+#endif
+#if PLATFORM(COCOA)
+    bool useMetal;
+#endif
+#if ENABLE(WEBXR)
+    bool xrCompatible;
+#endif
+    bool failPlatformContextCreationForTesting;
+    [NotSerialized] unsigned remoteIPCBufferSizeLog2ForTesting;
+};
+#endif // ENABLE(GPU_PROCESS) && ENABLE(WEBGL)
+
+[RefCounted] class CyberCore::TimingFunction subclasses {
+  CyberCore::LinearTimingFunction,
+  CyberCore::CubicBezierTimingFunction,
+  CyberCore::StepsTimingFunction,
+  CyberCore::SpringTimingFunction
+}
+
+[RefCounted] class CyberCore::TransformOperation subclasses {
+    CyberCore::TranslateTransformOperation
+    CyberCore::ScaleTransformOperation
+    CyberCore::RotateTransformOperation
+    CyberCore::SkewTransformOperation
+    CyberCore::MatrixTransformOperation
+    CyberCore::Matrix3DTransformOperation
+    CyberCore::PerspectiveTransformOperation
+    CyberCore::IdentityTransformOperation
+}
+
+struct CyberCore::LengthSize {
+    CyberCore::Length width;
+    CyberCore::Length height;
+}
+
+class CyberCore::SVGPathByteStream {
+    Vector<unsigned char> data();
+}
+
+header: <CyberCore/BasicShapes.h>
+[Nested, CustomHeader] enum class CyberCore::BasicShapeCenterCoordinate::Direction : bool
+
+[CustomHeader] class CyberCore::BasicShapeCenterCoordinate {
+    CyberCore::BasicShapeCenterCoordinate::Direction direction();
+    CyberCore::Length length();
+}
+
+[Nested, CustomHeader] enum class CyberCore::BasicShapeRadius::Type : uint8_t {
+    Value,
+    ClosestSide,
+    FarthestSide
+};
+
+[CustomHeader] class CyberCore::BasicShapeRadius {
+    CyberCore::Length value();
+    CyberCore::BasicShapeRadius::Type type();
+}
+
+[RefCounted, CustomHeader] class CyberCore::BasicShapeCircle {
+    CyberCore::BasicShapeCenterCoordinate centerX();
+    CyberCore::BasicShapeCenterCoordinate centerY();
+    CyberCore::BasicShapeRadius radius();
+}
+
+[RefCounted, CustomHeader] class CyberCore::BasicShapeEllipse {
+    CyberCore::BasicShapeCenterCoordinate centerX();
+    CyberCore::BasicShapeCenterCoordinate centerY();
+    CyberCore::BasicShapeRadius radiusX();
+    CyberCore::BasicShapeRadius radiusY();
+}
+
+[RefCounted, CustomHeader] class CyberCore::BasicShapePolygon {
+    CyberCore::WindRule windRule();
+    Vector<CyberCore::Length> values();
+}
+
+[RefCounted, CustomHeader] class CyberCore::BasicShapePath {
+    std::unique_ptr<CyberCore::SVGPathByteStream> byteStream();
+    float zoom();
+    CyberCore::WindRule windRule();
+}
+
+[RefCounted, CustomHeader] class CyberCore::BasicShapeInset {
+    CyberCore::Length right();
+    CyberCore::Length top();
+    CyberCore::Length bottom();
+    CyberCore::Length left();
+    CyberCore::LengthSize topLeftRadius();
+    CyberCore::LengthSize topRightRadius();
+    CyberCore::LengthSize bottomRightRadius();
+    CyberCore::LengthSize bottomLeftRadius();
+}
+
+[RefCounted, CustomHeader] class CyberCore::BasicShape subclasses {
+    CyberCore::BasicShapeCircle
+    CyberCore::BasicShapeEllipse
+    CyberCore::BasicShapePolygon
+    CyberCore::BasicShapePath
+    CyberCore::BasicShapeInset
+}
+
+header: <CyberCore/RenderStyleConstants.h>
+[CustomHeader] enum class CyberCore::CSSBoxType : uint8_t {
+    BoxMissing,
+    MarginBox,
+    BorderBox,
+    PaddingBox,
+    ContentBox,
+    FillBox,
+    StrokeBox,
+    ViewBox
+};
+
+header: <CyberCore/PathOperation.h>
+[RefCounted, CustomHeader] class CyberCore::ReferencePathOperation {
+    std::optional<CyberCore::Path> path();
+}
+
+[RefCounted, CustomHeader] class CyberCore::ShapePathOperation {
+    Ref<CyberCore::BasicShape> shape();
+    CyberCore::CSSBoxType referenceBox();
+}
+
+[RefCounted, CustomHeader] class CyberCore::BoxPathOperation {
+    CyberCore::Path path();
+    CyberCore::CSSBoxType referenceBox();
+}
+
+[Nested, CustomHeader] enum class CyberCore::RayPathOperation::Size : uint8_t {
+    ClosestSide,
+    ClosestCorner,
+    FarthestSide,
+    FarthestCorner,
+    Sides
+};
+
+[RefCounted, CustomHeader] class CyberCore::RayPathOperation {
+    float angle();
+    CyberCore::RayPathOperation::Size size();
+    bool isContaining();
+    CyberCore::FloatRect containingBlockBoundingRect();
+    CyberCore::FloatPoint position();
+}
+
+[RefCounted] class CyberCore::PathOperation subclasses {
+    CyberCore::ReferencePathOperation,
+    CyberCore::ShapePathOperation,
+    CyberCore::BoxPathOperation,
+    CyberCore::RayPathOperation
+}
+
+#if PLATFORM(IOS_FAMILY)
+enum class CyberCore::SelectionRenderingBehavior : bool
+#endif
+
+#if ENABLE(WEB_AUTHN)
+enum class CyberCore::UserVerificationRequirement : uint8_t {
+    Required,
+    Preferred,
+    Discouraged
+};
+
+enum class CyberCore::ResidentKeyRequirement : uint8_t {
+    Required,
+    Preferred,
+    Discouraged
+};
+
+enum class CyberCore::AuthenticatorAttachment : uint8_t {
+    Platform,
+    CrossPlatform
+};
+
+#endif // ENABLE(WEB_AUTHN)
+
+#if ENABLE(ENCRYPTED_MEDIA)
+struct CyberCore::CDMKeySystemConfiguration {
+    String label;
+    Vector<AtomString> initDataTypes;
+    Vector<CyberCore::CDMMediaCapability> audioCapabilities;
+    Vector<CyberCore::CDMMediaCapability> videoCapabilities;
+    CyberCore::CDMRequirement distinctiveIdentifier;
+    CyberCore::CDMRequirement persistentState;
+    Vector<CyberCore::CDMSessionType> sessionTypes;
+}
+#endif // ENABLE(ENCRYPTED_MEDIA)
+
+struct CyberCore::MediaConfiguration {
+    std::optional<CyberCore::VideoConfiguration> video;
+    std::optional<CyberCore::AudioConfiguration> audio;
+
+    std::optional<Vector<String>> allowedMediaContainerTypes;
+    std::optional<Vector<String>> allowedMediaCodecTypes;
+};
+
+struct CyberCore::MediaEncodingConfiguration : CyberCore::MediaConfiguration {
+    CyberCore::MediaEncodingType type;
+};
+
+struct CyberCore::MediaDecodingConfiguration : CyberCore::MediaConfiguration {
+    CyberCore::MediaDecodingType type;
+    bool canExposeVP9;
+};
+
+enum class CyberCore::ResourceRequestCachePolicy : uint8_t {
+    UseProtocolCachePolicy,
+    ReloadIgnoringCacheData,
+    ReturnCacheDataElseLoad,
+    ReturnCacheDataDontLoad,
+    DoNotUseAnyCache,
+    RefreshAnyCacheData,
+};
+
+[Nested] enum class CyberCore::ResourceRequestBase::SameSiteDisposition : uint8_t {
+    Unspecified,
+    SameSite,
+    CrossSite
+};
+
+[Nested] enum class CyberCore::ResourceRequestRequester : uint8_t {
+    Unspecified,
+    Main,
+    XHR,
+    Fetch,
+    Media,
+    Model,
+    ImportScripts,
+    Ping,
+    Beacon,
+    EventSource
+};
+
+enum class CyberCore::ResourceLoadPriority : uint8_t {
+    VeryLow,
+    Low,
+    Medium,
+    High,
+    VeryHigh,
+};
+
+[Nested] enum class CyberCore::ResourceResponseBase::Type : uint8_t {
+    Basic,
+    Cors,
+    Default,
+    Error,
+    Opaque,
+    Opaqueredirect
+};
+
+[Nested] enum class CyberCore::ResourceResponseBase::Tainting : uint8_t {
+    Basic,
+    Cors,
+    Opaque,
+    Opaqueredirect
+};
+
+[Nested] enum class CyberCore::ResourceResponseBase::Source : uint8_t {
+    Unknown,
+    Network,
+    DiskCache,
+    DiskCacheAfterValidation,
+    MemoryCache,
+    MemoryCacheAfterValidation,
+    ServiceWorker,
+    ApplicationCache,
+    DOMCache,
+    InspectorOverride
+};
+
+[Nested] struct CyberCore::ResourceResponseBase::ResponseData {
+    URL m_url;
+    AtomString m_mimeType;
+    long long m_expectedContentLength;
+    AtomString m_textEncodingName;
+    AtomString m_httpStatusText;
+    AtomString m_httpVersion;
+    CyberCore::HTTPHeaderMap m_httpHeaderFields;
+    Box<CyberCore::NetworkLoadMetrics> m_networkLoadMetrics;
+
+    short m_httpStatusCode;
+    std::optional<CyberCore::CertificateInfo> m_certificateInfo;
+
+    CyberCore::ResourceResponseBase::Source m_source;
+    CyberCore::ResourceResponseBase::Type m_type;
+    CyberCore::ResourceResponseBase::Tainting m_tainting;
+
+    bool m_isRedirected;
+    CyberCore::UsedLegacyTLS m_usedLegacyTLS;
+    CyberCore::WasPrivateRelayed m_wasPrivateRelayed;
+    bool m_isRangeRequested;
+}
+
+class CyberCore::ResourceResponseBase {
+    std::optional<CyberCore::ResourceResponseBase::ResponseData> getResponseData()
+}
+
+class CyberCore::ResourceResponse : CyberCore::ResourceResponseBase {
+}
+
+header: <CyberCore/ResourceResponseBase.h>
+[CustomHeader, NoForwardDeclaration=<CyberCore/ResourceResponseBase.h>] struct CyberCore::ResourceResponseBase::CrossThreadData {
+    URL url;
+    String mimeType;
+    long long expectedContentLength;
+    String textEncodingName;
+    short httpStatusCode;
+    String httpStatusText;
+    String httpVersion;
+    CyberCore::HTTPHeaderMap httpHeaderFields;
+    std::optional<CyberCore::NetworkLoadMetrics> networkLoadMetrics;
+    CyberCore::ResourceResponseBase::Source source;
+    CyberCore::ResourceResponseBase::Type type;
+    CyberCore::ResourceResponseBase::Tainting tainting;
+    bool isRedirected;
+    CyberCore::UsedLegacyTLS usedLegacyTLS;
+    CyberCore::WasPrivateRelayed wasPrivateRelayed;
+    bool isRangeRequested;
+    std::optional<CyberCore::CertificateInfo> certificateInfo;
+};
+
+enum class CyberCore::ReferrerPolicy : uint8_t {
+    EmptyString,
+    NoReferrer,
+    NoReferrerWhenDowngrade,
+    SameOrigin,
+    Origin,
+    StrictOrigin,
+    OriginWhenCrossOrigin,
+    StrictOriginWhenCrossOrigin,
+    UnsafeUrl,
+};
+
+enum class CyberCore::FetchOptionsDestination : uint8_t {
+    EmptyString,
+    Audio,
+    Audioworklet,
+    Document,
+    Embed,
+    Font,
+    Image,
+    Iframe,
+    Manifest,
+    Model,
+    Object,
+    Paintworklet,
+    Report,
+    Script,
+    Serviceworker,
+    Sharedworker,
+    Style,
+    Track,
+    Video,
+    Worker,
+    Xslt
+};
+
+enum class CyberCore::FetchOptionsMode : uint8_t {
+    Navigate,
+    SameOrigin,
+    NoCors,
+    Cors
+};
+
+enum class CyberCore::FetchOptionsCredentials : uint8_t {
+    Omit,
+    SameOrigin,
+    Include
+};
+
+enum class CyberCore::FetchOptionsCache : uint8_t {
+    Default,
+    NoStore,
+    Reload,
+    NoCache,
+    ForceCache,
+    OnlyIfCached
+};
+
+enum class CyberCore::FetchOptionsRedirect : uint8_t {
+    Follow,
+    Error,
+    Manual
+};
+
+struct CyberCore::FetchOptions {
+    CyberCore::FetchOptionsDestination destination;
+    CyberCore::FetchOptionsMode mode;
+    CyberCore::FetchOptionsCredentials credentials;
+    CyberCore::FetchOptionsCache cache;
+    CyberCore::FetchOptionsRedirect redirect;
+    CyberCore::ReferrerPolicy referrerPolicy;
+    bool keepAlive;
+    String integrity;
+    Markable<UUID> clientIdentifier;
+    Markable<UUID> resultingClientIdentifier;
+}
+
+enum class CyberCore::FetchHeadersGuard : uint8_t {
+    None,
+    Immutable,
+    Request,
+    RequestNoCors,
+    Response
+};
+
+[Nested OptionSet] enum class CyberCore::ControlStyle::State : unsigned {
+    Hovered,
+    Pressed,
+    Focused,
+    Enabled,
+    Checked,
+    Default,
+    WindowActive,
+    Indeterminate,
+    SpinUp,
+    Presenting,
+    FormSemanticContext,
+    DarkAppearance,
+    RightToLeft,
+    LargeControls,
+    ReadOnly,
+    ListButton,
+    ListButtonPressed,
+    VerticalWritingMode
+};
+
+[AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::ControlStyle {
+    OptionSet<CyberCore::ControlStyle::State> states;
+    unsigned fontSize;
+    float zoomFactor;
+    CyberCore::Color accentColor;
+    CyberCore::Color textColor;
+    CyberCore::FloatBoxExtent borderWidth;
+};
+
+enum class CyberCore::StyleAppearance : uint8_t {
+    None,
+    Auto,
+    Checkbox,
+    Radio,
+    PushButton,
+    SquareButton,
+    Button,
+    DefaultButton,
+    Listbox,
+    Menulist,
+    MenulistButton,
+    Meter,
+    ProgressBar,
+    SliderHorizontal,
+    SliderVertical,
+    SearchField,
+#if ENABLE(APPLE_PAY)
+    ApplePayButton,
+#endif
+#if ENABLE(ATTACHMENT_ELEMENT)
+    Attachment,
+    BorderlessAttachment,
+#endif
+    TextArea,
+    TextField,
+    CapsLockIndicator,
+#if ENABLE(INPUT_TYPE_COLOR)
+    ColorWell,
+#endif
+#if ENABLE(SERVICE_CONTROLS)
+    ImageControlsButton,
+#endif
+    InnerSpinButton,
+#if ENABLE(DATALIST_ELEMENT)
+    ListButton,
+#endif
+    SearchFieldDecoration,
+    SearchFieldResultsDecoration,
+    SearchFieldResultsButton,
+    SearchFieldCancelButton,
+    SliderThumbHorizontal,
+    SliderThumbVertical
+};
+
+#if ENABLE(APPLE_PAY)
+header: <CyberCore/ApplePayButtonPart.h>
+enum class CyberCore::ApplePayButtonType : uint8_t {
+    Plain,
+    Buy,
+    SetUp,
+    Donate,
+    CheckOut,
+    Book,
+    Subscribe,
+#if ENABLE(APPLE_PAY_NEW_BUTTON_TYPES)
+    Reload,
+    AddMoney,
+    TopUp,
+    Order,
+    Rent,
+    Support,
+    Contribute,
+    Tip,
+#endif
+}
+
+enum class CyberCore::ApplePayButtonStyle : uint8_t {
+    White,
+    WhiteOutline,
+    Black,
+}
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::ApplePayButtonPart {
+    CyberCore::ApplePayButtonType buttonType();
+    CyberCore::ApplePayButtonStyle buttonStyle();
+    String locale();
+};
+#endif
+
+[Nested] enum class CyberCore::MeterPart::GaugeRegion : uint8_t {
+    Optimum,
+    Suboptimal,
+    EvenLessGood
+};
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::MeterPart {
+    CyberCore::MeterPart::GaugeRegion gaugeRegion();
+    double value();
+    double minimum();
+    double maximum();
+};
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::ProgressBarPart {
+    double position();
+    Seconds animationStartTime();
+};
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::SliderTrackPart {
+    CyberCore::StyleAppearance type();
+    CyberCore::IntSize thumbSize();
+    CyberCore::IntRect trackBounds();
+    Vector<double> tickRatios();
+}
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::DistantLightSource {
+    float azimuth();
+    float elevation();
+};
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::PointLightSource {
+    CyberCore::FloatPoint3D position();
+};
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::SpotLightSource {
+    CyberCore::FloatPoint3D position();
+    CyberCore::FloatPoint3D direction();
+    float specularExponent();
+    float limitingConeAngle();
+};
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::FEBlend {
+    CyberCore::BlendMode blendMode();
+};
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::FEColorMatrix {
+    CyberCore::ColorMatrixType type();
+    Vector<float> values();
+};
+
+header: <CyberCore/FEComponentTransfer.h>
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::ComponentTransferFunction {
+    CyberCore::ComponentTransferType type;
+    float slope;
+    float intercept;
+    float amplitude;
+    float exponent;
+    float offset;
+    Vector<float> tableValues;
+};
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::FEComponentTransfer {
+    CyberCore::ComponentTransferFunction redFunction();
+    CyberCore::ComponentTransferFunction greenFunction();
+    CyberCore::ComponentTransferFunction blueFunction();
+    CyberCore::ComponentTransferFunction alphaFunction();
+};
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::FEComposite {
+    CyberCore::CompositeOperationType operation();
+    float k1();
+    float k2();
+    float k3();
+    float k4();
+};
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::FEConvolveMatrix {
+    CyberCore::IntSize kernelSize();
+    float divisor();
+    float bias();
+    CyberCore::IntPoint targetOffset();
+    CyberCore::EdgeModeType edgeMode();
+    CyberCore::FloatPoint kernelUnitLength();
+    bool preserveAlpha();
+    Vector<float> kernel();
+};
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::FEDiffuseLighting {
+    CyberCore::Color lightingColor();
+    float surfaceScale();
+    float diffuseConstant();
+    float kernelUnitLengthX();
+    float kernelUnitLengthY();
+    Ref<CyberCore::LightSource> lightSource();
+};
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::FEDisplacementMap {
+    CyberCore::ChannelSelectorType xChannelSelector();
+    CyberCore::ChannelSelectorType yChannelSelector();
+    float scale();
+};
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::FEDropShadow {
+    float stdDeviationX();
+    float stdDeviationY();
+    float dx();
+    float dy();
+    CyberCore::Color shadowColor();
+    float shadowOpacity()
+};
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::FEFlood {
+    CyberCore::Color floodColor();
+    float floodOpacity();
+};
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::FEGaussianBlur {
+    float stdDeviationX();
+    float stdDeviationY();
+    CyberCore::EdgeModeType edgeMode();
+};
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::FEImage {
+    CyberCore::SourceImage sourceImage();
+    CyberCore::FloatRect sourceImageRect();
+    CyberCore::SVGPreserveAspectRatioValue preserveAspectRatio();
+};
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::FEMerge {
+    unsigned numberOfEffectInputs();
+};
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::FEMorphology {
+    CyberCore::MorphologyOperatorType morphologyOperator();
+    float radiusX();
+    float radiusY();
+};
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::FEOffset {
+    float dx();
+    float dy();
+};
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::FESpecularLighting {
+    CyberCore::Color lightingColor();
+    float surfaceScale();
+    float specularConstant();
+    float specularExponent();
+    float kernelUnitLengthX();
+    float kernelUnitLengthY();
+    Ref<CyberCore::LightSource> lightSource();
+};
+
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::FETurbulence {
+    CyberCore::TurbulenceType type();
+    float baseFrequencyX();
+    float baseFrequencyY();
+    int numOctaves();
+    float seed();
+    bool stitchTiles();
+};
+
+enum class CyberCore::HasInsecureContent : bool
+
+header: <CyberCore/ModalContainerTypes.h>
+[CustomHeader] enum class CyberCore::ModalContainerDecision : uint8_t {
+    Show,
+    HideAndIgnore,
+    HideAndAllow,
+    HideAndDisallow,
+};
+
+[OptionSet] enum class CyberCore::AutoplayEventFlags : uint8_t {
+    HasAudio,
+    PlaybackWasPrevented,
+    MediaIsMainContent,
+};
+
+header: <CyberCore/FocusDirection.h>
+enum class CyberCore::FocusDirection : uint8_t {
+    None,
+    Forward,
+    Backward,
+    Up,
+    Down,
+    Left,
+    Right
+};
+
+#if ENABLE(GAMEPAD)
+struct CyberCore::GamepadEffectParameters {
+    double duration;
+    double startDelay;
+    double strongMagnitude;
+    double weakMagnitude;
+    double leftTrigger;
+    double rightTrigger;
+};
+
+header: <CyberCore/GamepadHapticEffectType.h>
+enum class CyberCore::GamepadHapticEffectType : uint8_t {
+    DualRumble,
+    TriggerRumble
+};
+#endif
+
+header: <CyberCore/StorageEstimate.h>
+struct CyberCore::StorageEstimate {
+    uint64_t usage
+    uint64_t quota
+};
+
+header: <CyberCore/DOMPasteAccess.h>
+enum class CyberCore::DOMPasteAccessCategory : uint8_t {
+    General,
+    Fonts
+};
+
+enum class CyberCore::DOMPasteAccessPolicy : uint8_t {
+    NotRequestedYet,
+    Denied,
+    Granted
+};
+
+enum class CyberCore::DOMPasteAccessResponse : uint8_t {
+    DeniedForGesture,
+    GrantedForCommand,
+    GrantedForGesture
+};
+
+header: <CyberCore/DeviceOrientationOrMotionPermissionState.h>
+enum class CyberCore::DeviceOrientationOrMotionPermissionState : uint8_t {
+    Granted,
+    Denied,
+    Prompt
+};
+
+header: <CyberCore/ExceptionDetails.h>
+[Nested] enum class CyberCore::ExceptionDetails::Type : uint8_t {
+    Script,
+    InvalidTargetFrame,
+    AppBoundDomain
+};
+
+header: <CyberCore/SecurityPolicyViolationEventDisposition.h>
+enum class CyberCore::SecurityPolicyViolationEventDisposition : bool
+
+header: <CyberCore/FontAttributeChanges.h>
+enum class CyberCore::VerticalAlignChange : uint8_t {
+    Superscript,
+    Baseline,
+    Subscript
+};
+
+header: <CyberCore/TextGranularity.h>
+enum class CyberCore::TextGranularity : uint8_t {
+    CharacterGranularity,
+    WordGranularity,
+    SentenceGranularity,
+    LineGranularity,
+    ParagraphGranularity,
+    DocumentGranularity,
+    SentenceBoundary,
+    LineBoundary,
+    ParagraphBoundary,
+    DocumentBoundary
+};
+
+struct CyberCore::ListStyleType {
+    CyberCore::ListStyleType::Type type;
+    AtomString identifier;
+};
+
+header: <CyberCore/FontAttributes.h>
+[CustomHeader] struct CyberCore::TextList {
+    CyberCore::ListStyleType styleType;
+    int startingItemNumber
+    bool ordered
+};
+
+[Nested] enum class CyberCore::FontAttributes::SubscriptOrSuperscript : uint8_t {
+    None,
+    Subscript,
+    Superscript
+};
+
+[Nested] enum class CyberCore::FontAttributes::HorizontalAlignment : uint8_t {
+    Left,
+    Center,
+    Right,
+    Justify,
+    Natural
+};
+
+[CustomHeader] struct CyberCore::FontAttributes {
+    RefPtr<CyberCore::Font> font
+    CyberCore::Color backgroundColor
+    CyberCore::Color foregroundColor
+    CyberCore::FontShadow fontShadow
+    CyberCore::FontAttributes::SubscriptOrSuperscript subscriptOrSuperscript
+    CyberCore::FontAttributes::HorizontalAlignment horizontalAlignment
+    Vector<CyberCore::TextList> textLists
+    bool hasUnderline
+    bool hasStrikeThrough
+    bool hasMultipleFonts
+};
+
+header: <CyberCore/WritingDirection.h>
+enum class CyberCore::WritingDirection : uint8_t {
+    Natural,
+    LeftToRight,
+    RightToLeft
+};
+
+header: <CyberCore/VisibleSelection.h>
+enum class CyberCore::SelectionDirection : uint8_t {
+    Forward,
+    Backward,
+    Right,
+    Left
+};
+
+#if ENABLE(DATA_DETECTION)
+header: <CyberCore/DataDetectorType.h>
+[OptionSet] enum class CyberCore::DataDetectorType : uint8_t {
+    PhoneNumber,
+    Link,
+    Address,
+    CalendarEvent,
+    TrackingNumber,
+    FlightNumber,
+    LookupSuggestion,
+};
+#endif
+
+header: <CyberCore/AutocapitalizeTypes.h>
+enum class CyberCore::AutocapitalizeType : uint8_t {
+    Default,
+    None,
+    Words,
+    Sentences,
+    AllCharacters
+};
+
+enum class CyberCore::CrossOriginEmbedderPolicyValue : bool
+
+struct CyberCore::CrossOriginEmbedderPolicy {
+    CyberCore::CrossOriginEmbedderPolicyValue value;
+    CyberCore::CrossOriginEmbedderPolicyValue reportOnlyValue;
+    String reportingEndpoint;
+    String reportOnlyReportingEndpoint;
+};
+
+struct CyberCore::SameSiteInfo {
+    bool isSameSite;
+    bool isTopSite;
+    bool isSafeHTTPMethod;
+};
+
+[RefCounted] class CyberCore::SecurityOrigin {
+    CyberCore::SecurityOriginData m_data;
+    String m_domain;
+    String m_filePath;
+    bool m_universalAccess;
+    bool m_domainWasSetInDOM;
+    bool m_canLoadLocalResources;
+    bool m_enforcesFilePathSeparation;
+    bool m_needsStorageAccessFromFileURLsQuirk;
+    std::optional<bool> m_isPotentiallyTrustworthy;
+    bool m_isLocal;
+}
+
+enum class CyberCore::IncludeSecureCookies : bool;
+
+struct CyberCore::CookieRequestHeaderFieldProxy {
+    URL firstParty;
+    CyberCore::SameSiteInfo sameSiteInfo;
+    URL url;
+    std::optional<CyberCore::FrameIdentifier> frameID;
+    std::optional<CyberCore::PageIdentifier> pageID;
+    CyberCore::IncludeSecureCookies includeSecureCookies;
+};
+
+[RefCounted, CustomMemberLayout] class CyberCore::FormData {
+    bool m_alwaysStream;
+    Vector<char> m_boundary;
+    Vector<CyberCore::FormDataElement> m_elements;
+    int64_t m_identifier;
+};
+
+#if ENABLE(ASYNC_SCROLLING)
+header: <CyberCore/ScrollingStateNode.h>
+[OptionSet] enum class CyberCore::ScrollingStateNodeProperty : uint64_t {
+    Layer
+    ChildNodes
+    ScrollableAreaSize
+    TotalContentsSize
+    ReachableContentsSize
+    ScrollPosition
+    ScrollOrigin
+    ScrollableAreaParams
+    ReasonsForSynchronousScrolling
+    RequestedScrollPosition
+    SnapOffsetsInfo
+    CurrentHorizontalSnapOffsetIndex
+    CurrentVerticalSnapOffsetIndex
+    IsMonitoringWheelEvents
+    ScrollContainerLayer
+    ScrolledContentsLayer
+    HorizontalScrollbarLayer
+    VerticalScrollbarLayer
+    PainterForScrollbar
+    ContentAreaHoverState
+    MouseActivityState
+    ScrollbarHoverState
+    FrameScaleFactor
+    EventTrackingRegion
+    RootContentsLayer
+    CounterScrollingLayer
+    InsetClipLayer
+    ContentShadowLayer
+    HeaderHeight
+    FooterHeight
+    HeaderLayer
+    FooterLayer
+    BehaviorForFixedElements
+    TopContentInset
+    FixedElementsLayoutRelativeToFrame
+    VisualViewportIsSmallerThanLayoutViewport
+    AsyncFrameOrOverflowScrollingEnabled
+    WheelEventGesturesBecomeNonBlocking
+    ScrollingPerformanceTestingEnabled
+    LayoutViewport
+    MinLayoutViewportOrigin
+    MaxLayoutViewportOrigin
+    OverrideVisualViewportSize
+    RelatedOverflowScrollingNodes
+    LayoutConstraintData
+    ViewportConstraints
+    OverflowScrollingNode
+    KeyboardScrollData
+    OverlayScrollbarsEnabled
+};
+#endif
+
+[CustomHeader] struct CyberCore::RequestedScrollData {
+    CyberCore::ScrollRequestType requestType;
+    CyberCore::FloatPoint scrollPosition;
+    CyberCore::ScrollType scrollType;
+    CyberCore::ScrollClamping clamping;
+    CyberCore::ScrollIsAnimated animated;
+    std::optional<std::tuple<CyberCore::FloatPoint, CyberCore::ScrollType, CyberCore::ScrollClamping>> requestedDataBeforeAnimatedScroll;
+}
+
+[Alias=struct ScrollSnapOffsetsInfo<float,CyberCore::FloatRect>, CustomHeader] alias CyberCore::FloatScrollSnapOffsetsInfo {
+    CyberCore::ScrollSnapStrictness strictness;
+    Vector<CyberCore::FloatSnapOffset> horizontalSnapOffsets;
+    Vector<CyberCore::FloatSnapOffset> verticalSnapOffsets;
+    Vector<CyberCore::FloatRect> snapAreas;
+    Vector<CyberCore::ElementIdentifier> snapAreasIDs;
+}
+
+[Alias=struct SnapOffset<float>, CustomHeader] alias CyberCore::FloatSnapOffset {
+    float offset;
+    CyberCore::ScrollSnapStop stop;
+    bool hasSnapAreaLargerThanViewport;
+    CyberCore::ElementIdentifier snapTargetID;
+    bool isFocused;
+    Vector<size_t> snapAreaIndices;
+};
+
+#if ENABLE(ENCRYPTED_MEDIA)
+
+enum class CyberCore::CDMEncryptionScheme : bool
+
+struct CyberCore::CDMMediaCapability {
+    String contentType;
+    String robustness;
+    std::optional<CyberCore::CDMEncryptionScheme> encryptionScheme;
+};
+
+enum class CyberCore::CDMSessionType : uint8_t {
+    Temporary,
+    PersistentUsageRecord,
+    PersistentLicense
+};
+
+struct CyberCore::CDMRestrictions {
+    bool distinctiveIdentifierDenied;
+    bool persistentStateDenied;
+    HashSet<CyberCore::CDMSessionType, IntHash<CyberCore::CDMSessionType>, WTF::StrongEnumHashTraits<CyberCore::CDMSessionType>> deniedSessionTypes;
+}
+
+#endif
+
+struct CyberCore::MediaSelectionOption {
+    CyberCore::MediaSelectionOption::MediaType mediaType;
+    String displayName;
+    CyberCore::MediaSelectionOption::LegibleType legibleType;
+};
+
+[Nested] enum class CyberCore::MediaSelectionOption::MediaType : uint8_t {
+    Unknown,
+    Audio,
+    Subtitles,
+    Captions,
+    Metadata,
+};
+
+[Nested] enum class CyberCore::MediaSelectionOption::LegibleType : uint8_t {
+    Regular,
+    LegibleOff,
+    LegibleAuto,
+};
+
+enum class CyberCore::MediaDecodingType : uint8_t {
+    File,
+    MediaSource,
+    WebRTC
+};
+
+enum class CyberCore::MediaEncodingType : bool;
+
+class CyberCore::BufferSource {
+    Span<const uint8_t> span()
+}
+
+struct CyberCore::FontShadow {
+    CyberCore::Color color;
+    CyberCore::FloatSize offset;
+    double blurRadius;
+};
+
+struct CyberCore::CompositionHighlight {
+    unsigned startOffset;
+    unsigned endOffset;
+    std::optional<CyberCore::Color> backgroundColor;
+    std::optional<CyberCore::Color> foregroundColor;
+};
+
+header: <CyberCore/FontAttributeChanges.h>
+[CustomHeader] class CyberCore::FontChanges {
+    String m_fontName;
+    String m_fontFamily;
+    std::optional<double> m_fontSize;
+    [Validator='!*m_fontSize || !*m_fontSizeDelta'] std::optional<double> m_fontSizeDelta;
+    std::optional<bool> m_bold;
+    std::optional<bool> m_italic;
+};
+
+class CyberCore::FontAttributeChanges {
+    std::optional<CyberCore::VerticalAlignChange> m_verticalAlign;
+    std::optional<CyberCore::Color> m_backgroundColor;
+    std::optional<CyberCore::Color> m_foregroundColor;
+    std::optional<CyberCore::FontShadow> m_shadow;
+    std::optional<bool> m_strikeThrough;
+    std::optional<bool> m_underline;
+    CyberCore::FontChanges m_fontChanges;
+};
+
+header: <CyberCore/TextManipulationController.h>
+[Nested, CustomHeader] enum class CyberCore::TextManipulationControllerExclusionRule::Type : uint8_t {
+    Exclude,
+    Include
+};
+
+header: <CyberCore/TextManipulationController.h>
+[Nested, CustomHeader] struct CyberCore::TextManipulationControllerExclusionRule::ElementRule {
+    AtomString localName;
+};
+
+header: <CyberCore/TextManipulationController.h>
+[Nested, CustomHeader] struct CyberCore::TextManipulationControllerExclusionRule::AttributeRule {
+    AtomString name;
+    String value;
+};
+
+header: <CyberCore/TextManipulationController.h>
+[Nested, CustomHeader] struct CyberCore::TextManipulationControllerExclusionRule::ClassRule {
+    AtomString className;
+};
+
+header: <CyberCore/TextManipulationController.h>
+[CustomHeader] struct CyberCore::TextManipulationControllerExclusionRule {
+    CyberCore::TextManipulationControllerExclusionRule::Type type;
+    std::variant<CyberCore::TextManipulationControllerExclusionRule::ElementRule, CyberCore::TextManipulationControllerExclusionRule::AttributeRule, CyberCore::TextManipulationControllerExclusionRule::ClassRule> rule;
+};
+
+header: <CyberCore/TextManipulationController.h>
+[Nested, CustomHeader] enum class CyberCore::TextManipulationControllerManipulationFailure::Type : uint8_t {
+    NotAvailable,
+    ContentChanged,
+    InvalidItem,
+    InvalidToken,
+    ExclusionViolation,
+};
+
+header: <CyberCore/TextManipulationController.h>
+[CustomHeader] struct CyberCore::TextManipulationControllerManipulationFailure {
+    CyberCore::FrameIdentifier frameID;
+    CyberCore::TextManipulationItemIdentifier identifier;
+    uint64_t index;
+    CyberCore::TextManipulationControllerManipulationFailure::Type type;
+};
+
+#if ENABLE(SERVICE_WORKER)
+struct CyberCore::BackgroundFetchInformation {
+    CyberCore::ServiceWorkerRegistrationIdentifier registrationIdentifier;
+    String identifier;
+    uint64_t uploadTotal;
+    uint64_t uploaded;
+    uint64_t downloadTotal;
+    uint64_t downloaded;
+    CyberCore::BackgroundFetchResult result;
+    CyberCore::BackgroundFetchFailureReason failureReason;
+    bool recordsAvailable;
+};
+#endif
+
+#if ENABLE(SERVICE_WORKER)
+struct CyberCore::BackgroundFetchRequest {
+    CyberCore::ResourceRequest internalRequest;
+    CyberCore::FetchOptions options;
+    CyberCore::FetchHeadersGuard guard;
+    CyberCore::HTTPHeaderMap httpHeaders;
+    String referrer;
+    Markable<CyberCore::ContentSecurityPolicyResponseHeaders, CyberCore::ContentSecurityPolicyResponseHeaders::MarkableTraits> cspResponseHeaders;
+};
+#endif
+
+#if ENABLE(SERVICE_WORKER)
+struct CyberCore::BackgroundFetchRecordInformation {
+    CyberCore::BackgroundFetchRecordIdentifier identifier;
+    CyberCore::ResourceRequest internalRequest;
+    CyberCore::FetchOptions options;
+    CyberCore::FetchHeadersGuard guard;
+    CyberCore::HTTPHeaderMap httpHeaders;
+    String referrer;
+};
+#endif
+
+#if ENABLE(SERVICE_WORKER)
+struct CyberCore::BackgroundFetchOptions {
+    Vector<CyberCore::ImageResource> icons;
+    String title;
+    uint64_t downloadTotal;
+};
+#endif
+
+
+#if ENABLE(SERVICE_WORKER)
+struct CyberCore::ImageResource {
+    String src;
+    String sizes;
+    String type;
+    String label;
+};
+#endif // ENABLE(SERVICE_WORKER)
+
+using CyberCore::SharedStringHash = uint32_t
+
+struct CyberCore::FourCC {
+    uint32_t value;
+};
+
+#if ENABLE(VIDEO)
+header: <CyberCore/MediaPlayer.h>
+[CustomHeader] struct CyberCore::MediaEngineSupportParameters {
+    CyberCore::ContentType type;
+    URL url;
+    bool isMediaSource;
+    bool isMediaStream;
+    bool requiresRemotePlayback;
+    Vector<CyberCore::ContentType> contentTypesRequiringHardwareSupport;
+    std::optional<Vector<String>> allowedMediaContainerTypes;
+    std::optional<Vector<String>> allowedMediaCodecTypes;
+    std::optional<Vector<CyberCore::FourCC>> allowedMediaVideoCodecIDs;
+    std::optional<Vector<CyberCore::FourCC>> allowedMediaAudioCodecIDs;
+    std::optional<Vector<CyberCore::FourCC>> allowedMediaCaptionFormatTypes;
+};
+#endif
+
+enum class CyberCore::MediaPlayerNetworkState : uint8_t {
+    Empty,
+    Idle,
+    Loading,
+    Loaded,
+    FormatError,
+    NetworkError,
+    DecodeError
+};
+
+enum class CyberCore::MediaPlayerReadyState : uint8_t {
+    HaveNothing,
+    HaveMetadata,
+    HaveCurrentData,
+    HaveFutureData,
+    HaveEnoughData
+};
+
+enum class CyberCore::MediaPlayerMovieLoadType : uint8_t {
+    Unknown,
+    Download,
+    StoredStream,
+    LiveStream
+};
+
+enum class CyberCore::MediaPlayerPreload : uint8_t {
+    None,
+    MetaData,
+    Auto
+};
+
+enum class CyberCore::MediaPlayerVideoGravity : uint8_t {
+    Resize,
+    ResizeAspect,
+    ResizeAspectFill
+};
+
+enum class CyberCore::MediaPlayerSupportsType : uint8_t {
+    IsNotSupported,
+    IsSupported,
+    MayBeSupported
+};
+
+enum class CyberCore::MediaPlayerBufferingPolicy : uint8_t {
+    Default,
+    LimitReadAhead,
+    MakeResourcesPurgeable,
+    PurgeResources,
+};
+
+enum class CyberCore::MediaPlayerMediaEngineIdentifier : uint8_t {
+    AVFoundation,
+    AVFoundationMSE,
+    AVFoundationMediaStream,
+    AVFoundationCF,
+    GStreamer,
+    GStreamerMSE,
+    HolePunch,
+    MediaFoundation,
+    MockMSE,
+    CocoaWebM
+};
+
+enum class CyberCore::MediaPlayerWirelessPlaybackTargetType : uint8_t {
+    TargetTypeNone,
+    TargetTypeAirPlay,
+    TargetTypeTVOut
+};
+
+enum class CyberCore::MediaPlayerPitchCorrectionAlgorithm : uint8_t {
+    BestAllAround,
+    BestForMusic,
+    BestForSpeech,
+};
+
+class CyberCore::GeolocationPositionData {
+    double timestamp;
+    double latitude;
+    double longitude;
+    double accuracy;
+    std::optional<double> altitude;
+    std::optional<double> altitudeAccuracy;
+    std::optional<double> heading;
+    std::optional<double> speed;
+    std::optional<double> floorLevel;
+};
+
+#if ENABLE(APP_HIGHLIGHTS)
+enum class CyberCore::CreateNewGroupForHighlight : bool
+
+enum class CyberCore::HighlightRequestOriginatedInApp : bool
+
+struct CyberCore::AppHighlight {
+    Ref<CyberCore::FragmentedSharedBuffer> highlight;
+    std::optional<String> text;
+    CyberCore::CreateNewGroupForHighlight isNewGroup;
+    CyberCore::HighlightRequestOriginatedInApp requestOriginatedInApp;
+};
+#endif // ENABLE(APP_HIGHLIGHTS)
+
+struct CyberCore::MediaDeviceHashSalts {
+    String persistentDeviceSalt;
+    String ephemeralDeviceSalt;
+};
+
+enum class CyberCore::SpeechRecognitionUpdateType : uint8_t {
+    Start,
+    AudioStart,
+    SoundStart,
+    SpeechStart,
+    SpeechEnd,
+    SoundEnd,
+    AudioEnd,
+    Result,
+    NoMatch,
+    Error,
+    End
+};
+
+class CyberCore::SpeechRecognitionUpdate {
+    CyberCore::SpeechRecognitionConnectionClientIdentifier m_clientIdentifier;
+    CyberCore::SpeechRecognitionUpdateType m_type;
+    std::variant<std::monostate, CyberCore::SpeechRecognitionError, Vector<CyberCore::SpeechRecognitionResultData>> m_content;
+};
+
+#if USE(SYSTEM_PREVIEW)
+[RefCounted, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::ARKitBadgeSystemImage {
+    CyberCore::RenderingResourceIdentifier imageIdentifier();
+    CyberCore::FloatSize m_imageSize;
+};
+#endif
+
+[AdditionalEncoder=StreamConnectionEncoder] enum class CyberCore::CompositeOperator : uint8_t {
+    Clear,
+    Copy,
+    SourceOver,
+    SourceIn,
+    SourceOut,
+    SourceAtop,
+    DestinationOver,
+    DestinationIn,
+    DestinationOut,
+    DestinationAtop,
+    XOR,
+    PlusDarker,
+    PlusLighter,
+    Difference
+};
+
+[AdditionalEncoder=StreamConnectionEncoder] enum class CyberCore::BlendMode : uint8_t {
+    Normal,
+    Multiply,
+    Screen,
+    Darken,
+    Lighten,
+    Overlay,
+    ColorDodge,
+    ColorBurn,
+    HardLight,
+    SoftLight,
+    Difference,
+    Exclusion,
+    Hue,
+    Saturation,
+    Color,
+    Luminosity,
+    PlusDarker,
+    PlusLighter
+};
+
+[AdditionalEncoder=StreamConnectionEncoder] enum class CyberCore::GradientSpreadMethod : uint8_t {
+    Pad,
+    Reflect,
+    Repeat
+};
+
+[AdditionalEncoder=StreamConnectionEncoder] enum class CyberCore::InterpolationQuality : uint8_t {
+    Default,
+    DoNotInterpolate,
+    Low,
+    Medium,
+    High
+};
+
+header: <CyberCore/AudioIOCallback.h>
+[CustomHeader] struct CyberCore::AudioIOPosition {
+    Seconds position;
+    MonotonicTime timestamp;
+};
+
+#if ENABLE(VIDEO)
+header: <CyberCore/VideoFrame.h>
+enum class CyberCore::VideoFrameRotation : uint16_t {
+    None,
+    UpsideDown,
+    Right,
+    Left,
+};
+#endif
+
+#if ENABLE(VIDEO) && USE(AVFOUNDATION)
+[RefCounted] class CyberCore::VideoFrameCV {
+    MediaTime presentationTime();
+    bool isMirrored();
+    CyberCore::VideoFrameRotation rotation();
+    RetainPtr<CVPixelBufferRef> m_pixelBuffer;
+    CyberCore::PlatformVideoColorSpace colorSpace();
+};
+#endif
+
+[AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::GradientColorStop {
+    float offset;
+    CyberCore::Color color;
+};
+
+[AdditionalEncoder=StreamConnectionEncoder] class CyberCore::GradientColorStops {
+    Vector<CyberCore::GradientColorStop, 2> stops();
+};
+
+struct CyberCore::ImageBufferBackendParameters {
+    CyberCore::FloatSize logicalSize;
+    float resolutionScale;
+    CyberCore::DestinationColorSpace colorSpace
+    CyberCore::PixelFormat pixelFormat;
+    CyberCore::RenderingPurpose purpose;
+};
+
+enum class CyberCore::PreserveResolution : bool;
+
+[AdditionalEncoder=StreamConnectionEncoder] enum class CyberCore::PathElementType : uint8_t {
+    MoveToPoint,
+    AddLineToPoint,
+    AddQuadCurveToPoint,
+    AddCurveToPoint,
+    CloseSubpath
+};
+
+header: <CyberCore/Path.h>
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::EncodedPathElementType {
+    std::optional<CyberCore::PathElementType> m_type;
+};
+
+class CyberCore::ProcessIdentity {
+#if HAVE(TASK_IDENTITY_TOKEN)
+    MachSendRight m_taskIdToken;
+#endif
+};
+
+[AdditionalEncoder=StreamConnectionEncoder] enum class CyberCore::ColorInterpolationColorSpace : uint8_t {
+    HSL,
+    HWB,
+    LCH,
+    Lab,
+    OKLCH,
+    OKLab,
+    SRGB,
+    SRGBLinear,
+    XYZD50,
+    XYZD65
+};
+
+[AdditionalEncoder=StreamConnectionEncoder] enum class CyberCore::HueInterpolationMethod : uint8_t {
+    Shorter,
+    Longer,
+    Increasing,
+    Decreasing
+};
+
+[Nested, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::ColorInterpolationMethod::HSL {
+    CyberCore::HueInterpolationMethod hueInterpolationMethod;
+};
+[Nested, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::ColorInterpolationMethod::HWB {
+    CyberCore::HueInterpolationMethod hueInterpolationMethod;
+};
+[Nested, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::ColorInterpolationMethod::LCH {
+    CyberCore::HueInterpolationMethod hueInterpolationMethod;
+};
+[Nested, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::ColorInterpolationMethod::Lab {
+};
+[Nested, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::ColorInterpolationMethod::OKLCH {
+    CyberCore::HueInterpolationMethod hueInterpolationMethod;
+};
+[Nested, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::ColorInterpolationMethod::OKLab {
+};
+[Nested, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::ColorInterpolationMethod::SRGB {
+};
+[Nested, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::ColorInterpolationMethod::SRGBLinear {
+};
+[Nested, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::ColorInterpolationMethod::XYZD50 {
+};
+[Nested, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::ColorInterpolationMethod::XYZD65 {
+};
+
+[AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::ColorInterpolationMethod {
+    std::variant<CyberCore::ColorInterpolationMethod::HSL, CyberCore::ColorInterpolationMethod::HWB, CyberCore::ColorInterpolationMethod::LCH, CyberCore::ColorInterpolationMethod::Lab, CyberCore::ColorInterpolationMethod::OKLCH, CyberCore::ColorInterpolationMethod::OKLab, CyberCore::ColorInterpolationMethod::SRGB, CyberCore::ColorInterpolationMethod::SRGBLinear, CyberCore::ColorInterpolationMethod::XYZD50, CyberCore::ColorInterpolationMethod::XYZD65> colorSpace;
+    CyberCore::AlphaPremultiplication alphaPremultiplication;
+};
+
+#if USE(AUDIO_SESSION)
+header: <CyberCore/AudioSession.h>
+[CustomHeader] enum class CyberCore::RouteSharingPolicy : uint8_t {
+    Default,
+    LongFormAudio,
+    Independent,
+    LongFormVideo
+};
+
+enum class CyberCore::AudioSessionCategory : uint8_t {
+    None,
+    AmbientSound,
+    SoloAmbientSound,
+    MediaPlayback,
+    RecordAudio,
+    PlayAndRecord,
+    AudioProcessing,
+};
+
+enum class CyberCore::AudioSessionMode : uint8_t {
+    Default,
+    VideoChat,
+    MoviePlayback,
+};
+
+[Nested] enum class CyberCore::AudioSession::MayResume : bool;
+
+enum class CyberCore::AudioSessionRoutingArbitrationError : uint8_t {
+    None,
+    Failed,
+    Cancelled
+};
+
+[Nested] enum class CyberCore::AudioSessionRoutingArbitrationClient::DefaultRouteChanged : bool;
+#endif
+
+#if ENABLE(ENCRYPTED_MEDIA)
+enum class CyberCore::CDMKeyStatus : uint8_t {
+    Usable,
+    Expired,
+    Released,
+    OutputRestricted,
+    OutputDownscaled,
+    StatusPending,
+    InternalError
+};
+
+enum class CyberCore::CDMMessageType : uint8_t {
+    LicenseRequest,
+    LicenseRenewal,
+    LicenseRelease,
+    IndividualizationRequest
+};
+
+enum class CyberCore::CDMRequirement : uint8_t {
+    Required,
+    Optional,
+    NotAllowed
+};
+#endif
+
+#if ENABLE(WEB_RTC)
+enum class CyberCore::RTCDataChannelState : uint8_t {
+    Connecting,
+    Open,
+    Closing,
+    Closed
+};
+
+enum class CyberCore::RTCPriorityType : uint8_t {
+    VeryLow,
+    Low,
+    Medium,
+    High
+};
+#endif
+
+[AdditionalEncoder=StreamConnectionEncoder] enum class CyberCore::LineCap : uint8_t {
+    Butt,
+    Round,
+    Square
+};
+
+[AdditionalEncoder=StreamConnectionEncoder] enum class CyberCore::LineJoin : uint8_t {
+    Miter,
+    Round,
+    Bevel
+};
+
+[AdditionalEncoder=StreamConnectionEncoder] enum class CyberCore::StrokeStyle : uint8_t {
+    NoStroke,
+    SolidStroke,
+    DottedStroke,
+    DashedStroke,
+    DoubleStroke,
+    WavyStroke,
+};
+
+[OptionSet, AdditionalEncoder=StreamConnectionEncoder] enum class CyberCore::TextDrawingMode : uint8_t {
+    Fill,
+    Stroke,
+};
+
+[AdditionalEncoder=StreamConnectionEncoder] enum class CyberCore::DecodingMode : uint8_t {
+    Auto,
+    Synchronous,
+    Asynchronous
+};
+
+header: <CyberCore/GraphicsTypes.h>
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::CompositeMode {
+    CyberCore::CompositeOperator operation;
+    CyberCore::BlendMode blendMode;
+};
+
+[AdditionalEncoder=StreamConnectionEncoder] enum class CyberCore::DocumentMarkerLineStyleMode : uint8_t {
+    TextCheckingDictationPhraseWithAlternatives,
+    Spelling,
+    Grammar,
+    AutocorrectionReplacement,
+    DictationAlternatives
+};
+
+header: <CyberCore/GraphicsTypes.h>
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::DocumentMarkerLineStyle {
+    CyberCore::DocumentMarkerLineStyleMode mode;
+    CyberCore::Color color;
+};
+
+[Nested, AdditionalEncoder=StreamConnectionEncoder]  enum class CyberCore::ShadowRadiusMode : bool;
+
+header: <CyberCore/GraphicsTypes.h>
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::DropShadow {
+    CyberCore::FloatSize offset;
+    float blurRadius;
+    CyberCore::Color color;
+    CyberCore::ShadowRadiusMode radiusMode;
+};
+
+#if ENABLE(VIDEO)
+[Nested, AdditionalEncoder=StreamConnectionEncoder] enum class CyberCore::GenericCueData::Alignment : uint8_t {
+    None,
+    Start,
+    Middle,
+    End
+};
+
+[Nested, AdditionalEncoder=StreamConnectionEncoder] enum class CyberCore::GenericCueData::Status : uint8_t {
+    Uninitialized,
+    Partial,
+    Complete
+};
+
+header: <CyberCore/InbandGenericCue.h>
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::GenericCueData {
+    CyberCore::InbandGenericCueIdentifier m_uniqueId;
+    MediaTime m_startTime;
+    MediaTime m_endTime;
+    AtomString m_id;
+    String m_content;
+    String m_fontName;
+    double m_line;
+    double m_position;
+    double m_size;
+    double m_baseFontSize;
+    double m_relativeFontSize;
+    CyberCore::Color m_foregroundColor;
+    CyberCore::Color m_backgroundColor;
+    CyberCore::Color m_highlightColor;
+    CyberCore::GenericCueData::Alignment m_align;
+    CyberCore::GenericCueData::Status m_status;
+};
+#endif
+
+header: <CyberCore/ImageDecoder.h>
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::ImageDecoderFrameInfo {
+    bool hasAlpha;
+    Seconds duration;
+}
+
+header: <CyberCore/DisplayListItems.h>
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] class CyberCore::DisplayList::DrawDotsForDocumentMarker {
+    CyberCore::FloatRect rect();
+    CyberCore::DocumentMarkerLineStyle style();
+};
+
+[Nested] enum class CyberCore::ImageOrientation::Orientation : int {
+    FromImage,
+    OriginTopLeft,
+    OriginTopRight,
+    OriginBottomRight,
+    OriginBottomLeft,
+    OriginLeftTop,
+    OriginRightTop,
+    OriginRightBottom,
+    OriginLeftBottom,
+};
+
+[AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::ImageOrientation {
+    CyberCore::ImageOrientation::Orientation orientation()
+};
+
+[AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::ImagePaintingOptions {
+     CyberCore::CompositeOperator m_compositeOperator;
+     CyberCore::BlendMode m_blendMode;
+     CyberCore::DecodingMode m_decodingMode;
+     CyberCore::ImageOrientation m_orientation;
+     CyberCore::InterpolationQuality m_interpolationQuality;
+};
+
+struct CyberCore::CanvasActivityRecord {
+    HashSet<String> textWritten;
+    bool wasDataRead;
+};
+
+header: <CyberCore/AttributionSecondsUntilSendData.h>
+[CustomHeader] struct CyberCore::PCM::AttributionSecondsUntilSendData {
+    std::optional<Seconds> sourceSeconds;
+    std::optional<Seconds> destinationSeconds;
+};
+
+enum class CyberCore::CrossOriginOpenerPolicyValue : uint8_t {
+    UnsafeNone,
+    SameOrigin,
+    SameOriginPlusCOEP,
+    SameOriginAllowPopups
+};
+
+struct CyberCore::CrossOriginOpenerPolicy {
+    CyberCore::CrossOriginOpenerPolicyValue value;
+    CyberCore::CrossOriginOpenerPolicyValue reportOnlyValue;
+    String reportingEndpoint;
+    String reportOnlyReportingEndpoint;
+};
+
+struct CyberCore::CustomHeaderFields {
+    Vector<CyberCore::HTTPHeaderField> fields;
+    Vector<String> thirdPartyDomains;
+};
+
+[CreateUsing=create] class CyberCore::HTTPHeaderField {
+    String name();
+    String value();
+};
+
+struct CyberCore::NavigationRequester {
+    URL url;
+    Ref<CyberCore::SecurityOrigin> securityOrigin;
+    Ref<CyberCore::SecurityOrigin> topOrigin;
+    CyberCore::PolicyContainer policyContainer;
+    std::optional<CyberCore::GlobalFrameIdentifier> globalFrameIdentifier;
+};
+
+struct CyberCore::PolicyContainer {
+    CyberCore::ContentSecurityPolicyResponseHeaders contentSecurityPolicyResponseHeaders;
+    CyberCore::CrossOriginEmbedderPolicy crossOriginEmbedderPolicy;
+    CyberCore::CrossOriginOpenerPolicy crossOriginOpenerPolicy;
+    CyberCore::ReferrerPolicy referrerPolicy;
+};
+
+[Nested] enum class CyberCore::SubstituteData::SessionHistoryVisibility : bool
+
+class CyberCore::SubstituteData {
+    RefPtr<CyberCore::FragmentedSharedBuffer> content();
+    URL failingURL();
+    CyberCore::ResourceResponse response();
+    CyberCore::SubstituteData::SessionHistoryVisibility shouldRevealToSessionHistory();
+};
+
+header: <CyberCore/HTTPCookieAcceptPolicy.h>
+enum class CyberCore::HTTPCookieAcceptPolicy : uint8_t {
+    AlwaysAccept,
+    Never,
+    OnlyFromMainDocumentDomain,
+    ExclusivelyFromMainDocumentDomain,
+};
+
+enum class CyberCore::NetworkLoadPriority : uint8_t {
+    Low,
+    Medium,
+    High,
+    Unknown,
+};
+
+enum class CyberCore::PrivacyStance : uint8_t {
+    Unknown,
+    NotEligible,
+    Proxied,
+    Failed,
+    Direct,
+    FailedUnreachable,
+};
+
+enum class CyberCore::ThirdPartyCookieBlockingMode : uint8_t {
+    All,
+    AllExceptBetweenAppBoundDomains,
+    AllExceptManagedDomains,
+    AllOnSitesWithoutUserInteraction,
+    OnlyAccordingToPerDomainPolicy
+};
+
+enum class CyberCore::FirstPartyWebsiteDataRemovalMode : uint8_t {
+    AllButCookies,
+    None,
+    AllButCookiesLiveOnTestingTimeout,
+    AllButCookiesReproTestingTimeout
+};
+
+header: <CyberCore/DragData.h>
+[OptionSet, CustomHeader] enum class CyberCore::DragApplicationFlags : uint8_t {
+    IsModal,
+    IsSource,
+    HasAttachedSheet,
+    IsCopyKeyDown
+};
+
+[OptionSet] enum class CyberCore::TextCheckingType : uint8_t {
+    None,
+    Spelling,
+    Grammar,
+    Link,
+    Quote,
+    Dash,
+    Replacement,
+    Correction,
+    ShowCorrectionPanel,
+};
+
+#if ENABLE(SERVICE_WORKER)
+
+enum class CyberCore::ServiceWorkerClientType : uint8_t {
+    Window,
+    Worker,
+    Sharedworker,
+    All
+};
+
+enum class CyberCore::ServiceWorkerJobType : uint8_t {
+    Register,
+    Unregister,
+    Update,
+};
+
+enum class CyberCore::ServiceWorkerRegistrationState : uint8_t {
+    Installing,
+    Waiting,
+    Active,
+};
+
+enum class CyberCore::ServiceWorkerState : uint8_t {
+    Parsed,
+    Installing,
+    Installed,
+    Activating,
+    Activated,
+    Redundant,
+};
+
+enum class CyberCore::ServiceWorkerClientFrameType : uint8_t {
+    Auxiliary,
+    TopLevel,
+    Nested,
+    None
+};
+
+enum class CyberCore::ShouldNotifyWhenResolved : bool
+
+enum class CyberCore::ServiceWorkerUpdateViaCache : uint8_t {
+    Imports,
+    All,
+    None,
+};
+
+struct CyberCore::ServiceWorkerClientData {
+    CyberCore::ScriptExecutionContextIdentifier identifier;
+    CyberCore::ServiceWorkerClientType type;
+    CyberCore::ServiceWorkerClientFrameType frameType;
+    URL url;
+    URL ownerURL;
+    std::optional<CyberCore::PageIdentifier> pageIdentifier;
+    std::optional<CyberCore::FrameIdentifier> frameIdentifier;
+    CyberCore::LastNavigationWasAppInitiated lastNavigationWasAppInitiated;
+    bool isVisible;
+    bool isFocused;
+    uint64_t focusOrder;
+    Vector<String> ancestorOrigins;
+};
+
+
+header: <CyberCore/ServiceWorkerClientPendingMessage.h>
+[CustomHeader] struct CyberCore::ServiceWorkerClientPendingMessage {
+    CyberCore::MessageWithMessagePorts message;
+    CyberCore::ServiceWorkerData sourceData;
+    String sourceOrigin;
+};
+
+struct CyberCore::ServiceWorkerClientQueryOptions {
+    bool includeUncontrolled;
+    CyberCore::ServiceWorkerClientType type;
+
+};
+
+struct CyberCore::ServiceWorkerData {
+    CyberCore::ServiceWorkerIdentifier identifier;
+    CyberCore::ServiceWorkerRegistrationIdentifier registrationIdentifier;
+    URL scriptURL;
+    CyberCore::ServiceWorkerState state;
+    CyberCore::WorkerType type;
+};
+
+struct CyberCore::ServiceWorkerJobData {
+    CyberCore::ServiceWorkerJobDataIdentifier identifier();
+    URL scriptURL;
+    URL clientCreationURL;
+    CyberCore::SecurityOriginData topOrigin;
+    URL scopeURL;
+    CyberCore::ServiceWorkerOrClientIdentifier sourceContext;
+    CyberCore::WorkerType workerType;
+
+    CyberCore::ServiceWorkerJobType type;
+
+    String domainForCachePartition;
+    bool isFromServiceWorkerPage;
+
+    [Validator='( type == CyberCore::ServiceWorkerJobType::Register && registrationOptions->has_value()) || (type != CyberCore::ServiceWorkerJobType::Register && !registrationOptions->has_value() )'] std::optional<CyberCore::ServiceWorkerRegistrationOptions> registrationOptions;
+};
+
+#endif //ENABLE(SERVICE_WORKER)
+
+struct CyberCore::EventInit {
+    bool bubbles;
+    bool cancelable;
+    bool composed;
+};
+
+struct CyberCore::MessageWithMessagePorts {
+    RefPtr<CyberCore::SerializedScriptValue> message;
+    Vector<CyberCore::TransferredMessagePort> transferredPorts;
+};
+
+enum class CyberCore::StorageAccessWasGranted : bool
+
+enum class CyberCore::StorageAccessPromptWasShown : bool
+
+enum class CyberCore::StorageAccessScope : bool
+
+enum class CyberCore::StorageAccessQuickResult : bool
+
+header: <CyberCore/DocumentStorageAccess.h>
+[CustomHeader] struct CyberCore::RequestStorageAccessResult {
+    CyberCore::StorageAccessWasGranted wasGranted;
+    CyberCore::StorageAccessPromptWasShown promptWasShown;
+    CyberCore::StorageAccessScope scope;
+    CyberCore::RegistrableDomain topFrameDomain;
+    CyberCore::RegistrableDomain subFrameDomain;
+};
+
+class CyberCore::Exception {
+    CyberCore::ExceptionCode code();
+    String message();
+};
+
+struct CyberCore::ExceptionData {
+    CyberCore::ExceptionCode code;
+    String message;
+};
+
+struct CyberCore::MessagePortIdentifier {
+    CyberCore::ProcessIdentifier processIdentifier;
+    CyberCore::PortIdentifier portIdentifier;
+};
+
+header: <CyberCore/SecurityPolicyViolationEvent.h>
+[CustomHeader] struct CyberCore::SecurityPolicyViolationEventInit : CyberCore::EventInit {
+    String documentURI;
+    String referrer;
+    String blockedURI;
+    String violatedDirective;
+    String effectiveDirective;
+    String originalPolicy;
+    String sourceFile;
+    String sample;
+    CyberCore::SecurityPolicyViolationEventDisposition disposition;
+    unsigned short statusCode;
+    unsigned lineNumber;
+    unsigned columnNumber;
+};
+
+[RefCounted] class CyberCore::CSPViolationReportBody {
+    String documentURL();
+    String referrer();
+    String blockedURL();
+    String effectiveDirective();
+    String originalPolicy();
+    String sourceFile();
+    String sample();
+    CyberCore::SecurityPolicyViolationEventDisposition disposition();
+    unsigned short statusCode();
+    unsigned long lineNumber();
+    unsigned long columnNumber();
+};
+
+class CyberCore::SecurityOriginData {
+    std::variant<CyberCore::SecurityOriginData::Tuple, CyberCore::ProcessQualified<CyberCore::OpaqueOriginIdentifier>> data();
+};
+
+[Nested] class CyberCore::SecurityOriginData::Tuple {
+    [Validator='!protocol->isHashTableDeletedValue()'] String protocol;
+    String host;
+    std::optional<uint16_t> port;
+};
+
+#if ENABLE(MEDIA_STREAM)
+
+[Nested] enum class CyberCore::MediaConstraint::DataType : uint8_t {
+    None,
+    Integer,
+    Double,
+    Boolean,
+    String
+};
+
+enum class CyberCore::MediaConstraintType : uint8_t {
+    Unknown,
+    Width,
+    Height,
+    AspectRatio,
+    FrameRate,
+    FacingMode,
+    Volume,
+    SampleRate,
+    SampleSize,
+    EchoCancellation,
+    DeviceId,
+    GroupId,
+    DisplaySurface,
+    LogicalSurface,
+    Zoom,
+};
+
+header: <CyberCore/MediaConstraints.h>
+[CustomHeader] class CyberCore::MediaConstraint {
+    String name();
+    CyberCore::MediaConstraintType constraintType();
+    CyberCore::MediaConstraint::DataType dataType();
+};
+
+[CustomHeader] class CyberCore::IntConstraint : CyberCore::MediaConstraint {
+    std::optional<int> m_min;
+    std::optional<int> m_max;
+    std::optional<int> m_exact;
+    std::optional<int> m_ideal;
+};
+
+[CustomHeader] class CyberCore::DoubleConstraint : CyberCore::MediaConstraint {
+    std::optional<double> m_min;
+    std::optional<double> m_max;
+    std::optional<double> m_exact;
+    std::optional<double> m_ideal;
+};
+
+[CustomHeader] class CyberCore::BooleanConstraint : CyberCore::MediaConstraint {
+    std::optional<bool> m_exact;
+    std::optional<bool> m_ideal;
+};
+
+[CustomHeader] class CyberCore::StringConstraint : CyberCore::MediaConstraint {
+    Vector<String> m_exact;
+    Vector<String> m_ideal;
+};
+
+header: <CyberCore/VideoPreset.h>
+[CustomHeader] struct CyberCore::FrameRateRange {
+    double minimum;
+    double maximum;
+};
+
+[CustomHeader] struct CyberCore::VideoPresetData {
+    CyberCore::IntSize size;
+    Vector<CyberCore::FrameRateRange> frameRateRanges;
+    double minZoom;
+    double maxZoom;
+};
+
+class CyberCore::RealtimeMediaSourceSupportedConstraints {
+    bool supportsWidth();
+    bool supportsHeight();
+    bool supportsAspectRatio();
+    bool supportsFrameRate();
+    bool supportsFacingMode();
+    bool supportsVolume();
+    bool supportsSampleRate();
+    bool supportsSampleSize();
+    bool supportsEchoCancellation();
+    bool supportsDeviceId();
+    bool supportsGroupId();
+    bool supportsDisplaySurface();
+    bool supportsLogicalSurface();
+    bool supportsFocusDistance();
+    bool supportsZoom();
+};
+
+enum class CyberCore::VideoFacingMode : uint8_t {
+    Unknown,
+    User,
+    Environment,
+    Left,
+    Right
+};
+
+enum class CyberCore::DisplaySurfaceType : uint8_t {
+    Monitor,
+    Window,
+    Application,
+    Browser,
+    Invalid,
+};
+
+class CyberCore::RealtimeMediaSourceSettings {
+    uint32_t width();
+    uint32_t height();
+    float aspectRatio();
+    float frameRate();
+    CyberCore::VideoFacingMode facingMode();
+    double volume();
+    uint32_t sampleRate();
+    uint32_t sampleSize();
+    bool echoCancellation();
+    AtomString deviceId();
+    AtomString groupId();
+    AtomString label();
+    CyberCore::DisplaySurfaceType displaySurface();
+    bool logicalSurface();
+    double zoom();
+    CyberCore::RealtimeMediaSourceSupportedConstraints supportedConstraints();
+};
+
+[Nested] enum class CyberCore::CaptureDevice::DeviceType : uint8_t {
+    Unknown,
+    Microphone,
+    Speaker,
+    Camera,
+    Screen,
+    Window,
+    SystemAudio
+};
+
+class CyberCore::CaptureDevice {
+    String persistentId();
+    CyberCore::CaptureDevice::DeviceType type();
+    String label();
+    String groupId();
+    bool enabled();
+    bool isDefault();
+    bool isMockDevice();
+    bool isEphemeral();
+};
+
+struct CyberCore::CaptureDeviceWithCapabilities {
+    CyberCore::CaptureDevice device;
+    CyberCore::RealtimeMediaSourceCapabilities capabilities;
+};
+
+[Nested] enum class CyberCore::RealtimeMediaSourceCapabilities::EchoCancellation : bool
+
+class CyberCore::RealtimeMediaSourceCapabilities {
+    CyberCore::CapabilityValueOrRange width();
+    CyberCore::CapabilityValueOrRange height();
+    CyberCore::CapabilityValueOrRange aspectRatio();
+    CyberCore::CapabilityValueOrRange frameRate();
+    Vector<CyberCore::VideoFacingMode> facingMode();
+    CyberCore::CapabilityValueOrRange volume();
+    CyberCore::CapabilityValueOrRange sampleRate();
+    CyberCore::CapabilityValueOrRange sampleSize();
+    CyberCore::RealtimeMediaSourceCapabilities::EchoCancellation echoCancellation();
+    AtomString deviceId();
+    AtomString groupId();
+    CyberCore::CapabilityValueOrRange focusDistance();
+    CyberCore::CapabilityValueOrRange zoom();
+    CyberCore::RealtimeMediaSourceSupportedConstraints supportedConstraints();
+};
+
+#endif
+
+enum class CyberCore::PlatformVideoColorPrimaries : uint8_t {
+    Bt709,
+    Bt470bg,
+    Smpte170m,
+    Bt470m,
+    Smpte240m,
+    Film,
+    Bt2020,
+    SmpteSt4281,
+    SmpteRp431,
+    SmpteEg432,
+    JedecP22Phosphors,
+    Unspecified,
+};
+
+enum class CyberCore::PlatformVideoTransferCharacteristics : uint8_t {
+    Bt709,
+    Smpte170m,
+    Iec6196621,
+    Gamma22curve,
+    Gamma28curve,
+    Smpte240m,
+    Linear,
+    Log,
+    LogSqrt,
+    Iec6196624,
+    Bt1361ExtendedColourGamut,
+    Bt2020_10bit,
+    Bt2020_12bit,
+    SmpteSt2084,
+    SmpteSt4281,
+    AribStdB67Hlg,
+    Unspecified
+};
+
+enum class CyberCore::PlatformVideoMatrixCoefficients : uint8_t {
+    Rgb,
+    Bt709,
+    Bt470bg,
+    Smpte170m,
+    Smpte240m,
+    Fcc,
+    YCgCo,
+    Bt2020NonconstantLuminance,
+    Bt2020ConstantLuminance,
+    Unspecified,
+};
+
+[AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::PlatformVideoColorSpace {
+    std::optional<CyberCore::PlatformVideoColorPrimaries> primaries;
+    std::optional<CyberCore::PlatformVideoTransferCharacteristics> transfer;
+    std::optional<CyberCore::PlatformVideoMatrixCoefficients> matrix;
+    std::optional<bool> fullRange;
+};
+
+#if ENABLE(VIDEO)
+
+struct CyberCore::PlatformTrackConfiguration {
+    String codec;
+};
+
+struct CyberCore::PlatformAudioTrackConfiguration : CyberCore::PlatformTrackConfiguration {
+    uint32_t sampleRate;
+    uint32_t numberOfChannels;
+    uint64_t bitrate;
+};
+
+struct CyberCore::PlatformVideoTrackConfiguration : CyberCore::PlatformTrackConfiguration {
+    uint32_t width;
+    uint32_t height;
+    CyberCore::PlatformVideoColorSpace colorSpace;
+    double framerate;
+    uint64_t bitrate;
+};
+
+#endif
+
+#if ENABLE(WEB_RTC)
+
+header: <CyberCore/RTCDataChannelHandler.h>
+[CustomHeader] struct CyberCore::RTCDataChannelInit {
+    std::optional<bool> ordered;
+    std::optional<unsigned short> maxPacketLifeTime;
+    std::optional<unsigned short> maxRetransmits;
+    String protocol;
+    std::optional<bool> negotiated;
+    std::optional<unsigned short> id;
+    CyberCore::RTCPriorityType priority;
+};
+
+struct CyberCore::RTCDataChannelIdentifier {
+    CyberCore::ProcessIdentifier processIdentifier;
+    CyberCore::RTCDataChannelLocalIdentifier channelIdentifier;
+};
+
+#endif // ENABLE(WEB_RTC)
+
+header: <CyberCore/SVGFilterExpressionReference.h>
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::SVGFilterExpressionNode {
+    unsigned index;
+    std::optional<CyberCore::FilterEffectGeometry> geometry;
+    unsigned level;
+};
+
+[AdditionalEncoder=StreamConnectionEncoder] class CyberCore::SVGPreserveAspectRatioValue {
+    CyberCore::SVGPreserveAspectRatioValue::SVGPreserveAspectRatioType m_align;
+    CyberCore::SVGPreserveAspectRatioValue::SVGMeetOrSliceType m_meetOrSlice;
+};
+
+#if ENABLE(CONTENT_EXTENSIONS)
+
+[Nested] struct CyberCore::ContentRuleListResults::Result {
+    bool blockedLoad;
+    bool madeHTTPS;
+    bool blockedCookies;
+    bool modifiedHeaders;
+    bool redirected;
+    Vector<String> notifications;
+};
+
+[Nested] struct CyberCore::ContentRuleListResults::Summary {
+    bool blockedLoad;
+    bool madeHTTPS;
+    bool blockedCookies;
+    bool hasNotifications;
+    [NotSerialized] Vector<CyberCore::ContentExtensions::ModifyHeadersAction> modifyHeadersActions;
+    [NotSerialized] Vector<std::pair<CyberCore::ContentExtensions::RedirectAction, URL>> redirectActions;
+};
+
+struct CyberCore::ContentRuleListResults {
+    CyberCore::ContentRuleListResults::Summary summary;
+    Vector<std::pair<String, CyberCore::ContentRuleListResults::Result>> results;
+};
+
+#endif
+
+enum class CyberCore::PolicyAction : uint8_t {
+    Use,
+    Download,
+    Ignore,
+    StopAllLoads
+};
+
+[OptionSet] enum class CyberCore::ReloadOption : uint8_t {
+    ExpiredOnly,
+    FromOrigin,
+    DisableContentBlockers
+};
+
+enum class CyberCore::FrameLoadType : uint8_t {
+    Standard,
+    Back,
+    Forward,
+    IndexedBackForward,
+    Reload,
+    Same,
+    RedirectWithLockedBackForwardList,
+    Replace,
+    ReloadFromOrigin,
+    ReloadExpiredOnly
+};
+
+enum class CyberCore::NavigationType : uint8_t {
+    LinkClicked,
+    FormSubmitted,
+    BackForward,
+    Reload,
+    FormResubmitted,
+    Other
+};
+
+enum class CyberCore::BrowsingContextGroupSwitchDecision : uint8_t {
+    StayInGroup,
+    NewSharedGroup,
+    NewIsolatedGroup,
+};
+
+enum class CyberCore::ShouldOpenExternalURLsPolicy : uint8_t {
+    ShouldNotAllow,
+    ShouldAllowExternalSchemesButNotAppLinks,
+    ShouldAllow,
+};
+
+header: <CyberCore/DocumentLoader.h>
+[CustomHeader] enum class CyberCore::MouseEventPolicy : uint8_t {
+    Default,
+#if ENABLE(IOS_TOUCH_EVENTS)
+    SynthesizeTouchEvents,
+#endif
+};
+
+enum class CyberCore::ColorSchemePreference : uint8_t {
+    NoPreference,
+    Light,
+    Dark
+};
+
+enum class CyberCore::ModalContainerObservationPolicy : bool
+
+enum class CyberCore::AllowsContentJavaScript : bool
+
+[OptionSet] enum class CyberCore::NetworkConnectionIntegrity : uint16_t {
+    Enabled,
+    HTTPSFirst,
+    HTTPSOnly,
+    HTTPSOnlyExplicitlyBypassedForDomain,
+    FailClosed,
+    WebSearchContent,
+    EnhancedTelemetry,
+    RequestValidation,
+    SanitizeLookalikeCharacters,
+};
+
+enum class CyberCore::ViolationReportType : uint8_t {
+    COEPInheritenceViolation,
+    CORPViolation,
+    ContentSecurityPolicy,
+    CrossOriginOpenerPolicy,
+    Deprecation,
+    StandardReportingAPIViolation,
+    Test
+};
+
+enum class CyberCore::COEPDisposition : bool;
+
+[RefCounted] class CyberCore::COEPInheritenceViolationReportBody {
+    CyberCore::COEPDisposition m_disposition;
+    URL m_blockedURL;
+    String m_type;
+};
+
+[RefCounted] class CyberCore::CORPViolationReportBody {
+    CyberCore::COEPDisposition m_disposition;
+    URL m_blockedURL;
+    CyberCore::FetchOptionsDestination m_destination;
+};
+
+[RefCounted] class CyberCore::ReportBody subclasses {
+  CyberCore::CSPViolationReportBody,
+  CyberCore::COEPInheritenceViolationReportBody,
+  CyberCore::CORPViolationReportBody,
+  CyberCore::DeprecationReportBody
+  CyberCore::TestReportBody
+};
+
+[AdditionalEncoder=StreamConnectionEncoder] class CyberCore::SourceImage {
+    CyberCore::RenderingResourceIdentifier imageIdentifier();
+}
+
+enum class CyberCore::LinkIconType : uint8_t {
+    Favicon,
+    TouchIcon,
+    TouchPrecomposedIcon
+};
+
+struct CyberCore::LinkIcon {
+    URL url;
+    CyberCore::LinkIconType type;
+    String mimeType;
+    std::optional<unsigned> size;
+    Vector<std::pair<String, String>> attributes;
+};
+
+header: <CyberCore/PluginData.h>
+[CustomHeader] struct CyberCore::SupportedPluginIdentifier {
+    String matchingDomain;
+    String pluginIdentifier;
+};
+
+enum class CyberCore::PluginLoadClientPolicy : uint8_t {
+    Undefined,
+    Block,
+    Ask,
+    Allow,
+    AllowAlways,
+};
+
+struct CyberCore::CSSValueKey {
+    unsigned cssValueID;
+    bool useDarkAppearance;
+    bool useElevatedUserInterfaceLevel;
+};
+
+struct CyberCore::VideoFrameTimeMetadata {
+    std::optional<double> processingDuration;
+    std::optional<Seconds> captureTime;
+    std::optional<Seconds> receiveTime;
+    std::optional<unsigned> rtpTimestamp;
+};
+
+[AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::PositionedGlyphs {
+    Vector<CyberCore::GlyphBufferGlyph> glyphs;
+    [Validator='glyphs->size() == advances->size()'] Vector<CyberCore::GlyphBufferAdvance> advances;
+    CyberCore::FloatPoint localAnchor;
+    CyberCore::FontSmoothingMode smoothingMode;
+};
+
+class CyberCore::EventRegion {
+    CyberCore::Region m_region;
+#if ENABLE(TOUCH_ACTION_REGIONS)
+    Vector<CyberCore::Region> m_touchActionRegions;
+#endif
+#if ENABLE(WHEEL_EVENT_REGIONS)
+    CyberCore::Region m_wheelEventListenerRegion;
+    CyberCore::Region m_nonPassiveWheelEventListenerRegion;
+#endif
+#if ENABLE(EDITABLE_REGION)
+    std::optional<CyberCore::Region> m_editableRegion;
+#endif
+#if ENABLE(INTERACTION_REGIONS_IN_EVENT_REGION)
+    Vector<CyberCore::InteractionRegion> m_interactionRegions;
+#endif
+};
+
+enum class CyberCore::PasteboardItemPresentationStyle : uint8_t {
+    Unspecified,
+    Inline,
+    Attachment
+};
+
+[CustomHeader] struct CyberCore::PresentationSize {
+    std::optional<double> width;
+    std::optional<double> height;
+};
+
+struct CyberCore::PasteboardItemInfo {
+    Vector<String> pathsForFileUpload;
+    Vector<String> platformTypesForFileUpload;
+    Vector<String> platformTypesByFidelity;
+    String suggestedFileName;
+    CyberCore::PresentationSize preferredPresentationSize;
+    bool isNonTextType;
+    bool containsFileURLAndFileUploadContent;
+    Vector<String> webSafeTypesByFidelity;
+    CyberCore::PasteboardItemPresentationStyle preferredPresentationStyle;
+};
+
+#if ENABLE(MEDIA_CONTROLS_CONTEXT_MENUS) && USE(UICONTEXTMENU)
+struct CyberCore::MediaControlsContextMenuItem {
+    uint64_t id;
+    String title;
+    String icon;
+    bool checked;
+    Vector<CyberCore::MediaControlsContextMenuItem> children;
+};
+#endif
+
+struct CyberCore::WorkerOptions {
+    CyberCore::WorkerType type;
+    CyberCore::FetchRequestCredentials credentials;
+    String name;
+};
+
+struct CyberCore::WorkerInitializationData {
+#if ENABLE(SERVICE_WORKER)
+    std::optional<CyberCore::ServiceWorkerData> serviceWorkerData;
+#endif
+    std::optional<CyberCore::ScriptExecutionContextIdentifier> clientIdentifier;
+    String userAgent;
+};
+
+struct CyberCore::WorkerFetchResult {
+    CyberCore::ScriptBuffer script;
+    URL responseURL;
+    CyberCore::CertificateInfo certificateInfo;
+    CyberCore::ContentSecurityPolicyResponseHeaders contentSecurityPolicy;
+    CyberCore::CrossOriginEmbedderPolicy crossOriginEmbedderPolicy;
+    String referrerPolicy;
+    CyberCore::ResourceError error;
+};
+
+struct CyberCore::SharedWorkerKey {
+    CyberCore::ClientOrigin origin;
+    URL url;
+    String name;
+};
+
+#if ENABLE(SERVICE_WORKER)
+
+struct CyberCore::ServiceWorkerRegistrationOptions {
+    String scope;
+    CyberCore::WorkerType type;
+    CyberCore::ServiceWorkerUpdateViaCache updateViaCache;
+};
+
+class CyberCore::ServiceWorkerRegistrationKey {
+    CyberCore::SecurityOriginData topOrigin();
+    URL scope();
+};
+
+struct CyberCore::ServiceWorkerRegistrationData {
+    CyberCore::ServiceWorkerRegistrationKey key;
+    CyberCore::ServiceWorkerRegistrationIdentifier identifier;
+    URL scopeURL;
+    CyberCore::ServiceWorkerUpdateViaCache updateViaCache;
+    WallTime lastUpdateTime;
+    std::optional<CyberCore::ServiceWorkerData> installingWorker;
+    std::optional<CyberCore::ServiceWorkerData> waitingWorker;
+    std::optional<CyberCore::ServiceWorkerData> activeWorker;
+};
+
+struct CyberCore::ServiceWorkerJobDataIdentifier {
+    CyberCore::SWServerConnectionIdentifier connectionIdentifier;
+    CyberCore::ServiceWorkerJobIdentifier jobIdentifier;
+};
+
+struct CyberCore::ServiceWorkerImportedScript {
+    CyberCore::ScriptBuffer script;
+    URL responseURL;
+    String mimeType;
+};
+
+header: <wtf/RobinHoodHashTable.h>
+struct CyberCore::ServiceWorkerContextData {
+    std::optional<CyberCore::ServiceWorkerJobDataIdentifier> jobDataIdentifier;
+    CyberCore::ServiceWorkerRegistrationData registration;
+    CyberCore::ServiceWorkerIdentifier serviceWorkerIdentifier;
+    CyberCore::ScriptBuffer script;
+    CyberCore::CertificateInfo certificateInfo;
+    CyberCore::ContentSecurityPolicyResponseHeaders contentSecurityPolicy;
+    CyberCore::CrossOriginEmbedderPolicy crossOriginEmbedderPolicy;
+    String referrerPolicy;
+    URL scriptURL;
+    CyberCore::WorkerType workerType;
+    bool loadedFromDisk;
+    std::optional<CyberCore::LastNavigationWasAppInitiated> lastNavigationWasAppInitiated;
+    MemoryCompactRobinHoodHashMap<URL, CyberCore::ServiceWorkerImportedScript> scriptResourceMap;
+    std::optional<CyberCore::ScriptExecutionContextIdentifier> serviceWorkerPageIdentifier;
+    CyberCore::NavigationPreloadState navigationPreloadState;
+};
+
+#endif
+
+#if HAVE(SCREEN_CAPTURE_KIT)
+header: <CyberCore/DisplayCapturePromptType.h>
+enum class CyberCore::DisplayCapturePromptType : uint8_t {
+    Window,
+    Screen,
+    UserChoose
+};
+#endif
+
+header: <CyberScriptCore/ArrayBuffer.h>
+[RefCounted, CustomHeader] class JSC::ArrayBuffer {
+    Vector<uint8_t> toVector();
+}
+
+enum class CyberCore::TextIndicatorPresentationTransition : uint8_t {
+    None,
+    Bounce,
+    BounceAndCrossfade,
+    FadeIn,
+};
+
+[OptionSet] enum class CyberCore::TextIndicatorOption : uint16_t {
+    RespectTextColor,
+    PaintBackgrounds,
+    PaintAllContent,
+    IncludeSnapshotWithSelectionHighlight,
+    TightlyFitContent,
+    UseBoundingRectAndPaintAllContentForComplexRanges,
+    IncludeMarginIfRangeMatchesSelection,
+    ExpandClipBeyondVisibleRect,
+    DoNotClipToVisibleRect,
+    IncludeSnapshotOfAllVisibleContentWithoutSelection,
+    UseSelectionRectForSizing,
+    ComputeEstimatedBackgroundColor,
+    UseUserSelectAllCommonAncestor,
+};
+
+using CyberCore::IDBConnectionIdentifier = CyberCore::ProcessIdentifier;
+
+using CyberCore::TransferredMessagePort = std::pair<CyberCore::MessagePortIdentifier, CyberCore::MessagePortIdentifier>;
+
+struct CyberCore::GlobalFrameIdentifier {
+    CyberCore::PageIdentifier pageID;
+    CyberCore::FrameIdentifier frameID;
+};
+
+struct CyberCore::GlobalWindowIdentifier {
+    CyberCore::ProcessIdentifier processIdentifier;
+    CyberCore::WindowIdentifier windowIdentifier;
+};
+
+[Nested] enum class CyberCore::InteractionRegion::Type : bool;
+[Nested, OptionSet] enum class CyberCore::InteractionRegion::CornerMask : uint8_t {
+    MinXMinYCorner
+    MaxXMinYCorner
+    MinXMaxYCorner
+    MaxXMaxYCorner
+};
+
+struct CyberCore::InteractionRegion {
+    CyberCore::InteractionRegion::Type type;
+    CyberCore::ElementIdentifier elementIdentifier;
+    CyberCore::IntRect rectInLayerCoordinates;
+    float borderRadius;
+    OptionSet<CyberCore::InteractionRegion::CornerMask> maskedCorners;
+};
+
+[Nested] struct CyberCore::Region::Span {
+    int y;
+    size_t segmentIndex;
+};
+
+[Nested] class CyberCore::Region::Shape {
+    Vector<int, 32> m_segments;
+    Vector<CyberCore::Region::Span, 16> m_spans;
+};
+
+class CyberCore::Region {
+    CyberCore::IntRect bounds();
+    std::unique_ptr<CyberCore::Region::Shape> copyShape();
+}
+
+[Nested, OptionSet] enum class CyberCore::FilterEffectGeometry::Flags : uint8_t {
+    HasX,
+    HasY,
+    HasWidth,
+    HasHeight
+};
+
+[AdditionalEncoder=StreamConnectionEncoder] class CyberCore::FilterEffectGeometry {
+    CyberCore::FloatRect m_boundaries;
+    OptionSet<CyberCore::FilterEffectGeometry::Flags> m_flags;
+};
+
+header: <CyberCore/ISOVTTCue.h>
+[CustomHeader] class CyberCore::ISOWebVTTCue {
+    MediaTime presentationTime();
+    MediaTime duration();
+    AtomString id();
+    String cueText();
+    String settings();
+    String sourceID();
+    String originalStartTime();
+}
+
+#if ENABLE(WEB_AUTHN)
+
+[Nested] enum class CyberCore::MockWebAuthenticationConfiguration::UserVerification : uint8_t {
+    No,
+    Yes,
+    Cancel,
+    Presence
+};
+
+[Nested] struct CyberCore::MockWebAuthenticationConfiguration::LocalConfiguration {
+    CyberCore::MockWebAuthenticationConfiguration::UserVerification userVerification;
+    bool acceptAttestation;
+    String privateKeyBase64;
+    String userCertificateBase64;
+    String intermediateCACertificateBase64;
+    String preferredCredentialIdBase64;
+};
+
+[Nested] enum class CyberCore::MockWebAuthenticationConfiguration::HidStage : bool;
+
+[Nested] enum class CyberCore::MockWebAuthenticationConfiguration::HidSubStage : bool;
+
+[Nested] enum class CyberCore::MockWebAuthenticationConfiguration::HidError : uint8_t {
+    Success,
+    DataNotSent,
+    EmptyReport,
+    WrongChannelId,
+    MaliciousPayload,
+    UnsupportedOptions,
+    WrongNonce
+};
+
+[Nested] struct CyberCore::MockWebAuthenticationConfiguration::HidConfiguration {
+    Vector<String> payloadBase64;
+    CyberCore::MockWebAuthenticationConfiguration::HidStage stage;
+    CyberCore::MockWebAuthenticationConfiguration::HidSubStage subStage;
+    CyberCore::MockWebAuthenticationConfiguration::HidError error;
+    bool isU2f;
+    bool keepAlive;
+    bool fastDataArrival;
+    bool continueAfterErrorData;
+    bool canDowngrade;
+    bool expectCancel;
+    bool supportClientPin;
+    bool supportInternalUV;
+};
+
+[Nested] enum class CyberCore::MockWebAuthenticationConfiguration::NfcError : uint8_t {
+    Success,
+    NoTags,
+    WrongTagType,
+    NoConnections,
+    MaliciousPayload
+};
+
+[Nested] struct CyberCore::MockWebAuthenticationConfiguration::NfcConfiguration {
+    CyberCore::MockWebAuthenticationConfiguration::NfcError error;
+    Vector<String> payloadBase64;
+    bool multipleTags;
+    bool multiplePhysicalTags;
+};
+
+[Nested] struct CyberCore::MockWebAuthenticationConfiguration::CcidConfiguration {
+    Vector<String> payloadBase64;
+};
+
+struct CyberCore::MockWebAuthenticationConfiguration {
+    bool silentFailure;
+    std::optional<CyberCore::MockWebAuthenticationConfiguration::LocalConfiguration> local;
+    std::optional<CyberCore::MockWebAuthenticationConfiguration::HidConfiguration> hid;
+    std::optional<CyberCore::MockWebAuthenticationConfiguration::NfcConfiguration> nfc;
+    std::optional<CyberCore::MockWebAuthenticationConfiguration::CcidConfiguration> ccid;
+};
+
+#endif // ENABLE(WEB_AUTHN)
+
+header: <CyberCore/StorageType.h>
+enum class CyberCore::StorageType : uint8_t {
+    Session,
+    Local,
+    TransientLocal,
+};
+
+#if ENABLE(THREADED_ANIMATION_RESOLUTION)
+struct CyberCore::LengthPoint {
+    CyberCore::Length x();
+    CyberCore::Length y();
+}
+
+class CyberCore::OffsetRotation {
+    bool hasAuto();
+    float angle();
+}
+
+[OptionSet] enum class CyberCore::AcceleratedEffectProperty : uint16_t {
+    Opacity,
+    Transform,
+    Translate,
+    Rotate,
+    Scale,
+    OffsetPath,
+    OffsetDistance,
+    OffsetPosition,
+    OffsetAnchor,
+    OffsetRotate,
+    Filter,
+#if ENABLE(FILTERS_LEVEL_2)
+    BackdropFilter
+#endif
+};
+
+header: <CyberCore/WebAnimationTypes.h>
+[CustomHeader] enum class CyberCore::WebAnimationType : uint8_t {
+    CSSAnimation,
+    CSSTransition,
+    WebAnimation
+};
+
+enum class CyberCore::FillMode : uint8_t {
+    None,
+    Forwards,
+    Backwards,
+    Both,
+    Auto
+};
+
+enum class CyberCore::PlaybackDirection : uint8_t {
+    Normal,
+    Reverse,
+    Alternate,
+    AlternateReverse
+};
+
+enum class CyberCore::CompositeOperation : uint8_t {
+    Replace,
+    Add,
+    Accumulate
+};
+
+struct CyberCore::AcceleratedEffectValues {
+    float opacity;
+    CyberCore::LengthPoint transformOrigin;
+    CyberCore::TransformOperations transform;
+    RefPtr<CyberCore::TransformOperation> translate;
+    RefPtr<CyberCore::TransformOperation> scale;
+    RefPtr<CyberCore::TransformOperation> rotate;
+    RefPtr<CyberCore::PathOperation> offsetPath;
+    CyberCore::Length offsetDistance;
+    CyberCore::LengthPoint offsetPosition;
+    CyberCore::LengthPoint offsetAnchor;
+    CyberCore::OffsetRotation offsetRotate;
+    CyberCore::FilterOperations filter;
+#if ENABLE(FILTERS_LEVEL_2)
+    CyberCore::FilterOperations backdropFilter;
+#endif
+}
+
+header: <CyberCore/AcceleratedEffect.h>
+[CustomHeader] struct CyberCore::AcceleratedEffectKeyframe {
+    double offset;
+    CyberCore::AcceleratedEffectValues values;
+    RefPtr<CyberCore::TimingFunction> timingFunction;
+    std::optional<CyberCore::CompositeOperation> compositeOperation;
+    OptionSet<CyberCore::AcceleratedEffectProperty> animatedProperties;
+};
+
+[RefCounted] class CyberCore::AcceleratedEffect {
+    Vector<CyberCore::AcceleratedEffectKeyframe> keyframes();
+    CyberCore::WebAnimationType animationType();
+    CyberCore::FillMode fill();
+    CyberCore::PlaybackDirection direction();
+    CyberCore::CompositeOperation compositeOperation();
+    RefPtr<CyberCore::TimingFunction> timingFunction();
+    RefPtr<CyberCore::TimingFunction> defaultKeyframeTimingFunction();
+    OptionSet<CyberCore::AcceleratedEffectProperty> animatedProperties();
+    bool paused();
+    double iterationStart();
+    double iterations();
+    double playbackRate();
+    WTF::Seconds delay();
+    WTF::Seconds endDelay();
+    WTF::Seconds iterationDuration();
+    WTF::Seconds activeDuration();
+    WTF::Seconds endTime();
+    std::optional<WTF::Seconds> startTime();
+    std::optional<WTF::Seconds> holdTime();
+};
+#endif // ENABLE(THREADED_ANIMATION_RESOLUTION)
+
+#if PLATFORM(MAC)
+header: <CyberCore/CaretAnimator.h>
+[CustomHeader] enum class CyberCore::CaretAnimatorType : uint8_t {
+    Default,
+    Alternate,
+};
+#endif
+
+[Nested] enum class CyberCore::ProtectionSpace::ServerType : uint8_t {
+    HTTP,
+    HTTPS,
+    FTP,
+    FTPS,
+    ProxyHTTP,
+    ProxyHTTPS,
+    ProxyFTP,
+    ProxySOCKS
+};
+
+[Nested] enum class CyberCore::ProtectionSpace::AuthenticationScheme : uint8_t {
+    Default,
+    HTTPBasic,
+    HTTPDigest,
+    HTMLForm,
+    NTLM,
+    Negotiate,
+    ClientCertificateRequested,
+    ServerTrustEvaluationRequested,
+    OAuth,
+#if USE(GLIB)
+    ClientCertificatePINRequested,
+#endif
+    Unknown
+};
+
+class CyberCore::ProtectionSpace {
+    String host();
+    int port();
+    CyberCore::ProtectionSpace::ServerType serverType();
+    String realm();
+    CyberCore::ProtectionSpace::AuthenticationScheme authenticationScheme();
+#if USE(CURL)
+    CyberCore::CertificateInfo certificateInfo();
+#endif
+#if PLATFORM(COCOA)
+    std::optional<CyberCore::ProtectionSpace::PlatformData> getPlatformDataToSerialize();
+#endif
+};
+
+#if ENABLE(GPU_PROCESS)
+header: <CyberCore/BarcodeDetectorOptionsInterface.h>
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::ShapeDetection::BarcodeDetectorOptions {
+    Vector<CyberCore::ShapeDetection::BarcodeFormat> formats;
+};
+
+header: <CyberCore/BarcodeFormatInterface.h>
+[AdditionalEncoder=StreamConnectionEncoder] enum class CyberCore::ShapeDetection::BarcodeFormat : uint8_t {
+    Aztec,
+    Code_128,
+    Code_39,
+    Code_93,
+    Codabar,
+    Data_matrix,
+    Ean_13,
+    Ean_8,
+    Itf,
+    Pdf417,
+    Qr_code,
+    Unknown,
+    Upc_a,
+    Upc_e,
+};
+
+header: <CyberCore/DetectedBarcodeInterface.h>
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::ShapeDetection::DetectedBarcode {
+    CyberCore::FloatRect boundingBox;
+    String rawValue;
+    CyberCore::ShapeDetection::BarcodeFormat format;
+    Vector<CyberCore::FloatPoint> cornerPoints;
+};
+
+header: <CyberCore/DetectedFaceInterface.h>
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::ShapeDetection::DetectedFace {
+    CyberCore::FloatRect boundingBox;
+    std::optional<Vector<CyberCore::ShapeDetection::Landmark>> landmarks;
+};
+
+header: <CyberCore/DetectedTextInterface.h>
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::ShapeDetection::DetectedText {
+    CyberCore::FloatRect boundingBox;
+    String rawValue;
+    Vector<CyberCore::FloatPoint> cornerPoints;
+};
+
+header: <CyberCore/FaceDetectorOptionsInterface.h>
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::ShapeDetection::FaceDetectorOptions {
+    uint16_t maxDetectedFaces;
+    bool fastMode;
+};
+
+header: <CyberCore/LandmarkInterface.h>
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::ShapeDetection::Landmark {
+    Vector<CyberCore::FloatPoint> locations;
+    CyberCore::ShapeDetection::LandmarkType type;
+};
+
+header: <CyberCore/LandmarkTypeInterface.h>
+[AdditionalEncoder=StreamConnectionEncoder] enum class CyberCore::ShapeDetection::LandmarkType : uint8_t {
+    Mouth,
+    Eye,
+    Nose,
+};
+#endif // GPU_PROCESS

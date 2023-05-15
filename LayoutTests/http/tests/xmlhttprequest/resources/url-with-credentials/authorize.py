@@ -9,6 +9,6 @@ else:
     sys.stdout.write(
         'Content-Type: text/plain\r\n'
         'status: 401\r\n'
-        'WWW-Authenticate: Basic realm="WebKit Test Area"\r\n'
+        'WWW-Authenticate: Basic realm="CyberKit Test Area"\r\n'
         '\r\n'
     )

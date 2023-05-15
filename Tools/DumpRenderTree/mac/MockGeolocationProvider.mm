@@ -27,7 +27,7 @@
 #import "MockGeolocationProvider.h"
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebCore/WebCoreThreadRun.h>
+#import <CyberCore/CyberCoreThreadRun.h>
 #endif
 
 @implementation MockGeolocationProvider

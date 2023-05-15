@@ -34,7 +34,7 @@ describe("/admin/reprocess-report", function () {
                 },
             },
         "revisions": {
-                "WebKit": {
+                "CyberKit": {
                     "timestamp": "2017-03-01T09:38:44.826833Z",
                     "revision": "213214"
                 }
@@ -44,12 +44,12 @@ describe("/admin/reprocess-report", function () {
     it("should still create new repository when repository ownerships are different", () => {
         let db = TestServer.database();
         return addBuilderForReport(simpleReportWithRevisions[0]).then(() => {
-            return db.insert('repositories', {'name': 'WebKit', 'owner': 1});
+            return db.insert('repositories', {'name': 'CyberKit', 'owner': 1});
         }).then(() => {
             return TestServer.remoteAPI().postJSON('/api/report/', simpleReportWithRevisions);
         }).then((response) => {
             assert.strictEqual(response['status'], 'OK');
-            return db.selectRows('repositories', {'name': 'WebKit'});
+            return db.selectRows('repositories', {'name': 'CyberKit'});
         }).then((repositories) => {
             assert.strictEqual(repositories.length, 2);
             const webkitRepsitoryId = repositories[0].owner == 1 ? repositories[1].id : repositories[0].id;

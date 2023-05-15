@@ -1,4 +1,4 @@
-Test that WebKitMutationObserver.disconnect cancels pending delivery
+Test that CyberKitMutationObserver.disconnect cancels pending delivery
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

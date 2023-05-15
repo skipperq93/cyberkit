@@ -32,16 +32,16 @@
  * DTrace example: tracing function calls when the profiler is enabled.
  * To use this, first enable the JavaScript tracing profiler using the Web Inspector.
  *
- * These run for any process; restrict to a pid by changing the provider to JavaScriptCore$target
+ * These run for any process; restrict to a pid by changing the provider to CyberScriptCore$target
  * and passing the arguments '-p <pid>' to the script.
  */
 
-JavaScriptCore*:::profile-will_execute
+CyberScriptCore*:::profile-will_execute
 {
     printf("[%d] -> %s (%s:%d:%d)\n",arg0, copyinstr(arg1), copyinstr(arg2), arg3, arg4);
 }
 
-JavaScriptCore*:::profile-did_execute
+CyberScriptCore*:::profile-did_execute
 {
     printf("[%d] <- %s (%s:%d:%d)\n",arg0, copyinstr(arg1), copyinstr(arg2), arg3, arg4);
 }

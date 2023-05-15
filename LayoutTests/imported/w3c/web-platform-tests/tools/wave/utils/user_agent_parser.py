@@ -29,7 +29,7 @@ def abbreviate_browser_name(name):
         "Chrome": "Ch",
         "Chrome Mobile WebView": "Ch",
         "Chromium": "Cm",
-        "WebKit": "Wk",
+        "CyberKit": "Wk",
         "Safari": "Sf",
         "Firefox": "FF",
         "IE": "IE",

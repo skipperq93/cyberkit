@@ -742,7 +742,7 @@ x()();
   assertSame(thisInConstructor, c);
 }
 
-// Additional tests by the WebKit project.
+// Additional tests by the CyberKit project.
 
 {
   let x = 0;

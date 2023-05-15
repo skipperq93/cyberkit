@@ -51,15 +51,15 @@ class BindingsTests:
 
     def generate_from_idl(self, generator, idl_file, output_directory, supplemental_dependency_file):
         cmd = ['perl', '-w',
-               '-IWebCore/bindings/scripts',
-               'WebCore/bindings/scripts/generate-bindings.pl',
+               '-ICyberCore/bindings/scripts',
+               'CyberCore/bindings/scripts/generate-bindings.pl',
                # idl include directories (path relative to generate-bindings.pl)
                '--include', '.',
                '--defines', 'TESTING_%s' % generator,
                '--generator', generator,
                '--outputDir', output_directory,
                '--supplementalDependencyFile', supplemental_dependency_file,
-               '--idlAttributesFile', 'WebCore/bindings/scripts/IDLAttributes.json',
+               '--idlAttributesFile', 'CyberCore/bindings/scripts/IDLAttributes.json',
                idl_file]
 
         exit_code = 0
@@ -84,12 +84,12 @@ class BindingsTests:
         os.close(idl_files_list[0])
 
         cmd = ['perl', '-w',
-               '-IWebCore/bindings/scripts',
-               'WebCore/bindings/scripts/preprocess-idls.pl',
+               '-ICyberCore/bindings/scripts',
+               'CyberCore/bindings/scripts/preprocess-idls.pl',
                '--idlFileNamesList', idl_files_list[1],
                '--testGlobalContextName', 'TestGlobalObject',
                '--defines', '',
-               '--idlAttributesFile', 'WebCore/bindings/scripts/IDLAttributes.json',
+               '--idlAttributesFile', 'CyberCore/bindings/scripts/IDLAttributes.json',
                '--supplementalDependencyFile', supplemental_dependency_file,
                '--supplementalMakefileDeps', supplemental_makefile_dependency_file,
                '--windowConstructorsFile', window_constructors_file,
@@ -210,7 +210,7 @@ class BindingsTests:
         testglobalscope_constructors_filename = 'BindingTestGlobalConstructors.idl'
 
         work_directory = tempfile.mkdtemp()
-        input_directory = os.path.join('WebCore', 'bindings', 'scripts', 'test')
+        input_directory = os.path.join('CyberCore', 'bindings', 'scripts', 'test')
         supplemental_dependency_file = os.path.join(work_directory, supplemental_dependency_filename)
         supplemental_makefile_dependency_file = os.path.join(work_directory if not self.reset_results else input_directory, supplemental_makefile_dependency_filename)
         window_constructors_file = os.path.join(work_directory if not self.reset_results else input_directory, dom_window_constructors_filename)
@@ -254,8 +254,8 @@ class BindingsTests:
                 all_tests_passed = False
 
         for generator in self.generators:
-            input_directory = os.path.join('WebCore', 'bindings', 'scripts', 'test')
-            reference_directory = os.path.join('WebCore', 'bindings', 'scripts', 'test', generator)
+            input_directory = os.path.join('CyberCore', 'bindings', 'scripts', 'test')
+            reference_directory = os.path.join('CyberCore', 'bindings', 'scripts', 'test', generator)
             if not self.run_tests(generator, input_directory, reference_directory, supplemental_dependency_file):
                 all_tests_passed = False
 
