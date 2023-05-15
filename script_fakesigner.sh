@@ -21,6 +21,7 @@ fi
 
 # Prepare payload directory
 SOURCE_DIR=$(realpath "$(dirname "${BASH_SOURCE[0]}")")
+rm -rf $SOURCE_DIR/CyberKitBuild/Debug-iphoneos/Payload
 ipa=$SOURCE_DIR/CyberKitBuild/Debug-iphoneos/MobileMiniBrowser.app
 if [[ $ipa == *.ipa ]]; then
 echo [*] unpacking..
@@ -88,5 +89,4 @@ cd ..
 echo "[*] packaging.."
 rm -f "$ipa.zip" || true
 zip -r -y "$ipa.zip" Payload
-rm -rf Payload
 echo "[*] Created $ipa.zip"
