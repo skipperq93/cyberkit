@@ -23,8 +23,8 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#pragma clang diagnostic ignored "-Weverything"
 #pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation-deprecated-sync"
 #import <unicode/putil.h>
 #pragma clang diagnostic pop
 #import <MobileMiniBrowser/MobileMiniBrowser.h>

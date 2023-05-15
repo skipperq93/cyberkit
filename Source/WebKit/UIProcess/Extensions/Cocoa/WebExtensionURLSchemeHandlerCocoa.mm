@@ -43,6 +43,10 @@
 #endif
 #import <wtf/BlockPtr.h>
 
+#if !HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
+#import <MobileCoreServices/MobileCoreServices.h>
+#endif
+
 namespace WebKit {
 
 class WebPageProxy;
@@ -93,7 +97,19 @@ void WebExtensionURLSchemeHandler::platformStartTask(WebPageProxy& page, WebURLS
             return;
         }
 
-        NSString *mimeType = [UTType typeWithFilenameExtension:((NSURL *)requestURL).pathExtension].preferredMIMEType;
+        NSString *mimeType;
+#if HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
+        mimeType = [UTType typeWithFilenameExtension:((NSURL *)requestURL).pathExtension].preferredMIMEType;
+#else
+ALLOW_DEPRECATED_DECLARATIONS_BEGIN
+        static CFStringRef kUTTagClassFilenameExtension;
+        static CFStringRef kUTTagClassMIMEType;
+        CFStringRef fileExtension = (__bridge CFStringRef)((NSURL *)requestURL).pathExtension;
+        CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension, nullptr);
+        mimeType = (__bridge_transfer NSString *)UTTypeCopyPreferredTagWithClass(UTI, kUTTagClassMIMEType);
+        CFRelease(UTI);
+ALLOW_DEPRECATED_DECLARATIONS_END
+#endif
         if (!mimeType)
             mimeType = @"application/octet-stream";
 

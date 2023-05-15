@@ -170,7 +170,9 @@ extern const CFStringRef kCTFontPaletteColorsAttribute;
 extern const CFStringRef kCTFrameMaximumNumberOfLinesAttributeName;
 
 bool CTFontDescriptorIsSystemUIFont(CTFontDescriptorRef);
+#if HAVE(CTFONTISSYSTEMUIFONT)
 bool CTFontIsSystemUIFont(CTFontRef);
+#endif
 CTFontRef CTFontCreateWithFontDescriptorAndOptions(CTFontDescriptorRef, CGFloat size, const CGAffineTransform*, CTFontOptions);
 CTFontRef CTFontCreateForCSS(CFStringRef name, uint16_t weight, CTFontSymbolicTraits, CGFloat size);
 CTFontRef CTFontCreateForCharactersWithLanguage(CTFontRef currentFont, const UTF16Char *characters, CFIndex length, CFStringRef language, CFIndex *coveredLength);
