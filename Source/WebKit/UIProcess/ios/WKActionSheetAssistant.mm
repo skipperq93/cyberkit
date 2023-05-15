@@ -750,7 +750,9 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     auto retainedSelf = retainPtr(self);
     _WKElementAction *elementAction = [_WKElementAction elementActionWithTitle:action.localizedName actionHandler:^(_WKActivatedElementInfo *actionInfo) {
         retainedSelf->_isPresentingDDUserInterface = action.hasUserInterface;
+#if USE(UICONTEXTMENU)
         [[PAL::getDDDetectionControllerClass() sharedController] performAction:action fromAlertController:retainedSelf->_interactionSheet.get() interactionDelegate:retainedSelf.get()];
+#endif
     }];
     elementAction.dismissalHandler = ^BOOL {
         return !action.hasUserInterface;

@@ -136,7 +136,7 @@ void WebXROpaqueFramebuffer::startFrame(const PlatformXR::Device::FrameData::Lay
 
     // Tell the GraphicsContextGL to use the IOSurface as the backing store for m_opaqueTexture.
     if (data.isShared) {
-#if !PLATFORM(IOS_FAMILY_SIMULATOR)
+#if !PLATFORM(IOS_FAMILY_SIMULATOR) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
         auto surfaceTextureAttachment = gCGL->attachIOSurfaceToSharedTexture(textureTarget, data.surface.get());
         if (!surfaceTextureAttachment) {
             m_opaqueTexture.release(*gCGL);
@@ -253,7 +253,7 @@ void WebXROpaqueFramebuffer::endFrame()
     if (m_ioSurfaceTextureHandle) {
         auto gCGL = static_cast<GraphicsContextGLCocoa*>(&gl);
         if (m_ioSurfaceTextureHandleIsShared) {
-#if !PLATFORM(IOS_FAMILY_SIMULATOR)
+#if !PLATFORM(IOS_FAMILY_SIMULATOR) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
             gCGL->detachIOSurfaceFromSharedTexture(m_ioSurfaceTextureHandle);
 #else
             ASSERT_NOT_REACHED();
