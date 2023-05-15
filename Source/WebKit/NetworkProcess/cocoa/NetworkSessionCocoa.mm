@@ -150,7 +150,7 @@ static WebCore::NetworkLoadPriority toNetworkLoadPriority(float priority)
     return WebCore::NetworkLoadPriority::Medium;
 }
 
-#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE)
+#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE)) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 static WebCore::PrivacyStance toPrivacyStance(nw_connection_privacy_stance_t stance)
 {
     switch (stance) {
@@ -875,7 +875,7 @@ static NSDictionary<NSString *, id> *extractResolutionReport(NSError *error)
         NSMutableDictionary *newUserInfo = oldUserInfo ? [NSMutableDictionary dictionaryWithDictionary:oldUserInfo] : [NSMutableDictionary dictionary];
         newUserInfo[@"networkTaskDescription"] = [task description];
         if (RefPtr networkDataTask = [self existingTask:task]) {
-#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE)
+#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
             newUserInfo[@"networkTaskMetricsPrivacyStance"] = privacyStanceToString(networkDataTask->networkLoadMetrics().privacyStance);
 #endif
 #if HAVE(NETWORK_RESOLUTION_FAILURE_REPORT) && defined(NW_CONNECTION_HAS_FAILED_RESOLUTION_REPORT)
@@ -958,7 +958,7 @@ static NSDictionary<NSString *, id> *extractResolutionReport(NSError *error)
         networkLoadMetrics.multipath = m.multipath;
         networkLoadMetrics.isReusedConnection = m.isReusedConnection;
 
-#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE)
+#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
         networkLoadMetrics.privacyStance = toPrivacyStance(m._privacyStance);
 #endif
 
@@ -1061,7 +1061,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
         NSURLSessionTaskMetrics *taskMetrics = dataTask._incompleteTaskMetrics;
 
         NSURLSessionTaskTransactionMetrics *metrics = taskMetrics.transactionMetrics.lastObject;
-#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE)
+#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
         auto privateRelayed = metrics._privacyStance == nw_connection_privacy_stance_direct
             || metrics._privacyStance == nw_connection_privacy_stance_not_eligible
             ? PrivateRelayed::No : PrivateRelayed::Yes;
@@ -1395,7 +1395,7 @@ NetworkSessionCocoa::NetworkSessionCocoa(NetworkProcess& networkProcess, const N
         configuration.URLCredentialStorage = adoptNS([[NSURLCredentialStorage alloc] _initWithIdentifier:parameters.dataStoreIdentifier->toString() private:NO]).get();
 #endif
 
-#if HAVE(NETWORK_LOADER)
+#if HAVE(NETWORK_LOADER) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
     RELEASE_LOG_IF(parameters.useNetworkLoader, NetworkSession, "Using experimental network loader.");
     configuration._usesNWLoader = parameters.useNetworkLoader;
 #endif

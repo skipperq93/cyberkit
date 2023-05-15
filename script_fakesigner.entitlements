@@ -223,6 +223,11 @@
 	</array>
 	<key>com.apple.security.network.client</key>
 	<true/>
+	<key>com.apple.security.temporary-exception.mach-lookup.global-name</key>
+	<array>
+		<string>com.apple.diagnosticd</string>
+		<string>com.apple.fontservicesd</string>
+	</array>
 	<key>com.apple.security.temporary-exception.sbpl</key>
 	<array>
 		<string>(allow mach-issue-extension (require-all (extension-class &quot;com.apple.webkit.extension.mach&quot;)))</string>

@@ -128,7 +128,7 @@ CF_ENUM(CFHTTPCookieStorageAcceptPolicy)
     CFHTTPCookieStorageAcceptPolicyExclusivelyFromMainDocumentDomain = 3,
 };
 
-#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE)
+#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 typedef enum {
     nw_connection_privacy_stance_unknown = 0,
     nw_connection_privacy_stance_not_eligible = 1,
@@ -220,7 +220,7 @@ typedef enum {
 - (BOOL)_schemeWasUpgradedDueToDynamicHSTS;
 - (BOOL)_preventHSTSStorage;
 - (BOOL)_ignoreHSTS;
-#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE)
+#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 @property (setter=_setPrivacyProxyFailClosed:) BOOL _privacyProxyFailClosed;
 #endif
 @end
@@ -280,7 +280,7 @@ typedef NS_ENUM(NSInteger, NSURLSessionCompanionProxyPreference) {
 @property (readwrite, assign) BOOL _allowsHTTP3;
 #endif
 @property (nullable, retain) _NSHSTSStorage *_hstsStorage;
-#if HAVE(NETWORK_LOADER)
+#if HAVE(NETWORK_LOADER) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 @property BOOL _usesNWLoader;
 #endif
 #if HAVE(CFNETWORK_NSURLSESSION_CONNECTION_CACHE_LIMITS)
@@ -321,7 +321,7 @@ typedef NS_ENUM(NSInteger, NSURLSessionCompanionProxyPreference) {
 @property (assign, readonly) NSInteger _responseHeaderBytesReceived;
 @property (assign, readonly) int64_t _responseBodyBytesReceived;
 @property (assign, readonly) int64_t _responseBodyBytesDecoded;
-#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE)
+#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 @property (assign, readonly) nw_connection_privacy_stance_t _privacyStance;
 #endif
 @end

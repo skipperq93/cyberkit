@@ -72,7 +72,7 @@ static NSDate * __nullable networkLoadMetricsDate(MonotonicTime time)
 @property (readonly, getter=isExpensive) BOOL expensive;
 @property (readonly, getter=isConstrained) BOOL constrained;
 @property (readonly, getter=isMultipath) BOOL multipath;
-#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE)
+#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 @property (assign, readonly) nw_connection_privacy_stance_t _privacyStance;
 #endif
 @end
@@ -166,7 +166,7 @@ static NSDate * __nullable networkLoadMetricsDate(MonotonicTime time)
     return _metrics.isReusedConnection;
 }
 
-#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE)
+#if HAVE(NETWORK_CONNECTION_PRIVACY_STANCE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 @dynamic _privacyStance;
 - (nw_connection_privacy_stance_t)_privacyStance
 {
