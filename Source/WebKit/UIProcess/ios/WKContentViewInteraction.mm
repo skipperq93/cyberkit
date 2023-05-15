@@ -11408,7 +11408,9 @@ static BOOL shouldUseMachineReadableCodeMenuFromImageAnalysisResult(CocoaImageAn
 
 - (void)captureTextFromCameraForWebView:(id)sender
 {
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
     [super captureTextFromCamera:sender];
+#endif
 }
 
 #endif // ENABLE(IMAGE_ANALYSIS)

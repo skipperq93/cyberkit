@@ -26,7 +26,7 @@
 #import "config.h"
 #import "DeferredPaymentRequest.h"
 
-#if HAVE(PASSKIT_DEFERRED_PAYMENTS)
+#if HAVE(PASSKIT_DEFERRED_PAYMENTS) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160400)
 
 #import <WebCore/ApplePayDeferredPaymentRequest.h>
 #import <WebCore/PaymentSummaryItems.h>

@@ -114,8 +114,10 @@
 
 - (CGImageRef)_printPreviewImage
 {
-    if (self.requiresMainThread)
-        return _printPreviewImage.get();
+    if (@available(iOS 16, *)) {
+        if (self.requiresMainThread)
+            return _printPreviewImage.get();
+    }
 
     Locker locker { _printLock };
     return _printPreviewImage.get();
@@ -123,9 +125,11 @@
 
 - (void)_setPrintPreviewImage:(CGImageRef)printPreviewImage
 {
-    if (self.requiresMainThread) {
-        _printPreviewImage = printPreviewImage;
-        return;
+    if (@available(iOS 16, *)) {
+        if (self.requiresMainThread) {
+            _printPreviewImage = printPreviewImage;
+            return;
+        }
     }
 
     Locker locker { _printLock };
