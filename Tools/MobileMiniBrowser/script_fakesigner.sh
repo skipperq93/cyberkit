@@ -20,9 +20,9 @@ else
 fi
 
 # Prepare payload directory
-SOURCE_DIR=$(realpath "$(dirname "${BASH_SOURCE[0]}")")
-rm -rf $SOURCE_DIR/CyberKitBuild/Debug-iphoneos/Payload
-ipa=$SOURCE_DIR/CyberKitBuild/Debug-iphoneos/MobileMiniBrowser.app
+SCRIPT_DIR=$(realpath "$(dirname "${BASH_SOURCE[0]}")")
+rm -rf $SCRIPT_DIR/../../CyberKitBuild/Debug-iphoneos/Payload
+ipa=$SCRIPT_DIR/../../CyberKitBuild/Debug-iphoneos/MobileMiniBrowser.app
 if [[ $ipa == *.ipa ]]; then
 echo [*] unpacking..
 cd $(dirname $ipa)
@@ -49,7 +49,7 @@ cp ../webpushd $app/Frameworks/CyberKit.framework/Daemons
 else
 echo "[!] No .ipa file supplied!"
 fi
-cp $SOURCE_DIR/script_fakesigner.entitlements .
+cp $SCRIPT_DIR/script_fakesigner.entitlements .
 
 # Fakesign
 echo "[1/15] Fakesigning com.matthewbenedict.CyberKit.GPU.xpc"
@@ -83,6 +83,7 @@ echo "[14/15] Fakesigning WebGPU.framework"
 ldid -S"script_fakesigner.entitlements" "$app/Frameworks/WebGPU.framework/WebGPU"
 echo "[15/15] Fakesigning MobileMiniBrowser"
 ldid -S"script_fakesigner.entitlements" "$app/${app:0:${#app}-4}"
+rm script_fakesigner.entitlements
 
 # Package into IPA
 cd ..

@@ -98,10 +98,11 @@ MTLFunctionConstantValues *createConstantValues(uint32_t constantCount, const WG
 
 id<MTLFunction> createFunction(id<MTLLibrary> library, const WGSL::Reflection::EntryPointInformation& entryPointInformation, unsigned constantCount, const WGPUConstantEntry* constants, NSString *label)
 {
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
     auto functionDescriptor = [MTLFunctionDescriptor new];
     functionDescriptor.name = entryPointInformation.mangledName;
-    if (constantCount) {
-        auto constantValues = createConstantValues(constantCount, constants, entryPointInformation);
+    if (compute.constantCount) {
+        auto constantValues = createConstantValues(compute.constantCount, compute.constants, entryPointInformation);
         if (!constantValues)
             return nullptr;
         functionDescriptor.constantValues = constantValues;
@@ -110,6 +111,13 @@ id<MTLFunction> createFunction(id<MTLLibrary> library, const WGSL::Reflection::E
     id<MTLFunction> function = [library newFunctionWithDescriptor:functionDescriptor error:&error];
     if (error)
         WTFLogAlways("Function creation error: %@", error);
+#else
+    UNUSED_PARAM(compute);
+    if (/* DISABLES CODE */ (0)) {
+        createConstantValues(compute.constantCount, compute.constants, entryPointInformation);
+    }
+    id<MTLFunction> function = [library newFunctionWithName:entryPointInformation.mangledName];
+#endif
     function.label = label;
     return function;
 }
