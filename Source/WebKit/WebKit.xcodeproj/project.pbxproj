@@ -18103,7 +18103,11 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
+<<<<<<< HEAD:Source/WebKit/WebKit.xcodeproj/project.pbxproj
 				PRODUCT_BUNDLE_IDENTIFIER = com.ape.WebKit.WebContent;
+=======
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.WebContent;
+>>>>>>> 3a32373acc87 (Set install name):Source/CyberKit/CyberKit.xcodeproj/project.pbxproj
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;

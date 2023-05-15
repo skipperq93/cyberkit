@@ -78,7 +78,7 @@ static RetainPtr<xpc_object_t> convertArrayToXPC(NSArray *array)
     return xpc;
 }
 
-static RetainPtr<xpc_object_t> convertDictionaryToXPC(NSDictionary<NSString *, id> *dictionary)
+static inline RetainPtr<xpc_object_t> convertDictionaryToXPC(NSDictionary<NSString *, id> *dictionary)
 {
     auto xpc = adoptNS(xpc_dictionary_create(nullptr, nullptr, 0));
     for (NSString *key in dictionary) {
