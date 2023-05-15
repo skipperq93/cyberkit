@@ -456,7 +456,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 #else
     UNUSED_PARAM(displayID);
 #endif
-#if HAVE(CG_CONTEXT_SET_OWNER_IDENTITY) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000)
+#if HAVE(CG_CONTEXT_SET_OWNER_IDENTITY)
     if (m_resourceOwner && CGContextSetOwnerIdentity)
         CGContextSetOwnerIdentity(cgContext.get(), m_resourceOwner.taskIdToken());
 #endif
@@ -584,7 +584,7 @@ void IOSurface::setOwnershipIdentity(const ProcessIdentity& resourceOwner)
 
 void IOSurface::setOwnershipIdentity(IOSurfaceRef surface, const ProcessIdentity& resourceOwner)
 {
-#if HAVE(IOSURFACE_SET_OWNERSHIP_IDENTITY) && HAVE(TASK_IDENTITY_TOKEN) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(IOSURFACE_SET_OWNERSHIP_IDENTITY) && HAVE(TASK_IDENTITY_TOKEN)
     ASSERT(resourceOwner);
     ASSERT(surface);
     task_id_token_t ownerTaskIdToken = resourceOwner.taskIdToken();

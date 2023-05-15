@@ -44,7 +44,7 @@ using DidAuthorizePaymentCompletion = BlockPtr<void(PKPaymentAuthorizationResult
 using DidSelectPaymentMethodCompletion = BlockPtr<void(PKPaymentRequestPaymentMethodUpdate *)>;
 using DidSelectShippingContactCompletion = BlockPtr<void(PKPaymentRequestShippingContactUpdate *)>;
 using DidSelectShippingMethodCompletion = BlockPtr<void(PKPaymentRequestShippingMethodUpdate *)>;
-#if HAVE(PASSKIT_COUPON_CODE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(PASSKIT_COUPON_CODE)
 using DidChangeCouponCodeCompletion = BlockPtr<void(PKPaymentRequestCouponCodeUpdate *)>;
 #endif
 
@@ -65,7 +65,7 @@ using DidChangeCouponCodeCompletion = BlockPtr<void(PKPaymentRequestCouponCodeUp
 #endif
 - (void)completeShippingContactSelection:(PKPaymentRequestShippingContactUpdate *)shippingContactUpdate;
 - (void)completeShippingMethodSelection:(PKPaymentRequestShippingMethodUpdate *)shippingMethodUpdate;
-#if HAVE(PASSKIT_COUPON_CODE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(PASSKIT_COUPON_CODE)
 - (void)completeCouponCodeChange:(PKPaymentRequestCouponCodeUpdate *)couponCodeUpdate;
 #endif
 - (void)invalidate;
@@ -83,7 +83,7 @@ using DidChangeCouponCodeCompletion = BlockPtr<void(PKPaymentRequestCouponCodeUp
 - (void)_didSelectPaymentMethod:(PKPaymentMethod *)paymentMethod completion:(WebKit::DidSelectPaymentMethodCompletion::BlockType)completion;
 - (void)_didSelectShippingContact:(PKContact *)contact completion:(WebKit::DidSelectShippingContactCompletion::BlockType)completion;
 - (void)_didSelectShippingMethod:(PKShippingMethod *)shippingMethod completion:(WebKit::DidSelectShippingMethodCompletion::BlockType)completion;
-#if HAVE(PASSKIT_COUPON_CODE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(PASSKIT_COUPON_CODE)
 - (void)_didChangeCouponCode:(NSString *)couponCode completion:(WebKit::DidChangeCouponCodeCompletion::BlockType)completion;
 #endif
 - (void)_getPaymentServicesMerchantURL:(void(^)(NSURL *, NSError *))completion;

@@ -224,7 +224,7 @@ void WebsiteDataStore::platformSetNetworkParameters(WebsiteDataStoreParameters& 
 
 bool WebsiteDataStore::useNetworkLoader()
 {
-#if HAVE(NETWORK_LOADER) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(NETWORK_LOADER)
     return experimentalFeatureEnabled(WebPreferencesKey::cFNetworkNetworkLoaderEnabledKey());
 #else
     return false;

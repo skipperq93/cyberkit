@@ -214,8 +214,6 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     _supportedOrientations = supportedOrientations;
     if (@available(iOS 16.0, *)) {
         [self setNeedsUpdateOfSupportedInterfaceOrientations];
-    } else {
-        // Fallback on earlier versions
     }
 }
 
@@ -224,8 +222,6 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     _supportedOrientations = std::nullopt;
     if (@available(iOS 16.0, *)) {
         [self setNeedsUpdateOfSupportedInterfaceOrientations];
-    } else {
-        // Fallback on earlier versions
     }
 }
 

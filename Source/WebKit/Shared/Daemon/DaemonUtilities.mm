@@ -49,7 +49,7 @@ void startListeningForMachServiceConnections(const char* serviceName, ASCIILiter
 
         xpc_connection_set_event_handler(peer, ^(xpc_object_t event) {
             if (event == XPC_ERROR_CONNECTION_INVALID) {
-#if HAVE(XPC_CONNECTION_COPY_INVALIDATION_REASON) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(XPC_CONNECTION_COPY_INVALIDATION_REASON)
                 auto reason = std::unique_ptr<char[]>(xpc_connection_copy_invalidation_reason(peer));
                 NSLog(@"Failed to start listening for connections to mach service %s, reason: %s", serviceName, reason.get());
 #else

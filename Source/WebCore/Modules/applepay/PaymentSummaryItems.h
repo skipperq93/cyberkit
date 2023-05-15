@@ -37,11 +37,11 @@ namespace WebCore {
 
 struct ApplePayLineItem;
 
-#if HAVE(PASSKIT_RECURRING_SUMMARY_ITEM) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(PASSKIT_RECURRING_SUMMARY_ITEM)
 WEBCORE_EXPORT PKRecurringPaymentSummaryItem *platformRecurringSummaryItem(const ApplePayLineItem&);
 #endif
 
-#if HAVE(PASSKIT_DEFERRED_SUMMARY_ITEM) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(PASSKIT_DEFERRED_SUMMARY_ITEM)
 WEBCORE_EXPORT PKDeferredPaymentSummaryItem *platformDeferredSummaryItem(const ApplePayLineItem&);
 #endif
 

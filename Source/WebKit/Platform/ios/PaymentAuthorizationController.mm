@@ -90,7 +90,7 @@
     return nil;
 }
 
-#if HAVE(PASSKIT_COUPON_CODE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(PASSKIT_COUPON_CODE)
 
 - (void)paymentAuthorizationController:(PKPaymentAuthorizationController *)controller didChangeCouponCode:(NSString *)couponCode handler:(void (^)(PKPaymentRequestCouponCodeUpdate *update))completion
 {

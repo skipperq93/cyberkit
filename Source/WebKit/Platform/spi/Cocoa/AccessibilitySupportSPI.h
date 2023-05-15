@@ -29,7 +29,7 @@
 #include <AccessibilitySupport.h>
 #endif
 
-#if !USE(APPLE_INTERNAL_SDK) || !HAVE(APP_SPECIFIC_ACCESSIBILITY_SETTINGS) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000)
+#if !USE(APPLE_INTERNAL_SDK) || !HAVE(APP_SPECIFIC_ACCESSIBILITY_SETTINGS)
 typedef enum {
     AXValueStateInvalid = -2,
     AXValueStateEmpty = -1,

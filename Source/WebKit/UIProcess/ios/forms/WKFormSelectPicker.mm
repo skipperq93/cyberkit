@@ -597,7 +597,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
     UIMenuOptions o = (UIMenuOptions)UIMenuOptionsPrivateRemoveLineLimitForChildren;
     if (@available(iOS 15.0, *)) {
-        o = o | UIMenuOptionsSingleSelection;
+        o |= UIMenuOptionsSingleSelection;
     }
 
     return [UIMenu menuWithTitle:@"" image:nil identifier:nil options:o children:items];
