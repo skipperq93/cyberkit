@@ -98,13 +98,9 @@ static bool processHasActiveRunTimeLimitation()
     std::atomic<bool> _backgroundTaskWasInvalidated;
     ThreadSafeWeakHashSet<ProcessAndUIAssertion> _assertionsNeedingBackgroundTask;
     dispatch_block_t _pendingTaskReleaseTask;
-<<<<<<< HEAD:Source/WebKit/UIProcess/Cocoa/ProcessAssertionCocoa.mm
-    std::unique_ptr<WebKit::ProcessStateMonitor> m_processStateMonitor;
-=======
 #if HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
-    std::unique_ptr<CyberKit::ProcessStateMonitor> m_processStateMonitor;
+    std::unique_ptr<WebKit::ProcessStateMonitor> m_processStateMonitor;
 #endif
->>>>>>> fbf20b2b4bb8 (More iOS 12 fixes):Source/CyberKit/UIProcess/Cocoa/ProcessAssertionCocoa.mm
 }
 
 + (WKProcessAssertionBackgroundTaskManager *)shared
