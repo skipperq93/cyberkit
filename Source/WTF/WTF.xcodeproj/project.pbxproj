@@ -24620,6 +24620,7 @@
 					"-Wno-unreachable-code-loop-increment",
 					"-Wno-exit-time-destructors",
 					"-Wno-unreachable-code",
+					"-Wno-unused-variable",
 				);
 				PRODUCT_NAME = unicode;
 				TAPI_EXTRA_PRIVATE_HEADERS = "$SRCROOT/icu/unicode/common $SRCROOT/icu/unicode/data $SRCROOT/icu/unicode/i18n $SRCROOT/icu/unicode/io $SRCROOT/icu/unicode/stubdata $SRCROOT/icu/unicode/common/unicode $SRCROOT/icu/unicode/data/unicode $SRCROOT/icu/unicode/i18n/unicode $SRCROOT/icu/unicode/io/unicode $SRCROOT/icu/unicode/stubdata/unicode";
@@ -24652,6 +24653,7 @@
 					"-Wno-unreachable-code-loop-increment",
 					"-Wno-exit-time-destructors",
 					"-Wno-unreachable-code",
+					"-Wno-unused-variable",
 				);
 				PRODUCT_NAME = unicode;
 				TAPI_EXTRA_PRIVATE_HEADERS = "$SRCROOT/icu/unicode/common $SRCROOT/icu/unicode/data $SRCROOT/icu/unicode/i18n $SRCROOT/icu/unicode/io $SRCROOT/icu/unicode/stubdata $SRCROOT/icu/unicode/common/unicode $SRCROOT/icu/unicode/data/unicode $SRCROOT/icu/unicode/i18n/unicode $SRCROOT/icu/unicode/io/unicode $SRCROOT/icu/unicode/stubdata/unicode";
@@ -24684,6 +24686,7 @@
 					"-Wno-unreachable-code-loop-increment",
 					"-Wno-exit-time-destructors",
 					"-Wno-unreachable-code",
+					"-Wno-unused-variable",
 				);
 				PRODUCT_NAME = unicode;
 				TAPI_EXTRA_PRIVATE_HEADERS = "$SRCROOT/icu/unicode/common $SRCROOT/icu/unicode/data $SRCROOT/icu/unicode/i18n $SRCROOT/icu/unicode/io $SRCROOT/icu/unicode/stubdata $SRCROOT/icu/unicode/common/unicode $SRCROOT/icu/unicode/data/unicode $SRCROOT/icu/unicode/i18n/unicode $SRCROOT/icu/unicode/io/unicode $SRCROOT/icu/unicode/stubdata/unicode";
