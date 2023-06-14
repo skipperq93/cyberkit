@@ -31,7 +31,7 @@ static const char *searchEntryFailedStyle = "GtkEntry#searchEntry {background-co
 struct _BrowserSearchBar {
     GtkToolbar parent;
 
-    WebKitWebView *webView;
+    CyberKitWebView *webView;
     GtkWidget *entry;
     GtkCssProvider *cssProvider;
     GtkWidget *prevButton;
@@ -63,7 +63,7 @@ static void doSearch(BrowserSearchBar *searchBar)
     if (!gtk_entry_get_icon_stock(entry, GTK_ENTRY_ICON_SECONDARY))
         gtk_entry_set_icon_from_stock(entry, GTK_ENTRY_ICON_SECONDARY, GTK_STOCK_CLEAR);
 
-    WebKitFindOptions options = WEBKIT_FIND_OPTIONS_WRAP_AROUND;
+    CyberKitFindOptions options = WEBKIT_FIND_OPTIONS_WRAP_AROUND;
     if (!gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(searchBar->caseCheckButton)))
         options |= WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE;
     if (gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(searchBar->begginigWordCheckButton)))
@@ -244,14 +244,14 @@ static void browser_search_bar_class_init(BrowserSearchBarClass *klass)
     gObjectClass->finalize = browserSearchBarFinalize;
 }
 
-GtkWidget *browser_search_bar_new(WebKitWebView *webView)
+GtkWidget *browser_search_bar_new(CyberKitWebView *webView)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_VIEW(webView), NULL);
 
     GtkWidget *searchBar = GTK_WIDGET(g_object_new(BROWSER_TYPE_SEARCH_BAR, NULL));
     BROWSER_SEARCH_BAR(searchBar)->webView = g_object_ref(webView);
 
-    WebKitFindController *controller = webkit_web_view_get_find_controller(webView);
+    CyberKitFindController *controller = webkit_web_view_get_find_controller(webView);
     g_signal_connect_swapped(controller, "failed-to-find-text", G_CALLBACK(findControllerFailedToFindTextCallback), searchBar);
     g_signal_connect_swapped(controller, "found-text", G_CALLBACK(findControllerFoundTextCallback), searchBar);
 
@@ -288,6 +288,6 @@ void browser_search_bar_close(BrowserSearchBar *searchBar)
     g_return_if_fail(BROWSER_IS_SEARCH_BAR(searchBar));
 
     gtk_widget_hide(GTK_WIDGET(searchBar));
-    WebKitFindController *controller = webkit_web_view_get_find_controller(searchBar->webView);
+    CyberKitFindController *controller = webkit_web_view_get_find_controller(searchBar->webView);
     webkit_find_controller_search_finish(controller);
 }

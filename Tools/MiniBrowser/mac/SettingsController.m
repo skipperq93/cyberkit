@@ -28,17 +28,17 @@
 #import "AppDelegate.h"
 #import "AppKitCompatibilityDeclarations.h"
 #import "BrowserWindowController.h"
-#import <WebKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
 
 #if WK_API_ENABLED
-#import <WebKit/_WKExperimentalFeature.h>
-#import <WebKit/_WKInternalDebugFeature.h>
+#import <CyberKit/_WKExperimentalFeature.h>
+#import <CyberKit/_WKInternalDebugFeature.h>
 #endif
 
 static NSString * const defaultURL = @"http://www.webkit.org/";
 static NSString * const DefaultURLPreferenceKey = @"DefaultURL";
 
-static NSString * const UseWebKit2ByDefaultPreferenceKey = @"UseWebKit2ByDefault";
+static NSString * const UseCyberKit2ByDefaultPreferenceKey = @"UseCyberKit2ByDefault";
 static NSString * const CreateEditorByDefaultPreferenceKey = @"CreateEditorByDefault";
 static NSString * const LayerBordersVisiblePreferenceKey = @"LayerBordersVisible";
 static NSString * const SimpleLineLayoutEnabledPreferenceKey = @"SimpleLineLayoutEnabled";
@@ -69,8 +69,8 @@ static NSString * const AppleColorFilterEnabledPreferenceKey = @"AppleColorFilte
 static NSString * const PunchOutWhiteBackgroundsInDarkModePreferenceKey = @"PunchOutWhiteBackgroundsInDarkMode";
 static NSString * const UseSystemAppearancePreferenceKey = @"UseSystemAppearance";
 
-// This default name intentionally overlaps with the key that WebKit2 checks when creating a view.
-static NSString * const UseRemoteLayerTreeDrawingAreaPreferenceKey = @"WebKit2UseRemoteLayerTreeDrawingArea";
+// This default name intentionally overlaps with the key that CyberKit2 checks when creating a view.
+static NSString * const UseRemoteLayerTreeDrawingAreaPreferenceKey = @"CyberKit2UseRemoteLayerTreeDrawingArea";
 
 static NSString * const PerWindowWebProcessesDisabledKey = @"PerWindowWebProcessesDisabled";
 static NSString * const NetworkCacheSpeculativeRevalidationDisabledKey = @"NetworkCacheSpeculativeRevalidationDisabled";
@@ -108,7 +108,7 @@ typedef NS_ENUM(NSInteger, DebugOverylayMenuItemTag) {
         return nil;
 
     NSArray *onByDefaultPrefs = @[
-        UseWebKit2ByDefaultPreferenceKey,
+        UseCyberKit2ByDefaultPreferenceKey,
         AcceleratedDrawingEnabledPreferenceKey,
         SimpleLineLayoutEnabledPreferenceKey,
 #if __MAC_OS_X_VERSION_MIN_REQUIRED >= 101300
@@ -156,7 +156,7 @@ typedef NS_ENUM(NSInteger, DebugOverylayMenuItemTag) {
 {
     _menu = [[NSMenu alloc] initWithTitle:@"Settings"];
 
-    [self _addItemWithTitle:@"Use WebKit2 By Default" action:@selector(toggleUseWebKit2ByDefault:) indented:NO];
+    [self _addItemWithTitle:@"Use CyberKit2 By Default" action:@selector(toggleUseCyberKit2ByDefault:) indented:NO];
     [self _addItemWithTitle:@"Create Editor By Default" action:@selector(toggleCreateEditorByDefault:) indented:NO];
     [self _addItemWithTitle:@"Set Default URL to Current URL" action:@selector(setDefaultURLToCurrentURL:) indented:NO];
 
@@ -178,7 +178,7 @@ typedef NS_ENUM(NSInteger, DebugOverylayMenuItemTag) {
     [self _addItemWithTitle:@"Enable color-filter" action:@selector(toggleAppleColorFilterEnabled:) indented:NO];
     [self _addItemWithTitle:@"Punch Out White Backgrounds in Dark Mode" action:@selector(togglePunchOutWhiteBackgroundsInDarkMode:) indented:NO];
     [self _addItemWithTitle:@"Use System Appearance" action:@selector(toggleUseSystemAppearance:) indented:NO];
-    [self _addHeaderWithTitle:@"WebKit2-only Settings"];
+    [self _addHeaderWithTitle:@"CyberKit2-only Settings"];
 
     [self _addItemWithTitle:@"Reserve Space For Banners" action:@selector(toggleReserveSpaceForBanners:) indented:YES];
     [self _addItemWithTitle:@"Show Tiled Scrolling Indicator" action:@selector(toggleShowTiledScrollingIndicator:) indented:YES];
@@ -251,7 +251,7 @@ typedef NS_ENUM(NSInteger, DebugOverylayMenuItemTag) {
     [internalDebugFeaturesMenu release];
 #endif // WK_API_ENABLED
 
-    [self _addHeaderWithTitle:@"WebKit1-only Settings"];
+    [self _addHeaderWithTitle:@"CyberKit1-only Settings"];
     [self _addItemWithTitle:@"Enable Subpixel CSSOM Metrics" action:@selector(toggleEnableSubPixelCSSOMMetrics:) indented:YES];
 }
 
@@ -259,8 +259,8 @@ typedef NS_ENUM(NSInteger, DebugOverylayMenuItemTag) {
 {
     SEL action = [menuItem action];
 
-    if (action == @selector(toggleUseWebKit2ByDefault:))
-        [menuItem setState:[self useWebKit2ByDefault] ? NSControlStateValueOn : NSControlStateValueOff];
+    if (action == @selector(toggleUseCyberKit2ByDefault:))
+        [menuItem setState:[self useCyberKit2ByDefault] ? NSControlStateValueOn : NSControlStateValueOff];
     else if (action == @selector(toggleCreateEditorByDefault:))
         [menuItem setState:[self createEditorByDefault] ? NSControlStateValueOn : NSControlStateValueOff];
     else if (action == @selector(toggleUseTransparentWindows:))
@@ -342,14 +342,14 @@ typedef NS_ENUM(NSInteger, DebugOverylayMenuItemTag) {
     [(BrowserAppDelegate *)[[NSApplication sharedApplication] delegate] didChangeSettings];
 }
 
-- (void)toggleUseWebKit2ByDefault:(id)sender
+- (void)toggleUseCyberKit2ByDefault:(id)sender
 {
-    [self _toggleBooleanDefault:UseWebKit2ByDefaultPreferenceKey];
+    [self _toggleBooleanDefault:UseCyberKit2ByDefaultPreferenceKey];
 }
 
-- (BOOL)useWebKit2ByDefault
+- (BOOL)useCyberKit2ByDefault
 {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:UseWebKit2ByDefaultPreferenceKey];
+    return [[NSUserDefaults standardUserDefaults] boolForKey:UseCyberKit2ByDefaultPreferenceKey];
 }
 
 - (void)toggleCreateEditorByDefault:(id)sender

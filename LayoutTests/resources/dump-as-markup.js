@@ -156,7 +156,7 @@ Markup._get = function(node, depth, shadowRootList)
     switch (node.nodeType) {
     case Node.DOCUMENT_TYPE_NODE:
         str += '<!DOCTYPE ' + node.nodeName;
-        // FIXME: The actual MarkupAccumulator in WebKit handles these quite differently.
+        // FIXME: The actual MarkupAccumulator in CyberKit handles these quite differently.
         // Should we change to match that format? Would probably need to change test results,
         // but it could help us distinguish empty strings from missing properties and
         // would include internalSubset, which this omits.

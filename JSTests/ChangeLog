@@ -20,7 +20,7 @@
 
         * stress/array-slice-must-keep-source-array-alive.js: Added.
 
-        Source/JavaScriptCore:
+        Source/CyberScriptCore:
 
         The implementation of the FTL ArraySlice intrinsics may GC while allocating the
         result array and its butterfly.  Previously, ArraySlice already keeps the source
@@ -85,7 +85,7 @@
     * stress/poly-call-stub-slow-path-should-restore-callee-saves-when-doing-tail-call.js: Added.
     (test):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     Polymorphic call stub is a bit specially patched in JS call site. Typical JS call site for tail calls
     are the following.
@@ -151,7 +151,7 @@
     * stress/clear-callee-or-codeblock-in-calllinkinfo-even-cleared-by-jettison.js: Added.
     (foo):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     In r243626, we stop repatching CallLinkInfo when the CallLinkInfo is held by jettisoned CodeBlock.
     But we still need to clear the Callee or CodeBlock since they are now dead. Otherwise, CodeBlock's
@@ -196,7 +196,7 @@
     * stress/call-link-info-osrexit-repatch.js: Added.
     (foo):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     CodeBlock::jettison() calls CommonData::invalidate, which replaces the `hlt`
     instruction with the jump to OSR exit. However, if the `hlt` was immediately
@@ -255,7 +255,7 @@
     (foo):
     (bar):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     Some of CallSiteIndex are disposable. This is because some of CallSiteIndex are allocated and freed at runtime (not DFG/FTL compile time).
     The example is CallSiteIndex for exception handler in GCAwareJITStubRoutineWithExceptionHandler. If we do not allocate and free CallSiteIndex,
@@ -343,7 +343,7 @@
     (inlinee):
     (opt):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     In DFG::ArgumentEliminationPhase, the index is treated as unsigned, but there's no check
     for overflow in the addition. In compileGetMyArgumentByVal, there's a check for overflow,
@@ -383,7 +383,7 @@
     * stress/regexp-large-paren-context.js: Added.
     (testLargeRegExp):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     Changed what happens when we exceed VM::patternContextBufferSize when compiling a RegExp
     that needs ParenCOntextSpace to fail the RegExp JIT compilation and fall back to the YARR
@@ -424,7 +424,7 @@
     (i.s):
     * stress/regexp-many-unnamed-sequential-capture-groups.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     There are three refactoring changes around paren contexts:
     1. Make EncodedMatchResult the same type as MatchResult on X86_64 and arm64 and uint64_t elsewhere.
@@ -472,7 +472,7 @@
     (trigger):
     (main):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     We have a DFG graph like this.
     
@@ -552,7 +552,7 @@
     (createBar.Bar):
     (createBar):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     When tryCachePutID is called with a cacheable setter, if the target object where the setter was
     found is still in the prototype chain and there's no poly protos in the chain, we use
@@ -645,7 +645,7 @@
     (foo):
     * test262/expectations.yaml:
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     According to the spec[1]:
     - TypedArrays should not perform an ordinary GetOwnProperty/SetOwnProperty if the index is a
@@ -659,7 +659,7 @@
     [1]: https://www.ecma-international.org/ecma-262/9.0/index.html#sec-integer-indexed-exotic-objects-defineownproperty-p-desc
     
     * CMakeLists.txt:
-    * JavaScriptCore.xcodeproj/project.pbxproj:
+    * CyberScriptCore.xcodeproj/project.pbxproj:
     * runtime/JSGenericTypedArrayViewInlines.h:
     (JSC::JSGenericTypedArrayView<Adaptor>::getOwnPropertySlot):
     (JSC::JSGenericTypedArrayView<Adaptor>::put):
@@ -719,7 +719,7 @@
     * stress/do-not-perform-bytecode-peephole-optimization-in-jump-target.js: Added.
     (shouldBe):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     Our peephole optimization in BytecodeGenerator is (1) rewinding the previous instruction and (2) emit optimized instruction instead.
     If we have jump target between the previous instruction and the subsequent instruction, this peephole optimization breaks the jump target.
@@ -768,7 +768,7 @@
     * stress/check-symbol-description-oom.js: Added.
     (shouldThrow):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     When resoling JSString for description of Symbol, we should check OOM error.
     We also change JSValueMakeSymbol(..., nullptr) to returning a symbol value
@@ -814,7 +814,7 @@
     
     * stress/check-stack-overflow-before-value-profiling-arguments.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     Otherwise, we may do value profiling without running a write barrier, which
     is against the rules of how we do value profiling.
@@ -852,7 +852,7 @@
     (foo.bar):
     (foo):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     * dfg/DFGSafeToExecute.h:
     (JSC::DFG::safeToExecute):
@@ -888,7 +888,7 @@
     (checkSyntax):
     (checkSyntaxError): Currently not using it. But it is useful for testing more things related to arrow function syntax.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     When parsing a FunctionExpression / FunctionDeclaration etc., we use SyntaxChecker for the body of the function because we do not have any interest on the nodes of the body at that time.
     The nodes will be parsed with the ASTBuilder when the function itself is parsed for code generation. This works well previously because all the function ends with "}" previously.
@@ -995,7 +995,7 @@
     
     * stress/map-b3-licm-infinite-loop.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     * b3/testb3.cpp:
     (JSC::B3::testInfiniteLoopDoesntCauseBadHoisting):
@@ -1077,7 +1077,7 @@
     
     * stress/new_array_with_spread-should-cap-array-size-to-MIN_ARRAY_STORAGE_CONSTRUCTION_LENGTH.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     We are doing this because:
     1. We expect the array to be densely packed.
@@ -1131,7 +1131,7 @@
     
     * stress/structure-flattenDictionary-should-clear-unused-property-slots.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     It currently attempts to do this but fails because it's actually clearing up the
     preCapacity region instead.  The fix is simply to account for the preCapacity
@@ -1170,7 +1170,7 @@
     * stress/regexp-backref-inbounds.js: Added.
     (testRegExp):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     The bug here is in Yarr JIT backreference matching code.  We are incorrectly
     using a checkedOffset / inputPosition correction when checking for the available
@@ -1218,7 +1218,7 @@
     
     * stress/HasIndexedProperty-does-gc.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     HasIndexedProperty can call the slow path operationHasIndexedPropertyByInt(),
     which can eventually call JSString::getIndex(), which can resolve a rope.
@@ -1254,7 +1254,7 @@
     
     * stress/stack-overflow-in-custom-hasInstance.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     * runtime/JSObject.cpp:
     (JSC::JSObject::hasInstance):
@@ -1287,7 +1287,7 @@
     
     * stress/optional-def-arg-width-should-be-both-early-and-late-use.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     reportUsedRegisters uses reg liveness to eliminate loads/moves into dead
     registers. However, liveness can report incorrect results in certain
@@ -1355,7 +1355,7 @@
 
         * wasm/regress/wasmToJS-should-purify-NaNs.js: Added.
 
-        Source/JavaScriptCore:
+        Source/CyberScriptCore:
 
         * runtime/JSCJSValue.h:
         (JSC::jsNumber):
@@ -1395,7 +1395,7 @@
     * stress/type-profiler-with-double-quote-in-field-name.js: Added.
     * stress/type-profiler-with-double-quote-in-optional-field-name.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     Ditto for TypeSet::toJSONString() and TypeSet::toJSONString().
     
@@ -1436,7 +1436,7 @@
 
         Cherry-pick r241634. rdar://problem/48243442
 
-    RELEASE_ASSERT at com.apple.JavaScriptCore: JSC::jsSubstringOfResolved
+    RELEASE_ASSERT at com.matthewbenedict.CyberScriptCore: JSC::jsSubstringOfResolved
     https://bugs.webkit.org/show_bug.cgi?id=194558
     
     Reviewed by Saam Barati.
@@ -1447,7 +1447,7 @@
     
     * stress/regexp-unicode-within-string.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     Added an in bounds check before the read of the next character for Unicode regular expressions
     for pattern generation that didn't already have such checks.
@@ -1463,7 +1463,7 @@
 
     2019-02-15  Michael Saboff  <msaboff@apple.com>
 
-            RELEASE_ASSERT at com.apple.JavaScriptCore: JSC::jsSubstringOfResolved
+            RELEASE_ASSERT at com.matthewbenedict.CyberScriptCore: JSC::jsSubstringOfResolved
             https://bugs.webkit.org/show_bug.cgi?id=194558
 
             Reviewed by Saam Barati.
@@ -1516,7 +1516,7 @@
     * stress/check-in-bounds-should-be-a-child-use.js: Added.
     (func):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     * dfg/DFGAbstractInterpreterInlines.h:
     (JSC::DFG::AbstractInterpreter<AbstractStateType>::executeEffects):
@@ -1571,7 +1571,7 @@
     
     * stress/value-recovery-of-double-displaced-in-jsstack-should-be-purified.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     According to DFG::OSRExit::executeOSRExit() and DFG::OSRExit::compileExit(),
     recovered DoubleDisplacedInJSStack values need to be purified.
@@ -1610,7 +1610,7 @@
     * stress/dfg-to-string-on-string-object-does-not-gc.js: Added.
     * stress/dfg-to-string-on-string-or-string-object-does-not-gc.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     Other than for StringObjectUse and StringOrStringObjectUse, ToString and
     CallStringConstructor can allocate new JSStrings, and hence, can GC.
@@ -1666,7 +1666,7 @@
     (shouldThrowInvalidConstAssignment):
     (taz):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     JITStubRoutine's fields are marked only when JITStubRoutine::m_mayBeExecuting is true.
     This becomes true when we find the executable address in our conservative roots, which
@@ -1730,7 +1730,7 @@
     (foo.let.hello):
     (foo):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     The Object Allocation Sinking phase may move allocations around inside
     of the program. However, it was not ensuring that it's still possible
@@ -1791,7 +1791,7 @@
     (bar):
     (baz):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     When pruning OSR Availability based on bytecode liveness, we accidentally clear the Availability (making it DeadFlush) instead of
     making it Availability::unavailable() (Making it ConflictingFlush). In OSRAvailabilityAnalysisPhase, we perform forward analysis.
@@ -1929,9 +1929,9 @@
     * stress/object-tostring-other.js: Removed.
     * stress/object-tostring-untyped.js: Removed.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
-    * JavaScriptCore.xcodeproj/project.pbxproj:
+    * CyberScriptCore.xcodeproj/project.pbxproj:
     * dfg/DFGAbstractInterpreterInlines.h:
     (JSC::DFG::AbstractInterpreter<AbstractStateType>::executeEffects):
     * dfg/DFGByteCodeParser.cpp:
@@ -2003,7 +2003,7 @@
     * stress/typed-array-array-modes-profile.js: Added.
     (foo):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     When RegisteredStructureSet is filtered with AbstractValue, we use structure, SpeculationType, and ArrayModes.
     However, we use asArrayModes() function with IndexingMode to compute the ArrayModes in AbstractValue. This is
@@ -2109,7 +2109,7 @@
     (shouldThrow):
     (foo):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     Even if the global lexical binding does not shadow the global property at that time, we need to clear the cached information in
     scope related operations since we may have a global property previously. Consider the following example,
@@ -2226,7 +2226,7 @@
     (thisA):
     (thisAStrictWrapper):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     DFGByteCodeParser omitted ToThis node when we have `ToThis(ToThis(value))`. This semantics is wrong if ToThis has different semantics
     in the sloppy mode and the strict mode. If we convert `ToThisInSloppyMode(ToThisInStrictMode(boolean))` to `ToThisInStrictMode(boolean)`,
@@ -2275,7 +2275,7 @@
     (foo):
     (bar):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     This patch also makes it so we fail fast when we make this mistake.
     I've made this mistake more than once.
@@ -2316,7 +2316,7 @@
     (foo):
     (a.valueOf.0):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     Prior to this patch, the use kind for StringObjectUse implied that we
     do a StructureCheck on the input operand for the *original* StringObject
@@ -2370,7 +2370,7 @@
     StringObjectUse implying a structure check we actually emit an explicit
     CheckStructure node.
     
-    * JavaScriptCore.xcodeproj/project.pbxproj:
+    * CyberScriptCore.xcodeproj/project.pbxproj:
     * bytecode/ExitKind.cpp:
     (JSC::exitKindToString):
     * bytecode/ExitKind.h:
@@ -2444,7 +2444,7 @@
     * stress/constructing-builtin-functions-with-getter-prototype-should-only-call-getter-once-per-new-2.js: Added.
     * stress/jsfunction-cannot-use-allocation-profile-with-builtin-functions-with-no-prototype.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     JSFunction::canUseAllocationProfile() should return false for most builtins
     because the majority of them have no prototype property.  The only exception to
@@ -2490,7 +2490,7 @@
     
     JSTests:
     
-    Under the heavy load (like, compiling WebKit), AI in this code can broaden type information after the 1st run.
+    Under the heavy load (like, compiling CyberKit), AI in this code can broaden type information after the 1st run.
     Then, GetByVal(String) crashed.
     
     * stress/string-get-by-val-lowering.js: Added.
@@ -2500,7 +2500,7 @@
     (Hello):
     (foo):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     GetByVal(Array::String) emits Check(String) before that. But AI can broaden type constraint in the second run.
     After the first run removes Check(String), it would happen that AI starts saying the type of 1st child is not String.
@@ -2526,7 +2526,7 @@
 
             Reviewed by Saam Barati and Keith Miller.
 
-            Under the heavy load (like, compiling WebKit), AI in this code can broaden type information after the 1st run.
+            Under the heavy load (like, compiling CyberKit), AI in this code can broaden type information after the 1st run.
             Then, GetByVal(String) crashed.
 
             * stress/string-get-by-val-lowering.js: Added.
@@ -2549,7 +2549,7 @@
     
     * stress/big-int-literal-inside-literal-object.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     Former implementation was relying into token.m_data.radix after the
     call of `next()` into Parser.cpp. This is not safe because next
@@ -2586,7 +2586,7 @@
     
     * stress/dfg-combined-liveness-consider-terminal-blocks-bytecode-liveness.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     If a block doesn't have any successors, it can't rely on the typical
     backwards liveness propagation that CombinedLiveness was doing. The phase
@@ -2695,7 +2695,7 @@
     (shouldBe):
     (foo):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     Previously, we assumed that lexical bindings in JSGlobalLexicalEnvironment cannot shadow existing global properties.
     However, it is wrong. According to the spec, we can shadow global properties if a property's attribute is configurable = true.
@@ -2733,7 +2733,7 @@
     
     We use this mechanism (which is similar to haveABadTime() thing) because,
     
-    1. Shadowing should be super rare. Before r214145, we made these cases as SytaxError. Thus, before r214145, this type of code cannot be executed in WebKit.
+    1. Shadowing should be super rare. Before r214145, we made these cases as SytaxError. Thus, before r214145, this type of code cannot be executed in CyberKit.
     And the number of the live CodeBlocks for the given JSGlobalObject should be small. This supports introducing rather simple (but not so efficient) mechanism
     instead of the complicated one.
     
@@ -2744,7 +2744,7 @@
     instructions as is, and DFG and FTL repeatedly fail to compile if we just watch the invalidated watchpoint for that. Rewriting all the existing GlobalProperty immediately
     avoids this situation easily.
     
-    * JavaScriptCore.xcodeproj/project.pbxproj:
+    * CyberScriptCore.xcodeproj/project.pbxproj:
     * Sources.txt:
     * bytecode/CodeBlock.cpp:
     (JSC::CodeBlock::notifyLexicalBindingShadowing):
@@ -2883,7 +2883,7 @@
     (g):
     (numberOfDFGCompiles):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     The flags are only 4 bytes, but were loaded with loadp. It used to work,
     since the flags were followed by a 4-byte padding, but it broke after the

@@ -27,13 +27,13 @@
 #ifndef PrintWebUIDelegate_h
 #define PrintWebUIDelegate_h
 
-#include <WebKitLegacy/WebKit.h>
+#include <CyberKitLegacy/CyberKit.h>
 
-class WebKitLegacyBrowserWindow;
+class CyberKitLegacyBrowserWindow;
 
 class PrintWebUIDelegate : public IWebUIDelegate {
 public:
-    PrintWebUIDelegate(WebKitLegacyBrowserWindow& client)
+    PrintWebUIDelegate(CyberKitLegacyBrowserWindow& client)
         : m_client(client) { }
 
     // IUnknown
@@ -106,7 +106,7 @@ public:
     virtual HRESULT STDMETHODCALLTYPE paintCustomScrollCorner(_In_opt_ IWebView*, _In_ HDC, RECT) { return E_NOTIMPL; }
 
 private:
-    WebKitLegacyBrowserWindow& m_client;
+    CyberKitLegacyBrowserWindow& m_client;
     HWND m_modalDialogParent { nullptr };
 };
 

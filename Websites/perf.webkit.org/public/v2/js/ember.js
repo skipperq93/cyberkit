@@ -47079,7 +47079,7 @@
             }
         };
         var browserGlobal = typeof window !== 'undefined' ? window : {};
-        var BrowserMutationObserver = browserGlobal.MutationObserver || browserGlobal.WebKitMutationObserver;
+        var BrowserMutationObserver = browserGlobal.MutationObserver || browserGlobal.CyberKitMutationObserver;
         // test for web worker but not in IE10
         var isWorker = typeof Uint8ClampedArray !== 'undefined' && typeof importScripts !== 'undefined' && typeof MessageChannel !== 'undefined';
         // node

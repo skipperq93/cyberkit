@@ -143,7 +143,7 @@ class YouThere(IRCCommand):
 
 class Restart(IRCCommand):
     usage_string = "restart"
-    help_string = "Restarts sherrifbot.  Will update its WebKit checkout, and re-join the channel momentarily."
+    help_string = "Restarts sherrifbot.  Will update its CyberKit checkout, and re-join the channel momentarily."
 
     def execute(self, nick, args, tool, sheriff):
         tool.irc().post("Restarting...")

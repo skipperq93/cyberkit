@@ -17,7 +17,7 @@ layer at (0,0) size 800x600
           text run at (95,18) width 5: "."
       RenderBlock {P} at (0,52) size 784x36
         RenderText {#text} at (0,0) size 335x18
-          text run at (0,0) width 335: "Checks if WebKit font matching algorithm matches "
+          text run at (0,0) width 335: "Checks if CyberKit font matching algorithm matches "
         RenderInline {A} at (0,0) size 169x18 [color=#0000EE]
           RenderText {#text} at (334,0) size 169x18
             text run at (334,0) width 169: "the latest CSS3 Fonts WD"

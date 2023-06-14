@@ -46,7 +46,7 @@ function runTest()
     for (var i = 0; i < rules.length; i++) {
         var itemText = rules.item(i).cssText;
 
-        // Work around bug where WebKit completes the URLs in the CSS DOM.
+        // Work around bug where CyberKit completes the URLs in the CSS DOM.
         // The completion of the URL should be when they are used, not in the DOM.
         itemText = itemText.replace(/file:.*LayoutTests\/fast\/css\//, "");
 
@@ -68,7 +68,7 @@ function runTest()
 
 <body onload="runTest()">
 
-<p>Test parsing of CSS URI tokens. Older versions of WebKit did some double processing of these, hence this test would have failed.</p>
+<p>Test parsing of CSS URI tokens. Older versions of CyberKit did some double processing of these, hence this test would have failed.</p>
 
 <p id="message">TEST DID NOT COMPLETE</p>
 

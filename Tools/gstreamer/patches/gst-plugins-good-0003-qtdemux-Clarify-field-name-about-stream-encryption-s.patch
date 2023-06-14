@@ -4,7 +4,7 @@ Date: Fri, 25 May 2018 12:28:04 +0200
 Subject: [PATCH] qtdemux: Clarify field name about stream-encryption-system
 
 This field is actually only informatory and the user can potentially
-choose something else. EME tests in WebKit testsuite actually doesn't
+choose something else. EME tests in CyberKit testsuite actually doesn't
 take it into and force another encryption system to be used, and expects
 to be given the occasion to do so.
 

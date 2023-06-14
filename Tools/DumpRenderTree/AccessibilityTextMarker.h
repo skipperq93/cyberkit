@@ -26,7 +26,7 @@
 #ifndef AccessibilityTextMarker_h
 #define AccessibilityTextMarker_h
 
-#include <JavaScriptCore/JSObjectRef.h>
+#include <CyberScriptCore/JSObjectRef.h>
 
 #if PLATFORM(MAC) || PLATFORM(IOS_FAMILY)
 #define SUPPORTS_AX_TEXTMARKERS 1

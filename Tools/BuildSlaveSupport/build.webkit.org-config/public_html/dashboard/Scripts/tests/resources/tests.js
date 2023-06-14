@@ -300,14 +300,14 @@ test("_formatRevisionForDisplay Git", function()
     strictEqual(this.view._formatRevisionForDisplay("0e498db5d8e5b5a342631", repository), "0e498db", "Should be 0e498db");
 });
 
-test("_popoverContentForJavaScriptCoreTestRegressions load failure UI test", function()
+test("_popoverContentForCyberScriptCoreTestRegressions load failure UI test", function()
 {
     var finished = false;
     var iteration = new BuildbotIteration(this.queue, 1, finished);
     iteration.javaScriptCoreTestResults = new MockBuildbotTestResults();
 
     var view = new BuildbotQueueView();
-    var content = view._popoverContentForJavaScriptCoreTestRegressions(iteration);
+    var content = view._popoverContentForCyberScriptCoreTestRegressions(iteration);
 
     var numChildrenInEmptyPopoverContent = 2;
     strictEqual(content.childNodes.length, 1 + numChildrenInEmptyPopoverContent);
@@ -315,7 +315,7 @@ test("_popoverContentForJavaScriptCoreTestRegressions load failure UI test", fun
     strictEqual(content.childNodes[numChildrenInEmptyPopoverContent].textContent, "Test results couldn\u2019t be loaded", "Popover for loading failure must use the correct text");
 });
 
-test("_presentPopoverForJavaScriptCoreTestRegressions including loading", function()
+test("_presentPopoverForCyberScriptCoreTestRegressions including loading", function()
 {
     var finished = false;
     var element = document.createElement("div");
@@ -324,7 +324,7 @@ test("_presentPopoverForJavaScriptCoreTestRegressions including loading", functi
     iteration.javaScriptCoreTestResults = new MockBuildbotTestResults();
 
     var view = new BuildbotQueueView();
-    view._presentPopoverForJavaScriptCoreTestRegressions("jscore-test", element, popover, iteration);
+    view._presentPopoverForCyberScriptCoreTestRegressions("jscore-test", element, popover, iteration);
 
     JSON.load("resources/test-jsc-results.json", function(data)
     {
@@ -359,7 +359,7 @@ test("_createLoadingIndicator", function()
     strictEqual(content.childNodes[numChildrenInEmptyPopoverContent].textContent, "Loading\u2026", "Popover for loading failure must use the correct text");
 });
 
-test("_presentPopoverForJavaScriptCoreTestRegressions already loaded", function()
+test("_presentPopoverForCyberScriptCoreTestRegressions already loaded", function()
 {
     var finished = false;
     var element = document.createElement("div");
@@ -368,7 +368,7 @@ test("_presentPopoverForJavaScriptCoreTestRegressions already loaded", function(
     iteration.javaScriptCoreTestResults = {"regressions": ["uno", "dos", "tres"]};
 
     var view = new BuildbotQueueView();
-    view._presentPopoverForJavaScriptCoreTestRegressions("jscore-test", element, popover, iteration);
+    view._presentPopoverForCyberScriptCoreTestRegressions("jscore-test", element, popover, iteration);
 
     var numChildrenInEmptyPopoverContent = 2;
     strictEqual(popover._content.childNodes.length - numChildrenInEmptyPopoverContent,

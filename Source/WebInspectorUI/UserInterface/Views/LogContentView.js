@@ -679,7 +679,7 @@ WI.LogContentView = class LogContentView extends WI.ContentView
 
     _positionForMessage(message)
     {
-        var pagePoint = window.webkitConvertPointFromNodeToPage(message, new WebKitPoint(0, 0));
+        var pagePoint = window.webkitConvertPointFromNodeToPage(message, new CyberKitPoint(0, 0));
         return window.webkitConvertPointFromPageToNode(this.element, pagePoint);
     }
 

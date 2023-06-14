@@ -25,7 +25,7 @@
 
 #import "CLIInstance.h"
 
-#import <JavaScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 
 #import "JSModule.h"
 #import "JSRunLoopThread.h"

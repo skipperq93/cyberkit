@@ -55,7 +55,7 @@
 
         Adds a new Bugzilla extension that will automatically CC the EWS feeder queue
         on each bug that has a patch up for review, including security bugs. This allows
-        the WebKit OpenSource Project to use an unprivileged Bugzilla account for the
+        the CyberKit OpenSource Project to use an unprivileged Bugzilla account for the
         EWS feeder queue.
 
         * extensions/EWS/Config.pm: Added.
@@ -267,7 +267,7 @@
         the toolbar, which inserts the overall comments textarea. The test testSaveCommentsWithMissingLineIds()
         assumes that the own properties of the window object are enumerated in the same order as they
         were defined in the file code-review-test.html such that the test testReaddDiscardedCommentWithPreviousComment()
-        is executed before test testSaveCommentsWithMissingLineIds(). The behavior of JavaScriptCore with
+        is executed before test testSaveCommentsWithMissingLineIds(). The behavior of CyberScriptCore with
         respect to the enumeration order of properties on the window object have changed since the
         test testSaveCommentsWithMissingLineIds() was written such that the order of the own properties
         on the window object do not reflect the order in which they were defined in the file. We should
@@ -390,7 +390,7 @@
         Build fix after r148527.
 
         * committers-autocomplete.js:
-        (WebKitCommitters):
+        (CyberKitCommitters):
 
 2013-04-16  Ryosuke Niwa  <rniwa@webkit.org>
 
@@ -403,7 +403,7 @@
         Basically, this removes a large chunk of this JavaScript file.
 
         * committers-autocomplete.js:
-        (WebKitCommitters):
+        (CyberKitCommitters):
 
 2013-04-13  Ryosuke Niwa  <rniwa@webkit.org>
 
@@ -496,7 +496,7 @@
         Reviewed by Tony Chang.
 
         Example failure: "The page at https://bugs.webkit.org/attachment.cgi?id=181222&action=review displayed insecure
-        content from http://svn.webkit.org/repository/webkit/trunk/Source/WebCore/page/EventHandler.cpp?p=138617." This
+        content from http://svn.webkit.org/repository/webkit/trunk/Source/CyberCore/page/EventHandler.cpp?p=138617." This
         loads from "//svn.webkit.org/..." so the protocol matches.
 
         * code-review.js:
@@ -620,7 +620,7 @@
 
 2012-11-06  Ryosuke Niwa  <rniwa@webkit.org>
 
-        committers-autocomplete.js works only with WebKit based browsers
+        committers-autocomplete.js works only with CyberKit based browsers
         https://bugs.webkit.org/show_bug.cgi?id=66752
 
         Reviewed by Csaba Osztrogonác.
@@ -671,7 +671,7 @@
 
 2012-09-25  Peter Gal  <galpeter@inf.u-szeged.hu>
 
-        committers-autocomplete.js works only with WebKit based browsers
+        committers-autocomplete.js works only with CyberKit based browsers
         https://bugs.webkit.org/show_bug.cgi?id=66752
 
         Reviewed by Darin Adler.
@@ -689,7 +689,7 @@
         Reviewed by Eric Seidel.
 
         This allows robots to access show_bug.cgi, thus granting them access to
-        index contents and discussion on WebKit bugs. All other pages, except
+        index contents and discussion on CyberKit bugs. All other pages, except
         for the site index itself, still have indexing disabled.
 
         * robots.txt:
@@ -786,7 +786,7 @@
         global modifier from the regex.
 
         * committers-autocomplete.js:
-        (WebKitCommitters):
+        (CyberKitCommitters):
 
 2012-01-03  Ojan Vafai  <ojan@chromium.org>
 
@@ -1042,10 +1042,10 @@
 
         Reviewed by Adam Barth.
 
-        Links from code reviews to trac are incorrect for files in Source/WebKit.
+        Links from code reviews to trac are incorrect for files in Source/CyberKit.
         https://bugs.webkit.org/show_bug.cgi?id=56404
 
-        * PrettyPatch/PrettyPatch.rb: Remove WebKit from the list of top level
+        * PrettyPatch/PrettyPatch.rb: Remove CyberKit from the list of top level
           directories since it is now under Source.
 
 2011-03-10  Caio Marcelo de Oliveira Filho  <caio.oliveira@openbossa.org>
@@ -1364,7 +1364,7 @@
         so to break out of the iframe we redirect to the bug page, which
         loses the information of who the email was sent to.
 
-        Once WebKit supports seamless iframes we should be able to avoid
+        Once CyberKit supports seamless iframes we should be able to avoid
         the redirect.
 
         * code-review.js:
@@ -1552,10 +1552,10 @@
 
         Rubber-stamped by Eric Seidel.
 
-        Move WebKit2 into Source
+        Move CyberKit2 into Source
         https://bugs.webkit.org/show_bug.cgi?id=52438
 
-        Remove WebKit2 from the list of top-level source directories.
+        Remove CyberKit2 from the list of top-level source directories.
 
         * PrettyPatch/PrettyPatch.rb:
 
@@ -1830,7 +1830,7 @@
 
         Rubber-stamped by Eric Seidel.
 
-        Move WebCore to Source
+        Move CyberCore to Source
         https://bugs.webkit.org/show_bug.cgi?id=52050
 
         Remove reference to old directory.
@@ -1927,11 +1927,11 @@
 
         Reviewed by Eric Seidel.
 
-        Move JavaScriptCore to Source
+        Move CyberScriptCore to Source
         https://bugs.webkit.org/show_bug.cgi?id=51604
 
         * PrettyPatch/PrettyPatch.rb:
-          - Remove reference to JavaScriptCore as a source directory.
+          - Remove reference to CyberScriptCore as a source directory.
 
 2011-01-01  Adam Barth  <abarth@webkit.org>
 
@@ -2007,7 +2007,7 @@
 
         Reviewed by Sam Weinig.
 
-        Move WebKitExamplePlugins to Examples
+        Move CyberKitExamplePlugins to Examples
         https://bugs.webkit.org/show_bug.cgi?id=51291
 
         * PrettyPatch/PrettyPatch.rb:
@@ -2016,7 +2016,7 @@
 
         Reviewed by Simon Fraser.
 
-        Rename WebKitTools to Tools
+        Rename CyberKitTools to Tools
         https://bugs.webkit.org/show_bug.cgi?id=49861
 
         * PrettyPatch/PrettyPatch.rb:
@@ -2142,7 +2142,7 @@
         Exception in committers-autocomplete in Firefox
         https://bugs.webkit.org/show_bug.cgi?id=47456
 
-        Remove dependency on a WebKit-only quirk.  IMHO, this quirk is bad for
+        Remove dependency on a CyberKit-only quirk.  IMHO, this quirk is bad for
         the long-term health of the web, but that's a discussion for another
         patch.
 
@@ -2342,11 +2342,11 @@
 
         Reviewed by Eric Seidel.
 
-        bugs.webkit.org should autocomplete WebKit Committers and Reviewers
+        bugs.webkit.org should autocomplete CyberKit Committers and Reviewers
         https://bugs.webkit.org/show_bug.cgi?id=45799
 
         This patch implements an autocomplete dropdown that helps users type
-        the names of WebKit committers and reviewers.  The script grabs the
+        the names of CyberKit committers and reviewers.  The script grabs the
         data from SVN now that wms set up CORS for http://svn.webkit.org.
         Security technology for the win.
 
@@ -2572,7 +2572,7 @@
 
         Tell the patch prettifier about some (not so) new directories
 
-        * PrettyPatch/PrettyPatch.rb: Added WebKit2, autotools, and cmake
+        * PrettyPatch/PrettyPatch.rb: Added CyberKit2, autotools, and cmake
         directories.
 
 2010-07-27  Joseph Pecoraro  <joepeck@webkit.org>
@@ -2739,7 +2739,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=35236
 
         There's a risk of reseting a valid assignee for example when
-        triaging a bug. All components in WebKit have the default 
+        triaging a bug. All components in CyberKit have the default 
         assignee set to webkit-unassigned@webkit.org so this should
         not cause problems for people relying on this functionality.
 
@@ -2981,9 +2981,9 @@
 
 2009-07-02  David D. Kilzer  <ddkilzer@apple.com>
 
-        Workaround for WebKit Bug 9630 when running contrib/recode.pl
+        Workaround for CyberKit Bug 9630 when running contrib/recode.pl
 
-        A number of WebKit nightly builds included Bug 9630 which caused
+        A number of CyberKit nightly builds included Bug 9630 which caused
         non-breaking space characters (0xA0) to be submitted within the
         content of textarea elements.
 
@@ -3216,7 +3216,7 @@
 
 2008-05-28  Adam Roben  <aroben@apple.com>
 
-        Make PrettyPatch able to handle diffs taken from outside the WebKit
+        Make PrettyPatch able to handle diffs taken from outside the CyberKit
         source tree
 
         Part of Bug 19290: More patches not handled by PrettyPatch.rb

@@ -1,4 +1,4 @@
-# These are the layout test expectations for Apple's Mac port of WebKit.
+# These are the layout test expectations for Apple's Mac port of CyberKit.
 #
 # See http://trac.webkit.org/wiki/TestExpectations for more information on this file.
 
@@ -70,7 +70,7 @@ accessibility/multiselect-list-reports-active-option.html
 accessibility/aria-listbox-clear-selection-crash.html
 accessibility/listbox-clear-selection.html
 
-# Need to implement this in plugins code in WebKit
+# Need to implement this in plugins code in CyberKit
 plugins/reloadplugins-and-pages.html
 
 # These tests require touch support
@@ -431,10 +431,10 @@ plugins/nested-plugin-objects.html [ WontFix ]
 plugins/netscape-destroy-plugin-script-objects.html [ WontFix ]
 plugins/open-and-close-window-with-plugin.html [ WontFix ]
 
-# WebKit1 OOP plug-ins: No support for getting the form value.
+# CyberKit1 OOP plug-ins: No support for getting the form value.
 plugins/form-value.html
 
-# WebKit1 OOP plug-ins: Exceptions aren't thrown on invoke failure.
+# CyberKit1 OOP plug-ins: Exceptions aren't thrown on invoke failure.
 plugins/npruntime/invoke-failure.html
 
 webkit.org/b/93589 svg/dom/SVGScriptElement/script-change-externalResourcesRequired-while-loading.svg [ Pass Timeout ]
@@ -606,7 +606,7 @@ webkit.org/b/112176 fast/css/sticky/sticky-both-sides.html [ ImageOnlyFailure Pa
 # isProtocolHandlerRegistered() isn't supported yet.
 webkit.org/b/92749 fast/dom/NavigatorContentUtils/is-protocol-handler-registered.html [ Skip ]
 
-# WebKit1-only
+# CyberKit1-only
 webkit.org/b/103857 fast/events/mouse-cursor-change.html [ Failure ]
 
 webkit.org/b/116245 canvas/philip/tests/2d.text.draw.fontface.notinpage.html [ Pass Failure ]
@@ -867,7 +867,7 @@ webkit.org/b/103926 legacy-animation-engine/media/track/opera/track/webvtt/rende
 webkit.org/b/103926 media/track/opera/track/webvtt/rendering/adhoc/voice_with_evil_timestamp.html [ Skip ]
 
 # WebVTT tests don't work because they need more than a 800x600 snapshot.
-# They are also flakily failing on WebKit2, as snapshot sometimes has a black rectangle for video element instead of white one.
+# They are also flakily failing on CyberKit2, as snapshot sometimes has a black rectangle for video element instead of white one.
 webkit.org/b/131476 media/track/w3c/track/webvtt [ Skip ]
 
 webkit.org/b/67716 media/media-controls-invalid-url.html [ Failure ]

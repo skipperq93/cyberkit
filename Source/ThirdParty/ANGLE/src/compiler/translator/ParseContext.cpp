@@ -3240,7 +3240,7 @@ TIntermFunctionPrototype *TParseContext::addFunctionPrototypeDeclaration(
     }
     function->setHasPrototypeDeclaration();
 
-    // WebKit note: We currently pass true instead of false for the last parameter
+    // CyberKit note: We currently pass true instead of false for the last parameter
     // here because some compilers have an issue with nameless parameters in function
     // declarations.
     TIntermFunctionPrototype *prototype =

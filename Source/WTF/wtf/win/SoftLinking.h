@@ -156,7 +156,7 @@
 
 #pragma mark - Soft-link macros for sharing across multiple source files
 
-// See Source/WebCore/platform/cf/CoreMediaSoftLink.{cpp,h} for an example implementation.
+// See Source/CyberCore/platform/cf/CoreMediaSoftLink.{cpp,h} for an example implementation.
 
 #define SOFT_LINK_FRAMEWORK_FOR_HEADER(functionNamespace, framework) \
     namespace functionNamespace { \

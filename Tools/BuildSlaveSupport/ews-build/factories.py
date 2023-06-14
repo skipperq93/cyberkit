@@ -52,16 +52,16 @@ class BindingsFactory(Factory):
         self.addStep(RunBindingsTests())
 
 
-class WebKitPerlFactory(Factory):
+class CyberKitPerlFactory(Factory):
     def __init__(self, platform, configuration=None, architectures=None, additionalArguments=None, **kwargs):
         Factory.__init__(self, platform, configuration, architectures, False, additionalArguments)
-        self.addStep(RunWebKitPerlTests())
+        self.addStep(RunCyberKitPerlTests())
 
 
-class WebKitPyFactory(Factory):
+class CyberKitPyFactory(Factory):
     def __init__(self, platform, configuration=None, architectures=None, additionalArguments=None, **kwargs):
         Factory.__init__(self, platform, configuration, architectures, False, additionalArguments, checkRelevance=True)
-        self.addStep(RunWebKitPyTests())
+        self.addStep(RunCyberKitPyTests())
 
 
 class BuildFactory(Factory):
@@ -69,9 +69,9 @@ class BuildFactory(Factory):
         Factory.__init__(self, platform, configuration, architectures, False, additionalArguments)
         self.addStep(KillOldProcesses())
         self.addStep(CleanBuild())
-        self.addStep(CompileWebKit())
+        self.addStep(CompileCyberKit())
         self.addStep(UnApplyPatchIfRequired())
-        self.addStep(CompileWebKitToT())
+        self.addStep(CompileCyberKitToT())
         if triggers:
             self.addStep(ArchiveBuiltProduct())
             self.addStep(UploadBuiltProduct())
@@ -110,10 +110,10 @@ class JSCTestsFactory(Factory):
         self.addStep(CompileJSCOnly())
         self.addStep(UnApplyPatchIfRequired())
         self.addStep(CompileJSCOnlyToT())
-        self.addStep(RunJavaScriptCoreTests())
-        self.addStep(ReRunJavaScriptCoreTests())
+        self.addStep(RunCyberScriptCoreTests())
+        self.addStep(ReRunCyberScriptCoreTests())
         self.addStep(UnApplyPatchIfRequired())
-        self.addStep(RunJavaScriptCoreTestsToT())
+        self.addStep(RunCyberScriptCoreTestsToT())
 
 
 class APITestsFactory(TestFactory):
@@ -129,7 +129,7 @@ class iOSBuildFactory(BuildFactory):
 
 
 class iOSTestsFactory(TestFactory):
-    LayoutTestClass = RunWebKitTests
+    LayoutTestClass = RunCyberKitTests
 
 
 class macOSBuildFactory(BuildFactory):
@@ -137,11 +137,11 @@ class macOSBuildFactory(BuildFactory):
 
 
 class macOSWK1Factory(TestFactory):
-    LayoutTestClass = RunWebKit1Tests
+    LayoutTestClass = RunCyberKit1Tests
 
 
 class macOSWK2Factory(TestFactory):
-    LayoutTestClass = RunWebKitTests
+    LayoutTestClass = RunCyberKitTests
 
 
 class WindowsFactory(Factory):

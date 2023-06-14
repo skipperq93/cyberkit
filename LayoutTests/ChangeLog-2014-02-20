@@ -560,7 +560,7 @@
 
 2014-02-17  Chris Fleizach  <cfleizach@apple.com>
 
-        AX: Invalid cast in WebCore::AccessibilityTable::isDataTable (CRBug 280352)
+        AX: Invalid cast in CyberCore::AccessibilityTable::isDataTable (CRBug 280352)
         <https://webkit.org/b/128925>
         <rdar://problem/16087351>
 
@@ -710,7 +710,7 @@
 
 2014-02-15  Renata Hodovan  <rhodovan.u-szeged@partner.samsung.com>
 
-        ASSERT_WITH_SECURITY_IMPLICATION in WebCore::toElement
+        ASSERT_WITH_SECURITY_IMPLICATION in CyberCore::toElement
         https://bugs.webkit.org/show_bug.cgi?id=128810
 
         Reviewed by Ryosuke Niwa.
@@ -901,7 +901,7 @@
 
 2014-02-14  Chris Fleizach  <cfleizach@apple.com>
 
-        AX: WebKit needs heuristics to differentiate lists used for layout from semantic data lists, similar to the heuristics for layout tables versus data tables.
+        AX: CyberKit needs heuristics to differentiate lists used for layout from semantic data lists, similar to the heuristics for layout tables versus data tables.
         https://bugs.webkit.org/show_bug.cgi?id=122320
 
         Reviewed by Mario Sanchez Prada.
@@ -962,7 +962,7 @@
 
 2014-02-14  Renata Hodovan  <rhodovan.u-szeged@partner.samsung.com>
 
-        ASSERTION FAILED: comparePositions(newEnd, newStart) >= 0 in WebCore::ApplyStyleCommand::updateStartEnd
+        ASSERTION FAILED: comparePositions(newEnd, newStart) >= 0 in CyberCore::ApplyStyleCommand::updateStartEnd
         https://bugs.webkit.org/show_bug.cgi?id=121791
 
         Reviewed by Darin Adler.
@@ -1566,7 +1566,7 @@
         because one of the logging functions they made had become more verbose.
 
         This time we include the new test expectations for those tests, and update them to
-        reflect the different exception message outputted in WebKit vs Blink.
+        reflect the different exception message outputted in CyberKit vs Blink.
 
         * resources/js-test.js: Added.
         * storage/indexeddb/aborted-versionchange-closes-expected.txt:
@@ -2124,7 +2124,7 @@
 
         Reviewed by Darin Adler.
 
-        Make the implementation in WebKit compatible with the 2013-05-09
+        Make the implementation in CyberKit compatible with the 2013-05-09
         version of the spec, which makes the "capture" attribute a boolean
         instead of an enum.
 
@@ -5226,7 +5226,7 @@
 
 2014-02-03  Chris Fleizach  <cfleizach@apple.com>
 
-        AX: WebKit should support @headers/@id for complex accessible web tables
+        AX: CyberKit should support @headers/@id for complex accessible web tables
         https://bugs.webkit.org/show_bug.cgi?id=128114
 
         Reviewed by Darin Adler.
@@ -5920,7 +5920,7 @@
 
 2014-01-23  Myles C. Maxfield  <mmaxfield@apple.com>
 
-        ASSERT_WITH_SECURITY_IMPLICATION in WebCore::InlineTextBox::paint
+        ASSERT_WITH_SECURITY_IMPLICATION in CyberCore::InlineTextBox::paint
         https://bugs.webkit.org/show_bug.cgi?id=114586
 
         Reviewed by Dave Hyatt.
@@ -6578,7 +6578,7 @@
 
 2014-01-26  Joseph Pecoraro  <pecoraro@apple.com>
 
-        Web Inspector: Move InspectorDebuggerAgent into JavaScriptCore
+        Web Inspector: Move InspectorDebuggerAgent into CyberScriptCore
         https://bugs.webkit.org/show_bug.cgi?id=127629
 
         Rubber-stamped by Sam Weinig.
@@ -6828,7 +6828,7 @@
 
 2014-01-23  Jon Honeycutt  <jhoneycutt@apple.com>
 
-        Assertion failure in WebCore::PseudoElement::didRecalcStyle()
+        Assertion failure in CyberCore::PseudoElement::didRecalcStyle()
         <https://bugs.webkit.org/show_bug.cgi?id=126761>
         <rdar://problem/15793540>
 
@@ -7158,7 +7158,7 @@
 
 2014-01-22  Jon Honeycutt  <jhoneycutt@apple.com>
 
-        REGRESSION(r161967): Crash in WebCore::CachedSVGDocumentReference::load
+        REGRESSION(r161967): Crash in CyberCore::CachedSVGDocumentReference::load
         <https://webkit.org/b/127151>
         <rdar://problem/15840760>
 
@@ -7373,7 +7373,7 @@
 
 2014-01-22  Myles C. Maxfield  <mmaxfield@apple.com>
 
-        ASSERTION FAILED: v.isFixed() in WebCore::RenderStyle::setWordSpacing
+        ASSERTION FAILED: v.isFixed() in CyberCore::RenderStyle::setWordSpacing
         https://bugs.webkit.org/show_bug.cgi?id=126987
 
         Reviewed by Simon Fraser.
@@ -7397,7 +7397,7 @@
 
 2014-01-22  Chris Fleizach  <cfleizach@apple.com>
 
-        AX: WebKit concatenates name of all toolbar buttons in the apple.com video player
+        AX: CyberKit concatenates name of all toolbar buttons in the apple.com video player
         https://bugs.webkit.org/show_bug.cgi?id=126914
 
         Reviewed by Mario Sanchez Prada.
@@ -7561,7 +7561,7 @@
 
         * compositing/iframes/iframe-composited-scrolling.html:
         Removed acceleratedCompositingForScrollableFramesEnabled changes because
-        it is dead code in WebCore side.
+        it is dead code in CyberCore side.
 
 2014-01-21  Zalan Bujtas  <zalan@apple.com>
 
@@ -7849,7 +7849,7 @@
 
 2013-11-22  Sergio Villar Senin  <svillar@igalia.com>
 
-        Null-pointer dereference in WebCore::CSSValue::isPrimitiveValue
+        Null-pointer dereference in CyberCore::CSSValue::isPrimitiveValue
         https://bugs.webkit.org/show_bug.cgi?id=124769
 
         Reviewed by Andreas Kling.
@@ -8220,7 +8220,7 @@
         Reviewed by Ryosuke Niwa.
 
         Some grammar checking tests have already used asynchronous text checking path.
-        Due to WebKit tends to use asynchronous spell checking, this patch adapts grammar
+        Due to CyberKit tends to use asynchronous spell checking, this patch adapts grammar
         checking tests that used synchronous path to be able to run asynchronously.
 
         Additionally, the tests description was fixed.
@@ -8302,7 +8302,7 @@
 
 2014-01-16  Chris Fleizach  <cfleizach@apple.com>
 
-        AX: WebKit is not firing AXMenuOpenedNotification
+        AX: CyberKit is not firing AXMenuOpenedNotification
         https://bugs.webkit.org/show_bug.cgi?id=126993
 
         Reviewed by Mario Sanchez Prada.
@@ -8320,7 +8320,7 @@
 
 2014-01-16  Chris Fleizach  <cfleizach@apple.com>
 
-        AX: WebKit is not firing AXMenuItemSelectedNotification
+        AX: CyberKit is not firing AXMenuItemSelectedNotification
         https://bugs.webkit.org/show_bug.cgi?id=127081
 
         Reviewed by Mario Sanchez Prada.
@@ -10615,7 +10615,7 @@
 
 2014-01-09  Benjamin Poulain  <bpoulain@apple.com>
 
-        Remove the BlackBerry files outside WebCore
+        Remove the BlackBerry files outside CyberCore
         https://bugs.webkit.org/show_bug.cgi?id=126715
 
         Reviewed by Anders Carlsson.
@@ -11355,7 +11355,7 @@
 
 2014-01-02  Myles C. Maxfield  <mmaxfield@apple.com>
 
-        Crash in WebCore::translateIntersectionPointsToSkipInkBoundaries
+        Crash in CyberCore::translateIntersectionPointsToSkipInkBoundaries
         https://bugs.webkit.org/show_bug.cgi?id=126252
 
         Reviewed by Alexey Proskuryakov.
@@ -11588,19 +11588,19 @@
 
 2013-12-27  Gavin Barraclough  <barraclough@apple.com>
 
-        Merge PageVisibilityState & ViewState::IsVisible in WebKit2
+        Merge PageVisibilityState & ViewState::IsVisible in CyberKit2
         https://bugs.webkit.org/show_bug.cgi?id=126214
 
         Reviewed by Alexey Proskuryakov.
 
-        WebKit2 redundantly tracks the visibility of the view through two mechanisms - the visibility
-        state, and the view state. Remove visibility state from the WebKit2 layer. The visibility
+        CyberKit2 redundantly tracks the visibility of the view through two mechanisms - the visibility
+        state, and the view state. Remove visibility state from the CyberKit2 layer. The visibility
         state also tracks the prerender state - so split this out and handle it separately (a change
-        we should make in WebCore, too).
+        we should make in CyberCore, too).
 
         LayoutTests - remove test for notification on visibility state change to preerender. This test
         was covering something nonsensical, and not supported by the spec - the page should never see
-        a visibility change to prerender, this should only be an initial state. WebKit2 API now only
+        a visibility change to prerender, this should only be an initial state. CyberKit2 API now only
         allows the client to change the state to prerender without sending a notification, and there
         is no sense in continuing to support the current test case, since the behaviour is neither
         allowed by API nor available in web content.
@@ -11738,7 +11738,7 @@
         Reviewed by Dan Bernstein.
 
         Merge the test from https://chromium.googlesource.com/chromium/blink/+/dd5636728643ff958aebeaf064d38754b0d5904b
-        so that we may not introduce the same regression in WebKit.
+        so that we may not introduce the same regression in CyberKit.
 
         * fast/css/collapsed-whitespace-reattach-in-style-recalc-expected.txt: Added.
         * fast/css/collapsed-whitespace-reattach-in-style-recalc.html: Added.
@@ -11785,7 +11785,7 @@
         Reviewed by Alexey Proskuryakov.
 
         Merge the test from https://chromium.googlesource.com/chromium/blink/+/9220cbdaae8413f3c8316c022f98579af120bf10
-        so that we may not introduce the same regression in WebKit.
+        so that we may not introduce the same regression in CyberKit.
 
         * http/tests/misc/form-target-iframe-inline-expected.txt: Added.
         * http/tests/misc/form-target-iframe-inline.html: Added.
@@ -11988,7 +11988,7 @@
         either the scrollarea and the webarea in the iframe (see bug 126066).
 
         * platform/mac-wk2/TestExpectations: Add search-when-element-starts-in-table.html
-        here, since it does not return an undefined object in WebKit2 when
+        here, since it does not return an undefined object in CyberKit2 when
         the search query should return no results (see bug 125996).
 
 2013-12-20  Radu Stavila  <stavila@adobe.com>
@@ -12168,7 +12168,7 @@
         * platform/mac/accessibility/search-when-element-starts-in-table-expected.txt: Ditto.
 
         * platform/mac-wk2/TestExpectations: Add search-when-element-starts-in-table.html
-        here, since it does not return an undefined object in WebKit2 when
+        here, since it does not return an undefined object in CyberKit2 when
         the search query should return no results (see bug 125996).
 
 2013-12-19  Alexey Proskuryakov  <ap@apple.com>
@@ -12186,7 +12186,7 @@
 
 2013-12-18  Ryosuke Niwa  <rniwa@webkit.org>
 
-        Crash in WebCore::LogicalSelectionOffsetCaches::LogicalSelectionOffsetCaches
+        Crash in CyberCore::LogicalSelectionOffsetCaches::LogicalSelectionOffsetCaches
         https://bugs.webkit.org/show_bug.cgi?id=125970
 
         Reviewed by Antti Koivisto.
@@ -12227,7 +12227,7 @@
 
 2013-12-18  Chris Fleizach  <cfleizach@apple.com>
 
-        AX: WebKit not sending AXMenuClosed notification
+        AX: CyberKit not sending AXMenuClosed notification
         https://bugs.webkit.org/show_bug.cgi?id=125783
 
         Reviewed by Mario Sanchez Prada.
@@ -12237,7 +12237,7 @@
 
 2013-12-18  Tamas Gergely  <tgergely.u-szeged@partner.samsung.com>
 
-        Fix ASSERTION FAILED in WebCore::SVGLengthContext::determineViewport
+        Fix ASSERTION FAILED in CyberCore::SVGLengthContext::determineViewport
         https://bugs.webkit.org/show_bug.cgi?id=120284
 
         Reviewed by Philip Rogers.
@@ -12375,7 +12375,7 @@
 
         Reviewed by Anders Carlsson.
 
-        This is not currently supported by WebKit, remove this enum value.
+        This is not currently supported by CyberKit, remove this enum value.
         We can always add this back later if/when we add support for this state.
 
         * fast/events/page-visibility-transition-test-expected.txt:
@@ -12829,7 +12829,7 @@
 
 2013-12-13  Joseph Pecoraro  <pecoraro@apple.com>
 
-        Web Inspector: Move Inspector and Debugger protocol domains into JavaScriptCore
+        Web Inspector: Move Inspector and Debugger protocol domains into CyberScriptCore
         https://bugs.webkit.org/show_bug.cgi?id=125707
 
         Reviewed by Timothy Hatcher.
@@ -12852,7 +12852,7 @@
 
 2013-12-13  Joseph Pecoraro  <pecoraro@apple.com>
 
-        Web Inspector: Add Inspector Code Generation to JavaScriptCore for Runtime Domain
+        Web Inspector: Add Inspector Code Generation to CyberScriptCore for Runtime Domain
         https://bugs.webkit.org/show_bug.cgi?id=125595
 
         Reviewed by Timothy Hatcher.
@@ -13459,7 +13459,7 @@
         
         Add the test from https://chromium.googlesource.com/chromium/blink/+/30ff49bf63cdec31070ab4eda8784564f56789d4
         and https://chromium.googlesource.com/chromium/blink/+/3cb1724bb52f3607006ddd0a89d356da23766115
-        so that we may not introduce the same regressions in WebKit.
+        so that we may not introduce the same regressions in CyberKit.
 
         * fast/css/nth-last-child-recalc-expected.html: Added.
         * fast/css/nth-last-child-recalc.html: Added.
@@ -13510,7 +13510,7 @@
 
 2013-12-09  Chris Fleizach  <cfleizach@apple.com>
 
-        AX: WebKit ignores @alt on IMG elements with role="text"
+        AX: CyberKit ignores @alt on IMG elements with role="text"
         https://bugs.webkit.org/show_bug.cgi?id=125363
 
         Reviewed by Mario Sanchez Prada.
@@ -14136,7 +14136,7 @@
 
 2013-12-03  László Langó  <lango@inf.u-szeged.hu>
 
-        ASSERTION FAILED: !value || (value->isPrimitiveValue()) in WebCore::StyleProperties::getLayeredShorthandValue.
+        ASSERTION FAILED: !value || (value->isPrimitiveValue()) in CyberCore::StyleProperties::getLayeredShorthandValue.
         https://bugs.webkit.org/show_bug.cgi?id=125146
 
         Reviewed by Darin Adler.
@@ -14350,7 +14350,7 @@
 
 2013-12-02  Chris Fleizach  <cfleizach@apple.com>
 
-        AX: Crash at WebCore::commonTreeScope
+        AX: Crash at CyberCore::commonTreeScope
         https://bugs.webkit.org/show_bug.cgi?id=125042
 
         Reviewed by Mario Sanchez Prada.
@@ -16494,7 +16494,7 @@
 
 2013-11-18  Zalan Bujtas  <zalan@apple.com>
 
-        use after free in WebCore::DocumentOrderedMap::remove / WebCore::TreeScope::removeElementById
+        use after free in CyberCore::DocumentOrderedMap::remove / CyberCore::TreeScope::removeElementById
         https://bugs.webkit.org/show_bug.cgi?id=121324
 
         Reviewed by Ryosuke Niwa.
@@ -17307,7 +17307,7 @@
 
 2013-11-14  Tim Horton  <timothy_horton@apple.com>
 
-        fullscreen/anonymous-block-merge-crash.html often times out in WebKit1
+        fullscreen/anonymous-block-merge-crash.html often times out in CyberKit1
         https://bugs.webkit.org/show_bug.cgi?id=124318
 
         * platform/mac/TestExpectations:
@@ -17421,12 +17421,12 @@
 
 2013-11-13  Tim Horton  <timothy_horton@apple.com>
 
-        fullscreen/anonymous-block-merge-crash.html often times out in WebKit1
+        fullscreen/anonymous-block-merge-crash.html often times out in CyberKit1
         https://bugs.webkit.org/show_bug.cgi?id=124318
 
         * platform/mac-wk2/TestExpectations:
         * platform/mac/TestExpectations:
-        Mark test as timing out on WebKit1 only.
+        Mark test as timing out on CyberKit1 only.
 
 2013-11-13  Tim Horton  <timothy_horton@apple.com>
 
@@ -17684,7 +17684,7 @@
         fast/canvas/webgl/draw-arrays-out-of-bounds.html is flaky on Mavericks WK2 testers, fails about 20% of the time
         https://bugs.webkit.org/show_bug.cgi?id=124223
 
-        Mark as flaky on Mac-Mavericks-WebKit2.
+        Mark as flaky on Mac-Mavericks-CyberKit2.
 
         * platform/mac-wk2/TestExpectations:
 
@@ -19242,10 +19242,10 @@
 
         Rebaselined some expected results for tests that use vertical text.
         These tests are now working fine after the fix from Bug 50619.
-        They have specific results for WebKit2 GTK+ because WebKit1 has a
+        They have specific results for CyberKit2 GTK+ because CyberKit1 has a
         permanent area in the bottom for the horizontal scroll bar.
-        This area reduces the layout area in WebKit1 and consequently the
-        results differ from WebKit2.
+        This area reduces the layout area in CyberKit1 and consequently the
+        results differ from CyberKit2.
 
         * fast/repaint/japanese-rl-selection-clear-expected.txt:
         * fast/repaint/japanese-rl-selection-repaint-expected.txt:
@@ -21404,7 +21404,7 @@
 
 2013-11-06  Ryosuke Niwa  <rniwa@webkit.org>
 
-        Assertion failure end < m_runCount in WebCore::BidiRunList<WebCore::BidiRun>::reverseRuns
+        Assertion failure end < m_runCount in CyberCore::BidiRunList<CyberCore::BidiRun>::reverseRuns
         https://bugs.webkit.org/show_bug.cgi?id=123863
 
         Reviewed by Andreas Kling.
@@ -21620,7 +21620,7 @@
 
 2013-11-05  Renata Hodovan  <reni@webkit.org>
 
-        ASSERTION FAILED: isHTMLTitleElement(m_titleElement.get()) in WebCore::Document::setTitle
+        ASSERTION FAILED: isHTMLTitleElement(m_titleElement.get()) in CyberCore::Document::setTitle
         https://bugs.webkit.org/show_bug.cgi?id=122092
 
         Reviewed by Darin Adler.
@@ -23668,7 +23668,7 @@
 
         Reviewed by Sam Weinig.
 
-        When Window.open in called in WebKit2 the WebProcess sends a synchronous request to open
+        When Window.open in called in CyberKit2 the WebProcess sends a synchronous request to open
         a page (WebPageProxy::createNewPage). The UIProcess creates a WebpageProxy, and responds
         with instructions to the WebProcess to create the WebPage. The initial creation state of
         the WebPage is communicated to the WebProcess via two routes (firstly an asynchronous
@@ -23690,14 +23690,14 @@
         This fix results in a layout test result change, due to the change in behavior (page is
         created blurred, and becomes focussed, resulting in a focus event being fired – rather
         than the window opening directly into a focussed state). This is reported as a
-        progression (test is broken in WebKit1, fixed in WebKit2 after this change). In reality
+        progression (test is broken in CyberKit1, fixed in CyberKit2 after this change). In reality
         the test is actually slightly broken in DRT/test-runner – the test runs differently than
         in browser, since there is is no visible main window. In-browser this patch results in
         no change in behavior on dom/Window/mozilla-focus-blur.html (the affected test).
 
         * platform/mac-wk2/fast/dom/Window: Added.
         * platform/mac-wk2/fast/dom/Window/mozilla-focus-blur-expected.txt: Added.
-            - This test now reports a pass on WebKit2
+            - This test now reports a pass on CyberKit2
 
 2013-10-31  Alexey Proskuryakov  <ap@apple.com>
 
@@ -23850,7 +23850,7 @@
 
 2013-10-29  Jer Noble  <jer.noble@apple.com>
 
-        [MSE] Remove legacy Media Source APIs (WebKitMediaSource, WebKitSourceBuffer, WebKitSourceBufferList)
+        [MSE] Remove legacy Media Source APIs (CyberKitMediaSource, CyberKitSourceBuffer, CyberKitSourceBufferList)
         https://bugs.webkit.org/show_bug.cgi?id=123463
 
         Reviewed by Eric Carlson.
@@ -23926,7 +23926,7 @@
 
         Add more test expectations for the bug 121452.
 
-        fast/frames/lots-of-objects.html is failing on Mavericks WebKit2 builders in addition to Debug builders.
+        fast/frames/lots-of-objects.html is failing on Mavericks CyberKit2 builders in addition to Debug builders.
 
         fast/frames/lots-of-iframes.html is also failing on the exactly same set of builders.
 
@@ -24074,7 +24074,7 @@
 
 2013-10-25  Brent Fulgham  <bfulgham@apple.com>
 
-        [MathML] invalid cast in WebCore::toRenderMathMLBlock
+        [MathML] invalid cast in CyberCore::toRenderMathMLBlock
         https://bugs.webkit.org/show_bug.cgi?id=121728
 
         Reviewed by Dean Jackson.
@@ -25771,7 +25771,7 @@
 
 2013-10-23  Sun-woo Nam  <sunny.nam@samsung.com>
 
-        [EFL] Skip tests which are already passed in WebKit1.
+        [EFL] Skip tests which are already passed in CyberKit1.
         https://bugs.webkit.org/show_bug.cgi?id=123200
 
         Reviewed by Gyuyoung Kim.
@@ -26813,8 +26813,8 @@
         * platform/mac/editing/spelling/inline_spelling_markers-expected.png:
 
         * platform/graphics/mac/GraphicsContextMac.mm:
-        (WebCore::makePattern):
-        (WebCore::GraphicsContext::drawLineForDocumentMarker):
+        (CyberCore::makePattern):
+        (CyberCore::GraphicsContext::drawLineForDocumentMarker):
 
 2013-10-21  Zoltan Horvath  <zoltan@webkit.org>
 
@@ -26905,7 +26905,7 @@
 
 2013-10-21  Santosh Mahto  <santosh.ma@samsung.com>
 
-        ASSERTION FAILED: !style->propertyIsImportant(propertyID) in WebCore::setTextDecorationProperty
+        ASSERTION FAILED: !style->propertyIsImportant(propertyID) in CyberCore::setTextDecorationProperty
         https://bugs.webkit.org/show_bug.cgi?id=122097
 
         Reviewed by Ryosuke Niwa.
@@ -27108,7 +27108,7 @@
 
         Reviewed by Joseph Pecoraro.
 
-        Added test to check that DOM.highlightNode is not crashing WebCore when the node is inside
+        Added test to check that DOM.highlightNode is not crashing CyberCore when the node is inside
         a flow with no associated regions.
 
         * inspector-protocol/dom/highlight-flow-with-no-region-expected.txt: Added.
@@ -28692,7 +28692,7 @@
 
 2013-10-14  Ryosuke Niwa  <rniwa@webkit.org>
 
-        Crash in WebCore::BidiResolver<WebCore::InlineIterator, WebCore::BidiRun>::createBidiRunsForLine
+        Crash in CyberCore::BidiResolver<CyberCore::InlineIterator, CyberCore::BidiRun>::createBidiRunsForLine
         https://bugs.webkit.org/show_bug.cgi?id=122776
 
         Reviewed by Darin Adler.

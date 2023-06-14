@@ -97,7 +97,7 @@ class CheckOutSource(git.Git):
     CHECKOUT_DELAY_AND_MAX_RETRIES_PAIR = (0, 2)
 
     def __init__(self, **kwargs):
-        self.repourl = 'https://git.webkit.org/git/WebKit.git'
+        self.repourl = 'https://git.webkit.org/git/CyberKit.git'
         super(CheckOutSource, self).__init__(repourl=self.repourl,
                                                 retry=self.CHECKOUT_DELAY_AND_MAX_RETRIES_PAIR,
                                                 timeout=2 * 60 * 60,
@@ -139,13 +139,13 @@ class CheckPatchRelevance(buildstep.BuildStep):
     haltOnFailure = True
 
     bindings_paths = [
-        "Source/WebCore",
+        "Source/CyberCore",
         "Tools",
     ]
 
     jsc_paths = [
         "JSTests/",
-        "Source/JavaScriptCore/",
+        "Source/CyberScriptCore/",
         "Source/WTF/",
         "Source/bmalloc/",
         "Makefile",
@@ -419,7 +419,7 @@ class RunBindingsTests(shell.ShellCommand):
     command = ['Tools/Scripts/run-bindings-tests', '--json-output={0}'.format(jsonFileName)]
 
 
-class RunWebKitPerlTests(shell.ShellCommand):
+class RunCyberKitPerlTests(shell.ShellCommand):
     name = 'webkitperl-tests'
     description = ['webkitperl-tests running']
     descriptionDone = ['webkitperl-tests']
@@ -427,10 +427,10 @@ class RunWebKitPerlTests(shell.ShellCommand):
     command = ['Tools/Scripts/test-webkitperl']
 
     def __init__(self, **kwargs):
-        super(RunWebKitPerlTests, self).__init__(timeout=2 * 60, **kwargs)
+        super(RunCyberKitPerlTests, self).__init__(timeout=2 * 60, **kwargs)
 
 
-class RunWebKitPyTests(shell.ShellCommand):
+class RunCyberKitPyTests(shell.ShellCommand):
     name = 'webkitpy-tests'
     description = ['webkitpy-tests running']
     descriptionDone = ['webkitpy-tests']
@@ -440,7 +440,7 @@ class RunWebKitPyTests(shell.ShellCommand):
     command = ['Tools/Scripts/test-webkitpy', '--json-output={0}'.format(jsonFileName)]
 
     def __init__(self, **kwargs):
-        super(RunWebKitPyTests, self).__init__(timeout=2 * 60, **kwargs)
+        super(RunCyberKitPyTests, self).__init__(timeout=2 * 60, **kwargs)
 
 
 def appendCustomBuildFlags(step, platform, fullPlatform):
@@ -454,7 +454,7 @@ def appendCustomBuildFlags(step, platform, fullPlatform):
     step.setCommand(step.command + ['--' + platform])
 
 
-class CompileWebKit(shell.Compile):
+class CompileCyberKit(shell.Compile):
     name = "compile-webkit"
     description = ["compiling"]
     descriptionDone = ["compiled"]
@@ -490,10 +490,10 @@ class CompileWebKit(shell.Compile):
         if cmd.didFail():
             self.setProperty('patchFailedToBuild', True)
 
-        return super(CompileWebKit, self).evaluateCommand(cmd)
+        return super(CompileCyberKit, self).evaluateCommand(cmd)
 
 
-class CompileWebKitToT(CompileWebKit):
+class CompileCyberKitToT(CompileCyberKit):
     name = 'compile-webkit-tot'
     haltOnFailure = True
 
@@ -504,7 +504,7 @@ class CompileWebKitToT(CompileWebKit):
         return not self.doStepIf(step)
 
 
-class CompileJSCOnly(CompileWebKit):
+class CompileJSCOnly(CompileCyberKit):
     name = "build-jsc"
     command = ["perl", "Tools/Scripts/build-jsc", WithProperties("--%(configuration)s")]
 
@@ -519,7 +519,7 @@ class CompileJSCOnlyToT(CompileJSCOnly):
         return not self.doStepIf(step)
 
 
-class RunJavaScriptCoreTests(shell.Test):
+class RunCyberScriptCoreTests(shell.Test):
     name = 'jscore-test'
     description = ['jscore-tests running']
     descriptionDone = ['jscore-tests']
@@ -536,10 +536,10 @@ class RunJavaScriptCoreTests(shell.Test):
         if cmd.didFail():
             self.setProperty('patchFailedJSCTests', True)
 
-        return super(RunJavaScriptCoreTests, self).evaluateCommand(cmd)
+        return super(RunCyberScriptCoreTests, self).evaluateCommand(cmd)
 
 
-class ReRunJavaScriptCoreTests(RunJavaScriptCoreTests):
+class ReRunCyberScriptCoreTests(RunCyberScriptCoreTests):
     name = 'jscore-test-rerun'
 
     def doStepIf(self, step):
@@ -550,10 +550,10 @@ class ReRunJavaScriptCoreTests(RunJavaScriptCoreTests):
 
     def evaluateCommand(self, cmd):
         self.setProperty('patchFailedJSCTests', cmd.didFail())
-        return super(RunJavaScriptCoreTests, self).evaluateCommand(cmd)
+        return super(RunCyberScriptCoreTests, self).evaluateCommand(cmd)
 
 
-class RunJavaScriptCoreTestsToT(RunJavaScriptCoreTests):
+class RunCyberScriptCoreTestsToT(RunCyberScriptCoreTests):
     name = 'jscore-test-tot'
     jsonFileName = 'jsc_results.json'
     command = ['perl', 'Tools/Scripts/run-javascriptcore-tests', '--no-fail-fast', '--json-output={0}'.format(jsonFileName), WithProperties('--%(configuration)s')]
@@ -566,9 +566,9 @@ class RunJavaScriptCoreTestsToT(RunJavaScriptCoreTests):
 
 
 class CleanBuild(shell.Compile):
-    name = "delete-WebKitBuild-directory"
-    description = ["deleting WebKitBuild directory"]
-    descriptionDone = ["deleted WebKitBuild directory"]
+    name = "delete-CyberKitBuild-directory"
+    description = ["deleting CyberKitBuild directory"]
+    descriptionDone = ["deleted CyberKitBuild directory"]
     command = ["python", "Tools/BuildSlaveSupport/clean-build", WithProperties("--platform=%(fullPlatform)s"), WithProperties("--%(configuration)s")]
 
 
@@ -582,7 +582,7 @@ class KillOldProcesses(shell.Compile):
         super(KillOldProcesses, self).__init__(timeout=60, **kwargs)
 
 
-class RunWebKitTests(shell.Test):
+class RunCyberKitTests(shell.Test):
     name = 'layout-tests'
     description = ['layout-tests running']
     descriptionDone = ['layout-tests']
@@ -608,11 +608,11 @@ class RunWebKitTests(shell.Test):
         return shell.Test.start(self)
 
 
-class RunWebKit1Tests(RunWebKitTests):
+class RunCyberKit1Tests(RunCyberKitTests):
     def start(self):
         self.setCommand(self.command + ['--dump-render-tree'])
 
-        return RunWebKitTests.start(self)
+        return RunCyberKitTests.start(self)
 
 
 class ArchiveBuiltProduct(shell.ShellCommand):
@@ -626,7 +626,7 @@ class ArchiveBuiltProduct(shell.ShellCommand):
 
 class UploadBuiltProduct(transfer.FileUpload):
     name = 'upload-built-product'
-    workersrc = WithProperties('WebKitBuild/%(configuration)s.zip')
+    workersrc = WithProperties('CyberKitBuild/%(configuration)s.zip')
     masterdest = WithProperties('public_html/archives/%(fullPlatform)s-%(architecture)s-%(configuration)s/%(ewspatchid)s.zip')
     haltOnFailure = True
 

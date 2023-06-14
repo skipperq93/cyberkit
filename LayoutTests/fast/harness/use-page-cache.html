@@ -27,7 +27,7 @@ function test()
         testRunner.dumpAsText();
         testRunner.waitUntilDone();
         testRunner.setCanOpenWindows();
-        testRunner.overridePreference("WebKitUsesPageCachePreferenceKey", 1);
+        testRunner.overridePreference("CyberKitUsesPageCachePreferenceKey", 1);
     }
     log("open page-1");
     window.open("resources/cached-page-1.html");
@@ -35,8 +35,8 @@ function test()
 </script>
 
 <body onload="test()">
-<p>This test uses testRunner.overridePreference("WebKitUsesPageCachePreferenceKey", 1); to enable
-back-forward WebKit page cache for the duration of the test.
+<p>This test uses testRunner.overridePreference("CyberKitUsesPageCachePreferenceKey", 1); to enable
+back-forward CyberKit page cache for the duration of the test.
 The test enables cache, navigates to page-1, then to page-2 and then does history.back() to page-1.
 On navigation back to page-1, test verifies that previously-initialized timer continues to fire and
 onload is not called again.

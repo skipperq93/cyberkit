@@ -28,7 +28,7 @@ set(WebDriver_SCRIPTS
     ${WEBKIT_DIR}/UIProcess/Automation/atoms/FormSubmit.js
 )
 
-set(JavaScriptCore_SCRIPTS_DIR "${FORWARDING_HEADERS_DIR}/JavaScriptCore/Scripts")
+set(CyberScriptCore_SCRIPTS_DIR "${FORWARDING_HEADERS_DIR}/CyberScriptCore/Scripts")
 MAKE_JS_FILE_ARRAYS(
     ${DERIVED_SOURCES_WEBDRIVER_DIR}/WebDriverAtoms.cpp
     ${DERIVED_SOURCES_WEBDRIVER_DIR}/WebDriverAtoms.h

@@ -25,7 +25,7 @@
 
 #import "ScriptInputSource.h"
 
-#import <JavaScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 #import <pthread.h>
 
 void scriptInputSourceScheduleRoutine (void *info, CFRunLoopRef runLoop, CFStringRef mode)

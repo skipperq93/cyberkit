@@ -59,7 +59,7 @@ WI.HARBuilder = class HARBuilder
     static creator()
     {
         return {
-            name: "WebKit Web Inspector",
+            name: "CyberKit Web Inspector",
             version: WI.Platform.version.build || "1.0",
         };
     }

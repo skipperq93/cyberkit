@@ -25,8 +25,8 @@
 
 #pragma once
 
-#if USE(APPLE_INTERNAL_SDK) && __has_include(<WebKitAdditions/PointerPreparations.h>)
-#include <WebKitAdditions/PointerPreparations.h>
+#if USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/PointerPreparations.h>)
+#include <CyberKitAdditions/PointerPreparations.h>
 #endif
 
 #ifndef WTF_PREPARE_VTBL_POINTER_FOR_INSPECTION

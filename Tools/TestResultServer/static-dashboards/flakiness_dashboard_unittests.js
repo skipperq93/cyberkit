@@ -164,10 +164,10 @@ test('platformAndBuildType', 30, function() {
     runPlatformAndBuildTypeTest('WPE Linux 64-bit Release (Tests)', 'WPE_LINUX', 'RELEASE');
     runPlatformAndBuildTypeTest('WPE Linux 64-bit Debug (Tests)', 'WPE_LINUX', 'DEBUG');
     
-    // FIXME: Should WebKit2 be it's own platform?
-    runPlatformAndBuildTypeTest('MountainLion Release (WebKit2 Tests)', 'APPLE_MAC_MOUNTAINLION_WK2', 'RELEASE');
-    runPlatformAndBuildTypeTest('MountainLion Debug (WebKit2 Tests)', 'APPLE_MAC_MOUNTAINLION_WK2', 'DEBUG');
-    runPlatformAndBuildTypeTest('Windows 7 Release (WebKit2 Tests)', 'APPLE_WIN_WIN7', 'RELEASE');    
+    // FIXME: Should CyberKit2 be it's own platform?
+    runPlatformAndBuildTypeTest('MountainLion Release (CyberKit2 Tests)', 'APPLE_MAC_MOUNTAINLION_WK2', 'RELEASE');
+    runPlatformAndBuildTypeTest('MountainLion Debug (CyberKit2 Tests)', 'APPLE_MAC_MOUNTAINLION_WK2', 'DEBUG');
+    runPlatformAndBuildTypeTest('Windows 7 Release (CyberKit2 Tests)', 'APPLE_WIN_WIN7', 'RELEASE');    
 });
 
 test('realModifiers', 3, function() {
@@ -387,7 +387,7 @@ test('htmlForIndividualTestOnAllBuildersWithResultsLinks', 1, function() {
             '<div><span class=link onclick="g_history.setQueryParameter(\'showExpectations\', true)">Show results</span> | ' +
             '<span class=link onclick="g_history.setQueryParameter(\'showLargeExpectations\', true)">Show large thumbnails</span>' +
             '<form onsubmit="g_history.setQueryParameter(\'revision\', revision.value);return false;">' +
-                'Show results for WebKit revision: <input name=revision placeholder="e.g. 65540" value="" id=revision-input>' +
+                'Show results for CyberKit revision: <input name=revision placeholder="e.g. 65540" value="" id=revision-input>' +
             '</form></div>' +
         '</div>');
 });
@@ -451,7 +451,7 @@ test('htmlForSingleTestRow', 1, function() {
     test.rawTimes = [[1, 0], [2, 5]];
     var expected = '<tr>' +
         '<td class="test-link"><span class="link" onclick="g_history.setQueryParameter(\'tests\',\'foo/exists.html\');">foo/exists.html</span>' +
-        '<td class=options-container><a href="https://bugs.webkit.org/enter_bug.cgi?assigned_to=webkit-unassigned%40lists.webkit.org&product=WebKit&form_name=enter_bug&component=Tools%20%2F%20Tests&short_desc=Layout%20Test%20foo%2Fexists.html%20is%20failing&comment=The%20following%20layout%20test%20is%20failing%20on%20%5Binsert%20platform%5D%0A%0Afoo%2Fexists.html%0A%0AProbable%20cause%3A%0A%0A%5Binsert%20probable%20cause%5D" class="file-bug">FILE BUG</a>' +
+        '<td class=options-container><a href="https://bugs.webkit.org/enter_bug.cgi?assigned_to=webkit-unassigned%40lists.webkit.org&product=CyberKit&form_name=enter_bug&component=Tools%20%2F%20Tests&short_desc=Layout%20Test%20foo%2Fexists.html%20is%20failing&comment=The%20following%20layout%20test%20is%20failing%20on%20%5Binsert%20platform%5D%0A%0Afoo%2Fexists.html%0A%0AProbable%20cause%3A%0A%0A%5Binsert%20probable%20cause%5D" class="file-bug">FILE BUG</a>' +
         '<td class=options-container>' +
             '<td class=options-container>' +
                 '<td><td title="TEXT. Click for more info." class="results F merge" onclick=\'showPopupForBuild(event, "dummyBuilder",0,"foo/exists.html")\'>&nbsp;' +

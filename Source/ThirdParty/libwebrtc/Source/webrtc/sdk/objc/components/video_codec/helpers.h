@@ -16,7 +16,7 @@
 #include <VideoToolbox/VideoToolbox.h>
 #include <string>
 
-#include "sdk/WebKit/EncoderUtilities.h"
+#include "sdk/CyberKit/EncoderUtilities.h"
 
 // Convenience function for creating a dictionary.
 inline CFDictionaryRef CreateCFTypeDictionary(CFTypeRef* keys,

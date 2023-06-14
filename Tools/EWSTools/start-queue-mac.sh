@@ -40,7 +40,7 @@ shift 3
 QUEUE_PARAMS="$@"
 
 EWS_HOME=/Volumes/Data/EWS
-WEBKIT_HOME=$EWS_HOME/WebKit
+WEBKIT_HOME=$EWS_HOME/CyberKit
 LOGS_DIR=$EWS_HOME/$QUEUE_NAME-logs
 
 if [ ! -d "$LOGS_DIR" ]; then
@@ -63,8 +63,8 @@ if [ -s $QUEUE_NAME.log ]; then
 fi
 cd $WEBKIT_HOME
 
-# Delete WebKitBuild to force a clean build
-rm -rf $WEBKIT_HOME/WebKitBuild
+# Delete CyberKitBuild to force a clean build
+rm -rf $WEBKIT_HOME/CyberKitBuild
 
 # This somewhat quirky sequence of steps seems to clear up all the broken
 # git situations we've gotten ourself into in the past.

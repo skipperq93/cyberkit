@@ -1,4 +1,4 @@
-Unit tests for WebCore text iterator with shadow tree support enabled
+Unit tests for CyberCore text iterator with shadow tree support enabled
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

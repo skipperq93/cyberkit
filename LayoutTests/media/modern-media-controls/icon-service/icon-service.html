@@ -5,7 +5,7 @@
 
 description("Testing the <code>iconService</code> singleton.");
 
-iconService.directoryPath = "../../../../Source/WebCore/Modules/modern-media-controls/images";
+iconService.directoryPath = "../../../../Source/CyberCore/Modules/modern-media-controls/images";
 
 debug("Checking path to images is computed according to traits");
 shouldBeTrue('iconService.imageForIconAndLayoutTraits(Icons.Airplay, LayoutTraits.macOS).src.includes("macOS/Airplay.svg")');

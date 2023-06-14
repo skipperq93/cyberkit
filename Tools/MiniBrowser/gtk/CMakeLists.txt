@@ -36,8 +36,8 @@ set(MiniBrowser_SYSTEM_INCLUDE_DIRECTORIES
 )
 
 set(MiniBrowser_LIBRARIES
-    ${JavaScriptCore_LIBRARY_NAME}
-    WebKit
+    ${CyberScriptCore_LIBRARY_NAME}
+    CyberKit
     ${GTK3_LIBRARIES}
     ${GLIB_LIBRARIES}
     ${LIBSOUP_LIBRARIES}

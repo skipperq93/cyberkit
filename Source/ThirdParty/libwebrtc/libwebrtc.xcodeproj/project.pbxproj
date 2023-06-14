@@ -1419,8 +1419,8 @@
 		41EA54191EFC2D53002FF04C /* md4.c in Sources */ = {isa = PBXBuildFile; fileRef = 41EA54131EFC2D4F002FF04C /* md4.c */; };
 		41EA541A1EFC2D53002FF04C /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 41EA54181EFC2D53002FF04C /* md5.c */; };
 		41ECEAB620630108009D5141 /* RTCVideoCodec+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 41ECEAB320630107009D5141 /* RTCVideoCodec+Private.h */; };
-		41ECEABC206403C2009D5141 /* WebKitUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 41ECEABB206403C1009D5141 /* WebKitUtilities.h */; };
-		41ECEABE20640498009D5141 /* WebKitUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = 41ECEABD20640498009D5141 /* WebKitUtilities.mm */; };
+		41ECEABC206403C2009D5141 /* CyberKitUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 41ECEABB206403C1009D5141 /* CyberKitUtilities.h */; };
+		41ECEABE20640498009D5141 /* CyberKitUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = 41ECEABD20640498009D5141 /* CyberKitUtilities.mm */; };
 		41ECEAC120640F28009D5141 /* NSString+StdString.h in Headers */ = {isa = PBXBuildFile; fileRef = 41ECEABF20640F27009D5141 /* NSString+StdString.h */; };
 		41ECEAE7206417E9009D5141 /* webrtcvideoencoderfactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = 41ECEAE5206417E8009D5141 /* webrtcvideoencoderfactory.cc */; };
 		41ECEAE8206417E9009D5141 /* webrtcvideodecoderfactory.cc in Sources */ = {isa = PBXBuildFile; fileRef = 41ECEAE6206417E9009D5141 /* webrtcvideodecoderfactory.cc */; };
@@ -3658,7 +3658,7 @@
 
 /* Begin PBXFileReference section */
 		37119A8020CCB6DD002C6DC9 /* Version.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
-		37119A8120CCB6DD002C6DC9 /* WebKitTargetConditionals.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = WebKitTargetConditionals.xcconfig; sourceTree = "<group>"; };
+		37119A8120CCB6DD002C6DC9 /* CyberKitTargetConditionals.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CyberKitTargetConditionals.xcconfig; sourceTree = "<group>"; };
 		4100CDE521CACFD000F9B87D /* LPC_fit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = LPC_fit.c; path = silk/LPC_fit.c; sourceTree = "<group>"; };
 		4100CDE821CAD03300F9B87D /* vq_sse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vq_sse.h; path = x86/vq_sse.h; sourceTree = "<group>"; };
 		4100CDEB21CAD1F500F9B87D /* pitch_sse4_1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pitch_sse4_1.c; path = x86/pitch_sse4_1.c; sourceTree = "<group>"; };
@@ -5333,8 +5333,8 @@
 		41EAF1CC212E2B69009F73EC /* fwd_txfm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fwd_txfm.h; sourceTree = "<group>"; };
 		41EAF1CD212E2B6A009F73EC /* bitwriter_buffer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = bitwriter_buffer.c; sourceTree = "<group>"; };
 		41ECEAB320630107009D5141 /* RTCVideoCodec+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RTCVideoCodec+Private.h"; path = "PeerConnection/RTCVideoCodec+Private.h"; sourceTree = "<group>"; };
-		41ECEABB206403C1009D5141 /* WebKitUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebKitUtilities.h; sourceTree = "<group>"; };
-		41ECEABD20640498009D5141 /* WebKitUtilities.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WebKitUtilities.mm; sourceTree = "<group>"; };
+		41ECEABB206403C1009D5141 /* CyberKitUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CyberKitUtilities.h; sourceTree = "<group>"; };
+		41ECEABD20640498009D5141 /* CyberKitUtilities.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CyberKitUtilities.mm; sourceTree = "<group>"; };
 		41ECEABF20640F27009D5141 /* NSString+StdString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+StdString.h"; path = "Common/NSString+StdString.h"; sourceTree = "<group>"; };
 		41ECEAE5206417E8009D5141 /* webrtcvideoencoderfactory.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = webrtcvideoencoderfactory.cc; path = engine/webrtcvideoencoderfactory.cc; sourceTree = "<group>"; };
 		41ECEAE6206417E9009D5141 /* webrtcvideodecoderfactory.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = webrtcvideodecoderfactory.cc; path = engine/webrtcvideodecoderfactory.cc; sourceTree = "<group>"; };
@@ -9118,17 +9118,17 @@
 			path = fiat;
 			sourceTree = "<group>";
 		};
-		419C84961FE2FE9C0040C30F /* WebKit */ = {
+		419C84961FE2FE9C0040C30F /* CyberKit */ = {
 			isa = PBXGroup;
 			children = (
 				41ECEAF920646663009D5141 /* EncoderUtilities.h */,
 				41ECEAFA20646663009D5141 /* VideoProcessingSoftLink.cpp */,
 				41ECEAFB20646664009D5141 /* VideoProcessingSoftLink.h */,
-				41ECEABB206403C1009D5141 /* WebKitUtilities.h */,
-				41ECEABD20640498009D5141 /* WebKitUtilities.mm */,
+				41ECEABB206403C1009D5141 /* CyberKitUtilities.h */,
+				41ECEABD20640498009D5141 /* CyberKitUtilities.mm */,
 			);
-			name = WebKit;
-			path = sdk/WebKit;
+			name = CyberKit;
+			path = sdk/CyberKit;
 			sourceTree = "<group>";
 		};
 		419C84A71FE303CA0040C30F /* include */ = {
@@ -10968,7 +10968,7 @@
 			isa = PBXGroup;
 			children = (
 				5C4B4B581E431C49002651C8 /* objc */,
-				419C84961FE2FE9C0040C30F /* WebKit */,
+				419C84961FE2FE9C0040C30F /* CyberKit */,
 			);
 			name = sdk;
 			sourceTree = "<group>";
@@ -13554,7 +13554,7 @@
 				5C4B4A8F1E42C431002651C8 /* opus.xcconfig */,
 				5C11A0331E4576A9004F0987 /* usrsctp.xcconfig */,
 				37119A8020CCB6DD002C6DC9 /* Version.xcconfig */,
-				37119A8120CCB6DD002C6DC9 /* WebKitTargetConditionals.xcconfig */,
+				37119A8120CCB6DD002C6DC9 /* CyberKitTargetConditionals.xcconfig */,
 				41F77D1E215BE4AD00E72967 /* yasm.xcconfig */,
 			);
 			path = Configurations;
@@ -15087,7 +15087,7 @@
 				5C4B4C811E431F9C002651C8 /* wav_file.h in Headers */,
 				5C4B4C841E431F9C002651C8 /* wav_header.h in Headers */,
 				41E02CBF2127356A00C27CD6 /* weak_ptr.h in Headers */,
-				41ECEABC206403C2009D5141 /* WebKitUtilities.h in Headers */,
+				41ECEABC206403C2009D5141 /* CyberKitUtilities.h in Headers */,
 				5CDD8CAB1E43C6F700621E92 /* webrtc_cng.h in Headers */,
 				4145E4911EF88EF700FCF6E6 /* webrtc_libyuv.h in Headers */,
 				41F9BFC72051DCE900ABF0B9 /* webrtc_vad.h in Headers */,
@@ -17300,7 +17300,7 @@
 				5C4B4C801E431F9C002651C8 /* wav_file.cc in Sources */,
 				5C4B4C831E431F9C002651C8 /* wav_header.cc in Sources */,
 				413A22E91FE18E0700373E99 /* weak_ptr.cc in Sources */,
-				41ECEABE20640498009D5141 /* WebKitUtilities.mm in Sources */,
+				41ECEABE20640498009D5141 /* CyberKitUtilities.mm in Sources */,
 				5CDD8CAA1E43C6F700621E92 /* webrtc_cng.cc in Sources */,
 				5CDD83671E4325D500621E92 /* webrtc_libyuv.cc in Sources */,
 				5CDD86E41E43BA2800621E92 /* webrtc_vad.c in Sources */,

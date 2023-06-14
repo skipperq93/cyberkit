@@ -10,7 +10,7 @@
 <script>
 window.jsTestIsAsync = true;
 
-description("This tests that DOM keypress events are dispatched to a non-editable &lt;body&gt; on iOS when pressing special keys on a hardware keyboard. This test can only be run in DumpRenderTree/WebKitTestRunner.");
+description("This tests that DOM keypress events are dispatched to a non-editable &lt;body&gt; on iOS when pressing special keys on a hardware keyboard. This test can only be run in DumpRenderTree/CyberKitTestRunner.");
 
 class TestKeyPressDispatchedFor {
     constructor(key) {
@@ -31,7 +31,7 @@ var currentTestIndex = -1;
 
 // Non-special keys: KeyPress should be dispatched.
 var tests = "abcdefghijklmnopqrstuvwxyz0123456789-=[]\\;',./".split("").map((key) => new TestKeyPressDispatchedFor(key));
-if (UIHelper.isWebKit2())
+if (UIHelper.isCyberKit2())
     tests.push(new TestKeyPressNotDispatchedFor(" ")); // Spacebar scrolls the page.
 else
     tests.push(new TestKeyPressDispatchedFor(" "));
@@ -78,7 +78,7 @@ function nextKeyPress()
         let nextTest = tests[currentTestIndex];
         UIHelper.typeCharacter(nextTest.key);
     }
-    // In WebKit Legacy typing a key performs a synchronous DOM dispatch. Schedule the key press
+    // In CyberKit Legacy typing a key performs a synchronous DOM dispatch. Schedule the key press
     // on the next turn of the event loop to avoid blowing out the stack given that we call this
     // function from an onkeyup handler.
     window.setTimeout(actualNextKeyPress, 0);
@@ -107,7 +107,7 @@ function checkResult(event)
 function runTest()
 {
     if (!window.testRunner){
-        testFailed("Must be run in DumpRenderTree/WebKitTestRunner");
+        testFailed("Must be run in DumpRenderTree/CyberKitTestRunner");
         finishJSTest();
         return;
     }

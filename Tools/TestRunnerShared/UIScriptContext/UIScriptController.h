@@ -27,11 +27,11 @@
 #define UIScriptController_h
 
 #include "JSWrappable.h"
-#include <JavaScriptCore/JSRetainPtr.h>
+#include <CyberScriptCore/JSRetainPtr.h>
 #include <wtf/Optional.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 class FloatRect;
 }
 
@@ -224,7 +224,7 @@ private:
 
     JSClassRef wrapperClass() final;
 
-    JSObjectRef objectFromRect(const WebCore::FloatRect&) const;
+    JSObjectRef objectFromRect(const CyberCore::FloatRect&) const;
 
     UIScriptContext* m_context;
 

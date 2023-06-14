@@ -40,7 +40,7 @@ the terms above.
 
 */
 
-/* JavaScriptCore exposes a "$" object to its runtime */
+/* CyberScriptCore exposes a "$" object to its runtime */
 /* Using this["\x24"]; prevents overwrite by ConsoleAgent */
 var jsc = this["\x24"];
 var $262 = {

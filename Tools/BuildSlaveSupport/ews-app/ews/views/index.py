@@ -28,4 +28,4 @@ from django.views import View
 
 class Index(View):
     def get(self, request):
-        return HttpResponse("EWS for WebKit.")
+        return HttpResponse("EWS for CyberKit.")

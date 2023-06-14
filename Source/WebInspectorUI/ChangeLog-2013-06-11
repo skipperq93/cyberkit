@@ -193,7 +193,7 @@
 2013-06-05  Timothy Hatcher  <timothy@apple.com>
 
         Add/update copyright and license to all the user interface files in
-        preparation for open sourcing to WebKit.
+        preparation for open sourcing to CyberKit.
 
         Rubber-stamped by Antoine Quint.
 
@@ -2908,7 +2908,7 @@
 
         Update styles to match the majority of Xcode 5's design changes.
 
-        The style changes are conditional so they wont apply when running a WebKit nightly.
+        The style changes are conditional so they wont apply when running a CyberKit nightly.
         After WWDC we can remove the condition and the extra style rules this adds.
 
         Part of: <rdar://problem/13810992> Update Web Inspector to match Xcode 5's new design language
@@ -3013,7 +3013,7 @@
 
 2013-05-06  Timothy Hatcher  <timothy@apple.com>
 
-        Add a nightly-build class so we can hide new UI from nightly WebKit builds.
+        Add a nightly-build class so we can hide new UI from nightly CyberKit builds.
 
         Part of: <rdar://problem/13810992> Update Web Inspector to match Xcode 5's new design language
 
@@ -3809,7 +3809,7 @@
         Implement live completions for the ConsolePrompt.
 
         Part of: <rdar://problem/13359916> Typing in the console is improved, but still much slower
-        than in Chrome / the WebKit inspector
+        than in Chrome / the CyberKit inspector
 
         Reviewed by Joseph Pecoraro.
 
@@ -3833,7 +3833,7 @@
         When the prompt is empty we allow console toggling. When not empty it triggers completion.
 
         Part of: <rdar://problem/13359916> Typing in the console is improved, but still much slower
-        than in Chrome / the WebKit inspector
+        than in Chrome / the CyberKit inspector
 
         Reviewed by Joseph Pecoraro.
 
@@ -3857,7 +3857,7 @@
         Also hook up completions in ConsolePrompt to get the default completions.
 
         Part of: <rdar://problem/13359916> Typing in the console is improved, but still much slower
-        than in Chrome / the WebKit inspector
+        than in Chrome / the CyberKit inspector
 
         Reviewed by Joseph Pecoraro.
 
@@ -3879,7 +3879,7 @@
         This makes the prompt work and evaluate results. No auto completion yet.
 
         Part of: <rdar://problem/13359916> Typing in the console is improved, but still much slower
-        than in Chrome / the WebKit inspector
+        than in Chrome / the CyberKit inspector
 
         Reviewed by Joseph Pecoraro.
 
@@ -3899,7 +3899,7 @@
         automatically using flex layout instead of JavaScript.
 
         Part of: <rdar://problem/13359916> Typing in the console is improved, but still much slower
-        than in Chrome / the WebKit inspector
+        than in Chrome / the CyberKit inspector
 
         Reviewed by Joseph Pecoraro.
 
@@ -3948,7 +3948,7 @@
         This introduces a new class, ConsolePrompt.
 
         Part of: <rdar://problem/13359916> Typing in the console is improved, but still much slower
-        than in Chrome / the WebKit inspector
+        than in Chrome / the CyberKit inspector
 
         Reviewed by Joseph Pecoraro.
 
@@ -4011,7 +4011,7 @@
 
 2013-04-22  Timothy Hatcher  <timothy@apple.com>
 
-        Teach CodeMirror about the CSS properties, keywords and colors we support in WebKit.
+        Teach CodeMirror about the CSS properties, keywords and colors we support in CyberKit.
 
         This keeps syntax highlighting in sync with code completion.
 
@@ -4127,7 +4127,7 @@
         left in extra "../s", however they should have been removed. And
         absoluteURL should handle resolving any dots in the partialURL.
 
-        This fixes ASSERTs in Debug WebKit builds where we were calling
+        This fixes ASSERTs in Debug CyberKit builds where we were calling
         loadResourceSynchronously with a URL that was expected to be
         absolute and wasn't.
 
@@ -4219,7 +4219,7 @@
 
 2013-04-18  Timothy Hatcher  <timothy@apple.com>
 
-        Switch from X-WebKit-CSP to Content-Security-Policy for the CSP header.
+        Switch from X-CyberKit-CSP to Content-Security-Policy for the CSP header.
 
         Also stop allowing 'unsafe-eval' since the one place we used eval() is dead code.
 
@@ -6438,7 +6438,7 @@
         hitting breakpoints on columns as expected. This was the last change
         needed to consider the following tasks complete:
         <rdar://problem/11219771> REGRESSION (Safari 6): Can't pretty-print JavaScript
-        <rdar://problem/11735116> PARITY (WebKit Web Inspector): Missing Source Map support
+        <rdar://problem/11735116> PARITY (CyberKit Web Inspector): Missing Source Map support
 
         Reviewed by Timothy Hatcher.
 
@@ -7365,7 +7365,7 @@
 
         Add Execution Context / Frame selector to the QuickConsole
 
-        <rdar://problem/10809363> PARITY (WebKit Web Inspector): UI for evaluating in different windows / frames from the console is missing
+        <rdar://problem/10809363> PARITY (CyberKit Web Inspector): UI for evaluating in different windows / frames from the console is missing
 
         Reviewed by Dean Jackson.
 
@@ -7448,7 +7448,7 @@
 
         Create an ExecutionContextList class.
 
-        <rdar://problem/10809363> PARITY (WebKit Web Inspector): UI for evaluating in different windows / frames from the console is missing
+        <rdar://problem/10809363> PARITY (CyberKit Web Inspector): UI for evaluating in different windows / frames from the console is missing
 
         There may be many ExecutionContexts for a page, one for each isolated
         world in the frame. Store each context for a frame in an ExecutionContext
@@ -8928,7 +8928,7 @@
 
         Make the "H" key toggle the visibility of the selected DOM element.
 
-        <rdar://problem/13352674> PARITY (WebKit Web Inspector): Shortcut to hide/show DOM elements while inspecting
+        <rdar://problem/13352674> PARITY (CyberKit Web Inspector): Shortcut to hide/show DOM elements while inspecting
 
         Reviewed by Joseph Pecoraro.
 
@@ -9221,7 +9221,7 @@
         Don't ignore user agent rules when forced pseudo classes change.
 
         Normally the Refreshed event is not fired only when user agent rules change, due to a bug
-        in WebCore. However, we need to fire it when the forced pseudo classes change since there
+        in CyberCore. However, we need to fire it when the forced pseudo classes change since there
         are base rules for most of the pseudo classes that need to show up in the sidebar.
 
         Reviewed by Antoine Quint.
@@ -9925,7 +9925,7 @@
         <rdar://problem/13331811> Web Inspector: remove existing LayerTreeAgent protocol APIs (111251)
 
         Deactivate the layer tree sidebar panel until the new API
-        lands in WebCore and we can update the Internal code to use
+        lands in CyberCore and we can update the Internal code to use
         this API.
 
         Reviewed by Timothy Hatcher.
@@ -10689,7 +10689,7 @@
 
         Workaround a bug where matched rules is empty for stylesheets with imported stylesheets.
 
-        If matched rules is empty (rare because of user agent stylesheet rules) then WebCore might
+        If matched rules is empty (rare because of user agent stylesheet rules) then CyberCore might
         be waiting for an @import rule to load. Check again after a delay until we get some results or timeout.
         We shouldn't need to poll like this, https://webkit.org/b/110750 tracks this problem.
 
@@ -11136,7 +11136,7 @@
 
         Update remaining SourceCodeLocation constructors.
 
-        <rdar://problem/11735116> PARITY (WebKit Web Inspector): Missing Source Map support
+        <rdar://problem/11735116> PARITY (CyberKit Web Inspector): Missing Source Map support
 
         Reviewed by Timothy Hatcher.
 
@@ -11150,7 +11150,7 @@
 
         Update CallFrame displays for SourceMap display locations.
 
-        <rdar://problem/11735116> PARITY (WebKit Web Inspector): Missing Source Map support
+        <rdar://problem/11735116> PARITY (CyberKit Web Inspector): Missing Source Map support
 
         Use the display (mapped) location when available. Multiple editors
         may show the execution line, the original and mapped editors.
@@ -11195,7 +11195,7 @@
 
         Get Breakpoints Working with SourceMaps - Line + Column Breakpoint Support.
 
-        <rdar://problem/11735116> PARITY (WebKit Web Inspector): Missing Source Map support
+        <rdar://problem/11735116> PARITY (CyberKit Web Inspector): Missing Source Map support
 
         Previously breakpoints could only appear in a single SourceCodeTextEditor, and
         only one could be placed on a line. After this patch:
@@ -11305,7 +11305,7 @@
 
         Sort Breakpoints in the Debugger Sidebar
 
-        <rdar://problem/11735116> PARITY (WebKit Web Inspector): Missing Source Map support
+        <rdar://problem/11735116> PARITY (CyberKit Web Inspector): Missing Source Map support
 
         Reviewed by Timothy Hatcher.
 
@@ -11320,7 +11320,7 @@
 
         Give BreakpointTreeElements a ContextMenu to Reveal Original Resource.
 
-        <rdar://problem/11735116> PARITY (WebKit Web Inspector): Missing Source Map support
+        <rdar://problem/11735116> PARITY (CyberKit Web Inspector): Missing Source Map support
 
         Reviewed by Timothy Hatcher.
 
@@ -11345,7 +11345,7 @@
 
         Make Breakpoint to use a SourceCodeLocation. Update its BreakpointTreeElement display.
 
-        <rdar://problem/11735116> PARITY (WebKit Web Inspector): Missing Source Map support
+        <rdar://problem/11735116> PARITY (CyberKit Web Inspector): Missing Source Map support
 
         This is the start of modifying Breakpoints to use SourceCodeLocation.
         There are remaining users (SourceCodeTextEditor) which will be addressed
@@ -11399,7 +11399,7 @@
 
         Make Find banner when viewing a SourceMapResource work.
 
-        <rdar://problem/11735116> PARITY (WebKit Web Inspector): Missing Source Map support
+        <rdar://problem/11735116> PARITY (CyberKit Web Inspector): Missing Source Map support
 
         A SourceMapResource can display its content in a SourceCodeTextEditor just
         like regular resources. However, it does not use the backend to search
@@ -11420,7 +11420,7 @@
 
         Make SourceCodeLocation provide raw and mapped locations.
 
-        <rdar://problem/11735116> PARITY (WebKit Web Inspector): Missing Source Map support
+        <rdar://problem/11735116> PARITY (CyberKit Web Inspector): Missing Source Map support
 
         SourceCodeLocation automatically provide original (raw) and mapped (display)
         source code locations. It's API requires that it be constructed with the raw
@@ -11497,7 +11497,7 @@
 
         Show SourceMapResources in the Resources Sidebar
 
-        <rdar://problem/11735116> PARITY (WebKit Web Inspector): Missing Source Map support
+        <rdar://problem/11735116> PARITY (CyberKit Web Inspector): Missing Source Map support
 
         SourceMapResources are added to the Resources Sidebar as children
         of the originator Resource. So if a Script has a SourceMap with
@@ -11579,7 +11579,7 @@
 
         Download SourceMaps and create SourceMapResources.
 
-        <rdar://problem/11735116> PARITY (WebKit Web Inspector): Missing Source Map support
+        <rdar://problem/11735116> PARITY (CyberKit Web Inspector): Missing Source Map support
 
         Reviewed by Timothy Hatcher.
 
@@ -11651,7 +11651,7 @@
 
         Add parts of SourceMap.js from OpenSource.
 
-        <rdar://problem/11735116> PARITY (WebKit Web Inspector): Missing Source Map support
+        <rdar://problem/11735116> PARITY (CyberKit Web Inspector): Missing Source Map support
 
         This parses a v3 SourceMap file. The spec is linked at the top.
         SourceMap.js comes from OpenSource's frontend/SourceMap.js.
@@ -12800,7 +12800,7 @@
 
 2013-02-05  Antoine Quint  <graouts@apple.com>
 
-        <rdar://problem/11007445> PARITY (WebKit Web Inspector): Support Undo/Redo for DOM changes
+        <rdar://problem/11007445> PARITY (CyberKit Web Inspector): Support Undo/Redo for DOM changes
 
         Wire up Cmd+Z and Cmd+Shift+Z keyboard shortcuts to call DOMAgent's
         undo() and redo() methods while marking DOM and CSS editing tasks
@@ -12836,7 +12836,7 @@
 
 2013-02-05  Antoine Quint  <graouts@apple.com>
 
-        <rdar://problem/11133526> PARITY (WebKit Web Inspector): Ability to force pseudo state for an element is missing
+        <rdar://problem/11133526> PARITY (CyberKit Web Inspector): Ability to force pseudo state for an element is missing
 
         In order to show submenu items in contextual menus in the Web Inspector, we update ContextMenu.js
         to be the latest from OpenSource and update the way we use this API in our code so that the event
@@ -13073,7 +13073,7 @@
 
         <rdar://problem/13085826> Add stubs for new Page protocol events (frameStartedLoading, etc.)
 
-        WebCore added a bunch of Page events in http://trac.webkit.org/changeset/140649. We're
+        CyberCore added a bunch of Page events in http://trac.webkit.org/changeset/140649. We're
         registering them and providing stub handlers until we actually do something with them.
         This removes some annoying errors in the Inception console output.
 
@@ -13111,7 +13111,7 @@
 
         <rdar://problem/13101516> REGRESSION: JavaScript profile recorded from Web Inspector UI never finishes
 
-        Two changes made in WebCore broke our support for JavaScript profiling. The first introduced by
+        Two changes made in CyberCore broke our support for JavaScript profiling. The first introduced by
         http://trac.webkit.org/changeset/126580 was that ProfilerAgent.getProfileHeaders() needed to be
         called for any addProfileHeader event to be dispatched to the front-end. The second issue was
         introduced by http://trac.webkit.org/changeset/139998 which changed the backend API in a non-
@@ -13120,7 +13120,7 @@
 
         This patch simply adds a call to ProfilerAgent.getProfileHeaders() as soon as the ProfilerAgent
         is enabled and also changes the backend we register and call to get the profile to use the
-        most current WebCore API.
+        most current CyberCore API.
 
         Reviewed by Timothy Hatcher.
 
@@ -13996,7 +13996,7 @@
 
         Simply add a new "Paint Count" field in the layer info and data grid to display
         the contents of the .paintCount property provided by the back-end, which had already
-        landed in WebCore with <rdar://problem/12882763>.
+        landed in CyberCore with <rdar://problem/12882763>.
 
         Reviewed by Joseph Pecoraro.
 
@@ -14053,7 +14053,7 @@
         for the provided layer ids from the backend.
         * UserInterface/LayerTreeObserver.js: Added.
         (WebInspector.LayerTreeObserver): Listen to "layerTreeDidChange" events triggered by the
-        LayerTreeAgent exposed by WebCore.
+        LayerTreeAgent exposed by CyberCore.
         (WebInspector.LayerTreeObserver.prototype.layerTreeDidChange): Inform the layer tree manager
         that the layer tree has changed.
         * UserInterface/LayerTreeSidebarPanel.css: Added.
@@ -14525,7 +14525,7 @@
         (WebInspector.Toolbar.prototype.addToolbarItem): Added.
         * UserInterface/Utilities.js:
         (Element.prototype.remove): Added only if the engine does not have it. This is needed
-        for iAd Producer, which uses an older WebKit.
+        for iAd Producer, which uses an older CyberKit.
 
 2012-11-17  Timothy Hatcher  <timothy@apple.com>
 
@@ -15142,7 +15142,7 @@
 
         Fix an exception that started happening in the Web Inspector, that broke everything.
 
-        Revision 133862 of WebCore started looking for InspectorFrontendAPI.dispatchMessageAsync.
+        Revision 133862 of CyberCore started looking for InspectorFrontendAPI.dispatchMessageAsync.
         So we need to implement thta method to make things work again. There are a few other
         methods that needed added to InspectorFrontendAPI too.
 
@@ -15486,7 +15486,7 @@
 
         This removes the Area column to make room.
 
-        <rdar://problem/10935408> PARITY (WebKit Web Inspector): Add initiator information to the timeline
+        <rdar://problem/10935408> PARITY (CyberKit Web Inspector): Add initiator information to the timeline
         data grids (e.g. JS stacks for RecalcStyle, Layout and Painting)
 
         Reviewed by Ricky Mondello and Joseph Pecoraro.
@@ -15549,7 +15549,7 @@
 
         These records will be the one showing the initiator (back trace) information.
 
-        Part of: <rdar://problem/10935408> PARITY (WebKit Web Inspector): Add initiator information to the timeline
+        Part of: <rdar://problem/10935408> PARITY (CyberKit Web Inspector): Add initiator information to the timeline
         data grids (e.g. JS stacks for RecalcStyle, Layout and Painting)
 
         Reviewed by Joseph Pecoraro.
@@ -16750,7 +16750,7 @@
 
 2012-10-16  Antoine Quint  <graouts@apple.com>
 
-        We add a new method to sync the state of the compositing borders button to the WebCore page settings
+        We add a new method to sync the state of the compositing borders button to the CyberCore page settings
         when a frame content view is shown in the Web Inspector UI. We also add a new backend command to complement
         the OpenSource patch for https://bugs.webkit.org/show_bug.cgi?id=99458 which is also out for review.
         
@@ -16810,14 +16810,14 @@
         (.sidebar > .panel.details.css-style .swatch): Improve spacing and alignment since
         having swatch-inner as an inline-block affects layout slightly.
         (.sidebar > .panel.details.css-style .swatch-inner): Change display from block to
-        inline-block. This fixes the bug by making WebKit not insert a newline for the block.
+        inline-block. This fixes the bug by making CyberKit not insert a newline for the block.
 
 2012-10-15  Timothy Hatcher  <timothy@apple.com>
 
         Treat SVG main resources as documents and syntax highlight them using the HTML tokenizer.
 
         SVG subresources are still treated as images and preview as such. This matches how the
-        WebKit Web Inspector treats SVGs.
+        CyberKit Web Inspector treats SVGs.
 
         <rdar://problem/11332688> REGRESSION (Safari 6): Source code view shows SVG image instead of source
 
@@ -16871,7 +16871,7 @@
 
         We add a new navigation item to the FrameContentView to toggle composition debug options using
         the page's settings. To facilitate that, we added a new method in InspectorPageAgent to allow
-        to tap into WebCore and change those settings. That work is covered by an OpenSource patch for
+        to tap into CyberCore and change those settings. That work is covered by an OpenSource patch for
         https://bugs.webkit.org/show_bug.cgi?id=99253.
         
         <rdar://problem/10358004> Would like ability to turn layer borders on/off via the Web Inspector
@@ -16923,7 +16923,7 @@
 
         * UserInterface/CSSKeywordCompletions.js:
         (WebInspector.CSSKeywordCompletions.InheritedProperties): Updated from CSSProperty::isInheritedProperty
-        from WebCore. The old list was from an old CSS 2.1 list.
+        from CyberCore. The old list was from an old CSS 2.1 list.
 
 2012-10-12  Timothy Hatcher  <timothy@apple.com>
 
@@ -17238,13 +17238,13 @@
 
         Reviewed by Brian Weinstein.
 
-        * UserInterface/CSSKeywordCompletions.js:  Merge r124016 from WebKit.
+        * UserInterface/CSSKeywordCompletions.js:  Merge r124016 from CyberKit.
 
 2012-08-01  Timothy Hatcher  <timothy@apple.com>
 
         DOMStorageObserver.updateDOMStorage should be DOMStorageObserver.domStorageUpdated.
 
-        "updateDOMStorage" was renamed to "domStorageUpdated" in WebKit r118349. We need to support
+        "updateDOMStorage" was renamed to "domStorageUpdated" in CyberKit r118349. We need to support
         the old and new name for backwards compatibility.
 
         <rdar://problem/12008490>
@@ -17451,9 +17451,9 @@
 
 2012-05-24  Timothy Hatcher  <timothy@apple.com>
 
-        Make the WebInspector.framework build 32/64-bit universal to match WebKit.
+        Make the WebInspector.framework build 32/64-bit universal to match CyberKit.
 
-        Since WebKit links against the WebInspector framework, they need to support
+        Since CyberKit links against the WebInspector framework, they need to support
         the same architectures. Otherwise, the framework fails to load when soft
         linking and the resources aren't found, which causes an exception/crash.
 
@@ -17564,19 +17564,19 @@
 
         Use a static copy of InspectorBackend.js and InspectorBackendCommands.js.
 
-        This fixes a build failure since WebCore renamed the file we were coping.
+        This fixes a build failure since CyberCore renamed the file we were coping.
 
         For compatibility reasons we should use a static copy of the InspectorBackend instead
-        of copying the latest version from WebCore during the build. Using a stable version of
+        of copying the latest version from CyberCore during the build. Using a stable version of
         the InspectorBackend guarantees a constant API for the front-end and protocol level
-        changes in WebCore are compatible with older versions of the InspectorBackend.
+        changes in CyberCore are compatible with older versions of the InspectorBackend.
 
         <rdar://problem/11426912>
 
         * Scripts/copy-user-interface-resources.sh: Removed copy commands from derived sources.
         * UserInterface/InspectorBackend.js: Copied from OpenSource r116449.
         * UserInterface/InspectorBackendCommands.js: Ditto.
-        * WebInspectorUI.xcodeproj/project.pbxproj: Removed build phase to copy from WebCore.
+        * WebInspectorUI.xcodeproj/project.pbxproj: Removed build phase to copy from CyberCore.
 
 2012-04-26  Timothy Hatcher  <timothy@apple.com>
 
@@ -19896,7 +19896,7 @@
         (WebInspector.ScopeChainDetailsSidebarPanel.prototype.refresh): Build ObjectPropertiesSections and DetailsSections
         for each ScopeChainNode in the scope chain.
         (WebInspector.ScopeChainDetailsSidebarPanel.prototype.refresh.delayedWork): Added. Append the DetailsSections.
-        * UserInterface/ScopeVariableTreeElement.js: Copied from OpenSource/Source/WebCore/inspector/front-end/ScopeChainSidebarPane.js.
+        * UserInterface/ScopeVariableTreeElement.js: Copied from OpenSource/Source/CyberCore/inspector/front-end/ScopeChainSidebarPane.js.
         Some code style clean up and modifications to how _expandedProperties and the _propertyIdentifier prefix are accessed.
 
 2012-03-11  Timothy Hatcher  <timothy@apple.com>
@@ -22207,7 +22207,7 @@
 
         Fix the Timeline Grid sizes for the RemoteDebugger. It looks
         as if this isn't needed anymore and actually displays poorly
-        on 10.7.3 WebKit.
+        on 10.7.3 CyberKit.
 
         Reviewed by Timothy Hatcher.
 
@@ -22830,7 +22830,7 @@
 
         * UserInterface/CSSStyleManager.js:
         (WebInspector.CSSStyleManager): Use WebInspector.Color.Format.
-        * UserInterface/Color.js: Copied from OpenSource/Source/WebCore/inspector/front-end/Color.js.
+        * UserInterface/Color.js: Copied from OpenSource/Source/CyberCore/inspector/front-end/Color.js.
         * UserInterface/Main.html: Included Color.js.
         * UserInterface/StylePropertyTreeElement.js: Use WebInspector.Color.Format.
 
@@ -22965,10 +22965,10 @@
 
 2012-02-27  Timothy Hatcher  <timothy@apple.com>
 
-        Fix some exceptions when running against shipping WebKit.
+        Fix some exceptions when running against shipping CyberKit.
 
         There are no setters for sortOrder or sortColumnIdentifier. Trying to set them use to throw an exception.
-        They just are silently ignored in TOT WebKit. The sort info is properly set earlier in the function.
+        They just are silently ignored in TOT CyberKit. The sort info is properly set earlier in the function.
 
         Reviewed by Joseph Pecoraro.
 
@@ -24348,7 +24348,7 @@
         Reviewed by Brian Weinstein.
 
         * UserInterface/Main.html: Included Setting.js.
-        * UserInterface/Setting.js: Added. Copied partially from OpenSource/Source/WebCore/inspector/front-end/Settings.js.
+        * UserInterface/Setting.js: Added. Copied partially from OpenSource/Source/CyberCore/inspector/front-end/Settings.js.
         (WebInspector.Setting):
         (WebInspector.Setting.prototype.get name):
         (WebInspector.Setting.prototype.get value):
@@ -24596,7 +24596,7 @@
         * Configurations/DebugRelease.xcconfig: Added WEBKIT_UMBRELLA_FRAMEWORKS_DIR for engineering builds.
         * Scripts/copy-user-interface-resources.sh: Added.
         * WebInspectorUI.xcodeproj/project.pbxproj: Added UserInterface folder, localizedStrings.js,
-        Copy User Interface Resources and Copy WebCore Inspector Resources build phases.
+        Copy User Interface Resources and Copy CyberCore Inspector Resources build phases.
 
 2012-02-11  Timothy Hatcher  <timothy@apple.com>
 
@@ -24617,7 +24617,7 @@
 
         Reviewed by Brian Weinstein.
 
-        * UserInterface/BlankStylePropertiesSection.js: Copied from OpenSource/Source/WebCore/inspector/front-end/StylesSidebarPane.js.
+        * UserInterface/BlankStylePropertiesSection.js: Copied from OpenSource/Source/CyberCore/inspector/front-end/StylesSidebarPane.js.
         * UserInterface/CSSPropertyPrompt.js: Ditto.
         * UserInterface/ComputedStylePropertiesSection.js: Ditto.
         * UserInterface/StylePropertiesSection.js: Ditto.
@@ -25093,7 +25093,7 @@
 2012-02-06  Brian Weinstein  <bweinstein@apple.com>
 
         Add ApplicationCacheManager, and have it listen for when frames navigate, and call some ApplicationCacheAgent
-        methods to get data from WebCore.
+        methods to get data from CyberCore.
 
         We don't do anything with this data yet, but will in follow-up patches.
 
@@ -25321,7 +25321,7 @@
         (WebInspector.AppearanceDetailsSidebarPanel):
         (WebInspector.AppearanceDetailsSidebarPanel.prototype._refreshBoxModel):
         * UserInterface/BoxModelDetailsSectionRow.css: Added.
-        * UserInterface/BoxModelDetailsSectionRow.js: Copied from OpenSource/Source/WebCore/inspector/front-end/MetricsSidebarPane.js.
+        * UserInterface/BoxModelDetailsSectionRow.js: Copied from OpenSource/Source/CyberCore/inspector/front-end/MetricsSidebarPane.js.
         Modified to use DOMTreeManager and CSSStyleManager and other minor renames to work in the new inspector.
         * UserInterface/CSSStyleManager.js:
         (WebInspector.CSSStyleManager.prototype.get forcedPseudoClasses): Added stub with FIXME.
@@ -27793,7 +27793,7 @@
 
         Rubber-stamped by John Sullivan.
 
-        * UserInterface/DOMTreeManager.js: Copied from OpenSource/Source/WebCore/inspector/front-end/DOMAgent.js.
+        * UserInterface/DOMTreeManager.js: Copied from OpenSource/Source/CyberCore/inspector/front-end/DOMAgent.js.
         (WebInspector.DOMAgent):
         (WebInspector.DOMAgent.prototype.requestDocument.onDocumentAvailable):
         (WebInspector.DOMAgent.prototype.requestDocument):
@@ -27837,7 +27837,7 @@
 
         Rubber-stamped by John Sullivan.
 
-        * UserInterface/DOMNode.js: Copied from OpenSource/Source/WebCore/inspector/front-end/DOMAgent.js.
+        * UserInterface/DOMNode.js: Copied from OpenSource/Source/CyberCore/inspector/front-end/DOMAgent.js.
         (WebInspector.DOMNode):
         (WebInspector.DOMNode.prototype.hasAttributes):
         (WebInspector.DOMNode.prototype.hasChildNodes):
@@ -27886,7 +27886,7 @@
         Rubber-stamped by John Sullivan.
 
         * UserInterface/Main.html: Included RemoteObject.js.
-        * UserInterface/RemoteObject.js: Copied from OpenSource/Source/WebCore/inspector/front-end/RemoteObject.js.
+        * UserInterface/RemoteObject.js: Copied from OpenSource/Source/CyberCore/inspector/front-end/RemoteObject.js.
 
 2012-01-16  Timothy Hatcher  <timothy@apple.com>
 
@@ -27896,7 +27896,7 @@
 
         Rubber-stamped by John Sullivan.
 
-        * UserInterface/ContextMenu.js: Copied from OpenSource/Source/WebCore/inspector/front-end/ContextMenu.js.
+        * UserInterface/ContextMenu.js: Copied from OpenSource/Source/CyberCore/inspector/front-end/ContextMenu.js.
         * UserInterface/Main.html: Included ContextMenu.js.
 
 2012-01-16  Timothy Hatcher  <timothy@apple.com>
@@ -28005,7 +28005,7 @@
         Reviewed by John Sullivan.
 
         * UserInterface/Utilities.js:
-        (Node.prototype.isAncestor): Copied from OpenSource/Source/WebCore/inspector/front-end/utilities.js.
+        (Node.prototype.isAncestor): Copied from OpenSource/Source/CyberCore/inspector/front-end/utilities.js.
         (Node.prototype.isDescendant): Ditto.
         (Element.prototype.createChild): Ditto.
         (DocumentFragment.prototype.createChild): Ditto.
@@ -28670,7 +28670,7 @@
         Reviewed by Brian Weinstein.
 
         * UserInterface/Utilities.js:
-        (Array.convert): Copied from OpenSource/Source/WebCore/inspector/front-end/utilities.js.
+        (Array.convert): Copied from OpenSource/Source/CyberCore/inspector/front-end/utilities.js.
         (String.tokenizeFormatString): Ditto.
         (String.standardFormatters): Ditto.
         (String.format): Ditto.
@@ -29249,8 +29249,8 @@
         (WebInspector.ResourceContentView): Added click event listener.
         (WebInspector.ResourceContentView.prototype._mouseWasClicked): Added. Call WebInspector.openURL.
         * UserInterface/Utilities.js:
-        (Node.prototype.enclosingNodeOrSelfWithNodeNameInArray): Copied from WebCore/inspector/front-end/utilities.js.
-        (Node.prototype.enclosingNodeOrSelfWithNodeName): Copied from WebCore/inspector/front-end/utilities.js.
+        (Node.prototype.enclosingNodeOrSelfWithNodeNameInArray): Copied from CyberCore/inspector/front-end/utilities.js.
+        (Node.prototype.enclosingNodeOrSelfWithNodeName): Copied from CyberCore/inspector/front-end/utilities.js.
 
 2011-12-18  Timothy Hatcher  <timothy@apple.com>
 
@@ -29615,11 +29615,11 @@
 
         Rubber-stamped by Joseph Pecoraro.
 
-        * UserInterface/CSSCompletions.js: Copied from WebCore/inspector/front-end/CSSCompletions.js.
-        * UserInterface/CSSKeywordCompletions.js: Copied from WebCore/inspector/front-end/CSSCompletions.js.
-        * UserInterface/CSSSourceTokenizer.js: Copied from WebCore/inspector/front-end/SourceCSSTokenizer.js.
-        * UserInterface/HTMLSourceTokenizer.js: Copied from WebCore/inspector/front-end/SourceHTMLTokenizer.js.
-        * UserInterface/JavaScriptSourceTokenizer.js: Copied from WebCore/inspector/front-end/SourceJavaScriptTokenizer.js.
+        * UserInterface/CSSCompletions.js: Copied from CyberCore/inspector/front-end/CSSCompletions.js.
+        * UserInterface/CSSKeywordCompletions.js: Copied from CyberCore/inspector/front-end/CSSCompletions.js.
+        * UserInterface/CSSSourceTokenizer.js: Copied from CyberCore/inspector/front-end/SourceCSSTokenizer.js.
+        * UserInterface/HTMLSourceTokenizer.js: Copied from CyberCore/inspector/front-end/SourceHTMLTokenizer.js.
+        * UserInterface/JavaScriptSourceTokenizer.js: Copied from CyberCore/inspector/front-end/SourceJavaScriptTokenizer.js.
         * UserInterface/Utilities.js:
         (Array.keySet): Added.
 
@@ -29706,7 +29706,7 @@
         Reviewed by Tim Hatcher.
 
         * UserInterface/DatabaseObject.js:
-        (WebInspector.DatabaseObject.prototype.getTableNames): Calls into WebCore to get the database's table names,
+        (WebInspector.DatabaseObject.prototype.getTableNames): Calls into CyberCore to get the database's table names,
             and sorts them.
         * UserInterface/DatabaseTableObject.js: Added.
         (WebInspector.DatabaseTableObject):
@@ -30352,7 +30352,7 @@
 
 2011-12-05  Timothy Hatcher  <timothy@apple.com>
 
-        Add a build phase copy of InspectorBackend.js from WebCore and rename the
+        Add a build phase copy of InspectorBackend.js from CyberCore and rename the
         InspectorBackendStub.js copied file to InspectorBackendCommands.js.
 
         The InspectorBackend.js file split out of the generated InspectorBackendStub.js
@@ -30361,7 +30361,7 @@
         Reviewed by Joseph Pecoraro.
 
         * UserInterface/Main.html: Include InspectorBackendCommands.js.
-        * WebInspectorUI.xcodeproj/project.pbxproj: Update the WebCore Inspector Resources build pahse.
+        * WebInspectorUI.xcodeproj/project.pbxproj: Update the CyberCore Inspector Resources build pahse.
 
 2011-11-29  Timothy Hatcher  <timothy@apple.com>
 
@@ -30468,8 +30468,8 @@
         (WebInspector.NavigationSidebarPanel.prototype._updateFilter): Added. Call applyFiltersToTreeElement.
         (WebInspector.NavigationSidebarPanel.prototype._treeElementAddedOrChanged): Added. Call applyFiltersToTreeElement.
         * UserInterface/Utilities.js:
-        (String.prototype.escapeCharacters): Copied from WebCore/inspector/front-end/utilities.js.
-        (String.prototype.escapeForRegExp): Copied from WebCore/inspector/front-end/utilities.js.
+        (String.prototype.escapeCharacters): Copied from CyberCore/inspector/front-end/utilities.js.
+        (String.prototype.escapeForRegExp): Copied from CyberCore/inspector/front-end/utilities.js.
         (simpleGlobStringToRegExp): Added.
 
 2011-11-28  Timothy Hatcher  <timothy@apple.com>
@@ -31048,7 +31048,7 @@
 
         Rubber-stamped by Dan Bernstein.
 
-        * UserInterface/TreeOutline.js: Copied from WebCore/inspector/front-end/treeoutline.js.
+        * UserInterface/TreeOutline.js: Copied from CyberCore/inspector/front-end/treeoutline.js.
 
 2011-11-28  Timothy Hatcher  <timothy@apple.com>
 
@@ -31056,7 +31056,7 @@
 
         Rubber-stamped by Dan Bernstein.
 
-        * UserInterface/BinarySearch.js: Copied from WebCore/inspector/front-end/BinarySearch.js.
+        * UserInterface/BinarySearch.js: Copied from CyberCore/inspector/front-end/BinarySearch.js.
 
 2011-11-28  Timothy Hatcher  <timothy@apple.com>
 
@@ -31303,11 +31303,11 @@
 
 2011-11-11  Timothy Hatcher  <timothy@apple.com>
 
-        Copy InspectorBackendStub.js from WebCore so it can be used by the new Web Inspector.
+        Copy InspectorBackendStub.js from CyberCore so it can be used by the new Web Inspector.
 
         Reviewed by Joseph Pecoraro.
 
-        * WebInspectorUI.xcodeproj/project.pbxproj: Add new Copy WebCore Inspector Resources build phase.
+        * WebInspectorUI.xcodeproj/project.pbxproj: Add new Copy CyberCore Inspector Resources build phase.
         * Configurations/Base.xcconfig: Add WEBCORE_RESOURCES_DIR.
 
 2011-11-10  Timothy Hatcher  <timothy@apple.com>

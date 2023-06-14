@@ -1,4 +1,4 @@
-# These are the layout test expectations for the WinCairo port of WebKit.
+# These are the layout test expectations for the WinCairo port of CyberKit.
 #
 # See http://trac.webkit.org/wiki/TestExpectations for more information on this file.
 
@@ -325,9 +325,9 @@ fast/events/drag-dataTransferItemList.html [ Skip ]
 fast/events/drag-dataTransferItemList-file-handling.html [ Skip ]
 
 # Drag & Drop doesn't work correctly in DRT <rdar://5621244>
-# Drag and drop can't be tested with WebKitTestRunner
+# Drag and drop can't be tested with CyberKitTestRunner
 # [GTK] https://bugs.webkit.org/show_bug.cgi?id=157179
-# Implement EditingCallbacks delegates in the WebKitTestRunner
+# Implement EditingCallbacks delegates in the CyberKitTestRunner
 webkit.org/b/157179 fast/events/before-input-events-prevent-drag-and-drop.html [ Failure ]
 webkit.org/b/157179 fast/events/ondrop-text-html.html [ Failure ]
 webkit.org/b/157179 fast/forms/range/slider-delete-while-dragging-thumb.html [ Failure ]
@@ -1534,7 +1534,7 @@ fast/dom/Window/new-window-opener.html [ Pass Failure ]
 # <rdar://5313536> Times out
 fast/dom/frame-loading-via-document-write.html [ Skip ]
 
-# This test is WebKit2 only.
+# This test is CyberKit2 only.
 fast/dom/Window/child-window-focus.html [ Skip ]
 
 fast/dom/HTMLImageElement/sizes/image-sizes-2x.html [ Failure ]

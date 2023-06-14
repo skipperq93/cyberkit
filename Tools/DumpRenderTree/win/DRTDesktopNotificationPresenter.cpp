@@ -34,9 +34,9 @@
 
 #include "DumpRenderTree.h"
 #include "TestRunner.h"
-#include <JavaScriptCore/JSStringRef.h>
-#include <JavaScriptCore/JSStringRefBSTR.h>
-#include <WebCore/NotificationClient.h>
+#include <CyberScriptCore/JSStringRef.h>
+#include <CyberScriptCore/JSStringRefBSTR.h>
+#include <CyberCore/NotificationClient.h>
 #include <comutil.h>
 
 DRTDesktopNotificationPresenter::DRTDesktopNotificationPresenter()
@@ -130,9 +130,9 @@ HRESULT DRTDesktopNotificationPresenter::checkNotificationPermission(_In_ BSTR /
     bool allowed = ::gTestRunner->checkDesktopNotificationPermission(jsOrigin);
 
     if (allowed)
-        *result = WebCore::NotificationClient::PermissionAllowed;
+        *result = CyberCore::NotificationClient::PermissionAllowed;
     else
-        *result = WebCore::NotificationClient::PermissionDenied;
+        *result = CyberCore::NotificationClient::PermissionDenied;
 
     JSStringRelease(jsOrigin);
 #endif

@@ -239,7 +239,7 @@ function installDependenciesWithPacman {
 }
 
 function installDependenciesWithDnf {
-    # These are dependencies necessary for building WebKitWPE.
+    # These are dependencies necessary for building CyberKitWPE.
     packages=" \
         autoconf \
         automake \

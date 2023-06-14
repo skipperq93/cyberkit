@@ -104,7 +104,7 @@
                       "triggers": ["mojave-debug-tests-wk1", "mojave-debug-tests-wk2"],
                       "slavenames": ["bot612", "bot613"]
                     },
-                    { "name": "Apple Mojave Debug WK1 (Tests)", "type": "TestWebKit1AllButJSC", "builddir": "mojave-debug-tests-wk1",
+                    { "name": "Apple Mojave Debug WK1 (Tests)", "type": "TestCyberKit1AllButJSC", "builddir": "mojave-debug-tests-wk1",
                       "platform": "mac-mojave", "configuration": "debug", "architectures": ["x86_64"],
                       "additionalArguments": ["--no-retry-failures"],
                       "slavenames": ["bot183", "bot184"]
@@ -119,7 +119,7 @@
                       "triggers": ["mojave-release-tests-wk1", "mojave-release-tests-wk2", "mojave-leaks"],
                       "slavenames": ["bot610", "bot611"]
                     },
-                    { "name": "Apple Mojave Release WK1 (Tests)", "type": "TestWebKit1AllButJSC", "builddir": "mojave-release-tests-wk1",
+                    { "name": "Apple Mojave Release WK1 (Tests)", "type": "TestCyberKit1AllButJSC", "builddir": "mojave-release-tests-wk1",
                       "platform": "mac-mojave", "configuration": "release", "architectures": ["x86_64"],
                       "additionalArguments": ["--no-retry-failures"],
                       "slavenames": ["bot132", "bot185"]
@@ -129,7 +129,7 @@
                       "additionalArguments": ["--no-retry-failures"],
                       "slavenames": ["bot198", "bot210"]
                     },
-                    { "name": "Apple Mojave (Leaks)", "type": "TestWebKit1Leaks", "builddir": "mojave-leaks",
+                    { "name": "Apple Mojave (Leaks)", "type": "TestCyberKit1Leaks", "builddir": "mojave-leaks",
                       "platform": "mac-mojave", "configuration": "release", "architectures": ["x86_64"],
                       "additionalArguments": ["--no-retry-failures", "--no-sample-on-timeout"],
                       "slavenames": ["bot121"]
@@ -139,7 +139,7 @@
                       "triggers": ["highsierra-debug-tests-jsc", "highsierra-debug-tests-wk1", "highsierra-debug-tests-wk2"],
                       "slavenames": ["bot630", "bot631"]
                     },
-                    { "name": "Apple High Sierra Debug WK1 (Tests)", "type": "TestWebKit1AllButJSC", "builddir": "highsierra-debug-tests-wk1",
+                    { "name": "Apple High Sierra Debug WK1 (Tests)", "type": "TestCyberKit1AllButJSC", "builddir": "highsierra-debug-tests-wk1",
                       "platform": "mac-highsierra", "configuration": "debug", "architectures": ["x86_64"],
                       "additionalArguments": ["--no-retry-failures"],
                       "slavenames": ["bot153", "bot163"]
@@ -154,7 +154,7 @@
                       "triggers": ["highsierra-release-tests-jsc", "highsierra-release-tests-wk1", "highsierra-release-tests-wk2"],
                       "slavenames": ["bot635", "bot636"]
                     },
-                    { "name": "Apple High Sierra Release WK1 (Tests)", "type": "TestWebKit1AllButJSC", "builddir": "highsierra-release-tests-wk1",
+                    { "name": "Apple High Sierra Release WK1 (Tests)", "type": "TestCyberKit1AllButJSC", "builddir": "highsierra-release-tests-wk1",
                       "platform": "mac-highsierra", "configuration": "release", "architectures": ["x86_64"],
                       "additionalArguments": ["--no-retry-failures"],
                       "slavenames": ["bot197", "bot215"]
@@ -189,7 +189,7 @@
                       "triggers": ["sierra-debug-tests-wk1", "sierra-debug-tests-wk2", "sierra-debug-tests-test262"],
                       "slavenames": ["bot609", "bot698"]
                     },
-                    { "name": "Apple Sierra Debug WK1 (Tests)", "type": "TestWebKit1AllButJSC", "builddir": "sierra-debug-tests-wk1",
+                    { "name": "Apple Sierra Debug WK1 (Tests)", "type": "TestCyberKit1AllButJSC", "builddir": "sierra-debug-tests-wk1",
                       "platform": "mac-sierra", "configuration": "debug", "architectures": ["x86_64"],
                       "additionalArguments": ["--no-retry-failures"],
                       "slavenames": ["bot118", "bot122"]
@@ -204,7 +204,7 @@
                       "triggers": ["sierra-release-tests-wk1", "sierra-release-tests-wk2", "sierra-release-tests-test262", "sierra-release-perf-tests"],
                       "slavenames": ["bot601", "bot699"]
                     },
-                    { "name": "Apple Sierra Release WK1 (Tests)", "type": "TestWebKit1AllButJSC", "builddir": "sierra-release-tests-wk1",
+                    { "name": "Apple Sierra Release WK1 (Tests)", "type": "TestCyberKit1AllButJSC", "builddir": "sierra-release-tests-wk1",
                       "platform": "mac-sierra", "configuration": "release", "architectures": ["x86_64"],
                       "additionalArguments": ["--no-retry-failures"],
                       "slavenames": ["bot141", "bot160"]
@@ -273,12 +273,12 @@
                       "slavenames": ["bot547"]
                     },
                     {
-                      "name": "Apple Win 10 Release (Tests)", "type": "TestWebKit1", "builddir": "win10-release-tests",
+                      "name": "Apple Win 10 Release (Tests)", "type": "TestCyberKit1", "builddir": "win10-release-tests",
                       "platform": "win", "configuration": "release", "architectures": ["x86_64"],
                       "slavenames": ["bot546"]
                     },
                     {
-                      "name": "Apple Win 10 Debug (Tests)", "type": "TestWebKit1", "builddir": "win10-debug-tests",
+                      "name": "Apple Win 10 Debug (Tests)", "type": "TestCyberKit1", "builddir": "win10-debug-tests",
                       "platform": "win", "configuration": "debug", "architectures": ["x86_64"],
                       "slavenames": ["bot545"]
                     },
@@ -289,7 +289,7 @@
                       "slavenames": ["bot544"]
                     },
                     {
-                      "name": "Apple Win 7 Release (Tests)", "type": "TestWebKit1", "builddir": "win7-release-tests",
+                      "name": "Apple Win 7 Release (Tests)", "type": "TestCyberKit1", "builddir": "win7-release-tests",
                       "platform": "win", "configuration": "release", "architectures": ["i386"],
                       "slavenames": ["bot543"]
                     },
@@ -346,7 +346,7 @@
                       "slavenames": ["wincairo-wkl-release-build-01"]
                     },
                     {
-                      "name": "WinCairo 64-bit WKL Release (Tests)", "type": "TestWebKit1AllButJSC", "builddir": "wincairo-wkl-release-tests",
+                      "name": "WinCairo 64-bit WKL Release (Tests)", "type": "TestCyberKit1AllButJSC", "builddir": "wincairo-wkl-release-tests",
                       "platform": "wincairo", "configuration": "release", "architectures": ["x86_64"],
                       "slavenames": ["wincairo-wkl-release-tests-01", "wincairo-wkl-release-tests-02"]
                     },
@@ -362,7 +362,7 @@
                       "slavenames": ["wincairo-wkl-debug-build-01"]
                     },
                     {
-                      "name": "WinCairo 64-bit WKL Debug (Tests)", "type": "TestWebKit1AllButJSC", "builddir": "wincairo-wkl-debug-tests",
+                      "name": "WinCairo 64-bit WKL Debug (Tests)", "type": "TestCyberKit1AllButJSC", "builddir": "wincairo-wkl-debug-tests",
                       "platform": "wincairo", "configuration": "debug", "architectures": ["x86_64"],
                       "slavenames": ["wincairo-wkl-debug-tests-01", "wincairo-wkl-debug-tests-02"]
                     },

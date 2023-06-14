@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == "OPTIONS") {
 	}
 } else {
     if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_REQUEST['uid']) || ($_REQUEST['uid'] != $_SERVER['PHP_AUTH_USER'])) {
-        header('WWW-Authenticate: Basic realm="WebKit Test Realm/Cross Origin"');
+        header('WWW-Authenticate: Basic realm="CyberKit Test Realm/Cross Origin"');
         header('HTTP/1.0 401 Unauthorized');
         echo 'Authentication canceled';
         exit;

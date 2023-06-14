@@ -34,9 +34,9 @@
 #import "AudioPlayer.h"
 #import "MenuHandler.h"
 #import <Cocoa/Cocoa.h>
-#import <WebKit/npapi.h>
-#import <WebKit/npfunctions.h>
-#import <WebKit/npruntime.h>
+#import <CyberKit/npapi.h>
+#import <CyberKit/npfunctions.h>
+#import <CyberKit/npruntime.h>
 
 // Browser function table
 static NPNetscapeFuncs* browser;

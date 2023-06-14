@@ -26,13 +26,13 @@
 #ifndef AccessibilityDelegate_h
 #define AccessibilityDelegate_h
 
-#include <WebKitLegacy/WebKit.h>
+#include <CyberKitLegacy/CyberKit.h>
 
-class WebKitLegacyBrowserWindow;
+class CyberKitLegacyBrowserWindow;
 
 class AccessibilityDelegate : public IAccessibilityDelegate {
 public:
-    AccessibilityDelegate(WebKitLegacyBrowserWindow& client)
+    AccessibilityDelegate(CyberKitLegacyBrowserWindow& client)
         : m_client(client) { }
     virtual HRESULT STDMETHODCALLTYPE QueryInterface(_In_ REFIID riid, _COM_Outptr_ void** ppvObject);
     virtual ULONG STDMETHODCALLTYPE AddRef();
@@ -41,7 +41,7 @@ public:
     virtual HRESULT STDMETHODCALLTYPE fireFrameLoadStartedEvents();
     virtual HRESULT STDMETHODCALLTYPE fireFrameLoadFinishedEvents();
 private:
-    WebKitLegacyBrowserWindow& m_client;
+    CyberKitLegacyBrowserWindow& m_client;
 };
 
 #endif

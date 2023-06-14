@@ -1,5 +1,5 @@
 include(GtkDoc)
-include(WebKitDist)
+include(CyberKitDist)
 
 add_subdirectory(${WEBCORE_DIR}/platform/gtk/po)
 
@@ -9,9 +9,9 @@ if (ENABLE_INTROSPECTION)
 endif ()
 
 list(APPEND DocumentationDependencies
-    WebKit
-    "${CMAKE_SOURCE_DIR}/Source/WebKit/UIProcess/API/gtk/docs/webkit2gtk-docs.sgml"
-    "${CMAKE_SOURCE_DIR}/Source/WebKit/UIProcess/API/gtk/docs/webkit2gtk-${WEBKITGTK_API_VERSION}-sections.txt"
+    CyberKit
+    "${CMAKE_SOURCE_DIR}/Source/CyberKit/UIProcess/API/gtk/docs/webkit2gtk-docs.sgml"
+    "${CMAKE_SOURCE_DIR}/Source/CyberKit/UIProcess/API/gtk/docs/webkit2gtk-${WEBKITGTK_API_VERSION}-sections.txt"
 )
 
 if (ENABLE_GTKDOC)

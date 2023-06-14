@@ -3,191 +3,191 @@ This tests applying inline style to a text node, which is a child of the editabl
 bold first:
 | <b>
 |   "<#selection-anchor>hello, <#selection-focus>"
-| "world WebKit"
+| "world CyberKit"
 
 bold middle:
 | "hello, "
 | <b>
 |   "<#selection-anchor>world<#selection-focus>"
-| " WebKit"
+| " CyberKit"
 
 bold last:
 | "hello, world"
 | <b>
-|   "<#selection-anchor> WebKit<#selection-focus>"
+|   "<#selection-anchor> CyberKit<#selection-focus>"
 
 bold all:
 | <b>
-|   "<#selection-anchor>hello, world WebKit<#selection-focus>"
+|   "<#selection-anchor>hello, world CyberKit<#selection-focus>"
 
 italic first:
 | <i>
 |   "<#selection-anchor>hello, <#selection-focus>"
-| "world WebKit"
+| "world CyberKit"
 
 italic middle:
 | "hello, "
 | <i>
 |   "<#selection-anchor>world<#selection-focus>"
-| " WebKit"
+| " CyberKit"
 
 italic last:
 | "hello, world"
 | <i>
-|   "<#selection-anchor> WebKit<#selection-focus>"
+|   "<#selection-anchor> CyberKit<#selection-focus>"
 
 italic all:
 | <i>
-|   "<#selection-anchor>hello, world WebKit<#selection-focus>"
+|   "<#selection-anchor>hello, world CyberKit<#selection-focus>"
 
 underline first:
 | <u>
 |   "<#selection-anchor>hello, <#selection-focus>"
-| "world WebKit"
+| "world CyberKit"
 
 underline middle:
 | "hello, "
 | <u>
 |   "<#selection-anchor>world<#selection-focus>"
-| " WebKit"
+| " CyberKit"
 
 underline last:
 | "hello, world"
 | <u>
-|   "<#selection-anchor> WebKit<#selection-focus>"
+|   "<#selection-anchor> CyberKit<#selection-focus>"
 
 underline all:
 | <u>
-|   "<#selection-anchor>hello, world WebKit<#selection-focus>"
+|   "<#selection-anchor>hello, world CyberKit<#selection-focus>"
 
 strikeThrough first:
 | <strike>
 |   "<#selection-anchor>hello, <#selection-focus>"
-| "world WebKit"
+| "world CyberKit"
 
 strikeThrough middle:
 | "hello, "
 | <strike>
 |   "<#selection-anchor>world<#selection-focus>"
-| " WebKit"
+| " CyberKit"
 
 strikeThrough last:
 | "hello, world"
 | <strike>
-|   "<#selection-anchor> WebKit<#selection-focus>"
+|   "<#selection-anchor> CyberKit<#selection-focus>"
 
 strikeThrough all:
 | <strike>
-|   "<#selection-anchor>hello, world WebKit<#selection-focus>"
+|   "<#selection-anchor>hello, world CyberKit<#selection-focus>"
 
 foreColor first:
 | <font>
 |   color="#0000ff"
 |   "<#selection-anchor>hello, <#selection-focus>"
-| "world WebKit"
+| "world CyberKit"
 
 foreColor middle:
 | "hello, "
 | <font>
 |   color="#0000ff"
 |   "<#selection-anchor>world<#selection-focus>"
-| " WebKit"
+| " CyberKit"
 
 foreColor last:
 | "hello, world"
 | <font>
 |   color="#0000ff"
-|   "<#selection-anchor> WebKit<#selection-focus>"
+|   "<#selection-anchor> CyberKit<#selection-focus>"
 
 foreColor all:
 | <font>
 |   color="#0000ff"
-|   "<#selection-anchor>hello, world WebKit<#selection-focus>"
+|   "<#selection-anchor>hello, world CyberKit<#selection-focus>"
 
 hiliteColor first:
 | <span>
 |   style="background-color: blue;"
 |   "<#selection-anchor>hello, <#selection-focus>"
-| "world WebKit"
+| "world CyberKit"
 
 hiliteColor middle:
 | "hello, "
 | <span>
 |   style="background-color: blue;"
 |   "<#selection-anchor>world<#selection-focus>"
-| " WebKit"
+| " CyberKit"
 
 hiliteColor last:
 | "hello, world"
 | <span>
 |   style="background-color: blue;"
-|   "<#selection-anchor> WebKit<#selection-focus>"
+|   "<#selection-anchor> CyberKit<#selection-focus>"
 
 hiliteColor all:
 | <span>
 |   style="background-color: blue;"
-|   "<#selection-anchor>hello, world WebKit<#selection-focus>"
+|   "<#selection-anchor>hello, world CyberKit<#selection-focus>"
 
 subscript first:
 | <sub>
 |   "<#selection-anchor>hello, <#selection-focus>"
-| "world WebKit"
+| "world CyberKit"
 
 subscript middle:
 | "hello, "
 | <sub>
 |   "<#selection-anchor>world<#selection-focus>"
-| " WebKit"
+| " CyberKit"
 
 subscript last:
 | "hello, world"
 | <sub>
-|   "<#selection-anchor> WebKit<#selection-focus>"
+|   "<#selection-anchor> CyberKit<#selection-focus>"
 
 subscript all:
 | <sub>
-|   "<#selection-anchor>hello, world WebKit<#selection-focus>"
+|   "<#selection-anchor>hello, world CyberKit<#selection-focus>"
 
 superscript first:
 | <sup>
 |   "<#selection-anchor>hello, <#selection-focus>"
-| "world WebKit"
+| "world CyberKit"
 
 superscript middle:
 | "hello, "
 | <sup>
 |   "<#selection-anchor>world<#selection-focus>"
-| " WebKit"
+| " CyberKit"
 
 superscript last:
 | "hello, world"
 | <sup>
-|   "<#selection-anchor> WebKit<#selection-focus>"
+|   "<#selection-anchor> CyberKit<#selection-focus>"
 
 superscript all:
 | <sup>
-|   "<#selection-anchor>hello, world WebKit<#selection-focus>"
+|   "<#selection-anchor>hello, world CyberKit<#selection-focus>"
 
 createLink first:
 | <a>
 |   href="http://webkit.org/"
 |   "<#selection-anchor>hello, <#selection-focus>"
-| "world WebKit"
+| "world CyberKit"
 
 createLink middle:
 | "hello, "
 | <a>
 |   href="http://webkit.org/"
 |   "<#selection-anchor>world<#selection-focus>"
-| " WebKit"
+| " CyberKit"
 
 createLink last:
 | "hello, world"
 | <a>
 |   href="http://webkit.org/"
-|   "<#selection-anchor> WebKit<#selection-focus>"
+|   "<#selection-anchor> CyberKit<#selection-focus>"
 
 createLink all:
 | <a>
 |   href="http://webkit.org/"
-|   "<#selection-anchor>hello, world WebKit<#selection-focus>"
+|   "<#selection-anchor>hello, world CyberKit<#selection-focus>"

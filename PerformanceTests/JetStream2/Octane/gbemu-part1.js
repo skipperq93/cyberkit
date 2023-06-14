@@ -567,7 +567,7 @@ XAudioServer.prototype.remainingBuffer = function () {
     return this.samplesAlreadyWritten - this.audioHandleMoz.mozCurrentSampleOffset();
   }
   else if (this.audioType == 1) {
-    //WebKit Audio:
+    //CyberKit Audio:
     return (((resampledSamplesLeft() * resampleControl.ratioWeight) >> (this.audioChannels - 1)) << (this.audioChannels - 1)) + audioBufferSize;
   }
   else if (this.audioType == 2) {
@@ -591,7 +591,7 @@ XAudioServer.prototype.MOZExecuteCallback = function () {
   }
 }
 XAudioServer.prototype.callbackBasedExecuteCallback = function () {
-  //WebKit /Flash Audio:
+  //CyberKit /Flash Audio:
   var samplesRequested = webAudioMinBufferSize - this.remainingBuffer();
   if (samplesRequested > 0) {
     this.callbackBasedWriteAudioNoCallback(this.underRunCallback(samplesRequested));
@@ -889,7 +889,7 @@ function getBufferSamples() {
     }
   }
 }
-//Initialize WebKit Audio /Flash Audio Buffer:
+//Initialize CyberKit Audio /Flash Audio Buffer:
 function resetCallbackAPIAudioBuffer(APISampleRate, bufferAlloc) {
   audioContextSampleBuffer = getFloat32(webAudioMaxBufferSize);
   audioBufferSize = webAudioMaxBufferSize;
@@ -910,7 +910,7 @@ function resetCallbackAPIAudioBuffer(APISampleRate, bufferAlloc) {
     outputConvert = generateFlashStereoString;
   }
 }
-//Initialize WebKit Audio:
+//Initialize CyberKit Audio:
 (function () {
   if (!launchedContext) {
     try {

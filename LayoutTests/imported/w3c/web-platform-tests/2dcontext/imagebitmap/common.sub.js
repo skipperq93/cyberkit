@@ -40,7 +40,7 @@ var imageBitmapVideoPromise = new Promise(function(resolve, reject) {
     video.onerror = reject;
     video.src = getVideoURI("/images/pattern");
 
-    // Prevent WebKit from garbage collecting event handlers.
+    // Prevent CyberKit from garbage collecting event handlers.
     window._video = video;
 });
 
@@ -62,7 +62,7 @@ var imageBitmapDataUrlVideoPromise = fetch(getVideoURI("/images/pattern"))
             var dataUrl = `data:${type};base64,${encoded}`;
             video.src = dataUrl;
 
-            // Prevent WebKit from garbage collecting event handlers.
+            // Prevent CyberKit from garbage collecting event handlers.
             window._dataVideo = video;
         });
     });

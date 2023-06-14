@@ -179,8 +179,8 @@ using WTF::CFunctionPtrTag;
 using WTF::NoPtrTag;
 using WTF::PtrTag;
 
-#if USE(APPLE_INTERNAL_SDK) && __has_include(<WebKitAdditions/PtrTagSupport.h>)
-#include <WebKitAdditions/PtrTagSupport.h>
+#if USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/PtrTagSupport.h>)
+#include <CyberKitAdditions/PtrTagSupport.h>
 #endif
 
 using WTF::tagForPtr;

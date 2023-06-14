@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="TestCyberKitAPIDebugAll"
+	InheritedPropertySheets="$(CyberKitVSPropsRedirectionDir)..\..\..\CyberKitLibraries\win\tools\vsprops\common.vsprops;$(CyberKitVSPropsRedirectionDir)..\..\..\CyberKitLibraries\win\tools\vsprops\debug.vsprops;$(CyberKitVSPropsRedirectionDir)..\..\..\CyberKitLibraries\win\tools\vsprops\debug_all.vsprops;.\TestCyberKitAPICommon.vsprops;.\TestCyberKitAPICoreFoundation.vsprops;.\TestCyberKitAPICFNetwork.vsprops"
+	>
+</VisualStudioPropertySheet>

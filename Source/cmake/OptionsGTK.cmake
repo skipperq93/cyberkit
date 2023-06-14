@@ -71,12 +71,12 @@ endif ()
 
 # Public options specific to the GTK+ port. Do not add any options here unless
 # there is a strong reason we should support changing the value of the option,
-# and the option is not relevant to any other WebKit ports.
+# and the option is not relevant to any other CyberKit ports.
 WEBKIT_OPTION_DEFINE(ENABLE_GLES2 "Whether to enable OpenGL ES 2.0." PUBLIC ${ENABLE_GLES2_DEFAULT})
 WEBKIT_OPTION_DEFINE(ENABLE_GTKDOC "Whether or not to use generate gtkdoc." PUBLIC OFF)
 WEBKIT_OPTION_DEFINE(ENABLE_INTROSPECTION "Whether to enable GObject introspection." PUBLIC ON)
 WEBKIT_OPTION_DEFINE(ENABLE_OPENGL "Whether to use OpenGL." PUBLIC ON)
-WEBKIT_OPTION_DEFINE(ENABLE_PLUGIN_PROCESS_GTK2 "Whether to build WebKitPluginProcess2 to load GTK2 based plugins." PUBLIC ON)
+WEBKIT_OPTION_DEFINE(ENABLE_PLUGIN_PROCESS_GTK2 "Whether to build CyberKitPluginProcess2 to load GTK2 based plugins." PUBLIC ON)
 WEBKIT_OPTION_DEFINE(ENABLE_QUARTZ_TARGET "Whether to enable support for the Quartz windowing target." PUBLIC ${GTK3_SUPPORTS_QUARTZ})
 WEBKIT_OPTION_DEFINE(ENABLE_X11_TARGET "Whether to enable support for the X11 windowing target." PUBLIC ${GTK3_SUPPORTS_X11})
 WEBKIT_OPTION_DEFINE(ENABLE_WAYLAND_TARGET "Whether to enable support for the Wayland windowing target." PUBLIC ${GTK3_SUPPORTS_WAYLAND})
@@ -86,7 +86,7 @@ WEBKIT_OPTION_DEFINE(USE_LIBSECRET "Whether to enable the persistent credential 
 WEBKIT_OPTION_DEFINE(USE_WOFF2 "Whether to enable support for WOFF2 Web Fonts." PUBLIC ON)
 
 # Private options specific to the GTK+ port. Changing these options is
-# completely unsupported. They are intended for use only by WebKit developers.
+# completely unsupported. They are intended for use only by CyberKit developers.
 WEBKIT_OPTION_DEFINE(USE_REDIRECTED_XCOMPOSITE_WINDOW "Whether to use a Redirected XComposite Window for accelerated compositing in X11." PRIVATE ON)
 WEBKIT_OPTION_DEFINE(USE_OPENVR "Whether to use OpenVR as WebVR backend." PRIVATE ${ENABLE_EXPERIMENTAL_FEATURES})
 
@@ -133,7 +133,7 @@ if (("${PC_CAIRO_VERSION}" VERSION_GREATER "1.16.0" OR "${PC_CAIRO_VERSION}" STR
     WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_VARIATION_FONTS PRIVATE ON)
 endif ()
 
-# Public options shared with other WebKit ports. Do not add any options here
+# Public options shared with other CyberKit ports. Do not add any options here
 # without approval from a GTK+ reviewer. There must be strong reason to support
 # changing the value of the option.
 WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_ACCELERATED_2D_CANVAS PUBLIC OFF)
@@ -146,8 +146,8 @@ WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_TOUCH_EVENTS PUBLIC ON)
 WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_WEB_CRYPTO PUBLIC ON)
 WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_WEBDRIVER PUBLIC ON)
 
-# Private options shared with other WebKit ports. Add options here when
-# we need a value different from the default defined in WebKitFeatures.cmake.
+# Private options shared with other CyberKit ports. Add options here when
+# we need a value different from the default defined in CyberKitFeatures.cmake.
 # Changing these options is completely unsupported.
 WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_DOWNLOAD_ATTRIBUTE PRIVATE ON)
 WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_ENCRYPTED_MEDIA PRIVATE ${ENABLE_EXPERIMENTAL_FEATURES})
@@ -180,7 +180,7 @@ endif ()
 set(ENABLE_PLUGIN_PROCESS ${ENABLE_NETSCAPE_PLUGIN_API})
 
 add_definitions(-DBUILDING_GTK__=1)
-add_definitions(-DGETTEXT_PACKAGE="WebKit2GTK-${WEBKITGTK_API_VERSION}")
+add_definitions(-DGETTEXT_PACKAGE="CyberKit2GTK-${WEBKITGTK_API_VERSION}")
 add_definitions(-DWEBKITGTK_API_VERSION_STRING="${WEBKITGTK_API_VERSION}")
 add_definitions(-DJSC_GLIB_API_ENABLED)
 
@@ -421,11 +421,11 @@ set(DERIVED_SOURCES_JAVASCRIPCORE_GLIB_API_DIR ${DERIVED_SOURCES_JAVASCRIPTCORE_
 set(FORWARDING_HEADERS_WEBKIT2GTK_DIR ${FORWARDING_HEADERS_DIR}/webkit2gtk)
 set(FORWARDING_HEADERS_WEBKIT2GTK_EXTENSION_DIR ${FORWARDING_HEADERS_DIR}/webkit2gtk-webextension)
 
-set(JavaScriptCore_PKGCONFIG_FILE ${CMAKE_BINARY_DIR}/Source/JavaScriptCore/javascriptcoregtk-${WEBKITGTK_API_VERSION}.pc)
-set(WebKit2_PKGCONFIG_FILE ${CMAKE_BINARY_DIR}/Source/WebKit/webkit2gtk-${WEBKITGTK_API_VERSION}.pc)
-set(WebKit2WebExtension_PKGCONFIG_FILE ${CMAKE_BINARY_DIR}/Source/WebKit/webkit2gtk-web-extension-${WEBKITGTK_API_VERSION}.pc)
+set(CyberScriptCore_PKGCONFIG_FILE ${CMAKE_BINARY_DIR}/Source/CyberScriptCore/javascriptcoregtk-${WEBKITGTK_API_VERSION}.pc)
+set(CyberKit2_PKGCONFIG_FILE ${CMAKE_BINARY_DIR}/Source/CyberKit/webkit2gtk-${WEBKITGTK_API_VERSION}.pc)
+set(CyberKit2WebExtension_PKGCONFIG_FILE ${CMAKE_BINARY_DIR}/Source/CyberKit/webkit2gtk-web-extension-${WEBKITGTK_API_VERSION}.pc)
 
-set(JavaScriptCore_LIBRARY_TYPE SHARED)
+set(CyberScriptCore_LIBRARY_TYPE SHARED)
 set(SHOULD_INSTALL_JS_SHELL ON)
 
 # Add a typelib file to the list of all typelib dependencies. This makes it easy to

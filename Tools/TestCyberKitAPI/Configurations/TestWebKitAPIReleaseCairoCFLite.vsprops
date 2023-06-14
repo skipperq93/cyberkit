@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="TestCyberKitAPIReleaseCairoCFLite"
+	InheritedPropertySheets="$(CyberKitVSPropsRedirectionDir)..\..\..\CyberKitLibraries\win\tools\vsprops\common.vsprops;$(CyberKitVSPropsRedirectionDir)..\..\..\CyberKitLibraries\win\tools\vsprops\releaseproduction.vsprops;$(CyberKitVSPropsRedirectionDir)..\..\..\CyberKitLibraries\win\tools\vsprops\release.vsprops;$(CyberKitVSPropsRedirectionDir)..\..\..\CyberKitLibraries\win\tools\vsprops\WinCairo.vsprops;..\Configurations\TestCyberKitAPICommon.vsprops;..\Configurations\TestCyberKitAPICFLite.vsprops"
+	>
+</VisualStudioPropertySheet>

@@ -1,5 +1,5 @@
 Input:
-hello <b style="background-color:blue; color:white;">world</b> <a href="https://webkit.org/">WebKit</a>.<br>
+hello <b style="background-color:blue; color:white;">world</b> <a href="https://webkit.org/">CyberKit</a>.<br>
 <span style="background-color:yellow;">this is a <u><i>t</i>est</u> of <em>attributed</em> string.</span>
 
 Output:
@@ -41,7 +41,7 @@ Alignment 4
     NSKern: 0pt
     NSStrokeColor: #000000 (NSCustomColorSpace)
     NSStrokeWidth: 0
-[WebKit]
+[CyberKit]
     NSColor: #0000ee (NSCustomColorSpace)
     NSFont: Times-Roman 16.00 pt.
     NSKern: 0pt

@@ -1,4 +1,4 @@
-Test if WebKit does not spellcheck text when pasting text and continuous spellcheck is turned off. To test manually, copy the text "zz apple", disable continuous spellcheck and paste it to editable element below. When "zz" is not marked as misspelled, this test succeeds.
+Test if CyberKit does not spellcheck text when pasting text and continuous spellcheck is turned off. To test manually, copy the text "zz apple", disable continuous spellcheck and paste it to editable element below. When "zz" is not marked as misspelled, this test succeeds.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

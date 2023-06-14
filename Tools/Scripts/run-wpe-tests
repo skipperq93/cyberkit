@@ -31,16 +31,16 @@ import flatpakutils
 from api_test_runner import TestRunner, add_options
 
 class WPETestRunner(TestRunner):
-    TestRunner.TEST_DIRS = [ "WPE", "WebKit", "JavaScriptCore", "WTF", "WebCore" ]
+    TestRunner.TEST_DIRS = [ "WPE", "CyberKit", "CyberScriptCore", "WTF", "CyberCore" ]
 
     def __init__(self, options, tests=[]):
         super(WPETestRunner, self).__init__("wpe", options, tests)
 
     def is_glib_test(self, test_program):
-        return os.path.basename(os.path.dirname(test_program)) in ["WPE", "JavaScriptCore"]
+        return os.path.basename(os.path.dirname(test_program)) in ["WPE", "CyberScriptCore"]
 
     def is_google_test(self, test_program):
-        return os.path.basename(os.path.dirname(test_program)) in ["WebKit", "WTF", "WebCore"]
+        return os.path.basename(os.path.dirname(test_program)) in ["CyberKit", "WTF", "CyberCore"]
 
 
 if __name__ == "__main__":

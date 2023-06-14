@@ -31,7 +31,7 @@ window.addEventListener('pageshow', function() {
     }
 
     if (window.testRunner)
-        testRunner.overridePreference("WebKitUsesPageCachePreferenceKey", pageCacheEnabled);
+        testRunner.overridePreference("CyberKitUsesPageCachePreferenceKey", pageCacheEnabled);
 
     setTimeout(function() {
         window.location.href = "resources/page-go-back-onload.html";

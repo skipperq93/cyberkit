@@ -15,7 +15,7 @@
         testRunner.dumpAsText();
     }
 
-    <!-- Firefox 3 encodes query part of XMLHttpRequest requests as UTF-8, but WebKit doesn't special case these. -->
+    <!-- Firefox 3 encodes query part of XMLHttpRequest requests as UTF-8, but CyberKit doesn't special case these. -->
     var req = new XMLHttpRequest;
     req.open("GET", "/xmlhttprequest/resources/print-query.cgi?Zürich", false);
     req.send();

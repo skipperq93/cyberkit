@@ -27,7 +27,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Updates a development environment to the new WebKitSupportLibrary
+# Updates a development environment to the new CyberKitSupportLibrary
 
 use strict;
 use warnings;
@@ -45,11 +45,11 @@ use webkitdirs;
 use constant NOTAVERSION => "-1";
 
 my $sourceDir = sourceDir();
-my $file = "WebKitSupportLibrary";
+my $file = "CyberKitSupportLibrary";
 my $zipFile = "$file.zip"; 
 my $zipDirectory = $ENV{'WEBKITSUPPORTLIBRARIESZIPDIR'} || $sourceDir;
 my $pathToZip = File::Spec->catfile($zipDirectory, $zipFile);
-my $webkitLibrariesDir = $ENV{'WEBKIT_LIBRARIES'} || File::Spec->catdir($sourceDir, "WebKitLibraries", "win");
+my $webkitLibrariesDir = $ENV{'WEBKIT_LIBRARIES'} || File::Spec->catdir($sourceDir, "CyberKitLibraries", "win");
 my $versionFile = $file . "Version";
 my $pathToVersionFile = File::Spec->catfile($webkitLibrariesDir, $versionFile);
 my $tmpRelativeDir = File::Temp::tempdir("webkitlibsXXXXXXX", TMPDIR => 1, CLEANUP => 1);

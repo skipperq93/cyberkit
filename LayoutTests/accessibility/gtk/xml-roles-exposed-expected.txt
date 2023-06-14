@@ -20,7 +20,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: atomic:true, relevant:additions text, live:assertive, container-live-role:alert, container-atomic:true, container-relevant:additions text, container-live:assertive, computed-role:alert, xml-roles:alert, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: atomic:true, relevant:additions text, live:assertive, container-live-role:alert, container-atomic:true, container-relevant:additions text, container-live:assertive, computed-role:alert, xml-roles:alert, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXDialog
 AXParent: AXWebArea
@@ -39,7 +39,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: relevant:additions text, live:assertive, container-live-role:alertdialog, container-relevant:additions text, container-live:assertive, computed-role:alertdialog, xml-roles:alertdialog, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: relevant:additions text, live:assertive, container-live-role:alertdialog, container-relevant:additions text, container-live:assertive, computed-role:alertdialog, xml-roles:alertdialog, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXEmbedded
 AXParent: AXWebArea
@@ -58,7 +58,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:application, xml-roles:application, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:application, xml-roles:application, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXArticle
 AXParent: AXWebArea
@@ -77,7 +77,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:article, xml-roles:article, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:article, xml-roles:article, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkBanner
 AXParent: AXWebArea
@@ -96,7 +96,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:banner, xml-roles:banner, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:banner, xml-roles:banner, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXBlockquote
 AXParent: AXWebArea
@@ -115,7 +115,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:blockquote, xml-roles:blockquote, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:blockquote, xml-roles:blockquote, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXButton
 AXParent: AXWebArea
@@ -134,7 +134,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:button, xml-roles:button, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:button, xml-roles:button, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXCaption
 AXParent: AXWebArea
@@ -153,7 +153,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:caption, xml-roles:caption, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:caption, xml-roles:caption, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXCheckBox
 AXParent: AXWebArea
@@ -172,7 +172,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:checkbox, xml-roles:checkbox, readonly:false, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:checkbox, xml-roles:checkbox, readonly:false, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXComboBox
 AXParent: AXWebArea
@@ -191,7 +191,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:combobox, xml-roles:combobox, readonly:false, haspopup:listbox, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:combobox, xml-roles:combobox, readonly:false, haspopup:listbox, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkComplementary
 AXParent: AXWebArea
@@ -210,7 +210,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:complementary, xml-roles:complementary, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:complementary, xml-roles:complementary, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkContentInfo
 AXParent: AXWebArea
@@ -229,7 +229,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:contentinfo, xml-roles:contentinfo, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:contentinfo, xml-roles:contentinfo, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXDefinition
 AXParent: AXWebArea
@@ -248,7 +248,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:definition, xml-roles:definition, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:definition, xml-roles:definition, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXDialog
 AXParent: AXWebArea
@@ -267,7 +267,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:dialog, xml-roles:dialog, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:dialog, xml-roles:dialog, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXList
 AXParent: AXWebArea
@@ -286,7 +286,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:list, xml-roles:directory, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:list, xml-roles:directory, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXDocument
 AXParent: AXWebArea
@@ -305,7 +305,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:document, xml-roles:document, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:document, xml-roles:document, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXGroup
 AXParent: AXWebArea
@@ -324,7 +324,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:feed, xml-roles:feed, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:feed, xml-roles:feed, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXGroup
 AXParent: AXWebArea
@@ -343,7 +343,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:figure, xml-roles:figure, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:figure, xml-roles:figure, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkForm
 AXParent: AXWebArea
@@ -362,7 +362,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:form, xml-roles:form, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:form, xml-roles:form, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXGroup
 AXParent: AXWebArea
@@ -381,7 +381,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:group, xml-roles:group, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:group, xml-roles:group, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXHeading
 AXParent: AXWebArea
@@ -400,7 +400,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:heading, xml-roles:heading, level:2, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:heading, xml-roles:heading, level:2, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXImage
 AXParent: AXWebArea
@@ -419,7 +419,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:img, xml-roles:img, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:img, xml-roles:img, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLink
 AXParent: AXWebArea
@@ -439,7 +439,7 @@ AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
 AXURL: (null)
-AXPlatformAttributes: computed-role:link, xml-roles:link, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:link, xml-roles:link, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLog
 AXParent: AXWebArea
@@ -458,7 +458,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: relevant:additions text, live:polite, container-live-role:log, container-relevant:additions text, container-live:polite, computed-role:log, xml-roles:log, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: relevant:additions text, live:polite, container-live-role:log, container-relevant:additions text, container-live:polite, computed-role:log, xml-roles:log, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkMain
 AXParent: AXWebArea
@@ -477,7 +477,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:main, xml-roles:main, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:main, xml-roles:main, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXMarquee
 AXParent: AXWebArea
@@ -496,7 +496,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: relevant:additions text, live:off, container-live-role:marquee, container-relevant:additions text, container-live:off, computed-role:marquee, xml-roles:marquee, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: relevant:additions text, live:off, container-live-role:marquee, container-relevant:additions text, container-live:off, computed-role:marquee, xml-roles:marquee, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXMath
 AXParent: AXWebArea
@@ -515,7 +515,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:math, xml-roles:math, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:math, xml-roles:math, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkNavigation
 AXParent: AXWebArea
@@ -534,7 +534,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:navigation, xml-roles:navigation, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:navigation, xml-roles:navigation, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXComment
 AXParent: AXWebArea
@@ -553,7 +553,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:note, xml-roles:note, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:note, xml-roles:note, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXParagraph
 AXParent: AXWebArea
@@ -572,7 +572,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:paragraph, xml-roles:paragraph, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:paragraph, xml-roles:paragraph, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXProgressIndicator
 AXParent: AXWebArea
@@ -591,7 +591,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:progressbar, xml-roles:progressbar, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:progressbar, xml-roles:progressbar, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXRadioButton
 AXParent: AXWebArea
@@ -610,7 +610,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:radio, xml-roles:radio, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:radio, xml-roles:radio, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkRegion
 AXParent: AXWebArea
@@ -629,7 +629,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:region, xml-roles:region, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:region, xml-roles:region, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXSection
 AXParent: AXWebArea
@@ -648,7 +648,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: xml-roles:region, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: xml-roles:region, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXScrollBar
 AXParent: AXWebArea
@@ -667,7 +667,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:scrollbar, xml-roles:scrollbar, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:scrollbar, xml-roles:scrollbar, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkSearch
 AXParent: AXWebArea
@@ -686,7 +686,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:search, xml-roles:search, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:search, xml-roles:search, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXTextField
 AXParent: AXWebArea
@@ -705,7 +705,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:searchbox, xml-roles:searchbox, readonly:false, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:searchbox, xml-roles:searchbox, readonly:false, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXSeparator
 AXParent: AXWebArea
@@ -724,7 +724,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:separator, xml-roles:separator, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:separator, xml-roles:separator, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXSlider
 AXParent: AXWebArea
@@ -743,7 +743,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:slider, xml-roles:slider, readonly:false, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:slider, xml-roles:slider, readonly:false, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXSpinButton
 AXParent: AXWebArea
@@ -762,7 +762,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:spinbutton, xml-roles:spinbutton, readonly:false, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:spinbutton, xml-roles:spinbutton, readonly:false, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXStatusBar
 AXParent: AXWebArea
@@ -781,7 +781,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: atomic:true, relevant:additions text, live:polite, container-live-role:status, container-atomic:true, container-relevant:additions text, container-live:polite, computed-role:status, xml-roles:status, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: atomic:true, relevant:additions text, live:polite, container-live-role:status, container-atomic:true, container-relevant:additions text, container-live:polite, computed-role:status, xml-roles:status, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXToggleButton
 AXParent: AXWebArea
@@ -800,7 +800,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:switch, xml-roles:switch, readonly:false, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:switch, xml-roles:switch, readonly:false, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXDescriptionTerm
 AXParent: AXWebArea
@@ -819,7 +819,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:term, xml-roles:term, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:term, xml-roles:term, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXTextField
 AXParent: AXWebArea
@@ -838,7 +838,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: xml-roles:textbox, readonly:false, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: xml-roles:textbox, readonly:false, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXTimer
 AXParent: AXWebArea
@@ -857,7 +857,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: relevant:additions text, live:off, container-live-role:timer, container-relevant:additions text, container-live:off, computed-role:timer, xml-roles:timer, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: relevant:additions text, live:off, container-live-role:timer, container-relevant:additions text, container-live:off, computed-role:timer, xml-roles:timer, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXToolbar
 AXParent: AXWebArea
@@ -876,7 +876,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:toolbar, xml-roles:toolbar, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:toolbar, xml-roles:toolbar, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXUserInterfaceTooltip
 AXParent: AXWebArea
@@ -895,7 +895,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:tooltip, xml-roles:tooltip, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:tooltip, xml-roles:tooltip, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXSection
 AXParent: AXWebArea
@@ -914,7 +914,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:group, xml-roles:doc-abstract, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:group, xml-roles:doc-abstract, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkRegion
 AXParent: AXWebArea
@@ -933,7 +933,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:region, xml-roles:doc-acknowledgments, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:region, xml-roles:doc-acknowledgments, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkRegion
 AXParent: AXWebArea
@@ -952,7 +952,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:region, xml-roles:doc-afterword, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:region, xml-roles:doc-afterword, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkRegion
 AXParent: AXWebArea
@@ -971,7 +971,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:region, xml-roles:doc-appendix, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:region, xml-roles:doc-appendix, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLink
 AXParent: AXWebArea
@@ -991,7 +991,7 @@ AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
 AXURL: (null)
-AXPlatformAttributes: computed-role:link, xml-roles:doc-backlink, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:link, xml-roles:doc-backlink, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXListItem
 AXParent: AXWebArea
@@ -1010,7 +1010,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:listitem, xml-roles:doc-biblioentry, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:listitem, xml-roles:doc-biblioentry, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkRegion
 AXParent: AXWebArea
@@ -1029,7 +1029,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:region, xml-roles:doc-bibliography, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:region, xml-roles:doc-bibliography, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLink
 AXParent: AXWebArea
@@ -1049,7 +1049,7 @@ AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
 AXURL: (null)
-AXPlatformAttributes: computed-role:link, xml-roles:doc-biblioref, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:link, xml-roles:doc-biblioref, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkRegion
 AXParent: AXWebArea
@@ -1068,7 +1068,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:region, xml-roles:doc-chapter, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:region, xml-roles:doc-chapter, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXSection
 AXParent: AXWebArea
@@ -1087,7 +1087,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:group, xml-roles:doc-colophon, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:group, xml-roles:doc-colophon, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkRegion
 AXParent: AXWebArea
@@ -1106,7 +1106,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:region, xml-roles:doc-conclusion, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:region, xml-roles:doc-conclusion, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXImage
 AXParent: AXWebArea
@@ -1125,7 +1125,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:img, xml-roles:doc-cover, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:img, xml-roles:doc-cover, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXSection
 AXParent: AXWebArea
@@ -1144,7 +1144,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:group, xml-roles:doc-credit, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:group, xml-roles:doc-credit, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkRegion
 AXParent: AXWebArea
@@ -1163,7 +1163,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:region, xml-roles:doc-credits, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:region, xml-roles:doc-credits, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXSection
 AXParent: AXWebArea
@@ -1182,7 +1182,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:group, xml-roles:doc-dedication, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:group, xml-roles:doc-dedication, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXListItem
 AXParent: AXWebArea
@@ -1201,7 +1201,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:listitem, xml-roles:doc-endnote, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:listitem, xml-roles:doc-endnote, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkRegion
 AXParent: AXWebArea
@@ -1220,7 +1220,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:region, xml-roles:doc-endnotes, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:region, xml-roles:doc-endnotes, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXSection
 AXParent: AXWebArea
@@ -1239,7 +1239,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:group, xml-roles:doc-epigraph, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:group, xml-roles:doc-epigraph, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkRegion
 AXParent: AXWebArea
@@ -1258,7 +1258,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:region, xml-roles:doc-epilogue, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:region, xml-roles:doc-epilogue, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkRegion
 AXParent: AXWebArea
@@ -1277,7 +1277,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:region, xml-roles:doc-errata, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:region, xml-roles:doc-errata, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXSection
 AXParent: AXWebArea
@@ -1296,7 +1296,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:group, xml-roles:doc-example, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:group, xml-roles:doc-example, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXFootnote
 AXParent: AXWebArea
@@ -1315,7 +1315,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:group, xml-roles:doc-footnote, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:group, xml-roles:doc-footnote, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkRegion
 AXParent: AXWebArea
@@ -1334,7 +1334,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:region, xml-roles:doc-foreword, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:region, xml-roles:doc-foreword, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkRegion
 AXParent: AXWebArea
@@ -1353,7 +1353,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:region, xml-roles:doc-glossary, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:region, xml-roles:doc-glossary, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLink
 AXParent: AXWebArea
@@ -1373,7 +1373,7 @@ AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
 AXURL: (null)
-AXPlatformAttributes: computed-role:link, xml-roles:doc-glossref, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:link, xml-roles:doc-glossref, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkRegion
 AXParent: AXWebArea
@@ -1392,7 +1392,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:navigation, xml-roles:doc-index, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:navigation, xml-roles:doc-index, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkRegion
 AXParent: AXWebArea
@@ -1411,7 +1411,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:region, xml-roles:doc-introduction, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:region, xml-roles:doc-introduction, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLink
 AXParent: AXWebArea
@@ -1431,7 +1431,7 @@ AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
 AXURL: (null)
-AXPlatformAttributes: computed-role:link, xml-roles:doc-noteref, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:link, xml-roles:doc-noteref, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXComment
 AXParent: AXWebArea
@@ -1450,7 +1450,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:note, xml-roles:doc-notice, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:note, xml-roles:doc-notice, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXSeparator
 AXParent: AXWebArea
@@ -1469,7 +1469,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:separator, xml-roles:doc-pagebreak, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:separator, xml-roles:doc-pagebreak, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkRegion
 AXParent: AXWebArea
@@ -1488,7 +1488,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:navigation, xml-roles:doc-pagelist, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:navigation, xml-roles:doc-pagelist, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkRegion
 AXParent: AXWebArea
@@ -1507,7 +1507,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:region, xml-roles:doc-part, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:region, xml-roles:doc-part, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkRegion
 AXParent: AXWebArea
@@ -1526,7 +1526,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:region, xml-roles:doc-preface, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:region, xml-roles:doc-preface, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkRegion
 AXParent: AXWebArea
@@ -1545,7 +1545,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:region, xml-roles:doc-prologue, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:region, xml-roles:doc-prologue, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXSection
 AXParent: AXWebArea
@@ -1564,7 +1564,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:group, xml-roles:doc-pullquote, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:group, xml-roles:doc-pullquote, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXSection
 AXParent: AXWebArea
@@ -1583,7 +1583,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:group, xml-roles:doc-qna, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:group, xml-roles:doc-qna, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXHeading
 AXParent: AXWebArea
@@ -1602,7 +1602,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:heading, xml-roles:doc-subtitle, level:2, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:heading, xml-roles:doc-subtitle, level:2, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXComment
 AXParent: AXWebArea
@@ -1621,7 +1621,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:note, xml-roles:doc-tip, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:note, xml-roles:doc-tip, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXLandmarkRegion
 AXParent: AXWebArea
@@ -1640,7 +1640,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:navigation, xml-roles:doc-toc, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:navigation, xml-roles:doc-toc, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXDocument
 AXParent: AXWebArea
@@ -1659,7 +1659,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:document, xml-roles:graphics-document, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:document, xml-roles:graphics-document, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXGroup
 AXParent: AXWebArea
@@ -1678,7 +1678,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:group, xml-roles:graphics-object, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:group, xml-roles:graphics-object, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXImage
 AXParent: AXWebArea
@@ -1697,7 +1697,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:img, xml-roles:graphics-symbol, tag:div, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:img, xml-roles:graphics-symbol, tag:div, toolkit:CyberKitGtk
 ------------
 AXRole: AXParagraph
 AXParent: AXWebArea
@@ -1716,7 +1716,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:paragraph, html-id:description, tag:p, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:paragraph, html-id:description, tag:p, toolkit:CyberKitGtk
 ------------
 
 PASS successfullyParsed is true

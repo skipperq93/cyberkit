@@ -33,8 +33,8 @@
 class MainWindow : public RefCounted<MainWindow> {
 public:
     enum class BrowserWindowType {
-        WebKit,
-        WebKitLegacy
+        CyberKit,
+        CyberKitLegacy
     };
     static Ref<MainWindow> create(BrowserWindowType);
 

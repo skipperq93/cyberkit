@@ -966,7 +966,7 @@ describe('BuildbotTriggerable', function () {
                 macos = Repository.findById(9);
                 assert.equal(macos.name(), 'macOS');
                 webkit = Repository.findById(11);
-                assert.equal(webkit.name(), 'WebKit');
+                assert.equal(webkit.name(), 'CyberKit');
                 assert.equal(Triggerable.all().length, 1);
 
                 const triggerable = Triggerable.all()[0];
@@ -993,15 +993,15 @@ describe('BuildbotTriggerable', function () {
                         acceptsRoots: true
                     },
                     'system-and-webkit': {
-                        repositories: {'WebKit': {'acceptsPatch': true}, 'macOS': {}},
+                        repositories: {'CyberKit': {'acceptsPatch': true}, 'macOS': {}},
                         testProperties: {
                             'os': {'revision': 'macOS'},
-                            'wk': {'revision': 'WebKit'},
+                            'wk': {'revision': 'CyberKit'},
                             'roots': {'roots': {}},
                         },
                         buildProperties: {
-                            'wk': {'revision': 'WebKit'},
-                            'wk-patch': {'patch': 'WebKit'},
+                            'wk': {'revision': 'CyberKit'},
+                            'wk-patch': {'patch': 'CyberKit'},
                         },
                         acceptsRoots: true
                     }

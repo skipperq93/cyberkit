@@ -25,7 +25,7 @@ describe("/api/report", function () {
                 "macOS": {
                     "revision": "10.8.2 12C60"
                 },
-                "WebKit": {
+                "CyberKit": {
                     "revision": "141977",
                     "timestamp": "2013-02-06T08:55:20.9Z"
                 }
@@ -47,7 +47,7 @@ describe("/api/report", function () {
                 "macOS": {
                     "revision": "10.8.2 12C60"
                 },
-                "WebKit": {
+                "CyberKit": {
                     "revision": "141977",
                     "timestamp": "2013-02-06T08:55:10.9Z"
                 }
@@ -69,7 +69,7 @@ describe("/api/report", function () {
                 "macOS": {
                     "revision": "10.8.2 12C60"
                 },
-                "WebKit": {
+                "CyberKit": {
                     "revision": "141977",
                     "timestamp": "2013-02-06T08:55:19.9Z"
                 }
@@ -91,7 +91,7 @@ describe("/api/report", function () {
                 "macOS": {
                     "revision": "10.8.2 12C60"
                 },
-                "WebKit": {
+                "CyberKit": {
                     "revision": "141977",
                     "timestamp": "2013-02-06T08:55:20.9Z"
                 }
@@ -303,7 +303,7 @@ describe("/api/report", function () {
             const commits = result[1];
             const buildCommitsRelations = result[2];
             assert.equal(repositories.length, 2);
-            assert.deepEqual(repositories.map((row) => row['name']).sort(), ['WebKit', 'macOS']);
+            assert.deepEqual(repositories.map((row) => row['name']).sort(), ['CyberKit', 'macOS']);
 
             assert.equal(commits.length, 2);
             assert.equal(buildCommitsRelations.length, 2);
@@ -320,8 +320,8 @@ describe("/api/report", function () {
                 repositoryNameToRevisionRow[repositoryIdToName[commit['repository']]] = commit;
 
             assert.equal(repositoryNameToRevisionRow['macOS']['revision'], '10.8.2 12C60');
-            assert.equal(repositoryNameToRevisionRow['WebKit']['revision'], '141977');
-            assert.equal(repositoryNameToRevisionRow['WebKit']['time'].toString(),
+            assert.equal(repositoryNameToRevisionRow['CyberKit']['revision'], '141977');
+            assert.equal(repositoryNameToRevisionRow['CyberKit']['time'].toString(),
                 new Date('2013-02-06 08:55:20.9').toString());
         });
     });
@@ -373,7 +373,7 @@ describe("/api/report", function () {
     it("should reject a report with mismatching revision info", () => {
         const firstReport = emptyReport();
         firstReport['revisions'] = {
-            "WebKit": {
+            "CyberKit": {
                 "revision": "141977",
                 "timestamp": "2013-02-06T08:55:20.96Z"
             }
@@ -381,7 +381,7 @@ describe("/api/report", function () {
 
         const secondReport = emptyReport();
         secondReport['revisions'] = {
-            "WebKit": {
+            "CyberKit": {
                 "revision": "150000",
                 "timestamp": "2013-05-13T10:50:29.6Z"
             }
@@ -442,7 +442,7 @@ describe("/api/report", function () {
             "macOS": {
                 "revision": "10.8.2 12C60"
             },
-            "WebKit": {
+            "CyberKit": {
                 "revision": "141977",
                 "timestamp": "2013-02-06T08:55:20.9Z"
             }
@@ -637,7 +637,7 @@ describe("/api/report", function () {
                 "macOS": {
                     "revision": "10.8.2 12C60"
                 },
-                "WebKit": {
+                "CyberKit": {
                     "revision": "141977",
                     "timestamp": "2013-02-06T08:55:20.9Z"
                 }
@@ -816,7 +816,7 @@ describe("/api/report", function () {
                 "macOS": {
                     "revision": "10.8.2 12C60"
                 },
-                "WebKit": {
+                "CyberKit": {
                     "revision": "141977",
                     "timestamp": "2013-02-06T08:55:20.9Z"
                 }

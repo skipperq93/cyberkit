@@ -1,4 +1,4 @@
-# These are the layout test expectations for Apple's iOS port of WebKit1.
+# These are the layout test expectations for Apple's iOS port of CyberKit1.
 #
 # See http://trac.webkit.org/wiki/TestExpectations for more information on this file.
 
@@ -34,7 +34,7 @@ fast/events/ios/key-command-italic-dispatches-keydown.html [ Skip ]
 fast/events/ios/key-command-italic.html [ Skip ]
 fast/events/ios/type-digits-holding-control-key.html [ Skip ]
 
-# <input type=color> is not supported in WebKit1 on iOS.
+# <input type=color> is not supported in CyberKit1 on iOS.
 fast/forms/color/input-color-onchange-event.html [ Failure ]
 fast/forms/color/input-color-readonly.html [ Failure ]
 fast/forms/color/input-value-sanitization-color.html [ Failure ]

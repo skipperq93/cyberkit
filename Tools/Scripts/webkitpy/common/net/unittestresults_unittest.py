@@ -58,7 +58,7 @@ class UnitTestResultsTest(unittest.TestCase):
     <testcase name="CrashIfSettingUnsetColumnIndex" status="run" time="0.129" classname="RenderTableCellDeathTest" />
     <testcase name="CrashIfSettingUnsetRowIndex" status="run" time="0.123" classname="RenderTableCellDeathTest" />
     <testcase name="FAILS_DivAutoZoomParamsTest" status="run" time="0.02" classname="WebFrameTest">
-      <failure message="Value of: scale&#x0A;  Actual: 4&#x0A;Expected: 1" type=""><![CDATA[../../Source/WebKit/chromium/tests/WebFrameTest.cpp:191
+      <failure message="Value of: scale&#x0A;  Actual: 4&#x0A;Expected: 1" type=""><![CDATA[../../Source/CyberKit/chromium/tests/WebFrameTest.cpp:191
 Value of: scale
   Actual: 4
 Expected: 1]]></failure>
@@ -73,17 +73,17 @@ Expected: 1]]></failure>
 <testsuites tests="4" failures="2" disabled="0" errors="0" time="11.35" name="AllTests">
   <testsuite name="UnitTests" tests="4" failures="2" disable="0" errors="0" time="10.0">
     <testcase name="TestOne" status="run" time="0.5" classname="ClassOne">
-      <failure message="Value of: pi&#x0A;  Actual: 3&#x0A;Expected: 3.14" type=""><![CDATA[../../Source/WebKit/chromium/tests/ClassOneTest.cpp:42
+      <failure message="Value of: pi&#x0A;  Actual: 3&#x0A;Expected: 3.14" type=""><![CDATA[../../Source/CyberKit/chromium/tests/ClassOneTest.cpp:42
 Value of: pi
   Actual: 3
 Expected: 3.14]]></failure>
     </testcase>
     <testcase name="TestTwo" status="run" time="0.5" classname="ClassTwo">
-      <failure message="Value of: e&#x0A;  Actual: 2&#x0A;Expected: 2.71" type=""><![CDATA[../../Source/WebKit/chromium/tests/ClassTwoTest.cpp:30
+      <failure message="Value of: e&#x0A;  Actual: 2&#x0A;Expected: 2.71" type=""><![CDATA[../../Source/CyberKit/chromium/tests/ClassTwoTest.cpp:30
 Value of: e
   Actual: 2
 Expected: 2.71]]></failure>
-      <failure message="Value of: tau&#x0A;  Actual: 6&#x0A;Expected: 6.28" type=""><![CDATA[../../Source/WebKit/chromium/tests/ClassTwoTest.cpp:55
+      <failure message="Value of: tau&#x0A;  Actual: 6&#x0A;Expected: 6.28" type=""><![CDATA[../../Source/CyberKit/chromium/tests/ClassTwoTest.cpp:55
 Value of: tau
   Actual: 6
 Expected: 6.28]]></failure>

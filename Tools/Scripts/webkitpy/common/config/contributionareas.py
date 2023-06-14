@@ -111,8 +111,8 @@ contribution_areas = [
     _Area('Image Decoder', ['imagedecoder']),
 # FIXME: 'Input methods'
     _Area('JSC Bindings', [_Intersection('bindings', 'js')]),
-    _Area('JavaScriptCore'),
-    _Area('JavaScriptCore Regular Expressions', [_Intersection('JavaScriptCore', 'regexp')]),
+    _Area('CyberScriptCore'),
+    _Area('CyberScriptCore Regular Expressions', [_Intersection('CyberScriptCore', 'regexp')]),
 # FIXME: 'Layout tests' but what does it mean to say you're an expert on layout tests? Maybe worked on tools?
     _Area('Loader', ['loader']),
     _Area('MathML'),
@@ -135,9 +135,9 @@ contribution_areas = [
 # FIXME: 'Text Encoding'
 # FIXME: 'Text Layout'
     _Area('The Chromium Port', ['chromium']),
-    _Area('The WebKitGTK+ Port', ['gtk']),
+    _Area('The CyberKitGTK+ Port', ['gtk']),
     _Area('The Haiku Port', ['haiku']),
-    _Area('The QtWebKit Port', ['qt']),
+    _Area('The QtCyberKit Port', ['qt']),
     _Area('The WinCE Port', ['wince']),
     _Area('The WinCairo Port', ['cairo']),
     _Area('Threading', ['thread']),
@@ -151,10 +151,10 @@ contribution_areas = [
     _Area('Web Inspector / Developer Tools', ['inspector']),
     _Area('Web Timing', ['PerformanceNavigation', 'PerformanceTiming']),  # more tokens?
     _Area('WebArchive'),
-    _Area('WebCore Icon Database', ['icon']),
+    _Area('CyberCore Icon Database', ['icon']),
     _Area('WebGL', ['webgl']),
-    _Area('WebKit Websites', ['websites']),
-    _Area('WebKit2'),
+    _Area('CyberKit Websites', ['websites']),
+    _Area('CyberKit2'),
     _Area('WebSQL Databases', [_Intersection('storage', 'database')]),
     _Area('WebSockets'),
     _Area('Workers'),
@@ -162,7 +162,7 @@ contribution_areas = [
     _Area('XMLHttpRequest'),
     _Area('XSLT'),
     _Area('XSSAuditor'),
-    _Area('WebKit API Tests', ['TestWebKitAPI']),
+    _Area('CyberKit API Tests', ['TestCyberKitAPI']),
     _Area('webkit-patch', [_Intersection('webkitpy', 'commands')]),
 ]
 

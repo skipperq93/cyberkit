@@ -2,7 +2,7 @@
 <html>
 <head>
 <script src="../../resources/js-test-pre.js"></script>
-<style>@namespace WebKit url(http://www.webkit.org/rocks);</style>
+<style>@namespace CyberKit url(http://www.webkit.org/rocks);</style>
 <style id="style-container"></style>
 </head>
 <body>
@@ -21,12 +21,12 @@ function testInvalidSelector(selectorString) {
     shouldThrowErrorName('document.querySelector("' + selectorString.replace(/"/g, '\\"') + '")', 'SyntaxError');
     shouldThrowErrorName('document.querySelector("' + selectorString.replace(/"/g, '\\"').replace('[', '[|') + '")', 'SyntaxError');
     shouldThrowErrorName('document.querySelector("' + selectorString.replace(/"/g, '\\"').replace('[', '[*|') + '")', 'SyntaxError');
-    shouldThrowErrorName('document.querySelector("' + selectorString.replace(/"/g, '\\"').replace('[', '[WebKit|') + '")', 'SyntaxError');
+    shouldThrowErrorName('document.querySelector("' + selectorString.replace(/"/g, '\\"').replace('[', '[CyberKit|') + '")', 'SyntaxError');
 
     testInvalidSelectorCSSOMSerialization(selectorString);
     testInvalidSelectorCSSOMSerialization(selectorString.replace('[', '[|'));
     testInvalidSelectorCSSOMSerialization(selectorString.replace('[', '[*|'));
-    testInvalidSelectorCSSOMSerialization(selectorString.replace('[', '[WebKit|'));
+    testInvalidSelectorCSSOMSerialization(selectorString.replace('[', '[CyberKit|'));
 }
 
 var invalidSelectors = [

@@ -1,0 +1,79 @@
+/*
+ * Copyright (C) 2010 Apple Inc. All rights reserved.
+ * Portions Copyright (c) 2010 Motorola Mobility, Inc.  All rights reserved.
+ * Copyright (C) 2011 Igalia S.L.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS''
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+ * THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+#pragma once
+
+#include "APIPageConfiguration.h"
+#include "DragAndDropHandler.h"
+#include "GestureController.h"
+#include "WebContextMenuProxyGtk.h"
+#include "WebInspectorProxy.h"
+#include "CyberKitWebViewBase.h"
+#include "WebPageProxy.h"
+
+CyberKitWebViewBase* webkitWebViewBaseCreate(const API::PageConfiguration&);
+GtkIMContext* webkitWebViewBaseGetIMContext(CyberKitWebViewBase*);
+CyberKit::WebPageProxy* webkitWebViewBaseGetPage(CyberKitWebViewBase*);
+void webkitWebViewBaseCreateWebPage(CyberKitWebViewBase*, Ref<API::PageConfiguration>&&);
+void webkitWebViewBaseSetTooltipText(CyberKitWebViewBase*, const char*);
+void webkitWebViewBaseSetTooltipArea(CyberKitWebViewBase*, const CyberCore::IntRect&);
+void webkitWebViewBaseForwardNextKeyEvent(CyberKitWebViewBase*);
+void webkitWebViewBaseForwardNextWheelEvent(CyberKitWebViewBase*);
+void webkitWebViewBaseChildMoveResize(CyberKitWebViewBase*, GtkWidget*, const CyberCore::IntRect&);
+void webkitWebViewBaseEnterFullScreen(CyberKitWebViewBase*);
+void webkitWebViewBaseExitFullScreen(CyberKitWebViewBase*);
+bool webkitWebViewBaseIsFullScreen(CyberKitWebViewBase*);
+void webkitWebViewBaseSetInspectorViewSize(CyberKitWebViewBase*, unsigned size);
+void webkitWebViewBaseSetActiveContextMenuProxy(CyberKitWebViewBase*, CyberKit::WebContextMenuProxyGtk*);
+CyberKit::WebContextMenuProxyGtk* webkitWebViewBaseGetActiveContextMenuProxy(CyberKitWebViewBase*);
+GdkEvent* webkitWebViewBaseTakeContextMenuEvent(CyberKitWebViewBase*);
+void webkitWebViewBaseSetInputMethodState(CyberKitWebViewBase*, bool enabled);
+void webkitWebViewBaseUpdateTextInputState(CyberKitWebViewBase*);
+void webkitWebViewBaseSetContentsSize(CyberKitWebViewBase*, const CyberCore::IntSize&);
+
+void webkitWebViewBaseSetFocus(CyberKitWebViewBase*, bool focused);
+bool webkitWebViewBaseIsInWindowActive(CyberKitWebViewBase*);
+bool webkitWebViewBaseIsFocused(CyberKitWebViewBase*);
+bool webkitWebViewBaseIsVisible(CyberKitWebViewBase*);
+bool webkitWebViewBaseIsInWindow(CyberKitWebViewBase*);
+
+void webkitWebViewBaseAddDialog(CyberKitWebViewBase*, GtkWidget*);
+void webkitWebViewBaseAddWebInspector(CyberKitWebViewBase*, GtkWidget* inspector, CyberKit::AttachmentSide);
+void webkitWebViewBaseResetClickCounter(CyberKitWebViewBase*);
+void webkitWebViewBaseEnterAcceleratedCompositingMode(CyberKitWebViewBase*, const CyberKit::LayerTreeContext&);
+void webkitWebViewBaseUpdateAcceleratedCompositingMode(CyberKitWebViewBase*, const CyberKit::LayerTreeContext&);
+void webkitWebViewBaseExitAcceleratedCompositingMode(CyberKitWebViewBase*);
+void webkitWebViewBaseDidRelaunchWebProcess(CyberKitWebViewBase*);
+void webkitWebViewBasePageClosed(CyberKitWebViewBase*);
+
+#if ENABLE(DRAG_SUPPORT)
+CyberKit::DragAndDropHandler& webkitWebViewBaseDragAndDropHandler(CyberKitWebViewBase*);
+#endif
+
+#if HAVE(GTK_GESTURES)
+CyberKit::GestureController& webkitWebViewBaseGestureController(CyberKitWebViewBase*);
+#endif

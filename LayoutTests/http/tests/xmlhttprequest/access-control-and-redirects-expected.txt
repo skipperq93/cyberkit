@@ -8,7 +8,7 @@ CONSOLE MESSAGE: Cross-origin redirection to http://localhost:8000/xmlhttpreques
 CONSOLE MESSAGE: XMLHttpRequest cannot load http://localhost:8000/resources/redirect.php?url=http://localhost:8000/xmlhttprequest/resources/access-control-basic-allow.cgi due to access control checks.
 Tests that redirects between origins are never allowed, even when access control is involved.
 
-Per the spec, these test cases should be allowed, but cross-origin redirects are currently unsupported in WebCore.
+Per the spec, these test cases should be allowed, but cross-origin redirects are currently unsupported in CyberCore.
 
 Testing /resources/redirect.php?url=http://localhost:8000/xmlhttprequest/resources/access-control-basic-allow.cgi (sync)
 Expecting success: true

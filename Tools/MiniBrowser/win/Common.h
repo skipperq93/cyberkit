@@ -27,7 +27,7 @@
 
 #include "stdafx.h"
 #include "MainWindow.h"
-#include "WebKitLegacyBrowserWindow.h"
+#include "CyberKitLegacyBrowserWindow.h"
 
 struct CommandLineOptions {
     bool usesLayeredWebView { };
@@ -38,9 +38,9 @@ struct CommandLineOptions {
 
     CommandLineOptions()
 #if ENABLE(WEBKIT)
-        : windowType(MainWindow::BrowserWindowType::WebKit)
+        : windowType(MainWindow::BrowserWindowType::CyberKit)
 #else
-        : windowType(MainWindow::BrowserWindowType::WebKitLegacy)
+        : windowType(MainWindow::BrowserWindowType::CyberKitLegacy)
 #endif
     {
     }

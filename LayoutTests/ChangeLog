@@ -9,7 +9,7 @@
     Patch by Sihui Liu <sihui_liu@appe.com> on 2021-01-11
     Reviewed by Youenn Fablet.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     When an upgrade transaction is aborted, we move objects from m_deletedIndexes to m_referencedIndexes to revert
     the index deletion operation. When updating m_referencedIndexes, we did not check whether key already exists.
@@ -20,7 +20,7 @@
            storage/indexeddb/modern/abort-index-info.html
     
     * Modules/indexeddb/IDBObjectStore.cpp:
-    (WebCore::IDBObjectStore::rollbackForVersionChangeAbort):
+    (CyberCore::IDBObjectStore::rollbackForVersionChangeAbort):
     
     LayoutTests:
     
@@ -74,7 +74,7 @@
 
         Reviewed by Saam Barati.
 
-        Source/JavaScriptCore:
+        Source/CyberScriptCore:
 
         JSObject::attemptToInterceptPutByIndexOnHole uses getPrototypeDirect, but it should use getPrototype to
         handle getPrototype methods in derived JSObject classes correctly.
@@ -122,25 +122,25 @@
     
     Tools:
     
-    Add support for testRunner.abortModal() in macOS's WebKitTestRunner in order
+    Add support for testRunner.abortModal() in macOS's CyberKitTestRunner in order
     to match DumpRenderTree.
     
-    * WebKitTestRunner/InjectedBundle/Bindings/TestRunner.idl:
-    * WebKitTestRunner/InjectedBundle/TestRunner.cpp:
+    * CyberKitTestRunner/InjectedBundle/Bindings/TestRunner.idl:
+    * CyberKitTestRunner/InjectedBundle/TestRunner.cpp:
     (WTR::TestRunner::abortModal):
-    * WebKitTestRunner/InjectedBundle/TestRunner.h:
-    * WebKitTestRunner/TestController.cpp:
+    * CyberKitTestRunner/InjectedBundle/TestRunner.h:
+    * CyberKitTestRunner/TestController.cpp:
     (WTR::TestController::runModal):
-    * WebKitTestRunner/TestController.h:
-    * WebKitTestRunner/TestInvocation.cpp:
+    * CyberKitTestRunner/TestController.h:
+    * CyberKitTestRunner/TestInvocation.cpp:
     (WTR::TestInvocation::didReceiveSynchronousMessageFromInjectedBundle):
-    * WebKitTestRunner/gtk/TestControllerGtk.cpp:
+    * CyberKitTestRunner/gtk/TestControllerGtk.cpp:
     (WTR::TestController::abortModal):
-    * WebKitTestRunner/ios/TestControllerIOS.mm:
+    * CyberKitTestRunner/ios/TestControllerIOS.mm:
     (WTR::TestController::abortModal):
-    * WebKitTestRunner/mac/TestControllerMac.mm:
+    * CyberKitTestRunner/mac/TestControllerMac.mm:
     (WTR::TestController::abortModal):
-    * WebKitTestRunner/win/TestControllerWin.cpp:
+    * CyberKitTestRunner/win/TestControllerWin.cpp:
     (WTR::TestController::abortModal):
     
     LayoutTests:
@@ -171,14 +171,14 @@
     
     Reviewed by Zalan Bujtas.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     This can cause marker elements get style they shouldn't.
     
     Test: fast/lists/marker-style-subselector-whitelist.html
     
     * css/RuleSet.cpp:
-    (WebCore::determinePropertyWhitelistType):
+    (CyberCore::determinePropertyWhitelistType):
     
     Check subselectors too.
     
@@ -212,7 +212,7 @@
     
     Reviewed by Ryosuke Niwa.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Fix security check in ScriptController::canAccessFromCurrentOrigin() when there is no
     current JS exec state. Instead of returning true unconditionally, we now fall back to
@@ -225,10 +225,10 @@
     Test: http/tests/security/showModalDialog-sync-cross-origin-page-load2.html
     
     * bindings/js/ScriptController.cpp:
-    (WebCore::ScriptController::canAccessFromCurrentOrigin):
+    (CyberCore::ScriptController::canAccessFromCurrentOrigin):
     * bindings/js/ScriptController.h:
     * html/HTMLFrameElementBase.cpp:
-    (WebCore::HTMLFrameElementBase::isURLAllowed const):
+    (CyberCore::HTMLFrameElementBase::isURLAllowed const):
     
     LayoutTests:
     
@@ -262,7 +262,7 @@
     
     Reviewed by Alex Christensen.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     The current frame can change when layout runs, so don't bother retrieving
     the frame until the final layout pass is complete.
@@ -270,11 +270,11 @@
     Test: fast/dom/window-inner-width-crash.html
     
     * page/DOMWindow.cpp:
-    (WebCore::DOMWindow::innerHeight const): Move frame access past the
+    (CyberCore::DOMWindow::innerHeight const): Move frame access past the
     layout operation.
-    (WebCore::DOMWindow::innerWidth const): Ditto.
-    (WebCore::DOMWindow::scrollX const): Ditto.
-    (WebCore::DOMWindow::scrollY const): Ditto.
+    (CyberCore::DOMWindow::innerWidth const): Ditto.
+    (CyberCore::DOMWindow::scrollX const): Ditto.
+    (CyberCore::DOMWindow::scrollY const): Ditto.
     
     LayoutTests:
     
@@ -304,7 +304,7 @@
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     ShapeOutside objects are used to compute line constrains during layout (in a strict sense, they are part of the layout context and should only be mutated during layout).
     If we don't create one during layout, we probably don't need to know its geometry during paint (or any other non-layout activity) either.
@@ -312,10 +312,10 @@
     Test: fast/block/float/float-with-shape-outside-crash.html
     
     * rendering/FloatingObjects.cpp:
-    (WebCore::ComputeFloatOffsetForLineLayoutAdapter<FloatingObject::FloatLeft>::updateOffsetIfNeeded):
-    (WebCore::ComputeFloatOffsetForLineLayoutAdapter<FloatingObject::FloatRight>::updateOffsetIfNeeded):
+    (CyberCore::ComputeFloatOffsetForLineLayoutAdapter<FloatingObject::FloatLeft>::updateOffsetIfNeeded):
+    (CyberCore::ComputeFloatOffsetForLineLayoutAdapter<FloatingObject::FloatRight>::updateOffsetIfNeeded):
     * rendering/shapes/ShapeOutsideInfo.cpp:
-    (WebCore::ShapeOutsideInfo::computeDeltasForContainingBlockLine):
+    (CyberCore::ShapeOutsideInfo::computeDeltasForContainingBlockLine):
     
     LayoutTests:
     
@@ -345,7 +345,7 @@
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: http/tests/svg/crash-on-reload-with-filter.html
     
@@ -353,7 +353,7 @@
     Also during full render tree destruction the inline tree state is undefined. We should avoid accessing it.
     
     * rendering/svg/RenderSVGResourceContainer.cpp:
-    (WebCore::RenderSVGResourceContainer::markAllClientLayersForInvalidation):
+    (CyberCore::RenderSVGResourceContainer::markAllClientLayersForInvalidation):
     
     LayoutTests:
     
@@ -407,7 +407,7 @@
     (foo):
     * test262/expectations.yaml:
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     According to the spec[1]:
     - TypedArrays should not perform an ordinary GetOwnProperty/SetOwnProperty if the index is a
@@ -421,7 +421,7 @@
     [1]: https://www.ecma-international.org/ecma-262/9.0/index.html#sec-integer-indexed-exotic-objects-defineownproperty-p-desc
     
     * CMakeLists.txt:
-    * JavaScriptCore.xcodeproj/project.pbxproj:
+    * CyberScriptCore.xcodeproj/project.pbxproj:
     * runtime/JSGenericTypedArrayViewInlines.h:
     (JSC::JSGenericTypedArrayView<Adaptor>::getOwnPropertySlot):
     (JSC::JSGenericTypedArrayView<Adaptor>::put):
@@ -459,7 +459,7 @@
     
     Reviewed by Darin Adler.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     When an iframe's src attribute is set to a javascript URL, whether when parsing
     or later on via JS, we now execute the URL's JavaScript asynchronously. We used
@@ -476,13 +476,13 @@
     Test: fast/dom/frame-src-javascript-url-async.html
     
     * loader/NavigationScheduler.cpp:
-    (WebCore::ScheduledLocationChange::ScheduledLocationChange):
-    (WebCore::ScheduledLocationChange::~ScheduledLocationChange):
-    (WebCore::NavigationScheduler::scheduleLocationChange):
+    (CyberCore::ScheduledLocationChange::ScheduledLocationChange):
+    (CyberCore::ScheduledLocationChange::~ScheduledLocationChange):
+    (CyberCore::NavigationScheduler::scheduleLocationChange):
     * loader/NavigationScheduler.h:
-    (WebCore::NavigationScheduler::scheduleLocationChange):
+    (CyberCore::NavigationScheduler::scheduleLocationChange):
     * loader/SubframeLoader.cpp:
-    (WebCore::SubframeLoader::requestFrame):
+    (CyberCore::SubframeLoader::requestFrame):
     
     LayoutTests:
     
@@ -598,7 +598,7 @@
     
     Reviewed by Antti Koivisto.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     This patch tightens the remove-anonymous-wrappers logic by checking if the removal would
     produce an inline-block sibling mix.
@@ -610,9 +610,9 @@
     Test: fast/ruby/continuation-and-column-spanner-crash.html
     
     * rendering/updating/RenderTreeBuilder.cpp:
-    (WebCore::RenderTreeBuilder::removeAnonymousWrappersForInlineChildrenIfNeeded):
+    (CyberCore::RenderTreeBuilder::removeAnonymousWrappersForInlineChildrenIfNeeded):
     * rendering/updating/RenderTreeBuilderContinuation.cpp:
-    (WebCore::RenderTreeBuilder::Continuation::cleanupOnDestroy):
+    (CyberCore::RenderTreeBuilder::Continuation::cleanupOnDestroy):
     
     LayoutTests:
     
@@ -642,7 +642,7 @@
     
     Reviewed by Alex Christensen.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Prevent cross-site top-level navigations from third-party iframes if the following conditions are met:
     1. Its tries to navigate the top-level page cross-site (different eTDL+1)
@@ -657,22 +657,22 @@
            http/tests/security/block-top-level-navigations-by-third-party-iframes.html
     
     * dom/Document.cpp:
-    (WebCore::printNavigationErrorMessage):
-    (WebCore::Document::canNavigate):
-    (WebCore::Document::canNavigateInternal):
-    (WebCore::Document::isNavigationBlockedByThirdPartyIFrameRedirectBlocking):
+    (CyberCore::printNavigationErrorMessage):
+    (CyberCore::Document::canNavigate):
+    (CyberCore::Document::canNavigateInternal):
+    (CyberCore::Document::isNavigationBlockedByThirdPartyIFrameRedirectBlocking):
     * dom/Document.h:
     * dom/UserGestureIndicator.cpp:
     * page/DOMWindow.cpp:
-    (WebCore::DOMWindow::setLocation):
+    (CyberCore::DOMWindow::setLocation):
     * page/DOMWindow.h:
     * page/Frame.h:
     * page/Location.cpp:
-    (WebCore::Location::replace):
-    (WebCore::Location::setLocation):
+    (CyberCore::Location::replace):
+    (CyberCore::Location::setLocation):
     * page/Settings.yaml:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Add experimental feature flag, on by default.
     
@@ -739,11 +739,11 @@
     * MotionMark/resources/debug-runner/motionmark.css:
     (#intro .start-benchmark p):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     * Configurations/FeatureDefines.xcconfig:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     This is an unreviewed partial revert of r243819. Turns out there are some websites
     which use this property to do browser detection. So, we need to continue to parse
@@ -753,36 +753,36 @@
     
     * Configurations/FeatureDefines.xcconfig:
     * css/CSSComputedStyleDeclaration.cpp:
-    (WebCore::ComputedStyleExtractor::valueForPropertyinStyle):
+    (CyberCore::ComputedStyleExtractor::valueForPropertyinStyle):
     * css/CSSPrimitiveValueMappings.h:
-    (WebCore::CSSPrimitiveValue::CSSPrimitiveValue):
-    (WebCore::CSSPrimitiveValue::operator TrailingWord const):
+    (CyberCore::CSSPrimitiveValue::CSSPrimitiveValue):
+    (CyberCore::CSSPrimitiveValue::operator TrailingWord const):
     * css/CSSProperties.json:
     * css/CSSValueKeywords.in:
     * css/parser/CSSParserFastPaths.cpp:
-    (WebCore::CSSParserFastPaths::isValidKeywordPropertyAndValue):
-    (WebCore::CSSParserFastPaths::isKeywordPropertyID):
+    (CyberCore::CSSParserFastPaths::isValidKeywordPropertyAndValue):
+    (CyberCore::CSSParserFastPaths::isKeywordPropertyID):
     * rendering/style/RenderStyle.h:
-    (WebCore::RenderStyle::trailingWord const):
-    (WebCore::RenderStyle::setTrailingWord):
-    (WebCore::RenderStyle::initialTrailingWord):
+    (CyberCore::RenderStyle::trailingWord const):
+    (CyberCore::RenderStyle::setTrailingWord):
+    (CyberCore::RenderStyle::initialTrailingWord):
     * rendering/style/RenderStyleConstants.h:
     
-    Source/WebCore/PAL:
+    Source/CyberCore/PAL:
     
     * Configurations/FeatureDefines.xcconfig:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * Configurations/FeatureDefines.xcconfig:
     
-    Source/WebKitLegacy/mac:
+    Source/CyberKitLegacy/mac:
     
     * Configurations/FeatureDefines.xcconfig:
     
     Tools:
     
-    * TestWebKitAPI/Configurations/FeatureDefines.xcconfig:
+    * TestCyberKitAPI/Configurations/FeatureDefines.xcconfig:
     
     LayoutTests:
     
@@ -818,65 +818,65 @@
     
     .:
     
-    * Source/cmake/WebKitFeatures.cmake:
+    * Source/cmake/CyberKitFeatures.cmake:
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     * Configurations/FeatureDefines.xcconfig:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     * Configurations/FeatureDefines.xcconfig:
     * css/CSSComputedStyleDeclaration.cpp:
-    (WebCore::ComputedStyleExtractor::valueForPropertyinStyle):
+    (CyberCore::ComputedStyleExtractor::valueForPropertyinStyle):
     * css/CSSPrimitiveValueMappings.h:
-    (WebCore::CSSPrimitiveValue::operator TrailingWord const): Deleted.
+    (CyberCore::CSSPrimitiveValue::operator TrailingWord const): Deleted.
     * css/CSSProperties.json:
     * css/CSSValueKeywords.in:
     * css/parser/CSSParserFastPaths.cpp:
-    (WebCore::CSSParserFastPaths::isValidKeywordPropertyAndValue):
-    (WebCore::CSSParserFastPaths::isKeywordPropertyID):
+    (CyberCore::CSSParserFastPaths::isValidKeywordPropertyAndValue):
+    (CyberCore::CSSParserFastPaths::isKeywordPropertyID):
     * rendering/SimpleLineLayout.cpp:
-    (WebCore::SimpleLineLayout::canUseForStyle):
+    (CyberCore::SimpleLineLayout::canUseForStyle):
     * rendering/SimpleLineLayoutCoverage.cpp:
-    (WebCore::SimpleLineLayout::printReason):
+    (CyberCore::SimpleLineLayout::printReason):
     * rendering/SimpleLineLayoutCoverage.h:
     * rendering/line/BreakingContext.h:
-    (WebCore::BreakingContext::BreakingContext):
-    (WebCore::BreakingContext::lineBreak):
-    (WebCore::BreakingContext::clearLineBreakIfFitsOnLine):
-    (WebCore::BreakingContext::commitLineBreakClear):
-    (WebCore::BreakingContext::commitLineBreakAtCurrentWidth):
-    (WebCore::BreakingContext::handleBR):
-    (WebCore::BreakingContext::handleFloat):
-    (WebCore::BreakingContext::handleText):
-    (WebCore::BreakingContext::handleEndOfLine):
-    (WebCore::BreakingContext::InlineIteratorHistory::InlineIteratorHistory): Deleted.
-    (WebCore::BreakingContext::InlineIteratorHistory::push): Deleted.
-    (WebCore::BreakingContext::InlineIteratorHistory::update): Deleted.
-    (WebCore::BreakingContext::InlineIteratorHistory::renderer const): Deleted.
-    (WebCore::BreakingContext::InlineIteratorHistory::offset const): Deleted.
-    (WebCore::BreakingContext::InlineIteratorHistory::nextBreakablePosition const): Deleted.
-    (WebCore::BreakingContext::InlineIteratorHistory::atTextParagraphSeparator const): Deleted.
-    (WebCore::BreakingContext::InlineIteratorHistory::previousInSameNode const): Deleted.
-    (WebCore::BreakingContext::InlineIteratorHistory::get const): Deleted.
-    (WebCore::BreakingContext::InlineIteratorHistory::current const): Deleted.
-    (WebCore::BreakingContext::InlineIteratorHistory::historyLength const): Deleted.
-    (WebCore::BreakingContext::InlineIteratorHistory::moveTo): Deleted.
-    (WebCore::BreakingContext::InlineIteratorHistory::increment): Deleted.
-    (WebCore::BreakingContext::InlineIteratorHistory::clear): Deleted.
-    (WebCore::BreakingContext::optimalLineBreakLocationForTrailingWord): Deleted.
+    (CyberCore::BreakingContext::BreakingContext):
+    (CyberCore::BreakingContext::lineBreak):
+    (CyberCore::BreakingContext::clearLineBreakIfFitsOnLine):
+    (CyberCore::BreakingContext::commitLineBreakClear):
+    (CyberCore::BreakingContext::commitLineBreakAtCurrentWidth):
+    (CyberCore::BreakingContext::handleBR):
+    (CyberCore::BreakingContext::handleFloat):
+    (CyberCore::BreakingContext::handleText):
+    (CyberCore::BreakingContext::handleEndOfLine):
+    (CyberCore::BreakingContext::InlineIteratorHistory::InlineIteratorHistory): Deleted.
+    (CyberCore::BreakingContext::InlineIteratorHistory::push): Deleted.
+    (CyberCore::BreakingContext::InlineIteratorHistory::update): Deleted.
+    (CyberCore::BreakingContext::InlineIteratorHistory::renderer const): Deleted.
+    (CyberCore::BreakingContext::InlineIteratorHistory::offset const): Deleted.
+    (CyberCore::BreakingContext::InlineIteratorHistory::nextBreakablePosition const): Deleted.
+    (CyberCore::BreakingContext::InlineIteratorHistory::atTextParagraphSeparator const): Deleted.
+    (CyberCore::BreakingContext::InlineIteratorHistory::previousInSameNode const): Deleted.
+    (CyberCore::BreakingContext::InlineIteratorHistory::get const): Deleted.
+    (CyberCore::BreakingContext::InlineIteratorHistory::current const): Deleted.
+    (CyberCore::BreakingContext::InlineIteratorHistory::historyLength const): Deleted.
+    (CyberCore::BreakingContext::InlineIteratorHistory::moveTo): Deleted.
+    (CyberCore::BreakingContext::InlineIteratorHistory::increment): Deleted.
+    (CyberCore::BreakingContext::InlineIteratorHistory::clear): Deleted.
+    (CyberCore::BreakingContext::optimalLineBreakLocationForTrailingWord): Deleted.
     * rendering/style/RenderStyle.h:
-    (WebCore::RenderStyle::trailingWord const): Deleted.
-    (WebCore::RenderStyle::setTrailingWord): Deleted.
-    (WebCore::RenderStyle::initialTrailingWord): Deleted.
+    (CyberCore::RenderStyle::trailingWord const): Deleted.
+    (CyberCore::RenderStyle::setTrailingWord): Deleted.
+    (CyberCore::RenderStyle::initialTrailingWord): Deleted.
     * rendering/style/RenderStyleConstants.h:
     * rendering/style/StyleRareInheritedData.cpp:
-    (WebCore::StyleRareInheritedData::StyleRareInheritedData):
-    (WebCore::StyleRareInheritedData::operator== const):
+    (CyberCore::StyleRareInheritedData::StyleRareInheritedData):
+    (CyberCore::StyleRareInheritedData::operator== const):
     * rendering/style/StyleRareInheritedData.h:
     
-    Source/WebCore/PAL:
+    Source/CyberCore/PAL:
     
     * Configurations/FeatureDefines.xcconfig:
     
@@ -884,18 +884,18 @@
     
     * UserInterface/Models/CSSKeywordCompletions.js:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * Configurations/FeatureDefines.xcconfig:
     
-    Source/WebKitLegacy/mac:
+    Source/CyberKitLegacy/mac:
     
     * Configurations/FeatureDefines.xcconfig:
     
     Tools:
     
     * Scripts/webkitperl/FeatureList.pm:
-    * TestWebKitAPI/Configurations/FeatureDefines.xcconfig:
+    * TestCyberKitAPI/Configurations/FeatureDefines.xcconfig:
     
     LayoutTests:
     
@@ -933,7 +933,7 @@
     
     Reviewed by Darin Adler.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     CSSFontFaceSet has a raw pointer to its owning document. JS can keep the CSSFontFaceSet alive (by using FontFaceSet)
     and can destroy the document at any time. When the document is destroyed, the link between the two objects needs to
@@ -942,18 +942,18 @@
     Test: fast/text/font-face-set-destroy-document.html
     
     * css/CSSFontFace.cpp:
-    (WebCore::CSSFontFace::CSSFontFace):
+    (CyberCore::CSSFontFace::CSSFontFace):
     * css/CSSFontFace.h:
     * css/CSSFontFaceSet.cpp:
-    (WebCore::CSSFontFaceSet::CSSFontFaceSet):
-    (WebCore::CSSFontFaceSet::ensureLocalFontFacesForFamilyRegistered):
+    (CyberCore::CSSFontFaceSet::CSSFontFaceSet):
+    (CyberCore::CSSFontFaceSet::ensureLocalFontFacesForFamilyRegistered):
     * css/CSSFontFaceSet.h:
     * css/CSSFontSelector.cpp:
-    (WebCore::CSSFontSelector::CSSFontSelector):
-    (WebCore::CSSFontSelector::addFontFaceRule):
+    (CyberCore::CSSFontSelector::CSSFontSelector):
+    (CyberCore::CSSFontSelector::addFontFaceRule):
     * css/CSSFontSelector.h:
     * css/FontFace.cpp:
-    (WebCore::FontFace::FontFace):
+    (CyberCore::FontFace::FontFace):
     
     LayoutTests:
     
@@ -978,7 +978,7 @@
 
     REGRESSION (r238266): Exchange 2013 Outlook Web Access displays partially blank page when creating new e-mail
     https://bugs.webkit.org/show_bug.cgi?id=196522
-    Source/WebCore:
+    Source/CyberCore:
     
     rdar://problem/49472941
     
@@ -995,7 +995,7 @@
     Test: compositing/backing/foreground-layer-no-paints-into-ancestor.html
     
     * rendering/RenderLayerCompositor.cpp:
-    (WebCore::RenderLayerCompositor::requiresOwnBackingStore const):
+    (CyberCore::RenderLayerCompositor::requiresOwnBackingStore const):
     
     LayoutTests:
     
@@ -1027,7 +1027,7 @@
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Currently simple line layout can't provide the correct line breaking context to the inline tree when the boxtree is
     generated using the simple line runs. This patch limits the generation of such trees to single lines. Multiline content will
@@ -1037,7 +1037,7 @@
     Test: fast/text/simple-line-layout-and-multiline-inlineboxtree.html
     
     * rendering/SimpleLineLayoutFunctions.cpp:
-    (WebCore::SimpleLineLayout::canUseForLineBoxTree):
+    (CyberCore::SimpleLineLayout::canUseForLineBoxTree):
     
     LayoutTests:
     
@@ -1068,14 +1068,14 @@
     
     Reviewed by Daniel Bates.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Disable simple line layout unconditionally on non-auto text-underline-position content. We don't support it yet.
     
     Test: fast/text/simple-line-layout-with-text-underline-position.html
     
     * rendering/SimpleLineLayout.cpp:
-    (WebCore::SimpleLineLayout::canUseForStyle):
+    (CyberCore::SimpleLineLayout::canUseForStyle):
     
     LayoutTests:
     
@@ -1135,7 +1135,7 @@
     
     Reviewed by Brent Fulgham.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Ensure that a request for a top-level navigation is annotated as such regardless of whether
     the request has a computed Same Site policy.
@@ -1148,10 +1148,10 @@
     Currently the frame loader marks a request as a top-level navigation if and only if the request
     does not have a pre-computed Same Site policy. However, "New loads" have a pre-computed Same Site
     policy. So, these loads would never be marked as a top-level navigation by the frame loading code.
-    Therefore, if the "new load" turned out to be a cross-site redirect then WebKit would incorrectly
+    Therefore, if the "new load" turned out to be a cross-site redirect then CyberKit would incorrectly
     tell the networking stack that the load was a cross-site, non-top-level navigation, and per the
     Same Site spec [2], the networking stack would not send Same Site Lax cookies. Instead,
-    WebKit should unconditionally ensure that requests are marked as a top-level navigation, if applicable.
+    CyberKit should unconditionally ensure that requests are marked as a top-level navigation, if applicable.
     
     [1] See Note for (1) in  <https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-02#section-5.2>
     [2] <https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-02#section-5.3.7.1>
@@ -1159,10 +1159,10 @@
     Test: http/tests/cookies/same-site/user-load-cross-site-redirect.php
     
     * loader/FrameLoader.cpp:
-    (WebCore::FrameLoader::addExtraFieldsToRequest): Unconditionally update the request's top-
+    (CyberCore::FrameLoader::addExtraFieldsToRequest): Unconditionally update the request's top-
     level navigation bit.
     * platform/network/ResourceRequestBase.cpp:
-    (WebCore::ResourceRequestBase::setAsIsolatedCopy): Unconditionally copy a request's top-
+    (CyberCore::ResourceRequestBase::setAsIsolatedCopy): Unconditionally copy a request's top-
     level navigation bit.
     
     LayoutTests:
@@ -1555,7 +1555,7 @@
     
     Reviewed by Antti Koivisto.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Normally when an element gets blockified (inline -> block) we destroy its renderer and construct a new one (RenderInline -> RenderBlock).
     During this process the associated inline boxtree gets destroyed as well. Since RenderListMarker is just a generic RenderBox, the blockifying
@@ -1565,7 +1565,7 @@
     Test: fast/block/float/list-marker-is-float-crash.html
     
     * rendering/RenderListMarker.cpp:
-    (WebCore::RenderListMarker::styleDidChange):
+    (CyberCore::RenderListMarker::styleDidChange):
     
     LayoutTests:
     
@@ -1595,7 +1595,7 @@
     
     Reviewed by Antoine Quint.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     This WebGL function should fail if the offset parameter is
     not within [0, max 32-bit int].
@@ -1603,7 +1603,7 @@
     Test: fast/canvas/webgl/vertexAttribPointer-with-bad-offset.html
     
     * html/canvas/WebGLRenderingContextBase.cpp:
-    (WebCore::WebGLRenderingContextBase::vertexAttribPointer):
+    (CyberCore::WebGLRenderingContextBase::vertexAttribPointer):
     
     LayoutTests:
     
@@ -1637,7 +1637,7 @@
     
     Reviewed by Brent Fulgham.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     When the container is injected too early, we might end up removing it as part of the collapsing logic
     while the text renderer is being removed (replaced with the first letter + remaining text).
@@ -1645,7 +1645,7 @@
     Test: fast/css/first-letter-and-float-crash.html
     
     * rendering/updating/RenderTreeBuilderFirstLetter.cpp:
-    (WebCore::RenderTreeBuilder::FirstLetter::createRenderers):
+    (CyberCore::RenderTreeBuilder::FirstLetter::createRenderers):
     
     LayoutTests:
     
@@ -1677,15 +1677,15 @@
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     It's safer to use existing RenderBox functions to get sibling boxes.
     
     Test: fast/ruby/crash-when-paginated-ruby.html
     
     * rendering/RenderMultiColumnFlow.cpp:
-    (WebCore::RenderMultiColumnFlow::nextColumnSetOrSpannerSiblingOf):
-    (WebCore::RenderMultiColumnFlow::previousColumnSetOrSpannerSiblingOf):
+    (CyberCore::RenderMultiColumnFlow::nextColumnSetOrSpannerSiblingOf):
+    (CyberCore::RenderMultiColumnFlow::previousColumnSetOrSpannerSiblingOf):
     
     LayoutTests:
     
@@ -1715,7 +1715,7 @@
     
     Reviewed by Ryosuke Niwa.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Currently, it's possible for HTMLFormControlElement's destructor to be reentrant. This may happen if the form
     control element is ref'd while carrying out its destructor's logic. This may happen in two places in
@@ -1728,13 +1728,13 @@
     Test: fast/forms/remove-associated-element-after-gc.html
     
     * html/HTMLFormControlElement.cpp:
-    (WebCore::HTMLFormControlElement::didChangeForm):
+    (CyberCore::HTMLFormControlElement::didChangeForm):
     * html/HTMLFormElement.cpp:
-    (WebCore::HTMLFormElement::resetDefaultButton):
+    (CyberCore::HTMLFormElement::resetDefaultButton):
     
     LayoutTests:
     
-    Add a layout test to exercise the scenario described in the WebCore ChangeLog.
+    Add a layout test to exercise the scenario described in the CyberCore ChangeLog.
     
     * fast/forms/remove-associated-element-after-gc-expected.txt: Added.
     * fast/forms/remove-associated-element-after-gc.html: Added.
@@ -1749,7 +1749,7 @@
 
             Reviewed by Ryosuke Niwa.
 
-            Add a layout test to exercise the scenario described in the WebCore ChangeLog.
+            Add a layout test to exercise the scenario described in the CyberCore ChangeLog.
 
             * fast/forms/remove-associated-element-after-gc-expected.txt: Added.
             * fast/forms/remove-associated-element-after-gc.html: Added.
@@ -1789,17 +1789,17 @@
     
     Reviewed by Andy Estes.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Make ContextMenuController::handleContextMenuEvent robust against reentrancy by guarding it with a boolean flag.
-    As demonstrated in the test case, it is currently possible to force WebKit into a bad state by dispatching a
+    As demonstrated in the test case, it is currently possible to force CyberKit into a bad state by dispatching a
     synthetic "contextmenu" event from within the scope of one of the "before(copy|cut|paste)" events triggered as
     a result of handling a context menu event.
     
     Test: fast/events/contextmenu-reentrancy-crash.html
     
     * page/ContextMenuController.cpp:
-    (WebCore::ContextMenuController::handleContextMenuEvent):
+    (CyberCore::ContextMenuController::handleContextMenuEvent):
     * page/ContextMenuController.h:
     
     LayoutTests:
@@ -1834,7 +1834,7 @@
     
     Reviewed by Brent Fulgham.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     When closing a datalist suggestion menu, WebPageProxy sends a message to WebPage instructing it to tell its
     active datalist suggestions picker to close. However, for a myriad of reasons, the suggestions picker (kept
@@ -1848,14 +1848,14 @@
     Make DataListSuggestionPicker capable of being weakly referenced. Additionally, fix some minor preexisting
     issues in this header (#imports instead of #includes, as well as an unnecessary include of IntRect.h).
     
-    Source/WebKit:
+    Source/CyberKit:
     
-    See WebCore ChangeLog for more details.
+    See CyberCore ChangeLog for more details.
     
     * WebProcess/WebPage/WebPage.cpp:
-    (WebKit::WebPage::setActiveDataListSuggestionPicker):
-    (WebKit::WebPage::didSelectDataListOption):
-    (WebKit::WebPage::didCloseSuggestions):
+    (CyberKit::WebPage::setActiveDataListSuggestionPicker):
+    (CyberKit::WebPage::didSelectDataListOption):
+    (CyberKit::WebPage::didCloseSuggestions):
     * WebProcess/WebPage/WebPage.h:
     
     Turn m_activeDataListSuggestionPicker from a raw pointer into a WeakPtr.
@@ -1892,7 +1892,7 @@
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Because the SVG1.1 specs states that the newItem should be removed from
     its original list before adding it to another list,
@@ -1902,7 +1902,7 @@
     Test: svg/dom/SVGPathSegList-insert-from-animating-animPathSegList.svg
     
     * svg/SVGPathSegList.cpp:
-    (WebCore::SVGPathSegList::processIncomingListItemValue):
+    (CyberCore::SVGPathSegList::processIncomingListItemValue):
     
     LayoutTests:
     
@@ -1932,7 +1932,7 @@
     
     Reviewed by Eric Carlson.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     The original fix in r241203 is not sufficient, since it only checks if the CSS string starts
     with '::cue'. Before accepting a CSS string from a WebVTT file, it should be checked that
@@ -1941,7 +1941,7 @@
     Test: media/track/track-cue-css.html
     
     * html/track/WebVTTParser.cpp:
-    (WebCore::WebVTTParser::checkAndStoreStyleSheet):
+    (CyberCore::WebVTTParser::checkAndStoreStyleSheet):
     
     LayoutTests:
     
@@ -1973,7 +1973,7 @@
     
     Reviewed by Zalan Bujtas.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     After the incremental compositing updates changes, it was possible for a change in the size
     of an overflow:hidden element to fail to update the "ancestor clipping layer" geometry on
@@ -1989,11 +1989,11 @@
            compositing/geometry/ancestor-clip-change.html
     
     * rendering/RenderLayer.cpp:
-    (WebCore::RenderLayer::updateLayerPositions):
-    (WebCore::RenderLayer::updateLayerPosition):
+    (CyberCore::RenderLayer::updateLayerPositions):
+    (CyberCore::RenderLayer::updateLayerPosition):
     * rendering/RenderLayer.h:
     * rendering/RenderLayerBacking.cpp:
-    (WebCore::RenderLayerBacking::updateAfterLayout):
+    (CyberCore::RenderLayerBacking::updateAfterLayout):
     * rendering/RenderLayerBacking.h:
     
     LayoutTests:
@@ -2033,7 +2033,7 @@
     
     Reviewed by Brent Fulgham.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     GlyphBuffer's offset array wasn't getting filled by UniscribeController.
     Our underlining code requires this array.
@@ -2046,13 +2046,13 @@
     Test: fast/text/international/khmer-selection.html.
     
     * platform/graphics/GlyphBuffer.h:
-    (WebCore::GlyphBuffer::add):
+    (CyberCore::GlyphBuffer::add):
     * platform/graphics/displaylists/DisplayListItems.cpp:
-    (WebCore::DisplayList::DrawGlyphs::generateGlyphBuffer const):
+    (CyberCore::DisplayList::DrawGlyphs::generateGlyphBuffer const):
     * platform/graphics/win/UniscribeController.cpp:
-    (WebCore::UniscribeController::advance):
-    (WebCore::UniscribeController::itemizeShapeAndPlace):
-    (WebCore::UniscribeController::shapeAndPlaceItem):
+    (CyberCore::UniscribeController::advance):
+    (CyberCore::UniscribeController::itemizeShapeAndPlace):
+    (CyberCore::UniscribeController::shapeAndPlaceItem):
     * platform/graphics/win/UniscribeController.h:
     
     LayoutTests:
@@ -2081,7 +2081,7 @@
     
     Reviewed by Geoffrey Garen.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * Shared/WebPreferences.yaml:
     * UIProcess/API/Cocoa/WKPreferences.h:
@@ -2091,8 +2091,8 @@
     
     Tools:
     
-    * TestWebKitAPI/Tests/WebKitCocoa/ProcessSwapOnNavigation.mm:
-    * TestWebKitAPI/Tests/WebKitCocoa/SafeBrowsing.mm:
+    * TestCyberKitAPI/Tests/CyberKitCocoa/ProcessSwapOnNavigation.mm:
+    * TestCyberKitAPI/Tests/CyberKitCocoa/SafeBrowsing.mm:
     (TEST):
     (safeBrowsingView):
     Make tests use SPI instead of API.
@@ -2145,7 +2145,7 @@
     
     Reviewed by Antti Koivisto.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Incremental compositing updates, added in rr238090, use repaints as a trigger for re-evaluating
     layer configurations, since a repaint implies that a layer gains painted content. This is done
@@ -2172,17 +2172,17 @@
     
     * page/Frame.h:
     * platform/graphics/GraphicsLayer.cpp:
-    (WebCore::GraphicsLayer::dumpProperties const):
+    (CyberCore::GraphicsLayer::dumpProperties const):
     * platform/graphics/GraphicsLayerClient.h:
-    (WebCore::GraphicsLayerClient::shouldDumpPropertyForLayer const):
+    (CyberCore::GraphicsLayerClient::shouldDumpPropertyForLayer const):
     * rendering/RenderLayerBacking.cpp:
-    (WebCore::RenderLayerBacking::isSimpleContainerCompositingLayer const):
-    (WebCore::RenderLayerBacking::shouldDumpPropertyForLayer const):
+    (CyberCore::RenderLayerBacking::isSimpleContainerCompositingLayer const):
+    (CyberCore::RenderLayerBacking::shouldDumpPropertyForLayer const):
     * rendering/RenderLayerBacking.h:
     * rendering/RenderLayerCompositor.cpp:
-    (WebCore::RenderLayerCompositor::layerTreeAsText):
+    (CyberCore::RenderLayerCompositor::layerTreeAsText):
     * testing/Internals.cpp:
-    (WebCore::toLayerTreeFlags):
+    (CyberCore::toLayerTreeFlags):
     * testing/Internals.h:
     * testing/Internals.idl:
     
@@ -2379,7 +2379,7 @@
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     The crash was caused by HTMLPlugInElement::isReplacementObscured updating the document
     without updating the layout of ancestor documents (i.e. documents in which frame owner
@@ -2390,7 +2390,7 @@
     Test: plugins/unsupported-plugin-with-replacement-in-iframe-crash.html
     
     * html/HTMLPlugInElement.cpp:
-    (WebCore::HTMLPlugInElement::isReplacementObscured):
+    (CyberCore::HTMLPlugInElement::isReplacementObscured):
     
     LayoutTests:
     
@@ -2430,7 +2430,7 @@
     
     Reviewed by Brent Fulgham.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     This patch continues the saga of hunting down timer related crashes after r239814, r225985, r227934.
     
@@ -2444,14 +2444,14 @@
     We could, alternatively, use WeakPtr in NestedTimersMap but that would unnecessarily increase the
     size of DOMTimer for a very marginal benefit of DOMTimer objcets being deleted slightly earlier.
     Deleting itself in DOMTimer's destructor involves more logic & house keeping in the timer code,
-    and is no longer the preferred approach when dealing with these classes of bugs in WebKit.
+    and is no longer the preferred approach when dealing with these classes of bugs in CyberKit.
     
     Test: fast/dom/timer-destruction-during-firing.html
     
     * page/DOMTimer.cpp:
-    (WebCore::NestedTimersMap::add):
-    (WebCore::DOMTimer::install):
-    (WebCore::DOMTimer::fired):
+    (CyberCore::NestedTimersMap::add):
+    (CyberCore::DOMTimer::install):
+    (CyberCore::DOMTimer::fired):
     
     LayoutTests:
     
@@ -2485,7 +2485,7 @@
     
     Reviewed by Antoine Quint.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: fast/shadow-dom/fullscreen-in-shadow-full-screen-ancestor.html
     
@@ -2493,7 +2493,7 @@
     walk past the shadow root boundary.
     
     * dom/Element.cpp:
-    (WebCore::parentCrossingFrameBoundaries):
+    (CyberCore::parentCrossingFrameBoundaries):
     
     LayoutTests:
     
@@ -2525,10 +2525,10 @@
     
     Reviewed by Andy Estes.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * WebProcess/Plugins/PDF/PDFPlugin.mm:
-    (WebKit::PDFPlugin::createPasswordEntryForm):
+    (CyberKit::PDFPlugin::createPasswordEntryForm):
     Don't try to create a password form field if we can't make form fields.
     
     This means you will be left with a useless embedded PDF, but at least
@@ -2573,7 +2573,7 @@
     
     Reviewed by Youenn Fablet.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     This patch futher restricts main frame webarchive loads to the followings:
     1) loaded by clients;
@@ -2586,33 +2586,33 @@
     Covered by API tests.
     
     * dom/Document.h:
-    (WebCore::Document::setAlwaysAllowLocalWebarchive): Deleted.
-    (WebCore::Document::alwaysAllowLocalWebarchive const): Deleted.
+    (CyberCore::Document::setAlwaysAllowLocalWebarchive): Deleted.
+    (CyberCore::Document::alwaysAllowLocalWebarchive const): Deleted.
     * loader/DocumentLoader.cpp:
-    (WebCore::DocumentLoader::disallowWebArchive const):
+    (CyberCore::DocumentLoader::disallowWebArchive const):
     * loader/DocumentLoader.h:
-    (WebCore::DocumentLoader::setAllowsWebArchiveForMainFrame):
-    (WebCore::DocumentLoader::allowsWebArchiveForMainFrame):
+    (CyberCore::DocumentLoader::setAllowsWebArchiveForMainFrame):
+    (CyberCore::DocumentLoader::allowsWebArchiveForMainFrame):
     * loader/FrameLoadRequest.h:
-    (WebCore::FrameLoadRequest::setIsRequestFromClientOrUserInput):
-    (WebCore::FrameLoadRequest::isRequestFromClientOrUserInput):
+    (CyberCore::FrameLoadRequest::setIsRequestFromClientOrUserInput):
+    (CyberCore::FrameLoadRequest::isRequestFromClientOrUserInput):
     * loader/FrameLoader.cpp:
-    (WebCore::FrameLoader::load):
-    (WebCore::FrameLoader::reload):
+    (CyberCore::FrameLoader::load):
+    (CyberCore::FrameLoader::reload):
     * loader/FrameLoader.h:
-    (WebCore::FrameLoader::setAlwaysAllowLocalWebarchive):
-    (WebCore::FrameLoader::alwaysAllowLocalWebarchive const):
+    (CyberCore::FrameLoader::setAlwaysAllowLocalWebarchive):
+    (CyberCore::FrameLoader::alwaysAllowLocalWebarchive const):
     * page/DragController.cpp:
-    (WebCore::DragController::performDragOperation):
+    (CyberCore::DragController::performDragOperation):
     * testing/Internals.cpp:
-    (WebCore::Internals::setAlwaysAllowLocalWebarchive const):
+    (CyberCore::Internals::setAlwaysAllowLocalWebarchive const):
     * testing/Internals.h:
     * testing/Internals.idl:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * WebProcess/WebPage/WebPage.cpp:
-    (WebKit::WebPage::loadRequest):
+    (CyberKit::WebPage::loadRequest):
     Set a flag to indicate a load is started from clients.
     
     Tools:
@@ -2620,17 +2620,17 @@
     Besides adding API tests, this patch also enhances DragAndDropSimulator to allow
     navigations on drop.
     
-    * TestWebKitAPI/TestWebKitAPI.xcodeproj/project.pbxproj:
-    * TestWebKitAPI/Tests/mac/LoadWebArchive.mm: Added.
+    * TestCyberKitAPI/TestCyberKitAPI.xcodeproj/project.pbxproj:
+    * TestCyberKitAPI/Tests/mac/LoadWebArchive.mm: Added.
     (-[TestLoadWebArchiveNavigationDelegate webView:didFinishNavigation:]):
     (-[TestLoadWebArchiveNavigationDelegate webView:didFailProvisionalNavigation:withError:]):
     (-[TestLoadWebArchiveNavigationDelegate webView:createWebViewWithConfiguration:forNavigationAction:windowFeatures:]):
-    (TestWebKitAPI::TEST):
-    * TestWebKitAPI/Tests/mac/helloworld.webarchive: Added.
-    * TestWebKitAPI/Tests/mac/load-web-archive-1.html: Added.
-    * TestWebKitAPI/Tests/mac/load-web-archive-2.html: Added.
-    * TestWebKitAPI/cocoa/DragAndDropSimulator.h:
-    * TestWebKitAPI/mac/DragAndDropSimulatorMac.mm:
+    (TestCyberKitAPI::TEST):
+    * TestCyberKitAPI/Tests/mac/helloworld.webarchive: Added.
+    * TestCyberKitAPI/Tests/mac/load-web-archive-1.html: Added.
+    * TestCyberKitAPI/Tests/mac/load-web-archive-2.html: Added.
+    * TestCyberKitAPI/cocoa/DragAndDropSimulator.h:
+    * TestCyberKitAPI/mac/DragAndDropSimulatorMac.mm:
     (-[DragAndDropSimulator initWithWebViewFrame:configuration:]):
     (-[DragAndDropSimulator _webView:dragDestinationActionMaskForDraggingInfo:]):
     
@@ -2674,22 +2674,22 @@
 
         Cherry-pick r241319. rdar://problem/48015672
 
-    Source/WebCore:
-    Remove setDefersLoading infrastructure from WebKit2
+    Source/CyberCore:
+    Remove setDefersLoading infrastructure from CyberKit2
     https://bugs.webkit.org/show_bug.cgi?id=194506
     
     Patch by Alex Christensen <achristensen@webkit.org> on 2019-02-12
     Reviewed by Brady Eidson.
     
-    setDefersLoading is inherently racy from WebCore to the NetworkProcess,
+    setDefersLoading is inherently racy from CyberCore to the NetworkProcess,
     it adds unwanted complexity to the initialization and use of network objects,
     and it has led to many unrecoverable hang bugs over the years.
-    We needed to force it into WebKit2 to transition some existing clients who relied on it,
+    We needed to force it into CyberKit2 to transition some existing clients who relied on it,
     but we have recently finished transitioning those clients to other solutions, mostly
     completion handlers.
     
     * inspector/PageScriptDebugServer.cpp:
-    (WebCore::PageScriptDebugServer::setJavaScriptPaused):
+    (CyberCore::PageScriptDebugServer::setJavaScriptPaused):
     
     LayoutTests:
     BitmapRenderer should handle existing ImageBuffers
@@ -2730,7 +2730,7 @@
     
     Reviewed by Alan Bujtas.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Remove the possibility that changing children calls back into updating layout by
     handling children changes in a deferred manner.
@@ -2741,13 +2741,13 @@
     A few tests had to be modified to no longer change the tree and then check the children immediately. 
     
     * accessibility/AXObjectCache.cpp:
-    (WebCore::AXObjectCache::remove):
-    (WebCore::AXObjectCache::childrenChanged):
-    (WebCore::AXObjectCache::prepareForDocumentDestruction):
-    (WebCore::AXObjectCache::performDeferredCacheUpdate):
+    (CyberCore::AXObjectCache::remove):
+    (CyberCore::AXObjectCache::childrenChanged):
+    (CyberCore::AXObjectCache::prepareForDocumentDestruction):
+    (CyberCore::AXObjectCache::performDeferredCacheUpdate):
     * accessibility/AXObjectCache.h:
     * accessibility/AccessibilityObject.cpp:
-    (WebCore::AccessibilityObject::updateBackingStore):
+    (CyberCore::AccessibilityObject::updateBackingStore):
     * accessibility/mac/WebAccessibilityObjectWrapperBase.mm:
     (convertToNSArray):
     (-[WebAccessibilityObjectWrapperBase updateObjectBackingStore]):
@@ -2788,9 +2788,9 @@
     
     Reviewed by Brent Fulgham.
     
-    Source/WebCore:
+    Source/CyberCore:
     
-    WebKit API allows setting the generic font families for the USCRIPT_COMMON script.
+    CyberKit API allows setting the generic font families for the USCRIPT_COMMON script.
     When trying to style a character with a generic font family, we first look to see if
     we have a mapping for the particular script the character is rendered with, and if we
     don't find a match, we then check USCRIPT_COMMON.
@@ -2802,7 +2802,7 @@
     
     The mappings inside SettingsBase are incorrect and conflict with our policy regarding
     user-installed fonts. Instead, we should be consulting with the platform for some of
-    these mappings, by calling CTFontDescriptorCreateForCSSFamily(). However, the WebKit
+    these mappings, by calling CTFontDescriptorCreateForCSSFamily(). However, the CyberKit
     API still has to work to set the mappings for untagged content. Therefore, we use the
     system mappings for language-tagged content, and the API mappings for non-language-tagged
     content. This is a good balance that makes sure we always have a good mapping for every
@@ -2812,31 +2812,31 @@
     
     * css/CSSComputedStyleDeclaration.cpp:
     * css/CSSFontSelector.cpp:
-    (WebCore::resolveGenericFamily):
+    (CyberCore::resolveGenericFamily):
     * css/parser/CSSPropertyParser.cpp:
-    (WebCore::consumeFontFamily):
+    (CyberCore::consumeFontFamily):
     * page/cocoa/SettingsBaseCocoa.mm:
-    (WebCore::SettingsBase::initializeDefaultFontFamilies):
-    (WebCore::osakaMonoIsInstalled): Deleted.
+    (CyberCore::SettingsBase::initializeDefaultFontFamilies):
+    (CyberCore::osakaMonoIsInstalled): Deleted.
     * platform/graphics/FontDescription.cpp:
-    (WebCore::FontDescription::platformResolveGenericFamily):
+    (CyberCore::FontDescription::platformResolveGenericFamily):
     * platform/graphics/FontDescription.h:
     * platform/graphics/cocoa/FontDescriptionCocoa.cpp:
-    (WebCore::computeSpecializedChineseLocale):
-    (WebCore::cachedSpecializedChineseLocale):
-    (WebCore::languageChanged):
-    (WebCore::FontDescription::platformResolveGenericFamily):
+    (CyberCore::computeSpecializedChineseLocale):
+    (CyberCore::cachedSpecializedChineseLocale):
+    (CyberCore::languageChanged):
+    (CyberCore::FontDescription::platformResolveGenericFamily):
     * platform/graphics/cocoa/SystemFontDatabaseCoreText.cpp:
-    (WebCore::SystemFontDatabaseCoreText::clear):
-    (WebCore::genericFamily):
-    (WebCore::SystemFontDatabaseCoreText::serifFamily):
-    (WebCore::SystemFontDatabaseCoreText::sansSerifFamily):
-    (WebCore::SystemFontDatabaseCoreText::cursiveFamily):
-    (WebCore::SystemFontDatabaseCoreText::fantasyFamily):
-    (WebCore::SystemFontDatabaseCoreText::monospaceFamily):
+    (CyberCore::SystemFontDatabaseCoreText::clear):
+    (CyberCore::genericFamily):
+    (CyberCore::SystemFontDatabaseCoreText::serifFamily):
+    (CyberCore::SystemFontDatabaseCoreText::sansSerifFamily):
+    (CyberCore::SystemFontDatabaseCoreText::cursiveFamily):
+    (CyberCore::SystemFontDatabaseCoreText::fantasyFamily):
+    (CyberCore::SystemFontDatabaseCoreText::monospaceFamily):
     * platform/graphics/cocoa/SystemFontDatabaseCoreText.h:
     
-    Source/WebCore/PAL:
+    Source/CyberCore/PAL:
     
     * pal/spi/cocoa/CoreTextSPI.h:
     
@@ -2852,7 +2852,7 @@
     
     * DumpRenderTree/mac/DumpRenderTree.mm:
     (allowedFontFamilySet):
-    * WebKitTestRunner/mac/TestControllerMac.mm:
+    * CyberKitTestRunner/mac/TestControllerMac.mm:
     (WTR::allowedFontFamilySet):
     
     LayoutTests:
@@ -2905,7 +2905,7 @@
     
     Reviewed by Eric Carlson.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Check that the CSS string starts with '::cue' and is successfully parsed before adding it
     to the CSS stylesheet list. Also, the caption preferences CSS string should start with
@@ -2914,9 +2914,9 @@
     Test: media/track/track-cue-css.html
     
     * html/track/WebVTTParser.cpp:
-    (WebCore::WebVTTParser::checkAndStoreStyleSheet):
+    (CyberCore::WebVTTParser::checkAndStoreStyleSheet):
     * page/CaptionUserPreferencesMediaAF.cpp:
-    (WebCore::CaptionUserPreferencesMediaAF::captionsStyleSheetOverride const):
+    (CyberCore::CaptionUserPreferencesMediaAF::captionsStyleSheetOverride const):
     
     LayoutTests:
     
@@ -2945,7 +2945,7 @@
     
     Reviewed by Eric Carlson.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Set whether VP8 is supported at creation of the page.
     This ensures that any call creating a peer connection factory will end up supporting the runtime flag configuration.
@@ -2955,12 +2955,12 @@
     Covered by updated test.
     
     * Modules/mediastream/libwebrtc/LibWebRTCPeerConnectionBackend.cpp:
-    (WebCore::createLibWebRTCPeerConnectionBackend):
+    (CyberCore::createLibWebRTCPeerConnectionBackend):
     * page/Page.cpp:
-    (WebCore::m_applicationManifest):
+    (CyberCore::m_applicationManifest):
     * platform/mediastream/libwebrtc/LibWebRTCProvider.h:
     * testing/Internals.cpp:
-    (WebCore::Internals::clearPeerConnectionFactory):
+    (CyberCore::Internals::clearPeerConnectionFactory):
     * testing/Internals.h:
     * testing/Internals.idl:
     
@@ -2993,7 +2993,7 @@
     
     Reviewed by Brent Fulgham.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Support serializing sequences and FrozenArrays of types that aren't interfaces. This is
     needed to properly serialize PaymentAddress, which has a FrozenArray of DOMStrings.
@@ -3047,7 +3047,7 @@
     
     Reviewed by Tim Horton.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Fix the bug by not firing the Apple-pencil-exclusive tap gesture recognizer in the case where editable images
     are disabled. This gesture recognizer is only used for inserting editable images, and currently conflicts with
@@ -3090,23 +3090,23 @@
     
     Reviewed by Beth Dakin.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Tested by css-dark-mode/supported-color-schemes-scrollbar.html.
     
     * page/ChromeClient.h:
-    (WebCore::FrameView::preferredScrollbarOverlayStyle): Return WTF::nullopt by default to avoid
+    (CyberCore::FrameView::preferredScrollbarOverlayStyle): Return WTF::nullopt by default to avoid
     short-circuiting auto detection in recalculateScrollbarOverlayStyle() for clients, like WK1,
     that do not implement preferredScrollbarOverlayStyle().
     * page/FrameView.cpp:
-    (WebCore::FrameView::recalculateScrollbarOverlayStyle): Use WTF::nullopt in the false case
+    (CyberCore::FrameView::recalculateScrollbarOverlayStyle): Use WTF::nullopt in the false case
     to auto detect overlay style when page() is null.
     * rendering/RenderLayer.cpp:
-    (WebCore::RenderLayer::useDarkAppearance const): Added.
+    (CyberCore::RenderLayer::useDarkAppearance const): Added.
     * rendering/RenderLayer.h:
     * testing/Internals.cpp:
-    (WebCore::Internals::scrollbarOverlayStyle const): Added Node argument.
-    (WebCore::Internals::scrollbarUsingDarkAppearance const): Added.
+    (CyberCore::Internals::scrollbarOverlayStyle const): Added Node argument.
+    (CyberCore::Internals::scrollbarUsingDarkAppearance const): Added.
     * testing/Internals.h:
     * testing/Internals.idl:
     
@@ -3144,7 +3144,7 @@
     
     Reviewed by Joanmarie Diggs.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: accessibility/ios-simulator/color-well.html
     
@@ -3157,12 +3157,12 @@
     (-[WebAccessibilityObjectWrapper accessibilityColorStringValue]):
     * en.lproj/Localizable.strings:
     * platform/LocalizedStrings.cpp:
-    (WebCore::AXColorWellText):
+    (CyberCore::AXColorWellText):
     * platform/LocalizedStrings.h:
     
     Tools:
     
-    * WebKitTestRunner/InjectedBundle/ios/AccessibilityUIElementIOS.mm:
+    * CyberKitTestRunner/InjectedBundle/ios/AccessibilityUIElementIOS.mm:
     (WTR::AccessibilityUIElement::stringAttributeValue):
     
     LayoutTests:
@@ -3193,7 +3193,7 @@
     
     Reviewed by Chris Dumez.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     In case a signal is passed as part of a FetchRequestInit,
     the IDL binding code is throwing an exception in case signal is not an AbortSignal object.
@@ -3204,9 +3204,9 @@
     Also covered by manually signing in to leetcode.
     
     * Modules/fetch/FetchRequest.cpp:
-    (WebCore::FetchRequest::initializeWith):
+    (CyberCore::FetchRequest::initializeWith):
     * Modules/fetch/FetchRequestInit.h:
-    (WebCore::FetchRequestInit::hasMembers const):
+    (CyberCore::FetchRequestInit::hasMembers const):
     * Modules/fetch/FetchRequestInit.idl:
     
     LayoutTests:
@@ -3238,7 +3238,7 @@
     
     Reviewed by Alex Christensen.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     It should be possible to require that a shipping contact has a phonetic name in Payment Request.
     To accomplish this, move requiredShippingContactFields from ApplePayPaymentRequest to
@@ -3256,39 +3256,39 @@
     * Modules/applepay/ApplePayPaymentRequest.h:
     * Modules/applepay/ApplePayPaymentRequest.idl:
     * Modules/applepay/ApplePayRequestBase.cpp:
-    (WebCore::convertAndValidate):
+    (CyberCore::convertAndValidate):
     * Modules/applepay/ApplePayRequestBase.h:
     * Modules/applepay/ApplePayRequestBase.idl:
     * Modules/applepay/ApplePaySession.cpp:
-    (WebCore::convertAndValidate):
+    (CyberCore::convertAndValidate):
     * Modules/applepay/PaymentCoordinatorClient.cpp: Added.
-    (WebCore::PaymentCoordinatorClient::supportsVersion):
+    (CyberCore::PaymentCoordinatorClient::supportsVersion):
     * Modules/applepay/PaymentCoordinatorClient.h:
     * Modules/applepay/paymentrequest/ApplePayPaymentHandler.cpp:
-    (WebCore::mergePaymentOptions):
-    (WebCore::ApplePayPaymentHandler::show):
+    (CyberCore::mergePaymentOptions):
+    (CyberCore::ApplePayPaymentHandler::show):
     * SourcesCocoa.txt:
-    * WebCore.xcodeproj/project.pbxproj:
+    * CyberCore.xcodeproj/project.pbxproj:
     * loader/EmptyClients.cpp:
     * testing/MockPaymentContactFields.h: Added.
-    (WebCore::MockPaymentContactFields::MockPaymentContactFields):
+    (CyberCore::MockPaymentContactFields::MockPaymentContactFields):
     * testing/MockPaymentContactFields.idl: Added.
     * testing/MockPaymentCoordinator.cpp:
-    (WebCore::MockPaymentCoordinator::showPaymentUI):
-    (WebCore::MockPaymentCoordinator::supportsVersion): Deleted.
+    (CyberCore::MockPaymentCoordinator::showPaymentUI):
+    (CyberCore::MockPaymentCoordinator::supportsVersion): Deleted.
     * testing/MockPaymentCoordinator.h:
     * testing/MockPaymentCoordinator.idl:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * WebProcess/ApplePay/WebPaymentCoordinator.cpp:
-    (WebKit::WebPaymentCoordinator::supportsVersion): Deleted.
+    (CyberKit::WebPaymentCoordinator::supportsVersion): Deleted.
     * WebProcess/ApplePay/WebPaymentCoordinator.h:
     
-    Source/WebKitLegacy/mac:
+    Source/CyberKitLegacy/mac:
     
-    * WebCoreSupport/WebPaymentCoordinatorClient.h:
-    * WebCoreSupport/WebPaymentCoordinatorClient.mm:
+    * CyberCoreSupport/WebPaymentCoordinatorClient.h:
+    * CyberCoreSupport/WebPaymentCoordinatorClient.mm:
     (WebPaymentCoordinatorClient::supportsVersion): Deleted.
     
     LayoutTests:
@@ -3322,13 +3322,13 @@
 
         Cherry-pick r241018. rdar://problem/47893623
 
-    RELEASE_ASSERT(!m_document.isResolvingTreeStyle()) in com.apple.WebKit.WebContent at WebCore: WebCore::StyleResolver::~StyleResolver
+    RELEASE_ASSERT(!m_document.isResolvingTreeStyle()) in com.matthewbenedict.CyberKit.WebContent at CyberCore: CyberCore::StyleResolver::~StyleResolver
     https://bugs.webkit.org/show_bug.cgi?id=194333
     <rdar://problem/47822929>
     
     Reviewed by Zalan Bujtas.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Content extensions may mutate the extension stylesheet in the middle of a style resolution as a result of
     the legacy animation code triggering a resource load.
@@ -3336,7 +3336,7 @@
     Test: http/tests/contentextensions/css-display-none-keyframe.html
     
     * style/StyleScope.cpp:
-    (WebCore::Style::Scope::scheduleUpdate):
+    (CyberCore::Style::Scope::scheduleUpdate):
     
     Avoid clearing the style resolver if we are in the middle of a style resolution.
     A better fix that avoid doing this in the first place is tracked by https://bugs.webkit.org/show_bug.cgi?id=194335.
@@ -3352,7 +3352,7 @@
 
     2019-02-06  Antti Koivisto  <antti@apple.com>
 
-            RELEASE_ASSERT(!m_document.isResolvingTreeStyle()) in com.apple.WebKit.WebContent at WebCore: WebCore::StyleResolver::~StyleResolver
+            RELEASE_ASSERT(!m_document.isResolvingTreeStyle()) in com.matthewbenedict.CyberKit.WebContent at CyberCore: CyberCore::StyleResolver::~StyleResolver
             https://bugs.webkit.org/show_bug.cgi?id=194333
             <rdar://problem/47822929>
 
@@ -3424,7 +3424,7 @@
     
     Reviewed by Geoffrey Garen.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     The bug was caused by the code path for when navigating with a specific target frame name that does not exist
     never setting the load type of PolicyChecker. As a result, we would use whatever load type used in the previous
@@ -3435,7 +3435,7 @@
     Test: fast/loader/navigate-with-new-target-after-back-forward-navigation.html
     
     * loader/FrameLoader.cpp:
-    (WebCore::FrameLoader::loadURL):
+    (CyberCore::FrameLoader::loadURL):
     
     LayoutTests:
     
@@ -3561,7 +3561,7 @@
     
     Reviewed by Brent Fulgham.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     This patch changes U2fCommandConstructor to produce register commands with
     enforcing test of user presence. Otherwise, authenticators would silently
@@ -3576,13 +3576,13 @@
            http/wpt/webauthn/public-key-credential-get-success-u2f.https.html
     
     * Modules/webauthn/fido/U2fCommandConstructor.cpp:
-    (fido::WebCore::constructU2fRegisterCommand):
+    (fido::CyberCore::constructU2fRegisterCommand):
     * Modules/webauthn/fido/U2fResponseConverter.cpp:
     (fido::readU2fSignResponse):
     (fido::readFromU2fSignResponse): Deleted.
     * Modules/webauthn/fido/U2fResponseConverter.h:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     This patch implements the support for U2F authenticators, and enables it for hid devices.
     It follows the CTAP spec to map WebAuthN requests to U2F commands and return the responses:
@@ -3598,32 +3598,32 @@
     * UIProcess/API/C/WKWebsiteDataStoreRef.cpp:
     (WKWebsiteDataStoreSetWebAuthenticationMockConfiguration):
     * UIProcess/WebAuthentication/Cocoa/HidService.mm:
-    (WebKit::HidService::continueAddDeviceAfterGetInfo):
+    (CyberKit::HidService::continueAddDeviceAfterGetInfo):
     * UIProcess/WebAuthentication/fido/CtapHidDriver.cpp:
-    (WebKit::CtapHidDriver::continueAfterChannelAllocated):
+    (CyberKit::CtapHidDriver::continueAfterChannelAllocated):
     * UIProcess/WebAuthentication/fido/CtapHidDriver.h:
-    (WebKit::CtapHidDriver::setProtocol):
+    (CyberKit::CtapHidDriver::setProtocol):
     * UIProcess/WebAuthentication/fido/U2fHidAuthenticator.cpp: Added.
-    (WebKit::U2fHidAuthenticator::U2fHidAuthenticator):
-    (WebKit::U2fHidAuthenticator::makeCredential):
-    (WebKit::U2fHidAuthenticator::checkExcludeList):
-    (WebKit::U2fHidAuthenticator::issueRegisterCommand):
-    (WebKit::U2fHidAuthenticator::getAssertion):
-    (WebKit::U2fHidAuthenticator::issueSignCommand):
-    (WebKit::U2fHidAuthenticator::issueNewCommand):
-    (WebKit::U2fHidAuthenticator::issueCommand):
-    (WebKit::U2fHidAuthenticator::responseReceived):
-    (WebKit::U2fHidAuthenticator::continueRegisterCommandAfterResponseReceived):
-    (WebKit::U2fHidAuthenticator::continueCheckOnlyCommandAfterResponseReceived):
-    (WebKit::U2fHidAuthenticator::continueBogusCommandAfterResponseReceived):
-    (WebKit::U2fHidAuthenticator::continueSignCommandAfterResponseReceived):
+    (CyberKit::U2fHidAuthenticator::U2fHidAuthenticator):
+    (CyberKit::U2fHidAuthenticator::makeCredential):
+    (CyberKit::U2fHidAuthenticator::checkExcludeList):
+    (CyberKit::U2fHidAuthenticator::issueRegisterCommand):
+    (CyberKit::U2fHidAuthenticator::getAssertion):
+    (CyberKit::U2fHidAuthenticator::issueSignCommand):
+    (CyberKit::U2fHidAuthenticator::issueNewCommand):
+    (CyberKit::U2fHidAuthenticator::issueCommand):
+    (CyberKit::U2fHidAuthenticator::responseReceived):
+    (CyberKit::U2fHidAuthenticator::continueRegisterCommandAfterResponseReceived):
+    (CyberKit::U2fHidAuthenticator::continueCheckOnlyCommandAfterResponseReceived):
+    (CyberKit::U2fHidAuthenticator::continueBogusCommandAfterResponseReceived):
+    (CyberKit::U2fHidAuthenticator::continueSignCommandAfterResponseReceived):
     * UIProcess/WebAuthentication/fido/U2fHidAuthenticator.h: Added.
     * UIProcess/WebAuthentication/Mock/MockHidConnection.cpp:
-    (WebKit::MockHidConnection::parseRequest):
-    (WebKit::MockHidConnection::feedReports):
+    (CyberKit::MockHidConnection::parseRequest):
+    (CyberKit::MockHidConnection::feedReports):
     * UIProcess/WebAuthentication/Mock/MockHidConnection.h:
     * UIProcess/WebAuthentication/Mock/MockWebAuthenticationConfiguration.h:
-    * WebKit.xcodeproj/project.pbxproj:
+    * CyberKit.xcodeproj/project.pbxproj:
     
     Tools:
     
@@ -3631,10 +3631,10 @@
     1) adds support for U2F mocking mechanism;
     2) updates tests to reflect U2fCommandConstructor changes.
     
-    * TestWebKitAPI/Tests/WebCore/CtapResponseTest.cpp:
-    (TestWebKitAPI::TEST):
-    * TestWebKitAPI/Tests/WebCore/FidoTestData.h:
-    * WebKitTestRunner/InjectedBundle/TestRunner.cpp:
+    * TestCyberKitAPI/Tests/CyberCore/CtapResponseTest.cpp:
+    (TestCyberKitAPI::TEST):
+    * TestCyberKitAPI/Tests/CyberCore/FidoTestData.h:
+    * CyberKitTestRunner/InjectedBundle/TestRunner.cpp:
     (WTR::TestRunner::setWebAuthenticationMockConfiguration):
     
     LayoutTests:
@@ -3705,20 +3705,20 @@
 
         Cherry-pick r240773. rdar://problem/47774755
 
-    ASSERTION FAILED: cache under WebCore::AXObjectCache::postTextStateChangePlatformNotification
+    ASSERTION FAILED: cache under CyberCore::AXObjectCache::postTextStateChangePlatformNotification
     https://bugs.webkit.org/show_bug.cgi?id=189094
     <rdar://problem/43853526>
     
     Reviewed by Zalan Bujtas.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Protect against access to objects and cache's that can be removed while an object is still in memory.
     
     Unskipped flaky tests on mac-wk2.
     
     * accessibility/mac/AXObjectCacheMac.mm:
-    (WebCore::AXObjectCache::postTextStateChangePlatformNotification):
+    (CyberCore::AXObjectCache::postTextStateChangePlatformNotification):
     * accessibility/mac/WebAccessibilityObjectWrapperMac.mm:
     (textMarkerForVisiblePosition):
     (textMarkerRangeFromVisiblePositions):
@@ -3734,7 +3734,7 @@
 
     2019-01-31  Chris Fleizach  <cfleizach@apple.com>
 
-            ASSERTION FAILED: cache under WebCore::AXObjectCache::postTextStateChangePlatformNotification
+            ASSERTION FAILED: cache under CyberCore::AXObjectCache::postTextStateChangePlatformNotification
             https://bugs.webkit.org/show_bug.cgi?id=189094
             <rdar://problem/43853526>
 
@@ -3754,7 +3754,7 @@
     
     Reviewed by Geoffrey Garen.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     The issue was caused by the 'isTopSite' flag not getting properly set on the network request
     in case of a cross-site history navigation (with process-swap). As a result, twitter.com was
@@ -3776,12 +3776,12 @@
     Test: http/tests/cookies/same-site/lax-samesite-cookie-after-cross-site-history-load.php
     
     * loader/FrameLoader.cpp:
-    (WebCore::FrameLoader::load):
-    (WebCore::FrameLoader::loadWithDocumentLoader):
-    (WebCore::FrameLoader::addExtraFieldsToRequest):
-    (WebCore::FrameLoader::loadDifferentDocumentItem):
+    (CyberCore::FrameLoader::load):
+    (CyberCore::FrameLoader::loadWithDocumentLoader):
+    (CyberCore::FrameLoader::addExtraFieldsToRequest):
+    (CyberCore::FrameLoader::loadDifferentDocumentItem):
     * loader/FrameLoader.h:
-    (WebCore::FrameLoader::shouldTreatCurrentLoadAsContinuingLoad const):
+    (CyberCore::FrameLoader::shouldTreatCurrentLoadAsContinuingLoad const):
     
     LayoutTests:
     
@@ -3817,7 +3817,7 @@
     
     Reviewed by Joanmarie Diggs.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Return the toggle state of a role=switch element.
     
@@ -3850,7 +3850,7 @@
 
     <video> elements not in the DOM should be allowed to AirPlay
     https://bugs.webkit.org/show_bug.cgi?id=193837
-    Source/WebCore:
+    Source/CyberCore:
     
     <rdar://42559491>
     
@@ -3866,8 +3866,8 @@
     started yet.
     
     * html/MediaElementSession.cpp:
-    (WebCore::MediaElementSession::dataBufferingPermitted const):
-    (WebCore::MediaElementSession::setShouldPlayToPlaybackTarget):
+    (CyberCore::MediaElementSession::dataBufferingPermitted const):
+    (CyberCore::MediaElementSession::setShouldPlayToPlaybackTarget):
     
     LayoutTests:
     
@@ -3923,7 +3923,7 @@
     
     Reviewed by Wenson Hsieh.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Removed the support for inputmode="none" for now since we need a new SPI from UIKit
     to properly implement this feature some time in the future.
@@ -4009,7 +4009,7 @@
     
     Reviewed by Antoine Quint.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     We used to have the concept of a "SyntheticStyleChange", which was used to trigger
     style updates for animation, and also to get compositing updated.
@@ -4029,28 +4029,28 @@
     do so, because fireAnimationEventsIfNeeded() can run the state machine and change state.
     
     * animation/KeyframeEffect.cpp:
-    (WebCore::invalidateElement):
+    (CyberCore::invalidateElement):
     * page/animation/AnimationBase.cpp:
-    (WebCore::AnimationBase::setNeedsStyleRecalc):
+    (CyberCore::AnimationBase::setNeedsStyleRecalc):
     * page/animation/CSSAnimationController.cpp:
-    (WebCore::CSSAnimationControllerPrivate::updateAnimations):
-    (WebCore::CSSAnimationControllerPrivate::fireEventsAndUpdateStyle):
-    (WebCore::CSSAnimationControllerPrivate::pauseAnimationAtTime):
-    (WebCore::CSSAnimationControllerPrivate::pauseTransitionAtTime):
-    (WebCore::CSSAnimationController::cancelAnimations):
+    (CyberCore::CSSAnimationControllerPrivate::updateAnimations):
+    (CyberCore::CSSAnimationControllerPrivate::fireEventsAndUpdateStyle):
+    (CyberCore::CSSAnimationControllerPrivate::pauseAnimationAtTime):
+    (CyberCore::CSSAnimationControllerPrivate::pauseTransitionAtTime):
+    (CyberCore::CSSAnimationController::cancelAnimations):
     * page/animation/KeyframeAnimation.cpp:
-    (WebCore::KeyframeAnimation::animate):
+    (CyberCore::KeyframeAnimation::animate):
     * rendering/RenderImage.cpp:
-    (WebCore::RenderImage::imageChanged):
+    (CyberCore::RenderImage::imageChanged):
     * rendering/RenderLayer.cpp:
-    (WebCore::RenderLayer::calculateClipRects const):
+    (CyberCore::RenderLayer::calculateClipRects const):
     * rendering/svg/SVGResourcesCache.cpp:
-    (WebCore::SVGResourcesCache::clientStyleChanged):
+    (CyberCore::SVGResourcesCache::clientStyleChanged):
     * style/StyleTreeResolver.cpp:
-    (WebCore::Style::TreeResolver::createAnimatedElementUpdate):
+    (CyberCore::Style::TreeResolver::createAnimatedElementUpdate):
     * svg/SVGAnimateElementBase.cpp:
-    (WebCore::applyCSSPropertyToTarget):
-    (WebCore::removeCSSPropertyFromTarget):
+    (CyberCore::applyCSSPropertyToTarget):
+    (CyberCore::removeCSSPropertyFromTarget):
     
     LayoutTests:
     
@@ -4080,15 +4080,15 @@
     
     Reviewed by Ryosuke Niwa.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     When a shadow host that has <img usemap> in the shadow tree is removed from the document, we try
     to remove the map from the scope of the host.
     
     * html/HTMLImageElement.cpp:
-    (WebCore::HTMLImageElement::parseAttribute):
-    (WebCore::HTMLImageElement::insertedIntoAncestor):
-    (WebCore::HTMLImageElement::removedFromAncestor):
+    (CyberCore::HTMLImageElement::parseAttribute):
+    (CyberCore::HTMLImageElement::insertedIntoAncestor):
+    (CyberCore::HTMLImageElement::removedFromAncestor):
     
     Tree scope changes are relevant, not the connection to the document.
     
@@ -4122,13 +4122,13 @@
     * web-platform-tests/fetch/api/basic/mode-no-cors.sub.any.js:
     (fetchNoCors):
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Check whether the response is tainted in FetchResponse::url, to match
     the behavior described in https://fetch.spec.whatwg.org/#concept-filtered-response-opaque.
     
     * Modules/fetch/FetchResponse.cpp:
-    (WebCore::FetchResponse::url const):
+    (CyberCore::FetchResponse::url const):
     
     LayoutTests:
     
@@ -4155,7 +4155,7 @@
     
     Reviewed by Eric Carlson.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Ensure that track gets unmuted after being fired as part of track event.
     Test is triggering some existing issues with MediaPlayerPrivateMediaStreamAVFObjC.
@@ -4165,11 +4165,11 @@
     Test: webrtc/video-setDirection.html
     
     * Modules/mediastream/libwebrtc/LibWebRTCMediaEndpoint.cpp:
-    (WebCore::LibWebRTCMediaEndpoint::fireTrackEvent):
+    (CyberCore::LibWebRTCMediaEndpoint::fireTrackEvent):
     * Modules/mediastream/libwebrtc/LibWebRTCMediaEndpoint.h:
     * platform/graphics/avfoundation/objc/MediaPlayerPrivateMediaStreamAVFObjC.mm:
-    (WebCore::MediaPlayerPrivateMediaStreamAVFObjC::enqueueVideoSample):
-    (WebCore::MediaPlayerPrivateMediaStreamAVFObjC::requestNotificationWhenReadyForVideoData):
+    (CyberCore::MediaPlayerPrivateMediaStreamAVFObjC::enqueueVideoSample):
+    (CyberCore::MediaPlayerPrivateMediaStreamAVFObjC::requestNotificationWhenReadyForVideoData):
     
     LayoutTests:
     
@@ -4200,15 +4200,15 @@
     
     Reviewed by Geoffrey Garen.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     * loader/FrameLoader.cpp:
-    (WebCore::FrameLoader::commitProvisionalLoad):
+    (CyberCore::FrameLoader::commitProvisionalLoad):
     When restoring from PageCache, make sure we notify the client that the load was committed
     *before* we tell it that the navigation is complete. This would confuse the ProvisionalPageProxy
     logic in the UIProcess.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     The issue tracked by rdar://problem/47099573 is that a provisional load may get
     canceled (or converted into a download) *after* we've decided to process-swap.
@@ -4228,8 +4228,8 @@
     process, without impacting the WebPageProxy.
     
     * Shared/WebPageCreationParameters.cpp:
-    (WebKit::WebPageCreationParameters::encode const):
-    (WebKit::WebPageCreationParameters::decode):
+    (CyberKit::WebPageCreationParameters::encode const):
+    (CyberKit::WebPageCreationParameters::decode):
     * Shared/WebPageCreationParameters.h:
     Rename isSwapFromSuspended to isProcessSwap for clarity as we always want to
     delay attaching the drawing area in case of a process-swap, no matter what
@@ -4252,171 +4252,171 @@
     process and the provisional one, to maintain previous behavior in our API tests.
     
     * UIProcess/API/gtk/PageClientImpl.cpp:
-    (WebKit::PageClientImpl::createDrawingAreaProxy):
+    (CyberKit::PageClientImpl::createDrawingAreaProxy):
     * UIProcess/API/gtk/PageClientImpl.h:
     * UIProcess/API/wpe/PageClientImpl.cpp:
-    (WebKit::PageClientImpl::createDrawingAreaProxy):
+    (CyberKit::PageClientImpl::createDrawingAreaProxy):
     * UIProcess/API/wpe/PageClientImpl.h:
     * UIProcess/AcceleratedDrawingAreaProxy.cpp:
-    (WebKit::AcceleratedDrawingAreaProxy::AcceleratedDrawingAreaProxy):
-    (WebKit::AcceleratedDrawingAreaProxy::didUpdateBackingStoreState):
-    (WebKit::AcceleratedDrawingAreaProxy::sendUpdateBackingStoreState):
-    (WebKit::AcceleratedDrawingAreaProxy::waitForAndDispatchDidUpdateBackingStoreState):
-    (WebKit::AcceleratedDrawingAreaProxy::setNativeSurfaceHandleForCompositing):
-    (WebKit::AcceleratedDrawingAreaProxy::destroyNativeSurfaceHandleForCompositing):
+    (CyberKit::AcceleratedDrawingAreaProxy::AcceleratedDrawingAreaProxy):
+    (CyberKit::AcceleratedDrawingAreaProxy::didUpdateBackingStoreState):
+    (CyberKit::AcceleratedDrawingAreaProxy::sendUpdateBackingStoreState):
+    (CyberKit::AcceleratedDrawingAreaProxy::waitForAndDispatchDidUpdateBackingStoreState):
+    (CyberKit::AcceleratedDrawingAreaProxy::setNativeSurfaceHandleForCompositing):
+    (CyberKit::AcceleratedDrawingAreaProxy::destroyNativeSurfaceHandleForCompositing):
     * UIProcess/AcceleratedDrawingAreaProxy.h:
     * UIProcess/Cocoa/WebViewImpl.h:
     * UIProcess/Cocoa/WebViewImpl.mm:
-    (WebKit::WebViewImpl::createDrawingAreaProxy):
+    (CyberKit::WebViewImpl::createDrawingAreaProxy):
     * UIProcess/DrawingAreaProxy.cpp:
-    (WebKit::DrawingAreaProxy::DrawingAreaProxy):
-    (WebKit::DrawingAreaProxy::~DrawingAreaProxy):
-    (WebKit::DrawingAreaProxy::viewExposedRectChangedTimerFired):
+    (CyberKit::DrawingAreaProxy::DrawingAreaProxy):
+    (CyberKit::DrawingAreaProxy::~DrawingAreaProxy):
+    (CyberKit::DrawingAreaProxy::viewExposedRectChangedTimerFired):
     * UIProcess/DrawingAreaProxy.h:
-    (WebKit::DrawingAreaProxy::process):
+    (CyberKit::DrawingAreaProxy::process):
     * UIProcess/DrawingAreaProxyImpl.cpp:
-    (WebKit::DrawingAreaProxyImpl::DrawingAreaProxyImpl):
-    (WebKit::DrawingAreaProxyImpl::update):
+    (CyberKit::DrawingAreaProxyImpl::DrawingAreaProxyImpl):
+    (CyberKit::DrawingAreaProxyImpl::update):
     * UIProcess/DrawingAreaProxyImpl.h:
     * UIProcess/PageClient.h:
     * UIProcess/RemoteLayerTree/RemoteLayerTreeDrawingAreaProxy.h:
     * UIProcess/RemoteLayerTree/RemoteLayerTreeDrawingAreaProxy.mm:
-    (WebKit::RemoteLayerTreeDrawingAreaProxy::RemoteLayerTreeDrawingAreaProxy):
-    (WebKit::RemoteLayerTreeDrawingAreaProxy::~RemoteLayerTreeDrawingAreaProxy):
-    (WebKit::RemoteLayerTreeDrawingAreaProxy::deviceScaleFactorDidChange):
-    (WebKit::RemoteLayerTreeDrawingAreaProxy::sendUpdateGeometry):
-    (WebKit::RemoteLayerTreeDrawingAreaProxy::acceleratedAnimationDidStart):
-    (WebKit::RemoteLayerTreeDrawingAreaProxy::acceleratedAnimationDidEnd):
-    (WebKit::RemoteLayerTreeDrawingAreaProxy::didRefreshDisplay):
-    (WebKit::RemoteLayerTreeDrawingAreaProxy::waitForDidUpdateActivityState):
-    (WebKit::RemoteLayerTreeDrawingAreaProxy::dispatchAfterEnsuringDrawing):
+    (CyberKit::RemoteLayerTreeDrawingAreaProxy::RemoteLayerTreeDrawingAreaProxy):
+    (CyberKit::RemoteLayerTreeDrawingAreaProxy::~RemoteLayerTreeDrawingAreaProxy):
+    (CyberKit::RemoteLayerTreeDrawingAreaProxy::deviceScaleFactorDidChange):
+    (CyberKit::RemoteLayerTreeDrawingAreaProxy::sendUpdateGeometry):
+    (CyberKit::RemoteLayerTreeDrawingAreaProxy::acceleratedAnimationDidStart):
+    (CyberKit::RemoteLayerTreeDrawingAreaProxy::acceleratedAnimationDidEnd):
+    (CyberKit::RemoteLayerTreeDrawingAreaProxy::didRefreshDisplay):
+    (CyberKit::RemoteLayerTreeDrawingAreaProxy::waitForDidUpdateActivityState):
+    (CyberKit::RemoteLayerTreeDrawingAreaProxy::dispatchAfterEnsuringDrawing):
     * UIProcess/ios/PageClientImplIOS.h:
     * UIProcess/ios/PageClientImplIOS.mm:
-    (WebKit::PageClientImpl::createDrawingAreaProxy):
+    (CyberKit::PageClientImpl::createDrawingAreaProxy):
     * UIProcess/ios/WKContentView.h:
     * UIProcess/ios/WKContentView.mm:
     (-[WKContentView _createDrawingAreaProxy:]):
     * UIProcess/mac/PageClientImplMac.h:
     * UIProcess/mac/PageClientImplMac.mm:
-    (WebKit::PageClientImpl::createDrawingAreaProxy):
+    (CyberKit::PageClientImpl::createDrawingAreaProxy):
     * UIProcess/mac/TiledCoreAnimationDrawingAreaProxy.h:
     * UIProcess/mac/TiledCoreAnimationDrawingAreaProxy.mm:
-    (WebKit::TiledCoreAnimationDrawingAreaProxy::TiledCoreAnimationDrawingAreaProxy):
-    (WebKit::TiledCoreAnimationDrawingAreaProxy::deviceScaleFactorDidChange):
-    (WebKit::TiledCoreAnimationDrawingAreaProxy::colorSpaceDidChange):
-    (WebKit::TiledCoreAnimationDrawingAreaProxy::waitForDidUpdateActivityState):
-    (WebKit::TiledCoreAnimationDrawingAreaProxy::createFence):
-    (WebKit::TiledCoreAnimationDrawingAreaProxy::sendUpdateGeometry):
-    (WebKit::TiledCoreAnimationDrawingAreaProxy::adjustTransientZoom):
-    (WebKit::TiledCoreAnimationDrawingAreaProxy::commitTransientZoom):
-    (WebKit::TiledCoreAnimationDrawingAreaProxy::dispatchAfterEnsuringDrawing):
+    (CyberKit::TiledCoreAnimationDrawingAreaProxy::TiledCoreAnimationDrawingAreaProxy):
+    (CyberKit::TiledCoreAnimationDrawingAreaProxy::deviceScaleFactorDidChange):
+    (CyberKit::TiledCoreAnimationDrawingAreaProxy::colorSpaceDidChange):
+    (CyberKit::TiledCoreAnimationDrawingAreaProxy::waitForDidUpdateActivityState):
+    (CyberKit::TiledCoreAnimationDrawingAreaProxy::createFence):
+    (CyberKit::TiledCoreAnimationDrawingAreaProxy::sendUpdateGeometry):
+    (CyberKit::TiledCoreAnimationDrawingAreaProxy::adjustTransientZoom):
+    (CyberKit::TiledCoreAnimationDrawingAreaProxy::commitTransientZoom):
+    (CyberKit::TiledCoreAnimationDrawingAreaProxy::dispatchAfterEnsuringDrawing):
     * UIProcess/mac/WebPageProxyMac.mm:
     * UIProcess/win/PageClientImpl.cpp:
-    (WebKit::PageClientImpl::createDrawingAreaProxy):
+    (CyberKit::PageClientImpl::createDrawingAreaProxy):
     * UIProcess/win/PageClientImpl.h:
     * UIProcess/win/PageClientImpl.cpp:
-    (WebKit::PageClientImpl::createDrawingAreaProxy):
+    (CyberKit::PageClientImpl::createDrawingAreaProxy):
     * UIProcess/win/PageClientImpl.h:
     * WebProcess/WebPage/mac/TiledCoreAnimationDrawingArea.mm:
-    (WebKit::TiledCoreAnimationDrawingArea::TiledCoreAnimationDrawingArea):
+    (CyberKit::TiledCoreAnimationDrawingArea::TiledCoreAnimationDrawingArea):
     Pass the drawing area's associated process when constructing it and store it as a member
     in addition to the page. This is necessary now that a page can be associated with 2
     WebProcesses at a time, each having its own drawing area.
     
     * UIProcess/Cocoa/WebPageProxyCocoa.mm:
-    (WebKit::WebPageProxy::createSandboxExtensionsIfNeeded):
+    (CyberKit::WebPageProxy::createSandboxExtensionsIfNeeded):
     Pass the process.
     
     * UIProcess/ProvisionalPageProxy.cpp: Added.
-    (WebKit::ProvisionalPageProxy::ProvisionalPageProxy):
-    (WebKit::ProvisionalPageProxy::~ProvisionalPageProxy):
-    (WebKit::ProvisionalPageProxy::processDidTerminate):
-    (WebKit::ProvisionalPageProxy::takeDrawingArea):
-    (WebKit::ProvisionalPageProxy::cancel):
-    (WebKit::ProvisionalPageProxy::processDidFinishLaunching):
-    (WebKit::ProvisionalPageProxy::finishInitializingWebPageAfterProcessLaunch):
-    (WebKit::ProvisionalPageProxy::initializeWebPage):
-    (WebKit::ProvisionalPageProxy::loadData):
-    (WebKit::ProvisionalPageProxy::loadRequest):
-    (WebKit::ProvisionalPageProxy::goToBackForwardItem):
-    (WebKit::ProvisionalPageProxy::didCreateMainFrame):
-    (WebKit::ProvisionalPageProxy::didPerformClientRedirect):
-    (WebKit::ProvisionalPageProxy::didStartProvisionalLoadForFrame):
-    (WebKit::ProvisionalPageProxy::didFailProvisionalLoadForFrame):
-    (WebKit::ProvisionalPageProxy::didCommitLoadForFrame):
-    (WebKit::ProvisionalPageProxy::didNavigateWithNavigationData):
-    (WebKit::ProvisionalPageProxy::didChangeProvisionalURLForFrame):
-    (WebKit::ProvisionalPageProxy::decidePolicyForNavigationActionAsync):
-    (WebKit::ProvisionalPageProxy::decidePolicyForResponse):
-    (WebKit::ProvisionalPageProxy::startURLSchemeTask):
-    (WebKit::ProvisionalPageProxy::backForwardGoToItem):
-    (WebKit::ProvisionalPageProxy::didReceiveMessage):
-    (WebKit::ProvisionalPageProxy::didReceiveSyncMessage):
+    (CyberKit::ProvisionalPageProxy::ProvisionalPageProxy):
+    (CyberKit::ProvisionalPageProxy::~ProvisionalPageProxy):
+    (CyberKit::ProvisionalPageProxy::processDidTerminate):
+    (CyberKit::ProvisionalPageProxy::takeDrawingArea):
+    (CyberKit::ProvisionalPageProxy::cancel):
+    (CyberKit::ProvisionalPageProxy::processDidFinishLaunching):
+    (CyberKit::ProvisionalPageProxy::finishInitializingWebPageAfterProcessLaunch):
+    (CyberKit::ProvisionalPageProxy::initializeWebPage):
+    (CyberKit::ProvisionalPageProxy::loadData):
+    (CyberKit::ProvisionalPageProxy::loadRequest):
+    (CyberKit::ProvisionalPageProxy::goToBackForwardItem):
+    (CyberKit::ProvisionalPageProxy::didCreateMainFrame):
+    (CyberKit::ProvisionalPageProxy::didPerformClientRedirect):
+    (CyberKit::ProvisionalPageProxy::didStartProvisionalLoadForFrame):
+    (CyberKit::ProvisionalPageProxy::didFailProvisionalLoadForFrame):
+    (CyberKit::ProvisionalPageProxy::didCommitLoadForFrame):
+    (CyberKit::ProvisionalPageProxy::didNavigateWithNavigationData):
+    (CyberKit::ProvisionalPageProxy::didChangeProvisionalURLForFrame):
+    (CyberKit::ProvisionalPageProxy::decidePolicyForNavigationActionAsync):
+    (CyberKit::ProvisionalPageProxy::decidePolicyForResponse):
+    (CyberKit::ProvisionalPageProxy::startURLSchemeTask):
+    (CyberKit::ProvisionalPageProxy::backForwardGoToItem):
+    (CyberKit::ProvisionalPageProxy::didReceiveMessage):
+    (CyberKit::ProvisionalPageProxy::didReceiveSyncMessage):
     * UIProcess/ProvisionalPageProxy.h: Added.
-    (WebKit::ProvisionalPageProxy::page):
-    (WebKit::ProvisionalPageProxy::mainFrame const):
-    (WebKit::ProvisionalPageProxy::process):
-    (WebKit::ProvisionalPageProxy::processSwapRequestedByClient const):
-    (WebKit::ProvisionalPageProxy::navigationID const):
-    (WebKit::ProvisionalPageProxy::drawingArea const):
+    (CyberKit::ProvisionalPageProxy::page):
+    (CyberKit::ProvisionalPageProxy::mainFrame const):
+    (CyberKit::ProvisionalPageProxy::process):
+    (CyberKit::ProvisionalPageProxy::processSwapRequestedByClient const):
+    (CyberKit::ProvisionalPageProxy::navigationID const):
+    (CyberKit::ProvisionalPageProxy::drawingArea const):
     New WebPageProxy-like class which is owned by the WebPageProxy and proxies IPC from
     the provisional process.
     
     * UIProcess/SuspendedPageProxy.cpp:
-    (WebKit::SuspendedPageProxy::~SuspendedPageProxy):
-    (WebKit::SuspendedPageProxy::unsuspend):
-    (WebKit::SuspendedPageProxy::didProcessRequestToSuspend):
+    (CyberKit::SuspendedPageProxy::~SuspendedPageProxy):
+    (CyberKit::SuspendedPageProxy::unsuspend):
+    (CyberKit::SuspendedPageProxy::didProcessRequestToSuspend):
     Unregister the SuspendedPageProxy as an IPC message receiver a little bit earlier
     when we're going to unsuspend it. This avoids conflicting with the ProvisionalPageProxy
     which tries to register itself as an IPC message receiver for the same pageID when
     a process-swap occurs and we're switching to a suspended page.
     
     * UIProcess/WebFrameProxy.cpp:
-    (WebKit::WebFrameProxy::isMainFrame const):
+    (CyberKit::WebFrameProxy::isMainFrame const):
     WebFrameProxy::isMainFrame() relies on checking that the frame is the WebPageProxy's m_mainFrame.
     Now that the WebPageProxy can have a ProvisionalPageProxy, also check if it is the ProvisionalPageProxy's
     m_mainFrame to maintain previous behavior.
     
     * UIProcess/WebPageProxy.cpp:
-    (WebKit::WebPageProxy::provisionalDrawingArea const):
+    (CyberKit::WebPageProxy::provisionalDrawingArea const):
     Add getter for the provisional drawing area. We normally only deal with the page's current drawing area, but
     the ViewGestureController needs access to the provisional once to display the swipe gesture snapshot.
     
-    (WebKit::WebPageProxy::swapToWebProcess):
+    (CyberKit::WebPageProxy::swapToWebProcess):
     swapToWebProcess() no longer takes care of unsuspending the SuspendedPage because we now call swapToWebProcess()
     later, when a load is actually committed in the provisional page / process. swapToWebProcess() now also needs
     to initialize some data members such as the drawing area and the main frame as it is transferring them over from
     the ProvisionalPageProxy which started the provisional load.
     
-    (WebKit::WebPageProxy::finishAttachingToWebProcess):
+    (CyberKit::WebPageProxy::finishAttachingToWebProcess):
     We no longer need IsSwapFromSuspended parameter as this is called later now, after a load has actually been
     committed in the provisional process.
     
-    (WebKit::WebPageProxy::setDrawingArea):
-    (WebKit::WebPageProxy::initializeWebPage):
+    (CyberKit::WebPageProxy::setDrawingArea):
+    (CyberKit::WebPageProxy::initializeWebPage):
     - We no longer need IsSwapFromSuspended parameter as this is called later now, after a load has actually been
       committed in the provisional process.
     - Factor some code out to WebPageProxy::setDrawingArea() so that it can be shared with swapToWebProcess().
     
-    (WebKit::WebPageProxy::maybeInitializeSandboxExtensionHandle):
-    (WebKit::WebPageProxy::loadRequest):
-    (WebKit::WebPageProxy::loadRequestWithNavigationShared):
+    (CyberKit::WebPageProxy::maybeInitializeSandboxExtensionHandle):
+    (CyberKit::WebPageProxy::loadRequest):
+    (CyberKit::WebPageProxy::loadRequestWithNavigationShared):
     Only call setPendingAPIRequestURL() in loadRequestWithNavigation() only if ShouldTreatAsContinuingLoad is not
     Yes. This avoids hitting some assertions as this was already called during the first API call if needed.
     
-    (WebKit::WebPageProxy::loadData):
-    (WebKit::WebPageProxy::loadDataWithNavigationShared):
-    (WebKit::WebPageProxy::stopLoading):
-    (WebKit::WebPageProxy::reload):
-    (WebKit::WebPageProxy::didPerformDragControllerAction):
-    (WebKit::WebPageProxy::findPlugin):
-    (WebKit::WebPageProxy::receivedNavigationPolicyDecision):
+    (CyberKit::WebPageProxy::loadData):
+    (CyberKit::WebPageProxy::loadDataWithNavigationShared):
+    (CyberKit::WebPageProxy::stopLoading):
+    (CyberKit::WebPageProxy::reload):
+    (CyberKit::WebPageProxy::didPerformDragControllerAction):
+    (CyberKit::WebPageProxy::findPlugin):
+    (CyberKit::WebPageProxy::receivedNavigationPolicyDecision):
     In case of process swap, tell the previous process to ignore the load instead of suspending it right away.
     Suspension now happens later, only if we end up committing the provisional load in the new process.
     Also discard the SuspendedPage if it failed to suspend (we only reuse its process in this case). This used
     to happen a bit later but it is clearer if we do this as early as possible I think.
     
-    (WebKit::WebPageProxy::commitProvisionalPage):
+    (CyberKit::WebPageProxy::commitProvisionalPage):
     When the load is committed in the new process, we call WebPageProxy::commitProvisionalPage(). It takes care of:
     - Actually swapping the WebPageProxy to the new process by calling processDidTerminate() / swapToWebProcess().
     - Suspending the current page.
@@ -4424,152 +4424,152 @@
     - Destroy the ProvisionalPageProxy.
     This work used to happen earlier in continueNavigationInNewProcess().
     
-    (WebKit::WebPageProxy::continueNavigationInNewProcess):
+    (CyberKit::WebPageProxy::continueNavigationInNewProcess):
     Moved some of the logic to commitProvisionalPage(). We now merely start the load in a new ProvisionalPageProxy,
     without actually having the WebPageProxy switch to the new process yet.
     
-    (WebKit::WebPageProxy::didCreateMainFrame):
-    (WebKit::WebPageProxy::didCreateSubframe):
-    (WebKit::WebPageProxy::didCreateWindow):
+    (CyberKit::WebPageProxy::didCreateMainFrame):
+    (CyberKit::WebPageProxy::didCreateSubframe):
+    (CyberKit::WebPageProxy::didCreateWindow):
     Drop some code that is no longer needed, now that the ProvisionalPageProxy takes care of this.
     
-    (WebKit::WebPageProxy::didDestroyNavigation):
+    (CyberKit::WebPageProxy::didDestroyNavigation):
     On process-swap, when telling the previous process to ignore the load and starting the new load in a new
     ProvisionalPageProxy, the previous WebPage attempts to destroy the navigation. In this case, we ignore
     the call since the navigation is merely taken over by the ProvisionalPageProxy.
     
-    (WebKit::WebPageProxy::didStartProvisionalLoadForFrame):
-    (WebKit::WebPageProxy::didStartProvisionalLoadForFrameShared):
+    (CyberKit::WebPageProxy::didStartProvisionalLoadForFrame):
+    (CyberKit::WebPageProxy::didStartProvisionalLoadForFrameShared):
     Moved some PSON logic to the ProvisionalPageProxy instead.
     
-    (WebKit::WebPageProxy::didReceiveServerRedirectForProvisionalLoadForFrame):
-    (WebKit::WebPageProxy::didReceiveServerRedirectForProvisionalLoadForFrameShared):
-    (WebKit::WebPageProxy::willPerformClientRedirectForFrame):
-    (WebKit::WebPageProxy::didCancelClientRedirectForFrame):
-    (WebKit::WebPageProxy::didChangeProvisionalURLForFrame):
-    (WebKit::WebPageProxy::didChangeProvisionalURLForFrameShared):
+    (CyberKit::WebPageProxy::didReceiveServerRedirectForProvisionalLoadForFrame):
+    (CyberKit::WebPageProxy::didReceiveServerRedirectForProvisionalLoadForFrameShared):
+    (CyberKit::WebPageProxy::willPerformClientRedirectForFrame):
+    (CyberKit::WebPageProxy::didCancelClientRedirectForFrame):
+    (CyberKit::WebPageProxy::didChangeProvisionalURLForFrame):
+    (CyberKit::WebPageProxy::didChangeProvisionalURLForFrameShared):
     
-    (WebKit::WebPageProxy::didFailProvisionalLoadForFrame):
-    (WebKit::WebPageProxy::didFailProvisionalLoadForFrameShared):
+    (CyberKit::WebPageProxy::didFailProvisionalLoadForFrame):
+    (CyberKit::WebPageProxy::didFailProvisionalLoadForFrameShared):
     When didFailProvisionalLoadForFrame() is called for a ProvisionalPageProxy, destroy it.
     
-    (WebKit::WebPageProxy::didCommitLoadForFrame):
-    (WebKit::WebPageProxy::didFinishDocumentLoadForFrame):
-    (WebKit::WebPageProxy::didFinishLoadForFrame):
-    (WebKit::WebPageProxy::didFailLoadForFrame):
-    (WebKit::WebPageProxy::didSameDocumentNavigationForFrame):
-    (WebKit::WebPageProxy::didReceiveTitleForFrame):
-    (WebKit::WebPageProxy::didFirstVisuallyNonEmptyLayoutForFrame):
-    (WebKit::WebPageProxy::didDisplayInsecureContentForFrame):
-    (WebKit::WebPageProxy::didRunInsecureContentForFrame):
-    (WebKit::WebPageProxy::frameDidBecomeFrameSet):
-    (WebKit::WebPageProxy::decidePolicyForNavigationActionAsync):
-    (WebKit::WebPageProxy::decidePolicyForNavigationActionAsyncShared):
-    (WebKit::WebPageProxy::decidePolicyForNavigationAction):
-    (WebKit::WebPageProxy::decidePolicyForNavigationActionSync):
-    (WebKit::WebPageProxy::decidePolicyForNewWindowAction):
-    (WebKit::WebPageProxy::decidePolicyForResponse):
-    (WebKit::WebPageProxy::decidePolicyForResponseShared):
-    (WebKit::WebPageProxy::unableToImplementPolicy):
-    (WebKit::WebPageProxy::willSubmitForm):
-    (WebKit::WebPageProxy::didNavigateWithNavigationData):
-    (WebKit::WebPageProxy::didNavigateWithNavigationDataShared):
-    (WebKit::WebPageProxy::didPerformClientRedirect):
-    (WebKit::WebPageProxy::didPerformClientRedirectShared):
-    (WebKit::WebPageProxy::didPerformServerRedirect):
-    (WebKit::WebPageProxy::didUpdateHistoryTitle):
-    (WebKit::WebPageProxy::createNewPage):
-    (WebKit::WebPageProxy::runJavaScriptAlert):
-    (WebKit::WebPageProxy::runJavaScriptConfirm):
-    (WebKit::WebPageProxy::runJavaScriptPrompt):
-    (WebKit::WebPageProxy::unavailablePluginButtonClicked):
-    (WebKit::WebPageProxy::runBeforeUnloadConfirmPanel):
-    (WebKit::WebPageProxy::runOpenPanel):
-    (WebKit::WebPageProxy::printFrame):
-    (WebKit::WebPageProxy::backForwardGoToItem):
-    (WebKit::WebPageProxy::backForwardGoToItemShared):
-    (WebKit::WebPageProxy::learnWord):
-    (WebKit::WebPageProxy::ignoreWord):
-    (WebKit::WebPageProxy::didReceiveEvent):
-    (WebKit::WebPageProxy::editingRangeCallback):
-    (WebKit::WebPageProxy::rectForCharacterRangeCallback):
-    (WebKit::WebPageProxy::focusedFrameChanged):
-    (WebKit::WebPageProxy::frameSetLargestFrameChanged):
+    (CyberKit::WebPageProxy::didCommitLoadForFrame):
+    (CyberKit::WebPageProxy::didFinishDocumentLoadForFrame):
+    (CyberKit::WebPageProxy::didFinishLoadForFrame):
+    (CyberKit::WebPageProxy::didFailLoadForFrame):
+    (CyberKit::WebPageProxy::didSameDocumentNavigationForFrame):
+    (CyberKit::WebPageProxy::didReceiveTitleForFrame):
+    (CyberKit::WebPageProxy::didFirstVisuallyNonEmptyLayoutForFrame):
+    (CyberKit::WebPageProxy::didDisplayInsecureContentForFrame):
+    (CyberKit::WebPageProxy::didRunInsecureContentForFrame):
+    (CyberKit::WebPageProxy::frameDidBecomeFrameSet):
+    (CyberKit::WebPageProxy::decidePolicyForNavigationActionAsync):
+    (CyberKit::WebPageProxy::decidePolicyForNavigationActionAsyncShared):
+    (CyberKit::WebPageProxy::decidePolicyForNavigationAction):
+    (CyberKit::WebPageProxy::decidePolicyForNavigationActionSync):
+    (CyberKit::WebPageProxy::decidePolicyForNewWindowAction):
+    (CyberKit::WebPageProxy::decidePolicyForResponse):
+    (CyberKit::WebPageProxy::decidePolicyForResponseShared):
+    (CyberKit::WebPageProxy::unableToImplementPolicy):
+    (CyberKit::WebPageProxy::willSubmitForm):
+    (CyberKit::WebPageProxy::didNavigateWithNavigationData):
+    (CyberKit::WebPageProxy::didNavigateWithNavigationDataShared):
+    (CyberKit::WebPageProxy::didPerformClientRedirect):
+    (CyberKit::WebPageProxy::didPerformClientRedirectShared):
+    (CyberKit::WebPageProxy::didPerformServerRedirect):
+    (CyberKit::WebPageProxy::didUpdateHistoryTitle):
+    (CyberKit::WebPageProxy::createNewPage):
+    (CyberKit::WebPageProxy::runJavaScriptAlert):
+    (CyberKit::WebPageProxy::runJavaScriptConfirm):
+    (CyberKit::WebPageProxy::runJavaScriptPrompt):
+    (CyberKit::WebPageProxy::unavailablePluginButtonClicked):
+    (CyberKit::WebPageProxy::runBeforeUnloadConfirmPanel):
+    (CyberKit::WebPageProxy::runOpenPanel):
+    (CyberKit::WebPageProxy::printFrame):
+    (CyberKit::WebPageProxy::backForwardGoToItem):
+    (CyberKit::WebPageProxy::backForwardGoToItemShared):
+    (CyberKit::WebPageProxy::learnWord):
+    (CyberKit::WebPageProxy::ignoreWord):
+    (CyberKit::WebPageProxy::didReceiveEvent):
+    (CyberKit::WebPageProxy::editingRangeCallback):
+    (CyberKit::WebPageProxy::rectForCharacterRangeCallback):
+    (CyberKit::WebPageProxy::focusedFrameChanged):
+    (CyberKit::WebPageProxy::frameSetLargestFrameChanged):
     
-    (WebKit::WebPageProxy::provisionalProcessDidTerminate):
+    (CyberKit::WebPageProxy::provisionalProcessDidTerminate):
     Cancel the provisiona load and destroy the ProvisionalPageProxy if
     the provisional process crashes.
     
-    (WebKit::WebPageProxy::resetState):
+    (CyberKit::WebPageProxy::resetState):
     Drop some code that is no longer needed.
     
-    (WebKit::WebPageProxy::creationParameters):
+    (CyberKit::WebPageProxy::creationParameters):
     - Move the hasRegisteredServiceWorkers flag initialization from the call site to here now that we have
     more than one call site. This was just some bad factoring.
     - Take the process in parameter now that we page can be associated with several processes at a time.
     
-    (WebKit::WebPageProxy::exceededDatabaseQuota):
-    (WebKit::WebPageProxy::requestGeolocationPermissionForFrame):
-    (WebKit::WebPageProxy::requestUserMediaPermissionForFrame):
-    (WebKit::WebPageProxy::enumerateMediaDevicesForFrame):
-    (WebKit::WebPageProxy::startURLSchemeTask):
-    (WebKit::WebPageProxy::startURLSchemeTaskShared):
-    (WebKit::WebPageProxy::stopURLSchemeTask):
-    (WebKit::WebPageProxy::loadSynchronousURLSchemeTask):
-    (WebKit::WebPageProxy::checkURLReceivedFromCurrentOrPreviousWebProcess):
-    (WebKit::WebPageProxy::willAcquireUniversalFileReadSandboxExtension):
+    (CyberKit::WebPageProxy::exceededDatabaseQuota):
+    (CyberKit::WebPageProxy::requestGeolocationPermissionForFrame):
+    (CyberKit::WebPageProxy::requestUserMediaPermissionForFrame):
+    (CyberKit::WebPageProxy::enumerateMediaDevicesForFrame):
+    (CyberKit::WebPageProxy::startURLSchemeTask):
+    (CyberKit::WebPageProxy::startURLSchemeTaskShared):
+    (CyberKit::WebPageProxy::stopURLSchemeTask):
+    (CyberKit::WebPageProxy::loadSynchronousURLSchemeTask):
+    (CyberKit::WebPageProxy::checkURLReceivedFromCurrentOrPreviousWebProcess):
+    (CyberKit::WebPageProxy::willAcquireUniversalFileReadSandboxExtension):
     * UIProcess/WebPageProxy.h:
-    (WebKit::WebPageProxy::visitedLinkStore):
-    (WebKit::WebPageProxy::provisionalPageProxy const):
+    (CyberKit::WebPageProxy::visitedLinkStore):
+    (CyberKit::WebPageProxy::provisionalPageProxy const):
     
     * UIProcess/WebProcessProxy.cpp:
-    (WebKit::WebProcessProxy::hasProvisionalPageWithID const):
-    (WebKit::WebProcessProxy::updateBackForwardItem):
-    (WebKit::WebProcessProxy::processDidTerminateOrFailedToLaunch):
-    (WebKit::WebProcessProxy::didFinishLaunching):
-    (WebKit::WebProcessProxy::canTerminateChildProcess):
+    (CyberKit::WebProcessProxy::hasProvisionalPageWithID const):
+    (CyberKit::WebProcessProxy::updateBackForwardItem):
+    (CyberKit::WebProcessProxy::processDidTerminateOrFailedToLaunch):
+    (CyberKit::WebProcessProxy::didFinishLaunching):
+    (CyberKit::WebProcessProxy::canTerminateChildProcess):
     * UIProcess/WebProcessProxy.h:
-    (WebKit::WebProcessProxy::addProvisionalPageProxy):
-    (WebKit::WebProcessProxy::removeProvisionalPageProxy):
+    (CyberKit::WebProcessProxy::addProvisionalPageProxy):
+    (CyberKit::WebProcessProxy::removeProvisionalPageProxy):
     Before updating a BackForwardListItem, we normally make sure the process has a WebPageProxy with the
     item's pageID. We have to tweak the logic because there may now be no WebPageProxy with this pageID
     associated with this process yet, because it is still a ProvisionalPageProxy.
     
     * UIProcess/WebURLSchemeHandler.cpp:
-    (WebKit::WebURLSchemeHandler::startTask):
+    (CyberKit::WebURLSchemeHandler::startTask):
     * UIProcess/WebURLSchemeHandler.h:
     * UIProcess/WebURLSchemeTask.cpp:
-    (WebKit::WebURLSchemeTask::create):
-    (WebKit::WebURLSchemeTask::WebURLSchemeTask):
-    (WebKit::WebURLSchemeTask::didPerformRedirection):
-    (WebKit::WebURLSchemeTask::didReceiveResponse):
-    (WebKit::WebURLSchemeTask::didReceiveData):
-    (WebKit::WebURLSchemeTask::didComplete):
-    (WebKit::WebURLSchemeTask::pageDestroyed):
+    (CyberKit::WebURLSchemeTask::create):
+    (CyberKit::WebURLSchemeTask::WebURLSchemeTask):
+    (CyberKit::WebURLSchemeTask::didPerformRedirection):
+    (CyberKit::WebURLSchemeTask::didReceiveResponse):
+    (CyberKit::WebURLSchemeTask::didReceiveData):
+    (CyberKit::WebURLSchemeTask::didComplete):
+    (CyberKit::WebURLSchemeTask::pageDestroyed):
     * UIProcess/WebURLSchemeTask.h:
     Pass the process when constructing a WebURLSchemeTask and store it as a data member in addition to
     the page. This is necessary now that a WebPageProxy can be associated with several WebProcesses.
     
     * UIProcess/ios/ViewGestureControllerIOS.mm:
-    (WebKit::ViewGestureController::endSwipeGesture):
+    (CyberKit::ViewGestureController::endSwipeGesture):
     Use the provisional drawing area to display the swipe snapshot as it may differ from the one currently
     associated with the page in case of process swap.
     
-    * WebKit.xcodeproj/project.pbxproj:
+    * CyberKit.xcodeproj/project.pbxproj:
     Add ProvisionalPageProxy class.
     
     * WebProcess/WebPage/WebFrame.cpp:
-    (WebKit::toPolicyAction):
-    (WebKit::WebFrame::didReceivePolicyDecision):
+    (CyberKit::toPolicyAction):
+    (CyberKit::WebFrame::didReceivePolicyDecision):
     * WebProcess/WebPage/WebPage.cpp:
-    (WebKit::m_shouldAttachDrawingAreaOnPageTransition):
-    (WebKit::WebPage::reinitializeWebPage):
-    (WebKit::WebPage::didReceivePolicyDecision):
+    (CyberKit::m_shouldAttachDrawingAreaOnPageTransition):
+    (CyberKit::WebPage::reinitializeWebPage):
+    (CyberKit::WebPage::didReceivePolicyDecision):
     Stop dealing with WebPolicyAction::Suspend as it no longer exists.
     
-    (WebKit::WebPage::didCompletePageTransition):
+    (CyberKit::WebPage::didCompletePageTransition):
     
-    (WebKit::WebPage::setIsSuspended):
+    (CyberKit::WebPage::setIsSuspended):
     Suspend the Page when setIsSuspended(true) is called, now that there is no longer a WebPolicyAction::Suspend.
     setIsSuspended(true) IPC is sent when we actually commit the provisional page.
     
@@ -4579,7 +4579,7 @@
     
     Add API test coverage.
     
-    * TestWebKitAPI/Tests/WebKitCocoa/ProcessSwapOnNavigation.mm:
+    * TestCyberKitAPI/Tests/CyberKitCocoa/ProcessSwapOnNavigation.mm:
     (-[PSONNavigationDelegate webView:decidePolicyForNavigationResponse:decisionHandler:]):
     
     LayoutTests:
@@ -4628,15 +4628,15 @@
     
     Reviewed by Geoffrey Garen.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     * loader/FrameLoader.cpp:
-    (WebCore::FrameLoader::commitProvisionalLoad):
+    (CyberCore::FrameLoader::commitProvisionalLoad):
     When restoring from PageCache, make sure we notify the client that the load was committed
     *before* we tell it that the navigation is complete. This would confuse the ProvisionalPageProxy
     logic in the UIProcess.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     The issue tracked by rdar://problem/47099573 is that a provisional load may get
     canceled (or converted into a download) *after* we've decided to process-swap.
@@ -4656,8 +4656,8 @@
     process, without impacting the WebPageProxy.
     
     * Shared/WebPageCreationParameters.cpp:
-    (WebKit::WebPageCreationParameters::encode const):
-    (WebKit::WebPageCreationParameters::decode):
+    (CyberKit::WebPageCreationParameters::encode const):
+    (CyberKit::WebPageCreationParameters::decode):
     * Shared/WebPageCreationParameters.h:
     Rename isSwapFromSuspended to isProcessSwap for clarity as we always want to
     delay attaching the drawing area in case of a process-swap, no matter what
@@ -4680,171 +4680,171 @@
     process and the provisional one, to maintain previous behavior in our API tests.
     
     * UIProcess/API/gtk/PageClientImpl.cpp:
-    (WebKit::PageClientImpl::createDrawingAreaProxy):
+    (CyberKit::PageClientImpl::createDrawingAreaProxy):
     * UIProcess/API/gtk/PageClientImpl.h:
     * UIProcess/API/wpe/PageClientImpl.cpp:
-    (WebKit::PageClientImpl::createDrawingAreaProxy):
+    (CyberKit::PageClientImpl::createDrawingAreaProxy):
     * UIProcess/API/wpe/PageClientImpl.h:
     * UIProcess/AcceleratedDrawingAreaProxy.cpp:
-    (WebKit::AcceleratedDrawingAreaProxy::AcceleratedDrawingAreaProxy):
-    (WebKit::AcceleratedDrawingAreaProxy::didUpdateBackingStoreState):
-    (WebKit::AcceleratedDrawingAreaProxy::sendUpdateBackingStoreState):
-    (WebKit::AcceleratedDrawingAreaProxy::waitForAndDispatchDidUpdateBackingStoreState):
-    (WebKit::AcceleratedDrawingAreaProxy::setNativeSurfaceHandleForCompositing):
-    (WebKit::AcceleratedDrawingAreaProxy::destroyNativeSurfaceHandleForCompositing):
+    (CyberKit::AcceleratedDrawingAreaProxy::AcceleratedDrawingAreaProxy):
+    (CyberKit::AcceleratedDrawingAreaProxy::didUpdateBackingStoreState):
+    (CyberKit::AcceleratedDrawingAreaProxy::sendUpdateBackingStoreState):
+    (CyberKit::AcceleratedDrawingAreaProxy::waitForAndDispatchDidUpdateBackingStoreState):
+    (CyberKit::AcceleratedDrawingAreaProxy::setNativeSurfaceHandleForCompositing):
+    (CyberKit::AcceleratedDrawingAreaProxy::destroyNativeSurfaceHandleForCompositing):
     * UIProcess/AcceleratedDrawingAreaProxy.h:
     * UIProcess/Cocoa/WebViewImpl.h:
     * UIProcess/Cocoa/WebViewImpl.mm:
-    (WebKit::WebViewImpl::createDrawingAreaProxy):
+    (CyberKit::WebViewImpl::createDrawingAreaProxy):
     * UIProcess/DrawingAreaProxy.cpp:
-    (WebKit::DrawingAreaProxy::DrawingAreaProxy):
-    (WebKit::DrawingAreaProxy::~DrawingAreaProxy):
-    (WebKit::DrawingAreaProxy::viewExposedRectChangedTimerFired):
+    (CyberKit::DrawingAreaProxy::DrawingAreaProxy):
+    (CyberKit::DrawingAreaProxy::~DrawingAreaProxy):
+    (CyberKit::DrawingAreaProxy::viewExposedRectChangedTimerFired):
     * UIProcess/DrawingAreaProxy.h:
-    (WebKit::DrawingAreaProxy::process):
+    (CyberKit::DrawingAreaProxy::process):
     * UIProcess/DrawingAreaProxyImpl.cpp:
-    (WebKit::DrawingAreaProxyImpl::DrawingAreaProxyImpl):
-    (WebKit::DrawingAreaProxyImpl::update):
+    (CyberKit::DrawingAreaProxyImpl::DrawingAreaProxyImpl):
+    (CyberKit::DrawingAreaProxyImpl::update):
     * UIProcess/DrawingAreaProxyImpl.h:
     * UIProcess/PageClient.h:
     * UIProcess/RemoteLayerTree/RemoteLayerTreeDrawingAreaProxy.h:
     * UIProcess/RemoteLayerTree/RemoteLayerTreeDrawingAreaProxy.mm:
-    (WebKit::RemoteLayerTreeDrawingAreaProxy::RemoteLayerTreeDrawingAreaProxy):
-    (WebKit::RemoteLayerTreeDrawingAreaProxy::~RemoteLayerTreeDrawingAreaProxy):
-    (WebKit::RemoteLayerTreeDrawingAreaProxy::deviceScaleFactorDidChange):
-    (WebKit::RemoteLayerTreeDrawingAreaProxy::sendUpdateGeometry):
-    (WebKit::RemoteLayerTreeDrawingAreaProxy::acceleratedAnimationDidStart):
-    (WebKit::RemoteLayerTreeDrawingAreaProxy::acceleratedAnimationDidEnd):
-    (WebKit::RemoteLayerTreeDrawingAreaProxy::didRefreshDisplay):
-    (WebKit::RemoteLayerTreeDrawingAreaProxy::waitForDidUpdateActivityState):
-    (WebKit::RemoteLayerTreeDrawingAreaProxy::dispatchAfterEnsuringDrawing):
+    (CyberKit::RemoteLayerTreeDrawingAreaProxy::RemoteLayerTreeDrawingAreaProxy):
+    (CyberKit::RemoteLayerTreeDrawingAreaProxy::~RemoteLayerTreeDrawingAreaProxy):
+    (CyberKit::RemoteLayerTreeDrawingAreaProxy::deviceScaleFactorDidChange):
+    (CyberKit::RemoteLayerTreeDrawingAreaProxy::sendUpdateGeometry):
+    (CyberKit::RemoteLayerTreeDrawingAreaProxy::acceleratedAnimationDidStart):
+    (CyberKit::RemoteLayerTreeDrawingAreaProxy::acceleratedAnimationDidEnd):
+    (CyberKit::RemoteLayerTreeDrawingAreaProxy::didRefreshDisplay):
+    (CyberKit::RemoteLayerTreeDrawingAreaProxy::waitForDidUpdateActivityState):
+    (CyberKit::RemoteLayerTreeDrawingAreaProxy::dispatchAfterEnsuringDrawing):
     * UIProcess/ios/PageClientImplIOS.h:
     * UIProcess/ios/PageClientImplIOS.mm:
-    (WebKit::PageClientImpl::createDrawingAreaProxy):
+    (CyberKit::PageClientImpl::createDrawingAreaProxy):
     * UIProcess/ios/WKContentView.h:
     * UIProcess/ios/WKContentView.mm:
     (-[WKContentView _createDrawingAreaProxy:]):
     * UIProcess/mac/PageClientImplMac.h:
     * UIProcess/mac/PageClientImplMac.mm:
-    (WebKit::PageClientImpl::createDrawingAreaProxy):
+    (CyberKit::PageClientImpl::createDrawingAreaProxy):
     * UIProcess/mac/TiledCoreAnimationDrawingAreaProxy.h:
     * UIProcess/mac/TiledCoreAnimationDrawingAreaProxy.mm:
-    (WebKit::TiledCoreAnimationDrawingAreaProxy::TiledCoreAnimationDrawingAreaProxy):
-    (WebKit::TiledCoreAnimationDrawingAreaProxy::deviceScaleFactorDidChange):
-    (WebKit::TiledCoreAnimationDrawingAreaProxy::colorSpaceDidChange):
-    (WebKit::TiledCoreAnimationDrawingAreaProxy::waitForDidUpdateActivityState):
-    (WebKit::TiledCoreAnimationDrawingAreaProxy::createFence):
-    (WebKit::TiledCoreAnimationDrawingAreaProxy::sendUpdateGeometry):
-    (WebKit::TiledCoreAnimationDrawingAreaProxy::adjustTransientZoom):
-    (WebKit::TiledCoreAnimationDrawingAreaProxy::commitTransientZoom):
-    (WebKit::TiledCoreAnimationDrawingAreaProxy::dispatchAfterEnsuringDrawing):
+    (CyberKit::TiledCoreAnimationDrawingAreaProxy::TiledCoreAnimationDrawingAreaProxy):
+    (CyberKit::TiledCoreAnimationDrawingAreaProxy::deviceScaleFactorDidChange):
+    (CyberKit::TiledCoreAnimationDrawingAreaProxy::colorSpaceDidChange):
+    (CyberKit::TiledCoreAnimationDrawingAreaProxy::waitForDidUpdateActivityState):
+    (CyberKit::TiledCoreAnimationDrawingAreaProxy::createFence):
+    (CyberKit::TiledCoreAnimationDrawingAreaProxy::sendUpdateGeometry):
+    (CyberKit::TiledCoreAnimationDrawingAreaProxy::adjustTransientZoom):
+    (CyberKit::TiledCoreAnimationDrawingAreaProxy::commitTransientZoom):
+    (CyberKit::TiledCoreAnimationDrawingAreaProxy::dispatchAfterEnsuringDrawing):
     * UIProcess/mac/WebPageProxyMac.mm:
     * UIProcess/win/PageClientImpl.cpp:
-    (WebKit::PageClientImpl::createDrawingAreaProxy):
+    (CyberKit::PageClientImpl::createDrawingAreaProxy):
     * UIProcess/win/PageClientImpl.h:
     * UIProcess/win/PageClientImpl.cpp:
-    (WebKit::PageClientImpl::createDrawingAreaProxy):
+    (CyberKit::PageClientImpl::createDrawingAreaProxy):
     * UIProcess/win/PageClientImpl.h:
     * WebProcess/WebPage/mac/TiledCoreAnimationDrawingArea.mm:
-    (WebKit::TiledCoreAnimationDrawingArea::TiledCoreAnimationDrawingArea):
+    (CyberKit::TiledCoreAnimationDrawingArea::TiledCoreAnimationDrawingArea):
     Pass the drawing area's associated process when constructing it and store it as a member
     in addition to the page. This is necessary now that a page can be associated with 2
     WebProcesses at a time, each having its own drawing area.
     
     * UIProcess/Cocoa/WebPageProxyCocoa.mm:
-    (WebKit::WebPageProxy::createSandboxExtensionsIfNeeded):
+    (CyberKit::WebPageProxy::createSandboxExtensionsIfNeeded):
     Pass the process.
     
     * UIProcess/ProvisionalPageProxy.cpp: Added.
-    (WebKit::ProvisionalPageProxy::ProvisionalPageProxy):
-    (WebKit::ProvisionalPageProxy::~ProvisionalPageProxy):
-    (WebKit::ProvisionalPageProxy::processDidTerminate):
-    (WebKit::ProvisionalPageProxy::takeDrawingArea):
-    (WebKit::ProvisionalPageProxy::cancel):
-    (WebKit::ProvisionalPageProxy::processDidFinishLaunching):
-    (WebKit::ProvisionalPageProxy::finishInitializingWebPageAfterProcessLaunch):
-    (WebKit::ProvisionalPageProxy::initializeWebPage):
-    (WebKit::ProvisionalPageProxy::loadData):
-    (WebKit::ProvisionalPageProxy::loadRequest):
-    (WebKit::ProvisionalPageProxy::goToBackForwardItem):
-    (WebKit::ProvisionalPageProxy::didCreateMainFrame):
-    (WebKit::ProvisionalPageProxy::didPerformClientRedirect):
-    (WebKit::ProvisionalPageProxy::didStartProvisionalLoadForFrame):
-    (WebKit::ProvisionalPageProxy::didFailProvisionalLoadForFrame):
-    (WebKit::ProvisionalPageProxy::didCommitLoadForFrame):
-    (WebKit::ProvisionalPageProxy::didNavigateWithNavigationData):
-    (WebKit::ProvisionalPageProxy::didChangeProvisionalURLForFrame):
-    (WebKit::ProvisionalPageProxy::decidePolicyForNavigationActionAsync):
-    (WebKit::ProvisionalPageProxy::decidePolicyForResponse):
-    (WebKit::ProvisionalPageProxy::startURLSchemeTask):
-    (WebKit::ProvisionalPageProxy::backForwardGoToItem):
-    (WebKit::ProvisionalPageProxy::didReceiveMessage):
-    (WebKit::ProvisionalPageProxy::didReceiveSyncMessage):
+    (CyberKit::ProvisionalPageProxy::ProvisionalPageProxy):
+    (CyberKit::ProvisionalPageProxy::~ProvisionalPageProxy):
+    (CyberKit::ProvisionalPageProxy::processDidTerminate):
+    (CyberKit::ProvisionalPageProxy::takeDrawingArea):
+    (CyberKit::ProvisionalPageProxy::cancel):
+    (CyberKit::ProvisionalPageProxy::processDidFinishLaunching):
+    (CyberKit::ProvisionalPageProxy::finishInitializingWebPageAfterProcessLaunch):
+    (CyberKit::ProvisionalPageProxy::initializeWebPage):
+    (CyberKit::ProvisionalPageProxy::loadData):
+    (CyberKit::ProvisionalPageProxy::loadRequest):
+    (CyberKit::ProvisionalPageProxy::goToBackForwardItem):
+    (CyberKit::ProvisionalPageProxy::didCreateMainFrame):
+    (CyberKit::ProvisionalPageProxy::didPerformClientRedirect):
+    (CyberKit::ProvisionalPageProxy::didStartProvisionalLoadForFrame):
+    (CyberKit::ProvisionalPageProxy::didFailProvisionalLoadForFrame):
+    (CyberKit::ProvisionalPageProxy::didCommitLoadForFrame):
+    (CyberKit::ProvisionalPageProxy::didNavigateWithNavigationData):
+    (CyberKit::ProvisionalPageProxy::didChangeProvisionalURLForFrame):
+    (CyberKit::ProvisionalPageProxy::decidePolicyForNavigationActionAsync):
+    (CyberKit::ProvisionalPageProxy::decidePolicyForResponse):
+    (CyberKit::ProvisionalPageProxy::startURLSchemeTask):
+    (CyberKit::ProvisionalPageProxy::backForwardGoToItem):
+    (CyberKit::ProvisionalPageProxy::didReceiveMessage):
+    (CyberKit::ProvisionalPageProxy::didReceiveSyncMessage):
     * UIProcess/ProvisionalPageProxy.h: Added.
-    (WebKit::ProvisionalPageProxy::page):
-    (WebKit::ProvisionalPageProxy::mainFrame const):
-    (WebKit::ProvisionalPageProxy::process):
-    (WebKit::ProvisionalPageProxy::processSwapRequestedByClient const):
-    (WebKit::ProvisionalPageProxy::navigationID const):
-    (WebKit::ProvisionalPageProxy::drawingArea const):
+    (CyberKit::ProvisionalPageProxy::page):
+    (CyberKit::ProvisionalPageProxy::mainFrame const):
+    (CyberKit::ProvisionalPageProxy::process):
+    (CyberKit::ProvisionalPageProxy::processSwapRequestedByClient const):
+    (CyberKit::ProvisionalPageProxy::navigationID const):
+    (CyberKit::ProvisionalPageProxy::drawingArea const):
     New WebPageProxy-like class which is owned by the WebPageProxy and proxies IPC from
     the provisional process.
     
     * UIProcess/SuspendedPageProxy.cpp:
-    (WebKit::SuspendedPageProxy::~SuspendedPageProxy):
-    (WebKit::SuspendedPageProxy::unsuspend):
-    (WebKit::SuspendedPageProxy::didProcessRequestToSuspend):
+    (CyberKit::SuspendedPageProxy::~SuspendedPageProxy):
+    (CyberKit::SuspendedPageProxy::unsuspend):
+    (CyberKit::SuspendedPageProxy::didProcessRequestToSuspend):
     Unregister the SuspendedPageProxy as an IPC message receiver a little bit earlier
     when we're going to unsuspend it. This avoids conflicting with the ProvisionalPageProxy
     which tries to register itself as an IPC message receiver for the same pageID when
     a process-swap occurs and we're switching to a suspended page.
     
     * UIProcess/WebFrameProxy.cpp:
-    (WebKit::WebFrameProxy::isMainFrame const):
+    (CyberKit::WebFrameProxy::isMainFrame const):
     WebFrameProxy::isMainFrame() relies on checking that the frame is the WebPageProxy's m_mainFrame.
     Now that the WebPageProxy can have a ProvisionalPageProxy, also check if it is the ProvisionalPageProxy's
     m_mainFrame to maintain previous behavior.
     
     * UIProcess/WebPageProxy.cpp:
-    (WebKit::WebPageProxy::provisionalDrawingArea const):
+    (CyberKit::WebPageProxy::provisionalDrawingArea const):
     Add getter for the provisional drawing area. We normally only deal with the page's current drawing area, but
     the ViewGestureController needs access to the provisional once to display the swipe gesture snapshot.
     
-    (WebKit::WebPageProxy::swapToWebProcess):
+    (CyberKit::WebPageProxy::swapToWebProcess):
     swapToWebProcess() no longer takes care of unsuspending the SuspendedPage because we now call swapToWebProcess()
     later, when a load is actually committed in the provisional page / process. swapToWebProcess() now also needs
     to initialize some data members such as the drawing area and the main frame as it is transferring them over from
     the ProvisionalPageProxy which started the provisional load.
     
-    (WebKit::WebPageProxy::finishAttachingToWebProcess):
+    (CyberKit::WebPageProxy::finishAttachingToWebProcess):
     We no longer need IsSwapFromSuspended parameter as this is called later now, after a load has actually been
     committed in the provisional process.
     
-    (WebKit::WebPageProxy::setDrawingArea):
-    (WebKit::WebPageProxy::initializeWebPage):
+    (CyberKit::WebPageProxy::setDrawingArea):
+    (CyberKit::WebPageProxy::initializeWebPage):
     - We no longer need IsSwapFromSuspended parameter as this is called later now, after a load has actually been
       committed in the provisional process.
     - Factor some code out to WebPageProxy::setDrawingArea() so that it can be shared with swapToWebProcess().
     
-    (WebKit::WebPageProxy::maybeInitializeSandboxExtensionHandle):
-    (WebKit::WebPageProxy::loadRequest):
-    (WebKit::WebPageProxy::loadRequestWithNavigationShared):
+    (CyberKit::WebPageProxy::maybeInitializeSandboxExtensionHandle):
+    (CyberKit::WebPageProxy::loadRequest):
+    (CyberKit::WebPageProxy::loadRequestWithNavigationShared):
     Only call setPendingAPIRequestURL() in loadRequestWithNavigation() only if ShouldTreatAsContinuingLoad is not
     Yes. This avoids hitting some assertions as this was already called during the first API call if needed.
     
-    (WebKit::WebPageProxy::loadData):
-    (WebKit::WebPageProxy::loadDataWithNavigationShared):
-    (WebKit::WebPageProxy::stopLoading):
-    (WebKit::WebPageProxy::reload):
-    (WebKit::WebPageProxy::didPerformDragControllerAction):
-    (WebKit::WebPageProxy::findPlugin):
-    (WebKit::WebPageProxy::receivedNavigationPolicyDecision):
+    (CyberKit::WebPageProxy::loadData):
+    (CyberKit::WebPageProxy::loadDataWithNavigationShared):
+    (CyberKit::WebPageProxy::stopLoading):
+    (CyberKit::WebPageProxy::reload):
+    (CyberKit::WebPageProxy::didPerformDragControllerAction):
+    (CyberKit::WebPageProxy::findPlugin):
+    (CyberKit::WebPageProxy::receivedNavigationPolicyDecision):
     In case of process swap, tell the previous process to ignore the load instead of suspending it right away.
     Suspension now happens later, only if we end up committing the provisional load in the new process.
     Also discard the SuspendedPage if it failed to suspend (we only reuse its process in this case). This used
     to happen a bit later but it is clearer if we do this as early as possible I think.
     
-    (WebKit::WebPageProxy::commitProvisionalPage):
+    (CyberKit::WebPageProxy::commitProvisionalPage):
     When the load is committed in the new process, we call WebPageProxy::commitProvisionalPage(). It takes care of:
     - Actually swapping the WebPageProxy to the new process by calling processDidTerminate() / swapToWebProcess().
     - Suspending the current page.
@@ -4852,152 +4852,152 @@
     - Destroy the ProvisionalPageProxy.
     This work used to happen earlier in continueNavigationInNewProcess().
     
-    (WebKit::WebPageProxy::continueNavigationInNewProcess):
+    (CyberKit::WebPageProxy::continueNavigationInNewProcess):
     Moved some of the logic to commitProvisionalPage(). We now merely start the load in a new ProvisionalPageProxy,
     without actually having the WebPageProxy switch to the new process yet.
     
-    (WebKit::WebPageProxy::didCreateMainFrame):
-    (WebKit::WebPageProxy::didCreateSubframe):
-    (WebKit::WebPageProxy::didCreateWindow):
+    (CyberKit::WebPageProxy::didCreateMainFrame):
+    (CyberKit::WebPageProxy::didCreateSubframe):
+    (CyberKit::WebPageProxy::didCreateWindow):
     Drop some code that is no longer needed, now that the ProvisionalPageProxy takes care of this.
     
-    (WebKit::WebPageProxy::didDestroyNavigation):
+    (CyberKit::WebPageProxy::didDestroyNavigation):
     On process-swap, when telling the previous process to ignore the load and starting the new load in a new
     ProvisionalPageProxy, the previous WebPage attempts to destroy the navigation. In this case, we ignore
     the call since the navigation is merely taken over by the ProvisionalPageProxy.
     
-    (WebKit::WebPageProxy::didStartProvisionalLoadForFrame):
-    (WebKit::WebPageProxy::didStartProvisionalLoadForFrameShared):
+    (CyberKit::WebPageProxy::didStartProvisionalLoadForFrame):
+    (CyberKit::WebPageProxy::didStartProvisionalLoadForFrameShared):
     Moved some PSON logic to the ProvisionalPageProxy instead.
     
-    (WebKit::WebPageProxy::didReceiveServerRedirectForProvisionalLoadForFrame):
-    (WebKit::WebPageProxy::didReceiveServerRedirectForProvisionalLoadForFrameShared):
-    (WebKit::WebPageProxy::willPerformClientRedirectForFrame):
-    (WebKit::WebPageProxy::didCancelClientRedirectForFrame):
-    (WebKit::WebPageProxy::didChangeProvisionalURLForFrame):
-    (WebKit::WebPageProxy::didChangeProvisionalURLForFrameShared):
+    (CyberKit::WebPageProxy::didReceiveServerRedirectForProvisionalLoadForFrame):
+    (CyberKit::WebPageProxy::didReceiveServerRedirectForProvisionalLoadForFrameShared):
+    (CyberKit::WebPageProxy::willPerformClientRedirectForFrame):
+    (CyberKit::WebPageProxy::didCancelClientRedirectForFrame):
+    (CyberKit::WebPageProxy::didChangeProvisionalURLForFrame):
+    (CyberKit::WebPageProxy::didChangeProvisionalURLForFrameShared):
     
-    (WebKit::WebPageProxy::didFailProvisionalLoadForFrame):
-    (WebKit::WebPageProxy::didFailProvisionalLoadForFrameShared):
+    (CyberKit::WebPageProxy::didFailProvisionalLoadForFrame):
+    (CyberKit::WebPageProxy::didFailProvisionalLoadForFrameShared):
     When didFailProvisionalLoadForFrame() is called for a ProvisionalPageProxy, destroy it.
     
-    (WebKit::WebPageProxy::didCommitLoadForFrame):
-    (WebKit::WebPageProxy::didFinishDocumentLoadForFrame):
-    (WebKit::WebPageProxy::didFinishLoadForFrame):
-    (WebKit::WebPageProxy::didFailLoadForFrame):
-    (WebKit::WebPageProxy::didSameDocumentNavigationForFrame):
-    (WebKit::WebPageProxy::didReceiveTitleForFrame):
-    (WebKit::WebPageProxy::didFirstVisuallyNonEmptyLayoutForFrame):
-    (WebKit::WebPageProxy::didDisplayInsecureContentForFrame):
-    (WebKit::WebPageProxy::didRunInsecureContentForFrame):
-    (WebKit::WebPageProxy::frameDidBecomeFrameSet):
-    (WebKit::WebPageProxy::decidePolicyForNavigationActionAsync):
-    (WebKit::WebPageProxy::decidePolicyForNavigationActionAsyncShared):
-    (WebKit::WebPageProxy::decidePolicyForNavigationAction):
-    (WebKit::WebPageProxy::decidePolicyForNavigationActionSync):
-    (WebKit::WebPageProxy::decidePolicyForNewWindowAction):
-    (WebKit::WebPageProxy::decidePolicyForResponse):
-    (WebKit::WebPageProxy::decidePolicyForResponseShared):
-    (WebKit::WebPageProxy::unableToImplementPolicy):
-    (WebKit::WebPageProxy::willSubmitForm):
-    (WebKit::WebPageProxy::didNavigateWithNavigationData):
-    (WebKit::WebPageProxy::didNavigateWithNavigationDataShared):
-    (WebKit::WebPageProxy::didPerformClientRedirect):
-    (WebKit::WebPageProxy::didPerformClientRedirectShared):
-    (WebKit::WebPageProxy::didPerformServerRedirect):
-    (WebKit::WebPageProxy::didUpdateHistoryTitle):
-    (WebKit::WebPageProxy::createNewPage):
-    (WebKit::WebPageProxy::runJavaScriptAlert):
-    (WebKit::WebPageProxy::runJavaScriptConfirm):
-    (WebKit::WebPageProxy::runJavaScriptPrompt):
-    (WebKit::WebPageProxy::unavailablePluginButtonClicked):
-    (WebKit::WebPageProxy::runBeforeUnloadConfirmPanel):
-    (WebKit::WebPageProxy::runOpenPanel):
-    (WebKit::WebPageProxy::printFrame):
-    (WebKit::WebPageProxy::backForwardGoToItem):
-    (WebKit::WebPageProxy::backForwardGoToItemShared):
-    (WebKit::WebPageProxy::learnWord):
-    (WebKit::WebPageProxy::ignoreWord):
-    (WebKit::WebPageProxy::didReceiveEvent):
-    (WebKit::WebPageProxy::editingRangeCallback):
-    (WebKit::WebPageProxy::rectForCharacterRangeCallback):
-    (WebKit::WebPageProxy::focusedFrameChanged):
-    (WebKit::WebPageProxy::frameSetLargestFrameChanged):
+    (CyberKit::WebPageProxy::didCommitLoadForFrame):
+    (CyberKit::WebPageProxy::didFinishDocumentLoadForFrame):
+    (CyberKit::WebPageProxy::didFinishLoadForFrame):
+    (CyberKit::WebPageProxy::didFailLoadForFrame):
+    (CyberKit::WebPageProxy::didSameDocumentNavigationForFrame):
+    (CyberKit::WebPageProxy::didReceiveTitleForFrame):
+    (CyberKit::WebPageProxy::didFirstVisuallyNonEmptyLayoutForFrame):
+    (CyberKit::WebPageProxy::didDisplayInsecureContentForFrame):
+    (CyberKit::WebPageProxy::didRunInsecureContentForFrame):
+    (CyberKit::WebPageProxy::frameDidBecomeFrameSet):
+    (CyberKit::WebPageProxy::decidePolicyForNavigationActionAsync):
+    (CyberKit::WebPageProxy::decidePolicyForNavigationActionAsyncShared):
+    (CyberKit::WebPageProxy::decidePolicyForNavigationAction):
+    (CyberKit::WebPageProxy::decidePolicyForNavigationActionSync):
+    (CyberKit::WebPageProxy::decidePolicyForNewWindowAction):
+    (CyberKit::WebPageProxy::decidePolicyForResponse):
+    (CyberKit::WebPageProxy::decidePolicyForResponseShared):
+    (CyberKit::WebPageProxy::unableToImplementPolicy):
+    (CyberKit::WebPageProxy::willSubmitForm):
+    (CyberKit::WebPageProxy::didNavigateWithNavigationData):
+    (CyberKit::WebPageProxy::didNavigateWithNavigationDataShared):
+    (CyberKit::WebPageProxy::didPerformClientRedirect):
+    (CyberKit::WebPageProxy::didPerformClientRedirectShared):
+    (CyberKit::WebPageProxy::didPerformServerRedirect):
+    (CyberKit::WebPageProxy::didUpdateHistoryTitle):
+    (CyberKit::WebPageProxy::createNewPage):
+    (CyberKit::WebPageProxy::runJavaScriptAlert):
+    (CyberKit::WebPageProxy::runJavaScriptConfirm):
+    (CyberKit::WebPageProxy::runJavaScriptPrompt):
+    (CyberKit::WebPageProxy::unavailablePluginButtonClicked):
+    (CyberKit::WebPageProxy::runBeforeUnloadConfirmPanel):
+    (CyberKit::WebPageProxy::runOpenPanel):
+    (CyberKit::WebPageProxy::printFrame):
+    (CyberKit::WebPageProxy::backForwardGoToItem):
+    (CyberKit::WebPageProxy::backForwardGoToItemShared):
+    (CyberKit::WebPageProxy::learnWord):
+    (CyberKit::WebPageProxy::ignoreWord):
+    (CyberKit::WebPageProxy::didReceiveEvent):
+    (CyberKit::WebPageProxy::editingRangeCallback):
+    (CyberKit::WebPageProxy::rectForCharacterRangeCallback):
+    (CyberKit::WebPageProxy::focusedFrameChanged):
+    (CyberKit::WebPageProxy::frameSetLargestFrameChanged):
     
-    (WebKit::WebPageProxy::provisionalProcessDidTerminate):
+    (CyberKit::WebPageProxy::provisionalProcessDidTerminate):
     Cancel the provisiona load and destroy the ProvisionalPageProxy if
     the provisional process crashes.
     
-    (WebKit::WebPageProxy::resetState):
+    (CyberKit::WebPageProxy::resetState):
     Drop some code that is no longer needed.
     
-    (WebKit::WebPageProxy::creationParameters):
+    (CyberKit::WebPageProxy::creationParameters):
     - Move the hasRegisteredServiceWorkers flag initialization from the call site to here now that we have
     more than one call site. This was just some bad factoring.
     - Take the process in parameter now that we page can be associated with several processes at a time.
     
-    (WebKit::WebPageProxy::exceededDatabaseQuota):
-    (WebKit::WebPageProxy::requestGeolocationPermissionForFrame):
-    (WebKit::WebPageProxy::requestUserMediaPermissionForFrame):
-    (WebKit::WebPageProxy::enumerateMediaDevicesForFrame):
-    (WebKit::WebPageProxy::startURLSchemeTask):
-    (WebKit::WebPageProxy::startURLSchemeTaskShared):
-    (WebKit::WebPageProxy::stopURLSchemeTask):
-    (WebKit::WebPageProxy::loadSynchronousURLSchemeTask):
-    (WebKit::WebPageProxy::checkURLReceivedFromCurrentOrPreviousWebProcess):
-    (WebKit::WebPageProxy::willAcquireUniversalFileReadSandboxExtension):
+    (CyberKit::WebPageProxy::exceededDatabaseQuota):
+    (CyberKit::WebPageProxy::requestGeolocationPermissionForFrame):
+    (CyberKit::WebPageProxy::requestUserMediaPermissionForFrame):
+    (CyberKit::WebPageProxy::enumerateMediaDevicesForFrame):
+    (CyberKit::WebPageProxy::startURLSchemeTask):
+    (CyberKit::WebPageProxy::startURLSchemeTaskShared):
+    (CyberKit::WebPageProxy::stopURLSchemeTask):
+    (CyberKit::WebPageProxy::loadSynchronousURLSchemeTask):
+    (CyberKit::WebPageProxy::checkURLReceivedFromCurrentOrPreviousWebProcess):
+    (CyberKit::WebPageProxy::willAcquireUniversalFileReadSandboxExtension):
     * UIProcess/WebPageProxy.h:
-    (WebKit::WebPageProxy::visitedLinkStore):
-    (WebKit::WebPageProxy::provisionalPageProxy const):
+    (CyberKit::WebPageProxy::visitedLinkStore):
+    (CyberKit::WebPageProxy::provisionalPageProxy const):
     
     * UIProcess/WebProcessProxy.cpp:
-    (WebKit::WebProcessProxy::hasProvisionalPageWithID const):
-    (WebKit::WebProcessProxy::updateBackForwardItem):
-    (WebKit::WebProcessProxy::processDidTerminateOrFailedToLaunch):
-    (WebKit::WebProcessProxy::didFinishLaunching):
-    (WebKit::WebProcessProxy::canTerminateChildProcess):
+    (CyberKit::WebProcessProxy::hasProvisionalPageWithID const):
+    (CyberKit::WebProcessProxy::updateBackForwardItem):
+    (CyberKit::WebProcessProxy::processDidTerminateOrFailedToLaunch):
+    (CyberKit::WebProcessProxy::didFinishLaunching):
+    (CyberKit::WebProcessProxy::canTerminateChildProcess):
     * UIProcess/WebProcessProxy.h:
-    (WebKit::WebProcessProxy::addProvisionalPageProxy):
-    (WebKit::WebProcessProxy::removeProvisionalPageProxy):
+    (CyberKit::WebProcessProxy::addProvisionalPageProxy):
+    (CyberKit::WebProcessProxy::removeProvisionalPageProxy):
     Before updating a BackForwardListItem, we normally make sure the process has a WebPageProxy with the
     item's pageID. We have to tweak the logic because there may now be no WebPageProxy with this pageID
     associated with this process yet, because it is still a ProvisionalPageProxy.
     
     * UIProcess/WebURLSchemeHandler.cpp:
-    (WebKit::WebURLSchemeHandler::startTask):
+    (CyberKit::WebURLSchemeHandler::startTask):
     * UIProcess/WebURLSchemeHandler.h:
     * UIProcess/WebURLSchemeTask.cpp:
-    (WebKit::WebURLSchemeTask::create):
-    (WebKit::WebURLSchemeTask::WebURLSchemeTask):
-    (WebKit::WebURLSchemeTask::didPerformRedirection):
-    (WebKit::WebURLSchemeTask::didReceiveResponse):
-    (WebKit::WebURLSchemeTask::didReceiveData):
-    (WebKit::WebURLSchemeTask::didComplete):
-    (WebKit::WebURLSchemeTask::pageDestroyed):
+    (CyberKit::WebURLSchemeTask::create):
+    (CyberKit::WebURLSchemeTask::WebURLSchemeTask):
+    (CyberKit::WebURLSchemeTask::didPerformRedirection):
+    (CyberKit::WebURLSchemeTask::didReceiveResponse):
+    (CyberKit::WebURLSchemeTask::didReceiveData):
+    (CyberKit::WebURLSchemeTask::didComplete):
+    (CyberKit::WebURLSchemeTask::pageDestroyed):
     * UIProcess/WebURLSchemeTask.h:
     Pass the process when constructing a WebURLSchemeTask and store it as a data member in addition to
     the page. This is necessary now that a WebPageProxy can be associated with several WebProcesses.
     
     * UIProcess/ios/ViewGestureControllerIOS.mm:
-    (WebKit::ViewGestureController::endSwipeGesture):
+    (CyberKit::ViewGestureController::endSwipeGesture):
     Use the provisional drawing area to display the swipe snapshot as it may differ from the one currently
     associated with the page in case of process swap.
     
-    * WebKit.xcodeproj/project.pbxproj:
+    * CyberKit.xcodeproj/project.pbxproj:
     Add ProvisionalPageProxy class.
     
     * WebProcess/WebPage/WebFrame.cpp:
-    (WebKit::toPolicyAction):
-    (WebKit::WebFrame::didReceivePolicyDecision):
+    (CyberKit::toPolicyAction):
+    (CyberKit::WebFrame::didReceivePolicyDecision):
     * WebProcess/WebPage/WebPage.cpp:
-    (WebKit::m_shouldAttachDrawingAreaOnPageTransition):
-    (WebKit::WebPage::reinitializeWebPage):
-    (WebKit::WebPage::didReceivePolicyDecision):
+    (CyberKit::m_shouldAttachDrawingAreaOnPageTransition):
+    (CyberKit::WebPage::reinitializeWebPage):
+    (CyberKit::WebPage::didReceivePolicyDecision):
     Stop dealing with WebPolicyAction::Suspend as it no longer exists.
     
-    (WebKit::WebPage::didCompletePageTransition):
+    (CyberKit::WebPage::didCompletePageTransition):
     
-    (WebKit::WebPage::setIsSuspended):
+    (CyberKit::WebPage::setIsSuspended):
     Suspend the Page when setIsSuspended(true) is called, now that there is no longer a WebPolicyAction::Suspend.
     setIsSuspended(true) IPC is sent when we actually commit the provisional page.
     
@@ -5007,7 +5007,7 @@
     
     Add API test coverage.
     
-    * TestWebKitAPI/Tests/WebKitCocoa/ProcessSwapOnNavigation.mm:
+    * TestCyberKitAPI/Tests/CyberKitCocoa/ProcessSwapOnNavigation.mm:
     (-[PSONNavigationDelegate webView:decidePolicyForNavigationResponse:decisionHandler:]):
     
     LayoutTests:
@@ -5100,15 +5100,15 @@
     
     Reviewed by Geoff Garen.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     * loader/FrameLoader.cpp:
-    (WebCore::FrameLoader::commitProvisionalLoad):
+    (CyberCore::FrameLoader::commitProvisionalLoad):
     When restoring from PageCache, make sure we notify the client that the load was committed
     *before* we tell it that the navigation is complete. This would confuse the ProvisionalPageProxy
     logic in the UIProcess.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     The issue tracked by rdar://problem/47099573 is that a provisional load may get
     canceled (or converted into a download) *after* we've decided to process-swap.
@@ -5128,8 +5128,8 @@
     process, without impacting the WebPageProxy.
     
     * Shared/WebPageCreationParameters.cpp:
-    (WebKit::WebPageCreationParameters::encode const):
-    (WebKit::WebPageCreationParameters::decode):
+    (CyberKit::WebPageCreationParameters::encode const):
+    (CyberKit::WebPageCreationParameters::decode):
     * Shared/WebPageCreationParameters.h:
     Rename isSwapFromSuspended to isProcessSwap for clarity as we always want to
     delay attaching the drawing area in case of a process-swap, no matter what
@@ -5155,73 +5155,73 @@
     Tiny build fix.
     
     * UIProcess/ProvisionalPageProxy.cpp: Added.
-    (WebKit::ProvisionalPageProxy::ProvisionalPageProxy):
-    (WebKit::ProvisionalPageProxy::~ProvisionalPageProxy):
-    (WebKit::ProvisionalPageProxy::takeDrawingArea):
-    (WebKit::ProvisionalPageProxy::cancel):
-    (WebKit::ProvisionalPageProxy::initializeWebPage):
-    (WebKit::ProvisionalPageProxy::loadDataWithNavigation):
-    (WebKit::ProvisionalPageProxy::loadRequestWithNavigation):
-    (WebKit::ProvisionalPageProxy::goToBackForwardItem):
-    (WebKit::ProvisionalPageProxy::didCreateMainFrame):
-    (WebKit::ProvisionalPageProxy::didStartProvisionalLoadForFrame):
-    (WebKit::ProvisionalPageProxy::didFailProvisionalLoadForFrame):
-    (WebKit::ProvisionalPageProxy::didCommitLoadForFrame):
-    (WebKit::ProvisionalPageProxy::didReceiveMessage):
-    (WebKit::ProvisionalPageProxy::didReceiveSyncMessage):
+    (CyberKit::ProvisionalPageProxy::ProvisionalPageProxy):
+    (CyberKit::ProvisionalPageProxy::~ProvisionalPageProxy):
+    (CyberKit::ProvisionalPageProxy::takeDrawingArea):
+    (CyberKit::ProvisionalPageProxy::cancel):
+    (CyberKit::ProvisionalPageProxy::initializeWebPage):
+    (CyberKit::ProvisionalPageProxy::loadDataWithNavigation):
+    (CyberKit::ProvisionalPageProxy::loadRequestWithNavigation):
+    (CyberKit::ProvisionalPageProxy::goToBackForwardItem):
+    (CyberKit::ProvisionalPageProxy::didCreateMainFrame):
+    (CyberKit::ProvisionalPageProxy::didStartProvisionalLoadForFrame):
+    (CyberKit::ProvisionalPageProxy::didFailProvisionalLoadForFrame):
+    (CyberKit::ProvisionalPageProxy::didCommitLoadForFrame):
+    (CyberKit::ProvisionalPageProxy::didReceiveMessage):
+    (CyberKit::ProvisionalPageProxy::didReceiveSyncMessage):
     * UIProcess/ProvisionalPageProxy.h: Added.
-    (WebKit::ProvisionalPageProxy::page):
-    (WebKit::ProvisionalPageProxy::mainFrame const):
-    (WebKit::ProvisionalPageProxy::process):
-    (WebKit::ProvisionalPageProxy::processSwapRequestedByClient const):
-    (WebKit::ProvisionalPageProxy::navigationID const):
+    (CyberKit::ProvisionalPageProxy::page):
+    (CyberKit::ProvisionalPageProxy::mainFrame const):
+    (CyberKit::ProvisionalPageProxy::process):
+    (CyberKit::ProvisionalPageProxy::processSwapRequestedByClient const):
+    (CyberKit::ProvisionalPageProxy::navigationID const):
     Add new ProvisionalPageProxy class to wrap the provisional load in the new process
     after a swap. The provisional page is owned by the WebPageProxy and we only commit
     the provisional page when the load is committed. Until then, the WebPageProxy keeps
     using the old process and displaying the current content.
     
     * UIProcess/SuspendedPageProxy.cpp:
-    (WebKit::SuspendedPageProxy::~SuspendedPageProxy):
-    (WebKit::SuspendedPageProxy::unsuspend):
-    (WebKit::SuspendedPageProxy::didProcessRequestToSuspend):
+    (CyberKit::SuspendedPageProxy::~SuspendedPageProxy):
+    (CyberKit::SuspendedPageProxy::unsuspend):
+    (CyberKit::SuspendedPageProxy::didProcessRequestToSuspend):
     Unregister the SuspendedPageProxy as an IPC message receiver a little bit earlier
     when we're going to unsuspend it. This avoids conflicting with the ProvisionalPageProxy
     which tries to register itself as an IPC message receiver for the same pageID when
     a process-swap occurs and we're switching to a suspended page.
     
     * UIProcess/WebFrameProxy.cpp:
-    (WebKit::WebFrameProxy::isMainFrame const):
+    (CyberKit::WebFrameProxy::isMainFrame const):
     WebFrameProxy::isMainFrame() relies on checking that the frame is the WebPageProxy's m_mainFrame.
     Now that the WebPageProxy can have a ProvisionalPageProxy, also check if it is the ProvisionalPageProxy's
     m_mainFrame to maintain previous behavior.
     
     * UIProcess/WebPageProxy.cpp:
-    (WebKit::WebPageProxy::swapToWebProcess):
+    (CyberKit::WebPageProxy::swapToWebProcess):
     swapToWebProcess() no longer takes care of unsuspending the SuspendedPage because we now call swapToWebProcess()
     later, when a load is actually committed in the provisional page / process. swapToWebProcess() now also needs
     to initialize some data members such as the drawing area and the main frame as it is transferring them over from
     the ProvisionalPageProxy which started the provisional load.
     
-    (WebKit::WebPageProxy::finishAttachingToWebProcess):
+    (CyberKit::WebPageProxy::finishAttachingToWebProcess):
     We no longer need IsSwapFromSuspended parameter as this is called later now, after a load has actually been
     committed in the provisional process.
     
-    (WebKit::WebPageProxy::initializeWebPage):
+    (CyberKit::WebPageProxy::initializeWebPage):
     - We no longer need IsSwapFromSuspended parameter as this is called later now, after a load has actually been
       committed in the provisional process.
     - Factor some code out to WebPageProxy::setDrawingArea() so that it can be shared with swapToWebProcess().
     
-    (WebKit::WebPageProxy::loadRequestWithNavigation):
+    (CyberKit::WebPageProxy::loadRequestWithNavigation):
     Only call setPendingAPIRequestURL() in loadRequestWithNavigation() only if ShouldTreatAsContinuingLoad is not
     Yes. This avoids hitting some assertions as this was already called during the first API call if needed.
     
-    (WebKit::WebPageProxy::receivedNavigationPolicyDecision):
+    (CyberKit::WebPageProxy::receivedNavigationPolicyDecision):
     In case of process swap, tell the previous process to ignore the load instead of suspending it right away.
     Suspension now happens later, only if we end up committing the provisional load in the new process.
     Also discard the SuspendedPage if it failed to suspend (we only reuse its process in this case). This used
     to happen a bit later but it is clearer if we do this as early as possible I think.
     
-    (WebKit::WebPageProxy::commitProvisionalPage):
+    (CyberKit::WebPageProxy::commitProvisionalPage):
     When the load is committed in the new process, we call WebPageProxy::commitProvisionalPage(). It takes care of:
     - Actually swapping the WebPageProxy to the new process by calling processDidTerminate() / swapToWebProcess().
     - Suspending the current page.
@@ -5229,81 +5229,81 @@
     - Destroy the ProvisionalPageProxy.
     This work used to happen earlier in continueNavigationInNewProcess().
     
-    (WebKit::WebPageProxy::continueNavigationInNewProcess):
+    (CyberKit::WebPageProxy::continueNavigationInNewProcess):
     Moved some of the logic to commitProvisionalPage(). We now merely start the load in a new ProvisionalPageProxy,
     without actually having the WebPageProxy switch to the new process yet.
     
-    (WebKit::WebPageProxy::didCreateMainFrame):
-    (WebKit::WebPageProxy::didCreateWindow):
+    (CyberKit::WebPageProxy::didCreateMainFrame):
+    (CyberKit::WebPageProxy::didCreateWindow):
     Drop some code that is no longer needed, now that the ProvisionalPageProxy takes care of this.
     
-    (WebKit::WebPageProxy::didDestroyNavigation):
+    (CyberKit::WebPageProxy::didDestroyNavigation):
     On process-swap, when telling the previous process to ignore the load and starting the new load in a new
     ProvisionalPageProxy, the previous WebPage attempts to destroy the navigation. In this case, we ignore
     the call since the navigation is merely taken over by the ProvisionalPageProxy.
     
-    (WebKit::WebPageProxy::didStartProvisionalLoadForFrame):
+    (CyberKit::WebPageProxy::didStartProvisionalLoadForFrame):
     Moved some PSON logic to the ProvisionalPageProxy instead.
     
-    (WebKit::WebPageProxy::didFailProvisionalLoadForFrame):
+    (CyberKit::WebPageProxy::didFailProvisionalLoadForFrame):
     When didFailProvisionalLoadForFrame() is called for a ProvisionalPageProxy, destroy it.
     
-    (WebKit::WebPageProxy::decidePolicyForNavigationActionAsync):
-    (WebKit::WebPageProxy::decidePolicyForResponse):
+    (CyberKit::WebPageProxy::decidePolicyForNavigationActionAsync):
+    (CyberKit::WebPageProxy::decidePolicyForResponse):
     Capture the process in the lambda, to make sure we send the policy decision to the same process that
     asked for it, so as to not get confused by process swaps.
     
-    (WebKit::WebPageProxy::resetState):
+    (CyberKit::WebPageProxy::resetState):
     Drop some code that is no longer needed.
     
-    (WebKit::WebPageProxy::creationParameters):
+    (CyberKit::WebPageProxy::creationParameters):
     Move the hasRegisteredServiceWorkers flag initialization from the call site to here now that we have
     more than one call site. This was just some bad factoring.
     
-    (WebKit::WebPageProxy::PageProcessOverride::PageProcessOverride):
-    (WebKit::WebPageProxy::PageProcessOverride::~PageProcessOverride):
+    (CyberKit::WebPageProxy::PageProcessOverride::PageProcessOverride):
+    (CyberKit::WebPageProxy::PageProcessOverride::~PageProcessOverride):
     * UIProcess/WebPageProxy.h:
-    (WebKit::WebPageProxy::temporarilyOverrideProcess):
+    (CyberKit::WebPageProxy::temporarilyOverrideProcess):
     Add utility class to temporarily override the WebPageProxy's m_process with the provisional one when
     the ProvisionalPageProxy interacts with the WebPageProxy.
     
     * UIProcess/WebProcessProxy.cpp:
-    (WebKit::WebProcessProxy::hasProvisionalPageWithID const):
-    (WebKit::WebProcessProxy::updateBackForwardItem):
+    (CyberKit::WebProcessProxy::hasProvisionalPageWithID const):
+    (CyberKit::WebProcessProxy::updateBackForwardItem):
     Before updating a BackForwardListItem, we normally make sure the process has a WebPageProxy with the
     item's pageID. We have to tweak the logic because there may now be no WebPageProxy with this pageID
     associated with this process yet, because it is still a ProvisionalPageProxy.
     
-    (WebKit::WebProcessProxy::canTerminateChildProcess):
+    (CyberKit::WebProcessProxy::canTerminateChildProcess):
     Do not terminate the WebProcess if there are ProvisionalPageProxy objects using it.
     
     * UIProcess/WebProcessProxy.h:
-    (WebKit::WebProcessProxy::addProvisionalPageProxy):
-    (WebKit::WebProcessProxy::removeProvisionalPageProxy):
+    (CyberKit::WebProcessProxy::addProvisionalPageProxy):
+    (CyberKit::WebProcessProxy::removeProvisionalPageProxy):
     
-    * WebKit.xcodeproj/project.pbxproj:
+    * CyberKit.xcodeproj/project.pbxproj:
     
     * WebProcess/WebPage/WebFrame.cpp:
-    (WebKit::toPolicyAction):
-    (WebKit::WebFrame::didReceivePolicyDecision):
+    (CyberKit::toPolicyAction):
+    (CyberKit::WebFrame::didReceivePolicyDecision):
     Stop dealing with WebPolicyAction::Suspend as it no longer exists.
     
     * WebProcess/WebPage/WebPage.cpp:
-    (WebKit::WebPage::reinitializeWebPage):
-    (WebKit::WebPage::didReceivePolicyDecision):
+    (CyberKit::WebPage::reinitializeWebPage):
+    (CyberKit::WebPage::didReceivePolicyDecision):
     
-    (WebKit::WebPage::setIsSuspended):
+    (CyberKit::WebPage::setIsSuspended):
     Suspend the Page when setIsSuspended(true) is called, now that there is no longer a WebPolicyAction::Suspend.
     setIsSuspended(true) IPC is sent when we actually commit the provisional page.
     
     * WebProcess/WebPage/mac/TiledCoreAnimationDrawingArea.mm:
-    (WebKit::TiledCoreAnimationDrawingArea::TiledCoreAnimationDrawingArea):
+    (CyberKit::TiledCoreAnimationDrawingArea::TiledCoreAnimationDrawingArea):
     
     Tools:
     
     Add API test coverage.
     
-    * TestWebKitAPI/Tests/WebKitCocoa/ProcessSwapOnNavigation.mm:
+    * TestCyberKitAPI/Tests/CyberKitCocoa/ProcessSwapOnNavigation.mm:
     (-[PSONNavigationDelegate webView:decidePolicyForNavigationResponse:decisionHandler:]):
     
     LayoutTests:
@@ -5363,11 +5363,11 @@
     
     Reviewed by Megan Gardner.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     * Configurations/FeatureDefines.xcconfig: ENABLE_DARK_MODE_CSS_macosx for all OS versions.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Tests: css-dark-mode/older-systems/prefers-color-scheme.html
            css-dark-mode/older-systems/supported-color-schemes-css.html
@@ -5378,41 +5378,41 @@
     
     * Configurations/FeatureDefines.xcconfig:
     * dom/Document.cpp:
-    (WebCore::Document::useDarkAppearance const):
+    (CyberCore::Document::useDarkAppearance const):
     * inspector/agents/InspectorPageAgent.cpp:
-    (WebCore::InspectorPageAgent::enable):
+    (CyberCore::InspectorPageAgent::enable):
     * page/Page.cpp:
-    (WebCore::Page::setUseDarkAppearance):
-    (WebCore::Page::useDarkAppearance const):
-    (WebCore::Page::setUseDarkAppearanceOverride):
+    (CyberCore::Page::setUseDarkAppearance):
+    (CyberCore::Page::useDarkAppearance const):
+    (CyberCore::Page::setUseDarkAppearanceOverride):
     * platform/mac/LocalDefaultSystemAppearance.h:
-    (WebCore::LocalDefaultSystemAppearance::usingDarkAppearance const):
+    (CyberCore::LocalDefaultSystemAppearance::usingDarkAppearance const):
     * platform/mac/LocalDefaultSystemAppearance.mm:
-    (WebCore::LocalDefaultSystemAppearance::LocalDefaultSystemAppearance):
-    (WebCore::LocalDefaultSystemAppearance::~LocalDefaultSystemAppearance):
+    (CyberCore::LocalDefaultSystemAppearance::LocalDefaultSystemAppearance):
+    (CyberCore::LocalDefaultSystemAppearance::~LocalDefaultSystemAppearance):
     * platform/mac/ScrollAnimatorMac.mm:
     * rendering/RenderThemeMac.mm:
-    (-[WebCoreTextFieldCell _adjustedCoreUIDrawOptionsForDrawingBordersOnly:]):
+    (-[CyberCoreTextFieldCell _adjustedCoreUIDrawOptionsForDrawingBordersOnly:]):
     (-[WebListButtonCell drawWithFrame:inView:]):
-    (WebCore::RenderThemeMac::platformInactiveSelectionBackgroundColor const):
-    (WebCore::RenderThemeMac::platformInactiveSelectionForegroundColor const):
-    (WebCore::RenderThemeMac::platformActiveListBoxSelectionBackgroundColor const):
-    (WebCore::RenderThemeMac::platformInactiveListBoxSelectionBackgroundColor const):
-    (WebCore::RenderThemeMac::platformInactiveListBoxSelectionForegroundColor const):
-    (WebCore::RenderThemeMac::systemColor const):
+    (CyberCore::RenderThemeMac::platformInactiveSelectionBackgroundColor const):
+    (CyberCore::RenderThemeMac::platformInactiveSelectionForegroundColor const):
+    (CyberCore::RenderThemeMac::platformActiveListBoxSelectionBackgroundColor const):
+    (CyberCore::RenderThemeMac::platformInactiveListBoxSelectionBackgroundColor const):
+    (CyberCore::RenderThemeMac::platformInactiveListBoxSelectionForegroundColor const):
+    (CyberCore::RenderThemeMac::systemColor const):
     
-    Source/WebCore/PAL:
+    Source/CyberCore/PAL:
     
     * Configurations/FeatureDefines.xcconfig: ENABLE_DARK_MODE_CSS_macosx for all OS versions.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * Configurations/FeatureDefines.xcconfig: ENABLE_DARK_MODE_CSS_macosx for all OS versions.
     * UIProcess/Cocoa/WebViewImpl.mm:
-    (WebKit::WebViewImpl::effectiveAppearanceIsDark):
+    (CyberKit::WebViewImpl::effectiveAppearanceIsDark):
     * UIProcess/RemoteLayerTree/mac/ScrollerMac.mm:
     
-    Source/WebKitLegacy/mac:
+    Source/CyberKitLegacy/mac:
     
     * Configurations/FeatureDefines.xcconfig: ENABLE_DARK_MODE_CSS_macosx for all OS versions.
     * WebView/WebView.mm:
@@ -5424,8 +5424,8 @@
     
     Tools:
     
-    * TestWebKitAPI/Configurations/FeatureDefines.xcconfig: ENABLE_DARK_MODE_CSS_macosx for all OS versions.
-    * TestWebKitAPI/Tests/WebKit/mac/ForceLightAppearanceInBundle.mm:
+    * TestCyberKitAPI/Configurations/FeatureDefines.xcconfig: ENABLE_DARK_MODE_CSS_macosx for all OS versions.
+    * TestCyberKitAPI/Tests/CyberKit/mac/ForceLightAppearanceInBundle.mm:
     
     LayoutTests:
     
@@ -5465,12 +5465,12 @@
     
     Reviewed by Brent Fulgham.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     * Configurations/FeatureDefines.xcconfig:
         Defined ENABLE_WEB_API_STATISTICS, off by default.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     No new tests. This patch disables functionality. The associated tests
     are skipped.
@@ -5479,43 +5479,43 @@
     
     * Configurations/FeatureDefines.xcconfig:
     * loader/ResourceLoadObserver.cpp:
-    (WebCore::ResourceLoadObserver::logFontLoad):
-    (WebCore::ResourceLoadObserver::logCanvasRead):
-    (WebCore::ResourceLoadObserver::logCanvasWriteOrMeasure):
-    (WebCore::ResourceLoadObserver::logNavigatorAPIAccessed):
-    (WebCore::ResourceLoadObserver::logScreenAPIAccessed):
+    (CyberCore::ResourceLoadObserver::logFontLoad):
+    (CyberCore::ResourceLoadObserver::logCanvasRead):
+    (CyberCore::ResourceLoadObserver::logCanvasWriteOrMeasure):
+    (CyberCore::ResourceLoadObserver::logNavigatorAPIAccessed):
+    (CyberCore::ResourceLoadObserver::logScreenAPIAccessed):
     * loader/ResourceLoadStatistics.cpp:
-    (WebCore::ResourceLoadStatistics::encode const):
-    (WebCore::ResourceLoadStatistics::decode):
-    (WebCore::ResourceLoadStatistics::toString const):
-    (WebCore::ResourceLoadStatistics::merge):
+    (CyberCore::ResourceLoadStatistics::encode const):
+    (CyberCore::ResourceLoadStatistics::decode):
+    (CyberCore::ResourceLoadStatistics::toString const):
+    (CyberCore::ResourceLoadStatistics::merge):
     * loader/ResourceLoadStatistics.h:
         The associated struct members are skipped unless web API
         statistics is enabled.
     
-    Source/WebCore/PAL:
+    Source/CyberCore/PAL:
     
     * Configurations/FeatureDefines.xcconfig:
         Defined ENABLE_WEB_API_STATISTICS, off by default.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * Configurations/FeatureDefines.xcconfig:
         Defined ENABLE_WEB_API_STATISTICS, off by default.
-    * Shared/WebCoreArgumentCoders.cpp:
+    * Shared/CyberCoreArgumentCoders.cpp:
     (IPC::ArgumentCoder<ResourceLoadStatistics>::encode):
         Skipped encoding of web API statistics.
     (IPC::ArgumentCoder<ResourceLoadStatistics>::decode):
         Skipped decoding of web API statistics.
     
-    Source/WebKitLegacy/mac:
+    Source/CyberKitLegacy/mac:
     
     * Configurations/FeatureDefines.xcconfig:
         Defined ENABLE_WEB_API_STATISTICS, off by default.
     
     Tools:
     
-    * TestWebKitAPI/Configurations/FeatureDefines.xcconfig:
+    * TestCyberKitAPI/Configurations/FeatureDefines.xcconfig:
         Defined ENABLE_WEB_API_STATISTICS, off by default.
     
     LayoutTests:
@@ -5551,7 +5551,7 @@
     
     Reviewed by Ryosuke Niwa.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     When a shadow host that has a map element in the shadow tree is removed from the document, we try
     to remove the map from the scope of the host.
@@ -5559,8 +5559,8 @@
     Test: fast/shadow-dom/image-map-tree-scope.html
     
     * html/HTMLMapElement.cpp:
-    (WebCore::HTMLMapElement::insertedIntoAncestor):
-    (WebCore::HTMLMapElement::removedFromAncestor):
+    (CyberCore::HTMLMapElement::insertedIntoAncestor):
+    (CyberCore::HTMLMapElement::removedFromAncestor):
     
     Add and remove image maps when the scope changes, not when the document changes.
     This matches how id/name/etc updates work in the HTMLElement.
@@ -5595,15 +5595,15 @@
     Patch by John Wilander <wilander@apple.com> on 2019-01-10
     Reviewed by Alexey Proskuryakov and Alex Christensen.
     
-    Source/WebCore/PAL:
+    Source/CyberCore/PAL:
     
     * pal/spi/cf/CFNetworkSPI.h:
         Declaration of _overrideSessionCookieAcceptPolicy on NSHTTPCookieStorage.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * NetworkProcess/cocoa/NetworkSessionCocoa.mm:
-    (WebKit::NetworkSessionCocoa::NetworkSessionCocoa):
+    (CyberKit::NetworkSessionCocoa::NetworkSessionCocoa):
         Now sets cookieStorage._overrideSessionCookieAcceptPolicy to YES.
     
     Source/WTF:
@@ -5623,11 +5623,11 @@
     (TestRunner::setOnlyAcceptFirstPartyCookies):
     * DumpRenderTree/win/TestRunnerWin.cpp:
     (TestRunner::setOnlyAcceptFirstPartyCookies):
-    * WebKitTestRunner/InjectedBundle/Bindings/TestRunner.idl:
-    * WebKitTestRunner/InjectedBundle/TestRunner.cpp:
+    * CyberKitTestRunner/InjectedBundle/Bindings/TestRunner.idl:
+    * CyberKitTestRunner/InjectedBundle/TestRunner.cpp:
     (WTR::TestRunner::setOnlyAcceptFirstPartyCookies):
-    * WebKitTestRunner/InjectedBundle/TestRunner.h:
-    * WebKitTestRunner/TestInvocation.cpp:
+    * CyberKitTestRunner/InjectedBundle/TestRunner.h:
+    * CyberKitTestRunner/TestInvocation.cpp:
     (WTR::TestInvocation::didReceiveSynchronousMessageFromInjectedBundle):
     
     LayoutTests:
@@ -5678,7 +5678,7 @@
     
     Reviewed by Brent Fulgham.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     In certain cases (cloning, setAttribute), it's too early to check for the list attribute in createShadowSubtree
     to see whether the input needs datalist related items. The list attribute is simply not set yet.
@@ -5687,9 +5687,9 @@
     Test: fast/forms/datalist/datalist-crash-when-dynamic.html
     
     * html/TextFieldInputType.cpp:
-    (WebCore::TextFieldInputType::createShadowSubtree):
-    (WebCore::TextFieldInputType::attributeChanged):
-    (WebCore::TextFieldInputType::createDataListDropdownIndicator):
+    (CyberCore::TextFieldInputType::createShadowSubtree):
+    (CyberCore::TextFieldInputType::attributeChanged):
+    (CyberCore::TextFieldInputType::createDataListDropdownIndicator):
     * html/TextFieldInputType.h:
     
     LayoutTests:
@@ -5720,7 +5720,7 @@
     
     Reviewed by Brady Eidson.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     https://trac.webkit.org/changeset/238677 moved from using a JSGlobalObject to a JSDOMGlobalObject for serialization/deserialization.
     This does not work for crypto keys as they require not only a JSDOMGlobalObject but either a window or worker global object.
@@ -5731,15 +5731,15 @@
     Covered by updated test.
     
     * Modules/indexeddb/server/UniqueIDBDatabase.cpp:
-    (WebCore::IDBServer::UniqueIDBDatabase::databaseThreadVM):
-    (WebCore::IDBServer::UniqueIDBDatabase::databaseThreadExecState):
+    (CyberCore::IDBServer::UniqueIDBDatabase::databaseThreadVM):
+    (CyberCore::IDBServer::UniqueIDBDatabase::databaseThreadExecState):
     * bindings/js/JSDOMGlobalObject.cpp:
     * bindings/js/JSDOMGlobalObject.h:
     * bindings/js/JSDOMWrapper.cpp:
-    (WebCore::JSDOMObject::JSDOMObject):
+    (CyberCore::JSDOMObject::JSDOMObject):
     * bindings/js/SerializedScriptValue.cpp:
-    (WebCore::CloneSerializer::dumpArrayBufferView):
-    (WebCore::CloneSerializer::toJSArrayBuffer):
+    (CyberCore::CloneSerializer::dumpArrayBufferView):
+    (CyberCore::CloneSerializer::toJSArrayBuffer):
     
     LayoutTests:
     
@@ -5773,40 +5773,40 @@
     
     Reviewed by Jer Noble.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: media/deactivate-audio-session.html
     
     * platform/audio/AudioSession.cpp:
-    (WebCore::AudioSession::tryToSetActive):
-    (WebCore::AudioSession::tryToSetActiveInternal):
+    (CyberCore::AudioSession::tryToSetActive):
+    (CyberCore::AudioSession::tryToSetActiveInternal):
     * platform/audio/AudioSession.h:
-    (WebCore::AudioSession::isActive const):
+    (CyberCore::AudioSession::isActive const):
     
     * platform/audio/PlatformMediaSessionManager.cpp:
-    (WebCore::PlatformMediaSessionManager::removeSession):
-    (WebCore::deactivateAudioSession):
-    (WebCore::PlatformMediaSessionManager::shouldDeactivateAudioSession):
-    (WebCore::PlatformMediaSessionManager::setShouldDeactivateAudioSession):
+    (CyberCore::PlatformMediaSessionManager::removeSession):
+    (CyberCore::deactivateAudioSession):
+    (CyberCore::PlatformMediaSessionManager::shouldDeactivateAudioSession):
+    (CyberCore::PlatformMediaSessionManager::setShouldDeactivateAudioSession):
     * platform/audio/PlatformMediaSessionManager.h:
     
     * platform/audio/ios/AudioSessionIOS.mm:
-    (WebCore::AudioSession::tryToSetActiveInternal):
-    (WebCore::AudioSession::tryToSetActive): Deleted.
+    (CyberCore::AudioSession::tryToSetActiveInternal):
+    (CyberCore::AudioSession::tryToSetActive): Deleted.
     
     * platform/audio/mac/AudioSessionMac.cpp:
-    (WebCore::AudioSession::tryToSetActiveInternal):
-    (WebCore::AudioSession::tryToSetActive): Deleted.
+    (CyberCore::AudioSession::tryToSetActiveInternal):
+    (CyberCore::AudioSession::tryToSetActive): Deleted.
     
     * testing/Internals.cpp:
-    (WebCore::Internals::audioSessionActive const):
+    (CyberCore::Internals::audioSessionActive const):
     * testing/Internals.h:
     * testing/Internals.idl:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * WebProcess/WebPage/WebPage.cpp:
-    (WebKit::WebPage::WebPage):
+    (CyberKit::WebPage::WebPage):
     
     LayoutTests:
     
@@ -6419,7 +6419,7 @@
         * fast/events/ios/click-event-while-editing-node.html:
 
         This test started failing after r239441 because it taps the bottom of the editable element, and then expects
-        WebKit to scroll the web view up to reveal the touched location. This was exactly the bug that r239441 fixed, so
+        CyberKit to scroll the web view up to reveal the touched location. This was exactly the bug that r239441 fixed, so
         we should just make this test no longer depend on the broken behavior.
 
         * fast/forms/ios/focus-long-textarea-expected.txt:
@@ -8526,7 +8526,7 @@
 
 2018-11-28  Yongjun Zhang  <yongjun_zhang@apple.com>
 
-        Allow WebKit clients to specify a minimum effective width for layout.
+        Allow CyberKit clients to specify a minimum effective width for layout.
         https://bugs.webkit.org/show_bug.cgi?id=191499
         <rdar://problem/45362678>
 
@@ -8781,7 +8781,7 @@
         Add a test to ensure that we scroll the password field when caps lock is toggled.
 
         * TestExpectations: Skip the test on all platforms as we only support toggling Caps Lock in
-        WebKit2 on Mac at the moment.
+        CyberKit2 on Mac at the moment.
         * fast/forms/password-scrolled-after-caps-lock-toggled-expected.txt: Added.
         * fast/forms/password-scrolled-after-caps-lock-toggled.html: Added.
         * platform/mac-wk2/TestExpectations: Mark the test as PASS so that we run it.
@@ -8808,7 +8808,7 @@
         Add a test to ensure to that the placeholder text is repainted when the caps lock indicator is hidden.
 
         * TestExpectations: Skip the test on all platforms as we only support toggling Caps Lock in
-        WebKit2 on Mac at the moment.
+        CyberKit2 on Mac at the moment.
         * fast/repaint/placeholder-after-caps-lock-hidden.html: Added.
         * platform/mac-wk2/TestExpectations: Mark the test as PASS so that we run it.
 
@@ -9061,14 +9061,14 @@
 
 2018-11-21  Wenson Hsieh  <wenson_hsieh@apple.com>
 
-        [Cocoa] [WebKit2] Add support for replacing find-in-page text matches
+        [Cocoa] [CyberKit2] Add support for replacing find-in-page text matches
         https://bugs.webkit.org/show_bug.cgi?id=191786
         <rdar://problem/45813871>
 
         Reviewed by Ryosuke Niwa.
 
         Introduce a `LayoutTests/editing/find` directory to contain tests around `FindController`, and add 7 new layout
-        tests. These are currently enabled only for WebKit2 on macOS and iOS.
+        tests. These are currently enabled only for CyberKit2 on macOS and iOS.
 
         * TestExpectations:
         * editing/find/find-and-replace-adjacent-words-expected.txt: Added.
@@ -9229,7 +9229,7 @@
 
         Reviewed by Ryosuke Niwa.
 
-        Verifies that an image that meets the pathological criteria described in Source/WebCore/ChangeLog can still be
+        Verifies that an image that meets the pathological criteria described in Source/CyberCore/ChangeLog can still be
         dragged and dropped into an editable area.
 
         * fast/events/drag-image-with-border-image.html: Added.
@@ -9238,7 +9238,7 @@
         * platform/mac-wk2/TestExpectations:
         * platform/wpe/TestExpectations:
 
-        Enable this test only in WebKit1.
+        Enable this test only in CyberKit1.
 
 2018-11-18  Yusuke Suzuki  <yusukesuzuki@slowstart.org>
 
@@ -9603,7 +9603,7 @@
         * fast/events/ios/focus-tab-next-field.html: Added.
         * fast/events/ios/focus-tab-previous-field-expected.txt: Added.
         * fast/events/ios/focus-tab-previous-field.html: Added.
-        * platform/ios-wk1/TestExpectations: Skip test focus-tab-previous-field.html in Legacy WebKit as
+        * platform/ios-wk1/TestExpectations: Skip test focus-tab-previous-field.html in Legacy CyberKit as
         we do not support testing key commands with modifier keys.
         * resources/ui-helper.js:
         (window.UIHelper.keyDown): Updated to support taking an optional array of modifiers (defaults: [])
@@ -10913,7 +10913,7 @@
 
 2018-11-07  Andy Estes  <aestes@apple.com>
 
-        Crash in WebCore::PaymentRequest::canMakePayment when Apple Pay payment method data is missing
+        Crash in CyberCore::PaymentRequest::canMakePayment when Apple Pay payment method data is missing
         https://bugs.webkit.org/show_bug.cgi?id=191331
 
         Reviewed by Alexey Proskuryakov.
@@ -11268,10 +11268,10 @@
 
         Reviewed by Youenn Fablet.
 
-        * TestWebKitAPI/Tests/WebKitCocoa/GetDisplayMedia.mm:
+        * TestCyberKitAPI/Tests/CyberKitCocoa/GetDisplayMedia.mm:
         (-[GetDisplayMediaUIDelegate _webView:requestUserMediaAuthorizationForDevices:url:mainFrameURL:decisionHandler:]):
-        (TestWebKitAPI::GetDisplayMediaTest::promptForCapture):
-        (TestWebKitAPI::TEST_F):
+        (TestCyberKitAPI::GetDisplayMediaTest::promptForCapture):
+        (TestCyberKitAPI::TEST_F):
 
 2018-11-06  Timothy Hatcher  <timothy@apple.com>
 
@@ -11436,7 +11436,7 @@
         * platform/ios-wk1/TestExpectations:
         * platform/ios/TestExpectations:
 
-        In the WebKit2 port of iOS, enable a handful of color input tests that are currently disabled.
+        In the CyberKit2 port of iOS, enable a handful of color input tests that are currently disabled.
 
         * platform/ios/fast/forms/color/input-appearance-color-expected.txt:
 
@@ -11751,7 +11751,7 @@
 
 2018-11-02  Daniel Bates  <dabates@apple.com>
 
-        [iOS] WebKit should dispatch DOM events when a modifier key is pressed
+        [iOS] CyberKit should dispatch DOM events when a modifier key is pressed
         https://bugs.webkit.org/show_bug.cgi?id=190487
 
         Reviewed by Tim Horton.
@@ -12100,7 +12100,7 @@
 
 2018-10-31  Alicia Boya García  <aboya@igalia.com>
 
-        [MSE] WebKit tests: Use fixed point in makeASample()
+        [MSE] CyberKit tests: Use fixed point in makeASample()
         https://bugs.webkit.org/show_bug.cgi?id=191128
 
         Reviewed by Jer Noble.
@@ -12516,7 +12516,7 @@
 
 2018-10-29  Tim Horton  <timothy_horton@apple.com>
 
-        Modernize WebKit nibs and lprojs for localization's sake
+        Modernize CyberKit nibs and lprojs for localization's sake
         https://bugs.webkit.org/show_bug.cgi?id=190911
         <rdar://problem/45349466>
 
@@ -13195,11 +13195,11 @@
 
 2018-10-20  Daniel Bates  <dabates@apple.com>
 
-        Unskip test fast/writing-mode/english-rl-text-with-spelling-marker.html in iOS WebKit2
+        Unskip test fast/writing-mode/english-rl-text-with-spelling-marker.html in iOS CyberKit2
 
-        Following r235149 we mark spelling errors in iOS WebKit2.
+        Following r235149 we mark spelling errors in iOS CyberKit2.
 
-        * platform/ios-wk1/TestExpectations: Skip in legacy WebKit until we fix <https://webkit.org/b/188762>.
+        * platform/ios-wk1/TestExpectations: Skip in legacy CyberKit until we fix <https://webkit.org/b/188762>.
         * platform/ios/TestExpectations: Unskip test.
 
 2018-10-19  Justin Fan  <justin_fan@apple.com>
@@ -13450,8 +13450,8 @@
         Unreviewed test gardening.
 
         Adjust layout test baselines after r237245. Make fast/selectors/read-only-read-write-input-basics-expected.txt
-        contain PASS expectations for color inputs, and remove port-specific iOS/macOS WebKit2 expectations. Since color
-        inputs are disabled in legacy WebKit, move the layout test expectation in platform/mac to platform/mac-wk1.
+        contain PASS expectations for color inputs, and remove port-specific iOS/macOS CyberKit2 expectations. Since color
+        inputs are disabled in legacy CyberKit, move the layout test expectation in platform/mac to platform/mac-wk1.
 
         * fast/selectors/read-only-read-write-input-basics-expected.txt:
         * platform/ios-wk2/fast/selectors/read-only-read-write-input-basics-expected.txt: Removed.
@@ -13514,7 +13514,7 @@
 
         * platform/ios-wk1/TestExpectations:
 
-        Don't run datalist tests in WebKitLegacy by marking them as [ WontFix ].
+        Don't run datalist tests in CyberKitLegacy by marking them as [ WontFix ].
 
         * platform/ios-wk2/accessibility/roles-exposed-expected.txt: Added.
         * platform/ios-wk2/fast/borders/empty-outline-border-assert-expected.txt: Added.
@@ -13535,12 +13535,12 @@
         * platform/ios-wk2/imported/w3c/web-platform-tests/shadow-dom/input-element-list-expected.txt: Added.
         * platform/ios-wk2/mathml/presentation/foreign-element-in-token-expected.txt: Added.
 
-        Add baselines for WebKit2, where we enable the datalist element and color inputs.
+        Add baselines for CyberKit2, where we enable the datalist element and color inputs.
 
         * platform/ios/TestExpectations:
         * platform/mac-wk1/TestExpectations:
 
-        Don't run datalist tests in WebKitLegacy by marking them as [ WontFix ].
+        Don't run datalist tests in CyberKitLegacy by marking them as [ WontFix ].
 
         * platform/mac-wk2/accessibility/roles-exposed-expected.txt: Copied from LayoutTests/platform/mac/accessibility/roles-exposed-expected.txt.
         * platform/mac-wk2/fast/borders/empty-outline-border-assert-expected.txt: Added.
@@ -13563,7 +13563,7 @@
         * platform/mac-wk2/imported/w3c/web-platform-tests/shadow-dom/input-element-list-expected.txt: Added.
         * platform/mac-wk2/mathml/presentation/foreign-element-in-token-expected.txt: Added.
 
-        Add baselines for WebKit2, where we enable the datalist element and color inputs.
+        Add baselines for CyberKit2, where we enable the datalist element and color inputs.
 
         * platform/mac/TestExpectations:
         * platform/mac/accessibility/roles-exposed-expected.txt:
@@ -13573,7 +13573,7 @@
         * platform/mac/imported/w3c/web-platform-tests/html/semantics/forms/the-input-element/valueMode-expected.txt:
         * platform/mac/imported/w3c/web-platform-tests/html/semantics/selectors/pseudo-classes/readwrite-readonly-expected.txt:
 
-        Re-rebaseline test expectations that involve input type color, now that color inputs are off by default in WebKitLegacy.
+        Re-rebaseline test expectations that involve input type color, now that color inputs are off by default in CyberKitLegacy.
 
         * platform/win/TestExpectations:
 
@@ -14235,7 +14235,7 @@
         * platform/ios-wk2/TestExpectations:
         * platform/mac-wk1/TestExpectations:
         * platform/win/TestExpectations:
-        Skip new tests on WebKit1 since the download attribute is only supported on WebKit2.
+        Skip new tests on CyberKit1 since the download attribute is only supported on CyberKit2.
 
 2018-10-09  Chris Dumez  <cdumez@apple.com>
 
@@ -14796,7 +14796,7 @@
 
 2018-10-03  Ryosuke Niwa  <rniwa@webkit.org>
 
-        Enable selectionAcrossShadowBoundariesEnabled by default in WebKitLegacy
+        Enable selectionAcrossShadowBoundariesEnabled by default in CyberKitLegacy
         https://bugs.webkit.org/show_bug.cgi?id=190238
 
         Reviewed by Antti Koivisto.
@@ -15222,7 +15222,7 @@
         Reviewed by Chris Dumez.
 
         This patch import a 3rd party JS CBOR coder from https://github.com/paroga/cbor-js.
-        The library is MIT licensed, which should be fine to use within WebKit.
+        The library is MIT licensed, which should be fine to use within CyberKit.
 
         As a benefit from the library, tests are updated to check CBOR binaries.
 
@@ -16013,7 +16013,7 @@
         Reverted changeset:
 
         "URLWithUserTypedString should return nil for URLs deemed to
-        be invalid by WebCore::URL"
+        be invalid by CyberCore::URL"
         https://bugs.webkit.org/show_bug.cgi?id=189979
         https://trac.webkit.org/changeset/236524
 
@@ -16599,7 +16599,7 @@
 
 2018-09-22  Dean Jackson  <dino@apple.com>
 
-        Unreviewed - Skip pointer events tests on legacy WebKit.
+        Unreviewed - Skip pointer events tests on legacy CyberKit.
 
         * platform/ios-wk1/TestExpectations:
         * platform/mac-wk1/TestExpectations:
@@ -16680,7 +16680,7 @@
         Reviewed by Keith Miller.
 
         Added a test for enqueuing a lot of custom elements into the reaction queue via innerHTML setter.
-        WebKit should retain the JS wrappers of all custom elements.
+        CyberKit should retain the JS wrappers of all custom elements.
 
         * fast/custom-elements/custom-elements-reaction-queue-retains-js-wrapper-expected.txt: Added.
         * fast/custom-elements/custom-elements-reaction-queue-retains-js-wrapper.html: Added.
@@ -18285,7 +18285,7 @@ s
 
 2018-09-07  Dean Jackson  <dino@apple.com>
 
-        Add and expose Internal features from WebKit
+        Add and expose Internal features from CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=189442
         <rdar://problem/44243404>
 

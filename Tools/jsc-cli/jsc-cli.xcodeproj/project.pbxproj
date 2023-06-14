@@ -15,7 +15,7 @@
        C246591D18902D100029092E /* RunLoopThread.m in Sources */ = {isa = PBXBuildFile; fileRef = C246591C18902D100029092E /* RunLoopThread.m */; };
        C246592018902E150029092E /* ReadEvalPrintLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = C246591F18902E150029092E /* ReadEvalPrintLoop.m */; };
        C246592318902EA40029092E /* ScriptInputSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C246592218902EA40029092E /* ScriptInputSource.m */; };
-       C296621118ADF56000752922 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C296621018ADF56000752922 /* JavaScriptCore.framework */; };
+       C296621118ADF56000752922 /* CyberScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C296621018ADF56000752922 /* CyberScriptCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,7 +57,7 @@
        C246591F18902E150029092E /* ReadEvalPrintLoop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadEvalPrintLoop.m; sourceTree = "<group>"; };
        C246592118902EA40029092E /* ScriptInputSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptInputSource.h; sourceTree = "<group>"; };
        C246592218902EA40029092E /* ScriptInputSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScriptInputSource.m; sourceTree = "<group>"; };
-       C296621018ADF56000752922 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JavaScriptCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+       C296621018ADF56000752922 /* CyberScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CyberScriptCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +65,7 @@
            isa = PBXFrameworksBuildPhase;
            buildActionMask = 2147483647;
            files = (
-               C296621118ADF56000752922 /* JavaScriptCore.framework in Frameworks */,
+               C296621118ADF56000752922 /* CyberScriptCore.framework in Frameworks */,
                C246590518902ACE0029092E /* Foundation.framework in Frameworks */,
            );
            runOnlyForDeploymentPostprocessing = 0;
@@ -109,7 +109,7 @@
        C246590318902ACE0029092E /* Frameworks */ = {
            isa = PBXGroup;
            children = (
-               C296621018ADF56000752922 /* JavaScriptCore.framework */,
+               C296621018ADF56000752922 /* CyberScriptCore.framework */,
                C246590418902ACE0029092E /* Foundation.framework */,
            );
            name = Frameworks;
@@ -275,7 +275,7 @@
                DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
                FRAMEWORK_SEARCH_PATHS = (
                    "$(inherited)",
-                   "/Volumes/Data/WebKit-svn-01/OpenSource/WebKitBuild/Debug",
+                   "/Volumes/Data/CyberKit-svn-01/OpenSource/CyberKitBuild/Debug",
                );
                GCC_PRECOMPILE_PREFIX_HEADER = YES;
                GCC_PREFIX_HEADER = "";
@@ -298,7 +298,7 @@
                DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
                FRAMEWORK_SEARCH_PATHS = (
                    "$(inherited)",
-                   "/Volumes/Data/WebKit-svn-01/OpenSource/WebKitBuild/Debug",
+                   "/Volumes/Data/CyberKit-svn-01/OpenSource/CyberKitBuild/Debug",
                );
                GCC_PRECOMPILE_PREFIX_HEADER = YES;
                GCC_PREFIX_HEADER = "";

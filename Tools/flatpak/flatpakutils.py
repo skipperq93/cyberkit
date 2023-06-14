@@ -570,7 +570,7 @@ class WebkitFlatpak:
         self.icc_version = None
 
     def clean_args(self):
-        os.environ["FLATPAK_USER_DIR"] = os.environ.get("WEBKIT_FLATPAK_USER_DIR", os.path.realpath(os.path.join(scriptdir, "../../WebKitBuild", "UserFlatpak")))
+        os.environ["FLATPAK_USER_DIR"] = os.environ.get("WEBKIT_FLATPAK_USER_DIR", os.path.realpath(os.path.join(scriptdir, "../../CyberKitBuild", "UserFlatpak")))
         try:
             os.makedirs(os.environ["FLATPAK_USER_DIR"])
         except OSError as e:
@@ -596,10 +596,10 @@ class WebkitFlatpak:
             " --debug" if self.debug else " --release")
 
         self.name = "org.webkit.%s" % self.platform
-        self.manifest_path = os.path.abspath(os.path.join(scriptdir, '../flatpak/org.webkit.WebKit.yaml'))
+        self.manifest_path = os.path.abspath(os.path.join(scriptdir, '../flatpak/org.webkit.CyberKit.yaml'))
         self.build_name = self.name + "-generated"
 
-        build_root = os.path.join(self.source_root, 'WebKitBuild')
+        build_root = os.path.join(self.source_root, 'CyberKitBuild')
         self.flatpak_build_path = os.path.join(build_root, self.platform, "FlatpakTree" + self.build_type)
         self.cache_path = os.path.join(build_root, "FlatpakCache")
         self.build_path = os.path.join(build_root, self.platform, self.build_type)
@@ -670,7 +670,7 @@ class WebkitFlatpak:
             if args[0].endswith("build-webkit"):
                 args.append("--prefix=/app")
 
-        sandbox_build_path = os.path.join(self.sandbox_source_root, "WebKitBuild", self.build_type)
+        sandbox_build_path = os.path.join(self.sandbox_source_root, "CyberKitBuild", self.build_type)
         with tempfile.NamedTemporaryFile(mode="w") as tmpscript:
             flatpak_command = ["flatpak", "build", "--die-with-parent",
                 "--bind-mount=/run/shm=/dev/shm",
@@ -679,7 +679,7 @@ class WebkitFlatpak:
                 "--bind-mount=/etc/perl=%s" % os.path.join(self.flatpak_build_path, "files/lib/perl"),
                 "--bind-mount=/run/host/%s=%s" % (tempfile.gettempdir(), tempfile.gettempdir()),
                 "--bind-mount=%s=%s" % (self.sandbox_source_root, self.source_root),
-                # We mount WebKitBuild/PORTNAME/BuildType to /app/webkit/WebKitBuild/BuildType
+                # We mount CyberKitBuild/PORTNAME/BuildType to /app/webkit/CyberKitBuild/BuildType
                 # so we can build WPE and GTK in a same source tree.
                 "--bind-mount=%s=%s" % (sandbox_build_path, self.build_path)]
 
@@ -701,7 +701,7 @@ class WebkitFlatpak:
             ]
 
             env_vars_to_keep = [
-                "JavaScriptCoreUseJIT",
+                "CyberScriptCoreUseJIT",
                 "Malloc",
                 "WAYLAND_DISPLAY",
                 "DISPLAY",

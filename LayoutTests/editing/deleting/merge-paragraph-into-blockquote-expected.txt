@@ -10,7 +10,7 @@ EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotificatio
 EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
 EDITING DELEGATE: webViewDidEndEditing:WebViewDidEndEditingNotification
 This tests deleting line break after blockquote.
-WebKit should not cancel styles added by blockquote by those of document's default style.
+CyberKit should not cancel styles added by blockquote by those of document's default style.
 | "
 "
 | <blockquote>

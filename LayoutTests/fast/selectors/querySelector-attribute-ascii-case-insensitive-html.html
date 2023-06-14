@@ -6,10 +6,10 @@
 </head>
 <body>
 <div style="display:none">
-    <div id="target1" data-æøå="WebKit!"></div>
-    <div id="target2" data-Æøå="WebKit!"></div>
-    <div id="target3" data-ÆØÅ="WebKit!"></div>
-    <div id="target4" data-æøå="WebKit!" data-Æøå="WebKit!" data-ÆØÅ="WebKit!"></div>
+    <div id="target1" data-æøå="CyberKit!"></div>
+    <div id="target2" data-Æøå="CyberKit!"></div>
+    <div id="target3" data-ÆØÅ="CyberKit!"></div>
+    <div id="target4" data-æøå="CyberKit!" data-Æøå="CyberKit!" data-ÆØÅ="CyberKit!"></div>
 </div>
 </body>
 <script>
@@ -28,10 +28,10 @@ testSelector('[data-Æøå]', [2, 4]);
 testSelector('[data-ÆØÅ]', [3, 4]);
 testSelector('[data-æØå]', []);
 
-testSelector('[Data-æøå="WebKit!"]', [1, 4]);
-testSelector('[Data-Æøå="WebKit!"]', [2, 4]);
-testSelector('[Data-ÆØÅ="WebKit!"]', [3, 4]);
-testSelector('[Data-æØå="WebKit!"]', []);
+testSelector('[Data-æøå="CyberKit!"]', [1, 4]);
+testSelector('[Data-Æøå="CyberKit!"]', [2, 4]);
+testSelector('[Data-ÆØÅ="CyberKit!"]', [3, 4]);
+testSelector('[Data-æØå="CyberKit!"]', []);
 
 testSelector('[DATA-æøå^="Web"]', [1, 4]);
 testSelector('[DATA-Æøå^="Web"]', [2, 4]);
@@ -44,10 +44,10 @@ testSelector(':root :matches(body, html) [data-Æøå]', [2, 4]);
 testSelector(':root :matches(body, html) [data-ÆØÅ]', [3, 4]);
 testSelector(':root :matches(body, html) [data-æØå]', []);
 
-testSelector(':root :matches(body, html) [Data-æøå="WebKit!"]', [1, 4]);
-testSelector(':root :matches(body, html) [Data-Æøå="WebKit!"]', [2, 4]);
-testSelector(':root :matches(body, html) [Data-ÆØÅ="WebKit!"]', [3, 4]);
-testSelector(':root :matches(body, html) [Data-æØå="WebKit!"]', []);
+testSelector(':root :matches(body, html) [Data-æøå="CyberKit!"]', [1, 4]);
+testSelector(':root :matches(body, html) [Data-Æøå="CyberKit!"]', [2, 4]);
+testSelector(':root :matches(body, html) [Data-ÆØÅ="CyberKit!"]', [3, 4]);
+testSelector(':root :matches(body, html) [Data-æØå="CyberKit!"]', []);
 
 testSelector(':root :matches(body, html) [DATA-æøå^="Web"]', [1, 4]);
 testSelector(':root :matches(body, html) [DATA-Æøå^="Web"]', [2, 4]);

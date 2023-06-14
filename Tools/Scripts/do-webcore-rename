@@ -26,7 +26,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Script to do a rename in JavaScriptCore, WebCore, and WebKit.
+# Script to do a rename in CyberScriptCore, CyberCore, and CyberKit.
 
 use strict;
 use warnings;
@@ -40,7 +40,7 @@ use webkitdirs;
 use VCSUtils;
 
 setConfiguration();
-chdirWebKit();
+chdirCyberKit();
 
 my $showHelp;
 my $verbose;
@@ -71,13 +71,13 @@ my %directoriesToIgnore = map { $_ => 1 } @directoriesToIgnoreList;
 # find all files we want to process
 
 my @paths;
-find(\&wanted, "Source/JavaScriptCore");
+find(\&wanted, "Source/CyberScriptCore");
 find(\&wanted, "Source/WTF");
-find(\&wanted, "Source/WebCore");
-find(\&wanted, "Source/WebKitLegacy");
-find(\&wanted, "Source/WebKit");
+find(\&wanted, "Source/CyberCore");
+find(\&wanted, "Source/CyberKitLegacy");
+find(\&wanted, "Source/CyberKit");
 find(\&wanted, "Tools/DumpRenderTree");
-find(\&wanted, "Tools/TestWebKitAPI");
+find(\&wanted, "Tools/TestCyberKitAPI");
 
 sub wanted
 {

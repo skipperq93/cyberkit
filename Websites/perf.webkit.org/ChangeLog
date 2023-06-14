@@ -730,7 +730,7 @@
         (MarkupNode.prototype.clone): Implemented by the leave class.
         (MarkupNode.prototype._cloneNodeData):
         (MarkupNode.prototype.remove):
-        (MarkupParentNode): Added. An equivalent of ContainerNode in WebCore.
+        (MarkupParentNode): Added. An equivalent of ContainerNode in CyberCore.
         (MarkupParentNode.prototype.get childNodes):
         (MarkupParentNode.prototype._cloneNodeData):
         (MarkupParentNode.prototype.appendChild):

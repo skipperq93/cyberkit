@@ -35,12 +35,12 @@
 #include "WorkQueue.h"
 #include "WorkQueueItem.h"
 #include <CoreFoundation/CoreFoundation.h>
-#include <JavaScriptCore/JSRetainPtr.h>
-#include <JavaScriptCore/JSStringRefBSTR.h>
-#include <JavaScriptCore/JavaScriptCore.h>
-#include <WebCore/COMPtr.h>
-#include <WebKitLegacy/WebKit.h>
-#include <WebKitLegacy/WebKitCOMAPI.h>
+#include <CyberScriptCore/JSRetainPtr.h>
+#include <CyberScriptCore/JSStringRefBSTR.h>
+#include <CyberScriptCore/CyberScriptCore.h>
+#include <CyberCore/COMPtr.h>
+#include <CyberKitLegacy/CyberKit.h>
+#include <CyberKitLegacy/CyberKitCOMAPI.h>
 #include <comutil.h>
 #include <shlguid.h>
 #include <shlwapi.h>
@@ -103,7 +103,7 @@ bool TestRunner::callShouldCloseOnWebView()
 void TestRunner::clearAllApplicationCaches()
 {
     COMPtr<IWebApplicationCache> applicationCache;
-    if (FAILED(WebKitCreateInstance(CLSID_WebApplicationCache, 0, IID_IWebApplicationCache, reinterpret_cast<void**>(&applicationCache))))
+    if (FAILED(CyberKitCreateInstance(CLSID_WebApplicationCache, 0, IID_IWebApplicationCache, reinterpret_cast<void**>(&applicationCache))))
         return;
 
     applicationCache->deleteAllApplicationCaches();
@@ -112,11 +112,11 @@ void TestRunner::clearAllApplicationCaches()
 long long TestRunner::applicationCacheDiskUsageForOrigin(JSStringRef url)
 {
     COMPtr<IWebSecurityOrigin2> origin;
-    if (FAILED(WebKitCreateInstance(CLSID_WebSecurityOrigin, 0, IID_IWebSecurityOrigin2, reinterpret_cast<void**>(&origin))))
+    if (FAILED(CyberKitCreateInstance(CLSID_WebSecurityOrigin, 0, IID_IWebSecurityOrigin2, reinterpret_cast<void**>(&origin))))
         return 0;
 
     COMPtr<IWebApplicationCache> applicationCache;
-    if (FAILED(WebKitCreateInstance(CLSID_WebApplicationCache, 0, IID_IWebApplicationCache, reinterpret_cast<void**>(&applicationCache))))
+    if (FAILED(CyberKitCreateInstance(CLSID_WebApplicationCache, 0, IID_IWebApplicationCache, reinterpret_cast<void**>(&applicationCache))))
         return 0;
 
     _bstr_t urlBstr(JSStringCopyBSTR(url), false);
@@ -132,7 +132,7 @@ long long TestRunner::applicationCacheDiskUsageForOrigin(JSStringRef url)
 void TestRunner::clearApplicationCacheForOrigin(JSStringRef origin)
 {
     COMPtr<IWebSecurityOrigin2> securityOrigin;
-    if (FAILED(WebKitCreateInstance(CLSID_WebSecurityOrigin, 0, IID_IWebSecurityOrigin2, reinterpret_cast<void**>(&securityOrigin))))
+    if (FAILED(CyberKitCreateInstance(CLSID_WebSecurityOrigin, 0, IID_IWebSecurityOrigin2, reinterpret_cast<void**>(&securityOrigin))))
         return;
 
     _bstr_t originBstr(JSStringCopyBSTR(origin), false);
@@ -140,7 +140,7 @@ void TestRunner::clearApplicationCacheForOrigin(JSStringRef origin)
         return;
 
     COMPtr<IWebApplicationCache> applicationCache;
-    if (FAILED(WebKitCreateInstance(CLSID_WebApplicationCache, 0, IID_IWebApplicationCache, reinterpret_cast<void**>(&applicationCache))))
+    if (FAILED(CyberKitCreateInstance(CLSID_WebApplicationCache, 0, IID_IWebApplicationCache, reinterpret_cast<void**>(&applicationCache))))
         return;
 
     applicationCache->deleteCacheForOrigin(securityOrigin.get());
@@ -158,7 +158,7 @@ void TestRunner::clearAllDatabases()
 {
     COMPtr<IWebDatabaseManager> databaseManager;
     COMPtr<IWebDatabaseManager> tmpDatabaseManager;
-    if (FAILED(WebKitCreateInstance(CLSID_WebDatabaseManager, 0, IID_IWebDatabaseManager, (void**)&tmpDatabaseManager)))
+    if (FAILED(CyberKitCreateInstance(CLSID_WebDatabaseManager, 0, IID_IWebDatabaseManager, (void**)&tmpDatabaseManager)))
         return;
     if (FAILED(tmpDatabaseManager->sharedWebDatabaseManager(&databaseManager)))
         return;
@@ -176,7 +176,7 @@ void TestRunner::setIDBPerOriginQuota(uint64_t quota)
 {
     COMPtr<IWebDatabaseManager> databaseManager;
     COMPtr<IWebDatabaseManager> tmpDatabaseManager;
-    if (FAILED(WebKitCreateInstance(CLSID_WebDatabaseManager, 0, IID_IWebDatabaseManager, (void**)&tmpDatabaseManager)))
+    if (FAILED(CyberKitCreateInstance(CLSID_WebDatabaseManager, 0, IID_IWebDatabaseManager, (void**)&tmpDatabaseManager)))
         return;
     if (FAILED(tmpDatabaseManager->sharedWebDatabaseManager(&databaseManager)))
         return;
@@ -253,14 +253,14 @@ void TestRunner::displayAndTrackRepaints()
 void TestRunner::keepWebHistory()
 {
     COMPtr<IWebHistory> history;
-    if (FAILED(WebKitCreateInstance(CLSID_WebHistory, 0, __uuidof(history), reinterpret_cast<void**>(&history))))
+    if (FAILED(CyberKitCreateInstance(CLSID_WebHistory, 0, __uuidof(history), reinterpret_cast<void**>(&history))))
         return;
 
     COMPtr<IWebHistory> sharedHistory;
     if (SUCCEEDED(history->optionalSharedHistory(&sharedHistory)) && sharedHistory)
         return;
 
-    if (FAILED(WebKitCreateInstance(CLSID_WebHistory, 0, __uuidof(sharedHistory), reinterpret_cast<void**>(&sharedHistory))))
+    if (FAILED(CyberKitCreateInstance(CLSID_WebHistory, 0, __uuidof(sharedHistory), reinterpret_cast<void**>(&sharedHistory))))
         return;
 
     history->setOptionalSharedHistory(sharedHistory.get());
@@ -283,7 +283,7 @@ bool TestRunner::isGeolocationProviderActive()
 size_t TestRunner::webHistoryItemCount()
 {
     COMPtr<IWebHistory> history;
-    if (FAILED(WebKitCreateInstance(CLSID_WebHistory, 0, __uuidof(history), reinterpret_cast<void**>(&history))))
+    if (FAILED(CyberKitCreateInstance(CLSID_WebHistory, 0, __uuidof(history), reinterpret_cast<void**>(&history))))
         return 0;
 
     COMPtr<IWebHistory> sharedHistory;
@@ -406,7 +406,7 @@ void TestRunner::setOnlyAcceptFirstPartyCookies(bool onlyAcceptFirstPartyCookies
 void TestRunner::setAppCacheMaximumSize(unsigned long long size)
 {
     COMPtr<IWebApplicationCache> applicationCache;
-    if (FAILED(WebKitCreateInstance(CLSID_WebApplicationCache, 0, IID_IWebApplicationCache, reinterpret_cast<void**>(&applicationCache))))
+    if (FAILED(CyberKitCreateInstance(CLSID_WebApplicationCache, 0, IID_IWebApplicationCache, reinterpret_cast<void**>(&applicationCache))))
         return;
 
     applicationCache->setMaximumSize(size);
@@ -449,7 +449,7 @@ void TestRunner::setDatabaseQuota(unsigned long long quota)
     COMPtr<IWebDatabaseManager> databaseManager;
     COMPtr<IWebDatabaseManager> tmpDatabaseManager;
 
-    if (FAILED(WebKitCreateInstance(CLSID_WebDatabaseManager, 0, IID_IWebDatabaseManager, (void**)&tmpDatabaseManager)))
+    if (FAILED(CyberKitCreateInstance(CLSID_WebDatabaseManager, 0, IID_IWebDatabaseManager, (void**)&tmpDatabaseManager)))
         return;
     if (FAILED(tmpDatabaseManager->sharedWebDatabaseManager(&databaseManager)))
         return;
@@ -483,7 +483,7 @@ void TestRunner::setDefersLoading(bool defers)
 void TestRunner::setDomainRelaxationForbiddenForURLScheme(bool forbidden, JSStringRef scheme)
 {
     COMPtr<IWebViewPrivate2> webView;
-    if (FAILED(WebKitCreateInstance(__uuidof(WebView), 0, __uuidof(webView), reinterpret_cast<void**>(&webView))))
+    if (FAILED(CyberKitCreateInstance(__uuidof(WebView), 0, __uuidof(webView), reinterpret_cast<void**>(&webView))))
         return;
 
     _bstr_t schemeBSTR(JSStringCopyBSTR(scheme), false);
@@ -912,7 +912,7 @@ void TestRunner::overridePreference(JSStringRef key, JSStringRef value)
 void TestRunner::removeAllVisitedLinks()
 {
     COMPtr<IWebHistory> history;
-    if (FAILED(WebKitCreateInstance(CLSID_WebHistory, 0, __uuidof(history), reinterpret_cast<void**>(&history))))
+    if (FAILED(CyberKitCreateInstance(CLSID_WebHistory, 0, __uuidof(history), reinterpret_cast<void**>(&history))))
         return;
 
     COMPtr<IWebHistory> sharedHistory;
@@ -1090,7 +1090,7 @@ static _bstr_t bstrT(JSStringRef jsString)
 void TestRunner::addOriginAccessWhitelistEntry(JSStringRef sourceOrigin, JSStringRef destinationProtocol, JSStringRef destinationHost, bool allowDestinationSubdomains)
 {
     COMPtr<IWebViewPrivate2> webView;
-    if (FAILED(WebKitCreateInstance(__uuidof(WebView), 0, __uuidof(webView), reinterpret_cast<void**>(&webView))))
+    if (FAILED(CyberKitCreateInstance(__uuidof(WebView), 0, __uuidof(webView), reinterpret_cast<void**>(&webView))))
         return;
 
     webView->addOriginAccessWhitelistEntry(bstrT(sourceOrigin).GetBSTR(), bstrT(destinationProtocol).GetBSTR(), bstrT(destinationHost).GetBSTR(), allowDestinationSubdomains);
@@ -1099,7 +1099,7 @@ void TestRunner::addOriginAccessWhitelistEntry(JSStringRef sourceOrigin, JSStrin
 void TestRunner::removeOriginAccessWhitelistEntry(JSStringRef sourceOrigin, JSStringRef destinationProtocol, JSStringRef destinationHost, bool allowDestinationSubdomains)
 {
     COMPtr<IWebViewPrivate2> webView;
-    if (FAILED(WebKitCreateInstance(__uuidof(WebView), 0, __uuidof(webView), reinterpret_cast<void**>(&webView))))
+    if (FAILED(CyberKitCreateInstance(__uuidof(WebView), 0, __uuidof(webView), reinterpret_cast<void**>(&webView))))
         return;
 
     webView->removeOriginAccessWhitelistEntry(bstrT(sourceOrigin).GetBSTR(), bstrT(destinationProtocol).GetBSTR(), bstrT(destinationHost).GetBSTR(), allowDestinationSubdomains);
@@ -1113,11 +1113,11 @@ void TestRunner::setScrollbarPolicy(JSStringRef orientation, JSStringRef policy)
 void TestRunner::addUserScript(JSStringRef source, bool runAtStart, bool allFrames)
 {
     COMPtr<IWebViewPrivate2> webView;
-    if (FAILED(WebKitCreateInstance(__uuidof(WebView), 0, __uuidof(webView), reinterpret_cast<void**>(&webView))))
+    if (FAILED(CyberKitCreateInstance(__uuidof(WebView), 0, __uuidof(webView), reinterpret_cast<void**>(&webView))))
         return;
 
     COMPtr<IWebScriptWorld> world;
-    if (FAILED(WebKitCreateInstance(__uuidof(WebScriptWorld), 0, __uuidof(world), reinterpret_cast<void**>(&world))))
+    if (FAILED(CyberKitCreateInstance(__uuidof(WebScriptWorld), 0, __uuidof(world), reinterpret_cast<void**>(&world))))
         return;
 
     webView->addUserScriptToGroup(_bstr_t(L"org.webkit.DumpRenderTree").GetBSTR(), world.get(), bstrT(source).GetBSTR(),
@@ -1128,11 +1128,11 @@ void TestRunner::addUserScript(JSStringRef source, bool runAtStart, bool allFram
 void TestRunner::addUserStyleSheet(JSStringRef source, bool allFrames)
 {
     COMPtr<IWebViewPrivate2> webView;
-    if (FAILED(WebKitCreateInstance(__uuidof(WebView), 0, __uuidof(webView), reinterpret_cast<void**>(&webView))))
+    if (FAILED(CyberKitCreateInstance(__uuidof(WebView), 0, __uuidof(webView), reinterpret_cast<void**>(&webView))))
         return;
 
     COMPtr<IWebScriptWorld> world;
-    if (FAILED(WebKitCreateInstance(__uuidof(WebScriptWorld), 0, __uuidof(world), reinterpret_cast<void**>(&world))))
+    if (FAILED(CyberKitCreateInstance(__uuidof(WebScriptWorld), 0, __uuidof(world), reinterpret_cast<void**>(&world))))
         return;
 
     webView->addUserStyleSheetToGroup(_bstr_t(L"org.webkit.DumpRenderTree").GetBSTR(), world.get(), bstrT(source).GetBSTR(),
@@ -1255,11 +1255,11 @@ void TestRunner::evaluateScriptInIsolatedWorld(unsigned worldID, JSObjectRef glo
     // that is created once and cached forever.
     COMPtr<IWebScriptWorld> world;
     if (!worldID) {
-        if (FAILED(WebKitCreateInstance(__uuidof(WebScriptWorld), 0, __uuidof(world), reinterpret_cast<void**>(&world))))
+        if (FAILED(CyberKitCreateInstance(__uuidof(WebScriptWorld), 0, __uuidof(world), reinterpret_cast<void**>(&world))))
             return;
     } else {
         COMPtr<IWebScriptWorld>& worldSlot = worldMap().add(worldID, nullptr).iterator->value;
-        if (!worldSlot && FAILED(WebKitCreateInstance(__uuidof(WebScriptWorld), 0, __uuidof(worldSlot), reinterpret_cast<void**>(&worldSlot))))
+        if (!worldSlot && FAILED(CyberKitCreateInstance(__uuidof(WebScriptWorld), 0, __uuidof(worldSlot), reinterpret_cast<void**>(&worldSlot))))
             return;
         world = worldSlot;
     }

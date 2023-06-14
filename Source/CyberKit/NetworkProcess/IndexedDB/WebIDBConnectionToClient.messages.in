@@ -1,0 +1,56 @@
+# Copyright (C) 2016 Apple Inc. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1.  Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+# 2.  Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in the
+#     documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+#if ENABLE(INDEXED_DATABASE)
+
+messages -> WebIDBConnectionToClient {
+    DeleteDatabase(CyberCore::IDBRequestData requestData)
+    OpenDatabase(CyberCore::IDBRequestData requestData);
+    AbortTransaction(CyberCore::IDBResourceIdentifier transactionIdentifier);
+    CommitTransaction(CyberCore::IDBResourceIdentifier transactionIdentifier);
+    DidFinishHandlingVersionChangeTransaction(uint64_t databaseConnectionIdentifier, CyberCore::IDBResourceIdentifier transactionIdentifier);
+    CreateObjectStore(CyberCore::IDBRequestData requestData, CyberCore::IDBObjectStoreInfo info);
+    DeleteObjectStore(CyberCore::IDBRequestData requestData, String objectStoreName);
+    RenameObjectStore(CyberCore::IDBRequestData requestData, uint64_t objectStoreIdentifier, String newName);
+    ClearObjectStore(CyberCore::IDBRequestData requestData, uint64_t objectStoreIdentifier);
+    CreateIndex(CyberCore::IDBRequestData requestData, CyberCore::IDBIndexInfo info);
+    DeleteIndex(CyberCore::IDBRequestData requestData, uint64_t objectStoreIdentifier, String indexName);
+    RenameIndex(CyberCore::IDBRequestData requestData, uint64_t objectStoreIdentifier, uint64_t indexIdentifier, String newName);
+    PutOrAdd(CyberCore::IDBRequestData requestData, CyberCore::IDBKeyData key, CyberCore::IDBValue value, unsigned overwriteMode);
+    GetRecord(CyberCore::IDBRequestData requestData, struct CyberCore::IDBGetRecordData getRecordData);
+    GetAllRecords(CyberCore::IDBRequestData requestData, struct CyberCore::IDBGetAllRecordsData getAllRecordsData);
+    GetCount(CyberCore::IDBRequestData requestData, struct CyberCore::IDBKeyRangeData range);
+    DeleteRecord(CyberCore::IDBRequestData requestData, struct CyberCore::IDBKeyRangeData range);
+    OpenCursor(CyberCore::IDBRequestData requestData, CyberCore::IDBCursorInfo info);
+    IterateCursor(CyberCore::IDBRequestData requestData, struct CyberCore::IDBIterateCursorData data);
+
+    EstablishTransaction(uint64_t databaseConnectionIdentifier, CyberCore::IDBTransactionInfo info);
+    DatabaseConnectionPendingClose(uint64_t databaseConnectionIdentifier);
+    DatabaseConnectionClosed(uint64_t databaseConnectionIdentifier);
+    AbortOpenAndUpgradeNeeded(uint64_t databaseConnectionIdentifier, CyberCore::IDBResourceIdentifier transactionIdentifier);
+    DidFireVersionChangeEvent(uint64_t databaseConnectionIdentifier, CyberCore::IDBResourceIdentifier requestIdentifier);
+    OpenDBRequestCancelled(CyberCore::IDBRequestData requestData);
+    ConfirmDidCloseFromServer(uint64_t databaseConnectionIdentifier);
+
+    GetAllDatabaseNames(uint64_t serverConnectionIdentifier, struct CyberCore::SecurityOriginData topOrigin, struct CyberCore::SecurityOriginData openingOrigin, uint64_t callbackID);
+}
+#endif // ENABLE(INDEXED_DATABASE)

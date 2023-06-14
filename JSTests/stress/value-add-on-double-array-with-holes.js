@@ -7,13 +7,13 @@ let testCases = [
     // Strings.
     ['""', '"undefined"', '"undefined"', '"1"', '"1"'],
     ['new String()', '"undefined"', '"undefined"', '"1"', '"1"'],
-    ['"WebKit!"', '"undefinedWebKit!"', '"WebKit!undefined"', '"1WebKit!"', '"WebKit!1"'],
+    ['"CyberKit!"', '"undefinedCyberKit!"', '"CyberKit!undefined"', '"1CyberKit!"', '"CyberKit!1"'],
 
     // Objects.
     ['{ }', '"undefined[object Object]"', '"[object Object]undefined"', '"1[object Object]"', '"[object Object]1"'],
     ['{ foo: 1 }', '"undefined[object Object]"', '"[object Object]undefined"', '"1[object Object]"', '"[object Object]1"'],
     ['{ toString: function() { return ""; } }', '"undefined"', '"undefined"', '"1"', '"1"'],
-    ['{ toString: function() { return "WebKit"; } }', '"undefinedWebKit"', '"WebKitundefined"', '"1WebKit"', '"WebKit1"'],
+    ['{ toString: function() { return "CyberKit"; } }', '"undefinedCyberKit"', '"CyberKitundefined"', '"1CyberKit"', '"CyberKit1"'],
 
     // Others.
     ['null', NaN, NaN, 1, 1],

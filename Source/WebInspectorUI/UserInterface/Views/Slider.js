@@ -140,7 +140,7 @@ WI.Slider = class Slider extends WI.Object
     {
         // We convert all event coordinates from page coordinates to local coordinates such that the slider
         // may be transformed using CSS Transforms and interaction works as expected.
-        return window.webkitConvertPointFromPageToNode(this._element, new WebKitPoint(event.pageX, event.pageY));
+        return window.webkitConvertPointFromPageToNode(this._element, new CyberKitPoint(event.pageX, event.pageY));
     }
 };
 

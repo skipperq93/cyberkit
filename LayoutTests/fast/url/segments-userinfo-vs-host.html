@@ -9,7 +9,7 @@
 description("Canonicalization of URLs that start with something that may or may not be userinfo");
 
 cases = [
-    // These cases currently match between WebKit and Gecko, so the results should probably never change.
+    // These cases currently match between CyberKit and Gecko, so the results should probably never change.
     ["http:@www.apple.com", "http://www.apple.com/", ["http:","www.apple.com","","/","",""]],
     ["http:/@www.apple.com", "http://www.apple.com/", ["http:","www.apple.com","","/","",""]],
     ["http://@www.apple.com", "http://www.apple.com/", ["http:","www.apple.com","","/","",""]],
@@ -21,7 +21,7 @@ cases = [
     ["http:/:b@www.apple.com", "http://:b@www.apple.com/", ["http:","www.apple.com","","/","",""]],
     ["http://:b@www.apple.com", "http://:b@www.apple.com/", ["http:","www.apple.com","","/","",""]],
 
-    // Gecko and WebKit both treat this URLs as invalid, but Gecko reports "http:" as protocol.
+    // Gecko and CyberKit both treat this URLs as invalid, but Gecko reports "http:" as protocol.
     ["http:/:@/www.apple.com", "http:/:@/www.apple.com", [":","","","","",""]],
 
     // HTTP URLs with an empty host are invalid, because otherwise, there is just too much risk that another parsing pass (possibly by a network layer with a subtly different algorithm) would treat path as hostname.
@@ -34,15 +34,15 @@ cases = [
     ["http:/a:b@/www.apple.com", "http:/a:b@/www.apple.com", [":","","","","",""]],
     ["http://a:b@/www.apple.com", "http://a:b@/www.apple.com", [":","","","","",""]],
 
-    // Gecko treats this URL as relative. WebKit treats it as invalid, because of empty host.
+    // Gecko treats this URL as relative. CyberKit treats it as invalid, because of empty host.
     ["http::@/www.apple.com", "http::@/www.apple.com", [":","","","","",""]],
 
-    // Empty password. Gecko still adds a ':', WebKit does not.
+    // Empty password. Gecko still adds a ':', CyberKit does not.
     ["http:a:@www.apple.com", "http://a@www.apple.com/", ["http:","www.apple.com","","/","",""]],
     ["http:/a:@www.apple.com", "http://a@www.apple.com/", ["http:","www.apple.com","","/","",""]],
     ["http://a:@www.apple.com", "http://a@www.apple.com/", ["http:","www.apple.com","","/","",""]],
 
-    // Some tests for multiple @-signs. WebKit treats these URLs as invalid, while Gecko allows '@' in userinfo, searching for the last instance in authority as a delimiter.
+    // Some tests for multiple @-signs. CyberKit treats these URLs as invalid, while Gecko allows '@' in userinfo, searching for the last instance in authority as a delimiter.
     ["http://a:b@www.@pple.com/p@th", "http://a:b@www.@pple.com/p@th", [":","","","","",""]],
     ["http://www.@@pple.com", "http://www.@@pple.com", [":","","","","",""]],
     ["http://@@pple.com", "http://@@pple.com", [":","","","","",""]],
@@ -54,15 +54,15 @@ cases = [
     ["http:/@:b@www.apple.com", "http:/@:b@www.apple.com", [":","","","","",""]],
     ["http://@:b@www.apple.com", "http://@:b@www.apple.com", [":","","","","",""]],
 
-    // Gecko escapes '.' in username, WebKit does not.
+    // Gecko escapes '.' in username, CyberKit does not.
     ["http://www.@pple.com", "http://www.@pple.com/", ["http:","pple.com","","/","",""]],
 
-    // Invalid in WebKit. Gecko thinks that hostname is ":www.apple.com", which doesn't seem like a good idea.
+    // Invalid in CyberKit. Gecko thinks that hostname is ":www.apple.com", which doesn't seem like a good idea.
     ["http:@:www.apple.com", "http:@:www.apple.com", [":","","","","",""]],
     ["http:/@:www.apple.com", "http:/@:www.apple.com", [":","","","","",""]],
     ["http://@:www.apple.com", "http://@:www.apple.com", [":","","","","",""]],
 
-    // Invalid in Gecko. WebKit just treats this as a URL with empty username and password, which appears to make sense.
+    // Invalid in Gecko. CyberKit just treats this as a URL with empty username and password, which appears to make sense.
     ["http://:@www.apple.com", "http://www.apple.com/", ["http:","www.apple.com","","/","",""]],
 
     // Host is empty, but hostname is not, so the resulting parsed URL string is not particularly ambiguous.

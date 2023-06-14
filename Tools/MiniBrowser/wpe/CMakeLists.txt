@@ -17,9 +17,9 @@ set(MiniBrowser_SYSTEM_INCLUDE_DIRECTORIES
 )
 
 set(MiniBrowser_LIBRARIES
-    ${JavaScriptCore_LIBRARY_NAME}
+    ${CyberScriptCore_LIBRARY_NAME}
     WPEToolingBackends
-    WebKit
+    CyberKit
     ${WPE_LIBRARIES}
     ${WPEBACKEND_FDO_LIBRARIES}
 )

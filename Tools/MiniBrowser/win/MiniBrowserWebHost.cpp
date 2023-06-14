@@ -31,8 +31,8 @@
 
 #include "DOMDefaultImpl.h"
 #include "PageLoadTestClient.h"
-#include "WebKitLegacyBrowserWindow.h"
-#include <WebKitLegacy/WebKit.h>
+#include "CyberKitLegacyBrowserWindow.h"
+#include <CyberKitLegacy/CyberKit.h>
 
 class SimpleEventListener : public DOMEventListener {
 public:

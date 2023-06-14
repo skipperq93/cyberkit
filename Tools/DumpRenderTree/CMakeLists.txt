@@ -22,8 +22,8 @@ set(DumpRenderTree_SOURCES
 )
 
 set(DumpRenderTree_LIBRARIES
-    WebCoreTestSupport
-    JavaScriptCore
+    CyberCoreTestSupport
+    CyberScriptCore
 )
 
 set(DumpRenderTree_INCLUDE_DIRECTORIES
@@ -65,9 +65,9 @@ set(TestNetscapePlugIn_SOURCES
 )
 
 set(TestNetscapePlugIn_LIBRARIES
-    JavaScriptCore
+    CyberScriptCore
     WTF
-    WebCoreTestSupport
+    CyberCoreTestSupport
 )
 
 set(DumpRenderTree_IDL_FILES

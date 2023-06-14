@@ -80,11 +80,11 @@ layer at (326,75) size 102x56 clip at (327,76) size 100x54 scrollHeight 162
         text run at (72,36) width 9: "3"
         text run at (0,54) width 74: "lines on the"
         text run at (0,72) width 85: "latest version"
-        text run at (0,90) width 75: "of WebKit. "
+        text run at (0,90) width 75: "of CyberKit. "
         text run at (74,90) width 9: "1"
         text run at (0,108) width 81: "line on older"
         text run at (0,126) width 71: "versions of"
-        text run at (0,144) width 54: "WebKit."
+        text run at (0,144) width 54: "CyberKit."
       RenderInline {A} at (0,0) size 36x18 [color=#0000EE]
         RenderText {#text} at (53,144) size 36x18
           text run at (53,144) width 36: "More"

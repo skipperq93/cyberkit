@@ -78,12 +78,12 @@ private:
     GMainLoop* m_loop { nullptr };
 };
 
-static WebKitWebView* createWebViewForAutomationCallback(WebKitAutomationSession*, WebKitWebView* view)
+static CyberKitWebView* createWebViewForAutomationCallback(CyberKitAutomationSession*, CyberKitWebView* view)
 {
     return view;
 }
 
-static void automationStartedCallback(WebKitWebContext*, WebKitAutomationSession* session, WebKitWebView* view)
+static void automationStartedCallback(CyberKitWebContext*, CyberKitAutomationSession* session, CyberKitWebView* view)
 {
     auto* info = webkit_application_info_new();
     webkit_application_info_set_version(info, WEBKIT_MAJOR_VERSION, WEBKIT_MINOR_VERSION, WEBKIT_MICRO_VERSION);
@@ -93,7 +93,7 @@ static void automationStartedCallback(WebKitWebContext*, WebKitAutomationSession
     g_signal_connect(session, "create-web-view", G_CALLBACK(createWebViewForAutomationCallback), view);
 }
 
-static gboolean decidePermissionRequest(WebKitWebView *, WebKitPermissionRequest *request, gpointer)
+static gboolean decidePermissionRequest(CyberKitWebView *, CyberKitPermissionRequest *request, gpointer)
 {
     g_print("Accepting %s request\n", G_OBJECT_TYPE_NAME(request));
     webkit_permission_request_allow(request);
@@ -153,7 +153,7 @@ int main(int argc, char *argv[])
         auto* enumClass = static_cast<GEnumClass*>(g_type_class_ref(WEBKIT_TYPE_COOKIE_ACCEPT_POLICY));
         GEnumValue* enumValue = g_enum_get_value_by_nick(enumClass, cookiesPolicy);
         if (enumValue)
-            webkit_cookie_manager_set_accept_policy(cookieManager, static_cast<WebKitCookieAcceptPolicy>(enumValue->value));
+            webkit_cookie_manager_set_accept_policy(cookieManager, static_cast<CyberKitCookieAcceptPolicy>(enumValue->value));
         g_type_class_unref(enumClass);
     }
 

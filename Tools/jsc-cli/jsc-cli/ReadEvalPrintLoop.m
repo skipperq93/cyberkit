@@ -25,7 +25,7 @@
 
 #import "ReadEvalPrintLoop.h"
 
-#import <JavaScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 #import <histedit.h>
 
 #import "JSRunLoopThread.h"

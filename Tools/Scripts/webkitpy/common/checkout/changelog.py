@@ -26,7 +26,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-# WebKit's Python module for parsing and modifying ChangeLog files
+# CyberKit's Python module for parsing and modifying ChangeLog files
 
 import logging
 import re
@@ -61,7 +61,7 @@ class ChangeLogEntry(object):
     # e.g. 2009-06-03  Eric Seidel  <eric@webkit.org>
     date_line_regexp = r'^(?P<date>\d{4}-\d{2}-\d{2})\s+(?P<authors>(?P<name>[^<]+?)\s+<(?P<email>[^<>]+)>.*?)$'
 
-    # e.g. * Source/WebCore/page/EventHandler.cpp: Implement FooBarQuux.
+    # e.g. * Source/CyberCore/page/EventHandler.cpp: Implement FooBarQuux.
     touched_files_regexp = r'^\s*\*\s*(?P<file>[A-Za-z0-9_\-\./\\]+)\s*\:'
     # e.g. (ChangeLogEntry.touched_functions): Added.
     touched_functions_regexp = r'^\s*\((?P<function>[^)]*)\):'

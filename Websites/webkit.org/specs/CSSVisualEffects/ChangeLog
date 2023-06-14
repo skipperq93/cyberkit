@@ -121,7 +121,7 @@
           <rdar://problem/6177272> [transforms] Should support "turns" as a rotation unit
     
         * Added exception to CSSMatrix setMatrixValue() and inverse() methods
-          <rdar://problem/6160283> [transforms] Specify error reporting for WebKitCSSMatrix
+          <rdar://problem/6160283> [transforms] Specify error reporting for CyberKitCSSMatrix
     
         * Added getCSSMatrix() method to CSSTransformValue
     

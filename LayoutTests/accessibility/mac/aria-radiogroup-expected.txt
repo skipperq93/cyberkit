@@ -1,6 +1,6 @@
 radio 1
 radio 2
-This tests that the aria radiogroup role is correctly mapped to a WebCore accessibility role.
+This tests that the aria radiogroup role is correctly mapped to a CyberCore accessibility role.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

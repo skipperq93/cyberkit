@@ -32,7 +32,7 @@
 #include "Common.h"
 #include "MiniBrowserLibResource.h"
 #include "MiniBrowserReplace.h"
-#include <WebKitLegacy/WebKitCOMAPI.h>
+#include <CyberKitLegacy/CyberKitCOMAPI.h>
 
 int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPWSTR lpstrCmdLine, _In_ int nCmdShow)
 {
@@ -78,9 +78,9 @@ int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
 
     // Main message loop:
     __try {
-        _com_ptr_t<_com_IIID<IWebKitMessageLoop, &__uuidof(IWebKitMessageLoop)>> messageLoop;
+        _com_ptr_t<_com_IIID<ICyberKitMessageLoop, &__uuidof(ICyberKitMessageLoop)>> messageLoop;
 
-        hr = WebKitCreateInstance(CLSID_WebKitMessageLoop, 0, IID_IWebKitMessageLoop, reinterpret_cast<void**>(&messageLoop.GetInterfacePtr()));
+        hr = CyberKitCreateInstance(CLSID_CyberKitMessageLoop, 0, IID_ICyberKitMessageLoop, reinterpret_cast<void**>(&messageLoop.GetInterfacePtr()));
         if (FAILED(hr))
             goto exit;
 
@@ -89,7 +89,7 @@ int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
     } __except(createCrashReport(GetExceptionInformation()), EXCEPTION_EXECUTE_HANDLER) { }
 
 exit:
-    shutDownWebKit();
+    shutDownCyberKit();
 #ifdef _CRTDBG_MAP_ALLOC
     _CrtDumpMemoryLeaks();
 #endif

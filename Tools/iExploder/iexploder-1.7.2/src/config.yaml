@@ -39,8 +39,8 @@ favor_html_tags:
 # An asterisk is allowed in the first field. Valid forms include:
 #
 #  img.onloadbanana: "Bananarama 3000"
-#  dir.style.-webkit-banana-rule: "BananaWebKit\/532\.9 |BananaTron5K"
-#  *.style.-webkit-banana-rule: "BananaWebKit\/532\.9 |BananaTron5K"
+#  dir.style.-webkit-banana-rule: "BananaCyberKit\/532\.9 |BananaTron5K"
+#  *.style.-webkit-banana-rule: "BananaCyberKit\/532\.9 |BananaTron5K"
 
 exclude:
   # Hangs the test waiting for a prompt sometimes

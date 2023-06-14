@@ -22,5 +22,5 @@ function runTest()
 }
 </script>
 <rect style='content: counters(c, ".", decimal)'></rect>
-<text x="10" y="50">PASS. WebKit didn't crash.</text>
+<text x="10" y="50">PASS. CyberKit didn't crash.</text>
 </svg>

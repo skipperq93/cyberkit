@@ -34,7 +34,7 @@ from urllib2 import HTTPError
 from webkitpy.common.checkout.scm.git import Git
 from webkitpy.common.host import Host
 from webkitpy.common.net.bugzilla import Bugzilla
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 from webkitpy.w3c.wpt_github import WPTGitHub
 from webkitpy.w3c.wpt_linter import WPTLinter
 from webkitpy.w3c.common import WPT_GH_ORG, WPT_GH_REPO_NAME, WPT_GH_URL, WPTPaths
@@ -68,7 +68,7 @@ class WebPlatformTestExporter(object):
                 self._bug_id = self._host.checkout().bug_id_for_this_commit(options.git_commit)
 
         if not self._options.repository_directory:
-            webkit_finder = WebKitFinder(self._filesystem)
+            webkit_finder = CyberKitFinder(self._filesystem)
             self._options.repository_directory = WPTPaths.wpt_checkout_path(webkit_finder)
 
         self._linter = WPTLinterClass(self._options.repository_directory, host.filesystem)
@@ -76,7 +76,7 @@ class WebPlatformTestExporter(object):
         self._bugzilla_url = "https://bugs.webkit.org/show_bug.cgi?id=" + str(self._bug_id)
         self._commit_message = options.message
         if not self._commit_message:
-            self._commit_message = 'WebKit export of ' + self._bugzilla_url if self._bug_id else 'Export made from a WebKit repository'
+            self._commit_message = 'CyberKit export of ' + self._bugzilla_url if self._bug_id else 'Export made from a CyberKit repository'
 
     @property
     def username(self):
@@ -313,9 +313,9 @@ class WebPlatformTestExporter(object):
 
         _log.info('Making pull request')
         title = self._bugzilla.fetch_bug_dictionary(self._bug_id)["title"].replace("[", "\\[").replace("]", "\\]")
-        # NOTE: this should contain the exact string "WebKit export" to match the condition in
+        # NOTE: this should contain the exact string "CyberKit export" to match the condition in
         # https://github.com/web-platform-tests/wpt-pr-bot/blob/f53e625c4871010277dc68336b340b5cd86e2a10/lib/metadata/index.js#L87
-        description = "WebKit export from bug: [%s](https://bugs.webkit.org/show_bug.cgi?id=%s)" % (title, self._bug_id)
+        description = "CyberKit export from bug: [%s](https://bugs.webkit.org/show_bug.cgi?id=%s)" % (title, self._bug_id)
         pr_number = self.create_wpt_pull_request(self._wpt_fork_remote + ':' + self._public_branch_name, self._commit_message, description)
         if pr_number:
             try:
@@ -387,7 +387,7 @@ def parse_args(args):
     description = """Script to generate a pull request to W3C web-platform-tests repository
     'Tools/Scripts/export-w3c-test-changes -c -g HEAD -b XYZ' will do the following:
     - Clone web-platform-tests repository if not done already and set it up for pushing branches.
-    - Gather WebKit bug id XYZ bug and changes to apply to web-platform-tests repository based on the HEAD commit
+    - Gather CyberKit bug id XYZ bug and changes to apply to web-platform-tests repository based on the HEAD commit
     - Create a remote branch named webkit-XYZ on https://github.com/USERNAME/%s.git repository based on the locally applied patch.
     -    USERNAME may be set using the environment variable GITHUB_USERNAME or as a command line option. It is then stored in git config as github.username.
     -    Github credential may be set using the environment variable GITHUB_TOKEN or as a command line option. (Please provide a valid GitHub 'Personal access token' with 'repo' as scope). It is then stored in git config as github.token.

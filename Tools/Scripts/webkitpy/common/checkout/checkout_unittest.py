@@ -36,7 +36,7 @@ from .checkout import Checkout
 from .changelog import ChangeLogEntry
 from .scm import CommitMessage, SCMDetector
 from .scm.scm_mock import MockSCM
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 from webkitpy.common.system.executive import Executive, ScriptError
 from webkitpy.common.system.filesystem import FileSystem  # FIXME: This should not be needed.
 from webkitpy.common.system.filesystem_mock import MockFileSystem
@@ -86,8 +86,8 @@ _changelog3 = u"""2014-07-17  David Kilzer  <ddkilzer@apple.com>
 
         Reviewed by Darin Adler.
 
-        * WebKit.xcodeproj/project.pbxproj: Remove references to unused
-        WebKit.xcconfig file.
+        * CyberKit.xcodeproj/project.pbxproj: Remove references to unused
+        CyberKit.xcconfig file.
 """
 
 _changelog4 = u"""2014-07-17  David Kilzer  <ddkilzer@apple.com>
@@ -137,7 +137,7 @@ class CommitMessageForThisCommitTest(unittest.TestCase):
         self.temp_dir = str(self.filesystem.mkdtemp(suffix="changelogs"))
         self.old_cwd = self.filesystem.getcwd()
         self.filesystem.chdir(self.temp_dir)
-        self.webkit_base = WebKitFinder(self.filesystem).webkit_base()
+        self.webkit_base = CyberKitFinder(self.filesystem).webkit_base()
 
         # Trick commit-log-editor into thinking we're in a Subversion working copy so it won't
         # complain about not being able to figure out what SCM is in use.
@@ -211,11 +211,11 @@ Second part of this complicated change by me, Tor Arne Vestb\u00f8!
 Patch by David Kilzer <ddkilzer@apple.com> on 2014-07-17
 Reviewed by Darin Adler.
 
-* WebKit.xcodeproj/project.pbxproj: Remove references to unused
-WebKit.xcconfig file.
+* CyberKit.xcodeproj/project.pbxproj: Remove references to unused
+CyberKit.xcconfig file.
 """
 
-        self.changelog_paths = map(self.filesystem.abspath, [self.filesystem.join("Source/WebKitLegacy", "ChangeLog")])
+        self.changelog_paths = map(self.filesystem.abspath, [self.filesystem.join("Source/CyberKitLegacy", "ChangeLog")])
 
         self.mock_changelog([_changelog3])
         checkout = self.mock_checkout_for_test()
@@ -231,17 +231,17 @@ WebKit.xcconfig file.
 Patch by David Kilzer <ddkilzer@apple.com> on 2014-07-17
 Reviewed by Darin Adler.
 
-Source/WebKitLegacy:
+Source/CyberKitLegacy:
 
-* WebKit.xcodeproj/project.pbxproj: Remove references to unused
-WebKit.xcconfig file.
+* CyberKit.xcodeproj/project.pbxproj: Remove references to unused
+CyberKit.xcconfig file.
 
 LayoutTests:
 
 * Path/To/Complicated/File: Added.
 """
 
-        self.changelog_paths = map(self.filesystem.abspath, (self.filesystem.join("Source/WebKitLegacy", "ChangeLog"), self.filesystem.join("LayoutTests", "ChangeLog")))
+        self.changelog_paths = map(self.filesystem.abspath, (self.filesystem.join("Source/CyberKitLegacy", "ChangeLog"), self.filesystem.join("LayoutTests", "ChangeLog")))
 
         self.mock_changelog((_changelog3, _changelog4))
         checkout = self.mock_checkout_for_test()
@@ -257,10 +257,10 @@ LayoutTests:
 Patch by David Kilzer <ddkilzer@apple.com> on 2014-07-17
 Reviewed by Darin Adler.
 
-Source/WebKitLegacy:
+Source/CyberKitLegacy:
 
-* WebKit.xcodeproj/project.pbxproj: Remove references to unused
-WebKit.xcconfig file.
+* CyberKit.xcodeproj/project.pbxproj: Remove references to unused
+CyberKit.xcconfig file.
 
 LayoutTests:
 
@@ -269,7 +269,7 @@ Filler change.
 * Path/To/Complicated/File: Added.
 """
 
-        self.changelog_paths = map(self.filesystem.abspath, (self.filesystem.join("Source/WebKitLegacy", "ChangeLog"), self.filesystem.join("LayoutTests", "ChangeLog")))
+        self.changelog_paths = map(self.filesystem.abspath, (self.filesystem.join("Source/CyberKitLegacy", "ChangeLog"), self.filesystem.join("LayoutTests", "ChangeLog")))
 
         self.mock_changelog((_changelog3, _changelog5))
         checkout = self.mock_checkout_for_test()
@@ -321,7 +321,7 @@ https://trac.webkit.org/changeset/170339
 Patch by Daniel Bates <dabates@apple.com> on 2014-06-23
 """
 
-        self.changelog_paths = map(self.filesystem.abspath, (self.filesystem.join("Tools", "ChangeLog"), self.filesystem.join("Source/WebCore", "ChangeLog")))
+        self.changelog_paths = map(self.filesystem.abspath, (self.filesystem.join("Tools", "ChangeLog"), self.filesystem.join("Source/CyberCore", "ChangeLog")))
 
         self.mock_changelog((_changelog6, _changelog6))
         checkout = self.mock_checkout_for_test()

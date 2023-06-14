@@ -8,7 +8,7 @@ layer at (0,0) size 785x1728
           text run at (0,0) width 764: "The following lines test various combinations of letter-spacing (especially negative values) and opacity. All of the lines"
           text run at (0,18) width 764: "should say \"Hello, world\" but the spacing and background shading will vary from test to test. The W3C specs are fairly"
           text run at (0,36) width 761: "silent on how user agents should handle unusual values of letter-spacing, especially negative ones, which are explicitly"
-          text run at (0,54) width 736: "implementation-dependent. Different browsers will render these differently, but hopefully the WebKit ports will be"
+          text run at (0,54) width 736: "implementation-dependent. Different browsers will render these differently, but hopefully the CyberKit ports will be"
           text run at (0,72) width 121: "consistent, at least."
       RenderBlock {P} at (0,106) size 769x18 [bgcolor=#FFFFFF]
         RenderText {#text} at (0,0) size 261x18

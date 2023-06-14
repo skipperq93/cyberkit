@@ -329,7 +329,7 @@ the public iOS SDK. We will also need to update the FeatureDefines.xcconfig file
 #endif
 #endif /* PLATFORM(GTK) || PLATFORM(WPE) */
 
-/* ENABLE macro defaults for WebCore */
+/* ENABLE macro defaults for CyberCore */
 /* Do not use PLATFORM() tests in this section ! */
 
 #if !defined(ENABLE_3D_TRANSFORMS)

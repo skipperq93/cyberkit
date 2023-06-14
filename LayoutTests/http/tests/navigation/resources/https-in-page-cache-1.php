@@ -4,7 +4,7 @@ header("cache-control: no-store");
 <script>
 
 if (window.testRunner)
-    testRunner.overridePreference("WebKitUsesPageCachePreferenceKey", 1);
+    testRunner.overridePreference("CyberKitUsesPageCachePreferenceKey", 1);
 
 function nextTest() {
 	if (window.sessionStorage.https_in_page_cache_started)

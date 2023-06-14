@@ -26,7 +26,7 @@
 #ifndef PluginObject_h
 #define PluginObject_h
 
-#include <WebKit/npfunctions.h>
+#include <CyberKit/npfunctions.h>
 #include <stdarg.h>
 #include <wtf/Assertions.h>
 

@@ -8,7 +8,7 @@ window.jsTestIsAsync = true;
 var totalLoaded = 0;
 
 if (window.testRunner)
-    testRunner.overridePreference("WebKitUsesPageCachePreferenceKey", 1);
+    testRunner.overridePreference("CyberKitUsesPageCachePreferenceKey", 1);
 
 window.addEventListener("pageshow", function(event) {
     debug("pageshow - " + (event.persisted ? "" : "not ") + "from cache");

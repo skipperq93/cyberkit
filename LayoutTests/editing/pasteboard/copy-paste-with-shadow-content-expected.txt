@@ -11,7 +11,7 @@ pasted:
 |       style="display: contents;"
 |       "world"
 |     " "
-|     "WebKit"
+|     "CyberKit"
 |   " rocks<#selection-caret>"
 
 text/html:
@@ -24,8 +24,8 @@ text/html:
 |       style="display: contents;"
 |       "world"
 |     " "
-|     "WebKit"
+|     "CyberKit"
 |   " rocks<#selection-caret>"
 
 text/plain:
-| "hello world WebKit rocks"
+| "hello world CyberKit rocks"

@@ -28,7 +28,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# "patch" script for WebKit Open Source Project, used to apply patches.
+# "patch" script for CyberKit Open Source Project, used to apply patches.
 
 # Differences from invoking "patch -p0":
 #

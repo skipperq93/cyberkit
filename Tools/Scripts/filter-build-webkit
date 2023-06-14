@@ -155,7 +155,7 @@ for (my $previousLine = "", my $line = <>; $line; $previousLine = $line, $line =
     } elsif ($line =~ /python (\S+\.py) (\S+)/) {
         my ($command, $path) = (basename($1), basename($2));
         printLine("python $command $path", STYLE_PLAIN);
-    } elsif ($line =~ /^\/\S+?(strip|WebCoreExportFileGenerator) .*?(\/|\> )(\S+)/) {
+    } elsif ($line =~ /^\/\S+?(strip|CyberCoreExportFileGenerator) .*?(\/|\> )(\S+)/) {
         my ($command, $path) = (basename($1), basename($3));
         printLine("$command $path", STYLE_PLAIN);
     } elsif ($line =~ /^offlineasm\: /) {
@@ -246,9 +246,9 @@ sub shouldIgnoreLine($$)
     return 1 if $line =~ /^\s*$/;
     return 1 if $line =~ /^Build settings from command line:/;
     return 1 if $line =~ /make(\[\d+\])?: Nothing to be done for `all'\./;
-    return 1 if $line =~ /^JavaScriptCore\/create_hash_table/;
-    return 1 if $line =~ /JavaScriptCore.framework\/PrivateHeaders\/create_hash_table/;
-    return 1 if $line =~ /^JavaScriptCore\/pcre\/dftables/;
+    return 1 if $line =~ /^CyberScriptCore\/create_hash_table/;
+    return 1 if $line =~ /CyberScriptCore.framework\/PrivateHeaders\/create_hash_table/;
+    return 1 if $line =~ /^CyberScriptCore\/pcre\/dftables/;
     return 1 if $line =~ /^Creating hashtable for /;
     return 1 if $line =~ /^Wrote output to /;
     return 1 if $line =~ /^UNDOCUMENTED: /;
@@ -272,7 +272,7 @@ sub shouldIgnoreLine($$)
     return 1 if $line =~ /created by an unsupported XCDependencyGraph build$/;
 
     if ($platform eq "win") {
-        return 1 if $line =~ /^\s*(touch|perl|cat|rm -f|del|python|\/usr\/bin\/g\+\+|gperf|echo|sed|if \[ \-f|WebCore\/generate-export-file) /;
+        return 1 if $line =~ /^\s*(touch|perl|cat|rm -f|del|python|\/usr\/bin\/g\+\+|gperf|echo|sed|if \[ \-f|CyberCore\/generate-export-file) /;
         return 1 if $line =~ /^\s*(if not exist \"|if errorlevel 1)/;
         return 1 if $line =~ /(^\s*|MSB3073:\s+)(set |REM |cmd \/c)/;
         return 1 if $line =~ /^\s*[cC]:\\[pP]rogram [fF]iles.*\\.*\\(CL|midl)\.exe /;
@@ -290,7 +290,7 @@ sub shouldIgnoreLine($$)
         return 1 if $line =~ /MSB3073:\s+if not exist/;
         return 1 if $line =~ /which.exe bash/;
     } else {
-        return 1 if $line =~ /^(touch|perl|cat|rm -f|python|\/usr\/bin\/g\+\+|\/bin\/ln|gperf|echo|sed|if \[ \-f|WebCore\/generate-export-file|write-file|chmod) /;
+        return 1 if $line =~ /^(touch|perl|cat|rm -f|python|\/usr\/bin\/g\+\+|\/bin\/ln|gperf|echo|sed|if \[ \-f|CyberCore\/generate-export-file|write-file|chmod) /;
         return 1 if $line =~ /^    / && !shouldShowSubsequentLine($previousLine);
         return 1 if $line =~ /^printf /;
         return 1 if $line =~ /^offlineasm: Nothing changed/;

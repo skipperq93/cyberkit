@@ -106,7 +106,7 @@ class BugzillaTest(unittest.TestCase):
           <cclist_accessible>1</cclist_accessible>
           <classification_id>1</classification_id>
           <classification>Unclassified</classification>
-          <product>WebKit</product>
+          <product>CyberKit</product>
           <component>Tools / Tests</component>
           <version>528+ (Nightly build)</version>
           <rep_platform>PC</rep_platform>
@@ -304,7 +304,7 @@ Ignore this bug.  Just for testing failure modes of webkit-patch and the commit-
     def test_file_object_for_upload(self):
         bugzilla = Bugzilla()
         file_object = StringIO.StringIO()
-        unicode_tor = u"WebKit \u2661 Tor Arne Vestb\u00F8!"
+        unicode_tor = u"CyberKit \u2661 Tor Arne Vestb\u00F8!"
         utf8_tor = unicode_tor.encode("utf-8")
         self.assertEqual(bugzilla._file_object_for_upload(file_object), file_object)
         self.assertEqual(bugzilla._file_object_for_upload(utf8_tor).read(), utf8_tor)
@@ -322,9 +322,9 @@ Ignore this bug.  Just for testing failure modes of webkit-patch and the commit-
     def test_commit_queue_flag(self):
         bugzilla = Bugzilla()
 
-        bugzilla.committers = CommitterList(reviewers=[Reviewer("WebKit Reviewer", "reviewer@webkit.org")],
-            committers=[Committer("WebKit Committer", "committer@webkit.org")],
-            contributors=[Contributor("WebKit Contributor", "contributor@webkit.org")])
+        bugzilla.committers = CommitterList(reviewers=[Reviewer("CyberKit Reviewer", "reviewer@webkit.org")],
+            committers=[Committer("CyberKit Committer", "committer@webkit.org")],
+            contributors=[Contributor("CyberKit Contributor", "contributor@webkit.org")])
 
         def assert_commit_queue_flag(commit_flag, expected, username=None):
             bugzilla.username = username

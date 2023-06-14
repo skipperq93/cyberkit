@@ -37,17 +37,17 @@ use webkitdirs;
 use VCSUtils;
 
 setConfiguration();
-chdirWebKit();
+chdirCyberKit();
 
 my %words;
 
 # find all files we want to process
 
 my @paths;
-find(\&wanted, "Source/JavaScriptCore");
-find(\&wanted, "Source/WebCore");
-find(\&wanted, "Source/WebKitLegacy");
-find(\&wanted, "Source/WebKit");
+find(\&wanted, "Source/CyberScriptCore");
+find(\&wanted, "Source/CyberCore");
+find(\&wanted, "Source/CyberKitLegacy");
+find(\&wanted, "Source/CyberKit");
 
 sub wanted
 {

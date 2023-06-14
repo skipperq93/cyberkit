@@ -261,7 +261,7 @@ class SCMClassTests(unittest.TestCase):
         self.assertRaises(ScriptError, run_command, command_returns_non_zero, input=input_process.stdout)
 
     def test_error_handlers(self):
-        git_failure_message = "Merge conflict during commit: Your file or directory 'WebCore/ChangeLog' is probably out-of-date: resource out of date; try updating at /usr/local/libexec/git-core//git-svn line 469"
+        git_failure_message = "Merge conflict during commit: Your file or directory 'CyberCore/ChangeLog' is probably out-of-date: resource out of date; try updating at /usr/local/libexec/git-core//git-svn line 469"
         svn_failure_message = """svn: Commit failed (details follow):
 svn: File or directory 'ChangeLog' is out of date; try updating
 svn: resource out of date; try updating
@@ -981,7 +981,7 @@ class GitTest(SCMTest):
         """Sets up fresh git repository with one commit. Then setups a second git
         repo that tracks the first one."""
         # FIXME: We should instead clone a git repo that is tracking an SVN repo.
-        # That better matches what we do with WebKit.
+        # That better matches what we do with CyberKit.
         self.original_dir = os.getcwd()
 
         self.untracking_checkout_path = tempfile.mkdtemp(suffix="git_test_checkout2")

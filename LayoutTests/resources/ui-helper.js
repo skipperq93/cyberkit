@@ -5,16 +5,16 @@ window.UIHelper = class UIHelper {
         return navigator.userAgent.includes('iPhone') || navigator.userAgent.includes('iPad');
     }
 
-    static isWebKit2()
+    static isCyberKit2()
     {
-        return window.testRunner.isWebKit2;
+        return window.testRunner.isCyberKit2;
     }
 
     static tapAt(x, y)
     {
         console.assert(this.isIOS());
 
-        if (!this.isWebKit2()) {
+        if (!this.isCyberKit2()) {
             eventSender.addTouchPoint(x, y);
             eventSender.touchStart();
             eventSender.releaseTouchPoint(0);
@@ -32,7 +32,7 @@ window.UIHelper = class UIHelper {
 
     static activateAt(x, y)
     {
-        if (!this.isWebKit2() || !this.isIOS()) {
+        if (!this.isCyberKit2() || !this.isIOS()) {
             eventSender.mouseMoveTo(x, y);
             eventSender.mouseDown();
             eventSender.mouseUp();
@@ -56,7 +56,7 @@ window.UIHelper = class UIHelper {
 
     static keyDown(key, modifiers=[])
     {
-        if (!this.isWebKit2() || !this.isIOS()) {
+        if (!this.isCyberKit2() || !this.isIOS()) {
             eventSender.keyDown(key, modifiers);
             return Promise.resolve();
         }
@@ -75,7 +75,7 @@ window.UIHelper = class UIHelper {
 
     static ensurePresentationUpdate()
     {
-        if (!this.isWebKit2()) {
+        if (!this.isCyberKit2()) {
             testRunner.display();
             return Promise.resolve();
         }
@@ -90,7 +90,7 @@ window.UIHelper = class UIHelper {
 
     static ensureVisibleContentRectUpdate()
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -101,7 +101,7 @@ window.UIHelper = class UIHelper {
 
     static activateAndWaitForInputSessionAt(x, y)
     {
-        if (!this.isWebKit2() || !this.isIOS())
+        if (!this.isCyberKit2() || !this.isIOS())
             return this.activateAt(x, y);
 
         return new Promise(resolve => {
@@ -117,7 +117,7 @@ window.UIHelper = class UIHelper {
 
     static activateFormControl(element)
     {
-        if (!this.isWebKit2() || !this.isIOS())
+        if (!this.isCyberKit2() || !this.isIOS())
             return this.activateElement(element);
 
         const x = element.offsetLeft + element.offsetWidth / 2;
@@ -136,7 +136,7 @@ window.UIHelper = class UIHelper {
 
     static waitForKeyboardToHide()
     {
-        if (!this.isWebKit2() || !this.isIOS())
+        if (!this.isCyberKit2() || !this.isIOS())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -152,7 +152,7 @@ window.UIHelper = class UIHelper {
 
     static getUICaretRect()
     {
-        if (!this.isWebKit2() || !this.isIOS())
+        if (!this.isCyberKit2() || !this.isIOS())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -168,7 +168,7 @@ window.UIHelper = class UIHelper {
 
     static getUISelectionRects()
     {
-        if (!this.isWebKit2() || !this.isIOS())
+        if (!this.isCyberKit2() || !this.isIOS())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -184,7 +184,7 @@ window.UIHelper = class UIHelper {
 
     static getUICaretViewRect()
     {
-        if (!this.isWebKit2() || !this.isIOS())
+        if (!this.isCyberKit2() || !this.isIOS())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -200,7 +200,7 @@ window.UIHelper = class UIHelper {
 
     static getUISelectionViewRects()
     {
-        if (!this.isWebKit2() || !this.isIOS())
+        if (!this.isCyberKit2() || !this.isIOS())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -216,7 +216,7 @@ window.UIHelper = class UIHelper {
 
     static getSelectionStartGrabberViewRect()
     {
-        if (!this.isWebKit2() || !this.isIOS())
+        if (!this.isCyberKit2() || !this.isIOS())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -232,7 +232,7 @@ window.UIHelper = class UIHelper {
 
     static getSelectionEndGrabberViewRect()
     {
-        if (!this.isWebKit2() || !this.isIOS())
+        if (!this.isCyberKit2() || !this.isIOS())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -354,7 +354,7 @@ window.UIHelper = class UIHelper {
 
     static typeCharacter(characterString)
     {
-        if (!this.isWebKit2() || !this.isIOS()) {
+        if (!this.isCyberKit2() || !this.isIOS()) {
             eventSender.keyDown(characterString);
             return;
         }
@@ -366,7 +366,7 @@ window.UIHelper = class UIHelper {
 
     static applyAutocorrection(newText, oldText)
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return;
 
         const [escapedNewText, escapedOldText] = [newText.replace(/`/g, "\\`"), oldText.replace(/`/g, "\\`")];
@@ -376,7 +376,7 @@ window.UIHelper = class UIHelper {
 
     static inputViewBounds()
     {
-        if (!this.isWebKit2() || !this.isIOS())
+        if (!this.isCyberKit2() || !this.isIOS())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -390,7 +390,7 @@ window.UIHelper = class UIHelper {
 
     static calendarType()
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -406,7 +406,7 @@ window.UIHelper = class UIHelper {
 
     static setDefaultCalendarType(calendarIdentifier)
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => testRunner.runUIScript(`uiController.setDefaultCalendarType('${calendarIdentifier}')`, resolve));
@@ -415,7 +415,7 @@ window.UIHelper = class UIHelper {
 
     static setViewScale(scale)
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => testRunner.runUIScript(`uiController.setViewScale(${scale})`, resolve));
@@ -423,7 +423,7 @@ window.UIHelper = class UIHelper {
 
     static resignFirstResponder()
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => testRunner.runUIScript(`uiController.resignFirstResponder()`, resolve));
@@ -431,7 +431,7 @@ window.UIHelper = class UIHelper {
 
     static minimumZoomScale()
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -443,7 +443,7 @@ window.UIHelper = class UIHelper {
 
     static drawSquareInEditableImage()
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => testRunner.runUIScript(`uiController.drawSquareInEditableImage()`, resolve));
@@ -451,7 +451,7 @@ window.UIHelper = class UIHelper {
 
     static stylusTapAt(x, y)
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise((resolve) => {
@@ -464,7 +464,7 @@ window.UIHelper = class UIHelper {
 
     static numberOfStrokesInEditableImage()
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -476,7 +476,7 @@ window.UIHelper = class UIHelper {
 
     static attachmentInfo(attachmentIdentifier)
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -490,7 +490,7 @@ window.UIHelper = class UIHelper {
 
     static setMinimumEffectiveWidth(effectiveWidth)
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => testRunner.runUIScript(`uiController.setMinimumEffectiveWidth(${effectiveWidth})`, resolve));
@@ -498,7 +498,7 @@ window.UIHelper = class UIHelper {
 
     static setKeyboardInputModeIdentifier(identifier)
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         const escapedIdentifier = identifier.replace(/`/g, "\\`");

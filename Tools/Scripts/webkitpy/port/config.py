@@ -26,7 +26,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-"""Wrapper objects for WebKit-specific utility routines."""
+"""Wrapper objects for CyberKit-specific utility routines."""
 
 # FIXME: This file needs to be unified with common/config/ports.py .
 
@@ -73,7 +73,7 @@ class Config(object):
     def __init__(self, executive, filesystem, port_implementation=None):
         self._executive = executive
         self._filesystem = filesystem
-        self._webkit_finder = webkit_finder.WebKitFinder(self._filesystem)
+        self._webkit_finder = webkit_finder.CyberKitFinder(self._filesystem)
         self._default_configuration = None
         self._build_directories = {}
         self._port_implementation = port_implementation

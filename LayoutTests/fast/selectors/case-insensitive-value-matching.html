@@ -36,29 +36,29 @@
 <body>
 <div style="display:none">
     <!-- No backtracking tree -->
-    <div clear=Yes dir=WebKit disabled=No>
+    <div clear=Yes dir=CyberKit disabled=No>
         <div charset=Latin1 lang=En type=Awesome>
             <div lang=Fr checked=False id=target1>
             </div>
         </div>
     </div>
     <!-- Backtracking tree -->
-    <div clear=No dir=WebKit disabled=Yes>
+    <div clear=No dir=CyberKit disabled=Yes>
         <div charset=Latin1 lang=En type=Awesome>
             <div lang=Fr checked=Maybe scrolling=Fast>
 
                 <!-- First backtracking level, does not match the top level [div=webkit]-->
-                <div clear=No dir=WebKit2 disabled=Yes>
+                <div clear=No dir=CyberKit2 disabled=Yes>
                     <div charset=Latin1 lang=En type=Awesome>
                         <div lang=Fr checked=Maybe scrolling=Fast>
 
                             <!-- Fails on the second level, on the charset-->
-                            <div clear=No dir=WebKit disabled=Yes>
+                            <div clear=No dir=CyberKit disabled=Yes>
                                 <div charset=None lang=En type=Awesome>
                                     <div lang=Fr checked=Maybe scrolling=Fast>
 
                                         <!-- Fails on the third level, on the scrolling attribute. -->
-                                        <div clear=No dir=WebKit disabled=Yes>
+                                        <div clear=No dir=CyberKit disabled=Yes>
                                             <div charset=None lang=En type=Awesome>
                                                 <div lang=Fr checked=Maybe scrolling=Slow>
 

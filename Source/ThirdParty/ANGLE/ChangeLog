@@ -21,7 +21,7 @@
 
         Reviewed by Michael Catanzaro.
 
-        This makes it possible to build WebKitGTK+ after r225340 when the
+        This makes it possible to build CyberKitGTK+ after r225340 when the
         build is configured to support only Wayland, and the X11 headers
         are not present.
 
@@ -78,7 +78,7 @@
 
 2018-07-14  Kocsen Chung  <kocsen_chung@apple.com>
 
-        Ensure WebKit stack is ad-hoc signed
+        Ensure CyberKit stack is ad-hoc signed
         https://bugs.webkit.org/show_bug.cgi?id=187667
 
         Reviewed by Alexey Proskuryakov.
@@ -214,7 +214,7 @@
 
 2017-12-14  David Kilzer  <ddkilzer@apple.com>
 
-        Enable -Wstrict-prototypes for WebKit
+        Enable -Wstrict-prototypes for CyberKit
         <https://webkit.org/b/180757>
         <rdar://problem/36024132>
 
@@ -314,7 +314,7 @@
 
         It seems GCC has started to warn about unrecognized Clang pragmas. Oh well.
 
-        This is not sent upstream, because the Clang pragmas appear to be downstream WebKit
+        This is not sent upstream, because the Clang pragmas appear to be downstream CyberKit
         additions. changes.diff is not updated, because it was not updated in yesterday's ANGLE
         update.
 
@@ -386,7 +386,7 @@
         eglplatform.h does not support Wayland
         https://bugs.webkit.org/show_bug.cgi?id=163482
 
-        This makes it possible to build WebKitGTK+ when the target system has only Wayland support,
+        This makes it possible to build CyberKitGTK+ when the target system has only Wayland support,
         but no X11 (and therefore the X11 headers are not present).
 
         Reviewed by Alex Christensen.
@@ -465,7 +465,7 @@
 
 2017-04-20  Konstantin Tokarev  <annulen@yandex.ru>
 
-        [cmake] Define FORWARDING_HEADERS_DIR in WebKitFS and use it everywhere
+        [cmake] Define FORWARDING_HEADERS_DIR in CyberKitFS and use it everywhere
         https://bugs.webkit.org/show_bug.cgi?id=171071
 
         Reviewed by Michael Catanzaro.
@@ -581,7 +581,7 @@
         * ANGLE.xcodeproj/project.pbxproj:
         Compile more files, and add some more "public" headers.
         ANGLE is not a public framework, so these headers just go in 
-        WebKitBuild/Release/usr/local/include/ANGLE to be included when compiling WebCore.
+        CyberKitBuild/Release/usr/local/include/ANGLE to be included when compiling CyberCore.
         * ANGLE/egl.h: Added.
         * ANGLE/eglext.h: Added.
         * ANGLE/eglplatform.h: Added.
@@ -601,7 +601,7 @@
         * PlatformMac.cmake:
         Make the frameworks linked to by ANGLE be private so frameworks that link with 
         ANGLE don't automatically link with them. This allows me to switch ANGLE from a 
-        static library to a dynamic library to make sure WebCore isn't directly using OpenGL.
+        static library to a dynamic library to make sure CyberCore isn't directly using OpenGL.
         * PlatformWin.cmake:
         Move HLSL-specific files to only be built on Windows.
         * include/EGL/egl.h:
@@ -620,7 +620,7 @@
         * src/libGLESv2/entry_points_gles_3_1.h:
         Include ANGLE headers as #include <ANGLE/*> instead of #include <KHR/*> or #include <GLES/*>
         This is needed to distinguish the ANGLE headers from any system OpenGL/OpenGLES headers.
-        We will eventually only include ANGLE's entry_points_*.h directly from WebCore.
+        We will eventually only include ANGLE's entry_points_*.h directly from CyberCore.
 
 2016-12-07  Alex Christensen  <achristensen@webkit.org>
 
@@ -643,7 +643,7 @@
         * src/libANGLE/renderer/gl/PathGL.cpp:
         * src/libANGLE/renderer/gl/cgl/WindowSurfaceCGL.h:
         * src/libANGLE/renderer/gl/cgl/WindowSurfaceCGL.mm:
-        Rename SwapLayer to WebSwapLayer.  Otherwise, WebCore complains about improperly named ObjC classes.
+        Rename SwapLayer to WebSwapLayer.  Otherwise, CyberCore complains about improperly named ObjC classes.
         Since this is the only one, let's just rename it instead of adding an exception.
         (rx::WindowSurfaceCGL::initialize):
         (-[SwapLayer initWithSharedState:withContext:withFunctions:]): Deleted.
@@ -729,7 +729,7 @@
         Reviewed by Darin Adler.
 
         Updated to f01731530e7f754e5ebaf32d00f3e23b62376424
-        Differences between upstream ANGLE and WebKit's copy of ANGLE are in changes.diff
+        Differences between upstream ANGLE and CyberKit's copy of ANGLE are in changes.diff
 
 2016-10-24  Alex Christensen  <achristensen@webkit.org>
 
@@ -993,7 +993,7 @@
 
 2015-12-19  Dan Bernstein  <mitz@apple.com>
 
-        [Mac] WebKit contains dead source code for OS X Mavericks and earlier
+        [Mac] CyberKit contains dead source code for OS X Mavericks and earlier
         https://bugs.webkit.org/show_bug.cgi?id=152462
 
         Reviewed by Alexey Proskuryakov.
@@ -1231,7 +1231,7 @@
 
         Reviewed by Darin Adler.
 
-        * ANGLE/ShaderLang.h: Added. Includes include/GLSLANG/ShaderLang.h. Used in WebCore
+        * ANGLE/ShaderLang.h: Added. Includes include/GLSLANG/ShaderLang.h. Used in CyberCore
         so we can avoid using ANGLE's EGL headers and use the system-default headers instead.
 
 2015-03-16  Roger Fong  <roger_fong@apple.com>
@@ -1251,7 +1251,7 @@
         [Win] Unreviewed build fix for some DirectX SDK Installs
 
         * ANGLE.vcxproj/libGLESv2Common.props: Correct path for Lib and
-        Include paths based on problems others have had building WebKit
+        Include paths based on problems others have had building CyberKit
         under different Windows and DirectX revisions.
 
 2015-02-20  Alexey Proskuryakov  <ap@apple.com>
@@ -1469,7 +1469,7 @@
 
 2014-12-09  David Kilzer  <ddkilzer@apple.com>
 
-        Switch from using PLATFORM_NAME to SDK selectors in ANGLE, bmalloc, gtest, JavaScriptCore, WTF
+        Switch from using PLATFORM_NAME to SDK selectors in ANGLE, bmalloc, gtest, CyberScriptCore, WTF
         <http://webkit.org/b/139212>
 
         Reviewed by Joseph Pecoraro.
@@ -1599,7 +1599,7 @@
         will therefore build to the proper output location with the proper
         suffix tags.
 
-        Also, we must use the WebKit_Libraries environment variable, not a set
+        Also, we must use the CyberKit_Libraries environment variable, not a set
         of relative paths to the property sheets.
 
         * ANGLE.vcxproj/libEGL.vcxproj: Use 'debugsuffix.props' sheet.
@@ -1694,7 +1694,7 @@
         * ANGLE.xcodeproj/project.pbxproj:
         Removed Uniform.cpp which is no longer in ANGLE.
         * changes.diff:
-        Added more changes from ANGLE which are already included in WebKit.
+        Added more changes from ANGLE which are already included in CyberKit.
 
         Updated ANGLE source files to e7a453a5bd76705ccb151117fa844846d4aa90af.  Long list of changes omitted.
 
@@ -1711,7 +1711,7 @@
         * ANGLE.xcodeproj/project.pbxproj:
         Added needed new source files.
         * changes.diff: 
-        Added to keep track of differences between WebKit's copy of ANGLE and the master repository.
+        Added to keep track of differences between CyberKit's copy of ANGLE and the master repository.
         
         Updated ANGLE source files to e7a453a5bd76705ccb151117fa844846d4aa90af.  Long list of changes omitted.
 
@@ -1735,7 +1735,7 @@
 
 2014-03-13  Tim Horton  <timothy_horton@apple.com>
 
-        Fix relative paths to UseInternalSDK.xcconfig for ANGLE and WebKit/mac
+        Fix relative paths to UseInternalSDK.xcconfig for ANGLE and CyberKit/mac
 
         Rubber-stamped by Mark Rowe.
 
@@ -2546,7 +2546,7 @@
 
 2013-10-10  Mark Rowe  <mrowe@apple.com>
 
-        <rdar://problem/13341666> WebKit should always build against an SDK.
+        <rdar://problem/13341666> CyberKit should always build against an SDK.
 
         Have all projects default to building against the OS X Internal SDK for the Production
         configuration. For the Debug and Release configurations, look for UseInternalSDK.xcconfig
@@ -2600,7 +2600,7 @@
 
 2013-09-24  Mark Rowe  <mrowe@apple.com>
 
-        <rdar://problem/14971518> WebKit should build against the Xcode default toolchain when targeting OS X 10.8
+        <rdar://problem/14971518> CyberKit should build against the Xcode default toolchain when targeting OS X 10.8
 
         Reviewed by Dan Bernstein.
 
@@ -2776,7 +2776,7 @@
 
         Separated translator into preprocessor, translator_common,
         translator_hlsl (for libGLESv2), and translator_glsl
-        (for ANGLEWebKitBridge).
+        (for ANGLECyberKitBridge).
         https://bugs.webkit.org/show_bug.cgi?id=119221
 
         Reviewed by Brent Fulgham.
@@ -5149,7 +5149,7 @@
 2013-07-18  Alex Christensen  <achristensen@apple.com>
 
         Added previously unincluded files from ANGLE r2426 with these exceptions:
-        No gyp files are included.  No WebKit ports use them.
+        No gyp files are included.  No CyberKit ports use them.
         ANGLE.sln is not included.  I will not use that.
         translator_common and translator_hlsl projects and filters are not included.
         I will need to make a customized translator  project that uses the GLSL translator instead of the HLSL.
@@ -6511,7 +6511,7 @@
 
         Qt 5.1 enables C++11 by default when using clang on Mac
         and links against the libc++ standard library. As a result
-        building the QtWebKit shared library fails when linking
+        building the QtCyberKit shared library fails when linking
         agains the ANGLE intermediate static library because libc++
         misses some symbols needed by ANGLE.
         Disable C++11 for the ANGLE intermediate library to fix the build.
@@ -6547,7 +6547,7 @@
 
 2013-03-20  Zan Dobersek  <zdobersek@igalia.com>
 
-        [GTK] Build ANGLE sources into a separate library from libWebCore.la
+        [GTK] Build ANGLE sources into a separate library from libCyberCore.la
         https://bugs.webkit.org/show_bug.cgi?id=112778
 
         Reviewed by Martin Robinson.
@@ -6614,7 +6614,7 @@
         1) r139758 build fix for -Wshorten-64-to-32
         2) r139665 build fix for uninitialized variables
 
-        After this roll, WebKit side ANGLE is the same as upstream ANGLE r1833, except:
+        After this roll, CyberKit side ANGLE is the same as upstream ANGLE r1833, except:
         1) include/GLSLANG/ShaderLang.h, where "KHR" is removed from include path.
 
         With this roll, we have EXT_draw_buffers support.
@@ -6845,7 +6845,7 @@
 
 2013-01-14  Dean Jackson  <dino@apple.com>
 
-        [ANGLE] Update ANGLE in WebKit
+        [ANGLE] Update ANGLE in CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=106274
 
         Unreviewed attempted build fix.
@@ -6857,7 +6857,7 @@
 
 2013-01-14  Max Vujovic  <mvujovic@adobe.com>
 
-        [ANGLE] Update ANGLE in WebKit
+        [ANGLE] Update ANGLE in CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=106274
 
         Reviewed by Dean Jackson.
@@ -6866,8 +6866,8 @@
 
         ANGLE parsers were generated with Bison 2.3.
 
-        Additionally, perform the following changes to WebKit's ANGLE build system. Note that these
-        changes only apply to WebKit's copy of ANGLE, and do not need to be upstreamed to ANGLE.
+        Additionally, perform the following changes to CyberKit's ANGLE build system. Note that these
+        changes only apply to CyberKit's copy of ANGLE, and do not need to be upstreamed to ANGLE.
         (a) Remove all files in the libEGL and libGLESv2 directories because nobody is using them. 
             Add a README in each directory to explain why their contents are not copied over from
             ANGLE. This simplifies updating ANGLE in the future.
@@ -7349,7 +7349,7 @@
 
 2012-10-29  Anders Carlsson  <andersca@apple.com>
 
-        Build WebKit as C++11 on Mac
+        Build CyberKit as C++11 on Mac
         https://bugs.webkit.org/show_bug.cgi?id=100720
 
         Reviewed by Daniel Bates.
@@ -7564,7 +7564,7 @@
 
 2012-07-17  Max Vujovic  <mvujovic@adobe.com>
 
-        Update ANGLE in WebKit
+        Update ANGLE in CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=89039
 
         Reviewed by Dean Jackson and Mark Rowe.
@@ -8498,13 +8498,13 @@
 
 2012-03-26  Dean Jackson  <dino@apple.com>
 
-        Update ANGLE in WebKit
+        Update ANGLE in CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=81717
 
         Reviewed by Kenneth Russell.
 
         Update angleproject to r1009. Synced the source directory
-        between the angle repository and WebKit. Ran the OS X Lion
+        between the angle repository and CyberKit. Ran the OS X Lion
         version of Bison over the glslang.l input which generates
         a slightly different output than angle provided.
 
@@ -8969,7 +8969,7 @@
 
 2012-01-06  Chris Marrin  <cmarrin@apple.com>
 
-        Update ANGLE in WebKit tree
+        Update ANGLE in CyberKit tree
         https://bugs.webkit.org/show_bug.cgi?id=75753
 
         Reviewed by Simon Fraser.
@@ -10253,7 +10253,7 @@
 
         Reviewed by Kenneth Russell.
 
-        Updating ANGLE in WebKit to r533.
+        Updating ANGLE in CyberKit to r533.
         https://bugs.webkit.org/show_bug.cgi?id=47194
 
         * ANGLE.xcodeproj/project.pbxproj:
@@ -11344,10 +11344,10 @@
 
         Unreviewed.
 
-        Got rid of link errors in WebCore.
+        Got rid of link errors in CyberCore.
 
         Changed GCC_INLINES_ARE_PRIVATE_EXTERN to YES and
-        GCC_SYMBOLS_PRIVATE_EXTERN to NO to match WebCore
+        GCC_SYMBOLS_PRIVATE_EXTERN to NO to match CyberCore
         flags.
 
         * ANGLE.xcodeproj/project.pbxproj:
@@ -11359,7 +11359,7 @@
         Update ANGLE to r352
         https://bugs.webkit.org/show_bug.cgi?id=43500
 
-        Updated ANGLE to r352 (July 26, 2010). Built WebKit to test.
+        Updated ANGLE to r352 (July 26, 2010). Built CyberKit to test.
 
         * include/GLSLANG/ShaderLang.h:
         * src/compiler/Initialize.cpp:
@@ -11432,6 +11432,6 @@
 
         Reviewed by Adele Peterson.
 
-        Add ANGLE library to WebKit. From the repository (http://angleproject.googlecode.com) as of July 22.
+        Add ANGLE library to CyberKit. From the repository (http://angleproject.googlecode.com) as of July 22.
         https://bugs.webkit.org/show_bug.cgi?id=42789
 

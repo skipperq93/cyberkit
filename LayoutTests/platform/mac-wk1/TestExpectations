@@ -1,5 +1,5 @@
 # This file should contain entries for expectations that are specific
-# to the Apple Mac port running WebKit1 (DumpRenderTree)
+# to the Apple Mac port running CyberKit1 (DumpRenderTree)
 
 #//////////////////////////////////////////////////////////////////////////////////////////
 # Platform-specific tests. Skipped globally, then re-enabled here.
@@ -41,10 +41,10 @@ http/tests/security/clipboard/drag-drop-html-cross-origin-iframe-in-same-origin.
 ########################################
 ### START OF (1) Failures with bug reports
 
-# Asserts in WebKit1-debug due to a preexisting issue with overflow rect computation
+# Asserts in CyberKit1-debug due to a preexisting issue with overflow rect computation
 webkit.org/b/118269 compositing/geometry/fixed-position-flipped-writing-mode.html
 
-# Before Yosemite, the test did not actually test compositing vs. non-compositing on WebKit1, so it passed accidentally.
+# Before Yosemite, the test did not actually test compositing vs. non-compositing on CyberKit1, so it passed accidentally.
 webkit.org/b/132421 fast/multicol/fixed-stack.html [ ImageOnlyFailure ]
 
 webkit.org/b/104104 fast/overflow/scrollbar-click-retains-focus.html [ Failure ]
@@ -110,10 +110,10 @@ webkit.org/b/187230 editing/mac/pasteboard/can-copy-url-without-title.html [ Ski
 ########################################
 ### START OF (2) Failures without bug reports
 
-# Fails with WebKit1 only.
+# Fails with CyberKit1 only.
 editing/secure-input/reset-state-on-navigation.html [ Failure ]
 
-# Plug-in blocking callback doesn't exist in WebKit1.
+# Plug-in blocking callback doesn't exist in CyberKit1.
 plugins/unavailable-plugin-indicator-obscurity.html
 http/tests/plugins/plugin-allow-then-reload.html [ Skip ]
 
@@ -244,18 +244,18 @@ loader/navigation-policy [ Skip ]
 
 webkit.org/b/152178 fast/replaced/replaced-breaking.html [ Failure ]
 
-# DRT can open way more files than the DatabaseProcess with WebKitTestRunner, and the number is reasonable.
-# So we shouldn't bother with this test in WebKit1.
+# DRT can open way more files than the DatabaseProcess with CyberKitTestRunner, and the number is reasonable.
+# So we shouldn't bother with this test in CyberKit1.
 storage/indexeddb/modern/exceed-open-file-limit.html
 
 ### END OF (2) Failures without bug reports
 ########################################
 
-# These tests are WebKit2-only
+# These tests are CyberKit2-only
 http/tests/contentfiltering/load-substitute-data-from-appcache.html
 fast/dom/Window/child-window-focus.html
 
-# Testing the system language declaratively only makes sense in WK2, because it's implemented in WebKitTestRunner by launching a new WebContent process.
+# Testing the system language declaratively only makes sense in WK2, because it's implemented in CyberKitTestRunner by launching a new WebContent process.
 fast/text/international/system-language [ Pass Failure ImageOnlyFailure ]
 
 # Imported Blink tests which have not been investigated.
@@ -282,7 +282,7 @@ imported/blink/compositing/layer-creation/iframe-clip-removed.html [ Pass Timeou
 # ASAN test only fails on WK1:
 webgl/1.0.3/151055_asan.html [ Failure ]
 
-# Lacking WK1 TestRunner API that evaluates JavaScript through JSC APIs and not WebCore APIs.
+# Lacking WK1 TestRunner API that evaluates JavaScript through JSC APIs and not CyberCore APIs.
 inspector/script-profiler/event-type-API.html [ Skip ]
 
 # WK1 Inspector running in the same VM as the inspected page skews heap snapshot results.
@@ -407,7 +407,7 @@ webkit.org/b/163361 imported/w3c/web-platform-tests/html/webappapis/animation-fr
 webkit.org/b/163361 imported/w3c/web-platform-tests/html/webappapis/animation-frames/callback-invoked.html [ Pass Failure ]
 webkit.org/b/163361 imported/w3c/web-platform-tests/html/webappapis/animation-frames/callback-multicalls.html [ Pass Failure ]
 
-# Resource Metrics data not available in WebKit1.
+# Resource Metrics data not available in CyberKit1.
 http/wpt/resource-timing/rt-nextHopProtocol.html [ Failure ]
 http/wpt/resource-timing/rt-nextHopProtocol.worker.html [ Failure ]
 http/tests/inspector/network/resource-request-headers.html [ Failure ]
@@ -487,7 +487,7 @@ fast/images/low-memory-decode.html [ Skip ]
 http/tests/workers/service [ Skip ]
 http/tests/inspector/network/resource-response-service-worker.html [ Skip ]
 
-# Link preconnect is disabled on WebKit1 because it does not use NETWORK_SESSION.
+# Link preconnect is disabled on CyberKit1 because it does not use NETWORK_SESSION.
 http/tests/preconnect [ Skip ]
 
 webkit.org/b/175345 fast/images/animated-gif-scrolling-crash.html [ Pass Timeout ]

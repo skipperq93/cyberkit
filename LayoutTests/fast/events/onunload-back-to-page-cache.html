@@ -13,7 +13,7 @@ onpageshow = function(event) {
         finishJSTest();
     } else {
         if (window.testRunner)
-            testRunner.overridePreference('WebKitUsesPageCachePreferenceKey', 1);
+            testRunner.overridePreference('CyberKitUsesPageCachePreferenceKey', 1);
         setTimeout(function() {window.history.replaceState('navigated', ''); location.href = 'data:text/html,<script>onunload=function() {},onload=function(){history.back();}<' + '/script>';}, 0);
     }
 }

@@ -31,10 +31,10 @@
     ExtensionManagerWindowController *_extensionManagerWindowController;
 #endif
 
-    IBOutlet NSMenuItem *_newWebKit1WindowItem;
-    IBOutlet NSMenuItem *_newWebKit2WindowItem;
-    IBOutlet NSMenuItem *_newWebKit1EditorItem;
-    IBOutlet NSMenuItem *_newWebKit2EditorItem;
+    IBOutlet NSMenuItem *_newCyberKit1WindowItem;
+    IBOutlet NSMenuItem *_newCyberKit2WindowItem;
+    IBOutlet NSMenuItem *_newCyberKit1EditorItem;
+    IBOutlet NSMenuItem *_newCyberKit2EditorItem;
 }
 
 - (void)browserWindowWillClose:(NSWindow *)window;

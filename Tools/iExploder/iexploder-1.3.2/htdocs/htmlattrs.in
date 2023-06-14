@@ -1,4 +1,4 @@
-# From WebKit svn r66165 (WebCore/html/HTMLAttributeNames.in)
+# From CyberKit svn r66165 (CyberCore/html/HTMLAttributeNames.in)
 abbr
 accept
 accept_charset
@@ -281,10 +281,10 @@ webkitdirectory
 width
 wrap
 
-# Removed from WebKit between r53119 and r56558
+# Removed from CyberKit between r53119 and r56558
 autobuffer
 
-# Removed from WebKit between r14011 and r53119
+# Removed from CyberKit between r14011 and r53119
 left
 pagex
 pagey
@@ -292,7 +292,7 @@ plain
 pluginpage
 pluginspage
 
-# was in khtml in 2004, but is no longer in WebCore
+# was in khtml in 2004, but is no longer in CyberCore
 accept-charset
 html
 http-equiv

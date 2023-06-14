@@ -79,9 +79,9 @@ class ChangeLogAnalyzerTest(CommandsTest):
 
     Reviewed by Sam Weinig.
 
-    * platform/mac/WebCoreNSStringExtras.mm:
+    * platform/mac/CyberCoreNSStringExtras.mm:
     * platform/network/cf/SocketStreamHandleCFNet.cpp:
-    (WebCore::SocketStreamHandle::reportErrorToClient):
+    (CyberCore::SocketStreamHandle::reportErrorToClient):
 
 2011-11-19  Kevin Ollivier  <kevino@theolliviers.com>
 
@@ -107,37 +107,37 @@ class ChangeLogAnalyzerTest(CommandsTest):
         * GNUmakefile.am:
         * GNUmakefile.list.am:
         * platform/audio/gstreamer/AudioDestinationGStreamer.cpp: Added.
-        (WebCore::AudioDestination::create):
-        (WebCore::AudioDestination::hardwareSampleRate):
-        (WebCore::AudioDestinationGStreamer::AudioDestinationGStreamer):
-        (WebCore::AudioDestinationGStreamer::~AudioDestinationGStreamer):
-        (WebCore::AudioDestinationGStreamer::start):
-        (WebCore::AudioDestinationGStreamer::stop):
+        (CyberCore::AudioDestination::create):
+        (CyberCore::AudioDestination::hardwareSampleRate):
+        (CyberCore::AudioDestinationGStreamer::AudioDestinationGStreamer):
+        (CyberCore::AudioDestinationGStreamer::~AudioDestinationGStreamer):
+        (CyberCore::AudioDestinationGStreamer::start):
+        (CyberCore::AudioDestinationGStreamer::stop):
         * platform/audio/gstreamer/AudioDestinationGStreamer.h: Added.
-        (WebCore::AudioDestinationGStreamer::isPlaying):
-        (WebCore::AudioDestinationGStreamer::sampleRate):
-        (WebCore::AudioDestinationGStreamer::sourceProvider):
+        (CyberCore::AudioDestinationGStreamer::isPlaying):
+        (CyberCore::AudioDestinationGStreamer::sampleRate):
+        (CyberCore::AudioDestinationGStreamer::sourceProvider):
         * platform/audio/gstreamer/AudioFileReaderGStreamer.cpp: Added.
-        (WebCore::getGStreamerAudioCaps):
-        (WebCore::getFloatFromByteReader):
-        (WebCore::copyGstreamerBuffersToAudioChannel):
-        (WebCore::onAppsinkNewBufferCallback):
-        (WebCore::messageCallback):
-        (WebCore::onGStreamerDeinterleavePadAddedCallback):
-        (WebCore::onGStreamerDeinterleaveReadyCallback):
-        (WebCore::onGStreamerDecodebinPadAddedCallback):
-        (WebCore::AudioFileReader::AudioFileReader):
-        (WebCore::AudioFileReader::~AudioFileReader):
-        (WebCore::AudioFileReader::handleBuffer):
-        (WebCore::AudioFileReader::handleMessage):
-        (WebCore::AudioFileReader::handleNewDeinterleavePad):
-        (WebCore::AudioFileReader::deinterleavePadsConfigured):
-        (WebCore::AudioFileReader::plugDeinterleave):
-        (WebCore::AudioFileReader::createBus):
-        (WebCore::createBusFromAudioFile):
-        (WebCore::createBusFromInMemoryAudioFile):
+        (CyberCore::getGStreamerAudioCaps):
+        (CyberCore::getFloatFromByteReader):
+        (CyberCore::copyGstreamerBuffersToAudioChannel):
+        (CyberCore::onAppsinkNewBufferCallback):
+        (CyberCore::messageCallback):
+        (CyberCore::onGStreamerDeinterleavePadAddedCallback):
+        (CyberCore::onGStreamerDeinterleaveReadyCallback):
+        (CyberCore::onGStreamerDecodebinPadAddedCallback):
+        (CyberCore::AudioFileReader::AudioFileReader):
+        (CyberCore::AudioFileReader::~AudioFileReader):
+        (CyberCore::AudioFileReader::handleBuffer):
+        (CyberCore::AudioFileReader::handleMessage):
+        (CyberCore::AudioFileReader::handleNewDeinterleavePad):
+        (CyberCore::AudioFileReader::deinterleavePadsConfigured):
+        (CyberCore::AudioFileReader::plugDeinterleave):
+        (CyberCore::AudioFileReader::createBus):
+        (CyberCore::createBusFromAudioFile):
+        (CyberCore::createBusFromInMemoryAudioFile):
         * platform/audio/gtk/AudioBusGtk.cpp: Added.
-        (WebCore::AudioBus::loadPlatformResource):
+        (CyberCore::AudioBus::loadPlatformResource):
 """
 
         capture = OutputCapture()
@@ -155,10 +155,10 @@ class ChangeLogAnalyzerTest(CommandsTest):
             set(['Sam Weinig', u'Mark Rowe', u'Kevin Ollivier', 'Martin Robinson', u'Philippe Normand', u'Zan Dobersek']))
 
         self.assertEqual(analyzer.contributors_statistics()['Sam Weinig'],
-            {'reviews': {'files': {u'foo/platform/mac/WebCoreNSStringExtras.mm': 1, u'foo/platform/network/cf/SocketStreamHandleCFNet.cpp': 1},
+            {'reviews': {'files': {u'foo/platform/mac/CyberCoreNSStringExtras.mm': 1, u'foo/platform/network/cf/SocketStreamHandleCFNet.cpp': 1},
             'total': 1, 'areas': {'Network': 1}}, 'patches': {'files': {}, 'areas': {}, 'unreviewed': 0, 'reviewed': 0}})
         self.assertEqual(analyzer.contributors_statistics()[u'Mark Rowe'],
-            {'reviews': {'files': {}, 'total': 0, 'areas': {}}, 'patches': {'files': {u'foo/platform/mac/WebCoreNSStringExtras.mm': 1,
+            {'reviews': {'files': {}, 'total': 0, 'areas': {}}, 'patches': {'files': {u'foo/platform/mac/CyberCoreNSStringExtras.mm': 1,
             u'foo/platform/network/cf/SocketStreamHandleCFNet.cpp': 1}, 'areas': {'Network': 1}, 'unreviewed': 0, 'reviewed': 1}})
         self.assertEqual(analyzer.contributors_statistics()[u'Kevin Ollivier'],
             {'reviews': {'files': {}, 'total': 0, 'areas': {}}, 'patches': {'files': {u'foo/bindings/scripts/CodeGeneratorCPP.pm': 1},
@@ -168,16 +168,16 @@ class ChangeLogAnalyzerTest(CommandsTest):
             'foo/platform/audio/gstreamer/AudioDestinationGStreamer.h': 1, 'foo/platform/audio/gstreamer/AudioFileReaderGStreamer.cpp': 1,
             'foo/platform/audio/gtk/AudioBusGtk.cpp': 1}
         author_expectation_for_audio_patch = {'reviews': {'files': {}, 'total': 0, 'areas': {}},
-            'patches': {'files': files_for_audio_patch, 'areas': {'The WebKitGTK+ Port': 1}, 'unreviewed': 0, 'reviewed': 1}}
+            'patches': {'files': files_for_audio_patch, 'areas': {'The CyberKitGTK+ Port': 1}, 'unreviewed': 0, 'reviewed': 1}}
         self.assertEqual(analyzer.contributors_statistics()[u'Martin Robinson'],
-            {'reviews': {'files': files_for_audio_patch, 'total': 1, 'areas': {'The WebKitGTK+ Port': 1}},
+            {'reviews': {'files': files_for_audio_patch, 'total': 1, 'areas': {'The CyberKitGTK+ Port': 1}},
                 'patches': {'files': {}, 'areas': {}, 'unreviewed': 0, 'reviewed': 0}})
         self.assertEqual(analyzer.contributors_statistics()[u'Philippe Normand'], author_expectation_for_audio_patch)
         self.assertEqual(analyzer.contributors_statistics()[u'Zan Dobersek'], author_expectation_for_audio_patch)
 
         areas_statistics = analyzer.areas_statistics()
         areas_with_patches = [area for area in areas_statistics if areas_statistics[area]['reviewed'] or areas_statistics[area]['unreviewed']]
-        self.assertEqual(set(areas_with_patches), set(['Bindings', 'Network', 'The WebKitGTK+ Port']))
+        self.assertEqual(set(areas_with_patches), set(['Bindings', 'Network', 'The CyberKitGTK+ Port']))
         self.assertEqual(areas_statistics['Bindings'], {'unreviewed': 1, 'reviewed': 0, 'contributors':
             {u'Kevin Ollivier': {'reviews': 0, 'unreviewed': 1, 'reviewed': 0}}})
         self.assertEqual(areas_statistics['Network'], {'unreviewed': 0, 'reviewed': 1, 'contributors':

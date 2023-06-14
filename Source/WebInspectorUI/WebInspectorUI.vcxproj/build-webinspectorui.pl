@@ -44,16 +44,16 @@ $ARGV[0] =~ s/\"$//;
 my $XDSTROOT = Cwd::realpath($ARGV[0]);
 $ENV{'XDSTROOT'} = $XDSTROOT;
 
-my $TARGET_BUILD_DIR = File::Spec->catdir($XDSTROOT, "bin$ARGV[3]", 'WebKit.resources');
+my $TARGET_BUILD_DIR = File::Spec->catdir($XDSTROOT, "bin$ARGV[3]", 'CyberKit.resources');
 $ENV{'TARGET_BUILD_DIR'} = $TARGET_BUILD_DIR;
 my $JAVASCRIPTCORE_PRIVATE_HEADERS_DIR;
 if ($ARGV[4] eq '1') {
     $ARGV[1] =~ s/^\"//;
     $ARGV[1] =~ s/\"$//;
     my $Internal = Cwd::realpath($ARGV[1]);;
-    $JAVASCRIPTCORE_PRIVATE_HEADERS_DIR = File::Spec->catdir($Internal, 'include', 'private', 'JavaScriptCore');
+    $JAVASCRIPTCORE_PRIVATE_HEADERS_DIR = File::Spec->catdir($Internal, 'include', 'private', 'CyberScriptCore');
 } else {
-    $JAVASCRIPTCORE_PRIVATE_HEADERS_DIR = File::Spec->catdir($XDSTROOT, "obj$ARGV[3]", 'JavaScriptCore', 'DerivedSources');
+    $JAVASCRIPTCORE_PRIVATE_HEADERS_DIR = File::Spec->catdir($XDSTROOT, "obj$ARGV[3]", 'CyberScriptCore', 'DerivedSources');
 }
 
 $ENV{'JAVASCRIPTCORE_PRIVATE_HEADERS_DIR'} = $JAVASCRIPTCORE_PRIVATE_HEADERS_DIR;

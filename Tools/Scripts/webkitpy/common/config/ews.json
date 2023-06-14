@@ -90,7 +90,7 @@
         "name": "wincairo-ews",
         "runTests": false,
         "watchers": [
-            "SIE-WebKit-EWS@am.sony.com"
+            "SIE-CyberKit-EWS@am.sony.com"
         ]
     },
     "WPE EWS": {

@@ -36,25 +36,25 @@
 #import "DumpRenderTreeDraggingInfo.h"
 #import "DumpRenderTreeFileDraggingSource.h"
 #import "DumpRenderTreePasteboard.h"
-#import "WebCoreTestSupport.h"
-#import <WebKit/DOMPrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/WebViewPrivate.h>
+#import "CyberCoreTestSupport.h"
+#import <CyberKit/DOMPrivate.h>
+#import <CyberKit/CyberKit.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <functional>
 #import <wtf/RetainPtr.h>
 
 #if !PLATFORM(IOS_FAMILY)
 #import <Carbon/Carbon.h> // for GetCurrentEventTime()
-#import <WebKit/WebHTMLView.h>
+#import <CyberKit/WebHTMLView.h>
 #import <objc/runtime.h>
 #import <wtf/mac/AppKitCompatibilityDeclarations.h>
 #endif
 
 #if PLATFORM(IOS_FAMILY)
 #import <UIKit/UIKit.h>
-#import <WebKit/KeyEventCodesIOS.h>
-#import <WebKit/WAKWindow.h>
-#import <WebKit/WebEvent.h>
+#import <CyberKit/KeyEventCodesIOS.h>
+#import <CyberKit/WAKWindow.h>
+#import <CyberKit/WebEvent.h>
 #import <pal/spi/ios/GraphicsServicesSPI.h> // for GSCurrentEventTimestamp()
 #endif
 
@@ -136,7 +136,7 @@ BOOL replayingSavedEvents;
 
 #if !PLATFORM(IOS_FAMILY)
 @interface WebView (WebViewInternalForTesting)
-- (WebCore::Frame*)_mainCoreFrame;
+- (CyberCore::Frame*)_mainCoreFrame;
 @end
 #endif
 
@@ -1346,11 +1346,11 @@ static int buildModifierFlags(const WebScriptObject* modifiers)
 - (void)monitorWheelEvents
 {
 #if PLATFORM(MAC)
-    WebCore::Frame* frame = [[mainFrame webView] _mainCoreFrame];
+    CyberCore::Frame* frame = [[mainFrame webView] _mainCoreFrame];
     if (!frame)
         return;
 
-    WebCoreTestSupport::monitorWheelEvents(*frame);
+    CyberCoreTestSupport::monitorWheelEvents(*frame);
 #endif
 }
 
@@ -1361,12 +1361,12 @@ static int buildModifierFlags(const WebScriptObject* modifiers)
     if (!jsCallbackFunction)
         return;
 
-    WebCore::Frame* frame = [[mainFrame webView] _mainCoreFrame];
+    CyberCore::Frame* frame = [[mainFrame webView] _mainCoreFrame];
     if (!frame)
         return;
 
     JSGlobalContextRef globalContext = [mainFrame globalContext];
-    WebCoreTestSupport::setTestCallbackAndStartNotificationTimer(*frame, globalContext, jsCallbackFunction);
+    CyberCoreTestSupport::setTestCallbackAndStartNotificationTimer(*frame, globalContext, jsCallbackFunction);
 #endif
 }
 

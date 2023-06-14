@@ -36,7 +36,7 @@ from webkitpy.common.memoized import memoized
 from webkitpy.common.system.executive import ScriptError
 
 
-# This class represents the WebKit-specific parts of the checkout (like ChangeLogs).
+# This class represents the CyberKit-specific parts of the checkout (like ChangeLogs).
 # FIXME: Move a bunch of ChangeLog-specific processing from SCM to this object.
 # NOTE: All paths returned from this class should be absolute.
 class Checkout(object):
@@ -60,7 +60,7 @@ class Checkout(object):
         # contents_at_revision returns a byte array (str()), but we know
         # that ChangeLog files are utf-8.  parse_latest_entry_from_file
         # expects a file-like object which vends unicode(), so we decode here.
-        # Old revisions of Sources/WebKit/wx/ChangeLog have some invalid utf8 characters.
+        # Old revisions of Sources/CyberKit/wx/ChangeLog have some invalid utf8 characters.
         changelog_file = StringIO.StringIO(changelog_contents.decode("utf-8", "ignore"))
         return ChangeLog.parse_latest_entry_from_file(changelog_file)
 

@@ -95,7 +95,7 @@
 #define GCC_VERSION_AT_LEAST(major, minor, patch) (GCC_VERSION >= (major * 10000 + minor * 100 + patch))
 
 #if !GCC_VERSION_AT_LEAST(5, 0, 0)
-#error "Please use a newer version of GCC. WebKit requires GCC 5.0.0 or newer to compile."
+#error "Please use a newer version of GCC. CyberKit requires GCC 5.0.0 or newer to compile."
 #endif
 
 #if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L
@@ -129,7 +129,7 @@
 #define WTF_COMPILER_SUPPORTS_CXX_REFERENCE_QUALIFIED_FUNCTIONS 1
 
 #if _MSC_VER < 1900
-#error "Please use a newer version of Visual Studio. WebKit requires VS2015 or newer to compile."
+#error "Please use a newer version of Visual Studio. CyberKit requires VS2015 or newer to compile."
 #endif
 
 #endif

@@ -70,13 +70,13 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "Apple Inc."
-            VALUE "FileDescription", "Simple Netscape plug-in that handles test content for WebKit"
+            VALUE "FileDescription", "Simple Netscape plug-in that handles test content for CyberKit"
             VALUE "FileExtents", "testnetscape|png"
             VALUE "FileOpenName", "test netscape content|PNG image"
             VALUE "LegalCopyright", "Copyright Apple Inc. 2007-2009"
             VALUE "MIMEType", "application/x-webkit-test-netscape|image/png"
             VALUE "OriginalFilename", "npTestNetscapePlugin.dll"
-            VALUE "ProductName", "WebKit Test PlugIn"
+            VALUE "ProductName", "CyberKit Test PlugIn"
         END
     END
     BLOCK "VarFileInfo"

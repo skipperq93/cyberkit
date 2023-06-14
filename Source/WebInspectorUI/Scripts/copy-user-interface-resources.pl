@@ -196,7 +196,7 @@ if ($forceToolInstall) {
 
 if (!$shouldCombineMain) {
     # Keep the files separate for engineering builds. Copy these before altering Main.html
-    # in other ways, such as combining for WebKitAdditions or inlining files.
+    # in other ways, such as combining for CyberKitAdditions or inlining files.
     ditto($uiRoot, $targetResourcePath);
 }
 
@@ -208,11 +208,11 @@ copy(File::Spec->catfile($uiRoot, 'Main.html'), File::Spec->catfile($derivedSour
 sub webInspectorUIAdditionsDir() {
     my $webkitAdditionsDir;
     if (defined $ENV{'BUILT_PRODUCTS_DIR'}) {
-        $webkitAdditionsDir = File::Spec->catdir($ENV{'BUILT_PRODUCTS_DIR'}, 'usr', 'local', 'include', 'WebKitAdditions');
+        $webkitAdditionsDir = File::Spec->catdir($ENV{'BUILT_PRODUCTS_DIR'}, 'usr', 'local', 'include', 'CyberKitAdditions');
         undef $webkitAdditionsDir unless -d $webkitAdditionsDir
     }
     if (!$webkitAdditionsDir and defined $ENV{'SDKROOT'}) {
-        $webkitAdditionsDir = File::Spec->catdir($ENV{'SDKROOT'}, 'usr', 'local', 'include', 'WebKitAdditions');
+        $webkitAdditionsDir = File::Spec->catdir($ENV{'SDKROOT'}, 'usr', 'local', 'include', 'CyberKitAdditions');
         undef $webkitAdditionsDir unless -d $webkitAdditionsDir
     }
     return unless $webkitAdditionsDir;
@@ -220,8 +220,8 @@ sub webInspectorUIAdditionsDir() {
     return File::Spec->catdir($webkitAdditionsDir, 'WebInspectorUI');
 }
 
-sub combineOrStripResourcesForWebKitAdditions() {
-    my $combineWebKitAdditions = 0;
+sub combineOrStripResourcesForCyberKitAdditions() {
+    my $combineCyberKitAdditions = 0;
 
     if (!defined $webInspectorUIAdditionsDir) {
         debugLog("Didn't define \$webInspectorUIAdditionsDir");
@@ -232,7 +232,7 @@ sub combineOrStripResourcesForWebKitAdditions() {
         my @files = grep { !/^\.{1,2}$/ } readdir (DIR);
         closedir(DIR);
 
-        # The WebKitAdditions/WebInspectorUI directory may exist without any files in it.
+        # The CyberKitAdditions/WebInspectorUI directory may exist without any files in it.
         # Make sure that there is something to be processed in the directory before proceeding.
         my $foundJSFile = 0;
         my $foundCSSFile = 0;
@@ -247,49 +247,49 @@ sub combineOrStripResourcesForWebKitAdditions() {
                 $foundCSSFile = 1;
             }
         }
-        $combineWebKitAdditions = 1 if $foundCSSFile or $foundJSFile;
+        $combineCyberKitAdditions = 1 if $foundCSSFile or $foundJSFile;
     } else {
         debugLog("Didn't find $webInspectorUIAdditionsDir");
     }
 
-    if ($combineWebKitAdditions) {
-        debugLog("Combining resources provided by WebKitAdditions.");
-        combineResourcesForWebKitAdditions();
+    if ($combineCyberKitAdditions) {
+        debugLog("Combining resources provided by CyberKitAdditions.");
+        combineResourcesForCyberKitAdditions();
     } else {
-        debugLog("Stripping resources provided by WebKitAdditions.");
-        stripResourcesForWebKitAdditions();
+        debugLog("Stripping resources provided by CyberKitAdditions.");
+        stripResourcesForCyberKitAdditions();
     }
 }
 
-sub stripResourcesForWebKitAdditions() {
+sub stripResourcesForCyberKitAdditions() {
     system($perl, $combineResourcesCmd,
-        '--input-dir', 'WebKitAdditions',
+        '--input-dir', 'CyberKitAdditions',
         '--input-html', $derivedSourcesMainHTML,
         '--derived-sources-dir', $derivedSourcesDir,
         '--output-dir', $derivedSourcesDir,
         '--strip');
 }
 
-sub combineResourcesForWebKitAdditions() {
+sub combineResourcesForCyberKitAdditions() {
     $rootPathForRelativeIncludes = dirname(dirname($webInspectorUIAdditionsDir));
     system($perl, $combineResourcesCmd,
-        '--input-dir', 'WebKitAdditions',
+        '--input-dir', 'CyberKitAdditions',
         '--input-html', $derivedSourcesMainHTML,
         '--input-html-dir', $rootPathForRelativeIncludes,
         '--derived-sources-dir', $derivedSourcesDir,
         '--output-dir', $derivedSourcesDir,
-        '--output-script-name', 'WebKitAdditions.js',
-        '--output-style-name', 'WebKitAdditions.css');
+        '--output-script-name', 'CyberKitAdditions.js',
+        '--output-style-name', 'CyberKitAdditions.css');
 
-    # Export the license into WebKitAdditions files.
-    my $targetWebKitAdditionsJS = File::Spec->catfile($targetResourcePath, 'WebKitAdditions.js');
-    seedFile($targetWebKitAdditionsJS, $inspectorLicense);
+    # Export the license into CyberKitAdditions files.
+    my $targetCyberKitAdditionsJS = File::Spec->catfile($targetResourcePath, 'CyberKitAdditions.js');
+    seedFile($targetCyberKitAdditionsJS, $inspectorLicense);
 
-    my $targetWebKitAdditionsCSS = File::Spec->catfile($targetResourcePath, 'WebKitAdditions.css');
-    seedFile($targetWebKitAdditionsCSS, $inspectorLicense);
+    my $targetCyberKitAdditionsCSS = File::Spec->catfile($targetResourcePath, 'CyberKitAdditions.css');
+    seedFile($targetCyberKitAdditionsCSS, $inspectorLicense);
 
-    appendFile($targetWebKitAdditionsJS, File::Spec->catfile($derivedSourcesDir, 'WebKitAdditions.js'));
-    appendFile($targetWebKitAdditionsCSS, File::Spec->catfile($derivedSourcesDir, 'WebKitAdditions.css'));
+    appendFile($targetCyberKitAdditionsJS, File::Spec->catfile($derivedSourcesDir, 'CyberKitAdditions.js'));
+    appendFile($targetCyberKitAdditionsCSS, File::Spec->catfile($derivedSourcesDir, 'CyberKitAdditions.css'));
 }
 
 if ($shouldCombineMain) {
@@ -313,9 +313,9 @@ if ($shouldCombineMain) {
        '--output-script-name', 'Main.js',
        '--output-style-name', 'Main.css');
 
-    # Process WebKitAdditions.{css,js} after Main.{js,css}. Otherwise, the combined WebKitAdditions files
-    # will get slurped into Main.{js,css} because the 'WebKitAdditions' relative URL prefix will be removed.
-    combineOrStripResourcesForWebKitAdditions();
+    # Process CyberKitAdditions.{css,js} after Main.{js,css}. Otherwise, the combined CyberKitAdditions files
+    # will get slurped into Main.{js,css} because the 'CyberKitAdditions' relative URL prefix will be removed.
+    combineOrStripResourcesForCyberKitAdditions();
 
     # Combine the CodeMirror JavaScript and CSS files in Production builds into single files (CodeMirror.js and CodeMirror.css).
     system($perl, $combineResourcesCmd,
@@ -420,13 +420,13 @@ if ($shouldCombineMain) {
     system($perl, File::Spec->catfile($scriptsRoot, 'fix-worker-imports-for-optimized-builds.pl'),
         '--input-directory', $workersDir) and die "Failed to update Worker imports for optimized builds.";
 } else {
-    # Always process WebKitAdditions files because the 'WebKitAdditions' path prefix is not real,
+    # Always process CyberKitAdditions files because the 'CyberKitAdditions' path prefix is not real,
     # so it can't proceed as a normal load from the bundle as written. This function replaces the
-    # dummy prefix with the actual WebKitAdditions path when looking for files to inline and combine.
-    combineOrStripResourcesForWebKitAdditions();
+    # dummy prefix with the actual CyberKitAdditions path when looking for files to inline and combine.
+    combineOrStripResourcesForCyberKitAdditions();
 }
 
-# Always copy over Main.html because we may have combined WebKitAdditions files
+# Always copy over Main.html because we may have combined CyberKitAdditions files
 # without minifying anything else. We always want to combine WKA so the relevant
 # resources are copied out of Derived Sources rather than an arbitrary WKA directory.
 copy($derivedSourcesMainHTML, File::Spec->catfile($targetResourcePath, 'Main.html'));

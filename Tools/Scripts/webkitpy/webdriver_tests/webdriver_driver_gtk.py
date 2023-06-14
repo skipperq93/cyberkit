@@ -29,7 +29,7 @@ class WebDriverGtk(WebDriver):
         super(WebDriverGtk, self).__init__(port)
 
     def binary_path(self):
-        return self._port._build_path('bin', 'WebKitWebDriver')
+        return self._port._build_path('bin', 'CyberKitWebDriver')
 
     def browser_name(self):
         return 'MiniBrowser'
@@ -46,7 +46,7 @@ class WebDriverGtk(WebDriver):
             'args': self.browser_args()}}
 
     def selenium_name(self):
-        return 'WebKitGTK'
+        return 'CyberKitGTK'
 
 
 register_driver('gtk', WebDriverGtk)

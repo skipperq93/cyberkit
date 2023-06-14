@@ -1,6 +1,6 @@
 set(MiniBrowser_INCLUDE_DIRECTORIES
     "${FORWARDING_HEADERS_DIR}"
-    "${FORWARDING_HEADERS_DIR}/WebKitLegacy"
+    "${FORWARDING_HEADERS_DIR}/CyberKitLegacy"
     "${CMAKE_SOURCE_DIR}"
     "${CMAKE_SOURCE_DIR}/Source"
 )
@@ -17,7 +17,7 @@ set(MiniBrowser_SOURCES
     WebDownloadDelegate.cpp
     MiniBrowserLib.rc
     MiniBrowserWebHost.cpp
-    WebKitLegacyBrowserWindow.cpp
+    CyberKitLegacyBrowserWindow.cpp
     WinMain.cpp
     stdafx.cpp
 )
@@ -25,8 +25,8 @@ set(MiniBrowser_SOURCES
 set(MiniBrowser_LIBRARIES
     DbgHelp
     WTF
-    WebKitLegacy
-    WebKitLegacyGUID
+    CyberKitLegacy
+    CyberKitLegacyGUID
     comctl32
     comsupp
     comsuppw
@@ -42,9 +42,9 @@ endif ()
 if (ENABLE_WEBKIT)
     add_definitions(-DENABLE_WEBKIT)
     list(APPEND MiniBrowser_SOURCES
-        WebKitBrowserWindow.cpp
+        CyberKitBrowserWindow.cpp
     )
-    list(APPEND MiniBrowser_LIBRARIES WebKit)
+    list(APPEND MiniBrowser_LIBRARIES CyberKit)
 endif ()
 
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} ${MSVC_RUNTIME_LINKER_FLAGS}")

@@ -30,7 +30,7 @@ window.onpageshow = function (pageTransitionEvent)
     } else {
         // Newly loaded
         if (window.testRunner) {
-            testRunner.overridePreference("WebKitUsesPageCachePreferenceKey", 1);
+            testRunner.overridePreference("CyberKitUsesPageCachePreferenceKey", 1);
             testRunner.dumpAsText();
             testRunner.dumpBackForwardList();
             testRunner.waitUntilDone();

@@ -18,7 +18,7 @@ describe("/api/report-commits/ with insert=true", function () {
         "slavePassword": "somePassword",
         "commits": [
             {
-                "repository": "WebKit",
+                "repository": "CyberKit",
                 "revision": "141977",
                 "time": "2013-02-06T08:55:20.9Z",
                 "author": {"name": "Commit Queue", "account": "commit-queue@webkit.org"},
@@ -31,7 +31,7 @@ describe("/api/report-commits/ with insert=true", function () {
         "slavePassword": "somePassword",
         "commits": [
             {
-                "repository": "WebKit",
+                "repository": "CyberKit",
                 "revision": "_141977",
                 "time": "2013-02-06T08:55:20.9Z",
                 "author": {"name": "Commit Queue", "account": "commit-queue@webkit.org"},
@@ -44,14 +44,14 @@ describe("/api/report-commits/ with insert=true", function () {
         "slavePassword": "somePassword",
         "commits": [
             {
-                "repository": "WebKit",
+                "repository": "CyberKit",
                 "revision": "141977",
                 "time": "2013-02-06T08:55:20.9Z",
                 "author": {"name": "Commit Queue", "account": "commit-queue@webkit.org"},
                 "message": "some message",
             },
             {
-                "repository": "WebKit",
+                "repository": "CyberKit",
                 "previousCommit": "141977",
                 "revision": "141978",
                 "time": "2013-02-06T09:54:56.0Z",
@@ -66,7 +66,7 @@ describe("/api/report-commits/ with insert=true", function () {
         "slavePassword": "somePassword",
         "commits": [
             {
-                "repository": "WebKit",
+                "repository": "CyberKit",
                 "previousCommit": "99999",
                 "revision": "12345",
                 "time": "2013-02-06T08:55:20.9Z",
@@ -194,7 +194,7 @@ describe("/api/report-commits/ with insert=true", function () {
         const reportedData = subversionCommit.commits[0];
         return addSlaveForReport(subversionCommit).then(() => {
             return Promise.all([
-                db.insert('repositories', {'id': 1, 'name': 'WebKit'}),
+                db.insert('repositories', {'id': 1, 'name': 'CyberKit'}),
                 db.insert('commits', {'repository': 1, 'revision': reportedData['revision'], 'time': reportedData['time']})
             ]);
         }).then(() => {
@@ -221,7 +221,7 @@ describe("/api/report-commits/ with insert=true", function () {
         const secondData = subversionTwoCommits.commits[1];
         return addSlaveForReport(subversionCommit).then(() => {
             return Promise.all([
-                db.insert('repositories', {'id': 1, 'name': 'WebKit'}),
+                db.insert('repositories', {'id': 1, 'name': 'CyberKit'}),
                 db.insert('commits', {'id': 2, 'repository': 1, 'revision': firstData['revision'], 'time': firstData['time']}),
                 db.insert('commits', {'id': 3, 'repository': 1, 'revision': secondData['revision'], 'time': secondData['time']})
             ]);
@@ -253,7 +253,7 @@ describe("/api/report-commits/ with insert=true", function () {
         const author = subversionCommit.commits[0]['author'];
         return addSlaveForReport(subversionCommit).then(() => {
             return Promise.all([
-                db.insert('repositories', {'id': 1, 'name': 'WebKit'}),
+                db.insert('repositories', {'id': 1, 'name': 'CyberKit'}),
                 db.insert('committers', {'repository': 1, 'account': author['account']}),
             ]);
         }).then(() => {
@@ -277,23 +277,23 @@ describe("/api/report-commits/ with insert=true", function () {
                 "revision": "Sierra16D32",
                 "order": 1,
                 "ownedCommits": {
-                    "WebKit": {
+                    "CyberKit": {
                         "revision": "141978",
                         "author": {"name": "Commit Queue", "account": "commit-queue@webkit.org"},
-                        "message": "WebKit Commit",
+                        "message": "CyberKit Commit",
                     },
-                    "JavaScriptCore": {
+                    "CyberScriptCore": {
                         "revision": "141978",
                         "author": {"name": "Mikhail Pozdnyakov", "account": "mikhail.pozdnyakov@intel.com"},
-                        "message": "JavaScriptCore commit",
+                        "message": "CyberScriptCore commit",
                     }
                 }
             },
             {
-                "repository": "WebKit",
+                "repository": "CyberKit",
                 "revision": "141978",
                 "author": {"name": "Commit Queue", "account": "commit-queue@webkit.org"},
-                "message": "WebKit Commit",
+                "message": "CyberKit Commit",
             }
         ]
     };
@@ -303,13 +303,13 @@ describe("/api/report-commits/ with insert=true", function () {
             return TestServer.remoteAPI().postJSON('/api/report-commits/', sameRepositoryNameInOwnedCommitAndMajorCommit);
         }).then((response) => {
             assert.equal(response['status'], 'OK');
-            return TestServer.database().selectRows('repositories', {'name': 'WebKit'});
+            return TestServer.database().selectRows('repositories', {'name': 'CyberKit'});
         }).then((result) => {
             assert.equal(result.length, 2);
-            let osWebKit = result[0];
+            let osCyberKit = result[0];
             let webkitRepository = result[1];
-            assert.notEqual(osWebKit.id, webkitRepository.id);
-            assert.equal(osWebKit.name, webkitRepository.name);
+            assert.notEqual(osCyberKit.id, webkitRepository.id);
+            assert.equal(osCyberKit.name, webkitRepository.name);
             assert.equal(webkitRepository.owner, null);
         });
     });
@@ -323,15 +323,15 @@ describe("/api/report-commits/ with insert=true", function () {
                 "revision": "Sierra16D32",
                 "order": 1,
                 "ownedCommits": {
-                    "WebKit": {
+                    "CyberKit": {
                         "revision": "141978",
                         "author": {"name": "Commit Queue", "account": "commit-queue@webkit.org"},
-                        "message": "WebKit Commit",
+                        "message": "CyberKit Commit",
                     },
-                    "JavaScriptCore": {
+                    "CyberScriptCore": {
                         "revision": "141978",
                         "author": {"name": "Mikhail Pozdnyakov", "account": "mikhail.pozdnyakov@intel.com"},
-                        "message": "JavaScriptCore commit",
+                        "message": "CyberScriptCore commit",
                     }
                 }
             }
@@ -345,11 +345,11 @@ describe("/api/report-commits/ with insert=true", function () {
         }).then((response) => {
             assert.equal(response['status'], 'OK');
             return Promise.all([db.selectRows('commits', {'revision': 'Sierra16D32'}),
-                db.selectRows('commits', {'message': 'WebKit Commit'}),
-                db.selectRows('commits', {'message': 'JavaScriptCore commit'}),
+                db.selectRows('commits', {'message': 'CyberKit Commit'}),
+                db.selectRows('commits', {'message': 'CyberScriptCore commit'}),
                 db.selectRows('repositories', {'name': 'OSX'}),
-                db.selectRows('repositories', {'name': "WebKit"}),
-                db.selectRows('repositories', {'name': 'JavaScriptCore'})])
+                db.selectRows('repositories', {'name': "CyberKit"}),
+                db.selectRows('repositories', {'name': 'CyberScriptCore'})])
         }).then((result) => {
             assert.equal(result.length, 6);
 
@@ -391,8 +391,8 @@ describe("/api/report-commits/ with insert=true", function () {
             assert.equal(result.length, 3);
 
             assert.equal(result[0].length, 1);
-            const ownerCommitForWebKitCommit = result[0][0];
-            assert.notEqual(ownerCommitForWebKitCommit, null);
+            const ownerCommitForCyberKitCommit = result[0][0];
+            assert.notEqual(ownerCommitForCyberKitCommit, null);
 
             assert.equal(result[1].length, 1);
             const ownerCommitForJSCCommit =  result[1][0];
@@ -411,15 +411,15 @@ describe("/api/report-commits/ with insert=true", function () {
                 "revision": "Sierra16D32",
                 "order": 2,
                 "ownedCommits": {
-                    "WebKit": {
+                    "CyberKit": {
                         "revision": "141978",
                         "author": {"name": "Commit Queue", "account": "commit-queue@webkit.org"},
-                        "message": "WebKit Commit",
+                        "message": "CyberKit Commit",
                     },
-                    "JavaScriptCore": {
+                    "CyberScriptCore": {
                         "revision": "141978",
                         "author": {"name": "Mikhail Pozdnyakov", "account": "mikhail.pozdnyakov@intel.com"},
-                        "message": "JavaScriptCore commit",
+                        "message": "CyberScriptCore commit",
                     }
                 }
             },
@@ -428,15 +428,15 @@ describe("/api/report-commits/ with insert=true", function () {
                 "revision": "Sierra16C67",
                 "order": 1,
                 "ownedCommits": {
-                    "WebKit": {
+                    "CyberKit": {
                         "revision": "141978",
                         "author": {"name": "Commit Queue", "account": "commit-queue@webkit.org"},
-                        "message": "WebKit Commit",
+                        "message": "CyberKit Commit",
                     },
-                    "JavaScriptCore": {
+                    "CyberScriptCore": {
                         "revision": "141999",
                         "author": {"name": "Mikhail Pozdnyakov", "account": "mikhail.pozdnyakov@intel.com"},
-                        "message": "new JavaScriptCore commit",
+                        "message": "new CyberScriptCore commit",
                     }
                 }
             }
@@ -451,12 +451,12 @@ describe("/api/report-commits/ with insert=true", function () {
             assert.equal(response['status'], 'OK');
             return Promise.all([db.selectRows('commits', {'revision': 'Sierra16D32'}),
                 db.selectRows('commits', {'revision': 'Sierra16C67'}),
-                db.selectRows('commits', {'message': 'WebKit Commit'}),
-                db.selectRows('commits', {'message': 'JavaScriptCore commit'}),
-                db.selectRows('commits', {'message': 'new JavaScriptCore commit'}),
+                db.selectRows('commits', {'message': 'CyberKit Commit'}),
+                db.selectRows('commits', {'message': 'CyberScriptCore commit'}),
+                db.selectRows('commits', {'message': 'new CyberScriptCore commit'}),
                 db.selectRows('repositories', {'name': 'OSX'}),
-                db.selectRows('repositories', {'name': "WebKit"}),
-                db.selectRows('repositories', {'name': 'JavaScriptCore'})])
+                db.selectRows('repositories', {'name': "CyberKit"}),
+                db.selectRows('repositories', {'name': 'CyberScriptCore'})])
         }).then((result) => {
             assert.equal(result.length, 8);
 
@@ -511,12 +511,12 @@ describe("/api/report-commits/ with insert=true", function () {
             assert.equal(result.length, 5);
 
             assert.equal(result[0].length, 1);
-            const ownerCommitForWebKitCommit0 = result[0][0];
-            assert.notEqual(ownerCommitForWebKitCommit0, null);
+            const ownerCommitForCyberKitCommit0 = result[0][0];
+            assert.notEqual(ownerCommitForCyberKitCommit0, null);
 
             assert.equal(result[1].length, 1);
-            const ownerCommitForWebKitCommit1 = result[1][0];
-            assert.notEqual(ownerCommitForWebKitCommit1, null);
+            const ownerCommitForCyberKitCommit1 = result[1][0];
+            assert.notEqual(ownerCommitForCyberKitCommit1, null);
 
             assert.equal(result[2].length, 1);
             const ownerCommitForJSCCommit0 = result[2][0];
@@ -572,11 +572,11 @@ describe("/api/report-commits/ with insert=true", function () {
                 "revision": "Sierra16D32",
                 "order": 1,
                 "ownedCommits": {
-                    "WebKit": {
+                    "CyberKit": {
                         "revision": "141978",
                         "time": "2013-02-06T08:55:20.9Z",
                         "author": {"name": "Commit Queue", "account": "commit-queue@webkit.org"},
-                        "message": "WebKit Commit",
+                        "message": "CyberKit Commit",
                     }
                 }
             }
@@ -600,14 +600,14 @@ describe("/api/report-commits/ with insert=false", function () {
         "slavePassword": "somePassword",
         "commits": [
             {
-                "repository": "WebKit",
+                "repository": "CyberKit",
                 "revision": "210948",
                 "time": "2017-01-20T02:52:34.577Z",
                 "author": {"name": "Zalan Bujtas", "account": "zalan@apple.com"},
                 "message": "a message",
             },
             {
-                "repository": "WebKit",
+                "repository": "CyberKit",
                 "revision": "210949",
                 "time": "2017-01-20T03:23:50.645Z",
                 "author": {"name": "Chris Dumez", "account": "cdumez@apple.com"},
@@ -622,7 +622,7 @@ describe("/api/report-commits/ with insert=false", function () {
         "slavePassword": "somePassword",
         "commits": [
             {
-                "repository": "WebKit",
+                "repository": "CyberKit",
                 "revision": "210948",
                 "testability": "Breaks builds",
                 "message": "another message",
@@ -631,10 +631,10 @@ describe("/api/report-commits/ with insert=false", function () {
                 "author": {"name": "Chris Dumez", "account": "cdumez@apple.com"},
             },
             {
-                "repository": "WebKit",
+                "repository": "CyberKit",
                 "revision": "210949",
                 "previousCommit": "210948",
-                "testability": "Crashes WebKit",
+                "testability": "Crashes CyberKit",
                 "message": "another message",
                 "order": 210949,
                 "time": "2017-01-20T04:23:50.645Z",
@@ -650,7 +650,7 @@ describe("/api/report-commits/ with insert=false", function () {
         "slavePassword": "somePassword",
         "commits": [
             {
-                "repository": "WebKit",
+                "repository": "CyberKit",
                 "testability": "Breaks builds"
             }
         ],
@@ -674,7 +674,7 @@ describe("/api/report-commits/ with insert=false", function () {
         "slavePassword": "somePassword",
         "commits": [
             {
-                "repository": "WebKit",
+                "repository": "CyberKit",
                 "revision": "210948"
             }
         ],
@@ -686,7 +686,7 @@ describe("/api/report-commits/ with insert=false", function () {
         "slavePassword": "somePassword",
         "commits": [
             {
-                "repository": "WebKit",
+                "repository": "CyberKit",
                 "revision": "210948",
                 "ownedCommits": [],
             }
@@ -698,7 +698,7 @@ describe("/api/report-commits/ with insert=false", function () {
     {
         await addSlaveForReport(subversionCommits);
         await TestServer.remoteAPI().postJSON('/api/report-commits/', subversionCommits);
-        const result = await TestServer.remoteAPI().getJSON('/api/commits/WebKit/');
+        const result = await TestServer.remoteAPI().getJSON('/api/commits/CyberKit/');
         assert.equal(result['status'], 'OK');
         const commits = result['commits'];
         assert.equal(commits.length, 2);
@@ -713,7 +713,7 @@ describe("/api/report-commits/ with insert=false", function () {
         await initialReportCommits();
         let result = await TestServer.remoteAPI().postJSON('/api/report-commits/', commitsUpdate);
         assert.equal(result['status'], expectedStatus);
-        result = await TestServer.remoteAPI().getJSON('/api/commits/WebKit/');
+        result = await TestServer.remoteAPI().getJSON('/api/commits/CyberKit/');
         return result['commits'];
     }
 
@@ -763,7 +763,7 @@ describe("/api/report-commits/ with insert=false", function () {
 
         assert.equal(commits.length, 2);
         assert.equal(commits[0].testability, 'Breaks builds');
-        assert.equal(commits[1].testability, 'Crashes WebKit');
+        assert.equal(commits[1].testability, 'Crashes CyberKit');
         assert.equal(commits[0].message, 'another message');
         assert.equal(commits[1].message, 'another message');
         assert.equal(commits[0].authorName, 'Chris Dumez');

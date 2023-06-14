@@ -314,14 +314,14 @@
       "workernames": ["webkit-misc"]
     },
     {
-      "name": "WebKitPy-Tests-EWS",
-      "factory": "WebKitPyFactory",
+      "name": "CyberKitPy-Tests-EWS",
+      "factory": "CyberKitPyFactory",
       "platform": "*",
       "workernames": ["webkit-misc"]
     },
     {
-      "name": "WebKitPerl-Tests-EWS",
-      "factory": "WebKitPerlFactory",
+      "name": "CyberKitPerl-Tests-EWS",
+      "factory": "CyberKitPerlFactory",
       "platform": "*",
       "workernames": ["webkit-misc"]
     },
@@ -345,7 +345,7 @@
       "port": 5555,
       "builderNames": ["Style-EWS", "JSC-Tests-EWS", "macOS-Sierra-Release-Build-EWS", "GTK-Webkit2-EWS",
                        "macOS-High-Sierra-Release-32bit-Build-EWS", "WPE-EWS", "Windows-EWS", "iOS-11-Build-EWS", "WinCairo-EWS", "iOS-11-Simulator-Build-EWS",
-                       "WebKitPy-Tests-EWS", "WebKitPerl-Tests-EWS", "macOS-Sierra-Debug-Build-EWS", "Bindings-Tests-EWS"]
+                       "CyberKitPy-Tests-EWS", "CyberKitPerl-Tests-EWS", "macOS-Sierra-Debug-Build-EWS", "Bindings-Tests-EWS"]
     },
     {
       "type": "Triggerable",

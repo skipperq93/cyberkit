@@ -50,7 +50,7 @@
         $htmlMessage = $htmlMessage . "<p/>Deleted previously existing db file at: '" . $databaseFile . "'";
     }
 
-    // We don't have getid3 in WebKit. If not currently present, we
+    // We don't have getid3 in CyberKit. If not currently present, we
     // will try to download it now before making use of it.
     //
     // getid3 is available at http://getid3.sourceforge.net

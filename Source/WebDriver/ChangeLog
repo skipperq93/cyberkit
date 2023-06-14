@@ -835,7 +835,7 @@
         Reviewed by Carlos Alberto Lopez Perez.
 
         Handle the case of failing to launch the browser. The test is actually failing because it's sending wrong
-        capabilities, the driver tries to fall back to the default driver, but since WebKit is not installed in the
+        capabilities, the driver tries to fall back to the default driver, but since CyberKit is not installed in the
         bots, it fails to find the MiniBrowser. The test needs to be fixed, but we shouldn't crash when the browser
         can't be spawned for whatever reason in any case. This patch handles that case and changes the boolean result of
         connectToBrowser to be an optional error string instead. This way we can provide more detailed error message
@@ -1750,7 +1750,7 @@
 
 2017-09-18  Michael Catanzaro  <mcatanzaro@igalia.com>
 
-        [CMake] Rename WebKit target to WebKitLegacy and rename WebKit2 target to WebKit
+        [CMake] Rename CyberKit target to CyberKitLegacy and rename CyberKit2 target to CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=174558
 
         Reviewed by Alex Christensen.
@@ -2140,7 +2140,7 @@
 
 2017-08-01  Michael Catanzaro  <mcatanzaro@igalia.com>
 
-        [CMake] WebKitFS.cmake depends on options set in Option cmake files that are included later
+        [CMake] CyberKitFS.cmake depends on options set in Option cmake files that are included later
         https://bugs.webkit.org/show_bug.cgi?id=174855
 
         Reviewed by Carlos Garcia Campos.
@@ -2153,7 +2153,7 @@
 
         Unreviewed. Fix GTK distcheck.
 
-        Ensure WebDriver derived sources directory is created, WebKitFS.cmake is useless for this.
+        Ensure WebDriver derived sources directory is created, CyberKitFS.cmake is useless for this.
 
         * PlatformGTK.cmake:
 

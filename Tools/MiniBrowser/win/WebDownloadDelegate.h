@@ -26,14 +26,14 @@
 #ifndef WebDownloadDelegate_h
 #define WebDownloadDelegate_h
 
-#include <WebKitLegacy/WebKit.h>
-#include <WebKitLegacy/WebKitCOMAPI.h>
+#include <CyberKitLegacy/CyberKit.h>
+#include <CyberKitLegacy/CyberKitCOMAPI.h>
 
-class WebKitLegacyBrowserWindow;
+class CyberKitLegacyBrowserWindow;
 
 class WebDownloadDelegate : public IWebDownloadDelegate {
 public:
-    WebDownloadDelegate(WebKitLegacyBrowserWindow& client);
+    WebDownloadDelegate(CyberKitLegacyBrowserWindow& client);
     virtual ~WebDownloadDelegate();
 
     virtual HRESULT STDMETHODCALLTYPE QueryInterface(_In_ REFIID riid, _COM_Outptr_ void** ppvObject);
@@ -54,7 +54,7 @@ public:
     virtual HRESULT STDMETHODCALLTYPE didFinish(_In_opt_ IWebDownload*);
 
 private:
-    WebKitLegacyBrowserWindow& m_client;
+    CyberKitLegacyBrowserWindow& m_client;
 };
 
 #endif

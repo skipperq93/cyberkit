@@ -70,5 +70,5 @@ concurrent systems.
 ## WTF
 
 * Author: Filip Jerzy Pizło
-* benchmark: [WebKit Template Framework lock benchmarks](https://trac.webkit.org/browser/webkit/trunk/Source/WTF/benchmarks)
+* benchmark: [CyberKit Template Framework lock benchmarks](https://trac.webkit.org/browser/webkit/trunk/Source/WTF/benchmarks)
 * Version: `r220151`

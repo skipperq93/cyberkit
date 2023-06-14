@@ -15,7 +15,7 @@ describe("/privileged-api/update-run-status", function () {
         "buildNumber": "124",
         "buildTime": "2013-02-28T15:34:51",
         "revisions": {
-            "WebKit": {
+            "CyberKit": {
                 "revision": "191622",
                 "timestamp": (new Date(1445945816878)).toISOString(),
             },

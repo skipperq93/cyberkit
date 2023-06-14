@@ -2,17 +2,17 @@ from .base import Browser, ExecutorBrowser, require_arg
 from ..executors import executor_kwargs as base_executor_kwargs
 from ..executors.executorselenium import (SeleniumTestharnessExecutor,  # noqa: F401
                                           SeleniumRefTestExecutor)  # noqa: F401
-from ..executors.executorwebkit import WebKitDriverWdspecExecutor  # noqa: F401
-from ..webdriver_server import WebKitDriverServer
+from ..executors.executorwebkit import CyberKitDriverWdspecExecutor  # noqa: F401
+from ..webdriver_server import CyberKitDriverServer
 
 
 __wptrunner__ = {"product": "webkit",
                  "check_args": "check_args",
-                 "browser": "WebKitBrowser",
+                 "browser": "CyberKitBrowser",
                  "browser_kwargs": "browser_kwargs",
                  "executor": {"testharness": "SeleniumTestharnessExecutor",
                               "reftest": "SeleniumRefTestExecutor",
-                              "wdspec": "WebKitDriverWdspecExecutor"},
+                              "wdspec": "CyberKitDriverWdspecExecutor"},
                  "executor_kwargs": "executor_kwargs",
                  "env_extras": "env_extras",
                  "env_options": "env_options"}
@@ -66,16 +66,16 @@ def env_options():
     return {}
 
 
-class WebKitBrowser(Browser):
-    """Generic WebKit browser is backed by WebKit's WebDriver implementation,
-    which is supplied through ``wptrunner.webdriver.WebKitDriverServer``.
+class CyberKitBrowser(Browser):
+    """Generic CyberKit browser is backed by CyberKit's WebDriver implementation,
+    which is supplied through ``wptrunner.webdriver.CyberKitDriverServer``.
     """
 
     def __init__(self, logger, binary, webdriver_binary=None,
                  webdriver_args=None):
         Browser.__init__(self, logger)
         self.binary = binary
-        self.server = WebKitDriverServer(self.logger, binary=webdriver_binary,
+        self.server = CyberKitDriverServer(self.logger, binary=webdriver_binary,
                                          args=webdriver_args)
 
     def start(self, **kwargs):

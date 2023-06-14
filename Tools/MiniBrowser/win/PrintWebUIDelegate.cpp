@@ -29,9 +29,9 @@
 
 #include "Common.h"
 #include "MainWindow.h"
-#include "WebKitLegacyBrowserWindow.h"
-#include <WebCore/COMPtr.h>
-#include <WebKitLegacy/WebKitCOMAPI.h>
+#include "CyberKitLegacyBrowserWindow.h"
+#include <CyberCore/COMPtr.h>
+#include <CyberKitLegacy/CyberKitCOMAPI.h>
 #include <comip.h>
 #include <commctrl.h>
 #include <commdlg.h>
@@ -65,13 +65,13 @@ HRESULT PrintWebUIDelegate::createWebViewWithRequest(_In_opt_ IWebView*, _In_opt
     if (!request)
         return E_POINTER;
 
-    auto& newWindow = MainWindow::create(MainWindow::BrowserWindowType::WebKitLegacy).leakRef();
+    auto& newWindow = MainWindow::create(MainWindow::BrowserWindowType::CyberKitLegacy).leakRef();
     bool ok = newWindow.init(hInst);
     if (!ok)
         return E_FAIL;
     ShowWindow(newWindow.hwnd(), SW_SHOW);
 
-    auto& newBrowserWindow = *static_cast<WebKitLegacyBrowserWindow*>(newWindow.browserWindow());
+    auto& newBrowserWindow = *static_cast<CyberKitLegacyBrowserWindow*>(newWindow.browserWindow());
     *newWebView = newBrowserWindow.webView();
     IWebFramePtr frame;
     HRESULT hr;
@@ -325,7 +325,7 @@ HRESULT PrintWebUIDelegate::createModalDialog(_In_opt_ IWebView* sender, _In_opt
         return E_POINTER;
     
     COMPtr<IWebView> webView;
-    HRESULT hr = WebKitCreateInstance(CLSID_WebView, 0, IID_IWebView, (void**)&webView);
+    HRESULT hr = CyberKitCreateInstance(CLSID_WebView, 0, IID_IWebView, (void**)&webView);
     if (FAILED(hr))
         return hr;
 

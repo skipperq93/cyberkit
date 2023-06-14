@@ -30,10 +30,10 @@
 #import "AccessibilityUIElement.h"
 
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JSStringRefCF.h>
-#import <WebKit/WebFrame.h>
-#import <WebKit/WebHTMLView.h>
-#import <WebKit/WebTypesInternal.h>
+#import <CyberScriptCore/JSStringRefCF.h>
+#import <CyberKit/WebFrame.h>
+#import <CyberKit/WebHTMLView.h>
+#import <CyberKit/WebTypesInternal.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Vector.h>
 
@@ -69,7 +69,7 @@
 
 typedef void (*AXPostedNotificationCallback)(id element, NSString* notification, void* context);
 
-@interface NSObject (WebKitAccessibilityAdditions)
+@interface NSObject (CyberKitAccessibilityAdditions)
 - (NSArray *)accessibilityArrayAttributeValues:(NSString *)attribute index:(NSUInteger)index maxCount:(NSUInteger)maxCount;
 - (NSUInteger)accessibilityIndexOfChild:(id)child;
 - (NSUInteger)accessibilityArrayAttributeCount:(NSString *)attribute;

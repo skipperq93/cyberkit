@@ -16,7 +16,7 @@ function firstFrameLoaded() {
     	testRunner.setPrivateBrowsingEnabled(false);
     }
 
-    // If the username and password were in the WebCore CredentialStorage, WebKit would automatically send them out for this resource.
+    // If the username and password were in the CyberCore CredentialStorage, CyberKit would automatically send them out for this resource.
     // The credentials would be wrong, but it would send them out.
     // Since the credentails that were cached from the first iframe load should have been forgotten after private browsing was disabled,
     // no credentials should be sent out automatically this time.

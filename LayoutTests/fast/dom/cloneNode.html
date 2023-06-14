@@ -25,7 +25,7 @@
         var xmlDoc = document.implementation.createDocument("http://www.example.com", "foo:bar", null);
 
         var xmlNode = xmlDoc.createElement("foo:bar");
-        var clonedXMLNode = xmlNode.cloneNode(false);  // WebKit crashes.
+        var clonedXMLNode = xmlNode.cloneNode(false);  // CyberKit crashes.
         var htmlNode = document.getElementById('log');
         var clonedHTMLNode = htmlNode.cloneNode(false);
 

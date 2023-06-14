@@ -10,7 +10,7 @@ for (var i = 0; i < 200; ++i)
     node = node.appendChild(document.createElement('div'));
 var observing = false;
 
-var observer = new WebKitMutationObserver(listener);
+var observer = new CyberKitMutationObserver(listener);
 var tickledSpan = document.createElement('span');
 observer.observe(tickledSpan, {attributes: true});
 

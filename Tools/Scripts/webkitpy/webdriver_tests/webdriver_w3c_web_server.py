@@ -28,7 +28,7 @@ import socket
 import tempfile
 import time
 
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 
 _log = logging.getLogger(__name__)
 
@@ -48,7 +48,7 @@ class WebDriverW3CWebServer(object):
         tmpdir = tempfile.gettempdir()
         if self._port.host.platform.is_mac():
             tmpdir = '/tmp'
-        self._runtime_path = os.path.join(tmpdir, "WebKitWebDriverTests")
+        self._runtime_path = os.path.join(tmpdir, "CyberKitWebDriverTests")
         self._port.host.filesystem.maybe_make_directory(self._runtime_path)
 
         self._pid_file = os.path.join(self._runtime_path, '%s.pid' % self._name)
@@ -90,7 +90,7 @@ class WebDriverW3CWebServer(object):
                 self._pid = None
 
         _log.debug('Copying WebDriver WPT server config.json')
-        doc_root = os.path.join(WebKitFinder(self._port.host.filesystem).path_from_webkit_base('WebDriverTests'), 'imported', 'w3c')
+        doc_root = os.path.join(CyberKitFinder(self._port.host.filesystem).path_from_webkit_base('WebDriverTests'), 'imported', 'w3c')
         config_filename = os.path.join(doc_root, 'config.json')
         config_json = self._port.host.filesystem.read_text_file(config_filename).replace("%DOC_ROOT%", doc_root)
         self._port.host.filesystem.write_text_file(os.path.join(self._layout_doc_root, 'config.json'), config_json)

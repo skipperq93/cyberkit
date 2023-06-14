@@ -25,7 +25,7 @@
 
 #pragma once
 
-#import <JavaScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 #import <wtf/RetainPtr.h>
 
 #if PLATFORM(MAC)

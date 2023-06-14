@@ -625,8 +625,8 @@ class Sauce(Browser):
         return None
 
 
-class WebKit(Browser):
-    """WebKit-specific interface."""
+class CyberKit(Browser):
+    """CyberKit-specific interface."""
 
     product = "webkit"
     requirements = "requirements_webkit.txt"

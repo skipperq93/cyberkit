@@ -81,7 +81,7 @@ test("broken", function() {
 	broken( "Doesn't exist", ":visble", [] );
 	broken( "Nth-child", ":nth-child", [] );
 	broken( "Nth-child", ":nth-child(-)", [] );
-	// Sigh. WebKit thinks this is a real selector in qSA
+	// Sigh. CyberKit thinks this is a real selector in qSA
 	// They've already fixed this and it'll be coming into
 	// current browsers soon.
 	//broken( "Nth-child", ":nth-child(asdf)", [] );

@@ -164,7 +164,7 @@ BuildbotQueue.prototype = {
                 if (data.errorType !== JSON.LoadError || data.errorHTTPCode !== 401)
                     return;
                 if (this.buildbot.isAuthenticated) {
-                    // FIXME (128006): Safari/WebKit should coalesce authentication requests with the same origin and authentication realm.
+                    // FIXME (128006): Safari/CyberKit should coalesce authentication requests with the same origin and authentication realm.
                     // In absence of the fix, Safari presents additional authentication dialogs regardless of whether an earlier authentication
                     // dialog was dismissed. As a way to ameliorate the user experience where a person authenticated successfully using an
                     // earlier authentication dialog and cancelled the authentication dialog associated with the load for this queue, we call

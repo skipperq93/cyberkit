@@ -8,7 +8,7 @@ ifneq (,$(DISABLE_WEBKIT_TOOLS))
 	TOOLS_MODULE =
 endif
 
-MODULES = WebKitLibraries Source $(TOOLS_MODULE)
+MODULES = CyberKitLibraries Source $(TOOLS_MODULE)
 
 all:
 	@for dir in $(MODULES); do ${MAKE} $@ -C $$dir; exit_status=$$?; \

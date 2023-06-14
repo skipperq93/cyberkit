@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <JavaScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 #import "JSRunLoopThread.h"
 #import "ScriptInputSource.h"
 #import <pthread.h>

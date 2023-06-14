@@ -31,7 +31,7 @@
 #include <wtf/StdLibExtras.h>
 
 #if CPU(ARM64E)
-#include <WebKitAdditions/BlockQualifiers.h>
+#include <CyberKitAdditions/BlockQualifiers.h>
 #else
 #define WTF_COPY_FUNCTION_POINTER_QUALIFIER
 #define WTF_DISPOSE_FUNCTION_POINTER_QUALIFIER

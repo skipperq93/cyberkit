@@ -33,7 +33,7 @@ namespace Unicode {
 // Names here are taken from the Unicode standard.
 
 // Most of these are UChar constants, not UChar32, which makes them
-// more convenient for WebCore code that mostly uses UTF-16.
+// more convenient for CyberCore code that mostly uses UTF-16.
 
 const UChar AppleLogo = 0xF8FF;
 const UChar HiraganaLetterSmallA = 0x3041;

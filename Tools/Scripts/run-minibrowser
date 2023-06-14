@@ -28,7 +28,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Simplified "run" script for launching the WebKit2 MiniBrowser.
+# Simplified "run" script for launching the CyberKit2 MiniBrowser.
 
 use strict;
 use warnings;
@@ -55,8 +55,8 @@ if (isGtk() || isWPE()) {
     @jhbuildWrapper = wrapperPrefixIfNeeded();
     print "Starting MiniBrowser.\n";
     exec @jhbuildWrapper, $launcherPath, @ARGV or die;
-} elsif (isAppleCocoaWebKit()) {
-    printHelpAndExitForRunAndDebugWebKitAppIfNeeded();
+} elsif (isAppleCocoaCyberKit()) {
+    printHelpAndExitForRunAndDebugCyberKitAppIfNeeded();
     exit exitStatus(runMiniBrowser());
 } else {
     die "Unsupported platform."

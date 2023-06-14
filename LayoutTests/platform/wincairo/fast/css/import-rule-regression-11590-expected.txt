@@ -13,5 +13,5 @@ layer at (0,0) size 800x600
           text run at (117,0) width 548: ": REGRESSION (r17726-r17742): Wikipedia page intermittently loads but doesn't render."
       RenderBlock {P} at (0,36) size 784x20
         RenderText {#text} at (0,0) size 775x19
-          text run at (0,0) width 775: "All four sides of the square below should be present for this test to really pass, and WebKit shouldn't crash for it to pass partially."
+          text run at (0,0) width 775: "All four sides of the square below should be present for this test to really pass, and CyberKit shouldn't crash for it to pass partially."
       RenderBlock {DIV} at (0,72) size 106x106 [border: (3px solid #000000)]

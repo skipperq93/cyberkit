@@ -178,7 +178,7 @@ header {
     z-index: 1;
 }
 
-<?php if (WebKit_Nightly_Survey::responded()): ?>#nightly h3 { display: none; }<?php endif; ?>
+<?php if (CyberKit_Nightly_Survey::responded()): ?>#nightly h3 { display: none; }<?php endif; ?>
 
 #icons-sprite {
     display: none;
@@ -290,7 +290,7 @@ hr {
     </defs>
 </svg>
 <?php if ( (int)$build < (int)$latest ):
-    $prompt_text = "Please be sure you are running the latest WebKit Nightly build before continuing to test.";
+    $prompt_text = "Please be sure you are running the latest CyberKit Nightly build before continuing to test.";
     if (!empty($build))
         $prompt_meta = get_post_meta(get_the_ID(), 'prompt', true);
     if (!empty($prompt_meta)) $prompt_text = $prompt_meta;

@@ -28,11 +28,11 @@
 
 #import "DumpRenderTree.h"
 #import "UIScriptContext.h"
-#import <JavaScriptCore/JSContext.h>
-#import <JavaScriptCore/JSStringRefCF.h>
-#import <JavaScriptCore/JSValue.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberScriptCore/JSContext.h>
+#import <CyberScriptCore/JSStringRefCF.h>
+#import <CyberScriptCore/JSValue.h>
+#import <CyberKit/CyberKit.h>
+#import <CyberKit/WebViewPrivate.h>
 
 #if PLATFORM(MAC)
 
@@ -123,7 +123,7 @@ void UIScriptController::overridePreference(JSStringRef preferenceRef, JSStringR
     WebPreferences *preferences = mainFrame.webView.preferences;
 
     RetainPtr<CFStringRef> value = adoptCF(JSStringCopyCFString(kCFAllocatorDefault, valueRef));
-    if (JSStringIsEqualToUTF8CString(preferenceRef, "WebKitMinimumFontSize"))
+    if (JSStringIsEqualToUTF8CString(preferenceRef, "CyberKitMinimumFontSize"))
         preferences.minimumFontSize = [(__bridge NSString *)value.get() doubleValue];
 }
 

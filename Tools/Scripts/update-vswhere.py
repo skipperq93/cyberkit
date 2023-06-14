@@ -32,7 +32,7 @@ download = importlib.import_module('download-github-release')
 
 repo = 'Microsoft/vswhere'
 file = 'vswhere.exe'
-output = 'WebKitLibraries/win/tools'
+output = 'CyberKitLibraries/win/tools'
 
 result = download.main(['-o', output, repo, file])
 

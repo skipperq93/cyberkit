@@ -1,10 +1,10 @@
 This tests inserting an u element with text-decoration property set to none.
-WebKit should not strip just font-size property. Two instances of "hello world" should look identical to each other.
+CyberKit should not strip just font-size property. Two instances of "hello world" should look identical to each other.
 
 Insertion point:
 | <div>
 |   contenteditable=""
-|   " WebKit"
+|   " CyberKit"
 
 Content to insert:
 | <u>
@@ -21,4 +21,4 @@ After insertion:
 |   <span>
 |     style="text-decoration: line-through;"
 |     "world<#selection-caret>"
-|   " WebKit"
+|   " CyberKit"

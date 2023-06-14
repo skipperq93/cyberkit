@@ -35,7 +35,7 @@ use lib File::Spec->catdir($FindBin::Bin, "..");
 use LoadAsModule qw(PrepareChangeLog prepare-ChangeLog);
 
 sub captureOutput($);
-sub convertAbsolutepathToWebKitPath($);
+sub convertAbsolutepathToCyberKitPath($);
 sub readTestFiles($);
 
 use constant EXPECTED_RESULTS_SUFFIX => "-expected.txt";
@@ -73,8 +73,8 @@ foreach my $test (@testSet) {
     my @ranges;
     my ($stdout, $stderr) = captureOutput(sub { @ranges = $parser->(\*FH, $test->{inputFile}); });
     close FH;
-    $stdout = convertAbsolutepathToWebKitPath($stdout);
-    $stderr = convertAbsolutepathToWebKitPath($stderr);
+    $stdout = convertAbsolutepathToCyberKitPath($stdout);
+    $stderr = convertAbsolutepathToCyberKitPath($stderr);
 
     my %actualOutput = (ranges => \@ranges, stdout => $stdout, stderr => $stderr);
     if ($resetResults) {
@@ -130,7 +130,7 @@ sub captureOutput($)
     return ($stdout, $stderr);
 }
 
-sub convertAbsolutepathToWebKitPath($)
+sub convertAbsolutepathToCyberKitPath($)
 {
     my $string = shift;
     my $sourceDir = LoadAsModule::sourceDir();

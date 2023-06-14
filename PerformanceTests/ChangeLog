@@ -20,11 +20,11 @@
         * MotionMark/resources/debug-runner/motionmark.css:
         (#intro .start-benchmark p):
 
-        Source/JavaScriptCore:
+        Source/CyberScriptCore:
 
         * Configurations/FeatureDefines.xcconfig:
 
-        Source/WebCore:
+        Source/CyberCore:
 
         This is an unreviewed partial revert of r243819. Turns out there are some websites
         which use this property to do browser detection. So, we need to continue to parse
@@ -34,36 +34,36 @@
 
         * Configurations/FeatureDefines.xcconfig:
         * css/CSSComputedStyleDeclaration.cpp:
-        (WebCore::ComputedStyleExtractor::valueForPropertyinStyle):
+        (CyberCore::ComputedStyleExtractor::valueForPropertyinStyle):
         * css/CSSPrimitiveValueMappings.h:
-        (WebCore::CSSPrimitiveValue::CSSPrimitiveValue):
-        (WebCore::CSSPrimitiveValue::operator TrailingWord const):
+        (CyberCore::CSSPrimitiveValue::CSSPrimitiveValue):
+        (CyberCore::CSSPrimitiveValue::operator TrailingWord const):
         * css/CSSProperties.json:
         * css/CSSValueKeywords.in:
         * css/parser/CSSParserFastPaths.cpp:
-        (WebCore::CSSParserFastPaths::isValidKeywordPropertyAndValue):
-        (WebCore::CSSParserFastPaths::isKeywordPropertyID):
+        (CyberCore::CSSParserFastPaths::isValidKeywordPropertyAndValue):
+        (CyberCore::CSSParserFastPaths::isKeywordPropertyID):
         * rendering/style/RenderStyle.h:
-        (WebCore::RenderStyle::trailingWord const):
-        (WebCore::RenderStyle::setTrailingWord):
-        (WebCore::RenderStyle::initialTrailingWord):
+        (CyberCore::RenderStyle::trailingWord const):
+        (CyberCore::RenderStyle::setTrailingWord):
+        (CyberCore::RenderStyle::initialTrailingWord):
         * rendering/style/RenderStyleConstants.h:
 
-        Source/WebCore/PAL:
+        Source/CyberCore/PAL:
 
         * Configurations/FeatureDefines.xcconfig:
 
-        Source/WebKit:
+        Source/CyberKit:
 
         * Configurations/FeatureDefines.xcconfig:
 
-        Source/WebKitLegacy/mac:
+        Source/CyberKitLegacy/mac:
 
         * Configurations/FeatureDefines.xcconfig:
 
         Tools:
 
-        * TestWebKitAPI/Configurations/FeatureDefines.xcconfig:
+        * TestCyberKitAPI/Configurations/FeatureDefines.xcconfig:
 
         LayoutTests:
 
@@ -574,7 +574,7 @@
 
 2018-07-19  Ben Richards  <benton_richards@apple.com>
 
-        Add benchmark for WebKit process launch times
+        Add benchmark for CyberKit process launch times
         https://bugs.webkit.org/show_bug.cgi?id=186414
 
         Reviewed by Ryosuke Niwa.
@@ -998,7 +998,7 @@
 
 2018-02-01  Geoffrey Garen  <ggaren@apple.com>
 
-        Make MallocBench easier for non-WebKit engineers to run
+        Make MallocBench easier for non-CyberKit engineers to run
         https://bugs.webkit.org/show_bug.cgi?id=182415
 
         Reviewed by Saam Barati.
@@ -1010,7 +1010,7 @@
 
         * MallocBench/run-malloc-benchmarks: Specify the path to MallocBench
         and libmbmalloc explicitly, rather than computing them implicitly
-        using webkitdirs. Non-WebKit folks don't have the directory structure
+        using webkitdirs. Non-CyberKit folks don't have the directory structure
         required by webkitdirs.
 
         Remove Linux-specific and cmake-specific behaviors because we only

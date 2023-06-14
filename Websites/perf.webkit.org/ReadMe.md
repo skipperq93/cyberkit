@@ -1,6 +1,6 @@
-# WebKit Performance Dashboard
+# CyberKit Performance Dashboard
 
-The WebKit performane dashboard is a website to track various performance metrics of WebKit: https://perf.webkit.org/
+The CyberKit performane dashboard is a website to track various performance metrics of CyberKit: https://perf.webkit.org/
 
 ## 1. Checking Out the Code and Installing Required Applications
 
@@ -168,12 +168,12 @@ Require valid-user
    - *Total* - [The sum](https://en.wikipedia.org/wiki/Summation)
 
  - **Platform** - A platform is an environmental configuration under which performance tests run. This is typically an operating system such as Lion, Mountain Lion, or Windows 7, or a combination of an operating system, a particular device, and a configuration: e.g. macOS Sierra MacBookAir7,1.
- - **Repository** - A repository refers to the name of a collection of software whose verions or revisions need to be associated with a particular data point submitted to the dashboard. For example, WebKit is a repository because each data point submitted to the dashboard has to identify its WebKit revision. Operating systems such as macOS could also be considered as a repository if its version may change over time if an operating system may get updated across data points.
- - **Commit** - A commit is a specific revision or a version of a repository. e.g. r211196 of WebKit.
- - **Committer** - A committer is the author of the change in a given repository for a specific commit. e.g. the author of r211196 in WebKit is Ryosuke Niwa.
+ - **Repository** - A repository refers to the name of a collection of software whose verions or revisions need to be associated with a particular data point submitted to the dashboard. For example, CyberKit is a repository because each data point submitted to the dashboard has to identify its CyberKit revision. Operating systems such as macOS could also be considered as a repository if its version may change over time if an operating system may get updated across data points.
+ - **Commit** - A commit is a specific revision or a version of a repository. e.g. r211196 of CyberKit.
+ - **Committer** - A committer is the author of the change in a given repository for a specific commit. e.g. the author of r211196 in CyberKit is Ryosuke Niwa.
  - **Builder** - Like a builder in buildbot, a builder submits data points to the dashboard in terms of a sequence of builds. For example, a builder named "El Capitan MacBookAir7,1" may submit data points for benchmarks ran on MacBookAir7,1 with El Capitan.
  - (Build) **Slave** - Like a buildlsave in buildbot, a slave is a physical machine that submit data points to the dashboard. e.g. it could be a bot205 which submits data points as either "El Capitan MacBookAir7,1" or "Sierra MacBookAir7,1".
- - **Build** - A build represents a set of data points reported by a specific builder. e.g. "El Capitan MacBookAir7,1" may report Speedometer score along with its subtests' results. All those data points being to a single build. This is a different concept from a build of software. A single build of WebKit, for example, could be ran on multiple builders (e.g. one MacBookAir and another MacBookPro) to generate two builds in the dashboard.
+ - **Build** - A build represents a set of data points reported by a specific builder. e.g. "El Capitan MacBookAir7,1" may report Speedometer score along with its subtests' results. All those data points being to a single build. This is a different concept from a build of software. A single build of CyberKit, for example, could be ran on multiple builders (e.g. one MacBookAir and another MacBookPro) to generate two builds in the dashboard.
  - **Bug Tracker** - A bug or an issue tracking tool such as Bugzilla and Radar.
  - **Bug** - A bug number associated with a particular bug tracker.
  - **Analysis Task** - An analysis task is created to analyze a progression or a regression across a range of data points for a specific test metric on a specific platform. Each analysis task can have multiple test groups.
@@ -195,7 +195,7 @@ In the performance dashboard, each test can have a parent test or arbitrary many
     - *Time* (A metric of "BackboneJS-TodoMVC")
  + ...
 
-Since each test metric can be measured on arbitrarily platforms (e.g. MacBookAir7,1 on macOS Sierra), the dashboard supports showing the *baseline* results (e.g. benchmark scores on Safari 10) in addition to the results from the *current* sofware (the trunk WebKit build), we use a triple (test metric, platform, type) called a *test configuration* to group a collection of data points reported to the dashboard.
+Since each test metric can be measured on arbitrarily platforms (e.g. MacBookAir7,1 on macOS Sierra), the dashboard supports showing the *baseline* results (e.g. benchmark scores on Safari 10) in addition to the results from the *current* sofware (the trunk CyberKit build), we use a triple (test metric, platform, type) called a *test configuration* to group a collection of data points reported to the dashboard.
 
 Then each test configuration has arbitrary *test runs*. A test run represents the score or more broadly the result of a single test metric on a specific platform at a particular time. For example, running Speedometer once and reporting the results to the performance dashboard results in the creation of a test run for each of *Score* and *Time : Total* metrics as well as *Time* metrics of all subtests (e.g. AngularJS-TodoMVC). Each test run can then have arbitrarily many *iteration values* which are indivisual measurement of some test metric within the benchmark. For example, Speedometer runs the same test twenty times and uses the average time and the score of those twenty iterations to compute the final score. Each one of twenty iterations constitutes a single iteration value.
 
@@ -238,7 +238,7 @@ The JSON submitted to `/api/report` should be an array of dictionaries, and each
 - `buildNumber` - The string that uniquely identifies a given build on the builder.
 - `buildTime` - The time at which this build started in **UTC** (Use ISO time format such as `2013-01-31T22:22:12.121051`). This is completely independent of timestamp of repository revisions.
 - `platform` - The human-readable name of a platform such as `Mountain Lion` or `Windows 7`.
-- `revisions` - A dictionary that maps a repository name to a dictionary with "revision" and optionally "timestamp" as keys each of which maps to, respectively, the revision in **string** associated with the build and the times at which the revision was committed to the repository respectively. e.g. `{"WebKit": {"revision": "123", "timestamp": "2001-09-10T17:53:19.000000Z"}}`
+- `revisions` - A dictionary that maps a repository name to a dictionary with "revision" and optionally "timestamp" as keys each of which maps to, respectively, the revision in **string** associated with the build and the times at which the revision was committed to the repository respectively. e.g. `{"CyberKit": {"revision": "123", "timestamp": "2001-09-10T17:53:19.000000Z"}}`
 - `tests` - A dictionary that maps a test name to a dictionary that represents a test. The value of a test
    itself is a dictionary with the following keys:
     - `metrics` - A dictionary that maps a metric name to a dictionary of configuration types to an array of iteration values. e.g. `{"Time": {"current": [629.1, 654.8, 598.9], "target": [544, 585.1, 556]}}`
@@ -263,7 +263,7 @@ The test also reports `FrameRate` but this metric is measured only for the entir
         "OS X": {
             "revision": "10.8.2"
         },
-        "WebKit": {
+        "CyberKit": {
             "revision": "141469",
             "timestamp": "2013-01-31T20:55:15.452267Z"
         }

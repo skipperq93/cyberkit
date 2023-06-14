@@ -7,7 +7,7 @@ PASS window.matchMedia("(any-pointer:)").matches is false
 PASS document.styleSheets[1].cssRules[0].media.length is 1
 PASS window.matchMedia("(any-pointer: )").matches is false
 PASS document.styleSheets[1].cssRules[0].media.length is 1
-PASS window.matchMedia("(any-pointer: WebKit)").matches is false
+PASS window.matchMedia("(any-pointer: CyberKit)").matches is false
 PASS document.styleSheets[1].cssRules[0].media.length is 1
 PASS window.matchMedia("(any-pointer: pointer)").matches is false
 PASS document.styleSheets[1].cssRules[0].media.length is 1

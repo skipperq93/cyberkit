@@ -27,7 +27,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Script to run the WebKit Open Source Project JavaScriptCore tests (adapted from Mozilla),
+# Script to run the CyberKit Open Source Project CyberScriptCore tests (adapted from Mozilla),
 # as well as other tests: testapi on Mac and LayoutTests/js.
 
 use strict;
@@ -208,7 +208,7 @@ Usage: $programName [options] [options to pass to build system]
 
   --[no-]fail-fast              Stop this script when a test family reports an error or failure (default: $failFastDefault)
   --[no-]force-collectContinuously Enable the collectContinuously mode even if it was disabled on this platform.
-  --[no-]copy                   Copy (or don't copy) the JavaScriptCore build product before testing (default: $copyJSCDefault)
+  --[no-]copy                   Copy (or don't copy) the CyberScriptCore build product before testing (default: $copyJSCDefault)
   --json-output=                Create a file at specified path, listing failed stress tests in JSON format.
   --tarball                     Create a tarball of the bundle produced by running the JSC stress tests.
   --remote=                     Run the JSC stress tests on the specified remote host. Implies --tarball.
@@ -325,7 +325,7 @@ if (defined($jsonFileName)) {
 }
 
 if (!defined($root) && $buildJSC) {
-    chdirWebKit();
+    chdirCyberKit();
 
     push(@buildArgs, argumentsForConfiguration());
 
@@ -349,7 +349,7 @@ my $productDir = jscProductDir();
 $ENV{DYLD_FRAMEWORK_PATH} = $productDir;
 $ENV{JSCTEST_timeout} = 120 unless $ENV{JSCTEST_timeout}; # Set a 120 second timeout on all jsc tests (if environment variable not defined already).
 $ENV{TZ}="US/Pacific"; # Some tests fail if the time zone is not set to US/Pacific (<https://webkit.org/b/136363>)
-setPathForRunningWebKitApp(\%ENV) if isCygwin();
+setPathForRunningCyberKitApp(\%ENV) if isCygwin();
 
 sub testPath {
     my ($productDir, $testName) = @_;
@@ -360,7 +360,7 @@ sub testPath {
 sub runTest {
     my ($testName, $jsonTestStatusName) = @_;
 
-    chdirWebKit();
+    chdirCyberKit();
     chdir($productDir) or die "Failed to switch directory to '$productDir'\n";
     my @command = (testPath($productDir, $testName));
     unshift @command, ("xcrun", "-sdk", xcodeSDK(), "sim") if willUseIOSSimulatorSDK();
@@ -397,8 +397,8 @@ if ($runTestB3) { runTest("testb3", "allB3TestsPassed") }
 if ($runTestAPI) { runTest("testapi", "allApiTestsPassed") }
 
 
-# Find JavaScriptCore directory
-chdirWebKit();
+# Find CyberScriptCore directory
+chdirCyberKit();
 
 runJSCStressTests();
 

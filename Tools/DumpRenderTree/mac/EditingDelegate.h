@@ -27,7 +27,7 @@
  */
  
 #import <Foundation/Foundation.h>
-#import <WebKit/WebEditingDelegate.h>
+#import <CyberKit/WebEditingDelegate.h>
 
 @interface EditingDelegate : NSObject <WebEditingDelegate>
 {

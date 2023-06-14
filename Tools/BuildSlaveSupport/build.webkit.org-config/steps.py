@@ -135,9 +135,9 @@ class KillOldProcesses(shell.Compile):
 
 
 class CleanBuildIfScheduled(shell.Compile):
-    name = "delete WebKitBuild directory"
-    description = ["deleting WebKitBuild directory"]
-    descriptionDone = ["deleted WebKitBuild directory"]
+    name = "delete CyberKitBuild directory"
+    description = ["deleting CyberKitBuild directory"]
+    descriptionDone = ["deleted CyberKitBuild directory"]
     command = ["python", "./Tools/BuildSlaveSupport/clean-build", WithProperties("--platform=%(fullPlatform)s"), WithProperties("--%(configuration)s")]
 
     def start(self):
@@ -154,7 +154,7 @@ class DeleteStaleBuildFiles(shell.Compile):
     command = ["python", "./Tools/BuildSlaveSupport/delete-stale-build-files", WithProperties("--platform=%(fullPlatform)s"), WithProperties("--%(configuration)s")]
 
     def start(self):
-        if self.getProperty('is_clean'):  # Nothing to be done if WebKitBuild had been removed.
+        if self.getProperty('is_clean'):  # Nothing to be done if CyberKitBuild had been removed.
             self.hideStepIf = True
             return SKIPPED
         return shell.Compile.start(self)
@@ -194,7 +194,7 @@ def appendCustomBuildFlags(step, platform, fullPlatform):
     step.setCommand(step.command + ['--' + platform])
 
 
-class CompileWebKit(shell.Compile):
+class CompileCyberKit(shell.Compile):
     command = ["perl", "./Tools/Scripts/build-webkit", WithProperties("--%(configuration)s")]
     env = {'MFLAGS': ''}
     name = "compile-webkit"
@@ -242,15 +242,15 @@ class CompileWebKit(shell.Compile):
                 self.addCompleteLog('errors', "".join(errors))
 
 
-class CompileLLINTCLoop(CompileWebKit):
+class CompileLLINTCLoop(CompileCyberKit):
     command = ["perl", "./Tools/Scripts/build-jsc", "--cloop", WithProperties("--%(configuration)s")]
 
 
-class Compile32bitJSC(CompileWebKit):
+class Compile32bitJSC(CompileCyberKit):
     command = ["perl", "./Tools/Scripts/build-jsc", "--32-bit", WithProperties("--%(configuration)s")]
 
 
-class CompileJSCOnly(CompileWebKit):
+class CompileJSCOnly(CompileCyberKit):
     command = ["perl", "./Tools/Scripts/build-jsc", WithProperties("--%(configuration)s")]
 
 
@@ -287,7 +287,7 @@ class ExtractBuiltProduct(shell.ShellCommand):
 
 
 class UploadBuiltProduct(transfer.FileUpload):
-    slavesrc = WithProperties("WebKitBuild/%(configuration)s.zip")
+    slavesrc = WithProperties("CyberKitBuild/%(configuration)s.zip")
     masterdest = WithProperties("archives/%(fullPlatform)s-%(architecture)s-%(configuration)s/%(got_revision)s.zip")
     haltOnFailure = True
 
@@ -300,7 +300,7 @@ class UploadBuiltProduct(transfer.FileUpload):
 
 
 class UploadMinifiedBuiltProduct(UploadBuiltProduct):
-    slavesrc = WithProperties("WebKitBuild/minified-%(configuration)s.zip")
+    slavesrc = WithProperties("CyberKitBuild/minified-%(configuration)s.zip")
     masterdest = WithProperties("archives/%(fullPlatform)s-%(architecture)s-%(configuration)s/minified-%(got_revision)s.zip")
 
 
@@ -320,7 +320,7 @@ class DownloadBuiltProduct(shell.ShellCommand):
         return shell.ShellCommand.start(self)
 
 
-class RunJavaScriptCoreTests(TestWithFailureCount):
+class RunCyberScriptCoreTests(TestWithFailureCount):
     name = "jscore-test"
     description = ["jscore-tests running"]
     descriptionDone = ["jscore-tests"]
@@ -356,10 +356,10 @@ class RunJavaScriptCoreTests(TestWithFailureCount):
         return 0
 
 
-class RunRemoteJavaScriptCoreTests(RunJavaScriptCoreTests):
+class RunRemoteCyberScriptCoreTests(RunCyberScriptCoreTests):
     def start(self):
         self.setCommand(self.command + ["--memory-limited", "--remote-config-file", "../../remote-jsc-tests-config.json"])
-        return RunJavaScriptCoreTests.start(self)
+        return RunCyberScriptCoreTests.start(self)
 
 
 class RunTest262Tests(TestWithFailureCount):
@@ -381,7 +381,7 @@ class RunTest262Tests(TestWithFailureCount):
         return 0
 
 
-class RunWebKitTests(shell.Test):
+class RunCyberKitTests(shell.Test):
     name = "layout-test"
     description = ["layout-tests running"]
     descriptionDone = ["layout-tests"]
@@ -408,7 +408,7 @@ class RunWebKitTests(shell.Test):
         self.setCommand(self.command + ['--debug-rwt-logging'])
 
         if platform == "win":
-            self.setCommand(self.command + ['--batch-size', '100', '--root=' + os.path.join("WebKitBuild", self.getProperty('configuration'), "bin32")])
+            self.setCommand(self.command + ['--batch-size', '100', '--root=' + os.path.join("CyberKitBuild", self.getProperty('configuration'), "bin32")])
 
         if additionalArguments:
             self.setCommand(self.command + additionalArguments)
@@ -423,7 +423,7 @@ class RunWebKitTests(shell.Test):
             return match_object.group('message')
         return line
 
-    def _parseRunWebKitTestsOutput(self, logText):
+    def _parseRunCyberKitTestsOutput(self, logText):
         incorrectLayoutLines = []
         expressions = [
             ('flakes', re.compile(r'Unexpected flakiness.+\((\d+)\)')),
@@ -455,7 +455,7 @@ class RunWebKitTests(shell.Test):
         shell.Test.commandComplete(self, cmd)
 
         logText = cmd.logs['stdio'].getText()
-        self._parseRunWebKitTestsOutput(logText)
+        self._parseRunCyberKitTestsOutput(logText)
 
     def evaluateCommand(self, cmd):
         result = SUCCESS
@@ -492,15 +492,15 @@ class RunWebKitTests(shell.Test):
         return [self.name]
 
 
-class RunDashboardTests(RunWebKitTests):
+class RunDashboardTests(RunCyberKitTests):
     name = "dashboard-tests"
     description = ["dashboard-tests running"]
     descriptionDone = ["dashboard-tests"]
-    resultDirectory = os.path.join(RunWebKitTests.resultDirectory, "dashboard-layout-test-results")
+    resultDirectory = os.path.join(RunCyberKitTests.resultDirectory, "dashboard-layout-test-results")
 
     def start(self):
         self.setCommand(self.command + ["--layout-tests-directory", "./Tools/BuildSlaveSupport/build.webkit.org-config/public_html/dashboard/Scripts/tests"])
-        return RunWebKitTests.start(self)
+        return RunCyberKitTests.start(self)
 
 
 class RunUnitTests(TestWithFailureCount):
@@ -759,21 +759,21 @@ class RunWebDriverTests(shell.Test):
         return [self.name]
 
 
-class RunWebKit1Tests(RunWebKitTests):
+class RunCyberKit1Tests(RunCyberKitTests):
     def start(self):
         self.setCommand(self.command + ["--dump-render-tree"])
 
-        return RunWebKitTests.start(self)
+        return RunCyberKitTests.start(self)
 
 
-class RunWebKit1LeakTests(RunWebKit1Tests):
+class RunCyberKit1LeakTests(RunCyberKit1Tests):
     want_stdout = False
     want_stderr = False
     warnOnWarnings = True
 
     def start(self):
         self.setCommand(self.command + ["--leaks"])
-        return RunWebKit1Tests.start(self)
+        return RunCyberKit1Tests.start(self)
 
 
 class RunAndUploadPerfTests(shell.Test):

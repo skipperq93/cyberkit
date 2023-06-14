@@ -44,7 +44,7 @@ from webkitpy.tool import commands
 
 _log = logging.getLogger(__name__)
 
-class WebKitPatch(MultiCommandTool, Host):
+class CyberKitPatch(MultiCommandTool, Host):
     global_options = [
         make_option("-v", "--verbose", action="store_true", dest="verbose", default=False, help="enable all logging"),
         make_option("-d", "--directory", action="append", dest="patch_directories", default=[], help="Directory to look at for changed files"),
@@ -110,7 +110,7 @@ class WebKitPatch(MultiCommandTool, Host):
     def _status_server_api_key():
         api_key = os.environ.get('WEBKIT_STATUS_API_KEY')
         if not api_key:
-            api_key = WebKitPatch._status_server_api_key_from_git()
+            api_key = CyberKitPatch._status_server_api_key_from_git()
         try:
             api_key = str(api_key)
         except UnicodeEncodeError:

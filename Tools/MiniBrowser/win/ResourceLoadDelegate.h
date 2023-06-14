@@ -26,13 +26,13 @@
 #ifndef ResourceLoadDelegate_h
 #define ResourceLoadDelegate_h
 
-#include <WebKitLegacy/WebKit.h>
+#include <CyberKitLegacy/CyberKit.h>
 
-class WebKitLegacyBrowserWindow;
+class CyberKitLegacyBrowserWindow;
 
 class ResourceLoadDelegate : public IWebResourceLoadDelegate {
 public:
-    ResourceLoadDelegate(WebKitLegacyBrowserWindow* client)
+    ResourceLoadDelegate(CyberKitLegacyBrowserWindow* client)
         : m_client(client) { }
 
     // IUnknown
@@ -52,7 +52,7 @@ public:
     virtual HRESULT STDMETHODCALLTYPE plugInFailedWithError(_In_opt_ IWebView*, _In_opt_ IWebError*, _In_opt_ IWebDataSource*);
 
 private:
-    WebKitLegacyBrowserWindow* m_client;
+    CyberKitLegacyBrowserWindow* m_client;
 };
 
 #endif // ResourceLoadDelegate

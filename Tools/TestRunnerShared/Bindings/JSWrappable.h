@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <JavaScriptCore/JavaScript.h>
+#include <CyberScriptCore/JavaScript.h>
 #include <wtf/Optional.h>
 #include <wtf/RefCounted.h>
 

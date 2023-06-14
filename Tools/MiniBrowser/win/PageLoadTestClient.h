@@ -27,7 +27,7 @@
 #define PageLoadTestClient_h
 
 #include <CoreFoundation/CFDate.h>
-#include <WebKitLegacy/WebKit.h>
+#include <CyberKitLegacy/CyberKit.h>
 #include <wtf/Assertions.h>
 #include <wtf/HashSet.h>
 #include <wtf/Noncopyable.h>
@@ -101,12 +101,12 @@ private:
     RetainPtr<CFRunLoopTimerRef> m_timer;
 };
 
-class WebKitLegacyBrowserWindow;
+class CyberKitLegacyBrowserWindow;
 
 class PageLoadTestClient {
     WTF_MAKE_NONCOPYABLE(PageLoadTestClient);
 public:
-    PageLoadTestClient(WebKitLegacyBrowserWindow* host, bool pageLoadTesting = false);
+    PageLoadTestClient(CyberKitLegacyBrowserWindow* host, bool pageLoadTesting = false);
 
 #if OS(WINDOWS)
     void setPageURL(const _bstr_t&);
@@ -131,7 +131,7 @@ private:
     void pageLoadEndedAtTime(CFAbsoluteTime);
     void dumpRunStatistics();
 
-    WebKitLegacyBrowserWindow* m_host;
+    CyberKitLegacyBrowserWindow* m_host;
     CFAbsoluteTime m_pageLoadEndTime { 0 };
     CFTimeInterval m_totalTime { 0 };
     CFTimeInterval m_totalSquareRootsOfTime { 0 };

@@ -169,7 +169,7 @@ WI.ColorWheel = class ColorWheel extends WI.Object
 
     _updateColorForMouseEvent(event)
     {
-        var point = window.webkitConvertPointFromPageToNode(this._canvasElement, new WebKitPoint(event.pageX, event.pageY));
+        var point = window.webkitConvertPointFromPageToNode(this._canvasElement, new CyberKitPoint(event.pageX, event.pageY));
 
         this._setCrosshairPosition(point);
 

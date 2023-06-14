@@ -35,15 +35,15 @@
 #import "MockWebNotificationProvider.h"
 #import "TestRunner.h"
 
-#import <WebKit/WebApplicationCache.h>
-#import <WebKit/WebFramePrivate.h>
-#import <WebKit/WebHTMLViewPrivate.h>
-#import <WebKit/WebDatabaseManagerPrivate.h>
-#import <WebKit/WebQuotaManager.h>
-#import <WebKit/WebSecurityOriginPrivate.h>
-#import <WebKit/WebUIDelegatePrivate.h>
-#import <WebKit/WebView.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebApplicationCache.h>
+#import <CyberKit/WebFramePrivate.h>
+#import <CyberKit/WebHTMLViewPrivate.h>
+#import <CyberKit/WebDatabaseManagerPrivate.h>
+#import <CyberKit/WebQuotaManager.h>
+#import <CyberKit/WebSecurityOriginPrivate.h>
+#import <CyberKit/WebUIDelegatePrivate.h>
+#import <CyberKit/WebView.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/Assertions.h>
 
 #if !PLATFORM(IOS_FAMILY)
@@ -301,31 +301,31 @@ DumpRenderTreeDraggingInfo *draggingInfo = nil;
 }
 
 #if ENABLE(FULLSCREEN_API)
-- (void)enterFullScreenWithListener:(NSObject<WebKitFullScreenListener>*)listener
+- (void)enterFullScreenWithListener:(NSObject<CyberKitFullScreenListener>*)listener
 {
     [listener webkitWillEnterFullScreen];
     [listener webkitDidEnterFullScreen];
 }
 
-- (void)webView:(WebView *)webView enterFullScreenForElement:(DOMElement*)element listener:(NSObject<WebKitFullScreenListener>*)listener
+- (void)webView:(WebView *)webView enterFullScreenForElement:(DOMElement*)element listener:(NSObject<CyberKitFullScreenListener>*)listener
 {
     if (!gTestRunner->hasCustomFullScreenBehavior())
         [self performSelector:@selector(enterFullScreenWithListener:) withObject:listener afterDelay:0];
 }
 
-- (void)exitFullScreenWithListener:(NSObject<WebKitFullScreenListener>*)listener
+- (void)exitFullScreenWithListener:(NSObject<CyberKitFullScreenListener>*)listener
 {
     [listener webkitWillExitFullScreen];
     [listener webkitDidExitFullScreen];
 }
 
-- (void)webView:(WebView *)webView exitFullScreenForElement:(DOMElement*)element listener:(NSObject<WebKitFullScreenListener>*)listener
+- (void)webView:(WebView *)webView exitFullScreenForElement:(DOMElement*)element listener:(NSObject<CyberKitFullScreenListener>*)listener
 {
     if (!gTestRunner->hasCustomFullScreenBehavior())
         [self performSelector:@selector(exitFullScreenWithListener:) withObject:listener afterDelay:0];
 }
 
-- (void)webView:(WebView *)sender closeFullScreenWithListener:(NSObject<WebKitFullScreenListener>*)listener
+- (void)webView:(WebView *)sender closeFullScreenWithListener:(NSObject<CyberKitFullScreenListener>*)listener
 {
     [listener webkitWillExitFullScreen];
     [listener webkitDidExitFullScreen];

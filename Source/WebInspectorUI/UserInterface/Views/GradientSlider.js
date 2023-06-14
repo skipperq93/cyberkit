@@ -195,7 +195,7 @@ WI.GradientSlider = class GradientSlider extends WI.Object
             this.element.appendChild(this._shadowKnob.element);
         }
 
-        this._shadowKnob.x = window.webkitConvertPointFromPageToNode(this.element, new WebKitPoint(event.pageX, event.pageY)).x;
+        this._shadowKnob.x = window.webkitConvertPointFromPageToNode(this.element, new CyberKitPoint(event.pageX, event.pageY)).x;
 
         var colorData = this._canvas.getContext("2d").getImageData(this._shadowKnob.x - 1, 0, 1, 1).data;
         this._shadowKnob.wellColor = new WI.Color(WI.Color.Format.RGB, [colorData[0], colorData[1], colorData[2], colorData[3] / 255]);
@@ -401,7 +401,7 @@ WI.GradientSliderKnob = class GradientSliderKnob extends WI.Object
         if (!this._detaching && Math.abs(event.pageY - this._startMouseY) > 50) {
             this._detaching = this.delegate && typeof this.delegate.knobCanDetach === "function" && this.delegate.knobCanDetach(this);
             if (this._detaching && this.delegate && typeof this.delegate.knobWillDetach === "function") {
-                var translationFromParentToBody = window.webkitConvertPointFromNodeToPage(this.element.parentNode, new WebKitPoint(0, 0));
+                var translationFromParentToBody = window.webkitConvertPointFromNodeToPage(this.element.parentNode, new CyberKitPoint(0, 0));
                 this._startMouseX -= translationFromParentToBody.x;
                 this._startMouseY -= translationFromParentToBody.y;
                 document.body.appendChild(this.element);

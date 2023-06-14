@@ -54,7 +54,7 @@ layer at (0,0) size 785x1029
           text run at (0,18) width 50: "clipped;"
       RenderBlock {P} at (0,670) size 769x37
         RenderText {#text} at (0,0) size 723x35
-          text run at (0,0) width 723: "Nice effect, but not what we want. Tested in Safari Version 2.0.4 (419.3), and WebKit Nightly Build Mon Nov 20"
+          text run at (0,0) width 723: "Nice effect, but not what we want. Tested in Safari Version 2.0.4 (419.3), and CyberKit Nightly Build Mon Nov 20"
           text run at (0,18) width 128: "5:18:23 GMT 2006."
 layer at (305,149) size 162x330
   RenderBlock (positioned) {DIV} at (305,85) size 162x330 [border: (1px solid #999999)]

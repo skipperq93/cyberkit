@@ -43,9 +43,9 @@
  
  */
 
-#import <WebKit/npapi.h>
-#import <WebKit/npfunctions.h>
-#import <WebKit/npruntime.h>
+#import <CyberKit/npapi.h>
+#import <CyberKit/npfunctions.h>
+#import <CyberKit/npruntime.h>
 
 #import <QuartzCore/QuartzCore.h>
 #import <QTKit/QTKit.h>

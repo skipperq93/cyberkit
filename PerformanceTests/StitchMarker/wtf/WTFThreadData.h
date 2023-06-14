@@ -115,10 +115,10 @@ private:
 
 inline WTFThreadData& wtfThreadData()
 {
-    // WRT WebCore:
+    // WRT CyberCore:
     //    WTFThreadData is used on main thread before it could possibly be used
     //    on secondary ones, so there is no need for synchronization here.
-    // WRT JavaScriptCore:
+    // WRT CyberScriptCore:
     //    wtfThreadData() is initially called from initializeThreading(), ensuring
     //    this is initially called in a pthread_once locked context.
 #if !HAVE(FAST_TLS)

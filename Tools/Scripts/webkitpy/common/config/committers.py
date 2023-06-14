@@ -27,7 +27,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-# WebKit's Python module for committer and reviewer validation.
+# CyberKit's Python module for committer and reviewer validation.
 
 import fnmatch
 import json

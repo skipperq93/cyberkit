@@ -5,7 +5,7 @@
     IndexedDB: crash when triggering IDBOpenRequest completion back on a worker thread
     https://bugs.webkit.org/show_bug.cgi?id=229375
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Reviewed by Brady Eidson.
     
@@ -13,7 +13,7 @@
     created internally.
     
     * Modules/indexeddb/IDBRequest.cpp:
-    (WebCore::IDBRequest::dispatchEvent):
+    (CyberCore::IDBRequest::dispatchEvent):
     
     Source/WTF:
     
@@ -41,7 +41,7 @@
 
         Cherry-pick r242732. rdar://problem/82218742
 
-    Crash under WebCore::IDBDatabase::connectionToServerLost
+    Crash under CyberCore::IDBDatabase::connectionToServerLost
     https://bugs.webkit.org/show_bug.cgi?id=195563
     <rdar://problem/37193655>
     
@@ -57,7 +57,7 @@
 
     2019-03-11  Sihui Liu  <sihui_liu@apple.com>
 
-            Crash under WebCore::IDBDatabase::connectionToServerLost
+            Crash under CyberCore::IDBDatabase::connectionToServerLost
             https://bugs.webkit.org/show_bug.cgi?id=195563
             <rdar://problem/37193655>
 
@@ -105,7 +105,7 @@
     
     * stress/map-b3-licm-infinite-loop.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     * b3/testb3.cpp:
     (JSC::B3::testInfiniteLoopDoesntCauseBadHoisting):
@@ -237,9 +237,9 @@
     
     Reviewed by Brent Fulgham.
     
-    Source/WebCore:
+    Source/CyberCore:
     
-    WebKit API allows setting the generic font families for the USCRIPT_COMMON script.
+    CyberKit API allows setting the generic font families for the USCRIPT_COMMON script.
     When trying to style a character with a generic font family, we first look to see if
     we have a mapping for the particular script the character is rendered with, and if we
     don't find a match, we then check USCRIPT_COMMON.
@@ -251,7 +251,7 @@
     
     The mappings inside SettingsBase are incorrect and conflict with our policy regarding
     user-installed fonts. Instead, we should be consulting with the platform for some of
-    these mappings, by calling CTFontDescriptorCreateForCSSFamily(). However, the WebKit
+    these mappings, by calling CTFontDescriptorCreateForCSSFamily(). However, the CyberKit
     API still has to work to set the mappings for untagged content. Therefore, we use the
     system mappings for language-tagged content, and the API mappings for non-language-tagged
     content. This is a good balance that makes sure we always have a good mapping for every
@@ -261,31 +261,31 @@
     
     * css/CSSComputedStyleDeclaration.cpp:
     * css/CSSFontSelector.cpp:
-    (WebCore::resolveGenericFamily):
+    (CyberCore::resolveGenericFamily):
     * css/parser/CSSPropertyParser.cpp:
-    (WebCore::consumeFontFamily):
+    (CyberCore::consumeFontFamily):
     * page/cocoa/SettingsBaseCocoa.mm:
-    (WebCore::SettingsBase::initializeDefaultFontFamilies):
-    (WebCore::osakaMonoIsInstalled): Deleted.
+    (CyberCore::SettingsBase::initializeDefaultFontFamilies):
+    (CyberCore::osakaMonoIsInstalled): Deleted.
     * platform/graphics/FontDescription.cpp:
-    (WebCore::FontDescription::platformResolveGenericFamily):
+    (CyberCore::FontDescription::platformResolveGenericFamily):
     * platform/graphics/FontDescription.h:
     * platform/graphics/cocoa/FontDescriptionCocoa.cpp:
-    (WebCore::computeSpecializedChineseLocale):
-    (WebCore::cachedSpecializedChineseLocale):
-    (WebCore::languageChanged):
-    (WebCore::FontDescription::platformResolveGenericFamily):
+    (CyberCore::computeSpecializedChineseLocale):
+    (CyberCore::cachedSpecializedChineseLocale):
+    (CyberCore::languageChanged):
+    (CyberCore::FontDescription::platformResolveGenericFamily):
     * platform/graphics/cocoa/SystemFontDatabaseCoreText.cpp:
-    (WebCore::SystemFontDatabaseCoreText::clear):
-    (WebCore::genericFamily):
-    (WebCore::SystemFontDatabaseCoreText::serifFamily):
-    (WebCore::SystemFontDatabaseCoreText::sansSerifFamily):
-    (WebCore::SystemFontDatabaseCoreText::cursiveFamily):
-    (WebCore::SystemFontDatabaseCoreText::fantasyFamily):
-    (WebCore::SystemFontDatabaseCoreText::monospaceFamily):
+    (CyberCore::SystemFontDatabaseCoreText::clear):
+    (CyberCore::genericFamily):
+    (CyberCore::SystemFontDatabaseCoreText::serifFamily):
+    (CyberCore::SystemFontDatabaseCoreText::sansSerifFamily):
+    (CyberCore::SystemFontDatabaseCoreText::cursiveFamily):
+    (CyberCore::SystemFontDatabaseCoreText::fantasyFamily):
+    (CyberCore::SystemFontDatabaseCoreText::monospaceFamily):
     * platform/graphics/cocoa/SystemFontDatabaseCoreText.h:
     
-    Source/WebCore/PAL:
+    Source/CyberCore/PAL:
     
     * pal/spi/cocoa/CoreTextSPI.h:
     
@@ -301,7 +301,7 @@
     
     * DumpRenderTree/mac/DumpRenderTree.mm:
     (allowedFontFamilySet):
-    * WebKitTestRunner/mac/TestControllerMac.mm:
+    * CyberKitTestRunner/mac/TestControllerMac.mm:
     (WTR::allowedFontFamilySet):
     
     LayoutTests:
@@ -379,23 +379,23 @@
     
     Reviewed by Ryosuke Niwa.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     * Configurations/FeatureDefines.xcconfig:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     * Configurations/FeatureDefines.xcconfig:
     
-    Source/WebCore/PAL:
+    Source/CyberCore/PAL:
     
     * Configurations/FeatureDefines.xcconfig:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * Configurations/FeatureDefines.xcconfig:
     
-    Source/WebKitLegacy/mac:
+    Source/CyberKitLegacy/mac:
     
     * Configurations/FeatureDefines.xcconfig:
     
@@ -405,7 +405,7 @@
     
     Tools:
     
-    * TestWebKitAPI/Configurations/FeatureDefines.xcconfig:
+    * TestCyberKitAPI/Configurations/FeatureDefines.xcconfig:
     
     
     git-svn-id: https://svn.webkit.org/repository/webkit/trunk@240633 268f45cc-cd09-0410-ab3c-d52691b4dbfc
@@ -472,7 +472,7 @@
     (bmalloc::Sizes::objectSize):
     (bmalloc::Sizes::pageSize):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     This patch changes some macros into constants since macros are the
     devil.
@@ -535,7 +535,7 @@
     Fix iOS build after r239993
     https://bugs.webkit.org/show_bug.cgi?id=193361
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * UIProcess/ProvisionalPageProxy.h:
     * UIProcess/SuspendedPageProxy.h:
@@ -565,11 +565,11 @@
     
     Reviewed by Megan Gardner.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     * Configurations/FeatureDefines.xcconfig: ENABLE_DARK_MODE_CSS_macosx for all OS versions.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Tests: css-dark-mode/older-systems/prefers-color-scheme.html
            css-dark-mode/older-systems/supported-color-schemes-css.html
@@ -580,41 +580,41 @@
     
     * Configurations/FeatureDefines.xcconfig:
     * dom/Document.cpp:
-    (WebCore::Document::useDarkAppearance const):
+    (CyberCore::Document::useDarkAppearance const):
     * inspector/agents/InspectorPageAgent.cpp:
-    (WebCore::InspectorPageAgent::enable):
+    (CyberCore::InspectorPageAgent::enable):
     * page/Page.cpp:
-    (WebCore::Page::setUseDarkAppearance):
-    (WebCore::Page::useDarkAppearance const):
-    (WebCore::Page::setUseDarkAppearanceOverride):
+    (CyberCore::Page::setUseDarkAppearance):
+    (CyberCore::Page::useDarkAppearance const):
+    (CyberCore::Page::setUseDarkAppearanceOverride):
     * platform/mac/LocalDefaultSystemAppearance.h:
-    (WebCore::LocalDefaultSystemAppearance::usingDarkAppearance const):
+    (CyberCore::LocalDefaultSystemAppearance::usingDarkAppearance const):
     * platform/mac/LocalDefaultSystemAppearance.mm:
-    (WebCore::LocalDefaultSystemAppearance::LocalDefaultSystemAppearance):
-    (WebCore::LocalDefaultSystemAppearance::~LocalDefaultSystemAppearance):
+    (CyberCore::LocalDefaultSystemAppearance::LocalDefaultSystemAppearance):
+    (CyberCore::LocalDefaultSystemAppearance::~LocalDefaultSystemAppearance):
     * platform/mac/ScrollAnimatorMac.mm:
     * rendering/RenderThemeMac.mm:
-    (-[WebCoreTextFieldCell _adjustedCoreUIDrawOptionsForDrawingBordersOnly:]):
+    (-[CyberCoreTextFieldCell _adjustedCoreUIDrawOptionsForDrawingBordersOnly:]):
     (-[WebListButtonCell drawWithFrame:inView:]):
-    (WebCore::RenderThemeMac::platformInactiveSelectionBackgroundColor const):
-    (WebCore::RenderThemeMac::platformInactiveSelectionForegroundColor const):
-    (WebCore::RenderThemeMac::platformActiveListBoxSelectionBackgroundColor const):
-    (WebCore::RenderThemeMac::platformInactiveListBoxSelectionBackgroundColor const):
-    (WebCore::RenderThemeMac::platformInactiveListBoxSelectionForegroundColor const):
-    (WebCore::RenderThemeMac::systemColor const):
+    (CyberCore::RenderThemeMac::platformInactiveSelectionBackgroundColor const):
+    (CyberCore::RenderThemeMac::platformInactiveSelectionForegroundColor const):
+    (CyberCore::RenderThemeMac::platformActiveListBoxSelectionBackgroundColor const):
+    (CyberCore::RenderThemeMac::platformInactiveListBoxSelectionBackgroundColor const):
+    (CyberCore::RenderThemeMac::platformInactiveListBoxSelectionForegroundColor const):
+    (CyberCore::RenderThemeMac::systemColor const):
     
-    Source/WebCore/PAL:
+    Source/CyberCore/PAL:
     
     * Configurations/FeatureDefines.xcconfig: ENABLE_DARK_MODE_CSS_macosx for all OS versions.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * Configurations/FeatureDefines.xcconfig: ENABLE_DARK_MODE_CSS_macosx for all OS versions.
     * UIProcess/Cocoa/WebViewImpl.mm:
-    (WebKit::WebViewImpl::effectiveAppearanceIsDark):
+    (CyberKit::WebViewImpl::effectiveAppearanceIsDark):
     * UIProcess/RemoteLayerTree/mac/ScrollerMac.mm:
     
-    Source/WebKitLegacy/mac:
+    Source/CyberKitLegacy/mac:
     
     * Configurations/FeatureDefines.xcconfig: ENABLE_DARK_MODE_CSS_macosx for all OS versions.
     * WebView/WebView.mm:
@@ -626,8 +626,8 @@
     
     Tools:
     
-    * TestWebKitAPI/Configurations/FeatureDefines.xcconfig: ENABLE_DARK_MODE_CSS_macosx for all OS versions.
-    * TestWebKitAPI/Tests/WebKit/mac/ForceLightAppearanceInBundle.mm:
+    * TestCyberKitAPI/Configurations/FeatureDefines.xcconfig: ENABLE_DARK_MODE_CSS_macosx for all OS versions.
+    * TestCyberKitAPI/Tests/CyberKit/mac/ForceLightAppearanceInBundle.mm:
     
     LayoutTests:
     
@@ -723,15 +723,15 @@
     Patch by John Wilander <wilander@apple.com> on 2019-01-10
     Reviewed by Alexey Proskuryakov and Alex Christensen.
     
-    Source/WebCore/PAL:
+    Source/CyberCore/PAL:
     
     * pal/spi/cf/CFNetworkSPI.h:
         Declaration of _overrideSessionCookieAcceptPolicy on NSHTTPCookieStorage.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * NetworkProcess/cocoa/NetworkSessionCocoa.mm:
-    (WebKit::NetworkSessionCocoa::NetworkSessionCocoa):
+    (CyberKit::NetworkSessionCocoa::NetworkSessionCocoa):
         Now sets cookieStorage._overrideSessionCookieAcceptPolicy to YES.
     
     Source/WTF:
@@ -751,11 +751,11 @@
     (TestRunner::setOnlyAcceptFirstPartyCookies):
     * DumpRenderTree/win/TestRunnerWin.cpp:
     (TestRunner::setOnlyAcceptFirstPartyCookies):
-    * WebKitTestRunner/InjectedBundle/Bindings/TestRunner.idl:
-    * WebKitTestRunner/InjectedBundle/TestRunner.cpp:
+    * CyberKitTestRunner/InjectedBundle/Bindings/TestRunner.idl:
+    * CyberKitTestRunner/InjectedBundle/TestRunner.cpp:
     (WTR::TestRunner::setOnlyAcceptFirstPartyCookies):
-    * WebKitTestRunner/InjectedBundle/TestRunner.h:
-    * WebKitTestRunner/TestInvocation.cpp:
+    * CyberKitTestRunner/InjectedBundle/TestRunner.h:
+    * CyberKitTestRunner/TestInvocation.cpp:
     (WTR::TestInvocation::didReceiveSynchronousMessageFromInjectedBundle):
     
     LayoutTests:
@@ -838,7 +838,7 @@
     * bmalloc/HeapKind.h:
     (bmalloc::heapKind):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     * runtime/VM.h:
     (JSC::VM::gigacageAuxiliarySpace):
@@ -886,8 +886,8 @@
     
     Tools:
     
-    * TestWebKitAPI/Tests/WTF/MediaTime.cpp:
-    (TestWebKitAPI::TEST): Add tests for zero timescale.
+    * TestCyberKitAPI/Tests/WTF/MediaTime.cpp:
+    (TestCyberKitAPI::TEST): Add tests for zero timescale.
     
     
     git-svn-id: https://svn.webkit.org/repository/webkit/trunk@239688 268f45cc-cd09-0410-ab3c-d52691b4dbfc
@@ -1316,7 +1316,7 @@
 
 2018-12-12  Alex Christensen  <achristensen@webkit.org>
 
-        Implement safe browsing in WebKit on WatchOS
+        Implement safe browsing in CyberKit on WatchOS
         https://bugs.webkit.org/show_bug.cgi?id=192641
         <rdar://problem/46376188>
 
@@ -1395,7 +1395,7 @@
 
 2018-12-10  Alexey Proskuryakov  <ap@apple.com>
 
-        Move ENABLE_SEC_ITEM_SHIM out of WebKit's config.h
+        Move ENABLE_SEC_ITEM_SHIM out of CyberKit's config.h
         https://bugs.webkit.org/show_bug.cgi?id=192428
 
         Reviewed by Tim Horton.
@@ -1404,7 +1404,7 @@
 
 2018-12-10  Alexey Proskuryakov  <ap@apple.com>
 
-        Move more macros out of WebKit's config.h
+        Move more macros out of CyberKit's config.h
         https://bugs.webkit.org/show_bug.cgi?id=192430
 
         Reviewed by Tim Horton.
@@ -1466,7 +1466,7 @@
 
 2018-12-06  Alexey Proskuryakov  <ap@apple.com>
 
-        Move USE_NEW_THEME out of WebCore's config.h
+        Move USE_NEW_THEME out of CyberCore's config.h
         https://bugs.webkit.org/show_bug.cgi?id=192426
 
         Reviewed by Tim Horton.
@@ -1475,12 +1475,12 @@
 
 2018-12-04  Carlos Garcia Campos  <cgarcia@igalia.com>
 
-        [SOUP] Move URLSoup back to WebCore after r238771
+        [SOUP] Move URLSoup back to CyberCore after r238771
         https://bugs.webkit.org/show_bug.cgi?id=192306
 
         Reviewed by Michael Catanzaro.
 
-        In r238771 URL was moved from WebCore to WTF, including the soup implementation. Unfortunately that added
+        In r238771 URL was moved from CyberCore to WTF, including the soup implementation. Unfortunately that added
         libsoup as a new dependency of libjavascriptcoregtk.
 
         * wtf/PlatformGTK.cmake:
@@ -1521,7 +1521,7 @@
 
 2018-11-30  Alex Christensen  <achristensen@webkit.org>
 
-        Move URL from WebCore to WTF
+        Move URL from CyberCore to WTF
         https://bugs.webkit.org/show_bug.cgi?id=190234
 
         Reviewed by Keith Miller.
@@ -1533,23 +1533,23 @@
         * wtf/PlatformMac.cmake:
         * wtf/PlatformWPE.cmake:
         * wtf/PlatformWin.cmake:
-        * wtf/URL.cpp: Renamed from Source/WebCore/platform/URL.cpp.
+        * wtf/URL.cpp: Renamed from Source/CyberCore/platform/URL.cpp.
         (WTF::URL::protocolIs):
-        * wtf/URL.h: Renamed from Source/WebCore/platform/URL.h.
-        * wtf/URLHash.h: Renamed from Source/WebCore/platform/URLHash.h.
+        * wtf/URL.h: Renamed from Source/CyberCore/platform/URL.h.
+        * wtf/URLHash.h: Renamed from Source/CyberCore/platform/URLHash.h.
         (WTF::URLHash::hash):
         (WTF::URLHash::equal):
-        * wtf/URLParser.cpp: Renamed from Source/WebCore/platform/URLParser.cpp.
+        * wtf/URLParser.cpp: Renamed from Source/CyberCore/platform/URLParser.cpp.
         (WTF::URLParser::isInUserInfoEncodeSet):
         (WTF::URLParser::parseAuthority):
-        * wtf/URLParser.h: Renamed from Source/WebCore/platform/URLParser.h.
+        * wtf/URLParser.h: Renamed from Source/CyberCore/platform/URLParser.h.
         (WTF::URLParser::URLParser):
         (WTF::URLParser::result):
-        * wtf/cf/CFURLExtras.cpp: Renamed from Source/WebCore/platform/cf/CFURLExtras.cpp.
-        * wtf/cf/CFURLExtras.h: Renamed from Source/WebCore/platform/cf/CFURLExtras.h.
-        * wtf/cf/URLCF.cpp: Renamed from Source/WebCore/platform/cf/URLCF.cpp.
-        * wtf/cocoa/NSURLExtras.h: Copied from Source/WebCore/loader/archive/ArchiveResourceCollection.h.
-        * wtf/cocoa/NSURLExtras.mm: Copied from Source/WebCore/platform/mac/WebCoreNSURLExtras.mm.
+        * wtf/cf/CFURLExtras.cpp: Renamed from Source/CyberCore/platform/cf/CFURLExtras.cpp.
+        * wtf/cf/CFURLExtras.h: Renamed from Source/CyberCore/platform/cf/CFURLExtras.h.
+        * wtf/cf/URLCF.cpp: Renamed from Source/CyberCore/platform/cf/URLCF.cpp.
+        * wtf/cocoa/NSURLExtras.h: Copied from Source/CyberCore/loader/archive/ArchiveResourceCollection.h.
+        * wtf/cocoa/NSURLExtras.mm: Copied from Source/CyberCore/platform/mac/CyberCoreNSURLExtras.mm.
         (WTF::isArmenianLookalikeCharacter):
         (WTF::isArmenianScriptCharacter):
         (WTF::isASCIIDigitOrValidHostCharacter):
@@ -1590,11 +1590,11 @@
         (WTF::isUserVisibleURL):
         (WTF::rangeOfURLScheme):
         (WTF::looksLikeAbsoluteURL):
-        * wtf/cocoa/URLCocoa.mm: Renamed from Source/WebCore/platform/mac/URLMac.mm.
+        * wtf/cocoa/URLCocoa.mm: Renamed from Source/CyberCore/platform/mac/URLMac.mm.
         (WTF::URL::URL):
         (WTF::URL::createCFURL const):
-        * wtf/glib/GUniquePtrSoup.h: Renamed from Source/WebCore/platform/network/soup/GUniquePtrSoup.h.
-        * wtf/glib/URLSoup.cpp: Renamed from Source/WebCore/platform/soup/URLSoup.cpp.
+        * wtf/glib/GUniquePtrSoup.h: Renamed from Source/CyberCore/platform/network/soup/GUniquePtrSoup.h.
+        * wtf/glib/URLSoup.cpp: Renamed from Source/CyberCore/platform/soup/URLSoup.cpp.
 
 2018-11-30  Alexey Proskuryakov  <ap@apple.com>
 
@@ -1623,8 +1623,8 @@
         Reviewed by Saam Barati.
 
         Contrary my previous claim in r238564, ENABLE_SEPARATED_WX_HEAP needs to be
-        defined in Platform.h because it is also needed in WebCore for the CSS JIT.  Also
-        contrary to my previous claim, ENABLE(FAST_JIT_PERMISSIONS) is defined for WebCore
+        defined in Platform.h because it is also needed in CyberCore for the CSS JIT.  Also
+        contrary to my previous claim, ENABLE(FAST_JIT_PERMISSIONS) is defined for CyberCore
         (and other projects) as well as JSC.  Hence, there's no reason why
         ENABLE_SEPARATED_WX_HEAP cannot be defined in Platform.h.
 
@@ -1836,7 +1836,7 @@
 
         Reviewed by Alexey Proskuryakov.
 
-        Source/WebCore/SourcesCocoa.txt had a #end that should have been a
+        Source/CyberCore/SourcesCocoa.txt had a #end that should have been a
         #endif. Fix this, an add a check to generate-unified-source-bundles.rb
         to detect similar typos.
 
@@ -2064,7 +2064,7 @@
 
 2018-10-30  Don Olmstead  <don.olmstead@sony.com>
 
-        [PlayStation] Enable JavaScriptCore
+        [PlayStation] Enable CyberScriptCore
         https://bugs.webkit.org/show_bug.cgi?id=191072
 
         Reviewed by Brent Fulgham.
@@ -2203,7 +2203,7 @@
 
 2018-10-29  Tim Horton  <timothy_horton@apple.com>
 
-        Modernize WebKit nibs and lprojs for localization's sake
+        Modernize CyberKit nibs and lprojs for localization's sake
         https://bugs.webkit.org/show_bug.cgi?id=190911
         <rdar://problem/45349466>
 
@@ -2430,7 +2430,7 @@
 
         This functionality is currently only enabled in debug mode since dbghelp is not threadsafe.
         The DbgHelper class attempts to synchronize calls to dbghelp.dll but external code
-        can still attempt to call the library at the same time as WebKit.
+        can still attempt to call the library at the same time as CyberKit.
 
         * wtf/CMakeLists.txt:
         * wtf/PlatformWin.cmake:
@@ -2810,8 +2810,8 @@
         * wtf/cocoa/WorkQueueCocoa.cpp:
         * wtf/dtoa.cpp:
         * wtf/dtoa.h:
-        * wtf/ios/WebCoreThread.cpp:
-        * wtf/ios/WebCoreThread.h:
+        * wtf/ios/CyberCoreThread.cpp:
+        * wtf/ios/CyberCoreThread.h:
         * wtf/mac/AppKitCompatibilityDeclarations.h:
         * wtf/mac/DeprecatedSymbolsUsedBySafari.mm:
         * wtf/mbmalloc.cpp:
@@ -2909,7 +2909,7 @@
 
         Reviewed by Saam Barati.
 
-        Use WTF::currentStackPointer more in WebKit to adopt ASAN detect_stack_use_after_return option.
+        Use WTF::currentStackPointer more in CyberKit to adopt ASAN detect_stack_use_after_return option.
 
         * wtf/StackBounds.cpp:
         (WTF::testStackDirection2):
@@ -3514,7 +3514,7 @@
 
         Unreviewed, rolling out r235990.
 
-        Introduced TestWebKitAPI.NowPlayingTest timeouts on iOS
+        Introduced TestCyberKitAPI.NowPlayingTest timeouts on iOS
 
         Reverted changeset:
 

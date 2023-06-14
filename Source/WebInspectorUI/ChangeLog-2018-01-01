@@ -263,7 +263,7 @@
 
 2017-12-14  David Kilzer  <ddkilzer@apple.com>
 
-        Enable -Wstrict-prototypes for WebKit
+        Enable -Wstrict-prototypes for CyberKit
         <https://webkit.org/b/180757>
         <rdar://problem/36024132>
 
@@ -1963,12 +1963,12 @@
 
         * APPLE_IMAGES_LICENSE.rtf: Removed.
         Remove the restrictive Web Inspector images license and default to the
-        same license as the rest of WebKit.
+        same license as the rest of CyberKit.
 
         The Apple Images license was never intended to restrict distribution of
-        Web Inspector images when used as part of WebKit. Now, all contributions
+        Web Inspector images when used as part of CyberKit. Now, all contributions
         to Web Inspector, images and source, have the same licensing as all other
-        WebKit contributions.
+        CyberKit contributions.
 
 2017-11-14  Joseph Pecoraro  <pecoraro@apple.com>
 
@@ -3577,7 +3577,7 @@
 
 2017-10-24  Eric Carlson  <eric.carlson@apple.com>
 
-        Web Inspector: Enable WebKit logging configuration and display
+        Web Inspector: Enable CyberKit logging configuration and display
         https://bugs.webkit.org/show_bug.cgi?id=177027
         <rdar://problem/33964767>
 
@@ -3609,7 +3609,7 @@
         (WI.LogContentView.prototype.get navigationItems): Add the log message scope bar when necessary.
         (WI.LogContentView.prototype._scopeFromMessageSource): New.
         (WI.LogContentView.prototype._scopeFromMessageLevel): Don't group Info, Log, and Debug.
-        (WI.LogContentView.prototype._messageAdded): Force a UI update the first time a WebKit log
+        (WI.LogContentView.prototype._messageAdded): Force a UI update the first time a CyberKit log
             message is added.
 
         (WI.LogContentView.prototype._messageShouldBeVisible): New, deal with message source bar buttons.
@@ -8109,7 +8109,7 @@
         (WI.Recording.displayNameForSwizzleType):
         (WI.Recording.prototype.swizzle):
         Replace WI.Recording.Swizzle with an object of swizzle type keys to int values. This object
-        matches the values in WebCore::RecordingSwizzleTypes.h.
+        matches the values in CyberCore::RecordingSwizzleTypes.h.
 
         * UserInterface/Models/RecordingAction.js:
         (WI.RecordingAction):
@@ -8437,8 +8437,8 @@
         (appendWebInspectorConsoleEvaluationSourceURL):
         (isWebInspectorInternalScript):
         (isWebInspectorConsoleEvaluationScript):
-        (isWebKitInjectedScript):
-        (isWebKitInternalScript):
+        (isCyberKitInjectedScript):
+        (isCyberKitInternalScript):
         (isFunctionStringNativeCode):
         (isTextLikelyMinified):
         (doubleQuotedString):
@@ -14133,7 +14133,7 @@
 
         Reviewed by Joseph Pecoraro.
 
-        Hook up a button in the Network tab to WebCore::Page's resourceCachingDisabled flag.
+        Hook up a button in the Network tab to CyberCore::Page's resourceCachingDisabled flag.
         If it is active, resource loads are subject to a cache policy that never uses a cached response.
 
         * Localizations/en.lproj/localizedStrings.js:
@@ -17078,7 +17078,7 @@
 
         Reviewed by Joseph Pecoraro.
 
-        When turning on DebugUI, WebKit-internal scripts were being added to the
+        When turning on DebugUI, CyberKit-internal scripts were being added to the
         Collection that is the represented object for the Extra Scripts folder.
         This was not balanced out by removing the scripts when DebugUI is turned
         off, so switching DebugUI on and off several times hit a multiple-add assertion.

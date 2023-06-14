@@ -7,7 +7,7 @@
 	<Tool
 		Name="VCLinkerTool"
 		AdditionalDependencies="shlwapi.lib"
-		OutputFile="$(OutDir)\MiniBrowser$(WebKitConfigSuffix).exe"
+		OutputFile="$(OutDir)\MiniBrowser$(CyberKitConfigSuffix).exe"
 		ProgramDatabaseFile="$(TargetDir)$(TargetName)Launcher.pdb"
 	/>
 </VisualStudioPropertySheet>

@@ -50,7 +50,7 @@ NullNPPGetValuePointer::NullNPPGetValuePointer(NPP npp, const string& identifier
 {
     // Be sneaky and null out the getvalue pointer the browser is holding. This simulates a plugin
     // that doesn't implement NPP_GetValue (like Shockwave Director 10.3 on Windows). Note that if
-    // WebKit copies the NPPluginFuncs struct this technique will have no effect and WebKit will
+    // CyberKit copies the NPPluginFuncs struct this technique will have no effect and CyberKit will
     // call into our NPP_GetValue implementation.
     pluginFunctions->getvalue = 0;
 }
@@ -65,6 +65,6 @@ NPError NullNPPGetValuePointer::NPP_Destroy(NPSavedData**)
 
 NPError NullNPPGetValuePointer::NPP_GetValue(NPPVariable, void*)
 {
-    pluginLog(m_npp, "NPP_GetValue was called but should not have been. Maybe WebKit copied the NPPluginFuncs struct, which would invalidate this test.");
+    pluginLog(m_npp, "NPP_GetValue was called but should not have been. Maybe CyberKit copied the NPPluginFuncs struct, which would invalidate this test.");
     return NPERR_GENERIC_ERROR;
 }

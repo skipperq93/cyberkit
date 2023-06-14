@@ -1,6 +1,6 @@
-This tests the events created by WebKitMediaKeys.
+This tests the events created by CyberKitMediaKeys.
 
-RUN(mediaKeys = new WebKitMediaKeys("com.webcore.mock"))
+RUN(mediaKeys = new CyberKitMediaKeys("com.webcore.mock"))
 RUN(mediaKeySession = mediaKeys.createSession("video/mock", initData))
 EVENT(webkitkeymessage)
 RUN(mediaKeySession.update(invalidKey))

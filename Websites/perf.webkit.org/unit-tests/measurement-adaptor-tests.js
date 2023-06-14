@@ -57,8 +57,8 @@ describe('MeasurementAdaptor', function () {
             assert.equal(adaptor.applyTo(sampleData).build().id(), 184629);
             assert.equal(adaptor.applyTo(sampleData).build().buildNumber(), '178');
             assert.equal(adaptor.applyTo(sampleData).build().builder(), MockModels.builder);
-            assert.equal(adaptor.applyTo(sampleData).build().label(), 'Build 178 on WebKit Perf Builder');
-            assert.equal(adaptor.applyTo(sampleData).build().url(), 'http://build.webkit.org/builders/WebKit Perf Builder/178');
+            assert.equal(adaptor.applyTo(sampleData).build().label(), 'Build 178 on CyberKit Perf Builder');
+            assert.equal(adaptor.applyTo(sampleData).build().url(), 'http://build.webkit.org/builders/CyberKit Perf Builder/178');
         });
 
         it('should adapt build information as null when the builder is not specified', function () {
@@ -93,7 +93,7 @@ describe('MeasurementAdaptor', function () {
             assert.equal(commit.url(), '');
         });
 
-        it('should adapt WebKit revision as a CommitLog object', function () {
+        it('should adapt CyberKit revision as a CommitLog object', function () {
             var adaptor = new MeasurementAdaptor(sampleCluster.formatMap);
             var commitSet = adaptor.applyTo(sampleData).commitSet();
 
@@ -108,7 +108,7 @@ describe('MeasurementAdaptor', function () {
             assert.equal(+commit.time(), 1447707055576);
             assert.equal(commit.revision(), '192483');
             assert.equal(commit.label(), 'r192483');
-            assert.equal(commit.title(), 'WebKit at r192483');
+            assert.equal(commit.title(), 'CyberKit at r192483');
             assert.equal(commit.url(), 'http://trac.webkit.org/changeset/192483');
         });
 

@@ -39,7 +39,7 @@ TestExpectationParser = test_expectations.TestExpectationParser
 
 class BuildBotPrinter(object):
     # This output is parsed by buildbots and must only be changed in coordination with buildbot scripts (see webkit.org's
-    # Tools/BuildSlaveSupport/build.webkit.org-config/master.cfg: RunWebKitTests._parseNewRunWebKitTestsOutput
+    # Tools/BuildSlaveSupport/build.webkit.org-config/master.cfg: RunCyberKitTests._parseNewRunCyberKitTestsOutput
     # and chromium.org's buildbot/master.chromium/scripts/master/log_parser/webkit_test_command.py).
 
     def __init__(self, stream, debug_logging):

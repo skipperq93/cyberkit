@@ -42,8 +42,8 @@ WPT_REVISION_FOOTER = 'WPT-Export-Revision:'
 EXPORT_PR_LABEL = 'chromium-export'
 PROVISIONAL_PR_LABEL = 'do not merge yet'
 
-# TODO(qyearsley): Avoid hard-coding third_party/WebKit/LayoutTests.
-CHROMIUM_WPT_DIR = 'third_party/WebKit/LayoutTests/external/wpt/'
+# TODO(qyearsley): Avoid hard-coding third_party/CyberKit/LayoutTests.
+CHROMIUM_WPT_DIR = 'third_party/CyberKit/LayoutTests/external/wpt/'
 
 _log = logging.getLogger(__name__)
 
@@ -101,7 +101,7 @@ def is_file_exportable(path):
 
 
 class WPTPaths:
-    CHECKOUT_DIRECTORY = ["WebKitBuild", "w3c-tests"]
+    CHECKOUT_DIRECTORY = ["CyberKitBuild", "w3c-tests"]
     WPT_CHECKOUT_PATH = CHECKOUT_DIRECTORY + ["web-platform-tests"]
 
     @staticmethod

@@ -103,9 +103,9 @@ testNode = nodeList.item(0);
 
       vfaction = formNode.action;
 
-//  WebKit modification: 26-August-2010
+//  CyberKit modification: 26-August-2010
       var expectedAction = document.URL.replace(/[^/]*$/, "") + "...";
-//  End WebKit modification
+//  End CyberKit modification
 
       assertEquals("formLink",expectedAction,vfaction);
        

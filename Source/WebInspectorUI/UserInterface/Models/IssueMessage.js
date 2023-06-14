@@ -38,7 +38,7 @@ WI.IssueMessage = class IssueMessage extends WI.Object
         switch (this._consoleMessage.source) {
         case "javascript":
             // FIXME: It would be nice if we had this information (the specific type of JavaScript error)
-            // as part of the data passed from WebCore, instead of having to determine it ourselves.
+            // as part of the data passed from CyberCore, instead of having to determine it ourselves.
             var prefixRegex = /^([^:]+): (?:DOM Exception \d+: )?/;
             var match = prefixRegex.exec(this._text);
             if (match && match[1] in WI.IssueMessage.Type._prefixTypeMap) {

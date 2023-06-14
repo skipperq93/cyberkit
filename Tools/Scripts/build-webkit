@@ -30,7 +30,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Build script wrapper for the WebKit Open Source Project.
+# Build script wrapper for the CyberKit Open Source Project.
 
 use strict;
 use warnings;
@@ -57,7 +57,7 @@ if (shouldUseFlatpak()) {
 }
 
 my $originalWorkingDirectory = getcwd();
-chdirWebKit();
+chdirCyberKit();
 
 my $showHelp = 0;
 my $verbose = 0;
@@ -68,7 +68,7 @@ my $installLibs;
 my $prefixPath;
 my $makeArgs = "";
 my @cmakeArgs;
-my $onlyWebKitProject = 0;
+my $onlyCyberKitProject = 0;
 my $coverageSupport = 0;
 my $shouldRunStaticAnalyzer = 0;
 my $noExperimentalFeatures = 0;
@@ -130,7 +130,7 @@ Usage: $programName [options] [options to pass to build system]
   --minimal                         No optional features, unless explicitly enabled
   --no-experimental-features        No experimental features, unless explicitly enabled (CMake only)
 
-  --only-webkit                     Build only the WebKit project
+  --only-webkit                     Build only the CyberKit project
 
   --skip-library-update             Skip the check to see if windows libraries are up to date
 
@@ -148,7 +148,7 @@ my %options = (
     'makeargs=s' => \$makeArgs,
     'cmakeargs=s' => \@cmakeArgs,
     'minimal' => \$minimal,
-    'only-webkit' => \$onlyWebKitProject,
+    'only-webkit' => \$onlyCyberKitProject,
     'coverage' => \$coverageSupport,
     'analyze' => \$shouldRunStaticAnalyzer,
     'no-experimental-features' => \$noExperimentalFeatures,
@@ -183,12 +183,12 @@ if ($useCCache == 1) {
 my $productDir = productDir();
 
 # Check that all the project directories are there.
-my @projects = ("Source/JavaScriptCore", "Source/WebCore", "Source/WebKitLegacy");
+my @projects = ("Source/CyberScriptCore", "Source/CyberCore", "Source/CyberKitLegacy");
 
 # Build WTF as a separate static library on ports which support it.
-splice @projects, 0, 0, "Source/WTF" if isAppleWebKit() or isWinCairo();
+splice @projects, 0, 0, "Source/WTF" if isAppleCyberKit() or isWinCairo();
 
-splice @projects, 0, 0, "Source/bmalloc" if isAppleCocoaWebKit();
+splice @projects, 0, 0, "Source/bmalloc" if isAppleCocoaCyberKit();
 
 # Ports using CMake will check if directories exist in the CMake configuration.
 if (!isCMakeBuild()) {
@@ -199,13 +199,13 @@ if (!isCMakeBuild()) {
     }
 }
 
-if ((isAppleWebKit() || isWinCairo() || isPlayStation()) && !-d "WebKitLibraries") {
-    die "Error: No WebKitLibraries directory found. Please do a fresh checkout.\n";
+if ((isAppleCyberKit() || isWinCairo() || isPlayStation()) && !-d "CyberKitLibraries") {
+    die "Error: No CyberKitLibraries directory found. Please do a fresh checkout.\n";
 }
 
 my @options = ();
 
-if (isAppleCocoaWebKit()) {
+if (isAppleCocoaCyberKit()) {
     push @options, XcodeOptions();
     sub option($$)
     {
@@ -219,23 +219,23 @@ if (isAppleCocoaWebKit()) {
         push @options, $option unless $option eq "";
     }
 
-    # ANGLE and libwebrtc must come before WebCore
+    # ANGLE and libwebrtc must come before CyberCore
     splice @projects, 0, 0, ("Source/ThirdParty/ANGLE");
     if (not $archs32bit and ((portName() eq Mac and not architecture() eq "i386") or 
         (portName() eq iOS and (architecture() eq "arm64" or architecture() eq "x86_64")))) {
         splice @projects, 0, 0, ("Source/ThirdParty/libwebrtc");
     }
 
-    push @projects, ("Source/WebKit");
+    push @projects, ("Source/CyberKit");
 
-    if (!isIOSWebKit()) {
+    if (!isIOSCyberKit()) {
         push @projects, ("Tools/MiniBrowser");
 
-        # WebInspectorUI must come after JavaScriptCore and WebCore but before WebKit and WebKit2
-        my $webKitIndex = first { $projects[$_] eq "Source/WebKitLegacy" } 0..$#projects;
+        # WebInspectorUI must come after CyberScriptCore and CyberCore but before CyberKit and CyberKit2
+        my $webKitIndex = first { $projects[$_] eq "Source/CyberKitLegacy" } 0..$#projects;
         splice(@projects, $webKitIndex, 0, "Source/WebInspectorUI");
 
-        # Copy library and header from WebKitLibraries to a findable place in the product directory.
+        # Copy library and header from CyberKitLibraries to a findable place in the product directory.
         my @copyLibrariesArgs = ("perl", "Tools/Scripts/copy-webkitlibraries-to-product-directory", "--wksi",  productDir());
         print(join(" ", @copyLibrariesArgs) . "\n");
         (system(@copyLibrariesArgs) == 0) or die;
@@ -247,13 +247,13 @@ if (isAppleCocoaWebKit()) {
     }
 
     # Build Tools needed for Apple ports
-    push @projects, ("Tools/DumpRenderTree", "Tools/WebKitTestRunner", "Source/ThirdParty/gtest", "Tools/TestWebKitAPI");
+    push @projects, ("Tools/DumpRenderTree", "Tools/CyberKitTestRunner", "Source/ThirdParty/gtest", "Tools/TestCyberKitAPI");
 
 } elsif (isWinCairo() && !$skipLibraryUpdate) {
     (system("python Tools/Scripts/update-webkit-wincairo-libs.py") == 0) or die;
-} elsif (isAppleWinWebKit() && !$skipLibraryUpdate) {
-    # Copy WebKitSupportLibrary to the correct location in WebKitLibraries so it can be found.
-    # Will fail if WebKitSupportLibrary.zip is not in source root.
+} elsif (isAppleWinCyberKit() && !$skipLibraryUpdate) {
+    # Copy CyberKitSupportLibrary to the correct location in CyberKitLibraries so it can be found.
+    # Will fail if CyberKitSupportLibrary.zip is not in source root.
     (system("perl Tools/Scripts/update-webkit-support-libs") == 0) or die;
     (system("perl Tools/Scripts/update-webkit-auxiliary-libs") == 0) or die;
     setupAppleWinEnv()
@@ -263,10 +263,10 @@ if (isAnyWindows()) {
     system("python Tools/Scripts/update-vswhere.py");
 }
 
-# If asked to build just the WebKit project, overwrite the projects
+# If asked to build just the CyberKit project, overwrite the projects
 # list after all of the port specific tweaks have been made to
 # build options, etc.
-@projects = ("Source/WebKitLegacy") if $onlyWebKitProject;
+@projects = ("Source/CyberKitLegacy") if $onlyCyberKitProject;
 
 my $result = 0;
 
@@ -295,34 +295,34 @@ if (isCMakeBuild() && !isAnyWindows()) {
 }
 
 my $baseProductDir = baseProductDir();
-if (isAppleWinWebKit() || isWinCairo() || isPlayStation()) {
+if (isAppleWinCyberKit() || isWinCairo() || isPlayStation()) {
     my @featureArgs = cmakeArgsFromFeatures(@features, !$noExperimentalFeatures);
     removeCMakeCache(@featureArgs);
 
-    chdirWebKit();
+    chdirCyberKit();
     if (exitStatus(generateBuildSystemFromCMakeProject($prefixPath, @featureArgs, @cmakeArgs))) {
         die "Run Visual Studio 2017 installation vcvars.bat before build-webkit when using ninja";
     }
 
     exit 0 if isGenerateProjectOnly();
 
-    chdirWebKit();
+    chdirCyberKit();
     if (canUseNinja()) {
         chdir File::Spec->catdir($baseProductDir, configuration());
         $result = system("ninja");
     } else {
-        $result = buildVisualStudioProject(File::Spec->catfile($baseProductDir, configuration(), "WebKit.sln"), $clean);
+        $result = buildVisualStudioProject(File::Spec->catfile($baseProductDir, configuration(), "CyberKit.sln"), $clean);
     }
     if (exitStatus($result)) {
         my $scriptDir = relativeScriptsDir();
-        if (isAppleWinWebKit() || isWinCairo()) {
+        if (isAppleWinCyberKit() || isWinCairo()) {
             print "\n\n===== BUILD FAILED ======\n\n";
             print "Please ensure you have run $scriptDir/update-webkit to install dependencies.\n\n";
             print "You can view build errors by checking the BuildLog.htm files located at:\n$baseProductDir/obj/<project>/<config>.\n";
         }
         exit exitStatus($result);
     }
-} elsif (isAppleCocoaWebKit() && !isCMakeBuild()) {
+} elsif (isAppleCocoaCyberKit() && !isCMakeBuild()) {
     exit 0 if isGenerateProjectOnly();
 
     # Build, and abort if the build fails.
@@ -340,7 +340,7 @@ if (isAppleWinWebKit() || isWinCairo() || isPlayStation()) {
         $result = buildXCodeProject($projectPath, $clean, @local_options, @ARGV);
 
         # Various build* calls above may change the CWD.
-        chdirWebKit();
+        chdirCyberKit();
 
         if (exitStatus($result)) {
             exit exitStatus($result);
@@ -349,7 +349,7 @@ if (isAppleWinWebKit() || isWinCairo() || isPlayStation()) {
 
     # Build ImageDiff for host
     my @command = File::Spec->catfile(getcwd(), "/Tools/Scripts/build-imagediff");
-    chdirWebKit();
+    chdirCyberKit();
     if (!-e $command[0]) {
         die "build-imagediff script not found";
     }
@@ -366,7 +366,7 @@ if (isAppleWinWebKit() || isWinCairo() || isPlayStation()) {
     }
 }
 
-# Don't report the "WebKit is now built" message after a clean operation.
+# Don't report the "CyberKit is now built" message after a clean operation.
 exit if $clean;
 
 # Don't report congrats message if build was interrupted by the user.
@@ -390,7 +390,7 @@ sub writeCongrats()
 
     print "\n";
     print "====================================================================\n";
-    print " WebKit is now built ($buildTime). \n";
+    print " CyberKit is now built ($buildTime). \n";
     if ($launcherPath && $launcherName) {
         print " To run $launcherName with this newly-built code, use the\n";
         print " \"$launcherPath\" script.\n";

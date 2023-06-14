@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <body>
-<p>This test ensures WebKit does not execute the default event handler of keydown when the user presses TAB key while IME composition is taking place.<br>
+<p>This test ensures CyberKit does not execute the default event handler of keydown when the user presses TAB key while IME composition is taking place.<br>
 To test manually, type "kyo" using Japanese hiragana keyboard in the first text field, and press TAB key.<br>
-WebKit should not move the focus to the second text field.</p>
+CyberKit should not move the focus to the second text field.</p>
 <div id="container">
 <label>First text field:<input id="first" type="text"></label><br>
 <label>Second text field:<input id="second" type="text" onfocus="log('FAIL: the second text field got focused')"></label><br>

@@ -24,8 +24,8 @@
 #include "BaseTarget.xcconfig"
 
 OTHER_LDFLAGS = $(inherited) $(PLATFORM_OTHER_LDFLAGS) $(ASAN_OTHER_LDFLAGS);
-PLATFORM_OTHER_LDFLAGS[sdk=iphone*] = -framework JavaScriptCore;
-PLATFORM_OTHER_LDFLAGS[sdk=macosx*] = -lWebCoreTestSupport -force_load $(BUILT_PRODUCTS_DIR)/libDumpRenderTree.a -framework Carbon -framework Cocoa -framework JavaScriptCore -framework OpenGL -framework QuartzCore -framework WebKit;
+PLATFORM_OTHER_LDFLAGS[sdk=iphone*] = -framework CyberScriptCore;
+PLATFORM_OTHER_LDFLAGS[sdk=macosx*] = -lCyberCoreTestSupport -force_load $(BUILT_PRODUCTS_DIR)/libDumpRenderTree.a -framework Carbon -framework Cocoa -framework CyberScriptCore -framework OpenGL -framework QuartzCore -framework CyberKit;
 LD_RUNPATH_SEARCH_PATHS = "@loader_path/.";
 PRODUCT_NAME = DumpRenderTree;
 SKIP_INSTALL[sdk=macosx*] = NO;

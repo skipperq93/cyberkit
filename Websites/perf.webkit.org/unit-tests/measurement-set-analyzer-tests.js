@@ -189,7 +189,7 @@ describe('MeasurementSetAnalyzer', () => {
             assert.deepEqual(requests[2].data, {
                 slaveName: 'test',
                 slavePassword: 'password',
-                name: 'Potential 2.38% regression on Some platform between WebKit: r35-r44',
+                name: 'Potential 2.38% regression on Some platform between CyberKit: r35-r44',
                 startRun: 6434,
                 endRun: 6443,
                 repetitionCount: 4,
@@ -248,7 +248,7 @@ describe('MeasurementSetAnalyzer', () => {
             assert.deepEqual(requests[2].data, {
                 slaveName: 'test',
                 slavePassword: 'password',
-                name: 'Potential 2.38% regression on Some platform between WebKit: r35-r44',
+                name: 'Potential 2.38% regression on Some platform between CyberKit: r35-r44',
                 startRun: 6434,
                 endRun: 6443,
                 repetitionCount: 4,
@@ -277,7 +277,7 @@ describe('MeasurementSetAnalyzer', () => {
                     fixes: [],
                     id: 5255,
                     metric: MockModels.someMetric.id(),
-                    name: 'Potential 2.38% regression on Some platform between WebKit: r40-r49',
+                    name: 'Potential 2.38% regression on Some platform between CyberKit: r40-r49',
                     needed: null,
                     platform: MockModels.somePlatform.id(),
                     result: 'regression',
@@ -293,7 +293,7 @@ describe('MeasurementSetAnalyzer', () => {
 
             await analysisPromise;
             assert.deepEqual(logger.info_logs, ['==== "Some test : Some metric" on "Some platform" ====',
-                'Created analysis task with id "5255" to confirm: "Potential 2.38% regression on Some platform between WebKit: r35-r44".']);
+                'Created analysis task with id "5255" to confirm: "Potential 2.38% regression on Some platform between CyberKit: r35-r44".']);
             assert.deepEqual(logger.error_logs, []);
         });
 
@@ -336,7 +336,7 @@ describe('MeasurementSetAnalyzer', () => {
             assert.deepEqual(requests[2].data, {
                 slaveName: 'test',
                 slavePassword: 'password',
-                name: 'Potential 2.38% regression on Some platform between WebKit: r35-r44',
+                name: 'Potential 2.38% regression on Some platform between CyberKit: r35-r44',
                 startRun: 6434,
                 endRun: 6443
             });
@@ -360,7 +360,7 @@ describe('MeasurementSetAnalyzer', () => {
                     fixes: [],
                     id: 5255,
                     metric: MockModels.someMetric.id(),
-                    name: 'Potential 2.38% regression on Some platform between WebKit: r40-r49',
+                    name: 'Potential 2.38% regression on Some platform between CyberKit: r40-r49',
                     needed: null,
                     platform: MockModels.somePlatform.id(),
                     result: 'regression',
@@ -376,7 +376,7 @@ describe('MeasurementSetAnalyzer', () => {
 
             await analysisPromise;
             assert.deepEqual(logger.info_logs, ['==== "Some test : Some metric" on "Some platform" ====',
-                'Created analysis task with id "5255" to confirm: "Potential 2.38% regression on Some platform between WebKit: r35-r44".']);
+                'Created analysis task with id "5255" to confirm: "Potential 2.38% regression on Some platform between CyberKit: r35-r44".']);
             assert.deepEqual(logger.error_logs, []);
         });
 
@@ -418,7 +418,7 @@ describe('MeasurementSetAnalyzer', () => {
                     fixes: [],
                     id: 1082,
                     metric: MockModels.someMetric.id(),
-                    name: 'Potential 2.38% regression on Some platform between WebKit: r35-r44',
+                    name: 'Potential 2.38% regression on Some platform between CyberKit: r35-r44',
                     needed: null,
                     platform: MockModels.somePlatform.id(),
                     result: 'regression',
@@ -481,7 +481,7 @@ describe('MeasurementSetAnalyzer', () => {
             assert.deepEqual(requests[2].data, {
                 slaveName: 'test',
                 slavePassword: 'password',
-                name: 'Potential 2.38% regression on Some platform between WebKit: r40-r49',
+                name: 'Potential 2.38% regression on Some platform between CyberKit: r40-r49',
                 startRun: 6439,
                 endRun: 6448,
                 repetitionCount: 4,
@@ -510,7 +510,7 @@ describe('MeasurementSetAnalyzer', () => {
                     fixes: [],
                     id: 5255,
                     metric: MockModels.someMetric.id(),
-                    name: 'Potential 2.38% regression on Some platform between WebKit: r40-r49',
+                    name: 'Potential 2.38% regression on Some platform between CyberKit: r40-r49',
                     needed: null,
                     platform: MockModels.somePlatform.id(),
                     result: 'regression',
@@ -526,7 +526,7 @@ describe('MeasurementSetAnalyzer', () => {
 
             await analysisPromise;
             assert.deepEqual(logger.info_logs, ['==== "Some test : Some metric" on "Some platform" ====',
-                'Created analysis task with id "5255" to confirm: "Potential 2.38% regression on Some platform between WebKit: r40-r49".']);
+                'Created analysis task with id "5255" to confirm: "Potential 2.38% regression on Some platform between CyberKit: r40-r49".']);
             assert.deepEqual(logger.error_logs, []);
         });
 
@@ -573,7 +573,7 @@ describe('MeasurementSetAnalyzer', () => {
             assert.deepEqual(requests[2].data, {
                 slaveName: 'test',
                 slavePassword: 'password',
-                name: 'Potential 9.15% progression on Some platform between WebKit: r3-r8',
+                name: 'Potential 9.15% progression on Some platform between CyberKit: r3-r8',
                 startRun: 6402,
                 endRun: 6407,
                 repetitionCount: 4,
@@ -602,7 +602,7 @@ describe('MeasurementSetAnalyzer', () => {
                     fixes: [],
                     id: 5255,
                     metric: MockModels.someMetric.id(),
-                    name: 'Potential 9.15% progression on Some platform between WebKit: r3-r8',
+                    name: 'Potential 9.15% progression on Some platform between CyberKit: r3-r8',
                     needed: null,
                     platform: MockModels.somePlatform.id(),
                     result: 'progression',
@@ -618,7 +618,7 @@ describe('MeasurementSetAnalyzer', () => {
 
             await analysisPromise;
             assert.deepEqual(logger.info_logs, ['==== "Some test : Some metric" on "Some platform" ====',
-                'Created analysis task with id "5255" to confirm: "Potential 9.15% progression on Some platform between WebKit: r3-r8".']);
+                'Created analysis task with id "5255" to confirm: "Potential 9.15% progression on Some platform between CyberKit: r3-r8".']);
             assert.deepEqual(logger.error_logs, []);
         });
     });

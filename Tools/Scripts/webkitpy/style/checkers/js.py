@@ -25,7 +25,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 """
-Supports checking WebKit style in JavaScript files.
+Supports checking CyberKit style in JavaScript files.
 
 This checker is only used to check WebInspector JavaScript files.
 """

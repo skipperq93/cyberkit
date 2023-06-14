@@ -15,7 +15,7 @@ var testContainer = document.getElementById('test-container');
 function testAttributeOnTarget(equivalentNames, distinctNames) {
     for (var equivalentName of equivalentNames) {
         shouldBeTrue('document.getElementById("target").hasAttribute("' + equivalentName + '")');
-        shouldBeEqualToString('document.getElementById("target").getAttribute("' + equivalentName + '")', 'WebKit!');
+        shouldBeEqualToString('document.getElementById("target").getAttribute("' + equivalentName + '")', 'CyberKit!');
     }
 
     for (var distinctName of distinctNames) {
@@ -30,12 +30,12 @@ function testAttributeOnTarget(equivalentNames, distinctNames) {
 
     for (var equivalentName of equivalentNames) {
         shouldBeTrue('document.getElementById("target").hasAttribute("' + equivalentName + '")');
-        shouldBeEqualToString('document.getElementById("target").getAttribute("' + equivalentName + '")', 'WebKit!');
+        shouldBeEqualToString('document.getElementById("target").getAttribute("' + equivalentName + '")', 'CyberKit!');
     }
 }
 
 function testParsedAttribute(attribute, equivalentNames, distinctNames) {
-    testContainer.innerHTML = '<div ' + attribute + '="WebKit!" id="target"></div>';
+    testContainer.innerHTML = '<div ' + attribute + '="CyberKit!" id="target"></div>';
     testAttributeOnTarget(equivalentNames, distinctNames);
     testContainer.innerHTML = '';
 }
@@ -43,7 +43,7 @@ function testParsedAttribute(attribute, equivalentNames, distinctNames) {
 function testAttributeFromDOMApis(attribute, equivalentNames, distinctNames) {
     var newElement = document.createElement('div');
     newElement.setAttribute('id', 'target');
-    newElement.setAttribute(attribute, "WebKit!");
+    newElement.setAttribute(attribute, "CyberKit!");
     testContainer.appendChild(newElement);
     testAttributeOnTarget(equivalentNames, distinctNames);
     testContainer.innerHTML = '';

@@ -1,3 +1,3 @@
 
-This tests that WebKit correctly reports that the Carbon event model is supported.
+This tests that CyberKit correctly reports that the Carbon event model is supported.
 SUCCESS!

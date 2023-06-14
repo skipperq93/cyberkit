@@ -918,7 +918,7 @@
         This patch imports concurrency and parallelism benchmarks from
         four independent projects: Facebook's folly, Olivier Giroux's
         locking benchmark aimed at C++20 standardization, Samy Al Bahra's
-        ck concurrency primitives, and WebKit's WTF lock benchmarks.
+        ck concurrency primitives, and CyberKit's WTF lock benchmarks.
         There's a fifth benchmark in the waiting, Cristian Mattarei's FMJS
         litmus tests, which currently only targets JavaScript but will
         eventually work on straight C code.
@@ -8554,7 +8554,7 @@
 
         Reviewed by Saam Barati.
 
-        This is a port of the JavaScriptCore offline assmebler's lexer, parser, AST and
+        This is a port of the CyberScriptCore offline assmebler's lexer, parser, AST and
         supporting code from Ruby to JavaScript turned into a benchmark.  The benchmark
         timing includes parsing through AST.  The validation processing time is not
         part of the benchmark measurement.
@@ -9010,7 +9010,7 @@
 
         Reviewed by Sam Weinig.
 
-        This patch imports SixSpeed benchmark into WebKit tree.
+        This patch imports SixSpeed benchmark into CyberKit tree.
         It is a collection of ES6 microbenchmarks. While the scripts are very tiny,
         it sometimes hits our missing care for optimization. So including it is useful.
 
@@ -10477,7 +10477,7 @@
 
         Reviewed by Ryosuke Niwa.
         
-        Skip running MotionMark on WebKit perf bots.
+        Skip running MotionMark on CyberKit perf bots.
 
         * Skipped:
 
@@ -11826,7 +11826,7 @@
         - JSAir's largest hot function, which is anonymous, so we call it by its hash (ACLj8C).
         
         This runs in about 2 seconds on my machine in JSC trunk. It includes both a commandline
-        harness and a web harness. JSAir is almost exactly 100x slower in ES6 in WebKit than the
+        harness and a web harness. JSAir is almost exactly 100x slower in ES6 in CyberKit than the
         C++ Air::allocateStack() phase on which it is based.
         
         JSAir uses the following ES6 features:
@@ -12930,7 +12930,7 @@
         * Animometer/resources/extensions.js:
         (UnitBezier.Utilities.createClass): Add a class that computes Bezier points
         assuming that two of the control points are at (0,0) and (1,1). Taken from
-        WebCore/platform/graphics/UnitBezier.h
+        CyberCore/platform/graphics/UnitBezier.h
         * Animometer/resources/runner/tests.js: Add a test for English text and one
         for international text.
         * Animometer/tests/master/international.html: Added.
@@ -17773,7 +17773,7 @@
 
         Reviewed by Benjamin Poulain.
 
-        Remove set of WebKitCSSGridLayoutEnabled preference.
+        Remove set of CyberKitCSSGridLayoutEnabled preference.
 
         * Layout/auto-grid-lots-of-data.html:
         * Layout/fixed-grid-lots-of-data.html:
@@ -17907,7 +17907,7 @@
 
         * MallocBench/MallocBench.xcodeproj/project.pbxproj: Don't build mbmalloc
         by default because it will overwrite any other mbmalloc you're working
-        with in the WebKitBuild directory.
+        with in the CyberKitBuild directory.
 
         * MallocBench/MallocBench/Benchmark.cpp:
         (Benchmark::run): Scavenge explicitly instead of waiting. This is faster,
@@ -17927,7 +17927,7 @@
 
         * MallocBench/MallocBench/Interpreter.cpp:
         (Interpreter::run): Accept 0-sized allocations without asserting because
-        WebKit does that sometimes.
+        CyberKit does that sometimes.
 
         * MallocBench/MallocBench/flickr.ops:
         * MallocBench/MallocBench/flickr_memory_warning.ops:
@@ -20299,12 +20299,12 @@
 
 2012-12-18  Hayato Ito  <hayato@chromium.org>
 
-        Use element.webkitCreateShadowRoot instead of WebKitShadowRoot in PerformanceTests.
+        Use element.webkitCreateShadowRoot instead of CyberKitShadowRoot in PerformanceTests.
         https://bugs.webkit.org/show_bug.cgi?id=105256
 
         Reviewed by Dimitri Glazkov.
 
-        WebKitShadowRoot constructor was deleted in favor of element.webkitCreateShadowRoot().
+        CyberKitShadowRoot constructor was deleted in favor of element.webkitCreateShadowRoot().
 
         * ShadowDOM/ChangingClassNameShadowDOM.html:
         * ShadowDOM/ChangingSelect.html:
@@ -20518,7 +20518,7 @@
 
 2012-11-05  Geoffrey Garen  <ggaren@apple.com>
 
-        WebKit should have performance tests for book chapter reflow
+        CyberKit should have performance tests for book chapter reflow
         https://bugs.webkit.org/show_bug.cgi?id=101271
 
         Reviewed by Dan Bernstein.
@@ -21391,7 +21391,7 @@
 
         Reviewed by Dirk Pranke.
 
-        Parse description and show it with the WebKit revision on the results page. Also use bar graphs
+        Parse description and show it with the CyberKit revision on the results page. Also use bar graphs
         instead of line graphs since we're not depicting the time series here per arv's suggestion.
         Finally, add the ability to adjust y-axis between the adjusted value and 0 (plot even doesn't adjust
         y-axis automatically now) by a mouse click.
@@ -22462,7 +22462,7 @@
         Reviewed by Ojan Vafai.
 
         Use runPerSecond instead of run to measure results in function calls per second (run/s) instead of time (ms).
-        This allows us to continue measuring performance reliably even when WebKit's performance improves and results
+        This allows us to continue measuring performance reliably even when CyberKit's performance improves and results
         become too small for Date.now()'s precision (around 15 ms).
 
         It should also reduce perf. bots cycle time for slower tests because we limit the number of function calls by time.
@@ -22876,7 +22876,7 @@
 
 2012-02-24  Ryosuke Niwa  <rniwa@webkit.org>
 
-        Rename dom*_*attributes.html to dom*-*attributes.html to follow the WebKit convention.
+        Rename dom*_*attributes.html to dom*-*attributes.html to follow the CyberKit convention.
 
         * Bindings/dom-attributes.html: Copied from PerformanceTests/Bindings/dom_attributes.html.
         * Bindings/dom_attributes.html: Removed.
@@ -23074,7 +23074,7 @@
         Reviewed by Ryosuke Niwa.
 
         - Added landing pages for each test which are listed in MANIFEST.json
-        - Removed some tests which depends on the library whose license is incompatible to WebKit.
+        - Removed some tests which depends on the library whose license is incompatible to CyberKit.
         - Added local copy of corresponding library. And replace the references to the remote sources
           to the local copies.
         - Removed old library files under Dromaeo/resources/dromaeo/web/lib/.
@@ -23188,7 +23188,7 @@
 
 2012-01-31  Hajime Morrita  <morrita@chromium.org>
 
-        Import Dromaeo to WebKit repository.
+        Import Dromaeo to CyberKit repository.
         https://bugs.webkit.org/show_bug.cgi?id=77328
 
         Reviewed by Ryosuke Niwa.
@@ -23420,7 +23420,7 @@
         Import dom_perf.
 
         Note resources/dom/suites.js isn't used by any html file yet but it will be used by Chromium port
-        once its perf bots start pulling test files from WebKit repository instead of Google's internal repository.
+        once its perf bots start pulling test files from CyberKit repository instead of Google's internal repository.
 
         * DOM: Added.
         * DOM/Accessors.html: Added.
@@ -23839,12 +23839,12 @@
         * Parser/simple-url.html: Added.
          On my machine:
          Firefox: 255ms
-         TOT WebKit: 378ms
+         TOT CyberKit: 378ms
          Chrome: 286ms
          Opera: 2830ms (no, that is not a typo)
         * Parser/url-parser.html: Added.
          Firefox: 381ms
-         TOT WebKit: 216ms
+         TOT CyberKit: 216ms
          Chrome: 131ms
          Opera: 1383ms (again, not a typo)
         * Parser/resources/final-url-en: Added.

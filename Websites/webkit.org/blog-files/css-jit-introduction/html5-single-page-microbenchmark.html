@@ -13,7 +13,7 @@
 
         // DO NOT DO THIS AT HOME!
         // Testing CSS Performance is really tricky. Here I am gonna abuse the web engine's implementation of querySelector to get a rough estimate of CSS Selector's performance.
-        // This only kind of works because I know how WebKit, Gecko and blink interpret selectors and I chose the selectors carefully. In general, you must test CSS speed by using actual style resolution.
+        // This only kind of works because I know how CyberKit, Gecko and blink interpret selectors and I chose the selectors carefully. In general, you must test CSS speed by using actual style resolution.
         function testFunction() {
             // This may seem a little counter-intuitive, but to test Selector speed, the selector needs to fail maching anything. Otherwise you could be benchmarking your
             // memory allocator, memory, JSArray etc. The failure needs to happen on the left so that we get to run something.
@@ -28,7 +28,7 @@
                 target.querySelector('div.nope>div>p>a+a+a');
                 target.querySelector('tr[nope]+tr>td>span.glyph.compound');
 
-                // Some cases where failure requires to start over. Some of them were already fast with WebKit before the CSS JIT.
+                // Some cases where failure requires to start over. Some of them were already fast with CyberKit before the CSS JIT.
                 // Descendant failure.
                 target.querySelector('.nope dd>p a');
                 target.querySelector('.nope dl>dt+dd>p a');
@@ -40,8 +40,8 @@
                 // Both.
                 target.querySelector('.nope tr+tr~tr>td a');
 
-                // Some cases that used to be difficult for WebKit.
-                // WebKit style is computed lazily. Using the style attribute would for the slow path.
+                // Some cases that used to be difficult for CyberKit.
+                // CyberKit style is computed lazily. Using the style attribute would for the slow path.
                 target.querySelector('[style="nope"]>div>p>a');
                 // Only the attribute set and exact were supported by the fast path.
                 target.querySelector('[style^="nope"] div>p');

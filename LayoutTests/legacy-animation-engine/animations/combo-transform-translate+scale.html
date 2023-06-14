@@ -41,7 +41,7 @@
     
     function snapshot(which)
     {
-        var t = new WebKitCSSMatrix(window.getComputedStyle(document.getElementById('box')).webkitTransform);
+        var t = new CyberKitCSSMatrix(window.getComputedStyle(document.getElementById('box')).webkitTransform);
         for (i = 0; i < 6; ++i) {
             if (!isEqual(t[prop[i]], expected[which][i], tolerance[i]))
                 result += "FAIL('"+prop[i]+"' was:"+t[prop[i]]+", expected:"+expected[which][i]+")";

@@ -103,10 +103,10 @@ shouldBe("Array.from(set)", "['zero', 'one', 'two']");
 
 section("\"this\" is a constructor");
 var CustomConstructor = function (length) { this.givenLength = length; };
-shouldBe("Array.from.call(CustomConstructor, ['WebKit']).constructor", "CustomConstructor");
-shouldBe("Object.getPrototypeOf(Array.from.call(CustomConstructor, ['WebKit']))", "CustomConstructor.prototype");
-shouldBe("Array.from.call(nonConstructor, ['WebKit']).length", "1");
-shouldBeEqualToString("Array.from.call(nonConstructor, ['WebKit'])[0]", "WebKit");
+shouldBe("Array.from.call(CustomConstructor, ['CyberKit']).constructor", "CustomConstructor");
+shouldBe("Object.getPrototypeOf(Array.from.call(CustomConstructor, ['CyberKit']))", "CustomConstructor.prototype");
+shouldBe("Array.from.call(nonConstructor, ['CyberKit']).length", "1");
+shouldBeEqualToString("Array.from.call(nonConstructor, ['CyberKit'])[0]", "CyberKit");
 
 var nonIterable = {
     get 0() {
@@ -133,10 +133,10 @@ shouldBe("Array.from.call(nonConstructor, nonIterable)[1]", "2");
 section("\"this\" is not a constructor");
 var nonConstructorWasCalled = false;
 var nonConstructor = () => { nonConstructorWasCalled = true; };
-shouldBe("Array.from.call(nonConstructor, ['WebKit']).constructor", "Array");
-shouldBe("Object.getPrototypeOf(Array.from.call(nonConstructor, ['WebKit']))", "Array.prototype");
-shouldBe("Array.from.call(nonConstructor, ['WebKit']).length", "1");
-shouldBeEqualToString("Array.from.call(nonConstructor, ['WebKit'])[0]", "WebKit");
+shouldBe("Array.from.call(nonConstructor, ['CyberKit']).constructor", "Array");
+shouldBe("Object.getPrototypeOf(Array.from.call(nonConstructor, ['CyberKit']))", "Array.prototype");
+shouldBe("Array.from.call(nonConstructor, ['CyberKit']).length", "1");
+shouldBeEqualToString("Array.from.call(nonConstructor, ['CyberKit'])[0]", "CyberKit");
 shouldBeFalse("nonConstructorWasCalled");
 
 shouldBe("Array.from.call(nonConstructor, nonIterable).constructor", "Array");

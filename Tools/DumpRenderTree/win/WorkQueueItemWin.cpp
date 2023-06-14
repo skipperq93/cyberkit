@@ -31,12 +31,12 @@
 
 #include <comutil.h>
 #include "DumpRenderTree.h"
-#include <JavaScriptCore/JSStringRef.h>
-#include <JavaScriptCore/JSStringRefBSTR.h>
-#include <JavaScriptCore/JSStringRefCF.h>
-#include <WebCore/COMPtr.h>
-#include <WebKitLegacy/WebKit.h>
-#include <WebKitLegacy/WebKitCOMAPI.h>
+#include <CyberScriptCore/JSStringRef.h>
+#include <CyberScriptCore/JSStringRefBSTR.h>
+#include <CyberScriptCore/JSStringRefCF.h>
+#include <CyberCore/COMPtr.h>
+#include <CyberKitLegacy/CyberKit.h>
+#include <CyberKitLegacy/CyberKitCOMAPI.h>
 #include <wtf/RetainPtr.h>
 #include <wtf/Vector.h>
 #include <string>
@@ -54,7 +54,7 @@ bool LoadItem::invoke() const
         return false;
 
     COMPtr<IWebURLRequest> request;
-    if (FAILED(WebKitCreateInstance(CLSID_WebURLRequest, 0, IID_IWebURLRequest, (void**)&request)))
+    if (FAILED(CyberKitCreateInstance(CLSID_WebURLRequest, 0, IID_IWebURLRequest, (void**)&request)))
         return false;
 
     _bstr_t urlBSTR(JSStringCopyBSTR(m_url.get()), false);

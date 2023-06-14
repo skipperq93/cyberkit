@@ -37,12 +37,12 @@
 #include "GCController.h"
 #include "TestRunner.h"
 #include "TextInputController.h"
-#include "WebCoreTestSupport.h"
+#include "CyberCoreTestSupport.h"
 #include "WorkQueueItem.h"
 #include "WorkQueue.h"
-#include <WebCore/COMPtr.h>
-#include <JavaScriptCore/JavaScriptCore.h>
-#include <WebKitLegacy/WebKit.h>
+#include <CyberCore/COMPtr.h>
+#include <CyberScriptCore/CyberScriptCore.h>
+#include <CyberKitLegacy/CyberKit.h>
 #include <stdio.h>
 #include <string>
 #include <wtf/Assertions.h>
@@ -367,7 +367,7 @@ void FrameLoadDelegate::didClearWindowObjectForFrameInStandardWorld(IWebFrame* f
     JSObjectSetProperty(context, windowObject, eventSenderStr, eventSender, kJSPropertyAttributeReadOnly | kJSPropertyAttributeDontDelete, 0);
     JSStringRelease(eventSenderStr);
 
-    WebCoreTestSupport::injectInternalsObject(context);
+    CyberCoreTestSupport::injectInternalsObject(context);
 }
 
 HRESULT FrameLoadDelegate::didFinishDocumentLoadForFrame(_In_opt_ IWebView* /*sender*/, _In_opt_ IWebFrame* frame)

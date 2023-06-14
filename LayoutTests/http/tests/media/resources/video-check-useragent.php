@@ -2,7 +2,7 @@
 
     $ua = $_SERVER["HTTP_USER_AGENT"];
 
-    if (!isset($ua) || stripos($ua, "WebKit/") === false || stripos($ua, "(KHTML, like Gecko)") === false)
+    if (!isset($ua) || stripos($ua, "CyberKit/") === false || stripos($ua, "(KHTML, like Gecko)") === false)
         die;
 
     $fileName = $_GET["name"];

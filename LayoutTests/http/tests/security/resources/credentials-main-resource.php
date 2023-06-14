@@ -1,6 +1,6 @@
 <?php 
     if (!isset($_SERVER['PHP_AUTH_USER'])) {
-        header('WWW-Authenticate: Basic realm="WebKit test - credentials-in-main-resource"');
+        header('WWW-Authenticate: Basic realm="CyberKit test - credentials-in-main-resource"');
         header('HTTP/1.0 401 Unauthorized');
         exit;
     }

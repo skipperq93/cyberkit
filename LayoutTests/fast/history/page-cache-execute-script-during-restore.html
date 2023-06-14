@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-<p>This tests executing a script while being restored from a page cache. WebKit should not hit a release assertion.</p>
+<p>This tests executing a script while being restored from a page cache. CyberKit should not hit a release assertion.</p>
 <div id="result">
 <input id="input">
 <button onclick="runTest()">Start test</button>
@@ -9,7 +9,7 @@
 <script>
 
 if (window.testRunner) {
-    testRunner.overridePreference("WebKitUsesPageCachePreferenceKey", 1);
+    testRunner.overridePreference("CyberKitUsesPageCachePreferenceKey", 1);
     testRunner.clearBackForwardList();
     testRunner.dumpAsText();
     testRunner.waitUntilDone();

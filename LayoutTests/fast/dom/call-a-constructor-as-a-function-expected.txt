@@ -11,8 +11,8 @@ PASS Audio() threw exception TypeError: Constructor requires 'new' operator.
 PASS Image() threw exception TypeError: Constructor requires 'new' operator.
 PASS Option() threw exception TypeError: Constructor requires 'new' operator.
 PASS MessageChannel() threw exception TypeError: Constructor requires 'new' operator.
-PASS WebKitCSSMatrix() threw exception TypeError: Constructor requires 'new' operator.
-PASS WebKitPoint() threw exception TypeError: Constructor requires 'new' operator.
+PASS CyberKitCSSMatrix() threw exception TypeError: Constructor requires 'new' operator.
+PASS CyberKitPoint() threw exception TypeError: Constructor requires 'new' operator.
 PASS WebSocket() threw exception TypeError: Constructor requires 'new' operator.
 PASS Worker() threw exception TypeError: Constructor requires 'new' operator.
 PASS XMLHttpRequest() threw exception TypeError: Constructor requires 'new' operator.

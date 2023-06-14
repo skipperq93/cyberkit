@@ -263,7 +263,7 @@ void WTFCrash()
 }
 #else
 // We need to keep WTFCrash() around (even on non-debug OS(DARWIN) builds) as a workaround
-// for presently shipping (circa early 2016) SafariForWebKitDevelopment binaries which still
+// for presently shipping (circa early 2016) SafariForCyberKitDevelopment binaries which still
 // expects to link to it.
 void WTFCrash()
 {

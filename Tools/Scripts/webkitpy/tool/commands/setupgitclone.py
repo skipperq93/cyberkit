@@ -33,7 +33,7 @@ from webkitpy.common.system.executive import ScriptError
 
 class SetupGitClone(Command):
     name = "setup-git-clone"
-    help_text = "Configures a new Git clone for the WebKit development"
+    help_text = "Configures a new Git clone for the CyberKit development"
 
     def execute(self, options, args, tool):
         if not isinstance(tool.scm(), Git):
@@ -72,7 +72,7 @@ class SetupGitClone(Command):
         else:
             run_git(["config", "merge.changelog.driver", "perl Tools/Scripts/resolve-ChangeLogs --fix-merged --merge-driver %O %B %A"])
 
-        if tool.user.confirm("Do you want to append the git branch name to every build? (e.g. WebKitBuild/mybranch/; y/n)"):
+        if tool.user.confirm("Do you want to append the git branch name to every build? (e.g. CyberKitBuild/mybranch/; y/n)"):
             run_git(["config", "core.webKitBranchBuild", "true"])
             print("You can override this option via git config branch.$branchName.webKitBranchBuild (true|false)")
 

@@ -29,12 +29,12 @@ use FindBin;
 use lib $FindBin::Bin;
 use webkitdirs;
 
-printHelpAndExitForRunAndDebugWebKitAppIfNeeded();
+printHelpAndExitForRunAndDebugCyberKitAppIfNeeded();
 
 setConfiguration();
 
-if (!isAppleCocoaWebKit()) {
+if (!isAppleCocoaCyberKit()) {
     exit 1;
 }
 
-exit exitStatus(runMacWebKitApp(File::Spec->catfile(productDir(), "ContentExtensionTester")));
+exit exitStatus(runMacCyberKitApp(File::Spec->catfile(productDir(), "ContentExtensionTester")));

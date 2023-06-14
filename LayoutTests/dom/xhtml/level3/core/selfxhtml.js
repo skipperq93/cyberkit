@@ -696,7 +696,7 @@ function getResourceURI(name, scheme, contentType) {
 function startTest() {
 
 //
-//  WebKit modification: 18-August-2005
+//  CyberKit modification: 18-August-2005
 //
 //  Inform the test controller that this test has a text-format result and so should
 //  be dumped as text, and also that the dump should not occur automatically.
@@ -706,7 +706,7 @@ if (window.testRunner) {
     testRunner.waitUntilDone();
 }
 //
-//  End WebKit modification
+//  End CyberKit modification
 //
 
 	//
@@ -729,7 +729,7 @@ if (window.testRunner) {
     }
 
 //
-//  WebKit modification: 18-August-2005
+//  CyberKit modification: 18-August-2005
 //
 //  Inform the test controller that this test is complete, so it's time to dump.
 //
@@ -737,7 +737,7 @@ if (window.testRunner) {
         testRunner.notifyDone();
     }
 //
-//  End WebKit modification
+//  End CyberKit modification
 //      
 
 }

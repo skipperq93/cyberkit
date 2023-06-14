@@ -22,7 +22,7 @@ ifneq (,$(DISABLE_LIBWEBRTC))
 	LIBWEBRTC_MODULE =
 endif
 
-MODULES = bmalloc WTF JavaScriptCore ThirdParty/ANGLE $(LIBWEBRTC_MODULE) WebCore $(WEBINSPECTORUI_MODULE) WebKitLegacy WebKit
+MODULES = bmalloc WTF CyberScriptCore ThirdParty/ANGLE $(LIBWEBRTC_MODULE) CyberCore $(WEBINSPECTORUI_MODULE) CyberKitLegacy CyberKit
 
 all:
 	@for dir in $(MODULES); do ${MAKE} $@ -C $$dir; exit_status=$$?; \

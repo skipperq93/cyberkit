@@ -18,7 +18,7 @@ var jwkKey = {
 };
 var rsaOaepParams = {
     name: "rsa-oaep",
-    label: asciiToUint8Array("WebKit.org"),
+    label: asciiToUint8Array("CyberKit.org"),
 }
 
 crypto.subtle.importKey("jwk", jwkKey, {name: "RSA-OAEP", hash: "SHA-1"}, extractable, ["encrypt"]).then(function(key) {

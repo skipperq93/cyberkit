@@ -50,8 +50,8 @@
 # Sometimes the generated files are stored in sub-directories, as with
 # unified-sources. In other cases, we need to take into account the fact that
 # generated/derived files are stored in a directory with a legacy name. For
-# instance, WebKit files are stored in a WebKit2 directory, and WebKitLegacy
-# files are stored in a WebKit directory. This discrepancy should probably be
+# instance, CyberKit files are stored in a CyberKit2 directory, and CyberKitLegacy
+# files are stored in a CyberKit directory. This discrepancy should probably be
 # cleaned up some day.
 #
 # This script not only generates .xcfilelists, but -- when given a --check
@@ -134,9 +134,9 @@ function check_xcfilelist()
 }
 
 
-function set_build_variables_for_JavaScriptCore()
+function set_build_variables_for_CyberScriptCore()
 {
-    PROJECT_NAME=JavaScriptCore
+    PROJECT_NAME=CyberScriptCore
     PROJECT_DIR="${OPENSOURCE_DIR}/Source/${PROJECT_NAME}"
     GENERATOR="${PROJECT_DIR}/Scripts/generate-derived-sources.sh"
     DERIVED_SOURCES_MAKE="${PROJECT_DIR}/DerivedSources.make"
@@ -144,7 +144,7 @@ function set_build_variables_for_JavaScriptCore()
 
     export FRAMEWORK_SEARCH_PATHS=
     export HEADER_SEARCH_PATHS="
-        ${BUILT_PRODUCTS_DIR}/DerivedSources/JavaScriptCore
+        ${BUILT_PRODUCTS_DIR}/DerivedSources/CyberScriptCore
         .
         ${BUILT_PRODUCTS_DIR}/usr/local/include"
     export SYSTEM_FRAMEWORK_SEARCH_PATHS="
@@ -153,9 +153,9 @@ function set_build_variables_for_JavaScriptCore()
 }
 
 
-function set_build_variables_for_WebCore()
+function set_build_variables_for_CyberCore()
 {
-    PROJECT_NAME=WebCore
+    PROJECT_NAME=CyberCore
     PROJECT_DIR="${OPENSOURCE_DIR}/Source/${PROJECT_NAME}"
     GENERATOR="${PROJECT_DIR}/Scripts/generate-derived-sources.sh"
     DERIVED_SOURCES_MAKE="${PROJECT_DIR}/DerivedSources.make"
@@ -168,10 +168,10 @@ function set_build_variables_for_WebCore()
         ForwardingHeaders
         /usr/include/libxslt
         /usr/include/libxml2
-        ${BUILT_PRODUCTS_DIR}/DerivedSources/WebCore
+        ${BUILT_PRODUCTS_DIR}/DerivedSources/CyberCore
         ${BUILT_PRODUCTS_DIR}/usr/local/include
-        ${BUILT_PRODUCTS_DIR}/usr/local/include/WebKitAdditions
-        ${SDKROOT}/usr/local/include/WebKitAdditions
+        ${BUILT_PRODUCTS_DIR}/usr/local/include/CyberKitAdditions
+        ${SDKROOT}/usr/local/include/CyberKitAdditions
         ${BUILT_PRODUCTS_DIR}/usr/local/include/webrtc
         ${SDKROOT}/usr/local/include/webrtc
         ${BUILT_PRODUCTS_DIR}/usr/local/include/webrtc/sdk/objc/Framework/Headers
@@ -184,22 +184,22 @@ function set_build_variables_for_WebCore()
 }
 
 
-function set_build_variables_for_WebKit()
+function set_build_variables_for_CyberKit()
 {
-    PROJECT_NAME=WebKit
+    PROJECT_NAME=CyberKit
     PROJECT_DIR="${OPENSOURCE_DIR}/Source/${PROJECT_NAME}"
     GENERATOR="${PROJECT_DIR}/Scripts/generate-derived-sources.sh"
     DERIVED_SOURCES_MAKE="${PROJECT_DIR}/DerivedSources.make"
-    DERIVED_SOURCES_DIR="${BUILT_PRODUCTS_DIR}/DerivedSources/WebKit2"
+    DERIVED_SOURCES_DIR="${BUILT_PRODUCTS_DIR}/DerivedSources/CyberKit2"
 
     export FRAMEWORK_SEARCH_PATHS="
         ${BUILT_PRODUCTS_DIR}"
     export HEADER_SEARCH_PATHS="
         ${BUILT_PRODUCTS_DIR}/usr/local/include
-        ${BUILT_PRODUCTS_DIR}/WebCore.framework/PrivateHeaders/ForwardingHeaders
-        ${BUILT_PRODUCTS_DIR}/DerivedSources/WebKit2
-        ${BUILT_PRODUCTS_DIR}/usr/local/include/WebKitAdditions
-        ${SDKROOT}/usr/local/include/WebKitAdditions
+        ${BUILT_PRODUCTS_DIR}/CyberCore.framework/PrivateHeaders/ForwardingHeaders
+        ${BUILT_PRODUCTS_DIR}/DerivedSources/CyberKit2
+        ${BUILT_PRODUCTS_DIR}/usr/local/include/CyberKitAdditions
+        ${SDKROOT}/usr/local/include/CyberKitAdditions
         ${BUILT_PRODUCTS_DIR}/usr/local/include/webrtc
         ${SDKROOT}/usr/local/include/webrtc
         ${PROJECT_DIR}"
@@ -224,9 +224,9 @@ function set_build_variables_for_DumpRenderTree()
     export SYSTEM_HEADER_SEARCH_PATHS=
 }
 
-function set_build_variables_for_WebKitTestRunner()
+function set_build_variables_for_CyberKitTestRunner()
 {
-    PROJECT_NAME=WebKitTestRunner
+    PROJECT_NAME=CyberKitTestRunner
     PROJECT_DIR="${OPENSOURCE_DIR}/Tools/${PROJECT_NAME}"
     GENERATOR="${PROJECT_DIR}/Scripts/generate-derived-sources.sh"
     DERIVED_SOURCES_MAKE="${PROJECT_DIR}/DerivedSources.make"
@@ -274,18 +274,18 @@ function set_build_variables()
     export PLATFORM_NAME=macosx
     export SDKROOT="$(xcrun -show-sdk-path)"
     export BUILD_SCRIPTS_DIR="${OPENSOURCE_DIR}/Source/WTF/Scripts"
-    export BUILT_PRODUCTS_DIR="$(find_first_existing "${OPENSOURCE_DIR}/WebKitBuild/"{Debug,Release}*)"
+    export BUILT_PRODUCTS_DIR="$(find_first_existing "${OPENSOURCE_DIR}/CyberKitBuild/"{Debug,Release}*)"
     [[ -n "${SDKROOT}" ]] || die "SDKROOT is not defined"
     [[ -e "${BUILD_SCRIPTS_DIR}" ]] || die "$BUILD_SCRIPTS_DIR does not exist"
-    [[ -n "${BUILT_PRODUCTS_DIR}" ]] || die "BUILT_PRODUCTS_DIR is not defined. You may need to build WebKit first."
+    [[ -n "${BUILT_PRODUCTS_DIR}" ]] || die "BUILT_PRODUCTS_DIR is not defined. You may need to build CyberKit first."
 
-    export WEBCORE_PRIVATE_HEADERS_DIR="${BUILT_PRODUCTS_DIR}/WebCore.framework/PrivateHeaders"
-    export WEBKIT2_PRIVATE_HEADERS_DIR="${BUILT_PRODUCTS_DIR}/WebKit.framework/PrivateHeaders"
-    export JAVASCRIPTCORE_PRIVATE_HEADERS_DIR="${BUILT_PRODUCTS_DIR}/JavaScriptCore.framework/PrivateHeaders"
-    export WEBKITADDITIONS_HEADER_SEARCH_PATHS="${BUILT_PRODUCTS_DIR}/usr/local/include/WebKitAdditions ${SDKROOT}/usr/local/include/WebKitAdditions"
-    [[ -e "${WEBCORE_PRIVATE_HEADERS_DIR}" ]] || die "$WEBCORE_PRIVATE_HEADERS_DIR does not exist. You may need to build WebKit first."
-    [[ -e "${JAVASCRIPTCORE_PRIVATE_HEADERS_DIR}" ]] || die "$JAVASCRIPTCORE_PRIVATE_HEADERS_DIR does not exist. You may need to build WebKit first."
-    # [[ -e "${WEBKITADDITIONS_HEADER_SEARCH_PATHS}" ]] || die "$WEBKITADDITIONS_HEADER_SEARCH_PATHS does not exist. You may need to build WebKit first."
+    export WEBCORE_PRIVATE_HEADERS_DIR="${BUILT_PRODUCTS_DIR}/CyberCore.framework/PrivateHeaders"
+    export WEBKIT2_PRIVATE_HEADERS_DIR="${BUILT_PRODUCTS_DIR}/CyberKit.framework/PrivateHeaders"
+    export JAVASCRIPTCORE_PRIVATE_HEADERS_DIR="${BUILT_PRODUCTS_DIR}/CyberScriptCore.framework/PrivateHeaders"
+    export WEBKITADDITIONS_HEADER_SEARCH_PATHS="${BUILT_PRODUCTS_DIR}/usr/local/include/CyberKitAdditions ${SDKROOT}/usr/local/include/CyberKitAdditions"
+    [[ -e "${WEBCORE_PRIVATE_HEADERS_DIR}" ]] || die "$WEBCORE_PRIVATE_HEADERS_DIR does not exist. You may need to build CyberKit first."
+    [[ -e "${JAVASCRIPTCORE_PRIVATE_HEADERS_DIR}" ]] || die "$JAVASCRIPTCORE_PRIVATE_HEADERS_DIR does not exist. You may need to build CyberKit first."
+    # [[ -e "${WEBKITADDITIONS_HEADER_SEARCH_PATHS}" ]] || die "$WEBKITADDITIONS_HEADER_SEARCH_PATHS does not exist. You may need to build CyberKit first."
 
     local FN=set_build_variables_for_${PROJECT_TAG}
     local IS_FUNCTION=$(type -t $FN)
@@ -370,10 +370,10 @@ function generate_xcfilelists_from_derivedsources()
     "${GENERATOR}" NO_SUPPLEMENTAL_FILES=1 --no-builtin-rules --dry-run --always-make --debug=abvijm all |
         "${OPENSOURCE_DIR}"/Tools/Scripts/extract-dependencies-from-makefile --input "${INPUT_XCFILELIST_PATH}" --output "${OUTPUT_XCFILELIST_PATH}"
 
-    replace "${INPUT_XCFILELIST_PATH}" 'WebCore' '$(PROJECT_DIR)'
-    replace "${INPUT_XCFILELIST_PATH}" 'JavaScriptCore' '$(PROJECT_DIR)'
-    replace "${INPUT_XCFILELIST_PATH}" 'JavaScriptCorePrivateHeaders' '$(JAVASCRIPTCORE_PRIVATE_HEADERS_DIR)'
-    replace "${INPUT_XCFILELIST_PATH}" 'WebKit2PrivateHeaders' '$(WEBKIT2_PRIVATE_HEADERS_DIR)'
+    replace "${INPUT_XCFILELIST_PATH}" 'CyberCore' '$(PROJECT_DIR)'
+    replace "${INPUT_XCFILELIST_PATH}" 'CyberScriptCore' '$(PROJECT_DIR)'
+    replace "${INPUT_XCFILELIST_PATH}" 'CyberScriptCorePrivateHeaders' '$(JAVASCRIPTCORE_PRIVATE_HEADERS_DIR)'
+    replace "${INPUT_XCFILELIST_PATH}" 'CyberKit2PrivateHeaders' '$(WEBKIT2_PRIVATE_HEADERS_DIR)'
     replace "${INPUT_XCFILELIST_PATH}" "${PROJECT_DIR}" '$(PROJECT_DIR)'
     replace "${INPUT_XCFILELIST_PATH}" "${WEBCORE_PRIVATE_HEADERS_DIR}" '$(WEBCORE_PRIVATE_HEADERS_DIR)'
     replace "${INPUT_XCFILELIST_PATH}" "${WEBKIT2_PRIVATE_HEADERS_DIR}" '$(WEBKIT2_PRIVATE_HEADERS_DIR)'
@@ -453,15 +453,15 @@ do
     shift
 done
 
-generate_xcfilelists_from_derivedsources JavaScriptCore
-generate_xcfilelists_from_derivedsources WebCore
-generate_xcfilelists_from_derivedsources WebKit
+generate_xcfilelists_from_derivedsources CyberScriptCore
+generate_xcfilelists_from_derivedsources CyberCore
+generate_xcfilelists_from_derivedsources CyberKit
 generate_xcfilelists_from_derivedsources DumpRenderTree
-generate_xcfilelists_from_derivedsources WebKitTestRunner
+generate_xcfilelists_from_derivedsources CyberKitTestRunner
 
-generate_xcfilelists_from_unifiedsources JavaScriptCore
-generate_xcfilelists_from_unifiedsources WebCore
-generate_xcfilelists_from_unifiedsources WebKit
+generate_xcfilelists_from_unifiedsources CyberScriptCore
+generate_xcfilelists_from_unifiedsources CyberCore
+generate_xcfilelists_from_unifiedsources CyberKit
 
 
 SOURCED=$([[ "$0" == "${BASH_SOURCE[@]}" ]] && echo 0 || echo 1)

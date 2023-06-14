@@ -22,7 +22,7 @@
 
 <#
     .Synopsis
-    Starts a EWS bot for WebKit.
+    Starts a EWS bot for CyberKit.
 
     .Parameter Queue
     The name of the EWS queue.
@@ -78,21 +78,21 @@ function Clean-PythonC
     }
 }
 
-function Clean-WebKitBuild
+function Clean-CyberKitBuild
 {
     if (Test-Path __cmake_systeminformation) {
         Write-Host 'Removing CMake cache';
         Remove-Item __cmake_systeminformation -Recurse -Force;
     }
 
-    if (Test-Path WebKitBuild) {
-        Write-Host 'Removing WebKitBuild';
-        Remove-Item WebKitBuild -Recurse -Force;
+    if (Test-Path CyberKitBuild) {
+        Write-Host 'Removing CyberKitBuild';
+        Remove-Item CyberKitBuild -Recurse -Force;
     }
 }
 
 while ($true) {
-    Clean-WebKitBuild;
+    Clean-CyberKitBuild;
     Clean-PythonC;
     Clean-TempDirectory;
     Clean-Git;

@@ -7,7 +7,7 @@ description('Tests that a page with a closed IndexedDB database goes into the pa
 window.jsTestIsAsync = true;
 
 if (window.testRunner)
-    testRunner.overridePreference("WebKitUsesPageCachePreferenceKey", 1);
+    testRunner.overridePreference("CyberKitUsesPageCachePreferenceKey", 1);
 
 window.addEventListener("pageshow", function(event) {
     debug("pageshow - " + (event.persisted ? "" : "not ") + "from cache");

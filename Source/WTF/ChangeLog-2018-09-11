@@ -126,7 +126,7 @@
         Reviewed by David Kilzer.
 
         This is a speculative fix for resolving build errors arising from conflicting
-        definitions of bad_optional_access when building WebKit with the latest clang.
+        definitions of bad_optional_access when building CyberKit with the latest clang.
 
         * wtf/Optional.h:
         (std::bad_optional_access::bad_optional_access): Deleted.
@@ -194,7 +194,7 @@
 
         * Scripts/generate-unified-source-bundles.rb:
         It turns out our plan to switch unified source bundle every time the directory
-        changes is not a good fit for projects like WebKit2 with many small directories.
+        changes is not a good fit for projects like CyberKit2 with many small directories.
         It leaves many unified source bundles with only a single source file,
         achieving only ~40% density.
 
@@ -772,7 +772,7 @@
         Reviewed by Filip Pizlo.
 
         Remove lfence instruction because it is crashing systems without SSE2 and
-        this is not the way how WebKit mitigates Spectre.
+        this is not the way how CyberKit mitigates Spectre.
 
         * wtf/Atomics.h:
         (WTF::crossModifyingCodeFence):
@@ -1278,7 +1278,7 @@
 
 2018-07-14  Kocsen Chung  <kocsen_chung@apple.com>
 
-        Ensure WebKit stack is ad-hoc signed
+        Ensure CyberKit stack is ad-hoc signed
         https://bugs.webkit.org/show_bug.cgi?id=187667
 
         Reviewed by Alexey Proskuryakov.
@@ -1468,7 +1468,7 @@
 
         Reviewed by Yusuke Suzuki.
 
-        On X86, in Source/JavaScriptCore/jit/CCallHelpers.h we have a
+        On X86, in Source/CyberScriptCore/jit/CCallHelpers.h we have a
         static_assert that uses cCallArity(), so it needs to be constant to
         avoid a compilation error. This is achieved by changing an ASSERT into
         a static_assert.
@@ -1552,7 +1552,7 @@
 
 2018-06-23  Darin Adler  <darin@apple.com>
 
-        [Cocoa] Improve ARC compatibility of more code in JavaScriptCore
+        [Cocoa] Improve ARC compatibility of more code in CyberScriptCore
         https://bugs.webkit.org/show_bug.cgi?id=186973
 
         Reviewed by Dan Bernstein.
@@ -1571,7 +1571,7 @@
 
 2018-06-30  Adam Barth  <abarth@webkit.org>
 
-        Port JavaScriptCore to OS(FUCHSIA)
+        Port CyberScriptCore to OS(FUCHSIA)
         https://bugs.webkit.org/show_bug.cgi?id=187223
 
         Reviewed by Daniel Bates.
@@ -1677,7 +1677,7 @@
 
 2018-06-27  Jonathan Bedard  <jbedard@apple.com>
 
-        Enable WebKit iOS 12 build
+        Enable CyberKit iOS 12 build
         https://bugs.webkit.org/show_bug.cgi?id=187024
         <rdar://problem/39759057>
 
@@ -1776,7 +1776,7 @@
         (WTF::MediaTimeRange::toJSONString const):
         * wtf/linux/MemoryFootprintLinux.cpp:
         (WTF::memoryFootprint):
-        * wtf/text/ASCIILiteral.cpp: Copied from Source/WebCore/css/CSSUnsetValue.cpp.
+        * wtf/text/ASCIILiteral.cpp: Copied from Source/CyberCore/css/CSSUnsetValue.cpp.
         (WTF::ASCIILiteral::dump const):
         * wtf/text/ASCIILiteral.h: Copied from Source/WTF/wtf/Indenter.h.
         (WTF::ASCIILiteral::operator const char* const):
@@ -1984,7 +1984,7 @@
 
 2018-06-11  Michael Saboff  <msaboff@apple.com>
 
-        JavaScriptCore: Disable 32-bit JIT on Windows
+        CyberScriptCore: Disable 32-bit JIT on Windows
         https://bugs.webkit.org/show_bug.cgi?id=185989
 
         Reviewed by Mark Lam.
@@ -2021,7 +2021,7 @@
         the NSAutoreleasePool class.
         (WTF::AutodrainedPool::~AutodrainedPool): Ditto.
 
-         * wtf/spi/cocoa/FoundationSPI.h: Moved from Source/WebCore/PAL/pal/spi/cocoa/FoundationSPI.h.
+         * wtf/spi/cocoa/FoundationSPI.h: Moved from Source/CyberCore/PAL/pal/spi/cocoa/FoundationSPI.h.
          Changed both include and declarations so it's the objc_autoreleasePoolPush/Pop instead
          of the higher level NS functions that call them.
 
@@ -2087,8 +2087,8 @@
 
         Reviewed by Mark Lam.
 
-        Move processHasEntitlement from Source/WebKit/Shared/mac/SandboxUtilities.h
-        into WTF so JavaScriptCore can also use it.
+        Move processHasEntitlement from Source/CyberKit/Shared/mac/SandboxUtilities.h
+        into WTF so CyberScriptCore can also use it.
 
         * WTF.xcodeproj/project.pbxproj:
         * wtf/PlatformMac.cmake:
@@ -2114,7 +2114,7 @@
 
 2018-06-05  Darin Adler  <darin@apple.com>
 
-        [Cocoa] More preparation for ARC, focusing on WebKit and smart pointers
+        [Cocoa] More preparation for ARC, focusing on CyberKit and smart pointers
         https://bugs.webkit.org/show_bug.cgi?id=186314
 
         Reviewed by Anders Carlsson.
@@ -2171,7 +2171,7 @@
 
         Reverted changeset:
 
-        "JavaScriptCore: Disable 32-bit JIT on Windows"
+        "CyberScriptCore: Disable 32-bit JIT on Windows"
         https://bugs.webkit.org/show_bug.cgi?id=185989
         https://trac.webkit.org/changeset/232212
 
@@ -2287,7 +2287,7 @@
 
 2018-05-25  Michael Saboff  <msaboff@apple.com>
 
-        JavaScriptCore: Disable 32-bit JIT on Windows
+        CyberScriptCore: Disable 32-bit JIT on Windows
         https://bugs.webkit.org/show_bug.cgi?id=185989
 
         Reviewed by Saam Barati.
@@ -2301,7 +2301,7 @@
 
         Reviewed by Carlos Garcia Campos.
 
-        Receive the memory pressure notifications from the UIProcess memory monitor via WebKit IPC.
+        Receive the memory pressure notifications from the UIProcess memory monitor via CyberKit IPC.
 
         * wtf/MemoryPressureHandler.h:
         * wtf/linux/MemoryPressureHandlerLinux.cpp:
@@ -2413,11 +2413,11 @@
 
         Reviewed by Geoffrey Garen.
 
-        Moved WeakObjCPtr.h from WebKit2 to WTF with RetainPtr.h, so that it can be used
-        in WebKitLegacy code.
+        Moved WeakObjCPtr.h from CyberKit2 to WTF with RetainPtr.h, so that it can be used
+        in CyberKitLegacy code.
 
         * WTF.xcodeproj/project.pbxproj:
-        * wtf/WeakObjCPtr.h: Renamed from Source/WebKit/Shared/mac/WeakObjCPtr.h.
+        * wtf/WeakObjCPtr.h: Renamed from Source/CyberKit/Shared/mac/WeakObjCPtr.h.
 
 2018-05-22  Filip Pizlo  <fpizlo@apple.com>
 
@@ -2517,7 +2517,7 @@
 
         Reviewed by Alex Christensen.
 
-        Disable some WebKit defined C++17 features for MSVC.
+        Disable some CyberKit defined C++17 features for MSVC.
 
         * wtf/StdLibExtras.h:
 
@@ -3051,7 +3051,7 @@
         If we define std::optional regardless of the existence of the standard library's <optional>,
         it causes compile errors. For example, in GCC 7 (specifically GCC 7.3.0) environment,
         <optional> is included in <unordered_map>.
-        We do not define std::optional in WebKit side if <optional> is offered.
+        We do not define std::optional in CyberKit side if <optional> is offered.
 
         And we also remove std::optional<T&> use since this is not accepted in C++17. Use
         std::optional<std::reference_wrapper<T>> instead.
@@ -3330,7 +3330,7 @@
 
         * WTF.xcodeproj/project.pbxproj:
         * wtf/CMakeLists.txt:
-        * wtf/PtrTag.h: Copied from Source/JavaScriptCore/runtime/PtrTag.h.
+        * wtf/PtrTag.h: Copied from Source/CyberScriptCore/runtime/PtrTag.h.
         (WTF::makePtrTagHash):
         (JSC::ptrTagName): Deleted.
         (JSC::tagForPtr): Deleted.
@@ -3455,7 +3455,7 @@
 
 2018-04-19  Brady Eidson  <beidson@apple.com>
 
-        Add globally-unique HistoryItem identifiers (and have WebKit2 adopt them).
+        Add globally-unique HistoryItem identifiers (and have CyberKit2 adopt them).
         <rdar://problem/39533949> and https://bugs.webkit.org/show_bug.cgi?id=184750
 
         Reviewed by Ryosuke Niwa.
@@ -3505,7 +3505,7 @@
         This patch adds TracePointCodes to measure process launch time and
         WebProcess::initializeWebProcess time.
         
-        It also renames the TracePoint function to tracePoint since WebKit style
+        It also renames the TracePoint function to tracePoint since CyberKit style
         does not capitalize the first letter in function names.
 
         * wtf/SystemTracing.h:
@@ -3747,25 +3747,25 @@
         Reviewed by Anders Carlsson.
 
         * WTF.xcodeproj/project.pbxproj:
-        * wtf/MachSendRight.h: Copied from WebCore/platform/cocoa/MachSendRight.h.
-        (WebCore::MachSendRight::operator bool const): Deleted.
-        (WebCore::MachSendRight::sendRight const): Deleted.
+        * wtf/MachSendRight.h: Copied from CyberCore/platform/cocoa/MachSendRight.h.
+        (CyberCore::MachSendRight::operator bool const): Deleted.
+        (CyberCore::MachSendRight::sendRight const): Deleted.
         * wtf/PlatformMac.cmake:
         * wtf/cocoa/CPUTimeCocoa.mm:
         (WTF::CPUTime::forCurrentThread): Do proper cleanup if the port is invalid.
-        * wtf/cocoa/MachSendRight.cpp: Copied from WebCore/platform/cocoa/MachSendRight.cpp.
+        * wtf/cocoa/MachSendRight.cpp: Copied from CyberCore/platform/cocoa/MachSendRight.cpp.
         (WTF::retainSendRight):
         (WTF::releaseSendRight):
         (WTF::deallocateSendRightSafely):
-        (WebCore::retainSendRight): Deleted.
-        (WebCore::releaseSendRight): Deleted.
-        (WebCore::MachSendRight::adopt): Deleted.
-        (WebCore::MachSendRight::create): Deleted.
-        (WebCore::MachSendRight::MachSendRight): Deleted.
-        (WebCore::MachSendRight::~MachSendRight): Deleted.
-        (WebCore::MachSendRight::operator=): Deleted.
-        (WebCore::MachSendRight::copySendRight const): Deleted.
-        (WebCore::MachSendRight::leakSendRight): Deleted.
+        (CyberCore::retainSendRight): Deleted.
+        (CyberCore::releaseSendRight): Deleted.
+        (CyberCore::MachSendRight::adopt): Deleted.
+        (CyberCore::MachSendRight::create): Deleted.
+        (CyberCore::MachSendRight::MachSendRight): Deleted.
+        (CyberCore::MachSendRight::~MachSendRight): Deleted.
+        (CyberCore::MachSendRight::operator=): Deleted.
+        (CyberCore::MachSendRight::copySendRight const): Deleted.
+        (CyberCore::MachSendRight::leakSendRight): Deleted.
 
 2018-04-04  Youenn Fablet  <youenn@apple.com>
 
@@ -3897,7 +3897,7 @@
         Reviewed by Yusuke Suzuki.
 
         Remove COMPILER_SUPPORTS(CXX_REFERENCE_QUALIFIED_FUNCTIONS), it's
-        supported by all compilers WebKit supports (it's a C++11 feature,
+        supported by all compilers CyberKit supports (it's a C++11 feature,
         *detection* of it with __has_extension was added to clang on May
         13th 2011, and VS2015 / GCC support it).
 
@@ -4229,11 +4229,11 @@
 
         * WTF.xcodeproj/project.pbxproj:
         * wtf/CMakeLists.txt:
-        * wtf/StdList.h: Copied from Source/JavaScriptCore/runtime/TypeLocationCache.h.
-        * wtf/StdMap.h: Copied from Source/JavaScriptCore/runtime/TypeLocationCache.h.
-        * wtf/StdSet.h: Copied from Source/JavaScriptCore/runtime/TypeLocationCache.h.
-        * wtf/StdUnorderedMap.h: Copied from Source/JavaScriptCore/runtime/TypeLocationCache.h.
-        * wtf/StdUnorderedSet.h: Copied from Source/JavaScriptCore/runtime/TypeLocationCache.h.
+        * wtf/StdList.h: Copied from Source/CyberScriptCore/runtime/TypeLocationCache.h.
+        * wtf/StdMap.h: Copied from Source/CyberScriptCore/runtime/TypeLocationCache.h.
+        * wtf/StdSet.h: Copied from Source/CyberScriptCore/runtime/TypeLocationCache.h.
+        * wtf/StdUnorderedMap.h: Copied from Source/CyberScriptCore/runtime/TypeLocationCache.h.
+        * wtf/StdUnorderedSet.h: Copied from Source/CyberScriptCore/runtime/TypeLocationCache.h.
 
 2018-03-22  Tim Horton  <timothy_horton@apple.com>
 
@@ -4247,13 +4247,13 @@
 
 2018-03-20  Brent Fulgham  <bfulgham@apple.com>
 
-        Create an assertion mechanism to ensure proper WebCore use in each WebKit Process
+        Create an assertion mechanism to ensure proper CyberCore use in each CyberKit Process
         https://bugs.webkit.org/show_bug.cgi?id=183806
         <rdar://problem/38694251>
 
         Reviewed by Ryosuke Niwa.
 
-        Part of our security improvements involve better isolation between the different WebKit
+        Part of our security improvements involve better isolation between the different CyberKit
         processes (UIProcess, WebContent, Networking, Storage, etc.).
 
         We need an assertion language we can use to protect certain critical APIs and code paths
@@ -4713,7 +4713,7 @@
         (WTF::StackShot::operator=):
         * wtf/SystemFree.h:
         (WTF::SystemFree<T::operator() const):
-        * wtf/UniqueArray.h: Copied from Source/WebKit/Platform/win/LoggingWin.cpp.
+        * wtf/UniqueArray.h: Copied from Source/CyberKit/Platform/win/LoggingWin.cpp.
         (WTF::makeUniqueArray):
         * wtf/Vector.h:
         (WTF::VectorTypeOperations::forceInitialize):
@@ -4814,7 +4814,7 @@
         GCC and Clang has the builtins for arithmetic operations with overflow flags.
         CheckedArithmetic operations can be done with this builtins. Since the compiler
         can use overflow flags, potentially this is more efficient. CheckedArithmetic
-        already has TestWebKitAPI tests and we ensured the tests pass.
+        already has TestCyberKitAPI tests and we ensured the tests pass.
 
         * wtf/CheckedArithmetic.h:
 
@@ -5191,7 +5191,7 @@
 
 2018-02-14  Michael Saboff  <msaboff@apple.com>
 
-        REGRESSION(225695) : com.apple.WebKit.WebContent at com.apple.JavaScriptCore: JSC::RegExp::match + 630 :: stack overflow
+        REGRESSION(225695) : com.matthewbenedict.CyberKit.WebContent at com.matthewbenedict.CyberScriptCore: JSC::RegExp::match + 630 :: stack overflow
         https://bugs.webkit.org/show_bug.cgi?id=182705
 
         Reviewed by Mark Lam.
@@ -5390,7 +5390,7 @@
 
         Reviewed by Alex Christensen.
 
-        WebKit has CollatorDefault.cpp providing necessary stubs when
+        CyberKit has CollatorDefault.cpp providing necessary stubs when
         UCONFIG_NO_COLLATION is defined, however it is not included in cmake
         file list.
 
@@ -5599,7 +5599,7 @@
         Reviewed by Saam Barati.
 
         Add a flag for TLS-based TLCs and set it to 0. We can re-enable this feature when we need to use TLCs for
-        actual thread-local allocation and when we fix the fact that WebCore context switches JSC VMs without telling
+        actual thread-local allocation and when we fix the fact that CyberCore context switches JSC VMs without telling
         us.
 
         * wtf/Platform.h:
@@ -5730,7 +5730,7 @@
 
 2018-01-23  Alex Christensen  <achristensen@webkit.org>
 
-        Remove pre-Sierra-OS-specific code in WTF and JavaScriptCore
+        Remove pre-Sierra-OS-specific code in WTF and CyberScriptCore
         https://bugs.webkit.org/show_bug.cgi?id=182028
 
         Reviewed by Keith Miller.
@@ -5782,8 +5782,8 @@
 
         Reviewed by Tim Horton.
 
-        Include AdditionalFeatureDefines.h, if possible. This allows WebKitAdditions to override
-        the value of certain feature flags in the OpenSource WebKit repository.
+        Include AdditionalFeatureDefines.h, if possible. This allows CyberKitAdditions to override
+        the value of certain feature flags in the OpenSource CyberKit repository.
 
         * wtf/Platform.h:
 
@@ -6187,7 +6187,7 @@
 
 2018-01-05  David Kilzer  <ddkilzer@apple.com>
 
-        Re-enable -Wcast-qual in WebCore for Apple ports
+        Re-enable -Wcast-qual in CyberCore for Apple ports
         <https://webkit.org/b/177895>
         <rdar://problem/34960830>
 
@@ -6254,7 +6254,7 @@
         due to overflow of std::chrono::time_point. So we intentionally avoid using
         std::chrono, and use WallTime, MonotonicTime, Seconds instead.
 
-        This patch removes all the remaining use of std::chrono from WebKit tree.
+        This patch removes all the remaining use of std::chrono from CyberKit tree.
 
         [1]: https://lists.webkit.org/pipermail/webkit-dev/2016-May/028242.html
 
@@ -6428,10 +6428,10 @@
         Reviewed by Dan Bernstein and Tim Horton.
 
         When building with older macOS SDKs where some AppKit constants don't exist, define the modern constants to be
-        equal to their deprecated counterparts. This allows us to just have the modern types in WebKit sources while
+        equal to their deprecated counterparts. This allows us to just have the modern types in CyberKit sources while
         avoiding breakage on old SDKs.
 
-        This, along with many other symbols in the compability header, can be removed once WebKit stops supporting macOS
+        This, along with many other symbols in the compability header, can be removed once CyberKit stops supporting macOS
         10.11.
 
         * wtf/mac/AppKitCompatibilityDeclarations.h:
@@ -6682,7 +6682,7 @@
 
 2017-12-14  David Kilzer  <ddkilzer@apple.com>
 
-        Enable -Wstrict-prototypes for WebKit
+        Enable -Wstrict-prototypes for CyberKit
         <https://webkit.org/b/180757>
         <rdar://problem/36024132>
 
@@ -6705,7 +6705,7 @@
 
         Reviewed by Darin Adler.
 
-        We remove Thread::tryCreate. When thread creation fails, we have no way to keep WebKit working.
+        We remove Thread::tryCreate. When thread creation fails, we have no way to keep CyberKit working.
         Compared to tryMalloc, Thread::create always consumes fixed size of resource. If it fails,
         this is not due to arbitrary large user request. It is not reasonable that some thread creations
         are handled gracefully while the other thread creations are not.
@@ -6982,7 +6982,7 @@
 
         Many callers of Thread::create assume that it returns non-nullptr Thread.
         But if the number of threads hits the limit in the system, creating Thread
-        would fail. In that case, it is really difficult to keep WebKit working.
+        would fail. In that case, it is really difficult to keep CyberKit working.
 
         We introduce Thread::tryCreate, and change the returned value from Thread::create
         from RefPtr<Thread> to Ref<Thread>. In Thread::create, we ensure thread creation
@@ -7003,7 +7003,7 @@
 
 2017-12-11  Eric Carlson  <eric.carlson@apple.com>
 
-        Web Inspector: Optionally log WebKit log parameters as JSON
+        Web Inspector: Optionally log CyberKit log parameters as JSON
         https://bugs.webkit.org/show_bug.cgi?id=180529
         <rdar://problem/35909462>
 
@@ -7133,7 +7133,7 @@
 
         Reviewed by JF Bastien.
 
-        Now VC++ is updated and all the WebKit compilers support C++14 relaxed constexpr.
+        Now VC++ is updated and all the CyberKit compilers support C++14 relaxed constexpr.
         This patch uses relaxed constexpr for StringHasher constexpr implementation
 
         * wtf/text/StringHasher.h:
@@ -7165,13 +7165,13 @@
 
 2017-12-08  Eric Carlson  <eric.carlson@apple.com>
 
-        Move Logger from PAL to WTF so it can be used outside of WebCore
+        Move Logger from PAL to WTF so it can be used outside of CyberCore
         https://bugs.webkit.org/show_bug.cgi?id=180561
 
         Reviewed by Alex Christensen.
 
         * WTF.xcodeproj/project.pbxproj:
-        * wtf/Logger.h: Copied from Source/WebCore/PAL/pal/Logger.h.
+        * wtf/Logger.h: Copied from Source/CyberCore/PAL/pal/Logger.h.
         (PAL::LogArgument::toString): Deleted.
         (PAL::Logger::create): Deleted.
         (PAL::Logger::logAlways const): Deleted.
@@ -7189,7 +7189,7 @@
         (PAL::Logger::log): Deleted.
         (PAL::Logger::observers): Deleted.
         (PAL::LogArgument<Logger::LogSiteIdentifier>::toString): Deleted.
-        * wtf/LoggerHelper.h: Copied from Source/WebCore/PAL/pal/LoggerHelper.h.
+        * wtf/LoggerHelper.h: Copied from Source/CyberCore/PAL/pal/LoggerHelper.h.
 
 2017-12-08  Yusuke Suzuki  <utatane.tea@gmail.com>
 
@@ -7258,7 +7258,7 @@
 
 2017-12-08  Yusuke Suzuki  <utatane.tea@gmail.com>
 
-        Use StaticLock and Lock instead of Mutex in Windows WebKitLegacy
+        Use StaticLock and Lock instead of Mutex in Windows CyberKitLegacy
         https://bugs.webkit.org/show_bug.cgi?id=180572
 
         Reviewed by Mark Lam.
@@ -7447,7 +7447,7 @@
 
 2017-12-02  Darin Adler  <darin@apple.com>
 
-        Modernize some aspects of text codecs, eliminate WebKit use of strcasecmp
+        Modernize some aspects of text codecs, eliminate CyberKit use of strcasecmp
         https://bugs.webkit.org/show_bug.cgi?id=180009
 
         Reviewed by Alex Christensen.
@@ -7603,7 +7603,7 @@
 
 2017-12-05  Michael Saboff  <msaboff@apple.com>
 
-        Make WebKit build for ARM64_32
+        Make CyberKit build for ARM64_32
         https://bugs.webkit.org/show_bug.cgi?id=180447
 
         Reviewed by Mark Lam.
@@ -7668,7 +7668,7 @@
           https://bugs.webkit.org/show_bug.cgi?id=180250#c0 for some preliminary measurements.
         
         - Introduced holdLockIf, which makes it easy to perform predicated lock acquisition. We use that
-          to pick a lock in WebCore.
+          to pick a lock in CyberCore.
         
         - Introduced CountingLock. It's like WTF::Lock except it also enables optimistic read transactions
           sorta like Java's StampedLock.
@@ -7783,7 +7783,7 @@
         - Add mild support for an exception-based implementation, but
           don't do noexcept yet.
         - Rename everything to follow STL style, and keep a global using
-          or variable alias where possible to reduce WebKit code churn.
+          or variable alias where possible to reduce CyberKit code churn.
         - Minor API updates to remove things that aren't in the proposal
           anymore.
 
@@ -7945,7 +7945,7 @@
         * wtf/text/StringImpl.h: Include StringHasher.h instead of Hasher.h.
 
         * wtf/text/WTFString.h: Added a hash function. This was useful in some
-        adoption I was doing in WebCore, not included in this patch.
+        adoption I was doing in CyberCore, not included in this patch.
 
         * wtf/unicode/UTF8.cpp: Include StringHasher.h instead of Hasher.h.
 
@@ -7993,13 +7993,13 @@
 
         Reviewed by Myles C. Maxfield.
 
-        Moved DateComponents from WebCore/platform into WTF.
+        Moved DateComponents from CyberCore/platform into WTF.
         Removed isLeapYear from DateComponents as DateMath already has that function.
 
         * WTF.xcodeproj/project.pbxproj:
         * wtf/CMakeLists.txt:
-        * wtf/DateComponents.cpp: Renamed from Source\WebCore\platform\DateComponents.cpp.
-        * wtf/DateComponents.h: Renamed from Source\WebCore\platform\DateComponents.h.
+        * wtf/DateComponents.cpp: Renamed from Source\CyberCore\platform\DateComponents.cpp.
+        * wtf/DateComponents.h: Renamed from Source\CyberCore\platform\DateComponents.h.
 
 2017-12-01  Youenn Fablet  <youenn@apple.com>
 
@@ -8211,7 +8211,7 @@
 
         * WTF.xcodeproj/project.pbxproj:
         * wtf/CMakeLists.txt:
-        * wtf/JSONValues.cpp: Renamed from Source/JavaScriptCore/inspector/InspectorValues.cpp.
+        * wtf/JSONValues.cpp: Renamed from Source/CyberScriptCore/inspector/InspectorValues.cpp.
         (JSON::Value::null):
         (JSON::Value::create):
         (JSON::Value::asValue):
@@ -8245,7 +8245,7 @@
         (JSON::Object::create):
         (JSON::Array::create):
         (JSON::ArrayBase::memoryCost const):
-        * wtf/JSONValues.h: Renamed from Source/JavaScriptCore/inspector/InspectorValues.h.
+        * wtf/JSONValues.h: Renamed from Source/CyberScriptCore/inspector/InspectorValues.h.
         (JSON::ObjectBase::find):
         (JSON::ObjectBase::find const):
         (JSON::ObjectBase::setBoolean):
@@ -8531,7 +8531,7 @@
         Reviewed by JF Bastien.
 
         Currently, we use known CPU information to determine endianess of the current
-        architecture. But this means that unknown CPU does not work well in WebKit
+        architecture. But this means that unknown CPU does not work well in CyberKit
         withou modifying code. Instead, we use compiler or system's macro to determine
         endianess. This paves the way to dropping many CPUs in Platform.h by replacing
         them with CPU(UNKNOWN)[1].
@@ -8542,7 +8542,7 @@
 
 2017-11-18  Chris Dumez  <cdumez@apple.com>
 
-        ASSERTION FAILED: registration in WebCore::SWServerJobQueue::scriptContextStarted(ServiceWorkerIdentifier)
+        ASSERTION FAILED: registration in CyberCore::SWServerJobQueue::scriptContextStarted(ServiceWorkerIdentifier)
         https://bugs.webkit.org/show_bug.cgi?id=179846
 
         Reviewed by Darin Adler.
@@ -8706,7 +8706,7 @@
 
         * WTF.xcodeproj/project.pbxproj:
         * wtf/CMakeLists.txt:
-        * wtf/JSONValues.cpp: Renamed from Source/JavaScriptCore/inspector/InspectorValues.cpp.
+        * wtf/JSONValues.cpp: Renamed from Source/CyberScriptCore/inspector/InspectorValues.cpp.
         (JSON::Value::null):
         (JSON::Value::create):
         (JSON::Value::asValue):
@@ -8740,7 +8740,7 @@
         (JSON::Object::create):
         (JSON::Array::create):
         (JSON::ArrayBase::memoryCost const):
-        * wtf/JSONValues.h: Renamed from Source/JavaScriptCore/inspector/InspectorValues.h.
+        * wtf/JSONValues.h: Renamed from Source/CyberScriptCore/inspector/InspectorValues.h.
         (JSON::ObjectBase::find):
         (JSON::ObjectBase::find const):
         (JSON::ObjectBase::setBoolean):
@@ -8863,7 +8863,7 @@
 
 2017-11-08  Tim Horton  <timothy_horton@apple.com>
 
-        [ios-simulator] API test WebKit.BundleParameters is a flaky failure
+        [ios-simulator] API test CyberKit.BundleParameters is a flaky failure
         https://bugs.webkit.org/show_bug.cgi?id=178363
         <rdar://problem/35043144>
 
@@ -8926,7 +8926,7 @@
 
         Reviewed by Saam Barati, Simon Fraser, and Ryosuke Niwa.
         
-        This just adds an easy way of using the bmalloc IsoHeap API in WebKit. If bmalloc is not
+        This just adds an easy way of using the bmalloc IsoHeap API in CyberKit. If bmalloc is not
         enabled, these macros will just make the object FastMalloced.
 
         * WTF.xcodeproj/project.pbxproj:
@@ -9165,7 +9165,7 @@
 
 2017-10-19  Keith Miller  <keith_miller@apple.com>
 
-        REGRESSION (r223476): WebCore exports symbols with names belonging to other frameworks
+        REGRESSION (r223476): CyberCore exports symbols with names belonging to other frameworks
         https://bugs.webkit.org/show_bug.cgi?id=178424
 
         Reviewed by David Kilzer.
@@ -9178,7 +9178,7 @@
 
 2017-10-18  Keith Miller  <keith_miller@apple.com>
 
-        Setup WebCore build to start using unified sources.
+        Setup CyberCore build to start using unified sources.
         https://bugs.webkit.org/show_bug.cgi?id=178362
 
         Reviewed by Tim Horton.
@@ -9221,7 +9221,7 @@
 
 2017-10-17  Keith Miller  <keith_miller@apple.com>
 
-        Change WebCore sources to work with unified source builds
+        Change CyberCore sources to work with unified source builds
         https://bugs.webkit.org/show_bug.cgi?id=178229
 
         Rubber stamped by Tim Horton.
@@ -9317,7 +9317,7 @@
 
         Add AtomicString(const StaticStringImpl*) constructor. This is needed since
         this patch adds constexpr to the static, global StaticStringImpl objects
-        generated in WebCore/bindings/scripts/StaticString.pm.
+        generated in CyberCore/bindings/scripts/StaticString.pm.
 
         * wtf/text/AtomicString.h:
         (WTF::AtomicString::AtomicString):
@@ -9530,7 +9530,7 @@
         this function would remove trailing zeroes from the exponent if
         present instead of from the mantissa. This meant that it would
         format 1e10 as "1.00000e+1" instead of "1e+10". Added regression
-        tests for this to TestWebKitAPI.
+        tests for this to TestCyberKitAPI.
 
         * wtf/dtoa/utils.h:
         (WTF::double_conversion::StringBuilder::RemoveCharacters): Added.
@@ -9614,7 +9614,7 @@
         For GCC and Clang, generate an error at build time that will alert
         the developer that she is trying to build Release without any compiler
         optimization. A build time error is much better than an unexpected
-        "oh, WebKit is really slow ..."  situation later.
+        "oh, CyberKit is really slow ..."  situation later.
 
         If this was intended, then we tell the developer that she can continue
         by just setting -DRELEASE_WITHOUT_OPTIMIZATIONS in the list of build
@@ -9716,7 +9716,7 @@
         For GCC and Clang, generate an error at build time that will alert
         the developer that she is trying to build Release without any compiler
         optimization. A build time error is much better than an unexpected
-        "oh, WebKit is really slow ..."  situation later.
+        "oh, CyberKit is really slow ..."  situation later.
 
         If this was intended, then we tell the developer that she can continue
         by just setting -DRELEASE_WITHOUT_OPTIMIZATIONS in the list of build
@@ -9782,18 +9782,18 @@
 
 2017-10-02  Myles C. Maxfield  <mmaxfield@apple.com>
 
-        Move LineEnding.{h,cpp} from WebCore/platform/text to wtf/text
+        Move LineEnding.{h,cpp} from CyberCore/platform/text to wtf/text
         https://bugs.webkit.org/show_bug.cgi?id=176575
 
         Reviewed by Alex Christensen.
 
-        As part of the PAL effort, we're trying to move everything out of WebCore/platform, one-by-one.
+        As part of the PAL effort, we're trying to move everything out of CyberCore/platform, one-by-one.
         These LineEnding files belong in WTF.
 
         * WTF.xcodeproj/project.pbxproj:
-        * wtf/text/LineEnding.cpp: Renamed from Source/WebCore/platform/text/LineEnding.cpp.
+        * wtf/text/LineEnding.cpp: Renamed from Source/CyberCore/platform/text/LineEnding.cpp.
         (WTF::normalizeLineEndingsToCRLF):
-        * wtf/text/LineEnding.h: Renamed from Source/WebCore/platform/text/LineEnding.h.
+        * wtf/text/LineEnding.h: Renamed from Source/CyberCore/platform/text/LineEnding.h.
 
 2017-10-02  Geoffrey Garen  <ggaren@apple.com>
 
@@ -9929,7 +9929,7 @@
 
 2017-09-26  Zan Dobersek  <zdobersek@igalia.com>
 
-        Support building JavaScriptCore with the Bionic C library
+        Support building CyberScriptCore with the Bionic C library
         https://bugs.webkit.org/show_bug.cgi?id=177427
 
         Reviewed by Michael Catanzaro.
@@ -10072,7 +10072,7 @@
 
 2017-09-18  Andy Estes  <aestes@apple.com>
 
-        [Cocoa] Upstream sandbox-related WebKitSystemInterface functions
+        [Cocoa] Upstream sandbox-related CyberKitSystemInterface functions
         https://bugs.webkit.org/show_bug.cgi?id=177047
 
         Reviewed by Daniel Bates.
@@ -10317,18 +10317,18 @@
 
         Reviewed by Brent Fulgham.
 
-        WebCore/platform/Language was the only* user of PlatformUserPreferredLanguages (with 1 exception).
-        That exception is that JavaScriptCore needed the functionality of WebCore/platform/Language, but it
+        CyberCore/platform/Language was the only* user of PlatformUserPreferredLanguages (with 1 exception).
+        That exception is that CyberScriptCore needed the functionality of CyberCore/platform/Language, but it
         couldn't get it because of the layering violation, so instead it erroneously called into
         PlatformUserPreferredLanguages instead. This patch merges these two files into WTF so JSC gets the
-        right function and the PAL effort has one less file to move from WebCore/platform into PAL.
+        right function and the PAL effort has one less file to move from CyberCore/platform into PAL.
 
         * WTF.xcodeproj/project.pbxproj:
         * wtf/CMakeLists.txt:
-        * wtf/Language.cpp: Renamed from Source/WebCore/platform/Language.cpp.
+        * wtf/Language.cpp: Renamed from Source/CyberCore/platform/Language.cpp.
         (WTF::addLanguageChangeObserver):
         (WTF::userPreferredLanguages):
-        * wtf/Language.h: Renamed from Source/WebCore/platform/Language.h.
+        * wtf/Language.h: Renamed from Source/CyberCore/platform/Language.h.
         * wtf/PlatformGTK.cmake:
         * wtf/PlatformJSCOnly.cmake:
         * wtf/PlatformMac.cmake:
@@ -10354,12 +10354,12 @@
 
 2017-09-06  Per Arne Vollan  <pvollan@apple.com>
 
-        [Win] WebCore failed to build, InbandTextTrackPrivateAVF: base class undefined.
+        [Win] CyberCore failed to build, InbandTextTrackPrivateAVF: base class undefined.
         https://bugs.webkit.org/show_bug.cgi?id=176431
 
         Reviewed by Alex Christensen.
 
-        AVFoundation header detection should be done in WebCore because of build dependencies. 
+        AVFoundation header detection should be done in CyberCore because of build dependencies. 
 
         * AVFoundationSupport.py: Removed.
         * wtf/Platform.h:
@@ -10392,13 +10392,13 @@
 
         Reviewed by Sam Weinig.
 
-        WebKit project does not have stake holders supporting Solaris right now.
+        CyberKit project does not have stake holders supporting Solaris right now.
         And Solaris + SPARC in 64bit environment does not work well since its
         address space includes non-48bit area. It breaks our JSVALUE64 in JSC.
         In addition, Solaris a bit complicates our threading implementation
         because of its special threading stack.
 
-        This patch removes OS(SOLARIS) and COMPILER(SUNCC) support from WebKit.
+        This patch removes OS(SOLARIS) and COMPILER(SUNCC) support from CyberKit.
 
         * wtf/Compiler.h:
         * wtf/InlineASM.h:
@@ -10761,7 +10761,7 @@
         * wtf/CrossThreadTask.h:
         Move crossThreadCopy() from CrossThreadTask.h to CrossThreadCopier.h and
         add "using WTF::crossThreadCopy" statement to make it more easily usable
-        from WebCore.
+        from CyberCore.
 
 2017-08-30  Matt Lewis  <jlewis3@apple.com>
 
@@ -10956,7 +10956,7 @@
         We change escape operation of JSON Quote from branch-based to table-based.
         This patch partially adopts SpiderMonkey's change to StringBuilderJSON.cpp
         to optimize this escaping operation. We separate changes from StringBuilder.cpp
-        to apply MPL to StringBuilderJSON.cpp file. Since WebKit already adopts MPL in
+        to apply MPL to StringBuilderJSON.cpp file. Since CyberKit already adopts MPL in
         some files (like, DateMath.h), it is acceptable.
 
         Kraken json-stringify-tinderbox shows 7.2% improvement.
@@ -11318,8 +11318,8 @@
 
         Reviewed by Darin Adler.
 
-        There are many places in WebCore/WebKit that we call functions like, 
-        WebCore::stripLeadingAndTrailingHTMLSpaces,  or String::stripWhiteSpace() only to use 
+        There are many places in CyberCore/CyberKit that we call functions like, 
+        CyberCore::stripLeadingAndTrailingHTMLSpaces,  or String::stripWhiteSpace() only to use 
         the allocated String as a temporary for either another transformation or a comparison.
         Now that we have StringView, we can avoid that extra allocation, by having returning a
         StringView  substring in these scenarios.
@@ -11568,7 +11568,7 @@
 
         * WTF.xcodeproj/project.pbxproj:
         * wtf/CMakeLists.txt:
-        * wtf/text/ValueToString.h: Renamed from Source/WebCore/platform/ValueToString.h.
+        * wtf/text/ValueToString.h: Renamed from Source/CyberCore/platform/ValueToString.h.
 
 2017-08-11  Tim Horton  <timothy_horton@apple.com>
 
@@ -11731,9 +11731,9 @@
 
         * WTF.xcodeproj/project.pbxproj:
         * wtf/CMakeLists.txt:
-        * wtf/text/TextStream.cpp: Renamed from Source/WebCore/platform/text/TextStream.cpp.
+        * wtf/text/TextStream.cpp: Renamed from Source/CyberCore/platform/text/TextStream.cpp.
         (WTF::TextStream::writeIndent):
-        * wtf/text/TextStream.h: Renamed from Source/WebCore/platform/text/TextStream.h.
+        * wtf/text/TextStream.h: Renamed from Source/CyberCore/platform/text/TextStream.h.
         (WTF::TextStream::FormatNumberRespectingIntegers::FormatNumberRespectingIntegers):
 
 2017-08-09  Commit Queue  <commit-queue@webkit.org>
@@ -12569,7 +12569,7 @@
 
 2017-07-14  Filip Pizlo  <fpizlo@apple.com>
 
-        It should be easy to decide how WebKit yields
+        It should be easy to decide how CyberKit yields
         https://bugs.webkit.org/show_bug.cgi?id=174298
 
         Reviewed by Saam Barati.
@@ -12631,7 +12631,7 @@
         Unreviewed, rolling out r219732.
         https://bugs.webkit.org/show_bug.cgi?id=174748
 
-        static is not threadsafe in WebKit tree (Requested by
+        static is not threadsafe in CyberKit tree (Requested by
         yusukesuzuki on #webkit).
 
         Reverted changeset:
@@ -12878,11 +12878,11 @@
         * wtf/CMakeLists.txt:
         * wtf/CrossThreadCopier.h:
         * wtf/ParkingLot.h:
-        * wtf/ThreadGroup.cpp: Copied from Source/JavaScriptCore/wasm/WasmMachineThreads.cpp.
+        * wtf/ThreadGroup.cpp: Copied from Source/CyberScriptCore/wasm/WasmMachineThreads.cpp.
         (WTF::ThreadGroup::~ThreadGroup):
         (WTF::ThreadGroup::add):
         (WTF::ThreadGroup::addCurrentThread):
-        * wtf/ThreadGroup.h: Copied from Source/JavaScriptCore/wasm/WasmMachineThreads.cpp.
+        * wtf/ThreadGroup.h: Copied from Source/CyberScriptCore/wasm/WasmMachineThreads.cpp.
         (WTF::ThreadGroup::create):
         (WTF::ThreadGroup::threads):
         (WTF::ThreadGroup::getLock):
@@ -13008,9 +13008,9 @@
         Move the definition of USE_AVFOUNDATION on Windows to wtf/platform.h
 
         Add a custom command to generate AVFoundationHeaderDetection.h, which
-        is renamed from WebCoreHeaderDetection.h
+        is renamed from CyberCoreHeaderDetection.h
 
-        * AVFoundationSupport.py: Moved from Source/WebCore/AVFoundationSupport.py.
+        * AVFoundationSupport.py: Moved from Source/CyberCore/AVFoundationSupport.py.
         * wtf/Platform.h:
         * wtf/PlatformWin.cmake:
 
@@ -13430,13 +13430,13 @@
         * wtf/CMakeLists.txt:
         * wtf/CrossThreadCopier.h:
         * wtf/ParkingLot.h:
-        * wtf/ThreadGroup.cpp: Copied from Source/JavaScriptCore/wasm/WasmMachineThreads.cpp.
+        * wtf/ThreadGroup.cpp: Copied from Source/CyberScriptCore/wasm/WasmMachineThreads.cpp.
         (WTF::ThreadGroup::destructionMutex):
         (WTF::ThreadGroup::~ThreadGroup):
         (WTF::ThreadGroup::add):
         (WTF::ThreadGroup::addCurrentThread):
         (WTF::ThreadGroup::removeCurrentThread):
-        * wtf/ThreadGroup.h: Copied from Source/JavaScriptCore/wasm/WasmMachineThreads.cpp.
+        * wtf/ThreadGroup.h: Copied from Source/CyberScriptCore/wasm/WasmMachineThreads.cpp.
         (WTF::ThreadGroup::create):
         (WTF::ThreadGroup::threads):
         (WTF::ThreadGroup::getLock):
@@ -13537,9 +13537,9 @@
         Reviewed by Alex Christensen.
 
         * WTF.xcodeproj/project.pbxproj:
-        * wtf/SoftLinking.h: Copied from Source/WebCore/platform/ios/QuickLookSoftLink.mm.
-        * wtf/cocoa/SoftLinking.h: Renamed from Source/WebCore/platform/cocoa/SoftLinking.h.
-        * wtf/win/SoftLinking.h: Renamed from Source/WebCore/platform/win/SoftLinking.h.
+        * wtf/SoftLinking.h: Copied from Source/CyberCore/platform/ios/QuickLookSoftLink.mm.
+        * wtf/cocoa/SoftLinking.h: Renamed from Source/CyberCore/platform/cocoa/SoftLinking.h.
+        * wtf/win/SoftLinking.h: Renamed from Source/CyberCore/platform/win/SoftLinking.h.
 
 2017-07-05  Yusuke Suzuki  <utatane.tea@gmail.com>
 
@@ -13725,7 +13725,7 @@
 
 2017-07-03  Myles C. Maxfield  <mmaxfield@apple.com>
 
-        Remove copy of ICU headers from WebKit
+        Remove copy of ICU headers from CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=116407
 
         Reviewed by Alex Christensen.
@@ -13734,11 +13734,11 @@
         to DSTROOT/usr/local/include/. These headers already live inside a
         "unicode" folder, so an example path of a header is
         DSTROOT/usr/local/include/unicode/uchar.h. This is already in the search
-        path of the other WebKit projects, so those other projects can remove
+        path of the other CyberKit projects, so those other projects can remove
         their explicit listing of the old place these headers lived.
 
         Also add the remaining ICU 55.1 headers which the other projects (like
-        WebCore) need. Revert any local changes to these headers in favor of
+        CyberCore) need. Revert any local changes to these headers in favor of
         using the GCC_PREPROCESSOR_DEFINITIONS build setting. This is so we can
         compile the same way against unmodified headers.
 
@@ -13758,7 +13758,7 @@
         (Calendar::internalSet):
         (Calendar::weekNumber):
         * icu/unicode/caniter.h: Added.
-        * icu/unicode/chariter.h: Renamed from Source/WebCore/icu/unicode/chariter.h.
+        * icu/unicode/chariter.h: Renamed from Source/CyberCore/icu/unicode/chariter.h.
         * icu/unicode/choicfmt.h: Added.
         * icu/unicode/coleitr.h: Added.
         (CollationElementIterator::primaryOrder):
@@ -13915,31 +13915,31 @@
         * icu/unicode/tzrule.h: Added.
         * icu/unicode/tztrans.h: Added.
         * icu/unicode/ubidi.h: Added.
-        * icu/unicode/ucal.h: Renamed from Source/JavaScriptCore/icu/unicode/ucal.h.
+        * icu/unicode/ucal.h: Renamed from Source/CyberScriptCore/icu/unicode/ucal.h.
         * icu/unicode/ucasemap.h: Added.
         * icu/unicode/ucat.h: Added.
         * icu/unicode/ucharstrie.h: Added.
         * icu/unicode/ucharstriebuilder.h: Added.
         * icu/unicode/uchriter.h: Added.
         * icu/unicode/uclean.h: Added.
-        * icu/unicode/ucnv_cb.h: Renamed from Source/WebCore/icu/unicode/ucnv_cb.h.
+        * icu/unicode/ucnv_cb.h: Renamed from Source/CyberCore/icu/unicode/ucnv_cb.h.
         * icu/unicode/ucnvsel.h: Added.
-        * icu/unicode/ucoleitr.h: Renamed from Source/WebCore/icu/unicode/ucoleitr.h.
+        * icu/unicode/ucoleitr.h: Renamed from Source/CyberCore/icu/unicode/ucoleitr.h.
         * icu/unicode/uconfig.h:
-        * icu/unicode/ucsdet.h: Renamed from Source/WebCore/icu/unicode/ucsdet.h.
-        * icu/unicode/udat.h: Renamed from Source/JavaScriptCore/icu/unicode/udat.h.
+        * icu/unicode/ucsdet.h: Renamed from Source/CyberCore/icu/unicode/ucsdet.h.
+        * icu/unicode/udat.h: Renamed from Source/CyberScriptCore/icu/unicode/udat.h.
         * icu/unicode/udata.h: Added.
         * icu/unicode/udateintervalformat.h: Added.
-        * icu/unicode/udatpg.h: Renamed from Source/JavaScriptCore/icu/unicode/udatpg.h.
-        * icu/unicode/udisplaycontext.h: Renamed from Source/JavaScriptCore/icu/unicode/udisplaycontext.h.
-        * icu/unicode/ufieldpositer.h: Renamed from Source/JavaScriptCore/icu/unicode/ufieldpositer.h.
-        * icu/unicode/uformattable.h: Renamed from Source/JavaScriptCore/icu/unicode/uformattable.h.
+        * icu/unicode/udatpg.h: Renamed from Source/CyberScriptCore/icu/unicode/udatpg.h.
+        * icu/unicode/udisplaycontext.h: Renamed from Source/CyberScriptCore/icu/unicode/udisplaycontext.h.
+        * icu/unicode/ufieldpositer.h: Renamed from Source/CyberScriptCore/icu/unicode/ufieldpositer.h.
+        * icu/unicode/uformattable.h: Renamed from Source/CyberScriptCore/icu/unicode/uformattable.h.
         * icu/unicode/ugender.h: Added.
-        * icu/unicode/uidna.h: Renamed from Source/WebCore/icu/unicode/uidna.h.
+        * icu/unicode/uidna.h: Renamed from Source/CyberCore/icu/unicode/uidna.h.
         * icu/unicode/uldnames.h: Added.
         * icu/unicode/ulistformatter.h: Added.
         * icu/unicode/ulocdata.h: Added.
-        * icu/unicode/umisc.h: Renamed from Source/JavaScriptCore/icu/unicode/umisc.h.
+        * icu/unicode/umisc.h: Renamed from Source/CyberScriptCore/icu/unicode/umisc.h.
         * icu/unicode/umsg.h: Added.
         * icu/unicode/unifilt.h: Added.
         * icu/unicode/unifunct.h: Added.
@@ -13954,8 +13954,8 @@
         (UnicodeSet::toUSet):
         (UnicodeSet::span):
         (UnicodeSet::spanBack):
-        * icu/unicode/unum.h: Renamed from Source/JavaScriptCore/icu/unicode/unum.h.
-        * icu/unicode/unumsys.h: Renamed from Source/JavaScriptCore/icu/unicode/unumsys.h.
+        * icu/unicode/unum.h: Renamed from Source/CyberScriptCore/icu/unicode/unum.h.
+        * icu/unicode/unumsys.h: Renamed from Source/CyberScriptCore/icu/unicode/unumsys.h.
         * icu/unicode/upluralrules.h: Added.
         * icu/unicode/uregex.h: Added.
         * icu/unicode/uregion.h: Added.
@@ -13965,12 +13965,12 @@
         (ures_getNextUnicodeString):
         (ures_getUnicodeStringByIndex):
         (ures_getUnicodeStringByKey):
-        * icu/unicode/usearch.h: Renamed from Source/WebCore/icu/unicode/usearch.h.
+        * icu/unicode/usearch.h: Renamed from Source/CyberCore/icu/unicode/usearch.h.
         * icu/unicode/usetiter.h: Added.
         (UnicodeSetIterator::isString):
         (UnicodeSetIterator::getCodepoint):
         (UnicodeSetIterator::getCodepointEnd):
-        * icu/unicode/ushape.h: Renamed from Source/WebCore/icu/unicode/ushape.h.
+        * icu/unicode/ushape.h: Renamed from Source/CyberCore/icu/unicode/ushape.h.
         * icu/unicode/uspoof.h: Added.
         * icu/unicode/usprep.h: Added.
         * icu/unicode/ustdio.h: Added.
@@ -14057,13 +14057,13 @@
 
         Reverted changeset:
 
-        "Remove copy of ICU headers from WebKit"
+        "Remove copy of ICU headers from CyberKit"
         https://bugs.webkit.org/show_bug.cgi?id=116407
         http://trac.webkit.org/changeset/219103
 
 2017-07-03  Myles C. Maxfield  <mmaxfield@apple.com>
 
-        Remove copy of ICU headers from WebKit
+        Remove copy of ICU headers from CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=116407
 
         Reviewed by Alex Christensen.
@@ -14072,11 +14072,11 @@
         to DSTROOT/usr/local/include/. These headers already live inside a
         "unicode" folder, so an example path of a header is
         DSTROOT/usr/local/include/unicode/uchar.h. This is already in the search
-        path of the other WebKit projects, so those other projects can remove
+        path of the other CyberKit projects, so those other projects can remove
         their explicit listing of the old place these headers lived.
 
         Also add the remaining ICU 55.1 headers which the other projects (like
-        WebCore) need. Revert any local changes to these headers in favor of
+        CyberCore) need. Revert any local changes to these headers in favor of
         using the GCC_PREPROCESSOR_DEFINITIONS build setting. This is so we can
         compile the same way against unmodified headers.
 
@@ -14096,7 +14096,7 @@
         (Calendar::internalSet):
         (Calendar::weekNumber):
         * icu/unicode/caniter.h: Added.
-        * icu/unicode/chariter.h: Renamed from Source/WebCore/icu/unicode/chariter.h.
+        * icu/unicode/chariter.h: Renamed from Source/CyberCore/icu/unicode/chariter.h.
         * icu/unicode/choicfmt.h: Added.
         * icu/unicode/coleitr.h: Added.
         (CollationElementIterator::primaryOrder):
@@ -14253,31 +14253,31 @@
         * icu/unicode/tzrule.h: Added.
         * icu/unicode/tztrans.h: Added.
         * icu/unicode/ubidi.h: Added.
-        * icu/unicode/ucal.h: Renamed from Source/JavaScriptCore/icu/unicode/ucal.h.
+        * icu/unicode/ucal.h: Renamed from Source/CyberScriptCore/icu/unicode/ucal.h.
         * icu/unicode/ucasemap.h: Added.
         * icu/unicode/ucat.h: Added.
         * icu/unicode/ucharstrie.h: Added.
         * icu/unicode/ucharstriebuilder.h: Added.
         * icu/unicode/uchriter.h: Added.
         * icu/unicode/uclean.h: Added.
-        * icu/unicode/ucnv_cb.h: Renamed from Source/WebCore/icu/unicode/ucnv_cb.h.
+        * icu/unicode/ucnv_cb.h: Renamed from Source/CyberCore/icu/unicode/ucnv_cb.h.
         * icu/unicode/ucnvsel.h: Added.
-        * icu/unicode/ucoleitr.h: Renamed from Source/WebCore/icu/unicode/ucoleitr.h.
+        * icu/unicode/ucoleitr.h: Renamed from Source/CyberCore/icu/unicode/ucoleitr.h.
         * icu/unicode/uconfig.h:
-        * icu/unicode/ucsdet.h: Renamed from Source/WebCore/icu/unicode/ucsdet.h.
-        * icu/unicode/udat.h: Renamed from Source/JavaScriptCore/icu/unicode/udat.h.
+        * icu/unicode/ucsdet.h: Renamed from Source/CyberCore/icu/unicode/ucsdet.h.
+        * icu/unicode/udat.h: Renamed from Source/CyberScriptCore/icu/unicode/udat.h.
         * icu/unicode/udata.h: Added.
         * icu/unicode/udateintervalformat.h: Added.
-        * icu/unicode/udatpg.h: Renamed from Source/JavaScriptCore/icu/unicode/udatpg.h.
-        * icu/unicode/udisplaycontext.h: Renamed from Source/JavaScriptCore/icu/unicode/udisplaycontext.h.
-        * icu/unicode/ufieldpositer.h: Renamed from Source/JavaScriptCore/icu/unicode/ufieldpositer.h.
-        * icu/unicode/uformattable.h: Renamed from Source/JavaScriptCore/icu/unicode/uformattable.h.
+        * icu/unicode/udatpg.h: Renamed from Source/CyberScriptCore/icu/unicode/udatpg.h.
+        * icu/unicode/udisplaycontext.h: Renamed from Source/CyberScriptCore/icu/unicode/udisplaycontext.h.
+        * icu/unicode/ufieldpositer.h: Renamed from Source/CyberScriptCore/icu/unicode/ufieldpositer.h.
+        * icu/unicode/uformattable.h: Renamed from Source/CyberScriptCore/icu/unicode/uformattable.h.
         * icu/unicode/ugender.h: Added.
-        * icu/unicode/uidna.h: Renamed from Source/WebCore/icu/unicode/uidna.h.
+        * icu/unicode/uidna.h: Renamed from Source/CyberCore/icu/unicode/uidna.h.
         * icu/unicode/uldnames.h: Added.
         * icu/unicode/ulistformatter.h: Added.
         * icu/unicode/ulocdata.h: Added.
-        * icu/unicode/umisc.h: Renamed from Source/JavaScriptCore/icu/unicode/umisc.h.
+        * icu/unicode/umisc.h: Renamed from Source/CyberScriptCore/icu/unicode/umisc.h.
         * icu/unicode/umsg.h: Added.
         * icu/unicode/unifilt.h: Added.
         * icu/unicode/unifunct.h: Added.
@@ -14292,8 +14292,8 @@
         (UnicodeSet::toUSet):
         (UnicodeSet::span):
         (UnicodeSet::spanBack):
-        * icu/unicode/unum.h: Renamed from Source/JavaScriptCore/icu/unicode/unum.h.
-        * icu/unicode/unumsys.h: Renamed from Source/JavaScriptCore/icu/unicode/unumsys.h.
+        * icu/unicode/unum.h: Renamed from Source/CyberScriptCore/icu/unicode/unum.h.
+        * icu/unicode/unumsys.h: Renamed from Source/CyberScriptCore/icu/unicode/unumsys.h.
         * icu/unicode/upluralrules.h: Added.
         * icu/unicode/uregex.h: Added.
         * icu/unicode/uregion.h: Added.
@@ -14303,12 +14303,12 @@
         (ures_getNextUnicodeString):
         (ures_getUnicodeStringByIndex):
         (ures_getUnicodeStringByKey):
-        * icu/unicode/usearch.h: Renamed from Source/WebCore/icu/unicode/usearch.h.
+        * icu/unicode/usearch.h: Renamed from Source/CyberCore/icu/unicode/usearch.h.
         * icu/unicode/usetiter.h: Added.
         (UnicodeSetIterator::isString):
         (UnicodeSetIterator::getCodepoint):
         (UnicodeSetIterator::getCodepointEnd):
-        * icu/unicode/ushape.h: Renamed from Source/WebCore/icu/unicode/ushape.h.
+        * icu/unicode/ushape.h: Renamed from Source/CyberCore/icu/unicode/ushape.h.
         * icu/unicode/usprep.h: Added.
         * icu/unicode/ustdio.h: Added.
         * icu/unicode/ustream.h: Added.
@@ -14524,7 +14524,7 @@
 
         Reviewed by Chris Dumez.
 
-        * wtf/DispatchPtr.h: Added (moved from WebKit2)
+        * wtf/DispatchPtr.h: Added (moved from CyberKit2)
         * wtf/Platform.h: Make sure USE_FILE_LOCK is enabled.
 
 2017-06-28  David Kilzer  <ddkilzer@apple.com>
@@ -14582,7 +14582,7 @@
 
 2017-06-25  Konstantin Tokarev  <annulen@yandex.ru>
 
-        Remove excessive headers from JavaScriptCore
+        Remove excessive headers from CyberScriptCore
         https://bugs.webkit.org/show_bug.cgi?id=173812
 
         Reviewed by Darin Adler.
@@ -14622,8 +14622,8 @@
 
         Add
 
-        notifyutil -p org.WebKit.lowMemory.begin
-        notifyutil -p org.WebKit.lowMemory.end
+        notifyutil -p org.CyberKit.lowMemory.begin
+        notifyutil -p org.CyberKit.lowMemory.end
 
         for debugging.
 
@@ -14648,9 +14648,9 @@
 
         Reviewed by Daniel Bates.
 
-        This function is counting WebCore::Page objects (excluding utility Pages used
+        This function is counting CyberCore::Page objects (excluding utility Pages used
         by SVG-as-image and the web inspector) so let's name it appropriately.
-        Not all WebKit clients have tabs.
+        Not all CyberKit clients have tabs.
 
         * wtf/MemoryPressureHandler.cpp:
         (WTF::MemoryPressureHandler::setPageCount):
@@ -14829,7 +14829,7 @@
 
 2017-06-16  Wenson Hsieh  <wenson_hsieh@apple.com>
 
-        [iOS DnD] Upstream iOS drag and drop implementation into OpenSource WebKit
+        [iOS DnD] Upstream iOS drag and drop implementation into OpenSource CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=173366
         <rdar://problem/32767014>
 
@@ -14946,14 +14946,14 @@
 
 2017-06-12  Carlos Garcia Campos  <cgarcia@igalia.com>
 
-        [GTK] Move WebKit GType macros to WTF
+        [GTK] Move CyberKit GType macros to WTF
         https://bugs.webkit.org/show_bug.cgi?id=173249
 
         Reviewed by Žan Doberšek.
 
-        They can be used by glib-based ports and eventually by JavaScriptCore glib bindings too.
+        They can be used by glib-based ports and eventually by CyberScriptCore glib bindings too.
 
-        * wtf/glib/WTFGType.h: Copied from Source/WebKit2/UIProcess/API/gtk/WebKitPrivate.h.
+        * wtf/glib/WTFGType.h: Copied from Source/CyberKit2/UIProcess/API/gtk/CyberKitPrivate.h.
 
 2017-06-11  Yusuke Suzuki  <utatane.tea@gmail.com>
 
@@ -15163,7 +15163,7 @@
 
 2017-06-06  Don Olmstead  <don.olmstead@am.sony.com>
 
-        [WebCore] Enable REQUEST_ANIMATION_FRAME_TIMER for all ports
+        [CyberCore] Enable REQUEST_ANIMATION_FRAME_TIMER for all ports
         https://bugs.webkit.org/show_bug.cgi?id=172780
 
         Reviewed by Alex Christensen.
@@ -15575,7 +15575,7 @@
 
         Reviewed by Antti Koivisto.
 
-        If someone is using WebKit with a non-standard allocator, they are likely trying to debug
+        If someone is using CyberKit with a non-standard allocator, they are likely trying to debug
         or test something, and suddenly getting killed is not gonna help with that.
 
         * wtf/MemoryPressureHandler.cpp:
@@ -16216,8 +16216,8 @@
 
         * wtf/HashMap.h: Add HashMap::get() overload that takes a HashTranslator.
         * wtf/text/StringHash.h:
-        (WebCore::ASCIICaseInsensitiveStringViewHashTranslator::hash): Added.
-        (WebCore::ASCIICaseInsensitiveStringViewHashTranslator::equal): Added.
+        (CyberCore::ASCIICaseInsensitiveStringViewHashTranslator::hash): Added.
+        (CyberCore::ASCIICaseInsensitiveStringViewHashTranslator::equal): Added.
 
 2017-05-01  Dan Bernstein  <mitz@apple.com>
 
@@ -16256,12 +16256,12 @@
 
 2017-04-29  Yusuke Suzuki  <utatane.tea@gmail.com>
 
-        Move WebCore CPUTime to WTF and implement it in all the platforms
+        Move CyberCore CPUTime to WTF and implement it in all the platforms
         https://bugs.webkit.org/show_bug.cgi?id=171477
 
         Reviewed by Chris Dumez.
 
-        We move WebCore::CPUTime to WTF::CPUTime since it is useful even in JSC
+        We move CyberCore::CPUTime to WTF::CPUTime since it is useful even in JSC
         and it does not depend on any external libraries.
         And we additionally implement WTF::CPUTime in all the platforms: Windows and Unix.
 
@@ -16269,18 +16269,18 @@
 
         * WTF.xcodeproj/project.pbxproj:
         * wtf/CMakeLists.txt:
-        * wtf/CPUTime.cpp: Copied from Source/WebCore/platform/CPUTime.cpp.
+        * wtf/CPUTime.cpp: Copied from Source/CyberCore/platform/CPUTime.cpp.
         (WTF::CPUTime::percentageCPUUsageSince):
-        * wtf/CPUTime.h: Renamed from Source/WebCore/platform/CPUTime.h.
+        * wtf/CPUTime.h: Renamed from Source/CyberCore/platform/CPUTime.h.
         * wtf/PlatformEfl.cmake:
         * wtf/PlatformGTK.cmake:
         * wtf/PlatformJSCOnly.cmake:
         * wtf/PlatformMac.cmake:
         * wtf/PlatformWin.cmake:
-        * wtf/cocoa/CPUTimeCocoa.mm: Renamed from Source/WebCore/platform/cocoa/CPUTimeCocoa.mm.
+        * wtf/cocoa/CPUTimeCocoa.mm: Renamed from Source/CyberCore/platform/cocoa/CPUTimeCocoa.mm.
         (WTF::timeValueToMicroseconds):
         (WTF::CPUTime::get):
-        * wtf/unix/CPUTimeUnix.cpp: Renamed from Source/WebCore/platform/CPUTime.cpp.
+        * wtf/unix/CPUTimeUnix.cpp: Renamed from Source/CyberCore/platform/CPUTime.cpp.
         (WTF::timevalToSeconds):
         (WTF::CPUTime::get):
         * wtf/win/CPUTimeWin.cpp: Added.
@@ -16340,15 +16340,15 @@
 
 2017-04-27  Carlos Garcia Campos  <cgarcia@igalia.com>
 
-        Move UUID from WebCore/platform to WTF
+        Move UUID from CyberCore/platform to WTF
         https://bugs.webkit.org/show_bug.cgi?id=171372
 
         Reviewed by Michael Catanzaro.
 
         * WTF.xcodeproj/project.pbxproj:
         * wtf/CMakeLists.txt:
-        * wtf/UUID.cpp: Renamed from Source/WebCore/platform/UUID.cpp.
-        * wtf/UUID.h: Renamed from Source/WebCore/platform/UUID.h.
+        * wtf/UUID.cpp: Renamed from Source/CyberCore/platform/UUID.cpp.
+        * wtf/UUID.h: Renamed from Source/CyberCore/platform/UUID.h.
 
 2017-04-26  Keith Miller  <keith_miller@apple.com>
 
@@ -16501,26 +16501,26 @@
         * wtf/Assertions.cpp:
         * wtf/CMakeLists.txt:
         * wtf/Platform.h:
-        * wtf/StackTrace.cpp: Renamed from Source/JavaScriptCore/tools/StackTrace.cpp.
+        * wtf/StackTrace.cpp: Renamed from Source/CyberScriptCore/tools/StackTrace.cpp.
         (WTF::StackTrace::captureStackTrace):
         (WTF::StackTrace::dump):
-        * wtf/StackTrace.h: Copied from Source/JavaScriptCore/tools/StackTrace.h.
+        * wtf/StackTrace.h: Copied from Source/CyberScriptCore/tools/StackTrace.h.
         (WTF::StackTrace::StackTrace):
         (WTF::StackTrace::stack):
         (WTF::StackTrace::DemangleEntry::mangledName):
         (WTF::StackTrace::DemangleEntry::demangledName):
         (WTF::StackTrace::DemangleEntry::DemangleEntry):
-        * wtf/SystemFree.h: Renamed from Source/JavaScriptCore/tools/StackTrace.h.
+        * wtf/SystemFree.h: Renamed from Source/CyberScriptCore/tools/StackTrace.h.
         (WTF::SystemFree::operator()):
 
 2017-04-24  Yusuke Suzuki  <utatane.tea@gmail.com>
 
-        [AppleWin] The procedure entry point ?waitForThreadCompletion@WTF@@YAHI@Z could not be located in the dynamic link library WebKitQuartzCoreAdditions.dll
+        [AppleWin] The procedure entry point ?waitForThreadCompletion@WTF@@YAHI@Z could not be located in the dynamic link library CyberKitQuartzCoreAdditions.dll
         https://bugs.webkit.org/show_bug.cgi?id=171029
 
         Reviewed by Brent Fulgham.
 
-        While WTF Threading APIs are updated, WebKitQuartzCoreAdditions.dll in Windows uses some of the old APIs,
+        While WTF Threading APIs are updated, CyberKitQuartzCoreAdditions.dll in Windows uses some of the old APIs,
         waitForThreadCompletion and createThread. This patch implements both on top of the new APIs.
         These APIs are only exposed in Windows for this compatibility problem and new code should not use it.
 
@@ -16612,7 +16612,7 @@
 
         * wtf/text/Base64.h:
         (WTF::isBase64OrBase64URLCharacter):
-        Move helper predicate used for parsing either type of Base64 encoded string from WebCore.
+        Move helper predicate used for parsing either type of Base64 encoded string from CyberCore.
 
 2017-04-21  Keith Miller  <keith_miller@apple.com>
 
@@ -16900,13 +16900,13 @@
 
         Reviewed by Sam Weinig.
 
-        Test: TestWebKitAPI/Tests/WTF/darwin/WeakLinking.cpp
+        Test: TestCyberKitAPI/Tests/WTF/darwin/WeakLinking.cpp
 
         * WTF.xcodeproj/project.pbxproj: Added reference to new file.
         * wtf/darwin: Added.
         * wtf/darwin/WeakLinking.h: Added.
         (WTF::isNullFunctionPointer): Copied from ResourceLoadStatisticsClassifierCocoa.cpp in
-          WebKit2 and changed into a function template that works with any function pointer.
+          CyberKit2 and changed into a function template that works with any function pointer.
 
 2017-04-17  Ryan Haddad  <ryanhaddad@apple.com>
 
@@ -17083,9 +17083,9 @@
 
         Reviewed by Mark Lam.
 
-        This patch is refactoring of WTF Threading mechanism to merge JavaScriptCore's threading extension to WTF Threading.
-        Previously, JavaScriptCore requires richer threading features (such as suspending and resuming threads), and they
-        are implemented for PlatformThread in JavaScriptCore. But these features should be implemented in WTF Threading side
+        This patch is refactoring of WTF Threading mechanism to merge CyberScriptCore's threading extension to WTF Threading.
+        Previously, CyberScriptCore requires richer threading features (such as suspending and resuming threads), and they
+        are implemented for PlatformThread in CyberScriptCore. But these features should be implemented in WTF Threading side
         instead of maintaining JSC's own threading features too. This patch removes these features from JSC and move it to
         WTF Threading.
 
@@ -17136,7 +17136,7 @@
         (WTF::ParkingLot::forEachImpl):
         * wtf/ParkingLot.h:
         (WTF::ParkingLot::forEach):
-        * wtf/PlatformRegisters.h: Renamed from Source/JavaScriptCore/runtime/PlatformThread.h.
+        * wtf/PlatformRegisters.h: Renamed from Source/CyberScriptCore/runtime/PlatformThread.h.
         * wtf/RefPtr.h:
         (WTF::RefPtr::RefPtr):
         * wtf/ThreadFunctionInvocation.h:
@@ -17278,7 +17278,7 @@
 
 2017-04-11  Yusuke Suzuki  <utatane.tea@gmail.com>
 
-        [WebCore][JSC] ResourceUsageData.{timeOfNextEdenCollection,timeOfNextFullCollection} should be MonotonicTime
+        [CyberCore][JSC] ResourceUsageData.{timeOfNextEdenCollection,timeOfNextFullCollection} should be MonotonicTime
         https://bugs.webkit.org/show_bug.cgi?id=170725
 
         Reviewed by Sam Weinig.
@@ -17743,7 +17743,7 @@
         to avoid repeatedly open and close urandom file descriptor in Linux.
 
         The purpose is similar to std::random_device, but WTF::RandomDevice explicitly
-        avoids using ARC4, which is recently attempted to be removed from the WebKit
+        avoids using ARC4, which is recently attempted to be removed from the CyberKit
         tree[1].
 
         [1]: https://trac.webkit.org/r214329
@@ -17946,7 +17946,7 @@
         Unreviewed, rolling out r214351.
 
         This change caused API test
-        WebKit1.DidCreateJavaScriptContextBackForwardCacheTest to
+        CyberKit1.DidCreateJavaScriptContextBackForwardCacheTest to
         fail.
 
         Reverted changeset:
@@ -18030,7 +18030,7 @@
 
         This replaces the old mechanism where MemoryPressureHandler would invoke
         a callback to know whether the process was eligible for a memory kill.
-        Instead we now plumb the relevant information down from WebCore and kill
+        Instead we now plumb the relevant information down from CyberCore and kill
         based on this activity state.
 
         * wtf/MemoryPressureHandler.cpp:
@@ -18093,7 +18093,7 @@
         Reviewed by Zalan Bujtas.
 
         Use a more cohesive set of system trace points that give a good overview of what
-        WebKit is doing. Added points for resource loading, render tree building, sync messages
+        CyberKit is doing. Added points for resource loading, render tree building, sync messages
         to the web process, async image decode, WASM and fetching cookies.
 
         * wtf/SystemTracing.h:
@@ -18601,14 +18601,14 @@
 
         Reviewed by Sam Weinig.
 
-        Move MemoryPressureHandler down to WTF so it can be used from JavaScriptCore.
+        Move MemoryPressureHandler down to WTF so it can be used from CyberScriptCore.
 
         I had to do a blind rewrite of the Windows memory checking timer since it can
-        no longer use WebCore::Timer. I also moved the Win32Handle helper class to WTF.
+        no longer use CyberCore::Timer. I also moved the Win32Handle helper class to WTF.
 
         * WTF.xcodeproj/project.pbxproj:
         * wtf/CMakeLists.txt:
-        * wtf/MemoryPressureHandler.cpp: Renamed from Source/WebCore/platform/MemoryPressureHandler.cpp.
+        * wtf/MemoryPressureHandler.cpp: Renamed from Source/CyberCore/platform/MemoryPressureHandler.cpp.
         (WTF::MemoryPressureHandler::singleton):
         (WTF::MemoryPressureHandler::MemoryPressureHandler):
         (WTF::MemoryPressureHandler::setShouldUsePeriodicMemoryMonitor):
@@ -18627,7 +18627,7 @@
         (WTF::MemoryPressureHandler::platformReleaseMemory):
         (WTF::MemoryPressureHandler::ReliefLogger::platformMemoryUsage):
         (WTF::MemoryPressureHandler::platformInitialize):
-        * wtf/MemoryPressureHandler.h: Renamed from Source/WebCore/platform/MemoryPressureHandler.h.
+        * wtf/MemoryPressureHandler.h: Renamed from Source/CyberCore/platform/MemoryPressureHandler.h.
         (WTF::MemoryPressureHandler::setMemoryKillCallback):
         (WTF::MemoryPressureHandler::setProcessIsEligibleForMemoryKillCallback):
         (WTF::MemoryPressureHandler::setLowMemoryHandler):
@@ -18643,20 +18643,20 @@
         * wtf/PlatformGTK.cmake:
         * wtf/PlatformMac.cmake:
         * wtf/PlatformWin.cmake:
-        * wtf/cocoa/MemoryPressureHandlerCocoa.mm: Renamed from Source/WebCore/platform/cocoa/MemoryPressureHandlerCocoa.mm.
+        * wtf/cocoa/MemoryPressureHandlerCocoa.mm: Renamed from Source/CyberCore/platform/cocoa/MemoryPressureHandlerCocoa.mm.
         (WTF::MemoryPressureHandler::platformReleaseMemory):
         (WTF::MemoryPressureHandler::install):
         (WTF::MemoryPressureHandler::uninstall):
         (WTF::MemoryPressureHandler::holdOff):
         (WTF::MemoryPressureHandler::respondToMemoryPressure):
         (WTF::MemoryPressureHandler::ReliefLogger::platformMemoryUsage):
-        * wtf/linux/CurrentProcessMemoryStatus.cpp: Renamed from Source/WebCore/platform/linux/CurrentProcessMemoryStatus.cpp.
+        * wtf/linux/CurrentProcessMemoryStatus.cpp: Renamed from Source/CyberCore/platform/linux/CurrentProcessMemoryStatus.cpp.
         (WTF::systemPageSize):
         (WTF::currentProcessMemoryStatus):
-        * wtf/linux/CurrentProcessMemoryStatus.h: Renamed from Source/WebCore/platform/linux/CurrentProcessMemoryStatus.h.
-        * wtf/linux/MemoryPressureHandlerLinux.cpp: Renamed from Source/WebCore/platform/linux/MemoryPressureHandlerLinux.cpp.
+        * wtf/linux/CurrentProcessMemoryStatus.h: Renamed from Source/CyberCore/platform/linux/CurrentProcessMemoryStatus.h.
+        * wtf/linux/MemoryPressureHandlerLinux.cpp: Renamed from Source/CyberCore/platform/linux/MemoryPressureHandlerLinux.cpp.
         (WTF::MemoryPressureHandler::EventFDPoller::EventFDPoller):
-        * wtf/win/MemoryPressureHandlerWin.cpp: Renamed from Source/WebCore/platform/win/MemoryPressureHandlerWin.cpp.
+        * wtf/win/MemoryPressureHandlerWin.cpp: Renamed from Source/CyberCore/platform/win/MemoryPressureHandlerWin.cpp.
         (WTF::MemoryPressureHandler::platformInitialize):
         (WTF::MemoryPressureHandler::windowsMeasurementTimerFired):
         (WTF::MemoryPressureHandler::platformReleaseMemory):
@@ -18665,7 +18665,7 @@
         (WTF::MemoryPressureHandler::holdOff):
         (WTF::MemoryPressureHandler::respondToMemoryPressure):
         (WTF::MemoryPressureHandler::ReliefLogger::platformMemoryUsage):
-        * wtf/win/Win32Handle.h: Renamed from Source/WebCore/platform/win/Win32Handle.h.
+        * wtf/win/Win32Handle.h: Renamed from Source/CyberCore/platform/win/Win32Handle.h.
         (WTF::Win32Handle::Win32Handle):
         (WTF::Win32Handle::~Win32Handle):
         (WTF::Win32Handle::clear):
@@ -18906,7 +18906,7 @@
         Make initialization functions more independent so that they can run in different
         order. WTF::initializeMainThread initializes WTF threading, so that neither WTF nor JSC theading need to be
         initialized before. RunLoop::initializeMainRunLoop() requires main thread to be initialized in some
-        ports, so it initializes main thread too. WebKit1 always calls WTF::initializeMainThreadToProcessMainThread()
+        ports, so it initializes main thread too. CyberKit1 always calls WTF::initializeMainThreadToProcessMainThread()
         before RunLoop::initializeMainRunLoop() so there's no problem there. GC threads are initialized alwayas by the
         main thread. The rules should be simpler now:
 
@@ -18915,7 +18915,7 @@
             initialize a main thread or main run loop.
           - WTF::initializeMainThread: only needs to be explicitly called if process initializes a main thread but not a
             main run loop.
-          - WTF::initializeMainThreadToProcessMainThread(): should always be called in WebKit1 before
+          - WTF::initializeMainThreadToProcessMainThread(): should always be called in CyberKit1 before
             RunLoop::initializeMainRunLoop().
           - RunLoop::initializeMainRunLoop(): to initialize the main run loop. The only requirement is JSC::initializeThreading()
             to be called before if JSC is used.
@@ -18978,11 +18978,11 @@
 
         This has recently been added and the patch is good. It's just revealing a problem with our timers. The test is
         posting a message recursively, and also starts a timeout timer to finish the test. The timeout timer is never
-        fired for us, because WebCore timers have lower priority than the one used by postMessage. ScriptExecutionContext
+        fired for us, because CyberCore timers have lower priority than the one used by postMessage. ScriptExecutionContext
         uses Document::postTask, that uses scheduleOnMainThread, that uses RunLoop::dispatch(). We are not setting any
         priority for the timer used by RunLoop::dispatch, so it's using the default.
         Use a RunLoop::Timer to schedule tasks to the main thread instead of using RunLoop::dispatch(). This allows us
-        to use a different priority, that is now set to G_PRIORITY_HIGH_IDLE + 20 to match WebCore timers. But it also
+        to use a different priority, that is now set to G_PRIORITY_HIGH_IDLE + 20 to match CyberCore timers. But it also
         avoids the double queue we had with RunLoop::dispatch(), because scheduleOnMainThread() also queues the tasks.
 
         * wtf/glib/MainThreadGLib.cpp:
@@ -19133,7 +19133,7 @@
 
         This has recently been added and the patch is good. It's just revealing a problem with our timers. The test is
         posting a message recursively, and also starts a timeout timer to finish the test. The timeout timer is never
-        fired for us, because WebCore timers have lower priority than the one used by
+        fired for us, because CyberCore timers have lower priority than the one used by
         postMessage. ScriptExecutionContext uses Document::postTask, that uses scheduleOnMainThread, that uses
         RunLoop::dispatch(). We are not setting any priority for the timer used by RunLoop::dispatch, so it's using the
         default. RunLoop::dispatch is normally used to schedule tasks between threads, or just to ensure something is
@@ -19281,7 +19281,7 @@
 
 2017-02-13  Brady Eidson  <beidson@apple.com>
 
-        Followup to: Replace all WebKit Library Version checks in WK2 with SDK version checks.
+        Followup to: Replace all CyberKit Library Version checks in WK2 with SDK version checks.
         https://bugs.webkit.org/show_bug.cgi?id=168124
 
         Reviewed by Geoffrey Garen.
@@ -19373,7 +19373,7 @@
 
 2017-02-09  Brady Eidson  <beidson@apple.com>
 
-        Transition "WebKit Library Version" checks to SDK version checks.
+        Transition "CyberKit Library Version" checks to SDK version checks.
         <rdar://problem/30313696> and https://bugs.webkit.org/show_bug.cgi?id=168056
 
         Reviewed by Geoffrey Garen.
@@ -19385,12 +19385,12 @@
         Unreviewed, rolling out r211980 and r211987.
         https://bugs.webkit.org/show_bug.cgi?id=168072
 
-        Caused API test WebKit2.DuplicateCompletionHandlerCalls to
+        Caused API test CyberKit2.DuplicateCompletionHandlerCalls to
         fail (Requested by ryanhaddad on #webkit).
 
         Reverted changesets:
 
-        "Transition "WebKit Library Version" checks to SDK version
+        "Transition "CyberKit Library Version" checks to SDK version
         checks."
         https://bugs.webkit.org/show_bug.cgi?id=168056
         http://trac.webkit.org/changeset/211980
@@ -19405,8 +19405,8 @@
 
         Reviewed by Tim Horton.
 
-        * wtf/ios/WebCoreThread.cpp:
-        * wtf/ios/WebCoreThread.h:
+        * wtf/ios/CyberCoreThread.cpp:
+        * wtf/ios/CyberCoreThread.h:
 
 2017-02-09  Brady Eidson  <beidson@apple.com>
 
@@ -19418,7 +19418,7 @@
 
 2017-02-09  Brady Eidson  <beidson@apple.com>
 
-        Transition "WebKit Library Version" checks to SDK version checks.
+        Transition "CyberKit Library Version" checks to SDK version checks.
         <rdar://problem/30313696> and https://bugs.webkit.org/show_bug.cgi?id=168056
 
         Reviewed by Geoffrey Garen.
@@ -19525,7 +19525,7 @@
         Unreviewed, rolling out r211571 and r211582.
         https://bugs.webkit.org/show_bug.cgi?id=167751
 
-        This change caused API test WebKit1.MemoryPressureHandler to
+        This change caused API test CyberKit1.MemoryPressureHandler to
         fail with an assertion. (Requested by ryanhaddad on #webkit).
 
         Reverted changesets:
@@ -19556,10 +19556,10 @@
 
 2017-02-01  Wenson Hsieh  <wenson_hsieh@apple.com>
 
-        Unreviewed, fix the WebKit nightly open source build
+        Unreviewed, fix the CyberKit nightly open source build
         <rdar://problem/30308635>
 
-        We cannot assume all internal SDKs have the latest WebKitAdditions, so we need an explicit header check here.
+        We cannot assume all internal SDKs have the latest CyberKitAdditions, so we need an explicit header check here.
 
         * wtf/Platform.h:
 
@@ -19627,12 +19627,12 @@
 
 2017-01-28  Wenson Hsieh  <wenson_hsieh@apple.com>
 
-        Check USE(APPLE_INTERNAL_SDK) instead of specific headers when importing from WebKitAdditions
+        Check USE(APPLE_INTERNAL_SDK) instead of specific headers when importing from CyberKitAdditions
         https://bugs.webkit.org/show_bug.cgi?id=167555
 
         Reviewed by Dan Bernstein.
 
-        Instead of guarding #import <WebKitAdditions/*> on the existence of the imported file, consult
+        Instead of guarding #import <CyberKitAdditions/*> on the existence of the imported file, consult
         USE(APPLE_INTERNAL_SDK) instead.
 
         * wtf/Platform.h:
@@ -19923,7 +19923,7 @@
 
 2017-01-11  Andreas Kling  <akling@apple.com>
 
-        Crash when WebCore's GC heap grows way too large.
+        Crash when CyberCore's GC heap grows way too large.
         <https://webkit.org/b/166875>
         <rdar://problem/27896585>
 
@@ -19964,54 +19964,54 @@
 
         * WTF.xcodeproj/project.pbxproj:
         * wtf/persistence: Added.
-        * wtf/persistence/Coder.h: Copied from Source/WebKit2/NetworkProcess/cache/NetworkCacheCoder.h.
-        (WebKit::NetworkCache::Coder::encode): Deleted.
-        (WebKit::NetworkCache::Coder::decode): Deleted.
-        * wtf/persistence/Coders.cpp: Copied from Source/WebKit2/NetworkProcess/cache/NetworkCacheCoders.cpp.
-        (WebKit::NetworkCache::Coder<AtomicString>::encode): Deleted.
-        (WebKit::NetworkCache::Coder<AtomicString>::decode): Deleted.
-        (WebKit::NetworkCache::Coder<CString>::encode): Deleted.
-        (WebKit::NetworkCache::Coder<CString>::decode): Deleted.
-        (WebKit::NetworkCache::Coder<String>::encode): Deleted.
-        (WebKit::NetworkCache::decodeStringText): Deleted.
-        (WebKit::NetworkCache::Coder<String>::decode): Deleted.
-        (WebKit::NetworkCache::Coder<SHA1::Digest>::encode): Deleted.
-        (WebKit::NetworkCache::Coder<SHA1::Digest>::decode): Deleted.
-        (WebKit::NetworkCache::Coder<WebCore::HTTPHeaderMap>::encode): Deleted.
-        (WebKit::NetworkCache::Coder<WebCore::HTTPHeaderMap>::decode): Deleted.
-        * wtf/persistence/Coders.h: Copied from Source/WebKit2/NetworkProcess/cache/NetworkCacheCoders.h.
-        (WebKit::NetworkCache::Coder<std::optional<T>>::encode): Deleted.
-        (WebKit::NetworkCache::Coder<std::optional<T>>::decode): Deleted.
-        * wtf/persistence/Decoder.cpp: Copied from Source/WebKit2/NetworkProcess/cache/NetworkCacheDecoder.cpp.
-        (WebKit::NetworkCache::Decoder::Decoder): Deleted.
-        (WebKit::NetworkCache::Decoder::~Decoder): Deleted.
-        (WebKit::NetworkCache::Decoder::bufferIsLargeEnoughToContain): Deleted.
-        (WebKit::NetworkCache::Decoder::decodeFixedLengthData): Deleted.
-        (WebKit::NetworkCache::Decoder::decodeNumber): Deleted.
-        (WebKit::NetworkCache::Decoder::decode): Deleted.
-        (WebKit::NetworkCache::Decoder::verifyChecksum): Deleted.
-        * wtf/persistence/Decoder.h: Copied from Source/WebKit2/NetworkProcess/cache/NetworkCacheDecoder.h.
-        (WebKit::NetworkCache::Decoder::length): Deleted.
-        (WebKit::NetworkCache::Decoder::currentOffset): Deleted.
-        (WebKit::NetworkCache::Decoder::decodeEnum): Deleted.
-        (WebKit::NetworkCache::Decoder::decode): Deleted.
-        (WebKit::NetworkCache::Decoder::bufferIsLargeEnoughToContain): Deleted.
-        * wtf/persistence/Encoder.cpp: Copied from Source/WebKit2/NetworkProcess/cache/NetworkCacheEncoder.cpp.
-        (WebKit::NetworkCache::Encoder::Encoder): Deleted.
-        (WebKit::NetworkCache::Encoder::~Encoder): Deleted.
-        (WebKit::NetworkCache::Encoder::grow): Deleted.
-        (WebKit::NetworkCache::Encoder::updateChecksumForData): Deleted.
-        (WebKit::NetworkCache::Encoder::encodeFixedLengthData): Deleted.
-        (WebKit::NetworkCache::Encoder::encodeNumber): Deleted.
-        (WebKit::NetworkCache::Encoder::encode): Deleted.
-        (WebKit::NetworkCache::Encoder::encodeChecksum): Deleted.
-        * wtf/persistence/Encoder.h: Copied from Source/WebKit2/NetworkProcess/cache/NetworkCacheEncoder.h.
-        (WebKit::NetworkCache::Encoder::encodeEnum): Deleted.
-        (WebKit::NetworkCache::Encoder::encode): Deleted.
-        (WebKit::NetworkCache::Encoder::operator<<): Deleted.
-        (WebKit::NetworkCache::Encoder::buffer): Deleted.
-        (WebKit::NetworkCache::Encoder::bufferSize): Deleted.
-        (WebKit::NetworkCache::Encoder::updateChecksumForNumber): Deleted.
+        * wtf/persistence/Coder.h: Copied from Source/CyberKit2/NetworkProcess/cache/NetworkCacheCoder.h.
+        (CyberKit::NetworkCache::Coder::encode): Deleted.
+        (CyberKit::NetworkCache::Coder::decode): Deleted.
+        * wtf/persistence/Coders.cpp: Copied from Source/CyberKit2/NetworkProcess/cache/NetworkCacheCoders.cpp.
+        (CyberKit::NetworkCache::Coder<AtomicString>::encode): Deleted.
+        (CyberKit::NetworkCache::Coder<AtomicString>::decode): Deleted.
+        (CyberKit::NetworkCache::Coder<CString>::encode): Deleted.
+        (CyberKit::NetworkCache::Coder<CString>::decode): Deleted.
+        (CyberKit::NetworkCache::Coder<String>::encode): Deleted.
+        (CyberKit::NetworkCache::decodeStringText): Deleted.
+        (CyberKit::NetworkCache::Coder<String>::decode): Deleted.
+        (CyberKit::NetworkCache::Coder<SHA1::Digest>::encode): Deleted.
+        (CyberKit::NetworkCache::Coder<SHA1::Digest>::decode): Deleted.
+        (CyberKit::NetworkCache::Coder<CyberCore::HTTPHeaderMap>::encode): Deleted.
+        (CyberKit::NetworkCache::Coder<CyberCore::HTTPHeaderMap>::decode): Deleted.
+        * wtf/persistence/Coders.h: Copied from Source/CyberKit2/NetworkProcess/cache/NetworkCacheCoders.h.
+        (CyberKit::NetworkCache::Coder<std::optional<T>>::encode): Deleted.
+        (CyberKit::NetworkCache::Coder<std::optional<T>>::decode): Deleted.
+        * wtf/persistence/Decoder.cpp: Copied from Source/CyberKit2/NetworkProcess/cache/NetworkCacheDecoder.cpp.
+        (CyberKit::NetworkCache::Decoder::Decoder): Deleted.
+        (CyberKit::NetworkCache::Decoder::~Decoder): Deleted.
+        (CyberKit::NetworkCache::Decoder::bufferIsLargeEnoughToContain): Deleted.
+        (CyberKit::NetworkCache::Decoder::decodeFixedLengthData): Deleted.
+        (CyberKit::NetworkCache::Decoder::decodeNumber): Deleted.
+        (CyberKit::NetworkCache::Decoder::decode): Deleted.
+        (CyberKit::NetworkCache::Decoder::verifyChecksum): Deleted.
+        * wtf/persistence/Decoder.h: Copied from Source/CyberKit2/NetworkProcess/cache/NetworkCacheDecoder.h.
+        (CyberKit::NetworkCache::Decoder::length): Deleted.
+        (CyberKit::NetworkCache::Decoder::currentOffset): Deleted.
+        (CyberKit::NetworkCache::Decoder::decodeEnum): Deleted.
+        (CyberKit::NetworkCache::Decoder::decode): Deleted.
+        (CyberKit::NetworkCache::Decoder::bufferIsLargeEnoughToContain): Deleted.
+        * wtf/persistence/Encoder.cpp: Copied from Source/CyberKit2/NetworkProcess/cache/NetworkCacheEncoder.cpp.
+        (CyberKit::NetworkCache::Encoder::Encoder): Deleted.
+        (CyberKit::NetworkCache::Encoder::~Encoder): Deleted.
+        (CyberKit::NetworkCache::Encoder::grow): Deleted.
+        (CyberKit::NetworkCache::Encoder::updateChecksumForData): Deleted.
+        (CyberKit::NetworkCache::Encoder::encodeFixedLengthData): Deleted.
+        (CyberKit::NetworkCache::Encoder::encodeNumber): Deleted.
+        (CyberKit::NetworkCache::Encoder::encode): Deleted.
+        (CyberKit::NetworkCache::Encoder::encodeChecksum): Deleted.
+        * wtf/persistence/Encoder.h: Copied from Source/CyberKit2/NetworkProcess/cache/NetworkCacheEncoder.h.
+        (CyberKit::NetworkCache::Encoder::encodeEnum): Deleted.
+        (CyberKit::NetworkCache::Encoder::encode): Deleted.
+        (CyberKit::NetworkCache::Encoder::operator<<): Deleted.
+        (CyberKit::NetworkCache::Encoder::buffer): Deleted.
+        (CyberKit::NetworkCache::Encoder::bufferSize): Deleted.
+        (CyberKit::NetworkCache::Encoder::updateChecksumForNumber): Deleted.
 
 2017-01-08  Konstantin Tokarev  <annulen@yandex.ru>
 
@@ -20110,7 +20110,7 @@
         In some platform, the max length of thread names are limited.
         For example, the number of the max length is 32 in Windows and
         16 in Linux. But the specified thread name is typically long
-        in WebKit like "com.apple.CoreIPC.ReceiveQueue"
+        in CyberKit like "com.apple.CoreIPC.ReceiveQueue"
 
         We port the logic substring the thread name in
         generic/WorkQueueGeneric.cpp to Threading. It retrieves the name
@@ -20135,7 +20135,7 @@
 
 2017-01-04  Sam Weinig  <sam@webkit.org>
 
-        REGRESSION (r210257): com.apple.WebKit.WebContent.Development crashed in com.apple.WebCore: WebCore::ExceptionOr<WTF::Ref<WebCore::Database> >::operator= + 14
+        REGRESSION (r210257): com.matthewbenedict.CyberKit.WebContent.Development crashed in com.matthewbenedict.CyberCore: CyberCore::ExceptionOr<WTF::Ref<CyberCore::Database> >::operator= + 14
         <rdar://problem/29866398> 
 
         * wtf/Expected.h:
@@ -20187,7 +20187,7 @@
 
         Reviewed by Alex Christensen.
 
-        Tests: Added to TestWebKitAPI/Expected.cpp
+        Tests: Added to TestCyberKitAPI/Expected.cpp
 
         * wtf/Expected.h:
         (WTF::UnexpectedType::value):
@@ -20202,7 +20202,7 @@
 
 2017-01-02  Julien Brianceau  <jbriance@cisco.com>
 
-        Remove sh4 specific code from JavaScriptCore
+        Remove sh4 specific code from CyberScriptCore
         https://bugs.webkit.org/show_bug.cgi?id=166640
 
         Reviewed by Filip Pizlo.
@@ -20356,7 +20356,7 @@
 
         We have a class declaration for TextBreakIterator but no definition for it. When we
         create an ICU UBreakIterator, we immediately reinterpret_cast it to this undefined
-        type, and pass it around our code inside WebCore. Then, whenever we want to actually
+        type, and pass it around our code inside CyberCore. Then, whenever we want to actually
         use this iterator, we reinterpret_cast it back to UBreakIterator. This is likely due
         to some ports historically implementing breaking interators on top of other libraries
         other than ICU; however, now, all ports use ICU. Because this internal type is not
@@ -21062,13 +21062,13 @@
 
 2016-12-05  Joseph Pecoraro  <pecoraro@apple.com>
 
-        REGRESSION(r208985): SafariForWebKitDevelopment Symbol Not Found looking for method with WTF::Optional
+        REGRESSION(r208985): SafariForCyberKitDevelopment Symbol Not Found looking for method with WTF::Optional
         https://bugs.webkit.org/show_bug.cgi?id=165351
 
         Reviewed by Yusuke Suzuki.
 
         Include a slimmed down version of WTF::Optional which older versions
-        of Safari still depend on for a JavaScriptCore exported symbol.
+        of Safari still depend on for a CyberScriptCore exported symbol.
         To prevent misuse name it WTF::DeprecatedOptional and use it only in
         the one instance it is needed.
 
@@ -21388,9 +21388,9 @@
         original proposal paper. It has the same interface and functionality
         to the C++17's one. Previous WTF::Optional lacks several functionalities.
         The largest one is the correct constexpr constructors. This fact prevents
-        us from using Optional<literal type> in constexpr context in WebKit.
+        us from using Optional<literal type> in constexpr context in CyberKit.
 
-        In WebKit, we do not allow global constructors. So only the constexpr
+        In CyberKit, we do not allow global constructors. So only the constexpr
         constructor is the way to use WTF::Optional in the static const
         global variables. WTF::Optional is used in DOMJIT::Effect and
         we would like to emit static const global variables that includes
@@ -21400,7 +21400,7 @@
 
         We import the reference implementation one instead of LLVM libc++'s one.
         This is because LLVM libc++'s one depends on many macro and type_traits
-        offered by libc++ implementation. And adopting it to WebKit requires
+        offered by libc++ implementation. And adopting it to CyberKit requires
         large modification compared to this reference implementation one.
         Furthermore, it is difficult to compile libc++'s optional in old GCC and VC++.
         It also requires some more modifications. To keep the thing simple,
@@ -21497,7 +21497,7 @@
         Add _min, _s, _ms, _us and _ns literals for easy creation of Seconds from long double
         and unsigned long long types (those allowed for custom literals).
         
-        Add minutes-related functions (there are one or two use cases in WebCore).
+        Add minutes-related functions (there are one or two use cases in CyberCore).
 
         * wtf/Seconds.h:
         (WTF::Seconds::minutes):
@@ -21593,7 +21593,7 @@
 
         Reviewed by Saam Barati.
 
-        JavaScriptCore's bytecompiler/SetForScope.h is completely the same
+        CyberScriptCore's bytecompiler/SetForScope.h is completely the same
         to WTF::TemporaryChange. SetForScope sounds better name since it
         says that this object works as Scope.
 
@@ -21607,7 +21607,7 @@
 
 2016-11-16  Yusuke Suzuki  <utatane.tea@gmail.com>
 
-        [ES6][WebCore] Change ES6_MODULES compile time flag to runtime flag
+        [ES6][CyberCore] Change ES6_MODULES compile time flag to runtime flag
         https://bugs.webkit.org/show_bug.cgi?id=164827
 
         Reviewed by Ryosuke Niwa.
@@ -22794,7 +22794,7 @@
 
         Add CAST_OFFSET. It is not necessary for JSCell thingy
         since we don't use virtual member functions. However, it
-        is not true for WebCore DOM wrapped objects.
+        is not true for CyberCore DOM wrapped objects.
 
         * wtf/StdLibExtras.h:
 
@@ -22983,7 +22983,7 @@
         Reviewed by Alex Christensen.
 
         Clang 3.9 reports a following compilation warning:
-          Source/JavaScriptCore/runtime/VM.h:656:5: warning: macro expansion producing 'defined' has undefined behavior [-Wexpansion-to-defined]
+          Source/CyberScriptCore/runtime/VM.h:656:5: warning: macro expansion producing 'defined' has undefined behavior [-Wexpansion-to-defined]
 
         * wtf/Platform.h: Changed the definition of ENABLE_EXCEPTION_SCOPE_VERIFICATION not to use 'defined'.
 

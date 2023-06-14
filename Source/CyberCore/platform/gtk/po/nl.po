@@ -1,0 +1,2574 @@
+# Dutch translation of webkit-gtk
+# Released under the same license as webkit-gtk
+# Reinout van Schouwen <reinouts@gnome.org>, 2009, 2010, 2013, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: webkit 1.1.10\n"
+"Report-Msgid-Bugs-To: http://bugs.webkit.org\n"
+"POT-Creation-Date: 2013-12-20 15:24+0000\n"
+"PO-Revision-Date: 2014-01-01 23:41+0200\n"
+"Last-Translator: Reinout van Schouwen <reinouts@gnome.org>\n"
+"Language-Team: Dutch <vertaling@vrijschrift.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
+
+#: ../ErrorsGtk.cpp:37
+msgid "Load request cancelled"
+msgstr "Laadaanvraag geannuleerd"
+
+#: ../ErrorsGtk.cpp:43
+msgid "Not allowed to use restricted network port"
+msgstr "Gebruik van beperkte netwerkpoort niet toegestaan"
+
+#: ../ErrorsGtk.cpp:49
+msgid "URL cannot be shown"
+msgstr "Kan URL niet tonen"
+
+#: ../ErrorsGtk.cpp:55
+msgid "Frame load was interrupted"
+msgstr "Laden van het frame onderbroken"
+
+#: ../ErrorsGtk.cpp:61
+msgid "Content with the specified MIME type cannot be shown"
+msgstr "Kan inhoud met het aangegeven MIME-type niet tonen"
+
+#: ../ErrorsGtk.cpp:67
+msgid "File does not exist"
+msgstr "Bestand bestaat niet"
+
+#: ../ErrorsGtk.cpp:73
+msgid "Plugin will handle load"
+msgstr "Plug-in handelt het laden af"
+
+#: ../ErrorsGtk.cpp:85
+msgid "User cancelled the download"
+msgstr "Downloaden door gebruiker gestopt"
+
+#: ../ErrorsGtk.cpp:105
+msgid "Printer not found"
+msgstr "Printer niet gevonden"
+
+#: ../ErrorsGtk.cpp:112
+msgid "Invalid page range"
+msgstr "Ongeldig paginabereik"
+
+#: ../LocalizedStringsGtk.cpp:56 ../LocalizedStringsGtk.cpp:61
+msgid "Submit"
+msgstr "Indienen"
+
+#: ../LocalizedStringsGtk.cpp:66
+msgid "Reset"
+msgstr "Herinitialiseren"
+
+#: ../LocalizedStringsGtk.cpp:71
+msgid "Details"
+msgstr "Details"
+
+#: ../LocalizedStringsGtk.cpp:76
+msgid "This is a searchable index. Enter search keywords: "
+msgstr "Dit is een doorzoekbare index. Voer zoekwoorden in: "
+
+#: ../LocalizedStringsGtk.cpp:81
+msgid "Choose File"
+msgstr "Kies een bestand"
+
+#: ../LocalizedStringsGtk.cpp:86
+msgid "Choose Files"
+msgstr "Kies bestanden"
+
+#: ../LocalizedStringsGtk.cpp:91 ../LocalizedStringsGtk.cpp:96
+msgid "(None)"
+msgstr "(Geen)"
+
+#: ../LocalizedStringsGtk.cpp:101
+msgid "Open Link in New _Window"
+msgstr "Verwijzing openen in _nieuw venster"
+
+#: ../LocalizedStringsGtk.cpp:106
+msgid "_Download Linked File"
+msgstr "Bestand _downloaden"
+
+#: ../LocalizedStringsGtk.cpp:111
+msgid "Copy Link Loc_ation"
+msgstr "Verwijzings_adres kopiëren"
+
+#: ../LocalizedStringsGtk.cpp:116
+msgid "Open _Image in New Window"
+msgstr "Af_beelding openen in nieuw venster"
+
+#: ../LocalizedStringsGtk.cpp:121
+msgid "Sa_ve Image As"
+msgstr "Afbeelding opslaan _als…"
+
+#: ../LocalizedStringsGtk.cpp:126
+msgid "Cop_y Image"
+msgstr "Afbeelding _kopiëren"
+
+#: ../LocalizedStringsGtk.cpp:131
+msgid "Copy Image _Address"
+msgstr "Afbeeldings_adres kopiëren"
+
+#: ../LocalizedStringsGtk.cpp:136
+msgid "Open _Video in New Window"
+msgstr "_Video openen in nieuw venster"
+
+#: ../LocalizedStringsGtk.cpp:141
+msgid "Open _Audio in New Window"
+msgstr "Au_dio openen in nieuw venster"
+
+#: ../LocalizedStringsGtk.cpp:146
+#| msgid "_Download Linked File"
+msgid "Download _Video"
+msgstr "_Video downloaden"
+
+#: ../LocalizedStringsGtk.cpp:151
+#| msgid "_Download Linked File"
+msgid "Download _Audio"
+msgstr "_Audio downloaden"
+
+#: ../LocalizedStringsGtk.cpp:156
+msgid "Cop_y Video Link Location"
+msgstr "Videoverwij_zingsadres kopiëren"
+
+#: ../LocalizedStringsGtk.cpp:161
+msgid "Cop_y Audio Link Location"
+msgstr "Audi_overwijzingsadres kopiëren"
+
+#: ../LocalizedStringsGtk.cpp:166
+msgid "_Toggle Media Controls"
+msgstr "_Mediabesturingselementen in–/uitschakelen"
+
+#: ../LocalizedStringsGtk.cpp:171
+msgid "_Show Media Controls"
+msgstr "Mediabesturingselementen _tonen"
+
+#: ../LocalizedStringsGtk.cpp:176
+msgid "_Hide Media Controls"
+msgstr "Mediabesturingselementen _verbergen"
+
+#: ../LocalizedStringsGtk.cpp:181
+msgid "Toggle Media _Loop Playback"
+msgstr "Oneindig media afspelen in—/uitschakelen"
+
+#: ../LocalizedStringsGtk.cpp:186
+msgid "Switch Video to _Fullscreen"
+msgstr "Video naar volledig _scherm overschakelen"
+
+#: ../LocalizedStringsGtk.cpp:191
+msgid "_Play"
+msgstr "_Afspelen"
+
+#: ../LocalizedStringsGtk.cpp:196
+msgid "_Pause"
+msgstr "_Pauzeren"
+
+#: ../LocalizedStringsGtk.cpp:201
+msgid "_Mute"
+msgstr "_Dempen"
+
+#: ../LocalizedStringsGtk.cpp:206
+msgid "Open _Frame in New Window"
+msgstr "_Deelvenster openen in nieuw venster"
+
+#: ../LocalizedStringsGtk.cpp:229
+msgid "_Insert Unicode Control Character"
+msgstr "_Unicode controleteken invoegen "
+
+#: ../LocalizedStringsGtk.cpp:234
+msgid "Input _Methods"
+msgstr "Invoer_methoden"
+
+#: ../LocalizedStringsGtk.cpp:257
+msgid "_Reload"
+msgstr "Ve_rversen"
+
+#: ../LocalizedStringsGtk.cpp:274
+msgid "No Guesses Found"
+msgstr "Geen suggesties gevonden"
+
+#: ../LocalizedStringsGtk.cpp:279
+msgid "_Ignore Spelling"
+msgstr "Spelling _negeren"
+
+#: ../LocalizedStringsGtk.cpp:284
+msgid "_Learn Spelling"
+msgstr "_Spelling leren"
+
+#: ../LocalizedStringsGtk.cpp:289
+msgid "_Search the Web"
+msgstr "Het web door_zoeken"
+
+#: ../LocalizedStringsGtk.cpp:294
+msgid "_Look Up in Dictionary"
+msgstr "O_pzoeken in woordenboek"
+
+#: ../LocalizedStringsGtk.cpp:299
+msgid "_Open Link"
+msgstr "Koppeling _openen"
+
+#: ../LocalizedStringsGtk.cpp:304
+msgid "Ignore _Grammar"
+msgstr "_Grammatica negeren"
+
+#: ../LocalizedStringsGtk.cpp:309
+msgid "Spelling and _Grammar"
+msgstr "Spelling en _grammatica"
+
+#: ../LocalizedStringsGtk.cpp:314
+msgid "_Show Spelling and Grammar"
+msgstr "Spelling en grammatica _tonen"
+
+#: ../LocalizedStringsGtk.cpp:314
+msgid "_Hide Spelling and Grammar"
+msgstr "Spelling en grammatica ver_bergen"
+
+#: ../LocalizedStringsGtk.cpp:319
+msgid "_Check Document Now"
+msgstr "Het document nu _controleren"
+
+#: ../LocalizedStringsGtk.cpp:324
+msgid "Check Spelling While _Typing"
+msgstr "_Spelling controleren tijdens het typen"
+
+#: ../LocalizedStringsGtk.cpp:329
+msgid "Check _Grammar With Spelling"
+msgstr "_Grammatica controleren naast spelling"
+
+#: ../LocalizedStringsGtk.cpp:334
+msgid "_Font"
+msgstr "_Lettertype"
+
+#: ../LocalizedStringsGtk.cpp:357
+msgid "_Outline"
+msgstr "_Omtrek"
+
+#: ../LocalizedStringsGtk.cpp:362
+msgid "Inspect _Element"
+msgstr "_Element inspecteren"
+
+#: ../LocalizedStringsGtk.cpp:367
+msgid "LRM _Left-to-right mark"
+msgstr "LRM _Links-naar-rechts markering"
+
+#: ../LocalizedStringsGtk.cpp:372
+msgid "RLM _Right-to-left mark"
+msgstr "RLM _Rechts-naar-links markering"
+
+#: ../LocalizedStringsGtk.cpp:377
+msgid "LRE Left-to-right _embedding"
+msgstr "LRE Links-naar-rechts _inbedding"
+
+#: ../LocalizedStringsGtk.cpp:382
+msgid "RLE Right-to-left e_mbedding"
+msgstr "RLE Rechts-naar-links i_nbedding"
+
+#: ../LocalizedStringsGtk.cpp:387
+msgid "LRO Left-to-right _override"
+msgstr "LRO Links-naar-rechts _tenietdoen"
+
+#: ../LocalizedStringsGtk.cpp:392
+msgid "RLO Right-to-left o_verride"
+msgstr "RLO Rechts-naar-links t_enietdoen"
+
+#: ../LocalizedStringsGtk.cpp:397
+msgid "PDF _Pop directional formatting"
+msgstr "PDF _Pop richtingsformattering"
+
+#: ../LocalizedStringsGtk.cpp:402
+msgid "ZWS _Zero width space"
+msgstr "ZWS Spatie _zonder breedte"
+
+#: ../LocalizedStringsGtk.cpp:407
+msgid "ZWJ Zero width _joiner"
+msgstr "ZWJ _koppelaar zonder breedte"
+
+#: ../LocalizedStringsGtk.cpp:412
+msgid "ZWNJ Zero width _non-joiner"
+msgstr "ZWNJ Niet-k_oppelaar zonder breedte"
+
+#: ../LocalizedStringsGtk.cpp:417
+msgid "No recent searches"
+msgstr "Geen recente zoekopdrachten"
+
+#: ../LocalizedStringsGtk.cpp:422
+msgid "Recent searches"
+msgstr "Recente zoekopdrachten"
+
+#: ../LocalizedStringsGtk.cpp:427
+msgid "_Clear recent searches"
+msgstr "Recente zoekopdrachten _wissen"
+
+#: ../LocalizedStringsGtk.cpp:432
+msgid "definition"
+msgstr "definitie"
+
+#: ../LocalizedStringsGtk.cpp:437
+msgid "description list"
+msgstr "beschrijvingslijst"
+
+#: ../LocalizedStringsGtk.cpp:442
+msgid "term"
+msgstr "term"
+
+#: ../LocalizedStringsGtk.cpp:447
+msgid "description"
+msgstr "beschrijving"
+
+#: ../LocalizedStringsGtk.cpp:452
+msgid "footer"
+msgstr "voettekst"
+
+#: ../LocalizedStringsGtk.cpp:457
+msgid "cancel"
+msgstr "annuleren"
+
+#: ../LocalizedStringsGtk.cpp:462
+msgid "press"
+msgstr "druk"
+
+#: ../LocalizedStringsGtk.cpp:467
+msgid "select"
+msgstr "selecteren"
+
+#: ../LocalizedStringsGtk.cpp:472
+msgid "activate"
+msgstr "activeren"
+
+# check / uncheck is aankruisen / deselecteren?
+#: ../LocalizedStringsGtk.cpp:477
+msgid "uncheck"
+msgstr "deselecteren"
+
+# check / uncheck is aankruisen / deselecteren?
+#: ../LocalizedStringsGtk.cpp:482
+msgid "check"
+msgstr "aankruisen"
+
+#: ../LocalizedStringsGtk.cpp:487
+msgid "jump"
+msgstr "springen"
+
+#: ../LocalizedStringsGtk.cpp:507
+msgid "Missing Plug-in"
+msgstr "Ontbrekende plug-in"
+
+#: ../LocalizedStringsGtk.cpp:513
+msgid "Plug-in Failure"
+msgstr "Fout in plug-in"
+
+#. FIXME: If this file gets localized, this should really be localized as one string with a wildcard for the number.
+#: ../LocalizedStringsGtk.cpp:537
+msgid " files"
+msgstr " bestanden"
+
+#: ../LocalizedStringsGtk.cpp:542
+msgid "Unknown"
+msgstr "Onbekend"
+
+#: ../LocalizedStringsGtk.cpp:547
+#, c-format
+msgctxt "Title string for images"
+msgid "%s  (%dx%d pixels)"
+msgstr "%s (%d×%d pixels)"
+
+#: ../LocalizedStringsGtk.cpp:559
+msgid "Loading..."
+msgstr "Laden…"
+
+#: ../LocalizedStringsGtk.cpp:564
+msgid "Live Broadcast"
+msgstr "Live-uitzending"
+
+#: ../LocalizedStringsGtk.cpp:570
+#| msgid "pause playback"
+msgid "audio playback"
+msgstr "afspelen van geluid"
+
+#: ../LocalizedStringsGtk.cpp:572
+#| msgid "begin playback"
+msgid "video playback"
+msgstr "afspelen van video"
+
+#: ../LocalizedStringsGtk.cpp:574
+msgid "mute"
+msgstr "dempen"
+
+#: ../LocalizedStringsGtk.cpp:576
+msgid "unmute"
+msgstr "geluid aan"
+
+#: ../LocalizedStringsGtk.cpp:578
+msgid "play"
+msgstr "afspelen"
+
+#: ../LocalizedStringsGtk.cpp:580
+msgid "pause"
+msgstr "pauze"
+
+#: ../LocalizedStringsGtk.cpp:582
+msgid "movie time"
+msgstr "afspeelduur"
+
+#: ../LocalizedStringsGtk.cpp:584
+msgid "timeline slider thumb"
+msgstr "tijdschuifbalk-miniatuur"
+
+#: ../LocalizedStringsGtk.cpp:586
+msgid "back 30 seconds"
+msgstr "30 seconden terug"
+
+#: ../LocalizedStringsGtk.cpp:588
+msgid "return to realtime"
+msgstr "terug naar realtime"
+
+#: ../LocalizedStringsGtk.cpp:590
+msgid "elapsed time"
+msgstr "verstreken tijd"
+
+#: ../LocalizedStringsGtk.cpp:592
+msgid "remaining time"
+msgstr "tijd te gaan"
+
+#: ../LocalizedStringsGtk.cpp:594
+msgid "status"
+msgstr "status"
+
+#: ../LocalizedStringsGtk.cpp:596
+msgid "enter fullscreen"
+msgstr "naar volledig scherm"
+
+#: ../LocalizedStringsGtk.cpp:598
+msgid "exit fullscreen"
+msgstr "volledig scherm verlaten"
+
+#: ../LocalizedStringsGtk.cpp:600
+msgid "fast forward"
+msgstr "snel vooruit"
+
+#: ../LocalizedStringsGtk.cpp:602
+msgid "fast reverse"
+msgstr "snel achteruit"
+
+#: ../LocalizedStringsGtk.cpp:604
+msgid "show closed captions"
+msgstr "ondertiteling tonen"
+
+#: ../LocalizedStringsGtk.cpp:606
+msgid "hide closed captions"
+msgstr "ondertiteling verbergen"
+
+#: ../LocalizedStringsGtk.cpp:608
+msgid "media controls"
+msgstr "mediabesturingselementen"
+
+#: ../LocalizedStringsGtk.cpp:617
+msgid "audio element playback controls and status display"
+msgstr "afspeelbesturing en statusweergave audio-element"
+
+#: ../LocalizedStringsGtk.cpp:619
+msgid "video element playback controls and status display"
+msgstr "afspeelbesturing en statusweergave video-element"
+
+#: ../LocalizedStringsGtk.cpp:621
+msgid "mute audio tracks"
+msgstr "audiosporen dempen"
+
+#: ../LocalizedStringsGtk.cpp:623
+msgid "unmute audio tracks"
+msgstr "audiosporen laten horen"
+
+#: ../LocalizedStringsGtk.cpp:625
+msgid "begin playback"
+msgstr "afspelen beginnen"
+
+#: ../LocalizedStringsGtk.cpp:627
+msgid "pause playback"
+msgstr "afspelen pauzeren"
+
+#: ../LocalizedStringsGtk.cpp:629
+msgid "movie time scrubber"
+msgstr "filmtijdscrubber"
+
+#: ../LocalizedStringsGtk.cpp:631
+msgid "movie time scrubber thumb"
+msgstr "filmtijdscrubber-miniatuur"
+
+#: ../LocalizedStringsGtk.cpp:633
+msgid "seek movie back 30 seconds"
+msgstr "30 seconden terugzoeken in film"
+
+#: ../LocalizedStringsGtk.cpp:635
+msgid "return streaming movie to real time"
+msgstr "terugkeren naar realtime in streamende film"
+
+#: ../LocalizedStringsGtk.cpp:637
+msgid "current movie time in seconds"
+msgstr "huidige filmtijd in seconden"
+
+#: ../LocalizedStringsGtk.cpp:639
+msgid "number of seconds of movie remaining"
+msgstr "aantal seconden film te gaan"
+
+#: ../LocalizedStringsGtk.cpp:641
+msgid "current movie status"
+msgstr "huidige filmstatus"
+
+#: ../LocalizedStringsGtk.cpp:643
+msgid "seek quickly back"
+msgstr "snel achteruit zoeken"
+
+#: ../LocalizedStringsGtk.cpp:645
+msgid "seek quickly forward"
+msgstr "snel vooruit zoeken"
+
+#: ../LocalizedStringsGtk.cpp:647
+msgid "Play movie in fullscreen mode"
+msgstr "Film afspelen in volledig scherm"
+
+#: ../LocalizedStringsGtk.cpp:649
+msgid "Exit fullscreen mode"
+msgstr "Volledig scherm verlaten"
+
+#: ../LocalizedStringsGtk.cpp:651
+msgid "start displaying closed captions"
+msgstr "beginnen met tonen van ondertiteling"
+
+#: ../LocalizedStringsGtk.cpp:653
+msgid "stop displaying closed captions"
+msgstr "stoppen met tonen van ondertiteling"
+
+#: ../LocalizedStringsGtk.cpp:662
+msgid "indefinite time"
+msgstr "onbepaalde tijd"
+
+#: ../LocalizedStringsGtk.cpp:692
+msgid "value missing"
+msgstr "waarde ontbreekt"
+
+#: ../LocalizedStringsGtk.cpp:728
+msgid "type mismatch"
+msgstr "type komt niet overeen"
+
+#: ../LocalizedStringsGtk.cpp:751
+msgid "pattern mismatch"
+msgstr "patroon komt niet overeen"
+
+#: ../LocalizedStringsGtk.cpp:756
+msgid "too long"
+msgstr "te lang"
+
+#: ../LocalizedStringsGtk.cpp:761
+msgid "range underflow"
+msgstr "onder bereik"
+
+#: ../LocalizedStringsGtk.cpp:766
+msgid "range overflow"
+msgstr "over bereik"
+
+#: ../LocalizedStringsGtk.cpp:771
+msgid "step mismatch"
+msgstr "stap komt niet overeen"
+
+#: ../LocalizedStringsGtk.cpp:776
+msgid "Unacceptable TLS certificate"
+msgstr "Onaanvaardbaar TLS-certificaat"
+
+#: ../LocalizedStringsGtk.cpp:793
+#| msgid "stop displaying closed captions"
+msgctxt "Closed Captions"
+msgid "Menu section heading for closed captions"
+msgstr "Menusectiekop voor ondertiteling"
+
+#: ../LocalizedStringsGtk.cpp:798
+msgctxt "Menu section heading for subtitles"
+msgid "Subtitles"
+msgstr "Ondertiteling"
+
+#: ../LocalizedStringsGtk.cpp:803
+msgctxt ""
+"Menu item label for the track that represents disabling closed captions"
+msgid "Off"
+msgstr "Uit"
+
+#: ../LocalizedStringsGtk.cpp:808
+msgctxt "Menu item label for the automatically chosen track"
+msgid "Auto"
+msgstr "Auto"
+
+#: ../LocalizedStringsGtk.cpp:813
+msgctxt "Menu item label for a closed captions track that has no other name"
+msgid "No label"
+msgstr "Geen label"
+
+#: ../LocalizedStringsGtk.cpp:819
+msgctxt "Snapshotted Plug-In"
+msgid "Title of the label to show on a snapshotted plug-in"
+msgstr ""
+"Titel van het te tonen label op een plug-in waar een snapshot van gemaakt is"
+
+#: ../LocalizedStringsGtk.cpp:824
+msgctxt "Click to restart"
+msgid "Subtitle of the label to show on a snapshotted plug-in"
+msgstr ""
+"Subtitel van het te tonen label op een plug-in waar een snapshot van gemaakt "
+"is"
+
+#: ../CyberKitAuthenticationWidget.cpp:155
+#, c-format
+msgid "The site %s:%i requests a username and password"
+msgstr "De pagina %s:%i vraagt om een gebruikersnaam en wachtwoord"
+
+#: ../CyberKitAuthenticationWidget.cpp:159
+msgid "_Remember password"
+msgstr "_Wachtwoord onthouden"
+
+#: ../CyberKitAuthenticationWidget.cpp:167
+msgid "Server message:"
+msgstr "Serverbericht:"
+
+#: ../CyberKitAuthenticationWidget.cpp:168 ../CyberKitAuthenticationWidget.cpp:177
+msgid "Username:"
+msgstr "Gebruikersnaam:"
+
+#: ../CyberKitAuthenticationWidget.cpp:169 ../CyberKitAuthenticationWidget.cpp:178
+msgid "Password:"
+msgstr "Wachtwoord:"
+
+#: ../../../../CyberKit/gtk/webkit/webkitdownload.cpp:279
+msgid "Network Request"
+msgstr "Netwerkaanvraag"
+
+#: ../../../../CyberKit/gtk/webkit/webkitdownload.cpp:280
+msgid "The network request for the URI that should be downloaded"
+msgstr "De netwerkaanvraag voor de te downloaden URI"
+
+#: ../../../../CyberKit/gtk/webkit/webkitdownload.cpp:294
+msgid "Network Response"
+msgstr "Netwerkantwoord"
+
+#: ../../../../CyberKit/gtk/webkit/webkitdownload.cpp:295
+msgid "The network response for the URI that should be downloaded"
+msgstr "Het netwerkantwoord voor de te downloaden URI"
+
+#: ../../../../CyberKit/gtk/webkit/webkitdownload.cpp:309
+msgid "Destination URI"
+msgstr "Bestemmings-URI"
+
+#: ../../../../CyberKit/gtk/webkit/webkitdownload.cpp:310
+msgid "The destination URI where to save the file"
+msgstr "De bestemmings-URI waar dit bestand opgeslagen moet worden"
+
+#: ../../../../CyberKit/gtk/webkit/webkitdownload.cpp:324
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:150
+msgid "Suggested Filename"
+msgstr "Gesuggereerde bestandsnaam"
+
+#: ../../../../CyberKit/gtk/webkit/webkitdownload.cpp:325
+msgid "The filename suggested as default when saving"
+msgstr "De standaard gesuggereerde bestandsnaam bij het opslaan"
+
+#: ../../../../CyberKit/gtk/webkit/webkitdownload.cpp:342
+msgid "Progress"
+msgstr "Voortgang"
+
+#: ../../../../CyberKit/gtk/webkit/webkitdownload.cpp:343
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitDownload.cpp:176
+msgid "Determines the current progress of the download"
+msgstr "Bepaalt de huidige voortgang van de download"
+
+#: ../../../../CyberKit/gtk/webkit/webkitdownload.cpp:356
+msgid "Status"
+msgstr "Status"
+
+#: ../../../../CyberKit/gtk/webkit/webkitdownload.cpp:357
+msgid "Determines the current status of the download"
+msgstr "Bepaalt de huidige status van de download"
+
+#: ../../../../CyberKit/gtk/webkit/webkitdownload.cpp:372
+msgid "Current Size"
+msgstr "Huidige grootte"
+
+#: ../../../../CyberKit/gtk/webkit/webkitdownload.cpp:373
+msgid "The length of the data already downloaded"
+msgstr "De hoeveelheid reeds gedownloade data"
+
+#: ../../../../CyberKit/gtk/webkit/webkitdownload.cpp:387
+msgid "Total Size"
+msgstr "Totale grootte"
+
+#: ../../../../CyberKit/gtk/webkit/webkitdownload.cpp:388
+msgid "The total size of the file"
+msgstr "De totale grootte van het bestand"
+
+#: ../../../../CyberKit/gtk/webkit/webkitfavicondatabase.cpp:144
+#: ../../../../CyberKit/gtk/webkit/webkitfavicondatabase.cpp:579
+msgid "Operation was cancelled"
+msgstr "Bewerking is geannuleerd"
+
+#: ../../../../CyberKit/gtk/webkit/webkitfavicondatabase.cpp:253
+#: ../../../../CyberKit/gtk/webkit/webkiticondatabase.cpp:148
+msgid "Path"
+msgstr "Pad"
+
+#: ../../../../CyberKit/gtk/webkit/webkitfavicondatabase.cpp:254
+#: ../../../../CyberKit/gtk/webkit/webkiticondatabase.cpp:149
+msgid "The absolute path of the icon database folder"
+msgstr "Het absolute pad van de pictogramdatabase-map"
+
+#: ../../../../CyberKit/gtk/webkit/webkitfilechooserrequest.cpp:129
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:129
+msgid "MIME types filter"
+msgstr "Filter voor MIME-typen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitfilechooserrequest.cpp:130
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:130
+msgid "The filter currently associated with the request"
+msgstr "De momenteel met de aanvraag geassocieerde filter"
+
+#: ../../../../CyberKit/gtk/webkit/webkitfilechooserrequest.cpp:145
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:143
+msgid "MIME types"
+msgstr "MIME-typen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitfilechooserrequest.cpp:146
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:144
+msgid "The list of MIME types associated with the request"
+msgstr "De lijst van met de aanvraag geassocieerde MIME-typen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitfilechooserrequest.cpp:161
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:158
+msgid "Select multiple files"
+msgstr "Meerdere bestanden selecteren"
+
+#: ../../../../CyberKit/gtk/webkit/webkitfilechooserrequest.cpp:162
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:159
+msgid "Whether the file chooser should allow selecting multiple files"
+msgstr "Of de bestandskiezer het selecteren van meerdere bestanden mag toestaan"
+
+#: ../../../../CyberKit/gtk/webkit/webkitfilechooserrequest.cpp:177
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:172
+msgid "Selected files"
+msgstr "Geselecteerde bestanden"
+
+#: ../../../../CyberKit/gtk/webkit/webkitfilechooserrequest.cpp:178
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFileChooserRequest.cpp:173
+msgid "The list of selected files associated with the request"
+msgstr "De lijst van met de aanvraag geassocieerde geselecteerde bestanden"
+
+#: ../../../../CyberKit/gtk/webkit/webkithittestresult.cpp:174
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:152
+msgid "Context"
+msgstr "Context"
+
+#: ../../../../CyberKit/gtk/webkit/webkithittestresult.cpp:175
+msgid "Flags indicating the kind of target that received the event."
+msgstr ""
+"Markeringen die het soort doel beschrijven voor ontvangst van de gebeurtenis."
+
+#: ../../../../CyberKit/gtk/webkit/webkithittestresult.cpp:189
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:166
+msgid "Link URI"
+msgstr "Verwijzings-URI"
+
+#: ../../../../CyberKit/gtk/webkit/webkithittestresult.cpp:190
+msgid "The URI to which the target that received the event points, if any."
+msgstr ""
+"De URI waarnaar het doel wijst dat de gebeurtenispunten ontvangen heeft, "
+"indien aanwezig."
+
+#: ../../../../CyberKit/gtk/webkit/webkithittestresult.cpp:203
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:205
+msgid "Image URI"
+msgstr "Afbeeldings-URI"
+
+#: ../../../../CyberKit/gtk/webkit/webkithittestresult.cpp:204
+msgid ""
+"The URI of the image that is part of the target that received the event, if "
+"any."
+msgstr ""
+"De URI van de afbeelding die onderdeel is van het doel voor "
+"gebeurtenisontvangst, indien aanwezig."
+
+#: ../../../../CyberKit/gtk/webkit/webkithittestresult.cpp:217
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:218
+msgid "Media URI"
+msgstr "Media-URI"
+
+#: ../../../../CyberKit/gtk/webkit/webkithittestresult.cpp:218
+msgid ""
+"The URI of the media that is part of the target that received the event, if "
+"any."
+msgstr ""
+"De URI van de media die onderdeel zijn van het doel voor "
+"gebeurtenisontvangst, indien aanwezig."
+
+#: ../../../../CyberKit/gtk/webkit/webkithittestresult.cpp:239
+msgid "Inner node"
+msgstr "Ingesloten node"
+
+#: ../../../../CyberKit/gtk/webkit/webkithittestresult.cpp:240
+msgid "The inner DOM node associated with the hit test result."
+msgstr "De ingesloten DOM-node die geassocieerd is met het hittestresultaat."
+
+#: ../../../../CyberKit/gtk/webkit/webkithittestresult.cpp:253
+msgid "X coordinate"
+msgstr "X-coördinaat"
+
+#: ../../../../CyberKit/gtk/webkit/webkithittestresult.cpp:254
+msgid "The x coordinate of the event relative to the view's window."
+msgstr ""
+"De x-coördinaat van de gebeurtenis relatief aan het venster van de view."
+
+#: ../../../../CyberKit/gtk/webkit/webkithittestresult.cpp:267
+msgid "Y coordinate"
+msgstr "Y-coördinaat"
+
+#: ../../../../CyberKit/gtk/webkit/webkithittestresult.cpp:268
+msgid "The y coordinate of the event relative to the view's window."
+msgstr ""
+"De y-coördinaat van de gebeurtenis relatief aan het venster van de view."
+
+#: ../../../../CyberKit/gtk/webkit/webkitnetworkrequest.cpp:134
+#: ../../../../CyberKit/gtk/webkit/webkitnetworkresponse.cpp:143
+#: ../../../../CyberKit/gtk/webkit/webkitwebframe.cpp:468
+#: ../../../../CyberKit/gtk/webkit/webkitwebhistoryitem.cpp:176
+#: ../../../../CyberKit/gtk/webkit/webkitwebresource.cpp:209
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3254
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIRequest.cpp:95
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:99
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebResource.cpp:109
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:707
+msgid "URI"
+msgstr "URI"
+
+#: ../../../../CyberKit/gtk/webkit/webkitnetworkrequest.cpp:135
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIRequest.cpp:96
+msgid "The URI to which the request will be made."
+msgstr "De URI waarnaar de aanvraag gestuurd wordt."
+
+#: ../../../../CyberKit/gtk/webkit/webkitnetworkrequest.cpp:148
+#: ../../../../CyberKit/gtk/webkit/webkitnetworkresponse.cpp:157
+msgid "Message"
+msgstr "Bericht"
+
+#: ../../../../CyberKit/gtk/webkit/webkitnetworkrequest.cpp:149
+msgid "The SoupMessage that backs the request."
+msgstr "De SoupMessage die achter de aanvraag zit."
+
+#: ../../../../CyberKit/gtk/webkit/webkitnetworkresponse.cpp:144
+msgid "The URI to which the response will be made."
+msgstr "De URI waarnaar het antwoord verstuurd wordt."
+
+#: ../../../../CyberKit/gtk/webkit/webkitnetworkresponse.cpp:158
+msgid "The SoupMessage that backs the response."
+msgstr "De SoupMessage die achter het antwoord zit."
+
+#: ../../../../CyberKit/gtk/webkit/webkitnetworkresponse.cpp:171
+msgid "Suggested filename"
+msgstr "Voorgestelde bestandsnaam"
+
+#: ../../../../CyberKit/gtk/webkit/webkitnetworkresponse.cpp:172
+msgid "The suggested filename for the response."
+msgstr "De voorgestelde bestandsnaam voor de reactie."
+
+#: ../../../../CyberKit/gtk/webkit/webkitsecurityorigin.cpp:150
+msgid "Protocol"
+msgstr "Protocol"
+
+#: ../../../../CyberKit/gtk/webkit/webkitsecurityorigin.cpp:151
+msgid "The protocol of the security origin"
+msgstr "Het protocol van de beveiligingsbron"
+
+#: ../../../../CyberKit/gtk/webkit/webkitsecurityorigin.cpp:164
+msgid "Host"
+msgstr "Hostcomputer"
+
+#: ../../../../CyberKit/gtk/webkit/webkitsecurityorigin.cpp:165
+msgid "The host of the security origin"
+msgstr "De hostcomputer van de beveiligingsbron"
+
+#: ../../../../CyberKit/gtk/webkit/webkitsecurityorigin.cpp:178
+msgid "Port"
+msgstr "Poort"
+
+#: ../../../../CyberKit/gtk/webkit/webkitsecurityorigin.cpp:179
+msgid "The port of the security origin"
+msgstr "De poort van de beveiligingsbron"
+
+#: ../../../../CyberKit/gtk/webkit/webkitsecurityorigin.cpp:192
+msgid "Web Database Usage"
+msgstr "Web-databasegebruik"
+
+#: ../../../../CyberKit/gtk/webkit/webkitsecurityorigin.cpp:193
+msgid "The cumulative size of all web databases in the security origin"
+msgstr "De opgetelde grootte van alle webdatabases in de beveiligingsbron"
+
+#: ../../../../CyberKit/gtk/webkit/webkitsecurityorigin.cpp:205
+msgid "Web Database Quota"
+msgstr "Webdatabase-quota"
+
+#: ../../../../CyberKit/gtk/webkit/webkitsecurityorigin.cpp:206
+msgid "The web database quota of the security origin in bytes"
+msgstr "De webdatabase-quota voor de beveiligingsbron in bytes"
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:139
+msgid "Device Width"
+msgstr "Apparaatbreedte"
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:140
+msgid "The width of the screen."
+msgstr "De breedte van het scherm."
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:161
+msgid "Device Height"
+msgstr "Apparaathoogte"
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:162
+msgid "The height of the screen."
+msgstr "De hoogte van het scherm."
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:185
+msgid "Available Width"
+msgstr "Beschikbare breedte"
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:186
+msgid "The width of the visible area."
+msgstr "De breedte van het zichtbare gebied."
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:209
+msgid "Available Height"
+msgstr "Beschikbare hoogte"
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:210
+msgid "The height of the visible area."
+msgstr "De hoogte van het zichtbare gebied."
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:231
+msgid "Desktop Width"
+msgstr "Bureaubladbreedte"
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:232
+msgid ""
+"The width of viewport that works well for most web pages designed for "
+"desktop."
+msgstr ""
+"De breedte van de viewport die goed werkt voor de meeste webpagina's "
+"ontworpen voor het bureaublad."
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:254
+msgid "Device DPI"
+msgstr "Apparaat-DPI"
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:255
+msgid "The number of dots per inch of the screen."
+msgstr "Het aantal punten per inch van het scherm."
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:273
+msgid "Width"
+msgstr "Breedte"
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:274
+msgid "The width of the viewport."
+msgstr "De breedte van de viewport."
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:292
+msgid "Height"
+msgstr "Hoogte"
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:293
+msgid "The height of the viewport."
+msgstr "De hoogte van de viewport."
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:311
+msgid "Initial Scale Factor"
+msgstr "Aanvankelijke schaalfactor"
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:312
+msgid "The initial scale of the viewport."
+msgstr "De aanvankelijke schaal van de viewport."
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:330
+msgid "Minimum Scale Factor"
+msgstr "Minimum-schaalfactor"
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:331
+msgid "The minimum scale of the viewport."
+msgstr "De minimumschaal van de viewport."
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:349
+msgid "Maximum Scale Factor"
+msgstr "Maximum-schaalfactor"
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:350
+msgid "The maximum scale of the viewport."
+msgstr "Maximumschaal van de viewport."
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:368
+msgid "Device Pixel Ratio"
+msgstr "Apparaat-pixelverhouding"
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:369
+msgid "The device pixel ratio of the viewport."
+msgstr "De apparaat-pixelverhouding van de viewport."
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:388
+msgid "User Scalable"
+msgstr "Schaalbaar door gebruiker"
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:389
+msgid "Determines whether or not the user can zoom in and out."
+msgstr "Bepaalt of de gebruiker kan in– en uitzoomen."
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:407
+msgid "Valid"
+msgstr "Geldig"
+
+#: ../../../../CyberKit/gtk/webkit/webkitviewportattributes.cpp:408
+msgid "Determines whether or not the attributes are valid, and can be used."
+msgstr "Bepaalt of de attributen geldig zijn en kunnen worden gebruikt of niet."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebdatabase.cpp:176
+msgid "Security Origin"
+msgstr "Beveiligingsbron"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebdatabase.cpp:177
+msgid "The security origin of the database"
+msgstr "De beveiligingsbron van de database"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebdatabase.cpp:190
+#: ../../../../CyberKit/gtk/webkit/webkitwebframe.cpp:454
+msgid "Name"
+msgstr "Naam"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebdatabase.cpp:191
+msgid "The name of the Web Database database"
+msgstr "De naam van de Web Database-database"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebdatabase.cpp:204
+msgid "Display Name"
+msgstr "Weergavenaam"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebdatabase.cpp:205
+msgid "The display name of the Web Storage database"
+msgstr "De weergavenaam van de Web Storage-database"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebdatabase.cpp:218
+msgid "Expected Size"
+msgstr "Verwachte grootte"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebdatabase.cpp:219
+msgid "The expected size of the Web Database database"
+msgstr "De verwachte grootte van de Web Database-database"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebdatabase.cpp:231
+msgid "Size"
+msgstr "Grootte"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebdatabase.cpp:232
+msgid "The current size of the Web Database database"
+msgstr "De huidige grootte van de Web Database-database"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebdatabase.cpp:244
+msgid "Filename"
+msgstr "Bestandsnaam"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebdatabase.cpp:245
+msgid "The absolute filename of the Web Storage database"
+msgstr "De absolute bestandsnaam van de Web Storage-database"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebframe.cpp:455
+msgid "The name of the frame"
+msgstr "Naam van het frame"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebframe.cpp:461
+#: ../../../../CyberKit/gtk/webkit/webkitwebhistoryitem.cpp:144
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3240
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:663
+msgid "Title"
+msgstr "Titel"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebframe.cpp:462
+msgid "The document title of the frame"
+msgstr "De titel van het huidige frame"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebframe.cpp:469
+msgid "The current URI of the contents displayed by the frame"
+msgstr "De huidige URI van de in het frame weergegeven inhoud"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebframe.cpp:500
+msgid "Horizontal Scrollbar Policy"
+msgstr "Beleid voor horizontale schuifbalk"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebframe.cpp:501
+msgid ""
+"Determines the current policy for the horizontal scrollbar of the frame."
+msgstr "Bepaalt het beleid voor de horizontale schuifbalk van het frame"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebframe.cpp:518
+msgid "Vertical Scrollbar Policy"
+msgstr "Beleid voor verticale schuifbalk"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebframe.cpp:519
+msgid "Determines the current policy for the vertical scrollbar of the frame."
+msgstr "Bepaalt het huidige beleid voor de verticale schuifbalk van het frame."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebhistoryitem.cpp:145
+msgid "The title of the history item"
+msgstr "De titel van het geschiedenis-item"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebhistoryitem.cpp:160
+msgid "Alternate Title"
+msgstr "Alternatieve titel"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebhistoryitem.cpp:161
+msgid "The alternate title of the history item"
+msgstr "De alternatieve titel van het geschiedenis-item"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebhistoryitem.cpp:177
+msgid "The URI of the history item"
+msgstr "De URI van het geschiedenis-item"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebhistoryitem.cpp:192
+#: ../../../../CyberKit/gtk/webkit/webkitwebnavigationaction.cpp:163
+msgid "Original URI"
+msgstr "Originele URI"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebhistoryitem.cpp:193
+msgid "The original URI of the history item"
+msgstr "De originele URI van het geschiedenis-item"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebhistoryitem.cpp:208
+msgid "Last visited Time"
+msgstr "Laatst bezocht op"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebhistoryitem.cpp:209
+msgid "The time at which the history item was last visited"
+msgstr "De tijd waarop het geschiedenis-item het laatst is bezocht"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebinspector.cpp:273
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitPrintOperation.cpp:154
+msgid "Web View"
+msgstr "Webweergave"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebinspector.cpp:274
+msgid "The Web View that renders the Web Inspector itself"
+msgstr "De webweergave die die Webinspector zelf weergeeft"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebinspector.cpp:287
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebInspector.cpp:122
+msgid "Inspected URI"
+msgstr "Geïnspecteerde URI"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebinspector.cpp:288
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebInspector.cpp:123
+msgid "The URI that is currently being inspected"
+msgstr "De URI die momenteel geïnspecteerd wordt"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebinspector.cpp:304
+msgid "Enable JavaScript profiling"
+msgstr "JavaScript-profilering inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebinspector.cpp:305
+msgid "Profile the executed JavaScript."
+msgstr "De uitgevoerde JavaScript profileren."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebinspector.cpp:320
+msgid "Enable Timeline profiling"
+msgstr "Tijdslijn-profilering inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebinspector.cpp:321
+msgid "Profile the CyberCore instrumentation."
+msgstr "De instrumentering van CyberCore profileren."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebnavigationaction.cpp:148
+msgid "Reason"
+msgstr "Reden"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebnavigationaction.cpp:149
+msgid "The reason why this navigation is occurring"
+msgstr "De reden waarom deze navigatie optreedt"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebnavigationaction.cpp:164
+msgid "The URI that was requested as the target for the navigation"
+msgstr "De URI die werd aangevraagd als bestemming voor de navigatie"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebnavigationaction.cpp:178
+msgid "Button"
+msgstr "Knop"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebnavigationaction.cpp:179
+msgid "The button used to click"
+msgstr "De knop voor het klikken"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebnavigationaction.cpp:194
+msgid "Modifier state"
+msgstr "Staat van de optietoets"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebnavigationaction.cpp:195
+msgid "A bitmask representing the state of the modifier keys"
+msgstr "Een bitmask dat de staat van de optietoets representeert"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebnavigationaction.cpp:210
+msgid "Target frame"
+msgstr "Doelframe"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebnavigationaction.cpp:211
+msgid "The target frame for the navigation"
+msgstr "Het doelframe voor de navigatie"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebplugin.cpp:113
+msgid "Enabled"
+msgstr "Ingeschakeld"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebplugin.cpp:114
+msgid "Whether the plugin is enabled"
+msgstr "Of de plug-in ingeschakeld is"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebresource.cpp:210
+msgid "The URI of the resource"
+msgstr "De URI van de bron"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebresource.cpp:224
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:137
+msgid "MIME Type"
+msgstr "MIME-type"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebresource.cpp:225
+msgid "The MIME type of the resource"
+msgstr "De MIME-type van de bron"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebresource.cpp:239
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3389
+msgid "Encoding"
+msgstr "Codering"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebresource.cpp:240
+msgid "The text encoding name of the resource"
+msgstr "De tekstcoderingsnaam van de bron"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebresource.cpp:255
+msgid "Frame Name"
+msgstr "Framenaam"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebresource.cpp:256
+msgid "The frame name of the resource"
+msgstr "Naam van het frame van de bron"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:151
+msgid "Default Encoding"
+msgstr "Standaardcodering"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:152
+msgid "The default encoding used to display text."
+msgstr "De standaardcodering om tekst weer te geven."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:160
+msgid "Cursive Font Family"
+msgstr "Cursive-lettertypefamilie"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:161
+msgid "The default Cursive font family used to display text."
+msgstr "De standaard Cursive-lettertypefamilie om tekst weer te geven."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:169
+msgid "Default Font Family"
+msgstr "Standaard lettertypefamilie"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:170
+msgid "The default font family used to display text."
+msgstr "De standaard lettertypefamilie om tekst weer te geven."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:178
+msgid "Fantasy Font Family"
+msgstr "Fantasy-lettertypefamilie"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:179
+msgid "The default Fantasy font family used to display text."
+msgstr "De standaard Fantasy-lettertypefamilie om tekst weer te geven."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:187
+msgid "Monospace Font Family"
+msgstr "Monospace-lettertypefamilie"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:188
+msgid "The default font family used to display monospace text."
+msgstr "De standaard lettertypefamilie om vaste-breedte-tekst weer te geven."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:196
+msgid "Sans Serif Font Family"
+msgstr "Sans Serif-lettertypefamilie"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:197
+msgid "The default Sans Serif font family used to display text."
+msgstr "De standaard Sans Serif-lettertypefamilie om tekst weer te geven."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:205
+msgid "Serif Font Family"
+msgstr "Serif-lettertypefamilie"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:206
+msgid "The default Serif font family used to display text."
+msgstr "De standaard Serif-lettertypefamilie om tekst weer te geven."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:214
+msgid "Default Font Size"
+msgstr "Standaard korpsgrootte"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:215
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:766
+msgid "The default font size used to display text."
+msgstr "De standaard korpsgrootte om tekst weer te geven."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:223
+msgid "Default Monospace Font Size"
+msgstr "Standaard Monospace-lettergrootte"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:224
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:780
+msgid "The default font size used to display monospace text."
+msgstr "De standaard lettergrootte om vaste-breedte-tekst weer te geven."
+
+# Korpsgrootte/lettergrootte?
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:232
+msgid "Minimum Font Size"
+msgstr "Minimum korpsgrootte"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:233
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:795
+msgid "The minimum font size used to display text."
+msgstr "De minimum lettergrootte om tekst weer te geven."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:241
+msgid "Minimum Logical Font Size"
+msgstr "Minimum logische korpsgrootte"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:242
+msgid "The minimum logical font size used to display text."
+msgstr "De minimum logische korpsgrootte om tekst weer te geven."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:261
+msgid "Enforce 96 DPI"
+msgstr "96 DPI afdwingen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:262
+msgid "Enforce a resolution of 96 DPI"
+msgstr "Een resolutie van 96 DPI afdwingen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:270
+msgid "Auto Load Images"
+msgstr "Afbeeldingen automatisch laden"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:271
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:507
+msgid "Load images automatically."
+msgstr "Automatisch afbeeldingen laden."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:279
+msgid "Auto Shrink Images"
+msgstr "Afbeeldingen automatisch verkleinen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:280
+msgid "Automatically shrink standalone images to fit."
+msgstr "Automatisch losstaande afbeeldingen passend maken."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:288
+msgid "Respect Image Orientation"
+msgstr "Afbeeldingsoriëntatie respecteren"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:289
+msgid "Whether CyberKit should respect image orientation."
+msgstr "Of CyberKit de oriëntatie van de afbeelding moet behouden."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:297
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:919
+msgid "Print Backgrounds"
+msgstr "Achtergronden afdrukken"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:298
+msgid "Whether background images should be printed."
+msgstr "Of achtergrondafbeeldingen afgedrukt moeten worden."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:306
+msgid "Enable Scripts"
+msgstr "Scripts inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:307
+msgid "Enable embedded scripting languages."
+msgstr "Ingebedde scripttalen inschakelen."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:315
+msgid "Enable Plugins"
+msgstr "Plugins inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:316
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:617
+msgid "Enable embedded plugin objects."
+msgstr "Ingebedde plugin-objecten inschakelen."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:324
+msgid "Resizable Text Areas"
+msgstr "Tekstgebieden van grootte veranderbaar"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:325
+msgid "Whether text areas are resizable."
+msgstr "Of de grootte van tekstgebieden gewijzigd kan worden."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:332
+msgid "User Stylesheet URI"
+msgstr "URI van gebruikersstijlblad"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:333
+msgid "The URI of a stylesheet that is applied to every page."
+msgstr "De URI van een stijlblad dat wordt toegepast op elke pagina."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:348
+msgid "Zoom Stepping Value"
+msgstr "Stapgrootte voor in- en uitzoomen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:349
+msgid "The value by which the zoom level is changed when zooming in or out."
+msgstr ""
+"De hoeveelheid waarmee het zoomniveau verandert bij het in- en uitzoomen."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:367
+msgid "Enable Developer Extras"
+msgstr "Extraatjes voor ontwikkelaars"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:368
+msgid "Enables special extensions that help developers"
+msgstr "Schakelt speciale uitbreidingen in die ontwikkelaars helpen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:388
+msgid "Enable Private Browsing"
+msgstr "Privé-browsen inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:389
+msgid "Enables private browsing mode"
+msgstr "Schakelt de stand voor privé-browsen in"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:404
+msgid "Enable Spell Checking"
+msgstr "Spellingcontrole inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:405
+msgid "Enables spell checking while typing"
+msgstr "Schakelt spellingcontrole tijdens het typen in"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:428
+msgid "Languages to use for spell checking"
+msgstr "Te gebruiken talen bij spellingcontrole"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:429
+msgid "Comma separated list of languages to use for spell checking"
+msgstr "Kommagescheiden lijst van talen voor spellingcontrole"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:443
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:890
+msgid "Enable Caret Browsing"
+msgstr "Cursor-browsen inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:444
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:891
+msgid "Whether to enable accessibility enhanced keyboard navigation"
+msgstr ""
+"Of toegankelijkheidsgeoptimaliseerde toetsenbordnavigatie is ingeschakeld"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:459
+msgid "Enable HTML5 Database"
+msgstr "HTML5-database inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:460
+msgid "Whether to enable HTML5 database support"
+msgstr "Of HTML5-databaseondersteuning is ingeschakeld"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:475
+msgid "Enable HTML5 Local Storage"
+msgstr "HTML5-lokale opslag inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:476
+msgid "Whether to enable HTML5 Local Storage support"
+msgstr "Of HTML5-lokale opslag ingeschakeld moet zijn"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:491
+msgid "Local Storage Database Path"
+msgstr "Pad naar database voor lokale opslag"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:492
+msgid "The path to where HTML5 Local Storage databases are stored."
+msgstr "Het pad waarnaar HTML5 lokale opslag-databases worden weggeschreven."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:506
+msgid "Enable XSS Auditor"
+msgstr "XSS-auditor inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:507
+msgid "Whether to enable the XSS auditor"
+msgstr "Of de XSS-auditor is ingeschakeld"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:525
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1194
+msgid "Enable Spatial Navigation"
+msgstr "Ruimtelijke navigatie inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:526
+msgid "Whether to enable Spatial Navigation"
+msgstr "Of ruimtelijke navigatie is ingeschakeld"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:544
+msgid "Enable Frame Flattening"
+msgstr "Platmaken van frames inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:545
+msgid "Whether to enable Frame Flattening"
+msgstr "Of platmaken van frames is ingeschakeld"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:562
+msgid "User Agent"
+msgstr "User-agent"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:563
+msgid "The User-Agent string used by CyberKitGtk"
+msgstr "De User-Agent-tekenreeks die CyberKitGtk gebruikt"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:578
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:643
+msgid "JavaScript can open windows automatically"
+msgstr "JavaScript kan automatisch vensters openen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:579
+msgid "Whether JavaScript can open windows automatically"
+msgstr "Of JavaScript automatisch vensters kan openen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:593
+msgid "JavaScript can access Clipboard"
+msgstr "JavaScript heeft toegang tot klembord"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:594
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1003
+msgid "Whether JavaScript can access Clipboard"
+msgstr "Of JavaScript het klembord kan benaderen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:610
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:538
+msgid "Enable offline web application cache"
+msgstr "Offline webapplicatiebuffer inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:611
+msgid "Whether to enable offline web application cache"
+msgstr "Of de offline webapplicatiebuffer is ingeschakeld"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:636
+msgid "Editing behavior"
+msgstr "Gedrag bij bewerken"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:637
+msgid "The behavior mode to use in editing mode"
+msgstr "De gedragsmodus in de bewerkingsstand"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:653
+msgid "Enable universal access from file URIs"
+msgstr "Universele toegang vanaf bestands-URI's inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:654
+msgid "Whether to allow universal access from file URIs"
+msgstr "Of universele toegang vanaf bestands-URI's is ingeschakeld"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:669
+msgid "Enable DOM paste"
+msgstr "DOM-plakken inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:670
+msgid "Whether to enable DOM paste"
+msgstr "Of plakken vanuit het DOM is ingeschakeld"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:688
+msgid "Tab key cycles through elements"
+msgstr "Tab-toets wandelt door elementen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:689
+msgid "Whether the tab key cycles through elements on the page."
+msgstr "Of de tab-toets door de elementen op de pagina wandelt."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:711
+msgid "Enable Default Context Menu"
+msgstr "Standaard-contextmenu inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:712
+msgid ""
+"Enables the handling of right-clicks for the creation of the default context "
+"menu"
+msgstr ""
+"Schakelt het afhandelen van klikken met de tweede muisknop in voor het "
+"creëren van het standaard contextmenu"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:732
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1067
+msgid "Enable Site Specific Quirks"
+msgstr "Site-specifieke eigenaardigheden inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:733
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1068
+msgid "Enables the site-specific compatibility workarounds"
+msgstr "Schakelt omzeilingen in voor compatibiliteit met specifieke websites"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:755
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1088
+msgid "Enable page cache"
+msgstr "Paginabuffer inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:756
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1089
+msgid "Whether the page cache should be used"
+msgstr "Of de paginabuffer gebruikt moet worden"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:776
+msgid "Auto Resize Window"
+msgstr "Venstergrootte automatisch aanpassen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:777
+msgid "Automatically resize the toplevel window when a page requests it"
+msgstr ""
+"Grootte van topniveauvenster automatisch aanpassen wanneer pagina hierom "
+"vraagt"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:809
+msgid "Enable Java Applet"
+msgstr "Java-applet inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:810
+msgid "Whether Java Applet support through <applet> should be enabled"
+msgstr "Of ondersteuning voor Java-applets via <applet> ingeschakeld is"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:824
+msgid "Enable Hyperlink Auditing"
+msgstr "Hyperlink-auditing inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:825
+msgid "Whether <a ping> should be able to send pings"
+msgstr "Of <a ping> in staat moet zijn om pings te verzenden"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:843
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:906
+msgid "Enable Fullscreen"
+msgstr "Volledig scherm inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:844
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:907
+msgid "Whether to enable the Javascript Fullscreen API"
+msgstr "Of de Javascript-volledigscherm-API is ingeschakeld"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:860
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:953
+msgid "Enable WebGL"
+msgstr "WebGL inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:861
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:954
+msgid "Whether WebGL content should be rendered"
+msgstr "Of WebGL-inhoud moet worden getoond."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:877
+msgid "Enable accelerated compositing"
+msgstr "Versnelde compositing inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:878
+msgid "Whether accelerated compositing should be enabled"
+msgstr "Of versnelde compositing moet worden ingeschakeld"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:896
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:938
+msgid "Enable WebAudio"
+msgstr "WebAudio inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:897
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:939
+msgid "Whether WebAudio content should be handled"
+msgstr "Of WebAudio-inhoud moet worden behandeld"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:913
+msgid "CyberKit prefetches domain names"
+msgstr "CyberKit haalt domeinnamen vooraf op"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:914
+msgid "Whether CyberKit prefetches domain names"
+msgstr "Of CyberKit domeinnamen vooraf ophaalt (prefetching)"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:932
+msgid "Enable Media Stream"
+msgstr "Media-stream inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:933
+msgid "Whether Media Stream should be enabled"
+msgstr "Of Media-stream ingeschakeld moet worden"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:948
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1121
+msgid "Enable smooth scrolling"
+msgstr "Vloeiend schuiven aanzetten"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:949
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1122
+msgid "Whether to enable smooth scrolling"
+msgstr "Of vloeiend schuiven is ingeschakeld"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:967
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1019
+msgid "Media playback requires user gesture"
+msgstr "Afspelen van media vereist gebaar van gebruiker"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:968
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1020
+msgid "Whether media playback requires user gesture"
+msgstr "Of het afspelen van media een gebaar van de gebruiker vereist"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:984
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1034
+msgid "Media playback allows inline"
+msgstr "Inline media afspelen toegestaan"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:985
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1035
+msgid "Whether media playback allows inline"
+msgstr "Of het inline afspelen van media is toegestaan"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:1019
+msgid "Enable display of insecure content"
+msgstr "Weergave van onveilige inhoud inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:1020
+msgid "Whether non-HTTPS resources can display on HTTPS pages."
+msgstr "Of niet-HTTPS-bronnen kunnen worden getoond op HTTPS-pagina's."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:1035
+msgid "Enable running of insecure content"
+msgstr "Starten van onveilige inhoud inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:1036
+msgid "Whether non-HTTPS resources can run on HTTPS pages."
+msgstr "Of niet-HTTPS-bronnen op HTTPS-pagina's kunnen starten."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:1055
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1214
+msgid "Enable MediaSource"
+msgstr "MediaSource inschakelen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebsettings.cpp:1056
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1215
+msgid "Whether MediaSource should be enabled."
+msgstr "Of de MediaSource ingeschakeld moet worden."
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:1324
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:472
+msgid "Select Files"
+msgstr "Bestanden selecteren"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:1324
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:472
+msgid "Select File"
+msgstr "Bestand selecteren"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3241
+msgid "Returns the @web_view's document title"
+msgstr "Geeft de documenttitel van de @web_view terug"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3255
+msgid "Returns the current URI of the contents displayed by the @web_view"
+msgstr "Geeft de huidige URI terug van de inhoud die de @web_view weergeeft"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3268
+msgid "Copy target list"
+msgstr "Kopieerdoellijst"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3269
+msgid "The list of targets this web view supports for clipboard copying"
+msgstr ""
+"De lijst met targets die deze webweergave ondersteunt voor het kopiëren van "
+"het klembord"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3282
+msgid "Paste target list"
+msgstr "Plakdoellijst"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3283
+msgid "The list of targets this web view supports for clipboard pasting"
+msgstr ""
+"De lijst met targets die deze webview ondersteunt voor het plakken van het "
+"klembord"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3289
+msgid "Settings"
+msgstr "Instellingen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3290
+msgid "An associated CyberKitWebSettings instance"
+msgstr "Een geassocieerde instantie van CyberKitWebSettings"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3303
+#: ../../../../CyberKit2/UIProcess/gtk/WebInspectorProxyGtk.cpp:82
+#: ../../../../CyberKit2/UIProcess/gtk/WebInspectorProxyGtk.cpp:147
+msgid "Web Inspector"
+msgstr "Web-inspector"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3304
+msgid "The associated CyberKitWebInspector instance"
+msgstr "De geassocieerde instantie van CyberKitWebInspector"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3317
+msgid "Viewport Attributes"
+msgstr "Viewport-kenmerken"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3318
+msgid "The associated CyberKitViewportAttributes instance"
+msgstr "De geassocieerde instantie van CyberKitViewportAttributes"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3338
+msgid "Editable"
+msgstr "Bewerkbaar"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3339
+msgid "Whether content can be modified by the user"
+msgstr "Of de tekst gewijzigd kan worden door de gebruiker"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3345
+msgid "Transparent"
+msgstr "Transparant"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3346
+msgid "Whether content has a transparent background"
+msgstr "Of de inhoud een transparante achtergrond heeft"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3359
+msgid "Zoom level"
+msgstr "Zoomniveau"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3360
+msgid "The level of zoom of the content"
+msgstr "Zoomfactor van de inhoud"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3375
+msgid "Full content zoom"
+msgstr "Zoomen op volledige inhoud"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3376
+msgid "Whether the full content is scaled when zooming"
+msgstr "Of de volledige inhoud op schaal wordt gebracht bij het zoomen"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3390
+msgid "The default encoding of the web view"
+msgstr "Standaard codering van de webweergave"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3403
+msgid "Custom Encoding"
+msgstr "Aangepaste codering"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3404
+msgid "The custom encoding of the web view"
+msgstr "De aangepaste codering van de webweergave"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3456
+msgid "Icon URI"
+msgstr "Pictogram-URI"
+
+#: ../../../../CyberKit/gtk/webkit/webkitwebview.cpp:3457
+msgid "The URI for the favicon for the #CyberKitWebView."
+msgstr "De URI voor het favicon van de #CyberKitWebView."
+
+#: ../../../../CyberKit2/Shared/Downloads/soup/DownloadSoup.cpp:89
+#, c-format
+msgid ""
+"Cannot determine destination URI for download with suggested filename %s"
+msgstr ""
+"Kan geen bestemmings-URI bepalen voor download met voorgestelde bestandsnaam "
+"%s"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitDownload.cpp:144
+msgid "Destination"
+msgstr "Bestemming"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitDownload.cpp:145
+msgid "The local URI to where the download will be saved"
+msgstr "De lokale URI waarnaar de download weggeschreven wordt"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitDownload.cpp:157
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebResource.cpp:122
+msgid "Response"
+msgstr "Reactie"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitDownload.cpp:158
+msgid "The response of the download"
+msgstr "De reactie van de download"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitDownload.cpp:175
+msgid "Estimated Progress"
+msgstr "Geschatte voortgang"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFaviconDatabase.cpp:142
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFaviconDatabase.cpp:322
+#, c-format
+msgid "Unknown favicon for page %s"
+msgstr "Onbekend favicon voor pagina %s"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFaviconDatabase.cpp:148
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFaviconDatabase.cpp:278
+#, c-format
+msgid "Page %s does not have a favicon"
+msgstr "Pagina %s beschikt niet over een favicon"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFaviconDatabase.cpp:272
+msgid "Favicons database not initialized yet"
+msgstr "Favicons-database nog niet geïnitialiseerd"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:177
+msgid "Search text"
+msgstr "Zoekterm"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:178
+msgid "Text to search for in the view"
+msgstr "Tekst om naar te zoeken in de webweergave"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:190
+msgid "Search Options"
+msgstr "Zoekopties"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:191
+msgid "Search options to be used in the search operation"
+msgstr "Te gebruiken zoekopties in de zoekopdracht"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:204
+msgid "Maximum matches count"
+msgstr "Maximum aantal overeenkomsten"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:205
+msgid "The maximum number of matches in a given text to report"
+msgstr "Maximum aantal overeenkomsten in een gegeven tekst om te vermelden"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:217
+msgid "WebView"
+msgstr "Webweergave"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitFindController.cpp:218
+msgid "The WebView associated with this find controller"
+msgstr "De met deze zoekcontroller geassocieerde webweergave"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:153
+msgid "Flags with the context of the CyberKitHitTestResult"
+msgstr "Markeert met de context van het CyberKitHitTestResult"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:167
+msgid "The link URI"
+msgstr "De verwijzings-URI"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:179
+msgid "Link Title"
+msgstr "Verwijzingstitel"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:180
+msgid "The link title"
+msgstr "De verwijzingstitel"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:192
+msgid "Link Label"
+msgstr "Verwijzingslabel"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:193
+msgid "The link label"
+msgstr "Het verwijzingslabel"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:206
+msgid "The image URI"
+msgstr "De afbeeldings-URI"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitHitTestResult.cpp:219
+msgid "The media URI"
+msgstr "De media-URI"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:105
+msgid "Navigation type"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:106
+msgid "The type of navigation triggering this decision"
+msgstr "Het type navigatie dat deze beslissing activeert"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:123
+msgid "Mouse button"
+msgstr "Muisknop"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:124
+msgid "The mouse button used if this decision was triggered by a mouse event"
+msgstr "De gebruikte muisknop als deze beslissing geactiveerd werd door een muisgebeurtenis"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:140
+msgid "Mouse event modifiers"
+msgstr "Muisgebeurtenis-controletoetsen"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:141
+msgid "The modifiers active if this decision was triggered by a mouse event"
+msgstr "De actieve controletoetsen als deze beslissing geactiveerd werd door een muisgebeurtenis"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:154
+msgid "Navigation URI request"
+msgstr "Navigatie-URI-aanvraag"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:155
+msgid "The URI request that is associated with this navigation"
+msgstr "De URI die is geassocieerd met deze navigatie"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:170
+msgid "Frame name"
+msgstr "Framenaam"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitNavigationPolicyDecision.cpp:171
+msgid "The name of the new frame this navigation action targets"
+msgstr "De naam van het nieuwe frame waar deze navigatie-actie op is gericht"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitPrintOperation.cpp:155
+msgid "The web view that will be printed"
+msgstr "De webweergave die wordt afgedrukt"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitPrintOperation.cpp:167
+msgid "Print Settings"
+msgstr "Afdrukinstellingen"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitPrintOperation.cpp:168
+msgid "The initial print settings for the print operation"
+msgstr "De aanvankelijke afdrukinstellingen voor de afdrukoperatie"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitPrintOperation.cpp:179
+msgid "Page Setup"
+msgstr "Pagina-instellingen"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitPrintOperation.cpp:180
+msgid "The initial page setup for the print operation"
+msgstr "De aanvankelijke pagina-instellingen voor de afdrukoperatie"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitResponsePolicyDecision.cpp:91
+msgid "Response URI request"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitResponsePolicyDecision.cpp:92
+msgid "The URI request that is associated with this policy decision"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitResponsePolicyDecision.cpp:105
+msgid "URI response"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitResponsePolicyDecision.cpp:106
+msgid "The URI response that is associated with this policy decision"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:491
+msgid "Enable JavaScript"
+msgstr "Javascript inschakelen"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:492
+msgid "Enable JavaScript."
+msgstr "JavaScripts inschakelen."
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:506
+msgid "Auto load images"
+msgstr "Afbeeldingen automatisch laden"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:520
+msgid "Load icons ignoring image load setting"
+msgstr "Pictogrammen laden en daarbij afbeeldingenlaadinstelling negeren"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:521
+msgid "Whether to load site icons ignoring image load setting."
+msgstr ""
+"Of pagina-pictogrammen geladen moeten worden zonder inachtneming "
+"van de afbeeldingenlaadinstelling."
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:539
+msgid "Whether to enable offline web application cache."
+msgstr "Of de off-line webapplicatiebuffer is ingeschakeld"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:555
+msgid "Enable HTML5 local storage"
+msgstr "HTML5-lokale opslag inschakelen"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:556
+msgid "Whether to enable HTML5 Local Storage support."
+msgstr "Of HTML5 Local Storage-ondersteuning ingeschakeld moet zijn."
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:573
+msgid "Enable HTML5 database"
+msgstr "HTML5-database inschakelen"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:574
+msgid "Whether to enable HTML5 database support."
+msgstr "Of HTML5-databaseondersteuning is ingeschakeld."
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:587
+msgid "Enable XSS auditor"
+msgstr "XSS-auditor inschakelen"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:588
+msgid "Whether to enable the XSS auditor."
+msgstr "Of de XSS-auditor is ingeschakeld."
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:603
+msgid "Enable frame flattening"
+msgstr "Frame-platmaken inschakelen"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:604
+msgid "Whether to enable frame flattening."
+msgstr "Of het platmaken van frames is ingeschakeld"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:616
+msgid "Enable plugins"
+msgstr "Plug-ins inschakelen"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:629
+msgid "Enable Java"
+msgstr "Java inschakelen"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:630
+msgid "Whether Java support should be enabled."
+msgstr "Of de Java-ondersteuning ingeschakeld moet zijn."
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:644
+msgid "Whether JavaScript can open windows automatically."
+msgstr "Of JavaScript automatisch vensters kan openen."
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:659
+msgid "Enable hyperlink auditing"
+msgstr "Hyperlink-auditing inschakelen"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:660
+msgid "Whether <a ping> should be able to send pings."
+msgstr "Of <a ping> in staat mag zijn om pings te verzenden."
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:672
+msgid "Default font family"
+msgstr "Standaard lettertypefamilie"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:673
+msgid ""
+"The font family to use as the default for content that does not specify a "
+"font."
+msgstr ""
+"De te gebruiken lettertypenfamilie als standaard voor inhoud die "
+"geen lettertype specificeert."
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:686
+msgid "Monospace font family"
+msgstr "Vaste breedte-lettertypefamilie"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:687
+msgid "The font family used as the default for content using monospace font."
+msgstr "De standaard lettertypefamilie om vaste-breedte-tekst weer te geven."
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:699
+msgid "Serif font family"
+msgstr "Serif-lettertypefamilie"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:700
+msgid "The font family used as the default for content using serif font."
+msgstr "De te gebruiken lettertypefamilie voor inhoud die een lettertype met schreef gebruikt."
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:712
+msgid "Sans-serif font family"
+msgstr "Sans Serif-lettertypefamilie"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:713
+msgid "The font family used as the default for content using sans-serif font."
+msgstr "De te gebruiken lettertypefamilie voor inhoud die een schreefloos lettertype gebruikt."
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:725
+msgid "Cursive font family"
+msgstr "Cursive-lettertypefamilie"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:726
+msgid "The font family used as the default for content using cursive font."
+msgstr "De te gebruiken lettertypefamilie voor inhoud die een cursief lettertype gebruikt."
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:738
+msgid "Fantasy font family"
+msgstr "Fantasy-lettertypefamilie"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:739
+msgid "The font family used as the default for content using fantasy font."
+msgstr "De te gebruiken lettertypefamilie voor inhoud die een fantasie-lettertype gebruikt."
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:751
+msgid "Pictograph font family"
+msgstr "Pictograph-lettertypefamilie"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:752
+msgid "The font family used as the default for content using pictograph font."
+msgstr "De te gebruiken lettertypefamilie voor inhoud die het pictograph-lettertype gebruikt."
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:765
+msgid "Default font size"
+msgstr "Standaard korpsgrootte"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:779
+msgid "Default monospace font size"
+msgstr "Standaard vaste breefte-lettergrootte"
+
+# Korpsgrootte/lettergrootte?
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:794
+msgid "Minimum font size"
+msgstr "Minimum korpsgrootte"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:807
+msgid "Default charset"
+msgstr "Standaard tekenset"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:808
+msgid ""
+"The default text charset used when interpreting content with unspecified "
+"charset."
+msgstr ""
+"De standaard te gebruiken tekenset bij het analyseren van inhoud "
+"met onbekende tekenset."
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:821
+msgid "Enable private browsing"
+msgstr "Privé-browsen inschakelen"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:822
+msgid "Whether to enable private browsing"
+msgstr "Of privé-browsen is ingeschakeld"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:834
+msgid "Enable developer extras"
+msgstr "Extraatjes voor ontwikkelaars inschakelen"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:835
+msgid "Whether to enable developer extras"
+msgstr "Of extraatjes voor ontwikkelaars ingeschakeld moeten zijn"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:847
+msgid "Enable resizable text areas"
+msgstr "Tekstgebieden van grootte veranderbaar"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:848
+msgid "Whether to enable resizable text areas"
+msgstr "Of het aanpassen van de grootte van tekstgebieden is ingeschakeld"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:863
+msgid "Enable tabs to links"
+msgstr "Tabbladen naar verwijzingen inschakelen"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:864
+msgid "Whether to enable tabs to links"
+msgstr "Of tabbladen naar verwijzingen is ingeschakeld"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:877
+msgid "Enable DNS prefetching"
+msgstr "DNS-vooraf-ophalen inschakelen"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:878
+msgid "Whether to enable DNS prefetching"
+msgstr "DNS-vooraf-ophalen is ingeschakeld"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:920
+msgid "Whether background images should be drawn during printing"
+msgstr "Of achtergrondafbeeldingen afgedrukt moeten worden."
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:971
+msgid "Allow modal dialogs"
+msgstr "Modale dialoogvensters toestaan"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:972
+msgid "Whether it is possible to create modal dialogs"
+msgstr "Of het mogelijk is om modale dialoogvensters aan te maken"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:987
+msgid "Zoom Text Only"
+msgstr "Uitsluitend tekst inzoomen"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:988
+msgid "Whether zoom level of web view changes only the text size"
+msgstr "Of het zoomniveau van de webweergave alleen de tekstgrootte verandert"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1002
+msgid "JavaScript can access clipboard"
+msgstr "JavaScript heeft toegang tot klembord"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1049
+msgid "Draw compositing indicators"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1050
+msgid "Whether to draw compositing borders and repaint counters"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1108
+msgid "User agent string"
+msgstr "User-agent"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1109
+msgid "The user agent string"
+msgstr "De User-Agent-tekenreeks die CyberKitGtk gebruikt"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1139
+#, fuzzy
+msgid "Enable accelerated 2D canvas"
+msgstr "Privé-browsen inschakelen"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1140
+#, fuzzy
+msgid "Whether to enable accelerated 2D canvas"
+msgstr "Of plakken vanuit het DOM is ingeschakeld"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1155
+msgid "Write console messages on stdout"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1156
+msgid "Whether to write console messages on stdout"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1174
+#, fuzzy
+msgid "Enable MediaStream"
+msgstr "DOM-plakken inschakelen"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1175
+#, fuzzy
+msgid "Whether MediaStream content should be handled"
+msgstr "Of de paginabuffer gebruikt moet worden"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitSettings.cpp:1195
+#, fuzzy
+#| msgid "Whether to enable Spatial Navigation"
+msgid "Whether to enable Spatial Navigation support."
+msgstr "Of ruimtelijke navigatie is ingeschakeld"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:100
+#, fuzzy
+msgid "The URI for which the response was made."
+msgstr "De URI waarnaar het antwoord verstuurd wordt."
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:111
+msgid "Status Code"
+msgstr "Statuscode"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:112
+msgid "The status code of the response as returned by the server."
+msgstr "De statuscode van de reactie zoals teruggegeven door de server."
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:124
+msgid "Content Length"
+msgstr "Inhoudslengte"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:125
+#, fuzzy
+msgid "The expected content length of the response."
+msgstr "De tekstcoderingsnaam van de bron"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:138
+#, fuzzy
+msgid "The MIME type of the response"
+msgstr "De MIME-type van de bron"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitURIResponse.cpp:151
+#, fuzzy
+msgid "The suggested filename for the URI response"
+msgstr "De tekstcoderingsnaam van de bron"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebInspector.cpp:134
+msgid "Attached Height"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebInspector.cpp:135
+msgid "The height that the inspector view should have when it is attached"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebResource.cpp:110
+#, fuzzy
+msgid "The current active URI of the resource"
+msgstr "De URI van de bron"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebResource.cpp:123
+#, fuzzy
+msgid "The response of the resource"
+msgstr "Naam van het frame van de bron"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:635
+#, fuzzy
+msgid "Web Context"
+msgstr "Context"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:636
+#, fuzzy
+msgid "The web context for the view"
+msgstr "De titel van het geschiedenis-item"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:649
+#, fuzzy
+msgid "WebView Group"
+msgstr "Webweergave"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:650
+#, fuzzy
+msgid "The CyberKitWebViewGroup of the view"
+msgstr "De titel van het geschiedenis-item"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:664
+msgid "Main frame document title"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:682
+msgid "Estimated Load Progress"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:683
+msgid "An estimate of the percent completion for a document load"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:695
+msgid "Favicon"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:696
+#, fuzzy
+msgid "The favicon associated to the view, if any"
+msgstr "De ingesloten DOM-node die geassocieerd is met het hittestresultaat."
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:708
+#, fuzzy
+msgid "The current active URI of the view"
+msgstr "De titel van het huidige frame"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:722
+#, fuzzy
+msgid "The zoom level of the view content"
+msgstr "Zoomfactor van de inhoud"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:740
+#, fuzzy
+msgid "Whether the view is loading a page"
+msgstr "Of de paginabuffer gebruikt moet worden"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:754
+msgid "The view mode to display the web view contents"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:2570
+msgid "An exception was raised in JavaScript"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWebView.cpp:3048
+msgid "There was an error creating the snapshot"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:209
+msgid "Geometry"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:210
+msgid "The size and position of the window on the screen."
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:222
+msgid "Toolbar Visible"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:223
+#, fuzzy
+msgid "Whether the toolbar should be visible for the window."
+msgstr "Of de paginabuffer gebruikt moet worden"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:235
+msgid "Statusbar Visible"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:236
+#, fuzzy
+msgid "Whether the statusbar should be visible for the window."
+msgstr "Of de paginabuffer gebruikt moet worden"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:248
+msgid "Scrollbars Visible"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:249
+#, fuzzy
+msgid "Whether the scrollbars should be visible for the window."
+msgstr "Of de paginabuffer gebruikt moet worden"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:261
+msgid "Menubar Visible"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:262
+#, fuzzy
+msgid "Whether the menubar should be visible for the window."
+msgstr "Of de paginabuffer gebruikt moet worden"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:274
+msgid "Locationbar Visible"
+msgstr ""
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:275
+#, fuzzy
+msgid "Whether the locationbar should be visible for the window."
+msgstr "Of de paginabuffer gebruikt moet worden"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:286
+#, fuzzy
+msgid "Resizable"
+msgstr "Tekstgebieden van grootte veranderbaar"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:287
+#, fuzzy
+msgid "Whether the window can be resized."
+msgstr "Of de grootte van tekstgebieden gewijzigd kan worden."
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:299
+#, fuzzy
+msgid "Fullscreen"
+msgstr "Volledig scherm verlaten"
+
+#: ../../../../CyberKit2/UIProcess/API/gtk/CyberKitWindowProperties.cpp:300
+msgid "Whether window will be displayed fullscreen."
+msgstr ""
+
+#~ msgid "audio element controller"
+#~ msgstr "besturing audio-element"
+
+#~ msgid "video element controller"
+#~ msgstr "besturing video-element"
+
+#~ msgid "Play"
+#~ msgstr "Afspelen"
+
+#~ msgid "Pause"
+#~ msgstr "Pauzeren"
+
+#~ msgid "Play / Pause"
+#~ msgstr "Afspelen / pauzeren"
+
+#~ msgid "Play or pause the media"
+#~ msgstr "De media afspelen of pauzeren"
+
+#~ msgid "Time:"
+#~ msgstr "Tijd:"
+
+#~ msgid "Exit Fullscreen"
+#~ msgstr "Volledig scherm verlaten"
+
+#~ msgid "Exit from fullscreen mode"
+#~ msgstr "Volledig scherm verlaten"
+
+#, fuzzy
+#~ msgid "Whether the Mozilla style API should be enabled."
+#~ msgstr "Of de paginabuffer gebruikt moet worden"
+
+#~ msgid "Upload File"
+#~ msgstr "Bestand uploaden"
+
+#~ msgid "A username and password are being requested by the site %s"
+#~ msgstr "De site %s vraagt een gebruikersnaam en wachtwoord"
+
+#~ msgid "_Searchable Index"
+#~ msgstr "Door_zoekbare index"

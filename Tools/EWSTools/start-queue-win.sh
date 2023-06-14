@@ -38,9 +38,9 @@ function start_ews()
         mv win-ews.log win-ews.old
         find ~/win-ews-logs -mtime +7 -exec rm -f {} \;
         echo "TASK: Starting up"
-        cd ~/WebKit
-        echo "TASK: Cleaning WebKitBuild"
-        rm -rf WebKitBuild
+        cd ~/CyberKit
+        echo "TASK: Cleaning CyberKitBuild"
+        rm -rf CyberKitBuild
         date
         echo "TASK: Cleaning up"
         svn cleanup
@@ -52,7 +52,7 @@ function start_ews()
         svn status | grep "?" | awk '{print $2}' | xargs rm -rf
         date
         echo "TASK: webkit-patch clean"
-        ~/WebKit/Tools/Scripts/webkit-patch clean
+        ~/CyberKit/Tools/Scripts/webkit-patch clean
         date
         echo "TASK: svn up --non-interactive"
         svn up --non-interactive
@@ -60,9 +60,9 @@ function start_ews()
         echo "TASK: kill orphaned tasks"
         taskkill.exe /f /im cl.exe
         echo "TASK: test-webkitpy"
-        ~/WebKit/Tools/Scripts/test-webkitpy
+        ~/CyberKit/Tools/Scripts/test-webkitpy
         echo "TASK: webkit-patch win-ews"
-        ~/WebKit/Tools/Scripts/webkit-patch win-ews --bot-id=$BOT_ID --no-confirm --exit-after-iteration $RESET_AFTER_ITERATION
+        ~/CyberKit/Tools/Scripts/webkit-patch win-ews --bot-id=$BOT_ID --no-confirm --exit-after-iteration $RESET_AFTER_ITERATION
     done
 }
 

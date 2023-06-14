@@ -69,7 +69,7 @@ class PerfTestsRunner(object):
         # Timeouts are controlled by the Python Driver, so DRT/WTR runs with no-timeout.
         self._options.additional_drt_flag.append('--no-timeout')
 
-        # The GTK+ port only supports WebKit2, so it always uses WKTR.
+        # The GTK+ port only supports CyberKit2, so it always uses WKTR.
         if self._port.name().startswith("gtk"):
             self._options.webkit_test_runner = True
 
@@ -120,7 +120,7 @@ class PerfTestsRunner(object):
             optparse.make_option("--test-results-server",
                 help="Upload the generated JSON file to the specified server when --output-json-path is present."),
             optparse.make_option("--dump-render-tree", "-1", action="store_false", default=True, dest="webkit_test_runner",
-                help="Use DumpRenderTree rather than WebKitTestRunner."),
+                help="Use DumpRenderTree rather than CyberKitTestRunner."),
             optparse.make_option("--force", dest="use_skipped_list", action="store_false", default=True,
                 help="Run all tests, including the ones in the Skipped list."),
             optparse.make_option("--profile", action="store_true",
@@ -138,7 +138,7 @@ class PerfTestsRunner(object):
                 help="Specify number of times to invoke test runner for each performance test."),
             optparse.make_option("--wrapper",
                 help="wrapper command to insert before invocations of "
-                 "DumpRenderTree or WebKitTestRunner; option is split on whitespace before "
+                 "DumpRenderTree or CyberKitTestRunner; option is split on whitespace before "
                  "running. (Example: --wrapper='valgrind --smc-check=all')"),
             optparse.make_option('--display-server', choices=['xvfb', 'xorg', 'weston', 'wayland'], default='xvfb',
                 help='"xvfb": Use a virtualized X11 server. "xorg": Use the current X11 session. '
@@ -263,7 +263,7 @@ class PerfTestsRunner(object):
         template = filesystem.read_text_file(template_path)
 
         absolute_path_to_trunk = filesystem.dirname(self._port.perf_tests_dir())
-        results_page = template.replace('%AbsolutePathToWebKitTrunk%', absolute_path_to_trunk)
+        results_page = template.replace('%AbsolutePathToCyberKitTrunk%', absolute_path_to_trunk)
         results_page = results_page.replace('%PeformanceTestsResultsJSON%', json_output)
 
         filesystem.write_text_file(self._results_page_path(), results_page)

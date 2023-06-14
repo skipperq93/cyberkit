@@ -1,12 +1,12 @@
 This tests pasting content with redundant inline style.
-You should not see any inline styles other than font-weight: bold and there should be exactly one span around WebKit.
+You should not see any inline styles other than font-weight: bold and there should be exactly one span around CyberKit.
 | <em>
 |   style="font-weight: bold;"
 |   "hello world"
 | <br>
 | <span>
 |   style="font-weight: bold;"
-|   "WebKit"
+|   "CyberKit"
 | <br>
 | <em>
 |   "rocks<#selection-caret>"

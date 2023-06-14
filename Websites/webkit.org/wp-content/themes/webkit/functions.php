@@ -13,7 +13,7 @@ add_action( 'init', function () {
 //add_action( 'wp_header', 'include_invert_lightness_filter');
 
 add_action( 'wp_dashboard_setup', function () {
-    $SurveyWidget = new WebKit_Nightly_Survey();
+    $SurveyWidget = new CyberKit_Nightly_Survey();
     $SurveyWidget->add_widget();
 });
 
@@ -29,11 +29,11 @@ function modify_contact_methods($profile_fields) {
 }
 
 function get_nightly_build ($type = 'builds') {
-    if (!class_exists('SyncWebKitNightlyBuilds'))
+    if (!class_exists('SyncCyberKitNightlyBuilds'))
         return false;
 
-    $WebKitBuilds = SyncWebKitNightlyBuilds::object();
-    $build = $WebKitBuilds->latest($type);
+    $CyberKitBuilds = SyncCyberKitNightlyBuilds::object();
+    $build = $CyberKitBuilds->latest($type);
     return $build;
 }
 
@@ -42,20 +42,20 @@ function get_nightly_source () {
 }
 
 function get_nightly_archives ($limit) {
-    if (!class_exists('SyncWebKitNightlyBuilds'))
+    if (!class_exists('SyncCyberKitNightlyBuilds'))
         return array();
 
-    $WebKitBuilds = SyncWebKitNightlyBuilds::object();
-    $builds = $WebKitBuilds->records('builds', $limit);
+    $CyberKitBuilds = SyncCyberKitNightlyBuilds::object();
+    $builds = $CyberKitBuilds->records('builds', $limit);
     return (array)$builds;
 }
 
 function get_nightly_builds_json () {
-    if (!class_exists('SyncWebKitNightlyBuilds'))
+    if (!class_exists('SyncCyberKitNightlyBuilds'))
         return '';
 
-    $WebKitBuilds = SyncWebKitNightlyBuilds::object();
-    $records = $WebKitBuilds->records('builds', 100000);
+    $CyberKitBuilds = SyncCyberKitNightlyBuilds::object();
+    $records = $CyberKitBuilds->records('builds', 100000);
     $builds = array();
     foreach ( $records as $build ) {
         $builds[] = $build[0];
@@ -215,20 +215,20 @@ include('widgets/twitter.php');
 include('widgets/page.php');
 
 function table_of_contents() {
-    if ( class_exists('WebKitTableOfContents') )
-        WebKitTableOfContents::markup();
+    if ( class_exists('CyberKitTableOfContents') )
+        CyberKitTableOfContents::markup();
 }
 
 function has_table_of_contents() {
-    if ( class_exists('WebKitTableOfContents') )
-        return WebKitTableOfContents::hasIndex();
+    if ( class_exists('CyberKitTableOfContents') )
+        return CyberKitTableOfContents::hasIndex();
 }
 
 function table_of_contents_index( $content, $post_id ) {
-    if ( ! class_exists('WebKitTableOfContents') )
+    if ( ! class_exists('CyberKitTableOfContents') )
         return $content;
-    $content = WebKitTableOfContents::parse($content);
-    WebKitTableOfContents::wp_insert_post($post_id);
+    $content = CyberKitTableOfContents::parse($content);
+    CyberKitTableOfContents::wp_insert_post($post_id);
     return $content;
 }
 
@@ -238,7 +238,7 @@ function is_super_cache_enabled() {
 }
 
 function include_post_icons() {
-    echo WebKit_Post_Icons::parse_icons();
+    echo CyberKit_Post_Icons::parse_icons();
 }
 
 function include_invert_lightness_filter() {
@@ -257,7 +257,7 @@ function get_post_icon() {
             $slug = $tags[0]->slug;
     }
 
-    if (!WebKit_Post_Icons::has_icon($slug))
+    if (!CyberKit_Post_Icons::has_icon($slug))
         return 'default';
 
     return $slug;
@@ -457,7 +457,7 @@ class Responsive_Toggle_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 }
 
-class WebKit_Post_Icons {
+class CyberKit_Post_Icons {
 
     private static $registry = array();
 
@@ -504,7 +504,7 @@ class Front_Page_Posts {
 
 }
 
-class WebKit_Nightly_Survey {
+class CyberKit_Nightly_Survey {
 
     const COOKIE_PREFIX = 'webkitnightlysurvey_';
     const DATA_SETTING_NAME = 'webkit_nightly_survey_data';
@@ -514,7 +514,7 @@ class WebKit_Nightly_Survey {
 
         wp_add_dashboard_widget(
             'webkit_nightly_survey_results', // Widget slug
-            'WebKit Nightly Survey Results', // Title
+            'CyberKit Nightly Survey Results', // Title
             array($this, 'display_widget')   // Display function
         );
 
@@ -593,7 +593,7 @@ class WebKit_Nightly_Survey {
         if ( empty($_POST) ) return;
 
         if ( ! wp_verify_nonce($_POST['_nonce'], self::SURVEY_FILENAME) )
-            wp_die('Invalid WebKit Nightly Survey submission.');
+            wp_die('Invalid CyberKit Nightly Survey submission.');
 
         $score = $data = get_option(self::DATA_SETTING_NAME);
         $Survey = self::survey();

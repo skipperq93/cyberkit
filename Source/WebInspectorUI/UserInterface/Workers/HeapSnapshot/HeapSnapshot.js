@@ -83,7 +83,7 @@ HeapSnapshot = class HeapSnapshot
         snapshotDataString = null;
 
         let {version, type, nodes, nodeClassNames, edges, edgeTypes, edgeNames} = json;
-        console.assert(version === 1, "Expect JavaScriptCore Heap Snapshot version 1");
+        console.assert(version === 1, "Expect CyberScriptCore Heap Snapshot version 1");
         console.assert(!type || type === "Inspector", "Expect an Inspector Heap Snapshot");
 
         this._nodes = nodes;

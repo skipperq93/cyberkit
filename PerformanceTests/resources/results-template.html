@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>WebKit Performance Test Results</title>
+<title>CyberKit Performance Test Results</title>
 <style type="text/css">
 
 section {
@@ -141,7 +141,7 @@ Reference <span id="reference" class="checkbox"></span>
     var jQuery = 'PerformanceTests/Dromaeo/resources/dromaeo/web/lib/jquery-1.6.4.js';
     var plugins = ['PerformanceTests/resources/jquery.flot.min.js', 'PerformanceTests/resources/jquery.tablesorter.min.js',
         'PerformanceTests/resources/statistics.js'];
-    var localPath = '%AbsolutePathToWebKitTrunk%';
+    var localPath = '%AbsolutePathToCyberKitTrunk%';
     var remotePath = 'https://svn.webkit.org/repository/webkit/trunk';
     var numberOfFailures = 0;
     var startedLoadingPlugins = false;
@@ -214,7 +214,7 @@ function TestResult(metric, values, associatedRun) {
 
 function TestRun(entry) {
     this.description = function () { return entry['description']; }
-    this.webkitRevision = function () { return entry['revisions']['WebKit']['revision']; }
+    this.webkitRevision = function () { return entry['revisions']['CyberKit']['revision']; }
     this.label = function () {
         var label = 'r' + this.webkitRevision();
         if (this.description())

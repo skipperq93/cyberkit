@@ -1,4 +1,4 @@
-# The static runtime is required for AppleWin due to WebKitSystemInterface.lib
+# The static runtime is required for AppleWin due to CyberKitSystemInterface.lib
 # being compiled with a static runtime.
 set(MSVC_STATIC_RUNTIME ON)
 

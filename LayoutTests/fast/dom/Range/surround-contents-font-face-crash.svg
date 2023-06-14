@@ -14,7 +14,7 @@ else {
     GCController.collect();
 
     testRunner.dumpAsText();
-    alert("PASS. WebKit didn't crash.");
+    alert("PASS. CyberKit didn't crash.");
 }
 
 </script>

@@ -5,7 +5,7 @@
 <body>
 <script>
 document.addEventListener("securitypolicyviolation", async () => {
-    const response = await fetch("/WebKit/fetch/resources/store-csp-report.py?retrieve=true&file=reports-bypass-csp-checks");
+    const response = await fetch("/CyberKit/fetch/resources/store-csp-report.py?retrieve=true&file=reports-bypass-csp-checks");
     let results = await response.json();
 
     const report = results["csp-report"];

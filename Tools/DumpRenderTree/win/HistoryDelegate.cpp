@@ -29,7 +29,7 @@
 #include "DumpRenderTree.h"
 #include "DumpRenderTreeWin.h"
 #include "TestRunner.h"
-#include <WebKitLegacy/WebKit.h>
+#include <CyberKitLegacy/CyberKit.h>
 #include <comutil.h>
 #include <string>
 

@@ -52,7 +52,7 @@ from webkitpy.common.system import path, pemfile
 from webkitpy.common.system.executive import ScriptError
 from webkitpy.common.version_name_map import PUBLIC_TABLE, INTERNAL_TABLE, VersionNameMap
 from webkitpy.common.wavediff import WaveDiff
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 from webkitpy.layout_tests.models.test_configuration import TestConfiguration
 from webkitpy.port import config as port_config
 from webkitpy.port import driver
@@ -123,7 +123,7 @@ class Port(object):
         self.host = host
         self._executive = host.executive
         self._filesystem = host.filesystem
-        self._webkit_finder = WebKitFinder(host.filesystem)
+        self._webkit_finder = CyberKitFinder(host.filesystem)
         self._config = port_config.Config(self._executive, self._filesystem, self.port_name)
         self.pretty_patch = PrettyPatch(self._executive, self.path_from_webkit_base(), self._filesystem)
 
@@ -238,7 +238,7 @@ class Port(object):
     def check_build(self):
         """This routine is used to ensure that the build is up to date
         and all the needed binaries are present."""
-        # If we're using a pre-built copy of WebKit (--root), we assume it also includes a build of DRT.
+        # If we're using a pre-built copy of CyberKit (--root), we assume it also includes a build of DRT.
         if not self._root_was_set and self.get_option('build') and not self._build_driver():
             return False
         if self.get_option('install') and not self._check_driver():
@@ -389,7 +389,7 @@ class Port(object):
         if self.get_option('driver_name'):
             return self.get_option('driver_name')
         if self.get_option('webkit_test_runner'):
-            return 'WebKitTestRunner'
+            return 'CyberKitTestRunner'
         return 'DumpRenderTree'
 
     def expected_baselines_by_extension(self, test_name):
@@ -1198,7 +1198,7 @@ class Port(object):
             search_paths.append(non_wk2_name)
 
         if self.get_option('webkit_test_runner'):
-            # Because nearly all of the skipped tests for WebKit 2 are due to cross-platform
+            # Because nearly all of the skipped tests for CyberKit 2 are due to cross-platform
             # issues, all wk2 ports share a skipped list under platform/wk2.
             search_paths.extend(["wk2", self._wk2_port_name()])
 
@@ -1211,11 +1211,11 @@ class Port(object):
 
     def repository_paths(self):
         """Returns a list of (repository_name, repository_path) tuples of its depending code base.
-        By default it returns a list that only contains a ('WebKit', <webkitRepositoryPath>) tuple."""
+        By default it returns a list that only contains a ('CyberKit', <webkitRepositoryPath>) tuple."""
 
-        # We use LayoutTest directory here because webkit_base isn't a part of WebKit repository in Chromium port
+        # We use LayoutTest directory here because webkit_base isn't a part of CyberKit repository in Chromium port
         # where turnk isn't checked out as a whole.
-        repository_paths = [('WebKit', self.layout_tests_dir())]
+        repository_paths = [('CyberKit', self.layout_tests_dir())]
         if self.get_option('additional_repository_name') and self.get_option('additional_repository_path'):
             repository_paths += [(self._options.additional_repository_name, self._options.additional_repository_path)]
         return repository_paths
@@ -1370,7 +1370,7 @@ class Port(object):
         return None
 
     def _path_to_webcore_library(self):
-        """Returns the full path to a built copy of WebCore."""
+        """Returns the full path to a built copy of CyberCore."""
         return None
 
     def _path_to_helper(self):
@@ -1387,7 +1387,7 @@ class Port(object):
         This is likely used only by diff_image()"""
         return self._build_path('ImageDiff')
 
-    API_TEST_BINARY_NAMES = ['TestWTF', 'TestWebKitAPI']
+    API_TEST_BINARY_NAMES = ['TestWTF', 'TestCyberKitAPI']
 
     def path_to_api_test_binaries(self):
         return {binary: self._build_path(binary) for binary in self.API_TEST_BINARY_NAMES}
@@ -1462,7 +1462,7 @@ class Port(object):
         suffix = ""
         if self.port_name:
             suffix = self.port_name.upper()
-        return self._filesystem.exists(self.path_from_webkit_base('WebKitBuild', suffix, "FlatpakTree"))
+        return self._filesystem.exists(self.path_from_webkit_base('CyberKitBuild', suffix, "FlatpakTree"))
 
     def _in_flatpak_sandbox(self):
         return os.path.exists("/usr/manifest.json")
@@ -1474,7 +1474,7 @@ class Port(object):
         suffix = ""
         if self.port_name:
             suffix = self.port_name.upper()
-        return self._filesystem.exists(self.path_from_webkit_base('WebKitBuild', 'Dependencies%s' % suffix))
+        return self._filesystem.exists(self.path_from_webkit_base('CyberKitBuild', 'Dependencies%s' % suffix))
 
     # FIXME: Eventually we should standarize port naming, and make this method smart enough
     # to use for all port configurations (including architectures, graphics types, etc).
@@ -1506,7 +1506,7 @@ class Port(object):
         environment = self.host.copy_current_environment()
         env = environment.to_dictionary()
 
-        # FIXME: We build both DumpRenderTree and WebKitTestRunner for WebKitTestRunner runs because
+        # FIXME: We build both DumpRenderTree and CyberKitTestRunner for CyberKitTestRunner runs because
         # DumpRenderTree includes TestNetscapePlugin. It should be factored out into its own project.
         try:
             self._run_script("build-dumprendertree", args=self._build_driver_flags(), env=env)
@@ -1585,7 +1585,7 @@ class Port(object):
     def _missing_feature_to_skipped_tests(self):
         """Return the supported feature dictionary. Keys are feature names and values
         are the lists of directories to skip if the feature name is not matched."""
-        # FIXME: This list matches WebKitWin and should be moved onto the Win port.
+        # FIXME: This list matches CyberKitWin and should be moved onto the Win port.
         return {
             "Accelerated Compositing": ["compositing"],
             "3D Rendering": ["animations/3d", "transforms/3d"],
@@ -1616,7 +1616,7 @@ class Port(object):
         return []
 
     def _wk2_port_name(self):
-        # By current convention, the WebKit2 name is always mac-wk2, win-wk2, not mac-leopard-wk2, etc,
+        # By current convention, the CyberKit2 name is always mac-wk2, win-wk2, not mac-leopard-wk2, etc,
         return "%s-wk2" % self.port_name
 
     def logging_patterns_to_strip(self):

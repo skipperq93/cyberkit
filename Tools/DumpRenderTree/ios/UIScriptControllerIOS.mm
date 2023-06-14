@@ -30,7 +30,7 @@
 
 #import "DumpRenderTreeBrowserView.h"
 #import "UIScriptContext.h"
-#import <WebCore/FloatRect.h>
+#import <CyberCore/FloatRect.h>
 #import <wtf/MainThread.h>
 
 extern DumpRenderTreeBrowserView *gWebBrowserView;
@@ -265,7 +265,7 @@ void UIScriptController::setStableStateOverride(Optional<bool>)
 JSObjectRef UIScriptController::contentVisibleRect() const
 {
     CGRect contentVisibleRect = [gWebBrowserView documentVisibleRect];
-    WebCore::FloatRect rect(contentVisibleRect.origin.x, contentVisibleRect.origin.y, contentVisibleRect.size.width, contentVisibleRect.size.height);
+    CyberCore::FloatRect rect(contentVisibleRect.origin.x, contentVisibleRect.origin.y, contentVisibleRect.size.width, contentVisibleRect.size.height);
     return m_context->objectFromRect(rect);
 }
 

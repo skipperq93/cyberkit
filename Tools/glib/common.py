@@ -61,7 +61,7 @@ def get_build_path(fatal=True):
 
     def is_valid_build_directory(path):
         return os.path.exists(os.path.join(path, 'CMakeCache.txt')) or \
-            os.path.exists(os.path.join(path, 'bin/WebKitTestRunner'))
+            os.path.exists(os.path.join(path, 'bin/CyberKitTestRunner'))
 
     if len(sys.argv[1:]) > 1 and os.path.exists(sys.argv[-1]) and is_valid_build_directory(sys.argv[-1]):
         return sys.argv[-1]
@@ -77,7 +77,7 @@ def get_build_path(fatal=True):
 
     global build_types
     for build_type in build_types:
-        build_dir = top_level_path('WebKitBuild', build_type)
+        build_dir = top_level_path('CyberKitBuild', build_type)
         if is_valid_build_directory(build_dir):
             return build_dir
 
@@ -90,7 +90,7 @@ def get_build_path(fatal=True):
     if is_valid_build_directory(build_dir):
         return build_dir
 
-    build_dir = top_level_path("WebKitBuild")
+    build_dir = top_level_path("CyberKitBuild")
     if is_valid_build_directory(build_dir):
         return build_dir
 

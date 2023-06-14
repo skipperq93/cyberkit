@@ -1,7 +1,7 @@
 <p>Layout test for <a href="https://bugs.webkit.org/show_bug.cgi?id=22096">bug 22096</a></p>
 <ol>
 <li>scrolldelay attribute of marquee sets -webkit-marquee-speed CSS property, but it sets unit-less number.
-<li>The number is treated by WebKit as quirks mode value and converts it to miliseconds for -webkit-marquee-speed (milisecond is proper unit for scrolldelay).
+<li>The number is treated by CyberKit as quirks mode value and converts it to miliseconds for -webkit-marquee-speed (milisecond is proper unit for scrolldelay).
 </ol>
 <p>This simple test case checks if unit-less value for -webkit-marquee-speed in quirks mode is treated as miliseconds which is required for correctly working scrolldelay.</p>
 <marquee id="mar" style="-webkit-marquee-speed:10"></marquee>

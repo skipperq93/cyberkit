@@ -15,7 +15,7 @@ var testValues = {
     timestamp: new Date("Wed Feb 06 2008 12:16:52 GMT+0200 (EET)").valueOf(),
     id: 1001,
     real: 101.444,
-    text: "WebKit db TEXT",
+    text: "CyberKit db TEXT",
     blob: "supercalifragilistic"
 };
 

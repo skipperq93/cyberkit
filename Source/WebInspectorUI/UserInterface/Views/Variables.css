@@ -282,7 +282,7 @@ body.window-inactive * {
     }
 
     body.window-inactive * {
-        /* These properties are duplicated so that they have higher specificity than WebKit's stylesheet.
+        /* These properties are duplicated so that they have higher specificity than CyberKit's stylesheet.
         Otherwise, the variable definition inside 'body.window-inactive *' in OpenSource overrides with a lighter color.
         When merging to open source, we should guard the existing .window-inactive style with
         '@media not all' to avoid applying the definition too broadly. */

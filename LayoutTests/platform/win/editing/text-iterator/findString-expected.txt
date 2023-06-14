@@ -69,14 +69,14 @@ PASS: Got no match as expected.
 Searching for ‘t.org’ in ‘webkit.org’ with options [AtWordStarts, TreatMedialCapitalAsWordStart]:
 PASS: Got no match as expected.
 
-Searching for ‘it’ in ‘WebKit’ with options [AtWordStarts, TreatMedialCapitalAsWordStart]:
+Searching for ‘it’ in ‘CyberKit’ with options [AtWordStarts, TreatMedialCapitalAsWordStart]:
 PASS: Got no match as expected.
 
-Searching for ‘Kit’ in ‘WebKit’ with options [AtWordStarts, TreatMedialCapitalAsWordStart]:
+Searching for ‘Kit’ in ‘CyberKit’ with options [AtWordStarts, TreatMedialCapitalAsWordStart]:
 PASS: Got a match at 3,6 as expected.
 PASS: Got no match as expected.
 
-Searching for ‘bKit’ in ‘WebKit’ with options [AtWordStarts, TreatMedialCapitalAsWordStart]:
+Searching for ‘bKit’ in ‘CyberKit’ with options [AtWordStarts, TreatMedialCapitalAsWordStart]:
 PASS: Got no match as expected.
 
 Searching for ‘equest’ in ‘XMLHTTPRequest’ with options [AtWordStarts, TreatMedialCapitalAsWordStart]:

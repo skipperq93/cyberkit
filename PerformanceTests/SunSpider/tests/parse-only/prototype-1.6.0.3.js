@@ -13,7 +13,7 @@ var Prototype = {
     IE:     !!(window.attachEvent &&
       navigator.userAgent.indexOf('Opera') === -1),
     Opera:  navigator.userAgent.indexOf('Opera') > -1,
-    WebKit: navigator.userAgent.indexOf('AppleWebKit/') > -1,
+    CyberKit: navigator.userAgent.indexOf('AppleCyberKit/') > -1,
     Gecko:  navigator.userAgent.indexOf('Gecko') > -1 &&
       navigator.userAgent.indexOf('KHTML') === -1,
     MobileSafari: !!navigator.userAgent.match(/Apple.*Mobile.*Safari/)
@@ -533,7 +533,7 @@ Object.extend(String.prototype, {
   }
 });
 
-if (Prototype.Browser.WebKit || Prototype.Browser.IE) Object.extend(String.prototype, {
+if (Prototype.Browser.CyberKit || Prototype.Browser.IE) Object.extend(String.prototype, {
   escapeHTML: function() {
     return this.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   },
@@ -817,7 +817,7 @@ function $A(iterable) {
   return results;
 }
 
-if (Prototype.Browser.WebKit) {
+if (Prototype.Browser.CyberKit) {
   $A = function(iterable) {
     if (!iterable) return [];
     // In Safari, only use the `toArray` method if it's not a NodeList.
@@ -2402,7 +2402,7 @@ else if (Prototype.Browser.Gecko && /rv:1\.8\.0/.test(navigator.userAgent)) {
   };
 }
 
-else if (Prototype.Browser.WebKit) {
+else if (Prototype.Browser.CyberKit) {
   Element.Methods.setOpacity = function(element, value) {
     element = $(element);
     element.style.opacity = (value == 1 || value === '') ? '' :
@@ -2422,7 +2422,7 @@ else if (Prototype.Browser.WebKit) {
 
   // Safari returns margins on body which is incorrect if the child is absolutely
   // positioned.  For performance reasons, redefine Element#cumulativeOffset for
-  // KHTML/WebKit only.
+  // KHTML/CyberKit only.
   Element.Methods.cumulativeOffset = function(element) {
     var valueT = 0, valueL = 0;
     do {
@@ -2691,7 +2691,7 @@ document.viewport = {
     var dimensions = { }, B = Prototype.Browser;
     $w('width height').each(function(d) {
       var D = d.capitalize();
-      if (B.WebKit && !document.evaluate) {
+      if (B.CyberKit && !document.evaluate) {
         // Safari <3.0 needs self.innerWidth/Height
         dimensions[d] = self['inner' + D];
       } else if (B.Opera && parseFloat(window.opera.version()) < 9.5) {
@@ -2744,7 +2744,7 @@ var Selector = Class.create({
     var e = this.expression;
 
     // Safari 3 chokes on :*-of-type and :empty
-    if (Prototype.Browser.WebKit &&
+    if (Prototype.Browser.CyberKit &&
      (e.include("-of-type") || e.include(":empty")))
       return false;
 
@@ -3822,7 +3822,7 @@ Event.Methods = (function() {
       return event.button == buttonMap[code];
     };
 
-  } else if (Prototype.Browser.WebKit) {
+  } else if (Prototype.Browser.CyberKit) {
     isButton = function(event, code) {
       switch (code) {
         case 0: return event.which == 1 && !event.metaKey;
@@ -3998,7 +3998,7 @@ Object.extend(Event, (function() {
   // Safari has a dummy event handler on page unload so that it won't
   // use its bfcache. Safari <= 3.1 has an issue with restoring the "document"
   // object when page is returned to via the back button using its bfcache.
-  if (Prototype.Browser.WebKit) {
+  if (Prototype.Browser.CyberKit) {
     window.addEventListener('unload', Prototype.emptyFunction, false);
   }
 
@@ -4107,7 +4107,7 @@ Object.extend(document, {
   }
 
   if (document.addEventListener) {
-    if (Prototype.Browser.WebKit) {
+    if (Prototype.Browser.CyberKit) {
       timer = window.setInterval(function() {
         if (/loaded|complete/.test(document.readyState))
           fireContentLoadedEvent();
