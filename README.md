@@ -17,6 +17,10 @@ Ensure to run `Tools/Scripts/configure-xcode-for-embedded-development` before 1s
 
 You will build the "Everything up to CyberKit" target then the appropriate app.
 
+### Development Environment Notes
+
+* Development is performed on macOS using Xcode.
+* The rename script requires `gnu-sed` and `rename`, which can be obtained using Homebrew.
 * Beginning with [fa2170c](https://github.com/UInt2048/CyberKit/commit/fa2170c3604b4ccacbc4f2475f91c0638ac7a2a0) [7 April 2023], Xcode 14.3 is used.
 * Before this, Xcode 14.2 was used.
 
