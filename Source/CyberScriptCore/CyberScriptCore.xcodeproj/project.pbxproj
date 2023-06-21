@@ -10877,6 +10877,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5DAFD6CB146B686300FBEFB4 /* JSC.xcconfig */;
 			buildSettings = {
+				ENABLE_BITCODE = NO;
 			};
 			name = Debug;
 		};
@@ -10884,6 +10885,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5DAFD6CB146B686300FBEFB4 /* JSC.xcconfig */;
 			buildSettings = {
+				ENABLE_BITCODE = NO;
 			};
 			name = Release;
 		};
@@ -10891,6 +10893,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5DAFD6CB146B686300FBEFB4 /* JSC.xcconfig */;
 			buildSettings = {
+				ENABLE_BITCODE = NO;
 			};
 			name = Production;
 		};
@@ -11250,6 +11253,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5DAFD6CB146B686300FBEFB4 /* JSC.xcconfig */;
 			buildSettings = {
+				ENABLE_BITCODE = NO;
 			};
 			name = Profiling;
 		};

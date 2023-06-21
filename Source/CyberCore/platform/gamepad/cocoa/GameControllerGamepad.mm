@@ -39,8 +39,11 @@ GameControllerGamepad::GameControllerGamepad(GCController *controller, unsigned 
     controller.playerIndex = (GCControllerPlayerIndex)(GCControllerPlayerIndex1 + index);
 
     m_extendedGamepad = controller.extendedGamepad;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     if (!m_extendedGamepad)
         m_gamepad = controller.gamepad;
+#pragma clang diagnostic pop
 
     ASSERT(m_extendedGamepad || m_gamepad);
 
@@ -147,11 +150,14 @@ void GameControllerGamepad::setupAsGamepad()
 
     m_id = makeString(String(m_gcController.get().vendorName), " Gamepad"_s);
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     m_gamepad.get().valueChangedHandler = ^(GCGamepad *, GCControllerElement *) {
         m_lastUpdateTime = MonotonicTime::now();
         GameControllerGamepadProvider::singleton().gamepadHadInput(*this, m_hadButtonPresses);
         m_hadButtonPresses = false;
     };
+#pragma clang diagnostic pop
 
     m_buttonValues.resize(6);
     m_buttonValues[0] = m_extendedGamepad.get().buttonA.value;

@@ -33,7 +33,10 @@ namespace JSC {
 
 class LLIntPrototypeLoadAdaptiveStructureWatchpoint : public Watchpoint {
 public:
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdefaulted-function-deleted"
     LLIntPrototypeLoadAdaptiveStructureWatchpoint() = default;
+#pragma clang diagnostic pop
     LLIntPrototypeLoadAdaptiveStructureWatchpoint(const ObjectPropertyCondition&, OpGetById::Metadata&);
 
     void install(VM&);

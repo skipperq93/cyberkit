@@ -39,6 +39,7 @@
 #endif
 
 #import "CoreVideoSoftLink.h"
+#import "VideoToolboxSoftLink.h"
 
 namespace CyberCore {
 using namespace PAL;

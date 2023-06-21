@@ -54,7 +54,10 @@ public:
     void adjustRect(const LayoutRect& rect) { m_rect = rect; }
 
 private:
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdefaulted-function-deleted"
     FloatWithRect() = default;
+#pragma clang diagnostic pop
     
     FloatWithRect(RenderBox& renderer)
         : m_renderer(renderer)

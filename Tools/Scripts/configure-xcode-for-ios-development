@@ -1,286 +1,369 @@
-#!/usr/bin/env perl
-
-# Copyright (C) 2014, 2015 Apple Inc. All rights reserved.
+#!/usr/bin/env python3
+#
+# Copyright (C) 2014-2020 Apple Inc.  All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions
 # are met:
-# 1.  Redistributions of source code must retain the above copyright
-#     notice, this list of conditions and the following disclaimer.
-# 2.  Redistributions in binary form must reproduce the above copyright
-#     notice, this list of conditions and the following disclaimer in the
-#     documentation and/or other materials provided with the distribution.
 #
-# THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS'' AND ANY
-# EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-# DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS BE LIABLE FOR ANY
-# DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-# ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY APPLE INC. ``AS IS'' AND ANY
+# EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+# PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL APPLE INC. OR
+# CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+# PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+# OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Checks if Xcode supports building a command line tool for the iOS Simulator.
-# If not, then updates/creates xcspec files in the iOS SDK for a command line
-# tool product- and package- type using the definitions in the OS X SDK for the
-# same types.
+import errno
+import os
+import pathlib
+import re
+import shutil
+import subprocess
+import sys
+import tempfile
 
-use strict;
-use warnings;
+from xml.etree import ElementTree as ET
 
-use Cwd qw(realpath);
-use English;
-use File::Basename;
-use File::Find;
-use File::Spec;
-use File::Temp qw(tempfile);
-use FindBin;
-use lib $FindBin::Bin;
-use webkitdirs;
+# We always want the real system version
+os.environ['SYSTEM_VERSION_COMPAT'] = '0'
 
-sub copyMissingHeadersFromSDKToSDKIfNeeded($$);
-sub copyMissingXSLTHeadersToSDKIfNeeded($);
-sub createLegacyXcodeSpecificationFilesForSDKIfNeeded($);
-sub mergeXcodeSpecificationWithSpecificationAndId($$$);
-sub readXcodeSpecificationById($$);
-sub updateXcode7SpecificationFile($);
-sub updateXcodeSpecificationFilesForSDKIfNeeded($);
-sub xcodeSDKSpecificationsPath($);
+MISSING_HEADERS = [
+    "usr/include/libxslt",
+    "usr/include/mach/mach.h",
+    "usr/include/mach/mach_error.h",
+    "usr/include/mach/mach_types.defs",
+    "usr/include/mach/machine/machine_types.defs",
+    "usr/include/mach/std_types.defs",
+    "usr/include/mach/task.h",
+    "usr/include/objc/Protocol.h",
+    "usr/include/objc/objc-class.h",
+    "usr/include/objc/objc-runtime.h",
+    "usr/include/readline/history.h",
+    "usr/include/readline/readline.h",
+]
 
-use constant COMMAND_LINE_PACKAGE_TYPE => "com.apple.package-type.mach-o-executable";
-use constant COMMAND_LINE_PRODUCT_TYPE => "com.apple.product-type.tool";
-use constant SDK_TO_XCSPEC_NAME_MAP => +{ "iphoneos" => "iPhoneOS", "iphonesimulator" => "iPhone Simulator " };
-use constant SDK_TO_PLUGIN_XCSPEC_NAME_MAP => +{ "iphoneos" => "Embedded-Device.xcspec", "iphonesimulator" => "Embedded-Simulator.xcspec" };
+MISSING_FRAMEWORKS = [
+    ("AVKit.framework", True),
+    ("AudioToolbox.framework", True),
+    ("AudioUnit.framework", False),
+    ("CFNetwork.framework", True),
+    ("CoreImage.framework", False),
+    ("IOKit.framework", True),
+    ("IOSurface.framework", True),
+    ("LocalAuthentication.framework", False),
+    ("MediaAccessibility.framework", True),
+    ("MediaToolbox.framework", False),
+    ("Metal.framework", True),
+    ("OpenGLES.framework", True),
+    ("QuartzCore.framework", True),
+    ("UIKit.framework", True),
+    ("VideoToolbox.framework", False),
+]
 
-# FIXME: We should only require running as root if needed. It's not necessary to run as root if
-#        Xcode was installed by the user, say via a download from <http://developer.apple.com>.
-if ($EFFECTIVE_USER_ID) {
-    print STDERR basename($0) . " must be run as root.\n";
-    exit 1;
-}
+xcode_version = subprocess.run(['/usr/bin/xcodebuild', '-version'], capture_output=True, encoding='ascii').stdout.splitlines()[0].split(' ')[1]
+if tuple(int(n) for n in xcode_version.split('.')) >= (13, 3):
+    mac_xcspec_location = f'Platforms/MacOSX.platform/Developer/Library/Xcode/PrivatePlugIns/IDEOSXSupportCore.xcplugindata/Contents/Resources'
+elif int(xcode_version.split('.')[0]) >= 12:
+    mac_xcspec_location = f'Platforms/MacOSX.platform/Developer/Library/Xcode/PrivatePlugIns/IDEOSXSupportCore.ideplugin/Contents/Resources'
+else:
+    mac_xcspec_location = 'Platforms/MacOSX.platform/Developer/Library/Xcode/Specifications'
 
-for my $sdk (qw(iphoneos iphonesimulator)) {
-    updateXcodeSpecificationFilesForSDKIfNeeded($sdk);
-    copyMissingXSLTHeadersToSDKIfNeeded($sdk);
-}
+ideplugin = 'XCBSpecifications' if tuple(int(n) for n in xcode_version.split('.')) >= (13, 3) else 'IDEiOSSupportCore'
 
-copyMissingHeadersFromSDKToSDKIfNeeded("macosx", "iphonesimulator");
-copyMissingHeadersFromSDKToSDKIfNeeded("iphonesimulator", "iphoneos");
-
-exit 0;
-
-sub copyMissingHeadersFromSDKToSDKIfNeeded($$)
-{
-    my @missingHeaders = qw(
-        /usr/include/crt_externs.h
-        /usr/include/launch.h
-        /usr/include/MacErrors.h
-        /usr/include/mach/mach_types.defs
-        /usr/include/mach/machine/machine_types.defs
-        /usr/include/mach/std_types.defs
-        /usr/include/objc/objc-class.h
-        /usr/include/objc/objc-runtime.h
-        /usr/include/objc/Protocol.h
-        /usr/include/readline/history.h
-        /usr/include/readline/readline.h
-        /usr/include/sqlite3_private.h
-    );
-
-    my ($sourceSDK, $destinationSDK) = @_;
-    my $sourceDirectory = sdkDirectory($sourceSDK);
-    my $destinationDirectory = sdkDirectory($destinationSDK);
-
-    for my $header (@missingHeaders) {
-        my $sourcePath = File::Spec->canonpath(File::Spec->catfile($sourceDirectory, $header));
-        my $destinationPath = File::Spec->canonpath(File::Spec->catfile($destinationDirectory, $header));
-        next if (-f $destinationPath);
-        next if (!-f $sourcePath);
-
-        system("/usr/bin/ditto", $sourcePath, $destinationPath);
-        die "Could not copy $sourcePath to $destinationPath: $!" if exitStatus($?);
-        print "Successfully copied $sourcePath to $destinationPath.\n";
+XCSPEC_INFO = [dict(
+    id='com.apple.product-type.tool',
+    dest=f'Library/Xcode/Plug-ins/{ideplugin}.ideplugin/Contents/Resources/Embedded-Shared.xcspec' if tuple(int(n) for n in xcode_version.split('.')) >= (14, 3) else f'../PlugIns/{ideplugin}.ideplugin/Contents/Resources/Embedded-Shared.xcspec',
+    content='''
+    // Tool (normal Unix command-line executable)
+    {   Type = ProductType;
+        Identifier = com.apple.product-type.tool;
+        Class = PBXToolProductType;
+        Name = "Command-line Tool";
+        Description = "Standalone command-line tool";
+        IconNamePrefix = "TargetExecutable";
+        DefaultTargetName = "Command-line Tool";
+        DefaultBuildProperties = {
+            FULL_PRODUCT_NAME = "$(EXECUTABLE_NAME)";
+            MACH_O_TYPE = "mh_execute";
+            EXECUTABLE_PREFIX = "";
+            EXECUTABLE_SUFFIX = "";
+            REZ_EXECUTABLE = YES;
+            INSTALL_PATH = "/usr/local/bin";
+            FRAMEWORK_FLAG_PREFIX = "-framework";
+            LIBRARY_FLAG_PREFIX = "-l";
+            LIBRARY_FLAG_NOSPACE = YES;
+            GCC_DYNAMIC_NO_PIC = NO;
+            GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+            GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+            STRIP_STYLE = "all";
+            CODE_SIGNING_ALLOWED = YES;
+        };
+        PackageTypes = (
+            com.apple.package-type.mach-o-executable   // default
+        );
+        WantsSigningEditing = YES;
+        WantsBundleIdentifierEditing = YES;
     }
-}
-
-sub copyMissingXSLTHeadersToSDKIfNeeded($)
-{
-    my ($sdkName) = @_;
-    my $sdkXSLTHeaderDirectory = File::Spec->canonpath(File::Spec->catdir(sdkDirectory($sdkName), "usr", "include", "libxslt"));
-    return if -d $sdkXSLTHeaderDirectory;
-
-    my $macosxXSLTHeaderDirectory = File::Spec->canonpath(File::Spec->catdir(sdkDirectory("macosx"), "usr", "include", "libxslt"));
-    system("/usr/bin/ditto", $macosxXSLTHeaderDirectory, $sdkXSLTHeaderDirectory);
-    die "Could not copy $macosxXSLTHeaderDirectory to $sdkXSLTHeaderDirectory: $!" if exitStatus($?);
-    print "Successfully copied $macosxXSLTHeaderDirectory to $sdkXSLTHeaderDirectory.\n";
-}
-
-sub updateXcodeSpecificationFilesForSDKIfNeeded($)
-{
-    my ($sdkName) = @_;
-    my $xcode7SpecificationFile = realpath(File::Spec->catfile(sdkPlatformDirectory($sdkName), "..", "..", "..", "PlugIns", "IDEiOSSupportCore.ideplugin", "Contents", "Resources", SDK_TO_PLUGIN_XCSPEC_NAME_MAP->{$sdkName}));
-    if (-f $xcode7SpecificationFile) {
-        updateXcode7SpecificationFile($xcode7SpecificationFile);
-    } else {
-        createLegacyXcodeSpecificationFilesForSDKIfNeeded($sdkName);
+''',
+), dict(
+    id='com.apple.package-type.mach-o-executable',
+    dest=f'Library/Xcode/Plug-ins/{ideplugin}.ideplugin/Contents/Resources/Embedded-Shared.xcspec' if tuple(int(n) for n in xcode_version.split('.')) >= (14, 3) else f'../PlugIns/{ideplugin}.ideplugin/Contents/Resources/Embedded-Shared.xcspec',
+    content='''
+    {   Type = PackageType;
+        Identifier = com.apple.package-type.mach-o-executable;
+        Name = "Mach-O Executable";
+        Description = "Mach-O executable";
+        DefaultBuildSettings = {
+            EXECUTABLE_PREFIX = "";
+            EXECUTABLE_SUFFIX = "";
+            EXECUTABLE_NAME = "$(EXECUTABLE_PREFIX)$(PRODUCT_NAME)$(EXECUTABLE_VARIANT_SUFFIX)$(EXECUTABLE_SUFFIX)";
+            EXECUTABLE_PATH = "$(EXECUTABLE_NAME)";
+        };
+        ProductReference = {
+            FileType = compiled.mach-o.executable;
+            Name = "$(EXECUTABLE_NAME)";
+            IsLaunchable = YES;
+        };
     }
-}
+''',
+)]
 
-sub updateXcode7SpecificationFile($)
-{
-    my ($specificationFile) = @_;
+AVAILABILITY_FILE = pathlib.Path("usr/local/include/AvailabilityProhibitedInternal.h")
+AVAILABILTY_TEXT = """\
+// Handle __IOS_PROHIBITED and friends.
+#undef __OS_AVAILABILITY
+#define __OS_AVAILABILITY(...)
 
-    my $hasPackageTypeForCommandLineTool = !!readXcodeSpecificationById($specificationFile, COMMAND_LINE_PACKAGE_TYPE);
-    my $hasProductTypeForCommandLineTool = !!readXcodeSpecificationById($specificationFile, COMMAND_LINE_PRODUCT_TYPE);
-    if ($hasPackageTypeForCommandLineTool && $hasProductTypeForCommandLineTool) {
-        return; # Xcode knows how to build a command line tool for $sdkName.
-    }
+// Take care of {A,S}PI_AVAILABLE{,_BEGIN,_END}
+#undef __API_AVAILABLE_GET_MACRO
+#define __API_AVAILABLE_GET_MACRO(...) __NULL_AVAILABILITY
 
-    my $macosxSDKSpecificationsPath = xcodeSDKSpecificationsPath("macosx");
-    if (!$hasPackageTypeForCommandLineTool) {
-        my $packageTypesForMacOSXPath = File::Spec->catfile($macosxSDKSpecificationsPath, "MacOSX Package Types.xcspec");
-        mergeXcodeSpecificationWithSpecificationAndId($specificationFile, $packageTypesForMacOSXPath, COMMAND_LINE_PACKAGE_TYPE);
-    }
+#undef SWIFT_AVAILABILITY
+#define SWIFT_AVAILABILITY __NULL_AVAILABILITY
 
-    if (!$hasProductTypeForCommandLineTool) {
-        my $productTypesForMacOSXPath = File::Spec->catfile($macosxSDKSpecificationsPath, "MacOSX Product Types.xcspec");
-        mergeXcodeSpecificationWithSpecificationAndId($specificationFile, $productTypesForMacOSXPath, COMMAND_LINE_PRODUCT_TYPE);
-    }
-    print "Successfully updated '$specificationFile'.\n";
-}
+// Take care of {A,S}PI_DEPRECATED{,WITH_REPLACEMENT}{,_BEGIN,_END}
+#undef __API_DEPRECATED_MSG_GET_MACRO
+#define __API_DEPRECATED_MSG_GET_MACRO(...) __NULL_AVAILABILITY
 
-sub createLegacyXcodeSpecificationFilesForSDKIfNeeded($)
-{
-    my ($sdk) = @_;
-    my $sdkSpecificationsPath = xcodeSDKSpecificationsPath($sdk);
+// Take care of API_UNAVAILABLE{,_BEGIN,_END}
+#undef __API_UNAVAILABLE_GET_MACRO
+#define __API_UNAVAILABLE_GET_MACRO(...) __NULL_AVAILABILITY
 
-    local @::xcodeSpecificationFiles;
-    sub wanted
-    {
-        my $file = $_;
+#define __NULL_AVAILABILITY(...)
+"""
 
-        # Ignore hidden files/directories.
-        if ($file =~ /^\../) {
-            $File::Find::prune = 1;
-            return;
-        }
+SDKS_TO_UPDATE = [
+    "iphoneos",
+    "iphonesimulator",
+    "appletvos",
+    "appletvsimulator",
+    "watchos",
+    "watchsimulator",
+]
 
-        if (!-f $file || $file !~ /\.xcspec$/) {
-            return;
-        }
+PLIST_BUDDY_PATH = pathlib.Path("/usr/libexec/PlistBuddy")
 
-        push @::xcodeSpecificationFiles, $File::Find::name;
-    }
 
-    find(\&wanted, $sdkSpecificationsPath);
+def xcode_developer_dir():
+    result = subprocess.run(
+        ["xcode-select", "-p"],
+        capture_output=True, encoding="utf-8", check=True,
+    )
+    return pathlib.Path(result.stdout.strip())
 
-    my $hasPackageTypeForCommandLineTool;
-    my $hasProductTypeForCommandLineTool;
-    foreach my $specificationFile (@::xcodeSpecificationFiles) {
-        last if $hasPackageTypeForCommandLineTool && $hasProductTypeForCommandLineTool;
-        if (!$hasPackageTypeForCommandLineTool && readXcodeSpecificationById($specificationFile, COMMAND_LINE_PACKAGE_TYPE)) {
-            $hasPackageTypeForCommandLineTool = 1;
-            next;
-        }
-        if (!$hasProductTypeForCommandLineTool && readXcodeSpecificationById($specificationFile, COMMAND_LINE_PRODUCT_TYPE)) {
-            $hasProductTypeForCommandLineTool = 1;
-            next;
-        }
-    }
 
-    if ($hasPackageTypeForCommandLineTool && $hasProductTypeForCommandLineTool) {
-        return; # Xcode knows how to build a command line tool for $sdk.
-    }
+def sdk_directory(sdk):
+    result = subprocess.run(
+        ["xcrun", "--sdk", sdk, "--show-sdk-path"],
+        capture_output=True, encoding="utf-8", check=True,
+    )
+    return pathlib.Path(result.stdout.strip())
 
-    my $fileNamePrefix = SDK_TO_XCSPEC_NAME_MAP->{$sdk};
 
-    my $macosxSDKSpecificationsPath = xcodeSDKSpecificationsPath("macosx");
-    if (!$hasPackageTypeForCommandLineTool) {
-        my $packageTypesForMacOSXPath = File::Spec->catfile($macosxSDKSpecificationsPath, "MacOSX Package Types.xcspec");
-        my $packageTypesForCyberKitDevelopmentPath = File::Spec->catfile($sdkSpecificationsPath, "${fileNamePrefix}PackageTypes For CyberKit Development.xcspec");
-        mergeXcodeSpecificationWithSpecificationAndId($packageTypesForCyberKitDevelopmentPath, $packageTypesForMacOSXPath, COMMAND_LINE_PACKAGE_TYPE);
-        print "Successfully created '$packageTypesForCyberKitDevelopmentPath'.\n";
-    }
+def get_and_check_sdk_directories(source_sdk, dest_sdk):
+    source_sdk_path = sdk_directory(source_sdk)
+    dest_sdk_path = sdk_directory(dest_sdk)
 
-    if (!$hasProductTypeForCommandLineTool) {
-        my $productTypesForMacOSXPath = File::Spec->catfile($macosxSDKSpecificationsPath, "MacOSX Product Types.xcspec");
-        my $productTypesForCyberKitDevelopmentPath = File::Spec->catfile($sdkSpecificationsPath, "${fileNamePrefix}ProductTypes For CyberKit Development.xcspec");
-        mergeXcodeSpecificationWithSpecificationAndId($productTypesForCyberKitDevelopmentPath, $productTypesForMacOSXPath, COMMAND_LINE_PRODUCT_TYPE);
-        print "Successfully created '$productTypesForCyberKitDevelopmentPath'.\n";
-    }
-}
+    if not source_sdk_path:
+        raise RuntimeError(f"Could not find SDK: {source_sdk}")
 
-sub writeXcodeSpecification($$)
-{
-    my ($xcodeSpecificationFile, $specification) = @_;
-    my ($tempFileHandle, $tempFilename) = tempfile("webkit-xcspecXXXXXXX", UNLINK => 1);
-    print $tempFileHandle $specification;
-    close($tempFileHandle);
-    if (!-f $xcodeSpecificationFile) {
-        system("/usr/libexec/PlistBuddy -x -c 'clear array' '$xcodeSpecificationFile' > /dev/null") == 0 or die "PlistBuddy exited with $?: $!";
-    }
-    system("/usr/libexec/PlistBuddy -x -c 'add 0 dict' '$xcodeSpecificationFile' > /dev/null") == 0 or die "PlistBuddy exited with $?: $!";
-    system("/usr/libexec/PlistBuddy -x -c 'merge $tempFilename 0' '$xcodeSpecificationFile' > /dev/null") == 0 or die "PlistBuddy exited with $?: $!";
-}
+    if not dest_sdk_path:
+        raise RuntimeError(f"Could not find SDK: {dest_sdk}")
 
-sub readXcodeSpecificationById($$)
-{
-    my ($xcodeSpecificationFile, $id) = @_;
-    open(PLIST_BUDDY, "-|", "/usr/libexec/PlistBuddy", "-x", "-c", "Print", $xcodeSpecificationFile) or die "Failed to run PlistBuddy: $!";
-    my $foundStartOfSpecificationsArray;
-    while (<PLIST_BUDDY>) {
-        if (/^<array>$/) {
-            $foundStartOfSpecificationsArray = 1;
-            last;
-        }
-    }
-    if (!$foundStartOfSpecificationsArray) {
-       return ""; # Not a Xcode specification file.
-    }
-    my $position = -1;
-    my $foundIdentfierKey = 0;
-    my $foundSpecification = 0;
-    while (<PLIST_BUDDY>) {
-        if (/^\s<dict>$/) {
-            ++$position;
-            next;
-        }
-        if (!$foundIdentfierKey && /^\s\s<key>Identifier<\/key>$/) {
-            $foundIdentfierKey = 1;
-            next;
-        }
-        if ($foundIdentfierKey && /^\s\s<string>([^<]+)<\/string>$/) {
-            if ($1 eq $id) {
-                $foundSpecification = 1;
-                last;
-            }
-            $foundIdentfierKey = 0;
-            next;
-        }
-    }
-    close(PLIST_BUDDY);
-    if ($foundSpecification && $position >= 0) {
-        chomp(my $result = `/usr/libexec/PlistBuddy -x -c 'Print $position' '$xcodeSpecificationFile'`);
-        die "Failed to run PlistBuddy" if $?;
-        return $result;
-    }
-    return ""; # Did not find id.
-}
+    print(source_sdk_path)
+    print(dest_sdk_path)
+    return source_sdk_path, dest_sdk_path
 
-sub xcodeSDKSpecificationsPath($)
-{
-    my ($sdkName) = @_;
 
-    return File::Spec->catdir(sdkPlatformDirectory($sdkName), "Developer", "Library", "Xcode", "Specifications");
-}
+def do_copy(source_path, dest_path):
 
-sub mergeXcodeSpecificationWithSpecificationAndId($$$)
-{
-    my ($targetXcodeSpecificationFile, $sourceXcodeSpecificationFile, $id) = @_;
-    my $specification = readXcodeSpecificationById($sourceXcodeSpecificationFile, $id);
-    if (!$specification) {
-        die "Failed to find '$id' in '$sourceXcodeSpecificationFile'.\n";
-    }
-    writeXcodeSpecification($targetXcodeSpecificationFile, $specification);
-}
+    def ensure_parent_exists(path):
+        os.makedirs(path.parent, exist_ok=True)
+
+    def copy_file(source_path, dest_path):
+        print(f"Copying file")
+        print(f"From: {source_path}")
+        print(f"To:   {dest_path}")
+        if dest_path.exists():
+            dest_path.unlink()
+        ensure_parent_exists(dest_path)
+        shutil.copy2(source_path, dest_path)
+
+    def copy_directory(source_path, dest_path):
+        print(f"Copying directory")
+        print(f"From: {source_path}")
+        print(f"To:   {dest_path}")
+        if dest_path.exists():
+            shutil.rmtree(dest_path)
+        ensure_parent_exists(dest_path)
+        try:
+            shutil.copytree(source_path, dest_path)
+        except:
+            print('Unable to copy needed files. When running this script, please temporarily allow Terminal to update other applications in System Settings > Privacy & Security > App Management.')
+            exit(1)
+
+    if source_path.is_file():
+        copy_file(source_path, dest_path)
+        return
+
+    if source_path.is_dir():
+        copy_directory(source_path, dest_path)
+        return
+
+    raise RuntimeError(f"{source_path} does not exist")
+
+
+# .tbd files contain information about how to link a product to a
+# library/framework. This information includes the architecture that the
+# library is built for. If we're copying from an SDK that supports one set of
+# architectures to an SDK that supports another set of architectures, we need
+# to adjust that information in the .tbd file.
+#
+# Note that we don't need to be too particular about this. We only need to
+# link; we don't need to run. This allows us to simply specify the full set of
+# architectures for which CyberKit is built, regardless of whether the associated
+# library/framework was actually built for all those architectures.
+
+def patch_tbd_architecture(framework_path):
+    for tbd_path in framework_path.glob("*.tbd"):
+        with open(tbd_path, "r") as f:
+            lines = f.readlines()
+
+        modified_lines = []
+        for line in lines:
+            if re.match(".*(archs|targets): +\[.*\]", line) is not None:
+                line = re.sub("\[.*\]", "[ i386, x86_64, arm64, arm64e, arm64_32, armv7k ]", line)
+            modified_lines.append(line)
+
+        with open(tbd_path, "w") as f:
+            f.writelines(modified_lines)
+
+
+# Xcode is driven by .xcspec files. These describe many aspects of the system,
+# including what to build and how to build it. These .xcspec files can be
+# global or they can be platform- or SDK-specific. In the case of building
+# products for the embedded systems, there is some information in some macOS
+# .xcspec files that need to be transferred to the embedded platforms. This
+# function finds that information, extracts it from the macOS files, and copies
+# it to the embedded files.
+
+def update_xcspec_files():
+    for spec_info in XCSPEC_INFO:
+        dest_spec_path = xcode_developer_dir() / spec_info['dest']
+        if not dest_spec_path.exists():
+            raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), dest_spec_path)
+
+        result = subprocess.run(
+            [PLIST_BUDDY_PATH, '-x', '-c', 'Print', dest_spec_path],
+            capture_output=True, encoding='utf-8', check=True,
+        )
+        if result.returncode != 0:
+            raise OSError(f'Failed to convert {dest_spec_path} to XML')
+
+        found = False
+        for topLevel in ET.fromstring(result.stdout.strip()):
+            for element in topLevel:
+                for key in element:
+                    if key.tag == 'string' and key.text == spec_info['id']:
+                        found = True
+                        break
+                if found:
+                    break
+            if found:
+                break
+        if found:
+            print(f'{spec_info["id"]} alread in {dest_spec_path}')
+            continue
+
+        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8") as temp:
+            temp.write(spec_info['content'])
+            temp.flush()
+
+            print(f'Inserting:  {spec_info["id"]}')
+            print(f'To:         {dest_spec_path}')
+            subprocess.run([PLIST_BUDDY_PATH, '-c', 'add 0 dict', dest_spec_path], capture_output=True, check=True)
+            subprocess.run([PLIST_BUDDY_PATH, '-c', f'merge {temp.name} 0', dest_spec_path], capture_output=True, check=True)
+
+
+def copy_missing_headers(source_sdk, dest_sdk):
+    if source_sdk == dest_sdk:
+        return
+    source_sdk_path, dest_sdk_path = get_and_check_sdk_directories(source_sdk, dest_sdk)
+    for missing_header in MISSING_HEADERS:
+        do_copy(source_sdk_path / missing_header, dest_sdk_path / missing_header)
+
+
+def copy_missing_frameworks(source_sdk, dest_sdk):
+    if source_sdk == dest_sdk:
+        return
+    source_sdk_path, dest_sdk_path = get_and_check_sdk_directories(source_sdk, dest_sdk)
+    source_frameworks_path = source_sdk_path / "System" / "Library" / "Frameworks"
+    dest_frameworks_path = dest_sdk_path / "System" / "Library" / "Frameworks"
+    for missing_framework, force in MISSING_FRAMEWORKS:
+        source_framework_path = source_frameworks_path / missing_framework
+        dest_framework_path = dest_frameworks_path / missing_framework
+        if force or not dest_framework_path.exists():
+            do_copy(source_framework_path, dest_framework_path)
+            patch_tbd_architecture(dest_framework_path)
+
+
+# Some functions that CyberKit needs to call are marked as "unavailable" on the
+# embedded platforms. Create a stub header that will nullify the effect of the
+# annotations on those functions. Note that there's no guarantee that the
+# resulting product can run -- we just want to build.
+
+def create_availability_header(sdk):
+    sdk_path = sdk_directory(sdk)
+    availability_header_path = sdk_path / AVAILABILITY_FILE
+    print(f"Creating/updating {availability_header_path}")
+    os.makedirs(availability_header_path.parent, exist_ok=True)
+    with open(availability_header_path, "w") as f:
+        f.write(AVAILABILTY_TEXT)
+
+
+def main():
+    if not os.geteuid() == 0 and not os.access(xcode_developer_dir(), os.R_OK | os.W_OK | os.X_OK, effective_ids=True):
+        raise RuntimeError(f"{__file__} must be run as root")
+
+    update_xcspec_files()
+
+    for sdk in SDKS_TO_UPDATE:
+        copy_missing_headers("macosx", sdk)
+        copy_missing_frameworks("iphoneos", sdk)
+        create_availability_header(sdk)
+    return 0
+
+
+if __name__ == "__main__":
+    main()

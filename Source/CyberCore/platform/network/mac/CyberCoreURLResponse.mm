@@ -28,12 +28,14 @@
 
 #import "config.h"
 #import "CyberCoreURLResponse.h"
+#import "ResourceResponse.h"
 
 #import "MIMETypeRegistry.h"
 #import "UTIUtilities.h"
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/Assertions.h>
 #import <wtf/RetainPtr.h>
+#import <wtf/URL.h>
 
 namespace CyberCore {
 
