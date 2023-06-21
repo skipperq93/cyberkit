@@ -198,7 +198,10 @@ private:
     void resetOriginAccessWhitelists();
 
     struct ResourceNetworkActivityTracker {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdefaulted-function-deleted"
         ResourceNetworkActivityTracker() = default;
+#pragma clang diagnostic pop
         ResourceNetworkActivityTracker(const ResourceNetworkActivityTracker&) = default;
         ResourceNetworkActivityTracker(ResourceNetworkActivityTracker&&) = default;
         ResourceNetworkActivityTracker(uint64_t pageID)
