@@ -13,7 +13,7 @@ CyberKit is a backport of WebKit to older iOS.
 ## Building from Source
 If building yourself, you may wish to use the version of Xcode used at the time to build the commit you are building.
 
-Ensure to run `Tools/Scripts/configure-xcode-for-embedded-development` before 1st build or any time you reinstall/update Xcode.
+Ensure to run `Tools/Scripts/configure-xcode-for-embedded-development` before 1st build or any time you reinstall/update Xcode or its SDKs.
 
 You will build the "Everything up to CyberKit" target then the appropriate app.
 
