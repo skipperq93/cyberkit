@@ -43,7 +43,7 @@ Definitions:
 | &#x2753; | Confirmation needed
 | &#x23f3; | Not supported, but in progress
 | &#x274c; | Not supported
-| _ | Rootful
+| + | Rootful
 | - | Rootless
 
 This table only applies if you are jailbroken or have TrollStore.
@@ -51,7 +51,7 @@ This table only applies if you are jailbroken or have TrollStore.
 Please note that your mileage may vary from the official values in the table. Please report any discrepancies.
 
 
-| Release Name |  iOS 12  |  iOS 13  |  iOS 14  | iOS 15_  | iOS 15-  | iOS 16_  | iOS 16-
+| Release Name |  iOS 12  |  iOS 13  |  iOS 14  | iOS 15+  | iOS 15-  | iOS 16+  | iOS 16-
 | :----------: | :------: | :------: | :------: | :------: | :------: | :------: | :------:
 | v0.0.1 alpha | &#x274c; | &#x274c; | &#x2705; | &#x23f3; | &#x23f3; | &#x23f3; | &#x23f3;
 | v0.0.2 alpha | &#x274c; | &#x274c; | &#x2705; | &#x23f3; | &#x23f3; | &#x23f3; | &#x23f3;
