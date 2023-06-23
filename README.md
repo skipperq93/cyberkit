@@ -3,15 +3,22 @@
 CyberKit is a backport of WebKit to older iOS.
 
 ## Development Branch History
-* [safari-7615.1.15-branch](https://github.com/UInt2048/CyberKit/tree/safari-7615.1.15-branch) [11 December 2022]: 31 January 2023 - 24 February 2023
-* [safari-7616.1.3-branch](https://github.com/UInt2048/CyberKit/tree/safari-7616.1.3-branch) [18 February 2023]: 25 February 2023
-* [safari-7616.1.4pre-branch](https://github.com/UInt2048/CyberKit/tree/safari-7616.1.4pre-branch) [25 February 2023]: 25 February 2023 - 5 March 2023
-* [safari-7616.1.4-branch](https://github.com/UInt2048/CyberKit/tree/safari-7616.1.4-branch) [25 February 2023]: 5 March 2023 - 24 March 2023
-* [safari-7616.1.7-branch](https://github.com/UInt2048/CyberKit/tree/safari-7616.1.7-branch) [19 March 2023]: 24 March 2023 - 11 May 2023
-* [safari-7616.1.12-branch](https://github.com/UInt2048/CyberKit/tree/safari-7616.1.12-branch) [22 April 2023]: 11 May 2023 - present
+* [safari-7615.1.15-branch](https://github.com/UInt2048/CyberKit/tree/safari-7615.1.15-branch): 31 January 2023 - 24 February 2023
+    * _Diverged 11 December 2022; built in Xcode 14.2_
+* [safari-7616.1.3-branch](https://github.com/UInt2048/CyberKit/tree/safari-7616.1.3-branch): 25 February 2023
+    * _Diverged 18 February 2023; built in Xcode 14.2_
+* [safari-7616.1.4pre-branch](https://github.com/UInt2048/CyberKit/tree/safari-7616.1.4pre-branch): 25 February 2023 - 5 March 2023
+    * _Diverged 25 February 2023; built in Xcode 14.2_
+* [safari-7616.1.4-branch](https://github.com/UInt2048/CyberKit/tree/safari-7616.1.4-branch): 5 March 2023 - 24 March 2023
+    * _Diverged 25 February 2023; built in Xcode 14.2_
+* [safari-7616.1.7-branch](https://github.com/UInt2048/CyberKit/tree/safari-7616.1.7-branch): 24 March 2023 - 11 May 2023
+    * _Diverged 19 March 2023; built in Xcode 14.2 before [fa2170c](https://github.com/UInt2048/CyberKit/commit/fa2170c3604b4ccacbc4f2475f91c0638ac7a2a0) (committed 7 April 2023), 14.3 starting with fa2170c_
+* [safari-7616.1.12-branch](https://github.com/UInt2048/CyberKit/tree/safari-7616.1.12-branch): 11 May 2023 - present
+    * _Diverged 22 April 2023; built in Xcode 14.3_
 
 ## Reference Implementations
-* [safari-607-branch](https://github.com/UInt2048/CyberKit/tree/safari-607-branch) [7 January 2019]: 19 May 2023 - 22 June 2023
+* [safari-607-branch](https://github.com/UInt2048/CyberKit/tree/safari-607-branch): 19 May 2023 - 22 June 2023
+    * _Diverged 7 January 2019; built in Xcode 11.7_
 
 ## Building from Source
 If building yourself, you may wish to use the version of Xcode used at the time to build the commit you are building.
@@ -46,8 +53,8 @@ Please note that your mileage may vary from the official values in the table. Pl
 
 | Release Name |  iOS 12  |  iOS 13  |  iOS 14  | iOS 15_  | iOS 15-  | iOS 16_  | iOS 16-
 | :----------: | :------: | :------: | :------: | :------: | :------: | :------: | :------:
-| v0.0.1 alpha | &#x274c; | &#x274c; | &#x2705; | &#x2705; | &#x2753; | &#x2705; | &#x2753;
-| v0.0.2 alpha | &#x274c; | &#x274c; | &#x2705; | &#x2705; | &#x2753; | &#x2705; | &#x2753;
+| v0.0.1 alpha | &#x274c; | &#x274c; | &#x2705; | &#x23f3; | &#x23f3; | &#x23f3; | &#x23f3;
+| v0.0.2 alpha | &#x274c; | &#x274c; | &#x2705; | &#x23f3; | &#x23f3; | &#x23f3; | &#x23f3;
 | v0.0.3 alpha | &#x274c; | &#x274c; | &#x2705; | &#x2705; | &#x2753; | &#x2705; | &#x2753;
 | v0.0.4 alpha | &#x274c; | &#x274c; | &#x2705; | &#x2705; | &#x2753; | &#x2705; | &#x2753;
 | v0.0.5 alpha | &#x274c; | &#x23f3; | &#x2705; | &#x2705; | &#x2753; | &#x2705; | &#x2753;
