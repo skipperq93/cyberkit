@@ -40,8 +40,10 @@ Definitions:
 |  Symbol  | Definition
 | :------: | :-------
 | &#x2705; | Supported
-| &#x2753; | Confirmation needed
-| &#x23f3; | Not supported, but in progress
+| &#x274e; | Partially supported (one installation method fails)
+| &#x2753; | Unknown behavior (please confirm)
+| &#x23f3; | Not supported (installation always succeeds, but CyberKit fails)
+| &#x23f0; | Not supported (installation exists, but never succeeds)
 | &#x274c; | Not supported
 | + | Rootful
 | - | Rootless
@@ -53,12 +55,13 @@ Please note that your mileage may vary from the official values in the table. Pl
 
 | Release Name |  iOS 12  |  iOS 13  |  iOS 14  | iOS 15+  | iOS 15-  | iOS 16+  | iOS 16-
 | :----------: | :------: | :------: | :------: | :------: | :------: | :------: | :------:
-| v0.0.1 alpha | &#x274c; | &#x274c; | &#x2705; | &#x23f3; | &#x23f3; | &#x23f3; | &#x23f3;
-| v0.0.2 alpha | &#x274c; | &#x274c; | &#x2705; | &#x23f3; | &#x23f3; | &#x23f3; | &#x23f3;
-| v0.0.3 alpha | &#x274c; | &#x274c; | &#x2705; | &#x2705; | &#x2753; | &#x2705; | &#x2753;
-| v0.0.4 alpha | &#x274c; | &#x274c; | &#x2705; | &#x2705; | &#x2753; | &#x2705; | &#x2753;
-| v0.0.5 alpha | &#x274c; | &#x23f3; | &#x2705; | &#x2705; | &#x2753; | &#x2705; | &#x2753;
-| v0.0.6 alpha | &#x274c; | &#x23f3; | &#x2705; | &#x2705; | &#x2753; | &#x2705; | &#x2753;
+| v0.0.1 alpha | &#x274c; | &#x274c; | &#x2705; | &#x2705; | &#x23f0; | &#x2705; | &#x23f0;
+| v0.0.2 alpha | &#x274c; | &#x274c; | &#x2705; | &#x2705; | &#x23f0; | &#x2705; | &#x23f0;
+| v0.0.3 alpha | &#x274c; | &#x274c; | &#x2705; | &#x2705; | &#x274e; | &#x2705; | &#x274e;
+| v0.0.4 alpha | &#x274c; | &#x274c; | &#x2705; | &#x2705; | &#x274e; | &#x2705; | &#x274e;
+| v0.0.5 alpha | &#x274c; | &#x23f3; | &#x2705; | &#x2705; | &#x274e; | &#x2705; | &#x274e;
+| v0.0.6 alpha | &#x274c; | &#x23f3; | &#x2705; | &#x2705; | &#x274e; | &#x2705; | &#x274e;
+| v0.0.7 alpha | &#x23f3; | &#x23f3; | &#x2705; | &#x2705; | &#x2753; | &#x2705; | &#x2753;
 | (Dev branch) | &#x23f3; | &#x23f3; | &#x2705; | &#x2705; | &#x2753; | &#x2705; | &#x2753;
 
 ## Installation
