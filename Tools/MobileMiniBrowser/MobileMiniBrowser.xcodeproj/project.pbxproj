@@ -317,7 +317,7 @@
 				CD1DAF8F1D709E3600017CF0 /* Frameworks */,
 				CD1DAF901D709E3600017CF0 /* Resources */,
 				CD498B231D76341700681FA7 /* Embed Frameworks */,
-				48BC581F29F7349400080749 /* ShellScript */,
+				48BC581F29F7349400080749 /* Fakesign */,
 			);
 			buildRules = (
 			);
@@ -447,7 +447,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		48BC581F29F7349400080749 /* ShellScript */ = {
+		48BC581F29F7349400080749 /* Fakesign */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -456,13 +456,14 @@
 			);
 			inputPaths = (
 			);
+			name = Fakesign;
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n$SRCROOT/script_fakesigner.sh\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n$SRCROOT/script_fakesigner.sh mobileminibrowser+12\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
