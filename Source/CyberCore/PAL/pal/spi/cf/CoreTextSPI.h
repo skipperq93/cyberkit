@@ -215,7 +215,8 @@ extern const CGFloat kCTFontWidthUltraCompressed;
 extern const CGFloat kCTFontWidthExtraCompressed;
 extern const CGFloat kCTFontWidthCompressed;
 extern const CGFloat kCTFontWidthExtraExpanded;
-#elif HAVE(LEVEL_2_SYSTEM_FONT_WIDTH_VALUES)
+#endif
+#if HAVE(LEVEL_2_SYSTEM_FONT_WIDTH_VALUES) || HAVE(LEVEL_3_SYSTEM_FONT_WIDTH_VALUES)
 extern const CGFloat kCTFontWidthExtraCondensed;
 extern const CGFloat kCTFontWidthSemiCondensed;
 extern const CGFloat kCTFontWidthSemiExpanded;

@@ -3220,12 +3220,13 @@ static bool isLockdownModeWarningNeeded()
 - (UIEventAttribution *)_uiEventAttribution
 {
 #if HAVE(UI_EVENT_ATTRIBUTION)
-    auto& measurement = _page->privateClickMeasurement();
-    if (!measurement)
+    auto attribution = _page->privateClickMeasurementEventAttribution();
+    if (!attribution)
         return nil;
 
-    URL destinationURL { makeString("https://", measurement->pcm.destinationSite().registrableDomain.string()) };
-    return adoptNS([[UIEventAttribution alloc] initWithSourceIdentifier:measurement->pcm.sourceID() destinationURL:destinationURL sourceDescription:measurement->sourceDescription purchaser:measurement->purchaser]).autorelease();
+    URL destinationURL { makeString("https://"_s, attribution->destinationDomain) };
+    return adoptNS([[UIEventAttribution alloc] initWithSourceIdentifier:attribution->sourceID destinationURL:destinationURL sourceDescription:attribution->sourceDescription purchaser:attribution->purchaser]).autorelease();
+
 #else
     return nil;
 #endif

@@ -3294,7 +3294,6 @@
 		D04CF93E285C77C9005D6337 /* MachSendRight.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MachSendRight.cpp; sourceTree = "<group>"; };
 		D3BE5E341E4CE85E00FD563A /* WKWebViewGetContents.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WKWebViewGetContents.mm; sourceTree = "<group>"; };
 		DC69AA621CF77C6500C6272F /* ScopedLambda.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScopedLambda.cpp; sourceTree = "<group>"; };
-		DD28DF2629D41E8100BBB459 /* libpas.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpas.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD403D4928EB932F009B4684 /* libbmalloc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libbmalloc.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDAA0E2029E63FED003ECAE2 /* libpas.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpas.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDB3724528ECE32F00A2F32D /* libbmalloc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libbmalloc.a; sourceTree = BUILT_PRODUCTS_DIR; };
