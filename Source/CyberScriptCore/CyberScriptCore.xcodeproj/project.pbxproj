@@ -10855,6 +10855,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C9051430BA9E8A70081E9D0 /* CyberScriptCore.xcconfig */;
 			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberScriptCore;
 			};
 			name = Debug;
 		};
@@ -10862,6 +10864,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C9051430BA9E8A70081E9D0 /* CyberScriptCore.xcconfig */;
 			buildSettings = {
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberScriptCore;
 			};
 			name = Release;
 		};
@@ -10870,6 +10873,7 @@
 			baseConfigurationReference = 1C9051430BA9E8A70081E9D0 /* CyberScriptCore.xcconfig */;
 			buildSettings = {
 				BUILD_VARIANTS = normal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberScriptCore;
 			};
 			name = Production;
 		};
@@ -11224,6 +11228,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C9051430BA9E8A70081E9D0 /* CyberScriptCore.xcconfig */;
 			buildSettings = {
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberScriptCore;
 			};
 			name = Profiling;
 		};
