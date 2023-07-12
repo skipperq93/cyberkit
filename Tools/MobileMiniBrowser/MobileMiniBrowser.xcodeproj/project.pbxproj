@@ -9,10 +9,20 @@
 /* Begin PBXBuildFile section */
 		3F0B439B1D908D0C00D186B5 /* looping2s.html in Resources */ = {isa = PBXBuildFile; fileRef = 3F0B439A1D908D0C00D186B5 /* looping2s.html */; };
 		3F0B439D1D908DE700D186B5 /* test2s.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3F0B439C1D908DE700D186B5 /* test2s.mp4 */; };
+		48F5F7562A4B2E320064468E /* CyberKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F5F7552A4B2E320064468E /* CyberKit.framework */; };
+		48F5F7572A4B2E320064468E /* CyberKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48F5F7552A4B2E320064468E /* CyberKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48F5F7592A4B2E390064468E /* CyberCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F5F7582A4B2E390064468E /* CyberCore.framework */; };
+		48F5F75A2A4B2E390064468E /* CyberCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48F5F7582A4B2E390064468E /* CyberCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48F5F75C2A4B2E400064468E /* CyberKitLegacy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F5F75B2A4B2E400064468E /* CyberKitLegacy.framework */; };
+		48F5F75D2A4B2E400064468E /* CyberKitLegacy.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48F5F75B2A4B2E400064468E /* CyberKitLegacy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48F5F75F2A4B2E480064468E /* CyberScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F5F75E2A4B2E480064468E /* CyberScriptCore.framework */; };
+		48F5F7602A4B2E480064468E /* CyberScriptCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48F5F75E2A4B2E480064468E /* CyberScriptCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48F5F7622A4B2E6F0064468E /* libwebrtc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F5F7612A4B2E6F0064468E /* libwebrtc.dylib */; };
+		48F5F7632A4B2E6F0064468E /* libwebrtc.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48F5F7612A4B2E6F0064468E /* libwebrtc.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		48F5F7652A4B2E770064468E /* CyberKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F5F7642A4B2E770064468E /* CyberKit.framework */; };
 		CD1DAF971D709E3600017CF0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1DAF961D709E3600017CF0 /* main.m */; };
 		CD1DAFA51D709E3600017CF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD1DAFA31D709E3600017CF0 /* LaunchScreen.storyboard */; };
 		CD1DAFB01D709E3600017CF0 /* MobileMiniBrowserUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1DAFAF1D709E3600017CF0 /* MobileMiniBrowserUITests.m */; };
-		CD1DAFC21D70E12D00017CF0 /* CyberKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1DAFC11D70E12D00017CF0 /* CyberKit.framework */; };
 		CD498B421D76348000681FA7 /* MobileMiniBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD498B3B1D76348000681FA7 /* MobileMiniBrowser.framework */; };
 		CD498B431D76348000681FA7 /* MobileMiniBrowser.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD498B3B1D76348000681FA7 /* MobileMiniBrowser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD498B4A1D763D4800681FA7 /* MobileMiniBrowser.h in Headers */ = {isa = PBXBuildFile; fileRef = CD498B481D7634C700681FA7 /* MobileMiniBrowser.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -54,7 +64,12 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				48F5F7602A4B2E480064468E /* CyberScriptCore.framework in Embed Frameworks */,
+				48F5F7632A4B2E6F0064468E /* libwebrtc.dylib in Embed Frameworks */,
 				CD498B431D76348000681FA7 /* MobileMiniBrowser.framework in Embed Frameworks */,
+				48F5F7572A4B2E320064468E /* CyberKit.framework in Embed Frameworks */,
+				48F5F75D2A4B2E400064468E /* CyberKitLegacy.framework in Embed Frameworks */,
+				48F5F75A2A4B2E390064468E /* CyberCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,6 +79,12 @@
 /* Begin PBXFileReference section */
 		3F0B439A1D908D0C00D186B5 /* looping2s.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = looping2s.html; path = Resources/looping2s.html; sourceTree = "<group>"; };
 		3F0B439C1D908DE700D186B5 /* test2s.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = test2s.mp4; path = Resources/test2s.mp4; sourceTree = "<group>"; };
+		48F5F7552A4B2E320064468E /* CyberKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48F5F7582A4B2E390064468E /* CyberCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48F5F75B2A4B2E400064468E /* CyberKitLegacy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberKitLegacy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48F5F75E2A4B2E480064468E /* CyberScriptCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberScriptCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48F5F7612A4B2E6F0064468E /* libwebrtc.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libwebrtc.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		48F5F7642A4B2E770064468E /* CyberKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD1DAF921D709E3600017CF0 /* MobileMiniBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileMiniBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD1DAF961D709E3600017CF0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CD1DAF981D709E3600017CF0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -96,8 +117,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48F5F75F2A4B2E480064468E /* CyberScriptCore.framework in Frameworks */,
+				48F5F7622A4B2E6F0064468E /* libwebrtc.dylib in Frameworks */,
 				CD498B421D76348000681FA7 /* MobileMiniBrowser.framework in Frameworks */,
-				CD1DAFC21D70E12D00017CF0 /* CyberKit.framework in Frameworks */,
+				48F5F7562A4B2E320064468E /* CyberKit.framework in Frameworks */,
+				48F5F75C2A4B2E400064468E /* CyberKitLegacy.framework in Frameworks */,
+				48F5F7592A4B2E390064468E /* CyberCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48F5F7652A4B2E770064468E /* CyberKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +189,12 @@
 		CD1DAFC01D70E12D00017CF0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				48F5F7642A4B2E770064468E /* CyberKit.framework */,
+				48F5F7612A4B2E6F0064468E /* libwebrtc.dylib */,
+				48F5F75E2A4B2E480064468E /* CyberScriptCore.framework */,
+				48F5F75B2A4B2E400064468E /* CyberKitLegacy.framework */,
+				48F5F7582A4B2E390064468E /* CyberCore.framework */,
+				48F5F7552A4B2E320064468E /* CyberKit.framework */,
 				CD1DAFC11D70E12D00017CF0 /* CyberKit.framework */,
 			);
 			name = Frameworks;
@@ -234,6 +266,7 @@
 				CD1DAF8F1D709E3600017CF0 /* Frameworks */,
 				CD1DAF901D709E3600017CF0 /* Resources */,
 				CD498B231D76341700681FA7 /* Embed Frameworks */,
+				48D5EE002A4A750500FEC60C /* Fakesign */,
 			);
 			buildRules = (
 			);
@@ -292,6 +325,8 @@
 				TargetAttributes = {
 					CD1DAF911D709E3600017CF0 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = SJ87WGCZM7;
+						ProvisioningStyle = Automatic;
 					};
 					CD1DAFAA1D709E3600017CF0 = {
 						CreatedOnToolsVersion = 8.0;
@@ -355,6 +390,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		48D5EE002A4A750500FEC60C /* Fakesign */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Fakesign;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n$SRCROOT/script_fakesigner.sh mobileminibrowser+12\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CD1DAF8E1D709E3600017CF0 /* Sources */ = {
@@ -439,10 +495,16 @@
 			baseConfigurationReference = CD4DEEE41D78C6FF00625986 /* MobileMiniBrowser.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				INFOPLIST_FILE = MobileMiniBrowser/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.webkit.MobileMiniBrowser;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.ios.Fennec;
 				PRODUCT_NAME = MobileMiniBrowser;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -451,10 +513,16 @@
 			baseConfigurationReference = CD4DEEE41D78C6FF00625986 /* MobileMiniBrowser.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				INFOPLIST_FILE = MobileMiniBrowser/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.webkit.MobileMiniBrowser;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.ios.Fennec;
 				PRODUCT_NAME = MobileMiniBrowser;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -484,6 +552,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD4DEEE41D78C6FF00625986 /* MobileMiniBrowser.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -494,6 +563,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.webkit.MobileMiniBrowserFramework;
 				PRODUCT_NAME = MobileMiniBrowser;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -504,6 +574,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD4DEEE41D78C6FF00625986 /* MobileMiniBrowser.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -514,6 +585,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.webkit.MobileMiniBrowserFramework;
 				PRODUCT_NAME = MobileMiniBrowser;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
