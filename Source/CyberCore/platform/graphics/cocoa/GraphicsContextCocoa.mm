@@ -157,7 +157,7 @@ void GraphicsContextCG::drawDotsForDocumentMarker(const FloatRect& rect, Documen
 
 void GraphicsContextCG::convertToDestinationColorSpaceIfNeeded(RetainPtr<CGImageRef>& image)
 {
-#if HAVE(CORE_ANIMATION_FIX_FOR_RADAR_93560567)
+#if HAVE(CORE_ANIMATION_FIX_FOR_RADAR_93560567) || ((PLATFORM(IOS) || PLATFORM(MACCATALYST)) && __IPHONE_OS_VERSION_MIN_REQUIRED < 140000)
     UNUSED_PARAM(image);
 #else
     if (!CGColorSpaceUsesITUR_2100TF(CGImageGetColorSpace(image.get())))

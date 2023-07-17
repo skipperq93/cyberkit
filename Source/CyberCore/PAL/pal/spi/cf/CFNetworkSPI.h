@@ -300,7 +300,7 @@ typedef NS_ENUM(NSInteger, NSURLSessionCompanionProxyPreference) {
 @interface NSURLSessionTask ()
 #if HAVE(NSURLSESSION_EFFECTIVE_CONFIGURATION_OBJECT)
 - (void)_adoptEffectiveConfiguration:(NSURLSessionEffectiveConfiguration *) newConfiguration;
-#else
+#elif HAVE(NSURLSESSION_EFFECTIVE_CONFIGURATION)
 - (void)_adoptEffectiveConfiguration:(NSURLSessionConfiguration *) newConfiguration;
 #endif
 - (NSDictionary *)_timingData;

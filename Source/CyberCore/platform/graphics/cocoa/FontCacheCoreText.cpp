@@ -252,9 +252,13 @@ SynthesisPair computeNecessarySynthesis(CTFontRef font, const FontDescription& f
 
     CTFontSymbolicTraits actualTraits = 0;
     if (isFontWeightBold(fontDescription.weight()) || isItalic(fontDescription.italic())) {
+#if !PLATFORM(IOS_FAMILY) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
         if (shouldComputePhysicalTraits == ShouldComputePhysicalTraits::Yes)
             actualTraits = CTFontGetPhysicalSymbolicTraits(font);
         else
+#else
+            UNUSED_PARAM(shouldComputePhysicalTraits);
+#endif
             actualTraits = CTFontGetSymbolicTraits(font);
     }
 
@@ -735,8 +739,13 @@ static bool isUserInstalledFont(CTFontRef font)
 static RetainPtr<CTFontRef> createFontForCharacters(CTFontRef font, CFStringRef localeString, AllowUserInstalledFonts allowUserInstalledFonts, const UChar* characters, unsigned length)
 {
     CFIndex coveredLength = 0;
+#if (PLATFORM(MAC) && __MAC_OS_X_VERSION_MIN_REQUIRED >= 101500) || (PLATFORM(IOS_FAMILY) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
     auto fallbackOption = allowUserInstalledFonts == AllowUserInstalledFonts::No ? kCTFontFallbackOptionSystem : kCTFontFallbackOptionDefault;
     return adoptCF(CTFontCreateForCharactersWithLanguageAndOption(font, reinterpret_cast<const UniChar*>(characters), length, localeString, fallbackOption, &coveredLength));
+#else
+    UNUSED_PARAM(allowUserInstalledFonts);
+    return adoptCF(CTFontCreateForCharactersWithLanguage(font, reinterpret_cast<const UniChar*>(characters), length, localeString, &coveredLength));
+#endif
 }
 
 static RetainPtr<CTFontRef> lookupFallbackFont(CTFontRef font, FontSelectionValue fontWeight, const AtomString& locale, AllowUserInstalledFonts allowUserInstalledFonts, const UChar* characters, unsigned length)
@@ -955,7 +964,11 @@ void FontCache::prewarm(PrewarmInformation&& prewarmInformation)
                 CFIndex coveredLength = 0;
                 UniChar character = ' ';
 
+#if (PLATFORM(MAC) && __MAC_OS_X_VERSION_MIN_REQUIRED >= 101500) || (PLATFORM(IOS_FAMILY) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
                 auto fallbackWarmingFont = adoptCF(CTFontCreateForCharactersWithLanguageAndOption(warmingFont.get(), &character, 1, nullptr, kCTFontFallbackOptionSystem, &coveredLength));
+#else
+                auto fallbackWarmingFont = adoptCF(CTFontCreateForCharactersWithLanguage(warmingFont.get(), &character, 1, nullptr, &coveredLength));
+#endif
             }
         }
     });

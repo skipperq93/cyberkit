@@ -75,6 +75,9 @@ struct IsolatedSession {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     SessionWrapper sessionWithCredentialStorage;
+#if !HAVE(NSURLSESSION_EFFECTIVE_CONFIGURATION)
+    SessionWrapper sessionWithoutCredentialStorage;
+#endif
     WallTime lastUsed;
 };
 
@@ -93,6 +96,9 @@ public:
     std::unique_ptr<IsolatedSession> appBoundSession;
 
     SessionWrapper sessionWithCredentialStorage;
+#if !HAVE(NSURLSESSION_EFFECTIVE_CONFIGURATION)
+    SessionWrapper sessionWithoutCredentialStorage;
+#endif
     SessionWrapper ephemeralStatelessSession;
 
 private:

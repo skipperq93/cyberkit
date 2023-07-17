@@ -1513,6 +1513,10 @@ void NetworkSessionCocoa::initializeNSURLSessionsInSet(SessionSet& sessionSet, N
     auto cookieAcceptPolicy = configuration.HTTPCookieStorage.cookieAcceptPolicy;
     LOG(NetworkSession, "Created NetworkSession with cookieAcceptPolicy %lu", cookieAcceptPolicy);
     RELEASE_LOG_IF(cookieAcceptPolicy == NSHTTPCookieAcceptPolicyNever, NetworkSession, "Creating network session with ID %" PRIu64 " that will not accept cookies.", m_sessionID.toUInt64());
+#if !HAVE(NSURLSESSION_EFFECTIVE_CONFIGURATION)
+    configuration.URLCredentialStorage = nil;
+    sessionSet.sessionWithoutCredentialStorage.initialize(configuration, *this, CyberCore::StoredCredentialsPolicy::DoNotUse, NavigatingToAppBoundDomain::No);
+#endif
 }
 
 SessionSet& NetworkSessionCocoa::sessionSetForPage(WebPageProxyIdentifier webPageProxyID)
@@ -1538,7 +1542,11 @@ SessionWrapper& SessionSet::initializeEphemeralStatelessSessionIfNeeded(Navigati
         return ephemeralStatelessSession;
 
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+#if HAVE(NSURLSESSION_EFFECTIVE_CONFIGURATION)
     NSURLSessionConfiguration *existingConfiguration = sessionWithCredentialStorage.session.get().configuration;
+#else
+    NSURLSessionConfiguration *existingConfiguration = sessionWithoutCredentialStorage.session.get().configuration;
+#endif
 
     configuration.HTTPCookieAcceptPolicy = NSHTTPCookieAcceptPolicyNever;
     configuration.URLCredentialStorage = nil;
@@ -1582,8 +1590,13 @@ SessionWrapper& NetworkSessionCocoa::sessionWrapperForTask(WebPageProxyIdentifie
 
     switch (storedCredentialsPolicy) {
     case CyberCore::StoredCredentialsPolicy::Use:
-    case CyberCore::StoredCredentialsPolicy::DoNotUse:
         return sessionSetForPage(webPageProxyID).sessionWithCredentialStorage;
+    case CyberCore::StoredCredentialsPolicy::DoNotUse:
+#if HAVE(NSURLSESSION_EFFECTIVE_CONFIGURATION)
+        return sessionSetForPage(webPageProxyID).sessionWithCredentialStorage;
+#else
+            return sessionSetForPage(webPageProxyID).sessionWithoutCredentialStorage;
+#endif
     case CyberCore::StoredCredentialsPolicy::EphemeralStateless:
         return initializeEphemeralStatelessSessionIfNeeded(webPageProxyID, NavigatingToAppBoundDomain::No);
     }
@@ -1597,14 +1610,26 @@ SessionWrapper& NetworkSessionCocoa::appBoundSession(WebPageProxyIdentifier webP
     if (!sessionSet.appBoundSession) {
         sessionSet.appBoundSession = makeUnique<IsolatedSession>();
         sessionSet.appBoundSession->sessionWithCredentialStorage.initialize(sessionSet.sessionWithCredentialStorage.session.get().configuration, *this, CyberCore::StoredCredentialsPolicy::Use, NavigatingToAppBoundDomain::Yes);
+#if !HAVE(NSURLSESSION_EFFECTIVE_CONFIGURATION)
+        sessionSet.appBoundSession->sessionWithoutCredentialStorage.initialize(sessionSet.sessionWithoutCredentialStorage.session.get().configuration, *this, CyberCore::StoredCredentialsPolicy::DoNotUse, NavigatingToAppBoundDomain::Yes);
+#endif
     }
 
     auto& sessionWrapper = [&] (auto storedCredentialsPolicy) -> SessionWrapper& {
         switch (storedCredentialsPolicy) {
         case CyberCore::StoredCredentialsPolicy::Use:
+#if !HAVE(NSURLSESSION_EFFECTIVE_CONFIGURATION)
+            LOG(NetworkSession, "Using app-bound NSURLSession with credential storage.");
+            return sessionSet.appBoundSession->sessionWithCredentialStorage;
+#endif
         case CyberCore::StoredCredentialsPolicy::DoNotUse:
+#if HAVE(NSURLSESSION_EFFECTIVE_CONFIGURATION)
             LOG(NetworkSession, "Using app-bound NSURLSession.");
             return sessionSet.appBoundSession->sessionWithCredentialStorage;
+#else
+            LOG(NetworkSession, "Using app-bound NSURLSession without credential storage.");
+            return sessionSet.appBoundSession->sessionWithoutCredentialStorage;
+#endif
         case CyberCore::StoredCredentialsPolicy::EphemeralStateless:
             return initializeEphemeralStatelessSessionIfNeeded(webPageProxyID, NavigatingToAppBoundDomain::Yes);
         }
@@ -1643,6 +1668,9 @@ SessionWrapper& SessionSet::isolatedSession(CyberCore::StoredCredentialsPolicy s
     auto& entry = isolatedSessions.ensure(firstPartyDomain, [this, &session, isNavigatingToAppBoundDomain] {
         auto newEntry = makeUnique<IsolatedSession>();
         newEntry->sessionWithCredentialStorage.initialize(sessionWithCredentialStorage.session.get().configuration, session, CyberCore::StoredCredentialsPolicy::Use, isNavigatingToAppBoundDomain);
+#if !HAVE(NSURLSESSION_EFFECTIVE_CONFIGURATION)
+        newEntry->sessionWithoutCredentialStorage.initialize(sessionWithoutCredentialStorage.session.get().configuration, session, CyberCore::StoredCredentialsPolicy::DoNotUse, isNavigatingToAppBoundDomain);
+#endif
         return newEntry;
     }).iterator->value;
 
@@ -1651,9 +1679,18 @@ SessionWrapper& SessionSet::isolatedSession(CyberCore::StoredCredentialsPolicy s
     auto& sessionWrapper = [&] (auto storedCredentialsPolicy) -> SessionWrapper& {
         switch (storedCredentialsPolicy) {
         case CyberCore::StoredCredentialsPolicy::Use:
-        case CyberCore::StoredCredentialsPolicy::DoNotUse:
-            LOG(NetworkSession, "Using isolated NSURLSession.");
+    #if !HAVE(NSURLSESSION_EFFECTIVE_CONFIGURATION)
+            LOG(NetworkSession, "Using app-bound NSURLSession with credential storage.");
             return entry->sessionWithCredentialStorage;
+    #endif
+        case CyberCore::StoredCredentialsPolicy::DoNotUse:
+    #if HAVE(NSURLSESSION_EFFECTIVE_CONFIGURATION)
+            LOG(NetworkSession, "Using app-bound NSURLSession.");
+            return entry->sessionWithCredentialStorage;
+    #else
+            LOG(NetworkSession, "Using app-bound NSURLSession without credential storage.");
+            return entry->sessionWithoutCredentialStorage;
+    #endif
         case CyberCore::StoredCredentialsPolicy::EphemeralStateless:
             return initializeEphemeralStatelessSessionIfNeeded(isNavigatingToAppBoundDomain, session);
         }
@@ -1700,19 +1737,33 @@ void NetworkSessionCocoa::clearIsolatedSessions()
 void NetworkSessionCocoa::invalidateAndCancelSessionSet(SessionSet& sessionSet)
 {
     [sessionSet.sessionWithCredentialStorage.session invalidateAndCancel];
+#if !HAVE(NSURLSESSION_EFFECTIVE_CONFIGURATION)
+    [sessionSet.sessionWithoutCredentialStorage.session invalidateAndCancel];
+#endif
     [sessionSet.ephemeralStatelessSession.session invalidateAndCancel];
     [sessionSet.sessionWithCredentialStorage.delegate sessionInvalidated];
+#if !HAVE(NSURLSESSION_EFFECTIVE_CONFIGURATION)
+    [sessionSet.sessionWithoutCredentialStorage.delegate sessionInvalidated];
+#endif
     [sessionSet.ephemeralStatelessSession.delegate sessionInvalidated];
 
     for (auto& session : sessionSet.isolatedSessions.values()) {
         [session->sessionWithCredentialStorage.session invalidateAndCancel];
         [session->sessionWithCredentialStorage.delegate sessionInvalidated];
+#if !HAVE(NSURLSESSION_EFFECTIVE_CONFIGURATION)
+        [session->sessionWithoutCredentialStorage.session invalidateAndCancel];
+        [session->sessionWithoutCredentialStorage.delegate sessionInvalidated];
+#endif
     }
     sessionSet.isolatedSessions.clear();
 
     if (sessionSet.appBoundSession) {
         [sessionSet.appBoundSession->sessionWithCredentialStorage.session invalidateAndCancel];
         [sessionSet.appBoundSession->sessionWithCredentialStorage.delegate sessionInvalidated];
+#if !HAVE(NSURLSESSION_EFFECTIVE_CONFIGURATION)
+        [sessionSet.appBoundSession->sessionWithoutCredentialStorage.session invalidateAndCancel];
+        [sessionSet.appBoundSession->sessionWithoutCredentialStorage.delegate sessionInvalidated];
+#endif
     }
 }
 

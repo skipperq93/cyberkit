@@ -429,6 +429,7 @@ NetworkDataTaskCocoa::NetworkDataTaskCocoa(NetworkSession& session, NetworkDataT
 
     WTFBeginSignpost(m_task.get(), "DataTask", "%" PUBLIC_LOG_STRING " %" PRIVATE_LOG_STRING " pri: %.2f preconnect: %d", request.httpMethod().utf8().data(), url.string().utf8().data(), toNSURLSessionTaskPriority(request.priority()), parameters.shouldPreconnectOnly == PreconnectOnly::Yes);
 
+#if HAVE(NSURLSESSION_EFFECTIVE_CONFIGURATION)
     switch (parameters.storedCredentialsPolicy) {
     case CyberCore::StoredCredentialsPolicy::Use:
         ASSERT(m_sessionWrapper->session.get().configuration.URLCredentialStorage);
@@ -449,6 +450,7 @@ NetworkDataTaskCocoa::NetworkDataTaskCocoa(NetworkSession& session, NetworkDataT
 #endif
         break;
     };
+#endif
 
     RELEASE_ASSERT(!m_sessionWrapper->dataTaskMap.contains([m_task taskIdentifier]));
     m_sessionWrapper->dataTaskMap.add([m_task taskIdentifier], this);

@@ -94,6 +94,8 @@
     [super touchesEnded:touches withEvent:event];
     if (!_supportingWebTouchEventsGestureRecognizer)
         return;
+    if (![_supportingWebTouchEventsGestureRecognizer respondsToSelector:@selector(activeTouchesByIdentifier)])
+            return;
 
     NSMapTable<NSNumber *, UITouch *> *activeTouches = [_supportingWebTouchEventsGestureRecognizer activeTouchesByIdentifier];
     for (NSNumber *touchIdentifier in activeTouches) {
