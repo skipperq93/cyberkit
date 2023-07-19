@@ -825,6 +825,7 @@ static CyberCore::CachedImageClient& promisedDataClient()
 #if PLATFORM(IOS_FAMILY)
 static NSString * const WebMarkedTextUpdatedNotification = @"WebMarkedTextUpdated";
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 120000
 static void hardwareKeyboardAvailabilityChangedCallback(CFNotificationCenterRef, void* observer, CFStringRef, const void*, CFDictionaryRef)
 {
     ASSERT(observer);
@@ -836,6 +837,7 @@ static void hardwareKeyboardAvailabilityChangedCallback(CFNotificationCenterRef,
         }
     });
 }
+#endif
 #endif
 
 @interface WebHTMLView (WebHTMLViewFileInternal)
@@ -2574,12 +2576,14 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     _private->pluginController = adoptNS([[WebPluginController alloc] initWithDocumentView:self]);
 
 #if PLATFORM(IOS_FAMILY)
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 120000
     [[NSNotificationCenter defaultCenter] 
             addObserver:self selector:@selector(markedTextUpdate:) 
                    name:WebMarkedTextUpdatedNotification object:nil];
     auto notificationName = adoptNS([[NSString alloc] initWithCString:kGSEventHardwareKeyboardAvailabilityChangedNotification encoding:NSUTF8StringEncoding]);
     auto notificationBehavior = static_cast<CFNotificationSuspensionBehavior>(CFNotificationSuspensionBehaviorCoalesce | _CFNotificationObserverIsObjC);
     CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), (__bridge const void *)(self), hardwareKeyboardAvailabilityChangedCallback, (__bridge CFStringRef)notificationName.get(), nullptr, notificationBehavior);
+#endif
 #endif
 
 #if PLATFORM(MAC)
@@ -2595,9 +2599,11 @@ ALLOW_DEPRECATED_DECLARATIONS_END
         return;
 
 #if PLATFORM(IOS_FAMILY)
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 120000
     [[NSNotificationCenter defaultCenter] removeObserver:self name:WebMarkedTextUpdatedNotification object:nil];
     auto notificationName = adoptNS([[NSString alloc] initWithCString:kGSEventHardwareKeyboardAvailabilityChangedNotification encoding:NSUTF8StringEncoding]);
     CFNotificationCenterRemoveObserver(CFNotificationCenterGetDarwinNotifyCenter(), (__bridge const void *)(self), (__bridge CFStringRef)notificationName.get(), nullptr);
+#endif
 #endif
 
     // We can't assert that close has already been called because

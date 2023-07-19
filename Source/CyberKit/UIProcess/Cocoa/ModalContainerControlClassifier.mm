@@ -44,7 +44,9 @@ static NSString *const classifierOutputFeatureKey = @"label";
 @end
 
 @interface WKModalContainerClassifierInput : NSObject<MLFeatureProvider>
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 120000
 - (instancetype)initWithTokenizer:(NLTokenizer *)tokenizer rawInput:(NSString *)rawInput;
+#endif
 @end
 
 @implementation WKModalContainerClassifierBatch {
@@ -56,10 +58,13 @@ static NSString *const classifierOutputFeatureKey = @"label";
     if (!(self = [super init]))
         return nil;
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 120000
     auto tokenizer = adoptNS([PAL::allocNLTokenizerInstance() initWithUnit:NLTokenUnitWord]);
     _inputs = inputStrings.map([&](auto& rawInput) {
         return adoptNS([[WKModalContainerClassifierInput alloc] initWithTokenizer:tokenizer.get() rawInput:rawInput]);
     });
+#endif
+
     return self;
 }
 
@@ -114,6 +119,7 @@ private:
     RetainPtr<NSString> _canonicalInput;
 }
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 120000
 - (instancetype)initWithTokenizer:(NLTokenizer *)tokenizer rawInput:(NSString *)rawInput
 {
     if (!(self = [super init]))
@@ -145,6 +151,7 @@ private:
     _canonicalInput = [tokens componentsJoinedByString:@" "];
     return self;
 }
+#endif
 
 - (NSSet<NSString *> *)featureNames
 {
