@@ -50,6 +50,8 @@ Definitions:
 
 This table only applies if you are jailbroken or have TrollStore.
 
+Please note that iOS and iPadOS are considered equivalent in CyberKit.
+
 Please note that your mileage may vary from the official values in the table. Please report any discrepancies.
 
 
@@ -62,7 +64,8 @@ Please note that your mileage may vary from the official values in the table. Pl
 | v0.0.5 alpha | &#x274c; | &#x23f3; | &#x2705; | &#x2705; | &#x274e; | &#x2705; | &#x274e;
 | v0.0.6 alpha | &#x274c; | &#x23f3; | &#x2705; | &#x2705; | &#x274e; | &#x2705; | &#x274e;
 | v0.0.7 alpha | &#x23f3; | &#x23f3; | &#x2705; | &#x2705; | &#x2753; | &#x2705; | &#x2753;
-| (Dev branch) | &#x23f3; | &#x23f3; | &#x2705; | &#x2705; | &#x2753; | &#x2705; | &#x2753;
+| v0.0.8 alpha | &#x2705; | &#x2705; | &#x2705; | &#x2705; | &#x2753; | &#x2705; | &#x2753;
+| (Dev branch) | &#x2705; | &#x2705; | &#x2705; | &#x2705; | &#x2753; | &#x2705; | &#x2753;
 
 ## Installation
 Please visit [the releases](https://github.com/UInt2048/CyberKit/releases).
