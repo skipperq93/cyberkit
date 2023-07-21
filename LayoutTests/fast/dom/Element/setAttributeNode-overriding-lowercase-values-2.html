@@ -12,16 +12,16 @@ description('Test using setAttributeNode() behaves like setAttribute() to get th
 
 var testElement = document.createElement("div");
 var a = document.createAttributeNS('ns1', 'foobar');
-a.value = 'WebKit'
+a.value = 'CyberKit'
 testElement.setAttributeNode(a);
 
 shouldBe('testElement.attributes.length', '1');
-shouldBeEqualToString('testElement.getAttribute("foobar")', 'WebKit');
+shouldBeEqualToString('testElement.getAttribute("foobar")', 'CyberKit');
 shouldBeTrue('testElement.hasAttribute("foobar")');
-shouldBeEqualToString('testElement.getAttribute("FooBar")', 'WebKit');
+shouldBeEqualToString('testElement.getAttribute("FooBar")', 'CyberKit');
 shouldBeTrue('testElement.hasAttribute("FooBar")');
 
-shouldBeEqualToString('testElement.getAttributeNS("ns1", "foobar")', 'WebKit');
+shouldBeEqualToString('testElement.getAttributeNS("ns1", "foobar")', 'CyberKit');
 shouldBeTrue('testElement.hasAttributeNS("ns1", "foobar")');
 shouldBe('testElement.getAttributeNS("ns1", "FooBar")', 'null');
 shouldBeFalse('testElement.hasAttributeNS("ns1", "FooBar")');

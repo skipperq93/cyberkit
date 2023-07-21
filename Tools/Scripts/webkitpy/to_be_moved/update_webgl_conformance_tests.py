@@ -40,7 +40,7 @@ def remove_first_line_comment(text):
 
 
 def translate_includes(text):
-    # Mapping of single filename to relative path under WebKit root.
+    # Mapping of single filename to relative path under CyberKit root.
     # Assumption: these filenames are globally unique.
     include_mapping = {
         "js-test-pre.js": "../../../resources",
@@ -60,7 +60,7 @@ def translate_includes(text):
 
 def translate_khronos_test(text):
     """
-    This method translates the contents of a Khronos test to a WebKit test.
+    This method translates the contents of a Khronos test to a CyberKit test.
     """
 
     translateFuncs = [

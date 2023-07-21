@@ -38,17 +38,17 @@
         Reviewed by Cameron Zwarich.
 
         Fix <https://bugs.webkit.org/show_bug.cgi?id=26312>.
-        Bug 26312: Multiple copies of Safari opened with WebKit nightly and Safari 3.2.3
+        Bug 26312: Multiple copies of Safari opened with CyberKit nightly and Safari 3.2.3
 
         Skip the trampoline detection for versions of Safari < 4.0 as they don't play these
-        tricks, and having WebKitNightlyEnabler assume that we were in the trampoline was
+        tricks, and having CyberKitNightlyEnabler assume that we were in the trampoline was
         preventing our LaunchServices trickery from being run.  This led to fresh copies of
-        WebKit.app being launched when a URL or file was opened from an external application
+        CyberKit.app being launched when a URL or file was opened from an external application
         rather than the existing instance being reused.
 
-        * WebKitLauncher/WebKitNightlyEnabler.m:
+        * CyberKitLauncher/CyberKitNightlyEnabler.m:
         (insideSafari4OnTigerTrampoline):
-        (enableWebKitNightlyBehaviour):
+        (enableCyberKitNightlyBehaviour):
 
 2009-06-13  Sam Weinig  <sam@webkit.org>
 
@@ -127,7 +127,7 @@
 
         Reviewed by Adele Peterson.
 
-        - add a LayoutTestController method for temporarily changing the WebKit
+        - add a LayoutTestController method for temporarily changing the CyberKit
           cache model
 
         * DumpRenderTree/LayoutTestController.cpp:
@@ -186,9 +186,9 @@
         Safari 4 on Tiger plays some shenanigans during launch that can confuse the nightly launcher application
         in to running its initialization code too soon.
 
-        * WebKitLauncher/WebKitNightlyEnabler.m:
+        * CyberKitLauncher/CyberKitNightlyEnabler.m:
         (insideSafariOnTigerTrampoline): Detect these shenanigans.
-        (enableWebKitNightlyBehaviour): Delay initialization when needed.
+        (enableCyberKitNightlyBehaviour): Delay initialization when needed.
 
 2009-06-08  Brady Eidson  <beidson@apple.com>
 
@@ -307,15 +307,15 @@
 
         Reviewed by Adam Roben.
 
-        Update WinLauncher for WebKitCreateInstance.
+        Update WinLauncher for CyberKitCreateInstance.
         https://bugs.webkit.org/show_bug.cgi?id=26136
 
         * WinLauncher/WinLauncher.cpp: Revise implementation to
-          use WebKitCreateInstance (rather than CoCreateInstance).
+          use CyberKitCreateInstance (rather than CoCreateInstance).
         * WinLauncher/WinLauncher.h: Modify include path for
-          WebKit.h to match DumpRenderTree style.
+          CyberKit.h to match DumpRenderTree style.
         * WinLauncher/WinLauncher.vcproj: Remove unnecessary
-          WebKit.tlb and EmbeddedIDL flags from build.
+          CyberKit.tlb and EmbeddedIDL flags from build.
 
 2009-06-02  Tor Arne Vestbø  <tor.arne.vestbo@nokia.com>
 
@@ -376,7 +376,7 @@
 
         Reviewed by Nikolas Zimmermann.
 
-        Added new build flag --filters. More details in WebCore/ChangeLog.
+        Added new build flag --filters. More details in CyberCore/ChangeLog.
 
         * Scripts/build-webkit:
 
@@ -393,7 +393,7 @@
 
         Rubber-stamped by Dan Bernstein.
 
-        Update build-webkit to handle a new version of WebKitSystemInterface.
+        Update build-webkit to handle a new version of CyberKitSystemInterface.
 
         * Scripts/build-webkit:
 
@@ -404,7 +404,7 @@
         When building with MinGW, don't use the __declspec(dl{import,export})
         decorations and rely on the linker to use its nifty auto-import feature.
         It is extremely hard to get the decorations right with MinGW in general
-        and impossible in WebKit, where the resulting shared library is linking
+        and impossible in CyberKit, where the resulting shared library is linking
         together some static libraries.
 
         * DumpRenderTree/config.h:
@@ -413,7 +413,7 @@
 
         Reviewed by Oliver Hunt.
 
-        Land the updated version of WebKitLauncher that the nightly builds have been using.
+        Land the updated version of CyberKitLauncher that the nightly builds have been using.
 
         Changes include:
         1) Support for self-updating via Sparkle.
@@ -423,20 +423,20 @@
         5) Disables extensions that are known to cause crashes too early in the
            launch process to be detected by the extension-detection code.
 
-        * WebKitLauncher/Configurations/Base.xcconfig: Added.
-        * WebKitLauncher/Configurations/WebKitLauncher.xcconfig: Added.
-        * WebKitLauncher/Configurations/WebKitNightlyEnabler.xcconfig: Added.
-        * WebKitLauncher/Info.plist:
-        * WebKitLauncher/WebKitLauncher.xcodeproj/project.pbxproj:
-        * WebKitLauncher/WebKitNightlyEnabler.h: Added.
-        * WebKitLauncher/WebKitNightlyEnabler.m:
+        * CyberKitLauncher/Configurations/Base.xcconfig: Added.
+        * CyberKitLauncher/Configurations/CyberKitLauncher.xcconfig: Added.
+        * CyberKitLauncher/Configurations/CyberKitNightlyEnabler.xcconfig: Added.
+        * CyberKitLauncher/Info.plist:
+        * CyberKitLauncher/CyberKitLauncher.xcodeproj/project.pbxproj:
+        * CyberKitLauncher/CyberKitNightlyEnabler.h: Added.
+        * CyberKitLauncher/CyberKitNightlyEnabler.m:
         (myBundleDidLoad):
         (myApplicationWillFinishLaunching):
-        (poseAsWebKitApp):
+        (poseAsCyberKitApp):
         (webKitLauncherBundle):
-        (enableWebKitNightlyBehaviour):
-        * WebKitLauncher/WebKitNightlyEnablerSparkle.h: Added.
-        * WebKitLauncher/WebKitNightlyEnablerSparkle.m: Added.
+        (enableCyberKitNightlyBehaviour):
+        * CyberKitLauncher/CyberKitNightlyEnablerSparkle.h: Added.
+        * CyberKitLauncher/CyberKitNightlyEnablerSparkle.m: Added.
         (initializeSparkle):
         (updatePermissionPromptDescription):
         (skipSignatureVerificationInDownloadDidFinish):
@@ -444,7 +444,7 @@
         (updateAlertInitForAlertPanel):
         (-[NSAlert webKitHandleButtonPress:]):
         (setMethodImplementation):
-        * WebKitLauncher/main.m:
+        * CyberKitLauncher/main.m:
         (displayErrorAndQuit):
         (getLastVersionShown):
         (saveLastVersionShown):
@@ -786,7 +786,7 @@
 
         Fixes the following issue when run on a Subversion repository:
 
-            $ ./WebKitTools/Scripts/resolve-ChangeLogs
+            $ ./CyberKitTools/Scripts/resolve-ChangeLogs
             ERROR: --continue may only be used with a git repository
 
         * Scripts/resolve-ChangeLogs: Check for the boolean value of
@@ -813,7 +813,7 @@
         [Qt] Make sure that public APIs are properly exported on all Qt platforms
         https://bugs.webkit.org/show_bug.cgi?id=25601
 
-        * Scripts/webkitdirs.pm: Remove QT_SHARED define from Qt builds, define QT_MAKEDLL in WebCore.pro instead
+        * Scripts/webkitdirs.pm: Remove QT_SHARED define from Qt builds, define QT_MAKEDLL in CyberCore.pro instead
 
 2009-05-07  Kevin Ollivier  <kevino@theolliviers.com>
 
@@ -839,7 +839,7 @@
 
 2009-05-06  Steve Falkenburg  <sfalken@apple.com>
 
-        Explicitly set WebKitPaintNativeControls to false to allow Windows results to match Mac.
+        Explicitly set CyberKitPaintNativeControls to false to allow Windows results to match Mac.
 
         Reviewed by Adam Roben.
 
@@ -850,7 +850,7 @@
 
         Reviewed by Simon Hausmann.
 
-        Build QtWebKit as a framework on Mac
+        Build QtCyberKit as a framework on Mac
 
         This implies both debug and release build by default, unless
         one of the --debug or --release config options are passed to
@@ -1215,7 +1215,7 @@
         Installed browser location is written to a slightly different registry key in that case.
         
         * FindSafari/FindSafari.cpp:
-        (getInstalledWebKitDirectory):
+        (getInstalledCyberKitDirectory):
 
 2009-04-23  Mark Rowe  <mrowe@apple.com>
 
@@ -1277,8 +1277,8 @@
 
 2009-04-21  Steve Falkenburg  <sfalken@apple.com>
 
-        Use new WebKitCreateInstance API instead of CoCreateInstance
-        or COMPtr's createInstance to instantiate WebKit COM objects.
+        Use new CyberKitCreateInstance API instead of CoCreateInstance
+        or COMPtr's createInstance to instantiate CyberKit COM objects.
 
         Reviewed by Adam Roben.
 
@@ -1302,7 +1302,7 @@
 2009-04-20  Timothy Hatcher  <timothy@apple.com>
 
         Stop using the fullDocumentTeardownEnabled WebPreference methods.
-        Just set the WebKitEnableFullDocumentTeardownPreferenceKey default.
+        Just set the CyberKitEnableFullDocumentTeardownPreferenceKey default.
 
         Reviewed by Darin Adler.
 
@@ -1335,14 +1335,14 @@
 
 2009-04-21  Adam Roben  <aroben@apple.com>
 
-        Rename JavaScriptCore_debug.dll to JavaScriptCore.dll in the Debug
+        Rename CyberScriptCore_debug.dll to CyberScriptCore.dll in the Debug
         configuration
 
-        This matches the naming scheme for WebKit.dll, and will be necessary
-        once Safari links against JavaScriptCore.dll. This change also causes
+        This matches the naming scheme for CyberKit.dll, and will be necessary
+        once Safari links against CyberScriptCore.dll. This change also causes
         run-safari not to fail (because the launcher printed by FindSafari was
-        always looking for JavaScriptCore.dll, never
-        JavaScriptCore_debug.dll).
+        always looking for CyberScriptCore.dll, never
+        CyberScriptCore_debug.dll).
 
         Part of Bug 25305: can't run safari or drt on windows
         <https://bugs.webkit.org/show_bug.cgi?id=25305>
@@ -1350,18 +1350,18 @@
         Reviewed by Steve Falkenburg and Sam Weinig.
 
         * DumpRenderTree/win/DumpRenderTree.vcproj: Use
-        $(WebKitDLLConfigSuffix) for naming JavaScriptCore.{dll,lib}.
+        $(CyberKitDLLConfigSuffix) for naming CyberScriptCore.{dll,lib}.
 
 2009-04-21  Steve Falkenburg  <sfalken@apple.com>
 
-        Update FindSafari for JavaScriptCore DLL changes.
+        Update FindSafari for CyberScriptCore DLL changes.
         Also removed code previously needed to support running nightlies against Safari 3 on Windows.
         
         Reviewed by Mark Rowe.
 
         * FindSafari/FindSafari.cpp:
         (getStringValue):
-        (getInstalledWebKitDirectory):
+        (getInstalledCyberKitDirectory):
         (_tmain):
 
 2009-04-20  Darin Adler  <darin@apple.com>
@@ -1380,16 +1380,16 @@
 
 2009-04-20  Steve Falkenburg  <sfalken@apple.com>
 
-        Separate JavaScriptCore.dll from WebKit.dll.
+        Separate CyberScriptCore.dll from CyberKit.dll.
         Slight performance improvement or no change on benchmarks.
         
-        Allows us to break a circular dependency between CFNetwork and WebKit on Windows,
-        and simplifies standalone JavaScriptCore builds.
+        Allows us to break a circular dependency between CFNetwork and CyberKit on Windows,
+        and simplifies standalone CyberScriptCore builds.
 
         Reviewed by Oliver Hunt.
 
-        * DumpRenderTree/config.h: Specify JS, WebKit exported data as __declspec(dllimport)
-        * DumpRenderTree/win/DumpRenderTree.vcproj: Link against JavaScriptCore.dll
+        * DumpRenderTree/config.h: Specify JS, CyberKit exported data as __declspec(dllimport)
+        * DumpRenderTree/win/DumpRenderTree.vcproj: Link against CyberScriptCore.dll
 
 2009-04-20  Sam Weinig  <sam@webkit.org>
 
@@ -1421,7 +1421,7 @@
         - Reordered/sorted command-line switches in GetOptions().
         - Defined $svgSupport to true if any --svg-feature switch is
           set in order to match "Implies SVG Support" claim.
-        - Build JavaScriptGlue after JavaScriptCore again!
+        - Build JavaScriptGlue after CyberScriptCore again!
         - Fixed --[no-]geolocation for GTK+ port and sorted GTK+
           command-line switches.
         - Added "exit 0" statement at the end of the script.
@@ -1438,7 +1438,7 @@
         FEATURE_DEFINES only needs to be defined once.
 
         * Scripts/build-webkit: Realphabetized code related to enabling
-        Geolation features for WebKit.  Also set ENABLE_GEOLOCATION
+        Geolation features for CyberKit.  Also set ENABLE_GEOLOCATION
         variable for xcodebuild.
 
 2009-04-16  Darin Fisher  <darin@chromium.org>
@@ -1475,7 +1475,7 @@
 
 2009-04-16  Adam Roben  <aroben@apple.com>
 
-        Skip yet another JavaScriptCore test that sometimes fails on Windows
+        Skip yet another CyberScriptCore test that sometimes fails on Windows
 
         See Bug 25160: Various ecma/Date tests sometimes fail on Windows (but
         not Mac)
@@ -1500,7 +1500,7 @@
 
 2009-04-15  Adam Roben  <aroben@apple.com>
 
-        Skip yet another JavaScriptCore test that sometimes fails on Windows
+        Skip yet another CyberScriptCore test that sometimes fails on Windows
 
         See Bug 25160: Various ecma/Date tests sometimes fail on Windows (but
         not Mac)
@@ -1511,7 +1511,7 @@
 
 2009-04-14  Adam Roben  <aroben@apple.com>
 
-        Skip another JavaScriptCore test that sometimes fails on Windows
+        Skip another CyberScriptCore test that sometimes fails on Windows
 
         See Bug 25160: Various ecma/Date tests sometimes fail on Windows (but
         not Mac)
@@ -1577,7 +1577,7 @@
 
         Reviewed by Sam Weinig.
 
-        Disabled another JavaScriptCore test because it fails on Windows but
+        Disabled another CyberScriptCore test because it fails on Windows but
         not Mac, so it makes the bots red.
 
         * Scripts/run-javascriptcore-tests:
@@ -1586,7 +1586,7 @@
 
         Reviewed by Sam Weinig.
 
-        Disabled two JavaScriptCore tests because they fail on Window or Mac but
+        Disabled two CyberScriptCore tests because they fail on Window or Mac but
         not both, so they make the bots red.
 
         * Scripts/run-javascriptcore-tests:
@@ -1602,7 +1602,7 @@
         Reviewed by Dan Bernstein.
 
         * DumpRenderTree/win/DumpRenderTree.cpp:
-        (initialize): Added WebKit Layout Tests 2.ttf.
+        (initialize): Added CyberKit Layout Tests 2.ttf.
 
 2009-04-09  Jan Michael Alonzo  <jmalonzo@webkit.org>
 
@@ -1652,7 +1652,7 @@
 
         * Scripts/build-webkit: Added --[no-]svg-dom-objc-bindings
         command-line argument.  Set special ENABLE_SVG_DOM_OBJC_BINDINGS
-        Xcode variable required by WebCore.xcconfig.
+        Xcode variable required by CyberCore.xcconfig.
 
 2009-04-07  Adam Roben  <aroben@apple.com>
 
@@ -1715,7 +1715,7 @@
 
         Helper script for uploading layout test results for display on build.webkit.org.
 
-        * BuildSlaveSupport/test-result-archive: Copied from WebKitTools/BuildSlaveSupport/built-product-archive.
+        * BuildSlaveSupport/test-result-archive: Copied from CyberKitTools/BuildSlaveSupport/built-product-archive.
 
 2009-04-11  Brian Weinstein  <bweinstein@gmail.com>
 
@@ -1732,7 +1732,7 @@
         Rubber-stamped by Tor Arne Vestbø.
 
         Add /Programs to the productDir for GTK+, instead of adding
-        /JavaScriptCore, when running jsc.
+        /CyberScriptCore, when running jsc.
 
         * Scripts/run-sunspider:
 
@@ -1758,10 +1758,10 @@
 
 2009-04-02  Adam Roben  <aroben@apple.com>
 
-        Build fix for Windows machines that don't have WebKitTools/Scipts in
+        Build fix for Windows machines that don't have CyberKitTools/Scipts in
         their PATH
 
-        * Scripts/pdevenv: Add WebKitTools/Scripts to PATH when launching
+        * Scripts/pdevenv: Add CyberKitTools/Scripts to PATH when launching
         Visual Studio/VC++ Express.
 
 2009-04-02  Adam Roben  <aroben@apple.com>
@@ -1796,7 +1796,7 @@
         Reviewed by Darin Adler.
 
         https://bugs.webkit.org/show_bug.cgi?id=24777
-        WebKit tools are broken on Tiger
+        CyberKit tools are broken on Tiger
 
         * Scripts/webkitdirs.pm: Don't use arch command with options on Tiger.
 
@@ -2127,7 +2127,7 @@
 
         Reviewed by Mark Rowe.
 
-        Add production configuration for creating roots of WebKitTools.
+        Add production configuration for creating roots of CyberKitTools.
 
         * DumpRenderTree/DumpRenderTree.xcodeproj/project.pbxproj:
 
@@ -2135,7 +2135,7 @@
 
         Reviewed by Geoff Garen.
 
-        Make testapi run as part of the standard JavaScriptCore tests.
+        Make testapi run as part of the standard CyberScriptCore tests.
 
         We only run testapi on the mac as currently windows webkit doesn't
         place all the necessary files for testapi, and we also test the
@@ -2217,8 +2217,8 @@
 
         Fixes the following bug in resolve-ChangeLogs:
 
-            Use of uninitialized value in -e at ./WebKitTools/Scripts/resolve-ChangeLogs line 132.
-            Died at ./WebKitTools/Scripts/resolve-ChangeLogs line 164.
+            Use of uninitialized value in -e at ./CyberKitTools/Scripts/resolve-ChangeLogs line 132.
+            Died at ./CyberKitTools/Scripts/resolve-ChangeLogs line 164.
 
         * Scripts/resolve-ChangeLogs:
         (findUnmergedChangeLogs): Check the result of findChangeLog() to
@@ -2438,7 +2438,7 @@
         Reviewed by Mark Rowe.
 
         Implement setJavaScriptProfilingEnabled by enabling the Developer
-        Extras and the JavaScript profiling on the WebKitWebInspector. After
+        Extras and the JavaScript profiling on the CyberKitWebInspector. After
         this change we pass the three enabled tests in fast/profiler.
 
         * DumpRenderTree/gtk/DumpRenderTree.cpp:
@@ -2466,7 +2466,7 @@
 
         Reviewed by George Staikos.
 
-        When building QtWebKit in release mode make sure that QT_SHARED is defined
+        When building QtCyberKit in release mode make sure that QT_SHARED is defined
         otherwise none of the public API will be exported.  This leads to missing
         symbols and link errors if hidden-visibility is used.
 
@@ -2474,18 +2474,18 @@
 
 2009-03-06  Adam Roben  <aroben@apple.com>
 
-        Change the isCygwin check in update-webkit to isAppleWinWebKit
+        Change the isCygwin check in update-webkit to isAppleWinCyberKit
 
         This matches a similar check in build-webkit, and is more correct.
 
         Reviewed by Alexey Proskuryakov.
 
         * Scripts/update-webkit: Only call update-webkit-auxiliary-libs if
-        isAppleWinWebKit is true.
+        isAppleWinCyberKit is true.
 
 2009-03-06  Adam Roben  <aroben@apple.com>
 
-        Make update-webkit-support-libs fail if WebKitSupportLibrary.zip is
+        Make update-webkit-support-libs fail if CyberKitSupportLibrary.zip is
         present but out of date
 
         Reviewed by Alexey Proskuryakov.
@@ -2577,7 +2577,7 @@
         Bug 24282: AX Palindrome error when asking for a specific index of the AXChildren array
 
         Change getChildAtIndex() to get a range of children instead of all the children.
-        This exercises code in WebCore that returns elements when asked for from a range.
+        This exercises code in CyberCore that returns elements when asked for from a range.
 
         * DumpRenderTree/AccessibilityUIElement.h:
         * DumpRenderTree/mac/AccessibilityUIElementMac.mm:
@@ -2606,7 +2606,7 @@
         [Gtk] get the HTTP layout tests going
         https://bugs.webkit.org/show_bug.cgi?id=24259
 
-         Implement dumping of WebKitWebBackForwardList and its history
+         Implement dumping of CyberKitWebBackForwardList and its history
          items.
 
         * DumpRenderTree/gtk/DumpRenderTree.cpp:
@@ -2634,7 +2634,7 @@
 
         Reviewed by Holger Freyther.
 
-        Adds a WebKitMakeArguments environment variable to enable passing
+        Adds a CyberKitMakeArguments environment variable to enable passing
         of arguments such as '-j2' to make for the autotools build.
 
         * Scripts/webkitdirs.pm:
@@ -2704,8 +2704,8 @@
         Qt port or roughly 5% at this point.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::open):
 
 2009-02-25  Simon Fraser  <simon.fraser@apple.com>
 
@@ -2741,8 +2741,8 @@
         tests passing as well as 23 currently skipped tests now passing.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::dumpBackForwardList):
-        (WebCore::DumpRenderTree::dump):
+        (CyberCore::DumpRenderTree::dumpBackForwardList):
+        (CyberCore::DumpRenderTree::dump):
         * DumpRenderTree/qt/DumpRenderTree.h:
         * DumpRenderTree/qt/DumpRenderTree.pro:
         * DumpRenderTree/qt/jsobjects.cpp:
@@ -2804,7 +2804,7 @@
         Reviewed by Alexey Proskuryakov.
 
         https://bugs.webkit.org/show_bug.cgi?id=22624
-        [SOUP][GTK] Need API to get SoupSession from WebKit.
+        [SOUP][GTK] Need API to get SoupSession from CyberKit.
 
         Add soup flags now that dependency is explicit.
 
@@ -2841,7 +2841,7 @@
 
         Reviewed by Adam Roben
 
-        Actually use the installation prefix defined in WebKitInstallationPrefix,
+        Actually use the installation prefix defined in CyberKitInstallationPrefix,
         in autotools builds.
 
         * Scripts/webkitdirs.pm:
@@ -3021,7 +3021,7 @@
 
         Rubber-stamped by Adam Roben.
 
-        $ find WebKitTools -name \*.m -o -name \*.mm -exec perl -e 'undef $/; $s = <>; while ($s =~ m/[\n\r][-+].*;[\s\r\n]+\{/g) { print "$ARGV: $&\n"; }' {} \;
+        $ find CyberKitTools -name \*.m -o -name \*.mm -exec perl -e 'undef $/; $s = <>; while ($s =~ m/[\n\r][-+].*;[\s\r\n]+\{/g) { print "$ARGV: $&\n"; }' {} \;
 
         * DumpRenderTree/mac/FrameLoadDelegate.mm:
         (-[FrameLoadDelegate webView:didFailLoadWithError:forFrame:]):
@@ -3263,7 +3263,7 @@
         - update copyright
 
         * DumpRenderTree/TestNetscapePlugIn.subproj/Info.plist:
-        * WebKitLauncher/Info.plist:
+        * CyberKitLauncher/Info.plist:
 
 2009-01-13  Anders Carlsson  <andersca@apple.com>
 
@@ -3280,7 +3280,7 @@
 
 2009-01-12  Mark Rowe  <mrowe@apple.com>
 
-        Use the modern spelling of WebKit.
+        Use the modern spelling of CyberKit.
 
         * Scripts/find-extra-includes:
         * Scripts/report-include-statistics:
@@ -3309,7 +3309,7 @@
         Explicitly set these so that the layout tests do not break.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::WebPage):
+        (CyberCore::WebPage::WebPage):
 
 2009-01-07  Glenn Wilson  <gwilson@chromium.org>
 
@@ -3338,9 +3338,9 @@
         Fix unused variable warnings
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::javaScriptAlert):
-        (WebCore::WebPage::javaScriptConfirm):
-        (WebCore::WebPage::javaScriptPrompt):
+        (CyberCore::WebPage::javaScriptAlert):
+        (CyberCore::WebPage::javaScriptConfirm):
+        (CyberCore::WebPage::javaScriptPrompt):
         * DumpRenderTree/qt/jsobjects.cpp:
         (LayoutTestController::maybeDump):
         * DumpRenderTree/qt/main.cpp:
@@ -3353,7 +3353,7 @@
         Reviewed by Darin Adler.
 
         Added new JS API numberOfActiveAnimations() that returns the number of active CSS transitions & animations.
-        This effectively exposes the new AnimationController::numberOfActiveAnimations() API from WebCore.
+        This effectively exposes the new AnimationController::numberOfActiveAnimations() API from CyberCore.
 
         https://bugs.webkit.org/show_bug.cgi?id=23126
 
@@ -3368,21 +3368,21 @@
 
 2009-01-04  David Kilzer  <ddkilzer@apple.com>
 
-        Don't install internal headers in WebKit framework
+        Don't install internal headers in CyberKit framework
 
         Reviewed by Darin Adler.
 
         Since WebHTMLRepresentationInternal.h and WebTypesInternal.h are
-        no longer installed in WebKit.framework/PrivateHeaders, use the
-        special relationship of DumpRenderTree within the WebKit source
+        no longer installed in CyberKit.framework/PrivateHeaders, use the
+        special relationship of DumpRenderTree within the CyberKit source
         tree to include the internal headers through relative paths.
         Created the concept of mac/InternalHeaders to hide the ugly
         paths.
 
         * DumpRenderTree/mac/Configurations/Base.xcconfig: Added
         mac/InternalHeaders to HEADER_SEARCH_PATHS.
-        * DumpRenderTree/mac/InternalHeaders/WebKit/WebHTMLRepresentationInternal.h: Added.
-        * DumpRenderTree/mac/InternalHeaders/WebKit/WebTypesInternal.h: Added.
+        * DumpRenderTree/mac/InternalHeaders/CyberKit/WebHTMLRepresentationInternal.h: Added.
+        * DumpRenderTree/mac/InternalHeaders/CyberKit/WebTypesInternal.h: Added.
 
 2009-01-02  Adam Treat  <treat@kde.org>
 
@@ -3423,7 +3423,7 @@
 
         https://bugs.webkit.org/show_bug.cgi?id=22842
 
-        Move WebKitWebView's size allocation into a proper place.
+        Move CyberKitWebView's size allocation into a proper place.
 
         * DumpRenderTree/gtk/DumpRenderTree.cpp:
         (dump):
@@ -3534,10 +3534,10 @@
 
         Reviewed by Simon Hausmann.
 
-        Update the WebKit.qrc and add a script to automatically generate the file.
+        Update the CyberKit.qrc and add a script to automatically generate the file.
 
         With the way rcc and qmake work this can not be done at build time
-        as the WebKit.qrc must sit inside the directory that contains the files
+        as the CyberKit.qrc must sit inside the directory that contains the files
         and at build time we may not change the content of the source directory.
 
         * Scripts/generate-qt-inspector-resource: Added.
@@ -3683,7 +3683,7 @@
 
         * DrawTest/DrawTest.xcodeproj/project.pbxproj: Sorted.
         * DumpRenderTree/DumpRenderTree.xcodeproj/project.pbxproj: Sorted.
-        * WebKitLauncher/WebKitLauncher.xcodeproj/project.pbxproj: Sorted.
+        * CyberKitLauncher/CyberKitLauncher.xcodeproj/project.pbxproj: Sorted.
 
 2008-12-08  David Kilzer  <ddkilzer@apple.com>
 
@@ -3802,7 +3802,7 @@
         Reviewed by Sam Weinig.
 
         * WinLauncher/WinLauncher.cpp:
-        (_tWinMain): Call shutDownWebKit before exiting.
+        (_tWinMain): Call shutDownCyberKit before exiting.
 
 2008-12-03  Adam Roben  <aroben@apple.com>
 
@@ -3876,7 +3876,7 @@
 
         Add support for build-webkit --chromium
         https://bugs.webkit.org/show_bug.cgi?id=22515
-        More cleanups changing isCygwin calls to isAppleWinWebKit and deploying isAppleWebKit where necessary.
+        More cleanups changing isCygwin calls to isAppleWinCyberKit and deploying isAppleCyberKit where necessary.
 
         * Scripts/build-dumprendertree:
         * Scripts/build-jsc:
@@ -3902,7 +3902,7 @@
 
         More pre-work for adding a build-webkit --chromium which works on Mac and Windows
         https://bugs.webkit.org/show_bug.cgi?id=22515
-        Change a few calls to isCygwin to isAppleWinWebKit and a few calls to isAppleMacWebKit to isDarwin
+        Change a few calls to isCygwin to isAppleWinCyberKit and a few calls to isAppleMacCyberKit to isDarwin
         in preparation for having a chromium cygwin and chromium mac build
 
         * Scripts/build-webkit:
@@ -3914,7 +3914,7 @@
 
         Pre-work for getting build-webkit --chromium to work
         https://bugs.webkit.org/show_bug.cgi?id=22515
-        Rename isOSX to isAppleMacWebKit to match what the code does, and add isChromium()
+        Rename isOSX to isAppleMacCyberKit to match what the code does, and add isChromium()
 
         * Scripts/build-dumprendertree:
         * Scripts/build-jsc:
@@ -4016,9 +4016,9 @@
         * DumpRenderTree/TestNetscapePlugIn.subproj/TestObject.cpp:
         * DumpRenderTree/gtk/DumpRenderTree.cpp:
         (setDefaultsToConsistentStateValuesForTesting):
-        * DumpRenderTree/gtk/TestNetscapePlugin/ForwardingHeaders/WebKit/npapi.h: Added.
-        * DumpRenderTree/gtk/TestNetscapePlugin/ForwardingHeaders/WebKit/npfunctions.h: Added.
-        * DumpRenderTree/gtk/TestNetscapePlugin/ForwardingHeaders/WebKit/npruntime.h: Added.
+        * DumpRenderTree/gtk/TestNetscapePlugin/ForwardingHeaders/CyberKit/npapi.h: Added.
+        * DumpRenderTree/gtk/TestNetscapePlugin/ForwardingHeaders/CyberKit/npfunctions.h: Added.
+        * DumpRenderTree/gtk/TestNetscapePlugin/ForwardingHeaders/CyberKit/npruntime.h: Added.
         * GNUmakefile.am:
 
 2008-11-24  Holger Hans Peter Freyther  <zecke@selfish.org>
@@ -4221,7 +4221,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=22209
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::dump):
+        (CyberCore::DumpRenderTree::dump):
         Send empty pixel test data 'block', which is now
         expected by run-layout-tests.
 
@@ -4348,7 +4348,7 @@
 
         Requested by Mark Rowe.
 
-        * Scripts/check-for-global-initializers: s/Web Kit/WebKit/.
+        * Scripts/check-for-global-initializers: s/Web Kit/CyberKit/.
 
 2008-10-31  David Kilzer  <ddkilzer@apple.com>
 
@@ -4518,7 +4518,7 @@
         (BitmapContext::cgContext):
         (BitmapContext::BitmapContext):
         * DumpRenderTree/mac/DumpRenderTree.mm:
-        (shouldIgnoreWebCoreNodeLeaks):
+        (shouldIgnoreCyberCoreNodeLeaks):
         (setDefaultsToConsistentValuesForTesting):
         (crashHandler):
         (initializeGlobalsFromCommandLineOptions):
@@ -4540,7 +4540,7 @@
 
 2008-10-27  Kevin Ollivier  <kevino@theolliviers.com>
 
-        wx build fix on Linux/GTK. Enable support for #include <JavaScriptCore/XYZ.h> style includes.
+        wx build fix on Linux/GTK. Enable support for #include <CyberScriptCore/XYZ.h> style includes.
 
         * wx/build-wxwebkit:
 
@@ -5149,7 +5149,7 @@
         Reviewed by Dan Bernstein.
 
         Clear the main frame's name between tests to get more consistent test results
-        when running the WebKit tests with --nthly.
+        when running the CyberKit tests with --nthly.
 
         * DumpRenderTree/mac/DumpRenderTree.mm:
         (resetWebViewToConsistentStateBeforeTesting):
@@ -5376,7 +5376,7 @@
         Reviewed by Sam Weinig.
 
         * FindSafari/FindSafari.cpp:
-        (_tmain): Delete existing WebKitNightly directory in temp.
+        (_tmain): Delete existing CyberKitNightly directory in temp.
         * FindSafari/Safari.exe.manifest: Add PROGIDs for each COM class. Remove non-production classes.
 
 2008-09-07  Stephanie Lewis  <slewis@apple.com>
@@ -5392,7 +5392,7 @@
 
         Fix Windows nightlies.
 
-        Copy WebKit.dll alongside application so registry-free COM can find it.
+        Copy CyberKit.dll alongside application so registry-free COM can find it.
         Update embedded manifest to force use registry-free COM.
 
         Reviewed by Dave Hyatt.
@@ -5416,7 +5416,7 @@
 
         * Scripts/webkitdirs.pm: Detect --profile or --profiling passed as a command-line argument
         to build scripts as indicating that we should use the "Profiling" configuration.  At present
-        this is only supported by JavaScriptCore, so using this argument to build any other project
+        this is only supported by CyberScriptCore, so using this argument to build any other project
         will likely result in unexpected behaviour.
 
 2008-08-27  Mark Rowe  <mrowe@apple.com>
@@ -5670,13 +5670,13 @@
         Updated project files to XCode 3.1.
 
         * DrawTest/DrawTest.xcodeproj/project.pbxproj:
-        * WebKitLauncher/WebKitLauncher.xcodeproj/project.pbxproj:
+        * CyberKitLauncher/CyberKitLauncher.xcodeproj/project.pbxproj:
 
 2008-08-15  Mark Rowe  <mrowe@apple.com>
 
         Rubber-stamped by Geoff Garen.
 
-        <rdar://problem/6139914> Please include a _debug version of JavaScriptCore framework
+        <rdar://problem/6139914> Please include a _debug version of CyberScriptCore framework
 
         * Scripts/check-for-global-initializers: Ignore initializers when building the debug variant.
 
@@ -5783,20 +5783,20 @@
 
         Forgot to commit licensing correction in last commit.
 
-        * wx/packaging/wxWebKitInstaller.iss.in:
+        * wx/packaging/wxCyberKitInstaller.iss.in:
 
 2008-08-02  Kevin Ollivier  <kevino@theolliviers.com>
 
         Reviewed by Eric Seidel.
 
-        Scripts for building a wxWebKit installer for wxPython on Win, eventually will
+        Scripts for building a wxCyberKit installer for wxPython on Win, eventually will
         be used for nightlies.
 
         https://bugs.webkit.org/show_bug.cgi?id=20036
 
         * wx/packaging: Added.
         * wx/packaging/build-win-installer.py: Added.
-        * wx/packaging/wxWebKitInstaller.iss.in: Added.
+        * wx/packaging/wxCyberKitInstaller.iss.in: Added.
 
 2008-07-31  Adam Roben  <aroben@apple.com>
 
@@ -5807,7 +5807,7 @@
 
 2008-07-31  Stefan Landvogt <stefan.landvogt@gmail.com>
 
-        Fix Bug 20245: WinLauncher does not start in WebKit-debug right out of
+        Fix Bug 20245: WinLauncher does not start in CyberKit-debug right out of
         the box
 
         <https://bugs.webkit.org/show_bug.cgi?id=20245>
@@ -5816,8 +5816,8 @@
 
         * WinLauncher/WinLauncher.vcproj: adding the following properties to
         WinLauncher > Properties > Manifest Tool > Isolated COM
-        Type Library File: $(WebKitOutputDir)\lib\WebKit.tlb
-        Component File Name: WebKit$(WebKitDLLConfigSuffix)
+        Type Library File: $(CyberKitOutputDir)\lib\CyberKit.tlb
+        Component File Name: CyberKit$(CyberKitDLLConfigSuffix)
         Doing the change on "All Configurations"
 
 2008-07-31  Adam Roben  <aroben@apple.com>
@@ -5907,7 +5907,7 @@
         Reviewed by Sam
 
         Add the ability to dump whether-or-not an element should have autocomplete enabled,
-        from the perspective of the WebKit API
+        from the perspective of the CyberKit API
 
         * DumpRenderTree/LayoutTestController.cpp:
         (elementDoesAutoCompleteForElementWithIdCallback):
@@ -5944,7 +5944,7 @@
 
 2008-07-18  Landry Breuil  <landry@openbsd.org>
 
-        Bug 19975: [OpenBSD] Patches to enable build of WebKit
+        Bug 19975: [OpenBSD] Patches to enable build of CyberKit
 
         <https://bugs.webkit.org/show_bug.cgi?id=19975>
 
@@ -6077,7 +6077,7 @@
 
         Reviewed by Darin Adler.
 
-        Make sure we read WebCore Leak messages.  Force full document teardown for DumpRenderTree.
+        Make sure we read CyberCore Leak messages.  Force full document teardown for DumpRenderTree.
 
         Up timeout limit, some slower machines were timing out before crashtracer finished writing out to disk and quitting DRT.
 
@@ -6192,7 +6192,7 @@
         * DumpRenderTree/TestNetscapePlugIn.subproj/PluginObject.cpp: Add a new
         property, "returnErrorFromNewStream." This is to support the test for
         <rdar://5983747> Safari crashes trying to load the SilverLight plugin,
-        caused by WebKit calling NPP_DestroyStream after a plug-in returns an
+        caused by CyberKit calling NPP_DestroyStream after a plug-in returns an
         error from NPP_NewStream.
         (pluginGetProperty):
         (pluginSetProperty):
@@ -6428,15 +6428,15 @@
         * DumpRenderTree/DumpRenderTree.xcodeproj/project.pbxproj: Added linker
         flags to create data sections for the WeightWatcher fonts.
         * DumpRenderTree/fonts: Added.
-        * DumpRenderTree/fonts/WebKitWeightWatcher100.ttf: Added.
-        * DumpRenderTree/fonts/WebKitWeightWatcher200.ttf: Added.
-        * DumpRenderTree/fonts/WebKitWeightWatcher300.ttf: Added.
-        * DumpRenderTree/fonts/WebKitWeightWatcher400.ttf: Added.
-        * DumpRenderTree/fonts/WebKitWeightWatcher500.ttf: Added.
-        * DumpRenderTree/fonts/WebKitWeightWatcher600.ttf: Added.
-        * DumpRenderTree/fonts/WebKitWeightWatcher700.ttf: Added.
-        * DumpRenderTree/fonts/WebKitWeightWatcher800.ttf: Added.
-        * DumpRenderTree/fonts/WebKitWeightWatcher900.ttf: Added.
+        * DumpRenderTree/fonts/CyberKitWeightWatcher100.ttf: Added.
+        * DumpRenderTree/fonts/CyberKitWeightWatcher200.ttf: Added.
+        * DumpRenderTree/fonts/CyberKitWeightWatcher300.ttf: Added.
+        * DumpRenderTree/fonts/CyberKitWeightWatcher400.ttf: Added.
+        * DumpRenderTree/fonts/CyberKitWeightWatcher500.ttf: Added.
+        * DumpRenderTree/fonts/CyberKitWeightWatcher600.ttf: Added.
+        * DumpRenderTree/fonts/CyberKitWeightWatcher700.ttf: Added.
+        * DumpRenderTree/fonts/CyberKitWeightWatcher800.ttf: Added.
+        * DumpRenderTree/fonts/CyberKitWeightWatcher900.ttf: Added.
         * DumpRenderTree/mac/DumpRenderTree.mm:
         (activateFonts): Renamed activateAhemFont to this and made it activate
         the WeightWatcher fonts in addition to Ahem.
@@ -6587,7 +6587,7 @@
         Reviewed by David Hyatt and Mitz.
 
         <rdar://problem/5704119>
-        repro crash in WebCore::RenderPart::setWidget (plugin-related?)
+        repro crash in CyberCore::RenderPart::setWidget (plugin-related?)
 
         Call -[WebView display] in the "plug-in" failed delegate method, simulating
         the sheet that Safari puts up.
@@ -6666,7 +6666,7 @@
         Remove useQmake usage. QMake build doesn't support Gtk port
         anymore.
 
-        Also fix 2 occurences of "Web Kit". Should be WebKit.
+        Also fix 2 occurences of "Web Kit". Should be CyberKit.
 
         * Scripts/build-webkit:
         * Scripts/run-javascriptcore-tests:
@@ -6719,10 +6719,10 @@
 
         Reviewed by Stephanie Lewis.
 
-        Improve the behavior of run-webkit-tests with 64-bit WebKit by automatically inferring whether to run 64-bit.
+        Improve the behavior of run-webkit-tests with 64-bit CyberKit by automatically inferring whether to run 64-bit.
 
         If --64-bit is not passed to run-webkit-tests, attempt to guess whether we should run 64-bit.
-        This decision is made based on the 64-bitness of the built WebKit framework if it exists, and
+        This decision is made based on the 64-bitness of the built CyberKit framework if it exists, and
         can be manually overridden by passing --64-bit or --no-64-bit.  This removes the need to always
         pass an argument to run-webkit-tests after having built with "make x86_64".
 
@@ -6735,7 +6735,7 @@
 
 2008-05-20  Mark Rowe  <mrowe@apple.com>
 
-        Fix "make x86_64" by adding x86_64 target to WebKitTools Makefile.
+        Fix "make x86_64" by adding x86_64 target to CyberKitTools Makefile.
 
         * Makefile:
 
@@ -6998,7 +6998,7 @@
 
         Reviewed by Adam Roben
 
-        Explicitly call shutDownWebKit() before quitting.
+        Explicitly call shutDownCyberKit() before quitting.
 
         * Drosera/win/Drosera.cpp:
         (_tWinMain):
@@ -7110,7 +7110,7 @@
 
 2008-05-05  Darin Adler  <darin@apple.com>
 
-        * Scripts/run-webkit-tests: Ignore a Java leak showing up in the WebKit
+        * Scripts/run-webkit-tests: Ignore a Java leak showing up in the CyberKit
         leak tests.
 
 2008-05-05  Ariya Hidayat  <ariya.hidayat@trolltech.com>
@@ -7121,7 +7121,7 @@
         tests expect to be 480x360)
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::open):
 
 2008-05-02  Dan Bernstein  <mitz@apple.com>
 
@@ -7183,10 +7183,10 @@
 
         Reviewed by Simon.
 
-        Adapt to the latest API changes in WebKit/qt/Api.
+        Adapt to the latest API changes in CyberKit/qt/Api.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
         * DumpRenderTree/qt/jsobjects.cpp:
 
 2008-04-26  Robin Dunn  <robin@alldunn.com>
@@ -7242,7 +7242,7 @@
 
         Implement dumping of resource load callbacks to pass http/tests/xmlhttprequest/abort-should-cancel-load.html
 
-        Similar to Editing and Frameloading we do the dumping within WebCore
+        Similar to Editing and Frameloading we do the dumping within CyberCore
 
 
         * DumpRenderTree/qt/jsobjects.cpp:
@@ -7319,7 +7319,7 @@
 
         Build fix for Qt 4.3
 
-        * When building WebCore/internal make sure the QT_[BEGIN,END]_NAMESPACE is
+        * When building CyberCore/internal make sure the QT_[BEGIN,END]_NAMESPACE is
         always defined. Do this by adding defines to the compiler line
 
         * DumpRenderTree/qt/DumpRenderTree.pro:
@@ -7379,14 +7379,14 @@
 
         Reviewed by Holger.
 
-        Adapt to the API changes in WebKit/qt
+        Adapt to the API changes in CyberKit/qt
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::WebPage):
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::initJSObjects):
-        (WebCore::DumpRenderTree::dumpFramesAsText):
-        (WebCore::DumpRenderTree::dump):
+        (CyberCore::WebPage::WebPage):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::initJSObjects):
+        (CyberCore::DumpRenderTree::dumpFramesAsText):
+        (CyberCore::DumpRenderTree::dump):
 
 2008-04-17  Adam Roben  <aroben@apple.com>
 
@@ -7624,7 +7624,7 @@
 
         Reviewed by Simon.
 
-        * For the http tests we need the output of the FrameLoaderClient. The QtWebKit API
+        * For the http tests we need the output of the FrameLoaderClient. The QtCyberKit API
         is not exporting enough to create the output in DRT itself. Settle with the approach
         Lars has taken for the Editing support and add branches to our FrameLoaderClient code.
         * run-webkit-tests http/tests(/loading) can now be executed.
@@ -7644,7 +7644,7 @@
 
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::readStdin):
+        (CyberCore::DumpRenderTree::readStdin):
         * DumpRenderTree/qt/main.cpp:
         (main):
 
@@ -7676,7 +7676,7 @@
         run-webkit-tests.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::dump):
+        (CyberCore::DumpRenderTree::dump):
 
 2008-03-31  Julien Chaffraix  <julien.chaffraix@gmail.com>
 
@@ -7712,7 +7712,7 @@
         Windows build fix
 
         * DumpRenderTree/win/TestNetscapePlugin/TestNetscapePlugin.vcproj:
-        Add $(WebKitLibrariesDir)\include to the include path so we can find
+        Add $(CyberKitLibrariesDir)\include to the include path so we can find
         stdint.h there.
 
 2008-03-24  Eric Seidel  <eric@webkit.org>
@@ -7886,7 +7886,7 @@
         Reviewed and landed by Darin Adler.
 
         http://bugs.webkit.org/show_bug.cgi?id=17581
-        Bug 17581: Use of uninitialized value in string ne at WebKitTools/Scripts/run-webkit-tests line 1576.
+        Bug 17581: Use of uninitialized value in string ne at CyberKitTools/Scripts/run-webkit-tests line 1576.
 
         Remove the previous warning which occurs when the --random option is used.
 
@@ -7902,7 +7902,7 @@
         Ported the netscape test plugin to QWebPluginFactory.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::WebPage):
+        (CyberCore::WebPage::WebPage):
         * DumpRenderTree/qt/main.cpp:
         * DumpRenderTree/qt/testplugin.cpp:
         (TestPlugin::plugins):
@@ -7932,7 +7932,7 @@
 
         Reviewed by Oliver Hunt.
 
-        Fix WebKit build with GCC 4.2.
+        Fix CyberKit build with GCC 4.2.
 
         * DumpRenderTree/mac/ResourceLoadDelegate.mm: Use correct argument type in method signature.
 
@@ -7957,7 +7957,7 @@
 
         Reviewed by Geoff.
 
-        <rdar://problem/5693690> run-webkit-tests swallows STDERR output, including WebCore LEAK messages
+        <rdar://problem/5693690> run-webkit-tests swallows STDERR output, including CyberCore LEAK messages
 
         * DumpRenderTree/mac/DumpRenderTree.mm:
         (dump): push EOF to stderr after every test
@@ -8110,7 +8110,7 @@
 
         Reviewed by Mark Rowe.
 
-        Split the WebKit GTK+ build out of the WebCore build and change the
+        Split the CyberKit GTK+ build out of the CyberCore build and change the
         shared object name to match the package name.
 
         * GNUmakefile.am:
@@ -8136,7 +8136,7 @@
 
 2008-02-29  David Kilzer  <ddkilzer@apple.com>
 
-        Bug 15754: webarchive layout tests fail when WebKit directory path contains symlinks
+        Bug 15754: webarchive layout tests fail when CyberKit directory path contains symlinks
 
         <http://bugs.webkit.org/show_bug.cgi?id=15754>
 
@@ -8149,7 +8149,7 @@
         The problem was that -[NSFileManager currentDirectoryPath] resolves symlinks in the
         current working directory, but the WebArchive does not.  This left the current working
         directory in all file:/// URLs in the test output, and thus all tests failed, for any
-        developer that used symlinks to get to their WebKit source directory.
+        developer that used symlinks to get to their CyberKit source directory.
 
         The fix is to look backwards for "/LayoutTests/" in the URL we're passed, and simply
         remove the current working directory path (no matter what it is) after "file://" but
@@ -8172,7 +8172,7 @@
         http://bugs.webkit.org/show_bug.cgi?id=17492
 
         * wx/build-wxwebkit:
-        - Update the Windows dll copying logic to copy dlls inside WebKitLibraries/win
+        - Update the Windows dll copying logic to copy dlls inside CyberKitLibraries/win
         - Allow the build script to properly find wxPython includes under different setups
         - Make sure WX_PREFIX is set to WXWIN (wxWindows dir environment var.) if not defined
 
@@ -8190,9 +8190,9 @@
         Reviewed by Darin Adler.
 
         * Scripts/gdb-safari: Set WEBKIT_UNSET_DYLD_FRAMEWORK_PATH in gdb's environment,
-        so that Safari inherits it when launched. Preexisting code in WebKit checks this
+        so that Safari inherits it when launched. Preexisting code in CyberKit checks this
         environment variable, and if set, unsets DYLD_FRAMEWORK_PATH, so that applications
-        launched by Safari continue to use the standard system WebKit.
+        launched by Safari continue to use the standard system CyberKit.
 
 2008-02-25  Adam Roben  <aroben@apple.com>
 
@@ -8214,7 +8214,7 @@
 
         Rubber stamped by Darin Adler.
 
-        Add separator '\' after libJavaScriptCore_la_LIBADD and cleanup
+        Add separator '\' after libCyberScriptCore_la_LIBADD and cleanup
         whitespaces introduced in the previous commit.
 
         * GNUmakefile.am:
@@ -8269,7 +8269,7 @@
         Reviewed by Alp Toker.
 
         http://bugs.webkit.org/show_bug.cgi?id=17445
-        [GTK] WebKit doesn't compile with LDFLAGS="-Wl,--as-needed"
+        [GTK] CyberKit doesn't compile with LDFLAGS="-Wl,--as-needed"
 
         GTK+/autotools build system improvements
 
@@ -8472,7 +8472,7 @@
 
         Changes to support merged MIDL output.
 
-        All COM interfaces are now generated to WebKit.h.
+        All COM interfaces are now generated to CyberKit.h.
 
         Reviewed by Sam, Ada.
 
@@ -8739,7 +8739,7 @@
 
         Reviewed by Tim Hatcher.
 
-        <rdar://problem/5600926> WebCore on Tiger must link to its own copy of SQLite 3.4 or newer (so HTML database behavior will be correct).
+        <rdar://problem/5600926> CyberCore on Tiger must link to its own copy of SQLite 3.4 or newer (so HTML database behavior will be correct).
 
         * Scripts/build-webkit: Copy SQLite static library and headers into the build directory.
 
@@ -8786,7 +8786,7 @@
 
         - add support for directory prologues and epilogues to run-webkit-tests
         - allow setting a persistent user style sheet in DumpRenderTree
-        - activate the WebKit Layout Tests font in Windows DumpRenderTree
+        - activate the CyberKit Layout Tests font in Windows DumpRenderTree
 
         * DumpRenderTree/LayoutTestController.cpp:
         (clearPersistentUserStyleSheetCallback): Added.
@@ -8806,7 +8806,7 @@
         (LayoutTestController::clearPersistentUserStyleSheet): Added.
         * DumpRenderTree/win/DumpRenderTree.cpp:
         (setPersistentUserStyleSheetLocation): Added.
-        (initialize): Added the WebKit Layout Tests font to the set of fonts to
+        (initialize): Added the CyberKit Layout Tests font to the set of fonts to
         install.
         (resetWebViewToConsistentStateBeforeTesting): See DumpRenderTree.mm.
         * DumpRenderTree/win/DumpRenderTreeWin.h:
@@ -8839,9 +8839,9 @@
         Fix for <rdar://5131975> DumpRenderTree doesn't support undo/redo
 
         - Adds simplified UndoManager to windows DRT to allow testing the
-          undo/redo code paths in WebCore and WebKit.  This is a temporary
+          undo/redo code paths in CyberCore and CyberKit.  This is a temporary
           solution to an issue that should eventually be solved by having a
-          shared UndoManager in WebKit.
+          shared UndoManager in CyberKit.
 
         * DumpRenderTree/win/DumpRenderTree.cpp:
         (runTest):
@@ -8903,7 +8903,7 @@
 
         Reviewed by Lars Knoll <lars@trolltech.com>.
 
-        Reworked the JavaScriptCore Qt bindings:
+        Reworked the CyberScriptCore Qt bindings:
 
         * Update JS DRT controller for Qt JS binding changes.
         There were two functions that needed some changes
@@ -8979,7 +8979,7 @@
 
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::WebPage):
+        (CyberCore::WebPage::WebPage):
 
 2008-01-19  Mark Rowe  <mrowe@apple.com>
 
@@ -9003,12 +9003,12 @@
         file doesn't exist, all object files will be checked.
 
         Previously the modification time of the "executable" (the
-        framework binary, e.g., WebKit.framework/WebKit) was used, but
+        framework binary, e.g., CyberKit.framework/CyberKit) was used, but
         since this was the last file modified at the end of the compile
         phase, no object files would ever get checked!
 
         Also added JSCustomSQLTransactionCallback.o to the list of files
-        since it has static initializers in Debug builds of WebCore.
+        since it has static initializers in Debug builds of CyberCore.
 
         * Scripts/check-for-global-initializers:
 
@@ -9064,8 +9064,8 @@
 
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::setViewGeometry):
-        (WebCore::WebPage::WebPage):
+        (CyberCore::WebPage::setViewGeometry):
+        (CyberCore::WebPage::WebPage):
 
 2008-01-17  Steve Falkenburg  <sfalken@apple.com>
 
@@ -9113,7 +9113,7 @@
         Windows build fix after r29488
 
         * DumpRenderTree/win/TestNetscapePlugin/TestNetscapePlugin.vcproj:
-        Build into a subdirectory of $WebKitOutputDir\bin to match where DRT
+        Build into a subdirectory of $CyberKitOutputDir\bin to match where DRT
         expects to find the plugin.
 
 2008-01-11  Geoffrey Garen  <ggaren@apple.com>
@@ -9287,7 +9287,7 @@
 
         Reviewed by Ap.
 
-        * Make launching of the WebKit httpd work on GNU/Debian/Linux
+        * Make launching of the CyberKit httpd work on GNU/Debian/Linux
 
         The configuration of Apache2 and installation does not depend on
         the kernel but on the distribution policy. Make launching of httpd
@@ -9489,7 +9489,7 @@
 
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
 
 2008-01-04  Lars Knoll  <lars@trolltech.com>
 
@@ -9501,7 +9501,7 @@
 
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
 
 2008-01-04  Lars Knoll  <lars@trolltech.com>
 
@@ -9510,7 +9510,7 @@
         take a QString as identifier in QWebFrame::addToJSWindowObject.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::initJSObjects):
+        (CyberCore::DumpRenderTree::initJSObjects):
 
 2008-01-04  Alp Toker  <alp@atoker.com>
 
@@ -9570,17 +9570,17 @@
 
 2008-01-03  Adam Roben  <aroben@apple.com>
 
-        Fix Bug 15663: update-webkit re-downloads WebKitAuxiliaryLibrary unnecessarily
+        Fix Bug 15663: update-webkit re-downloads CyberKitAuxiliaryLibrary unnecessarily
 
         http://bugs.webkit.org/show_bug.cgi?id=15663
 
         Added a fuzz factor into the Last-Modified comparison for downloading
-        WebKitAuxiliaryLibrary.zip.
+        CyberKitAuxiliaryLibrary.zip.
 
         The zip file is served from a set of mirrors who give Last-Modified
         times that are off by 1-3 seconds from each other. This was causing
-        the build bots to redownload WebKitAuxiliaryLibrary for every build,
-        which would then cause all of WebCore to rebuild each time.
+        the build bots to redownload CyberKitAuxiliaryLibrary for every build,
+        which would then cause all of CyberCore to rebuild each time.
 
         Reviewed by Mark.
 
@@ -9604,7 +9604,7 @@
 
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::open):
 
 2008-01-03  Simon Hausmann  <hausmann@webkit.org>
 
@@ -9614,7 +9614,7 @@
 
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
 
 2008-01-02  Sam Weinig  <sam@webkit.org>
 
@@ -9709,7 +9709,7 @@
 
         * DumpRenderTree/win/EventSender.cpp:
         (keyDownCallback): Add KF_EXTENDED flag to arrow keys. Also add a count
-        of 1, even though WebKit currently ignores it.
+        of 1, even though CyberKit currently ignores it.
 
 2007-12-23  Kevin Ollivier  <kevino@theolliviers.com>
 
@@ -9772,11 +9772,11 @@
         Reviewed by Steve.
 
         - <rdar://5656485> Drosera: Win: Nightly does not reliably connect to
-        WebKit.
+        CyberKit.
 
         - Drosera and Safari need to use the same ProgIDs in order for
         CoCreateInstance to work properly.  The most robust way to do this is
-        for WebKit to dynamically publish those ProgIDs.
+        for CyberKit to dynamically publish those ProgIDs.
 
         * Drosera/win/DebuggerClient.cpp: Use the published ProgIDs
         (DebuggerClient::createWebViewWithRequest):
@@ -10135,7 +10135,7 @@
 
         Rubberstamped by Sam Weinig
 
-        Update DRT Mac to reflect the new UI Delegate methods I just checked into WebKit/mac
+        Update DRT Mac to reflect the new UI Delegate methods I just checked into CyberKit/mac
 
         * DumpRenderTree/mac/UIDelegate.mm:
         (-[UIDelegate webView:frame:quotaForSecurityOrigin:toCreateDatabase:withEstimatedSize:]):
@@ -10286,7 +10286,7 @@
 
         Reviewed by Mark Rowe.
 
-        Initialize GTK+ and WebKit so the tests can run.
+        Initialize GTK+ and CyberKit so the tests can run.
 
         Reorganize the headers a little.
 
@@ -10413,7 +10413,7 @@
 
 2007-12-03  Sam Weinig  <sam@webkit.org>
 
-        Move JavaScriptCore thread testing code to pthread specific directory
+        Move CyberScriptCore thread testing code to pthread specific directory
         and remove the dependance on CoreFoundation by using WTF::HashSet.
 
         Reviewed by Geoff and Oliver.
@@ -10454,7 +10454,7 @@
         - <rdar://5619005> Drosera: could be sped up by moving the
         WebScriptScope stuff into the WebScriptCallFrame.
         - Now the console can correctly process objects and does not receive
-        notifications from JavaScriptCore about the JavaScript in Drosera's
+        notifications from CyberScriptCore about the JavaScript in Drosera's
         own process.
 
         * Drosera/win/DebuggerDocumentPlatform.cpp:
@@ -10551,14 +10551,14 @@
         http://bugs.webkit.org/show_bug.cgi?id=15691
         [GTK] Public API does not follow GTK+ conventions
 
-        Refactor the WebKit/GTK+ public API. Changes:
-          WebKitPage -> WebKitWebView
-          WebKitFrame -> WebKitWebFrame
+        Refactor the CyberKit/GTK+ public API. Changes:
+          CyberKitPage -> CyberKitWebView
+          CyberKitFrame -> CyberKitWebFrame
 
         Public API source and header names have been updated to mirror the API
         changes.
 
-        The API is now kept in WebKit/gtk/WebView to match other ports in the
+        The API is now kept in CyberKit/gtk/WebView to match other ports in the
         same class such as Mac and Win.
 
         * GtkLauncher/main.c:
@@ -10583,7 +10583,7 @@
         Another build fix
 
         * Drosera/win/Drosera.vcproj/Drosera.vcproj: Use the right suffix for
-        WebKit.lib.
+        CyberKit.lib.
 
 2007-11-30  Adam Roben  <aroben@apple.com>
 
@@ -10595,7 +10595,7 @@
         projects.
         * Drosera/win/Drosera.vcproj/release.vsprops: Ditto.
         * Drosera/win/Drosera.vcproj/debug_internal.vsprops: Copied from
-        WebKitTools/DumpRenderTree/win/debug_internal.vsprops.
+        CyberKitTools/DumpRenderTree/win/debug_internal.vsprops.
 
 2007-11-30  Sam Weinig  <sam@webkit.org>
 
@@ -11064,7 +11064,7 @@
         Content-Length header.
         (getMD5HashStringForBitmap):
         (dumpWebViewAsPixelsAndCompareWithExpected):
-        * DumpRenderTree/cg/PixelDumpSupportCG.h: Copied from WebKitTools/DumpRenderTree/mac/DumpRenderTreePasteboard.h.
+        * DumpRenderTree/cg/PixelDumpSupportCG.h: Copied from CyberKitTools/DumpRenderTree/mac/DumpRenderTreePasteboard.h.
         * DumpRenderTree/win/DumpRenderTree.cpp:
         (dump): Do a pixel dump if requested.
         (main): Parse pixel test options.
@@ -11114,14 +11114,14 @@
 
 2007-11-23  David D. Kilzer  <ddkilzer@webkit.org>
 
-        Fix bisect-builds to work with recent WebKit nightly builds.
+        Fix bisect-builds to work with recent CyberKit nightly builds.
 
         Reviewed by Dan.
 
         * Scripts/bisect-builds: Check for the
-        WebKit.app/Contents/Frameworks/10.[45] directory. If it exists, use
+        CyberKit.app/Contents/Frameworks/10.[45] directory. If it exists, use
         it for the DYLD_FRAMEWORK_PATH environment variable, else fallback
-        to WebKit.app/Contents/Resources.
+        to CyberKit.app/Contents/Resources.
 
 2007-11-23  Alexey Proskuryakov  <ap@webkit.org>
 
@@ -11199,14 +11199,14 @@
         Move install-unix-extras to wx directory as it seems only to be used by that
         port now. It now supports universal binaries on Mac and adds libpng and libjpeg.
         Also, have build-wxwebkit run it in order to fix the Mac buildbot, and
-        have install-unix-extras install into WebKitLibraries as per
+        have install-unix-extras install into CyberKitLibraries as per
         convention.
 
         Reviewed by Mark Rowe.
 
         * Scripts/install-unix-extras: Removed.
         * wx/build-wxwebkit:
-        * wx/install-unix-extras: Copied from WebKitTools/Scripts/install-unix-extras.
+        * wx/install-unix-extras: Copied from CyberKitTools/Scripts/install-unix-extras.
 
 2007-11-21  Eric Seidel  <eric@webkit.org>
 
@@ -11294,12 +11294,12 @@
 
 2007-11-20  Kevin Ollivier  <kevino@theolliviers.com>
 
-        wx build fix for Windows. Don't use WebCore/move-js-headers.sh as
-        it indiscriminately copies any headers inside JavaScriptCore,
+        wx build fix for Windows. Don't use CyberCore/move-js-headers.sh as
+        it indiscriminately copies any headers inside CyberScriptCore,
         which includes Tiger ICU headers.
 
         * wx/build-wxwebkit:
-        Don't run WebCore/move-js-headers.sh any longer.
+        Don't run CyberCore/move-js-headers.sh any longer.
 
 2007-11-20  Adam Treat  <treat@kde.org>
 
@@ -11390,7 +11390,7 @@
 
 2007-11-18  Kevin Ollivier  <kevino@theolliviers.com>
 
-        Add wxWebKit sample and build script, and integrate it with
+        Add wxCyberKit sample and build script, and integrate it with
         build-webkit. Also make build-webkit --clean work for all
         ports.
 
@@ -11456,7 +11456,7 @@
 
         Reviewed by Tim Hatcher.
 
-        Don't weak link against WebCore now that it is a sub-framework of WebKit in all configurations.
+        Don't weak link against CyberCore now that it is a sub-framework of CyberKit in all configurations.
 
         * Drosera/mac/Drosera.xcodeproj/project.pbxproj:
         * DumpRenderTree/DumpRenderTree.xcodeproj/project.pbxproj:
@@ -11647,7 +11647,7 @@
         Reviewed by Adam.
 
         - Changed the vcproj file to use Drosera's ForwardingHeaders and not
-        WebCore's!
+        CyberCore's!
 
         * Drosera/ForwardingHeaders/wtf/Assertions.h: Added.
         * Drosera/ForwardingHeaders/wtf/HashTraits.h: Added.
@@ -11719,9 +11719,9 @@
 
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::WebPage):
-        (WebCore::DumpRenderTree::dump):
-        (WebCore::DumpRenderTree::connectFrame):
+        (CyberCore::WebPage::WebPage):
+        (CyberCore::DumpRenderTree::dump):
+        (CyberCore::DumpRenderTree::connectFrame):
         * DumpRenderTree/qt/DumpRenderTree.h:
 
 2007-11-07  Simon Hausmann  <hausmann@kde.org>
@@ -11747,8 +11747,8 @@
         to prevent the default implementation from popping up messageboxes.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::javaScriptConfirm):
-        (WebCore::WebPage::javaScriptPrompt):
+        (CyberCore::WebPage::javaScriptConfirm):
+        (CyberCore::WebPage::javaScriptPrompt):
 
 2007-11-06  Eric Seidel  <eric@webkit.org>
 
@@ -11815,11 +11815,11 @@
         Reviewed by Maciej.
 
         - This patch involves several changes, all of them were noticed that
-        they were needed by the work being done in WebKit to get Drosera and
-        WebKit working together on Windows.
+        they were needed by the work being done in CyberKit to get Drosera and
+        CyberKit working together on Windows.
         - The changes are:
         1) Added a debugger console for output messages.
-        2) Drosera now listens for the WebKit server (before, the server would
+        2) Drosera now listens for the CyberKit server (before, the server would
         have to be running before Drosera was started.)
         3) Fixed a bug where the WebView started out as 0x0 pixels.
         4) Fixed a bug when there is no scope.
@@ -11828,7 +11828,7 @@
         6) Made the ServerConnection functions virtual.
 
         * Drosera/win/DebuggerClient.cpp: This is part of how Drosera listens
-        for the WebKit server.
+        for the CyberKit server.
         (DebuggerClient::DebuggerClient):
         (DebuggerClient::~DebuggerClient):
         (DebuggerClient::didFinishLoadForFrame):
@@ -11928,7 +11928,7 @@
         * DrawTest/DrawTest.xcodeproj/project.pbxproj:
         * Drosera/mac/Drosera.xcodeproj/project.pbxproj:
         * DumpRenderTree/DumpRenderTree.xcodeproj/project.pbxproj:
-        * WebKitLauncher/WebKitLauncher.xcodeproj/project.pbxproj:
+        * CyberKitLauncher/CyberKitLauncher.xcodeproj/project.pbxproj:
 
 2007-11-03  David D. Kilzer  <ddkilzer@webkit.org>
 
@@ -11954,7 +11954,7 @@
 
 2007-11-01  Adam Roben  <aroben@apple.com>
 
-        Make changes in WebKit/win show up under "WebKit/win:" instead of just "win:"
+        Make changes in CyberKit/win show up under "CyberKit/win:" instead of just "win:"
 
         Reviewed by Sam.
 
@@ -11983,7 +11983,7 @@
 
         Switch the Debug configuration to using the non-debug CRT
 
-        This matches WebKit.
+        This matches CyberKit.
 
         Reviewed by Steve.
 
@@ -12016,7 +12016,7 @@
         Reviewed by Adam.
 
         - This is a collection of relatively unrelated changes and cleanups
-        to Drosera to prepare it for interacting with WebKit.  A lot of these
+        to Drosera to prepare it for interacting with CyberKit.  A lot of these
         changes are just correcting mistakes, for example removing included
         headers that are no longer needed.
 
@@ -12247,7 +12247,7 @@
 
         Reviewed by Mark Rowe, Adam Roben.
 
-        Weak link against WebCore so DumpRenderTree can be bundled with production roots.
+        Weak link against CyberCore so DumpRenderTree can be bundled with production roots.
 
         * DumpRenderTree/DumpRenderTree.xcodeproj/project.pbxproj:
 
@@ -12315,7 +12315,7 @@
 
         Remove now-unnecessary call to InitializeCoreGraphics
 
-        WebKit takes care of this now.
+        CyberKit takes care of this now.
 
         Reviewed by Ada.
 
@@ -12386,7 +12386,7 @@
         Connection class to prepare it for receiving those callbacks.
         - Also I changed the instantiation of DebuggerClient, DebuggerDocument
         and the ServerConnection to not need to be initialized with a server
-        name, since that is not the way we connect to the WebKit server.
+        name, since that is not the way we connect to the CyberKit server.
 
         * Drosera/DebuggerDocument.cpp: Fixed a bug where I was always logging
         no exception.  Now it only loggs when there is an exception
@@ -12469,8 +12469,8 @@
         some smaller fixes to the editing support in DRT. Makes another few tests pass.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::initJSObjects):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::initJSObjects):
         * DumpRenderTree/qt/jsobjects.cpp:
         (TextInputController::doCommand):
 
@@ -12481,7 +12481,7 @@
         first bit of implementation for the textinputcontroller.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
         * DumpRenderTree/qt/DumpRenderTree.h:
         * DumpRenderTree/qt/jsobjects.cpp:
         (TextInputController::TextInputController):
@@ -12495,7 +12495,7 @@
         make the man webpage believe it has focus, so the editing tests work correctly.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
 
 2007-10-24  Lars Knoll  <lars@trolltech.com>
 
@@ -12504,7 +12504,7 @@
         implement layoutTestController.dumpEditingCallbacks() correctly.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
         * DumpRenderTree/qt/jsobjects.cpp:
         (LayoutTestController::reset):
         (LayoutTestController::dumpEditingCallbacks):
@@ -12516,7 +12516,7 @@
         Implement support for testing editing.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
 
 2007-10-23  Sam Weinig  <sam@webkit.org>
 
@@ -12552,9 +12552,9 @@
 
         Reviewed by Sam.
 
-        - After talking with Steve I now see that the WebKit server must be
+        - After talking with Steve I now see that the CyberKit server must be
         running for DCOM to create the distributed objects, which makes sense
-        and currently WebKit only allows one instance to be running at a time
+        and currently CyberKit only allows one instance to be running at a time
         which avoids accidentally connecting to the wrong server
         - In light of this I have removed the code for the attach box and
         NotificationServer and known server names, since they are all extranious
@@ -12648,7 +12648,7 @@
 
         - Do not build testkjs as an application bundle. This is
         needed for run-javascriptcore-tests on OSX.
-        - Also, based on r26633, allow to test the WebKit/Qt port on OSX.
+        - Also, based on r26633, allow to test the CyberKit/Qt port on OSX.
         - Set DYLD_LIBRARY_PATH if it was set in the environment. It must be set
         as we do not have -rpath on OSX.
 
@@ -12785,7 +12785,7 @@
         - Integrated changes from mac drosera.  Recently I've encapsulated
         out the server connection object from the rest of Drosera because
         it is very platform dependent right now and RPC is not implemented on
-        windows.  This functionality, of communicating with the WebKit server
+        windows.  This functionality, of communicating with the CyberKit server
         is the next area I will be focusing on in Windows.
 
         - Other changes and cleanup were made to organize the code and add notes
@@ -12841,7 +12841,7 @@
         (DebuggerDocument::platformLog):
         * Drosera/win/Drosera.cpp: Removed UIDelegate and FrameLoadDelegate
           responsibilities becaue they belong in the Client. Also I laid the
-          groundwork for attaching Drosera to a WebKit process
+          groundwork for attaching Drosera to a CyberKit process
         (attachWndProc): Now if a server is selected the Client becomes it's
           delegate.
         (Drosera::Drosera): Added the construction of the Client and dictionary
@@ -12853,7 +12853,7 @@
           notification registration when it's possible to implement.
         (Drosera::serverLoaded): Ditto
         (Drosera::serverUnloaded): Ditto
-        (Drosera::attach): Attach Drosera to the WebKit server.
+        (Drosera::attach): Attach Drosera to the CyberKit server.
         * Drosera/win/Drosera.h: Ditto for Drosera.cpp comment.
         (Drosera::getInst):
         (Drosera::setInst):
@@ -12863,7 +12863,7 @@
         * Drosera/win/DroseraPrefix.h: Added an ifndef check.
         * Drosera/win/ServerConnection.cpp: Added. This is the interesting part
           Most of the functions are completely unimlemented because they cannot
-          connect with the WebKit server, because one does not exist on Windows
+          connect with the CyberKit server, because one does not exist on Windows
           yet.
         (ServerConnection::initWithServerName):
         (ServerConnection::~ServerConnection):
@@ -12907,7 +12907,7 @@
 
         Rubber stamped by Adam.
 
-        - don't delay-load WebKit in DumpRenderTree.
+        - don't delay-load CyberKit in DumpRenderTree.
 
         * DumpRenderTree/win/DumpRenderTree.vcproj:
 
@@ -12941,9 +12941,9 @@
 
 2007-10-17  Adam Roben  <aroben@apple.com>
 
-        Add back the call to register WebKit that we had before WebKitInitializer existed
+        Add back the call to register CyberKit that we had before CyberKitInitializer existed
 
-        This is needed to ensure that the right WebKit is used when
+        This is needed to ensure that the right CyberKit is used when
         instantiating COM objects.
 
         Reviewed by Oliver.
@@ -13003,7 +13003,7 @@
         Add a new nightly launcher script for Windows
 
         This new script is for versions of Safari that don't delay-load
-        WebKit. I had to make FindSafari be able to print out the nightly
+        CyberKit. I had to make FindSafari be able to print out the nightly
         launcher script on stdout because Windows shell scripts can't capture
         the output from a command into an environment variable.
 
@@ -13015,31 +13015,31 @@
 
 2007-10-16  Adam Roben  <aroben@apple.com>
 
-        Replace WebKitInitializer with FindSafari
+        Replace CyberKitInitializer with FindSafari
 
         We now rely on setting the PATH environment variable to tell Windows
-        where to find WebKit and its dependencies (similar to
+        where to find CyberKit and its dependencies (similar to
         DYLD_FRAMEWORK_PATH on Mac).
 
-        This change also make DumpRenderTree no longer delay-load WebKit.
+        This change also make DumpRenderTree no longer delay-load CyberKit.
 
         Reviewed by Sam.
 
-        * DumpRenderTree/DumpRenderTree.sln: Removed WebKitInitializer, added
+        * DumpRenderTree/DumpRenderTree.sln: Removed CyberKitInitializer, added
         FindSafari.
-        * DumpRenderTree/win/DumpRenderTree.cpp: Don't use WebKitInitializer.
+        * DumpRenderTree/win/DumpRenderTree.cpp: Don't use CyberKitInitializer.
         * DumpRenderTree/win/DumpRenderTree.vcproj: Don't link against
-        WebKitInitializer, don't delay-load WebKit.
-        * Scripts/run-javascriptcore-tests: Call setPathForRunningWebKitApp.
+        CyberKitInitializer, don't delay-load CyberKit.
+        * Scripts/run-javascriptcore-tests: Call setPathForRunningCyberKitApp.
         * Scripts/run-webkit-tests: Ditto.
         * Scripts/webkitdirs.pm:
-        (sub setPathForRunningWebKitApp): Added.
-        * WebKitInitializer/WebKitInitializer.cpp: Removed.
-        * WebKitInitializer/WebKitInitializer.h: Removed.
-        * WebKitInitializer/WebKitInitializer.vcproj: Removed.
-        * WebKitInitializer/debug.vsprops: Removed.
-        * WebKitInitializer/debug_internal.vsprops: Removed.
-        * WebKitInitializer/release.vsprops: Removed.
+        (sub setPathForRunningCyberKitApp): Added.
+        * CyberKitInitializer/CyberKitInitializer.cpp: Removed.
+        * CyberKitInitializer/CyberKitInitializer.h: Removed.
+        * CyberKitInitializer/CyberKitInitializer.vcproj: Removed.
+        * CyberKitInitializer/debug.vsprops: Removed.
+        * CyberKitInitializer/debug_internal.vsprops: Removed.
+        * CyberKitInitializer/release.vsprops: Removed.
 
 2007-10-16  Adam Roben  <aroben@apple.com>
 
@@ -13052,10 +13052,10 @@
 
         Reviewed by Darin Adler.
 
-        * FindSafari/FindSafari.cpp: Copied from WebKitTools/WebKitInitializer/WebKitInitializer.cpp.
+        * FindSafari/FindSafari.cpp: Copied from CyberKitTools/CyberKitInitializer/CyberKitInitializer.cpp.
         (getStringValue):
         (getWebViewCLSID):
-        (getInstalledWebKitDirectory):
+        (getInstalledCyberKitDirectory):
         (_tmain):
         * FindSafari/FindSafari.vcproj: Added.
         * Scripts/webkitdirs.pm:
@@ -13063,21 +13063,21 @@
 
 2007-10-16  Adam Roben  <aroben@apple.com>
 
-        Updated for rename of WebKit_debug.dll to WebKit.dll for the Debug configuration
+        Updated for rename of CyberKit_debug.dll to CyberKit.dll for the Debug configuration
 
         Reviewed by Kevin McCullough.
 
-        * DumpRenderTree/win/DumpRenderTree.vcproj: Use WebKitDLLConfigSuffix
-        when referring to WebKit.dll.
-        * DumpRenderTree/win/debug.vsprops: Added WebKitDLLConfigSuffix.
+        * DumpRenderTree/win/DumpRenderTree.vcproj: Use CyberKitDLLConfigSuffix
+        when referring to CyberKit.dll.
+        * DumpRenderTree/win/debug.vsprops: Added CyberKitDLLConfigSuffix.
         * DumpRenderTree/win/debug_internal.vsprops: Ditto.
         * DumpRenderTree/win/release.vsprops: Ditto.
         * Scripts/run-safari: Don't pass /debug to Safari anymore because we
-        never have a _debug suffix on WebKit.dll.
-        * WebKitInitializer/WebKitInitializer.cpp:
-        (initializeWebKit): Only use the _debug suffix for WebKit.dll when
+        never have a _debug suffix on CyberKit.dll.
+        * CyberKitInitializer/CyberKitInitializer.cpp:
+        (initializeCyberKit): Only use the _debug suffix for CyberKit.dll when
         specified.
-        * WebKitInitializer/debug_internal.vsprops: Added
+        * CyberKitInitializer/debug_internal.vsprops: Added
         DEBUG_WEBKIT_HAS_SUFFIX preprocessor definition.
 
 2007-10-16  Darin Adler  <darin@apple.com>
@@ -13101,7 +13101,7 @@
 
         - I encapsulated out the server connecton functionality because it is a specific part
         of Drosera that will be platform dependant until the WebScriptDebugServer can be moved
-        into WebCore and C++.  But if it is encapsulated out it can be easily replaced on
+        into CyberCore and C++.  But if it is encapsulated out it can be easily replaced on
         Windows.  So the majority of this patch is moving preexisting functionality.
 
         - Also I removed the prefix header and changed to use config.h because it is more
@@ -13172,7 +13172,7 @@
         http://bugs.webkit.org/show_bug.cgi?id=15515
 
         * Scripts/run-sunspider: Added. Wrapper to run sunspider on the
-        current development or release build of JavaScriptCore.
+        current development or release build of CyberScriptCore.
 
 2007-10-15  Mark Rowe  <mrowe@apple.com>
 
@@ -13317,10 +13317,10 @@
 
         Reviewed by Oliver.
 
-        Update WebKitLauncher to notify you of new builds from the correct branch, rather than always checking trunk.
+        Update CyberKitLauncher to notify you of new builds from the correct branch, rather than always checking trunk.
 
-        * BuildSlaveSupport/build-launcher-app: Generate a file named BRANCH into WebKit.app so that it knows which branch it was built from.
-        * WebKitLauncher/start.html: Use the new URL format that includes the branch we were built from.
+        * BuildSlaveSupport/build-launcher-app: Generate a file named BRANCH into CyberKit.app so that it knows which branch it was built from.
+        * CyberKitLauncher/start.html: Use the new URL format that includes the branch we were built from.
 
 2007-10-01  Mark Rowe  <mrowe@apple.com>
 
@@ -13405,9 +13405,9 @@
         Don't set up connections inside QWebPage::createFrame, as users might be reimplementing that method. Make sure we get only one titleChanged() signal per title change, and implement the support for testing this in DRT.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::createFrame):
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::titleChanged):
+        (CyberCore::WebPage::createFrame):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::titleChanged):
         * DumpRenderTree/qt/DumpRenderTree.h:
         * DumpRenderTree/qt/jsobjects.cpp:
         (LayoutTestController::reset):
@@ -13436,7 +13436,7 @@
 
         Rubber stamped by Eric.
 
-        Connect to the "hovering-over-link" signal emitted by WebKitPage and
+        Connect to the "hovering-over-link" signal emitted by CyberKitPage and
         show the current link inside the statusbar.
         This shows how to make use of this signal and allows to easily test
         http://bugs.webkit.org/show_bug.cgi?id=15299.
@@ -13455,9 +13455,9 @@
         Reviewed by Maciej.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::createWindow):
-        (WebCore::DumpRenderTree::windowCount):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::createWindow):
+        (CyberCore::DumpRenderTree::windowCount):
         * DumpRenderTree/qt/DumpRenderTree.h:
         * DumpRenderTree/qt/jsobjects.cpp:
         (LayoutTestController::maybeDump):
@@ -13473,10 +13473,10 @@
         Reviewed by Maciej.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::WebPage):
-        (WebCore::WebPage::createWindow):
-        (WebCore::DumpRenderTree::resetJSObjects):
-        (WebCore::DumpRenderTree::createWindow):
+        (CyberCore::WebPage::WebPage):
+        (CyberCore::WebPage::createWindow):
+        (CyberCore::DumpRenderTree::resetJSObjects):
+        (CyberCore::DumpRenderTree::createWindow):
         * DumpRenderTree/qt/DumpRenderTree.h:
         * DumpRenderTree/qt/DumpRenderTree.pro:
         * DumpRenderTree/qt/jsobjects.cpp:
@@ -13519,7 +13519,7 @@
         http://bugs.webkit.org/show_bug.cgi?id=14726
         [gtk] API design. Mapping the WebView delegates to signals.
 
-        Change the API namespace of the Gtk+ port from 'WebKitGtk' to 'WebKit'.
+        Change the API namespace of the Gtk+ port from 'CyberKitGtk' to 'CyberKit'.
 
         * GtkLauncher/main.cpp:
         (goToURLBarText):
@@ -13557,27 +13557,27 @@
 
         Move the Qt version of DRT into the correct place and put the binary into BUILDDIR/bin.
 
-        * DumpRenderTree/qt/DumpRenderTree.cpp: Renamed from WebKitTools/DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp.
-        (WebCore::WebFrame::WebFrame):
-        (WebCore::WebPage::WebPage):
-        (WebCore::WebPage::createFrame):
-        (WebCore::WebPage::javaScriptAlert):
-        (WebCore::WebPage::javaScriptConsoleMessage):
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::~DumpRenderTree):
-        (WebCore::DumpRenderTree::open):
-        (WebCore::DumpRenderTree::readStdin):
-        (WebCore::DumpRenderTree::resetJSObjects):
-        (WebCore::DumpRenderTree::initJSObjects):
-        (WebCore::DumpRenderTree::dumpFramesAsText):
-        (WebCore::DumpRenderTree::dump):
-        * DumpRenderTree/qt/DumpRenderTree.h: Renamed from WebKitTools/DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.h.
-        (WebCore::DumpRenderTree::layoutTestController):
-        (WebCore::DumpRenderTree::eventSender):
-        * DumpRenderTree/qt/DumpRenderTree.pro: Renamed from WebKitTools/DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.pro.
-        * DumpRenderTree/qt/fonts.conf: Renamed from WebKitTools/DumpRenderTree/DumpRenderTree.qtproj/fonts.conf.
-        * DumpRenderTree/qt/fonts/AHEM____.TTF: Renamed from WebKitTools/DumpRenderTree/DumpRenderTree.qtproj/fonts/AHEM____.TTF.
-        * DumpRenderTree/qt/jsobjects.cpp: Renamed from WebKitTools/DumpRenderTree/DumpRenderTree.qtproj/jsobjects.cpp.
+        * DumpRenderTree/qt/DumpRenderTree.cpp: Renamed from CyberKitTools/DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp.
+        (CyberCore::WebFrame::WebFrame):
+        (CyberCore::WebPage::WebPage):
+        (CyberCore::WebPage::createFrame):
+        (CyberCore::WebPage::javaScriptAlert):
+        (CyberCore::WebPage::javaScriptConsoleMessage):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::~DumpRenderTree):
+        (CyberCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::readStdin):
+        (CyberCore::DumpRenderTree::resetJSObjects):
+        (CyberCore::DumpRenderTree::initJSObjects):
+        (CyberCore::DumpRenderTree::dumpFramesAsText):
+        (CyberCore::DumpRenderTree::dump):
+        * DumpRenderTree/qt/DumpRenderTree.h: Renamed from CyberKitTools/DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.h.
+        (CyberCore::DumpRenderTree::layoutTestController):
+        (CyberCore::DumpRenderTree::eventSender):
+        * DumpRenderTree/qt/DumpRenderTree.pro: Renamed from CyberKitTools/DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.pro.
+        * DumpRenderTree/qt/fonts.conf: Renamed from CyberKitTools/DumpRenderTree/DumpRenderTree.qtproj/fonts.conf.
+        * DumpRenderTree/qt/fonts/AHEM____.TTF: Renamed from CyberKitTools/DumpRenderTree/DumpRenderTree.qtproj/fonts/AHEM____.TTF.
+        * DumpRenderTree/qt/jsobjects.cpp: Renamed from CyberKitTools/DumpRenderTree/DumpRenderTree.qtproj/jsobjects.cpp.
         (HackWebFrame::mousePressEvent):
         (HackWebFrame::mouseReleaseEvent):
         (HackWebFrame::mouseMoveEvent):
@@ -13599,7 +13599,7 @@
         (EventSender::leapForward):
         (EventSender::keyDown):
         (EventSender::frameUnderMouse):
-        * DumpRenderTree/qt/jsobjects.h: Renamed from WebKitTools/DumpRenderTree/DumpRenderTree.qtproj/jsobjects.h.
+        * DumpRenderTree/qt/jsobjects.h: Renamed from CyberKitTools/DumpRenderTree/DumpRenderTree.qtproj/jsobjects.h.
         (LayoutTestController::isLoading):
         (LayoutTestController::setLoading):
         (LayoutTestController::shouldDumpAsText):
@@ -13607,7 +13607,7 @@
         (LayoutTestController::shouldWaitUntilDone):
         (LayoutTestController::dumpAsText):
         (LayoutTestController::dumpChildFramesAsText):
-        * DumpRenderTree/qt/main.cpp: Renamed from WebKitTools/DumpRenderTree/DumpRenderTree.qtproj/main.cpp.
+        * DumpRenderTree/qt/main.cpp: Renamed from CyberKitTools/DumpRenderTree/DumpRenderTree.qtproj/main.cpp.
         (messageHandler):
         (crashHandler):
         (main):
@@ -13636,7 +13636,7 @@
         Reviewed by Adam.
 
         Make "--git-commit trunk..HEAD" work with prepare-ChangeLog.
-        Also makes WebCore regression test case logic work when using git.
+        Also makes CyberCore regression test case logic work when using git.
 
         * Scripts/prepare-ChangeLog:
         (reviewerAndDescriptionForGitCommit): Added.
@@ -13649,8 +13649,8 @@
         Implement support for DRT::dumpChildrenAsText.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::dumpFramesAsText):
-        (WebCore::DumpRenderTree::dump):
+        (CyberCore::DumpRenderTree::dumpFramesAsText):
+        (CyberCore::DumpRenderTree::dump):
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.h:
         * DumpRenderTree/DumpRenderTree.qtproj/jsobjects.cpp:
         (LayoutTestController::LayoutTestController):
@@ -13661,19 +13661,19 @@
 
         Reviewed by bdash.
 
-        Fix the handling of the response header for data urls. Make sure we always pass absolute URLs to WebKit from both DRT and QtLauncher.
+        Fix the handling of the response header for data urls. Make sure we always pass absolute URLs to CyberKit from both DRT and QtLauncher.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::readStdin):
+        (CyberCore::DumpRenderTree::readStdin):
 
 2007-10-02  Mark Rowe  <mrowe@apple.com>
 
         Reviewed by Oliver.
 
-        Update WebKitLauncher to notify you of new builds from the correct branch, rather than always checking trunk.
+        Update CyberKitLauncher to notify you of new builds from the correct branch, rather than always checking trunk.
 
-        * BuildSlaveSupport/build-launcher-app: Generate a file named BRANCH into WebKit.app so that it knows which branch it was built from.
-        * WebKitLauncher/start.html: Use the new URL format that includes the branch we were built from.
+        * BuildSlaveSupport/build-launcher-app: Generate a file named BRANCH into CyberKit.app so that it knows which branch it was built from.
+        * CyberKitLauncher/start.html: Use the new URL format that includes the branch we were built from.
 
 2007-10-02  Mark Rowe  <mrowe@apple.com>
 
@@ -13746,58 +13746,58 @@
 
 2007-09-26  Adam Roben  <aroben@apple.com>
 
-        Make not finding an installed WebKit non-fatal
+        Make not finding an installed CyberKit non-fatal
 
-        What really matters is that we are able to load WebKit and its
-        dependencies, not whether we think we've found an installed WebKit.
+        What really matters is that we are able to load CyberKit and its
+        dependencies, not whether we think we've found an installed CyberKit.
 
         Reviewed by Sam.
 
-        * WebKitInitializer/WebKitInitializer.cpp:
+        * CyberKitInitializer/CyberKitInitializer.cpp:
         (getWebViewCLSID): Use new LOG_WARNING macro.
-        (getInstalledWebKitDirectory): Ditto.
-        (initializeWebKit): Don't die if we didn't find an installed WebKit,
+        (getInstalledCyberKitDirectory): Ditto.
+        (initializeCyberKit): Don't die if we didn't find an installed CyberKit,
         and use new macros.
-        * WebKitInitializer/WebKitInitializer.vcproj: Disabled a warning.
+        * CyberKitInitializer/CyberKitInitializer.vcproj: Disabled a warning.
 
 2007-09-26  Adam Roben  <aroben@apple.com>
 
         Committed this file before saving it
 
-        * WebKitInitializer/debug_internal.vsprops:
+        * CyberKitInitializer/debug_internal.vsprops:
 
 2007-09-26  Adam Roben  <aroben@apple.com>
 
-        Load WebKit and its dependencies manually so they come from DllDirectory
+        Load CyberKit and its dependencies manually so they come from DllDirectory
 
-        I had to change WebKitInitializer to use malloc/free instead of
-        new/delete to avoid pulling in WebKit (and its dependencies) early
+        I had to change CyberKitInitializer to use malloc/free instead of
+        new/delete to avoid pulling in CyberKit (and its dependencies) early
         through use of fastMalloc.
 
         Reviewed by Oliver.
 
-        * WebKitInitializer/WebKitInitializer.cpp:
+        * CyberKitInitializer/CyberKitInitializer.cpp:
         (getStringValue): Changed to use malloc/free.
-        (getInstalledWebKitDirectory): Ditto.
-        (initializeWebKit): Call SetDllDirectory first, then load all of
-        WebKit's dependencies manually, finally followed by WebKit itself.
-        * WebKitInitializer/WebKitInitializer.vcproj: Added a new
+        (getInstalledCyberKitDirectory): Ditto.
+        (initializeCyberKit): Call SetDllDirectory first, then load all of
+        CyberKit's dependencies manually, finally followed by CyberKit itself.
+        * CyberKitInitializer/CyberKitInitializer.vcproj: Added a new
         configuration to match our other projects.
-        * WebKitInitializer/debug_internal.vsprops: Added.
+        * CyberKitInitializer/debug_internal.vsprops: Added.
 
 2007-09-25  Adam Roben  <aroben@apple.com>
 
-        Actually define DEBUG/NDEBUG so that we load WebKit correctly
+        Actually define DEBUG/NDEBUG so that we load CyberKit correctly
 
         Rubberstamped by Sam.
 
-        * WebKitInitializer/WebKitInitializer.vcproj:
+        * CyberKitInitializer/CyberKitInitializer.vcproj:
 
 2007-09-25  Adam Roben  <aroben@apple.com>
 
         Make DumpRenderTree delay-load its dependencies
 
-        This lets WebKitInitializer re-route the dependencies to be loaded out
+        This lets CyberKitInitializer re-route the dependencies to be loaded out
         of the Safari installation directory.
 
         Also replaced all uses of kCFAllocatorDefault with 0 (which means the
@@ -13815,11 +13815,11 @@
 
 2007-09-25  Adam Roben  <aroben@apple.com>
 
-        Pull ole32.lib into WebKitInitializer
+        Pull ole32.lib into CyberKitInitializer
 
         Rubberstamped by Sam.
 
-        * WebKitInitializer/WebKitInitializer.vcproj:
+        * CyberKitInitializer/CyberKitInitializer.vcproj:
 
 2007-09-25  David Kilzer  <ddkilzer@webkit.org>
 
@@ -13843,13 +13843,13 @@
 
 2007-09-25  Adam Roben  <aroben@apple.com>
 
-        Pull advapi32.lib into WebKitInitializer
+        Pull advapi32.lib into CyberKitInitializer
 
         This is needed to get the registry functions we use.
 
         Rubberstamped by Sam.
 
-        * WebKitInitializer/WebKitInitializer.vcproj:
+        * CyberKitInitializer/CyberKitInitializer.vcproj:
 
 2007-09-25  Adam Roben  <aroben@apple.com>
 
@@ -13865,30 +13865,30 @@
 
 2007-09-25  Adam Roben  <aroben@apple.com>
 
-        Add WebKitInitializer and use it in DumpRenderTree
+        Add CyberKitInitializer and use it in DumpRenderTree
 
-        WebKitInitializer is a static library that has one function,
-        initializeWebKit(). This registers WebKit and sets up the DLL search
-        path so that WebKit's dependencies that are installed with Safari can
+        CyberKitInitializer is a static library that has one function,
+        initializeCyberKit(). This registers CyberKit and sets up the DLL search
+        path so that CyberKit's dependencies that are installed with Safari can
         be found.
 
         Reviewed by Sam.
 
-        * DumpRenderTree/DumpRenderTree.sln: Added WebKitInitializer and made
+        * DumpRenderTree/DumpRenderTree.sln: Added CyberKitInitializer and made
         DumpRenderTree depend on it.
         * DumpRenderTree/win/DumpRenderTree.cpp:
-        (initialize): Call initializeWebKit.
+        (initialize): Call initializeCyberKit.
         * DumpRenderTree/win/DumpRenderTree.vcproj: Link against
-        WebKitInitializer.lib.
-        * WebKitInitializer/WebKitInitializer.cpp: Added.
+        CyberKitInitializer.lib.
+        * CyberKitInitializer/CyberKitInitializer.cpp: Added.
         (getStringValue):
         (getWebViewCLSID):
-        (getInstalledWebKitDirectory):
-        (initializeWebKit):
-        * WebKitInitializer/WebKitInitializer.h: Added.
-        * WebKitInitializer/WebKitInitializer.vcproj: Added.
-        * WebKitInitializer/debug.vsprops: Added.
-        * WebKitInitializer/release.vsprops: Added.
+        (getInstalledCyberKitDirectory):
+        (initializeCyberKit):
+        * CyberKitInitializer/CyberKitInitializer.h: Added.
+        * CyberKitInitializer/CyberKitInitializer.vcproj: Added.
+        * CyberKitInitializer/debug.vsprops: Added.
+        * CyberKitInitializer/release.vsprops: Added.
 
 2007-09-25  Adam Roben  <aroben@apple.com>
 
@@ -13912,7 +13912,7 @@
 
         You can now specify WEBKITSUPPORTLIBRARIESZIPDIR=C:\my\special\place
         to tell update-webkit-support-libraries where it should find the
-        WebKitSupportLibrary.zip file you downloaded.
+        CyberKitSupportLibrary.zip file you downloaded.
 
         These scripts also now correctly interpret WEBKITLIBRARIESDIR as a
         Windows-style path.
@@ -13940,20 +13940,20 @@
 
         EOF fixes.
 
-        Together, this patch fixes some 20+ layout tests in QtWebKit.
+        Together, this patch fixes some 20+ layout tests in QtCyberKit.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::WebFrame::WebFrame):
-        (WebCore::WebPage::WebPage):
-        (WebCore::WebPage::createFrame):
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::open):
-        (WebCore::DumpRenderTree::readStdin):
-        (WebCore::DumpRenderTree::initJSObjects):
-        (WebCore::DumpRenderTree::dump):
+        (CyberCore::WebFrame::WebFrame):
+        (CyberCore::WebPage::WebPage):
+        (CyberCore::WebPage::createFrame):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::readStdin):
+        (CyberCore::DumpRenderTree::initJSObjects):
+        (CyberCore::DumpRenderTree::dump):
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.h:
-        (WebCore::DumpRenderTree::layoutTestController):
-        (WebCore::DumpRenderTree::eventSender):
+        (CyberCore::DumpRenderTree::layoutTestController):
+        (CyberCore::DumpRenderTree::eventSender):
         * DumpRenderTree/DumpRenderTree.qtproj/jsobjects.cpp:
         (LayoutTestController::LayoutTestController):
         (LayoutTestController::reset):
@@ -14191,7 +14191,7 @@
 
         Reviewed by Adam Roben.
 
-        - Move Windows DumpRenderTree and TestNetscapePlugin to WebCoreTools/DumpRenderTree/win
+        - Move Windows DumpRenderTree and TestNetscapePlugin to CyberCoreTools/DumpRenderTree/win
 
         * DumpRenderTree/DumpRenderTree.sln: Copied from DumpRenderTree/DumpRenderTree.vcproj/DumpRenderTree.sln.
         * DumpRenderTree/DumpRenderTree.vcproj: Removed.
@@ -15179,7 +15179,7 @@
 
         Reviewed by Adam Roben.
 
-        Register the WebKit DLL on initialization of the DumpRenderTree.
+        Register the CyberKit DLL on initialization of the DumpRenderTree.
 
         * DumpRenderTree/DumpRenderTree.vcproj/DumpRenderTree/DumpRenderTree.cpp:
         (initialize):
@@ -15366,7 +15366,7 @@
 
 2007-08-20  Adam Roben  <aroben@apple.com>
 
-        Fix Bug 15026: prepare-ChangeLog should list new tests in WebCore/ChangeLog
+        Fix Bug 15026: prepare-ChangeLog should list new tests in CyberCore/ChangeLog
 
         http://bugs.webkit.org/show_bug.cgi?id=15026
 
@@ -15390,11 +15390,11 @@
 
         Reviewed by Oliver Hunt.
 
-        - don't look for Apple-style localizable strings in the GTK version of WebKit
+        - don't look for Apple-style localizable strings in the GTK version of CyberKit
 
         * Scripts/extract-localizable-strings: Add a feature where you can pass in the
         name of subdirectories to skip.
-        * Scripts/update-webkit-localizable-strings: Pass WebKit/gtk as a subdirectory
+        * Scripts/update-webkit-localizable-strings: Pass CyberKit/gtk as a subdirectory
         to skip.
 
 2007-08-17  Anders Carlsson  <andersca@apple.com>
@@ -15445,7 +15445,7 @@
         Look for the new Xcode 3 preference key (PBXApplicationwideBuildSettings) for the global build locations.
         The value of PBXApplicationwideBuildSettings is a dictionary, so we have to pull the SYMROOT out of it.
 
-        Also pass xcodebuild OBJROOT with the same value as SYMROOT if we fallback to the default WebKitBuild,
+        Also pass xcodebuild OBJROOT with the same value as SYMROOT if we fallback to the default CyberKitBuild,
         this prevents making "build" directories in each project folder.
 
         * Scripts/webkitdirs.pm:
@@ -15579,7 +15579,7 @@
 
         Reviewed by David Kilzer.
 
-        Fix bug 14745: WebKitTools/Scripts/run-launcher doesn't speak --gdk
+        Fix bug 14745: CyberKitTools/Scripts/run-launcher doesn't speak --gdk
         http://bugs.webkit.org/show_bug.cgi?id=14745
 
         * Scripts/run-launcher:
@@ -15702,7 +15702,7 @@
 
         * GdkLauncher/GdkLauncher.pro: Don't create an app bundle on OSX
         * Scripts/run-launcher:
-        * Scripts/webkitdirs.pm: Don't add WebKit if we build the Qt or Gtk+ port.
+        * Scripts/webkitdirs.pm: Don't add CyberKit if we build the Qt or Gtk+ port.
 
 2007-07-27  Simon Hausmann  <hausmann@kde.org>
 
@@ -15777,13 +15777,13 @@
         Fix qt DRT to suppress js popup alerts and log instead.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::WebPage::javaScriptAlert):
+        (CyberCore::WebPage::javaScriptAlert):
 
 2007-07-22  Holger Hans Peter Freyther  <zecke@selfish.org>
 
         Reviewed by Adam.
 
-        Make the GdkLauncher use the new WebKit/Gtk API. Change webkitdirs.pm to
+        Make the GdkLauncher use the new CyberKit/Gtk API. Change webkitdirs.pm to
         honor --qmakearg for the Gdk/Gtk build as well.
 
         * GdkLauncher/main.cpp: Switch to the new API
@@ -15801,8 +15801,8 @@
         - fix http://bugs.webkit.org/show_bug.cgi?id=14713
           Script to update iExploder cssproperties.in file based on CSSPropertyNames.in
 
-        Added script to update WebKitTools/iExploder/htdocs/cssproperties.in based on the contents
-        of WebCore/css/CSSPropertyNames.in.  Also updated cssproperties.in.
+        Added script to update CyberKitTools/iExploder/htdocs/cssproperties.in based on the contents
+        of CyberCore/css/CSSPropertyNames.in.  Also updated cssproperties.in.
 
         * Scripts/update-iexploder-cssproperties: Added.
         * iExploder/htdocs/cssproperties.in: Updated by running update-iexploder-cssproperties script.
@@ -15814,7 +15814,7 @@
 
         http://bugs.webkit.org/show_bug.cgi?id=14710
 
-        Add preliminary support for testing Input Method/WebKit behaviour and interaction
+        Add preliminary support for testing Input Method/CyberKit behaviour and interaction
         in DRT.  This provides the NSTextInput API which is most of what should be necessary
         to mimic the event sequences Input Methods trigger.
 
@@ -15992,7 +15992,7 @@
         Adjust to changed API in QWebFrame
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
 
 2007-07-18  Mark Rowe  <mrowe@apple.com>
 
@@ -16149,7 +16149,7 @@
 
 2007-07-15  Mark Rowe  <mrowe@apple.com>
 
-        * Scripts/generate-coverage-data: Don't fail if WebKitBuild directory does not exist.
+        * Scripts/generate-coverage-data: Don't fail if CyberKitBuild directory does not exist.
 
 2007-07-13  Sam Weinig  <sam@webkit.org>
 
@@ -16372,7 +16372,7 @@
         traces of widgets.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
 
 2007-07-09  Anders Carlsson  <andersca@apple.com>
 
@@ -16380,7 +16380,7 @@
 
         <rdar://problem/4954319>
         Acrobat 7 / Safari crash: CrashTracer: 99 crashes in Safari at
-        com.apple.WebCore: WebCore::NetscapePlugInStreamLoader::isDone const + 0
+        com.matthewbenedict.CyberCore: CyberCore::NetscapePlugInStreamLoader::isDone const + 0
 
         If the src url is "data:application/x-webkit-test-netscape,returnerrorfromnewstream",
         return an error from NPP_NewStream.
@@ -16394,7 +16394,7 @@
 
 2007-07-08  Mark Rowe  <mrowe@apple.com>
 
-        Change name from WebKit/Qt to WebKit.
+        Change name from CyberKit/Qt to CyberKit.
 
         * CodeCoverage/regenerate-coverage-display:
 
@@ -16464,7 +16464,7 @@
         Adjust for conversion of QWebFrame to a QFrame from a scroll area.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
 
 2007-07-06  George Staikos  <staikos@kde.org>
 
@@ -16555,7 +16555,7 @@
         Modify scripts to keep Mac/Windows localized strings in sync
 
         extract-webkit-localizable-strings now handles extracting strings from
-        both the Mac and Windows WebKit ports and updating their respective
+        both the Mac and Windows CyberKit ports and updating their respective
         Localizable.strings files. extract-localizable-strings is now really a
         piece of plumbing rather than a top-level tool.
 
@@ -16623,7 +16623,7 @@
 
         Enable running the regression tests on Windows.
 
-        These changes were developed alongside the Windows WebKit port and
+        These changes were developed alongside the Windows CyberKit port and
         have been well tested.
 
         Rubberstamped by Sam.
@@ -16769,7 +16769,7 @@
         * Spinneret/Spinneret/Spinneret.cpp:
         (_tWinMain):
             -Changed IWebViewExt to IWebViewPrivate
-            -Changed Co[Un]initialize to Ole[Un]initialize because WebKit now calls
+            -Changed Co[Un]initialize to Ole[Un]initialize because CyberKit now calls
              the WIN32 function RegisterDragDrop which requires the Ole* calls.
         * Spinneret/Spinneret/Spinneret.h:
         (SpinneretWebHost::didReceiveIcon): Updated method signature.
@@ -16820,22 +16820,22 @@
         Reviewed by Maciej.
 
         http://bugs.webkit.org/show_bug.cgi?id=13988
-        Bug 13988: Colon in file path crashes WebKit Nightly
+        Bug 13988: Colon in file path crashes CyberKit Nightly
 
-        The WebKit launcher makes use of two `dyld' variables to coerce Safari into running with
-        the bundled WebKit framework.  Both of these variables are interpreted as containing a
+        The CyberKit launcher makes use of two `dyld' variables to coerce Safari into running with
+        the bundled CyberKit framework.  Both of these variables are interpreted as containing a
         colon-delimited list of paths.  There is no escaping mechanism defined, so if we detect
         a path with a colon in it we need to bail out to prevent `dyld' from throwing an error
         when we execute Safari.
 
-        * WebKitLauncher/main.m:
+        * CyberKitLauncher/main.m:
         (main):
 
 2007-06-05  Mark Rowe  <mrowe@apple.com>
 
         Reviewed by Anders.
 
-        * WebKitLauncher/Info.plist: Update CFBundleGetInfoString, and add CFBundleShortVersionString.
+        * CyberKitLauncher/Info.plist: Update CFBundleGetInfoString, and add CFBundleShortVersionString.
 
 2007-05-30  Alp Toker  <alp.toker@collabora.co.uk>
 
@@ -16921,7 +16921,7 @@
 
         Reviewed by Mark Rowe.
 
-        Add scripts and data to generate a coverage data for WebKit.
+        Add scripts and data to generate a coverage data for CyberKit.
 
         * CodeCoverage/README: Added.
         * CodeCoverage/amber.png: Added.
@@ -17110,8 +17110,8 @@
         Make run-webkit-tests --strict work somewhat better for form elements.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::initJSObjects):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::initJSObjects):
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.h:
         * DumpRenderTree/DumpRenderTree.qtproj/jsobjects.cpp:
         (HackWebFrame::mousePressEvent):
@@ -17269,10 +17269,10 @@
         between text only and rendertree tests.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::WebPage::WebPage):
-        (WebCore::WebPage::javaScriptConsoleMessage):
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::dump):
+        (CyberCore::WebPage::WebPage):
+        (CyberCore::WebPage::javaScriptConsoleMessage):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::dump):
         * Scripts/run-webkit-tests:
 
 2007-05-08  Lars Knoll <lars@trolltech.com>
@@ -17594,7 +17594,7 @@
         http://bugs.webkit.org/show_bug.cgi?id=13029
         rdar://problem/4994849
         Bug 13029: Permit NPAPI plug-ins to see HTTP response headers.
-        Changes in WebKitTools are only for the NPAPI test plugin.
+        Changes in CyberKitTools are only for the NPAPI test plugin.
 
         * DumpRenderTree/TestNetscapePlugIn.subproj/PluginObject.c: main test logic.
         (pluginInvoke): support null window argument for NPStream creation.
@@ -17615,13 +17615,13 @@
         This failure was pretty funny. run-webkit-tests kills and respawns
         DumpRenderTree once every 1000 runs. Adding a few tests caused
         textarea-paste-newline.html to run right at the beginning of DumpRenderTree's
-        lifetime, before any render tree dumps had occurred. However, WebCore
+        lifetime, before any render tree dumps had occurred. However, CyberCore
         used a render tree dump as the hook that set a global flag to allow
         pasting through the DOM API, so running before any render tree dumps had
         occurred caused this test to fail.
 
         * DumpRenderTree/DumpRenderTree.m:
-        (dumpRenderTree): Explicitly tell WebKit to allow pasting through the DOM
+        (dumpRenderTree): Explicitly tell CyberKit to allow pasting through the DOM
         API, instead of hoping it will read the tea leaves.
 
 2007-04-07  Mark Rowe  <mrowe@apple.com>
@@ -17895,7 +17895,7 @@
         on the system.  The motivation for this is to make the behaviour of the nightly
         builds more predictable on machines with multiple copies of Safari present.
 
-        * WebKitLauncher/main.m:
+        * CyberKitLauncher/main.m:
         (locateSafariBundle):
         (main):
 
@@ -17996,7 +17996,7 @@
 
         Reviewed by Darin Adler.
 
-        - WebKitTools part of fix for http://bugs.webkit.org/show_bug.cgi?id=12463
+        - CyberKitTools part of fix for http://bugs.webkit.org/show_bug.cgi?id=12463
           WebArchiver - attempt to insert nil exception when archive empty iframe
 
         The dumpDOMAsWebArchive() test method uses the DOMDocument as a basis for creating
@@ -18036,7 +18036,7 @@
         Reviewed by Adam, Darin.
 
         <rdar://problem/5025212>
-        In Mail, a crash occurs at WebCore::Frame::tree() when clicking on embedded flash object
+        In Mail, a crash occurs at CyberCore::Frame::tree() when clicking on embedded flash object
 
         Add a "getURLNotify" method to the plugin object. This lets you pass a URL, a target and a callback function
         to be run when the URL has finished (or failed) loading.
@@ -18264,7 +18264,7 @@
         Reviewed by Darin Adler.
 
         New script to parse the output from malloc_history, so we can determine
-        what's using memory in WebKit.
+        what's using memory in CyberKit.
 
         * Scripts/parse-malloc-history: Added.
 
@@ -18273,9 +18273,9 @@
         Reviewed by Darin Adler.
 
         Fix for http://bugs.webkit.org/show_bug.cgi?id=12802
-        WebKit.framework is built with SVG_SUPPORT for No-SVG build
+        CyberKit.framework is built with SVG_SUPPORT for No-SVG build
 
-        * Scripts/build-webkit: Pass the "FEATURE_DEFINES=" option when building WebKit as well.
+        * Scripts/build-webkit: Pass the "FEATURE_DEFINES=" option when building CyberKit as well.
 
 2007-02-19  Geoffrey Garen  <ggaren@apple.com>
 
@@ -18304,9 +18304,9 @@
 
         Reviewed by Beth Dakin.
 
-        * DumpRenderTree/DumpRenderTree.m: Don't ignore NSAttributedString WebCore::Node
+        * DumpRenderTree/DumpRenderTree.m: Don't ignore NSAttributedString CyberCore::Node
         leaks anymore, either, since r19486 fixed them, too.
-        (shouldIgnoreWebCoreNodeLeaks):
+        (shouldIgnoreCyberCoreNodeLeaks):
 
 2007-02-15  Darin Adler  <darin@apple.com>
 
@@ -18375,7 +18375,7 @@
 
         Reviewed by Maciej
 
-        <rdar://problem/4965133> WebKit sends file:// url referrers
+        <rdar://problem/4965133> CyberKit sends file:// url referrers
 
         * Scripts/run-webkit-tests: Enhanced the http tests so that we can run layout tests
           on local files, but have an httpd for remote resources
@@ -18540,25 +18540,25 @@
 
         * ChangeLog:
         * DumpRenderTree/DumpRenderTree.m:
-        (shouldIgnoreWebCoreNodeLeaks):
+        (shouldIgnoreCyberCoreNodeLeaks):
 
 2007-02-02  Geoffrey Garen  <ggaren@apple.com>
 
         Fixed build. Added work-around for GCC bug.
 
         * DumpRenderTree/DumpRenderTree.m:
-        (shouldIgnoreWebCoreNodeLeaks):
+        (shouldIgnoreCyberCoreNodeLeaks):
 
 2007-02-01  Geoffrey Garen  <ggaren@apple.com>
 
         Reviewed by Maciej Stachowiak.
 
-        Added support for selectively ignoring WebCore::Node leaks during layout
+        Added support for selectively ignoring CyberCore::Node leaks during layout
         tests, so that we can ignore known leaks in other components.
 
         * DumpRenderTree/DumpRenderTree.m:
-        (shouldIgnoreWebCoreNodeLeaks): Implements a black list of tests whose
-        WebCore::Node leaks we have to ignore. Does this CFString gobbledy-gook
+        (shouldIgnoreCyberCoreNodeLeaks): Implements a black list of tests whose
+        CyberCore::Node leaks we have to ignore. Does this CFString gobbledy-gook
         confuse anyone else?
         (runTest):
 
@@ -18642,7 +18642,7 @@
 
         Implement layoutTestController.dumpAsWebArchive() to test WebArchive format.
         Alters WebResourceResponse and WebResourceURL properties within WebArchive format
-        to normalize URLs to remove path where WebKit was checked out.  Also converts
+        to normalize URLs to remove path where CyberKit was checked out.  Also converts
         WebDataResource properties from data to string if the corresponding
         WebResourceMIMEType property starts with "text/" or equals
         "application/x-javascript".
@@ -18671,7 +18671,7 @@
 
         Reviewed by Maciej Stachowiak.
 
-        Fixed <rdar://problem/4485644> REGRESSION: JavaScriptCore has init routines
+        Fixed <rdar://problem/4485644> REGRESSION: CyberScriptCore has init routines
 
         No more mollycoddling for you, FastMalloc.o!
 
@@ -18714,14 +18714,14 @@
         all test cases :/
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
 
 2007-01-25  Lars Knoll <lars@trolltech.com>
 
         Reviewed by Darin and Zack
 
         Move the test results for Qt into a directory of it's own
-        (WebKit/LayoutTestResults/qt). Leave the Mac results where
+        (CyberKit/LayoutTestResults/qt). Leave the Mac results where
         they are for now and share the text only results between
         Mac and Qt.
 
@@ -18732,8 +18732,8 @@
         implementation.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::open):
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.h:
         * DumpRenderTree/DumpRenderTree.qtproj/tests-skipped.txt: Removed.
         * Scripts/run-webkit-tests:
@@ -18794,8 +18794,8 @@
         (as we get a lot less such failures now)
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::maybeDump):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::maybeDump):
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.h:
         * DumpRenderTree/DumpRenderTree.qtproj/jsobjects.cpp:
         (LayoutTestController::waitUntilDone):
@@ -18870,7 +18870,7 @@
         Fix my last commit to actually work in all cases.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::readStdin):
+        (CyberCore::DumpRenderTree::readStdin):
 
 2007-01-17  Lars Knoll <lars@trolltech.com>
 
@@ -18880,7 +18880,7 @@
         is done.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::readStdin):
+        (CyberCore::DumpRenderTree::readStdin):
 
 2007-01-17  Lars Knoll <lars@trolltech.com>
 
@@ -18893,8 +18893,8 @@
         hang forever.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::readStdin):
-        (WebCore::DumpRenderTree::dump):
+        (CyberCore::DumpRenderTree::readStdin):
+        (CyberCore::DumpRenderTree::dump):
         * DumpRenderTree/DumpRenderTree.qtproj/jsobjects.cpp:
         (LayoutTestController::notifyDone):
         * DumpRenderTree/DumpRenderTree.qtproj/tests-skipped.txt:
@@ -18925,15 +18925,15 @@
         Reviewed by Zack
 
         Use the new public API for the Qt build, and don't rely on
-        WebKit internals anymore.
+        CyberKit internals anymore.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::~DumpRenderTree):
-        (WebCore::DumpRenderTree::open):
-        (WebCore::DumpRenderTree::readStdin):
-        (WebCore::DumpRenderTree::initJSObjects):
-        (WebCore::DumpRenderTree::dump):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::~DumpRenderTree):
+        (CyberCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::readStdin):
+        (CyberCore::DumpRenderTree::initJSObjects):
+        (CyberCore::DumpRenderTree::dump):
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.h:
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.pro:
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTreeClient.cpp: Removed.
@@ -18973,9 +18973,9 @@
         our list of skipped tests.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::readStdin):
-        (WebCore::DumpRenderTree::dump):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::readStdin):
+        (CyberCore::DumpRenderTree::dump):
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.h:
         * DumpRenderTree/DumpRenderTree.qtproj/jsobjects.cpp:
         (LayoutTestController::LayoutTestController):
@@ -18993,13 +18993,13 @@
 
         <rdar://problem/4908909> Need to create Leopard nightly build
 
-        * WebKitLauncher/WebKitLauncher.xcodeproj/project.pbxproj: Always use the 10.4 Universal SDK.  The disk images don't mount pre-10.4 so we aren't losing anything here.
-        * WebKitLauncher/WebKitNightlyEnabler.m:
-        (poseAsWebKitApp): Simplify CoreFoundation-related hackery by using _CFGetProcessPath instead of walking the mach-o symbol tables.  The smaller timeframe where the
+        * CyberKitLauncher/CyberKitLauncher.xcodeproj/project.pbxproj: Always use the 10.4 Universal SDK.  The disk images don't mount pre-10.4 so we aren't losing anything here.
+        * CyberKitLauncher/CyberKitNightlyEnabler.m:
+        (poseAsCyberKitApp): Simplify CoreFoundation-related hackery by using _CFGetProcessPath instead of walking the mach-o symbol tables.  The smaller timeframe where the
         CFProcessPath environment variable is set allows this to work correctly on Leopard where the old code failed.
-        (enableWebKitNightlyBehaviour):
-        * WebKitLauncher/main.m:
-        (main): Pass executable path as WebKitAppPath rather than CFProcessPath to prevent it being picked up too early by CoreFoundation.
+        (enableCyberKitNightlyBehaviour):
+        * CyberKitLauncher/main.m:
+        (main): Pass executable path as CyberKitAppPath rather than CFProcessPath to prevent it being picked up too early by CoreFoundation.
         * Drosera/launcher.m:
         (main): Ditto
 
@@ -19014,14 +19014,14 @@
         (useful for debugging)
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::~DumpRenderTree):
-        (WebCore::DumpRenderTree::open):
-        (WebCore::DumpRenderTree::dump):
-        (WebCore::DumpRenderTree::maybeDump):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::~DumpRenderTree):
+        (CyberCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::dump):
+        (CyberCore::DumpRenderTree::maybeDump):
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.h:
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTreeClient.cpp:
-        (WebCore::DumpRenderTreeClient::dispatchDidHandleOnloadEvents):
+        (CyberCore::DumpRenderTreeClient::dispatchDidHandleOnloadEvents):
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTreeClient.h:
         * DumpRenderTree/DumpRenderTree.qtproj/tests-skipped.txt:
         * Scripts/run-webkit-tests:
@@ -19062,7 +19062,7 @@
         Adjust to loader changes.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
 
 2007-01-06  George Staikos  <staikos@kde.org>
 
@@ -19098,14 +19098,14 @@
 
         Reviewed by Anders.
 
-        * Scripts/run-webkit-tests: Launch Safari using the same WebKit build configuration as the layout tests used.
+        * Scripts/run-webkit-tests: Launch Safari using the same CyberKit build configuration as the layout tests used.
 
 2007-01-02  Zack Rusin  <zack@kde.org>
 
         Make it work after javascriptcore/bindings changes.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::initJSObjects):
+        (CyberCore::DumpRenderTree::initJSObjects):
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.pro:
 
 2007-01-01  David Kilzer  <ddkilzer@webkit.org>
@@ -19132,7 +19132,7 @@
         Stop DumpRenderTree from reporting false Frame/Node leaks due to new SVGImage
 
         * DumpRenderTree/DumpRenderTree.m:
-        (dumpRenderTree): clear WebCore cache before exiting
+        (dumpRenderTree): clear CyberCore cache before exiting
 
 2006-12-29  David Kilzer  <ddkilzer@webkit.org>
 
@@ -19157,7 +19157,7 @@
 
         Implement layoutTestController.dumpAsWebArchive() to test WebArchive format.
         Saves WebArchive plist in xml format, then alters file:// URLs to remove path
-        where WebKit was checked out.
+        where CyberKit was checked out.
 
         * DumpRenderTree/DumpRenderTree.m:
         (serializeWebArchiveToXML): Added.
@@ -19230,7 +19230,7 @@
         Added --threaded support to run-webkit-tests and DumpRenderTree.
 
         In "threaded" mode, DRT runs a concurrent JavaScript thread with each test,
-        stressing the thread safety of JavaScriptCore and the JavaScriptCore/WebCore
+        stressing the thread safety of CyberScriptCore and the CyberScriptCore/CyberCore
         interface. This is useful for tracking down bugs you might see on a system
         configured to use a PAC file.
 
@@ -19277,17 +19277,17 @@
         Mac generated outputs (by stripping out positioning information).
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::open):
-        (WebCore::DumpRenderTree::resetJSObjects):
-        (WebCore::DumpRenderTree::initJSObjects):
-        (WebCore::DumpRenderTree::dump):
-        (WebCore::DumpRenderTree::checkLoaded):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::resetJSObjects):
+        (CyberCore::DumpRenderTree::initJSObjects):
+        (CyberCore::DumpRenderTree::dump):
+        (CyberCore::DumpRenderTree::checkLoaded):
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.h:
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.pro:
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTreeClient.cpp:
-        (WebCore::DumpRenderTreeClient::DumpRenderTreeClient):
-        (WebCore::DumpRenderTreeClient::partClearedInBegin):
+        (CyberCore::DumpRenderTreeClient::DumpRenderTreeClient):
+        (CyberCore::DumpRenderTreeClient::partClearedInBegin):
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTreeClient.h:
         * DumpRenderTree/DumpRenderTree.qtproj/fontoverload.cpp: Added.
         (QX11Info::appDpiY):
@@ -19345,7 +19345,7 @@
         Reviewed by Darin and Alexey.
 
         Fix the Windows build, move various Client implementations out of
-        WebCore and into WebKit.
+        CyberCore and into CyberKit.
 
         * Spinneret/Spinneret.sln:
 
@@ -19373,8 +19373,8 @@
         Fix the run-webkit-tests script for Qt.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::open):
-        (WebCore::DumpRenderTree::readStdin):
+        (CyberCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::readStdin):
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.h:
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.pro: Added.
         * Scripts/run-webkit-tests:
@@ -19394,12 +19394,12 @@
         Get the DumpRenderTree app to compile again
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::open):
-        (WebCore::DumpRenderTree::readStdin):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::readStdin):
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.pro: Added.
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTreeClient.cpp:
-        (WebCore::DumpRenderTreeClient::DumpRenderTreeClient):
+        (CyberCore::DumpRenderTreeClient::DumpRenderTreeClient):
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTreeClient.h:
         * DumpRenderTree/DumpRenderTree.qtproj/main.cpp:
         (main):
@@ -19444,7 +19444,7 @@
         Fix the compile after recent API changes.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
         * DumpRenderTree/DumpRenderTree.qtproj/main.cpp:
         (main):
 
@@ -19497,7 +19497,7 @@
         Fixing compilation.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree): Adding
+        (CyberCore::DumpRenderTree::DumpRenderTree): Adding
         ContextMenuClient to the constructor
 
 2006-11-12  Mark Rowe  <bdash@webkit.org>
@@ -19515,7 +19515,7 @@
         Make DRT work again on Qt/Linux.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
 
 2006-11-10  Zack Rusin  <zack@kde.org>
 
@@ -19525,19 +19525,19 @@
         and work.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::checkLoaded):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::checkLoaded):
         * DumpRenderTree/DumpRenderTree.qtproj/main.cpp:
 
 2006-11-10  Zack Rusin  <zack@kde.org>
 
         Reviewed by Anders.
 
-        Making the Qt code work after refactorings in WebCore.
+        Making the Qt code work after refactorings in CyberCore.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::checkLoaded):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::checkLoaded):
         * DumpRenderTree/DumpRenderTree.qtproj/main.cpp:
 
 2006-11-08  Darin Adler  <darin@apple.com>
@@ -19801,11 +19801,11 @@
 
         Reviewed by Mitz.
 
-        Update references to webkit.opendarwin.org to webkit.org in Spinneret and WebKit.app.
+        Update references to webkit.opendarwin.org to webkit.org in Spinneret and CyberKit.app.
 
         * Spinneret/Spinneret/Spinneret.cpp:
         (_tWinMain):
-        * WebKitLauncher/WebKitNightlyEnabler.m:
+        * CyberKitLauncher/CyberKitNightlyEnabler.m:
         (cleanUpAfterOurselves):
 
 2006-10-31  Mark Rowe  <bdash@webkit.org>
@@ -19957,7 +19957,7 @@
         Fix Qt/Linux build.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::open):
 
 2006-10-24  Stephanie Lewis  <slewis@apple.com>
 
@@ -20061,8 +20061,8 @@
         http://bugs.webkit.org/show_bug.cgi?id=11304
         Bug 11304: Drosera fails to link as universal binary on PowerPC machine
 
-        * Drosera/Drosera.xcodeproj/project.pbxproj: Use -weak_framework to link against JavaScriptCore and WebCore directly
-        when they are not part of the WebKit umbrella framework.
+        * Drosera/Drosera.xcodeproj/project.pbxproj: Use -weak_framework to link against CyberScriptCore and CyberCore directly
+        when they are not part of the CyberKit umbrella framework.
 
 2006-10-18  Adam Roben  <aroben@apple.com>
 
@@ -20100,7 +20100,7 @@
         http://bugs.webkit.org/show_bug.cgi?id=11341
 
         Link editing behavior became a preference. DumpRenderTree needs to specify the
-        non-default behavior it wants (WebKitEditableLinkOnlyLiveWithShiftKey).
+        non-default behavior it wants (CyberKitEditableLinkOnlyLiveWithShiftKey).
 
         * DumpRenderTree/DumpRenderTree.m:
         (main):
@@ -20159,11 +20159,11 @@
         These are known to fail, and will be fixed at some point :-)
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::open):
-        (WebCore::DumpRenderTree::readStdin):
-        (WebCore::DumpRenderTree::readSkipFile):
-        (WebCore::DumpRenderTree::checkLoaded):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::readStdin):
+        (CyberCore::DumpRenderTree::readSkipFile):
+        (CyberCore::DumpRenderTree::checkLoaded):
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.h:
         * DumpRenderTree/DumpRenderTree.qtproj/tests-skipped.txt: Added.
 
@@ -20174,7 +20174,7 @@
         Specialization of alert() for DumpRenderTree - just log the output, don't show any message box.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTreeClient.cpp:
-        (WebCore::DumpRenderTreeClient::runJavaScriptAlert):
+        (CyberCore::DumpRenderTreeClient::runJavaScriptAlert):
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTreeClient.h:
 
 2006-10-12  Krzysztof Kowalczyk  <kkowalczyk@gmail.com>
@@ -20182,7 +20182,7 @@
         Reviewed by Maciej.
 
         Also regenerate GdkLauncher makefiles, since not doing that might
-        lead to mismatch between WebCore and GdkLauncher compiler settings.
+        lead to mismatch between CyberCore and GdkLauncher compiler settings.
 
         * Scripts/regenerate-makefiles:
 
@@ -20251,7 +20251,7 @@
         Fix Qt/Linux build by adapting the s/ScrollBar/Scrollbar/ changes.
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
 
 2006-10-05  Oliver Hunt  <ohunt@apple.com>
 
@@ -20265,7 +20265,7 @@
         Reviewed by Darin Adler.
 
         * Scripts/run-webkit-tests:
-        Add an environment variable, WebKitExpectedTestResultsDirectory, which controls where expected test
+        Add an environment variable, CyberKitExpectedTestResultsDirectory, which controls where expected test
         results should be.
 
 2006-10-05  Nikolas Zimmermann  <zimmermann@kde.org>
@@ -20273,7 +20273,7 @@
         Reviewed and landed by ap.
 
         Cmake: make it possible to install the libraries after having built using 'build-webkit'.
-        Just set the "WebKitInstallationPrefix" environment variable to your desired prefix.
+        Just set the "CyberKitInstallationPrefix" environment variable to your desired prefix.
 
         * Scripts/webkitdirs.pm:
 
@@ -20282,7 +20282,7 @@
         Reviewed by Stephanie.
 
         Switch the Qt buildbot to the standard set of build steps.
-        Have JavaScriptCoreTest check the output of run-javascriptcore-tests to
+        Have CyberScriptCoreTest check the output of run-javascriptcore-tests to
         see if any regressions were spotted, and fail the test if so.
 
         * BuildSlaveSupport/build.webkit.org-config/webkit/builders.py:
@@ -20363,7 +20363,7 @@
 
         Reviewed by Eric.
 
-        build-webkit tweak: Use WebKitBuild/$config as output dir (Release/Debug).
+        build-webkit tweak: Use CyberKitBuild/$config as output dir (Release/Debug).
 
         * Scripts/webkitdirs.pm:
 
@@ -20374,7 +20374,7 @@
         Proper build-webkit support for Qt/Linux.
 
         Compilation process is similar to OSX now, aka.
-        the build directory is RootCheckoutDir/WebKitBuild now.
+        the build directory is RootCheckoutDir/CyberKitBuild now.
 
         * Scripts/build-webkit: Recognize Qt.
         * Scripts/webkitdirs.pm: Add buildCMakeProject() logic.
@@ -20468,10 +20468,10 @@
         Get DumpRenderTree compiling and limping along on Windows.
 
         * DumpRenderTree/DumpRenderTree.vcproj/DumpRenderTree/DumpRenderTree.cpp:
-        (loadResourceIntoArray): Added this function that WebCore::ImageWin needs from WebKit
+        (loadResourceIntoArray): Added this function that CyberCore::ImageWin needs from CyberKit
         (main): Add NULL argument to Page constructor.
-        * DumpRenderTree/DumpRenderTree.vcproj/DumpRenderTree/DumpRenderTree.vcproj: Remove incorrect "wininet.dll" argument to CC, fix JavaScriptCore.lib path, add *_SECURE_NO_DEPRECATE #defines
-        * Scripts/webkitdirs.pm: Fix JavaScriptCore.lib path
+        * DumpRenderTree/DumpRenderTree.vcproj/DumpRenderTree/DumpRenderTree.vcproj: Remove incorrect "wininet.dll" argument to CC, fix CyberScriptCore.lib path, add *_SECURE_NO_DEPRECATE #defines
+        * Scripts/webkitdirs.pm: Fix CyberScriptCore.lib path
 
 2006-09-15  Mark Rowe  <opendarwin.org@bdash.net.nz>
 
@@ -20503,7 +20503,7 @@
         Reviewed by Tim H.
 
         Fixes last part of: http://bugs.webkit.org/show_bug.cgi?id=10644
-        Move QtLauncher down to WebKitQt.
+        Move QtLauncher down to CyberKitQt.
 
         * QtLauncher/CMakeLists.txt: Removed.
         * QtLauncher/main.cpp: Removed.
@@ -20517,13 +20517,13 @@
 
         * DumpRenderTree/DumpRenderTree.qtproj/CMakeLists.txt:
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::~DumpRenderTree):
-        (WebCore::DumpRenderTree::frame):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::~DumpRenderTree):
+        (CyberCore::DumpRenderTree::frame):
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.h:
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTreeClient.cpp: Added.
-        (WebCore::DumpRenderTreeClient::DumpRenderTreeClient):
-        (WebCore::DumpRenderTreeClient::~DumpRenderTreeClient):
+        (CyberCore::DumpRenderTreeClient::DumpRenderTreeClient):
+        (CyberCore::DumpRenderTreeClient::~DumpRenderTreeClient):
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTreeClient.h: Added.
 
 2006-09-03  Darin Adler  <darin@apple.com>
@@ -20583,7 +20583,7 @@
 
         * DumpRenderTree/TestNetscapePlugIn.subproj/main.c:
         (NPP_GetValue):
-        WebKit's NPP_GetValue() reference counting behavior has been changed to match Firefox.  NPObject return values
+        CyberKit's NPP_GetValue() reference counting behavior has been changed to match Firefox.  NPObject return values
         are expected to be retained by the plug-in, and released by the caller.
 
 2006-08-28  Nikolas Zimmermann  <zimmermann@kde.org>
@@ -20593,7 +20593,7 @@
         Fixes one chunk of: http://bugs.webkit.org/show_bug.cgi?id=10604
 
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::checkLoaded): Faster polling for isLoaded() in
+        (CyberCore::DumpRenderTree::checkLoaded): Faster polling for isLoaded() in
         Qt's DumpRenderTree.
 
       * Scripts/run-webkit-tests:
@@ -20621,11 +20621,11 @@
 
         * DumpRenderTree/DumpRenderTree.qtproj/CMakeLists.txt: Added.
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp: Added.
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::~DumpRenderTree):
-        (WebCore::DumpRenderTree::open):
-        (WebCore::DumpRenderTree::readStdin):
-        (WebCore::DumpRenderTree::checkLoaded):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::~DumpRenderTree):
+        (CyberCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::readStdin):
+        (CyberCore::DumpRenderTree::checkLoaded):
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.h: Added.
         * DumpRenderTree/DumpRenderTree.qtproj/main.cpp: Added.
         (main):
@@ -20638,11 +20638,11 @@
 
         * DumpRenderTree/DumpRenderTree.qtproj/CMakeLists.txt: Added.
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.cpp: Added.
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::~DumpRenderTree):
-        (WebCore::DumpRenderTree::open):
-        (WebCore::DumpRenderTree::readStdin):
-        (WebCore::DumpRenderTree::checkLoaded):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::~DumpRenderTree):
+        (CyberCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::readStdin):
+        (CyberCore::DumpRenderTree::checkLoaded):
         * DumpRenderTree/DumpRenderTree.qtproj/DumpRenderTree.h: Added.
         * DumpRenderTree/DumpRenderTree.qtproj/main.cpp: Added.
         (main):
@@ -20997,7 +20997,7 @@
         conflict with the universal SDK.
 
         * BuildSlaveSupport/build-launcher-app:
-        * WebKitLauncher/WebKitLauncher.xcodeproj/project.pbxproj:
+        * CyberKitLauncher/CyberKitLauncher.xcodeproj/project.pbxproj:
 
 2006-07-11  Alexey Proskuryakov  <ap@nypop.com>
 
@@ -21087,7 +21087,7 @@
         Now track three states: initializing, running, and closed.  If we are launched and the previous
         state was initializing then we likely just experienced a crash on launch.
 
-        * WebKitLauncher/WebKitNightlyEnabler.m:
+        * CyberKitLauncher/CyberKitNightlyEnabler.m:
         (myApplicationWillFinishLaunching): Improve wording of dialog.  Update to set new running state.
         (myApplicationWillTerminate): Update to use new states.
         (cleanUpAfterOurselves): Display alert if previous state was initializing.  Set state as
@@ -21100,7 +21100,7 @@
         - try to fix Windows build
 
         * DumpRenderTree/DumpRenderTree.vcproj/DumpRenderTree/DumpRenderTree.vcproj:
-        Remove include paths with "khtml" in them. Add one for "html" subdir or WebCore.
+        Remove include paths with "khtml" in them. Add one for "html" subdir or CyberCore.
 
 2006-07-09  David Kilzer  <ddkilzer@kilzer.net>
 
@@ -21244,11 +21244,11 @@
         Bug 9692: Warning about Safari extensions on every launch is obnoxious
         http://bugs.webkit.org/show_bug.cgi?id=9692
 
-        * WebKitLauncher/WebKitNightlyEnabler.m:
+        * CyberKitLauncher/CyberKitNightlyEnabler.m:
         (myApplicationWillTerminate): Note that we are exiting cleanly.
         (cleanUpAfterOurselves): Install bundle load tracking only if we failed
          to exit cleanly on our last invocation.  This doesn't play nicely with
-         multiple concurrent instances of WebKit.app so it can be disabled via
+         multiple concurrent instances of CyberKit.app so it can be disabled via
          defaults write com.apple.Safari WKNEShouldMonitorShutdowns -bool NO.
 
 2006-07-02  Mark Rowe  <opendarwin.org@bdash.net.nz>
@@ -21258,7 +21258,7 @@
         Bug 9654: Refresh Loop when accessing feed URLs
         http://bugs.webkit.org/show_bug.cgi?id=9654
 
-        * WebKitLauncher/Info.plist: Don't claim to handle feed:// URLs.
+        * CyberKitLauncher/Info.plist: Don't claim to handle feed:// URLs.
 
 2006-07-02  Mark Rowe  <opendarwin.org@bdash.net.nz>
 
@@ -21268,8 +21268,8 @@
         "Safari extensions"
         http://bugs.webkit.org/show_bug.cgi?id=9689
 
-        * WebKitLauncher/WebKitLauncher.xcodeproj/project.pbxproj:
-        * WebKitLauncher/WebKitNightlyEnabler.m:
+        * CyberKitLauncher/CyberKitLauncher.xcodeproj/project.pbxproj:
+        * CyberKitLauncher/CyberKitNightlyEnabler.m:
         (myBundleDidLoad): Keep track of if any bundles that are loaded.
         (myApplicationWillFinishLaunching):  Notify user if any bundles are loaded.
         (cleanUpAfterOurselves): Register for NSBundleDidLoadNotification and
@@ -21280,7 +21280,7 @@
 
         Reviewed by Darin Adler.
 
-        - first check-in of a Gdk shell for testing WebKit
+        - first check-in of a Gdk shell for testing CyberKit
 
         * GdkLauncher: Added.
 
@@ -21323,13 +21323,13 @@
         Bug 9614: Nightly builds should notify user if a newer build is available
         http://bugs.webkit.org/show_bug.cgi?id=9614
 
-        * BuildSlaveSupport/build-launcher-app: Write revision number to WebKit.app's VERSION file.
+        * BuildSlaveSupport/build-launcher-app: Write revision number to CyberKit.app's VERSION file.
         * BuildSlaveSupport/build-launcher-dmg: Pass revision number to server-side nightly maintenance
         script so it can keep track of the latest revision.
         * Scripts/run-webkit-tests: Pass build-dumprendertree's exit status through correctly.
-        * WebKitLauncher/VERSION: Added.  Placeholder for SVN revision number
-        * WebKitLauncher/WebKitLauncher.xcodeproj/project.pbxproj:
-        * WebKitLauncher/start.html: Retrieve revision number from VERSION file, and pass it through to
+        * CyberKitLauncher/VERSION: Added.  Placeholder for SVN revision number
+        * CyberKitLauncher/CyberKitLauncher.xcodeproj/project.pbxproj:
+        * CyberKitLauncher/start.html: Retrieve revision number from VERSION file, and pass it through to
         the nightly start page.
 
 2006-06-26  Jonas Witt  <jonas.witt@gmail.com>
@@ -21470,7 +21470,7 @@
         * DrawTest/Info.plist: Added copyright statement.
         * Drosera/Info.plist: Ditto.
         * DumpRenderTree/TestNetscapePlugIn.subproj/Info.plist: Ditto.
-        * WebKitLauncher/Info.plist: Ditto.
+        * CyberKitLauncher/Info.plist: Ditto.
 
 2006-06-24  David Kilzer  <ddkilzer@kilzer.net>
 
@@ -21499,7 +21499,7 @@
 
         - Add an -all-interfaces (-a) flag to bind to all interfaces, not just
           127.0.0.1. Useful for testing with WinIE running on another machine;
-        - don't call checkFrameworks() - we do not need a built WebKit here;
+        - don't call checkFrameworks() - we do not need a built CyberKit here;
         - changed tabs to spaces;
         - disable HTTP keepalive (since Apache doesn't spawn sub-processes in
           interactive mode, they were a hassle when testing with several browsers, as one
@@ -21538,7 +21538,7 @@
         - see http://bugs.webkit.org/show_bug.cgi?id=9539
         Another case error preventing build
 
-        * Scripts/webkitdirs.pm: Building WebKit now requires Xcode 2.3.
+        * Scripts/webkitdirs.pm: Building CyberKit now requires Xcode 2.3.
 
 2006-06-22  Timothy Hatcher  <timothy@apple.com>
 
@@ -21643,8 +21643,8 @@
         (myExecve):
         (main):
         * Scripts/build-drosera
-        * WebKitLauncher/WebKitLauncher.xcodeproj/project.pbxproj:
-        * WebKitLauncher/main.m:
+        * CyberKitLauncher/CyberKitLauncher.xcodeproj/project.pbxproj:
+        * CyberKitLauncher/main.m:
         (main):
 
 2006-06-20  Timothy Hatcher  <timothy@apple.com>
@@ -21770,7 +21770,7 @@
         * Scripts/prepare-ChangeLog: Use "svn diff" instead of "svn stat" to find changed files,
         then save the diff output for reuse.  Keep a status variable if changes are made to
         LayoutTests so "svn diff LayoutTests" doesn't have to be run to check for changes when
-        WebCore is updated.  Added -h|--help command-line switch and help message.  Move test
+        CyberCore is updated.  Added -h|--help command-line switch and help message.  Move test
         for no changed files closer to the beginning of the program.
 
 2006-06-10  Mitz Pettel  <opendarwin.org@mitzpettel.com>
@@ -21957,7 +21957,7 @@
         - try to fix no-SVG, no-XPATH build
 
         * Scripts/build-webkit: Pass FEATURE_DEFINES rather than GCC_PREPROCESSOR_DEFINITIONS,
-        since the former is what's used in the WebCore project now.
+        since the former is what's used in the CyberCore project now.
 
 2006-05-17  Darin Adler  <darin@apple.com>
 
@@ -22003,7 +22003,7 @@
         Reviewed by kevin.
 
         * DumpRenderTree/DumpRenderTree.vcproj/DumpRenderTree/DumpRenderTree.vcproj: Fix include paths
-        * Scripts/build-webkit: Build WebKitWin instead of WebCore/JavaScriptCore (WebKitWin builds those indirectly).
+        * Scripts/build-webkit: Build CyberKitWin instead of CyberCore/CyberScriptCore (CyberKitWin builds those indirectly).
         * Spinneret/Spinneret/Spinneret.cpp:
         (SpinneretWebHost::loadEnd): Add callback for loadEnd() to determine success/failure of page load.
         (_tWinMain): Load built-in test content here instead of in lower-level code.
@@ -22066,10 +22066,10 @@
         (_tWinMain):
         * Spinneret/Spinneret/Spinneret.vcproj:
         * Spinneret/Spinneret/WebFrame.cpp:
-        (WebKit::WebFrame::WebFramePrivate::~WebFramePrivate):
-        (WebKit::WebFrame::WebFrame):
-        (WebKit::WebFrame::~WebFrame):
-        (WebKit::WebFrame::impl):
+        (CyberKit::WebFrame::WebFramePrivate::~WebFramePrivate):
+        (CyberKit::WebFrame::WebFrame):
+        (CyberKit::WebFrame::~WebFrame):
+        (CyberKit::WebFrame::impl):
         * Spinneret/Spinneret/WebFrame.h:
         * Spinneret/Spinneret/WebView.cpp:
         * Spinneret/Spinneret/stdafx.h:
@@ -22138,7 +22138,7 @@
         * iExploder/htdocs/htmltags.in:
         * iExploder/htdocs/iexploder.cgi:
          - Updated to support the latest HTML & CSS tags, properties, and values from both
-           the WebKit and Mozilla CVS tree
+           the CyberKit and Mozilla CVS tree
          - cssproperties.in cleanup
          - Modularized the code a little bit.
          - Fix subtest bug that was causing last 5 tags to be missed
@@ -22211,7 +22211,7 @@
         (thus, Apache is still running), e.g.:
          curl -o iexploder293.html "http://127.0.0.1:8000/iexploder.cgi?lookup=1&test=293"
 
-        Additionally, there are some useful scripts in WebKitTools/iExploder/tools directory.
+        Additionally, there are some useful scripts in CyberKitTools/iExploder/tools directory.
 
         * Scripts/run-iexploder-tests: Added.
         * iExploder: Added.
@@ -22294,35 +22294,35 @@
         trash at the end of the file.
         * BuildSlaveSupport/build-launcher-dmg: Ditto.
 
-        * WebKitLauncher/main.m: Removed trash at end of file.
+        * CyberKitLauncher/main.m: Removed trash at end of file.
 
-        * WebKitLauncher/WebKitLauncher.xcodeproj/project.pbxproj: Let Xcode update comments
+        * CyberKitLauncher/CyberKitLauncher.xcodeproj/project.pbxproj: Let Xcode update comments
         to make name match.
 
 2006-04-06  Mark Rowe  <opendarwin.org@bdash.net.nz>
 
         Reviewed by Darin, landed by Maciej.
 
-        * BuildSlaveSupport/build-launcher-app: Added.  Builds WebKit.app from WebKitLauncher
-          and bundles the WebKit frameworks inside it.
+        * BuildSlaveSupport/build-launcher-app: Added.  Builds CyberKit.app from CyberKitLauncher
+          and bundles the CyberKit frameworks inside it.
         * BuildSlaveSupport/build-launcher-dmg: Added.  Builds, and optionally uploads, a disk image
-          containing WebKit.app.
+          containing CyberKit.app.
         * BuildSlaveSupport/run-performance-tests:  Use currentSVNRevision.
         * Scripts/webkitdirs.pm:  Add currentSVNRevision to retrieve the revision
           number of the SVN working copy.
-        * WebKitLauncher: Added.
-        * WebKitLauncher/Info.plist: Added.
-        * WebKitLauncher/WebKitLauncher.xcodeproj: Added.
-        * WebKitLauncher/WebKitLauncher.xcodeproj/project.pbxproj: Added.
-        * WebKitLauncher/WebKitNightlyEnabler.m: Added.  This makes
-          up the WebKitNightlyEnabler dylib which is loaded into Safari's address space
-          to cause LaunchServices to treat Safari.app as WebKit.app when it is run from
+        * CyberKitLauncher: Added.
+        * CyberKitLauncher/Info.plist: Added.
+        * CyberKitLauncher/CyberKitLauncher.xcodeproj: Added.
+        * CyberKitLauncher/CyberKitLauncher.xcodeproj/project.pbxproj: Added.
+        * CyberKitLauncher/CyberKitNightlyEnabler.m: Added.  This makes
+          up the CyberKitNightlyEnabler dylib which is loaded into Safari's address space
+          to cause LaunchServices to treat Safari.app as CyberKit.app when it is run from
           the nightly launcher.
-        * WebKitLauncher/main.m: Added.  The WebKit.app launcher.
+        * CyberKitLauncher/main.m: Added.  The CyberKit.app launcher.
           It sets up the environment to have Safari use the bundled frameworks
-          and load the WebKitNightlyEnabler dylib before exec'ing Safari
-        * WebKitLauncher/start.html: Added.
-        * WebKitLauncher/webkit.icns: Added.
+          and load the CyberKitNightlyEnabler dylib before exec'ing Safari
+        * CyberKitLauncher/start.html: Added.
+        * CyberKitLauncher/webkit.icns: Added.
 
 2006-04-05  Darin Adler  <darin@apple.com>
 
@@ -22427,14 +22427,14 @@
         Remove WebFrame::viewImpl(), setMainFrame on page.
 
         * Spinneret/Spinneret/WebFrame.cpp:
-        (WebKit::WebFrame::WebFrame):
+        (CyberKit::WebFrame::WebFrame):
         * Spinneret/Spinneret/WebFrame.h:
         * Spinneret/Spinneret/WebView.cpp:
-        (WebKit::WebView::mouseMoved):
-        (WebKit::WebView::mouseDown):
-        (WebKit::WebView::mouseUp):
-        (WebKit::WebView::mouseDoubleClick):
-        (WebKit::WebViewWndProc):
+        (CyberKit::WebView::mouseMoved):
+        (CyberKit::WebView::mouseDown):
+        (CyberKit::WebView::mouseUp):
+        (CyberKit::WebView::mouseDoubleClick):
+        (CyberKit::WebViewWndProc):
 
 2006-03-30  Eric Seidel  <eseidel@apple.com>
 
@@ -22443,12 +22443,12 @@
         Fix html editing input & basic form submission.
 
         * Spinneret/Spinneret/WebFrame.cpp:
-        (WebKit::WebFrame::submitForm):
-        (WebKit::WebFrame::loadURL):
+        (CyberKit::WebFrame::submitForm):
+        (CyberKit::WebFrame::loadURL):
         * Spinneret/Spinneret/WebFrame.h:
         * Spinneret/Spinneret/WebView.cpp:
-        (WebKit::WebView::keyPress):
-        (WebKit::WebViewWndProc):
+        (CyberKit::WebView::keyPress):
+        (CyberKit::WebViewWndProc):
 
 2006-03-28  Justin Garcia  <justin.garcia@apple.com>
 
@@ -22525,7 +22525,7 @@
         Build fix.
 
         * Spinneret/Spinneret/WebFrame.cpp:
-        (WebKit::WebFrame::openURL): replace QString with DeprecatedString
+        (CyberKit::WebFrame::openURL): replace QString with DeprecatedString
 
 2006-03-21  Beth Dakin  <bdakin@apple.com>
 
@@ -22549,12 +22549,12 @@
         * Spinneret/Spinneret/Spinneret.vcproj:
         * Spinneret/Spinneret/WebFrame.h:
         * Spinneret/Spinneret/WebView.cpp:
-        (WebKit::WebView::mouseMoved):
-        (WebKit::WebView::mouseDown):
-        (WebKit::WebView::mouseUp):
-        (WebKit::WebView::mouseDoubleClick):
-        (WebKit::WebView::keyPress):
-        (WebKit::WebViewWndProc):
+        (CyberKit::WebView::mouseMoved):
+        (CyberKit::WebView::mouseDown):
+        (CyberKit::WebView::mouseUp):
+        (CyberKit::WebView::mouseDoubleClick):
+        (CyberKit::WebView::keyPress):
+        (CyberKit::WebViewWndProc):
 
 2006-03-19  Darin Adler  <darin@apple.com>
 
@@ -22582,11 +22582,11 @@
         Fix Spinneret to pass Events as const & not as pointers.
 
         * Spinneret/Spinneret/WebView.cpp:
-        (WebKit::WebView::mouseMoved):
-        (WebKit::WebView::mouseDown):
-        (WebKit::WebView::mouseUp):
-        (WebKit::WebView::mouseDoubleClick):
-        (WebKit::WebView::keyPress):
+        (CyberKit::WebView::mouseMoved):
+        (CyberKit::WebView::mouseDown):
+        (CyberKit::WebView::mouseUp):
+        (CyberKit::WebView::mouseDoubleClick):
+        (CyberKit::WebView::keyPress):
 
 2006-03-17  Eric Seidel  <eseidel@apple.com>
 
@@ -22595,8 +22595,8 @@
         Add support for basic HTML editing.
 
         * Spinneret/Spinneret/WebView.cpp:
-        (WebKit::WebView::WebView):
-        (WebKit::WebView::keyPress):
+        (CyberKit::WebView::WebView):
+        (CyberKit::WebView::keyPress):
 
 2006-03-17  Eric Seidel  <eseidel@apple.com>
 
@@ -22623,12 +22623,12 @@
         Add resize, scroll event support.
 
         * Spinneret/Spinneret/WebView.cpp:
-        (WebKit::WebView::mouseMoved):
-        (WebKit::WebView::mouseDown):
-        (WebKit::WebView::mouseUp):
-        (WebKit::WebView::mouseDoubleClick):
-        (WebKit::WebView::keyPress):
-        (WebKit::WebViewWndProc):
+        (CyberKit::WebView::mouseMoved):
+        (CyberKit::WebView::mouseDown):
+        (CyberKit::WebView::mouseUp):
+        (CyberKit::WebView::mouseDoubleClick):
+        (CyberKit::WebView::keyPress):
+        (CyberKit::WebViewWndProc):
         * Spinneret/Spinneret/WebView.h:
 
 2006-03-16  Eric Seidel  <eseidel@apple.com>
@@ -22683,8 +22683,8 @@
         Add handling of space and shift-space for scrolling.
 
         * Spinneret/Spinneret/WebView.cpp:
-        (WebKit::scrollMessageForKey):
-        (WebKit::WebViewWndProc):
+        (CyberKit::scrollMessageForKey):
+        (CyberKit::WebViewWndProc):
 
 2006-03-10  Eric Seidel  <eseidel@apple.com>
 
@@ -22693,12 +22693,12 @@
         Add scrolling support into Spinneret.
 
         * Spinneret/Spinneret/WebFrame.cpp:
-        (WebKit::WebFrame::paint):
+        (CyberKit::WebFrame::paint):
         * Spinneret/Spinneret/WebView.cpp:
-        (WebKit::WebView::createWebView):
-        (WebKit::calculateScrollDelta):
-        (WebKit::scrollMessageForKey):
-        (WebKit::WebViewWndProc):
+        (CyberKit::WebView::createWebView):
+        (CyberKit::calculateScrollDelta):
+        (CyberKit::scrollMessageForKey):
+        (CyberKit::WebViewWndProc):
 
 2006-03-13  Eric Seidel  <eseidel@apple.com>
 
@@ -22790,15 +22790,15 @@
         Reviewed by Eric.
 
         - make link clicks work by handling link click requests
-        from WebCore
+        from CyberCore
 
         * Spinneret/Spinneret/Spinneret.cpp:
         (updateLocationBar):
         * Spinneret/Spinneret/Spinneret.h:
         * Spinneret/Spinneret/WebFrame.cpp:
-        (WebKit::WebFrame::WebFrame):
-        (WebKit::WebFrame::openURL):
-        (WebKit::WebFrame::loadURL):
+        (CyberKit::WebFrame::WebFrame):
+        (CyberKit::WebFrame::openURL):
+        (CyberKit::WebFrame::loadURL):
         * Spinneret/Spinneret/WebFrame.h:
 
 2006-03-08  Eric Seidel  <eseidel@apple.com>
@@ -22811,10 +22811,10 @@
         * Spinneret/Spinneret/Spinneret.cpp:
         (_tWinMain):
         * Spinneret/Spinneret/WebFrame.cpp:
-        (WebKit::WebFrame::receivedAllData):
-        (WebKit::WebFrame::paint):
+        (CyberKit::WebFrame::receivedAllData):
+        (CyberKit::WebFrame::paint):
         * Spinneret/Spinneret/WebView.cpp:
-        (WebKit::WebView::createWebView):
+        (CyberKit::WebView::createWebView):
 
 2006-03-09  Alexey Proskuryakov  <ap@nypop.com>
 
@@ -22833,12 +22833,12 @@
         (MyEditProc):
         * Spinneret/Spinneret/Spinneret.vcproj:
         * Spinneret/Spinneret/WebFrame.cpp:
-        (WebKit::WebFrame::loadURL):
-        (WebKit::WebFrame::receivedData):
-        (WebKit::WebFrame::receivedAllData):
+        (CyberKit::WebFrame::loadURL):
+        (CyberKit::WebFrame::receivedData):
+        (CyberKit::WebFrame::receivedAllData):
         * Spinneret/Spinneret/WebFrame.h:
         * Spinneret/Spinneret/WebView.cpp:
-        (WebKit::WebView::WebView):
+        (CyberKit::WebView::WebView):
 
 2006-03-08  Darin Adler  <darin@apple.com>
 
@@ -22873,7 +22873,7 @@
         Reviewed by hyatt.
 
         * Spinneret/Spinneret/WebFrame.cpp:
-        (WebKit::WebFrame::paint): force layout before painting
+        (CyberKit::WebFrame::paint): force layout before painting
 
 2006-03-06  Justin Garcia  <justin.garcia@apple.com>
 
@@ -22899,7 +22899,7 @@
 
 2006-03-05  Darin Adler  <darin@apple.com>
 
-        - check in a script to do a "big" rename in WebCore
+        - check in a script to do a "big" rename in CyberCore
           (can be run whenever we're ready to do it)
 
         * Scripts/do-webcore-rename: Added.
@@ -22909,7 +22909,7 @@
         Reviewed by Eric.
 
         * Spinneret/Spinneret/WebFrame.cpp:
-        (WebKit::WebFrame::loadFilePath): Close file when done.
+        (CyberKit::WebFrame::loadFilePath): Close file when done.
 
 2006-03-05  Mitz Pettel  <opendarwin.org@mitzpettel.com>
 
@@ -22935,10 +22935,10 @@
         (MyRegisterClass):
         * Spinneret/Spinneret/Spinneret.vcproj:
         * Spinneret/Spinneret/WebFrame.cpp:
-        (WebKit::WebFrame::loadFilePath):
-        (WebKit::WebFrame::paint):
+        (CyberKit::WebFrame::loadFilePath):
+        (CyberKit::WebFrame::paint):
         * Spinneret/Spinneret/WebView.cpp:
-        (WebKit::registerWebViewWithInstance):
+        (CyberKit::registerWebViewWithInstance):
 
 2006-03-04  Eric Seidel  <eseidel@apple.com>
 
@@ -22951,9 +22951,9 @@
         (WndProc):
         (MyEditProc):
         * Spinneret/Spinneret/WebView.cpp:
-        (WebKit::registerWebViewWithInstance):
-        (WebKit::WebView::createWebView):
-        (WebKit::WebViewWndProc):
+        (CyberKit::registerWebViewWithInstance):
+        (CyberKit::WebView::createWebView):
+        (CyberKit::WebViewWndProc):
 
 2006-03-04  Alexey Proskuryakov  <ap@nypop.com>
 
@@ -22968,7 +22968,7 @@
         Reviewed by Eric.
 
         * Spinneret/Spinneret/WebFrame.cpp:
-        (WebKit::WebFrame::loadFilePath): Improved local file loading.
+        (CyberKit::WebFrame::loadFilePath): Improved local file loading.
 
 2006-03-03  Eric Seidel  <eseidel@apple.com>
 
@@ -22995,7 +22995,7 @@
         * Scripts/run-webkit-tests:
         * Scripts/webkitdirs.pm:
         * Spinneret/Spinneret/WebView.cpp:
-        (WebKit::WebView::WebView):
+        (CyberKit::WebView::WebView):
 
 2006-03-03  Eric Seidel  <eseidel@apple.com>
 
@@ -23011,25 +23011,25 @@
         (MyEditProc):
         * Spinneret/Spinneret/Spinneret.vcproj:
         * Spinneret/Spinneret/WebFrame.cpp: Added.
-        (WebKit::WebFrame::WebFramePrivate::WebFramePrivate):
-        (WebKit::WebFrame::WebFramePrivate::~WebFramePrivate):
-        (WebKit::WebFrame::WebFrame):
-        (WebKit::WebFrame::loadFilePath):
-        (WebKit::WebFrame::loadHTMLString):
-        (WebKit::WebFrame::paint):
-        (WebKit::WebFrame::impl):
-        (WebKit::WebFrame::viewImpl):
+        (CyberKit::WebFrame::WebFramePrivate::WebFramePrivate):
+        (CyberKit::WebFrame::WebFramePrivate::~WebFramePrivate):
+        (CyberKit::WebFrame::WebFrame):
+        (CyberKit::WebFrame::loadFilePath):
+        (CyberKit::WebFrame::loadHTMLString):
+        (CyberKit::WebFrame::paint):
+        (CyberKit::WebFrame::impl):
+        (CyberKit::WebFrame::viewImpl):
         * Spinneret/Spinneret/WebFrame.h: Added.
         * Spinneret/Spinneret/WebView.cpp:
-        (WebKit::WebView::WebViewPrivate::~WebViewPrivate):
-        (WebKit::WebView::WebView):
-        (WebKit::WebView::windowHandle):
-        (WebKit::WebView::mainFrame):
-        (WebKit::WebView::mouseMoved):
-        (WebKit::WebView::mouseDown):
-        (WebKit::WebView::mouseUp):
-        (WebKit::WebView::mouseDoubleClick):
-        (WebKit::WebViewWndProc):
+        (CyberKit::WebView::WebViewPrivate::~WebViewPrivate):
+        (CyberKit::WebView::WebView):
+        (CyberKit::WebView::windowHandle):
+        (CyberKit::WebView::mainFrame):
+        (CyberKit::WebView::mouseMoved):
+        (CyberKit::WebView::mouseDown):
+        (CyberKit::WebView::mouseUp):
+        (CyberKit::WebView::mouseDoubleClick):
+        (CyberKit::WebViewWndProc):
         * Spinneret/Spinneret/WebView.h:
 
 2006-03-02  Eric Seidel  <eseidel@apple.com>
@@ -23037,13 +23037,13 @@
         Reviewed by ggaren.
 
         * Spinneret/Spinneret/WebView.cpp:
-        (WebKit::registerWebViewWithInstance):
-        (WebKit::WebView::WebView):
-        (WebKit::WebView::mouseMoved):
-        (WebKit::WebView::mouseDown):
-        (WebKit::WebView::mouseUp):
-        (WebKit::WebView::mouseDoubleClick):
-        (WebKit::WebViewWndProc):
+        (CyberKit::registerWebViewWithInstance):
+        (CyberKit::WebView::WebView):
+        (CyberKit::WebView::mouseMoved):
+        (CyberKit::WebView::mouseDown):
+        (CyberKit::WebView::mouseUp):
+        (CyberKit::WebView::mouseDoubleClick):
+        (CyberKit::WebViewWndProc):
         * Spinneret/Spinneret/WebView.h:
 
 2006-03-01  Eric Seidel  <eseidel@apple.com>
@@ -23057,11 +23057,11 @@
         * Spinneret/Spinneret/Spinneret.cpp:
         (_tWinMain):
         * Spinneret/Spinneret/WebView.cpp:
-        (WebKit::registerWebViewWithInstance):
-        (WebKit::WebView::WebView):
-        (WebKit::WebView::~WebView):
-        (WebKit::WebView::drawRect):
-        (WebKit::WndProc):
+        (CyberKit::registerWebViewWithInstance):
+        (CyberKit::WebView::WebView):
+        (CyberKit::WebView::~WebView):
+        (CyberKit::WebView::drawRect):
+        (CyberKit::WndProc):
         * Spinneret/Spinneret/WebView.h:
 
 2006-03-01  Justin Garcia  <justin.garcia@apple.com>
@@ -23079,7 +23079,7 @@
 
         Reviewed by hyatt.
 
-        Add a stub win32 application to test WebCore drawing on windows.
+        Add a stub win32 application to test CyberCore drawing on windows.
 
         * Spinneret: Added.
         * Spinneret/Spinneret: Added.
@@ -23096,15 +23096,15 @@
         * Spinneret/Spinneret/Spinneret.rc: Added.
         * Spinneret/Spinneret/Spinneret.vcproj: Added.
         * Spinneret/Spinneret/WebView.cpp: Added.
-        (WebKit::WebView::WebViewPrivate::WebViewPrivate):
-        (WebKit::WebView::WebViewPrivate::~WebViewPrivate):
-        (WebKit::registerWebViewWithInstance):
-        (WebKit::WebView::createWebView):
-        (WebKit::WebView::WebView):
-        (WebKit::WebView::~WebView):
-        (WebKit::WebView::drawRect):
-        (WebKit::WebView::windowHandle):
-        (WebKit::WndProc):
+        (CyberKit::WebView::WebViewPrivate::WebViewPrivate):
+        (CyberKit::WebView::WebViewPrivate::~WebViewPrivate):
+        (CyberKit::registerWebViewWithInstance):
+        (CyberKit::WebView::createWebView):
+        (CyberKit::WebView::WebView):
+        (CyberKit::WebView::~WebView):
+        (CyberKit::WebView::drawRect):
+        (CyberKit::WebView::windowHandle):
+        (CyberKit::WndProc):
         * Spinneret/Spinneret/WebView.h: Added.
         * Spinneret/Spinneret/small.ico: Added.
         * Spinneret/Spinneret/stdafx.cpp: Added.
@@ -23299,7 +23299,7 @@
         Also added support for .shtml and .text files. Text files give an empty
         *-expected.txt, but a correct image.
 
-        Apache only listens on the loopback interface. It writes logs to /tmp/WebKit.
+        Apache only listens on the loopback interface. It writes logs to /tmp/CyberKit.
 
         * Scripts/run-webkit-tests:
 
@@ -23335,7 +23335,7 @@
         Reviewed by Maciej.
 
         - fix http://bugs.webkit.org/show_bug.cgi?id=7357
-          REGRESSION: Warnings from WebKit scripts if PBXProductDirectory is undefined
+          REGRESSION: Warnings from CyberKit scripts if PBXProductDirectory is undefined
 
         * Scripts/webkitdirs.pm: only call chomp if PBXProductDirectory is configured.
 
@@ -23347,7 +23347,7 @@
 
         Reviewed by hyatt.
 
-        Make Win32 have the same default "WebKitBuild" directory behavior.
+        Make Win32 have the same default "CyberKitBuild" directory behavior.
 
         * Scripts/build-webkit:
         * Scripts/webkitdirs.pm:
@@ -23419,7 +23419,7 @@
         (-[LayoutTestController invokeUndefinedMethodFromWebScript:withArguments:]):
         Added a dummy method for the sake of LayoutTests/plugins/
         undefined-property-crash.html. (It tests a crash due to fallback
-        object use. WebCore won't create a fallback object if the method is
+        object use. CyberCore won't create a fallback object if the method is
         not defined.)
 
 2006-02-14  Eric Seidel  <eseidel@apple.com>
@@ -23585,7 +23585,7 @@
 2006-01-23  Darin Adler  <darin@apple.com>
 
          - fix http://bugs.webkit.org/show_bug.cgi?id=3608
-           need script to update localizable strings file in WebKit
+           need script to update localizable strings file in CyberKit
 
         * Scripts/update-webkit-localizable-strings: Added.
 
@@ -23626,7 +23626,7 @@
         Reviewed by eseidel.
 
         - fix for http://bugs.webkit.org/show_bug.cgi?id=6682
-        Call to checkWebCoreSVGSupport() broken in build-drawtest and run-drawtest
+        Call to checkCyberCoreSVGSupport() broken in build-drawtest and run-drawtest
 
         * Scripts/build-drawtest: Changed bareword 'true' to 1.
         * Scripts/run-drawtest: Changed bareword 'true' to 1.
@@ -23843,7 +23843,7 @@
         (main):
         (1) Put the WebView in an invisible window, because PlugIns are
         optimized not to load if there's no parent window.
-        (2) Tell WebKit to load any PlugIns in the directory from which we
+        (2) Tell CyberKit to load any PlugIns in the directory from which we
         loaded. This means we can build nasty PlugIns alongside DumpRenderTree
         and they'll load automagically during layout testing, but they won't be
         added to the user's system, hosing apps like Safari.
@@ -23959,7 +23959,7 @@
         Reviewed by Eric Seidel.
 
         - fix http://bugs.webkit.org/show_bug.cgi?id=4990
-          WebKit needs to use a local pasteboard during testing
+          CyberKit needs to use a local pasteboard during testing
 
         * DumpRenderTree/DumpRenderTree.m:
         (main): Call poseAs to substitute our NSPasteboard class for the default one.
@@ -24021,13 +24021,13 @@
         Reviewed by darin.
 
         Update scripts to run SVG tests automatically (w/o --svg) if
-        WebCore is built with SVG support.
+        CyberCore is built with SVG support.
 
         * Scripts/build-drawtest: SVG support required
         * Scripts/build-dumpkcanvastree: Removed.
         * Scripts/run-drawtest: SVG support required to run
-        * Scripts/run-webkit-tests: pass *.svg files if WebCore has support
-        * Scripts/webkitdirs.pm: changed CheckWebCoreSVGSupport
+        * Scripts/run-webkit-tests: pass *.svg files if CyberCore has support
+        * Scripts/webkitdirs.pm: changed CheckCyberCoreSVGSupport
 
 2005-11-28  Alexey Proskuryakov  <ap@nypop.com>
 
@@ -24061,10 +24061,10 @@
         Reviewed by hyatt.
 
         Some simple fixes to the build/test scripts now that SVG uses the
-        WebCore DOM.  JSC+SVG is no longer needed, nor is RTTI support
+        CyberCore DOM.  JSC+SVG is no longer needed, nor is RTTI support
         or symlinks for KDOM.
 
-        * Scripts/build-webkit: No longer builds JavaScriptCore+SVG
+        * Scripts/build-webkit: No longer builds CyberScriptCore+SVG
         * Scripts/prepare-ChangeLog: handles missing LayoutTests directory
         * Scripts/run-webkit-tests: now runs SVG tests using DRT
         * Scripts/webkitdirs.pm: use SVG symbols instead of RTTI
@@ -24170,7 +24170,7 @@
         Reviewed by xenon.
 
         Updated all the scripts for the move:
-        WebCore/layout-tests -> LayoutTests
+        CyberCore/layout-tests -> LayoutTests
 
         * Scripts/check-dom-results:
         * Scripts/prepare-ChangeLog:
@@ -24203,7 +24203,7 @@
         * DrawTest/DrawTestView.m:
         * DrawTest/SVGTest.m:
         * DrawTest/TestController.m:
-        Updated for WebCore+SVG -> WebCore rename.
+        Updated for CyberCore+SVG -> CyberCore rename.
         http://bugs.webkit.org/show_bug.cgi?id=5141
 
 2005-09-26  Eric Seidel  <eseidel@apple.com>
@@ -24241,9 +24241,9 @@
 
         Reviewed by mjs.
 
-        Update tools for WebCore+SVG -> WebCore rename.
+        Update tools for CyberCore+SVG -> CyberCore rename.
         Also fold several SVG specific tools into their original
-        WebCore counterparts.
+        CyberCore counterparts.
         http://bugs.webkit.org/show_bug.cgi?id=5003
 
         * DrawTest/DrawTest.xcodeproj/project.pbxproj:
@@ -24298,7 +24298,7 @@
         Reviewed, tweaked, and landed by Darin Adler.
 
         - fixed http://bugs.webkit.org/show_bug.cgi?id=4286
-          .Mac prefpane crashes when Safari using CVS WebKit is running
+          .Mac prefpane crashes when Safari using CVS CyberKit is running
 
         * Scripts/run-safari: Set WEBKIT_UNSET_DYLD_FRAMEWORK_PATH.
         * Scripts/run-webkit-app: Ditto.
@@ -24321,7 +24321,7 @@
         Reviewed by darin
 
         * Scripts/update-webkitsysteminterface: Added.
-        Builds webkitsysteminterface and moves the built product and header into WebKitLibraries
+        Builds webkitsysteminterface and moves the built product and header into CyberKitLibraries
 
 2005-09-01  John Sullivan  <sullivan@apple.com>
 
@@ -24635,8 +24635,8 @@
 
         Reviewed by darin.
 
-        * Scripts/run-webkit-tests-svg: now uses WebCore/svg-tests
-        * checkout-svg: links WebCore/svg-tests to SVGSupport/layout-tests
+        * Scripts/run-webkit-tests-svg: now uses CyberCore/svg-tests
+        * checkout-svg: links CyberCore/svg-tests to SVGSupport/layout-tests
         Adding the first SVG layout tests:
         http://bugs.webkit.org/show_bug.cgi?id=4303
 
@@ -24739,7 +24739,7 @@
         * Scripts/build-webcore-svg: Added.
         * Scripts/run-drawtest: Added.
         * Scripts/webkitdirs.pm: added checkSVGFrameworks
-        Made it much easier to build WebCore+SVG.
+        Made it much easier to build CyberCore+SVG.
         http://bugs.webkit.org/show_bug.cgi?id=4208
 
 2005-07-29  Eric Seidel  <eseidel@apple.com>
@@ -24799,7 +24799,7 @@
         * svg2png/svg2png.xcodeproj/project.pbxproj: Added.
         * svg2png/svg2png_Prefix.pch: Added.
         Added a simple test tool which dumps a PNG from an SVG using
-        WebCore+SVG's SVG rendering support.
+        CyberCore+SVG's SVG rendering support.
         http://bugs.webkit.org/show_bug.cgi?id=4156
 
 2005-07-26  Maciej Stachowiak  <mjs@apple.com>
@@ -24817,7 +24817,7 @@
 
 2005-07-25  Darin Adler  <darin@apple.com>
 
-        - fixed problem that was causing JavaScriptCore test to fail
+        - fixed problem that was causing CyberScriptCore test to fail
           (except for people who had set DYLD_FRAMEWORK_PATH)
 
         * Scripts/run-javascriptcore-tests: Add code to set DYLD_FRAMEWORK_PATH.
@@ -24850,11 +24850,11 @@
 
 2005-07-22  Geoffrey Garen  <ggaren@apple.com>
 
-        Moved Tools/Scripts/run-mozilla-tests to WebKitTools/Scripts/run-javascriptcore-tests.
+        Moved Tools/Scripts/run-mozilla-tests to CyberKitTools/Scripts/run-javascriptcore-tests.
         run-javascriptcore-tests now passes its command-line arguments to jsDriver.pl
 
         Moved Tools/Scripts/update-mozilla-js-test-results to
-        WebKitTools/Scripts/update-javascriptcore-test-results.
+        CyberKitTools/Scripts/update-javascriptcore-test-results.
 
         Reviewed by darin.
 
@@ -24897,7 +24897,7 @@
         Reviewed by mjs.
 
         * checkout-svg: Added.
-        Script to check out WebCore+SVG
+        Script to check out CyberCore+SVG
 
 2005-06-30  Darin Adler  <darin@apple.com>
 
@@ -24925,7 +24925,7 @@
         Reviewed by me.
 
         * Scripts/run-webkit-app: Added script to open an arbritrary application with
-        a CVS built WebKit. Example: ./run-webkit-app Colloquy
+        a CVS built CyberKit. Example: ./run-webkit-app Colloquy
 
         * Scripts/gdb-safari: Added support for WEBKIT_SAFARI environment variable to specify
         a custom location to the Safari.app bundle. This is optional, script defaults to the stock location.
@@ -24985,16 +24985,16 @@
 2005-06-17  Maciej Stachowiak  <mjs@apple.com>
 
         - added prepare-ChangeLog script which we use internally to make ChangeLogs, for
-        benefit of all WebKit hackerdom
+        benefit of all CyberKit hackerdom
 
         * Scripts/prepare-ChangeLog: Added.
 
 2005-06-16  Darin Adler  <darin@apple.com>
 
         - recent changes to XcodeOptions made it depend on the current directory
-          The intent was to have the WebKitBuild directory be next to WebKitTools,
+          The intent was to have the CyberKitBuild directory be next to CyberKitTools,
           not inside the various build directories. Workaround for now is to call
-          XcodeOptions when the directory is set to the WebKit directory.
+          XcodeOptions when the directory is set to the CyberKit directory.
 
         * Scripts/build-dumprendertree: Use a local variable for XcodeOptions and get it
         at the start of the script.
@@ -25037,7 +25037,7 @@
         Reviewed by me.
 
         - fixed <http://bugs.webkit.org/show_bug.cgi?id=3487>
-          WebKit no longer builds after configuration supporting build changes
+          CyberKit no longer builds after configuration supporting build changes
 
         * Scripts/webkitdirs.pm: Chomp off the result of `pwd`, and don't die when no Configuration file.
 
@@ -25059,7 +25059,7 @@
         * Scripts/update-webkit: Ditto.
         * Scripts/set-webkit-configuration: Added. Sets the default configuration to Development or Deployment.
 
-        * Scripts/webkitdirs.pm: use FindBin to find the WebKit directory; works no matter what the current
+        * Scripts/webkitdirs.pm: use FindBin to find the CyberKit directory; works no matter what the current
         directory is when invoking a script. Add code to determine the Xcode version so we can do the right
         thing for 2.0 and 2.1. Change the productDir function to return the appropriate per-configuration
         product directory. Read the default configuration from a file, overridable by a passed-in command-line
@@ -25105,7 +25105,7 @@
 
 2005-06-09  Darin Adler  <darin@apple.com>
 
-        * Scripts/webkitdirs.pm: Another try at making the default build directory of ~/WebKitBuild
+        * Scripts/webkitdirs.pm: Another try at making the default build directory of ~/CyberKitBuild
         work. Someone should try building without setting the Xcode build product directory now,
         and let me know if it works.
 
@@ -25126,7 +25126,7 @@
         - some build script enhancements
 
         * Scripts/build-dumprendertree: Changed to use webkitdirs.
-        * Scripts/build-webkit: Changed to use webkitdirs, also only copy files from WebKitLibraries if
+        * Scripts/build-webkit: Changed to use webkitdirs, also only copy files from CyberKitLibraries if
         they are newer.
         * Scripts/run-safari: Reduce number of log messages, change to respect "-d" flag and get Development
         before Deplyment in that case.
@@ -25176,7 +25176,7 @@
 
 2005-06-06  Maciej Stachowiak  <mjs@apple.com>
 
-        * Scripts/build-webkit: run ranlib on libWebKitSystemInterface.a
+        * Scripts/build-webkit: run ranlib on libCyberKitSystemInterface.a
 
 2005-06-06  Maciej Stachowiak  <mjs@apple.com>
 
@@ -25184,13 +25184,13 @@
 
 2005-06-06  Maciej Stachowiak  <mjs@apple.com>
 
-        * Scripts/build-webkit: Install WebKitSystemInterface stuff into build products dir.
+        * Scripts/build-webkit: Install CyberKitSystemInterface stuff into build products dir.
 
 2005-06-05  Darin Adler  <darin@apple.com>
 
         * DumpRenderTree/DumpRenderTree.xcode/project.pbxproj: Tweak, simplify.
         * Scripts/build-dumprendertree: Added.
-        * Scripts/build-webkit: Build All in the JavaScriptCore directory.
+        * Scripts/build-webkit: Build All in the CyberScriptCore directory.
         * Scripts/run-webkit-tests: Build DumpRenderTree before running.
 
 2005-06-05  Darin Adler  <darin@apple.com>
@@ -25218,4 +25218,4 @@
         * Scripts/update-webkit: Added.
         * checkout: Added.
 
-=== creation of WebKitTools module ===
+=== creation of CyberKitTools module ===

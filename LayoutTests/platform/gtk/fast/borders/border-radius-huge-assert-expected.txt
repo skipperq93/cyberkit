@@ -13,7 +13,7 @@ layer at (0,0) size 800x600
           RenderText {#text} at (383,0) size 560x35
             text run at (383,0) width 5: " "
             text run at (387,0) width 173: "Another assertion failure in"
-            text run at (0,18) width 244: "WebCore::RenderObject::drawBorder"
+            text run at (0,18) width 244: "CyberCore::RenderObject::drawBorder"
         RenderText {#text} at (243,18) size 5x17
           text run at (243,18) width 5: "."
       RenderBlock {P} at (0,52) size 784x18

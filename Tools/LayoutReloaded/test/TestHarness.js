@@ -26,7 +26,7 @@
 function verifyLayout(renderTreeDump)
 {
     let layoutTreeDump = Utils.layoutTreeDump(layoutState);
-    console.log("WebKit:\n" + renderTreeDump + renderTreeDump.length);
+    console.log("CyberKit:\n" + renderTreeDump + renderTreeDump.length);
     console.log("Reloaded:\n" + layoutTreeDump + layoutTreeDump.length);
     if (renderTreeDump == layoutTreeDump)
         return true;

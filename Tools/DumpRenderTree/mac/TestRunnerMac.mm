@@ -40,38 +40,38 @@
 #import "WorkQueue.h"
 #import "WorkQueueItem.h"
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JSStringRefCF.h>
-#import <WebCore/GeolocationPosition.h>
-#import <WebKit/DOMDocument.h>
-#import <WebKit/DOMElement.h>
-#import <WebKit/DOMHTMLInputElementPrivate.h>
-#import <WebKit/WebApplicationCache.h>
-#import <WebKit/WebBackForwardList.h>
-#import <WebKit/WebCoreStatistics.h>
-#import <WebKit/WebDOMOperationsPrivate.h>
-#import <WebKit/WebDataSource.h>
-#import <WebKit/WebDatabaseManagerPrivate.h>
-#import <WebKit/WebDeviceOrientation.h>
-#import <WebKit/WebDeviceOrientationProviderMock.h>
-#import <WebKit/WebFrame.h>
-#import <WebKit/WebFrameLoadDelegate.h>
-#import <WebKit/WebFrameViewPrivate.h>
-#import <WebKit/WebGeolocationPosition.h>
-#import <WebKit/WebHTMLRepresentation.h>
-#import <WebKit/WebHTMLViewPrivate.h>
-#import <WebKit/WebHistory.h>
-#import <WebKit/WebHistoryPrivate.h>
-#import <WebKit/WebInspectorPrivate.h>
-#import <WebKit/WebNSURLExtras.h>
-#import <WebKit/WebKitErrors.h>
-#import <WebKit/WebPreferences.h>
-#import <WebKit/WebPreferencesPrivate.h>
-#import <WebKit/WebQuotaManager.h>
-#import <WebKit/WebScriptWorld.h>
-#import <WebKit/WebSecurityOriginPrivate.h>
-#import <WebKit/WebStorageManagerPrivate.h>
-#import <WebKit/WebView.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberScriptCore/JSStringRefCF.h>
+#import <CyberCore/GeolocationPosition.h>
+#import <CyberKit/DOMDocument.h>
+#import <CyberKit/DOMElement.h>
+#import <CyberKit/DOMHTMLInputElementPrivate.h>
+#import <CyberKit/WebApplicationCache.h>
+#import <CyberKit/WebBackForwardList.h>
+#import <CyberKit/CyberCoreStatistics.h>
+#import <CyberKit/WebDOMOperationsPrivate.h>
+#import <CyberKit/WebDataSource.h>
+#import <CyberKit/WebDatabaseManagerPrivate.h>
+#import <CyberKit/WebDeviceOrientation.h>
+#import <CyberKit/WebDeviceOrientationProviderMock.h>
+#import <CyberKit/WebFrame.h>
+#import <CyberKit/WebFrameLoadDelegate.h>
+#import <CyberKit/WebFrameViewPrivate.h>
+#import <CyberKit/WebGeolocationPosition.h>
+#import <CyberKit/WebHTMLRepresentation.h>
+#import <CyberKit/WebHTMLViewPrivate.h>
+#import <CyberKit/WebHistory.h>
+#import <CyberKit/WebHistoryPrivate.h>
+#import <CyberKit/WebInspectorPrivate.h>
+#import <CyberKit/WebNSURLExtras.h>
+#import <CyberKit/CyberKitErrors.h>
+#import <CyberKit/WebPreferences.h>
+#import <CyberKit/WebPreferencesPrivate.h>
+#import <CyberKit/WebQuotaManager.h>
+#import <CyberKit/WebScriptWorld.h>
+#import <CyberKit/WebSecurityOriginPrivate.h>
+#import <CyberKit/WebStorageManagerPrivate.h>
+#import <CyberKit/WebView.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/HashMap.h>
 #import <wtf/RetainPtr.h>
@@ -79,9 +79,9 @@
 
 #if PLATFORM(IOS_FAMILY)
 #import "UIKitSPI.h"
-#import <WebKit/WebCoreThread.h>
-#import <WebKit/WebCoreThreadMessage.h>
-#import <WebKit/WebDOMOperationsPrivate.h>
+#import <CyberKit/CyberCoreThread.h>
+#import <CyberKit/CyberCoreThreadMessage.h>
+#import <CyberKit/WebDOMOperationsPrivate.h>
 #endif
 
 #if !PLATFORM(IOS_FAMILY)
@@ -119,7 +119,7 @@
 #endif
 
 @interface WebGeolocationPosition (Internal)
-- (id)initWithGeolocationPosition:(WebCore::GeolocationPosition&&)coreGeolocationPosition;
+- (id)initWithGeolocationPosition:(CyberCore::GeolocationPosition&&)coreGeolocationPosition;
 @end
 
 TestRunner::~TestRunner()
@@ -477,7 +477,7 @@ void TestRunner::setMockGeolocationPosition(double latitude, double longitude, d
         // Test the exposed API.
         position = [[WebGeolocationPosition alloc] initWithTimestamp:WallTime::now().secondsSinceEpoch().seconds() latitude:latitude longitude:longitude accuracy:accuracy];
     } else {
-        WebCore::GeolocationPosition geolocationPosition { WallTime::now().secondsSinceEpoch().seconds(), latitude, longitude, accuracy };
+        CyberCore::GeolocationPosition geolocationPosition { WallTime::now().secondsSinceEpoch().seconds(), latitude, longitude, accuracy };
         if (providesAltitude)
             geolocationPosition.altitude = altitude;
         if (providesAltitudeAccuracy)

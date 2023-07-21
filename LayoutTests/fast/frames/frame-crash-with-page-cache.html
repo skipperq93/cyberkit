@@ -20,7 +20,7 @@ function test() {
         testRunner.dumpAsText();
         testRunner.waitUntilDone();
         testRunner.setCanOpenWindows();
-        testRunner.overridePreference("WebKitUsesPageCachePreferenceKey", 1);
+        testRunner.overridePreference("CyberKitUsesPageCachePreferenceKey", 1);
     }
     log("open page-1");
     window.open("resources/cached-page-1.html");
@@ -28,7 +28,7 @@ function test() {
 </script>
 
 <body onload="test()">
-If WebKit does not assert or crash, you passed.
+If CyberKit does not assert or crash, you passed.
 <div id="result"></div>
 </body>
 </html>

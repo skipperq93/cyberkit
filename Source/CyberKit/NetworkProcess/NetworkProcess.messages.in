@@ -1,0 +1,178 @@
+# Copyright (C) 2012-2019 Apple Inc. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1.  Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+# 2.  Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in the
+#     documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+messages -> NetworkProcess LegacyReceiver {
+    # Initializes the network process.
+    InitializeNetworkProcess(struct CyberKit::NetworkProcessCreationParameters processCreationParameters)
+
+    # Creates a connection for communication with a WebProcess
+    CreateNetworkConnectionToWebProcess(bool isServiceWorkerProcess, CyberCore::RegistrableDomain registrableDomain)
+
+#if USE(SOUP)
+    SetIgnoreTLSErrors(bool ignoreTLSErrors)
+    UserPreferredLanguagesChanged(Vector<String> languages)
+    SetNetworkProxySettings(struct CyberCore::SoupNetworkProxySettings settings)
+#endif
+
+#if USE(CURL)
+    SetNetworkProxySettings(PAL::SessionID sessionID, CyberCore::CurlProxySettings settings)
+#endif
+
+    ClearCachedCredentials()
+    ClearPermanentCredentialsForProtectionSpace(CyberCore::ProtectionSpace protectionSpace) -> () Async
+
+    AddWebsiteDataStore(struct CyberKit::WebsiteDataStoreParameters websiteDataStoreParameters);
+    DestroySession(PAL::SessionID sessionID)
+
+    FetchWebsiteData(PAL::SessionID sessionID, OptionSet<CyberKit::WebsiteDataType> websiteDataTypes, OptionSet<CyberKit::WebsiteDataFetchOption> fetchOptions, uint64_t callbackID)
+    DeleteWebsiteData(PAL::SessionID sessionID, OptionSet<CyberKit::WebsiteDataType> websiteDataTypes, WallTime modifiedSince, uint64_t callbackID)
+    DeleteWebsiteDataForOrigins(PAL::SessionID sessionID, OptionSet<CyberKit::WebsiteDataType> websiteDataTypes, Vector<CyberCore::SecurityOriginData> origins, Vector<String> cookieHostNames, Vector<String> HSTSCacheHostNames, uint64_t callbackID)
+
+    DownloadRequest(PAL::SessionID sessionID, CyberKit::DownloadID downloadID, CyberCore::ResourceRequest request, String suggestedFilename)
+    ResumeDownload(PAL::SessionID sessionID, CyberKit::DownloadID downloadID, IPC::DataReference resumeData, String path, CyberKit::SandboxExtension::Handle sandboxExtensionHandle)
+    CancelDownload(CyberKit::DownloadID downloadID)
+#if PLATFORM(COCOA)
+    PublishDownloadProgress(CyberKit::DownloadID downloadID, URL url, CyberKit::SandboxExtension::Handle sandboxExtensionHandle)
+#endif
+    ApplicationDidEnterBackground()
+    ApplicationWillEnterForeground()
+
+    ContinueWillSendRequest(CyberKit::DownloadID downloadID, CyberCore::ResourceRequest request)
+    ContinueDecidePendingDownloadDestination(CyberKit::DownloadID downloadID, String destination, CyberKit::SandboxExtension::Handle sandboxExtensionHandle, bool allowOverwrite)
+
+#if PLATFORM(COCOA)
+    SetQOS(int latencyQOS, int throughputQOS)
+    SetStorageAccessAPIEnabled(bool enabled)
+#endif
+    SetAllowsAnySSLCertificateForWebSocket(bool enabled) -> () Synchronous
+
+    SyncAllCookies()
+
+    AllowSpecificHTTPSCertificateForHost(CyberCore::CertificateInfo certificate, String host)
+    SetCanHandleHTTPSServerTrustEvaluation(bool value)
+    
+    GetNetworkProcessStatistics(uint64_t callbackID)
+    
+    ClearCacheForAllOrigins(uint32_t cachesToClear)
+    SetCacheModel(enum:uint8_t CyberKit::CacheModel cacheModel);
+
+    ProcessDidTransitionToBackground()
+    ProcessDidTransitionToForeground()
+
+    ProcessWillSuspendImminently()
+    PrepareToSuspend()
+    CancelPrepareToSuspend()
+    ProcessDidResume()
+
+    PreconnectTo(URL url, enum:uint8_t CyberCore::StoredCredentialsPolicy storedCredentialsPolicy);
+
+#if ENABLE(RESOURCE_LOAD_STATISTICS)
+    ClearPrevalentResource(PAL::SessionID sessionID, CyberCore::RegistrableDomain resourceDomain) -> () Async
+    ClearUserInteraction(PAL::SessionID sessionID, CyberCore::RegistrableDomain resourceDomain) -> () Async
+    DumpResourceLoadStatistics(PAL::SessionID sessionID) -> (String dumpedStatistics) Async
+    SetResourceLoadStatisticsEnabled(bool enabled)
+    UpdatePrevalentDomainsToBlockCookiesFor(PAL::SessionID sessionID, Vector<CyberCore::RegistrableDomain> domainsToBlock) -> () Async
+    IsGrandfathered(PAL::SessionID sessionID, CyberCore::RegistrableDomain targetDomain) -> (bool isGrandfathered) Async
+    IsPrevalentResource(PAL::SessionID sessionID, CyberCore::RegistrableDomain targetDomain) -> (bool isPrevalent) Async
+    IsVeryPrevalentResource(PAL::SessionID sessionID, CyberCore::RegistrableDomain targetDomain) -> (bool isVeryPrevalent) Async
+    SetAgeCapForClientSideCookies(PAL::SessionID sessionID, Optional<Seconds> seconds) -> () Async
+    SetLastSeen(PAL::SessionID sessionID, CyberCore::RegistrableDomain resourceDomain, Seconds seconds) -> () Async
+    SetPrevalentResource(PAL::SessionID sessionID, CyberCore::RegistrableDomain resourceDomain) -> () Async
+    SetPrevalentResourceForDebugMode(PAL::SessionID sessionID, CyberCore::RegistrableDomain resourceDomain) -> () Async
+    HadUserInteraction(PAL::SessionID sessionID, CyberCore::RegistrableDomain resourceDomain) -> (bool hadUserInteraction) Async
+    HasLocalStorage(PAL::SessionID sessionID, CyberCore::RegistrableDomain resourceDomain) -> (bool hadUserInteraction) Async
+    GetAllStorageAccessEntries(PAL::SessionID sessionID) -> (Vector<String> domains) Async
+    IsRegisteredAsRedirectingTo(PAL::SessionID sessionID, CyberCore::RegistrableDomain redirectedFromDomain, CyberCore::RegistrableDomain redirectedToDomain) -> (bool isRedirectingTo) Async
+    IsRegisteredAsSubFrameUnder(PAL::SessionID sessionID, CyberCore::RegistrableDomain subFrameDomain, CyberCore::RegistrableDomain topFrameDomain) -> (bool isSubframeUnder) Async
+    IsRegisteredAsSubresourceUnder(PAL::SessionID sessionID, CyberCore::RegistrableDomain subresourceDomain, CyberCore::RegistrableDomain topFrameDomain) -> (bool isSubresourceUnder) Async
+    LogFrameNavigation(PAL::SessionID sessionID, CyberCore::RegistrableDomain targetDomain, CyberCore::RegistrableDomain topFrameDomain, CyberCore::RegistrableDomain sourceDomain, bool isRedirect, bool isMainFrame)
+    LogUserInteraction(PAL::SessionID sessionID, CyberCore::RegistrableDomain topFrameDomain) -> () Async
+    RemovePrevalentDomains(PAL::SessionID sessionID, Vector<CyberCore::RegistrableDomain> domainsWithInteraction)
+    ResetParametersToDefaultValues(PAL::SessionID sessionID) -> () Async
+    ScheduleClearInMemoryAndPersistent(PAL::SessionID sessionID, Optional<WallTime> modifiedSince, enum:bool CyberKit::ShouldGrandfatherStatistics shouldGrandfather) -> () Async
+    ScheduleCookieBlockingUpdate(PAL::SessionID sessionID) -> () Async
+    ScheduleStatisticsAndDataRecordsProcessing(PAL::SessionID sessionID) -> () Async
+    SubmitTelemetry(PAL::SessionID sessionID) -> () Async
+    SetCacheMaxAgeCapForPrevalentResources(PAL::SessionID sessionID, Seconds seconds) -> () Async
+    SetGrandfathered(PAL::SessionID sessionID, CyberCore::RegistrableDomain resourceDomain, bool isGrandfathered) -> () Async
+    SetGrandfatheringTime(PAL::SessionID sessionID, Seconds seconds) -> () Async
+    SetMaxStatisticsEntries(PAL::SessionID sessionID, uint64_t maximumEntryCount) -> () Async
+    SetMinimumTimeBetweenDataRecordsRemoval(PAL::SessionID sessionID, Seconds seconds) -> () Async
+    SetPruneEntriesDownTo(PAL::SessionID sessionID, uint64_t maximumEntryCount) -> () Async
+    SetShouldClassifyResourcesBeforeDataRecordsRemoval(PAL::SessionID sessionID, bool value) -> () Async
+    SetNotifyPagesWhenDataRecordsWereScanned(PAL::SessionID sessionID, bool value) -> () Async
+    SetIsRunningResourceLoadStatisticsTest(PAL::SessionID sessionID, bool value) -> () Async
+    SetNotifyPagesWhenTelemetryWasCaptured(PAL::SessionID sessionID, bool value) -> () Async
+    SetResourceLoadStatisticsDebugMode(PAL::SessionID sessionID, bool debugMode) -> () Async
+    SetVeryPrevalentResource(PAL::SessionID sessionID, CyberCore::RegistrableDomain resourceDomain) -> () Async
+    SetSubframeUnderTopFrameDomain(PAL::SessionID sessionID, CyberCore::RegistrableDomain subFrameDomain, CyberCore::RegistrableDomain topFrameDomain) -> () Async
+    SetSubresourceUnderTopFrameDomain(PAL::SessionID sessionID, CyberCore::RegistrableDomain subresourceDomain, CyberCore::RegistrableDomain topFrameDomain) -> () Async
+    SetSubresourceUniqueRedirectTo(PAL::SessionID sessionID, CyberCore::RegistrableDomain subresourceDomain, CyberCore::RegistrableDomain redirectedToDomain) -> () Async
+    SetSubresourceUniqueRedirectFrom(PAL::SessionID sessionID, CyberCore::RegistrableDomain subresourceDomain, CyberCore::RegistrableDomain redirectedFromDomain) -> () Async
+    SetTimeToLiveUserInteraction(PAL::SessionID sessionID, Seconds seconds) -> () Async
+    SetTopFrameUniqueRedirectTo(PAL::SessionID sessionID, CyberCore::RegistrableDomain topFrameDomain, CyberCore::RegistrableDomain redirectedToDomain) -> () Async
+    SetTopFrameUniqueRedirectFrom(PAL::SessionID sessionID, CyberCore::RegistrableDomain topFrameDomain, CyberCore::RegistrableDomain redirectedFromDomain) -> () Async
+    ResetCacheMaxAgeCapForPrevalentResources(PAL::SessionID sessionID) -> () Async
+    DidCommitCrossSiteLoadWithDataTransfer(PAL::SessionID sessionID, CyberCore::RegistrableDomain fromDomain, CyberCore::RegistrableDomain toDomain, OptionSet<CyberCore::CrossSiteNavigationDataTransfer::Flag> navigationDataTransfer, CyberCore::PageIdentifier pageID)
+    SetCrossSiteLoadWithLinkDecorationForTesting(PAL::SessionID sessionID, CyberCore::RegistrableDomain fromDomain, CyberCore::RegistrableDomain toDomain) -> () Async
+    ResetCrossSiteLoadsWithLinkDecorationForTesting(PAL::SessionID sessionID) -> () Async
+    DeleteCookiesForTesting(PAL::SessionID sessionID, CyberCore::RegistrableDomain domain, bool includeHttpOnlyCookies) -> () Async
+    SetShouldDowngradeReferrerForTesting(bool enabled) -> () Async
+    SetShouldBlockThirdPartyCookiesForTesting(PAL::SessionID sessionID, bool enabled) -> () Async
+#endif
+
+    SetSessionIsControlledByAutomation(PAL::SessionID sessionID, bool controlled);
+
+    RegisterURLSchemeAsSecure(String scheme)
+    RegisterURLSchemeAsBypassingContentSecurityPolicy(String scheme)
+    RegisterURLSchemeAsLocal(String scheme)
+    RegisterURLSchemeAsNoAccess(String scheme)
+    RegisterURLSchemeAsDisplayIsolated(String scheme)
+    RegisterURLSchemeAsCORSEnabled(String scheme)
+    RegisterURLSchemeAsCanDisplayOnlyIfCanRequest(String scheme)
+
+    SetCacheStorageParameters(PAL::SessionID sessionID, String cacheStorageDirectory, CyberKit::SandboxExtension::Handle handle);
+
+#if ENABLE(SERVICE_WORKER)
+    PostMessageToServiceWorkerClient(struct CyberCore::ServiceWorkerClientIdentifier destinationIdentifier, struct CyberCore::MessageWithMessagePorts message, CyberCore::ServiceWorkerIdentifier sourceIdentifier, String sourceOrigin)
+
+    PostMessageToServiceWorker(CyberCore::ServiceWorkerIdentifier destination, struct CyberCore::MessageWithMessagePorts message, CyberCore::ServiceWorkerOrClientIdentifier source, CyberCore::SWServerConnectionIdentifier connectionIdentifier)
+
+    DisableServiceWorkerProcessTerminationDelay()
+#endif
+
+#if ENABLE(INDEXED_DATABASE)
+    SetIDBPerOriginQuota(uint64_t quota)
+#endif
+    UpdateQuotaBasedOnSpaceUsageForTesting(PAL::SessionID sessionID, struct CyberCore::ClientOrigin origin)
+
+    StoreAdClickAttribution(PAL::SessionID sessionID, CyberCore::AdClickAttribution adClickAttribution)
+    DumpAdClickAttribution(PAL::SessionID sessionID) -> (String adClickAttributionState) Async
+    ClearAdClickAttribution(PAL::SessionID sessionID) -> () Async
+    SetAdClickAttributionOverrideTimerForTesting(PAL::SessionID sessionID, bool value) -> () Async
+    SetAdClickAttributionConversionURLForTesting(PAL::SessionID sessionID, URL url) -> () Async
+    MarkAdClickAttributionsAsExpiredForTesting(PAL::SessionID sessionID) -> () Async
+    GetLocalStorageOriginDetails(PAL::SessionID sessionID) -> (Vector<CyberKit::LocalStorageDatabaseTracker::OriginDetails> details) Async
+
+    SetServiceWorkerFetchTimeoutForTesting(Seconds seconds) -> () Synchronous
+    ResetServiceWorkerFetchTimeoutForTesting() -> () Synchronous
+}

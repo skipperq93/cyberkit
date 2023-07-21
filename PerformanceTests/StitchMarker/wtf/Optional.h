@@ -1075,7 +1075,7 @@ constexpr optional<X&> make_optional(std::reference_wrapper<X> v)
 
 namespace WTF {
 
-// -- WebKit Additions --
+// -- CyberKit Additions --
 template <class OptionalType, class Callback>
 ALWAYS_INLINE
 auto valueOrCompute(OptionalType optional, Callback callback) -> typename OptionalType::value_type

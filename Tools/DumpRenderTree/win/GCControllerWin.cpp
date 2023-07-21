@@ -30,14 +30,14 @@
 #include "GCController.h"
 
 #include "DumpRenderTree.h"
-#include <WebCore/COMPtr.h>
-#include <WebKitLegacy/WebKit.h>
-#include <WebKitLegacy/WebKitCOMAPI.h>
+#include <CyberCore/COMPtr.h>
+#include <CyberKitLegacy/CyberKit.h>
+#include <CyberKitLegacy/CyberKitCOMAPI.h>
 
 void GCController::collect() const
 {
     COMPtr<IWebJavaScriptCollector> collector;
-    if (FAILED(WebKitCreateInstance(CLSID_WebJavaScriptCollector, 0, IID_IWebJavaScriptCollector, (void**)&collector)))
+    if (FAILED(CyberKitCreateInstance(CLSID_WebJavaScriptCollector, 0, IID_IWebJavaScriptCollector, (void**)&collector)))
         return;
     collector->collect();
 }
@@ -45,7 +45,7 @@ void GCController::collect() const
 void GCController::collectOnAlternateThread(bool waitUntilDone) const
 {
     COMPtr<IWebJavaScriptCollector> collector;
-    if (FAILED(WebKitCreateInstance(CLSID_WebJavaScriptCollector, 0, IID_IWebJavaScriptCollector, (void**)&collector)))
+    if (FAILED(CyberKitCreateInstance(CLSID_WebJavaScriptCollector, 0, IID_IWebJavaScriptCollector, (void**)&collector)))
         return;
     collector->collectOnAlternateThread(waitUntilDone ? TRUE : FALSE);
 }
@@ -53,7 +53,7 @@ void GCController::collectOnAlternateThread(bool waitUntilDone) const
 size_t GCController::getJSObjectCount() const
 {
     COMPtr<IWebJavaScriptCollector> collector;
-    if (FAILED(WebKitCreateInstance(CLSID_WebJavaScriptCollector, 0, IID_IWebJavaScriptCollector, (void**)&collector)))
+    if (FAILED(CyberKitCreateInstance(CLSID_WebJavaScriptCollector, 0, IID_IWebJavaScriptCollector, (void**)&collector)))
         return 0;
     UINT objects = 0;
     collector->objectCount(&objects);

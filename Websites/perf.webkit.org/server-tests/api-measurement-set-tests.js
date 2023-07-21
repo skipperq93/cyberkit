@@ -67,7 +67,7 @@ describe("/api/measurement-set", function () {
         "buildNumber": "124",
         "buildTime": "2013-02-28T15:34:51Z",
         "revisions": {
-            "WebKit": {
+            "CyberKit": {
                 "revision": "144000",
                 "timestamp": clusterTime(10.35645364537).toISOString(),
             },
@@ -89,7 +89,7 @@ describe("/api/measurement-set", function () {
         "buildNumber": "125",
         "buildTime": "2013-02-28T21:45:17Z",
         "revisions": {
-            "WebKit": {
+            "CyberKit": {
                 "revision": "160609",
                 "timestamp": clusterTime(12.1).toISOString()
             },
@@ -111,7 +111,7 @@ describe("/api/measurement-set", function () {
         "buildNumber": "126",
         "buildTime": "2013-02-28T23:07:25Z",
         "revisions": {
-            "WebKit": {
+            "CyberKit": {
                 "revision": "137793",
                 "timestamp": clusterTime(1.8).toISOString()
             },
@@ -133,7 +133,7 @@ describe("/api/measurement-set", function () {
         "buildNumber": "127",
         "buildTime": "2013-02-28T23:07:25Z",
         "revisions": {
-            "WebKit": {
+            "CyberKit": {
                 "revision": "137794",
                 "timestamp": clusterTime(11.1).toISOString()
             },
@@ -155,7 +155,7 @@ describe("/api/measurement-set", function () {
         "buildNumber": "128",
         "buildTime": "2013-02-28T23:07:25Z",
         "revisions": {
-            "WebKit": {
+            "CyberKit": {
                 "revision": "137795",
                 "timestamp": clusterTime(11.2).toISOString()
             },
@@ -177,7 +177,7 @@ describe("/api/measurement-set", function () {
         "buildNumber": "129",
         "buildTime": "2013-02-28T15:35:51Z",
         "revisions": {
-            "WebKit": {
+            "CyberKit": {
                 "revision": "144001",
                 "timestamp": clusterTime(13.35645364537).toISOString(),
             },
@@ -199,7 +199,7 @@ describe("/api/measurement-set", function () {
         "buildNumber": "130",
         "buildTime": "2013-02-28T23:01:25Z",
         "revisions": {
-            "WebKit": {
+            "CyberKit": {
                 "revision": "137784",
                 "timestamp": clusterTime(11.12).toISOString()
             },
@@ -221,7 +221,7 @@ describe("/api/measurement-set", function () {
         "buildNumber": "131",
         "buildTime": "2013-02-28T23:01:25Z",
         "revisions": {
-            "WebKit": {
+            "CyberKit": {
                 "revision": "137884",
                 "timestamp": clusterTime(11.22).toISOString()
             },
@@ -418,14 +418,14 @@ describe("/api/measurement-set", function () {
         }).then(() => {
             return remote.postJSON('/api/report/', reportWithRevision);
         }).then(() => {
-            return queryPlatformAndMetricWithRepository('Mountain Lion', 'Time', 'WebKit');
+            return queryPlatformAndMetricWithRepository('Mountain Lion', 'Time', 'CyberKit');
         }).then((result) => {
             repositoryId = result.repositoryId;
             return remote.getJSONWithStatus(`/api/measurement-set/?platform=${result.platformId}&metric=${result.metricId}`);
         }).then((response) => {
             const currentRows = response['configurations']['current'];
             const buildTime = +(new Date(reportWithBuildTime[0]['buildTime']));
-            const revisionTime = +(new Date(reportWithRevision[0]['revisions']['WebKit']['timestamp']));
+            const revisionTime = +(new Date(reportWithRevision[0]['revisions']['CyberKit']['timestamp']));
             const revisionBuildTime = +(new Date(reportWithRevision[0]['buildTime']));
 
             assert.equal(currentRows.length, 2);
@@ -461,7 +461,7 @@ describe("/api/measurement-set", function () {
         await remote.postJSON('/api/report/', reportBaselineWithRevision);
         await remote.postJSON('/api/report/', secondReportBaselineWithRevision);
         await remote.postJSON('/api/report/', thirdReportBaselineWithRevision);
-        const result = await queryPlatformAndMetricWithRepository('Mountain Lion', 'Time', 'WebKit');
+        const result = await queryPlatformAndMetricWithRepository('Mountain Lion', 'Time', 'CyberKit');
 
         const response = await remote.getJSONWithStatus(`/api/measurement-set/?platform=${result.platformId}&metric=${result.metricId}`);
 
@@ -663,7 +663,7 @@ describe("/api/measurement-set", function () {
             "macOS": {
                 "revision": "10.8.2 12C60"
             },
-            "WebKit": {
+            "CyberKit": {
                 "revision": "141977",
                 "timestamp": "2013-02-06T08:55:20.9Z"
             }
@@ -698,7 +698,7 @@ describe("/api/measurement-set", function () {
                 "revision": "10.8.2 12C60",
                 "timestamp": '2018-09-27T09:49:52.670499Z',
             },
-            "WebKit": {
+            "CyberKit": {
                 "revision": "141977",
                 "timestamp": '2018-09-27T09:49:52.670999Z',
             }
@@ -706,15 +706,15 @@ describe("/api/measurement-set", function () {
     };
 
     it("commit time of commits from measurement set queried by analysis task should match the one from `/api/commits`", async () => {
-        const expectedWebKitCommitTime = 1538041792671;
+        const expectedCyberKitCommitTime = 1538041792671;
         const expectedMacOSCommitTime = 1538041792670;
         const remote = TestServer.remoteAPI();
         await MockData.addMockData(TestServer.database());
         let response = await reportAfterAddingBuilderAndAggregatorsWithResponse(reportWithCommitsNeedsRoundCommitTimeAndBuildRequest);
         assert.equal(response['status'], 'OK');
 
-        const rawWebKitCommit = await remote.getJSONWithStatus(`/api/commits/WebKit/141977`);
-        assert.equal(rawWebKitCommit.commits[0].time, expectedWebKitCommitTime);
+        const rawCyberKitCommit = await remote.getJSONWithStatus(`/api/commits/CyberKit/141977`);
+        assert.equal(rawCyberKitCommit.commits[0].time, expectedCyberKitCommitTime);
 
         const rawMacOSCommit = await remote.getJSONWithStatus(`/api/commits/macOS/10.8.2%2012C60`);
         assert.equal(rawMacOSCommit.commits[0].time, expectedMacOSCommitTime);
@@ -722,7 +722,7 @@ describe("/api/measurement-set", function () {
         response = await TestServer.remoteAPI().getJSONWithStatus('/api/measurement-set/?analysisTask=500');
         assert.equal(response['status'], 'OK');
         assert.deepEqual(response['measurements'], [[1, 4, 3, 12, 50, [
-            ['1', '9', '10.8.2 12C60', null, expectedMacOSCommitTime], ['2', '11', '141977', null, expectedWebKitCommitTime]],
+            ['1', '9', '10.8.2 12C60', null, expectedMacOSCommitTime], ['2', '11', '141977', null, expectedCyberKitCommitTime]],
             1, 1362046323388, '123', 1, 1, 'current']]);
     });
 
@@ -742,7 +742,7 @@ describe("/api/measurement-set", function () {
                 "revision": "10.8.2 12C60",
                 "timestamp": '2018-09-27T09:49:52.670499Z',
             },
-            "WebKit": {
+            "CyberKit": {
                 "revision": "141977",
                 "timestamp": '2018-09-27T09:49:52.670999Z',
             }
@@ -750,14 +750,14 @@ describe("/api/measurement-set", function () {
     };
 
     it("commit time of commits from measurement set queried by platform and metric should match the one from `/api/commits`", async () => {
-        const expectedWebKitCommitTime = 1538041792671;
+        const expectedCyberKitCommitTime = 1538041792671;
         const expectedMacOSCommitTime = 1538041792670;
         const remote = TestServer.remoteAPI();
         await addBuilderForReport(reportWithCommitsNeedsRoundCommitTime);
         await remote.postJSON('/api/report/', [reportWithCommitsNeedsRoundCommitTime]);
 
-        const rawWebKitCommit = await remote.getJSONWithStatus(`/api/commits/WebKit/141977`);
-        assert.equal(rawWebKitCommit.commits[0].time, expectedWebKitCommitTime);
+        const rawCyberKitCommit = await remote.getJSONWithStatus(`/api/commits/CyberKit/141977`);
+        assert.equal(rawCyberKitCommit.commits[0].time, expectedCyberKitCommitTime);
 
         const rawMacOSCommit = await remote.getJSONWithStatus(`/api/commits/macOS/10.8.2%2012C60`);
         assert.equal(rawMacOSCommit.commits[0].time, expectedMacOSCommitTime);
@@ -765,7 +765,7 @@ describe("/api/measurement-set", function () {
         const result = await queryPlatformAndMetric('Mountain Lion', 'FrameRate');
         const primaryCluster = await remote.getJSONWithStatus(`/api/measurement-set/?platform=${result.platformId}&metric=${result.metricId}`);
         assert.deepEqual(primaryCluster.configurations.current, [[1, 4, 3, 12, 50, false, [
-            [1, 1, '10.8.2 12C60', null, expectedMacOSCommitTime], [2, 2, '141977', null, expectedWebKitCommitTime]],
-            expectedWebKitCommitTime, 1, 1362046323388, '123', 1]]);
+            [1, 1, '10.8.2 12C60', null, expectedMacOSCommitTime], [2, 2, '141977', null, expectedCyberKitCommitTime]],
+            expectedCyberKitCommitTime, 1, 1362046323388, '123', 1]]);
     });
 });

@@ -117,7 +117,7 @@ function currentBuilders()
     return currentBuilderGroup().builders;
 }
 
-function isTipOfTreeWebKitBuilder()
+function isTipOfTreeCyberKitBuilder()
 {
     return true;
 }

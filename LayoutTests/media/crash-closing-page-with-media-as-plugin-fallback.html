@@ -12,7 +12,7 @@ If it doesn't crash, it passes.<br>
 if (window.testRunner && window.internals) {
     testRunner.dumpAsText();
     testRunner.waitUntilDone();
-    testRunner.overridePreference("WebKitUsesPageCachePreferenceKey", 1);
+    testRunner.overridePreference("CyberKitUsesPageCachePreferenceKey", 1);
     internals.settings.setPageCacheSupportsPlugins(true);
     testRunner.setCanOpenWindows(true);
     testRunner.setCloseRemainingWindowsWhenComplete(true);

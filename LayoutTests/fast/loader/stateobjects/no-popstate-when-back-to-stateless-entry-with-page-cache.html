@@ -5,7 +5,7 @@
 <div id="description"></div>
 <pre id="console"></pre>
 <script>
-description('No popstate event should be fired when WebKit navigates back to a stateless history entry with page cached.');
+description('No popstate event should be fired when CyberKit navigates back to a stateless history entry with page cached.');
 
 var testWindow;
 
@@ -13,7 +13,7 @@ onload = function()
 {
     if (window.testRunner) {
         testRunner.setCanOpenWindows();
-        testRunner.overridePreference('WebKitUsesPageCachePreferenceKey', 1);
+        testRunner.overridePreference('CyberKitUsesPageCachePreferenceKey', 1);
     }
     testWindow = window.open('resources/no-popstate-when-back-to-stateless-entry-1.html');
     if (!testWindow)

@@ -10,7 +10,7 @@
  * parameters they are called with see testharness.js
  */
 
-// Setup for WebKit JavaScript tests
+// Setup for CyberKit JavaScript tests
 if (self.testRunner) {
     testRunner.dumpAsText();
     testRunner.waitUntilDone();

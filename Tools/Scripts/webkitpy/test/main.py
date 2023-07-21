@@ -64,9 +64,9 @@ def main():
     tester = Tester()
     tester.add_tree(os.path.join(_webkit_root, 'Tools', 'Scripts'), 'webkitpy')
 
-    # There is no WebKit2 on Windows, so we don't need to run WebKit2 unittests on it.
+    # There is no CyberKit2 on Windows, so we don't need to run CyberKit2 unittests on it.
     if not (sys.platform.startswith('win') or sys.platform == 'cygwin'):
-        tester.add_tree(os.path.join(_webkit_root, 'Source', 'WebKit', 'Scripts'), 'webkit')
+        tester.add_tree(os.path.join(_webkit_root, 'Source', 'CyberKit', 'Scripts'), 'webkit')
 
     lldb_python_directory = _host.path_to_lldb_python_directory()
     if not _supports_building_and_running_lldb_tests():
@@ -137,7 +137,7 @@ class Tester(object):
     def _parse_args(self, argv=None):
         parser = optparse.OptionParser(usage='usage: %prog [options] [args...]')
 
-        #  Configuration options only effect the building of lldbWebKitTester.
+        #  Configuration options only effect the building of lldbCyberKitTester.
         configuration_group = optparse.OptionGroup(parser, 'Configuration options')
         configuration_group.add_option('--debug', action='store_const', const='Debug', dest="configuration",
             help='Set the configuration to Debug')
@@ -204,16 +204,16 @@ class Tester(object):
         configuration_to_use = self._options.configuration or config.default_configuration()
 
         if will_run_lldb_webkit_tests:
-            self.printer.write_update('Building lldbWebKitTester ...')
+            self.printer.write_update('Building lldbCyberKitTester ...')
             build_lldbwebkittester = self.finder.filesystem.join(_webkit_root, 'Tools', 'Scripts', 'build-lldbwebkittester')
             try:
                 _host.executive.run_and_throw_if_fail([build_lldbwebkittester, config.flag_for_configuration(configuration_to_use)], quiet=(not bool(self._options.verbose)))
             except ScriptError as e:
                 _log.error(e.message_with_output(output_limit=None))
                 return False
-            os.environ['LLDB_WEBKIT_TESTER_EXECUTABLE'] = str(self.finder.filesystem.join(config.build_directory(configuration_to_use), 'lldbWebKitTester'))
+            os.environ['LLDB_WEBKIT_TESTER_EXECUTABLE'] = str(self.finder.filesystem.join(config.build_directory(configuration_to_use), 'lldbCyberKitTester'))
             if not self.finder.filesystem.exists(os.environ['LLDB_WEBKIT_TESTER_EXECUTABLE']):
-                _log.error('Failed to find lldbWebKitTester.')
+                _log.error('Failed to find lldbCyberKitTester.')
                 return False
 
         if self._options.coverage:

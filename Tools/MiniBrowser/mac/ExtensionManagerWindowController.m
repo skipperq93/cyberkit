@@ -26,8 +26,8 @@
 #import "ExtensionManagerWindowController.h"
 
 #import "AppDelegate.h"
-#import <WebKit/WKUserContentControllerPrivate.h>
-#import <WebKit/_WKUserContentExtensionStore.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/_WKUserContentExtensionStore.h>
 
 @implementation ExtensionManagerWindowController
 

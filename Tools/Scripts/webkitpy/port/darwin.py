@@ -78,7 +78,7 @@ class DarwinPort(ApplePort):
         _log.info("%s unique leaks found." % unique_leaks)
 
     def _path_to_webcore_library(self):
-        return self._build_path('WebCore.framework/Versions/A/WebCore')
+        return self._build_path('CyberCore.framework/Versions/A/CyberCore')
 
     def show_results_html_file(self, results_filename):
         # We don't use self._run_script() because we don't want to wait for the script

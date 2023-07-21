@@ -4,9 +4,9 @@ PASS! (Could not find the netscape test plugin on a non-local file!)
 
 Test 2: Confirm the plugin is present.
 
-Name: WebKit Test PlugIn
+Name: CyberKit Test PlugIn
 
-Description: Simple Netscape® plug-in that handles test content for WebKit
+Description: Simple Netscape® plug-in that handles test content for CyberKit
 
 Filename: libTestNetscapePlugIn.so
 

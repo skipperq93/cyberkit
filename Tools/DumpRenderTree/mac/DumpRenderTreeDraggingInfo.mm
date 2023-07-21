@@ -36,7 +36,7 @@
 #import "DumpRenderTreeFileDraggingSource.h"
 #import "DumpRenderTreePasteboard.h"
 #import "EventSendingController.h"
-#import <WebKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <wtf/RetainPtr.h>
 
 @interface DumpRenderTreeFilePromiseReceiver : NSFilePromiseReceiver {
@@ -80,7 +80,7 @@
 
 - (void)dealloc
 {
-    // WebKit does not delete promised files it receives into NSTemporaryDirectory() (it should!),
+    // CyberKit does not delete promised files it receives into NSTemporaryDirectory() (it should!),
     // so we need to. Failing to do so could result in unpredictable file names in a subsequent test
     // that promises a file with the same name as one of these destination URLs.
 

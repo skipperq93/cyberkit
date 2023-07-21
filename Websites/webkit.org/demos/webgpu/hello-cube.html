@@ -140,7 +140,7 @@ async function init() {
     };
     swapChain = context.configureSwapChain(swapChainDescriptor);
 
-    // WebKit WebGPU accepts only MSL for now.
+    // CyberKit WebGPU accepts only MSL for now.
     const shaderModuleDescriptor = { code: shader };
     const shaderModule = device.createShaderModule(shaderModuleDescriptor);
 

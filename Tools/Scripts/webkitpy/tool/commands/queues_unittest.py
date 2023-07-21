@@ -120,7 +120,7 @@ class AbstractQueueTest(CommandsTest):
 
     def test_log_from_script_error_for_upload(self):
         self._assert_log_message(ScriptError("test"), "test")
-        unicode_tor = u"WebKit \u2661 Tor Arne Vestb\u00F8!"
+        unicode_tor = u"CyberKit \u2661 Tor Arne Vestb\u00F8!"
         utf8_tor = unicode_tor.encode("utf-8")
         self._assert_log_message(ScriptError(unicode_tor), utf8_tor)
         script_error = ScriptError(unicode_tor, output=unicode_tor)

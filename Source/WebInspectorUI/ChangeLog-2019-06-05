@@ -3988,7 +3988,7 @@
 
         Reviewed by Alexey Proskuryakov.
 
-        When creating the WebKit layout for out-of-band Safari/WebKit updates,
+        When creating the CyberKit layout for out-of-band Safari/CyberKit updates,
         use an optional path prefix when called for.
 
         Opportunistic cleanup: remove unused
@@ -3996,7 +3996,7 @@
         have needlessly been updated to also incorporate the new prefix.
 
         * Configurations/Base.xcconfig:
-        * Configurations/WebKitTargetConditionals.xcconfig: Added.
+        * Configurations/CyberKitTargetConditionals.xcconfig: Added.
 
 2019-03-13  Nikita Vasilyev  <nvasilyev@apple.com>
 
@@ -8742,7 +8742,7 @@
         Reviewed by Devin Rousso.
 
         CPU Usage is gathered in the backend twice a second, the frequency of the
-        ResourceUsageThread in WebCore. The frontend displays cpu usage in a few
+        ResourceUsageThread in CyberCore. The frontend displays cpu usage in a few
         ways in the Timeline.
 
         We use a column chart in the timeline overview to display the frequency and
@@ -10915,14 +10915,14 @@
 
 2018-11-30  Brian Burg  <bburg@apple.com>
 
-        Web Inspector: resource combining should be more robust against missing WebKitAdditions
+        Web Inspector: resource combining should be more robust against missing CyberKitAdditions
         https://bugs.webkit.org/show_bug.cgi?id=192255
         <rdar://problem/46042879>
 
         Reviewed by Joseph Pecoraro.
 
         * Scripts/copy-user-interface-resources.pl:
-        (combineOrStripResourcesForWebKitAdditions):
+        (combineOrStripResourcesForCyberKitAdditions):
 
 2018-11-30  Nikita Vasilyev  <nvasilyev@apple.com>
 
@@ -11945,7 +11945,7 @@
 
         * UserInterface/Protocol/Connection.js:
         (InspectorBackend.Connection.prototype._dispatchResponse):
-        Hide the TargetAgent does not exist message. This is necessary so that WebKitLegacy
+        Hide the TargetAgent does not exist message. This is necessary so that CyberKitLegacy
         tests don't include this line in output each test.
 
         * UserInterface/Test.html:
@@ -14403,7 +14403,7 @@
 
 2018-10-29  Tim Horton  <timothy_horton@apple.com>
 
-        Modernize WebKit nibs and lprojs for localization's sake
+        Modernize CyberKit nibs and lprojs for localization's sake
         https://bugs.webkit.org/show_bug.cgi?id=190911
         <rdar://problem/45349466>
 
@@ -17779,7 +17779,7 @@
 
         Make a way to dump information about the GC heap that is useful for looking for leaked
         or abandoned objects. This dump is obtained (on Apple platforms) via:
-            notifyutil -p com.apple.WebKit.dumpGCHeap
+            notifyutil -p com.matthewbenedict.CyberKit.dumpGCHeap
         which writes a JSON file to /tmp which can then be loaded into the viewer in Tools/GCHeapInspector.
 
         This leverages the heap snapshot used by Web Inspector, adding an alternate format for
@@ -18771,7 +18771,7 @@
 
 2018-07-14  Kocsen Chung  <kocsen_chung@apple.com>
 
-        Ensure WebKit stack is ad-hoc signed
+        Ensure CyberKit stack is ad-hoc signed
         https://bugs.webkit.org/show_bug.cgi?id=187667
 
         Reviewed by Alexey Proskuryakov.
@@ -18930,7 +18930,7 @@
         * Scripts/copy-user-interface-resources.pl:
         (webInspectorUIAdditionsDir): Added. Return UNDEF if
         BUILT_PRODUCTS_DIR and SDKROOT env vars aren't defined.
-        (combineOrStripResourcesForWebKitAdditions): Check
+        (combineOrStripResourcesForCyberKitAdditions): Check
         $webInspectorUIAdditionsDir is defined.
 
 2018-07-10  Ross Kirsling  <rkirsling@gmail.com>
@@ -20003,7 +20003,7 @@
 
 2018-03-23  Brian Burg  <bburg@apple.com>
 
-        Web Inspector: add WebKitAdditions hooks for WebInspectorUI
+        Web Inspector: add CyberKitAdditions hooks for WebInspectorUI
         https://bugs.webkit.org/show_bug.cgi?id=183940
         <rdar://problem/38796310>
 
@@ -20019,12 +20019,12 @@
         two functions, one for stripping includes and one for concatenating
         files referenced by includes.
 
-        Lastly, add a negative lookahead clause for 'WebKitAdditions' so includes
+        Lastly, add a negative lookahead clause for 'CyberKitAdditions' so includes
         containing that string are not combined when no input directory is passed
         to the script.
 
         * Scripts/copy-user-interface-resources.pl:
-        WebKitAdditions is computed either from BUILT_PRODUCTS_DIR or SDKROOT,
+        CyberKitAdditions is computed either from BUILT_PRODUCTS_DIR or SDKROOT,
         depending on the build style. Just try them in order and use the first
         one that exists. WebInspectorUI files are in their own directory, so
         we can assume there are files to process if that directory exists.
@@ -20034,14 +20034,14 @@
 
         (debugLog): Added. Leave in the logging I used to debug this.
 
-        (combineOrStripResourcesForWebKitAdditions):
-        (stripResourcesForWebKitAdditions):
-        (combineResourcesForWebKitAdditions):
-        Determine if WebKitAdditions exists and whether there are any
+        (combineOrStripResourcesForCyberKitAdditions):
+        (stripResourcesForCyberKitAdditions):
+        (combineResourcesForCyberKitAdditions):
+        Determine if CyberKitAdditions exists and whether there are any
         resources for WebInspectorUI present that need to be processed.
 
         * UserInterface/Main.html:
-        Add stub .js and .css WebKitAdditions files. We can add more later
+        Add stub .js and .css CyberKitAdditions files. We can add more later
         if it makes sense but this is good enough to validate the build machinery.
 
 2018-03-23  Nikita Vasilyev  <nvasilyev@apple.com>
@@ -21903,7 +21903,7 @@
         * UserInterface/Controllers/JavaScriptRuntimeCompletionProvider.js:
         (WI.JavaScriptRuntimeCompletionProvider.prototype.completionControllerCompletionsNeeded.inspectedPage_evalResult_getCompletions):
         This is code that runs on the inspected target, which may have an old version of
-        WebKit/JavaScriptCore, so don't use new syntax like this.
+        CyberKit/CyberScriptCore, so don't use new syntax like this.
 
         (WI.JavaScriptRuntimeCompletionProvider.prototype.completionControllerCompletionsNeeded):
         We intended to return the result by as a JSON value instead of a RemoteObject.
@@ -21938,7 +21938,7 @@
 
 2018-01-07  David Kilzer  <ddkilzer@apple.com>
 
-        Enable -Wcast-qual for WebInspectorUI, WebKitLegacy, WebKit projects
+        Enable -Wcast-qual for WebInspectorUI, CyberKitLegacy, CyberKit projects
         <https://webkit.org/b/181256>
         <rdar://problem/36281730>
 

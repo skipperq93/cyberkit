@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="X-WebKit-CSP" content="script-src 'sha256-n7CDY/1Rg9w5XVqu2QuiqpjBw0MVHvwDmHpkLXsuu2g=' 'nonce-dump-as-text'">
+<meta http-equiv="X-CyberKit-CSP" content="script-src 'sha256-n7CDY/1Rg9w5XVqu2QuiqpjBw0MVHvwDmHpkLXsuu2g=' 'nonce-dump-as-text'">
 <script nonce="dump-as-text">
 if (window.testRunner) {
     testRunner.dumpAsText();

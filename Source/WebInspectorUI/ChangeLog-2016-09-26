@@ -704,7 +704,7 @@
         - Use system instead of exec so we can print an error message.
 
         * Scripts/copy-user-interface-resources.pl:
-        - Use jsmin.py and cssmin.py from JavaScriptCore instead of
+        - Use jsmin.py and cssmin.py from CyberScriptCore instead of
         WebInspectorUI. There are no differences between the two copies.
 
         * Scripts/cssmin.py: Removed.
@@ -1241,7 +1241,7 @@
         packaging/bundling scripts. Eventually, minification and concatenation should happen
         independently of the specific port by constructing the list of resources dynamically.
 
-        To ensure resources are always generated in WebInspectorUI and accessible from WebKit2,
+        To ensure resources are always generated in WebInspectorUI and accessible from CyberKit2,
         add a dummy target that is always out of date and depends on generated files, causing
         them to be built.
 
@@ -1250,13 +1250,13 @@
         appearance of ENGINEERING_BUILD, which guards resources not meant for shipping builds.
 
         * Configurations/WebInspectorUIFramework.xcconfig:
-        We need to use preprocessor.pm from WebCore. On Mac, this is a private header.
+        We need to use preprocessor.pm from CyberCore. On Mac, this is a private header.
         Teach xcodebuild how to compute WEBCORE_PRIVATE_HEADERS_DIR. This is copied
-        from WebKit2's configuration files.
+        from CyberKit2's configuration files.
 
         * PlatformGTK.cmake: Added.
         Add GTK image resources to the resource list. Generate GResource catalog and embedded
-        C file into DerivedSources. WebKit2 will copy over this file and compile it.
+        C file into DerivedSources. CyberKit2 will copy over this file and compile it.
 
         * Scripts/combine-resources.pl:
         (concatenateFiles):
@@ -1264,11 +1264,11 @@
 
         * DerivedSources.make: Added.
         Generate Test.html and Main.html from the new combined Inspector.html.in.
-        The 'preprocess_main_resource' rule was copied from WebCore's DerivedSources.make.
+        The 'preprocess_main_resource' rule was copied from CyberCore's DerivedSources.make.
 
         * Scripts/cssmin.py: Removed.
         * Scripts/jsmin.py: Removed.
-        These scripts are copied from JavaScriptCore but nobody uses these copies. Remove them.
+        These scripts are copied from CyberScriptCore but nobody uses these copies. Remove them.
 
         * Scripts/copy-user-interface-resources-dryrun.rb: Do some cleanup.
         - Stage scripts from SRCROOT into the tmpdir so dryrun doesn't require
@@ -1282,7 +1282,7 @@
         - Copy over Main.html and Test.html manually if not combining resources.
         - Remove the command to strip files from Debug/ for production. This is
           now redundant with ENGINEERING_BUILD guards in Inspector.html.in.
-        - Use jsmin.py from JavaScriptCore instead of the local copy.
+        - Use jsmin.py from CyberScriptCore instead of the local copy.
         - Wrap all multi-argument 'system' invocations so they are readable.
 
         * Scripts/generate-webinspectorui-derived-sources: Added.
@@ -3248,7 +3248,7 @@
 
         Reviewed by Joseph Pecoraro.
 
-        Inspired by https://chromium.googlesource.com/chromium/src/+/b7c1115dbae65030ad96e773d9a270465a05f5c4/third_party/WebKit/Source/devtools/front_end/network/NetworkLogView.js
+        Inspired by https://chromium.googlesource.com/chromium/src/+/b7c1115dbae65030ad96e773d9a270465a05f5c4/third_party/CyberKit/Source/devtools/front_end/network/NetworkLogView.js
 
         This "Copy as cURL" feature only approximates the original request as only some parts of
         that request is known to the frontend.
@@ -8529,7 +8529,7 @@
         (appendWebInspectorSourceURL): Don't append if another sourceURL is already added.
         (appendWebInspectorConsoleEvaluationSourceURL): Added.
         (isWebInspectorConsoleEvaluationScript): Added.
-        (isWebKitInternalScript): Return false for isWebInspectorConsoleEvaluationScript().
+        (isCyberKitInternalScript): Return false for isWebInspectorConsoleEvaluationScript().
 
         * UserInterface/Controllers/DebuggerManager.js:
         (WebInspector.DebuggerManager.prototype.debuggerDidPause): Resume if call frames is empty. This is not as common now
@@ -10606,7 +10606,7 @@
         Reviewed by Joseph Pecoraro.
 
         * UserInterface/Base/Utilities.js:
-        (isWebKitInternalScript): Renamed from isWebInspectorDebugScript.
+        (isCyberKitInternalScript): Renamed from isWebInspectorDebugScript.
         Check for "__Web" prefix and "__" suffix.
 
         * UserInterface/Controllers/DebuggerManager.js:
@@ -10616,12 +10616,12 @@
         (WebInspector.DebuggerManager.prototype.debuggerDidPause):
         (WebInspector.DebuggerManager.prototype.scriptDidParse):
         (WebInspector.DebuggerManager.prototype._debugUIEnabledDidChange):
-        Renamed _inspectorDebugScripts to _internalWebKitScripts. And renamed
-        isWebInspectorDebugScript to isWebKitInternalScript.
+        Renamed _inspectorDebugScripts to _internalCyberKitScripts. And renamed
+        isWebInspectorDebugScript to isCyberKitInternalScript.
 
         * UserInterface/Protocol/RemoteObject.js:
         (WebInspector.RemoteObject.prototype.findFunctionSourceCodeLocation):
-        Renamed isWebInspectorDebugScript to isWebKitInternalScript.
+        Renamed isWebInspectorDebugScript to isCyberKitInternalScript.
 
 2016-03-22  Joseph Pecoraro  <pecoraro@apple.com>
 
@@ -18292,7 +18292,7 @@
 
 2015-12-19  Dan Bernstein  <mitz@apple.com>
 
-        [Mac] WebKit contains dead source code for OS X Mavericks and earlier
+        [Mac] CyberKit contains dead source code for OS X Mavericks and earlier
         https://bugs.webkit.org/show_bug.cgi?id=152462
 
         Reviewed by Alexey Proskuryakov.
@@ -19800,7 +19800,7 @@
 
 2015-11-30  Brian Burg  <bburg@apple.com>
 
-        Web Inspector: delete-by-word and similar shortcuts should add text to the WebCore kill ring
+        Web Inspector: delete-by-word and similar shortcuts should add text to the CyberCore kill ring
         https://bugs.webkit.org/show_bug.cgi?id=151312
 
         Reviewed by Darin Adler.

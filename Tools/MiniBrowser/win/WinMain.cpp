@@ -32,11 +32,11 @@
 #include "Common.h"
 #include "MiniBrowserLibResource.h"
 #include "MiniBrowserReplace.h"
-#include "WebKitLegacyBrowserWindow.h"
-#include <WebKitLegacy/WebKitCOMAPI.h>
+#include "CyberKitLegacyBrowserWindow.h"
+#include <CyberKitLegacy/CyberKitCOMAPI.h>
 
 #if ENABLE(WEBKIT)
-#include "WebKitBrowserWindow.h"
+#include "CyberKitBrowserWindow.h"
 #endif
 
 int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPWSTR lpstrCmdLine, _In_ int nCmdShow)
@@ -65,10 +65,10 @@ int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
 
     ::SetProcessDPIAware();
 
-    auto factory = WebKitLegacyBrowserWindow::create;
+    auto factory = CyberKitLegacyBrowserWindow::create;
 #if ENABLE(WEBKIT)
-    if (options.windowType == BrowserWindowType::WebKit)
-        factory = WebKitBrowserWindow::create;
+    if (options.windowType == BrowserWindowType::CyberKit)
+        factory = CyberKitBrowserWindow::create;
 #endif
     auto& mainWindow = MainWindow::create().leakRef();
     HRESULT hr = mainWindow.init(factory, hInst, options.usesLayeredWebView, options.pageLoadTesting);
@@ -88,9 +88,9 @@ int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
 
     // Main message loop:
     __try {
-        _com_ptr_t<_com_IIID<IWebKitMessageLoop, &__uuidof(IWebKitMessageLoop)>> messageLoop;
+        _com_ptr_t<_com_IIID<ICyberKitMessageLoop, &__uuidof(ICyberKitMessageLoop)>> messageLoop;
 
-        hr = WebKitCreateInstance(CLSID_WebKitMessageLoop, 0, IID_IWebKitMessageLoop, reinterpret_cast<void**>(&messageLoop.GetInterfacePtr()));
+        hr = CyberKitCreateInstance(CLSID_CyberKitMessageLoop, 0, IID_ICyberKitMessageLoop, reinterpret_cast<void**>(&messageLoop.GetInterfacePtr()));
         if (FAILED(hr))
             goto exit;
 
@@ -99,7 +99,7 @@ int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
     } __except(createCrashReport(GetExceptionInformation()), EXCEPTION_EXECUTE_HANDLER) { }
 
 exit:
-    shutDownWebKit();
+    shutDownCyberKit();
 #ifdef _CRTDBG_MAP_ALLOC
     _CrtDumpMemoryLeaks();
 #endif

@@ -20,7 +20,7 @@
 
     function test()
     {
-      var c = new WebKitCSSMatrix(window.getComputedStyle(document.getElementById('box')).webkitTransform);
+      var c = new CyberKitCSSMatrix(window.getComputedStyle(document.getElementById('box')).webkitTransform);
       var result = (c.f < 200) ? 'PASS' : 'FAIL: transition should still be running, so y < 200';
       document.getElementById('result').innerHTML = result;
 

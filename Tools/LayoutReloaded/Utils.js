@@ -569,7 +569,7 @@ class Utils {
     }
 
     static _dumpBox(layoutState, box, level) {
-        // Skip anonymous boxes for now -This is the case where WebKit does not generate an anon inline container for text content where the text is a direct child
+        // Skip anonymous boxes for now -This is the case where CyberKit does not generate an anon inline container for text content where the text is a direct child
         // of a block container.
         let indentation = " ".repeat(level);
         if (box.isInlineBox()) {

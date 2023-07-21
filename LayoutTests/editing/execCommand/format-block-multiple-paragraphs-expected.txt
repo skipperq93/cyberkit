@@ -8,7 +8,7 @@ Formatting:
 | <div>
 |   "world"
 | <div>
-|   "WebKit<#selection-focus>"
+|   "CyberKit<#selection-focus>"
 | "
 "
 
@@ -20,7 +20,7 @@ by p yields:
 |   <br>
 |   "world"
 |   <br>
-|   "WebKit<#selection-focus>"
+|   "CyberKit<#selection-focus>"
 | "
 "
 
@@ -73,7 +73,7 @@ Formatting:
 |   <h2>
 |     "world"
 |   <h3>
-|     "WebKit<#selection-focus>"
+|     "CyberKit<#selection-focus>"
 | "
 "
 
@@ -85,7 +85,7 @@ by pre yields:
 |   <br>
 |   "world"
 |   <br>
-|   "WebKit<#selection-focus>"
+|   "CyberKit<#selection-focus>"
 | "
 "
 

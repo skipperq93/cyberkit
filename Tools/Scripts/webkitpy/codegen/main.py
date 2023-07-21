@@ -39,7 +39,7 @@ class BuiltinsGeneratorTests:
 
     def generate_from_js_builtins(self, builtins_files, output_directory, framework_name="", combined_outputs=False, generate_wrappers=False):
         cmd = ['python',
-               'JavaScriptCore/Scripts/generate-js-builtins.py',
+               'CyberScriptCore/Scripts/generate-js-builtins.py',
                '--output-directory', output_directory,
                '--force',
                '--framework', framework_name,
@@ -102,7 +102,7 @@ class BuiltinsGeneratorTests:
         return self.generate_from_js_builtins(test_files, work_directory, framework_name=framework_name, combined_outputs=combined_outputs)
 
     def wrappers_builtin_test(self, test_name, test_files, work_directory):
-        return self.generate_from_js_builtins(test_files, work_directory, framework_name="WebCore", generate_wrappers=True)
+        return self.generate_from_js_builtins(test_files, work_directory, framework_name="CyberCore", generate_wrappers=True)
 
     def run_test(self, reference_directory, test_name, test_files, generate_builtin_callback):
         passed = True
@@ -137,7 +137,7 @@ class BuiltinsGeneratorTests:
                 passed = False
 
             # FIXME: Add Error parameter in filename and filter out these files here.
-            if 'Separate' in test_name and 'WebCore' in test_name and not 'Duplicate' in test_name:
+            if 'Separate' in test_name and 'CyberCore' in test_name and not 'Duplicate' in test_name:
                 separately_generated_files.append(test_file)
 
             if self.reset_results:
@@ -145,7 +145,7 @@ class BuiltinsGeneratorTests:
                 continue
 
         if separately_generated_files:
-            if not self.run_test(reference_directory, "WebCoreJSBuiltins.h", separately_generated_files, self.wrappers_builtin_test):
+            if not self.run_test(reference_directory, "CyberCoreJSBuiltins.h", separately_generated_files, self.wrappers_builtin_test):
                 passed = False
 
         return passed
@@ -156,8 +156,8 @@ class BuiltinsGeneratorTests:
 
         all_tests_passed = True
 
-        input_directory = os.path.join('JavaScriptCore', 'Scripts', 'tests', 'builtins')
-        reference_directory = os.path.join('JavaScriptCore', 'Scripts', 'tests', 'builtins', 'expected')
+        input_directory = os.path.join('CyberScriptCore', 'Scripts', 'tests', 'builtins')
+        reference_directory = os.path.join('CyberScriptCore', 'Scripts', 'tests', 'builtins', 'expected')
         if not self.run_tests(input_directory, reference_directory):
             all_tests_passed = False
 

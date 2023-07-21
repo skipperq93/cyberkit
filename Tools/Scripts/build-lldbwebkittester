@@ -56,20 +56,20 @@ if ($showHelp || !$result) {
    exit 1;
 }
 
-if (!isAppleMacWebKit()) {
-    print STDERR "lldbWebKitTester is currently only supported on Mac.\n";
+if (!isAppleMacCyberKit()) {
+    print STDERR "lldbCyberKitTester is currently only supported on Mac.\n";
     exit 1;
 }
 
 checkRequiredSystemConfig();
 setConfiguration();
-chdirWebKit();
+chdirCyberKit();
 
 my @xcodeOptions = XcodeOptions();
 
 buildProjectOrDie("Source/bmalloc", "bmalloc");
 buildProjectOrDie("Source/WTF", "WTF");
-buildProjectOrDie("Tools/lldb/lldbWebKitTester", "lldbWebKitTester");
+buildProjectOrDie("Tools/lldb/lldbCyberKitTester", "lldbCyberKitTester");
 
 sub buildProjectOrDie($$)
 {
@@ -77,5 +77,5 @@ sub buildProjectOrDie($$)
     chdir($path) or die;
     $result = exitStatus(buildXCodeProject($project, $clean, @xcodeOptions, @ARGV));
     exit $result if $result;
-    chdirWebKit();
+    chdirCyberKit();
 }

@@ -8,7 +8,7 @@ function test() {
     if (!testCalled) {
         if (window.testRunner) {
             testRunner.dumpAsText();
-            testRunner.overridePreference("WebKitUsesPageCachePreferenceKey", 1);
+            testRunner.overridePreference("CyberKitUsesPageCachePreferenceKey", 1);
             testRunner.waitUntilDone();
         }
         testCalled = true;

@@ -405,7 +405,7 @@ void RobustResourceInitTest::setupTexture(GLTexture *tex)
 
     // this can be quite undeterministic so to improve odds of seeing uninitialized data write bits
     // into tex then delete texture then re-create one with same characteristics (driver will likely
-    // reuse mem) with this trick on r59046 WebKit/OSX I get FAIL 100% of the time instead of ~15%
+    // reuse mem) with this trick on r59046 CyberKit/OSX I get FAIL 100% of the time instead of ~15%
     // of the time.
 
     std::array<uint8_t, kWidth * kHeight * 4> badData;
@@ -432,7 +432,7 @@ void RobustResourceInitTest::setup3DTexture(GLTexture *tex)
 
     // this can be quite undeterministic so to improve odds of seeing uninitialized data write bits
     // into tex then delete texture then re-create one with same characteristics (driver will likely
-    // reuse mem) with this trick on r59046 WebKit/OSX I get FAIL 100% of the time instead of ~15%
+    // reuse mem) with this trick on r59046 CyberKit/OSX I get FAIL 100% of the time instead of ~15%
     // of the time.
 
     std::array<uint8_t, kWidth * kHeight * 2 * 4> badData;

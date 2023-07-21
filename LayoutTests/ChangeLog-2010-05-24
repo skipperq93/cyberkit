@@ -2941,7 +2941,7 @@
 
         Reviewed by Darin Adler.
 
-        Test for <rdar://problem/8009118> Crash in WebCore::toAlphabetic() 
+        Test for <rdar://problem/8009118> Crash in CyberCore::toAlphabetic() 
         while running MangleMe
         -and corresponding-
         https://bugs.webkit.org/show_bug.cgi?id=39508
@@ -3237,7 +3237,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=39433
 
         Revert the changes from r59840 to this test until there is a method
-        in the WebKit APIs to consistently reset the editingBehavior setting
+        in the CyberKit APIs to consistently reset the editingBehavior setting
         to a reasonable default.
 
         * editing/selection/extend-selection-after-double-click.html: Revert previous changes to this test.
@@ -3672,7 +3672,7 @@
 
         Reviewed by Ojan Vafai.
 
-        REGRESSION: crash in WebCore::CompositeEditCommand::splitTreeToNode when indenting in an empty li
+        REGRESSION: crash in CyberCore::CompositeEditCommand::splitTreeToNode when indenting in an empty li
         https://bugs.webkit.org/show_bug.cgi?id=38232
 
         * editing/execCommand/crash-indenting-list-item-expected.txt: Added.
@@ -4433,7 +4433,7 @@
         Reviewed by Xan Lopez.
 
         https://bugs.webkit.org/show_bug.cgi?id=30500
-        [Gtk] Find a way for WebKit to "announce" itself so that ATs can readily distinguish it from true Gtk/Gail
+        [Gtk] Find a way for CyberKit to "announce" itself so that ATs can readily distinguish it from true Gtk/Gail
 
         The "announcement" is now made in the form of an object attribute
         associated with the AtkObject.
@@ -4546,10 +4546,10 @@
         rename the WebGLArray types to the TypedArray naming convention.
         The only source files which were touched by hand, and which are
         being manually reviewed, are:
-            WebCore/page/DOMWindow.idl
-            WebCore/bindings/generic/RuntimeEnabledFeatures.h (script's changes undone)
-            WebKit/WebCore/bindings/js/JSDOMWindowCustom.cpp
-            WebKit/WebCore/bindings/v8/custom/V8DOMWindowCustom.cpp
+            CyberCore/page/DOMWindow.idl
+            CyberCore/bindings/generic/RuntimeEnabledFeatures.h (script's changes undone)
+            CyberKit/CyberCore/bindings/js/JSDOMWindowCustom.cpp
+            CyberKit/CyberCore/bindings/v8/custom/V8DOMWindowCustom.cpp
         These only needed to be touched to update the aliases between the
         WebGLArray and TypedArray names introduced in bug 39036. (It was
         not feasible to have do-webcore-rename handle this as it would
@@ -6333,7 +6333,7 @@
         Reviewed by Darin Adler.
 
         https://bugs.webkit.org/show_bug.cgi?id=28697
-        <rdar://problem/7946578> WebKit crash on WebCore::Node::nodeIndex()
+        <rdar://problem/7946578> CyberKit crash on CyberCore::Node::nodeIndex()
 
         * fast/dom/Range/remove-all-children-crash-expected.txt: Added.
         * fast/dom/Range/remove-all-children-crash.html: Added.
@@ -6829,7 +6829,7 @@
         QHttpNetworkRequest adds Authorization and Cookie headers to XHRs
         without knowing if this is valid behaviour or not. In order to allow
         Qt to decide whether Cookie/Authorization headers should be added
-        to an XHR QtWebKit needs to use an attribute added to QNetworkRequest.
+        to an XHR QtCyberKit needs to use an attribute added to QNetworkRequest.
         These new attributes are: QNetworkRequest::CookieLoadControlAttribute,
         QNetworkRequest::CookieSaveControlAttribute,and
         QNetworkRequest::AuthenticationReuseControlAttribute.
@@ -7054,7 +7054,7 @@
 
         Reviewed by Dimitri Glazkov.
 
-        WebCore::WebGLUnsignedIntArrayInternal::getCallback ReadAV@Arbitrary (deef89ee3d0345edebeaf13cf974c47c)
+        CyberCore::WebGLUnsignedIntArrayInternal::getCallback ReadAV@Arbitrary (deef89ee3d0345edebeaf13cf974c47c)
         https://bugs.webkit.org/show_bug.cgi?id=38039
 
         Web IDL now allows indexed getters and setters to be unnamed. Per
@@ -7455,7 +7455,7 @@
         * fast/url/trivial-segments-expected.txt: Added.
             - As usual, these have their "PASS" expectations set to the
               Chromium behavior but have their -expected.txt set to the normal
-              WebKit behavior, letting us track differences between the two.
+              CyberKit behavior, letting us track differences between the two.
         * fast/url/segments.html: Added.
         * fast/url/trivial-segments.html: Added.
 
@@ -8093,7 +8093,7 @@
 
         Not Reviewed.
 
-        Preparing for Chromium WebKit roll 58626:TBD
+        Preparing for Chromium CyberKit roll 58626:TBD
         https://bugs.webkit.org/show_bug.cgi?id=38479
 
         * platform/chromium/test_expectations.txt: added missing expectation
@@ -8982,7 +8982,7 @@
         Unreviewd, update test expectations.
         https://bugs.webkit.org/show_bug.cgi?id=38383
 
-        Start failing after WebKit r58563:r58565
+        Start failing after CyberKit r58563:r58565
         - fast/forms/search-abs-pos-cancel-button.html
         - fast/forms/search-cancel-button-mouseup.html
         - fast/forms/search-rtl.html
@@ -9735,7 +9735,7 @@
         Reviewed by David Kilzer.
 
         https://bugs.webkit.org/show_bug.cgi?id=38278
-        https://localhost:8443 doesn't work in WebKit tests
+        https://localhost:8443 doesn't work in CyberKit tests
 
         We only had a VirtualHost for 127.0.0.1:8443. Changed that to *:8443.
 
@@ -10416,7 +10416,7 @@
 
         Reviewed by Darin Adler.
 
-        WebKit crashes with deeply nested divs.
+        CyberKit crashes with deeply nested divs.
         https://bugs.webkit.org/show_bug.cgi?id=18282
 
         Add a test for deeply nested <span> elements like block-nesting-cap.html.
@@ -10945,7 +10945,7 @@
 
         Reviewed by Dan Bernstein.
 
-        Crash in WebCore::TextIterator::handleTextNode() encountered in Google rich-text products
+        Crash in CyberCore::TextIterator::handleTextNode() encountered in Google rich-text products
         https://bugs.webkit.org/show_bug.cgi?id=37950
 
         * editing/text-iterator/rtl-selection-crash-expected.txt: Added.
@@ -14025,7 +14025,7 @@
 
         Unreviewed, platform specific expected files updated after r57408.
 
-        [Qt] Implement Desktop Notifications API for QtWebKit
+        [Qt] Implement Desktop Notifications API for QtCyberKit
         https://bugs.webkit.org/show_bug.cgi?id=35503
 
         * platform/qt/fast/dom/Window/window-properties-expected.txt: updated.
@@ -14371,7 +14371,7 @@
 2010-04-09  Dumitru Daniliuc  <dumi@chromium.org>
 
         Unreviewed, rolling back the last two changes. The failing tests
-        are a Chromium problem, not a WebKit one.
+        are a Chromium problem, not a CyberKit one.
 
         * platform/chromium/test_expectations.txt:
 
@@ -14405,7 +14405,7 @@
 
         Reviewed by Darin Adler.
 
-        WebCore: WorkerGlobalScope.close() should let the currently running script complete execution, then terminate the worker.
+        CyberCore: WorkerGlobalScope.close() should let the currently running script complete execution, then terminate the worker.
         https://bugs.webkit.org/show_bug.cgi?id=37053
 
         * fast/workers/resources/worker-close.js:
@@ -15100,7 +15100,7 @@
 
         Reviewed by Adam Barth.
 
-        WebKit Apache configs only listen on IPv4 addresses, causing random timeouts
+        CyberKit Apache configs only listen on IPv4 addresses, causing random timeouts
         https://bugs.webkit.org/show_bug.cgi?id=37104
 
         Turns out the CYGWIN also uses Apache 1.3, so can't bind to ::1 either.
@@ -15141,7 +15141,7 @@
 
         Reviewed by Alexey Proskuryakov.
 
-        WebKit Apache configs only listen on IPv4 addresses, causing random timeouts
+        CyberKit Apache configs only listen on IPv4 addresses, causing random timeouts
         https://bugs.webkit.org/show_bug.cgi?id=37104
 
         Apache 1.3 does not support IPv6, so remove the Listen [::1] directive
@@ -15154,10 +15154,10 @@
 
         Reviewed by Adam Barth.
 
-        WebKit Apache configs only listen on IPv4 addresses, causing random timeouts
+        CyberKit Apache configs only listen on IPv4 addresses, causing random timeouts
         https://bugs.webkit.org/show_bug.cgi?id=37104
 
-        WebKit Apache configs were only listening on IPv4 loopback (127.0.0.1), however
+        CyberKit Apache configs were only listening on IPv4 loopback (127.0.0.1), however
         the system will resolve "localhost." to both IPv4 and IPv6 (::1) loopback
         addreses when IPv6 is enabled.  Since DNS lookup returns addresses in random
         order, we would occasionally fail to make connections to "localhost" addresses
@@ -15667,7 +15667,7 @@
         Reviewed by Adele Peterson.
 
         Test case for <http://webkit.org/b/37115> / <rdar://problem/7829331>.
-        REGRESSION(r56989): Crash in Mail in WebCore::Position::isCandidate when deleting block using block deletion UI
+        REGRESSION(r56989): Crash in Mail in CyberCore::Position::isCandidate when deleting block using block deletion UI
 
         * platform/mac/editing/deleting/deletionUI-successful-deletion-expected.txt: Added.
         * platform/mac/editing/deleting/deletionUI-successful-deletion.html: Added.
@@ -15717,7 +15717,7 @@
 
         Escape control characters in CSS string value when it is serialilzed.
 
-        When WebKit serializes a CSS string value that contains binary characters
+        When CyberKit serializes a CSS string value that contains binary characters
         ('\0\1\2' for example), it did not escape these characters. As a result,
         users got (invisible) control characters through scripts. This change fixes
         this issue.
@@ -16263,7 +16263,7 @@
 
         Reviewed by Darin Adler.
 
-        WebCore::Document::updateLayoutIgnorePendingStylesheets NULL pointer
+        CyberCore::Document::updateLayoutIgnorePendingStylesheets NULL pointer
         https://bugs.webkit.org/show_bug.cgi?id=31680
         Ownerless nodes leads a crash on DOMSelection APIs
         https://bugs.webkit.org/show_bug.cgi?id=36800
@@ -16425,7 +16425,7 @@
 
         Reviewed by Beth Dakin.
 
-        Bug 36968 - 1 crash in Safari at com.apple.WebCore: WebCore::Element::getAttribute const
+        Bug 36968 - 1 crash in Safari at com.matthewbenedict.CyberCore: CyberCore::Element::getAttribute const
         https://bugs.webkit.org/show_bug.cgi?id=36968
 
         * accessibility/crash-with-noelement-selectbox-expected.txt: Added.
@@ -16627,7 +16627,7 @@
         Reviewed by Darin Adler.
 
         Test for
-        Bug 36845 - AX: need a way to set the label of a AXWebArea through WebKit
+        Bug 36845 - AX: need a way to set the label of a AXWebArea through CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=36845
 
         * platform/mac/accessibility/html-with-aria-label-expected.txt: Added.
@@ -18531,7 +18531,7 @@
         Reviewed by Eric Seidel.
 
         Missing forward ENABLE_DATALIST macro to JavaScript enabled features macros
-        on WebKit.pri
+        on CyberKit.pri
 
         [Qt] Forward ENABLE_DATALIST macro to JavaScript enabled macros
         https://bugs.webkit.org/show_bug.cgi?id=36547
@@ -18583,7 +18583,7 @@
 
         Reviewed by Darin Adler.
 
-        WebKit should treat port numbers outside the valid range as being blacklisted
+        CyberKit should treat port numbers outside the valid range as being blacklisted
         <http://webkit.org/b/36571> / <rdar://problem/7790908>
 
         * platform/mac/security/block-test-expected.txt:
@@ -18746,7 +18746,7 @@
 
         Reviewed by Alexey Proskuryakov.
 
-        WebCore::SelectionController::setSelection NULL pointer
+        CyberCore::SelectionController::setSelection NULL pointer
         https://bugs.webkit.org/show_bug.cgi?id=31545
 
         * svg/dom/frame-related-api-during-load-expected.txt: Added.
@@ -19038,7 +19038,7 @@
 
         Reviewed by Kenneth Rohde Christiansen.
 
-        [Qt] Phonon media backend: expose supported MIME types to WebCore
+        [Qt] Phonon media backend: expose supported MIME types to CyberCore
 
         https://bugs.webkit.org/show_bug.cgi?id=33453
 
@@ -19167,7 +19167,7 @@
 
         Reviewed by Dan Bernstein.
 
-        WebCore::RenderButton::styleDidChange ReadAV@NULL (6739b7fe455ecb54a6812c0866c3b47c)
+        CyberCore::RenderButton::styleDidChange ReadAV@NULL (6739b7fe455ecb54a6812c0866c3b47c)
         https://bugs.webkit.org/show_bug.cgi?id=34641
 
         * fast/css/first-letter-block-form-controls-crash-expected.txt: Added.
@@ -19924,7 +19924,7 @@
         workaround. Reverting this change, the minor build fix in 36189,
         and the skipping of the affected tests in bug 36200.
 
-        Built and tested WebKit and Chromium and ran all WebGL layout
+        Built and tested CyberKit and Chromium and ran all WebGL layout
         tests in both.
 
         * fast/canvas/webgl/context-attributes-alpha-depth-stencil-antialias-expected.txt: Removed.
@@ -20065,8 +20065,8 @@
         https://bugs.webkit.org/show_bug.cgi?id=36184
         YouTube video resizing doesn't work with OOP plug-ins
 
-        This test is quite fragile, as it depends on when exactly WebCore decides to do layout.
-        If WebCore logic changes, the test will just always pass without executing the code path
+        This test is quite fragile, as it depends on when exactly CyberCore decides to do layout.
+        If CyberCore logic changes, the test will just always pass without executing the code path
         in question.
 
         * plugins/resize-from-plugin-expected.txt: Added.
@@ -20311,7 +20311,7 @@
         window.localStorage or window.openDatabase(). Also verify that
         window.sessionStorage is now allowed in sandboxed iframes.
 
-        WebKit would previously return null references in these cases.  The
+        CyberKit would previously return null references in these cases.  The
         new behavior is in accordance with HTML5:
 
         - http://dev.w3.org/html5/webstorage/   (sections 4.2 and 4.3)
@@ -20375,7 +20375,7 @@
 
         Always call PrintContext.end() from PrintContext::pageNumberForElement().
 
-        Without this change, WebKit remains in printing mode after determining the page number if the specified element is found.
+        Without this change, CyberKit remains in printing mode after determining the page number if the specified element is found.
 
         https://bugs.webkit.org/show_bug.cgi?id=36049
 
@@ -21021,7 +21021,7 @@
 
         Reviewed by Simon Hausmann.
 
-        [Qt] Add Support for WebKitEnableCaretBrowsing to Qt DRT
+        [Qt] Add Support for CyberKitEnableCaretBrowsing to Qt DRT
 
         Unskip test fast/events/multiline-link-arrow-navigation.html
 
@@ -22204,7 +22204,7 @@
         wanted to add a notifyDone() call to js-test-post.js, but it turns out that multiple tests
         dump results after "TEST COMPLETE", and we need to get bots back to green fast.
 
-        * java/lc3: (Many files). Don't load two scripts dynamically, WebKit has issues with order of
+        * java/lc3: (Many files). Don't load two scripts dynamically, CyberKit has issues with order of
         execution in this case.
 
 2010-03-03  Dumitru Daniliuc  <dumi@chromium.org>
@@ -22251,10 +22251,10 @@
 
         * java/lc3.java: Added.
         (lc3): This is a small wrapper around jstests.jar. The latter only adds some classes, but
-        WebKit needs an actual applet to call into Java.
+        CyberKit needs an actual applet to call into Java.
         (lc3.createQAObject): Instantiate a class defined in jstests.jar by name.
         (lc3.stringToByteArray): A helper to make a byte array out of string. Tests originally
-        relied on window.java package interface to do this, but it's not available in WebKit. We
+        relied on window.java package interface to do this, but it's not available in CyberKit. We
         need more functions like this to work around other uses of window.java, but this is one I
         wrote for now.
 
@@ -22365,7 +22365,7 @@
 
         Reviewed by Darin Adler.
 
-        Bug 35576: WebKit should tell plug-in instances when private browsing state changes
+        Bug 35576: CyberKit should tell plug-in instances when private browsing state changes
         <http://webkit.org/b/35576>
 
         * platform/win/Skipped: Remove plugins/private-browsing-mode.html now that it passes.
@@ -22620,7 +22620,7 @@
         See also: https://developer.mozilla.org/En/Supporting_private_browsing_in_plugins
 
         The NPNVprivateModeBool property is supported as scriptable property privateBrowsingEnabled
-        in the test WebKit plugin. The Mac platform also supports a cachedPrivateBrowsingEnabled
+        in the test CyberKit plugin. The Mac platform also supports a cachedPrivateBrowsingEnabled
         property implemented in the test plugin. This allows the Layout test
         plugins/private-browsing-mode.html to retrieve the previous value of NPNVprivateModeBool
         in the test plugin. Due to the platform-specific overhead required to support this bespoke
@@ -22924,7 +22924,7 @@
 
         Small refinements were done in paged-media-test-utils.js.
 
-        Note that WebKit doesn't pass page-break-after-003 for now.
+        Note that CyberKit doesn't pass page-break-after-003 for now.
 
         * printing/css2.1/README.txt:
         * printing/css2.1/page-break-after-000-expected.txt:
@@ -23002,7 +23002,7 @@
         Reviewed by Eric Seidel.
 
         Test whether or not we preserve the hash fragments for "about:blank"
-        URLs. (Note that currently WebKit passes this but Chromium doesn't).
+        URLs. (Note that currently CyberKit passes this but Chromium doesn't).
 
         https://bugs.webkit.org/show_bug.cgi?id=35399
 
@@ -23277,7 +23277,7 @@
 
         Reviewed by Simon Fraser.
 
-        REGRESSION: WebKit crashes when deleting images on blogger.com (34957)
+        REGRESSION: CyberKit crashes when deleting images on blogger.com (34957)
         <rdar://problem/7651935>
         https://bugs.webkit.org/show_bug.cgi?id=34957
 
@@ -23395,7 +23395,7 @@
         pageX/Y co-ordinates of TouchEvent should be 0,0
         https://bugs.webkit.org/show_bug.cgi?id=35239
 
-        Update layout tests to reflect the WebCore changes in this bug.
+        Update layout tests to reflect the CyberCore changes in this bug.
 
         * fast/events/touch/basic-multi-touch-events-expected.txt: Updated.
         * fast/events/touch/basic-single-touch-events-expected.txt: Updated.
@@ -23536,7 +23536,7 @@
 
         Reviewed by Dan Bernstein.
 
-        Reproducible crash in WebCore::nextLinePosition on Tweeteorites.com
+        Reproducible crash in CyberCore::nextLinePosition on Tweeteorites.com
         <rdar://problem/7615758>
         https://bugs.webkit.org/show_bug.cgi?id=35060
 
@@ -23863,7 +23863,7 @@
         easier to debug in the future.
 
         The mac results for extend-after-mouse-selection.html contain a "FAIL" line. This is
-        a case where WebKit doesn't match TextEdit.
+        a case where CyberKit doesn't match TextEdit.
 
         * editing/editing.js:
         (execMoveSelectionForwardByLineBoundaryCommand):
@@ -25109,7 +25109,7 @@
 
         inspector-tests.js moved to LayoutTests/http/tests/inspector because it can
         be referenced by relative path from LayoutTests/inspector but not vice versa
-        (html files served from LayoutTests/http/tests cannot refer it because WebKit
+        (html files served from LayoutTests/http/tests cannot refer it because CyberKit
         tests httpd doesn't serve content not under LayoutTests/http). 
 
         https://bugs.webkit.org/show_bug.cgi?id=31587
@@ -25288,7 +25288,7 @@
         Reviewed by Geoffrey Garen.
 
         https://bugs.webkit.org/show_bug.cgi?id=34490
-        WebCore::ImageEventSender::dispatchPendingEvents() crashes in certain conditions
+        CyberCore::ImageEventSender::dispatchPendingEvents() crashes in certain conditions
 
         * fast/images/destroyed-image-load-event-expected.txt: Added.
         * fast/images/destroyed-image-load-event.html: Added.
@@ -25392,7 +25392,7 @@
 2010-02-09  Csaba Osztrogonác  <ossy@webkit.org>
 
         [Qt] fast/events/multiline-link-arrow-navigation.html introduced in r54566, but our
-        LayoutTestController::overridePreference() does not support the 'WebKitEnableCaretBrowsing' preference now.
+        LayoutTestController::overridePreference() does not support the 'CyberKitEnableCaretBrowsing' preference now.
 
         * platform/qt/Skipped: fast/events/multiline-link-arrow-navigation.html skipped.
 
@@ -27083,7 +27083,7 @@
 
         Reviewed by Alexey Proskuryakov.
 
-        REGRESSION (r51644): WebCore/manual-tests/linkjump-1.html fails
+        REGRESSION (r51644): CyberCore/manual-tests/linkjump-1.html fails
         <rdar://problem/7595694> and https://bugs.webkit.org/show_bug.cgi?id=34550
 
         * fast/loader/document-with-fragment-url-1-expected.txt: Added.
@@ -27114,7 +27114,7 @@
 
         Test for: <rdar://problem/7594212> 
         https://bugs.webkit.org/show_bug.cgi?id=34549 - CSS counters crash at http://www.w3.org/TR/css3-content/
-        CrashTracer: [USER] 20 crashes in Safari at com.apple.WebCore: WebCore::CounterNode::insertAfter + 319
+        CrashTracer: [USER] 20 crashes in Safari at com.matthewbenedict.CyberCore: CyberCore::CounterNode::insertAfter + 319
 
         * fast/css/counters/counter-before-selector-crash-expected.txt: Added.
         * fast/css/counters/counter-before-selector-crash.html: Added.
@@ -27264,7 +27264,7 @@
         Reviewed by Darin Adler.
 
         https://bugs.webkit.org/show_bug.cgi?id=34076
-        <rdar://problem/7594601> Crash in mangleme in WebCore::Element::getAttribute
+        <rdar://problem/7594601> Crash in mangleme in CyberCore::Element::getAttribute
 
         * fast/forms/misplaced-img-form-registration-expected.txt: Added.
         * fast/forms/misplaced-img-form-registration.html: Added.

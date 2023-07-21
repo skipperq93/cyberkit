@@ -1,7 +1,7 @@
 Visual formatting model implementation.
 See https://www.w3.org/TR/CSS22/visuren.html for more information.
 
-WebCore
+CyberCore
 1. recursive layout
 2. layout logic lives in the renderers mixing block with inline etc.
 3. No clear separation of logic and state.
@@ -16,8 +16,8 @@ context including in/out-of-flow and floating boxes
 5. Boxes, including inline tree are generated while laying out the content. LayoutTree -> BoxTree.
 
 Instructions:
-1. apply ./misc/LayoutReloadedWebKit.patch
-2. compile WebKit
+1. apply ./misc/LayoutReloadedCyberKit.patch
+2. compile CyberKit
 3. load ./test/index.html
 
 Partially done:

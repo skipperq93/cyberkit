@@ -26,10 +26,10 @@
 #import "WebViewController.h"
 
 #import "TabViewController.h"
-#import <WebKit/WKNavigation.h>
-#import <WebKit/WKNavigationDelegate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKNavigation.h>
+#import <CyberKit/WKNavigationDelegate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewConfiguration.h>
 
 @implementation NSURL (BundleURLMethods)
 + (NSURL *)__bundleURLForFileURL:(NSURL *)url bundle:(NSBundle *)bundle

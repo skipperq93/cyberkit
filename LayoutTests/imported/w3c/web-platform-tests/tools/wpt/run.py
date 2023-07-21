@@ -375,9 +375,9 @@ class Servo(BrowserSetup):
             kwargs["binary"] = binary
 
 
-class WebKit(BrowserSetup):
+class CyberKit(BrowserSetup):
     name = "webkit"
-    browser_cls = browser.WebKit
+    browser_cls = browser.CyberKit
 
     def install(self, venv):
         raise NotImplementedError
@@ -397,7 +397,7 @@ product_setup = {
     "servo": Servo,
     "sauce": Sauce,
     "opera": Opera,
-    "webkit": WebKit,
+    "webkit": CyberKit,
 }
 
 

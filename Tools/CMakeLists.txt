@@ -4,5 +4,5 @@ set_property(DIRECTORY . PROPERTY FOLDER "Tools")
 WEBKIT_INCLUDE_CONFIG_FILES_IF_EXISTS()
 
 if (ENABLE_API_TESTS)
-    add_subdirectory(TestWebKitAPI)
+    add_subdirectory(TestCyberKitAPI)
 endif ()

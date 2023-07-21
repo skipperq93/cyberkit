@@ -92,11 +92,11 @@ class Application(object):
         }
 
         self.project_specific_generators = {
-            "JavaScriptCore":   Generators.JavaScriptCoreGenerator,
-            "WebCore":          Generators.WebCoreGenerator,
-            "WebKit":           Generators.WebKitGenerator,
+            "CyberScriptCore":   Generators.CyberScriptCoreGenerator,
+            "CyberCore":          Generators.CyberCoreGenerator,
+            "CyberKit":           Generators.CyberKitGenerator,
             "DumpRenderTree":   Generators.DumpRenderTreeGenerator,
-            "WebKitTestRunner": Generators.WebKitTestRunnerGenerator,
+            "CyberKitTestRunner": Generators.CyberKitTestRunnerGenerator,
         }
 
         self.supported_project_tags = None
@@ -209,7 +209,7 @@ specified on the command-line:
                         than once. Default is to iterate over all platforms,
                         filtered to those platforms that a particular project
                         supports (e.g., you can't specify 'iphoneos' for
-                        WebKitTestRunner).""".format(
+                        CyberKitTestRunner).""".format(
                             ", ".join(self.supported_platforms)))
         parser.add_argument("--configuration", action=util.CheckValidItemAction,
                 item_type="configuration",
@@ -422,7 +422,7 @@ specified on the command-line:
     def get_generate_xcfilelists_script_path(self):
         return self.command_file
 
-    # Return the parent of the WebKit check-out directory.
+    # Return the parent of the CyberKit check-out directory.
 
     @util.LogEntryExit
     def _get_root_parent_dir(self):
@@ -432,7 +432,7 @@ specified on the command-line:
                         os.path.dirname(        # Remove script name
                             self.get_generate_xcfilelists_script_path()))))
 
-    # Return the path to the WebKit check-out directory.
+    # Return the path to the CyberKit check-out directory.
 
     @util.LogEntryExit
     def get_opensource_dir(self):

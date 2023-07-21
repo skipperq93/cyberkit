@@ -53,15 +53,15 @@ from webkitpy.tool.mocktool import MockOptions
 
 
 # FIXME: get rid of this fixture
-class TestWebKitPort(Port):
+class TestCyberKitPort(Port):
     port_name = "testwebkitport"
 
     def __init__(self, port_name=None,
                  expectations_file=None, skips_file=None, host=None, config=None,
                  **kwargs):
-        port_name = port_name or TestWebKitPort.port_name
+        port_name = port_name or TestCyberKitPort.port_name
         host = host or MockSystemHost()
-        super(TestWebKitPort, self).__init__(host, port_name=port_name, **kwargs)
+        super(TestCyberKitPort, self).__init__(host, port_name=port_name, **kwargs)
 
     def all_test_configurations(self):
         return [self.test_configuration()]
@@ -110,7 +110,7 @@ class PortTestCase(unittest.TestCase):
     # Subclasses override this to point to their Port subclass.
     os_name = None
     os_version = None
-    port_maker = TestWebKitPort
+    port_maker = TestCyberKitPort
     port_name = None
     disable_setup = False
 
@@ -300,7 +300,7 @@ class PortTestCase(unittest.TestCase):
         self.assertEqual(self.proc.cmd, [port._path_to_image_diff(), "--tolerance", "0"])
 
         # Now test the case of using JHBuild wrapper.
-        port._filesystem.maybe_make_directory(port.path_from_webkit_base('WebKitBuild', 'Dependencies%s' % port.port_name.upper()))
+        port._filesystem.maybe_make_directory(port.path_from_webkit_base('CyberKitBuild', 'Dependencies%s' % port.port_name.upper()))
         self.assertTrue(port._should_use_jhbuild())
 
         self.assertEqual(port.diff_image('foo', 'bar'), ('', 100.0, None))
@@ -483,42 +483,42 @@ class PortTestCase(unittest.TestCase):
         self.assertEqual(ordered_dict.values()[-2:], ['foo', 'bar'])
 
     def test_path_to_test_expectations_file(self):
-        port = TestWebKitPort()
+        port = TestCyberKitPort()
         port._options = MockOptions(webkit_test_runner=False)
         self.assertEqual(port.path_to_test_expectations_file(), '/mock-checkout/LayoutTests/platform/testwebkitport/TestExpectations')
 
-        port = TestWebKitPort()
+        port = TestCyberKitPort()
         port._options = MockOptions(webkit_test_runner=True)
         self.assertEqual(port.path_to_test_expectations_file(), '/mock-checkout/LayoutTests/platform/testwebkitport/TestExpectations')
 
-        port = TestWebKitPort()
+        port = TestCyberKitPort()
         port.host.filesystem.files['/mock-checkout/LayoutTests/platform/testwebkitport/TestExpectations'] = 'some content'
         port._options = MockOptions(webkit_test_runner=False)
         self.assertEqual(port.path_to_test_expectations_file(), '/mock-checkout/LayoutTests/platform/testwebkitport/TestExpectations')
 
     def test_skipped_layout_tests(self):
-        self.assertEqual(TestWebKitPort().skipped_layout_tests(test_list=[]), set(['media']))
+        self.assertEqual(TestCyberKitPort().skipped_layout_tests(test_list=[]), set(['media']))
 
     def test_expectations_files(self):
-        port = TestWebKitPort()
+        port = TestCyberKitPort()
 
         def platform_dirs(port):
             return [port.host.filesystem.basename(port.host.filesystem.dirname(f)) for f in port.expectations_files()]
 
         self.assertEqual(platform_dirs(port), ['LayoutTests', 'testwebkitport'])
 
-        port = TestWebKitPort(port_name="testwebkitport-version")
+        port = TestCyberKitPort(port_name="testwebkitport-version")
         self.assertEqual(platform_dirs(port), ['LayoutTests', 'testwebkitport', 'testwebkitport-version'])
 
-        port = TestWebKitPort(port_name="testwebkitport-version-wk2")
+        port = TestCyberKitPort(port_name="testwebkitport-version-wk2")
         self.assertEqual(platform_dirs(port), ['LayoutTests', 'testwebkitport', 'testwebkitport-version', 'wk2', 'testwebkitport-wk2'])
 
-        port = TestWebKitPort(port_name="testwebkitport-version",
+        port = TestCyberKitPort(port_name="testwebkitport-version",
                               options=MockOptions(additional_platform_directory=["internal-testwebkitport"]))
         self.assertEqual(platform_dirs(port), ['LayoutTests', 'testwebkitport', 'testwebkitport-version', 'internal-testwebkitport'])
 
     def test_root_option(self):
-        port = TestWebKitPort()
+        port = TestCyberKitPort()
         port._options = MockOptions(root='/foo')
         if sys.platform.startswith('win'):
             self.assertEqual(port._path_to_driver(), "/foo/DumpRenderTree.exe")
@@ -530,19 +530,19 @@ class PortTestCase(unittest.TestCase):
         host = MockSystemHost()
         host.filesystem.write_text_file('/mock-checkout/LayoutTests/platform/testwebkitport/TestExpectations',
             'BUG_TESTEXPECTATIONS SKIP : fast/html/article-element.html = FAIL\n')
-        port = TestWebKitPort(host=host)
+        port = TestCyberKitPort(host=host)
         self.assertEqual(''.join(port.expectations_dict().values()), 'BUG_TESTEXPECTATIONS SKIP : fast/html/article-element.html = FAIL\n')
 
     def test_build_driver(self):
         output = OutputCapture()
-        port = TestWebKitPort()
+        port = TestCyberKitPort()
         # Delay setting _executive to avoid logging during construction
         port._executive = MockExecutive(should_log=True)
-        port._options = MockOptions(configuration="Release")  # This should not be necessary, but I think TestWebKitPort is actually reading from disk (and thus detects the current configuration).
+        port._options = MockOptions(configuration="Release")  # This should not be necessary, but I think TestCyberKitPort is actually reading from disk (and thus detects the current configuration).
         expected_logs = "MOCK run_command: ['Tools/Scripts/build-dumprendertree', '--release'], cwd=/mock-checkout, env={'MOCK_ENVIRON_COPY': '1'}\n"
         self.assertTrue(output.assert_outputs(self, port._build_driver, expected_logs=expected_logs))
 
-        # Make sure WebKitTestRunner is used.
+        # Make sure CyberKitTestRunner is used.
         port._options = MockOptions(webkit_test_runner=True, configuration="Release")
         expected_logs = "MOCK run_command: ['Tools/Scripts/build-dumprendertree', '--release'], cwd=/mock-checkout, env={'MOCK_ENVIRON_COPY': '1'}\nMOCK run_command: ['Tools/Scripts/build-webkittestrunner', '--release'], cwd=/mock-checkout, env={'MOCK_ENVIRON_COPY': '1'}\n"
         self.assertTrue(output.assert_outputs(self, port._build_driver, expected_logs=expected_logs))
@@ -571,7 +571,7 @@ MOCK output of child process
         self.assertEqual(port._apache_config_file_name_for_platform(platform), config_file)
 
     def test_linux_distro_detection(self):
-        port = TestWebKitPort()
+        port = TestCyberKitPort()
         self.assertFalse(port._is_redhat_based())
         self.assertFalse(port._is_debian_based())
 
@@ -588,7 +588,7 @@ MOCK output of child process
         self.assertTrue(port._is_arch_based())
 
     def test_apache_config_file_name_for_platform(self):
-        port = TestWebKitPort()
+        port = TestCyberKitPort()
         port._apache_version = lambda: '2.2'
         self._assert_config_file_for_platform(port, 'cygwin', 'apache2.2-httpd-win.conf')
 
@@ -599,7 +599,7 @@ MOCK output of child process
         port._apache_version = lambda: '2.2'
         self._assert_config_file_for_platform(port, 'linux2', 'fedora-httpd-2.2.conf')
 
-        port = TestWebKitPort()
+        port = TestCyberKitPort()
         port._is_debian_based = lambda: True
         port._apache_version = lambda: '2.2'
         self._assert_config_file_for_platform(port, 'linux2', 'debian-httpd-2.2.conf')
@@ -609,7 +609,7 @@ MOCK output of child process
         self._assert_config_file_for_platform(port, 'barf', 'apache2.2-httpd.conf')
 
     def test_path_to_apache_config_file(self):
-        port = TestWebKitPort()
+        port = TestCyberKitPort()
 
         saved_environ = os.environ.copy()
         try:

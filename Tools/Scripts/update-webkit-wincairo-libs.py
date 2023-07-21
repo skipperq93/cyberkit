@@ -31,9 +31,9 @@ import zipfile
 
 download = importlib.import_module('download-github-release')
 
-repo = 'WebKitForWindows/WinCairoRequirements'
+repo = 'CyberKitForWindows/WinCairoRequirements'
 file = 'WinCairoRequirements.zip'
-output = 'WebKitLibraries/win'
+output = 'CyberKitLibraries/win'
 options = [repo, file, '-o', output]
 
 # Check if there's a specific version to request

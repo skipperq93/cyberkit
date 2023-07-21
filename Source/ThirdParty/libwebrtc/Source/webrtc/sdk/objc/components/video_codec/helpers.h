@@ -16,7 +16,7 @@
 #include <VideoToolbox/VideoToolbox.h>
 #include <string>
 
-#include "sdk/WebKit/VideoProcessingSoftLink.h"
+#include "sdk/CyberKit/VideoProcessingSoftLink.h"
 
 // Convenience function for creating a dictionary.
 inline CFDictionaryRef CreateCFTypeDictionary(CFTypeRef* keys,

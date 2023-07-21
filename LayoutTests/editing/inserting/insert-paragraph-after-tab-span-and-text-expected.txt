@@ -1,4 +1,4 @@
-This test ensures WebKit inserts a paragraph separator properly at the end of a tab span.
+This test ensures CyberKit inserts a paragraph separator properly at the end of a tab span.
 | "
 "
 | <span>

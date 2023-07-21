@@ -78,7 +78,7 @@ TARGET_MAC_OS_X_VERSION_MAJOR_15 = 101500;
 SDKROOT = macosx.internal;
 
 PRODUCTION_FRAMEWORKS_DIR[sdk=iphone*] = $(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks;
-PRODUCTION_FRAMEWORKS_DIR[sdk=macosx*] = $(SDKROOT)$(NEXT_ROOT)$(SYSTEM_LIBRARY_DIR)/Frameworks/WebKit.framework/Versions/A/Frameworks;
+PRODUCTION_FRAMEWORKS_DIR[sdk=macosx*] = $(SDKROOT)$(NEXT_ROOT)$(SYSTEM_LIBRARY_DIR)/Frameworks/CyberKit.framework/Versions/A/Frameworks;
 
 AD_HOC_CODE_SIGNING_ALLOWED = YES;
 

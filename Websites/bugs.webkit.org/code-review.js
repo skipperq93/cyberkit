@@ -615,7 +615,7 @@ var CODE_REVIEW_UNITTEST;
           '</div>');
 
       var file_link = $('a', header)[0];
-      // If the base directory in the file path does not match a WebKit top level directory,
+      // If the base directory in the file path does not match a CyberKit top level directory,
       // then PrettyPatch.rb doesn't linkify the header.
       if (file_link) {
         file_link.target = "_blank";
@@ -712,7 +712,7 @@ var CODE_REVIEW_UNITTEST;
     if (file_name in original_file_contents)
       expand_function();
     else
-      getWebKitSourceFile(file_name, expand_function, expand_bar);
+      getCyberKitSourceFile(file_name, expand_function, expand_bar);
   }
 
   function handleSideBySideLinkClick() {
@@ -743,7 +743,7 @@ var CODE_REVIEW_UNITTEST;
     patched_file_contents[file_name] = patched_contents;
   }
 
-  function getWebKitSourceFile(file_name, onLoad, expand_bar) {
+  function getCyberKitSourceFile(file_name, onLoad, expand_bar) {
     function handleLoad(contents) {
       var split_contents = contents.split('\n');
       setFileContents(file_name, split_contents, applyDiff(split_contents, file_name));
@@ -1222,7 +1222,7 @@ var CODE_REVIEW_UNITTEST;
     }
 
     eraseDraftComments();
-    // FIXME: Once WebKit supports seamless iframes, we can just make the review-form
+    // FIXME: Once CyberKit supports seamless iframes, we can just make the review-form
     // iframe fill the page instead of redirecting back to the bug.
     window.location.replace($('#toolbar .bugLink a').attr('href'));
   }

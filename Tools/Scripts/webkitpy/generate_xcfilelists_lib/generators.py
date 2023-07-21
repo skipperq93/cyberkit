@@ -271,16 +271,16 @@ class BaseGenerator(object):
                     input=stdout)
 
             # TODO: Make this generator-specific (there's no need to reference
-            # WebCore, for example, when processing the JavaScriptCore
+            # CyberCore, for example, when processing the CyberScriptCore
             # project).
 
             input_lines = self._get_file_lines(input.name)
             output_lines = self._get_file_lines(output.name)
 
-            input_lines = self._replace(input_lines, "^JavaScriptCore/",               "$(PROJECT_DIR)/")
-            input_lines = self._replace(input_lines, "^JavaScriptCorePrivateHeaders/", "$(JAVASCRIPTCORE_PRIVATE_HEADERS_DIR)/")
-            input_lines = self._replace(input_lines, "^WebCore/",                      "$(PROJECT_DIR)/")
-            input_lines = self._replace(input_lines, "^WebKit2PrivateHeaders/",        "$(WEBKIT2_PRIVATE_HEADERS_DIR)/")
+            input_lines = self._replace(input_lines, "^CyberScriptCore/",               "$(PROJECT_DIR)/")
+            input_lines = self._replace(input_lines, "^CyberScriptCorePrivateHeaders/", "$(JAVASCRIPTCORE_PRIVATE_HEADERS_DIR)/")
+            input_lines = self._replace(input_lines, "^CyberCore/",                      "$(PROJECT_DIR)/")
+            input_lines = self._replace(input_lines, "^CyberKit2PrivateHeaders/",        "$(WEBKIT2_PRIVATE_HEADERS_DIR)/")
 
             input_lines = self._unexpand(input_lines, "JAVASCRIPTCORE_PRIVATE_HEADERS_DIR")
             input_lines = self._unexpand(input_lines, "PROJECT_DIR")
@@ -412,22 +412,22 @@ class BaseGenerator(object):
     def _get_project_file_path(self):
         assert False, """\
                 Override this to return full path to the project file (e.g.,
-                ".../Source/JavaScriptCore/JavaScriptCode.xcodeproj")."""
+                ".../Source/CyberScriptCore/JavaScriptCode.xcodeproj")."""
 
     # Return the path to the directory containing the project file and its
-    # supporting files and directories (e.g., ".../Source/JavaScriptCore").
+    # supporting files and directories (e.g., ".../Source/CyberScriptCore").
 
     @util.LogEntryExit
     def _get_project_dir(self):
         return os.path.dirname(self._get_project_file_path())
 
-    # Return the project file name (e.g., "JavaScriptCore.xcodeproj").
+    # Return the project file name (e.g., "CyberScriptCore.xcodeproj").
 
     @util.LogEntryExit
     def _get_project_file_name(self):
         return os.path.basename(self._get_project_file_path())
 
-    # Return the project name (e.g., "JavaScriptCore").
+    # Return the project name (e.g., "CyberScriptCore").
 
     @util.LogEntryExit
     def _get_project_name(self):
@@ -459,9 +459,9 @@ class BaseGenerator(object):
     #
     # From command-line:
     #
-    #   export SYMROOT            =/Volumes/Data/dev/webkit/OpenSource/WebKitBuild
-    #   export OBJROOT            =/Volumes/Data/dev/webkit/OpenSource/WebKitBuild
-    #   export SHARED_PRECOMPS_DIR=/Volumes/Data/dev/webkit/OpenSource/WebKitBuild/PrecompiledHeaders
+    #   export SYMROOT            =/Volumes/Data/dev/webkit/OpenSource/CyberKitBuild
+    #   export OBJROOT            =/Volumes/Data/dev/webkit/OpenSource/CyberKitBuild
+    #   export SHARED_PRECOMPS_DIR=/Volumes/Data/dev/webkit/OpenSource/CyberKitBuild/PrecompiledHeaders
 
     @util.LogEntryExit
     def _get_build_dirs(self):
@@ -590,7 +590,7 @@ class BaseGenerator(object):
         def define_command_line_build_dirs(self):
             products_dir = self._getenv("WEBKIT_OUTPUTDIR")
             if not products_dir:
-                products_dir = os.path.join(self.application.get_opensource_dir(), "WebKitBuild")
+                products_dir = os.path.join(self.application.get_opensource_dir(), "CyberKitBuild")
             return (products_dir, products_dir)
 
         if not self.cached_build_dirs and self.application.cmd_line_args.xcode:
@@ -647,13 +647,13 @@ class BaseGenerator(object):
         return self.application.get_xcode_project_temp_dir()
 
 
-class JavaScriptCoreGenerator(BaseGenerator):
+class CyberScriptCoreGenerator(BaseGenerator):
     VALID_PLATFORMS = ("macosx", "maccatalyst", "iphoneos", "iphonesimulator", "watchos", "watchsimulator", "appletvos", "appletvsimulator")
     VALID_CONFIGURATIONS = ("Debug", "Release", "Production", "Profiling")
 
     @util.LogEntryExit
     def _get_project_file_path(self):
-        return os.path.join(self.application.get_opensource_dir(), "Source", "JavaScriptCore", "JavaScriptCore.xcodeproj")
+        return os.path.join(self.application.get_opensource_dir(), "Source", "CyberScriptCore", "CyberScriptCore.xcodeproj")
 
     @util.LogEntryExit
     def _get_generate_derived_sources_script(self):
@@ -664,13 +664,13 @@ class JavaScriptCoreGenerator(BaseGenerator):
         return os.path.join(self._get_project_dir(), "Scripts", "generate-unified-sources.sh")
 
 
-class WebCoreGenerator(BaseGenerator):
+class CyberCoreGenerator(BaseGenerator):
     VALID_PLATFORMS = ("macosx", "maccatalyst", "iphoneos", "iphonesimulator", "watchos", "watchsimulator", "appletvos", "appletvsimulator")
     VALID_CONFIGURATIONS = ("Debug", "Release", "Production")
 
     @util.LogEntryExit
     def _get_project_file_path(self):
-        return os.path.join(self.application.get_opensource_dir(), "Source", "WebCore", "WebCore.xcodeproj")
+        return os.path.join(self.application.get_opensource_dir(), "Source", "CyberCore", "CyberCore.xcodeproj")
 
     @util.LogEntryExit
     def _get_generate_derived_sources_script(self):
@@ -681,17 +681,17 @@ class WebCoreGenerator(BaseGenerator):
         return os.path.join(self._get_project_dir(), "Scripts", "generate-unified-sources.sh")
 
 
-class WebKitGenerator(BaseGenerator):
+class CyberKitGenerator(BaseGenerator):
     VALID_PLATFORMS = ("macosx", "maccatalyst", "iphoneos", "iphonesimulator", "watchos", "watchsimulator", "appletvos", "appletvsimulator")
     VALID_CONFIGURATIONS = ("Debug", "Release", "Production")
 
     @util.LogEntryExit
     def _get_project_file_path(self):
-        return os.path.join(self.application.get_opensource_dir(), "Source", "WebKit", "WebKit.xcodeproj")
+        return os.path.join(self.application.get_opensource_dir(), "Source", "CyberKit", "CyberKit.xcodeproj")
 
     @util.LogEntryExit
     def _get_derived_sources_dir(self):
-        return os.path.join(self.application.get_xcode_built_products_dir(), "DerivedSources", "WebKit2")
+        return os.path.join(self.application.get_xcode_built_products_dir(), "DerivedSources", "CyberKit2")
 
     @util.LogEntryExit
     def _get_generate_derived_sources_script(self):
@@ -715,13 +715,13 @@ class DumpRenderTreeGenerator(BaseGenerator):
         return os.path.join(self._get_project_dir(), "Scripts", "generate-derived-sources.sh")
 
 
-class WebKitTestRunnerGenerator(BaseGenerator):
+class CyberKitTestRunnerGenerator(BaseGenerator):
     VALID_PLATFORMS = ("macosx", )
     VALID_CONFIGURATIONS = ("Debug", "Release", "Production")
 
     @util.LogEntryExit
     def _get_project_file_path(self):
-        return os.path.join(self.application.get_opensource_dir(), "Tools", "WebKitTestRunner", "WebKitTestRunner.xcodeproj")
+        return os.path.join(self.application.get_opensource_dir(), "Tools", "CyberKitTestRunner", "CyberKitTestRunner.xcodeproj")
 
     @util.LogEntryExit
     def _get_generate_derived_sources_script(self):

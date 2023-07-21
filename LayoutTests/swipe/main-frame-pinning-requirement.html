@@ -67,7 +67,7 @@ function isFirstPage()
 
 window.onload = function () {
     if (!window.eventSender || !window.testRunner) {
-        document.getElementById("large").innerHTML = "This test must be run in WebKitTestRunner.";
+        document.getElementById("large").innerHTML = "This test must be run in CyberKitTestRunner.";
         return;
     }
 
@@ -81,7 +81,7 @@ window.onload = function () {
         testRunner.installDidEndSwipeCallback(didEndSwipeCallback);
         testRunner.installDidRemoveSwipeSnapshotCallback(didRemoveSwipeSnapshotCallback);
 
-        testRunner.overridePreference("WebKitUsesPageCachePreferenceKey", 1);
+        testRunner.overridePreference("CyberKitUsesPageCachePreferenceKey", 1);
         testRunner.dumpAsText();
         testRunner.waitUntilDone();
 

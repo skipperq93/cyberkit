@@ -29,10 +29,10 @@
 #ifndef TextInputController_h
 #define TextInputController_h
 
-#include <JavaScriptCore/JSContextRef.h>
-#include <JavaScriptCore/JSObjectRef.h>
-#include <JavaScriptCore/JSStringRef.h>
-#include <JavaScriptCore/JSValueRef.h>
+#include <CyberScriptCore/JSContextRef.h>
+#include <CyberScriptCore/JSObjectRef.h>
+#include <CyberScriptCore/JSStringRef.h>
+#include <CyberScriptCore/JSValueRef.h>
 #include <vector>
 
 class TextInputController {

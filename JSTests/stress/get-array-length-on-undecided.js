@@ -2,7 +2,7 @@ function forceTransition() {
     // We want to test the StructureCheck in testSparseArray(), not this watchpoint.
     // We start with the transition so that it's nothing new.
     let array = new Array();
-    array[100001] = "WebKit!";
+    array[100001] = "CyberKit!";
 }
 forceTransition();
 
@@ -65,7 +65,7 @@ testOversizedArray();
 function testSparseArray()
 {
     let array = new Array();
-    array[100001] = "WebKit!";
+    array[100001] = "CyberKit!";
     for (let i = 0; i < 1e6; ++i) {
         if (opaqueGetArrayLength(array) !== 100002) {
             throw "Failed testOversizedArray";

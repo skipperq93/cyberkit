@@ -37,7 +37,7 @@ from webkitpy.style.filereader import TextFileReader
 
 class ChangeDirectoryTest(unittest.TestCase):
     _original_directory = "/original"
-    _checkout_root = "/WebKit"
+    _checkout_root = "/CyberKit"
 
     def setUp(self):
         self._log = LogTesting.setUp(self)
@@ -60,21 +60,21 @@ class ChangeDirectoryTest(unittest.TestCase):
         self._assert_result(paths, None, [], self._checkout_root)
 
     def test_paths_convertible(self):
-        paths = ["/WebKit/foo1.txt", "/WebKit/foo2.txt"]
+        paths = ["/CyberKit/foo1.txt", "/CyberKit/foo2.txt"]
         paths = self._change_directory(checkout_root=self._checkout_root, paths=paths)
         self._assert_result(paths, ["foo1.txt", "foo2.txt"], [], self._checkout_root)
 
     def test_with_scm_paths_unconvertible(self):
-        paths = ["/WebKit/foo1.txt", "/outside/foo2.txt"]
+        paths = ["/CyberKit/foo1.txt", "/outside/foo2.txt"]
         paths = self._change_directory(checkout_root=self._checkout_root, paths=paths)
         log_messages = [
 """WARNING: Path-dependent style checks may not work correctly:
 
-  One of the given paths is outside the WebKit checkout of the current
+  One of the given paths is outside the CyberKit checkout of the current
   working directory:
 
     Path: /outside/foo2.txt
-    Checkout root: /WebKit
+    Checkout root: /CyberKit
 
   Pass only files below the checkout root to ensure correct results.
   See the help documentation for more info.

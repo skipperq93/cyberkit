@@ -80,7 +80,7 @@
 #if defined(__Userspace_os_Windows)
 static void atomic_init(void) {} /* empty when we are not using atomic_mtx */
 #else
-// WebKit change, this conflicts with atomic_init
+// CyberKit change, this conflicts with atomic_init
 // static inline void atomic_init(void) {} /* empty when we are not using atomic_mtx */
 #endif
 

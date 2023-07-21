@@ -1,6 +1,6 @@
 set_property(DIRECTORY . PROPERTY FOLDER "WebDriver")
 
-include(WebKitCommon)
+include(CyberKitCommon)
 
 set(WebDriver_PRIVATE_INCLUDE_DIRECTORIES
     "${CMAKE_BINARY_DIR}"

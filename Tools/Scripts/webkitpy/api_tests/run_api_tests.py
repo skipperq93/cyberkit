@@ -97,7 +97,7 @@ def parse_args(args):
                              help='Save test results as JSON to file'),
     ]))
 
-    option_group_definitions.append(('WebKit Options', [
+    option_group_definitions.append(('CyberKit Options', [
         optparse.make_option('-g', '--guard-malloc', action='store_true', default=False,
                              help='Enable Guard Malloc (OS X only)'),
         optparse.make_option('--root', action='store',
@@ -107,12 +107,12 @@ def parse_args(args):
     option_group_definitions.append(('Testing Options', [
         optparse.make_option('--wtf-only', action='store_const', const='TestWTF', dest='api_binary',
                              help='Only build, check and run TestWTF'),
-        optparse.make_option('--webkit-only', action='store_const', const='TestWebKitAPI', dest='api_binary',
-                             help='Only check and run TestWebKitAPI'),
-        optparse.make_option('--web-core-only', action='store_const', const='TestWebCore', dest='api_binary',
-                             help='Only check and run TestWebCore.exe (Windows only)'),
-        optparse.make_option('--webkit-legacy-only', action='store_const', const='TestWebKitLegacy', dest='api_binary',
-                             help='Only check and run TestWebKitLegacy.exe (Windows only)'),
+        optparse.make_option('--webkit-only', action='store_const', const='TestCyberKitAPI', dest='api_binary',
+                             help='Only check and run TestCyberKitAPI'),
+        optparse.make_option('--web-core-only', action='store_const', const='TestCyberCore', dest='api_binary',
+                             help='Only check and run TestCyberCore.exe (Windows only)'),
+        optparse.make_option('--webkit-legacy-only', action='store_const', const='TestCyberKitLegacy', dest='api_binary',
+                             help='Only check and run TestCyberKitLegacy.exe (Windows only)'),
         optparse.make_option('-d', '--dump', action='store_true', default=False,
                              help='Dump all test names without running them'),
         optparse.make_option('--build', dest='build', action='store_true', default=True,

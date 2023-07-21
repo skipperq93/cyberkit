@@ -7,7 +7,7 @@ description("Test that an open WebSocket does not prevent a page from entering p
 
 window.jsTestIsAsync = true;
 if (window.testRunner)
-    testRunner.overridePreference("WebKitUsesPageCachePreferenceKey", 1);
+    testRunner.overridePreference("CyberKitUsesPageCachePreferenceKey", 1);
 
 var wasRestoredFromPageCache = false;
 var receivedErrorEvent = false;

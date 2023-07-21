@@ -54,12 +54,12 @@ class TestDumpClassLayout(unittest.TestCase):
     def setUpClass(cls):
         global debugger_instance
         if not debugger_instance:
-            lldbWebKitTesterExecutable = str(os.environ['LLDB_WEBKIT_TESTER_EXECUTABLE'])
+            lldbCyberKitTesterExecutable = str(os.environ['LLDB_WEBKIT_TESTER_EXECUTABLE'])
 
             architecture = 'x86_64'
-            debugger_instance = LLDBDebuggerInstance(lldbWebKitTesterExecutable, architecture)
+            debugger_instance = LLDBDebuggerInstance(lldbCyberKitTesterExecutable, architecture)
             if not debugger_instance:
-                print 'Failed to create lldb debugger instance for %s' % (lldbWebKitTesterExecutable)
+                print 'Failed to create lldb debugger instance for %s' % (lldbCyberKitTesterExecutable)
 
     def setUp(self):
         super(TestDumpClassLayout, self).setUp()

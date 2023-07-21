@@ -28,20 +28,20 @@
 #import "AppDelegate.h"
 #import "AppKitCompatibilityDeclarations.h"
 #import "SettingsController.h"
-#import <WebKit/WKFrameInfo.h>
-#import <WebKit/WKNavigationActionPrivate.h>
-#import <WebKit/WKNavigationDelegate.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKUIDelegate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/WebNSURLExtras.h>
-#import <WebKit/_WKIconLoadingDelegate.h>
-#import <WebKit/_WKInspector.h>
-#import <WebKit/_WKLinkIconParameters.h>
-#import <WebKit/_WKUserInitiatedAction.h>
+#import <CyberKit/WKFrameInfo.h>
+#import <CyberKit/WKNavigationActionPrivate.h>
+#import <CyberKit/WKNavigationDelegate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKUIDelegate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/WebNSURLExtras.h>
+#import <CyberKit/_WKIconLoadingDelegate.h>
+#import <CyberKit/_WKInspector.h>
+#import <CyberKit/_WKLinkIconParameters.h>
+#import <CyberKit/_WKUserInitiatedAction.h>
 
 static void* keyValueObservingContext = &keyValueObservingContext;
 static const int testHeaderBannerHeight = 42;
@@ -103,7 +103,7 @@ static const int testFooterBannerHeight = 58;
     _webView.UIDelegate = self;
 
     // This setting installs the new WK2 Icon Loading Delegate and tests that mechanism by
-    // telling WebKit to load every icon referenced by the page.
+    // telling CyberKit to load every icon referenced by the page.
     if ([[SettingsController shared] loadsAllSiteIcons])
         _webView._iconLoadingDelegate = self;
     

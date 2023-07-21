@@ -266,7 +266,7 @@ class _IncludeState(dict):
     _SOFT_LINK_SECTION = 4
 
     _TYPE_NAMES = {
-        _CONFIG_HEADER: 'WebCore config.h',
+        _CONFIG_HEADER: 'CyberCore config.h',
         _PRIMARY_HEADER: 'header this file implements',
         _OTHER_HEADER: 'other header',
         _SOFT_LINK_HEADER: '*SoftLink.h header',
@@ -274,7 +274,7 @@ class _IncludeState(dict):
         }
     _SECTION_NAMES = {
         _INITIAL_SECTION: "... nothing.",
-        _CONFIG_SECTION: "WebCore config.h.",
+        _CONFIG_SECTION: "CyberCore config.h.",
         _PRIMARY_SECTION: 'a header this file implements.',
         _OTHER_SECTION: 'other header.',
         _SOFT_LINK_SECTION: 'soft-link header section.',
@@ -311,7 +311,7 @@ class _IncludeState(dict):
 
         """
         if header_type == _CONFIG_HEADER and file_is_header:
-            return 'Header file should not contain WebCore config.h.'
+            return 'Header file should not contain CyberCore config.h.'
         if header_type == _PRIMARY_HEADER and file_is_header:
             return 'Header file should not contain itself.'
         if header_type == _MOC_HEADER:
@@ -3034,7 +3034,7 @@ def _classify_include(filename, include, is_system, include_state):
     if is_system and not include.startswith('public/') and not include.startswith('wtf/'):
         return _OTHER_HEADER
 
-    # If the include is named config.h then this is WebCore/config.h.
+    # If the include is named config.h then this is CyberCore/config.h.
     if include == "config.h":
         return _CONFIG_HEADER
 
@@ -3474,7 +3474,7 @@ def check_language(filename, clean_lines, line_number, file_extension, include_s
     # Check that we're not using static_cast<Text*>.
     if search(r'\bstatic_cast<Text\*>', line):
         error(line_number, 'readability/check', 4,
-              'Consider using toText helper function in WebCore/dom/Text.h '
+              'Consider using toText helper function in CyberCore/dom/Text.h '
               'instead of static_cast<Text*>')
 
 
@@ -3588,7 +3588,7 @@ def check_identifier_name_in_declaration(filename, line_number, line, file_state
         modified_identifier = sub(r'(^|(?<=::))[ms]_', '', identifier)
         if not file_state.is_objective_c_or_objective_cpp() and modified_identifier.find('_') >= 0:
             # Various exceptions to the rule: JavaScript op codes functions, const_iterator.
-            if (not (filename.find('JavaScriptCore') >= 0 and (modified_identifier.find('op_') >= 0 or modified_identifier.find('intrinsic_') >= 0))
+            if (not (filename.find('CyberScriptCore') >= 0 and (modified_identifier.find('op_') >= 0 or modified_identifier.find('intrinsic_') >= 0))
                 and not (('gtk' in filename or 'glib' in filename or 'wpe' in filename or 'atk' in filename) and modified_identifier.startswith('webkit_'))
                 and not modified_identifier.startswith('tst_')
                 and not modified_identifier.startswith('webkit_dom_object_')

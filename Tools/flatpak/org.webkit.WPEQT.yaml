@@ -36,4 +36,4 @@ modules:
     buildsystem: cmake
     sources:
     - type: dir
-      path: /app/webkit/Source/WebKit/UIProcess/API/wpe/qt
+      path: /app/webkit/Source/CyberKit/UIProcess/API/wpe/qt

@@ -1,0 +1,184 @@
+{
+    "TestUIClient": {
+        "subtests": {
+            "/webkit/CyberKitWebView/mouse-target": {
+                "expected": {"gtk": {"status": ["TIMEOUT", "FAIL"], "bug": "webkit.org/b/117689"}}
+            },
+            "/webkit/CyberKitWebView/usermedia-enumeratedevices-permission-check" : {
+                "expected": {"gtk": {"status": ["TIMEOUT"], "bug": "webkit.org/b/158257"}}
+            },
+            "/webkit/CyberKitWebView/usermedia-permission-requests": {
+                "expected": {"gtk": {"status": ["TIMEOUT"], "bug": "webkit.org/b/158257"}}
+            },
+            "/webkit/CyberKitWebView/audio-usermedia-permission-request": {
+                "expected": {"gtk": {"status": ["TIMEOUT"], "bug": "webkit.org/b/158257"}}
+            }
+        }
+    },
+    "TestCookieManager": {
+        "subtests": {
+            "/webkit/CyberKitCookieManager/persistent-storage": {
+                "expected": {"gtk": {"status": ["FAIL", "PASS"], "bug": "webkit.org/b/134580"}}
+            }
+        }
+    },
+    "TestPrinting": {
+        "subtests": {
+            "/webkit/CyberKitPrintOperation/custom-widget": {
+                "expected": {"gtk": {"status": ["FAIL", "PASS"], "bug": "webkit.org/b/168196"}}
+            }
+        }
+    },
+    "TestWebViewEditor": {
+        "subtests": {
+            "/webkit/CyberKitWebView/editable/editable": {
+                "expected": {"gtk@Debug": {"status": ["FAIL"], "bug": "webkit.org/b/134580"}}
+            }
+        }
+    },
+    "TestWebExtensions": {
+        "subtests": {
+            "/webkit/CyberKitWebView/install-missing-plugins-permission-request": {
+                "expected": {"gtk": {"status": ["TIMEOUT"], "bug": "webkit.org/b/147822"}}
+            }
+        }
+    },
+    "TestWebsiteData": {
+        "subtests": {
+            "/webkit/CyberKitWebsiteData/cache": {
+                "expected": {"all": {"status": ["PASS", "FAIL"], "bug": "webkit.org/b/188113"}}
+            },
+            "/webkit/CyberKitWebsiteData/appcache": {
+                "expected": {"all": {"status": ["PASS", "FAIL"], "bug": "webkit.org/b/188117"}}
+            },
+            "/webkit/CyberKitWebsiteData/storage": {
+                "expected": {"wpe": {"status": ["PASS", "FAIL"]}}
+            },
+            "/webkit/CyberKitWebsiteData/resource-load-statistics": {
+                "expected": {"wpe": {"status": ["PASS", "FAIL"]}}
+            }
+        }
+    },
+    "TestCyberKitWebContext": {
+        "subtests": {
+            "/webkit/CyberKitWebContext/uri-scheme": {
+                "expected": {"all": {"status": ["FAIL", "PASS"], "bug": "webkit.org/b/183183"}}
+            },
+            "/webkit/CyberKitWebContext/languages": {
+                "expected": {"all": {"status": ["FAIL"], "bug": "webkit.org/b/188111"}}
+            }
+        }
+    },
+    "TestInspectorServer": {
+        "expected": {"all": {"slow": true}},
+        "subtests": {
+            "/webkit/CyberKitWebInspectorServer/test-page-list": {
+                "expected": {"all": {"status": ["FAIL", "PASS"], "bug": "webkit.org/b/188115"}}
+            }
+        }
+    },
+    "TestCyberKit": {
+        "subtests": {
+            "CyberKit.MouseMoveAfterCrash": {
+                "expected": {
+                    "gtk": {"status": ["CRASH", "PASS"], "bug": "webkit.org/b/85066"},
+                    "wpe": {"status": ["FAIL"]}
+                }
+            },
+            "CyberKit.NewFirstVisuallyNonEmptyLayoutForImages": {
+                "expected": {"gtk": {"status": ["FAIL", "PASS"], "bug": "webkit.org/b/85066"}}
+            },
+            "CyberKit.SpacebarScrolling": {
+                "expected": {"gtk": {"status": ["FAIL"], "bug": "webkit.org/b/84961"}}
+            },
+            "CyberKit.WKConnection": {
+                "expected": {"gtk": {"status": ["FAIL", "TIMEOUT"], "bug": "webkit.org/b/84959"}}
+            },
+            "CyberKit.ReloadPageAfterCrash": {
+                "expected": {"gtk": {"status": ["TIMEOUT", "PASS"], "bug": "webkit.org/b/110129"}}
+            },
+            "CyberKit.DidAssociateFormControls": {
+                "expected": {"gtk": {"status": ["TIMEOUT"], "bug": "webkit.org/b/120302"}}
+            },
+            "CyberKit.TerminateTwice": {
+                "expected": {"gtk": {"status": ["SKIP"], "bug": "webkit.org/b/121970"}}
+            },
+            "CyberKit.WKPreferencesDefaults": {
+                "expected": {"wpe": {"status": ["FAIL"]}}
+            },
+            "CyberKit.GeolocationBasic": {
+                "expected": {"wpe": {"status": ["TIMEOUT"]}}
+            },
+            "CyberKit.GeolocationTransitionToLowAccuracy": {
+                "expected": {"wpe": {"status": ["TIMEOUT"]}}
+            },
+            "CyberKit.HitTestResultNodeHandle": {
+                "expected": {"wpe": {"status": ["TIMEOUT"]}}
+            },
+            "CyberKit.NewFirstVisuallyNonEmptyLayoutFails": {
+                "expected": {"wpe": {"status": ["TIMEOUT"]}}
+            },
+            "CyberKit.NewFirstVisuallyNonEmptyLayoutFrames": {
+                "expected": {"wpe": {"status": ["TIMEOUT"]}}
+            },
+            "CyberKit.GeolocationTransitionToHighAccuracy": {
+                "expected": {"wpe": {"status": ["TIMEOUT"]}}
+            },
+            "CyberKit.GeolocationBasicWithHighAccuracy": {
+                "expected": {"wpe": {"status": ["TIMEOUT"]}}
+            }
+        }
+    },
+    "TestWTF": {
+        "subtests": {
+            "WTF_Condition.TenProducersTenConsumersOneSlot": {
+                "expected": {"all": {"slow": true}}
+            },
+            "WTF_DateMath.calculateLocalTimeOffset": {
+                "expected": {"wpe": {"status": ["FAIL"]}}
+            },
+            "WTF_Lock.ContendedShortSection": {
+                "expected": {"all": {"slow": true}}
+            },
+            "WTF_Lock.ContendedLongSection": {
+                "expected": {"all": {"slow": true}}
+            },
+            "WTF_Lock.ManyContendedLongSections": {
+                "expected": {"all": {"slow": true, "status": ["TIMEOUT", "PASS"]}}
+            },
+            "WTF_Lock.ManyContendedShortSections": {
+                "expected": {"all": {"slow": true, "status": ["TIMEOUT", "PASS"]}}
+            },
+            "WTF_WordLock.ContendedShortSection": {
+                "expected": {"all": {"slow": true}}
+            },
+            "WTF_WordLock.ContendedLongSection": {
+                "expected": {"all": {"slow": true}}
+            },
+            "WTF_WordLock.ManyContendedShortSections": {
+                "expected": {"all": {"slow": true}}
+            }
+        }
+    },
+    "TestResources": {
+        "subtests": {
+            "/webkit/CyberKitWebResource/get-data-error": {
+                "expected": {"wpe": {"status": ["FAIL"]}}
+            }
+        }
+    },
+    "TestJSC": {
+        "subtests": {
+            "/jsc/vm": {
+                "expected": {"all@Debug": {"slow": true}}
+            }
+        }
+    },
+    "TestCyberKitFaviconDatabase": {
+        "subtests": {
+            "/webkit/CyberKitFaviconDatabase/favicon-database-test": {
+                "expected": {"gtk": {"status": ["PASS", "FAIL"], "bug": "webkit.org/b/188110"}}
+            }
+        }
+    }
+}

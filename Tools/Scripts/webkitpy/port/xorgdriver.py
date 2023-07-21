@@ -52,7 +52,7 @@ class XorgDriver(Driver):
         server_environment['LOCAL_RESOURCE_ROOT'] = self._port.layout_tests_dir()
         if self._driver_tempdir is not None:
             server_environment['DUMPRENDERTREE_TEMP'] = str(self._driver_tempdir)
-            # Currently on WebKit2, there is no API for setting the application
+            # Currently on CyberKit2, there is no API for setting the application
             # cache directory. Each worker should have it's own and it should be
             # cleaned afterwards, so we set it to inside the temporary folder by
             # prepending XDG_CACHE_HOME with DUMPRENDERTREE_TEMP.

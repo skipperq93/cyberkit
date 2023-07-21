@@ -31,7 +31,7 @@
 #ifndef AccessibilityNotificationHandler_h
 #define AccessibilityNotificationHandler_h
 
-#import <JavaScriptCore/JSObjectRef.h>
+#import <CyberScriptCore/JSObjectRef.h>
 
 @interface AccessibilityNotificationHandler : NSObject {
     id m_platformElement;

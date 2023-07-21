@@ -26,7 +26,7 @@
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-# These are the layout test expectations for Apple's Windows port of WebKit.
+# These are the layout test expectations for Apple's Windows port of CyberKit.
 #
 # See http://trac.webkit.org/wiki/TestExpectations for more information on this file.
 
@@ -228,7 +228,7 @@ http/tests/local/blob/send-data-blob.html [ Skip ]
 # TODO A test that failed because eventSender cannot send function-key events.
 fast/events/keydown-function-keys.html [ Skip ]
 
-# TODO No support for WebArchives in WebKitWin <rdar://problem/6436020>
+# TODO No support for WebArchives in CyberKitWin <rdar://problem/6436020>
 webarchive [ Skip ]
 svg/webarchive [ Skip ]
 svg/custom/image-with-prefix-in-webarchive.svg [ Skip ]
@@ -479,7 +479,7 @@ http/tests/download/anchor-download-no-value.html [ Skip ]
 fast/dom/HTMLAnchorElement/anchor-file-blob-convert-to-download.html [ Skip ]
 fast/dom/HTMLAnchorElement/anchor-file-blob-convert-to-download-async-delegate.html [ Skip ]
 
-# TODO Expose title direction in WebKit API (Chromium Only)
+# TODO Expose title direction in CyberKit API (Chromium Only)
 webkit.org/b/58845 fast/dom/title-directionality.html [ Skip ]
 webkit.org/b/58845 fast/dom/title-directionality-removeChild.html [ Skip ]
 
@@ -3070,7 +3070,7 @@ imported/blink/webexposed/webkit-focus-ring-exposed-to-quirks-mode.html [ ImageO
 imported/blink/fast/block/float/float-mark-descendants-for-layout-crash.html [ Failure ]
 imported/blink/printing/print-document-without-documentElement-crash.html [ Failure ]
 
-# Failure introduced by JavaScriptCore change:
+# Failure introduced by CyberScriptCore change:
 webkit.org/b/150040 fast/events/tabindex-focus-blur-all.html [ Failure ]
 webkit.org/b/150040 js/dom/dfg-custom-getter.html [ Failure ]
 
@@ -3111,7 +3111,7 @@ webkit.org/b/137204 svg/text/kerning.svg [ Failure ]
 webkit.org/b/137204 svg/text/text-hkern.svg [ Failure ]
 webkit.org/b/137204 svg/text/text-vkern.svg [ Failure ]
 
-# This test is WebKit2 only.
+# This test is CyberKit2 only.
 fast/dom/Window/child-window-focus.html
 
 # SVG Fonts don't draw multibyte characters.

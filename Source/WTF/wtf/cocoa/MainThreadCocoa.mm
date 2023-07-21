@@ -40,7 +40,7 @@
 #import <wtf/Threading.h>
 
 #if USE(WEB_THREAD)
-#include <wtf/ios/WebCoreThread.h>
+#include <wtf/ios/CyberCoreThread.h>
 #endif
 
 @interface JSWTFMainThreadCaller : NSObject
@@ -89,7 +89,7 @@ void initializeMainThreadPlatform()
 void initializeMainThreadToProcessMainThreadPlatform()
 {
     if (!pthread_main_np())
-        NSLog(@"WebKit Threading Violation - initial use of WebKit from a secondary thread.");
+        NSLog(@"CyberKit Threading Violation - initial use of CyberKit from a secondary thread.");
 
     ASSERT(!staticMainThreadCaller);
     staticMainThreadCaller = [[JSWTFMainThreadCaller alloc] init];
@@ -143,9 +143,9 @@ void scheduleDispatchFunctionsOnMainThread()
 void dispatchAsyncOnMainThreadWithWebThreadLockIfNeeded(void (^block)())
 {
 #if USE(WEB_THREAD)
-    if (WebCoreWebThreadIsEnabled && WebCoreWebThreadIsEnabled()) {
+    if (CyberCoreWebThreadIsEnabled && CyberCoreWebThreadIsEnabled()) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            WebCoreWebThreadLock();
+            CyberCoreWebThreadLock();
             block();
         });
         return;
@@ -157,8 +157,8 @@ void dispatchAsyncOnMainThreadWithWebThreadLockIfNeeded(void (^block)())
 void callOnWebThreadOrDispatchAsyncOnMainThread(void (^block)())
 {
 #if USE(WEB_THREAD)
-    if (WebCoreWebThreadIsEnabled && WebCoreWebThreadIsEnabled()) {
-        WebCoreWebThreadRun(block);
+    if (CyberCoreWebThreadIsEnabled && CyberCoreWebThreadIsEnabled()) {
+        CyberCoreWebThreadRun(block);
         return;
     }
 #endif
@@ -168,7 +168,7 @@ void callOnWebThreadOrDispatchAsyncOnMainThread(void (^block)())
 #if USE(WEB_THREAD)
 static bool webThreadIsUninitializedOrLockedOrDisabled()
 {
-    return !WebCoreWebThreadIsLockedOrDisabled || WebCoreWebThreadIsLockedOrDisabled();
+    return !CyberCoreWebThreadIsLockedOrDisabled || CyberCoreWebThreadIsLockedOrDisabled();
 }
 
 bool isMainThread()

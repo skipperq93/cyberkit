@@ -28,13 +28,13 @@
 
 #include "Common.h"
 #include "MiniBrowserLibResource.h"
-#include "WebKitLegacyBrowserWindow.h"
+#include "CyberKitLegacyBrowserWindow.h"
 
 #if ENABLE(WEBKIT)
-#include "WebKitBrowserWindow.h"
+#include "CyberKitBrowserWindow.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 float deviceScaleFactorForWindow(HWND);
 }
 
@@ -114,7 +114,7 @@ bool MainWindow::init(BrowserWindowFactory factory, HINSTANCE hInstance, bool us
     EnableMenuItem(GetMenu(m_hMainWnd), IDM_NEW_WEBKIT_WINDOW, MF_GRAYED);
 #endif
 
-    float scaleFactor = WebCore::deviceScaleFactorForWindow(nullptr);
+    float scaleFactor = CyberCore::deviceScaleFactorForWindow(nullptr);
     m_hBackButtonWnd = CreateWindow(L"BUTTON", L"<", WS_CHILD | WS_VISIBLE  | BS_TEXT, 0, 0, 0, 0, m_hMainWnd, reinterpret_cast<HMENU>(IDM_HISTORY_BACKWARD), hInstance, 0);
     m_hForwardButtonWnd = CreateWindow(L"BUTTON", L">", WS_CHILD | WS_VISIBLE | BS_TEXT, scaleFactor * controlButtonWidth, 0, 0, 0, m_hMainWnd, reinterpret_cast<HMENU>(IDM_HISTORY_FORWARD), hInstance, 0);
     m_hURLBarWnd = CreateWindow(L"EDIT", 0, WS_CHILD | WS_VISIBLE | WS_BORDER | ES_LEFT | ES_AUTOVSCROLL, scaleFactor * controlButtonWidth * 2, 0, 0, 0, m_hMainWnd, 0, hInstance, 0);
@@ -137,7 +137,7 @@ bool MainWindow::init(BrowserWindowFactory factory, HINSTANCE hInstance, bool us
 
 void MainWindow::resizeSubViews()
 {
-    float scaleFactor = WebCore::deviceScaleFactorForWindow(m_hMainWnd);
+    float scaleFactor = CyberCore::deviceScaleFactorForWindow(m_hMainWnd);
 
     RECT rcClient;
     GetClientRect(m_hMainWnd, &rcClient);
@@ -183,14 +183,14 @@ LRESULT CALLBACK MainWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPA
 #if ENABLE(WEBKIT)
         case IDM_NEW_WEBKIT_WINDOW: {
             auto& newWindow = MainWindow::create().leakRef();
-            newWindow.init(WebKitBrowserWindow::create, hInst);
+            newWindow.init(CyberKitBrowserWindow::create, hInst);
             ShowWindow(newWindow.hwnd(), SW_SHOW);
             break;
         }
 #endif
         case IDM_NEW_WEBKITLEGACY_WINDOW: {
             auto& newWindow = MainWindow::create().leakRef();
-            newWindow.init(WebKitLegacyBrowserWindow::create, hInst);
+            newWindow.init(CyberKitLegacyBrowserWindow::create, hInst);
             ShowWindow(newWindow.hwnd(), SW_SHOW);
             break;
         }
@@ -449,7 +449,7 @@ void MainWindow::updateDeviceScaleFactor()
 {
     if (m_hURLBarFont)
         ::DeleteObject(m_hURLBarFont);
-    auto scaleFactor = WebCore::deviceScaleFactorForWindow(m_hMainWnd);
+    auto scaleFactor = CyberCore::deviceScaleFactorForWindow(m_hMainWnd);
     int fontHeight = scaleFactor * urlBarHeight * 3 / 4;
     m_hURLBarFont = ::CreateFont(fontHeight, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, DEFAULT_CHARSET,
         OUT_TT_ONLY_PRECIS, CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY, FF_DONTCARE, L"Tahoma");

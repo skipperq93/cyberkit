@@ -303,9 +303,9 @@ scheme host and port.""")
                                   "Connect tunnel to be available before "
                                   "aborting")
 
-    webkit_group = parser.add_argument_group("WebKit-specific")
+    webkit_group = parser.add_argument_group("CyberKit-specific")
     webkit_group.add_argument("--webkit-port", dest="webkit_port",
-                             help="WebKit port")
+                             help="CyberKit port")
 
     parser.add_argument("test_list", nargs="*",
                         help="List of URLs for tests to run, or paths including tests to run. "

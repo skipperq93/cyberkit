@@ -11,7 +11,7 @@ if (USE_CAPSTONE)
     add_subdirectory(ThirdParty/capstone)
 endif ()
 
-add_subdirectory(JavaScriptCore)
+add_subdirectory(CyberScriptCore)
 
 if (ENABLE_GRAPHICS_CONTEXT_3D)
     add_subdirectory(ThirdParty/ANGLE)
@@ -37,15 +37,15 @@ if (USE_LIBWEBRTC)
 endif ()
 
 if (ENABLE_WEBCORE)
-    add_subdirectory(WebCore)
+    add_subdirectory(CyberCore)
 endif ()
 
 if (ENABLE_WEBKIT_LEGACY)
-    add_subdirectory(WebKitLegacy)
+    add_subdirectory(CyberKitLegacy)
 endif ()
 
 if (ENABLE_WEBKIT)
-    add_subdirectory(WebKit)
+    add_subdirectory(CyberKit)
 endif ()
 
 if (ENABLE_WEBDRIVER)

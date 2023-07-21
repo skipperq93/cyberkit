@@ -261,7 +261,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=34240
 
         Date.UTC() of V8 doesn't support such dates though Date.UTC() of
-        JavaScriptCore does.
+        CyberScriptCore does.
 
         * fast/forms/input-valueasnumber-date-expected.txt:
         * fast/forms/input-valueasnumber-datetime-expected.txt:
@@ -398,7 +398,7 @@
 
         Reviewed by Laszlo Gombos.
 
-        [Qt] Enable websockets support in QtWebKit
+        [Qt] Enable websockets support in QtCyberKit
         https://bugs.webkit.org/show_bug.cgi?id=34180
 
         Remove websockets tests from skiplist.
@@ -1851,7 +1851,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=33919
         rdar://problem/7557527
 
-        This test does not always crash the un-patched version of WebKit because
+        This test does not always crash the un-patched version of CyberKit because
         the crash is so timing-dependant.
 
         * media/adopt-node-crash-expected.txt: Added.
@@ -2346,7 +2346,7 @@
 
         Reviewed by Dan Bernstein.
 
-        Bug 33266 - WebCore::InlineFlowBox::determineSpacingForFlowBoxes ReadAV@NULL (43c64e8abbda6766e5f5edbd254c2d57)
+        Bug 33266 - CyberCore::InlineFlowBox::determineSpacingForFlowBoxes ReadAV@NULL (43c64e8abbda6766e5f5edbd254c2d57)
         (https://bugs.webkit.org/show_bug.cgi?id=33266)
         
         Layout tests for ruby with malformed HTML.
@@ -2870,7 +2870,7 @@
 
 2010-01-18  Adam Roben  <aroben@apple.com>
 
-        Add tests for new WebKit SPI to disallow setting document.domain
+        Add tests for new CyberKit SPI to disallow setting document.domain
 
         Tests for <http://webkit.org/b/33806> <rdar://problem/7552837> Would
         like API to disallow setting of document.domain for pages with certain
@@ -2881,7 +2881,7 @@
         * http/tests/security/setDomainRelaxationForbiddenForURLScheme-expected.txt: Added.
         * http/tests/security/setDomainRelaxationForbiddenForURLScheme.html: Added.
 
-        * platform/gtk/Skipped: Skip the new test since WebKitGtk doesn't have
+        * platform/gtk/Skipped: Skip the new test since CyberKitGtk doesn't have
         this API.
 
 2010-01-18  Dan Bernstein  <mitz@apple.com>
@@ -4256,7 +4256,7 @@
         Allows plugins to participate in accelerated compositing
         
         Change the testcase to make the embeds position: relative so that the behavior
-        of the test is not affected by whether WebCore decides to put plugins into
+        of the test is not affected by whether CyberCore decides to put plugins into
         RenderLayers.
 
         * platform/mac/plugins/embed-attributes-style-expected.checksum:
@@ -4772,7 +4772,7 @@
 
         Added needed range checks to JSC and V8 custom bindings. Expanded
         preexisting test suite for WebGLArrays and updated its expected
-        results. Tested in WebKit and Chromium.
+        results. Tested in CyberKit and Chromium.
 
         * fast/canvas/webgl/array-set-out-of-bounds-expected.txt: Added.
         * fast/canvas/webgl/array-set-out-of-bounds.html: Added.
@@ -5123,7 +5123,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=33057
         REGRESSION(r49365): typeof(xhr.responseText) != "string" in Windows
 
-        <rdar://problem/7296920> REGRESSION: WebKit fails to start PeaceKeeper benchmark
+        <rdar://problem/7296920> REGRESSION: CyberKit fails to start PeaceKeeper benchmark
 
         * fast/js/script-tests/webcore-string-comparison.js: Added.
         * fast/js/webcore-string-comparison-expected.txt: Added.
@@ -6440,7 +6440,7 @@
         [Qt] fix fast/dom/Window/window-onFocus.html
         
         Add support for layouttestcontroller.windowIsKey to Qt DRT and fix issue where
-        window.onblur was getting dispatched twice from QtWebKit.
+        window.onblur was getting dispatched twice from QtCyberKit.
         
         https://bugs.webkit.org/show_bug.cgi?id=32990
 
@@ -6770,7 +6770,7 @@
 
         Reviewed by Dan Bernstein.
 
-        Fix for WebKit bug 29968 - Selecting text with text-overflow ellipsis
+        Fix for CyberKit bug 29968 - Selecting text with text-overflow ellipsis
         should not show cut off text
         https://bugs.webkit.org/show_bug.cgi?id=29968
         
@@ -7431,7 +7431,7 @@
 
         Reviewed by Darin Adler.
 
-        WebCore::Range::surroundContents NULL pointer crash.
+        CyberCore::Range::surroundContents NULL pointer crash.
 
         https://bugs.webkit.org/show_bug.cgi?id=31684
 
@@ -7595,7 +7595,7 @@
 
         Reviewed by Dan Bernstein.
 
-        Bug 32357: SVG test case crashes WebKit (invalid font URL)
+        Bug 32357: SVG test case crashes CyberKit (invalid font URL)
         https://bugs.webkit.org/show_bug.cgi?id=32357
 
         Added check for NULL return value from DocLoader::requestFont()
@@ -7617,7 +7617,7 @@
 
         Unreviewed. Unskip websocket tests
 
-        New pywebsocket (0.4.5) landed at WebKit r52296, so
+        New pywebsocket (0.4.5) landed at CyberKit r52296, so
         sub-protocol-with-space.html should pass.
 
         * platform/mac/Skipped: delete websocket/tests/sub-protocol-with-space.html
@@ -7796,7 +7796,7 @@
 
         Reviewed by Adele Peterson.
 
-        CrashTracer: [USER] 1 crash in Safari at com.apple.WebCore: WebCore::endsOfNodeAreVisuallyDistinctPositions + 115
+        CrashTracer: [USER] 1 crash in Safari at com.matthewbenedict.CyberCore: CyberCore::endsOfNodeAreVisuallyDistinctPositions + 115
         <rdar://problem/7467108>
         https://bugs.webkit.org/show_bug.cgi?id=32590
 
@@ -8070,7 +8070,7 @@
         Test that an image's size is valid before reading it.
 
         Previously, an image that failed to load (m_failed == true) would
-        trigger an assertion failure when WebKit tried to get its size.
+        trigger an assertion failure when CyberKit tried to get its size.
 
         https://bugs.webkit.org/show_bug.cgi?id=32176
         http://code.google.com/p/chromium/issues/detail?id=28566
@@ -8288,7 +8288,7 @@
 
         Reviewed by Darin Adler.
 
-       <rdar://problem/7453726> Pull shared UI code into WebKit
+       <rdar://problem/7453726> Pull shared UI code into CyberKit
 
        Update media tests for small change in timeline slider thumb position
 
@@ -8822,7 +8822,7 @@
 
         Reviewed by Darin Adler.
 
-        Fix assertion failure in WebCore::RenderBlock::startDelayUpdateScrollInfo
+        Fix assertion failure in CyberCore::RenderBlock::startDelayUpdateScrollInfo
 
         startDelayUpdateScrollInfo calls a function that can end up calling
         startDelayUpdateScrollInfo again. However, it's static state is
@@ -9476,7 +9476,7 @@
 
         Reviewed by Dimitri Glazkov.
 
-        [v8] WebCore::WebGLArrayBufferInternal::byteLengthAttrGetter NULL pointer
+        [v8] CyberCore::WebGLArrayBufferInternal::byteLengthAttrGetter NULL pointer
         https://bugs.webkit.org/show_bug.cgi?id=31889
 
         Fixed bug in handling of zero-argument constructor call.
@@ -9796,7 +9796,7 @@
 
         In SVG a focalPoint must be inside the radius of a radial gradient.
         It this isn't the case, we have to move the focalPoint into the radius.
-        This checks the correct behavior of WebKit on false values for fx, fy.
+        This checks the correct behavior of CyberKit on false values for fx, fy.
 
         * platform/mac/svg/W3C-SVG-1.1/pservers-grad-13-b-expected.checksum:
         * platform/mac/svg/W3C-SVG-1.1/pservers-grad-13-b-expected.png:
@@ -9835,7 +9835,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=32085
         WebSocket should block the same ports that are blocked for resource loading
 
-        Added some tests for URL parsing (one of them expects current WebKit behavior, not what the
+        Added some tests for URL parsing (one of them expects current CyberKit behavior, not what the
         spec says).
 
         * websocket/tests/script-tests/url-parsing.js: Added.
@@ -9846,7 +9846,7 @@
 
         Reviewed by Kenneth Rohde Christiansen.
 
-        [Qt] WebKit crashes when loading certain SVG images
+        [Qt] CyberKit crashes when loading certain SVG images
         https://bugs.webkit.org/show_bug.cgi?id=29443
 
         Update the test results for the new FontCache implementation.
@@ -10012,7 +10012,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=32130
         Add a test for sending non-trivial amount of data over WebSocket
 
-        * websocket/tests/echo_wsh.py: Copied from WebKitTools/pywebsocket/example/echo_wsh.py.
+        * websocket/tests/echo_wsh.py: Copied from CyberKitTools/pywebsocket/example/echo_wsh.py.
         * websocket/tests/simple-stress-expected.txt: Added.
         * websocket/tests/simple-stress.html: Added.
 
@@ -10855,7 +10855,7 @@
         Add a test case for Qt plugins. In this case one
         RenderPart should be visible on screen and the other
         should be invisible. The internal QWidget should
-        have the same state as the WebCore::Widget.
+        have the same state as the CyberCore::Widget.
 
         Add Qt specific netscape-dom-access-expected.txt because
         that was using a native widget inside a RenderPart as well.
@@ -10993,10 +10993,10 @@
         GraphicsContext3D and fixes previously unimplemented routines.
         Added custom JS and V8 bindings. Added exhaustive test case
         exercising all new code paths. Updated preexisting test cases for
-        new APIs. Fixed preexisting bugs in WebKit's and Chrome's WebGL
+        new APIs. Fixed preexisting bugs in CyberKit's and Chrome's WebGL
         implementations.
 
-        Ran WebGL layout tests in WebKit (clean) and Chrome (couple of
+        Ran WebGL layout tests in CyberKit (clean) and Chrome (couple of
         preexisting known failures) and manual WebGL tests in both
         browsers.
         
@@ -11414,7 +11414,7 @@
 
         Reviewed by Gustavo Noronha Silva.
 
-        Web Inspector: Implement "show inspector" in WebKit GTK
+        Web Inspector: Implement "show inspector" in CyberKit GTK
         API and enable console tests.
 
         https://bugs.webkit.org/show_bug.cgi?id=31669
@@ -11666,7 +11666,7 @@
 
         Reviewed by Simon Hausmann.
 
-        [Qt] WebKit crashes when loading certain SVG images
+        [Qt] CyberKit crashes when loading certain SVG images
 
         Added a test for a crash of QtWebkit when loading SVG images.
 
@@ -12015,7 +12015,7 @@
 
         Reviewed by Darin Adler.
 
-        WebCore::externalRepresentation should update layout before getting render object
+        CyberCore::externalRepresentation should update layout before getting render object
         https://bugs.webkit.org/show_bug.cgi?id=31459
 
         Before this change, the render tree output for this test was wrong.
@@ -14682,7 +14682,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
 
         This test actually passes before this change.  I don't know how to
         actually run JavaScript URLs in view source frames using DRT, but it's
-        possible in an abitrary embedding of WebKit.
+        possible in an abitrary embedding of CyberKit.
 
         * http/tests/security/view-source-no-javascript-url-expected.txt: Added.
         * http/tests/security/view-source-no-javascript-url.html: Added.
@@ -14775,7 +14775,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
         Reviewed by Darin Adler.
 
         https://bugs.webkit.org/show_bug.cgi?id=30841
-        <rdar://problem/7342730> WebKit should not pass Referer header through a redirect to a non-secure site
+        <rdar://problem/7342730> CyberKit should not pass Referer header through a redirect to a non-secure site
 
         * http/tests/ssl/referer-301-expected.txt: Added.
         * http/tests/ssl/referer-301.html: Added.
@@ -14939,12 +14939,12 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
 
         Reviewed by Eric Seidel.
 
-        WebKit cannot remove nested bold tags
+        CyberKit cannot remove nested bold tags
         https://bugs.webkit.org/show_bug.cgi?id=30784
 
         Adds two more edge cases to remove-nested-inline-styles.js:
         <b><b><b>12</b></b></b> and <b><b><b>1</b></b>2</b>
-        WebKit now passes the one existing test used to fail.
+        CyberKit now passes the one existing test used to fail.
 
         * editing/style/remove-nested-inline-styles-expected.txt: Added two tests.
         * editing/style/script-tests/remove-nested-inline-styles.js: Added two tests.
@@ -15153,7 +15153,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
         Data loss occurs when unbolding nested bold tags.
         https://bugs.webkit.org/show_bug.cgi?id=30083
 
-        Adds a test to make sure WebKit can remove nested b, i, & s tags properly
+        Adds a test to make sure CyberKit can remove nested b, i, & s tags properly
         without loosing the content of inner elements.
 
         * editing/style/remove-nested-inline-styles-expected.txt: Added.
@@ -16012,7 +16012,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
 
 2009-10-20  Xan Lopez  <xlopez@igalia.com>
 
-        Skip a bunch of tests failing in the debug bots because WebKit
+        Skip a bunch of tests failing in the debug bots because CyberKit
         does not work correctly with very recent versions of libxml2. The
         tracker bug for the issue is
         https://bugs.webkit.org/show_bug.cgi?id=30508
@@ -17080,7 +17080,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
 
         Reviewed by Sam Weinig.
 
-        WebKit Win API should provide a delegate interface for global history.
+        CyberKit Win API should provide a delegate interface for global history.
         https://bugs.webkit.org/show_bug.cgi?id=29905
 
         * platform/win/Skipped: Enable globalhistory tests.
@@ -17297,7 +17297,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
         [Qt] Missing default value for the default text encoding.
         https://bugs.webkit.org/show_bug.cgi?id=30311
 
-        QtWebKit has provided a default, hardcoded value for default charset but since
+        QtCyberKit has provided a default, hardcoded value for default charset but since
         the addition of the defaultTextEncoding setting in QWebSettings, that hardcoded
         value has had no effect.
 
@@ -17323,7 +17323,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
 
         Unreviewed.  Fix 4 layout test failures by webkit r49488
 
-        WebKit r49488 enables window.WebSocket back. 
+        CyberKit r49488 enables window.WebSocket back. 
 
         * fast/dom/Window/window-properties-expected.txt:
         * fast/dom/prototype-inheritance-2-expected.txt:
@@ -19344,7 +19344,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
 
         Reviewed by John Sullivan.
 
-        WebKit Mac API should provide a delegate interface for global history.
+        CyberKit Mac API should provide a delegate interface for global history.
         <rdar://problem/7042773> and https://webkit.org/b/29904
 
         * http/tests/globalhistory: Added.
@@ -20574,7 +20574,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
 
         Reviewed by Alexey Proskuryakov.
 
-        WebKit returns "" instead of null when getting
+        CyberKit returns "" instead of null when getting
         inexistent, forbidden or invalidly named headers.
         https://bugs.webkit.org/show_bug.cgi?id=29140
 
@@ -23403,7 +23403,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
         Reviewed by Darin Adler.
 
         Test for <rdar://problem/7050773> REGRESSION (r40098) Crash at
-        WebCore::RenderBlock::layoutBlock()
+        CyberCore::RenderBlock::layoutBlock()
         https://bugs.webkit.org/show_bug.cgi?id=29498
 
         * accessibility/nested-layout-crash-expected.txt: Added.
@@ -23414,7 +23414,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
         Reviewed by Adele Peterson.
 
         Test for https://bugs.webkit.org/show_bug.cgi?id=29276
-        REGRESSION(r48334): WebKit crashes on file select by drag
+        REGRESSION(r48334): CyberKit crashes on file select by drag
 
         * fast/events/drag-file-crash-expected.txt: Added.
         * fast/events/drag-file-crash.html: Added.
@@ -23886,7 +23886,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
 
         Reviewed by Dan Bernstein.
 
-        <rdar://problem/7047282> Safari crashes at WebCore::RenderMenuList::adjustInnerStyle() 436
+        <rdar://problem/7047282> Safari crashes at CyberCore::RenderMenuList::adjustInnerStyle() 436
 
         Test that changes the <select> from a popup to a list inside a mouse event handler.
 
@@ -23896,7 +23896,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
 2009-09-11  Jon Honeycutt  <jhoneycutt@apple.com>
 
         DRT/test part of
-        <rdar://problem/7197644> WebKit should broadcast an MSAA event when
+        <rdar://problem/7197644> CyberKit should broadcast an MSAA event when
         jumping to a named anchor
 
         https://bugs.webkit.org/show_bug.cgi?id=28899
@@ -25195,7 +25195,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
         Cannot press Enter to escape from bulleted list when <ul> is a child of <li>.
         https://bugs.webkit.org/show_bug.cgi?id=24866
 
-        This patch adds a test to make sure WebKit break out of an empty list item.
+        This patch adds a test to make sure CyberKit break out of an empty list item.
 
         * editing/execCommand/break-out-of-empty-list-item-expected.txt: Added.
         * editing/execCommand/break-out-of-empty-list-item.html: Added.
@@ -25328,10 +25328,10 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
         https://bugs.webkit.org/show_bug.cgi?id=28879
 
         Fix fast/dom/StyleSheet/ownerNode-lifetime-2.html
-        The problem is WebKit <link> nodes will only have a
+        The problem is CyberKit <link> nodes will only have a
         style sheet created if they have href attribute.
         The src attribute to non-existant css doesn't work.
-        Change src to href to make this test works in WebKit.
+        Change src to href to make this test works in CyberKit.
 
         Also update the expectation result.
 
@@ -26189,7 +26189,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
         Fix Bug 27827 "[Chromium] Functions Keys don't work in google spreadsheet".
         <https://bugs.webkit.org/show_bug.cgi?id=27827>.
 
-        Because of the lack of mappings from GDK key-codes to WebKit key-codes,
+        Because of the lack of mappings from GDK key-codes to CyberKit key-codes,
         Chromium cannot send valid key-codes to JavaScript when a user types
         function keys. This change just copies the mappings from 'KeyEventGtk.cpp'.
 
@@ -26852,10 +26852,10 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
 
         Reviewed by Darin Adler.
 
-        REGESSION(r45316), Crash: WebKit crashes in Google Sites when indenting a table
+        REGESSION(r45316), Crash: CyberKit crashes in Google Sites when indenting a table
         https://bugs.webkit.org/show_bug.cgi?id=28474
 
-        This patch adds a test to make sure WebKit does not crash when indenting immediately right to a table.
+        This patch adds a test to make sure CyberKit does not crash when indenting immediately right to a table.
 
         * editing/execCommand/indent-right-after-table-expected.txt: Added.
         * editing/execCommand/indent-right-after-table.html: Added.
@@ -27007,7 +27007,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
 
         Reviewed by David Levin.
 
-        https://bugs.webkit.org/show_bug.cgi?id=24853: Provide a way for WebKit clients to
+        https://bugs.webkit.org/show_bug.cgi?id=24853: Provide a way for CyberKit clients to
         specify a more granular policy for cross-origin XHR access.
 
         * http/tests/xmlhttprequest/origin-whitelisting-all-expected.txt: Added.
@@ -27717,7 +27717,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
 
         Reviewed by Eric Seidel.
 
-        Assertion failure in WebCore::RenderHTMLCanvas::layout
+        Assertion failure in CyberCore::RenderHTMLCanvas::layout
         https://bugs.webkit.org/show_bug.cgi?id=12052
 
         Remove string "foo" in <video> tag. This made Qt layout test fail.
@@ -27839,7 +27839,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
 
         Reviewed by Darin Adler.
 
-        Assertion failure in WebCore::RenderHTMLCanvas::layout
+        Assertion failure in CyberCore::RenderHTMLCanvas::layout
         https://bugs.webkit.org/show_bug.cgi?id=12052
 
         Don't handle run-in if the element is not a block element.
@@ -28901,9 +28901,9 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
         See https://bugs.webkit.org/show_bug.cgi?id=20534
 
         * fast/harness/override-preferences-2-expected.txt: Added.
-        * fast/harness/override-preferences-2.html: Added. Verifies overridePreverence("WebKitDefaultFontSize", "24").
+        * fast/harness/override-preferences-2.html: Added. Verifies overridePreverence("CyberKitDefaultFontSize", "24").
         * fast/harness/override-preferences-expected.txt: Added.
-        * fast/harness/override-preferences.html: Added. Verifies overridePreference("WebKitJavaScriptEnabled", false).
+        * fast/harness/override-preferences.html: Added. Verifies overridePreference("CyberKitJavaScriptEnabled", false).
         * fast/harness/override-zzz-reset-expected.txt: Added.
         * fast/harness/override-zzz-reset.html: Added. Because of 'zzz' this test will run after the tests above and
         verify that override of preferences does not 'spill' to the subsequent tests in a batch.
@@ -28960,14 +28960,14 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
         Background color formatting lost on enter
         https://bugs.webkit.org/show_bug.cgi?id=20348
 
-        This patch adds a test to make sure WebKit preserves background color when inserting a new paragraph.
+        This patch adds a test to make sure CyberKit preserves background color when inserting a new paragraph.
 
         * editing/inserting/5994480-2-expected.txt: Because input element has explicit white background and the enclosing div has
-        transparent background, WebKit adds white background color in DeleteSelectionCommand::calculateTypingStyleAfterDelete upon deletion.
+        transparent background, CyberKit adds white background color in DeleteSelectionCommand::calculateTypingStyleAfterDelete upon deletion.
         * editing/style/highlight-insert-paragraph-expected.txt: Added.
         * editing/style/highlight-insert-paragraph.html: Added.
         * platform/mac/editing/pasteboard/select-element-1-expected.txt: Because select element has explicit white background color
-        and div has transparent background, WebKit adds white background color in calculateTypingStyleAfterDelete upon cut.
+        and div has transparent background, CyberKit adds white background color in calculateTypingStyleAfterDelete upon cut.
 
 2009-08-10  Nikolas Zimmermann  <nikolas.zimmermann@torchmobile.com>
 
@@ -29303,7 +29303,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
         selectionHasStyle doesn't handle text-specific properties properly
         https://bugs.webkit.org/show_bug.cgi?id=27858
 
-        This patch adds toggle-compound-styles to make sure WebKit can handle nested text styles
+        This patch adds toggle-compound-styles to make sure CyberKit can handle nested text styles
         such as <b><i>hello</i>world</b> (italicized) and <b><i>hello</i>world</b> (not italicized)
         on all platforms except on Mac (to match TextEdit's behavior).
 
@@ -30351,7 +30351,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
         Reviewed by Mark Rowe, but Dan Bernstein also reviewed and asked thoughtful questions.
 
         <rdar://problem/7106968> and https://bugs.webkit.org/show_bug.cgi?id=27868
-        http://www.ruthhuntcandy.com/ goes into infinite refresh in WebKit, works in others.
+        http://www.ruthhuntcandy.com/ goes into infinite refresh in CyberKit, works in others.
 
         * http/tests/misc/meta-refresh-stray-single-quote-expected.txt: Added.
         * http/tests/misc/meta-refresh-stray-single-quote.html: Added.
@@ -30762,7 +30762,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
 
         Add new layout test covering noop elements in do elements.
 
-        * fast/wml/task-noop-in-do.wml: Copied from WebCore/manual-tests/wml/task-noop-in-do.wml.
+        * fast/wml/task-noop-in-do.wml: Copied from CyberCore/manual-tests/wml/task-noop-in-do.wml.
         * platform/mac/fast/wml/task-noop-in-do-expected.checksum: Added.
         * platform/mac/fast/wml/task-noop-in-do-expected.png: Added.
         * platform/mac/fast/wml/task-noop-in-do-expected.txt: Added.
@@ -31366,7 +31366,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
 
         Reviewed by Geoff Garen.
 
-        WebCore has a few places that don't gracefully handle a null request returned from willSendRequest.
+        CyberCore has a few places that don't gracefully handle a null request returned from willSendRequest.
         https://bugs.webkit.org/show_bug.cgi?id=27595
 
         * http/tests/misc/resources/redirect-to-http-url.php: Added.
@@ -31484,9 +31484,9 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
         execCommand('underline') can't remove <U> underlines
         https://bugs.webkit.org/show_bug.cgi?id=20215
 
-        This patch rebaselines toggle-styles.html because WebKit now passes three tests it used to fail.
+        This patch rebaselines toggle-styles.html because CyberKit now passes three tests it used to fail.
         toggle-style-2.html is added to test cases in which multiple styles are specified with tags.
-        We still fail some tests because WebKit doesn't properly support non-CSS mode but they are visually correct.
+        We still fail some tests because CyberKit doesn't properly support non-CSS mode but they are visually correct.
 
         * editing/execCommand/resources/toggle-style-2.js: Added.
         (testSingleToggle):
@@ -32456,8 +32456,8 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
         - Image
         - MessageChannel
         - Option
-        - WebKitCSSMatrix
-        - WebKitPoint
+        - CyberKitCSSMatrix
+        - CyberKitPoint
         - Worker
         - XSLTProcessor
 
@@ -32703,7 +32703,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
 
         Reviewed by Darin Fisher.
 
-        Make sure that calling WebKitCSSMatrix as function does not result in crash.
+        Make sure that calling CyberKitCSSMatrix as function does not result in crash.
         https://bugs.webkit.org/show_bug.cgi?id=27218
 
         * fast/css/matrix-as-function-crash-expected.txt: Added.
@@ -33536,7 +33536,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
         [GTK] textarea height property works only if other property are defined
         https://bugs.webkit.org/show_bug.cgi?id=18984
 
-        Let WebCore handle textarea's metrics instead of readjusting it RenderthemeGtk.
+        Let CyberCore handle textarea's metrics instead of readjusting it RenderthemeGtk.
 
         Test: fast/forms/textarea-metrics.html
 
@@ -34181,7 +34181,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
         Reviewed by Simon Hausmann.
 
         Updated LayoutTests/fast/css/getComputedStyle/computed-style-font-family-expected.txt
-        according to the default font size value set in WebKit/qt/Api/qwebsettings.cpp (in
+        according to the default font size value set in CyberKit/qt/Api/qwebsettings.cpp (in
         this case '14').
 
         * fast/css/getComputedStyle/computed-style-font-family-expected.txt:
@@ -34631,7 +34631,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
 
         <rdar://problem/6961578> REGRESSION (r43511): Opening .fdf files from Acrobat Professional fails
 
-        Add a test file for each of file extensions we think WebKit on Mac should know the MIME type for.
+        Add a test file for each of file extensions we think CyberKit on Mac should know the MIME type for.
 
         * platform/mac/fast/loader/file-url-mimetypes-expected.txt: Added.
         * platform/mac/fast/loader/file-url-mimetypes.html: Added.
@@ -34964,7 +34964,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
         When in view-source mode, render the contents using HTMLViewSourceDocument
         regardless it's applicable for any plugin or not.
 
-        Chromium tells WebCore to render the contents of specified URL when
+        Chromium tells CyberCore to render the contents of specified URL when
         view-source: prefix is added to the URL. But currently, DOMImplementation
         ignores inViewSourceMode() when the MIME type is indicating that the contents
         are neither texts nor HTML family documents.
@@ -35178,7 +35178,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
 
         - test for https://bugs.webkit.org/show_bug.cgi?id=26671
           <rdar://problem/7001880> Safari 4.0 crashes in
-          WebCore::DOMTimer::fired()
+          CyberCore::DOMTimer::fired()
 
         * fast/dom/style-sheet-candidate-remove-unrendered-document-expected.txt: Added.
         * fast/dom/style-sheet-candidate-remove-unrendered-document.html: Added.
@@ -35847,7 +35847,7 @@ i2009-11-05  Pavel Feldman  <pfeldman@chromium.org>
 
         Reviewed by Maciej Stachowiak.
 
-        Adding resource used in WebCore/manual-tests/animated-gif-bfcache-crash.html
+        Adding resource used in CyberCore/manual-tests/animated-gif-bfcache-crash.html
         * http/tests/misc/resources/animated-gif-with-offsets.gif: Added.
 
 2009-06-20  Sam Weinig  <sam@webkit.org>

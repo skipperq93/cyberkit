@@ -11,9 +11,9 @@ Current version: [commit ebdea152f8aac77e9a6db29682b81d762159df7e]
 
 which corresponds to 1.0.10 release.
 
-WebKit changes:
+CyberKit changes:
 * patches/cmake-build.patch: script used to allow openvr CMake build to be
-integrated into WebKit build
+integrated into CyberKit build
 * patches/Path_WriteBinaryFile-fix-return-condition.patch: suppresses a
 compiler warning, but otherwise already applied upstream in 1.0.12
 * Removed bin/ directory. Not needed as it includes precompiled libraries

@@ -7,7 +7,7 @@ header("Access-Control-Allow-Credentials: true");
 header("Connection: close");
 
 if (!isset($_SERVER['PHP_AUTH_USER'])) {
-    header('WWW-Authenticate: Basic realm="WebKit xmlhttprequest/cross-origin-no-authorization"');
+    header('WWW-Authenticate: Basic realm="CyberKit xmlhttprequest/cross-origin-no-authorization"');
     header('HTTP/1.0 401 Unauthorized');
     echo 'Authentication canceled';
     exit;

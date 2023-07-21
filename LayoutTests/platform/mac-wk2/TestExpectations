@@ -1,5 +1,5 @@
 # This file should contain entries for expectations that are specific
-# to the Apple Mac port running the WebKit2 variant (--webkit-test-runner)
+# to the Apple Mac port running the CyberKit2 variant (--webkit-test-runner)
 
 #//////////////////////////////////////////////////////////////////////////////////////////
 # Platform-specific directories. Skipped globally, then re-enabled here.
@@ -94,14 +94,14 @@ fast/animation/request-animation-frame-in-two-pages.html [ Pass ]
 ### (1) Classified failures with bug reports
 ### (2) Classified failures without bug reports (yet)
 ### (3) Unclassified failures
-### (4) Features that are not supported in WebKit2 and likely never will be
-### (5) Features that are not supported in WebKit2, on Mavericks
-### (6) New WebKit2-only failures in Yosemite
+### (4) Features that are not supported in CyberKit2 and likely never will be
+### (5) Features that are not supported in CyberKit2, on Mavericks
+### (6) New CyberKit2-only failures in Yosemite
 
 ########################################
 ### START OF (1) Classified failures with bug reports
 
-# WebKitTestRunner needs a more complete implementation of eventSender
+# CyberKitTestRunner needs a more complete implementation of eventSender
 # <https://bugs.webkit.org/show_bug.cgi?id=42194>
 editing/pasteboard/4947130.html
 editing/pasteboard/cleanup-on-move.html
@@ -225,7 +225,7 @@ webkit.org/b/105616 editing/spelling/spelling-markers-in-overlapping-lines-large
 webkit.org/b/105616 fast/writing-mode/english-bt-text-with-spelling-marker.html [ ImageOnlyFailure ]
 webkit.org/b/105616 fast/writing-mode/english-rl-text-with-spelling-marker.html [ ImageOnlyFailure ]
 
-# [WK2] [Mac] Support drag in mouse events for WebKit2 EventSender
+# [WK2] [Mac] Support drag in mouse events for CyberKit2 EventSender
 # <https://bugs.webkit.org/show_bug.cgi?id=68552>
 editing/selection/select-across-readonly-input-2.html
 editing/selection/select-across-readonly-input-3.html
@@ -437,9 +437,9 @@ webkit.org/b/139828 svg/animations/animateMotion-additive-2d.svg [ Pass ImageOnl
 ########################################
 
 ########################################
-### START OF (4) Features that are not supported in WebKit2 and likely never will be
+### START OF (4) Features that are not supported in CyberKit2 and likely never will be
 
-# WebKitTestRunner needs textInputController
+# CyberKitTestRunner needs textInputController
 # <https://bugs.webkit.org/show_bug.cgi?id=42337>
 editing/mac/input/5576619.html
 editing/mac/input/bold-node.html
@@ -461,7 +461,7 @@ editing/mac/input/NSBackgroundColor-transparent.html
 editing/mac/pasteboard/paste-and-match-style-selector-event.html
 editing/mac/selection/25228.html
 
-# WebKitTestRunner needs testRunner.setCallCloseOnWebViews
+# CyberKitTestRunner needs testRunner.setCallCloseOnWebViews
 # http://webkit.org/b/46714
 accessibility/mac/search-predicate-visited-links.html
 
@@ -470,7 +470,7 @@ webkit.org/b/71298 accessibility/mac/html-slider-indicator.html
 webkit.org/b/71298 accessibility/mac/listbox-hit-test.html
 webkit.org/b/71298 accessibility/mac/iframe-with-title-correct-hierarchy.html
 
-### END OF (4) Features that are not supported in WebKit2 and likely never will be
+### END OF (4) Features that are not supported in CyberKit2 and likely never will be
 ########################################
 
 ########################################
@@ -503,11 +503,11 @@ webkit.org/b/123431 http/tests/local/link-stylesheet-load-order.html [ Failure ]
 # This test times out, likely because appcache still loads in WebProcess, not NetworkProcess
 webkit.org/b/138736 http/tests/appcache/auth.html [ Skip ]
 
-### END OF (5) Features that are not supported in WebKit2, on Mavericks
+### END OF (5) Features that are not supported in CyberKit2, on Mavericks
 ########################################
 
 ########################################
-### START OF (6) New WebKit2-only failures in Yosemite
+### START OF (6) New CyberKit2-only failures in Yosemite
 
 media/video-background-tab-playback.html [ Pass Failure ]
 
@@ -517,7 +517,7 @@ webkit.org/b/141322 [ Debug ] fast/images/destroyed-image-load-event.html [ Pass
 
 webkit.org/b/141085 http/tests/media/video-query-url.html [ Pass Timeout ]
 
-### END OF (6) New WebKit2-only failures in Yosemite
+### END OF (6) New CyberKit2-only failures in Yosemite
 ########################################
 
 # Content Extensions tests must be enabled explicitly on mac-wk2.
@@ -532,7 +532,7 @@ webkit.org/b/168081 http/tests/contentextensions/async-xhr-onerror.html [ Pass T
 webkit.org/b/146400 http/tests/contentextensions/character-set-basic-support.html [ Pass Failure ]
 webkit.org/b/168082 [ Sierra ] http/tests/contentextensions/invalid-selector.html [ Pass ImageOnlyFailure ]
 
-# WebKit1-only failure.
+# CyberKit1-only failure.
 webkit.org/b/103857 fast/events/mouse-cursor-change.html [ Pass ]
 
 # Imported Blink tests which have not been investigated. Partially covered with rdar://problem/23023848.
@@ -548,7 +548,7 @@ webkit.org/b/157589 fast/text-autosizing/ios/text-autosizing-after-back.html [ P
 
 webkit.org/b/158237 fast/scrolling/scroll-container-horizontally.html [ Pass Timeout ]
 
-# PiP tests are only enabled for Sierra WebKit2.
+# PiP tests are only enabled for Sierra CyberKit2.
 # rdar://problem/27574303
 [ Sierra+ ] media/controls/picture-in-picture.html [ Pass ]
 webkit.org/b/170620 [ Sierra+ ] media/controls/pip-placeholder-without-video-controls.html [ Pass Failure ]
@@ -557,7 +557,7 @@ webkit.org/b/172998 [ Sierra+ ] media/fullscreen-api-enabled-media-with-presenta
 webkit.org/b/173199 [ Sierra+ ] media/navigate-with-pip-should-not-crash.html [ Pass Failure ]
 [ Sierra+ ] media/pip-video-going-into-fullscreen.html [ Pass ]
 
-# RTL Scrollbars are enabled on Sierra WebKit2.
+# RTL Scrollbars are enabled on Sierra CyberKit2.
 webkit.org/b/179455 [ Sierra+ ] fast/scrolling/rtl-scrollbars.html [ Pass ImageOnlyFailure ]
 [ Sierra+ ] fast/scrolling/rtl-scrollbars-simple.html [ Pass ]
 [ Sierra+ ] fast/scrolling/rtl-scrollbars-overflow-contents.html [ Pass ]

@@ -27,7 +27,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Creates the launcher WebKit.app with bundled frameworks.
+# Creates the launcher CyberKit.app with bundled frameworks.
 
 use strict;
 use warnings;
@@ -37,15 +37,15 @@ use lib "$FindBin::Bin/../Scripts";
 use webkitdirs;
 
 my @xcodeBuildArguments = XcodeOptions();
-my $nightlyLauncherTemplatePath = "$FindBin::Bin/../WebKitLauncher";
-my $nightlyLauncherStagingPath = productDir() . "/WebKit.app";
+my $nightlyLauncherTemplatePath = "$FindBin::Bin/../CyberKitLauncher";
+my $nightlyLauncherStagingPath = productDir() . "/CyberKit.app";
 
 sub buildNightlyLauncher
 {
     chdir($nightlyLauncherTemplatePath);
-    system("xcodebuild", "clean", "-alltargets", @xcodeBuildArguments, @ARGV) == 0 or die "Failed cleaning WebKitLauncher project";
-    system("xcodebuild", @xcodeBuildArguments, @ARGV) == 0 or die "Failed building WebKitLauncher project";
-    chdirWebKit();
+    system("xcodebuild", "clean", "-alltargets", @xcodeBuildArguments, @ARGV) == 0 or die "Failed cleaning CyberKitLauncher project";
+    system("xcodebuild", @xcodeBuildArguments, @ARGV) == 0 or die "Failed building CyberKitLauncher project";
+    chdirCyberKit();
 }
 
 sub currentRevision
@@ -105,7 +105,7 @@ sub copyNightlyLauncher
     print OUT "$branch\n";
     close(OUT);
 
-    my @frameworks = ("JavaScriptCore", "WebCore", "WebKit");
+    my @frameworks = ("CyberScriptCore", "CyberCore", "CyberKit");
     for my $framework (@frameworks) {
         system("ditto", productDir() . "/$framework.framework", "$nightlyLauncherStagingPath/Contents/Resources/$framework.framework") == 0 or die "Failed copying $framework.framework into $nightlyLauncherStagingPath";
     }
@@ -116,6 +116,6 @@ my $r = currentRevision();
 print "Branch: ", $b, "\n";
 print "Revision: ", $r, "\n";
 
-chdirWebKit();
+chdirCyberKit();
 buildNightlyLauncher();
 copyNightlyLauncher();

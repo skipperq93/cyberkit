@@ -46,7 +46,7 @@
       "emails" : [
          "adachan@apple.com"
       ],
-      "expertise" : "WebKit on Windows",
+      "expertise" : "CyberKit on Windows",
       "nicks" : [
          "chanada"
       ]
@@ -99,7 +99,7 @@
          "aroben@webkit.org",
          "aroben@apple.com"
       ],
-      "expertise" : "Plug-ins and Java (Win, General), WebKit API (Win), Windows build system, General Windows port issues, Developer Tools (Web Inspector), Tools",
+      "expertise" : "Plug-ins and Java (Win, General), CyberKit API (Win), Windows build system, General Windows port issues, Developer Tools (Web Inspector), Tools",
       "nicks" : [
          "aroben"
       ]
@@ -110,7 +110,7 @@
          "treat@kde.org",
          "treat@webkit.org"
       ],
-      "expertise" : "The QtWebKit Port, The HTML Parser/Tokenizer, The platform layer, Image loading and painting, ScrollView and friends",
+      "expertise" : "The QtCyberKit Port, The HTML Parser/Tokenizer, The platform layer, Image loading and painting, ScrollView and friends",
       "nicks" : [
          "manyoso"
       ]
@@ -245,7 +245,7 @@
          "alex@igalia.com",
          "alex@webkit.org"
       ],
-      "expertise" : "WebKitGTK, Cairo graphics backend, ShadowBlur rendering, Epiphany/WebKit Contributor",
+      "expertise" : "CyberKitGTK, Cairo graphics backend, ShadowBlur rendering, Epiphany/CyberKit Contributor",
       "nicks" : [
          "alexg__"
       ],
@@ -282,7 +282,7 @@
          "ahf@0x90.dk",
          "alexander.faeroy@nokia.com"
       ],
-      "expertise" : "The QtWebKit Port",
+      "expertise" : "The QtCyberKit Port",
       "nicks" : [
          "ahf"
       ]
@@ -352,7 +352,7 @@
          "alexis.menard@openbossa.org",
          "alexis@menard.io"
       ],
-      "expertise" : "The QtWebKit Port, CSS, CSS shorthands, HTML5 Media Elements",
+      "expertise" : "The QtCyberKit Port, CSS, CSS shorthands, HTML5 Media Elements",
       "nicks" : [
          "darktears"
       ]
@@ -402,7 +402,7 @@
          "sandfeld@kde.org",
          "allan.jensen@nokia.com"
       ],
-      "expertise" : "QtWebKit, CSS Selectors, Touch Adjustment, Hit Testing",
+      "expertise" : "QtCyberKit, CSS Selectors, Touch Adjustment, Hit Testing",
       "nicks" : [
          "carewolf"
       ]
@@ -421,7 +421,7 @@
          "alp@atoker.com",
          "alp@webkit.org"
       ],
-      "expertise" : "WebKitGTK Port, Cairo graphics backend (including canvas, SVG), CURL HTTP backend",
+      "expertise" : "CyberKitGTK Port, Cairo graphics backend (including canvas, SVG), CURL HTTP backend",
       "nicks" : [
          "alp"
       ]
@@ -459,7 +459,7 @@
          "abecsi@webkit.org",
          "andras.becsi@digia.com"
       ],
-      "expertise" : "The QtWebKit Port, Tools, Layout and Rendering",
+      "expertise" : "The QtCyberKit Port, Tools, Layout and Rendering",
       "nicks" : [
          "bbandix"
       ]
@@ -508,7 +508,7 @@
          "tanty0@gmail.com",
          "agomez@gnome.org"
       ],
-      "expertise" : "WebKitGTK",
+      "expertise" : "CyberKitGTK",
       "nicks" : [
          "tanty",
          "agomez"
@@ -589,14 +589,14 @@
       "emails" : [
          "andy@vanwagoner.family"
       ],
-      "expertise" : "JavaScriptCore Intl APIs",
+      "expertise" : "CyberScriptCore Intl APIs",
       "status" : "committer"
    },
    "Andy Wingo" : {
       "emails" : [
          "wingo@igalia.com"
       ],
-      "expertise" : "JavaScriptCore, the WebKitGTK port",
+      "expertise" : "CyberScriptCore, the CyberKitGTK port",
       "nicks" : [
          "wingo"
       ]
@@ -672,7 +672,7 @@
       "emails" : [
          "a.obzhirov@samsung.com"
       ],
-      "expertise" : "The WebKitGTK Port",
+      "expertise" : "The CyberKitGTK Port",
       "nicks" : [
          "aobzhirov"
       ]
@@ -692,7 +692,7 @@
          "antonio.netto@samsung.com",
          "antonio.gomes@openbossa.org"
       ],
-      "expertise" : "{BlackBerry, EFL, Qt}WebKit ports, Hit testing, Touch/Event handling, Rendering and scrolling",
+      "expertise" : "{BlackBerry, EFL, Qt}CyberKit ports, Hit testing, Touch/Event handling, Rendering and scrolling",
       "nicks" : [
          "tonikitoo"
       ],
@@ -721,7 +721,7 @@
          "ariya@sencha.com",
          "ariya@webkit.org"
       ],
-      "expertise" : "The QtWebKit Port",
+      "expertise" : "The QtCyberKit Port",
       "nicks" : [
          "ariya"
       ]
@@ -779,7 +779,7 @@
          "b.kelemen@sisa.samsung.com",
          "b.kelemen@samsung.com"
       ],
-      "expertise" : "The QtWebKit Port, WebKit2",
+      "expertise" : "The QtCyberKit Port, CyberKit2",
       "nicks" : [
          "kbalazs"
       ]
@@ -858,7 +858,7 @@
          "otte@gnome.org",
          "otte@webkit.org"
       ],
-      "expertise" : "WebKitGTK port, GTK lead developer",
+      "expertise" : "CyberKitGTK port, GTK lead developer",
       "nicks" : [
          "otte"
       ]
@@ -905,7 +905,7 @@
       "emails" : [
          "beidson@apple.com"
       ],
-      "expertise" : "Networking, Storage, WebCore icon database, Back/forward cache, History",
+      "expertise" : "Networking, Storage, CyberCore icon database, Back/forward cache, History",
       "nicks" : [
          "bradee-oh"
       ],
@@ -916,7 +916,7 @@
          "self@brendanlong.com",
          "b.long@cablelabs.com"
       ],
-      "expertise" : "WebKitGTK, GStreamer",
+      "expertise" : "CyberKitGTK, GStreamer",
       "nicks" : [
          "brendanlong"
       ]
@@ -926,7 +926,7 @@
          "bfulgham@webkit.org",
          "bfulgham@apple.com"
       ],
-      "expertise" : "The WinCairo Port, WebKit on Windows",
+      "expertise" : "The WinCairo Port, CyberKit on Windows",
       "nicks" : [
          "bfulgham"
       ],
@@ -957,7 +957,7 @@
       "emails" : [
          "brian.holt@samsung.com"
       ],
-      "expertise" : "WebKitGTK, memory leak detection",
+      "expertise" : "CyberKitGTK, memory leak detection",
       "nicks" : [
          "bdholt1"
       ]
@@ -971,7 +971,7 @@
       "emails" : [
          "bweinstein@apple.com"
       ],
-      "expertise" : "WebKit on Windows, Tools",
+      "expertise" : "CyberKit on Windows, Tools",
       "nicks" : [
          "bweinstein"
       ],
@@ -983,7 +983,7 @@
          "bruno.d@partner.samsung.com",
          "bruno.abinader@basyskom.com"
       ],
-      "expertise" : "The QtWebKit Port, CSS, Layout and Rendering",
+      "expertise" : "The QtCyberKit Port, CSS, Layout and Rendering",
       "nicks" : [
          "abinader"
       ]
@@ -1003,7 +1003,7 @@
          "bw80.lee@samsung.com",
          "bw80.lee@gmail.com"
       ],
-      "expertise" : "The EFLWebKit Port",
+      "expertise" : "The EFLCyberKit Port",
       "nicks" : [
          "byungwoo"
       ]
@@ -1056,7 +1056,7 @@
       "emails" : [
          "clopez@igalia.com"
       ],
-      "expertise" : "The WebKitGTK and WPE ports, Tools, Build/test infrastructure",
+      "expertise" : "The CyberKitGTK and WPE ports, Tools, Build/test infrastructure",
       "nicks" : [
          "clopez"
       ],
@@ -1078,7 +1078,7 @@
          "carlosgc@gnome.org",
          "carlosgc@webkit.org"
       ],
-      "expertise" : "The WebKitGTK Port, WebKit2, Glib unicode backend, GTK contributor, Epiphany contributor",
+      "expertise" : "The CyberKitGTK Port, CyberKit2, Glib unicode backend, GTK contributor, Epiphany contributor",
       "nicks" : [
          "KaL"
       ],
@@ -1108,7 +1108,7 @@
          "c.shu@sisa.samsung.com",
          "chang.shu@nokia.com"
       ],
-      "expertise" : "JavaScript DOM bindings, WebKit2, QtWebKit port",
+      "expertise" : "JavaScript DOM bindings, CyberKit2, QtCyberKit port",
       "nicks" : [
          "cshu"
       ]
@@ -1117,7 +1117,7 @@
       "emails" : [
          "changseok@webkit.org"
       ],
-      "expertise" : "The WebKitGTK port, H/W acceleration, Layout and Rendering",
+      "expertise" : "The CyberKitGTK port, H/W acceleration, Layout and Rendering",
       "nicks" : [
          "changseok"
       ]
@@ -1168,7 +1168,7 @@
          "ch.dumez@partner.samsung.com",
          "christophe.dumez@intel.com"
       ],
-      "expertise" : "Performance, DOM, HTML, Bindings generator, EFLWebKit Port",
+      "expertise" : "Performance, DOM, HTML, Bindings generator, EFLCyberKit Port",
       "nicks" : [
          "cdumez"
       ],
@@ -1271,7 +1271,7 @@
       "emails" : [
          "csaavedra@igalia.com"
       ],
-      "expertise" : "WebKitGTK port, Epiphany developer, HTML Editing",
+      "expertise" : "CyberKitGTK port, Epiphany developer, HTML Editing",
       "nicks" : [
          "claudio___"
       ],
@@ -1392,7 +1392,7 @@
       "emails" : [
          "darin@apple.com"
       ],
-      "expertise" : "HTML Forms, WebKit API (Mac, Win), HTML Editing, Performance, JavaScript/ECMAScript, Text Encoding, Core DOM, HTML DOM, Canvas, JavaScript DOM Bindings, ObjC DOM Bindings, Basic types and data structures, Tools, New Features / Standards Support, General (probably a good backup on most topics even if not specifically an expert)",
+      "expertise" : "HTML Forms, CyberKit API (Mac, Win), HTML Editing, Performance, JavaScript/ECMAScript, Text Encoding, Core DOM, HTML DOM, Canvas, JavaScript DOM Bindings, ObjC DOM Bindings, Basic types and data structures, Tools, New Features / Standards Support, General (probably a good backup on most topics even if not specifically an expert)",
       "nicks" : [
          "darin"
       ],
@@ -1403,7 +1403,7 @@
          "fishd@chromium.org",
          "darin@chromium.org"
       ],
-      "expertise" : "The Chromium Port, WebKit API (Chromium), Page Loading",
+      "expertise" : "The Chromium Port, CyberKit API (Chromium), Page Loading",
       "nicks" : [
          "fishd"
       ]
@@ -1572,7 +1572,7 @@
       "emails" : [
          "d.nomiyama@samsung.com"
       ],
-      "expertise" : "The WebKitGTK Port",
+      "expertise" : "The CyberKitGTK Port",
       "nicks" : [
          "dnomi"
       ]
@@ -1613,7 +1613,7 @@
          "diegohcg@webkit.org",
          "diego.gonzalez@openbossa.org"
       ],
-      "expertise" : "The QtWebKit Port",
+      "expertise" : "The QtCyberKit Port",
       "nicks" : [
          "diegohcg"
       ]
@@ -1724,7 +1724,7 @@
          "d-r@roettsches.de",
          "dominik.rottsches@intel.com"
       ],
-      "expertise" : "WebKit EFL, Cairo HarfBuzz Support, GraphicsContextCairo",
+      "expertise" : "CyberKit EFL, Cairo HarfBuzz Support, GraphicsContextCairo",
       "nicks" : [
          "drott"
       ]
@@ -1766,7 +1766,7 @@
          "dw.im@samsung.com",
          "dwim79@gmail.com"
       ],
-      "expertise" : "The EFLWebKit Port",
+      "expertise" : "The EFLCyberKit Port",
       "nicks" : [
          "dwim"
       ]
@@ -1951,7 +1951,7 @@
          "eunmi15.lee@samsung.com",
          "enmi.lee@navercorp.com"
       ],
-      "expertise" : "The EFLWebKit Port, Touch and Gesture",
+      "expertise" : "The EFLCyberKit Port, Touch and Gesture",
       "nicks" : [
          "eunmi"
       ]
@@ -2081,7 +2081,7 @@
       "emails" : [
          "loki@webkit.org"
       ],
-      "expertise" : "The QtWebKit Port, ARM JIT, Qt BuildBot",
+      "expertise" : "The QtCyberKit Port, ARM JIT, Qt BuildBot",
       "nicks" : [
          "loki04"
       ]
@@ -2091,7 +2091,7 @@
          "rgabor@webkit.org",
          "rgabor@inf.u-szeged.hu"
       ],
-      "expertise" : "The QtWebKit Port, Qt BuildBot, Tools",
+      "expertise" : "The QtCyberKit Port, Qt BuildBot, Tools",
       "nicks" : [
          "rgabor"
       ]
@@ -2123,7 +2123,7 @@
       "emails" : [
          "ggaren@apple.com"
       ],
-      "expertise" : "JavaScript/ECMAScript, Performance, Memory Use / Leaks, Memory Cache, Core DOM, HTML DOM, JavaScript DOM Bindings, Web Compatibility (General), JavaScriptCore C API, FastMalloc",
+      "expertise" : "JavaScript/ECMAScript, Performance, Memory Use / Leaks, Memory Cache, Core DOM, HTML DOM, JavaScript DOM Bindings, Web Compatibility (General), CyberScriptCore C API, FastMalloc",
       "nicks" : [
          "ggaren"
       ],
@@ -2134,7 +2134,7 @@
          "staikos@kde.org",
          "staikos@webkit.org"
       ],
-      "expertise" : "Core KHTML Contributor, The QtWebKit Port"
+      "expertise" : "Core KHTML Contributor, The QtCyberKit Port"
    },
    "Gergo Balogh" : {
       "emails" : [
@@ -2150,7 +2150,7 @@
          "girish@forwardbias.in",
          "ramakrishnan.girish@gmail.com"
       ],
-      "expertise" : "The QtWebKit Port, Plug-ins",
+      "expertise" : "The QtCyberKit Port, Plug-ins",
       "nicks" : [
          "girishr"
       ]
@@ -2205,7 +2205,7 @@
       "emails" : [
          "g.czajkowski@samsung.com"
       ],
-      "expertise" : "WebKit-EFL API, Layout Test support",
+      "expertise" : "CyberKit-EFL API, Layout Test support",
       "nicks" : [
          "grzegorz"
       ]
@@ -2214,7 +2214,7 @@
       "emails" : [
          "guijemont@igalia.com"
       ],
-      "expertise" : "JavaScriptCore",
+      "expertise" : "CyberScriptCore",
       "nicks" : [
          "guijemont"
       ],
@@ -2237,7 +2237,7 @@
          "gustavo.noronha@collabora.co.uk",
          "gustavo.noronha@collabora.com"
       ],
-      "expertise" : "WebKitGTK API, Soup HTTP backend, Debian Packaging, A little bit of Epiphany",
+      "expertise" : "CyberKitGTK API, Soup HTTP backend, Debian Packaging, A little bit of Epiphany",
       "nicks" : [
          "kov"
       ],
@@ -2249,7 +2249,7 @@
          "yoon@webkit.org",
          "ryumiel@company100.net"
       ],
-      "expertise" : "Accelerated Compositing, WebKitGTK",
+      "expertise" : "Accelerated Compositing, CyberKitGTK",
       "nicks" : [
          "ryumiel"
       ]
@@ -2262,7 +2262,7 @@
          "gyuyoung@gmail.com",
          "gyuyoung.kim@samsung.com"
       ],
-      "expertise" : "The EFLWebKit Port, Navigator Content Utils, CMake build system",
+      "expertise" : "The EFLCyberKit Port, Navigator Content Utils, CMake build system",
       "nicks" : [
          "gyuyoung"
       ],
@@ -2322,7 +2322,7 @@
          "helder.correia@nokia.com",
          "helder@sencha.com"
       ],
-      "expertise" : "The QtWebKit Port, Canvas",
+      "expertise" : "The QtCyberKit Port, Canvas",
       "nicks" : [
          "helder"
       ]
@@ -2350,7 +2350,7 @@
          "zecke@selfish.org",
          "zecke@webkit.org"
       ],
-      "expertise" : "The QtWebKit Port, The WebKitGTK Port",
+      "expertise" : "The QtCyberKit Port, The CyberKitGTK Port",
       "nicks" : [
          "zecke"
       ]
@@ -2359,7 +2359,7 @@
       "emails" : [
          "hugo.lima@openbossa.org"
       ],
-      "expertise" : "The QtWebKit Port",
+      "expertise" : "The QtCyberKit Port",
       "nicks" : [
          "hugopl"
       ]
@@ -2369,7 +2369,7 @@
          "hs85.jeong@samsung.com",
          "hs85jeong@gmail.com"
       ],
-      "expertise" : "The EFLWebKit port, Cairo graphics backend",
+      "expertise" : "The EFLCyberKit port, Cairo graphics backend",
       "nicks" : [
          "hunseop"
       ]
@@ -2386,7 +2386,7 @@
       "emails" : [
          "hyungwook.lee@navercorp.com"
       ],
-      "expertise" : "Loader, Graphics, The EFLWebKit port, WebKit on Windows",
+      "expertise" : "Loader, Graphics, The EFLCyberKit port, CyberKit on Windows",
       "nicks" : [
          "hwlee"
       ]
@@ -2423,7 +2423,7 @@
          "igor.o@sisa.samsung.com",
          "igor.oliveira@openbossa.org"
       ],
-      "expertise" : "Animations, Accelerated Compositing, WebKitEFL",
+      "expertise" : "Animations, Accelerated Compositing, CyberKitEFL",
       "nicks" : [
          "igoroliveira"
       ]
@@ -2495,7 +2495,7 @@
       "emails" : [
          "ljaehun.lim@samsung.com"
       ],
-      "expertise" : "The EFLWebKit port",
+      "expertise" : "The EFLCyberKit port",
       "nicks" : [
          "jaehun"
       ]
@@ -2576,7 +2576,7 @@
          "jmalonzo@gmail.com",
          "jmalonzo@webkit.org"
       ],
-      "expertise" : "The WebKitGtk Port",
+      "expertise" : "The CyberKitGtk Port",
       "nicks" : [
          "janm"
       ]
@@ -2727,7 +2727,7 @@
          "jesus@webkit.org",
          "jesus.palencia@openbossa.org"
       ],
-      "expertise" : "The QtWebKit port",
+      "expertise" : "The QtCyberKit port",
       "nicks" : [
          "jeez_"
       ]
@@ -2767,7 +2767,7 @@
          "jinwoo7.song@samsung.com",
          "fantaros77@gmail.com"
       ],
-      "expertise" : "The EFLWebKit port",
+      "expertise" : "The EFLCyberKit port",
       "nicks" : [
          "jinwoo"
       ]
@@ -2785,7 +2785,7 @@
       "emails" : [
          "jdiggs@igalia.com"
       ],
-      "expertise" : "Accessibility, WebKitGTK",
+      "expertise" : "Accessibility, CyberKitGTK",
       "nicks" : [
          "joanie"
       ],
@@ -2797,7 +2797,7 @@
          "jocelyn.turcotte@digia.com",
          "jocelyn.turcotte@nokia.com"
       ],
-      "expertise" : "The QtWebKit port, Tools, Loader, Rendering, Accelerated Compositing",
+      "expertise" : "The QtCyberKit port, Tools, Loader, Rendering, Accelerated Compositing",
       "nicks" : [
          "jturcotte"
       ]
@@ -2914,7 +2914,7 @@
       "emails" : [
          "jhoneycutt@apple.com"
       ],
-      "expertise" : "WebKit on Windows, Plug-ins, Windows accessibility",
+      "expertise" : "CyberKit on Windows, Plug-ins, Windows accessibility",
       "nicks" : [
          "jhoneycutt"
       ]
@@ -2984,7 +2984,7 @@
          "joone.hur@intel.com",
          "joone.hur@collabora.co.uk"
       ],
-      "expertise" : "The WebKitGTK port",
+      "expertise" : "The CyberKitGTK port",
       "nicks" : [
          "joone"
       ]
@@ -3139,7 +3139,7 @@
          "kangil.han@samsung.com",
          "kangil.han@gmail.com"
       ],
-      "expertise" : "The EFLWebKit Port",
+      "expertise" : "The EFLCyberKit Port",
       "nicks" : [
          "kangil"
       ]
@@ -3242,7 +3242,7 @@
          "kenneth.christiansen@gmail.com",
          "kenneth.christiansen@openbossa.org"
       ],
-      "expertise" : "WebKit/WebKit2 API, The Qt and EFL WebKit Port, Mobile Adaptions, Frame Flattening, Mobile Viewport Handling, Input methods.",
+      "expertise" : "CyberKit/CyberKit2 API, The Qt and EFL CyberKit Port, Mobile Adaptions, Frame Flattening, Mobile Viewport Handling, Input methods.",
       "nicks" : [
          "kenneth_",
          "kenneth",
@@ -3267,7 +3267,7 @@
       "emails" : [
          "kent.hansen@nokia.com"
       ],
-      "expertise" : "The QtWebKit Port, JavaScript/ECMAScript",
+      "expertise" : "The QtCyberKit Port, JavaScript/ECMAScript",
       "nicks" : [
          "khansen"
       ]
@@ -3315,7 +3315,7 @@
          "kevino@theolliviers.com",
          "kevino@webkit.org"
       ],
-      "expertise" : "The wxWebKit Port, Bakefile build system",
+      "expertise" : "The wxCyberKit Port, Bakefile build system",
       "nicks" : [
          "kollivier"
       ]
@@ -3324,7 +3324,7 @@
       "emails" : [
          "kihong.kwon@samsung.com"
       ],
-      "expertise" : "Device APIs(Battery Status, Vibration...), The EFLWebKit Port",
+      "expertise" : "Device APIs(Battery Status, Vibration...), The EFLCyberKit Port",
       "nicks" : [
          "kihong"
       ]
@@ -3414,7 +3414,7 @@
       "emails" : [
          "k.czech@samsung.com"
       ],
-      "expertise" : "WebKit-EFL, Accessibility",
+      "expertise" : "CyberKit-EFL, Accessibility",
       "nicks" : [
          "kczech"
       ]
@@ -3438,7 +3438,7 @@
          "skyul@company100.net",
          "kseo@webkit.org"
       ],
-      "expertise" : "HTML Parsing, Networking, WebKit2",
+      "expertise" : "HTML Parsing, Networking, CyberKit2",
       "nicks" : [
          "kseo"
       ]
@@ -3459,7 +3459,7 @@
          "lars@kde.org",
          "lars.knoll@nokia.com"
       ],
-      "expertise" : "Original author of KHTML which WebKit is based on, The QtWebKit Port, Layout and Rendering, CSS (Cascading Style Sheets), HTML Forms, Tables, HTML DOM, Core DOM, HTML Parsing",
+      "expertise" : "Original author of KHTML which CyberKit is based on, The QtCyberKit Port, Layout and Rendering, CSS (Cascading Style Sheets), HTML Forms, Tables, HTML DOM, Core DOM, HTML Parsing",
       "nicks" : [
          "lars"
       ]
@@ -3471,7 +3471,7 @@
          "laszlo.gombos@gmail.com",
          "laszlo.1.gombos@nokia.com"
       ],
-      "expertise" : "The QtWebKit Port",
+      "expertise" : "The QtCyberKit Port",
       "nicks" : [
          "lgombos"
       ]
@@ -3593,7 +3593,7 @@
          "luiz@webkit.org",
          "luiz.agostini@openbossa.org"
       ],
-      "expertise" : "The QtWebKit Port",
+      "expertise" : "The QtCyberKit Port",
       "nicks" : [
          "lca"
       ]
@@ -3620,7 +3620,7 @@
       "emails" : [
          "mjs@apple.com"
       ],
-      "expertise" : "JavaScript/ECMAScript, Performance, Security, Basic types and data structures, FastMalloc, DOM Bindings for JavaScript, Core DOM, HTML DOM, JavaScript DOM Bindings, WebKit API (Mac, Win), HTML Editing, Networking, Tools, New Features / Standards Support, General (probably a good backup on most topics even if not specifically an expert)",
+      "expertise" : "JavaScript/ECMAScript, Performance, Security, Basic types and data structures, FastMalloc, DOM Bindings for JavaScript, Core DOM, HTML DOM, JavaScript DOM Bindings, CyberKit API (Mac, Win), HTML Editing, Networking, Tools, New Features / Standards Support, General (probably a good backup on most topics even if not specifically an expert)",
       "nicks" : [
          "othermaciej"
       ],
@@ -3647,7 +3647,7 @@
       "emails" : [
          "rego@igalia.com"
       ],
-      "expertise" : "Layout, CSS, Selection, WebKitGTK port",
+      "expertise" : "Layout, CSS, Selection, CyberKitGTK port",
       "nicks" : [
          "rego",
          "mrego"
@@ -3675,7 +3675,7 @@
          "mario.prada@samsung.com",
          "msanchez@igalia.com"
       ],
-      "expertise" : "WebKitGTK, Accessibility, WebKit2, Epiphany/WebKit Contributor",
+      "expertise" : "CyberKitGTK, Accessibility, CyberKit2, Epiphany/CyberKit Contributor",
       "nicks" : [
          "msanchez"
       ],
@@ -3741,7 +3741,7 @@
          "mrobinson@igalia.com",
          "martin.james.robinson@gmail.com"
       ],
-      "expertise" : "The WebKitGTK Port, Cairo graphics backend, soup HTTP backend",
+      "expertise" : "The CyberKitGTK Port, Cairo graphics backend, soup HTTP backend",
       "nicks" : [
          "mrobinson"
       ]
@@ -3879,7 +3879,7 @@
          "michael.bruning@digia.com",
          "michaelbruening@gmail.com"
       ],
-      "expertise" : "The QtWebKit Port",
+      "expertise" : "The QtCyberKit Port",
       "nicks" : [
          "mibrunin"
       ]
@@ -3889,7 +3889,7 @@
          "mcatanzaro@igalia.com",
          "mcatanzaro@gnome.org"
       ],
-      "expertise" : "The WebKitGTK Port, Epiphany, Soup HTTP Backend",
+      "expertise" : "The CyberKitGTK Port, Epiphany, Soup HTTP Backend",
       "nicks" : [
          "mcatanzaro"
       ],
@@ -3943,7 +3943,7 @@
       "emails" : [
          "magomez@igalia.com"
       ],
-      "expertise" : "The WebKitGTK port, Accelerated Compositing, HW acceleration",
+      "expertise" : "The CyberKitGTK port, Accelerated Compositing, HW acceleration",
       "nicks" : [
          "magomez"
       ],
@@ -4115,7 +4115,7 @@
          "honten@chromium.org",
          "takano.naoki@gmail.com"
       ],
-      "expertise" : "Forms, Autofill and popup window between WebKit and Chromium port",
+      "expertise" : "Forms, Autofill and popup window between CyberKit and Chromium port",
       "nicks" : [
          "honten"
       ]
@@ -4189,7 +4189,7 @@
          "nzimmermann@blackberry.com",
          "nzimmermann@rim.com"
       ],
-      "expertise" : "Core KHTML contributor, The QtWebKit Port, Text Layout, JavaScript DOM bindings, Code generation in general, XML, SVG (Scalable Vector Graphics)",
+      "expertise" : "Core KHTML contributor, The QtCyberKit Port, Text Layout, JavaScript DOM bindings, Code generation in general, XML, SVG (Scalable Vector Graphics)",
       "nicks" : [
          "wildfox"
       ]
@@ -4377,7 +4377,7 @@
          "pvarga@webkit.org",
          "pvarga@inf.u-szeged.hu"
       ],
-      "expertise" : "JavaScriptCore Regular Expressions",
+      "expertise" : "CyberScriptCore Regular Expressions",
       "nicks" : [
          "stampho"
       ]
@@ -4407,7 +4407,7 @@
          "philn@webkit.org",
          "philn@igalia.com"
       ],
-      "expertise" : "WebKitGTK, Media support (focused on the GStreamer implementation)",
+      "expertise" : "CyberKitGTK, Media support (focused on the GStreamer implementation)",
       "nicks" : [
          "philn"
       ],
@@ -4467,7 +4467,7 @@
          "qi"
       ]
    },
-   "Radar WebKit Bug Importer" : {
+   "Radar CyberKit Bug Importer" : {
       "class" : "bot",
       "emails" : [
          "webkit-bug-importer@group.apple.com"
@@ -4515,7 +4515,7 @@
          "raphael.kubo.da.costa@intel.com",
          "kubo@profusion.mobi"
       ],
-      "expertise" : "CMake build system, The EFLWebKit port",
+      "expertise" : "CMake build system, The EFLCyberKit port",
       "nicks" : [
          "rakuco"
       ]
@@ -4596,7 +4596,7 @@
          "rbuis@rim.com",
          "rbuis@igalia.com"
       ],
-      "expertise" : "KDE contributor, The QtWebKit Port, SVG (Scalable Vector Graphics)",
+      "expertise" : "KDE contributor, The QtCyberKit Port, SVG (Scalable Vector Graphics)",
       "nicks" : [
          "rwlbuis"
       ],
@@ -4707,7 +4707,7 @@
          "ryuan.choi@webkit.org",
          "ryuan.choi@samsung.com"
       ],
-      "expertise" : "The EFLWebKit Port",
+      "expertise" : "The EFLCyberKit Port",
       "nicks" : [
          "ryuan"
       ]
@@ -4800,7 +4800,7 @@
          "sebastian.droege@collabora.co.uk",
          "sebastian.droege@collabora.com"
       ],
-      "expertise" : "WebKitGTK, Media support (focused on the GStreamer implementation)",
+      "expertise" : "CyberKitGTK, Media support (focused on the GStreamer implementation)",
       "nicks" : [
          "slomo"
       ]
@@ -4829,7 +4829,7 @@
          "svillar@igalia.com",
          "sergio@webkit.org"
       ],
-      "expertise" : "WebKitGTK port, WebKit2, CSS Grid Layout, libsoup",
+      "expertise" : "CyberKitGTK port, CyberKit2, CSS Grid Layout, libsoup",
       "nicks" : [
          "svillar"
       ],
@@ -4871,7 +4871,7 @@
          "shiva.jm@samsung.com",
          "shivakumarjm@gmail.com"
       ],
-      "expertise" : "The EFLWebKit Port, DOM, HTML",
+      "expertise" : "The EFLCyberKit Port, DOM, HTML",
       "nicks" : [
          "shivajm"
       ]
@@ -4920,7 +4920,7 @@
          "hausmann@kde.org",
          "simon.hausmann@digia.com"
       ],
-      "expertise" : "The QtWebKit Port, Former KHTML contributor",
+      "expertise" : "The QtCyberKit Port, Former KHTML contributor",
       "nicks" : [
          "tronical"
       ]
@@ -4986,7 +4986,7 @@
       "emails" : [
          "sfalken@apple.com"
       ],
-      "expertise" : "WebKit on Windows",
+      "expertise" : "CyberKit on Windows",
       "nicks" : [
          "sfalken"
       ]
@@ -5005,7 +5005,7 @@
          "sudarsana.nagineni@linux.intel.com",
          "sudarsana.nagineni@intel.com"
       ],
-      "expertise" : "The EFLWebKit port, Memory Leaks",
+      "expertise" : "The EFLCyberKit port, Memory Leaks",
       "nicks" : [
          "babu"
       ]
@@ -5126,7 +5126,7 @@
          "tmpsantos@gmail.com",
          "thiago.santos@intel.com"
       ],
-      "expertise" : "CSS Device Adaptation, CMake build system, The EFLWebKit port",
+      "expertise" : "CSS Device Adaptation, CMake build system, The EFLCyberKit port",
       "nicks" : [
          "tmpsantos"
       ]
@@ -5205,7 +5205,7 @@
          "thorton@apple.com",
          "timothy_horton@apple.com"
       ],
-      "expertise" : "SVG/Canvas/Graphics, WebKit2",
+      "expertise" : "SVG/Canvas/Graphics, CyberKit2",
       "nicks" : [
          "thorton"
       ],
@@ -5233,7 +5233,7 @@
          "timothy@hatcher.name",
          "thatcher@tesla.com"
       ],
-      "expertise" : "WebKit (Mac), Developer Tools (Web Inspector)",
+      "expertise" : "CyberKit (Mac), Developer Tools (Web Inspector)",
       "nicks" : [
          "xenon"
       ],
@@ -5306,7 +5306,7 @@
          "tor.arne.vestbo@nokia.com",
          "tor.arne.vestbo@digia.com"
       ],
-      "expertise" : "The QtWebKit Port, HTML5 Media Elements, Plug-ins, Tools",
+      "expertise" : "The QtCyberKit Port, HTML5 Media Elements, Plug-ins, Tools",
       "nicks" : [
          "torarne"
       ]
@@ -5449,7 +5449,7 @@
          "webcomponents-bugzilla@chromium.org"
       ]
    },
-   "WebKit Review Bot" : {
+   "CyberKit Review Bot" : {
       "class" : "bot",
       "emails" : [
          "webkit.review.bot@gmail.com"
@@ -5458,7 +5458,7 @@
          "sheriff-bot"
       ]
    },
-   "WebKitGTK Bugs" : {
+   "CyberKitGTK Bugs" : {
       "class" : "bot",
       "emails" : [
          "bugs-noreply@webkitgtk.org"
@@ -5497,7 +5497,7 @@
          "calvaris@igalia.com",
          "xrcalvar@igalia.com"
       ],
-      "expertise" : "WebKitGTK, GStreamer, Streams API",
+      "expertise" : "CyberKitGTK, GStreamer, Streams API",
       "nicks" : [
          "calvaris"
       ],
@@ -5510,7 +5510,7 @@
          "xan@webkit.org",
          "xlopez@igalia.com"
       ],
-      "expertise" : "WebKitGTK, Soup HTTP Backend, libsoup Contributor, WebKit a11y (focused on the ATK implementation), Epiphany/WebKit maintainer",
+      "expertise" : "CyberKitGTK, Soup HTTP Backend, libsoup Contributor, CyberKit a11y (focused on the ATK implementation), Epiphany/CyberKit maintainer",
       "nicks" : [
          "xan"
       ],
@@ -5639,7 +5639,7 @@
       "emails" : [
          "yuqiang.xian@intel.com"
       ],
-      "expertise" : "JavaScriptCore"
+      "expertise" : "CyberScriptCore"
    },
    "Yury Semikhatsky" : {
       "emails" : [
@@ -5683,7 +5683,7 @@
       "emails" : [
          "zack@kde.org"
       ],
-      "expertise" : "Core KHTML contributor, The QtWebKit Port",
+      "expertise" : "Core KHTML contributor, The QtCyberKit Port",
       "nicks" : [
          "zackr"
       ]
@@ -5711,7 +5711,7 @@
          "zeno.albisser@nokia.com",
          "zeno.albisser@digia.com"
       ],
-      "expertise" : "The QtWebKit Port",
+      "expertise" : "The QtCyberKit Port",
       "nicks" : [
          "zalbisser"
       ]
@@ -5728,7 +5728,7 @@
       "emails" : [
          "zarvai@inf.u-szeged.hu"
       ],
-      "expertise" : "The QtWebKit Port, QtWebKit Build Environment",
+      "expertise" : "The QtCyberKit Port, QtCyberKit Build Environment",
       "nicks" : [
          "azbest_hu"
       ]
@@ -5741,7 +5741,7 @@
          "zherczeg@webkit.org",
          "zherczeg@inf.u-szeged.hu"
       ],
-      "expertise" : "The QtWebKit Port, JIT (ARM), SVG, optimizations (SMP, SIMD), Graphics",
+      "expertise" : "The QtCyberKit Port, JIT (ARM), SVG, optimizations (SMP, SIMD), Graphics",
       "nicks" : [
          "zherczeg"
       ]
@@ -5753,7 +5753,7 @@
          "hzoltan@inf.u-szeged.hu",
          "horvath.zoltan.6@stud.u-szeged.hu"
       ],
-      "expertise" : "CSS Shapes, Line layout, Custom Allocation Framework, PerformanceTests, QtWebKit",
+      "expertise" : "CSS Shapes, Line layout, Custom Allocation Framework, PerformanceTests, QtCyberKit",
       "nicks" : [
          "zoltan"
       ]

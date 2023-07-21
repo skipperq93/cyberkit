@@ -24,7 +24,7 @@ set(DumpRenderTreeLib_SOURCES
 )
 
 list(APPEND TestNetscapePlugIn_LIBRARIES
-    WebKitLegacy
+    CyberKitLegacy
 )
 
 set(DumpRenderTree_SOURCES
@@ -55,7 +55,7 @@ endif ()
 list(APPEND TestNetscapePlugIn_LIBRARIES
     Msimg32
     Shlwapi
-    WebKitLegacy
+    CyberKitLegacy
 )
 
 list(APPEND DumpRenderTree_INCLUDE_DIRECTORIES
@@ -69,7 +69,7 @@ list(APPEND DumpRenderTree_INCLUDE_DIRECTORIES
 
 list(APPEND DumpRenderTree_LIBRARIES
     WTF
-    WebKitLegacy
+    CyberKitLegacy
     shlwapi
 )
 
@@ -77,7 +77,7 @@ set(DumpRenderTreeLib_LIBRARIES
     ${DumpRenderTree_LIBRARIES}
     Comsuppw
     Oleacc
-    WebKitLegacyGUID
+    CyberKitLegacyGUID
 )
 
 if (${WTF_PLATFORM_WIN_CAIRO})

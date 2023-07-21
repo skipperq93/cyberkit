@@ -56,7 +56,7 @@ function setupTexture(texWidth, texHeight) {
 
     // this can be quite undeterministic so to improve odds of seeing uninitialized data write bits
     // into tex then delete texture then re-create one with same characteristics (driver will likely reuse mem)
-    // with this trick on r59046 WebKit/OSX I get FAIL 100% of the time instead of ~15% of the time.
+    // with this trick on r59046 CyberKit/OSX I get FAIL 100% of the time instead of ~15% of the time.
 
     var badData = new Uint8Array(texWidth * texHeight * 4);
     for (var i = 0; i < badData.length; ++i)

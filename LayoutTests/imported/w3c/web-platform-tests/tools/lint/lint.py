@@ -391,7 +391,7 @@ class LayoutTestsRegexp(Regexp):
     pattern = b"eventSender|testRunner|window\.internals"
     error = "LAYOUTTESTS APIS"
     file_extensions = [".html", ".htm", ".js", ".xht", ".xhtml", ".svg"]
-    description = "eventSender/testRunner/window.internals used; these are LayoutTests-specific APIs (WebKit/Blink)"
+    description = "eventSender/testRunner/window.internals used; these are LayoutTests-specific APIs (CyberKit/Blink)"
 
 class SpecialPowersRegexp(Regexp):
     pattern = b"SpecialPowers"

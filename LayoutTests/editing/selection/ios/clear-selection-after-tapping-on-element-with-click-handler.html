@@ -33,7 +33,7 @@
     }
 
     function run() {
-        description("This test verifies that the DOM selection is dismissed when tapping on an element that listens to click events. To manually test, select 'WebKit' and tap on the red square. The selection should be dismissed, and the output area should indicate that no text is selected.");
+        description("This test verifies that the DOM selection is dismissed when tapping on an element that listens to click events. To manually test, select 'CyberKit' and tap on the red square. The selection should be dismissed, and the output area should indicate that no text is selected.");
 
         document.addEventListener("selectionchange", () => document.getElementById("result").textContent = getSelection().toString());
         const clickTarget = document.getElementById("clickTarget");
@@ -46,7 +46,7 @@
     </script>
 </head>
 <body onload="run()">
-    <div id="selectionTarget">WebKit</div>
+    <div id="selectionTarget">CyberKit</div>
     <div id="clickTarget"></div>
     <pre>The selected text is: "<span id="result"></span>"</pre>
 </body>

@@ -20,13 +20,13 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-"""Supports checking WebKit style in Python files."""
+"""Supports checking CyberKit style in Python files."""
 
 import re
 from StringIO import StringIO
 
 from webkitpy.common.system.filesystem import FileSystem
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 from webkitpy.thirdparty.autoinstalled import pep8
 from webkitpy.thirdparty.autoinstalled.pylint import lint
 from webkitpy.thirdparty.autoinstalled.pylint.reporters.text import ParseableTextReporter
@@ -99,7 +99,7 @@ class Pylinter(object):
     ]
 
     def __init__(self):
-        self._pylintrc = WebKitFinder(FileSystem()).path_from_webkit_base('Tools', 'Scripts', 'webkitpy', 'pylintrc')
+        self._pylintrc = CyberKitFinder(FileSystem()).path_from_webkit_base('Tools', 'Scripts', 'webkitpy', 'pylintrc')
 
     def run(self, argv):
         output = _FilteredStringIO(self.FALSE_POSITIVES)

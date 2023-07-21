@@ -173,7 +173,7 @@ def is_element_in_viewport(session, element):
 
 
 def is_fullscreen(session):
-    # At the time of writing, WebKit does not conform to the
+    # At the time of writing, CyberKit does not conform to the
     # Fullscreen API specification.
     #
     # Remove the prefixed fallback when

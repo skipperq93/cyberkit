@@ -4649,7 +4649,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
             if ( jQuery.type( elem ) === "object" ) {
 
                 // Support: Android<4.1, PhantomJS<2
-                // push.apply(_, arraylike) throws on ancient WebKit
+                // push.apply(_, arraylike) throws on ancient CyberKit
                 jQuery.merge( nodes, elem.nodeType ? [ elem ] : elem );
 
             // Convert non-html into a text node
@@ -4672,7 +4672,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
                 }
 
                 // Support: Android<4.1, PhantomJS<2
-                // push.apply(_, arraylike) throws on ancient WebKit
+                // push.apply(_, arraylike) throws on ancient CyberKit
                 jQuery.merge( nodes, tmp.childNodes );
 
                 // Remember the top-level container
@@ -4739,7 +4739,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
     div.appendChild( input );
 
     // Support: Safari<=5.1, Android<4.2
-    // Older WebKit doesn't clone checked state correctly in fragments
+    // Older CyberKit doesn't clone checked state correctly in fragments
     support.checkClone = div.cloneNode( true ).cloneNode( true ).lastChild.checked;
 
     // Support: IE<=11+
@@ -5209,7 +5209,7 @@ jQuery.event = {
             event[ prop ] = originalEvent[ prop ];
         }
 
-        // Support: Cordova 2.5 (WebKit) (#13255)
+        // Support: Cordova 2.5 (CyberKit) (#13255)
         // All events should have a target; Cordova deviceready doesn't
         if ( !event.target ) {
             event.target = document;
@@ -5548,7 +5548,7 @@ function domManip( collection, args, callback, ignored ) {
         value = args[ 0 ],
         isFunction = jQuery.isFunction( value );
 
-    // We can't cloneNode fragments that contain checked, in WebKit
+    // We can't cloneNode fragments that contain checked, in CyberKit
     if ( isFunction ||
             ( l > 1 && typeof value === "string" &&
                 !support.checkClone && rchecked.test( value ) ) ) {
@@ -5587,7 +5587,7 @@ function domManip( collection, args, callback, ignored ) {
                     if ( hasScripts ) {
 
                         // Support: Android<4.1, PhantomJS<2
-                        // push.apply(_, arraylike) throws on ancient WebKit
+                        // push.apply(_, arraylike) throws on ancient CyberKit
                         jQuery.merge( scripts, getAll( node, "script" ) );
                     }
                 }
@@ -5891,7 +5891,7 @@ jQuery.each( {
             elems = i === last ? this : this.clone( true );
             jQuery( insert[ i ] )[ original ]( elems );
 
-            // Support: QtWebKit
+            // Support: QtCyberKit
             // .get() because push.apply(_, arraylike) throws
             push.apply( ret, elems.get() );
         }
@@ -6092,7 +6092,7 @@ var documentElement = document.documentElement;
             // Support: Android 2.3
             // Check if div with explicit width and no margin-right incorrectly
             // gets computed margin-right based on width of container. (#3333)
-            // WebKit Bug 13343 - getComputedStyle returns wrong value for margin-right
+            // CyberKit Bug 13343 - getComputedStyle returns wrong value for margin-right
             // This support function is only executed once so no memoizing is needed.
             var ret,
                 marginDiv = div.appendChild( document.createElement( "div" ) );
@@ -61836,7 +61836,7 @@ enifed('rsvp/asap', ['exports'], function (exports) {
 
   var browserWindow = typeof window !== 'undefined' ? window : undefined;
   var browserGlobal = browserWindow || {};
-  var BrowserMutationObserver = browserGlobal.MutationObserver || browserGlobal.WebKitMutationObserver;
+  var BrowserMutationObserver = browserGlobal.MutationObserver || browserGlobal.CyberKitMutationObserver;
   var isNode = typeof window === 'undefined' && typeof process !== 'undefined' && ({}).toString.call(process) === '[object process]';
 
   // test for web worker but not in IE10

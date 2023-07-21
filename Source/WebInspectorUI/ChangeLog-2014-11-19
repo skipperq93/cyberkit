@@ -304,7 +304,7 @@
 
         * UserInterface/Views/CodeMirrorAdditions.js:
         (scrollCursorIntoView): Added. Default event listener that provides our own
-        implementation using WebKit's scrollIntoViewIfNeeded.
+        implementation using CyberKit's scrollIntoViewIfNeeded.
 
         * UserInterface/Views/RulesStyleDetailsPanel.js:
         (WebInspector.RulesStyleDetailsPanel.prototype.refresh): Stop doing an
@@ -664,7 +664,7 @@
 
 2014-10-21  Carlos Garcia Campos  <cgarcia@igalia.com>
 
-        [GTK] Test TestWebKitAPI/WebKit2Gtk/TestInspectorServer fails
+        [GTK] Test TestCyberKitAPI/CyberKit2Gtk/TestInspectorServer fails
         https://bugs.webkit.org/show_bug.cgi?id=132044
 
         Reviewed by Brian Burg.
@@ -703,7 +703,7 @@
 
 2014-10-20  Joseph Pecoraro  <pecoraro@apple.com>
 
-        Web Inspector: Generate all Inspector domains together in JavaScriptCore
+        Web Inspector: Generate all Inspector domains together in CyberScriptCore
         https://bugs.webkit.org/show_bug.cgi?id=137748
 
         Reviewed by Brian Burg.
@@ -748,7 +748,7 @@
         * WebInspectorUI.vcxproj/WebInspectorUI.vcxproj:
         * WebInspectorUI.vcxproj/WebInspectorUI.vcxproj.filters:
         * WebInspectorUI.vcxproj/build-webinspectorui.pl:
-        We no longer needed WebCore's Private Headers, so simplify build files
+        We no longer needed CyberCore's Private Headers, so simplify build files
         and update file names where appropriate.
 
 2014-10-17  Jono Wells  <jonowells@apple.com>
@@ -1519,7 +1519,7 @@
 
         * Configurations/DebugRelease.xcconfig: Also move #include of HaveInternalSDK.xcconfig from DebugRelease.xcconfig
         to Base.xcconfig so as to be consistent with the format of other Base.xcconfig/DebugRelease.xcconfig files
-        (e.g. Source/WebCore/Configurations/Base.xcconfig and Source/WebCore/Configurations/DebugRelease.xcconfig).
+        (e.g. Source/CyberCore/Configurations/Base.xcconfig and Source/CyberCore/Configurations/DebugRelease.xcconfig).
 
 2014-09-19  Carlos Garcia Campos  <cgarcia@igalia.com>
 
@@ -2560,7 +2560,7 @@
 
         Reviewed by Joseph Pecoraro.
 
-        JavaScriptCore now has a type profiler. This patch provides a frontend
+        CyberScriptCore now has a type profiler. This patch provides a frontend
         user interface for displaying this type information in the Web Inspector.
         The user interface works by placing inline "type tokens" next to important
         JavaScript expressions: function arguments, function return types, and 
@@ -2793,7 +2793,7 @@
 
         Reviewed by Darin Adler.
 
-        We should only use hte proper pseudo element syntax inside WebKit.
+        We should only use hte proper pseudo element syntax inside CyberKit.
 
         * Tools/PrettyPrinting/codemirror-additions.css:
         * Tools/PrettyPrinting/populate/apple.css:
@@ -2834,7 +2834,7 @@
 
         Reviewed by Geoffrey Garen.
 
-        Change a reference in a comment to a JavaScriptCore file to its 
+        Change a reference in a comment to a CyberScriptCore file to its 
         newly renamed variant.
 
         * UserInterface/Models/ScriptSyntaxTree.js:
@@ -3087,7 +3087,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=135916
 
         .eslintrc file added to allow for ESLint solutions, within editors and otherwise,
-        to be automatically configured based on the WebKit JavaScript coding style. The
+        to be automatically configured based on the CyberKit JavaScript coding style. The
         initial file is incomplete.
 
         Reviewed by Joseph Pecoraro.
@@ -6763,7 +6763,7 @@
         * UserInterface/Protocol/InspectorWebBackendCommands.js: Removed.
         * WebInspectorUI.vcxproj/WebInspectorUIPostBuild.cmd: Copy over the generated
         backend commands files from the other frameworks.
-        * WebInspectorUI.xcodeproj/project.pbxproj: Add JavaScriptCore and WebCore as
+        * WebInspectorUI.xcodeproj/project.pbxproj: Add CyberScriptCore and CyberCore as
         framework dependencies so Xcode builds them first.
 
 2014-03-15  David Kilzer  <ddkilzer@apple.com>
@@ -6776,7 +6776,7 @@
 
         * Configurations/Version.xcconfig:
         (SYSTEM_VERSION_PREFIX): Sync with
-        Source/WebKit/mac/Version.xcconfig.
+        Source/CyberKit/mac/Version.xcconfig.
 
 2014-03-14  Maciej Stachowiak  <mjs@apple.com>
 
@@ -8523,7 +8523,7 @@
 
         * UserInterface/UnitBezier.js: Added.
         New class used to perform animations using a timing function specified with a cubic Bézier curve. The code
-        is directly adapted from the Source/WebCore/platform/graphics/UnitBezier.h file.
+        is directly adapted from the Source/CyberCore/platform/graphics/UnitBezier.h file.
 
         (WebInspector.UnitBezier):
         (WebInspector.UnitBezier.prototype.solve):
@@ -11437,7 +11437,7 @@
 
 2013-12-13  Joseph Pecoraro  <pecoraro@apple.com>
 
-        Web Inspector: Move Inspector and Debugger protocol domains into JavaScriptCore
+        Web Inspector: Move Inspector and Debugger protocol domains into CyberScriptCore
         https://bugs.webkit.org/show_bug.cgi?id=125707
 
         Reviewed by Timothy Hatcher.
@@ -11463,7 +11463,7 @@
 
 2013-12-13  Joseph Pecoraro  <pecoraro@apple.com>
 
-        Web Inspector: Add Inspector Code Generation to JavaScriptCore for Runtime Domain
+        Web Inspector: Add Inspector Code Generation to CyberScriptCore for Runtime Domain
         https://bugs.webkit.org/show_bug.cgi?id=125595
 
         Reviewed by Timothy Hatcher.
@@ -11576,7 +11576,7 @@
 
 2013-12-13  Brent Fulgham  <bfulgham@apple.com>
 
-        [Win] Switch WebKit solution to Visual Studio 2013
+        [Win] Switch CyberKit solution to Visual Studio 2013
         https://bugs.webkit.org/show_bug.cgi?id=125192
 
         Reviewed by Anders Carlsson.
@@ -12635,7 +12635,7 @@
 
         Reviewed by Timothy Hatcher.
 
-        -webkit-min and -webkit-max are not implemented in WebCore, despite mentions of it.
+        -webkit-min and -webkit-max are not implemented in CyberCore, despite mentions of it.
 
         * UserInterface/CSSKeywordCompletions.js:
 
@@ -13316,7 +13316,7 @@
 
 2013-10-10  Mark Rowe  <mrowe@apple.com>
 
-        <rdar://problem/13341666> WebKit should always build against an SDK.
+        <rdar://problem/13341666> CyberKit should always build against an SDK.
 
         Have all projects default to building against the OS X Internal SDK for the Production
         configuration. For the Debug and Release configurations, look for UseInternalSDK.xcconfig
@@ -13683,7 +13683,7 @@
 
 2013-09-24  Mark Rowe  <mrowe@apple.com>
 
-        <rdar://problem/14971518> WebKit should build against the Xcode default toolchain when targeting OS X 10.8
+        <rdar://problem/14971518> CyberKit should build against the Xcode default toolchain when targeting OS X 10.8
 
         Reviewed by Dan Bernstein.
 
@@ -13865,7 +13865,7 @@
 
         Reviewed by Carlos Garcia Campos.
 
-        * GNUmakefile.am: Added. Generate the GResource source and link it into libWebCore.
+        * GNUmakefile.am: Added. Generate the GResource source and link it into libCyberCore.
 
 2013-09-12  Joseph Pecoraro  <pecoraro@apple.com>
 
@@ -14188,7 +14188,7 @@
 2013-08-30  Brent Fulgham  <bfulgham@apple.com>
 
         [Windows] Correct windows build. Get rid of unnecessary pre-build step. We don't build anything
-        in this project, just copy some files into the WebKit resource folder. This was fooling the
+        in this project, just copy some files into the CyberKit resource folder. This was fooling the
         build system into thinking something failed, resulting in a build error.
 
         * WebInspectorUI.vcxproj/WebInspectorUI.vcxproj: Remove reference to WebInspectorUIPreBuild.cmd
@@ -14200,7 +14200,7 @@
         [Windows] Build correction after dependency change.
 
         * WebInspectorUI.vcxproj/WebInspectorUI.vcxproj: Remove circular dependency on
-        WebKit, and control this at the solution level. The prior change broke external
+        CyberKit, and control this at the solution level. The prior change broke external
         builders.
 
 2013-08-30  Brent Fulgham  <bfulgham@apple.com>
@@ -14208,7 +14208,7 @@
         [Windows] Unreviewed build gardening.
 
         * WebInspectorUI.vcxproj/WebInspectorUI.vcxproj: Adjust build dependencies so
-        that WebInspectorUI 'builds' after WebKit so that the expected resource directory
+        that WebInspectorUI 'builds' after CyberKit so that the expected resource directory
         structure is always in place.
 
 2013-08-30  Joseph Pecoraro  <pecoraro@apple.com>

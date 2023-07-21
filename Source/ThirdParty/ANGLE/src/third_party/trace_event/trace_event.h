@@ -148,7 +148,7 @@
 
 // By default, const char* argument values are assumed to have long-lived scope
 // and will not be copied. Use this macro to force a const char* to be copied.
-#define TRACE_STR_COPY(str) WebCore::TraceEvent::TraceStringWithCopy(str)
+#define TRACE_STR_COPY(str) CyberCore::TraceEvent::TraceStringWithCopy(str)
 
 // Records a pair of begin and end events called "name" for the current
 // scope, with 0, 1 or 2 associated arguments. If the category is not

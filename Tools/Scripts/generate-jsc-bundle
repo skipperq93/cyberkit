@@ -75,8 +75,8 @@ def generate_readme(bundleTmpDir, builderName, configuration, platform, revision
         readmeHandle.write(' Builder name: %s\n' % builderName)
         readmeHandle.write(' Builder date: %s\n' % datetime.datetime.now().isoformat())
         readmeHandle.write(' Configuration: %s\n' % configuration)
-        readmeHandle.write(' WebKit Platform: %s\n' % platform)
-        readmeHandle.write(' WebKit Revision: %s\n' % revision)
+        readmeHandle.write(' CyberKit Platform: %s\n' % platform)
+        readmeHandle.write(' CyberKit Revision: %s\n' % revision)
         readmeHandle.write('\nInstructions: Execute the run-jsc wrapper script.\n')
     return True
 
@@ -109,7 +109,7 @@ def copy_and_remove_rpath(origFile, destinationDir, type='bin'):
 
 
 def createJSCBundle(configuration, revision=None, builderName=None, platform=None):
-    buildDir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'WebKitBuild'))
+    buildDir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'CyberKitBuild'))
     binDir = os.path.join(buildDir, configuration.capitalize(), 'bin')
     libDir = os.path.join(buildDir, configuration.capitalize(), 'lib')
     jscBinary = os.path.join(binDir, 'jsc')

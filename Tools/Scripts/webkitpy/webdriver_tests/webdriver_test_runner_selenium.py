@@ -25,7 +25,7 @@ import os
 import sys
 
 from webkitpy.common.system.filesystem import FileSystem
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 from webkitpy.webdriver_tests.webdriver_selenium_executor import WebDriverSeleniumExecutor
 from webkitpy.webdriver_tests.webdriver_test_result import WebDriverTestResult
 
@@ -40,7 +40,7 @@ class WebDriverTestRunnerSelenium(object):
         self._env = env
         self._expectations = expectations
         self._results = []
-        self._tests_dir = WebKitFinder(self._port.host.filesystem).path_from_webkit_base('WebDriverTests')
+        self._tests_dir = CyberKitFinder(self._port.host.filesystem).path_from_webkit_base('WebDriverTests')
 
     def collect_tests(self, tests):
         if self._driver.selenium_name() is None:

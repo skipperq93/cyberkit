@@ -8,8 +8,8 @@
 
 #import "DefaultPolicyDelegate.h"
 
-#import <WebKit/WebPolicyDelegatePrivate.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebPolicyDelegatePrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 
 @implementation DefaultPolicyDelegate
 
@@ -26,7 +26,7 @@
         return;
     }
 
-    // The default WebKit policy delegate passes the URL along to -[NSWorkspace openURL:] here,
+    // The default CyberKit policy delegate passes the URL along to -[NSWorkspace openURL:] here,
     // but we don't want to do that so we just ignore the navigation completely.
     [listener ignore];
 }

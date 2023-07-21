@@ -32,7 +32,7 @@
  */
 
 #import <Cocoa/Cocoa.h>
-#import <WebKit/npfunctions.h>
+#import <CyberKit/npfunctions.h>
 
 @interface MenuHandler : NSObject {
     NSMenu *menu;

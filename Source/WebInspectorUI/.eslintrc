@@ -103,7 +103,7 @@
         // DOM
         "CSSPrimitiveValue": true,
         "Exception": true,
-        "WebKitPoint": true,
+        "CyberKitPoint": true,
         "SQLError": true,
 
         // Utilities
@@ -124,7 +124,7 @@
         "isTextLikelyMinified": true,
         "isWebInspectorConsoleEvaluationScript": true,
         "isWebInspectorInternalScript": true,
-        "isWebKitInternalScript": true,
+        "isCyberKitInternalScript": true,
         "multiplicationSign": true,
         "parseMIMEType": true,
         "resolveDotsInPath": true,

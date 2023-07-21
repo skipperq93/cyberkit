@@ -34,8 +34,8 @@ from webkitpy.port import Port, Driver, DriverOutput
 from webkitpy.port.server_process_mock import MockServerProcess
 from webkitpy.thirdparty.mock import patch
 
-# FIXME: remove the dependency on TestWebKitPort
-from webkitpy.port.port_testcase import TestWebKitPort
+# FIXME: remove the dependency on TestCyberKitPort
+from webkitpy.port.port_testcase import TestCyberKitPort
 
 from webkitpy.tool.mocktool import MockOptions
 
@@ -119,8 +119,8 @@ class DriverTest(unittest.TestCase):
         self.assertEqual(driver.test_to_uri('http/tests/ssl/bar.html'), 'https://127.0.0.1:8443/ssl/bar.html')
         self.assertEqual(driver.test_to_uri('imported/w3c/web-platform-tests/foo/bar.html'), 'http://localhost:8800/foo/bar.html')
         self.assertEqual(driver.test_to_uri('imported/w3c/web-platform-tests/foo/bar.https.html'), 'https://localhost:9443/foo/bar.https.html')
-        self.assertEqual(driver.test_to_uri('http/wpt/bar2.html'), 'http://localhost:8800/WebKit/bar2.html')
-        self.assertEqual(driver.test_to_uri('http/wpt/bar2.https.html'), 'https://localhost:9443/WebKit/bar2.https.html')
+        self.assertEqual(driver.test_to_uri('http/wpt/bar2.html'), 'http://localhost:8800/CyberKit/bar2.html')
+        self.assertEqual(driver.test_to_uri('http/wpt/bar2.https.html'), 'https://localhost:9443/CyberKit/bar2.https.html')
 
     def test_uri_to_test(self):
         port = self.make_port()
@@ -130,11 +130,11 @@ class DriverTest(unittest.TestCase):
         self.assertEqual(driver.uri_to_test('https://127.0.0.1:8443/ssl/bar.html'), 'http/tests/ssl/bar.html')
         self.assertEqual(driver.uri_to_test('https://127.0.0.1:8443/ssl/bar.https.html'), 'http/tests/ssl/bar.https.html')
         self.assertEqual(driver.uri_to_test('http://localhost:8800/foo/bar.html'), 'imported/w3c/web-platform-tests/foo/bar.html')
-        self.assertEqual(driver.uri_to_test('http://localhost:8800/WebKit/bar2.html'), 'http/wpt/bar2.html')
-        self.assertEqual(driver.uri_to_test('https://localhost:9443/WebKit/bar2.https.html'), 'http/wpt/bar2.https.html')
+        self.assertEqual(driver.uri_to_test('http://localhost:8800/CyberKit/bar2.html'), 'http/wpt/bar2.html')
+        self.assertEqual(driver.uri_to_test('https://localhost:9443/CyberKit/bar2.https.html'), 'http/wpt/bar2.https.html')
 
     def test_read_block(self):
-        port = TestWebKitPort()
+        port = TestCyberKitPort()
         driver = Driver(port, 0, pixel_tests=False)
         driver._server_process = MockServerProcess(lines=[
             'ActualHash: foobar',
@@ -151,7 +151,7 @@ class DriverTest(unittest.TestCase):
         driver._server_process = None
 
     def test_read_block_crashed_process(self):
-        port = TestWebKitPort()
+        port = TestCyberKitPort()
         driver = Driver(port, 0, pixel_tests=False)
         driver._server_process = MockServerProcess(
             crashed=True,
@@ -169,7 +169,7 @@ class DriverTest(unittest.TestCase):
         driver._server_process = None
 
     def test_read_binary_block(self):
-        port = TestWebKitPort()
+        port = TestCyberKitPort()
         driver = Driver(port, 0, pixel_tests=True)
         driver._server_process = MockServerProcess(lines=[
             'ActualHash: actual',
@@ -187,7 +187,7 @@ class DriverTest(unittest.TestCase):
         driver._server_process = None
 
     def test_read_base64_block(self):
-        port = TestWebKitPort()
+        port = TestCyberKitPort()
         driver = Driver(port, 0, pixel_tests=True)
         driver._server_process = MockServerProcess(lines=[
             'ActualHash: actual',
@@ -205,7 +205,7 @@ class DriverTest(unittest.TestCase):
         self.assertEqual(content_block.decoded_content, '12345678\n')
 
     def test_no_timeout(self):
-        port = TestWebKitPort()
+        port = TestCyberKitPort()
         port._config.build_directory = lambda configuration: '/mock-build'
         driver = Driver(port, 0, pixel_tests=True, no_timeout=True)
         if sys.platform.startswith('win'):
@@ -214,7 +214,7 @@ class DriverTest(unittest.TestCase):
             self.assertEqual(driver.cmd_line(True, []), ['/mock-build/DumpRenderTree', '--no-timeout', '-'])
 
     def test_check_for_driver_crash(self):
-        port = TestWebKitPort()
+        port = TestCyberKitPort()
         driver = Driver(port, 0, pixel_tests=True)
 
         class FakeServerProcess(object):
@@ -286,13 +286,13 @@ class DriverTest(unittest.TestCase):
         assert_crash(driver, '', True, 'FakeServerProcess', 1234)
 
     def test_creating_a_port_does_not_write_to_the_filesystem(self):
-        port = TestWebKitPort()
+        port = TestCyberKitPort()
         driver = Driver(port, 0, pixel_tests=True)
         self.assertEqual(port._filesystem.written_files, {})
         self.assertEqual(port._filesystem.last_tmpdir, None)
 
     def test_stop_cleans_up_properly(self):
-        port = TestWebKitPort()
+        port = TestCyberKitPort()
         port._test_runner_process_constructor = MockServerProcess
         driver = Driver(port, 0, pixel_tests=True)
         driver.start(True, [])
@@ -302,7 +302,7 @@ class DriverTest(unittest.TestCase):
         self.assertFalse(port._filesystem.isdir(last_tmpdir))
 
     def test_two_starts_cleans_up_properly(self):
-        port = TestWebKitPort()
+        port = TestCyberKitPort()
         port._test_runner_process_constructor = MockServerProcess
         driver = Driver(port, 0, pixel_tests=True)
         driver.start(True, [])
@@ -311,7 +311,7 @@ class DriverTest(unittest.TestCase):
         self.assertFalse(port._filesystem.isdir(last_tmpdir))
 
     def test_start_actually_starts(self):
-        port = TestWebKitPort()
+        port = TestCyberKitPort()
         port._test_runner_process_constructor = MockServerProcess
         driver = Driver(port, 0, pixel_tests=True)
         driver.start(True, [])
@@ -344,7 +344,7 @@ class DriverTest(unittest.TestCase):
 
     def test_setup_environ_for_test(self):
         environment_user = {}
-        environment_user['WEBKIT_OUTPUTDIR'] = '/opt/webkit/WebKitBuild/Release'
+        environment_user['WEBKIT_OUTPUTDIR'] = '/opt/webkit/CyberKitBuild/Release'
         environment_user['FOO'] = 'BAR'
         with patch('os.environ', environment_user):
             port = self.make_port()
@@ -359,8 +359,8 @@ class DriverTest(unittest.TestCase):
         # as part of base:setup_environ_for_server for all drivers
         environ_keep_yes = {'HOME': '/home/igalia',
                            'PATH': '/bin:/usr/sbin:/usr/bin',
-                           'WEBKIT_TESTFONTS': '/opt/webkit/WebKitBuild/WKTestFonts',
-                           'WEBKIT_OUTPUTDIR': '/opt/webkit/WebKitBuild/Release',
+                           'WEBKIT_TESTFONTS': '/opt/webkit/CyberKitBuild/WKTestFonts',
+                           'WEBKIT_OUTPUTDIR': '/opt/webkit/CyberKitBuild/Release',
                            'LANG': 'en_US.utf8'}
         # This are environment variables that should be copied
         # on the driver (wayland, x11). But not in the base driver.

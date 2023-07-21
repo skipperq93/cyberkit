@@ -22,7 +22,7 @@ function runTest() {
     if (window.testRunner) {
         testRunner.dumpAsText();
         testRunner.waitUntilDone();
-        testRunner.overridePreference("WebKitUsesPageCachePreferenceKey", 1);
+        testRunner.overridePreference("CyberKitUsesPageCachePreferenceKey", 1);
     }
     document.fonts.loadFont({ font: '10px TestFont', onsuccess: onsuccess, onerror: onerror });
 }

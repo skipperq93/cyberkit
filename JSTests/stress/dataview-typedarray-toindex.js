@@ -21,7 +21,7 @@ function shouldThrowRangeError(func) {
 // ToIndex (value) https://tc39.github.io/ecma262/#sec-toindex
 // - Convert undefined to 0.
 // - Convert value to Integer, and throws a RangeError if negative.
-// - JavaScriptCore also throws a TypeError for Infinity because that would convert tp 2^53 - 1 which is too large for all cases.
+// - CyberScriptCore also throws a TypeError for Infinity because that would convert tp 2^53 - 1 which is too large for all cases.
 
 let buffer = new ArrayBuffer(128);
 let dataView = new DataView(buffer);    

@@ -10,7 +10,7 @@ pasted html:
 |     "world"
 | <span>
 |   style="-webkit-text-size-adjust: auto;"
-|   " WebKit<#selection-caret>"
+|   " CyberKit<#selection-caret>"
 
 text/plain:
-| "world WebKit"
+| "world CyberKit"

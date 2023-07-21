@@ -8,6 +8,6 @@ This tests deleting a line break between paragraphs with the same inline style. 
 |     "hello world<#selection-caret>"
 |   <span>
 |     style="font-family: monospace;"
-|     "WebKit"
+|     "CyberKit"
 | "
 "

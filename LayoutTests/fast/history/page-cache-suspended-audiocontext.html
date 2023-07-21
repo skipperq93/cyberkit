@@ -7,7 +7,7 @@ description('Tests that a page with a suspended AudioContext goes into the page 
 window.jsTestIsAsync = true;
 
 if (window.testRunner)
-    testRunner.overridePreference("WebKitUsesPageCachePreferenceKey", 1);
+    testRunner.overridePreference("CyberKitUsesPageCachePreferenceKey", 1);
 
 window.addEventListener("pageshow", function(event) {
     debug("pageshow - " + (event.persisted ? "" : "not ") + "from cache");

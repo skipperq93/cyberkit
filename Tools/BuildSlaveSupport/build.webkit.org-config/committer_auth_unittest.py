@@ -93,7 +93,7 @@ class CommitterAuthTest(unittest.TestCase):
             raise IOError(2, 'No such file or directory', 'path/to/webkit/committers')
         self.auth.open_webkit_committers_file = raise_IOError
         self.assertFalse(self.auth.authenticate('committer@webkit.org', 'committerpassword'))
-        self.assertEqual('Error opening WebKit committers file: No such file or directory', self.auth.errmsg())
+        self.assertEqual('Error opening CyberKit committers file: No such file or directory', self.auth.errmsg())
 
     def test_implements_IAuth(self):
         self.assertTrue(buildbot.status.web.auth.IAuth.implementedBy(CommitterAuth))
@@ -107,7 +107,7 @@ class CommitterAuthTest(unittest.TestCase):
     def test_invalid_committers_file(self):
         self.auth.open_webkit_committers_file = self.invalid_committers_file
         self.assertFalse(self.auth.authenticate('committer@webkit.org', 'committerpassword'))
-        self.assertEqual('Error parsing WebKit committers file', self.auth.errmsg())
+        self.assertEqual('Error parsing CyberKit committers file', self.auth.errmsg())
 
     def test_invalid_trac_credentials_file(self):
         self.auth.open_trac_credentials_file = self.invalid_htdigest_file

@@ -94,7 +94,7 @@ class RunTests(AbstractStep):
 
             javascriptcore_tests_command = self._tool.deprecated_port().run_javascriptcore_tests_command()
             if javascriptcore_tests_command:
-                _log.info("Running JavaScriptCore tests")
+                _log.info("Running CyberScriptCore tests")
                 self._tool.executive.run_and_throw_if_fail(javascriptcore_tests_command, quiet=True, cwd=self._tool.scm().checkout_root)
 
         _log.info("Running run-webkit-tests")

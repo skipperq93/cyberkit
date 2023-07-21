@@ -25,18 +25,18 @@ PASS clipboardData.items[0].getAsFile() is null
 PASS clipboardData.items[0].getAsString(checkContent(2, "scissors")) is undefined
 PASS clipboardData.items.clear(); clipboardData.items.length is 0
 PASS clipboardData.getData("text/plain") is ""
-PASS clipboardData.items.add("WebKit", "text/plain"); clipboardData.items.length is 1
+PASS clipboardData.items.add("CyberKit", "text/plain"); clipboardData.items.length is 1
 PASS clipboardData.items[0].kind is "string"
 PASS clipboardData.items[0].type is "text/plain"
 PASS clipboardData.items[0].getAsFile() is null
-PASS clipboardData.items[0].getAsString(checkContent(3, "WebKit")) is undefined
+PASS clipboardData.items[0].getAsString(checkContent(3, "CyberKit")) is undefined
 PASS clipboardData.items.remove(1) threw exception IndexSizeError: The index is not in the allowed range..
 PASS clipboardData.items.length is 1
 PASS clipboardData.items.remove(0); clipboardData.items.length is 0
 PASS clipboardData.getData("text/plain") is ""
 PASS actualContent1 is "rock"
 PASS actualContent2 is "scissors"
-PASS actualContent3 is "WebKit"
+PASS actualContent3 is "CyberKit"
 PASS successfullyParsed is true
 
 TEST COMPLETE

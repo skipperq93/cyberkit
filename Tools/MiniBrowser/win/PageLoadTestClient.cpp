@@ -26,8 +26,8 @@
 #include "stdafx.h"
 #include "PageLoadTestClient.h"
 
-#include "WebKitLegacyBrowserWindow.h"
-#include <WebCore/PlatformExportMacros.h>
+#include "CyberKitLegacyBrowserWindow.h"
+#include <CyberCore/PlatformExportMacros.h>
 #include <cmath>
 #include <wtf/Assertions.h>
 #include <wtf/FilePrintStream.h>
@@ -35,7 +35,7 @@
 
 static const CFTimeInterval waitForNewResourceLoadDuration = 0.1;
 
-PageLoadTestClient::PageLoadTestClient(WebKitLegacyBrowserWindow* host, bool pageLoadTesting)
+PageLoadTestClient::PageLoadTestClient(CyberKitLegacyBrowserWindow* host, bool pageLoadTesting)
     : m_host(host)
     , m_waitForLoadToReallyEnd(this, &PageLoadTestClient::endPageLoad)
     , m_repetitions(pageLoadTesting ? 20 : 1)

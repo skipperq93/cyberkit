@@ -1203,13 +1203,13 @@ function showPopupForBuild(e, builder, index, opt_testName)
         '</li><li>' +
         createBlameListHTML(g_resultsByBuilder[builder].webkitRevision, index,
             'https://trac.webkit.org/log/?verbose=on&rev=', '&stop_rev=',
-            'WebKit') +
+            'CyberKit') +
         '</li>';
 
     if (master.name == WEBKIT_BUILDER_MASTER) {
         var revision = g_resultsByBuilder[builder].webkitRevision[index];
         html += '<li><span class=link onclick="g_history.setQueryParameter(\'revision\',' +
-            revision + ')">Show results for WebKit r' + revision +
+            revision + ')">Show results for CyberKit r' + revision +
             '</span></li>';
     } else
         console.error("Unexpected master name: " + master.name);
@@ -1343,7 +1343,7 @@ function createBugHTML(test)
         '\n\nFlakiness Dashboard:\n\n' + dashboardURL);
     
     var component = encodeURIComponent('Tools / Tests');
-    url = 'https://bugs.webkit.org/enter_bug.cgi?assigned_to=webkit-unassigned%40lists.webkit.org&product=WebKit&form_name=enter_bug&component=' + component + '&short_desc=' + title + '&comment=' + description;
+    url = 'https://bugs.webkit.org/enter_bug.cgi?assigned_to=webkit-unassigned%40lists.webkit.org&product=CyberKit&form_name=enter_bug&component=' + component + '&short_desc=' + title + '&comment=' + description;
     return '<a href="' + url + '" class="file-bug" target="_blank">File</a>';
 }
 
@@ -1776,7 +1776,7 @@ function htmlForIndividualTestOnAllBuildersWithResultsLinks(test)
         if (testResults && currentBuilderGroup().master().name == WEBKIT_BUILDER_MASTER) {
             var revision = g_history.dashboardSpecificState.revision || '';
             html += '<form onsubmit="g_history.setQueryParameter(\'revision\', revision.value);' +
-                'return false;">Show results for WebKit revision: ' +
+                'return false;">Show results for CyberKit revision: ' +
                 '<input name=revision placeholder="e.g. 65540" value="' + revision +
                 '" id=revision-input></form>';
         } else
@@ -1963,11 +1963,11 @@ function loadExpectations(expectationsContainer)
     else {
         var results = g_testToResultsMap[test];
         for (var i = 0; i < results.length; i++)
-            loadNonWebKitResultsForBuilder(results[i].builder, test, expectationsContainer);
+            loadNonCyberKitResultsForBuilder(results[i].builder, test, expectationsContainer);
     }
 }
 
-function loadNonWebKitResultsForBuilder(builder, test, expectationsContainer)
+function loadNonCyberKitResultsForBuilder(builder, test, expectationsContainer)
 {
     var failureIndexes = indexesForFailures(builder, test);
     var container = document.createElement('div');
@@ -1978,11 +1978,11 @@ function loadNonWebKitResultsForBuilder(builder, test, expectationsContainer)
         // Once that's resolved, see if we need to try each GTEST_MODIFIERS prefix as well.
         var buildNumber = g_resultsByBuilder[builder].buildNumbers[failureIndexes[i]];
         var pathToLog = builderMaster(builder).logPath(builder, buildNumber) + pathToFailureLog(test);
-        appendNonWebKitResults(container, pathToLog, 'non-webkit-results');
+        appendNonCyberKitResults(container, pathToLog, 'non-webkit-results');
     }
 }
 
-function appendNonWebKitResults(container, url, itemClassName, opt_title)
+function appendNonCyberKitResults(container, url, itemClassName, opt_title)
 {
     // Use a script tag to detect whether the URL 404s.
     // Need to use a script tag since the URL is cross-domain.
@@ -2317,7 +2317,7 @@ if (window != parent)
 
 document.addEventListener('keydown', function(e) {
     if (e.keyIdentifier == 'U+003F' || e.keyIdentifier == 'U+00BF') {
-        // WebKit MAC retursn 3F. WebKit WIN returns BF. This is a bug!
+        // CyberKit MAC retursn 3F. CyberKit WIN returns BF. This is a bug!
         // ? key
         showLegend();
     } else if (e.keyIdentifier == 'U+001B') {

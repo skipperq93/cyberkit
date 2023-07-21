@@ -37,12 +37,12 @@
 description('Case insensitive value matching does not affect the name matching in any way. This test checks the attribute name is check case-sensitively regardless of the case-insensitive flag for the value.');
 
 function setupAttributes(element) {
-    element.setAttributeNS('', 'data-WebKit', 'one');
+    element.setAttributeNS('', 'data-CyberKit', 'one');
     element.setAttributeNS('', 'data-WEBKIT', 'two');
     element.setAttributeNS('', 'data-webkit', 'three');
 }
 function setupAttributesWithNamespace(element) {
-    element.setAttributeNS('http://www.webkit.org', 'data-WebKit', 'one');
+    element.setAttributeNS('http://www.webkit.org', 'data-CyberKit', 'one');
     element.setAttributeNS('http://www.webkit.org', 'data-WEBKIT', 'two');
     element.setAttributeNS('http://www.webkit.org', 'data-webkit', 'three');
 }

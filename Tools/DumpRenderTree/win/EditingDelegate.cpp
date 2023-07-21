@@ -32,7 +32,7 @@
 #include <comutil.h>
 #include "DumpRenderTree.h"
 #include "TestRunner.h"
-#include <WebCore/COMPtr.h>
+#include <CyberCore/COMPtr.h>
 #include <wtf/Assertions.h>
 #include <wtf/Platform.h>
 #include <wtf/StringExtras.h>

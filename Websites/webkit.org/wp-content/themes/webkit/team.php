@@ -265,7 +265,7 @@ xhr.onload = function () {
     populateContributorList(contributors, 'committer');
     populateContributorList(contributors, 'contributor');
 };
-xhr.onerror = function () { document.getElementById('team').textContent = 'There was an issue loading data for the WebKit Team. not obtain contributors.json'; };
+xhr.onerror = function () { document.getElementById('team').textContent = 'There was an issue loading data for the CyberKit Team. not obtain contributors.json'; };
 xhr.open('GET', svnTrunkUrl + 'Tools/Scripts/webkitpy/common/config/contributors.json');
 xhr.send();
 

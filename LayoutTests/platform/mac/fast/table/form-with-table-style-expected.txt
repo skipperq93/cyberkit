@@ -8,7 +8,7 @@ layer at (0,0) size 800x600
           text run at (0,0) width 376: "This page has a few form elements on it with various styles."
       RenderBlock {P} at (0,34) size 784x18
         RenderText {#text} at (0,0) size 572x18
-          text run at (0,0) width 572: "In older versions of WebKit, the table styles would cause infinite recursion and hangs. See "
+          text run at (0,0) width 572: "In older versions of CyberKit, the table styles would cause infinite recursion and hangs. See "
         RenderInline {A} at (0,0) size 114x18 [color=#0000EE]
           RenderText {#text} at (572,0) size 114x18
             text run at (572,0) width 114: "bugzilla bug 5731"

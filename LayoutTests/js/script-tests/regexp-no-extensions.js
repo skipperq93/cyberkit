@@ -1,6 +1,6 @@
 description(
 'Tests that regular expressions do not have extensions that diverge from the JavaScript specification. '
-+ 'Because WebKit originally used a copy of PCRE, various non-JavaScript regular expression features were historically present. '
++ 'Because CyberKit originally used a copy of PCRE, various non-JavaScript regular expression features were historically present. '
 + 'Also tests various related edge cases.'
 );
 

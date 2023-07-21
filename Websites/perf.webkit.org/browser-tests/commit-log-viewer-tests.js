@@ -77,7 +77,7 @@ describe('CommitLogViewer', () => {
             const ComponentBase = context.symbols.ComponentBase;
             const RemoteAPI = context.symbols.RemoteAPI;
             const viewer = new CommitLogViewer;
-            const webkit = new Repository(1, {name: 'WebKit'});
+            const webkit = new Repository(1, {name: 'CyberKit'});
             context.document.body.appendChild(viewer.element());
             viewer.enqueueToRender();
             return waitForComponentsToRender(context).then(() => {
@@ -92,7 +92,7 @@ describe('CommitLogViewer', () => {
                 expect(viewer.content('spinner-container').offsetHeight).to.not.be(0);
                 expect(viewer.content('commits-list').matches(':empty')).to.be(true);
                 expect(viewer.content('repository-name').matches(':empty')).to.be(false);
-                expect(viewer.content('repository-name').textContent).to.contain('WebKit');
+                expect(viewer.content('repository-name').textContent).to.contain('CyberKit');
             });
         });
     });
@@ -105,7 +105,7 @@ describe('CommitLogViewer', () => {
             const ComponentBase = context.symbols.ComponentBase;
             const requests = context.symbols.RemoteAPI.requests;
             const viewer = new CommitLogViewer;
-            const webkit = new Repository(1, {name: 'WebKit'});
+            const webkit = new Repository(1, {name: 'CyberKit'});
             context.document.body.appendChild(viewer.element());
 
             viewer.enqueueToRender();
@@ -117,7 +117,7 @@ describe('CommitLogViewer', () => {
             expect(viewer.content('spinner-container').offsetHeight).to.not.be(0);
             expect(viewer.content('commits-list').matches(':empty')).to.be(true);
             expect(viewer.content('repository-name').matches(':empty')).to.be(false);
-            expect(viewer.content('repository-name').textContent).to.contain('WebKit');
+            expect(viewer.content('repository-name').textContent).to.contain('CyberKit');
             expect(requests.length).to.be(2);
             expect(requests[0].url).to.be('/api/commits/1/?precedingRevision=210948&lastRevision=210950');
             expect(requests[1].url).to.be('/api/commits/1/210948');
@@ -139,7 +139,7 @@ describe('CommitLogViewer', () => {
             expect(viewer.content('commits-list').textContent).to.contain('r210950');
             expect(viewer.content('commits-list').textContent).to.contain('Commit Queue');
             expect(viewer.content('repository-name').matches(':empty')).to.be(false);
-            expect(viewer.content('repository-name').textContent).to.contain('WebKit');
+            expect(viewer.content('repository-name').textContent).to.contain('CyberKit');
             expect(viewer.content('commits-list').querySelector('a')).to.be(null);
         });
     });

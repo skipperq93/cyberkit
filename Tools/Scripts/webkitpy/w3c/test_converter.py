@@ -32,7 +32,7 @@ import logging
 import re
 
 from webkitpy.common.host import Host
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 from HTMLParser import HTMLParser
 
 _log = logging.getLogger(__name__)
@@ -58,7 +58,7 @@ class _W3CTestConverter(HTMLParser):
 
         self._host = host
         self._filesystem = self._host.filesystem
-        self._webkit_root = WebKitFinder(self._filesystem).webkit_base()
+        self._webkit_root = CyberKitFinder(self._filesystem).webkit_base()
 
         self.converted_data = []
         self.converted_properties = []
@@ -75,9 +75,9 @@ class _W3CTestConverter(HTMLParser):
         self.new_test_harness_path = resources_relpath
         self.convert_test_harness_links = convert_test_harness_links
 
-        # These settings might vary between WebKit and Blink
-        css_property_file = self.path_from_webkit_root('Source', 'WebCore', 'css', 'CSSProperties.json')
-        css_property_value_file = self.path_from_webkit_root('Source', 'WebCore', 'css', 'CSSValueKeywords.in')
+        # These settings might vary between CyberKit and Blink
+        css_property_file = self.path_from_webkit_root('Source', 'CyberCore', 'css', 'CSSProperties.json')
+        css_property_value_file = self.path_from_webkit_root('Source', 'CyberCore', 'css', 'CSSValueKeywords.in')
 
         self.test_harness_re = re.compile('/resources/testharness')
 

@@ -26,14 +26,14 @@
 #pragma once
 
 #include "resource.h"
-#include <WebKitLegacy/WebKit.h>
+#include <CyberKitLegacy/CyberKit.h>
 #include <comutil.h>
 
-class WebKitLegacyBrowserWindow;
+class CyberKitLegacyBrowserWindow;
 
 class MiniBrowserWebHost : public IWebFrameLoadDelegate, public IWebFrameLoadDelegatePrivate {
 public:
-    MiniBrowserWebHost(WebKitLegacyBrowserWindow* client, HWND urlBar)
+    MiniBrowserWebHost(CyberKitLegacyBrowserWindow* client, HWND urlBar)
         : m_client(client), m_hURLBarWnd(urlBar) { }
 
     // IUnknown
@@ -77,6 +77,6 @@ protected:
     HRESULT updateAddressBar(IWebView&);
 
 private:
-    WebKitLegacyBrowserWindow* m_client { nullptr };
+    CyberKitLegacyBrowserWindow* m_client { nullptr };
     HWND m_hURLBarWnd { 0 };
 };

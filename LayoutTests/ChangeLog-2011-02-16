@@ -222,7 +222,7 @@
 
         Reviewed by David Hyatt.
 
-        REGRESSION: Use after free in WebCore::RenderCounter::destroyCounterNode
+        REGRESSION: Use after free in CyberCore::RenderCounter::destroyCounterNode
         https://bugs.webkit.org/show_bug.cgi?id=54478
 
         Added this test, to evidence a bug not previously caught by the
@@ -2487,7 +2487,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=53475
 
         Updating test expectations and creating a test in an attempt to prevent the
-        uninformed WebKit dev from switching back to using <s> tags for strikethrough.
+        uninformed CyberKit dev from switching back to using <s> tags for strikethrough.
         As explained in the bug, this is bad for compatibility with various rich text
         editors.
 
@@ -3408,7 +3408,7 @@
 
         Reviewed by Eric Seidel.
 
-        WebKit should have a cryptographic RNG
+        CyberKit should have a cryptographic RNG
         https://bugs.webkit.org/show_bug.cgi?id=22049
 
         Test crypto.getRandomValues API.  It's pretty hard to write a
@@ -3422,7 +3422,7 @@
 
         Reviewed by Dan Bernstein.
 
-        Temporarily skip a test that fails in WebKit2 due to a recent regression
+        Temporarily skip a test that fails in CyberKit2 due to a recent regression
         https://bugs.webkit.org/show_bug.cgi?id=54276
 
         * platform/mac-wk2/Skipped:
@@ -4171,7 +4171,7 @@
         REGRESSION(r76107): Crash in VisibleSelection::toNormalizedRange
         https://bugs.webkit.org/show_bug.cgi?id=54053
 
-        Added a test to ensure WebKit does not crash when a user clicks on a region immediately after a file
+        Added a test to ensure CyberKit does not crash when a user clicks on a region immediately after a file
         upload control.
 
         * fast/forms/file-input-hit-test-expected.txt: Added.
@@ -4310,7 +4310,7 @@
         VisibleSelection::setWithoutValidation() should allow caret selection.
         https://bugs.webkit.org/show_bug.cgi?id=53943
 
-        Fixed the new test introduced in the previous patch for the same bug. Previous test isn't platform independent, and fails on all platforms other than Mac OS X with WebKit 1.
+        Fixed the new test introduced in the previous patch for the same bug. Previous test isn't platform independent, and fails on all platforms other than Mac OS X with CyberKit 1.
 
         * editing/undo/undo-paste-when-caret-is-not-in-range-expected.txt:
         * editing/undo/undo-paste-when-caret-is-not-in-range.html:
@@ -4554,7 +4554,7 @@
 
         Reviewed by Adam Barth.
 
-        Make WebKit's fragment cannonicalization match other browsers
+        Make CyberKit's fragment cannonicalization match other browsers
         https://bugs.webkit.org/show_bug.cgi?id=53850
 
         * fast/dom/HTMLAnchorElement/set-href-attribute-hash.html: Updated to match IE/Chrome
@@ -4564,7 +4564,7 @@
          - The last two tests involving #, we were the odd man out. Now match all browsers.
         * fast/url/segments-expected.txt:
          - Don't percent encode spaces in fragments (to match other browsers)
-         - WebKit was the only engine encoding # in fragments.
+         - CyberKit was the only engine encoding # in fragments.
         * fast/url/segments-from-data-url-expected.txt:
 
 2011-02-09  Csaba Osztrogonác  <ossy@webkit.org>
@@ -4654,7 +4654,7 @@
 
         Reviewed by Mark Rowe.
 
-        Skip some tests that fail in WebKit2 for obvious reasons
+        Skip some tests that fail in CyberKit2 for obvious reasons
         https://bugs.webkit.org/show_bug.cgi?id=54055
 
         * platform/mac-wk2/Skipped:
@@ -4888,7 +4888,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=53716
 
         Re-enabled tests that are fixed with the corresponding change in 
-        WebCore.
+        CyberCore.
 
         * platform/gtk/Skipped:
 
@@ -5353,7 +5353,7 @@
         HTMLFormElement::formElementIndex() returns a bad index into a vector of form associated elements
         https://bugs.webkit.org/show_bug.cgi?id=53970
 
-        Adds a test that ensures WebKit parses successfully a page that
+        Adds a test that ensures CyberKit parses successfully a page that
         contains object elements which are in nested and defective form
         elements.
 
@@ -6267,7 +6267,7 @@
 
         Reviewed by Antti Koivisto.
 
-        WebKitTestRunner does not block remote resources or complain about them
+        CyberKitTestRunner does not block remote resources or complain about them
         https://bugs.webkit.org/show_bug.cgi?id=42139
         <rdar://problem/8183942>
 
@@ -6325,7 +6325,7 @@
 
         Reviewed by Dan Bernstein.
 
-        WebKitTestRunner needs layoutTestController.setWillSendRequestReturnsNull
+        CyberKitTestRunner needs layoutTestController.setWillSendRequestReturnsNull
         https://bugs.webkit.org/show_bug.cgi?id=42690
         <rdar://problem/8213851>
 
@@ -6606,7 +6606,7 @@
 
         Reviewed by Maciej Stachowiak.
 
-        Crash in WebCore::TextEncoding::decode below XSSFilter::init
+        Crash in CyberCore::TextEncoding::decode below XSSFilter::init
         https://bugs.webkit.org/show_bug.cgi?id=53837
 
         Test that we can successfully execute a JavaScript URL when it isn't
@@ -6750,7 +6750,7 @@
 
         Reviewed by Xan Lopez.
 
-        [GTK] WebKitWebFrame can return a stale frame name when calling webkit_web_frame_get_name
+        [GTK] CyberKitWebFrame can return a stale frame name when calling webkit_web_frame_get_name
         https://bugs.webkit.org/show_bug.cgi?id=53797
 
         * platform/gtk/Skipped: Unskip a test which is now passing.
@@ -6817,7 +6817,7 @@
 
         Reviewed by Mihai Parparita.
 
-        Crash in WebCore::HistoryController::itemsAreClones
+        Crash in CyberCore::HistoryController::itemsAreClones
         https://bugs.webkit.org/show_bug.cgi?id=52819
 
         Tests that navigating back and forward between hash items works.
@@ -7299,7 +7299,7 @@
         Reviewed by Anders Carlsson.
 
         <rdar://problem/8636239> and https://bugs.webkit.org/show_bug.cgi?id=53785
-        WebKit2: Pages with dynamically inserted iframes can add extraneous back/forward items.
+        CyberKit2: Pages with dynamically inserted iframes can add extraneous back/forward items.
 
         * fast/loader/dynamic-iframe-extra-back-forward-item-expected.txt: Added.
         * fast/loader/dynamic-iframe-extra-back-forward-item.html: Added.
@@ -7559,7 +7559,7 @@
 
         Reviewed by Daniel Bates.
 
-        Skip a test for WebKit2 that uses missing DRT API
+        Skip a test for CyberKit2 that uses missing DRT API
         https://bugs.webkit.org/show_bug.cgi?id=53748
 
         * platform/mac-wk2/Skipped:
@@ -8934,7 +8934,7 @@
 
         Reviewed by Ryosuke Niwa.
 
-        Skip some tests that fail in WebKit2 due to missing DRT functionality
+        Skip some tests that fail in CyberKit2 due to missing DRT functionality
         https://bugs.webkit.org/show_bug.cgi?id=53666
 
         * platform/mac-wk2/Skipped:
@@ -8977,7 +8977,7 @@
 
         Reviewed by Sam Weinig.
 
-        <rdar://problem/8380506> REGRESSION (r61921): RTL text in <b> tag doesn't display in WebKit under certain conditions
+        <rdar://problem/8380506> REGRESSION (r61921): RTL text in <b> tag doesn't display in CyberKit under certain conditions
         https://bugs.webkit.org/show_bug.cgi?id=44942
 
         * fast/text/bidi-embedding-pop-and-push-same-2-expected.checksum: Added.
@@ -8989,7 +8989,7 @@
 
         Reviewed by Mihai Parparita.
 
-        gl-teximage.html failing on some WebKit bots
+        gl-teximage.html failing on some CyberKit bots
         https://bugs.webkit.org/show_bug.cgi?id=53633
 
         * fast/canvas/webgl/gl-teximage.html:
@@ -9194,7 +9194,7 @@
 
         Reviewed by Tony Chang.
 
-        [Chromium] Roll Chromium revision for the WebKitWeightWatcher change
+        [Chromium] Roll Chromium revision for the CyberKitWeightWatcher change
         https://bugs.webkit.org/show_bug.cgi?id=53563
 
         * platform/chromium/test_expectations.txt:
@@ -9487,7 +9487,7 @@
 
         Reviewed by Dan Bernstein.
 
-        REGRESSION (r65062): Safari loops forever under WebCore::plainTextToMallocAllocatedBuffer()
+        REGRESSION (r65062): Safari loops forever under CyberCore::plainTextToMallocAllocatedBuffer()
         https://bugs.webkit.org/show_bug.cgi?id=53272
 
         * fast/dom/inner-text-first-letter.html:
@@ -10110,7 +10110,7 @@
 
         Reviewed by Darin Adler.
 
-        WebKitTestRunner needs layoutTestController.setPOSIXLocale
+        CyberKitTestRunner needs layoutTestController.setPOSIXLocale
         https://bugs.webkit.org/show_bug.cgi?id=42682
 
         * platform/mac-wk2/Skipped:
@@ -10450,7 +10450,7 @@
 
         Reviewed by Darin Adler.
 
-        execCommand("Paste") doesn't work in WebKitTestRunner
+        execCommand("Paste") doesn't work in CyberKitTestRunner
         https://bugs.webkit.org/show_bug.cgi?id=52785
         
         Unskip paste tests, except the ones that still fail.
@@ -10530,7 +10530,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=52984
 
         Rebaseline for SL. HTML were created by make-script-test-wrappers now.
-        Skip added tests on WebKit2 because of missing eventSender.
+        Skip added tests on CyberKit2 because of missing eventSender.
 
         * platform/mac-wk2/Skipped:
         * svg/animations/animate-path-nested-transforms-expected.txt:
@@ -10718,11 +10718,11 @@
 
         Reviewed by Mihai Parparita.
 
-        back-during-onload-hung-page.php causes Chromium WebKit bot to fail
+        back-during-onload-hung-page.php causes Chromium CyberKit bot to fail
         https://bugs.webkit.org/show_bug.cgi?id=53220
 
         Reduces the timeout on a script that shouldn't finish during a test.
-        This avoids problems in one of the Chromium WebKit builders.
+        This avoids problems in one of the Chromium CyberKit builders.
 
         * http/tests/history/resources/back-during-onload-hung-page.php: Reduce timeout.
 
@@ -10747,7 +10747,7 @@
 
 2011-01-27  Jessie Berlin  <jberlin@apple.com>
 
-        fast/text/international/bidi-mirror-he-ar.html now passed on Windows in WebKit2.
+        fast/text/international/bidi-mirror-he-ar.html now passed on Windows in CyberKit2.
         Unreviewed.
 
         * platform/win-wk2/Skipped:
@@ -11034,7 +11034,7 @@
 
         Reviewed by Dan Bernstein.
 
-        Add or update WebKit2-specific results to account for different reporting of scroll position
+        Add or update CyberKit2-specific results to account for different reporting of scroll position
         https://bugs.webkit.org/show_bug.cgi?id=53226
 
         * platform/mac-wk2/fast/multicol: Added.
@@ -11076,7 +11076,7 @@
 
         Reviewed by Dan Bernstein.
 
-        WebKitTestRunner needs to support layoutTestController.evaluateInWebInspector
+        CyberKitTestRunner needs to support layoutTestController.evaluateInWebInspector
         https://bugs.webkit.org/show_bug.cgi?id=42319
         
         Unskip inspector tests (except the few that mysteriously fail).
@@ -12597,7 +12597,7 @@
 
 2011-01-26  Brian Weinstein  <bweinstein@apple.com>
 
-        Skip fast/loader/willSendRequest-null-for-preload.html on WebKit2, because WebKit2 doesn't have
+        Skip fast/loader/willSendRequest-null-for-preload.html on CyberKit2, because CyberKit2 doesn't have
         setWillSendRequestReturnsNull yet.
         
         This is tracked by https://bugs.webkit.org/show_bug.cgi?id=42690.
@@ -12630,11 +12630,11 @@
 
         Reviewed byAntti Koivisto.
 
-        Crashes loading pages when cancelling subresource loads through WebKit
+        Crashes loading pages when cancelling subresource loads through CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=53123
         <rdar://problem/8914361>
         
-        Add tests for crashing when cancelling subresource loads through WebKit via setWillSendRequestReturnsNull.
+        Add tests for crashing when cancelling subresource loads through CyberKit via setWillSendRequestReturnsNull.
 
         * fast/loader/willSendRequest-null-for-preload-expected.txt: Added.
         * fast/loader/willSendRequest-null-for-preload.html: Added.
@@ -12758,7 +12758,7 @@
 
         Reviewed by Andreas Kling.
 
-        Skip a test for WebKit2 that uses eventSender
+        Skip a test for CyberKit2 that uses eventSender
         https://bugs.webkit.org/show_bug.cgi?id=53168
 
         * platform/mac-wk2/Skipped:
@@ -13462,7 +13462,7 @@
 
         Reviewed by Nikolas Zimmermann.
 
-        Skip some new tests for WebKit2 that use eventSender
+        Skip some new tests for CyberKit2 that use eventSender
         https://bugs.webkit.org/show_bug.cgi?id=53068
 
         * platform/mac-wk2/Skipped:
@@ -14236,7 +14236,7 @@
 
         Reviewed by Geoffrey Garen.
 
-        Humor the WebKit2 buildbot in its continuing hatred of forms tests
+        Humor the CyberKit2 buildbot in its continuing hatred of forms tests
         https://bugs.webkit.org/show_bug.cgi?id=52944
 
         * platform/mac-wk2/Skipped:
@@ -14339,7 +14339,7 @@
 
         Reviewed by Adam Roben.
 
-        Skip some newly added tests that use DRT APIs that are not yet available for WebKit2
+        Skip some newly added tests that use DRT APIs that are not yet available for CyberKit2
         https://bugs.webkit.org/show_bug.cgi?id=52924
 
         * platform/mac-wk2/Skipped:
@@ -14783,7 +14783,7 @@
 
         Reviewed by Darin Adler.
 
-        Skip some tests that are failing on the WebKit2 bot
+        Skip some tests that are failing on the CyberKit2 bot
         https://bugs.webkit.org/show_bug.cgi?id=52858
 
         * platform/mac-wk2/Skipped: skip or re-skip some tests that fail
@@ -15063,7 +15063,7 @@
 
         Reviewed by Adam Roben.
 
-        WebKitTestRunner needs to support layoutTestController.evaluateScriptInIsolatedWorld
+        CyberKitTestRunner needs to support layoutTestController.evaluateScriptInIsolatedWorld
         https://bugs.webkit.org/show_bug.cgi?id=42327
 
         * platform/mac-wk2/Skipped: Unskip the tests that needed this.
@@ -15242,7 +15242,7 @@
 
         Reviewed by Pavel Feldman.
 
-        WebCore doesn't fire window.onerror event when uncaught JavaScript exceptions are thrown
+        CyberCore doesn't fire window.onerror event when uncaught JavaScript exceptions are thrown
         https://bugs.webkit.org/show_bug.cgi?id=8519
 
         Uncaught exceptions are propagated to window.onerror hander if one is present.
@@ -15316,7 +15316,7 @@
 
         Reviewed by Dan Bernstein.
 
-        Skip some tests that are failing on the WebKit2 bot
+        Skip some tests that are failing on the CyberKit2 bot
         https://bugs.webkit.org/show_bug.cgi?id=52789
 
         * platform/mac-wk2/Skipped:
@@ -15337,7 +15337,7 @@
 
         Reviewed by Dan Bernstein.
 
-        Reorganize WebKit2 Skipped list, and remove 56 tests that no longer fail
+        Reorganize CyberKit2 Skipped list, and remove 56 tests that no longer fail
         https://bugs.webkit.org/show_bug.cgi?id=52786
 
         * platform/mac-wk2/Skipped:
@@ -15467,7 +15467,7 @@
 
         Reviewed by Kent Tamura.
 
-        Fix for Bug 52279 - WebCore::RenderBlock::updateFirstLetter crashes for anonymous blocks
+        Fix for Bug 52279 - CyberCore::RenderBlock::updateFirstLetter crashes for anonymous blocks
         https://bugs.webkit.org/show_bug.cgi?id=52279
 
         * fast/css/first-letter-anonymous-block-crash-expected.txt: Added.
@@ -15641,12 +15641,12 @@
 
         Reviewed by Anders Carlsson.
 
-        Skip/fix remaining WebKit2 test failures
+        Skip/fix remaining CyberKit2 test failures
         https://bugs.webkit.org/show_bug.cgi?id=52744
 
-        * platform/mac-wk2/fast/blockflow/Kusa-Makura-background-canvas-expected.txt: Added WebKit2 mac results.
-        It turns out that WebKit1 on Mac is the only port to report a scroll position other than 0, 0 for this 
-        test, so the WebKit2 results are arguably more correct.
+        * platform/mac-wk2/fast/blockflow/Kusa-Makura-background-canvas-expected.txt: Added CyberKit2 mac results.
+        It turns out that CyberKit1 on Mac is the only port to report a scroll position other than 0, 0 for this 
+        test, so the CyberKit2 results are arguably more correct.
         * platform/mac-wk2/fast/blockflow: Added.
         * platform/mac-wk2/fast: Added.
         * platform/mac-wk2/Skipped: Skip a few more tests. (And unskip in some cases where the failures
@@ -15996,7 +15996,7 @@
 
         Reviewed by Sam Weinig.
 
-        Skip (and in a few cases fix) tests for WebKit2
+        Skip (and in a few cases fix) tests for CyberKit2
         https://bugs.webkit.org/show_bug.cgi?id=52698
 
         * editing/pasteboard/copy-null-characters.html: Make this test fail in a more
@@ -16483,7 +16483,7 @@
 2011-01-17  Adam Roben  <aroben@apple.com>
 
         Make compositing/tiling/huge-layer-resize.html faster, more reliable,
-        and more crashy (when there's a WebKit bug)
+        and more crashy (when there's a CyberKit bug)
 
         This test was trying to cause a layout/paint to happen by returning to
         the event loop for a certain amount of time via setTimeout. But this
@@ -16910,7 +16910,7 @@
 
         Reviewed by Anders Carlsson.
 
-        Fix a few things in the WebKit2 skipped list
+        Fix a few things in the CyberKit2 skipped list
         https://bugs.webkit.org/show_bug.cgi?id=52484
 
         * platform/mac-wk2/Skipped: Add/remove some tests to the WK2 skipped list.
@@ -17438,7 +17438,7 @@
 
         Reviewed by David Levin.
 
-        Add beforeunload support to WebKitTestRunner
+        Add beforeunload support to CyberKitTestRunner
         https://bugs.webkit.org/show_bug.cgi?id=52353
 
         * platform/mac-wk2/Skipped: Unskip a test that was failing solely due to missing
@@ -17468,7 +17468,7 @@
         REGRESSION(r69831): focus() in onkeypress discards input (affects chaseonline.chase.com)
         https://bugs.webkit.org/show_bug.cgi?id=52241
 
-        Added a test to ensure WebKit inserts the character typed by a user when focus's node
+        Added a test to ensure CyberKit inserts the character typed by a user when focus's node
         is changed by a presskey event handler.
 
         * fast/forms/focus-change-on-keypress-expected.txt: Added.
@@ -17735,7 +17735,7 @@
 
         Reviewed by David Levin.
 
-        Fix typo in WebKit2 skipped list which was causing a test to not get skipped
+        Fix typo in CyberKit2 skipped list which was causing a test to not get skipped
         https://bugs.webkit.org/show_bug.cgi?id=52277
 
         * platform/mac-wk2/Skipped:
@@ -18030,7 +18030,7 @@
 
         https://bugs.webkit.org/show_bug.cgi?id=52233
 
-        Update WebKitCSSMatrix test to cover a constructor
+        Update CyberKitCSSMatrix test to cover a constructor
         that accepts 'none' as input.
 
         * transforms/cssmatrix-2d-interface-expected.txt:
@@ -18496,7 +18496,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=52062
 
         * platform/chromium/test_expectations.txt:
-        Skip the failing test. Same reason other tests using WebKit Test PlugIn fails.
+        Skip the failing test. Same reason other tests using CyberKit Test PlugIn fails.
 
 2011-01-10  Martin Robinson  <mrobinson@igalia.com>
 
@@ -18578,7 +18578,7 @@
 
         Reviewed by Anders Carlsson.
 
-        Skip layout tests in WebKit2 that fail for an obvious (missing DRT API) reason
+        Skip layout tests in CyberKit2 that fail for an obvious (missing DRT API) reason
         https://bugs.webkit.org/show_bug.cgi?id=52166
 
         * platform/mac-wk2/Skipped:
@@ -19028,7 +19028,7 @@
 
         Unreviewed.
 
-        Implement WebKit Full Screen support
+        Implement CyberKit Full Screen support
         https://bugs.webkit.org/show_bug.cgi?id=49481
 
         Check in failing results for these tests to allow the bots to roll green.
@@ -19049,17 +19049,17 @@
 
         Reviewed by Kenneth Rohde Christiansen.
 
-        [Qt] Spatial Navigation: adding a test for when scrollbars are turned off via WebKit API
+        [Qt] Spatial Navigation: adding a test for when scrollbars are turned off via CyberKit API
         https://bugs.webkit.org/show_bug.cgi?id=51396
 
         Add a layout test to ensure that page is scrollable when spatial
-        navgation is enabled even when scrollbars were disabled via WebKit
+        navgation is enabled even when scrollbars were disabled via CyberKit
         API (e.g. QWebFrame::setScrollBarPolicy).
 
         Test is Qt-only for now since Qt's DRT is the only one that supports
         LayoutTestController::setScrollbarPolicy.
 
-        In real world QtWebKit apps, scrollbars are disabled usually prior to
+        In real world QtCyberKit apps, scrollbars are disabled usually prior to
         any page load. To emulate that on a layout test, it was added two html
         files: one that set scrollbars off and queues the load of the real
         test, and other that does the real testing.
@@ -19893,17 +19893,17 @@
         onbeforeunload is broken for framesets
         https://bugs.webkit.org/show_bug.cgi?id=19418
 
-        Added tests to ensure WebKit fires beforeunload events for subframes,
+        Added tests to ensure CyberKit fires beforeunload events for subframes,
         and disallows navigation except that of javascript scheme while beforeunload event
         handlers are being called.
 
-        Also added a test to ensure WebKit fires beforeunload event for subframes exactly
+        Also added a test to ensure CyberKit fires beforeunload event for subframes exactly
         once even if a subframe was moved around within a beforeunload event handler.
 
         A test that ensures beforeunload event is not fired for an iframe if the iframe
         was added or removed within a beforeunload event handler is also added.
 
-        Furthermore, a test to ensure WebKit does not fire a beforeunload event to an iframe
+        Furthermore, a test to ensure CyberKit does not fire a beforeunload event to an iframe
         that has been adopted by a document outside of the unloading document is added.
 
         * fast/events/before-unload-adopt-subframe-to-outside-expected.txt: Added.
@@ -19970,7 +19970,7 @@
 
         Reviewed by Simon Fraser.
 
-        Implement WebKit Full Screen support.
+        Implement CyberKit Full Screen support.
         https://bugs.webkit.org/show_bug.cgi?id=49481
         rdar://problem/8247444
         
@@ -20532,9 +20532,9 @@
 
         Reviewed by Antonio Gomes.
 
-        [Qt] Introduce QDRTNode for passing WebCore::Node across JS bridge
+        [Qt] Introduce QDRTNode for passing CyberCore::Node across JS bridge
 
-        This allows LayoutTestController to pass WebCore::Node back to
+        This allows LayoutTestController to pass CyberCore::Node back to
         layout tests.
 
         Also amend nodesFromRect-links-and-text.html and
@@ -21010,7 +21010,7 @@
 
         Reviewed by Anders Carlsson.
 
-        Remove entries from WebKit2 skipped list that no longer exist
+        Remove entries from CyberKit2 skipped list that no longer exist
         https://bugs.webkit.org/show_bug.cgi?id=51936
 
         * platform/mac-wk2/Skipped:
@@ -21231,7 +21231,7 @@
         Clicking on the first or the last letter of LTR/RTL text in a RTL/LTR block puts caret on the opposite side.
         https://bugs.webkit.org/show_bug.cgi?id=50992
 
-        Added a test to ensure WebKit places the caret on the side user clicked even when text's natural direction
+        Added a test to ensure CyberKit places the caret on the side user clicked even when text's natural direction
         and the containing block's direction do not match.
 
         * editing/selection/caret-bidi-first-and-last-letters-expected.txt: Added.
@@ -21623,7 +21623,7 @@
 
         Reviewed by Darin Adler.
 
-        AX: Regression: WebKit no longer auto-scrolls with VoiceOver navigation
+        AX: Regression: CyberKit no longer auto-scrolls with VoiceOver navigation
         https://bugs.webkit.org/show_bug.cgi?id=51833
 
         * platform/mac/accessibility/webarea-size-equals-content-size-expected.txt: Added.
@@ -22456,7 +22456,7 @@
 2010-12-31  Adam Barth  <abarth@webkit.org>
 
         Remove custom Chromium expectation for invalid-protocol.  Now that we
-        share more code with JavaScriptCore, we throw exactly the same
+        share more code with CyberScriptCore, we throw exactly the same
         exception and therefore can share results.
 
         * platform/chromium/fast/dom/Window/invalid-protocol-expected.txt: Removed.
@@ -23656,11 +23656,11 @@
         Selection becomes stale when CharacterData is manipulated directly
         https://bugs.webkit.org/show_bug.cgi?id=51389
 
-        Added tests to ensure WebKit adjusts or clears selection when the start container
+        Added tests to ensure CyberKit adjusts or clears selection when the start container
         or the end container of the selection's first range is modified by CharacterData's API.
 
         Many editing tests had to be rebaselined due to different editing delegate dumps
-        caused by WebKit's properly adjusting selection's offsets as editing commands modify the DOM.
+        caused by CyberKit's properly adjusting selection's offsets as editing commands modify the DOM.
 
         * editing/deleting/delete-by-word-001-expected.txt:
         * editing/deleting/delete-by-word-002-expected.txt:
@@ -24780,7 +24780,7 @@
 
         Reviewed by Darin Adler.
 
-        Crash at WebCore::SplitElementCommand::SplitElementCommand
+        Crash at CyberCore::SplitElementCommand::SplitElementCommand
         https://bugs.webkit.org/show_bug.cgi?id=51278
         <rdar://problem/7347139> 
 
@@ -25512,8 +25512,8 @@
         execCommand('JustifyCenter') adds extra BR
         https://bugs.webkit.org/show_bug.cgi?id=51082
 
-        Added a test to ensure WebKit executes Justify* properly. In particular,
-        this test ensures WebKit does not erroneously add a BR at the end of each block.
+        Added a test to ensure CyberKit executes Justify* properly. In particular,
+        this test ensures CyberKit does not erroneously add a BR at the end of each block.
 
         * editing/execCommand/justify-expected.txt: Added.
         * editing/execCommand/justify.html: Added.
@@ -25557,7 +25557,7 @@
         execCommand('styleWithCSS') is ignored when selection isn't inside a contenteditable area
         https://bugs.webkit.org/show_bug.cgi?id=51164
 
-        Added a test to ensure WebKit accepts StyleWithCSS command even if the current selection
+        Added a test to ensure CyberKit accepts StyleWithCSS command even if the current selection
         isn't inside a contenteditable region.
 
         * editing/style/stylewithcss-without-selection-expected.txt: Added.
@@ -25992,7 +25992,7 @@
         Reviewed by Alexey Proskuryakov.
 
         https://bugs.webkit.org/show_bug.cgi?id=49548
-        WebCore cache stores duplicate copies of subresources with URL fragments
+        CyberCore cache stores duplicate copies of subresources with URL fragments
 
         * http/tests/cache/subresource-fragment-identifier-expected.txt: Added.
         * http/tests/cache/subresource-fragment-identifier.html: Added.
@@ -26479,7 +26479,7 @@
 
         Reviewed by Alexey Proskuryakov.
 
-        Kana should be part of CJK Ideographs in WebCore/platform/graphics/Font.cpp
+        Kana should be part of CJK Ideographs in CyberCore/platform/graphics/Font.cpp
         https://bugs.webkit.org/show_bug.cgi?id=51012
   
         Test if kana displayed correctly in vertical text with broken font.
@@ -27947,7 +27947,7 @@
         http/tests/local/link-stylesheet-load-order.html
         http/tests/local/link-stylesheet-load-order-preload.html
         
-        to Mac WebKit2 and Qt skip lists.
+        to Mac CyberKit2 and Qt skip lists.
 
         * platform/mac-wk2/Skipped:
         * platform/qt/Skipped:
@@ -28127,7 +28127,7 @@
 
         Reviewed by Adam Barth.
 
-        WebCore doesn't fire window.onerror event when uncaught JavaScript exceptions are thrown
+        CyberCore doesn't fire window.onerror event when uncaught JavaScript exceptions are thrown
         https://bugs.webkit.org/show_bug.cgi?id=8519
 
         Uncaught exceptions are propagated to window.onerror hander if one is present.
@@ -28338,7 +28338,7 @@
 
 2010-12-12  Sam Weinig  <sam@webkit.org>
 
-        Update WebKit2 skipped list.
+        Update CyberKit2 skipped list.
 
         * platform/mac-wk2/Skipped:
 
@@ -29085,7 +29085,7 @@
 
         Reviewed by Alexey Proskuryakov.
 
-        Test for a faulty conversion from UTF-8 to UTF-16 in WebCore during an XSLT transformation.
+        Test for a faulty conversion from UTF-8 to UTF-16 in CyberCore during an XSLT transformation.
         https://bugs.webkit.org/show_bug.cgi?id=50708
 
         * fast/xsl/utf8-chunks-expected.txt: Added.
@@ -29451,7 +29451,7 @@
         [GTK] Support for viewport meta tag
         https://bugs.webkit.org/show_bug.cgi?id=45443
 
-        Included viewport test cases for WebKitGtk
+        Included viewport test cases for CyberKitGtk
 
         * platform/gtk/Skipped: Unskip fast/viewport except viewport-45.html.
 
@@ -29838,7 +29838,7 @@
         REGRESSION: LayoutTests/editing/selection/caret-rtl-2.html fails
         https://bugs.webkit.org/show_bug.cgi?id=33503
 
-        Added tests to ensure WebKit places the caret at a right place for LTR text in a LTR block,
+        Added tests to ensure CyberKit places the caret at a right place for LTR text in a LTR block,
         LTR text in a RTL block, RTL text in a RTL block, and RTL text in a LTR block.
 
         Because we need to verify both rendering of the caret and (node, offset) pair of the caret,
@@ -30446,7 +30446,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=50616
 
         fast/events/multiline-link-arrow-navigation.html is setting both
-        WebKitEnableCaretBrowsing and -webkit-user-modify CSS property. Since
+        CyberKitEnableCaretBrowsing and -webkit-user-modify CSS property. Since
         both work similarly for the purposes of this test, and the former is
         not support by Mac and Windows DRTs, lets stick with using the later
         only.
@@ -30801,7 +30801,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=47300
 
         Added a test to ensure execCommand('FormatBlock') correctly removes pre when formatting paragraphs within.
-        Also rebaselined several tests because WebKit no longer erroneously format the paragraphs immediately
+        Also rebaselined several tests because CyberKit no longer erroneously format the paragraphs immediately
         after the selection.
 
         * editing/execCommand/format-block-multiple-paragraphs-in-pre-expected.txt: Added.

@@ -6,7 +6,7 @@
 if (window.testRunner) {
   testRunner.dumpAsText();
   testRunner.waitUntilDone();
-  testRunner.overridePreference("WebKitUsesPageCachePreferenceKey", 1);
+  testRunner.overridePreference("CyberKitUsesPageCachePreferenceKey", 1);
   testRunner.setCanOpenWindows();
 }
 
@@ -22,8 +22,8 @@ cache_frame.src = victim_url;
 
 function runTest()
 {
-  if (window.testRunner && !testRunner.isWebKit2) {
-    // This test does not run (times out) on WebKit1.
+  if (window.testRunner && !testRunner.isCyberKit2) {
+    // This test does not run (times out) on CyberKit1.
     testRunner.notifyDone();
     return;
   }

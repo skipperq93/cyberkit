@@ -29,7 +29,7 @@
 #ifndef GCController_h
 #define GCController_h
 
-#include <JavaScriptCore/JSObjectRef.h>
+#include <CyberScriptCore/JSObjectRef.h>
 
 class GCController {
 public:

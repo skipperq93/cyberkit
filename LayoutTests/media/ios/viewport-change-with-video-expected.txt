@@ -1,4 +1,4 @@
-This tests changing the viewport after a video element. WebKit should not crash.
+This tests changing the viewport after a video element. CyberKit should not crash.
 
 
-PASS. WebKit didn't crash
+PASS. CyberKit didn't crash

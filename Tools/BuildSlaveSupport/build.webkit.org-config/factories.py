@@ -52,9 +52,9 @@ class BuildFactory(Factory):
         Factory.__init__(self, platform, configuration, architectures, True, additionalArguments, SVNMirror)
 
         if platform == "win":
-            self.addStep(CompileWebKit(timeout=2 * 60 * 60))
+            self.addStep(CompileCyberKit(timeout=2 * 60 * 60))
         else:
-            self.addStep(CompileWebKit())
+            self.addStep(CompileCyberKit())
 
         if triggers:
             self.addStep(ArchiveBuiltProduct())
@@ -69,8 +69,8 @@ class BuildFactory(Factory):
 
 
 class TestFactory(Factory):
-    JSCTestClass = RunJavaScriptCoreTests
-    LayoutTestClass = RunWebKitTests
+    JSCTestClass = RunCyberScriptCoreTests
+    LayoutTestClass = RunCyberKitTests
     ShouldRunJSCBundleStep = False
 
     def getProduct(self):
@@ -112,7 +112,7 @@ class TestFactory(Factory):
 
 class BuildAndTestFactory(TestFactory):
     def getProduct(self):
-        self.addStep(CompileWebKit())
+        self.addStep(CompileCyberKit())
 
     def __init__(self, platform, configuration, architectures, triggers=None, additionalArguments=None, SVNMirror=None, **kwargs):
         TestFactory.__init__(self, platform, configuration, architectures, additionalArguments, SVNMirror, **kwargs)
@@ -144,15 +144,15 @@ class BuildAndRemoteJSCTestsFactory(Factory):
     def __init__(self, platform, configuration, architectures, triggers=None, additionalArguments=None, SVNMirror=None):
         Factory.__init__(self, platform, configuration, architectures, False, additionalArguments, SVNMirror)
         self.addStep(CompileJSCOnly(timeout=60 * 60))
-        self.addStep(RunRemoteJavaScriptCoreTests(timeout=60 * 60))
+        self.addStep(RunRemoteCyberScriptCoreTests(timeout=60 * 60))
 
 
-class TestWebKit1LeaksFactory(Factory):
+class TestCyberKit1LeaksFactory(Factory):
     def __init__(self, platform, configuration, architectures, additionalArguments=None, SVNMirror=None):
         Factory.__init__(self, platform, configuration, architectures, False, additionalArguments, SVNMirror)
         self.addStep(DownloadBuiltProduct())
         self.addStep(ExtractBuiltProduct())
-        self.addStep(RunWebKit1LeakTests())
+        self.addStep(RunCyberKit1LeakTests())
         self.addStep(ArchiveTestResults())
         self.addStep(UploadTestResults())
         self.addStep(ExtractTestResultsAndLeaks())
@@ -175,7 +175,7 @@ class TestJSCFactory(Factory):
         Factory.__init__(self, platform, configuration, architectures, False, additionalArguments, SVNMirror)
         self.addStep(DownloadBuiltProduct())
         self.addStep(ExtractBuiltProduct())
-        self.addStep(RunJavaScriptCoreTests())
+        self.addStep(RunCyberScriptCoreTests())
 
 
 class Test262Factory(Factory):
@@ -186,18 +186,18 @@ class Test262Factory(Factory):
         self.addStep(RunTest262Tests())
 
 
-class TestWebKit1Factory(TestFactory):
-    LayoutTestClass = RunWebKit1Tests
+class TestCyberKit1Factory(TestFactory):
+    LayoutTestClass = RunCyberKit1Tests
 
 
-class TestWebKit1AllButJSCFactory(TestWebKit1Factory):
+class TestCyberKit1AllButJSCFactory(TestCyberKit1Factory):
     JSCTestClass = None
 
 
 class BuildAndPerfTestFactory(Factory):
     def __init__(self, platform, configuration, architectures, additionalArguments=None, SVNMirror=None, **kwargs):
         Factory.__init__(self, platform, configuration, architectures, False, additionalArguments, SVNMirror, **kwargs)
-        self.addStep(CompileWebKit())
+        self.addStep(CompileCyberKit())
         self.addStep(RunAndUploadPerfTests())
         if platform == "gtk":
             self.addStep(RunBenchmarkTests(timeout=2000))

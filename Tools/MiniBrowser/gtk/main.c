@@ -72,9 +72,9 @@ static gchar *argumentToURL(const char *filename)
     return fileURL;
 }
 
-static WebKitWebView *createBrowserTab(BrowserWindow *window, WebKitSettings *webkitSettings, WebKitUserContentManager *userContentManager)
+static CyberKitWebView *createBrowserTab(BrowserWindow *window, CyberKitSettings *webkitSettings, CyberKitUserContentManager *userContentManager)
 {
-    WebKitWebView *webView = WEBKIT_WEB_VIEW(g_object_new(WEBKIT_TYPE_WEB_VIEW,
+    CyberKitWebView *webView = WEBKIT_WEB_VIEW(g_object_new(WEBKIT_TYPE_WEB_VIEW,
         "web-context", browser_window_get_web_context(window),
         "settings", webkitSettings,
         "user-content-manager", userContentManager,
@@ -120,7 +120,7 @@ static const GOptionEntry commandLineOptions[] =
     { 0, 0, 0, 0, 0, 0, 0 }
 };
 
-static gboolean parseOptionEntryCallback(const gchar *optionNameFull, const gchar *value, WebKitSettings *webSettings, GError **error)
+static gboolean parseOptionEntryCallback(const gchar *optionNameFull, const gchar *value, CyberKitSettings *webSettings, GError **error)
 {
     if (strlen(optionNameFull) <= 2) {
         g_set_error(error, G_OPTION_ERROR, G_OPTION_ERROR_FAILED, "Invalid option %s", optionNameFull);
@@ -191,7 +191,7 @@ static gboolean isValidParameterType(GType gParamType)
             || gParamType == G_TYPE_FLOAT);
 }
 
-static GOptionEntry* getOptionEntriesFromWebKitSettings(WebKitSettings *webSettings)
+static GOptionEntry* getOptionEntriesFromCyberKitSettings(CyberKitSettings *webSettings)
 {
     GParamSpec **propertySpecs;
     GOptionEntry *optionEntries;
@@ -232,15 +232,15 @@ static GOptionEntry* getOptionEntriesFromWebKitSettings(WebKitSettings *webSetti
     return optionEntries;
 }
 
-static gboolean addSettingsGroupToContext(GOptionContext *context, WebKitSettings* webkitSettings)
+static gboolean addSettingsGroupToContext(GOptionContext *context, CyberKitSettings* webkitSettings)
 {
-    GOptionEntry *optionEntries = getOptionEntriesFromWebKitSettings(webkitSettings);
+    GOptionEntry *optionEntries = getOptionEntriesFromCyberKitSettings(webkitSettings);
     if (!optionEntries)
         return FALSE;
 
     GOptionGroup *webSettingsGroup = g_option_group_new("websettings",
-                                                        "WebKitSettings writable properties for default WebKitWebView",
-                                                        "WebKitSettings properties",
+                                                        "CyberKitSettings writable properties for default CyberKitWebView",
+                                                        "CyberKitSettings properties",
                                                         webkitSettings,
                                                         NULL);
     g_option_group_add_entries(webSettingsGroup, optionEntries);
@@ -253,7 +253,7 @@ static gboolean addSettingsGroupToContext(GOptionContext *context, WebKitSetting
 }
 
 typedef struct {
-    WebKitURISchemeRequest *request;
+    CyberKitURISchemeRequest *request;
     GList *dataList;
     GHashTable *dataMap;
 } AboutDataRequest;
@@ -275,7 +275,7 @@ static void aboutDataRequestFree(AboutDataRequest *request)
     g_free(request);
 }
 
-static AboutDataRequest* aboutDataRequestNew(WebKitURISchemeRequest *uriRequest)
+static AboutDataRequest* aboutDataRequestNew(CyberKitURISchemeRequest *uriRequest)
 {
     if (!aboutDataRequestMap)
         aboutDataRequestMap = g_hash_table_new_full(g_direct_hash, g_direct_equal, NULL, (GDestroyNotify)aboutDataRequestFree);
@@ -292,19 +292,19 @@ static AboutDataRequest *aboutDataRequestForView(guint64 pageID)
     return aboutDataRequestMap ? g_hash_table_lookup(aboutDataRequestMap, GUINT_TO_POINTER(pageID)) : NULL;
 }
 
-static void websiteDataRemovedCallback(WebKitWebsiteDataManager *manager, GAsyncResult *result, AboutDataRequest *dataRequest)
+static void websiteDataRemovedCallback(CyberKitWebsiteDataManager *manager, GAsyncResult *result, AboutDataRequest *dataRequest)
 {
     if (webkit_website_data_manager_remove_finish(manager, result, NULL))
         webkit_web_view_reload(webkit_uri_scheme_request_get_web_view(dataRequest->request));
 }
 
-static void websiteDataClearedCallback(WebKitWebsiteDataManager *manager, GAsyncResult *result, AboutDataRequest *dataRequest)
+static void websiteDataClearedCallback(CyberKitWebsiteDataManager *manager, GAsyncResult *result, AboutDataRequest *dataRequest)
 {
     if (webkit_website_data_manager_clear_finish(manager, result, NULL))
         webkit_web_view_reload(webkit_uri_scheme_request_get_web_view(dataRequest->request));
 }
 
-static void aboutDataScriptMessageReceivedCallback(WebKitUserContentManager *userContentManager, WebKitJavascriptResult *message, WebKitWebContext *webContext)
+static void aboutDataScriptMessageReceivedCallback(CyberKitUserContentManager *userContentManager, CyberKitJavascriptResult *message, CyberKitWebContext *webContext)
 {
     char *messageString = jsc_value_to_string(webkit_javascript_result_get_js_value(message));
     char **tokens = g_strsplit(messageString, ":", 3);
@@ -323,14 +323,14 @@ static void aboutDataScriptMessageReceivedCallback(WebKitUserContentManager *use
         return;
     }
 
-    WebKitWebsiteDataManager *manager = webkit_web_context_get_website_data_manager(webContext);
+    CyberKitWebsiteDataManager *manager = webkit_web_context_get_website_data_manager(webContext);
     guint64 types = g_ascii_strtoull(tokens[1], NULL, 10);
     if (tokenCount == 2)
         webkit_website_data_manager_clear(manager, types, 0, NULL, (GAsyncReadyCallback)websiteDataClearedCallback, dataRequest);
     else {
         guint64 domainID = g_ascii_strtoull(tokens[2], NULL, 10);
         GList *dataList = g_hash_table_lookup(dataRequest->dataMap, GUINT_TO_POINTER(types));
-        WebKitWebsiteData *data = g_list_nth_data(dataList, domainID);
+        CyberKitWebsiteData *data = g_list_nth_data(dataList, domainID);
         if (data) {
             GList dataList = { data, NULL, NULL };
             webkit_website_data_manager_remove(manager, types, &dataList, NULL, (GAsyncReadyCallback)websiteDataRemovedCallback, dataRequest);
@@ -344,13 +344,13 @@ static void domainListFree(GList *domains)
     g_list_free_full(domains, (GDestroyNotify)webkit_website_data_unref);
 }
 
-static void aboutDataFillTable(GString *result, AboutDataRequest *dataRequest, GList* dataList, const char *title, WebKitWebsiteDataTypes types, const char *dataPath, guint64 pageID)
+static void aboutDataFillTable(GString *result, AboutDataRequest *dataRequest, GList* dataList, const char *title, CyberKitWebsiteDataTypes types, const char *dataPath, guint64 pageID)
 {
     guint64 totalDataSize = 0;
     GList *domains = NULL;
     GList *l;
     for (l = dataList; l; l = g_list_next(l)) {
-        WebKitWebsiteData *data = (WebKitWebsiteData *)l->data;
+        CyberKitWebsiteData *data = (CyberKitWebsiteData *)l->data;
 
         if (webkit_website_data_get_types(data) & types) {
             domains = g_list_prepend(domains, webkit_website_data_ref(data));
@@ -375,7 +375,7 @@ static void aboutDataFillTable(GString *result, AboutDataRequest *dataRequest, G
 
     unsigned index;
     for (l = domains, index = 0; l; l = g_list_next(l), index++) {
-        WebKitWebsiteData *data = (WebKitWebsiteData *)l->data;
+        CyberKitWebsiteData *data = (CyberKitWebsiteData *)l->data;
         const char *displayName = webkit_website_data_get_name(data);
         guint64 dataSize = webkit_website_data_get_size(data, types);
         if (dataSize) {
@@ -391,7 +391,7 @@ static void aboutDataFillTable(GString *result, AboutDataRequest *dataRequest, G
         pageID, types);
 }
 
-static void gotWebsiteDataCallback(WebKitWebsiteDataManager *manager, GAsyncResult *asyncResult, AboutDataRequest *dataRequest)
+static void gotWebsiteDataCallback(CyberKitWebsiteDataManager *manager, GAsyncResult *asyncResult, AboutDataRequest *dataRequest)
 {
     GList *dataList = webkit_website_data_manager_fetch_finish(manager, asyncResult, NULL);
 
@@ -424,14 +424,14 @@ static void gotWebsiteDataCallback(WebKitWebsiteDataManager *manager, GAsyncResu
     g_list_free_full(dataList, (GDestroyNotify)webkit_website_data_unref);
 }
 
-static void aboutDataHandleRequest(WebKitURISchemeRequest *request, WebKitWebContext *webContext)
+static void aboutDataHandleRequest(CyberKitURISchemeRequest *request, CyberKitWebContext *webContext)
 {
     AboutDataRequest *dataRequest = aboutDataRequestNew(request);
-    WebKitWebsiteDataManager *manager = webkit_web_context_get_website_data_manager(webContext);
+    CyberKitWebsiteDataManager *manager = webkit_web_context_get_website_data_manager(webContext);
     webkit_website_data_manager_fetch(manager, WEBKIT_WEBSITE_DATA_ALL, NULL, (GAsyncReadyCallback)gotWebsiteDataCallback, dataRequest);
 }
 
-static void aboutURISchemeRequestCallback(WebKitURISchemeRequest *request, WebKitWebContext *webContext)
+static void aboutURISchemeRequestCallback(CyberKitURISchemeRequest *request, CyberKitWebContext *webContext)
 {
     GInputStream *stream;
     gsize streamLength;
@@ -441,7 +441,7 @@ static void aboutURISchemeRequestCallback(WebKitURISchemeRequest *request, WebKi
 
     path = webkit_uri_scheme_request_get_path(request);
     if (!g_strcmp0(path, "minibrowser")) {
-        contents = g_strdup_printf("<html><body><h1>WebKitGTK MiniBrowser</h1><p>The test browser of WebKitGTK</p><p>WebKit version: %d.%d.%d</p></body></html>",
+        contents = g_strdup_printf("<html><body><h1>CyberKitGTK MiniBrowser</h1><p>The test browser of CyberKitGTK</p><p>CyberKit version: %d.%d.%d</p></body></html>",
             webkit_get_major_version(),
             webkit_get_minor_version(),
             webkit_get_micro_version());
@@ -459,14 +459,14 @@ static void aboutURISchemeRequestCallback(WebKitURISchemeRequest *request, WebKi
     }
 }
 
-static GtkWidget *createWebViewForAutomationCallback(WebKitAutomationSession* session)
+static GtkWidget *createWebViewForAutomationCallback(CyberKitAutomationSession* session)
 {
     return GTK_WIDGET(browser_window_get_or_create_web_view_for_automation());
 }
 
-static void automationStartedCallback(WebKitWebContext *webContext, WebKitAutomationSession *session)
+static void automationStartedCallback(CyberKitWebContext *webContext, CyberKitAutomationSession *session)
 {
-    WebKitApplicationInfo *info = webkit_application_info_new();
+    CyberKitApplicationInfo *info = webkit_application_info_new();
     webkit_application_info_set_version(info, WEBKIT_MAJOR_VERSION, WEBKIT_MINOR_VERSION, WEBKIT_MICRO_VERSION);
     webkit_automation_session_set_application_info(session, info);
     webkit_application_info_unref(info);
@@ -476,11 +476,11 @@ static void automationStartedCallback(WebKitWebContext *webContext, WebKitAutoma
 
 typedef struct {
     GMainLoop *mainLoop;
-    WebKitUserContentFilter *filter;
+    CyberKitUserContentFilter *filter;
     GError *error;
 } FilterSaveData;
 
-static void filterSavedCallback(WebKitUserContentFilterStore *store, GAsyncResult *result, FilterSaveData *data)
+static void filterSavedCallback(CyberKitUserContentFilterStore *store, GAsyncResult *result, FilterSaveData *data)
 {
     data->filter = webkit_user_content_filter_store_save_finish(store, result, &data->error);
     g_main_loop_quit(data->mainLoop);
@@ -501,7 +501,7 @@ int main(int argc, char *argv[])
     g_option_context_add_group(context, gst_init_get_option_group());
 #endif
 
-    WebKitSettings *webkitSettings = webkit_settings_new();
+    CyberKitSettings *webkitSettings = webkit_settings_new();
     webkit_settings_set_enable_developer_extras(webkitSettings, TRUE);
     webkit_settings_set_enable_webgl(webkitSettings, TRUE);
     webkit_settings_set_enable_media_stream(webkitSettings, TRUE);
@@ -518,10 +518,10 @@ int main(int argc, char *argv[])
     }
     g_option_context_free (context);
 
-    WebKitWebContext *webContext = (privateMode || automationMode) ? webkit_web_context_new_ephemeral() : webkit_web_context_get_default();
+    CyberKitWebContext *webContext = (privateMode || automationMode) ? webkit_web_context_new_ephemeral() : webkit_web_context_get_default();
 
     if (cookiesPolicy) {
-        WebKitCookieManager *cookieManager = webkit_web_context_get_cookie_manager(webContext);
+        CyberKitCookieManager *cookieManager = webkit_web_context_get_cookie_manager(webContext);
         GEnumClass *enumClass = g_type_class_ref(WEBKIT_TYPE_COOKIE_ACCEPT_POLICY);
         GEnumValue *enumValue = g_enum_get_value_by_nick(enumClass, cookiesPolicy);
         if (enumValue)
@@ -530,13 +530,13 @@ int main(int argc, char *argv[])
     }
 
     if (cookiesFile && !webkit_web_context_is_ephemeral(webContext)) {
-        WebKitCookieManager *cookieManager = webkit_web_context_get_cookie_manager(webContext);
-        WebKitCookiePersistentStorage storageType = g_str_has_suffix(cookiesFile, ".txt") ? WEBKIT_COOKIE_PERSISTENT_STORAGE_TEXT : WEBKIT_COOKIE_PERSISTENT_STORAGE_SQLITE;
+        CyberKitCookieManager *cookieManager = webkit_web_context_get_cookie_manager(webContext);
+        CyberKitCookiePersistentStorage storageType = g_str_has_suffix(cookiesFile, ".txt") ? WEBKIT_COOKIE_PERSISTENT_STORAGE_TEXT : WEBKIT_COOKIE_PERSISTENT_STORAGE_SQLITE;
         webkit_cookie_manager_set_persistent_storage(cookieManager, cookiesFile, storageType);
     }
 
     if (proxy) {
-        WebKitNetworkProxySettings *webkitProxySettings = webkit_network_proxy_settings_new(proxy, ignoreHosts);
+        CyberKitNetworkProxySettings *webkitProxySettings = webkit_network_proxy_settings_new(proxy, ignoreHosts);
         webkit_web_context_set_network_proxy_settings(webContext, WEBKIT_NETWORK_PROXY_MODE_CUSTOM, webkitProxySettings);
         webkit_network_proxy_settings_free(webkitProxySettings);
     }
@@ -548,9 +548,9 @@ int main(int argc, char *argv[])
     // Enable the favicon database, by specifying the default directory.
     webkit_web_context_set_favicon_database_directory(webContext, NULL);
 
-    webkit_web_context_register_uri_scheme(webContext, BROWSER_ABOUT_SCHEME, (WebKitURISchemeRequestCallback)aboutURISchemeRequestCallback, webContext, NULL);
+    webkit_web_context_register_uri_scheme(webContext, BROWSER_ABOUT_SCHEME, (CyberKitURISchemeRequestCallback)aboutURISchemeRequestCallback, webContext, NULL);
 
-    WebKitUserContentManager *userContentManager = webkit_user_content_manager_new();
+    CyberKitUserContentManager *userContentManager = webkit_user_content_manager_new();
     webkit_user_content_manager_register_script_message_handler(userContentManager, "aboutData");
     g_signal_connect(userContentManager, "script-message-received::aboutData", G_CALLBACK(aboutDataScriptMessageReceivedCallback), webContext);
 
@@ -559,7 +559,7 @@ int main(int argc, char *argv[])
 
         FilterSaveData saveData = { NULL, NULL, NULL };
         gchar *filtersPath = g_build_filename(g_get_user_cache_dir(), g_get_prgname(), "filters", NULL);
-        WebKitUserContentFilterStore *store = webkit_user_content_filter_store_new(filtersPath);
+        CyberKitUserContentFilterStore *store = webkit_user_content_filter_store_new(filtersPath);
         g_free(filtersPath);
 
         webkit_user_content_filter_store_save_from_file(store, "GTKMiniBrowserFilter", contentFilterFile, NULL, (GAsyncReadyCallback)filterSavedCallback, &saveData);
@@ -600,7 +600,7 @@ int main(int argc, char *argv[])
         int i;
 
         for (i = 0; uriArguments[i]; i++) {
-            WebKitWebView *webView = createBrowserTab(mainWindow, webkitSettings, userContentManager);
+            CyberKitWebView *webView = createBrowserTab(mainWindow, webkitSettings, userContentManager);
             if (!i)
                 firstTab = GTK_WIDGET(webView);
             gchar *url = argumentToURL(uriArguments[i]);
@@ -608,7 +608,7 @@ int main(int argc, char *argv[])
             g_free(url);
         }
     } else {
-        WebKitWebView *webView = createBrowserTab(mainWindow, webkitSettings, userContentManager);
+        CyberKitWebView *webView = createBrowserTab(mainWindow, webkitSettings, userContentManager);
         firstTab = GTK_WIDGET(webView);
 
         if (!editorMode) {

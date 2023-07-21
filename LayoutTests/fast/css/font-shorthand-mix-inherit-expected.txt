@@ -1,4 +1,4 @@
-Test for WebKit bug 20181 : font shorthand with inherit keyword incorrectly parsed and rendered
+Test for CyberKit bug 20181 : font shorthand with inherit keyword incorrectly parsed and rendered
 
 PASS test.style.getPropertyValue('font') is '12pt/14pt sans-serif'
 PASS test.style.getPropertyValue('font') is 'inherit'

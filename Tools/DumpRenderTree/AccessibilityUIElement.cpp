@@ -29,7 +29,7 @@
 
 #include "AccessibilityUIElement.h"
 
-#include <JavaScriptCore/JSObjectRef.h>
+#include <CyberScriptCore/JSObjectRef.h>
 #include <limits.h>
 
 // Static Functions

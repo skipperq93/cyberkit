@@ -5,7 +5,7 @@ layer at (0,0) size 800x600
     RenderBody {BODY} at (8,8) size 784x584
       RenderBlock {P} at (0,0) size 784x60
         RenderText {#text} at (0,0) size 761x59
-          text run at (0,0) width 505: "This page ensures that WebKit can render unicode variation selector correctly. "
+          text run at (0,0) width 505: "This page ensures that CyberKit can render unicode variation selector correctly. "
           text run at (504,0) width 257: "On platforms which support UVSes, the"
           text run at (0,20) width 685: "glyphs of U+845B should be different. On platforms which don't support UVSes, they should be identical. "
           text run at (684,20) width 75: "In addition,"

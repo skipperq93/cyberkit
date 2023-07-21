@@ -22,13 +22,13 @@ set(DumpRenderTree_SOURCES
 )
 
 set(DumpRenderTree_LIBRARIES
-    WebCoreTestSupport
-    JavaScriptCore
+    CyberCoreTestSupport
+    CyberScriptCore
 )
 
 set(DumpRenderTree_INCLUDE_DIRECTORIES
-    ${WebCore_PRIVATE_FRAMEWORK_HEADERS_DIR}
-    ${WebKitLegacy_FRAMEWORK_HEADERS_DIR}
+    ${CyberCore_PRIVATE_FRAMEWORK_HEADERS_DIR}
+    ${CyberKitLegacy_FRAMEWORK_HEADERS_DIR}
     ${DERIVED_SOURCES_DIR}/DumpRenderTree
     ${WEBKIT_TESTRUNNER_UISCRIPTCONTEXT_DIR}
     ${WEBKIT_TESTRUNNER_SHARED_DIR}/Bindings
@@ -67,9 +67,9 @@ set(TestNetscapePlugIn_SOURCES
 )
 
 set(TestNetscapePlugIn_LIBRARIES
-    JavaScriptCore
+    CyberScriptCore
     WTF
-    WebCoreTestSupport
+    CyberCoreTestSupport
 )
 
 set(DumpRenderTree_IDL_FILES

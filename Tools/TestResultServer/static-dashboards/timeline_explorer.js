@@ -221,7 +221,7 @@ function updateBuildInspector(results, builder, dygraph, index)
     addRow('Build:', '<a href="' + buildUrl + '" target="_blank">' + buildNumber + '</a> (<a href="' + resultsUrl + '" target="_blank">results</a>)');
 
     // Revision link
-    addRow('WebKit change:', ui.html.webKitRevisionLink(results, index));
+    addRow('CyberKit change:', ui.html.webKitRevisionLink(results, index));
 
     // Test status/counts
     addRow('', '');

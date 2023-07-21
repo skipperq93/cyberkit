@@ -1,4 +1,4 @@
-# This file contains the expected SVN config for developing WebKit.
+# This file contains the expected SVN config for developing CyberKit.
 # You may either copy it to ~/.subversion/config or merge it with your existing SVN configuration.
 
 [miscellany]

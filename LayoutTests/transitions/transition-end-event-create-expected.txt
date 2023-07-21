@@ -1,16 +1,16 @@
-Test dynamic creation of WebKitTransitionEnd event.
+Test dynamic creation of CyberKitTransitionEnd event.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 
 
 PASS document.createEvent exists
 
-Test creation of WebKitTransitionEvent
+Test creation of CyberKitTransitionEvent
 PASS typeof(ev) is 'object'
 PASS ev.propertyName is ''
 PASS ev.elapsedTime is 0.0
 
-Create a MouseEvent and make sure it doesn't have the WebKitTransitionEnd event properties
+Create a MouseEvent and make sure it doesn't have the CyberKitTransitionEnd event properties
 PASS typeof(ev) is 'object'
 PASS ev.propertyName is undefined
 PASS ev.elapsedTime is undefined

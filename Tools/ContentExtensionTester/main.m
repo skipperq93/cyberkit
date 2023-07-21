@@ -24,7 +24,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <WebKit/_WKUserContentExtensionStorePrivate.h>
+#import <CyberKit/_WKUserContentExtensionStorePrivate.h>
 
 static void run(bool* done)
 {

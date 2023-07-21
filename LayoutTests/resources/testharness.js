@@ -145,11 +145,11 @@ policies and contribution forms [3].
             var origins = location.ancestorOrigins;
             while (w != w.parent) {
                 w = w.parent;
-                // In WebKit, calls to parent windows' properties that aren't on the same
+                // In CyberKit, calls to parent windows' properties that aren't on the same
                 // origin cause an error message to be displayed in the error console but
                 // don't throw an exception. This is a deviation from the current HTML5
                 // spec. See: https://bugs.webkit.org/show_bug.cgi?id=43504
-                // The problem with WebKit's behavior is that it pollutes the error console
+                // The problem with CyberKit's behavior is that it pollutes the error console
                 // with error messages that can't be caught.
                 //
                 // This issue can be mitigated by relying on the (for now) proprietary
@@ -167,7 +167,7 @@ policies and contribution forms [3].
             w = window.opener;
             if (w) {
                 // window.opener isn't included in the `location.ancestorOrigins` prop.
-                // We'll just have to deal with a simple check and an error msg on WebKit
+                // We'll just have to deal with a simple check and an error msg on CyberKit
                 // browsers in this case.
                 cache.push([w, is_same_origin(w)]);
             }

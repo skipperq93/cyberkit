@@ -2523,7 +2523,7 @@
 
 2016-08-19  Chris Dumez  <cdumez@apple.com>
 
-        WebKit should unset event propagation flags after dispatch
+        CyberKit should unset event propagation flags after dispatch
         https://bugs.webkit.org/show_bug.cgi?id=160853
 
         Reviewed by Ryosuke Niwa.
@@ -2570,7 +2570,7 @@
 
         Rebaseline W3C test now that we are passing a lot more checks. For reference,
         Firefox 48 passes 624 out of 654, and Chrome 52 passes 651 out of 654.
-        Before this change, WebKit was only passing 501 out of 654 and is now passing
+        Before this change, CyberKit was only passing 501 out of 654 and is now passing
         651. The only checks we're failing is due to "Big5-HKSCS" not being an alias
         to "Big5".
 
@@ -5722,13 +5722,13 @@
 
 2016-06-22  Youenn Fablet  <youenn.fablet@crf.canon.fr>
 
-        W3C test importer should generate files to ignore by WebKit SCM
+        W3C test importer should generate files to ignore by CyberKit SCM
         https://bugs.webkit.org/show_bug.cgi?id=142743
 
         Reviewed by Darin Adler.
 
         * resources/TestRepositories: Added the option to generate .gitignore and __init__.py for wpt repo.
-        * web-platform-tests/.gitignore: Regeneration changes the order of the ignored files and removes the __init__.py which is now committed to WebKit trunk.
+        * web-platform-tests/.gitignore: Regeneration changes the order of the ignored files and removes the __init__.py which is now committed to CyberKit trunk.
         * web-platform-tests/__init__.py: Added.
 
 2016-06-22  Youenn Fablet  <youennf@gmail.com>
@@ -6850,7 +6850,7 @@
 
 2016-04-26  Ryosuke Niwa  <rniwa@webkit.org>
 
-        ASSERTION FAILED: m_templateInsertionModes.isEmpty() in WebCore::HTMLTreeBuilder::finished
+        ASSERTION FAILED: m_templateInsertionModes.isEmpty() in CyberCore::HTMLTreeBuilder::finished
         https://bugs.webkit.org/show_bug.cgi?id=143519
 
         Reviewed by Darin Adler.
@@ -7024,7 +7024,7 @@
 
 2016-04-23  Chris Dumez  <cdumez@apple.com>
 
-        [WebIDL] Drop [Default] WebKit-IDL extended attribute
+        [WebIDL] Drop [Default] CyberKit-IDL extended attribute
         https://bugs.webkit.org/show_bug.cgi?id=156955
 
         Reviewed by Darin Adler.
@@ -9473,7 +9473,7 @@
 
 2016-02-12  Jiewen Tan  <jiewen_tan@apple.com>
 
-        WebKit should expose the DOM 4 Event.isTrusted property
+        CyberKit should expose the DOM 4 Event.isTrusted property
         https://bugs.webkit.org/show_bug.cgi?id=76121
         <rdar://problem/22558494>
 
@@ -9986,7 +9986,7 @@
 
         Reviewed by Youenn Fablet.
 
-        Drop temporary WebKit workaround in html/dom/interfaces.html
+        Drop temporary CyberKit workaround in html/dom/interfaces.html
         imported W3C test. This test would previously time out without
         the workaround but this is fixed now.
 
@@ -10887,7 +10887,7 @@
         Reviewed by Daniel Bates.
 
         Importing service-workers tests, as some resource files are used by other test files.
-        These tests are skipped as WebKit does not support service worker.
+        These tests are skipped as CyberKit does not support service worker.
         Revision used is 5932fd48d519a83b4cca6ed69778547a4fdfc5ae as for all other WPT tests.
 
         * resources/ImportExpectations: Activating import of service worker tests.
@@ -11051,7 +11051,7 @@
         Reviewed by Daniel Bates.
 
         Bumping WPT test revision from dd553279c3 to 5932fd48d519a83b4cca6ed69778547a4fdfc5ae.
-        New revision includes test improvements, test renaming to ensure WebKit test expectations do not clash and XHR test clean-up.
+        New revision includes test improvements, test renaming to ensure CyberKit test expectations do not clash and XHR test clean-up.
 
         * resources/ImportExpectations: Updated to not include new tests. Improved ordering.
         * resources/TestRepositories: Updated revision.
@@ -11260,7 +11260,7 @@
         Reviewed by Youenn Fablet.
 
         https://github.com/whatwg/streams/pull/414 and https://github.com/whatwg/streams/issues/413 was closed. Changes
-        I did on the spec were integrated so they were brought back to the imported tests in WebKit.
+        I did on the spec were integrated so they were brought back to the imported tests in CyberKit.
 
         * web-platform-tests/streams-api/README.txt: Updated version.
         * web-platform-tests/streams-api/readable-streams/cancel-expected.txt: Expectations.
@@ -11293,7 +11293,7 @@
         Reviewed by Youenn Fablet.
 
         https://github.com/whatwg/streams/pull/414 and https://github.com/whatwg/streams/issues/413 was closed. Changes
-        I did on the spec were integrated so they were brought back to the imported tests in WebKit.
+        I did on the spec were integrated so they were brought back to the imported tests in CyberKit.
 
         * web-platform-tests/streams-api/README.txt: Updated version.
         * web-platform-tests/streams-api/readable-streams/cancel-expected.txt: Expectations.
@@ -12509,7 +12509,7 @@
 
 2015-10-18  Chris Dumez  <cdumez@apple.com>
 
-        WebKit must support all JavaScript MIME types in HTML5 spec
+        CyberKit must support all JavaScript MIME types in HTML5 spec
         https://bugs.webkit.org/show_bug.cgi?id=148854
         <rdar://problem/22588195>
 
@@ -13027,7 +13027,7 @@
 
 2015-09-14  Chris Dumez  <cdumez@apple.com>
 
-        Drop non-standard [IsIndex] WebKit IDL extended attribute
+        Drop non-standard [IsIndex] CyberKit IDL extended attribute
         https://bugs.webkit.org/show_bug.cgi?id=149122
         <rdar://problem/22547139>
 
@@ -14515,7 +14515,7 @@
 
 2015-03-13  Youenn Fablet  <youenn.fablet@crf.canon.fr>
 
-        WebKit test infrastructure should automate the process of cloning W3C test suite and importing tests from it
+        CyberKit test infrastructure should automate the process of cloning W3C test suite and importing tests from it
         https://bugs.webkit.org/show_bug.cgi?id=134764
 
         Reviewed by Ryosuke Niwa.
@@ -14529,7 +14529,7 @@
 
 2015-03-06  Carlos Alberto Lopez Perez <clopez@igalia.com> and Youenn Fablet  <youenn.fablet@crf.canon.fr>
 
-        Layout tests imported/w3c/web-platform-tests certificates should not be tracked on WebKit VCS
+        Layout tests imported/w3c/web-platform-tests certificates should not be tracked on CyberKit VCS
         https://bugs.webkit.org/show_bug.cgi?id=142083
 
         Reviewed by Simon Fraser.
@@ -14635,7 +14635,7 @@
         web-platform-tests submodules are downloaded when needed based on resources/WPTModules.
 
         This patch also adds two tests from the domparsing folder to ensure 
-        W3C test infrastructure works properly on WebKit bots.
+        W3C test infrastructure works properly on CyberKit bots.
 
         * resources/WPTModules: Added
         * web-platform-tests/.gitignore: Added.
@@ -14656,7 +14656,7 @@
 
 2015-01-26  Youenn Fablet  <youenn.fablet@crf.canon.fr>
 
-        Integrate WP python server into WebKit test framework
+        Integrate WP python server into CyberKit test framework
         https://bugs.webkit.org/show_bug.cgi?id=127094
 
         Reviewed by Ryosuke Niwa.
@@ -15212,7 +15212,7 @@
 
         Reviewed by Dean Jackson.
 
-        804 tests are ported from w3c canvas test suite. There are 39 tests failed on WebKit
+        804 tests are ported from w3c canvas test suite. There are 39 tests failed on CyberKit
         and there are 45 tests need to be changed such that they can be automatically verified.
 
         * canvas: Added.
@@ -16990,7 +16990,7 @@
         Reviewed by Dean Jackson.
 
         Import tests for basic multi-column properties settings. They are approved by W3C and
-        pass the WebKit testing. More tests need to be imported when they are approved.
+        pass the CyberKit testing. More tests need to be imported when they are approved.
 
         * css: Added.
         * css/multicol: Added.

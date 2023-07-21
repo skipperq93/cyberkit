@@ -6,7 +6,7 @@ layer at (0,0) size 800x600
       RenderBlock {P} at (0,0) size 784x36
         RenderText {#text} at (0,0) size 762x36
           text run at (0,0) width 395: "This page tests using attributes to set style on embed elements. "
-          text run at (395,0) width 367: "Previous versions of WebKit supported valign and border,"
+          text run at (395,0) width 367: "Previous versions of CyberKit supported valign and border,"
           text run at (0,18) width 43: "which "
           text run at (43,18) width 452: "didn't match IE and FF. The only special support should be for 'hidden.'"
       RenderBlock {HR} at (0,52) size 784x2 [border: (1px inset #000000)]

@@ -27,14 +27,14 @@
 #import "config.h"
 #import "ObjCPlugin.h"
 
-#import <WebKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 #import <objc/runtime.h>
 
 // === NSObject category to expose almost everything to JavaScript ===
 
 // Warning: this class introduces huge security weaknesses, and should only be used
 // for testing inside of DumpRenderTree, and only with trusted code.  By default, it has
-// the same restrictive behavior as the standard WebKit setup.  However, scripts can use the
+// the same restrictive behavior as the standard CyberKit setup.  However, scripts can use the
 // plugin's removeBridgeRestrictions: method to open up almost total access to the Cocoa
 // frameworks.
 

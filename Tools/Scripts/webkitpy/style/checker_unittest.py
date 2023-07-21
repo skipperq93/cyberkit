@@ -217,19 +217,19 @@ class GlobalVariablesTest(unittest.TestCase):
                       "build/include")
         assertNoCheck(os.path.join('Tools', 'DumpRenderTree', 'TestNetscapePlugIn', 'main.cpp'),
                       "readability/naming")
-        assertCheck(os.path.join('Tools', 'TestWebKitAPI', 'Tests', 'WTF', 'RefLogger.cpp'),
+        assertCheck(os.path.join('Tools', 'TestCyberKitAPI', 'Tests', 'WTF', 'RefLogger.cpp'),
                       "build/include")
-        assertNoCheck(os.path.join('Tools', 'TestWebKitAPI', 'Tests', 'mac', 'WillSendSubmitEvent.mm'),
+        assertNoCheck(os.path.join('Tools', 'TestCyberKitAPI', 'Tests', 'mac', 'WillSendSubmitEvent.mm'),
                       "readability/naming")
         assertCheck("random_path.cpp",
                     "readability/naming")
-        assertNoCheck(os.path.join('Source', 'WebCore', 'css', 'CSSParser.cpp'),
+        assertNoCheck(os.path.join('Source', 'CyberCore', 'css', 'CSSParser.cpp'),
                       "readability/naming")
 
-        assertNoCheck(os.path.join('Source', 'WebCore', 'ForwardingHeaders', 'debugger', 'Debugger.h'),
+        assertNoCheck(os.path.join('Source', 'CyberCore', 'ForwardingHeaders', 'debugger', 'Debugger.h'),
                       "build/header_guard")
 
-        assertNoCheck(os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'VideoSinkGStreamer.cpp'),
+        assertNoCheck(os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'VideoSinkGStreamer.cpp'),
                       "readability/naming")
 
         # Third-party Python code: webkitpy/thirdparty
@@ -241,22 +241,22 @@ class GlobalVariablesTest(unittest.TestCase):
         assertCheck(path, "whitespace/carriage_return")
 
         # Test if the exception for GDBInterface.cpp is in place.
-        assertNoCheck(os.path.join('Source', 'JavaScriptCore', 'jit', 'GDBInterface.cpp'),
+        assertNoCheck(os.path.join('Source', 'CyberScriptCore', 'jit', 'GDBInterface.cpp'),
                       "readability/naming")
 
         # Javascript keywords.
-        assertCheck(os.path.join('Source', 'JavaScriptCore', 'parser', 'Keywords.table'), "whitespace/carriage_return")
+        assertCheck(os.path.join('Source', 'CyberScriptCore', 'parser', 'Keywords.table'), "whitespace/carriage_return")
 
         # Test if the exception for DataDetectorsCoreSPI.h is in place.
-        assertNoCheck(os.path.join('Source', 'WebCore', 'PAL', 'pal', 'spi', 'cocoa', 'DataDetectorsCoreSPI.h'),
+        assertNoCheck(os.path.join('Source', 'CyberCore', 'PAL', 'pal', 'spi', 'cocoa', 'DataDetectorsCoreSPI.h'),
                       "runtime/enum_bitfields")
 
         # Test if the exception for PassKitSPI.h is in place.
-        assertNoCheck(os.path.join('Source', 'WebCore', 'PAL', 'pal', 'spi', 'cocoa', 'PassKitSPI.h'),
+        assertNoCheck(os.path.join('Source', 'CyberCore', 'PAL', 'pal', 'spi', 'cocoa', 'PassKitSPI.h'),
                       "build/include")
 
         # Test if the exception for pal/spi is in place.
-        assertNoCheck(os.path.join('Source', 'WebCore', 'PAL', 'pal', 'spi'),
+        assertNoCheck(os.path.join('Source', 'CyberCore', 'PAL', 'pal', 'spi'),
                       "readability/naming/underscores")
 
     def test_max_reports_per_category(self):
@@ -267,7 +267,7 @@ class GlobalVariablesTest(unittest.TestCase):
                           'Key "%s" is not a category' % category)
 
 
-class CheckWebKitStyleFunctionTest(unittest.TestCase):
+class CheckCyberKitStyleFunctionTest(unittest.TestCase):
 
     """Tests the functions with names of the form check_webkit_style_*."""
 
@@ -292,10 +292,10 @@ class CheckerDispatcherSkipTest(unittest.TestCase):
         """Test should_skip_with_warning()."""
         # Check skipped files.
         paths_to_skip = [
-           os.path.join('Tools', 'TestWebKitAPI', 'Tests', 'WebKitGtk', 'testatk.c'),
-           os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'gtk', 'webkit2.h'),
-           os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'gtk', 'WebKitWebView.h'),
-           os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'gtk', 'WebKitLoader.h'),
+           os.path.join('Tools', 'TestCyberKitAPI', 'Tests', 'CyberKitGtk', 'testatk.c'),
+           os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'gtk', 'webkit2.h'),
+           os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'gtk', 'CyberKitWebView.h'),
+           os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'gtk', 'CyberKitLoader.h'),
             ]
 
         for path in paths_to_skip:
@@ -305,12 +305,12 @@ class CheckerDispatcherSkipTest(unittest.TestCase):
         # Verify that some files are not skipped.
         paths_not_to_skip = [
            "foo.txt",
-           os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'gtk', 'HelperClass.cpp'),
-           os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'gtk', 'HelperClass.h'),
-           os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'gtk', 'WebKitWebView.cpp'),
-           os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'gtk', 'WebKitWebViewPrivate.h'),
-           os.path.join('Tools', 'TestWebKitAPI', 'Tests', 'WebKit2Gtk', 'WebViewTest.cpp'),
-           os.path.join('Tools', 'TestWebKitAPI', 'Tests', 'WebKit2Gtk', 'WebViewTest.h'),
+           os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'gtk', 'HelperClass.cpp'),
+           os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'gtk', 'HelperClass.h'),
+           os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'gtk', 'CyberKitWebView.cpp'),
+           os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'gtk', 'CyberKitWebViewPrivate.h'),
+           os.path.join('Tools', 'TestCyberKitAPI', 'Tests', 'CyberKit2Gtk', 'WebViewTest.cpp'),
+           os.path.join('Tools', 'TestCyberKitAPI', 'Tests', 'CyberKit2Gtk', 'WebViewTest.h'),
             ]
 
         for path in paths_not_to_skip:
@@ -433,7 +433,7 @@ class CheckerDispatcherDispatchTest(unittest.TestCase):
         paths = [
                  "ChangeLog",
                  "ChangeLog-2009-06-16",
-                 os.path.join("Source", "WebCore", "ChangeLog"),
+                 os.path.join("Source", "CyberCore", "ChangeLog"),
                  ]
 
         for path in paths:
@@ -501,7 +501,7 @@ class CheckerDispatcherDispatchTest(unittest.TestCase):
     def test_json_paths(self):
         """Test paths that should be checked as JSON."""
         paths = [
-           os.path.join('Source', 'WebCore', 'inspector', 'Inspector.json'),
+           os.path.join('Source', 'CyberCore', 'inspector', 'Inspector.json'),
            os.path.join('Tools', 'BuildSlaveSupport', 'build.webkit.org-config', 'config.json'),
         ]
 
@@ -583,8 +583,8 @@ class CheckerDispatcherDispatchTest(unittest.TestCase):
     def test_xml_paths(self):
         """Test paths that should be checked as XML."""
         paths = [
-           os.path.join('Source', 'WebCore', 'WebCore.vcproj', 'WebCore.vcproj'),
-           os.path.join('WebKitLibraries', 'win', 'tools', 'vsprops', 'common.vsprops'),
+           os.path.join('Source', 'CyberCore', 'CyberCore.vcproj', 'CyberCore.vcproj'),
+           os.path.join('CyberKitLibraries', 'win', 'tools', 'vsprops', 'common.vsprops'),
         ]
 
         for path in paths:

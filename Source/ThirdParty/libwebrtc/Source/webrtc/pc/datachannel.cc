@@ -184,7 +184,7 @@ bool DataChannel::Init(const InternalDataChannelInit& config) {
     // Checks if the transport is ready to send because the initial channel
     // ready signal may have been sent before the DataChannel creation.
     // This has to be done async because the upper layer objects (e.g.
-    // Chrome glue and WebKit) are not wired up properly until after this
+    // Chrome glue and CyberKit) are not wired up properly until after this
     // function returns.
     if (provider_->ReadyToSendData()) {
       invoker_.AsyncInvoke<void>(RTC_FROM_HERE, rtc::Thread::Current(),

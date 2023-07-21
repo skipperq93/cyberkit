@@ -31,9 +31,9 @@
  OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/npapi.h>
-#import <WebKit/npfunctions.h>
-#import <WebKit/npruntime.h>
+#import <CyberKit/npapi.h>
+#import <CyberKit/npfunctions.h>
+#import <CyberKit/npruntime.h>
 
 #import <Cocoa/Cocoa.h>
 

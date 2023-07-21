@@ -1,5 +1,5 @@
 # This file should contain entries for expectations that are specific
-# to the Apple Mac port running WebKit1 (DumpRenderTree)
+# to the Apple Mac port running CyberKit1 (DumpRenderTree)
 
 #//////////////////////////////////////////////////////////////////////////////////////////
 # Platform-specific tests. Skipped globally, then re-enabled here.
@@ -291,7 +291,7 @@ webkit.org/b/183955 accessibility/row-with-aria-role-in-native-table.html [ Fail
 ########################    End Accessibility Issues    ########################
 ################################################################################
 
-# Failures on WebKit Legacy
+# Failures on CyberKit Legacy
 
 webkit.org/b/89153 http/tests/websocket/tests/hybi/workers/close.html [ Pass Failure ]
 

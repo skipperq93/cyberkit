@@ -25,7 +25,7 @@ var hasNavigated = false;
 function sawIteration(event) {
     if (hasNavigated) {
         document.getElementById("results").innerText = "PASS: Saw iteration after navigation";
-        window.testRunner.overridePreference("WebKitUsesPageCachePreferenceKey", 0);
+        window.testRunner.overridePreference("CyberKitUsesPageCachePreferenceKey", 0);
         testRunner.notifyDone();
     }
 }
@@ -42,7 +42,7 @@ function startTest() {
 if (window.testRunner) {
     window.testRunner.dumpAsText();
     window.testRunner.waitUntilDone();
-    window.testRunner.overridePreference("WebKitUsesPageCachePreferenceKey", 1);
+    window.testRunner.overridePreference("CyberKitUsesPageCachePreferenceKey", 1);
 }
 
 window.addEventListener("load", startTest, false);

@@ -1,4 +1,4 @@
-This tests activing an image map area inside a shadow tree. WebKit should not hit any assertions.
+This tests activing an image map area inside a shadow tree. CyberKit should not hit any assertions.
 To manually test, click on green box on the left upper quadrant.
 
 PASS

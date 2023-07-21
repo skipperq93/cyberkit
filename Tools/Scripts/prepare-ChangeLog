@@ -140,7 +140,7 @@ sub main()
     my $gitCommit = 0;
     my $gitIndex = "";
     my $gitReviewer = "";
-    my $checkWebKitStyle = 0;
+    my $checkCyberKitStyle = 0;
     my $openChangeLogs = 0;
     my $writeChangeLogs = 1;
     my $delimiters = 0;
@@ -159,7 +159,7 @@ sub main()
                    "git-index" => \$gitIndex,
                    "git-reviewer:s" => \$gitReviewer,
                    "help|h!" => \$showHelp,
-                   "style!" => \$checkWebKitStyle,
+                   "style!" => \$checkCyberKitStyle,
                    "open|o!" => \$openChangeLogs,
                    "write!" => \$writeChangeLogs,
                    "update!" => \$updateChangeLogs);
@@ -183,7 +183,7 @@ sub main()
         return 1;
     }
 
-    if ($checkWebKitStyle) {
+    if ($checkCyberKitStyle) {
         print STDERR "  Running check-webkit-style.\n  ";
         system "$FindBin::Bin/check-webkit-style";
     }
@@ -566,9 +566,9 @@ sub findChangeLogs($$)
         } elsif ($prefixDir eq "Tools") {
             $sortKey = "-, just after top level";
         } elsif ($prefixDir eq "WebBrowser") {
-            $sortKey = lc "WebKit, WebBrowser after";
-        } elsif ($prefixDir eq "Source/WebCore") {
-            $sortKey = lc "WebFoundation, WebCore after";
+            $sortKey = lc "CyberKit, WebBrowser after";
+        } elsif ($prefixDir eq "Source/CyberCore") {
+            $sortKey = lc "WebFoundation, CyberCore after";
         } elsif ($prefixDir eq "LayoutTests") {
             $sortKey = lc "~, LayoutTests last";
         }
@@ -688,7 +688,7 @@ sub generateNewChangeLogs($$$$$$$$$$$$$$)
         print CHANGE_LOG normalizeLineEndings("        Reviewed by $reviewer.\n\n", $endl);
         print CHANGE_LOG normalizeLineEndings($description . "\n", $endl) if $description;
 
-        if (unixPath($prefix) =~ m|/WebCore/$| || @$requiresTests) {
+        if (unixPath($prefix) =~ m|/CyberCore/$| || @$requiresTests) {
             if (@$addedRegressionTests) {
                 print CHANGE_LOG normalizeLineEndings(testListForChangeLog(sort @$addedRegressionTests), $endl);
             } else {

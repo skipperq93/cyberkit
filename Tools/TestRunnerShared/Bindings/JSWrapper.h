@@ -26,7 +26,7 @@
 #pragma once
 
 #include "JSWrappable.h"
-#include <JavaScriptCore/JSRetainPtr.h>
+#include <CyberScriptCore/JSRetainPtr.h>
 
 namespace WTR {
 

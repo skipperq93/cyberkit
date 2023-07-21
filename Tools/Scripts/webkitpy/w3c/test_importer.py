@@ -29,9 +29,9 @@
 # SUCH DAMAGE.
 
 """
- This script imports W3C tests into WebKit, either from a local folder or by cloning W3C CSS and WPT repositories.
+ This script imports W3C tests into CyberKit, either from a local folder or by cloning W3C CSS and WPT repositories.
 
- This script will import the tests into WebKit following these rules:
+ This script will import the tests into CyberKit following these rules:
 
     - All tests are by default imported into LayoutTests/imported/w3c
 
@@ -49,12 +49,12 @@
          1. LayoutTests/imported/w3c/resources/TestRepositories lists the repositories to clone, the corresponding revision to checkout and the infrastructure folders that need to be imported/skipped.
          2. LayoutTests/imported/w3c/resources/ImportExpectations list the test suites or tests to NOT import.
 
-    - All files are converted to work in WebKit:
+    - All files are converted to work in CyberKit:
          1. Paths to testharness.js files are modified to point to Webkit's copy of them in
             LayoutTests/resources, using the correct relative path from the new location.
             This is applied to CSS tests but not to WPT tests.
          2. All CSS properties requiring the -webkit-vendor prefix are prefixed - this current
-            list of what needs prefixes is read from Source/WebCore/CSS/CSSProperties.in
+            list of what needs prefixes is read from Source/CyberCore/CSS/CSSProperties.in
          3. Each reftest has its own copy of its reference file following the naming conventions
             new-run-webkit-tests expects
          4. If a reference files lives outside the directory of the test that uses it, it is checked
@@ -78,7 +78,7 @@ import mimetypes
 
 from webkitpy.common.host import Host
 from webkitpy.common.system.filesystem import FileSystem
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 from webkitpy.w3c.common import WPT_GH_URL, WPTPaths
 from webkitpy.w3c.test_parser import TestParser
 from webkitpy.w3c.test_converter import convert_for_webkit
@@ -124,7 +124,7 @@ To import a web-platform-tests suite from a specific folder, use 'import-w3c-tes
     parser.add_argument('-n', '--no-overwrite', dest='overwrite', action='store_false', default=True,
         help='Flag to prevent duplicate test files from overwriting existing tests. By default, they will be overwritten')
     parser.add_argument('-l', '--no-links-conversion', dest='convert_test_harness_links', action='store_false', default=True,
-       help='Do not change links (testharness js or css e.g.). This option only applies when providing a source directory, in which case by default, links are converted to point to WebKit testharness files. When tests are downloaded from W3C repository, links are converted for CSS tests and remain unchanged for WPT tests')
+       help='Do not change links (testharness js or css e.g.). This option only applies when providing a source directory, in which case by default, links are converted to point to CyberKit testharness files. When tests are downloaded from W3C repository, links are converted for CSS tests and remain unchanged for WPT tests')
 
     parser.add_argument('-t', '--tip-of-tree', dest='use_tip_of_tree', action='store_true', default=False,
         help='Import all tests using the latest repository revision')
@@ -146,7 +146,7 @@ To import a web-platform-tests suite from a specific folder, use 'import-w3c-tes
          help='Ignore the import-expectations.json file. All tests will be imported. This option only applies when tests are downloaded from W3C repository')
 
     parser.add_argument('--clean-dest-dir', action='store_true', dest='clean_destination_directory', default=False,
-         help='Clean destination directory. All files in the destination directory will be deleted except for WebKit specific files (test expectations, .gitignore...) before new tests import. Dangling test expectations (expectation file that is no longer related to a test) are removed after tests import.')
+         help='Clean destination directory. All files in the destination directory will be deleted except for CyberKit specific files (test expectations, .gitignore...) before new tests import. Dangling test expectations (expectation file that is no longer related to a test) are removed after tests import.')
 
     options, args = parser.parse_known_args(args)
     return options, args
@@ -162,7 +162,7 @@ class TestImporter(object):
 
         self.filesystem = self.host.filesystem
 
-        webkit_finder = WebKitFinder(self.filesystem)
+        webkit_finder = CyberKitFinder(self.filesystem)
         self._webkit_root = webkit_finder.webkit_base()
 
         self.destination_directory = webkit_finder.path_from_webkit_base("LayoutTests", options.destination)
@@ -311,7 +311,7 @@ class TestImporter(object):
                     copy_list.append({'src': fullpath, 'dest': filename})
                     continue
                 elif self._is_in_resources_directory(fullpath):
-                    _log.warning('%s is a test located in a "resources" folder. This test will be skipped by WebKit test runners.', fullpath)
+                    _log.warning('%s is a test located in a "resources" folder. This test will be skipped by CyberKit test runners.', fullpath)
 
                 if 'manualtest' in test_info.keys():
                     continue
@@ -328,7 +328,7 @@ class TestImporter(object):
                     total_tests += 1
                     test_basename = self.filesystem.basename(test_info['test'])
 
-                    # Add the ref file, following WebKit style.
+                    # Add the ref file, following CyberKit style.
                     # FIXME: Ideally we'd support reading the metadata
                     # directly rather than relying  on a naming convention.
                     # Using a naming convention creates duplicate copies of the
@@ -395,7 +395,7 @@ class TestImporter(object):
 
     def _write_html_template(self, new_filepath):
         webkit_test_runner_options = self._webkit_test_runner_options(new_filepath)
-        content = '<!-- This file is required for WebKit test infrastructure to run the templated test -->'
+        content = '<!-- This file is required for CyberKit test infrastructure to run the templated test -->'
         self.filesystem.write_text_file(new_filepath, content + webkit_test_runner_options)
 
     def write_html_files_for_templated_js_tests(self, orig_filepath, new_filepath):
@@ -624,10 +624,10 @@ class TestImporter(object):
 
         import_log = []
         import_log.append('The tests in this directory were imported from the W3C repository.\n')
-        import_log.append('Do NOT modify these tests directly in WebKit.\n')
+        import_log.append('Do NOT modify these tests directly in CyberKit.\n')
         import_log.append('Instead, create a pull request on the WPT github:\n')
         import_log.append('\t%s\n\n' % WPT_GH_URL)
-        import_log.append('Then run the Tools/Scripts/import-w3c-tests in WebKit to reimport\n\n')
+        import_log.append('Then run the Tools/Scripts/import-w3c-tests in CyberKit to reimport\n\n')
         import_log.append('Do NOT modify or remove this file.\n\n')
         import_log.append('------------------------------------------------------------------------\n')
         import_log.append('Properties requiring vendor prefixes:\n')

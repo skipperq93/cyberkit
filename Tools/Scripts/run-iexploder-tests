@@ -60,7 +60,7 @@ GetOptions(
 setConfiguration();
 my $productDir = productDir();
 
-chdirWebKit();
+chdirCyberKit();
 
 checkFrameworks();
 
@@ -101,7 +101,7 @@ sub runSafariWithIExploder()
     print REDIRECT_HTML "</html>\n";
     close REDIRECT_HTML;
     
-    if (!isAppleWebKit()) {
+    if (!isAppleCyberKit()) {
         system "Tools/Scripts/run-minibrowser", "$iExploderTestDirectory/redirect.html";
     } else {
         local %ENV;

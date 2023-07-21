@@ -63,7 +63,7 @@ if (isAnyWindows()) {
    $tmpDir = `cygpath -w $tmpDir`;
    chomp($tmpDir);
 }
-my $httpdPidDir = File::Spec->catfile($tmpDir, "WebKit");
+my $httpdPidDir = File::Spec->catfile($tmpDir, "CyberKit");
 my $httpdPidFile = File::Spec->catfile($httpdPidDir, "httpd.pid");
 my $httpdPid;
 my $waitForUserInterrupt = 0;

@@ -408,7 +408,7 @@ class ValgrindTool(BaseTool):
         f = open(self.log_dir + ("/testcase.%d.name" % ppid))
         testcase_name = f.read().strip()
         f.close()
-        wk_layout_prefix="third_party/WebKit/LayoutTests/"
+        wk_layout_prefix="third_party/CyberKit/LayoutTests/"
         wk_prefix_at = testcase_name.rfind(wk_layout_prefix)
         if wk_prefix_at != -1:
           testcase_name = testcase_name[wk_prefix_at + len(wk_layout_prefix):]

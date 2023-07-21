@@ -1,4 +1,4 @@
-Test to make sure WebKit adds style to the appropriate container.
+Test to make sure CyberKit adds style to the appropriate container.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 
@@ -20,8 +20,8 @@ PASS bold(null) on all of "<i>hello</i> <b>world</b>" yields "<b><i>hello</i> wo
 PASS bold(null) on all of "<strike><i><u>hello <b>world</b></u></i> webkit</strike>" yields "<strike><b><i><u>hello world</u></i> webkit</b></strike>"
 PASS bold(null) on all of "<b contenteditable="false"><span style="font-weight: normal;">hello</span> world</b> world" yields "<b contenteditable="false"><span style="font-weight: normal;">hello</span> world</b><b> world</b>"
 PASS bold(null) on all of "<i>hello</i> <b contenteditable="false">world</b>" yields "<b><i>hello</i> </b><b contenteditable="false">world</b>"
-PASS strikeThrough(null) on all of "<i>hello</i> <b><strike>world</strike></b> WebKit" yields "<strike><i>hello</i> <b>world</b> WebKit</strike>"
-PASS strikeThrough(null) on all of "<b><i>hello <strike>world</strike></i> WebKit</b>" yields "<b><strike><i>hello world</i> WebKit</strike></b>"
+PASS strikeThrough(null) on all of "<i>hello</i> <b><strike>world</strike></b> CyberKit" yields "<strike><i>hello</i> <b>world</b> CyberKit</strike>"
+PASS strikeThrough(null) on all of "<b><i>hello <strike>world</strike></i> CyberKit</b>" yields "<b><strike><i>hello world</i> CyberKit</strike></b>"
 
 styleWithCSS = true
 PASS fontSize(4) on all of "<font face="Arial">hello</font>" yields "<font face="Arial" style="font-size: large;">hello</font>"

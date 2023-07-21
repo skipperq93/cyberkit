@@ -34,7 +34,7 @@
 
 namespace WTF {
 
-// Testing interface for TestWebKitAPI
+// Testing interface for TestCyberKitAPI
 #ifndef DID_CREATE_WEAK_PTR_IMPL
 #define DID_CREATE_WEAK_PTR_IMPL(p)
 #endif

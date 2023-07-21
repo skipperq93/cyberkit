@@ -550,7 +550,7 @@
         Added version 5 and version 6 of V8 tests with modifications similar
         to the version 4 tests so they'll work with the SunSpider test harness.
         Note that these files are external source and therefore don't conform 
-        to WebKit coding standards.
+        to CyberKit coding standards.
         https://bugs.webkit.org/show_bug.cgi?id=44638
 
         * tests/v8-v5: Added.
@@ -619,7 +619,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=35206
 
         * hosted/sunspider.css: Remove tabs, which I noticed where present while
-        copying to the WebKitSite directory.
+        copying to the CyberKitSite directory.
 
 2010-01-11  Oliver Hunt  <oliver@apple.com>
 
@@ -852,11 +852,11 @@
 
         https://bugs.webkit.org/show_bug.cgi?id=26540
         Currently the SunSpider test driver lacks an option to run a test suite that
-        will test JavaScriptCore parsing performance only.  This patch adds just such
+        will test CyberScriptCore parsing performance only.  This patch adds just such
         a test suite and option to SunSpider as well as the jsc test shell.  I've included
         three large javascript source files found in the wild: jquery, mootools and prototype.
         Combined with the concatenation of all three, these form a new testsuite to measure
-        and test pure JavaScriptCore parsing performance.
+        and test pure CyberScriptCore parsing performance.
 
         * resources/sunspider-standalone-driver.js:
           Load the js with parse-only flag if it is part of the parse-only suite.

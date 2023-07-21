@@ -40,7 +40,7 @@ class InspectorGeneratorTests:
 
     def generate_from_json(self, json_file, platform, output_directory):
         cmd = ['python',
-               'JavaScriptCore/inspector/scripts/generate-inspector-protocol-bindings.py',
+               'CyberScriptCore/inspector/scripts/generate-inspector-protocol-bindings.py',
                '--outputDir', output_directory,
                '--force',
                '--framework', 'Test',
@@ -121,7 +121,7 @@ class InspectorGeneratorTests:
 
         all_tests_passed = True
 
-        base_directory = os.path.join('JavaScriptCore', 'inspector', 'scripts', 'tests')
+        base_directory = os.path.join('CyberScriptCore', 'inspector', 'scripts', 'tests')
 
         platform_directories = {
             'macos': 'mac',

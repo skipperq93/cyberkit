@@ -91,7 +91,7 @@
 
 2019-03-28  Jon Davis  <jond@apple.com>
 
-        Fix font family for WebKit.org
+        Fix font family for CyberKit.org
         https://bugs.webkit.org/show_bug.cgi?id=196311
 
         Reviewed by Myles C. Maxfield.
@@ -116,7 +116,7 @@
 
 2019-02-20  Jon Davis  <jond@apple.com>
 
-        Added macOS Mojave builds to the WebKit Build Archives.
+        Added macOS Mojave builds to the CyberKit Build Archives.
         https://bugs.webkit.org/show_bug.cgi?id=190908
 
         Reviewed by Lucas Forschler.
@@ -667,7 +667,7 @@
 
 2018-06-14  Jon Davis  <jond@apple.com>
 
-        Minor layout fix for WebKit Feature Status Page
+        Minor layout fix for CyberKit Feature Status Page
         https://bugs.webkit.org/show_bug.cgi?id=186539
 
         Reviewed by Timothy Hatcher.
@@ -761,7 +761,7 @@
 
 2018-05-23  Roy Reapor  <rreapor@apple.com>
 
-        Remove Source Sans Pro from WebKit website
+        Remove Source Sans Pro from CyberKit website
         https://bugs.webkit.org/show_bug.cgi?id=185871
 
         Reviewed by Aakash Jain.
@@ -1081,7 +1081,7 @@
 
         The Build Archive page depends on the collections (e.g. HTMLCollection) being
         iterable so as to support iteration using ES6 for-of loop. Such support postdates
-        the version of WebKit shipped in macOS Sierra and OS X El Capitan. We should
+        the version of CyberKit shipped in macOS Sierra and OS X El Capitan. We should
         make <https://webkit.org/build-archives/> work for these OSes since we still publish
         nightlies for them.
 
@@ -1099,7 +1099,7 @@
 
 2017-10-02  Jon Davis  <jond@apple.com>
 
-        Add a WebKit Build Archives page
+        Add a CyberKit Build Archives page
         https://bugs.webkit.org/show_bug.cgi?id=177654
 
         Reviewed by Alexey Proskuryakov.
@@ -1255,7 +1255,7 @@
 
 2017-06-07  Jon Davis  <jond@apple.com>
 
-        Update the design of the WebKit Feature Status page
+        Update the design of the CyberKit Feature Status page
         https://bugs.webkit.org/show_bug.cgi?id=173036
 
         Reviewed by Simon Fraser.
@@ -1357,7 +1357,7 @@
 
 2017-05-14  James Craig  <jcraig@apple.com>
 
-        AX: All the articles on the WebKit blog are called "Clickable Link" by VoiceOver
+        AX: All the articles on the CyberKit blog are called "Clickable Link" by VoiceOver
         https://bugs.webkit.org/show_bug.cgi?id=172096
         <rdar://problem/31624323>
 
@@ -1389,7 +1389,7 @@
 
 2017-04-18  Jon Davis  <jond@apple.com>
 
-        Images in WebKit.org blog article are stretched out
+        Images in CyberKit.org blog article are stretched out
         https://bugs.webkit.org/show_bug.cgi?id=169208
 
         Reviewed by Michael Catanzaro.
@@ -1537,7 +1537,7 @@
 
         Reviewed by Sam Weinig.
 
-        Add a page that shows the status of CSS properties and values, scraped from Source/WebCore/css/CSSProperties.json.
+        Add a page that shows the status of CSS properties and values, scraped from Source/CyberCore/css/CSSProperties.json.
 
         This is modeled after the feature status page. Properties can be filtered by status
         and the spec they belong to.
@@ -1581,7 +1581,7 @@
 
 2017-02-06  Jon Davis  <jond@apple.com>
 
-        Add a survey to learn how people use WebKit Nightly builds
+        Add a survey to learn how people use CyberKit Nightly builds
         https://bugs.webkit.org/show_bug.cgi?id=167748
 
         Reviewed by Joseph Pecoraro.
@@ -1701,7 +1701,7 @@
 
 2016-12-02  Dean Jackson  <dino@apple.com>
 
-        Make a public facing page to check for WebKit features
+        Make a public facing page to check for CyberKit features
         https://bugs.webkit.org/show_bug.cgi?id=165331
         <rdar://problem/29488535>
 
@@ -1926,7 +1926,7 @@
 
 2016-07-14  Jon Davis  <jond@apple.com>
 
-        Improved WebKit Nightly start page design.
+        Improved CyberKit Nightly start page design.
         https://bugs.webkit.org/show_bug.cgi?id=159780
 
         Reviewed by Timothy Hatcher.
@@ -2016,7 +2016,7 @@
 
         This patch addresses Open Graph meta data issues:
 
-        - Added a high-resolution PNG of the WebKit logo because Facebook doesn't support SVG images
+        - Added a high-resolution PNG of the CyberKit logo because Facebook doesn't support SVG images
         - Uses the first image of a page or post if not featured image is set
         - Article date/time information should not be given for the homepage
         - Added Facebook admins as per the Facebook Open Graph debugger
@@ -2076,7 +2076,7 @@
 
 2016-06-24  Jon Davis  <jond@apple.com>
 
-        Rewrite the WebKit Nightly build download URLs to use the correct secure URL.
+        Rewrite the CyberKit Nightly build download URLs to use the correct secure URL.
         https://bugs.webkit.org/show_bug.cgi?id=159100.
 
         Reviewed by Joseph Pecoraro.
@@ -2296,7 +2296,7 @@
 
 2016-03-29  Jon Davis  <jond@apple.com>
 
-        Add WebKit Nightly Archives, WebKit Nightly Start, and Downloads pages
+        Add CyberKit Nightly Archives, CyberKit Nightly Start, and Downloads pages
         https://bugs.webkit.org/show_bug.cgi?id=155989
 
         Reviewed by Timothy Hatcher.
@@ -2686,7 +2686,7 @@
 
 2015-12-07  Jonathan Davis  <jond@apple.com>
 
-        Implemented a workaround for sharp SVG WebKit logo.
+        Implemented a workaround for sharp SVG CyberKit logo.
         https://bugs.webkit.org/show_bug.cgi?id=151971
 
         Reviewed by Timothy Hatcher.
@@ -2967,8 +2967,8 @@
         * misc: Removed.
         * misc/DatabaseExample.html: Removed.
         * misc/DatabaseTester.html: Removed.
-        * misc/WebKitDetect.html: Removed.
-        * misc/WebKitDetect.js: Removed.
+        * misc/CyberKitDetect.html: Removed.
+        * misc/CyberKitDetect.js: Removed.
         * misc/drosera: Removed.
         * misc/drosera/demo.js: Removed.
         * misc/drosera/drosera.png: Removed.
@@ -3776,7 +3776,7 @@
 
 2015-06-30  Jonathan Davis  <jond@apple.com>
 
-        Added WebKit feature status page to navigation.
+        Added CyberKit feature status page to navigation.
 
         Reviewed by Timothy Hatcher.
 
@@ -3951,12 +3951,12 @@
 
 2015-01-30  Chris Dumez  <cdumez@apple.com>
 
-        Add "Singleton pattern" section to the WebKit coding style
+        Add "Singleton pattern" section to the CyberKit coding style
         https://bugs.webkit.org/show_bug.cgi?id=141040
 
         Reviewed by Ryosuke Niwa.
 
-        Add "Singleton pattern" section to the WebKit coding style to document
+        Add "Singleton pattern" section to the CyberKit coding style to document
         what was discussed on webkit-dev:
         https://lists.webkit.org/pipermail/webkit-dev/2015-January/027199.html
 
@@ -3964,11 +3964,11 @@
 
 2015-01-27  Daniel Bates  <dabates@apple.com>
 
-        Update Xcode requirement and add instructions to build, run, and debug WebKit for iOS Simulator
+        Update Xcode requirement and add instructions to build, run, and debug CyberKit for iOS Simulator
 
         Reviewed by David Kilzer.
 
-        * building/build.html: Added instructions to build WebKit for iOS Simulator.
+        * building/build.html: Added instructions to build CyberKit for iOS Simulator.
         * building/debug.html: Added some instructions to debug the UIProcess and WebProcess
         in the iOS Simulator using command line tools. We should look to add Xcode instructions
         and simplify these steps once we teach debug-safari about the iOS Simulator.
@@ -3978,7 +3978,7 @@
 
 2014-09-27  Dan Bernstein  <mitz@apple.com>
 
-        WebKit top of tree sources won't build in 10.9 w/ Xcode 6.0.1
+        CyberKit top of tree sources won't build in 10.9 w/ Xcode 6.0.1
         https://bugs.webkit.org/show_bug.cgi?id=137053
 
         Reviewed by Mark Rowe.
@@ -3987,7 +3987,7 @@
 
 2014-09-26  Alexey Proskuryakov  <ap@apple.com>
 
-        WebKit top of tree sources won't build in 10.9 w/ Xcode 6.0.1
+        CyberKit top of tree sources won't build in 10.9 w/ Xcode 6.0.1
         https://bugs.webkit.org/show_bug.cgi?id=137053
 
         Patch by David Gatwood. Reviewed, tweaked and landed by Alexey Proskuryakov.
@@ -4286,8 +4286,8 @@
         Reviewed by Simon Fraser.
 
         * blog/wp-content/textfield_screenshot.jpg:
-        * misc/WebKitDetect.html:
-        * misc/WebKitDetect.js:
+        * misc/CyberKitDetect.html:
+        * misc/CyberKitDetect.js:
         * perf/sunspider-0.9.1/sunspider-0.9.1/driver.html:
         * perf/sunspider-0.9.1/sunspider-0.9.1/results.html:
         * perf/sunspider-0.9.1/sunspider-0.9.1/sunspider-test-contents.js:
@@ -4369,7 +4369,7 @@
         a number of subtle ways.
 
         * coding/coding-style.html: Change "left side operator" example to be a more modern example
-        without non-WebKit-style abbreviations and such. Use auto& instead of const auto& in for loop
+        without non-CyberKit-style abbreviations and such. Use auto& instead of const auto& in for loop
         example, since that's normally preferred. Changed section title to say "zero" instead of "0".
         Use words instead of abbreviations in code examples. Show that a modern C++ for loop is preferred
         over index iteration in vector iteration example and also showed use of unsigned rather than
@@ -4464,7 +4464,7 @@
 
         <https://webkit.org/b/125027> Update the analytics account used by webkit.org
 
-        Switch to a Google Analytics id that's accessible to someone that's involved with the WebKit project.
+        Switch to a Google Analytics id that's accessible to someone that's involved with the CyberKit project.
 
         Reviewed by Sam Weinig.
 
@@ -4645,7 +4645,7 @@
 
         Rubberstamped by Simon Fraser.
 
-        The CSS of WebKit.org layout the content on 615px + a right margin of
+        The CSS of CyberKit.org layout the content on 615px + a right margin of
         215px + a left margin of 20px. The total layout width is 850px.
 
         The standard viewport size on mobile devices is 980px. This leaves a gap
@@ -4679,9 +4679,9 @@
 
         Update the images for the blog size-matters
 
-        * blog-files/size-matters/JavaScriptCore-relative-binary-growth.png: Added.
-        * blog-files/size-matters/WebCore-relative-binary-growth.png: Added.
-        * blog-files/size-matters/WebKit-relative-binary-growth.png: Added.
+        * blog-files/size-matters/CyberScriptCore-relative-binary-growth.png: Added.
+        * blog-files/size-matters/CyberCore-relative-binary-growth.png: Added.
+        * blog-files/size-matters/CyberKit-relative-binary-growth.png: Added.
 
 2013-08-05  Dean Jackson  <dino@apple.com>
 
@@ -4707,9 +4707,9 @@
 
         * blog-files/size-matters: Added.
         * blog-files/size-matters/JavaScript-growth.png: Added.
-        * blog-files/size-matters/WebCore-growth-baseline.png: Added.
-        * blog-files/size-matters/WebCore-growth.png: Added.
-        * blog-files/size-matters/WebKit-growth.png: Added.
+        * blog-files/size-matters/CyberCore-growth-baseline.png: Added.
+        * blog-files/size-matters/CyberCore-growth.png: Added.
+        * blog-files/size-matters/CyberKit-growth.png: Added.
 
 2013-07-14  Kwang Yul Seo  <skyul@company100.net>
 
@@ -4749,7 +4749,7 @@
 
         Reviewed by Ryosuke Niwa.
 
-        Changed the page title of technical-articles.html to "WebKit Technical Articles".
+        Changed the page title of technical-articles.html to "CyberKit Technical Articles".
 
         * coding/technical-articles.html:
 
@@ -4898,7 +4898,7 @@
 
 2013-04-07  Benjamin Poulain  <bpoulain@apple.com>
 
-        Simplify the page "Getting the Code" on WebKit.org
+        Simplify the page "Getting the Code" on CyberKit.org
         https://bugs.webkit.org/show_bug.cgi?id=113980
 
         Reviewed by Sam Weinig.
@@ -4914,7 +4914,7 @@
 
 2013-04-04  Benjamin Poulain  <bpoulain@apple.com>
 
-        Update WebKit.org's contact page
+        Update CyberKit.org's contact page
         https://bugs.webkit.org/show_bug.cgi?id=113968
 
         Reviewed by Geoffrey Garen.
@@ -4999,12 +4999,12 @@
 
 2012-12-11  Ryosuke Niwa  <rniwa@webkit.org>
 
-        Add instructions on how to build WebKit on Xcode 4 to build.html
+        Add instructions on how to build CyberKit on Xcode 4 to build.html
         https://bugs.webkit.org/show_bug.cgi?id=104739
 
         Reviewed by Daniel Bates.
 
-        Set the build directories to WebKitBuild.
+        Set the build directories to CyberKitBuild.
 
         * building/build.html:
 
@@ -5026,7 +5026,7 @@
 
 2012-10-31  Adam Barth  <abarth@webkit.org>
 
-        technical-articles.html should link to my talk on how WebKit works
+        technical-articles.html should link to my talk on how CyberKit works
         https://bugs.webkit.org/show_bug.cgi?id=100867
 
         Reviewed by Tony Chang.
@@ -5144,7 +5144,7 @@
 
 2012-05-11  Darin Adler  <darin@apple.com>
 
-        Add a link to WebKit trademark terms of use, other small website changes
+        Add a link to CyberKit trademark terms of use, other small website changes
         https://bugs.webkit.org/show_bug.cgi?id=86112
 
         Reviewed by Dan Bernstein.
@@ -5153,7 +5153,7 @@
         Fixed awkward use of the phrase "per itself" and the use of "intent" where "intend"
         was intended.
 
-        * nav.inc: Added mention of the WebKit trademark and a link to the trademark terms
+        * nav.inc: Added mention of the CyberKit trademark and a link to the trademark terms
         of use on the macosforge.org terms of use page.
 
 2012-05-07  Dan Bernstein  <mitz@apple.com>
@@ -5163,7 +5163,7 @@
 
         Reviewed by Darin Adler.
 
-        * building/debug.html: Added instructions for setting up and using the WebKit workspace for
+        * building/debug.html: Added instructions for setting up and using the CyberKit workspace for
         debugging the Web process, as well as instructions for debugging the Web process from the
         command line using debug-safari and debug-minibrowser.
         * building/tools.html: Updated links and tweaked the language.
@@ -5257,7 +5257,7 @@
 
 2012-01-23  Seo Sanghyeon  <sh4.seo@samsung.com>
 
-        website: Reword WEBKITOUTPUTDIR documentation on Building WebKit page
+        website: Reword WEBKITOUTPUTDIR documentation on Building CyberKit page
         https://bugs.webkit.org/show_bug.cgi?id=76544
 
         Reviewed by Darin Adler.
@@ -5286,7 +5286,7 @@
 
 2012-01-19  Daniel Bates  <dbates@webkit.org>
 
-        Update Debugging on Mac OS X instructions for Safari 5.1/WebKit 2
+        Update Debugging on Mac OS X instructions for Safari 5.1/CyberKit 2
         https://bugs.webkit.org/show_bug.cgi?id=67102
 
         Reviewed by Eric Seidel.
@@ -5403,7 +5403,7 @@
 
         Reviewed by Darin Adler.
 
-        This matches the convention used throughout WebCore.
+        This matches the convention used throughout CyberCore.
 
         * coding/coding-style.html:
 
@@ -5418,7 +5418,7 @@
 
 2011-09-20  Ryosuke Niwa  <rniwa@webkit.org>
 
-        Generate WebKit team's page out of committers.py
+        Generate CyberKit team's page out of committers.py
         https://bugs.webkit.org/show_bug.cgi?id=68045
 
         Fix per Daniel's review comment since I had misunderstood the code.
@@ -5427,7 +5427,7 @@
 
 2011-09-20  Ryosuke Niwa  <rniwa@webkit.org>
 
-        Generate WebKit team's page out of committers.py
+        Generate CyberKit team's page out of committers.py
         https://bugs.webkit.org/show_bug.cgi?id=68045
 
         Reviewed by Daniel Bates.
@@ -5457,7 +5457,7 @@
 
 2011-08-16  Daniel Bates  <dbates@webkit.org>
 
-        Add myself to the list of individual members in the WebKit Security Group.
+        Add myself to the list of individual members in the CyberKit Security Group.
 
         Rubber-stamped by Eric Seidel.
 
@@ -5532,7 +5532,7 @@
 
         Reviewed by Drew Yao.
 
-        Add "Collaboration" to WebKit Security Group Privileges and Responsibilities section.
+        Add "Collaboration" to CyberKit Security Group Privileges and Responsibilities section.
 
         * security/index.html: Add "Collaboration" section with text discussed on webkit-security.
 
@@ -5550,7 +5550,7 @@
 
        Reviewed by Adam Barth.
 
-       Add Huzaifa Sidhpurwala to the WebKit Security Group site.
+       Add Huzaifa Sidhpurwala to the CyberKit Security Group site.
        https://bugs.webkit.org/show_bug.cgi?id=60686
 
        * security/security-group-members.html:
@@ -5572,7 +5572,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=60650
 
         Ademar (me) replaced Simon as the release manager and primary security
-        contact for QtWebKit. See:
+        contact for QtCyberKit. See:
         http://lists.webkit.org/mailman/private.cgi/webkit-security/2011-February/000584.html
 
         * security/security-group-members.html:
@@ -5695,7 +5695,7 @@
         This means reviewer nominations would require four supporting reviewers,
         one of which knows the reviewer through the community (irc, email, bugs)
         ensuring that the nominee has the open-source collaboration skills
-        we so highly value here in WebKit.
+        we so highly value here in CyberKit.
 
         * coding/commit-review-policy.html:
 
@@ -5703,18 +5703,18 @@
 
         Reviewed by Eric Seidel.
 
-        Move JavaScriptCore to Source
+        Move CyberScriptCore to Source
         https://bugs.webkit.org/show_bug.cgi?id=51604
 
         * coding/assertion-guidelines.html:
           - Update documentation to point to the new location of
-            JavaScriptCore.
+            CyberScriptCore.
 
 2010-12-17  Dan Bernstein  <mitz@apple.com>
 
         Reviewed by Simon Fraser.
 
-        Rename WebKitTools to Tools
+        Rename CyberKitTools to Tools
         https://bugs.webkit.org/show_bug.cgi?id=49861
 
         * asking_questions.html:
@@ -5850,15 +5850,15 @@
         Reviewed by Adam Barth.
 
         https://bugs.webkit.org/show_bug.cgi?id=43982
-        This js file seems to be a popular script for detecting mobile WebKit but
+        This js file seems to be a popular script for detecting mobile CyberKit but
         it has a flaw that makes it fail on Android and BlackBerry.
 
         The issue is that it looks for "Mobile/" but Android and BlackBerry
         use "Mobile" with no numbering after it.
         Changed RegExp pattern " Mobile/" to " Mobile\\b".
 
-        * misc/WebKitDetect.js:
-        (WebKitDetect.isMobile):
+        * misc/CyberKitDetect.js:
+        (CyberKitDetect.isMobile):
 
 2010-08-27  Darin Adler  <darin@apple.com>
 
@@ -5869,11 +5869,11 @@
 
         Reviewed by Dumitru Daniliuc.
 
-        Fix misspelled words on WebKit.org contact.html,
+        Fix misspelled words on CyberKit.org contact.html,
         demos/index.html, and quality/leakhunting.html
         https://bugs.webkit.org/show_bug.cgi?id=44747
 
-        Fix some misspelled words on the WebKit.org site.
+        Fix some misspelled words on the CyberKit.org site.
 
         * contact.html: Change "bugreports" [sic] to "bug reports".
         * demos/index.html: Change "testcase" [sic] to "test case".
@@ -5949,7 +5949,7 @@
 
         Reviewed by Geoffrey Garen.
 
-        Add an index of technical articles to the WebKit site.  This makes the
+        Add an index of technical articles to the CyberKit site.  This makes the
         links to the RefPtr and Assertion documentation discoverable and
         provides an easy way to find some useful blog posts.
 
@@ -5978,9 +5978,9 @@
         Reviewed by Steve Falkenburg.
 
         * building/debug.html: Improved the Windows instructions. We now
-        instruct users to set things up so that hitting F5 from WebKit.sln
+        instruct users to set things up so that hitting F5 from CyberKit.sln
         will launch Safari with the WEBKITNIGHTLY environment variable
-        pointing to the location of the built WebKit.dll.
+        pointing to the location of the built CyberKit.dll.
 
         * building/console_vs2005.jpg: Removed.
         * building/debug_vs2005.jpg: Removed.
@@ -5993,7 +5993,7 @@
 
         Reviewed by Darin Adler.
 
-        Add documentation on the various assertion macros in WebKit.
+        Add documentation on the various assertion macros in CyberKit.
 
         https://bugs.webkit.org/show_bug.cgi?id=39950
 
@@ -6239,7 +6239,7 @@
 
         Reviewed by Mark Rowe.
 
-        WebKit blog should be valid HTML5
+        CyberKit blog should be valid HTML5
         https://bugs.webkit.org/show_bug.cgi?id=36410
 
         * blog/wp-content/themes/webkit/comments-popup.php:
@@ -6335,11 +6335,11 @@
 
         Reviewed by Eric Seidel and Adam Roben.
 
-        Debugging WebKit on Windows should mention WebKit.sln as an alternative to running debug-safari.
+        Debugging CyberKit on Windows should mention CyberKit.sln as an alternative to running debug-safari.
         https://bugs.webkit.org/show_bug.cgi?id=35098
 
         * building/debug.html:
-        Add instructions on how to build and run WebKit from within Visual Studio.
+        Add instructions on how to build and run CyberKit from within Visual Studio.
 
 2010-02-20  Maciej Stachowiak  <mjs@apple.com>
 
@@ -6466,7 +6466,7 @@
         Reviewed by Adam Roben.
 
         Fixes: https://bugs.webkit.org/show_bug.cgi?id=31228
-        Set the WebKitOutputDir, WebKitLibrariesDir and Cygwin environment variables automatically
+        Set the CyberKitOutputDir, CyberKitLibrariesDir and Cygwin environment variables automatically
         in Windows as part of running update_webkit.
 
         * building/build.html:
@@ -6493,7 +6493,7 @@
         Reviewed by Darin Adler.
 
         Refactored web site documentation so that advice to add
-        WebKitTools/Scripts to your shell path does not appear
+        CyberKitTools/Scripts to your shell path does not appear
         on multiple pages.
 
         https://bugs.webkit.org/show_bug.cgi?id=32112
@@ -6530,7 +6530,7 @@
 
         - Expanded the style guidelines regarding "using" statements.
         - Made the style guidelines page validate as HTML.
-        - Added that legacy WebKit components should not be cleaned up.
+        - Added that legacy CyberKit components should not be cleaned up.
         - Added that it is more acceptable to update style when already
           touching code.
 
@@ -6582,7 +6582,7 @@
 
         Reviewed by Darin Adler.
 
-        Added to the WebKit Coding Style Guidelines not to use
+        Added to the CyberKit Coding Style Guidelines not to use
         "using namespace" statements in header files.
 
         * coding/coding-style.html:
@@ -7043,7 +7043,7 @@
 
         Reviewed by Oliver Hunt.
 
-        Document relation between major objects in WebCore
+        Document relation between major objects in CyberCore
         https://bugs.webkit.org/show_bug.cgi?id=28210
 
         Added a diagram showing the relation between major objects.
@@ -7180,7 +7180,7 @@
 
         Reviewed by Timothy Hatcher.
 
-        Add WebKit Security Policy and member list of the WebKit Security Group.
+        Add CyberKit Security Policy and member list of the CyberKit Security Group.
 
         * nav.inc:
         * security: Added.
@@ -7375,10 +7375,10 @@
 
         Fixes: https://bugs.webkit.org/show_bug.cgi?id=22908.
         Update website so that newbies are told they must set the
-        WebKitOutputDir to get a valid build.
+        CyberKitOutputDir to get a valid build.
 
         * building/build.html: Add language (and link) indicating the
-        importance of setting the WebKitOutputDir variable, as well
+        importance of setting the CyberKitOutputDir variable, as well
         as a link to instructions on how to do so.
 
 2008-12-19  Dean Jackson  <dino@apple.com>
@@ -7391,7 +7391,7 @@
 
 2008-12-03  Dean Jackson  <dino@apple.com>
 
-        Added links to the WebKit and Mozilla bugs for pointer-events.
+        Added links to the CyberKit and Mozilla bugs for pointer-events.
 
         * specs/PointerEventsProperty.html:
 
@@ -7426,7 +7426,7 @@
         Reviewed by David Kilzer.
 
         * projects/documentation/index.html: Added link to "Introduction to
-        WebKit Objective-C Programming Guide".
+        CyberKit Objective-C Programming Guide".
 
 2008-11-24  Dean Jackson  <dino@apple.com>
 
@@ -7547,7 +7547,7 @@
 
         * contact.html: Take a cut at making the role of webkitsdk-dev
         clearer, specifying that it's Mac OS X specific and hosted at
-        Apple, not WebKit.
+        Apple, not CyberKit.
 
 2008-09-24  Timothy Hatcher  <timothy@apple.com>
 
@@ -7671,7 +7671,7 @@
         Reviewed by Eric Seidel.
 
         Fix for <https://bugs.webkit.org/show_bug.cgi?id=16719>
-        Removed basic requirements for undetected version of WebKit.
+        Removed basic requirements for undetected version of CyberKit.
 
         * quality/reporting.html:
 
@@ -8071,7 +8071,7 @@
         Rubberstamped by Mitz.
 
         * perf/slickspeed/config.ini:
-        * perf/slickspeed/frameworks/jquery-1.2.3.js: Renamed from WebKitSite/perf/slickspeed/frameworks/jquery-1.2.1.js.
+        * perf/slickspeed/frameworks/jquery-1.2.3.js: Renamed from CyberKitSite/perf/slickspeed/frameworks/jquery-1.2.1.js.
 
 2008-02-07  David Smith  <catfish.man@gmail.com>
 
@@ -8108,10 +8108,10 @@
 
         Reviewed by Oliver.
 
-        Update the selector benchmark/test now that WebKit supports :only-child and :last-child;
+        Update the selector benchmark/test now that CyberKit supports :only-child and :last-child;
         Unfortunately, the javascript libraries don't appear to implement :*-of-type correctly, so that one remains disabled for now.
 
-        * perf/slickspeed/header.html: Typo fix, and updated the note to clarify that WebKit is no longer the only implementation causing us to leave some selectors disabled.
+        * perf/slickspeed/header.html: Typo fix, and updated the note to clarify that CyberKit is no longer the only implementation causing us to leave some selectors disabled.
         * perf/slickspeed/selectors.list: Added the new selectors
 
 2008-02-02  Mark Rowe  <mrowe@apple.com>
@@ -8344,7 +8344,7 @@
 
         Reviewed by Mark Rowe.
 
-        Link to Planet WebKit.
+        Link to Planet CyberKit.
 
         * nav.inc:
 
@@ -8444,7 +8444,7 @@
 
         Reviewed by Darin Adler.
 
-        - removed a workaround for the bug fixed in the WebCore part of this
+        - removed a workaround for the bug fixed in the CyberCore part of this
           patch
 
 2007-11-04  Timothy Hatcher  <timothy@apple.com>
@@ -8549,7 +8549,7 @@
         - fix http://bugs.webkit.org/show_bug.cgi?id=15592
           DOM Exception opening up client-side database example for the first time
 
-        There was a race condition when creating the WebKitStickyNotes table for the
+        There was a race condition when creating the CyberKitStickyNotes table for the
         first time in which the loaded() function (renamed to loadNotes()) could be
         called before the table was created.  Prevent this by only calling loadNotes()
         in an executeSql() callback after we know the table exists, or after we know
@@ -8661,13 +8661,13 @@
 
         Forgot the JS file.
 
-        * misc/WebKitDetect.js: Added.
+        * misc/CyberKitDetect.js: Added.
 
 2007-09-06  Maciej Stachowiak  <mjs@apple.com>
 
-        Not reviewed - copy of WebKitDetect script from wiki
+        Not reviewed - copy of CyberKitDetect script from wiki
 
-        * misc/WebKitDetect.html: Added.
+        * misc/CyberKitDetect.html: Added.
 
 2007-08-20  Adam Roben  <aroben@apple.com>
 
@@ -8687,7 +8687,7 @@
 
         Rubber stamped by Adam.
 
-        Added WebKit Project Goals.
+        Added CyberKit Project Goals.
 
         * nav.inc: added a nav link.
         * projects/goals.html: Added.
@@ -9051,7 +9051,7 @@
         Reviewed by Brady.
 
         http://bugs.webkit.org/show_bug.cgi?id=10254
-        A few grammar and spelling corrections on the WebKit website
+        A few grammar and spelling corrections on the CyberKit website
 
         Grammar and spelling corrections by Jonathan Johnsson.
 
@@ -9119,7 +9119,7 @@
         Reviewed by Dave Hyatt.
 
         * projects/javascript/index.html: Update link to non-existent JavaScript Bugzilla
-        component to the correct JavaScriptCore.
+        component to the correct CyberScriptCore.
 
 2006-11-06  Timothy Hatcher  <timothy@apple.com>
 
@@ -9137,7 +9137,7 @@
 
         Reviewed by Mitz.
 
-        Update WebKit blog link to prevent pointless redirects.
+        Update CyberKit blog link to prevent pointless redirects.
 
         * nav.inc:
 
@@ -9243,9 +9243,9 @@
         * projects/printing/index.html:
         * projects/svg/index.html:
         * projects/xslt/index.html:
-        * quality/bugwriting.html: Update WebKit version numbers to be accurate.  Move JS away from using innerHTML as W3C validator doesn't like it.
+        * quality/bugwriting.html: Update CyberKit version numbers to be accurate.  Move JS away from using innerHTML as W3C validator doesn't like it.
         * quality/reduction.html:
-        * quality/reporting.html: Rename element IDs that start with numbers.  Update WebKit and Mac OS X version numbers to be accurate.
+        * quality/reporting.html: Rename element IDs that start with numbers.  Update CyberKit and Mac OS X version numbers to be accurate.
         * quality/testing.html:
 
 2006-09-19  Brady Eidson  <beidson@apple.com>
@@ -9279,7 +9279,7 @@
 
         Reviewed by Darin Adler.
 
-        Bug 9302: WebKit nightly download image says ~2.5 MB when
+        Bug 9302: CyberKit nightly download image says ~2.5 MB when
         universal binaries make it ~5.0 MB
         http://bugs.webkit.org/show_bug.cgi?id=9302
 
@@ -9360,7 +9360,7 @@
         - see http://bugs.webkit.org/show_bug.cgi?id=9539
         Another case error preventing build
 
-        * building/build.html: Building WebKit now requires Xcode 2.3.
+        * building/build.html: Building CyberKit now requires Xcode 2.3.
 
 2006-06-21  Joost de Valk  <jdevalk@opendarwin.org>
 
@@ -9400,7 +9400,7 @@
         Reviewed by ggaren.
 
         http://bugs.webkit.org/show_bug.cgi?id=9303
-        JavaScript error when loading WebKit blog page
+        JavaScript error when loading CyberKit blog page
 
         * blog/wp-content/themes/webkit/sidebar.php: Removed unused JavaScript.  Synced with nav.inc.
         * nav.inc: Removed evil tabs--whitespace change only.
@@ -9425,7 +9425,7 @@
 
         Reviewed by Timothy.
 
-        * index.html: Link to Nokia's S60 WebKit.
+        * index.html: Link to Nokia's S60 CyberKit.
 
 2006-05-08  Joost de Valk  <jdevalk@opendarwin.org>
 
@@ -9443,7 +9443,7 @@
 
         Reviewed by Eric Seidel .
 
-        Added WebKit detection scripts and a small howto + a new section to our
+        Added CyberKit detection scripts and a small howto + a new section to our
         website: Web Developers.
 
         * nav.inc:
@@ -9901,7 +9901,7 @@ bold in single view.
         Reviewed by Darin Adler. Landed by ap.
 
         - fixes from http://bugs.webkit.org/show_bug.cgi?id=4871
-        "Reporting Bugs" Page Should Prompt User To Test In Newest Version of WebKit
+        "Reporting Bugs" Page Should Prompt User To Test In Newest Version of CyberKit
 
         * quality/reporting.html:
         * webkitdev.css: Added margin-bottom for li.

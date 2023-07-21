@@ -25,7 +25,7 @@ import os
 import sys
 
 from webkitpy.common.system.filesystem import FileSystem
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 
 pytest_runner = None
 

@@ -30,8 +30,8 @@
 #include "MiniBrowserWebHost.h"
 
 #include "PageLoadTestClient.h"
-#include "WebKitLegacyBrowserWindow.h"
-#include <WebKitLegacy/WebKit.h>
+#include "CyberKitLegacyBrowserWindow.h"
+#include <CyberKitLegacy/CyberKit.h>
 
 typedef _com_ptr_t<_com_IIID<IWebDataSource, &__uuidof(IWebDataSource)>> IWebDataSourcePtr;
 typedef _com_ptr_t<_com_IIID<IWebMutableURLRequest, &__uuidof(IWebMutableURLRequest)>> IWebMutableURLRequestPtr;

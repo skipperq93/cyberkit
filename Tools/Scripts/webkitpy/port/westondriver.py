@@ -69,7 +69,7 @@ class WestonDriver(Driver):
 
         driver_environment['LOCAL_RESOURCE_ROOT'] = self._port.layout_tests_dir()
         if self._driver_tempdir is not None:
-            # Currently on WebKit2, there is no API for setting the application cache directory.
+            # Currently on CyberKit2, there is no API for setting the application cache directory.
             # Each worker should have its own and it should be cleaned afterwards, when the worker stops.
             driver_environment['XDG_CACHE_HOME'] = self._port.host.filesystem.join(str(self._driver_tempdir), 'appcache')
             driver_environment['DUMPRENDERTREE_TEMP'] = str(self._driver_tempdir)

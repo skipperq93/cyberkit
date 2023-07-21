@@ -26,7 +26,7 @@
 #ifndef HistoryDelegate_h
 #define HistoryDelegate_h
 
-#include <WebKitLegacy/WebKit.h>
+#include <CyberKitLegacy/CyberKit.h>
 
 class HistoryDelegate : public IWebHistoryDelegate {
 public:

@@ -8,7 +8,7 @@ document.addEventListener("securitypolicyviolation", async () => {
     let counter = 0;
     let text;
     while (++counter <= 20) {
-        const response = await fetch("/WebKit/fetch/resources/store-csp-report.py?retrieve=true&file=reports-bypass-csp-checks");
+        const response = await fetch("/CyberKit/fetch/resources/store-csp-report.py?retrieve=true&file=reports-bypass-csp-checks");
         text = await response.text();
         // Let's check whether we have a CSP report.
         if (text.startsWith("{"))

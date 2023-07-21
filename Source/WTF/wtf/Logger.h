@@ -124,7 +124,7 @@ public:
     inline void logAlways(WTFLogChannel& channel, UNUSED_FUNCTION const Arguments&... arguments) const
     {
 #if RELEASE_LOG_DISABLED
-        // "Standard" WebCore logging goes to stderr, which is captured in layout test output and can generally be a problem
+        // "Standard" CyberCore logging goes to stderr, which is captured in layout test output and can generally be a problem
         //  on some systems, so don't allow it.
         UNUSED_PARAM(channel);
 #else

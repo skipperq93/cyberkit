@@ -1,4 +1,4 @@
-# The static runtime is required for AppleWin due to WebKitSystemInterface.lib
+# The static runtime is required for AppleWin due to CyberKitSystemInterface.lib
 # being compiled with a static runtime.
 set(MSVC_STATIC_RUNTIME ON)
 
@@ -74,5 +74,5 @@ add_compile_options(/WX /Wv:18)
 
 if (INTERNAL_BUILD)
     set(WTF_SCRIPTS_DIR "${CMAKE_BINARY_DIR}/../include/private/WTF/Scripts")
-    set(JavaScriptCore_SCRIPTS_DIR "${CMAKE_BINARY_DIR}/../include/private/JavaScriptCore/Scripts")
+    set(CyberScriptCore_SCRIPTS_DIR "${CMAKE_BINARY_DIR}/../include/private/CyberScriptCore/Scripts")
 endif ()

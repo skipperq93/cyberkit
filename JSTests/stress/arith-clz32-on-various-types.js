@@ -13,7 +13,7 @@ let validInputTestCases = [
     ["Infinity", "32"],
     ["-Infinity", "32"],
     ["NaN", "32"],
-    ["\"WebKit\"", "32"],
+    ["\"CyberKit\"", "32"],
     ["\"4\"", "29"],
     ["{ valueOf: () => { return 4; } }", "29"],
 ];

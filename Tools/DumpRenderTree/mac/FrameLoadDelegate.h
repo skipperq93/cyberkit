@@ -27,7 +27,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <WebKit/WebFrameLoadDelegate.h>
+#import <CyberKit/WebFrameLoadDelegate.h>
 
 class AccessibilityController;
 class GCController;

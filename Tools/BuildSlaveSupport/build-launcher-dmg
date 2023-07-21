@@ -27,7 +27,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Script used by build slaves to create a disk-image containing WebKit.app.
+# Script used by build slaves to create a disk-image containing CyberKit.app.
 
 use strict;
 use warnings;
@@ -38,7 +38,7 @@ use FindBin;
 use lib "$FindBin::Bin/../Scripts";
 use webkitdirs;
 
-my $nightlyLauncherStagingPath = productDir() . "/WebKit.app";
+my $nightlyLauncherStagingPath = productDir() . "/CyberKit.app";
 my $droseraStagingPath = productDir() . "/DroseraLauncher.app";
 my $nightlyLauncherDiskImagePath;
 
@@ -50,30 +50,30 @@ sub buildDiskImage
 {
     my $revision = currentSVNRevision();
     my $productDir = productDir();
-    $nightlyLauncherDiskImagePath = productDir() . "/WebKit-SVN-r$revision.dmg";
+    $nightlyLauncherDiskImagePath = productDir() . "/CyberKit-SVN-r$revision.dmg";
     
     print "Removing previous temp source directory (if any)...\n";
-    `rm -rf /tmp/WebKitNightly`;
+    `rm -rf /tmp/CyberKitNightly`;
     die "Removing previous temp source directory failed" if $?;
 
     print "Making a new temp source directory...\n";
-    `mkdir /tmp/WebKitNightly`;
+    `mkdir /tmp/CyberKitNightly`;
     die "Making a new temp source directory failed" if $?;
 
-    print "Copying WebKit.app to temp source directory...\n";
-    `cp -R \"$nightlyLauncherStagingPath\" /tmp/WebKitNightly/WebKit.app`;
-    die "Copying WebKit.app to temp source directory failed" if $?;
+    print "Copying CyberKit.app to temp source directory...\n";
+    `cp -R \"$nightlyLauncherStagingPath\" /tmp/CyberKitNightly/CyberKit.app`;
+    die "Copying CyberKit.app to temp source directory failed" if $?;
 
     print "Copying Drosera.app to temp source directory...\n";
-    `cp -R \"$droseraStagingPath\" /tmp/WebKitNightly/Drosera.app`;
+    `cp -R \"$droseraStagingPath\" /tmp/CyberKitNightly/Drosera.app`;
     die "Copying Drosera.app to temp source directory failed" if $?;
 
     print "Creating disk image...\n";
-    `hdiutil create \"$nightlyLauncherDiskImagePath\" -ov -srcfolder /tmp/WebKitNightly -fs HFS+ -volname \"WebKit\"`;
+    `hdiutil create \"$nightlyLauncherDiskImagePath\" -ov -srcfolder /tmp/CyberKitNightly -fs HFS+ -volname \"CyberKit\"`;
     die "Creating disk image failed" if $?;
 
     print "Removing temp source directory...\n";
-    `rm -rf /tmp/WebKitNightly`;
+    `rm -rf /tmp/CyberKitNightly`;
     die "Removing temp source directory failed" if $?;
 
     print "Compressing disk image...\n";
@@ -107,7 +107,7 @@ GetOptions('upload-to-host=s' => \$uploadTo,
            'upload-as-nightly!' => \$nightlyBuild,
            'tag=s' => \$buildTag);
 
-chdirWebKit();
+chdirCyberKit();
 buildDiskImage($buildTag);
 
 if ($nightlyBuild) {

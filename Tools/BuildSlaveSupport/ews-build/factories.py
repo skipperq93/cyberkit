@@ -25,11 +25,11 @@ from buildbot.process import factory
 from buildbot.steps import trigger
 
 from steps import (ApplyPatch, CheckOutSource, CheckOutSpecificRevision, CheckPatchRelevance,
-                   CheckStyle, CompileJSCOnly, CompileJSCOnlyToT, CompileWebKit, ConfigureBuild,
+                   CheckStyle, CompileJSCOnly, CompileJSCOnlyToT, CompileCyberKit, ConfigureBuild,
                    DownloadBuiltProduct, ExtractBuiltProduct, InstallGtkDependencies, InstallWpeDependencies, KillOldProcesses,
-                   PrintConfiguration, ReRunJavaScriptCoreTests, RunAPITests, RunBindingsTests,
-                   RunJavaScriptCoreTests, RunJavaScriptCoreTestsToT, RunWebKit1Tests, RunWebKitPerlTests,
-                   RunWebKitPyTests, RunWebKitTests, UnApplyPatchIfRequired, ValidatePatch)
+                   PrintConfiguration, ReRunCyberScriptCoreTests, RunAPITests, RunBindingsTests,
+                   RunCyberScriptCoreTests, RunCyberScriptCoreTestsToT, RunCyberKit1Tests, RunCyberKitPerlTests,
+                   RunCyberKitPyTests, RunCyberKitTests, UnApplyPatchIfRequired, ValidatePatch)
 
 
 class Factory(factory.BuildFactory):
@@ -60,23 +60,23 @@ class BindingsFactory(Factory):
         self.addStep(RunBindingsTests())
 
 
-class WebKitPerlFactory(Factory):
+class CyberKitPerlFactory(Factory):
     def __init__(self, platform, configuration=None, architectures=None, additionalArguments=None, **kwargs):
         Factory.__init__(self, platform, configuration, architectures, False, additionalArguments)
-        self.addStep(RunWebKitPerlTests())
+        self.addStep(RunCyberKitPerlTests())
 
 
-class WebKitPyFactory(Factory):
+class CyberKitPyFactory(Factory):
     def __init__(self, platform, configuration=None, architectures=None, additionalArguments=None, **kwargs):
         Factory.__init__(self, platform, configuration, architectures, False, additionalArguments, checkRelevance=True)
-        self.addStep(RunWebKitPyTests())
+        self.addStep(RunCyberKitPyTests())
 
 
 class BuildFactory(Factory):
     def __init__(self, platform, configuration=None, architectures=None, triggers=None, additionalArguments=None, **kwargs):
         Factory.__init__(self, platform, configuration, architectures, False, triggers, additionalArguments)
         self.addStep(KillOldProcesses())
-        self.addStep(CompileWebKit())
+        self.addStep(CompileCyberKit())
 
 
 class TestFactory(Factory):
@@ -103,10 +103,10 @@ class JSCTestsFactory(Factory):
         self.addStep(CompileJSCOnly())
         self.addStep(UnApplyPatchIfRequired())
         self.addStep(CompileJSCOnlyToT())
-        self.addStep(RunJavaScriptCoreTests())
-        self.addStep(ReRunJavaScriptCoreTests())
+        self.addStep(RunCyberScriptCoreTests())
+        self.addStep(ReRunCyberScriptCoreTests())
         self.addStep(UnApplyPatchIfRequired())
-        self.addStep(RunJavaScriptCoreTestsToT())
+        self.addStep(RunCyberScriptCoreTestsToT())
 
 
 class APITestsFactory(TestFactory):
@@ -118,7 +118,7 @@ class iOSBuildFactory(BuildFactory):
 
 
 class iOSTestsFactory(TestFactory):
-    LayoutTestClass = RunWebKitTests
+    LayoutTestClass = RunCyberKitTests
 
 
 class macOSBuildFactory(BuildFactory):
@@ -126,11 +126,11 @@ class macOSBuildFactory(BuildFactory):
 
 
 class macOSWK1Factory(TestFactory):
-    LayoutTestClass = RunWebKit1Tests
+    LayoutTestClass = RunCyberKit1Tests
 
 
 class macOSWK2Factory(TestFactory):
-    LayoutTestClass = RunWebKitTests
+    LayoutTestClass = RunCyberKitTests
 
 
 class WindowsFactory(Factory):
@@ -141,7 +141,7 @@ class WinCairoFactory(Factory):
     def __init__(self, platform, configuration=None, architectures=None, triggers=None, additionalArguments=None, **kwargs):
         Factory.__init__(self, platform, configuration, architectures, True, triggers, additionalArguments)
         self.addStep(KillOldProcesses())
-        self.addStep(CompileWebKit(skipUpload=True))
+        self.addStep(CompileCyberKit(skipUpload=True))
 
 
 class GTKFactory(Factory):
@@ -149,7 +149,7 @@ class GTKFactory(Factory):
         Factory.__init__(self, platform, configuration, architectures, True, triggers, additionalArguments)
         self.addStep(KillOldProcesses())
         self.addStep(InstallGtkDependencies())
-        self.addStep(CompileWebKit(skipUpload=True))
+        self.addStep(CompileCyberKit(skipUpload=True))
 
 
 class WPEFactory(Factory):
@@ -157,4 +157,4 @@ class WPEFactory(Factory):
         Factory.__init__(self, platform, configuration, architectures, True, triggers, additionalArguments)
         self.addStep(KillOldProcesses())
         self.addStep(InstallWpeDependencies())
-        self.addStep(CompileWebKit(skipUpload=True))
+        self.addStep(CompileCyberKit(skipUpload=True))

@@ -38,10 +38,10 @@ svn checkout http://svn.webkit.org/repository/webkit/trunk/Tools/EWSTools tools
 bash tools/configure-svn-config.sh
 bash tools/configure-svn-auth.sh $SVN_USERNAME $SVN_PASSWORD
 
-echo "Cloning WebKit git repository, process takes ~30m."
+echo "Cloning CyberKit git repository, process takes ~30m."
 echo "Note: No status output will be shown via remote pipe."
-git clone git://git.webkit.org/WebKit.git WebKit
-cd WebKit
+git clone git://git.webkit.org/CyberKit.git CyberKit
+cd CyberKit
 
 cat >> .git/config <<EOF
 [bugzilla]

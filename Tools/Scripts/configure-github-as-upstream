@@ -26,10 +26,10 @@
 # This script is intended to support the GitHub workflow described here:
 # https://trac.webkit.org/wiki/UsingGitHub
 #
-# This script adds WebKit's "root" repository on GitHub as a remote named
+# This script adds CyberKit's "root" repository on GitHub as a remote named
 # "upstream".  You can use sync-master-with-upstream to keep your master
-# branch in sync with WebKit's "root" repository.
+# branch in sync with CyberKit's "root" repository.
 
 import subprocess
 
-exit(subprocess.call(["git", "remote", "add", "upstream", "git://github.com/WebKit/webkit.git"]))
+exit(subprocess.call(["git", "remote", "add", "upstream", "git://github.com/CyberKit/webkit.git"]))

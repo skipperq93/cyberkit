@@ -1,13 +1,13 @@
 if (CMAKE_VERSION VERSION_LESS 3.14)
-    message(FATAL_ERROR "CMake 3.14 or greater is required to compile WebKitFTW")
+    message(FATAL_ERROR "CMake 3.14 or greater is required to compile CyberKitFTW")
 endif ()
 
 if (MSVC_VERSION VERSION_LESS 1920)
-    message(FATAL_ERROR "Visual Studio 2019 is required to compile WebKitFTW")
+    message(FATAL_ERROR "Visual Studio 2019 is required to compile CyberKitFTW")
 endif ()
 
 if (${WTF_CPU_X86})
-    message(FATAL_ERROR "WebKitFTW does not support 32-bit builds")
+    message(FATAL_ERROR "CyberKitFTW does not support 32-bit builds")
 endif ()
 
 set(PORT FTW)
@@ -29,7 +29,7 @@ if (NOT WEBKIT_LIBRARIES_DIR)
     if (DEFINED ENV{WEBKIT_LIBRARIES})
         file(TO_CMAKE_PATH "$ENV{WEBKIT_LIBRARIES}" WEBKIT_LIBRARIES_DIR)
     else ()
-        file(TO_CMAKE_PATH "${CMAKE_SOURCE_DIR}/WebKitLibraries/win" WEBKIT_LIBRARIES_DIR)
+        file(TO_CMAKE_PATH "${CMAKE_SOURCE_DIR}/CyberKitLibraries/win" WEBKIT_LIBRARIES_DIR)
     endif ()
 endif ()
 
@@ -227,7 +227,7 @@ SET_AND_EXPOSE_TO_BUILD(USE_EXPORT_MACROS ON)
 SET_AND_EXPOSE_TO_BUILD(USE_INSPECTOR_SOCKET_SERVER ${ENABLE_REMOTE_INSPECTOR})
 
 set(WTF_LIBRARY_TYPE SHARED)
-set(JavaScriptCore_LIBRARY_TYPE SHARED)
+set(CyberScriptCore_LIBRARY_TYPE SHARED)
 
 set(ENABLE_API_TESTS OFF)
 set(ENABLE_WEBCORE ON)
@@ -236,13 +236,13 @@ set(ENABLE_WEBKIT_LEGACY OFF)
 
 # Override headers directories
 set(WTF_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/WTF/Headers)
-set(JavaScriptCore_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/JavaScriptCore/Headers)
-set(JavaScriptCore_PRIVATE_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/JavaScriptCore/PrivateHeaders)
+set(CyberScriptCore_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/CyberScriptCore/Headers)
+set(CyberScriptCore_PRIVATE_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/CyberScriptCore/PrivateHeaders)
 
 # Override derived sources directories
 set(WTF_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/WTF/DerivedSources)
-set(JavaScriptCore_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/JavaScriptCore/DerivedSources)
+set(CyberScriptCore_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/CyberScriptCore/DerivedSources)
 
 # Override scripts directories
 set(WTF_SCRIPTS_DIR ${CMAKE_BINARY_DIR}/WTF/Scripts)
-set(JavaScriptCore_SCRIPTS_DIR ${CMAKE_BINARY_DIR}/JavaScriptCore/Scripts)
+set(CyberScriptCore_SCRIPTS_DIR ${CMAKE_BINARY_DIR}/CyberScriptCore/Scripts)

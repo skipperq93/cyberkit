@@ -27,11 +27,11 @@
 
 #include "stdafx.h"
 #include "MainWindow.h"
-#include "WebKitLegacyBrowserWindow.h"
+#include "CyberKitLegacyBrowserWindow.h"
 
 enum class BrowserWindowType {
-    WebKit,
-    WebKitLegacy
+    CyberKit,
+    CyberKitLegacy
 };
 
 struct CommandLineOptions {
@@ -43,9 +43,9 @@ struct CommandLineOptions {
 
     CommandLineOptions()
 #if ENABLE(WEBKIT)
-        : windowType(BrowserWindowType::WebKit)
+        : windowType(BrowserWindowType::CyberKit)
 #else
-        : windowType(BrowserWindowType::WebKitLegacy)
+        : windowType(BrowserWindowType::CyberKitLegacy)
 #endif
     {
     }

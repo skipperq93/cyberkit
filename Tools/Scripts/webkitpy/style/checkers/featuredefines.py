@@ -29,12 +29,12 @@ import os
 from webkitpy.common.system.systemhost import SystemHost
 
 FEATURE_DEFINE_FILES = [
-    "Source/JavaScriptCore/Configurations/FeatureDefines.xcconfig",
-    "Source/WebCore/Configurations/FeatureDefines.xcconfig",
-    "Source/WebCore/PAL/Configurations/FeatureDefines.xcconfig",
-    "Source/WebKitLegacy/mac/Configurations/FeatureDefines.xcconfig",
-    "Source/WebKit/Configurations/FeatureDefines.xcconfig",
-    "Tools/TestWebKitAPI/Configurations/FeatureDefines.xcconfig",
+    "Source/CyberScriptCore/Configurations/FeatureDefines.xcconfig",
+    "Source/CyberCore/Configurations/FeatureDefines.xcconfig",
+    "Source/CyberCore/PAL/Configurations/FeatureDefines.xcconfig",
+    "Source/CyberKitLegacy/mac/Configurations/FeatureDefines.xcconfig",
+    "Source/CyberKit/Configurations/FeatureDefines.xcconfig",
+    "Tools/TestCyberKitAPI/Configurations/FeatureDefines.xcconfig",
 ]
 
 

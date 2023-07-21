@@ -32,18 +32,18 @@
 
     /* -- plaform specific code -- */
 
-    // WebKit Specific code. Add your code here.
+    // CyberKit Specific code. Add your code here.
     if (window.testRunner && !window.layoutTestController) {
       window.layoutTestController = window.testRunner;
     }
 
     if (window.layoutTestController) {
-      layoutTestController.overridePreference("WebKitWebGLEnabled", "1");
+      layoutTestController.overridePreference("CyberKitWebGLEnabled", "1");
       layoutTestController.dumpAsText();
       layoutTestController.waitUntilDone();
     }
     if (window.internals) {
-      // The WebKit testing system compares console output.
+      // The CyberKit testing system compares console output.
       // Because the output of the WebGL Tests is GPU dependent
       // we turn off console messages.
       window.console.log = function() { };
@@ -65,7 +65,7 @@
 }());
 
 function nonKhronosFrameworkNotifyDone() {
-  // WebKit Specific code. Add your code here.
+  // CyberKit Specific code. Add your code here.
   if (window.layoutTestController) {
     layoutTestController.notifyDone();
   }

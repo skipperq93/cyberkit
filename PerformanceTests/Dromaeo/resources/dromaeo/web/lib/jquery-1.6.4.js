@@ -1217,7 +1217,7 @@ jQuery.support = (function() {
 
                 // Make sure that element opacity exists
                 // (IE uses filter instead)
-                // Use a regex to work around a WebKit issue. See #5145
+                // Use a regex to work around a CyberKit issue. See #5145
                 opacity: /^0.55$/.test( a.style.opacity ),
 
                 // Verify style float existence
@@ -1226,11 +1226,11 @@ jQuery.support = (function() {
 
                 // Make sure that if no value is specified for a checkbox
                 // that it defaults to "on".
-                // (WebKit defaults to "" instead)
+                // (CyberKit defaults to "" instead)
                 checkOn: ( input.value === "on" ),
 
                 // Make sure that a selected-by-default option has a working selected property.
-                // (WebKit defaults to false instead of true, IE too, if it's in an optgroup)
+                // (CyberKit defaults to false instead of true, IE too, if it's in an optgroup)
                 optSelected: opt.selected,
 
                 // Test setAttribute on camelCase class. If it works, we need attrFixes when doing get/setAttribute (ie6/7)
@@ -1252,7 +1252,7 @@ jQuery.support = (function() {
         support.noCloneChecked = input.cloneNode( true ).checked;
 
         // Make sure that the options inside disabled selects aren't marked as disabled
-        // (WebKit marks them as disabled)
+        // (CyberKit marks them as disabled)
         select.disabled = true;
         support.optDisabled = !opt.disabled;
 
@@ -1285,7 +1285,7 @@ jQuery.support = (function() {
         fragment = document.createDocumentFragment();
         fragment.appendChild( div.firstChild );
 
-        // WebKit doesn't clone checked state correctly in fragments
+        // CyberKit doesn't clone checked state correctly in fragments
         support.checkClone = fragment.cloneNode( true ).cloneNode( true ).lastChild.checked;
 
         div.innerHTML = "";
@@ -1364,8 +1364,8 @@ jQuery.support = (function() {
         // Check if div with explicit width and no margin-right incorrectly
         // gets computed margin-right based on width of container. For more
         // info see bug #3333
-        // Fails in WebKit before Feb 2011 nightlies
-        // WebKit Bug 13343 - getComputedStyle returns wrong value for margin-right
+        // Fails in CyberKit before Feb 2011 nightlies
+        // CyberKit Bug 13343 - getComputedStyle returns wrong value for margin-right
         if ( document.defaultView && document.defaultView.getComputedStyle ) {
                 marginDiv = document.createElement( "div" );
                 marginDiv.style.width = "0";
@@ -5805,7 +5805,7 @@ jQuery.fn.extend({
                         value = args[0],
                         scripts = [];
 
-                // We can't cloneNode fragments that contain checked, in WebKit
+                // We can't cloneNode fragments that contain checked, in CyberKit
                 if ( !jQuery.support.checkClone && arguments.length === 3 && typeof value === "string" && rchecked.test( value ) ) {
                         return this.each(function() {
                                 jQuery(this).domManip( args, table, callback, true );
@@ -5984,7 +5984,7 @@ jQuery.buildFragment = function( args, nodes, scripts ) {
         // Only cache "small" (1/2 KB) HTML strings that are associated with the main document
         // Cloning options loses the selected state, so don't cache them
         // IE 6 doesn't like it when you put <object> or <embed> elements in a fragment
-        // Also, WebKit does not clone 'checked' attributes on cloneNode, so don't cache
+        // Also, CyberKit does not clone 'checked' attributes on cloneNode, so don't cache
         if ( args.length === 1 && typeof args[0] === "string" && args[0].length < 512 && doc === document &&
                 args[0].charAt(0) === "<" && !rnocache.test( args[0] ) && (jQuery.support.checkClone || !rchecked.test( args[0] )) ) {
 
@@ -6541,7 +6541,7 @@ jQuery(function() {
         if ( !jQuery.support.reliableMarginRight ) {
                 jQuery.cssHooks.marginRight = {
                         get: function( elem, computed ) {
-                                // WebKit Bug 13343 - getComputedStyle returns wrong value for margin-right
+                                // CyberKit Bug 13343 - getComputedStyle returns wrong value for margin-right
                                 // Work around by temporarily setting element display to inline-block
                                 var ret;
                                 jQuery.swap( elem, { "display": "inline-block" }, function() {
@@ -8639,7 +8639,7 @@ function defaultDisplay( nodeName ) {
 
                         // Create a cacheable copy of the iframe document on first call.
                         // IE and Opera will allow us to reuse the iframeDoc without re-writing the fake HTML
-                        // document to it; WebKit & Firefox won't allow reusing the iframe document.
+                        // document to it; CyberKit & Firefox won't allow reusing the iframe document.
                         if ( !iframeDoc || !iframe.createElement ) {
                                 iframeDoc = ( iframe.contentWindow || iframe.contentDocument ).document;
                                 iframeDoc.write( ( document.compatMode === "CSS1Compat" ? "<!doctype html>" : "" ) + "<html><body>" );

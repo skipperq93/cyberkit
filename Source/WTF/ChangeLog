@@ -13,7 +13,7 @@
     Renames StringBuilder::append(const String& string, unsigned offset, unsigned length) to 
     StringBuilder::appendSubstring(...).
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     * dfg/DFGStrengthReductionPhase.cpp:
     (JSC::DFG::StrengthReductionPhase::handleNode):
@@ -25,36 +25,36 @@
     (JSC::parseClause):
     Update for renames.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     * dom/Range.cpp:
-    (WebCore::Range::toString const):
+    (CyberCore::Range::toString const):
     * editing/Editing.cpp:
-    (WebCore::stringWithRebalancedWhitespace):
+    (CyberCore::stringWithRebalancedWhitespace):
     * editing/MarkupAccumulator.cpp:
-    (WebCore::appendCharactersReplacingEntitiesInternal):
+    (CyberCore::appendCharactersReplacingEntitiesInternal):
     * editing/TextIterator.cpp:
-    (WebCore::TextIteratorCopyableText::appendToStringBuilder const):
+    (CyberCore::TextIteratorCopyableText::appendToStringBuilder const):
     * html/HTMLTextFormControlElement.cpp:
-    (WebCore::HTMLTextFormControlElement::valueWithHardLineBreaks const):
+    (CyberCore::HTMLTextFormControlElement::valueWithHardLineBreaks const):
     * html/parser/HTMLTokenizer.cpp:
-    (WebCore::HTMLTokenizer::bufferedCharacters const):
+    (CyberCore::HTMLTokenizer::bufferedCharacters const):
     * platform/graphics/avfoundation/InbandTextTrackPrivateAVF.cpp:
-    (WebCore::InbandTextTrackPrivateAVF::processNativeSamples):
+    (CyberCore::InbandTextTrackPrivateAVF::processNativeSamples):
     * platform/text/SegmentedString.cpp:
-    (WebCore::SegmentedString::Substring::appendTo const):
+    (CyberCore::SegmentedString::Substring::appendTo const):
     * platform/text/TextCodecICU.cpp:
-    (WebCore::TextCodecICU::decode):
+    (CyberCore::TextCodecICU::decode):
     * xml/XSLTProcessorLibxslt.cpp:
-    (WebCore::writeToStringBuilder):
+    (CyberCore::writeToStringBuilder):
     Update for renames.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * Shared/mac/AuxiliaryProcessMac.mm:
-    (WebKit::setAndSerializeSandboxParameters):
+    (CyberKit::setAndSerializeSandboxParameters):
     * UIProcess/WebProcessPool.cpp:
-    (WebKit::WebProcessPool::didReceiveInvalidMessage):
+    (CyberKit::WebProcessPool::didReceiveInvalidMessage):
     Update for renames.
     
     Source/WTF:
@@ -76,8 +76,8 @@
     
     Tools:
     
-    * TestWebKitAPI/Tests/WTF/StringBuilder.cpp:
-    (TestWebKitAPI::TEST):
+    * TestCyberKitAPI/Tests/WTF/StringBuilder.cpp:
+    (TestCyberKitAPI::TEST):
     Update for renames.
     
     
@@ -120,7 +120,7 @@
     
     Reviewed by Tim Horton.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     NSFont has a bug where passing "auto" to kCTFontOpticalSizeAttribute
     causes an exception to be thrown. We don't catch the exception, so we
@@ -131,7 +131,7 @@
     this part of the code might throw.
     
     * UIProcess/mac/WebPopupMenuProxyMac.mm:
-    (WebKit::WebPopupMenuProxyMac::showPopupMenu):
+    (CyberKit::WebPopupMenuProxyMac::showPopupMenu):
     
     Source/WTF:
     
@@ -161,14 +161,14 @@
     
     Use kSecUseDataProtectionKeychain for iOS 13 and macOS Catalina or newer.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * UIProcess/WebAuthentication/Cocoa/LocalAuthenticator.mm:
-    (WebKit::LocalAuthenticator::makeCredential):
-    (WebKit::LocalAuthenticator::continueMakeCredentialAfterUserConsented):
-    (WebKit::LocalAuthenticator::continueMakeCredentialAfterAttested):
-    (WebKit::LocalAuthenticator::getAssertion):
-    (WebKit::LocalAuthenticator::continueGetAssertionAfterUserConsented):
+    (CyberKit::LocalAuthenticator::makeCredential):
+    (CyberKit::LocalAuthenticator::continueMakeCredentialAfterUserConsented):
+    (CyberKit::LocalAuthenticator::continueMakeCredentialAfterAttested):
+    (CyberKit::LocalAuthenticator::getAssertion):
+    (CyberKit::LocalAuthenticator::continueGetAssertionAfterUserConsented):
     
     Source/WTF:
     
@@ -176,7 +176,7 @@
     
     Tools:
     
-    * WebKitTestRunner/cocoa/TestControllerCocoa.mm:
+    * CyberKitTestRunner/cocoa/TestControllerCocoa.mm:
     (WTR::TestController::addTestKeyToKeychain):
     (WTR::TestController::cleanUpKeychain):
     (WTR::TestController::keyExistsInKeychain):
@@ -201,27 +201,27 @@
     
     Reviewed by Brent Fulgham.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     This patch enables LocalAuthenticator for macOS. The majority
     of this patch is to tweak macOS keychain to use the modern one.
     
-    * Configurations/WebKit.xcconfig:
+    * Configurations/CyberKit.xcconfig:
     * Platform/spi/Cocoa/DeviceIdentitySPI.h:
     * UIProcess/WebAuthentication/Cocoa/LocalAuthenticator.mm:
-    (WebKit::LocalAuthenticatorInternal::toVector):
-    (WebKit::LocalAuthenticator::makeCredential):
-    (WebKit::LocalAuthenticator::continueMakeCredentialAfterUserConsented):
-    (WebKit::LocalAuthenticator::continueMakeCredentialAfterAttested):
-    (WebKit::LocalAuthenticator::getAssertion):
-    (WebKit::LocalAuthenticator::continueGetAssertionAfterUserConsented):
+    (CyberKit::LocalAuthenticatorInternal::toVector):
+    (CyberKit::LocalAuthenticator::makeCredential):
+    (CyberKit::LocalAuthenticator::continueMakeCredentialAfterUserConsented):
+    (CyberKit::LocalAuthenticator::continueMakeCredentialAfterAttested):
+    (CyberKit::LocalAuthenticator::getAssertion):
+    (CyberKit::LocalAuthenticator::continueGetAssertionAfterUserConsented):
     * UIProcess/WebAuthentication/Cocoa/LocalConnection.mm:
-    (WebKit::LocalConnection::getUserConsent const):
-    (WebKit::LocalConnection::getAttestation const):
+    (CyberKit::LocalConnection::getUserConsent const):
+    (CyberKit::LocalConnection::getAttestation const):
     * UIProcess/WebAuthentication/Cocoa/LocalService.mm:
-    (WebKit::LocalService::isAvailable):
+    (CyberKit::LocalService::isAvailable):
     * UIProcess/WebAuthentication/Mock/MockLocalConnection.mm:
-    (WebKit::MockLocalConnection::getAttestation const):
+    (CyberKit::MockLocalConnection::getAttestation const):
     * config.h:
     
     Source/WTF:
@@ -233,13 +233,13 @@
     
     Tools:
     
-    Add an entitlement file to WebKitTestRunner such that it can access
+    Add an entitlement file to CyberKitTestRunner such that it can access
     the modern macOS keychain.
     
-    * WebKitTestRunner/Configurations/WebKitTestRunner.entitlements: Added.
-    * WebKitTestRunner/Configurations/WebKitTestRunner.xcconfig:
-    * WebKitTestRunner/WebKitTestRunner.xcodeproj/project.pbxproj:
-    * WebKitTestRunner/cocoa/TestControllerCocoa.mm:
+    * CyberKitTestRunner/Configurations/CyberKitTestRunner.entitlements: Added.
+    * CyberKitTestRunner/Configurations/CyberKitTestRunner.xcconfig:
+    * CyberKitTestRunner/CyberKitTestRunner.xcodeproj/project.pbxproj:
+    * CyberKitTestRunner/cocoa/TestControllerCocoa.mm:
     (WTR::TestController::addTestKeyToKeychain):
     (WTR::TestController::cleanUpKeychain):
     (WTR::TestController::keyExistsInKeychain):
@@ -273,10 +273,10 @@
 
     Unreviewed, build fix after r249059
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * UIProcess/WebAuthentication/Cocoa/NfcConnection.mm:
-    (WebKit::NfcConnection::NfcConnection):
+    (CyberKit::NfcConnection::NfcConnection):
     Remove the HAVE() macro.
     
     Source/WTF:
@@ -303,7 +303,7 @@
     
     Reviewed by Chris Dumez.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Tests: http/wpt/webauthn/ctap-nfc-failure.https.html
            http/wpt/webauthn/public-key-credential-create-failure-nfc.https.html
@@ -316,7 +316,7 @@
     * Modules/webauthn/fido/FidoConstants.h:
     Adds constants for NFC applet selection.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     This patch implements support for NFC authenticators including both FIDO2 and U2F ones. It utilizes a private
     framework called NearField instead of CoreNFC to be able to supply a custom UI later if necessary.
@@ -341,69 +341,69 @@
     * UIProcess/API/C/WKWebsiteDataStoreRef.cpp:
     (WKWebsiteDataStoreSetWebAuthenticationMockConfiguration):
     * UIProcess/WebAuthentication/AuthenticatorManager.cpp:
-    (WebKit::AuthenticatorManagerInternal::collectTransports):
+    (CyberKit::AuthenticatorManagerInternal::collectTransports):
     * UIProcess/WebAuthentication/AuthenticatorTransportService.cpp:
-    (WebKit::AuthenticatorTransportService::create):
-    (WebKit::AuthenticatorTransportService::createMock):
+    (CyberKit::AuthenticatorTransportService::create):
+    (CyberKit::AuthenticatorTransportService::createMock):
     * UIProcess/WebAuthentication/Cocoa/HidService.h:
     * UIProcess/WebAuthentication/Cocoa/HidService.mm:
-    (WebKit::HidService::HidService):
-    (WebKit::HidService::deviceAdded):
-    (WebKit::HidService::continueAddDeviceAfterGetInfo): Deleted.
-    * UIProcess/WebAuthentication/Cocoa/NearFieldSoftLink.h: Copied from Source/WebKit/UIProcess/WebAuthentication/Cocoa/HidService.h.
-    * UIProcess/WebAuthentication/Cocoa/NearFieldSoftLink.mm: Copied from Source/WebKit/UIProcess/WebAuthentication/Cocoa/HidService.h.
-    * UIProcess/WebAuthentication/Cocoa/NfcConnection.h: Copied from Source/WebKit/UIProcess/WebAuthentication/Cocoa/HidService.h.
+    (CyberKit::HidService::HidService):
+    (CyberKit::HidService::deviceAdded):
+    (CyberKit::HidService::continueAddDeviceAfterGetInfo): Deleted.
+    * UIProcess/WebAuthentication/Cocoa/NearFieldSoftLink.h: Copied from Source/CyberKit/UIProcess/WebAuthentication/Cocoa/HidService.h.
+    * UIProcess/WebAuthentication/Cocoa/NearFieldSoftLink.mm: Copied from Source/CyberKit/UIProcess/WebAuthentication/Cocoa/HidService.h.
+    * UIProcess/WebAuthentication/Cocoa/NfcConnection.h: Copied from Source/CyberKit/UIProcess/WebAuthentication/Cocoa/HidService.h.
     * UIProcess/WebAuthentication/Cocoa/NfcConnection.mm: Added.
-    (WebKit::fido::compareVersion):
-    (WebKit::NfcConnection::NfcConnection):
-    (WebKit::NfcConnection::~NfcConnection):
-    (WebKit::NfcConnection::transact const):
-    (WebKit::NfcConnection::didDetectTags const):
-    * UIProcess/WebAuthentication/Cocoa/NfcService.h: Copied from Source/WebKit/UIProcess/WebAuthentication/Cocoa/HidService.h.
+    (CyberKit::fido::compareVersion):
+    (CyberKit::NfcConnection::NfcConnection):
+    (CyberKit::NfcConnection::~NfcConnection):
+    (CyberKit::NfcConnection::transact const):
+    (CyberKit::NfcConnection::didDetectTags const):
+    * UIProcess/WebAuthentication/Cocoa/NfcService.h: Copied from Source/CyberKit/UIProcess/WebAuthentication/Cocoa/HidService.h.
     * UIProcess/WebAuthentication/Cocoa/NfcService.mm: Added.
-    (WebKit::NfcService::NfcService):
-    (WebKit::NfcService::~NfcService):
-    (WebKit::NfcService::didConnectTag):
-    (WebKit::NfcService::startDiscoveryInternal):
-    (WebKit::NfcService::platformStartDiscovery):
-    * UIProcess/WebAuthentication/Cocoa/WKNFReaderSessionDelegate.h: Copied from Source/WebKit/UIProcess/WebAuthentication/Cocoa/HidService.h.
-    * UIProcess/WebAuthentication/Cocoa/WKNFReaderSessionDelegate.mm: Copied from Source/WebKit/UIProcess/WebAuthentication/Cocoa/HidService.h.
+    (CyberKit::NfcService::NfcService):
+    (CyberKit::NfcService::~NfcService):
+    (CyberKit::NfcService::didConnectTag):
+    (CyberKit::NfcService::startDiscoveryInternal):
+    (CyberKit::NfcService::platformStartDiscovery):
+    * UIProcess/WebAuthentication/Cocoa/WKNFReaderSessionDelegate.h: Copied from Source/CyberKit/UIProcess/WebAuthentication/Cocoa/HidService.h.
+    * UIProcess/WebAuthentication/Cocoa/WKNFReaderSessionDelegate.mm: Copied from Source/CyberKit/UIProcess/WebAuthentication/Cocoa/HidService.h.
     (-[WKNFReaderSessionDelegate initWithConnection:]):
     (-[WKNFReaderSessionDelegate readerSession:didDetectTags:]):
     * UIProcess/WebAuthentication/Mock/MockHidConnection.cpp:
-    (WebKit::MockHidConnection::send):
-    (WebKit::MockHidConnection::registerDataReceivedCallbackInternal):
-    (WebKit::MockHidConnection::parseRequest):
-    (WebKit::MockHidConnection::feedReports):
-    (WebKit::MockHidConnection::shouldContinueFeedReports):
-    * UIProcess/WebAuthentication/Mock/MockNfcService.h: Copied from Source/WebKit/UIProcess/WebAuthentication/Cocoa/HidService.h.
+    (CyberKit::MockHidConnection::send):
+    (CyberKit::MockHidConnection::registerDataReceivedCallbackInternal):
+    (CyberKit::MockHidConnection::parseRequest):
+    (CyberKit::MockHidConnection::feedReports):
+    (CyberKit::MockHidConnection::shouldContinueFeedReports):
+    * UIProcess/WebAuthentication/Mock/MockNfcService.h: Copied from Source/CyberKit/UIProcess/WebAuthentication/Cocoa/HidService.h.
     * UIProcess/WebAuthentication/Mock/MockNfcService.mm: Added.
     (-[WKMockNFTag type]):
     (-[WKMockNFTag initWithNFTag:]):
     (-[WKMockNFTag description]):
     (-[WKMockNFTag isEqualToNFTag:]):
     (-[WKMockNFTag initWithType:]):
-    (WebKit::MockNfcService::MockNfcService):
-    (WebKit::MockNfcService::transceive):
-    (WebKit::MockNfcService::platformStartDiscovery):
-    (WebKit::MockNfcService::detectTags const):
+    (CyberKit::MockNfcService::MockNfcService):
+    (CyberKit::MockNfcService::transceive):
+    (CyberKit::MockNfcService::platformStartDiscovery):
+    (CyberKit::MockNfcService::detectTags const):
     * UIProcess/WebAuthentication/Mock/MockWebAuthenticationConfiguration.h:
     * UIProcess/WebAuthentication/fido/CtapAuthenticator.cpp:
     * UIProcess/WebAuthentication/fido/CtapAuthenticator.h:
     * UIProcess/WebAuthentication/fido/CtapNfcDriver.cpp: Added.
-    (WebKit::CtapNfcDriver::CtapNfcDriver):
-    (WebKit::CtapNfcDriver::transact):
-    (WebKit::CtapNfcDriver::respondAsync const):
-    * UIProcess/WebAuthentication/fido/CtapNfcDriver.h: Copied from Source/WebKit/UIProcess/WebAuthentication/Cocoa/HidService.h.
+    (CyberKit::CtapNfcDriver::CtapNfcDriver):
+    (CyberKit::CtapNfcDriver::transact):
+    (CyberKit::CtapNfcDriver::respondAsync const):
+    * UIProcess/WebAuthentication/fido/CtapNfcDriver.h: Copied from Source/CyberKit/UIProcess/WebAuthentication/Cocoa/HidService.h.
     * UIProcess/WebAuthentication/fido/FidoService.cpp: Added.
-    (WebKit::FidoService::FidoService):
-    (WebKit::FidoService::getInfo):
-    (WebKit::FidoService::continueAfterGetInfo):
-    * UIProcess/WebAuthentication/fido/FidoService.h: Copied from Source/WebKit/UIProcess/WebAuthentication/Cocoa/HidService.h.
+    (CyberKit::FidoService::FidoService):
+    (CyberKit::FidoService::getInfo):
+    (CyberKit::FidoService::continueAfterGetInfo):
+    * UIProcess/WebAuthentication/fido/FidoService.h: Copied from Source/CyberKit/UIProcess/WebAuthentication/Cocoa/HidService.h.
     * UIProcess/WebAuthentication/fido/U2fAuthenticator.cpp:
     * UIProcess/WebAuthentication/fido/U2fAuthenticator.h:
     * UIProcess/ios/WebPageProxyIOS.mm:
-    * WebKit.xcodeproj/project.pbxproj:
+    * CyberKit.xcodeproj/project.pbxproj:
     
     Source/WTF:
     
@@ -412,7 +412,7 @@
     
     Tools:
     
-    * WebKitTestRunner/InjectedBundle/TestRunner.cpp:
+    * CyberKitTestRunner/InjectedBundle/TestRunner.cpp:
     (WTR::TestRunner::setWebAuthenticationMockConfiguration):
     Setup NFC mock testing configuration.
     
@@ -458,18 +458,18 @@
     
     Reviewed by Tim Horton.
     
-    Source/WebCore:
+    Source/CyberCore:
     
-    Adds a new site-specific quirk. See WebKit ChangeLog for more details.
+    Adds a new site-specific quirk. See CyberKit ChangeLog for more details.
     
     * page/Quirks.cpp:
-    (WebCore::Quirks::shouldUseLegacySelectPopoverDismissalBehaviorInDataActivation const):
+    (CyberCore::Quirks::shouldUseLegacySelectPopoverDismissalBehaviorInDataActivation const):
     * page/Quirks.h:
     * platform/RuntimeApplicationChecks.h:
     * platform/cocoa/RuntimeApplicationChecksCocoa.mm:
-    (WebCore::IOSApplication::isDataActivation):
+    (CyberCore::IOSApplication::isDataActivation):
     
-    Source/WebKit:
+    Source/CyberKit:
     
     When using the data activation page on www.att.com, one of the sections on the page contains several select
     elements; in the case where the user agent:
@@ -496,8 +496,8 @@
     details.
     
     * Shared/FocusedElementInformation.cpp:
-    (WebKit::FocusedElementInformation::encode const):
-    (WebKit::FocusedElementInformation::decode):
+    (CyberKit::FocusedElementInformation::encode const):
+    (CyberKit::FocusedElementInformation::decode):
     * Shared/FocusedElementInformation.h:
     
     Add a new behavioral quirk flag to FocusedElementInformation to determine whether we should use "legacy" select
@@ -540,7 +540,7 @@
     
     (-[WKSelectPopover controlEndEditing]):
     * WebProcess/WebPage/ios/WebPageIOS.mm:
-    (WebKit::WebPage::getFocusedElementInformation):
+    (CyberKit::WebPage::getFocusedElementInformation):
     
     Source/WTF:
     
@@ -552,8 +552,8 @@
     
     Rebaseline an API test.
     
-    * TestWebKitAPI/Tests/WebKit/WKPreferences.cpp:
-    (TestWebKitAPI::TEST):
+    * TestCyberKitAPI/Tests/CyberKit/WKPreferences.cpp:
+    (TestCyberKitAPI::TEST):
     
     
     git-svn-id: https://svn.webkit.org/repository/webkit/trunk@250345 268f45cc-cd09-0410-ab3c-d52691b4dbfc
@@ -595,7 +595,7 @@
     [Mac] Use the PID of the WebContent process when issuing local file read sandbox extensions
     https://bugs.webkit.org/show_bug.cgi?id=200543
     <rdar://problem/49394015>
-    Source/WebKit:
+    Source/CyberKit:
     
     Reviewed by Brent Fulgham.
     
@@ -603,14 +603,14 @@
     identifier of the WebContent process.
     
     * Shared/Cocoa/SandboxExtensionCocoa.mm:
-    (WebKit::SandboxExtensionImpl::sandboxExtensionForType):
-    (WebKit::SandboxExtension::createHandleForReadByPid):
+    (CyberKit::SandboxExtensionImpl::sandboxExtensionForType):
+    (CyberKit::SandboxExtension::createHandleForReadByPid):
     * Shared/SandboxExtension.h:
     * UIProcess/Cocoa/WebPageProxyCocoa.mm:
-    (WebKit::WebPageProxy::createSandboxExtensionsIfNeeded):
+    (CyberKit::WebPageProxy::createSandboxExtensionsIfNeeded):
     * UIProcess/WebPageProxy.cpp:
-    (WebKit::WebPageProxy::maybeInitializeSandboxExtensionHandle):
-    (WebKit::WebPageProxy::loadFile):
+    (CyberKit::WebPageProxy::maybeInitializeSandboxExtensionHandle):
+    (CyberKit::WebPageProxy::loadFile):
     
     Source/WTF:
     
@@ -641,7 +641,7 @@
 
         Cherry-pick r248823. rdar://problem/54454713
 
-    Source/WebKit:
+    Source/CyberKit:
     Use bundlePath SPI in AccessibilitySupport for WebProcessLoader
     https://bugs.webkit.org/show_bug.cgi?id=200367
     
@@ -650,8 +650,8 @@
     
     * Platform/spi/ios/AccessibilitySupportSPI.h:
     * WebProcess/cocoa/WebProcessCocoa.mm:
-    (WebKit::accessibilityWebProcessLoaderBundlePath):
-    (WebKit::registerWithAccessibility):
+    (CyberKit::accessibilityWebProcessLoaderBundlePath):
+    (CyberKit::registerWithAccessibility):
     
     Source/WTF:
     Added HAVE_ACCESSIBILITY_BUNDLES_PATH
@@ -671,13 +671,13 @@
     
     Added AccessibilityTestPlugin on the web process to report whether a bundle is loaded and its path, so that it can be tested on WKContentView.
     
-    * TestWebKitAPI/TestWebKitAPI.xcodeproj/project.pbxproj:
-    * TestWebKitAPI/Tests/WebKitCocoa/AccessibilityTestPlugin.mm: Added.
+    * TestCyberKitAPI/TestCyberKitAPI.xcodeproj/project.pbxproj:
+    * TestCyberKitAPI/Tests/CyberKitCocoa/AccessibilityTestPlugin.mm: Added.
     (-[AccessibilityTestPlugin webProcessPlugIn:didCreateBrowserContextController:]):
     (-[AccessibilityTestPlugin checkAccessibilityWebProcessLoaderBundleIsLoaded:]):
-    * TestWebKitAPI/Tests/WebKitCocoa/AccessibilityTestSupportProtocol.h: Added.
-    * TestWebKitAPI/Tests/ios/AccessibilityTestsIOS.mm:
-    (TestWebKitAPI::TEST):
+    * TestCyberKitAPI/Tests/CyberKitCocoa/AccessibilityTestSupportProtocol.h: Added.
+    * TestCyberKitAPI/Tests/ios/AccessibilityTestsIOS.mm:
+    (TestCyberKitAPI::TEST):
     
     git-svn-id: https://svn.webkit.org/repository/webkit/trunk@248823 268f45cc-cd09-0410-ab3c-d52691b4dbfc
 
@@ -730,7 +730,7 @@
 
     [Mac] Use the PID of the WebContent process when issuing local file read sandbox extensions
     https://bugs.webkit.org/show_bug.cgi?id=200543
-    Source/WebKit:
+    Source/CyberKit:
     
     Reviewed by Brent Fulgham.
     
@@ -738,11 +738,11 @@
     identifier of the WebContent process.
     
     * Shared/Cocoa/SandboxExtensionCocoa.mm:
-    (WebKit::SandboxExtensionImpl::sandboxExtensionForType):
-    (WebKit::SandboxExtension::createHandleForReadByPid):
+    (CyberKit::SandboxExtensionImpl::sandboxExtensionForType):
+    (CyberKit::SandboxExtension::createHandleForReadByPid):
     * Shared/SandboxExtension.h:
     * UIProcess/WebPageProxy.cpp:
-    (WebKit::WebPageProxy::maybeInitializeSandboxExtensionHandle):
+    (CyberKit::WebPageProxy::maybeInitializeSandboxExtensionHandle):
     
     Source/WTF:
     
@@ -792,7 +792,7 @@
     Use CTFontCreateForCharactersWithLanguageAndOption if available instead of CTFontCreateForCharactersWithLanguage
     https://bugs.webkit.org/show_bug.cgi?id=200241
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Reviewed by Myles C. Maxfield.
     
@@ -805,13 +805,13 @@
     Covered by existing tests.
     
     * platform/graphics/cocoa/FontCacheCoreText.cpp:
-    (WebCore::preparePlatformFont):
-    (WebCore::lookupFallbackFont):
-    (WebCore::FontCache::systemFallbackForCharacters):
-    (WebCore::FontCache::prewarm):
-    (WebCore::fontFamiliesForPrewarming):
+    (CyberCore::preparePlatformFont):
+    (CyberCore::lookupFallbackFont):
+    (CyberCore::FontCache::systemFallbackForCharacters):
+    (CyberCore::FontCache::prewarm):
+    (CyberCore::fontFamiliesForPrewarming):
     
-    Source/WebCore/PAL:
+    Source/CyberCore/PAL:
     
     Reviewed by Myles C. Maxfield.
     
@@ -857,7 +857,7 @@
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Before r241288, we were mapping Japanese sans-serif to Hiragino Kaku Gothic ProN, which
     has a 300 weight and a 600 weight. However, we can't use that font because it's user-installed,
@@ -873,10 +873,10 @@
     No new tests because quirks cannot be tested.
     
     * css/CSSFontSelector.cpp:
-    (WebCore::resolveGenericFamily):
-    (WebCore::CSSFontSelector::fontRangesForFamily):
+    (CyberCore::resolveGenericFamily):
+    (CyberCore::CSSFontSelector::fontRangesForFamily):
     * page/Quirks.cpp:
-    (WebCore::Quirks::shouldLightenJapaneseBoldSansSerif const):
+    (CyberCore::Quirks::shouldLightenJapaneseBoldSansSerif const):
     * page/Quirks.h:
     
     Source/WTF:
@@ -904,7 +904,7 @@
     
     Reviewed by Saam Barati.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Use HashMap::reserveInitialCapacity() in the HashMap IPC decoder for
     performance. I measured a ~35% improvement when decoding a very large
@@ -932,8 +932,8 @@
     
     Add API test coverage.
     
-    * TestWebKitAPI/Tests/WTF/HashMap.cpp:
-    (TestWebKitAPI::TEST):
+    * TestCyberKitAPI/Tests/WTF/HashMap.cpp:
+    (TestCyberKitAPI::TEST):
     
     
     git-svn-id: https://svn.webkit.org/repository/webkit/trunk@247673 268f45cc-cd09-0410-ab3c-d52691b4dbfc
@@ -968,7 +968,7 @@
     Add ALLOW_DEPRECATED_IMPLEMENTATIONS_BEGIN/END macro which
     is IGNORE_WARNINGS_BEGIN("deprecated-implementations")
     
-    Source/WebCore:
+    Source/CyberCore:
     
     * accessibility/mac/WebAccessibilityObjectWrapperMac.mm:
     (-[WebAccessibilityObjectWrapper ALLOW_DEPRECATED_IMPLEMENTATIONS_END]):
@@ -982,11 +982,11 @@
     * platform/graphics/avfoundation/objc/SourceBufferPrivateAVFObjC.mm:
     (-[WebAVStreamDataParserListener streamDataParserWillProvideContentKeyRequestInitializationData:forTrackID:]):
     (-[WebAVStreamDataParserListener streamDataParser:didProvideContentKeyRequestInitializationData:forTrackID:]):
-    * platform/network/mac/WebCoreResourceHandleAsOperationQueueDelegate.mm:
-    (-[WebCoreResourceHandleAsOperationQueueDelegate connection:didReceiveAuthenticationChallenge:]):
-    (-[WebCoreResourceHandleAsOperationQueueDelegate connection:canAuthenticateAgainstProtectionSpace:]):
+    * platform/network/mac/CyberCoreResourceHandleAsOperationQueueDelegate.mm:
+    (-[CyberCoreResourceHandleAsOperationQueueDelegate connection:didReceiveAuthenticationChallenge:]):
+    (-[CyberCoreResourceHandleAsOperationQueueDelegate connection:canAuthenticateAgainstProtectionSpace:]):
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * UIProcess/API/Cocoa/LegacyBundleForClass.mm:
     * UIProcess/API/Cocoa/WKBrowsingContextController.mm:
@@ -1043,7 +1043,7 @@
     (-[WKAccessibilityWebPageObject accessibilityAttributeValue:forParameter:]):
     (-[WKAccessibilityWebPageObject IGNORE_WARNINGS_END]): Deleted.
     
-    Source/WebKitLegacy/mac:
+    Source/CyberKitLegacy/mac:
     
     * Misc/WebDownload.mm:
     (-[WebDownload initWithRequest:delegate:]):
@@ -1115,14 +1115,14 @@
     * bmalloc/VMAllocate.h:
     (bmalloc::vmAllocate):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     Discussed and we decided to use this VM tag for IsoHeap instead of CLoop stack.
     
     * interpreter/CLoopStack.cpp:
     (JSC::CLoopStack::CLoopStack):
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Changed how we interpret VM tags. Add IsoHeap VM tag support, and rename WebAssembly tag
     to Gigacage tag.
@@ -1130,10 +1130,10 @@
     * page/ResourceUsageData.h:
     * page/ResourceUsageOverlay.h:
     * page/cocoa/ResourceUsageOverlayCocoa.mm:
-    (WebCore::HistoricResourceUsageData::HistoricResourceUsageData):
+    (CyberCore::HistoricResourceUsageData::HistoricResourceUsageData):
     * page/cocoa/ResourceUsageThreadCocoa.mm:
-    (WebCore::displayNameForVMTag):
-    (WebCore::categoryForVMTag):
+    (CyberCore::displayNameForVMTag):
+    (CyberCore::categoryForVMTag):
     
     Source/WTF:
     
@@ -1200,7 +1200,7 @@
     
     Reviewed by Saam Barati.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Use HashMap::reserveInitialCapacity() in the HashMap IPC decoder for
     performance. I measured a ~35% improvement when decoding a very large
@@ -1228,8 +1228,8 @@
     
     Add API test coverage.
     
-    * TestWebKitAPI/Tests/WTF/HashMap.cpp:
-    (TestWebKitAPI::TEST):
+    * TestCyberKitAPI/Tests/WTF/HashMap.cpp:
+    (TestCyberKitAPI::TEST):
     
     
     git-svn-id: https://svn.webkit.org/repository/webkit/trunk@247673 268f45cc-cd09-0410-ab3c-d52691b4dbfc
@@ -1262,7 +1262,7 @@
     
     Reviewed by Myles C. Maxfield.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     When getting a system font, set the appropriate attribute so that it
     does not fallback to a user initiated font.
@@ -1274,16 +1274,16 @@
     
     * platform/graphics/Font.h:
     * platform/graphics/FontCascadeFonts.cpp:
-    (WebCore::FontCascadeFonts::glyphDataForSystemFallback):
+    (CyberCore::FontCascadeFonts::glyphDataForSystemFallback):
     * platform/graphics/cocoa/FontCacheCoreText.cpp:
-    (WebCore::preparePlatformFont):
-    (WebCore::FontDatabase::singletonAllowingUserInstalledFonts):
-    (WebCore::FontDatabase::singletonDisallowingUserInstalledFonts):
-    (WebCore::addAttributesForInstalledFonts):
-    (WebCore::addAttributesForWebFonts):
-    (WebCore::installedFontMandatoryAttributes):
+    (CyberCore::preparePlatformFont):
+    (CyberCore::FontDatabase::singletonAllowingUserInstalledFonts):
+    (CyberCore::FontDatabase::singletonDisallowingUserInstalledFonts):
+    (CyberCore::addAttributesForInstalledFonts):
+    (CyberCore::addAttributesForWebFonts):
+    (CyberCore::installedFontMandatoryAttributes):
     * platform/graphics/mac/SimpleFontDataCoreText.cpp:
-    (WebCore::Font::isUserInstalledFont const):
+    (CyberCore::Font::isUserInstalledFont const):
     
     Source/WTF:
     
@@ -1293,8 +1293,8 @@
     
     Add a font containing one extended character not found in system fonts.
     
-    * WebKitTestRunner/WebKitTestRunner.xcodeproj/project.pbxproj:
-    * WebKitTestRunner/fonts/FakeHelvetica-SingleExtendedCharacter.ttf: Added.
+    * CyberKitTestRunner/CyberKitTestRunner.xcodeproj/project.pbxproj:
+    * CyberKitTestRunner/fonts/FakeHelvetica-SingleExtendedCharacter.ttf: Added.
     
     LayoutTests:
     
@@ -1351,21 +1351,21 @@
     
     Unreviewed watchOS build fix.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     * page/ProcessWarming.cpp:
-    (WebCore::ProcessWarming::prewarmGlobally):
+    (CyberCore::ProcessWarming::prewarmGlobally):
     * page/cocoa/MemoryReleaseCocoa.mm:
-    (WebCore::platformReleaseMemory):
+    (CyberCore::platformReleaseMemory):
     * platform/graphics/FontCascadeDescription.cpp:
     * platform/graphics/FontDescription.h:
     * platform/graphics/cocoa/FontCacheCoreText.cpp:
-    (WebCore::invalidateFontCache):
-    (WebCore::lookupFallbackFont):
+    (CyberCore::invalidateFontCache):
+    (CyberCore::lookupFallbackFont):
     * platform/graphics/cocoa/FontDescriptionCocoa.cpp:
-    (WebCore::FontCascadeDescription::effectiveFamilyAt const):
+    (CyberCore::FontCascadeDescription::effectiveFamilyAt const):
     * platform/graphics/cocoa/FontFamilySpecificationCoreText.cpp:
-    (WebCore::FontFamilySpecificationCoreText::fontRanges const):
+    (CyberCore::FontFamilySpecificationCoreText::fontRanges const):
     * platform/graphics/cocoa/SystemFontDatabaseCoreText.cpp:
     
     Source/WTF:
@@ -1392,7 +1392,7 @@
     
     Reviewed by Alex Christensen.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Punt most of the WKURLSchemeTask operations back to the main thread.
     Make accessing the NSURLRequest be thread safe with lock protection.
@@ -1409,22 +1409,22 @@
     (-[WKURLSchemeTaskImpl _didPerformRedirection:newRequest:]):
     
     * UIProcess/WebURLSchemeTask.cpp:
-    (WebKit::WebURLSchemeTask::WebURLSchemeTask):
-    (WebKit::WebURLSchemeTask::~WebURLSchemeTask):
-    (WebKit::WebURLSchemeTask::didPerformRedirection):
-    (WebKit::WebURLSchemeTask::didReceiveResponse):
-    (WebKit::WebURLSchemeTask::didReceiveData):
-    (WebKit::WebURLSchemeTask::didComplete):
-    (WebKit::WebURLSchemeTask::pageDestroyed):
-    (WebKit::WebURLSchemeTask::stop):
-    (WebKit::WebURLSchemeTask::nsRequest const):
+    (CyberKit::WebURLSchemeTask::WebURLSchemeTask):
+    (CyberKit::WebURLSchemeTask::~WebURLSchemeTask):
+    (CyberKit::WebURLSchemeTask::didPerformRedirection):
+    (CyberKit::WebURLSchemeTask::didReceiveResponse):
+    (CyberKit::WebURLSchemeTask::didReceiveData):
+    (CyberKit::WebURLSchemeTask::didComplete):
+    (CyberKit::WebURLSchemeTask::pageDestroyed):
+    (CyberKit::WebURLSchemeTask::stop):
+    (CyberKit::WebURLSchemeTask::nsRequest const):
     
     * UIProcess/WebURLSchemeTask.h:
-    (WebKit::WebURLSchemeTask::identifier const):
-    (WebKit::WebURLSchemeTask::pageID const):
-    (WebKit::WebURLSchemeTask::process):
-    (WebKit::WebURLSchemeTask::process const): Deleted.
-    (WebKit::WebURLSchemeTask::request const): Deleted.
+    (CyberKit::WebURLSchemeTask::identifier const):
+    (CyberKit::WebURLSchemeTask::pageID const):
+    (CyberKit::WebURLSchemeTask::process):
+    (CyberKit::WebURLSchemeTask::process const): Deleted.
+    (CyberKit::WebURLSchemeTask::request const): Deleted.
     
     Source/WTF:
     
@@ -1436,7 +1436,7 @@
     
     Tools:
     
-    * TestWebKitAPI/Tests/WebKitCocoa/WKURLSchemeHandler-1.mm:
+    * TestCyberKitAPI/Tests/CyberKitCocoa/WKURLSchemeHandler-1.mm:
     
     
     git-svn-id: https://svn.webkit.org/repository/webkit/trunk@247461 268f45cc-cd09-0410-ab3c-d52691b4dbfc
@@ -1492,14 +1492,14 @@
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     This patch adds support for -apple-system-ui-serif, -apple-system-ui-monospaced,
     and -apple-system-ui-rounded, behind an SPI that is off-by-default. We don't want
     to expose these fonts to the web because we don't a standardization story for them
     yet, but we do want some apps to be able to use them.
     
-    WebKit clients who want to use these fonts can set
+    CyberKit clients who want to use these fonts can set
     -[WKPreferences _shouldAllowDesignSystemUIFonts] = YES.
     
     The patch generalizes our existing system-ui infrastructure to handle these three
@@ -1524,61 +1524,61 @@
            fast/text/design-system-ui.html
     
     * css/CSSFontFace.cpp:
-    (WebCore::CSSFontFace::shouldAllowDesignSystemUIFonts const):
+    (CyberCore::CSSFontFace::shouldAllowDesignSystemUIFonts const):
     * css/CSSFontFace.h:
     * css/CSSFontFaceSource.cpp:
-    (WebCore::CSSFontFaceSource::load):
+    (CyberCore::CSSFontFaceSource::load):
     * css/StyleResolver.cpp:
-    (WebCore::StyleResolver::initializeFontStyle):
+    (CyberCore::StyleResolver::initializeFontStyle):
     * page/Settings.yaml:
     * platform/graphics/FontDescription.cpp:
-    (WebCore::m_shouldAllowDesignSystemUIFonts):
-    (WebCore::m_shouldAllowUserInstalledFonts): Deleted.
+    (CyberCore::m_shouldAllowDesignSystemUIFonts):
+    (CyberCore::m_shouldAllowUserInstalledFonts): Deleted.
     * platform/graphics/FontDescription.h:
-    (WebCore::FontDescription::shouldAllowDesignSystemUIFonts const):
-    (WebCore::FontDescription::setShouldAllowDesignSystemUIFonts):
-    (WebCore::FontDescription::operator== const):
+    (CyberCore::FontDescription::shouldAllowDesignSystemUIFonts const):
+    (CyberCore::FontDescription::setShouldAllowDesignSystemUIFonts):
+    (CyberCore::FontDescription::operator== const):
     * platform/graphics/cocoa/FontCacheCoreText.cpp:
-    (WebCore::platformFontLookupWithFamily):
-    (WebCore::fontWithFamily):
+    (CyberCore::platformFontLookupWithFamily):
+    (CyberCore::fontWithFamily):
     * platform/graphics/cocoa/FontCacheCoreText.h:
     * platform/graphics/cocoa/FontDescriptionCocoa.cpp:
-    (WebCore::systemFontUse):
-    (WebCore::systemFontCascadeList):
-    (WebCore::FontCascadeDescription::effectiveFamilyCount const):
-    (WebCore::FontCascadeDescription::effectiveFamilyAt const):
-    (WebCore::isSystemFontString): Deleted.
-    (WebCore::isUIFontTextStyle): Deleted.
+    (CyberCore::systemFontUse):
+    (CyberCore::systemFontCascadeList):
+    (CyberCore::FontCascadeDescription::effectiveFamilyCount const):
+    (CyberCore::FontCascadeDescription::effectiveFamilyAt const):
+    (CyberCore::isSystemFontString): Deleted.
+    (CyberCore::isUIFontTextStyle): Deleted.
     * platform/graphics/cocoa/FontPlatformDataCocoa.mm:
-    (WebCore::FontPlatformData::ctFont const):
+    (CyberCore::FontPlatformData::ctFont const):
     * platform/graphics/cocoa/SystemFontDatabaseCoreText.cpp:
-    (WebCore::SystemFontDatabaseCoreText::createSystemUI):
-    (WebCore::SystemFontDatabaseCoreText::createDesignSystemUI):
-    (WebCore::SystemFontDatabaseCoreText::createTextStyle):
-    (WebCore::SystemFontDatabaseCoreText::cascadeList):
-    (WebCore::SystemFontDatabaseCoreText::applyWeightItalicsAndFallbackBehavior):
-    (WebCore::SystemFontDatabaseCoreText::systemFontParameters):
+    (CyberCore::SystemFontDatabaseCoreText::createSystemUI):
+    (CyberCore::SystemFontDatabaseCoreText::createDesignSystemUI):
+    (CyberCore::SystemFontDatabaseCoreText::createTextStyle):
+    (CyberCore::SystemFontDatabaseCoreText::cascadeList):
+    (CyberCore::SystemFontDatabaseCoreText::applyWeightItalicsAndFallbackBehavior):
+    (CyberCore::SystemFontDatabaseCoreText::systemFontParameters):
     * platform/graphics/cocoa/SystemFontDatabaseCoreText.h:
     * platform/graphics/ios/FontCacheIOS.mm:
-    (WebCore::platformFontWithFamilySpecialCase):
+    (CyberCore::platformFontWithFamilySpecialCase):
     * platform/graphics/mac/FontCacheMac.mm:
-    (WebCore::platformFontWithFamilySpecialCase):
+    (CyberCore::platformFontWithFamilySpecialCase):
     * style/StyleResolveForDocument.cpp:
-    (WebCore::Style::resolveForDocument):
+    (CyberCore::Style::resolveForDocument):
     * svg/graphics/SVGImage.cpp:
-    (WebCore::SVGImage::dataChanged):
+    (CyberCore::SVGImage::dataChanged):
     * testing/InternalSettings.cpp:
-    (WebCore::InternalSettings::Backup::Backup):
-    (WebCore::InternalSettings::Backup::restoreTo):
-    (WebCore::InternalSettings::setShouldAllowDesignSystemUIFonts):
+    (CyberCore::InternalSettings::Backup::Backup):
+    (CyberCore::InternalSettings::Backup::restoreTo):
+    (CyberCore::InternalSettings::setShouldAllowDesignSystemUIFonts):
     * testing/InternalSettings.h:
     * testing/InternalSettings.idl:
     
-    Source/WebCore/PAL:
+    Source/CyberCore/PAL:
     
     * pal/spi/cocoa/CoreTextSPI.h:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Add the SPI to enable the new fonts.
     
@@ -1888,18 +1888,18 @@
 
         Unreviewed, rolling out r247115.
 
-        Breaks lldbWebKitTester (and by extension, test-webkitpy)
+        Breaks lldbCyberKitTester (and by extension, test-webkitpy)
 
         Reverted changeset:
 
         "[WHLSL] Standard library is too big to directly include in
-        WebCore"
+        CyberCore"
         https://bugs.webkit.org/show_bug.cgi?id=198186
         https://trac.webkit.org/changeset/247115
 
 2019-07-03  Jonathan Bedard  <jbedard@apple.com>
 
-        [Catalina] Enable WebKit build
+        [Catalina] Enable CyberKit build
         https://bugs.webkit.org/show_bug.cgi?id=199209
 
         Reviewed by Darin Adler.
@@ -2049,7 +2049,7 @@
 
 2019-06-27  Timothy Hatcher  <timothy@apple.com>
 
-        Move WebKitLegacy off of a couple AppKit ivars.
+        Move CyberKitLegacy off of a couple AppKit ivars.
         https://bugs.webkit.org/show_bug.cgi?id=199279
         rdar://problem/34983438
 
@@ -2071,7 +2071,7 @@
 
 2019-06-27  Don Olmstead  <don.olmstead@sony.com>
 
-        [FTW] Build JavaScriptCore
+        [FTW] Build CyberScriptCore
         https://bugs.webkit.org/show_bug.cgi?id=199254
 
         Reviewed by Brent Fulgham.
@@ -2154,7 +2154,7 @@
 
 2019-06-25  Michael Catanzaro  <mcatanzaro@igalia.com>
 
-        Fully rename WebKitGTK+ -> WebKitGTK everywhere
+        Fully rename CyberKitGTK+ -> CyberKitGTK everywhere
         https://bugs.webkit.org/show_bug.cgi?id=199159
 
         Reviewed by Carlos Garcia Campos.
@@ -2329,7 +2329,7 @@
 
 2019-06-18  Kenneth Russell  <kbr@chromium.org>
 
-        Add preliminary ANGLE backend to WebCore
+        Add preliminary ANGLE backend to CyberCore
         https://bugs.webkit.org/show_bug.cgi?id=197755
 
         Reviewed by Dean Jackson.
@@ -2342,7 +2342,7 @@
 
 2019-06-17  Jiewen Tan  <jiewen_tan@apple.com>
 
-        Move SOAuthorization from WebKitAdditions to WebKit
+        Move SOAuthorization from CyberKitAdditions to CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=198874
         <rdar://problem/47573431>
 
@@ -2715,12 +2715,12 @@
 
 2019-05-31  Don Olmstead  <don.olmstead@sony.com>
 
-        [CMake] Add WebKit::WTF target
+        [CMake] Add CyberKit::WTF target
         https://bugs.webkit.org/show_bug.cgi?id=198400
 
         Reviewed by Konstantin Tokarev.
 
-        Create the WebKit::WTF target and use that to propagate headers. Use
+        Create the CyberKit::WTF target and use that to propagate headers. Use
         WEBKIT_COPY_FILES instead of WEBKIT_MAKE_FORWARDING_HEADERS.
 
         * wtf/CMakeLists.txt:
@@ -2778,7 +2778,7 @@
 
 2019-05-29  David Kilzer  <ddkilzer@apple.com>
 
-        IndexedDatabase Server thread in com.apple.WebKit.Networking process leaks objects into an autoreleasePool that's never cleared
+        IndexedDatabase Server thread in com.matthewbenedict.CyberKit.Networking process leaks objects into an autoreleasePool that's never cleared
         <https://webkit.org/b/198346>
         <rdar://problem/50895658>
 
@@ -2966,7 +2966,7 @@
 
         Reviewed by Konstantin Tokarev.
 
-        Use WebKit::bmalloc target.
+        Use CyberKit::bmalloc target.
 
         * wtf/CMakeLists.txt:
 
@@ -3173,7 +3173,7 @@
         Unreviewed, rolling out r245281.
         https://bugs.webkit.org/show_bug.cgi?id=197887
 
-        Broke API Test TestWebKitAPI.Challenge.ClientCertificate
+        Broke API Test TestCyberKitAPI.Challenge.ClientCertificate
         (Requested by aakashjain on #webkit).
 
         Reverted changeset:
@@ -3527,7 +3527,7 @@
         (WTF::untagArrayPtr):
         (WTF::removeArrayPtrTag):
         (WTF::retagArrayPtr):
-        * wtf/TaggedArrayStoragePtr.h: Copied from Source/JavaScriptCore/runtime/ArrayBufferView.cpp.
+        * wtf/TaggedArrayStoragePtr.h: Copied from Source/CyberScriptCore/runtime/ArrayBufferView.cpp.
         (WTF::TaggedArrayStoragePtr::TaggedArrayStoragePtr):
         (WTF::TaggedArrayStoragePtr::get const):
         (WTF::TaggedArrayStoragePtr::getUnsafe const):
@@ -3553,7 +3553,7 @@
 
         * WTF.xcodeproj/project.pbxproj:
         * wtf/CMakeLists.txt:
-        * wtf/Nonmovable.h: Copied from Source/JavaScriptCore/bytecode/LLIntPrototypeLoadAdaptiveStructureWatchpoint.h.
+        * wtf/Nonmovable.h: Copied from Source/CyberScriptCore/bytecode/LLIntPrototypeLoadAdaptiveStructureWatchpoint.h.
         * wtf/Vector.h:
         (WTF::minCapacity>::uncheckedConstructAndAppend):
 
@@ -3680,7 +3680,7 @@
 
 2019-05-01  Darin Adler  <darin@apple.com>
 
-        WebKit has too much of its own UTF-8 code and should rely more on ICU's UTF-8 support
+        CyberKit has too much of its own UTF-8 code and should rely more on ICU's UTF-8 support
         https://bugs.webkit.org/show_bug.cgi?id=195535
 
         Reviewed by Alexey Proskuryakov.
@@ -3742,7 +3742,7 @@
         (WTF::Unicode::equalUTF16WithUTF8): Ditto.
 
         * wtf/unicode/UTF8Conversion.h: Removed UTF8SequenceLength and
-        decodeUTF8Sequence. Changed the ConversionResult to match WebKit coding
+        decodeUTF8Sequence. Changed the ConversionResult to match CyberKit coding
         style, with an eye toward perhaps removing it in the future. Changed
         the convertUTF8ToUTF16 return value to a boolean and removed the "strict"
         argument since no caller was passing false. Changed the convertLatin1ToUTF8
@@ -3756,7 +3756,7 @@
 
         Reverted changeset:
 
-        "WebKit has too much of its own UTF-8 code and should rely
+        "CyberKit has too much of its own UTF-8 code and should rely
         more on ICU's UTF-8 support"
         https://bugs.webkit.org/show_bug.cgi?id=195535
         https://trac.webkit.org/changeset/244821
@@ -3773,7 +3773,7 @@
 
 2019-04-29  Darin Adler  <darin@apple.com>
 
-        WebKit has too much of its own UTF-8 code and should rely more on ICU's UTF-8 support
+        CyberKit has too much of its own UTF-8 code and should rely more on ICU's UTF-8 support
         https://bugs.webkit.org/show_bug.cgi?id=195535
 
         Reviewed by Alexey Proskuryakov.
@@ -3835,7 +3835,7 @@
         (WTF::Unicode::equalUTF16WithUTF8): Ditto.
 
         * wtf/unicode/UTF8Conversion.h: Removed UTF8SequenceLength and
-        decodeUTF8Sequence. Changed the ConversionResult to match WebKit coding
+        decodeUTF8Sequence. Changed the ConversionResult to match CyberKit coding
         style, with an eye toward perhaps removing it in the future. Changed
         the convertUTF8ToUTF16 return value to a boolean and removed the "strict"
         argument since no caller was passing false. Changed the convertLatin1ToUTF8
@@ -4427,7 +4427,7 @@
 
 2019-04-04  Yusuke Suzuki  <ysuzuki@apple.com>
 
-        [WebCore] Put most of derived classes of ScriptWrappable into IsoHeap
+        [CyberCore] Put most of derived classes of ScriptWrappable into IsoHeap
         https://bugs.webkit.org/show_bug.cgi?id=196475
 
         Reviewed by Saam Barati.
@@ -4459,8 +4459,8 @@
         * wtf/MainThread.h:
         * wtf/cocoa/MainThreadCocoa.mm:
         (WTF::dispatchAsyncOnMainThreadWithWebThreadLockIfNeeded):
-        * wtf/ios/WebCoreThread.cpp:
-        * wtf/ios/WebCoreThread.h:
+        * wtf/ios/CyberCoreThread.cpp:
+        * wtf/ios/CyberCoreThread.h:
 
 2019-04-02  Keith Rollin  <krollin@apple.com>
 
@@ -4484,7 +4484,7 @@
 
         Reviewed by Darin Adler.
 
-        It seems WebKit hasn't built with clang 3.8 in a while, no devs are using this compiler, we
+        It seems CyberKit hasn't built with clang 3.8 in a while, no devs are using this compiler, we
         don't know how much effort it would be to make JSC work again, and it's making the code
         worse. Remove my hacks to support clang 3.8 from WTF.
 
@@ -4508,7 +4508,7 @@
 
 2019-03-31  Andy Estes  <aestes@apple.com>
 
-        [iOS] WebKit should consult the navigation response policy delegate before previewing a QuickLook document
+        [iOS] CyberKit should consult the navigation response policy delegate before previewing a QuickLook document
         https://bugs.webkit.org/show_bug.cgi?id=196433
         <rdar://problem/49293305>
 
@@ -4789,12 +4789,12 @@
 
 2019-03-20  Keith Rollin  <krollin@apple.com>
 
-        Update checks that determine if WebKit is system WebKit
+        Update checks that determine if CyberKit is system CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=195756
 
         Reviewed by Alexey Proskuryakov.
 
-        The system WebKit can be installed in additional locations, so check
+        The system CyberKit can be installed in additional locations, so check
         for and allow those, too.
 
         * wtf/Platform.h:
@@ -4834,7 +4834,7 @@
 
         Reviewed by Chris Dumez.
 
-        WebKit triggers three new GCC 9 warnings:
+        CyberKit triggers three new GCC 9 warnings:
 
         """
         -Wdeprecated-copy, implied by -Wextra, warns about the C++11 deprecation of implicitly
@@ -4979,7 +4979,7 @@
         * wtf/text/StringView.h: Added normalizedNFC, which can be called with
         either a StringView or a String. Also moved StringViewWithUnderlyingString
         here from JSString.h, here for use as the return value of normalizedNFC;
-        it is used for a similar purpose in the JavaScriptCore rope implementation.
+        it is used for a similar purpose in the CyberScriptCore rope implementation.
         Also removed an inaccurate comment.
 
 2019-03-16  Diego Pino Garcia  <dpino@igalia.com>
@@ -5210,7 +5210,7 @@
 
 2019-03-11  Sihui Liu  <sihui_liu@apple.com>
 
-        Crash under WebCore::IDBDatabase::connectionToServerLost
+        Crash under CyberCore::IDBDatabase::connectionToServerLost
         https://bugs.webkit.org/show_bug.cgi?id=195563
         <rdar://problem/37193655>
 
@@ -5503,7 +5503,7 @@
 
 2019-03-04  Andy Estes  <aestes@apple.com>
 
-        [Apple Pay] Move WebPaymentCoordinatorProxy from Source/WebKit/UIProcess to Source/WebKit/Shared
+        [Apple Pay] Move WebPaymentCoordinatorProxy from Source/CyberKit/UIProcess to Source/CyberKit/Shared
         https://bugs.webkit.org/show_bug.cgi?id=195080
         <rdar://problem/48421558>
 
@@ -5743,7 +5743,7 @@
 
         Reviewed by Yusuke Suzuki.
 
-        First, move data members to the end of the class per WebKit
+        First, move data members to the end of the class per CyberKit
         style. Also, add forbid heap allocation since we expect the
         NeverDestroyed classes to be static.
 
@@ -6080,7 +6080,7 @@
 
         Reviewed by Yusuke Suzuki.
 
-        First, move data members to the end of the class per WebKit
+        First, move data members to the end of the class per CyberKit
         style. Also, add forbid heap allocation since we expect the
         NeverDestroyed classes to be static.
 
@@ -6549,10 +6549,10 @@
         Previously, every use of clampTo() was converting the input to double,
         doing the comparison in double, then casting back to whatever type was needed.
 
-        In many case, that was very wasteful. WebKit has many cases of clampTo() with
+        In many case, that was very wasteful. CyberKit has many cases of clampTo() with
         the same type as input/output, or with integer types of different size/sign.
 
-        This patch adds a few versions of clampTo() for the common cases seen in WebKit.
+        This patch adds a few versions of clampTo() for the common cases seen in CyberKit.
         In each case, I tried to minimize the amount of conversion needed at runtime.
 
         * wtf/MathExtras.h:
@@ -6735,14 +6735,14 @@
         Reverted changeset:
 
         "Leak of WTF::StringImpl under SymbolImpl::createNullSymbol()
-        (48 bytes) in com.apple.WebKit.WebContent running layout
+        (48 bytes) in com.matthewbenedict.CyberKit.WebContent running layout
         tests"
         https://bugs.webkit.org/show_bug.cgi?id=193291
         https://trac.webkit.org/changeset/240896
 
 2019-02-02  David Kilzer  <ddkilzer@apple.com>
 
-        Leak of WTF::StringImpl under SymbolImpl::createNullSymbol() (48 bytes) in com.apple.WebKit.WebContent running layout tests
+        Leak of WTF::StringImpl under SymbolImpl::createNullSymbol() (48 bytes) in com.matthewbenedict.CyberKit.WebContent running layout tests
         <https://webkit.org/b/193291>
         <rdar://problem/46655953>
 
@@ -6795,7 +6795,7 @@
 
         * WTF.xcodeproj/project.pbxproj:
         * wtf/CMakeLists.txt:
-        * wtf/ObjectIdentifier.cpp: Copied from Source/WebCore/platform/Process.cpp.
+        * wtf/ObjectIdentifier.cpp: Copied from Source/CyberCore/platform/Process.cpp.
         (WTF::ObjectIdentifierBase::generateIdentifierInternal):
         (WTF::ObjectIdentifierBase::generateThreadSafeIdentifierInternal):
         * wtf/ObjectIdentifier.h:
@@ -6928,23 +6928,23 @@
 
         * WTF.xcodeproj/project.pbxproj:
         * wtf/CMakeLists.txt:
-        * wtf/FileMetadata.h: Renamed from Source/WebCore/platform/FileMetadata.h.
-        * wtf/FileSystem.cpp: Renamed from Source/WebCore/platform/FileSystem.cpp.
-        * wtf/FileSystem.h: Renamed from Source/WebCore/platform/FileSystem.h.
+        * wtf/FileMetadata.h: Renamed from Source/CyberCore/platform/FileMetadata.h.
+        * wtf/FileSystem.cpp: Renamed from Source/CyberCore/platform/FileSystem.cpp.
+        * wtf/FileSystem.h: Renamed from Source/CyberCore/platform/FileSystem.h.
         * wtf/PlatformGTK.cmake:
         * wtf/PlatformMac.cmake:
         * wtf/PlatformPlayStation.cmake:
         * wtf/PlatformWPE.cmake:
         * wtf/PlatformWin.cmake:
-        * wtf/cf/FileSystemCF.cpp: Renamed from Source/WebCore/platform/cf/FileSystemCF.cpp.
-        * wtf/cocoa/FileSystemCocoa.mm: Renamed from Source/WebCore/platform/cocoa/FileSystemCocoa.mm.
-        * wtf/glib/FileSystemGlib.cpp: Renamed from Source/WebCore/platform/glib/FileSystemGlib.cpp.
-        * wtf/mac/FileSystemMac.mm: Renamed from Source/WebCore/platform/mac/FileSystemMac.mm.
-        * wtf/posix/FileSystemPOSIX.cpp: Renamed from Source/WebCore/platform/posix/FileSystemPOSIX.cpp.
-        * wtf/spi/mac/MetadataSPI.h: Renamed from Source/WebCore/PAL/pal/spi/mac/MetadataSPI.h.
-        * wtf/win/FileSystemWin.cpp: Renamed from Source/WebCore/platform/win/FileSystemWin.cpp.
-        * wtf/win/PathWalker.cpp: Renamed from Source/WebCore/platform/win/PathWalker.cpp.
-        * wtf/win/PathWalker.h: Renamed from Source/WebCore/platform/win/PathWalker.h.
+        * wtf/cf/FileSystemCF.cpp: Renamed from Source/CyberCore/platform/cf/FileSystemCF.cpp.
+        * wtf/cocoa/FileSystemCocoa.mm: Renamed from Source/CyberCore/platform/cocoa/FileSystemCocoa.mm.
+        * wtf/glib/FileSystemGlib.cpp: Renamed from Source/CyberCore/platform/glib/FileSystemGlib.cpp.
+        * wtf/mac/FileSystemMac.mm: Renamed from Source/CyberCore/platform/mac/FileSystemMac.mm.
+        * wtf/posix/FileSystemPOSIX.cpp: Renamed from Source/CyberCore/platform/posix/FileSystemPOSIX.cpp.
+        * wtf/spi/mac/MetadataSPI.h: Renamed from Source/CyberCore/PAL/pal/spi/mac/MetadataSPI.h.
+        * wtf/win/FileSystemWin.cpp: Renamed from Source/CyberCore/platform/win/FileSystemWin.cpp.
+        * wtf/win/PathWalker.cpp: Renamed from Source/CyberCore/platform/win/PathWalker.cpp.
+        * wtf/win/PathWalker.h: Renamed from Source/CyberCore/platform/win/PathWalker.h.
 
 2019-01-24  Guillaume Emont  <guijemont@igalia.com>
 
@@ -6988,7 +6988,7 @@
 
 2019-01-23  David Kilzer  <ddkilzer@apple.com>
 
-        Switch remaining CoreMedia soft-linking in WebKit over to CoreMediaSoftLink.{cpp,h}
+        Switch remaining CoreMedia soft-linking in CyberKit over to CoreMediaSoftLink.{cpp,h}
         <https://webkit.org/b/193694>
         <rdar://problem/47464025>
 
@@ -7792,7 +7792,7 @@
 
 2018-12-12  Alex Christensen  <achristensen@webkit.org>
 
-        Implement safe browsing in WebKit on WatchOS
+        Implement safe browsing in CyberKit on WatchOS
         https://bugs.webkit.org/show_bug.cgi?id=192641
         <rdar://problem/46376188>
 
@@ -7871,7 +7871,7 @@
 
 2018-12-10  Alexey Proskuryakov  <ap@apple.com>
 
-        Move ENABLE_SEC_ITEM_SHIM out of WebKit's config.h
+        Move ENABLE_SEC_ITEM_SHIM out of CyberKit's config.h
         https://bugs.webkit.org/show_bug.cgi?id=192428
 
         Reviewed by Tim Horton.
@@ -7880,7 +7880,7 @@
 
 2018-12-10  Alexey Proskuryakov  <ap@apple.com>
 
-        Move more macros out of WebKit's config.h
+        Move more macros out of CyberKit's config.h
         https://bugs.webkit.org/show_bug.cgi?id=192430
 
         Reviewed by Tim Horton.
@@ -7942,7 +7942,7 @@
 
 2018-12-06  Alexey Proskuryakov  <ap@apple.com>
 
-        Move USE_NEW_THEME out of WebCore's config.h
+        Move USE_NEW_THEME out of CyberCore's config.h
         https://bugs.webkit.org/show_bug.cgi?id=192426
 
         Reviewed by Tim Horton.
@@ -7951,12 +7951,12 @@
 
 2018-12-04  Carlos Garcia Campos  <cgarcia@igalia.com>
 
-        [SOUP] Move URLSoup back to WebCore after r238771
+        [SOUP] Move URLSoup back to CyberCore after r238771
         https://bugs.webkit.org/show_bug.cgi?id=192306
 
         Reviewed by Michael Catanzaro.
 
-        In r238771 URL was moved from WebCore to WTF, including the soup implementation. Unfortunately that added
+        In r238771 URL was moved from CyberCore to WTF, including the soup implementation. Unfortunately that added
         libsoup as a new dependency of libjavascriptcoregtk.
 
         * wtf/PlatformGTK.cmake:
@@ -7997,7 +7997,7 @@
 
 2018-11-30  Alex Christensen  <achristensen@webkit.org>
 
-        Move URL from WebCore to WTF
+        Move URL from CyberCore to WTF
         https://bugs.webkit.org/show_bug.cgi?id=190234
 
         Reviewed by Keith Miller.
@@ -8009,23 +8009,23 @@
         * wtf/PlatformMac.cmake:
         * wtf/PlatformWPE.cmake:
         * wtf/PlatformWin.cmake:
-        * wtf/URL.cpp: Renamed from Source/WebCore/platform/URL.cpp.
+        * wtf/URL.cpp: Renamed from Source/CyberCore/platform/URL.cpp.
         (WTF::URL::protocolIs):
-        * wtf/URL.h: Renamed from Source/WebCore/platform/URL.h.
-        * wtf/URLHash.h: Renamed from Source/WebCore/platform/URLHash.h.
+        * wtf/URL.h: Renamed from Source/CyberCore/platform/URL.h.
+        * wtf/URLHash.h: Renamed from Source/CyberCore/platform/URLHash.h.
         (WTF::URLHash::hash):
         (WTF::URLHash::equal):
-        * wtf/URLParser.cpp: Renamed from Source/WebCore/platform/URLParser.cpp.
+        * wtf/URLParser.cpp: Renamed from Source/CyberCore/platform/URLParser.cpp.
         (WTF::URLParser::isInUserInfoEncodeSet):
         (WTF::URLParser::parseAuthority):
-        * wtf/URLParser.h: Renamed from Source/WebCore/platform/URLParser.h.
+        * wtf/URLParser.h: Renamed from Source/CyberCore/platform/URLParser.h.
         (WTF::URLParser::URLParser):
         (WTF::URLParser::result):
-        * wtf/cf/CFURLExtras.cpp: Renamed from Source/WebCore/platform/cf/CFURLExtras.cpp.
-        * wtf/cf/CFURLExtras.h: Renamed from Source/WebCore/platform/cf/CFURLExtras.h.
-        * wtf/cf/URLCF.cpp: Renamed from Source/WebCore/platform/cf/URLCF.cpp.
-        * wtf/cocoa/NSURLExtras.h: Copied from Source/WebCore/loader/archive/ArchiveResourceCollection.h.
-        * wtf/cocoa/NSURLExtras.mm: Copied from Source/WebCore/platform/mac/WebCoreNSURLExtras.mm.
+        * wtf/cf/CFURLExtras.cpp: Renamed from Source/CyberCore/platform/cf/CFURLExtras.cpp.
+        * wtf/cf/CFURLExtras.h: Renamed from Source/CyberCore/platform/cf/CFURLExtras.h.
+        * wtf/cf/URLCF.cpp: Renamed from Source/CyberCore/platform/cf/URLCF.cpp.
+        * wtf/cocoa/NSURLExtras.h: Copied from Source/CyberCore/loader/archive/ArchiveResourceCollection.h.
+        * wtf/cocoa/NSURLExtras.mm: Copied from Source/CyberCore/platform/mac/CyberCoreNSURLExtras.mm.
         (WTF::isArmenianLookalikeCharacter):
         (WTF::isArmenianScriptCharacter):
         (WTF::isASCIIDigitOrValidHostCharacter):
@@ -8066,11 +8066,11 @@
         (WTF::isUserVisibleURL):
         (WTF::rangeOfURLScheme):
         (WTF::looksLikeAbsoluteURL):
-        * wtf/cocoa/URLCocoa.mm: Renamed from Source/WebCore/platform/mac/URLMac.mm.
+        * wtf/cocoa/URLCocoa.mm: Renamed from Source/CyberCore/platform/mac/URLMac.mm.
         (WTF::URL::URL):
         (WTF::URL::createCFURL const):
-        * wtf/glib/GUniquePtrSoup.h: Renamed from Source/WebCore/platform/network/soup/GUniquePtrSoup.h.
-        * wtf/glib/URLSoup.cpp: Renamed from Source/WebCore/platform/soup/URLSoup.cpp.
+        * wtf/glib/GUniquePtrSoup.h: Renamed from Source/CyberCore/platform/network/soup/GUniquePtrSoup.h.
+        * wtf/glib/URLSoup.cpp: Renamed from Source/CyberCore/platform/soup/URLSoup.cpp.
 
 2018-11-30  Alexey Proskuryakov  <ap@apple.com>
 
@@ -8099,8 +8099,8 @@
         Reviewed by Saam Barati.
 
         Contrary my previous claim in r238564, ENABLE_SEPARATED_WX_HEAP needs to be
-        defined in Platform.h because it is also needed in WebCore for the CSS JIT.  Also
-        contrary to my previous claim, ENABLE(FAST_JIT_PERMISSIONS) is defined for WebCore
+        defined in Platform.h because it is also needed in CyberCore for the CSS JIT.  Also
+        contrary to my previous claim, ENABLE(FAST_JIT_PERMISSIONS) is defined for CyberCore
         (and other projects) as well as JSC.  Hence, there's no reason why
         ENABLE_SEPARATED_WX_HEAP cannot be defined in Platform.h.
 
@@ -8312,7 +8312,7 @@
 
         Reviewed by Alexey Proskuryakov.
 
-        Source/WebCore/SourcesCocoa.txt had a #end that should have been a
+        Source/CyberCore/SourcesCocoa.txt had a #end that should have been a
         #endif. Fix this, an add a check to generate-unified-source-bundles.rb
         to detect similar typos.
 
@@ -8540,7 +8540,7 @@
 
 2018-10-30  Don Olmstead  <don.olmstead@sony.com>
 
-        [PlayStation] Enable JavaScriptCore
+        [PlayStation] Enable CyberScriptCore
         https://bugs.webkit.org/show_bug.cgi?id=191072
 
         Reviewed by Brent Fulgham.
@@ -8679,7 +8679,7 @@
 
 2018-10-29  Tim Horton  <timothy_horton@apple.com>
 
-        Modernize WebKit nibs and lprojs for localization's sake
+        Modernize CyberKit nibs and lprojs for localization's sake
         https://bugs.webkit.org/show_bug.cgi?id=190911
         <rdar://problem/45349466>
 
@@ -8906,7 +8906,7 @@
 
         This functionality is currently only enabled in debug mode since dbghelp is not threadsafe.
         The DbgHelper class attempts to synchronize calls to dbghelp.dll but external code
-        can still attempt to call the library at the same time as WebKit.
+        can still attempt to call the library at the same time as CyberKit.
 
         * wtf/CMakeLists.txt:
         * wtf/PlatformWin.cmake:
@@ -9286,8 +9286,8 @@
         * wtf/cocoa/WorkQueueCocoa.cpp:
         * wtf/dtoa.cpp:
         * wtf/dtoa.h:
-        * wtf/ios/WebCoreThread.cpp:
-        * wtf/ios/WebCoreThread.h:
+        * wtf/ios/CyberCoreThread.cpp:
+        * wtf/ios/CyberCoreThread.h:
         * wtf/mac/AppKitCompatibilityDeclarations.h:
         * wtf/mac/DeprecatedSymbolsUsedBySafari.mm:
         * wtf/mbmalloc.cpp:
@@ -9385,7 +9385,7 @@
 
         Reviewed by Saam Barati.
 
-        Use WTF::currentStackPointer more in WebKit to adopt ASAN detect_stack_use_after_return option.
+        Use WTF::currentStackPointer more in CyberKit to adopt ASAN detect_stack_use_after_return option.
 
         * wtf/StackBounds.cpp:
         (WTF::testStackDirection2):
@@ -9990,7 +9990,7 @@
 
         Unreviewed, rolling out r235990.
 
-        Introduced TestWebKitAPI.NowPlayingTest timeouts on iOS
+        Introduced TestCyberKitAPI.NowPlayingTest timeouts on iOS
 
         Reverted changeset:
 

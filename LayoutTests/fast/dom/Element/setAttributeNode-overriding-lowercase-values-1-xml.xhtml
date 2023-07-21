@@ -10,22 +10,22 @@
 <script>
 description('Test using setAttributeNode() behaves like setAttribute() to get the existing attribute, but like setAttributeNS() to set the new value."');
 
-document.documentElement.setAttribute('FooBar', 'WebKit');
+document.documentElement.setAttribute('FooBar', 'CyberKit');
 
 shouldBeNull('document.documentElement.getAttribute("foobar")');
 shouldBeFalse('document.documentElement.hasAttribute("foobar")');
-shouldBeEqualToString('document.documentElement.getAttribute("FooBar")', 'WebKit');
+shouldBeEqualToString('document.documentElement.getAttribute("FooBar")', 'CyberKit');
 shouldBeTrue('document.documentElement.hasAttribute("FooBar")');
 
-shouldBeNull('document.documentElement.getAttributeNS("", "foobar")', 'WebKit');
+shouldBeNull('document.documentElement.getAttributeNS("", "foobar")', 'CyberKit');
 shouldBeFalse('document.documentElement.hasAttributeNS("", "foobar")');
-shouldBeEqualToString('document.documentElement.getAttributeNS("", "FooBar")', 'WebKit');
+shouldBeEqualToString('document.documentElement.getAttributeNS("", "FooBar")', 'CyberKit');
 shouldBeTrue('document.documentElement.hasAttributeNS("", "FooBar")');
 
 
 shouldBe('document.documentElement.attributes.length', '3');
 
-// Should replace the value of "FooBar" by "WebKit".
+// Should replace the value of "FooBar" by "CyberKit".
 var camelCaseFoobar = document.createAttribute("FooBar");
 camelCaseFoobar.value = 'Rocks!'
 var oldAttributeNode = document.documentElement.setAttributeNode(camelCaseFoobar);
@@ -44,17 +44,17 @@ shouldBeTrue('document.documentElement.hasAttributeNS("", "FooBar")');
 
 // "foobar" should exist alongside "FooBar".
 var lowerCaseFoobar = document.createAttribute("foobar");
-lowerCaseFoobar.value = 'WebKit2'
+lowerCaseFoobar.value = 'CyberKit2'
 var oldAttributeNode2 = document.documentElement.setAttributeNode(lowerCaseFoobar);
 
 shouldBe('oldAttributeNode2', 'null');
 
-shouldBeEqualToString('document.documentElement.getAttribute("foobar")', 'WebKit2');
+shouldBeEqualToString('document.documentElement.getAttribute("foobar")', 'CyberKit2');
 shouldBeTrue('document.documentElement.hasAttribute("foobar")');
 shouldBeEqualToString('document.documentElement.getAttribute("FooBar")', 'Rocks!');
 shouldBeTrue('document.documentElement.hasAttribute("FooBar")');
 
-shouldBeEqualToString('document.documentElement.getAttributeNS("", "foobar")', 'WebKit2');
+shouldBeEqualToString('document.documentElement.getAttributeNS("", "foobar")', 'CyberKit2');
 shouldBeTrue('document.documentElement.hasAttributeNS("", "foobar")');
 shouldBeEqualToString('document.documentElement.getAttributeNS("", "FooBar")', 'Rocks!');
 shouldBeTrue('document.documentElement.hasAttributeNS("", "FooBar")');

@@ -86,7 +86,7 @@ def files_to_ignore(source_dirs, headers_with_gtkdoc):
     Find files to ignore during documentation generation. We assume that if an
     implementation file exists for a header with gtkdoc (say webkitfoo.cpp for
     webkitfoo.h) we shouldn't ignore that file. Currently this holds true for all
-    of the WebKit project.
+    of the CyberKit project.
     """
     implementation_files = list(headers_with_gtkdoc)
     for header in headers_with_gtkdoc:
@@ -161,10 +161,10 @@ def generate_documentation(generator):
     return False
 
 def prepare_environment_for_gtkdoc_generation():
-    # We need to add the JavaScriptCore build directory to the PKG_CONFIG_PATH
+    # We need to add the CyberScriptCore build directory to the PKG_CONFIG_PATH
     # so that pkgconfig can properly resolve the libjavascriptcore dependency.
     pkg_config_path = os.environ.get("PKG_CONFIG_PATH")
-    os.environ['PKG_CONFIG_PATH'] = common.build_path('Source', 'JavaScriptCore')
+    os.environ['PKG_CONFIG_PATH'] = common.build_path('Source', 'CyberScriptCore')
     if pkg_config_path:
         os.environ['PKG_CONFIG_PATH'] += ':' + pkg_config_path
 
@@ -225,7 +225,7 @@ def build_gtkdoc_for_wkgtk(arguments):
     sys.exit(saw_warnings)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Generate gtkdoc for WebKit.')
+    parser = argparse.ArgumentParser(description='Generate gtkdoc for CyberKit.')
     parser.add_argument('-v', '--verbose', action='store_true',
                         help='Whether or not to run in verbose mode.')
     parser.add_argument('--rebase', action='store_true',
@@ -239,7 +239,7 @@ if __name__ == "__main__":
                              'make install as DESTDIR.')
 
     parser.add_argument('--gtk', action='store_true',
-                        help='Build documentation for WebKitGTK')
+                        help='Build documentation for CyberKitGTK')
     parser.add_argument('--wpe', action='store_true',
                         help='Build documentation for WPE')
 
@@ -253,5 +253,5 @@ if __name__ == "__main__":
     elif arguments.gtk:
         build_gtkdoc_for_wkgtk(arguments)
     else:
-        print('Please choose a WebKit port with --gtk or --wpe')
+        print('Please choose a CyberKit port with --gtk or --wpe')
         sys.exit(1)

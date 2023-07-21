@@ -76,4 +76,4 @@ void TimingScope::scopeDidEnd()
         WTFLogAlways("%s: %u calls, mean duration: %.6fms, total duration: %.6fms", m_name, data.callCount, data.meanDuration().milliseconds(), data.totalDuration.milliseconds());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

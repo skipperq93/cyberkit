@@ -699,7 +699,7 @@ WI.DOMNodeDetailsSidebarPanel = class DOMNodeDetailsSidebarPanel extends WI.DOMD
                     // Append @aria-relevant values. E.g. "Live: Assertive (Additions, Text)".
                     if (liveRegionRelevant && liveRegionRelevant.length) {
                         // @aria-relevant="all" is exposed as ["additions","removals","text"], in order.
-                        // This order is controlled in WebCore and expected in WebInspectorUI.
+                        // This order is controlled in CyberCore and expected in WebInspectorUI.
                         if (liveRegionRelevant.length === 3
                             && liveRegionRelevant[0] === DOMAgent.LiveRegionRelevant.Additions
                             && liveRegionRelevant[1] === DOMAgent.LiveRegionRelevant.Removals
@@ -715,7 +715,7 @@ WI.DOMNodeDetailsSidebarPanel = class DOMNodeDetailsSidebarPanel extends WI.DOMD
                                     return WI.UIString("Removals");
                                 case DOMAgent.LiveRegionRelevant.Text:
                                     return WI.UIString("Text");
-                                default: // If WebCore sends a new unhandled value, display as a String.
+                                default: // If CyberCore sends a new unhandled value, display as a String.
                                     return "\"" + value + "\"";
                                 }
                             });

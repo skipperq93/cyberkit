@@ -1,29 +1,29 @@
-Test the WebKitMediaKeyMessageEvent / WebKitMediaKeyNeededEvent constructors.
+Test the CyberKitMediaKeyMessageEvent / CyberKitMediaKeyNeededEvent constructors.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 
 
-event = new WebKitMediaKeyMessageEvent("foo")
+event = new CyberKitMediaKeyMessageEvent("foo")
 PASS event.type is "foo"
 PASS event.bubbles is false
 PASS event.cancelable is false
 PASS event.message is null
 PASS event.destinationURL is ""
 
-event = new WebKitMediaKeyMessageEvent("foo", { bubbles: true, cancelable: true, message: testMessage, destinationURL: "testURL" })
+event = new CyberKitMediaKeyMessageEvent("foo", { bubbles: true, cancelable: true, message: testMessage, destinationURL: "testURL" })
 PASS event.type is "foo"
 PASS event.bubbles is true
 PASS event.cancelable is true
 PASS event.message is testMessage
 PASS event.destinationURL is "testURL"
 
-event = new WebKitMediaKeyNeededEvent("foo")
+event = new CyberKitMediaKeyNeededEvent("foo")
 PASS event.type is "foo"
 PASS event.bubbles is false
 PASS event.cancelable is false
 PASS event.initData is null
 
-event = new WebKitMediaKeyNeededEvent("foo", { bubbles: true, cancelable: true, initData: testMessage })
+event = new CyberKitMediaKeyNeededEvent("foo", { bubbles: true, cancelable: true, initData: testMessage })
 PASS event.type is "foo"
 PASS event.bubbles is true
 PASS event.cancelable is true

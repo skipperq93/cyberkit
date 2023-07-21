@@ -1,2 +1,2 @@
-This test ensures WebKit does not crash when intending.
+This test ensures CyberKit does not crash when intending.
 PASS
