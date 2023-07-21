@@ -1716,6 +1716,8 @@
 			compilerSpec = com.apple.compilers.proxy.script;
 			filePatterns = "*.h";
 			fileType = pattern.proxy;
+			inputFiles = (
+			);
 			isEditable = 1;
 			outputFiles = (
 				"$(HEADER_OUTPUT_DIR)/$(INPUT_FILE_NAME)",
@@ -9936,7 +9938,6 @@
 				A543E307215AD13700279CD9 /* WebPageInspectorTargetFrontendChannel.h in Headers */,
 				C0CE72A11247E71D00BC0EC4 /* WebPageMessages.h in Headers */,
 				2D5C9D0619C81D8F00B3C5C1 /* WebPageOverlay.h in Headers */,
-				46C392292316EC4D008EED9B /* WebPageProxyIdentifier.h in Headers */,
 				BCBD3915125BB1A800D2C29F /* WebPageProxyMessages.h in Headers */,
 				512127C41908239A00DAF35C /* WebPasteboardOverrides.h in Headers */,
 				7C4694D11A51E36800AD5845 /* WebPasteboardProxy.h in Headers */,
@@ -11759,6 +11760,7 @@
 			buildSettings = {
 				DEBUG_DEFINES = "$(DEBUG_DEFINES_debug)";
 				GCC_OPTIMIZATION_LEVEL = "$(GCC_OPTIMIZATION_LEVEL_debug)";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Debug;
 		};
@@ -11766,6 +11768,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1A4F976B100E7B6600637A18 /* DebugRelease.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Release;
 		};
@@ -11869,6 +11872,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1A4F976A100E7B6600637A18 /* Base.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Production;
 		};
