@@ -29331,7 +29331,6 @@
 				CE5169E721F1B84700EA4F78 /* ColorIOS.h in Headers */,
 				EDE3A5000C7A430600956A37 /* ColorMac.h in Headers */,
 				9382DF5810A8D5C900925652 /* ColorSpace.h in Headers */,
-				7C029C6E2493C8F800268204 /* ColorTypes.h in Headers */,
 				BCDD454E1236C95C009A7985 /* ColumnInfo.h in Headers */,
 				43EDD67F1B485DBF00640E75 /* CombinedFiltersAlphabet.h in Headers */,
 				26E944D91AC4B2DD007B85B5 /* CombinedURLFilters.h in Headers */,
@@ -31910,7 +31909,6 @@
 				4A4F65721AA997F100E38CDD /* RealtimeMediaSourceCapabilities.h in Headers */,
 				4A0FFAA21AAF5EA20062803B /* RealtimeMediaSourceCenter.h in Headers */,
 				0754A5EA215EA3B8002D3A99 /* RealtimeMediaSourceFactory.h in Headers */,
-				41B8776223DE1045003638B8 /* RealtimeMediaSourceIdentifier.h in Headers */,
 				4A4F65741AA997F100E38CDD /* RealtimeMediaSourceSettings.h in Headers */,
 				07C1C0E51BFB60ED00BD2256 /* RealtimeMediaSourceSupportedConstraints.h in Headers */,
 				41103AAC1E39791000769F03 /* RealtimeOutgoingAudioSource.h in Headers */,
@@ -34473,6 +34471,7 @@
 				DEAD_CODE_STRIPPING = "$(DEAD_CODE_STRIPPING_debug)";
 				DEBUG_DEFINES = "$(DEBUG_DEFINES_debug)";
 				GCC_OPTIMIZATION_LEVEL = "$(GCC_OPTIMIZATION_LEVEL_debug)";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				STRIP_INSTALLED_PRODUCT = "$(STRIP_INSTALLED_PRODUCT_debug)";
 			};
 			name = Debug;
@@ -34481,6 +34480,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1CDD45E40BA9C84600F90147 /* DebugRelease.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				STRIP_INSTALLED_PRODUCT = NO;
 			};
 			name = Release;
@@ -34489,6 +34489,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1CDD45E60BA9C84600F90147 /* Base.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Production;
 		};
