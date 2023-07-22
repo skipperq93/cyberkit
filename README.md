@@ -19,6 +19,8 @@ CyberKit is a backport of WebKit to older iOS.
 ## Reference Implementations
 * [safari-607-branch](https://github.com/UInt2048/CyberKit/tree/safari-607-branch): 19 May 2023 - 21 July 2023
     * _Diverged 7 January 2019; built in Xcode 11.7_
+* [safari-608-branch](https://github.com/UInt2048/CyberKit/tree/safari-608-branch): 21 July 2023 - 22 July 2023
+    * _Diverged 15 July 2019; built in Xcode 11.7_
 
 ## Building from Source
 If building yourself, you may wish to use the version of Xcode used at the time to build the commit you are building.
