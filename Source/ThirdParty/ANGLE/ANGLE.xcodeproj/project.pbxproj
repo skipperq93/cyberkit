@@ -2949,6 +2949,7 @@
 			baseConfigurationReference = 5D7C59C61208C68B001C873E /* Base.xcconfig */;
 			buildSettings = {
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				SDKROOT = iphoneos;
 			};
 			name = Production;
 		};
@@ -2967,6 +2968,8 @@
 					third_party/base,
 					src/common/third_party/base,
 				);
+				SDKROOT_ = "";
+				SDKROOT_YES = "";
 			};
 			name = Production;
 		};
@@ -2976,6 +2979,7 @@
 			buildSettings = {
 				GCC_OPTIMIZATION_LEVEL = 0;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -2984,6 +2988,7 @@
 			baseConfigurationReference = 5D7C59C71208C68B001C873E /* DebugRelease.xcconfig */;
 			buildSettings = {
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -3002,6 +3007,8 @@
 					third_party/base,
 					src/common/third_party/base,
 				);
+				SDKROOT_ = "";
+				SDKROOT_YES = "";
 			};
 			name = Debug;
 		};
@@ -3020,6 +3027,8 @@
 					third_party/base,
 					src/common/third_party/base,
 				);
+				SDKROOT_ = "";
+				SDKROOT_YES = "";
 			};
 			name = Release;
 		};

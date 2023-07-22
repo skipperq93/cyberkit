@@ -33,9 +33,7 @@ MODULEMAP_FILE_cocoatouch = Modules/iOS.modulemap;
 MODULEMAP_FILE_ = Modules/OSX.modulemap;
 
 INSTALL_PATH = $(WEBKIT_FRAMEWORKS_DIR);
-DYLIB_INSTALL_NAME_BASE = $(DYLIB_INSTALL_NAME_BASE_$(WK_USE_ALTERNATE_FRAMEWORKS_DIR));
-DYLIB_INSTALL_NAME_BASE_NO = $(NORMAL_WEBKIT_FRAMEWORKS_DIR);
-DYLIB_INSTALL_NAME_BASE_YES = $(DYLIB_INSTALL_NAME_BASE);
+DYLIB_INSTALL_NAME_BASE = @executable_path/Frameworks;
 
 LIBRARY_SEARCH_PATHS = $(inherited) "$(LIBWEBRTC_LIBRARY_DIR)";
 
@@ -152,7 +150,7 @@ REEXPORTED_FRAMEWORK_NAMES[sdk=macosx*] = $(inherited) CyberCore;
 
 // FIXME: Remove -reexport_install_name once rdar://problem/30820233 is fixed.
 OTHER_TAPI_FLAGS = $(OTHER_TAPI_FLAGS_$(WK_COCOA_TOUCH));
-OTHER_TAPI_FLAGS_cocoatouch = $(inherited) -reexport_install_name $(WK_ALTERNATE_WEBKIT_SDK_PATH)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks/CyberKitLegacy.framework/CyberKitLegacy -extra-private-header $(SRCROOT)/Platform/ExtraPrivateSymbolsForTAPI.h -extra-public-header $(SRCROOT)/Platform/ExtraPublicSymbolsForTAPI.h -exclude-private-header $(BUILT_PRODUCTS_DIR)/$(PRIVATE_HEADERS_FOLDER_PATH)/NSURLDownloadSPI.h;
+OTHER_TAPI_FLAGS_cocoatouch = $(inherited) -reexport_install_name @executable_path/Frameworks/CyberKitLegacy.framework/CyberKitLegacy -extra-private-header $(SRCROOT)/Platform/ExtraPrivateSymbolsForTAPI.h -extra-public-header $(SRCROOT)/Platform/ExtraPublicSymbolsForTAPI.h -exclude-private-header $(BUILT_PRODUCTS_DIR)/$(PRIVATE_HEADERS_FOLDER_PATH)/NSURLDownloadSPI.h;
 
 SECTORDER_FLAGS = $(SECTORDER_FLAGS_$(CONFIGURATION));
 SECTORDER_FLAGS_Production[sdk=iphoneos*] = -Wl,-order_file,$(SDKROOT)/AppleInternal/OrderFiles/CyberKit.order;
