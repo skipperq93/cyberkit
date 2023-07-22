@@ -175,6 +175,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C60FE2F14E5F3CD006CD77D /* Base.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 				DEBUG_DEFINES = NDEBUG;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 			};
@@ -191,6 +192,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C60FE3114E5F3CD006CD77D /* DebugRelease.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 				DEBUG_DEFINES = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 			};
@@ -200,6 +202,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C60FE3114E5F3CD006CD77D /* DebugRelease.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 				DEBUG_DEFINES = NDEBUG;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 			};
