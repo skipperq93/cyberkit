@@ -29,7 +29,7 @@
 #ifndef PolicyDelegate_h
 #define PolicyDelegate_h
 
-#include <WebKitLegacy/WebKit.h>
+#include <CyberKitLegacy/CyberKit.h>
 
 class TestRunner;
 

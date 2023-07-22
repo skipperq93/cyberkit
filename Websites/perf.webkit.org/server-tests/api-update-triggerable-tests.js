@@ -301,7 +301,7 @@ describe('/api/update-triggerable/', function () {
         });
     });
 
-    function updateWithMacWebKitRepositoryGroups()
+    function updateWithMacCyberKitRepositoryGroups()
     {
         return {
             'slaveName': 'someSlave',
@@ -332,8 +332,8 @@ describe('/api/update-triggerable/', function () {
 
     it('should update the acceptable of custom roots and patches', () => {
         const db = TestServer.database();
-        const initialUpdate = updateWithMacWebKitRepositoryGroups();
-        const secondUpdate = updateWithMacWebKitRepositoryGroups();
+        const initialUpdate = updateWithMacCyberKitRepositoryGroups();
+        const secondUpdate = updateWithMacCyberKitRepositoryGroups();
         secondUpdate.repositoryGroups[0].acceptsRoots = true;
         secondUpdate.repositoryGroups[1].repositories[0].acceptsPatch = true;
         return MockData.addEmptyTriggerable(db).then(() => {
@@ -342,7 +342,7 @@ describe('/api/update-triggerable/', function () {
             return TestServer.remoteAPI().postJSONWithStatus('/api/update-triggerable/', initialUpdate);
         }).then(() => Manifest.fetch()).then(() => {
             const repositoryGroups = TriggerableRepositoryGroup.sortByName(TriggerableRepositoryGroup.all());
-            const webkit = Repository.findTopLevelByName('WebKit');
+            const webkit = Repository.findTopLevelByName('CyberKit');
             const macos = Repository.findTopLevelByName('macOS');
             assert.equal(repositoryGroups.length, 2);
             assert.equal(repositoryGroups[0].name(), 'system-and-webkit');
@@ -361,7 +361,7 @@ describe('/api/update-triggerable/', function () {
             return TestServer.remoteAPI().postJSONWithStatus('/api/update-triggerable/', secondUpdate);
         }).then(() => Manifest.fetch()).then(() => {
             const repositoryGroups = TriggerableRepositoryGroup.sortByName(TriggerableRepositoryGroup.all());
-            const webkit = Repository.findTopLevelByName('WebKit');
+            const webkit = Repository.findTopLevelByName('CyberKit');
             const macos = Repository.findTopLevelByName('macOS');
             assert.equal(repositoryGroups.length, 2);
             assert.equal(repositoryGroups[0].name(), 'system-and-webkit');
@@ -383,8 +383,8 @@ describe('/api/update-triggerable/', function () {
 
     it('should replace a repository when the repository group name matches', () => {
         const db = TestServer.database();
-        const initialUpdate = updateWithMacWebKitRepositoryGroups();
-        const secondUpdate = updateWithMacWebKitRepositoryGroups();
+        const initialUpdate = updateWithMacCyberKitRepositoryGroups();
+        const secondUpdate = updateWithMacCyberKitRepositoryGroups();
         let initialGroups;
         secondUpdate.repositoryGroups[1].repositories[0] = {repository: MockData.gitWebkitRepositoryId()}
         return MockData.addEmptyTriggerable(db).then(() => {
@@ -423,8 +423,8 @@ describe('/api/update-triggerable/', function () {
 
     it('should replace a repository when the list of repositories matches', () => {
         const db = TestServer.database();
-        const initialUpdate = updateWithMacWebKitRepositoryGroups();
-        const secondUpdate = updateWithMacWebKitRepositoryGroups();
+        const initialUpdate = updateWithMacCyberKitRepositoryGroups();
+        const secondUpdate = updateWithMacCyberKitRepositoryGroups();
         let initialGroups;
         let initialRepositories;
         secondUpdate.repositoryGroups[0].name = 'mac-only';

@@ -105,7 +105,7 @@ function rawValuesHTML(results, numColumns)
 function chartHTML(results, numColumns)
 {
     var revisionKey = WEBKIT_REVISIONS_KEY;
-    var revisionLabel = "WebKit Revision";
+    var revisionLabel = "CyberKit Revision";
     var startRevision = results[revisionKey][numColumns - 1];
     var endRevision = results[revisionKey][0];
 
@@ -199,7 +199,7 @@ function htmlForSummaryTable(results, numColumns)
         // Round to the nearest tenth of a percent.
         percent.push(Math.round(percentage * 10) / 10 + '%');
     }
-    var html = htmlForTableRow('WebKit Revision', results[WEBKIT_REVISIONS_KEY].slice(0, numColumns)) +
+    var html = htmlForTableRow('CyberKit Revision', results[WEBKIT_REVISIONS_KEY].slice(0, numColumns)) +
         htmlForTableRow('Percent passed', percent) +
         htmlForTableRow('Failures (deduped)', fixable) +
         htmlForTableRow('Fixable Tests', allFixable);
@@ -225,7 +225,7 @@ function valuesPerExpectation(counts, numColumns)
 function htmlForTestType(results, key, description, numColumns)
 {
     var counts = results[key];
-    var html = htmlForTableRow('WebKit Revision', results[WEBKIT_REVISIONS_KEY].slice(0, numColumns));
+    var html = htmlForTableRow('CyberKit Revision', results[WEBKIT_REVISIONS_KEY].slice(0, numColumns));
     var values = valuesPerExpectation(counts, numColumns);
     for (var expectation in values)
         html += htmlForTableRow(expectationsMap()[expectation], values[expectation]);

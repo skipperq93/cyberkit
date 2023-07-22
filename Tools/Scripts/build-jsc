@@ -45,7 +45,7 @@ my $shouldRunStaticAnalyzer = 0;
 my $minimal = 0;
 my $coverageSupport = 0;
 my $showHelp = 0;
-my $ftlJIT = int(isAppleCocoaWebKit() && !willUseIOSSimulatorSDK() || ((isARM64() || isX86_64()) && (isGtk() || isJSCOnly())));
+my $ftlJIT = int(isAppleCocoaCyberKit() && !willUseIOSSimulatorSDK() || ((isARM64() || isX86_64()) && (isGtk() || isJSCOnly())));
 my $forceCLoop = 0;
 my $cli = 0;
 my $makeArgs = "";
@@ -129,7 +129,7 @@ if (isWinCairo() || (isJSCOnly() && isWindows())) {
 
 checkRequiredSystemConfig();
 setConfiguration();
-chdirWebKit();
+chdirCyberKit();
 my @options = XcodeOptions();
 my @additionalSupportOptions = ();
 push @additionalSupportOptions, XcodeCoverageSupportOptions() if $coverageSupport;
@@ -167,7 +167,7 @@ if (isCMakeBuild()) {
     exit exitStatus(0);
 }
 
-if (isAppleCocoaWebKit()) {
+if (isAppleCocoaCyberKit()) {
     push @options, ($forceCLoop ? "ENABLE_JIT=ENABLE_JIT=0" : "ENABLE_JIT=ENABLE_JIT");
     push @options, ($forceCLoop ? "ENABLE_C_LOOP=ENABLE_C_LOOP" : "ENABLE_C_LOOP=ENABLE_C_LOOP=0");
     push @options, ($ftlJIT ? "ENABLE_FTL_JIT=ENABLE_FTL_JIT" : "ENABLE_FTL_JIT=ENABLE_FTL_JIT=0");
@@ -199,13 +199,13 @@ sub buildMyProject
     my ($projectDirectory, $projectName) = @_;
     my $result;
     chdir $projectDirectory or die "Can't find $projectName directory to build from";
-    if (isAppleCocoaWebKit()) {
+    if (isAppleCocoaCyberKit()) {
         $result = system "sh", "-c", ('xcodebuild -project ' . $projectName . '.xcodeproj "$@" | grep -v setenv && exit ${PIPESTATUS[0]}'), "xcodebuild",  @options, @ARGV, @additionalSupportOptions;
     } else {
         die "Building not defined for this platform!\n";
     }
     exit exitStatus($result) if exitStatus($result);
-    chdirWebKit();
+    chdirCyberKit();
 }
 
 sub writeCongrats()
@@ -215,13 +215,13 @@ sub writeCongrats()
 
     print "\n";
     print "====================================================================\n";
-    print " JavaScriptCore is now built ($buildTime). \n";
+    print " CyberScriptCore is now built ($buildTime). \n";
     print "====================================================================\n";
 }
 
 buildMyProject("Source/bmalloc", "bmalloc");
 buildMyProject("Source/WTF", "WTF");
-buildMyProject("Source/JavaScriptCore", "JavaScriptCore");
-if (isAppleCocoaWebKit() && $cli) {
+buildMyProject("Source/CyberScriptCore", "CyberScriptCore");
+if (isAppleCocoaCyberKit() && $cli) {
     buildMyProject("Tools/jsc-cli", "jsc-cli");
 }

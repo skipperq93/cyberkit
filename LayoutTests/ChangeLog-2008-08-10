@@ -742,7 +742,7 @@
 
         Reviewed by Adam Roben.
 
-        <rdar://problem/5955602> WebKit should support charset name x-windows-949
+        <rdar://problem/5955602> CyberKit should support charset name x-windows-949
 
         * fast/encoding/char-decoding.html:
         * fast/encoding/char-decoding-expected.txt:
@@ -805,7 +805,7 @@
 
         Reviewed by Mark Rowe.
 
-        Add layout test to check correctly handling of exceptions in callback by WebCore.
+        Add layout test to check correctly handling of exceptions in callback by CyberCore.
         Update existing test results for higher fidelity output.
 
         * fast/dom/NamedNodeMap-setNamedItem-crash-expected.txt:
@@ -2485,7 +2485,7 @@
         Reviewed by Darin Adler.
 
         Test for https://bugs.webkit.org/show_bug.cgi?id=19520
-        Bug 19520: WebKit incorrectly accepts hidden as the value of outline-style
+        Bug 19520: CyberKit incorrectly accepts hidden as the value of outline-style
 
         * fast/css/outline-hidden-illegal-value-expected.txt: Added.
         * fast/css/outline-hidden-illegal-value.html: Added.
@@ -2759,7 +2759,7 @@
         Reviewed by Darin Adler.
 
         - test for https://bugs.webkit.org/show_bug.cgi?id=19598
-          Crash in WebCore::RenderBlock::determineStartPosition
+          Crash in CyberCore::RenderBlock::determineStartPosition
 
         * fast/dynamic/floating-to-positioned-2.html: Copied from fast/dynamic/floating-to-positioned.html.
         * platform/mac/fast/dynamic/floating-to-positioned-2-expected.checksum: Added.
@@ -2857,7 +2857,7 @@
 
         Reviewed by Darin Adler.
 
-        - test for <rdar://problem/5825683> Three slash URLs are modified by WebKit
+        - test for <rdar://problem/5825683> Three slash URLs are modified by CyberKit
 
         * fast/loader/url-parse-1-expected.txt: Added.
         * fast/loader/url-parse-1.html: Added.
@@ -3311,7 +3311,7 @@
         Reviewed by Darin.
 
         test cases for https://bugs.webkit.org/show_bug.cgi?id=16489
-        WebKit does not support ElementTraversal specification
+        CyberKit does not support ElementTraversal specification
 
         * fast/dom/Element/element-traversal-expected.txt: Added.
         * fast/dom/Element/element-traversal.html: Added.
@@ -3608,7 +3608,7 @@
 
         Reviewed by Dave Hyatt.
 
-        - test for <rdar://problem/5962270> Crash in WebCore::RenderTableCell::computeAbsoluteRepaintRect()
+        - test for <rdar://problem/5962270> Crash in CyberCore::RenderTableCell::computeAbsoluteRepaintRect()
 
         * fast/reflections/table-cell.html: Added.
         * platform/mac/fast/reflections/table-cell-expected.checksum: Added.
@@ -3677,7 +3677,7 @@
         Reviewed by David Hyatt and Mitz.
 
         <rdar://problem/5704119>
-        repro crash in WebCore::RenderPart::setWidget (plugin-related?)
+        repro crash in CyberCore::RenderPart::setWidget (plugin-related?)
         
         * platform/mac/plugins/update-widget-from-style-recalc-expected.txt: Added.
         * platform/mac/plugins/update-widget-from-style-recalc.html: Added.
@@ -3807,7 +3807,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=19355
         createElement() with colon and localName
 
-        WebKit behavior has changed to expected during Acid3 work (r31230, r31231), but this
+        CyberKit behavior has changed to expected during Acid3 work (r31230, r31231), but this
         specific case appears to have been an untested side effect, landing it now.
 
         * fast/dom/createElement-with-column-expected.txt: Added.
@@ -3901,7 +3901,7 @@
 
         Reviewed by Eric.
         
-        <rdar://problem/5847330> REGRESSION CrashTracer: [USER] 536 crashes at WebCore::highestAncestor
+        <rdar://problem/5847330> REGRESSION CrashTracer: [USER] 536 crashes at CyberCore::highestAncestor
 
         * editing/deleting/5847330-1-expected.txt: Added.
         * editing/deleting/5847330-1.html: Added.
@@ -3953,7 +3953,7 @@
 
         Reviewed by Oliver.
 
-        <rdar://problem/5968071> "const f" crashes in JavaScriptCore
+        <rdar://problem/5968071> "const f" crashes in CyberScriptCore
 
         * fast/js/const-without-initializer-expected.txt: Added.
         * fast/js/const-without-initializer.html: Added.
@@ -4779,7 +4779,7 @@
         * fast/loader/data-url-encoding-svg.html:
         * fast/loader/data-url-encoding-svg-expected.txt:
         Changed these tests to always use an explicit charset - otherwise, they were failing on
-        Leopard because of a CFNetwork bug, and on Tiger because of WebKit bug 19193. Also, changed
+        Leopard because of a CFNetwork bug, and on Tiger because of CyberKit bug 19193. Also, changed
         them to test that decoding was performed correctly, not just that document.charset matched
         expectations.
 
@@ -5379,7 +5379,7 @@ o2008-05-07  Geoffrey Garen  <ggaren@apple.com>
 
         Reviewed by Darin.
 
-        <rdar://problem/5908520> REGRESSION (3.1.1-r33033): Crash in WebKit when opening or refreshing page on people.com
+        <rdar://problem/5908520> REGRESSION (3.1.1-r33033): Crash in CyberKit when opening or refreshing page on people.com
 
         https://bugs.webkit.org/show_bug.cgi?id=18687
         REGRESSION(r32220): ecma/Array/15.4.4.5-3.js test now fails in GMT(BST)
@@ -5619,7 +5619,7 @@ o2008-05-07  Geoffrey Garen  <ggaren@apple.com>
 
 2008-05-14  David Kilzer  <ddkilzer@apple.com>
 
-        REGRESSION (r26474): WebKit fails jQuery test 64 core module: text(String) subtest 1 Check escaped text (createTextNode)
+        REGRESSION (r26474): CyberKit fails jQuery test 64 core module: text(String) subtest 1 Check escaped text (createTextNode)
 
         <https://bugs.webkit.org/show_bug.cgi?id=18976>
         <rdar://problem/5924793>
@@ -5637,7 +5637,7 @@ o2008-05-07  Geoffrey Garen  <ggaren@apple.com>
 
         Reviewed by Darin.
 
-        <rdar://problem/5914803> Improve performance of WebCore::Editor::setComposition
+        <rdar://problem/5914803> Improve performance of CyberCore::Editor::setComposition
         
         Replacing all the text in a node is now much less likely to remove it
         and cause selection changes.
@@ -5916,7 +5916,7 @@ o2008-05-07  Geoffrey Garen  <ggaren@apple.com>
         Reviewed by Eric Seidel.
 
         https://bugs.webkit.org/show_bug.cgi?id=18681
-        <rdar://problem/5888130> WebKit should not remove BOM characters from content.
+        <rdar://problem/5888130> CyberKit should not remove BOM characters from content.
 
         * fast/encoding/bom-in-content-expected.txt: Added.
         * fast/encoding/bom-in-content.html: Added.
@@ -6111,7 +6111,7 @@ o2008-05-07  Geoffrey Garen  <ggaren@apple.com>
 
         Reviewed by John Sullivan.
 
-        <rdar://problem/5666354> Crashes in Mail at WebCore::RemoveNodeCommand::doApply
+        <rdar://problem/5666354> Crashes in Mail at CyberCore::RemoveNodeCommand::doApply
 
         * editing/pasteboard/5761530-1-expected.txt: Added.
         * editing/pasteboard/5761530-1.html: Added.
@@ -6242,7 +6242,7 @@ o2008-05-07  Geoffrey Garen  <ggaren@apple.com>
         Reviewed by Mitz.
         
         Test for <rdar://problem/5840475>
-        CrashTracer: [USER] 2 crashes in Safari at com.apple.WebCore: WebCore::RenderBlock::insertPositionedObject
+        CrashTracer: [USER] 2 crashes in Safari at com.matthewbenedict.CyberCore: CyberCore::RenderBlock::insertPositionedObject
 
         * fast/transforms/container-transform-crash-expected.txt: Added.
         * fast/transforms/container-transform-crash.html: Added.
@@ -7864,7 +7864,7 @@ r2008-04-23  Dan Bernstein  <mitz@apple.com>
         Reviewed by Ap.
 
         Layout test for http://bugs.webkit.org/show_bug.cgi?id=17403:
-        WebKit Creates Invalid Xhtml Links with Ajax
+        CyberKit Creates Invalid Xhtml Links with Ajax
 
         * fast/parser/ampersand-escaped-parseXMLFragment-expected.txt: Added.
         * fast/parser/ampersand-escaped-parseXMLFragment.xhtml: Added.
@@ -8012,7 +8012,7 @@ r2008-04-23  Dan Bernstein  <mitz@apple.com>
 
         Reviewed by Dan Bernstein.
 
-        Added test for <rdar://5815856> CrashTracer: [USER] 8384 crashes in WebCore::Widget::getView const + 6
+        Added test for <rdar://5815856> CrashTracer: [USER] 8384 crashes in CyberCore::Widget::getView const + 6
 
         * fast/events/mouseout-dead-subframe-expected.txt: Added.
         * fast/events/mouseout-dead-subframe.html: Added.
@@ -8644,7 +8644,7 @@ o2008-03-26  Eric Seidel  <eric@webkit.org>
         - tests for http://bugs.webkit.org/show_bug.cgi?id=17994
           REGRESSION (523-525+) View not updated when changing CSS size via JavaScript
         - and http://bugs.webkit.org/show_bug.cgi?id=18063
-          REGRESSION (r31250): Small bug that just cropped up in WebKit r31275
+          REGRESSION (r31250): Small bug that just cropped up in CyberKit r31275
 
         * fast/repaint/subtree-root-clip-2.html: Added.
         * fast/repaint/subtree-root-clip-3.html: Added.
@@ -8729,7 +8729,7 @@ o2008-03-26  Eric Seidel  <eric@webkit.org>
         Bug 3580: iFrames Appear to be Cached
         <http://bugs.webkit.org/show_bug.cgi?id=3580>
 
-        Bug 15486: REGRESSION: Reload causes WebKit to *forget* fragment URLs
+        Bug 15486: REGRESSION: Reload causes CyberKit to *forget* fragment URLs
         <http://bugs.webkit.org/show_bug.cgi?id=15486>
 
         Bug 15554: Reload causes <object> to use old data
@@ -8748,7 +8748,7 @@ o2008-03-26  Eric Seidel  <eric@webkit.org>
 
         Reviewed by Sam Weinig.
 
-        - test for <rdar://problem/5812292> CrashTracer: [REGRESSION] 60 crashes in Safari at com.apple.WebCore: WebCore::RenderObject::repaintRectangle + 47
+        - test for <rdar://problem/5812292> CrashTracer: [REGRESSION] 60 crashes in Safari at com.matthewbenedict.CyberCore: CyberCore::RenderObject::repaintRectangle + 47
 
         * fast/repaint/renderer-destruction-by-invalidateSelection-crash.html: Added.
         * platform/mac/fast/repaint/renderer-destruction-by-invalidateSelection-crash-expected.checksum: Added.
@@ -8958,7 +8958,7 @@ o2008-03-26  Eric Seidel  <eric@webkit.org>
 
         Reviewed by John Sullivan.
 
-        - test for <rdar://problem/5805070> CrashTracer: [USER] 33 crashes in Safari at com.apple.WebCore: WebCore::FrameView::layout + 431
+        - test for <rdar://problem/5805070> CrashTracer: [USER] 33 crashes in Safari at com.matthewbenedict.CyberCore: CyberCore::FrameView::layout + 431
 
         * fast/dynamic/subtree-parent-static-y.html: Added.
         * platform/mac/fast/dynamic/subtree-parent-static-y-expected.checksum: Added.
@@ -9006,7 +9006,7 @@ o2008-03-26  Eric Seidel  <eric@webkit.org>
         Reviewed by Anders Carlsson.
 
         Tests for http://bugs.webkit.org/show_bug.cgi?id=17057
-        REGRESSION: Frequent random crashes in WebCore::JSNodeList::indexGetter
+        REGRESSION: Frequent random crashes in CyberCore::JSNodeList::indexGetter
         <rdar://problem/5725058>
 
         * fast/dom/NodeList/5725058-crash-scenario-1-expected.txt: Added.
@@ -9534,7 +9534,7 @@ o2008-03-26  Eric Seidel  <eric@webkit.org>
 
         Reviewed by Darin Adler.
 
-        - test and updated results for <rdar://problem/5741981> 154008 WebKit: Some asian language font glyphs are not shown (in Mail and Entourage)
+        - test and updated results for <rdar://problem/5741981> 154008 CyberKit: Some asian language font glyphs are not shown (in Mail and Entourage)
 
         * fast/text/soft-hyphen-3.html: Added.
         * platform/mac/fast/text/basic/014-expected.txt:
@@ -9546,7 +9546,7 @@ o2008-03-26  Eric Seidel  <eric@webkit.org>
 
         Reviewed by Darin.
 
-        <rdar://problem/5687269> Need to create a Collator abstraction for WebCore and JavaScriptCore
+        <rdar://problem/5687269> Need to create a Collator abstraction for CyberCore and CyberScriptCore
 
         Added a test to verify that collation is indeed locale-sensitive, and not just UCA.
 
@@ -10319,7 +10319,7 @@ o2008-03-26  Eric Seidel  <eric@webkit.org>
 
 2008-02-21  Ada Chan  <adachan@apple.com>
 
-        Test for <rdar://problem/5757873> Buffer overrun in DeprecatedCString::find() in WebCore
+        Test for <rdar://problem/5757873> Buffer overrun in DeprecatedCString::find() in CyberCore
 
         Reviewed by Dan Bernstein.
 
@@ -10331,7 +10331,7 @@ o2008-03-26  Eric Seidel  <eric@webkit.org>
         Reviewed by David Harrison.
         
         Test for <rdar://problem/5756125> REGRESSION: A crash occurs at
-        WebCore::Frame::scriptProxy() when completing a search with Package Tracker widget
+        CyberCore::Frame::scriptProxy() when completing a search with Package Tracker widget
 
         * fast/dom/script-element-without-frame-crash-expected.txt: Added.
         * fast/dom/script-element-without-frame-crash.html: Added.
@@ -10412,7 +10412,7 @@ o2008-03-26  Eric Seidel  <eric@webkit.org>
 
         Reviewed by Darin Adler.
 
-        - test for <rdar://problem/5637569> CrashTracer: [REGRESSION] 620 crashes in Safari at com.apple.WebCore: WebCore::RenderBox::setStaticY + 15
+        - test for <rdar://problem/5637569> CrashTracer: [REGRESSION] 620 crashes in Safari at com.matthewbenedict.CyberCore: CyberCore::RenderBox::setStaticY + 15
 
         * fast/text/wbr-styled.html: Added.
         * platform/mac-leopard/fast/text/wbr-styled-expected.checksum: Added.
@@ -17560,7 +17560,7 @@ o2008-03-26  Eric Seidel  <eric@webkit.org>
 
         Interestingly, js-test-pre.js has a workaround for the issue fixed in this revision in
         its debug() function, but not in description(). Keeping the workaround for now to let tests
-        keep running in shipping Safari/WebKit.
+        keep running in shipping Safari/CyberKit.
 
         * svg/css/glyph-orientation-rounding-test-expected.txt:
 
@@ -19228,7 +19228,7 @@ o2008-03-26  Eric Seidel  <eric@webkit.org>
 
         Reviewed by Maciej Stachowiak.
 
-        - test and updated results for <rdar://problem/5645813> CrashTracer: [USER] 6 crashes in Safari at com.apple.WebCore: WebCore::RenderBox::destroy + 116
+        - test and updated results for <rdar://problem/5645813> CrashTracer: [USER] 6 crashes in Safari at com.matthewbenedict.CyberCore: CyberCore::RenderBox::destroy + 116
 
         * editing/selection/inconsistent-in-removeChildNode.html: Added.
         * platform/mac-leopard/editing/pasteboard/paste-RTFD-expected.txt:
@@ -19528,7 +19528,7 @@ o2008-03-26  Eric Seidel  <eric@webkit.org>
 
         Reviewed by Dave Hyatt.
 
-        - tests for <rdar://problem/5615307> Repro crash in WebKit!WebCore::RenderContainer::destroyLeftoverChildren
+        - tests for <rdar://problem/5615307> Repro crash in CyberKit!CyberCore::RenderContainer::destroyLeftoverChildren
 
         * fast/table/insert-cell-before-form.html: Added.
         * fast/table/insert-row-before-form.html: Added.
@@ -19989,7 +19989,7 @@ o2008-03-26  Eric Seidel  <eric@webkit.org>
 
         Reviewed by Ap.
 
-        * Make launching of the WebKit httpd work on GNU/Debian/Linux
+        * Make launching of the CyberKit httpd work on GNU/Debian/Linux
         
         The configuration of Apache2 and installation does not depend on
         the kernel but on the distribution policy. Make launching of httpd
@@ -20173,7 +20173,7 @@ o2008-03-26  Eric Seidel  <eric@webkit.org>
 
         Reviewed by Darin Adler.
 
-        - move a WebKit test which was inadvertently added to a test suite
+        - move a CyberKit test which was inadvertently added to a test suite
           directory into a custom test directory and change it to give the same
           results on Windows.
 
@@ -20318,8 +20318,8 @@ o2008-03-26  Eric Seidel  <eric@webkit.org>
 
         Reviewed by Darin.
 
-        <rdar://problem/5659812> CrashTracer: 462 crashes in Safari at com.apple.WebCore:
-        WebCore::Node::setChanged + 96
+        <rdar://problem/5659812> CrashTracer: 462 crashes in Safari at com.matthewbenedict.CyberCore:
+        CyberCore::Node::setChanged + 96
 
         * fast/dom/cssTarget-crash-expected.txt: Added.
         * fast/dom/cssTarget-crash.html: Added.
@@ -21981,7 +21981,7 @@ to skip list since it is still failing on tiger.
         Add more tests for toFixed, toPrecision and toExponential
         Add tests for toString to match Firefox's behavior
         
-        All tests pass in Firefox, but some fail in WebKit
+        All tests pass in Firefox, but some fail in CyberKit
         I've chosen to land failing tests as I expect we'll move closer
         towards Firefox's behavior in the future, and it's better to have
         the tests now thus to notice any behavior changes in the future.
@@ -22064,7 +22064,7 @@ to skip list since it is still failing on tiger.
 
         Reviewed by Sam.
         
-        ASSERT in JavaScriptCore while viewing WICD test case
+        ASSERT in CyberScriptCore while viewing WICD test case
         http://bugs.webkit.org/show_bug.cgi?id=16626
 
         * fast/js/for-in-exeception-expected.txt: Added.
@@ -22161,7 +22161,7 @@ to skip list since it is still failing on tiger.
         http://bugs.webkit.org/show_bug.cgi?id=12526
         <rdar://problem/4867183> Safari ignores encoding description "charset=Shift_JIS" in invalid html
 
-        <rdar://problem/4892428> Unlike other browsers, WebKit ignores <meta> charset definitions outside the head
+        <rdar://problem/4892428> Unlike other browsers, CyberKit ignores <meta> charset definitions outside the head
 
         <rdar://problem/5643774> REGRESSION: Text is garbled when clicking a link inside an Arabic website
 
@@ -22229,7 +22229,7 @@ to skip list since it is still failing on tiger.
 
         * http/tests/xmlhttprequest/xmlhttprequest-contenttype-empty-expected.txt: Added.
         * http/tests/xmlhttprequest/resources/empty-content-type.php: Added.
-        * http/tests/xmlhttprequest/xmlhttprequest-contenttype-empty.html: Copied from WebCore/manual-tests/xmlhttprequest-contenttype-empty.html.
+        * http/tests/xmlhttprequest/xmlhttprequest-contenttype-empty.html: Copied from CyberCore/manual-tests/xmlhttprequest-contenttype-empty.html.
 
 2007-12-25  Rob Buis  <buis@kde.org>
 
@@ -22365,7 +22365,7 @@ to skip list since it is still failing on tiger.
 
         Reviewed by Nikolas Zimmermann.
         
-        WebKit claims to support SVG feature strings it shouldn't
+        CyberKit claims to support SVG feature strings it shouldn't
         http://bugs.webkit.org/show_bug.cgi?id=15480
 
         * platform/mac/svg/W3C-SVG-1.1/struct-cond-03-t-expected.checksum:
@@ -22437,7 +22437,7 @@ to skip list since it is still failing on tiger.
         Reviewed by Darin.
 
         Fixed <rdar://problem/5592485> Safari crashed trying to get a motorcycle insurance quote
-        on Geico.com WebCore::Document::inPageCache()
+        on Geico.com CyberCore::Document::inPageCache()
 
         * fast/events/nested-event-remove-node-crash-expected.txt: Added.
         * fast/events/nested-event-remove-node-crash.html: Added.
@@ -22466,7 +22466,7 @@ to skip list since it is still failing on tiger.
 
         Reviewed by Dave Hyatt.
 
-        - test for <rdar://problem/5650045> REGRESSION: major layout problems in svn r28754 WebKit on Vox.com page
+        - test for <rdar://problem/5650045> REGRESSION: major layout problems in svn r28754 CyberKit on Vox.com page
 
         * fast/dynamic/subtree-boundary-percent-height.html: Added.
         * platform/mac/fast/dynamic/subtree-boundary-percent-height-expected.checksum: Added.
@@ -22865,7 +22865,7 @@ to skip list since it is still failing on tiger.
 
         Reviewed by Oliver Hunt.
 
-        <rdar://problem/5607069> In Mail, a crash occurs at WebCore::AppendNodeCommand() after dragging image into a <FORM> element
+        <rdar://problem/5607069> In Mail, a crash occurs at CyberCore::AppendNodeCommand() after dragging image into a <FORM> element
 
         * editing/inserting/5607069-1-expected.checksum: Added.
         * editing/inserting/5607069-1-expected.png: Added.
@@ -23003,7 +23003,7 @@ to skip list since it is still failing on tiger.
 
         Reviewed by Darin Adler.
 
-        <rdar://problem/5433862> Mail crashes at WebCore::highestAncestor() when deleting a particular selection
+        <rdar://problem/5433862> Mail crashes at CyberCore::highestAncestor() when deleting a particular selection
 
         * editing/deleting/5433862-1-expected.txt: Added.
         * editing/deleting/5433862-1.html: Added.
@@ -23550,7 +23550,7 @@ to skip list since it is still failing on tiger.
         Reviewed by Adele.
 
         - test for <rdar://problem/5608795> CrashTracer: 481 crashes in Safari
-          at WebCore::HTMLSelectElement::saveState const + 152
+          at CyberCore::HTMLSelectElement::saveState const + 152
 
         * fast/forms/select-set-inner-expected.txt: Added.
         * fast/forms/select-set-inner.html: Added.
@@ -23661,7 +23661,7 @@ to skip list since it is still failing on tiger.
 
         Testcase for:
         http://bugs.webkit.org/show_bug.cgi?id=15289
-        WebKit does not respect clip paths of a 0x0 rect
+        CyberKit does not respect clip paths of a 0x0 rect
 
         * platform/mac/svg/W3C-SVG-1.1/masking-path-04-b-expected.png:
         * platform/mac/svg/W3C-SVG-1.1/masking-path-04-b-expected.txt:
@@ -23854,7 +23854,7 @@ to skip list since it is still failing on tiger.
 
         Reviewed by Adam Roben.
 
-        - test for <rdar://problem/5538651> REGRESSSION: domfuzz: null deref in WebCore::Document::canReplaceChild
+        - test for <rdar://problem/5538651> REGRESSSION: domfuzz: null deref in CyberCore::Document::canReplaceChild
 
         * fast/dom/Document/replaceChild-null-oldChild-expected.txt: Added.
         * fast/dom/Document/replaceChild-null-oldChild.html: Added.
@@ -24343,7 +24343,7 @@ to skip list since it is still failing on tiger.
 
         Reviewed by Dave Hyatt.
 
-        - test for <rdar://problem/5612459> CrashTracer: [REGRESSION] 61 crashes in Safari at com.apple.WebCore: WebCore::AutoTableLayout::layout + 2046
+        - test for <rdar://problem/5612459> CrashTracer: [REGRESSION] 61 crashes in Safari at com.matthewbenedict.CyberCore: CyberCore::AutoTableLayout::layout + 2046
 
         * fast/table/empty-auto-column-zero-divide-expected.txt: Added.
         * fast/table/empty-auto-column-zero-divide.html: Added.
@@ -25853,7 +25853,7 @@ to skip list since it is still failing on tiger.
         Reviewed by Justin Garcia.
 
         http://bugs.webkit.org/show_bug.cgi?id=15781
-        REGRESSION: Ligatures fail to form when typing in Devanagari (because WebKit can't handle
+        REGRESSION: Ligatures fail to form when typing in Devanagari (because CyberKit can't handle
         a marked range that covers half of a composed character sequence)
 
         * platform/mac/editing/input/devanagari-ligature-expected.checksum: Added.
@@ -25896,7 +25896,7 @@ to skip list since it is still failing on tiger.
 
         Reviewed by Alexey Proskuryakov.
         
-        <rdar://problem/5546763> CrashTracer: [USER] 362 crashes at WebCore::DeleteSelectionCommand::mergeParagraphs
+        <rdar://problem/5546763> CrashTracer: [USER] 362 crashes at CyberCore::DeleteSelectionCommand::mergeParagraphs
 
         * editing/deleting/5546763-expected.txt: Added.
         * editing/deleting/5546763.html: Added.
@@ -26328,7 +26328,7 @@ to skip list since it is still failing on tiger.
 
 2007-11-07  David Kilzer  <ddkilzer@apple.com>
 
-        WebKit confuses width/height for Media Queries device-aspect-ratio evaluation
+        CyberKit confuses width/height for Media Queries device-aspect-ratio evaluation
         <http://bugs.webkit.org/show_bug.cgi?id=14893>
         <rdar://problem/5380295>
 
@@ -26624,7 +26624,7 @@ to skip list since it is still failing on tiger.
         Reviewed by Sam.
 
         New test for <rdar://problem/5575812> REGRESSION:When using 
-        absolute positioning with overflow:auto div, WebKit seems to add an 
+        absolute positioning with overflow:auto div, CyberKit seems to add an 
         additional 15px
         * fast/overflow/overflow-auto-position-absolute.html: Added.
         * platform/mac/fast/overflow/overflow-auto-position-absolute-expected.checksum: Added.
@@ -26794,7 +26794,7 @@ to skip list since it is still failing on tiger.
 
         Reviewed by Mitz.
 
-        - update tests affected by fix for <rdar://problem/5530185> WebKit does not show
+        - update tests affected by fix for <rdar://problem/5530185> CyberKit does not show
           <object> fallback content when both URL and MIME type is omitted
 
         * dom/html/level2/html/AppletsCollection-expected.txt: The text "Nothing here!" renders now.
@@ -26900,7 +26900,7 @@ to skip list since it is still failing on tiger.
         Reviewed by Darin.
 
         http://bugs.webkit.org/show_bug.cgi?id=11001
-        WebKit doesn't support RegExp.compile method
+        CyberKit doesn't support RegExp.compile method
 
         * fast/js/regexp-compile-expected.txt: Added.
         * fast/js/regexp-compile.html: Added.
@@ -27017,7 +27017,7 @@ to skip list since it is still failing on tiger.
 
         Reviewed by Darin Adler.
 
-        <rdar://problem/5549929> CrashTracer: [USER] 35 crashes at WebCore::CharacterData::insertData
+        <rdar://problem/5549929> CrashTracer: [USER] 35 crashes at CyberCore::CharacterData::insertData
 
         * editing/inserting/5549929-1-expected.txt: Added.
         * editing/inserting/5549929-1.html: Added.
@@ -27278,7 +27278,7 @@ to skip list since it is still failing on tiger.
         Reviewed by Adam Roben.
 
         Update tests for http://bugs.webkit.org/show_bug.cgi?id=14953
-        Implement window.console in WebCore
+        Implement window.console in CyberCore
 
         * fast/dom/Window/window-properties-expected.txt:
         * http/tests/security/cross-frame-access-put-expected.txt:
@@ -28136,7 +28136,7 @@ to skip list since it is still failing on tiger.
 
         Reviewed by Darin.
 
-        Test for <rdar://problem/5543228> CrashTracer: [USER] 2 crashes in Safari at com.apple.WebCore: WebCore::HTMLInputElement::defaultEventHandler + 872
+        Test for <rdar://problem/5543228> CrashTracer: [USER] 2 crashes in Safari at com.matthewbenedict.CyberCore: CyberCore::HTMLInputElement::defaultEventHandler + 872
 
         * fast/forms/textfield-onchange-deletion-expected.txt: Added.
         * fast/forms/textfield-onchange-deletion.html: Added.

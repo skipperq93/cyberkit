@@ -1,5 +1,5 @@
 if (window.testRunner) {
-    testRunner.overridePreference("WebKitJavaEnabled", "0");
+    testRunner.overridePreference("CyberKitJavaEnabled", "0");
     testRunner.waitUntilDone();
     testRunner.dumpAsText();
 }

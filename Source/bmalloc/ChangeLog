@@ -187,7 +187,7 @@
     
     Tools:
     
-    * TestWebKitAPI/Tests/WTF/bmalloc/IsoHeap.cpp:
+    * TestCyberKitAPI/Tests/WTF/bmalloc/IsoHeap.cpp:
     (assertHasObjects):
     (assertHasOnlyObjects):
     (assertClean):
@@ -681,7 +681,7 @@
         Reviewed by Yusuke Suzuki.
 
         DeferredTriggerInlines.h uses RELEASE_BASSERT, but does not include BAssert.h. This causes
-        subsequent build failures when shuffling around some sources in WebCore that then attempt to
+        subsequent build failures when shuffling around some sources in CyberCore that then attempt to
         include <wtf/IsoMallocInlines.h>.
 
         * bmalloc/DeferredTriggerInlines.h:
@@ -1488,7 +1488,7 @@
         List the headers for bmalloc and copy them using WEBKIT_COPY_FILES.
 
         Add an intermediate target bmalloc_PostBuild which depends on bmalloc and the headers
-        being copied. Then alias that to WebKit::bmalloc.
+        being copied. Then alias that to CyberKit::bmalloc.
 
         * CMakeLists.txt:
         * PlatformMac.cmake:
@@ -1745,7 +1745,7 @@
 
 2019-04-04  Yusuke Suzuki  <ysuzuki@apple.com>
 
-        [WebCore] Put most of derived classes of ScriptWrappable into IsoHeap
+        [CyberCore] Put most of derived classes of ScriptWrappable into IsoHeap
         https://bugs.webkit.org/show_bug.cgi?id=196475
 
         Reviewed by Saam Barati.
@@ -2019,7 +2019,7 @@
         Reviewed by Saam Barati.
 
         As the same to bmalloc, bmalloc::DebugHeap should have scavenge feature to make it scavengable if we want.
-        We also add DebugHeap::dump feature which dumps system malloc data in the WebKit Malloc zone.
+        We also add DebugHeap::dump feature which dumps system malloc data in the CyberKit Malloc zone.
 
         * bmalloc/DebugHeap.cpp:
         (bmalloc::DebugHeap::scavenge):
@@ -2701,7 +2701,7 @@
 
 2018-09-25  Alex Christensen  <achristensen@webkit.org>
 
-        Allow for suffixes to com.apple.WebKit.WebContent
+        Allow for suffixes to com.matthewbenedict.CyberKit.WebContent
         https://bugs.webkit.org/show_bug.cgi?id=189972
 
         Reviewed by Chris Dumez.
@@ -3006,7 +3006,7 @@
             guard variable for bmalloc::PerProcess<bmalloc::Scavenger>::s_object@@Base-0x38ce8
 
         We can remove this by initializing `nullptr`, which leads to constexpr initialization.
-        After this change, Linux JSCOnly libJavaScriptCore.so has no static initializers.
+        After this change, Linux JSCOnly libCyberScriptCore.so has no static initializers.
 
         * bmalloc/PerProcess.h:
 
@@ -3215,8 +3215,8 @@
         Unreviewed, follow-up patch after r230474
         https://bugs.webkit.org/show_bug.cgi?id=166684
 
-        Add "JavaScriptCore" to Darwin name. And use short name "BMScavenger"
-        for Linux since adding "JavaScriptCore" makes the name too long for Linux.
+        Add "CyberScriptCore" to Darwin name. And use short name "BMScavenger"
+        for Linux since adding "CyberScriptCore" makes the name too long for Linux.
 
         * bmalloc/Scavenger.cpp:
         (bmalloc::Scavenger::threadRunLoop):
@@ -4062,8 +4062,8 @@
 
         For now I've chosen the following bundles:
 
-          - com.apple.WebKit.WebContent.Development
-          - com.apple.WebKit.WebContent
+          - com.matthewbenedict.CyberKit.WebContent.Development
+          - com.matthewbenedict.CyberKit.WebContent
           - com.apple.WebProcess
 
         And the following processes:
@@ -4231,7 +4231,7 @@
 
 2017-12-14  David Kilzer  <ddkilzer@apple.com>
 
-        Enable -Wstrict-prototypes for WebKit
+        Enable -Wstrict-prototypes for CyberKit
         <https://webkit.org/b/180757>
         <rdar://problem/36024132>
 
@@ -4486,7 +4486,7 @@
         flushing the log. Similarly, the allocator only grabs it when refilling the bump'n'pop
         FreeList.
         
-        This adds a unit test for IsoHeaps. In this change, IsoHeaps are adopted only by WebCore's
+        This adds a unit test for IsoHeaps. In this change, IsoHeaps are adopted only by CyberCore's
         RenderObject.
         
         Note that despite the use of GC concepts, it's not a goal to make this code directly sharable
@@ -5692,7 +5692,7 @@
 
 2017-07-14  Filip Pizlo  <fpizlo@apple.com>
 
-        It should be easy to decide how WebKit yields
+        It should be easy to decide how CyberKit yields
         https://bugs.webkit.org/show_bug.cgi?id=174298
 
         Reviewed by Saam Barati.
@@ -6272,7 +6272,7 @@
 
 2017-05-05  Joseph Pecoraro  <pecoraro@apple.com>
 
-        Leaks always reports "WebKit Malloc Memory Pressure Handler" dispatch_queue/source as leaking
+        Leaks always reports "CyberKit Malloc Memory Pressure Handler" dispatch_queue/source as leaking
         https://bugs.webkit.org/show_bug.cgi?id=171532
 
         Reviewed by Geoffrey Garen.
@@ -6319,8 +6319,8 @@
         Reviewed by Geoffrey Garen.
 
         Registered a critical memory pressure handler.  We add this handler in addition to the
-        call to release bmalloc memory in the WebCore releaseMemory handler for the case of
-        JSC API users that don't use WebCore.  When both handlers are in the process, it is
+        call to release bmalloc memory in the CyberCore releaseMemory handler for the case of
+        JSC API users that don't use CyberCore.  When both handlers are in the process, it is
         basically a race.  One will win, but the loser won't do any more work, so it is harmless.
 
         * bmalloc/Heap.cpp:
@@ -6382,7 +6382,7 @@
 
         Reviewed by Filip Pizlo.
 
-        Harris asked for this so he could separate Safari and WebKit memory use
+        Harris asked for this so he could separate Safari and CyberKit memory use
         when doing memory analysis.
 
         This patch adds an explicit DebugHeap class that contains all our
@@ -6559,7 +6559,7 @@
 
         Revert to using yield() instead of swtch() because very low priority
         background tasks can cause priority inversion and deadlock. In the
-        network process, that happened with com.apple.WebKit.Cache.Storage.serialBackground.
+        network process, that happened with com.matthewbenedict.CyberKit.Cache.Storage.serialBackground.
 
         Still a big speedup on MallocBench.
 
@@ -6867,7 +6867,7 @@
 
 2016-06-12  David Kilzer  <ddkilzer@apple.com>
 
-        Crash in com.apple.WebKit.WebContent at std::__1::__call_once_proxy<std::__1::tuple<CrashReporterSupportLibrary()::$_0&&> >
+        Crash in com.matthewbenedict.CyberKit.WebContent at std::__1::__call_once_proxy<std::__1::tuple<CrashReporterSupportLibrary()::$_0&&> >
         <https://webkit.org/b/158660>
         <rdar://problem/25652686>
 
@@ -6964,7 +6964,7 @@
 
 2016-05-16  Geoffrey Garen  <ggaren@apple.com>
 
-        REGRESSION (200035): changes in "WebKit Malloc" VM regions are causing 'leaks' to spew "Failed to map remote region" messages
+        REGRESSION (200035): changes in "CyberKit Malloc" VM regions are causing 'leaks' to spew "Failed to map remote region" messages
         https://bugs.webkit.org/show_bug.cgi?id=157764
 
         Reviewed by Gavin Barraclough.
@@ -7191,7 +7191,7 @@
         It also eliminates inline metadata for large objects, fixing the
         regression introduced in r198675, and more:
 
-            run-malloc-benchmarks Baseline:~/OpenSource/WebKitBuildBaseline/Release/ Patch:~/OpenSource/WebKitBuild/Release/
+            run-malloc-benchmarks Baseline:~/OpenSource/CyberKitBuildBaseline/Release/ Patch:~/OpenSource/CyberKitBuild/Release/
 
                                                                   Baseline                          Patch                              Δ
             Memory at End:
@@ -7203,7 +7203,7 @@
 
         Overall memory use looks OK:
 
-            run-malloc-benchmarks --memory_warning Baseline:~/OpenSource/WebKitBuildBaseline/Release/ Patch:~/OpenSource/WebKitBuild/Release/
+            run-malloc-benchmarks --memory_warning Baseline:~/OpenSource/CyberKitBuildBaseline/Release/ Patch:~/OpenSource/CyberKitBuild/Release/
 
                                                         Baseline                               Patch                                   Δ
             Memory at End:
@@ -7211,7 +7211,7 @@
 
         Overall throughput looks OK:
 
-            run-malloc-benchmarks Baseline:~/OpenSource/WebKitBuildBaseline/Release/ Patch:~/OpenSource/WebKitBuild/Release/
+            run-malloc-benchmarks Baseline:~/OpenSource/CyberKitBuildBaseline/Release/ Patch:~/OpenSource/CyberKitBuild/Release/
 
                                                                   Baseline                          Patch                              Δ
             Execution Time:
@@ -7427,7 +7427,7 @@
 
         Reviewed by Michael Saboff.
 
-        This helps keep the JavaScriptCore GC on the fast path, and it also
+        This helps keep the CyberScriptCore GC on the fast path, and it also
         helps avoid fragmentation on our website stress test:
 
             nimlang                      209,584kB            198,076kB      ^ 1.06x smaller
@@ -7779,7 +7779,7 @@
         (bmalloc::logVMFailure): Declaration.
         * bmalloc/VMAllocate.h:
         (bmalloc::tryVMAllocate): Call logVMFailure() on mmap() failure.
-        * bmalloc/darwin/BSoftLinking.h: Copied from Source/WebCore/platform/mac/SoftLinking.h.
+        * bmalloc/darwin/BSoftLinking.h: Copied from Source/CyberCore/platform/mac/SoftLinking.h.
 
 2016-03-26  Geoffrey Garen  <ggaren@apple.com>
 
@@ -9244,7 +9244,7 @@
 
 2015-12-19  Dan Bernstein  <mitz@apple.com>
 
-        [Mac] WebKit contains dead source code for OS X Mavericks and earlier
+        [Mac] CyberKit contains dead source code for OS X Mavericks and earlier
         https://bugs.webkit.org/show_bug.cgi?id=152462
 
         Reviewed by Alexey Proskuryakov.
@@ -9341,7 +9341,7 @@
 
         (bmalloc::Function>::run):
         (bmalloc::Function>::runSlowCase): Updated for interface changes. Also
-        changed to use our WebKit style for condition signal: Hold the lock
+        changed to use our CyberKit style for condition signal: Hold the lock
         during the signal and always notify all. Technically, neither is necessary,
         but it is easier to understand the code this way, and harder to make
         mistakes.
@@ -9468,7 +9468,7 @@
 
 2015-07-24  Geoffrey Garen  <ggaren@apple.com>
 
-        vmmap crash at JavaScriptCore: 0x31cd12f6 (the JavaScript malloc zone enumerator)
+        vmmap crash at CyberScriptCore: 0x31cd12f6 (the JavaScript malloc zone enumerator)
         https://bugs.webkit.org/show_bug.cgi?id=147274
 
         Reviewed by Anders Carlsson.
@@ -9483,7 +9483,7 @@
 
 2015-07-24  Geoffrey Garen  <ggaren@apple.com>
 
-        JavaScriptCore bmalloc should not register its malloc zone more than once
+        CyberScriptCore bmalloc should not register its malloc zone more than once
         https://bugs.webkit.org/show_bug.cgi?id=147273
 
         Reviewed by Andreas Kling.
@@ -9579,7 +9579,7 @@
         FWIW, TCMalloc used to have an xLargeMax too, which it called kMaxValidPages.
 
         No test because this bug was found by code inspection and I don't know
-        of a practical way to convince WebKit to make an allocation this large.
+        of a practical way to convince CyberKit to make an allocation this large.
 
         * bmalloc/Allocator.cpp:
         (bmalloc::Allocator::tryAllocate):
@@ -9611,7 +9611,7 @@
 
 2015-05-07  Geoffrey Garen  <ggaren@apple.com>
 
-        Release assert in com.apple.WebKit.WebContent under JavaScriptCore: JSC::JSONProtoFuncStringify
+        Release assert in com.matthewbenedict.CyberKit.WebContent under CyberScriptCore: JSC::JSONProtoFuncStringify
         https://bugs.webkit.org/show_bug.cgi?id=144758
 
         Reviewed by Andreas Kling.
@@ -10389,7 +10389,7 @@
 
         Build bmalloc through CMake as a static library. It's then linked either
         into the WTF library (if built as a shared library) or into the JSC and
-        WebKit2 libraries. There's no need to build it as a standalone shared library.
+        CyberKit2 libraries. There's no need to build it as a standalone shared library.
 
         Rubber-stamped by Carlos Garcia Campos.
 
@@ -10757,7 +10757,7 @@
         (bmalloc::PerThreadStorage::init): Added a catch-all cross-platform Unix
         way to do fast per-thread access without taking a lock every time. This
         probably works on all the platforms we care about, and it matches other
-        techniques we use elsewhere in WebKit.
+        techniques we use elsewhere in CyberKit.
 
         (bmalloc::PerThread<T>::getFastCase): Removed the conditional from
         this class because PerThreadStorage now encapsulates everything that
@@ -10912,7 +10912,7 @@
 
 2014-12-09  David Kilzer  <ddkilzer@apple.com>
 
-        Switch from using PLATFORM_NAME to SDK selectors in ANGLE, bmalloc, gtest, JavaScriptCore, WTF
+        Switch from using PLATFORM_NAME to SDK selectors in ANGLE, bmalloc, gtest, CyberScriptCore, WTF
         <http://webkit.org/b/139212>
 
         Reviewed by Joseph Pecoraro.
@@ -10972,7 +10972,7 @@
 
 2014-11-01  David Kilzer  <ddkilzer@apple.com>
 
-        JavaScriptCore is missing debug info for bmalloc because libbmalloc.a is stripped
+        CyberScriptCore is missing debug info for bmalloc because libbmalloc.a is stripped
         <https://webkit.org/b/138286>
         <rdar://problem/18847087>
 
@@ -10980,7 +10980,7 @@
 
         * Configurations/bmalloc.xcconfig: Set STRIP_INSTALLED_PRODUCT
         to NO for the target that produces libbmalloc.a so that the
-        debug symbols will be linked into JavaScriptCore and end up in
+        debug symbols will be linked into CyberScriptCore and end up in
         its dSYM file.
 
 2014-10-30  Dana Burkart  <dburkart@apple.com>
@@ -11557,7 +11557,7 @@
 
 2014-08-13  Daniel Bates  <dabates@apple.com>
 
-        [iOS] Make JavaScriptCore and bmalloc build with the public SDK
+        [iOS] Make CyberScriptCore and bmalloc build with the public SDK
         https://bugs.webkit.org/show_bug.cgi?id=135848
 
         Reviewed by Geoffrey Garen.
@@ -11802,7 +11802,7 @@
 
         Full set of benchmark results:
 
-                bmalloc> ~/webkit/PerformanceTests/MallocBench/run-malloc-benchmarks --measure-heap nopatch:~/scratch/Build-nopatch/Release/ patch:~/webkit/WebKitBuild/Release/
+                bmalloc> ~/webkit/PerformanceTests/MallocBench/run-malloc-benchmarks --measure-heap nopatch:~/scratch/Build-nopatch/Release/ patch:~/webkit/CyberKitBuild/Release/
                                                                                                 
                                                                nopatch                      patch                                Δ
                 Peak Memory:
@@ -11823,7 +11823,7 @@
                     <arithmetic mean>                         11,516kB                   10,473kB                   ^ 1.1x smaller
                     <harmonic mean>                           10,350kB                    9,485kB                  ^ 1.09x smaller
 
-                MallocBench> ~/webkit/PerformanceTests/MallocBench/run-malloc-benchmarks nopatch:~/scratch/Build-nopatch/Release/ patch:~/webkit/WebKitBuild/Release/
+                MallocBench> ~/webkit/PerformanceTests/MallocBench/run-malloc-benchmarks nopatch:~/scratch/Build-nopatch/Release/ patch:~/webkit/CyberKitBuild/Release/
                                                                                                 
                                                    nopatch                patch                         Δ
                 Execution Time:
@@ -11843,7 +11843,7 @@
                     <arithmetic mean>                152ms                171ms            ! 1.12x slower
                     <harmonic mean>                  137ms                156ms            ! 1.14x slower
 
-                MallocBench> ~/webkit/PerformanceTests/MallocBench/run-malloc-benchmarks nopatch:~/scratch/Build-nopatch/Release/ patch:~/webkit/WebKitBuild/Release/
+                MallocBench> ~/webkit/PerformanceTests/MallocBench/run-malloc-benchmarks nopatch:~/scratch/Build-nopatch/Release/ patch:~/webkit/CyberKitBuild/Release/
                                                                                                 
                                                                        nopatch                          patch                                     Δ
                 Execution Time:
@@ -11872,7 +11872,7 @@
                     <arithmetic mean>                                    167ms                          214ms                        ! 1.28x slower
                     <harmonic mean>                                      117ms                          148ms                        ! 1.26x slower
 
-                MallocBench> ~/webkit/PerformanceTests/MallocBench/run-malloc-benchmarks TC:~/scratch/Build-TCMalloc/Release/ patch:~/webkit/WebKitBuild/Release/
+                MallocBench> ~/webkit/PerformanceTests/MallocBench/run-malloc-benchmarks TC:~/scratch/Build-TCMalloc/Release/ patch:~/webkit/CyberKitBuild/Release/
 
                                                                     TC                      patch                                Δ
                 Peak Memory:
@@ -11893,7 +11893,7 @@
                     <arithmetic mean>                         13,005kB                   15,516kB                   ! 1.19x bigger
                     <harmonic mean>                           11,813kB                   13,867kB                   ! 1.17x bigger
 
-                MallocBench> ~/webkit/PerformanceTests/MallocBench/run-malloc-benchmarks TC:~/scratch/Build-TCMalloc/Release/ patch:~/webkit/WebKitBuild/Release/
+                MallocBench> ~/webkit/PerformanceTests/MallocBench/run-malloc-benchmarks TC:~/scratch/Build-TCMalloc/Release/ patch:~/webkit/CyberKitBuild/Release/
                                                                                                 
                                                         TC                patch                         Δ
                 Execution Time:
@@ -12195,7 +12195,7 @@
 
         * Makefile: Added. For make clients.
 
-        These files are required for building any project in WebKit. I copied
+        These files are required for building any project in CyberKit. I copied
         them from WTF:
         * Configurations: Added.
         * Configurations/Base.xcconfig: Added.

@@ -1,6 +1,6 @@
 <?php
 /**
- * WebKitPostTileWidget class
+ * CyberKitPostTileWidget class
  * A WordPress widget to show a post tile on the home page
  **/
 
@@ -8,7 +8,7 @@ defined('WPINC') || header('HTTP/1.1 403') & exit; // Prevent direct access
 
 if ( ! class_exists('WP_Widget') ) return;
 
-class WebKitPostTileWidget extends WP_Widget {
+class CyberKitPostTileWidget extends WP_Widget {
 
     public function __construct() {
         parent::WP_Widget(false,
@@ -102,6 +102,6 @@ class WebKitPostTileWidget extends WP_Widget {
         <?php
     }
 
-} // END class WebKitPostTileWidget
+} // END class CyberKitPostTileWidget
 
-register_widget('WebKitPostTileWidget');
+register_widget('CyberKitPostTileWidget');

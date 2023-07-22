@@ -1,1 +1,1 @@
-PASS if WebKit does not crash in debug.
+PASS if CyberKit does not crash in debug.

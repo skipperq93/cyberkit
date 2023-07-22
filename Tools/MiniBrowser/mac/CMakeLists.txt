@@ -1,6 +1,6 @@
 set(MINIBROWSER_DIR "${TOOLS_DIR}/MiniBrowser/mac")
 
-#FIXME: This should not need WEBCORE_EXPORT defined.  This means we are including WebCore headers, and we should not.
+#FIXME: This should not need WEBCORE_EXPORT defined.  This means we are including CyberCore headers, and we should not.
 add_definitions("-include MiniBrowser_Prefix.pch -DWEBCORE_EXPORT=")
 
 set(MiniBrowser_SOURCES
@@ -15,14 +15,14 @@ set(MiniBrowser_SOURCES
 )
 
 set(MiniBrowser_INCLUDE_DIRECTORIES
-    ${CMAKE_SOURCE_DIR}/Source/WebKitLegacy
+    ${CMAKE_SOURCE_DIR}/Source/CyberKitLegacy
     ${CMAKE_SOURCE_DIR}/Source
     ${FORWARDING_HEADERS_DIR}
     ${MINIBROWSER_DIR}
 )
 
 set(MiniBrowser_LIBRARIES
-    WebKit
+    CyberKit
 )
 
 set(CMAKE_EXE_LINKER_FLAGS "-framework Cocoa")

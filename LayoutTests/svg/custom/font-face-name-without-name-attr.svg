@@ -6,7 +6,7 @@
         </font-face-src>
     </font-face>
 </defs>
-<text font-family="svgtest" x="0" y="1cm">This test passes if WebKit doesn't crash.</text>
+<text font-family="svgtest" x="0" y="1cm">This test passes if CyberKit doesn't crash.</text>
 <script>
 if (window.testRunner)
     window.testRunner.dumpAsText();

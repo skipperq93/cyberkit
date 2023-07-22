@@ -29,8 +29,8 @@ function xhrPromise(url) {
     });
 }
 var origin = new URL("https://<?php echo strpos(WP_HOST, "webkit.org") !== false ? "svn.webkit.org" : WP_HOST; ?>/");
-var loadJavaScriptCoreFeatures = xhrPromise(new URL("/repository/webkit/trunk/Source/JavaScriptCore/features.json", origin));
-var loadWebCoreFeatures = xhrPromise(new URL("/repository/webkit/trunk/Source/WebCore/features.json", origin));
+var loadCyberScriptCoreFeatures = xhrPromise(new URL("/repository/webkit/trunk/Source/CyberScriptCore/features.json", origin));
+var loadCyberCoreFeatures = xhrPromise(new URL("/repository/webkit/trunk/Source/CyberCore/features.json", origin));
 </script>
 
 <style>
@@ -1147,7 +1147,7 @@ function initializeStatusPage() {
     }
 
 
-    Promise.all([loadJavaScriptCoreFeatures, loadWebCoreFeatures]).then(displayFeatures).catch(displayError);
+    Promise.all([loadCyberScriptCoreFeatures, loadCyberCoreFeatures]).then(displayFeatures).catch(displayError);
 }
 
 document.addEventListener("DOMContentLoaded", initializeStatusPage);

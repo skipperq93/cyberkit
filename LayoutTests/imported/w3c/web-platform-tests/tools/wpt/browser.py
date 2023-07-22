@@ -1178,8 +1178,8 @@ class Sauce(Browser):
         return None
 
 
-class WebKit(Browser):
-    """WebKit-specific interface."""
+class CyberKit(Browser):
+    """CyberKit-specific interface."""
 
     product = "webkit"
     requirements = "requirements_webkit.txt"
@@ -1203,7 +1203,7 @@ class WebKit(Browser):
         return None
 
 
-class WebKitGTKMiniBrowser(WebKit):
+class CyberKitGTKMiniBrowser(CyberKit):
 
     def find_binary(self, venv_path=None, channel=None):
         libexecpaths = ["/usr/libexec/webkit2gtk-4.0"]  # Fedora path
@@ -1225,18 +1225,18 @@ class WebKitGTKMiniBrowser(WebKit):
         path = os.environ['PATH']
         if channel == "nightly":
             path = "%s:%s" % (path, "/opt/webkitgtk/nightly")
-        return find_executable("WebKitWebDriver", path)
+        return find_executable("CyberKitWebDriver", path)
 
     def version(self, binary=None, webdriver_binary=None):
         if binary is None:
             return None
-        try:  # WebKitGTK MiniBrowser before 2.26.0 doesn't support --version
+        try:  # CyberKitGTK MiniBrowser before 2.26.0 doesn't support --version
             output = call(binary, "--version").strip()
         except subprocess.CalledProcessError:
             return None
-        # Example output: "WebKitGTK 2.26.1"
+        # Example output: "CyberKitGTK 2.26.1"
         if output:
-            m = re.match(r"WebKitGTK (.+)", output)
+            m = re.match(r"CyberKitGTK (.+)", output)
             if not m:
                 self.logger.warning("Failed to extract version from: %s" % output)
                 return None
@@ -1260,7 +1260,7 @@ class Epiphany(Browser):
         return find_executable("epiphany")
 
     def find_webdriver(self, channel=None):
-        return find_executable("WebKitWebDriver")
+        return find_executable("CyberKitWebDriver")
 
     def install_webdriver(self, dest=None, channel=None, browser_binary=None):
         raise NotImplementedError

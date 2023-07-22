@@ -6,7 +6,7 @@ browser tester. The code still has a lot of work to be done, but it's
 definitely usable. Here are some notable features:
 
 * Tests all common HTML and CSS tags and attributes, as parsed from 
-the KHTML, WebKit and Mozilla source trees, as well as tags for 
+the KHTML, CyberKit and Mozilla source trees, as well as tags for 
 Internet Explorer from MSDN. This also includes a few Javascript hooks.
 * Numeric, and String overflow and formatting tests
 * Sequential and Randomized Test Case Generation

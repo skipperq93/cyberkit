@@ -342,7 +342,7 @@ WI.OpenResourceDialog = class OpenResourceDialog extends WI.Dialog
                 continue;
             if (!WI.settings.debugShowConsoleEvaluations.value && isWebInspectorConsoleEvaluationScript(script.sourceURL))
                 continue;
-            if (!WI.settings.engineeringShowInternalScripts.value && isWebKitInternalScript(script.sourceURL))
+            if (!WI.settings.engineeringShowInternalScripts.value && isCyberKitInternalScript(script.sourceURL))
                 continue;
             this._addResource(script, suppressFilterUpdate);
         }

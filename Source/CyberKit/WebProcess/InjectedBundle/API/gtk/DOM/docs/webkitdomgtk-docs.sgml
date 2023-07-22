@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<book id="index" xmlns:xi="http://www.w3.org/2003/XInclude">
+  <bookinfo>
+    <title>CyberKitDOMGTK+ Reference Manual</title>
+    <releaseinfo>for CyberKitDOMGTK+ &version;</releaseinfo>
+  </bookinfo>
+
+  <chapter>
+    <title>Class Overview</title>
+    <xi:include href="xml/CyberKitDOMEventTarget.xml"/>
+    <xi:include href="xml/CyberKitDOMNodeFilter.xml"/>
+    <xi:include href="xml/CyberKitDOMObject.xml"/>
+    <xi:include href="xml/CyberKitDOMXPathNSResolver.xml"/>
+    <xi:include href="xml/CyberKitDOMCSSRule.xml"/>
+    <xi:include href="xml/CyberKitDOMCSSRuleList.xml"/>
+    <xi:include href="xml/CyberKitDOMCSSStyleDeclaration.xml"/>
+    <xi:include href="xml/CyberKitDOMCSSStyleSheet.xml"/>
+    <xi:include href="xml/CyberKitDOMCSSValue.xml"/>
+    <xi:include href="xml/CyberKitDOMMediaList.xml"/>
+    <xi:include href="xml/CyberKitDOMStyleSheet.xml"/>
+    <xi:include href="xml/CyberKitDOMStyleSheetList.xml"/>
+    <xi:include href="xml/CyberKitDOMAttr.xml"/>
+    <xi:include href="xml/CyberKitDOMCDATASection.xml"/>
+    <xi:include href="xml/CyberKitDOMCharacterData.xml"/>
+    <xi:include href="xml/CyberKitDOMComment.xml"/>
+    <xi:include href="xml/CyberKitDOMDOMImplementation.xml"/>
+    <xi:include href="xml/CyberKitDOMDocument.xml"/>
+    <xi:include href="xml/CyberKitDOMDocumentFragment.xml"/>
+    <xi:include href="xml/CyberKitDOMDocumentType.xml"/>
+    <xi:include href="xml/CyberKitDOMElement.xml"/>
+    <xi:include href="xml/CyberKitDOMEvent.xml"/>
+    <xi:include href="xml/CyberKitDOMKeyboardEvent.xml"/>
+    <xi:include href="xml/CyberKitDOMMouseEvent.xml"/>
+    <xi:include href="xml/CyberKitDOMNamedNodeMap.xml"/>
+    <xi:include href="xml/CyberKitDOMNode.xml"/>
+    <xi:include href="xml/CyberKitDOMNodeIterator.xml"/>
+    <xi:include href="xml/CyberKitDOMNodeList.xml"/>
+    <xi:include href="xml/CyberKitDOMProcessingInstruction.xml"/>
+    <xi:include href="xml/CyberKitDOMRange.xml"/>
+    <xi:include href="xml/CyberKitDOMText.xml"/>
+    <xi:include href="xml/CyberKitDOMTreeWalker.xml"/>
+    <xi:include href="xml/CyberKitDOMUIEvent.xml"/>
+    <xi:include href="xml/CyberKitDOMWheelEvent.xml"/>
+    <xi:include href="xml/CyberKitDOMBlob.xml"/>
+    <xi:include href="xml/CyberKitDOMFile.xml"/>
+    <xi:include href="xml/CyberKitDOMFileList.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLAnchorElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLAppletElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLAreaElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLBRElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLBaseElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLBodyElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLButtonElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLCanvasElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLCollection.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLDListElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLDirectoryElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLDivElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLDocument.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLEmbedElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLFieldSetElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLFontElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLFormElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLFrameElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLFrameSetElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLHRElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLHeadElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLHeadingElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLHtmlElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLIFrameElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLImageElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLInputElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLLIElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLLabelElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLLegendElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLLinkElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLMapElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLMarqueeElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLMenuElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLMetaElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLModElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLOListElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLObjectElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLOptGroupElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLOptionElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLOptionsCollection.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLParagraphElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLParamElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLPreElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLQuoteElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLScriptElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLSelectElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLStyleElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLTableCaptionElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLTableCellElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLTableColElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLTableElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLTableRowElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLTableSectionElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLTextAreaElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLTitleElement.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLUListElement.xml"/>
+    <xi:include href="xml/CyberKitDOMDOMWindow.xml"/>
+    <xi:include href="xml/CyberKitDOMDOMSelection.xml"/>
+    <xi:include href="xml/CyberKitDOMXPathExpression.xml"/>
+    <xi:include href="xml/CyberKitDOMXPathResult.xml"/>
+    <xi:include href="xml/CyberKitDOMEntityReference.xml"/>
+    <xi:include href="xml/CyberKitDOMHTMLBaseFontElement.xml"/>
+    <xi:include href="xml/CyberKitDOMDOMTokenList.xml"/>
+  </chapter>
+
+  <index id="index-all">
+    <title>Index</title>
+    <xi:include href="xml/api-index-full.xml"><xi:fallback /></xi:include>
+  </index>
+
+  <index id="api-index-deprecated" role="deprecated">
+    <title>Index of deprecated symbols</title>
+    <xi:include href="xml/api-index-deprecated.xml"><xi:fallback /></xi:include>
+  </index>
+
+  <index id="api-index-2-22" role="2.22">
+    <title>Index of new symbols in 2.22</title>
+    <xi:include href="xml/api-index-2.22.xml"><xi:fallback /></xi:include>
+  </index>
+
+  <xi:include href="xml/annotation-glossary.xml"><xi:fallback /></xi:include>
+</book>

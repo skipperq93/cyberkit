@@ -69,7 +69,7 @@ static const GOptionEntry commandLineOptions[] =
 
 class InputClient final : public WPEToolingBackends::ViewBackend::InputClient {
 public:
-    InputClient(GMainLoop* loop, WebKitWebView* webView)
+    InputClient(GMainLoop* loop, CyberKitWebView* webView)
         : m_loop(loop)
         , m_webView(webView)
     {
@@ -102,15 +102,15 @@ public:
 
 private:
     GMainLoop* m_loop { nullptr };
-    WebKitWebView* m_webView { nullptr };
+    CyberKitWebView* m_webView { nullptr };
 };
 
-static WebKitWebView* createWebViewForAutomationCallback(WebKitAutomationSession*, WebKitWebView* view)
+static CyberKitWebView* createWebViewForAutomationCallback(CyberKitAutomationSession*, CyberKitWebView* view)
 {
     return view;
 }
 
-static void automationStartedCallback(WebKitWebContext*, WebKitAutomationSession* session, WebKitWebView* view)
+static void automationStartedCallback(CyberKitWebContext*, CyberKitAutomationSession* session, CyberKitWebView* view)
 {
     auto* info = webkit_application_info_new();
     webkit_application_info_set_version(info, WEBKIT_MAJOR_VERSION, WEBKIT_MINOR_VERSION, WEBKIT_MICRO_VERSION);
@@ -120,7 +120,7 @@ static void automationStartedCallback(WebKitWebContext*, WebKitAutomationSession
     g_signal_connect(session, "create-web-view", G_CALLBACK(createWebViewForAutomationCallback), view);
 }
 
-static gboolean decidePermissionRequest(WebKitWebView *, WebKitPermissionRequest *request, gpointer)
+static gboolean decidePermissionRequest(CyberKitWebView *, CyberKitPermissionRequest *request, gpointer)
 {
     g_print("Accepting %s request\n", G_OBJECT_TYPE_NAME(request));
     webkit_permission_request_allow(request);
@@ -137,22 +137,22 @@ static std::unique_ptr<WPEToolingBackends::ViewBackend> createViewBackend(uint32
 
 typedef struct {
     GMainLoop* mainLoop { nullptr };
-    WebKitUserContentFilter* filter { nullptr };
+    CyberKitUserContentFilter* filter { nullptr };
     GError* error { nullptr };
 } FilterSaveData;
 
-static void filterSavedCallback(WebKitUserContentFilterStore *store, GAsyncResult *result, FilterSaveData *data)
+static void filterSavedCallback(CyberKitUserContentFilterStore *store, GAsyncResult *result, FilterSaveData *data)
 {
     data->filter = webkit_user_content_filter_store_save_finish(store, result, &data->error);
     g_main_loop_quit(data->mainLoop);
 }
 
-static void webViewClose(WebKitWebView* webView, gpointer)
+static void webViewClose(CyberKitWebView* webView, gpointer)
 {
     g_object_unref(webView);
 }
 
-static WebKitWebView* createWebView(WebKitWebView* webView, WebKitNavigationAction*, gpointer)
+static CyberKitWebView* createWebView(CyberKitWebView* webView, CyberKitNavigationAction*, gpointer)
 {
     auto backend = createViewBackend(1280, 720);
     struct wpe_view_backend* wpeBackend = backend->backend();
@@ -195,7 +195,7 @@ int main(int argc, char *argv[])
     g_option_context_free(context);
 
     if (printVersion) {
-        g_print("WPE WebKit %u.%u.%u",
+        g_print("WPE CyberKit %u.%u.%u",
             webkit_get_major_version(),
             webkit_get_minor_version(),
             webkit_get_micro_version());
@@ -222,7 +222,7 @@ int main(int argc, char *argv[])
         auto* enumClass = static_cast<GEnumClass*>(g_type_class_ref(WEBKIT_TYPE_COOKIE_ACCEPT_POLICY));
         GEnumValue* enumValue = g_enum_get_value_by_nick(enumClass, cookiesPolicy);
         if (enumValue)
-            webkit_cookie_manager_set_accept_policy(cookieManager, static_cast<WebKitCookieAcceptPolicy>(enumValue->value));
+            webkit_cookie_manager_set_accept_policy(cookieManager, static_cast<CyberKitCookieAcceptPolicy>(enumValue->value));
         g_type_class_unref(enumClass);
     }
 
@@ -242,13 +242,13 @@ int main(int argc, char *argv[])
     webkit_web_context_set_process_model(webContext, (singleprocess && *singleprocess) ?
         WEBKIT_PROCESS_MODEL_SHARED_SECONDARY_PROCESS : WEBKIT_PROCESS_MODEL_MULTIPLE_SECONDARY_PROCESSES);
 
-    WebKitUserContentManager* userContentManager = nullptr;
+    CyberKitUserContentManager* userContentManager = nullptr;
     if (contentFilter) {
         GFile* contentFilterFile = g_file_new_for_commandline_arg(contentFilter);
 
         FilterSaveData saveData = { nullptr, };
         gchar* filtersPath = g_build_filename(g_get_user_cache_dir(), g_get_prgname(), "filters", nullptr);
-        WebKitUserContentFilterStore* store = webkit_user_content_filter_store_new(filtersPath);
+        CyberKitUserContentFilterStore* store = webkit_user_content_filter_store_new(filtersPath);
         g_free(filtersPath);
 
         webkit_user_content_filter_store_save_from_file(store, "WPEMiniBrowserFilter", contentFilterFile, nullptr, (GAsyncReadyCallback)filterSavedCallback, &saveData);
@@ -304,7 +304,7 @@ int main(int argc, char *argv[])
     if (ignoreTLSErrors)
         webkit_web_context_set_tls_errors_policy(webContext, WEBKIT_TLS_ERRORS_POLICY_IGNORE);
 
-    WebKitColor color;
+    CyberKitColor color;
     if (bgColor && webkit_color_parse(&color, bgColor))
         webkit_web_view_set_background_color(webView, &color);
 

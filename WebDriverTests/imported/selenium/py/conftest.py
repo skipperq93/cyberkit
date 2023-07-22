@@ -43,7 +43,7 @@ drivers = (
     'Marionette',
     'Remote',
     'Safari',
-    'WebKitGTK',
+    'CyberKitGTK',
 )
 
 
@@ -113,7 +113,7 @@ def driver(request):
             capabilities['marionette'] = False
             kwargs.update({'desired_capabilities': capabilities})
             options = get_options('Firefox', request.config)
-        if driver_class == 'WebKitGTK':
+        if driver_class == 'CyberKitGTK':
             options = get_options(driver_class, request.config)
         if driver_path is not None:
             kwargs['executable_path'] = driver_path
@@ -131,7 +131,7 @@ def get_options(driver_class, config):
     options = None
     if browser_path or browser_args:
         options = getattr(webdriver, '{}Options'.format(driver_class))()
-        if driver_class == 'WebKitGTK':
+        if driver_class == 'CyberKitGTK':
             options.overlay_scrollbars_enabled = False
         if browser_path is not None:
             options.binary_location = browser_path

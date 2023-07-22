@@ -26,7 +26,7 @@ using PlatformDisplayID = uint32_t;
 constexpr CGLRendererProperty kCGLRPRegistryIDLow  = static_cast<CGLRendererProperty>(140);
 constexpr CGLRendererProperty kCGLRPRegistryIDHigh = static_cast<CGLRendererProperty>(141);
 
-// Code from WebKit to get the active GPU's ID given a display ID.
+// Code from CyberKit to get the active GPU's ID given a display ID.
 uint64_t GetGpuIDFromDisplayID(PlatformDisplayID displayID)
 {
     GLuint displayMask              = CGDisplayIDToOpenGLDisplayMask(displayID);

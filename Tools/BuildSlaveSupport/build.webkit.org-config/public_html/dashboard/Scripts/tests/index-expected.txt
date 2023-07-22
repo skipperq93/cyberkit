@@ -1,4 +1,4 @@
-WebKit Bot Watcher's Dashboard QUnit Test Runner noglobalsnotrycatch
+CyberKit Bot Watcher's Dashboard QUnit Test Runner noglobalsnotrycatch
 Hide passed tests
 Trac: _loaded (0, 8, 8)Rerun
 Trac: parse gitBranches (0, 7, 7)Rerun
@@ -22,10 +22,10 @@ BuildBotQueueView: _revisionContentWithPopoverForIteration (0, 3, 3)Rerun
 BuildBotQueueView: _revisionContentWithPopoverForIteration has previousIteration (0, 4, 4)Rerun
 BuildBotQueueView: _formatRevisionForDisplay Subversion (0, 1, 1)Rerun
 BuildBotQueueView: _formatRevisionForDisplay Git (0, 1, 1)Rerun
-BuildBotQueueView: _popoverContentForJavaScriptCoreTestRegressions load failure UI test (0, 3, 3)Rerun
-BuildBotQueueView: _presentPopoverForJavaScriptCoreTestRegressions including loading (0, 0, 0)Rerun
+BuildBotQueueView: _popoverContentForCyberScriptCoreTestRegressions load failure UI test (0, 3, 3)Rerun
+BuildBotQueueView: _presentPopoverForCyberScriptCoreTestRegressions including loading (0, 0, 0)Rerun
 BuildBotQueueView: _createLoadingIndicator (0, 3, 3)Rerun
-BuildBotQueueView: _presentPopoverForJavaScriptCoreTestRegressions already loaded (0, 4, 4)Rerun
+BuildBotQueueView: _presentPopoverForCyberScriptCoreTestRegressions already loaded (0, 4, 4)Rerun
 BuildBotQueue: compareIterations by revisions (0, 3, 3)Rerun
 BuildBotQueue: compareIterations by loaded (one revision missing) (0, 2, 2)Rerun
 BuildBotQueue: compareIterations by loaded (same revision) (0, 2, 2)Rerun

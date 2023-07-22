@@ -78,8 +78,8 @@ class PerfalizerTaskTest(unittest.TestCase):
     def test_run(self):
         self.assertEqual(self._create_and_run_perfalizer(), [
             'Preparing to run performance tests for the attachment 10000...',
-            'Building WebKit at r1234 without the patch',
-            'Building WebKit at r1234 with the patch',
+            'Building CyberKit at r1234 without the patch',
+            'Building CyberKit at r1234 with the patch',
             'Running performance tests...',
             'Uploaded the results on the bug 50000'])
 

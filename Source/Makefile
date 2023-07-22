@@ -8,7 +8,7 @@ else
 	WEBINSPECTORUI_MODULE = WebInspectorUI
 endif
 
-MODULES = bmalloc WTF JavaScriptCore ThirdParty WebCore $(WEBINSPECTORUI_MODULE) WebKitLegacy WebKit
+MODULES = bmalloc WTF CyberScriptCore ThirdParty CyberCore $(WEBINSPECTORUI_MODULE) CyberKitLegacy CyberKit
 
 all:
 	@for dir in $(MODULES); do ${MAKE} $@ -C $$dir; exit_status=$$?; \

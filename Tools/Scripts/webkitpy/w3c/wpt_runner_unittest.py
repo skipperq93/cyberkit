@@ -153,7 +153,7 @@ class WPTRunnerTest(unittest.TestCase):
 
         self.assertTrue(instance.runner.prepare_wpt_checkout())
 
-        expected_wpt_checkout = "/mock-checkout/WebKitBuild/w3c-tests/web-platform-tests"
+        expected_wpt_checkout = "/mock-checkout/CyberKitBuild/w3c-tests/web-platform-tests"
         self.assertEquals(instance.runner._options.wpt_checkout, expected_wpt_checkout)
         self.assertTrue(instance.host.filesystem.isdir(expected_wpt_checkout))
 
@@ -174,7 +174,7 @@ class WPTRunnerTest(unittest.TestCase):
         # arguments. No options or arguments are used.
 
         spawn_wpt_func = WPTRunnerTest.MockSpawnWPT(self,
-            "/mock-checkout/WebKitBuild/w3c-tests/web-platform-tests",
+            "/mock-checkout/CyberKitBuild/w3c-tests/web-platform-tests",
             ["run", "--webkit-port=MockPort", "--processes=4",
                 "--webdriver-binary=/mock-webdriver/bin/webdriver",
                 "--binary=/mock-webdriver/bin/browser",
@@ -229,7 +229,7 @@ class WPTRunnerTest(unittest.TestCase):
         specified_args = ["test1.html", "test2.html"]
 
         spawn_wpt_func = WPTRunnerTest.MockSpawnWPT(self,
-            "/mock-checkout/WebKitBuild/w3c-tests/web-platform-tests",
+            "/mock-checkout/CyberKitBuild/w3c-tests/web-platform-tests",
             ["run", "--webkit-port=MockPort", "--processes=4",
                 "--webdriver-binary=/mock-webdriver/bin/webdriver",
                 "--binary=/mock-webdriver/bin/browser",

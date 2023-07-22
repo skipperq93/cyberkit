@@ -8,7 +8,7 @@ Frame: '<!--frame1-->'
 Conversion not received - timed out.
 
 Unconverted Ad Click Attributions:
-WebCore::AdClickAttribution 1
+CyberCore::AdClickAttribution 1
 Source: 127.0.0.1
 Destination: localhost
 Campaign ID: 3

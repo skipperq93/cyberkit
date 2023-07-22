@@ -93,7 +93,7 @@ sub buildJSC
     if (!defined($root)){
         push(@ARGV,  "--" . $configuration);
         
-        chdirWebKit();
+        chdirCyberKit();
         my $buildResult = system currentPerlPath(), "Tools/Scripts/build-jsc", @ARGV;
         if ($buildResult) {
             print STDERR "Compiling jsc failed!\n";
@@ -105,7 +105,7 @@ sub buildJSC
 sub setupEnvironmentForExecution($)
 {
     my ($productDir) = @_;
-    print "Starting sunspider with DYLD_FRAMEWORK_PATH set to point to built JavaScriptCore in $productDir.\n";
+    print "Starting sunspider with DYLD_FRAMEWORK_PATH set to point to built CyberScriptCore in $productDir.\n";
     $ENV{DYLD_FRAMEWORK_PATH} = $productDir;
     # FIXME: Other platforms may wish to augment this method to use LD_LIBRARY_PATH, etc.
 }
@@ -114,7 +114,7 @@ unless ($noBuild) {
     buildJSC();
 }
 
-chdirWebKit();
+chdirCyberKit();
 chdir("PerformanceTests/SunSpider");
 
 my $productDir = jscProductDir();

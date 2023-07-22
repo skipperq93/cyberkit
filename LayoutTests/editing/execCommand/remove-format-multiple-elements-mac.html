@@ -68,28 +68,28 @@ function selectFirstLine(container) {
 
 testRemoveFormat('hello', selectAll, 'hello');
 testRemoveFormat('<i>hello</i> <u>world</u>', selectAll, 'hello world');
-testRemoveFormat('<b><u>hello</u> world</b> <a href="http://webkit.org/"><em>WebKit</em></a>', selectAll, 'hello world <a href="http://webkit.org/">WebKit</a>');
-testRemoveFormat('<b><u>hello</u> world</b> <a href="http://webkit.org/"><em>WebKit</em></a>',
-    selectSecondWord, '<b><u>hello</u> </b>world <a href="http://webkit.org/"><em>WebKit</em></a>');
-testRemoveFormat('<sub><tt>hello world WebKit</tt></sub>', selectSecondWord, '<sub><tt>hello </tt></sub>world<sub><tt> WebKit</tt></sub>');
-testRemoveFormat('<q><ins><var>hello wor</var>ld</ins> WebKit</q>', selectSecondWord, '<q><ins><var>hello </var></ins></q>world<q> WebKit</q>');    
-testRemoveFormat('<b>hello <dfn>world <kbd>WebKit</kbd></dfn></b>', selectLastWord, '<b>hello <dfn>world </dfn></b>WebKit');
-testRemoveFormat('<b>hello <dfn>world <kbd>WebKit</kbd></dfn></b>', selectSecondWord, '<b>hello </b>world<b><dfn> <kbd>WebKit</kbd></dfn></b>');
-testRemoveFormat('<code>hello <strong>world WebKit</storng></code>', selectFirstTwoWords, 'hello world<code><strong> WebKit</strong></code>');
-testRemoveFormat('<acronym><tt><mark><samp>hello</samp></mark> world <sub>WebKit</sub></tt></acronym>',
-    selectFirstTwoWords, '<mark>hello</mark> world<acronym><tt> <sub>WebKit</sub></tt></acronym>');
-testRemoveFormat('<b><div>hello world</div></b><div>WebKit</div>', selectLastTwoWords, '<div><b>hello </b>world</div><div>WebKit</div>');
-testRemoveFormat('<q><b><div>hello world</div></b>WebKit</q>', selectLastTwoWords, '<div><q><b>hello </b></q>world</div>WebKit');
-testRemoveFormat('<q><b><div>hello world</div></b>WebKit</q>', selectSecondWord, '<div><q><b>hello </b></q>world</div><q>WebKit</q>');
+testRemoveFormat('<b><u>hello</u> world</b> <a href="http://webkit.org/"><em>CyberKit</em></a>', selectAll, 'hello world <a href="http://webkit.org/">CyberKit</a>');
+testRemoveFormat('<b><u>hello</u> world</b> <a href="http://webkit.org/"><em>CyberKit</em></a>',
+    selectSecondWord, '<b><u>hello</u> </b>world <a href="http://webkit.org/"><em>CyberKit</em></a>');
+testRemoveFormat('<sub><tt>hello world CyberKit</tt></sub>', selectSecondWord, '<sub><tt>hello </tt></sub>world<sub><tt> CyberKit</tt></sub>');
+testRemoveFormat('<q><ins><var>hello wor</var>ld</ins> CyberKit</q>', selectSecondWord, '<q><ins><var>hello </var></ins></q>world<q> CyberKit</q>');    
+testRemoveFormat('<b>hello <dfn>world <kbd>CyberKit</kbd></dfn></b>', selectLastWord, '<b>hello <dfn>world </dfn></b>CyberKit');
+testRemoveFormat('<b>hello <dfn>world <kbd>CyberKit</kbd></dfn></b>', selectSecondWord, '<b>hello </b>world<b><dfn> <kbd>CyberKit</kbd></dfn></b>');
+testRemoveFormat('<code>hello <strong>world CyberKit</storng></code>', selectFirstTwoWords, 'hello world<code><strong> CyberKit</strong></code>');
+testRemoveFormat('<acronym><tt><mark><samp>hello</samp></mark> world <sub>CyberKit</sub></tt></acronym>',
+    selectFirstTwoWords, '<mark>hello</mark> world<acronym><tt> <sub>CyberKit</sub></tt></acronym>');
+testRemoveFormat('<b><div>hello world</div></b><div>CyberKit</div>', selectLastTwoWords, '<div><b>hello </b>world</div><div>CyberKit</div>');
+testRemoveFormat('<q><b><div>hello world</div></b>CyberKit</q>', selectLastTwoWords, '<div><q><b>hello </b></q>world</div>CyberKit');
+testRemoveFormat('<q><b><div>hello world</div></b>CyberKit</q>', selectSecondWord, '<div><q><b>hello </b></q>world</div><q>CyberKit</q>');
 testRemoveFormat('<b><div>hello</div>webkit</b>', selectFirstLine, '<div>hello</div><b>webkit</b>');
 
 testRemoveFormat('<i style="font-weight:bold;">hello</i> <u>world</u>', selectAll, 'hello world');
-testRemoveFormat('<font color="red"><b style="font-size: large;"><u>hello</u> world</b> WebKit</font>',
-    selectSecondWord, '<font color="red"><b style="font-size: large;"><u>hello</u> </b></font>world<font color="red"> WebKit</font>');
-testRemoveFormat('<font size="5"><i><u style="font-size: small;">hello</u> world</i><font size="3"> WebKit</font></font>',
-    selectSecondWord, '<font size="5"><i><u style="font-size: small;">hello</u> </i></font>world<font size="5"><font size="3"> WebKit</font></font>');
-testRemoveFormat('<sup><div style="text-decoration: underline; font-size: large;">hello <dfn style="font-size: normal;">world</dfn></div> WebKit</sup>',
-    selectSecondWord, '<div><sup><font size="4"><u>hello </u></font></sup>world</div><sup> WebKit</sup>');
+testRemoveFormat('<font color="red"><b style="font-size: large;"><u>hello</u> world</b> CyberKit</font>',
+    selectSecondWord, '<font color="red"><b style="font-size: large;"><u>hello</u> </b></font>world<font color="red"> CyberKit</font>');
+testRemoveFormat('<font size="5"><i><u style="font-size: small;">hello</u> world</i><font size="3"> CyberKit</font></font>',
+    selectSecondWord, '<font size="5"><i><u style="font-size: small;">hello</u> </i></font>world<font size="5"><font size="3"> CyberKit</font></font>');
+testRemoveFormat('<sup><div style="text-decoration: underline; font-size: large;">hello <dfn style="font-size: normal;">world</dfn></div> CyberKit</sup>',
+    selectSecondWord, '<div><sup><font size="4"><u>hello </u></font></sup>world</div><sup> CyberKit</sup>');
 
 document.body.removeChild(testContainer);
 

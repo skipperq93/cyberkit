@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/org/webkit/glib/tests/">
+    <file alias="boring.html">Tools/TestCyberKitAPI/Tests/CyberKitGLib/resources/boring.html</file>
+    <file alias="form-in-frame.html">Tools/TestCyberKitAPI/Tests/CyberKitGLib/resources/form-in-frame.html</file>
+    <file alias="link-title.js">Tools/TestCyberKitAPI/Tests/CyberKitGLib/resources/link-title.js</file>
+  </gresource>
+</gresources>

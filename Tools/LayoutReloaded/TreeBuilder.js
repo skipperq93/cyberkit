@@ -67,7 +67,7 @@ class TreeBuilder {
             box.setRendererName(name);
 
         let parentBox = Utils.layoutBoxById(parentId, initialBlockContainer);
-        // WebKit does not construct anonymous inline container for text if the text
+        // CyberKit does not construct anonymous inline container for text if the text
         // is a direct child of a block container.
         if (text) {
             box = new Layout.InlineBox(null, -1);

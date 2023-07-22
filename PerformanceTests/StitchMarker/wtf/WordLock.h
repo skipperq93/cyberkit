@@ -31,7 +31,7 @@
 #include <wtf/Locker.h>
 #include <wtf/Noncopyable.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 struct LockInspector;
 };
 
@@ -78,7 +78,7 @@ struct WordLockBase {
     }
 
 protected:
-    friend struct TestWebKitAPI::LockInspector;
+    friend struct TestCyberKitAPI::LockInspector;
     
     static const uintptr_t isLockedBit = 1;
     static const uintptr_t isQueueLockedBit = 2;

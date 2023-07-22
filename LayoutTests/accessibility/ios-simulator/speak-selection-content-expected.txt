@@ -1,4 +1,4 @@
-This test has to run in iOS WebKitTestRunner.
+This test has to run in iOS CyberKitTestRunner.
 
  
 This tests that accessibility speak selection content is correct.

@@ -1,6 +1,6 @@
 set(WEBKIT_TESTNETSCAPEPLUGIN_DIR "${TOOLS_DIR}/DumpRenderTree/TestNetscapePlugIn")
 
-set(WebKitTestNetscapePlugIn_SOURCES
+set(CyberKitTestNetscapePlugIn_SOURCES
     ${WEBKIT_TESTNETSCAPEPLUGIN_DIR}/PluginObject.cpp
     ${WEBKIT_TESTNETSCAPEPLUGIN_DIR}/PluginTest.cpp
     ${WEBKIT_TESTNETSCAPEPLUGIN_DIR}/TestObject.cpp
@@ -29,23 +29,23 @@ set(WebKitTestNetscapePlugIn_SOURCES
     ${WEBKIT_TESTNETSCAPEPLUGIN_DIR}/Tests/URLRedirect.cpp
 )
 
-set(WebKitTestNetscapePlugIn_INCLUDE_DIRECTORIES
+set(CyberKitTestNetscapePlugIn_INCLUDE_DIRECTORIES
     ${WEBKIT_TESTNETSCAPEPLUGIN_DIR}
     ${WEBKIT_TESTNETSCAPEPLUGIN_DIR}/ForwardingHeaders
-    ${WebCore_PRIVATE_FRAMEWORK_HEADERS_DIR}
+    ${CyberCore_PRIVATE_FRAMEWORK_HEADERS_DIR}
     ${WTF_DIR}
 )
 
-set(WebKitTestNetscapePlugIn_LIBRARIES
-    WebKit::WTF
+set(CyberKitTestNetscapePlugIn_LIBRARIES
+    CyberKit::WTF
 )
 
 if (MOZ_X11)
-    set(WebKitTestNetscapePlugIn_SYSTEM_INCLUDE_DIRECTORIES
+    set(CyberKitTestNetscapePlugIn_SYSTEM_INCLUDE_DIRECTORIES
         ${X11_INCLUDE_DIR}
     )
 
-    list(APPEND WebKitTestNetscapePlugIn_LIBRARIES
+    list(APPEND CyberKitTestNetscapePlugIn_LIBRARIES
         ${X11_LIBRARIES}
     )
 
@@ -53,19 +53,19 @@ if (MOZ_X11)
 endif ()
 
 if (XP_UNIX)
-    list(APPEND WebKitTestNetscapePlugIn_SOURCES
+    list(APPEND CyberKitTestNetscapePlugIn_SOURCES
         ${WEBKIT_TESTNETSCAPEPLUGIN_DIR}/Tests/unix/CallInvalidateRectWithNullNPPArgument.cpp
     )
 
     add_definitions(-DXP_UNIX)
 endif ()
 
-include_directories(${WebKitTestNetscapePlugIn_INCLUDE_DIRECTORIES})
-include_directories(SYSTEM ${WebKitTestNetscapePlugIn_SYSTEM_INCLUDE_DIRECTORIES})
+include_directories(${CyberKitTestNetscapePlugIn_INCLUDE_DIRECTORIES})
+include_directories(SYSTEM ${CyberKitTestNetscapePlugIn_SYSTEM_INCLUDE_DIRECTORIES})
 
-add_library(TestNetscapePlugIn SHARED ${WebKitTestNetscapePlugIn_SOURCES})
-target_link_libraries(TestNetscapePlugIn ${WebKitTestNetscapePlugIn_LIBRARIES})
-add_dependencies(TestNetscapePlugIn WebCorePrivateFrameworkHeaders)
+add_library(TestNetscapePlugIn SHARED ${CyberKitTestNetscapePlugIn_SOURCES})
+target_link_libraries(TestNetscapePlugIn ${CyberKitTestNetscapePlugIn_LIBRARIES})
+add_dependencies(TestNetscapePlugIn CyberCorePrivateFrameworkHeaders)
 set_target_properties(TestNetscapePlugIn PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/plugins)
 
 WEBKIT_ADD_TARGET_CXX_FLAGS(TestNetscapePlugIn -Wno-unused-parameter)

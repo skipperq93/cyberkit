@@ -11,7 +11,7 @@ layer at (0,0) size 800x600
             RenderText {#text} at (51,0) size 154x17
               text run at (51,0) width 154: "rdar://problem/5615307"
           RenderText {#text} at (204,0) size 494x17
-            text run at (204,0) width 494: " Repro crash in WebKit!WebCore::RenderContainer::destroyLeftoverChildren"
+            text run at (204,0) width 494: " Repro crash in CyberKit!CyberCore::RenderContainer::destroyLeftoverChildren"
         RenderText {#text} at (697,0) size 5x17
           text run at (697,0) width 5: "."
       RenderBlock {P} at (0,34) size 784x18

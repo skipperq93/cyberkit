@@ -34,7 +34,7 @@ if test -d .git && (test -d "$(git rev-parse --git-path rebase-merge)" || test -
 fi
 
 echo "This script will check out the latest ANGLE and start a git rebase"
-echo "to apply WebKit's local ANGLE changes on top of the latest ANGLE master"
+echo "to apply CyberKit's local ANGLE changes on top of the latest ANGLE master"
 echo "branch."
 echo
 echo "This will clobber any changes you have made in:"
@@ -58,7 +58,7 @@ COMMIT_HASH=`git rev-parse HEAD`
 echo "$COMMIT_HASH"
 echo ""
 
-echo "Applying WebKit's local ANGLE changes to the old ANGLE version."
+echo "Applying CyberKit's local ANGLE changes to the old ANGLE version."
 git checkout -B downstream-changes "$PREVIOUS_COMMIT_HASH"
 pushd .. &> /dev/null
 git checkout HEAD -- ANGLE
@@ -80,15 +80,15 @@ git checkout origin/master -- src/compiler.gni src/libGLESv2.gni
 ./gni-to-cmake.py src/libGLESv2.gni GLESv2.cmake
 git checkout src/compiler.gni src/libGLESv2.gni
 
-echo "Rebasing WebKit's local changes on latest ANGLE master."
+echo "Rebasing CyberKit's local changes on latest ANGLE master."
 git add -A
-git commit -m "WebKit changes since last ANGLE update."
+git commit -m "CyberKit changes since last ANGLE update."
 git checkout -B upstream-rebased-on-webkit origin/master
 if ! git rebase downstream-changes; then
     echo
     echo "There is now a git repo in Source/ThirdParty/ANGLE with a rebase in progress."
     echo "You must resolve the merge conflict and continue the rebase. Make sure to do"
-    echo "this in the Source/ThirdParty/ANGLE repo, not the main WebKit repo."
+    echo "this in the Source/ThirdParty/ANGLE repo, not the main CyberKit repo."
     echo
     print_rebase_message_and_exit
 fi

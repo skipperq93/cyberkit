@@ -29,18 +29,18 @@
 import os
 
 
-class WebKitFinder(object):
+class CyberKitFinder(object):
     def __init__(self, filesystem):
         self._filesystem = filesystem
         self._webkit_base = None
 
     def webkit_base(self):
-        """Returns the absolute path to the top of the WebKit tree.
+        """Returns the absolute path to the top of the CyberKit tree.
 
         Raises an AssertionError if the top dir can't be determined."""
         # Note: This code somewhat duplicates the code in
         # scm.find_checkout_root(). However, that code only works if the top
-        # of the SCM repository also matches the top of the WebKit tree. Some SVN users
+        # of the SCM repository also matches the top of the CyberKit tree. Some SVN users
         # (the chromium test bots, for example), might only check out subdirectories like
         # Tools/Scripts. This code will also work if there is no SCM system at all.
         if not self._webkit_base:
@@ -55,11 +55,11 @@ class WebKitFinder(object):
         return self._filesystem.join(self.webkit_base(), *comps)
 
     def path_from_webkit_outputdir(self, *comps):
-        base_path = os.environ['WEBKIT_OUTPUTDIR'] if 'WEBKIT_OUTPUTDIR' in os.environ else self.path_from_webkit_base('WebKitBuild')
+        base_path = os.environ['WEBKIT_OUTPUTDIR'] if 'WEBKIT_OUTPUTDIR' in os.environ else self.path_from_webkit_base('CyberKitBuild')
         return self._filesystem.join(base_path, *comps)
 
     def path_to_script(self, script_name):
-        """Returns the relative path to the script from the top of the WebKit tree."""
+        """Returns the relative path to the script from the top of the CyberKit tree."""
         # This is intentionally relative in order to force callers to consider what
         # their current working directory is (and change to the top of the tree if necessary).
         return self._filesystem.join("Tools", "Scripts", script_name)

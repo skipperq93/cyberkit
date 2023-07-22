@@ -62,7 +62,7 @@ In r139908 I missed one instance of the PaintInfo constructor that should take P
 instead of "false".
 
 * rendering/RenderScrollbarPart.cpp:
-(WebCore::RenderScrollbarPart::paintIntoRect):
+(CyberCore::RenderScrollbarPart::paintIntoRect):
 ------------------------------------------------------------------------"""),
             "https://trac.webkit.org/r140066 by Simon Fraser (smfr)"
             " Allow PaintInfo to carry all PaintBehavior flags https://webkit.org/b/106980 Reviewed by Beth Dakin (dethbakin).")
@@ -77,7 +77,7 @@ Patch by Joseph Pecoraro <pecoraro@apple.com> on 2017-01-24
 Reviewed by Sam Weinig.
 
 * html/canvas/WebGLRenderingContextBase.cpp:
-(WebCore::WebGLRenderingContextBase::create):
+(CyberCore::WebGLRenderingContextBase::create):
 * page/Settings.in:
 ------------------------------------------------------------------------"""),
             "https://trac.webkit.org/r211085 by Joseph Pecoraro (JoePeck)"
@@ -96,7 +96,7 @@ on #webkit).
 
 Patch by Sheriff Bot <webkit.review.bot@gmail.com> on 2013-02-16
 
-Source/WebCore:
+Source/CyberCore:
 
 ------------------------------------------------------------------------"""),
             "Geoffrey Garen (ggaren) rolled out r142734 in https://trac.webkit.org/r143104 : Triggered crashes on lots of websites")
@@ -111,9 +111,9 @@ Reverting 139877. It made a couple of API tests fail.
 
 * platform/graphics/gstreamer/GStreamerVersioning.cpp:
 * platform/graphics/gstreamer/GStreamerVersioning.h:
-* platform/graphics/gstreamer/WebKitWebSourceGStreamer.cpp:
+* platform/graphics/gstreamer/CyberKitWebSourceGStreamer.cpp:
 (StreamingClient):
-(_WebKitWebSrcPrivate):
+(_CyberKitWebSrcPrivate):
 
 ------------------------------------------------------------------------"""),
             "Gustavo Noronha Silva (kov) rolled out 139877 in https://trac.webkit.org/r139884"
@@ -134,8 +134,8 @@ Reverting the reverts after merging. (Requested by vsevik on
 Patch by Sheriff Bot <webkit.review.bot@gmail.com> on 2012-11-22
 
 * English.lproj/localizedStrings.js:
-* WebCore.gypi:
-* WebCore.vcproj/WebCore.vcproj:
+* CyberCore.gypi:
+* CyberCore.vcproj/CyberCore.vcproj:
 * inspector/compile-front-end.py:
 * inspector/front-end/AdvancedSearchController.js:
 * inspector/front-end/CallStackSidebarPane.js:
@@ -160,7 +160,7 @@ not painting it directly into the window.
 No new tests.
 
 * rendering/RenderLayerBacking.cpp:
-(WebCore::RenderLayerBacking::paintsIntoWindow):
+(CyberCore::RenderLayerBacking::paintsIntoWindow):
 
 ------------------------------------------------------------------------"""),
             "https://trac.webkit.org/r211084 by Miguel Gomez (magomez) [GTK] Do not paint non composited content into the window when using the threaded compositor"

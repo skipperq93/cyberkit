@@ -768,7 +768,7 @@ describe('MeasurementSet', () => {
         let webkit;
         beforeEach(() => {
             builder = new Builder(7, {name: 'EFL Linux 64-bit Release WK2 (Perf)', buildUrl: 'http://build.webkit.org/builders/$builderName/$buildTag'});
-            webkit = new Repository(1, {name: 'WebKit', url: 'http://trac.webkit.org/changeset/$1'});
+            webkit = new Repository(1, {name: 'CyberKit', url: 'http://trac.webkit.org/changeset/$1'});
         });
 
         function fetchSampleCluster() {
@@ -810,7 +810,7 @@ describe('MeasurementSet', () => {
                 assert.equal(commit.message(), null);
                 assert.equal(commit.url(), 'http://trac.webkit.org/changeset/210096');
                 assert.equal(commit.label(), 'r210096');
-                assert.equal(commit.title(), 'WebKit at r210096');
+                assert.equal(commit.title(), 'CyberKit at r210096');
                 assert.equal(commitSet.latestCommitTime(), commitTime);
 
                 const build = point.build();

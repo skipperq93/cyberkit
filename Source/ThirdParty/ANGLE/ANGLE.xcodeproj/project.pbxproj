@@ -834,7 +834,7 @@
 		313BCE512361133900FC39E5 /* ContextEAGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContextEAGL.h; sourceTree = "<group>"; };
 		313BCE522361133900FC39E5 /* WindowSurfaceEAGL.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WindowSurfaceEAGL.mm; sourceTree = "<group>"; };
 		313BCE532361133900FC39E5 /* DisplayEAGL.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DisplayEAGL.mm; sourceTree = "<group>"; };
-		3153ACFE239071D900D51DD8 /* WebKitTargetConditionals.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = WebKitTargetConditionals.xcconfig; sourceTree = "<group>"; };
+		3153ACFE239071D900D51DD8 /* CyberKitTargetConditionals.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = CyberKitTargetConditionals.xcconfig; sourceTree = "<group>"; };
 		3153ACFF239071D900D51DD8 /* Version.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
 		315EBD3E1FCE43BD00AC7A89 /* uniform_type_info_autogen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = uniform_type_info_autogen.cpp; sourceTree = "<group>"; };
 		315EBD401FCE442600AC7A89 /* TranslatorVulkan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TranslatorVulkan.cpp; sourceTree = "<group>"; };
@@ -2413,7 +2413,7 @@
 				5D7C59C71208C68B001C873E /* DebugRelease.xcconfig */,
 				A1B89B89221E003A00EB4CEA /* SDKVariant.xcconfig */,
 				3153ACFF239071D900D51DD8 /* Version.xcconfig */,
-				3153ACFE239071D900D51DD8 /* WebKitTargetConditionals.xcconfig */,
+				3153ACFE239071D900D51DD8 /* CyberKitTargetConditionals.xcconfig */,
 			);
 			path = Configurations;
 			sourceTree = "<group>";

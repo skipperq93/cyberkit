@@ -35,7 +35,7 @@ WI.Platform = {
 };
 
 (function () {
-    let versionMatch = / AppleWebKit\/([^ ]+)/.exec(navigator.userAgent);
+    let versionMatch = / AppleCyberKit\/([^ ]+)/.exec(navigator.userAgent);
     if (versionMatch) {
         WI.Platform.version.build = versionMatch[1];
 

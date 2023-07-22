@@ -115,7 +115,7 @@ function webkitCommit()
     });
 }
 
-function anotherWebKitCommit()
+function anotherCyberKitCommit()
 {
     return CommitLog.ensureSingleton(2018, {
         id: 2018,
@@ -242,10 +242,10 @@ describe('CommitSet', () => {
         });
     }
 
-    function commitSetWithAnotherWebKitCommit()
+    function commitSetWithAnotherCyberKitCommit()
     {
         return CommitSet.ensureSingleton(8, {
-            revisionItems: [{ commit: anotherWebKitCommit(), requiresBuild: false }],
+            revisionItems: [{ commit: anotherCyberKitCommit(), requiresBuild: false }],
             customRoots: []
         });
     }
@@ -253,7 +253,7 @@ describe('CommitSet', () => {
     function commitSetWithAnotherCommitPatchAndRoot()
     {
         return CommitSet.ensureSingleton(9, {
-            revisionItems: [{ commit: anotherWebKitCommit(), requiresBuild: true, patch: createPatch()}],
+            revisionItems: [{ commit: anotherCyberKitCommit(), requiresBuild: true, patch: createPatch()}],
             customRoots: [createRoot(), createSharedRoot()]
         });
     }
@@ -363,7 +363,7 @@ describe('CommitSet', () => {
         it('should return false if commit does not contain root, patch or owned commit', () => {
             assert.ok(!oneCommitSet().containsRootOrPatchOrOwnedCommit());
             assert.ok(!anotherCommitSet().containsRootOrPatchOrOwnedCommit());
-            assert.ok(!commitSetWithAnotherWebKitCommit().containsRootOrPatchOrOwnedCommit());
+            assert.ok(!commitSetWithAnotherCyberKitCommit().containsRootOrPatchOrOwnedCommit());
             assert.ok(!commitSetWithSVNCommit().containsRootOrPatchOrOwnedCommit());
             assert.ok(!anotherCommitSetWithSVNCommit().containsRootOrPatchOrOwnedCommit());
             assert.ok(!commitSetWithGitCommit().containsRootOrPatchOrOwnedCommit());
@@ -398,7 +398,7 @@ describe('CommitSet', () => {
 
     describe('diff',  () => {
         it('should describe patch difference', () => {
-            assert.equal(CommitSet.diff(commitSetWithPatch(), commitSetWithAnotherPatch()), 'WebKit: patch.dat - patch.dat (2)');
+            assert.equal(CommitSet.diff(commitSetWithPatch(), commitSetWithAnotherPatch()), 'CyberKit: patch.dat - patch.dat (2)');
         });
 
         it('should describe root difference', () => {
@@ -408,14 +408,14 @@ describe('CommitSet', () => {
         });
 
         it('should describe commit difference', () => {
-            assert.equal(CommitSet.diff(oneCommitSet(), commitSetWithAnotherWebKitCommit()), 'WebKit: webkit-commit-0 - webkit-commit-1');
-            assert.equal(CommitSet.diff(commitSetWithSVNCommit(), anotherCommitSetWithSVNCommit()), 'WebKit: r12345-r45678');
-            assert.equal(CommitSet.diff(commitSetWithGitCommit(), anotherCommitSetWithGitCommit()), 'WebKit-Git: 13a0590d34f2..2f8dd3321d4f');
-            assert.equal(CommitSet.diff(commitSetWithTwoCommits(), anotherCommitSetWithTwoCommits()), 'WebKit: r12345-r45678 WebKit-Git: 13a0590d34f2..2f8dd3321d4f');
+            assert.equal(CommitSet.diff(oneCommitSet(), commitSetWithAnotherCyberKitCommit()), 'CyberKit: webkit-commit-0 - webkit-commit-1');
+            assert.equal(CommitSet.diff(commitSetWithSVNCommit(), anotherCommitSetWithSVNCommit()), 'CyberKit: r12345-r45678');
+            assert.equal(CommitSet.diff(commitSetWithGitCommit(), anotherCommitSetWithGitCommit()), 'CyberKit-Git: 13a0590d34f2..2f8dd3321d4f');
+            assert.equal(CommitSet.diff(commitSetWithTwoCommits(), anotherCommitSetWithTwoCommits()), 'CyberKit: r12345-r45678 CyberKit-Git: 13a0590d34f2..2f8dd3321d4f');
         });
 
         it('should describe commit root and patch difference', () => {
-            assert.equal(CommitSet.diff(oneCommitSet(), commitSetWithAnotherCommitPatchAndRoot()), 'WebKit: webkit-commit-0 with none - webkit-commit-1 with patch.dat Roots: none - root.dat, root.dat (2)');
+            assert.equal(CommitSet.diff(oneCommitSet(), commitSetWithAnotherCommitPatchAndRoot()), 'CyberKit: webkit-commit-0 with none - webkit-commit-1 with patch.dat Roots: none - root.dat, root.dat (2)');
         });
     });
 

@@ -31,8 +31,8 @@ from buildbot.worker import Worker
 from buildbot.util import identifiers as buildbot_identifiers
 
 from factories import (APITestsFactory, BindingsFactory, BuildFactory, CommitQueueFactory, Factory, GTKFactory,
-                       JSCTestsFactory, StyleFactory, TestFactory, WPEFactory, WebKitPerlFactory,
-                       WebKitPyFactory, WinCairoFactory, WindowsFactory, iOSBuildFactory, iOSTestsFactory,
+                       JSCTestsFactory, StyleFactory, TestFactory, WPEFactory, CyberKitPerlFactory,
+                       CyberKitPyFactory, WinCairoFactory, WindowsFactory, iOSBuildFactory, iOSTestsFactory,
                        macOSBuildFactory, macOSWK1Factory, macOSWK2Factory, ServicesFactory, WatchListFactory)
 
 BUILDER_NAME_LENGTH_LIMIT = 70

@@ -44,7 +44,7 @@ HINSTANCE hInst;
 POINT s_windowPosition = { 100, 100 };
 SIZE s_windowSize = { 500, 200 };
 
-namespace WebCore {
+namespace CyberCore {
 float deviceScaleFactorForWindow(HWND);
 }
 
@@ -54,7 +54,7 @@ void computeFullDesktopFrame()
     if (!::SystemParametersInfo(SPI_GETWORKAREA, 0, static_cast<void*>(&desktop), 0))
         return;
 
-    float scaleFactor = WebCore::deviceScaleFactorForWindow(nullptr);
+    float scaleFactor = CyberCore::deviceScaleFactorForWindow(nullptr);
 
     s_windowPosition.x = 0;
     s_windowPosition.y = 0;
@@ -273,11 +273,11 @@ CommandLineOptions parseCommandLine()
             options.useFullDesktop = true;
 #if ENABLE(WEBKIT_LEGACY)
         else if (!wcsicmp(argv[i], L"--wk1") || !wcsicmp(argv[i], L"--legacy"))
-            options.windowType = BrowserWindowType::WebKitLegacy;
+            options.windowType = BrowserWindowType::CyberKitLegacy;
 #endif
 #if ENABLE(WEBKIT)
         else if (!wcsicmp(argv[i], L"--wk2") || !wcsicmp(argv[i], L"--webkit"))
-            options.windowType = BrowserWindowType::WebKit;
+            options.windowType = BrowserWindowType::CyberKit;
 #endif
         else if (!options.requestedURL)
             options.requestedURL = argv[i];

@@ -29,7 +29,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-# WebKit's Python module for interacting with Bugzilla
+# CyberKit's Python module for interacting with Bugzilla
 
 import logging
 import mimetypes
@@ -396,7 +396,7 @@ class Bugzilla(object):
         # Sadly show_bug.cgi?ctype=xml does not expose the flag modification date.
 
     def _string_contents(self, soup):
-        # WebKit's bugzilla instance uses UTF-8.
+        # CyberKit's bugzilla instance uses UTF-8.
         # BeautifulStoneSoup always returns Unicode strings, however
         # the .string method returns a (unicode) NavigableString.
         # NavigableString can confuse other parts of the code, so we
@@ -740,7 +740,7 @@ class Bugzilla(object):
         self.authenticate()
 
         _log.info('Creating bug with title "%s"' % bug_title)
-        self.open_url(config_urls.bug_server_url + "enter_bug.cgi?product=WebKit")
+        self.open_url(config_urls.bug_server_url + "enter_bug.cgi?product=CyberKit")
         self.browser.select_form(name="Create")
         component_items = self.browser.find_control('component').items
         component_names = map(lambda item: item.name, component_items)

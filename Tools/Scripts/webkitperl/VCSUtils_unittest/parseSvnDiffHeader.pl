@@ -43,22 +43,22 @@ my @testCaseHashRefs = (
     # New test
     diffName => "simple diff",
     inputText => <<'END',
-Index: WebKitTools/Scripts/VCSUtils.pm
+Index: CyberKitTools/Scripts/VCSUtils.pm
 ===================================================================
---- WebKitTools/Scripts/VCSUtils.pm	(revision 53004)
-+++ WebKitTools/Scripts/VCSUtils.pm	(working copy)
+--- CyberKitTools/Scripts/VCSUtils.pm	(revision 53004)
++++ CyberKitTools/Scripts/VCSUtils.pm	(working copy)
 @@ -32,6 +32,7 @@ use strict;
  use warnings;
 END
     expectedReturn => [
 {
     svnConvertedText => <<'END',
-Index: WebKitTools/Scripts/VCSUtils.pm
+Index: CyberKitTools/Scripts/VCSUtils.pm
 ===================================================================
---- WebKitTools/Scripts/VCSUtils.pm	(revision 53004)
-+++ WebKitTools/Scripts/VCSUtils.pm	(working copy)
+--- CyberKitTools/Scripts/VCSUtils.pm	(revision 53004)
++++ CyberKitTools/Scripts/VCSUtils.pm	(working copy)
 END
-    indexPath => "WebKitTools/Scripts/VCSUtils.pm",
+    indexPath => "CyberKitTools/Scripts/VCSUtils.pm",
     sourceRevision => "53004",
 },
 "@@ -32,6 +32,7 @@ use strict;\n"],
@@ -68,22 +68,22 @@ END
     # New test
     diffName => "new file",
     inputText => <<'END',
-Index: WebKitTools/Scripts/webkitperl/VCSUtils_unittest/parseDiffHeader.pl
+Index: CyberKitTools/Scripts/webkitperl/VCSUtils_unittest/parseDiffHeader.pl
 ===================================================================
---- WebKitTools/Scripts/webkitperl/VCSUtils_unittest/parseDiffHeader.pl	(revision 0)
-+++ WebKitTools/Scripts/webkitperl/VCSUtils_unittest/parseDiffHeader.pl	(revision 0)
+--- CyberKitTools/Scripts/webkitperl/VCSUtils_unittest/parseDiffHeader.pl	(revision 0)
++++ CyberKitTools/Scripts/webkitperl/VCSUtils_unittest/parseDiffHeader.pl	(revision 0)
 @@ -0,0 +1,262 @@
 +#!/usr/bin/perl -w
 END
     expectedReturn => [
 {
     svnConvertedText => <<'END',
-Index: WebKitTools/Scripts/webkitperl/VCSUtils_unittest/parseDiffHeader.pl
+Index: CyberKitTools/Scripts/webkitperl/VCSUtils_unittest/parseDiffHeader.pl
 ===================================================================
---- WebKitTools/Scripts/webkitperl/VCSUtils_unittest/parseDiffHeader.pl	(revision 0)
-+++ WebKitTools/Scripts/webkitperl/VCSUtils_unittest/parseDiffHeader.pl	(revision 0)
+--- CyberKitTools/Scripts/webkitperl/VCSUtils_unittest/parseDiffHeader.pl	(revision 0)
++++ CyberKitTools/Scripts/webkitperl/VCSUtils_unittest/parseDiffHeader.pl	(revision 0)
 END
-    indexPath => "WebKitTools/Scripts/webkitperl/VCSUtils_unittest/parseDiffHeader.pl",
+    indexPath => "CyberKitTools/Scripts/webkitperl/VCSUtils_unittest/parseDiffHeader.pl",
     isNew => 1,
 },
 "@@ -0,0 +1,262 @@\n"],
@@ -93,22 +93,22 @@ END
     # New test
     diffName => "new file with spaces in its name",
     inputText => <<'END',
-Index: WebKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme
+Index: CyberKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme
 ===================================================================
---- WebKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme	(revision 0)
-+++ WebKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme	(revision 0)
+--- CyberKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme	(revision 0)
++++ CyberKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme	(revision 0)
 @@ -0,0 +1,8 @@
 +<?xml version="1.0" encoding="UTF-8"?>
 END
     expectedReturn => [
 {
     svnConvertedText => <<'END',
-Index: WebKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme
+Index: CyberKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme
 ===================================================================
---- WebKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme	(revision 0)
-+++ WebKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme	(revision 0)
+--- CyberKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme	(revision 0)
++++ CyberKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme	(revision 0)
 END
-    indexPath => "WebKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme",
+    indexPath => "CyberKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme",
     isNew => 1,
 },
 "@@ -0,0 +1,8 @@\n"],

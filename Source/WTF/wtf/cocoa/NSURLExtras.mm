@@ -445,4 +445,4 @@ BOOL looksLikeAbsoluteURL(NSString *string)
     return rangeOfURLScheme(stringByTrimmingWhitespace(string).get()).location != NSNotFound;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

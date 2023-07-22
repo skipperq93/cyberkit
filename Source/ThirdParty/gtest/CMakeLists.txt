@@ -53,5 +53,5 @@ endif ()
 
 add_definitions(${gtest_DEFINITIONS})
 
-# Create a global property so it can be accessed in TestWebKitAPI
+# Create a global property so it can be accessed in TestCyberKitAPI
 set_property(GLOBAL PROPERTY gtest_DEFINITIONS ${gtest_DEFINITIONS})

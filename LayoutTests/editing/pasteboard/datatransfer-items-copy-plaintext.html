@@ -43,11 +43,11 @@ function copy(event)
     shouldBe('clipboardData.items.clear(); clipboardData.items.length', '0');
     shouldBeEqualToString('clipboardData.getData("text/plain")', '');
 
-    shouldBe('clipboardData.items.add("WebKit", "text/plain"); clipboardData.items.length', '1');
+    shouldBe('clipboardData.items.add("CyberKit", "text/plain"); clipboardData.items.length', '1');
     shouldBeEqualToString('clipboardData.items[0].kind', 'string');
     shouldBeEqualToString('clipboardData.items[0].type', 'text/plain');
     shouldBe('clipboardData.items[0].getAsFile()', 'null');
-    shouldBe('clipboardData.items[0].getAsString(checkContent(3, "WebKit"))', 'undefined');
+    shouldBe('clipboardData.items[0].getAsString(checkContent(3, "CyberKit"))', 'undefined');
 
     shouldThrowErrorName('clipboardData.items.remove(1)', 'IndexSizeError');
     shouldBe('clipboardData.items.length', '1');

@@ -27,7 +27,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:columnheader, tag:th, toolkit:WPEWebKit
+AXPlatformAttributes: computed-role:columnheader, tag:th, toolkit:WPECyberKit
 ------------------------
 [3,1]
 AXRole: AXCell
@@ -47,7 +47,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:cell, tag:th, toolkit:WPEWebKit
+AXPlatformAttributes: computed-role:cell, tag:th, toolkit:WPECyberKit
 ------------------------
 [1,1]
 AXRole: AXColumnHeader
@@ -67,7 +67,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:columnheader, tag:th, toolkit:WPEWebKit
+AXPlatformAttributes: computed-role:columnheader, tag:th, toolkit:WPECyberKit
 ------------------------
 [2,2]
 AXRole: AXCell
@@ -87,7 +87,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:cell, tag:td, toolkit:WPEWebKit
+AXPlatformAttributes: computed-role:cell, tag:td, toolkit:WPECyberKit
 ------------------------
 [3,5]
 AXRole: AXCell
@@ -107,7 +107,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:cell, tag:td, toolkit:WPEWebKit
+AXPlatformAttributes: computed-role:cell, tag:td, toolkit:WPECyberKit
 ------------------------
 [100,0]
 

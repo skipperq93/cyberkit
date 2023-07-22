@@ -198,16 +198,16 @@ sub createLegacyXcodeSpecificationFilesForSDKIfNeeded($)
     my $macosxSDKSpecificationsPath = xcodeSDKSpecificationsPath("macosx");
     if (!$hasPackageTypeForCommandLineTool) {
         my $packageTypesForMacOSXPath = File::Spec->catfile($macosxSDKSpecificationsPath, "MacOSX Package Types.xcspec");
-        my $packageTypesForWebKitDevelopmentPath = File::Spec->catfile($sdkSpecificationsPath, "${fileNamePrefix}PackageTypes For WebKit Development.xcspec");
-        mergeXcodeSpecificationWithSpecificationAndId($packageTypesForWebKitDevelopmentPath, $packageTypesForMacOSXPath, COMMAND_LINE_PACKAGE_TYPE);
-        print "Successfully created '$packageTypesForWebKitDevelopmentPath'.\n";
+        my $packageTypesForCyberKitDevelopmentPath = File::Spec->catfile($sdkSpecificationsPath, "${fileNamePrefix}PackageTypes For CyberKit Development.xcspec");
+        mergeXcodeSpecificationWithSpecificationAndId($packageTypesForCyberKitDevelopmentPath, $packageTypesForMacOSXPath, COMMAND_LINE_PACKAGE_TYPE);
+        print "Successfully created '$packageTypesForCyberKitDevelopmentPath'.\n";
     }
 
     if (!$hasProductTypeForCommandLineTool) {
         my $productTypesForMacOSXPath = File::Spec->catfile($macosxSDKSpecificationsPath, "MacOSX Product Types.xcspec");
-        my $productTypesForWebKitDevelopmentPath = File::Spec->catfile($sdkSpecificationsPath, "${fileNamePrefix}ProductTypes For WebKit Development.xcspec");
-        mergeXcodeSpecificationWithSpecificationAndId($productTypesForWebKitDevelopmentPath, $productTypesForMacOSXPath, COMMAND_LINE_PRODUCT_TYPE);
-        print "Successfully created '$productTypesForWebKitDevelopmentPath'.\n";
+        my $productTypesForCyberKitDevelopmentPath = File::Spec->catfile($sdkSpecificationsPath, "${fileNamePrefix}ProductTypes For CyberKit Development.xcspec");
+        mergeXcodeSpecificationWithSpecificationAndId($productTypesForCyberKitDevelopmentPath, $productTypesForMacOSXPath, COMMAND_LINE_PRODUCT_TYPE);
+        print "Successfully created '$productTypesForCyberKitDevelopmentPath'.\n";
     }
 }
 

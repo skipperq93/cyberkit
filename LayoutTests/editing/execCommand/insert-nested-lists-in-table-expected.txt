@@ -1,4 +1,4 @@
-Verifies that 'InsertNestedUnorderedList' and 'InsertNestedOrderedList' work as expected in table cells. This test requires WebKitTestRunner or DumpRenderTree.
+Verifies that 'InsertNestedUnorderedList' and 'InsertNestedOrderedList' work as expected in table cells. This test requires CyberKitTestRunner or DumpRenderTree.
 
 After inserting a list in a table cell:
 | "

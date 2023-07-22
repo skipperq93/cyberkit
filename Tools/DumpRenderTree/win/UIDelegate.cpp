@@ -34,13 +34,13 @@
 #include "EventSender.h"
 #include "DRTDesktopNotificationPresenter.h"
 #include "TestRunner.h"
-#include <WebCore/COMPtr.h>
+#include <CyberCore/COMPtr.h>
 #include <wtf/Assertions.h>
 #include <wtf/Platform.h>
 #include <wtf/Vector.h>
-#include <JavaScriptCore/JavaScriptCore.h>
-#include <WebKitLegacy/WebKit.h>
-#include <WebKitLegacy/WebKitCOMAPI.h>
+#include <CyberScriptCore/CyberScriptCore.h>
+#include <CyberKitLegacy/CyberKit.h>
+#include <CyberKitLegacy/CyberKitCOMAPI.h>
 #include <comutil.h>
 #include <stdio.h>
 
@@ -345,7 +345,7 @@ HRESULT UIDelegate::createModalDialog(_In_opt_ IWebView* sender, _In_opt_ IWebUR
         return E_POINTER;
 
     COMPtr<IWebView> webView;
-    HRESULT hr = WebKitCreateInstance(CLSID_WebView, 0, IID_IWebView, (void**)&webView);
+    HRESULT hr = CyberKitCreateInstance(CLSID_WebView, 0, IID_IWebView, (void**)&webView);
     if (FAILED(hr))
         return hr;
 
@@ -607,7 +607,7 @@ HRESULT UIDelegate::exceededDatabaseQuota(_In_opt_ IWebView* sender, _In_opt_ IW
     COMPtr<IWebDatabaseManager> databaseManager;
     COMPtr<IWebDatabaseManager> tmpDatabaseManager;
 
-    if (FAILED(WebKitCreateInstance(CLSID_WebDatabaseManager, 0, IID_IWebDatabaseManager, (void**)&tmpDatabaseManager))) {
+    if (FAILED(CyberKitCreateInstance(CLSID_WebDatabaseManager, 0, IID_IWebDatabaseManager, (void**)&tmpDatabaseManager))) {
         origin->setQuota(defaultQuota);
         return S_OK;
     }

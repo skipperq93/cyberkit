@@ -1,4 +1,4 @@
-# These are the layout test expectations for Apple's iOS port of WebKit (both WebKit1 and WebKit2).
+# These are the layout test expectations for Apple's iOS port of CyberKit (both CyberKit1 and CyberKit2).
 #
 # See http://trac.webkit.org/wiki/TestExpectations for more information on this file.
 
@@ -1149,7 +1149,7 @@ fast/css/variables/env/ios [ Pass ]
 # Known failures
 ##
 
-# <rdar://problem/14590711> CrashTracer: [USER] DumpRenderTree at WebCore: WebCore::Element::detach + 17
+# <rdar://problem/14590711> CrashTracer: [USER] DumpRenderTree at CyberCore: CyberCore::Element::detach + 17
 svg/as-image/svg-nested.html
 
 # Height of actual image is 1-2 pixels shorter than expected image.
@@ -1947,7 +1947,7 @@ fast/workers/worker-timeout.html
 # <rdar://problem/19226254> ASSERT(!_chooser) in -[WebOpenPanelResultListener dealloc]
 fast/events/domactivate-sets-underlying-click-event-as-handled.html
 
-# <rdar://problem/19226320> ASSERT(useDownstream ? (result > vp) : (result < vp)) fails in WebCore::nextSentenceBoundaryInDirection()
+# <rdar://problem/19226320> ASSERT(useDownstream ? (result > vp) : (result < vp)) fails in CyberCore::nextSentenceBoundaryInDirection()
 fast/events/special-key-events-in-input-text.html
 fast/events/key-events-in-input-text.html
 
@@ -1970,7 +1970,7 @@ fast/css/css-selector-text.html
 # <rdar://problem/19227549> ASSERT(!m_webFrame->_private->provisionalURL) fails in WebFrameLoaderClient::dispatchDidStartProvisionalLoad()
 fast/forms/validation-message-user-modify.html
 
-# <rdar://problem/10348432> DumpRenderTree at WebCore: WebCore::HistoryController::restoreScrollPositionAndViewState
+# <rdar://problem/10348432> DumpRenderTree at CyberCore: CyberCore::HistoryController::restoreScrollPositionAndViewState
 fast/dom/location-new-window-no-crash.html
 
 # <rdar://problem/19017693> ASSERTION FAILED: [[dataSource webFrame] dataSource] || [[dataSource webFrame] provisionalDataSource] in -[ResourceLoadDelegate webView:identifierForInitialRequest:fromDataSource:]
@@ -2416,7 +2416,7 @@ fast/dom/Window/child-window-focus.html
 # iOS does not allow you to scroll by dragging the scrollbar thumb.
 webkit.org/b/157201 fast/scrolling/rtl-drag-vertical-scroller.html [ Failure ]
 
-# DumpRenderTree doesn't support logging calls to runOpenPanel and iOS's WebKitTestRunner doesn't support eventSender.mouseDown.
+# DumpRenderTree doesn't support logging calls to runOpenPanel and iOS's CyberKitTestRunner doesn't support eventSender.mouseDown.
 fast/forms/file/open-file-panel.html [ Skip ]
 
 # Tests that are failing after bug 157170 (WPT test sync). These tests may just need rebasing.
@@ -2494,7 +2494,7 @@ webkit.org/b/112492 media/track/track-prefer-captions.html
 webkit.org/b/160367 media/track/track-remove-crash.html
 
 # WebVTT tests don't work because they need more than a 800x600 snapshot.
-# They are also flakily failing on WebKit2, as snapshot sometimes has a black rectangle for video element instead of white one.
+# They are also flakily failing on CyberKit2, as snapshot sometimes has a black rectangle for video element instead of white one.
 webkit.org/b/131476 media/track/w3c/track/webvtt
 
 # VTTRegion height doesn't adjust when cue font size changes.
@@ -2993,7 +2993,7 @@ media/modern-media-controls/volume-up-support [ Skip ]
 # There is no focus state for on iOS
 media/modern-media-controls/button/button-focus-state.html [ Skip ]
 
-# These tests rely on fullscreen which do not use the WebKit media controls on iOS
+# These tests rely on fullscreen which do not use the CyberKit media controls on iOS
 media/modern-media-controls/controls-visibility-support/controls-visibility-support-fullscreen-on-parent-element.html [ Skip ]
 media/modern-media-controls/controls-visibility-support/controls-visibility-support-fullscreen-on-video.html [ Skip ]
 media/modern-media-controls/css/webkit-cursor-visibility-auto-hide.html [ Skip ]
@@ -3228,7 +3228,7 @@ webkit.org/b/191707 imported/w3c/web-platform-tests/webrtc/simplecall.https.html
 
 webkit.org/b/197473 imported/w3c/web-platform-tests/resource-timing/resource-timing-level1.sub.html [ Pass Failure ]
 
-# These tests depend on the implementation of "modern compatibility mode" in WebKitAdditions.
+# These tests depend on the implementation of "modern compatibility mode" in CyberKitAdditions.
 platform/ipad/fast/css/webkit-overflow-scrolling-parsing-modern-compatibility-mode.html [ Skip ]
 
 webkit.org/b/197778 [ Debug ] webgl/2.0.0/conformance2/attribs/gl-vertexattribipointer.html [ Slow ]
@@ -3292,7 +3292,7 @@ media/video-played-reset.html [ Failure ]
 # <rdar://problem/51055223> (iOS 13): jsc-layout-tests.yaml/js/script-tests/intl-numberformat.js.layout is failing
 js/intl-numberformat.html [ Failure ]
 
-# <rdar://problem/50892567> REGRESSION (iOS 13): CrashTracer: com.apple.WebKit.WebContent.Development at com.apple.WebKit: _ZN6WebKit19fallbackIconForFileEP5NSURL
+# <rdar://problem/50892567> REGRESSION (iOS 13): CrashTracer: com.matthewbenedict.CyberKit.WebContent.Development at com.matthewbenedict.CyberKit: _ZN6CyberKit19fallbackIconForFileEP5NSURL
 fast/forms/file/file-reset-in-change-using-open-panel-with-icon.html [ Skip ]
 
 # <rdar://problem/47907453>

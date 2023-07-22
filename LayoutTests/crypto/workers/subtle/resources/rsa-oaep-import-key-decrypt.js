@@ -24,7 +24,7 @@ var jwkKey = {
 };
 var rsaOaepParams = {
     name: "rsa-oaep",
-    label: asciiToUint8Array("WebKit.org"),
+    label: asciiToUint8Array("CyberKit.org"),
 }
 var expectedPlainText = "Hello, World!";
 

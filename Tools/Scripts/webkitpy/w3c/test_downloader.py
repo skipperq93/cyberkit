@@ -31,7 +31,7 @@ import json
 import logging
 
 from webkitpy.common.system.filesystem import FileSystem
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 from webkitpy.common.checkout.scm.git import Git
 
 _log = logging.getLogger(__name__)
@@ -49,7 +49,7 @@ class TestDownloader(object):
 
     @staticmethod
     def load_test_repositories(filesystem=FileSystem()):
-        webkit_finder = WebKitFinder(filesystem)
+        webkit_finder = CyberKitFinder(filesystem)
         test_repositories_path = webkit_finder.path_from_webkit_base('LayoutTests', 'imported', 'w3c', 'resources', 'TestRepositories')
         return json.loads(filesystem.read_text_file(test_repositories_path))
 
@@ -69,7 +69,7 @@ class TestDownloader(object):
             self.paths_to_skip.extend([self._filesystem.join(test_repository['name'], path) for path in test_repository['paths_to_skip']])
             self.paths_to_import.extend([self._filesystem.join(test_repository['name'], path) for path in test_repository['paths_to_import']])
 
-        webkit_finder = WebKitFinder(self._filesystem)
+        webkit_finder = CyberKitFinder(self._filesystem)
         self.import_expectations_path = webkit_finder.path_from_webkit_base('LayoutTests', 'imported', 'w3c', 'resources', 'import-expectations.json')
         if not self._filesystem.isfile(self.import_expectations_path):
             _log.warning('Unable to read import expectation file: %s' % self.import_expectations_path)

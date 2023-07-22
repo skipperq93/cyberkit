@@ -80,7 +80,7 @@ def run_server_with_log_file(host, options, stdout, stderr, log_file):
 
     if options.web_platform_test_server:
         print("Starting web-platform-tests server on <%s> and <%s>" % (web_platform_test_server.base_http_url(port), web_platform_test_server.base_https_url(port)))
-        print("WebKit http/wpt tests are accessible at <%s>" % (web_platform_test_server.base_http_url(port) + "WebKit/"))
+        print("CyberKit http/wpt tests are accessible at <%s>" % (web_platform_test_server.base_http_url(port) + "CyberKit/"))
         port.start_web_platform_test_server()
 
     if options.httpd_server:

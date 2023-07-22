@@ -6,7 +6,7 @@
 //
 //
 
-#import <WebKit/WebDefaultPolicyDelegate.h>
+#import <CyberKit/WebDefaultPolicyDelegate.h>
 
 @interface DefaultPolicyDelegate : WebDefaultPolicyDelegate
 

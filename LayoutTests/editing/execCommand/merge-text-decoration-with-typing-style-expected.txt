@@ -1,4 +1,4 @@
-This test ensures WebKit merges text decorations in the typing style and the focused element's style property.
+This test ensures CyberKit merges text decorations in the typing style and the focused element's style property.
 
 hello world
 Test to set strikeThrough by typing command and add underline as inline style:

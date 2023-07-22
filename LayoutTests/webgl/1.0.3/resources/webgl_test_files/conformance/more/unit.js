@@ -27,17 +27,17 @@ Unit testing library for the OpenGL ES 2.0 HTML Canvas context
 
 /* -- plaform specific code -- */
 
-// WebKit
+// CyberKit
 if (window.testRunner && !window.layoutTestController) {
   window.layoutTestController = window.testRunner;
 }
 
 if (window.layoutTestController) {
-  layoutTestController.overridePreference("WebKitWebGLEnabled", "1");
+  layoutTestController.overridePreference("CyberKitWebGLEnabled", "1");
   layoutTestController.dumpAsText();
   layoutTestController.waitUntilDone();
 
-  // The WebKit testing system compares console output.
+  // The CyberKit testing system compares console output.
   // Because the output of the WebGL Tests is GPU dependent
   // we turn off console messages.
   window.console.log = function() { };

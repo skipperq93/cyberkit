@@ -4,7 +4,7 @@
 if (window.testRunner) {
 	testRunner.dumpAsText();
 } else {
-	alert("Test can only be run in WebKitTestRunner");
+	alert("Test can only be run in CyberKitTestRunner");
 }
 </script>
 <script src="resources/user-agent-script.php"></script>
@@ -15,7 +15,7 @@ echo $_SERVER['HTTP_USER_AGENT'];
 
 if (!sessionStorage.savedUserAgent) {
 	sessionStorage.savedUserAgent = navigator.userAgent;
-	testRunner.setCustomUserAgent("WebKitRules");
+	testRunner.setCustomUserAgent("CyberKitRules");
 	testRunner.queueReload();
 } else {
 	errorFound = false;

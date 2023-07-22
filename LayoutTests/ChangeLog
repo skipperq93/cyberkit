@@ -8,7 +8,7 @@
     
     Reviewed by Wenson Hsieh.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     When an <input> element's type attribute changes, its existing InputType is detached from
     the HTMLInputElement by nulling InputType::m_element. When FileInputType::filesChosen is
@@ -26,14 +26,14 @@
            fast/forms/file/file-input-webkitdirectory-icon.html
     
     * html/FileInputType.cpp:
-    (WebCore::FileInputType::filesChosen):
+    (CyberCore::FileInputType::filesChosen):
     
     Tools:
     
     * DumpRenderTree/TestRunner.cpp:
     (SetOpenPanelFilesMediaIconCallback):
     (TestRunner::staticFunctions):
-    * WebKitTestRunner/InjectedBundle/TestRunner.cpp:
+    * CyberKitTestRunner/InjectedBundle/TestRunner.cpp:
     (WTR::TestRunner::setOpenPanelFilesMediaIcon):
     
     LayoutTests:
@@ -74,7 +74,7 @@
     
     Reviewed by Geoffrey Garen.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Stop allowing pages served over HTTPS with "Cache-Control: no-store" into the back/forward cache.
     This is a revert of r250437 due to push back from Web developers.
@@ -82,7 +82,7 @@
     No new tests, updated existing tests.
     
     * history/BackForwardCache.cpp:
-    (WebCore::canCacheFrame):
+    (CyberCore::canCacheFrame):
     
     LayoutTests:
     
@@ -123,7 +123,7 @@
     
     * web-platform-tests/content-security-policy/form-action/form-action-src-blocked.sub-expected.txt:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Tests: http/tests/security/contentSecurityPolicy/1.1/form-action-src-self-blocked.html
     
@@ -134,7 +134,7 @@
     This is also covered by the existing form-action CSP tests.
     
     * loader/FrameLoader.cpp:
-    (WebCore::FrameLoader::submitForm): All URLs should be evaluted for
+    (CyberCore::FrameLoader::submitForm): All URLs should be evaluted for
     compliance with CSP.
     
     LayoutTests:
@@ -174,7 +174,7 @@
     
     Reviewed by Eric Carlson.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Before the patch, a source that is muted and for which its observers get ended will not be ended.
     This is a potential issue as the source can get unmuted, in which case, the audio shared unit might be asked to restart.
@@ -184,11 +184,11 @@
     Also covered by fast/mediastream/media-stream-track-interrupted.html no longer flakily crashing in debug.
     
     * platform/mediastream/RealtimeMediaSource.cpp:
-    (WebCore::RealtimeMediaSource::requestToEnd):
+    (CyberCore::RealtimeMediaSource::requestToEnd):
     End the source even if muted.
     * platform/mediastream/RealtimeMediaSource.h:
     * testing/Internals.cpp:
-    (WebCore::Internals::isMediaStreamSourceEnded const):
+    (CyberCore::Internals::isMediaStreamSourceEnded const):
     * testing/Internals.h:
     * testing/Internals.idl:
     Add necessary test infrastructure.
@@ -239,7 +239,7 @@
     
     Reviewed by Alex Christensen.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Protect the notification object in WebNotificationManager::didDestroyNotification() since
     removing it from m_notificationIDMap will deref it and may end up destroying the notification
@@ -248,7 +248,7 @@
     Test: http/tests/notifications/crash-on-navigation.html
     
     * WebProcess/Notifications/WebNotificationManager.cpp:
-    (WebKit::WebNotificationManager::didDestroyNotification):
+    (CyberKit::WebNotificationManager::didDestroyNotification):
     
     LayoutTests:
     
@@ -286,7 +286,7 @@
     Patch by Antoine Quint <graouts@apple.com> on 2020-05-06
     Reviewed by Darin Adler.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Set the SyntheticClickType to OneFingerTap when creating a synthetic "mousemove" event for a synthetic "click" event as part of a tap.
     On top of being more indicative of the actual action that triggered the synthetic event, it also has the added quality that it will
@@ -295,7 +295,7 @@
     Test: pointerevents/ios/click-no-pointermove.html
     
     * WebProcess/WebPage/ios/WebPageIOS.mm:
-    (WebKit::dispatchSyntheticMouseMove):
+    (CyberKit::dispatchSyntheticMouseMove):
     
     LayoutTests:
     
@@ -396,7 +396,7 @@
     
     Reviewed by Tim Horton.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     In iOS 13.4, UIWKTextInteractionAssistant no longer uses the (misleadingly-named) "force press" gesture to drive
     text selection when performing a long press. Instead, it now uses the UIVariableDelayLoupeGestureRecognizer,
@@ -458,7 +458,7 @@
     
     Reviewed by Darin Adler.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     As a brief refresher, deferring gesture recognizers allow us to handle otherwise blocking touch events
     asynchronously by having all preventable native gesture recognizers require the deferring gesture recognizer to
@@ -571,7 +571,7 @@
     
     Reviewed by Tim Horton.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     https://trac.webkit.org/r253267 introduced deferring gesture recognizers as a way to handle preventable (non-
     passive) touchstart events without blocking the UI process. These deferring gesture recognizers work by having
@@ -644,11 +644,11 @@
     
     Reviewed by Tim Horton.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Makes a small adjustment to native gesture deferral logic, so that gestures installed above WKWebView (in the
     view hierarchy) are not prevented from recognizing by WKDeferringGestureRecognizer. This makes it possible for
-    WebKit clients to install custom gestures outside of WKWebView that cannot be prevented by web content, without
+    CyberKit clients to install custom gestures outside of WKWebView that cannot be prevented by web content, without
     having to create a separate window and pass touches through to the WKWebView.
     
     Test: fast/events/touch/ios/prevent-default-with-window-tap-gesture.html
@@ -666,8 +666,8 @@
     * TestRunnerShared/UIScriptContext/UIScriptContext.h:
     * TestRunnerShared/UIScriptContext/UIScriptController.h:
     (WTR::UIScriptController::installTapGestureOnWindow):
-    * WebKitTestRunner/cocoa/TestRunnerWKWebView.h:
-    * WebKitTestRunner/cocoa/TestRunnerWKWebView.mm:
+    * CyberKitTestRunner/cocoa/TestRunnerWKWebView.h:
+    * CyberKitTestRunner/cocoa/TestRunnerWKWebView.mm:
     (-[TestRunnerWKWebView resetInteractionCallbacks]):
     (-[TestRunnerWKWebView didRecognizeTapOnWindow]):
     (-[TestRunnerWKWebView windowTapRecognizedCallback]):
@@ -675,8 +675,8 @@
     (-[TestRunnerWKWebView willMoveToWindow:]):
     (-[TestRunnerWKWebView didMoveToWindow]):
     (-[TestRunnerWKWebView gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:]):
-    * WebKitTestRunner/ios/UIScriptControllerIOS.h:
-    * WebKitTestRunner/ios/UIScriptControllerIOS.mm:
+    * CyberKitTestRunner/ios/UIScriptControllerIOS.h:
+    * CyberKitTestRunner/ios/UIScriptControllerIOS.mm:
     (WTR::UIScriptControllerIOS::installTapGestureOnWindow):
     
     LayoutTests:
@@ -729,7 +729,7 @@
     Patch by Alex Christensen <achristensen@webkit.org> on 2020-04-23
     Reviewed by Brent Fulgham.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: http/tests/security/css-mask-image-credentials.html
     
@@ -741,7 +741,7 @@
     In Safari after this change you'll see the same blue square you see in Chrome and Firefox.
     
     * style/StylePendingResources.cpp:
-    (WebCore::Style::loadPendingImage):
+    (CyberCore::Style::loadPendingImage):
     
     LayoutTests:
     
@@ -775,12 +775,12 @@
     
     Reviewed by Zalan Bujtas.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: fast/text/delete-line-break-in-pre.html
     
     * rendering/RenderTextLineBoxes.cpp:
-    (WebCore::RenderTextLineBoxes::dirtyRange):
+    (CyberCore::RenderTextLineBoxes::dirtyRange):
     
     r249160 changed InlineTextBox end offset to be consistently first-past-end.
     The code here that updates lineBreakPos needs to take this into account too.
@@ -814,7 +814,7 @@
     
     Reviewed by Daniel Bates.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Style sharing optimization was unconditionally allowed for elements that were styled with part pseudo element.
     This could lead to miscomputed style.
@@ -824,7 +824,7 @@
     Test: fast/css/shadow-parts/shadow-part-style-sharing.html
     
     * style/StyleSharingResolver.cpp:
-    (WebCore::Style::SharingResolver::canShareStyleWithElement):
+    (CyberCore::Style::SharingResolver::canShareStyleWithElement):
     
     Only allow style sharing if parts match.
     
@@ -891,12 +891,12 @@
     
     Reviewed by Chris Dumez.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Covered by updated test.
     
     * workers/service/server/SWServerWorker.cpp:
-    (WebCore::SWServerWorker::setState):
+    (CyberCore::SWServerWorker::setState):
     As per spec, if an activated service worker is terminated or its activate event is timing out,
     we should move it to activate state.
     
@@ -926,7 +926,7 @@
     
     Reviewed by Daniel Bates.
     
-    Convert these tests from verifying the (now removed) X-WebKit-CSP
+    Convert these tests from verifying the (now removed) X-CyberKit-CSP
     header to the modern Content-Security-Policy header.  Since we
     don't have equivalent tests for the modern CSP header and it's not
     very useful to have tons of tests for a feature we no longer
@@ -954,7 +954,7 @@
 
             Reviewed by Daniel Bates.
 
-            Convert these tests from verifying the (now removed) X-WebKit-CSP
+            Convert these tests from verifying the (now removed) X-CyberKit-CSP
             header to the modern Content-Security-Policy header.  Since we
             don't have equivalent tests for the modern CSP header and it's not
             very useful to have tons of tests for a feature we no longer
@@ -1047,7 +1047,7 @@
 
         Cherry-pick r259802. rdar://problem/61477495
 
-    Source/WebKit:
+    Source/CyberKit:
     [MacOS] REGRESSION (r253275): Stopping a cloned audio capture track should not stop the original audio track
     https://bugs.webkit.org/show_bug.cgi?id=210259
     <rdar://problem/61466486>
@@ -1066,8 +1066,8 @@
     Test: fast/mediastream/mediastreamtrack-audio-clone.html
     
     * WebProcess/cocoa/UserMediaCaptureManager.cpp:
-    (WebKit::UserMediaCaptureManager::Source::requestToEnd):
-    (WebKit::UserMediaCaptureManager::Source::stopBeingObserved): Deleted.
+    (CyberKit::UserMediaCaptureManager::Source::requestToEnd):
+    (CyberKit::UserMediaCaptureManager::Source::stopBeingObserved): Deleted.
     
     LayoutTests:
     [MacOS] Stopping a cloned audio capture track should not stop the original audio track
@@ -1102,7 +1102,7 @@
     Patch by Said Abou-Hallawa <sabouhallawa@apple.com> on 2020-04-09
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     If WebAnimation is enabled and the SVGImage includes CSS animations, the
     DocumentTimeline is added to the SVGDocument of the embedded SVGImage.
@@ -1141,35 +1141,35 @@
            svg/animations/css-animation-hover-svg.html
     
     * animation/DocumentTimeline.cpp:
-    (WebCore::DocumentTimeline::scheduleAnimationResolution):
-    (WebCore::DocumentTimeline::updateAnimationsAndSendEvents):
+    (CyberCore::DocumentTimeline::scheduleAnimationResolution):
+    (CyberCore::DocumentTimeline::updateAnimationsAndSendEvents):
     * html/ImageBitmap.cpp:
     * loader/cache/CachedImage.cpp:
-    (WebCore::CachedImage::hasSVGImage const):
-    (WebCore::CachedImage::CachedImageObserver::scheduleTimedRenderingUpdate):
-    (WebCore::CachedImage::scheduleTimedRenderingUpdate):
+    (CyberCore::CachedImage::hasSVGImage const):
+    (CyberCore::CachedImage::CachedImageObserver::scheduleTimedRenderingUpdate):
+    (CyberCore::CachedImage::scheduleTimedRenderingUpdate):
     * loader/cache/CachedImage.h:
     * loader/cache/CachedImageClient.h:
-    (WebCore::CachedImageClient::scheduleTimedRenderingUpdate):
+    (CyberCore::CachedImageClient::scheduleTimedRenderingUpdate):
     * loader/cache/CachedResourceLoader.cpp:
-    (WebCore::isSVGImageCachedResource):
-    (WebCore::cachedResourceSVGImage):
-    (WebCore::CachedResourceLoader::notifyFinished):
-    (WebCore:: const):
+    (CyberCore::isSVGImageCachedResource):
+    (CyberCore::cachedResourceSVGImage):
+    (CyberCore::CachedResourceLoader::notifyFinished):
+    (CyberCore:: const):
     * loader/cache/CachedResourceLoader.h:
     * page/ChromeClient.h:
-    (WebCore::ChromeClient::scheduleTimedRenderingUpdate):
+    (CyberCore::ChromeClient::scheduleTimedRenderingUpdate):
     * page/Page.cpp:
-    (WebCore::Page::scheduleTimedRenderingUpdate):
-    (WebCore::Page::updateRendering):
+    (CyberCore::Page::scheduleTimedRenderingUpdate):
+    (CyberCore::Page::updateRendering):
     * page/Page.h:
     * platform/graphics/ImageObserver.h:
     * rendering/RenderElement.cpp:
-    (WebCore::RenderElement::notifyFinished):
-    (WebCore::RenderElement::scheduleTimedRenderingUpdate):
+    (CyberCore::RenderElement::notifyFinished):
+    (CyberCore::RenderElement::scheduleTimedRenderingUpdate):
     * rendering/RenderElement.h:
     * rendering/RenderImage.cpp:
-    (WebCore::RenderImage::notifyFinished):
+    (CyberCore::RenderImage::notifyFinished):
     * svg/graphics/SVGImage.h:
     * svg/graphics/SVGImageClients.h:
     
@@ -1202,9 +1202,9 @@
 
         Cherry-pick r259829. rdar://problem/61596883
 
-    Remove legacy X-WebKit-CSP header support
+    Remove legacy X-CyberKit-CSP header support
     https://bugs.webkit.org/show_bug.cgi?id=210256
-    Source/WebCore:
+    Source/CyberCore:
     
     <rdar://problem/60634363>
     
@@ -1213,18 +1213,18 @@
     Supporting this header is causes compatibly issues for some sites
     and they appear to be misconfigured. Additionally, no other
     browser has supported these headers in many years. This patch
-    removes all support for the legacy X-WebKit-CSP header.
+    removes all support for the legacy X-CyberKit-CSP header.
     
     * dom/Document.cpp:
-    (WebCore::Document::processHttpEquiv):
+    (CyberCore::Document::processHttpEquiv):
     * page/csp/ContentSecurityPolicyDirectiveList.cpp:
-    (WebCore::ContentSecurityPolicyDirectiveList::ContentSecurityPolicyDirectiveList):
+    (CyberCore::ContentSecurityPolicyDirectiveList::ContentSecurityPolicyDirectiveList):
     * page/csp/ContentSecurityPolicyResponseHeaders.cpp:
-    (WebCore::ContentSecurityPolicyResponseHeaders::ContentSecurityPolicyResponseHeaders):
+    (CyberCore::ContentSecurityPolicyResponseHeaders::ContentSecurityPolicyResponseHeaders):
     * page/csp/ContentSecurityPolicyResponseHeaders.h:
     * platform/network/HTTPHeaderNames.in:
     * platform/network/ResourceResponseBase.cpp:
-    (WebCore::isSafeCrossOriginResponseHeader):
+    (CyberCore::isSafeCrossOriginResponseHeader):
     
     LayoutTests:
     
@@ -1272,7 +1272,7 @@
 
     2020-04-09  Keith Miller  <keith_miller@apple.com>
 
-            Remove legacy X-WebKit-CSP header support
+            Remove legacy X-CyberKit-CSP header support
             https://bugs.webkit.org/show_bug.cgi?id=210256
 
             Reviewed by Geoffrey Garen.
@@ -1376,13 +1376,13 @@
     
     Reviewed by Eric Carlson.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Now that we set deviceId to the empty string when media capture is not granted,
     we can have two devices with the same ID. We also need to handle the device type.
     
     * Modules/mediastream/MediaDevices.cpp:
-    (WebCore::MediaDevices::refreshDevices):
+    (CyberCore::MediaDevices::refreshDevices):
     
     LayoutTests:
     
@@ -1409,7 +1409,7 @@
 
         * platform/mac-wk2/TestExpectations:
 
-b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r258799. rdar://problem/60756681\n\n    Content-Type & Nosniff Ignored on XML External Entity Resources\n    <https://webkit.org/b/191171>\n    <rdar://problem/45763222>\n    \n    Reviewed by Darin Adler.\n    \n    Source/WebCore:\n    \n    Test: http/tests/security/contentTypeOptions/nosniff-xml-external-entity.xhtml\n    \n    * platform/MIMETypeRegistry.cpp:\n    (WebCore::MIMETypeRegistry::isXMLEntityMIMEType): Add.\n    * platform/MIMETypeRegistry.h:\n    (WebCore::MIMETypeRegistry::isXMLEntityMIMEType): Add.\n    - Checks for XML external entity MIME types.\n    \n    * xml/parser/XMLDocumentParserLibxml2.cpp:\n    (WebCore::externalEntityMimeTypeAllowedByNosniff): Add.\n    - Checks whether the MIME type is valid based on the presence of\n      the "X-Content-Type-Options: nosniff" header.\n    (WebCore::openFunc):\n    - Drop the contents of the resource that was returned and print\n      an error message to the Web Inspector console if\n      externalEntityMimeTypeAllowedByNosniff() says the MIME type is\n      not allowed.\n    \n    LayoutTests:\n    \n    * http/tests/security/contentTypeOptions/nosniff-xml-external-entity-expected.txt: Add.\n    * http/tests/security/contentTypeOptions/nosniff-xml-external-entity.xhtml: Add.\n    \n    git-svn-id: https://svn.webkit.org/repository/webkit/trunk@258799 268f45cc-cd09-0410-ab3c-d52691b4dbfc\n\n    2020-03-20  David Kilzer  <ddkilzer@apple.com>\n\n            Content-Type & Nosniff Ignored on XML External Entity Resources\n            <https://webkit.org/b/191171>\n            <rdar://problem/45763222>\n\n            Reviewed by Darin Adler.\n\n            * http/tests/security/contentTypeOptions/nosniff-xml-external-entity-expected.txt: Add.\n            * http/tests/security/contentTypeOptions/nosniff-xml-external-entity.xhtml: Add.\n\n    b\'2020-03-23  Russell Epstein  <repstein@apple.com>\\n\\n        Cherry-pick r258741. rdar://problem/60756641\\n\\n    Sanitize suggested download filename received from web process\\n    https://bugs.webkit.org/show_bug.cgi?id=209300\\n    <rdar://problem/59487723>\\n    \\n    Patch by Alex Christensen <achristensen@webkit.org> on 2020-03-19\\n    Reviewed by Chris Dumez.\\n    \\n    Source/WebKit:\\n    \\n    * UIProcess/Downloads/DownloadProxy.cpp:\\n    (WebKit::DownloadProxy::decideDestinationWithSuggestedFilenameAsync):\\n    \\n    LayoutTests:\\n    \\n    * fast/dom/HTMLAnchorElement/anchor-file-blob-download-includes-backslash-expected.txt:\\n    * fast/dom/HTMLAnchorElement/anchor-file-blob-download-includes-backslash.html:\\n    \\n    git-svn-id: https://svn.webkit.org/repository/webkit/trunk@258741 268f45cc-cd09-0410-ab3c-d52691b4dbfc\\n\\n    2020-03-19  Alex Christensen  <achristensen@webkit.org>\\n\\n            Sanitize suggested download filename received from web process\\n            https://bugs.webkit.org/show_bug.cgi?id=209300\\n            <rdar://problem/59487723>\\n\\n            Reviewed by Chris Dumez.\\n\\n            * fast/dom/HTMLAnchorElement/anchor-file-blob-download-includes-backslash-expected.txt:\\n            * fast/dom/HTMLAnchorElement/anchor-file-blob-download-includes-backslash.html:\\n\\n    b"2020-03-23  Russell Epstein  <repstein@apple.com>\\\\n\\\\n        Cherry-pick r258711. rdar://problem/60756645\\\\n\\\\n    Source/WebCore:\\\\n    AX: VO and safari: can\\\'t press the play button\\\\n    https://bugs.webkit.org/show_bug.cgi?id=209249\\\\n    \\\\n    Reviewed by Darin Adler.\\\\n    \\\\n    Test: accessibility/ios-simulator/has-touch-event-listener-with-shadow.html\\\\n    \\\\n    If a node is in a shadowRoot, going up the node parent tree will stop and not check the entire tree for touch event listeners\\\\n    and a touch event won\\\'t be dispatched. We need to change to use the parentInComposedTree instead to go up the chain.\\\\n    \\\\n    * accessibility/ios/AccessibilityObjectIOS.mm:\\\\n    (WebCore::AccessibilityObject::hasTouchEventListener const):\\\\n    \\\\n    LayoutTests:\\\\n    AX: VO and safari: caan\\\'t press the play button\\\\n    https://bugs.webkit.org/show_bug.cgi?id=209249\\\\n    \\\\n    Reviewed by Darin Adler.\\\\n    \\\\n    * accessibility/ios-simulator/has-touch-event-listener-with-shadow-expected.txt: Added.\\\\n    * accessibility/ios-simulator/has-touch-event-listener-with-shadow.html: Added.\\\\n    \\\\n    \\\\n    git-svn-id: https://svn.webkit.org/repository/webkit/trunk@258711 268f45cc-cd09-0410-ab3c-d52691b4dbfc\\\\n\\\\n    2020-03-19  Chris Fleizach  <cfleizach@apple.com>\\\\n\\\\n            AX: VO and safari: caan\\\'t press the play button\\\\n            https://bugs.webkit.org/show_bug.cgi?id=209249\\\\n\\\\n            Reviewed by Darin Adler.\\\\n\\\\n            * accessibility/ios-simulator/has-touch-event-listener-with-shadow-expected.txt: Added.\\\\n            * accessibility/ios-simulator/has-touch-event-listener-with-shadow.html: Added.\\\\n\\\\n"2020-03-17  Alan Coon  <alancoon@apple.com>\\n\\n            Cherry-pick r258459. rdar://problem/60539192\\n\\n        SVGMatrix should have the access right of its owner SVGTransform always\\n        https://bugs.webkit.org/show_bug.cgi?id=207462\\n\\n        Reviewed by Simon Fraser.\\n\\n        Source/WebCore:\\n\\n        The SVGMatrix needs to be reattached to its owner SVGTransform when the\\n        access right of this owner changes. The access right of the owner changes\\n        when it gets attached to or detached from a higher level owner.\\n\\n        Test: svg/dom/SVGTransformList-anim-read-only.html\\n\\n        * svg/SVGTransform.h:\\n        * svg/properties/SVGProperty.h:\\n        (WebCore::SVGProperty::attach):\\n        (WebCore::SVGProperty::detach):\\n        (WebCore::SVGProperty::reattach):\\n\\n        LayoutTests:\\n\\n        * svg/dom/SVGTransformList-anim-read-only-expected.txt: Added.\\n        * svg/dom/SVGTransformList-anim-read-only.html: Added.\\n\\n\\n        git-svn-id: https://svn.webkit.org/repository/webkit/trunk@258459 268f45cc-cd09-0410-ab3c-d52691b4dbfc\\n\\n        2020-03-13  Said Abou-Hallawa  <said@apple.com>\\n\\n                SVGMatrix should have the access right of its owner SVGTransform always\\n                https://bugs.webkit.org/show_bug.cgi?id=207462\\n\\n                Reviewed by Simon Fraser.\\n\\n                * svg/dom/SVGTransformList-anim-read-only-expected.txt: Added.\\n                * svg/dom/SVGTransformList-anim-read-only.html: Added.\\n\\n\'2020-03-17  Alan Coon  <alancoon@apple.com>\n\n            Cherry-pick r258455. rdar://problem/60539179\n\n        [Tree building] Block::attachIgnoringContinuation should allow inline tables as before child container\n        https://bugs.webkit.org/show_bug.cgi?id=209095\n        <rdar://problem/59837588>\n\n        Reviewed by Simon Fraser.\n\n        Source/WebCore:\n\n        It\'s perfectly valid to have an inline table as the anonymous container for the before child.\n        It\'ll get wrapped inside an anonymous block right before we insert the block box candidate, so\n        the final result will be something like:\n\n        new block level child (this is the child we are inserting)\n        anonymous block wrapper\n          inline table (this is the before child\'s inline container)\n            before child\n\n        Test: fast/table/before-child-is-inline-table.html\n\n        * rendering/updating/RenderTreeBuilderBlock.cpp:\n        (WebCore::RenderTreeBuilder::Block::attachIgnoringContinuation):\n\n        LayoutTests:\n\n        * fast/table/before-child-is-inline-table-expected.txt: Added.\n        * fast/table/before-child-is-inline-table.html: Added.\n\n\n        git-svn-id: https://svn.webkit.org/repository/webkit/trunk@258455 268f45cc-cd09-0410-ab3c-d52691b4dbfc\n\n        2020-03-13  Zalan Bujtas  <zalan@apple.com>\n\n                [Tree building] Block::attachIgnoringContinuation should allow inline tables as before child container\n                https://bugs.webkit.org/show_bug.cgi?id=209095\n                <rdar://problem/59837588>\n\n                Reviewed by Simon Fraser.\n\n                * fast/table/before-child-is-inline-table-expected.txt: Added.\n                * fast/table/before-child-is-inline-table.html: Added.\n\n'2020-03-12  Ryan Haddad  <ryanhaddad@apple.com>
+b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r258799. rdar://problem/60756681\n\n    Content-Type & Nosniff Ignored on XML External Entity Resources\n    <https://webkit.org/b/191171>\n    <rdar://problem/45763222>\n    \n    Reviewed by Darin Adler.\n    \n    Source/CyberCore:\n    \n    Test: http/tests/security/contentTypeOptions/nosniff-xml-external-entity.xhtml\n    \n    * platform/MIMETypeRegistry.cpp:\n    (CyberCore::MIMETypeRegistry::isXMLEntityMIMEType): Add.\n    * platform/MIMETypeRegistry.h:\n    (CyberCore::MIMETypeRegistry::isXMLEntityMIMEType): Add.\n    - Checks for XML external entity MIME types.\n    \n    * xml/parser/XMLDocumentParserLibxml2.cpp:\n    (CyberCore::externalEntityMimeTypeAllowedByNosniff): Add.\n    - Checks whether the MIME type is valid based on the presence of\n      the "X-Content-Type-Options: nosniff" header.\n    (CyberCore::openFunc):\n    - Drop the contents of the resource that was returned and print\n      an error message to the Web Inspector console if\n      externalEntityMimeTypeAllowedByNosniff() says the MIME type is\n      not allowed.\n    \n    LayoutTests:\n    \n    * http/tests/security/contentTypeOptions/nosniff-xml-external-entity-expected.txt: Add.\n    * http/tests/security/contentTypeOptions/nosniff-xml-external-entity.xhtml: Add.\n    \n    git-svn-id: https://svn.webkit.org/repository/webkit/trunk@258799 268f45cc-cd09-0410-ab3c-d52691b4dbfc\n\n    2020-03-20  David Kilzer  <ddkilzer@apple.com>\n\n            Content-Type & Nosniff Ignored on XML External Entity Resources\n            <https://webkit.org/b/191171>\n            <rdar://problem/45763222>\n\n            Reviewed by Darin Adler.\n\n            * http/tests/security/contentTypeOptions/nosniff-xml-external-entity-expected.txt: Add.\n            * http/tests/security/contentTypeOptions/nosniff-xml-external-entity.xhtml: Add.\n\n    b\'2020-03-23  Russell Epstein  <repstein@apple.com>\\n\\n        Cherry-pick r258741. rdar://problem/60756641\\n\\n    Sanitize suggested download filename received from web process\\n    https://bugs.webkit.org/show_bug.cgi?id=209300\\n    <rdar://problem/59487723>\\n    \\n    Patch by Alex Christensen <achristensen@webkit.org> on 2020-03-19\\n    Reviewed by Chris Dumez.\\n    \\n    Source/CyberKit:\\n    \\n    * UIProcess/Downloads/DownloadProxy.cpp:\\n    (CyberKit::DownloadProxy::decideDestinationWithSuggestedFilenameAsync):\\n    \\n    LayoutTests:\\n    \\n    * fast/dom/HTMLAnchorElement/anchor-file-blob-download-includes-backslash-expected.txt:\\n    * fast/dom/HTMLAnchorElement/anchor-file-blob-download-includes-backslash.html:\\n    \\n    git-svn-id: https://svn.webkit.org/repository/webkit/trunk@258741 268f45cc-cd09-0410-ab3c-d52691b4dbfc\\n\\n    2020-03-19  Alex Christensen  <achristensen@webkit.org>\\n\\n            Sanitize suggested download filename received from web process\\n            https://bugs.webkit.org/show_bug.cgi?id=209300\\n            <rdar://problem/59487723>\\n\\n            Reviewed by Chris Dumez.\\n\\n            * fast/dom/HTMLAnchorElement/anchor-file-blob-download-includes-backslash-expected.txt:\\n            * fast/dom/HTMLAnchorElement/anchor-file-blob-download-includes-backslash.html:\\n\\n    b"2020-03-23  Russell Epstein  <repstein@apple.com>\\\\n\\\\n        Cherry-pick r258711. rdar://problem/60756645\\\\n\\\\n    Source/CyberCore:\\\\n    AX: VO and safari: can\\\'t press the play button\\\\n    https://bugs.webkit.org/show_bug.cgi?id=209249\\\\n    \\\\n    Reviewed by Darin Adler.\\\\n    \\\\n    Test: accessibility/ios-simulator/has-touch-event-listener-with-shadow.html\\\\n    \\\\n    If a node is in a shadowRoot, going up the node parent tree will stop and not check the entire tree for touch event listeners\\\\n    and a touch event won\\\'t be dispatched. We need to change to use the parentInComposedTree instead to go up the chain.\\\\n    \\\\n    * accessibility/ios/AccessibilityObjectIOS.mm:\\\\n    (CyberCore::AccessibilityObject::hasTouchEventListener const):\\\\n    \\\\n    LayoutTests:\\\\n    AX: VO and safari: caan\\\'t press the play button\\\\n    https://bugs.webkit.org/show_bug.cgi?id=209249\\\\n    \\\\n    Reviewed by Darin Adler.\\\\n    \\\\n    * accessibility/ios-simulator/has-touch-event-listener-with-shadow-expected.txt: Added.\\\\n    * accessibility/ios-simulator/has-touch-event-listener-with-shadow.html: Added.\\\\n    \\\\n    \\\\n    git-svn-id: https://svn.webkit.org/repository/webkit/trunk@258711 268f45cc-cd09-0410-ab3c-d52691b4dbfc\\\\n\\\\n    2020-03-19  Chris Fleizach  <cfleizach@apple.com>\\\\n\\\\n            AX: VO and safari: caan\\\'t press the play button\\\\n            https://bugs.webkit.org/show_bug.cgi?id=209249\\\\n\\\\n            Reviewed by Darin Adler.\\\\n\\\\n            * accessibility/ios-simulator/has-touch-event-listener-with-shadow-expected.txt: Added.\\\\n            * accessibility/ios-simulator/has-touch-event-listener-with-shadow.html: Added.\\\\n\\\\n"2020-03-17  Alan Coon  <alancoon@apple.com>\\n\\n            Cherry-pick r258459. rdar://problem/60539192\\n\\n        SVGMatrix should have the access right of its owner SVGTransform always\\n        https://bugs.webkit.org/show_bug.cgi?id=207462\\n\\n        Reviewed by Simon Fraser.\\n\\n        Source/CyberCore:\\n\\n        The SVGMatrix needs to be reattached to its owner SVGTransform when the\\n        access right of this owner changes. The access right of the owner changes\\n        when it gets attached to or detached from a higher level owner.\\n\\n        Test: svg/dom/SVGTransformList-anim-read-only.html\\n\\n        * svg/SVGTransform.h:\\n        * svg/properties/SVGProperty.h:\\n        (CyberCore::SVGProperty::attach):\\n        (CyberCore::SVGProperty::detach):\\n        (CyberCore::SVGProperty::reattach):\\n\\n        LayoutTests:\\n\\n        * svg/dom/SVGTransformList-anim-read-only-expected.txt: Added.\\n        * svg/dom/SVGTransformList-anim-read-only.html: Added.\\n\\n\\n        git-svn-id: https://svn.webkit.org/repository/webkit/trunk@258459 268f45cc-cd09-0410-ab3c-d52691b4dbfc\\n\\n        2020-03-13  Said Abou-Hallawa  <said@apple.com>\\n\\n                SVGMatrix should have the access right of its owner SVGTransform always\\n                https://bugs.webkit.org/show_bug.cgi?id=207462\\n\\n                Reviewed by Simon Fraser.\\n\\n                * svg/dom/SVGTransformList-anim-read-only-expected.txt: Added.\\n                * svg/dom/SVGTransformList-anim-read-only.html: Added.\\n\\n\'2020-03-17  Alan Coon  <alancoon@apple.com>\n\n            Cherry-pick r258455. rdar://problem/60539179\n\n        [Tree building] Block::attachIgnoringContinuation should allow inline tables as before child container\n        https://bugs.webkit.org/show_bug.cgi?id=209095\n        <rdar://problem/59837588>\n\n        Reviewed by Simon Fraser.\n\n        Source/CyberCore:\n\n        It\'s perfectly valid to have an inline table as the anonymous container for the before child.\n        It\'ll get wrapped inside an anonymous block right before we insert the block box candidate, so\n        the final result will be something like:\n\n        new block level child (this is the child we are inserting)\n        anonymous block wrapper\n          inline table (this is the before child\'s inline container)\n            before child\n\n        Test: fast/table/before-child-is-inline-table.html\n\n        * rendering/updating/RenderTreeBuilderBlock.cpp:\n        (CyberCore::RenderTreeBuilder::Block::attachIgnoringContinuation):\n\n        LayoutTests:\n\n        * fast/table/before-child-is-inline-table-expected.txt: Added.\n        * fast/table/before-child-is-inline-table.html: Added.\n\n\n        git-svn-id: https://svn.webkit.org/repository/webkit/trunk@258455 268f45cc-cd09-0410-ab3c-d52691b4dbfc\n\n        2020-03-13  Zalan Bujtas  <zalan@apple.com>\n\n                [Tree building] Block::attachIgnoringContinuation should allow inline tables as before child container\n                https://bugs.webkit.org/show_bug.cgi?id=209095\n                <rdar://problem/59837588>\n\n                Reviewed by Simon Fraser.\n\n                * fast/table/before-child-is-inline-table-expected.txt: Added.\n                * fast/table/before-child-is-inline-table.html: Added.\n\n'2020-03-12  Ryan Haddad  <ryanhaddad@apple.com>
 
         Cherry-pick r254979. rdar://problem/58836694
 
@@ -1442,7 +1442,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Alex Christensen.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     We found that a lot of Vectors in Membuster is holding resource content. This is because we have 16KB threshold for mmap-ed files.
     If a file is smaller than 16KB, it is copied to Vector instead. But this is costly in terms of memory. If we use mmap-ed files,
@@ -1454,16 +1454,16 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
        the same # of anonymous pages randomly. Anonymous pages are split by malloc implementation and access pattern of pages in one VA is random. On
        the other hand, named-pages are accessed together because it is file, and file typically has sequential locality. And recovery of named pages are
        also cheap compared to anonymous pages since OS can prefetch pages once access happens because of sequential locality of files. This tendency makes
-       OS like purging named pages instead of anonymous pages. In WebKit use case, this works perfectly. CachedResource typically has decoded content. So
+       OS like purging named pages instead of anonymous pages. In CyberKit use case, this works perfectly. CachedResource typically has decoded content. So
        typically WebProcess does not access SharedBuffer after the content is decoded.
     
     This patch reduces the threshold from 16KB to page size (4KB in macOS, 16KB in iOS). This is pre-2015 behavior.
     This offers 2.56% progression with 98% probability in Membuster.
     
     * NetworkProcess/cache/NetworkCacheStorage.cpp:
-    (WebKit::NetworkCache::maximumInlineBodySize):
-    (WebKit::NetworkCache::estimateRecordsSize):
-    (WebKit::NetworkCache::Storage::shouldStoreBodyAsBlob):
+    (CyberKit::NetworkCache::maximumInlineBodySize):
+    (CyberKit::NetworkCache::estimateRecordsSize):
+    (CyberKit::NetworkCache::Storage::shouldStoreBodyAsBlob):
     
     LayoutTests:
     
@@ -1516,7 +1516,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Tim Horton and Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Mitigates a null pointer crash in ServicesOverlayController::buildPotentialHighlightsIfNeeded(), wherein the
     focused frame may not have a FrameView when the ServicesOverlayController's selection invalidation timer fires.
@@ -1528,24 +1528,24 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Test: editing/selection/selection-change-in-disconnected-frame-crash.html
     
     * page/mac/ServicesOverlayController.mm:
-    (WebCore::ServicesOverlayController::buildSelectionHighlight):
+    (CyberCore::ServicesOverlayController::buildSelectionHighlight):
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Add another missing null check on iOS, for the case where FrameView is null.
     
     * WebProcess/WebPage/ios/WebPageIOS.mm:
-    (WebKit::WebPage::platformEditorState const):
+    (CyberKit::WebPage::platformEditorState const):
     
     Tools:
     
     Make it possible to run tests on macOS with services controls enabled, via a new TestOptions flag.
     
-    * WebKitTestRunner/TestController.cpp:
+    * CyberKitTestRunner/TestController.cpp:
     (WTR::updateTestOptionsFromTestHeader):
-    * WebKitTestRunner/TestOptions.h:
+    * CyberKitTestRunner/TestOptions.h:
     (WTR::TestOptions::hasSameInitializationOptions const):
-    * WebKitTestRunner/cocoa/TestControllerCocoa.mm:
+    * CyberKitTestRunner/cocoa/TestControllerCocoa.mm:
     (WTR::TestController::platformCreateWebView):
     
     LayoutTests:
@@ -1599,14 +1599,14 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Disallow setting base URL to a data or JavaScript URL
     https://bugs.webkit.org/show_bug.cgi?id=207136
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Reviewed by Brent Fulgham.
     
     Inspired by <https://bugs.chromium.org/p/chromium/issues/detail?id=679318>.
     
     Block setting the base URL to a data URL or JavaScript URL as such usage is questionable.
-    This makes WebKit match the behavior of Chrome and Firefox and is in the spirit of the
+    This makes CyberKit match the behavior of Chrome and Firefox and is in the spirit of the
     discussion in <https://github.com/whatwg/html/issues/2249>.
     
     On Mac and iOS, this restriction is applied only to apps linked against a future SDK to
@@ -1621,27 +1621,27 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
            http/tests/security/denied-base-url-javascript-url.html
     
     * dom/Document.cpp:
-    (WebCore::Document::processBaseElement): Condition updating the parsed
+    (CyberCore::Document::processBaseElement): Condition updating the parsed
     base URL on whether is has an allowed scheme, if restrictions are enabled. Otherwise,
     do what we do now. If the scheme is disallowed then log a message to the console to
     explain this to web developers.
     * html/parser/HTMLPreloadScanner.cpp:
-    (WebCore::TokenPreloadScanner::scan): Pass whether to apply restrictons to the base URL
+    (CyberCore::TokenPreloadScanner::scan): Pass whether to apply restrictons to the base URL
     to updatePredictedBaseURL(). This depends on whether the setting is enabled or not.
-    (WebCore::TokenPreloadScanner::updatePredictedBaseURL): Modifed to take a boolean as to
+    (CyberCore::TokenPreloadScanner::updatePredictedBaseURL): Modifed to take a boolean as to
     whether to apply restrictions. If restrictions are not to be applied do what we do now.
     Otherwise, only do what we do now if the scheme for the predicated base URL is allowed.
     * html/parser/HTMLPreloadScanner.h:
     * page/SecurityPolicy.cpp:
-    (WebCore::SecurityPolicy::isBaseURLSchemeAllowed): Added.
+    (CyberCore::SecurityPolicy::isBaseURLSchemeAllowed): Added.
     * page/SecurityPolicy.h:
     * page/Settings.yaml: Add a setting to toggle restrictions on the base URL scheme.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Reviewed by Brent Fulgham.
     
-    Apply base URL restrictions to apps linked to a future WebKit to avoid breaking existing apps.
+    Apply base URL restrictions to apps linked to a future CyberKit to avoid breaking existing apps.
     
     * Shared/WebPreferences.yaml:
     * UIProcess/API/Cocoa/WKWebView.mm:
@@ -1649,13 +1649,13 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     (-[WKWebView _setupPageConfiguration:]): Update settings.
     * UIProcess/Cocoa/VersionChecks.h:
     
-    Source/WebKitLegacy/mac:
+    Source/CyberKitLegacy/mac:
     
     Reviewed by Brent Fulgham.
     
-    Apply base URL restrictions to apps linked to a future WebKit to avoid breaking existing apps.
+    Apply base URL restrictions to apps linked to a future CyberKit to avoid breaking existing apps.
     
-    * Misc/WebKitVersionChecks.h:
+    * Misc/CyberKitVersionChecks.h:
     * WebView/WebView.mm:
     (shouldRestrictBaseURLSchemes): Added.
     (-[WebView _commonInitializationWithFrameName:groupName:]): Update settings.
@@ -1771,7 +1771,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Antti Koivisto.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Remove the early return in ScrollingStateScrollingNode::setRequestedScrollData(); comparing
     with the last m_requestedScrollData is wrong, because requested scroll positions are not "state"
@@ -1781,7 +1781,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Test: fast/scrolling/programmatic-scroll-to-zero-zero.html
     
     * page/scrolling/ScrollingStateScrollingNode.cpp:
-    (WebCore::ScrollingStateScrollingNode::setRequestedScrollData):
+    (CyberCore::ScrollingStateScrollingNode::setRequestedScrollData):
     
     LayoutTests:
     
@@ -1819,7 +1819,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     rdar://problem/58707084
     
     Reviewed by Antti Koivisto.
-    Source/WebCore:
+    Source/CyberCore:
     
     Intended behavior on iOS and macOS is for position:fixed and sticky elements to maintain
     their position relative to the view bounds when rubber-banding ("overscrolling"). This broke
@@ -1842,75 +1842,75 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
            tiled-drawing/scrolling/sticky/sticky-during-rubberband.html
     
     * Sources.txt:
-    * WebCore.xcodeproj/project.pbxproj:
+    * CyberCore.xcodeproj/project.pbxproj:
     * dom/Element.cpp:
-    (WebCore::Element::scrollTo):
+    (CyberCore::Element::scrollTo):
     * page/DOMWindow.cpp:
-    (WebCore::DOMWindow::scrollTo const):
+    (CyberCore::DOMWindow::scrollTo const):
     * page/FrameView.cpp:
-    (WebCore::FrameView::setScrollPosition):
-    (WebCore::FrameView::requestScrollPositionUpdate):
+    (CyberCore::FrameView::setScrollPosition):
+    (CyberCore::FrameView::requestScrollPositionUpdate):
     * page/FrameView.h:
     * page/scrolling/AsyncScrollingCoordinator.cpp:
-    (WebCore::AsyncScrollingCoordinator::requestScrollPositionUpdate):
+    (CyberCore::AsyncScrollingCoordinator::requestScrollPositionUpdate):
     * page/scrolling/AsyncScrollingCoordinator.h:
     * page/scrolling/ScrollingCoordinator.cpp:
     * page/scrolling/ScrollingCoordinator.h:
-    (WebCore::ScrollingCoordinator::requestScrollPositionUpdate):
+    (CyberCore::ScrollingCoordinator::requestScrollPositionUpdate):
     * page/scrolling/ScrollingStateScrollingNode.cpp:
-    (WebCore::ScrollingStateScrollingNode::ScrollingStateScrollingNode):
-    (WebCore::ScrollingStateScrollingNode::setRequestedScrollData):
-    (WebCore::ScrollingStateScrollingNode::dumpProperties const):
-    (WebCore::ScrollingStateScrollingNode::setRequestedScrollPosition): Deleted.
+    (CyberCore::ScrollingStateScrollingNode::ScrollingStateScrollingNode):
+    (CyberCore::ScrollingStateScrollingNode::setRequestedScrollData):
+    (CyberCore::ScrollingStateScrollingNode::dumpProperties const):
+    (CyberCore::ScrollingStateScrollingNode::setRequestedScrollPosition): Deleted.
     * page/scrolling/ScrollingStateScrollingNode.h:
-    (WebCore::RequestedScrollData::operator== const):
-    (WebCore::ScrollingStateScrollingNode::requestedScrollData const):
-    (WebCore::ScrollingStateScrollingNode::requestedScrollPosition const): Deleted.
-    (WebCore::ScrollingStateScrollingNode::requestedScrollPositionRepresentsProgrammaticScroll const): Deleted.
+    (CyberCore::RequestedScrollData::operator== const):
+    (CyberCore::ScrollingStateScrollingNode::requestedScrollData const):
+    (CyberCore::ScrollingStateScrollingNode::requestedScrollPosition const): Deleted.
+    (CyberCore::ScrollingStateScrollingNode::requestedScrollPositionRepresentsProgrammaticScroll const): Deleted.
     * page/scrolling/ScrollingTree.h:
-    (WebCore::ScrollingTree::scrollingTreeNodeRequestsScroll):
+    (CyberCore::ScrollingTree::scrollingTreeNodeRequestsScroll):
     * page/scrolling/ScrollingTreeFrameScrollingNode.cpp:
-    (WebCore::ScrollingTreeFrameScrollingNode::layoutViewportForScrollPosition const):
-    (WebCore::ScrollingTreeFrameScrollingNode::layoutViewportRespectingRubberBanding const):
+    (CyberCore::ScrollingTreeFrameScrollingNode::layoutViewportForScrollPosition const):
+    (CyberCore::ScrollingTreeFrameScrollingNode::layoutViewportRespectingRubberBanding const):
     * page/scrolling/ScrollingTreeFrameScrollingNode.h:
     * page/scrolling/ScrollingTreeScrollingNode.cpp:
-    (WebCore::ScrollingTreeScrollingNode::commitStateAfterChildren):
-    (WebCore::ScrollingTreeScrollingNode::adjustedScrollPosition const):
-    (WebCore::ScrollingTreeScrollingNode::scrollBy):
-    (WebCore::ScrollingTreeScrollingNode::scrollTo):
-    (WebCore::ScrollingTreeScrollingNode::wasScrolledByDelegatedScrolling):
+    (CyberCore::ScrollingTreeScrollingNode::commitStateAfterChildren):
+    (CyberCore::ScrollingTreeScrollingNode::adjustedScrollPosition const):
+    (CyberCore::ScrollingTreeScrollingNode::scrollBy):
+    (CyberCore::ScrollingTreeScrollingNode::scrollTo):
+    (CyberCore::ScrollingTreeScrollingNode::wasScrolledByDelegatedScrolling):
     * page/scrolling/ScrollingTreeScrollingNode.h:
     * page/scrolling/cocoa/ScrollingTreeFixedNode.mm:
-    (WebCore::ScrollingTreeFixedNode::applyLayerPositions):
+    (CyberCore::ScrollingTreeFixedNode::applyLayerPositions):
     * page/scrolling/cocoa/ScrollingTreeStickyNode.mm:
-    (WebCore::ScrollingTreeStickyNode::computeLayerPosition const):
+    (CyberCore::ScrollingTreeStickyNode::computeLayerPosition const):
     * page/scrolling/mac/ScrollingTreeFrameScrollingNodeMac.h:
     * page/scrolling/mac/ScrollingTreeFrameScrollingNodeMac.mm:
-    (WebCore::ScrollingTreeFrameScrollingNodeMac::commitStateAfterChildren):
-    (WebCore::ScrollingTreeFrameScrollingNodeMac::adjustedScrollPosition const):
+    (CyberCore::ScrollingTreeFrameScrollingNodeMac::commitStateAfterChildren):
+    (CyberCore::ScrollingTreeFrameScrollingNodeMac::adjustedScrollPosition const):
     * page/scrolling/mac/ScrollingTreeOverflowScrollingNodeMac.h:
     * page/scrolling/mac/ScrollingTreeOverflowScrollingNodeMac.mm:
-    (WebCore::ScrollingTreeOverflowScrollingNodeMac::commitStateAfterChildren):
-    (WebCore::ScrollingTreeOverflowScrollingNodeMac::adjustedScrollPosition const):
+    (CyberCore::ScrollingTreeOverflowScrollingNodeMac::commitStateAfterChildren):
+    (CyberCore::ScrollingTreeOverflowScrollingNodeMac::adjustedScrollPosition const):
     * page/scrolling/mac/ScrollingTreeScrollingNodeDelegateMac.mm:
-    (WebCore::ScrollingTreeScrollingNodeDelegateMac::immediateScrollByWithoutContentEdgeConstraints):
+    (CyberCore::ScrollingTreeScrollingNodeDelegateMac::immediateScrollByWithoutContentEdgeConstraints):
     * platform/ScrollTypes.cpp: Added.
-    (WebCore::operator<<):
+    (CyberCore::operator<<):
     * platform/ScrollTypes.h:
     * platform/ScrollView.cpp:
-    (WebCore::ScrollView::setContentsScrollPosition):
-    (WebCore::ScrollView::setScrollPosition):
+    (CyberCore::ScrollView::setContentsScrollPosition):
+    (CyberCore::ScrollView::setScrollPosition):
     * platform/ScrollView.h:
     * platform/ScrollableArea.cpp:
-    (WebCore::ScrollableArea::setScrollOffsetFromAnimation):
+    (CyberCore::ScrollableArea::setScrollOffsetFromAnimation):
     * platform/ScrollableArea.h:
-    (WebCore::ScrollableArea::requestScrollPositionUpdate):
+    (CyberCore::ScrollableArea::requestScrollPositionUpdate):
     * rendering/RenderLayer.cpp:
-    (WebCore::RenderLayer::scrollToOffset):
+    (CyberCore::RenderLayer::scrollToOffset):
     * testing/Internals.cpp:
-    (WebCore::Internals::unconstrainedScrollTo):
+    (CyberCore::Internals::unconstrainedScrollTo):
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Intended behavior on iOS and macOS is for position:fixed and sticky elements to maintain
     their position relative to the view bounds when rubber-banding ("overscrolling"). This broke
@@ -1930,17 +1930,17 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     (ArgumentCoder<ScrollingStateScrollingNode>::decode):
     (ArgumentCoder<RequestedScrollData>::encode):
     (ArgumentCoder<RequestedScrollData>::decode):
-    (WebKit::dump):
+    (CyberKit::dump):
     * UIProcess/RemoteLayerTree/RemoteScrollingCoordinatorProxy.cpp:
-    (WebKit::RemoteScrollingCoordinatorProxy::scrollingTreeNodeRequestsScroll):
+    (CyberKit::RemoteScrollingCoordinatorProxy::scrollingTreeNodeRequestsScroll):
     * UIProcess/RemoteLayerTree/RemoteScrollingCoordinatorProxy.h:
     * UIProcess/RemoteLayerTree/RemoteScrollingTree.cpp:
-    (WebKit::RemoteScrollingTree::scrollingTreeNodeRequestsScroll):
+    (CyberKit::RemoteScrollingTree::scrollingTreeNodeRequestsScroll):
     * UIProcess/RemoteLayerTree/RemoteScrollingTree.h:
     * UIProcess/RemoteLayerTree/ios/ScrollingTreeFrameScrollingNodeRemoteIOS.mm:
-    (WebKit::ScrollingTreeFrameScrollingNodeRemoteIOS::commitStateAfterChildren):
+    (CyberKit::ScrollingTreeFrameScrollingNodeRemoteIOS::commitStateAfterChildren):
     * UIProcess/RemoteLayerTree/ios/ScrollingTreeScrollingNodeDelegateIOS.mm:
-    (WebKit::ScrollingTreeScrollingNodeDelegateIOS::commitStateAfterChildren):
+    (CyberKit::ScrollingTreeScrollingNodeDelegateIOS::commitStateAfterChildren):
     
     LayoutTests:
     
@@ -2066,7 +2066,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Patch by Sunny He <sunny_he@apple.com> on 2020-02-14
     Reviewed by Antoine Quint.
     
-    Source/WebCore:
+    Source/CyberCore:
     An active animation for which the effect is removed may be considered for
     an upcoming animation resolution. However, WebAnimation::timeToNextTick()
     expects a valid effect to be available to be able to determine timing.
@@ -2074,14 +2074,14 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     add an ASSERT() in that function to catch cases where an animation effect
     might not be available.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: webanimations/animation-null-effect.html
     
     * animation/DocumentTimeline.cpp:
-    (WebCore::DocumentTimeline::scheduleNextTick):
+    (CyberCore::DocumentTimeline::scheduleNextTick):
     * animation/WebAnimation.cpp:
-    (WebCore::WebAnimation::timeToNextTick const):
+    (CyberCore::WebAnimation::timeToNextTick const):
     
     LayoutTests:
     
@@ -2098,7 +2098,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
             Reviewed by Antoine Quint.
 
-            Source/WebCore:
+            Source/CyberCore:
             An active animation for which the effect is removed may be considered for
             an upcoming animation resolution. However, WebAnimation::timeToNextTick()
             expects a valid effect to be available to be able to determine timing.
@@ -2120,7 +2120,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Source/WTF:
     
-    We know that hash-table is one of the most memory consuming part in WebKit.
+    We know that hash-table is one of the most memory consuming part in CyberKit.
     By analyzing many production hash-table implementations[1], I found that many
     of them are using 75% load-factor while our one is 50%.
     
@@ -2142,8 +2142,8 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Fix load-factor assumption in existing tests.
     
-    * TestWebKitAPI/Tests/WTF/HashSet.cpp:
-    (TestWebKitAPI::testInitialCapacity):
+    * TestCyberKitAPI/Tests/WTF/HashSet.cpp:
+    (TestCyberKitAPI::testInitialCapacity):
     
     LayoutTests:
     
@@ -2175,13 +2175,13 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Patch by Sunny He <sunny_he@apple.com> on 2020-02-12
     Reviewed by Antoine Quint.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: legacy-animation-engine/transitions/svg-bad-scale-crash.html
     
     * animation/CSSTransition.cpp:
-    (WebCore::CSSTransition::create):
-    (WebCore::CSSTransition::CSSTransition):
+    (CyberCore::CSSTransition::create):
+    (CyberCore::CSSTransition::CSSTransition):
     * animation/CSSTransition.h:
     
     LayoutTests:
@@ -2216,7 +2216,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Youenn Fablet.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Allow the Web process and the GPU process to communicate with
     'com.apple.coremedia.audiodeviceclock.xpc' because it is necessary to use a
@@ -2224,8 +2224,8 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Test: fast/mediastream/media-element-current-time.html
     
-    * Resources/SandboxProfiles/ios/com.apple.WebKit.GPU.sb:
-    * Resources/SandboxProfiles/ios/com.apple.WebKit.WebContent.sb:
+    * Resources/SandboxProfiles/ios/com.matthewbenedict.CyberKit.GPU.sb:
+    * Resources/SandboxProfiles/ios/com.matthewbenedict.CyberKit.WebContent.sb:
     
     LayoutTests:
     
@@ -2259,12 +2259,12 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     * web-platform-tests/html/semantics/forms/textfieldselection/selection-not-application-textarea-expected.txt:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Don't update FrameSelection when the text form control element is disconnected from document.
     
     * html/HTMLTextFormControlElement.cpp:
-    (WebCore::HTMLTextFormControlElement::setSelectionRange):
+    (CyberCore::HTMLTextFormControlElement::setSelectionRange):
     
     LayoutTests:
     
@@ -2300,7 +2300,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Tim Horton.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Apply a couple of minor adjustments to the appearance of composition highlight rects that appear behind marked
     text, in the case where the client specifies attributed marked text with background colors.
@@ -2308,15 +2308,15 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Test: editing/input/composition-highlights.html
     
     * rendering/InlineTextBox.cpp:
-    (WebCore::InlineTextBox::paintMarkedTextBackground):
-    (WebCore::InlineTextBox::paintCompositionBackground):
+    (CyberCore::InlineTextBox::paintMarkedTextBackground):
+    (CyberCore::InlineTextBox::paintCompositionBackground):
     
     In the case where custom composition rects are specified, add a half-pixel inset to all sides of the background
     rect, and add a slight corner radius around each background rect.
     
     * rendering/InlineTextBox.h:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Stitch adjacent highlight rects together if they have the same highlight color; this minimizes the number of
     composition highlight rects we hand to the web process when changing the marked text.
@@ -2366,7 +2366,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     * web-platform-tests/mediacapture-streams/MediaStream-default-feature-policy.https-expected.txt:
     * web-platform-tests/mediacapture-streams/MediaStream-feature-policy-none.https-expected.txt:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     MediaDevices was computing whether it could access camera or microphone at creation time.
     Since the iframe allow attribute can be modified, we cannot do that.
@@ -2378,24 +2378,24 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Test: http/tests/webrtc/enumerateDevicesInFrames.html
     
     * Modules/mediastream/MediaDevices.cpp:
-    (WebCore::MediaDevices::MediaDevices):
-    (WebCore::MediaDevices::refreshDevices):
-    (WebCore::MediaDevices::enumerateDevices):
-    (WebCore::MediaDevices::listenForDeviceChanges):
+    (CyberCore::MediaDevices::MediaDevices):
+    (CyberCore::MediaDevices::refreshDevices):
+    (CyberCore::MediaDevices::enumerateDevices):
+    (CyberCore::MediaDevices::listenForDeviceChanges):
     * Modules/mediastream/MediaDevices.h:
     * Modules/mediastream/UserMediaController.cpp:
-    (WebCore::UserMediaController::logGetUserMediaDenial):
-    (WebCore::UserMediaController::logGetDisplayMediaDenial):
-    (WebCore::UserMediaController::logEnumerateDevicesDenial):
+    (CyberCore::UserMediaController::logGetUserMediaDenial):
+    (CyberCore::UserMediaController::logGetDisplayMediaDenial):
+    (CyberCore::UserMediaController::logEnumerateDevicesDenial):
     * Modules/mediastream/UserMediaController.h:
     * Modules/mediastream/UserMediaRequest.cpp:
-    (WebCore::UserMediaRequest::start):
+    (CyberCore::UserMediaRequest::start):
     * html/FeaturePolicy.cpp:
-    (WebCore::policyTypeName):
-    (WebCore::isFeaturePolicyAllowedByDocumentAndAllOwners):
+    (CyberCore::policyTypeName):
+    (CyberCore::isFeaturePolicyAllowedByDocumentAndAllOwners):
     * html/FeaturePolicy.h:
     * page/DOMWindow.cpp:
-    (WebCore::DOMWindow::printErrorMessage const):
+    (CyberCore::DOMWindow::printErrorMessage const):
     * page/DOMWindow.h:
     
     LayoutTests:
@@ -2481,7 +2481,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Patch by Jer Noble <jer.noble@apple.com> on 2020-01-27
     Reviewed by Youenn Fablet.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: http/tests/fullscreen/fullscreen-feature-policy.html
     
@@ -2497,22 +2497,22 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     the top document (and that all parent iframes are also allowed to enter fullscreen).
     
     * dom/FullscreenManager.cpp:
-    (WebCore::FullscreenManager::requestFullscreenForElement):
-    (WebCore::FullscreenManager::isFullscreenEnabled const):
-    (WebCore::isAttributeOnAllOwners): Deleted.
-    (WebCore::FullscreenManager::fullscreenIsAllowedForElement const): Deleted.
+    (CyberCore::FullscreenManager::requestFullscreenForElement):
+    (CyberCore::FullscreenManager::isFullscreenEnabled const):
+    (CyberCore::isAttributeOnAllOwners): Deleted.
+    (CyberCore::FullscreenManager::fullscreenIsAllowedForElement const): Deleted.
     * dom/FullscreenManager.h:
     * html/FeaturePolicy.cpp:
-    (WebCore::isFeaturePolicyAllowedByDocumentAndAllOwners):
-    (WebCore::FeaturePolicy::parse):
-    (WebCore::FeaturePolicy::allows const):
+    (CyberCore::isFeaturePolicyAllowedByDocumentAndAllOwners):
+    (CyberCore::FeaturePolicy::parse):
+    (CyberCore::FeaturePolicy::allows const):
     * html/FeaturePolicy.h:
     * html/HTMLIFrameElement.cpp:
-    (WebCore::HTMLIFrameElement::parseAttribute):
-    (WebCore::HTMLIFrameElement::featurePolicy const):
+    (CyberCore::HTMLIFrameElement::parseAttribute):
+    (CyberCore::HTMLIFrameElement::featurePolicy const):
     * xml/XMLHttpRequest.cpp:
-    (WebCore::XMLHttpRequest::createRequest):
-    (WebCore::isSyncXHRAllowedByFeaturePolicy): Deleted.
+    (CyberCore::XMLHttpRequest::createRequest):
+    (CyberCore::isSyncXHRAllowedByFeaturePolicy): Deleted.
     
     LayoutTests:
     
@@ -2576,7 +2576,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     https://bugs.webkit.org/show_bug.cgi?id=206934
     <rdar://problem/58991581>
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Reviewed by Brady Eidson.
     
@@ -2590,39 +2590,39 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
       check relies on IPC to the process and we cannot send the IPC until after the process has launched.
     
     * UIProcess/CoordinatedGraphics/DrawingAreaProxyCoordinatedGraphics.cpp:
-    (WebKit::DrawingAreaProxyCoordinatedGraphics::sendUpdateBackingStoreState):
+    (CyberKit::DrawingAreaProxyCoordinatedGraphics::sendUpdateBackingStoreState):
     * UIProcess/ProvisionalPageProxy.cpp:
-    (WebKit::ProvisionalPageProxy::goToBackForwardItem):
+    (CyberKit::ProvisionalPageProxy::goToBackForwardItem):
     * UIProcess/WebPageProxy.cpp:
-    (WebKit::WebPageProxy::launchProcessForReload):
-    (WebKit::WebPageProxy::launchProcessWithItem):
-    (WebKit::WebPageProxy::loadRequestWithNavigationShared):
-    (WebKit::WebPageProxy::loadFile):
-    (WebKit::WebPageProxy::loadDataWithNavigationShared):
-    (WebKit::WebPageProxy::loadAlternateHTML):
-    (WebKit::WebPageProxy::loadWebArchiveData):
-    (WebKit::WebPageProxy::navigateToPDFLinkWithSimulatedClick):
-    (WebKit::WebPageProxy::stopLoading):
-    (WebKit::WebPageProxy::reload):
-    (WebKit::WebPageProxy::goToBackForwardItem):
-    (WebKit::WebPageProxy::dispatchActivityStateChange):
-    (WebKit::WebPageProxy::processNextQueuedMouseEvent):
-    (WebKit::WebPageProxy::handleKeyboardEvent):
-    (WebKit::WebPageProxy::handleGestureEvent):
-    (WebKit::WebPageProxy::handlePreventableTouchEvent):
-    (WebKit::WebPageProxy::handleTouchEvent):
-    (WebKit::WebPageProxy::runJavaScriptAlert):
-    (WebKit::WebPageProxy::runJavaScriptConfirm):
-    (WebKit::WebPageProxy::runJavaScriptPrompt):
-    (WebKit::WebPageProxy::runBeforeUnloadConfirmPanel):
-    (WebKit::WebPageProxy::runOpenPanel):
+    (CyberKit::WebPageProxy::launchProcessForReload):
+    (CyberKit::WebPageProxy::launchProcessWithItem):
+    (CyberKit::WebPageProxy::loadRequestWithNavigationShared):
+    (CyberKit::WebPageProxy::loadFile):
+    (CyberKit::WebPageProxy::loadDataWithNavigationShared):
+    (CyberKit::WebPageProxy::loadAlternateHTML):
+    (CyberKit::WebPageProxy::loadWebArchiveData):
+    (CyberKit::WebPageProxy::navigateToPDFLinkWithSimulatedClick):
+    (CyberKit::WebPageProxy::stopLoading):
+    (CyberKit::WebPageProxy::reload):
+    (CyberKit::WebPageProxy::goToBackForwardItem):
+    (CyberKit::WebPageProxy::dispatchActivityStateChange):
+    (CyberKit::WebPageProxy::processNextQueuedMouseEvent):
+    (CyberKit::WebPageProxy::handleKeyboardEvent):
+    (CyberKit::WebPageProxy::handleGestureEvent):
+    (CyberKit::WebPageProxy::handlePreventableTouchEvent):
+    (CyberKit::WebPageProxy::handleTouchEvent):
+    (CyberKit::WebPageProxy::runJavaScriptAlert):
+    (CyberKit::WebPageProxy::runJavaScriptConfirm):
+    (CyberKit::WebPageProxy::runJavaScriptPrompt):
+    (CyberKit::WebPageProxy::runBeforeUnloadConfirmPanel):
+    (CyberKit::WebPageProxy::runOpenPanel):
     * UIProcess/WebProcessProxy.cpp:
-    (WebKit::WebProcessProxy::mayBecomeUnresponsive):
-    (WebKit::WebProcessProxy::didFinishLaunching):
-    (WebKit::WebProcessProxy::startResponsivenessTimer):
-    (WebKit::WebProcessProxy::isResponsive):
+    (CyberKit::WebProcessProxy::mayBecomeUnresponsive):
+    (CyberKit::WebProcessProxy::didFinishLaunching):
+    (CyberKit::WebProcessProxy::startResponsivenessTimer):
+    (CyberKit::WebProcessProxy::isResponsive):
     * UIProcess/WebProcessProxy.h:
-    (WebKit::WebProcessProxy::responsivenessTimer):
+    (CyberKit::WebProcessProxy::responsivenessTimer):
     
     LayoutTests:
     
@@ -2700,7 +2700,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Patch by Said Abou-Hallawa <sabouhallawa@apple.com> on 2020-01-27
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: fast/animation/request-animation-frame-throttling-outside-viewport.html
     
@@ -2716,113 +2716,113 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
        rAF of a certain document.
     
     * Headers.cmake:
-    * WebCore.xcodeproj/project.pbxproj:
+    * CyberCore.xcodeproj/project.pbxproj:
     
     * animation/DocumentTimeline.cpp:
-    (WebCore::DocumentTimeline::animationInterval const):
-    (WebCore::DocumentTimeline::updateThrottlingState): Deleted.
+    (CyberCore::DocumentTimeline::animationInterval const):
+    (CyberCore::DocumentTimeline::updateThrottlingState): Deleted.
     * animation/DocumentTimeline.h:
     There is no need to have DocumentTimeline throttling. It is already
     throttled when the page RenderingUpdate is throttled.
     
     * dom/Document.cpp:
-    (WebCore::Document::requestAnimationFrame):
-    (WebCore::Document::updateLastHandledUserGestureTimestamp):
+    (CyberCore::Document::requestAnimationFrame):
+    (CyberCore::Document::updateLastHandledUserGestureTimestamp):
     LowPowerMode throttling is now handled by the page. So remove its handling
     in the Document side.
     
     * dom/ScriptedAnimationController.cpp:
-    (WebCore::ScriptedAnimationController::ScriptedAnimationController):
-    (WebCore::ScriptedAnimationController::page const):
-    (WebCore::ScriptedAnimationController::preferredScriptedAnimationInterval const):
-    (WebCore::ScriptedAnimationController::interval const):
-    (WebCore::ScriptedAnimationController::isThrottled const):
-    (WebCore::ScriptedAnimationController::isThrottledRelativeToPage const):
-    (WebCore::ScriptedAnimationController::shouldRescheduleRequestAnimationFrame const):
-    (WebCore::ScriptedAnimationController::registerCallback):
-    (WebCore::ScriptedAnimationController::cancelCallback):
-    (WebCore::ScriptedAnimationController::serviceRequestAnimationFrameCallbacks):
-    (WebCore::ScriptedAnimationController::scheduleAnimation):
-    (WebCore::throttlingReasonToString): Deleted.
-    (WebCore::throttlingReasonsToString): Deleted.
-    (WebCore::ScriptedAnimationController::addThrottlingReason): Deleted.
-    (WebCore::ScriptedAnimationController::removeThrottlingReason): Deleted.
-    (WebCore::ScriptedAnimationController::animationTimerFired): Deleted.
+    (CyberCore::ScriptedAnimationController::ScriptedAnimationController):
+    (CyberCore::ScriptedAnimationController::page const):
+    (CyberCore::ScriptedAnimationController::preferredScriptedAnimationInterval const):
+    (CyberCore::ScriptedAnimationController::interval const):
+    (CyberCore::ScriptedAnimationController::isThrottled const):
+    (CyberCore::ScriptedAnimationController::isThrottledRelativeToPage const):
+    (CyberCore::ScriptedAnimationController::shouldRescheduleRequestAnimationFrame const):
+    (CyberCore::ScriptedAnimationController::registerCallback):
+    (CyberCore::ScriptedAnimationController::cancelCallback):
+    (CyberCore::ScriptedAnimationController::serviceRequestAnimationFrameCallbacks):
+    (CyberCore::ScriptedAnimationController::scheduleAnimation):
+    (CyberCore::throttlingReasonToString): Deleted.
+    (CyberCore::throttlingReasonsToString): Deleted.
+    (CyberCore::ScriptedAnimationController::addThrottlingReason): Deleted.
+    (CyberCore::ScriptedAnimationController::removeThrottlingReason): Deleted.
+    (CyberCore::ScriptedAnimationController::animationTimerFired): Deleted.
     * dom/ScriptedAnimationController.h:
-    (WebCore::ScriptedAnimationController::addThrottlingReason):
-    (WebCore::ScriptedAnimationController::removeThrottlingReason):
+    (CyberCore::ScriptedAnimationController::addThrottlingReason):
+    (CyberCore::ScriptedAnimationController::removeThrottlingReason):
     Get rid of the rAF throttling timer. Service the rAF callback only when
     the period from the current time stamp till the last service time stamp
     is greater than the preferred rAF interval .
     
     * page/FrameView.cpp:
-    (WebCore::FrameView::updateScriptedAnimationsAndTimersThrottlingState):
+    (CyberCore::FrameView::updateScriptedAnimationsAndTimersThrottlingState):
     ThrottlingReason is now defined outside ScriptedAnimationController.
     
     * page/Page.cpp:
-    (WebCore::Page::renderingUpdateThrottlingEnabled const):
-    (WebCore::Page::renderingUpdateThrottlingEnabledChanged):
-    (WebCore::Page::isRenderingUpdateThrottled const):
+    (CyberCore::Page::renderingUpdateThrottlingEnabled const):
+    (CyberCore::Page::renderingUpdateThrottlingEnabledChanged):
+    (CyberCore::Page::isRenderingUpdateThrottled const):
     
-    (WebCore::Page::preferredRenderingUpdateInterval const):
+    (CyberCore::Page::preferredRenderingUpdateInterval const):
     Calculate the preferred RenderingUpdate interval from the throttling
     reasons.
     
-    (WebCore::Page::setIsVisuallyIdleInternal):
-    (WebCore::Page::handleLowModePowerChange):
+    (CyberCore::Page::setIsVisuallyIdleInternal):
+    (CyberCore::Page::handleLowModePowerChange):
     Call adjustRenderingUpdateFrequency() when isLowPowerModeEnabled or
     IsVisuallyIdle is toggled.
     
-    (WebCore::updateScriptedAnimationsThrottlingReason): Deleted.
+    (CyberCore::updateScriptedAnimationsThrottlingReason): Deleted.
     * page/Page.h:
     
     * page/RenderingUpdateScheduler.cpp:
-    (WebCore::RenderingUpdateScheduler::adjustFramesPerSecond):
-    (WebCore::RenderingUpdateScheduler::adjustRenderingUpdateFrequency):
+    (CyberCore::RenderingUpdateScheduler::adjustFramesPerSecond):
+    (CyberCore::RenderingUpdateScheduler::adjustRenderingUpdateFrequency):
     Change the preferredFramesPerSecond of the DisplayRefreshMonitor if the
     throttling is not aggressive e.g. 10_s. Otherwise use the timer.
     
-    (WebCore::RenderingUpdateScheduler::scheduleTimedRenderingUpdate):
+    (CyberCore::RenderingUpdateScheduler::scheduleTimedRenderingUpdate):
     Call adjustFramesPerSecond() when DisplayRefreshMonitor is created.
     
-    (WebCore::RenderingUpdateScheduler::startTimer):
+    (CyberCore::RenderingUpdateScheduler::startTimer):
     * page/RenderingUpdateScheduler.h:
     
     * page/Settings.yaml:
     * page/SettingsBase.cpp:
-    (WebCore::SettingsBase::renderingUpdateThrottlingEnabledChanged):
+    (CyberCore::SettingsBase::renderingUpdateThrottlingEnabledChanged):
     * page/SettingsBase.h:
     Add a setting to enable/disable RenderingUpdateThrottling.
     
     * platform/graphics/AnimationFrameRate.h: Added.
-    (WebCore::preferredFrameInterval):
-    (WebCore::preferredFramesPerSecond):
+    (CyberCore::preferredFrameInterval):
+    (CyberCore::preferredFramesPerSecond):
     
     * platform/graphics/DisplayRefreshMonitor.h:
-    (WebCore::DisplayRefreshMonitor::setPreferredFramesPerSecond):
+    (CyberCore::DisplayRefreshMonitor::setPreferredFramesPerSecond):
     * platform/graphics/DisplayRefreshMonitorManager.cpp:
-    (WebCore::DisplayRefreshMonitorManager::monitorForClient):
+    (CyberCore::DisplayRefreshMonitorManager::monitorForClient):
     Rename createMonitorForClient() to monitorForClient() since it may return
     a cached DisplayRefreshMonitor.
     
-    (WebCore::DisplayRefreshMonitorManager::setPreferredFramesPerSecond):
-    (WebCore::DisplayRefreshMonitorManager::scheduleAnimation):
-    (WebCore::DisplayRefreshMonitorManager::windowScreenDidChange):
+    (CyberCore::DisplayRefreshMonitorManager::setPreferredFramesPerSecond):
+    (CyberCore::DisplayRefreshMonitorManager::scheduleAnimation):
+    (CyberCore::DisplayRefreshMonitorManager::windowScreenDidChange):
     No need to call registerClient(). This function was just ensuring the
     DisplayRefreshMonitor is created. scheduleAnimation() does the same thing.
     
-    (WebCore::DisplayRefreshMonitorManager::createMonitorForClient): Deleted.
-    (WebCore::DisplayRefreshMonitorManager::registerClient): Deleted.
+    (CyberCore::DisplayRefreshMonitorManager::createMonitorForClient): Deleted.
+    (CyberCore::DisplayRefreshMonitorManager::registerClient): Deleted.
     * platform/graphics/DisplayRefreshMonitorManager.h:
-    (WebCore::DisplayRefreshMonitorManager::DisplayRefreshMonitorManager): Deleted.
+    (CyberCore::DisplayRefreshMonitorManager::DisplayRefreshMonitorManager): Deleted.
     
     * platform/graphics/GraphicsLayerUpdater.cpp:
-    (WebCore::GraphicsLayerUpdater::GraphicsLayerUpdater):
+    (CyberCore::GraphicsLayerUpdater::GraphicsLayerUpdater):
     * platform/graphics/ios/DisplayRefreshMonitorIOS.mm:
     (-[WebDisplayLinkHandler setPreferredFramesPerSecond:]):
     Set the preferredFramesPerSecond of the CADisplayLink.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Create an IPC message on the DrawingArea to send a message from the
     WebProcess to the UIProcess to setPreferredFramesPerSecond of the
@@ -2840,20 +2840,20 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     * UIProcess/RemoteLayerTree/RemoteLayerTreeDrawingAreaProxy.mm:
     (-[WKOneShotDisplayLinkHandler setPreferredFramesPerSecond:]):
-    (WebKit::RemoteLayerTreeDrawingAreaProxy::setPreferredFramesPerSecond):
+    (CyberKit::RemoteLayerTreeDrawingAreaProxy::setPreferredFramesPerSecond):
     Set the preferredFramesPerSecond of the CADisplayLink.
     
     * WebProcess/WebPage/RemoteLayerTree/RemoteLayerTreeDisplayRefreshMonitor.h:
     * WebProcess/WebPage/RemoteLayerTree/RemoteLayerTreeDisplayRefreshMonitor.mm:
-    (WebKit::RemoteLayerTreeDisplayRefreshMonitor::setPreferredFramesPerSecond):
+    (CyberKit::RemoteLayerTreeDisplayRefreshMonitor::setPreferredFramesPerSecond):
     Delegate the call to RemoteLayerTreeDrawingArea.
     
     * WebProcess/WebPage/RemoteLayerTree/RemoteLayerTreeDrawingArea.h:
     * WebProcess/WebPage/RemoteLayerTree/RemoteLayerTreeDrawingArea.mm:
-    (WebKit::RemoteLayerTreeDrawingArea::setPreferredFramesPerSecond):
+    (CyberKit::RemoteLayerTreeDrawingArea::setPreferredFramesPerSecond):
     Send the IPC message from the WebProcess to the UIProcess.
     
-    Source/WebKitLegacy/mac:
+    Source/CyberKitLegacy/mac:
     
     Add a WKPreference key for RenderingUpdateThrottling.
     
@@ -2866,7 +2866,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     * WebView/WebView.mm:
     (-[WebView _preferencesChanged:]):
     
-    Source/WebKitLegacy/win:
+    Source/CyberKitLegacy/win:
     
     Add a WKPreference key for RenderingUpdateThrottling.
     
@@ -2890,7 +2890,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     (resetWebPreferencesToConsistentValues):
     * DumpRenderTree/win/DumpRenderTree.cpp:
     (resetWebPreferencesToConsistentValues):
-    * WebKitTestRunner/TestController.cpp:
+    * CyberKitTestRunner/TestController.cpp:
     (WTR::TestController::resetPreferencesToConsistentValues):
     
     LayoutTests:
@@ -2947,7 +2947,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     rdar://problem/59020443
     
     Reviewed by Zalan Bujtas.
-    Source/WebCore:
+    Source/CyberCore:
     
     There were three issues that contributed to massive backing store allocation on
     <https://www.sony.com/electronics/lenses/t/camera-lenses>.
@@ -2968,8 +2968,8 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Test: compositing/backing/transition-extent.html
     
     * rendering/RenderLayerBacking.cpp:
-    (WebCore::RenderLayerBacking::startAnimation):
-    (WebCore::RenderLayerBacking::animationFinished):
+    (CyberCore::RenderLayerBacking::startAnimation):
+    (CyberCore::RenderLayerBacking::animationFinished):
     
     LayoutTests:
     
@@ -2991,7 +2991,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
         Reviewed by Simon Fraser.
 
-        Source/WebCore:
+        Source/CyberCore:
 
         Animations should be removed from GraphicsLayersCAs in the same rendering update that changes the playState of the
         animation to "finished", to avoid layer flush where a GraphicsLayersCAs has no extent set, but thinks there is
@@ -3005,14 +3005,14 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
         * animation/AnimationEffect.h:
         * animation/KeyframeEffect.cpp:
-        (WebCore::KeyframeEffect::apply):
-        (WebCore::KeyframeEffect::updateAcceleratedActions):
-        (WebCore::KeyframeEffect::animationDidTick):
-        (WebCore::KeyframeEffect::animationDidPlay):
+        (CyberCore::KeyframeEffect::apply):
+        (CyberCore::KeyframeEffect::updateAcceleratedActions):
+        (CyberCore::KeyframeEffect::animationDidTick):
+        (CyberCore::KeyframeEffect::animationDidPlay):
         * animation/KeyframeEffect.h:
         * animation/WebAnimation.cpp:
-        (WebCore::WebAnimation::play):
-        (WebCore::WebAnimation::tick):
+        (CyberCore::WebAnimation::play):
+        (CyberCore::WebAnimation::tick):
 
         LayoutTests:
 
@@ -3045,7 +3045,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     https://bugs.webkit.org/show_bug.cgi?id=207434
     
     Reviewed by Sam Weinig.
-    Source/WebCore:
+    Source/CyberCore:
     
     To determine whether to create ("attach") backing store for layers with transform animations,
     we compute the union of all the states of the animation as an "extent", and ask whether it intersects
@@ -3064,9 +3064,9 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
            legacy-animation-engine/compositing/backing/backing-store-attachment-animating-outside-viewport.html
     
     * animation/KeyframeEffect.cpp:
-    (WebCore::KeyframeEffect::computeExtentOfTransformAnimation const):
+    (CyberCore::KeyframeEffect::computeExtentOfTransformAnimation const):
     * page/animation/KeyframeAnimation.cpp:
-    (WebCore::KeyframeAnimation::computeExtentOfTransformAnimation const):
+    (CyberCore::KeyframeAnimation::computeExtentOfTransformAnimation const):
     
 2020-02-10  Simon Fraser  <simon.fraser@apple.com>
 
@@ -3136,7 +3136,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Alex Christensen.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     We should not register MDNS candidates for suspended documents.
     For that reason, enqueue a task when receiving a new candidate.
@@ -3148,13 +3148,13 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Test: webrtc/peerconnection-new-candidate-page-cache.html
     
     * Modules/mediastream/PeerConnectionBackend.cpp:
-    (WebCore::PeerConnectionBackend::newICECandidate):
+    (CyberCore::PeerConnectionBackend::newICECandidate):
     * testing/MockLibWebRTCPeerConnection.cpp:
-    (WebCore::MockLibWebRTCPeerConnection::GetTransceivers const):
-    (WebCore::MockLibWebRTCPeerConnectionForIceCandidates::MockLibWebRTCPeerConnectionForIceCandidates):
-    (WebCore::MockLibWebRTCPeerConnectionForIceCandidates::gotLocalDescription):
-    (WebCore::MockLibWebRTCPeerConnectionForIceCandidates::sendCandidates):
-    (WebCore::MockLibWebRTCPeerConnectionFactory::CreatePeerConnection):
+    (CyberCore::MockLibWebRTCPeerConnection::GetTransceivers const):
+    (CyberCore::MockLibWebRTCPeerConnectionForIceCandidates::MockLibWebRTCPeerConnectionForIceCandidates):
+    (CyberCore::MockLibWebRTCPeerConnectionForIceCandidates::gotLocalDescription):
+    (CyberCore::MockLibWebRTCPeerConnectionForIceCandidates::sendCandidates):
+    (CyberCore::MockLibWebRTCPeerConnectionFactory::CreatePeerConnection):
     
     LayoutTests:
     
@@ -3223,7 +3223,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Antti Koivisto.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: webanimations/accelerated-animation-canceled-before-commit.html
     
@@ -3232,10 +3232,10 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     in other situations where the playback state changes for a potentially in-flight animation.
     
     * animation/KeyframeEffect.cpp:
-    (WebCore::KeyframeEffect::animationDidSeek):
-    (WebCore::KeyframeEffect::animationWasCanceled):
-    (WebCore::KeyframeEffect::willChangeRenderer):
-    (WebCore::KeyframeEffect::animationSuspensionStateDidChange):
+    (CyberCore::KeyframeEffect::animationDidSeek):
+    (CyberCore::KeyframeEffect::animationWasCanceled):
+    (CyberCore::KeyframeEffect::willChangeRenderer):
+    (CyberCore::KeyframeEffect::animationSuspensionStateDidChange):
     
     LayoutTests:
     
@@ -3273,7 +3273,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Tim Horton.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Following r251320, all synthetic mouse events on iOS additionally dispatched corresponding pointer events. This
     led to duplicate "pointerdown"/"pointerup" events dispatched with every tap. r253878 fixed this by avoiding
@@ -3292,7 +3292,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Test: pointerevents/ios/pointer-events-for-double-tap.html
     
     * WebProcess/WebPage/ios/WebPageIOS.mm:
-    (WebKit::WebPage::handleDoubleTapForDoubleClickAtPoint):
+    (CyberKit::WebPage::handleDoubleTapForDoubleClickAtPoint):
     
     LayoutTests:
     
@@ -3337,12 +3337,12 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Chris Dumez.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Covered by updated test.
     
     * Modules/notifications/Notification.cpp:
-    (WebCore::Notification::requestPermission):
+    (CyberCore::Notification::requestPermission):
     Callback can be null if no function is given to requestPermission.
     Check this before calling the callback.
     
@@ -3373,7 +3373,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Antoine Quint.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     If there is an accelerated animation in progress for a renderer and the render tree is rebuild the animation
     does not continue with the new renderer.
@@ -3386,16 +3386,16 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Test: webanimations/accelerated-animation-renderer-change.html
     
     * animation/AnimationTimeline.cpp:
-    (WebCore::AnimationTimeline::willChangeRendererForElement):
+    (CyberCore::AnimationTimeline::willChangeRendererForElement):
     * animation/AnimationTimeline.h:
     * animation/KeyframeEffect.cpp:
-    (WebCore::KeyframeEffect::willChangeRenderer):
+    (CyberCore::KeyframeEffect::willChangeRenderer):
     * animation/KeyframeEffect.h:
     * animation/WebAnimation.cpp:
-    (WebCore::WebAnimation::willChangeRenderer):
+    (CyberCore::WebAnimation::willChangeRenderer):
     * animation/WebAnimation.h:
     * rendering/updating/RenderTreeUpdater.cpp:
-    (WebCore::RenderTreeUpdater::tearDownRenderers):
+    (CyberCore::RenderTreeUpdater::tearDownRenderers):
     
     LayoutTests:
     
@@ -3426,7 +3426,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Tim Horton.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     This bug occurs on iPadOS when long pressing the volume controls on the desktop version of YouTube, and then
     performing a pan gesture; this activates the highlight text selection gesture recognizer added in iOS 13,
@@ -3447,8 +3447,8 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     * Shared/ios/InteractionInformationAtPosition.h:
     * Shared/ios/InteractionInformationAtPosition.mm:
-    (WebKit::InteractionInformationAtPosition::encode const):
-    (WebKit::InteractionInformationAtPosition::decode):
+    (CyberKit::InteractionInformationAtPosition::encode const):
+    (CyberKit::InteractionInformationAtPosition::decode):
     
     Add the new bit to InteractionInformationAtPosition.
     
@@ -3458,7 +3458,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Avoid beginning text selection if the bit is set.
     
     * WebProcess/WebPage/ios/WebPageIOS.mm:
-    (WebKit::selectionPositionInformation):
+    (CyberKit::selectionPositionInformation):
     
     Move a comment about the ">= 97% of the document's visible area" heuristic next to the relevant code, and also
     leave a FIXME mentioning that we should reconsider whether this is really needed; it seems that this was
@@ -3500,7 +3500,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Dean Jackson.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Tests: webanimations/transform-accelerated-animation-finishes-before-removal.html
            webanimations/transform-accelerated-animation-removed-one-frame-after-finished-promise.html
@@ -3509,10 +3509,10 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     The accelerated animations will be queued for removal in the next animation frame.
     
     * animation/KeyframeEffect.cpp:
-    (WebCore::KeyframeEffect::isRunningAcceleratedAnimationForProperty const):
+    (CyberCore::KeyframeEffect::isRunningAcceleratedAnimationForProperty const):
     * animation/KeyframeEffect.h:
     * animation/KeyframeEffectStack.cpp:
-    (WebCore::KeyframeEffectStack::isCurrentlyAffectingProperty const):
+    (CyberCore::KeyframeEffectStack::isCurrentlyAffectingProperty const):
     
     LayoutTests:
     
@@ -3561,13 +3561,13 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Patch by Antoine Quint <graouts@apple.com> on 2020-02-02
     Reviewed by Dean Jackson.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     We cannot add CSSPropertyInvalid to a HashSet<CSSPropertyID>, because it triggers an ASSERT, and also we shouldn't
     because we wouldn't know how to animate that CSS property.
     
     * animation/AnimationTimeline.cpp:
-    (WebCore::compileTransitionPropertiesInStyle):
+    (CyberCore::compileTransitionPropertiesInStyle):
     
     LayoutTests:
     
@@ -3623,40 +3623,40 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Darin Adler.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Add test infrastructure for testing this change.
     
     Test: http/tests/storage/storage-map-leaking.html
     
     * storage/StorageNamespace.h:
-    (WebCore::StorageNamespace::storageAreaMapCountForTesting const):
+    (CyberCore::StorageNamespace::storageAreaMapCountForTesting const):
     * storage/StorageNamespaceProvider.h:
     * testing/Internals.cpp:
-    (WebCore::Internals::storageAreaMapCount const):
+    (CyberCore::Internals::storageAreaMapCount const):
     * testing/Internals.h:
     * testing/Internals.idl:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Make sure that StorageAreaMap objects are getting removed from the HashMap
     in StorageNamespaceImpl, once they no longer have any users.
     
     * WebProcess/WebStorage/StorageAreaImpl.cpp:
-    (WebKit::StorageAreaImpl::StorageAreaImpl):
-    (WebKit::StorageAreaImpl::~StorageAreaImpl):
+    (CyberKit::StorageAreaImpl::StorageAreaImpl):
+    (CyberKit::StorageAreaImpl::~StorageAreaImpl):
     * WebProcess/WebStorage/StorageAreaMap.cpp:
-    (WebKit::StorageAreaMap::incrementUseCount):
-    (WebKit::StorageAreaMap::decrementUseCount):
+    (CyberKit::StorageAreaMap::incrementUseCount):
+    (CyberKit::StorageAreaMap::decrementUseCount):
     * WebProcess/WebStorage/StorageAreaMap.h:
     * WebProcess/WebStorage/StorageNamespaceImpl.cpp:
-    (WebKit::StorageNamespaceImpl::destroyStorageAreaMap):
-    (WebKit::StorageNamespaceImpl::didDestroyStorageAreaMap): Deleted.
+    (CyberKit::StorageNamespaceImpl::destroyStorageAreaMap):
+    (CyberKit::StorageNamespaceImpl::didDestroyStorageAreaMap): Deleted.
     * WebProcess/WebStorage/StorageNamespaceImpl.h:
-    (WebKit::StorageNamespaceImpl::storageType const): Deleted.
-    (WebKit::StorageNamespaceImpl::storageNamespaceID const): Deleted.
-    (WebKit::StorageNamespaceImpl::topLevelOrigin const): Deleted.
-    (WebKit::StorageNamespaceImpl::quotaInBytes const): Deleted.
+    (CyberKit::StorageNamespaceImpl::storageType const): Deleted.
+    (CyberKit::StorageNamespaceImpl::storageNamespaceID const): Deleted.
+    (CyberKit::StorageNamespaceImpl::topLevelOrigin const): Deleted.
+    (CyberKit::StorageNamespaceImpl::quotaInBytes const): Deleted.
     
     LayoutTests:
     
@@ -3696,13 +3696,13 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Brian Burg.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     * inspector/protocol/Animation.json:
     Add types/commands/events for instrumenting the lifecycle of `Animation` objects, as well as
     commands for getting the JavaScript wrapper object and the target DOM node.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Add types/commands/events for instrumenting the lifecycle of `Animation` objects, as well as
     commands for getting the JavaScript wrapper object and the target DOM node.
@@ -3717,83 +3717,83 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     * animation/WebAnimation.h:
     * animation/WebAnimation.cpp:
-    (WebCore::WebAnimation::instances): Added.
-    (WebCore::WebAnimation::instancesMutex): Added.
-    (WebCore::WebAnimation::create):
-    (WebCore::WebAnimation::WebAnimation):
-    (WebCore::WebAnimation::~WebAnimation):
-    (WebCore::WebAnimation::effectTimingDidChange):
-    (WebCore::WebAnimation::setEffectInternal):
-    (WebCore::WebAnimation::effectTargetDidChange):
+    (CyberCore::WebAnimation::instances): Added.
+    (CyberCore::WebAnimation::instancesMutex): Added.
+    (CyberCore::WebAnimation::create):
+    (CyberCore::WebAnimation::WebAnimation):
+    (CyberCore::WebAnimation::~WebAnimation):
+    (CyberCore::WebAnimation::effectTimingDidChange):
+    (CyberCore::WebAnimation::setEffectInternal):
+    (CyberCore::WebAnimation::effectTargetDidChange):
     * animation/CSSAnimation.cpp:
-    (WebCore::CSSAnimation::create):
+    (CyberCore::CSSAnimation::create):
     * animation/CSSTransition.cpp:
-    (WebCore::CSSTransition::create):
+    (CyberCore::CSSTransition::create):
     
     * animation/KeyframeEffect.h:
-    (WebCore::KeyframeEffect::parsedKeyframes const): Added.
-    (WebCore::KeyframeEffect::blendingKeyframes const): Added.
-    (WebCore::KeyframeEffect::hasBlendingKeyframes const): Deleted.
+    (CyberCore::KeyframeEffect::parsedKeyframes const): Added.
+    (CyberCore::KeyframeEffect::blendingKeyframes const): Added.
+    (CyberCore::KeyframeEffect::hasBlendingKeyframes const): Deleted.
     Provide a way to access the list of keyframes.
     
     * inspector/InspectorInstrumentation.h:
-    (WebCore::InspectorInstrumentation::didSetWebAnimationEffect): Added.
-    (WebCore::InspectorInstrumentation::didChangeWebAnimationEffectTiming): Added.
-    (WebCore::InspectorInstrumentation::didChangeWebAnimationEffectTarget): Added.
-    (WebCore::InspectorInstrumentation::didCreateWebAnimation): Added.
-    (WebCore::InspectorInstrumentation::didChangeWebAnimationEffect): Deleted.
+    (CyberCore::InspectorInstrumentation::didSetWebAnimationEffect): Added.
+    (CyberCore::InspectorInstrumentation::didChangeWebAnimationEffectTiming): Added.
+    (CyberCore::InspectorInstrumentation::didChangeWebAnimationEffectTarget): Added.
+    (CyberCore::InspectorInstrumentation::didCreateWebAnimation): Added.
+    (CyberCore::InspectorInstrumentation::didChangeWebAnimationEffect): Deleted.
     * inspector/InspectorInstrumentation.cpp:
-    (WebCore::InspectorInstrumentation::didCommitLoadImpl):
-    (WebCore::InspectorInstrumentation::didSetWebAnimationEffectImpl): Added.
-    (WebCore::InspectorInstrumentation::didChangeWebAnimationEffectTimingImpl): Added.
-    (WebCore::InspectorInstrumentation::didChangeWebAnimationEffectTargetImpl): Added.
-    (WebCore::InspectorInstrumentation::didCreateWebAnimationImpl): Added.
-    (WebCore::InspectorInstrumentation::willDestroyWebAnimationImpl):
-    (WebCore::InspectorInstrumentation::didChangeWebAnimationEffectImpl): Deleted.
+    (CyberCore::InspectorInstrumentation::didCommitLoadImpl):
+    (CyberCore::InspectorInstrumentation::didSetWebAnimationEffectImpl): Added.
+    (CyberCore::InspectorInstrumentation::didChangeWebAnimationEffectTimingImpl): Added.
+    (CyberCore::InspectorInstrumentation::didChangeWebAnimationEffectTargetImpl): Added.
+    (CyberCore::InspectorInstrumentation::didCreateWebAnimationImpl): Added.
+    (CyberCore::InspectorInstrumentation::willDestroyWebAnimationImpl):
+    (CyberCore::InspectorInstrumentation::didChangeWebAnimationEffectImpl): Deleted.
     
     * inspector/InstrumentingAgents.h:
-    (WebCore::InstrumentingAgents::enabledInspectorAnimationAgent const): Added.
-    (WebCore::InstrumentingAgents::setEnabledInspectorAnimationAgent): Added.
+    (CyberCore::InstrumentingAgents::enabledInspectorAnimationAgent const): Added.
+    (CyberCore::InstrumentingAgents::setEnabledInspectorAnimationAgent): Added.
     * inspector/InstrumentingAgents.cpp:
-    (WebCore::InstrumentingAgents::reset):
+    (CyberCore::InstrumentingAgents::reset):
     
     * inspector/agents/InspectorAnimationAgent.h:
     * inspector/agents/InspectorAnimationAgent.cpp:
-    (WebCore::protocolValueForSeconds): Added.
-    (WebCore::protocolValueForPlaybackDirection): Added.
-    (WebCore::protocolValueForFillMode): Added.
-    (WebCore::buildObjectForKeyframes): Added.
-    (WebCore::buildObjectForEffect): Added.
-    (WebCore::InspectorAnimationAgent::InspectorAnimationAgent):
-    (WebCore::InspectorAnimationAgent::willDestroyFrontendAndBackend):
-    (WebCore::InspectorAnimationAgent::enable): Added.
-    (WebCore::InspectorAnimationAgent::disable): Added.
-    (WebCore::InspectorAnimationAgent::requestEffectTarget): Added.
-    (WebCore::InspectorAnimationAgent::resolveAnimation): Added.
-    (WebCore::InspectorAnimationAgent::didSetWebAnimationEffect): Added.
-    (WebCore::InspectorAnimationAgent::didChangeWebAnimationEffectTiming): Added.
-    (WebCore::InspectorAnimationAgent::didChangeWebAnimationEffectTarget): Added.
-    (WebCore::InspectorAnimationAgent::didCreateWebAnimation): Added.
-    (WebCore::InspectorAnimationAgent::willDestroyWebAnimation):
-    (WebCore::InspectorAnimationAgent::frameNavigated):
-    (WebCore::InspectorAnimationAgent::findAnimationId): Added.
-    (WebCore::InspectorAnimationAgent::assertAnimation): Added.
-    (WebCore::InspectorAnimationAgent::bindAnimation): Added.
-    (WebCore::InspectorAnimationAgent::unbindAnimation): Added.
-    (WebCore::InspectorAnimationAgent::animationDestroyedTimerFired): Added.
-    (WebCore::InspectorAnimationAgent::reset): Added.
-    (WebCore::InspectorAnimationAgent::didChangeWebAnimationEffect): Deleted.
+    (CyberCore::protocolValueForSeconds): Added.
+    (CyberCore::protocolValueForPlaybackDirection): Added.
+    (CyberCore::protocolValueForFillMode): Added.
+    (CyberCore::buildObjectForKeyframes): Added.
+    (CyberCore::buildObjectForEffect): Added.
+    (CyberCore::InspectorAnimationAgent::InspectorAnimationAgent):
+    (CyberCore::InspectorAnimationAgent::willDestroyFrontendAndBackend):
+    (CyberCore::InspectorAnimationAgent::enable): Added.
+    (CyberCore::InspectorAnimationAgent::disable): Added.
+    (CyberCore::InspectorAnimationAgent::requestEffectTarget): Added.
+    (CyberCore::InspectorAnimationAgent::resolveAnimation): Added.
+    (CyberCore::InspectorAnimationAgent::didSetWebAnimationEffect): Added.
+    (CyberCore::InspectorAnimationAgent::didChangeWebAnimationEffectTiming): Added.
+    (CyberCore::InspectorAnimationAgent::didChangeWebAnimationEffectTarget): Added.
+    (CyberCore::InspectorAnimationAgent::didCreateWebAnimation): Added.
+    (CyberCore::InspectorAnimationAgent::willDestroyWebAnimation):
+    (CyberCore::InspectorAnimationAgent::frameNavigated):
+    (CyberCore::InspectorAnimationAgent::findAnimationId): Added.
+    (CyberCore::InspectorAnimationAgent::assertAnimation): Added.
+    (CyberCore::InspectorAnimationAgent::bindAnimation): Added.
+    (CyberCore::InspectorAnimationAgent::unbindAnimation): Added.
+    (CyberCore::InspectorAnimationAgent::animationDestroyedTimerFired): Added.
+    (CyberCore::InspectorAnimationAgent::reset): Added.
+    (CyberCore::InspectorAnimationAgent::didChangeWebAnimationEffect): Deleted.
     
     * inspector/agents/InspectorDOMAgent.h:
     * inspector/agents/InspectorDOMAgent.cpp:
-    (WebCore::InspectorDOMAgent::pushNodeToFrontend):
-    (WebCore::InspectorDOMAgent::querySelector):
-    (WebCore::InspectorDOMAgent::pushNodePathToFrontend):
-    (WebCore::InspectorDOMAgent::setNodeName):
-    (WebCore::InspectorDOMAgent::setOuterHTML):
-    (WebCore::InspectorDOMAgent::moveTo):
-    (WebCore::InspectorDOMAgent::requestNode):
-    (WebCore::InspectorDOMAgent::pushNodeByPathToFrontend):
+    (CyberCore::InspectorDOMAgent::pushNodeToFrontend):
+    (CyberCore::InspectorDOMAgent::querySelector):
+    (CyberCore::InspectorDOMAgent::pushNodePathToFrontend):
+    (CyberCore::InspectorDOMAgent::setNodeName):
+    (CyberCore::InspectorDOMAgent::setOuterHTML):
+    (CyberCore::InspectorDOMAgent::moveTo):
+    (CyberCore::InspectorDOMAgent::requestNode):
+    (CyberCore::InspectorDOMAgent::pushNodeByPathToFrontend):
     Add an overload for `pushNodePathToFrontend` that exposes an `ErrorString`.
     
     Source/WebInspectorUI:
@@ -4257,7 +4257,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Antti Koivisto.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: webanimations/seeking-by-changing-delay-accelerated.html
     
@@ -4274,15 +4274,15 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     properties (CSSAnimation::syncPropertiesWithBackingAnimation).
     
     * animation/AnimationEffect.cpp:
-    (WebCore::AnimationEffect::updateTiming): Compute the previous timing data and provide it to WebAnimation::effectTimingDidChange().
+    (CyberCore::AnimationEffect::updateTiming): Compute the previous timing data and provide it to WebAnimation::effectTimingDidChange().
     * animation/CSSAnimation.cpp:
-    (WebCore::CSSAnimation::syncPropertiesWithBackingAnimation): Compute the previous timing data and provide it to WebAnimation::effectTimingDidChange().
+    (CyberCore::CSSAnimation::syncPropertiesWithBackingAnimation): Compute the previous timing data and provide it to WebAnimation::effectTimingDidChange().
     * animation/KeyframeEffect.cpp:
-    (WebCore::KeyframeEffect::computeAcceleratedPropertiesState): Drive-by fix for faulty logic introduced in a recent patch (r255383).
-    (WebCore::KeyframeEffect::applyPendingAcceleratedActions): We need to reset the m_isRunningAccelerated flag when an animation was supposed to be stopped but
+    (CyberCore::KeyframeEffect::computeAcceleratedPropertiesState): Drive-by fix for faulty logic introduced in a recent patch (r255383).
+    (CyberCore::KeyframeEffect::applyPendingAcceleratedActions): We need to reset the m_isRunningAccelerated flag when an animation was supposed to be stopped but
     couldn't be because the target's layer backing was removed prior to the accelerated action being committed.
     * animation/WebAnimation.cpp:
-    (WebCore::WebAnimation::effectTimingDidChange): If previous timing data was provided, check whether its progress differs from the current timing data and
+    (CyberCore::WebAnimation::effectTimingDidChange): If previous timing data was provided, check whether its progress differs from the current timing data and
     call KeyframeEffect::animationDidSeek().
     * animation/WebAnimation.h:
     
@@ -4334,7 +4334,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     to interrupt any pending UIScrollView animation when a tap is being triggered on the web view. Credit to Wenson Hsieh
     for suggesting this simple and effective approach.
     
-    * WebKitTestRunner/ios/UIScriptControllerIOS.mm:
+    * CyberKitTestRunner/ios/UIScriptControllerIOS.mm:
     (WTR::UIScriptControllerIOS::singleTapAtPointWithModifiers):
     
     LayoutTests:
@@ -4367,7 +4367,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Maciej Stachowiak.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     I found that extending the lifetime of the SQLTransaction by capturing protectedThis in the event loop
     task was the source of the flaky timeouts & crashes. Queueing this event loop task in
@@ -4378,7 +4378,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     No new tests, unskipped existing test.
     
     * Modules/webdatabase/SQLTransaction.cpp:
-    (WebCore::SQLTransaction::notifyDatabaseThreadIsShuttingDown):
+    (CyberCore::SQLTransaction::notifyDatabaseThreadIsShuttingDown):
     
     LayoutTests:
     
@@ -4412,7 +4412,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Brian Burg.
     
-    Tentative fix. Modifying the `iceCandidateFilteringEnabled` WebCore setting causes any
+    Tentative fix. Modifying the `iceCandidateFilteringEnabled` CyberCore setting causes any
     existing/pending ICE candidates to immediately fire `icecandidate` events. Wait to change
     the setting using `Page.overrideSetting` until after the JavaScript has set up the various
     connections so that it's guaranteed to not miss any `icecandidate` events. Additionally
@@ -4432,7 +4432,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
             Reviewed by Brian Burg.
 
-            Tentative fix. Modifying the `iceCandidateFilteringEnabled` WebCore setting causes any
+            Tentative fix. Modifying the `iceCandidateFilteringEnabled` CyberCore setting causes any
             existing/pending ICE candidates to immediately fire `icecandidate` events. Wait to change
             the setting using `Page.overrideSetting` until after the JavaScript has set up the various
             connections so that it's guaranteed to not miss any `icecandidate` events. Additionally
@@ -4476,9 +4476,9 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Tim Horton.
     
-    Source/WebCore:
+    Source/CyberCore:
     
-    Add support for rendering custom highlights (background colors) behind marked text in WebCore. To do this, we
+    Add support for rendering custom highlights (background colors) behind marked text in CyberCore. To do this, we
     plumb a Vector of CompositionHighlights alongside the Vector of CompositionUnderlines to Editor. At paint time,
     we then consult this highlight data to determine which ranges of text in the composition should paint using
     custom background colors.
@@ -4489,44 +4489,44 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Test: editing/input/composition-highlights.html
     
     * Headers.cmake:
-    * WebCore.xcodeproj/project.pbxproj:
+    * CyberCore.xcodeproj/project.pbxproj:
     * editing/CompositionHighlight.h: Added.
-    (WebCore::CompositionHighlight::CompositionHighlight):
-    (WebCore::CompositionHighlight::encode const):
-    (WebCore::CompositionHighlight::decode):
+    (CyberCore::CompositionHighlight::CompositionHighlight):
+    (CyberCore::CompositionHighlight::encode const):
+    (CyberCore::CompositionHighlight::decode):
     
     Add CompositionHighlight, which represents a range in the composition that should be highlighted with a given
     background color.
     
     * editing/Editor.cpp:
-    (WebCore::Editor::clear):
-    (WebCore::Editor::setComposition):
+    (CyberCore::Editor::clear):
+    (CyberCore::Editor::setComposition):
     
     Add logic for clearing and updating m_customCompositionHighlights.
     
     * editing/Editor.h:
-    (WebCore::Editor::compositionUsesCustomHighlights const):
-    (WebCore::Editor::customCompositionHighlights const):
+    (CyberCore::Editor::compositionUsesCustomHighlights const):
+    (CyberCore::Editor::customCompositionHighlights const):
     * rendering/InlineTextBox.cpp:
-    (WebCore::InlineTextBox::paintCompositionBackground):
+    (CyberCore::InlineTextBox::paintCompositionBackground):
     
     If custom composition highlights are given, use those when painting the composition background; otherwise,
     default to painting the entire composition range using `Color::compositionFill`.
     
-    Source/WebCore/PAL:
+    Source/CyberCore/PAL:
     
     Add an SPI soft-linking declaration for NSMarkedClauseSegmentAttributeName.
     
     * pal/spi/cocoa/NSAttributedStringSPI.h:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Implement -setAttributedMarkedText:selectedRange: on WKContentView, and have it extract highlight color
     information from the given attributed string. Plumb this through to the web process by serializing and
-    deserializing `WebCore::CompositionHighlight`s.
+    deserializing `CyberCore::CompositionHighlight`s.
     
     * UIProcess/Cocoa/WebViewImpl.mm:
-    (WebKit::WebViewImpl::setMarkedText):
+    (CyberKit::WebViewImpl::setMarkedText):
     * UIProcess/WebPageProxy.cpp:
     * UIProcess/WebPageProxy.h:
     * UIProcess/ios/WKContentViewInteraction.mm:
@@ -4544,15 +4544,15 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Add testing support for specifying highlight ranges when setting marked text.
     
     * WebProcess/InjectedBundle/API/c/WKBundlePagePrivate.h:
-    * WebProcess/WebCoreSupport/glib/WebEditorClientGLib.cpp:
-    (WebKit::WebEditorClient::didDispatchInputMethodKeydown):
+    * WebProcess/CyberCoreSupport/glib/WebEditorClientGLib.cpp:
+    (CyberKit::WebEditorClient::didDispatchInputMethodKeydown):
     * WebProcess/WebPage/WebPage.cpp:
-    (WebKit::WebPage::setCompositionForTesting):
-    (WebKit::WebPage::setCompositionAsync):
+    (CyberKit::WebPage::setCompositionForTesting):
+    (CyberKit::WebPage::setCompositionAsync):
     * WebProcess/WebPage/WebPage.h:
     * WebProcess/WebPage/WebPage.messages.in:
     
-    Source/WebKitLegacy/mac:
+    Source/CyberKitLegacy/mac:
     
     Adjust some call sites of Editor::setComposition().
     
@@ -4562,7 +4562,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     * WebView/WebHTMLView.mm:
     (-[WebHTMLView setMarkedText:selectedRange:]):
     
-    Source/WebKitLegacy/win:
+    Source/CyberKitLegacy/win:
     
     Adjust some call sites of Editor::setComposition().
     
@@ -4572,7 +4572,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Tools:
     
-    Add support in WebKitTestRunner for specifying a list of highlight ranges when setting marked text. This comes
+    Add support in CyberKitTestRunner for specifying a list of highlight ranges when setting marked text. This comes
     in the form of an additional argument to TextInputController::setMarkedText, which contains an array of objects,
     each describing one range (in the composition) to highlight.
     
@@ -4586,21 +4586,21 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     (+[TextInputController webScriptNameForSelector:]):
     (-[TextInputController setMarkedText:selectedFrom:length:suppressUnderline:highlights:]):
     (-[TextInputController setMarkedText:selectedFrom:length:suppressUnderline:]): Deleted.
-    * WebKitTestRunner/InjectedBundle/Bindings/TextInputController.idl:
-    * WebKitTestRunner/InjectedBundle/TextInputController.cpp:
+    * CyberKitTestRunner/InjectedBundle/Bindings/TextInputController.idl:
+    * CyberKitTestRunner/InjectedBundle/TextInputController.cpp:
     (WTR::arrayLength):
     (WTR::createCompositionHighlightData):
     
     Add logic to convert a given JSObject containing the composition highlight information into a WKArrayRef, which
-    is then passed into WebKit via WKBundlePageSetComposition.
+    is then passed into CyberKit via WKBundlePageSetComposition.
     
     (WTR::TextInputController::setMarkedText):
-    * WebKitTestRunner/InjectedBundle/TextInputController.h:
+    * CyberKitTestRunner/InjectedBundle/TextInputController.h:
     
     LayoutTests:
     
     Add a test to check that highlighting different parts of a composition range results in the same behavior as
-    applying background colors using CSS. This test is currently only supported in WebKit2.
+    applying background colors using CSS. This test is currently only supported in CyberKit2.
     
     * TestExpectations:
     * editing/input/composition-highlights-expected.html: Added.
@@ -4619,7 +4619,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
             Reviewed by Tim Horton.
 
             Add a test to check that highlighting different parts of a composition range results in the same behavior as
-            applying background colors using CSS. This test is currently only supported in WebKit2.
+            applying background colors using CSS. This test is currently only supported in CyberKit2.
 
             * TestExpectations:
             * editing/input/composition-highlights-expected.html: Added.
@@ -4636,7 +4636,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: webanimations/opacity-animation.html
     
@@ -4648,7 +4648,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     until it completes.
     
     * animation/WebAnimation.cpp:
-    (WebCore::WebAnimation::timeToNextTick const):
+    (CyberCore::WebAnimation::timeToNextTick const):
     
     LayoutTests:
     
@@ -4678,7 +4678,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Tim Horton.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Amazon adds active touchstart event listeners to their select elements, where they call preventDefault() and
     programmatically focus the select element. Doing so prevents clicks from being dispatched by allowing the web
@@ -4708,7 +4708,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Test: fast/events/touch/ios/prevent-default-with-slow-touchstart-handler.html
     
     * UIProcess/WebPageProxy.cpp:
-    (WebKit::WebPageProxy::handlePreventableTouchEvent):
+    (CyberKit::WebPageProxy::handlePreventableTouchEvent):
     * UIProcess/WebPageProxy.h:
     
     LayoutTests:
@@ -4746,7 +4746,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: webanimations/width-and-opacity-separate-animation-yields-compositing.html
     
@@ -4778,46 +4778,46 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     All in all, this better aligns the behavior of the "legacy" and Web Animations engines to run accelerated animations in the same circumstances.
     
     * animation/AnimationTimeline.cpp:
-    (WebCore::AnimationTimeline::updateCSSTransitionsForElementAndProperty): Use KeyframeEfffect::isRunningAccelerated() instead of KeyframeEffect::isAccelerated().
+    (CyberCore::AnimationTimeline::updateCSSTransitionsForElementAndProperty): Use KeyframeEfffect::isRunningAccelerated() instead of KeyframeEffect::isAccelerated().
     * animation/DocumentTimeline.cpp:
-    (WebCore::DocumentTimeline::isRunningAcceleratedAnimationOnRenderer const): Use KeyframeEffect::isCurrentlyAffectingProperty() instead of checking both
+    (CyberCore::DocumentTimeline::isRunningAcceleratedAnimationOnRenderer const): Use KeyframeEffect::isCurrentlyAffectingProperty() instead of checking both
     isRunningAccelerated() and manually looking at the effect's animated properties.
     * animation/KeyframeEffect.cpp:
-    (WebCore::KeyframeEffect::setBlendingKeyframes): Call computeAcceleratedPropertiesState() instead of the now-defunct computeShouldRunAccelerated().
-    (WebCore::KeyframeEffect::apply): Keep track of the newly computed phase so that we may use it in the new isCurrentlyAffectingProperty() without having
+    (CyberCore::KeyframeEffect::setBlendingKeyframes): Call computeAcceleratedPropertiesState() instead of the now-defunct computeShouldRunAccelerated().
+    (CyberCore::KeyframeEffect::apply): Keep track of the newly computed phase so that we may use it in the new isCurrentlyAffectingProperty() without having
     to recompute it on each call.
-    (WebCore::KeyframeEffect::isCurrentlyAffectingProperty const): Indicates whether a given property is currently animated (active phase) with the option
+    (CyberCore::KeyframeEffect::isCurrentlyAffectingProperty const): Indicates whether a given property is currently animated (active phase) with the option
     to specify whether that animation is accelerated.
-    (WebCore::KeyframeEffect::computeAcceleratedPropertiesState): Compute whether none, some or all of the animated properties of the given effect can be accelerated.
-    (WebCore::KeyframeEffect::updateAcceleratedActions): Use the phase to determine which accelerated actions to enqueue.
-    (WebCore::KeyframeEffect::animationDidSeek): Use the new m_isRunningAccelerated state to determine whether the animation is presently running accelerated.
-    (WebCore::KeyframeEffect::animationWasCanceled): Use the new m_isRunningAccelerated state to determine whether the animation is presently running accelerated.
-    (WebCore::KeyframeEffect::animationSuspensionStateDidChange): Use the new m_isRunningAccelerated state to determine whether the animation is presently running accelerated.
-    (WebCore::KeyframeEffect::applyPendingAcceleratedActions):
+    (CyberCore::KeyframeEffect::computeAcceleratedPropertiesState): Compute whether none, some or all of the animated properties of the given effect can be accelerated.
+    (CyberCore::KeyframeEffect::updateAcceleratedActions): Use the phase to determine which accelerated actions to enqueue.
+    (CyberCore::KeyframeEffect::animationDidSeek): Use the new m_isRunningAccelerated state to determine whether the animation is presently running accelerated.
+    (CyberCore::KeyframeEffect::animationWasCanceled): Use the new m_isRunningAccelerated state to determine whether the animation is presently running accelerated.
+    (CyberCore::KeyframeEffect::animationSuspensionStateDidChange): Use the new m_isRunningAccelerated state to determine whether the animation is presently running accelerated.
+    (CyberCore::KeyframeEffect::applyPendingAcceleratedActions):
     * animation/KeyframeEffect.h:
-    (WebCore::KeyframeEffect::isRunningAccelerated const):
-    (WebCore::KeyframeEffect::isAboutToRunAccelerated const):
-    (WebCore::KeyframeEffect::isCompletelyAccelerated const):
+    (CyberCore::KeyframeEffect::isRunningAccelerated const):
+    (CyberCore::KeyframeEffect::isAboutToRunAccelerated const):
+    (CyberCore::KeyframeEffect::isCompletelyAccelerated const):
     * animation/KeyframeEffectStack.cpp:
-    (WebCore::KeyframeEffectStack::isCurrentlyAffectingProperty const): Indicates whether any of the effects in the stack animates a given property, with the option
+    (CyberCore::KeyframeEffectStack::isCurrentlyAffectingProperty const): Indicates whether any of the effects in the stack animates a given property, with the option
     to specify whether the animation should be accelerated.
     * animation/KeyframeEffectStack.h:
     * animation/WebAnimation.cpp:
-    (WebCore::WebAnimation::effectTargetDidChange): Ensure we schedule an animation update if an effect is no longer animating a given element or newly animating an element,
+    (CyberCore::WebAnimation::effectTargetDidChange): Ensure we schedule an animation update if an effect is no longer animating a given element or newly animating an element,
     to ensure that replaced animations may be removed.
-    (WebCore::WebAnimation::isCompletelyAccelerated const): Convenience function to call isCompletelyAccelerated() on the animation's effect.
-    (WebCore::WebAnimation::computeRelevance): Check the replaced state when computing relevance.
-    (WebCore::WebAnimation::timeToNextTick const): Schedule an immediate update if a given animation is not _completely_ accelerated.
+    (CyberCore::WebAnimation::isCompletelyAccelerated const): Convenience function to call isCompletelyAccelerated() on the animation's effect.
+    (CyberCore::WebAnimation::computeRelevance): Check the replaced state when computing relevance.
+    (CyberCore::WebAnimation::timeToNextTick const): Schedule an immediate update if a given animation is not _completely_ accelerated.
     * animation/WebAnimation.h:
     * dom/Element.cpp:
-    (WebCore::Element::keyframeEffectStack const):
-    (WebCore::Element::applyKeyframeEffects): Set the AnimationImpact::RequiresRecomposite flag when the animation is either currently running accelerated or expected
+    (CyberCore::Element::keyframeEffectStack const):
+    (CyberCore::Element::applyKeyframeEffects): Set the AnimationImpact::RequiresRecomposite flag when the animation is either currently running accelerated or expected
     to be in the next accelerated animation update.
     * dom/Element.h:
     * rendering/RenderLayerCompositor.cpp:
-    (WebCore::RenderLayerCompositor::requiresCompositingForAnimation const): Use the same logic as for the "legacy" animation engine to determine whether an animation
+    (CyberCore::RenderLayerCompositor::requiresCompositingForAnimation const): Use the same logic as for the "legacy" animation engine to determine whether an animation
     requires compositing using the new KeyframeEffect::isCurrentlyAffectingProperty() method.
-    (WebCore::RenderLayerCompositor::isRunningTransformAnimation const): Refactor some code to use the new KeyframeEffect::isCurrentlyAffectingProperty() method.
+    (CyberCore::RenderLayerCompositor::isRunningTransformAnimation const): Refactor some code to use the new KeyframeEffect::isCurrentlyAffectingProperty() method.
     
     LayoutTests:
     
@@ -4893,7 +4893,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     (putter):
     (not_string.toString):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     When we are creating Put IC for a new property, we grab the old Structure before performing
     the put. For a custom ::put, our convention is that the implemented ::put should mark the PutPropertySlot
@@ -4915,7 +4915,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     (JSC::JSDollarVM::visitChildren):
     * tools/JSDollarVM.h:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     IDL Code Generator should taint PutPropertySlot or taint implemented object to avoid Put IC caching
     when it implements custom ::put operation which has side-effect regardless of Structure. Otherwise, IC can be setup
@@ -5045,7 +5045,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Chris Dumez.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     In case worker context process crashes, the SWServerWorker gets set to NotRunning.
     If the SWServerWorker has pending activating completion handlers, they will never be called until the worker is destroyed.
@@ -5057,12 +5057,12 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Covered by updated test.
     
     * workers/service/server/SWServerWorker.cpp:
-    (WebCore::SWServerWorker::~SWServerWorker):
-    (WebCore::SWServerWorker::whenActivated):
-    (WebCore::SWServerWorker::setState):
+    (CyberCore::SWServerWorker::~SWServerWorker):
+    (CyberCore::SWServerWorker::whenActivated):
+    (CyberCore::SWServerWorker::setState):
     * workers/service/server/SWServerWorker.h:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     In case activating completion handlers are not called, the fetch task timeout should kick in and make the load go to network process.
     The issue is that our code was using the context connection to do so.
@@ -5076,15 +5076,15 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     The service worker will anyway get terminated which will race to finalize the service worker fetch tasks with each of their timeout.
     
     * NetworkProcess/ServiceWorker/ServiceWorkerFetchTask.cpp:
-    (WebKit::ServiceWorkerFetchTask::ServiceWorkerFetchTask):
-    (WebKit::ServiceWorkerFetchTask::timeoutTimerFired):
+    (CyberKit::ServiceWorkerFetchTask::ServiceWorkerFetchTask):
+    (CyberKit::ServiceWorkerFetchTask::timeoutTimerFired):
     * NetworkProcess/ServiceWorker/ServiceWorkerFetchTask.h:
     * NetworkProcess/ServiceWorker/WebSWServerConnection.cpp:
-    (WebKit::WebSWServerConnection::createFetchTask):
-    (WebKit::WebSWServerConnection::fetchTaskTimedOut):
+    (CyberKit::WebSWServerConnection::createFetchTask):
+    (CyberKit::WebSWServerConnection::fetchTaskTimedOut):
     * NetworkProcess/ServiceWorker/WebSWServerConnection.h:
     * NetworkProcess/ServiceWorker/WebSWServerToContextConnection.cpp:
-    (WebKit::WebSWServerToContextConnection::fetchTaskTimedOut):
+    (CyberKit::WebSWServerToContextConnection::fetchTaskTimedOut):
     
     LayoutTests:
     
@@ -5114,13 +5114,13 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Anders Carlsson.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Take care that the first-letter style has the correct styleType set even when getCachedPseudoStyle failed.
     This is used for checking if there is an existing first letter renderer.
     
     * rendering/updating/RenderTreeBuilderFirstLetter.cpp:
-    (WebCore::styleForFirstLetter):
+    (CyberCore::styleForFirstLetter):
     
     LayoutTests:
     
@@ -5148,7 +5148,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
         Cherry-pick r254408. rdar://problem/58606270
 
-    [WebCore] Fix crash in module loader due to change in fragment reservation
+    [CyberCore] Fix crash in module loader due to change in fragment reservation
     https://bugs.webkit.org/show_bug.cgi?id=206125
     
     Reviewed by Dean Jackson.
@@ -5157,7 +5157,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     * web-platform-tests/html/semantics/scripting-1/the-script-element/module/import-meta/import-meta-url-expected.txt:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     At some point, CachedResource::url() starts returning URL without fragment.
     However, this was invariant in ScriptModuleLoader, so one of WPT test is crashing.
@@ -5168,10 +5168,10 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     [1]: https://bugs.webkit.org/show_bug.cgi?id=205294
     
     * bindings/js/CachedModuleScriptLoader.cpp:
-    (WebCore::CachedModuleScriptLoader::load):
+    (CyberCore::CachedModuleScriptLoader::load):
     * bindings/js/CachedModuleScriptLoader.h:
     * bindings/js/ScriptModuleLoader.cpp:
-    (WebCore::ScriptModuleLoader::notifyFinished):
+    (CyberCore::ScriptModuleLoader::notifyFinished):
     
     LayoutTests:
     
@@ -5181,7 +5181,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
     2020-01-10  Yusuke Suzuki  <ysuzuki@apple.com>
 
-            [WebCore] Fix crash in module loader due to change in fragment reservation
+            [CyberCore] Fix crash in module loader due to change in fragment reservation
             https://bugs.webkit.org/show_bug.cgi?id=206125
 
             Reviewed by Dean Jackson.
@@ -5198,15 +5198,15 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Tim Horton.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Remove `hasSelectionAtPosition`, which is no longer needed.
     
     * page/Page.cpp:
-    (WebCore::Page::hasSelectionAtPosition const): Deleted.
+    (CyberCore::Page::hasSelectionAtPosition const): Deleted.
     * page/Page.h:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Makes it possible to update the selection using text interaction gestures inside an existing text selection. To
     do this, we remove code that was previously required in order to disambiguate text selection and drag gestures.
@@ -5223,8 +5223,8 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     * Shared/ios/InteractionInformationAtPosition.h:
     * Shared/ios/InteractionInformationAtPosition.mm:
-    (WebKit::InteractionInformationAtPosition::encode const):
-    (WebKit::InteractionInformationAtPosition::decode):
+    (CyberKit::InteractionInformationAtPosition::encode const):
+    (CyberKit::InteractionInformationAtPosition::decode):
     
     Remove the hasSelectionAtPosition flag from position information, since we no longer need it.
     
@@ -5243,7 +5243,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     (-[WKContentView dragInteraction:willAnimateLiftWithAnimator:session:]):
     * WebProcess/WebPage/ios/WebPageIOS.mm:
-    (WebKit::WebPage::positionInformation):
+    (CyberKit::WebPage::positionInformation):
     
     Remove the hasSelectionAtPosition flag from position information, since we no longer need it.
     
@@ -5314,7 +5314,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     This patch replaces the recursive approach with an iterative one
     to collect absolute quads across continuation.
@@ -5322,16 +5322,16 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Test: fast/inline/long-continuation-crash.html
     
     * rendering/RenderBlock.cpp:
-    (WebCore::RenderBlock::absoluteQuads const):
-    (WebCore::RenderBlock::absoluteQuadsIgnoringContinuation const):
+    (CyberCore::RenderBlock::absoluteQuads const):
+    (CyberCore::RenderBlock::absoluteQuadsIgnoringContinuation const):
     * rendering/RenderBlock.h:
     * rendering/RenderBoxModelObject.cpp:
-    (WebCore::RenderBoxModelObject::collectAbsoluteQuadsForContinuation const):
+    (CyberCore::RenderBoxModelObject::collectAbsoluteQuadsForContinuation const):
     * rendering/RenderBoxModelObject.h:
-    (WebCore::RenderBoxModelObject::absoluteQuadsIgnoringContinuation const):
+    (CyberCore::RenderBoxModelObject::absoluteQuadsIgnoringContinuation const):
     * rendering/RenderInline.cpp:
-    (WebCore::RenderInline::absoluteQuads const):
-    (WebCore::RenderInline::absoluteQuadsIgnoringContinuation const):
+    (CyberCore::RenderInline::absoluteQuads const):
+    (CyberCore::RenderInline::absoluteQuadsIgnoringContinuation const):
     * rendering/RenderInline.h:
     
     LayoutTests:
@@ -5393,7 +5393,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Patch by Said Abou-Hallawa <sabouhallawa@apple.com> on 2020-01-20
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Unlike GraphicsContext::drawNativeImage(), GraphicsContext::drawPattern()
     can't change the coordinates system before drawing the image to respect
@@ -5407,20 +5407,20 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
            fast/images/exif-orientation-border-image.html
     
     * platform/graphics/BitmapImage.cpp:
-    (WebCore::BitmapImage::nativeImageForCurrentFrameRespectingOrientation):
-    (WebCore::BitmapImage::drawPattern):
+    (CyberCore::BitmapImage::nativeImageForCurrentFrameRespectingOrientation):
+    (CyberCore::BitmapImage::drawPattern):
     * platform/graphics/BitmapImage.h:
     * platform/graphics/Image.h:
-    (WebCore::Image::nativeImage):
-    (WebCore::Image::nativeImageForCurrentFrameRespectingOrientation):
-    (WebCore::Image::nativeImageOfSize):
+    (CyberCore::Image::nativeImage):
+    (CyberCore::Image::nativeImageForCurrentFrameRespectingOrientation):
+    (CyberCore::Image::nativeImageOfSize):
     * platform/graphics/ImageBuffer.h:
     * platform/graphics/cg/GraphicsContextCG.cpp:
-    (WebCore::GraphicsContext::drawPattern):
+    (CyberCore::GraphicsContext::drawPattern):
     * platform/graphics/cg/NativeImageCG.cpp:
-    (WebCore::drawNativeImage):
+    (CyberCore::drawNativeImage):
     * rendering/style/NinePieceImage.cpp:
-    (WebCore::NinePieceImage::paint const):
+    (CyberCore::NinePieceImage::paint const):
     
     LayoutTests:
     
@@ -5457,7 +5457,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Eric Carlson.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     In r253375, we made sure to enqueue calls that would trigger state changes, to ensure we would not start playing while in page cache.
     But this delayed the order to pause the video when entering page cache.
@@ -5466,8 +5466,8 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Test: http/tests/navigation/page-cache-video.html
     
     * html/HTMLMediaElement.cpp:
-    (WebCore::HTMLMediaElement::pauseAndUpdatePlayStateImmediately):
-    (WebCore::HTMLMediaElement::stopWithoutDestroyingMediaPlayer):
+    (CyberCore::HTMLMediaElement::pauseAndUpdatePlayStateImmediately):
+    (CyberCore::HTMLMediaElement::stopWithoutDestroyingMediaPlayer):
     * html/HTMLMediaElement.h:
     
     LayoutTests:
@@ -5505,7 +5505,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Xabier Rodriguez-Calvar.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: media/media-source/media-source-samples-out-of-order.html
     
@@ -5524,10 +5524,10 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     sync sample, so they are removed in this step.
     
     * Modules/mediasource/SampleMap.cpp:
-    (WebCore::DecodeOrderSampleMap::findSampleAfterDecodeKey):
+    (CyberCore::DecodeOrderSampleMap::findSampleAfterDecodeKey):
     * Modules/mediasource/SampleMap.h:
     * Modules/mediasource/SourceBuffer.cpp:
-    (WebCore::SourceBuffer::sourceBufferPrivateDidReceiveSample):
+    (CyberCore::SourceBuffer::sourceBufferPrivateDidReceiveSample):
     
     LayoutTests:
     
@@ -5557,7 +5557,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Geoffrey Garen.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     The crash was caused by RadioButtonGroups::hasCheckedButton getting called by RadioInputType's
     matchesIndeterminatePseudoClass during a style update which happens before the input element had a chance
@@ -5569,7 +5569,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Test: fast/forms/match-pseudo-on-radio-before-finalizing-tree-insertion-crash.html
     
     * dom/RadioButtonGroups.cpp:
-    (WebCore::RadioButtonGroups::hasCheckedButton const):
+    (CyberCore::RadioButtonGroups::hasCheckedButton const):
     
     LayoutTests:
     
@@ -5636,7 +5636,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Geoffrey Garen.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Starting in r253213, we now throw when trying to do a sync XHR during unload. Unfortunately, this is confusing the script
     on myuhc.com and it ends up retrying the sync XHR in a tight loop. To address the issue, I am putting in a safety net which
@@ -5652,13 +5652,13 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
            fast/xmlhttprequest/xmlhttprequest-sync-xhr-failure-loop-during-unload.html
     
     * dom/Document.cpp:
-    (WebCore::Document::didRejectSyncXHRDuringPageDismissal):
-    (WebCore::Document::shouldIgnoreSyncXHRs const):
+    (CyberCore::Document::didRejectSyncXHRDuringPageDismissal):
+    (CyberCore::Document::shouldIgnoreSyncXHRs const):
     * dom/Document.h:
     * loader/DocumentThreadableLoader.cpp:
-    (WebCore::DocumentThreadableLoader::DocumentThreadableLoader):
+    (CyberCore::DocumentThreadableLoader::DocumentThreadableLoader):
     * xml/XMLHttpRequest.cpp:
-    (WebCore::XMLHttpRequest::prepareToSend):
+    (CyberCore::XMLHttpRequest::prepareToSend):
     
     LayoutTests:
     
@@ -5701,7 +5701,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Patch by Said Abou-Hallawa <sabouhallawa@apple.com> on 2020-01-14
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Consult isSupportedImageType() for the system supported UTI before
     considering its mime type is allowed for the image DataURL encoding.
@@ -5709,7 +5709,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Test: fast/canvas/toDataURL-unsupportedTypes.html
     
     * platform/MIMETypeRegistry.cpp:
-    (WebCore::MIMETypeRegistry::createMIMETypeRegistryThreadGlobalData):
+    (CyberCore::MIMETypeRegistry::createMIMETypeRegistryThreadGlobalData):
     
     LayoutTests:
     
@@ -5767,7 +5767,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Tim Horton.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Latching code in EventHandlerMac would consider <iframe scrolling=no> to be a latching
     candidate, which would cause mousewheel scrolling in a <iframe scrolling=no> nested inside
@@ -5778,11 +5778,11 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Test: tiled-drawing/scrolling/scrolling-no-iframe-latching.html
     
     * page/mac/EventHandlerMac.mm:
-    (WebCore::scrolledToEdgeInDominantDirection):
+    (CyberCore::scrolledToEdgeInDominantDirection):
     * platform/ScrollView.h:
-    (WebCore::ScrollView::canHaveScrollbars const): Deleted.
+    (CyberCore::ScrollView::canHaveScrollbars const): Deleted.
     * platform/ScrollableArea.h:
-    (WebCore::ScrollableArea::canHaveScrollbars const):
+    (CyberCore::ScrollableArea::canHaveScrollbars const):
     
     LayoutTests:
     
@@ -5810,14 +5810,14 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     https://bugs.webkit.org/show_bug.cgi?id=206197
     
     Reviewed by Tim Horton.
-    Source/WebCore:
+    Source/CyberCore:
     
     The logic added in r251369 was reversed, causing scrollbar hiding to not work correctly.
     
     Tested by fast/scrolling/ios/scrollbar-hiding.html
     
     * rendering/RenderScrollbar.cpp:
-    (WebCore::RenderScrollbar::isHiddenByStyle const):
+    (CyberCore::RenderScrollbar::isHiddenByStyle const):
     
     LayoutTests:
     
@@ -5849,7 +5849,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     When the before child happens to be a block level box wrapped in an anonymous inline-block (e.g. ruby),
     let's attach this new child before the anonymous inline-block wrapper instead.
@@ -5857,7 +5857,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Test: fast/ruby/before-child-is-block-after.html
     
     * rendering/updating/RenderTreeBuilderBlock.cpp:
-    (WebCore::RenderTreeBuilder::Block::attachIgnoringContinuation):
+    (CyberCore::RenderTreeBuilder::Block::attachIgnoringContinuation):
     
     LayoutTests:
     
@@ -5881,7 +5881,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
         Cherry-pick r254408. rdar://problem/58606270
 
-    [WebCore] Fix crash in module loader due to change in fragment reservation
+    [CyberCore] Fix crash in module loader due to change in fragment reservation
     https://bugs.webkit.org/show_bug.cgi?id=206125
     
     Reviewed by Dean Jackson.
@@ -5890,7 +5890,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     * web-platform-tests/html/semantics/scripting-1/the-script-element/module/import-meta/import-meta-url-expected.txt:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     At some point, CachedResource::url() starts returning URL without fragment.
     However, this was invariant in ScriptModuleLoader, so one of WPT test is crashing.
@@ -5901,10 +5901,10 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     [1]: https://bugs.webkit.org/show_bug.cgi?id=205294
     
     * bindings/js/CachedModuleScriptLoader.cpp:
-    (WebCore::CachedModuleScriptLoader::load):
+    (CyberCore::CachedModuleScriptLoader::load):
     * bindings/js/CachedModuleScriptLoader.h:
     * bindings/js/ScriptModuleLoader.cpp:
-    (WebCore::ScriptModuleLoader::notifyFinished):
+    (CyberCore::ScriptModuleLoader::notifyFinished):
     
     LayoutTests:
     
@@ -5914,7 +5914,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
     2020-01-10  Yusuke Suzuki  <ysuzuki@apple.com>
 
-            [WebCore] Fix crash in module loader due to change in fragment reservation
+            [CyberCore] Fix crash in module loader due to change in fragment reservation
             https://bugs.webkit.org/show_bug.cgi?id=206125
 
             Reviewed by Dean Jackson.
@@ -5931,7 +5931,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Chris Dumez.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     The purpose of this patch is to capture navigations that happen programmatically
     after the document has loaded. These are delayed redirects and should be counted
@@ -5947,24 +5947,24 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     A new test was added and existing test expectations were updated.
     
     * NetworkProcess/Classifier/ResourceLoadStatisticsDatabaseStore.cpp:
-    (WebKit::ResourceLoadStatisticsDatabaseStore::logFrameNavigation):
+    (CyberKit::ResourceLoadStatisticsDatabaseStore::logFrameNavigation):
         Now takes the extra parameters delayAfterMainFrameDocumentLoad
         and wasPotentiallyInitiatedByUser.
     * NetworkProcess/Classifier/ResourceLoadStatisticsDatabaseStore.h:
     * NetworkProcess/Classifier/ResourceLoadStatisticsMemoryStore.cpp:
-    (WebKit::ResourceLoadStatisticsMemoryStore::logFrameNavigation):
+    (CyberKit::ResourceLoadStatisticsMemoryStore::logFrameNavigation):
         Now takes the extra parameters delayAfterMainFrameDocumentLoad
         and wasPotentiallyInitiatedByUser.
     * NetworkProcess/Classifier/ResourceLoadStatisticsMemoryStore.h:
     * NetworkProcess/Classifier/ResourceLoadStatisticsStore.h:
     * NetworkProcess/Classifier/WebResourceLoadStatisticsStore.cpp:
-    (WebKit::WebResourceLoadStatisticsStore::logFrameNavigation):
+    (CyberKit::WebResourceLoadStatisticsStore::logFrameNavigation):
         Now takes the extra parameters delayAfterMainFrameDocumentLoad
         and wasPotentiallyInitiatedByUser.
         The deleted WebResourceLoadStatisticsStore::logFrameNavigation() was dead code.
     * NetworkProcess/Classifier/WebResourceLoadStatisticsStore.h:
     * NetworkProcess/NetworkProcess.cpp:
-    (WebKit::NetworkProcess::logFrameNavigation):
+    (CyberKit::NetworkProcess::logFrameNavigation):
         Now takes the extra parameters delayAfterMainFrameDocumentLoad
         and wasPotentiallyInitiatedByUser.
     * NetworkProcess/NetworkProcess.h:
@@ -5974,26 +5974,26 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
         Dead code.
     * UIProcess/API/Cocoa/WKWebsiteDataStorePrivate.h:
     * UIProcess/WebPageProxy.cpp:
-    (WebKit::WebPageProxy::didFinishDocumentLoadForFrame):
+    (CyberKit::WebPageProxy::didFinishDocumentLoadForFrame):
         Now captures a timestamp.
-    (WebKit::WebPageProxy::decidePolicyForNavigationAction):
+    (CyberKit::WebPageProxy::decidePolicyForNavigationAction):
         Removed dead code.
-    (WebKit::WebPageProxy::logFrameNavigation):
+    (CyberKit::WebPageProxy::logFrameNavigation):
         Now sends the diff between now and the timestamp captured in
         WebPageProxy::didFinishDocumentLoadForFrame().
     * UIProcess/WebPageProxy.h:
     * UIProcess/WebsiteData/Cocoa/WebsiteDataStoreCocoa.mm:
-    (WebKit::WebsiteDataStore::platformInitialize):
+    (CyberKit::WebsiteDataStore::platformInitialize):
         Removed dead code.
-    (WebKit::WebsiteDataStore::platformDestroy):
+    (CyberKit::WebsiteDataStore::platformDestroy):
         Removed dead code.
     * UIProcess/WebsiteData/WebsiteDataStore.h:
-    (WebKit::WebsiteDataStore::resourceLoadStatistics const): Deleted.
+    (CyberKit::WebsiteDataStore::resourceLoadStatistics const): Deleted.
         Dead code.
     
     Tools:
     
-    * WebKitTestRunner/cocoa/TestControllerCocoa.mm:
+    * CyberKitTestRunner/cocoa/TestControllerCocoa.mm:
     (WTR::initializeWebViewConfiguration):
         Removed dead code.
     
@@ -6051,13 +6051,13 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     * web-platform-tests/css/css-images/parsing/image-orientation-computed-expected.txt:
     * web-platform-tests/css/css-images/parsing/image-orientation-valid-expected.txt:
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     Remove the ENABLE_CSS_IMAGE_ORIENTATION feature flag.
     
     * Configurations/FeatureDefines.xcconfig:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Implement the CSS image-orientation property for content images. The valid
     values are "from-image" or "none". The default value is "from-image".
@@ -6071,44 +6071,44 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     * Configurations/FeatureDefines.xcconfig:
     * css/CSSComputedStyleDeclaration.cpp:
-    (WebCore::ComputedStyleExtractor::valueForPropertyInStyle):
+    (CyberCore::ComputedStyleExtractor::valueForPropertyInStyle):
     * css/CSSPrimitiveValueMappings.h:
-    (WebCore::CSSPrimitiveValue::operator ImageOrientation const): Deleted.
+    (CyberCore::CSSPrimitiveValue::operator ImageOrientation const): Deleted.
     * css/CSSProperties.json:
     * css/CSSValueKeywords.in:
     * css/parser/CSSPropertyParser.cpp:
-    (WebCore::consumeImageOrientation):
-    (WebCore::CSSPropertyParser::parseSingleValue):
+    (CyberCore::consumeImageOrientation):
+    (CyberCore::CSSPropertyParser::parseSingleValue):
     * rendering/RenderElement.cpp:
-    (WebCore::RenderElement::imageOrientation const):
+    (CyberCore::RenderElement::imageOrientation const):
     * rendering/RenderImage.cpp:
-    (WebCore::RenderImage::styleDidChange):
+    (CyberCore::RenderImage::styleDidChange):
     * rendering/style/RenderStyle.cpp:
-    (WebCore::rareInheritedDataChangeRequiresLayout):
+    (CyberCore::rareInheritedDataChangeRequiresLayout):
     * rendering/style/RenderStyle.h:
-    (WebCore::RenderStyle::setImageOrientation):
-    (WebCore::RenderStyle::initialImageOrientation):
-    (WebCore::RenderStyle::imageOrientation const):
+    (CyberCore::RenderStyle::setImageOrientation):
+    (CyberCore::RenderStyle::initialImageOrientation):
+    (CyberCore::RenderStyle::imageOrientation const):
     * rendering/style/StyleRareInheritedData.cpp:
-    (WebCore::StyleRareInheritedData::StyleRareInheritedData):
-    (WebCore::StyleRareInheritedData::operator== const):
+    (CyberCore::StyleRareInheritedData::StyleRareInheritedData):
+    (CyberCore::StyleRareInheritedData::operator== const):
     * rendering/style/StyleRareInheritedData.h:
     * style/StyleBuilderConverter.h:
-    (WebCore::Style::BuilderConverter::convertImageOrientation):
+    (CyberCore::Style::BuilderConverter::convertImageOrientation):
     
-    Source/WebCore/PAL:
-    
-    Remove the ENABLE_CSS_IMAGE_ORIENTATION feature flag.
-    
-    * Configurations/FeatureDefines.xcconfig:
-    
-    Source/WebKit:
+    Source/CyberCore/PAL:
     
     Remove the ENABLE_CSS_IMAGE_ORIENTATION feature flag.
     
     * Configurations/FeatureDefines.xcconfig:
     
-    Source/WebKitLegacy/mac:
+    Source/CyberKit:
+    
+    Remove the ENABLE_CSS_IMAGE_ORIENTATION feature flag.
+    
+    * Configurations/FeatureDefines.xcconfig:
+    
+    Source/CyberKitLegacy/mac:
     
     Remove the ENABLE_CSS_IMAGE_ORIENTATION feature flag.
     
@@ -6124,7 +6124,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Remove the ENABLE_CSS_IMAGE_ORIENTATION feature flag.
     
-    * TestWebKitAPI/Configurations/FeatureDefines.xcconfig:
+    * TestCyberKitAPI/Configurations/FeatureDefines.xcconfig:
     
     LayoutTests:
     
@@ -6165,12 +6165,12 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Eric Carlson.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     No change of behavior.
     
     * Modules/mediastream/PeerConnectionBackend.cpp:
-    (WebCore::PeerConnectionBackend::registerMDNSName):
+    (CyberCore::PeerConnectionBackend::registerMDNSName):
     Fix message typo (missing space).
     
     LayoutTests:
@@ -6369,8 +6369,8 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Migrate system language tests to LayoutTests, to match the rest of our system language tests.
     
-    * TestWebKitAPI/TestWebKitAPI.xcodeproj/project.pbxproj:
-    * TestWebKitAPI/Tests/mac/NavigatorLanguage.mm: Removed.
+    * TestCyberKitAPI/TestCyberKitAPI.xcodeproj/project.pbxproj:
+    * TestCyberKitAPI/Tests/mac/NavigatorLanguage.mm: Removed.
     
     LayoutTests:
     
@@ -6378,7 +6378,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Dean Jackson.
     
-    Migrate and update tests from TestWebKitAPI to LayoutTests, to match the rest of our system language tests.
+    Migrate and update tests from TestCyberKitAPI to LayoutTests, to match the rest of our system language tests.
     
     * platform/mac/TestExpectations: Mark these tests as possibly failing on older versions of macOS.
     * fast/text/international/system-language/navigator-language/navigator-language-en-GB-expected.txt: Added.
@@ -6431,7 +6431,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
             Reviewed by Dean Jackson.
 
-            Migrate and update tests from TestWebKitAPI to LayoutTests, to match the rest of our system language tests.
+            Migrate and update tests from TestCyberKitAPI to LayoutTests, to match the rest of our system language tests.
 
             * platform/mac/TestExpectations: Mark these tests as possibly failing on older versions of macOS.
             * fast/text/international/system-language/navigator-language/navigator-language-en-GB-expected.txt: Added.
@@ -6484,7 +6484,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Geoffrey Garen.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Block cross-site top-frame navigations from untrusted iframes, unless they have a user gesture.
     We already consider third-party iframes as untrusted, we now also treat first-party iframes
@@ -6493,15 +6493,15 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Test: http/tests/security/block-top-level-navigations-by-untrusted-first-party-iframes.html
     
     * dom/Document.cpp:
-    (WebCore::Document::canNavigate):
-    (WebCore::Document::willLoadScriptElement):
-    (WebCore::Document::willLoadFrameElement):
-    (WebCore::Document::isNavigationBlockedByThirdPartyIFrameRedirectBlocking):
+    (CyberCore::Document::canNavigate):
+    (CyberCore::Document::willLoadScriptElement):
+    (CyberCore::Document::willLoadFrameElement):
+    (CyberCore::Document::isNavigationBlockedByThirdPartyIFrameRedirectBlocking):
     * dom/Document.h:
     * dom/ScriptElement.cpp:
-    (WebCore::ScriptElement::requestClassicScript):
+    (CyberCore::ScriptElement::requestClassicScript):
     * html/HTMLFrameElementBase.cpp:
-    (WebCore::HTMLFrameElementBase::openURL):
+    (CyberCore::HTMLFrameElementBase::openURL):
     
     LayoutTests:
     
@@ -6603,7 +6603,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Antti Koivisto.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: webanimations/no-css-animation-on-noscript.html
     
@@ -6617,15 +6617,15 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     We now prevent elements such as <noscript> from being considered for CSS Animations in TreeResolver::resolveElement().
     
     * dom/Element.cpp:
-    (WebCore::Element::rendererIsNeeded):
+    (CyberCore::Element::rendererIsNeeded):
     * dom/Element.h:
-    (WebCore::Element::rendererIsEverNeeded):
+    (CyberCore::Element::rendererIsEverNeeded):
     * html/HTMLElement.cpp:
-    (WebCore::HTMLElement::rendererIsEverNeeded):
-    (WebCore::HTMLElement::rendererIsNeeded): Deleted.
+    (CyberCore::HTMLElement::rendererIsEverNeeded):
+    (CyberCore::HTMLElement::rendererIsNeeded): Deleted.
     * html/HTMLElement.h:
     * style/StyleTreeResolver.cpp:
-    (WebCore::Style::TreeResolver::resolveElement):
+    (CyberCore::Style::TreeResolver::resolveElement):
     
     LayoutTests:
     
@@ -6782,7 +6782,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Zalan Bujtas.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     After r252724, which separated 'used' from 'specified' z-index in style, we need to copy
     the specified to the used z-index in animated styles, while preserving the existing 'forceStackingContext'
@@ -6795,21 +6795,21 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Test: animations/z-index-in-keyframe.html
     
     * animation/KeyframeEffect.cpp:
-    (WebCore::KeyframeEffect::apply):
+    (CyberCore::KeyframeEffect::apply):
     * animation/KeyframeEffect.h:
-    (WebCore::KeyframeEffect::triggersStackingContext const):
+    (CyberCore::KeyframeEffect::triggersStackingContext const):
     * dom/Element.cpp:
-    (WebCore::Element::applyKeyframeEffects):
+    (CyberCore::Element::applyKeyframeEffects):
     * dom/Element.h:
     * page/animation/CSSAnimationController.h:
     (): Deleted.
     * page/animation/CompositeAnimation.cpp:
-    (WebCore::CompositeAnimation::animate):
+    (CyberCore::CompositeAnimation::animate):
     * style/StyleAdjuster.cpp:
-    (WebCore::Style::Adjuster::adjustAnimatedStyle):
+    (CyberCore::Style::Adjuster::adjustAnimatedStyle):
     * style/StyleAdjuster.h:
     * style/StyleTreeResolver.cpp:
-    (WebCore::Style::TreeResolver::createAnimatedElementUpdate):
+    (CyberCore::Style::TreeResolver::createAnimatedElementUpdate):
     
     LayoutTests:
     
@@ -6839,7 +6839,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Brent Fulgham.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Our Font Loading API does not comply with the spec:
     
@@ -6850,8 +6850,8 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     Test: fast/text/font-loading-global-keyword.html
     
     * css/CSSFontFaceSet.cpp:
-    (WebCore::computeFontSelectionRequest):
-    (WebCore::CSSFontFaceSet::matchingFacesExcludingPreinstalledFonts):
+    (CyberCore::computeFontSelectionRequest):
+    (CyberCore::CSSFontFaceSet::matchingFacesExcludingPreinstalledFonts):
     
     LayoutTests:
     
@@ -6886,7 +6886,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
     
     Reviewed by Youenn Fablet.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     The URL size limitation added in r253662 was too low. We should bump it to handle
     reasonable data URI sizes.
@@ -7745,7 +7745,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-12-19  Jack Lee  <shihchieh_lee@apple.com>
 
-        Nullptr crash in WebCore::RenderTreeBuilder::attach
+        Nullptr crash in CyberCore::RenderTreeBuilder::attach
         https://bugs.webkit.org/show_bug.cgi?id=205476
 
         Reviewed by Ryosuke Niwa.
@@ -7755,7 +7755,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-12-19  Jack Lee  <shihchieh_lee@apple.com>
 
-        Nullptr crash in WebCore::findPlaceForCounter with display: contents parent
+        Nullptr crash in CyberCore::findPlaceForCounter with display: contents parent
         https://bugs.webkit.org/show_bug.cgi?id=205290
 
         Reviewed by Ryosuke Niwa.
@@ -7765,7 +7765,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-12-19  Charlie Turner  <cturner@igalia.com>
 
-        [GTK] http/tests/media/clearkey/collect-webkit-media-session.html is timing out since added in r235429 "WebKitMediaSession should be GC collectable when its document is being stopped"
+        [GTK] http/tests/media/clearkey/collect-webkit-media-session.html is timing out since added in r235429 "CyberKitMediaSession should be GC collectable when its document is being stopped"
         https://bugs.webkit.org/show_bug.cgi?id=189345
 
         Unreviewed gardening.
@@ -8514,7 +8514,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
         that are not valid in any browser and which cause flaky timeouts.
 
         To restore test coverage for the ready promise, import work-in-progress test from:
-        https://github.com/web-platform-tests/wpt/pull/20655 (except for the last subtest that is still flaky in Gecko and WebKit)
+        https://github.com/web-platform-tests/wpt/pull/20655 (except for the last subtest that is still flaky in Gecko and CyberKit)
 
         * TestExpectations:
         * http/wpt/service-workers/ready.https.window-expected.txt: Added.
@@ -11727,7 +11727,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-11-13  Fujii Hironori  <Hironori.Fujii@sony.com>
 
-        [Win][DumpRenderTree][WebKitTestRunner] eventSender.keyDown should support function keys
+        [Win][DumpRenderTree][CyberKitTestRunner] eventSender.keyDown should support function keys
         https://bugs.webkit.org/show_bug.cgi?id=204146
 
         Reviewed by Ross Kirsling.
@@ -11971,7 +11971,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-11-11  Kate Cheney  <katherine_cheney@apple.com>
 
-        CrashTracer: com.apple.WebKit.Networking.Development at com.apple.WebKit: WebKit::NetworkProcess::setIsRunningResourceLoadStatisticsTest
+        CrashTracer: com.matthewbenedict.CyberKit.Networking.Development at com.matthewbenedict.CyberKit: CyberKit::NetworkProcess::setIsRunningResourceLoadStatisticsTest
         https://bugs.webkit.org/show_bug.cgi?id=204081
         <rdar://problem/56889809>
 
@@ -13105,7 +13105,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-11-04  Chris Dumez  <cdumez@apple.com>
 
-        MediaKeySession / WebKitMediaKeySession should not prevent entering the back/forward cache
+        MediaKeySession / CyberKitMediaKeySession should not prevent entering the back/forward cache
         https://bugs.webkit.org/show_bug.cgi?id=203089
 
         Reviewed by Youenn Fablet.
@@ -13150,7 +13150,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
         Reverted changeset:
 
-        "MediaKeySession / WebKitMediaKeySession should not prevent
+        "MediaKeySession / CyberKitMediaKeySession should not prevent
         entering the back/forward cache"
         https://bugs.webkit.org/show_bug.cgi?id=203089
         https://trac.webkit.org/changeset/251993
@@ -13207,7 +13207,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-11-04  Chris Dumez  <cdumez@apple.com>
 
-        MediaKeySession / WebKitMediaKeySession should not prevent entering the back/forward cache
+        MediaKeySession / CyberKitMediaKeySession should not prevent entering the back/forward cache
         https://bugs.webkit.org/show_bug.cgi?id=203089
 
         Reviewed by Youenn Fablet.
@@ -14987,7 +14987,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
         Unreviewed test gardening.
 
-        Make the test added in r251385 pass in WebKit1.
+        Make the test added in r251385 pass in CyberKit1.
 
         * compositing/video/video-border-radius-clipping-expected.html:
         * compositing/video/video-border-radius-clipping.html:
@@ -15323,8 +15323,8 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
         Reviewed by Devin Rousso.
 
-        Added new test for Target events during PSON. It is only enabled on WebKit2 as there is
-        no Target agent in WebKit1.
+        Added new test for Target events during PSON. It is only enabled on CyberKit2 as there is
+        no Target agent in CyberKit1.
 
         * TestExpectations:
         * http/tests/inspector/target/target-events-for-provisional-page-expected.txt: Added.
@@ -15463,7 +15463,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
         Reviewed by Tim Horton.
 
-        Try to make this test more robust in WebKit2 on iOS 13 by ensuring at least one round trip between the web
+        Try to make this test more robust in CyberKit2 on iOS 13 by ensuring at least one round trip between the web
         content process and the UI process after copying and pasting. The root cause of the flakiness is still unknown,
         but evidence suggests that code in Pasteboard.framework needs at least one runloop to sever the connection
         between the application process and `pasted` after writing content to the pasteboard; otherwise, this
@@ -15732,7 +15732,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
         Reviewed by Zalan Bujtas.
         
-        In WebKit1, the transform on the layer is not consistent, so filter it out of the layer tree dump (it's not the important part).
+        In CyberKit1, the transform on the layer is not consistent, so filter it out of the layer tree dump (it's not the important part).
 
         * legacy-animation-engine/compositing/backing/transform-transition-from-outside-view-expected.txt:
         * legacy-animation-engine/compositing/backing/transform-transition-from-outside-view.html:
@@ -15845,13 +15845,13 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
         Reviewed by Simon Fraser.
 
         Rebase iOS result. The test fast/repaint/placeholder-after-caps-lock-hidden.html is only supported
-        in Modern WebKit and only on Mac and iOS, which implement uiController.toggleCapsLock(), at the time
+        in Modern CyberKit and only on Mac and iOS, which implement uiController.toggleCapsLock(), at the time
         of writing.
 
         * platform/ios-wk2/TestExpectations: Mark test as PASS.
         * platform/ios-wk2/fast/repaint/placeholder-after-caps-lock-hidden-expected.txt:
         * platform/ios/TestExpectations: Remove entry so that we fallback to platform-independent TestExpectations
-        and skip the test because the test is only supported on Modern WebKit.
+        and skip the test because the test is only supported on Modern CyberKit.
         * platform/ios/fast/events/ios/placeholder-after-caps-lock-hidden-expected.txt: Removed; erroneously added
         file for non-existent test.
 
@@ -15976,7 +15976,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-10-21  Alicia Boya García  <aboya@igalia.com>
 
-        [MSE][GStreamer] Revert WebKitMediaSrc rework temporarily
+        [MSE][GStreamer] Revert CyberKitMediaSrc rework temporarily
         https://bugs.webkit.org/show_bug.cgi?id=203078
 
         Reviewed by Carlos Garcia Campos.
@@ -16126,7 +16126,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-10-18  Devin Rousso  <drousso@apple.com>
 
-        Web Inspector: Elements: allow WebKit engineers to edit UserAgent shadow trees
+        Web Inspector: Elements: allow CyberKit engineers to edit UserAgent shadow trees
         https://bugs.webkit.org/show_bug.cgi?id=203159
 
         Reviewed by Brian Burg.
@@ -16160,7 +16160,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
         Now that <rdar://problem/45772078> is fixed we can write the test such that we check the test
         result after we receive a DOM key up for the forward delete. Currently the test makes use of a
-        workaround that incorrectly assumes that the keyboard will call back into WebKit to perform the
+        workaround that incorrectly assumes that the keyboard will call back into CyberKit to perform the
         forward deletion before the web process blur()s the field. This is not guaranteed to happen.
         Instead wait until we receive a DOM key up for the delete key.
 
@@ -16347,8 +16347,8 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
         array of options (which, for now, just supports a single option to change the pasteboard when granting DOM paste
         access).
 
-        * platform/ios-wk1/TestExpectations: Skip clipboard-change-data-while-reading.html for now in WebKit1.
-        * platform/mac-wk1/TestExpectations: Skip clipboard-change-data-while-reading.html for now in WebKit1.
+        * platform/ios-wk1/TestExpectations: Skip clipboard-change-data-while-reading.html for now in CyberKit1.
+        * platform/mac-wk1/TestExpectations: Skip clipboard-change-data-while-reading.html for now in CyberKit1.
         * platform/win/TestExpectations: Skip the new layout tests on Windows for now.
 
 2019-10-17  Chris Dumez  <cdumez@apple.com>
@@ -16949,7 +16949,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-10-15  Wenson Hsieh  <wenson_hsieh@apple.com>
 
-        REGRESSION: editing/async-clipboard/clipboard-interfaces.html is failing in WebKit1
+        REGRESSION: editing/async-clipboard/clipboard-interfaces.html is failing in CyberKit1
         https://bugs.webkit.org/show_bug.cgi?id=202940
         <rdar://problem/56262298>
 
@@ -16960,13 +16960,13 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
         * editing/async-clipboard/clipboard-wrapper-stays-alive.html:
 
         Tweak a few layout tests to actually turn the experimental feature on (this previously worked because
-        experimental feature flags are already on by default in WebKit2).
+        experimental feature flags are already on by default in CyberKit2).
 
         * platform/ios-wk1/TestExpectations:
         * platform/mac-wk1/TestExpectations:
         * platform/win/TestExpectations:
 
-        Unskip and unmark these layout tests as failing in WebKit1 on iOS, macOS, and Windows.
+        Unskip and unmark these layout tests as failing in CyberKit1 on iOS, macOS, and Windows.
 
 2019-10-15  Dean Jackson  <dino@apple.com>
 
@@ -17241,7 +17241,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-10-12  Ryosuke Niwa  <rniwa@webkit.org>
 
-        [iOS] Crash in WebCore::DOMWindow::incrementScrollEventListenersCount
+        [iOS] Crash in CyberCore::DOMWindow::incrementScrollEventListenersCount
         https://bugs.webkit.org/show_bug.cgi?id=202878
 
         Reviewed by Alex Christensen.
@@ -17546,7 +17546,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
         instead use context menus.
 
         We no longer need to test the actions in the context menu here, since
-        it is covered by the TestWebKitAPI/Tests/WebKitCocoa/ContextMenus test.
+        it is covered by the TestCyberKitAPI/Tests/CyberKitCocoa/ContextMenus test.
 
         However, we can still use this test to ensure we are getting a
         context menu on the correct element.
@@ -17754,7 +17754,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
         * platform/win/TestExpectations:
         * platform/wincairo/TestExpectations:
 
-        Skip editing/pasteboard/dom-paste everywhere for now, except for macOS and iOS WebKit2.
+        Skip editing/pasteboard/dom-paste everywhere for now, except for macOS and iOS CyberKit2.
 
 2019-10-10  Chris Lord  <clord@igalia.com>
 
@@ -19149,8 +19149,8 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
         Reviewed by Devin Rousso.
 
-        User interaction inspector tests were accidentally disabled on both WebKit1 and WebKit2.
-        Marking them as passing on WebKit2.
+        User interaction inspector tests were accidentally disabled on both CyberKit1 and CyberKit2.
+        Marking them as passing on CyberKit2.
 
         * platform/wk2/TestExpectations:
 
@@ -19162,7 +19162,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-10-01  Alexey Shvayka  <shvaikalesh@gmail.com>
 
-        [win-ews] No such file or directory: u'/cygdrive/C/cygwin/home/buildbot/WebKit/WebKitBuild/Release/bin32/layout-test-results/pywebsocket.ws.log-out.txt'
+        [win-ews] No such file or directory: u'/cygdrive/C/cygwin/home/buildbot/CyberKit/CyberKitBuild/Release/bin32/layout-test-results/pywebsocket.ws.log-out.txt'
         https://bugs.webkit.org/show_bug.cgi?id=188640
 
         Reviewed by Alex Christensen.
@@ -19183,7 +19183,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
         Reviewed by Brent Fulgham.
 
-        WebKit's Storage Access API implementation has so far only looked at whether ITP is
+        CyberKit's Storage Access API implementation has so far only looked at whether ITP is
         blocking cookie access or not. However, the default cookie policy is still in
         effect underneath ITP. document.hasStorageAccess() should return true if the
         third-party:
@@ -19237,7 +19237,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
         Make table's clientWidth/Height include its border sizes.
         https://bugs.webkit.org/show_bug.cgi?id=200974
 
-        WebKit doesn't have table wrapper box currently
+        CyberKit doesn't have table wrapper box currently
         while Gecko has it,
         so this CL tries to mimic the behavior that
         clientWidth/Height refers to table wrapper box
@@ -19536,7 +19536,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
         Reviewed by Alex Christensen.
 
         Stop using testRunner.overridePreference() to turn on Page Cache, as this does not work
-        for WebKit2 when navigating cross-origin due to process swapping. Instead, update tests
+        for CyberKit2 when navigating cross-origin due to process swapping. Instead, update tests
         to rely on `<!-- webkit-test-runner [ enablePageCache=true ] -->`.
 
         * animations/resume-after-page-cache.html:
@@ -20649,7 +20649,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
         When only the width (no height) attribute of a video element is given
         and the the poster image is missing (cannot be downloaded),
         the aspect ratio of the video element should not be 1, which is the default behavior
-        of WebKit to paint a broken image. Instead, it should be the aspect ratio of the video content.
+        of CyberKit to paint a broken image. Instead, it should be the aspect ratio of the video content.
 
         * media/video-poster-not-found-expected.txt: Added.
         * media/video-poster-not-found.html: Added.
@@ -21151,7 +21151,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-09-14  Antti Koivisto  <antti@apple.com>
 
-        ASSERTION FAILED: !renderer() in  WebCore::Text::~Text
+        ASSERTION FAILED: !renderer() in  CyberCore::Text::~Text
         https://bugs.webkit.org/show_bug.cgi?id=172514
         <rdar://problem/32470509>
 
@@ -21730,7 +21730,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
         Reviewed by Alex Christensen.
 
         Use testRunner.setShouldSwapToEphemeralSessionOnNextNavigation() / setShouldSwapToDefaultSessionOnNextNavigation() to
-        truly switch session on WebKit2 instead of using the testRunner.setPrivateBrowsingEnabled_DEPRECATED() hack.
+        truly switch session on CyberKit2 instead of using the testRunner.setPrivateBrowsingEnabled_DEPRECATED() hack.
 
         * http/tests/cookies/private-cookie-storage-expected.txt:
         * http/tests/cookies/private-cookie-storage.html:
@@ -21926,7 +21926,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
         Per https://github.com/w3c/csswg-drafts/issues/3749,
         Gecko and Blink has this behavior already.
 
-        This patch makes WebKit has the same behavior with them.
+        This patch makes CyberKit has the same behavior with them.
 
         * css3/calc/line-height-expected.txt:
         * fast/css/font-calculated-value-expected.txt:
@@ -22005,7 +22005,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
         testRunner.setShouldSwapToDefaultSessionOnNextNavigation() instead of the legacy
         testRunner.setPrivateBrowsingEnabled_DEPRECATED(). The test needed some extra steps to
         navigate whenever we switch session but it is a lot more realistic and is really switching
-        session on WebKit2. The testRunner.setPrivateBrowsingEnabled_DEPRECATED() was not truly
+        session on CyberKit2. The testRunner.setPrivateBrowsingEnabled_DEPRECATED() was not truly
         switching session, just making the document think it did.
 
         * http/tests/adClickAttribution/conversion-disabled-in-ephemeral-session.html:
@@ -22798,7 +22798,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
         Reviewed by Alex Christensen.
 
-        Stop using testRunner.setPrivateBrowsingEnabled_DEPRECATED() as it does not do the right thing for WebKit2.
+        Stop using testRunner.setPrivateBrowsingEnabled_DEPRECATED() as it does not do the right thing for CyberKit2.
         Instead, use the new useEphemeralSession WKTR flag added in r249542.
 
         * http/tests/cache/disk-cache/disk-cache-vary-cookie-expected.txt:
@@ -22814,7 +22814,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
         Reviewed by Alex Christensen.
 
         Stop using testRunner.setPrivateBrowsingEnabled_DEPRECATED() in plugins/private-browsing-mode.html
-        since it does not do the right thing for WebKit2. Instead, use the new useEphemeralSession
+        since it does not do the right thing for CyberKit2. Instead, use the new useEphemeralSession
         WKTR flag.
 
         * platform/mac-wk2/TestExpectations:
@@ -23062,7 +23062,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
         Test WI.urlWithoutFragment.
 
         * platform/mac-wk1/TestExpectations:
-        WebKitLegacy does not support overrides.
+        CyberKitLegacy does not support overrides.
 
 2019-09-04  Said Abou-Hallawa  <sabouhallawa@apple.com>
 
@@ -23161,7 +23161,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-09-03  Devin Rousso  <drousso@apple.com>
 
-        REGRESSION (r249078): Flaky crash in com.apple.JavaScriptCore: Inspector::InjectedScriptModule::ensureInjected
+        REGRESSION (r249078): Flaky crash in com.matthewbenedict.CyberScriptCore: Inspector::InjectedScriptModule::ensureInjected
         https://bugs.webkit.org/show_bug.cgi?id=201201
         <rdar://problem/54771560>
 
@@ -23237,7 +23237,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
         Reviewed by Said Abou-Hallawa.
 
-        These test cases are imported from Blink's commit, and modified for WebKit.
+        These test cases are imported from Blink's commit, and modified for CyberKit.
         <https://chromium.googlesource.com/chromium/src/+/e7d7225c33aa7fc42ee390125b01df9167fad106%5E%21/>
 
         * TestExpectations:
@@ -23547,7 +23547,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
         Reviewed by Simon Fraser.
 
-        Add a new layout test that covers this scenario. See WebCore ChangeLog for additional detail.
+        Add a new layout test that covers this scenario. See CyberCore ChangeLog for additional detail.
 
         * editing/selection/ios/show-selection-in-transformed-container-2-expected.txt: Added.
         * editing/selection/ios/show-selection-in-transformed-container-2.html: Added.
@@ -23682,7 +23682,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
         Reviewed by Tim Horton.
 
-        Add a new layout test that covers this scenario. See WebKit ChangeLog for additional detail.
+        Add a new layout test that covers this scenario. See CyberKit ChangeLog for additional detail.
 
         * editing/selection/ios/show-selection-in-transformed-container-expected.txt: Added.
         * editing/selection/ios/show-selection-in-transformed-container.html: Added.
@@ -23841,7 +23841,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-08-28  Alicia Boya García  <aboya@igalia.com>
 
-        [MSE][GStreamer] WebKitMediaSrc rework
+        [MSE][GStreamer] CyberKitMediaSrc rework
         https://bugs.webkit.org/show_bug.cgi?id=199719
 
         Reviewed by Xabier Rodriguez-Calvar.
@@ -23996,7 +23996,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-08-27  Chris Dumez  <cdumez@apple.com>
 
-        Crash under WebCore::jsNotificationConstructorPermission
+        Crash under CyberCore::jsNotificationConstructorPermission
         https://bugs.webkit.org/show_bug.cgi?id=201186
         <rdar://problem/53962833>
 
@@ -24443,7 +24443,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-08-23  Wenson Hsieh  <wenson_hsieh@apple.com>
 
-        [iOS] [WebKit2] Tapping on the “I’m” text suggestion after typing “i’” does nothing
+        [iOS] [CyberKit2] Tapping on the “I’m” text suggestion after typing “i’” does nothing
         https://bugs.webkit.org/show_bug.cgi?id=201085
         <rdar://problem/53056118>
 
@@ -25340,7 +25340,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-08-16  Chris Lord  <clord@igalia.com>
 
-        Update WebGL test expectations for WebKit WPE
+        Update WebGL test expectations for CyberKit WPE
         https://bugs.webkit.org/show_bug.cgi?id=200765
 
         Reviewed by Carlos Alberto Lopez Perez.
@@ -25553,7 +25553,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-08-15  Antti Koivisto  <antti@apple.com>
 
-        Negative size box with border radius causes hang under WebCore::approximateAsRegion
+        Negative size box with border radius causes hang under CyberCore::approximateAsRegion
         https://bugs.webkit.org/show_bug.cgi?id=200769
         <rdar://problem/53380674>
 
@@ -27561,8 +27561,8 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
         Reviewed by Ryosuke Niwa.
 
-        Add a new layout test to verify that attempting to show the font panel doesn't crash the web process in WebKit2.
-        This test is skipped in WebKit1, since EventSender::contextClick() in WebKit1 only returns an array of strings
+        Add a new layout test to verify that attempting to show the font panel doesn't crash the web process in CyberKit2.
+        This test is skipped in CyberKit1, since EventSender::contextClick() in CyberKit1 only returns an array of strings
         corresponding to the titles of each menu item.
 
         * editing/mac/style/do-not-crash-when-showing-font-panel-expected.txt: Added.
@@ -27571,7 +27571,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-07-23  Ryosuke Niwa  <rniwa@webkit.org>
 
-        WebKit should strip away system font names from the pasted content
+        CyberKit should strip away system font names from the pasted content
         https://bugs.webkit.org/show_bug.cgi?id=199975
         <rdar://problem/53336353>
 
@@ -27795,7 +27795,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
         Reviewed by Megan Gardner.
 
-        In r202295, we added an ios-specific quirk to prevent scrolling on iOS because of UIKit/WebKit scrolling discrepancies.
+        In r202295, we added an ios-specific quirk to prevent scrolling on iOS because of UIKit/CyberKit scrolling discrepancies.
         In r244141, we changed the scrolling behavior to be more like macOS, and the test was broken.  Since this was an intentional
         change and the bugs reported in rdar://problem/26805722 (initially fixed by r202295) and rdar://problem/49225507 (fixed by r244141)
         are both behaving as desired, the intentional change in r244141 should be reflected by new test expectations.
@@ -29404,7 +29404,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-07-09  Andres Gonzalez  <andresg_22@apple.com>
 
-        AX: HTML datalist accessibility is not exposed by WebKit
+        AX: HTML datalist accessibility is not exposed by CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=196998
         <rdar://problem/49962521>
 
@@ -29546,7 +29546,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-07-09  Antti Koivisto  <antti@apple.com>
 
-        REGRESSION(r244906): Crash in WebCore::positionOffsetValue
+        REGRESSION(r244906): Crash in CyberCore::positionOffsetValue
         https://bugs.webkit.org/show_bug.cgi?id=199613
         <rdar://problem/51518172>
 
@@ -29702,7 +29702,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
         Reviewed by Simon Fraser.
 
         Adjusts an existing layout test, and introduces a new test to verify that the shrink-to-fit heuristic is given a
-        chance to run before document load. See WebKit ChangeLog for more details.
+        chance to run before document load. See CyberKit ChangeLog for more details.
 
         * fast/viewport/ios/shrink-to-fit-content-before-document-load-expected.txt: Added.
         * fast/viewport/ios/shrink-to-fit-content-before-document-load.html: Added.
@@ -29719,7 +29719,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
         Reviewed by Chris Dumez.
 
         Add a test to verify that promises scheduled right before a programmatic paste resolve in the middle of the
-        paste, while creating a document for web content sanitization. See WebCore ChangeLog for more details.
+        paste, while creating a document for web content sanitization. See CyberCore ChangeLog for more details.
 
         * editing/pasteboard/paste-does-not-fire-promises-while-sanitizing-web-content-expected.txt: Added.
         * editing/pasteboard/paste-does-not-fire-promises-while-sanitizing-web-content.html: Added.
@@ -29821,7 +29821,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-07-05  Ryosuke Niwa  <rniwa@webkit.org>
 
-        [iOS] Crash in WebKit::WebPage::positionInformation via Range::startPosition
+        [iOS] Crash in CyberKit::WebPage::positionInformation via Range::startPosition
         https://bugs.webkit.org/show_bug.cgi?id=199503
 
         Reviewed by Wenson Hsieh.
@@ -29835,7 +29835,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-07-02  Myles C. Maxfield  <mmaxfield@apple.com>
 
-        [WHLSL] Standard library is too big to directly include in WebCore
+        [WHLSL] Standard library is too big to directly include in CyberCore
         https://bugs.webkit.org/show_bug.cgi?id=198186
         <rdar://problem/51288898>
 
@@ -29872,12 +29872,12 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
         Unreviewed, rolling out r247115.
 
-        Breaks lldbWebKitTester (and by extension, test-webkitpy)
+        Breaks lldbCyberKitTester (and by extension, test-webkitpy)
 
         Reverted changeset:
 
         "[WHLSL] Standard library is too big to directly include in
-        WebCore"
+        CyberCore"
         https://bugs.webkit.org/show_bug.cgi?id=198186
         https://trac.webkit.org/changeset/247115
 
@@ -29995,7 +29995,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-07-03  Simon Fraser  <simon.fraser@apple.com>
 
-        RELEASE_ASSERT in WebCore: WebCore::ScrollingStateTree::insertNode()
+        RELEASE_ASSERT in CyberCore: CyberCore::ScrollingStateTree::insertNode()
         https://bugs.webkit.org/show_bug.cgi?id=199479
         rdar://problem/52392556
 
@@ -30006,7 +30006,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-07-02  Myles C. Maxfield  <mmaxfield@apple.com>
 
-        [WHLSL] Standard library is too big to directly include in WebCore
+        [WHLSL] Standard library is too big to directly include in CyberCore
         https://bugs.webkit.org/show_bug.cgi?id=198186
         <rdar://problem/51288898>
 
@@ -30070,7 +30070,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-07-03  Andres Gonzalez  <andresg_22@apple.com>
 
-        Safari hanging while loading pages - WebCore::AccessibilityRenderObject::visiblePositionRangeForLine.
+        Safari hanging while loading pages - CyberCore::AccessibilityRenderObject::visiblePositionRangeForLine.
         https://bugs.webkit.org/show_bug.cgi?id=199434
         <rdar://problem/52475140>
 
@@ -30089,7 +30089,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
         Reviewed by Simon Fraser.
 
         These tests are depending on platform font metrics. They were
-        created for a Blink bug, doesn't seem useful for WebKit. Just
+        created for a Blink bug, doesn't seem useful for CyberKit. Just
         removed them.
 
         * imported/blink/animations/display-inline-style-adjust.html: Deleted.
@@ -30842,7 +30842,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
         Reviewed by Saam Barati.
 
-        whlsl-test-harness.js now generates WHLSL shaders and invokes WebKit's WHLSL compiler.
+        whlsl-test-harness.js now generates WHLSL shaders and invokes CyberKit's WHLSL compiler.
         MSL mode remains to facilitate further harness tesing.
         In addition, if WebGPU is not supported, synchronous Harness methods do nothing.
         Asynchronous methods will throw a WebGPUUnsupportedError that "rejects" the returned Promise.
@@ -32224,8 +32224,8 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
         Reviewed by Darin Adler.
 
-        WebKit now knows how to handle flag change events on iOS and dispatch DOM events just like Mac.
-        Until USE(UIKIT_KEYBOARD_ADDITIONS) is enabled by default WebKit does not expect to receive
+        CyberKit now knows how to handle flag change events on iOS and dispatch DOM events just like Mac.
+        Until USE(UIKIT_KEYBOARD_ADDITIONS) is enabled by default CyberKit does not expect to receive
         modifier flag changes. But once this compile time flag is enabled it will and the test
         fast/events/ios/keyboard-event-key-attribute.html will fail because it types '@' and only
         expects to see a single keydown for '@' even though it actually requires two key downs to
@@ -32746,7 +32746,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 2019-06-11  Daniel Bates  <dabates@apple.com>
 
         Skip test http/tests/security/contentSecurityPolicy/navigate-self-to-data-url.html as
-        testRunner.queueLoad() does not support loading data URLs in Legacy WebKit on Mac and iOS
+        testRunner.queueLoad() does not support loading data URLs in Legacy CyberKit on Mac and iOS
 
         * platform/ios-wk1/TestExpectations:
         * platform/mac-wk1/TestExpectations:
@@ -33162,7 +33162,7 @@ b'2020-03-23  Russell Epstein  <repstein@apple.com>\n\n        Cherry-pick r2587
 
 2019-06-06  Youenn Fablet  <youenn@apple.com>
 
-        Allow WebKitTestRunner to terminate network process after it finishes service worker file operations
+        Allow CyberKitTestRunner to terminate network process after it finishes service worker file operations
         https://bugs.webkit.org/show_bug.cgi?id=198584
 
         Reviewed by Geoffrey Garen.

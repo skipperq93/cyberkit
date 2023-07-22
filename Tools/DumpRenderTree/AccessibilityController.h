@@ -27,8 +27,8 @@
 #define AccessibilityController_h
 
 #include "AccessibilityUIElement.h"
-#include <JavaScriptCore/JSObjectRef.h>
-#include <JavaScriptCore/JSRetainPtr.h>
+#include <CyberScriptCore/JSObjectRef.h>
+#include <CyberScriptCore/JSRetainPtr.h>
 #include <string>
 #include <wtf/HashMap.h>
 #include <wtf/Platform.h>

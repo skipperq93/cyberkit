@@ -52,7 +52,7 @@
 
 /* USE() - use a particular third-party library or optional OS service */
 #define USE(WTF_FEATURE) (defined USE_##WTF_FEATURE  && USE_##WTF_FEATURE)
-/* ENABLE() - turn on a specific feature of WebKit */
+/* ENABLE() - turn on a specific feature of CyberKit */
 #define ENABLE(WTF_FEATURE) (defined ENABLE_##WTF_FEATURE  && ENABLE_##WTF_FEATURE)
 
 
@@ -810,7 +810,7 @@
 /* The SamplingProfiler is the probabilistic and low-overhead profiler used by
  * JSC to measure where time is spent inside a JavaScript program.
  * In configurations other than Windows and Darwin, because layout of mcontext_t depends on standard libraries (like glibc),
- * sampling profiler is enabled if WebKit uses pthreads and glibc. */
+ * sampling profiler is enabled if CyberKit uses pthreads and glibc. */
 #if !defined(ENABLE_SAMPLING_PROFILER)
 #if ENABLE(JIT) && (OS(WINDOWS) || HAVE(MACHINE_CONTEXT))
 #define ENABLE_SAMPLING_PROFILER 1

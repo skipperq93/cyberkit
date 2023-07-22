@@ -3,11 +3,11 @@
   no-autogen: true
   sources:
     - type: git
-      url: https://github.com/WebKitGTK/webkitgtk-test-fonts.git
+      url: https://github.com/CyberKitGTK/webkitgtk-test-fonts.git
   buildsystem: simple
   build-commands:
     # FIXME: Make ActivateFontWPE smarter.
-    - make install DESTDIR=/app/WebKitBuild/DependenciesWPE/Root
+    - make install DESTDIR=/app/CyberKitBuild/DependenciesWPE/Root
 - name: org.webkit.WPE
   buildsystem: simple
   build-commands:

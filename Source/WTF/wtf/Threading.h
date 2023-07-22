@@ -71,7 +71,7 @@ WTF_EXPORT_PRIVATE void initializeThreading();
 
 #if USE(PTHREADS)
 
-// We use SIGUSR1 to suspend and resume machine threads in JavaScriptCore.
+// We use SIGUSR1 to suspend and resume machine threads in CyberScriptCore.
 constexpr const int SigThreadSuspendResume = SIGUSR1;
 
 #endif
@@ -363,10 +363,10 @@ inline Thread* Thread::currentMayBeNull()
 
 inline Thread& Thread::current()
 {
-    // WRT WebCore:
+    // WRT CyberCore:
     //    Thread::current() is used on main thread before it could possibly be used
     //    on secondary ones, so there is no need for synchronization here.
-    // WRT JavaScriptCore:
+    // WRT CyberScriptCore:
     //    Thread::initializeTLSKey() is initially called from initializeThreading(), ensuring
     //    this is initially called in a std::call_once locked context.
 #if !HAVE(FAST_TLS) && !OS(WINDOWS)

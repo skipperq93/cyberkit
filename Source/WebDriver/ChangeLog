@@ -31,7 +31,7 @@
 
 2019-12-13  Jim Mason  <jmason@ibinx.com>
 
-        [GTK] WebKitGTK build hangs on g-ir-scanner
+        [GTK] CyberKitGTK build hangs on g-ir-scanner
         https://bugs.webkit.org/show_bug.cgi?id=204715
 
         This patch fixes the static initialization order problem
@@ -294,7 +294,7 @@
 
 2019-06-03  Carlos Garcia Campos  <cgarcia@igalia.com>
 
-        REGRESSION(r245567): [GTK][WPE] [2.25.1] WebKitWebDriver gets installed as WebDriver
+        REGRESSION(r245567): [GTK][WPE] [2.25.1] CyberKitWebDriver gets installed as WebDriver
         https://bugs.webkit.org/show_bug.cgi?id=198480
 
         Reviewed by Michael Catanzaro.
@@ -307,12 +307,12 @@
 
 2019-05-31  Don Olmstead  <don.olmstead@sony.com>
 
-        [CMake] Add WebKit::WTF target
+        [CMake] Add CyberKit::WTF target
         https://bugs.webkit.org/show_bug.cgi?id=198400
 
         Reviewed by Konstantin Tokarev.
 
-        Use the WebKit::WTF target.
+        Use the CyberKit::WTF target.
 
         * CMakeLists.txt:
 
@@ -399,12 +399,12 @@
 
 2019-04-14  Don Olmstead  <don.olmstead@sony.com>
 
-        [CMake] JavaScriptCore derived sources should only be referenced inside JavaScriptCore
+        [CMake] CyberScriptCore derived sources should only be referenced inside CyberScriptCore
         https://bugs.webkit.org/show_bug.cgi?id=196742
 
         Reviewed by Konstantin Tokarev.
 
-        Don't set JavaScriptCore_SCRIPTS_DIR now that it is set within WebKitFS.
+        Don't set CyberScriptCore_SCRIPTS_DIR now that it is set within CyberKitFS.
 
         * CMakeLists.txt:
 
@@ -457,7 +457,7 @@
 
         Unreviewed speculative WPE build fix.
 
-        * CMakeLists.txt: Include the WebKitCommon file, as is normally done in
+        * CMakeLists.txt: Include the CyberKitCommon file, as is normally done in
         standalone CMakeLists.txt files.
 
 2019-01-31  Carlos Garcia Campos  <cgarcia@igalia.com>
@@ -1328,7 +1328,7 @@
         Reviewed by Carlos Alberto Lopez Perez.
 
         Handle the case of failing to launch the browser. The test is actually failing because it's sending wrong
-        capabilities, the driver tries to fall back to the default driver, but since WebKit is not installed in the
+        capabilities, the driver tries to fall back to the default driver, but since CyberKit is not installed in the
         bots, it fails to find the MiniBrowser. The test needs to be fixed, but we shouldn't crash when the browser
         can't be spawned for whatever reason in any case. This patch handles that case and changes the boolean result of
         connectToBrowser to be an optional error string instead. This way we can provide more detailed error message
@@ -2243,7 +2243,7 @@
 
 2017-09-18  Michael Catanzaro  <mcatanzaro@igalia.com>
 
-        [CMake] Rename WebKit target to WebKitLegacy and rename WebKit2 target to WebKit
+        [CMake] Rename CyberKit target to CyberKitLegacy and rename CyberKit2 target to CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=174558
 
         Reviewed by Alex Christensen.
@@ -2633,7 +2633,7 @@
 
 2017-08-01  Michael Catanzaro  <mcatanzaro@igalia.com>
 
-        [CMake] WebKitFS.cmake depends on options set in Option cmake files that are included later
+        [CMake] CyberKitFS.cmake depends on options set in Option cmake files that are included later
         https://bugs.webkit.org/show_bug.cgi?id=174855
 
         Reviewed by Carlos Garcia Campos.
@@ -2646,7 +2646,7 @@
 
         Unreviewed. Fix GTK distcheck.
 
-        Ensure WebDriver derived sources directory is created, WebKitFS.cmake is useless for this.
+        Ensure WebDriver derived sources directory is created, CyberKitFS.cmake is useless for this.
 
         * PlatformGTK.cmake:
 

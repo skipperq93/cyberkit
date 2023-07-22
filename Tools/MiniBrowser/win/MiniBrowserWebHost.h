@@ -26,14 +26,14 @@
 #pragma once
 
 #include "resource.h"
-#include <WebKitLegacy/WebKit.h>
+#include <CyberKitLegacy/CyberKit.h>
 #include <comutil.h>
 
-class WebKitLegacyBrowserWindow;
+class CyberKitLegacyBrowserWindow;
 
 class MiniBrowserWebHost : public IWebFrameLoadDelegate, public IWebFrameLoadDelegatePrivate, public IWebNotificationObserver {
 public:
-    MiniBrowserWebHost(WebKitLegacyBrowserWindow* client)
+    MiniBrowserWebHost(CyberKitLegacyBrowserWindow* client)
         : m_client(client) { }
 
     // IUnknown
@@ -69,5 +69,5 @@ public:
 
 private:
     ULONG m_refCount { 0 };
-    WebKitLegacyBrowserWindow* m_client { nullptr };
+    CyberKitLegacyBrowserWindow* m_client { nullptr };
 };

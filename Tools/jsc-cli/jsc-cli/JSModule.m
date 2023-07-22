@@ -24,7 +24,7 @@
  */
 
 #import "JSModule.h"
-#import <JavaScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 
 @implementation JSModule {
     JSManagedValue *_exports;

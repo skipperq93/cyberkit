@@ -9,7 +9,7 @@ On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE
 
 PASS abbr.stringAttributeValue('AXExpandedTextValue') is 'World Wide Web'
 PASS content.attributedStringForTextMarkerRangeContainsAttribute('AXExpandedTextValue', markerRange) is true
-PASS acronym.stringAttributeValue('AXExpandedTextValue') is 'WebKit2'
+PASS acronym.stringAttributeValue('AXExpandedTextValue') is 'CyberKit2'
 PASS content.attributedStringForTextMarkerRangeContainsAttribute('AXExpandedTextValue', markerRange) is true
 PASS headerCell.stringAttributeValue('AXExpandedTextValue') is 'Test'
 PASS successfullyParsed is true

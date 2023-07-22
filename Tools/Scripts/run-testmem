@@ -31,7 +31,7 @@ require 'getoptlong'
 
 def usage
     puts "run-testmem [options]"
-    puts "--build-dir   (-b)   Pass in a path to your build directory, e.g, WebKitBuild/Release"
+    puts "--build-dir   (-b)   Pass in a path to your build directory, e.g, CyberKitBuild/Release"
     puts "--verbose     (-v)   Print more information as the benchmark runs"
     puts "--count       (-c)   Number of outer iterations to run the benchmark for"
     puts "--dry         (-d)   Print shell output that can be run as a bash script on a different device. When using this option, provide the --script-path and --build-dir options"
@@ -98,7 +98,7 @@ def getBuildDirectory
 
     output = `#{command}`.split("\n")
     if !output.length
-        puts "Error: could not find release WebKitBuild"
+        puts "Error: could not find release CyberKitBuild"
         exit 1
     end
     output = output[0]

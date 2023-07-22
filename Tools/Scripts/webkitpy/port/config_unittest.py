@@ -35,7 +35,7 @@ from webkitpy.common.system.executive_mock import MockExecutive2
 from webkitpy.common.system.filesystem import FileSystem
 from webkitpy.common.system.filesystem_mock import MockFileSystem
 from webkitpy.common.system.outputcapture import OutputCapture
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 
 import webkitpy.port.config as config
 
@@ -63,13 +63,13 @@ class ConfigTest(unittest.TestCase):
         # --top-level
         def mock_webkit_build_directory(arg_list):
             if arg_list == ['--top-level']:
-                return '/WebKitBuild/'
+                return '/CyberKitBuild/'
             elif arg_list == ['--configuration', '--debug']:
-                return '/WebKitBuild/Debug'
+                return '/CyberKitBuild/Debug'
             elif arg_list == ['--configuration', '--release']:
-                return '/WebKitBuild/Release'
+                return '/CyberKitBuild/Release'
             elif arg_list == []:
-                return '/WebKitBuild/\n/WebKitBuild//Debug\n'
+                return '/CyberKitBuild/\n/CyberKitBuild//Debug\n'
             return 'Error'
 
         def mock_run_command(arg_list):
@@ -78,10 +78,10 @@ class ConfigTest(unittest.TestCase):
             return 'Error'
 
         c = self.make_config(run_command_fn=mock_run_command)
-        self.assertEqual(c.build_directory(None), '/WebKitBuild/')
+        self.assertEqual(c.build_directory(None), '/CyberKitBuild/')
 
         # Test again to check caching
-        self.assertEqual(c.build_directory(None), '/WebKitBuild/')
+        self.assertEqual(c.build_directory(None), '/CyberKitBuild/')
 
         # Test other values
         self.assertTrue(c.build_directory('Release').endswith('/Release'))
@@ -89,8 +89,8 @@ class ConfigTest(unittest.TestCase):
         self.assertRaises(KeyError, c.build_directory, 'Unknown')
 
         # Test that stderr output from webkit-build-directory won't mangle the build dir
-        c = self.make_config(output='/WebKitBuild/', stderr="mock stderr output from webkit-build-directory")
-        self.assertEqual(c.build_directory(None), '/WebKitBuild/')
+        c = self.make_config(output='/CyberKitBuild/', stderr="mock stderr output from webkit-build-directory")
+        self.assertEqual(c.build_directory(None), '/CyberKitBuild/')
 
     def test_build_directory_passes_port_implementation(self):
         def mock_run_command(arg_list):
@@ -132,7 +132,7 @@ class ConfigTest(unittest.TestCase):
         e = Executive()
         fs = FileSystem()
         c = config.Config(e, fs)
-        script = WebKitFinder(fs).path_from_webkit_base('Tools', 'Scripts', 'webkitpy', 'port', 'config_standalone.py')
+        script = CyberKitFinder(fs).path_from_webkit_base('Tools', 'Scripts', 'webkitpy', 'port', 'config_standalone.py')
 
         # Note: don't use 'Release' here, since that's the normal default.
         expected = 'Debug'

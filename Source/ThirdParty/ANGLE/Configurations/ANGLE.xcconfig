@@ -1,5 +1,5 @@
 #include "Version.xcconfig"
-#include "WebKitTargetConditionals.xcconfig"
+#include "CyberKitTargetConditionals.xcconfig"
 
 PRODUCT_NAME = ANGLE;
 

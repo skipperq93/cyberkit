@@ -1,5 +1,5 @@
-This test ensures WebKit does not duplicate styles from matched rules in inline style declarations when copying and pasting contents.
-To manually test, copy "hello world WebKit" and paste it in the box blow.
+This test ensures CyberKit does not duplicate styles from matched rules in inline style declarations when copying and pasting contents.
+To manually test, copy "hello world CyberKit" and paste it in the box blow.
 Each element should have exact properties stated in its title attribute
 
 Original:
@@ -20,7 +20,7 @@ Original:
 |   <em>
 |     style="color: blue;"
 |     title="font-weight: bold; color: blue;"
-|     "WebKit"
+|     "CyberKit"
 
 Pasted:
 | <blockquote>
@@ -37,4 +37,4 @@ Pasted:
 |   <span>
 |     style="font-weight: bold; color: blue;"
 |     title="font-weight: bold; color: blue;"
-|     "WebKit<#selection-caret>"
+|     "CyberKit<#selection-caret>"

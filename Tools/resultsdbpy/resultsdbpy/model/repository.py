@@ -253,25 +253,25 @@ class SVNRepository(HTTPRepository):
         return f'{self.url}/!svn/bc/{commit}/'
 
 
-class WebKitRepository(SVNRepository):
+class CyberKitRepository(SVNRepository):
     CHANGELOGS = (
         'ChangeLog',
         'Source/bmalloc/ChangeLog',
-        'Source/JavaScriptCore/ChangeLog',
+        'Source/CyberScriptCore/ChangeLog',
         'Source/ThirdParty/ANGLE/ChangeLog',
         'Source/ThirdParty/ChangeLog',
         'Source/ThirdParty/libwebrtc/ChangeLog',
-        'Source/WebCore/ChangeLog',
-        'Source/WebCore/PAL/ChangeLog',
-        'Source/WebCore/platform/gtk/po/ChangeLog',
+        'Source/CyberCore/ChangeLog',
+        'Source/CyberCore/PAL/ChangeLog',
+        'Source/CyberCore/platform/gtk/po/ChangeLog',
         'Source/WebDriver/ChangeLog',
         'Source/WebInspectorUI/ChangeLog',
-        'Source/WebKit/ChangeLog',
-        'Source/WebKitLegacy/cf/ChangeLog',
-        'Source/WebKitLegacy/ChangeLog',
-        'Source/WebKitLegacy/ios/ChangeLog',
-        'Source/WebKitLegacy/mac/ChangeLog',
-        'Source/WebKitLegacy/win/ChangeLog',
+        'Source/CyberKit/ChangeLog',
+        'Source/CyberKitLegacy/cf/ChangeLog',
+        'Source/CyberKitLegacy/ChangeLog',
+        'Source/CyberKitLegacy/ios/ChangeLog',
+        'Source/CyberKitLegacy/mac/ChangeLog',
+        'Source/CyberKitLegacy/win/ChangeLog',
         'Source/WTF/ChangeLog',
         'Tools/ChangeLog',
         'Examples/ChangeLog',
@@ -282,7 +282,7 @@ class WebKitRepository(SVNRepository):
         'PerformanceTests/ChangeLog',
         'PerformanceTests/SunSpider/ChangeLog',
         'WebDriverTests/ChangeLog',
-        'WebKitLibraries/ChangeLog',
+        'CyberKitLibraries/ChangeLog',
         'Websites/browserbench.org/ChangeLog',
         'Websites/bugs.webkit.org/ChangeLog',
         'Websites/perf.webkit.org/ChangeLog',
@@ -294,11 +294,11 @@ class WebKitRepository(SVNRepository):
     FIRST_LINE_REGEX = re.compile(r'(?P<date>\d+-\d+-\d+)\s+(?P<name>\S.+\S)\s+<(?P<email>\S+)>')
 
     def __init__(self, **kwargs):
-        super(WebKitRepository, self).__init__('https://svn.webkit.org/repository/webkit/', **kwargs)
+        super(CyberKitRepository, self).__init__('https://svn.webkit.org/repository/webkit/', **kwargs)
 
     def commit_for_id(self, id, branch=SVNRepository.DEFAULT_BRANCH):
         with self.session():
-            result = super(WebKitRepository, self).commit_for_id(id, branch=branch)
+            result = super(CyberKitRepository, self).commit_for_id(id, branch=branch)
 
             # Find the last commit on the given branch so we can diff the changelogs
             previous_id = self.get(branch=branch, revision=int(id) - 1).get(
@@ -366,7 +366,7 @@ class WebKitRepository(SVNRepository):
                     while not lines_in_message[start_of_message_shard]:
                         start_of_message_shard += 1
 
-                # WebKit commit messages are often split across multiple changelogs with the first few lines duplicated.
+                # CyberKit commit messages are often split across multiple changelogs with the first few lines duplicated.
                 start_of_full_message = 0
                 while start_of_message_shard < len(lines_in_message) and start_of_full_message < len(commit_message):
                     if lines_in_message[start_of_message_shard].startswith(' ' * 8):

@@ -1,4 +1,4 @@
-# This file contains generic test expectations that apply to all ports of WebKit.
+# This file contains generic test expectations that apply to all ports of CyberKit.
 #
 # See http://trac.webkit.org/wiki/TestExpectations for more information on this file.
 
@@ -70,11 +70,11 @@ compositing/shared-backing/overflow-scroll [ Skip ]
 compositing/scrolling/async-overflow-scrolling [ Skip ]
 compositing/layer-creation/clipping-scope [ Skip ]
 
-# WebKit2 only.
+# CyberKit2 only.
 printing/printing-events.html [ Skip ]
 fast/forms/enterkeyhint-attribute-values.html [ Skip ]
 
-# Highlighting marked text ranges from layout tests is only supported in WebKit2.
+# Highlighting marked text ranges from layout tests is only supported in CyberKit2.
 editing/input/composition-highlights.html [ Skip ]
 
 http/tests/security/xss-DENIED-xsl-external-entity-no-logging.xml [ Skip ]
@@ -142,7 +142,7 @@ http/tests/security/clipboard/drag-drop-html-cross-origin-iframe-in-same-origin.
 quicklook [ Skip ]
 http/tests/quicklook [ Skip ]
 
-# These tests are WebKit2-only
+# These tests are CyberKit2-only
 http/tests/appcache/decide-navigation-policy-after-delay.html [ Skip ]
 http/tests/misc/will-send-request-with-client-provided-http-body.html [ Skip ]
 http/tests/loading/resourceLoadStatistics/ [ Skip ]
@@ -190,7 +190,7 @@ http/tests/security/strip-referrer-to-origin-for-third-party-redirects-in-privat
 http/tests/security/strip-referrer-to-origin-for-third-party-requests-in-private-mode.html [ Skip ]
 media/deactivate-audio-session.html [ Skip ]
 
-# ApplePay is only available on iOS (greater than iOS 10) and macOS (greater than macOS 10.12) and only for WebKit2.
+# ApplePay is only available on iOS (greater than iOS 10) and macOS (greater than macOS 10.12) and only for CyberKit2.
 http/tests/ssl/applepay/ [ Skip ]
 
 # Only WK2 allows unconstrained scrolling
@@ -805,10 +805,10 @@ webkit.org/b/179881 imported/w3c/web-platform-tests/encoding/eof-shift_jis.html 
 # Content encoding sniffing is only supported by CFNetwork.
 http/tests/xmlhttprequest/gzip-content-type-no-content-encoding.html [ Skip ]
 
-# Only supported in WebKit2.
+# Only supported in CyberKit2.
 http/wpt/cross-origin-resource-policy/ [ Skip ]
 
-# testRunner.terminateNetworkProcess() only works in WebKit2
+# testRunner.terminateNetworkProcess() only works in CyberKit2
 fast/files/blob-network-process-crash.html [ Skip ]
 
 # This test is currently only relevant on mac-wk2
@@ -825,10 +825,10 @@ fast/repaint/placeholder-after-caps-lock-hidden.html [ Skip ]
 # This test currently only works for mac-wk2
 fast/events/inactive-window-no-mouse-event.html [ Skip ]
 
-# This test is only relevant for WebKit2.
+# This test is only relevant for CyberKit2.
 http/tests/storage/storage-map-leaking.html [ Skip ]
 
-# The Web Share API is currently only implemented for modern WebKit on iOS and macOS
+# The Web Share API is currently only implemented for modern CyberKit on iOS and macOS
 fast/web-share [ Skip ]
 
 # This test was created to test a mac-wk2 bugfix
@@ -1731,7 +1731,7 @@ webkit.org/b/141267 http/tests/misc/detached-frame-console.html [ Pass Failure ]
 
 webkit.org/b/141370 http/tests/security/appcache-in-private-browsing.html [ Pass Failure ]
 
-# The current expectations for this test only make sense for WebKit on iOS; other platforms can have very different behaviors.
+# The current expectations for this test only make sense for CyberKit on iOS; other platforms can have very different behaviors.
 webkit.org/b/141488 fast/replaced/pdf-as-object-and-embed.html [ Skip ]
 
 webkit.org/b/141695 [ Debug ] fast/selectors/nth-last-child-of-register-requirement.html [ Slow ]
@@ -1784,7 +1784,7 @@ webkit.org/b/145390 storage/indexeddb/removed-private.html [ Failure ]
 webkit.org/b/145390 storage/indexeddb/deleteIndex-bug110792-private.html [ Pass Failure ]
 webkit.org/b/145390 storage/indexeddb/deleteIndex-bug110792.html [ Pass Failure ]
 
-# DumpRenderTree does not allow GIFs to animate, thus animated GIF tests don't work in WebKit1.
+# DumpRenderTree does not allow GIFs to animate, thus animated GIF tests don't work in CyberKit1.
 fast/images/animated-gif-no-layout.html [ ImageOnlyFailure ]
 fast/images/gif-loop-count.html [ ImageOnlyFailure ]
 

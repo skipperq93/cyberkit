@@ -25,11 +25,11 @@ from buildbot.process import factory
 from buildbot.steps import trigger
 
 from steps import (ApplyPatch, ApplyWatchList, CheckOutSource, CheckOutSpecificRevision, CheckPatchRelevance,
-                   CheckStyle, CompileJSC, CompileWebKit, ConfigureBuild,
+                   CheckStyle, CompileJSC, CompileCyberKit, ConfigureBuild,
                    DownloadBuiltProduct, ExtractBuiltProduct, InstallGtkDependencies, InstallWpeDependencies, KillOldProcesses,
-                   PrintConfiguration, RunAPITests, RunBindingsTests, RunBuildWebKitOrgUnitTests, RunEWSBuildbotCheckConfig, RunEWSUnitTests,
-                   RunJavaScriptCoreTests, RunWebKit1Tests, RunWebKitPerlTests,
-                   RunWebKitPyTests, RunWebKitTests, UpdateWorkingDirectory, ValidatePatch)
+                   PrintConfiguration, RunAPITests, RunBindingsTests, RunBuildCyberKitOrgUnitTests, RunEWSBuildbotCheckConfig, RunEWSUnitTests,
+                   RunCyberScriptCoreTests, RunCyberKit1Tests, RunCyberKitPerlTests,
+                   RunCyberKitPyTests, RunCyberKitTests, UpdateWorkingDirectory, ValidatePatch)
 
 
 class Factory(factory.BuildFactory):
@@ -78,23 +78,23 @@ class BindingsFactory(Factory):
         self.addStep(RunBindingsTests())
 
 
-class WebKitPerlFactory(Factory):
+class CyberKitPerlFactory(Factory):
     def __init__(self, platform, configuration=None, architectures=None, additionalArguments=None, **kwargs):
         Factory.__init__(self, platform=platform, configuration=configuration, architectures=architectures, buildOnly=False, additionalArguments=additionalArguments)
-        self.addStep(RunWebKitPerlTests())
+        self.addStep(RunCyberKitPerlTests())
 
 
-class WebKitPyFactory(Factory):
+class CyberKitPyFactory(Factory):
     def __init__(self, platform, configuration=None, architectures=None, additionalArguments=None, **kwargs):
         Factory.__init__(self, platform=platform, configuration=configuration, architectures=architectures, buildOnly=False, additionalArgument=additionalArguments, checkRelevance=True)
-        self.addStep(RunWebKitPyTests())
+        self.addStep(RunCyberKitPyTests())
 
 
 class BuildFactory(Factory):
     def __init__(self, platform, configuration=None, architectures=None, triggers=None, additionalArguments=None, **kwargs):
         Factory.__init__(self, platform=platform, configuration=configuration, architectures=architectures, buildOnly=False, triggers=triggers, additionalArguments=additionalArguments)
         self.addStep(KillOldProcesses())
-        self.addStep(CompileWebKit())
+        self.addStep(CompileCyberKit())
 
 
 class TestFactory(Factory):
@@ -121,7 +121,7 @@ class JSCTestsFactory(Factory):
         self.addStep(KillOldProcesses())
         self.addStep(CompileJSC(skipUpload=True))
         if runTests.lower() == 'true':
-            self.addStep(RunJavaScriptCoreTests())
+            self.addStep(RunCyberScriptCoreTests())
 
 
 class APITestsFactory(TestFactory):
@@ -133,7 +133,7 @@ class iOSBuildFactory(BuildFactory):
 
 
 class iOSTestsFactory(TestFactory):
-    LayoutTestClass = RunWebKitTests
+    LayoutTestClass = RunCyberKitTests
 
 
 class macOSBuildFactory(BuildFactory):
@@ -141,26 +141,26 @@ class macOSBuildFactory(BuildFactory):
 
 
 class macOSWK1Factory(TestFactory):
-    LayoutTestClass = RunWebKit1Tests
+    LayoutTestClass = RunCyberKit1Tests
 
 
 class macOSWK2Factory(TestFactory):
-    LayoutTestClass = RunWebKitTests
+    LayoutTestClass = RunCyberKitTests
 
 
 class WindowsFactory(Factory):
     def __init__(self, platform, configuration=None, architectures=None, triggers=None, additionalArguments=None, **kwargs):
         Factory.__init__(self, platform=platform, configuration=configuration, architectures=architectures, buildOnly=False, triggers=triggers, additionalArguments=additionalArguments)
         self.addStep(KillOldProcesses())
-        self.addStep(CompileWebKit(skipUpload=True))
-        self.addStep(RunWebKit1Tests())
+        self.addStep(CompileCyberKit(skipUpload=True))
+        self.addStep(RunCyberKit1Tests())
 
 
 class WinCairoFactory(Factory):
     def __init__(self, platform, configuration=None, architectures=None, triggers=None, additionalArguments=None, **kwargs):
         Factory.__init__(self, platform=platform, configuration=configuration, architectures=architectures, buildOnly=True, triggers=triggers, additionalArguments=additionalArguments)
         self.addStep(KillOldProcesses())
-        self.addStep(CompileWebKit(skipUpload=True))
+        self.addStep(CompileCyberKit(skipUpload=True))
 
 
 class GTKFactory(Factory):
@@ -168,7 +168,7 @@ class GTKFactory(Factory):
         Factory.__init__(self, platform=platform, configuration=configuration, architectures=architectures, buildOnly=True, triggers=triggers, additionalArguments=additionalArguments)
         self.addStep(KillOldProcesses())
         self.addStep(InstallGtkDependencies())
-        self.addStep(CompileWebKit(skipUpload=True))
+        self.addStep(CompileCyberKit(skipUpload=True))
 
 
 class WPEFactory(Factory):
@@ -176,7 +176,7 @@ class WPEFactory(Factory):
         Factory.__init__(self, platform=platform, configuration=configuration, architectures=architectures, buildOnly=True, triggers=triggers, additionalArguments=additionalArguments)
         self.addStep(KillOldProcesses())
         self.addStep(InstallWpeDependencies())
-        self.addStep(CompileWebKit(skipUpload=True))
+        self.addStep(CompileCyberKit(skipUpload=True))
 
 
 class ServicesFactory(Factory):
@@ -184,7 +184,7 @@ class ServicesFactory(Factory):
         Factory.__init__(self, platform=platform, configuration=configuration, architectures=architectures, buildOnly=False, additionalArguments=additionalArguments, checkRelevance=True)
         self.addStep(RunEWSUnitTests())
         self.addStep(RunEWSBuildbotCheckConfig())
-        self.addStep(RunBuildWebKitOrgUnitTests())
+        self.addStep(RunBuildCyberKitOrgUnitTests())
 
 
 class CommitQueueFactory(Factory):

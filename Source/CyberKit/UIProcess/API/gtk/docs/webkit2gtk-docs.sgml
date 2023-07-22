@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<book id="index" xmlns:xi="http://www.w3.org/2003/XInclude">
+  <bookinfo>
+    <title>CyberKitGTK Reference Manual</title>
+    <releaseinfo>for CyberKitGTK &version;</releaseinfo>
+  </bookinfo>
+
+  <chapter>
+    <title>Class Overview</title>
+    <xi:include href="xml/CyberKitWebContext.xml"/>
+    <xi:include href="xml/CyberKitWebView.xml"/>
+    <xi:include href="xml/CyberKitAuthenticationRequest.xml"/>
+    <xi:include href="xml/CyberKitBackForwardList.xml"/>
+    <xi:include href="xml/CyberKitBackForwardListItem.xml"/>
+    <xi:include href="xml/CyberKitSettings.xml"/>
+    <xi:include href="xml/CyberKitURIRequest.xml"/>
+    <xi:include href="xml/CyberKitURIResponse.xml"/>
+    <xi:include href="xml/CyberKitWindowProperties.xml"/>
+    <xi:include href="xml/CyberKitDownload.xml"/>
+    <xi:include href="xml/CyberKitPermissionRequest.xml"/>
+    <xi:include href="xml/CyberKitGeolocationPermissionRequest.xml"/>
+    <xi:include href="xml/CyberKitInstallMissingMediaPluginsPermissionRequest.xml"/>
+    <xi:include href="xml/CyberKitNavigationAction.xml"/>
+    <xi:include href="xml/CyberKitUserMediaPermissionRequest.xml"/>
+    <xi:include href="xml/CyberKitDeviceInfoPermissionRequest.xml"/>
+    <xi:include href="xml/CyberKitPolicyDecision.xml"/>
+    <xi:include href="xml/CyberKitNavigationPolicyDecision.xml"/>
+    <xi:include href="xml/CyberKitResponsePolicyDecision.xml"/>
+    <xi:include href="xml/CyberKitHitTestResult.xml"/>
+    <xi:include href="xml/CyberKitEditorState.xml"/>
+    <xi:include href="xml/CyberKitPrintCustomWidget.xml"/>
+    <xi:include href="xml/CyberKitPrintOperation.xml"/>
+    <xi:include href="xml/CyberKitWebResource.xml"/>
+    <xi:include href="xml/CyberKitError.xml"/>
+    <xi:include href="xml/CyberKitFaviconDatabase.xml"/>
+    <xi:include href="xml/CyberKitColorChooserRequest.xml"/>
+    <xi:include href="xml/CyberKitFileChooserRequest.xml"/>
+    <xi:include href="xml/CyberKitFindController.xml"/>
+    <xi:include href="xml/CyberKitCookieManager.xml"/>
+    <xi:include href="xml/CyberKitPlugin.xml"/>
+    <xi:include href="xml/CyberKitWebInspector.xml"/>
+    <xi:include href="xml/CyberKitURISchemeRequest.xml"/>
+    <xi:include href="xml/CyberKitVersion.xml"/>
+    <xi:include href="xml/CyberKitContextMenu.xml"/>
+    <xi:include href="xml/CyberKitContextMenuItem.xml"/>
+    <xi:include href="xml/CyberKitOptionMenu.xml"/>
+    <xi:include href="xml/CyberKitOptionMenuItem.xml"/>
+    <xi:include href="xml/CyberKitFormSubmissionRequest.xml"/>
+    <xi:include href="xml/CyberKitSecurityManager.xml"/>
+    <xi:include href="xml/CyberKitUserContentFilterStore.xml"/>
+    <xi:include href="xml/CyberKitUserContentManager.xml"/>
+    <xi:include href="xml/CyberKitUserContent.xml"/>
+    <xi:include href="xml/CyberKitNotification.xml"/>
+    <xi:include href="xml/CyberKitNotificationPermissionRequest.xml"/>
+    <xi:include href="xml/CyberKitSecurityOrigin.xml"/>
+    <xi:include href="xml/CyberKitWebsiteDataManager.xml"/>
+    <xi:include href="xml/CyberKitWebsiteData.xml"/>
+    <xi:include href="xml/CyberKitNetworkProxySettings.xml"/>
+    <xi:include href="xml/CyberKitAutomationSession.xml"/>
+    <xi:include href="xml/CyberKitApplicationInfo.xml"/>
+    <xi:include href="xml/CyberKitGeolocationManager.xml"/>
+    <xi:include href="xml/CyberKitUserMessage.xml"/>
+    <xi:include href="xml/CyberKitPointerLockPermissionRequest.xml"/>
+    <xi:include href="xml/CyberKitInputMethodFilter.xml"/>
+  </chapter>
+
+  <chapter>
+    <title>Web Extensions</title>
+    <xi:include href="xml/CyberKitWebExtension.xml"/>
+    <xi:include href="xml/CyberKitWebPage.xml"/>
+    <xi:include href="xml/CyberKitFrame.xml"/>
+    <xi:include href="xml/CyberKitScriptWorld.xml"/>
+    <xi:include href="xml/CyberKitWebHitTestResult.xml"/>
+    <xi:include href="xml/CyberKitWebEditor.xml"/>
+    <xi:include href="xml/CyberKitConsoleMessage.xml"/>
+  </chapter>
+
+  <chapter>
+    <title>Utilities</title>
+    <xi:include href="xml/CyberKitURIUtilities.xml"/>
+  </chapter>
+
+  <index id="index-all">
+    <title>Index</title>
+  </index>
+
+  <index id="api-index-deprecated" role="deprecated">
+    <title>Index of deprecated symbols</title>
+    <xi:include href="xml/api-index-deprecated.xml"><xi:fallback /></xi:include>
+  </index>
+
+  <index id="api-index-2-2" role="2.2">
+    <title>Index of new symbols in 2.2</title>
+    <xi:include href="xml/api-index-2.2.xml"><xi:fallback /></xi:include>
+  </index>
+
+  <index id="api-index-2-4" role="2.4">
+    <title>Index of new symbols in 2.4</title>
+    <xi:include href="xml/api-index-2.4.xml"><xi:fallback /></xi:include>
+  </index>
+
+  <index id="api-index-2-6" role="2.6">
+    <title>Index of new symbols in 2.6</title>
+    <xi:include href="xml/api-index-2.6.xml"><xi:fallback /></xi:include>
+  </index>
+
+  <index id="api-index-2-8" role="2.8">
+    <title>Index of new symbols in 2.8</title>
+    <xi:include href="xml/api-index-2.8.xml"><xi:fallback /></xi:include>
+  </index>
+
+  <index id="api-index-2-10" role="2.10">
+    <title>Index of new symbols in 2.10</title>
+    <xi:include href="xml/api-index-2.10.xml"><xi:fallback /></xi:include>
+  </index>
+
+  <index id="api-index-2-12" role="2.12">
+    <title>Index of new symbols in 2.12</title>
+    <xi:include href="xml/api-index-2.12.xml"><xi:fallback /></xi:include>
+  </index>
+
+  <index id="api-index-2-14" role="2.14">
+    <title>Index of new symbols in 2.14</title>
+    <xi:include href="xml/api-index-2.14.xml"><xi:fallback /></xi:include>
+  </index>
+
+  <index id="api-index-2-16" role="2.16">
+    <title>Index of new symbols in 2.16</title>
+    <xi:include href="xml/api-index-2.16.xml"><xi:fallback /></xi:include>
+  </index>
+
+  <index id="api-index-2-18" role="2.18">
+    <title>Index of new symbols in 2.18</title>
+    <xi:include href="xml/api-index-2.18.xml"><xi:fallback /></xi:include>
+  </index>
+
+  <index id="api-index-2-20" role="2.20">
+    <title>Index of new symbols in 2.20</title>
+    <xi:include href="xml/api-index-2.20.xml"><xi:fallback /></xi:include>
+  </index>
+
+  <index id="api-index-2-22" role="2.22">
+    <title>Index of new symbols in 2.22</title>
+    <xi:include href="xml/api-index-2.22.xml"><xi:fallback /></xi:include>
+  </index>
+
+  <index id="api-index-2-24" role="2.24">
+    <title>Index of new symbols in 2.24</title>
+    <xi:include href="xml/api-index-2.24.xml"><xi:fallback /></xi:include>
+  </index>
+
+  <index id="api-index-2-26" role="2.26">
+    <title>Index of new symbols in 2.26</title>
+    <xi:include href="xml/api-index-2.26.xml"><xi:fallback /></xi:include>
+  </index>
+
+  <index id="api-index-2-28" role="2.28">
+    <title>Index of new symbols in 2.28</title>
+    <xi:include href="xml/api-index-2.28.xml"><xi:fallback /></xi:include>
+  </index>
+
+  <xi:include href="xml/annotation-glossary.xml"><xi:fallback /></xi:include>
+</book>

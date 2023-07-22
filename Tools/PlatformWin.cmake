@@ -9,5 +9,5 @@ if (ENABLE_WEBKIT_LEGACY)
 endif ()
 
 if (ENABLE_WEBKIT)
-    add_subdirectory(WebKitTestRunner)
+    add_subdirectory(CyberKitTestRunner)
 endif ()

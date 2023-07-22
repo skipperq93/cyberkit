@@ -12,7 +12,7 @@ const reportWithRevision = [{
     "buildTag": "124",
     "buildTime": "2015-10-27T15:34:51",
     "revisions": {
-        "WebKit": {
+        "CyberKit": {
             "revision": "191622",
             "timestamp": '2015-10-27T11:36:56.878473Z',
         },
@@ -37,7 +37,7 @@ const reportWithRevisionNoTimestamp = [{
     "buildTag": "124",
     "buildTime": "2015-10-27T15:34:51",
     "revisions": {
-        "WebKit": {
+        "CyberKit": {
             "revision": "191622",
         },
     },
@@ -61,7 +61,7 @@ const anotherReportWithRevision = [{
     "buildTag": "125",
     "buildTime": "2015-10-27T17:27:41",
     "revisions": {
-        "WebKit": {
+        "CyberKit": {
             "revision": "191623",
             "timestamp": '2015-10-27T16:38:10.768995Z',
         },
@@ -86,7 +86,7 @@ const anotherReportWithRevisionNoTimestamp = [{
     "buildTag": "125",
     "buildTime": "2015-10-27T17:27:41",
     "revisions": {
-        "WebKit": {
+        "CyberKit": {
             "revision": "191623",
         },
     },
@@ -348,7 +348,7 @@ describe('/privileged-api/create-analysis-task with browser privileged api', fun
         const testRuns = await db.selectRows('test_runs', {config: configRow['id']});
         assert.equal(testRuns.length, 2);
 
-        const webkitRepositoryRow = await db.selectFirstRow('repositories', {name: 'WebKit'});
+        const webkitRepositoryRow = await db.selectFirstRow('repositories', {name: 'CyberKit'});
         const webkitId = webkitRepositoryRow.id;
 
         const oneRevisionSet = {[webkitId]: {revision: '191622'}};
@@ -373,7 +373,7 @@ describe('/privileged-api/create-analysis-task with browser privileged api', fun
         const testRuns = await db.selectRows('test_runs', {config: configRow['id']});
         assert.equal(testRuns.length, 2);
 
-        const webkitRepositoryRow = await db.selectFirstRow('repositories', {name: 'WebKit'});
+        const webkitRepositoryRow = await db.selectFirstRow('repositories', {name: 'CyberKit'});
         const webkitId = webkitRepositoryRow.id;
 
         const oneRevisionSet = {[webkitId]: {revision: '191622'}};
@@ -410,7 +410,7 @@ describe('/privileged-api/create-analysis-task with browser privileged api', fun
         const db = TestServer.database();
         await db.insert('tests', {id: 1, name: 'Suite'});
         await db.insert('tests', {id: test1Id, name: 'test1', parent: 1});
-        await db.insert('repositories', {id: webkitId, name: 'WebKit'});
+        await db.insert('repositories', {id: webkitId, name: 'CyberKit'});
         await db.insert('platforms', {id: platformId, name: 'some platform'});
         await db.insert('build_triggerables', {id: 1234, name: 'test-triggerable'});
         await db.insert('triggerable_repository_groups', {id: 2345, name: 'webkit-only', triggerable: triggerableId});
@@ -502,7 +502,7 @@ describe('/privileged-api/create-analysis-task with node privileged api', functi
         const testRuns = await db.selectRows('test_runs', {config: configRow['id']});
         assert.equal(testRuns.length, 2);
 
-        const webkitRepositoryRow = await db.selectFirstRow('repositories', {name: 'WebKit'});
+        const webkitRepositoryRow = await db.selectFirstRow('repositories', {name: 'CyberKit'});
         const webkitId = webkitRepositoryRow.id;
 
         const oneRevisionSet = {[webkitId]: {revision: '191622'}};
@@ -532,7 +532,7 @@ describe('/privileged-api/create-analysis-task with node privileged api', functi
         const db = TestServer.database();
         await db.insert('tests', {id: 1, name: 'Suite'});
         await db.insert('tests', {id: test1Id, name: 'test1', parent: 1});
-        await db.insert('repositories', {id: webkitId, name: 'WebKit'});
+        await db.insert('repositories', {id: webkitId, name: 'CyberKit'});
         await db.insert('platforms', {id: platformId, name: 'some platform'});
         await db.insert('build_triggerables', {id: 1234, name: 'test-triggerable'});
         await db.insert('triggerable_repository_groups', {id: 2345, name: 'webkit-only', triggerable: triggerableId});
@@ -612,7 +612,7 @@ describe('/privileged-api/create-analysis-task with node privileged api', functi
         const db = TestServer.database();
         await db.insert('tests', {id: 1, name: 'Suite'});
         await db.insert('tests', {id: test1Id, name: 'test1', parent: 1});
-        await db.insert('repositories', {id: webkitId, name: 'WebKit'});
+        await db.insert('repositories', {id: webkitId, name: 'CyberKit'});
         await db.insert('platforms', {id: platformId, name: 'some platform'});
         await db.insert('build_triggerables', {id: 1234, name: 'test-triggerable'});
         await db.insert('triggerable_repository_groups', {id: 2345, name: 'webkit-only', triggerable: triggerableId});

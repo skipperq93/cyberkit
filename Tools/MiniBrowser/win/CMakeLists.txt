@@ -1,6 +1,6 @@
 set(MiniBrowser_INCLUDE_DIRECTORIES
     ${PAL_FRAMEWORK_HEADERS_DIR}
-    ${WebCore_PRIVATE_FRAMEWORK_HEADERS_DIR}
+    ${CyberCore_PRIVATE_FRAMEWORK_HEADERS_DIR}
 )
 
 set(MiniBrowser_SOURCES
@@ -14,7 +14,7 @@ set(MiniBrowser_SOURCES
 
 set(MiniBrowser_LIBRARIES
     DbgHelp
-    WebKit::WTF
+    CyberKit::WTF
     comctl32
     comsupp
     comsuppw
@@ -30,7 +30,7 @@ endif ()
 if (ENABLE_WEBKIT_LEGACY)
     add_definitions(-DENABLE_WEBKIT_LEGACY)
     list(APPEND MiniBrowser_INCLUDE_DIRECTORIES
-        ${WebKitLegacy_FRAMEWORK_HEADERS_DIR}
+        ${CyberKitLegacy_FRAMEWORK_HEADERS_DIR}
     )
     list(APPEND MiniBrowser_SOURCES
         AccessibilityDelegate.cpp
@@ -38,25 +38,25 @@ if (ENABLE_WEBKIT_LEGACY)
         PrintWebUIDelegate.cpp
         ResourceLoadDelegate.cpp
         WebDownloadDelegate.cpp
-        WebKitLegacyBrowserWindow.cpp
+        CyberKitLegacyBrowserWindow.cpp
     )
     list(APPEND MiniBrowser_LIBRARIES
-        WebKitLegacy
-        WebKitLegacyGUID
+        CyberKitLegacy
+        CyberKitLegacyGUID
     )
 endif ()
 
 if (ENABLE_WEBKIT)
     add_definitions(-DENABLE_WEBKIT)
     list(APPEND MiniBrowser_INCLUDE_DIRECTORIES
-        ${WebKit_FRAMEWORK_HEADERS_DIR}
-        ${WebKit_PRIVATE_FRAMEWORK_HEADERS_DIR}
+        ${CyberKit_FRAMEWORK_HEADERS_DIR}
+        ${CyberKit_PRIVATE_FRAMEWORK_HEADERS_DIR}
     )
     list(APPEND MiniBrowser_SOURCES
-        WebKitBrowserWindow.cpp
+        CyberKitBrowserWindow.cpp
     )
     list(APPEND MiniBrowser_LIBRARIES
-        WebKit
+        CyberKit
     )
 endif ()
 

@@ -29,8 +29,8 @@
 #include "config.h"
 #include "GCController.h"
 
-#include <JavaScriptCore/JSObjectRef.h>
-#include <JavaScriptCore/JSRetainPtr.h>
+#include <CyberScriptCore/JSObjectRef.h>
+#include <CyberScriptCore/JSRetainPtr.h>
 
 GCController::GCController()
 {

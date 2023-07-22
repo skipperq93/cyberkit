@@ -28,11 +28,11 @@
 
 #if PLATFORM(IOS_FAMILY)
 
-#import <WebCore/WebCoreThreadRun.h>
-#import <WebKit/WebCoreThread.h>
-#import <WebKit/WebUIDelegate.h>
-#import <WebKit/WebUIKitDelegate.h>
-#import <WebKit/WebView.h>
+#import <CyberCore/CyberCoreThreadRun.h>
+#import <CyberKit/CyberCoreThread.h>
+#import <CyberKit/WebUIDelegate.h>
+#import <CyberKit/WebUIKitDelegate.h>
+#import <CyberKit/WebView.h>
 
 @interface UIWebBrowserView (WebUIKitDelegate)
 - (BOOL)webView:(WebView *)webView shouldScrollToPoint:(CGPoint)point forFrame:(WebFrame *)frame;
@@ -58,7 +58,7 @@
 }
 
 // This is temporary solution to make window.scroll work in DumpRenderTree. The reason is
-// UIWebDocumentView's shouldScrollToPoint always tells WebKit not to scroll.  This makes
+// UIWebDocumentView's shouldScrollToPoint always tells CyberKit not to scroll.  This makes
 // sense for MobileSafari/UIWebView app that there is top scroller and the scroller is
 // move to the right spot.  But DRT doesn't have scroller so the page never scrolls.
 //
@@ -75,7 +75,7 @@
 
 - (void)webView:(WebView *)sender addMessageToConsole:(NSDictionary *)dictionary withSource:(NSString *)source
 {
-    // Forward this to DRT UIDelegate since iOS WebKit by default sends this message to UIKitDelegate.
+    // Forward this to DRT UIDelegate since iOS CyberKit by default sends this message to UIKitDelegate.
     id uiDelegate = [[self webView] UIDelegate];
     [uiDelegate webView:sender addMessageToConsole:dictionary withSource:source];
 }

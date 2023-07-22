@@ -8,7 +8,7 @@ mkdir -p "${BUILT_PRODUCTS_DIR}/DerivedSources/DumpRenderTree"
 cd "${BUILT_PRODUCTS_DIR}/DerivedSources/DumpRenderTree"
 
 export DumpRenderTree="${SRCROOT}"
-export WebCoreScripts="${WEBCORE_PRIVATE_HEADERS_DIR}"
+export CyberCoreScripts="${WEBCORE_PRIVATE_HEADERS_DIR}"
 
 if [ ! $CC ]; then
     export CC="`xcrun -find clang`"

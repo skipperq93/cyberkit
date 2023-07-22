@@ -27,7 +27,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-"""Checks WebKit style for text files."""
+"""Checks CyberKit style for text files."""
 
 from webkitpy.style.checkers.common import TabChecker
 

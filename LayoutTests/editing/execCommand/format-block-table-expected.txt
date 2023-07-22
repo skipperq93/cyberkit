@@ -69,7 +69,7 @@ Formatting:
 |         <div>
 |           "world<#selection-focus>"
 |       <td>
-|         "WebKit"
+|         "CyberKit"
 | "
 "
 
@@ -85,7 +85,7 @@ by h3 yields:
 |           <br>
 |           "world<#selection-focus>"
 |       <td>
-|         "WebKit"
+|         "CyberKit"
 | "
 "
 
@@ -102,7 +102,7 @@ Formatting:
 |           <li>
 |             "world<#selection-focus>"
 |       <td>
-|         "WebKit"
+|         "CyberKit"
 | "
 "
 
@@ -121,6 +121,6 @@ by address yields:
 |             <li>
 |               "world<#selection-focus>"
 |       <td>
-|         "WebKit"
+|         "CyberKit"
 | "
 "

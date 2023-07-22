@@ -167,7 +167,7 @@ window.test_driver_internal.send_keys = function(element, keys)
     for (const key of keys)
         keyList.push(convertSeleniumKeyCode(key));
 
-    if (testRunner.isIOSFamily && testRunner.isWebKit2) {
+    if (testRunner.isIOSFamily && testRunner.isCyberKit2) {
         return new Promise((resolve) => {
             testRunner.runUIScript(`
                 const keyList = JSON.parse('${JSON.stringify(keyList)}');
@@ -189,7 +189,7 @@ window.test_driver_internal.click = function (element, coords)
     if (!window.eventSender)
         return Promise.reject(new Error("window.eventSender is undefined."));
 
-    if (testRunner.isIOSFamily && testRunner.isWebKit2) {
+    if (testRunner.isIOSFamily && testRunner.isCyberKit2) {
         return new Promise((resolve) => {
             testRunner.runUIScript(`
                 uiController.singleTapAtPoint(${coords.x}, ${coords.y}, function() {

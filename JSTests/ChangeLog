@@ -31,7 +31,7 @@
     (A):
     (B):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     This patch fixes a bug where the combination of inline caching
     and poly proto cause us to cache a setter call along a prototype chain that
@@ -135,7 +135,7 @@
     (let.set newGlobal):
     (set catch):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     This patch refines JITThunks GC-aware Weak hash map for NativeExecutable. Previously, we have
     HashMap<std::tuple<TaggedNativeFunction, TaggedNativeFunction, String>, Weak<NativeExecutable>> table.
@@ -232,7 +232,7 @@
     * wasm/regress/regress-256665.js: Added.
     (f):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     When generating the call IC, we should select the callee saves using BoundsChecking mode in order
     to obey to the calling conventions described in r256665. Currently, we won't restore the memory size
@@ -292,7 +292,7 @@
     * wasm/regress/llint-callee-saves-with-fast-memory.js: Added.
     * wasm/regress/llint-callee-saves-without-fast-memory.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     Reviewed by Mark Lam.
     
@@ -375,7 +375,7 @@
     
     * stress/get-getter-setter-by-offset-not-always-safe-to-execute.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     This patch fixes two bugs. The first is GetGetterSetterByOffset. Previously,
     we were just checking that we could load the value safely. However, because
@@ -472,7 +472,7 @@
     (putter):
     (not_string.toString):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     When we are creating Put IC for a new property, we grab the old Structure before performing
     the put. For a custom ::put, our convention is that the implemented ::put should mark the PutPropertySlot
@@ -494,7 +494,7 @@
     (JSC::JSDollarVM::visitChildren):
     * tools/JSDollarVM.h:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     IDL Code Generator should taint PutPropertySlot or taint implemented object to avoid Put IC caching
     when it implements custom ::put operation which has side-effect regardless of Structure. Otherwise, IC can be setup
@@ -573,7 +573,7 @@
     
     * stress/numberingSystemsForLocale-cached-strings-should-be-immortal-and-safe-for-concurrent-access.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     In IntlObject's numberingSystemsForLocale(), we have a never destroyed
     cachedNumberingSystems which is a singleton vector of Strings which are shared
@@ -643,7 +643,7 @@
     
     * wasm/stress/dont-stack-overflow-in-air.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     This patch adds a simple stack slot allocator to Air O0 to make code
     use smaller stack frames. The huge stack frames from the old stack
@@ -690,7 +690,7 @@
     (f.handler.construct):
     (f):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     Object allocation sinking is missing PutHint for sunken allocations
     https://bugs.webkit.org/show_bug.cgi?id=203799
     <rdar://problem/56852162>
@@ -758,7 +758,7 @@
     
     * stress/operationToObject-should-check-for-null-errorMessage.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     r224280 introduced operationToObject() with an option to specify a custom error
     message.  r254252 added a scenario where the passed in error message is null but
@@ -831,7 +831,7 @@
     
     * stress/racy-gc-cleanup-of-identifier-after-mutator-stops-running.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     The introduction of the use of Box<Identifier> was to get around having to
     ref/deref the underlying UniqedStringImpl in Identifiers from the compiler
@@ -991,7 +991,7 @@
        Hence, there's also no GC issue here.
     
     * CMakeLists.txt:
-    * JavaScriptCore.xcodeproj/project.pbxproj:
+    * CyberScriptCore.xcodeproj/project.pbxproj:
     * Sources.txt:
     * bytecode/AccessCase.cpp:
     (JSC::AccessCase::AccessCase):
@@ -1117,10 +1117,10 @@
     (JSC::VM::registerWatchpointForImpureProperty): Deleted.
     * runtime/VM.h:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     * bindings/js/CommonVM.cpp:
-    (WebCore::addImpureProperty):
+    (CyberCore::addImpureProperty):
     
     
     
@@ -1151,7 +1151,7 @@
     * stress/create-many-realms.js: Added.
     (foo):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     stopThePeriphery is stopping compiler threads and main thread (mutator), which means making m_worldIsStopped = true.
     It is not for stopping all heap threads including a concurrent marker. The concurrent collector can work while executing
@@ -1217,7 +1217,7 @@
     (foo.):
     (foo):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     The runtime code for ValueMod and ValueDiv produces an int32 when the result
     is of int32 value. However, the AI was saying the result is in double format.
@@ -1275,7 +1275,7 @@
     (assert):
     (v9):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     Allocation sinking phase conducts a points to analysis. It uses this
     information for programs like:
@@ -9341,7 +9341,7 @@
 
 2019-02-15  Michael Saboff  <msaboff@apple.com>
 
-        RELEASE_ASSERT at com.apple.JavaScriptCore: JSC::jsSubstringOfResolved
+        RELEASE_ASSERT at com.matthewbenedict.CyberScriptCore: JSC::jsSubstringOfResolved
         https://bugs.webkit.org/show_bug.cgi?id=194558
 
         Reviewed by Saam Barati.
@@ -9794,7 +9794,7 @@
 
         Reviewed by Saam Barati and Keith Miller.
 
-        Under the heavy load (like, compiling WebKit), AI in this code can broaden type information after the 1st run.
+        Under the heavy load (like, compiling CyberKit), AI in this code can broaden type information after the 1st run.
         Then, GetByVal(String) crashed.
 
         * stress/string-get-by-val-lowering.js: Added.

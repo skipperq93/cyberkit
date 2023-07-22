@@ -9,7 +9,7 @@
 <script>
 description("This test checks that textareas have the right metrics. These numbers match IE7 except for scrollHeight. For two reasons:<br>" +
 "1. scrollHeight is different for elements without enough content to cause scroll because IE7 then reports the height of the text inside the " +
-"element as the scrollHeight. IE8 reports has scrollHeight == offsetHeight. Gecko/WebKit have scrollHeight == clientHeight.<br>" +
+"element as the scrollHeight. IE8 reports has scrollHeight == offsetHeight. Gecko/CyberKit have scrollHeight == clientHeight.<br>" +
 "2. For the elements with scroll in standards-mode, IE wraps the text differently. It seems to leave 2px less space for the text. We don't " +
 "currently mimic this quirk. It's not clear whether we should given that we agree with IE7's clientWidth numbers in all these cases.");
 

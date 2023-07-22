@@ -35,7 +35,7 @@
     }, 'Blob should not support slice prefixed');
 
     test(function() {
-        var prefixes = ['', 'O', 'Moz', 'WebKit', 'MS'];
+        var prefixes = ['', 'O', 'Moz', 'CyberKit', 'MS'];
         for (var i = 0; i < prefixes.length; ++i) {
             assert_false(prefixes[i]+'BlobBuilder' in window, prefixes[i]+'BlobBuilder');
         }

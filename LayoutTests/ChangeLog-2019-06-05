@@ -27,7 +27,7 @@
 
 2019-06-05  Wenson Hsieh  <wenson_hsieh@apple.com>
 
-        Upstream content mode support into open source from WebKitAdditions
+        Upstream content mode support into open source from CyberKitAdditions
         https://bugs.webkit.org/show_bug.cgi?id=198484
         <rdar://problem/51355671>
 
@@ -471,7 +471,7 @@
 
         * resources/ui-helper.js:
         (window.UIHelper.isIOSFamily):
-        (window.UIHelper.isWebKit2):
+        (window.UIHelper.isCyberKit2):
         (window.UIHelper.humanSpeedDoubleTapAt):
         (window.UIHelper.humanSpeedZoomByDoubleTappingAt):
         (window.UIHelper.zoomByDoubleTappingAt):
@@ -1747,7 +1747,7 @@
 
         Add a new test that checks that we're firing a "pointermove" event when the touch pressure
         changes, even when the touch is stationary, and that a single "pointerup" event is fired
-        as the touch ends and the pressure changes. The relevant code change is done in WebKitAdditions.
+        as the touch ends and the pressure changes. The relevant code change is done in CyberKitAdditions.
 
         * pointerevents/ios/pressure-change-expected.txt: Added.
         * pointerevents/ios/pressure-change.html: Added.
@@ -1825,7 +1825,7 @@
         * fast/scrolling/ipad/overflow-scrolling-touch-enabled-stacking-modern-compatibility-mode.html: Added.
         * platform/ipad/fast/css/webkit-overflow-scrolling-parsing-modern-compatibility-mode-expected.txt: Added.
         * platform/ipad/fast/css/webkit-overflow-scrolling-parsing-modern-compatibility-mode.html: Added.
-        * platform/ios/TestExpectations: Skip the new tests since they depend on code in WebKitAdditions.
+        * platform/ios/TestExpectations: Skip the new tests since they depend on code in CyberKitAdditions.
 
 2019-05-17  Rob Buis  <rbuis@igalia.com>
 
@@ -2208,7 +2208,7 @@
 
         * platform/mac-wk2/TestExpectations:
         Animating HEICS images is supported only on post macOS Mojave. So these
-        tests should be skipped in WebKit for now.
+        tests should be skipped in CyberKit for now.
 
 2019-05-14  Youenn Fablet  <youenn@apple.com>
 
@@ -2297,7 +2297,7 @@
         Some of the new tests added to verify the new 'line-break:
         anywhere' feature and its different behavior to what 'word-break:
         break-all' may provide, fail due to several bugs present in
-        current WebKit's trunk.
+        current CyberKit's trunk.
 
         * TestExpectations:
           - webkit.org/b/197409
@@ -2607,7 +2607,7 @@
 
 2019-05-10  Chris Fleizach  <cfleizach@apple.com>
 
-        AX: Crash at WebKit: WebKit::WebSpeechSynthesisClient::speak
+        AX: Crash at CyberKit: CyberKit::WebSpeechSynthesisClient::speak
         https://bugs.webkit.org/show_bug.cgi?id=197761
         <rdar://problem/50237614>
 
@@ -2834,7 +2834,7 @@
 
 2019-05-08  Chris Dumez  <cdumez@apple.com>
 
-        [iOS Debug] ASSERTION FAILED: !m_originalNode in WebCore::JSLazyEventListener::checkValidityForEventTarget(WebCore::EventTarget &)
+        [iOS Debug] ASSERTION FAILED: !m_originalNode in CyberCore::JSLazyEventListener::checkValidityForEventTarget(CyberCore::EventTarget &)
         https://bugs.webkit.org/show_bug.cgi?id=197696
         <rdar://problem/50586956>
 
@@ -3104,7 +3104,7 @@
         * applicationmanifest/resources/bad.manifest: Added.
         * js/resources/JSON-parse.js: Add test case for unterminated escape.
         * js/dom/JSON-parse-expected.txt: Add new test case.
-        * TestWebKitAPI/Tests/WTF/JSONValue.cpp: Add new false test case
+        * TestCyberKitAPI/Tests/WTF/JSONValue.cpp: Add new false test case
           for unterminated escape character.
 
 2019-05-07  John Wilander  <wilander@apple.com>
@@ -3115,7 +3115,7 @@
 
         Reviewed by Chris Dumez.
 
-        The changed test cases have had calls to WebCore::Internals::setUserGrantsStorageAccess() removed
+        The changed test cases have had calls to CyberCore::Internals::setUserGrantsStorageAccess() removed
         since it was dead code.
 
         One of the new tests, deny-with-prompt-does-not-preserve-gesture.html, is marked [ Skip ] for now since
@@ -3684,7 +3684,7 @@
 
 2019-05-01  Darin Adler  <darin@apple.com>
 
-        WebKit has too much of its own UTF-8 code and should rely more on ICU's UTF-8 support
+        CyberKit has too much of its own UTF-8 code and should rely more on ICU's UTF-8 support
         https://bugs.webkit.org/show_bug.cgi?id=195535
 
         Reviewed by Alexey Proskuryakov.
@@ -3701,7 +3701,7 @@
         run, but unlike the rest of the tests in this directory, was only run as part of
         run-javascriptcore-tests. There are two reasons for adding this. One is to be
         consistent with the rest of the tests here and run a second time as part of the
-        broader WebKit tests. The second is that we can now use "--reset-results" to generate
+        broader CyberKit tests. The second is that we can now use "--reset-results" to generate
         new expected results, something that run-webkit-tests has but run-javascriptcore-tests
         does not have.
 
@@ -3713,7 +3713,7 @@
 
         Reverted changeset:
 
-        "WebKit has too much of its own UTF-8 code and should rely
+        "CyberKit has too much of its own UTF-8 code and should rely
         more on ICU's UTF-8 support"
         https://bugs.webkit.org/show_bug.cgi?id=195535
         https://trac.webkit.org/changeset/244821
@@ -3758,7 +3758,7 @@
 
 2019-04-29  Darin Adler  <darin@apple.com>
 
-        WebKit has too much of its own UTF-8 code and should rely more on ICU's UTF-8 support
+        CyberKit has too much of its own UTF-8 code and should rely more on ICU's UTF-8 support
         https://bugs.webkit.org/show_bug.cgi?id=195535
 
         Reviewed by Alexey Proskuryakov.
@@ -3770,14 +3770,14 @@
         Updated expected results to have the Unicode replacement character in cases where the
         text contains unpaired surrogates. The tests are still doing the same operations, and
         still getting the same results, but the text output no longer includes illegal UTF-8
-        because the WTF changes affect the code path that DumpRenderTree and WebKitTestRunner
+        because the WTF changes affect the code path that DumpRenderTree and CyberKitTestRunner
         use to produce the text output.
 
         * js/invalid-utf8-in-syntax-error.html: Added. Before adding this, the test was
         run, but unlike the rest of the tests in this directory, was only run as part of
         run-javascriptcore-tests. There are two reasons for adding this. One is to be
         consistent with the rest of the tests here and run a second time as part of the
-        broader WebKit tests. The second is that we can now use "--reset-results" to generate
+        broader CyberKit tests. The second is that we can now use "--reset-results" to generate
         new expected results, something that run-webkit-tests has but run-javascriptcore-tests
         does not have.
 
@@ -3809,7 +3809,7 @@
 
 2019-04-30  Youenn Fablet  <youenn@apple.com>
 
-        [macOS WK1] ASSERTION FAILED: formData in WebCore::ResourceRequest::doUpdateResourceHTTPBody()
+        [macOS WK1] ASSERTION FAILED: formData in CyberCore::ResourceRequest::doUpdateResourceHTTPBody()
         https://bugs.webkit.org/show_bug.cgi?id=196864
         <rdar://problem/49854497>
 
@@ -4341,7 +4341,7 @@
 
 2019-04-25  Philippe Normand  <pnormand@igalia.com>
 
-        [GStreamer] gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed in WebCore::MediaPlayerPrivateGStreamer::paused
+        [GStreamer] gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed in CyberCore::MediaPlayerPrivateGStreamer::paused
         https://bugs.webkit.org/show_bug.cgi?id=196691
 
         Reviewed by Eric Carlson.
@@ -4436,7 +4436,7 @@
 
         Convert RenderAsTextBehavior to an OptionSet<RenderAsTextFlag>.
 
-        Fix code generation in WebKitTestRunner to generate bindings for IDL const values,
+        Fix code generation in CyberKitTestRunner to generate bindings for IDL const values,
         and hand-code DumpRenderTree bindings.
 
         Some cleanup of the TestRunners, using member initializers.
@@ -5128,7 +5128,7 @@
 
 2019-04-16  Wenson Hsieh  <wenson_hsieh@apple.com>
 
-        [iOS] [WebKit2] Add support for honoring -[UIMenuItem dontDismiss]
+        [iOS] [CyberKit2] Add support for honoring -[UIMenuItem dontDismiss]
         https://bugs.webkit.org/show_bug.cgi?id=196919
         <rdar://problem/41630459>
 
@@ -5540,7 +5540,7 @@
 
 2019-04-12  Ryan Haddad  <ryanhaddad@apple.com>
 
-        [macOS WK1] ASSERTION FAILED: formData in WebCore::ResourceRequest::doUpdateResourceHTTPBody()
+        [macOS WK1] ASSERTION FAILED: formData in CyberCore::ResourceRequest::doUpdateResourceHTTPBody()
         https://bugs.webkit.org/show_bug.cgi?id=196864
 
         Unreviewed test gardening.
@@ -6305,7 +6305,7 @@
 
 2019-04-04  Simon Fraser  <simon.fraser@apple.com>
 
-        Simple iframe scrolling test fails to get a composited scrolling frame in WebKitTestRunnerApp
+        Simple iframe scrolling test fails to get a composited scrolling frame in CyberKitTestRunnerApp
         https://bugs.webkit.org/show_bug.cgi?id=196635
 
         Reviewed by Antti Koivisto.
@@ -6510,7 +6510,7 @@
 
 2019-04-03  Michael Saboff  <msaboff@apple.com>
 
-        REGRESSION (r243642): com.apple.JavaScriptCore crash in JSC::RegExpObject::execInline
+        REGRESSION (r243642): com.matthewbenedict.CyberScriptCore crash in JSC::RegExpObject::execInline
         https://bugs.webkit.org/show_bug.cgi?id=196477
 
         Reviewed by Keith Miller.
@@ -6969,7 +6969,7 @@
         Reviewed by Geoffrey Garen.
 
         Add equivalent test to imported/w3c/web-platform-tests/html/browsers/the-window-object/window-open-noopener.html
-        but which relies on localStorage instead of BroadcastChannel so that it works with WebKit.
+        but which relies on localStorage instead of BroadcastChannel so that it works with CyberKit.
 
         * http/wpt/html/browsers/the-window-object/support/noreferrer-target-webkit.html: Added.
         * http/wpt/html/browsers/the-window-object/window-open-noopener-webkit-expected.txt: Added.
@@ -7041,7 +7041,7 @@
 
         Reviewed by Tim Horton.
 
-        Add a layout test that exercises the edge case; see WebKit ChangeLogs for more details.
+        Add a layout test that exercises the edge case; see CyberKit ChangeLogs for more details.
 
         * fast/forms/change-inputmode-crash-expected.txt: Added.
         * fast/forms/change-inputmode-crash.html: Added.
@@ -7213,9 +7213,9 @@
         * platform/mac-wk1/TestExpectations:
         * platform/mac/TestExpectations:
         * platform/wpe/TestExpectations:
-        This test asserts on Cocoa WebKitLegacy platforms.  A patch I uploaded to https://bugs.webkit.org/show_bug.cgi?id=159724 shows why we do not intend to fix this.
+        This test asserts on Cocoa CyberKitLegacy platforms.  A patch I uploaded to https://bugs.webkit.org/show_bug.cgi?id=159724 shows why we do not intend to fix this.
         This test crashes on iOS12 and Mojave because of rdar://problem/28233746
-        This test should not crash anywhere else, but it is flaky in WebKit and Gecko. This is being taken care of in https://github.com/w3c/web-platform-tests/issues/8191
+        This test should not crash anywhere else, but it is flaky in CyberKit and Gecko. This is being taken care of in https://github.com/w3c/web-platform-tests/issues/8191
         Updated test expectations to reflect the sad state of things.
 
 2019-03-29  Takashi Komori  <Takashi.Komori@sony.com>
@@ -7488,7 +7488,7 @@
         Reviewed by Tim Horton.
 
         Added regression tests for dismissing the select element's popup menu by bluring the element then re-opening the popup.
-        Unfortunately these tests are only enabled in WebKit2 since intenals.isSelectPopupVisible would always return false in WebKit1.
+        Unfortunately these tests are only enabled in CyberKit2 since intenals.isSelectPopupVisible would always return false in CyberKit1.
 
         * TestExpectations:
         * fast/forms/select/mac-wk2: Added.
@@ -8064,16 +8064,16 @@
 
 2019-03-25  Gyuyoung Kim  <gyuyoung.kim@webkit.org>
 
-        Remove NavigatorContentUtils in WebCore/Modules
+        Remove NavigatorContentUtils in CyberCore/Modules
         https://bugs.webkit.org/show_bug.cgi?id=196070
 
         Reviewed by Alex Christensen.
 
         NavigatorContentUtils was to support the custom scheme spec [1].
-        However, in WebKit side, no port has supported the feature in
-        WebKit layer after EFL port was removed. So there has been the
-        only IDL implementation of the NavigatorContentUtils in WebCore.
-        So we don't need to keep the implementation in WebCore anymore.
+        However, in CyberKit side, no port has supported the feature in
+        CyberKit layer after EFL port was removed. So there has been the
+        only IDL implementation of the NavigatorContentUtils in CyberCore.
+        So we don't need to keep the implementation in CyberCore anymore.
 
         [1] https://html.spec.whatwg.org/multipage/system-state.html#custom-handlers
 
@@ -8289,7 +8289,7 @@
 
 2019-03-21  Simon Fraser  <simon.fraser@apple.com>
 
-        WebKit1 test gardening.
+        CyberKit1 test gardening.
 
         * platform/mac-wk1/TestExpectations:
         * platform/mac-wk1/compositing/clipping/border-radius-async-overflow-clipping-layer-expected.txt: Added.
@@ -9333,7 +9333,7 @@
         Reviewed by Tim Horton.
 
         Add a test to verify that moving focus away from a hidden editable element doesn't cause platform selection
-        views in the element to appear. See WebKit ChangeLog for more details.
+        views in the element to appear. See CyberKit ChangeLog for more details.
 
         * editing/selection/ios/hide-selection-in-non-focused-element-expected.txt: Added.
         * editing/selection/ios/hide-selection-in-non-focused-element.html: Added.
@@ -9940,7 +9940,7 @@
 
         Reviewed by Ryosuke Niwa.
 
-        Add a layout test to exercise the scenario described in the WebCore ChangeLog.
+        Add a layout test to exercise the scenario described in the CyberCore ChangeLog.
 
         * fast/forms/remove-associated-element-after-gc-expected.txt: Added.
         * fast/forms/remove-associated-element-after-gc.html: Added.
@@ -11310,7 +11310,7 @@
 
         Reviewed by Ryosuke Niwa.
 
-        Re-enables a crashing layout test. See WebCore ChangeLog for more details.
+        Re-enables a crashing layout test. See CyberCore ChangeLog for more details.
 
         * platform/ios/TestExpectations:
         * platform/mac/TestExpectations:
@@ -11538,7 +11538,7 @@
 
 2019-02-27  John Wilander  <wilander@apple.com>
 
-        Adopt WebCore::RegistrableDomain in WebCore::ResourceLoadStatistics and WebKit::NetworkProcessProxy
+        Adopt CyberCore::RegistrableDomain in CyberCore::ResourceLoadStatistics and CyberKit::NetworkProcessProxy
         https://bugs.webkit.org/show_bug.cgi?id=195071
         <rdar://problem/48417690>
 
@@ -11655,7 +11655,7 @@
 
         Reviewed by Alex Christensen.
 
-        Added appropriate expected results for WebKit/WebKitLegacy of WinCairo port.
+        Added appropriate expected results for CyberKit/CyberKitLegacy of WinCairo port.
 
         * platform/wincairo-wk1/http/tests/security/401-logout/401-logout-expected.txt: Added.
         * platform/wincairo/TestExpectations:
@@ -11719,7 +11719,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=194436
 
         We removed some fraction tests that have equivalent WPT tests.
-        Some of them were actually exported from WebKit to WPT in [1]
+        Some of them were actually exported from CyberKit to WPT in [1]
         We also move tests for crashes/asserts/hangs to the top mathml/ directory.
 
         [1] https://github.com/web-platform-tests/wpt/pull/15301
@@ -11969,7 +11969,7 @@
 
 2019-02-23  chris fleizach  <cfleizach@apple.com>
 
-        AX: WebKit is incorrectly mapping the <meter> element to progressbar
+        AX: CyberKit is incorrectly mapping the <meter> element to progressbar
         https://bugs.webkit.org/show_bug.cgi?id=164051
         <rdar://problem/29055615>
 
@@ -12003,7 +12003,7 @@
 
         Reviewed by Don Olmstead.
 
-        Added WebKitLegacy specific TestExpectations.
+        Added CyberKitLegacy specific TestExpectations.
 
         * platform/wincairo-wk1/TestExpectations: Added.
         * platform/wincairo/TestExpectations:
@@ -12568,7 +12568,7 @@
         * inspector/cpu-profiler/resources/busy-worker.js: Added.
         * inspector/cpu-profiler/threads-expected.txt: Added.
         * inspector/cpu-profiler/threads.html: Added.
-        Test that WebKit receives per-Thread CPU usage numbers.
+        Test that CyberKit receives per-Thread CPU usage numbers.
 
 2019-02-18  Daniel Bates  <dabates@apple.com>
 
@@ -12578,7 +12578,7 @@
 
         Reviewed by Wenson Hsieh.
 
-        Update tests and expected results. As it turns out fixing the bug in WebKitTestRunner/ios/HIDEventGenerator.mm
+        Update tests and expected results. As it turns out fixing the bug in CyberKitTestRunner/ios/HIDEventGenerator.mm
         so that we now dispatch key events for F17 thru F24 exposed a bug in UIKit. See <rdar://problem/47128940>.
         This same bug is also responsible for a lack of key events when the Insert key is pressed.
 
@@ -13096,7 +13096,7 @@
         * platform/ios-wk2/TestExpectations:
         * platform/win/TestExpectations:
 
-        Skip editing/pasteboard/ios by default, and enable it only in the modern WebKit port of iOS.
+        Skip editing/pasteboard/ios by default, and enable it only in the modern CyberKit port of iOS.
 
 2019-02-12  Dean Jackson  <dino@apple.com>
 
@@ -13114,7 +13114,7 @@
 
 2019-02-12  Alex Christensen  <achristensen@webkit.org>
 
-        Remove setDefersLoading infrastructure from WebKit2
+        Remove setDefersLoading infrastructure from CyberKit2
         https://bugs.webkit.org/show_bug.cgi?id=194506
 
         Reviewed by Brady Eidson.
@@ -13735,7 +13735,7 @@
 
 2019-02-06  Antti Koivisto  <antti@apple.com>
 
-        RELEASE_ASSERT(!m_document.isResolvingTreeStyle()) in com.apple.WebKit.WebContent at WebCore: WebCore::StyleResolver::~StyleResolver
+        RELEASE_ASSERT(!m_document.isResolvingTreeStyle()) in com.matthewbenedict.CyberKit.WebContent at CyberCore: CyberCore::StyleResolver::~StyleResolver
         https://bugs.webkit.org/show_bug.cgi?id=194333
         <rdar://problem/47822929>
 
@@ -14324,7 +14324,7 @@
 
 2019-01-31  Chris Fleizach  <cfleizach@apple.com>
 
-        ASSERTION FAILED: cache under WebCore::AXObjectCache::postTextStateChangePlatformNotification
+        ASSERTION FAILED: cache under CyberCore::AXObjectCache::postTextStateChangePlatformNotification
         https://bugs.webkit.org/show_bug.cgi?id=189094
         <rdar://problem/43853526>
 
@@ -14370,7 +14370,7 @@
 
         Reviewed by Wenson Hsieh.
 
-        Update tests and expected results. As it turns out fixing the bug in WebKitTestRunner/ios/HIDEventGenerator.mm
+        Update tests and expected results. As it turns out fixing the bug in CyberKitTestRunner/ios/HIDEventGenerator.mm
         so that we now dispatch key events for F17 thru F24 exposed a bug in UIKit. See <rdar://problem/47128940>.
         This same bug is also responsible for a lack of key events when the Insert key is pressed.
 
@@ -14716,7 +14716,7 @@
 
 2019-01-28  Ryan Haddad  <ryanhaddad@apple.com>
 
-        REGRESSION (r240553): Crash in WebCore::ScrollingTree::updateTreeFromStateNode
+        REGRESSION (r240553): Crash in CyberCore::ScrollingTree::updateTreeFromStateNode
         https://bugs.webkit.org/show_bug.cgi?id=193955
 
         Unreviewed test gardening.
@@ -17539,7 +17539,7 @@
         * fast/events/ios/click-event-while-editing-node.html:
 
         This test started failing after r239441 because it taps the bottom of the editable element, and then expects
-        WebKit to scroll the web view up to reveal the touched location. This was exactly the bug that r239441 fixed, so
+        CyberKit to scroll the web view up to reveal the touched location. This was exactly the bug that r239441 fixed, so
         we should just make this test no longer depend on the broken behavior.
 
         * fast/forms/ios/focus-long-textarea-expected.txt:
@@ -19646,7 +19646,7 @@
 
 2018-11-28  Yongjun Zhang  <yongjun_zhang@apple.com>
 
-        Allow WebKit clients to specify a minimum effective width for layout.
+        Allow CyberKit clients to specify a minimum effective width for layout.
         https://bugs.webkit.org/show_bug.cgi?id=191499
         <rdar://problem/45362678>
 
@@ -19901,7 +19901,7 @@
         Add a test to ensure that we scroll the password field when caps lock is toggled.
 
         * TestExpectations: Skip the test on all platforms as we only support toggling Caps Lock in
-        WebKit2 on Mac at the moment.
+        CyberKit2 on Mac at the moment.
         * fast/forms/password-scrolled-after-caps-lock-toggled-expected.txt: Added.
         * fast/forms/password-scrolled-after-caps-lock-toggled.html: Added.
         * platform/mac-wk2/TestExpectations: Mark the test as PASS so that we run it.
@@ -19928,7 +19928,7 @@
         Add a test to ensure to that the placeholder text is repainted when the caps lock indicator is hidden.
 
         * TestExpectations: Skip the test on all platforms as we only support toggling Caps Lock in
-        WebKit2 on Mac at the moment.
+        CyberKit2 on Mac at the moment.
         * fast/repaint/placeholder-after-caps-lock-hidden.html: Added.
         * platform/mac-wk2/TestExpectations: Mark the test as PASS so that we run it.
 
@@ -20181,14 +20181,14 @@
 
 2018-11-21  Wenson Hsieh  <wenson_hsieh@apple.com>
 
-        [Cocoa] [WebKit2] Add support for replacing find-in-page text matches
+        [Cocoa] [CyberKit2] Add support for replacing find-in-page text matches
         https://bugs.webkit.org/show_bug.cgi?id=191786
         <rdar://problem/45813871>
 
         Reviewed by Ryosuke Niwa.
 
         Introduce a `LayoutTests/editing/find` directory to contain tests around `FindController`, and add 7 new layout
-        tests. These are currently enabled only for WebKit2 on macOS and iOS.
+        tests. These are currently enabled only for CyberKit2 on macOS and iOS.
 
         * TestExpectations:
         * editing/find/find-and-replace-adjacent-words-expected.txt: Added.
@@ -20349,7 +20349,7 @@
 
         Reviewed by Ryosuke Niwa.
 
-        Verifies that an image that meets the pathological criteria described in Source/WebCore/ChangeLog can still be
+        Verifies that an image that meets the pathological criteria described in Source/CyberCore/ChangeLog can still be
         dragged and dropped into an editable area.
 
         * fast/events/drag-image-with-border-image.html: Added.
@@ -20358,7 +20358,7 @@
         * platform/mac-wk2/TestExpectations:
         * platform/wpe/TestExpectations:
 
-        Enable this test only in WebKit1.
+        Enable this test only in CyberKit1.
 
 2018-11-18  Yusuke Suzuki  <yusukesuzuki@slowstart.org>
 
@@ -20723,7 +20723,7 @@
         * fast/events/ios/focus-tab-next-field.html: Added.
         * fast/events/ios/focus-tab-previous-field-expected.txt: Added.
         * fast/events/ios/focus-tab-previous-field.html: Added.
-        * platform/ios-wk1/TestExpectations: Skip test focus-tab-previous-field.html in Legacy WebKit as
+        * platform/ios-wk1/TestExpectations: Skip test focus-tab-previous-field.html in Legacy CyberKit as
         we do not support testing key commands with modifier keys.
         * resources/ui-helper.js:
         (window.UIHelper.keyDown): Updated to support taking an optional array of modifiers (defaults: [])
@@ -22033,7 +22033,7 @@
 
 2018-11-07  Andy Estes  <aestes@apple.com>
 
-        Crash in WebCore::PaymentRequest::canMakePayment when Apple Pay payment method data is missing
+        Crash in CyberCore::PaymentRequest::canMakePayment when Apple Pay payment method data is missing
         https://bugs.webkit.org/show_bug.cgi?id=191331
 
         Reviewed by Alexey Proskuryakov.
@@ -22388,10 +22388,10 @@
 
         Reviewed by Youenn Fablet.
 
-        * TestWebKitAPI/Tests/WebKitCocoa/GetDisplayMedia.mm:
+        * TestCyberKitAPI/Tests/CyberKitCocoa/GetDisplayMedia.mm:
         (-[GetDisplayMediaUIDelegate _webView:requestUserMediaAuthorizationForDevices:url:mainFrameURL:decisionHandler:]):
-        (TestWebKitAPI::GetDisplayMediaTest::promptForCapture):
-        (TestWebKitAPI::TEST_F):
+        (TestCyberKitAPI::GetDisplayMediaTest::promptForCapture):
+        (TestCyberKitAPI::TEST_F):
 
 2018-11-06  Timothy Hatcher  <timothy@apple.com>
 
@@ -22556,7 +22556,7 @@
         * platform/ios-wk1/TestExpectations:
         * platform/ios/TestExpectations:
 
-        In the WebKit2 port of iOS, enable a handful of color input tests that are currently disabled.
+        In the CyberKit2 port of iOS, enable a handful of color input tests that are currently disabled.
 
         * platform/ios/fast/forms/color/input-appearance-color-expected.txt:
 
@@ -22871,7 +22871,7 @@
 
 2018-11-02  Daniel Bates  <dabates@apple.com>
 
-        [iOS] WebKit should dispatch DOM events when a modifier key is pressed
+        [iOS] CyberKit should dispatch DOM events when a modifier key is pressed
         https://bugs.webkit.org/show_bug.cgi?id=190487
 
         Reviewed by Tim Horton.
@@ -23220,7 +23220,7 @@
 
 2018-10-31  Alicia Boya García  <aboya@igalia.com>
 
-        [MSE] WebKit tests: Use fixed point in makeASample()
+        [MSE] CyberKit tests: Use fixed point in makeASample()
         https://bugs.webkit.org/show_bug.cgi?id=191128
 
         Reviewed by Jer Noble.
@@ -23636,7 +23636,7 @@
 
 2018-10-29  Tim Horton  <timothy_horton@apple.com>
 
-        Modernize WebKit nibs and lprojs for localization's sake
+        Modernize CyberKit nibs and lprojs for localization's sake
         https://bugs.webkit.org/show_bug.cgi?id=190911
         <rdar://problem/45349466>
 
@@ -24315,11 +24315,11 @@
 
 2018-10-20  Daniel Bates  <dabates@apple.com>
 
-        Unskip test fast/writing-mode/english-rl-text-with-spelling-marker.html in iOS WebKit2
+        Unskip test fast/writing-mode/english-rl-text-with-spelling-marker.html in iOS CyberKit2
 
-        Following r235149 we mark spelling errors in iOS WebKit2.
+        Following r235149 we mark spelling errors in iOS CyberKit2.
 
-        * platform/ios-wk1/TestExpectations: Skip in legacy WebKit until we fix <https://webkit.org/b/188762>.
+        * platform/ios-wk1/TestExpectations: Skip in legacy CyberKit until we fix <https://webkit.org/b/188762>.
         * platform/ios/TestExpectations: Unskip test.
 
 2018-10-19  Justin Fan  <justin_fan@apple.com>
@@ -24570,8 +24570,8 @@
         Unreviewed test gardening.
 
         Adjust layout test baselines after r237245. Make fast/selectors/read-only-read-write-input-basics-expected.txt
-        contain PASS expectations for color inputs, and remove port-specific iOS/macOS WebKit2 expectations. Since color
-        inputs are disabled in legacy WebKit, move the layout test expectation in platform/mac to platform/mac-wk1.
+        contain PASS expectations for color inputs, and remove port-specific iOS/macOS CyberKit2 expectations. Since color
+        inputs are disabled in legacy CyberKit, move the layout test expectation in platform/mac to platform/mac-wk1.
 
         * fast/selectors/read-only-read-write-input-basics-expected.txt:
         * platform/ios-wk2/fast/selectors/read-only-read-write-input-basics-expected.txt: Removed.
@@ -24634,7 +24634,7 @@
 
         * platform/ios-wk1/TestExpectations:
 
-        Don't run datalist tests in WebKitLegacy by marking them as [ WontFix ].
+        Don't run datalist tests in CyberKitLegacy by marking them as [ WontFix ].
 
         * platform/ios-wk2/accessibility/roles-exposed-expected.txt: Added.
         * platform/ios-wk2/fast/borders/empty-outline-border-assert-expected.txt: Added.
@@ -24655,12 +24655,12 @@
         * platform/ios-wk2/imported/w3c/web-platform-tests/shadow-dom/input-element-list-expected.txt: Added.
         * platform/ios-wk2/mathml/presentation/foreign-element-in-token-expected.txt: Added.
 
-        Add baselines for WebKit2, where we enable the datalist element and color inputs.
+        Add baselines for CyberKit2, where we enable the datalist element and color inputs.
 
         * platform/ios/TestExpectations:
         * platform/mac-wk1/TestExpectations:
 
-        Don't run datalist tests in WebKitLegacy by marking them as [ WontFix ].
+        Don't run datalist tests in CyberKitLegacy by marking them as [ WontFix ].
 
         * platform/mac-wk2/accessibility/roles-exposed-expected.txt: Copied from LayoutTests/platform/mac/accessibility/roles-exposed-expected.txt.
         * platform/mac-wk2/fast/borders/empty-outline-border-assert-expected.txt: Added.
@@ -24683,7 +24683,7 @@
         * platform/mac-wk2/imported/w3c/web-platform-tests/shadow-dom/input-element-list-expected.txt: Added.
         * platform/mac-wk2/mathml/presentation/foreign-element-in-token-expected.txt: Added.
 
-        Add baselines for WebKit2, where we enable the datalist element and color inputs.
+        Add baselines for CyberKit2, where we enable the datalist element and color inputs.
 
         * platform/mac/TestExpectations:
         * platform/mac/accessibility/roles-exposed-expected.txt:
@@ -24693,7 +24693,7 @@
         * platform/mac/imported/w3c/web-platform-tests/html/semantics/forms/the-input-element/valueMode-expected.txt:
         * platform/mac/imported/w3c/web-platform-tests/html/semantics/selectors/pseudo-classes/readwrite-readonly-expected.txt:
 
-        Re-rebaseline test expectations that involve input type color, now that color inputs are off by default in WebKitLegacy.
+        Re-rebaseline test expectations that involve input type color, now that color inputs are off by default in CyberKitLegacy.
 
         * platform/win/TestExpectations:
 
@@ -25355,7 +25355,7 @@
         * platform/ios-wk2/TestExpectations:
         * platform/mac-wk1/TestExpectations:
         * platform/win/TestExpectations:
-        Skip new tests on WebKit1 since the download attribute is only supported on WebKit2.
+        Skip new tests on CyberKit1 since the download attribute is only supported on CyberKit2.
 
 2018-10-09  Chris Dumez  <cdumez@apple.com>
 
@@ -25916,7 +25916,7 @@
 
 2018-10-03  Ryosuke Niwa  <rniwa@webkit.org>
 
-        Enable selectionAcrossShadowBoundariesEnabled by default in WebKitLegacy
+        Enable selectionAcrossShadowBoundariesEnabled by default in CyberKitLegacy
         https://bugs.webkit.org/show_bug.cgi?id=190238
 
         Reviewed by Antti Koivisto.
@@ -26342,7 +26342,7 @@
         Reviewed by Chris Dumez.
 
         This patch import a 3rd party JS CBOR coder from https://github.com/paroga/cbor-js.
-        The library is MIT licensed, which should be fine to use within WebKit.
+        The library is MIT licensed, which should be fine to use within CyberKit.
 
         As a benefit from the library, tests are updated to check CBOR binaries.
 
@@ -27133,7 +27133,7 @@
         Reverted changeset:
 
         "URLWithUserTypedString should return nil for URLs deemed to
-        be invalid by WebCore::URL"
+        be invalid by CyberCore::URL"
         https://bugs.webkit.org/show_bug.cgi?id=189979
         https://trac.webkit.org/changeset/236524
 
@@ -27719,7 +27719,7 @@
 
 2018-09-22  Dean Jackson  <dino@apple.com>
 
-        Unreviewed - Skip pointer events tests on legacy WebKit.
+        Unreviewed - Skip pointer events tests on legacy CyberKit.
 
         * platform/ios-wk1/TestExpectations:
         * platform/mac-wk1/TestExpectations:
@@ -27800,7 +27800,7 @@
         Reviewed by Keith Miller.
 
         Added a test for enqueuing a lot of custom elements into the reaction queue via innerHTML setter.
-        WebKit should retain the JS wrappers of all custom elements.
+        CyberKit should retain the JS wrappers of all custom elements.
 
         * fast/custom-elements/custom-elements-reaction-queue-retains-js-wrapper-expected.txt: Added.
         * fast/custom-elements/custom-elements-reaction-queue-retains-js-wrapper.html: Added.
@@ -29405,7 +29405,7 @@ s
 
 2018-09-07  Dean Jackson  <dino@apple.com>
 
-        Add and expose Internal features from WebKit
+        Add and expose Internal features from CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=189442
         <rdar://problem/44243404>
 

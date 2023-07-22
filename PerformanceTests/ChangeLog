@@ -1151,7 +1151,7 @@
 
 2018-07-19  Ben Richards  <benton_richards@apple.com>
 
-        Add benchmark for WebKit process launch times
+        Add benchmark for CyberKit process launch times
         https://bugs.webkit.org/show_bug.cgi?id=186414
 
         Reviewed by Ryosuke Niwa.
@@ -1575,7 +1575,7 @@
 
 2018-02-01  Geoffrey Garen  <ggaren@apple.com>
 
-        Make MallocBench easier for non-WebKit engineers to run
+        Make MallocBench easier for non-CyberKit engineers to run
         https://bugs.webkit.org/show_bug.cgi?id=182415
 
         Reviewed by Saam Barati.
@@ -1587,7 +1587,7 @@
 
         * MallocBench/run-malloc-benchmarks: Specify the path to MallocBench
         and libmbmalloc explicitly, rather than computing them implicitly
-        using webkitdirs. Non-WebKit folks don't have the directory structure
+        using webkitdirs. Non-CyberKit folks don't have the directory structure
         required by webkitdirs.
 
         Remove Linux-specific and cmake-specific behaviors because we only

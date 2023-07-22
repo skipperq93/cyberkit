@@ -29,8 +29,8 @@
 #include "AccessibilityController.h"
 #include "DumpRenderTree.h"
 #include "FrameLoadDelegate.h"
-#include <JavaScriptCore/JSStringRef.h>
-#include <JavaScriptCore/JSStringRefBSTR.h>
+#include <CyberScriptCore/JSStringRef.h>
+#include <CyberScriptCore/JSStringRefBSTR.h>
 #include <wtf/text/WTFString.h>
 #include <comutil.h>
 #include <tchar.h>

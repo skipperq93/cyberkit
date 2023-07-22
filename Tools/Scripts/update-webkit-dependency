@@ -72,7 +72,7 @@ my $prefixInZip = shift;
 my $sourceDir = sourceDir();
 my $file = getLibraryName($libsURL);
 my $zipFile = "$file.zip";
-my $webkitLibrariesDir = $ENV{'WEBKIT_LIBRARIES'} || File::Spec->catdir($sourceDir, "WebKitLibraries", "win");
+my $webkitLibrariesDir = $ENV{'WEBKIT_LIBRARIES'} || File::Spec->catdir($sourceDir, "CyberKitLibraries", "win");
 my $tmpRelativeDir = File::Temp::tempdir("webkitlibsXXXXXXX", TMPDIR => 1, CLEANUP => 1);
 my $tmpAbsDir = File::Spec->rel2abs($tmpRelativeDir);
 my $ua = LWP::UserAgent->new();

@@ -12,7 +12,7 @@ var Prototype = {
   Browser: {
     IE:     !!(window.attachEvent && !window.opera),
     Opera:  !!window.opera,
-    WebKit: navigator.userAgent.indexOf('AppleWebKit/') > -1,
+    CyberKit: navigator.userAgent.indexOf('AppleCyberKit/') > -1,
     Gecko:  navigator.userAgent.indexOf('Gecko') > -1 && navigator.userAgent.indexOf('KHTML') == -1
   },
 
@@ -395,7 +395,7 @@ Object.extend(String.prototype, {
   }
 });
 
-if (Prototype.Browser.WebKit || Prototype.Browser.IE) Object.extend(String.prototype, {
+if (Prototype.Browser.CyberKit || Prototype.Browser.IE) Object.extend(String.prototype, {
   escapeHTML: function() {
     return this.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   },
@@ -645,7 +645,7 @@ var $A = Array.from = function(iterable) {
   }
 }
 
-if (Prototype.Browser.WebKit) {
+if (Prototype.Browser.CyberKit) {
   $A = Array.from = function(iterable) {
     if (!iterable) return [];
     if (!(typeof iterable == 'function' && iterable == '[object NodeList]') &&
@@ -3019,7 +3019,7 @@ Object.extend(Event, {
     useCapture = useCapture || false;
 
     if (name == 'keypress' &&
-      (Prototype.Browser.WebKit || element.attachEvent))
+      (Prototype.Browser.CyberKit || element.attachEvent))
       name = 'keydown';
 
     Event._observeAndCache(element, name, observer, useCapture);
@@ -3030,7 +3030,7 @@ Object.extend(Event, {
     useCapture = useCapture || false;
 
     if (name == 'keypress' &&
-        (Prototype.Browser.WebKit || element.attachEvent))
+        (Prototype.Browser.CyberKit || element.attachEvent))
       name = 'keydown';
 
     if (element.removeEventListener) {
@@ -3253,8 +3253,8 @@ var Position = {
 
 // Safari returns margins on body which is incorrect if the child is absolutely
 // positioned.  For performance reasons, redefine Position.cumulativeOffset for
-// KHTML/WebKit only.
-if (Prototype.Browser.WebKit) {
+// KHTML/CyberKit only.
+if (Prototype.Browser.CyberKit) {
   Position.cumulativeOffset = function(element) {
     var valueT = 0, valueL = 0;
     do {

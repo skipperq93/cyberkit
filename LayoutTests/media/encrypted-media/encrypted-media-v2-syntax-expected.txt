@@ -1,17 +1,17 @@
-This tests the basic API of WebKitMediaKeys and WebKitMediaKeySession.
+This tests the basic API of CyberKitMediaKeys and CyberKitMediaKeySession.
 
-Test WebKitMediaKeys.
-EXPECTED (typeof window.WebKitMediaKeys == 'function') OK
-TEST(new WebKitMediaKeys("")) THROWS(DOMException.INVALID_ACCESS_ERR) OK
-TEST(new WebKitMediaKeys("unsupported")) THROWS(DOMException.NOT_SUPPORTED_ERR) OK
-RUN(mediaKeys = new WebKitMediaKeys("com.webcore.mock"))
+Test CyberKitMediaKeys.
+EXPECTED (typeof window.CyberKitMediaKeys == 'function') OK
+TEST(new CyberKitMediaKeys("")) THROWS(DOMException.INVALID_ACCESS_ERR) OK
+TEST(new CyberKitMediaKeys("unsupported")) THROWS(DOMException.NOT_SUPPORTED_ERR) OK
+RUN(mediaKeys = new CyberKitMediaKeys("com.webcore.mock"))
 EXPECTED (mediaKeys.keySystem == 'com.webcore.mock') OK
 EXPECTED (typeof mediaKeys.createSession == 'function') OK
 TEST(mediaKeys.createSession("", new Uint8Array(1))) THROWS(DOMException.INVALID_ACCESS_ERR) OK
 TEST(mediaKeys.createSession("unsupported/type")) THROWS('TypeError: Not enough arguments') OK
 TEST(mediaKeys.createSession("unsupported/type", new Uint8Array(1))) THROWS(DOMException.NOT_SUPPORTED_ERR) OK
 
-Test WebKitMediaKeySession.
+Test CyberKitMediaKeySession.
 RUN(mediaKeySession = mediaKeys.createSession("video/mock", initData))
 EXPECTED (typeof mediaKeySession == 'object') OK
 EXPECTED (typeof mediaKeySession.addEventListener == 'function') OK
@@ -22,6 +22,6 @@ EXPECTED (mediaKeySession.sessionId != 'null') OK
 EXPECTED (mediaKeySession.onwebkitkeyadded == 'null') OK
 EXPECTED (mediaKeySession.onwebkitkeyerror == 'null') OK
 EXPECTED (mediaKeySession.onwebkitkeymessage == 'null') OK
-TEST(mediaKeySession.update(null)) THROWS('TypeError: Argument 1 (\'key\') to WebKitMediaKeySession.update must be an instance of Uint8Array') OK
+TEST(mediaKeySession.update(null)) THROWS('TypeError: Argument 1 (\'key\') to CyberKitMediaKeySession.update must be an instance of Uint8Array') OK
 END OF TEST
 

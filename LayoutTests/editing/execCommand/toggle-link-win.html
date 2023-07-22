@@ -49,15 +49,15 @@ testSingleToggle("createLink", 'hello <b>world</b>', selectAll, '<a href="http:/
 testSingleToggle("createLink", '<u>hello world</u>', selectAll, '<u><a href="http://webkit.org/">hello world</a></u>');
 testSingleToggle("createLink", 'hello <a href="http://bugs.webkit.org/">world</a>', selectAll, '<a href="http://webkit.org/">hello world</a>');
 testSingleToggle("createLink", 'hello <a href="http://bugs.webkit.org/" style="font-weight: bold">world</a>', selectAll, '<a href="http://webkit.org/">hello <b>world</b></a>');
-testSingleToggle("createLink", 'hello <b>world</b> WebKit', selectFirstTwoWords, '<a href="http://webkit.org/">hello <b>world</b> </a>WebKit');
-testSingleToggle("createLink", '<a href="http://trac.webkit.org/">hello <b>world</b></a> WebKit', selectFirstTwoWords, '<a href="http://webkit.org/">hello <b>world</b> </a>WebKit');
-testSingleToggle("createLink", '<a href="http://trac.webkit.org/" style="font-style: italic;">hello world</a> WebKit', selectFirstTwoWords, '<a href="http://webkit.org/"><i>hello world</i> </a>WebKit');
-testSingleToggle("createLink", 'hello <a href="http://trac.webkit.org/"><b>world</b> WebKit</a>', selectFirstTwoWords, '<a href="http://webkit.org/">hello <b>world</b> </a><a href="http://trac.webkit.org/">WebKit</a>');
-testSingleToggle("createLink", 'hello <a href="http://trac.webkit.org/" style="font-style: italic;"><b>world</b> WebKit</a>', selectFirstTwoWords,
-    '<a href="http://webkit.org/">hello <b style="font-style: italic;">world</b> </a><a href="http://trac.webkit.org/" style="font-style: italic;">WebKit</a>');
+testSingleToggle("createLink", 'hello <b>world</b> CyberKit', selectFirstTwoWords, '<a href="http://webkit.org/">hello <b>world</b> </a>CyberKit');
+testSingleToggle("createLink", '<a href="http://trac.webkit.org/">hello <b>world</b></a> CyberKit', selectFirstTwoWords, '<a href="http://webkit.org/">hello <b>world</b> </a>CyberKit');
+testSingleToggle("createLink", '<a href="http://trac.webkit.org/" style="font-style: italic;">hello world</a> CyberKit', selectFirstTwoWords, '<a href="http://webkit.org/"><i>hello world</i> </a>CyberKit');
+testSingleToggle("createLink", 'hello <a href="http://trac.webkit.org/"><b>world</b> CyberKit</a>', selectFirstTwoWords, '<a href="http://webkit.org/">hello <b>world</b> </a><a href="http://trac.webkit.org/">CyberKit</a>');
+testSingleToggle("createLink", 'hello <a href="http://trac.webkit.org/" style="font-style: italic;"><b>world</b> CyberKit</a>', selectFirstTwoWords,
+    '<a href="http://webkit.org/">hello <b style="font-style: italic;">world</b> </a><a href="http://trac.webkit.org/" style="font-style: italic;">CyberKit</a>');
 
-testSingleToggle("createLink", 'hello <b>world</b> WebKit', selectLastWord, 'hello <b>world</b> <a href="http://webkit.org/">WebKit</a>');
-testSingleToggle("createLink", '<u>hello <b>world</b> WebKit</u>', selectLastWord, '<u>hello <b>world</b> <a href="http://webkit.org/">WebKit</a></u>');
+testSingleToggle("createLink", 'hello <b>world</b> CyberKit', selectLastWord, 'hello <b>world</b> <a href="http://webkit.org/">CyberKit</a>');
+testSingleToggle("createLink", '<u>hello <b>world</b> CyberKit</u>', selectLastWord, '<u>hello <b>world</b> <a href="http://webkit.org/">CyberKit</a></u>');
 testSingleToggle("createLink", '<a href="http://trac.webkit.org/"><div>hello</div><div>world</div></a>', selectLastWord,
     '<a href="http://trac.webkit.org/"><div>hello</div></a><div><a href="http://webkit.org/">world</a></div>');
 testSingleToggle("createLink", '<a href="http://trac.webkit.org/" style="font-weight: bold;"><div>hello</div><div>world</div></a>', selectLastWord,

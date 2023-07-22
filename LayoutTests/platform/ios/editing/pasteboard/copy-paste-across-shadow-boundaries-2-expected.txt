@@ -9,10 +9,10 @@ pasted html:
 |     style="display: contents;"
 |     "world"
 |   " "
-|   "WebKit"
+|   "CyberKit"
 | <span>
 |   style="-webkit-text-size-adjust: auto;"
 |   " rocks<#selection-caret>"
 
 text/plain:
-| "world WebKit rocks"
+| "world CyberKit rocks"

@@ -28,11 +28,11 @@
 #include "DumpRenderTree.h"
 #include "TestRunner.h"
 #include <comutil.h>
-#include <WebCore/BString.h>
-#include <WebCore/COMPtr.h>
+#include <CyberCore/BString.h>
+#include <CyberCore/COMPtr.h>
 #include <wtf/text/WTFString.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 // FIXME: move this enum to a separate header file when other code begins to use it.
 typedef enum WebExtraNavigationType {

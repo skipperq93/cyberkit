@@ -16,7 +16,7 @@ description("Ensures that you can tab to focus a link inside a canvas subtree.")
 
 if (window.testRunner && window.eventSender) {
     testRunner.dumpAsText();
-    testRunner.overridePreference("WebKitTabToLinksPreferenceKey", 1);
+    testRunner.overridePreference("CyberKitTabToLinksPreferenceKey", 1);
 
     document.getElementById('before').focus();
     shouldBe('document.activeElement.id', '"before"');

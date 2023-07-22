@@ -21,7 +21,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-"""Checks WebKit style for ChangeLog files."""
+"""Checks CyberKit style for ChangeLog files."""
 
 from sys import maxsize
 from webkitpy.common.checkout.changelog import parse_bug_id_from_changelog
@@ -126,4 +126,4 @@ class ChangeLogChecker(object):
         if len(found_unwanted_security_phrases) > 0:
             self.handle_style_error(first_line_number_with_unwanted_phrase,
                                     "changelog/unwantedsecurityterms", 3,
-                                    "Please consider whether the use of security-sensitive phrasing could help someone exploit WebKit: {}".format(", ".join(found_unwanted_security_phrases)))
+                                    "Please consider whether the use of security-sensitive phrasing could help someone exploit CyberKit: {}".format(", ".join(found_unwanted_security_phrases)))

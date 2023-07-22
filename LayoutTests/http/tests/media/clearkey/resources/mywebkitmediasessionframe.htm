@@ -14,7 +14,7 @@
         function needkey(event)
         {
             if (!video.webkitKeys)
-                video.webkitSetMediaKeys(new WebKitMediaKeys('org.w3c.clearkey'));
+                video.webkitSetMediaKeys(new CyberKitMediaKeys('org.w3c.clearkey'));
 
             if (!video.webkitKeys) {
                 log('Error: org.w3c.clearkey not supported.');

@@ -27,9 +27,9 @@
 #include "UIScriptContext.h"
 
 #include "UIScriptController.h"
-#include <JavaScriptCore/JSContextRef.h>
-#include <JavaScriptCore/JSValueRef.h>
-#include <WebCore/FloatRect.h>
+#include <CyberScriptCore/JSContextRef.h>
+#include <CyberScriptCore/JSValueRef.h>
+#include <CyberCore/FloatRect.h>
 
 using namespace WTR;
 
@@ -185,7 +185,7 @@ void UIScriptContext::tryToCompleteUIScriptForCurrentParentCallback()
         JSStringRelease(result);
 }
 
-JSObjectRef UIScriptContext::objectFromRect(const WebCore::FloatRect& rect) const
+JSObjectRef UIScriptContext::objectFromRect(const CyberCore::FloatRect& rect) const
 {
     JSObjectRef object = JSObjectMake(m_context.get(), nullptr, nullptr);
 

@@ -3,9 +3,9 @@ When matching attributes case insensitively, it should be ASCII case insensitive
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 
 
-Testing "[data-attribute=WebKit-É]"
-PASS document.querySelectorAll('#test-root [data-attribute=WebKit-É]').length is 1
-PASS document.querySelectorAll('#test-root [data-attribute=WebKit-É]')[0].id is "target1"
+Testing "[data-attribute=CyberKit-É]"
+PASS document.querySelectorAll('#test-root [data-attribute=CyberKit-É]').length is 1
+PASS document.querySelectorAll('#test-root [data-attribute=CyberKit-É]')[0].id is "target1"
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[0]).backgroundColor is "rgb(10, 100, 200)"
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[1]).backgroundColor is "rgb(255, 0, 0)"
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[2]).backgroundColor is "rgb(255, 0, 0)"
@@ -30,9 +30,9 @@ PASS getComputedStyle(document.querySelectorAll("#test-root *")[2]).backgroundCo
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[3]).backgroundColor is "rgb(255, 0, 0)"
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[4]).backgroundColor is "rgb(255, 0, 0)"
 
-Testing "[data-attribute=WebKit-é]"
-PASS document.querySelectorAll('#test-root [data-attribute=WebKit-é]').length is 1
-PASS document.querySelectorAll('#test-root [data-attribute=WebKit-é]')[0].id is "target4"
+Testing "[data-attribute=CyberKit-é]"
+PASS document.querySelectorAll('#test-root [data-attribute=CyberKit-é]').length is 1
+PASS document.querySelectorAll('#test-root [data-attribute=CyberKit-é]')[0].id is "target4"
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[0]).backgroundColor is "rgb(255, 0, 0)"
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[1]).backgroundColor is "rgb(255, 0, 0)"
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[2]).backgroundColor is "rgb(255, 0, 0)"
@@ -48,11 +48,11 @@ PASS getComputedStyle(document.querySelectorAll("#test-root *")[2]).backgroundCo
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[3]).backgroundColor is "rgb(255, 0, 0)"
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[4]).backgroundColor is "rgb(10, 100, 200)"
 
-Testing "[data-attribute=WebKit-É i]"
-PASS document.querySelectorAll('#test-root [data-attribute=WebKit-É i]').length is 3
-PASS document.querySelectorAll('#test-root [data-attribute=WebKit-É i]')[0].id is "target1"
-PASS document.querySelectorAll('#test-root [data-attribute=WebKit-É i]')[1].id is "target2"
-PASS document.querySelectorAll('#test-root [data-attribute=WebKit-É i]')[2].id is "target3"
+Testing "[data-attribute=CyberKit-É i]"
+PASS document.querySelectorAll('#test-root [data-attribute=CyberKit-É i]').length is 3
+PASS document.querySelectorAll('#test-root [data-attribute=CyberKit-É i]')[0].id is "target1"
+PASS document.querySelectorAll('#test-root [data-attribute=CyberKit-É i]')[1].id is "target2"
+PASS document.querySelectorAll('#test-root [data-attribute=CyberKit-É i]')[2].id is "target3"
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[0]).backgroundColor is "rgb(10, 100, 200)"
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[1]).backgroundColor is "rgb(10, 100, 200)"
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[2]).backgroundColor is "rgb(10, 100, 200)"
@@ -81,10 +81,10 @@ PASS getComputedStyle(document.querySelectorAll("#test-root *")[2]).backgroundCo
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[3]).backgroundColor is "rgb(255, 0, 0)"
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[4]).backgroundColor is "rgb(255, 0, 0)"
 
-Testing "[data-attribute=WebKit-é i]"
-PASS document.querySelectorAll('#test-root [data-attribute=WebKit-é i]').length is 2
-PASS document.querySelectorAll('#test-root [data-attribute=WebKit-é i]')[0].id is "target4"
-PASS document.querySelectorAll('#test-root [data-attribute=WebKit-é i]')[1].id is "target5"
+Testing "[data-attribute=CyberKit-é i]"
+PASS document.querySelectorAll('#test-root [data-attribute=CyberKit-é i]').length is 2
+PASS document.querySelectorAll('#test-root [data-attribute=CyberKit-é i]')[0].id is "target4"
+PASS document.querySelectorAll('#test-root [data-attribute=CyberKit-é i]')[1].id is "target5"
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[0]).backgroundColor is "rgb(255, 0, 0)"
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[1]).backgroundColor is "rgb(255, 0, 0)"
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[2]).backgroundColor is "rgb(255, 0, 0)"
@@ -112,11 +112,11 @@ PASS getComputedStyle(document.querySelectorAll("#test-root *")[2]).backgroundCo
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[3]).backgroundColor is "rgb(255, 0, 0)"
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[4]).backgroundColor is "rgb(255, 0, 0)"
 
-Testing "[multiple=WebKit-é]"
-PASS document.querySelectorAll('#test-root [multiple=WebKit-é]').length is 3
-PASS document.querySelectorAll('#test-root [multiple=WebKit-é]')[0].id is "target1"
-PASS document.querySelectorAll('#test-root [multiple=WebKit-é]')[1].id is "target2"
-PASS document.querySelectorAll('#test-root [multiple=WebKit-é]')[2].id is "target3"
+Testing "[multiple=CyberKit-é]"
+PASS document.querySelectorAll('#test-root [multiple=CyberKit-é]').length is 3
+PASS document.querySelectorAll('#test-root [multiple=CyberKit-é]')[0].id is "target1"
+PASS document.querySelectorAll('#test-root [multiple=CyberKit-é]')[1].id is "target2"
+PASS document.querySelectorAll('#test-root [multiple=CyberKit-é]')[2].id is "target3"
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[0]).backgroundColor is "rgb(10, 100, 200)"
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[1]).backgroundColor is "rgb(10, 100, 200)"
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[2]).backgroundColor is "rgb(10, 100, 200)"
@@ -165,11 +165,11 @@ PASS getComputedStyle(document.querySelectorAll("#test-root *")[2]).backgroundCo
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[3]).backgroundColor is "rgb(255, 0, 0)"
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[4]).backgroundColor is "rgb(255, 0, 0)"
 
-Testing "[multiple=WebKit-é i]"
-PASS document.querySelectorAll('#test-root [multiple=WebKit-é i]').length is 3
-PASS document.querySelectorAll('#test-root [multiple=WebKit-é i]')[0].id is "target1"
-PASS document.querySelectorAll('#test-root [multiple=WebKit-é i]')[1].id is "target2"
-PASS document.querySelectorAll('#test-root [multiple=WebKit-é i]')[2].id is "target3"
+Testing "[multiple=CyberKit-é i]"
+PASS document.querySelectorAll('#test-root [multiple=CyberKit-é i]').length is 3
+PASS document.querySelectorAll('#test-root [multiple=CyberKit-é i]')[0].id is "target1"
+PASS document.querySelectorAll('#test-root [multiple=CyberKit-é i]')[1].id is "target2"
+PASS document.querySelectorAll('#test-root [multiple=CyberKit-é i]')[2].id is "target3"
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[0]).backgroundColor is "rgb(10, 100, 200)"
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[1]).backgroundColor is "rgb(10, 100, 200)"
 PASS getComputedStyle(document.querySelectorAll("#test-root *")[2]).backgroundColor is "rgb(10, 100, 200)"

@@ -32,8 +32,8 @@
 
 #if !PLATFORM(IOS_FAMILY)
 
-#import <WebKit/WebView.h>
-#import <WebKit/WebViewPrivate.h>   // for aeDescByEvaluatingJavaScriptFromString, which is pending API review
+#import <CyberKit/WebView.h>
+#import <CyberKit/WebViewPrivate.h>   // for aeDescByEvaluatingJavaScriptFromString, which is pending API review
 
 @implementation AppleScriptController
 

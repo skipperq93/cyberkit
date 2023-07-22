@@ -1,17 +1,17 @@
 from .base import get_timeout_multiplier, maybe_add_args, certificate_domain_list  # noqa: F401
-from .webkit import WebKitBrowser
+from .webkit import CyberKitBrowser
 from ..executors import executor_kwargs as base_executor_kwargs
 from ..executors.executorwebdriver import (WebDriverTestharnessExecutor,  # noqa: F401
                                            WebDriverRefTestExecutor)  # noqa: F401
-from ..executors.executorwebkit import WebKitDriverWdspecExecutor  # noqa: F401
+from ..executors.executorwebkit import CyberKitDriverWdspecExecutor  # noqa: F401
 
 __wptrunner__ = {"product": "webkitgtk_minibrowser",
                  "check_args": "check_args",
-                 "browser": "WebKitGTKMiniBrowser",
+                 "browser": "CyberKitGTKMiniBrowser",
                  "browser_kwargs": "browser_kwargs",
                  "executor": {"testharness": "WebDriverTestharnessExecutor",
                               "reftest": "WebDriverRefTestExecutor",
-                              "wdspec": "WebKitDriverWdspecExecutor"},
+                              "wdspec": "CyberKitDriverWdspecExecutor"},
                  "executor_kwargs": "executor_kwargs",
                  "env_extras": "env_extras",
                  "env_options": "env_options",
@@ -72,8 +72,8 @@ def run_info_extras(**kwargs):
     return {"webkit_port": "gtk"}
 
 
-class WebKitGTKMiniBrowser(WebKitBrowser):
+class CyberKitGTKMiniBrowser(CyberKitBrowser):
     def __init__(self, logger, binary=None, webdriver_binary=None,
                  webdriver_args=None):
-        WebKitBrowser.__init__(self, logger, binary, webdriver_binary,
+        CyberKitBrowser.__init__(self, logger, binary, webdriver_binary,
                                webdriver_args)

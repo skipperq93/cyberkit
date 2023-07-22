@@ -7,7 +7,7 @@ steps:
   - script: |
       HOMEBREW_NO_AUTO_UPDATE=1 brew cask install tools/ci/azure/safari-technology-preview.rb
       sudo "/Applications/Safari Technology Preview.app/Contents/MacOS/safaridriver" --enable
-      defaults write com.apple.SafariTechnologyPreview WebKitJavaScriptCanOpenWindowsAutomatically 1
+      defaults write com.apple.SafariTechnologyPreview CyberKitJavaScriptCanOpenWindowsAutomatically 1
       defaults write com.apple.SafariTechnologyPreview ExperimentalServerTimingEnabled 1
     displayName: 'Install Safari Technology Preview'
 - ${{ if eq(parameters.channel, 'stable') }}:
@@ -16,5 +16,5 @@ steps:
       # https://github.com/web-platform-tests/wpt/issues/19845
       mkdir -p ~/Library/WebDriver/
       cp tools/ci/azure/com.apple.Safari.plist ~/Library/WebDriver/
-      defaults write com.apple.Safari WebKitJavaScriptCanOpenWindowsAutomatically 1
+      defaults write com.apple.Safari CyberKitJavaScriptCanOpenWindowsAutomatically 1
     displayName: 'Configure Safari'

@@ -35,7 +35,7 @@ _log = logging.getLogger(__name__)
 
 
 def change_directory(filesystem, checkout_root, paths):
-    """Change the working directory to the WebKit checkout root, if possible.
+    """Change the working directory to the CyberKit checkout root, if possible.
 
     If every path in the paths parameter is below the checkout root (or if
     the paths parameter is empty or None), this method changes the current
@@ -56,7 +56,7 @@ def change_directory(filesystem, checkout_root, paths):
       paths: A list of paths to the files that should be checked for style.
              This argument can be None or the empty list if a git commit
              or all changes under the checkout root should be checked.
-      checkout_root: The path to the root of the WebKit checkout.
+      checkout_root: The path to the root of the CyberKit checkout.
 
     """
     if paths is not None:
@@ -78,7 +78,7 @@ def change_directory(filesystem, checkout_root, paths):
                 _log.warn(
 """Path-dependent style checks may not work correctly:
 
-  One of the given paths is outside the WebKit checkout of the current
+  One of the given paths is outside the CyberKit checkout of the current
   working directory:
 
     Path: %s
@@ -100,7 +100,7 @@ def change_directory(filesystem, checkout_root, paths):
     return paths
 
 
-class CheckWebKitStyle(object):
+class CheckCyberKitStyle(object):
     def _engage_awesome_stderr_hacks(self):
         # Python 3 strings are unicode, we don't need to encode stderr
         if sys.version_info > (3, 0):

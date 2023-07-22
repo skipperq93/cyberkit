@@ -26,7 +26,7 @@
 #import "config.h"
 #import "LayoutTestSpellChecker.h"
 
-#import <JavaScriptCore/JSRetainPtr.h>
+#import <CyberScriptCore/JSRetainPtr.h>
 #import <objc/runtime.h>
 #import <wtf/Assertions.h>
 #import <wtf/BlockPtr.h>

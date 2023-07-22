@@ -3,7 +3,7 @@
 <head>
 <script>
 // Opens two windows containing the same image. First window will populate the cache with
-// image. The second window is opened with WebKitDisplayImagesKey unset, but image should
+// image. The second window is opened with CyberKitDisplayImagesKey unset, but image should
 // still load since it is in cache.
 function runTest()
 {
@@ -19,7 +19,7 @@ function runTest()
 
 function image1Loaded()
 {
-    testRunner.overridePreference('WebKitDisplayImagesKey', 0);
+    testRunner.overridePreference('CyberKitDisplayImagesKey', 0);
     document.getElementById('result').innerHTML = 'FAILURE: image2.html not loaded';
     window.setTimeout(function() {window.open("resources/image2.html", "_blank");}, 0);
 }
@@ -32,7 +32,7 @@ function image2Loaded()
 </script>
 </head>
 <body onload="runTest()">
-Test that WebKitDisplayImagesKey unset does not block image in cache.
+Test that CyberKitDisplayImagesKey unset does not block image in cache.
 <div id="result">FAILURE: Test script didn't run.</div>
 </body>
 </html>

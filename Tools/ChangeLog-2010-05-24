@@ -381,10 +381,10 @@
 
         Build fix.  No review.
 
-        The WebKitAPITest targets do not use the "_debug" suffix needed
+        The CyberKitAPITest targets do not use the "_debug" suffix needed
         by the WinCairo port.  Added Debug_Cairo target to correct this.
 
-        * WebKitAPITest/WebKitAPITest.vcproj:
+        * CyberKitAPITest/CyberKitAPITest.vcproj:
 
 2010-05-20  Martin Robinson  <mrobinson@igalia.com>
 
@@ -617,7 +617,7 @@
         QHttpNetworkRequest adds Authorization and Cookie headers to XHRs
         without knowing if this is valid behaviour or not. In order to allow
         Qt to decide whether Cookie/Authorization headers should be added
-        to an XHR QtWebKit needs to use an attribute added to QNetworkRequest.
+        to an XHR QtCyberKit needs to use an attribute added to QNetworkRequest.
         These new attributes are: QNetworkRequest::CookieLoadControlAttribute,
         QNetworkRequest::CookieSaveControlAttribute,and
         QNetworkRequest::AuthenticationReuseControlAttribute.
@@ -634,8 +634,8 @@
 
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::WebPage::WebPage):
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::WebPage::WebPage):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
         * DumpRenderTree/qt/DumpRenderTreeQt.h:
 
 
@@ -678,8 +678,8 @@
         Add a workaround of this issue.
 
         * Scripts/update-webkit:
-          Chromium-Windows only: If WebKit/chromium/features.gyp has been
-          updated, remove WebKit/chromium/Debug and WebKit/chromium/Release.
+          Chromium-Windows only: If CyberKit/chromium/features.gyp has been
+          updated, remove CyberKit/chromium/Debug and CyberKit/chromium/Release.
 
 2010-05-17  Sheriff Bot  <webkit.review.bot@gmail.com>
 
@@ -731,10 +731,10 @@
         These extra callbacks are removed by supporting both of the above layoutTestContoller commands.
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::WebPage::resetSettings):
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::WebPage::resetSettings):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
         * DumpRenderTree/qt/DumpRenderTreeQt.h:
-        (WebCore::DumpRenderTree::drtStoragePath):
+        (CyberCore::DumpRenderTree::drtStoragePath):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::reset):
         (LayoutTestController::disableImageLoading):
@@ -829,8 +829,8 @@
         https://bugs.webkit.org/show_bug.cgi?id=38867
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::DumpRenderTree::open):
-        (WebCore::DumpRenderTree::dump):
+        (CyberCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::dump):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::LayoutTestController):
         (LayoutTestController::reset):
@@ -1030,7 +1030,7 @@
         Reviewed by Xan Lopez.
 
         https://bugs.webkit.org/show_bug.cgi?id=30500
-        [Gtk] Find a way for WebKit to "announce" itself so that ATs can readily distinguish it from true Gtk/Gail
+        [Gtk] Find a way for CyberKit to "announce" itself so that ATs can readily distinguish it from true Gtk/Gail
 
         The "announcement" is now made in the form of an object attribute
         associated with the AtkObject.
@@ -1086,10 +1086,10 @@
         rename the WebGLArray types to the TypedArray naming convention.
         The only source files which were touched by hand, and which are
         being manually reviewed, are:
-            WebCore/page/DOMWindow.idl
-            WebCore/bindings/generic/RuntimeEnabledFeatures.h (script's changes undone)
-            WebKit/WebCore/bindings/js/JSDOMWindowCustom.cpp
-            WebKit/WebCore/bindings/v8/custom/V8DOMWindowCustom.cpp
+            CyberCore/page/DOMWindow.idl
+            CyberCore/bindings/generic/RuntimeEnabledFeatures.h (script's changes undone)
+            CyberKit/CyberCore/bindings/js/JSDOMWindowCustom.cpp
+            CyberKit/CyberCore/bindings/v8/custom/V8DOMWindowCustom.cpp
         These only needed to be touched to update the aliases between the
         WebGLArray and TypedArray names introduced in bug 39036. (It was
         not feasible to have do-webcore-rename handle this as it would
@@ -1130,11 +1130,11 @@
 
         [Qt] Rename QtLauncher to QtTestBrowser
 
-        * QtTestBrowser: Copied from WebKitTools/QtLauncher.
+        * QtTestBrowser: Copied from CyberKitTools/QtLauncher.
         * QtTestBrowser/QtLauncher.pro: Removed.
         * QtTestBrowser/QtLauncher.qrc: Removed.
-        * QtTestBrowser/QtTestBrowser.pro: Copied from WebKitTools/QtLauncher/QtLauncher.pro.
-        * QtTestBrowser/QtTestBrowser.qrc: Copied from WebKitTools/QtLauncher/QtLauncher.qrc.
+        * QtTestBrowser/QtTestBrowser.pro: Copied from CyberKitTools/QtLauncher/QtLauncher.pro.
+        * QtTestBrowser/QtTestBrowser.qrc: Copied from CyberKitTools/QtLauncher/QtLauncher.qrc.
         * Scripts/run-launcher:
         * Scripts/webkitdirs.pm:
 
@@ -1212,7 +1212,7 @@
         [Qt] Add LayoutTestController interface: computedStyleIncludingVisitedInfo
         https://bugs.webkit.org/show_bug.cgi?id=37759
 
-        WebKitTools:
+        CyberKitTools:
 
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::computedStyleIncludingVisitedInfo):
@@ -1711,7 +1711,7 @@
         Expose FileReader interface.
         https://bugs.webkit.org/show_bug.cgi?id=38609
 
-        * Scripts/build-webkit: turn on building FileReader for Apple's WebKit.
+        * Scripts/build-webkit: turn on building FileReader for Apple's CyberKit.
 
 2010-05-10  Tony Chang  <tony@chromium.org>
 
@@ -1893,8 +1893,8 @@
         https://bugs.webkit.org/show_bug.cgi?id=32967
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::WebPage::WebPage):
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::WebPage::WebPage):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
         * DumpRenderTree/qt/DumpRenderTreeQt.h:
 
 2010-05-09  Daniel Bates  <dbates@rim.com>
@@ -2032,7 +2032,7 @@
         QHttpNetworkRequest adds Authorization and Cookie headers to XHRs
         without knowing if this is valid behaviour or not. In order to allow
         Qt to decide whether Cookie/Authorization headers should be added
-        to an XHR QtWebKit needs to use an attribute added to QNetworkRequest.
+        to an XHR QtCyberKit needs to use an attribute added to QNetworkRequest.
         These new attributes are: QNetworkRequest::CookieLoadControlAttribute,
         QNetworkRequest::CookieSaveControlAttribute,and
         QNetworkRequest::AuthenticationReuseControlAttribute.
@@ -2049,8 +2049,8 @@
 
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::WebPage::WebPage):
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::WebPage::WebPage):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
         * DumpRenderTree/qt/DumpRenderTreeQt.h:
 
 
@@ -2068,7 +2068,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=38541
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::DumpRenderTree::dump):
+        (CyberCore::DumpRenderTree::dump):
 
 2010-05-08  Eric Seidel  <eric@webkit.org>
 
@@ -2432,7 +2432,7 @@
 
         Reviewed by Dimitri Glazkov.
 
-        Make ImageDiff depend on WebKit. When compiled from within Chromium, WTF is not a standalone dynamic library but depends on WebKit.
+        Make ImageDiff depend on CyberKit. When compiled from within Chromium, WTF is not a standalone dynamic library but depends on CyberKit.
         https://bugs.webkit.org/show_bug.cgi?id=38632
 
         * DumpRenderTree/DumpRenderTree.gyp/DumpRenderTree.gyp:
@@ -2463,7 +2463,7 @@
 
         Reviewed by George Staikos
 
-        This patch adds WCSS -wap-input-format and -wap-input-required support to WebKit
+        This patch adds WCSS -wap-input-format and -wap-input-required support to CyberKit
         Make the test cases in fast/wcss optionional only when  WCSS is enabled.
 
         https://bugs.webkit.org/show_bug.cgi?id=37848
@@ -2475,16 +2475,16 @@
 
         Reviewed by Eric Seidel.
 
-        [DRT/Chromium] Remove InitWebCoreSystemInterface() call
+        [DRT/Chromium] Remove InitCyberCoreSystemInterface() call
         https://bugs.webkit.org/show_bug.cgi?id=38624
 
         Chromium r45167 <http://src.chromium.org/viewvc/chrome?view=rev&revision=45167>
-        added InitWebCoreSystemInterface() to webkit/support/platform_support_mac.mm.
+        added InitCyberCoreSystemInterface() to webkit/support/platform_support_mac.mm.
         So we don't need to call it from DumpRenderTree.cpp anymore.
 
         * DumpRenderTree/DumpRenderTree.gyp/DumpRenderTree.gyp:
         * DumpRenderTree/chromium/DumpRenderTree.cpp:
-        (main): Remove InitWebCoreSystemInterface().
+        (main): Remove InitCyberCoreSystemInterface().
 
 2010-05-05  Dirk Pranke  <dpranke@chromium.org>
 
@@ -2516,7 +2516,7 @@
 
         Add a lint rule to ban the single letter 'l' as an identifier name
         since it is very easy to confuse with the numeral '1', especially
-        in code like WebCore/css/CSSHelper.cpp.
+        in code like CyberCore/css/CSSHelper.cpp.
 
         See http://trac.webkit.org/changeset/58844 as an example of a bug
         caused by confusing short variable names.
@@ -2911,8 +2911,8 @@
         * DumpRenderTree/mac/LayoutTestControllerMac.mm:
         (LayoutTestController::setJavaScriptCanAccessClipboard):
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::WebPage::WebPage):
-        (WebCore::WebPage::resetSettings):
+        (CyberCore::WebPage::WebPage):
+        (CyberCore::WebPage::resetSettings):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::setJavaScriptCanAccessClipboard):
         * DumpRenderTree/qt/LayoutTestControllerQt.h:
@@ -3416,7 +3416,7 @@
 
         Reviewed by Stephanie Lewis.
 
-        Always build WebKit2 when building on SnowLeopard and later. 
+        Always build CyberKit2 when building on SnowLeopard and later. 
 
         * Scripts/build-webkit:
 
@@ -3425,10 +3425,10 @@
         Reviewed by Maciej Stachowiak.
 
         Fix for https://bugs.webkit.org/show_bug.cgi?id=38238
-        Allow both WebKit and WebKit2 to link to the same WebCore.framework
+        Allow both CyberKit and CyberKit2 to link to the same CyberCore.framework
 
         * Scripts/build-webkit: Remove the UMBRELLA_LDFLAGS override when building
-        WebCore for WebKit2, it is no longer necessary.
+        CyberCore for CyberKit2, it is no longer necessary.
 
 2010-04-27  James Robinson  <jamesr@chromium.org>
 
@@ -3714,7 +3714,7 @@
          * Scripts/webkitpy/layout_tests/port/base.py:
           - Added a comment to explain that diffs are binary files.
           - Various patch reverts relating to wdiff
-          - Add Driver._command_wrapper to share code between WebKitDriver and ChromiumDriver.
+          - Add Driver._command_wrapper to share code between CyberKitDriver and ChromiumDriver.
           - Made _command_wrapper use shlex.split to get rid of the FIXME.
          * Scripts/webkitpy/layout_tests/port/base_unittest.py: Added.
           - test the new _command_wrapper
@@ -3795,7 +3795,7 @@
         * Scripts/webkitpy/style/checker_unittest.py:
           - Updated import statements.
 
-        * Scripts/webkitpy/style/checkers: Copied from WebKitTools/Scripts/webkitpy/style/processors.
+        * Scripts/webkitpy/style/checkers: Copied from CyberKitTools/Scripts/webkitpy/style/processors.
         * Scripts/webkitpy/style/processors: Removed.
         * Scripts/webkitpy/style/processors/__init__.py: Removed.
         * Scripts/webkitpy/style/processors/common.py: Removed.
@@ -4121,7 +4121,7 @@
         Reviewed by Anders Carlsson.
 
         Fix for https://bugs.webkit.org/show_bug.cgi?id=38002
-        Add rudimentary statistics gathering for WebKit2
+        Add rudimentary statistics gathering for CyberKit2
 
         * MiniBrowser/MiniBrowser.xcodeproj/project.pbxproj:
         * MiniBrowser/mac/AppDelegate.h:
@@ -4280,8 +4280,8 @@
         (resetDefaultsToConsistentValues):
         * DumpRenderTree/mac/LayoutTestControllerMac.mm:
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::WebPage::WebPage):
-        (WebCore::WebPage::resetSettings):
+        (CyberCore::WebPage::WebPage):
+        (CyberCore::WebPage::resetSettings):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         * DumpRenderTree/qt/LayoutTestControllerQt.h:
         * DumpRenderTree/win/DumpRenderTree.cpp:
@@ -4327,8 +4327,8 @@
         * DumpRenderTree/mac/LayoutTestControllerMac.mm:
         (LayoutTestController::setJavaScriptCanAccessClipboard):
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::WebPage::WebPage):
-        (WebCore::WebPage::resetSettings):
+        (CyberCore::WebPage::WebPage):
+        (CyberCore::WebPage::resetSettings):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::setJavaScriptCanAccessClipboard):
         * DumpRenderTree/qt/LayoutTestControllerQt.h:
@@ -4909,7 +4909,7 @@
         QFontDatabase::removeAllApplicationFonts symbol is not available.
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::open):
 
 2010-04-21  Alexey Proskuryakov  <ap@apple.com>
 
@@ -4965,9 +4965,9 @@
         [DRT/Chromium] Make DRT compilable in Chromium tree
         https://bugs.webkit.org/show_bug.cgi?id=37923
 
-        We need to use different GYPs in a case of WebKit-only checkout
+        We need to use different GYPs in a case of CyberKit-only checkout
         and a case of whole Chromium checkout because the relative paths
-        from webkit/ to WebKit/chromium/features.gypi are different in
+        from webkit/ to CyberKit/chromium/features.gypi are different in
         these cases and we can't use 'conditions' for 'includes' in GYPs.
 
         * DumpRenderTree/DumpRenderTree.gyp/DumpRenderTree.gyp:
@@ -5154,7 +5154,7 @@
          - Make image_hash file reads done lazily in a new image_hash() function.
          - Add a "Starting testing ..." meter update after DRT threads have
            been started, but before we get updates from the first one.
-         - Rename variable "t" to a full english name to match WebKit style.
+         - Rename variable "t" to a full english name to match CyberKit style.
 
 2010-04-20  Daniel Bates  <dbates@rim.com>
 
@@ -5401,7 +5401,7 @@
 
         This change fixes about 70 unexpected results.
         The original test_webview_delegate.cc doesn't have this bug.
-        The bug was introduced when I ported it to WebKit tree.
+        The bug was introduced when I ported it to CyberKit tree.
 
         * DumpRenderTree/chromium/WebViewHost.cpp:
         (printRangeDescription): Replace the latter startContainer() with endContainer().
@@ -5498,7 +5498,7 @@
          https://bugs.webkit.org/show_bug.cgi?id=37782
  
          * Scripts/webkitpy/layout_tests/port/chromium_win.py:
-         * Scripts/webkitpy/layout_tests/port/dryrun.py: Renamed from WebKitTools/Scripts/webkitpy/layout_tests/port/passing.py.
+         * Scripts/webkitpy/layout_tests/port/dryrun.py: Renamed from CyberKitTools/Scripts/webkitpy/layout_tests/port/passing.py.
          * Scripts/webkitpy/layout_tests/port/factory.py:
          * Scripts/webkitpy/layout_tests/run_webkit_tests_unittest.py:
 
@@ -5741,10 +5741,10 @@
 
         Reviewed by Eric Seidel.
 
-        [Chromium] new-run-webkit-tests should use WebKitDriver for --use-drt
+        [Chromium] new-run-webkit-tests should use CyberKitDriver for --use-drt
         https://bugs.webkit.org/show_bug.cgi?id=37793
 
-        We need to use WebKitDriver instead of ChromiumDriver for Chromium
+        We need to use CyberKitDriver instead of ChromiumDriver for Chromium
         DRT because its interface is different from test_shell.
 
         Chromium DRT has no UI.  So we can't use it to show test results.
@@ -5833,7 +5833,7 @@
 
         * Scripts/run-webkit-tests:
          - Fix the wrapper to work for users who do not
-           have WebKitTools/Scripts in their path.
+           have CyberKitTools/Scripts in their path.
 
 2010-04-14  Eric Seidel  <eric@webkit.org>
 
@@ -5853,7 +5853,7 @@
         I will send a note out to webkit-dev about how we will
         be using this launcher script to test on the bots.
 
-        * Scripts/old-run-webkit-tests: Copied from WebKitTools/Scripts/run-webkit-tests.
+        * Scripts/old-run-webkit-tests: Copied from CyberKitTools/Scripts/run-webkit-tests.
         * Scripts/run-webkit-tests:
          - A new script which decides whether to run new- or old-
            run-webkit-tests based on the platform.
@@ -5890,7 +5890,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=35844
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::WebPage::resetSettings):
+        (CyberCore::WebPage::resetSettings):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::setSmartInsertDeleteEnabled):
         (LayoutTestController::setSelectTrailingWhitespaceEnabled):
@@ -5934,7 +5934,7 @@
 
         Reviewed by Adam Barth.
 
-        WebKit needs a Chromium Mac EWS Builder
+        CyberKit needs a Chromium Mac EWS Builder
         https://bugs.webkit.org/show_bug.cgi?id=37742
 
         * Scripts/webkitpy/tool/commands/earlywarningsystem.py:
@@ -6084,7 +6084,7 @@
 
 2010-04-15  Adam Roben  <aroben@apple.com>
 
-        Fix Windows WebKit2 build.
+        Fix Windows CyberKit2 build.
 
         * MiniBrowser/win/MiniBrowser.cpp:
 
@@ -6288,7 +6288,7 @@
 
         Reviewed by Anders Carlsson.
 
-        Tear down WebKit more completely on window closing and application
+        Tear down CyberKit more completely on window closing and application
         termination. We still don't block application termination for pending
         close, but this is a step in the right direction.
 
@@ -6702,7 +6702,7 @@
         dealing with the different areas of options.
         For example, it would make sense to move configuration
         options off into some module which deals with the vagries of
-        WebKit's configuration system.  It would also make sense to move
+        CyberKit's configuration system.  It would also make sense to move
         Chromium options off onto the Chromium port object (where they are used).
         It may make sense to move results.json options over to the results.json code.
         This change is a first iteration, and we will certainly need more
@@ -6744,7 +6744,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=36578
 
         * DumpRenderTree/DumpRenderTree.gyp/DumpRenderTree.gyp: Small fix to avoid a circular dependency between
-          WebKit.gyp and webkit.gyp.
+          CyberKit.gyp and webkit.gyp.
 
 2010-04-11  Joseph Pecoraro  <joepeck@webkit.org>
 
@@ -6808,7 +6808,7 @@
 
         [Qt] Unreviewed buildfix for --debug build after r57433.
 
-        Refactor Qt DRT support in QtWebKit
+        Refactor Qt DRT support in QtCyberKit
         https://bugs.webkit.org/show_bug.cgi?id=35844
 
         * QtLauncher/main.cpp: qt_drt_garbageCollector_collect(); renamed to DumpRenderTreeSupportQt::garbageCollectorCollect();
@@ -6989,16 +6989,16 @@
 
         Reviewed by Kenneth Rohde Christiansen.
 
-        Refactor Qt DRT support in QtWebKit
+        Refactor Qt DRT support in QtCyberKit
 
         Update Qt DRT to use new DumpRenderTreeSupportQt static class.
 
         https://bugs.webkit.org/show_bug.cgi?id=35844
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
-        (WebCore::DumpRenderTree::dumpFramesAsText):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
+        (CyberCore::DumpRenderTree::dumpFramesAsText):
         * DumpRenderTree/qt/DumpRenderTreeQt.h:
         * DumpRenderTree/qt/GCControllerQt.cpp:
         (GCController::collect):
@@ -7109,7 +7109,7 @@
 
         Reviewed by Eric Seidel.
 
-        Factor WebKitPort out of MacPort to allow for WinPort
+        Factor CyberKitPort out of MacPort to allow for WinPort
         https://bugs.webkit.org/show_bug.cgi?id=37388
 
         The split is a bit of a guess.  We might have to adjust things once we
@@ -7165,7 +7165,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=37237
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::DumpRenderTree::dump):
+        (CyberCore::DumpRenderTree::dump):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::setWillSendRequestReturnsNullOnRedirect):
         * DumpRenderTree/qt/LayoutTestControllerQt.h:
@@ -7174,7 +7174,7 @@
 
         Reviewed by Kenneth Rohde Christiansen.
 
-        [Qt] Implement Desktop Notifications API for QtWebKit
+        [Qt] Implement Desktop Notifications API for QtCyberKit
         https://bugs.webkit.org/show_bug.cgi?id=35503
 
         DRT stubs for notification. Enables to run and pass
@@ -7216,7 +7216,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=37377
 
         mac.py and chromium_mac.py had some copy/paste code.  This code doesn't
-        actually have anything to do with WebKit ports.  It's really just
+        actually have anything to do with CyberKit ports.  It's really just
         something in the multiprocessing package.  The lame bit is that package
         isn't available in older versions of Python, so we need to implement a
         fallback.  However, we already have the fallback in common.  We don't
@@ -7267,7 +7267,7 @@
         We need to end unit tests with _unittest.py for them to be autodetected
         by the test harness.  +6 tests.
 
-        * Scripts/webkitpy/layout_tests/layout_package/test_expectations_unittest.py: Renamed from WebKitTools/Scripts/webkitpy/layout_tests/layout_package/test_expectations_test.py.
+        * Scripts/webkitpy/layout_tests/layout_package/test_expectations_unittest.py: Renamed from CyberKitTools/Scripts/webkitpy/layout_tests/layout_package/test_expectations_test.py.
 
 2010-04-09  Adam Barth  <abarth@webkit.org>
 
@@ -7398,7 +7398,7 @@
         * DumpRenderTree/mac/DumpRenderTree.mm:
         (libraryPathForDumpRenderTree): Use DUMPRENDERTREE_TEMP if exist.
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree): Use DUMPRENDERTREE_TEMP if exist.
+        (CyberCore::DumpRenderTree::DumpRenderTree): Use DUMPRENDERTREE_TEMP if exist.
         * Scripts/run-webkit-tests:
           - Create a unique temporary directory and pass its path to
           DumpRenderTree with DUMPRENDERTREE_TEMP environment variable.
@@ -7407,10 +7407,10 @@
 
         Reviewed by Oliver Hunt.
 
-        <http://webkit.org/b/37326> IDL files are being copied in to the WebCore framework again
+        <http://webkit.org/b/37326> IDL files are being copied in to the CyberCore framework again
 
         Add a script to detect the presence of inappropriate files in the frameworks.  At present
-        it only looks for .css, .idl and .in files in the top level of WebCore.framework/Resources,
+        it only looks for .css, .idl and .in files in the top level of CyberCore.framework/Resources,
         as these are the only cases we've encountered recently.  It can be extended to check the
         other frameworks or for other inappropriate files in the future.
 
@@ -7420,7 +7420,7 @@
 
         Reviewed by Darin Adler.
 
-        Add option to build WebKit2 to build-webkit.
+        Add option to build CyberKit2 to build-webkit.
 
         * Scripts/build-webkit:
 
@@ -7541,7 +7541,7 @@
 
         Reviewed by Eric Seidel.
 
-        Rename target to configuration in new-run-webkit-tests to match the rest of WebKit
+        Rename target to configuration in new-run-webkit-tests to match the rest of CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=37251
 
         The rest of our tools call --debug or --release the configuration.
@@ -7591,7 +7591,7 @@
 
         Reviewed by Adam Barth.
 
-        WebKit Apache configs only listen on IPv4 addresses, causing random timeouts
+        CyberKit Apache configs only listen on IPv4 addresses, causing random timeouts
         https://bugs.webkit.org/show_bug.cgi?id=37104
 
         Add warnings that the partial support for specifying what port numbers
@@ -7771,7 +7771,7 @@
         Use the QT_NO_PRINTER guard to flag QPrinter dependent code.
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::DumpRenderTree::dryRunPrint):
+        (CyberCore::DumpRenderTree::dryRunPrint):
 
 2010-04-05  Adam Barth  <abarth@webkit.org>
 
@@ -7845,7 +7845,7 @@
         Reviewed by Adele Peterson.
 
         Test case for <http://webkit.org/b/37115> / <rdar://problem/7829331>.
-        REGRESSION(r56989): Crash in Mail in WebCore::Position::isCandidate when deleting block using block deletion UI
+        REGRESSION(r56989): Crash in Mail in CyberCore::Position::isCandidate when deleting block using block deletion UI
 
         Add a JavaScript hook in DRT to call through to WebView's -setEditable:.  This is required in order to reproduce
         the crash.
@@ -8010,7 +8010,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=37064
 
         * Scripts/check-webkit-style:
-          - Moved the "WebKit checkout not found" check from
+          - Moved the "CyberKit checkout not found" check from
             ArgumentParser.parse() to the calling code.
           - Moved the --git-commit argument validation from the calling
             code to ArgumentParser.parse().
@@ -8022,7 +8022,7 @@
           - Renamed ArgumentParser._exit_with_help() to _parse_error()
             and made its error_message parameter required.
           - Removed the found_checkout parameter from ArgumentParser.parse().
-          - Removed the "WebKit checkout not found" check and moved it
+          - Removed the "CyberKit checkout not found" check and moved it
             to the calling code.
           - Added --git-commit argument checking.
 
@@ -8407,7 +8407,7 @@
         This change introduces:
         - WebViewHost class
           It's an implementation of some delegates required by Chromium
-          WebKit API, and manages painting of a WebView. It's base on
+          CyberKit API, and manages painting of a WebView. It's base on
           src/webkit/tools/test_shell/test_webview_delegate.{cc,h} of
           Chromium rev.40492.
         - TestShell class
@@ -8512,7 +8512,7 @@
 
         Unreviewed, only ignoring chatty style errors.
 
-        check-webkit-style: WebKit needs a python style checker
+        check-webkit-style: CyberKit needs a python style checker
         https://bugs.webkit.org/show_bug.cgi?id=33639
 
         Remove the 79 char line limit by ignoring 
@@ -8522,7 +8522,7 @@
 
         Right now over 1400 lines of our existing python
         fail E501 so this rule just generates needless noise.
-        The rest of WebKit has no wrapping rule so it makes
+        The rest of CyberKit has no wrapping rule so it makes
         little sense for our Python to differ here.
 
         * Scripts/webkitpy/style/processors/python.py:
@@ -8563,14 +8563,14 @@
         (layerTreeAsTextCallback):
         (LayoutTestController::staticFunctions):
         * DumpRenderTree/LayoutTestController.h:
-        * DumpRenderTree/mac/LayoutTestControllerMac.mm:Mac specific plumbing to WebKit
+        * DumpRenderTree/mac/LayoutTestControllerMac.mm:Mac specific plumbing to CyberKit
         (LayoutTestController::layerTreeAsText):
-        * DumpRenderTree/win/LayoutTestControllerWin.cpp:Windows specific plumbing to WebKit
+        * DumpRenderTree/win/LayoutTestControllerWin.cpp:Windows specific plumbing to CyberKit
         (LayoutTestController::layerTreeAsText):
 
 2010-04-01  Kevin Ollivier  <kevino@theolliviers.com>
 
-        [wx] Build fix after addition of JavaScriptCore/wtf/text directory.
+        [wx] Build fix after addition of CyberScriptCore/wtf/text directory.
 
         * wx/build/settings.py:
 
@@ -8849,7 +8849,7 @@
 
         Unreviewed.
 
-        Fixed typo in WebKitTools/ChangeLog: opsys -> ospath.
+        Fixed typo in CyberKitTools/ChangeLog: opsys -> ospath.
 
 2010-03-31  Adam Barth  <abarth@webkit.org>
 
@@ -9370,7 +9370,7 @@
         * DumpRenderTree/mac/LayoutTestControllerMac.mm:
         (LayoutTestController::setFrameFlatteningEnabled):
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::WebPage::resetSettings):
+        (CyberCore::WebPage::resetSettings):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::setFrameFlatteningEnabled):
         * DumpRenderTree/qt/LayoutTestControllerQt.h:
@@ -9408,7 +9408,7 @@
         Reviewed by Shinichiro Hamaji.
 
         Renamed check-webkit-style's --debug flag to --verbose to be more
-        in line with other WebKit scripts.  Also renamed the current
+        in line with other CyberKit scripts.  Also renamed the current
         --verbose flag to --min-confidence to allow the --debug rename.
 
         https://bugs.webkit.org/show_bug.cgi?id=36521
@@ -9497,7 +9497,7 @@
 
         * Scripts/check-webkit-style:
           - Added debug logging of whether the current directory was found
-            to be in a WebKit checkout.
+            to be in a CyberKit checkout.
           - Added the found_checkout parameter to the call to parser.parse().
           - Renamed the files variable to paths.
           - Added a call to change_directory() prior to checking style.
@@ -9538,9 +9538,9 @@
           - Added an import statement for main_unittest.
 
         * Scripts/webkitpy/style_references.py:
-          - Renamed SimpleScm to WebKitCheckout.
+          - Renamed SimpleScm to CyberKitCheckout.
           - Added a detect_checkout() function to allow returning None
-            instead of a WebKitCheckout instance if no checkout is found.
+            instead of a CyberKitCheckout instance if no checkout is found.
           - Renamed checkout_root to root_path.
 
 2010-03-27  Sergio Villar Senin  <svillar@igalia.com>
@@ -9624,7 +9624,7 @@
 
         Fixed the name of a unit test file in webkitpy.
 
-        * Scripts/webkitpy/tool/steps/updatechangelogswithreview_unittest.py: Copied from WebKitTools/Scripts/webkitpy/tool/steps/updatechangelogswithreview_unittests.py.
+        * Scripts/webkitpy/tool/steps/updatechangelogswithreview_unittest.py: Copied from CyberKitTools/Scripts/webkitpy/tool/steps/updatechangelogswithreview_unittests.py.
         * Scripts/webkitpy/tool/steps/updatechangelogswithreview_unittests.py: Removed.
 
 2010-03-26  Chris Jerdonek  <cjerdonek@webkit.org>
@@ -9641,7 +9641,7 @@
           - Replaced the "from webkitpy.unittests import *" with a call
             to webkitpy.test.main.Tester().run_tests().
 
-        * Scripts/webkitpy/test/__init__.py: Copied from WebKitTools/QueueStatusServer/filters/__init__.py.
+        * Scripts/webkitpy/test/__init__.py: Copied from CyberKitTools/QueueStatusServer/filters/__init__.py.
           - Required file for the new webkitpy/test/ directory.
 
         * Scripts/webkitpy/test/main.py: Added.
@@ -9676,7 +9676,7 @@
         Allow plugins implemented by the application, such as mimetype 'x-qt-plugin',
          when pluginsEnabled is false.
 
-        Add support for LayoutTestController.WebKitPluginsEnabled
+        Add support for LayoutTestController.CyberKitPluginsEnabled
 
         https://bugs.webkit.org/show_bug.cgi?id=32196
 
@@ -9685,7 +9685,7 @@
         * DumpRenderTree/gtk/LayoutTestControllerGtk.cpp:
         (copyWebSettingKey):
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::WebPage::resetSettings):
+        (CyberCore::WebPage::resetSettings):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::overridePreference):
 
@@ -10032,7 +10032,7 @@
         Move apply_patch from scm to checkout
         https://bugs.webkit.org/show_bug.cgi?id=36635
 
-        SCM shouldn't have any knowledge of WebKit scripts.
+        SCM shouldn't have any knowledge of CyberKit scripts.
 
         * Scripts/webkitpy/common/checkout/api.py:
         * Scripts/webkitpy/common/checkout/scm.py:
@@ -10058,7 +10058,7 @@
 
         * DumpRenderTree/DumpRenderTree.xcodeproj/project.pbxproj: Added ColorBits.ttf
         and ColorBits-A.png.
-        * DumpRenderTree/fonts/ColorBits-A.png: Copied from WebCore/inspector/front-end/Images/successGreenDot.png.
+        * DumpRenderTree/fonts/ColorBits-A.png: Copied from CyberCore/inspector/front-end/Images/successGreenDot.png.
         * DumpRenderTree/fonts/ColorBits.ttf: Added.
         * DumpRenderTree/mac/DumpRenderTree.mm:
         (activateFonts): Activate ColorBits.ttf.
@@ -10172,8 +10172,8 @@
         (LayoutTestController::showWebInspector):
         (LayoutTestController::closeWebInspector):
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::shouldEnableDeveloperExtras):
-        (WebCore::DumpRenderTree::open):
+        (CyberCore::shouldEnableDeveloperExtras):
+        (CyberCore::DumpRenderTree::open):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::closeWebInspector):
         (LayoutTestController::setDeveloperExtrasEnabled):
@@ -10232,7 +10232,7 @@
         reset the setFrameSetFlatteningEnabled for each test.
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::WebPage::resetSettings):
+        (CyberCore::WebPage::resetSettings):
 
 2010-03-25  Chris Jerdonek  <cjerdonek@webkit.org>
 
@@ -10268,8 +10268,8 @@
         * Scripts/webkitpy/common/net/irc/ircproxy.py:
         * Scripts/webkitpy/common/net/networktransaction.py:
         * Scripts/webkitpy/common/net/statusserver.py:
-        * Scripts/webkitpy/common/system/deprecated_logging.py: Copied from WebKitTools/Scripts/webkitpy/webkit_logging.py.
-        * Scripts/webkitpy/common/system/deprecated_logging_unittest.py: Copied from WebKitTools/Scripts/webkitpy/webkit_logging_unittest.py.
+        * Scripts/webkitpy/common/system/deprecated_logging.py: Copied from CyberKitTools/Scripts/webkitpy/webkit_logging.py.
+        * Scripts/webkitpy/common/system/deprecated_logging_unittest.py: Copied from CyberKitTools/Scripts/webkitpy/webkit_logging_unittest.py.
         * Scripts/webkitpy/common/system/executive.py:
         * Scripts/webkitpy/tool/bot/queueengine.py:
         * Scripts/webkitpy/tool/commands/download.py:
@@ -10377,7 +10377,7 @@
 
 2010-03-25  Adam Barth  <abarth@webkit.org>
 
-        Unreviewed.  Move WebKitCheckout into the webkitpy.common.checkout
+        Unreviewed.  Move CyberKitCheckout into the webkitpy.common.checkout
         package.
         https://bugs.webkit.org/show_bug.cgi?id=36093
 
@@ -10474,7 +10474,7 @@
 
         This is part of the master bug to reorganize webkitpy.
 
-        * Scripts/webkitpy/common/system: Copied from WebKitTools/Scripts/webkitpy/init.
+        * Scripts/webkitpy/common/system: Copied from CyberKitTools/Scripts/webkitpy/init.
         * Scripts/webkitpy/common/system/logutils.py:
         * Scripts/webkitpy/common/system/logutils_unittest.py:
         * Scripts/webkitpy/init: Removed.
@@ -10552,9 +10552,9 @@
         * Scripts/webkitpy/init/versioning.py: Removed.
         * Scripts/webkitpy/init/versioning_unittest.py: Removed.
         * Scripts/webkitpy/python24: Added.
-        * Scripts/webkitpy/python24/__init__.py: Copied from WebKitTools/Scripts/webkitpy/tool/__init__.py.
-        * Scripts/webkitpy/python24/versioning.py: Copied from WebKitTools/Scripts/webkitpy/init/versioning.py.
-        * Scripts/webkitpy/python24/versioning_unittest.py: Copied from WebKitTools/Scripts/webkitpy/init/versioning_unittest.py.
+        * Scripts/webkitpy/python24/__init__.py: Copied from CyberKitTools/Scripts/webkitpy/tool/__init__.py.
+        * Scripts/webkitpy/python24/versioning.py: Copied from CyberKitTools/Scripts/webkitpy/init/versioning.py.
+        * Scripts/webkitpy/python24/versioning_unittest.py: Copied from CyberKitTools/Scripts/webkitpy/init/versioning_unittest.py.
         * Scripts/webkitpy/unittests.py:
 
 2010-03-25  Adam Barth  <abarth@webkit.org>
@@ -10651,13 +10651,13 @@
         * Scripts/webkitpy/committers.py: Removed.
         * Scripts/webkitpy/committers_unittest.py: Removed.
         * Scripts/webkitpy/common: Added.
-        * Scripts/webkitpy/common/__init__.py: Copied from WebKitTools/Scripts/webkitpy/style/__init__.py.
+        * Scripts/webkitpy/common/__init__.py: Copied from CyberKitTools/Scripts/webkitpy/style/__init__.py.
         * Scripts/webkitpy/common/config: Added.
-        * Scripts/webkitpy/common/config/__init__.py: Copied from WebKitTools/Scripts/webkitpy/style/__init__.py.
-        * Scripts/webkitpy/common/config/committers.py: Copied from WebKitTools/Scripts/webkitpy/committers.py.
-        * Scripts/webkitpy/common/config/committers_unittest.py: Copied from WebKitTools/Scripts/webkitpy/committers_unittest.py.
-        * Scripts/webkitpy/common/config/ports.py: Copied from WebKitTools/Scripts/webkitpy/webkitport.py.
-        * Scripts/webkitpy/common/config/ports_unittest.py: Copied from WebKitTools/Scripts/webkitpy/webkitport_unittest.py.
+        * Scripts/webkitpy/common/config/__init__.py: Copied from CyberKitTools/Scripts/webkitpy/style/__init__.py.
+        * Scripts/webkitpy/common/config/committers.py: Copied from CyberKitTools/Scripts/webkitpy/committers.py.
+        * Scripts/webkitpy/common/config/committers_unittest.py: Copied from CyberKitTools/Scripts/webkitpy/committers_unittest.py.
+        * Scripts/webkitpy/common/config/ports.py: Copied from CyberKitTools/Scripts/webkitpy/webkitport.py.
+        * Scripts/webkitpy/common/config/ports_unittest.py: Copied from CyberKitTools/Scripts/webkitpy/webkitport_unittest.py.
         * Scripts/webkitpy/mock_bugzillatool.py:
         * Scripts/webkitpy/tool/commands/early_warning_system.py:
         * Scripts/webkitpy/tool/commands/queries.py:
@@ -10734,8 +10734,8 @@
         * Scripts/webkitpy/patchcollection_unittest.py: Removed.
         * Scripts/webkitpy/tool/bot: Added.
         * Scripts/webkitpy/tool/bot/__init__.py: Added.
-        * Scripts/webkitpy/tool/bot/patchcollection.py: Copied from WebKitTools/Scripts/webkitpy/patchcollection.py.
-        * Scripts/webkitpy/tool/bot/patchcollection_unittest.py: Copied from WebKitTools/Scripts/webkitpy/patchcollection_unittest.py.
+        * Scripts/webkitpy/tool/bot/patchcollection.py: Copied from CyberKitTools/Scripts/webkitpy/patchcollection.py.
+        * Scripts/webkitpy/tool/bot/patchcollection_unittest.py: Copied from CyberKitTools/Scripts/webkitpy/patchcollection_unittest.py.
         * Scripts/webkitpy/tool/commands/queues.py:
         * Scripts/webkitpy/unittests.py:
 
@@ -10788,7 +10788,7 @@
         * Scripts/webkitpy/stepsequence.py:
         * Scripts/webkitpy/tool/commands/download.py:
         * Scripts/webkitpy/tool/commands/upload.py:
-        * Scripts/webkitpy/tool/steps: Copied from WebKitTools/Scripts/webkitpy/steps.
+        * Scripts/webkitpy/tool/steps: Copied from CyberKitTools/Scripts/webkitpy/steps.
         * Scripts/webkitpy/tool/steps/__init__.py:
         * Scripts/webkitpy/tool/steps/applypatch.py:
         * Scripts/webkitpy/tool/steps/applypatchwithlocalcommit.py:
@@ -10822,7 +10822,7 @@
         * Scripts/webkitpy/tool/steps/updatechangelogswithreview_unittests.py:
         * Scripts/webkitpy/tool/steps/updatechangelogswithreviewer.py:
         * Scripts/webkitpy/tool/steps/validatereviewer.py:
-        * Scripts/webkitpy/tool/steps_references.py: Copied from WebKitTools/Scripts/webkitpy/steps_references.py.
+        * Scripts/webkitpy/tool/steps_references.py: Copied from CyberKitTools/Scripts/webkitpy/steps_references.py.
         * Scripts/webkitpy/unittests.py:
 
 2010-03-24  Eric Seidel  <eric@webkit.org>
@@ -10871,7 +10871,7 @@
         * Scripts/webkitpy/commands/upload.py: Removed.
         * Scripts/webkitpy/commands/upload_unittest.py: Removed.
         * Scripts/webkitpy/commands_references.py: Removed.
-        * Scripts/webkitpy/tool/commands: Copied from WebKitTools/Scripts/webkitpy/commands.
+        * Scripts/webkitpy/tool/commands: Copied from CyberKitTools/Scripts/webkitpy/commands.
         * Scripts/webkitpy/tool/commands/commandtest.py:
         * Scripts/webkitpy/tool/commands/download.py:
         * Scripts/webkitpy/tool/commands/download_unittest.py:
@@ -10885,7 +10885,7 @@
         * Scripts/webkitpy/tool/commands/sheriffbot_unittest.py:
         * Scripts/webkitpy/tool/commands/upload.py:
         * Scripts/webkitpy/tool/commands/upload_unittest.py:
-        * Scripts/webkitpy/tool/commands_references.py: Copied from WebKitTools/Scripts/webkitpy/commands_references.py.
+        * Scripts/webkitpy/tool/commands_references.py: Copied from CyberKitTools/Scripts/webkitpy/commands_references.py.
         * Scripts/webkitpy/tool/main.py:
         * Scripts/webkitpy/unittests.py:
 
@@ -10902,8 +10902,8 @@
         * Scripts/webkitpy/patch: Removed.
         * Scripts/webkitpy/patch/__init__.py: Removed.
         * Scripts/webkitpy/patch/patcher.py: Removed.
-        * Scripts/webkitpy/tool: Copied from WebKitTools/Scripts/webkitpy/patch.
-        * Scripts/webkitpy/tool/main.py: Copied from WebKitTools/Scripts/webkitpy/patch/patcher.py.
+        * Scripts/webkitpy/tool: Copied from CyberKitTools/Scripts/webkitpy/patch.
+        * Scripts/webkitpy/tool/main.py: Copied from CyberKitTools/Scripts/webkitpy/patch/patcher.py.
         * Scripts/webkitpy/tool/patcher.py: Removed.
 
 2010-03-24  Eric Seidel  <eric@webkit.org>
@@ -10946,7 +10946,7 @@
         mergeChangeLogs.pl from r56471 and r56472):
 
             $ git commit .
-            Can't open WebKitTools/Scripts/webkitperl/VCSUtils_unittest/mergeChangeLog at commit-log-editor line 132.
+            Can't open CyberKitTools/Scripts/webkitperl/VCSUtils_unittest/mergeChangeLog at commit-log-editor line 132.
             error: There was a problem with the editor 'commit-log-editor'.
             Please supply the message using either -m or -F option.
 
@@ -11274,13 +11274,13 @@
         Fix the regression by implementing a null printer for Qt DRT.
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::NullPrinter::NullPaintEngine::begin):
-        (WebCore::NullPrinter::NullPaintEngine::end):
-        (WebCore::NullPrinter::NullPaintEngine::type):
-        (WebCore::NullPrinter::NullPaintEngine::drawPixmap):
-        (WebCore::NullPrinter::NullPaintEngine::updateState):
-        (WebCore::NullPrinter::paintEngine):
-        (WebCore::DumpRenderTree::dryRunPrint):
+        (CyberCore::NullPrinter::NullPaintEngine::begin):
+        (CyberCore::NullPrinter::NullPaintEngine::end):
+        (CyberCore::NullPrinter::NullPaintEngine::type):
+        (CyberCore::NullPrinter::NullPaintEngine::drawPixmap):
+        (CyberCore::NullPrinter::NullPaintEngine::updateState):
+        (CyberCore::NullPrinter::paintEngine):
+        (CyberCore::DumpRenderTree::dryRunPrint):
 
 2010-03-20  Martin Robinson  <mrobinson@webkit.org>
 
@@ -11341,7 +11341,7 @@
 
         Remove vestiges of downstream directory names to unbreak rebaselining tool.
 
-        * Scripts/webkitpy/layout_tests/port/chromium.py: Changed paths to use WebKit repo.
+        * Scripts/webkitpy/layout_tests/port/chromium.py: Changed paths to use CyberKit repo.
 
 2010-03-20  Dirk Pranke  <dpranke@chromium.org>
 
@@ -11722,8 +11722,8 @@
         changing media type and make the DRT support dry-run printing.
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::dryRunPrint):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::dryRunPrint):
         * DumpRenderTree/qt/DumpRenderTreeQt.h:
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::setMediaType):
@@ -11934,7 +11934,7 @@
 
         Reviewed by Kenneth Rohde Christiansen.
 
-        Accelerated Compositing is now default on QtWebKit so the option
+        Accelerated Compositing is now default on QtCyberKit so the option
         in QtLauncher must be true as default.
 
         [Qt] QtLauncher's Accelerated Compositing option must be true as default
@@ -11972,7 +11972,7 @@
         matches other platforms, such as mac and gtk.
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
 
 2010-03-17  Adam Barth  <abarth@webkit.org>
 
@@ -12422,7 +12422,7 @@
           - Added a main() method with calls to configure_logging(),
             check_version(), and the main webkit patch method.
 
-        * Scripts/webkitpy/patch/__init__.py: Copied from WebKitTools/QueueStatusServer/filters/__init__.py.
+        * Scripts/webkitpy/patch/__init__.py: Copied from CyberKitTools/QueueStatusServer/filters/__init__.py.
           - This file is required to make a folder a package.
 
         * Scripts/webkitpy/patch/patcher.py: Added.
@@ -12577,7 +12577,7 @@
             (similar to style_references.py).  This helps limit the
             number of affected files in future refactorings.
 
-        * Scripts/webkitpy/thirdparty/mock.py: Copied from WebKitTools/Scripts/webkitpy/mock.py.
+        * Scripts/webkitpy/thirdparty/mock.py: Copied from CyberKitTools/Scripts/webkitpy/mock.py.
           - Also eliminated trailing white space and carriage returns.
 
 2010-03-12  Robert Hogan  <robert@webkit.org>
@@ -12837,7 +12837,7 @@
 
         Reviewed by David Kilzer.
 
-        <rdar://problem/7745082> Make it possible to build WebKit for older Mac OS X versions from the current Mac OS X version
+        <rdar://problem/7745082> Make it possible to build CyberKit for older Mac OS X versions from the current Mac OS X version
 
         Default to using the appropriate SDK if the target Mac OS X version is not the current Mac OS X version.
 
@@ -12860,7 +12860,7 @@
 
         Reviewed by Tim Hatcher.
 
-        <rdar://problem/7745082> Make it possible to build WebKit for older Mac OS X versions from the current Mac OS X version
+        <rdar://problem/7745082> Make it possible to build CyberKit for older Mac OS X versions from the current Mac OS X version
 
         Introduce TARGET_MAC_OS_X_VERSION_MAJOR to represent the Mac OS X version that is being targeted.  It defaults to the
         current Mac OS X version unless otherwise specified.
@@ -12932,7 +12932,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=35840
 
         Updates the subroutine builtDylibPathForName() so that it adds the "d" suffix to
-        the QtWebKit library name on Windows. This change makes run-launcher work again
+        the QtCyberKit library name on Windows. This change makes run-launcher work again
         under Windows. Moreover, this change corresponds to the change made in change-
         set 53924 <http://trac.webkit.org/changeset/53924>.
 
@@ -12954,14 +12954,14 @@
 
         Reviewed by Simon Hausmann.
 
-        [Qt] Add Support for WebKitEnableCaretBrowsing to Qt DRT
+        [Qt] Add Support for CyberKitEnableCaretBrowsing to Qt DRT
 
         Unskip test fast/events/multiline-link-arrow-navigation.html
 
         https://bugs.webkit.org/show_bug.cgi?id=35593
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::WebPage::resetSettings):
+        (CyberCore::WebPage::resetSettings):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::overridePreference):
         (LayoutTestController::setCaretBrowsingEnabled):
@@ -13029,7 +13029,7 @@
 
         Reviewed by Darin Adler.
 
-        Python code for GDB 7 to support native printing of some WebCore types.
+        Python code for GDB 7 to support native printing of some CyberCore types.
 
         * gdb/webcore.py: Added.
 
@@ -13058,7 +13058,7 @@
 
         Reviewed by Tor Arne Vestbø.
 
-        Link QtLauncher against the WebKit library using a relative rpath.
+        Link QtLauncher against the CyberKit library using a relative rpath.
 
         This makes the launcher and the lib relocatable.
 
@@ -13072,7 +13072,7 @@
 
         The update-iexploder-cssproperties script was used to update
         the various input files. The autobuffer HTML Attribute was removed
-        from WebKit and I manually added it back to the htmlattrs.in like
+        from CyberKit and I manually added it back to the htmlattrs.in like
         we have done it for other attributes in the past.
 
         * iExploder/htdocs/cssproperties.in:
@@ -13124,7 +13124,7 @@
         method names to ObjC selectors.
         (-[EventSendingController mouseScrollByX:andY:continuously:]): Generate
         a scroll wheel event using CGEventCreateScrollWheelEvent() and dispatch
-        it to WebKit.
+        it to CyberKit.
         (-[EventSendingController continuousMouseScrollByX:andY:]): Generate a
         continuous scrolling event by x and y pixels.
         (-[EventSendingController mouseScrollByX:andY:]): Generate a notchy
@@ -13195,9 +13195,9 @@
 
         https://bugs.webkit.org/show_bug.cgi?id=34677
 
-        The "extra flag values" parameter was needed before WebKit
+        The "extra flag values" parameter was needed before CyberKit
         forked check-webkit-style from Google.  It was used to pass
-        through the option parser those command-line flags that WebKit
+        through the option parser those command-line flags that CyberKit
         required but that Google's parser did not support (the --git-commit
         flag in particular).
             We can remove the parameter now because it is no longer
@@ -13284,7 +13284,7 @@
         Followup to https://bugs.webkit.org/show_bug.cgi?id=35532
 
         * DumpRenderTree/win/LayoutTestControllerWin.cpp:
-        (LayoutTestController::apiTestGoToCurrentBackForwardItem): Can't pass in a null BOOL to WebKit APIs.
+        (LayoutTestController::apiTestGoToCurrentBackForwardItem): Can't pass in a null BOOL to CyberKit APIs.
 
 2010-03-08  Chris Jerdonek  <cjerdonek@webkit.org>
 
@@ -13336,7 +13336,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=33755
 
         Change the update-iexploder-cssproperites script to update
-        the htmlattrs.in and htmltags.in of WebKitTools/iExploder/htdocs
+        the htmlattrs.in and htmltags.in of CyberKitTools/iExploder/htdocs
         automatically as well.
 
         Change the reading and writing code to work with parameters
@@ -13518,8 +13518,8 @@
         https://bugs.webkit.org/show_bug.cgi?id=33715
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::WebPage::WebPage):
-        (WebCore::WebPage::resetSettings):
+        (CyberCore::WebPage::WebPage):
+        (CyberCore::WebPage::resetSettings):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::setSpatialNavigationEnabled):
         * DumpRenderTree/qt/LayoutTestControllerQt.h:
@@ -13562,12 +13562,12 @@
 
         Reviewed by Sam Weinig.
 
-        Add a script to verify that WebKit framework headers are internally consistent.
+        Add a script to verify that CyberKit framework headers are internally consistent.
 
         This script detects the following problematic situations:
-        * An exported WebKit header that includes a header from WebCore.
-        * An exported WebKit header that includes a header that does not exist in the WebKit framework.
-        * A public WebKit header that includes a private WebKit header.
+        * An exported CyberKit header that includes a header from CyberCore.
+        * An exported CyberKit header that includes a header that does not exist in the CyberKit framework.
+        * A public CyberKit header that includes a private CyberKit header.
 
         * Scripts/check-for-webkit-framework-include-consistency: Added.
 
@@ -13618,7 +13618,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=35255
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
+        (CyberCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
         * DumpRenderTree/qt/EventSenderQt.cpp:
         (EventSender::EventSender):
         (EventSender::mouseDown):
@@ -13756,7 +13756,7 @@
         Reviewed by David Levin.
 
         Revert r55339 - the Chromium codebase downstream had a temporary
-        need for WebKitTools/pywebsocket to still exist after Chris Jerdonek
+        need for CyberKitTools/pywebsocket to still exist after Chris Jerdonek
         had moved it (scripts still referenced the old location). Those
         scripts have been updated to the new location, so it should be safe
         to delete this now.
@@ -13796,7 +13796,7 @@
 
         Reviewed by Darin Adler.
 
-        Bug 35576: WebKit should tell plug-in instances when private browsing state changes
+        Bug 35576: CyberKit should tell plug-in instances when private browsing state changes
         <http://webkit.org/b/35576>
 
         TestNetscapePlugin is another bit of plug-in code where copy-paste was heavily used
@@ -13870,7 +13870,7 @@
           - Replaced two calls to sys.stderr.write() with appropriate
             logging calls.
 
-        * Scripts/webkitpy/init/__init__.py: Copied from WebKitTools/QueueStatusServer/filters/__init__.py.
+        * Scripts/webkitpy/init/__init__.py: Copied from CyberKitTools/QueueStatusServer/filters/__init__.py.
 
         * Scripts/webkitpy/init/logtesting.py: Added.
           - Added a UnitTestLogStream class to capture log output
@@ -14137,7 +14137,7 @@
 
         Reviewed by Shinichiro Hamaji.
 
-        Exempted WebKitTools/Scripts/webkitpy/thirdparty from all
+        Exempted CyberKitTools/Scripts/webkitpy/thirdparty from all
         style checks except for the whitespace/carriage_return check
         and the pep8 tab and trailing white space checks.
 
@@ -14208,7 +14208,7 @@
         * Scripts/webkitpy/bugzilla.py:
           - Updated mechanize import path.
 
-        * Scripts/webkitpy/init/__init__.py: Copied from WebKitTools/QueueStatusServer/filters/__init__.py.
+        * Scripts/webkitpy/init/__init__.py: Copied from CyberKitTools/QueueStatusServer/filters/__init__.py.
 
         * Scripts/webkitpy/init/autoinstall.py: Added.
           - Added AutoInstaller class.
@@ -14260,7 +14260,7 @@
         Moving the script to the right location.
 
         * pywebsocket/mod_pywebsocket: Added.
-        * pywebsocket/mod_pywebsocket/standalone.py: Copied from WebKitTools/pywebsocket/standalone.py.
+        * pywebsocket/mod_pywebsocket/standalone.py: Copied from CyberKitTools/pywebsocket/standalone.py.
         * pywebsocket/standalone.py: Removed.
 
 2010-02-26  Dumitru Daniliuc  <dumi@chromium.org>
@@ -14275,7 +14275,7 @@
 
         Adding pywebsocket/standalone.py back to fix the Chromium webkit
         canaries. Once all layout tests pass, we can get in the patch that
-        moves this directorty to WebKitTools/Scripts, update all Chromium
+        moves this directorty to CyberKitTools/Scripts, update all Chromium
         scripts, and revert this patch.
 
         https://bugs.webkit.org/show_bug.cgi?id=35464
@@ -14309,7 +14309,7 @@
         When a directional key-press event (arrow keys, End, Home, PageUp,
         PageDown, etc) is synthesized by DRT's EventSender and it targets
         an editor (e.g. <input type=text>, <textare>, etc), event is processed
-        by WebCore::EventHandler. On the other hand, if event target is not
+        by CyberCore::EventHandler. On the other hand, if event target is not
         an editor, event is bubbled up to Gtk+ for processing. In such cases,
         if 'hardware_keycode' is not provided at event synthesize time
         its processing fails (at some point in gtk_bindings_activate_event),
@@ -14350,7 +14350,7 @@
         * Scripts/webkitpy/layout_tests/port/websocket_server.py:
           - Updated paths to pywebsocket.
 
-        * Scripts/webkitpy/thirdparty/pywebsocket: Copied from WebKitTools/pywebsocket.
+        * Scripts/webkitpy/thirdparty/pywebsocket: Copied from CyberKitTools/pywebsocket.
         * Scripts/webkitpy/thirdparty/pywebsocket/README.webkit: Added.
           - Added a file containing information about the contents
             of the pywebsocket directory. This will make it easier to
@@ -14416,8 +14416,8 @@
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp: maxViewWidth and maxViewHeight moved to
         LayoutTestController to converge to platform independent implementation.
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::open):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp: Initialization of maxViewWidth and maxViewHeight added.
         * DumpRenderTree/qt/LayoutTestControllerQt.h:
          - Default parameters for LayoutTestController.numberOfPages() added.
@@ -14487,7 +14487,7 @@
 
         * Scripts/new-run-webkit-tests: Added.
         * Scripts/run-chromium-webkit-tests: Removed.
-        * Scripts/webkitpy/layout_tests/run_webkit_tests.py: Renamed from WebKitTools/Scripts/webkitpy/layout_tests/run_chromium_webkit_tests.py.
+        * Scripts/webkitpy/layout_tests/run_webkit_tests.py: Renamed from CyberKitTools/Scripts/webkitpy/layout_tests/run_chromium_webkit_tests.py.
 
 2010-02-25  Adam Barth  <abarth@webkit.org>
 
@@ -14594,10 +14594,10 @@
 
         Reviewed by Eric Siedel.
 
-        Check the proper directory for a WebKit SVN version (Chromium does
-        not check out the entire WebKit tree directly, but rather pulls
+        Check the proper directory for a CyberKit SVN version (Chromium does
+        not check out the entire CyberKit tree directly, but rather pulls
         individual subdirectories. So, checking for the SVN version in
-        WebKit/WebCore rather than just in WebKit works more reliably across
+        CyberKit/CyberCore rather than just in CyberKit works more reliably across
         different ports).
 
         http://bugs.webkit.org/show_bug.cgi?id=35321
@@ -14637,7 +14637,7 @@
 
         Reviewed by Darin Adler.
 
-        check-webkit-style false positive for WebCore forwarding header
+        check-webkit-style false positive for CyberCore forwarding header
         https://bugs.webkit.org/show_bug.cgi?id=34604
 
         * Scripts/webkitpy/style/checker.py:
@@ -14666,7 +14666,7 @@
         [Qt] Need a final integration between QtLauncher and QGVLauncher
         https://bugs.webkit.org/show_bug.cgi?id=35292
 
-        WebKit coding style fixes.
+        CyberKit coding style fixes.
 
         * QtLauncher/main.cpp:
         (LauncherWindow::resetZoom):
@@ -14704,7 +14704,7 @@
         Fix false positives for 'delete *pointer' statements.
         http://webkit.org/b/35235
 
-        * WebKitTools/Scripts/webkitpy/style/processors/cpp.py:
+        * CyberKitTools/Scripts/webkitpy/style/processors/cpp.py:
 
 2010-02-23  Shinichiro Hamaji  <hamaji@chromium.org>
 
@@ -14720,7 +14720,7 @@
 
         Reviewed by Kenneth Rohde Christiansen.
 
-        [Qt] QtLauncher should not use internal JavaScriptCore and WebCore interfaces
+        [Qt] QtLauncher should not use internal CyberScriptCore and CyberCore interfaces
         https://bugs.webkit.org/show_bug.cgi?id=35248
 
         * QtLauncher/QtLauncher.pro:
@@ -14735,7 +14735,7 @@
         Prompts a person for their SVN username if not already cached (by Subversion).
 
         Currently, webkit-patch is unable to commit to the SVN repo. unless the
-        WebKit SVN username is already cached (from of a prior commit by hand)
+        CyberKit SVN username is already cached (from of a prior commit by hand)
         because "svn commit" (called by webkit-patch) defaults to using the system
         login name unless the username is already cached or specified on the
         command line.
@@ -14765,7 +14765,7 @@
 
         Reviewed by David Levin.
 
-        [Gtk] check-webkit-style: GTK style should be allowed in WebKitTools/DumpRenderTree/gtk
+        [Gtk] check-webkit-style: GTK style should be allowed in CyberKitTools/DumpRenderTree/gtk
         https://bugs.webkit.org/show_bug.cgi?id=35229
 
         * Scripts/webkitpy/style/checker.py:
@@ -14784,7 +14784,7 @@
         Remove DRT hack that turns off hardware acceleration with older QuickTimes
         https://bugs.webkit.org/show_bug.cgi?id=35275
         
-        Now that WebKit does a version check to avoid a QuickTime-related
+        Now that CyberKit does a version check to avoid a QuickTime-related
         crash (r55100), DumpRenderTree does not need to.
 
         * DumpRenderTree/mac/DumpRenderTree.mm:
@@ -14821,7 +14821,7 @@
         * Scripts/run-chromium-webkit-tests:
           - Added webkitpy/thirdparty to the script's search path.
 
-        * Scripts/webkitpy/thirdparty/simplejson: Copied from WebKitTools/simplejson.
+        * Scripts/webkitpy/thirdparty/simplejson: Copied from CyberKitTools/simplejson.
           - Copied simplejson directory.
 
         * simplejson: Removed.
@@ -14860,7 +14860,7 @@
         * Scripts/webkitpy/statusserver.py:
           - Updated import statement.
 
-        * Scripts/webkitpy/thirdparty/BeautifulSoup.py: Copied from WebKitTools/Scripts/webkitpy/BeautifulSoup.py.
+        * Scripts/webkitpy/thirdparty/BeautifulSoup.py: Copied from CyberKitTools/Scripts/webkitpy/BeautifulSoup.py.
 
 2010-02-20  Chris Jerdonek  <cjerdonek@webkit.org>
 
@@ -14879,7 +14879,7 @@
 
         * Scripts/webkitpy/thirdparty: Added.
         * Scripts/webkitpy/thirdparty/__init__.py: Added.
-        * Scripts/webkitpy/thirdparty/autoinstall.py: Copied from WebKitTools/Scripts/webkitpy/autoinstall.py.
+        * Scripts/webkitpy/thirdparty/autoinstall.py: Copied from CyberKitTools/Scripts/webkitpy/autoinstall.py.
 
 2010-02-20  Gustavo Noronha Silva  <gns@gnome.org>
 
@@ -14903,14 +14903,14 @@
 
         Reviewed by Shinichiro Hamaji.
 
-        [style-queue] should not complain about identifier names with underscores under WebKit/efl/ewk/
+        [style-queue] should not complain about identifier names with underscores under CyberKit/efl/ewk/
         https://bugs.webkit.org/show_bug.cgi?id=35091
 
-        White list unix_hacker_style names in WebKit/efl/ewk because these
+        White list unix_hacker_style names in CyberKit/efl/ewk because these
         are used in the EFL API.
 
         * Scripts/webkitpy/style/checker.py:
-         - Filter out readability/naming on WebKit/efl/ewk.
+         - Filter out readability/naming on CyberKit/efl/ewk.
 
 2010-02-19  Eric Seidel  <eric@webkit.org>
 
@@ -14973,7 +14973,7 @@
         persistent path or enabling the persistent feature are redundant. 
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::WebPage::WebPage): No need to enable AppCache again.
+        (CyberCore::WebPage::WebPage): No need to enable AppCache again.
         * DumpRenderTree/qt/main.cpp:
         (main): No need to setup and enable HTML5 LocalStorage again.
 
@@ -14991,7 +14991,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=35131
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
         * DumpRenderTree/qt/EventSenderQt.cpp:
         (EventSender::contextClick):
 
@@ -15019,7 +15019,7 @@
         * Scripts/webkitpy/style/checker_unittest.py:
           - Moved the ProcessorOptionsTest, ArgumentPrinterTest, and
             ArgumentParserTest classes to optparser.py.
-          - Added the CheckWebKitStyleFunctionTest class to check
+          - Added the CheckCyberKitStyleFunctionTest class to check
             the check_webkit_style_configuration() and
             check_webkit_style_parser() code paths.
 
@@ -15294,7 +15294,7 @@
         Remove some warnings seen when building Qt
         https://bugs.webkit.org/show_bug.cgi?id=35017
 
-        Using a machine without the needed tools to build WebKit leads to
+        Using a machine without the needed tools to build CyberKit leads to
         several errors and warnings.
 
         * Scripts/webkitdirs.pm: Refactored the code testing the command's
@@ -15369,7 +15369,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=34986
 
         * Scripts/test-webkitpy: Add new unit test.
-        * Scripts/webkitpy/layout_tests/__init__.py: Copied from WebKitTools/QueueStatusServer/filters/__init__.py.
+        * Scripts/webkitpy/layout_tests/__init__.py: Copied from CyberKitTools/QueueStatusServer/filters/__init__.py.
         * Scripts/webkitpy/layout_tests/port/mac.py: Split parsing function into multiple functions for testing.
         * Scripts/webkitpy/layout_tests/port/mac_unittest.py: Added.
 
@@ -15442,11 +15442,11 @@
         inspector/console-clear.html
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
-        (WebCore::isWebInspectorTest):
-        (WebCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
+        (CyberCore::isWebInspectorTest):
+        (CyberCore::DumpRenderTree::open):
         * DumpRenderTree/qt/DumpRenderTreeQt.h:
-        (WebCore::DumpRenderTree::display):
+        (CyberCore::DumpRenderTree::display):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::closeWebInspector):
         (LayoutTestController::showWebInspector):
@@ -15501,7 +15501,7 @@
         DumpRenderTreeQt.cpp.
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::WebPage::WebPage):
+        (CyberCore::WebPage::WebPage):
 
 2010-02-12  Chang Shu  <Chang.Shu@nokia.com>
 
@@ -15684,7 +15684,7 @@
         Allow underscored identifiers in CSSParser.cpp
 
         Flex (http://flex.sourceforge.net/) uses identifiers named as yy_*.
-        WebCore/css/CSSParser.cpp needs to handle some such identifiers.
+        CyberCore/css/CSSParser.cpp needs to handle some such identifiers.
         We should relax the style rule for the file to allow underscored identifiers.
 
         https://bugs.webkit.org/show_bug.cgi?id=34787
@@ -15803,7 +15803,7 @@
          - Need a way to re-use the perl logic for finding build directories in non-perl scripts.
         * Scripts/webkitpy/layout_tests/port/base.py: Add a FIXME.
         * Scripts/webkitpy/layout_tests/port/mac.py:
-         - Call webkit-build-directory to find the build directory instead of assuming "WebKitBuild"
+         - Call webkit-build-directory to find the build directory instead of assuming "CyberKitBuild"
         * Scripts/webkitpy/layout_tests/rebaseline_chromium_webkit_tests.py: Add FIXMEs.
 
 2010-02-10  Kevin Watters  <kevinwatters@gmail.com>
@@ -15913,7 +15913,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=34713
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::WebPage::WebPage):
+        (CyberCore::WebPage::WebPage):
         * DumpRenderTree/qt/main.cpp:
         (main):
 
@@ -15959,7 +15959,7 @@
 
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::WebPage::WebPage):
+        (CyberCore::WebPage::WebPage):
         * DumpRenderTree/qt/main.cpp:
         (main):
 
@@ -16061,7 +16061,7 @@
             underscores in identifiers, for example).
 
         * Scripts/webkitpy/style/checker_unittest.py:
-          - Added an "end-to-end" test for "WebKit/qt/tests/".
+          - Added an "end-to-end" test for "CyberKit/qt/tests/".
 
         * Scripts/webkitpy/style/filter.py:
           - Altered FilterConfiguration's should_check() method to
@@ -16071,7 +16071,7 @@
           - Added a test to check case-insensitive path substring matching.
 
         * Scripts/webkitpy/style/processors/cpp.py:
-          - Removed the hard-coded "WebKit/gtk/webkit/" path reference
+          - Removed the hard-coded "CyberKit/gtk/webkit/" path reference
             since this is now taken care of by the _PATH_RULES_SPECIFIER
             configuration variable.
 
@@ -16085,7 +16085,7 @@
         Reviewed by Darin Adler.
 
         Fixes: https://bugs.webkit.org/show_bug.cgi?id=34637
-        Corrects the newline inserted into WebKitOutputDir, and WebKitLibrariesDir Windows
+        Corrects the newline inserted into CyberKitOutputDir, and CyberKitLibrariesDir Windows
         environemnt variables when there is a space in the user's /home path.
 
         * Scripts/webkitdirs.pm:
@@ -16115,7 +16115,7 @@
 
         Reviewed by Eric Seidel.
 
-        Add a simple test implementation and the WebKit Mac implementation
+        Add a simple test implementation and the CyberKit Mac implementation
         for the layout_tests/port package. Also add a simple test driver of
         that interface.
 
@@ -16133,7 +16133,7 @@
         Refactor the port package into an object-oriented style and merge
         path_utils into it. We add a 'base' and a 'chromium' object to the
         port package; this will allow us to easily add new ports (like
-        WebKit Mac).
+        CyberKit Mac).
 
         https://bugs.webkit.org/show_bug.cgi?id=34511
 
@@ -16275,7 +16275,7 @@
         Build fix.  Remove a symbol corresponding to an inline function from the linker export
         file to prevent a weak external failure.
 
-        * Scripts/check-for-weak-vtables-and-externals: Renamed from WebKitTools/Scripts/check-for-weak-vtables.
+        * Scripts/check-for-weak-vtables-and-externals: Renamed from CyberKitTools/Scripts/check-for-weak-vtables.
         Teach the script how to detect weak external symbols so that these errors can be caught immediately
         in the future.
 
@@ -16351,7 +16351,7 @@
 
         Make run-webkit-tests work under Cygwin for the Qt port
 
-        setPathForRunningWebKitApp() is implemented for the Qt port
+        setPathForRunningCyberKitApp() is implemented for the Qt port
         by using qmake to query for the location of the Qt libraries.
 
         This requires the original environment (%ENV) to be untouched,
@@ -16498,7 +16498,7 @@
         No review, just fixing copyrights.
 
         Concerns were expressed about "The Chromium Authors" being
-        a valid legal entity for copyright assignment in the WebKit repository,
+        a valid legal entity for copyright assignment in the CyberKit repository,
         so this change removes all "The Chromium Authors".
 
         I looked at the svn logs in src.chromium.org and failed to find any
@@ -16569,10 +16569,10 @@
         https://bugs.webkit.org/show_bug.cgi?id=27813
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::DumpRenderTree::open):
-        (WebCore::DumpRenderTree::processLine):
+        (CyberCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::processLine):
          - Hash processing mechanism moved from DumpRenderTree::open to DumpRenderTree::processLine.
-        (WebCore::DumpRenderTree::dump): Fixed and renamed variables.
+        (CyberCore::DumpRenderTree::dump): Fixed and renamed variables.
 
 2010-02-03  Kevin Watters  <kevinwatters@gmail.com>
 
@@ -17114,9 +17114,9 @@
         https://bugs.webkit.org/show_bug.cgi?id=34258
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::showPage):
-        (WebCore::DumpRenderTree::hidePage):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::showPage):
+        (CyberCore::DumpRenderTree::hidePage):
         * DumpRenderTree/qt/DumpRenderTreeQt.h:
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::reset):
@@ -17159,7 +17159,7 @@
         [Qt] Unreviewed, roll out r54000.
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
         * DumpRenderTree/qt/DumpRenderTreeQt.h:
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::reset):
@@ -17174,9 +17174,9 @@
         https://bugs.webkit.org/show_bug.cgi?id=34258
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::showPage):
-        (WebCore::DumpRenderTree::hidePage):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::showPage):
+        (CyberCore::DumpRenderTree::hidePage):
         * DumpRenderTree/qt/DumpRenderTreeQt.h:
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::reset):
@@ -17511,10 +17511,10 @@
         * Scripts/webkitpy/style/cpp_style_unittest.py: Removed.
         * Scripts/webkitpy/style/processors: Added.
         * Scripts/webkitpy/style/processors/__init__.py: Added.
-        * Scripts/webkitpy/style/processors/cpp.py: Copied from WebKitTools/Scripts/webkitpy/style/cpp_style.py.
-        * Scripts/webkitpy/style/processors/cpp_unittest.py: Copied from WebKitTools/Scripts/webkitpy/style/cpp_style_unittest.py.
-        * Scripts/webkitpy/style/processors/text.py: Copied from WebKitTools/Scripts/webkitpy/style/text_style.py.
-        * Scripts/webkitpy/style/processors/text_unittest.py: Copied from WebKitTools/Scripts/webkitpy/style/text_style_unittest.py.
+        * Scripts/webkitpy/style/processors/cpp.py: Copied from CyberKitTools/Scripts/webkitpy/style/cpp_style.py.
+        * Scripts/webkitpy/style/processors/cpp_unittest.py: Copied from CyberKitTools/Scripts/webkitpy/style/cpp_style_unittest.py.
+        * Scripts/webkitpy/style/processors/text.py: Copied from CyberKitTools/Scripts/webkitpy/style/text_style.py.
+        * Scripts/webkitpy/style/processors/text_unittest.py: Copied from CyberKitTools/Scripts/webkitpy/style/text_style_unittest.py.
         * Scripts/webkitpy/style/text_style.py: Removed.
         * Scripts/webkitpy/style/text_style_unittest.py: Removed.
         * Scripts/webkitpy/style/unittests.py:
@@ -17686,9 +17686,9 @@
         https://bugs.webkit.org/show_bug.cgi?id=32953
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::createWindow):
-        (WebCore::DumpRenderTree::windowCloseRequested):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::createWindow):
+        (CyberCore::DumpRenderTree::windowCloseRequested):
         * DumpRenderTree/qt/DumpRenderTreeQt.h:
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::maybeDump):
@@ -17700,7 +17700,7 @@
         Added a user default for specifying a fallback frameworks path in case
         the bundle does not contain frameworks for the current Mac OS X version.
 
-        * WebKitLauncher/main.m:
+        * CyberKitLauncher/main.m:
         (fallbackMacOSXVersion): Added. Looks up the fallback version in a dictionary
         keyed by the FallbackSystemVersions user default and returns it.
         (main): If a frameworks directory for the current system version is not found,
@@ -17712,7 +17712,7 @@
 
         Make run-webkit-tests work under Cygwin for the Qt port
 
-        setPathForRunningWebKitApp() is implemented for the Qt port
+        setPathForRunningCyberKitApp() is implemented for the Qt port
         by using qmake to query for the location of the Qt libraries.
 
         This requires the original environment (%ENV) to be untouched,
@@ -17760,7 +17760,7 @@
         Reviewed by Darin Adler.
 
         https://bugs.webkit.org/show_bug.cgi?id=34025
-        Enable client-based Geolocation abstraction for Mac, Windows AppleWebKit targets.
+        Enable client-based Geolocation abstraction for Mac, Windows AppleCyberKit targets.
 
         * Scripts/build-webkit:
 
@@ -17899,7 +17899,7 @@
         [Qt] Separate out the WebPage class into it's own
         cpp/header files. Also, removed the assumption that
         the view is a QWebView, in preparation of a merger
-        of the two Qt WebKit launchers.
+        of the two Qt CyberKit launchers.
 
         * QtLauncher/QtLauncher.pro:
         * QtLauncher/main.cpp:
@@ -18017,10 +18017,10 @@
 
         Reviewed by David Levin.
 
-        [style-queue] should not complain about identifier names with underscores under WebKit/gtk/webkit/
+        [style-queue] should not complain about identifier names with underscores under CyberKit/gtk/webkit/
         https://bugs.webkit.org/show_bug.cgi?id=33356
 
-        White list unix_hacker_style names in WebKit/gtk/webkit because these
+        White list unix_hacker_style names in CyberKit/gtk/webkit because these
         are used in the GTK+ API.
 
         * Scripts/webkitpy/style/cpp_style.py:
@@ -18043,8 +18043,8 @@
         crashes on the bot.
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::createWindow):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::createWindow):
         * DumpRenderTree/qt/DumpRenderTreeQt.h:
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::maybeDump):
@@ -18070,9 +18070,9 @@
         https://bugs.webkit.org/show_bug.cgi?id=32953
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::createWindow):
-        (WebCore::DumpRenderTree::windowCloseRequested):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::createWindow):
+        (CyberCore::DumpRenderTree::windowCloseRequested):
         * DumpRenderTree/qt/DumpRenderTreeQt.h:
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::maybeDump):
@@ -18265,7 +18265,7 @@
 
         Reviewed by Eric Seidel.
 
-        Teach check-webkit-style about WebKit/gtk/tests
+        Teach check-webkit-style about CyberKit/gtk/tests
         https://bugs.webkit.org/show_bug.cgi?id=33892
 
         Removes false positives found in
@@ -18333,10 +18333,10 @@
 
         Reviewed by Darin Adler.
 
-        Exempt JavaScriptCore/qt/api from style checks
+        Exempt CyberScriptCore/qt/api from style checks
         https://bugs.webkit.org/show_bug.cgi?id=33879
 
-        Apparently there is a JavaScriptCore API for Qt as well as a WebKit
+        Apparently there is a CyberScriptCore API for Qt as well as a CyberKit
         API.
 
         * Scripts/webkitpy/style/cpp_style.py:
@@ -18476,7 +18476,7 @@
 
 2010-01-18  Adam Roben  <aroben@apple.com>
 
-        Add LayoutTestController support for calling new WebKit SPI to
+        Add LayoutTestController support for calling new CyberKit SPI to
         disallow setting document.domain
 
         DRT part of fixing <http://webkit.org/b/33806>
@@ -18498,7 +18498,7 @@
         (LayoutTestController::setDomainRelaxationForbiddenForURLScheme):
         * DumpRenderTree/win/LayoutTestControllerWin.cpp:
         (LayoutTestController::setDomainRelaxationForbiddenForURLScheme):
-        Added. Calls through to WebKit.
+        Added. Calls through to CyberKit.
 
         * DumpRenderTree/gtk/LayoutTestControllerGtk.cpp:
         (LayoutTestController::setDomainRelaxationForbiddenForURLScheme):
@@ -18582,7 +18582,7 @@
         Reviewed by Darin Adler.
 
         style checker needs to know about GObject-specific requirements
-        inside WebCore/bindings/gobject/
+        inside CyberCore/bindings/gobject/
         https://bugs.webkit.org/show_bug.cgi?id=33606
 
         Add an exception to the underscore rule for certain
@@ -18650,8 +18650,8 @@
         style-check script reports loads of errors on gtk2drawing.c
         https://bugs.webkit.org/show_bug.cgi?id=33771
 
-        Exempt WebCore/platform/gtk/gtk2drawing.c and
-        WebCore/platform/gtk/gtk2drawing.h from style checks.
+        Exempt CyberCore/platform/gtk/gtk2drawing.c and
+        CyberCore/platform/gtk/gtk2drawing.h from style checks.
 
         * Scripts/webkitpy/style/cpp_style.py:
         * Scripts/webkitpy/style/cpp_style_unittest.py:
@@ -18692,11 +18692,11 @@
 
         Reviewed by Eric Seidel.
 
-        style-queue complains about missing #include of config.h for non-WebCore projects
+        style-queue complains about missing #include of config.h for non-CyberCore projects
         https://bugs.webkit.org/show_bug.cgi?id=33170
 
-        WebKitAPITests are consumers of the WebKit API and therefore do not
-        need to follow the same include discipline as the rest of WebKit.  This
+        CyberKitAPITests are consumers of the CyberKit API and therefore do not
+        need to follow the same include discipline as the rest of CyberKit.  This
         patch exempts them from the include checks.
 
         * Scripts/webkitpy/style/cpp_style.py:
@@ -18878,7 +18878,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=33617
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::WebPage::resetSettings):
+        (CyberCore::WebPage::resetSettings):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::setUserStyleSheetLocation):
         (LayoutTestController::setUserStyleSheetEnabled):
@@ -18974,7 +18974,7 @@
         remote.html to fail on the Qt Release Build Bot.
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::WebPage::resetSettings):
+        (CyberCore::WebPage::resetSettings):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::overridePreference):
         * DumpRenderTree/qt/LayoutTestControllerQt.h:
@@ -19020,7 +19020,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=33617
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::WebPage::resetSettings):
+        (CyberCore::WebPage::resetSettings):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::setUserStyleSheetLocation):
         (LayoutTestController::setUserStyleSheetEnabled):
@@ -19431,9 +19431,9 @@
         https://bugs.webkit.org/show_bug.cgi?id=33419
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::WebPage::WebPage):
-        (WebCore::WebPage::resetSettings):
-        (WebCore::DumpRenderTree::createWindow):
+        (CyberCore::WebPage::WebPage):
+        (CyberCore::WebPage::resetSettings):
+        (CyberCore::DumpRenderTree::createWindow):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::setXSSAuditorEnabled):
         * DumpRenderTree/qt/LayoutTestControllerQt.h:
@@ -19456,8 +19456,8 @@
         for more details.
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::WebPage::WebPage):
-        (WebCore::WebPage::resetSettings):
+        (CyberCore::WebPage::WebPage):
+        (CyberCore::WebPage::resetSettings):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         * DumpRenderTree/qt/LayoutTestControllerQt.h:
 
@@ -19470,8 +19470,8 @@
         Adds support for the XSSAuditor to the Qt DRT.
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::WebPage::WebPage):
-        (WebCore::WebPage::resetSettings):
+        (CyberCore::WebPage::WebPage):
+        (CyberCore::WebPage::resetSettings):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::setXSSAuditorEnabled):
         * DumpRenderTree/qt/LayoutTestControllerQt.h:
@@ -19643,7 +19643,7 @@
         * DumpRenderTree/mac/DumpRenderTree.mm:
         (dump): Stop the watchdog before printing #EOF for the test content.
         We only need to care about the JavaScript of the test running too long
-        or some hang in WebCore.  Any other failures will be covered by the calling
+        or some hang in CyberCore.  Any other failures will be covered by the calling
         script's own watchdog timer.
 
 2010-01-07  Eric Seidel  <eric@webkit.org>
@@ -19973,8 +19973,8 @@
 
         Reviewed by Steve Falkenburg.
 
-        * WebKitAPITest/tests/WebViewDestruction.cpp:
-        (WebKitAPITest::CloseWithoutInitWithFrame): Calls IWebView::close
+        * CyberKitAPITest/tests/WebViewDestruction.cpp:
+        (CyberKitAPITest::CloseWithoutInitWithFrame): Calls IWebView::close
         without ever calling IWebView::initWithFrame and tests that we don't
         crash or leak.
 
@@ -19986,13 +19986,13 @@
 
         Reviewed by Eric Seidel.
 
-        * WebKitAPITest/tests/WebViewDestruction.cpp:
-        (WebKitAPITest::NoInitWithFrame):
-        (WebKitAPITest::CloseThenDestroyViewWindow):
-        (WebKitAPITest::DestroyViewWindowThenClose):
-        (WebKitAPITest::DestroyHostWindow):
-        (WebKitAPITest::DestroyHostWindowThenClose):
-        (WebKitAPITest::CloseThenDestroyHostWindow):
+        * CyberKitAPITest/tests/WebViewDestruction.cpp:
+        (CyberKitAPITest::NoInitWithFrame):
+        (CyberKitAPITest::CloseThenDestroyViewWindow):
+        (CyberKitAPITest::DestroyViewWindowThenClose):
+        (CyberKitAPITest::DestroyHostWindow):
+        (CyberKitAPITest::DestroyHostWindowThenClose):
+        (CyberKitAPITest::CloseThenDestroyHostWindow):
         Added these tests that exercise tearing down a WebView in various
         ways, all of which we eventually want to have work. Some of them
         currently crash or leak.
@@ -20007,13 +20007,13 @@
         DRT, then recompile, the build will fail.
         
         This is because the current behavior at build time is to assume that the
-        previous Qt build supported SVG and consequently delete libQtWebKit.so.
-        Unfortunately, just deleting libQtWebKit.so will not cause the library to
-        re-link. Instead the build will see libQtWebKit.so.4 and co., pass over the
-        linking phase, and attempt to link the DRT with libQtWebKit.so absent. This
+        previous Qt build supported SVG and consequently delete libQtCyberKit.so.
+        Unfortunately, just deleting libQtCyberKit.so will not cause the library to
+        re-link. Instead the build will see libQtCyberKit.so.4 and co., pass over the
+        linking phase, and attempt to link the DRT with libQtCyberKit.so absent. This
         results in a link failure on the DRT.
         
-        Since re-linking libQtWebKit can take up to ten minutes and should be avoided
+        Since re-linking libQtCyberKit can take up to ten minutes and should be avoided
         in cases where not actually required, remove the assumption that
         the previous Qt build supported SVG, and amend the symbol detection to look for
         a symbol name that is not present in SVG builds. Currently webkitdirs.pm looks
@@ -20102,7 +20102,7 @@
 
         Reviewed by Darin Adler.
 
-        Having a comment for the #endif for a header guard is not required WebKit style.
+        Having a comment for the #endif for a header guard is not required CyberKit style.
         https://bugs.webkit.org/show_bug.cgi?id=33214
 
         * Scripts/webkitpy/cpp_style.py: removed the check and made the loop exit
@@ -20114,63 +20114,63 @@
         Share more code in the WebViewDestruction tests
 
         Part of <http://webkit.org/b/33212> Small fixes/improvements to
-        WebKitAPITest
+        CyberKitAPITest
 
         Reviewed by Sam Weinig.
 
-        * WebKitAPITest/tests/WebViewDestruction.cpp:
-        (WebKitAPITest::createAndInitializeWebView): Renamed from
+        * CyberKitAPITest/tests/WebViewDestruction.cpp:
+        (CyberKitAPITest::createAndInitializeWebView): Renamed from
         createWebView. Now initializes the HostWindow and returns the
         WebView's HWND via an out-parameter.
-        (WebKitAPITest::finishWebViewDestructionTest): Added. Code came from
+        (CyberKitAPITest::finishWebViewDestructionTest): Added. Code came from
         the CloseWithoutDestroyWindow test.
-        (WebKitAPITest::CloseWithoutDestroyViewWindow): Renamed from
+        (CyberKitAPITest::CloseWithoutDestroyViewWindow): Renamed from
         CloseWithoutDestroyWindow and changed to use the new functions.
-        (WebKitAPITest::MainFrameAfterClose): Changed to use the new
+        (CyberKitAPITest::MainFrameAfterClose): Changed to use the new
         functions.
-        (WebKitAPITest::NoCloseOrDestroyViewWindow): Renamed from
+        (CyberKitAPITest::NoCloseOrDestroyViewWindow): Renamed from
         NoCloseOrDestroyWindow and changed to use the new functions.
 
 2010-01-05  Adam Roben  <aroben@apple.com>
 
         Don't show HostWindows by default
 
-        This was making WebKitAPITest very flashy as windows appeared and
+        This was making CyberKitAPITest very flashy as windows appeared and
         disappeared.
 
         Part of <http://webkit.org/b/33212> Small fixes/improvements to
-        WebKitAPITest
+        CyberKitAPITest
 
         Reviewed by Sam Weinig.
 
-        * WebKitAPITest/HostWindow.cpp:
-        (WebKitAPITest::HostWindow::initialize): Removed the WS_VISIBLE style
+        * CyberKitAPITest/HostWindow.cpp:
+        (CyberKitAPITest::HostWindow::initialize): Removed the WS_VISIBLE style
         from the window.
 
 2010-01-05  Adam Roben  <aroben@apple.com>
 
-        Don't hang in WebKitAPITest if no messages have been posted
+        Don't hang in CyberKitAPITest if no messages have been posted
 
         Part of <http://webkit.org/b/33212> Small fixes/improvements to
-        WebKitAPITest
+        CyberKitAPITest
 
         Reviewed by Sam Weinig.
 
-        * WebKitAPITest/tests/WebViewDestruction.cpp:
-        (WebKitAPITest::runMessagePump): Use PeekMessage instead of GetMessage
+        * CyberKitAPITest/tests/WebViewDestruction.cpp:
+        (CyberKitAPITest::runMessagePump): Use PeekMessage instead of GetMessage
         to avoid hanging if no messages have been posted.
 
 2010-01-05  Adam Roben  <aroben@apple.com>
 
-        Fix WebKitCreateInstance helper
+        Fix CyberKitCreateInstance helper
 
         Part of <http://webkit.org/b/33212> Small fixes/improvements to
-        WebKitAPITest
+        CyberKitAPITest
 
         Reviewed by Sam Weinig.
 
-        * WebKitAPITest/tests/WebViewDestruction.cpp:
-        (WebKitAPITest::WebKitCreateInstance): Pass the pointer straight
+        * CyberKitAPITest/tests/WebViewDestruction.cpp:
+        (CyberKitAPITest::CyberKitCreateInstance): Pass the pointer straight
         through, instead of taking its address.
 
 2010-01-04  Maciej Stachowiak  <mjs@apple.com>
@@ -20319,7 +20319,7 @@
 
 2010-01-04  Adam Roben  <aroben@apple.com>
 
-        Add a test harness for the Windows WebKit API, and a few tests
+        Add a test harness for the Windows CyberKit API, and a few tests
 
         We currently only have tests for a handful of bugs regarding WebView
         destruction, but more tests can easily be added later. Eventually
@@ -20329,77 +20329,77 @@
 
         Reviewed by Sam Weinig.
 
-        * WebKitAPITest/HostWindow.cpp: Added.
-        (WebKitAPITest::HostWindow::HostWindow): Initialize m_window.
-        (WebKitAPITest::HostWindow::~HostWindow): Destroy our window if
+        * CyberKitAPITest/HostWindow.cpp: Added.
+        (CyberKitAPITest::HostWindow::HostWindow): Initialize m_window.
+        (CyberKitAPITest::HostWindow::~HostWindow): Destroy our window if
         needed.
-        (WebKitAPITest::HostWindow::initialize): Create our window.
-        (WebKitAPITest::HostWindow::clientRect): Return our window's client
+        (CyberKitAPITest::HostWindow::initialize): Create our window.
+        (CyberKitAPITest::HostWindow::clientRect): Return our window's client
         rect.
-        (WebKitAPITest::HostWindow::registerWindowClass): Does what it says.
-        (WebKitAPITest::HostWindow::wndProc): Just call through to
+        (CyberKitAPITest::HostWindow::registerWindowClass): Does what it says.
+        (CyberKitAPITest::HostWindow::wndProc): Just call through to
         DefWindowProcW.
 
-        * WebKitAPITest/HostWindow.h: Added.
-        (WebKitAPITest::HostWindow::window): Simple getter.
+        * CyberKitAPITest/HostWindow.h: Added.
+        (CyberKitAPITest::HostWindow::window): Simple getter.
 
-        * WebKitAPITest/Test.h: Added. This file defines some macros useful
+        * CyberKitAPITest/Test.h: Added. This file defines some macros useful
         for writing tests.
 
-        * WebKitAPITest/TestsController.cpp: Added.
-        (WebKitAPITest::TestsController::TestsController): Initialize our
+        * CyberKitAPITest/TestsController.cpp: Added.
+        (CyberKitAPITest::TestsController::TestsController): Initialize our
         members.
-        (WebKitAPITest::TestsController::shared): Return the shared instance.
-        (WebKitAPITest::TestsController::runAllTests): Run a message pump
+        (CyberKitAPITest::TestsController::shared): Return the shared instance.
+        (CyberKitAPITest::TestsController::runAllTests): Run a message pump
         until a WM_QUIT message is received, then return whether all tests
         succeeded.
-        (WebKitAPITest::TestsController::addTest): Add the test to m_tests and
+        (CyberKitAPITest::TestsController::addTest): Add the test to m_tests and
         start running tests soon.
-        (WebKitAPITest::TestsController::testFailed): Record the failure and
+        (CyberKitAPITest::TestsController::testFailed): Record the failure and
         print a message about it to stdout.
-        (WebKitAPITest::TestsController::runNextTest): If we don't have any
+        (CyberKitAPITest::TestsController::runNextTest): If we don't have any
         tests to run, post a WM_QUIT message to stop the message pump.
         Otherwise, run the test and print whether it passed, then schedule the
         next test.
-        (WebKitAPITest::TestsController::runNextTestSoon): Set a 0-delay timer
+        (CyberKitAPITest::TestsController::runNextTestSoon): Set a 0-delay timer
         to run the next test.
-        (WebKitAPITest::TestsController::registerWindowClass): Does what it
+        (CyberKitAPITest::TestsController::registerWindowClass): Does what it
         says.
-        (WebKitAPITest::TestsController::wndProc): If the runNextTestTimer
+        (CyberKitAPITest::TestsController::wndProc): If the runNextTestTimer
         fired, call runNextTest(). Pass everything else through to
         DefWindowProcW.
 
-        * WebKitAPITest/TestsController.h: Added.
+        * CyberKitAPITest/TestsController.h: Added.
 
-        * WebKitAPITest/WebKitAPITest.vcproj: Added.
+        * CyberKitAPITest/CyberKitAPITest.vcproj: Added.
 
-        * WebKitAPITest/WebKitAPITestCommon.vsprops: Added.
+        * CyberKitAPITest/CyberKitAPITestCommon.vsprops: Added.
 
-        * WebKitAPITest/main.cpp: Added.
+        * CyberKitAPITest/main.cpp: Added.
         (main): (Mostly) just calls TestsController::runAllTests.
 
-        * WebKitAPITest/tests/WebViewDestruction.cpp: Added.
-        (WebKitAPITest::WebKitCreateInstance): Helper function template to
-        call through to the real WebKitCreateInstance.
-        (WebKitAPITest::webViewCount): Helper function to call through to
-        IWebKitStatistics::webViewCount.
-        (WebKitAPITest::createWebView): Helper function to create a WebView
+        * CyberKitAPITest/tests/WebViewDestruction.cpp: Added.
+        (CyberKitAPITest::CyberKitCreateInstance): Helper function template to
+        call through to the real CyberKitCreateInstance.
+        (CyberKitAPITest::webViewCount): Helper function to call through to
+        ICyberKitStatistics::webViewCount.
+        (CyberKitAPITest::createWebView): Helper function to create a WebView
         and put it inside a HostWindow.
-        (WebKitAPITest::runMessagePump): Helper function to run a message pump
+        (CyberKitAPITest::runMessagePump): Helper function to run a message pump
         for a specified number of milliseconds, or until a WM_QUIT message is
         received.
-        (WebKitAPITest::CloseWithoutDestroyWindow): Test for
+        (CyberKitAPITest::CloseWithoutDestroyWindow): Test for
         <http://webkit.org/b/32827>.
-        (WebKitAPITest::MainFrameAfterClose): Test for
+        (CyberKitAPITest::MainFrameAfterClose): Test for
         <http://webkit.org/b/32868>.
-        (WebKitAPITest::NoCloseOrDestroyWindow): Test for
+        (CyberKitAPITest::NoCloseOrDestroyWindow): Test for
         <http://webkit.org/b/33162>.
 
 2010-01-04  Tor Arne Vestbø  <tor.arne.vestbo@nokia.com>
 
         Reviewed by David Kilzer.
 
-        Add support for Git's "diff.mnemonicprefix" config option to WebKitTools
+        Add support for Git's "diff.mnemonicprefix" config option to CyberKitTools
 
         https://bugs.webkit.org/show_bug.cgi?id=32820
 
@@ -20537,7 +20537,7 @@
         Use the nifty "autoinstall" module from Daniel Krech:
         http://pypi.python.org/pypi/autoinstall/0.2
         http://code.google.com/p/pyautoinstall/
-        It's available under a WebKit-compatible BSD license.
+        It's available under a CyberKit-compatible BSD license.
 
         * Scripts/webkitpy/__init__.py:
          - bind "mechanize" to an autoinstall importer which will
@@ -20807,9 +20807,9 @@
         * Scripts/modules/webkitport.py: Removed.
         * Scripts/modules/webkitport_unittest.py: Removed.
         * Scripts/test-webkit-python: Removed.
-        * Scripts/test-webkitpy: Copied from WebKitTools/Scripts/test-webkit-python.
+        * Scripts/test-webkitpy: Copied from CyberKitTools/Scripts/test-webkit-python.
         * Scripts/validate-committer-lists:
-        * Scripts/webkitpy: Copied from WebKitTools/Scripts/modules.
+        * Scripts/webkitpy: Copied from CyberKitTools/Scripts/modules.
         * Scripts/webkitpy/bugzilla.py:
         * Scripts/webkitpy/bugzilla_unittest.py:
         * Scripts/webkitpy/buildbot.py:
@@ -21039,8 +21039,8 @@
         * Scripts/modules/scm.py:
         * Scripts/modules/statusbot.py:
         * Scripts/modules/stepsequence.py:
-        * Scripts/modules/webkit_logging.py: Renamed from WebKitTools/Scripts/modules/logging.py.
-        * Scripts/modules/webkit_logging_unittest.py: Renamed from WebKitTools/Scripts/modules/logging_unittest.py.
+        * Scripts/modules/webkit_logging.py: Renamed from CyberKitTools/Scripts/modules/logging.py.
+        * Scripts/modules/webkit_logging_unittest.py: Renamed from CyberKitTools/Scripts/modules/logging_unittest.py.
 
 2009-12-30  Jakub Wieczorek  <faw217@gmail.com>
 
@@ -21310,7 +21310,7 @@
         Unskip some http/loading tests which succeed now.
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::DumpRenderTree::dump):
+        (CyberCore::DumpRenderTree::dump):
 
 2009-12-29  Robert Hogan  <robert@roberthogan.net>
 
@@ -21319,13 +21319,13 @@
         [Qt] fix fast/dom/Window/window-onFocus.html
         
         Add support for layouttestcontroller.windowIsKey to Qt DRT and fix issue where
-        window.onblur was getting dispatched twice from QtWebKit.
+        window.onblur was getting dispatched twice from QtCyberKit.
         
         https://bugs.webkit.org/show_bug.cgi?id=32990
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::switchFocus):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::switchFocus):
         * DumpRenderTree/qt/DumpRenderTreeQt.h:
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::setWindowIsKey):
@@ -21653,10 +21653,10 @@
         https://bugs.webkit.org/show_bug.cgi?id=32680
 
         Fixes an issue in builtDylibPathForName so that it returns the correct
-        path to the built QtWebKit library on the Qt Windows port. Currently,
-        it returns the path to the file named QtWebKit.dll but this file does
+        path to the built QtCyberKit library on the Qt Windows port. Currently,
+        it returns the path to the file named QtCyberKit.dll but this file does
         not exist on the Qt Windows build. Instead, the file is named
-        QtWebKit4.dll.
+        QtCyberKit4.dll.
 
         * Scripts/webkitdirs.pm:
 
@@ -21707,9 +21707,9 @@
 
         Rubber-stamped by Holger Freyther.
 
-        Moved QtLauncher from WebKit/qt.
+        Moved QtLauncher from CyberKit/qt.
 
-        * QtLauncher: Copied from WebKit/qt/QtLauncher.
+        * QtLauncher: Copied from CyberKit/qt/QtLauncher.
         * QtLauncher/QtLauncher.pro:
 
 2009-12-21  Adam Barth  <abarth@webkit.org>
@@ -22014,12 +22014,12 @@
         * QueueStatusServer/handlers/statusbubble.py:
         * QueueStatusServer/handlers/updatestatus.py:
         * QueueStatusServer/main.py:
-        * QueueStatusServer/model/__init__.py: Copied from WebKitTools/QueueStatusServer/filters/__init__.py.
-        * QueueStatusServer/model/queuestatus.py: Renamed from WebKitTools/QueueStatusServer/model.py.
+        * QueueStatusServer/model/__init__.py: Copied from CyberKitTools/QueueStatusServer/filters/__init__.py.
+        * QueueStatusServer/model/queuestatus.py: Renamed from CyberKitTools/QueueStatusServer/model.py.
         * QueueStatusServer/stylesheets/dashboard.css: Added.
         * QueueStatusServer/templates/dashboard.html: Added.
-        * QueueStatusServer/templates/statusbubble.html: Renamed from WebKitTools/QueueStatusServer/status_bubble.html.
-        * QueueStatusServer/templates/updatestatus.html: Renamed from WebKitTools/QueueStatusServer/update_status.html.
+        * QueueStatusServer/templates/statusbubble.html: Renamed from CyberKitTools/QueueStatusServer/status_bubble.html.
+        * QueueStatusServer/templates/updatestatus.html: Renamed from CyberKitTools/QueueStatusServer/update_status.html.
 
 2009-12-19  Daniel Bates  <dbates@webkit.org>
 
@@ -22028,9 +22028,9 @@
         https://bugs.webkit.org/show_bug.cgi?id=32462
 
         Added --inspector-frontend flag to build-webkit to copy any changes
-        to the inspector front-end files to the built WebCore framework. This
+        to the inspector front-end files to the built CyberCore framework. This
         will make inspector development more consistent with the rest of
-        WebKit development.
+        CyberKit development.
 
         * Scripts/build-webkit:
         * Scripts/webkitdirs.pm:
@@ -22052,7 +22052,7 @@
         One monolithic file is no good.
 
         * QueueStatusServer/app.yaml:
-        * QueueStatusServer/handlers/__init__.py: Copied from WebKitTools/QueueStatusServer/filters/__init__.py.
+        * QueueStatusServer/handlers/__init__.py: Copied from CyberKitTools/QueueStatusServer/filters/__init__.py.
         * QueueStatusServer/handlers/patchstatus.py: Added.
         * QueueStatusServer/handlers/recentstatus.py: Added.
         * QueueStatusServer/handlers/showresults.py: Added.
@@ -22122,7 +22122,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=32597
         
         Fix to check one space before end of line comments in whitespace and build/header_guard.
-        Also fix build/header_guard to use WebKit header guard defines.
+        Also fix build/header_guard to use CyberKit header guard defines.
 
         * Scripts/modules/cpp_style.py:
         * Scripts/modules/cpp_style_unittest.py:
@@ -22167,7 +22167,7 @@
 
         Reviewed by Eric Seidel.
 
-        Added the key WebKitEnableCaretBrowsing to the
+        Added the key CyberKitEnableCaretBrowsing to the
         layoutTestController.overridePreference in order to activate caret
         browsing.
         https://bugs.webkit.org/show_bug.cgi?id=32612
@@ -22237,7 +22237,7 @@
 
         Reviewed by Adam Barth.
 
-        Add Gtk to the early warning system WebKit port list.
+        Add Gtk to the early warning system CyberKit port list.
 
         https://bugs.webkit.org/show_bug.cgi?id=32629
 
@@ -22368,11 +22368,11 @@
         that custom font faces between tests don't influence each other. Calling this
         function in Qt however also invalidates all existing handles with QFontDatabase.
 
-        In order to make sure that WebCore also drops these handles we call QWebSettings::clearMemoryCaches(),
-        which implies a call to WebCore::FontCache::fontCache()->invalidate().
+        In order to make sure that CyberCore also drops these handles we call QWebSettings::clearMemoryCaches(),
+        which implies a call to CyberCore::FontCache::fontCache()->invalidate().
 
         * DumpRenderTree/qt/DumpRenderTreeQt.cpp:
-        (WebCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::open):
 
 2009-12-16  Andreas Kling  <andreas.kling@nokia.com>
 
@@ -22481,15 +22481,15 @@
         * DumpRenderTree/qt/DumpRenderTree.cpp: Removed.
         * DumpRenderTree/qt/DumpRenderTree.h: Removed.
         * DumpRenderTree/qt/DumpRenderTree.pro: Updated.
-        * DumpRenderTree/qt/DumpRenderTreeQt.cpp: Copied from WebKitTools/DumpRenderTree/qt/DumpRenderTree.cpp.
-        * DumpRenderTree/qt/DumpRenderTreeQt.h: Copied from WebKitTools/DumpRenderTree/qt/DumpRenderTree.h.
-        * DumpRenderTree/qt/GCControllerQt.cpp: Copied from WebKitTools/DumpRenderTree/qt/jsobjects.cpp.
+        * DumpRenderTree/qt/DumpRenderTreeQt.cpp: Copied from CyberKitTools/DumpRenderTree/qt/DumpRenderTree.cpp.
+        * DumpRenderTree/qt/DumpRenderTreeQt.h: Copied from CyberKitTools/DumpRenderTree/qt/DumpRenderTree.h.
+        * DumpRenderTree/qt/GCControllerQt.cpp: Copied from CyberKitTools/DumpRenderTree/qt/jsobjects.cpp.
         (GCController::GCController):
-        * DumpRenderTree/qt/GCControllerQt.h: Copied from WebKitTools/DumpRenderTree/qt/jsobjects.h.
+        * DumpRenderTree/qt/GCControllerQt.h: Copied from CyberKitTools/DumpRenderTree/qt/jsobjects.h.
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         * DumpRenderTree/qt/WorkQueueItem.h: Removed.
         * DumpRenderTree/qt/WorkQueueItemQt.cpp: Updated includes.
-        * DumpRenderTree/qt/WorkQueueItemQt.h: Copied from WebKitTools/DumpRenderTree/qt/WorkQueueItem.h.
+        * DumpRenderTree/qt/WorkQueueItemQt.h: Copied from CyberKitTools/DumpRenderTree/qt/WorkQueueItem.h.
         * DumpRenderTree/qt/jsobjects.cpp: Removed.
         * DumpRenderTree/qt/jsobjects.h: Removed.
         * DumpRenderTree/qt/main.cpp: Updated includes.
@@ -22625,7 +22625,7 @@
 
         Reviewed by Eric Seidel.
 
-        [bzt] Kill WebKitApplyingScripts
+        [bzt] Kill CyberKitApplyingScripts
         https://bugs.webkit.org/show_bug.cgi?id=32467
 
         Ah!  I've been wanting to do this for a long time.  This patch brings
@@ -22692,7 +22692,7 @@
         tests.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::reset):
         (LayoutTestController::processWork):
@@ -22914,7 +22914,7 @@
         Reviewed by Adam Roben.
 
         Fixes: https://bugs.webkit.org/show_bug.cgi?id=31228
-        Set the WebKitOutputDir, WebKitLibrariesDir and Cygwin environment variables automatically
+        Set the CyberKitOutputDir, CyberKitLibrariesDir and Cygwin environment variables automatically
         in Windows as part of running update_webkit.
 
         * Scripts/update-webkit:
@@ -22922,7 +22922,7 @@
         * Scripts/webkitdirs.pm:
          - Added functions that return the source directory, libraries directory and default build directory on Windows.
          - Added isWindowsNT() which tests if the current Windows version is from the Windows NT family.
-         - Implemented setupAppleWinEnv() which sets the environment variables WebKitOutputDir, WebKitLibrariesDir
+         - Implemented setupAppleWinEnv() which sets the environment variables CyberKitOutputDir, CyberKitLibrariesDir
            and Cygwin to their desired values.
 
 2009-12-09  Adam Barth  <abarth@webkit.org>
@@ -23181,7 +23181,7 @@
         Turn on (SVG) Filters support, by default.
         https://bugs.webkit.org/show_bug.cgi?id=32224
 
-        For now only enable FILTERS build flag on WebKit/mac. Other platforms will follow soon.
+        For now only enable FILTERS build flag on CyberKit/mac. Other platforms will follow soon.
 
         * Scripts/build-webkit:
 
@@ -23367,8 +23367,8 @@
         https://bugs.webkit.org/show_bug.cgi?id=32181
 
         We need to move update-webkit out of SCM.py because SCM isn't supposed to know
-        that WebKit exists.  The proper place for the knowledge of the existence of
-        update-webkit is in WebKitPort because some ports have specialized update
+        that CyberKit exists.  The proper place for the knowledge of the existence of
+        update-webkit is in CyberKitPort because some ports have specialized update
         scripts (analogous to build-webkit).
 
         * Scripts/modules/buildsteps.py:
@@ -23406,9 +23406,9 @@
         Web Inspector.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::WebPage):
-        (WebCore::WebPage::~WebPage):
-        (WebCore::WebPage::webInspector):
+        (CyberCore::WebPage::WebPage):
+        (CyberCore::WebPage::~WebPage):
+        (CyberCore::WebPage::webInspector):
         * DumpRenderTree/qt/DumpRenderTree.h:
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::showWebInspector):
@@ -23423,7 +23423,7 @@
         for the Qt LayoutTestController.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::resetSettings):
+        (CyberCore::WebPage::resetSettings):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::setAllowUniversalAccessFromFileURLs):
         * DumpRenderTree/qt/LayoutTestControllerQt.h:
@@ -23585,14 +23585,14 @@
         This fixes https://bugs.webkit.org/show_bug.cgi?id=31591.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::WebPage):
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::~DumpRenderTree):
-        (WebCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
-        (WebCore::DumpRenderTree::open):
-        (WebCore::DumpRenderTree::closeRemainingWindows):
-        (WebCore::DumpRenderTree::createWindow):
-        (WebCore::DumpRenderTree::windowCount):
+        (CyberCore::WebPage::WebPage):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::~DumpRenderTree):
+        (CyberCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
+        (CyberCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::closeRemainingWindows):
+        (CyberCore::DumpRenderTree::createWindow):
+        (CyberCore::DumpRenderTree::windowCount):
         * DumpRenderTree/qt/DumpRenderTree.h:
 
 2009-12-02  Eric Seidel  <eric@webkit.org>
@@ -23615,7 +23615,7 @@
          - Add queues_unittest.
 
         * Scripts/modules/commands/queues.py:
-        * Scripts/modules/commands/queues_unittest.py: Copied from WebKitTools/Scripts/modules/commands/commandtest.py.
+        * Scripts/modules/commands/queues_unittest.py: Copied from CyberKitTools/Scripts/modules/commands/commandtest.py.
         * Scripts/modules/mock_bugzillatool.py:
         * Scripts/modules/workqueue.py:
         * Scripts/run-webkit-unittests:
@@ -24105,7 +24105,7 @@
         * CommitQueueStatus/stylesheets: Removed.
         * CommitQueueStatus/stylesheets/main.css: Removed.
         * CommitQueueStatus/update_status.html: Removed.
-        * QueueStatusServer: Copied from WebKitTools/CommitQueueStatus.
+        * QueueStatusServer: Copied from CyberKitTools/CommitQueueStatus.
 
 2009-11-27  Adam Barth  <abarth@webkit.org>
 
@@ -24217,7 +24217,7 @@
 
         Reviewed by Eric Seidel.
 
-        [bzt] Kill WebKitLandingScripts
+        [bzt] Kill CyberKitLandingScripts
         https://bugs.webkit.org/show_bug.cgi?id=31904
 
         Step 6: Kill the rest.
@@ -24252,7 +24252,7 @@
 
         Reviewed by Eric Seidel.
 
-        [bzt] Kill WebKitLandingScripts
+        [bzt] Kill CyberKitLandingScripts
         https://bugs.webkit.org/show_bug.cgi?id=31904
 
         Step 5: Kill run_and_throw_if_fail.
@@ -24265,7 +24265,7 @@
 
         Reviewed by Eric Seidel.
 
-        [bzt] Kill WebKitLandingScripts
+        [bzt] Kill CyberKitLandingScripts
         https://bugs.webkit.org/show_bug.cgi?id=31904
 
         Step 4: Kill run_webkit_script.
@@ -24278,7 +24278,7 @@
 
         Reviewed by Eric Seidel.
 
-        [bzt] Kill WebKitLandingScripts
+        [bzt] Kill CyberKitLandingScripts
         https://bugs.webkit.org/show_bug.cgi?id=31904
 
         Step 3: Kill build_webkit.
@@ -24291,7 +24291,7 @@
 
         Reviewed by Eric Seidel.
 
-        [bzt] Kill WebKitLandingScripts
+        [bzt] Kill CyberKitLandingScripts
         https://bugs.webkit.org/show_bug.cgi?id=31904
 
         Step 2: Kill ensure_builders_are_green.
@@ -24305,7 +24305,7 @@
 
         Reviewed by Eric Seidel.
 
-        [bzt] Kill WebKitLandingScripts
+        [bzt] Kill CyberKitLandingScripts
         https://bugs.webkit.org/show_bug.cgi?id=31904
 
         Step 1: Kill prepare_clean_working_directory and run_webkit_tests.
@@ -24340,7 +24340,7 @@
         new automatic test of Qt Plugins.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::createPlugin):
+        (CyberCore::WebPage::createPlugin):
         * DumpRenderTree/qt/DumpRenderTree.h:
         * DumpRenderTree/qt/DumpRenderTree.pro:
 
@@ -24575,7 +24575,7 @@
         Unskip a bunch of passing http/navigation tests.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::dumpHistoryItem):
+        (CyberCore::dumpHistoryItem):
 
 2009-11-22  Chris Fleizach  <cfleizach@apple.com>
 
@@ -24605,7 +24605,7 @@
         Unfreeze WorkQueue after each test execution.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
+        (CyberCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
 
 2009-11-22  Jakub Wieczorek  <faw217@gmail.com>
 
@@ -24618,9 +24618,9 @@
         Unskip the http/tests/ssl/verify-ssl-enabled.php test, which is passing now.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::NetworkAccessManager::NetworkAccessManager):
-        (WebCore::NetworkAccessManager::sslErrorsEncountered):
-        (WebCore::WebPage::WebPage):
+        (CyberCore::NetworkAccessManager::NetworkAccessManager):
+        (CyberCore::NetworkAccessManager::sslErrorsEncountered):
+        (CyberCore::WebPage::WebPage):
         * DumpRenderTree/qt/DumpRenderTree.h:
 
 2009-11-22  Chris Evans  <cevans@chromium.org>
@@ -24659,7 +24659,7 @@
         the main frame, while it should connect to QWebPage::loadFinished().
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
 
 2009-11-21  Eric Seidel  <eric@webkit.org>
 
@@ -24717,7 +24717,7 @@
 2009-11-21  Adam Barth  <abarth@webkit.org>
 
         Unreviewed "build" fix.  Turns out I was testing the wrong copy of
-        WebKitTools.
+        CyberKitTools.
 
         * Scripts/modules/commands/download.py:
 
@@ -24954,7 +24954,7 @@
         [GTK] DRT release event does not create the state correctly
         https://bugs.webkit.org/show_bug.cgi?id=31717
 
-        * WebKitTools/DumpRenderTree/gtk/EventSender.cpp:
+        * CyberKitTools/DumpRenderTree/gtk/EventSender.cpp:
 
 2009-11-20  Eric Seidel  <eric@webkit.org>
 
@@ -25147,7 +25147,7 @@
 
         Reviewed by Gustavo Noronha Silva.
 
-        Web Inspector: Implement "show inspector" in WebKit GTK
+        Web Inspector: Implement "show inspector" in CyberKit GTK
         API and enable console tests.
 
         https://bugs.webkit.org/show_bug.cgi?id=31669
@@ -25162,8 +25162,8 @@
         Minor refactoring + more documentation.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::clearHistory):
-        (WebCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
+        (CyberCore::clearHistory):
+        (CyberCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
 
 2009-11-19  Fumitoshi Ukai  <ukai@chromium.org>
 
@@ -25264,7 +25264,7 @@
         will be created before exporting them to the JS DOM window.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
 
 2009-11-18  Kenneth Rohde Christiansen  <kenneth@webkit.org>
 
@@ -25273,13 +25273,13 @@
         Fix a code copy and paste error. m_page should be page.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::createWindow):
+        (CyberCore::DumpRenderTree::createWindow):
 
 2009-11-17  Mark Rowe  <mrowe@apple.com>
 
         Reviewed by Alexey Proskuryakov.
 
-        <http://webkit.org/b/31603> WebSocket server is confused if WebKit tests run from within /tmp on Mac OS X
+        <http://webkit.org/b/31603> WebSocket server is confused if CyberKit tests run from within /tmp on Mac OS X
 
         * pywebsocket/mod_pywebsocket/dispatch.py: Use os.path.realpath as it returns the canonical path of a file.
         This prevents symlinks from confusing the descendant check.
@@ -25379,7 +25379,7 @@
 
         Reviewed by Maciej Stachowiak.
 
-        Incorrect use of JavaScriptCore API in DumpRenderTree
+        Incorrect use of CyberScriptCore API in DumpRenderTree
         https://bugs.webkit.org/show_bug.cgi?id=31577
 
         Return undefined rather than a literal null.
@@ -25411,21 +25411,21 @@
         WebPage.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::WebPage):
-        (WebCore::WebPage::javaScriptAlert):
-        (WebCore::WebPage::javaScriptConsoleMessage):
-        (WebCore::WebPage::javaScriptConfirm):
-        (WebCore::WebPage::javaScriptPrompt):
-        (WebCore::WebPage::acceptNavigationRequest):
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::open):
-        (WebCore::DumpRenderTree::createWindow):
+        (CyberCore::WebPage::WebPage):
+        (CyberCore::WebPage::javaScriptAlert):
+        (CyberCore::WebPage::javaScriptConsoleMessage):
+        (CyberCore::WebPage::javaScriptConfirm):
+        (CyberCore::WebPage::javaScriptPrompt):
+        (CyberCore::WebPage::acceptNavigationRequest):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::createWindow):
         * DumpRenderTree/qt/DumpRenderTree.h:
-        (WebCore::DumpRenderTree::setTextOutputEnabled):
-        (WebCore::DumpRenderTree::isTextOutputEnabled):
-        (WebCore::WebPage::shouldInterruptJavaScript):
-        (WebCore::WebPage::isTextOutputEnabled):
-        (WebCore::WebPage::setViewGeometry):
+        (CyberCore::DumpRenderTree::setTextOutputEnabled):
+        (CyberCore::DumpRenderTree::isTextOutputEnabled):
+        (CyberCore::WebPage::shouldInterruptJavaScript):
+        (CyberCore::WebPage::isTextOutputEnabled):
+        (CyberCore::WebPage::setViewGeometry):
 
 2009-11-16  Kenneth Rohde Christiansen  <kenneth@webkit.org>
 
@@ -25437,9 +25437,9 @@
         Update buildsystems as well.
 
         * DumpRenderTree/qt/TestNetscapePlugin/TestNetscapePlugin.pro:
-        * DumpRenderTree/unix/TestNetscapePlugin/ForwardingHeaders/WebKit/npapi.h:
-        * DumpRenderTree/unix/TestNetscapePlugin/ForwardingHeaders/WebKit/npfunctions.h:
-        * DumpRenderTree/unix/TestNetscapePlugin/ForwardingHeaders/WebKit/npruntime.h:
+        * DumpRenderTree/unix/TestNetscapePlugin/ForwardingHeaders/CyberKit/npapi.h:
+        * DumpRenderTree/unix/TestNetscapePlugin/ForwardingHeaders/CyberKit/npfunctions.h:
+        * DumpRenderTree/unix/TestNetscapePlugin/ForwardingHeaders/CyberKit/npruntime.h:
         * DumpRenderTree/unix/TestNetscapePlugin/TestNetscapePlugin.cpp:
         * GNUmakefile.am:
 
@@ -25468,8 +25468,8 @@
         support handling error pages. Qt's will be the first.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::supportsExtension):
-        (WebCore::WebPage::extension):
+        (CyberCore::WebPage::supportsExtension):
+        (CyberCore::WebPage::extension):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::reset):
         * DumpRenderTree/qt/LayoutTestControllerQt.h:
@@ -25539,10 +25539,10 @@
 
         Reviewed by Adam Barth.
 
-        Move more patch-landing code into WebKitLandingScripts in preparation for land-attachment
+        Move more patch-landing code into CyberKitLandingScripts in preparation for land-attachment
         https://bugs.webkit.org/show_bug.cgi?id=31543
 
-        Just moving code and updating the one caller to use WebKitLandingScripts instead of 'self'.
+        Just moving code and updating the one caller to use CyberKitLandingScripts instead of 'self'.
 
         * Scripts/bugzilla-tool:
 
@@ -25629,7 +25629,7 @@
         land-patches needs to be re-factored into smaller chunks
         https://bugs.webkit.org/show_bug.cgi?id=31532
 
-        The next patch will move these methods into WebKitLandingScripts.
+        The next patch will move these methods into CyberKitLandingScripts.
 
         * Scripts/bugzilla-tool:
          - Split out _land_patch and _close_bug_if_no_active_patches.
@@ -25690,7 +25690,7 @@
 
         * Scripts/bugzilla-tool:
          - Add ApplyAttachment command.
-         - Abstract applying code into WebKitApplyingScripts.
+         - Abstract applying code into CyberKitApplyingScripts.
          - Rename setup_for_landing to prepare_clean_working_directory and make local_commit checking optional.
         * Scripts/modules/bugzilla.py:
          - Add fetch_attachment and bug_id_for_attachment_id.
@@ -25790,7 +25790,7 @@
         Set the locale to C and not to the current one in use on the system.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
+        (CyberCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
 
 2009-11-13  Adam Roben  <aroben@apple.com>
 
@@ -25862,7 +25862,7 @@
         * DumpRenderTree/win/LayoutTestControllerWin.cpp:
         (LayoutTestController::evaluateScriptInIsolatedWorld):
         Updated for changes to WebFrame. Now holds the map of worldID -> world
-        at this level instead of making WebKit do it.
+        at this level instead of making CyberKit do it.
 
 2009-11-13  Tor Arne Vestbø  <tor.arne.vestbo@nokia.com>
 
@@ -25882,16 +25882,16 @@
         Locally fixes 3 incorrect layouts, 9 timeouts and 7 crashes.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
+        (CyberCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
 
 2009-11-13  Andras Becsi  <becsi.andras@stud.u-szeged.hu>
 
         Reviewed by Kenneth Rohde Christiansen.
 
-        [Qt] Add WebKitUsesPageCachePreferenceKey overriding support to DRT's LayoutTestController.
+        [Qt] Add CyberKitUsesPageCachePreferenceKey overriding support to DRT's LayoutTestController.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::resetSettings):
+        (CyberCore::WebPage::resetSettings):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::overridePreference):
 
@@ -25967,7 +25967,7 @@
         (LayoutTestController::addUserScript):
         (LayoutTestController::addUserStyleSheet):
         Changed these functions to create a new WebJSWorld each time they're
-        called and to pass that world to WebKit.
+        called and to pass that world to CyberKit.
 
 2009-11-11  Chris Fleizach  <cfleizach@apple.com>
 
@@ -26060,7 +26060,7 @@
         Idea is borrowed from mac and win DRT.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::dumpFramesAsText):
+        (CyberCore::DumpRenderTree::dumpFramesAsText):
 
 2009-11-11  Eric Seidel  <eric@webkit.org>
 
@@ -26103,7 +26103,7 @@
         results.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::dumpFramesAsText):
+        (CyberCore::DumpRenderTree::dumpFramesAsText):
 
 2009-11-11  Kenneth Rohde Christiansen  <kenneth@webkit.org>
 
@@ -26170,13 +26170,13 @@
         [Qt] Remove obsolete scrollbar policy settings from DRT constructor.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
 
 2009-11-10  Philippe Normand  <pnormand@igalia.com>
 
         Reviewed by Jan Alonzo.
 
-        [GTK] Remove WebSocket configuration from WebKitWebSettings
+        [GTK] Remove WebSocket configuration from CyberKitWebSettings
         https://bugs.webkit.org/show_bug.cgi?id=31244
 
         Follow-up of r50724. Don't set the enable-web-socket property
@@ -26558,7 +26558,7 @@
 
         Reviewed by Eric Seidel.
 
-        Turn on warnings for QtWebKit for gcc
+        Turn on warnings for QtCyberKit for gcc
         https://bugs.webkit.org/show_bug.cgi?id=30958
 
         * DumpRenderTree/qt/main.cpp: 
@@ -26685,7 +26685,7 @@
         and then sets it back to its original value.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
+        (CyberCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
 
 2009-10-30  Kenneth Rohde Christiansen  <kenneth@webkit.org>
 
@@ -26694,7 +26694,7 @@
         Reset page history before running each test.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
+        (CyberCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
 
 2009-10-30  Roland Steiner  <rolandsteiner@chromium.org>
 
@@ -26740,8 +26740,8 @@
         Implement the Qt version of DRT dumpBackForwardList().
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::dumpHistoryItem):
-        (WebCore::DumpRenderTree::dumpBackForwardList):
+        (CyberCore::dumpHistoryItem):
+        (CyberCore::DumpRenderTree::dumpBackForwardList):
 
 2009-10-29  Kenneth Rohde Christiansen  <kenneth@webkit.org>
 
@@ -26756,8 +26756,8 @@
         in layout test results.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::urlSuitableForTestResult):
-        (WebCore::WebPage::javaScriptConsoleMessage):
+        (CyberCore::urlSuitableForTestResult):
+        (CyberCore::WebPage::javaScriptConsoleMessage):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::pathToLocalResource):
         * DumpRenderTree/qt/LayoutTestControllerQt.h:
@@ -26815,7 +26815,7 @@
         error has occoured, so treat it as the other fatal errors.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::initializeFonts):
+        (CyberCore::DumpRenderTree::initializeFonts):
 
 2009-10-27  Shinichiro Hamaji  <hamaji@chromium.org>
 
@@ -26843,7 +26843,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=29843#c11
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
+        (CyberCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::whiteListAccessFromOrigin):
 
@@ -26897,7 +26897,7 @@
 
 2009-10-27  Vadim Zeitlin  <vadim@wxwidgets.org>
 
-        Suppress a huge number of MSVC warnings when building wxWebKit.
+        Suppress a huge number of MSVC warnings when building wxCyberKit.
 
         * wx/build/settings.py:
 
@@ -27032,7 +27032,7 @@
 
 2009-10-23  Kevin Ollivier  <kevino@theolliviers.com>
 
-        wxMac 10.4 build fix, needs to link against WebKitSystemInterfaceTiger to get 
+        wxMac 10.4 build fix, needs to link against CyberKitSystemInterfaceTiger to get 
         character measurement APIs that are private on Tiger.
 
         * wx/build/settings.py:
@@ -27094,7 +27094,7 @@
         * wx/build/build_utils.py:
         * wx/packaging/build-mac-installer.py:
         * wx/packaging/build-win-installer.py:
-        * wx/packaging/wxWebKitInstaller.iss.in:
+        * wx/packaging/wxCyberKitInstaller.iss.in:
 
 2009-10-21  Alejandro G. Castro  <alex@igalia.com>
 
@@ -27105,7 +27105,7 @@
         than 2.17.3.
         https://bugs.webkit.org/show_bug.cgi?id=30636
 
-        * WebKitTools/DumpRenderTree/gtk/EventSender.cpp:
+        * CyberKitTools/DumpRenderTree/gtk/EventSender.cpp:
 
 2009-10-21  Shu Chang  <Chang.Shu@nokia.com>
 
@@ -27126,7 +27126,7 @@
         we move in just in one direction.
         https://bugs.webkit.org/show_bug.cgi?id=30636
 
-        * WebKitTools/DumpRenderTree/gtk/EventSender.cpp:
+        * CyberKitTools/DumpRenderTree/gtk/EventSender.cpp:
 
 2009-10-21  Alejandro G. Castro  <alex@igalia.com>
 
@@ -27135,7 +27135,7 @@
         [GTK] Initialize the events completly before emitting them.
         https://bugs.webkit.org/show_bug.cgi?id=30633
 
-        * WebKitTools/DumpRenderTree/gtk/EventSender.cpp:
+        * CyberKitTools/DumpRenderTree/gtk/EventSender.cpp:
 
 2009-10-21  Kevin Ollivier  <kevino@theolliviers.com>
 
@@ -27212,7 +27212,7 @@
         of setFixedContentsSize, as the method has been renamed.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::open):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::setFixedContentsSize):
 
@@ -27244,7 +27244,7 @@
 
         Reviewed by Adam Barth.
 
-        run-webkit-tests fails when CWD is not inside a WebKit checkout
+        run-webkit-tests fails when CWD is not inside a CyberKit checkout
         https://bugs.webkit.org/show_bug.cgi?id=30451
 
         * Scripts/modules/scm.py: in_working_directory shouldn't throw exceptions on failure.
@@ -27258,7 +27258,7 @@
 
         Add a Debug_All configuration to build entire stack as debug.
         Change Debug_Internal to:
-        - stop using _debug suffix for all WebKit/Safari binaries
+        - stop using _debug suffix for all CyberKit/Safari binaries
         - not use _debug as a DLL naming suffix
         - use non-debug C runtime lib.
 
@@ -27454,7 +27454,7 @@
 
         Reviewed by Sam Weinig.
 
-        WebKit Win API should provide a delegate interface for global history.
+        CyberKit Win API should provide a delegate interface for global history.
         https://bugs.webkit.org/show_bug.cgi?id=29905
 
         * DumpRenderTree/LayoutTestController.cpp:
@@ -27496,7 +27496,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=30268 
  
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
+        (CyberCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
         * DumpRenderTree/qt/LayoutTestControllerQt.cpp:
         (LayoutTestController::setPOSIXLocale):
         * DumpRenderTree/qt/LayoutTestControllerQt.h:
@@ -27774,7 +27774,7 @@
         pressed in the mouseDown function.
         https://bugs.webkit.org/show_bug.cgi?id=30220
 
-        * WebKitTools/DumpRenderTree/gtk/EventSender.cpp:
+        * CyberKitTools/DumpRenderTree/gtk/EventSender.cpp:
 
 2009-10-08  Alejandro G. Castro  <alex@igalia.com>
 
@@ -27829,7 +27829,7 @@
 2009-10-07  Adam Barth  <abarth@webkit.org>
 
         Unreviewed.  Remove some folks from committers.py who were listed on
-        the WebKit Team wiki page but who weren't actually listed as commit+.
+        the CyberKit Team wiki page but who weren't actually listed as commit+.
         At some point, we should coorelate this list with the committers
         mailing list.
 
@@ -27837,7 +27837,7 @@
 
 2009-10-07  Adam Barth  <abarth@webkit.org>
 
-        Unreviewed.  Import a bunch of committers from the WebKit Team page on
+        Unreviewed.  Import a bunch of committers from the CyberKit Team page on
         the wiki into committers.py.
 
         * Scripts/modules/committers.py:
@@ -27865,7 +27865,7 @@
 
         Reviewed by Jan Alonzo.
 
-        [Layout tests] [Gtk] Gtk DumpRenderTree should use WebKit test fonts
+        [Layout tests] [Gtk] Gtk DumpRenderTree should use CyberKit test fonts
         https://bugs.webkit.org/show_bug.cgi?id=29689
 
         Build fix by adding -lfontconfig for DumpRenderTree.
@@ -27905,7 +27905,7 @@
 
         Reviewed by Simon Fraser.
 
-        <http://webkit.org/b/30138> update-webkit-localizable-strings assumes that WebKitTools/Scripts is in the PATH
+        <http://webkit.org/b/30138> update-webkit-localizable-strings assumes that CyberKitTools/Scripts is in the PATH
 
         * Scripts/update-webkit-localizable-strings: Use an explicit path to extract-localizable-strings based on the
         the fact we have already changed the working directory to the top of the open source tree.
@@ -27940,8 +27940,8 @@
         https://bugs.webkit.org/show_bug.cgi?id=30127
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::statusBarMessage):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::statusBarMessage):
         * DumpRenderTree/qt/DumpRenderTree.h:
         * DumpRenderTree/qt/jsobjects.h:
         (LayoutTestController::shouldDumpStatusCallbacks):
@@ -27995,7 +27995,7 @@
 
 2009-10-05  Vadim Zeitlin  <vadim@wxwidgets.org>
 
-        Added --wx-compiler-prefix waf option to allow building wxWebKit with
+        Added --wx-compiler-prefix waf option to allow building wxCyberKit with
         wxWidgets built using "nmake COMPILER_PREFIX=something-non-default".
 
         * wx/build/settings.py:
@@ -28081,9 +28081,9 @@
         https://bugs.webkit.org/show_bug.cgi?id=29970
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::WebPage):
-        (WebCore::WebPage::resetSettings):
-        (WebCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
+        (CyberCore::WebPage::WebPage):
+        (CyberCore::WebPage::resetSettings):
+        (CyberCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
         * DumpRenderTree/qt/jsobjects.cpp:
         (LayoutTestController::reset):
         (LayoutTestController::setPrivateBrowsingEnabled):
@@ -28172,11 +28172,11 @@
 
         Reviewed by Sam Weinig.
 
-        Added the WebKit Layout Tests fonts that are referenced in
+        Added the CyberKit Layout Tests fonts that are referenced in
         LayoutTests/platform/win/css2.1/resources/Mac-compatible-font-fallback.css
 
-        * DumpRenderTree/fonts/WebKit Layout Tests 2.ttf: Added.
-        * DumpRenderTree/fonts/WebKit Layout Tests.ttf: Added.
+        * DumpRenderTree/fonts/CyberKit Layout Tests 2.ttf: Added.
+        * DumpRenderTree/fonts/CyberKit Layout Tests.ttf: Added.
 
 2009-09-30  Csaba Osztrogonac  <oszi@inf.u-szeged.hu>
 
@@ -28242,7 +28242,7 @@
 
         Reviewed by John Sullivan.
 
-        WebKit Mac API should provide a delegate interface for global history.
+        CyberKit Mac API should provide a delegate interface for global history.
         <rdar://problem/7042773> and https://webkit.org/b/29904
 
         Adding the dumping of global history delegate callbacks.
@@ -28325,7 +28325,7 @@
         This fixes https://bugs.webkit.org/show_bug.cgi?id=19674.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::WebPage):
+        (CyberCore::WebPage::WebPage):
 
 2009-09-29  Jakub Wieczorek  <faw217@gmail.com>
 
@@ -28392,7 +28392,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=25037
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::acceptNavigationRequest):
+        (CyberCore::WebPage::acceptNavigationRequest):
         * DumpRenderTree/qt/DumpRenderTree.pro:
         * DumpRenderTree/qt/jsobjects.cpp:
         (LayoutTestController::reset):
@@ -28453,7 +28453,7 @@
 
         Reviewed by Gustavo Noronha.
 
-        [Layout tests] [Gtk] Gtk DumpRenderTree should use WebKit test fonts
+        [Layout tests] [Gtk] Gtk DumpRenderTree should use CyberKit test fonts
         https://bugs.webkit.org/show_bug.cgi?id=29689
 
         Load test fonts through FontConfig before each test.
@@ -28463,7 +28463,7 @@
         (initializeFonts):
         (runTest):
         (main):
-        * DumpRenderTree/gtk/fonts.conf: Copied from WebKitTools/DumpRenderTree/qt/fonts.conf.
+        * DumpRenderTree/gtk/fonts.conf: Copied from CyberKitTools/DumpRenderTree/qt/fonts.conf.
         * GNUmakefile.am:
 
 2009-09-25  David Kilzer  <ddkilzer@apple.com>
@@ -28532,7 +28532,7 @@
 
         * Scripts/bugzilla-tool:
          - Update ScriptError uses to the new constructor format.
-         - Move CommitQueue._run_command to WebKitLandingScripts.run_command_with_teed_output
+         - Move CommitQueue._run_command to CyberKitLandingScripts.run_command_with_teed_output
            so that we can print to both stdout as well as an output buffer for error reporting.
          - Update run_and_throw_if_fail to use teed output so that it can report the "output" as part of ScriptError.
          - Use e.message_with_output() when failing a patch (this is the real fix here).
@@ -28807,7 +28807,7 @@
 
         Reviewed by Maciej Stachowiak.
 
-        Added checkWebCoreMathMLSupport and hasMathMLSupport to support 
+        Added checkCyberCoreMathMLSupport and hasMathMLSupport to support 
         checking for whether MathML tests should be run
 
         * Scripts/run-webkit-tests:
@@ -28924,7 +28924,7 @@
 2009-09-11  Jon Honeycutt  <jhoneycutt@apple.com>
 
         DRT/test part of
-        <rdar://problem/7197644> WebKit should broadcast an MSAA event when
+        <rdar://problem/7197644> CyberKit should broadcast an MSAA event when
         jumping to a named anchor
 
         https://bugs.webkit.org/show_bug.cgi?id=28899
@@ -29088,7 +29088,7 @@
 2009-09-11  Kevin Ollivier  <kevino@theolliviers.com>
 
         wx build fix. Mark dependencies as mandatory and declare which MSVC versions and
-        architectures are supported for building wxWebKit.
+        architectures are supported for building wxCyberKit.
 
         * wx/build/settings.py:
 
@@ -29209,7 +29209,7 @@
 
         Reviewed by Alexey Proskuryakov.
 
-        Add WebCore/websockets directory in wx build system.
+        Add CyberCore/websockets directory in wx build system.
         https://bugs.webkit.org/show_bug.cgi?id=28038
 
         * wx/build/settings.py:
@@ -29321,7 +29321,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=28953
 
         Added pre- and post- build events so that on build failure, the file 
-        buildfailed is written to the directory $(WebKitOutputDir).
+        buildfailed is written to the directory $(CyberKitOutputDir).
 
         * WinLauncher/WinLauncher.vcproj:
 
@@ -29382,7 +29382,7 @@
 
 2009-09-08  Kevin Ollivier  <kevino@theolliviers.com>
 
-        wxWebKit Python extension build fix - get swig.py if it doesn't exist.
+        wxCyberKit Python extension build fix - get swig.py if it doesn't exist.
 
         * wx/build/build_utils.py:
 
@@ -29479,15 +29479,15 @@
 
         Reviewed by Simon Hausmann.
 
-        [Qt] QtWebKit single API to enable persistency
+        [Qt] QtCyberKit single API to enable persistency
         https://bugs.webkit.org/show_bug.cgi?id=28682
 
         Use the new enablePersistentStorage API instead 
         of enabling all persistent features one-by-one.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::WebPage):
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::WebPage::WebPage):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
 
 2009-09-07  Andras Becsi  <becsi.andras@stud.u-szeged.hu>
 
@@ -29540,7 +29540,7 @@
 2009-09-04  Kevin Ollivier  <kevino@theolliviers.com>
 
         wx build fix. Switch USE_ defines over to the compiler so that they can be
-        checked by files not including config.h (like WebCorePrefix.h).
+        checked by files not including config.h (like CyberCorePrefix.h).
 
         * wx/build/settings.py:
 
@@ -29603,13 +29603,13 @@
         (script_path): Extracted scripts_directory().
         * Scripts/modules/scm_unittest.py: Import urllib.
         (SVNTestRepository.setup): Save the original working directory
-        in test_object since this represents the WebKit repository from
+        in test_object since this represents the CyberKit repository from
         where the unit tests are run.
         (SCMTest): Created new super class to hold utility methods.
         (SCMTest._create_patch): Creates a patch file on disk and a
         dictionary for use with scm.svn_apply().
         (SCMTest._setup_webkittools_scripts_symlink): Sets up a symlink
-        back to WebKitTools/Scripts in the test repository so that
+        back to CyberKitTools/Scripts in the test repository so that
         scm.apply_patch() is able to find the svn-apply script.
         (SVNTest): Inherit from SCMTest instead of unittest.TestCase.
         (SVNTest.tearDown): Make sure to change directories back to the
@@ -29667,7 +29667,7 @@
 
         Rubber-stamped by Mark Rowe.
 
-        * WebKitLauncher/webkit.icns:
+        * CyberKitLauncher/webkit.icns:
 
 2009-09-02  Kevin Ollivier  <kevino@theolliviers.com>
 
@@ -29780,7 +29780,7 @@
           #!/usr/bin/env python
           which causes python to be invoked from the path location returned
           by "which python" when any of these scripts are launched.
-          these are currently all the python scripts in WebKitTools/Scripts.
+          these are currently all the python scripts in CyberKitTools/Scripts.
 
 2009-09-01  David Kilzer  <ddkilzer@apple.com>
 
@@ -29867,7 +29867,7 @@
         ChangeLog paths, which results in an error like this:
 
             error: pathspec '.git-rewrite/t/ChangeLog' did not match any file(s) known to git.
-            Died at WebKitTools/Scripts/resolve-ChangeLogs line 376.
+            Died at CyberKitTools/Scripts/resolve-ChangeLogs line 376.
 
         The correct way to fix this is not to try to find the repository
         root when invoked by git-filter-branch.
@@ -29999,7 +29999,7 @@
         * DumpRenderTree/mac/DumpRenderTree.mm:
         (resetDefaultsToConsistentValues):
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::WebPage):
+        (CyberCore::WebPage::WebPage):
         * DumpRenderTree/win/DumpRenderTree.cpp:
         (resetDefaultsToConsistentValues):
 
@@ -30066,7 +30066,7 @@
 
         Reviewed by Mark Rowe.
 
-        Add canary-style Chromium WebKit build slave to the waterfall.
+        Add canary-style Chromium CyberKit build slave to the waterfall.
         https://bugs.webkit.org/show_bug.cgi?id=28400
 
         * BuildSlaveSupport/build.webkit.org-config/config.json: Added one Chromium/Windows slave
@@ -30113,12 +30113,12 @@
 
         [Qt/Mac] Use CONFIG+=build_all only when building libraries
 
-        If no configuration is specified when building WebKit we pass the
+        If no configuration is specified when building CyberKit we pass the
         debug_and_release option to QMake which results in Makefiles for
         both configurations being generated.
 
         Previously we built both of these configurations by default, for
-        all targets (both the QtWebKit framework/dyldlib and the various
+        all targets (both the QtCyberKit framework/dyldlib and the various
         executables such as QtLauncher and tests). This makes sense for
         the libraries, which get the _debug suffix and can be loaded on
         demand by setting the DYLD_IMAGE_SUFFIX, but for executables we
@@ -30141,7 +30141,7 @@
         Fix Bug 27827 "[Chromium] Functions Keys don't work in google spreadsheet".
         <https://bugs.webkit.org/show_bug.cgi?id=27827>.
 
-        Because of the lack of mappings from GDK key-codes to WebKit key-codes,
+        Because of the lack of mappings from GDK key-codes to CyberKit key-codes,
         Chromium cannot send valid key-codes to JavaScript when a user types
         function keys. This change just copies the mappings from 'KeyEventGtk.cpp'.
 
@@ -30175,7 +30175,7 @@
         * DumpRenderTree/mac/DumpRenderTree.mm:
         (resetDefaultsToConsistentValues):
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::WebPage):
+        (CyberCore::WebPage::WebPage):
         * DumpRenderTree/win/DumpRenderTree.cpp:
         (resetDefaultsToConsistentValues):
 
@@ -30193,7 +30193,7 @@
         * DumpRenderTree/mac/DumpRenderTree.mm:
         (resetDefaultsToConsistentValues):
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::WebPage):
+        (CyberCore::WebPage::WebPage):
         * DumpRenderTree/win/DumpRenderTree.cpp:
         (resetDefaultsToConsistentValues):
 
@@ -30203,11 +30203,11 @@
 
         Bring signed updates to the Mac nightly builds.
 
-        * WebKitLauncher/Info.plist:
-        * WebKitLauncher/WebKitLauncher.xcodeproj/project.pbxproj:
-        * WebKitLauncher/WebKitNightlyEnablerSparkle.m:
+        * CyberKitLauncher/Info.plist:
+        * CyberKitLauncher/CyberKitLauncher.xcodeproj/project.pbxproj:
+        * CyberKitLauncher/CyberKitNightlyEnablerSparkle.m:
         (initializeSparkle):
-        * WebKitLauncher/nightly.webkit.org.public.pem: Added.
+        * CyberKitLauncher/nightly.webkit.org.public.pem: Added.
 
 2009-08-21  Jan Michael Alonzo  <jmalonzo@webkit.org>
 
@@ -30337,7 +30337,7 @@
 
         Fix <http://webkit.org/b/28484> Plug-in-related leaks seen on the build bot
 
-        Update check-for-global-initializers to accommodate the new uses of RefCountedLeakCounter in WebKit.
+        Update check-for-global-initializers to accommodate the new uses of RefCountedLeakCounter in CyberKit.
 
         * Scripts/check-for-global-initializers:
 
@@ -30345,7 +30345,7 @@
 
         Reviewed by David Levin.
 
-        https://bugs.webkit.org/show_bug.cgi?id=24853: Provide a way for WebKit clients to
+        https://bugs.webkit.org/show_bug.cgi?id=24853: Provide a way for CyberKit clients to
         specify a more granular policy for cross-origin XHR access.
 
         * DumpRenderTree/LayoutTestController.cpp: Expose whiteListAccessFromOrigin() to layout tests.
@@ -30365,7 +30365,7 @@
         * DumpRenderTree/mac/DumpRenderTree.mm: Ditto.
         (resetWebViewToConsistentStateBeforeTesting): Ditto.
         * DumpRenderTree/qt/DumpRenderTree.cpp: Ditto.
-        (WebCore::DumpRenderTree::resetToConsistentStateBeforeTesting): Ditto.
+        (CyberCore::DumpRenderTree::resetToConsistentStateBeforeTesting): Ditto.
 
 2009-08-19  Mark Rowe  <mrowe@apple.com>
 
@@ -30394,7 +30394,7 @@
 
         Reviewed by David Levin.
 
-        WebKit needs a changelogs.py to hold changelog-related code
+        CyberKit needs a changelogs.py to hold changelog-related code
         https://bugs.webkit.org/show_bug.cgi?id=28477
 
         This is moving code and adding tests.  There was only one functional
@@ -30467,7 +30467,7 @@
 
         Reviewed by David Kilzer.
 
-        run-webkit-tests hangs when WebCore tries to log too much
+        run-webkit-tests hangs when CyberCore tries to log too much
         https://bugs.webkit.org/show_bug.cgi?id=15743
 
         Read stdout and stderr in parallel.
@@ -30488,7 +30488,7 @@
 
         Reviewed by Maciej Stachowiak.
 
-        https://bugs.webkit.org/show_bug.cgi?id=28412: Leak of WebCore::XMLHttpRequest object during layout tests.
+        https://bugs.webkit.org/show_bug.cgi?id=28412: Leak of CyberCore::XMLHttpRequest object during layout tests.
 
         No new tests: Already covered by existing tests.
 
@@ -30538,7 +30538,7 @@
 
         * record-memory-win/record-memory-win.vcproj:
         * WinLauncher/WinLauncher.vcproj:
-        * WebKitLauncherWin/WebKitLauncherWin.vcproj:
+        * CyberKitLauncherWin/CyberKitLauncherWin.vcproj:
         * DumpRenderTree/win/ImageDiff.vcproj:
         * FindSafari/FindSafari.vcproj:
 
@@ -30549,7 +30549,7 @@
         Need to extend DumpRenderTree to expose number of worker threads
         https://bugs.webkit.org/show_bug.cgi?id=28292
 
-        Added layoutTestController.workerThreadCount, and implementations on various platforms that call into WebKit.
+        Added layoutTestController.workerThreadCount, and implementations on various platforms that call into CyberKit.
 
         * DumpRenderTree/LayoutTestController.cpp:
         (getWorkerThreadCountCallback):
@@ -30663,7 +30663,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=28268
 
         * platform/graphics/GraphicsContext.cpp:
-        (WebCore::GraphicsContext::adjustLineToPixelBoundaries):
+        (CyberCore::GraphicsContext::adjustLineToPixelBoundaries):
         * platform/graphics/GraphicsContext.h:
         * platform/graphics/cairo/GraphicsContextCairo.cpp:
         * platform/graphics/qt/GraphicsContextQt.cpp:
@@ -30673,7 +30673,7 @@
         Reviewed by Adam Treat.
 
         Style fixes for DumpRenderTree/qt/jsobjects.cpp based on cpp_style.py and
-        WebKit style guide.
+        CyberKit style guide.
 
         https://bugs.webkit.org/show_bug.cgi?id=28161
 
@@ -30705,7 +30705,7 @@
         (check_using_std): Added.
         (check_style): Added call to check_using_std().
         * Scripts/modules/cpp_style_unittest.py:
-        (WebKitStyleTest.test_using_std): Added unit test.
+        (CyberKitStyleTest.test_using_std): Added unit test.
 
 2009-08-16  David Kilzer  <ddkilzer@apple.com>
 
@@ -30864,7 +30864,7 @@
         LocalStorage is now disabled by defult for QtWebkit.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp: 
-        (WebCore::WebPage::WebPage):
+        (CyberCore::WebPage::WebPage):
 
 2009-08-14  Xan Lopez  <xlopez@igalia.com>
 
@@ -30901,7 +30901,7 @@
         rename make-js-test-wrappers to make-script-test-wrappers
         https://bugs.webkit.org/show_bug.cgi?id=28212
 
-        * Scripts/make-script-test-wrappers: Renamed from WebKitTools/Scripts/make-js-test-wrappers.
+        * Scripts/make-script-test-wrappers: Renamed from CyberKitTools/Scripts/make-js-test-wrappers.
 
 2009-08-13  Drew Wilson <atwilson@chromium.org>
 
@@ -30923,7 +30923,7 @@
 
         Correct spelling error in file name.  No review.
 
-        * Scripts/modules/committers_unittest.py: Renamed from WebKitTools/Scripts/modules/commiters_unittest.py.
+        * Scripts/modules/committers_unittest.py: Renamed from CyberKitTools/Scripts/modules/commiters_unittest.py.
         * Scripts/run-webkit-unittests:
 
 2009-08-13  Eric Seidel  <eric@webkit.org>
@@ -30934,7 +30934,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=28261
 
         Fix "Use of uninitialized value in concatenation (.) or string at
-        WebKitTools/Scripts/run-webkit-tests line 191." by setting
+        CyberKitTools/Scripts/run-webkit-tests line 191." by setting
         $testsPerDumpTool to 1000 by default.
 
         * Scripts/run-webkit-tests:
@@ -31032,7 +31032,7 @@
         Reviewed by Mark Rowe.
 
         * Scripts/run-javascriptcore-tests: Allow testapi to run if we're in
-        the AppleWinWebKit configuration.
+        the AppleWinCyberKit configuration.
 
 2009-08-13  Adam Roben  <aroben@apple.com>
 
@@ -31261,7 +31261,7 @@
         bugzilla-tool: Re-factor shared landing logic into helper class to share more code
         https://bugs.webkit.org/show_bug.cgi?id=28193
 
-        Added new WebKitLandingScripts class to hold this shared logic.
+        Added new CyberKitLandingScripts class to hold this shared logic.
         Also added a view_source_url function to move more webkit-specific urls out of bugzilla-tool core.
 
         * Scripts/bugzilla-tool:
@@ -31602,7 +31602,7 @@
 
         Unreviewed Gtk build fix.
 
-        DRT needs internal WTF symbols so we link to libJavaScriptCore.la
+        DRT needs internal WTF symbols so we link to libCyberScriptCore.la
         too. Also don't force Gtk to use USE_SYSTEM_MALLOC.
 
         * GNUmakefile.am:
@@ -31628,7 +31628,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=28077
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::dump):
+        (CyberCore::DumpRenderTree::dump):
 
 2009-08-07  Pierre d'Herbemont  <pdherbemont@apple.com>
 
@@ -31639,8 +31639,8 @@
 
         We make sure we end up with:
         - A first paragraph describing the bug. It is eventually prefixed by
-        "WebKit: <line>" or "WebCore: <line>". This used to be
-        "WebCore:\n\n<line>".
+        "CyberKit: <line>" or "CyberCore: <line>". This used to be
+        "CyberCore:\n\n<line>".
         - The Reviewed By line.
         - An eventual Patch By line if author and committer doesn't match.
         - The rest of the commit.
@@ -31650,7 +31650,7 @@
 2009-08-07  Adam Barth  <abarth@webkit.org>
 
         Unreviewed.  (Darin Adler indicated he'd prefer if we landed these
-        kinds of changes unreviewed, like editing the WebKit Team wiki page.)
+        kinds of changes unreviewed, like editing the CyberKit Team wiki page.)
 
         Added Pierre d'Herbemont to list of committers.
 
@@ -31736,7 +31736,7 @@ w-scroll.js
         Add layoutTestController.dumpWillCacheResponse
         https://bugs.webkit.org/show_bug.cgi?id=28010
 
-        willCacheResponse is only interesting for embedders of mainline WebKit on Mac.
+        willCacheResponse is only interesting for embedders of mainline CyberKit on Mac.
         Splitting off a new dumpWillCacheResponse allows a number of existings tests
         to run across platforms.
 
@@ -31780,9 +31780,9 @@ w-scroll.js
         doing things properly.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
-        (WebCore::DumpRenderTree::open):
-        (WebCore::DumpRenderTree::closeRemainingWindows):
+        (CyberCore::DumpRenderTree::resetToConsistentStateBeforeTesting):
+        (CyberCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::closeRemainingWindows):
         * DumpRenderTree/qt/DumpRenderTree.h:
 
 2009-08-05  Kenneth Rohde Christiansen  <kenneth@webkit.org>
@@ -31833,9 +31833,9 @@ w-scroll.js
            [frame renderTreeAsExternalRepresentation]
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::open):
-        (WebCore::methodNameStringForFailedTest):
-        (WebCore::DumpRenderTree::dump):
+        (CyberCore::DumpRenderTree::open):
+        (CyberCore::methodNameStringForFailedTest):
+        (CyberCore::DumpRenderTree::dump):
 
 2009-08-05  chris fleizach  <cfleizach@apple.com>
 
@@ -32460,10 +32460,10 @@ w-scroll.js
         [Qt] Support pixel tests in DumpRenderTree for the Qt port.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::open):
-        (WebCore::DumpRenderTree::setDumpPixels):
-        (WebCore::DumpRenderTree::dump):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::setDumpPixels):
+        (CyberCore::DumpRenderTree::dump):
         * DumpRenderTree/qt/DumpRenderTree.h:
         * DumpRenderTree/qt/main.cpp:
         (main):
@@ -32489,7 +32489,7 @@ w-scroll.js
 
         We now do port-spesific probing for the product dir first, and then
         fall back to either the generic WEBKITOUTPUTDIR (which now also works
-        on Mac), or WebKitBuild.
+        on Mac), or CyberKitBuild.
         
         Then we add the git branch if the git branch build option is enabled.
         
@@ -32595,9 +32595,9 @@ w-scroll.js
 
         Reviewed by Oliver Hunt.
 
-        Prevent nightly builds of WebKit from launching against old Safari versions that we no longer work with.
+        Prevent nightly builds of CyberKit from launching against old Safari versions that we no longer work with.
 
-        * WebKitLauncher/main.m:
+        * CyberKitLauncher/main.m:
         (checkSafariVersion): Add a minimum required Safari version of 4.0.  This matches the requirement on Windows.
         (main): If the minimum version requirement is not met, display an alert and bail out.
 
@@ -32823,8 +32823,8 @@ w-scroll.js
 
         Reviewed by Simon Hausmann.
 
-        Add a command line option to run-javascriptcore-tests to explicitly opt out of attempting to rebuild JavaScriptCore.
-        This is primarily useful to speed up the build bots where one machine builds JavaScriptCore and a second runs the tests,
+        Add a command line option to run-javascriptcore-tests to explicitly opt out of attempting to rebuild CyberScriptCore.
+        This is primarily useful to speed up the build bots where one machine builds CyberScriptCore and a second runs the tests,
         leading to situations where the build system unnecessarily feels that the need to recompile.
 
         * BuildSlaveSupport/build.webkit.org-config/master.cfg:
@@ -32863,7 +32863,7 @@ w-scroll.js
 
         Reviewed by Geoff Garen.
 
-        WebCore has a few places that don't gracefully handle a null request returned from willSendRequest.
+        CyberCore has a few places that don't gracefully handle a null request returned from willSendRequest.
         https://bugs.webkit.org/show_bug.cgi?id=27595
 
         Add the ability to tell the LayoutTestController to return a null request for willSendRequest
@@ -32968,19 +32968,19 @@ w-scroll.js
         
         Reviewed by Mark Rowe.
 
-        * WebKitLauncherWin: Added.
-        * WebKitLauncherWin/Resource.h: Added.
-        * WebKitLauncherWin/WebKitLauncherWin.cpp: Added.
+        * CyberKitLauncherWin: Added.
+        * CyberKitLauncherWin/Resource.h: Added.
+        * CyberKitLauncherWin/CyberKitLauncherWin.cpp: Added.
         (getStringValue): Retrieve a string registry value.
         (applePathFromRegistry): Get an Apple-related path out of the registry.
         (copyEnvironmentVariable): Copy an environment variable.
         (safariInstallDir): Helper function to get the install directory for Safari.
         (safariBrowserExe): Helper function to get the full path of the Safari executable.
         (_tWinMain): Locate Safari and launch it after setting up an environment variable.
-        * WebKitLauncherWin/WebKitLauncherWin.h: Added.
-        * WebKitLauncherWin/WebKitLauncherWin.rc: Added.
-        * WebKitLauncherWin/WebKitLauncherWin.vcproj: Added.
-        * WebKitLauncherWin/webkit.ico: Added.
+        * CyberKitLauncherWin/CyberKitLauncherWin.h: Added.
+        * CyberKitLauncherWin/CyberKitLauncherWin.rc: Added.
+        * CyberKitLauncherWin/CyberKitLauncherWin.vcproj: Added.
+        * CyberKitLauncherWin/webkit.ico: Added.
 
 2009-07-22  David Levin  <levin@chromium.org>
 
@@ -32991,13 +32991,13 @@ w-scroll.js
 
         This name better reflects the fact that it is about checking the style of files.
 
-        * Scripts/check-webkit-style: Renamed from WebKitTools/Scripts/run-webkit-lint.
+        * Scripts/check-webkit-style: Renamed from CyberKitTools/Scripts/run-webkit-lint.
 
 2009-07-22  Takeshi Yoshino  <tyoshino@google.com>
 
         Reviewed by Darin Adler.
 
-        VC++ 2005 Express failed to build WebKit due to raw UTF-8 string in WebKit/win/WebCoreLocalizedStrings.cpp
+        VC++ 2005 Express failed to build CyberKit due to raw UTF-8 string in CyberKit/win/CyberCoreLocalizedStrings.cpp
         https://bugs.webkit.org/show_bug.cgi?id=26375
 
         Make it able to use hexadecimal escape sequences in .*UI_STRING(_KEY)? macros. Now,
@@ -33136,7 +33136,7 @@ w-scroll.js
         Reviewed by David Levin.
 
         We can't match implementation file and primary header exactly
-        since we have so many files in WebKit where the port suffix
+        since we have so many files in CyberKit where the port suffix
         is appended to the filename.
 
         Example: FooQt.cpp and the primary header is Foo.h.
@@ -33442,11 +33442,11 @@ w-scroll.js
 
         Reviewed by Adam Treat.
 
-        WebKit should have a bash completion script to aid with common commands.
+        CyberKit should have a bash completion script to aid with common commands.
         https://bugs.webkit.org/show_bug.cgi?id=27374
 
         * Scripts/webkit-tools-completion.sh: The script which enables option completion
-          for several WebKit command line scripts.
+          for several CyberKit command line scripts.
 
 2009-07-17  Peter Kasting  <pkasting@google.com>
 
@@ -33577,7 +33577,7 @@ w-scroll.js
         Part of https://bugs.webkit.org/show_bug.cgi?id=27215
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
 
 2009-07-16  Fumitoshi Ukai  <ukai@chromium.org>
 
@@ -33607,7 +33607,7 @@ w-scroll.js
         Reviewed by David Kilzer.
 
         https://bugs.webkit.org/show_bug.cgi?id=27323
-        Improve support for WebKit checkouts hosted inside other checkouts
+        Improve support for CyberKit checkouts hosted inside other checkouts
         (possible for some ports, e.g. Chromium).
 
         * Scripts/svn-create-patch: Determine SVN root by looking for Repository
@@ -33634,7 +33634,7 @@ w-scroll.js
 
         Reviewed by Darin Adler.
 
-        WebKitTools/Scripts/svn-create-patch is broken
+        CyberKitTools/Scripts/svn-create-patch is broken
         https://bugs.webkit.org/show_bug.cgi?id=27328
 
         * Scripts/svn-create-patch: one line fix for unusual perl behavior
@@ -33649,7 +33649,7 @@ w-scroll.js
         * Scripts/modules/cpplint.py: Added the new lint check.
         * Scripts/modules/cpplint_unittest.py: Add tests for the new lint check
           and fix a regex that in another unit test that caused it to fail when
-          you have a directory with a number in it (like WebKit-2)
+          you have a directory with a number in it (like CyberKit-2)
 
 2009-07-16  David D. Kilzer  <ddkilzer@webkit.org>
 
@@ -33748,8 +33748,8 @@ w-scroll.js
         Move cpplint.py to module directory
         https://bugs.webkit.org/show_bug.cgi?id=27302
 
-        * Scripts/modules/cpplint.py: Renamed from WebKitTools/Scripts/cpplint.py.
-        * Scripts/modules/cpplint_unittest.py: Renamed from WebKitTools/Scripts/cpplint_unittest.py.
+        * Scripts/modules/cpplint.py: Renamed from CyberKitTools/Scripts/cpplint.py.
+        * Scripts/modules/cpplint_unittest.py: Renamed from CyberKitTools/Scripts/cpplint_unittest.py.
 
 2009-07-15  Simon Hausmann  <simon.hausmann@nokia.com>
 
@@ -33762,7 +33762,7 @@ w-scroll.js
         runs when script execution takes a bit longer.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::shouldInterruptJavaScript): Return false
+        (CyberCore::WebPage::shouldInterruptJavaScript): Return false
         in re-implemented slot.
 
 2009-07-15  Zoltan Horvath  <hzoltan@inf.u-szeged.hu>
@@ -33779,9 +33779,9 @@ w-scroll.js
 
 2009-07-14  Steve Falkenburg  <sfalken@apple.com>
 
-        Reorganize JavaScriptCore headers into:
-        API: include/JavaScriptCore/
-        Private: include/private/JavaScriptCore/
+        Reorganize CyberScriptCore headers into:
+        API: include/CyberScriptCore/
+        Private: include/private/CyberScriptCore/
 
         Reviewed by Darin Adler.
 
@@ -33792,11 +33792,11 @@ w-scroll.js
 
         Reviewed by David Levin.
 
-        WebKit needs a style linting tool
+        CyberKit needs a style linting tool
         https://bugs.webkit.org/show_bug.cgi?id=25884
 
         Modifies cpplint (http://google-styleguide.googlecode.com/svn/trunk/cpplint/)
-        based on WebKit's style guide.
+        based on CyberKit's style guide.
 
         * Scripts/cpplint.py: Added.
         * Scripts/cpplint_unittest.py: Added.
@@ -33842,7 +33842,7 @@ w-scroll.js
         Fix test netscape plugin usage with the Qt DRT.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::WebPage): Enable plugins in the settings.
+        (CyberCore::WebPage::WebPage): Enable plugins in the settings.
         * Scripts/run-webkit-tests: Set the QT_WEBKIT_PLUGIN path to the correct build
         directory to make Qt DRT find the test netscape plugin.
 
@@ -33854,7 +33854,7 @@ w-scroll.js
         state between test runs, to avoid side-effects.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::open): Call setFixedContentsSize() with an invalid
+        (CyberCore::DumpRenderTree::open): Call setFixedContentsSize() with an invalid
         QSize to disable the fixed layout.
 
 2009-07-13  Simon Hausmann  <hausmann@webkit.org>
@@ -33866,7 +33866,7 @@ w-scroll.js
         is also available there.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::createWindow):
+        (CyberCore::DumpRenderTree::createWindow):
 
 2009-07-13  Simon Hausmann  <hausmann@webkit.org>
 
@@ -33887,8 +33887,8 @@ w-scroll.js
         and clearing of all databases.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree):
-        (WebCore::DumpRenderTree::dumpDatabaseQuota):
+        (CyberCore::DumpRenderTree::DumpRenderTree):
+        (CyberCore::DumpRenderTree::dumpDatabaseQuota):
         * DumpRenderTree/qt/DumpRenderTree.h:
         * DumpRenderTree/qt/jsobjects.cpp:
         (LayoutTestController::reset):
@@ -33918,7 +33918,7 @@ w-scroll.js
         frame finishes loading, instead of when _any_ frame finishes.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree): Connect to the
+        (CyberCore::DumpRenderTree::DumpRenderTree): Connect to the
         main frame's loadFinished() signal instead of the page's one.
 
 2009-07-13  Simon Hausmann  <hausmann@webkit.org>
@@ -33928,8 +33928,8 @@ w-scroll.js
         Implement the GCController DRT interface.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree): Allocate the GCController.
-        (WebCore::DumpRenderTree::initJSObjects): Register the interface with the JS engine.
+        (CyberCore::DumpRenderTree::DumpRenderTree): Allocate the GCController.
+        (CyberCore::DumpRenderTree::initJSObjects): Register the interface with the JS engine.
         * DumpRenderTree/qt/DumpRenderTree.h: Declare m_gcController.
         * DumpRenderTree/qt/jsobjects.cpp: Implement GCController.
         (GCController::GCController):
@@ -33945,8 +33945,8 @@ w-scroll.js
         Implement the GCController DRT interface in the Qt DRT.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::DumpRenderTree): Allocate the GCController.
-        (WebCore::DumpRenderTree::initJSObjects): Register the interface with the JS engine.
+        (CyberCore::DumpRenderTree::DumpRenderTree): Allocate the GCController.
+        (CyberCore::DumpRenderTree::initJSObjects): Register the interface with the JS engine.
         * DumpRenderTree/qt/DumpRenderTree.h: Declare m_gcController.
         * DumpRenderTree/qt/jsobjects.cpp: Implement GCController.
         (GCController::GCController):
@@ -34111,7 +34111,7 @@ w-scroll.js
 
         * DrawTest/DrawTest.xcodeproj/project.pbxproj:
         * DumpRenderTree/DumpRenderTree.xcodeproj/project.pbxproj:
-        * WebKitLauncher/WebKitLauncher.xcodeproj/project.pbxproj:
+        * CyberKitLauncher/CyberKitLauncher.xcodeproj/project.pbxproj:
 
 2009-07-10  Adam Roben  <aroben@apple.com>
 
@@ -34156,9 +34156,9 @@ w-scroll.js
         application fontset accordingly.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::open): call initializeFonts and remove all application fonts
+        (CyberCore::DumpRenderTree::open): call initializeFonts and remove all application fonts
         after running a testcase.
-        (WebCore::DumpRenderTree::initializeFonts): Moved fontconfig initialization code
+        (CyberCore::DumpRenderTree::initializeFonts): Moved fontconfig initialization code
         here from main.
         * DumpRenderTree/qt/DumpRenderTree.h: Declare initializeFonts.
         * DumpRenderTree/qt/main.cpp:
@@ -34321,7 +34321,7 @@ w-scroll.js
         reduces the side-effects between test cases.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::open):
 
 2009-07-06  Simon Hausmann  <hausmann@webkit.org>
 
@@ -34333,7 +34333,7 @@ w-scroll.js
         loading.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::DumpRenderTree::open):
+        (CyberCore::DumpRenderTree::open):
 
 2009-07-07  Simon Hausmann  <hausmann@webkit.org>
 
@@ -34481,7 +34481,7 @@ w-scroll.js
         [Qt] Set DRT's default fontsize to 13.
 
         * DumpRenderTree/qt/DumpRenderTree.cpp:
-        (WebCore::WebPage::WebPage):
+        (CyberCore::WebPage::WebPage):
 
 2009-07-01  Eric Seidel  <eric@webkit.org>
 
@@ -34553,21 +34553,21 @@ w-scroll.js
 
         Reviewed by Simon Fraser.
 
-        Change how WebKitNightlyEnabler.dylib lies about Safari's identity to LaunchServices.
-        This makes WebKit.app behave as expected when set as the default web browser on a wider
+        Change how CyberKitNightlyEnabler.dylib lies about Safari's identity to LaunchServices.
+        This makes CyberKit.app behave as expected when set as the default web browser on a wider
         range of OS versions.
 
-        * WebKitLauncher/WebKitNightlyEnabler.m:
-        (poseAsWebKitApp):
-        (enableWebKitNightlyBehaviour):
+        * CyberKitLauncher/CyberKitNightlyEnabler.m:
+        (poseAsCyberKitApp):
+        (enableCyberKitNightlyBehaviour):
 
 2009-07-01  Mark Rowe  <mrowe@apple.com>
 
         Reviewed by Simon Fraser.
 
-        Shuffle some code around in preparation for a change to how poseAsWebKitApp works.
+        Shuffle some code around in preparation for a change to how poseAsCyberKitApp works.
 
-        * WebKitLauncher/WebKitNightlyEnabler.m:
+        * CyberKitLauncher/CyberKitNightlyEnabler.m:
         (systemVersion):
         (webKitLauncherBundle):
         (insideSafari4OnTigerTrampoline):
@@ -34680,7 +34680,7 @@ w-scroll.js
         bugzilla-tool users do not need to install it manually.
         https://bugs.webkit.org/show_bug.cgi?id=26833
 
-        BeautifulSoup is BSD-licensed (thus WebKit compatible) and available from:
+        BeautifulSoup is BSD-licensed (thus CyberKit compatible) and available from:
         http://www.crummy.com/software/BeautifulSoup
 
         * Scripts/bugzilla-tool: fixed a typo in a log message.
@@ -34818,7 +34818,7 @@ w-scroll.js
         Reviewed by Adam Roben.
 
         * Scripts/build-dumprendertree: Updated to use
-        buildXCodeProject() when building for isAppleMacWebKit().  This
+        buildXCodeProject() when building for isAppleMacCyberKit().  This
         provides additional command-line switch parsing for free.  Also
         added --clean and --help switches.  Updated copyright.
 
@@ -34874,11 +34874,11 @@ w-scroll.js
 
         Reviewed by Mark Rowe.
 
-        Call WebKitTools/Scripts scripts by their absolute paths
+        Call CyberKitTools/Scripts scripts by their absolute paths
         https://bugs.webkit.org/show_bug.cgi?id=26704
 
         bugzilla-tool used to use whatever build-webkit was in your path.
-        That could end up building the wrong copy of WebKit.
+        That could end up building the wrong copy of CyberKit.
 
         * Scripts/bugzilla-tool:
         * Scripts/modules/scm.py:
@@ -34900,7 +34900,7 @@ w-scroll.js
         Use Q_ASSERT in Qt's DumpRenderTree instead of JSC's ASSERT
         
         The WTFReportAssertionFailure function in JSC is not exported when
-        building QtWebKit in both debug and release on Mac, so DRT fails to
+        building QtCyberKit in both debug and release on Mac, so DRT fails to
         link.
         
         We can revert this patch once the Qt port builds JSC as a separate
@@ -35052,7 +35052,7 @@ w-scroll.js
 
         Reviewed by Darin Adler.
         
-        Update for WebKit changes.
+        Update for CyberKit changes.
         
         * DumpRenderTree/win/UIDelegate.h:
         (UIDelegate::willPerformDragSourceAction):
@@ -35073,7 +35073,7 @@ w-scroll.js
 
         Reviewed by Dave Levin.
 
-        WebKit needs a script to interact with bugzilla and automate
+        CyberKit needs a script to interact with bugzilla and automate
         parts of the patch posting and commit processes.
         https://bugs.webkit.org/show_bug.cgi?id=26283
 
@@ -35114,9 +35114,9 @@ w-scroll.js
 
         This script follows python style (similar to how for Obj-C we follow AppKit style)
         http://www.python.org/doc/essays/styleguide.html
-        The Python community has a strong style culture and the WebKit style guide is silent re: Python.
+        The Python community has a strong style culture and the CyberKit style guide is silent re: Python.
 
-        I've filed a bug to update the WebKit style guide to mention python:
+        I've filed a bug to update the CyberKit style guide to mention python:
         https://bugs.webkit.org/show_bug.cgi?id=26524
 
         * Scripts/bugzilla-tool: Added.
@@ -35161,7 +35161,7 @@ w-scroll.js
 
         Set a sensible user agent string for the HTTP requests that Sparkle makes (checking for and downloading updates).
 
-        * WebKitLauncher/WebKitNightlyEnablerSparkle.m:
+        * CyberKitLauncher/CyberKitNightlyEnablerSparkle.m:
         (userAgentStringForSparkle):
         (initializeSparkle):
 
@@ -35169,21 +35169,21 @@ w-scroll.js
 
         Reviewed by Sam Weinig.
 
-        Add a hook to the WebKit launcher application to allow a link on the nightly build start page to
+        Add a hook to the CyberKit launcher application to allow a link on the nightly build start page to
         trigger an update via the built-in software update mechanism.
 
-        * WebKitLauncher/WebKitLauncher.xcodeproj/project.pbxproj:
-        * WebKitLauncher/WebKitLauncherURLProtocol.h: Added.
-        * WebKitLauncher/WebKitLauncherURLProtocol.m: Added.
-        (+[WebKitLauncherURLProtocol load]):
-        (+[WebKitLauncherURLProtocol canInitWithRequest:]): Only allow use of the x-webkit-launcher scheme from .webkit.org subdomains.
-        (+[WebKitLauncherURLProtocol canonicalRequestForRequest:]):
-        (-[WebKitLauncherURLProtocol startLoading]):
-        (-[WebKitLauncherURLProtocol stopLoading]):
-        (-[WebKitLauncherURLProtocol handleIsWebKitLauncherAvailableJS]): Return a brief JavaScript snippet that can be used to programatically
+        * CyberKitLauncher/CyberKitLauncher.xcodeproj/project.pbxproj:
+        * CyberKitLauncher/CyberKitLauncherURLProtocol.h: Added.
+        * CyberKitLauncher/CyberKitLauncherURLProtocol.m: Added.
+        (+[CyberKitLauncherURLProtocol load]):
+        (+[CyberKitLauncherURLProtocol canInitWithRequest:]): Only allow use of the x-webkit-launcher scheme from .webkit.org subdomains.
+        (+[CyberKitLauncherURLProtocol canonicalRequestForRequest:]):
+        (-[CyberKitLauncherURLProtocol startLoading]):
+        (-[CyberKitLauncherURLProtocol stopLoading]):
+        (-[CyberKitLauncherURLProtocol handleIsCyberKitLauncherAvailableJS]): Return a brief JavaScript snippet that can be used to programatically
         determine whether the x-webkit-launcher is available and working.
-        (-[WebKitLauncherURLProtocol handleCheckForUpdates]): Trigger a software update on the main thread.
-        (-[WebKitLauncherURLProtocol resourceNotFound]): Fail with a generic "File does not exist" error.
+        (-[CyberKitLauncherURLProtocol handleCheckForUpdates]): Trigger a software update on the main thread.
+        (-[CyberKitLauncherURLProtocol resourceNotFound]): Fail with a generic "File does not exist" error.
 
 2009-06-20  Jan Michael Alonzo  <jmalonzo@webkit.org>
 
@@ -35255,7 +35255,7 @@ w-scroll.js
 
 2009-06-17  Steve Falkenburg  <sfalken@apple.com>
 
-        Updated for consolidated WebKit COM interfaces.
+        Updated for consolidated CyberKit COM interfaces.
         
         Reviewed by Adam Roben.
 

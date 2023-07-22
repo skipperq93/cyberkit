@@ -29,8 +29,8 @@
 #include "stdafx.h"
 #include "MiniBrowserWebHost.h"
 
-#include "WebKitLegacyBrowserWindow.h"
-#include <WebKitLegacy/WebKit.h>
+#include "CyberKitLegacyBrowserWindow.h"
+#include <CyberKitLegacy/CyberKit.h>
 
 HRESULT MiniBrowserWebHost::didCommitLoadForFrame(_In_opt_ IWebView* webView, _In_opt_ IWebFrame* frame)
 {

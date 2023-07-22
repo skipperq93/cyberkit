@@ -14,7 +14,7 @@
     
     * web-platform-tests/css/css-animations/Element-getAnimations.tentative-expected.txt:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     The "Animation composite order" section of the CSS Animations Level 2 specification (https://drafts.csswg.org/css-animations-2/#animation-composite-order)
     defines the relative composite order of animations. We bake this into compareAnimationsByCompositeOrder(), but this function would not yield consistent
@@ -27,11 +27,11 @@
     m_animations (which holds only relevant animations) rather than m_allAnimations (which may not).
     
     * animation/DocumentTimeline.cpp:
-    (WebCore::DocumentTimeline::getAnimations const):
+    (CyberCore::DocumentTimeline::getAnimations const):
     * animation/KeyframeEffectStack.cpp:
-    (WebCore::KeyframeEffectStack::ensureEffectsAreSorted):
+    (CyberCore::KeyframeEffectStack::ensureEffectsAreSorted):
     * animation/WebAnimationUtilities.cpp:
-    (WebCore::compareAnimationsByCompositeOrder):
+    (CyberCore::compareAnimationsByCompositeOrder):
     
     git-svn-id: https://svn.webkit.org/repository/webkit/trunk@261217 268f45cc-cd09-0410-ab3c-d52691b4dbfc
 
@@ -63,7 +63,7 @@
     
     * web-platform-tests/content-security-policy/form-action/form-action-src-blocked.sub-expected.txt:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Tests: http/tests/security/contentSecurityPolicy/1.1/form-action-src-self-blocked.html
     
@@ -74,7 +74,7 @@
     This is also covered by the existing form-action CSP tests.
     
     * loader/FrameLoader.cpp:
-    (WebCore::FrameLoader::submitForm): All URLs should be evaluted for
+    (CyberCore::FrameLoader::submitForm): All URLs should be evaluted for
     compliance with CSP.
     
     LayoutTests:
@@ -158,7 +158,7 @@
     
     * web-platform-tests/webrtc/RTCPeerConnection-track-stats.https-expected.txt:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     We no longer need to create receivers with empty sources since we now always have a libwebrtc receiver from which we can get the track.
     We remove that code path.
@@ -168,27 +168,27 @@
     
     * Modules/mediastream/RTCPeerConnection.h:
     * Modules/mediastream/libwebrtc/LibWebRTCMediaEndpoint.cpp:
-    (WebCore::LibWebRTCMediaEndpoint::addPendingTrackEvent):
-    (WebCore::LibWebRTCMediaEndpoint::collectTransceivers):
-    (WebCore::LibWebRTCMediaEndpoint::newTransceiver):
+    (CyberCore::LibWebRTCMediaEndpoint::addPendingTrackEvent):
+    (CyberCore::LibWebRTCMediaEndpoint::collectTransceivers):
+    (CyberCore::LibWebRTCMediaEndpoint::newTransceiver):
     * Modules/mediastream/libwebrtc/LibWebRTCPeerConnectionBackend.cpp:
-    (WebCore::LibWebRTCPeerConnectionBackend::createReceiver):
-    (WebCore::LibWebRTCPeerConnectionBackend::addTrack):
-    (WebCore::LibWebRTCPeerConnectionBackend::addTransceiverFromTrackOrKind):
-    (WebCore::LibWebRTCPeerConnectionBackend::newRemoteTransceiver):
+    (CyberCore::LibWebRTCPeerConnectionBackend::createReceiver):
+    (CyberCore::LibWebRTCPeerConnectionBackend::addTrack):
+    (CyberCore::LibWebRTCPeerConnectionBackend::addTransceiverFromTrackOrKind):
+    (CyberCore::LibWebRTCPeerConnectionBackend::newRemoteTransceiver):
     * Modules/mediastream/libwebrtc/LibWebRTCPeerConnectionBackend.h:
     * Modules/mediastream/libwebrtc/LibWebRTCRtpReceiverBackend.cpp:
-    (WebCore::LibWebRTCRtpReceiverBackend::createSource):
+    (CyberCore::LibWebRTCRtpReceiverBackend::createSource):
     * Modules/mediastream/libwebrtc/LibWebRTCRtpReceiverBackend.h:
     * platform/mediastream/RealtimeIncomingAudioSource.cpp:
-    (WebCore::RealtimeIncomingAudioSource::RealtimeIncomingAudioSource):
+    (CyberCore::RealtimeIncomingAudioSource::RealtimeIncomingAudioSource):
     * platform/mediastream/RealtimeIncomingAudioSource.h:
     * platform/mediastream/RealtimeIncomingVideoSource.cpp:
-    (WebCore::RealtimeIncomingVideoSource::RealtimeIncomingVideoSource):
+    (CyberCore::RealtimeIncomingVideoSource::RealtimeIncomingVideoSource):
     * platform/mediastream/RealtimeIncomingVideoSource.h:
     * testing/MockLibWebRTCPeerConnection.h:
-    (WebCore::MockMediaStreamTrack::state const):
-    (WebCore::MockRtpReceiver::SetObserver):
+    (CyberCore::MockMediaStreamTrack::state const):
+    (CyberCore::MockRtpReceiver::SetObserver):
     
     
     git-svn-id: https://svn.webkit.org/repository/webkit/trunk@258493 268f45cc-cd09-0410-ab3c-d52691b4dbfc
@@ -263,12 +263,12 @@
     
     * web-platform-tests/html/semantics/forms/textfieldselection/selection-not-application-textarea-expected.txt:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Don't update FrameSelection when the text form control element is disconnected from document.
     
     * html/HTMLTextFormControlElement.cpp:
-    (WebCore::HTMLTextFormControlElement::setSelectionRange):
+    (CyberCore::HTMLTextFormControlElement::setSelectionRange):
     
     LayoutTests:
     
@@ -306,7 +306,7 @@
     * web-platform-tests/mediacapture-streams/MediaStream-default-feature-policy.https-expected.txt:
     * web-platform-tests/mediacapture-streams/MediaStream-feature-policy-none.https-expected.txt:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     MediaDevices was computing whether it could access camera or microphone at creation time.
     Since the iframe allow attribute can be modified, we cannot do that.
@@ -318,24 +318,24 @@
     Test: http/tests/webrtc/enumerateDevicesInFrames.html
     
     * Modules/mediastream/MediaDevices.cpp:
-    (WebCore::MediaDevices::MediaDevices):
-    (WebCore::MediaDevices::refreshDevices):
-    (WebCore::MediaDevices::enumerateDevices):
-    (WebCore::MediaDevices::listenForDeviceChanges):
+    (CyberCore::MediaDevices::MediaDevices):
+    (CyberCore::MediaDevices::refreshDevices):
+    (CyberCore::MediaDevices::enumerateDevices):
+    (CyberCore::MediaDevices::listenForDeviceChanges):
     * Modules/mediastream/MediaDevices.h:
     * Modules/mediastream/UserMediaController.cpp:
-    (WebCore::UserMediaController::logGetUserMediaDenial):
-    (WebCore::UserMediaController::logGetDisplayMediaDenial):
-    (WebCore::UserMediaController::logEnumerateDevicesDenial):
+    (CyberCore::UserMediaController::logGetUserMediaDenial):
+    (CyberCore::UserMediaController::logGetDisplayMediaDenial):
+    (CyberCore::UserMediaController::logEnumerateDevicesDenial):
     * Modules/mediastream/UserMediaController.h:
     * Modules/mediastream/UserMediaRequest.cpp:
-    (WebCore::UserMediaRequest::start):
+    (CyberCore::UserMediaRequest::start):
     * html/FeaturePolicy.cpp:
-    (WebCore::policyTypeName):
-    (WebCore::isFeaturePolicyAllowedByDocumentAndAllOwners):
+    (CyberCore::policyTypeName):
+    (CyberCore::isFeaturePolicyAllowedByDocumentAndAllOwners):
     * html/FeaturePolicy.h:
     * page/DOMWindow.cpp:
-    (WebCore::DOMWindow::printErrorMessage const):
+    (CyberCore::DOMWindow::printErrorMessage const):
     * page/DOMWindow.h:
     
     LayoutTests:
@@ -382,7 +382,7 @@
     
     * web-platform-tests/web-animations/timing-model/timelines/update-and-send-events-replacement-expected.txt:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Developers can create additional DocumentTimeline objects in JavaScript using that class's constructor, and an animation can be
     assigned to that timeline after its creation. Until now we would only update an timeline created by a Document when that document's
@@ -390,13 +390,13 @@
     references, and we update all of them when updating a document's animations.
     
     * animation/DocumentTimeline.cpp:
-    (WebCore::DocumentTimeline::DocumentTimeline):
-    (WebCore::DocumentTimeline::~DocumentTimeline):
+    (CyberCore::DocumentTimeline::DocumentTimeline):
+    (CyberCore::DocumentTimeline::~DocumentTimeline):
     * animation/DocumentTimeline.h:
     * dom/Document.cpp:
-    (WebCore::Document::updateAnimationsAndSendEvents):
-    (WebCore::Document::addTimeline):
-    (WebCore::Document::removeTimeline):
+    (CyberCore::Document::updateAnimationsAndSendEvents):
+    (CyberCore::Document::addTimeline):
+    (CyberCore::Document::removeTimeline):
     * dom/Document.h:
     
     git-svn-id: https://svn.webkit.org/repository/webkit/trunk@255141 268f45cc-cd09-0410-ab3c-d52691b4dbfc
@@ -429,7 +429,7 @@
     * web-platform-tests/css/css-animations/Element-getAnimations.tentative-expected.txt:
     * web-platform-tests/web-animations/interfaces/Animatable/getAnimations-expected.txt:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Add support for the GetAnimationsOptions dictionary as a parameter to Animatable.getAnimations(). When it is provided
     and has its sole "subtree" property set to "true", we call Document.getAnimations() and filter out animations that are
@@ -442,12 +442,12 @@
     * DerivedSources.make:
     * Headers.cmake:
     * Sources.txt:
-    * WebCore.xcodeproj/project.pbxproj:
+    * CyberCore.xcodeproj/project.pbxproj:
     * animation/Animatable.idl:
     * animation/GetAnimationsOptions.h: Added.
     * animation/GetAnimationsOptions.idl: Added.
     * dom/Element.cpp:
-    (WebCore::Element::getAnimations):
+    (CyberCore::Element::getAnimations):
     * dom/Element.h:
     
     git-svn-id: https://svn.webkit.org/repository/webkit/trunk@255149 268f45cc-cd09-0410-ab3c-d52691b4dbfc
@@ -469,7 +469,7 @@
 
         Cherry-pick r254408. rdar://problem/58606270
 
-    [WebCore] Fix crash in module loader due to change in fragment reservation
+    [CyberCore] Fix crash in module loader due to change in fragment reservation
     https://bugs.webkit.org/show_bug.cgi?id=206125
     
     Reviewed by Dean Jackson.
@@ -478,7 +478,7 @@
     
     * web-platform-tests/html/semantics/scripting-1/the-script-element/module/import-meta/import-meta-url-expected.txt:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     At some point, CachedResource::url() starts returning URL without fragment.
     However, this was invariant in ScriptModuleLoader, so one of WPT test is crashing.
@@ -489,10 +489,10 @@
     [1]: https://bugs.webkit.org/show_bug.cgi?id=205294
     
     * bindings/js/CachedModuleScriptLoader.cpp:
-    (WebCore::CachedModuleScriptLoader::load):
+    (CyberCore::CachedModuleScriptLoader::load):
     * bindings/js/CachedModuleScriptLoader.h:
     * bindings/js/ScriptModuleLoader.cpp:
-    (WebCore::ScriptModuleLoader::notifyFinished):
+    (CyberCore::ScriptModuleLoader::notifyFinished):
     
     LayoutTests:
     
@@ -502,7 +502,7 @@
 
     2020-01-10  Yusuke Suzuki  <ysuzuki@apple.com>
 
-            [WebCore] Fix crash in module loader due to change in fragment reservation
+            [CyberCore] Fix crash in module loader due to change in fragment reservation
             https://bugs.webkit.org/show_bug.cgi?id=206125
 
             Reviewed by Dean Jackson.
@@ -526,7 +526,7 @@
     * web-platform-tests/css/css-animations/Element-getAnimations.tentative-expected.txt:
     * web-platform-tests/web-animations/timing-model/timelines/update-and-send-events-replacement-expected.txt:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     AnimationTimeline would keep track of registered CSS Animations by name for a given element in m_elementToCSSAnimationByName which would map one CSSAnimation
     per String (the animation-name) for a given Element. However, within the same animation-name property, the name of a given @keyframes rules may appear more
@@ -550,36 +550,36 @@
     Finally, we refactor things a bit to have some new aliases AnimationCollection and CSSAnimationCollection instead of using ListHashSet<> in our types.
     
     * animation/AnimationTimeline.cpp:
-    (WebCore::AnimationTimeline::animationWasAddedToElement): Use the new AnimationCollection alias.
-    (WebCore::AnimationTimeline::removeDeclarativeAnimationFromListsForOwningElement): We no longer need to do any work for CSSAnimation here since the
+    (CyberCore::AnimationTimeline::animationWasAddedToElement): Use the new AnimationCollection alias.
+    (CyberCore::AnimationTimeline::removeDeclarativeAnimationFromListsForOwningElement): We no longer need to do any work for CSSAnimation here since the
     m_elementToCSSAnimationByName map is no more and the m_elementToCSSAnimationsCreatedByMarkupMap that replaces it is updated in updateCSSAnimationsForElement()
     and elementWasRemoved().
-    (WebCore::AnimationTimeline::animationsForElement const): Since animations are correctly sorted accounting for their composite order in KeyframeEffectStack,
+    (CyberCore::AnimationTimeline::animationsForElement const): Since animations are correctly sorted accounting for their composite order in KeyframeEffectStack,
     call KeyframeEffectStack::sortedEffects() when we're called with Ordering::Sorted.
-    (WebCore::AnimationTimeline::removeCSSAnimationCreatedByMarkup): New method called by elementWasRemoved() to ensure that when an element is removed, we remove
+    (CyberCore::AnimationTimeline::removeCSSAnimationCreatedByMarkup): New method called by elementWasRemoved() to ensure that when an element is removed, we remove
     its CSSAnimation objects from the new m_elementToCSSAnimationsCreatedByMarkupMap and also update the AnimationList on the relevant KeyframeEffectStack.
-    (WebCore::AnimationTimeline::elementWasRemoved): Call the new removeCSSAnimationCreatedByMarkup() method before canceling a CSSAnimation.
-    (WebCore::AnimationTimeline::cancelDeclarativeAnimationsForElement): Call the new removeCSSAnimationCreatedByMarkup() method before canceling a CSSAnimation.
-    (WebCore::AnimationTimeline::updateCSSAnimationsForElement): Use the AnimationList recoreded on the relevant KeyframeEffectStack to determine which CSSAnimation
+    (CyberCore::AnimationTimeline::elementWasRemoved): Call the new removeCSSAnimationCreatedByMarkup() method before canceling a CSSAnimation.
+    (CyberCore::AnimationTimeline::cancelDeclarativeAnimationsForElement): Call the new removeCSSAnimationCreatedByMarkup() method before canceling a CSSAnimation.
+    (CyberCore::AnimationTimeline::updateCSSAnimationsForElement): Use the AnimationList recoreded on the relevant KeyframeEffectStack to determine which CSSAnimation
     objects to create, cancel or merely update depending on the AnimationList in the current style.
     * animation/AnimationTimeline.h:
     * animation/DocumentTimeline.cpp:
-    (WebCore::DocumentTimeline::getAnimations const): Use compareAnimationsByCompositeOrder() to correctly sort CSS Animations since they are no longer guaranteed
+    (CyberCore::DocumentTimeline::getAnimations const): Use compareAnimationsByCompositeOrder() to correctly sort CSS Animations since they are no longer guaranteed
     to be stored in the relevant map in the expected order.
     * animation/KeyframeEffectStack.cpp:
-    (WebCore::KeyframeEffectStack::ensureEffectsAreSorted): Use the new m_cssAnimationList instead of the old m_cssAnimationNames when sorting effects.
-    (WebCore::KeyframeEffectStack::setCSSAnimationList):
-    (WebCore::KeyframeEffectStack::setCSSAnimationNames): Deleted.
+    (CyberCore::KeyframeEffectStack::ensureEffectsAreSorted): Use the new m_cssAnimationList instead of the old m_cssAnimationNames when sorting effects.
+    (CyberCore::KeyframeEffectStack::setCSSAnimationList):
+    (CyberCore::KeyframeEffectStack::setCSSAnimationNames): Deleted.
     * animation/KeyframeEffectStack.h:
-    (WebCore::KeyframeEffectStack::cssAnimationList const):
-    (WebCore::KeyframeEffectStack::cssAnimationNames const): Deleted.
+    (CyberCore::KeyframeEffectStack::cssAnimationList const):
+    (CyberCore::KeyframeEffectStack::cssAnimationNames const): Deleted.
     * animation/WebAnimation.cpp:
-    (WebCore::WebAnimation::commitStyles): Use the new KeyframeEffectStack::cssAnimationList() instead of the old KeyframeEffectStack::cssAnimationNames().
+    (CyberCore::WebAnimation::commitStyles): Use the new KeyframeEffectStack::cssAnimationList() instead of the old KeyframeEffectStack::cssAnimationNames().
     * animation/WebAnimationUtilities.cpp:
-    (WebCore::compareAnimationsByCompositeOrder): Update the composite order comparison utility to use an AnimationList rather than a list of animation names.
+    (CyberCore::compareAnimationsByCompositeOrder): Update the composite order comparison utility to use an AnimationList rather than a list of animation names.
     * animation/WebAnimationUtilities.h:
     * platform/animation/AnimationList.h:
-    (WebCore::AnimationList::copy const):
+    (CyberCore::AnimationList::copy const):
     
     git-svn-id: https://svn.webkit.org/repository/webkit/trunk@255076 268f45cc-cd09-0410-ab3c-d52691b4dbfc
 
@@ -600,7 +600,7 @@
 
         Cherry-pick r254408. rdar://problem/58606270
 
-    [WebCore] Fix crash in module loader due to change in fragment reservation
+    [CyberCore] Fix crash in module loader due to change in fragment reservation
     https://bugs.webkit.org/show_bug.cgi?id=206125
     
     Reviewed by Dean Jackson.
@@ -609,7 +609,7 @@
     
     * web-platform-tests/html/semantics/scripting-1/the-script-element/module/import-meta/import-meta-url-expected.txt:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     At some point, CachedResource::url() starts returning URL without fragment.
     However, this was invariant in ScriptModuleLoader, so one of WPT test is crashing.
@@ -620,10 +620,10 @@
     [1]: https://bugs.webkit.org/show_bug.cgi?id=205294
     
     * bindings/js/CachedModuleScriptLoader.cpp:
-    (WebCore::CachedModuleScriptLoader::load):
+    (CyberCore::CachedModuleScriptLoader::load):
     * bindings/js/CachedModuleScriptLoader.h:
     * bindings/js/ScriptModuleLoader.cpp:
-    (WebCore::ScriptModuleLoader::notifyFinished):
+    (CyberCore::ScriptModuleLoader::notifyFinished):
     
     LayoutTests:
     
@@ -633,7 +633,7 @@
 
     2020-01-10  Yusuke Suzuki  <ysuzuki@apple.com>
 
-            [WebCore] Fix crash in module loader due to change in fragment reservation
+            [CyberCore] Fix crash in module loader due to change in fragment reservation
             https://bugs.webkit.org/show_bug.cgi?id=206125
 
             Reviewed by Dean Jackson.
@@ -660,7 +660,7 @@
     * web-platform-tests/html/semantics/embedded-content/the-img-element/intrinsicsize/intrinsicsize-with-responsive-images.tentative-expected.txt:
             Still fails but failure values are different.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Take image's density into account when requesting naturalWidth/naturalHeight, not in SVG.
     
@@ -671,15 +671,15 @@
             Updaded expected results
     
     * html/HTMLImageElement.cpp:
-    (WebCore::HTMLImageElement::effectiveImageDevicePixelRatio const):
-    (WebCore::HTMLImageElement::naturalWidth const):
-    (WebCore::HTMLImageElement::naturalHeight const):
+    (CyberCore::HTMLImageElement::effectiveImageDevicePixelRatio const):
+    (CyberCore::HTMLImageElement::naturalWidth const):
+    (CyberCore::HTMLImageElement::naturalHeight const):
     * html/HTMLImageElement.h:
             Use effective image devicePixelRatio for naturalWidth/height calculation
     
     * loader/cache/CachedImage.cpp:
-    (WebCore::CachedImage::unclampedImageSizeForRenderer const):
-    (WebCore::CachedImage::imageSizeForRenderer const):
+    (CyberCore::CachedImage::unclampedImageSizeForRenderer const):
+    (CyberCore::CachedImage::imageSizeForRenderer const):
     * loader/cache/CachedImage.h:
             Don't clamp to 1 when calculating naturalWidth/naturalHeight, as this has
             nothing to do with zoomed images. Zoomed images behavior remains the same.
@@ -720,13 +720,13 @@
     * web-platform-tests/css/css-images/parsing/image-orientation-computed-expected.txt:
     * web-platform-tests/css/css-images/parsing/image-orientation-valid-expected.txt:
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     Remove the ENABLE_CSS_IMAGE_ORIENTATION feature flag.
     
     * Configurations/FeatureDefines.xcconfig:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Implement the CSS image-orientation property for content images. The valid
     values are "from-image" or "none". The default value is "from-image".
@@ -740,44 +740,44 @@
     
     * Configurations/FeatureDefines.xcconfig:
     * css/CSSComputedStyleDeclaration.cpp:
-    (WebCore::ComputedStyleExtractor::valueForPropertyInStyle):
+    (CyberCore::ComputedStyleExtractor::valueForPropertyInStyle):
     * css/CSSPrimitiveValueMappings.h:
-    (WebCore::CSSPrimitiveValue::operator ImageOrientation const): Deleted.
+    (CyberCore::CSSPrimitiveValue::operator ImageOrientation const): Deleted.
     * css/CSSProperties.json:
     * css/CSSValueKeywords.in:
     * css/parser/CSSPropertyParser.cpp:
-    (WebCore::consumeImageOrientation):
-    (WebCore::CSSPropertyParser::parseSingleValue):
+    (CyberCore::consumeImageOrientation):
+    (CyberCore::CSSPropertyParser::parseSingleValue):
     * rendering/RenderElement.cpp:
-    (WebCore::RenderElement::imageOrientation const):
+    (CyberCore::RenderElement::imageOrientation const):
     * rendering/RenderImage.cpp:
-    (WebCore::RenderImage::styleDidChange):
+    (CyberCore::RenderImage::styleDidChange):
     * rendering/style/RenderStyle.cpp:
-    (WebCore::rareInheritedDataChangeRequiresLayout):
+    (CyberCore::rareInheritedDataChangeRequiresLayout):
     * rendering/style/RenderStyle.h:
-    (WebCore::RenderStyle::setImageOrientation):
-    (WebCore::RenderStyle::initialImageOrientation):
-    (WebCore::RenderStyle::imageOrientation const):
+    (CyberCore::RenderStyle::setImageOrientation):
+    (CyberCore::RenderStyle::initialImageOrientation):
+    (CyberCore::RenderStyle::imageOrientation const):
     * rendering/style/StyleRareInheritedData.cpp:
-    (WebCore::StyleRareInheritedData::StyleRareInheritedData):
-    (WebCore::StyleRareInheritedData::operator== const):
+    (CyberCore::StyleRareInheritedData::StyleRareInheritedData):
+    (CyberCore::StyleRareInheritedData::operator== const):
     * rendering/style/StyleRareInheritedData.h:
     * style/StyleBuilderConverter.h:
-    (WebCore::Style::BuilderConverter::convertImageOrientation):
+    (CyberCore::Style::BuilderConverter::convertImageOrientation):
     
-    Source/WebCore/PAL:
-    
-    Remove the ENABLE_CSS_IMAGE_ORIENTATION feature flag.
-    
-    * Configurations/FeatureDefines.xcconfig:
-    
-    Source/WebKit:
+    Source/CyberCore/PAL:
     
     Remove the ENABLE_CSS_IMAGE_ORIENTATION feature flag.
     
     * Configurations/FeatureDefines.xcconfig:
     
-    Source/WebKitLegacy/mac:
+    Source/CyberKit:
+    
+    Remove the ENABLE_CSS_IMAGE_ORIENTATION feature flag.
+    
+    * Configurations/FeatureDefines.xcconfig:
+    
+    Source/CyberKitLegacy/mac:
     
     Remove the ENABLE_CSS_IMAGE_ORIENTATION feature flag.
     
@@ -793,7 +793,7 @@
     
     Remove the ENABLE_CSS_IMAGE_ORIENTATION feature flag.
     
-    * TestWebKitAPI/Configurations/FeatureDefines.xcconfig:
+    * TestCyberKitAPI/Configurations/FeatureDefines.xcconfig:
     
     LayoutTests:
     
@@ -840,7 +840,7 @@
 
         Reviewed by Sam Weinig.
 
-        Rebaseline WPT test now that it is passing. This test was failing in WebKit but passing
+        Rebaseline WPT test now that it is passing. This test was failing in CyberKit but passing
         in Blink & Gecko.
 
         * web-platform-tests/dom/nodes/Document-createAttribute-expected.txt:
@@ -1009,7 +1009,7 @@
 
         Reviewed by Javier Fernandez.
 
-        Add some css alignment tests from WebKit, checked and adapted to WPT, in the corresponding css-grid/alignment folder.
+        Add some css alignment tests from CyberKit, checked and adapted to WPT, in the corresponding css-grid/alignment folder.
         Add width-keyword-classes.css support file to css/support, to make it easily available to all css tests.
 
         * resources/import-expectations.json:
@@ -3354,7 +3354,7 @@
 
         After this patch several test cases are passing.
         There are still failures as the serialization is still not the right one in all the cases,
-        but this makes WebKit behave like Chromium for these shorthands.
+        but this makes CyberKit behave like Chromium for these shorthands.
 
         * web-platform-tests/css/css-grid/grid-layout-properties-expected.txt:
         * web-platform-tests/css/css-grid/parsing/grid-area-valid-expected.txt:
@@ -9167,7 +9167,7 @@
         Reviewed by Xabier Rodriguez-Calvar.
 
         Added a test that reproduces the sequence of operations that was
-        causing the video to not appear in WebKitGTK and checks that this time
+        causing the video to not appear in CyberKitGTK and checks that this time
         there is visible output.
 
         * web-platform-tests/lint.whitelist:
@@ -16317,7 +16317,7 @@
         Make table's clientWidth/Height include its border sizes.
         https://bugs.webkit.org/show_bug.cgi?id=200974
 
-        WebKit doesn't have table wrapper box currently
+        CyberKit doesn't have table wrapper box currently
         while Gecko has it,
         so this CL tries to mimic the behavior that
         clientWidth/Height refers to table wrapper box
@@ -17129,7 +17129,7 @@
 
         Reviewed by Alex Christensen.
 
-        The last test's cleanup step was very complex (involving waiting for a promise to get resolved) and WebKit's
+        The last test's cleanup step was very complex (involving waiting for a promise to get resolved) and CyberKit's
         completion handler in testharnessreport.js was often getting called before the promise resolution, leaving
         the test frame in the output when we call notifyDone(). This seems like a potential bug in testharness.js.
         To address the issue for now, do the unregistration in the test's body and only remove the test frame in
@@ -18342,7 +18342,7 @@
         Per https://github.com/w3c/csswg-drafts/issues/3749,
         Gecko and Blink has this behavior already.
 
-        This patch makes WebKit has the same behavior with them.
+        This patch makes CyberKit has the same behavior with them.
 
         * web-platform-tests/css/css-inline/parsing/line-height-computed-expected.txt: Added.
         * web-platform-tests/css/css-inline/parsing/line-height-computed.html: Added.
@@ -18932,7 +18932,7 @@
 
 2019-08-28  Alicia Boya García  <aboya@igalia.com>
 
-        [MSE][GStreamer] WebKitMediaSrc rework
+        [MSE][GStreamer] CyberKitMediaSrc rework
         https://bugs.webkit.org/show_bug.cgi?id=199719
 
         Reviewed by Xabier Rodriguez-Calvar.
@@ -20634,12 +20634,12 @@
 
         * web-platform-tests/mathml/presentation-markup/fractions/frac-linethickness-001.html:
         Explicitly enable deprecated features in this test. It should be moved
-        back to WebKit's test suite if/when it is updated in the upstream WPT
+        back to CyberKit's test suite if/when it is updated in the upstream WPT
         repository so also add a reminder for the next synchronization.
 
 2019-05-01  Darin Adler  <darin@apple.com>
 
-        WebKit has too much of its own UTF-8 code and should rely more on ICU's UTF-8 support
+        CyberKit has too much of its own UTF-8 code and should rely more on ICU's UTF-8 support
         https://bugs.webkit.org/show_bug.cgi?id=195535
 
         Reviewed by Alexey Proskuryakov.
@@ -20657,7 +20657,7 @@
 
         Reverted changeset:
 
-        "WebKit has too much of its own UTF-8 code and should rely
+        "CyberKit has too much of its own UTF-8 code and should rely
         more on ICU's UTF-8 support"
         https://bugs.webkit.org/show_bug.cgi?id=195535
         https://trac.webkit.org/changeset/244821
@@ -20673,7 +20673,7 @@
 
 2019-04-29  Darin Adler  <darin@apple.com>
 
-        WebKit has too much of its own UTF-8 code and should rely more on ICU's UTF-8 support
+        CyberKit has too much of its own UTF-8 code and should rely more on ICU's UTF-8 support
         https://bugs.webkit.org/show_bug.cgi?id=195535
 
         Reviewed by Alexey Proskuryakov.
@@ -20685,7 +20685,7 @@
 
 2019-04-30  Youenn Fablet  <youenn@apple.com>
 
-        [macOS WK1] ASSERTION FAILED: formData in WebCore::ResourceRequest::doUpdateResourceHTTPBody()
+        [macOS WK1] ASSERTION FAILED: formData in CyberCore::ResourceRequest::doUpdateResourceHTTPBody()
         https://bugs.webkit.org/show_bug.cgi?id=196864
         <rdar://problem/49854497>
 
@@ -21282,7 +21282,7 @@
         Reviewed by Geoffrey Garen.
 
         Resync WPT after https://github.com/web-platform-tests/wpt/pull/15471 to gain
-        test coverage. Both Gecko and Blink are passing the new check, only WebKit was
+        test coverage. Both Gecko and Blink are passing the new check, only CyberKit was
         failing.
 
         * web-platform-tests/domparsing/DOMParser-parseFromString-html-expected.txt:
@@ -21556,8 +21556,8 @@
         Reviewed by Javier Fernandez.
 
         Imported test from WPT. This patch is making some of the test cases pass but not all.
-        Some are still failing in WebKit as it never uses the central baseline on vertical writing modes (bug #94410),
-        also "text-orientation" is not supported yet in WebKit (bug #196139),
+        Some are still failing in CyberKit as it never uses the central baseline on vertical writing modes (bug #94410),
+        also "text-orientation" is not supported yet in CyberKit (bug #196139),
         even the prefixed version "-webkit-text-orientation" doesn't fix anything in this test case.
 
         * web-platform-tests/css/css-grid/alignment/grid-container-baseline-001-expected.txt: Added.
@@ -23189,7 +23189,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=194436
 
         This is just an import of the current MathML WPT tests. It includes fraction tests from
-        WebKit that were exported in [1]. Some test results have whitespace change, due to [2].
+        CyberKit that were exported in [1]. Some test results have whitespace change, due to [2].
 
         [1] https://github.com/web-platform-tests/wpt/pull/15301
         [2] https://github.com/web-platform-tests/wpt/commit/e2dd57c3f273468b3c6a087978c531dcd00933de
@@ -23801,7 +23801,7 @@
 
         Reviewed by Chris Dumez.
 
-        Fixed tests to run in WebKit CI.
+        Fixed tests to run in CyberKit CI.
         Also fixed a bug in a test where the fetch response body is not actually empty.
 
         * web-platform-tests/fetch/api/abort/cache.https-expected.txt:
@@ -25507,7 +25507,7 @@
 
         Reviewed by Manuel Rego Casasnovas.
 
-        This patch makes WebKit behave closer to Blink. Specifically,
+        This patch makes CyberKit behave closer to Blink. Specifically,
          - In overconstrained relative or absolute positioning, inset properties resolve
            to the computed value (absolutizing percentages) instead of to the used value.
          - In fixed positioning, the resolved value of non-'auto' values is no longer
@@ -25924,7 +25924,7 @@
         Reverted changeset:
 
         "URLWithUserTypedString should return nil for URLs deemed to
-        be invalid by WebCore::URL"
+        be invalid by CyberCore::URL"
         https://bugs.webkit.org/show_bug.cgi?id=189979
         https://trac.webkit.org/changeset/236524
 
@@ -26747,7 +26747,7 @@
 
         Reviewed by Youenn Fablet.
 
-        These tests were removed upstream, but stuck around in WebKit.
+        These tests were removed upstream, but stuck around in CyberKit.
 
         * web-platform-tests/xhr/OWNERS: Removed.
         * web-platform-tests/xhr/abort-during-open-expected.txt: Removed.

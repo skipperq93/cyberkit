@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-include(WebKitCommon)
+include(CyberKitCommon)
 set_property(DIRECTORY . PROPERTY FOLDER "WTF")
 
 add_subdirectory(wtf)

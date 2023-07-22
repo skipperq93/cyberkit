@@ -51,7 +51,7 @@
 
 /* USE() - use a particular third-party library or optional OS service */
 #define USE(WTF_FEATURE) (defined USE_##WTF_FEATURE  && USE_##WTF_FEATURE)
-/* ENABLE() - turn on a specific feature of WebKit */
+/* ENABLE() - turn on a specific feature of CyberKit */
 #define ENABLE(WTF_FEATURE) (defined ENABLE_##WTF_FEATURE  && ENABLE_##WTF_FEATURE)
 
 
@@ -731,12 +731,12 @@
 
 /* FIXME: move out all ENABLE() defines from here to FeatureDefines.h */
 
-#if USE(APPLE_INTERNAL_SDK) && __has_include(<WebKitAdditions/AdditionalPlatform.h>)
-#include <WebKitAdditions/AdditionalPlatform.h>
+#if USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/AdditionalPlatform.h>)
+#include <CyberKitAdditions/AdditionalPlatform.h>
 #endif
 
-#if USE(APPLE_INTERNAL_SDK) && __has_include(<WebKitAdditions/AdditionalFeatureDefines.h>)
-#include <WebKitAdditions/AdditionalFeatureDefines.h>
+#if USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/AdditionalFeatureDefines.h>)
+#include <CyberKitAdditions/AdditionalFeatureDefines.h>
 #endif
 
 /* Include feature macros */
@@ -896,7 +896,7 @@
 /* The SamplingProfiler is the probabilistic and low-overhead profiler used by
  * JSC to measure where time is spent inside a JavaScript program.
  * In configurations other than Windows and Darwin, because layout of mcontext_t depends on standard libraries (like glibc),
- * sampling profiler is enabled if WebKit uses pthreads and glibc. */
+ * sampling profiler is enabled if CyberKit uses pthreads and glibc. */
 #if !defined(ENABLE_SAMPLING_PROFILER)
 #if !ENABLE(C_LOOP) && (OS(WINDOWS) || HAVE(MACHINE_CONTEXT))
 #define ENABLE_SAMPLING_PROFILER 1
@@ -1477,7 +1477,7 @@
 #endif
 
 #if PLATFORM(IOS)
-/* FIXME: SafariServices.framework exists on macOS. It is only used by WebKit on iOS, so the behavior is correct, but the name is misleading. */
+/* FIXME: SafariServices.framework exists on macOS. It is only used by CyberKit on iOS, so the behavior is correct, but the name is misleading. */
 #define HAVE_SAFARI_SERVICES_FRAMEWORK 1
 #endif
 

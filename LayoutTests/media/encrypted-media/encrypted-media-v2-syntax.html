@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>WebKitMediaKeys</title>
+        <title>CyberKitMediaKeys</title>
         <script src=../video-test.js></script>
         <script>
             function stringToUint8Array(str)
@@ -24,11 +24,11 @@
                 if (internals)
                     internals.initializeMockCDM();
 
-                consoleWrite("Test WebKitMediaKeys.");
-                testExpected('typeof window.WebKitMediaKeys', 'function');
-                testDOMException('new WebKitMediaKeys("")', "DOMException.INVALID_ACCESS_ERR");
-                testDOMException('new WebKitMediaKeys("unsupported")', "DOMException.NOT_SUPPORTED_ERR");
-                run('mediaKeys = new WebKitMediaKeys("com.webcore.mock")');
+                consoleWrite("Test CyberKitMediaKeys.");
+                testExpected('typeof window.CyberKitMediaKeys', 'function');
+                testDOMException('new CyberKitMediaKeys("")', "DOMException.INVALID_ACCESS_ERR");
+                testDOMException('new CyberKitMediaKeys("unsupported")', "DOMException.NOT_SUPPORTED_ERR");
+                run('mediaKeys = new CyberKitMediaKeys("com.webcore.mock")');
                 testExpected('mediaKeys.keySystem', 'com.webcore.mock');
                 testExpected('typeof mediaKeys.createSession', 'function');
                 testDOMException('mediaKeys.createSession("", new Uint8Array(1))', "DOMException.INVALID_ACCESS_ERR");
@@ -36,7 +36,7 @@
                 testDOMException('mediaKeys.createSession("unsupported/type", new Uint8Array(1))', "DOMException.NOT_SUPPORTED_ERR");
                 consoleWrite("");
 
-                consoleWrite("Test WebKitMediaKeySession.");
+                consoleWrite("Test CyberKitMediaKeySession.");
                 run('mediaKeySession = mediaKeys.createSession("video/mock", initData)');
                 testExpected('typeof mediaKeySession', 'object');
                 testExpected('typeof mediaKeySession.addEventListener', 'function');
@@ -47,12 +47,12 @@
                 testExpected('mediaKeySession.onwebkitkeyadded', null);
                 testExpected('mediaKeySession.onwebkitkeyerror', null);
                 testExpected('mediaKeySession.onwebkitkeymessage', null);
-                testException('mediaKeySession.update(null)', "'TypeError: Argument 1 (\\'key\\') to WebKitMediaKeySession.update must be an instance of Uint8Array'");
+                testException('mediaKeySession.update(null)', "'TypeError: Argument 1 (\\'key\\') to CyberKitMediaKeySession.update must be an instance of Uint8Array'");
                 endTest();
             }
         </script>
     </head>
     <body onload="runTest()">
-        <p>This tests the basic API of WebKitMediaKeys and WebKitMediaKeySession.</p>
+        <p>This tests the basic API of CyberKitMediaKeys and CyberKitMediaKeySession.</p>
     </body>
 </html>

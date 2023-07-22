@@ -112,7 +112,7 @@
 
 2013-10-10  Dean Jackson  <dino@apple.com>
 
-        Use after free in WebCore::DisplayRefreshMonitorClient::fireDisplayRefreshIfNeeded
+        Use after free in CyberCore::DisplayRefreshMonitorClient::fireDisplayRefreshIfNeeded
         http://webkit.org/b/121033
 
         Update test to indicate it no longer crashes.
@@ -123,7 +123,7 @@
 
 2013-10-10  Dean Jackson  <dino@apple.com>
 
-        Use after free in WebCore::DisplayRefreshMonitorClient::fireDisplayRefreshIfNeeded
+        Use after free in CyberCore::DisplayRefreshMonitorClient::fireDisplayRefreshIfNeeded
         http://webkit.org/b/121033
 
         Reviewed by Darin Adler.
@@ -259,7 +259,7 @@
 
 2013-10-10  Andy Estes  <aestes@apple.com>
 
-        Add SPI for telling WebKit to prefer pictograph glyphs over monochrome ones
+        Add SPI for telling CyberKit to prefer pictograph glyphs over monochrome ones
         https://bugs.webkit.org/show_bug.cgi?id=122608
 
         Reviewed by Dan Bernstein.
@@ -278,7 +278,7 @@
 
 2013-10-10  Marcelo Morais  <m.morais@samsung.com>
 
-        Web Inspector: Remove the old front-end from WebKit
+        Web Inspector: Remove the old front-end from CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=122295
 
         Reviewed by Timothy Hatcher.
@@ -357,7 +357,7 @@
 
 2013-10-10  Chris Fleizach  <cfleizach@apple.com>
 
-        AX: Crash at WebCore::accessibleNameForNode when visiting Facebook
+        AX: Crash at CyberCore::accessibleNameForNode when visiting Facebook
         https://bugs.webkit.org/show_bug.cgi?id=122572
 
         Reviewed by Mario Sanchez Prada.
@@ -1548,7 +1548,7 @@
 
         Reviewed by Ryosuke Niwa.
 
-        Tests from r141354 erroneously assume that all WebKit ports populate
+        Tests from r141354 erroneously assume that all CyberKit ports populate
         spell checking suggestion in the context menu.
 
         Remove verification of spell checking suggestion and all context menu stuff from tests
@@ -1594,7 +1594,7 @@
 
 2013-10-04  Lorenzo Tilve  <ltilve@igalia.com>
 
-        [GTK] Enable text edition UndoOperations support in WebKit2
+        [GTK] Enable text edition UndoOperations support in CyberKit2
         https://bugs.webkit.org/show_bug.cgi?id=122305
 
         Reviewed by Carlos Garcia Campos.
@@ -1969,10 +1969,10 @@
         * platform/mac-wk2/compositing/rtl/rtl-absolute-expected.txt: Added.
         * platform/mac-wk2/compositing/rtl/rtl-absolute-overflow-expected.txt: Added.
         * platform/mac-wk2/compositing/rtl/rtl-absolute-overflow-scrolled-expected.txt: Added.
-        Add WebKit2 results, because we dump non-white background color on the root layer now.
+        Add CyberKit2 results, because we dump non-white background color on the root layer now.
 
         * platform/mac-wk2/compositing/repaint/fixed-background-scroll-expected.txt: Added.
-        New WebKit2 result; repaint rects are showing up now.
+        New CyberKit2 result; repaint rects are showing up now.
         
         * platform/mac-wk2/compositing/rtl/rtl-fixed-expected.txt:
         * platform/mac-wk2/compositing/rtl/rtl-fixed-overflow-expected.txt:
@@ -1982,7 +1982,7 @@
         * platform/mac-wk2/compositing/tiling/rotated-tiled-preserve3d-clamped-expected.txt: Added.
         * platform/mac-wk2/compositing/tiling/tile-cache-zoomed-expected.txt: Added.
         * platform/mac-wk2/compositing/tiling/tiled-layer-resize-expected.txt: Added.
-        New WebKit2 results; we show the root tile cache if layerTreeAsText is asked to dump tile caches.
+        New CyberKit2 results; we show the root tile cache if layerTreeAsText is asked to dump tile caches.
         
         * platform/mac-wk2/editing/input/caret-at-the-edge-of-contenteditable-expected.txt: Added.
         * platform/mac-wk2/editing/input/reveal-caret-of-multiline-contenteditable-expected.txt: Added.
@@ -1994,7 +1994,7 @@
         * platform/mac-wk2/fast/layers/layer-visibility-expected.txt: Added.
         * platform/mac-wk2/fast/layers/layer-visibility-sublayer-expected.txt: Added.
         * platform/mac-wk2/fast/repaint/invisible-objects-expected.txt: Added.
-        New WebKit2 results; additional compositing layers.
+        New CyberKit2 results; additional compositing layers.
         
         * platform/mac-wk2/tiled-drawing/window-server-snapshots-work-expected-mismatch.html: Added.
         * platform/mac-wk2/tiled-drawing/window-server-snapshots-work.html: Added.
@@ -2034,14 +2034,14 @@
 
 2013-10-02  Alexey Proskuryakov  <ap@apple.com>
 
-        Quirksmode: CSS1: WebKit fails dynamic :first-letter test
+        Quirksmode: CSS1: CyberKit fails dynamic :first-letter test
         https://bugs.webkit.org/show_bug.cgi?id=15602
 
         * platform/mac/TestExpectations: Correcting Mac expectations too, now that we have results.
 
 2013-10-02  Alexey Proskuryakov  <ap@apple.com>
 
-        Quirksmode: CSS1: WebKit fails dynamic :first-letter test
+        Quirksmode: CSS1: CyberKit fails dynamic :first-letter test
         https://bugs.webkit.org/show_bug.cgi?id=15602
 
         * platform/mac/fast/css/first-letter-block-change-expected.png: Added.
@@ -2305,7 +2305,7 @@
 
 2013-10-01  Joone Hur  <joone.hur@intel.com>
 
-        Quirksmode: CSS1: WebKit fails dynamic :first-letter test
+        Quirksmode: CSS1: CyberKit fails dynamic :first-letter test
         https://bugs.webkit.org/show_bug.cgi?id=15602
 
         Reviewed by David Hyatt.
@@ -2364,13 +2364,13 @@
 
 2013-10-01  Tim Horton  <timothy_horton@apple.com>
 
-        [wk2] WebKitTestRunner's window snapshots are blank with tiled drawing
+        [wk2] CyberKitTestRunner's window snapshots are blank with tiled drawing
         https://bugs.webkit.org/show_bug.cgi?id=122006
         <rdar://problem/15095197>
 
         Reviewed by Dean Jackson.
 
-        Add a test that ensures that WebKitTestRunner's snapshots are not
+        Add a test that ensures that CyberKitTestRunner's snapshots are not
         completely blank with tiled drawing enabled.
 
         * platform/mac-wk2/tiled-drawing/window-server-snapshots-work-expected-mismatch.html: Added.
@@ -2876,7 +2876,7 @@
 
         Unreviewed EFL gardening.
 
-        fast/forms/textarea-metrics.html fails in WebKitTestRunner but returns expected
+        fast/forms/textarea-metrics.html fails in CyberKitTestRunner but returns expected
         results in MiniBrowser. Since GTK uses platform dependent expectation file to
         migitate this identical discrepancy, the same solution has been applied to EFL.
 
@@ -3134,13 +3134,13 @@
 
 2013-09-27  Tim Horton  <timothy_horton@apple.com>
 
-        [wk2] WebKitTestRunner's window snapshots are blank with tiled drawing
+        [wk2] CyberKitTestRunner's window snapshots are blank with tiled drawing
         https://bugs.webkit.org/show_bug.cgi?id=122006
         <rdar://problem/15095197>
 
         Reviewed by Dean Jackson.
 
-        Add a test that ensures that WebKitTestRunner's snapshots are not
+        Add a test that ensures that CyberKitTestRunner's snapshots are not
         completely blank with tiled drawing enabled.
 
         * platform/mac-wk2/tiled-drawing/window-server-snapshots-work-expected-mismatch.html: Added.
@@ -3520,7 +3520,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=121957
 
         Unreviewed gardening again. Now moving the expected flakiness to
-        the WebKit2GTK+ port, where it actually belongs to.
+        the CyberKit2GTK+ port, where it actually belongs to.
 
         * platform/gtk-wk2/TestExpectations: Added expectations.
         * platform/gtk/TestExpectations: Removed expectations.
@@ -3729,7 +3729,7 @@
 
 2013-09-25  Sam White  <samuel_white@apple.com>
 
-        AX: WebKit doesn't map aria-sort=other on OS X
+        AX: CyberKit doesn't map aria-sort=other on OS X
         https://bugs.webkit.org/show_bug.cgi?id=118511
 
         Reviewed by Chris Fleizach.
@@ -4305,7 +4305,7 @@
 
 2013-09-20  Filip Pizlo  <fpizlo@apple.com>
 
-        REGRESSION(r156047): WebCore hangs inside JSC::toInt32(double)
+        REGRESSION(r156047): CyberCore hangs inside JSC::toInt32(double)
         https://bugs.webkit.org/show_bug.cgi?id=121648
 
         Reviewed by Mark Hahnenberg.
@@ -6995,7 +6995,7 @@
 
 2013-09-18  Csaba Osztrogonác  <ossy@webkit.org>
 
-        ASSERT_NOT_REACHED is touched in WebCore::CSSPrimitiveValue::computeLengthDouble
+        ASSERT_NOT_REACHED is touched in CyberCore::CSSPrimitiveValue::computeLengthDouble
         https://bugs.webkit.org/show_bug.cgi?id=120469
 
         Reviewed by Dirk Schulze.
@@ -8154,7 +8154,7 @@
 
 2013-09-12  Renata Hodovan  <reni@webkit.org>
 
-        [Qt] SHOULD NEVER BE REACHED is touched WebCore::InputType::createStepRange
+        [Qt] SHOULD NEVER BE REACHED is touched CyberCore::InputType::createStepRange
         https://bugs.webkit.org/show_bug.cgi?id=121148
 
         Reviewed by Kent Tamura.
@@ -8204,10 +8204,10 @@
         * plugins/mouse-events.html:
         This test used async calls for events, and then usually logged responses while waiting
         for a plg.eventLoggingEnabled setter synchronously. Depending on sync/async event
-        order is not reliable, especially with old WebKit1 plug-in IPC code.
+        order is not reliable, especially with old CyberKit1 plug-in IPC code.
 
         * platform/mac-wk2/plugins/mouse-events-expected.txt: For some unclear reason,
-        focus works differently in WebKit2.
+        focus works differently in CyberKit2.
 
         * platform/gtk/plugins/mouse-events-expected.txt: Removed.
         * platform/qt/plugins/mouse-events-expected.txt: Removed.
@@ -8541,7 +8541,7 @@
 
 2013-09-11  Chris Fleizach  <cfleizach@apple.com>
 
-        AX: WebKit exposes AXTitleUIElement incorrectly on checkboxes and radio buttons
+        AX: CyberKit exposes AXTitleUIElement incorrectly on checkboxes and radio buttons
         https://bugs.webkit.org/show_bug.cgi?id=121039
 
         Reviewed by Sam Weinig.
@@ -13324,7 +13324,7 @@
 
 2013-09-09  ChangSeok Oh  <changseok.oh@collabora.com>
 
-        [WK2] Assertion failure in WebCore::Page::checkSubframeCountConsistency when going back
+        [WK2] Assertion failure in CyberCore::Page::checkSubframeCountConsistency when going back
         https://bugs.webkit.org/show_bug.cgi?id=119781
 
         Reviewed by Alexey Proskuryakov.
@@ -13338,7 +13338,7 @@
 
 2013-09-09  Hans Muller  <hmuller@adobe.com>
 
-        [CSS Shapes] Heap-buffer-overflow in WebCore::ShapeInterval<float>::subtractShapeIntervals
+        [CSS Shapes] Heap-buffer-overflow in CyberCore::ShapeInterval<float>::subtractShapeIntervals
         https://bugs.webkit.org/show_bug.cgi?id=120802
 
         Reviewed by Darin Adler.
@@ -21900,7 +21900,7 @@
 
 2013-09-05  Dirk Schulze  <krit@webkit.org>
 
-        NULL ptr in WebCore::RefCountedPropertyWrapper<WebCore::ClipPathOperation>::blend
+        NULL ptr in CyberCore::RefCountedPropertyWrapper<CyberCore::ClipPathOperation>::blend
         https://bugs.webkit.org/show_bug.cgi?id=105408
 
         Reviewed by Dean Jackson.
@@ -22046,7 +22046,7 @@
 
 2013-09-04  Samuel White  <samuel_white@apple.com>
 
-        AX: when no other label on provided on form elements, WebKit should fall back to using @title
+        AX: when no other label on provided on form elements, CyberKit should fall back to using @title
         https://bugs.webkit.org/show_bug.cgi?id=112842
 
         Reviewed by Chris Fleizach.
@@ -22483,9 +22483,9 @@
         Reviewed by Andreas Kling.
 
         Add tests with pseudo-elements as regions checking the following API:
-        WebKitNamedFlow::getRegions(), WebKitNamedFlow::getRegionsByContent()
+        CyberKitNamedFlow::getRegions(), CyberKitNamedFlow::getRegionsByContent()
         Because we do not return the pseudo-elements as regions in the region list,
-        i modified WebKitNamedFlow::firstEmptyRegionIndex to skip these regions too. 
+        i modified CyberKitNamedFlow::firstEmptyRegionIndex to skip these regions too. 
 
         * fast/regions/get-regions-by-content-pseudo-expected.txt: Added.
         * fast/regions/get-regions-by-content-pseudo.html: Added.
@@ -22770,7 +22770,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=120544
 
         Take 2, remove some more runAfterPendingDispatches which were somehow
-        causing WebKit 2 tests to fail. This requires us to be a bit more
+        causing CyberKit 2 tests to fail. This requires us to be a bit more
         careful when running the pending handlers as well.
 
         Unreviewed test fix.
@@ -25064,7 +25064,7 @@
 
 2013-08-27  Renata Hodovan  <reni@webkit.org>
 
-        Missing null-check of parent renderer in WebCore::HTMLEmbedElement::rendererIsNeeded()
+        Missing null-check of parent renderer in CyberCore::HTMLEmbedElement::rendererIsNeeded()
         https://bugs.webkit.org/show_bug.cgi?id=120343
 
         Reviewed by Darin Adler.
@@ -27445,7 +27445,7 @@
 
 2013-08-22  Rob Buis  <rwlbuis@webkit.org>
 
-        REGRESSION: Assertion failure !collection->hasExactlyOneItem() in WebCore::namedItemGetter
+        REGRESSION: Assertion failure !collection->hasExactlyOneItem() in CyberCore::namedItemGetter
         https://bugs.webkit.org/show_bug.cgi?id=118056
 
         Reviewed by Ryosuke Niwa.
@@ -27459,7 +27459,7 @@
 
 2013-08-22  Renata Hodovan  <reni@webkit.org>
 
-        ASSERTION FAILED: extractedStyle in WebCore::ApplyStyleCommand::removeInlineStyleFromElement
+        ASSERTION FAILED: extractedStyle in CyberCore::ApplyStyleCommand::removeInlineStyleFromElement
         https://bugs.webkit.org/show_bug.cgi?id=119672
 
         Reviewed by Darin Adler.
@@ -27537,7 +27537,7 @@
         Reviewed by Dan Bernstein.
 
         Woark around a CFNetwork issue by using Max-Age=-1 instead of Max-Age=0. Since it's
-        WebKit that we are testing and not the lower level networking, this does not change
+        CyberKit that we are testing and not the lower level networking, this does not change
         test coverage.
 
         * http/tests/cookies/resources/clearCookies.cgi:
@@ -28652,7 +28652,7 @@
 
         This can now typically implemented in terms of getOwnPropertySlot.
         Add a macro to PropertyDescriptor to define an implementation of GOPD in terms of GOPS.
-        Switch over most classes in JSC & the WebCore bindings generator to use this.
+        Switch over most classes in JSC & the CyberCore bindings generator to use this.
 
         * http/tests/security/xss-DENIED-defineProperty-expected.txt:
             - Remove erroneous error messages - cross frame access to reload is allowed - it's just read-only, non-configurable.
@@ -28695,7 +28695,7 @@
 
 2013-08-19  Chris Fleizach  <cfleizach@apple.com>
 
-        <https://webkit.org/b/119916> AX: WebKit is not exposing AXLanguage correctly
+        <https://webkit.org/b/119916> AX: CyberKit is not exposing AXLanguage correctly
 
         Reviewed by Darin Adler.
 
@@ -31124,7 +31124,7 @@
 
 2013-08-15  Rob Buis  <rwlbuis@webkit.org>
 
-        ASSERTION FAILED: !m_adoptionIsRequired in void WebCore::TreeShared<NodeType>::ref()
+        ASSERTION FAILED: !m_adoptionIsRequired in void CyberCore::TreeShared<NodeType>::ref()
         https://bugs.webkit.org/show_bug.cgi?id=116979
 
         Reviewed by Antti Koivisto.
@@ -31434,7 +31434,7 @@
 
 2013-08-14  Rob Buis  <rwlbuis@webkit.org>
 
-        ASSERTION FAILED: resultAnimationElement->m_animatedType in WebCore::SVGAnimateElement::calculateAnimatedValue
+        ASSERTION FAILED: resultAnimationElement->m_animatedType in CyberCore::SVGAnimateElement::calculateAnimatedValue
         https://bugs.webkit.org/show_bug.cgi?id=119748
 
         Reviewed by Dirk Schulze.
@@ -31746,7 +31746,7 @@
 
 2013-08-12  Zan Dobersek  <zdobersek@igalia.com>
 
-        ASSERTION FAILED: type() == Percent in WebCore::Length::percent
+        ASSERTION FAILED: type() == Percent in CyberCore::Length::percent
         https://bugs.webkit.org/show_bug.cgi?id=116715
 
         Reviewed by Darin Adler.
@@ -31998,7 +31998,7 @@
 
 2013-08-09  Rob Buis  <rwlbuis@webkit.org>
 
-        ASSERTION FAILED: stroke->opacity != other->stroke->opacity in WebCore::SVGRenderStyle::diff
+        ASSERTION FAILED: stroke->opacity != other->stroke->opacity in CyberCore::SVGRenderStyle::diff
         https://bugs.webkit.org/show_bug.cgi?id=119623
 
         Reviewed by Dirk Schulze.
@@ -32300,7 +32300,7 @@
 
 2013-08-09  Rob Buis  <rwlbuis@webkit.org>
 
-        ASSERT_NOT_REACHED() touched in WebCore::SVGAnimatedStringAnimator::addAnimatedTypes
+        ASSERT_NOT_REACHED() touched in CyberCore::SVGAnimatedStringAnimator::addAnimatedTypes
         https://bugs.webkit.org/show_bug.cgi?id=113224
 
         Reviewed by Dirk Schulze.
@@ -32446,7 +32446,7 @@
 
 2013-08-08  Rob Buis  <rwlbuis@webkit.org>
 
-        ASSERT_NOT_REACHED() touched in WebCore::SVGAnimatedStringAnimator::addAnimatedTypes
+        ASSERT_NOT_REACHED() touched in CyberCore::SVGAnimatedStringAnimator::addAnimatedTypes
         https://bugs.webkit.org/show_bug.cgi?id=113224
 
         Reviewed by Dirk Schulze.
@@ -32535,7 +32535,7 @@
 
 2013-08-08  Rob Buis  <rwlbuis@webkit.org>
 
-        Crash in WTF::RefPtr<WebCore::SpaceSplitStringData>::operator UnspecifiedBoolType
+        Crash in WTF::RefPtr<CyberCore::SpaceSplitStringData>::operator UnspecifiedBoolType
         https://bugs.webkit.org/show_bug.cgi?id=118839
 
         Reviewed by Darin Adler.
@@ -34051,7 +34051,7 @@
         Reviewed by Alexey Proskuryakov.
 
         Merge a test in https://chromium.googlesource.com/chromium/blink/+/da5c8d908b87f75c5ba3d1457c2353642e999963
-        even though the regression never existed in WebKit.
+        even though the regression never existed in CyberKit.
 
         * fast/forms/select/select-assign-null-expected.txt: Added.
         * fast/forms/select/select-assign-null.html: Added.
@@ -34365,7 +34365,7 @@
 
 2013-07-29  Renata Hodovan  <reni@webkit.org>
 
-        ASSERT_NOT_REACHED was touched in WebCore::SVGAnimatedType::valueAsString
+        ASSERT_NOT_REACHED was touched in CyberCore::SVGAnimatedType::valueAsString
         https://bugs.webkit.org/show_bug.cgi?id=118744
 
         Reviewed by Philip Rogers.
@@ -36238,7 +36238,7 @@
 
 2013-07-18  Santosh Mahto  <santosh.ma@samsung.com>
 
-        ASSERTION FAILED: !listItems().size() || m_activeSelectionAnchorIndex >= 0 in WebCore::HTMLSelectElement::updateListBoxSelection
+        ASSERTION FAILED: !listItems().size() || m_activeSelectionAnchorIndex >= 0 in CyberCore::HTMLSelectElement::updateListBoxSelection
         https://bugs.webkit.org/show_bug.cgi?id=118591
 
         Reviewed by Kent Tamura.
@@ -36738,7 +36738,7 @@
 
 2013-07-17  Mihai Maerean  <mmaerean@adobe.com>
 
-        ASSERTION FAILED: layoutState->m_renderer == this in WebCore::RenderBlock::offsetFromLogicalTopOfFirstPage
+        ASSERTION FAILED: layoutState->m_renderer == this in CyberCore::RenderBlock::offsetFromLogicalTopOfFirstPage
         https://bugs.webkit.org/show_bug.cgi?id=118587
 
         Reviewed by David Hyatt.
@@ -36863,7 +36863,7 @@
 
 2013-07-15  Yuta Kitamura  <yutak@chromium.org>
 
-        NULL ptr in WebCore::Range::processAncestorsAndTheirSiblings
+        NULL ptr in CyberCore::Range::processAncestorsAndTheirSiblings
         https://bugs.webkit.org/show_bug.cgi?id=77614
 
         Reviewed by Ryosuke Niwa.
@@ -37751,7 +37751,7 @@
         Add a test that ensures that fixed position works with a scrollable document
         and direction: rtl, which is one case where scrollOrigin is set.
 
-        Disable the test on Mac WebKit1 because of https://bugs.webkit.org/show_bug.cgi?id=118269.
+        Disable the test on Mac CyberKit1 because of https://bugs.webkit.org/show_bug.cgi?id=118269.
 
         * compositing/geometry/fixed-position-flipped-writing-mode-expected.txt: Added.
         * compositing/geometry/fixed-position-flipped-writing-mode.html: Added.
@@ -38014,7 +38014,7 @@
 
         Added new tests for the new model. These tests are also spec tests, so
         their canonical location is now in the CSS WG's repository. They have
-        been imported to WebKit using the import-w3c-tests script, and that's
+        been imported to CyberKit using the import-w3c-tests script, and that's
         why they live under the csswg directory.
 
         The new tests replace the shape-outside-floats-simple-rectangle.html
@@ -38123,7 +38123,7 @@
 
 2013-06-27  Timothy Hatcher  <timothy@apple.com>
 
-        Notify the debugger about functions created from source code via new Function() or WebCore::JSLazyEventListener.
+        Notify the debugger about functions created from source code via new Function() or CyberCore::JSLazyEventListener.
 
         https://bugs.webkit.org/show_bug.cgi?id=118063
 
@@ -46372,7 +46372,7 @@
 
 2013-06-03  Chris Fleizach  <cfleizach@apple.com>
 
-        AX: WebKit should join substrings on single space when concatenating the accessible name of an element
+        AX: CyberKit should join substrings on single space when concatenating the accessible name of an element
         https://bugs.webkit.org/show_bug.cgi?id=117100
 
         Reviewed by Darin Adler.
@@ -46445,7 +46445,7 @@
 
 2013-06-03  Bem Jones-Bey  <bjonesbe@adobe.com>
 
-        ASSERTION FAILED: node->parentNode(), Heap-use-after-free in WebCore::RenderBox::exclusionShapeOutsideInfo
+        ASSERTION FAILED: node->parentNode(), Heap-use-after-free in CyberCore::RenderBox::exclusionShapeOutsideInfo
         https://bugs.webkit.org/show_bug.cgi?id=117155
 
         Reviewed by David Hyatt.
@@ -46728,7 +46728,7 @@
 
 2013-06-01  Chris Fleizach  <cfleizach@apple.com>
 
-        WebKit ignores aria-hidden when traversing nodes for name calculation
+        CyberKit ignores aria-hidden when traversing nodes for name calculation
         https://bugs.webkit.org/show_bug.cgi?id=117101
 
         Reviewed by Tim Horton.
@@ -46757,7 +46757,7 @@
 
         Unreviewed test expectations update.
 
-        WebKitTestRunner needs a more-complete implementation of eventSender.
+        CyberKitTestRunner needs a more-complete implementation of eventSender.
         Until then caret-after-keypress test is disabled
 
         See https://bugs.webkit.org/show_bug.cgi?id=42194
@@ -48505,7 +48505,7 @@
 
 2013-05-23  Mihai Maerean  <mmaerean@adobe.com>
 
-        assertion failed: !node || node->isElementNode() in WebCore::RenderBlock::clone
+        assertion failed: !node || node->isElementNode() in CyberCore::RenderBlock::clone
         https://bugs.webkit.org/show_bug.cgi?id=116614
 
         Reviewed by David Hyatt.
@@ -48590,10 +48590,10 @@
         Reviewed by Anders Carlsson.
 
         Move editing tests that trigger copy and paste from execCommand into pasteboard.
-        Since NWRT uses a single instance of WebKitTestRunner to run tests in single directory,
+        Since NWRT uses a single instance of CyberKitTestRunner to run tests in single directory,
         this should mitigate the issue for now.
 
-        In the long term, we should really mock out the clipboard in WebKitTestRunner.
+        In the long term, we should really mock out the clipboard in CyberKitTestRunner.
 
         * editing/execCommand/4128080-2-expected.txt: Removed.
         * editing/execCommand/4128080-2.html: Removed.
@@ -48907,7 +48907,7 @@
 
 2013-05-22  Ryosuke Niwa  <rniwa@webkit.org>
 
-        REGRESSION: ASSERTION FAILED: obj->isRenderInline() || obj == this, Bad cast in WebCore::RenderBlock::createLineBoxes
+        REGRESSION: ASSERTION FAILED: obj->isRenderInline() || obj == this, Bad cast in CyberCore::RenderBlock::createLineBoxes
         https://bugs.webkit.org/show_bug.cgi?id=110622
 
         Reviewed by David Hyatt.
@@ -49422,7 +49422,7 @@
 
 2013-05-20  Ryosuke Niwa  <rniwa@webkit.org>
 
-        Null pointer deference in WebCore::AppendNodeCommand::create
+        Null pointer deference in CyberCore::AppendNodeCommand::create
         https://bugs.webkit.org/show_bug.cgi?id=116479
 
         Reviewed by Andreas Kling.
@@ -50233,7 +50233,7 @@
 
 2013-05-14  Bem Jones-Bey  <bjonesbe@adobe.com>
 
-        Heap-use-after-free in WebCore::RenderBox::exclusionShapeOutsideInfo
+        Heap-use-after-free in CyberCore::RenderBox::exclusionShapeOutsideInfo
         https://bugs.webkit.org/show_bug.cgi?id=115566
 
         Reviewed by David Hyatt.
@@ -50385,8 +50385,8 @@
 
 2013-05-14  Alex Christensen  <achristensen@apple.com>
 
-        The tests marked with the comment "WebKitTestRunner needs to sanitize file urls in the output"
-        run successfully with WebKitTestRunner.  They should not be skipped.
+        The tests marked with the comment "CyberKitTestRunner needs to sanitize file urls in the output"
+        run successfully with CyberKitTestRunner.  They should not be skipped.
         https://bugs.webkit.org/show_bug.cgi?id=116083
 
         Reviewed by Darin Adler.
@@ -51587,7 +51587,7 @@
 
 2013-05-06  Bem Jones-Bey  <bjonesbe@adobe.com>
 
-        Heap-use-after-free in WebCore::InlineFlowBox::deleteLine
+        Heap-use-after-free in CyberCore::InlineFlowBox::deleteLine
         https://bugs.webkit.org/show_bug.cgi?id=114772
 
         Reviewed by David Hyatt.

@@ -116,7 +116,7 @@ class WebPlatformTestServer(http_server_base.HttpServerBase):
         self._output_log_path = self._filesystem.join(self._output_dir, self._log_file_name)
         self._wsout = self._filesystem.open_text_file_for_writing(self._output_log_path)
 
-        _log.debug('Copying WebKit web platform server config.json')
+        _log.debug('Copying CyberKit web platform server config.json')
         config_wk_filename = self._filesystem.join(self._layout_root, "imported", "w3c", "resources", "config.json")
         if self._filesystem.isfile(config_wk_filename):
             config = json.loads(self._filesystem.read_text_file(config_wk_filename))

@@ -3,9 +3,9 @@
 <body>
 <script src="../../resources/js-test-pre.js"></script>
 <script>
-description("Test the WebKitMediaKeyMessageEvent / WebKitMediaKeyNeededEvent constructors.");
+description("Test the CyberKitMediaKeyMessageEvent / CyberKitMediaKeyNeededEvent constructors.");
 
-evalAndLog('event = new WebKitMediaKeyMessageEvent("foo")');
+evalAndLog('event = new CyberKitMediaKeyMessageEvent("foo")');
 shouldBeEqualToString("event.type", "foo");
 shouldBeFalse("event.bubbles");
 shouldBeFalse("event.cancelable");
@@ -14,7 +14,7 @@ shouldBeEqualToString("event.destinationURL", "");
 debug("");
 
 var testMessage = new Uint8Array(8);
-evalAndLog('event = new WebKitMediaKeyMessageEvent("foo", { bubbles: true, cancelable: true, message: testMessage, destinationURL: "testURL" })');
+evalAndLog('event = new CyberKitMediaKeyMessageEvent("foo", { bubbles: true, cancelable: true, message: testMessage, destinationURL: "testURL" })');
 shouldBeEqualToString("event.type", "foo");
 shouldBeTrue("event.bubbles");
 shouldBeTrue("event.cancelable");
@@ -22,14 +22,14 @@ shouldBe("event.message", "testMessage");
 shouldBeEqualToString("event.destinationURL", "testURL");
 debug("");
 
-evalAndLog('event = new WebKitMediaKeyNeededEvent("foo")');
+evalAndLog('event = new CyberKitMediaKeyNeededEvent("foo")');
 shouldBeEqualToString("event.type", "foo");
 shouldBeFalse("event.bubbles");
 shouldBeFalse("event.cancelable");
 shouldBeNull("event.initData");
 debug("");
 
-evalAndLog('event = new WebKitMediaKeyNeededEvent("foo", { bubbles: true, cancelable: true, initData: testMessage })');
+evalAndLog('event = new CyberKitMediaKeyNeededEvent("foo", { bubbles: true, cancelable: true, initData: testMessage })');
 shouldBeEqualToString("event.type", "foo");
 shouldBeTrue("event.bubbles");
 shouldBeTrue("event.cancelable");

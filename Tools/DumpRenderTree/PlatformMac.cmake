@@ -8,30 +8,30 @@ add_definitions(-DJSC_CLASS_AVAILABLE\\\(...\\\)=)
 # FIXME: We shouldn't need to define NS_RETURNS_RETAINED.
 add_definitions(-iframework ${QUARTZ_LIBRARY}/Frameworks -iframework ${CORESERVICES_LIBRARY}/Frameworks -DNS_RETURNS_RETAINED=)
 
-link_directories(../../WebKitLibraries)
-include_directories(../../WebKitLibraries)
+link_directories(../../CyberKitLibraries)
+include_directories(../../CyberKitLibraries)
 
 list(APPEND TestNetscapePlugIn_LIBRARIES
     ${QUARTZ_LIBRARY}
-    WebKit
+    CyberKit
 )
 
 list(APPEND DumpRenderTree_LIBRARIES
     ${CARBON_LIBRARY}
     ${QUARTZ_LIBRARY}
-    WebKit
+    CyberKit
 )
 
 list(APPEND DumpRenderTree_INCLUDE_DIRECTORIES
     cg
     cf
     mac
-    mac/InternalHeaders/WebKit
+    mac/InternalHeaders/CyberKit
     TestNetscapePlugIn
     ${FORWARDING_HEADERS_DIR}
-    ${FORWARDING_HEADERS_DIR}/WebCore
-    ${FORWARDING_HEADERS_DIR}/WebKit
-    ${FORWARDING_HEADERS_DIR}/WebKitLegacy
+    ${FORWARDING_HEADERS_DIR}/CyberCore
+    ${FORWARDING_HEADERS_DIR}/CyberKit
+    ${FORWARDING_HEADERS_DIR}/CyberKitLegacy
     ${WEBCORE_DIR}/testing/cocoa
     ${WEBKITLEGACY_DIR}
     ${WEBKIT_TESTRUNNER_SHARED_DIR}/cocoa
@@ -125,15 +125,15 @@ set(DumpRenderTree_RESOURCES
     AHEM____.TTF
     FontWithFeatures.otf
     FontWithFeatures.ttf
-    WebKitWeightWatcher100.ttf
-    WebKitWeightWatcher200.ttf
-    WebKitWeightWatcher300.ttf
-    WebKitWeightWatcher400.ttf
-    WebKitWeightWatcher500.ttf
-    WebKitWeightWatcher600.ttf
-    WebKitWeightWatcher700.ttf
-    WebKitWeightWatcher800.ttf
-    WebKitWeightWatcher900.ttf
+    CyberKitWeightWatcher100.ttf
+    CyberKitWeightWatcher200.ttf
+    CyberKitWeightWatcher300.ttf
+    CyberKitWeightWatcher400.ttf
+    CyberKitWeightWatcher500.ttf
+    CyberKitWeightWatcher600.ttf
+    CyberKitWeightWatcher700.ttf
+    CyberKitWeightWatcher800.ttf
+    CyberKitWeightWatcher900.ttf
 )
 
 file(MAKE_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/DumpRenderTree.resources)

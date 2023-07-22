@@ -21,7 +21,7 @@ promise_test(async () => {
 }, "same origin iframe has regular quota");
 
 promise_test(async () => {
-    assert_equals(await load_iframe("https://127.0.0.1:9443/WebKit/cache-storage/resources/quota-third-party-iframe.html"), "FAIL");
+    assert_equals(await load_iframe("https://127.0.0.1:9443/CyberKit/cache-storage/resources/quota-third-party-iframe.html"), "FAIL");
 }, "cross origin iframe has reduced quota");
 
 promise_test(async () => {
@@ -29,7 +29,7 @@ promise_test(async () => {
     if (window.testRunner)
         testRunner.clearDOMCaches();
 
-    assert_equals(await load_iframe("https://127.0.0.1:9443/WebKit/cache-storage/resources/quota-third-party-iframe.html"), "FAIL");
+    assert_equals(await load_iframe("https://127.0.0.1:9443/CyberKit/cache-storage/resources/quota-third-party-iframe.html"), "FAIL");
 }, "cross origin iframe has reduced quota after resetting quota");
 
     </script>

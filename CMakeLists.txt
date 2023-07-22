@@ -10,7 +10,7 @@
 
 cmake_minimum_required(VERSION 3.10)
 
-project(WebKit)
+project(CyberKit)
 
 if (NOT CMAKE_BUILD_TYPE)
     message(WARNING "No CMAKE_BUILD_TYPE value specified, defaulting to RelWithDebInfo.")
@@ -45,11 +45,11 @@ set(ALL_PORTS
     WPE
     WinCairo
 )
-set(PORT "NOPORT" CACHE STRING "choose which WebKit port to build (one of ${ALL_PORTS})")
+set(PORT "NOPORT" CACHE STRING "choose which CyberKit port to build (one of ${ALL_PORTS})")
 
 list(FIND ALL_PORTS ${PORT} RET)
 if (${RET} EQUAL -1)
-    message(FATAL_ERROR "Please choose which WebKit port to build (one of ${ALL_PORTS})")
+    message(FATAL_ERROR "Please choose which CyberKit port to build (one of ${ALL_PORTS})")
 endif ()
 
 string(TOLOWER ${PORT} WEBKIT_PORT_DIR)
@@ -63,7 +63,7 @@ endif ()
 
 if (${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
     if (${CMAKE_CXX_COMPILER_VERSION} VERSION_LESS "7.3.0")
-        message(FATAL_ERROR "GCC 7.3 or newer is required to build WebKit. Use a newer GCC version or Clang.")
+        message(FATAL_ERROR "GCC 7.3 or newer is required to build CyberKit. Use a newer GCC version or Clang.")
     endif ()
 endif ()
 
@@ -137,17 +137,17 @@ endif ()
 # -----------------------------------------------------------------------------
 # Default library types
 # -----------------------------------------------------------------------------
-# By default, only the highest-level libraries, WebKitLegacy and WebKit, are
+# By default, only the highest-level libraries, CyberKitLegacy and CyberKit, are
 # shared, because properly building shared libraries that depend on each other
 # can be tricky. Override these in Options*.cmake for your port as needed.
 set(bmalloc_LIBRARY_TYPE STATIC)
 set(WTF_LIBRARY_TYPE STATIC)
-set(JavaScriptCore_LIBRARY_TYPE STATIC)
+set(CyberScriptCore_LIBRARY_TYPE STATIC)
 set(PAL_LIBRARY_TYPE STATIC)
-set(WebCore_LIBRARY_TYPE STATIC)
-set(WebKitLegacy_LIBRARY_TYPE SHARED)
-set(WebKit_LIBRARY_TYPE SHARED)
-set(WebCoreTestSupport_LIBRARY_TYPE STATIC)
+set(CyberCore_LIBRARY_TYPE STATIC)
+set(CyberKitLegacy_LIBRARY_TYPE SHARED)
+set(CyberKit_LIBRARY_TYPE SHARED)
+set(CyberCoreTestSupport_LIBRARY_TYPE STATIC)
 
 set(CMAKE_POSITION_INDEPENDENT_CODE True)
 
@@ -166,7 +166,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # -----------------------------------------------------------------------------
 # Common configuration
 #------------------------------------------------------------------------------
-include(WebKitCommon)
+include(CyberKitCommon)
 
 # -----------------------------------------------------------------------------
 # Enable API unit tests and create a target for the test runner

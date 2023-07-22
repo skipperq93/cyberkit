@@ -28,6 +28,6 @@ cask 'safari-technology-preview' do
                '~/Library/SyncedPreferences/com.apple.SafariTechnologyPreview-com.apple.Safari.UserRequests.plist',
                '~/Library/SyncedPreferences/com.apple.SafariTechnologyPreview-com.apple.Safari.WebFeedSubscriptions.plist',
                '~/Library/SyncedPreferences/com.apple.SafariTechnologyPreview.plist',
-               '~/Library/WebKit/com.apple.SafariTechnologyPreview',
+               '~/Library/CyberKit/com.apple.SafariTechnologyPreview',
              ]
 end

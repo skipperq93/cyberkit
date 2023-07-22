@@ -1,4 +1,4 @@
-Test for WebKit bug 27554: getComputedStyle does not contain a value for text-overflow
+Test for CyberKit bug 27554: getComputedStyle does not contain a value for text-overflow
 
 
 This text should overflow the box but should show ellipsis when the text is cut off at the edge of the box because it doesn't fit in the box as is.

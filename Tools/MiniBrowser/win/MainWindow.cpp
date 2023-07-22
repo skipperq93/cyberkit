@@ -35,14 +35,14 @@
 #endif
 
 #if ENABLE(WEBKIT)
-#include "WebKitBrowserWindow.h"
+#include "CyberKitBrowserWindow.h"
 #endif
 
 #if ENABLE(WEBKIT_LEGACY)
-#include "WebKitLegacyBrowserWindow.h"
+#include "CyberKitLegacyBrowserWindow.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 float deviceScaleFactorForWindow(HWND);
 }
 
@@ -149,7 +149,7 @@ bool MainWindow::init(BrowserWindowFactory factory, HINSTANCE hInstance, bool us
 
 void MainWindow::resizeSubViews()
 {
-    float scaleFactor = WebCore::deviceScaleFactorForWindow(m_hMainWnd);
+    float scaleFactor = CyberCore::deviceScaleFactorForWindow(m_hMainWnd);
 
     RECT rcClient;
     GetClientRect(m_hMainWnd, &rcClient);
@@ -197,7 +197,7 @@ LRESULT CALLBACK MainWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPA
 #if ENABLE(WEBKIT)
         case IDM_NEW_WEBKIT_WINDOW: {
             auto& newWindow = MainWindow::create().leakRef();
-            newWindow.init(WebKitBrowserWindow::create, hInst);
+            newWindow.init(CyberKitBrowserWindow::create, hInst);
             ShowWindow(newWindow.hwnd(), SW_SHOW);
             break;
         }
@@ -205,7 +205,7 @@ LRESULT CALLBACK MainWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPA
 #if ENABLE(WEBKIT_LEGACY)
         case IDM_NEW_WEBKITLEGACY_WINDOW: {
             auto& newWindow = MainWindow::create().leakRef();
-            newWindow.init(WebKitLegacyBrowserWindow::create, hInst);
+            newWindow.init(CyberKitLegacyBrowserWindow::create, hInst);
             ShowWindow(newWindow.hwnd(), SW_SHOW);
             break;
         }
@@ -486,7 +486,7 @@ void MainWindow::updateDeviceScaleFactor()
 {
     if (m_hURLBarFont)
         ::DeleteObject(m_hURLBarFont);
-    auto scaleFactor = WebCore::deviceScaleFactorForWindow(m_hMainWnd);
+    auto scaleFactor = CyberCore::deviceScaleFactorForWindow(m_hMainWnd);
     int fontHeight = scaleFactor * urlBarHeight * 3 / 4;
     m_hURLBarFont = ::CreateFont(fontHeight, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, DEFAULT_CHARSET,
         OUT_TT_ONLY_PRECIS, CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY, FF_DONTCARE, L"Tahoma");

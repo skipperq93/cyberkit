@@ -483,18 +483,18 @@
       "workernames": ["ews151", "webkit-misc"]
     },
     {
-      "name": "WebKitPy-Tests-EWS",
+      "name": "CyberKitPy-Tests-EWS",
       "shortname": "webkitpy",
       "icon": "testOnly",
-      "factory": "WebKitPyFactory",
+      "factory": "CyberKitPyFactory",
       "platform": "*",
       "workernames": ["ews151", "webkit-misc"]
     },
     {
-      "name": "WebKitPerl-Tests-EWS",
+      "name": "CyberKitPerl-Tests-EWS",
       "shortname": "webkitperl",
       "icon": "testOnly",
-      "factory": "WebKitPerlFactory",
+      "factory": "CyberKitPerlFactory",
       "platform": "*",
       "workernames": ["ews151", "webkit-misc"]
     },
@@ -540,7 +540,7 @@
       "port": 5555,
       "builderNames": ["Apply-WatchList-EWS", "Bindings-Tests-EWS", "GTK-Webkit2-EWS", "iOS-13-Build-EWS", "iOS-13-Simulator-Build-EWS",
                        "JSC-ARMv7-32bits-EWS", "JSC-i386-32bits-EWS", "JSC-MIPSEL-32bits-EWS", "JSC-Tests-EWS", "macOS-High-Sierra-Debug-Build-EWS", "macOS-High-Sierra-Release-Build-EWS",
-                       "Services-EWS", "Style-EWS", "WebKitPerl-Tests-EWS", "WebKitPy-Tests-EWS", "WPE-EWS", "WinCairo-EWS", "Windows-EWS"]
+                       "Services-EWS", "Style-EWS", "CyberKitPerl-Tests-EWS", "CyberKitPy-Tests-EWS", "WPE-EWS", "WinCairo-EWS", "Windows-EWS"]
     },
     {
       "type": "Try_Userpass",

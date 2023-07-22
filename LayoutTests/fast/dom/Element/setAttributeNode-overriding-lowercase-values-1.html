@@ -10,14 +10,14 @@
 <script>
 description('Test using setAttributeNode() behaves like setAttribute() to get the existing attribute, but like setAttributeNS() to set the new value."');
 
-document.documentElement.setAttribute('FooBar', 'WebKit');
+document.documentElement.setAttribute('FooBar', 'CyberKit');
 
-shouldBeEqualToString('document.documentElement.getAttribute("foobar")', 'WebKit');
+shouldBeEqualToString('document.documentElement.getAttribute("foobar")', 'CyberKit');
 shouldBeTrue('document.documentElement.hasAttribute("foobar")');
-shouldBeEqualToString('document.documentElement.getAttribute("FooBar")', 'WebKit');
+shouldBeEqualToString('document.documentElement.getAttribute("FooBar")', 'CyberKit');
 shouldBeTrue('document.documentElement.hasAttribute("FooBar")');
 
-shouldBeEqualToString('document.documentElement.getAttributeNS("", "foobar")', 'WebKit');
+shouldBeEqualToString('document.documentElement.getAttributeNS("", "foobar")', 'CyberKit');
 shouldBeTrue('document.documentElement.hasAttributeNS("", "foobar")');
 shouldBe('document.documentElement.getAttributeNS("", "FooBar")', 'null');
 shouldBeFalse('document.documentElement.hasAttributeNS("", "FooBar")');
@@ -44,17 +44,17 @@ shouldBeFalse('document.documentElement.hasAttributeNS("", "FooBar")');
 
 // "foobar" should exist alongside "FooBar".
 var lowerCaseFoobar = document.createAttribute("foobar");
-lowerCaseFoobar.value = 'WebKit2'
+lowerCaseFoobar.value = 'CyberKit2'
 var oldAttributeNode2 = document.documentElement.setAttributeNode(lowerCaseFoobar);
 
 shouldBe('oldAttributeNode2', 'camelCaseFoobar');
 
-shouldBeEqualToString('document.documentElement.getAttribute("foobar")', 'WebKit2');
+shouldBeEqualToString('document.documentElement.getAttribute("foobar")', 'CyberKit2');
 shouldBeTrue('document.documentElement.hasAttribute("foobar")');
-shouldBeEqualToString('document.documentElement.getAttribute("FooBar")', 'WebKit2');
+shouldBeEqualToString('document.documentElement.getAttribute("FooBar")', 'CyberKit2');
 shouldBeTrue('document.documentElement.hasAttribute("FooBar")');
 
-shouldBeEqualToString('document.documentElement.getAttributeNS("", "foobar")', 'WebKit2');
+shouldBeEqualToString('document.documentElement.getAttributeNS("", "foobar")', 'CyberKit2');
 shouldBeTrue('document.documentElement.hasAttributeNS("", "foobar")');
 shouldBeNull('document.documentElement.getAttributeNS("", "FooBar")');
 shouldBeFalse('document.documentElement.hasAttributeNS("", "FooBar")');

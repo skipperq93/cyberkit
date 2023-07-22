@@ -53,44 +53,44 @@
 #import "TestRunner.h"
 #import "UIDelegate.h"
 #import "WebArchiveDumpSupport.h"
-#import "WebCoreTestSupport.h"
+#import "CyberCoreTestSupport.h"
 #import "WorkQueue.h"
 #import "WorkQueueItem.h"
 #import <CoreFoundation/CoreFoundation.h>
-#import <JavaScriptCore/JSCConfig.h>
-#import <JavaScriptCore/Options.h>
-#import <JavaScriptCore/TestRunnerUtils.h>
-#import <WebCore/LogInitialization.h>
-#import <WebCore/NetworkStorageSession.h>
-#import <WebKit/DOMElement.h>
-#import <WebKit/DOMExtensions.h>
-#import <WebKit/DOMRange.h>
-#import <WebKit/WKCrashReporter.h>
-#import <WebKit/WKRetainPtr.h>
-#import <WebKit/WKString.h>
-#import <WebKit/WKStringCF.h>
-#import <WebKit/WebArchive.h>
-#import <WebKit/WebBackForwardList.h>
-#import <WebKit/WebCache.h>
-#import <WebKit/WebCoreStatistics.h>
-#import <WebKit/WebDataSourcePrivate.h>
-#import <WebKit/WebDatabaseManagerPrivate.h>
-#import <WebKit/WebDeviceOrientationProviderMock.h>
-#import <WebKit/WebDocumentPrivate.h>
-#import <WebKit/WebEditingDelegate.h>
-#import <WebKit/WebFrameView.h>
-#import <WebKit/WebHistory.h>
-#import <WebKit/WebHistoryItemPrivate.h>
-#import <WebKit/WebInspector.h>
-#import <WebKit/WebKitNSStringExtras.h>
-#import <WebKit/WebPluginDatabase.h>
-#import <WebKit/WebPreferenceKeysPrivate.h>
-#import <WebKit/WebPreferences.h>
-#import <WebKit/WebPreferencesPrivate.h>
-#import <WebKit/WebResourceLoadDelegate.h>
-#import <WebKit/WebStorageManagerPrivate.h>
-#import <WebKit/WebView.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberScriptCore/JSCConfig.h>
+#import <CyberScriptCore/Options.h>
+#import <CyberScriptCore/TestRunnerUtils.h>
+#import <CyberCore/LogInitialization.h>
+#import <CyberCore/NetworkStorageSession.h>
+#import <CyberKit/DOMElement.h>
+#import <CyberKit/DOMExtensions.h>
+#import <CyberKit/DOMRange.h>
+#import <CyberKit/WKCrashReporter.h>
+#import <CyberKit/WKRetainPtr.h>
+#import <CyberKit/WKString.h>
+#import <CyberKit/WKStringCF.h>
+#import <CyberKit/WebArchive.h>
+#import <CyberKit/WebBackForwardList.h>
+#import <CyberKit/WebCache.h>
+#import <CyberKit/CyberCoreStatistics.h>
+#import <CyberKit/WebDataSourcePrivate.h>
+#import <CyberKit/WebDatabaseManagerPrivate.h>
+#import <CyberKit/WebDeviceOrientationProviderMock.h>
+#import <CyberKit/WebDocumentPrivate.h>
+#import <CyberKit/WebEditingDelegate.h>
+#import <CyberKit/WebFrameView.h>
+#import <CyberKit/WebHistory.h>
+#import <CyberKit/WebHistoryItemPrivate.h>
+#import <CyberKit/WebInspector.h>
+#import <CyberKit/CyberKitNSStringExtras.h>
+#import <CyberKit/WebPluginDatabase.h>
+#import <CyberKit/WebPreferenceKeysPrivate.h>
+#import <CyberKit/WebPreferences.h>
+#import <CyberKit/WebPreferencesPrivate.h>
+#import <CyberKit/WebResourceLoadDelegate.h>
+#import <CyberKit/WebStorageManagerPrivate.h>
+#import <CyberKit/WebView.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <getopt.h>
 #import <wtf/Assertions.h>
 #import <wtf/FastMalloc.h>
@@ -104,7 +104,7 @@
 
 #if !PLATFORM(IOS_FAMILY)
 #import <Carbon/Carbon.h>
-#import <WebKit/WebDynamicScrollBarsView.h>
+#import <CyberKit/WebDynamicScrollBarsView.h>
 #endif
 
 #if PLATFORM(IOS_FAMILY)
@@ -112,10 +112,10 @@
 #import "IOSLayoutTestCommunication.h"
 #import "UIKitSPI.h"
 #import <QuartzCore/QuartzCore.h>
-#import <WebKit/WAKWindow.h>
-#import <WebKit/WebCoreThread.h>
-#import <WebKit/WebCoreThreadRun.h>
-#import <WebKit/WebDOMOperations.h>
+#import <CyberKit/WAKWindow.h>
+#import <CyberKit/CyberCoreThread.h>
+#import <CyberKit/CyberCoreThreadRun.h>
+#import <CyberKit/WebDOMOperations.h>
 #import <fcntl.h>
 #import <pal/spi/cg/CoreGraphicsSPI.h>
 #endif
@@ -168,7 +168,7 @@ using namespace std;
 
 #if !PLATFORM(IOS_FAMILY)
 @interface WebView (WebViewInternalForTesting)
-- (WebCore::Frame*)_mainCoreFrame;
+- (CyberCore::Frame*)_mainCoreFrame;
 @end
 #endif
 
@@ -293,7 +293,7 @@ void setPersistentUserStyleSheetLocation(CFStringRef url)
     persistentUserStyleSheetLocation = url;
 }
 
-static bool shouldIgnoreWebCoreNodeLeaks(const string& URLString)
+static bool shouldIgnoreCyberCoreNodeLeaks(const string& URLString)
 {
     static char* const ignoreSet[] = {
         // Keeping this infrastructure around in case we ever need it again.
@@ -432,7 +432,7 @@ static NSSet *allowedFontFamilySet()
         @"Trebuchet MS",
         @"Verdana",
         @"Webdings",
-        @"WebKit WeightWatcher",
+        @"CyberKit WeightWatcher",
         @"FontWithFeaturesOTF",
         @"FontWithFeaturesTTF",
         @"Wingdings 2",
@@ -511,15 +511,15 @@ static void activateTestingFonts()
 {
     static const char* fontFileNames[] = {
         "AHEM____.TTF",
-        "WebKitWeightWatcher100.ttf",
-        "WebKitWeightWatcher200.ttf",
-        "WebKitWeightWatcher300.ttf",
-        "WebKitWeightWatcher400.ttf",
-        "WebKitWeightWatcher500.ttf",
-        "WebKitWeightWatcher600.ttf",
-        "WebKitWeightWatcher700.ttf",
-        "WebKitWeightWatcher800.ttf",
-        "WebKitWeightWatcher900.ttf",
+        "CyberKitWeightWatcher100.ttf",
+        "CyberKitWeightWatcher200.ttf",
+        "CyberKitWeightWatcher300.ttf",
+        "CyberKitWeightWatcher400.ttf",
+        "CyberKitWeightWatcher500.ttf",
+        "CyberKitWeightWatcher600.ttf",
+        "CyberKitWeightWatcher700.ttf",
+        "CyberKitWeightWatcher800.ttf",
+        "CyberKitWeightWatcher900.ttf",
         "FontWithFeatures.ttf",
         "FontWithFeatures.otf",
         0
@@ -752,7 +752,7 @@ WebView *createWebViewAndOffscreenWindow()
     [webView setValidationMessageTimerMagnification:-1];
 
     // To make things like certain NSViews, dragging, and plug-ins work, put the WebView a window, but put it off-screen so you don't see it.
-    // Put it at -10000, -10000 in "flipped coordinates", since WebCore and the DOM use flipped coordinates.
+    // Put it at -10000, -10000 in "flipped coordinates", since CyberCore and the DOM use flipped coordinates.
     NSScreen *firstScreen = [[NSScreen screens] firstObject];
     NSRect windowRect = (showWebView) ? NSOffsetRect(rect, 100, 100) : NSOffsetRect(rect, -10000, [firstScreen frame].size.height - rect.size.height + 10000);
     DumpRenderTreeWindow *window = [[DumpRenderTreeWindow alloc] initWithContentRect:windowRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:YES];
@@ -908,7 +908,7 @@ static void resetWebPreferencesToConsistentValues()
     [preferences setDefaultTextEncodingName:@"ISO-8859-1"];
     [preferences setJavaEnabled:NO];
     [preferences setJavaScriptEnabled:YES];
-    [preferences setEditableLinkBehavior:WebKitEditableLinkOnlyLiveWithShiftKey];
+    [preferences setEditableLinkBehavior:CyberKitEditableLinkOnlyLiveWithShiftKey];
 #if !PLATFORM(IOS_FAMILY)
     [preferences setTabsToLinks:NO];
 #endif
@@ -931,10 +931,10 @@ static void resetWebPreferencesToConsistentValues()
     [preferences setJavaScriptCanAccessClipboard:YES];
     [preferences setOfflineWebApplicationCacheEnabled:YES];
     [preferences setDeveloperExtrasEnabled:NO];
-    [preferences setJavaScriptRuntimeFlags:WebKitJavaScriptRuntimeFlagsAllEnabled];
+    [preferences setJavaScriptRuntimeFlags:CyberKitJavaScriptRuntimeFlagsAllEnabled];
     [preferences setLoadsImagesAutomatically:YES];
     [preferences setLoadsSiteIconsIgnoringImageLoadingPreference:NO];
-    [preferences setFrameFlattening:WebKitFrameFlatteningDisabled];
+    [preferences setFrameFlattening:CyberKitFrameFlatteningDisabled];
     [preferences setAsyncFrameScrollingEnabled:NO];
     [preferences setSpatialNavigationEnabled:NO];
     [preferences setMetaRefreshEnabled:YES];
@@ -1059,11 +1059,11 @@ static void setDefaultsToConsistentValuesForTesting()
         @"AppleHighlightColor": @"0.709800 0.835300 1.000000",
         @"AppleOtherHighlightColor":@"0.500000 0.500000 0.500000",
         @"AppleLanguages": @[ @"en" ],
-        WebKitEnableFullDocumentTeardownPreferenceKey: @YES,
-        WebKitFullScreenEnabledPreferenceKey: @YES,
-        WebKitAllowsInlineMediaPlaybackPreferenceKey: @YES,
-        WebKitInlineMediaPlaybackRequiresPlaysInlineAttributeKey: @NO,
-        @"UseWebKitWebInspector": @YES,
+        CyberKitEnableFullDocumentTeardownPreferenceKey: @YES,
+        CyberKitFullScreenEnabledPreferenceKey: @YES,
+        CyberKitAllowsInlineMediaPlaybackPreferenceKey: @YES,
+        CyberKitInlineMediaPlaybackRequiresPlaysInlineAttributeKey: @NO,
+        @"UseCyberKitWebInspector": @YES,
 #if !PLATFORM(IOS_FAMILY)
         @"NSPreferredSpellServerLanguage": @"en_US",
         @"NSUserDictionaryReplacementItems": @[],
@@ -1092,8 +1092,8 @@ static void setDefaultsToConsistentValuesForTesting()
     NSDictionary *processInstanceDefaults = @{
         WebDatabaseDirectoryDefaultsKey: [libraryPath stringByAppendingPathComponent:@"Databases"],
         WebStorageDirectoryDefaultsKey: [libraryPath stringByAppendingPathComponent:@"LocalStorage"],
-        WebKitLocalCacheDefaultsKey: [libraryPath stringByAppendingPathComponent:@"LocalCache"],
-        WebKitResourceLoadStatisticsDirectoryDefaultsKey: [libraryPath stringByAppendingPathComponent:@"LocalStorage"],
+        CyberKitLocalCacheDefaultsKey: [libraryPath stringByAppendingPathComponent:@"LocalCache"],
+        CyberKitResourceLoadStatisticsDirectoryDefaultsKey: [libraryPath stringByAppendingPathComponent:@"LocalStorage"],
     };
 
     [[NSUserDefaults standardUserDefaults] setVolatileDomain:processInstanceDefaults forName:NSArgumentDomain];
@@ -1433,10 +1433,10 @@ int DumpRenderTreeMain(int argc, const char *argv[])
     atexit(atexitFunction);
 
     WTF::setProcessPrivileges(allPrivileges());
-    WebCore::NetworkStorageSession::permitProcessToUseCookieAPI(true);
+    CyberCore::NetworkStorageSession::permitProcessToUseCookieAPI(true);
 
 #if PLATFORM(IOS_FAMILY)
-    _UIApplicationLoadWebKit();
+    _UIApplicationLoadCyberKit();
 #endif
 
     @autoreleasepool {
@@ -1452,8 +1452,8 @@ int DumpRenderTreeMain(int argc, const char *argv[])
         UIApplicationMain(argc, (char**)argv, @"DumpRenderTree", @"DumpRenderTree");
 #endif
 
-        [WebCoreStatistics garbageCollectJavaScriptObjects];
-        [WebCoreStatistics emptyCache]; // Otherwise SVGImages trigger false positives for Frame/Node counts
+        [CyberCoreStatistics garbageCollectJavaScriptObjects];
+        [CyberCoreStatistics emptyCache]; // Otherwise SVGImages trigger false positives for Frame/Node counts
         JSC::finalizeStatsAtEndOfTesting();
     }
 
@@ -1645,7 +1645,7 @@ static void changeWindowScaleIfNeeded(const char* testPathOrUR)
         requiredScaleFactor = 2;
     if (currentScaleFactor == requiredScaleFactor)
         return;
-    // When the new scale factor is set on the window first, WebView doesn't see it as a new scale and stops propagating the behavior change to WebCore::Page.
+    // When the new scale factor is set on the window first, WebView doesn't see it as a new scale and stops propagating the behavior change to CyberCore::Page.
     gTestRunner->setBackingScaleFactor(requiredScaleFactor);
     NSWindow *window = [[mainFrame webView] window];
     if ([window respondsToSelector:@selector(_setWindowResolution:)])
@@ -1765,11 +1765,11 @@ void dump()
             resultMimeType = @"application/pdf";
         } else if (gTestRunner->dumpDOMAsWebArchive()) {
             WebArchive *webArchive = [[mainFrame DOMDocument] webArchive];
-            resultString = CFBridgingRelease(WebCoreTestSupport::createXMLStringFromWebArchiveData((__bridge CFDataRef)[webArchive data]));
+            resultString = CFBridgingRelease(CyberCoreTestSupport::createXMLStringFromWebArchiveData((__bridge CFDataRef)[webArchive data]));
             resultMimeType = @"application/x-webarchive";
         } else if (gTestRunner->dumpSourceAsWebArchive()) {
             WebArchive *webArchive = [[mainFrame dataSource] webArchive];
-            resultString = CFBridgingRelease(WebCoreTestSupport::createXMLStringFromWebArchiveData((__bridge CFDataRef)[webArchive data]));
+            resultString = CFBridgingRelease(CyberCoreTestSupport::createXMLStringFromWebArchiveData((__bridge CFDataRef)[webArchive data]));
             resultMimeType = @"application/x-webarchive";
         } else if (gTestRunner->isPrinting())
             resultString = [mainFrame renderTreeAsExternalRepresentationForPrinting];
@@ -1915,11 +1915,11 @@ static void resetWebViewToConsistentStateBeforeTesting(const TestOptions& option
     // In the case that a test using the chrome input field failed, be sure to clean up for the next test.
     gTestRunner->removeChromeInputField();
 
-    WebCoreTestSupport::resetInternalsObject([mainFrame globalContext]);
+    CyberCoreTestSupport::resetInternalsObject([mainFrame globalContext]);
 
 #if !PLATFORM(IOS_FAMILY)
-    if (WebCore::Frame* frame = [webView _mainCoreFrame])
-        WebCoreTestSupport::clearWheelEventTestMonitor(*frame);
+    if (CyberCore::Frame* frame = [webView _mainCoreFrame])
+        CyberCoreTestSupport::clearWheelEventTestMonitor(*frame);
 #endif
 
 #if !PLATFORM(IOS_FAMILY)
@@ -1943,7 +1943,7 @@ static void resetWebViewToConsistentStateBeforeTesting(const TestOptions& option
     [[NSPasteboard generalPasteboard] declareTypes:[NSArray arrayWithObject:NSStringPboardType] owner:nil];
 #endif
 
-    WebCoreTestSupport::setAdditionalSupportedImageTypesForTesting(options.additionalSupportedImageTypes.c_str());
+    CyberCoreTestSupport::setAdditionalSupportedImageTypesForTesting(options.additionalSupportedImageTypes.c_str());
 
     [mainFrame _clearOpener];
 
@@ -1951,16 +1951,16 @@ static void resetWebViewToConsistentStateBeforeTesting(const TestOptions& option
     [LayoutTestSpellChecker uninstallAndReset];
 #endif
 
-    WebCoreTestSupport::clearAllLogChannelsToAccumulate();
-    WebCoreTestSupport::initializeLogChannelsIfNecessary();
+    CyberCoreTestSupport::clearAllLogChannelsToAccumulate();
+    CyberCoreTestSupport::initializeLogChannelsIfNecessary();
 }
 
 #if PLATFORM(IOS_FAMILY)
-// Work around <rdar://problem/9909073> WebKit's method of calling delegates on
+// Work around <rdar://problem/9909073> CyberKit's method of calling delegates on
 // the main thread is not thread safe. If the web thread is attempting to call
 // out to a delegate method on the main thread, we want to spin the main thread
 // run loop until the delegate method completes before taking the web thread
-// lock to prevent potentially re-entering WebCore.
+// lock to prevent potentially re-entering CyberCore.
 static void WebThreadLockAfterDelegateCallbacksHaveCompleted()
 {
     dispatch_semaphore_t delegateSemaphore = dispatch_semaphore_create(0);
@@ -2021,7 +2021,7 @@ static void runTest(const string& inputLine)
         testPath = [url absoluteString];
 
     NSString *informationString = [@"CRASHING TEST: " stringByAppendingString:testPath];
-    WebKit::setCrashReportApplicationSpecificInformation((__bridge CFStringRef)informationString);
+    CyberKit::setCrashReportApplicationSpecificInformation((__bridge CFStringRef)informationString);
 
     TestOptions options { [url isFileURL] ? [url fileSystemRepresentation] : pathOrURL, command.absolutePath };
 
@@ -2097,9 +2097,9 @@ static void runTest(const string& inputLine)
     workQueue.clear();
     workQueue.setFrozen(false);
 
-    bool ignoreWebCoreNodeLeaks = shouldIgnoreWebCoreNodeLeaks(testURL);
-    if (ignoreWebCoreNodeLeaks)
-        [WebCoreStatistics startIgnoringWebCoreNodeLeaks];
+    bool ignoreCyberCoreNodeLeaks = shouldIgnoreCyberCoreNodeLeaks(testURL);
+    if (ignoreCyberCoreNodeLeaks)
+        [CyberCoreStatistics startIgnoringCyberCoreNodeLeaks];
 
     @autoreleasepool {
         [mainFrame loadRequest:[NSURLRequest requestWithURL:url]];
@@ -2177,11 +2177,11 @@ static void runTest(const string& inputLine)
     [DumpRenderTreeDraggingInfo clearAllFilePromiseReceivers];
 #endif
 
-    if (ignoreWebCoreNodeLeaks)
-        [WebCoreStatistics stopIgnoringWebCoreNodeLeaks];
+    if (ignoreCyberCoreNodeLeaks)
+        [CyberCoreStatistics stopIgnoringCyberCoreNodeLeaks];
 
     if (gcBetweenTests)
-        [WebCoreStatistics garbageCollectJavaScriptObjects];
+        [CyberCoreStatistics garbageCollectJavaScriptObjects];
     
     JSC::waitForVMDestruction();
 

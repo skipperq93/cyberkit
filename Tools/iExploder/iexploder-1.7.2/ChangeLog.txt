@@ -806,7 +806,7 @@ Split iexploder.cgi into iexploder.rb and config.rb
 ------------------------------------------------------------------------
 r22 | thomas | 2006-04-18 19:36:25 +0200 (Tue, 18 Apr 2006) | 1 line
 
-Add items from WebKit/WebCore/css/CSSValueKeywords.in
+Add items from CyberKit/CyberCore/css/CSSValueKeywords.in
 ------------------------------------------------------------------------
 r21 | thomas | 2006-04-18 19:32:45 +0200 (Tue, 18 Apr 2006) | 1 line
 

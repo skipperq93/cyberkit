@@ -823,7 +823,7 @@
 
         Reviewed by Steve Falkenburg.
 
-        Test for <rdar://problem/5519698> CrashTracer: [USER] 47 crashes in Safari at com.apple.WebCore: WebCore::XMLTokenizer::lineNumber const + 9
+        Test for <rdar://problem/5519698> CrashTracer: [USER] 47 crashes in Safari at com.matthewbenedict.CyberCore: CyberCore::XMLTokenizer::lineNumber const + 9
 
         * fast/innerHTML/innerHTML-script-tag-crash-expected.txt: Added.
         * fast/innerHTML/innerHTML-script-tag-crash.xhtml: Added.
@@ -2312,7 +2312,7 @@
 
         Testcase for:
         http://bugs.webkit.org/show_bug.cgi?id=14926
-        WebKit has 'em' length handling problems related to CSS properties
+        CyberKit has 'em' length handling problems related to CSS properties
 
         Changed results are improved results.
 
@@ -3776,7 +3776,7 @@
 
         Testcase for:
         http://bugs.webkit.org/show_bug.cgi?id=12062
-        WebCore does not handle CSS-specified fill fallback correctly
+        CyberCore does not handle CSS-specified fill fallback correctly
 
         Other updates are changed results from having fallback.
 
@@ -4964,7 +4964,7 @@
 
         Reviewed by Steve Falkenburg.
 
-        Test for <rdar://problem/5519698> CrashTracer: [USER] 47 crashes in Safari at com.apple.WebCore: WebCore::XMLTokenizer::lineNumber const + 9
+        Test for <rdar://problem/5519698> CrashTracer: [USER] 47 crashes in Safari at com.matthewbenedict.CyberCore: CyberCore::XMLTokenizer::lineNumber const + 9
 
         * fast/innerHTML/innerHTML-script-tag-crash-expected.txt: Added.
         * fast/innerHTML/innerHTML-script-tag-crash.xhtml: Added.
@@ -14980,7 +14980,7 @@
 
         Reviewed by Kevin and Tristan.
 
-        <rdar://problem/5456800> Mail crashes at WebCore::nextCandidate() after pasting back into a <table> multiple times
+        <rdar://problem/5456800> Mail crashes at CyberCore::nextCandidate() after pasting back into a <table> multiple times
 
         * editing/pasteboard/paste-into-anchor-text.html: Added.
         * editing/pasteboard/paste-table-cells.html: Added.
@@ -15643,7 +15643,7 @@
         Reviewed by Maciej and John.
 
         Testcase for:
-        <rdar://problem/5452675> CrashTracer: [USER] 10 crashes in Mail at com.apple.WebCore: WebCore::Node::nodeIndex const + 6
+        <rdar://problem/5452675> CrashTracer: [USER] 10 crashes in Mail at com.matthewbenedict.CyberCore: CyberCore::Node::nodeIndex const + 6
 
         * editing/inserting/insert-paragraph-05.html: Added.
         * platform/mac/editing/inserting/insert-paragraph-05-expected.checksum: Added.
@@ -15681,7 +15681,7 @@
 
         Reviewed by Tim Hatcher.
 
-        Test for <rdar://problem/5420682> Mail crashes at WebCore::InsertLineBreakCommand::doApply() after dropping a selected image over container's close box
+        Test for <rdar://problem/5420682> Mail crashes at CyberCore::InsertLineBreakCommand::doApply() after dropping a selected image over container's close box
 
         * editing/deleting/deletionUI-single-instance.html: Added.
         * platform/mac/editing/deleting/deletionUI-single-instance-expected.checksum: Added.
@@ -15993,7 +15993,7 @@
         Reviewed by Darin.
         
         Test for <rdar://problem/5433726>
-        Mail crash at WebCore::Frame::styleForSelectionStart() when deleting a selection in a HTML message (http://www.yahoo.com/)
+        Mail crash at CyberCore::Frame::styleForSelectionStart() when deleting a selection in a HTML message (http://www.yahoo.com/)
 
         * editing/style/temporary-span-crash-expected.txt: Added.
         * editing/style/temporary-span-crash.html: Added.
@@ -16340,7 +16340,7 @@
         Reviewed by Hyatt.
 
         Test for <rdar://problem/5403773>
-        CrashTracer: [USER] 88 crashes in Safari at com.apple.WebCore: WebCore::RenderTableSection::paint + 846
+        CrashTracer: [USER] 88 crashes in Safari at com.matthewbenedict.CyberCore: CyberCore::RenderTableSection::paint + 846
         
         Changed results for fast/dynamic/containing-block-change.html are progression
         (even though new results don't match Firefox and old ones did!)
@@ -16484,7 +16484,7 @@
         Reviewed by Geoff and Oliver.
 
         Add test for <rdar://problem/5267870>
-        Mangleme: Reproducible assertion failure in -[WebCoreFrameBridge installInFrame:]
+        Mangleme: Reproducible assertion failure in -[CyberCoreFrameBridge installInFrame:]
 
         * http/tests/misc/embedCrasher-expected.txt: Added.
         * http/tests/misc/embedCrasher.html: Added.
@@ -16933,7 +16933,7 @@
 
         Reviewed by Harrison.
         
-        <rdar://problem/5390681> WebKit asserts when deleting To Do content selected with a double-click        
+        <rdar://problem/5390681> CyberKit asserts when deleting To Do content selected with a double-click        
 
         * editing/deleting/5390681-2-expected.checksum: Added.
         * editing/deleting/5390681-2-expected.png: Added.
@@ -16967,7 +16967,7 @@
 
         Reviewed by Harrison.
         
-        <rdar://problem/5390681> WebKit asserts when deleting To Do content selected with a double-click
+        <rdar://problem/5390681> CyberKit asserts when deleting To Do content selected with a double-click
 
         * editing/deleting/5390681-expected.checksum: Added.
         * editing/deleting/5390681-expected.png: Added.
@@ -16978,7 +16978,7 @@
 
         Reviewed by John.
 
-        Test for for <rdar://problem/5393798> 100% reproducible crash in WebCore::Scrollbar::setValue
+        Test for for <rdar://problem/5393798> 100% reproducible crash in CyberCore::Scrollbar::setValue
 
         * fast/events/mousedown_in_scrollbar-expected.txt: Added.
         * fast/events/mousedown_in_scrollbar.html: Added.
@@ -17136,7 +17136,7 @@
         Reviewed by Hyatt.
         
         Tests for <rdar://problem/5102553>
-        Mail spins trying to display or edit a specific long plain text message in WebCore::TimerBase::...
+        Mail spins trying to display or edit a specific long plain text message in CyberCore::TimerBase::...
         
         - added performance test. With debug build on MBP this takes about 1.5s to run.
         - added test case that shows some additional progression from the patch (less leftover anonymous boxes).
@@ -18252,7 +18252,7 @@
         Reviewed by Darin.
         
         Test for <rdar://problem/5257371>
-        Dashcode Client crash when clicking on placemarks in Maps widget in WebCore::DeprecatedPtrListImpl::addIterator
+        Dashcode Client crash when clicking on placemarks in Maps widget in CyberCore::DeprecatedPtrListImpl::addIterator
 
         * fast/flexbox/inline-children-crash-expected.txt: Added.
         * fast/flexbox/inline-children-crash.html: Added.
@@ -18273,7 +18273,7 @@
         Reviewed by Oliver.
 
         Test for http://bugs.webkit.org/show_bug.cgi?id=14646
-        WebKit border radius properties are unavailable via JavaScript
+        CyberKit border radius properties are unavailable via JavaScript
 
         * fast/dom/getComputedStyle-borderRadius-expected.txt: Added.
         * fast/dom/getComputedStyle-borderRadius.html: Added.
@@ -18366,7 +18366,7 @@
 
         Reviewed by Kevin Decker.
         
-        Layout test that demonstrates why an old ASSERT in WebCore was wrong.
+        Layout test that demonstrates why an old ASSERT in CyberCore was wrong.
 
         * ChangeLog:
         * fast/history/go-back-to-changed-name-expected.txt: Added.
@@ -19037,7 +19037,7 @@
 
         <rdar://problem/4954319> 
         Acrobat 7 / Safari crash: CrashTracer: 99 crashes in Safari at 
-        com.apple.WebCore: WebCore::NetscapePlugInStreamLoader::isDone const + 0
+        com.matthewbenedict.CyberCore: CyberCore::NetscapePlugInStreamLoader::isDone const + 0
         
         Add tests.
         
@@ -19373,7 +19373,7 @@
 
         Reviewed by Harrison.
         
-        <rdar://problem/5279521> REGRESSION: In Mail, a crash occurs at WebCore::Range::startPosition() when attempting to apply alignment to selected image/text in message body
+        <rdar://problem/5279521> REGRESSION: In Mail, a crash occurs at CyberCore::Range::startPosition() when attempting to apply alignment to selected image/text in message body
         
         Demonstrates bug:
         * editing/style/5279521-expected.checksum: Added.
@@ -19522,7 +19522,7 @@
 
         <rdar://problem/5289718>
         http://bugs.webkit.org/show_bug.cgi?id=14437
-        CrashTracer: [REGRESSION] 76 crashes in Safari at com.apple.WebCore: WebCore::Frame::settings const + 6 (14437)
+        CrashTracer: [REGRESSION] 76 crashes in Safari at com.matthewbenedict.CyberCore: CyberCore::Frame::settings const + 6 (14437)
         
         Add test from Alexey Proskuryakov.
         
@@ -19829,7 +19829,7 @@
 
         Reviewed by Darin.
 
-        - <rdar://problem/5271937> REGRESSION: Apparent WebKit JavaScript memory smasher when submitting comment to iWeb site (crashes in kjs_pcre_compile2)
+        - <rdar://problem/5271937> REGRESSION: Apparent CyberKit JavaScript memory smasher when submitting comment to iWeb site (crashes in kjs_pcre_compile2)
         - Correctly evaluate the return value of _pcre_ucp_findchar.
 
         * fast/js/regexp-unicode-overflow-expected.txt: Added.
@@ -19852,7 +19852,7 @@
         Reviewed by Adam Roben.
 
         Tests for http://bugs.webkit.org/show_bug.cgi?id=12045
-        Crash under gmalloc at WTF::RefPtr<WebCore::HTMLSliderThumbElement>::operator->
+        Crash under gmalloc at WTF::RefPtr<CyberCore::HTMLSliderThumbElement>::operator->
         <rdar://problem/5286670>
 
         * fast/forms/thumbslider-crash-expected.checksum: Added.
@@ -20174,7 +20174,7 @@
         Reviewed by Geoff.
 
         <rdar://problem/5244734>
-        WebKit shouldn't send delegate resource load methods for the user stylesheet (doing so causes assertions in Safari)
+        CyberKit shouldn't send delegate resource load methods for the user stylesheet (doing so causes assertions in Safari)
 
         * fast/loader/resources/user-style-sheet.css: Added.
         * fast/loader/user-style-sheet-resource-load-callbacks.html: Added.
@@ -20738,7 +20738,7 @@
         Reviewed by Maciej.
 
         - test for http://bugs.webkit.org/show_bug.cgi?id=13792
-          REGRESSION: WebKit doesn't show this javascript screenshot page (and crashes after click on its "hidden link")
+          REGRESSION: CyberKit doesn't show this javascript screenshot page (and crashes after click on its "hidden link")
 
         * fast/frames/removal-before-attach-crash-expected.txt: Added.
         * fast/frames/removal-before-attach-crash.html: Added.
@@ -21654,7 +21654,7 @@
         Reviewed by Hyatt.
 
         Changes for <rdar://problem/5204107> REGRESSION: CSS web forum site 
-        layout not displaying properly in latest WebKit
+        layout not displaying properly in latest CyberKit
 
         New test:
         * fast/table/tableInsideCaption-expected.checksum: Added.
@@ -21992,7 +21992,7 @@
 
         Reviewed by Brady.
 
-        - Test case for <rdar://problem/5203036> REGRESSION: Assertion failure in WebCore::FrameLoader::restoreScrollPositionAndViewState() going back from fark.com Photoshop contest (13684)
+        - Test case for <rdar://problem/5203036> REGRESSION: Assertion failure in CyberCore::FrameLoader::restoreScrollPositionAndViewState() going back from fark.com Photoshop contest (13684)
 
         * http/tests/incremental/slow-utf8-html.pl:
         * http/tests/navigation/back-to-slow-frame.html: Added.
@@ -22154,7 +22154,7 @@
 
         Reviewed by Brady.
 
-        Layout tests for <rdar://problem/5017375> WebKit should disable SVG in Dashboard
+        Layout tests for <rdar://problem/5017375> CyberKit should disable SVG in Dashboard
         Tests attempt to use SVG in a number of ways, both direct and indirect.
         
 
@@ -22884,7 +22884,7 @@
         Reviewed by Darin.
 
         http://bugs.webkit.org/show_bug.cgi?id=13514
-        REGRESSION (r20997-21003): Crash in WebCore::Node::document
+        REGRESSION (r20997-21003): Crash in CyberCore::Node::document
 
         * fast/dom/NodeList/childNodes-reset-cache-expected.txt: Added.
         * fast/dom/NodeList/childNodes-reset-cache.html: Added.
@@ -23437,7 +23437,7 @@
         Reviewed by darin
         
         <rdar://problem/5142012> 
-        GoogleDocs: Crash at WebCore::Range::startPosition() when creating a list from a link
+        GoogleDocs: Crash at CyberCore::Range::startPosition() when creating a list from a link
 
         Tests the change to pushAnchorElementDown, where we remove
         the anchor element that has had copies of it pushed down:
@@ -24364,7 +24364,7 @@
         Reviewed by Hyatt.
         
         Layout test for <rdar://5057686>
-        Flex box layout example hangs in WebCore::RenderFlexibleBox::allowedChildFlex
+        Flex box layout example hangs in CyberCore::RenderFlexibleBox::allowedChildFlex
 
         * fast/flexbox/flex-hang-expected.checksum: Added.
         * fast/flexbox/flex-hang-expected.png: Added.
@@ -24640,7 +24640,7 @@
         Reviewed by Darin.
 
         <rdar://problem/5028178>
-        Crash occurs at WebCore::FrameLoader::activeDocumentLoader() after loading Froggster widget
+        Crash occurs at CyberCore::FrameLoader::activeDocumentLoader() after loading Froggster widget
 
         * plugins/get-url-that-the-resource-load-delegate-will-disallow-expected.txt: Added.
         * plugins/get-url-that-the-resource-load-delegate-will-disallow.html: Added.
@@ -25299,7 +25299,7 @@
         Reviewed by Darin Adler.
         
         Layout tests for <rdar://problem/5088234> REGRESSION: Crash occurs at 
-        WebCore::Node::createRendererIfNeeded() when changing map views with MS 
+        CyberCore::Node::createRendererIfNeeded() when changing map views with MS 
         Virtual Earth (http://www.ziprealty.com/)
 
         * fast/dom/mutation-event-remove-inserted-node-expected.txt: Added.
@@ -25324,7 +25324,7 @@
         Reviewed by Adam.
         
         Test for <rdar://problem/5049842>
-        Gmail Editor: Dragging message text in the message body results in a crash at WebCore::Frame::eventHandler()
+        Gmail Editor: Dragging message text in the message body results in a crash at CyberCore::Frame::eventHandler()
 
         * editing/pasteboard/drag-drop-dead-frame-expected.checksum: Added.
         * editing/pasteboard/drag-drop-dead-frame-expected.png: Added.
@@ -26055,7 +26055,7 @@
         Tests for http://bugs.webkit.org/show_bug.cgi?id=13005
         Bug 13005: WebScriptObject +throwException needs NULL check.
 
-        A plugin that throws on dealloc can crash WebKit.
+        A plugin that throws on dealloc can crash CyberKit.
 
         * plugins/throw-on-dealloc-expected.txt: Added.
         * plugins/throw-on-dealloc.html: Added.
@@ -26807,7 +26807,7 @@ t: 2007-03-15  Mitz Pettel  <mitz@webkit.org>
 
         Adjusted tests for:
         http://bugs.webkit.org/show_bug.cgi?id=12579
-        WebKit fails SVG xml:base test
+        CyberKit fails SVG xml:base test
 
         * dom/xhtml/level3/core/documentgetdocumenturi01-expected.txt:
         * dom/xhtml/level3/core/nodegetbaseuri01-expected.txt:
@@ -27064,7 +27064,7 @@ t: 2007-03-15  Mitz Pettel  <mitz@webkit.org>
         Reviewed by Maciej.
 
         <rdar://problem/5035045>
-        REGRESSION: WebKit browser doesn't display image at http://www.metoffice.gov.uk/weather/satellite/index.html
+        REGRESSION: CyberKit browser doesn't display image at http://www.metoffice.gov.uk/weather/satellite/index.html
         
         Add some tests where image elements have id _and_ name elements.
         
@@ -27273,7 +27273,7 @@ t: 2007-03-15  Mitz Pettel  <mitz@webkit.org>
         Reviewed by Adam, Darin.
 
         <rdar://problem/5025212>
-        In Mail, a crash occurs at WebCore::Frame::tree() when clicking on embedded flash object
+        In Mail, a crash occurs at CyberCore::Frame::tree() when clicking on embedded flash object
 
         * plugins/get-url-with-blank-target-expected.txt: Added.
         * plugins/get-url-with-blank-target.html: Added.
@@ -27637,7 +27637,7 @@ t: 2007-03-15  Mitz Pettel  <mitz@webkit.org>
 
         Reviewed by Oliver.
 
-        - test cases for <rdar://problem/4946881> Recursive loop with <marker> not caught, crashes in WebCore::SVGPaintServer::draw (11244)
+        - test cases for <rdar://problem/4946881> Recursive loop with <marker> not caught, crashes in CyberCore::SVGPaintServer::draw (11244)
         http://bugs.webkit.org/show_bug.cgi?id=11244
 
         * svg/custom/circular-marker-reference-1-expected.checksum: Added.
@@ -27712,7 +27712,7 @@ t: 2007-03-15  Mitz Pettel  <mitz@webkit.org>
         Reviewed by Adam.
 
         Test for <rdar://problem/4990700> Safari always crashes when attempting to edit/view 
-        Yahoo pipes in WebCore::HTMLSelectElement::optionToListIndex
+        Yahoo pipes in CyberCore::HTMLSelectElement::optionToListIndex
 
         * fast/forms/select-out-of-bounds-index-expected.txt: Added.
         * fast/forms/select-out-of-bounds-index.html: Added.
@@ -27784,7 +27784,7 @@ t: 2007-03-15  Mitz Pettel  <mitz@webkit.org>
         Reviewed by darin
         
         <rdar://problem/5007143>
-        REGRESSION: WebKit doesn't remember horizontal position of caret when moving forward by line
+        REGRESSION: CyberKit doesn't remember horizontal position of caret when moving forward by line
 
         Added, tests the removal of the use of the 
         recalc bool from xPosForVerticalArrowNavigation(...):
@@ -28342,7 +28342,7 @@ t: 2007-03-15  Mitz Pettel  <mitz@webkit.org>
         Reviewed by Maciej.
 
         - test for http://bugs.webkit.org/show_bug.cgi?id=12479
-          ASSERTION FAILURE: resource->inCache() in WebCore::Cache::remove
+          ASSERTION FAILURE: resource->inCache() in CyberCore::Cache::remove
 
         * fast/loader/resources/simultaneous-reloads-assert-frame.html: Added.
         * fast/loader/simultaneous-reloads-assert-expected.txt: Added.
@@ -28609,7 +28609,7 @@ t: 2007-03-15  Mitz Pettel  <mitz@webkit.org>
         Reviewed by Maciej.
 
         http://bugs.webkit.org/show_bug.cgi?id=12578
-        WebKit incorrectly strokes zero-width/height rectangles
+        CyberKit incorrectly strokes zero-width/height rectangles
 
         Updated test results.
 
@@ -28832,7 +28832,7 @@ t: 2007-03-15  Mitz Pettel  <mitz@webkit.org>
 
         Reviewed by Antti.
         
-        - test case for <rdar://problem/4928675> REGRESSION: Crash in CGBlt_copyBytes under WebCore::Font::drawGlyphs (12083)
+        - test case for <rdar://problem/4928675> REGRESSION: Crash in CGBlt_copyBytes under CyberCore::Font::drawGlyphs (12083)
         http://bugs.webkit.org/show_bug.cgi?id=12083
         
         * fast/text/text-shadow-extreme-value.html: Added.
@@ -28920,7 +28920,7 @@ t: 2007-03-15  Mitz Pettel  <mitz@webkit.org>
 
         Reviewed by Maciej
 
-        <rdar://problem/4965133> WebKit sends file:// url referrers
+        <rdar://problem/4965133> CyberKit sends file:// url referrers
 
         Added a new category of http tests - "local" where the test is run as a local file but
         the test involves remote resources from the httpd.
@@ -28968,7 +28968,7 @@ t: 2007-03-15  Mitz Pettel  <mitz@webkit.org>
         Reviewed by john
         
         <rdar://problem/4960116>
-        REGRESSION: Nightly Safari crashes in WebCore::SelectionController::xPosForVerticalArrowNavigation (12416)
+        REGRESSION: Nightly Safari crashes in CyberCore::SelectionController::xPosForVerticalArrowNavigation (12416)
 
         * editing/selection/4960116-expected.checksum: Added.
         * editing/selection/4960116-expected.png: Added.
@@ -30248,7 +30248,7 @@ t: 2007-03-15  Mitz Pettel  <mitz@webkit.org>
 
         <rdar://problem/4960097>
         http://bugs.webkit.org/show_bug.cgi?id=12444
-        Assertion failure in -[WebCoreFrameBridge installInFrame:]
+        Assertion failure in -[CyberCoreFrameBridge installInFrame:]
 
         * fast/parser/xhtml-document-with-html-object-expected.txt: Added.
         * fast/parser/xhtml-document-with-html-object.xhtml: Added.
@@ -30289,7 +30289,7 @@ t: 2007-03-15  Mitz Pettel  <mitz@webkit.org>
         Moved these to fast/xpath.
 
         * fast/xpath/xpath-namespaces.html: Fixed an inline document to be well-formed, so the test now passes in Firefox.
-        This is really a quirk of our DOMParser that the test passed in WebKit: on error, a descriptive message is appended to
+        This is really a quirk of our DOMParser that the test passed in CyberKit: on error, a descriptive message is appended to
         the partially parsed document, instead of replacing it.
 
 2007-01-29  Alexey Proskuryakov  <ap@webkit.org>
@@ -30427,7 +30427,7 @@ t: 2007-03-15  Mitz Pettel  <mitz@webkit.org>
         * editing/deleting/delete-by-word-002-expected.txt:
         * editing/deleting/delete-to-end-of-paragraph-expected.txt:
         * editing/pasteboard/emacs-cntl-y-001-expected.txt:
-        The expected results of these tests were affected by the WebCore checkin of the same number.  The results are the same, but there were more editing delegates that were called, as expected.  I suspect these tests were created during the time that <rdar://problem/4919097> was broken
+        The expected results of these tests were affected by the CyberCore checkin of the same number.  The results are the same, but there were more editing delegates that were called, as expected.  I suspect these tests were created during the time that <rdar://problem/4919097> was broken
 
 2007-01-26  Alexey Proskuryakov  <ap@webkit.org>
 
@@ -30592,7 +30592,7 @@ t: 2007-03-15  Mitz Pettel  <mitz@webkit.org>
         Reviewed by Geoff.
 
         Test for <rdar://problem/4948128> REGRESSION: A crash occurs at 
-        WebCore::Frame::view() after completing a query at mapquest.com 
+        CyberCore::Frame::view() after completing a query at mapquest.com 
         then switching to Bookmarks view
 
         * fast/dom/clientWidthAfterDocumentIsRemoved-expected.checksum: Added.
@@ -30733,7 +30733,7 @@ t: 2007-03-15  Mitz Pettel  <mitz@webkit.org>
         Reviewed by john
         
         <rdar://problem/4920742>
-        REGRESSION: GMail Editor: Attempting to remove formatting from selection results in a crash at WebCore::Range::checkDeleteEx
+        REGRESSION: GMail Editor: Attempting to remove formatting from selection results in a crash at CyberCore::Range::checkDeleteEx
 tract()
 
         * editing/execCommand/4920742-1-expected.checksum: Added.
@@ -31309,7 +31309,7 @@ tract()
         Reviewed by Maciej.
 
         - test for http://bugs.webkit.org/show_bug.cgi?id=12039
-          Assertion failure in WebCore::Font::primaryFont
+          Assertion failure in CyberCore::Font::primaryFont
 
         * fast/text/font-initial-expected.checksum: Added.
         * fast/text/font-initial-expected.png: Added.
@@ -31371,7 +31371,7 @@ tract()
         Reviewed by darin
 
         <rdar://problem/4920488>
-        REGRESSION: A crash occurs at WebCore::Range::processContents () when removing formatting from selected text (that contains a link)
+        REGRESSION: A crash occurs at CyberCore::Range::processContents () when removing formatting from selected text (that contains a link)
 
         * editing/execCommand/4920488-expected.checksum: Added.
         * editing/execCommand/4920488-expected.png: Added.
@@ -31736,7 +31736,7 @@ tract()
 
         - test for fast/css/line-height.html
           REGRESSION (r18816-r18818): Assertion failure in
-          WebCore::Length::Length[in-charge](int, WebCore::LengthType, bool)
+          CyberCore::Length::Length[in-charge](int, CyberCore::LengthType, bool)
 
         * fast/css/line-height-expected.checksum: Added.
         * fast/css/line-height-expected.png: Added.
@@ -32674,7 +32674,7 @@ tract()
         Reviewed by Sam Weinig.
 
         - pixel test for http://bugs.webkit.org/show_bug.cgi?id=12043
-          Another assertion failure in WebCore::RenderObject::drawBorder
+          Another assertion failure in CyberCore::RenderObject::drawBorder
 
         * fast/borders/border-radius-huge-assert-expected.checksum: Added.
         * fast/borders/border-radius-huge-assert-expected.png: Added.
@@ -33026,7 +33026,7 @@ tract()
         Reviewed by Mark Rowe.
 
         - pixel test for http://bugs.webkit.org/show_bug.cgi?id=12042
-          Assertion failure in WebCore::RenderObject::drawBorder
+          Assertion failure in CyberCore::RenderObject::drawBorder
 
         * fast/borders/outline-offset-min-assert-expected.checksum: Added.
         * fast/borders/outline-offset-min-assert-expected.png: Added.
@@ -33038,7 +33038,7 @@ tract()
         Reviewed by Eric.
 
         Layout test for http://bugs.webkit.org/show_bug.cgi?id=12061
-        Bug 12061: Crash in WebCore::Shared<WebCore::StringImpl>::deref
+        Bug 12061: Crash in CyberCore::Shared<CyberCore::StringImpl>::deref
 
         * fast/css-generated-content/reset-content-to-initial-expected.txt: Added.
         * fast/css-generated-content/reset-content-to-initial.html: Added.
@@ -33420,7 +33420,7 @@ tract()
         http://bugs.webkit.org/show_bug.cgi?id=11108
         Replace usage of split by proper parsers
         http://bugs.webkit.org/show_bug.cgi?id=11908
-        WebKit spends 40% of its time displaying "bamboo.svg" executing Regexes
+        CyberKit spends 40% of its time displaying "bamboo.svg" executing Regexes
 
         * svg/custom/transform-invalid-expected.txt:
         * svg/custom/transform-invalid.svg:
@@ -33431,7 +33431,7 @@ tract()
 
         Fixed regression in plugins/netscape-dom-access.html. 
         
-        When I stopped WebKit from meddling in plug-in lifetime, plug-ins started 
+        When I stopped CyberKit from meddling in plug-in lifetime, plug-ins started 
         to live a little longer. In this case, the plug-in from mouse-events.html 
         started to live long enough to get a blur event when DumpRenderTree navigated 
         to the next page.
@@ -34842,7 +34842,7 @@ tract()
         Reviewed by rwlbuis.
         
         Updated tests (and test results) after fixing:
-        WebKit does not respect boundingbox percentages larger than 100%
+        CyberKit does not respect boundingbox percentages larger than 100%
         http://bugs.webkit.org/show_bug.cgi?id=11973
 
         * svg/custom/js-late-gradient-and-object-creation-expected.checksum:
@@ -34949,7 +34949,7 @@ tract()
         Reviewed by Brady Eidson.
         
         Test for <rdar://problem/4871518> Leopard9A321: Crash visiting www.audible.com 
-        (WebCore::FrameLoader::loadSubframe)
+        (CyberCore::FrameLoader::loadSubframe)
         
         Tests an onload handler for a synchronously loaded iframe removing the iframe 
         from the document.
@@ -35222,7 +35222,7 @@ tract()
         <rdar://problem/4701860>
         http://bugs.webkit.org/show_bug.cgi?id=11010
         
-        [9A255] Crash in WebCore::EventTargetNode::dispatchEvent
+        [9A255] Crash in CyberCore::EventTargetNode::dispatchEvent
 
         * fast/dom/resources/script-element-gc.js: Added.
         * fast/dom/script-element-gc-expected.txt: Added.
@@ -35348,8 +35348,8 @@ tract()
 
         Reviewed by Adele.
 
-        Test case for <rdar://problem/4749770> WebCore crashes on a blog 
-        website in WebCore::InlineBox::root() + 6
+        Test case for <rdar://problem/4749770> CyberCore crashes on a blog 
+        website in CyberCore::InlineBox::root() + 6
 
         * fast/lists/inlineBoxWrapperNullCheck-expected.checksum: Added.
         * fast/lists/inlineBoxWrapperNullCheck-expected.png: Added.
@@ -35917,7 +35917,7 @@ tract()
         Reviewed by harrison
 
         <rdar://problem/4866671>
-        CrashTracer: 1 crashes in Mail after deleting a list item at WebCore::DeleteSelectionCommand::doApply()
+        CrashTracer: 1 crashes in Mail after deleting a list item at CyberCore::DeleteSelectionCommand::doApply()
 
         * editing/deleting/4866671-expected.checksum: Added.
         * editing/deleting/4866671-expected.png: Added.
@@ -36120,7 +36120,7 @@ tract()
 
         Updated testcases due to:
         http://bugs.webkit.org/show_bug.cgi?id=10996
-        WebKit needs (possibly private) XML/SVG innerText support (for DumpRenderTree)
+        CyberKit needs (possibly private) XML/SVG innerText support (for DumpRenderTree)
 
         * dom/svg/level3/xpath/Attribute_Nodes-expected.txt:
         * dom/svg/level3/xpath/Attribute_Nodes_xmlns-expected.txt:
@@ -36299,7 +36299,7 @@ tract()
 
         Testcase for:
         http://bugs.webkit.org/show_bug.cgi?id=6074
-        WebKit+SVG and FireFox disagree on invalid "transform" handling
+        CyberKit+SVG and FireFox disagree on invalid "transform" handling
 
         Also new results for transform-ignore-after-invalid.svg.
 
@@ -36329,7 +36329,7 @@ tract()
         Reviewed by Darin.
 
         <rdar://problem/4838778>
-        DashboardClient crashing in WebCore::SubresourceLoader::didFail.
+        DashboardClient crashing in CyberCore::SubresourceLoader::didFail.
         
         * http/tests/xmlhttprequest/abort-crash-expected.txt: Added.
         * http/tests/xmlhttprequest/abort-crash.html: Added.
@@ -36352,7 +36352,7 @@ tract()
         Reviewed by darin
         
         <rdar://problem/4818134>
-        Crash in WebCore::selectRange when invoking WebView:insertNewLine in any empty content editable DIV.
+        Crash in CyberCore::selectRange when invoking WebView:insertNewLine in any empty content editable DIV.
 
         * editing/selection/select-line-expected.txt: Added.
         * editing/selection/select-line.html: Added.
@@ -36388,7 +36388,7 @@ tract()
 
         Testcase for:
         http://bugs.webkit.org/show_bug.cgi?id=11686
-        WebKit draws Carto.net tabgroup example completely incorrectly (ff does fine)
+        CyberKit draws Carto.net tabgroup example completely incorrectly (ff does fine)
 
         * svg/custom/getBBox-js-expected.txt: Added.
         * svg/custom/getBBox-js.svg: Added.
@@ -36602,7 +36602,7 @@ tract()
         Reviewed by sullivan
         
         <rdar://problem/4845371>
-        In Mail, a crash occurs at WebCore::Node::traverseNextNode() when cutting selected text from a HTML message
+        In Mail, a crash occurs at CyberCore::Node::traverseNextNode() when cutting selected text from a HTML message
 
         * editing/deleting/4845371-expected.checksum: Added.
         * editing/deleting/4845371-expected.png: Added.
@@ -36890,7 +36890,7 @@ tract()
 2006-11-14  Mitz Pettel  <mitz@webkit.org>
 
         http://bugs.webkit.org/show_bug.cgi?id=11575
-        Bug 11575: REGRESSION: WebCore crash in CSSParser/HTMLTokenizer
+        Bug 11575: REGRESSION: CyberCore crash in CSSParser/HTMLTokenizer
 
         * fast/css/css-imports-expected.checksum: Added.
         * fast/css/css-imports-expected.png: Added.
@@ -37012,7 +37012,7 @@ tract()
         Reviewed by Hyatt.
 
         Test cases for <rdar://problem/4820814> A crash occurs at 
-        WebCore::HitTestResult::spellingToolTip() when mousing down on 
+        CyberCore::HitTestResult::spellingToolTip() when mousing down on 
         iframe at www.macsurfer.com
 
         And for the found-bug of moving text nodes within the head to the  
@@ -37100,7 +37100,7 @@ tract()
         Reviewed by Hyatt.
 
         Test for <rdar://problem/4820814> A crash occurs at 
-        WebCore::HitTestResult::spellingToolTip() when mousing down on 
+        CyberCore::HitTestResult::spellingToolTip() when mousing down on 
         iframe at www.macsurfer.com
 
         * fast/frames/onlyCommentInIFrame-expected.checksum: Added.
@@ -37915,7 +37915,7 @@ tract()
 
 2006-10-18  Geoffrey Garen  <ggaren@apple.com>
 
-        Test for some window properties that WebCore previously didn't enumerate.
+        Test for some window properties that CyberCore previously didn't enumerate.
 
         * fast/js/window-properties2-expected.txt: Added.
         * fast/js/window-properties2.html: Added.
@@ -38122,7 +38122,7 @@ tract()
 
         Reviewed by Justin.
 
-        <rdar://problem/4746860> Mail crash in WebCore::CSSMutableStyleDeclaration::merge(WebCore::CSSMutableStyleDeclaration*, bool)
+        <rdar://problem/4746860> Mail crash in CyberCore::CSSMutableStyleDeclaration::merge(CyberCore::CSSMutableStyleDeclaration*, bool)
 
         * editing/style/style-boundary-005.html: Added. Matches steps from bug.
         * editing/execCommand/hilitecolor-expected.txt: Updated (no empty Apple style spans).
@@ -38498,7 +38498,7 @@ text-clip was an incorrect test, rather than an incorrect result
         Reviewed by Eric.
 
         Test for http://bugs.webkit.org/show_bug.cgi?id=10837
-        Bug 10837: REGRESSION: Yahoo New Charts Crashes WebKit
+        Bug 10837: REGRESSION: Yahoo New Charts Crashes CyberKit
 
         * fast/dom/HTMLDocument/frameless-location-bugzilla10837-expected.checksum: Added.
         * fast/dom/HTMLDocument/frameless-location-bugzilla10837-expected.png: Added.
@@ -38992,7 +38992,7 @@ text-clip was an incorrect test, rather than an incorrect result
         Reviewed by john
         
         <rdar://problem/4747695> 
-        Gmail Editor: Crash at WebCore::Range::startPosition() when decreasing a indent
+        Gmail Editor: Crash at CyberCore::Range::startPosition() when decreasing a indent
 
         * editing/deleting/list-item-1-expected.checksum: Added.
         * editing/deleting/list-item-1-expected.png: Added.
@@ -40583,7 +40583,7 @@ text-clip was an incorrect test, rather than an incorrect result
 
         - test for <rdar://problem/4683948> REGRESSION: Assertion failure in [FrameProgressEntry addChild:forDataSource:] (fandango.com)
         
-        (I both added a WebKit assertion that would fail under this test, and then did a fix to make it not fire)
+        (I both added a CyberKit assertion that would fail under this test, and then did a fix to make it not fire)
         
         * fast/loader/start-load-in-unload-expected.txt: Added.
         * fast/loader/start-load-in-unload.html: Added.
@@ -41199,7 +41199,7 @@ text-clip was an incorrect test, rather than an incorrect result
         Reviewed by Hyatt.
 
         - test for http://bugs.webkit.org/show_bug.cgi?id=10213
-          REGRESSION: Crash in WebCore::RenderLayer::isTransparent involving <iframe> and <select>
+          REGRESSION: Crash in CyberCore::RenderLayer::isTransparent involving <iframe> and <select>
 
         * fast/frames/iframe-option-crash-expected.checksum: Added.
         * fast/frames/iframe-option-crash-expected.png: Added.
@@ -41253,7 +41253,7 @@ text-clip was an incorrect test, rather than an incorrect result
         Reviewed by Darin.
 
         - test for http://bugs.webkit.org/show_bug.cgi?id=10198
-          REGRESSION: WebKit r15750 crashes while loading anthem.com
+          REGRESSION: CyberKit r15750 crashes while loading anthem.com
 
         * fast/overflow/generated-content-crash-expected.txt: Added.
         * fast/overflow/generated-content-crash.html: Added.
@@ -41584,7 +41584,7 @@ text-clip was an incorrect test, rather than an incorrect result
         Reviewed by Darin.
 
         Test for: http://bugs.webkit.org/show_bug.cgi?id=9867
-        REGRESSION: code that modifies form element in Firefox modifies form attribute in WebKit
+        REGRESSION: code that modifies form element in Firefox modifies form attribute in CyberKit
 
         * fast/forms/input-named-action-overrides-action-attribute-expected.txt: Added.
         * fast/forms/input-named-action-overrides-action-attribute.html: Added.
@@ -41838,7 +41838,7 @@ text-clip was an incorrect test, rather than an incorrect result
 
         Reviewed by timo.
 
-        <rdar://problem/4646759> Mail crash editing To Do - WebCore::InsertTextCommand::prepareForTextInsertion
+        <rdar://problem/4646759> Mail crash editing To Do - CyberCore::InsertTextCommand::prepareForTextInsertion
 
         * editing/deleting/delete-mixed-editable-content-001-expected.checksum: Added.
         * editing/deleting/delete-mixed-editable-content-001-expected.png: Added.
@@ -41883,7 +41883,7 @@ text-clip was an incorrect test, rather than an incorrect result
         
         Test for whether focusing and/or blurring a frame before its content has loaded causes
         a crash. <rdar://problem/4632505> REGRESSION: Crash at 
-        WebCore::Widget::getView() const + 6
+        CyberCore::Widget::getView() const + 6
         
         * http/tests/incremental/frame-focus-before-load-expected.txt: Added.
         * http/tests/incremental/frame-focus-before-load.html: Added.
@@ -42372,7 +42372,7 @@ text-clip was an incorrect test, rather than an incorrect result
 
         Reviewed by Hyatt.
         
-        Test cases for <rdar://problem/4567031> REGRESSION: Crash at WebCore::RenderBlock::createLineBoxes (seems to be a security hole?)
+        Test cases for <rdar://problem/4567031> REGRESSION: Crash at CyberCore::RenderBlock::createLineBoxes (seems to be a security hole?)
         
         I included the test case from the bug plus variants for other broken cases that
         were similar but needed separate fixes.
@@ -42423,7 +42423,7 @@ text-clip was an incorrect test, rather than an incorrect result
         Reviewed by Geoffrey.
 
         http://bugs.webkit.org/show_bug.cgi?id=9742
-        Bug 9742: REGRESSION: WebKit hangs when loading <http://www.vtbook.com>
+        Bug 9742: REGRESSION: CyberKit hangs when loading <http://www.vtbook.com>
 
         This includes tests for indexing an array with immediate types, and for
         setting selectField.options.length to immediate types.
@@ -42544,7 +42544,7 @@ text-clip was an incorrect test, rather than an incorrect result
 
         Reviewed by Maciej.
 
-        <rdar://problem/4586665> REGRESSION: autorestore.apple.com: Crashes Safari in WebCore::Widget::client() const
+        <rdar://problem/4586665> REGRESSION: autorestore.apple.com: Crashes Safari in CyberCore::Widget::client() const
 
         * fast/forms/input-type-change-in-onfocus-keyboard-expected.txt: Added.
         * fast/forms/input-type-change-in-onfocus-keyboard.html: Added.
@@ -42852,7 +42852,7 @@ text-clip was an incorrect test, rather than an incorrect result
 
         Reviewed by John Sullivan.
 
-        <rdar://problem/4598149> Deleting the contents of a DOMRange and then inserting a node into it crashes in WebCore::Font::canUseGlyphCache
+        <rdar://problem/4598149> Deleting the contents of a DOMRange and then inserting a node into it crashes in CyberCore::Font::canUseGlyphCache
 
         * fast/dom/delete-contents-expected.checksum: Added.
         * fast/dom/delete-contents-expected.png: Added.
@@ -43164,9 +43164,9 @@ text-clip was an incorrect test, rather than an incorrect result
         Reviewed by levi
         
         <rdar://problem/4609184>
-        Mail crashes at WebCore::Selection::adjustForEditableContent
+        Mail crashes at CyberCore::Selection::adjustForEditableContent
         <rdar://problem/4609140>
-        Crash at WebCore::Range::compareBoundaryPoints
+        Crash at CyberCore::Range::compareBoundaryPoints
 
         * editing/selection/mixed-editability-1-expected.checksum: Added.
         * editing/selection/mixed-editability-1-expected.png: Added.
@@ -43687,7 +43687,7 @@ text-clip was an incorrect test, rather than an incorrect result
         Reviewed by Darin.
 
         - http://bugs.webkit.org/show_bug.cgi?id=9537
-          REGRESSION: Reproducible crash in WebCore::RenderTextField::textWithHardLineBreaks()
+          REGRESSION: Reproducible crash in CyberCore::RenderTextField::textWithHardLineBreaks()
 
         * fast/forms/textarea-hard-linewrap-empty-expected.txt: Added.
         * fast/forms/textarea-hard-linewrap-empty.html: Added.
@@ -44056,7 +44056,7 @@ text-clip was an incorrect test, rather than an incorrect result
 
         Reviewed by Maciej.
 
-        <rdar://problem/4499675> Package Tracker widget always crashes in WebCore::Frame::jScriptEnabled() const + 0
+        <rdar://problem/4499675> Package Tracker widget always crashes in CyberCore::Frame::jScriptEnabled() const + 0
         
         * fast/dom/noscript-canvas-in-created-html-document-expected.txt: Added.
         * fast/dom/noscript-canvas-in-created-html-document.html: Added.
@@ -45134,7 +45134,7 @@ text-clip was an incorrect test, rather than an incorrect result
 2006-06-04  Darin Adler  <darin@apple.com>
 
         - test for http://bugs.webkit.org/show_bug.cgi?id=9176
-          REGRESSION: repro crash in WebCore::StringImpl::hash() const + 28 (StringImpl.h:67)
+          REGRESSION: repro crash in CyberCore::StringImpl::hash() const + 28 (StringImpl.h:67)
 
         * fast/loader/link-no-URL.html: Added.
         * fast/loader/link-no-URL-expected.txt: Added.
@@ -45828,7 +45828,7 @@ text-clip was an incorrect test, rather than an incorrect result
         Reviewed and landed by ap.
 
         - test for http://bugs.webkit.org/show_bug.cgi?id=9009
-          REGRESSION: ToT crash in WebCore at Zap2it
+          REGRESSION: ToT crash in CyberCore at Zap2it
 
         * fast/table/empty-section-crash-expected.checksum: Added.
         * fast/table/empty-section-crash-expected.png: Added.
@@ -45974,7 +45974,7 @@ text-clip was an incorrect test, rather than an incorrect result
         Reviewed by Maciej.
 
         http://bugs.webkit.org/show_bug.cgi?id=8921
-        Use WebCore to render full-frame images.
+        Use CyberCore to render full-frame images.
 
         * css2.1/t0801-c412-hz-box-00-b-a-expected.txt:
         * dom/xhtml/level2/html/frame-expected.checksum:
@@ -46331,7 +46331,7 @@ text-clip was an incorrect test, rather than an incorrect result
         - test for http://bugs.webkit.org/show_bug.cgi?id=6621
           Blank page in Safari; http://www.capitalone.co.uk/web/MenuUrl?z=null&c=null% (Works in Firefox & IE)
 
-        The problem itself was fixed by Anders in bug 8808 (WebCore should handle text files).
+        The problem itself was fixed by Anders in bug 8808 (CyberCore should handle text files).
 
         * http/tests/misc/resources: Added.
         * http/tests/misc/resources/200.html: Added.
@@ -46969,7 +46969,7 @@ text-clip was an incorrect test, rather than an incorrect result
 
         Reviewed by andersca.
 
-        WebKit should accept */*+xml as XML.
+        CyberKit should accept */*+xml as XML.
         http://bugs.webkit.org/show_bug.cgi?id=5998
 
         * http/tests/xmlhttprequest/supported-xml-content-types-expected.txt: Added.
@@ -47242,7 +47242,7 @@ text-clip was an incorrect test, rather than an incorrect result
 
         Reviewed by ggaren.
 
-        <rdar://problem/4129744> [REGRESSION]CrashTracer: ..400 crashes at com.apple.WebCore: DOM::NodeImpl::createRendererIfNeeded + 44
+        <rdar://problem/4129744> [REGRESSION]CrashTracer: ..400 crashes at com.matthewbenedict.CyberCore: DOM::NodeImpl::createRendererIfNeeded + 44
 
         * fast/dom/remove-style-element-expected.txt: Added.
         * fast/dom/remove-style-element.html: Added.
@@ -47260,7 +47260,7 @@ text-clip was an incorrect test, rather than an incorrect result
         Reviewed by Eric.
 
         Layout test for <rdar://problem/4513383> REGRESSION: Crash in 
-        WebCore::shouldEmitTabBeforeNode() when iterating through document 
+        CyberCore::shouldEmitTabBeforeNode() when iterating through document 
         text
 
         * fast/text/textIteratorNilRenderer-expected.checksum: Added.
@@ -47643,7 +47643,7 @@ text-clip was an incorrect test, rather than an incorrect result
         Reviewed by Eric, landed by ap.
 
         - test for http://bugs.webkit.org/show_bug.cgi?id=8469
-          CRASH: WebCore::CSSParser::parseDashboardRegions when attr() is passed
+          CRASH: CyberCore::CSSParser::parseDashboardRegions when attr() is passed
 
         * fast/css/dashboard-regions-attr-crash-expected.txt
         * fast/css/dashboard-regions-attr-crash.html
@@ -50451,7 +50451,7 @@ text-clip was an incorrect test, rather than an incorrect result
 
         Layout test for <rdar://problem/4495644> crash when mousing over 
         links at nationalrealestateinvestors.com in 
-        WebCore::RenderBlock::findNextLineBreak
+        CyberCore::RenderBlock::findNextLineBreak
 
         * fast/inline/dirtyLinesForInline-expected.checksum: Added.
         * fast/inline/dirtyLinesForInline-expected.png: Added.
@@ -50512,7 +50512,7 @@ text-clip was an incorrect test, rather than an incorrect result
         Adding tests for http://bugs.webkit.org/show_bug.cgi?id=8121
         REGRESSION: 404s are not displayed
         and http://bugs.webkit.org/show_bug.cgi?id=7739
-        REGRESSION: Assertion failure loading acid2 test in -[WebCoreFrameBridge installInFrame:]
+        REGRESSION: Assertion failure loading acid2 test in -[CyberCoreFrameBridge installInFrame:]
 
         In addition I tweaked the httpd conf file to allow us to exec perl CGI scripts.
 
@@ -51198,7 +51198,7 @@ text-clip was an incorrect test, rather than an incorrect result
         Reviewed by Maciej, landed by ap.
 
         http://bugs.webkit.org/show_bug.cgi?id=7739
-        REGRESSION: Assertion failure loading acid2 test in -[WebCoreFrameBridge installInFrame:]
+        REGRESSION: Assertion failure loading acid2 test in -[CyberCoreFrameBridge installInFrame:]
 
         Copy Acid2 to http directory, change failing object URL from a non-existent
         file back to a 404 failure, as in the original test. The modified versions
@@ -51919,7 +51919,7 @@ text-clip was an incorrect test, rather than an incorrect result
 
         Reviewed by andersca.
 
-        Test case for: <rdar://problem/4411663> crash at KXMLCore::RefPtr<WebCore::DOMStringImpl>::get() const + 20 (RefPtr.h:45)
+        Test case for: <rdar://problem/4411663> crash at KXMLCore::RefPtr<CyberCore::DOMStringImpl>::get() const + 20 (RefPtr.h:45)
 
         * fast/dom/NodeList: Added.
         * fast/dom/NodeList/item-by-id-with-no-document-expected.txt: Added.
@@ -51953,7 +51953,7 @@ text-clip was an incorrect test, rather than an incorrect result
 
         Reviewed by mjs.
 
-        Test for: <rdar://problem/4483882> REGRESSION (417.8-TOT): crash at yourmovies.com.au in WebCore::HTMLTokenizer::reset() + 92 (7818)
+        Test for: <rdar://problem/4483882> REGRESSION (417.8-TOT): crash at yourmovies.com.au in CyberCore::HTMLTokenizer::reset() + 92 (7818)
 
         * fast/tokenizer/external-script-document-open-expected.txt: Added.
         * fast/tokenizer/external-script-document-open.html: Added.
@@ -52220,7 +52220,7 @@ text-clip was an incorrect test, rather than an incorrect result
         Reviewed by Darin, landed by Beth.
 
         - Test for http://bugs.webkit.org/show_bug.cgi?id=7693
-          WebKit relies on unpredictable timing for onload events
+          CyberKit relies on unpredictable timing for onload events
 
         * fast/css/acid2-expected.txt:
         * fast/events/onload-webkit-before-webcore-expected.txt: Added.
@@ -57271,7 +57271,7 @@ text-clip was an incorrect test, rather than an incorrect result
         Live DOM Viewer: http://software.hixie.ch/utilities/js/live-dom-viewer/
 
         Each of the four head-check-N.html files tests a different code path for
-        creating a document's head element in WebCore/khtml/html/htmlparser.cpp.
+        creating a document's head element in CyberCore/khtml/html/htmlparser.cpp.
 
         * editing/inserting/editing-empty-divs-expected.txt: Corrected <html> child
         index for <body> since the document previously had two <head> nodes.
@@ -57322,7 +57322,7 @@ text-clip was an incorrect test, rather than an incorrect result
         Test by Geoff, automated by me, reviewed by Darin, landed by Geoff.
 
         - test for http://bugs.webkit.org/show_bug.cgi?id=7293
-          REGRESSION: Using Javascript Bookmarklets that reference location.href on a blank tab crashes WebKit
+          REGRESSION: Using Javascript Bookmarklets that reference location.href on a blank tab crashes CyberKit
 
         * fast/frames/empty-frame-document-expected.txt: Added.
         * fast/frames/empty-frame-document.html: Added.
@@ -57390,7 +57390,7 @@ text-clip was an incorrect test, rather than an incorrect result
 2006-02-24  Darin Adler  <darin@apple.com>
 
         - test <rdar://problem/4456287> REGRESSION: assertion failure at mypage.apple.com
-          in WebCore::TimerBase::nextFireInterval() const + 100 (Timer.cpp:188)
+          in CyberCore::TimerBase::nextFireInterval() const + 100 (Timer.cpp:188)
 
         * fast/dom/Window/redirect-with-timer.html: Added.
         * fast/dom/Window/redirect-with-timer-expected.txt: Added.
@@ -58128,7 +58128,7 @@ text-clip was an incorrect test, rather than an incorrect result
         Reviewed by Eric.
 
         - Layout test for <rdar://problem/4176077> CrashTracer: 6569
-        crashes in DashboardClient at com.apple.JavaScriptCore:
+        crashes in DashboardClient at com.matthewbenedict.CyberScriptCore:
         KJS::Bindings::ObjcFallbackObjectImp::type()
 
         * plugins: Added.
@@ -58774,7 +58774,7 @@ text-clip was an incorrect test, rather than an incorrect result
         Reviewed by Dave Hyatt, Tim H.
 
         Layout tests for:
-        Bug 4127: WebCore doesn't support Media Queries (CSS3 module)
+        Bug 4127: CyberCore doesn't support Media Queries (CSS3 module)
         http://bugs.webkit.org/show_bug.cgi?id=4127
 
         * ChangeLog:
@@ -59548,7 +59548,7 @@ text-clip was an incorrect test, rather than an incorrect result
         Reviewed and landed by Anders.
 
         - test for http://bugs.webkit.org/show_bug.cgi?id=6841
-          REGRESSION: WebKit (Thursday, January 26, 2006) crash in HTMLImageElementImpl::width()
+          REGRESSION: CyberKit (Thursday, January 26, 2006) crash in HTMLImageElementImpl::width()
 
         * fast/dom/HTMLImageElement/image-without-renderer-width-expected.txt: Added.
         * fast/dom/HTMLImageElement/image-without-renderer-width.html: Added.
@@ -60364,7 +60364,7 @@ text-clip was an incorrect test, rather than an incorrect result
         Reviewed by Justin.
 
         - test for http://bugs.webkit.org/show_bug.cgi?id=5401
-          [WebCoreBridge firstRectForDOMRange:] works incorrectly for the first character after a line wrap
+          [CyberCoreBridge firstRectForDOMRange:] works incorrectly for the first character after a line wrap
 
         * editing/input/wrapped-line-char-rect.html: Added.
         * editing/input/wrapped-line-char-rect-expected.txt: Added.
@@ -63085,7 +63085,7 @@ text-clip was an incorrect test, rather than an incorrect result
 
         Reviewed by ggaren.
 
-        Missing CSS Style sheets in one of the XHTML tests in WebCore
+        Missing CSS Style sheets in one of the XHTML tests in CyberCore
         http://bugs.webkit.org/show_bug.cgi?id=6305
 
         * fast/parser/entities-in-xhtml.xhtml: removed <link> to css sheet
@@ -63259,7 +63259,7 @@ text-clip was an incorrect test, rather than an incorrect result
 
         Reviewed by eseidel.
 
-        WebCore+SVG has some problems with rounded rectangles
+        CyberCore+SVG has some problems with rounded rectangles
         http://bugs.webkit.org/show_bug.cgi?id=6157
 
         * svg/custom/rounded-rects-expected.checksum: Added.
@@ -63301,7 +63301,7 @@ text-clip was an incorrect test, rather than an incorrect result
 
 2005-12-29  Geoffrey Garen  <ggaren@apple.com>
         
-        Updated test results for the last few JavaScriptCore patches
+        Updated test results for the last few CyberScriptCore patches
         I checked in.
 
         * ChangeLog:
@@ -63671,7 +63671,7 @@ text-clip was an incorrect test, rather than an incorrect result
 
         Reviewed by Eric.
 
-        - updated for WebCore changes to make XSLT params partially work
+        - updated for CyberCore changes to make XSLT params partially work
 
         * fast/xsl/xslt-processer-expected.txt:
 
@@ -63762,7 +63762,7 @@ text-clip was an incorrect test, rather than an incorrect result
         
         Layout test for:
         <rdar://problem/4103393> Frequent Safari crash on lexisnexus.com (khtml::Selection::xPosForVerticalArrowNavigation)
-         <rdar://problem/4330451> CrashTracer: [REGRESSION] 2235 crashes in Safari at com.apple.WebCore: khtml::Selection::xPosForVerticalArrowNavigation const  436
+         <rdar://problem/4330451> CrashTracer: [REGRESSION] 2235 crashes in Safari at com.matthewbenedict.CyberCore: khtml::Selection::xPosForVerticalArrowNavigation const  436
 
         * editing/selection/selection-actions-expected.checksum: Added.
         * editing/selection/selection-actions-expected.png: Added.
@@ -63873,7 +63873,7 @@ text-clip was an incorrect test, rather than an incorrect result
 
         Reviewed and landed by Darin.
 
-        - test of a particular character set name that is not in the WebCore table
+        - test of a particular character set name that is not in the CyberCore table
           but is in the ICU table (see bugzilla 5932)
 
         * fast/encoding/charset-cp1251-expected.txt: Added.
@@ -64536,7 +64536,7 @@ text-clip was an incorrect test, rather than an incorrect result
 2005-12-02  Adele Peterson  <adele@apple.com>
 
         Updating test for latest changes in:
-        <rdar://problem/4360657> Regression: Seed: WebKit image scaling broken
+        <rdar://problem/4360657> Regression: Seed: CyberKit image scaling broken
 
         * fast/replaced/width100percent-expected.checksum:
         * fast/replaced/width100percent-expected.png:
@@ -65804,7 +65804,7 @@ text-clip was an incorrect test, rather than an incorrect result
 2005-10-25  Beth Dakin  <bdakin@apple.com>
 
         Layout test for <rdar://problem/4148730> SureSec si#182 safari heap overflow
-        The fix is in WebCore.
+        The fix is in CyberCore.
 
         * fast/table/giantRowspan-expected.checksum: Added.
         * fast/table/giantRowspan-expected.png: Added.
@@ -67176,7 +67176,7 @@ text-clip was an incorrect test, rather than an incorrect result
         method calls involving CSS outline and display crashes Safari 
         (in repaint code).
 
-        The fix is in WebCore.
+        The fix is in CyberCore.
 
         * fast/css/continuationCrash-expected.checksum: Added.
         * fast/css/continuationCrash-expected.png: Added.
@@ -67212,7 +67212,7 @@ text-clip was an incorrect test, rather than an incorrect result
         due to infinite layout regression in RenderLayer::updateScrollInfoAfterLayout 
         (was at ourmedia.org)
 
-        Fix is in WebCore.
+        Fix is in CyberCore.
 
         * fast/overflow/infiniteRecursion-expected.checksum: Added.
         * fast/overflow/infiniteRecursion-expected.png: Added.
@@ -67287,7 +67287,7 @@ text-clip was an incorrect test, rather than an incorrect result
 2005-10-12  Beth Dakin  <bdakin@apple.com>
 
         Added a layout test for <rdar://problem/4112378> CSS :hover:after crash 
-        - khtml::inlineWidth. The fix is in WebCore.
+        - khtml::inlineWidth. The fix is in CyberCore.
 
         * fast/dynamic/genContentDestroyChildren-expected.checksum: Added.
         * fast/dynamic/genContentDestroyChildren-expected.png: Added.
@@ -67443,7 +67443,7 @@ text-clip was an incorrect test, rather than an incorrect result
         Reviewed by Justin.
         
         Adjusted expected results after fixing position code in
-        <rdar://problem/4064017> "Safari crashes at -[WebCoreBridge firstRectForDOMRange:] + 92"
+        <rdar://problem/4064017> "Safari crashes at -[CyberCoreBridge firstRectForDOMRange:] + 92"
         
         * editing/deleting/delete-at-paragraph-boundaries-002-expected.txt:
         * editing/deleting/delete-at-paragraph-boundaries-004-expected.txt:
@@ -67501,7 +67501,7 @@ text-clip was an incorrect test, rather than an incorrect result
 2005-10-06  Beth Dakin  <bdakin@apple.com>
 
         Test cases for <rdar://problem/4145535> Crash in khtml::RenderBlock::addOverhangingFloats 
-        with simple HTML test file. The fix is in WebCore.
+        with simple HTML test file. The fix is in CyberCore.
 
         * fast/block/float/4145535Crash-expected.checksum: Added.
         * fast/block/float/4145535Crash-expected.png: Added.
@@ -67618,7 +67618,7 @@ text-clip was an incorrect test, rather than an incorrect result
         Test case for setting opacity on tiled images. Specifically for fix to:
         <rdar://problem/4285538> TOT fix for Denver Regression: Drawing glitch in 
         the transparent dialog's cancel/ok button in the widget manager. The fix 
-        is in WebKit and WebKitSystemInterface.
+        is in CyberKit and CyberKitSystemInterface.
 
         * fast/css/button_center.png: Added.
         * fast/css/imageTileOpacity-expected.txt: Added.
@@ -67682,5 +67682,5 @@ text-clip was an incorrect test, rather than an incorrect result
 
         Reviewed by xenon.
         
-        Moved WebCore/layout-tests to LayoutTests
+        Moved CyberCore/layout-tests to LayoutTests
 

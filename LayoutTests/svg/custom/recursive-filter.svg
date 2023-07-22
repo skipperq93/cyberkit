@@ -8,7 +8,7 @@
         <feGaussianBlur stdDeviation="4"/>
     </filter>
 
-    <!-- WebKit currently does not implement filter chaining -->
+    <!-- CyberKit currently does not implement filter chaining -->
     <filter id="filter2" xlink:href="#filter2"/>
 </defs>
 

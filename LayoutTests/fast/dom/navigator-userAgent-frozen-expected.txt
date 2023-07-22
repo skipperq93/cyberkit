@@ -1,4 +1,4 @@
-Confirm WebKit does not report versions above the frozen maximums.
+Confirm CyberKit does not report versions above the frozen maximums.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

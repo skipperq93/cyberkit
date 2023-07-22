@@ -1628,17 +1628,17 @@ function isWebInspectorConsoleEvaluationScript(url)
     return url === "__WebInspectorConsoleEvaluation__";
 }
 
-function isWebKitInjectedScript(url)
+function isCyberKitInjectedScript(url)
 {
     return url && url.startsWith("__InjectedScript_") && url.endsWith(".js");
 }
 
-function isWebKitInternalScript(url)
+function isCyberKitInternalScript(url)
 {
     if (isWebInspectorConsoleEvaluationScript(url))
         return false;
 
-    if (isWebKitInjectedScript(url))
+    if (isCyberKitInjectedScript(url))
         return true;
 
     return url && url.startsWith("__Web") && url.endsWith("__");

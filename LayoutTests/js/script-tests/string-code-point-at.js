@@ -42,7 +42,7 @@ shouldBe('"".codePointAt.call(Math.PI, 3)', '52');
 shouldBe('"".codePointAt.call(true, 3)', '101');
 shouldBe('"".codePointAt.call(false, 3)', '115');
 shouldBe('"".codePointAt.call(new Object, 3)', '106');
-shouldThrow('"".codePointAt.call(Symbol("WebKit"), 3)');
+shouldThrow('"".codePointAt.call(Symbol("CyberKit"), 3)');
 
 // toString.
 var objectWithCustomToString = { toString: function() { return "ø"; } };
@@ -63,7 +63,7 @@ shouldBe('"abcde".codePointAt(objectWithCustomValueOf)', '98');
 var objectRecordsValueOf = { valueOfEvaluated: false, valueOf: function() { this.valueOfEvaluated = true; return 1; } }
 shouldThrow('"".codePointAt.call(null, objectRecordsValueOf)');
 shouldThrow('"".codePointAt.call(undefined, objectRecordsValueOf)');
-shouldThrow('"".codePointAt.call(Symbol("WebKit"), objectRecordsValueOf)');
+shouldThrow('"".codePointAt.call(Symbol("CyberKit"), objectRecordsValueOf)');
 shouldThrow('"".codePointAt.call(objectThrowingOnToString, objectRecordsValueOf)');
 shouldBeFalse('objectRecordsValueOf.valueOfEvaluated');
 
@@ -98,12 +98,12 @@ shouldBe('"abc".codePointAt(Number.NEGATIVE_INFINITY)', 'undefined');
 shouldBe('"abc".codePointAt(null)', '97');
 shouldBe('"abc".codePointAt(undefined)', '97');
 shouldBe('"abc".codePointAt("")', '97');
-shouldBe('"abc".codePointAt("WebKit!")', '97');
+shouldBe('"abc".codePointAt("CyberKit!")', '97');
 shouldBe('"abc".codePointAt(new Object)', '97');
-shouldThrow('"abc".codePointAt(Symbol("WebKit"))');
+shouldThrow('"abc".codePointAt(Symbol("CyberKit"))');
 
-// The following are using special test functions because of limitations of WebKitTestRunner when handling strings with invalid codepoints.
-// When transfering the text of a test, WebKitTestRunner converts it to a UTF-8 C String. Not all invalid code point can be represented.
+// The following are using special test functions because of limitations of CyberKitTestRunner when handling strings with invalid codepoints.
+// When transfering the text of a test, CyberKitTestRunner converts it to a UTF-8 C String. Not all invalid code point can be represented.
 
 // If first < 0xD800 or first > 0xDBFF or position+1 = size, return first.
 function testLeadSurrogateOutOfBounds()

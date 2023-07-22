@@ -31,8 +31,8 @@
 
 #import "DumpRenderTree.h"
 #import "TestRunner.h"
-#import <WebKit/WebKit.h>
-#import <WebKit/WebDataSourcePrivate.h>
+#import <CyberKit/CyberKit.h>
+#import <CyberKit/WebDataSourcePrivate.h>
 #import <wtf/Assertions.h>
 
 using namespace std;

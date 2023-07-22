@@ -75,7 +75,7 @@ class Bug(object):
     def is_security_sensitive(self):
         return 'Security-Sensitive' in self.groups()
 
-    # Bugzilla has many status states we don't really use in WebKit:
+    # Bugzilla has many status states we don't really use in CyberKit:
     # https://bugs.webkit.org/page.cgi?id=fields.html#status
     _open_states = ["UNCONFIRMED", "NEW", "ASSIGNED", "REOPENED"]
     _closed_states = ["RESOLVED", "VERIFIED", "CLOSED"]

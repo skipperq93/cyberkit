@@ -1,5 +1,5 @@
-WebKit
-This test verifies that choosing 'Font' > 'Show Fonts' via context menu doesn't crash the web process. To test manually, right click 'WebKit' above and choose Font > Show Fonts.
+CyberKit
+This test verifies that choosing 'Font' > 'Show Fonts' via context menu doesn't crash the web process. To test manually, right click 'CyberKit' above and choose Font > Show Fonts.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

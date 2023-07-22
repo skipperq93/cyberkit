@@ -1,7 +1,7 @@
 #include? "../../../../../Internal/Configurations/HaveInternalSDK.xcconfig"
 #include? "<DEVELOPER_DIR>/AppleInternal/XcodeConfig/PlatformSupport.xcconfig"
 #include "SDKVariant.xcconfig"
-#include "WebKitTargetConditionals.xcconfig"
+#include "CyberKitTargetConditionals.xcconfig"
 
 CODE_SIGN_IDENTITY = -;
 
@@ -100,7 +100,7 @@ GCC_PREPROCESSOR_DEFINITIONS = $(DEBUG_DEFINES) $(inherited) ABSL_ALLOCATOR_NOTH
 EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS = $(inherited) "$(PROJECT_DIR)/Source/webrtc/examples" "$(PROJECT_DIR)/Source/third_party/boringssl/src/util";
 
 NORMAL_WEBCORE_FRAMEWORKS_DIR = $(SYSTEM_LIBRARY_DIR)/PrivateFrameworks;
-NORMAL_WEBCORE_FRAMEWORKS_DIR[sdk=macosx*] = $(SYSTEM_LIBRARY_DIR)/Frameworks/WebKit.framework/Versions/A/Frameworks;
+NORMAL_WEBCORE_FRAMEWORKS_DIR[sdk=macosx*] = $(SYSTEM_LIBRARY_DIR)/Frameworks/CyberKit.framework/Versions/A/Frameworks;
 
 WK_USE_OVERRIDE_FRAMEWORKS_DIR = $(WK_NOT_$(WK_EMPTY_$(WK_OVERRIDE_FRAMEWORKS_DIR)));
 

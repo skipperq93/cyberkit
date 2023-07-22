@@ -110,13 +110,13 @@
     
     Reviewed by Brian Burg.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     * inspector/protocol/Animation.json:
     Add types/commands/events for instrumenting the lifecycle of `Animation` objects, as well as
     commands for getting the JavaScript wrapper object and the target DOM node.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Add types/commands/events for instrumenting the lifecycle of `Animation` objects, as well as
     commands for getting the JavaScript wrapper object and the target DOM node.
@@ -131,83 +131,83 @@
     
     * animation/WebAnimation.h:
     * animation/WebAnimation.cpp:
-    (WebCore::WebAnimation::instances): Added.
-    (WebCore::WebAnimation::instancesMutex): Added.
-    (WebCore::WebAnimation::create):
-    (WebCore::WebAnimation::WebAnimation):
-    (WebCore::WebAnimation::~WebAnimation):
-    (WebCore::WebAnimation::effectTimingDidChange):
-    (WebCore::WebAnimation::setEffectInternal):
-    (WebCore::WebAnimation::effectTargetDidChange):
+    (CyberCore::WebAnimation::instances): Added.
+    (CyberCore::WebAnimation::instancesMutex): Added.
+    (CyberCore::WebAnimation::create):
+    (CyberCore::WebAnimation::WebAnimation):
+    (CyberCore::WebAnimation::~WebAnimation):
+    (CyberCore::WebAnimation::effectTimingDidChange):
+    (CyberCore::WebAnimation::setEffectInternal):
+    (CyberCore::WebAnimation::effectTargetDidChange):
     * animation/CSSAnimation.cpp:
-    (WebCore::CSSAnimation::create):
+    (CyberCore::CSSAnimation::create):
     * animation/CSSTransition.cpp:
-    (WebCore::CSSTransition::create):
+    (CyberCore::CSSTransition::create):
     
     * animation/KeyframeEffect.h:
-    (WebCore::KeyframeEffect::parsedKeyframes const): Added.
-    (WebCore::KeyframeEffect::blendingKeyframes const): Added.
-    (WebCore::KeyframeEffect::hasBlendingKeyframes const): Deleted.
+    (CyberCore::KeyframeEffect::parsedKeyframes const): Added.
+    (CyberCore::KeyframeEffect::blendingKeyframes const): Added.
+    (CyberCore::KeyframeEffect::hasBlendingKeyframes const): Deleted.
     Provide a way to access the list of keyframes.
     
     * inspector/InspectorInstrumentation.h:
-    (WebCore::InspectorInstrumentation::didSetWebAnimationEffect): Added.
-    (WebCore::InspectorInstrumentation::didChangeWebAnimationEffectTiming): Added.
-    (WebCore::InspectorInstrumentation::didChangeWebAnimationEffectTarget): Added.
-    (WebCore::InspectorInstrumentation::didCreateWebAnimation): Added.
-    (WebCore::InspectorInstrumentation::didChangeWebAnimationEffect): Deleted.
+    (CyberCore::InspectorInstrumentation::didSetWebAnimationEffect): Added.
+    (CyberCore::InspectorInstrumentation::didChangeWebAnimationEffectTiming): Added.
+    (CyberCore::InspectorInstrumentation::didChangeWebAnimationEffectTarget): Added.
+    (CyberCore::InspectorInstrumentation::didCreateWebAnimation): Added.
+    (CyberCore::InspectorInstrumentation::didChangeWebAnimationEffect): Deleted.
     * inspector/InspectorInstrumentation.cpp:
-    (WebCore::InspectorInstrumentation::didCommitLoadImpl):
-    (WebCore::InspectorInstrumentation::didSetWebAnimationEffectImpl): Added.
-    (WebCore::InspectorInstrumentation::didChangeWebAnimationEffectTimingImpl): Added.
-    (WebCore::InspectorInstrumentation::didChangeWebAnimationEffectTargetImpl): Added.
-    (WebCore::InspectorInstrumentation::didCreateWebAnimationImpl): Added.
-    (WebCore::InspectorInstrumentation::willDestroyWebAnimationImpl):
-    (WebCore::InspectorInstrumentation::didChangeWebAnimationEffectImpl): Deleted.
+    (CyberCore::InspectorInstrumentation::didCommitLoadImpl):
+    (CyberCore::InspectorInstrumentation::didSetWebAnimationEffectImpl): Added.
+    (CyberCore::InspectorInstrumentation::didChangeWebAnimationEffectTimingImpl): Added.
+    (CyberCore::InspectorInstrumentation::didChangeWebAnimationEffectTargetImpl): Added.
+    (CyberCore::InspectorInstrumentation::didCreateWebAnimationImpl): Added.
+    (CyberCore::InspectorInstrumentation::willDestroyWebAnimationImpl):
+    (CyberCore::InspectorInstrumentation::didChangeWebAnimationEffectImpl): Deleted.
     
     * inspector/InstrumentingAgents.h:
-    (WebCore::InstrumentingAgents::enabledInspectorAnimationAgent const): Added.
-    (WebCore::InstrumentingAgents::setEnabledInspectorAnimationAgent): Added.
+    (CyberCore::InstrumentingAgents::enabledInspectorAnimationAgent const): Added.
+    (CyberCore::InstrumentingAgents::setEnabledInspectorAnimationAgent): Added.
     * inspector/InstrumentingAgents.cpp:
-    (WebCore::InstrumentingAgents::reset):
+    (CyberCore::InstrumentingAgents::reset):
     
     * inspector/agents/InspectorAnimationAgent.h:
     * inspector/agents/InspectorAnimationAgent.cpp:
-    (WebCore::protocolValueForSeconds): Added.
-    (WebCore::protocolValueForPlaybackDirection): Added.
-    (WebCore::protocolValueForFillMode): Added.
-    (WebCore::buildObjectForKeyframes): Added.
-    (WebCore::buildObjectForEffect): Added.
-    (WebCore::InspectorAnimationAgent::InspectorAnimationAgent):
-    (WebCore::InspectorAnimationAgent::willDestroyFrontendAndBackend):
-    (WebCore::InspectorAnimationAgent::enable): Added.
-    (WebCore::InspectorAnimationAgent::disable): Added.
-    (WebCore::InspectorAnimationAgent::requestEffectTarget): Added.
-    (WebCore::InspectorAnimationAgent::resolveAnimation): Added.
-    (WebCore::InspectorAnimationAgent::didSetWebAnimationEffect): Added.
-    (WebCore::InspectorAnimationAgent::didChangeWebAnimationEffectTiming): Added.
-    (WebCore::InspectorAnimationAgent::didChangeWebAnimationEffectTarget): Added.
-    (WebCore::InspectorAnimationAgent::didCreateWebAnimation): Added.
-    (WebCore::InspectorAnimationAgent::willDestroyWebAnimation):
-    (WebCore::InspectorAnimationAgent::frameNavigated):
-    (WebCore::InspectorAnimationAgent::findAnimationId): Added.
-    (WebCore::InspectorAnimationAgent::assertAnimation): Added.
-    (WebCore::InspectorAnimationAgent::bindAnimation): Added.
-    (WebCore::InspectorAnimationAgent::unbindAnimation): Added.
-    (WebCore::InspectorAnimationAgent::animationDestroyedTimerFired): Added.
-    (WebCore::InspectorAnimationAgent::reset): Added.
-    (WebCore::InspectorAnimationAgent::didChangeWebAnimationEffect): Deleted.
+    (CyberCore::protocolValueForSeconds): Added.
+    (CyberCore::protocolValueForPlaybackDirection): Added.
+    (CyberCore::protocolValueForFillMode): Added.
+    (CyberCore::buildObjectForKeyframes): Added.
+    (CyberCore::buildObjectForEffect): Added.
+    (CyberCore::InspectorAnimationAgent::InspectorAnimationAgent):
+    (CyberCore::InspectorAnimationAgent::willDestroyFrontendAndBackend):
+    (CyberCore::InspectorAnimationAgent::enable): Added.
+    (CyberCore::InspectorAnimationAgent::disable): Added.
+    (CyberCore::InspectorAnimationAgent::requestEffectTarget): Added.
+    (CyberCore::InspectorAnimationAgent::resolveAnimation): Added.
+    (CyberCore::InspectorAnimationAgent::didSetWebAnimationEffect): Added.
+    (CyberCore::InspectorAnimationAgent::didChangeWebAnimationEffectTiming): Added.
+    (CyberCore::InspectorAnimationAgent::didChangeWebAnimationEffectTarget): Added.
+    (CyberCore::InspectorAnimationAgent::didCreateWebAnimation): Added.
+    (CyberCore::InspectorAnimationAgent::willDestroyWebAnimation):
+    (CyberCore::InspectorAnimationAgent::frameNavigated):
+    (CyberCore::InspectorAnimationAgent::findAnimationId): Added.
+    (CyberCore::InspectorAnimationAgent::assertAnimation): Added.
+    (CyberCore::InspectorAnimationAgent::bindAnimation): Added.
+    (CyberCore::InspectorAnimationAgent::unbindAnimation): Added.
+    (CyberCore::InspectorAnimationAgent::animationDestroyedTimerFired): Added.
+    (CyberCore::InspectorAnimationAgent::reset): Added.
+    (CyberCore::InspectorAnimationAgent::didChangeWebAnimationEffect): Deleted.
     
     * inspector/agents/InspectorDOMAgent.h:
     * inspector/agents/InspectorDOMAgent.cpp:
-    (WebCore::InspectorDOMAgent::pushNodeToFrontend):
-    (WebCore::InspectorDOMAgent::querySelector):
-    (WebCore::InspectorDOMAgent::pushNodePathToFrontend):
-    (WebCore::InspectorDOMAgent::setNodeName):
-    (WebCore::InspectorDOMAgent::setOuterHTML):
-    (WebCore::InspectorDOMAgent::moveTo):
-    (WebCore::InspectorDOMAgent::requestNode):
-    (WebCore::InspectorDOMAgent::pushNodeByPathToFrontend):
+    (CyberCore::InspectorDOMAgent::pushNodeToFrontend):
+    (CyberCore::InspectorDOMAgent::querySelector):
+    (CyberCore::InspectorDOMAgent::pushNodePathToFrontend):
+    (CyberCore::InspectorDOMAgent::setNodeName):
+    (CyberCore::InspectorDOMAgent::setOuterHTML):
+    (CyberCore::InspectorDOMAgent::moveTo):
+    (CyberCore::InspectorDOMAgent::requestNode):
+    (CyberCore::InspectorDOMAgent::pushNodeByPathToFrontend):
     Add an overload for `pushNodePathToFrontend` that exposes an `ErrorString`.
     
     Source/WebInspectorUI:
@@ -4202,7 +4202,7 @@
 
 2019-10-18  Devin Rousso  <drousso@apple.com>
 
-        Web Inspector: Elements: allow WebKit engineers to edit UserAgent shadow trees
+        Web Inspector: Elements: allow CyberKit engineers to edit UserAgent shadow trees
         https://bugs.webkit.org/show_bug.cgi?id=203159
 
         Reviewed by Brian Burg.
@@ -4309,11 +4309,11 @@
         Reviewed by Joseph Pecoraro.
 
         `InspectorBackend.domains.${domain}` isn't a truly valid way to feature check, as it
-        indicates what's supported by the WebKit framework underlying whatever's currently being
+        indicates what's supported by the CyberKit framework underlying whatever's currently being
         inspected, not what the current inspection target supports.
 
         As an example, inspecting an iOS `JSContext` will still show `InspectorBackend.domains.DOM`
-        as the `DOMAgent` is supported by WebKit, even though `JSContext`s have no concept of the
+        as the `DOMAgent` is supported by CyberKit, even though `JSContext`s have no concept of the
         DOM. In this example, however, `window.DOMAgent` would NOT exist, as the `availability`
         check for the `DOM` domain wouldn't pass, meaning that the agent never gets connected.
 
@@ -4353,9 +4353,9 @@
 
         Debuggable Types:
          - JavaScript (JSC::JSGlobalObject)
-         - Page (WebCore::Page)
-         - ServiceWorker (WebCore::ServiceWorkerThreadProxy)
-         - WebPage (WebKit::WebPageProxy)
+         - Page (CyberCore::Page)
+         - ServiceWorker (CyberCore::ServiceWorkerThreadProxy)
+         - WebPage (CyberKit::WebPageProxy)
 
         Target Types:
          - JavaScript (direct connection)
@@ -4499,8 +4499,8 @@
         * UserInterface/Views/WorkerTreeElement.js:
         Replace all instances of `window.DomainAgent` with `target.DomainAgent`, where `target` is
         either derived from an associated model object or `WI.assumingMainTarget()`.
-        Split the `WI.DebuggableType.Web` debuggable type into `WI.DebuggableType.Page` (WebCore::Page)
-        and `WI.DebuggableType.WebPage` (WebKit::WebPageProxy).
+        Split the `WI.DebuggableType.Web` debuggable type into `WI.DebuggableType.Page` (CyberCore::Page)
+        and `WI.DebuggableType.WebPage` (CyberKit::WebPageProxy).
 
         * UserInterface/Protocol/Legacy/*:
         * Versions/*:
@@ -6344,7 +6344,7 @@
 
         * UserInterface/Base/URLUtilities.js:
         (parseURL):
-        Avoid uncaught exceptions with the URL constructor for common WebKit internal sourceURL strings.
+        Avoid uncaught exceptions with the URL constructor for common CyberKit internal sourceURL strings.
         
         (WI.urlWithoutFragment):
         Strip a fragment from a URL.
@@ -6921,13 +6921,13 @@
 
         Reviewed by Darin Adler.
 
-        Remove symbols in WebKitTargetConditionals.xcconfig related to macOS
+        Remove symbols in CyberKitTargetConditionals.xcconfig related to macOS
         10.13, including WK_MACOS_1013 and WK_MACOS_BEFORE_1013, and suffixes
         like _MACOS_SINCE_1013.
 
         Also added some macOS target numbers.
 
-        * Configurations/WebKitTargetConditionals.xcconfig:
+        * Configurations/CyberKitTargetConditionals.xcconfig:
 
 2019-08-29  Joseph Pecoraro  <pecoraro@apple.com>
 
@@ -8270,7 +8270,7 @@
 
         Reviewed by Joseph Pecoraro.
 
-        WK1 inspector sends messages to the frontend using `WebCore::InspectorClient::doDispatchMessageOnFrontendPage`,
+        WK1 inspector sends messages to the frontend using `CyberCore::InspectorClient::doDispatchMessageOnFrontendPage`,
         which does not do any sort of queueing to wait until the frontend is loaded (`InspectorFrontendHost.loaded()`).
 
         Now that we are sending messages immediately, we should always queue.
@@ -8479,19 +8479,19 @@
 
 2019-08-07  Devin Rousso  <drousso@apple.com>
 
-        Web Inspector: Settings: add an Engineering pane to expose useful settings for other WebKit engineers
+        Web Inspector: Settings: add an Engineering pane to expose useful settings for other CyberKit engineers
         https://bugs.webkit.org/show_bug.cgi?id=200492
 
         Reviewed by Joseph Pecoraro.
 
-        Other WebKit engineers might find being able to see internal objects or pause in internal
+        Other CyberKit engineers might find being able to see internal objects or pause in internal
         scripts useful, so we should allow them to do so without having to enable Web Inspector's
         debug "mode".
 
         A new "Engineering" pane is added to the Settings Tab:
          - Debugging
-            - Show WebKit-internal scripts
-            - Pause in WebKit-internal scripts
+            - Show CyberKit-internal scripts
+            - Pause in CyberKit-internal scripts
          - Heap Snapshot
             - Show Internal Objects
             - Show Private Symbols

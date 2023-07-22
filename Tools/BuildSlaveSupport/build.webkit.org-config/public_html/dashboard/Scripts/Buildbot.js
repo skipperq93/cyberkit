@@ -72,8 +72,8 @@ Buildbot.UpdateReason = {
 
 // Ordered importance.
 Buildbot.TestCategory = {
-    WebKit2: "webkit-2",
-    WebKit1: "webkit-1"
+    CyberKit2: "webkit-2",
+    CyberKit1: "webkit-1"
 };
 
 // Ordered importance.

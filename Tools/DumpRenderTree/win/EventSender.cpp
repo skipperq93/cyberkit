@@ -34,13 +34,13 @@
 #include "DRTDropSource.h"
 #include "DraggingInfo.h"
 #include "DumpRenderTree.h"
-#include "WebCoreTestSupport.h"
+#include "CyberCoreTestSupport.h"
 
-#include <JavaScriptCore/JavaScriptCore.h>
-#include <WebCore/COMPtr.h>
-#include <WebCore/PlatformWheelEvent.h>
-#include <WebKitLegacy/WebFrame.h>
-#include <WebKitLegacy/WebKit.h>
+#include <CyberScriptCore/CyberScriptCore.h>
+#include <CyberCore/COMPtr.h>
+#include <CyberCore/PlatformWheelEvent.h>
+#include <CyberKitLegacy/WebFrame.h>
+#include <CyberKitLegacy/CyberKit.h>
 #include <windows.h>
 #include <wtf/ASCIICType.h>
 #include <wtf/Assertions.h>
@@ -837,7 +837,7 @@ void mouseScrollBy(double x, double y, bool continuous)
         ::SystemParametersInfo(SPI_GETWHEELSCROLLCHARS, 0, &scrollChars, 0);
         x *= WHEEL_DELTA / scrollChars;
         if (continuous)
-            x /= WebCore::cScrollbarPixelsPerLine;
+            x /= CyberCore::cScrollbarPixelsPerLine;
         MSG msg = makeMsg(webViewWindow, WM_MOUSEHWHEEL, MAKEWPARAM(0, x), MAKELPARAM(rect.left + lastMousePosition.x, rect.top + lastMousePosition.y));
         dispatchMessage(&msg);
     }
@@ -847,7 +847,7 @@ void mouseScrollBy(double x, double y, bool continuous)
         ::SystemParametersInfo(SPI_GETWHEELSCROLLLINES, 0, &scrollLines, 0);
         y *= WHEEL_DELTA / scrollLines;
         if (continuous)
-            y /= WebCore::cScrollbarPixelsPerLine;
+            y /= CyberCore::cScrollbarPixelsPerLine;
         MSG msg = makeMsg(webViewWindow, WM_MOUSEWHEEL, MAKEWPARAM(0, y), MAKELPARAM(rect.left + lastMousePosition.x, rect.top + lastMousePosition.y));
         dispatchMessage(&msg);
     }
@@ -898,8 +898,8 @@ static JSValueRef monitorWheelEvents(JSContextRef context, JSObjectRef function,
     if (FAILED(frame->QueryInterface(&frame2)))
         return JSValueMakeUndefined(context);
 
-    WebCore::Frame* coreFrame = core(static_cast<WebFrame*>(frame2.get()));
-    WebCoreTestSupport::monitorWheelEvents(*coreFrame);
+    CyberCore::Frame* coreFrame = core(static_cast<WebFrame*>(frame2.get()));
+    CyberCoreTestSupport::monitorWheelEvents(*coreFrame);
     
     return JSValueMakeUndefined(context);
 }
@@ -922,8 +922,8 @@ static JSValueRef callAfterScrollingCompletes(JSContextRef context, JSObjectRef 
     if (FAILED(frame->QueryInterface(&frame2)))
         return JSValueMakeUndefined(context);
 
-    WebCore::Frame* coreFrame = core(static_cast<WebFrame*>(frame2.get()));
-    WebCoreTestSupport::setTestCallbackAndStartNotificationTimer(*coreFrame, globalContext, jsCallbackFunction);
+    CyberCore::Frame* coreFrame = core(static_cast<WebFrame*>(frame2.get()));
+    CyberCoreTestSupport::setTestCallbackAndStartNotificationTimer(*coreFrame, globalContext, jsCallbackFunction);
 
     return JSValueMakeUndefined(context);
 }

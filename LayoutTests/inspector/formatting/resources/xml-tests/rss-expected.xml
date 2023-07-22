@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/">
 
     <channel>
-        <title>WebKit</title>
+        <title>CyberKit</title>
         <atom:link href="https://webkit.org/feed/" rel="self" type="application/rss+xml"/>
         <link>https://webkit.org</link>
         <description>Open Source Web Browser Engine</description>
@@ -52,7 +52,7 @@
                 <pre><code class="js"><span class="identifier">encoder</span>.<span class="identifier">setPipeline</span>(<span class="identifier">renderPipeline</span>);
                 <span class="identifier">encoder</span>.<span class="identifier">draw</span>(<span class="identifier">count</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>);
                 </code></pre>
-                <p>All the pieces of state in the WebGL example are wrapped up into a single object in WebGPU, named a &#8220;<a href="https://github.com/gpuweb/gpuweb/blob/master/spec/index.bs#L664">pipeline state object</a>.&#8221; Though validating state is expensive, with WebGPU it is done once when the pipeline is created, outside of the core rendering loop. As a result, we can avoid performing expensive state analysis inside the draw call. Also, setting an entire pipeline state is a single function call, reducing the amount of &#8220;chatting&#8221; between Javascript and WebKit’s C++ browser engine.</p>
+                <p>All the pieces of state in the WebGL example are wrapped up into a single object in WebGPU, named a &#8220;<a href="https://github.com/gpuweb/gpuweb/blob/master/spec/index.bs#L664">pipeline state object</a>.&#8221; Though validating state is expensive, with WebGPU it is done once when the pipeline is created, outside of the core rendering loop. As a result, we can avoid performing expensive state analysis inside the draw call. Also, setting an entire pipeline state is a single function call, reducing the amount of &#8220;chatting&#8221; between Javascript and CyberKit’s C++ browser engine.</p>
                 <p>Resources have a similar story. Most rendering algorithms require a set of resources in order to draw a particular material. In WebGL, each resource would be bound one-by-one, leading to code that looks like:</p>
                 <pre><code class="js"><span class="identifier">gl</span>.<span class="identifier">bindBufferRange</span>(<span class="identifier">gl</span>.<span class="identifier">UNIFORM_BUFFER</span>, <span class="number">0</span>, <span class="identifier">materialBuffer1</span>, <span class="number">0</span>, <span class="identifier">size1</span>);
                 <span class="identifier">gl</span>.<span class="identifier">bindBufferRange</span>(<span class="identifier">gl</span>.<span class="identifier">UNIFORM_BUFFER</span>, <span class="number">1</span>, <span class="identifier">materialBuffer2</span>, <span class="number">0</span>, <span class="identifier">size2</span>);
@@ -116,7 +116,7 @@
             </description>
             <content:encoded>
                 <![CDATA[<p><a href="https://webkit.org/blog/6017/introducing-safari-technology-preview/">Safari Technology Preview</a> Release 91 is now <a href="https://webkit.org/downloads/">available for download</a> for macOS Mojave and the macOS Catalina beta. If you already have Safari Technology Preview installed, you can update in the Software Update pane of System Preferences on macOS.</p>
-                <p>This release covers WebKit revisions <a href="https://trac.webkit.org/log?stop_rev=248705&amp;&amp;rev=249190&amp;limit=999">248705-249190</a>.</p>
+                <p>This release covers CyberKit revisions <a href="https://trac.webkit.org/log?stop_rev=248705&amp;&amp;rev=249190&amp;limit=999">248705-249190</a>.</p>
                 <h3>Security</h3>
                 <ul>
                 <li>Disabled legacy TLS 1.0 and TLS 1.1 (<a href="https://trac.webkit.org/changeset/249019/webkit/">r249019</a>)</li>
@@ -290,13 +290,13 @@
                 <li>The browser window is behind another window.</li>
                 <li>The space the window is on is not the current space.</li>
                 </ul>
-                <p>When a page becomes inactive, WebKit automatically takes steps to save power:</p>
+                <p>When a page becomes inactive, CyberKit automatically takes steps to save power:</p>
                 <ul>
                 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame"><code>requestAnimationFrame</code></a> is stopped.</li>
                 <li>CSS and SVG Animations are suspended.</li>
                 <li>Timers are throttled.</li>
                 </ul>
-                <p>In addition, WebKit takes advantage of features provided by the operating system to maximize efficiency:</p>
+                <p>In addition, CyberKit takes advantage of features provided by the operating system to maximize efficiency:</p>
                 <ul>
                 <li>on iOS, tabs are completely suspended when possible.</li>
                 <li>on macOS, tabs participate in <a href="https://developer.apple.com/library/archive/documentation/Performance/Conceptual/power_efficiency_guidelines_osx/AppNap.html">App Nap</a>, which means that the web process for a tab that is not visually updating gets lower priority and has its timers throttled.</li>
@@ -313,21 +313,21 @@
                 <p>As mentioned above, modern CPUs can ramp power use from very low, when the device is idle, to very high to meet the demands of user interaction and other tasks. Because of this, the CPU is a leading cause of battery life variance. CPU usage during page loading is a combination of work the browser engine does to load, parse and render resources, and in executing JavaScript. On many modern web pages, time spent executing JavaScript far exceeds the time spent by the browser in the rest of the loading process, so minimizing JavaScript execution time will have the biggest benefits for power.</p>
                 <p>The best way to measure CPU usage is with Web Inspector. As we showed in a previous post, the <a href="https://webkit.org/blog/8993/cpu-timeline-in-web-inspector/">timeline now shows</a> the CPU activity for any selected time range:</p>
                 <figure class="widescreen mattewhite"><picture><source srcset="https://webkit.org/wp-content/uploads/Web-Inspector-CPU-Timeline-Overview-Dark.png" media="(prefers-color-scheme: dark)" /><img style="width: 100%; max-width: 1189px;" src="https://webkit.org/wp-content/uploads/Web-Inspector-CPU-Timeline-Overview-Light.png" /></picture></figure>
-                <p>To use the CPU efficiently, WebKit distributes work over multiple cores when possible (and pages using Workers will also be able to make use of multiple cores). Web Inspector provides a breakdown of the threads running concurrently with the page&#8217;s main thread. For example, the following screenshot shows the threads while scrolling a page with complex rendering and video playback:</p>
+                <p>To use the CPU efficiently, CyberKit distributes work over multiple cores when possible (and pages using Workers will also be able to make use of multiple cores). Web Inspector provides a breakdown of the threads running concurrently with the page&#8217;s main thread. For example, the following screenshot shows the threads while scrolling a page with complex rendering and video playback:</p>
                 <figure class="widescreen mattewhite"><picture><source srcset="https://webkit.org/wp-content/uploads/Power-heavy-website-dark.png" media="(prefers-color-scheme: dark)" /><img style="width: 100%; max-width: 1086px;" src="https://webkit.org/wp-content/uploads/Power-heavy-website-light.png" /></picture></figure>
                 <p>When looking for things to optimize, focus on the main thread, since that&#8217;s where your JavaScript is running (unless you&#8217;re using Workers), and use the &#8220;JavaScript and Events&#8221; timeline to understand what&#8217;s triggering your script. Perhaps you&#8217;re doing too much work in response to user or scroll events, or triggering updates of hidden elements from requestAnimationFrame. Be cognizant of work done by JavaScript libraries and third party scripts that you use on your page. To dig deeper, you can use Web Inspector&#8217;s <a href="https://webkit.org/blog/6539/introducing-jscs-new-sampling-profiler/">JavaScript profiler</a> to see where time is being spent.</p>
-                <p>Activity in &#8220;WebKit Threads&#8221; is mostly triggered by work related to JavaScript: JIT compilation and garbage collection, so reducing the amount of script that runs, and reducing the churn of JavaScript objects should lower this.</p>
-                <p>Various other system frameworks invoked by WebKit make use of threads, so &#8220;Other threads&#8221; include work done by those; the largest contributor to &#8220;Other thread&#8221; activity is painting, which we&#8217;ll talk about next.</p>
+                <p>Activity in &#8220;CyberKit Threads&#8221; is mostly triggered by work related to JavaScript: JIT compilation and garbage collection, so reducing the amount of script that runs, and reducing the churn of JavaScript objects should lower this.</p>
+                <p>Various other system frameworks invoked by CyberKit make use of threads, so &#8220;Other threads&#8221; include work done by those; the largest contributor to &#8220;Other thread&#8221; activity is painting, which we&#8217;ll talk about next.</p>
                 <h3>Painting</h3>
                 <p>Main thread CPU usage can also be triggered by lots of layout and painting; these are usually triggered by script, but a CSS animation of a property other than <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform"><code>transform</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/opacity"><code>opacity</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter"><code>filter</code></a> can also cause them. Looking at the “Layout and Rendering” timeline will help you understand what’s causing activity.</p>
                 <p>If the &#8220;Layout and Rendering&#8221; timeline shows painting but you can&#8217;t figure out what&#8217;s changing, turn on Paint Flashing:</p>
                 <figure>
                 <picture><source srcset="https://webkit.org/wp-content/uploads/Enable-Paint-Flashing-dark.png" media="(prefers-color-scheme: dark)" /><img style="width: 100%; max-width: 350px;" src="https://webkit.org/wp-content/uploads/Enable-Paint-Flashing-light.png" /></picture>
                 </figure>
-                <p>This will cause those paints to be briefly highlighted with a red overlay; you might have to scroll the page to see them. Be aware that WebKit keeps some &#8220;overdraw&#8221; tiles to allow for smooth scrolling, so paints that are not visible in the viewport can still be doing work to keep offscreen tiles up-to-date. If a paint shows in the timeline, it&#8217;s doing actual work.</p>
-                <p>In addition to causing power usage by the CPU, painting usually also triggers GPU work. WebKit on macOS and iOS uses the GPU for painting, and so triggering painting can cause significant increases in power. The additional CPU usage will often show under &#8220;Other threads&#8221; in the CPU Usage timeline.</p>
+                <p>This will cause those paints to be briefly highlighted with a red overlay; you might have to scroll the page to see them. Be aware that CyberKit keeps some &#8220;overdraw&#8221; tiles to allow for smooth scrolling, so paints that are not visible in the viewport can still be doing work to keep offscreen tiles up-to-date. If a paint shows in the timeline, it&#8217;s doing actual work.</p>
+                <p>In addition to causing power usage by the CPU, painting usually also triggers GPU work. CyberKit on macOS and iOS uses the GPU for painting, and so triggering painting can cause significant increases in power. The additional CPU usage will often show under &#8220;Other threads&#8221; in the CPU Usage timeline.</p>
                 <p>The GPU is also used for <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API"><code>&lt;canvas&gt;</code></a> rendering, both 2D canvas and WebGL/WebGPU. To minimize drawing, don&#8217;t call into the <code>&lt;canvas&gt;</code> APIs if the canvas content isn&#8217;t changing, and try to optimize your canvas drawing commands.</p>
-                <p>Many Mac laptops have two GPUs, an &#8220;integrated&#8221; GPU which is on the same die as the CPU, and is less powerful but more power-efficient, and a more powerful, but more power-hungry &#8220;discrete&#8221; GPU. WebKit will default to using the integrated GPU by default; you can request the discrete GPU using the <a href="https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.2.1"><code>powerPreference</code></a> context creation parameter, but only do this if you can justify the power cost.</p>
+                <p>Many Mac laptops have two GPUs, an &#8220;integrated&#8221; GPU which is on the same die as the CPU, and is less powerful but more power-efficient, and a more powerful, but more power-hungry &#8220;discrete&#8221; GPU. CyberKit will default to using the integrated GPU by default; you can request the discrete GPU using the <a href="https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.2.1"><code>powerPreference</code></a> context creation parameter, but only do this if you can justify the power cost.</p>
                 <h3>Networking</h3>
                 <p>Wireless networking can affect battery life in unexpected ways. Phones are the most affected due to their combination of powerful radios (the WiFi and cellular network chips) with a smaller battery. Unfortunately, measuring the power impact of networking is not easy outside of a lab, but can be reduced by following some simple rules.</p>
                 <p>The most direct way to reduce networking power usage is to maximize the use of the browser&#8217;s cache. All of the best practices for minimizing page load time also benefit the battery by reducing how long the radios need to be powered on.</p>
@@ -367,7 +367,7 @@
             </description>
             <content:encoded>
                 <![CDATA[<p><a href="https://webkit.org/blog/6017/introducing-safari-technology-preview/">Safari Technology Preview</a> Release 90 is now <a href="https://webkit.org/downloads/">available for download</a> for macOS Mojave and the macOS Catalina beta. If you already have Safari Technology Preview installed, you can update in the Software Update pane of System Preferences on macOS.</p>
-                <p>This release covers WebKit revisions <a href="https://trac.webkit.org/log?stop_rev=248024&amp;&amp;rev=248705&amp;limit=999">248024-248705</a>.</p>
+                <p>This release covers CyberKit revisions <a href="https://trac.webkit.org/log?stop_rev=248024&amp;&amp;rev=248705&amp;limit=999">248024-248705</a>.</p>
                 <h3>Web API</h3>
                 <ul>
                 <li>Fixed ping loads to not prevent page caching (<a href="https://trac.webkit.org/changeset/248265/webkit/">r248265</a>)</li>
@@ -437,7 +437,7 @@
                 </li>
                 <li>Settings
                 <ul>
-                <li>Added an Engineering pane to expose useful settings for WebKit engineers (<a href="https://trac.webkit.org/changeset/248391/webkit/">r248391</a>)</li>
+                <li>Added an Engineering pane to expose useful settings for CyberKit engineers (<a href="https://trac.webkit.org/changeset/248391/webkit/">r248391</a>)</li>
                 </ul>
                 </li>
                 </ul>
@@ -449,7 +449,7 @@
             </content:encoded>
         </item>
         <item>
-            <title>Announcing the WebKit Tracking Prevention Policy</title>
+            <title>Announcing the CyberKit Tracking Prevention Policy</title>
             <link>https://webkit.org/blog/9507/announcing-the-webkit-tracking-prevention-policy/</link>
             <pubDate>Wed, 14 Aug 2019 22:44:55 +0000</pubDate>
             <dc:creator>
@@ -464,14 +464,14 @@
 
             <guid isPermaLink="false">https://webkit.org/?p=9507</guid>
             <description>
-                <![CDATA[Today we are publishing the WebKit Tracking Prevention Policy, covering: What types of tracking WebKit will prevent.]]>
+                <![CDATA[Today we are publishing the CyberKit Tracking Prevention Policy, covering: What types of tracking CyberKit will prevent.]]>
             </description>
             <content:encoded>
-                <![CDATA[<p>Today we are publishing the <a href="https://webkit.org/tracking-prevention-policy">WebKit Tracking Prevention Policy</a>, covering:</p>
+                <![CDATA[<p>Today we are publishing the <a href="https://webkit.org/tracking-prevention-policy">CyberKit Tracking Prevention Policy</a>, covering:</p>
                 <ul>
-                <li>What types of tracking WebKit will prevent.</li>
+                <li>What types of tracking CyberKit will prevent.</li>
                 <li>When other tracking countermeasures come into play such as limiting capabilities and informed user consent.</li>
-                <li>How WebKit handles unintended impact of our tracking prevention.</li>
+                <li>How CyberKit handles unintended impact of our tracking prevention.</li>
                 </ul>
                 <p>We’d like to thank Mozilla for their <a href="https://wiki.mozilla.org/Security/Anti_tracking_policy">anti-tracking policy</a> which served as inspiration for ours.</p>
                 <p>Please send us your comments or questions about this policy to <a href="https://twitter.com/webkit">@webkit</a> on Twitter.</p>
@@ -495,7 +495,7 @@
             </description>
             <content:encoded>
                 <![CDATA[<p><a href="https://webkit.org/blog/6017/introducing-safari-technology-preview/">Safari Technology Preview</a> Release 89 is now <a href="https://webkit.org/downloads/">available for download</a> for macOS Mojave and the macOS Catalina beta. If you already have Safari Technology Preview installed, you can update in the Software Update pane of System Preferences on macOS.</p>
-                <p>This release covers WebKit revisions <a href="https://trac.webkit.org/log?stop_rev=247433&amp;&amp;rev=248024&amp;limit=999">247433-248024</a>.</p>
+                <p>This release covers CyberKit revisions <a href="https://trac.webkit.org/log?stop_rev=247433&amp;&amp;rev=248024&amp;limit=999">247433-248024</a>.</p>
                 <h3>JavaScript</h3>
                 <ul>
                 <li>Implemented nullish coalescing with the <code>??</code> operator for ESNext (<a href="https://trac.webkit.org/changeset/247819/webkit/">r247819</a>)</li>
@@ -606,9 +606,9 @@
                 <li><strong>Images</strong> will prevent any not-yet loaded images from loading, but will have no effect on any already loaded images.</li>
                 <li><strong>Styles</strong> will immediately disable all CSS on the page, including inline <code>&lt;style&gt;</code>s and any <code>style</code> DOM attributes.</li>
                 <li><strong>JavaScript</strong> will cause the page to ignore any <em>future</em> JavaScript from being run, including new <code>&lt;script&gt;</code> elements (the underlying resource isn&#8217;t even requested) and callbacks for previously added event listeners.</li>
-                <li><strong>Site-specific Hacks</strong> controls whether workarounds are made by WebKit to support compatibility on certain sites.
+                <li><strong>Site-specific Hacks</strong> controls whether workarounds are made by CyberKit to support compatibility on certain sites.
                 <ul>
-                <li>A list of these sites can be found in <a href="https://trac.webkit.org/browser/webkit/trunk/Source/WebCore/page/Quirks.cpp">Source/WebCore/page/Quirks.cpp</a>.</li>
+                <li>A list of these sites can be found in <a href="https://trac.webkit.org/browser/webkit/trunk/Source/CyberCore/page/Quirks.cpp">Source/CyberCore/page/Quirks.cpp</a>.</li>
                 <li>If you develop a site that is found in that list, we <em>strongly</em> encourage developing and testing with <strong>Site-specific Hacks</strong> <em>disabled</em>.</li>
                 </ul>
                 </li>
@@ -646,7 +646,7 @@
             </description>
             <content:encoded>
                 <![CDATA[<p><a href="https://webkit.org/blog/6017/introducing-safari-technology-preview/">Safari Technology Preview</a> Release 88 is now <a href="https://webkit.org/downloads/">available for download</a> for macOS Mojave and the macOS Catalina beta. If you already have Safari Technology Preview installed, you can update in the Software Update pane of System Preferences on macOS.</p>
-                <p>This release covers WebKit revisions <a href="https://trac.webkit.org/log?stop_rev=247047&amp;&amp;rev=247433&amp;limit=999">247047-247433</a>.</p>
+                <p>This release covers CyberKit revisions <a href="https://trac.webkit.org/log?stop_rev=247047&amp;&amp;rev=247433&amp;limit=999">247047-247433</a>.</p>
                 <h3>JavaScript</h3>
                 <ul>
                 <li>Enabled <code>Intl.PluralRules</code> and <code>Intl.NumberFormatToParts</code> by default (<a href="https://trac.webkit.org/changeset/247247/webkit/">r247247</a>)</li>
@@ -720,7 +720,7 @@
             </description>
             <content:encoded>
                 <![CDATA[<p><a href="https://webkit.org/blog/6017/introducing-safari-technology-preview/">Safari Technology Preview</a> Release 87 is now <a href="https://webkit.org/downloads/">available for download</a> for macOS Mojave and the macOS Catalina beta. If you already have Safari Technology Preview installed, you can update in the Software Update pane of System Preferences on macOS.</p>
-                <p>This release covers WebKit revisions <a href="https://trac.webkit.org/log?stop_rev=246691&amp;&amp;rev=247047&amp;limit=999">246691-247047</a>.</p>
+                <p>This release covers CyberKit revisions <a href="https://trac.webkit.org/log?stop_rev=246691&amp;&amp;rev=247047&amp;limit=999">246691-247047</a>.</p>
                 <h3>Web API</h3>
                 <ul>
                 <li>Changed <code>openDatabase</code> to return an empty object when WebSQL is disabled (<a href="https://trac.webkit.org/changeset/246707/webkit/">r246707</a>)</li>
@@ -793,7 +793,7 @@
                 <p>A non-goal of this release is to support general-purpose device automation via the WebDriver API. The W3C WebDriver API focuses on automating interactions with web content, and that is also the focus of the WebDriver support added in iOS 13. Other means exist to change system-level configuration with the <a href="https://developer.apple.com/documentation/xctest">XCTest Framework</a>, and are complimentary to WebDriver. There are other ways in which web content interacts with the rest of iOS, and most of these are suppressed in order to provide a stable testing environment. Safari for iOS does not allow WebDriver-initiated navigations to be handled outside of Safari. In other words, clicking a <code>tel://</code> link will not offer to place a phone call, and clicking an app store link will not redirect the user to the App Store. Similarly, non-Safari content displayed by the system–such as update dialogs, app notifications, incoming calls, etc.–are suppressed while a WebDriver session is active. Lastly, the software keyboard is suppressed when focusing text fields in WebDriver sessions. To simulate text input with WebDriver, use the existing <a href="https://w3c.github.io/webdriver/#perform-actions">Perform Actions endpoint</a> or <a href="https://w3c.github.io/webdriver/#element-send-keys">Element Send Keys endpoint</a>.</p>
                 <h2>Porting Tests</h2>
                 <p>A major goal of iOS 13 is to make it easier to develop and consume desktop-like web experiences on mobile devices. Towards that end, a major goal for WebDriver on iOS is to make it easy to port existing desktop-oriented WebDriver tests to work with Desktop-class browsing in Safari on iPadOS. As much as we&#8217;d like to treat macOS and iOS devices the same in our tests, there are important differences that affect how you may want to use WebDriver.</p>
-                <p>The first notable difference is handling of user input, namely touch and clicks. In this initial version of WebDriver on iOS, simulated input sources include keyboard, mouse, and single-finger touches. The Perform Actions command and <a href="https://w3c.github.io/webdriver/#element-click">Element Click command</a> synthesize touches using mouse inputs. If your existing test uses mouse clicks, double, clicks, and drags, safaridriver converts these interactions into equivalent single finger touches; no code needs to be changed. <em>Multiple touch input sources (i.e., fingers) are not supported in this release</em>. We experimented with offering this via the existing Perform Actions endpoint, but found that it was difficult to author WebDriver commands that performed well-known gestures such as flick, pinch, pan, and so on. This is partly due to the low-level nature of the Actions API, and partly due to the timing-sensitive nature of gesture recognizers used by Safari and WebKit. Apple is working within the W3C WebDriver working group to define a more expressive, intuitive, and stable API for performing gestures in WebDriver tests.</p>
+                <p>The first notable difference is handling of user input, namely touch and clicks. In this initial version of WebDriver on iOS, simulated input sources include keyboard, mouse, and single-finger touches. The Perform Actions command and <a href="https://w3c.github.io/webdriver/#element-click">Element Click command</a> synthesize touches using mouse inputs. If your existing test uses mouse clicks, double, clicks, and drags, safaridriver converts these interactions into equivalent single finger touches; no code needs to be changed. <em>Multiple touch input sources (i.e., fingers) are not supported in this release</em>. We experimented with offering this via the existing Perform Actions endpoint, but found that it was difficult to author WebDriver commands that performed well-known gestures such as flick, pinch, pan, and so on. This is partly due to the low-level nature of the Actions API, and partly due to the timing-sensitive nature of gesture recognizers used by Safari and CyberKit. Apple is working within the W3C WebDriver working group to define a more expressive, intuitive, and stable API for performing gestures in WebDriver tests.</p>
                 <p>A less surprising difference between macOS and iOS WebDriver is that endpoints to manipulate the OS window are generally not supported by Safari on iOS. Specifically, the Set Window Rect, Minimize Window, and Maximize Window endpoints will return <em>&#8220;unsupported operation&#8221;</em>. For more detailed information concerning which endpoints are supported, see the <a href="https://developer.apple.com/documentation/webkit/about_webdriver_for_safari">W3C WebDriver Commands reference</a>.</p>
                 <h2>Summary</h2>
                 <p>With the introduction of native WebDriver support in Safari on iOS 13, it’s now possible to run the same automated tests of desktop-oriented web content on desktop and mobile devices equally. Safari’s support comes with new, exclusive safeguards to simultaneously protect user security and privacy and also help you write more stable and consistent tests. You can try out Safari’s WebDriver support today by installing a beta of <a href="https://developer.apple.com/macos/">macOS Catalina</a> and <a href="https://developer.apple.com/ios/">iOS 13</a>.</p>

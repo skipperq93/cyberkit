@@ -5,7 +5,7 @@
 <script src="/service-workers/service-worker/resources/test-helpers.sub.js"></script>
 </head>
 <body>
-<div id="restart" onclick="window.location = 'http://localhost:8800/WebKit/service-workers/third-party-cookie.html'">Click to restart test</div>
+<div id="restart" onclick="window.location = 'http://localhost:8800/CyberKit/service-workers/third-party-cookie.html'">Click to restart test</div>
 <br>
 <div id="log"></div>
 <script>
@@ -16,7 +16,7 @@ if (window.testRunner) {
 
 async function setCookie()
 {
-    var iframe = await with_iframe("http://127.0.0.1:8800/WebKit/service-workers/resources/third-party-cookie-iframe.html");
+    var iframe = await with_iframe("http://127.0.0.1:8800/CyberKit/service-workers/resources/third-party-cookie-iframe.html");
     var result = await new Promise((resolve) => {
         window.onmessage = (e) => {
             resolve(e.data);
@@ -30,12 +30,12 @@ async function setCookie()
         return;
     }
     iframe.remove();
-    window.location = "http://127.0.0.1:8800/WebKit/service-workers/third-party-cookie.html?second-step#report";
+    window.location = "http://127.0.0.1:8800/CyberKit/service-workers/third-party-cookie.html?second-step#report";
 }
 
 function reportCookie()
 {
-    window.location = "http://localhost:8800/WebKit/service-workers/third-party-cookie.html?third-step#cookie='" + document.cookie + "'";
+    window.location = "http://localhost:8800/CyberKit/service-workers/third-party-cookie.html?third-step#cookie='" + document.cookie + "'";
 }
 
 function checkCookie()

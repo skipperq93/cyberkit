@@ -1,0 +1,9 @@
+
+FAIL Equivalence test assert_equals: interface object expected function "function DOMMatrix() {
+    [native code]
+}" but got function "function CyberKitCSSMatrix() {
+    [native code]
+}"
+PASS Property descriptor for CyberKitCSSMatrix 
+PASS Property descriptor for DOMMatrix 
+

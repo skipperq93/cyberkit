@@ -35,7 +35,7 @@ _log = logging.getLogger(__name__)
 _USAGE = """usage: %prog [--help] [options] [path1] [path2] ...
 
 Overview:
-  Check coding style according to WebKit style guidelines:
+  Check coding style according to CyberKit style guidelines:
 
       http://webkit.org/coding/coding-style.html
 
@@ -69,29 +69,29 @@ Filters:
 
 Paths:
   Certain style-checking behavior depends on the paths relative to
-  the WebKit source root of the files being checked.  For example,
+  the CyberKit source root of the files being checked.  For example,
   certain types of errors may be handled differently for files in
-  WebKit/gtk/webkit/ (e.g. by suppressing "readability/naming" errors
+  CyberKit/gtk/webkit/ (e.g. by suppressing "readability/naming" errors
   for files in this directory).
 
   Consequently, if the path relative to the source root cannot be
   determined for a file being checked, then style checking may not
   work correctly for that file.  This can occur, for example, if no
-  WebKit checkout can be found, or if the source root can be detected,
+  CyberKit checkout can be found, or if the source root can be detected,
   but one of the files being checked lies outside the source tree.
 
-  If a WebKit checkout can be detected and all files being checked
+  If a CyberKit checkout can be detected and all files being checked
   are in the source tree, then all paths will automatically be
   converted to paths relative to the source root prior to checking.
   This is also useful for display purposes.
 
   Currently, this command can detect the source root only if the
-  command is run from within a WebKit checkout (i.e. if the current
+  command is run from within a CyberKit checkout (i.e. if the current
   working directory is below the root of a checkout).  In particular,
   it is not recommended to run this script from a directory outside
   a checkout.
 
-  Running this script from a top-level WebKit source directory and
+  Running this script from a top-level CyberKit source directory and
   checking only files in the source tree will ensure that all style
   checking behaves correctly -- whether or not a checkout can be
   detected.  This is because all file paths will already be relative

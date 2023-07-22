@@ -1,5 +1,5 @@
 This tests executing FormatBlock command without body element.
-The passes if WebKit does not crash.
+The passes if CyberKit does not crash.
 
 PASS
 

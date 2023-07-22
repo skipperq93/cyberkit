@@ -26,8 +26,8 @@
 #include "stdafx.h"
 #include "AccessibilityDelegate.h"
 
-#include "WebKitLegacyBrowserWindow.h"
-#include <WebKitLegacy/WebKitCOMAPI.h>
+#include "CyberKitLegacyBrowserWindow.h"
+#include <CyberKitLegacy/CyberKitCOMAPI.h>
 #include <commctrl.h>
 #include <commdlg.h>
 #include <objbase.h>

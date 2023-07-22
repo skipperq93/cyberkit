@@ -29,23 +29,23 @@
 #import "SettingsController.h"
 #import "WK1BrowserWindowController.h"
 #import "WK2BrowserWindowController.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKUserContentControllerPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/_WKExperimentalFeature.h>
-#import <WebKit/_WKInternalDebugFeature.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
-#import <WebKit/_WKUserContentExtensionStore.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/CyberKit.h>
+#import <CyberKit/_WKExperimentalFeature.h>
+#import <CyberKit/_WKInternalDebugFeature.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/_WKUserContentExtensionStore.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 
 enum {
-    WebKit1NewWindowTag = 1,
-    WebKit2NewWindowTag = 2,
-    WebKit1NewEditorTag = 3,
-    WebKit2NewEditorTag = 4
+    CyberKit1NewWindowTag = 1,
+    CyberKit2NewWindowTag = 2,
+    CyberKit1NewEditorTag = 3,
+    CyberKit2NewEditorTag = 4
 };
 
 @implementation NSApplication (MiniBrowserApplicationExtensions)
@@ -157,18 +157,18 @@ static WKWebsiteDataStore *persistentDataStore()
 - (BrowserWindowController *)createBrowserWindowController:(id)sender
 {
     BrowserWindowController *controller = nil;
-    BOOL useWebKit2 = NO;
+    BOOL useCyberKit2 = NO;
     BOOL makeEditable = NO;
 
     if (![sender respondsToSelector:@selector(tag)]) {
-        useWebKit2 = _settingsController.useWebKit2ByDefault;
+        useCyberKit2 = _settingsController.useCyberKit2ByDefault;
         makeEditable = _settingsController.createEditorByDefault;
     } else {
-        useWebKit2 = [sender tag] == WebKit2NewWindowTag || [sender tag] == WebKit2NewEditorTag;
-        makeEditable = [sender tag] == WebKit1NewEditorTag || [sender tag] == WebKit2NewEditorTag;
+        useCyberKit2 = [sender tag] == CyberKit2NewWindowTag || [sender tag] == CyberKit2NewEditorTag;
+        makeEditable = [sender tag] == CyberKit1NewEditorTag || [sender tag] == CyberKit2NewEditorTag;
     }
 
-    if (!useWebKit2)
+    if (!useCyberKit2)
         controller = [[WK1BrowserWindowController alloc] initWithWindowNibName:@"BrowserWindow"];
     else
         controller = [[WK2BrowserWindowController alloc] initWithConfiguration:[self defaultConfiguration]];
@@ -304,21 +304,21 @@ static WKWebsiteDataStore *persistentDataStore()
 
 - (void)_updateNewWindowKeyEquivalents
 {
-    NSEventModifierFlags webKit1Flags = _settingsController.useWebKit2ByDefault ? NSEventModifierFlagOption : 0;
-    NSEventModifierFlags webKit2Flags = _settingsController.useWebKit2ByDefault ? 0 : NSEventModifierFlagOption;
+    NSEventModifierFlags webKit1Flags = _settingsController.useCyberKit2ByDefault ? NSEventModifierFlagOption : 0;
+    NSEventModifierFlags webKit2Flags = _settingsController.useCyberKit2ByDefault ? 0 : NSEventModifierFlagOption;
 
     NSString *normalWindowEquivalent = _settingsController.createEditorByDefault ? @"N" : @"n";
     NSString *editorEquivalent = _settingsController.createEditorByDefault ? @"n" : @"N";
 
-    _newWebKit1WindowItem.keyEquivalentModifierMask = NSEventModifierFlagCommand | webKit1Flags;
-    _newWebKit2WindowItem.keyEquivalentModifierMask = NSEventModifierFlagCommand | webKit2Flags;
-    _newWebKit1EditorItem.keyEquivalentModifierMask = NSEventModifierFlagCommand | webKit1Flags;
-    _newWebKit2EditorItem.keyEquivalentModifierMask = NSEventModifierFlagCommand | webKit2Flags;
+    _newCyberKit1WindowItem.keyEquivalentModifierMask = NSEventModifierFlagCommand | webKit1Flags;
+    _newCyberKit2WindowItem.keyEquivalentModifierMask = NSEventModifierFlagCommand | webKit2Flags;
+    _newCyberKit1EditorItem.keyEquivalentModifierMask = NSEventModifierFlagCommand | webKit1Flags;
+    _newCyberKit2EditorItem.keyEquivalentModifierMask = NSEventModifierFlagCommand | webKit2Flags;
 
-    _newWebKit1WindowItem.keyEquivalent = normalWindowEquivalent;
-    _newWebKit2WindowItem.keyEquivalent = normalWindowEquivalent;
-    _newWebKit1EditorItem.keyEquivalent = editorEquivalent;
-    _newWebKit2EditorItem.keyEquivalent = editorEquivalent;
+    _newCyberKit1WindowItem.keyEquivalent = normalWindowEquivalent;
+    _newCyberKit2WindowItem.keyEquivalent = normalWindowEquivalent;
+    _newCyberKit1EditorItem.keyEquivalent = editorEquivalent;
+    _newCyberKit2EditorItem.keyEquivalent = editorEquivalent;
 }
 
 - (IBAction)showExtensionsManager:(id)sender

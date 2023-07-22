@@ -35,7 +35,7 @@ import zipfile
 from webkitpy.common.host import Host
 from webkitpy.common.net.bugzilla import bugzilla
 from webkitpy.common.net.layouttestresults import LayoutTestResults
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 from webkitpy.layout_tests.controllers.test_result_writer import TestResultWriter
 from webkitpy.layout_tests.models import test_expectations
 
@@ -85,7 +85,7 @@ class TestExpectationUpdater(object):
             self.platform_specific_attachments = {self._bot_type(attachment): attachment} if is_attachment_platform_specific else {}
             self.generic_attachment = attachment if not is_attachment_platform_specific else None
 
-        webkit_finder = WebKitFinder(self.filesystem)
+        webkit_finder = CyberKitFinder(self.filesystem)
         self.layout_test_repository = webkit_finder.path_from_webkit_base("LayoutTests")
 
     def _bot_type(self, attachment):

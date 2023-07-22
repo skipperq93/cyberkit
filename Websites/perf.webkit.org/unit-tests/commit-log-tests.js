@@ -17,7 +17,7 @@ function webkitCommit()
     });
 }
 
-function oldWebKitCommit()
+function oldCyberKitCommit()
 {
     return new CommitLog(2, {
         id: 2,
@@ -27,7 +27,7 @@ function oldWebKitCommit()
     });
 }
 
-function gitWebKitCommit()
+function gitCyberKitCommit()
 {
     return new CommitLog(3, {
         id: 3,
@@ -37,7 +37,7 @@ function gitWebKitCommit()
     });
 }
 
-function oldGitWebKitCommit()
+function oldGitCyberKitCommit()
 {
     return new CommitLog(4, {
         id: 4,
@@ -148,7 +148,7 @@ describe('CommitLog', function () {
         });
 
         it('should truncate a Git hash at 8th character', function () {
-            assert.equal(gitWebKitCommit().label(), '6f8b0dbbda95');
+            assert.equal(gitCyberKitCommit().label(), '6f8b0dbbda95');
         });
 
         it('should not modify OS X version', function () {
@@ -158,11 +158,11 @@ describe('CommitLog', function () {
 
     describe('title', function () {
         it('should prefix SVN revision with "r"', function () {
-            assert.equal(webkitCommit().title(), 'WebKit at r200805');
+            assert.equal(webkitCommit().title(), 'CyberKit at r200805');
         });
 
         it('should truncate a Git hash at 8th character', function () {
-            assert.equal(gitWebKitCommit().title(), 'WebKit at 6f8b0dbbda95');
+            assert.equal(gitCyberKitCommit().title(), 'CyberKit at 6f8b0dbbda95');
         });
 
         it('should not modify OS X version', function () {
@@ -187,7 +187,7 @@ describe('CommitLog', function () {
                 repository: MockModels.webkit
             });
 
-            assert.deepEqual(gitWebKitCommit().diff(), {
+            assert.deepEqual(gitCyberKitCommit().diff(), {
                 label: '6f8b0dbbda95',
                 url: 'http://trac.webkit.org/changeset/6f8b0dbbda95a440503b88db1dd03dad3a7b07fb',
                 repository: MockModels.webkit,
@@ -201,7 +201,7 @@ describe('CommitLog', function () {
         });
 
         it('should use increment the old SVN revision by 1', function () {
-            assert.deepEqual(webkitCommit().diff(oldWebKitCommit()), {
+            assert.deepEqual(webkitCommit().diff(oldCyberKitCommit()), {
                 label: 'r200574-r200805',
                 url: '',
                 repository: MockModels.webkit
@@ -209,7 +209,7 @@ describe('CommitLog', function () {
         });
 
         it('should truncate a Git hash at 8th character', function () {
-            assert.deepEqual(gitWebKitCommit().diff(oldGitWebKitCommit()), {
+            assert.deepEqual(gitCyberKitCommit().diff(oldGitCyberKitCommit()), {
                 label: 'ffda14e6db07..6f8b0dbbda95',
                 url: '',
                 repository: MockModels.webkit
@@ -231,7 +231,7 @@ describe('CommitLog', function () {
         });
 
         it('should return "true" when both commits have commit time', () => {
-            assert.ok(CommitLog.hasOrdering(webkitCommit(), oldWebKitCommit()));
+            assert.ok(CommitLog.hasOrdering(webkitCommit(), oldCyberKitCommit()));
         });
 
         it('should return "false" when neither commit time nor commit order exists', () => {
@@ -265,7 +265,7 @@ describe('CommitLog', function () {
 
     describe('orderTowCommits', () => {
         it('should order by time when both commits have time', () => {
-            const startCommit = oldWebKitCommit();
+            const startCommit = oldCyberKitCommit();
             const endCommit = webkitCommit();
             assert.deepEqual(CommitLog.orderTwoCommits(endCommit, startCommit), [startCommit, endCommit]);
             assert.deepEqual(CommitLog.orderTwoCommits(startCommit, endCommit), [startCommit, endCommit]);
@@ -452,7 +452,7 @@ describe('CommitLog', function () {
         "status":"OK"
     };
 
-    const commitsAPIResponseForOwnedWebKit = {
+    const commitsAPIResponseForOwnedCyberKit = {
         "commits":[{
             "id": "1831151",
             "revision": "236643",
@@ -533,7 +533,7 @@ describe('CommitLog', function () {
             assert.equal(requests.length, 1);
             assert.equal(requests[0].url, `/api/commits/${MockModels.ownedWebkit.id()}/236643`);
 
-            requests[0].resolve(commitsAPIResponseForOwnedWebKit);
+            requests[0].resolve(commitsAPIResponseForOwnedCyberKit);
             const newCommits = await fetchingPromise;
             assert.equal(newCommits.length, 1);
 

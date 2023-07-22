@@ -131,7 +131,7 @@ const testAssertionMessageApduBase64 =
     "4/F0VB7DlUVM09IHPmxe1MzHUwRoCRZbCAIgGKov6xoAx2MEf6/6qNs8OutzhP2C" +
     "QoJ1L7Fe64G9uBeQAA==";
 
-const RESOURCES_DIR = "/WebKit/webauthn/resources/";
+const RESOURCES_DIR = "/CyberKit/webauthn/resources/";
 
 function asciiToUint8Array(str)
 {

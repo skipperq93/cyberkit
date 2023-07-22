@@ -7,7 +7,7 @@ pasted html:
 |   <span>
 |     style="display: contents;"
 |     "world"
-| " WebKit<#selection-caret>"
+| " CyberKit<#selection-caret>"
 
 text/plain:
-| "world WebKit"
+| "world CyberKit"

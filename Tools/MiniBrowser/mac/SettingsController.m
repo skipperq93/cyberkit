@@ -27,9 +27,9 @@
 
 #import "AppDelegate.h"
 #import "BrowserWindowController.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/_WKExperimentalFeature.h>
-#import <WebKit/_WKInternalDebugFeature.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/_WKExperimentalFeature.h>
+#import <CyberKit/_WKInternalDebugFeature.h>
 
 NSString * const kUserAgentChangedNotificationName = @"UserAgentChangedNotification";
 
@@ -38,7 +38,7 @@ static NSString * const DefaultURLPreferenceKey = @"DefaultURL";
 
 static NSString * const CustomUserAgentPreferenceKey = @"CustomUserAgentIdentifier";
 
-static NSString * const UseWebKit2ByDefaultPreferenceKey = @"UseWebKit2ByDefault";
+static NSString * const UseCyberKit2ByDefaultPreferenceKey = @"UseCyberKit2ByDefault";
 static NSString * const CreateEditorByDefaultPreferenceKey = @"CreateEditorByDefault";
 static NSString * const LayerBordersVisiblePreferenceKey = @"LayerBordersVisible";
 static NSString * const SimpleLineLayoutEnabledPreferenceKey = @"SimpleLineLayoutEnabled";
@@ -68,8 +68,8 @@ static NSString * const AppleColorFilterEnabledPreferenceKey = @"AppleColorFilte
 static NSString * const PunchOutWhiteBackgroundsInDarkModePreferenceKey = @"PunchOutWhiteBackgroundsInDarkMode";
 static NSString * const UseSystemAppearancePreferenceKey = @"UseSystemAppearance";
 
-// This default name intentionally overlaps with the key that WebKit2 checks when creating a view.
-static NSString * const UseRemoteLayerTreeDrawingAreaPreferenceKey = @"WebKit2UseRemoteLayerTreeDrawingArea";
+// This default name intentionally overlaps with the key that CyberKit2 checks when creating a view.
+static NSString * const UseRemoteLayerTreeDrawingAreaPreferenceKey = @"CyberKit2UseRemoteLayerTreeDrawingArea";
 
 static NSString * const PerWindowWebProcessesDisabledKey = @"PerWindowWebProcessesDisabled";
 static NSString * const NetworkCacheSpeculativeRevalidationDisabledKey = @"NetworkCacheSpeculativeRevalidationDisabled";
@@ -97,7 +97,7 @@ typedef NS_ENUM(NSInteger, DebugOverylayMenuItemTag) {
     _menu = [menu retain];
 
     NSArray *onByDefaultPrefs = @[
-        UseWebKit2ByDefaultPreferenceKey,
+        UseCyberKit2ByDefaultPreferenceKey,
         AcceleratedDrawingEnabledPreferenceKey,
         SimpleLineLayoutEnabledPreferenceKey,
         SubpixelAntialiasedLayerTextEnabledPreferenceKey,
@@ -140,7 +140,7 @@ typedef NS_ENUM(NSInteger, DebugOverylayMenuItemTag) {
 
 - (void)_populateMenu
 {
-    [self _addItemWithTitle:@"Use WebKit2 By Default" action:@selector(toggleUseWebKit2ByDefault:) indented:NO];
+    [self _addItemWithTitle:@"Use CyberKit2 By Default" action:@selector(toggleUseCyberKit2ByDefault:) indented:NO];
     [self _addItemWithTitle:@"Create Editor By Default" action:@selector(toggleCreateEditorByDefault:) indented:NO];
     [self _addItemWithTitle:@"Set Default URL to Current URL" action:@selector(setDefaultURLToCurrentURL:) indented:NO];
 
@@ -171,7 +171,7 @@ typedef NS_ENUM(NSInteger, DebugOverylayMenuItemTag) {
     [self _addItemWithTitle:@"Enable color-filter" action:@selector(toggleAppleColorFilterEnabled:) indented:NO];
     [self _addItemWithTitle:@"Punch Out White Backgrounds in Dark Mode" action:@selector(togglePunchOutWhiteBackgroundsInDarkMode:) indented:NO];
     [self _addItemWithTitle:@"Use System Appearance" action:@selector(toggleUseSystemAppearance:) indented:NO];
-    [self _addHeaderWithTitle:@"WebKit2-only Settings"];
+    [self _addHeaderWithTitle:@"CyberKit2-only Settings"];
 
     [self _addItemWithTitle:@"Reserve Space For Banners" action:@selector(toggleReserveSpaceForBanners:) indented:YES];
     [self _addItemWithTitle:@"Show Tiled Scrolling Indicator" action:@selector(toggleShowTiledScrollingIndicator:) indented:YES];
@@ -241,7 +241,7 @@ typedef NS_ENUM(NSInteger, DebugOverylayMenuItemTag) {
     [internalDebugFeaturesSubmenuItem release];
     [internalDebugFeaturesMenu release];
 
-    [self _addHeaderWithTitle:@"WebKit1-only Settings"];
+    [self _addHeaderWithTitle:@"CyberKit1-only Settings"];
     [self _addItemWithTitle:@"Enable Subpixel CSSOM Metrics" action:@selector(toggleEnableSubPixelCSSOMMetrics:) indented:YES];
 }
 
@@ -251,7 +251,7 @@ typedef NS_ENUM(NSInteger, DebugOverylayMenuItemTag) {
         @{
             @"label" : @"Safari 13.1",
             @"identifier" : @"safari",
-            @"userAgent" : @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.4 Safari/605.1.15"
+            @"userAgent" : @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleCyberKit/605.1.15 (KHTML, like Gecko) Version/13.0.4 Safari/605.1.15"
         },
         @{
             @"label" : @"-",
@@ -259,7 +259,7 @@ typedef NS_ENUM(NSInteger, DebugOverylayMenuItemTag) {
         @{
             @"label" : @"Safari—iOS 13.4—iPhone",
             @"identifier" : @"iphone-safari",
-            @"userAgent" : @"Mozilla/5.0 (iPhone; CPU iPhone OS 13_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1 Mobile/15E148 Safari/604.1"
+            @"userAgent" : @"Mozilla/5.0 (iPhone; CPU iPhone OS 13_4 like Mac OS X) AppleCyberKit/605.1.15 (KHTML, like Gecko) Version/13.1 Mobile/15E148 Safari/604.1"
         },
         @{
             @"label" : @"-",
@@ -280,17 +280,17 @@ typedef NS_ENUM(NSInteger, DebugOverylayMenuItemTag) {
         @{
             @"label" : @"Chrome—macOS",
             @"identifier" : @"chrome",
-            @"userAgent" : @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
+            @"userAgent" : @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleCyberKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
         },
         @{
             @"label" : @"Chrome—Windows",
             @"identifier" : @"windows-chrome",
-            @"userAgent" : @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+            @"userAgent" : @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleCyberKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
         },
         @{
             @"label" : @"Chrome—Android",
             @"identifier" : @"android-chrome",
-            @"userAgent" : @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+            @"userAgent" : @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleCyberKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
         },
     ];
 }
@@ -334,8 +334,8 @@ typedef NS_ENUM(NSInteger, DebugOverylayMenuItemTag) {
 {
     SEL action = [menuItem action];
 
-    if (action == @selector(toggleUseWebKit2ByDefault:))
-        [menuItem setState:[self useWebKit2ByDefault] ? NSControlStateValueOn : NSControlStateValueOff];
+    if (action == @selector(toggleUseCyberKit2ByDefault:))
+        [menuItem setState:[self useCyberKit2ByDefault] ? NSControlStateValueOn : NSControlStateValueOff];
     else if (action == @selector(toggleCreateEditorByDefault:))
         [menuItem setState:[self createEditorByDefault] ? NSControlStateValueOn : NSControlStateValueOff];
     else if (action == @selector(toggleUseTransparentWindows:))
@@ -422,14 +422,14 @@ typedef NS_ENUM(NSInteger, DebugOverylayMenuItemTag) {
     [[[NSApplication sharedApplication] browserAppDelegate] didChangeSettings];
 }
 
-- (void)toggleUseWebKit2ByDefault:(id)sender
+- (void)toggleUseCyberKit2ByDefault:(id)sender
 {
-    [self _toggleBooleanDefault:UseWebKit2ByDefaultPreferenceKey];
+    [self _toggleBooleanDefault:UseCyberKit2ByDefaultPreferenceKey];
 }
 
-- (BOOL)useWebKit2ByDefault
+- (BOOL)useCyberKit2ByDefault
 {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:UseWebKit2ByDefaultPreferenceKey];
+    return [[NSUserDefaults standardUserDefaults] boolForKey:UseCyberKit2ByDefaultPreferenceKey];
 }
 
 - (void)toggleCreateEditorByDefault:(id)sender

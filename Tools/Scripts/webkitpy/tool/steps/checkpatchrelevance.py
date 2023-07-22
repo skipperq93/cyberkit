@@ -39,13 +39,13 @@ class CheckPatchRelevance(AbstractStep):
         ]
 
     bindings_paths = [
-        "Source/WebCore",
+        "Source/CyberCore",
         "Tools",
     ]
 
     jsc_paths = [
         "JSTests/",
-        "Source/JavaScriptCore/",
+        "Source/CyberScriptCore/",
         "Source/WTF/",
         "Source/bmalloc/",
         "Makefile",

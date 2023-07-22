@@ -75,9 +75,9 @@ void WindowRegionIsSetToClipRect::performWindowGeometryTest()
     }
 
 #ifdef DEBUG_ALL
-    const wchar_t webKitDLLName[] = L"WebKit_debug.dll";
+    const wchar_t webKitDLLName[] = L"CyberKit_debug.dll";
 #else
-    const wchar_t webKitDLLName[] = L"WebKit.dll";
+    const wchar_t webKitDLLName[] = L"CyberKit.dll";
 #endif
     HMODULE webKitModule = ::GetModuleHandleW(webKitDLLName);
     if (!webKitModule) {

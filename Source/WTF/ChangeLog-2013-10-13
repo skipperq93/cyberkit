@@ -66,7 +66,7 @@
 
         * wtf/unicode/wchar/UnicodeWchar.cpp: Tried to do the right thing in this file, but
         I did not actually compile it. Also, the implementations here aren't really sufficient
-        to make WebKit work broadly. There are many things that just aren't working with this
+        to make CyberKit work broadly. There are many things that just aren't working with this
         implementation, such as parsing that uses u_charType to figure out which characters are valid.
         (unorm_normalize): Added.
         (u_charDirection): Added.
@@ -85,7 +85,7 @@
 
 2013-10-11  Anders Carlsson  <andersca@apple.com>
 
-        Remove gesture event support from WebCore
+        Remove gesture event support from CyberCore
         https://bugs.webkit.org/show_bug.cgi?id=122650
 
         Reviewed by Ryosuke Niwa.
@@ -112,7 +112,7 @@
 
 2013-10-10  Mark Rowe  <mrowe@apple.com>
 
-        <rdar://problem/13341666> WebKit should always build against an SDK.
+        <rdar://problem/13341666> CyberKit should always build against an SDK.
 
         Have all projects default to building against the OS X Internal SDK for the Production
         configuration. For the Debug and Release configurations, look for UseInternalSDK.xcconfig
@@ -581,7 +581,7 @@
         For HashTable, always call the destructor; if it is trivial then no code will be generated for it and the loops will be folded away. 
 
         Removing this does break the ability to store objects with non-trivial destructors in vectors and hash maps
-        and have their destructors not be called when removed, but we've never used this feature in WebKit so the extra
+        and have their destructors not be called when removed, but we've never used this feature in CyberKit so the extra
         code complexity is not worth it.
 
         * wtf/HashTable.h:
@@ -698,7 +698,7 @@
 
 2013-09-24  Mark Rowe  <mrowe@apple.com>
 
-        <rdar://problem/14971518> WebKit should build against the Xcode default toolchain when targeting OS X 10.8
+        <rdar://problem/14971518> CyberKit should build against the Xcode default toolchain when targeting OS X 10.8
 
         Reviewed by Dan Bernstein.
 
@@ -1052,7 +1052,7 @@
 
 2013-09-17  Anders Carlsson  <andersca@apple.com>
 
-        Stop explicitly using PassOwnPtr in WebCore/html
+        Stop explicitly using PassOwnPtr in CyberCore/html
         https://bugs.webkit.org/show_bug.cgi?id=121511
 
         Reviewed by Andreas Kling.
@@ -1113,7 +1113,7 @@
 
 2013-09-17  Mihnea Ovidenie  <mihnea@adobe.com>
 
-        REGRESSION(r155910): WebKit nightly builds don't load any page
+        REGRESSION(r155910): CyberKit nightly builds don't load any page
         https://bugs.webkit.org/show_bug.cgi?id=121482
 
         Reviewed by Andreas Kling.
@@ -1147,11 +1147,11 @@
 
 2013-09-16  Benjamin Poulain  <benjamin@webkit.org>
 
-        Fix WebKit1 build after r155910
+        Fix CyberKit1 build after r155910
 
         Reviewed by Anders Carlsson.
 
-        * wtf/Platform.h: Some files in WebKit include system headers before
+        * wtf/Platform.h: Some files in CyberKit include system headers before
         WTF headers, causing the macro to be defined twice. #undef the macro
         to support that case.
 
@@ -1764,7 +1764,7 @@
         Reviewed by Benjamin Poulain.
 
         Basically adding all files that have "Nix" in their names and
-        are related to WebCore module.
+        are related to CyberCore module.
 
         * wtf/nix/FeatureDefinesNix.h: Added.
         * wtf/nix/PlatformNix.h: Added.
@@ -1833,7 +1833,7 @@
 
         Fixes the following build failure:
 
-            WebKitBuild/Debug/usr/local/include/wtf/StdLibExtras.h:266:23: error: implicit conversion loses integer precision: 'size_t' (aka 'unsigned long') to 'unsigned int' [-Werror,-Wshorten-64-to-32]
+            CyberKitBuild/Debug/usr/local/include/wtf/StdLibExtras.h:266:23: error: implicit conversion loses integer precision: 'size_t' (aka 'unsigned long') to 'unsigned int' [-Werror,-Wshorten-64-to-32]
             for (unsigned i = size; i-- > index + 1;)
                           ~   ^~~~
 
@@ -2042,7 +2042,7 @@
 
         Reviewed by Andreas Kling.
 
-        People have already begun using C++11 auto in WebCore, so let's make it a prerequisite.
+        People have already begun using C++11 auto in CyberCore, so let's make it a prerequisite.
 
         * wtf/Compiler.h:
 
@@ -2058,7 +2058,7 @@
         - Replace WTF_COMPILER_SUPPORTS_CXX_FINAL_CONTROL with a compiler quirk for versions of clang
           that have a buggy final implementation and fix a bug in the macro where final would be disabled
           for versions of clang where __clang_minor__ is less than 2, regardless of the major version.
-        - Fail if someone tries to compile the WebKit stack with a compiler that doesn't support rvalue
+        - Fail if someone tries to compile the CyberKit stack with a compiler that doesn't support rvalue
           references or static_assert.
 
         * wtf/Compiler.h:
@@ -2331,7 +2331,7 @@
 
 2013-08-27  Arunprasad Rajkumar  <arurajku@cisco.com>
 
-        Replace currentTime() with monotonicallyIncreasingTime() in WebCore
+        Replace currentTime() with monotonicallyIncreasingTime() in CyberCore
         https://bugs.webkit.org/show_bug.cgi?id=119958
 
         Reviewed by Alexey Proskuryakov.
@@ -2354,11 +2354,11 @@
 
         * GNUmakefile.list.am:
         * wtf/gobject/GMutexLocker.h: Added.
-        (WebCore::GMutexLocker::GMutexLocker):
-        (WebCore::GMutexLocker::~GMutexLocker):
-        (WebCore::GMutexLocker::lock):
-        (WebCore::GMutexLocker::unlock):
-        (WebCore::GMutexLocker::mutex):
+        (CyberCore::GMutexLocker::GMutexLocker):
+        (CyberCore::GMutexLocker::~GMutexLocker):
+        (CyberCore::GMutexLocker::lock):
+        (CyberCore::GMutexLocker::unlock):
+        (CyberCore::GMutexLocker::mutex):
 
 2013-08-26  Andy Estes  <aestes@apple.com>
 
@@ -2682,12 +2682,12 @@
 
         Reviewed by David Kilzer.
 
-        Include iOS only WebCoreThread.* files in an ios group, and clean up
+        Include iOS only CyberCoreThread.* files in an ios group, and clean up
         the included files a bit.
 
         * WTF.xcodeproj/project.pbxproj:
-        * wtf/ios/WebCoreThread.cpp:
-        * wtf/ios/WebCoreThread.h:
+        * wtf/ios/CyberCoreThread.cpp:
+        * wtf/ios/CyberCoreThread.h:
 
 2013-08-19  Joseph Pecoraro  <pecoraro@apple.com>
 
@@ -2695,10 +2695,10 @@
 
         Reviewed by Benjamin Poulain.
 
-        Upstream iOS WebKit Source/WTF.
+        Upstream iOS CyberKit Source/WTF.
 
         * Configurations/Base.xcconfig:
-        JavaScriptCore.framework is a public framework.
+        CyberScriptCore.framework is a public framework.
 
         * wtf/Assertions.h:
         Define an export macro for iOS projects just including <wtf/Assertions.h>.
@@ -2732,11 +2732,11 @@
         * wtf/unicode/CharacterNames.h:
         * wtf/unicode/icu/UnicodeIcu.h:
         (WTF::Unicode::hasLineBreakingPropertyComplexContextOrIdeographic):
-        Minor iOS constants and functions used later by WebCore.
+        Minor iOS constants and functions used later by CyberCore.
 
 2013-08-16  Arunprasad Rajkumar  <arurajku@cisco.com>
 
-        <https://webkit.org/b/119785> Replace currentTime() with monotonicallyIncreasingTime() in WebCore
+        <https://webkit.org/b/119785> Replace currentTime() with monotonicallyIncreasingTime() in CyberCore
 
         Reviewed by Alexey Proskuryakov.
 
@@ -2833,8 +2833,8 @@
         On iOS isMainThread() means that the current thread is either the
         MainThread or WebThread and the current thread has the WebThreadLock.
 
-        * wtf/ios/WebCoreThread.cpp: Added.
-        * wtf/ios/WebCoreThread.h: Added.
+        * wtf/ios/CyberCoreThread.cpp: Added.
+        * wtf/ios/CyberCoreThread.h: Added.
         * wtf/mac/MainThreadMac.mm:
         (WTF::isMainThread):
 
@@ -2938,7 +2938,7 @@
         <http://webkit.org/b/119031>
 
         Implement shared logic for initializing logging channels based on human-readable channel names in WTF,
-        and rework the WebCore, WebKit and WebKit2 logging initialization on top of it.
+        and rework the CyberCore, CyberKit and CyberKit2 logging initialization on top of it.
 
         Logging channels may now be enabled by providing a comma-separated list of channel names, with the special
         "all" name enabling all channels. Channel names prefixed with a leading "-" will result in the named channel
@@ -2946,9 +2946,9 @@
         for history and loading being enabled.
 
         For OS X developers, this also changes the name of the user defaults used to enable logging. This is done to allow
-        the old user defaults to remain set for those people that need to switch between version of WebKit before and
-        after this change. Where the old user default keys were WebCoreLogLevel, WebKitLogLevel and WebKit2LogLevel,
-        the new user default keys are WebCoreLogging, WebKitLogging and WebKit2Logging.
+        the old user defaults to remain set for those people that need to switch between version of CyberKit before and
+        after this change. Where the old user default keys were CyberCoreLogLevel, CyberKitLogLevel and CyberKit2LogLevel,
+        the new user default keys are CyberCoreLogging, CyberKitLogging and CyberKit2Logging.
 
         For GTK developers, this changes the separator used in the WEBKIT_DEBUG environment variable to a comma for
         consistency with the other platforms and to enable more code sharing.
@@ -3170,14 +3170,14 @@
 
 2013-07-30  Patrick Gansterer  <paroga@webkit.org>
 
-        Move WindowsExtras.h from WebCore to WTF
+        Move WindowsExtras.h from CyberCore to WTF
         https://bugs.webkit.org/show_bug.cgi?id=118125
 
         Reviewed by Anders Carlsson.
 
         Move it to WTF to be able to use the functions in WTF too.
 
-        * wtf/WindowsExtras.h: Renamed from Source/WebCore/platform/win/WindowsExtras.h.
+        * wtf/WindowsExtras.h: Renamed from Source/CyberCore/platform/win/WindowsExtras.h.
         (WTF::getRegistryValue):
         (WTF::getWindowPointer):
         (WTF::setWindowPointer):
@@ -3219,7 +3219,7 @@
 
         Reviewed by Andreas Kling.
 
-        This bug was caused by r153380. The bug doesn't reproduce as long as WebKit is built by clang 4.2 and later
+        This bug was caused by r153380. The bug doesn't reproduce as long as CyberKit is built by clang 4.2 and later
         or final is disabled (it could be clang 4.1 and later but we don't have information about that).
 
         Fix the bug by disabling final on earlier versions of clang. Unfortunately we can only check versions of
@@ -3502,7 +3502,7 @@
         file in JSC so I put it in WTF.
 
         * WTF.xcodeproj/project.pbxproj:
-        * wtf/LLVMHeaders.h: Copied from Source/JavaScriptCore/ftl/FTLLLVMHeaders.h.
+        * wtf/LLVMHeaders.h: Copied from Source/CyberScriptCore/ftl/FTLLLVMHeaders.h.
         * wtf/Platform.h:
 
 2013-06-25  Filip Pizlo  <fpizlo@apple.com>
@@ -4062,7 +4062,7 @@
         
         Deque can remove both the first and the last element efficiently.
         
-        Test: TestWebKitAPI/Tests/WTF/Deque.cpp
+        Test: TestCyberKitAPI/Tests/WTF/Deque.cpp
 
         * wtf/Deque.h:
         (WTF::::takeLast):
@@ -4489,7 +4489,7 @@
 
 2013-06-19  David Kilzer  <ddkilzer@apple.com>
 
-        BUILD FIX (r151663): Fix build for iOS WebKit
+        BUILD FIX (r151663): Fix build for iOS CyberKit
 
         * wtf/text/AtomicStringTable.cpp: Include MainThread.h.
         (WTF::AtomicStringTable::create): Use AtomicStringTable::destroy
@@ -4497,7 +4497,7 @@
 
 2013-06-18  Roger Fong  <roger_fong@apple.com>
 
-        Replace tools32 folder with tools and update WebKit Windows solution accordingly.
+        Replace tools32 folder with tools and update CyberKit Windows solution accordingly.
         <rdar://problem/14118143>.
 
         Rubberstamped by Brent Fulgham.
@@ -4615,7 +4615,7 @@
 
         Reviewed by Anders Carlsson.
 
-        Enable GRAMMAR_CHECKING for WebKit ports that use/implement it.
+        Enable GRAMMAR_CHECKING for CyberKit ports that use/implement it.
 
         * wtf/Platform.h:
 
@@ -4813,12 +4813,12 @@
 
 2013-05-31  Zan Dobersek  <zdobersek@igalia.com>
 
-        Move MD5, SHA1 unit tests from WTF to TestWebKitAPI
+        Move MD5, SHA1 unit tests from WTF to TestCyberKitAPI
         https://bugs.webkit.org/show_bug.cgi?id=116445
 
         Reviewed by Benjamin Poulain.
 
-        Remove the MD5 and SHA1 test cases from the WTF code. The same cases are now built and run under TestWebKitAPI.
+        Remove the MD5 and SHA1 test cases from the WTF code. The same cases are now built and run under TestCyberKitAPI.
 
         * wtf/MD5.cpp:
         (WTF::MD5::MD5):
@@ -5207,7 +5207,7 @@
 
 2013-05-15  Nico Weber  <thakis@chromium.org>
 
-        WebKit doesn't support MSVS2003 any more, remove preprocessor checks for older versions.
+        CyberKit doesn't support MSVS2003 any more, remove preprocessor checks for older versions.
         https://bugs.webkit.org/show_bug.cgi?id=116157
 
         Reviewed by Anders Carlsson.
@@ -5285,7 +5285,7 @@
 
         Reviewed by Geoffrey Garen.
 
-        Add an optimized version of StringImpl::startsWith() for JavaScriptCore.
+        Add an optimized version of StringImpl::startsWith() for CyberScriptCore.
 
         * wtf/text/StringImpl.cpp:
         (WTF::StringImpl::startsWith):
@@ -5383,7 +5383,7 @@
         Reviewed by Beth Dakin.
 
         Complex.h contains a typedef and a single function (that already has an equivalent in the STL).
-        The header is used by three files in WebCore, so just use std::complex<double> and std::polar directly.
+        The header is used by three files in CyberCore, so just use std::complex<double> and std::polar directly.
 
         * GNUmakefile.list.am:
         * WTF.vcproj/WTF.vcproj:
@@ -5395,7 +5395,7 @@
 
 2013-05-11  Martin Robinson  <mrobinson@igalia.com>
 
-        [GTK] Add a basic cmake build for WTF and JavaScriptCore
+        [GTK] Add a basic cmake build for WTF and CyberScriptCore
         https://bugs.webkit.org/show_bug.cgi?id=115967
 
         Reviewed by Laszlo Gombos.
@@ -5864,7 +5864,7 @@
 
 2013-04-30  Anders Carlsson  <andersca@apple.com>
 
-        Remove the WebKit2 BinarySemaphore class
+        Remove the CyberKit2 BinarySemaphore class
         https://bugs.webkit.org/show_bug.cgi?id=115458
 
         Reviewed by Benjamin Poulain.
@@ -6114,7 +6114,7 @@
 
 2013-04-26  Andreas Kling  <akling@apple.com>
 
-        Remove wxWebKit from WTF.
+        Remove wxCyberKit from WTF.
         <http://webkit.org/b/115249>
 
         Reviewed by Antti Koivisto.
@@ -6199,7 +6199,7 @@
 
 2013-04-24  Roger Fong  <roger_fong@apple.com>
 
-        Have VS2010 WebKit solution look in WebKit_Libraries/lib32 for dependencies.
+        Have VS2010 CyberKit solution look in CyberKit_Libraries/lib32 for dependencies.
 
         * WTF.vcxproj/build-generated-files.sh:
 
@@ -6462,7 +6462,7 @@
 
 2013-04-19  Roger Fong  <roger_fong@apple.com>
 
-        Remove uses of WebKit_Source from AppleWin build in WTF.
+        Remove uses of CyberKit_Source from AppleWin build in WTF.
 
         * WTF.vcxproj/WTF.make:
         * WTF.vcxproj/copy-files.cmd:
@@ -6491,7 +6491,7 @@
 
 2013-04-19  Roger Fong  <roger_fong@apple.com>
 
-        Unreviewed. WebKit_Source is incorrectly set.
+        Unreviewed. CyberKit_Source is incorrectly set.
 
         * WTF.vcxproj/WTF.make:
 
@@ -6539,12 +6539,12 @@
 
 2013-04-17  Ryosuke Niwa  <rniwa@webkit.org>
 
-        REGRESSION(r148584): WebKit nightly builds don't load any page
+        REGRESSION(r148584): CyberKit nightly builds don't load any page
         https://bugs.webkit.org/show_bug.cgi?id=114752
 
         Reviewed by Anders Carlsson.
 
-        We can't use C++ style (//) comments in Platform.h because WebKit2/DerivedSource.make doesn't know
+        We can't use C++ style (//) comments in Platform.h because CyberKit2/DerivedSource.make doesn't know
         how to strip it to be merged with *.sb.in to generate *.sb files. Specifically, we have:
         
         # Some versions of clang incorrectly strip out // comments in c89 code.
@@ -6592,7 +6592,7 @@
         Fix fallout after r148545.
 
         * wtf/Platform.h:
-        Move Platform defines that were incorrectly in WebCore, into Platform.h
+        Move Platform defines that were incorrectly in CyberCore, into Platform.h
 
 2013-04-15  Commit Queue  <rniwa@webkit.org>
 
@@ -6668,7 +6668,7 @@
         pthread_setspecific with threadSpecificSet from ThreadSpecific.h.
         These functions provide a windows-specific implementation for the pthread functions,
         but require that the thread has been created with WTF::createThread(),
-        which is the case for all threads created within WebKit.
+        which is the case for all threads created within CyberKit.
         To call this function from fastMalloc we must not call fastMalloc in them.
         To fulfill this constraint ThreadSpecificWin will allocated its memory through the
         original malloc implementation and use the stack for local and static variables.
@@ -6901,7 +6901,7 @@
 
 2013-04-07  Benjamin Poulain  <benjamin@webkit.org>
 
-        Remove the android code from WebKit Template Framework
+        Remove the android code from CyberKit Template Framework
         https://bugs.webkit.org/show_bug.cgi?id=114138
 
         Reviewed by Dirk Schulze.
@@ -7102,7 +7102,7 @@
 
 2013-04-05  Benjamin Poulain  <bpoulain@apple.com>
 
-        Remove WTFURL from WebKit
+        Remove WTFURL from CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=113994
 
         Reviewed by Ryosuke Niwa.
@@ -7205,7 +7205,7 @@
 
 2013-04-02  Ryosuke Niwa  <rniwa@webkit.org>
 
-        Remove code for Mac 10.5 and earlier from WTF and WebKit2
+        Remove code for Mac 10.5 and earlier from WTF and CyberKit2
         https://bugs.webkit.org/show_bug.cgi?id=113844
 
         Reviewed by Benjamin Poulain.
@@ -7873,15 +7873,15 @@
         duplicating all the code.
 
         * WTF.xcodeproj/project.pbxproj:
-        * wtf/AutodrainedPool.h: Copied from Source/WebCore/platform/AutodrainedPool.h.
+        * wtf/AutodrainedPool.h: Copied from Source/CyberCore/platform/AutodrainedPool.h.
         (AutodrainedPool):
-        * wtf/AutodrainedPoolMac.mm: Copied from Source/WebCore/platform/mac/AutodrainedPool.mm.
-        * wtf/RunLoopTimer.h: Copied from Source/WebCore/platform/RunLoopTimer.h.
-        * wtf/RunLoopTimerCF.cpp: Copied from Source/WebCore/platform/cf/RunLoopTimerCF.cpp.
-        * wtf/SchedulePair.cpp: Copied from Source/WebCore/platform/cf/SchedulePair.cpp.
-        * wtf/SchedulePair.h: Copied from Source/WebCore/platform/cf/SchedulePair.h.
+        * wtf/AutodrainedPoolMac.mm: Copied from Source/CyberCore/platform/mac/AutodrainedPool.mm.
+        * wtf/RunLoopTimer.h: Copied from Source/CyberCore/platform/RunLoopTimer.h.
+        * wtf/RunLoopTimerCF.cpp: Copied from Source/CyberCore/platform/cf/RunLoopTimerCF.cpp.
+        * wtf/SchedulePair.cpp: Copied from Source/CyberCore/platform/cf/SchedulePair.cpp.
+        * wtf/SchedulePair.h: Copied from Source/CyberCore/platform/cf/SchedulePair.h.
         (SchedulePair):
-        * wtf/SchedulePairMac.mm: Copied from Source/WebCore/platform/mac/SchedulePairMac.mm.
+        * wtf/SchedulePairMac.mm: Copied from Source/CyberCore/platform/mac/SchedulePairMac.mm.
 
 2013-03-12  Oliver Hunt  <oliver@apple.com>
 
@@ -8082,9 +8082,9 @@
         Reviewed by Mark Hahnenberg.
 
         JSC_OBJC_API_ENABLED flag was added to FeatureDefines.h (r143637) 
-        so that it could be used in WebCore.exp.in to determine whether 
+        so that it could be used in CyberCore.exp.in to determine whether 
         or not we should be exporting certain symbols based on whether 
-        the WebKit-related portion of the JSC ObjC API was enabled.
+        the CyberKit-related portion of the JSC ObjC API was enabled.
         
         It turned out conditionally including certain symbols didn't
         work when building fat binaries, so it's not even necessary any more.
@@ -8412,7 +8412,7 @@
 
 2013-02-19  Mark Hahnenberg  <mhahnenberg@apple.com>
 
-        Objective-C API: Need a way to use the Objective-C JavaScript API with WebKit
+        Objective-C API: Need a way to use the Objective-C JavaScript API with CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=106059
 
         Reviewed by Geoffrey Garen.
@@ -8422,7 +8422,7 @@
 
 2013-02-21  Martin Robinson  <mrobinson@igalia.com>
 
-        A couple more 'make dist' fixes for WebKitGTK+.
+        A couple more 'make dist' fixes for CyberKitGTK+.
 
         * GNUmakefile.list.am: Add a missing file to the source list.
 
@@ -8576,7 +8576,7 @@
 
 2013-02-18  Laszlo Gombos  <l.gombos@samsung.com>
 
-        Move ENABLE macros for WebCore out from Platform.h
+        Move ENABLE macros for CyberCore out from Platform.h
         https://bugs.webkit.org/show_bug.cgi?id=105735
 
         Unreviewed, build fix when NETSCAPE_PLUGIN_API is disabled.
@@ -8629,7 +8629,7 @@
 
 2013-02-18  Laszlo Gombos  <l.gombos@samsung.com>
 
-        Move ENABLE macros for WebCore out from Platform.h
+        Move ENABLE macros for CyberCore out from Platform.h
         https://bugs.webkit.org/show_bug.cgi?id=105735
 
         Reviewed by Darin Adler and Benjamin Poulain.
@@ -8671,7 +8671,7 @@
 
         Reviewed by Dirk Pranke.
 
-        * WTF.gyp/WTFGTK.gyp: Renamed from Source/WebKit/gtk/gyp/WTF.gyp.
+        * WTF.gyp/WTFGTK.gyp: Renamed from Source/CyberKit/gtk/gyp/WTF.gyp.
 
 2013-02-15  Anders Carlsson  <andersca@apple.com>
 
@@ -9182,7 +9182,7 @@
 
         From Platform.h
         USE() - use a particular third-party library or optional OS service
-        ENABLE() - turn on a specific feature of WebKit
+        ENABLE() - turn on a specific feature of CyberKit
 
         * WTF.pri:
         * wtf/Platform.h:
@@ -9206,7 +9206,7 @@
 
 2013-02-08  Jer Noble  <jer.noble@apple.com>
 
-        Bring WebKit up to speed with latest Encrypted Media spec.
+        Bring CyberKit up to speed with latest Encrypted Media spec.
         https://bugs.webkit.org/show_bug.cgi?id=97037
 
         Reviewed by Eric Carlson.
@@ -9246,7 +9246,7 @@
 
         * WTF.gyp/WTF.gyp: Filter out MetaAllocator.(cpp/h) from the Chromium
         build. It's only necessary for GTK+.
-        * WTF.gypi: Add MetaAllocator to the build for WebKitGTK+.
+        * WTF.gypi: Add MetaAllocator to the build for CyberKitGTK+.
 
 2013-02-06  Ilya Tikhonovsky  <loislo@chromium.org>
 
@@ -9281,12 +9281,12 @@
 
         Reviewed by Sam Weinig.
 
-        On iOS, it is sometimes necessary to differenciate the thread running WebCore,
+        On iOS, it is sometimes necessary to differenciate the thread running CyberCore,
         and the thread running the UI. This patch upstream those functions.
 
         * wtf/MainThread.cpp:
         * wtf/MainThread.h:
-        Disable the legacy initializer as it is incorrect when using the WebThread to run WebCore.
+        Disable the legacy initializer as it is incorrect when using the WebThread to run CyberCore.
         (WTF::isWebThread):
         (WTF::isUIThread):
         Return true when the current thread is the Web/UI thread.
@@ -9306,9 +9306,9 @@
 
         Reviewed by Noam Rosenthal.
 
-        Now that Coordinated Graphics was moved to WebCore, we need to explicitly enable
+        Now that Coordinated Graphics was moved to CyberCore, we need to explicitly enable
         it when we have 3D_GRAPHICS. This dependency was implicitly by the fact that
-        3D_GRAPHICS is a dependency of WebKit2 and Coordinated Graphics was only
+        3D_GRAPHICS is a dependency of CyberKit2 and Coordinated Graphics was only
         available there. This should fix build for Qt SH4 Linux.
 
         * wtf/Platform.h:
@@ -9589,7 +9589,7 @@
 
         Reviewed by David Kilzer.
 
-        On iOS, WebCore can be executed from two different threads. To maintain consistency,
+        On iOS, CyberCore can be executed from two different threads. To maintain consistency,
         a few changes had been made:
         -The main UI thread and the WebThread share the same AtomicStringTable.
         -A spin lock is needed before any access to prevent any concurrent modification of the string table.
@@ -9981,8 +9981,8 @@
         Reviewed by Benjamin Poulain.
 
         Adding int64_t type atomicIncrement and atomicDecrement implementations for Windows
-        into Atomics.h required by WebKit2 after r139514. Separating WinCE implementation
-        that does not support WebKit2 and has no support for 64 bit interlocked methods.
+        into Atomics.h required by CyberKit2 after r139514. Separating WinCE implementation
+        that does not support CyberKit2 and has no support for 64 bit interlocked methods.
 
         Increasing WINVER and _WIN32_WINNT to XP SP2, because the 64 bit type interlocked methods
         are not supported on previous versions on 32 bit target.
@@ -10119,7 +10119,7 @@
 
 2013-01-22  Roger Fong  <roger_fong@apple.com>
 
-        WTF project files and property sheets for getting WebKit to compile in VS2010.
+        WTF project files and property sheets for getting CyberKit to compile in VS2010.
         https://bugs.webkit.org/show_bug.cgi?id=106986
 
         Reviewed by Timothy Horton and Brent Fulgham.
@@ -10441,7 +10441,7 @@
 
         Rubber stamped by Mark Hahnenberg.
         
-        This will make it easier to use dataLog() from WebCore.
+        This will make it easier to use dataLog() from CyberCore.
 
         * wtf/PrintStream.h:
         (WTF):
@@ -10570,7 +10570,7 @@
 
 2012-12-31  Gavin Barraclough  <barraclough@apple.com>
 
-        Objective-C API for JavaScriptCore
+        Objective-C API for CyberScriptCore
         https://bugs.webkit.org/show_bug.cgi?id=105889
 
         Reviewed by Filip Pizlo.
@@ -10643,7 +10643,7 @@
         Source argument were removed from reportEdge, reportLeaf and other edge related methods because it is not necessary.
         MemberType argument was propagated from MemoryInstrumentation down to HeapGraphSerializer.
 
-        The changes covered by tests in TestWebKitAPI.
+        The changes covered by tests in TestCyberKitAPI.
 
         * wtf/MemoryInstrumentation.cpp:
         (WTF::MemoryInstrumentation::reportEdge):
@@ -10983,7 +10983,7 @@
         Reviewed by Yury Semikhatsky.
 
         Redesign reportMemoryUsage for the sequences.
-        With the old schema we couldn't instrument HashMap<key, WebCore::LayoutUnit>
+        With the old schema we couldn't instrument HashMap<key, CyberCore::LayoutUnit>
         because LayoutUnit has overloaded conversion operators for double, int, etc.
         I wrote an empty SequenceMemoryInstrumentationTraits for LayoutUnit class
         but it doesn't help because the root of problem was hidden in the free template function reportSequenceMemoryUsage.
@@ -11079,7 +11079,7 @@
 
 2012-12-08  Patrick Gansterer  <paroga@webkit.org>
 
-        Compiling WTF outside of WebKit failed on Windows
+        Compiling WTF outside of CyberKit failed on Windows
         https://bugs.webkit.org/show_bug.cgi?id=100201
 
         Reviewed by Darin Adler.
@@ -11373,16 +11373,16 @@
 
 2012-11-30  Simon Hausmann  <simon.hausmann@digia.com>, Pierre Rossi  <pierre.rossi@digia.com>
 
-        [Qt] Separate Qt WebKit into Qt WebKit and Qt WebKit Widgets
+        [Qt] Separate Qt CyberKit into Qt CyberKit and Qt CyberKit Widgets
         https://bugs.webkit.org/show_bug.cgi?id=99314
 
         Reviewed by Tor Arne Vestbø.
 
-        This big change separates QtWebKit into QtWebKit and QtWebKitWidgets as
+        This big change separates QtCyberKit into QtCyberKit and QtCyberKitWidgets as
         shared libraries.
 
-        It's a big refactoring that mostly involves moving WebCore dependent
-        code into QtWebKit and accessing it through exported QWebFrameAdapter
+        It's a big refactoring that mostly involves moving CyberCore dependent
+        code into QtCyberKit and accessing it through exported QWebFrameAdapter
         and QWebPageAdapter classes.
 
 
@@ -11536,7 +11536,7 @@
         http://trac.webkit.org/changeset/135828
         https://bugs.webkit.org/show_bug.cgi?id=103405
 
-        [Chromium] Multiple ASAN errors after a WebKit roll due to
+        [Chromium] Multiple ASAN errors after a CyberKit roll due to
         mismatched malloc/delete (not free) resulting from
         StringImpl::deref() (Requested by apavlov on #webkit).
 
@@ -11603,7 +11603,7 @@
 
         Reviewed by Eric Seidel.
 
-        This patch enables TCMalloc for some WebKit objects. It improves
+        This patch enables TCMalloc for some CyberKit objects. It improves
         dom-modify on Mac by 5-10%.
 
         On non-Mac platforms, Chromium already uses TCMalloc throughout the
@@ -11611,12 +11611,12 @@
         on globally on Mac because the approach we use for other platforms makes
         some OS X APIs sad.
 
-        The next best thing would be to enable TCMalloc for WebKit by
+        The next best thing would be to enable TCMalloc for CyberKit by
         overriding the global new and delete operator, as is done on apple-mac
         and other platforms. Unfortunately, we cannot use that approach either
-        because the Chromium WebKit API is not memory tight.
+        because the Chromium CyberKit API is not memory tight.
 
-        Fortunately, WebKit has a mechanism for selectively enabling TCMalloc
+        Fortunately, CyberKit has a mechanism for selectively enabling TCMalloc
         for a selection of objects by overriding the new and delete operators
         on those objects. This patch opts chromium-mac into that scheme by
         setting the appropriate preprocessor macros.
@@ -11638,7 +11638,7 @@
         to use it to send logging to a string, for example.
         
         We could get around this by using <iostream> and <sstream>, but so far this aspect of
-        C++ has not been part of the WebKit coding conventions. Personally I find <iostream>
+        C++ has not been part of the CyberKit coding conventions. Personally I find <iostream>
         awkward due to its abuse of operator overloading.
         
         So this patch introduces the PrintStream abstract class, which offers printf-like
@@ -11700,7 +11700,7 @@
 
         Reviewed by Sam Weinig.
 
-        The GESTURE_ANIMATION feature turns on code in WebCore is unused.
+        The GESTURE_ANIMATION feature turns on code in CyberCore is unused.
         Remove it.
 
         No new tests: code removal/cleanup.
@@ -11954,7 +11954,7 @@
 
         A quick fix would be to always get a fresh StackBounds data structure when asking for it 
         instead of using the cached version from the thread local storage. There is a larger problem 
-        in that these fibers can corrupt other WebKit data that uses thread local storage. We'll leave 
+        in that these fibers can corrupt other CyberKit data that uses thread local storage. We'll leave 
         those theoretical fixes for future theoretical bugs.
 
         * wtf/WTFThreadData.h:
@@ -12001,7 +12001,7 @@
         Reviewed by Benjamin Poulain.
 
         Use prefix form of increment / decrement operators whenever possible in
-        WTF String classes as this seems to be the convention in WebKit.
+        WTF String classes as this seems to be the convention in CyberKit.
 
         * wtf/text/ASCIIFastPath.h:
         (WTF::copyLCharsFromUCharSource):
@@ -12146,11 +12146,11 @@
         Angle includes STL's <memory> header file, which with MSVC 2012 includes stdint.h. MSVC 2012
         does ship stdint.h, but it's lacking other headers such as inttypes.h.
 
-        So for the rest of WebKit we have to continue to use our own versions of these files from
-        JavaScriptCore/os-win32. But for Angle we are just including a shipped STL header file (memory)
+        So for the rest of CyberKit we have to continue to use our own versions of these files from
+        CyberScriptCore/os-win32. But for Angle we are just including a shipped STL header file (memory)
         and so it's up to the compiler to make that work, i.e. using the stdint.h it ships.
 
-        This patch moves the addition of JavaScriptCore/os-win32 out of default_post.prf, so that it
+        This patch moves the addition of CyberScriptCore/os-win32 out of default_post.prf, so that it
         doesn't apply to each and every target anymore. In particular it won't apply to Angle anymore,
         because its presence causes a build issue where due to the addition of os-win32/ we end up
         including our own stdint.h but are lacking WTF/ to be in the include search path (which our own
@@ -12170,7 +12170,7 @@
         'result' was a bool, but the asm was expecting a 32-bit register. A
         recent version of Clang warned about this:
 
-          WebKit/Source/WTF/wtf/Atomics.h:163:34: error: the size being stored
+          CyberKit/Source/WTF/wtf/Atomics.h:163:34: error: the size being stored
           is truncated, use a modifier to specify the size [-Werror,-Wasm-operand-widths]
 
         This patch fixes it by making 'result' an unsigned. It does not change
@@ -12410,7 +12410,7 @@
 
 2012-10-29  Anders Carlsson  <andersca@apple.com>
 
-        Build WebKit as C++11 on Mac
+        Build CyberKit as C++11 on Mac
         https://bugs.webkit.org/show_bug.cgi?id=100720
 
         Reviewed by Daniel Bates.
@@ -12478,7 +12478,7 @@
         and remove AtomicString::createCFString.
 
         (WTF::AtomicString::add):
-        Add new member function declaration. The definition is in a new file in WebCore, AtomicStringCF.cpp.
+        Add new member function declaration. The definition is in a new file in CyberCore, AtomicStringCF.cpp.
         Also, fix the overload of add that takes a const char* to call the right other overload instead of itself.
 
 2012-10-29  Adam Barth  <abarth@webkit.org>
@@ -12604,7 +12604,7 @@
         Reviewed by Simon Hausmann.
 
         It works fine on Linux x86, x86_64 just needs to be enabled in the
-        QtWebKit build system.
+        QtCyberKit build system.
 
         * wtf/Platform.h:
 
@@ -12895,7 +12895,7 @@
         Reviewed by Benjamin Poulain.
 
         Remove unused member functions from Vector and get rid of the std::max and std::min using declarations
-        (as per the WebKit coding style guidelines).
+        (as per the CyberKit coding style guidelines).
 
         * WTF.xcodeproj/project.pbxproj:
         Turns out StreamBuffer.h was never added to the Xcode project; add it. Also go ahead and sort the project file.
@@ -12995,7 +12995,7 @@
 
         Reviewed by Eric Seidel.
 
-        We don't want other clients that include WebKit headers to know about Platform.h.
+        We don't want other clients that include CyberKit headers to know about Platform.h.
 
         * wtf/Assertions.h:
         * wtf/MainThread.h:
@@ -13070,7 +13070,7 @@
 
 2012-10-15  Ilya Tikhonovsky  <loislo@chromium.org>
 
-        Web Inspector: convert manual size calculation of different WebKit things into MemoryInstrumentation.
+        Web Inspector: convert manual size calculation of different CyberKit things into MemoryInstrumentation.
         https://bugs.webkit.org/show_bug.cgi?id=99309
 
         Reviewed by Yury Semikhatsky.
@@ -13089,7 +13089,7 @@
         Reviewed by Andreas Kling.
 
         It seems like the QDataStream stream operators are only used from HistoryItemQt.cpp
-        inside WebCore, so move them there. If in the future they are required elsewhere, they should
+        inside CyberCore, so move them there. If in the future they are required elsewhere, they should
         be moved into a separate header instead of polluting headers unnecessarily.
 
         * wtf/Vector.h:
@@ -13135,7 +13135,7 @@
         Reviewed by Andreas Kling.
 
         It seems like the QDataStream stream operators are only used from HistoryItemQt.cpp
-        inside WebCore, so move them there. If in the future they are required elsewhere, they should
+        inside CyberCore, so move them there. If in the future they are required elsewhere, they should
         be moved into a separate header instead of polluting headers unnecessarily.
 
         * wtf/Vector.h:
@@ -13201,7 +13201,7 @@
         * wtf/url/src/URLComponent.h:
         (WTF::URLComponent::moveBy):
         Rename URLComponent::move() to URLComponent::moveBy() for consistency
-        with some of WebCore types.
+        with some of CyberCore types.
 
         * wtf/url/src/URLParse.cpp:
         * wtf/url/src/URLParseFile.cpp:
@@ -13296,7 +13296,7 @@
 
         One potential downside of this change would be the confusion between std::map and
         HashMap interfaces. However, they are already different in other aspects and the
-        usage of std::map is more an exception than a rule in WebKit code, so we consider
+        usage of std::map is more an exception than a rule in CyberKit code, so we consider
         the confusion will be less likely to happen.
 
         * wtf/HashCountedSet.h:
@@ -13378,7 +13378,7 @@
         Remove LowerCaseEqualsASCII() from the interface, make it an internal template.
 
         (WTF::URLUtilities::isStandard):
-        Since in WebKit, LChar is a superset of char, expose LChar and cast char* to LChar*.
+        Since in CyberKit, LChar is a superset of char, expose LChar and cast char* to LChar*.
 
 2012-10-06  Ilya Tikhonovsky  <loislo@chromium.org>
 
@@ -13756,7 +13756,7 @@
 
 2012-10-01  Daniel Drake  <dsd@laptop.org>
 
-        Another SIGILL in JavaScriptCore on a Geode processor
+        Another SIGILL in CyberScriptCore on a Geode processor
         https://bugs.webkit.org/show_bug.cgi?id=96286
 
         Reviewed by Filip Pizlo.
@@ -14165,7 +14165,7 @@
         Reviewed by Adam Barth.
 
         Expose character conversion through the new abstract class URLQueryCharsetConverter.
-        URLQueryCharsetConverter is implemented by WebCore to expose the TextEncoding classes.
+        URLQueryCharsetConverter is implemented by CyberCore to expose the TextEncoding classes.
 
         Unfortunatelly that forces us to bring over URLBuffer in the public API. We may be able
         to mitigate that later when moving WTFURL to more templates.
@@ -14240,8 +14240,8 @@
         -Adopt URLBuffer and RawURLBuffer instead of the CanonOutputT and RawCanonOutputT.
         -Use URLCharacterTypes instead of the litany of characters functions.
         -Some more code cleaning.
-        -Fix the style to match WebKit as much as possible.
-        -Rename the files to match WebKit style.
+        -Fix the style to match CyberKit as much as possible.
+        -Rename the files to match CyberKit style.
 
         * WTF.xcodeproj/project.pbxproj:
         * wtf/url/api/ParsedURL.cpp:
@@ -14767,7 +14767,7 @@
 
         We had to move a few LIBS += around that were in the wrong place,
         and not caught when everything was just linked into the final
-        QtWebKit library.
+        QtCyberKit library.
 
         Reviewed by Simon Hausmann.
 
@@ -14822,15 +14822,15 @@
         Reviewed by Gyuyoung Kim.
 
         Remove OwnPtr support for Evas_Object* and add support for it
-        with RefPtr instead (the latter moved from WebCore).
+        with RefPtr instead (the latter moved from CyberCore).
 
         * wtf/PlatformEfl.cmake:
         * wtf/efl/OwnPtrEfl.cpp:
-        * wtf/efl/RefPtrEfl.cpp: Renamed from Source/WebCore/platform/efl/RefPtrEfl.cpp.
+        * wtf/efl/RefPtrEfl.cpp: Renamed from Source/CyberCore/platform/efl/RefPtrEfl.cpp.
         (WTF):
         (WTF::refIfNotNull):
         (WTF::derefIfNotNull):
-        * wtf/efl/RefPtrEfl.h: Renamed from Source/WebCore/platform/efl/RefPtrEfl.h.
+        * wtf/efl/RefPtrEfl.h: Renamed from Source/CyberCore/platform/efl/RefPtrEfl.h.
         (WTF):
 
 2012-09-14  Gyuyoung Kim  <gyuyoung.kim@samsung.com>
@@ -14884,15 +14884,15 @@
         Reviewed by Adam Barth.
 
         Remove OwnPtr support for Evas_Object* and add support for it
-        with RefPtr instead (the latter moved from WebCore).
+        with RefPtr instead (the latter moved from CyberCore).
 
         * wtf/PlatformEfl.cmake:
         * wtf/efl/OwnPtrEfl.cpp:
-        * wtf/efl/RefPtrEfl.cpp: Renamed from Source/WebCore/platform/efl/RefPtrEfl.cpp.
+        * wtf/efl/RefPtrEfl.cpp: Renamed from Source/CyberCore/platform/efl/RefPtrEfl.cpp.
         (WTF):
         (WTF::refIfNotNull):
         (WTF::derefIfNotNull):
-        * wtf/efl/RefPtrEfl.h: Renamed from Source/WebCore/platform/efl/RefPtrEfl.h.
+        * wtf/efl/RefPtrEfl.h: Renamed from Source/CyberCore/platform/efl/RefPtrEfl.h.
         (WTF):
 
 2012-09-13  Michael Saboff  <msaboff@apple.com>
@@ -14933,7 +14933,7 @@
         Reviewed by Yury Semikhatsky.
 
         After moving core NMI code to WTF namespace I removed forward declarations
-        of MemoryObjectInfo and MemoryInstrumentation from WebCore headers and add
+        of MemoryObjectInfo and MemoryInstrumentation from CyberCore headers and add
         forward declaration into wtf/Forward.h
 
         * wtf/Forward.h:
@@ -15017,10 +15017,10 @@
 
         * wtf/MemoryInstrumentation.h:
         (GenericMemoryTypes):
-        (WebCore):
-        (WebCore::MemoryInstrumentation::addRootObject):
-        (WebCore::MemoryObjectInfo::reportObjectInfo):
-        (WebCore::MemoryClassInfo::MemoryClassInfo):
+        (CyberCore):
+        (CyberCore::MemoryInstrumentation::addRootObject):
+        (CyberCore::MemoryObjectInfo::reportObjectInfo):
+        (CyberCore::MemoryClassInfo::MemoryClassInfo):
         * wtf/text/AtomicString.h:
         (AtomicString):
         * wtf/text/StringImpl.h:
@@ -15034,7 +15034,7 @@
         Reviewed by Alexander Pavlov.
 
         * wtf/MemoryInstrumentation.h:
-        (WebCore::MemoryClassInfo::addWeakPointer): this method is expected to be
+        (CyberCore::MemoryClassInfo::addWeakPointer): this method is expected to be
         used on fields that are pointers to objects which are parts of bigger memory
         blocks (field of another object, element in an array, object allocated in a
         memory arena etc.). We don't want to count such objects' memory separately
@@ -15055,10 +15055,10 @@
         Tested by webkit_unit_tests.
 
         * wtf/MemoryInstrumentation.h:
-        (WebCore):
-        (WebCore::MemoryInstrumentation::addRootObject):
-        (WebCore::MemoryObjectInfo::reportObjectInfo):
-        (WebCore::MemoryClassInfo::MemoryClassInfo):
+        (CyberCore):
+        (CyberCore::MemoryInstrumentation::addRootObject):
+        (CyberCore::MemoryObjectInfo::reportObjectInfo):
+        (CyberCore::MemoryClassInfo::MemoryClassInfo):
         * wtf/text/AtomicString.h:
         (AtomicString):
         (WTF::AtomicString::reportMemoryUsage):
@@ -15197,7 +15197,7 @@
 
         [Qt] Add a configure step to the Qt build system
 
-        This allows building the Qt port using just 'qmake WebKit.pro'. Using
+        This allows building the Qt port using just 'qmake CyberKit.pro'. Using
         the build-webkit script is still supported, and will add slightly more
         logic to the build, such as detecting the need for clean or incremental
         builds.
@@ -15222,64 +15222,64 @@
 
         Reviewed by Yury Semikhatsky.
 
-        It is necessary step because it helps us to remove dependency between platform and WebCore.
+        It is necessary step because it helps us to remove dependency between platform and CyberCore.
 
         * GNUmakefile.list.am:
         * WTF.gypi:
         * WTF.pro:
         * WTF.vcproj/WTF.vcproj:
         * WTF.xcodeproj/project.pbxproj:
-        * wtf/MemoryInstrumentation.h: Renamed from Source/WebCore/dom/MemoryInstrumentation.h.
-        (WebCore):
+        * wtf/MemoryInstrumentation.h: Renamed from Source/CyberCore/dom/MemoryInstrumentation.h.
+        (CyberCore):
         (GenericMemoryTypes):
         (MemoryInstrumentationTraits):
         (MemoryInstrumentation):
-        (WebCore::MemoryInstrumentation::~MemoryInstrumentation):
-        (WebCore::MemoryInstrumentation::addRootObject):
+        (CyberCore::MemoryInstrumentation::~MemoryInstrumentation):
+        (CyberCore::MemoryInstrumentation::addRootObject):
         (InstrumentedPointerBase):
-        (WebCore::MemoryInstrumentation::InstrumentedPointerBase::~InstrumentedPointerBase):
+        (CyberCore::MemoryInstrumentation::InstrumentedPointerBase::~InstrumentedPointerBase):
         (InstrumentedPointer):
-        (WebCore::MemoryInstrumentation::InstrumentedPointer::InstrumentedPointer):
-        (WebCore::MemoryInstrumentation::addObject):
-        (WebCore::MemoryInstrumentation::addInstrumentedObject):
-        (WebCore::MemoryInstrumentation::addRawBuffer):
-        (WebCore::MemoryInstrumentation::OwningTraits::addInstrumentedObject):
-        (WebCore::MemoryInstrumentation::OwningTraits::addObject):
-        (WebCore::MemoryInstrumentationTraits::addInstrumentedObject):
-        (WebCore::MemoryInstrumentationTraits::addObject):
+        (CyberCore::MemoryInstrumentation::InstrumentedPointer::InstrumentedPointer):
+        (CyberCore::MemoryInstrumentation::addObject):
+        (CyberCore::MemoryInstrumentation::addInstrumentedObject):
+        (CyberCore::MemoryInstrumentation::addRawBuffer):
+        (CyberCore::MemoryInstrumentation::OwningTraits::addInstrumentedObject):
+        (CyberCore::MemoryInstrumentation::OwningTraits::addObject):
+        (CyberCore::MemoryInstrumentationTraits::addInstrumentedObject):
+        (CyberCore::MemoryInstrumentationTraits::addObject):
         (MemoryObjectInfo):
-        (WebCore::MemoryObjectInfo::MemoryObjectInfo):
-        (WebCore::MemoryObjectInfo::objectType):
-        (WebCore::MemoryObjectInfo::objectSize):
-        (WebCore::MemoryObjectInfo::memoryInstrumentation):
-        (WebCore::MemoryObjectInfo::reportObjectInfo):
+        (CyberCore::MemoryObjectInfo::MemoryObjectInfo):
+        (CyberCore::MemoryObjectInfo::objectType):
+        (CyberCore::MemoryObjectInfo::objectSize):
+        (CyberCore::MemoryObjectInfo::memoryInstrumentation):
+        (CyberCore::MemoryObjectInfo::reportObjectInfo):
         (MemoryClassInfo):
-        (WebCore::MemoryClassInfo::MemoryClassInfo):
-        (WebCore::MemoryClassInfo::addInstrumentedMember):
-        (WebCore::MemoryClassInfo::addMember):
-        (WebCore::MemoryClassInfo::addHashMap):
-        (WebCore::MemoryClassInfo::addHashSet):
-        (WebCore::MemoryClassInfo::addHashCountedSet):
-        (WebCore::MemoryClassInfo::addInstrumentedHashSet):
-        (WebCore::MemoryClassInfo::addInstrumentedVector):
-        (WebCore::MemoryClassInfo::addInstrumentedVectorPtr):
-        (WebCore::MemoryClassInfo::addInstrumentedMapEntries):
-        (WebCore::MemoryClassInfo::addInstrumentedMapValues):
-        (WebCore::MemoryClassInfo::addListHashSet):
-        (WebCore::MemoryClassInfo::addVector):
-        (WebCore::MemoryClassInfo::addVectorPtr):
-        (WebCore::MemoryClassInfo::addRawBuffer):
-        (WebCore::MemoryInstrumentation::addInstrumentedObjectImpl):
-        (WebCore::MemoryInstrumentation::addObjectImpl):
-        (WebCore::MemoryInstrumentation::addHashMap):
-        (WebCore::MemoryInstrumentation::addHashSet):
-        (WebCore::MemoryInstrumentation::addInstrumentedCollection):
-        (WebCore::MemoryInstrumentation::addInstrumentedMapEntries):
-        (WebCore::MemoryInstrumentation::addInstrumentedMapValues):
-        (WebCore::MemoryInstrumentation::addListHashSet):
-        (WebCore::MemoryInstrumentation::addVector):
-        (WebCore::MemoryInstrumentation::calculateContainerSize):
-        (WebCore::::process):
+        (CyberCore::MemoryClassInfo::MemoryClassInfo):
+        (CyberCore::MemoryClassInfo::addInstrumentedMember):
+        (CyberCore::MemoryClassInfo::addMember):
+        (CyberCore::MemoryClassInfo::addHashMap):
+        (CyberCore::MemoryClassInfo::addHashSet):
+        (CyberCore::MemoryClassInfo::addHashCountedSet):
+        (CyberCore::MemoryClassInfo::addInstrumentedHashSet):
+        (CyberCore::MemoryClassInfo::addInstrumentedVector):
+        (CyberCore::MemoryClassInfo::addInstrumentedVectorPtr):
+        (CyberCore::MemoryClassInfo::addInstrumentedMapEntries):
+        (CyberCore::MemoryClassInfo::addInstrumentedMapValues):
+        (CyberCore::MemoryClassInfo::addListHashSet):
+        (CyberCore::MemoryClassInfo::addVector):
+        (CyberCore::MemoryClassInfo::addVectorPtr):
+        (CyberCore::MemoryClassInfo::addRawBuffer):
+        (CyberCore::MemoryInstrumentation::addInstrumentedObjectImpl):
+        (CyberCore::MemoryInstrumentation::addObjectImpl):
+        (CyberCore::MemoryInstrumentation::addHashMap):
+        (CyberCore::MemoryInstrumentation::addHashSet):
+        (CyberCore::MemoryInstrumentation::addInstrumentedCollection):
+        (CyberCore::MemoryInstrumentation::addInstrumentedMapEntries):
+        (CyberCore::MemoryInstrumentation::addInstrumentedMapValues):
+        (CyberCore::MemoryInstrumentation::addListHashSet):
+        (CyberCore::MemoryInstrumentation::addVector):
+        (CyberCore::MemoryInstrumentation::calculateContainerSize):
+        (CyberCore::::process):
 
 2012-09-09  Mark Lam  <mark.lam@apple.com>
 
@@ -15510,7 +15510,7 @@
         Reviewed by Kenneth Rohde Christiansen.
 
         For the Qt build on Windows, do not enable WTF_USE_UNIX_DOMAIN_SOCKETS for
-        WebKit2 IPC.
+        CyberKit2 IPC.
 
         * wtf/Platform.h:
 
@@ -15543,7 +15543,7 @@
 
 2012-09-04  Zoltan Horvath  <zoltan@webkit.org>
 
-        Extend the coverage of the Custom Allocation Framework in WTF and in JavaScriptCore
+        Extend the coverage of the Custom Allocation Framework in WTF and in CyberScriptCore
         https://bugs.webkit.org/show_bug.cgi?id=95737
 
         Reviewed by Eric Seidel.
@@ -15553,7 +15553,7 @@
         * wtf/CryptographicallyRandomNumber.cpp: CryptographicallyRandomNumber is instantiated at wtf/CryptographicallyRandomNumber.cpp:162.
         * wtf/MediaTime.h: MediaTime is instantiated at wtf/MediaTime.cpp:288.
         * wtf/MetaAllocator.h:
-        (MetaAllocatorTracker): MetaAllocatorTracker is instantiated at JavaScriptCore/tools/CodeProfiling.cpp:120.
+        (MetaAllocatorTracker): MetaAllocatorTracker is instantiated at CyberScriptCore/tools/CodeProfiling.cpp:120.
         * wtf/ThreadingPthreads.cpp:
         (PthreadState): PthreadState is instantiated at wtf/ThreadingPthreads.cpp:165.
         * wtf/text/AtomicString.cpp:
@@ -15650,7 +15650,7 @@
         Reviewed by Geoffrey Garen.
 
         * wtf/Platform.h: Useless edit to force a full build. This is needed for some bots for some reason.
-        * wtf/text/WTFString.h: Export a symbol that was exported on UString and needed in WebCore.
+        * wtf/text/WTFString.h: Export a symbol that was exported on UString and needed in CyberCore.
 
         Add String::getCharactersWithUpconvert<>(), which is similar to String::getCharacters<>() but with the same
         behaviors as UString::getCharacters<>().
@@ -16018,7 +16018,7 @@
 
         Rubber-stamped by Simon Hausmann.
 
-        When building QtWebKit with a Qt5 which was not configured with libICU support
+        When building QtCyberKit with a Qt5 which was not configured with libICU support
         the error message is somewhat ambiguous about the indirect dependency.
 
         * WTF.pri:
@@ -16051,7 +16051,7 @@
 
         Add support functions for saturated addition and subtraction.
 
-        Test: TestWebKitAPI/Tests/WTF/SaturatedArithmeticOperations.cpp
+        Test: TestCyberKitAPI/Tests/WTF/SaturatedArithmeticOperations.cpp
 
         * GNUmakefile.list.am:
         * WTF.gypi:
@@ -16108,7 +16108,7 @@
 
         * wtf/FastMalloc.h:
         (WTF::fastMallocForbid()):
-        (WTF::fastMallocAllow()): Export, since these are called by JavaScriptCore.
+        (WTF::fastMallocAllow()): Export, since these are called by CyberScriptCore.
 
 2012-08-22  Geoffrey Garen  <ggaren@apple.com>
 
@@ -16117,7 +16117,7 @@
 
         Reviewed by Mark Hahnenberg.
 
-        WebKit's JavaScript engine supports use on multiple threads, so default-on
+        CyberKit's JavaScript engine supports use on multiple threads, so default-on
         is not appropriate for most of our objects, and it causes lots of suprious
         assertions.
 
@@ -16443,12 +16443,12 @@
 
 2012-08-11  Benjamin Poulain  <benjamin@webkit.org>
 
-        WebCore::findAtomicString(PropertyName) always convert the name to 16bits
+        CyberCore::findAtomicString(PropertyName) always convert the name to 16bits
         https://bugs.webkit.org/show_bug.cgi?id=93685
 
         Reviewed by Geoffrey Garen.
 
-        Previously, WebCore::findAtomicString() was causing a conversion for the 8bit property name
+        Previously, CyberCore::findAtomicString() was causing a conversion for the 8bit property name
         to a 16bits due to the call to StringImpl::character16().
 
         This patch fixes the issue by adding support for both 8bits and 16bits string in AtomicString::find().
@@ -16770,7 +16770,7 @@
         Reviewed by Hajime Morita.
 
         When we switch the windows port to USE(EXPORT_MACROS) we
-        need to export all functions referenced by WebKit.dll.
+        need to export all functions referenced by CyberKit.dll.
 
         * wtf/ThreadingPrimitives.h:
         (WTF):
@@ -17466,7 +17466,7 @@
         Reviewed by Geoffrey Garen.
 
         Moving GregorianDateTime into the WTF namespace allows us to us to
-        use it in WebCore too. The new class has the same behaviour as the
+        use it in CyberCore too. The new class has the same behaviour as the
         old struct. Only the unused timeZone member has been removed.
 
         * GNUmakefile.list.am:
@@ -17658,7 +17658,7 @@
 
 2012-07-16  Hajime Morrita  <morrita@chromium.org>
 
-        WebCore needs WEBCORE_TESTING macro to mark methods being exported for testing.
+        CyberCore needs WEBCORE_TESTING macro to mark methods being exported for testing.
         https://bugs.webkit.org/show_bug.cgi?id=90764
 
         Reviewed by Adam Barth.
@@ -17699,7 +17699,7 @@
 
 2012-07-13  Xianzhu Wang  <wangxianzhu@chromium.org>
 
-        Move WebCore/platform/text/Base64 to WTF/wtf/text
+        Move CyberCore/platform/text/Base64 to WTF/wtf/text
         https://bugs.webkit.org/show_bug.cgi?id=91162
 
         Reviewed by Adam Barth.
@@ -17710,18 +17710,18 @@
         * WTF.vcproj/WTF.vcproj:
         * WTF.xcodeproj/project.pbxproj:
         * wtf/CMakeLists.txt:
-        * wtf/text/Base64.cpp: Renamed from Source/WebCore/platform/text/Base64.cpp.
+        * wtf/text/Base64.cpp: Renamed from Source/CyberCore/platform/text/Base64.cpp.
         (WTF):
         (WTF::base64Encode):
         (WTF::base64Decode):
         (WTF::base64DecodeInternal):
-        * wtf/text/Base64.h: Renamed from Source/WebCore/platform/text/Base64.h.
+        * wtf/text/Base64.h: Renamed from Source/CyberCore/platform/text/Base64.h.
         (WTF):
         (WTF::base64Encode):
 
 2012-07-12  Carlos Garcia Campos  <cgarcia@igalia.com>
 
-        [GTK] Add API to get HTTPS status to WebKit2 GTK+
+        [GTK] Add API to get HTTPS status to CyberKit2 GTK+
         https://bugs.webkit.org/show_bug.cgi?id=91100
 
         Reviewed by Martin Robinson.
@@ -17885,7 +17885,7 @@
         The declarative module has been renamed to quick1 in Qt 5, and the
         engine-only module for Qt 5 is named 'qml'. For many of the instances
         we could just remove 'declarative', since the project file was only
-        used for Qt5/WebKit2 builds. In the other cases the module was wrapped
+        used for Qt5/CyberKit2 builds. In the other cases the module was wrapped
         in a haveQt(4) scope.
 
         Reviewed by Csaba Osztrogonác.
@@ -17917,7 +17917,7 @@
         a bunch of checks), we now run feature detection as part of configure.pro,
         and have build-webkit write the computed feature-defines and CONFIG to
         .qmake.cache, which is then loaded by qmake _before_ even defaults_pre
-        when building WebKit.pro.
+        when building CyberKit.pro.
 
         At some point we'll be able to selectivly prevent running of config tests
         in configure.pro, which means we don't need a separate code-path for
@@ -17952,7 +17952,7 @@
         a bunch of checks), we now run feature detection as part of configure.pro,
         and have build-webkit write the computed feature-defines and CONFIG to
         .qmake.cache, which is then loaded by qmake _before_ even defaults_pre
-        when building WebKit.pro.
+        when building CyberKit.pro.
 
         At some point we'll be able to selectivly prevent running of config tests
         in configure.pro, which means we don't need a separate code-path for
@@ -17970,7 +17970,7 @@
 
 2012-07-03  Jocelyn Turcotte  <jocelyn.turcotte@nokia.com>  Joel Dillon <joel.dillon@codethink.co.uk>
 
-        [Qt][Win] Fix broken QtWebKit5.lib linking
+        [Qt][Win] Fix broken QtCyberKit5.lib linking
         https://bugs.webkit.org/show_bug.cgi?id=88321
 
         Reviewed by Kenneth Rohde Christiansen.
@@ -17978,7 +17978,7 @@
         Instead of letting a module's headers know which other modules depend on them,
         have depending modules define explicitely that they want its symbols exported too.
 
-        JavaScriptCore should then be compiled with both BUILDING_JavaScriptCore and
+        CyberScriptCore should then be compiled with both BUILDING_CyberScriptCore and
         STATICALLY_LINKED_WITH_WTF.
 
         * wtf/ExportMacros.h:
@@ -18011,7 +18011,7 @@
         http://trac.webkit.org/changeset/121529
         https://bugs.webkit.org/show_bug.cgi?id=90260
 
-        Failed to compile on Chromium WebKitMacBuilder (Requested by
+        Failed to compile on Chromium CyberKitMacBuilder (Requested by
         keishi on #webkit).
 
         * wtf/FastMalloc.cpp:
@@ -18062,7 +18062,7 @@
 
         [Qt] Add missing heades to HEADERS
 
-        For JavaScriptCore there aren't any Qt specific files, so we include all
+        For CyberScriptCore there aren't any Qt specific files, so we include all
         headers for easy editing in Qt Creator.
 
         Reviewed by Simon Hausmann.
@@ -18131,7 +18131,7 @@
 
 2012-06-22  Peter Beverloo  <peter@chromium.org>
 
-        [Chromium] Disable c++0x compatibility warnings in JavaScriptCore.gyp when building for Android
+        [Chromium] Disable c++0x compatibility warnings in CyberScriptCore.gyp when building for Android
         https://bugs.webkit.org/show_bug.cgi?id=88853
 
         Reviewed by Steve Block.
@@ -18482,7 +18482,7 @@
 
 2012-06-09  Dominic Cooney  <dominicc@chromium.org>
 
-        [Chromium] Remove JavaScriptCore dependencies from gyp
+        [Chromium] Remove CyberScriptCore dependencies from gyp
         https://bugs.webkit.org/show_bug.cgi?id=88510
 
         Reviewed by Adam Barth.
@@ -18751,12 +18751,12 @@
 
 2012-05-29  Alexandre Elias  <aelias@google.com>
 
-        Support WebKit log messages on Android
+        Support CyberKit log messages on Android
         https://bugs.webkit.org/show_bug.cgi?id=87773
 
         Reviewed by Darin Adler.
 
-        This sends WebKit log messages to the Android "logcat" facility, as
+        This sends CyberKit log messages to the Android "logcat" facility, as
         Android sends stderr to /dev/null.
 
         * wtf/Assertions.cpp:
@@ -19269,7 +19269,7 @@
 
 2012-05-02  Nico Weber  <thakis@chromium.org>
 
-        Let WebKit parse with clang on windows with -std=c++11
+        Let CyberKit parse with clang on windows with -std=c++11
         https://bugs.webkit.org/show_bug.cgi?id=85398
 
         Reviewed by Ryosuke Niwa.
@@ -19378,7 +19378,7 @@
 
 2012-04-26  Carlos Garcia Campos  <cgarcia@igalia.com>
 
-        [SOUP] Add a way to register custom uri schemes in WebKit2
+        [SOUP] Add a way to register custom uri schemes in CyberKit2
         https://bugs.webkit.org/show_bug.cgi?id=84130
 
         Reviewed by Martin Robinson.
@@ -19486,7 +19486,7 @@
         Reviewed by Tor Arne Vestbø.
 
         * WTF.pri: GStreamer build support implies GLib support, as it's
-        done in WebCore.pri.
+        done in CyberCore.pri.
 
 2012-04-24  Benjamin Poulain  <bpoulain@apple.com>
 
@@ -19688,7 +19688,7 @@
 
 2012-04-12  Balazs Kelemen  <kbalazs@webkit.org>
 
-        [Qt] Fix WebKit1 build with V8
+        [Qt] Fix CyberKit1 build with V8
         https://bugs.webkit.org/show_bug.cgi?id=83322
 
         Reviewed by Adam Barth.
@@ -19714,7 +19714,7 @@
 
 2012-04-10  Mark Rowe  <mrowe@apple.com>
 
-        <rdar://problem/10583749> WebKit2 should log to both ASL and stderr
+        <rdar://problem/10583749> CyberKit2 should log to both ASL and stderr
 
         Reviewed by Sam Weinig.
 
@@ -20177,7 +20177,7 @@
 
 2012-03-22  Martin Robinson  <mrobinson@igalia.com>
 
-        Fixed the GTK+ WTF/JavaScriptCore build after r111778.
+        Fixed the GTK+ WTF/CyberScriptCore build after r111778.
 
         * GNUmakefile.am: Remove some extra trailing backslashes and a few uncessary
           variables.
@@ -20185,7 +20185,7 @@
 
 2012-03-22  Dan Bernstein  <mitz@apple.com>
 
-        Fixed the JavaScriptCore debug build after r111778.
+        Fixed the CyberScriptCore debug build after r111778.
 
         * WTF.xcodeproj/project.pbxproj: Use debug DEBUG_DEFINES when building
         the Debug configuration.
@@ -20228,7 +20228,7 @@
         * WTF.vcproj/copy-files.cmd:
         * WTF.xcodeproj/project.pbxproj:
         * config.h:
-        * wtf/ASCIICType.h: Renamed from Source/JavaScriptCore/wtf/ASCIICType.h.
+        * wtf/ASCIICType.h: Renamed from Source/CyberScriptCore/wtf/ASCIICType.h.
         (WTF):
         (WTF::isASCII):
         (WTF::isASCIIAlpha):
@@ -20247,7 +20247,7 @@
         (WTF::lowerNibbleToASCIIHexDigit):
         (WTF::upperNibbleToASCIIHexDigit):
         (WTF::isASCIIAlphaCaselessEqual):
-        * wtf/AVLTree.h: Renamed from Source/JavaScriptCore/wtf/AVLTree.h.
+        * wtf/AVLTree.h: Renamed from Source/CyberScriptCore/wtf/AVLTree.h.
         (WTF):
         (AVLTreeDefaultBSet):
         (WTF::AVLTreeDefaultBSet::operator[]):
@@ -20289,16 +20289,16 @@
         (WTF::::search_greatest):
         (WTF::::remove):
         (WTF::::subst):
-        * wtf/Alignment.h: Renamed from Source/JavaScriptCore/wtf/Alignment.h.
+        * wtf/Alignment.h: Renamed from Source/CyberScriptCore/wtf/Alignment.h.
         (WTF):
         (WTF::swap):
-        * wtf/AlwaysInline.h: Renamed from Source/JavaScriptCore/wtf/AlwaysInline.h.
-        * wtf/ArrayBuffer.cpp: Renamed from Source/JavaScriptCore/wtf/ArrayBuffer.cpp.
+        * wtf/AlwaysInline.h: Renamed from Source/CyberScriptCore/wtf/AlwaysInline.h.
+        * wtf/ArrayBuffer.cpp: Renamed from Source/CyberScriptCore/wtf/ArrayBuffer.cpp.
         (WTF):
         (WTF::ArrayBuffer::transfer):
         (WTF::ArrayBuffer::addView):
         (WTF::ArrayBuffer::removeView):
-        * wtf/ArrayBuffer.h: Renamed from Source/JavaScriptCore/wtf/ArrayBuffer.h.
+        * wtf/ArrayBuffer.h: Renamed from Source/CyberScriptCore/wtf/ArrayBuffer.h.
         (WTF):
         (ArrayBufferContents):
         (WTF::ArrayBufferContents::ArrayBufferContents):
@@ -20318,28 +20318,28 @@
         (WTF::ArrayBuffer::clampIndex):
         (WTF::ArrayBufferContents::tryAllocate):
         (WTF::ArrayBufferContents::~ArrayBufferContents):
-        * wtf/ArrayBufferView.cpp: Renamed from Source/JavaScriptCore/wtf/ArrayBufferView.cpp.
+        * wtf/ArrayBufferView.cpp: Renamed from Source/CyberScriptCore/wtf/ArrayBufferView.cpp.
         (WTF):
         (WTF::ArrayBufferView::ArrayBufferView):
         (WTF::ArrayBufferView::~ArrayBufferView):
         (WTF::ArrayBufferView::neuter):
-        * wtf/ArrayBufferView.h: Renamed from Source/JavaScriptCore/wtf/ArrayBufferView.h.
+        * wtf/ArrayBufferView.h: Renamed from Source/CyberScriptCore/wtf/ArrayBufferView.h.
         (WTF):
         (WTF::ArrayBufferView::setImpl):
         (WTF::ArrayBufferView::setRangeImpl):
         (WTF::ArrayBufferView::zeroRangeImpl):
         (WTF::ArrayBufferView::calculateOffsetAndLength):
-        * wtf/Assertions.cpp: Renamed from Source/JavaScriptCore/wtf/Assertions.cpp.
-        * wtf/Assertions.h: Renamed from Source/JavaScriptCore/wtf/Assertions.h.
+        * wtf/Assertions.cpp: Renamed from Source/CyberScriptCore/wtf/Assertions.cpp.
+        * wtf/Assertions.h: Renamed from Source/CyberScriptCore/wtf/Assertions.h.
         (assertUnused):
         (assertWithMessageUnused):
-        * wtf/Atomics.h: Renamed from Source/JavaScriptCore/wtf/Atomics.h.
+        * wtf/Atomics.h: Renamed from Source/CyberScriptCore/wtf/Atomics.h.
         (WTF):
         (WTF::atomicIncrement):
         (WTF::atomicDecrement):
         (WTF::weakCompareAndSwap):
         (WTF::weakCompareAndSwapUIntPtr):
-        * wtf/BitVector.cpp: Renamed from Source/JavaScriptCore/wtf/BitVector.cpp.
+        * wtf/BitVector.cpp: Renamed from Source/CyberScriptCore/wtf/BitVector.cpp.
         (WTF):
         (WTF::BitVector::setSlow):
         (WTF::BitVector::resize):
@@ -20348,7 +20348,7 @@
         (WTF::BitVector::OutOfLineBits::destroy):
         (WTF::BitVector::resizeOutOfLine):
         (WTF::BitVector::dump):
-        * wtf/BitVector.h: Renamed from Source/JavaScriptCore/wtf/BitVector.h.
+        * wtf/BitVector.h: Renamed from Source/CyberScriptCore/wtf/BitVector.h.
         (WTF):
         (BitVector):
         (WTF::BitVector::BitVector):
@@ -20374,7 +20374,7 @@
         (WTF::BitVector::isInline):
         (WTF::BitVector::outOfLineBits):
         (WTF::BitVector::bits):
-        * wtf/Bitmap.h: Renamed from Source/JavaScriptCore/wtf/Bitmap.h.
+        * wtf/Bitmap.h: Renamed from Source/CyberScriptCore/wtf/Bitmap.h.
         (WTF):
         (Bitmap):
         (WTF::::Bitmap):
@@ -20391,7 +20391,7 @@
         (WTF::::count):
         (WTF::::isEmpty):
         (WTF::::isFull):
-        * wtf/BlockStack.h: Renamed from Source/JavaScriptCore/wtf/BlockStack.h.
+        * wtf/BlockStack.h: Renamed from Source/CyberScriptCore/wtf/BlockStack.h.
         (WTF):
         (BlockStack):
         (WTF::::BlockStack):
@@ -20399,7 +20399,7 @@
         (WTF::::blocks):
         (WTF::::grow):
         (WTF::::shrink):
-        * wtf/BloomFilter.h: Renamed from Source/JavaScriptCore/wtf/BloomFilter.h.
+        * wtf/BloomFilter.h: Renamed from Source/CyberScriptCore/wtf/BloomFilter.h.
         (WTF):
         (BloomFilter):
         (WTF::BloomFilter::maximumCount):
@@ -20414,7 +20414,7 @@
         (WTF::::clear):
         (WTF::::likelyEmpty):
         (WTF::::isClear):
-        * wtf/BoundsCheckedPointer.h: Renamed from Source/JavaScriptCore/wtf/BoundsCheckedPointer.h.
+        * wtf/BoundsCheckedPointer.h: Renamed from Source/CyberScriptCore/wtf/BoundsCheckedPointer.h.
         (WTF):
         (BoundsCheckedPointer):
         (WTF::BoundsCheckedPointer::BoundsCheckedPointer):
@@ -20437,7 +20437,7 @@
         (WTF::BoundsCheckedPointer::operator[]):
         (WTF::BoundsCheckedPointer::strcat):
         (WTF::BoundsCheckedPointer::validate):
-        * wtf/BumpPointerAllocator.h: Renamed from Source/JavaScriptCore/wtf/BumpPointerAllocator.h.
+        * wtf/BumpPointerAllocator.h: Renamed from Source/CyberScriptCore/wtf/BumpPointerAllocator.h.
         (WTF):
         (BumpPointerPool):
         (WTF::BumpPointerPool::ensureCapacity):
@@ -20455,10 +20455,10 @@
         (WTF::BumpPointerAllocator::~BumpPointerAllocator):
         (WTF::BumpPointerAllocator::startAllocator):
         (WTF::BumpPointerAllocator::stopAllocator):
-        * wtf/ByteArray.cpp: Renamed from Source/JavaScriptCore/wtf/ByteArray.cpp.
+        * wtf/ByteArray.cpp: Renamed from Source/CyberScriptCore/wtf/ByteArray.cpp.
         (WTF):
         (WTF::ByteArray::create):
-        * wtf/ByteArray.h: Renamed from Source/JavaScriptCore/wtf/ByteArray.h.
+        * wtf/ByteArray.h: Renamed from Source/CyberScriptCore/wtf/ByteArray.h.
         (ByteArray):
         (WTF::ByteArray::length):
         (WTF::ByteArray::set):
@@ -20469,9 +20469,9 @@
         (WTF::ByteArray::offsetOfSize):
         (WTF::ByteArray::offsetOfData):
         (WTF::ByteArray::ByteArray):
-        * wtf/CMakeLists.txt: Renamed from Source/JavaScriptCore/wtf/CMakeLists.txt.
-        * wtf/CONTRIBUTORS.pthreads-win32: Renamed from Source/JavaScriptCore/wtf/CONTRIBUTORS.pthreads-win32.
-        * wtf/CheckedArithmetic.h: Renamed from Source/JavaScriptCore/wtf/CheckedArithmetic.h.
+        * wtf/CMakeLists.txt: Renamed from Source/CyberScriptCore/wtf/CMakeLists.txt.
+        * wtf/CONTRIBUTORS.pthreads-win32: Renamed from Source/CyberScriptCore/wtf/CONTRIBUTORS.pthreads-win32.
+        * wtf/CheckedArithmetic.h: Renamed from Source/CyberScriptCore/wtf/CheckedArithmetic.h.
         (WTF):
         (CrashOnOverflow):
         (WTF::CrashOnOverflow::overflowed):
@@ -20505,22 +20505,22 @@
         (WTF::operator+):
         (WTF::operator-):
         (WTF::operator*):
-        * wtf/CheckedBoolean.h: Renamed from Source/JavaScriptCore/wtf/CheckedBoolean.h.
+        * wtf/CheckedBoolean.h: Renamed from Source/CyberScriptCore/wtf/CheckedBoolean.h.
         (CheckedBoolean):
         (CheckedBoolean::CheckedBoolean):
         (CheckedBoolean::~CheckedBoolean):
         (CheckedBoolean::operator bool):
-        * wtf/Compiler.h: Renamed from Source/JavaScriptCore/wtf/Compiler.h.
-        * wtf/Complex.h: Renamed from Source/JavaScriptCore/wtf/Complex.h.
+        * wtf/Compiler.h: Renamed from Source/CyberScriptCore/wtf/Compiler.h.
+        * wtf/Complex.h: Renamed from Source/CyberScriptCore/wtf/Complex.h.
         (WTF):
         (WTF::complexFromMagnitudePhase):
-        * wtf/CryptographicallyRandomNumber.cpp: Renamed from Source/JavaScriptCore/wtf/CryptographicallyRandomNumber.cpp.
+        * wtf/CryptographicallyRandomNumber.cpp: Renamed from Source/CyberScriptCore/wtf/CryptographicallyRandomNumber.cpp.
         (WTF::cryptographicallyRandomNumber):
         (WTF):
         (WTF::cryptographicallyRandomValues):
-        * wtf/CryptographicallyRandomNumber.h: Renamed from Source/JavaScriptCore/wtf/CryptographicallyRandomNumber.h.
+        * wtf/CryptographicallyRandomNumber.h: Renamed from Source/CyberScriptCore/wtf/CryptographicallyRandomNumber.h.
         (WTF):
-        * wtf/CurrentTime.cpp: Renamed from Source/JavaScriptCore/wtf/CurrentTime.cpp.
+        * wtf/CurrentTime.cpp: Renamed from Source/CyberScriptCore/wtf/CurrentTime.cpp.
         (WTF):
         (WTF::highResUpTime):
         (WTF::lowResUTCTime):
@@ -20528,20 +20528,20 @@
         (WTF::currentTime):
         (WTF::currentSystemTime):
         (WTF::monotonicallyIncreasingTime):
-        * wtf/CurrentTime.h: Renamed from Source/JavaScriptCore/wtf/CurrentTime.h.
+        * wtf/CurrentTime.h: Renamed from Source/CyberScriptCore/wtf/CurrentTime.h.
         (WTF):
         (WTF::currentTimeMS):
         (WTF::getLocalTime):
-        * wtf/DataLog.cpp: Renamed from Source/JavaScriptCore/wtf/DataLog.cpp.
+        * wtf/DataLog.cpp: Renamed from Source/CyberScriptCore/wtf/DataLog.cpp.
         (WTF):
         (WTF::initializeLogFileOnce):
         (WTF::initializeLogFile):
         (WTF::dataFile):
         (WTF::dataLogV):
         (WTF::dataLog):
-        * wtf/DataLog.h: Renamed from Source/JavaScriptCore/wtf/DataLog.h.
+        * wtf/DataLog.h: Renamed from Source/CyberScriptCore/wtf/DataLog.h.
         (WTF):
-        * wtf/DateMath.cpp: Renamed from Source/JavaScriptCore/wtf/DateMath.cpp.
+        * wtf/DateMath.cpp: Renamed from Source/CyberScriptCore/wtf/DateMath.cpp.
         (WTF):
         (WTF::isLeapYear):
         (WTF::daysInYear):
@@ -20576,16 +20576,16 @@
         (WTF::parseDateFromNullTerminatedCharacters):
         (WTF::timeClip):
         (WTF::makeRFC2822DateString):
-        * wtf/DateMath.h: Renamed from Source/JavaScriptCore/wtf/DateMath.h.
+        * wtf/DateMath.h: Renamed from Source/CyberScriptCore/wtf/DateMath.h.
         (WTF):
         (WTF::jsCurrentTime):
-        * wtf/DecimalNumber.cpp: Renamed from Source/JavaScriptCore/wtf/DecimalNumber.cpp.
+        * wtf/DecimalNumber.cpp: Renamed from Source/CyberScriptCore/wtf/DecimalNumber.cpp.
         (WTF):
         (WTF::DecimalNumber::bufferLengthForStringDecimal):
         (WTF::DecimalNumber::bufferLengthForStringExponential):
         (WTF::DecimalNumber::toStringDecimal):
         (WTF::DecimalNumber::toStringExponential):
-        * wtf/DecimalNumber.h: Renamed from Source/JavaScriptCore/wtf/DecimalNumber.h.
+        * wtf/DecimalNumber.h: Renamed from Source/CyberScriptCore/wtf/DecimalNumber.h.
         (WTF):
         (DecimalNumber):
         (WTF::DecimalNumber::DecimalNumber):
@@ -20593,12 +20593,12 @@
         (WTF::DecimalNumber::exponent):
         (WTF::DecimalNumber::significand):
         (WTF::DecimalNumber::precision):
-        * wtf/Decoder.h: Renamed from Source/JavaScriptCore/wtf/Decoder.h.
+        * wtf/Decoder.h: Renamed from Source/CyberScriptCore/wtf/Decoder.h.
         (WTF):
         (Decoder):
         (WTF::Decoder::Decoder):
         (WTF::Decoder::~Decoder):
-        * wtf/Deque.h: Renamed from Source/JavaScriptCore/wtf/Deque.h.
+        * wtf/Deque.h: Renamed from Source/CyberScriptCore/wtf/Deque.h.
         (WTF):
         (Deque):
         (WTF::Deque::size):
@@ -20674,8 +20674,8 @@
         (WTF::::decrement):
         (WTF::::after):
         (WTF::::before):
-        * wtf/DisallowCType.h: Renamed from Source/JavaScriptCore/wtf/DisallowCType.h.
-        * wtf/DoublyLinkedList.h: Renamed from Source/JavaScriptCore/wtf/DoublyLinkedList.h.
+        * wtf/DisallowCType.h: Renamed from Source/CyberScriptCore/wtf/DisallowCType.h.
+        * wtf/DoublyLinkedList.h: Renamed from Source/CyberScriptCore/wtf/DoublyLinkedList.h.
         (WTF):
         (DoublyLinkedListNode):
         (WTF::::DoublyLinkedListNode):
@@ -20694,18 +20694,18 @@
         (WTF::::append):
         (WTF::::remove):
         (WTF::::removeHead):
-        * wtf/DynamicAnnotations.cpp: Renamed from Source/JavaScriptCore/wtf/DynamicAnnotations.cpp.
+        * wtf/DynamicAnnotations.cpp: Renamed from Source/CyberScriptCore/wtf/DynamicAnnotations.cpp.
         (WTFAnnotateBenignRaceSized):
         (WTFAnnotateHappensBefore):
         (WTFAnnotateHappensAfter):
-        * wtf/DynamicAnnotations.h: Renamed from Source/JavaScriptCore/wtf/DynamicAnnotations.h.
-        * wtf/Encoder.h: Renamed from Source/JavaScriptCore/wtf/Encoder.h.
+        * wtf/DynamicAnnotations.h: Renamed from Source/CyberScriptCore/wtf/DynamicAnnotations.h.
+        * wtf/Encoder.h: Renamed from Source/CyberScriptCore/wtf/Encoder.h.
         (WTF):
         (Encoder):
         (WTF::Encoder::Encoder):
         (WTF::Encoder::~Encoder):
-        * wtf/ExportMacros.h: Renamed from Source/JavaScriptCore/wtf/ExportMacros.h.
-        * wtf/FastAllocBase.h: Renamed from Source/JavaScriptCore/wtf/FastAllocBase.h.
+        * wtf/ExportMacros.h: Renamed from Source/CyberScriptCore/wtf/ExportMacros.h.
+        * wtf/FastAllocBase.h: Renamed from Source/CyberScriptCore/wtf/FastAllocBase.h.
         (WTF):
         (WTF::fastNew):
         (Internal):
@@ -20718,7 +20718,7 @@
         (WTF::fastNonNullDelete):
         (WTF::Internal::NonNullDeleteArrayImpl::fastNonNullDeleteArray):
         (WTF::fastNonNullDeleteArray):
-        * wtf/FastMalloc.cpp: Renamed from Source/JavaScriptCore/wtf/FastMalloc.cpp.
+        * wtf/FastMalloc.cpp: Renamed from Source/CyberScriptCore/wtf/FastMalloc.cpp.
         (WTF):
         (WTF::isForbidden):
         (WTF::fastMallocForbid):
@@ -20873,7 +20873,7 @@
         (WTF::TCMalloc_ThreadCache::GetCacheIfPresent):
         (WTF::TCMalloc_ThreadCache::InitTSD):
         (WTF::TCMalloc_ThreadCache::CreateCacheIfNecessary):
-        * wtf/FastMalloc.h: Renamed from Source/JavaScriptCore/wtf/FastMalloc.h.
+        * wtf/FastMalloc.h: Renamed from Source/CyberScriptCore/wtf/FastMalloc.h.
         (WTF):
         (WTF::TryMallocReturnValue::TryMallocReturnValue):
         (WTF::TryMallocReturnValue::~TryMallocReturnValue):
@@ -20891,13 +20891,13 @@
         (WTF::fastMallocMatchValidateFree):
         (WTF::fastMallocValidate):
         (throw):
-        * wtf/FixedArray.h: Renamed from Source/JavaScriptCore/wtf/FixedArray.h.
+        * wtf/FixedArray.h: Renamed from Source/CyberScriptCore/wtf/FixedArray.h.
         (WTF):
         (FixedArray):
         (WTF::FixedArray::operator[]):
         (WTF::FixedArray::data):
         (WTF::FixedArray::size):
-        * wtf/Float32Array.h: Renamed from Source/JavaScriptCore/wtf/Float32Array.h.
+        * wtf/Float32Array.h: Renamed from Source/CyberScriptCore/wtf/Float32Array.h.
         (WTF):
         (Float32Array):
         (WTF::Float32Array::set):
@@ -20906,7 +20906,7 @@
         (WTF::Float32Array::create):
         (WTF::Float32Array::Float32Array):
         (WTF::Float32Array::subarray):
-        * wtf/Float64Array.h: Renamed from Source/JavaScriptCore/wtf/Float64Array.h.
+        * wtf/Float64Array.h: Renamed from Source/CyberScriptCore/wtf/Float64Array.h.
         (WTF):
         (Float64Array):
         (WTF::Float64Array::set):
@@ -20915,9 +20915,9 @@
         (WTF::Float64Array::create):
         (WTF::Float64Array::Float64Array):
         (WTF::Float64Array::subarray):
-        * wtf/Forward.h: Renamed from Source/JavaScriptCore/wtf/Forward.h.
+        * wtf/Forward.h: Renamed from Source/CyberScriptCore/wtf/Forward.h.
         (WTF):
-        * wtf/Functional.h: Renamed from Source/JavaScriptCore/wtf/Functional.h.
+        * wtf/Functional.h: Renamed from Source/CyberScriptCore/wtf/Functional.h.
         (WTF):
         (HasRefAndDeref):
         (NoType):
@@ -20936,10 +20936,10 @@
         (WTF::FunctionBase::FunctionBase):
         (WTF::FunctionBase::impl):
         (WTF::bind):
-        * wtf/GetPtr.h: Renamed from Source/JavaScriptCore/wtf/GetPtr.h.
+        * wtf/GetPtr.h: Renamed from Source/CyberScriptCore/wtf/GetPtr.h.
         (WTF):
         (WTF::getPtr):
-        * wtf/HashCountedSet.h: Renamed from Source/JavaScriptCore/wtf/HashCountedSet.h.
+        * wtf/HashCountedSet.h: Renamed from Source/CyberScriptCore/wtf/HashCountedSet.h.
         (WTF):
         (HashCountedSet):
         (WTF::HashCountedSet::HashCountedSet):
@@ -20956,7 +20956,7 @@
         (WTF::::removeAll):
         (WTF::::clear):
         (WTF::copyToVector):
-        * wtf/HashFunctions.h: Renamed from Source/JavaScriptCore/wtf/HashFunctions.h.
+        * wtf/HashFunctions.h: Renamed from Source/CyberScriptCore/wtf/HashFunctions.h.
         (WTF):
         (WTF::intHash):
         (WTF::IntHash::hash):
@@ -20971,7 +20971,7 @@
         (WTF::PairHash::hash):
         (WTF::PairHash::equal):
         (PairHash):
-        * wtf/HashIterators.h: Renamed from Source/JavaScriptCore/wtf/HashIterators.h.
+        * wtf/HashIterators.h: Renamed from Source/CyberScriptCore/wtf/HashIterators.h.
         (WTF):
         (HashTableConstKeysIterator):
         (WTF::HashTableConstKeysIterator::HashTableConstKeysIterator):
@@ -21001,7 +21001,7 @@
         (WTF::HashTableValuesIterator::operator HashTableConstValuesIterator<HashTableType, KeyType, MappedType>):
         (WTF::operator==):
         (WTF::operator!=):
-        * wtf/HashMap.h: Renamed from Source/JavaScriptCore/wtf/HashMap.h.
+        * wtf/HashMap.h: Renamed from Source/CyberScriptCore/wtf/HashMap.h.
         (WTF):
         (ReferenceTypeMaker):
         (HashMap):
@@ -21044,7 +21044,7 @@
         (WTF::deleteAllKeys):
         (WTF::copyKeysToVector):
         (WTF::copyValuesToVector):
-        * wtf/HashSet.h: Renamed from Source/JavaScriptCore/wtf/HashSet.h.
+        * wtf/HashSet.h: Renamed from Source/CyberScriptCore/wtf/HashSet.h.
         (WTF):
         (HashSet):
         (WTF::IdentityExtractor::extract):
@@ -21065,12 +21065,12 @@
         (WTF::deleteAllValues):
         (WTF::fastDeleteAllValues):
         (WTF::copyToVector):
-        * wtf/HashTable.cpp: Renamed from Source/JavaScriptCore/wtf/HashTable.cpp.
+        * wtf/HashTable.cpp: Renamed from Source/CyberScriptCore/wtf/HashTable.cpp.
         (WTF):
         (WTF::hashTableStatsMutex):
         (WTF::HashTableStats::~HashTableStats):
         (WTF::HashTableStats::recordCollisionAtCount):
-        * wtf/HashTable.h: Renamed from Source/JavaScriptCore/wtf/HashTable.h.
+        * wtf/HashTable.h: Renamed from Source/CyberScriptCore/wtf/HashTable.h.
         (WTF):
         (HashTableStats):
         (WTF::addIterator):
@@ -21172,7 +21172,7 @@
         (WTF::HashTableIteratorAdapter::operator HashTableConstIteratorAdapter<HashTableType, ValueType>):
         (WTF::operator==):
         (WTF::operator!=):
-        * wtf/HashTraits.h: Renamed from Source/JavaScriptCore/wtf/HashTraits.h.
+        * wtf/HashTraits.h: Renamed from Source/CyberScriptCore/wtf/HashTraits.h.
         (WTF):
         (GenericHashTraits):
         (WTF::GenericHashTraits::emptyValue):
@@ -21194,7 +21194,7 @@
         (WTF::PairHashTraits::emptyValue):
         (WTF::PairHashTraits::constructDeletedValue):
         (WTF::PairHashTraits::isDeletedValue):
-        * wtf/HexNumber.h: Renamed from Source/JavaScriptCore/wtf/HexNumber.h.
+        * wtf/HexNumber.h: Renamed from Source/CyberScriptCore/wtf/HexNumber.h.
         (WTF):
         (Internal):
         (WTF::Internal::hexDigitsForMode):
@@ -21203,8 +21203,8 @@
         (WTF::placeByteAsHex):
         (WTF::appendUnsignedAsHex):
         (WTF::appendUnsignedAsHexFixedSize):
-        * wtf/InlineASM.h: Renamed from Source/JavaScriptCore/wtf/InlineASM.h.
-        * wtf/Int16Array.h: Renamed from Source/JavaScriptCore/wtf/Int16Array.h.
+        * wtf/InlineASM.h: Renamed from Source/CyberScriptCore/wtf/InlineASM.h.
+        * wtf/Int16Array.h: Renamed from Source/CyberScriptCore/wtf/Int16Array.h.
         (WTF):
         (Int16Array):
         (WTF::Int16Array::set):
@@ -21212,7 +21212,7 @@
         (WTF::Int16Array::create):
         (WTF::Int16Array::Int16Array):
         (WTF::Int16Array::subarray):
-        * wtf/Int32Array.h: Renamed from Source/JavaScriptCore/wtf/Int32Array.h.
+        * wtf/Int32Array.h: Renamed from Source/CyberScriptCore/wtf/Int32Array.h.
         (WTF):
         (Int32Array):
         (WTF::Int32Array::set):
@@ -21220,7 +21220,7 @@
         (WTF::Int32Array::create):
         (WTF::Int32Array::Int32Array):
         (WTF::Int32Array::subarray):
-        * wtf/Int8Array.h: Renamed from Source/JavaScriptCore/wtf/Int8Array.h.
+        * wtf/Int8Array.h: Renamed from Source/CyberScriptCore/wtf/Int8Array.h.
         (WTF):
         (Int8Array):
         (WTF::Int8Array::set):
@@ -21228,13 +21228,13 @@
         (WTF::Int8Array::create):
         (WTF::Int8Array::Int8Array):
         (WTF::Int8Array::subarray):
-        * wtf/IntegralTypedArrayBase.h: Renamed from Source/JavaScriptCore/wtf/IntegralTypedArrayBase.h.
+        * wtf/IntegralTypedArrayBase.h: Renamed from Source/CyberScriptCore/wtf/IntegralTypedArrayBase.h.
         (WTF):
         (IntegralTypedArrayBase):
         (WTF::IntegralTypedArrayBase::set):
         (WTF::IntegralTypedArrayBase::item):
         (WTF::IntegralTypedArrayBase::IntegralTypedArrayBase):
-        * wtf/ListHashSet.h: Renamed from Source/JavaScriptCore/wtf/ListHashSet.h.
+        * wtf/ListHashSet.h: Renamed from Source/CyberScriptCore/wtf/ListHashSet.h.
         (WTF):
         (ListHashSet):
         (ListHashSetNodeAllocator):
@@ -21327,19 +21327,19 @@
         (WTF::::makeIterator):
         (WTF::::makeConstIterator):
         (WTF::deleteAllValues):
-        * wtf/ListRefPtr.h: Renamed from Source/JavaScriptCore/wtf/ListRefPtr.h.
+        * wtf/ListRefPtr.h: Renamed from Source/CyberScriptCore/wtf/ListRefPtr.h.
         (WTF):
         (ListRefPtr):
         (WTF::ListRefPtr::ListRefPtr):
         (WTF::ListRefPtr::~ListRefPtr):
         (WTF::ListRefPtr::operator=):
         (WTF::getPtr):
-        * wtf/Locker.h: Renamed from Source/JavaScriptCore/wtf/Locker.h.
+        * wtf/Locker.h: Renamed from Source/CyberScriptCore/wtf/Locker.h.
         (WTF):
         (Locker):
         (WTF::Locker::Locker):
         (WTF::Locker::~Locker):
-        * wtf/MD5.cpp: Renamed from Source/JavaScriptCore/wtf/MD5.cpp.
+        * wtf/MD5.cpp: Renamed from Source/CyberScriptCore/wtf/MD5.cpp.
         (WTF):
         (WTF::testMD5):
         (WTF::expectMD5):
@@ -21348,11 +21348,11 @@
         (WTF::MD5::MD5):
         (WTF::MD5::addBytes):
         (WTF::MD5::checksum):
-        * wtf/MD5.h: Renamed from Source/JavaScriptCore/wtf/MD5.h.
+        * wtf/MD5.h: Renamed from Source/CyberScriptCore/wtf/MD5.h.
         (WTF):
         (MD5):
         (WTF::MD5::addBytes):
-        * wtf/MainThread.cpp: Renamed from Source/JavaScriptCore/wtf/MainThread.cpp.
+        * wtf/MainThread.cpp: Renamed from Source/CyberScriptCore/wtf/MainThread.cpp.
         (WTF):
         (FunctionWithContext):
         (WTF::FunctionWithContext::FunctionWithContext):
@@ -21376,16 +21376,16 @@
         (WTF::initializeGCThreads):
         (WTF::registerGCThread):
         (WTF::isMainThreadOrGCThread):
-        * wtf/MainThread.h: Renamed from Source/JavaScriptCore/wtf/MainThread.h.
+        * wtf/MainThread.h: Renamed from Source/CyberScriptCore/wtf/MainThread.h.
         (WTF):
         (WTF::isMainThreadOrGCThread):
-        * wtf/MallocZoneSupport.h: Renamed from Source/JavaScriptCore/wtf/MallocZoneSupport.h.
+        * wtf/MallocZoneSupport.h: Renamed from Source/CyberScriptCore/wtf/MallocZoneSupport.h.
         (WTF):
         (RemoteMemoryReader):
         (WTF::RemoteMemoryReader::RemoteMemoryReader):
         (WTF::RemoteMemoryReader::operator()):
         (WTF::RemoteMemoryReader::nextEntryInLinkedList):
-        * wtf/MathExtras.h: Renamed from Source/JavaScriptCore/wtf/MathExtras.h.
+        * wtf/MathExtras.h: Renamed from Source/CyberScriptCore/wtf/MathExtras.h.
         (wtf_ceil):
         (isfinite):
         (isinf):
@@ -21424,7 +21424,7 @@
         (isWithinIntRange):
         (decomposeDouble):
         (doubleToInteger):
-        * wtf/MessageQueue.h: Renamed from Source/JavaScriptCore/wtf/MessageQueue.h.
+        * wtf/MessageQueue.h: Renamed from Source/CyberScriptCore/wtf/MessageQueue.h.
         (WTF):
         (MessageQueue):
         (WTF::MessageQueue::MessageQueue):
@@ -21442,7 +21442,7 @@
         (WTF::::isEmpty):
         (WTF::::kill):
         (WTF::::killed):
-        * wtf/MetaAllocator.cpp: Renamed from Source/JavaScriptCore/wtf/MetaAllocator.cpp.
+        * wtf/MetaAllocator.cpp: Renamed from Source/CyberScriptCore/wtf/MetaAllocator.cpp.
         (WTF):
         (WTF::MetaAllocator::~MetaAllocator):
         (WTF::MetaAllocatorTracker::notify):
@@ -21465,7 +21465,7 @@
         (WTF::MetaAllocator::allocFreeSpaceNode):
         (WTF::MetaAllocator::freeFreeSpaceNode):
         (WTF::MetaAllocator::dumpProfile):
-        * wtf/MetaAllocator.h: Renamed from Source/JavaScriptCore/wtf/MetaAllocator.h.
+        * wtf/MetaAllocator.h: Renamed from Source/CyberScriptCore/wtf/MetaAllocator.h.
         (WTF):
         (MetaAllocatorTracker):
         (WTF::MetaAllocatorTracker::find):
@@ -21479,7 +21479,7 @@
         (FreeSpaceNode):
         (WTF::MetaAllocator::FreeSpaceNode::FreeSpaceNode):
         (WTF::MetaAllocator::FreeSpaceNode::key):
-        * wtf/MetaAllocatorHandle.h: Renamed from Source/JavaScriptCore/wtf/MetaAllocatorHandle.h.
+        * wtf/MetaAllocatorHandle.h: Renamed from Source/CyberScriptCore/wtf/MetaAllocatorHandle.h.
         (WTF):
         (MetaAllocatorHandle):
         (WTF::MetaAllocatorHandle::start):
@@ -21489,36 +21489,36 @@
         (WTF::MetaAllocatorHandle::allocator):
         (WTF::MetaAllocatorHandle::ownerUID):
         (WTF::MetaAllocatorHandle::key):
-        * wtf/NonCopyingSort.h: Renamed from Source/JavaScriptCore/wtf/NonCopyingSort.h.
+        * wtf/NonCopyingSort.h: Renamed from Source/CyberScriptCore/wtf/NonCopyingSort.h.
         (WTF):
         (WTF::siftDown):
         (WTF::heapify):
         (WTF::heapSort):
         (WTF::nonCopyingSort):
-        * wtf/Noncopyable.h: Renamed from Source/JavaScriptCore/wtf/Noncopyable.h.
-        * wtf/NotFound.h: Renamed from Source/JavaScriptCore/wtf/NotFound.h.
+        * wtf/Noncopyable.h: Renamed from Source/CyberScriptCore/wtf/Noncopyable.h.
+        * wtf/NotFound.h: Renamed from Source/CyberScriptCore/wtf/NotFound.h.
         (WTF):
-        * wtf/NullPtr.cpp: Renamed from Source/JavaScriptCore/wtf/NullPtr.cpp.
-        * wtf/NullPtr.h: Renamed from Source/JavaScriptCore/wtf/NullPtr.h.
-        * wtf/NumberOfCores.cpp: Renamed from Source/JavaScriptCore/wtf/NumberOfCores.cpp.
+        * wtf/NullPtr.cpp: Renamed from Source/CyberScriptCore/wtf/NullPtr.cpp.
+        * wtf/NullPtr.h: Renamed from Source/CyberScriptCore/wtf/NullPtr.h.
+        * wtf/NumberOfCores.cpp: Renamed from Source/CyberScriptCore/wtf/NumberOfCores.cpp.
         (WTF):
         (WTF::numberOfProcessorCores):
-        * wtf/NumberOfCores.h: Renamed from Source/JavaScriptCore/wtf/NumberOfCores.h.
+        * wtf/NumberOfCores.h: Renamed from Source/CyberScriptCore/wtf/NumberOfCores.h.
         (WTF):
-        * wtf/OSAllocator.h: Renamed from Source/JavaScriptCore/wtf/OSAllocator.h.
+        * wtf/OSAllocator.h: Renamed from Source/CyberScriptCore/wtf/OSAllocator.h.
         (WTF):
         (OSAllocator):
         (WTF::OSAllocator::reserveAndCommit):
         (WTF::OSAllocator::decommitAndRelease):
         (WTF::OSAllocator::reallocateCommitted):
-        * wtf/OSAllocatorPosix.cpp: Renamed from Source/JavaScriptCore/wtf/OSAllocatorPosix.cpp.
+        * wtf/OSAllocatorPosix.cpp: Renamed from Source/CyberScriptCore/wtf/OSAllocatorPosix.cpp.
         (WTF):
         (WTF::OSAllocator::reserveUncommitted):
         (WTF::OSAllocator::reserveAndCommit):
         (WTF::OSAllocator::commit):
         (WTF::OSAllocator::decommit):
         (WTF::OSAllocator::releaseDecommitted):
-        * wtf/OSAllocatorWin.cpp: Renamed from Source/JavaScriptCore/wtf/OSAllocatorWin.cpp.
+        * wtf/OSAllocatorWin.cpp: Renamed from Source/CyberScriptCore/wtf/OSAllocatorWin.cpp.
         (WTF):
         (WTF::protection):
         (WTF::OSAllocator::reserveUncommitted):
@@ -21526,12 +21526,12 @@
         (WTF::OSAllocator::commit):
         (WTF::OSAllocator::decommit):
         (WTF::OSAllocator::releaseDecommitted):
-        * wtf/OSRandomSource.cpp: Renamed from Source/JavaScriptCore/wtf/OSRandomSource.cpp.
+        * wtf/OSRandomSource.cpp: Renamed from Source/CyberScriptCore/wtf/OSRandomSource.cpp.
         (WTF):
         (WTF::cryptographicallyRandomValuesFromOS):
-        * wtf/OSRandomSource.h: Renamed from Source/JavaScriptCore/wtf/OSRandomSource.h.
+        * wtf/OSRandomSource.h: Renamed from Source/CyberScriptCore/wtf/OSRandomSource.h.
         (WTF):
-        * wtf/OwnArrayPtr.h: Renamed from Source/JavaScriptCore/wtf/OwnArrayPtr.h.
+        * wtf/OwnArrayPtr.h: Renamed from Source/CyberScriptCore/wtf/OwnArrayPtr.h.
         (WTF):
         (OwnArrayPtr):
         (WTF::OwnArrayPtr::OwnArrayPtr):
@@ -21553,7 +21553,7 @@
         (WTF::operator==):
         (WTF::operator!=):
         (WTF::getPtr):
-        * wtf/OwnPtr.h: Renamed from Source/JavaScriptCore/wtf/OwnPtr.h.
+        * wtf/OwnPtr.h: Renamed from Source/CyberScriptCore/wtf/OwnPtr.h.
         (WTF):
         (OwnPtr):
         (WTF::OwnPtr::OwnPtr):
@@ -21576,10 +21576,10 @@
         (WTF::operator==):
         (WTF::operator!=):
         (WTF::getPtr):
-        * wtf/OwnPtrCommon.h: Renamed from Source/JavaScriptCore/wtf/OwnPtrCommon.h.
+        * wtf/OwnPtrCommon.h: Renamed from Source/CyberScriptCore/wtf/OwnPtrCommon.h.
         (WTF):
         (WTF::deleteOwnedPtr):
-        * wtf/PackedIntVector.h: Renamed from Source/JavaScriptCore/wtf/PackedIntVector.h.
+        * wtf/PackedIntVector.h: Renamed from Source/CyberScriptCore/wtf/PackedIntVector.h.
         (WTF):
         (PackedIntVector):
         (WTF::PackedIntVector::PackedIntVector):
@@ -21591,27 +21591,27 @@
         (WTF::PackedIntVector::get):
         (WTF::PackedIntVector::set):
         (WTF::PackedIntVector::mask):
-        * wtf/PageAllocation.h: Renamed from Source/JavaScriptCore/wtf/PageAllocation.h.
+        * wtf/PageAllocation.h: Renamed from Source/CyberScriptCore/wtf/PageAllocation.h.
         (WTF):
         (PageAllocation):
         (WTF::PageAllocation::PageAllocation):
         (WTF::PageAllocation::operator bool):
         (WTF::PageAllocation::allocate):
         (WTF::PageAllocation::deallocate):
-        * wtf/PageAllocationAligned.cpp: Renamed from Source/JavaScriptCore/wtf/PageAllocationAligned.cpp.
+        * wtf/PageAllocationAligned.cpp: Renamed from Source/CyberScriptCore/wtf/PageAllocationAligned.cpp.
         (WTF):
         (WTF::PageAllocationAligned::allocate):
         (WTF::PageAllocationAligned::deallocate):
-        * wtf/PageAllocationAligned.h: Renamed from Source/JavaScriptCore/wtf/PageAllocationAligned.h.
+        * wtf/PageAllocationAligned.h: Renamed from Source/CyberScriptCore/wtf/PageAllocationAligned.h.
         (WTF):
         (PageAllocationAligned):
         (WTF::PageAllocationAligned::PageAllocationAligned):
-        * wtf/PageBlock.cpp: Renamed from Source/JavaScriptCore/wtf/PageBlock.cpp.
+        * wtf/PageBlock.cpp: Renamed from Source/CyberScriptCore/wtf/PageBlock.cpp.
         (WTF):
         (WTF::systemPageSize):
         (WTF::pageSize):
         (WTF::pageMask):
-        * wtf/PageBlock.h: Renamed from Source/JavaScriptCore/wtf/PageBlock.h.
+        * wtf/PageBlock.h: Renamed from Source/CyberScriptCore/wtf/PageBlock.h.
         (WTF):
         (WTF::isPageAligned):
         (WTF::isPowerOfTwo):
@@ -21621,7 +21621,7 @@
         (WTF::PageBlock::operator bool):
         (WTF::PageBlock::contains):
         (WTF::PageBlock::PageBlock):
-        * wtf/PageReservation.h: Renamed from Source/JavaScriptCore/wtf/PageReservation.h.
+        * wtf/PageReservation.h: Renamed from Source/CyberScriptCore/wtf/PageReservation.h.
         (WTF):
         (PageReservation):
         (WTF::PageReservation::PageReservation):
@@ -21632,14 +21632,14 @@
         (WTF::PageReservation::reserve):
         (WTF::PageReservation::reserveWithGuardPages):
         (WTF::PageReservation::deallocate):
-        * wtf/ParallelJobs.h: Renamed from Source/JavaScriptCore/wtf/ParallelJobs.h.
+        * wtf/ParallelJobs.h: Renamed from Source/CyberScriptCore/wtf/ParallelJobs.h.
         (WTF):
         (ParallelJobs):
         (WTF::ParallelJobs::ParallelJobs):
         (WTF::ParallelJobs::numberOfJobs):
         (WTF::ParallelJobs::parameter):
         (WTF::ParallelJobs::execute):
-        * wtf/ParallelJobsGeneric.cpp: Renamed from Source/JavaScriptCore/wtf/ParallelJobsGeneric.cpp.
+        * wtf/ParallelJobsGeneric.cpp: Renamed from Source/CyberScriptCore/wtf/ParallelJobsGeneric.cpp.
         (WTF):
         (WTF::ParallelEnvironment::ParallelEnvironment):
         (WTF::ParallelEnvironment::execute):
@@ -21647,26 +21647,26 @@
         (WTF::ParallelEnvironment::ThreadPrivate::execute):
         (WTF::ParallelEnvironment::ThreadPrivate::waitForFinish):
         (WTF::ParallelEnvironment::ThreadPrivate::workerThread):
-        * wtf/ParallelJobsGeneric.h: Renamed from Source/JavaScriptCore/wtf/ParallelJobsGeneric.h.
+        * wtf/ParallelJobsGeneric.h: Renamed from Source/CyberScriptCore/wtf/ParallelJobsGeneric.h.
         (WTF):
         (ParallelEnvironment):
         (WTF::ParallelEnvironment::numberOfJobs):
         (ThreadPrivate):
         (WTF::ParallelEnvironment::ThreadPrivate::ThreadPrivate):
         (WTF::ParallelEnvironment::ThreadPrivate::create):
-        * wtf/ParallelJobsLibdispatch.h: Renamed from Source/JavaScriptCore/wtf/ParallelJobsLibdispatch.h.
+        * wtf/ParallelJobsLibdispatch.h: Renamed from Source/CyberScriptCore/wtf/ParallelJobsLibdispatch.h.
         (WTF):
         (ParallelEnvironment):
         (WTF::ParallelEnvironment::ParallelEnvironment):
         (WTF::ParallelEnvironment::numberOfJobs):
         (WTF::ParallelEnvironment::execute):
-        * wtf/ParallelJobsOpenMP.h: Renamed from Source/JavaScriptCore/wtf/ParallelJobsOpenMP.h.
+        * wtf/ParallelJobsOpenMP.h: Renamed from Source/CyberScriptCore/wtf/ParallelJobsOpenMP.h.
         (WTF):
         (ParallelEnvironment):
         (WTF::ParallelEnvironment::ParallelEnvironment):
         (WTF::ParallelEnvironment::numberOfJobs):
         (WTF::ParallelEnvironment::execute):
-        * wtf/PassOwnArrayPtr.h: Renamed from Source/JavaScriptCore/wtf/PassOwnArrayPtr.h.
+        * wtf/PassOwnArrayPtr.h: Renamed from Source/CyberScriptCore/wtf/PassOwnArrayPtr.h.
         (WTF):
         (PassOwnArrayPtr):
         (WTF::PassOwnArrayPtr::PassOwnArrayPtr):
@@ -21685,7 +21685,7 @@
         (WTF::static_pointer_cast):
         (WTF::const_pointer_cast):
         (WTF::getPtr):
-        * wtf/PassOwnPtr.h: Renamed from Source/JavaScriptCore/wtf/PassOwnPtr.h.
+        * wtf/PassOwnPtr.h: Renamed from Source/CyberScriptCore/wtf/PassOwnPtr.h.
         (WTF):
         (PassOwnPtr):
         (WTF::PassOwnPtr::PassOwnPtr):
@@ -21705,7 +21705,7 @@
         (WTF::static_pointer_cast):
         (WTF::const_pointer_cast):
         (WTF::getPtr):
-        * wtf/PassRefPtr.h: Renamed from Source/JavaScriptCore/wtf/PassRefPtr.h.
+        * wtf/PassRefPtr.h: Renamed from Source/CyberScriptCore/wtf/PassRefPtr.h.
         (WTF):
         (WTF::adopted):
         (WTF::refIfNotNull):
@@ -21734,28 +21734,28 @@
         (WTF::static_pointer_cast):
         (WTF::const_pointer_cast):
         (WTF::getPtr):
-        * wtf/PassTraits.h: Renamed from Source/JavaScriptCore/wtf/PassTraits.h.
+        * wtf/PassTraits.h: Renamed from Source/CyberScriptCore/wtf/PassTraits.h.
         (WTF):
         (PassTraits):
         (WTF::PassTraits::transfer):
-        * wtf/PlatformBlackBerry.cmake: Renamed from Source/JavaScriptCore/wtf/PlatformBlackBerry.cmake.
-        * wtf/PlatformEfl.cmake: Renamed from Source/JavaScriptCore/wtf/PlatformEfl.cmake.
-        * wtf/PlatformWinCE.cmake: Renamed from Source/JavaScriptCore/wtf/PlatformWinCE.cmake.
-        * wtf/PossiblyNull.h: Renamed from Source/JavaScriptCore/wtf/PossiblyNull.h.
+        * wtf/PlatformBlackBerry.cmake: Renamed from Source/CyberScriptCore/wtf/PlatformBlackBerry.cmake.
+        * wtf/PlatformEfl.cmake: Renamed from Source/CyberScriptCore/wtf/PlatformEfl.cmake.
+        * wtf/PlatformWinCE.cmake: Renamed from Source/CyberScriptCore/wtf/PlatformWinCE.cmake.
+        * wtf/PossiblyNull.h: Renamed from Source/CyberScriptCore/wtf/PossiblyNull.h.
         (WTF):
         (WTF::PossiblyNull::PossiblyNull):
         (WTF::PossiblyNull::~PossiblyNull):
         (PossiblyNull):
         (WTF::::getValue):
-        * wtf/RandomNumber.cpp: Renamed from Source/JavaScriptCore/wtf/RandomNumber.cpp.
+        * wtf/RandomNumber.cpp: Renamed from Source/CyberScriptCore/wtf/RandomNumber.cpp.
         (WTF):
         (WTF::randomNumber):
-        * wtf/RandomNumber.h: Renamed from Source/JavaScriptCore/wtf/RandomNumber.h.
+        * wtf/RandomNumber.h: Renamed from Source/CyberScriptCore/wtf/RandomNumber.h.
         (WTF):
-        * wtf/RandomNumberSeed.h: Renamed from Source/JavaScriptCore/wtf/RandomNumberSeed.h.
+        * wtf/RandomNumberSeed.h: Renamed from Source/CyberScriptCore/wtf/RandomNumberSeed.h.
         (WTF):
         (WTF::initializeRandomNumberGenerator):
-        * wtf/RedBlackTree.h: Renamed from Source/JavaScriptCore/wtf/RedBlackTree.h.
+        * wtf/RedBlackTree.h: Renamed from Source/CyberScriptCore/wtf/RedBlackTree.h.
         (WTF):
         (RedBlackTree):
         (Node):
@@ -21786,7 +21786,7 @@
         (WTF::RedBlackTree::leftRotate):
         (WTF::RedBlackTree::rightRotate):
         (WTF::RedBlackTree::removeFixup):
-        * wtf/RefCounted.h: Renamed from Source/JavaScriptCore/wtf/RefCounted.h.
+        * wtf/RefCounted.h: Renamed from Source/CyberScriptCore/wtf/RefCounted.h.
         (WTF):
         (RefCountedBase):
         (WTF::RefCountedBase::ref):
@@ -21809,7 +21809,7 @@
         (WTF::RefCountedCustomAllocated::~RefCountedCustomAllocated):
         (WTF::RefCountedBase::setMutexForVerifier):
         (WTF::RefCountedBase::setDispatchQueueForVerifier):
-        * wtf/RefCountedArray.h: Renamed from Source/JavaScriptCore/wtf/RefCountedArray.h.
+        * wtf/RefCountedArray.h: Renamed from Source/CyberScriptCore/wtf/RefCountedArray.h.
         (WTF):
         (RefCountedArray):
         (WTF::RefCountedArray::RefCountedArray):
@@ -21825,7 +21825,7 @@
         (WTF::RefCountedArray::Header::size):
         (WTF::RefCountedArray::Header::payload):
         (WTF::RefCountedArray::Header::fromPayload):
-        * wtf/RefCountedLeakCounter.cpp: Renamed from Source/JavaScriptCore/wtf/RefCountedLeakCounter.cpp.
+        * wtf/RefCountedLeakCounter.cpp: Renamed from Source/CyberScriptCore/wtf/RefCountedLeakCounter.cpp.
         (WTF):
         (WTF::RefCountedLeakCounter::suppressMessages):
         (WTF::RefCountedLeakCounter::cancelMessageSuppression):
@@ -21833,10 +21833,10 @@
         (WTF::RefCountedLeakCounter::~RefCountedLeakCounter):
         (WTF::RefCountedLeakCounter::increment):
         (WTF::RefCountedLeakCounter::decrement):
-        * wtf/RefCountedLeakCounter.h: Renamed from Source/JavaScriptCore/wtf/RefCountedLeakCounter.h.
+        * wtf/RefCountedLeakCounter.h: Renamed from Source/CyberScriptCore/wtf/RefCountedLeakCounter.h.
         (WTF):
         (RefCountedLeakCounter):
-        * wtf/RefPtr.h: Renamed from Source/JavaScriptCore/wtf/RefPtr.h.
+        * wtf/RefPtr.h: Renamed from Source/CyberScriptCore/wtf/RefPtr.h.
         (WTF):
         (RefPtr):
         (WTF::RefPtr::RefPtr):
@@ -21860,7 +21860,7 @@
         (WTF::static_pointer_cast):
         (WTF::const_pointer_cast):
         (WTF::getPtr):
-        * wtf/RefPtrHashMap.h: Renamed from Source/JavaScriptCore/wtf/RefPtrHashMap.h.
+        * wtf/RefPtrHashMap.h: Renamed from Source/CyberScriptCore/wtf/RefPtrHashMap.h.
         (WTF):
         (WTF::::swap):
         (WTF::::size):
@@ -21878,7 +21878,7 @@
         (WTF::::remove):
         (WTF::::clear):
         (WTF::::take):
-        * wtf/RetainPtr.h: Renamed from Source/JavaScriptCore/wtf/RetainPtr.h.
+        * wtf/RetainPtr.h: Renamed from Source/CyberScriptCore/wtf/RetainPtr.h.
         (WTF):
         (WTF::adoptNSReference):
         (RetainPtr):
@@ -21904,7 +21904,7 @@
         (WTF::adoptCF):
         (WTF::adoptNS):
         (WTF::retainPtr):
-        * wtf/SHA1.cpp: Renamed from Source/JavaScriptCore/wtf/SHA1.cpp.
+        * wtf/SHA1.cpp: Renamed from Source/CyberScriptCore/wtf/SHA1.cpp.
         (WTF):
         (WTF::testSHA1):
         (WTF::expectSHA1):
@@ -21917,11 +21917,11 @@
         (WTF::SHA1::finalize):
         (WTF::SHA1::processBlock):
         (WTF::SHA1::reset):
-        * wtf/SHA1.h: Renamed from Source/JavaScriptCore/wtf/SHA1.h.
+        * wtf/SHA1.h: Renamed from Source/CyberScriptCore/wtf/SHA1.h.
         (WTF):
         (SHA1):
         (WTF::SHA1::addBytes):
-        * wtf/SegmentedVector.h: Renamed from Source/JavaScriptCore/wtf/SegmentedVector.h.
+        * wtf/SegmentedVector.h: Renamed from Source/CyberScriptCore/wtf/SegmentedVector.h.
         (WTF):
         (SegmentedVectorIterator):
         (WTF::SegmentedVectorIterator::~SegmentedVectorIterator):
@@ -21953,7 +21953,7 @@
         (WTF::SegmentedVector::subscriptFor):
         (WTF::SegmentedVector::ensureSegmentsFor):
         (WTF::SegmentedVector::ensureSegment):
-        * wtf/SentinelLinkedList.h: Renamed from Source/JavaScriptCore/wtf/SentinelLinkedList.h.
+        * wtf/SentinelLinkedList.h: Renamed from Source/CyberScriptCore/wtf/SentinelLinkedList.h.
         (WTF):
         (BasicRawSentinelNode):
         (WTF::BasicRawSentinelNode::BasicRawSentinelNode):
@@ -21969,7 +21969,7 @@
         (WTF::::begin):
         (WTF::::end):
         (WTF::::push):
-        * wtf/SimpleStats.h: Renamed from Source/JavaScriptCore/wtf/SimpleStats.h.
+        * wtf/SimpleStats.h: Renamed from Source/CyberScriptCore/wtf/SimpleStats.h.
         (WTF):
         (SimpleStats):
         (WTF::SimpleStats::SimpleStats):
@@ -21981,17 +21981,17 @@
         (WTF::SimpleStats::mean):
         (WTF::SimpleStats::variance):
         (WTF::SimpleStats::standardDeviation):
-        * wtf/SinglyLinkedList.h: Renamed from Source/JavaScriptCore/wtf/SinglyLinkedList.h.
+        * wtf/SinglyLinkedList.h: Renamed from Source/CyberScriptCore/wtf/SinglyLinkedList.h.
         (WTF):
         (SinglyLinkedList):
         (WTF::::SinglyLinkedList):
         (WTF::::isEmpty):
         (WTF::::push):
         (WTF::::pop):
-        * wtf/SizeLimits.cpp: Renamed from Source/JavaScriptCore/wtf/SizeLimits.cpp.
+        * wtf/SizeLimits.cpp: Renamed from Source/CyberScriptCore/wtf/SizeLimits.cpp.
         (WTF):
         (SameSizeAsRefCounted):
-        * wtf/Spectrum.h: Renamed from Source/JavaScriptCore/wtf/Spectrum.h.
+        * wtf/Spectrum.h: Renamed from Source/CyberScriptCore/wtf/Spectrum.h.
         (WTF):
         (Spectrum):
         (WTF::Spectrum::Spectrum):
@@ -22003,7 +22003,7 @@
         (KeyAndCount):
         (WTF::Spectrum::KeyAndCount::operator<):
         (WTF::Spectrum::buildList):
-        * wtf/StackBounds.cpp: Renamed from Source/JavaScriptCore/wtf/StackBounds.cpp.
+        * wtf/StackBounds.cpp: Renamed from Source/CyberScriptCore/wtf/StackBounds.cpp.
         (WTF):
         (WTF::estimateStackBound):
         (WTF::StackBounds::initialize):
@@ -22011,7 +22011,7 @@
         (WTF::isPageWritable):
         (WTF::getLowerStackBound):
         (WTF::getUpperStackBound):
-        * wtf/StackBounds.h: Renamed from Source/JavaScriptCore/wtf/StackBounds.h.
+        * wtf/StackBounds.h: Renamed from Source/CyberScriptCore/wtf/StackBounds.h.
         (WTF):
         (StackBounds):
         (WTF::StackBounds::StackBounds):
@@ -22022,8 +22022,8 @@
         (WTF::StackBounds::recursionCheck):
         (WTF::StackBounds::isGrowingDownward):
         (WTF::StackBounds::checkConsistency):
-        * wtf/StaticConstructors.h: Renamed from Source/JavaScriptCore/wtf/StaticConstructors.h.
-        * wtf/StdLibExtras.h: Renamed from Source/JavaScriptCore/wtf/StdLibExtras.h.
+        * wtf/StaticConstructors.h: Renamed from Source/CyberScriptCore/wtf/StaticConstructors.h.
+        * wtf/StdLibExtras.h: Renamed from Source/CyberScriptCore/wtf/StdLibExtras.h.
         (isPointerTypeAlignmentOkay):
         (reinterpret_cast_ptr):
         (WTF):
@@ -22037,10 +22037,10 @@
         (WTF::binarySearchWithFunctor):
         (WTF::genericBinarySearch):
         (operator new):
-        * wtf/StringExtras.cpp: Renamed from Source/JavaScriptCore/wtf/StringExtras.cpp.
+        * wtf/StringExtras.cpp: Renamed from Source/CyberScriptCore/wtf/StringExtras.cpp.
         (strcasecmp):
         (strncasecmp):
-        * wtf/StringExtras.h: Renamed from Source/JavaScriptCore/wtf/StringExtras.h.
+        * wtf/StringExtras.h: Renamed from Source/CyberScriptCore/wtf/StringExtras.h.
         (snprintf):
         (wtf_vsnprintf):
         (strnicmp):
@@ -22049,7 +22049,7 @@
         (strncasecmp):
         (strcasecmp):
         (strnstr):
-        * wtf/StringHasher.h: Renamed from Source/JavaScriptCore/wtf/StringHasher.h.
+        * wtf/StringHasher.h: Renamed from Source/CyberScriptCore/wtf/StringHasher.h.
         (WTF):
         (StringHasher):
         (WTF::StringHasher::StringHasher):
@@ -22060,7 +22060,7 @@
         (WTF::StringHasher::hashMemory):
         (WTF::StringHasher::defaultConverter):
         (WTF::StringHasher::addCharactersToHash):
-        * wtf/TCPackedCache.h: Renamed from Source/JavaScriptCore/wtf/TCPackedCache.h.
+        * wtf/TCPackedCache.h: Renamed from Source/CyberScriptCore/wtf/TCPackedCache.h.
         (PackedCache):
         (PackedCache::PackedCache):
         (PackedCache::Put):
@@ -22073,7 +22073,7 @@
         (PackedCache::UpperToPartialKey):
         (PackedCache::Hash):
         (PackedCache::KeyMatch):
-        * wtf/TCPageMap.h: Renamed from Source/JavaScriptCore/wtf/TCPageMap.h.
+        * wtf/TCPageMap.h: Renamed from Source/CyberScriptCore/wtf/TCPageMap.h.
         (TCMalloc_PageMap1):
         (TCMalloc_PageMap1::init):
         (TCMalloc_PageMap1::Ensure):
@@ -22099,7 +22099,7 @@
         (TCMalloc_PageMap3::PreallocateMoreMemory):
         (TCMalloc_PageMap3::visitValues):
         (TCMalloc_PageMap3::visitAllocations):
-        * wtf/TCSpinLock.h: Renamed from Source/JavaScriptCore/wtf/TCSpinLock.h.
+        * wtf/TCSpinLock.h: Renamed from Source/CyberScriptCore/wtf/TCSpinLock.h.
         (TCMalloc_SpinLock):
         (TCMalloc_SpinLock::Lock):
         (TCMalloc_SpinLock::Unlock):
@@ -22110,7 +22110,7 @@
         (TCMalloc_SpinLockHolder):
         (TCMalloc_SpinLockHolder::TCMalloc_SpinLockHolder):
         (TCMalloc_SpinLockHolder::~TCMalloc_SpinLockHolder):
-        * wtf/TCSystemAlloc.cpp: Renamed from Source/JavaScriptCore/wtf/TCSystemAlloc.cpp.
+        * wtf/TCSystemAlloc.cpp: Renamed from Source/CyberScriptCore/wtf/TCSystemAlloc.cpp.
         (TrySbrk):
         (TryMmap):
         (TryVirtualAlloc):
@@ -22118,30 +22118,30 @@
         (TCMalloc_SystemAlloc):
         (TCMalloc_SystemRelease):
         (TCMalloc_SystemCommit):
-        * wtf/TCSystemAlloc.h: Renamed from Source/JavaScriptCore/wtf/TCSystemAlloc.h.
+        * wtf/TCSystemAlloc.h: Renamed from Source/CyberScriptCore/wtf/TCSystemAlloc.h.
         (TCMalloc_SystemRelease):
         (TCMalloc_SystemCommit):
-        * wtf/TemporaryChange.h: Renamed from Source/JavaScriptCore/wtf/TemporaryChange.h.
+        * wtf/TemporaryChange.h: Renamed from Source/CyberScriptCore/wtf/TemporaryChange.h.
         (WTF):
         (TemporaryChange):
         (WTF::TemporaryChange::TemporaryChange):
         (WTF::TemporaryChange::~TemporaryChange):
-        * wtf/ThreadFunctionInvocation.h: Renamed from Source/JavaScriptCore/wtf/ThreadFunctionInvocation.h.
+        * wtf/ThreadFunctionInvocation.h: Renamed from Source/CyberScriptCore/wtf/ThreadFunctionInvocation.h.
         (WTF):
         (WTF::ThreadFunctionInvocation::ThreadFunctionInvocation):
         (ThreadFunctionInvocation):
-        * wtf/ThreadIdentifierDataPthreads.cpp: Renamed from Source/JavaScriptCore/wtf/ThreadIdentifierDataPthreads.cpp.
+        * wtf/ThreadIdentifierDataPthreads.cpp: Renamed from Source/CyberScriptCore/wtf/ThreadIdentifierDataPthreads.cpp.
         (WTF):
         (WTF::ThreadIdentifierData::~ThreadIdentifierData):
         (WTF::ThreadIdentifierData::initializeOnce):
         (WTF::ThreadIdentifierData::identifier):
         (WTF::ThreadIdentifierData::initialize):
         (WTF::ThreadIdentifierData::destruct):
-        * wtf/ThreadIdentifierDataPthreads.h: Renamed from Source/JavaScriptCore/wtf/ThreadIdentifierDataPthreads.h.
+        * wtf/ThreadIdentifierDataPthreads.h: Renamed from Source/CyberScriptCore/wtf/ThreadIdentifierDataPthreads.h.
         (WTF):
         (ThreadIdentifierData):
         (WTF::ThreadIdentifierData::ThreadIdentifierData):
-        * wtf/ThreadRestrictionVerifier.h: Renamed from Source/JavaScriptCore/wtf/ThreadRestrictionVerifier.h.
+        * wtf/ThreadRestrictionVerifier.h: Renamed from Source/CyberScriptCore/wtf/ThreadRestrictionVerifier.h.
         (WTF):
         (ThreadRestrictionVerifier):
         (WTF::ThreadRestrictionVerifier::ThreadRestrictionVerifier):
@@ -22151,7 +22151,7 @@
         (WTF::ThreadRestrictionVerifier::turnOffVerification):
         (WTF::ThreadRestrictionVerifier::setShared):
         (WTF::ThreadRestrictionVerifier::isSafeToUse):
-        * wtf/ThreadSafeRefCounted.h: Renamed from Source/JavaScriptCore/wtf/ThreadSafeRefCounted.h.
+        * wtf/ThreadSafeRefCounted.h: Renamed from Source/CyberScriptCore/wtf/ThreadSafeRefCounted.h.
         (WTF):
         (ThreadSafeRefCountedBase):
         (WTF::ThreadSafeRefCountedBase::ThreadSafeRefCountedBase):
@@ -22162,7 +22162,7 @@
         (ThreadSafeRefCounted):
         (WTF::ThreadSafeRefCounted::deref):
         (WTF::ThreadSafeRefCounted::ThreadSafeRefCounted):
-        * wtf/ThreadSpecific.h: Renamed from Source/JavaScriptCore/wtf/ThreadSpecific.h.
+        * wtf/ThreadSpecific.h: Renamed from Source/CyberScriptCore/wtf/ThreadSpecific.h.
         (WTF):
         (ThreadSpecific):
         (Data):
@@ -22175,12 +22175,12 @@
         (WTF::::isSet):
         (WTF::T):
         (WTF::::operator):
-        * wtf/ThreadSpecificWin.cpp: Renamed from Source/JavaScriptCore/wtf/ThreadSpecificWin.cpp.
+        * wtf/ThreadSpecificWin.cpp: Renamed from Source/CyberScriptCore/wtf/ThreadSpecificWin.cpp.
         (WTF):
         (WTF::tlsKeyCount):
         (WTF::tlsKeys):
         (WTF::ThreadSpecificThreadExit):
-        * wtf/Threading.cpp: Renamed from Source/JavaScriptCore/wtf/Threading.cpp.
+        * wtf/Threading.cpp: Renamed from Source/CyberScriptCore/wtf/Threading.cpp.
         (WTF):
         (NewThreadContext):
         (WTF::NewThreadContext::NewThreadContext):
@@ -22190,10 +22190,10 @@
         (ThreadFunctionWithReturnValueInvocation):
         (WTF::compatEntryPoint):
         (WTF::waitForThreadCompletion):
-        * wtf/Threading.h: Renamed from Source/JavaScriptCore/wtf/Threading.h.
+        * wtf/Threading.h: Renamed from Source/CyberScriptCore/wtf/Threading.h.
         (WTF):
-        * wtf/ThreadingNone.cpp: Renamed from Source/JavaScriptCore/wtf/ThreadingNone.cpp.
-        * wtf/ThreadingPrimitives.h: Renamed from Source/JavaScriptCore/wtf/ThreadingPrimitives.h.
+        * wtf/ThreadingNone.cpp: Renamed from Source/CyberScriptCore/wtf/ThreadingNone.cpp.
+        * wtf/ThreadingPrimitives.h: Renamed from Source/CyberScriptCore/wtf/ThreadingPrimitives.h.
         (WTF):
         (PlatformMutex):
         (PlatformCondition):
@@ -22201,7 +22201,7 @@
         (WTF::Mutex::impl):
         (ReadWriteLock):
         (ThreadCondition):
-        * wtf/ThreadingPthreads.cpp: Renamed from Source/JavaScriptCore/wtf/ThreadingPthreads.cpp.
+        * wtf/ThreadingPthreads.cpp: Renamed from Source/CyberScriptCore/wtf/ThreadingPthreads.cpp.
         (WTF):
         (WTF::threadMapMutex):
         (WTF::initializeThreading):
@@ -22237,7 +22237,7 @@
         (WTF::ThreadCondition::timedWait):
         (WTF::ThreadCondition::signal):
         (WTF::ThreadCondition::broadcast):
-        * wtf/ThreadingWin.cpp: Renamed from Source/JavaScriptCore/wtf/ThreadingWin.cpp.
+        * wtf/ThreadingWin.cpp: Renamed from Source/CyberScriptCore/wtf/ThreadingWin.cpp.
         (WTF):
         (tagTHREADNAME_INFO):
         (WTF::initializeCurrentThreadInternal):
@@ -22269,9 +22269,9 @@
         (WTF::ThreadCondition::signal):
         (WTF::ThreadCondition::broadcast):
         (WTF::absoluteTimeToWaitTimeoutInterval):
-        * wtf/TypeTraits.cpp: Renamed from Source/JavaScriptCore/wtf/TypeTraits.cpp.
+        * wtf/TypeTraits.cpp: Renamed from Source/CyberScriptCore/wtf/TypeTraits.cpp.
         (WTF):
-        * wtf/TypeTraits.h: Renamed from Source/JavaScriptCore/wtf/TypeTraits.h.
+        * wtf/TypeTraits.h: Renamed from Source/CyberScriptCore/wtf/TypeTraits.h.
         (WTF):
         (IsConvertibleToInteger):
         (IsArray):
@@ -22288,7 +22288,7 @@
         (RemoveExtent):
         (DecayArray):
         (IntegralConstant):
-        * wtf/TypedArrayBase.h: Renamed from Source/JavaScriptCore/wtf/TypedArrayBase.h.
+        * wtf/TypedArrayBase.h: Renamed from Source/CyberScriptCore/wtf/TypedArrayBase.h.
         (WTF):
         (TypedArrayBase):
         (WTF::TypedArrayBase::data):
@@ -22301,7 +22301,7 @@
         (WTF::TypedArrayBase::create):
         (WTF::TypedArrayBase::subarrayImpl):
         (WTF::TypedArrayBase::neuter):
-        * wtf/Uint16Array.h: Renamed from Source/JavaScriptCore/wtf/Uint16Array.h.
+        * wtf/Uint16Array.h: Renamed from Source/CyberScriptCore/wtf/Uint16Array.h.
         (WTF):
         (Uint16Array):
         (WTF::Uint16Array::set):
@@ -22309,7 +22309,7 @@
         (WTF::Uint16Array::create):
         (WTF::Uint16Array::Uint16Array):
         (WTF::Uint16Array::subarray):
-        * wtf/Uint32Array.h: Renamed from Source/JavaScriptCore/wtf/Uint32Array.h.
+        * wtf/Uint32Array.h: Renamed from Source/CyberScriptCore/wtf/Uint32Array.h.
         (WTF):
         (Uint32Array):
         (WTF::Uint32Array::set):
@@ -22317,7 +22317,7 @@
         (WTF::Uint32Array::create):
         (WTF::Uint32Array::Uint32Array):
         (WTF::Uint32Array::subarray):
-        * wtf/Uint8Array.h: Renamed from Source/JavaScriptCore/wtf/Uint8Array.h.
+        * wtf/Uint8Array.h: Renamed from Source/CyberScriptCore/wtf/Uint8Array.h.
         (WTF):
         (Uint8Array):
         (WTF::Uint8Array::set):
@@ -22325,7 +22325,7 @@
         (WTF::Uint8Array::create):
         (WTF::Uint8Array::Uint8Array):
         (WTF::Uint8Array::subarray):
-        * wtf/Uint8ClampedArray.h: Renamed from Source/JavaScriptCore/wtf/Uint8ClampedArray.h.
+        * wtf/Uint8ClampedArray.h: Renamed from Source/CyberScriptCore/wtf/Uint8ClampedArray.h.
         (WTF):
         (Uint8ClampedArray):
         (WTF::Uint8ClampedArray::set):
@@ -22333,20 +22333,20 @@
         (WTF::Uint8ClampedArray::create):
         (WTF::Uint8ClampedArray::Uint8ClampedArray):
         (WTF::Uint8ClampedArray::subarray):
-        * wtf/UnionFind.h: Renamed from Source/JavaScriptCore/wtf/UnionFind.h.
+        * wtf/UnionFind.h: Renamed from Source/CyberScriptCore/wtf/UnionFind.h.
         (WTF):
         (UnionFind):
         (WTF::UnionFind::UnionFind):
         (WTF::UnionFind::find):
         (WTF::UnionFind::unify):
-        * wtf/UnusedParam.h: Renamed from Source/JavaScriptCore/wtf/UnusedParam.h.
+        * wtf/UnusedParam.h: Renamed from Source/CyberScriptCore/wtf/UnusedParam.h.
         (unusedParam):
-        * wtf/VMTags.h: Renamed from Source/JavaScriptCore/wtf/VMTags.h.
-        * wtf/ValueCheck.h: Renamed from Source/JavaScriptCore/wtf/ValueCheck.h.
+        * wtf/VMTags.h: Renamed from Source/CyberScriptCore/wtf/VMTags.h.
+        * wtf/ValueCheck.h: Renamed from Source/CyberScriptCore/wtf/ValueCheck.h.
         (WTF):
         (ValueCheck):
         (WTF::ValueCheck::checkConsistency):
-        * wtf/Vector.h: Renamed from Source/JavaScriptCore/wtf/Vector.h.
+        * wtf/Vector.h: Renamed from Source/CyberScriptCore/wtf/Vector.h.
         (WTF):
         (WTF::VectorTypeOperations::destruct):
         (VectorTypeOperations):
@@ -22434,17 +22434,17 @@
         (WTF::swap):
         (WTF::operator==):
         (WTF::operator!=):
-        * wtf/VectorTraits.h: Renamed from Source/JavaScriptCore/wtf/VectorTraits.h.
+        * wtf/VectorTraits.h: Renamed from Source/CyberScriptCore/wtf/VectorTraits.h.
         (WTF):
         (SimpleClassVectorTraits):
-        * wtf/WTFThreadData.cpp: Renamed from Source/JavaScriptCore/wtf/WTFThreadData.cpp.
+        * wtf/WTFThreadData.cpp: Renamed from Source/CyberScriptCore/wtf/WTFThreadData.cpp.
         (WTF):
         (WTF::WTFThreadData::WTFThreadData):
         (WTF::WTFThreadData::~WTFThreadData):
         (JSC):
         (JSC::IdentifierTable::~IdentifierTable):
         (JSC::IdentifierTable::add):
-        * wtf/WTFThreadData.h: Renamed from Source/JavaScriptCore/wtf/WTFThreadData.h.
+        * wtf/WTFThreadData.h: Renamed from Source/CyberScriptCore/wtf/WTFThreadData.h.
         (JSC):
         (IdentifierTable):
         (JSC::IdentifierTable::remove):
@@ -22457,21 +22457,21 @@
         (WTF::WTFThreadData::resetCurrentIdentifierTable):
         (WTF::WTFThreadData::stack):
         (WTF::wtfThreadData):
-        * wtf/blackberry/MainThreadBlackBerry.cpp: Renamed from Source/JavaScriptCore/wtf/blackberry/MainThreadBlackBerry.cpp.
+        * wtf/blackberry/MainThreadBlackBerry.cpp: Renamed from Source/CyberScriptCore/wtf/blackberry/MainThreadBlackBerry.cpp.
         (WTF):
         (WTF::initializeMainThreadPlatform):
         (WTF::scheduleDispatchFunctionsOnMainThread):
-        * wtf/chromium/ChromiumThreading.h: Renamed from Source/JavaScriptCore/wtf/chromium/ChromiumThreading.h.
+        * wtf/chromium/ChromiumThreading.h: Renamed from Source/CyberScriptCore/wtf/chromium/ChromiumThreading.h.
         (WTF):
         (ChromiumThreading):
-        * wtf/chromium/MainThreadChromium.cpp: Renamed from Source/JavaScriptCore/wtf/chromium/MainThreadChromium.cpp.
+        * wtf/chromium/MainThreadChromium.cpp: Renamed from Source/CyberScriptCore/wtf/chromium/MainThreadChromium.cpp.
         (WTF):
         (WTF::initializeMainThread):
         (WTF::callOnMainThread):
         (WTF::callOnMainThreadAndWait):
         (WTF::setMainThreadCallbacksPaused):
         (WTF::isMainThread):
-        * wtf/dtoa.cpp: Renamed from Source/JavaScriptCore/wtf/dtoa.cpp.
+        * wtf/dtoa.cpp: Renamed from Source/CyberScriptCore/wtf/dtoa.cpp.
         (WTF):
         (WTF::storeInc):
         (WTF::BigInt::BigInt):
@@ -22496,17 +22496,17 @@
         (WTF::strtod):
         (WTF::quorem):
         (WTF::dtoa):
-        * wtf/dtoa.h: Renamed from Source/JavaScriptCore/wtf/dtoa.h.
+        * wtf/dtoa.h: Renamed from Source/CyberScriptCore/wtf/dtoa.h.
         (WTF):
-        * wtf/dtoa/COPYING: Renamed from Source/JavaScriptCore/wtf/dtoa/COPYING.
-        * wtf/dtoa/LICENSE: Renamed from Source/JavaScriptCore/wtf/dtoa/LICENSE.
-        * wtf/dtoa/README: Renamed from Source/JavaScriptCore/wtf/dtoa/README.
-        * wtf/dtoa/bignum-dtoa.cc: Renamed from Source/JavaScriptCore/wtf/dtoa/bignum-dtoa.cc.
-        * wtf/dtoa/bignum-dtoa.h: Renamed from Source/JavaScriptCore/wtf/dtoa/bignum-dtoa.h.
+        * wtf/dtoa/COPYING: Renamed from Source/CyberScriptCore/wtf/dtoa/COPYING.
+        * wtf/dtoa/LICENSE: Renamed from Source/CyberScriptCore/wtf/dtoa/LICENSE.
+        * wtf/dtoa/README: Renamed from Source/CyberScriptCore/wtf/dtoa/README.
+        * wtf/dtoa/bignum-dtoa.cc: Renamed from Source/CyberScriptCore/wtf/dtoa/bignum-dtoa.cc.
+        * wtf/dtoa/bignum-dtoa.h: Renamed from Source/CyberScriptCore/wtf/dtoa/bignum-dtoa.h.
         (WTF):
         (double_conversion):
-        * wtf/dtoa/bignum.cc: Renamed from Source/JavaScriptCore/wtf/dtoa/bignum.cc.
-        * wtf/dtoa/bignum.h: Renamed from Source/JavaScriptCore/wtf/dtoa/bignum.h.
+        * wtf/dtoa/bignum.cc: Renamed from Source/CyberScriptCore/wtf/dtoa/bignum.cc.
+        * wtf/dtoa/bignum.h: Renamed from Source/CyberScriptCore/wtf/dtoa/bignum.h.
         (WTF):
         (double_conversion):
         (Bignum):
@@ -22519,13 +22519,13 @@
         (WTF::double_conversion::Bignum::PlusLess):
         (WTF::double_conversion::Bignum::EnsureCapacity):
         (WTF::double_conversion::Bignum::BigitLength):
-        * wtf/dtoa/cached-powers.cc: Renamed from Source/JavaScriptCore/wtf/dtoa/cached-powers.cc.
-        * wtf/dtoa/cached-powers.h: Renamed from Source/JavaScriptCore/wtf/dtoa/cached-powers.h.
+        * wtf/dtoa/cached-powers.cc: Renamed from Source/CyberScriptCore/wtf/dtoa/cached-powers.cc.
+        * wtf/dtoa/cached-powers.h: Renamed from Source/CyberScriptCore/wtf/dtoa/cached-powers.h.
         (WTF):
         (double_conversion):
         (PowersOfTenCache):
-        * wtf/dtoa/diy-fp.cc: Renamed from Source/JavaScriptCore/wtf/dtoa/diy-fp.cc.
-        * wtf/dtoa/diy-fp.h: Renamed from Source/JavaScriptCore/wtf/dtoa/diy-fp.h.
+        * wtf/dtoa/diy-fp.cc: Renamed from Source/CyberScriptCore/wtf/dtoa/diy-fp.cc.
+        * wtf/dtoa/diy-fp.h: Renamed from Source/CyberScriptCore/wtf/dtoa/diy-fp.h.
         (WTF):
         (double_conversion):
         (DiyFp):
@@ -22538,15 +22538,15 @@
         (WTF::double_conversion::DiyFp::e):
         (WTF::double_conversion::DiyFp::set_f):
         (WTF::double_conversion::DiyFp::set_e):
-        * wtf/dtoa/double-conversion.cc: Renamed from Source/JavaScriptCore/wtf/dtoa/double-conversion.cc.
-        * wtf/dtoa/double-conversion.h: Renamed from Source/JavaScriptCore/wtf/dtoa/double-conversion.h.
+        * wtf/dtoa/double-conversion.cc: Renamed from Source/CyberScriptCore/wtf/dtoa/double-conversion.cc.
+        * wtf/dtoa/double-conversion.h: Renamed from Source/CyberScriptCore/wtf/dtoa/double-conversion.h.
         (WTF):
         (double_conversion):
         (DoubleToStringConverter):
         (WTF::double_conversion::DoubleToStringConverter::DoubleToStringConverter):
         (StringToDoubleConverter):
         (WTF::double_conversion::StringToDoubleConverter::StringToDoubleConverter):
-        * wtf/dtoa/double.h: Renamed from Source/JavaScriptCore/wtf/dtoa/double.h.
+        * wtf/dtoa/double.h: Renamed from Source/CyberScriptCore/wtf/dtoa/double.h.
         (WTF):
         (double_conversion):
         (WTF::double_conversion::double_to_uint64):
@@ -22571,19 +22571,19 @@
         (WTF::double_conversion::Double::Infinity):
         (WTF::double_conversion::Double::NaN):
         (WTF::double_conversion::Double::DiyFpToUint64):
-        * wtf/dtoa/fast-dtoa.cc: Renamed from Source/JavaScriptCore/wtf/dtoa/fast-dtoa.cc.
-        * wtf/dtoa/fast-dtoa.h: Renamed from Source/JavaScriptCore/wtf/dtoa/fast-dtoa.h.
+        * wtf/dtoa/fast-dtoa.cc: Renamed from Source/CyberScriptCore/wtf/dtoa/fast-dtoa.cc.
+        * wtf/dtoa/fast-dtoa.h: Renamed from Source/CyberScriptCore/wtf/dtoa/fast-dtoa.h.
         (WTF):
         (double_conversion):
-        * wtf/dtoa/fixed-dtoa.cc: Renamed from Source/JavaScriptCore/wtf/dtoa/fixed-dtoa.cc.
-        * wtf/dtoa/fixed-dtoa.h: Renamed from Source/JavaScriptCore/wtf/dtoa/fixed-dtoa.h.
+        * wtf/dtoa/fixed-dtoa.cc: Renamed from Source/CyberScriptCore/wtf/dtoa/fixed-dtoa.cc.
+        * wtf/dtoa/fixed-dtoa.h: Renamed from Source/CyberScriptCore/wtf/dtoa/fixed-dtoa.h.
         (WTF):
         (double_conversion):
-        * wtf/dtoa/strtod.cc: Renamed from Source/JavaScriptCore/wtf/dtoa/strtod.cc.
-        * wtf/dtoa/strtod.h: Renamed from Source/JavaScriptCore/wtf/dtoa/strtod.h.
+        * wtf/dtoa/strtod.cc: Renamed from Source/CyberScriptCore/wtf/dtoa/strtod.cc.
+        * wtf/dtoa/strtod.h: Renamed from Source/CyberScriptCore/wtf/dtoa/strtod.h.
         (WTF):
         (double_conversion):
-        * wtf/dtoa/utils.h: Renamed from Source/JavaScriptCore/wtf/dtoa/utils.h.
+        * wtf/dtoa/utils.h: Renamed from Source/CyberScriptCore/wtf/dtoa/utils.h.
         (WTF):
         (double_conversion):
         (WTF::double_conversion::Max):
@@ -22612,16 +22612,16 @@
         (WTF::double_conversion::StringBuilder::Finalize):
         (WTF::double_conversion::StringBuilder::is_finalized):
         (WTF::double_conversion::BitCast):
-        * wtf/efl/MainThreadEfl.cpp: Renamed from Source/JavaScriptCore/wtf/efl/MainThreadEfl.cpp.
+        * wtf/efl/MainThreadEfl.cpp: Renamed from Source/CyberScriptCore/wtf/efl/MainThreadEfl.cpp.
         (WTF):
         (WTF::pipeObject):
         (WTF::monitorDispatchFunctions):
         (WTF::initializeMainThreadPlatform):
         (WTF::scheduleDispatchFunctionsOnMainThread):
-        * wtf/efl/OwnPtrEfl.cpp: Renamed from Source/JavaScriptCore/wtf/efl/OwnPtrEfl.cpp.
+        * wtf/efl/OwnPtrEfl.cpp: Renamed from Source/CyberScriptCore/wtf/efl/OwnPtrEfl.cpp.
         (WTF):
         (WTF::deleteOwnedPtr):
-        * wtf/gobject/GOwnPtr.cpp: Renamed from Source/JavaScriptCore/wtf/gobject/GOwnPtr.cpp.
+        * wtf/gobject/GOwnPtr.cpp: Renamed from Source/CyberScriptCore/wtf/gobject/GOwnPtr.cpp.
         (WTF):
         (WTF::GError):
         (WTF::GList):
@@ -22630,7 +22630,7 @@
         (WTF::GDir):
         (WTF::GTimer):
         (WTF::GKeyFile):
-        * wtf/gobject/GOwnPtr.h: Renamed from Source/JavaScriptCore/wtf/gobject/GOwnPtr.h.
+        * wtf/gobject/GOwnPtr.h: Renamed from Source/CyberScriptCore/wtf/gobject/GOwnPtr.h.
         (WTF):
         (GOwnPtr):
         (WTF::GOwnPtr::GOwnPtr):
@@ -22650,12 +22650,12 @@
         (WTF::operator!=):
         (WTF::getPtr):
         (WTF::freeOwnedGPtr):
-        * wtf/gobject/GRefPtr.cpp: Renamed from Source/JavaScriptCore/wtf/gobject/GRefPtr.cpp.
+        * wtf/gobject/GRefPtr.cpp: Renamed from Source/CyberScriptCore/wtf/gobject/GRefPtr.cpp.
         (WTF):
         (WTF::refGPtr):
         (WTF::derefGPtr):
         (_GVariant):
-        * wtf/gobject/GRefPtr.h: Renamed from Source/JavaScriptCore/wtf/gobject/GRefPtr.h.
+        * wtf/gobject/GRefPtr.h: Renamed from Source/CyberScriptCore/wtf/gobject/GRefPtr.h.
         (WTF):
         (GRefPtr):
         (WTF::GRefPtr::GRefPtr):
@@ -22679,16 +22679,16 @@
         (WTF::adoptGRef):
         (WTF::refGPtr):
         (WTF::derefGPtr):
-        * wtf/gobject/GTypedefs.h: Renamed from Source/JavaScriptCore/wtf/gobject/GTypedefs.h.
-        * wtf/gobject/GlibUtilities.cpp: Renamed from Source/JavaScriptCore/wtf/gobject/GlibUtilities.cpp.
+        * wtf/gobject/GTypedefs.h: Renamed from Source/CyberScriptCore/wtf/gobject/GTypedefs.h.
+        * wtf/gobject/GlibUtilities.cpp: Renamed from Source/CyberScriptCore/wtf/gobject/GlibUtilities.cpp.
         (getCurrentExecutablePath):
-        * wtf/gobject/GlibUtilities.h: Renamed from Source/JavaScriptCore/wtf/gobject/GlibUtilities.h.
-        * wtf/gtk/MainThreadGtk.cpp: Renamed from Source/JavaScriptCore/wtf/gtk/MainThreadGtk.cpp.
+        * wtf/gobject/GlibUtilities.h: Renamed from Source/CyberScriptCore/wtf/gobject/GlibUtilities.h.
+        * wtf/gtk/MainThreadGtk.cpp: Renamed from Source/CyberScriptCore/wtf/gtk/MainThreadGtk.cpp.
         (WTF):
         (WTF::initializeMainThreadPlatform):
         (WTF::timeoutFired):
         (WTF::scheduleDispatchFunctionsOnMainThread):
-        * wtf/mac/MainThreadMac.mm: Renamed from Source/JavaScriptCore/wtf/mac/MainThreadMac.mm.
+        * wtf/mac/MainThreadMac.mm: Renamed from Source/CyberScriptCore/wtf/mac/MainThreadMac.mm.
         (-[JSWTFMainThreadCaller call]):
         (WTF):
         (WTF::initializeMainThreadPlatform):
@@ -22697,32 +22697,32 @@
         (WTF::postTimer):
         (WTF::scheduleDispatchFunctionsOnMainThread):
         (WTF::isMainThread):
-        * wtf/qt/MainThreadQt.cpp: Renamed from Source/JavaScriptCore/wtf/qt/MainThreadQt.cpp.
+        * wtf/qt/MainThreadQt.cpp: Renamed from Source/CyberScriptCore/wtf/qt/MainThreadQt.cpp.
         (WTF):
         (MainThreadInvoker):
         (WTF::MainThreadInvoker::MainThreadInvoker):
         (WTF::MainThreadInvoker::event):
         (WTF::initializeMainThreadPlatform):
         (WTF::scheduleDispatchFunctionsOnMainThread):
-        * wtf/qt/StringQt.cpp: Renamed from Source/JavaScriptCore/wtf/qt/StringQt.cpp.
+        * wtf/qt/StringQt.cpp: Renamed from Source/CyberScriptCore/wtf/qt/StringQt.cpp.
         (WTF):
         (WTF::String::String):
         (WTF::String::operator QString):
         (WTF::operator<<):
         (WTF::operator>>):
-        * wtf/qt/UtilsQt.h: Renamed from Source/JavaScriptCore/wtf/qt/UtilsQt.h.
+        * wtf/qt/UtilsQt.h: Renamed from Source/CyberScriptCore/wtf/qt/UtilsQt.h.
         (escapeHtml):
-        * wtf/qt/compat/QGuiApplication: Renamed from Source/JavaScriptCore/wtf/qt/compat/QGuiApplication.
-        * wtf/qt/compat/qguiapplication.h: Renamed from Source/JavaScriptCore/wtf/qt/compat/qguiapplication.h.
+        * wtf/qt/compat/QGuiApplication: Renamed from Source/CyberScriptCore/wtf/qt/compat/QGuiApplication.
+        * wtf/qt/compat/qguiapplication.h: Renamed from Source/CyberScriptCore/wtf/qt/compat/qguiapplication.h.
         (QGuiApplication):
         (QGuiApplication::styleHints):
-        * wtf/text/ASCIIFastPath.h: Renamed from Source/JavaScriptCore/wtf/text/ASCIIFastPath.h.
+        * wtf/text/ASCIIFastPath.h: Renamed from Source/CyberScriptCore/wtf/text/ASCIIFastPath.h.
         (WTF):
         (WTF::isAlignedToMachineWord):
         (WTF::alignToMachineWord):
         (WTF::isAllASCII):
         (WTF::charactersAreAllASCII):
-        * wtf/text/AtomicString.cpp: Renamed from Source/JavaScriptCore/wtf/text/AtomicString.cpp.
+        * wtf/text/AtomicString.cpp: Renamed from Source/CyberScriptCore/wtf/text/AtomicString.cpp.
         (WTF):
         (AtomicStringTable):
         (WTF::AtomicStringTable::create):
@@ -22761,7 +22761,7 @@
         (WTF::AtomicString::lower):
         (WTF::AtomicString::fromUTF8Internal):
         (WTF::AtomicString::show):
-        * wtf/text/AtomicString.h: Renamed from Source/JavaScriptCore/wtf/text/AtomicString.h.
+        * wtf/text/AtomicString.h: Renamed from Source/CyberScriptCore/wtf/text/AtomicString.h.
         (WTF):
         (AtomicString):
         (WTF::AtomicString::AtomicString):
@@ -22791,16 +22791,16 @@
         (WTF::operator!=):
         (WTF::equalIgnoringCase):
         (WTF::AtomicString::fromUTF8):
-        * wtf/text/AtomicStringHash.h: Renamed from Source/JavaScriptCore/wtf/text/AtomicStringHash.h.
+        * wtf/text/AtomicStringHash.h: Renamed from Source/CyberScriptCore/wtf/text/AtomicStringHash.h.
         (WTF):
         (WTF::AtomicStringHash::hash):
         (AtomicStringHash):
         (WTF::AtomicStringHash::equal):
-        * wtf/text/AtomicStringImpl.h: Renamed from Source/JavaScriptCore/wtf/text/AtomicStringImpl.h.
+        * wtf/text/AtomicStringImpl.h: Renamed from Source/CyberScriptCore/wtf/text/AtomicStringImpl.h.
         (WTF):
         (AtomicStringImpl):
         (WTF::AtomicStringImpl::AtomicStringImpl):
-        * wtf/text/CString.cpp: Renamed from Source/JavaScriptCore/wtf/text/CString.cpp.
+        * wtf/text/CString.cpp: Renamed from Source/CyberScriptCore/wtf/text/CString.cpp.
         (WTF):
         (WTF::CString::CString):
         (WTF::CString::init):
@@ -22808,7 +22808,7 @@
         (WTF::CString::newUninitialized):
         (WTF::CString::copyBufferIfNeeded):
         (WTF::operator==):
-        * wtf/text/CString.h: Renamed from Source/JavaScriptCore/wtf/text/CString.h.
+        * wtf/text/CString.h: Renamed from Source/CyberScriptCore/wtf/text/CString.h.
         (WTF):
         (CStringBuffer):
         (WTF::CStringBuffer::data):
@@ -22823,7 +22823,7 @@
         (WTF::CString::isNull):
         (WTF::CString::buffer):
         (WTF::operator!=):
-        * wtf/text/StringBuffer.h: Renamed from Source/JavaScriptCore/wtf/text/StringBuffer.h.
+        * wtf/text/StringBuffer.h: Renamed from Source/CyberScriptCore/wtf/text/StringBuffer.h.
         (WTF):
         (StringBuffer):
         (WTF::StringBuffer::StringBuffer):
@@ -22834,7 +22834,7 @@
         (WTF::StringBuffer::characters):
         (WTF::StringBuffer::operator[]):
         (WTF::StringBuffer::release):
-        * wtf/text/StringBuilder.cpp: Renamed from Source/JavaScriptCore/wtf/text/StringBuilder.cpp.
+        * wtf/text/StringBuilder.cpp: Renamed from Source/CyberScriptCore/wtf/text/StringBuilder.cpp.
         (WTF):
         (WTF::StringBuilder::reifyString):
         (WTF::StringBuilder::resize):
@@ -22848,7 +22848,7 @@
         (WTF::StringBuilder::append):
         (WTF::StringBuilder::canShrink):
         (WTF::StringBuilder::shrinkToFit):
-        * wtf/text/StringBuilder.h: Renamed from Source/JavaScriptCore/wtf/text/StringBuilder.h.
+        * wtf/text/StringBuilder.h: Renamed from Source/CyberScriptCore/wtf/text/StringBuilder.h.
         (WTF):
         (StringBuilder):
         (WTF::StringBuilder::StringBuilder):
@@ -22871,12 +22871,12 @@
         (WTF::equal):
         (WTF::operator==):
         (WTF::operator!=):
-        * wtf/text/StringConcatenate.h: Renamed from Source/JavaScriptCore/wtf/text/StringConcatenate.h.
+        * wtf/text/StringConcatenate.h: Renamed from Source/CyberScriptCore/wtf/text/StringConcatenate.h.
         (WTF):
         (WTF::sumWithOverflow):
         (WTF::tryMakeString):
         (WTF::makeString):
-        * wtf/text/StringHash.h: Renamed from Source/JavaScriptCore/wtf/text/StringHash.h.
+        * wtf/text/StringHash.h: Renamed from Source/CyberScriptCore/wtf/text/StringHash.h.
         (WTF):
         (WTF::StringHash::hash):
         (WTF::StringHash::equal):
@@ -22888,7 +22888,7 @@
         (WTF::AlreadyHashed::hash):
         (AlreadyHashed):
         (WTF::AlreadyHashed::avoidDeletedValue):
-        * wtf/text/StringImpl.cpp: Renamed from Source/JavaScriptCore/wtf/text/StringImpl.cpp.
+        * wtf/text/StringImpl.cpp: Renamed from Source/CyberScriptCore/wtf/text/StringImpl.cpp.
         (WTF):
         (WTF::StringImpl::~StringImpl):
         (WTF::StringImpl::createUninitialized):
@@ -22939,7 +22939,7 @@
         (WTF::StringImpl::defaultWritingDirection):
         (WTF::StringImpl::adopt):
         (WTF::StringImpl::createWithTerminatingNullCharacter):
-        * wtf/text/StringImpl.h: Renamed from Source/JavaScriptCore/wtf/text/StringImpl.h.
+        * wtf/text/StringImpl.h: Renamed from Source/CyberScriptCore/wtf/text/StringImpl.h.
         (JSC):
         (WTF):
         (StringImpl):
@@ -22989,7 +22989,7 @@
         (WTF::codePointCompare8To16):
         (WTF::isSpaceOrNewline):
         (WTF::StringImpl::isolatedCopy):
-        * wtf/text/StringOperators.h: Renamed from Source/JavaScriptCore/wtf/text/StringOperators.h.
+        * wtf/text/StringOperators.h: Renamed from Source/CyberScriptCore/wtf/text/StringOperators.h.
         (WTF):
         (StringAppend):
         (WTF::StringAppend::StringAppend):
@@ -22999,12 +22999,12 @@
         (WTF::StringAppend::writeTo):
         (WTF::StringAppend::length):
         (WTF::operator+):
-        * wtf/text/StringStatics.cpp: Renamed from Source/JavaScriptCore/wtf/text/StringStatics.cpp.
+        * wtf/text/StringStatics.cpp: Renamed from Source/CyberScriptCore/wtf/text/StringStatics.cpp.
         (WTF):
         (WTF::StringImpl::empty):
         (WTF::StringImpl::hashSlowCase):
         (WTF::AtomicString::init):
-        * wtf/text/TextPosition.h: Renamed from Source/JavaScriptCore/wtf/text/TextPosition.h.
+        * wtf/text/TextPosition.h: Renamed from Source/CyberScriptCore/wtf/text/TextPosition.h.
         (WTF):
         (OrdinalNumber):
         (WTF::OrdinalNumber::fromZeroBasedInt):
@@ -23022,7 +23022,7 @@
         (WTF::TextPosition::operator!=):
         (WTF::TextPosition::minimumPosition):
         (WTF::TextPosition::belowRangePosition):
-        * wtf/text/WTFString.cpp: Renamed from Source/JavaScriptCore/wtf/text/WTFString.cpp.
+        * wtf/text/WTFString.cpp: Renamed from Source/CyberScriptCore/wtf/text/WTFString.cpp.
         (WTF):
         (WTF::String::String):
         (WTF::String::append):
@@ -23084,8 +23084,8 @@
         (String::show):
         (string):
         (asciiDebug):
-        * wtf/text/WTFString.h: Renamed from Source/JavaScriptCore/wtf/text/WTFString.h.
-        (WebKit):
+        * wtf/text/WTFString.h: Renamed from Source/CyberScriptCore/wtf/text/WTFString.h.
+        (CyberKit):
         (WTF):
         (String):
         (WTF::String::String):
@@ -23142,36 +23142,36 @@
         (WTF::appendNumber):
         (WTF::isAllSpecialCharacters):
         (WTF::String::isAllSpecialCharacters):
-        * wtf/threads/BinarySemaphore.cpp: Renamed from Source/JavaScriptCore/wtf/threads/BinarySemaphore.cpp.
+        * wtf/threads/BinarySemaphore.cpp: Renamed from Source/CyberScriptCore/wtf/threads/BinarySemaphore.cpp.
         (WTF):
         (WTF::BinarySemaphore::BinarySemaphore):
         (WTF::BinarySemaphore::~BinarySemaphore):
         (WTF::BinarySemaphore::signal):
         (WTF::BinarySemaphore::wait):
-        * wtf/threads/BinarySemaphore.h: Renamed from Source/JavaScriptCore/wtf/threads/BinarySemaphore.h.
+        * wtf/threads/BinarySemaphore.h: Renamed from Source/CyberScriptCore/wtf/threads/BinarySemaphore.h.
         (WTF):
         (BinarySemaphore):
         (WTF::BinarySemaphore::event):
-        * wtf/threads/win/BinarySemaphoreWin.cpp: Renamed from Source/JavaScriptCore/wtf/threads/win/BinarySemaphoreWin.cpp.
+        * wtf/threads/win/BinarySemaphoreWin.cpp: Renamed from Source/CyberScriptCore/wtf/threads/win/BinarySemaphoreWin.cpp.
         (WTF):
         (WTF::BinarySemaphore::BinarySemaphore):
         (WTF::BinarySemaphore::~BinarySemaphore):
         (WTF::BinarySemaphore::signal):
         (WTF::BinarySemaphore::wait):
-        * wtf/unicode/CharacterNames.h: Renamed from Source/JavaScriptCore/wtf/unicode/CharacterNames.h.
+        * wtf/unicode/CharacterNames.h: Renamed from Source/CyberScriptCore/wtf/unicode/CharacterNames.h.
         (Unicode):
-        * wtf/unicode/Collator.h: Renamed from Source/JavaScriptCore/wtf/unicode/Collator.h.
+        * wtf/unicode/Collator.h: Renamed from Source/CyberScriptCore/wtf/unicode/Collator.h.
         (WTF):
         (Collator):
-        * wtf/unicode/CollatorDefault.cpp: Renamed from Source/JavaScriptCore/wtf/unicode/CollatorDefault.cpp.
+        * wtf/unicode/CollatorDefault.cpp: Renamed from Source/CyberScriptCore/wtf/unicode/CollatorDefault.cpp.
         (WTF):
         (WTF::Collator::Collator):
         (WTF::Collator::~Collator):
         (WTF::Collator::setOrderLowerFirst):
         (WTF::Collator::userDefault):
         (WTF::Collator::collate):
-        * wtf/unicode/ScriptCodesFromICU.h: Renamed from Source/JavaScriptCore/wtf/unicode/ScriptCodesFromICU.h.
-        * wtf/unicode/UTF8.cpp: Renamed from Source/JavaScriptCore/wtf/unicode/UTF8.cpp.
+        * wtf/unicode/ScriptCodesFromICU.h: Renamed from Source/CyberScriptCore/wtf/unicode/ScriptCodesFromICU.h.
+        * wtf/unicode/UTF8.cpp: Renamed from Source/CyberScriptCore/wtf/unicode/UTF8.cpp.
         (Unicode):
         (WTF::Unicode::inlineUTF8SequenceLengthNonASCII):
         (WTF::Unicode::inlineUTF8SequenceLength):
@@ -23184,11 +23184,11 @@
         (WTF::Unicode::convertUTF8ToUTF16):
         (WTF::Unicode::calculateStringHashAndLengthFromUTF8):
         (WTF::Unicode::equalUTF16WithUTF8):
-        * wtf/unicode/UTF8.h: Renamed from Source/JavaScriptCore/wtf/unicode/UTF8.h.
+        * wtf/unicode/UTF8.h: Renamed from Source/CyberScriptCore/wtf/unicode/UTF8.h.
         (Unicode):
-        * wtf/unicode/Unicode.h: Renamed from Source/JavaScriptCore/wtf/unicode/Unicode.h.
-        * wtf/unicode/UnicodeMacrosFromICU.h: Renamed from Source/JavaScriptCore/wtf/unicode/UnicodeMacrosFromICU.h.
-        * wtf/unicode/glib/UnicodeGLib.cpp: Renamed from Source/JavaScriptCore/wtf/unicode/glib/UnicodeGLib.cpp.
+        * wtf/unicode/Unicode.h: Renamed from Source/CyberScriptCore/wtf/unicode/Unicode.h.
+        * wtf/unicode/UnicodeMacrosFromICU.h: Renamed from Source/CyberScriptCore/wtf/unicode/UnicodeMacrosFromICU.h.
+        * wtf/unicode/glib/UnicodeGLib.cpp: Renamed from Source/CyberScriptCore/wtf/unicode/glib/UnicodeGLib.cpp.
         (Unicode):
         (WTF::Unicode::foldCase):
         (WTF::Unicode::getUTF16LengthFromUTF8):
@@ -23197,7 +23197,7 @@
         (WTF::Unicode::toUpper):
         (WTF::Unicode::direction):
         (WTF::Unicode::umemcasecmp):
-        * wtf/unicode/glib/UnicodeGLib.h: Renamed from Source/JavaScriptCore/wtf/unicode/glib/UnicodeGLib.h.
+        * wtf/unicode/glib/UnicodeGLib.h: Renamed from Source/CyberScriptCore/wtf/unicode/glib/UnicodeGLib.h.
         (Unicode):
         (WTF::Unicode::toLower):
         (WTF::Unicode::toUpper):
@@ -23217,7 +23217,7 @@
         (WTF::Unicode::digitValue):
         (WTF::Unicode::combiningClass):
         (WTF::Unicode::decompositionType):
-        * wtf/unicode/icu/CollatorICU.cpp: Renamed from Source/JavaScriptCore/wtf/unicode/icu/CollatorICU.cpp.
+        * wtf/unicode/icu/CollatorICU.cpp: Renamed from Source/CyberScriptCore/wtf/unicode/icu/CollatorICU.cpp.
         (WTF):
         (WTF::cachedCollatorMutex):
         (WTF::Collator::Collator):
@@ -23227,7 +23227,7 @@
         (WTF::Collator::collate):
         (WTF::Collator::createCollator):
         (WTF::Collator::releaseCollator):
-        * wtf/unicode/icu/UnicodeIcu.h: Renamed from Source/JavaScriptCore/wtf/unicode/icu/UnicodeIcu.h.
+        * wtf/unicode/icu/UnicodeIcu.h: Renamed from Source/CyberScriptCore/wtf/unicode/icu/UnicodeIcu.h.
         (Unicode):
         (WTF::Unicode::foldCase):
         (WTF::Unicode::toLower):
@@ -23247,7 +23247,7 @@
         (WTF::Unicode::combiningClass):
         (WTF::Unicode::decompositionType):
         (WTF::Unicode::umemcasecmp):
-        * wtf/unicode/qt4/UnicodeQt4.h: Renamed from Source/JavaScriptCore/wtf/unicode/qt4/UnicodeQt4.h.
+        * wtf/unicode/qt4/UnicodeQt4.h: Renamed from Source/CyberScriptCore/wtf/unicode/qt4/UnicodeQt4.h.
         (Properties):
         (QUnicodeTables):
         (Unicode):
@@ -23267,7 +23267,7 @@
         (WTF::Unicode::umemcasecmp):
         (WTF::Unicode::direction):
         (WTF::Unicode::category):
-        * wtf/unicode/wince/UnicodeWinCE.cpp: Renamed from Source/JavaScriptCore/wtf/unicode/wince/UnicodeWinCE.cpp.
+        * wtf/unicode/wince/UnicodeWinCE.cpp: Renamed from Source/CyberScriptCore/wtf/unicode/wince/UnicodeWinCE.cpp.
         (Unicode):
         (WTF::Unicode::toLower):
         (WTF::Unicode::toUpper):
@@ -23287,7 +23287,7 @@
         (WTF::Unicode::combiningClass):
         (WTF::Unicode::mirroredChar):
         (WTF::Unicode::digitValue):
-        * wtf/unicode/wince/UnicodeWinCE.h: Renamed from Source/JavaScriptCore/wtf/unicode/wince/UnicodeWinCE.h.
+        * wtf/unicode/wince/UnicodeWinCE.h: Renamed from Source/CyberScriptCore/wtf/unicode/wince/UnicodeWinCE.h.
         (Unicode):
         (WTF::Unicode::isSeparatorSpace):
         (WTF::Unicode::isHighSurrogate):
@@ -23296,7 +23296,7 @@
         (WTF::Unicode::hasLineBreakingPropertyComplexContext):
         (WTF::Unicode::umemcasecmp):
         (WTF::Unicode::surrogateToUcs4):
-        * wtf/url/api/ParsedURL.cpp: Renamed from Source/JavaScriptCore/wtf/url/api/ParsedURL.cpp.
+        * wtf/url/api/ParsedURL.cpp: Renamed from Source/CyberScriptCore/wtf/url/api/ParsedURL.cpp.
         (WTF):
         (WTF::ParsedURL::ParsedURL):
         (WTF::ParsedURL::isolatedCopy):
@@ -23310,24 +23310,24 @@
         (WTF::ParsedURL::fragment):
         (WTF::ParsedURL::baseAsString):
         (WTF::ParsedURL::segment):
-        * wtf/url/api/ParsedURL.h: Renamed from Source/JavaScriptCore/wtf/url/api/ParsedURL.h.
+        * wtf/url/api/ParsedURL.h: Renamed from Source/CyberScriptCore/wtf/url/api/ParsedURL.h.
         (WTF):
         (ParsedURL):
         (WTF::ParsedURL::ParsedURL):
         (WTF::ParsedURL::isValid):
         (WTF::ParsedURL::spec):
-        * wtf/url/api/URLString.h: Renamed from Source/JavaScriptCore/wtf/url/api/URLString.h.
+        * wtf/url/api/URLString.h: Renamed from Source/CyberScriptCore/wtf/url/api/URLString.h.
         (WTF):
         (URLString):
         (WTF::URLString::URLString):
         (WTF::URLString::string):
-        * wtf/url/src/RawURLBuffer.h: Renamed from Source/JavaScriptCore/wtf/url/src/RawURLBuffer.h.
+        * wtf/url/src/RawURLBuffer.h: Renamed from Source/CyberScriptCore/wtf/url/src/RawURLBuffer.h.
         (WTF):
         (RawURLBuffer):
         (WTF::RawURLBuffer::RawURLBuffer):
         (WTF::RawURLBuffer::~RawURLBuffer):
         (WTF::RawURLBuffer::resize):
-        * wtf/url/src/URLBuffer.h: Renamed from Source/JavaScriptCore/wtf/url/src/URLBuffer.h.
+        * wtf/url/src/URLBuffer.h: Renamed from Source/CyberScriptCore/wtf/url/src/URLBuffer.h.
         (WTF):
         (URLBuffer):
         (WTF::URLBuffer::URLBuffer):
@@ -23340,16 +23340,16 @@
         (WTF::URLBuffer::setLength):
         (WTF::URLBuffer::append):
         (WTF::URLBuffer::grow):
-        * wtf/url/src/URLCharacterTypes.cpp: Renamed from Source/JavaScriptCore/wtf/url/src/URLCharacterTypes.cpp.
+        * wtf/url/src/URLCharacterTypes.cpp: Renamed from Source/CyberScriptCore/wtf/url/src/URLCharacterTypes.cpp.
         (WTF):
-        * wtf/url/src/URLCharacterTypes.h: Renamed from Source/JavaScriptCore/wtf/url/src/URLCharacterTypes.h.
+        * wtf/url/src/URLCharacterTypes.h: Renamed from Source/CyberScriptCore/wtf/url/src/URLCharacterTypes.h.
         (WTF):
         (URLCharacterTypes):
         (WTF::URLCharacterTypes::isQueryChar):
         (WTF::URLCharacterTypes::isIPv4Char):
         (WTF::URLCharacterTypes::isHexChar):
         (WTF::URLCharacterTypes::isCharOfType):
-        * wtf/url/src/URLComponent.h: Renamed from Source/JavaScriptCore/wtf/url/src/URLComponent.h.
+        * wtf/url/src/URLComponent.h: Renamed from Source/CyberScriptCore/wtf/url/src/URLComponent.h.
         (WTF):
         (URLComponent):
         (WTF::URLComponent::URLComponent):
@@ -23364,12 +23364,12 @@
         (WTF::URLComponent::length):
         (WTF::URLComponent::setLength):
         (WTF::URLComponent::end):
-        * wtf/url/src/URLEscape.cpp: Renamed from Source/JavaScriptCore/wtf/url/src/URLEscape.cpp.
+        * wtf/url/src/URLEscape.cpp: Renamed from Source/CyberScriptCore/wtf/url/src/URLEscape.cpp.
         (WTF):
-        * wtf/url/src/URLEscape.h: Renamed from Source/JavaScriptCore/wtf/url/src/URLEscape.h.
+        * wtf/url/src/URLEscape.h: Renamed from Source/CyberScriptCore/wtf/url/src/URLEscape.h.
         (WTF):
         (WTF::appendURLEscapedCharacter):
-        * wtf/url/src/URLParser.h: Renamed from Source/JavaScriptCore/wtf/url/src/URLParser.h.
+        * wtf/url/src/URLParser.h: Renamed from Source/CyberScriptCore/wtf/url/src/URLParser.h.
         (WTF):
         (URLParser):
         (WTF::URLParser::isPossibleAuthorityTerminator):
@@ -23391,7 +23391,7 @@
         (WTF::URLParser::nextAuthorityTerminator):
         (WTF::URLParser::parseUserInfo):
         (WTF::URLParser::parseServerInfo):
-        * wtf/url/src/URLQueryCanonicalizer.h: Renamed from Source/JavaScriptCore/wtf/url/src/URLQueryCanonicalizer.h.
+        * wtf/url/src/URLQueryCanonicalizer.h: Renamed from Source/CyberScriptCore/wtf/url/src/URLQueryCanonicalizer.h.
         (WTF):
         (URLQueryCanonicalizer):
         (WTF::URLQueryCanonicalizer::canonicalize):
@@ -23399,23 +23399,23 @@
         (WTF::URLQueryCanonicalizer::isRaw8Bit):
         (WTF::URLQueryCanonicalizer::appendRaw8BitQueryString):
         (WTF::URLQueryCanonicalizer::convertToQueryEncoding):
-        * wtf/url/src/URLSegments.cpp: Renamed from Source/JavaScriptCore/wtf/url/src/URLSegments.cpp.
+        * wtf/url/src/URLSegments.cpp: Renamed from Source/CyberScriptCore/wtf/url/src/URLSegments.cpp.
         (WTF):
         (WTF::URLSegments::length):
         (WTF::URLSegments::charactersBefore):
-        * wtf/url/src/URLSegments.h: Renamed from Source/JavaScriptCore/wtf/url/src/URLSegments.h.
+        * wtf/url/src/URLSegments.h: Renamed from Source/CyberScriptCore/wtf/url/src/URLSegments.h.
         (WTF):
         (URLSegments):
         (WTF::URLSegments::URLSegments):
-        * wtf/win/MainThreadWin.cpp: Renamed from Source/JavaScriptCore/wtf/win/MainThreadWin.cpp.
+        * wtf/win/MainThreadWin.cpp: Renamed from Source/CyberScriptCore/wtf/win/MainThreadWin.cpp.
         (WTF):
         (WTF::ThreadingWindowWndProc):
         (WTF::initializeMainThreadPlatform):
         (WTF::scheduleDispatchFunctionsOnMainThread):
-        * wtf/win/OwnPtrWin.cpp: Renamed from Source/JavaScriptCore/wtf/win/OwnPtrWin.cpp.
+        * wtf/win/OwnPtrWin.cpp: Renamed from Source/CyberScriptCore/wtf/win/OwnPtrWin.cpp.
         (WTF):
         (WTF::deleteOwnedPtr):
-        * wtf/wince/FastMallocWinCE.h: Renamed from Source/JavaScriptCore/wtf/wince/FastMallocWinCE.h.
+        * wtf/wince/FastMallocWinCE.h: Renamed from Source/CyberScriptCore/wtf/wince/FastMallocWinCE.h.
         (operator new):
         (operator delete):
         (operator new[]):
@@ -23428,7 +23428,7 @@
         (WTF::Internal::setFastMallocMatchValidationType):
         (WTF::fastMallocMatchValidateMalloc):
         (WTF::fastMallocMatchValidateFree):
-        * wtf/wince/MemoryManager.cpp: Renamed from Source/JavaScriptCore/wtf/wince/MemoryManager.cpp.
+        * wtf/wince/MemoryManager.cpp: Renamed from Source/CyberScriptCore/wtf/wince/MemoryManager.cpp.
         (WTF):
         (WTF::memoryManager):
         (WTF::MemoryManager::MemoryManager):
@@ -23457,7 +23457,7 @@
         (WTF::tryFastCalloc):
         (WTF::tryFastRealloc):
         (WTF::fastStrDup):
-        * wtf/wince/MemoryManager.h: Renamed from Source/JavaScriptCore/wtf/wince/MemoryManager.h.
+        * wtf/wince/MemoryManager.h: Renamed from Source/CyberScriptCore/wtf/wince/MemoryManager.h.
         (WTF):
         (MemoryManager):
         (WTF::MemoryManager::allocationCanFail):
@@ -23468,21 +23468,21 @@
         (MemoryAllocationCannotFail):
         (WTF::MemoryAllocationCannotFail::MemoryAllocationCannotFail):
         (WTF::MemoryAllocationCannotFail::~MemoryAllocationCannotFail):
-        * wtf/wx/MainThreadWx.cpp: Renamed from Source/JavaScriptCore/wtf/wx/MainThreadWx.cpp.
+        * wtf/wx/MainThreadWx.cpp: Renamed from Source/CyberScriptCore/wtf/wx/MainThreadWx.cpp.
         (wxCallAfter):
         (wxCallAfter::wxCallAfter):
         (wxCallAfter::OnCallback):
         (WTF):
         (WTF::initializeMainThreadPlatform):
         (WTF::scheduleDispatchFunctionsOnMainThread):
-        * wtf/wx/StringWx.cpp: Renamed from Source/JavaScriptCore/wtf/wx/StringWx.cpp.
+        * wtf/wx/StringWx.cpp: Renamed from Source/CyberScriptCore/wtf/wx/StringWx.cpp.
         (WTF):
         (WTF::String::String):
         (WTF::String::operator wxString):
 
 2012-03-22  Hyowon Kim  <hw1008.kim@samsung.com>
 
-        [EFL] Add PageClientEfl to WebCoreSupport.
+        [EFL] Add PageClientEfl to CyberCoreSupport.
         https://bugs.webkit.org/show_bug.cgi?id=80748
 
         Reviewed by Noam Rosenthal.
@@ -23515,17 +23515,17 @@
 2012-03-21  Jessie Berlin  <jberlin@apple.com>
 
         WTF headers should be in $(ConfigurationBuildDir)\include\private\wtf, not
-        $(ConfigurationBuildDir)\include\private\JavaScriptCore\wtf.
+        $(ConfigurationBuildDir)\include\private\CyberScriptCore\wtf.
         https://bugs.webkit.org/show_bug.cgi?id=81739
 
         Reviewed by Dan Bernstein.
 
         * WTF.vcproj/copy-files.cmd:
-        Copy the headers to private/include/wtf instead of private/include/JavaScriptCore/wtf.
+        Copy the headers to private/include/wtf instead of private/include/CyberScriptCore/wtf.
 
 2012-03-20  Eric Seidel  <eric@webkit.org>
 
-        Move wtf/Platform.h from JavaScriptCore to Source/WTF/wtf
+        Move wtf/Platform.h from CyberScriptCore to Source/WTF/wtf
         https://bugs.webkit.org/show_bug.cgi?id=80911
 
         Reviewed by Adam Barth.
@@ -23541,42 +23541,42 @@
         * WTF.xcodeproj/project.pbxproj:
         * config.h: I don't think this change is 100% correct (but seemed to be needed to make qt-wk2 build)
          - This dependency on JSC should be removed regardless (in a later patch).
-        * wtf/Platform.h: Renamed from Source/JavaScriptCore/wtf/Platform.h.
+        * wtf/Platform.h: Renamed from Source/CyberScriptCore/wtf/Platform.h.
 
 2012-03-20  Steve Falkenburg  <sfalken@apple.com>
 
-        Move WTF-related Windows project files out of JavaScriptCore
+        Move WTF-related Windows project files out of CyberScriptCore
         https://bugs.webkit.org/show_bug.cgi?id=80680
         
-        This change only moves the vcproj and related files from JavaScriptCore/JavaScriptCore.vcproj/WTF.
+        This change only moves the vcproj and related files from CyberScriptCore/CyberScriptCore.vcproj/WTF.
         It does not move any source code. This is in preparation for the WTF source move out of
-        JavaScriptCore.
+        CyberScriptCore.
 
         Reviewed by Jessie Berlin.
 
         * WTF.vcproj: Added.
-        * WTF.vcproj/WTF.vcproj: Copied from Source/JavaScriptCore/JavaScriptCore.vcproj/WTF/WTF.vcproj.
-        * WTF.vcproj/WTFCommon.vsprops: Copied from Source/JavaScriptCore/JavaScriptCore.vcproj/WTF/WTFCommon.vsprops.
-        * WTF.vcproj/WTFDebug.vsprops: Copied from Source/JavaScriptCore/JavaScriptCore.vcproj/WTF/WTFDebug.vsprops.
-        * WTF.vcproj/WTFDebugAll.vsprops: Copied from Source/JavaScriptCore/JavaScriptCore.vcproj/WTF/WTFDebugAll.vsprops.
-        * WTF.vcproj/WTFDebugCairoCFLite.vsprops: Copied from Source/JavaScriptCore/JavaScriptCore.vcproj/WTF/WTFDebugCairoCFLite.vsprops.
-        * WTF.vcproj/WTFGenerated.make: Copied from Source/JavaScriptCore/JavaScriptCore.vcproj/WTF/WTFGenerated.make.
-        * WTF.vcproj/WTFGenerated.vcproj: Copied from Source/JavaScriptCore/JavaScriptCore.vcproj/WTF/WTFGenerated.vcproj.
-        * WTF.vcproj/WTFGeneratedCommon.vsprops: Copied from Source/JavaScriptCore/JavaScriptCore.vcproj/WTF/WTFGeneratedCommon.vsprops.
-        * WTF.vcproj/WTFGeneratedDebug.vsprops: Copied from Source/JavaScriptCore/JavaScriptCore.vcproj/WTF/WTFGeneratedDebug.vsprops.
-        * WTF.vcproj/WTFGeneratedDebugAll.vsprops: Copied from Source/JavaScriptCore/JavaScriptCore.vcproj/WTF/WTFGeneratedDebugAll.vsprops.
-        * WTF.vcproj/WTFGeneratedDebugCairoCFLite.vsprops: Copied from Source/JavaScriptCore/JavaScriptCore.vcproj/WTF/WTFGeneratedDebugCairoCFLite.vsprops.
-        * WTF.vcproj/WTFGeneratedProduction.vsprops: Copied from Source/JavaScriptCore/JavaScriptCore.vcproj/WTF/WTFGeneratedProduction.vsprops.
-        * WTF.vcproj/WTFGeneratedRelease.vsprops: Copied from Source/JavaScriptCore/JavaScriptCore.vcproj/WTF/WTFGeneratedRelease.vsprops.
-        * WTF.vcproj/WTFGeneratedReleaseCairoCFLite.vsprops: Copied from Source/JavaScriptCore/JavaScriptCore.vcproj/WTF/WTFGeneratedReleaseCairoCFLite.vsprops.
-        * WTF.vcproj/WTFPostBuild.cmd: Copied from Source/JavaScriptCore/JavaScriptCore.vcproj/WTF/WTFPostBuild.cmd.
-        * WTF.vcproj/WTFPreBuild.cmd: Copied from Source/JavaScriptCore/JavaScriptCore.vcproj/WTF/WTFPreBuild.cmd.
-        * WTF.vcproj/WTFProduction.vsprops: Copied from Source/JavaScriptCore/JavaScriptCore.vcproj/WTF/WTFProduction.vsprops.
-        * WTF.vcproj/WTFRelease.vsprops: Copied from Source/JavaScriptCore/JavaScriptCore.vcproj/WTF/WTFRelease.vsprops.
-        * WTF.vcproj/WTFReleaseCairoCFLite.vsprops: Copied from Source/JavaScriptCore/JavaScriptCore.vcproj/WTF/WTFReleaseCairoCFLite.vsprops.
-        * WTF.vcproj/build-generated-files.sh: Copied from Source/JavaScriptCore/JavaScriptCore.vcproj/WTF/build-generated-files.sh.
-        * WTF.vcproj/copy-files.cmd: Copied from Source/JavaScriptCore/JavaScriptCore.vcproj/WTF/copy-files.cmd.
-        * WTF.vcproj/work-around-vs-dependency-tracking-bugs.py: Copied from Source/JavaScriptCore/JavaScriptCore.vcproj/WTF/work-around-vs-dependency-tracking-bugs.py.
+        * WTF.vcproj/WTF.vcproj: Copied from Source/CyberScriptCore/CyberScriptCore.vcproj/WTF/WTF.vcproj.
+        * WTF.vcproj/WTFCommon.vsprops: Copied from Source/CyberScriptCore/CyberScriptCore.vcproj/WTF/WTFCommon.vsprops.
+        * WTF.vcproj/WTFDebug.vsprops: Copied from Source/CyberScriptCore/CyberScriptCore.vcproj/WTF/WTFDebug.vsprops.
+        * WTF.vcproj/WTFDebugAll.vsprops: Copied from Source/CyberScriptCore/CyberScriptCore.vcproj/WTF/WTFDebugAll.vsprops.
+        * WTF.vcproj/WTFDebugCairoCFLite.vsprops: Copied from Source/CyberScriptCore/CyberScriptCore.vcproj/WTF/WTFDebugCairoCFLite.vsprops.
+        * WTF.vcproj/WTFGenerated.make: Copied from Source/CyberScriptCore/CyberScriptCore.vcproj/WTF/WTFGenerated.make.
+        * WTF.vcproj/WTFGenerated.vcproj: Copied from Source/CyberScriptCore/CyberScriptCore.vcproj/WTF/WTFGenerated.vcproj.
+        * WTF.vcproj/WTFGeneratedCommon.vsprops: Copied from Source/CyberScriptCore/CyberScriptCore.vcproj/WTF/WTFGeneratedCommon.vsprops.
+        * WTF.vcproj/WTFGeneratedDebug.vsprops: Copied from Source/CyberScriptCore/CyberScriptCore.vcproj/WTF/WTFGeneratedDebug.vsprops.
+        * WTF.vcproj/WTFGeneratedDebugAll.vsprops: Copied from Source/CyberScriptCore/CyberScriptCore.vcproj/WTF/WTFGeneratedDebugAll.vsprops.
+        * WTF.vcproj/WTFGeneratedDebugCairoCFLite.vsprops: Copied from Source/CyberScriptCore/CyberScriptCore.vcproj/WTF/WTFGeneratedDebugCairoCFLite.vsprops.
+        * WTF.vcproj/WTFGeneratedProduction.vsprops: Copied from Source/CyberScriptCore/CyberScriptCore.vcproj/WTF/WTFGeneratedProduction.vsprops.
+        * WTF.vcproj/WTFGeneratedRelease.vsprops: Copied from Source/CyberScriptCore/CyberScriptCore.vcproj/WTF/WTFGeneratedRelease.vsprops.
+        * WTF.vcproj/WTFGeneratedReleaseCairoCFLite.vsprops: Copied from Source/CyberScriptCore/CyberScriptCore.vcproj/WTF/WTFGeneratedReleaseCairoCFLite.vsprops.
+        * WTF.vcproj/WTFPostBuild.cmd: Copied from Source/CyberScriptCore/CyberScriptCore.vcproj/WTF/WTFPostBuild.cmd.
+        * WTF.vcproj/WTFPreBuild.cmd: Copied from Source/CyberScriptCore/CyberScriptCore.vcproj/WTF/WTFPreBuild.cmd.
+        * WTF.vcproj/WTFProduction.vsprops: Copied from Source/CyberScriptCore/CyberScriptCore.vcproj/WTF/WTFProduction.vsprops.
+        * WTF.vcproj/WTFRelease.vsprops: Copied from Source/CyberScriptCore/CyberScriptCore.vcproj/WTF/WTFRelease.vsprops.
+        * WTF.vcproj/WTFReleaseCairoCFLite.vsprops: Copied from Source/CyberScriptCore/CyberScriptCore.vcproj/WTF/WTFReleaseCairoCFLite.vsprops.
+        * WTF.vcproj/build-generated-files.sh: Copied from Source/CyberScriptCore/CyberScriptCore.vcproj/WTF/build-generated-files.sh.
+        * WTF.vcproj/copy-files.cmd: Copied from Source/CyberScriptCore/CyberScriptCore.vcproj/WTF/copy-files.cmd.
+        * WTF.vcproj/work-around-vs-dependency-tracking-bugs.py: Copied from Source/CyberScriptCore/CyberScriptCore.vcproj/WTF/work-around-vs-dependency-tracking-bugs.py.
 
 2012-03-20  Peter Beverloo  <peter@chromium.org>
 
@@ -23724,9 +23724,9 @@
 
         With this change the WTF sources are built _here_ but _from_ their old location using a VPATH.
 
-        * WTF.pri: Renamed from Source/JavaScriptCore/wtf/wtf.pri.
-        * WTF.pro: Renamed from Source/JavaScriptCore/wtf/wtf.pro.
-        * config.h: Bring this file in sync with JavaScriptCore/config.h with regards to the inclusion
+        * WTF.pri: Renamed from Source/CyberScriptCore/wtf/wtf.pri.
+        * WTF.pro: Renamed from Source/CyberScriptCore/wtf/wtf.pro.
+        * config.h: Bring this file in sync with CyberScriptCore/config.h with regards to the inclusion
         / definition of the export macros.
 
 2012-01-06  Benjamin Poulain  <bpoulain@apple.com>
@@ -23766,49 +23766,49 @@
 
         This adds an Xcode project that includes only Stub.cpp and Stub.h.
         They’re built in to a library at the appropriate path for each
-        configuration (WebKitBuild/{Debug,Release}/libWTF.a and
+        configuration (CyberKitBuild/{Debug,Release}/libWTF.a and
         /usr/local/lib/libWTF.a) and headers are installed in to the
-        appropriate location (WebKitBuild/{Debug,Release}/usr/local/include/wtf
+        appropriate location (CyberKitBuild/{Debug,Release}/usr/local/include/wtf
         and /usr/local/include/wtf). I tested building WTF in this project and
         everything appears to build except for DateMath.cpp (due to bug 71747).
-        I have not yet done any work on making JavaScriptCore and other
+        I have not yet done any work on making CyberScriptCore and other
         projects use the built products of this new project.
 
         * Configurations: Added.
-        * Configurations/Base.xcconfig: Copied from Source/JavaScriptCore/Configurations/Base.xcconfig.
-        * Configurations/CompilerVersion.xcconfig: Copied from Source/JavaScriptCore/Configurations/CompilerVersion.xcconfig.
-        * Configurations/DebugRelease.xcconfig: Copied from Source/JavaScriptCore/Configurations/DebugRelease.xcconfig.
-        * Configurations/WTF.xcconfig: Copied from Source/WebKit2/Configurations/Shim.xcconfig.
+        * Configurations/Base.xcconfig: Copied from Source/CyberScriptCore/Configurations/Base.xcconfig.
+        * Configurations/CompilerVersion.xcconfig: Copied from Source/CyberScriptCore/Configurations/CompilerVersion.xcconfig.
+        * Configurations/DebugRelease.xcconfig: Copied from Source/CyberScriptCore/Configurations/DebugRelease.xcconfig.
+        * Configurations/WTF.xcconfig: Copied from Source/CyberKit2/Configurations/Shim.xcconfig.
         * WTF.xcodeproj: Added.
         * WTF.xcodeproj/project.pbxproj: Added.
-        * config.h: Copied from Source/JavaScriptCore/config.h.
+        * config.h: Copied from Source/CyberScriptCore/config.h.
         * icu: Added.
-        * icu/LICENSE: Copied from Source/JavaScriptCore/icu/LICENSE.
-        * icu/README: Copied from Source/JavaScriptCore/icu/README.
+        * icu/LICENSE: Copied from Source/CyberScriptCore/icu/LICENSE.
+        * icu/README: Copied from Source/CyberScriptCore/icu/README.
         * icu/unicode: Added.
-        * icu/unicode/parseerr.h: Copied from Source/JavaScriptCore/icu/unicode/parseerr.h.
-        * icu/unicode/platform.h: Copied from Source/JavaScriptCore/icu/unicode/platform.h.
-        * icu/unicode/putil.h: Copied from Source/JavaScriptCore/icu/unicode/putil.h.
-        * icu/unicode/uchar.h: Copied from Source/JavaScriptCore/icu/unicode/uchar.h.
-        * icu/unicode/ucnv.h: Copied from Source/JavaScriptCore/icu/unicode/ucnv.h.
-        * icu/unicode/ucnv_err.h: Copied from Source/JavaScriptCore/icu/unicode/ucnv_err.h.
-        * icu/unicode/ucol.h: Copied from Source/JavaScriptCore/icu/unicode/ucol.h.
-        * icu/unicode/uconfig.h: Copied from Source/JavaScriptCore/icu/unicode/uconfig.h.
-        * icu/unicode/uenum.h: Copied from Source/JavaScriptCore/icu/unicode/uenum.h.
-        * icu/unicode/uiter.h: Copied from Source/JavaScriptCore/icu/unicode/uiter.h.
-        * icu/unicode/uloc.h: Copied from Source/JavaScriptCore/icu/unicode/uloc.h.
-        * icu/unicode/umachine.h: Copied from Source/JavaScriptCore/icu/unicode/umachine.h.
-        * icu/unicode/unorm.h: Copied from Source/JavaScriptCore/icu/unicode/unorm.h.
-        * icu/unicode/urename.h: Copied from Source/JavaScriptCore/icu/unicode/urename.h.
-        * icu/unicode/uscript.h: Copied from Source/JavaScriptCore/icu/unicode/uscript.h.
-        * icu/unicode/uset.h: Copied from Source/JavaScriptCore/icu/unicode/uset.h.
-        * icu/unicode/ustring.h: Copied from Source/JavaScriptCore/icu/unicode/ustring.h.
-        * icu/unicode/utf.h: Copied from Source/JavaScriptCore/icu/unicode/utf.h.
-        * icu/unicode/utf16.h: Copied from Source/JavaScriptCore/icu/unicode/utf16.h.
-        * icu/unicode/utf8.h: Copied from Source/JavaScriptCore/icu/unicode/utf8.h.
-        * icu/unicode/utf_old.h: Copied from Source/JavaScriptCore/icu/unicode/utf_old.h.
-        * icu/unicode/utypes.h: Copied from Source/JavaScriptCore/icu/unicode/utypes.h.
-        * icu/unicode/uversion.h: Copied from Source/JavaScriptCore/icu/unicode/uversion.h.
+        * icu/unicode/parseerr.h: Copied from Source/CyberScriptCore/icu/unicode/parseerr.h.
+        * icu/unicode/platform.h: Copied from Source/CyberScriptCore/icu/unicode/platform.h.
+        * icu/unicode/putil.h: Copied from Source/CyberScriptCore/icu/unicode/putil.h.
+        * icu/unicode/uchar.h: Copied from Source/CyberScriptCore/icu/unicode/uchar.h.
+        * icu/unicode/ucnv.h: Copied from Source/CyberScriptCore/icu/unicode/ucnv.h.
+        * icu/unicode/ucnv_err.h: Copied from Source/CyberScriptCore/icu/unicode/ucnv_err.h.
+        * icu/unicode/ucol.h: Copied from Source/CyberScriptCore/icu/unicode/ucol.h.
+        * icu/unicode/uconfig.h: Copied from Source/CyberScriptCore/icu/unicode/uconfig.h.
+        * icu/unicode/uenum.h: Copied from Source/CyberScriptCore/icu/unicode/uenum.h.
+        * icu/unicode/uiter.h: Copied from Source/CyberScriptCore/icu/unicode/uiter.h.
+        * icu/unicode/uloc.h: Copied from Source/CyberScriptCore/icu/unicode/uloc.h.
+        * icu/unicode/umachine.h: Copied from Source/CyberScriptCore/icu/unicode/umachine.h.
+        * icu/unicode/unorm.h: Copied from Source/CyberScriptCore/icu/unicode/unorm.h.
+        * icu/unicode/urename.h: Copied from Source/CyberScriptCore/icu/unicode/urename.h.
+        * icu/unicode/uscript.h: Copied from Source/CyberScriptCore/icu/unicode/uscript.h.
+        * icu/unicode/uset.h: Copied from Source/CyberScriptCore/icu/unicode/uset.h.
+        * icu/unicode/ustring.h: Copied from Source/CyberScriptCore/icu/unicode/ustring.h.
+        * icu/unicode/utf.h: Copied from Source/CyberScriptCore/icu/unicode/utf.h.
+        * icu/unicode/utf16.h: Copied from Source/CyberScriptCore/icu/unicode/utf16.h.
+        * icu/unicode/utf8.h: Copied from Source/CyberScriptCore/icu/unicode/utf8.h.
+        * icu/unicode/utf_old.h: Copied from Source/CyberScriptCore/icu/unicode/utf_old.h.
+        * icu/unicode/utypes.h: Copied from Source/CyberScriptCore/icu/unicode/utypes.h.
+        * icu/unicode/uversion.h: Copied from Source/CyberScriptCore/icu/unicode/uversion.h.
 
 2011-11-03  Adam Barth  <abarth@webkit.org>
 
@@ -23834,4 +23834,4 @@
         Reviewed by Eric Seidel.
 
         This patch creates the WTF directory, which begins the process of
-        moving WTF out of JavaScriptCore.
+        moving WTF out of CyberScriptCore.

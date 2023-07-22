@@ -41,15 +41,15 @@
 #include "TestOptions.h"
 #include "TestRunner.h"
 #include "UIDelegate.h"
-#include "WebCoreTestSupport.h"
+#include "CyberCoreTestSupport.h"
 #include "WorkQueueItem.h"
 #include "WorkQueue.h"
 
 #include <CoreFoundation/CoreFoundation.h>
-#include <JavaScriptCore/Options.h>
-#include <JavaScriptCore/TestRunnerUtils.h>
-#include <WebKitLegacy/WebKit.h>
-#include <WebKitLegacy/WebKitCOMAPI.h>
+#include <CyberScriptCore/Options.h>
+#include <CyberScriptCore/TestRunnerUtils.h>
+#include <CyberKitLegacy/CyberKit.h>
+#include <CyberKitLegacy/CyberKitCOMAPI.h>
 #include <comutil.h>
 #include <cstdio>
 #include <cstring>
@@ -89,8 +89,8 @@ static LPCWSTR dumpRenderTreeTemp = L"DUMPRENDERTREE_TEMP";
 #define USE_MAC_FONTS
 
 static CFStringRef WebDatabaseDirectoryDefaultsKey = CFSTR("WebDatabaseDirectory");
-static CFStringRef WebKitLocalCacheDefaultsKey = CFSTR("WebKitLocalCache");
-static CFStringRef WebStorageDirectoryDefaultsKey = CFSTR("WebKitLocalStorageDatabasePathPreferenceKey");
+static CFStringRef CyberKitLocalCacheDefaultsKey = CFSTR("CyberKitLocalCache");
+static CFStringRef WebStorageDirectoryDefaultsKey = CFSTR("CyberKitLocalStorageDatabasePathPreferenceKey");
 
 const LPCWSTR kDumpRenderTreeClassName = L"DumpRenderTreeWindow";
 
@@ -307,9 +307,9 @@ static const wstring& fontsPath()
 }
 
 #ifdef DEBUG_ALL
-#define WEBKITDLL TEXT("WebKit_debug.dll")
+#define WEBKITDLL TEXT("CyberKit_debug.dll")
 #else
-#define WEBKITDLL TEXT("WebKit.dll")
+#define WEBKITDLL TEXT("CyberKit.dll")
 #endif
 
 static void initialize()
@@ -350,23 +350,23 @@ static void initialize()
         TEXT("Times Bold.ttf"),
         TEXT("Times Italic.ttf"),
         TEXT("Times Roman.ttf"),
-        TEXT("WebKit Layout Tests 2.ttf"),
-        TEXT("WebKit Layout Tests.ttf"),
-        TEXT("WebKitWeightWatcher100.ttf"),
-        TEXT("WebKitWeightWatcher200.ttf"),
-        TEXT("WebKitWeightWatcher300.ttf"),
-        TEXT("WebKitWeightWatcher400.ttf"),
-        TEXT("WebKitWeightWatcher500.ttf"),
-        TEXT("WebKitWeightWatcher600.ttf"),
-        TEXT("WebKitWeightWatcher700.ttf"),
-        TEXT("WebKitWeightWatcher800.ttf"),
-        TEXT("WebKitWeightWatcher900.ttf")
+        TEXT("CyberKit Layout Tests 2.ttf"),
+        TEXT("CyberKit Layout Tests.ttf"),
+        TEXT("CyberKitWeightWatcher100.ttf"),
+        TEXT("CyberKitWeightWatcher200.ttf"),
+        TEXT("CyberKitWeightWatcher300.ttf"),
+        TEXT("CyberKitWeightWatcher400.ttf"),
+        TEXT("CyberKitWeightWatcher500.ttf"),
+        TEXT("CyberKitWeightWatcher600.ttf"),
+        TEXT("CyberKitWeightWatcher700.ttf"),
+        TEXT("CyberKitWeightWatcher800.ttf"),
+        TEXT("CyberKitWeightWatcher900.ttf")
     };
 
     wstring resourcesPath = fontsPath();
 
     COMPtr<IWebTextRenderer> textRenderer;
-    if (SUCCEEDED(WebKitCreateInstance(CLSID_WebTextRenderer, 0, IID_IWebTextRenderer, (void**)&textRenderer)))
+    if (SUCCEEDED(CyberKitCreateInstance(CLSID_WebTextRenderer, 0, IID_IWebTextRenderer, (void**)&textRenderer)))
         for (int i = 0; i < ARRAYSIZE(fontsToInstall); ++i)
             textRenderer->registerPrivateFont(wstring(resourcesPath + fontsToInstall[i]).c_str());
 
@@ -848,7 +848,7 @@ static void resetWebPreferencesToConsistentValues(IWebPreferences* preferences)
     preferences->setDefaultTextEncodingName(_bstr_t(L"ISO-8859-1"));
     preferences->setJavaEnabled(FALSE);
     preferences->setJavaScriptEnabled(TRUE);
-    preferences->setEditableLinkBehavior(WebKitEditableLinkOnlyLiveWithShiftKey);
+    preferences->setEditableLinkBehavior(CyberKitEditableLinkOnlyLiveWithShiftKey);
     preferences->setTabsToLinks(FALSE);
     preferences->setDOMPasteAllowed(TRUE);
     preferences->setShouldPrintBackgrounds(TRUE);
@@ -866,7 +866,7 @@ static void resetWebPreferencesToConsistentValues(IWebPreferences* preferences)
     prefsPrivate->setJavaScriptCanAccessClipboard(TRUE);
     prefsPrivate->setOfflineWebApplicationCacheEnabled(TRUE);
     prefsPrivate->setDeveloperExtrasEnabled(FALSE);
-    prefsPrivate->setJavaScriptRuntimeFlags(WebKitJavaScriptRuntimeFlagsAllEnabled);
+    prefsPrivate->setJavaScriptRuntimeFlags(CyberKitJavaScriptRuntimeFlagsAllEnabled);
     // Set JS experiments enabled: YES
     preferences->setLoadsImagesAutomatically(TRUE);
     prefsPrivate->setLoadsSiteIconsIgnoringImageLoadingPreference(FALSE);
@@ -928,7 +928,7 @@ static String applicationId()
 static void setApplicationId()
 {
     COMPtr<IWebPreferences> preferences;
-    if (SUCCEEDED(WebKitCreateInstance(CLSID_WebPreferences, 0, IID_IWebPreferences, (void**)&preferences))) {
+    if (SUCCEEDED(CyberKitCreateInstance(CLSID_WebPreferences, 0, IID_IWebPreferences, (void**)&preferences))) {
         COMPtr<IWebPreferencesPrivate4> prefsPrivate4(Query, preferences);
         ASSERT(prefsPrivate4);
         _bstr_t fileName = applicationId().wideCharacters().data();
@@ -950,7 +950,7 @@ static void setDefaultsToConsistentValuesForTesting()
     // Set up these values before creating the WebView so that the various initializations will see these preferred values.
     CFPreferencesSetAppValue(WebDatabaseDirectoryDefaultsKey, FileSystem::pathByAppendingComponent(libraryPath, "Databases").createCFString().get(), appId.get());
     CFPreferencesSetAppValue(WebStorageDirectoryDefaultsKey, FileSystem::pathByAppendingComponent(libraryPath, "LocalStorage").createCFString().get(), appId.get());
-    CFPreferencesSetAppValue(WebKitLocalCacheDefaultsKey, FileSystem::pathByAppendingComponent(libraryPath, "LocalCache").createCFString().get(), appId.get());
+    CFPreferencesSetAppValue(CyberKitLocalCacheDefaultsKey, FileSystem::pathByAppendingComponent(libraryPath, "LocalCache").createCFString().get(), appId.get());
 #endif
 }
 
@@ -1028,7 +1028,7 @@ static void resetWebViewToConsistentStateBeforeTesting(const TestOptions& option
 
     if (::gTestRunner) {
         JSGlobalContextRef context = frame->globalContext();
-        WebCoreTestSupport::resetInternalsObject(context);
+        CyberCoreTestSupport::resetInternalsObject(context);
     }
 
     if (preferences) {
@@ -1056,8 +1056,8 @@ static void resetWebViewToConsistentStateBeforeTesting(const TestOptions& option
     COMPtr<IWebViewPrivate5> webViewPrivate5(Query, webView);
     webViewPrivate5->exitFullscreenIfNeeded();
 
-    WebCoreTestSupport::clearAllLogChannelsToAccumulate();
-    WebCoreTestSupport::initializeLogChannelsIfNecessary();
+    CyberCoreTestSupport::clearAllLogChannelsToAccumulate();
+    CyberCoreTestSupport::initializeLogChannelsIfNecessary();
 }
 
 static void sizeWebViewForCurrentTest()
@@ -1245,7 +1245,7 @@ static void runTest(const string& inputLine)
     }
 
     COMPtr<IWebHistory> history;
-    if (SUCCEEDED(WebKitCreateInstance(CLSID_WebHistory, 0, __uuidof(history), reinterpret_cast<void**>(&history))))
+    if (SUCCEEDED(CyberKitCreateInstance(CLSID_WebHistory, 0, __uuidof(history), reinterpret_cast<void**>(&history))))
         history->setOptionalSharedHistory(nullptr);
 
     prevTestBFItem = nullptr;
@@ -1262,7 +1262,7 @@ static void runTest(const string& inputLine)
     webView->hostWindow(&hostWindow);
 
     COMPtr<IWebMutableURLRequest> request, emptyRequest;
-    HRESULT hr = WebKitCreateInstance(CLSID_WebMutableURLRequest, 0, IID_IWebMutableURLRequest, (void**)&request);
+    HRESULT hr = CyberKitCreateInstance(CLSID_WebMutableURLRequest, 0, IID_IWebMutableURLRequest, (void**)&request);
     if (FAILED(hr))
         goto exit;
 
@@ -1316,7 +1316,7 @@ static void runTest(const string& inputLine)
 
     // Loading an empty request synchronously replaces the document with a blank one, which is necessary
     // to stop timers, WebSockets and other activity that could otherwise spill output into next test's results.
-    if (SUCCEEDED(WebKitCreateInstance(CLSID_WebMutableURLRequest, 0, IID_IWebMutableURLRequest, (void**)&emptyRequest))) {
+    if (SUCCEEDED(CyberKitCreateInstance(CLSID_WebMutableURLRequest, 0, IID_IWebMutableURLRequest, (void**)&emptyRequest))) {
         _bstr_t emptyURL(L"");
         emptyRequest->initWithURL(emptyURL.GetBSTR(), WebURLRequestUseProtocolCachePolicy, 60);
         emptyRequest->setHTTPMethod(methodBStr);
@@ -1362,7 +1362,7 @@ IWebView* createWebViewAndOffscreenWindow(HWND* webViewWindow)
         : CreateWindowEx(WS_EX_TOOLWINDOW, kDumpRenderTreeClassName, TEXT("DumpRenderTree"), WS_POPUP, -maxViewWidth, -maxViewHeight, maxViewWidth, maxViewHeight, 0, 0, ::GetModuleHandle(0), nullptr);
 
     IWebView* webView = nullptr;
-    HRESULT hr = WebKitCreateInstance(CLSID_WebView, 0, IID_IWebView, (void**)&webView);
+    HRESULT hr = CyberKitCreateInstance(CLSID_WebView, 0, IID_IWebView, (void**)&webView);
     if (FAILED(hr)) {
         fprintf(stderr, "Failed to create CLSID_WebView instance, error 0x%lx\n", hr);
         return nullptr;
@@ -1596,7 +1596,7 @@ int main(int argc, const char* argv[])
 
     // FIXME - need to make DRT pass with Windows native controls <http://bugs.webkit.org/show_bug.cgi?id=25592>
     COMPtr<IWebPreferences> tmpPreferences;
-    if (FAILED(WebKitCreateInstance(CLSID_WebPreferences, 0, IID_IWebPreferences, reinterpret_cast<void**>(&tmpPreferences))))
+    if (FAILED(CyberKitCreateInstance(CLSID_WebPreferences, 0, IID_IWebPreferences, reinterpret_cast<void**>(&tmpPreferences))))
         return -1;
     COMPtr<IWebPreferences> standardPreferences;
     if (FAILED(tmpPreferences->standardPreferences(&standardPreferences)))
@@ -1665,7 +1665,7 @@ int main(int argc, const char* argv[])
     }
 #endif
 
-    shutDownWebKit();
+    shutDownCyberKit();
 #ifdef _CRTDBG_MAP_ALLOC
     _CrtDumpMemoryLeaks();
 #endif

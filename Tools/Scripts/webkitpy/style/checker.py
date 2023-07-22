@@ -109,13 +109,13 @@ _BASE_FILTER_RULES = [
     '-whitespace/end_of_line',
     # List Python pep8 categories last.
     #
-    # Because much of WebKit's Python code base does not abide by the
+    # Because much of CyberKit's Python code base does not abide by the
     # PEP8 79 character limit, we ignore the 79-character-limit category
     # pep8/E501 for now.
     #
-    # FIXME: Consider bringing WebKit's Python code base into conformance
+    # FIXME: Consider bringing CyberKit's Python code base into conformance
     #        with the 79 character limit, or some higher limit that is
-    #        agreeable to the WebKit project.
+    #        agreeable to the CyberKit project.
     '-pep8/E501',
     '-pycodestyle/E501',
 
@@ -135,9 +135,9 @@ _BASE_FILTER_RULES = [
 # for example, in the test_path_rules_specifier() unit test method of
 # checker_unittest.py.
 _PATH_RULES_SPECIFIER = [
-    # Files in these directories are consumers of the WebKit
+    # Files in these directories are consumers of the CyberKit
     # API and therefore do not follow the same header including
-    # discipline as WebCore.
+    # discipline as CyberCore.
 
     ([  # TestNetscapePlugIn has no config.h and uses funny names like
       # NPP_SetWindow.
@@ -145,71 +145,71 @@ _PATH_RULES_SPECIFIER = [
      ["-build/include",
       "-readability/naming"]),
     ([  # Ignore use of RetainPtr<NSObject *> for tests that ensure its compatibility with ReteainPtr<NSObject>.
-      os.path.join('Tools', 'TestWebKitAPI', 'Tests', 'WTF', 'ns', 'RetainPtr.mm')],
+      os.path.join('Tools', 'TestCyberKitAPI', 'Tests', 'WTF', 'ns', 'RetainPtr.mm')],
      ["-runtime/retainptr"]),
     ([  # There is no clean way to avoid "yy_*" names used by flex.
-      os.path.join('Source', 'WebCore', 'css', 'CSSParser.cpp'),
-      # TestWebKitAPI uses funny macros like EXPECT_WK_STREQ.
-      os.path.join('Tools', 'TestWebKitAPI')],
+      os.path.join('Source', 'CyberCore', 'css', 'CSSParser.cpp'),
+      # TestCyberKitAPI uses funny macros like EXPECT_WK_STREQ.
+      os.path.join('Tools', 'TestCyberKitAPI')],
      ["-readability/naming"]),
 
     ([
       # The WPEQtView class can't rely on the readability/parameter_name rule,
       # because omitting parameter names for QML signals leads to runtime
       # errors.
-      os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'wpe', 'qt', 'WPEQtView.h'),
+      os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'wpe', 'qt', 'WPEQtView.h'),
     ],
     ["-readability/parameter_name"]),
 
     ([
       # The GTK+ and WPE APIs use upper case, underscore separated, words in
       # certain types of enums (e.g. signals, properties).
-      os.path.join('Source', 'JavaScriptCore', 'API', 'glib'),
-      os.path.join('Source', 'WebKit', 'Shared', 'API', 'glib'),
-      os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'glib'),
-      os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'gtk'),
-      os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'wpe'),
-      os.path.join('Source', 'WebKit', 'WebProcess', 'InjectedBundle', 'API', 'glib'),
-      os.path.join('Source', 'WebKit', 'WebProcess', 'InjectedBundle', 'API', 'gtk'),
-      os.path.join('Source', 'WebKit', 'WebProcess', 'InjectedBundle', 'API', 'wpe')],
+      os.path.join('Source', 'CyberScriptCore', 'API', 'glib'),
+      os.path.join('Source', 'CyberKit', 'Shared', 'API', 'glib'),
+      os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'glib'),
+      os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'gtk'),
+      os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'wpe'),
+      os.path.join('Source', 'CyberKit', 'WebProcess', 'InjectedBundle', 'API', 'glib'),
+      os.path.join('Source', 'CyberKit', 'WebProcess', 'InjectedBundle', 'API', 'gtk'),
+      os.path.join('Source', 'CyberKit', 'WebProcess', 'InjectedBundle', 'API', 'wpe')],
      ["-readability/enum_casing"]),
 
     ([
       # To use GStreamer GL without conflicts of GL symbols,
       # we should include gst/gl/gl.h before including OpenGL[ES]Shims
-      os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'MediaPlayerPrivateGStreamer.cpp')],
+      os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'MediaPlayerPrivateGStreamer.cpp')],
      ["-build/include_order"]),
 
     ([
       # Header files in ForwardingHeaders have no header guards or
-      # exceptional header guards (e.g., WebCore_FWD_Debugger_h).
+      # exceptional header guards (e.g., CyberCore_FWD_Debugger_h).
       os.path.join(os.path.sep, 'ForwardingHeaders')],
      ["-build/header_guard"]),
     ([
       # Assembler has lots of opcodes that use underscores, so
       # we don't check for underscores in that directory.
-      os.path.join('Source', 'JavaScriptCore', 'assembler'),
-      os.path.join('Source', 'JavaScriptCore', 'jit', 'JIT')],
+      os.path.join('Source', 'CyberScriptCore', 'assembler'),
+      os.path.join('Source', 'CyberScriptCore', 'jit', 'JIT')],
      ["-readability/naming/underscores"]),
     ([  # JITStubs has an usual syntax which causes false alarms for a few checks.
-      os.path.join('JavaScriptCore', 'jit', 'JITStubs.cpp')],
+      os.path.join('CyberScriptCore', 'jit', 'JITStubs.cpp')],
      ["-readability/parameter_name",
       "-whitespace/parens"]),
 
-    # WebKit rules:
-    # WebKit and certain directories have idiosyncracies.
+    # CyberKit rules:
+    # CyberKit and certain directories have idiosyncracies.
     ([  # NPAPI has function names with underscores.
-      os.path.join('Source', 'WebKit', 'WebProcess', 'Plugins', 'Netscape')],
+      os.path.join('Source', 'CyberKit', 'WebProcess', 'Plugins', 'Netscape')],
      ["-readability/naming"]),
     ([
-      # The WebKit C API has names with underscores and whitespace-aligned
+      # The CyberKit C API has names with underscores and whitespace-aligned
       # struct members. Also, we allow unnecessary parameter names in
-      # WebKit APIs because we're matching CF's header style.
+      # CyberKit APIs because we're matching CF's header style.
       # Additionally, we use word which starts with non-capital letter 'k'
       # for types of enums.
-      os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'C'),
-      os.path.join('Source', 'WebKit', 'Shared', 'API', 'c'),
-      os.path.join('Source', 'WebKit', 'WebProcess', 'InjectedBundle', 'API', 'c')],
+      os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'C'),
+      os.path.join('Source', 'CyberKit', 'Shared', 'API', 'c'),
+      os.path.join('Source', 'CyberKit', 'WebProcess', 'InjectedBundle', 'API', 'c')],
      ["-readability/enum_casing",
       "-readability/naming",
       "-readability/parameter_name",
@@ -217,15 +217,15 @@ _PATH_RULES_SPECIFIER = [
     ([
       # These files define GObjects, which implies some definitions of
       # variables and functions containing underscores.
-      os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'GLVideoSinkGStreamer.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'GLVideoSinkGStreamer.h'),
-      os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'VideoSinkGStreamer.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'WebKitWebSourceGStreamer.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'audio', 'gstreamer', 'WebKitWebAudioSourceGStreamer.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'mediastream', 'gstreamer', 'GStreamerMediaStreamSource.h'),
-      os.path.join('Source', 'WebCore', 'platform', 'mediastream', 'gstreamer', 'GStreamerMediaStreamSource.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'network', 'soup', 'ProxyResolverSoup.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'network', 'soup', 'ProxyResolverSoup.h')],
+      os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'GLVideoSinkGStreamer.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'GLVideoSinkGStreamer.h'),
+      os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'VideoSinkGStreamer.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'CyberKitWebSourceGStreamer.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'audio', 'gstreamer', 'CyberKitWebAudioSourceGStreamer.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'mediastream', 'gstreamer', 'GStreamerMediaStreamSource.h'),
+      os.path.join('Source', 'CyberCore', 'platform', 'mediastream', 'gstreamer', 'GStreamerMediaStreamSource.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'network', 'soup', 'ProxyResolverSoup.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'network', 'soup', 'ProxyResolverSoup.h')],
      ["-readability/naming",
       "-readability/enum_casing"]),
 
@@ -246,15 +246,15 @@ _PATH_RULES_SPECIFIER = [
       "+pep8/W291",  # Trailing white space
       "+whitespace/carriage_return"]),
 
-    ([  # Source/JavaScriptCore/disassembler/udis86/ is generated code.
-      os.path.join('Source', 'JavaScriptCore', 'disassembler', 'udis86')],
+    ([  # Source/CyberScriptCore/disassembler/udis86/ is generated code.
+      os.path.join('Source', 'CyberScriptCore', 'disassembler', 'udis86')],
      ["-readability/naming/underscores",
       "-whitespace/declaration",
       "-whitespace/indent"]),
 
     ([  # Files following GStreamer coding style (for a simpler upstreaming process for example)
-      os.path.join('Source', 'WebCore', 'platform', 'mediastream', 'libwebrtc', 'GStreamerVideoEncoder.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'mediastream', 'libwebrtc', 'GStreamerVideoEncoder.h'),
+      os.path.join('Source', 'CyberCore', 'platform', 'mediastream', 'libwebrtc', 'GStreamerVideoEncoder.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'mediastream', 'libwebrtc', 'GStreamerVideoEncoder.h'),
      ],
      ["-whitespace/indent",
       "-whitespace/declaration",
@@ -266,7 +266,7 @@ _PATH_RULES_SPECIFIER = [
      ]),
 
     ([  # Files following using WebRTC optionnal type
-      os.path.join('Source', 'WebCore', 'platform', 'mediastream', 'libwebrtc', 'GStreamerVideoDecoderFactory.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'mediastream', 'libwebrtc', 'GStreamerVideoDecoderFactory.cpp'),
      ],
      ["-runtime/wtf_optional",
      ]),
@@ -274,26 +274,26 @@ _PATH_RULES_SPECIFIER = [
     ([
       # There is no way to avoid the symbols __jit_debug_register_code
       # and __jit_debug_descriptor when integrating with gdb.
-      os.path.join('Source', 'JavaScriptCore', 'jit', 'GDBInterface.cpp')],
+      os.path.join('Source', 'CyberScriptCore', 'jit', 'GDBInterface.cpp')],
      ["-readability/naming"]),
 
     ([  # On some systems the trailing CR is causing parser failure.
-      os.path.join('Source', 'JavaScriptCore', 'parser', 'Keywords.table')],
+      os.path.join('Source', 'CyberScriptCore', 'parser', 'Keywords.table')],
      ["+whitespace/carriage_return"]),
 
     ([  # DataDetectorsCoreSPI.h declares enum bitfields as CFIndex.
-      os.path.join('Source', 'WebCore', 'PAL', 'pal', 'spi', 'cocoa', 'DataDetectorsCoreSPI.h')],
+      os.path.join('Source', 'CyberCore', 'PAL', 'pal', 'spi', 'cocoa', 'DataDetectorsCoreSPI.h')],
      ["-runtime/enum_bitfields"]),
 
     ([
       # PassKitSPI.h imports "PassKit.h" at two lines depending on the build configuration,
       # which causes a false positive error.
-      os.path.join('Source', 'WebCore', 'PAL', 'pal', 'spi', 'cocoa', 'PassKitSPI.h')],
+      os.path.join('Source', 'CyberCore', 'PAL', 'pal', 'spi', 'cocoa', 'PassKitSPI.h')],
      ["-build/include"]),
 
     ([  # libwebrtc source and some SPI headers have identifier names with underscores.
       os.path.join('Source', 'ThirdParty', 'libwebrtc', 'Source', 'webrtc'),
-      os.path.join('Source', 'WebCore', 'PAL', 'pal', 'spi')],
+      os.path.join('Source', 'CyberCore', 'PAL', 'pal', 'spi')],
      ["-readability/naming/underscores"]),
 ]
 
@@ -367,28 +367,28 @@ _NEVER_SKIPPED_FILES = _NEVER_SKIPPED_JS_FILES + [
 # Files to skip that are less obvious.
 #
 # Some files should be skipped when checking style. For example,
-# WebKit maintains some files in Mozilla style on purpose to ease
+# CyberKit maintains some files in Mozilla style on purpose to ease
 # future merges.
 _SKIPPED_FILES_WITH_WARNING = [
-    os.path.join('Tools', 'TestWebKitAPI', 'Tests', 'WebKitGtk'),
+    os.path.join('Tools', 'TestCyberKitAPI', 'Tests', 'CyberKitGtk'),
 
-    # WebKit*.h and JSC*.h files in, except those ending in Private.h are API headers, which do not follow WebKit coding style.
-    re.compile(re.escape(os.path.join('Source', 'JavaScriptCore', 'API', 'glib') + os.path.sep) + r'JSC(?!.*Private\.h).*\.h$'),
-    re.compile(re.escape(os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'gtk') + os.path.sep) + r'WebKit(?!.*Private\.h).*\.h$'),
-    re.compile(re.escape(os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'wpe') + os.path.sep) + r'WebKit(?!.*Private\.h).*\.h$'),
-    re.compile(re.escape(os.path.join('Source', 'WebKit', 'WebProcess', 'InjectedBundle', 'API', 'gtk') + os.path.sep) + r'WebKit(?!.*Private\.h).*\.h$'),
-    re.compile(re.escape(os.path.join('Source', 'WebKit', 'WebProcess', 'InjectedBundle', 'API', 'wpe') + os.path.sep) + r'WebKit(?!.*Private\.h).*\.h$'),
-    re.compile(re.escape(os.path.join('Source', 'WebKit', 'WebProcess', 'InjectedBundle', 'API', 'wpe', 'DOM') + os.path.sep) + r'WebKit(?!.*Private\.h).*\.h$'),
+    # CyberKit*.h and JSC*.h files in, except those ending in Private.h are API headers, which do not follow CyberKit coding style.
+    re.compile(re.escape(os.path.join('Source', 'CyberScriptCore', 'API', 'glib') + os.path.sep) + r'JSC(?!.*Private\.h).*\.h$'),
+    re.compile(re.escape(os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'gtk') + os.path.sep) + r'CyberKit(?!.*Private\.h).*\.h$'),
+    re.compile(re.escape(os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'wpe') + os.path.sep) + r'CyberKit(?!.*Private\.h).*\.h$'),
+    re.compile(re.escape(os.path.join('Source', 'CyberKit', 'WebProcess', 'InjectedBundle', 'API', 'gtk') + os.path.sep) + r'CyberKit(?!.*Private\.h).*\.h$'),
+    re.compile(re.escape(os.path.join('Source', 'CyberKit', 'WebProcess', 'InjectedBundle', 'API', 'wpe') + os.path.sep) + r'CyberKit(?!.*Private\.h).*\.h$'),
+    re.compile(re.escape(os.path.join('Source', 'CyberKit', 'WebProcess', 'InjectedBundle', 'API', 'wpe', 'DOM') + os.path.sep) + r'CyberKit(?!.*Private\.h).*\.h$'),
 
     # GObject DOM bindings copied from generated code using different coding style.
-    os.path.join('Source', 'WebKit', 'WebProcess', 'InjectedBundle', 'API', 'gtk', 'DOM'),
+    os.path.join('Source', 'CyberKit', 'WebProcess', 'InjectedBundle', 'API', 'gtk', 'DOM'),
 
-    os.path.join('Source', 'JavaScriptCore', 'API', 'glib', 'jsc.h'),
-    os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'gtk', 'webkit2.h'),
-    os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'wpe', 'webkit.h'),
-    os.path.join('Source', 'WebKit', 'WebProcess', 'InjectedBundle', 'API', 'gtk', 'webkit-web-extension.h'),
-    os.path.join('Source', 'WebKit', 'WebProcess', 'InjectedBundle', 'API', 'wpe', 'webkit-web-extension.h'),
-    os.path.join('Source', 'WebKit', 'WebProcess', 'InjectedBundle', 'API', 'wpe', 'DOM', 'webkitdom.h')]
+    os.path.join('Source', 'CyberScriptCore', 'API', 'glib', 'jsc.h'),
+    os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'gtk', 'webkit2.h'),
+    os.path.join('Source', 'CyberKit', 'UIProcess', 'API', 'wpe', 'webkit.h'),
+    os.path.join('Source', 'CyberKit', 'WebProcess', 'InjectedBundle', 'API', 'gtk', 'webkit-web-extension.h'),
+    os.path.join('Source', 'CyberKit', 'WebProcess', 'InjectedBundle', 'API', 'wpe', 'webkit-web-extension.h'),
+    os.path.join('Source', 'CyberKit', 'WebProcess', 'InjectedBundle', 'API', 'wpe', 'DOM', 'webkitdom.h')]
 
 # Files to skip that are more common or obvious.
 #
@@ -400,12 +400,12 @@ _SKIPPED_FILES_WITHOUT_WARNING = [
     "WebDriverTests" + os.path.sep,
 
     # Files generated by the bindings script should not be checked for style.
-    os.path.join('Source', 'WebCore', 'bindings', 'scripts', 'test'),
+    os.path.join('Source', 'CyberCore', 'bindings', 'scripts', 'test'),
 
     # ICU headers are imported.
-    os.path.join('Source', 'JavaScriptCore', 'icu'),
-    os.path.join('Source', 'WebCore', 'icu'),
-    os.path.join('Source', 'WebKitLegacy', 'mac', 'icu'),
+    os.path.join('Source', 'CyberScriptCore', 'icu'),
+    os.path.join('Source', 'CyberCore', 'icu'),
+    os.path.join('Source', 'CyberKitLegacy', 'mac', 'icu'),
     os.path.join('Source', 'WTF', 'icu'),
     ]
 

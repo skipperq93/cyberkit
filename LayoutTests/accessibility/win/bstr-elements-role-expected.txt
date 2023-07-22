@@ -38,7 +38,7 @@ thead
 
 This test verifies that on Windows, the following elements: abbr, acronym, blockquote, dd, dl, dt, form, frame, h1, h2, h3, h4, h5, h6, iframe, q, tbody, tfoot, thead return their tag name for their 'role' property.
 
-Bug 165545 - WebCore::AccessibilityRenderObject add the other tag names that should be returned as the role
+Bug 165545 - CyberCore::AccessibilityRenderObject add the other tag names that should be returned as the role
 
 PASS e.role is "AXRole: ABBR"
 PASS e.role is "AXRole: ACRONYM"

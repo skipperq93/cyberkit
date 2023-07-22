@@ -31,7 +31,7 @@
 
 #include "DumpRenderTree.h"
 #include "TestRunner.h"
-#include <WebKitLegacy/WebKitCOMAPI.h>
+#include <CyberKitLegacy/CyberKitCOMAPI.h>
 #include <comutil.h>
 #include <sstream>
 #include <tchar.h>
@@ -303,7 +303,7 @@ HRESULT ResourceLoadDelegate::didReceiveAuthenticationChallenge(_In_opt_ IWebVie
     fprintf(testResult, "%S - didReceiveAuthenticationChallenge - Responding with %s:%s\n", descriptionSuitableForTestResult(identifier).c_str(), user, password);
 
     COMPtr<IWebURLCredential> credential;
-    if (FAILED(WebKitCreateInstance(CLSID_WebURLCredential, 0, IID_IWebURLCredential, (void**)&credential)))
+    if (FAILED(CyberKitCreateInstance(CLSID_WebURLCredential, 0, IID_IWebURLCredential, (void**)&credential)))
         return E_FAIL;
     credential->initWithUser(_bstr_t(user), _bstr_t(password), WebURLCredentialPersistenceForSession);
 

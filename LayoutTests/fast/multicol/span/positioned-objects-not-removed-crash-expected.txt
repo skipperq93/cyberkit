@@ -1,2 +1,2 @@
-WebKit Bug - Crash in multi-column layout.
-PASS. WebKit didn't crash.
+CyberKit Bug - Crash in multi-column layout.
+PASS. CyberKit didn't crash.

@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-// This file contains code for a launcher executable for WebKit apps. When compiled into foo.exe, it
+// This file contains code for a launcher executable for CyberKit apps. When compiled into foo.exe, it
 // will set PATH so that Apple Application Support DLLs can be found, then will load foo.dll and
 // call its dllLauncherEntryPoint function, which should be declared like so:
 //     extern "C" __declspec(dllexport) int WINAPI dllLauncherEntryPoint(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpstCmdLine, int nCmdShow);

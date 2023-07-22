@@ -23,7 +23,7 @@ function runTest() {
     var valueAfterSecondNegation = document.queryCommandValue('StyleWithCSS');
 
     document.open();
-    document.writeln('This test ensures WebKit executes StyleWithCSS properly even in an empty document.<br>');
+    document.writeln('This test ensures CyberKit executes StyleWithCSS properly even in an empty document.<br>');
     document.write('First negation:' + (initialValue !== valueAfterFirstNegation ? 'PASS' : 'FAIL') + '<br>');
     document.write('Second negation:' + (valueAfterFirstNegation !== valueAfterSecondNegation ? 'PASS' : 'FAIL') + '<br>');
 }

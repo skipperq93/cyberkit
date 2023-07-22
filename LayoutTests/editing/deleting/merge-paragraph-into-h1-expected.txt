@@ -9,7 +9,7 @@ EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotificatio
 EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
 EDITING DELEGATE: webViewDidEndEditing:WebViewDidEndEditingNotification
 This tests deleting line break after h1.
-WebKit should not cancel styles added by h1 by those of document's default style
+CyberKit should not cancel styles added by h1 by those of document's default style
 | "
 "
 | <h1>

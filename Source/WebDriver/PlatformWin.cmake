@@ -1,4 +1,4 @@
-set(WebDriver_Process_OUTPUT_NAME WebKitWebDriver)
+set(WebDriver_Process_OUTPUT_NAME CyberKitWebDriver)
 
 list(APPEND WebDriver_SOURCES
     socket/HTTPServerSocket.cpp

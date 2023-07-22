@@ -1,8 +1,8 @@
 2017-03-21  Manuel Rego Casasnovas  <rego@igalia.com>
 
-        [Planet WebKit] Use HTTPS instead of HTTP for Igalia blog
+        [Planet CyberKit] Use HTTPS instead of HTTP for Igalia blog
 
-        Unreviewed patch just updating the Igalia WebKit blog configuration.
+        Unreviewed patch just updating the Igalia CyberKit blog configuration.
 
         * config.ini:
 
@@ -17,7 +17,7 @@
 
 2015-07-10  Gabor Loki  <loki@webkit.org>
 
-        [Planet WebKit] Update the feed url of the University of Szeged's blog.
+        [Planet CyberKit] Update the feed url of the University of Szeged's blog.
         https://bugs.webkit.org/show_bug.cgi?id=146835
 
         Reviewed by Csaba Osztrogonác.
@@ -26,7 +26,7 @@
 
 2014-12-12  Carlos Alberto Lopez Perez  <clopez@igalia.com>
 
-        [Planet WebKit] Raise the number of posts per feed to import.
+        [Planet CyberKit] Raise the number of posts per feed to import.
         https://bugs.webkit.org/show_bug.cgi?id=139579
 
         Reviewed by Csaba Osztrogonác.
@@ -35,12 +35,12 @@
 
 2014-06-03  Manuel Rego Casasnovas  <rego@igalia.com>
 
-        Add Igalia WebKit blog to the planet
+        Add Igalia CyberKit blog to the planet
         https://bugs.webkit.org/show_bug.cgi?id=133446
 
         Reviewed by Bem Jones-Bey.
 
-        * config.ini: Add Igalia WebKit blog to the planet and remove Martin's
+        * config.ini: Add Igalia CyberKit blog to the planet and remove Martin's
         and Xan's blogs as they will be included there.
 
 2013-10-09  Frédéric Wang  <fred.wang@free.fr>
@@ -66,13 +66,13 @@
 
 2013-07-10  Peter Beverloo  <peter@chromium.org>
 
-        [Planet WebKit] Remove my website from the list of feeds
+        [Planet CyberKit] Remove my website from the list of feeds
         https://bugs.webkit.org/show_bug.cgi?id=118510
 
         Reviewed by Andreas Kling.
 
         With various awesome folks at Apple having taken over the Last
-        Week in WebKit series and my blog now featuring Last Week in
+        Week in CyberKit series and my blog now featuring Last Week in
         Blink, there's no reason for it to be included on the Planet
         anymore.
 
@@ -80,7 +80,7 @@
 
 2013-06-12  Brent Fulgham  <bfulgham@apple.com>
 
-        Remove irrelevant blog from Planet WebKit.
+        Remove irrelevant blog from Planet CyberKit.
         https://bugs.webkit.org/show_bug.cgi?id=117572
 
         Reviewed by Mark Rowe.
@@ -89,7 +89,7 @@
 
 2013-05-11  Benjamin Poulain  <benjamin@webkit.org>
 
-        Remove irrelevant blogs from Planet WebKit
+        Remove irrelevant blogs from Planet CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=115620
 
         Reviewed by Ryosuke Niwa.
@@ -107,7 +107,7 @@
 
 2012-08-08  Peter Beverloo  <peter@chromium.org>
 
-        Remove several non-updated blogs from Planet WebKit
+        Remove several non-updated blogs from Planet CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=92973
 
         Reviewed by Eric Seidel.
@@ -115,7 +115,7 @@
         Adam Treat's blog was last updated in 2009.
         Justin Haygood's blog was last updated in 2008.
         Mike Smith seems to have moved to Google+ entirely.
-        Pierre-Luc Beaudoin's blog is unavailable, cached copy says the last (non-WebKit specific update) was in 2010.
+        Pierre-Luc Beaudoin's blog is unavailable, cached copy says the last (non-CyberKit specific update) was in 2010.
         Cameron Zwarich' summer of JSC no longer exists.
         Anthony Ricaud's blog was last updated in 2009.
 
@@ -123,7 +123,7 @@
 
 2012-08-07  Bruno de Oliveira Abinader  <bruno.abinader@basyskom.com>
 
-        Add Bruno Abinader's blog feed to Planet WebKit
+        Add Bruno Abinader's blog feed to Planet CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=92985
 
         Reviewed by Eric Seidel.
@@ -132,18 +132,18 @@
 
 2012-07-16  Michelangelo De Simone  <michelangelo@webkit.org>
 
-        Adobe Web Platform Team Blog is missing from Planet WebKit
+        Adobe Web Platform Team Blog is missing from Planet CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=91407
 
         Reviewed by Andreas Kling.
 
-        Adding Adobe Web Platform Team Blog feed to Planet WebKit.
+        Adding Adobe Web Platform Team Blog feed to Planet CyberKit.
 
         * config.ini:
 
 2011-10-30  Anthony Ricaud  <rik@webkit.org>
 
-        Add Peter Beverloo's feed to Planet WebKit
+        Add Peter Beverloo's feed to Planet CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=70316
 
         Reviewed by Andreas Kling.
@@ -156,7 +156,7 @@
 
         Fix my blog's feed URL, since it seems to have changed with the
         new version of Wordpress causing unwanted posts to appear in
-        Planet WebKit.
+        Planet CyberKit.
 
         * config.ini:
 
@@ -164,14 +164,14 @@
 
         Reviewed by Andreas Kling.
 
-        Add Leandro Pereira's blog to Planet WebKit
+        Add Leandro Pereira's blog to Planet CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=49910
 
         * config.ini:
 
 2010-11-19  Adam Roben  <aroben@apple.com>
 
-        Add Lucas De Marchi's blog to Planet WebKit
+        Add Lucas De Marchi's blog to Planet CyberKit
 
         Reviewed by Jon Honeycutt.
 
@@ -179,10 +179,10 @@
 
 2010-09-15  Adam Roben  <aroben@apple.com>
 
-        Use Qt Labs' WebKit category feed instead of filtering on "webkit"
+        Use Qt Labs' CyberKit category feed instead of filtering on "webkit"
 
-        Looks like the URL of the WebKit category feed changed since this blog
-        was first added to Planet WebKit.
+        Looks like the URL of the CyberKit category feed changed since this blog
+        was first added to Planet CyberKit.
 
         Rubber-stamped by David Kilzer.
 
@@ -190,19 +190,19 @@
 
 2010-09-15  Adam Roben  <aroben@apple.com>
 
-        Only include Qt Labs posts that mention WebKit
+        Only include Qt Labs posts that mention CyberKit
 
-        All other feeds are either WebKit-specific or are filtered on
+        All other feeds are either CyberKit-specific or are filtered on
         "webkit". This makes Qt Labs match all the others. This should help
-        keep off-topic posts off of Planet WebKit.
+        keep off-topic posts off of Planet CyberKit.
 
-        Fixes <http://webkit.org/b/45818> Planet WebKit contains many
+        Fixes <http://webkit.org/b/45818> Planet CyberKit contains many
         off-topic posts from Qt Labs
 
         Reviewed by David Kilzer.
 
         * config.ini: Filter the Qt Labs feed on "webkit" like we do for all
-        other non-WebKit-specific feeds.
+        other non-CyberKit-specific feeds.
 
 2010-08-30  Simon Hausmann  <simon.hausmann@nokia.com>
 
@@ -240,7 +240,7 @@
         Reviewed by Mark Rowe.
 
         https://bugs.webkit.org/show_bug.cgi?id=24591
-        Add my blog to Planet WebKit
+        Add my blog to Planet CyberKit
 
         Add my blog to the planet.
 
@@ -258,7 +258,7 @@
 
 2009-02-10  Adam Roben  <aroben@apple.com>
 
-        Add Michael(tm) Smith's blog to Planet WebKit
+        Add Michael(tm) Smith's blog to Planet CyberKit
 
         Rubberstamped by Alexey Proskuryakov.
 
@@ -290,13 +290,13 @@
 
         Rubber stamped by Mark.
 
-        * config.ini: Add Cameron's Summer of JavaScriptCore blog.
+        * config.ini: Add Cameron's Summer of CyberScriptCore blog.
 
 2008-02-11  Pierre-Luc Beaudoin  <pierre-luc.beaudoin@collabora.co.uk>
 
         Reviewed by Alp Toker.
 
-        Add my blog's WebKit category, English only posts.
+        Add my blog's CyberKit category, English only posts.
 
         * config.ini:
 
@@ -310,7 +310,7 @@
 
 2008-02-09  Alp Toker  <alp@atoker.com>
 
-        Only syndicate Jan's WebKit posts, not his entire blog.
+        Only syndicate Jan's CyberKit posts, not his entire blog.
 
         * config.ini:
 
@@ -359,13 +359,13 @@
 
 2007-11-30  Adam Roben  <aroben@apple.com>
 
-        Include all WebKit posts from Trolltech Labs
+        Include all CyberKit posts from Trolltech Labs
 
         * config.ini:
 
 2007-11-30  Adam Roben  <aroben@apple.com>
 
-        Initial checkin of Planet WebKit
+        Initial checkin of Planet CyberKit
 
         Rubberstamped by Sam.
 

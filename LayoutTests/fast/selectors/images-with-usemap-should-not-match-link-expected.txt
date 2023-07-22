@@ -1,4 +1,4 @@
-WebKit had a bug where <img> tag would get a link status whenever usemap was defined.
+CyberKit had a bug where <img> tag would get a link status whenever usemap was defined.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

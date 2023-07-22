@@ -1,4 +1,4 @@
-This tests mutating the attribute value by the setters of textContent and nodeValue. WebKit should insert exactly one record
+This tests mutating the attribute value by the setters of textContent and nodeValue. CyberKit should insert exactly one record
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

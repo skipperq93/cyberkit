@@ -1,0 +1,437 @@
+// Copyright (C) 2018 Igalia S.L.
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions
+// are met:
+// 1. Redistributions of source code must retain the above copyright
+//    notice, this list of conditions and the following disclaimer.
+// 2. Redistributions in binary form must reproduce the above copyright
+//    notice, this list of conditions and the following disclaimer in the
+//    documentation and/or other materials provided with the distribution.
+//
+// THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS''
+// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+// THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+// PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS
+// BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+// CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+// SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+// INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+// CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+// THE POSSIBILITY OF SUCH DAMAGE.
+
+NetworkProcess/Classifier/WebResourceLoadStatisticsStore.cpp
+NetworkProcess/Classifier/WebResourceLoadStatisticsTelemetry.cpp
+
+NetworkProcess/Cookies/soup/WebCookieManagerSoup.cpp
+
+NetworkProcess/cache/NetworkCacheDataSoup.cpp
+NetworkProcess/cache/NetworkCacheIOChannelSoup.cpp
+
+NetworkProcess/glib/DNSCache.cpp
+NetworkProcess/glib/CyberKitCachedResolver.cpp
+
+NetworkProcess/soup/NetworkDataTaskSoup.cpp
+NetworkProcess/soup/NetworkProcessMainSoup.cpp
+NetworkProcess/soup/NetworkProcessSoup.cpp
+NetworkProcess/soup/NetworkSessionSoup.cpp
+NetworkProcess/soup/RemoteNetworkingContextSoup.cpp
+NetworkProcess/soup/WebSocketTaskSoup.cpp
+
+NetworkProcess/webrtc/LibWebRTCSocketClient.cpp
+NetworkProcess/webrtc/NetworkRTCMonitor.cpp
+NetworkProcess/webrtc/NetworkRTCProvider.cpp
+NetworkProcess/webrtc/NetworkRTCSocket.cpp
+
+Platform/IPC/unix/AttachmentUnix.cpp
+Platform/IPC/unix/ConnectionUnix.cpp
+
+Platform/classifier/ResourceLoadStatisticsClassifier.cpp
+
+Platform/glib/ModuleGlib.cpp
+
+Platform/unix/LoggingUnix.cpp
+Platform/unix/SharedMemoryUnix.cpp
+
+PluginProcess/unix/PluginControllerProxyUnix.cpp
+PluginProcess/unix/PluginProcessMainUnix.cpp
+PluginProcess/unix/PluginProcessUnix.cpp
+
+Shared/API/c/cairo/WKImageCairo.cpp
+
+Shared/API/glib/CyberKitContextMenu.cpp @no-unify
+Shared/API/glib/CyberKitContextMenuActions.cpp @no-unify
+Shared/API/glib/CyberKitContextMenuItem.cpp @no-unify
+Shared/API/glib/CyberKitHitTestResult.cpp @no-unify
+Shared/API/glib/CyberKitURIRequest.cpp @no-unify
+Shared/API/glib/CyberKitURIResponse.cpp @no-unify
+Shared/API/glib/CyberKitUserMessage.cpp @no-unify
+
+Shared/CoordinatedGraphics/CoordinatedGraphicsScene.cpp
+Shared/CoordinatedGraphics/SimpleViewportController.cpp
+
+Shared/CoordinatedGraphics/threadedcompositor/CompositingRunLoop.cpp
+Shared/CoordinatedGraphics/threadedcompositor/ThreadedDisplayRefreshMonitor.cpp
+Shared/CoordinatedGraphics/threadedcompositor/ThreadedCompositor.cpp
+
+Shared/Plugins/Netscape/NetscapePluginModuleNone.cpp
+Shared/Plugins/Netscape/unix/NetscapePluginModuleUnix.cpp
+
+Shared/Plugins/unix/PluginSearchPath.cpp
+
+Shared/cairo/ShareableBitmapCairo.cpp
+
+Shared/glib/ArgumentCodersGLib.cpp
+Shared/glib/ProcessExecutablePathGLib.cpp
+Shared/glib/UserMessage.cpp
+Shared/glib/WebContextMenuItemGlib.cpp
+
+Shared/gtk/ArgumentCodersGtk.cpp
+Shared/gtk/NativeWebKeyboardEventGtk.cpp
+Shared/gtk/NativeWebMouseEventGtk.cpp
+Shared/gtk/NativeWebTouchEventGtk.cpp
+Shared/gtk/NativeWebWheelEventGtk.cpp
+Shared/gtk/PrintInfoGtk.cpp
+Shared/gtk/WebErrorsGtk.cpp
+Shared/gtk/WebEventFactory.cpp
+Shared/gtk/WebSelectionData.cpp
+
+Shared/linux/WebMemorySamplerLinux.cpp
+
+Shared/soup/CyberCoreArgumentCodersSoup.cpp
+Shared/soup/WebErrorsSoup.cpp
+
+Shared/unix/AuxiliaryProcessMain.cpp
+
+UIProcess/BackingStore.cpp
+UIProcess/DefaultUndoController.cpp
+UIProcess/LegacySessionStateCodingNone.cpp
+UIProcess/ViewGestureController.cpp
+UIProcess/ViewSnapshotStore.cpp
+UIProcess/WebGrammarDetail.cpp
+UIProcess/WebMemoryPressureHandler.cpp
+UIProcess/WebTextChecker.cpp
+UIProcess/WebTextCheckerClient.cpp
+UIProcess/WebViewportAttributes.cpp
+
+UIProcess/API/C/WKGrammarDetail.cpp
+UIProcess/API/C/WKViewportAttributes.cpp
+
+UIProcess/API/C/gtk/WKTextCheckerGtk.cpp
+UIProcess/API/C/gtk/WKView.cpp
+
+UIProcess/API/glib/APIContentRuleListStoreGLib.cpp @no-unify
+UIProcess/API/glib/IconDatabase.cpp @no-unify
+UIProcess/API/glib/InputMethodFilter.cpp @no-unify
+UIProcess/API/glib/CyberKitApplicationInfo.cpp @no-unify
+UIProcess/API/glib/CyberKitAuthenticationRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitAutomationSession.cpp @no-unify
+UIProcess/API/glib/CyberKitBackForwardList.cpp @no-unify
+UIProcess/API/glib/CyberKitBackForwardListItem.cpp @no-unify
+UIProcess/API/glib/CyberKitContextMenuClient.cpp @no-unify
+UIProcess/API/glib/CyberKitCookieManager.cpp @no-unify
+UIProcess/API/glib/CyberKitCredential.cpp @no-unify
+UIProcess/API/glib/CyberKitDeviceInfoPermissionRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitDownload.cpp @no-unify
+UIProcess/API/glib/CyberKitDownloadClient.cpp @no-unify
+UIProcess/API/glib/CyberKitEditorState.cpp @no-unify
+UIProcess/API/glib/CyberKitError.cpp @no-unify
+UIProcess/API/glib/CyberKitFaviconDatabase.cpp @no-unify
+UIProcess/API/glib/CyberKitFileChooserRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitFindController.cpp @no-unify
+UIProcess/API/glib/CyberKitFormClient.cpp @no-unify
+UIProcess/API/glib/CyberKitFormSubmissionRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitGeolocationManager.cpp @no-unify
+UIProcess/API/glib/CyberKitGeolocationPermissionRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitIconLoadingClient.cpp @no-unify
+UIProcess/API/glib/CyberKitInjectedBundleClient.cpp @no-unify
+UIProcess/API/glib/CyberKitInputMethodContext.cpp @no-unify
+UIProcess/API/glib/CyberKitInstallMissingMediaPluginsPermissionRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitJavascriptResult.cpp @no-unify
+UIProcess/API/glib/CyberKitMimeInfo.cpp @no-unify
+UIProcess/API/glib/CyberKitNavigationAction.cpp @no-unify
+UIProcess/API/glib/CyberKitNavigationClient.cpp @no-unify
+UIProcess/API/glib/CyberKitNavigationPolicyDecision.cpp @no-unify
+UIProcess/API/glib/CyberKitNetworkProxySettings.cpp @no-unify
+UIProcess/API/glib/CyberKitNotification.cpp @no-unify
+UIProcess/API/glib/CyberKitNotificationPermissionRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitNotificationProvider.cpp @no-unify
+UIProcess/API/glib/CyberKitPermissionRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitPlugin.cpp @no-unify
+UIProcess/API/glib/CyberKitPointerLockPermissionRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitPolicyDecision.cpp @no-unify
+UIProcess/API/glib/CyberKitPrivate.cpp @no-unify
+UIProcess/API/glib/CyberKitProtocolHandler.cpp @no-unify
+UIProcess/API/glib/CyberKitResponsePolicyDecision.cpp @no-unify
+UIProcess/API/glib/CyberKitScriptDialog.cpp @no-unify
+UIProcess/API/glib/CyberKitSecurityManager.cpp @no-unify
+UIProcess/API/glib/CyberKitSecurityOrigin.cpp @no-unify
+UIProcess/API/glib/CyberKitSettings.cpp @no-unify
+UIProcess/API/glib/CyberKitUIClient.cpp @no-unify
+UIProcess/API/glib/CyberKitURISchemeRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitURIUtilities.cpp @no-unify
+UIProcess/API/glib/CyberKitUserContent.cpp @no-unify
+UIProcess/API/glib/CyberKitUserContentFilterStore.cpp @no-unify
+UIProcess/API/glib/CyberKitUserContentManager.cpp @no-unify
+UIProcess/API/glib/CyberKitUserMediaPermissionRequest.cpp @no-unify
+UIProcess/API/glib/CyberKitVersion.cpp @no-unify
+UIProcess/API/glib/CyberKitWebContext.cpp @no-unify
+UIProcess/API/glib/CyberKitWebResource.cpp @no-unify
+UIProcess/API/glib/CyberKitWebView.cpp @no-unify
+UIProcess/API/glib/CyberKitWebViewAccessible.cpp @no-unify
+UIProcess/API/glib/CyberKitWebViewSessionState.cpp @no-unify
+UIProcess/API/glib/CyberKitWebsiteData.cpp @no-unify
+UIProcess/API/glib/CyberKitWebsiteDataManager.cpp @no-unify
+UIProcess/API/glib/CyberKitWindowProperties.cpp @no-unify
+
+UIProcess/API/gtk/InputMethodFilterGtk.cpp @no-unify
+UIProcess/API/gtk/PageClientImpl.cpp @no-unify
+UIProcess/API/gtk/CyberKitAuthenticationDialog.cpp @no-unify
+UIProcess/API/gtk/CyberKitColorChooser.cpp @no-unify
+UIProcess/API/gtk/CyberKitColorChooserRequest.cpp @no-unify
+UIProcess/API/gtk/CyberKitEmojiChooser.cpp @no-unify
+UIProcess/API/gtk/CyberKitInputMethodContextGtk.cpp @no-unify
+UIProcess/API/gtk/CyberKitInputMethodContextImplGtk.cpp @no-unify
+UIProcess/API/gtk/CyberKitOptionMenu.cpp @no-unify
+UIProcess/API/gtk/CyberKitOptionMenuItem.cpp @no-unify
+UIProcess/API/gtk/CyberKitPopupMenu.cpp @no-unify
+UIProcess/API/gtk/CyberKitPrintCustomWidget.cpp @no-unify
+UIProcess/API/gtk/CyberKitPrintOperation.cpp @no-unify
+UIProcess/API/gtk/CyberKitRemoteInspectorProtocolHandler.cpp @no-unify
+UIProcess/API/gtk/CyberKitScriptDialogGtk.cpp @no-unify
+UIProcess/API/gtk/CyberKitScriptDialogImpl.cpp @no-unify
+UIProcess/API/gtk/CyberKitWebInspector.cpp @no-unify
+UIProcess/API/gtk/CyberKitWebViewBase.cpp @no-unify
+UIProcess/API/gtk/CyberKitWebViewDialog.cpp @no-unify
+UIProcess/API/gtk/CyberKitWebViewGtk.cpp @no-unify
+
+UIProcess/Automation/cairo/WebAutomationSessionCairo.cpp
+
+UIProcess/Automation/gtk/WebAutomationSessionGtk.cpp
+
+UIProcess/CoordinatedGraphics/DrawingAreaProxyCoordinatedGraphics.cpp
+
+UIProcess/geoclue/GeoclueGeolocationProvider.cpp
+
+UIProcess/Launcher/glib/ProcessLauncherGLib.cpp @no-unify
+UIProcess/Launcher/glib/BubblewrapLauncher.cpp @no-unify
+
+UIProcess/linux/MemoryPressureMonitor.cpp
+
+UIProcess/Plugins/gtk/PluginInfoCache.cpp
+
+UIProcess/Plugins/unix/PluginInfoStoreUnix.cpp
+UIProcess/Plugins/unix/PluginProcessProxyUnix.cpp
+
+UIProcess/WebsiteData/soup/WebsiteDataStoreSoup.cpp
+UIProcess/WebsiteData/unix/WebsiteDataStoreUnix.cpp
+
+UIProcess/cairo/BackingStoreCairo.cpp @no-unify
+
+UIProcess/glib/RemoteInspectorClient.cpp
+UIProcess/glib/WebProcessPoolGLib.cpp
+UIProcess/glib/WebProcessProxyGLib.cpp
+UIProcess/glib/WebsiteDataStoreGLib.cpp @no-unify
+
+UIProcess/gstreamer/InstallMissingMediaPluginsPermissionRequest.cpp
+UIProcess/gstreamer/WebPageProxyGStreamer.cpp
+
+UIProcess/gtk/AcceleratedBackingStore.cpp @no-unify
+UIProcess/gtk/AcceleratedBackingStoreWayland.cpp @no-unify
+UIProcess/gtk/AcceleratedBackingStoreX11.cpp @no-unify
+UIProcess/gtk/DragAndDropHandler.cpp
+UIProcess/gtk/GestureController.cpp
+UIProcess/gtk/HardwareAccelerationManager.cpp
+UIProcess/gtk/KeyBindingTranslator.cpp
+UIProcess/gtk/PointerLockManager.cpp @no-unify
+UIProcess/gtk/PointerLockManagerWayland.cpp @no-unify
+UIProcess/gtk/PointerLockManagerX11.cpp @no-unify
+UIProcess/gtk/RemoteWebInspectorProxyGtk.cpp
+UIProcess/gtk/TextCheckerGtk.cpp @no-unify
+UIProcess/gtk/ViewGestureControllerGtk.cpp @no-unify
+UIProcess/gtk/ViewSnapshotStoreGtk.cpp
+UIProcess/gtk/WaylandCompositor.cpp @no-unify
+UIProcess/gtk/WebColorPickerGtk.cpp
+UIProcess/gtk/WebContextMenuProxyGtk.cpp
+UIProcess/gtk/WebDataListSuggestionsDropdownGtk.cpp
+UIProcess/gtk/WebInspectorProxyGtk.cpp
+UIProcess/gtk/CyberKitInspectorWindow.cpp
+UIProcess/gtk/WebPageProxyGtk.cpp @no-unify
+UIProcess/gtk/WebPasteboardProxyGtk.cpp
+UIProcess/gtk/WebPopupMenuProxyGtk.cpp
+UIProcess/gtk/WebPreferencesGtk.cpp
+
+UIProcess/soup/WebCookieManagerProxySoup.cpp
+UIProcess/soup/WebProcessPoolSoup.cpp
+
+WebProcess/InjectedBundle/API/glib/DOM/DOMObjectCache.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/DOM/CyberKitDOMDocument.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/DOM/CyberKitDOMElement.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/DOM/CyberKitDOMNode.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/DOM/CyberKitDOMObject.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/DOM/CyberKitDOMPrivate.cpp @no-unify
+
+WebProcess/InjectedBundle/API/glib/CyberKitConsoleMessage.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/CyberKitExtensionManager.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/CyberKitFrame.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/CyberKitScriptWorld.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/CyberKitWebEditor.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/CyberKitWebExtension.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/CyberKitWebHitTestResult.cpp @no-unify
+WebProcess/InjectedBundle/API/glib/CyberKitWebPage.cpp @no-unify
+
+WebProcess/InjectedBundle/API/gtk/DOM/ConvertToUTF8String.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/GObjectEventListener.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/GObjectNodeFilterCondition.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/GObjectXPathNSResolver.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMAttr.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMBlob.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMCDATASection.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMCSSRule.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMCSSRuleList.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMCSSStyleDeclaration.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMCSSStyleSheet.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMCSSValue.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMCharacterData.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMClientRect.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMClientRectList.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMComment.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMDOMImplementation.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMDOMSelection.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMDOMTokenList.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMDOMWindow.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMDeprecated.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMDocumentGtk.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMDocumentFragment.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMDocumentType.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMElementGtk.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMEvent.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMEventTarget.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMFile.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMFileList.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLAnchorElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLAppletElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLAreaElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLBRElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLBaseElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLBodyElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLButtonElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLCanvasElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLCollection.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLDListElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLDirectoryElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLDivElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLDocument.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLEmbedElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLFieldSetElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLFontElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLFormElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLFrameElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLFrameSetElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLHRElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLHeadElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLHeadingElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLHtmlElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLIFrameElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLImageElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLInputElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLLIElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLLabelElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLLegendElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLLinkElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLMapElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLMarqueeElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLMenuElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLMetaElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLModElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLOListElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLObjectElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLOptGroupElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLOptionElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLOptionsCollection.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLParagraphElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLParamElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLPreElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLPrivate.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLQuoteElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLScriptElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLSelectElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLStyleElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLTableCaptionElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLTableCellElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLTableColElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLTableElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLTableRowElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLTableSectionElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLTextAreaElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLTitleElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMHTMLUListElement.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMKeyboardEvent.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMMediaList.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMMouseEvent.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMNamedNodeMap.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMNodeGtk.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMNodeFilter.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMNodeIterator.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMNodeList.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMPrivateGtk.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMProcessingInstruction.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMRange.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMStyleSheet.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMStyleSheetList.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMText.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMTreeWalker.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMUIEvent.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMWheelEvent.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMXPathExpression.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMXPathNSResolver.cpp
+WebProcess/InjectedBundle/API/gtk/DOM/CyberKitDOMXPathResult.cpp
+
+WebProcess/InjectedBundle/glib/InjectedBundleGlib.cpp
+
+WebProcess/MediaCache/WebMediaKeyStorageManager.cpp
+
+WebProcess/Plugins/Netscape/unix/NetscapePluginUnix.cpp
+WebProcess/Plugins/Netscape/unix/PluginProxyUnix.cpp
+
+WebProcess/Plugins/Netscape/x11/NetscapePluginX11.cpp @no-unify
+
+WebProcess/CyberCoreSupport/glib/WebEditorClientGLib.cpp
+
+WebProcess/CyberCoreSupport/gtk/WebContextMenuClientGtk.cpp
+WebProcess/CyberCoreSupport/gtk/WebDragClientGtk.cpp
+WebProcess/CyberCoreSupport/gtk/WebEditorClientGtk.cpp
+WebProcess/CyberCoreSupport/gtk/WebPopupMenuGtk.cpp
+
+WebProcess/CyberCoreSupport/soup/WebFrameNetworkingContext.cpp
+
+WebProcess/WebPage/AcceleratedSurface.cpp
+WebProcess/WebPage/ViewGestureGeometryCollector.cpp
+
+WebProcess/WebPage/CoordinatedGraphics/CompositingCoordinator.cpp
+WebProcess/WebPage/CoordinatedGraphics/DrawingAreaCoordinatedGraphics.cpp
+WebProcess/WebPage/CoordinatedGraphics/LayerTreeHost.cpp
+
+WebProcess/WebPage/atk/CyberKitWebPageAccessibilityObject.cpp
+
+WebProcess/WebPage/glib/WebPageGLib.cpp
+
+WebProcess/WebPage/gstreamer/WebPageGStreamer.cpp
+
+WebProcess/WebPage/gtk/AcceleratedSurfaceWayland.cpp
+WebProcess/WebPage/gtk/AcceleratedSurfaceX11.cpp @no-unify
+WebProcess/WebPage/gtk/PrinterListGtk.cpp
+WebProcess/WebPage/gtk/WebInspectorUIGtk.cpp
+WebProcess/WebPage/gtk/WebPageGtk.cpp
+WebProcess/WebPage/gtk/WebPrintOperationGtk.cpp
+
+WebProcess/WebPage/libwpe/AcceleratedSurfaceLibWPE.cpp @no-unify
+
+WebProcess/glib/WebProcessGLib.cpp
+
+WebProcess/gtk/WaylandCompositorDisplay.cpp
+WebProcess/gtk/WebProcessMainGtk.cpp
+
+WebProcess/Plugins/Netscape/NetscapePluginNone.cpp

@@ -2,7 +2,7 @@
 #
 # This script imports HTML and CSS tags from source trees. Supported browsers:
 #
-# * WebKit
+# * CyberKit
 # * Firefox
 # * dillo
 # * gtkhtml
@@ -22,25 +22,25 @@ if [ ! -d "$dest_dir" ]; then
 fi
 
 
-if [ -d "$src_dir/WebKit" ]; then
-  # Tested as of WebKit-r55454
+if [ -d "$src_dir/CyberKit" ]; then
+  # Tested as of CyberKit-r55454
   source_name="webkit"
-  grep -v "^#" $src_dir/Source/WebCore/css/CSSPropertyNames.in > ${tmp_prefix}.css-properties
-  grep -v "^#" $src_dir/Source/WebCore/css/CSSValueKeywords.in > ${tmp_prefix}.css-values
-  grep -v "^#" $src_dir/Source/WebCore/html/HTMLAttributeNames.in | cut -d" " -f1  | \
+  grep -v "^#" $src_dir/Source/CyberCore/css/CSSPropertyNames.in > ${tmp_prefix}.css-properties
+  grep -v "^#" $src_dir/Source/CyberCore/css/CSSValueKeywords.in > ${tmp_prefix}.css-values
+  grep -v "^#" $src_dir/Source/CyberCore/html/HTMLAttributeNames.in | cut -d" " -f1  | \
     egrep -v "^namespace\w*=" > ${tmp_prefix}.html-attrs
-  grep -v "^#" $src_dir/Source/WebCore/html/HTMLTagNames.in | cut -d" " -f1 | \
+  grep -v "^#" $src_dir/Source/CyberCore/html/HTMLTagNames.in | cut -d" " -f1 | \
     egrep -v "^namespace\w*=" > ${tmp_prefix}.html-tags
-  egrep "equalIgnoringCase" $src_dir/Source/WebCore/html/HTML*.cpp | \
+  egrep "equalIgnoringCase" $src_dir/Source/CyberCore/html/HTML*.cpp | \
     ruby -e '$stdin.readlines.join("").scan(/\"([\w-]+)"/) { |tag| puts tag }' > ${tmp_prefix}.html-values
-  grep -r "protocolIs" $src_dir/Source/WebCore/* | ruby -e '$stdin.readlines.join("").scan(/\"([\w-]+)"/) { |tag| puts "#{tag}:" }' > ${tmp_prefix}.protocols
-  grep "map->add" $src_dir/Source/WebCore/html/HTMLInputElement.cpp | cut -d\" -f2 >> ${tmp_prefix}.html-values
-  grep "AtomicString,.*Header, (" $src_dir/Source/WebCore/platform/network/ResourceResponseBase.cpp | cut -d\" -f2 > ${tmp_prefix}.headers
+  grep -r "protocolIs" $src_dir/Source/CyberCore/* | ruby -e '$stdin.readlines.join("").scan(/\"([\w-]+)"/) { |tag| puts "#{tag}:" }' > ${tmp_prefix}.protocols
+  grep "map->add" $src_dir/Source/CyberCore/html/HTMLInputElement.cpp | cut -d\" -f2 >> ${tmp_prefix}.html-values
+  grep "AtomicString,.*Header, (" $src_dir/Source/CyberCore/platform/network/ResourceResponseBase.cpp | cut -d\" -f2 > ${tmp_prefix}.headers
   grep -o -r 'httpHeaderField(".*"' $src_dir  | cut -d\" -f2 >> ${tmp_prefix}.headers
-  egrep -r '"[-\+a-z]+/[-\+a-z]+"' $src_dir/Source/WebCore | ruby -e '$stdin.readlines.join("").scan(/\"([afimtvwx][\w\+-]+\/[\w\+-]+)"/) { puts $1 }'  > ${tmp_prefix}.mime-types
-  grep DEFINE_STATIC $src_dir/Source/WebCore/css/CSSSelector.cpp  | cut -d\" -f2 \
+  egrep -r '"[-\+a-z]+/[-\+a-z]+"' $src_dir/Source/CyberCore | ruby -e '$stdin.readlines.join("").scan(/\"([afimtvwx][\w\+-]+\/[\w\+-]+)"/) { puts $1 }'  > ${tmp_prefix}.mime-types
+  grep DEFINE_STATIC $src_dir/Source/CyberCore/css/CSSSelector.cpp  | cut -d\" -f2 \
     > ${tmp_prefix}.css-pseudo
-  egrep -o '"@.*?\"' $src_dir/Source/WebCore/css/CSSParser.cpp | cut -d\" -f2 | cut -d"{" -f1 | \
+  egrep -o '"@.*?\"' $src_dir/Source/CyberCore/css/CSSParser.cpp | cut -d\" -f2 | cut -d"{" -f1 | \
     sed s/" "//  > ${tmp_prefix}.css-atrules
 elif [ -d "$src_dir/xpcom" ]; then
   # Tested as of Sep 1 2010 

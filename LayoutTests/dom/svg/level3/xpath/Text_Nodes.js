@@ -155,7 +155,7 @@ outresult = evaluator.evaluate(expression,contextNode,resolver,xpathType,inresul
     currNodeNextSibling = currNode.nextSibling;
 
       
-    // WebKit fix: inverted the condition: <http://bugs.webkit.org/show_bug.cgi?id=12560>.
+    // CyberKit fix: inverted the condition: <http://bugs.webkit.org/show_bug.cgi?id=12560>.
     if(
     
     same(nextNode,currNodeNextSibling)
@@ -167,7 +167,7 @@ outresult = evaluator.evaluate(expression,contextNode,resolver,xpathType,inresul
     nextNodePrevSibling = nextNode.previousSibling;
 
       
-    // WebKit fix: inverted the condition: <http://bugs.webkit.org/show_bug.cgi?id=12560>.
+    // CyberKit fix: inverted the condition: <http://bugs.webkit.org/show_bug.cgi?id=12560>.
     if(
     
     same(nextNodePrevSibling,currNode)

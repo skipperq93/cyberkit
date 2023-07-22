@@ -31,8 +31,8 @@
 #import "AccessibilityNotificationHandler.h"
 #import "AccessibilityUIElement.h"
 #import <Foundation/Foundation.h>
-#import <WebKit/WebFramePrivate.h>
-#import <WebKit/WebHTMLViewPrivate.h>
+#import <CyberKit/WebFramePrivate.h>
+#import <CyberKit/WebHTMLViewPrivate.h>
 
 @interface WebHTMLView (Private)
 - (id)accessibilityFocusedUIElement;

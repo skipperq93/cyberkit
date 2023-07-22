@@ -15,7 +15,7 @@ promise_test(async (test) => {
     internals.setCaptureExtraNetworkLoadMetricsEnabled(true);
 
     const host = get_host_info();
-    await fetch(host.HTTP_REMOTE_ORIGIN + "/WebKit/fetch/resources/preflight.py", { headers : [["header", "value"]] });
+    await fetch(host.HTTP_REMOTE_ORIGIN + "/CyberKit/fetch/resources/preflight.py", { headers : [["header", "value"]] });
 
     let descriptions = internals.ongoingLoadsDescriptions();
     internals.setCaptureExtraNetworkLoadMetricsEnabled(false);

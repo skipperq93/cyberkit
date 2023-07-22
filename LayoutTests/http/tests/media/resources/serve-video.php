@@ -13,7 +13,7 @@
         "mediaDirectory" => array_key_exists("name", $_GET) ? dirname($_GET["name"]) : "",
         "mimeType" => array_key_exists("type", $_GET) ? $_GET["type"] : "",
         "radioGenre" => "Rock",
-        "radioName" => "WebKit Test Radio",
+        "radioName" => "CyberKit Test Radio",
         "radioUrl" => (array_key_exists("HTTPS", $_SERVER) ? "https" : "http") . "://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"],
         "setContentLength" => array_key_exists("content-length", $_GET) ? $_GET["content-length"] : "yes",
         "setIcyData" => array_key_exists("icy-data", $_GET) ? $_GET["icy-data"] : "no",
@@ -121,7 +121,7 @@ answering:
         if ($settings["mimeType"] == "")
             $settings["mimeType"] = $playFiles[$i]["mimeType"];
         header("icy-notice1: <BR>This stream requires a shoutcast/icecast compatible player.<BR>");
-        header("icy-notice2: WebKit Stream Test<BR>");
+        header("icy-notice2: CyberKit Stream Test<BR>");
         header("icy-name: " . $settings["radioName"]);
         header("icy-genre: " . $settings["radioGenre"]);
         header("icy-url: " . $settings["radioUrl"]);

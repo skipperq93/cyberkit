@@ -30,7 +30,7 @@
 #include <wpe/fdo-egl.h>
 
 #if defined(HAVE_ACCESSIBILITY) && HAVE_ACCESSIBILITY
-#include "WebKitAccessibleApplication.h"
+#include "CyberKitAccessibleApplication.h"
 #include <atk-bridge.h>
 #include <atk/atk.h>
 #endif
@@ -220,7 +220,7 @@ void ViewBackend::initializeAccessibility()
     };
 
     atkUtilClass->get_toolkit_name = []() -> const gchar* {
-        return "WPEWebKit";
+        return "WPECyberKit";
     };
 
     atkUtilClass->get_toolkit_version = []() -> const gchar* {

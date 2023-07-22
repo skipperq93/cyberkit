@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-<p>This tests that WebKit doesn't crash when there is an non-flattened iframe inside a flattened iframe.</p>
+<p>This tests that CyberKit doesn't crash when there is an non-flattened iframe inside a flattened iframe.</p>
 <div id="container"></div>
 <script>
 
@@ -28,7 +28,7 @@ for (let i = 0; i < 50; i++)
 innerIFrame.contentDocument.body.innerHTML = content;
 
 document.body.getBoundingClientRect();
-container.textContent = 'PASS. WebKit did not crash.';
+container.textContent = 'PASS. CyberKit did not crash.';
 
 </script>
 </body>

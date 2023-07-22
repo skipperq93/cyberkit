@@ -10,13 +10,13 @@ function rad2deg(x) {
 
 function ellipseUsingArc(context, x, y, radiusX, radiusY, rotation, startAngle, endAngle, anticlockwise)
 {
-    var transform = new WebKitCSSMatrix();
+    var transform = new CyberKitCSSMatrix();
     transform = transform.translate(x, y);
     transform = transform.rotate(rad2deg(rotation));
     transform = transform.scale(radiusX, radiusY);
 
     /*
-    Use WebKitCSSMatrix instead of as follows, because using WebKitCSSMatrix computes float values more precisely.
+    Use CyberKitCSSMatrix instead of as follows, because using CyberKitCSSMatrix computes float values more precisely.
     It is because we don't want to fail pixel comparison due to float precision.
       context.translate(x, y);
       context.rotate(rotation);
