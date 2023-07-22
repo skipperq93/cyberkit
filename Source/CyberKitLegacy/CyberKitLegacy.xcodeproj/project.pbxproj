@@ -3267,6 +3267,10 @@
 						CreatedOnToolsVersion = 11.0;
 						ProvisioningStyle = Automatic;
 					};
+					9398100A0824BF01008DF038 = {
+						DevelopmentTeam = SJ87WGCZM7;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 149C283208902B0F008A9EFC /* Build configuration list for PBXProject "CyberKitLegacy" */;
@@ -3798,8 +3802,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C904FD20BA9DD0F0081E9D0 /* CyberKitLegacy.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_DEFINES = "$(DEBUG_DEFINES_debug) ENABLE_WEBKIT_UNSET_DYLD_FRAMEWORK_PATH";
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKitLegacy;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -3807,8 +3816,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C904FD20BA9DD0F0081E9D0 /* CyberKitLegacy.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_DEFINES = "$(DEBUG_DEFINES_$(CURRENT_VARIANT)) ENABLE_WEBKIT_UNSET_DYLD_FRAMEWORK_PATH";
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKitLegacy;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -3817,7 +3831,12 @@
 			baseConfigurationReference = 1C904FD20BA9DD0F0081E9D0 /* CyberKitLegacy.xcconfig */;
 			buildSettings = {
 				BUILD_VARIANTS = normal;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKitLegacy;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Production;
 		};
@@ -3825,6 +3844,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C904FD40BA9DD0F0081E9D0 /* DebugRelease.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 				DEBUG_DEFINES = "$(DEBUG_DEFINES_debug)";
 				GCC_OPTIMIZATION_LEVEL = "$(GCC_OPTIMIZATION_LEVEL_debug)";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3836,6 +3856,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C904FD40BA9DD0F0081E9D0 /* DebugRelease.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				STRIP_INSTALLED_PRODUCT = NO;
 			};
@@ -3845,6 +3866,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C904FD50BA9DD0F0081E9D0 /* Base.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Production;

@@ -184,6 +184,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C60FE3314E5F3CD006CD77D /* WebInspectorUIFramework.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 			};
 			name = Production;
 		};
@@ -209,6 +210,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C60FE3314E5F3CD006CD77D /* WebInspectorUIFramework.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 			};
 			name = Debug;
 		};
@@ -216,6 +218,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C60FE3314E5F3CD006CD77D /* WebInspectorUIFramework.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 			};
 			name = Release;
 		};

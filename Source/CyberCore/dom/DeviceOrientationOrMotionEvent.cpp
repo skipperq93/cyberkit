@@ -24,9 +24,11 @@
  */
 
 #include "config.h"
+#include "DeviceOrientationAndMotionAccessController.h"
 #include "DeviceOrientationOrMotionEvent.h"
 
 #include "Document.h"
+#include "DOMWindow.h"
 
 namespace CyberCore {
 

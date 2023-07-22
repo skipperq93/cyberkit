@@ -32601,7 +32601,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${ACTION}\" = \"installhdrs\" -o \"${ACTION}\" = \"installapi\" ]; then\n    exit 0;\nfi\n\nif [ -f ../../Tools/Scripts/check-for-inappropriate-objc-class-names ]; then\n    ../../Tools/Scripts/check-for-inappropriate-objc-class-names Web || exit $?\nfi";
+			shellScript = "if [ \"${ACTION}\" = \"installhdrs\" -o \"${ACTION}\" = \"installapi\" ]; then\n    exit 0;\nfi\n\nif [ -f ../../Tools/Scripts/check-for-inappropriate-objc-class-names ]; then\n    ../../Tools/Scripts/check-for-inappropriate-objc-class-names Web Cyber || exit $?\nfi\n";
 		};
 		5325BDCC21DFF33E00A0DEE1 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -33738,6 +33738,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1CDD45E50BA9C84600F90147 /* CyberCore.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				ENABLE_BITCODE = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberCore;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -33745,6 +33751,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1CDD45E50BA9C84600F90147 /* CyberCore.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				ENABLE_BITCODE = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberCore;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -33753,6 +33765,12 @@
 			baseConfigurationReference = 1CDD45E50BA9C84600F90147 /* CyberCore.xcconfig */;
 			buildSettings = {
 				BUILD_VARIANTS = normal;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				ENABLE_BITCODE = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberCore;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Production;
 		};
@@ -33789,6 +33807,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4181707D1386EDF20057AAA4 /* CyberCoreTestSupport.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 			};
 			name = Debug;
 		};
@@ -33796,6 +33815,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4181707D1386EDF20057AAA4 /* CyberCoreTestSupport.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 			};
 			name = Release;
 		};
@@ -33803,6 +33823,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4181707D1386EDF20057AAA4 /* CyberCoreTestSupport.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 			};
 			name = Production;
 		};
@@ -33906,6 +33927,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E1BA66F21742BDCC00C20251 /* CyberCoreTestShim.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 			};
 			name = Debug;
 		};
@@ -33913,6 +33935,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E1BA66F21742BDCC00C20251 /* CyberCoreTestShim.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 			};
 			name = Release;
 		};
@@ -33920,6 +33943,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E1BA66F21742BDCC00C20251 /* CyberCoreTestShim.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 			};
 			name = Production;
 		};

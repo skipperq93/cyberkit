@@ -17727,6 +17727,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5D7C59C61208C68B001C873E /* Base.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Production;
@@ -17748,6 +17749,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5D7C59C71208C68B001C873E /* DebugRelease.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 			};
@@ -17757,6 +17759,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5D7C59C71208C68B001C873E /* DebugRelease.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Release;
