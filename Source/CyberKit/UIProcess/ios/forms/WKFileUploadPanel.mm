@@ -70,12 +70,12 @@ static bool arrayContainsUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers,
 
 static inline UIImage *photoLibraryIcon()
 {
-    return _UIImageGetCyberKitPhotoLibraryIcon();
+    return _UIImageGetWebKitPhotoLibraryIcon();
 }
 
 static inline UIImage *cameraIcon()
 {
-    return _UIImageGetCyberKitTakePhotoOrVideoIcon();
+    return _UIImageGetWebKitTakePhotoOrVideoIcon();
 }
 
 #pragma mark - _WKFileUploadItem
