@@ -352,12 +352,14 @@ typedef NS_ENUM(NSInteger, UIScrollViewIndicatorInsetAdjustmentBehavior) {
     UIScrollViewIndicatorInsetAdjustmentNever
 };
 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < 130000
 typedef enum {
     UIAxisNeither = 0,
     UIAxisHorizontal = 1 << 0,
     UIAxisVertical = 1 << 1,
     UIAxisBoth = (UIAxisHorizontal | UIAxisVertical),
 } UIAxis;
+#endif
 
 @interface UIScrollView ()
 - (void)_stopScrollingAndZoomingAnimations;
@@ -383,9 +385,11 @@ typedef enum {
 - (CGSize)_legacy_sizeWithFont:(UIFont *)font minFontSize:(CGFloat)minFontSize actualFontSize:(CGFloat *)actualFontSize forWidth:(CGFloat)width lineBreakMode:(NSLineBreakMode)lineBreakMode;
 @end
 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < 130000
 @interface UIGestureRecognizer ()
 @property (nonatomic, readonly, getter=_modifierFlags) UIKeyModifierFlags modifierFlags;
 @end
+#endif
 
 @interface UITapGestureRecognizer ()
 @property (nonatomic, getter=_allowableSeparation, setter=_setAllowableSeparation:) CGFloat allowableSeparation;
@@ -1300,8 +1304,8 @@ void _UIApplicationLoadCyberKit(void);
 
 void UIImageDataWriteToSavedPhotosAlbum(NSData *imageData, id completionTarget, SEL completionSelector, void *contextInfo);
 
-UIImage* _UIImageGetCyberKitPhotoLibraryIcon(void);
-UIImage* _UIImageGetCyberKitTakePhotoOrVideoIcon(void);
+UIImage* _UIImageGetWebKitPhotoLibraryIcon(void);
+UIImage* _UIImageGetWebKitTakePhotoOrVideoIcon(void);
 
 extern const float UIWebViewGrowsAndShrinksToFitHeight;
 extern const float UIWebViewScalesToFitScale;
@@ -1317,7 +1321,7 @@ extern const NSString *UIPreviewDataDDContext;
 extern const NSString *UIPreviewDataAttachmentList;
 extern const NSString *UIPreviewDataAttachmentIndex;
 
-#if __IPHONE_OS_VERSION_MAX_ALLOWED < 130000
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < 130000
 extern NSString * const UIPreviewDataAttachmentListSourceIsManaged;
 #else
 extern NSString * const UIPreviewDataAttachmentListIsContentManaged;

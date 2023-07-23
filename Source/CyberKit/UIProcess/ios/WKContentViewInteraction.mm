@@ -39,6 +39,7 @@
 #import "NativeWebTouchEvent.h"
 #import "RemoteLayerTreeDrawingAreaProxy.h"
 #import "RemoteLayerTreeViews.h"
+#import "RemoteScrollingCoordinatorProxy.h"
 #import "SmartMagnificationController.h"
 #import "TextChecker.h"
 #import "TextInputSPI.h"
@@ -9112,7 +9113,11 @@ static RetainPtr<UITargetedPreview> createFallbackTargetedPreview(UIView *rootVi
             else
                 dataForPreview[UIPreviewDataAttachmentList] = [uiDelegate _attachmentListForWebView:self.webView];
             dataForPreview[UIPreviewDataAttachmentIndex] = [NSNumber numberWithUnsignedInteger:index];
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             dataForPreview[UIPreviewDataAttachmentListIsContentManaged] = [NSNumber numberWithBool:sourceIsManaged];
+#else
+            dataForPreview[UIPreviewDataAttachmentListSourceIsManaged] = [NSNumber numberWithBool:sourceIsManaged];
+#endif
         }
     }
 
