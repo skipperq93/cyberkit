@@ -35663,8 +35663,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1CDD45E50BA9C84600F90147 /* CyberCore.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				ENABLE_BITCODE = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberCore;
 			};
 			name = Debug;
 		};
@@ -35674,6 +35676,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 				ENABLE_BITCODE = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberCore;
 			};
 			name = Release;
 		};
@@ -35684,6 +35687,7 @@
 				BUILD_VARIANTS = normal;
 				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 				ENABLE_BITCODE = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberCore;
 			};
 			name = Production;
 		};

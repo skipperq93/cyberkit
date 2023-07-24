@@ -11806,6 +11806,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C9051430BA9E8A70081E9D0 /* CyberScriptCore.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberScriptCore;
 			};
 			name = Debug;
 		};
@@ -11813,6 +11816,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C9051430BA9E8A70081E9D0 /* CyberScriptCore.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberScriptCore;
 			};
 			name = Release;
 		};
@@ -11821,6 +11827,9 @@
 			baseConfigurationReference = 1C9051430BA9E8A70081E9D0 /* CyberScriptCore.xcconfig */;
 			buildSettings = {
 				BUILD_VARIANTS = normal;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberScriptCore;
 			};
 			name = Production;
 		};
@@ -12276,6 +12285,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C9051430BA9E8A70081E9D0 /* CyberScriptCore.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberScriptCore;
 			};
 			name = Profiling;
 		};

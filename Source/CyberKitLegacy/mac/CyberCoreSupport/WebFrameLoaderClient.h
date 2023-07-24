@@ -28,6 +28,7 @@
 
 #import <CyberCore/FrameLoaderClient.h>
 #import <CyberCore/Timer.h>
+#import "WebDataSource.h"
 #import <wtf/Forward.h>
 #import <wtf/HashMap.h>
 #import <wtf/RetainPtr.h>

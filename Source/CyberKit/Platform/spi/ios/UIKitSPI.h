@@ -424,7 +424,7 @@ typedef enum {
 @end
 
 @interface UIGestureRecognizer ()
-#if PLATFORM(IOS) && !defined(__IPHONE_13_4)
+#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MAX_ALLOWED < 130000
 @property (nonatomic, readonly, getter=_modifierFlags) UIKeyModifierFlags modifierFlags;
 #endif
 @end

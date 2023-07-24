@@ -1493,7 +1493,7 @@ inline static UIKeyModifierFlags gestureRecognizerModifierFlags(UIGestureRecogni
 #if HAVE(UI_GESTURE_RECOGNIZER_MODIFIER_FLAGS)
     return recognizer.modifierFlags;
 #else
-    return [recognizer respondsToSelector:@selector(_modifierFlags)] ? [recognizer _modifierFlags] : 0;
+    return 0;
 #endif
 }
 

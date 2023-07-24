@@ -60,6 +60,7 @@
 #import <CyberKitLegacy/DOMHTML.h>
 #import <CyberKitLegacy/DOMPrivate.h>
 #import <wtf/Assertions.h>
+#import <wtf/cocoa/VectorCocoa.h>
 #import <wtf/MainThread.h>
 #import <wtf/NakedPtr.h>
 #import <wtf/RefPtr.h>
