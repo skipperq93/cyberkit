@@ -177,6 +177,7 @@
 			baseConfigurationReference = 1C60FE2F14E5F3CD006CD77D /* Base.xcconfig */;
 			buildSettings = {
 				DEBUG_DEFINES = NDEBUG;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Production;
 		};
@@ -192,6 +193,7 @@
 			baseConfigurationReference = 1C60FE3114E5F3CD006CD77D /* DebugRelease.xcconfig */;
 			buildSettings = {
 				DEBUG_DEFINES = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Debug;
 		};
@@ -200,6 +202,7 @@
 			baseConfigurationReference = 1C60FE3114E5F3CD006CD77D /* DebugRelease.xcconfig */;
 			buildSettings = {
 				DEBUG_DEFINES = NDEBUG;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Release;
 		};

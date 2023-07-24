@@ -963,6 +963,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 44C48DFF14A4098F00A2D9C7 /* ProductionProject.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Production;
 		};
@@ -1076,6 +1077,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 40D4CDF10E30E07400294801 /* DebugProject.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Debug;
 		};
@@ -1083,6 +1085,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 40D4CDF40E30E07400294801 /* ReleaseProject.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Release;
 		};

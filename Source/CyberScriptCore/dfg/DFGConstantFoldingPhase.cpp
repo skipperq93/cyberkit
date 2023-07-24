@@ -707,7 +707,7 @@ private:
                         if (variant.kind() == PutByIdVariant::Replace) {
                             auto* watchpoints = structure->propertyReplacementWatchpointSet(condition.offset());
                             if (!watchpoints || watchpoints->isStillValid())
-                                return;
+                                break;
                         }
 
                         m_insertionSet.insertNode(
