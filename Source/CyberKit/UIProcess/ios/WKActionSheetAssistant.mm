@@ -178,7 +178,7 @@ static LSAppLink *appLinkForURL(NSURL *url)
 
 - (_WKElementAction *)_elementActionForDDAction:(DDAction *)action
 {
-#if PLATFORM(IOS) && !PLATFORM(MACCATALYST)
+#if PLATFORM(IOS) && USE(UICONTEXTMENU) && !PLATFORM(MACCATALYST)
     auto retainedSelf = retainPtr(self);
     _WKElementAction *elementAction = [_WKElementAction elementActionWithTitle:action.localizedName actionHandler:^(_WKActivatedElementInfo *actionInfo) {
         retainedSelf->_isPresentingDDUserInterface = action.hasUserInterface;

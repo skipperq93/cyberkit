@@ -624,7 +624,9 @@ static void storeAccessibilityRemoteConnectionInformation(id element, pid_t pid,
 #if ENABLE(GPU_PROCESS)
 - (void)_gpuProcessCrashed
 {
+#if HAVE(VISIBILITY_PROPAGATION_VIEW)
     [self _removeVisibilityPropagationViewForGPUProcess];
+#endif
 }
 #endif
 

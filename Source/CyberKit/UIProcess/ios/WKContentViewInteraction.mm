@@ -7094,7 +7094,7 @@ static BOOL allPasteboardItemOriginsMatchOrigin(UIPasteboard *pasteboard, const 
     if (!context)
         context = adoptNS([[NSMutableDictionary alloc] init]);
 
-#if ENABLE(DATA_DETECTION)
+#if ENABLE(DATA_DETECTION) && USE(UICONTEXTMENU)
     if (!positionInformation.textBefore.isEmpty())
         context.get()[getkDataDetectorsLeadingText()] = positionInformation.textBefore;
     if (!positionInformation.textAfter.isEmpty())
