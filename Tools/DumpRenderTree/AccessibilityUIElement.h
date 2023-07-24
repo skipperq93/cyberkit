@@ -26,8 +26,8 @@
 #pragma once
 
 #include "AccessibilityTextMarker.h"
-#include <JavaScriptCore/JSObjectRef.h>
-#include <JavaScriptCore/JSRetainPtr.h>
+#include <CyberScriptCore/JSObjectRef.h>
+#include <CyberScriptCore/JSRetainPtr.h>
 #include <wtf/Platform.h>
 #include <wtf/Vector.h>
 
@@ -36,7 +36,7 @@
 #elif PLATFORM(WIN)
 #undef _WINSOCKAPI_
 #define _WINSOCKAPI_ // Prevent inclusion of winsock.h in windows.h
-#include <WebCore/COMPtr.h>
+#include <CyberCore/COMPtr.h>
 #include <oleacc.h>
 typedef COMPtr<IAccessible> PlatformUIElement;
 #elif HAVE(ACCESSIBILITY) && PLATFORM(GTK)

@@ -56,7 +56,7 @@ FLATPAK_VERSION = {}
 scriptdir = os.path.abspath(os.path.dirname(__file__))
 _log = logging.getLogger(__name__)
 
-FLATPAK_USER_DIR_PATH = os.path.realpath(os.path.join(scriptdir, "../../WebKitBuild", "UserFlatpak"))
+FLATPAK_USER_DIR_PATH = os.path.realpath(os.path.join(scriptdir, "../../CyberKitBuild", "UserFlatpak"))
 DEFAULT_SCCACHE_SCHEDULER='https://sccache.igalia.com'
 
 is_colored_output_supported = False
@@ -540,7 +540,7 @@ class WebkitFlatpak:
         if self.gdb is None and '--gdb' in sys.argv:
             self.gdb = True
 
-        self.build_root = os.path.join(self.source_root, 'WebKitBuild')
+        self.build_root = os.path.join(self.source_root, 'CyberKitBuild')
         self.build_path = os.path.join(self.build_root, self.platform, self.build_type)
         self.config_file = os.path.join(self.flatpak_build_path, 'webkit_flatpak_config.json')
         self.sccache_config_file = os.path.join(self.flatpak_build_path, 'sccache.toml')
@@ -590,7 +590,7 @@ class WebkitFlatpak:
         if not os.path.exists(os.path.join(gst_dir, 'gst-env.py')):
             raise RuntimeError('GST_BUILD_PATH set to %s but it doesn\'t seem to be a valid `gst-build` checkout.' % gst_dir)
 
-        gst_builddir = os.path.join(self.source_root, "WebKitBuild", 'gst-build')
+        gst_builddir = os.path.join(self.source_root, "CyberKitBuild", 'gst-build')
         if not os.path.exists(os.path.join(self.build_root, 'gst-build', 'build.ninja')):
             if not building:
                 raise RuntimeError('Trying to enter gst-build env from %s but it is not built, make sure to rebuild webkit.' % gst_dir)
@@ -647,7 +647,7 @@ class WebkitFlatpak:
         return command and "build-webkit" in os.path.basename(command)
 
     def host_path_to_sandbox_path(self, host_path):
-        # For now this supports only files in the WebKit path
+        # For now this supports only files in the CyberKit path
         return host_path.replace(self.source_root, self.sandbox_source_root)
 
     def run_in_sandbox(self, *args, **kwargs):
@@ -663,7 +663,7 @@ class WebkitFlatpak:
         if not isinstance(args, list):
             args = list(args)
 
-        sandbox_build_path = os.path.join(self.sandbox_source_root, "WebKitBuild", self.build_type)
+        sandbox_build_path = os.path.join(self.sandbox_source_root, "CyberKitBuild", self.build_type)
         sandbox_environment = {
             "TEST_RUNNER_INJECTED_BUNDLE_FILENAME": os.path.join(sandbox_build_path, "lib/libTestRunnerInjectedBundle.so"),
         }
@@ -750,7 +750,7 @@ class WebkitFlatpak:
             "CXX",
             "CXXFLAGS",
             "DISPLAY",
-            "JavaScriptCoreUseJIT",
+            "CyberScriptCoreUseJIT",
             "LDFLAGS",
             "MAX_CPU_LOAD",
             "Malloc",
@@ -914,7 +914,7 @@ class WebkitFlatpak:
                                                 'token': self.sccache_token},
                                        'toolchains': toolchains}}
             toml.dump(sccache_config, config)
-            Console.message("Created %s sccache config file. It will automatically be used when building WebKit", self.sccache_config_file)
+            Console.message("Created %s sccache config file. It will automatically be used when building CyberKit", self.sccache_config_file)
 
     def pack_toolchain(self, compilers, path_mapping):
         with tempfile.NamedTemporaryFile() as tmpfile:

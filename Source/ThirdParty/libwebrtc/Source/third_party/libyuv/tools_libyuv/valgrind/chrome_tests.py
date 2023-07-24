@@ -554,7 +554,7 @@ class ChromeTests:
         os.remove(f)
     else:
       os.makedirs(out_dir)
-    script = os.path.join(self._source_dir, "third_party", "WebKit", "Tools",
+    script = os.path.join(self._source_dir, "third_party", "CyberKit", "Tools",
                           "Scripts", "run-webkit-tests")
     # http://crbug.com/260627: After the switch to content_shell from DRT, each
     # test now brings up 3 processes.  Under Valgrind, they become memory bound

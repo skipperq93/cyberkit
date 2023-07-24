@@ -29,7 +29,7 @@
 #ifndef FrameLoadDelegate_h
 #define FrameLoadDelegate_h
 
-#include <WebKitLegacy/WebKit.h>
+#include <CyberKitLegacy/CyberKit.h>
 
 class AccessibilityController;
 class TextInputController;

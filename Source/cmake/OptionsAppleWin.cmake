@@ -1,5 +1,5 @@
 # The static runtime used to be required for AppleWin due to
-# WebKitSystemInterface.lib being compiled with a static runtime. That library
+# CyberKitSystemInterface.lib being compiled with a static runtime. That library
 # is no longer used, but we keep building with static runtime for backward
 # compatibility. But if someone decides that it's OK to require existing
 # projects to build with the runtime DLLs, that's now technically possible.
@@ -16,7 +16,7 @@ if (NOT WEBKIT_LIBRARIES_DIR)
     if (DEFINED ENV{WEBKIT_LIBRARIES})
         file(TO_CMAKE_PATH "$ENV{WEBKIT_LIBRARIES}" WEBKIT_LIBRARIES_DIR)
     else ()
-        file(TO_CMAKE_PATH "${CMAKE_SOURCE_DIR}/WebKitLibraries/win" WEBKIT_LIBRARIES_DIR)
+        file(TO_CMAKE_PATH "${CMAKE_SOURCE_DIR}/CyberKitLibraries/win" WEBKIT_LIBRARIES_DIR)
     endif ()
 endif ()
 
@@ -97,5 +97,5 @@ add_compile_options(/WX /Wv:18)
 
 if (INTERNAL_BUILD)
     set(WTF_SCRIPTS_DIR "${CMAKE_BINARY_DIR}/../include/private/WTF/Scripts")
-    set(JavaScriptCore_SCRIPTS_DIR "${CMAKE_BINARY_DIR}/../include/private/JavaScriptCore/Scripts")
+    set(CyberScriptCore_SCRIPTS_DIR "${CMAKE_BINARY_DIR}/../include/private/CyberScriptCore/Scripts")
 endif ()

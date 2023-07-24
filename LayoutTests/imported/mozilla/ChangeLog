@@ -18,7 +18,7 @@
         Integrated test expectations do not match the actual expected
         behavior. The reason is that the expectation files reference
         resources from different documents - which is not supported by
-        WebKit. Since unprefixed clip-path wasn't supported either
+        CyberKit. Since unprefixed clip-path wasn't supported either
         the test passed.
 
         * svg/svg-integration/clipPath-html-01-expected.xhtml:
@@ -844,7 +844,7 @@
         * svg/as-image/border-image-simple-2.html: Add "border: 0px none;" to
         style of the <div> although the style has "border-image: url() 0 fill;".
         If the border width is not set to zero in the style, the <div> will have
-        a 3px border. This seems to be a bug in WebKit but should be unrelated to
+        a 3px border. This seems to be a bug in CyberKit but should be unrelated to
         the non-intrinsic-sized images with border-image.
 
 2014-12-09  Said Abou-Hallawa  <sabouhallawa@apple.com>

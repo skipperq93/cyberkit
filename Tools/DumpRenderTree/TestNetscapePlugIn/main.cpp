@@ -676,11 +676,11 @@ NPError NPP_GetValue(NPP instance, NPPVariable variable, void *value)
 {
 #if defined(XP_UNIX)
     if (variable == NPPVpluginNameString) {
-        *((char **)value) = const_cast<char*>("WebKit Test PlugIn");
+        *((char **)value) = const_cast<char*>("CyberKit Test PlugIn");
         return NPERR_NO_ERROR;
     }
     if (variable == NPPVpluginDescriptionString) {
-        *((char **)value) = const_cast<char*>("Simple Netscape® plug-in that handles test content for WebKit");
+        *((char **)value) = const_cast<char*>("Simple Netscape® plug-in that handles test content for CyberKit");
         return NPERR_NO_ERROR;
     }
 #endif

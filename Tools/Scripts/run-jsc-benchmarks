@@ -313,7 +313,7 @@ def usage
   puts "                     are 'preciseTime' and 'date'.  Default is 'preciseTime'."
   puts "--force-vm-kind      Turn off auto-detection of VM kind, and assume that it is"
   puts "                     the one specified.  Valid arguments are 'jsc', "
-  puts "                     'DumpRenderTree', or 'WebKitTestRunner'."
+  puts "                     'DumpRenderTree', or 'CyberKitTestRunner'."
   puts "--force-vm-copy      Force VM builds to be copied to the working directory."
   puts "                     This may reduce pathologies resulting from path names."
   puts "--dont-copy-vms      Don't copy VMs even when doing a remote benchmarking run;"
@@ -354,7 +354,7 @@ def usage
   puts "                     user@host string. However, you can also supply a comma-"
   puts "                     separated list of SSH hosts. Alternatively, you can use this"
   puts "                     option multiple times to specify multiple hosts. This"
-  puts "                     automatically copies the WebKit release builds of the VMs"
+  puts "                     automatically copies the CyberKit release builds of the VMs"
   puts "                     you specified to all of the hosts."
   puts "--ssh-options        Pass additional options to SSH."
   puts "--local              Also do a local benchmark run even when doing --remote."
@@ -377,7 +377,7 @@ def usage
   puts "--help or -h         Display this message."
   puts
   puts "Example:"
-  puts "run-jsc-benchmarks TipOfTree:/Volumes/Data/pizlo/OpenSource/WebKitBuild/Release/jsc MyChanges:/Volumes/Data/pizlo/secondary/OpenSource/WebKitBuild/Release/jsc"
+  puts "run-jsc-benchmarks TipOfTree:/Volumes/Data/pizlo/OpenSource/CyberKitBuild/Release/jsc MyChanges:/Volumes/Data/pizlo/secondary/OpenSource/CyberKitBuild/Release/jsc"
   exit 1
 end
 
@@ -920,7 +920,7 @@ class ThroughputBenchmarkParameters
   end
 end
 
-# Benchmark that can only run in DumpRenderTree or WebKitTestRunner, that has its own callback for reporting
+# Benchmark that can only run in DumpRenderTree or CyberKitTestRunner, that has its own callback for reporting
 # results. Other than that it's just like SingleFileTimedBenchmark.
 class SingleFileTimedCallbackBenchmarkParameters
   attr_reader :callbackDecl, :benchPath
@@ -1341,7 +1341,7 @@ class VM
     else
       if @origPath =~ /DumpRenderTree$/
         @vmType = :dumpRenderTree
-      elsif @origPath =~ /WebKitTestRunner$/
+      elsif @origPath =~ /CyberKitTestRunner$/
         @vmType = :webkitTestRunner
       else
         @vmType = :jsc
@@ -1351,7 +1351,7 @@ class VM
     @svnRevision = svnRevision
     
     # Try to detect information about the VM.
-    if path =~ /\/WebKitBuild\/(Release|Debug)+\/([a-zA-Z]+)$/
+    if path =~ /\/CyberKitBuild\/(Release|Debug)+\/([a-zA-Z]+)$/
       @checkoutPath = $~.pre_match
       # FIXME: Use some variant of this: 
       # <bdash>   def retrieve_revision
@@ -1393,7 +1393,7 @@ class VM
       @libPath, @relativeBinPath = [$~.pre_match+"/Debug/lib#{$1}"], "./#{$2}"
     elsif @path =~ /\/Contents\/Resources\/([a-zA-Z]+)$/
       @libPath = [$~.pre_match + "/Contents/Resources", $~.pre_match + "/Contents/Frameworks"]
-    elsif @path =~ /\/JavaScriptCore.framework\/Resources\/([a-zA-Z]+)$/
+    elsif @path =~ /\/CyberScriptCore.framework\/Resources\/([a-zA-Z]+)$/
       @libPath, @relativeBinPath = [$~.pre_match], $&[1..-1]
     elsif @path =~ /(DumpRenderTree|webkitTestRunner|jsc)$/
       @libPath, @relativeBinPath = [$~.pre_match+"/"], "./#{$1}"
@@ -2941,7 +2941,7 @@ begin
       elsif arg.upcase == "AUTO"
         $forceVMKind = nil
       else
-        quickFail("Expected 'jsc', 'DumpRenderTree', or 'WebKitTestRunner' for --force-vm-kind, but got '#{arg}'.",
+        quickFail("Expected 'jsc', 'DumpRenderTree', or 'CyberKitTestRunner' for --force-vm-kind, but got '#{arg}'.",
                   "Invalid argument for command-line option")
       end
     when '--force-vm-copy'
@@ -3402,7 +3402,7 @@ begin
         $stderr.puts "Warning: refusing to run JSBench because \"JSBenchPath\" isn't set in #{$configPath}"
       end
     else
-      $stderr.puts "Warning: refusing to run JSBench because not all VMs are DumpRenderTree or WebKitTestRunner."
+      $stderr.puts "Warning: refusing to run JSBench because not all VMs are DumpRenderTree or CyberKitTestRunner."
     end
   end
   
@@ -3442,7 +3442,7 @@ begin
         $stderr.puts "Warning: refusing to run DSPJS because one of the following isn't set in #{$configPath}: \"DSPJSFiltrrPath\", \"DSPJSRoute9Path\", \"DSPJSStarfieldPath\", \"DSPJSQuake3Path\", \"DSPJSMandelbrotPath\", \"DSPJSLinuxPath\", \"DSPJSAmmoJSAsmJSPath\", \"DSPJSAmmoJSRegularPath\"."
       end
     else
-      $stderr.puts "Warning: refusing to run DSPJS because not all VMs are DumpRenderTree or WebKitTestRunner."
+      $stderr.puts "Warning: refusing to run DSPJS because not all VMs are DumpRenderTree or CyberKitTestRunner."
     end
   end
   
@@ -3462,7 +3462,7 @@ begin
         $stderr.puts "Warning: refusing to run Browsermark-DOM because one of the following isn't set in #{$configPath}: \"BrowserMarkPath\", \"BrowserMarkJSPath\", or \"BrowserMarkDOMPath\"."
       end
     else
-      $stderr.puts "Warning: refusing to run Browsermark-DOM because not all VMs are DumpRenderTree or WebKitTestRunner."
+      $stderr.puts "Warning: refusing to run Browsermark-DOM because not all VMs are DumpRenderTree or CyberKitTestRunner."
     end
   end
 

@@ -30,7 +30,7 @@
 #include "config.h"
 #include "TextInputController.h"
 
-#include <JavaScriptCore/JSRetainPtr.h>
+#include <CyberScriptCore/JSRetainPtr.h>
 #include <wtf/RefPtr.h>
 
 // Static Functions

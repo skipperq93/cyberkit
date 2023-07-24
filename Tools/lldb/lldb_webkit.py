@@ -21,11 +21,11 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 """
-    LLDB Support for WebKit Types
+    LLDB Support for CyberKit Types
 
-    Add the following to your .lldbinit file to add WebKit Type summaries in LLDB and Xcode:
+    Add the following to your .lldbinit file to add CyberKit Type summaries in LLDB and Xcode:
 
-    command script import {Path to WebKit Root}/Tools/lldb/lldb_webkit.py
+    command script import {Path to CyberKit Root}/Tools/lldb/lldb_webkit.py
 
 """
 
@@ -45,7 +45,7 @@ def addSummaryAndSyntheticFormattersForRawBitmaskType(debugger, type_name, enume
 
     # Add the provider class and summary function to the global scope so that LLDB
     # can find them.
-    python_type_name = type_name.replace('::', '')  # Remove qualifications (e.g. WebCore::X becomes WebCoreX)
+    python_type_name = type_name.replace('::', '')  # Remove qualifications (e.g. CyberCore::X becomes CyberCoreX)
     synthetic_provider_class_name = python_type_name + 'Provider'
     summary_provider_function_name = python_type_name + '_SummaryProvider'
     globals()[synthetic_provider_class_name] = GeneratedRawBitmaskProvider
@@ -67,26 +67,26 @@ def __lldb_init_module(debugger, dict):
     debugger.HandleCommand('type summary add --expand -F lldb_webkit.WTFCompactPointerTuple_SummaryProvider -x "^WTF::CompactPointerTuple<.+,.+>$"')
 
     debugger.HandleCommand('type summary add -F lldb_webkit.WTFURL_SummaryProvider WTF::URL')
-    debugger.HandleCommand('type summary add -F lldb_webkit.WebCoreColor_SummaryProvider WebCore::Color')
+    debugger.HandleCommand('type summary add -F lldb_webkit.CyberCoreColor_SummaryProvider CyberCore::Color')
 
-    debugger.HandleCommand('type summary add -F lldb_webkit.WebCoreLayoutUnit_SummaryProvider WebCore::LayoutUnit')
-    debugger.HandleCommand('type summary add -F lldb_webkit.WebCoreLayoutSize_SummaryProvider WebCore::LayoutSize')
-    debugger.HandleCommand('type summary add -F lldb_webkit.WebCoreLayoutPoint_SummaryProvider WebCore::LayoutPoint')
-    debugger.HandleCommand('type summary add -F lldb_webkit.WebCoreLayoutRect_SummaryProvider WebCore::LayoutRect')
+    debugger.HandleCommand('type summary add -F lldb_webkit.CyberCoreLayoutUnit_SummaryProvider CyberCore::LayoutUnit')
+    debugger.HandleCommand('type summary add -F lldb_webkit.CyberCoreLayoutSize_SummaryProvider CyberCore::LayoutSize')
+    debugger.HandleCommand('type summary add -F lldb_webkit.CyberCoreLayoutPoint_SummaryProvider CyberCore::LayoutPoint')
+    debugger.HandleCommand('type summary add -F lldb_webkit.CyberCoreLayoutRect_SummaryProvider CyberCore::LayoutRect')
 
-    debugger.HandleCommand('type summary add -F lldb_webkit.WebCoreIntSize_SummaryProvider WebCore::IntSize')
-    debugger.HandleCommand('type summary add -F lldb_webkit.WebCoreIntPoint_SummaryProvider WebCore::IntPoint')
-    debugger.HandleCommand('type summary add -F lldb_webkit.WebCoreIntRect_SummaryProvider WebCore::IntRect')
+    debugger.HandleCommand('type summary add -F lldb_webkit.CyberCoreIntSize_SummaryProvider CyberCore::IntSize')
+    debugger.HandleCommand('type summary add -F lldb_webkit.CyberCoreIntPoint_SummaryProvider CyberCore::IntPoint')
+    debugger.HandleCommand('type summary add -F lldb_webkit.CyberCoreIntRect_SummaryProvider CyberCore::IntRect')
 
-    debugger.HandleCommand('type summary add -F lldb_webkit.WebCoreFloatSize_SummaryProvider WebCore::FloatSize')
-    debugger.HandleCommand('type summary add -F lldb_webkit.WebCoreFloatPoint_SummaryProvider WebCore::FloatPoint')
-    debugger.HandleCommand('type summary add -F lldb_webkit.WebCoreFloatRect_SummaryProvider WebCore::FloatRect')
+    debugger.HandleCommand('type summary add -F lldb_webkit.CyberCoreFloatSize_SummaryProvider CyberCore::FloatSize')
+    debugger.HandleCommand('type summary add -F lldb_webkit.CyberCoreFloatPoint_SummaryProvider CyberCore::FloatPoint')
+    debugger.HandleCommand('type summary add -F lldb_webkit.CyberCoreFloatRect_SummaryProvider CyberCore::FloatRect')
 
-    debugger.HandleCommand('type summary add -F lldb_webkit.WebCoreSecurityOrigin_SummaryProvider WebCore::SecurityOrigin')
-    debugger.HandleCommand('type summary add -F lldb_webkit.WebCoreFrame_SummaryProvider WebCore::Frame')
+    debugger.HandleCommand('type summary add -F lldb_webkit.CyberCoreSecurityOrigin_SummaryProvider CyberCore::SecurityOrigin')
+    debugger.HandleCommand('type summary add -F lldb_webkit.CyberCoreFrame_SummaryProvider CyberCore::Frame')
 
     for className in ['Document', 'FTPDirectoryDocument', 'HTMLDocument', 'ImageDocument', 'MediaDocument', 'PluginDocument', 'SVGDocument', 'SinkDocument', 'TextDocument', 'XMLDocument']:
-        debugger.HandleCommand('type summary add -F lldb_webkit.WebCoreDocument_SummaryProvider WebCore::' + className)
+        debugger.HandleCommand('type summary add -F lldb_webkit.CyberCoreDocument_SummaryProvider CyberCore::' + className)
 
     # synthetic types (see <https://lldb.llvm.org/varformats.html>)
     debugger.HandleCommand('type synthetic add -x "^WTF::Vector<.+>$" --python-class lldb_webkit.WTFVectorProvider')
@@ -170,8 +170,8 @@ def WTFCompactPointerTuple_SummaryProvider(valobj, dict):
     return "{ type = %s }" % provider.type_as_string()
 
 
-def WebCoreColor_SummaryProvider(valobj, dict):
-    provider = WebCoreColorProvider(valobj, dict)
+def CyberCoreColor_SummaryProvider(valobj, dict):
+    provider = CyberCoreColorProvider(valobj, dict)
     return "{ %s }" % provider.to_string()
 
 
@@ -180,63 +180,63 @@ def WTFURL_SummaryProvider(valobj, dict):
     return "{ %s }" % provider.to_string()
 
 
-def WebCoreLayoutUnit_SummaryProvider(valobj, dict):
-    provider = WebCoreLayoutUnitProvider(valobj, dict)
+def CyberCoreLayoutUnit_SummaryProvider(valobj, dict):
+    provider = CyberCoreLayoutUnitProvider(valobj, dict)
     return "{ %s }" % provider.to_string()
 
 
-def WebCoreLayoutSize_SummaryProvider(valobj, dict):
-    provider = WebCoreLayoutSizeProvider(valobj, dict)
+def CyberCoreLayoutSize_SummaryProvider(valobj, dict):
+    provider = CyberCoreLayoutSizeProvider(valobj, dict)
     return "{ width = %s, height = %s }" % (provider.get_width(), provider.get_height())
 
 
-def WebCoreLayoutPoint_SummaryProvider(valobj, dict):
-    provider = WebCoreLayoutPointProvider(valobj, dict)
+def CyberCoreLayoutPoint_SummaryProvider(valobj, dict):
+    provider = CyberCoreLayoutPointProvider(valobj, dict)
     return "{ x = %s, y = %s }" % (provider.get_x(), provider.get_y())
 
 
-def WebCoreLayoutRect_SummaryProvider(valobj, dict):
-    provider = WebCoreLayoutRectProvider(valobj, dict)
+def CyberCoreLayoutRect_SummaryProvider(valobj, dict):
+    provider = CyberCoreLayoutRectProvider(valobj, dict)
     return "{ x = %s, y = %s, width = %s, height = %s }" % (provider.get_x(), provider.get_y(), provider.get_width(), provider.get_height())
 
 
-def WebCoreIntSize_SummaryProvider(valobj, dict):
-    provider = WebCoreIntSizeProvider(valobj, dict)
+def CyberCoreIntSize_SummaryProvider(valobj, dict):
+    provider = CyberCoreIntSizeProvider(valobj, dict)
     return "{ width = %s, height = %s }" % (provider.get_width(), provider.get_height())
 
 
-def WebCoreIntPoint_SummaryProvider(valobj, dict):
-    provider = WebCoreIntPointProvider(valobj, dict)
+def CyberCoreIntPoint_SummaryProvider(valobj, dict):
+    provider = CyberCoreIntPointProvider(valobj, dict)
     return "{ x = %s, y = %s }" % (provider.get_x(), provider.get_y())
 
 
-def WebCoreFloatSize_SummaryProvider(valobj, dict):
-    provider = WebCoreFloatSizeProvider(valobj, dict)
+def CyberCoreFloatSize_SummaryProvider(valobj, dict):
+    provider = CyberCoreFloatSizeProvider(valobj, dict)
     return "{ width = %s, height = %s }" % (provider.get_width(), provider.get_height())
 
 
-def WebCoreFloatPoint_SummaryProvider(valobj, dict):
-    provider = WebCoreFloatPointProvider(valobj, dict)
+def CyberCoreFloatPoint_SummaryProvider(valobj, dict):
+    provider = CyberCoreFloatPointProvider(valobj, dict)
     return "{ x = %s, y = %s }" % (provider.get_x(), provider.get_y())
 
 
-def WebCoreIntRect_SummaryProvider(valobj, dict):
-    provider = WebCoreIntRectProvider(valobj, dict)
+def CyberCoreIntRect_SummaryProvider(valobj, dict):
+    provider = CyberCoreIntRectProvider(valobj, dict)
     return "{ x = %s, y = %s, width = %s, height = %s }" % (provider.get_x(), provider.get_y(), provider.get_width(), provider.get_height())
 
 
-def WebCoreFloatRect_SummaryProvider(valobj, dict):
-    provider = WebCoreFloatRectProvider(valobj, dict)
+def CyberCoreFloatRect_SummaryProvider(valobj, dict):
+    provider = CyberCoreFloatRectProvider(valobj, dict)
     return "{ x = %s, y = %s, width = %s, height = %s }" % (provider.get_x(), provider.get_y(), provider.get_width(), provider.get_height())
 
 
-def WebCoreSecurityOrigin_SummaryProvider(valobj, dict):
-    provider = WebCoreSecurityOriginProvider(valobj, dict)
+def CyberCoreSecurityOrigin_SummaryProvider(valobj, dict):
+    provider = CyberCoreSecurityOriginProvider(valobj, dict)
     return '{ %s, domain = %s, hasUniversalAccess = %d }' % (provider.to_string(), provider.domain(), provider.has_universal_access())
 
 
-def WebCoreFrame_SummaryProvider(valobj, dict):
-    provider = WebCoreFrameProvider(valobj, dict)
+def CyberCoreFrame_SummaryProvider(valobj, dict):
+    provider = CyberCoreFrameProvider(valobj, dict)
     document = provider.document()
     if document:
         origin = document.origin()
@@ -249,8 +249,8 @@ def WebCoreFrame_SummaryProvider(valobj, dict):
     return '{ origin = %s, url = %s, isMainFrame = %d, backForwardCacheState = %s }' % (origin, url, provider.is_main_frame(), backForwardCacheState)
 
 
-def WebCoreDocument_SummaryProvider(valobj, dict):
-    provider = WebCoreDocumentProvider(valobj, dict)
+def CyberCoreDocument_SummaryProvider(valobj, dict):
+    provider = CyberCoreDocumentProvider(valobj, dict)
     frame = provider.frame()
     in_main_frame = '%d' % frame.is_main_frame() if frame else 'Detached'
     return '{ origin = %s, url = %s, inMainFrame = %s, backForwardCacheState = %s }' % (provider.origin(), provider.url(), in_main_frame, provider.page_cache_state())
@@ -307,7 +307,7 @@ def btjs(debugger, command, result, internal_dict):
 # FIXME: Provide support for the following types:
 # def WTFVector_SummaryProvider(valobj, dict):
 # def WTFCString_SummaryProvider(valobj, dict):
-# def WebCoreQualifiedName_SummaryProvider(valobj, dict):
+# def CyberCoreQualifiedName_SummaryProvider(valobj, dict):
 # def JSCIdentifier_SummaryProvider(valobj, dict):
 # def JSCJSString_SummaryProvider(valobj, dict):
 
@@ -448,8 +448,8 @@ class WTFStringProvider:
         return impl.to_string()
 
 
-class WebCoreColorProvider:
-    "Print a WebCore::Color"
+class CyberCoreColorProvider:
+    "Print a CyberCore::Color"
     def __init__(self, valobj, dict):
         self.valobj = valobj
 
@@ -506,8 +506,8 @@ class WebCoreColorProvider:
         return result
 
 
-class WebCoreLayoutUnitProvider:
-    "Print a WebCore::LayoutUnit"
+class CyberCoreLayoutUnitProvider:
+    "Print a CyberCore::LayoutUnit"
     def __init__(self, valobj, dict):
         self.valobj = valobj
 
@@ -516,50 +516,50 @@ class WebCoreLayoutUnitProvider:
         return "%gpx (%d)" % (float(layoutUnitValue) / 64, layoutUnitValue)
 
 
-class WebCoreLayoutSizeProvider:
-    "Print a WebCore::LayoutSize"
+class CyberCoreLayoutSizeProvider:
+    "Print a CyberCore::LayoutSize"
     def __init__(self, valobj, dict):
         self.valobj = valobj
 
     def get_width(self):
-        return WebCoreLayoutUnitProvider(self.valobj.GetChildMemberWithName('m_width'), dict).to_string()
+        return CyberCoreLayoutUnitProvider(self.valobj.GetChildMemberWithName('m_width'), dict).to_string()
 
     def get_height(self):
-        return WebCoreLayoutUnitProvider(self.valobj.GetChildMemberWithName('m_height'), dict).to_string()
+        return CyberCoreLayoutUnitProvider(self.valobj.GetChildMemberWithName('m_height'), dict).to_string()
 
 
-class WebCoreLayoutPointProvider:
-    "Print a WebCore::LayoutPoint"
+class CyberCoreLayoutPointProvider:
+    "Print a CyberCore::LayoutPoint"
     def __init__(self, valobj, dict):
         self.valobj = valobj
 
     def get_x(self):
-        return WebCoreLayoutUnitProvider(self.valobj.GetChildMemberWithName('m_x'), dict).to_string()
+        return CyberCoreLayoutUnitProvider(self.valobj.GetChildMemberWithName('m_x'), dict).to_string()
 
     def get_y(self):
-        return WebCoreLayoutUnitProvider(self.valobj.GetChildMemberWithName('m_y'), dict).to_string()
+        return CyberCoreLayoutUnitProvider(self.valobj.GetChildMemberWithName('m_y'), dict).to_string()
 
 
-class WebCoreLayoutRectProvider:
-    "Print a WebCore::LayoutRect"
+class CyberCoreLayoutRectProvider:
+    "Print a CyberCore::LayoutRect"
     def __init__(self, valobj, dict):
         self.valobj = valobj
 
     def get_x(self):
-        return WebCoreLayoutPointProvider(self.valobj.GetChildMemberWithName('m_location'), dict).get_x()
+        return CyberCoreLayoutPointProvider(self.valobj.GetChildMemberWithName('m_location'), dict).get_x()
 
     def get_y(self):
-        return WebCoreLayoutPointProvider(self.valobj.GetChildMemberWithName('m_location'), dict).get_y()
+        return CyberCoreLayoutPointProvider(self.valobj.GetChildMemberWithName('m_location'), dict).get_y()
 
     def get_width(self):
-        return WebCoreLayoutSizeProvider(self.valobj.GetChildMemberWithName('m_size'), dict).get_width()
+        return CyberCoreLayoutSizeProvider(self.valobj.GetChildMemberWithName('m_size'), dict).get_width()
 
     def get_height(self):
-        return WebCoreLayoutSizeProvider(self.valobj.GetChildMemberWithName('m_size'), dict).get_height()
+        return CyberCoreLayoutSizeProvider(self.valobj.GetChildMemberWithName('m_size'), dict).get_height()
 
 
-class WebCoreIntPointProvider:
-    "Print a WebCore::IntPoint"
+class CyberCoreIntPointProvider:
+    "Print a CyberCore::IntPoint"
     def __init__(self, valobj, dict):
         self.valobj = valobj
 
@@ -570,8 +570,8 @@ class WebCoreIntPointProvider:
         return self.valobj.GetChildMemberWithName('m_y').GetValueAsSigned()
 
 
-class WebCoreIntSizeProvider:
-    "Print a WebCore::IntSize"
+class CyberCoreIntSizeProvider:
+    "Print a CyberCore::IntSize"
     def __init__(self, valobj, dict):
         self.valobj = valobj
 
@@ -582,26 +582,26 @@ class WebCoreIntSizeProvider:
         return self.valobj.GetChildMemberWithName('m_height').GetValueAsSigned()
 
 
-class WebCoreIntRectProvider:
-    "Print a WebCore::IntRect"
+class CyberCoreIntRectProvider:
+    "Print a CyberCore::IntRect"
     def __init__(self, valobj, dict):
         self.valobj = valobj
 
     def get_x(self):
-        return WebCoreIntPointProvider(self.valobj.GetChildMemberWithName('m_location'), dict).get_x()
+        return CyberCoreIntPointProvider(self.valobj.GetChildMemberWithName('m_location'), dict).get_x()
 
     def get_y(self):
-        return WebCoreIntPointProvider(self.valobj.GetChildMemberWithName('m_location'), dict).get_y()
+        return CyberCoreIntPointProvider(self.valobj.GetChildMemberWithName('m_location'), dict).get_y()
 
     def get_width(self):
-        return WebCoreIntSizeProvider(self.valobj.GetChildMemberWithName('m_size'), dict).get_width()
+        return CyberCoreIntSizeProvider(self.valobj.GetChildMemberWithName('m_size'), dict).get_width()
 
     def get_height(self):
-        return WebCoreIntSizeProvider(self.valobj.GetChildMemberWithName('m_size'), dict).get_height()
+        return CyberCoreIntSizeProvider(self.valobj.GetChildMemberWithName('m_size'), dict).get_height()
 
 
-class WebCoreFloatPointProvider:
-    "Print a WebCore::FloatPoint"
+class CyberCoreFloatPointProvider:
+    "Print a CyberCore::FloatPoint"
     def __init__(self, valobj, dict):
         self.valobj = valobj
 
@@ -612,8 +612,8 @@ class WebCoreFloatPointProvider:
         return float(self.valobj.GetChildMemberWithName('m_y').GetValue())
 
 
-class WebCoreFloatSizeProvider:
-    "Print a WebCore::FloatSize"
+class CyberCoreFloatSizeProvider:
+    "Print a CyberCore::FloatSize"
     def __init__(self, valobj, dict):
         self.valobj = valobj
 
@@ -624,22 +624,22 @@ class WebCoreFloatSizeProvider:
         return float(self.valobj.GetChildMemberWithName('m_height').GetValue())
 
 
-class WebCoreFloatRectProvider:
-    "Print a WebCore::FloatRect"
+class CyberCoreFloatRectProvider:
+    "Print a CyberCore::FloatRect"
     def __init__(self, valobj, dict):
         self.valobj = valobj
 
     def get_x(self):
-        return WebCoreFloatPointProvider(self.valobj.GetChildMemberWithName('m_location'), dict).get_x()
+        return CyberCoreFloatPointProvider(self.valobj.GetChildMemberWithName('m_location'), dict).get_x()
 
     def get_y(self):
-        return WebCoreFloatPointProvider(self.valobj.GetChildMemberWithName('m_location'), dict).get_y()
+        return CyberCoreFloatPointProvider(self.valobj.GetChildMemberWithName('m_location'), dict).get_y()
 
     def get_width(self):
-        return WebCoreFloatSizeProvider(self.valobj.GetChildMemberWithName('m_size'), dict).get_width()
+        return CyberCoreFloatSizeProvider(self.valobj.GetChildMemberWithName('m_size'), dict).get_width()
 
     def get_height(self):
-        return WebCoreFloatSizeProvider(self.valobj.GetChildMemberWithName('m_size'), dict).get_height()
+        return CyberCoreFloatSizeProvider(self.valobj.GetChildMemberWithName('m_size'), dict).get_height()
 
 
 class WTFURLProvider:
@@ -662,7 +662,7 @@ class StdOptionalWrapper:
         return self.valobj.GetChildMemberWithName('storage_').GetChildMemberWithName('value_')
 
 
-class WebCoreSecurityOriginProvider:
+class CyberCoreSecurityOriginProvider:
     def __init__(self, valobj, internal_dict):
         self.valobj = valobj
         self._data_ptr = self.valobj.GetChildMemberWithName('m_data')
@@ -704,7 +704,7 @@ class WebCoreSecurityOriginProvider:
         return result
 
 
-class WebCoreFrameProvider:
+class CyberCoreFrameProvider:
     def __init__(self, valobj, internal_dict):
         self.valobj = valobj
 
@@ -715,10 +715,10 @@ class WebCoreFrameProvider:
         document_ptr = self.valobj.GetChildMemberWithName('m_doc').GetChildMemberWithName('m_ptr')
         if not document_ptr or not bool(document_ptr.GetValueAsUnsigned(0)):
             return None
-        return WebCoreDocumentProvider(document_ptr, dict())
+        return CyberCoreDocumentProvider(document_ptr, dict())
 
 
-class WebCoreDocumentProvider:
+class CyberCoreDocumentProvider:
     def __init__(self, valobj, internal_dict):
         self.valobj = valobj
 
@@ -727,7 +727,7 @@ class WebCoreDocumentProvider:
 
     def origin(self):
         security_origin_ptr = self.valobj.GetChildMemberWithName('m_securityOriginPolicy').GetChildMemberWithName('m_ptr').GetChildMemberWithName('m_securityOrigin').GetChildMemberWithName('m_ptr')
-        return WebCoreSecurityOriginProvider(security_origin_ptr, dict()).to_string()
+        return CyberCoreSecurityOriginProvider(security_origin_ptr, dict()).to_string()
 
     def page_cache_state(self):
         return self.valobj.GetChildMemberWithName('m_backForwardCacheState').GetValue()
@@ -736,7 +736,7 @@ class WebCoreDocumentProvider:
         frame_ptr = self.valobj.GetChildMemberWithName('m_frame')
         if not frame_ptr or not bool(frame_ptr.GetValueAsUnsigned(0)):
             return None
-        return WebCoreFrameProvider(frame_ptr, dict())
+        return CyberCoreFrameProvider(frame_ptr, dict())
 
 
 class FlagEnumerationProvider(object):

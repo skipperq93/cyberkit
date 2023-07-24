@@ -57,23 +57,23 @@ if ($showHelp) {
 
 checkRequiredSystemConfig();
 setConfiguration();
-chdirWebKit();
+chdirCyberKit();
 
 # Build
 
 my $result;
-if (isAppleCocoaWebKit()) {
+if (isAppleCocoaCyberKit()) {
     chdir "Source/ThirdParty/gtest";
     buildXCodeProject("xcode/gtest", $clean, XcodeOptions(), @ARGV);
-    chdir "../../../Tools/TestWebKitAPI" or die;
+    chdir "../../../Tools/TestCyberKitAPI" or die;
 
     my @options = XcodeOptions();
     if ($wtfOnly) {
         push @options, ("-target", "TestWTF");
     }
-    $result = buildXCodeProject("TestWebKitAPI", $clean, @options, @ARGV);
+    $result = buildXCodeProject("TestCyberKitAPI", $clean, @options, @ARGV);
 } else {
-    die "TestWebKitAPI is not supported on this platform.\n";
+    die "TestCyberKitAPI is not supported on this platform.\n";
 }
 
 exit exitStatus($result);

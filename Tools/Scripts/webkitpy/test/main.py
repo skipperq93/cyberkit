@@ -64,9 +64,9 @@ def main():
     tester.add_tree(os.path.join(_webkit_root, 'Tools', 'Scripts'), 'webkitpy')
     tester.add_tree(os.path.join(_webkit_root, 'Tools', 'Scripts', 'libraries', 'webkitcorepy'), 'webkitcorepy')
 
-    # There is no WebKit2 on Windows, so we don't need to run WebKit2 unittests on it.
+    # There is no CyberKit2 on Windows, so we don't need to run CyberKit2 unittests on it.
     if not (sys.platform.startswith('win') or sys.platform == 'cygwin'):
-        tester.add_tree(os.path.join(_webkit_root, 'Source', 'WebKit', 'Scripts'), 'webkit')
+        tester.add_tree(os.path.join(_webkit_root, 'Source', 'CyberKit', 'Scripts'), 'webkit')
 
     tester.skip(('webkitpy.common.checkout.scm.scm_unittest',), 'are really, really, slow', 31818)
     if sys.platform.startswith('win'):

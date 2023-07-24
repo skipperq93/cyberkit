@@ -429,7 +429,7 @@ sub determineSVNRoot()
         }
         close INFO;
 
-        # It's possible (e.g. for developers of some ports) to have a WebKit
+        # It's possible (e.g. for developers of some ports) to have a CyberKit
         # checkout in a subdirectory of another checkout.  So abort if the
         # repository root or the repository UUID suddenly changes.
         last if !$thisUUID;
@@ -450,7 +450,7 @@ sub determineSVNRoot()
 sub determineVCSRoot()
 {
     if (isGit()) {
-        # This is the working tree root. If WebKit is a submodule,
+        # This is the working tree root. If CyberKit is a submodule,
         # then the relevant metadata directory is somewhere else.
         return gitTreeDirectory();
     }
@@ -597,8 +597,8 @@ sub adjustPathForRecentRenamings($)
 { 
     my ($fullPath) = @_; 
  
-    $fullPath =~ s|WebCore/webaudio|WebCore/Modules/webaudio|g;
-    $fullPath =~ s|JavaScriptCore/wtf|WTF/wtf|g;
+    $fullPath =~ s|CyberCore/webaudio|CyberCore/Modules/webaudio|g;
+    $fullPath =~ s|CyberScriptCore/wtf|WTF/wtf|g;
     $fullPath =~ s|test_expectations.txt|TestExpectations|g;
 
     return $fullPath; 

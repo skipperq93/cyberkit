@@ -76,7 +76,7 @@ describe('/api/manifest', function () {
         return Promise.all([
             db.insert('bug_trackers', bugzillaData),
             db.insert('bug_trackers', radarData),
-            db.insert('repositories', {id: 11, name: 'WebKit', url: 'https://trac.webkit.org/$1'}),
+            db.insert('repositories', {id: 11, name: 'CyberKit', url: 'https://trac.webkit.org/$1'}),
             db.insert('repositories', {id: 9, name: 'macOS'}),
             db.insert('repositories', {id: 22, name: 'iOS'}),
             db.insert('tracker_repositories', {tracker: bugzillaData.id, repository: 11}),
@@ -89,7 +89,7 @@ describe('/api/manifest', function () {
 
             let webkit = Repository.findById(11);
             assert(webkit);
-            assert.equal(webkit.name(), 'WebKit');
+            assert.equal(webkit.name(), 'CyberKit');
             assert.equal(webkit.urlForRevision(123), 'https://trac.webkit.org/123');
 
             let macos = Repository.findById(9);
@@ -117,10 +117,10 @@ describe('/api/manifest', function () {
     it("should generate manifest with repositories and each repository should know its owned repositories", () => {
         const db = TestServer.database();
         return Promise.all([
-            db.insert('repositories', {id: 11, name: 'WebKit', url: 'https://trac.webkit.org/$1'}),
+            db.insert('repositories', {id: 11, name: 'CyberKit', url: 'https://trac.webkit.org/$1'}),
             db.insert('repositories', {id: 9, name: 'OS X'}),
             db.insert('repositories', {id: 22, name: 'iOS'}),
-            db.insert('repositories', {id: 35, name: 'JavaScriptCore', owner: 9}),
+            db.insert('repositories', {id: 35, name: 'CyberScriptCore', owner: 9}),
         ]).then(() => {
             return TestServer.remoteAPI().getJSON('/api/manifest');
         }).then((content) => {
@@ -128,7 +128,7 @@ describe('/api/manifest', function () {
 
             let webkit = Repository.findById(11);
             assert(webkit);
-            assert.equal(webkit.name(), 'WebKit');
+            assert.equal(webkit.name(), 'CyberKit');
             assert.equal(webkit.urlForRevision(123), 'https://trac.webkit.org/123');
             assert.equal(webkit.ownedRepositories(), null);
 
@@ -308,10 +308,10 @@ describe('/api/manifest', function () {
     it("should generate manifest with triggerables", () => {
         let db = TestServer.database();
         return Promise.all([
-            db.insert('repositories', {id: 11, name: 'WebKit', url: 'https://trac.webkit.org/$1'}),
+            db.insert('repositories', {id: 11, name: 'CyberKit', url: 'https://trac.webkit.org/$1'}),
             db.insert('repositories', {id: 9, name: 'macOS'}),
             db.insert('repositories', {id: 16, name: 'Shared'}),
-            db.insert('repositories', {id: 101, name: 'WebKit', owner: 9, url: 'https://trac.webkit.org/$1'}),
+            db.insert('repositories', {id: 101, name: 'CyberKit', owner: 9, url: 'https://trac.webkit.org/$1'}),
             db.insert('build_triggerables', {id: 200, name: 'build.webkit.org'}),
             db.insert('build_triggerables', {id: 201, name: 'ios-build.webkit.org'}),
             db.insert('build_triggerables', {id: 202, name: 'mac-build.webkit.org', disabled: true}),
@@ -355,11 +355,11 @@ describe('/api/manifest', function () {
             return Manifest.fetch();
         }).then(() => {
             const webkit = Repository.findById(11);
-            assert.equal(webkit.name(), 'WebKit');
+            assert.equal(webkit.name(), 'CyberKit');
             assert.equal(webkit.urlForRevision(123), 'https://trac.webkit.org/123');
 
             const osWebkit1 = Repository.findById(101);
-            assert.equal(osWebkit1.name(), 'WebKit');
+            assert.equal(osWebkit1.name(), 'CyberKit');
             assert.equal(osWebkit1.ownerId(), 9);
             assert.equal(osWebkit1.urlForRevision(123), 'https://trac.webkit.org/123');
 
@@ -415,16 +415,16 @@ describe('/api/manifest', function () {
             const customSetWithOSX = new CustomCommitSet;
             customSetWithOSX.setRevisionForRepository(macos, '10.11 15A284');
 
-            const cusomSetWithOSXAndWebKit = new CustomCommitSet;
-            cusomSetWithOSXAndWebKit.setRevisionForRepository(webkit, '191622');
-            cusomSetWithOSXAndWebKit.setRevisionForRepository(macos, '10.11 15A284');
+            const cusomSetWithOSXAndCyberKit = new CustomCommitSet;
+            cusomSetWithOSXAndCyberKit.setRevisionForRepository(webkit, '191622');
+            cusomSetWithOSXAndCyberKit.setRevisionForRepository(macos, '10.11 15A284');
 
-            const cusomSetWithWebKit = new CustomCommitSet;
-            cusomSetWithWebKit.setRevisionForRepository(webkit, '191622');
+            const cusomSetWithCyberKit = new CustomCommitSet;
+            cusomSetWithCyberKit.setRevisionForRepository(webkit, '191622');
 
-            const cusomSetWithWebKitAndShared = new CustomCommitSet;
-            cusomSetWithWebKitAndShared.setRevisionForRepository(webkit, '191622');
-            cusomSetWithWebKitAndShared.setRevisionForRepository(shared, '86456');
+            const cusomSetWithCyberKitAndShared = new CustomCommitSet;
+            cusomSetWithCyberKitAndShared.setRevisionForRepository(webkit, '191622');
+            cusomSetWithCyberKitAndShared.setRevisionForRepository(shared, '86456');
 
             assert.equal(groups[0].name(), 'system-and-roots');
             assert.equal(groups[0].isHidden(), false);
@@ -432,9 +432,9 @@ describe('/api/manifest', function () {
             assert.deepEqual(Repository.sortByName(groups[0].repositories()), [macos]);
             assert.equal(groups[0].accepts(emptyCustomSet), false);
             assert.equal(groups[0].accepts(customSetWithOSX), true);
-            assert.equal(groups[0].accepts(cusomSetWithOSXAndWebKit), false);
-            assert.equal(groups[0].accepts(cusomSetWithWebKitAndShared), false);
-            assert.equal(groups[0].accepts(cusomSetWithWebKit), false);
+            assert.equal(groups[0].accepts(cusomSetWithOSXAndCyberKit), false);
+            assert.equal(groups[0].accepts(cusomSetWithCyberKitAndShared), false);
+            assert.equal(groups[0].accepts(cusomSetWithCyberKit), false);
 
             assert.equal(groups[1].name(), 'system-and-webkit');
             assert.equal(groups[1].isHidden(), false);
@@ -442,9 +442,9 @@ describe('/api/manifest', function () {
             assert.deepEqual(Repository.sortByName(groups[1].repositories()), [webkit, macos]);
             assert.equal(groups[1].accepts(emptyCustomSet), false);
             assert.equal(groups[1].accepts(customSetWithOSX), false);
-            assert.equal(groups[1].accepts(cusomSetWithOSXAndWebKit), true);
-            assert.equal(groups[1].accepts(cusomSetWithWebKitAndShared), false);
-            assert.equal(groups[1].accepts(cusomSetWithWebKit), false);
+            assert.equal(groups[1].accepts(cusomSetWithOSXAndCyberKit), true);
+            assert.equal(groups[1].accepts(cusomSetWithCyberKitAndShared), false);
+            assert.equal(groups[1].accepts(cusomSetWithCyberKit), false);
 
             assert.equal(groups[2].name(), 'webkit-and-shared');
             assert.equal(groups[2].isHidden(), true);
@@ -452,9 +452,9 @@ describe('/api/manifest', function () {
             assert.deepEqual(Repository.sortByName(groups[2].repositories()), [shared, webkit]);
             assert.equal(groups[2].accepts(emptyCustomSet), false);
             assert.equal(groups[2].accepts(customSetWithOSX), false);
-            assert.equal(groups[2].accepts(cusomSetWithOSXAndWebKit), false);
-            assert.equal(groups[2].accepts(cusomSetWithWebKitAndShared), true);
-            assert.equal(groups[2].accepts(cusomSetWithWebKit), false);
+            assert.equal(groups[2].accepts(cusomSetWithOSXAndCyberKit), false);
+            assert.equal(groups[2].accepts(cusomSetWithCyberKitAndShared), true);
+            assert.equal(groups[2].accepts(cusomSetWithCyberKit), false);
         });
     });
 

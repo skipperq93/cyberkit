@@ -38,12 +38,12 @@
 #endif
 
 #if ENABLE(WEBKIT)
-#include "WebKitBrowserWindow.h"
+#include "CyberKitBrowserWindow.h"
 #endif
 
 #if ENABLE(WEBKIT_LEGACY)
-#include "WebKitLegacyBrowserWindow.h"
-#include <WebKitLegacy/WebKitCOMAPI.h>
+#include "CyberKitLegacyBrowserWindow.h"
+#include <CyberKitLegacy/CyberKitCOMAPI.h>
 #endif
 
 SOFT_LINK_LIBRARY(user32);
@@ -79,11 +79,11 @@ int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
         ::SetProcessDPIAware();
 
 #if !ENABLE(WEBKIT_LEGACY)
-    auto factory = WebKitBrowserWindow::create;
+    auto factory = CyberKitBrowserWindow::create;
 #elif !ENABLE(WEBKIT)
-    auto factory = WebKitLegacyBrowserWindow::create;
+    auto factory = CyberKitLegacyBrowserWindow::create;
 #else
-    auto factory = options.windowType == BrowserWindowType::WebKit ? WebKitBrowserWindow::create : WebKitLegacyBrowserWindow::create;
+    auto factory = options.windowType == BrowserWindowType::CyberKit ? CyberKitBrowserWindow::create : CyberKitLegacyBrowserWindow::create;
 #endif
     auto& mainWindow = MainWindow::create().leakRef();
     HRESULT hr = mainWindow.init(factory, hInst, options.usesLayeredWebView);
@@ -122,7 +122,7 @@ int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
 
 exit:
 #if !ENABLE(WEBKIT)
-    shutDownWebKit();
+    shutDownCyberKit();
 #endif
 #ifdef _CRTDBG_MAP_ALLOC
     _CrtDumpMemoryLeaks();

@@ -33,7 +33,7 @@ namespace WTF {
 // This is impossible to do correctly at build time, but JSC really needs it at build time, so
 // we have a RELEASE_ASSERT() inside WTF::pageSize to make sure it is set properly at runtime.
 // All of these values are going to be incorrect on systems configured to use larger than normal
-// page size, so on such systems it is expected that WebKit will crash until this value is changed
+// page size, so on such systems it is expected that CyberKit will crash until this value is changed
 // and recompiled. Sorry.
 //
 // macOS x86_64 uses 4 KiB, but Apple's aarch64 systems use 16 KiB. Use 16 KiB on all Apple systems

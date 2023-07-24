@@ -23,7 +23,7 @@
 // OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
 // DAMAGE.
 
-WebKitCommitters = (function() {
+CyberKitCommitters = (function() {
     var COMMITTERS_URL = 'https://svn.webkit.org/repository/webkit/trunk/Tools/Scripts/webkitpy/common/config/contributors.json';
     var m_committers;
 
@@ -318,7 +318,7 @@ WebKitCommitters = (function() {
             field.addEventListener("focus", function(e) { enableAutoComplete(e.target); }, false);
     }
 
-    WebKitCommitters.getCommitters(function (committers) {
+    CyberKitCommitters.getCommitters(function (committers) {
         m_committers = committers;
     });
 })();

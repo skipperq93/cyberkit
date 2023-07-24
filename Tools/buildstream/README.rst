@@ -1,12 +1,12 @@
 ==============================
-The WebKit Linux Developer SDK
+The CyberKit Linux Developer SDK
 ==============================
 
 This is aimed to replace the JHBuild setup, as announced in `webkit-dev`_. Most
 of the time developers won't need to manually build the SDK, they will download
 already-built versions of it.
 
-Rebuilding the SDK is needed when you have to update WebKit test dependencies or
+Rebuilding the SDK is needed when you have to update CyberKit test dependencies or
 add new dependencies to the SDK.
 
 To build the SDK, run:
@@ -29,7 +29,7 @@ dependency:
 
   $ Tools/Scripts/bst-wrapper shell sdk/gtk.bst
 
-To test your changes in WebKit:
+To test your changes in CyberKit:
 
 ::
 
@@ -62,7 +62,7 @@ to recipes:
   $ cd ~/Projects/openxr
   $ git commit -a ...
   $ git format-patch -1
-  $ mv *.patch ~/WebKit/Tools/buildstream/patches/
+  $ mv *.patch ~/CyberKit/Tools/buildstream/patches/
   # finally add patches as sources in openxr.bst
   # and close the workspace
   $ Tools/Scripts/bst-wrapper workspace close sdk/openxr.bst

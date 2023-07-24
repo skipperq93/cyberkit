@@ -66,7 +66,7 @@ class DevicePort(DarwinPort):
         if self.get_option('driver_name'):
             return self.get_option('driver_name')
         if self.get_option('webkit_test_runner'):
-            return 'WebKitTestRunnerApp.app'
+            return 'CyberKitTestRunnerApp.app'
         return 'DumpRenderTree.app'
 
     # A device is the target host for a specific worker number.
@@ -98,7 +98,7 @@ class DevicePort(DarwinPort):
         for i in range(self.child_processes()):
             device = self.target_host(i)
             _log.debug(u'Installing to {}'.format(device))
-            # Without passing DYLD_LIBRARY_PATH, libWebCoreTestSupport cannot be loaded and DRT/WKTR will crash pre-launch,
+            # Without passing DYLD_LIBRARY_PATH, libCyberCoreTestSupport cannot be loaded and DRT/WKTR will crash pre-launch,
             # leaving a crash log which will be picked up in results. DYLD_FRAMEWORK_PATH is needed to prevent an early crash.
             if not device.install_app(self._path_to_driver(), {'DYLD_LIBRARY_PATH': self._build_path(), 'DYLD_FRAMEWORK_PATH': self._build_path()}):
                 raise RuntimeError('Failed to install app {} on device {}'.format(self._path_to_driver(), device.udid))

@@ -1,0 +1,190 @@
+# Copyright (C) 2010-2020 Apple Inc. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1.  Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+# 2.  Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in the
+#     documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+messages -> WebProcess LegacyReceiver NotRefCounted {
+    InitializeWebProcess(struct CyberKit::WebProcessCreationParameters processCreationParameters)
+    SetWebsiteDataStoreParameters(struct CyberKit::WebProcessDataStoreParameters parameters)
+
+    # Create a new page.
+    CreateWebPage(CyberCore::PageIdentifier newPageID, struct CyberKit::WebPageCreationParameters pageCreationParameters)
+
+    PrewarmGlobally();
+    PrewarmWithDomainInformation(struct CyberCore::PrewarmInformation prewarmInformation)
+
+    # Global preferences.
+    SetCacheModel(enum:uint8_t CyberKit::CacheModel cacheModel)
+
+    RegisterURLSchemeAsEmptyDocument(String scheme)
+    RegisterURLSchemeAsSecure(String scheme)
+    RegisterURLSchemeAsBypassingContentSecurityPolicy(String scheme)
+    SetDomainRelaxationForbiddenForURLScheme(String scheme)
+    RegisterURLSchemeAsLocal(String scheme)
+    RegisterURLSchemeAsNoAccess(String scheme)
+    RegisterURLSchemeAsDisplayIsolated(String scheme)
+    RegisterURLSchemeAsCORSEnabled(String scheme)
+    RegisterURLSchemeAsCachePartitioned(String scheme)
+    RegisterURLSchemeAsCanDisplayOnlyIfCanRequest(String scheme)
+
+    SetDefaultRequestTimeoutInterval(double timeoutInterval)
+    SetAlwaysUsesComplexTextCodePath(bool alwaysUseComplexText)
+    SetShouldUseFontSmoothing(bool useFontSmoothing)
+    SetResourceLoadStatisticsEnabled(bool resourceLoadStatisticsEnabled);
+    ClearResourceLoadStatistics();
+    UserPreferredLanguagesChanged()
+    FullKeyboardAccessModeChanged(bool fullKeyboardAccessEnabled)
+
+    # Plug-ins.
+    DidAddPlugInAutoStartOriginHash(uint32_t hash, WallTime expirationTime)
+    ResetPlugInAutoStartOriginHashes(HashMap<uint32_t,WallTime> hashes)
+    SetPluginLoadClientPolicy(CyberCore::PluginLoadClientPolicy policy, String host, String bundleIdentifier, String versionString)
+    ResetPluginLoadClientPolicies(HashMap<String, HashMap<String, HashMap<String, CyberCore::PluginLoadClientPolicy>>> pluginLoadClientPolicies)
+    ClearPluginClientPolicies()
+    RefreshPlugins()
+
+    void StartMemorySampler(CyberKit::SandboxExtension::Handle sampleLogFileHandle, String sampleLogFilePath, double interval);
+    void StopMemorySampler();
+
+    SetTextCheckerState(struct CyberKit::TextCheckerState textCheckerState)
+
+    SetEnhancedAccessibility(bool flag)
+
+    GarbageCollectJavaScriptObjects()
+    SetJavaScriptGarbageCollectorTimerEnabled(bool enable)
+
+    SetInjectedBundleParameter(String parameter, IPC::DataReference value);
+    SetInjectedBundleParameters(IPC::DataReference parameters);
+    HandleInjectedBundleMessage(String messageName, CyberKit::UserData messageBody);
+
+    FetchWebsiteData(OptionSet<CyberKit::WebsiteDataType> websiteDataTypes) -> (struct CyberKit::WebsiteData websiteData) Async
+    DeleteWebsiteData(OptionSet<CyberKit::WebsiteDataType> websiteDataTypes, WallTime modifiedSince) -> () Async
+    DeleteWebsiteDataForOrigins(OptionSet<CyberKit::WebsiteDataType> websiteDataTypes, Vector<CyberCore::SecurityOriginData> origins) -> () Async
+
+    SetHiddenPageDOMTimerThrottlingIncreaseLimit(int milliseconds)
+#if PLATFORM(COCOA)
+    SetQOS(int latencyQOS, int throughputQOS)
+#endif
+
+    SetMemoryCacheDisabled(bool disabled);
+
+#if ENABLE(SERVICE_CONTROLS)
+    SetEnabledServices(bool hasImageServices, bool hasSelectionServices, bool hasRichContentServices)
+#endif
+
+    EnsureAutomationSessionProxy(String sessionIdentifier)
+    DestroyAutomationSessionProxy()
+
+    PrepareToSuspend(bool isSuspensionImminent) -> () Async
+    ProcessDidResume()
+
+    MainThreadPing()
+    BackgroundResponsivenessPing()
+
+#if ENABLE(GAMEPAD)
+    SetInitialGamepads(Vector<CyberKit::GamepadData> gamepadDatas)
+    GamepadConnected(CyberKit::GamepadData gamepadData, enum:bool CyberCore::EventMakesGamepadsVisible eventVisibility)
+    GamepadDisconnected(unsigned index)
+#endif
+
+#if ENABLE(SERVICE_WORKER)
+    EstablishWorkerContextConnectionToNetworkProcess(uint64_t pageGroupID, CyberKit::WebPageProxyIdentifier webPageProxyID, CyberCore::PageIdentifier pageID, struct CyberKit::WebPreferencesStore store, CyberCore::RegistrableDomain domain, struct CyberKit::ServiceWorkerInitializationData initializationData) -> () Async
+#endif
+
+    SetHasSuspendedPageProxy(bool hasSuspendedPageProxy);
+    SetIsInProcessCache(bool isInProcessCache)
+    MarkIsNoLongerPrewarmed()
+    GetActivePagesOriginsForTesting() -> (Vector<String> activeOrigins) Async
+
+#if PLATFORM(COCOA)
+    SetScreenProperties(struct CyberCore::ScreenProperties screenProperties)
+#endif
+#if PLATFORM(MAC) && ENABLE(WEBPROCESS_WINDOWSERVER_BLOCKING)
+    ScrollerStylePreferenceChanged(bool useOvelayScrollbars)
+    DisplayConfigurationChanged(CGDirectDisplayID displayID, CGDisplayChangeSummaryFlags flags)
+#endif
+
+#if PLATFORM(IOS_FAMILY) && !PLATFORM(MACCATALYST)
+    BacklightLevelDidChange(float backlightLevel)
+#endif
+
+    IsJITEnabled() -> (bool enabled) Async
+
+#if PLATFORM(COCOA)
+    SetMediaMIMETypes(Vector<String> types)
+#if ENABLE(REMOTE_INSPECTOR)
+    EnableRemoteWebInspector(CyberKit::SandboxExtension::Handle handle);
+#endif
+#endif
+
+#if ENABLE(MEDIA_STREAM)
+    AddMockMediaDevice(struct CyberCore::MockMediaDevice device);
+    ClearMockMediaDevices();
+    RemoveMockMediaDevice(String persistentId);
+    ResetMockMediaDevices();
+
+#if ENABLE(SANDBOX_EXTENSIONS)
+    GrantUserMediaDeviceSandboxExtensions(CyberKit::MediaDeviceSandboxExtensions sandboxExtensions)
+    RevokeUserMediaDeviceSandboxExtensions(Vector<String> sandboxExtensionIDs)
+#endif
+#endif
+
+    ClearCurrentModifierStateForTesting()
+
+    SetBackForwardCacheCapacity(unsigned capacity);
+    ClearCachedPage(struct CyberCore::BackForwardItemIdentifier backForwardItemID) -> () Async
+
+#if PLATFORM(GTK) || PLATFORM(WPE)
+    SendMessageToWebExtension(struct CyberKit::UserMessage userMessage)
+#endif
+
+#if ENABLE(RESOURCE_LOAD_STATISTICS)
+    SeedResourceLoadStatisticsForTesting(CyberCore::RegistrableDomain firstPartyDomain, CyberCore::RegistrableDomain thirdPartyDomain, bool shouldScheduleNotification) -> () Async
+    SetThirdPartyCookieBlockingMode(enum:uint8_t CyberCore::ThirdPartyCookieBlockingMode blockingMode) -> () Async
+    SetDomainsWithUserInteraction(HashSet<CyberCore::RegistrableDomain> domains)
+    SendResourceLoadStatisticsDataImmediately() -> () Async
+#endif
+
+#if PLATFORM(IOS)
+    GrantAccessToAssetServices(CyberKit::SandboxExtension::Handle mobileAssetHandle, CyberKit::SandboxExtension::Handle mobileAssetV2Handle)
+    RevokeAccessToAssetServices()
+#endif
+
+#if PLATFORM(COCOA)
+    UnblockServicesRequiredByAccessibility(CyberKit::SandboxExtension::HandleArray handleArray)
+#if ENABLE(CFPREFS_DIRECT_MODE)
+    NotifyPreferencesChanged(String domain, String key, Optional<String> encodedValue)
+    UnblockPreferenceService(CyberKit::SandboxExtension::HandleArray handleArray)
+#endif
+    PowerSourceDidChange(bool hasAC)
+#endif
+
+#if PLATFORM(GTK) && !USE(GTK4)
+    SetUseSystemAppearanceForScrollbars(bool useSystemAppearanceForScrollbars)
+#endif
+
+#if PLATFORM(COCOA)
+    DidWriteToPasteboardAsynchronously(String pasteboardName);
+#endif
+
+#if ENABLE(WEBPROCESS_WINDOWSERVER_BLOCKING)
+    DisplayWasRefreshed(uint32_t displayID)
+#endif
+}

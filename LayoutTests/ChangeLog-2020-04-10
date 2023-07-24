@@ -78,7 +78,7 @@
         of a last minute realization that I need to iterate over all the hit views instead of just
         the frontmost one because the search rect can overlap multiple layers: See "iterate over all
         the hit views" in <https://bugs.webkit.org/show_bug.cgi?id=209888#c21>. It is because of this
-        requirement that WebKit::mayContainEditableElementsInRect() can return a false positive: return
+        requirement that CyberKit::mayContainEditableElementsInRect() can return a false positive: return
         true that the search rect contains an editable element even though that element may be occluded
         by a higher z-order element (composited or not). False positives are acceptable. Thouhg false
         negatives are not.
@@ -102,7 +102,7 @@
 
 2020-04-09  Keith Miller  <keith_miller@apple.com>
 
-        Remove legacy X-WebKit-CSP header support
+        Remove legacy X-CyberKit-CSP header support
         https://bugs.webkit.org/show_bug.cgi?id=210256
 
         Reviewed by Geoffrey Garen.
@@ -439,7 +439,7 @@
 
 2020-04-08  Per Arne Vollan  <pvollan@apple.com>
 
-        [macOS] Crash under WebKit::SandboxExtension::consume
+        [macOS] Crash under CyberKit::SandboxExtension::consume
         https://bugs.webkit.org/show_bug.cgi?id=210188
 
         Reviewed by Geoffrey Garen.
@@ -488,7 +488,7 @@
 
 2020-04-08  Jason Lawrence  <lawrence.j@apple.com>
 
-        REGRESSION: [ iOS wk2 Debug ] WTFCrash + 14 (Assertions.cpp:309) - WebCore::Page::recomputeTextAutoSizingInAllFrames()
+        REGRESSION: [ iOS wk2 Debug ] WTFCrash + 14 (Assertions.cpp:309) - CyberCore::Page::recomputeTextAutoSizingInAllFrames()
         https://bugs.webkit.org/show_bug.cgi?id=210205
 
         Unreviewed test gardening.
@@ -497,7 +497,7 @@
 
 2020-04-08  Jason Lawrence  <lawrence.j@apple.com>
 
-        [ iOS wk2 Debug ] WTFCrash + 14 (Assertions.cpp:309) - WebKit::EditorState::postLayoutData()
+        [ iOS wk2 Debug ] WTFCrash + 14 (Assertions.cpp:309) - CyberKit::EditorState::postLayoutData()
         https://bugs.webkit.org/show_bug.cgi?id=210201
 
         Unreviewed test gardening.
@@ -816,7 +816,7 @@
 
 2020-04-06  Jack Lee  <shihchieh_lee@apple.com>
 
-        Nullptr crash in WebCore::lastPositionInNode when indenting text node that has user-select:all parent.
+        Nullptr crash in CyberCore::lastPositionInNode when indenting text node that has user-select:all parent.
         https://bugs.webkit.org/show_bug.cgi?id=210016
         <rdar://problem/61014577>
 
@@ -1042,7 +1042,7 @@
 
 2020-04-04  Peng Liu  <peng.liu6@apple.com>
 
-        REGRESSION (r259095): ASSERTION FAILED: m_videoFullscreenMode != VideoFullscreenModeNone seen with TestWebKitAPI.WebKitLegacy.AudioSessionCategoryIOS
+        REGRESSION (r259095): ASSERTION FAILED: m_videoFullscreenMode != VideoFullscreenModeNone seen with TestCyberKitAPI.CyberKitLegacy.AudioSessionCategoryIOS
         https://bugs.webkit.org/show_bug.cgi?id=209680
 
         Reviewed by Jer Noble.
@@ -1350,7 +1350,7 @@
         * editing/undo-manager/undo-manager-undo-redo-after-garbage-collection.html:
         - Fix tests to use "internal:UndoManagerAPIEnabled=true" instead
           of custom "enableUndoManagerAPI=true" setting, which is being
-          removed since it doesn't work after the changes to WebKit.
+          removed since it doesn't work after the changes to CyberKit.
 
 2020-04-02  Chris Dumez  <cdumez@apple.com>
 
@@ -1630,7 +1630,7 @@
 
 2020-03-31  Jer Noble  <jer.noble@apple.com>
 
-        REGRESSION: [ Mac wk2 Release ] Flaky crash in WebCore::MediaPlayer::createVideoFullscreenLayer
+        REGRESSION: [ Mac wk2 Release ] Flaky crash in CyberCore::MediaPlayer::createVideoFullscreenLayer
         https://bugs.webkit.org/show_bug.cgi?id=209668
         <rdar://problem/60976297>
 
@@ -9604,7 +9604,7 @@
 
 2020-03-27  Jason Lawrence  <lawrence.j@apple.com>
 
-        [ Mac wk2 ] MediaPlayerPrivateInterface crash in WebKit::VideoFullscreenManager
+        [ Mac wk2 ] MediaPlayerPrivateInterface crash in CyberKit::VideoFullscreenManager
         https://bugs.webkit.org/show_bug.cgi?id=209688
 
         Unreviewed test gardening.
@@ -9702,7 +9702,7 @@
 
 2020-03-27  Jason Lawrence  <lawrence.j@apple.com>
 
-        [ Mac wk2 ] ASSERTION FAILED: m_messageEventCount @ WebCore::ServiceWorkerThread::finishedFiringMessageEvent()
+        [ Mac wk2 ] ASSERTION FAILED: m_messageEventCount @ CyberCore::ServiceWorkerThread::finishedFiringMessageEvent()
         https://bugs.webkit.org/show_bug.cgi?id=209672
 
         Unreviewed test gardening.
@@ -9978,7 +9978,7 @@
 
 2020-03-25  Jack Lee  <shihchieh_lee@apple.com>
 
-        Nullptr crash in WebCore::Node::isDescendantOf when inserting list
+        Nullptr crash in CyberCore::Node::isDescendantOf when inserting list
         https://bugs.webkit.org/show_bug.cgi?id=209529
         <rdar://problem/60693542>
 
@@ -10050,7 +10050,7 @@
 
 2020-03-25  Jason Lawrence  <lawrence.j@apple.com>
 
-        [ Mac wk1] ASSERTION FAILED: m_wrapper under WebCore::XMLHttpRequestUpload::dispatchProgressEvent
+        [ Mac wk1] ASSERTION FAILED: m_wrapper under CyberCore::XMLHttpRequestUpload::dispatchProgressEvent
         https://bugs.webkit.org/show_bug.cgi?id=209560
 
         Unreviewed test gardening.
@@ -10145,7 +10145,7 @@
 
 2020-03-25  Frank Yang  <guowei_yang@apple.com>
 
-        WebKit uses Alphabetic Baseline when "-webkit-text-orientation" is "mixed" in Vertical Writing Mode
+        CyberKit uses Alphabetic Baseline when "-webkit-text-orientation" is "mixed" in Vertical Writing Mode
         https://bugs.webkit.org/show_bug.cgi?id=208824
 
         Reviewed by Myles C. Maxfield.
@@ -10153,9 +10153,9 @@
         Fixed errors in existing test files and expected results regarding 
         baseline alignment. This baseline alignment bug is probably in the codebase 
         for a long time, and all the following tests are based on 
-        two incorrect behaviors within WebKit, which is 
-           1) WebKit cannot parse "text-orientation" since it's not supported yet, 
-           2) WebKit doesn't distinguish "mixed" and "sideways" when selecting baselines, 
+        two incorrect behaviors within CyberKit, which is 
+           1) CyberKit cannot parse "text-orientation" since it's not supported yet, 
+           2) CyberKit doesn't distinguish "mixed" and "sideways" when selecting baselines, 
         so both orientations alphabetic baseline is selected. Therefore, for those test
         cases, the expected files are actually reflecting the behavior of 
         "sideways" instead of "mixed". Now after this patch, "mixed" now 
@@ -10286,7 +10286,7 @@
 
 2020-03-24  Daniel Bates  <dabates@apple.com>
 
-        [iOS] ASSERTION FAILURE: !isMissingPostLayoutData in WebKit::EditorState::postLayoutData()
+        [iOS] ASSERTION FAILURE: !isMissingPostLayoutData in CyberKit::EditorState::postLayoutData()
         https://bugs.webkit.org/show_bug.cgi?id=199960
         <rdar://problem/53323966>
 
@@ -10540,7 +10540,7 @@
 
 2020-03-24  Antoine Quint  <graouts@apple.com>
 
-        [iOS+macOS Debug] ASSERTION FAILED: m_effects.isEmpty() in WebCore::KeyframeEffectStack::~KeyframeEffectStack()
+        [iOS+macOS Debug] ASSERTION FAILED: m_effects.isEmpty() in CyberCore::KeyframeEffectStack::~KeyframeEffectStack()
         https://bugs.webkit.org/show_bug.cgi?id=208718
         <rdar://problem/59956433>
 
@@ -10725,7 +10725,7 @@
 
         * editing/mac/spelling/autocorrection-contraction-expected.txt: Update these expected
         results because of changes to delegate callbacks. The test is still passing and this
-        change is only in the legacy WebKit case (there is a separate result for modern WebKit).
+        change is only in the legacy CyberKit case (there is a separate result for modern CyberKit).
         This seems to be a progression, not evidence of a bug.
 
 2020-03-23  Rob Buis  <rbuis@igalia.com>
@@ -11737,7 +11737,7 @@
 
 2020-03-17  Chris Fleizach  <cfleizach@apple.com>
 
-        AX: WebKit crashes with VO and keyboard support fails on encapsulated radio button components.
+        AX: CyberKit crashes with VO and keyboard support fails on encapsulated radio button components.
         https://bugs.webkit.org/show_bug.cgi?id=208844
         <rdar://problem/60252659>
 
@@ -12217,7 +12217,7 @@
 
         Ruber-stamped by Žan Doberšek.
 
-        Update pixel test baseline, reflecting the status quo with WebKit ToT.
+        Update pixel test baseline, reflecting the status quo with CyberKit ToT.
 
         * platform/gtk/svg: > 600 modifications of the -expected.png files.
         * platform/gtk/svg/W3C-SVG-1.1-SE/painting-marker-06-f-expected.png: Added.
@@ -12232,7 +12232,7 @@
 
         Reviewed by Žan Doberšek.
 
-        Add pixel tests results based on current WebKit ToT.
+        Add pixel tests results based on current CyberKit ToT.
         No Gtk bot is running pixel tests, but it is still helpful to have an
         updated pixel test baseline for local development. Many SVG tests
         still depend on the pixel test output as only way to catch
@@ -13223,7 +13223,7 @@
 
         Reviewed by Philippe Normand.
 
-        Supply Content-Length, so WebKit GStreamer can actually know when the download has finished
+        Supply Content-Length, so CyberKit GStreamer can actually know when the download has finished
         without mistaking EOF with a stall.
 
         * http/tests/media/resources/video-cookie-check-cookie.php: Supply Content-Length.
@@ -14758,7 +14758,7 @@
 
 2020-03-06  Jason Lawrence  <lawrence.j@apple.com>
 
-        REGRESSION: (r257760?) [ Mac wk2 Debug ] ASSERTION FAILED: child->parentObject() == this in WebCore::AccessibilityObject::insertChild
+        REGRESSION: (r257760?) [ Mac wk2 Debug ] ASSERTION FAILED: child->parentObject() == this in CyberCore::AccessibilityObject::insertChild
         https://bugs.webkit.org/show_bug.cgi?id=208648
 
         Unreviewed test gardening.
@@ -15038,7 +15038,7 @@
 
 2020-03-05  Jason Lawrence  <lawrence.j@apple.com>
 
-        REGRESSION: (r257760?) [ Mac wk2 Debug ] ASSERTION FAILED: child->parentObject() == this in WebCore::AccessibilityObject::insertChild
+        REGRESSION: (r257760?) [ Mac wk2 Debug ] ASSERTION FAILED: child->parentObject() == this in CyberCore::AccessibilityObject::insertChild
         https://bugs.webkit.org/show_bug.cgi?id=208648
 
         Unreviewed test gardening.
@@ -16539,7 +16539,7 @@
 
 2020-02-26  Jack Lee  <shihchieh_lee@apple.com>
 
-        Nullptr crash in WebCore::canHaveChildrenForEditing via CompositeEditCommand::insertNode
+        Nullptr crash in CyberCore::canHaveChildrenForEditing via CompositeEditCommand::insertNode
         https://bugs.webkit.org/show_bug.cgi?id=208115
         <rdar://problem/56685655>
 
@@ -18464,7 +18464,7 @@
 
 2020-02-19  Jack Lee  <shihchieh_lee@apple.com>
 
-        ASSERTION FAILED: roundedIntPoint(LayoutPoint(rendererMappedResult)) == result in WebCore::RenderGeometryMap::mapToContainer
+        ASSERTION FAILED: roundedIntPoint(LayoutPoint(rendererMappedResult)) == result in CyberCore::RenderGeometryMap::mapToContainer
         https://bugs.webkit.org/show_bug.cgi?id=151030
         <rdar://problem/27711142>
 
@@ -18748,7 +18748,7 @@
 
 2020-02-18  Jack Lee  <shihchieh_lee@apple.com>
 
-        ASSERTION FAILED: !m_embeddedObjectsToUpdate->contains(nullptr) in WebCore::FrameView::updateEmbeddedObjects
+        ASSERTION FAILED: !m_embeddedObjectsToUpdate->contains(nullptr) in CyberCore::FrameView::updateEmbeddedObjects
         https://bugs.webkit.org/show_bug.cgi?id=191532
         <rdar://problem/46151555>
 
@@ -19251,7 +19251,7 @@
 
 2020-02-17  Pinki Gyanchandani  <pgyanchandani@apple.com>
 
-        Null Ptr Deref @ WebCore::Node::Treescope
+        Null Ptr Deref @ CyberCore::Node::Treescope
         https://bugs.webkit.org/show_bug.cgi?id=207748
 
         Reviewed by Darin Adler.
@@ -19762,7 +19762,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=207807
 
         4% memory regression in new Membuster, possibly some leaking
-        in WebKit Malloc? (Requested by yusukesuzuki on #webkit).
+        in CyberKit Malloc? (Requested by yusukesuzuki on #webkit).
 
         Reverted changeset:
 
@@ -19875,7 +19875,7 @@
 
 2020-02-14  Nikos Mouchtaris  <nmouchtaris@apple.com>
 
-        WebKit support for Apple Pay Buttons with custom corner radii
+        CyberKit support for Apple Pay Buttons with custom corner radii
         https://bugs.webkit.org/show_bug.cgi?id=207664
 
         Reviewed by Andy Estes.
@@ -20018,7 +20018,7 @@
 
         Reviewed by Antoine Quint.
 
-        Source/WebCore:
+        Source/CyberCore:
         An active animation for which the effect is removed may be considered for
         an upcoming animation resolution. However, WebAnimation::timeToNextTick()
         expects a valid effect to be available to be able to determine timing.
@@ -21175,7 +21175,7 @@
 
 2020-02-11  Youenn Fablet  <youenn@apple.com>
 
-        REGRESSION (r256009): [ Mojave wk2 Debug ] ASSERTION FAILED: Completion handler should always be called under WebKit::WebMDNSRegister::PendingRegistration
+        REGRESSION (r256009): [ Mojave wk2 Debug ] ASSERTION FAILED: Completion handler should always be called under CyberKit::WebMDNSRegister::PendingRegistration
         https://bugs.webkit.org/show_bug.cgi?id=207521
         <rdar://problem/59331313>
 
@@ -21477,7 +21477,7 @@
 
 2020-02-10  Said Abou-Hallawa  <sabouhallawa@apple.com>
 
-        Unreachable code hit in WebCore::Shape::createShape
+        Unreachable code hit in CyberCore::Shape::createShape
         https://bugs.webkit.org/show_bug.cgi?id=207399
 
         Reviewed by Darin Adler.
@@ -22106,7 +22106,7 @@
 
 2020-02-06  Jack Lee  <shihchieh_lee@apple.com>
 
-        Nullptr crash in WebCore::findPlaceForCounter with pseudo element that has display:contents host.
+        Nullptr crash in CyberCore::findPlaceForCounter with pseudo element that has display:contents host.
         https://bugs.webkit.org/show_bug.cgi?id=207241
 
         When the pseudo element's host element does not initiate a renderer
@@ -22987,7 +22987,7 @@
 
 2020-02-03  Lauro Moura  <lmoura@igalia.com>
 
-        [WebKitTestRunner] setOpenPanelFiles support in non-local tests
+        [CyberKitTestRunner] setOpenPanelFiles support in non-local tests
         https://bugs.webkit.org/show_bug.cgi?id=206517
 
         Reviewed by Carlos Alberto Lopez Perez.
@@ -23244,7 +23244,7 @@
         Reviewed by Tim Horton.
 
         Add a test to check that highlighting different parts of a composition range results in the same behavior as
-        applying background colors using CSS. This test is currently only supported in WebKit2.
+        applying background colors using CSS. This test is currently only supported in CyberKit2.
 
         * TestExpectations:
         * editing/input/composition-highlights-expected.html: Added.
@@ -24346,7 +24346,7 @@
 
 2020-01-28  Jack Lee  <shihchieh_lee@apple.com>
 
-        Nullptr crash in WebCore::findPlaceForCounter with display: contents sibling
+        Nullptr crash in CyberCore::findPlaceForCounter with display: contents sibling
         https://bugs.webkit.org/show_bug.cgi?id=206107
 
         Reviewed by Antti Koivisto.
@@ -24677,7 +24677,7 @@
 
         Reviewed by Brian Burg.
 
-        Tentative fix. Modifying the `iceCandidateFilteringEnabled` WebCore setting causes any
+        Tentative fix. Modifying the `iceCandidateFilteringEnabled` CyberCore setting causes any
         existing/pending ICE candidates to immediately fire `icecandidate` events. Wait to change
         the setting using `Page.overrideSetting` until after the JavaScript has set up the various
         connections so that it's guaranteed to not miss any `icecandidate` events. Additionally
@@ -24962,7 +24962,7 @@
 
 2020-01-24  Jack Lee  <shihchieh_lee@apple.com>
 
-        Nullptr deref in WebCore::RenderTreeBuilder::Block::attachIgnoringContinuation when an element is inserted before legend under multi-column layout.
+        Nullptr deref in CyberCore::RenderTreeBuilder::Block::attachIgnoringContinuation when an element is inserted before legend under multi-column layout.
         https://bugs.webkit.org/show_bug.cgi?id=206109
 
         Reviewed by Antti Koivisto.
@@ -25025,7 +25025,7 @@
         Reviewed by Manuel Rego Casasnovas.
 
         Remove outdated grid-align tests, that are being replaced by newer tests, adapted to the WPT project and imported
-        to the corresponding css-grid folder inside WebKit.
+        to the corresponding css-grid folder inside CyberKit.
 
         * fast/css-grid-layout/grid-align-content-vertical-lr-expected.txt: Removed.
         * fast/css-grid-layout/grid-align-content-vertical-rl-expected.txt: Removed.
@@ -25161,7 +25161,7 @@
 
         Reviewed by Wenson Hsieh.
 
-        Due to webkit.org/b/162081 this test is skipped for WebKit2.
+        Due to webkit.org/b/162081 this test is skipped for CyberKit2.
 
         * fast/events/input-event-insert-link-expected.txt: Added.
         * fast/events/input-event-insert-link.html: Added.
@@ -25299,7 +25299,7 @@
 
 2020-01-21  Daniel Bates  <dabates@apple.com>
 
-        Add Legacy WebKit SPI and WebKit IPI to show and hide placeholder
+        Add Legacy CyberKit SPI and CyberKit IPI to show and hide placeholder
         https://bugs.webkit.org/show_bug.cgi?id=206459
         <rdar://problem/58700534>
 
@@ -25338,7 +25338,7 @@
 
 2020-01-21  Noam Rosenthal  <noam@webkit.org>
 
-        -webkit-image-set should support all the image functions WebKit supports, not just url()
+        -webkit-image-set should support all the image functions CyberKit supports, not just url()
         https://bugs.webkit.org/show_bug.cgi?id=81941
 
         Reviewed by Darin Adler.
@@ -25521,13 +25521,13 @@
 
 2020-01-20  Rossana Monteriso  <rmonteriso@igalia.com>
 
-        [css-grid] Import grid-align-content-distribution tests to WebKit
+        [css-grid] Import grid-align-content-distribution tests to CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=205926
 
         Reviewed by Javier Fernandez.
 
         Remove align-content-distribution tests that are being replaced by newer tests, adapted to the WPT project and imported
-        to the corresponding css-grid folder inside WebKit.
+        to the corresponding css-grid folder inside CyberKit.
 
         * fast/css-grid-layout/grid-align-content-distribution-expected.txt: Removed.
         * fast/css-grid-layout/grid-align-content-distribution-vertical-lr-expected.txt: Removed.
@@ -25997,7 +25997,7 @@
         Reverted changeset:
 
         "Null Ptr Deref @
-        WebCore::DocumentLoader::clearMainResourceLoader"
+        CyberCore::DocumentLoader::clearMainResourceLoader"
         https://bugs.webkit.org/show_bug.cgi?id=206204
         https://trac.webkit.org/changeset/254576
 
@@ -26012,7 +26012,7 @@
 
 2020-01-15  Pinki Gyanchandani  <pgyanchandani@apple.com>
 
-        Null Ptr Deref @ WebCore::DocumentLoader::clearMainResourceLoader
+        Null Ptr Deref @ CyberCore::DocumentLoader::clearMainResourceLoader
         https://bugs.webkit.org/show_bug.cgi?id=206204
 
         Added a NULL pointer check for FrameLoader. If FramLoader is NULL then return instead of
@@ -26608,7 +26608,7 @@
 
 2020-01-10  Yusuke Suzuki  <ysuzuki@apple.com>
 
-        [WebCore] Fix crash in module loader due to change in fragment reservation
+        [CyberCore] Fix crash in module loader due to change in fragment reservation
         https://bugs.webkit.org/show_bug.cgi?id=206125
 
         Reviewed by Dean Jackson.
@@ -26699,7 +26699,7 @@
 
         Reviewed by Dean Jackson.
 
-        Migrate and update tests from TestWebKitAPI to LayoutTests, to match the rest of our system language tests.
+        Migrate and update tests from TestCyberKitAPI to LayoutTests, to match the rest of our system language tests.
 
         * platform/mac/TestExpectations: Mark these tests as possibly failing on older versions of macOS.
         * fast/text/international/system-language/navigator-language/navigator-language-en-GB-expected.txt: Added.
@@ -26774,7 +26774,7 @@
         Reviewed by Per Arne Vollan.
 
         After conducting multiple test passes and large-scale living-on testing with telemetry, we have
-        confirmed that the following XPC services are not used by the media logic in WebKit, and can be
+        confirmed that the following XPC services are not used by the media logic in CyberKit, and can be
         removed:
 
             com.apple.coremedia.cpeprotector.xpc
@@ -27449,7 +27449,7 @@
 
 2020-01-07  Simon Fraser  <simon.fraser@apple.com>
 
-        WebKit rejects changes between similar unprefixed & prefixed gradient syntax
+        CyberKit rejects changes between similar unprefixed & prefixed gradient syntax
         https://bugs.webkit.org/show_bug.cgi?id=171015
 
         Reviewed by Dean Jackson.
@@ -28933,7 +28933,7 @@
 
 2019-12-19  Jack Lee  <shihchieh_lee@apple.com>
 
-        Nullptr crash in WebCore::RenderTreeBuilder::attach
+        Nullptr crash in CyberCore::RenderTreeBuilder::attach
         https://bugs.webkit.org/show_bug.cgi?id=205476
 
         Reviewed by Ryosuke Niwa.
@@ -28943,7 +28943,7 @@
 
 2019-12-19  Jack Lee  <shihchieh_lee@apple.com>
 
-        Nullptr crash in WebCore::findPlaceForCounter with display: contents parent
+        Nullptr crash in CyberCore::findPlaceForCounter with display: contents parent
         https://bugs.webkit.org/show_bug.cgi?id=205290
 
         Reviewed by Ryosuke Niwa.
@@ -28953,7 +28953,7 @@
 
 2019-12-19  Charlie Turner  <cturner@igalia.com>
 
-        [GTK] http/tests/media/clearkey/collect-webkit-media-session.html is timing out since added in r235429 "WebKitMediaSession should be GC collectable when its document is being stopped"
+        [GTK] http/tests/media/clearkey/collect-webkit-media-session.html is timing out since added in r235429 "CyberKitMediaSession should be GC collectable when its document is being stopped"
         https://bugs.webkit.org/show_bug.cgi?id=189345
 
         Unreviewed gardening.
@@ -29702,7 +29702,7 @@
         that are not valid in any browser and which cause flaky timeouts.
 
         To restore test coverage for the ready promise, import work-in-progress test from:
-        https://github.com/web-platform-tests/wpt/pull/20655 (except for the last subtest that is still flaky in Gecko and WebKit)
+        https://github.com/web-platform-tests/wpt/pull/20655 (except for the last subtest that is still flaky in Gecko and CyberKit)
 
         * TestExpectations:
         * http/wpt/service-workers/ready.https.window-expected.txt: Added.
@@ -32915,7 +32915,7 @@
 
 2019-11-13  Fujii Hironori  <Hironori.Fujii@sony.com>
 
-        [Win][DumpRenderTree][WebKitTestRunner] eventSender.keyDown should support function keys
+        [Win][DumpRenderTree][CyberKitTestRunner] eventSender.keyDown should support function keys
         https://bugs.webkit.org/show_bug.cgi?id=204146
 
         Reviewed by Ross Kirsling.
@@ -33159,7 +33159,7 @@
 
 2019-11-11  Kate Cheney  <katherine_cheney@apple.com>
 
-        CrashTracer: com.apple.WebKit.Networking.Development at com.apple.WebKit: WebKit::NetworkProcess::setIsRunningResourceLoadStatisticsTest
+        CrashTracer: com.matthewbenedict.CyberKit.Networking.Development at com.matthewbenedict.CyberKit: CyberKit::NetworkProcess::setIsRunningResourceLoadStatisticsTest
         https://bugs.webkit.org/show_bug.cgi?id=204081
         <rdar://problem/56889809>
 
@@ -34293,7 +34293,7 @@
 
 2019-11-04  Chris Dumez  <cdumez@apple.com>
 
-        MediaKeySession / WebKitMediaKeySession should not prevent entering the back/forward cache
+        MediaKeySession / CyberKitMediaKeySession should not prevent entering the back/forward cache
         https://bugs.webkit.org/show_bug.cgi?id=203089
 
         Reviewed by Youenn Fablet.
@@ -34338,7 +34338,7 @@
 
         Reverted changeset:
 
-        "MediaKeySession / WebKitMediaKeySession should not prevent
+        "MediaKeySession / CyberKitMediaKeySession should not prevent
         entering the back/forward cache"
         https://bugs.webkit.org/show_bug.cgi?id=203089
         https://trac.webkit.org/changeset/251993
@@ -34395,7 +34395,7 @@
 
 2019-11-04  Chris Dumez  <cdumez@apple.com>
 
-        MediaKeySession / WebKitMediaKeySession should not prevent entering the back/forward cache
+        MediaKeySession / CyberKitMediaKeySession should not prevent entering the back/forward cache
         https://bugs.webkit.org/show_bug.cgi?id=203089
 
         Reviewed by Youenn Fablet.
@@ -36175,7 +36175,7 @@
 
         Unreviewed test gardening.
 
-        Make the test added in r251385 pass in WebKit1.
+        Make the test added in r251385 pass in CyberKit1.
 
         * compositing/video/video-border-radius-clipping-expected.html:
         * compositing/video/video-border-radius-clipping.html:
@@ -36511,8 +36511,8 @@
 
         Reviewed by Devin Rousso.
 
-        Added new test for Target events during PSON. It is only enabled on WebKit2 as there is
-        no Target agent in WebKit1.
+        Added new test for Target events during PSON. It is only enabled on CyberKit2 as there is
+        no Target agent in CyberKit1.
 
         * TestExpectations:
         * http/tests/inspector/target/target-events-for-provisional-page-expected.txt: Added.
@@ -36651,7 +36651,7 @@
 
         Reviewed by Tim Horton.
 
-        Try to make this test more robust in WebKit2 on iOS 13 by ensuring at least one round trip between the web
+        Try to make this test more robust in CyberKit2 on iOS 13 by ensuring at least one round trip between the web
         content process and the UI process after copying and pasting. The root cause of the flakiness is still unknown,
         but evidence suggests that code in Pasteboard.framework needs at least one runloop to sever the connection
         between the application process and `pasted` after writing content to the pasteboard; otherwise, this
@@ -36920,7 +36920,7 @@
 
         Reviewed by Zalan Bujtas.
         
-        In WebKit1, the transform on the layer is not consistent, so filter it out of the layer tree dump (it's not the important part).
+        In CyberKit1, the transform on the layer is not consistent, so filter it out of the layer tree dump (it's not the important part).
 
         * legacy-animation-engine/compositing/backing/transform-transition-from-outside-view-expected.txt:
         * legacy-animation-engine/compositing/backing/transform-transition-from-outside-view.html:
@@ -37033,13 +37033,13 @@
         Reviewed by Simon Fraser.
 
         Rebase iOS result. The test fast/repaint/placeholder-after-caps-lock-hidden.html is only supported
-        in Modern WebKit and only on Mac and iOS, which implement uiController.toggleCapsLock(), at the time
+        in Modern CyberKit and only on Mac and iOS, which implement uiController.toggleCapsLock(), at the time
         of writing.
 
         * platform/ios-wk2/TestExpectations: Mark test as PASS.
         * platform/ios-wk2/fast/repaint/placeholder-after-caps-lock-hidden-expected.txt:
         * platform/ios/TestExpectations: Remove entry so that we fallback to platform-independent TestExpectations
-        and skip the test because the test is only supported on Modern WebKit.
+        and skip the test because the test is only supported on Modern CyberKit.
         * platform/ios/fast/events/ios/placeholder-after-caps-lock-hidden-expected.txt: Removed; erroneously added
         file for non-existent test.
 
@@ -37164,7 +37164,7 @@
 
 2019-10-21  Alicia Boya García  <aboya@igalia.com>
 
-        [MSE][GStreamer] Revert WebKitMediaSrc rework temporarily
+        [MSE][GStreamer] Revert CyberKitMediaSrc rework temporarily
         https://bugs.webkit.org/show_bug.cgi?id=203078
 
         Reviewed by Carlos Garcia Campos.
@@ -37314,7 +37314,7 @@
 
 2019-10-18  Devin Rousso  <drousso@apple.com>
 
-        Web Inspector: Elements: allow WebKit engineers to edit UserAgent shadow trees
+        Web Inspector: Elements: allow CyberKit engineers to edit UserAgent shadow trees
         https://bugs.webkit.org/show_bug.cgi?id=203159
 
         Reviewed by Brian Burg.
@@ -37348,7 +37348,7 @@
 
         Now that <rdar://problem/45772078> is fixed we can write the test such that we check the test
         result after we receive a DOM key up for the forward delete. Currently the test makes use of a
-        workaround that incorrectly assumes that the keyboard will call back into WebKit to perform the
+        workaround that incorrectly assumes that the keyboard will call back into CyberKit to perform the
         forward deletion before the web process blur()s the field. This is not guaranteed to happen.
         Instead wait until we receive a DOM key up for the delete key.
 
@@ -37535,8 +37535,8 @@
         array of options (which, for now, just supports a single option to change the pasteboard when granting DOM paste
         access).
 
-        * platform/ios-wk1/TestExpectations: Skip clipboard-change-data-while-reading.html for now in WebKit1.
-        * platform/mac-wk1/TestExpectations: Skip clipboard-change-data-while-reading.html for now in WebKit1.
+        * platform/ios-wk1/TestExpectations: Skip clipboard-change-data-while-reading.html for now in CyberKit1.
+        * platform/mac-wk1/TestExpectations: Skip clipboard-change-data-while-reading.html for now in CyberKit1.
         * platform/win/TestExpectations: Skip the new layout tests on Windows for now.
 
 2019-10-17  Chris Dumez  <cdumez@apple.com>
@@ -38137,7 +38137,7 @@
 
 2019-10-15  Wenson Hsieh  <wenson_hsieh@apple.com>
 
-        REGRESSION: editing/async-clipboard/clipboard-interfaces.html is failing in WebKit1
+        REGRESSION: editing/async-clipboard/clipboard-interfaces.html is failing in CyberKit1
         https://bugs.webkit.org/show_bug.cgi?id=202940
         <rdar://problem/56262298>
 
@@ -38148,13 +38148,13 @@
         * editing/async-clipboard/clipboard-wrapper-stays-alive.html:
 
         Tweak a few layout tests to actually turn the experimental feature on (this previously worked because
-        experimental feature flags are already on by default in WebKit2).
+        experimental feature flags are already on by default in CyberKit2).
 
         * platform/ios-wk1/TestExpectations:
         * platform/mac-wk1/TestExpectations:
         * platform/win/TestExpectations:
 
-        Unskip and unmark these layout tests as failing in WebKit1 on iOS, macOS, and Windows.
+        Unskip and unmark these layout tests as failing in CyberKit1 on iOS, macOS, and Windows.
 
 2019-10-15  Dean Jackson  <dino@apple.com>
 
@@ -38429,7 +38429,7 @@
 
 2019-10-12  Ryosuke Niwa  <rniwa@webkit.org>
 
-        [iOS] Crash in WebCore::DOMWindow::incrementScrollEventListenersCount
+        [iOS] Crash in CyberCore::DOMWindow::incrementScrollEventListenersCount
         https://bugs.webkit.org/show_bug.cgi?id=202878
 
         Reviewed by Alex Christensen.
@@ -38734,7 +38734,7 @@
         instead use context menus.
 
         We no longer need to test the actions in the context menu here, since
-        it is covered by the TestWebKitAPI/Tests/WebKitCocoa/ContextMenus test.
+        it is covered by the TestCyberKitAPI/Tests/CyberKitCocoa/ContextMenus test.
 
         However, we can still use this test to ensure we are getting a
         context menu on the correct element.
@@ -38942,7 +38942,7 @@
         * platform/win/TestExpectations:
         * platform/wincairo/TestExpectations:
 
-        Skip editing/pasteboard/dom-paste everywhere for now, except for macOS and iOS WebKit2.
+        Skip editing/pasteboard/dom-paste everywhere for now, except for macOS and iOS CyberKit2.
 
 2019-10-10  Chris Lord  <clord@igalia.com>
 
@@ -40337,8 +40337,8 @@
 
         Reviewed by Devin Rousso.
 
-        User interaction inspector tests were accidentally disabled on both WebKit1 and WebKit2.
-        Marking them as passing on WebKit2.
+        User interaction inspector tests were accidentally disabled on both CyberKit1 and CyberKit2.
+        Marking them as passing on CyberKit2.
 
         * platform/wk2/TestExpectations:
 
@@ -40350,7 +40350,7 @@
 
 2019-10-01  Alexey Shvayka  <shvaikalesh@gmail.com>
 
-        [win-ews] No such file or directory: u'/cygdrive/C/cygwin/home/buildbot/WebKit/WebKitBuild/Release/bin32/layout-test-results/pywebsocket.ws.log-out.txt'
+        [win-ews] No such file or directory: u'/cygdrive/C/cygwin/home/buildbot/CyberKit/CyberKitBuild/Release/bin32/layout-test-results/pywebsocket.ws.log-out.txt'
         https://bugs.webkit.org/show_bug.cgi?id=188640
 
         Reviewed by Alex Christensen.
@@ -40371,7 +40371,7 @@
 
         Reviewed by Brent Fulgham.
 
-        WebKit's Storage Access API implementation has so far only looked at whether ITP is
+        CyberKit's Storage Access API implementation has so far only looked at whether ITP is
         blocking cookie access or not. However, the default cookie policy is still in
         effect underneath ITP. document.hasStorageAccess() should return true if the
         third-party:
@@ -40425,7 +40425,7 @@
         Make table's clientWidth/Height include its border sizes.
         https://bugs.webkit.org/show_bug.cgi?id=200974
 
-        WebKit doesn't have table wrapper box currently
+        CyberKit doesn't have table wrapper box currently
         while Gecko has it,
         so this CL tries to mimic the behavior that
         clientWidth/Height refers to table wrapper box
@@ -40724,7 +40724,7 @@
         Reviewed by Alex Christensen.
 
         Stop using testRunner.overridePreference() to turn on Page Cache, as this does not work
-        for WebKit2 when navigating cross-origin due to process swapping. Instead, update tests
+        for CyberKit2 when navigating cross-origin due to process swapping. Instead, update tests
         to rely on `<!-- webkit-test-runner [ enablePageCache=true ] -->`.
 
         * animations/resume-after-page-cache.html:
@@ -41837,7 +41837,7 @@
         When only the width (no height) attribute of a video element is given
         and the the poster image is missing (cannot be downloaded),
         the aspect ratio of the video element should not be 1, which is the default behavior
-        of WebKit to paint a broken image. Instead, it should be the aspect ratio of the video content.
+        of CyberKit to paint a broken image. Instead, it should be the aspect ratio of the video content.
 
         * media/video-poster-not-found-expected.txt: Added.
         * media/video-poster-not-found.html: Added.
@@ -42339,7 +42339,7 @@
 
 2019-09-14  Antti Koivisto  <antti@apple.com>
 
-        ASSERTION FAILED: !renderer() in  WebCore::Text::~Text
+        ASSERTION FAILED: !renderer() in  CyberCore::Text::~Text
         https://bugs.webkit.org/show_bug.cgi?id=172514
         <rdar://problem/32470509>
 
@@ -42918,7 +42918,7 @@
         Reviewed by Alex Christensen.
 
         Use testRunner.setShouldSwapToEphemeralSessionOnNextNavigation() / setShouldSwapToDefaultSessionOnNextNavigation() to
-        truly switch session on WebKit2 instead of using the testRunner.setPrivateBrowsingEnabled_DEPRECATED() hack.
+        truly switch session on CyberKit2 instead of using the testRunner.setPrivateBrowsingEnabled_DEPRECATED() hack.
 
         * http/tests/cookies/private-cookie-storage-expected.txt:
         * http/tests/cookies/private-cookie-storage.html:
@@ -43114,7 +43114,7 @@
         Per https://github.com/w3c/csswg-drafts/issues/3749,
         Gecko and Blink has this behavior already.
 
-        This patch makes WebKit has the same behavior with them.
+        This patch makes CyberKit has the same behavior with them.
 
         * css3/calc/line-height-expected.txt:
         * fast/css/font-calculated-value-expected.txt:
@@ -43193,7 +43193,7 @@
         testRunner.setShouldSwapToDefaultSessionOnNextNavigation() instead of the legacy
         testRunner.setPrivateBrowsingEnabled_DEPRECATED(). The test needed some extra steps to
         navigate whenever we switch session but it is a lot more realistic and is really switching
-        session on WebKit2. The testRunner.setPrivateBrowsingEnabled_DEPRECATED() was not truly
+        session on CyberKit2. The testRunner.setPrivateBrowsingEnabled_DEPRECATED() was not truly
         switching session, just making the document think it did.
 
         * http/tests/adClickAttribution/conversion-disabled-in-ephemeral-session.html:
@@ -43986,7 +43986,7 @@
 
         Reviewed by Alex Christensen.
 
-        Stop using testRunner.setPrivateBrowsingEnabled_DEPRECATED() as it does not do the right thing for WebKit2.
+        Stop using testRunner.setPrivateBrowsingEnabled_DEPRECATED() as it does not do the right thing for CyberKit2.
         Instead, use the new useEphemeralSession WKTR flag added in r249542.
 
         * http/tests/cache/disk-cache/disk-cache-vary-cookie-expected.txt:
@@ -44002,7 +44002,7 @@
         Reviewed by Alex Christensen.
 
         Stop using testRunner.setPrivateBrowsingEnabled_DEPRECATED() in plugins/private-browsing-mode.html
-        since it does not do the right thing for WebKit2. Instead, use the new useEphemeralSession
+        since it does not do the right thing for CyberKit2. Instead, use the new useEphemeralSession
         WKTR flag.
 
         * platform/mac-wk2/TestExpectations:
@@ -44250,7 +44250,7 @@
         Test WI.urlWithoutFragment.
 
         * platform/mac-wk1/TestExpectations:
-        WebKitLegacy does not support overrides.
+        CyberKitLegacy does not support overrides.
 
 2019-09-04  Said Abou-Hallawa  <sabouhallawa@apple.com>
 
@@ -44349,7 +44349,7 @@
 
 2019-09-03  Devin Rousso  <drousso@apple.com>
 
-        REGRESSION (r249078): Flaky crash in com.apple.JavaScriptCore: Inspector::InjectedScriptModule::ensureInjected
+        REGRESSION (r249078): Flaky crash in com.matthewbenedict.CyberScriptCore: Inspector::InjectedScriptModule::ensureInjected
         https://bugs.webkit.org/show_bug.cgi?id=201201
         <rdar://problem/54771560>
 
@@ -44425,7 +44425,7 @@
 
         Reviewed by Said Abou-Hallawa.
 
-        These test cases are imported from Blink's commit, and modified for WebKit.
+        These test cases are imported from Blink's commit, and modified for CyberKit.
         <https://chromium.googlesource.com/chromium/src/+/e7d7225c33aa7fc42ee390125b01df9167fad106%5E%21/>
 
         * TestExpectations:
@@ -44735,7 +44735,7 @@
 
         Reviewed by Simon Fraser.
 
-        Add a new layout test that covers this scenario. See WebCore ChangeLog for additional detail.
+        Add a new layout test that covers this scenario. See CyberCore ChangeLog for additional detail.
 
         * editing/selection/ios/show-selection-in-transformed-container-2-expected.txt: Added.
         * editing/selection/ios/show-selection-in-transformed-container-2.html: Added.
@@ -44870,7 +44870,7 @@
 
         Reviewed by Tim Horton.
 
-        Add a new layout test that covers this scenario. See WebKit ChangeLog for additional detail.
+        Add a new layout test that covers this scenario. See CyberKit ChangeLog for additional detail.
 
         * editing/selection/ios/show-selection-in-transformed-container-expected.txt: Added.
         * editing/selection/ios/show-selection-in-transformed-container.html: Added.
@@ -45029,7 +45029,7 @@
 
 2019-08-28  Alicia Boya García  <aboya@igalia.com>
 
-        [MSE][GStreamer] WebKitMediaSrc rework
+        [MSE][GStreamer] CyberKitMediaSrc rework
         https://bugs.webkit.org/show_bug.cgi?id=199719
 
         Reviewed by Xabier Rodriguez-Calvar.
@@ -45184,7 +45184,7 @@
 
 2019-08-27  Chris Dumez  <cdumez@apple.com>
 
-        Crash under WebCore::jsNotificationConstructorPermission
+        Crash under CyberCore::jsNotificationConstructorPermission
         https://bugs.webkit.org/show_bug.cgi?id=201186
         <rdar://problem/53962833>
 
@@ -45631,7 +45631,7 @@
 
 2019-08-23  Wenson Hsieh  <wenson_hsieh@apple.com>
 
-        [iOS] [WebKit2] Tapping on the “I’m” text suggestion after typing “i’” does nothing
+        [iOS] [CyberKit2] Tapping on the “I’m” text suggestion after typing “i’” does nothing
         https://bugs.webkit.org/show_bug.cgi?id=201085
         <rdar://problem/53056118>
 
@@ -46528,7 +46528,7 @@
 
 2019-08-16  Chris Lord  <clord@igalia.com>
 
-        Update WebGL test expectations for WebKit WPE
+        Update WebGL test expectations for CyberKit WPE
         https://bugs.webkit.org/show_bug.cgi?id=200765
 
         Reviewed by Carlos Alberto Lopez Perez.
@@ -46741,7 +46741,7 @@
 
 2019-08-15  Antti Koivisto  <antti@apple.com>
 
-        Negative size box with border radius causes hang under WebCore::approximateAsRegion
+        Negative size box with border radius causes hang under CyberCore::approximateAsRegion
         https://bugs.webkit.org/show_bug.cgi?id=200769
         <rdar://problem/53380674>
 
@@ -48749,8 +48749,8 @@
 
         Reviewed by Ryosuke Niwa.
 
-        Add a new layout test to verify that attempting to show the font panel doesn't crash the web process in WebKit2.
-        This test is skipped in WebKit1, since EventSender::contextClick() in WebKit1 only returns an array of strings
+        Add a new layout test to verify that attempting to show the font panel doesn't crash the web process in CyberKit2.
+        This test is skipped in CyberKit1, since EventSender::contextClick() in CyberKit1 only returns an array of strings
         corresponding to the titles of each menu item.
 
         * editing/mac/style/do-not-crash-when-showing-font-panel-expected.txt: Added.
@@ -48759,7 +48759,7 @@
 
 2019-07-23  Ryosuke Niwa  <rniwa@webkit.org>
 
-        WebKit should strip away system font names from the pasted content
+        CyberKit should strip away system font names from the pasted content
         https://bugs.webkit.org/show_bug.cgi?id=199975
         <rdar://problem/53336353>
 
@@ -48983,7 +48983,7 @@
 
         Reviewed by Megan Gardner.
 
-        In r202295, we added an ios-specific quirk to prevent scrolling on iOS because of UIKit/WebKit scrolling discrepancies.
+        In r202295, we added an ios-specific quirk to prevent scrolling on iOS because of UIKit/CyberKit scrolling discrepancies.
         In r244141, we changed the scrolling behavior to be more like macOS, and the test was broken.  Since this was an intentional
         change and the bugs reported in rdar://problem/26805722 (initially fixed by r202295) and rdar://problem/49225507 (fixed by r244141)
         are both behaving as desired, the intentional change in r244141 should be reflected by new test expectations.
@@ -50592,7 +50592,7 @@
 
 2019-07-09  Andres Gonzalez  <andresg_22@apple.com>
 
-        AX: HTML datalist accessibility is not exposed by WebKit
+        AX: HTML datalist accessibility is not exposed by CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=196998
         <rdar://problem/49962521>
 
@@ -50734,7 +50734,7 @@
 
 2019-07-09  Antti Koivisto  <antti@apple.com>
 
-        REGRESSION(r244906): Crash in WebCore::positionOffsetValue
+        REGRESSION(r244906): Crash in CyberCore::positionOffsetValue
         https://bugs.webkit.org/show_bug.cgi?id=199613
         <rdar://problem/51518172>
 
@@ -50890,7 +50890,7 @@
         Reviewed by Simon Fraser.
 
         Adjusts an existing layout test, and introduces a new test to verify that the shrink-to-fit heuristic is given a
-        chance to run before document load. See WebKit ChangeLog for more details.
+        chance to run before document load. See CyberKit ChangeLog for more details.
 
         * fast/viewport/ios/shrink-to-fit-content-before-document-load-expected.txt: Added.
         * fast/viewport/ios/shrink-to-fit-content-before-document-load.html: Added.
@@ -50907,7 +50907,7 @@
         Reviewed by Chris Dumez.
 
         Add a test to verify that promises scheduled right before a programmatic paste resolve in the middle of the
-        paste, while creating a document for web content sanitization. See WebCore ChangeLog for more details.
+        paste, while creating a document for web content sanitization. See CyberCore ChangeLog for more details.
 
         * editing/pasteboard/paste-does-not-fire-promises-while-sanitizing-web-content-expected.txt: Added.
         * editing/pasteboard/paste-does-not-fire-promises-while-sanitizing-web-content.html: Added.
@@ -51009,7 +51009,7 @@
 
 2019-07-05  Ryosuke Niwa  <rniwa@webkit.org>
 
-        [iOS] Crash in WebKit::WebPage::positionInformation via Range::startPosition
+        [iOS] Crash in CyberKit::WebPage::positionInformation via Range::startPosition
         https://bugs.webkit.org/show_bug.cgi?id=199503
 
         Reviewed by Wenson Hsieh.
@@ -51023,7 +51023,7 @@
 
 2019-07-02  Myles C. Maxfield  <mmaxfield@apple.com>
 
-        [WHLSL] Standard library is too big to directly include in WebCore
+        [WHLSL] Standard library is too big to directly include in CyberCore
         https://bugs.webkit.org/show_bug.cgi?id=198186
         <rdar://problem/51288898>
 
@@ -51060,12 +51060,12 @@
 
         Unreviewed, rolling out r247115.
 
-        Breaks lldbWebKitTester (and by extension, test-webkitpy)
+        Breaks lldbCyberKitTester (and by extension, test-webkitpy)
 
         Reverted changeset:
 
         "[WHLSL] Standard library is too big to directly include in
-        WebCore"
+        CyberCore"
         https://bugs.webkit.org/show_bug.cgi?id=198186
         https://trac.webkit.org/changeset/247115
 
@@ -51183,7 +51183,7 @@
 
 2019-07-03  Simon Fraser  <simon.fraser@apple.com>
 
-        RELEASE_ASSERT in WebCore: WebCore::ScrollingStateTree::insertNode()
+        RELEASE_ASSERT in CyberCore: CyberCore::ScrollingStateTree::insertNode()
         https://bugs.webkit.org/show_bug.cgi?id=199479
         rdar://problem/52392556
 
@@ -51194,7 +51194,7 @@
 
 2019-07-02  Myles C. Maxfield  <mmaxfield@apple.com>
 
-        [WHLSL] Standard library is too big to directly include in WebCore
+        [WHLSL] Standard library is too big to directly include in CyberCore
         https://bugs.webkit.org/show_bug.cgi?id=198186
         <rdar://problem/51288898>
 
@@ -51258,7 +51258,7 @@
 
 2019-07-03  Andres Gonzalez  <andresg_22@apple.com>
 
-        Safari hanging while loading pages - WebCore::AccessibilityRenderObject::visiblePositionRangeForLine.
+        Safari hanging while loading pages - CyberCore::AccessibilityRenderObject::visiblePositionRangeForLine.
         https://bugs.webkit.org/show_bug.cgi?id=199434
         <rdar://problem/52475140>
 
@@ -51277,7 +51277,7 @@
         Reviewed by Simon Fraser.
 
         These tests are depending on platform font metrics. They were
-        created for a Blink bug, doesn't seem useful for WebKit. Just
+        created for a Blink bug, doesn't seem useful for CyberKit. Just
         removed them.
 
         * imported/blink/animations/display-inline-style-adjust.html: Deleted.
@@ -52030,7 +52030,7 @@
 
         Reviewed by Saam Barati.
 
-        whlsl-test-harness.js now generates WHLSL shaders and invokes WebKit's WHLSL compiler.
+        whlsl-test-harness.js now generates WHLSL shaders and invokes CyberKit's WHLSL compiler.
         MSL mode remains to facilitate further harness tesing.
         In addition, if WebGPU is not supported, synchronous Harness methods do nothing.
         Asynchronous methods will throw a WebGPUUnsupportedError that "rejects" the returned Promise.
@@ -53412,8 +53412,8 @@
 
         Reviewed by Darin Adler.
 
-        WebKit now knows how to handle flag change events on iOS and dispatch DOM events just like Mac.
-        Until USE(UIKIT_KEYBOARD_ADDITIONS) is enabled by default WebKit does not expect to receive
+        CyberKit now knows how to handle flag change events on iOS and dispatch DOM events just like Mac.
+        Until USE(UIKIT_KEYBOARD_ADDITIONS) is enabled by default CyberKit does not expect to receive
         modifier flag changes. But once this compile time flag is enabled it will and the test
         fast/events/ios/keyboard-event-key-attribute.html will fail because it types '@' and only
         expects to see a single keydown for '@' even though it actually requires two key downs to
@@ -53934,7 +53934,7 @@
 2019-06-11  Daniel Bates  <dabates@apple.com>
 
         Skip test http/tests/security/contentSecurityPolicy/navigate-self-to-data-url.html as
-        testRunner.queueLoad() does not support loading data URLs in Legacy WebKit on Mac and iOS
+        testRunner.queueLoad() does not support loading data URLs in Legacy CyberKit on Mac and iOS
 
         * platform/ios-wk1/TestExpectations:
         * platform/mac-wk1/TestExpectations:
@@ -54350,7 +54350,7 @@
 
 2019-06-06  Youenn Fablet  <youenn@apple.com>
 
-        Allow WebKitTestRunner to terminate network process after it finishes service worker file operations
+        Allow CyberKitTestRunner to terminate network process after it finishes service worker file operations
         https://bugs.webkit.org/show_bug.cgi?id=198584
 
         Reviewed by Geoffrey Garen.

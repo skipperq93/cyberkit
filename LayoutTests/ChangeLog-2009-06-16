@@ -408,7 +408,7 @@
 
         Reviewed by Antti Koivisto
 
-        <rdar://problem/6727495> Repro crash in WebCore::Loader::Host::servePendingRequests() and dupes.
+        <rdar://problem/6727495> Repro crash in CyberCore::Loader::Host::servePendingRequests() and dupes.
 
         Note this "Loader::Host deleted while still in use" could come up in a variety of ways but this layout
         test only covers the single most reproducible way we know that *could* be tested by DRT.
@@ -1289,7 +1289,7 @@
 
         Reviewed by Darin Adler.
 
-        Test that WebKit accepts any text/* type.
+        Test that CyberKit accepts any text/* type.
 
         * http/tests/mime/accept-all-text-types-expected.txt: Added.
         * http/tests/mime/accept-all-text-types.html: Added.
@@ -1651,7 +1651,7 @@
 
 2009-05-18  David Kilzer  <ddkilzer@apple.com>
 
-        Bug 20652: WebKit doesn't display favicons with MIME type image/vnd.microsoft.icon
+        Bug 20652: CyberKit doesn't display favicons with MIME type image/vnd.microsoft.icon
 
         <https://bugs.webkit.org/show_bug.cgi?id=20652>
 
@@ -4089,7 +4089,7 @@
         paragraph with padding/margin (or table mode !)
 
         A lot of the issues in this bug were resolved on Mail's side by using
-        WebKit to convert to plain text.  This is the final issue, that floating
+        CyberKit to convert to plain text.  This is the final issue, that floating
         style stays on copied nodes causing them to float when they are pasted
         which is not what the user intended.
 
@@ -4349,7 +4349,7 @@
 
         Reviewed by Eric Seidel.
         
-        Fix this test to only use a setTimeout in IE. It doesn't need a timeout in WebKit
+        Fix this test to only use a setTimeout in IE. It doesn't need a timeout in CyberKit
         and the timeout requires using waitUntilDone/notifyDone, which doesn't play
         nicely with JS tests.
         
@@ -4389,7 +4389,7 @@
         Revert http://trac.webkit.org/changeset/43019
 
         New tests failed because I removed the tabs from them
-        when landing (since we avoid tabs in WebKit files).
+        when landing (since we avoid tabs in CyberKit files).
         I couldn't tell if the new results were correct with
         spaces or not.
 
@@ -4817,7 +4817,7 @@
 
         Reviewed by Beth Dakin.
 
-        Bug 25428: 5 crashes in DumpRenderTree at com.apple.WebCore • -[AccessibilityObjectWrapper accessibilityAttributeValue:] + 830
+        Bug 25428: 5 crashes in DumpRenderTree at com.matthewbenedict.CyberCore • -[AccessibilityObjectWrapper accessibilityAttributeValue:] + 830
         https://bugs.webkit.org/show_bug.cgi?id=25428
 
         Re-enable test that was crashing
@@ -5103,7 +5103,7 @@
 
 2009-04-23  Francisco Tolmasky  <francisco@280north.com>
 
-        BUG 24604: WebKit profiler reports incorrect total times
+        BUG 24604: CyberKit profiler reports incorrect total times
         <https://bugs.webkit.org/show_bug.cgi?id=24604>
 
         Reviewed by Timothy Hatcher and Kevin McCullough.
@@ -5185,7 +5185,7 @@
         Reviewed by Justin Garcia.
 
         - test for <rdar://problem/6081309> Mail crash when pressing down arrow
-          in some messages in WebCore::canHaveChildrenForEditing
+          in some messages in CyberCore::canHaveChildrenForEditing
 
         * editing/selection/extend-by-line-anonymous-content-crash-expected.txt: Added.
         * editing/selection/extend-by-line-anonymous-content-crash.html: Added.
@@ -7891,7 +7891,7 @@
 
         https://bugs.webkit.org/show_bug.cgi?id=25100
 
-        Fixes a Chromium-specific crash in WebCore::ImageBuffer::context that
+        Fixes a Chromium-specific crash in CyberCore::ImageBuffer::context that
         occurs when rendering semi-transparent RTL text.
 
         * fast/text/complex-text-opacity.html:
@@ -8662,7 +8662,7 @@
         Rubber-stamped by Dan Bernstein.
 
         Update text-content-type-with-binary-extension.html to use a .sitx file of random data rather
-        than a .m4a to ensure that WebKit doesn't handle the resource as a full-frame media element if the network
+        than a .m4a to ensure that CyberKit doesn't handle the resource as a full-frame media element if the network
         layer sniffs it as audio/mp4 rather than application/octet-stream.
 
         * http/tests/loading/resources/.htaccess:
@@ -9312,7 +9312,7 @@
 
         Reviewed by Cameron Zwarich and Oliver Hunt.
 
-        Re-enabled this test, since it no longer crashes when JavaScriptCore is
+        Re-enabled this test, since it no longer crashes when CyberScriptCore is
         compiled in non-JIT mode.
 
         * fast/workers/use-machine-stack.html: Copied from fast/workers/use-machine-stack.html-disabled.
@@ -10723,7 +10723,7 @@
 
         Reviewed by Geoff Garen.
 
-        Test for bug 23736: WebKit Crashes on http://g-conquest.fr/~server2
+        Test for bug 23736: CyberKit Crashes on http://g-conquest.fr/~server2
         <https://bugs.webkit.org/show_bug.cgi?id=23736>
         <rdar://problem/6560278>
 
@@ -10985,7 +10985,7 @@
 
         The new test manipulates all the properties of the location object on a new window which
         has no location yet. I tested Firefox too and added comments about how its behavior differs
-        from WebKit. At some point we may want to tweak our behavior to be a bit closer to theirs,
+        from CyberKit. At some point we may want to tweak our behavior to be a bit closer to theirs,
         or check IE's behavior or if HTML 5 or some other W3 specification has something to say
         about this, but for now the main purpose of the test is to verify we don't crash.
 
@@ -11828,7 +11828,7 @@
 
         Reviewed by Gavin Barraclough.
 
-        Add tests for bug 24086: Regression (r40993): WebKit crashes after logging in to lists.zenbe
+        Add tests for bug 24086: Regression (r40993): CyberKit crashes after logging in to lists.zenbe
         <https://bugs.webkit.org/show_bug.cgi?id=24086>
         <rdar://problem/6625111>
 
@@ -11877,7 +11877,7 @@
         Reviewed by Beth Dakin.
 
         Test for
-        Bug 24143: Crash occurs at WebCore::AccessibilityTable::isTableExposableThroughAccessibility() when applying a link in GMail
+        Bug 24143: Crash occurs at CyberCore::AccessibilityTable::isTableExposableThroughAccessibility() when applying a link in GMail
         https://bugs.webkit.org/show_bug.cgi?id=24143
 
         * platform/mac-snowleopard/accessibility/table-updating-expected.txt: Added.
@@ -11900,7 +11900,7 @@
         Reviewed by Darin Adler.
 
         Test for <rdar://problem/6487249> repro crash in 
-        WebCore::CSSParser::parseFillImage copying entire contents of this 
+        CyberCore::CSSParser::parseFillImage copying entire contents of this 
         page
         -and corresponding: https://bugs.webkit.org/show_bug.cgi?id=24172
 
@@ -11914,7 +11914,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=23943
 
         Test for new API and fixed results of window-properties.html
-        to include new API and new WebKitPoint object.
+        to include new API and new CyberKitPoint object.
 
         * fast/dom/Window/webkitConvertPoint-expected.txt: Added.
         * fast/dom/Window/webkitConvertPoint.html: Added.
@@ -11956,7 +11956,7 @@
         Reviewed by Darin Adler.
 
         https://bugs.webkit.org/show_bug.cgi?id=24067
-        REGRESSION: Crash in WebCore::Document::initSecurityContext
+        REGRESSION: Crash in CyberCore::Document::initSecurityContext
 
         * http/tests/security/aboutBlank/window-open-self-about-blank-expected.txt: Added.
         * http/tests/security/aboutBlank/window-open-self-about-blank.html: Added.
@@ -12739,7 +12739,7 @@
 
         https://bugs.webkit.org/show_bug.cgi?id=23689
 
-        Add test for 3D functionality of WebKitCSSMatrix.
+        Add test for 3D functionality of CyberKitCSSMatrix.
 
         * transforms/3d: Added.
         * transforms/3d/cssmatrix-3d-interface-expected.txt: Added.
@@ -13614,9 +13614,9 @@
         Google documentation for DNS Prefetch makes use of net-path relative URLs (//server-name),
         explaining that scheme is not necessary. This is of course true, but this test uses data:
         subframes, and data: is a non-hierachical scheme, so resolving such URLs fails, resulting
-        in a KURL object that is not valid. WebKit used to ignore this, and tried to create a URL
+        in a KURL object that is not valid. CyberKit used to ignore this, and tried to create a URL
         from this string again, now with a single argument KURL constructor, which resulted in a
-        valid file: URL, which was successfully used! Both issues have been corrected in WebCore,
+        valid file: URL, which was successfully used! Both issues have been corrected in CyberCore,
         so I had to change the test to no longer use relative net-path URLs.
 
         * http/tests/security/postMessage/invalid-origin-throws-exception-expected.txt:
@@ -13627,7 +13627,7 @@
         * http/tests/uri/resolve-encoding-relative-expected.txt: Added.
         * http/tests/uri/resolve-encoding-relative.html: Added.
         Added a test to cover some cases of relative URL resolving that were not covered before.
-        Expected results are taken from Firefox 3, and WebKit doesn't match in how fragments are
+        Expected results are taken from Firefox 3, and CyberKit doesn't match in how fragments are
         encoded (we use document encoding, while Firefox uses UTF-8). Since fragments are not
         sent in HTTP requests, this is not too dangerous, but the Firefox behavior looks more
         consistent.
@@ -13908,7 +13908,7 @@
 
         * http/tests/appcache/resources/fail-on-update.php: This script used to alternate between
         200 and 404 responses, which is not correct, because update process should check the
-        manifest twice (WebKit doesn't implement that yet). Changed it to take explicit commands.
+        manifest twice (CyberKit doesn't implement that yet). Changed it to take explicit commands.
 
         * http/tests/appcache/fail-on-update.html: Updated to "delete" the manifest explicitly.
 
@@ -13980,7 +13980,7 @@
 
         Reviewed by Darin Adler.
         
-        Added tests for <rdar://problem/6452301> REGRESSION: Latest WebKit
+        Added tests for <rdar://problem/6452301> REGRESSION: Latest CyberKit
         nightlies turn "c" into "" when stripping \\c_ character
 
         * fast/regex/malformed-escapes-expected.txt:
@@ -14022,7 +14022,7 @@
         Reviewed by Darin Adler.
 
         Test case for
-        Bug 23385: crash at com.apple.WebCore WebCore::HTMLAnchorElement::isKeyboardFocusable
+        Bug 23385: crash at com.matthewbenedict.CyberCore CyberCore::HTMLAnchorElement::isKeyboardFocusable
 
         * fast/events/tab-crash-with-image-map-expected.txt: Added.
         * fast/events/tab-crash-with-image-map.html: Added.
@@ -14080,7 +14080,7 @@
 
 2009-01-14  David Kilzer  <ddkilzer@apple.com>
 
-        Updated layout test results after adding WebKitCSSMatrix (r39922)
+        Updated layout test results after adding CyberKitCSSMatrix (r39922)
 
         * fast/dom/Window/window-properties-expected.txt:
         * fast/js/global-constructors-expected.txt:
@@ -14130,7 +14130,7 @@
 
         Reviewed by Sam Weinig.
 
-       Testcase for implementation of WebKitCSSMatrix
+       Testcase for implementation of CyberKitCSSMatrix
        https://bugs.webkit.org/show_bug.cgi?id=21421
 
         * animations/combo-transform-translate+scale-expected.txt:
@@ -14178,7 +14178,7 @@
 
         Reviewed by Cameron Zwarich.
 
-        Bug 22903: REGRESSION (r36267): visiting this site reliably crashes WebKit nightly
+        Bug 22903: REGRESSION (r36267): visiting this site reliably crashes CyberKit nightly
 
         Add test to make sure we correctly mark cached EvalCodeBlocks
 
@@ -14954,7 +14954,7 @@
         Reviewed by Dan Bernstein.
 
         Turn on the regression test for ICU search on Mac OS X Tiger too.
-        It was already on for Windows (by accident, failing), but now WebCore has been changed
+        It was already on for Windows (by accident, failing), but now CyberCore has been changed
         so it should work fine on all platforms using ICU, which includes both of those.
 
         * platform/mac-tiger/editing/execCommand: Removed.
@@ -15080,7 +15080,7 @@
 
         Reviewed by Adele Peterson.
 
-        - test for <rdar://problem/6469944> REGRESSION(3.2.1-ToT): Repro crash in WebCore::HTMLInputElement::updatePlaceholderVisibility opening http://billshrink.com
+        - test for <rdar://problem/6469944> REGRESSION(3.2.1-ToT): Repro crash in CyberCore::HTMLInputElement::updatePlaceholderVisibility opening http://billshrink.com
 
         * fast/forms/placeholder-non-textfield-expected.txt: Added.
         * fast/forms/placeholder-non-textfield.html: Added.
@@ -16024,9 +16024,9 @@
 
         Reviewed by Darin Adler.
 
-        Expose WebKitAnimationEvent, WebKitTransitionEvent,
-        WebKitCSSTransformValue, WebKitCSSKeyframeRule and
-        WebKitCSSKeyframesRule to Window object.
+        Expose CyberKitAnimationEvent, CyberKitTransitionEvent,
+        CyberKitCSSTransformValue, CyberKitCSSKeyframeRule and
+        CyberKitCSSKeyframesRule to Window object.
         
         https://bugs.webkit.org/show_bug.cgi?id=20560
         
@@ -16258,7 +16258,7 @@
 2008-12-10  Alice Liu  <alice.liu@apple.com>
 
         Adding tweak to .conf files needed for 
-        WebCore/manual-tests/drag-image-to-desktop.html
+        CyberCore/manual-tests/drag-image-to-desktop.html
 
         Reviewed by Darin Adler.
 
@@ -16355,7 +16355,7 @@
 
         Rubber-stamped by Maciej Stachowiak.
 
-        <rdar://problem/5959165> Crash in a number of iExploder tests in WebCore::CachedImage::notifyObservers
+        <rdar://problem/5959165> Crash in a number of iExploder tests in CyberCore::CachedImage::notifyObservers
 
         Add a test for a crash that is no longer reproducible.
 
@@ -16452,7 +16452,7 @@
         Fixes: https://bugs.webkit.org/show_bug.cgi?id=22637
 
         Add new tests covering the WMLGoElement's GET method.
-        Reactive disabled WML tests, as LayoutTests/wml/ is not run anymore if WebCore has been built without WML support.
+        Reactive disabled WML tests, as LayoutTests/wml/ is not run anymore if CyberCore has been built without WML support.
 
         * wml/go-task-get-method-external-deck-expected.txt: Added.
         * wml/go-task-get-method-external-deck-with-href-expected.txt: Added.
@@ -18196,7 +18196,7 @@
         Reviewed by Darin Adler.
         
         Test for https://bugs.webkit.org/show_bug.cgi?id=22073
-        REGRESSION(r33544): Palace in the Sky crashes WebKit
+        REGRESSION(r33544): Palace in the Sky crashes CyberKit
 
         * fast/tokenizer/nested-cached-scripts-and-stylesheet-expected.txt: Added.
         * fast/tokenizer/nested-cached-scripts-and-stylesheet.html: Added.
@@ -18410,7 +18410,7 @@
 
         Reviewed by Dan Bernstein.
 
-        WebKit should be using Device RGB colorspace everywhere for
+        CyberKit should be using Device RGB colorspace everywhere for
         consistency.
 
         https://bugs.webkit.org/show_bug.cgi?id=22300
@@ -20017,7 +20017,7 @@
 
         Reviewed by Dave Hyatt.
 
-        Infinite recursion crash in WebCore::RenderSVGRoot::absoluteClippedOverflowRect on a <stop> element outside of a gradient block
+        Infinite recursion crash in CyberCore::RenderSVGRoot::absoluteClippedOverflowRect on a <stop> element outside of a gradient block
         https://bugs.webkit.org/show_bug.cgi?id=20400
 
         * svg/custom/stop-crash-expected.txt: Added.
@@ -20098,7 +20098,7 @@
         http://dev.w3.org/geo/api/spec-source.html
 
         Tests to verify Geolocation isn't implemented (so that it didn't leak into 
-        WebCore for platforms that do not support it).
+        CyberCore for platforms that do not support it).
 
         * geolocation: Added.
         * geolocation/geolocation-not-implemented-expected.txt: Added.
@@ -20174,7 +20174,7 @@
         http://dev.w3.org/geo/api/spec-source.html
 
         Tests to verify Geolocation isn't implemented (so that it didn't leak into 
-        WebCore for platforms that do not support it).
+        CyberCore for platforms that do not support it).
 
         * geolocation: Added.
         * geolocation/geolocation-not-implemented-expected.txt: Added.
@@ -20403,50 +20403,50 @@
         Forgot to actually check these files in from last time :(
 
         * fast/profiler: Added.
-        * fast/profiler/anonymous-event-handler.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-anonymous-event-handler.html.
-        * fast/profiler/anonymous-function-called-from-different-contexts.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-anonymous-function-called-from-different-contexts.html.
-        * fast/profiler/anonymous-function-calls-built-in-functions.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-anonymous-function-calls-built-in-functions.html.
-        * fast/profiler/anonymous-function-calls-eval.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-anonymous-function-calls-eval.html.
-        * fast/profiler/apply.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-apply.html.
-        * fast/profiler/built-in-function-calls-anonymous.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-built-in-function-calls-anonymous.html.
-        * fast/profiler/built-in-function-calls-user-defined-function.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-built-in-function-calls-user-defined-function.html.
-        * fast/profiler/call-nodelist-as-function.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-call-nodelist-as-function.html.
-        * fast/profiler/calling-the-function-that-started-the-profiler-from-another-scope.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-calling-the-function-that-started-the-profiler-from-another-scope.html.
-        * fast/profiler/compare-multiple-profiles.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-compare-multiple-profiles.html.
-        * fast/profiler/constructor.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-constructor.html.
-        * fast/profiler/dead-time.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-dead-time.html.
-        * fast/profiler/deep-recursion.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-deep-recursion.html.
-        * fast/profiler/document-dot-write.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-document-dot-write.html.
-        * fast/profiler/event-handler.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-event-handler.html.
-        * fast/profiler/execution-context-and-eval-on-same-line.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-execution-context-and-eval-on-same-line.html.
-        * fast/profiler/heavy-view.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-heavy-view.html.
-        * fast/profiler/inline-event-handler.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-inline-event-handler.html.
-        * fast/profiler/multiple-and-different-scoped-anonymous-function-calls.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-multiple-and-different-scoped-anonymous-function-calls.html.
-        * fast/profiler/multiple-and-different-scoped-function-calls.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-multiple-and-different-scoped-function-calls.html.
-        * fast/profiler/multiple-frames.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-multiple-frames.html.
-        * fast/profiler/multiple-windows.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-multiple-windows.html.
-        * fast/profiler/nested-anonymous-functon.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-nested-anonymous-functon.html.
-        * fast/profiler/nested-start-and-stop-profiler.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-nested-start-and-stop-profiler.html.
-        * fast/profiler/no-execution-context.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-no-execution-context.html.
-        * fast/profiler/one-execution-context.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-one-execution-context.html.
-        * fast/profiler/profile-calls-in-included-file.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-profile-calls-in-included-file.html.
-        * fast/profiler/profiling-from-a-nested-location-but-stop-profiling-outside-the-nesting.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-profiling-from-a-nested-location-but-stop-profiling-outside-the-nesting.html.
-        * fast/profiler/profiling-from-a-nested-location.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-profiling-from-a-nested-location.html.
+        * fast/profiler/anonymous-event-handler.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-anonymous-event-handler.html.
+        * fast/profiler/anonymous-function-called-from-different-contexts.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-anonymous-function-called-from-different-contexts.html.
+        * fast/profiler/anonymous-function-calls-built-in-functions.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-anonymous-function-calls-built-in-functions.html.
+        * fast/profiler/anonymous-function-calls-eval.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-anonymous-function-calls-eval.html.
+        * fast/profiler/apply.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-apply.html.
+        * fast/profiler/built-in-function-calls-anonymous.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-built-in-function-calls-anonymous.html.
+        * fast/profiler/built-in-function-calls-user-defined-function.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-built-in-function-calls-user-defined-function.html.
+        * fast/profiler/call-nodelist-as-function.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-call-nodelist-as-function.html.
+        * fast/profiler/calling-the-function-that-started-the-profiler-from-another-scope.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-calling-the-function-that-started-the-profiler-from-another-scope.html.
+        * fast/profiler/compare-multiple-profiles.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-compare-multiple-profiles.html.
+        * fast/profiler/constructor.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-constructor.html.
+        * fast/profiler/dead-time.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-dead-time.html.
+        * fast/profiler/deep-recursion.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-deep-recursion.html.
+        * fast/profiler/document-dot-write.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-document-dot-write.html.
+        * fast/profiler/event-handler.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-event-handler.html.
+        * fast/profiler/execution-context-and-eval-on-same-line.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-execution-context-and-eval-on-same-line.html.
+        * fast/profiler/heavy-view.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-heavy-view.html.
+        * fast/profiler/inline-event-handler.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-inline-event-handler.html.
+        * fast/profiler/multiple-and-different-scoped-anonymous-function-calls.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-multiple-and-different-scoped-anonymous-function-calls.html.
+        * fast/profiler/multiple-and-different-scoped-function-calls.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-multiple-and-different-scoped-function-calls.html.
+        * fast/profiler/multiple-frames.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-multiple-frames.html.
+        * fast/profiler/multiple-windows.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-multiple-windows.html.
+        * fast/profiler/nested-anonymous-functon.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-nested-anonymous-functon.html.
+        * fast/profiler/nested-start-and-stop-profiler.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-nested-start-and-stop-profiler.html.
+        * fast/profiler/no-execution-context.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-no-execution-context.html.
+        * fast/profiler/one-execution-context.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-one-execution-context.html.
+        * fast/profiler/profile-calls-in-included-file.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-profile-calls-in-included-file.html.
+        * fast/profiler/profiling-from-a-nested-location-but-stop-profiling-outside-the-nesting.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-profiling-from-a-nested-location-but-stop-profiling-outside-the-nesting.html.
+        * fast/profiler/profiling-from-a-nested-location.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-profiling-from-a-nested-location.html.
         * fast/profiler/resources: Added.
-        * fast/profiler/resources/other-frame.html: Copied from ../WebCore/manual-tests/inspector/resources/other-frame.html.
-        * fast/profiler/resources/other-window.html: Copied from ../WebCore/manual-tests/inspector/resources/other-window.html.
-        * fast/profiler/resources/profiler-test-JS-resources.js: Copied from ../WebCore/manual-tests/inspector/resources/profiler-test-JS-resources.js.
-        * fast/profiler/simple-event-call.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-simple-event-call.html.
-        * fast/profiler/simple-no-level-change.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-simple-no-level-change.html.
-        * fast/profiler/start-and-stop-profiler-multiple-times.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-start-and-stop-profiler-multiple-times.html.
-        * fast/profiler/start-and-stop-profiling-in-the-same-function.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-start-and-stop-profiling-in-the-same-function.html.
-        * fast/profiler/start-but-dont-stop-profiling.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-start-but-dont-stop-profiling.html.
-        * fast/profiler/stop-profiling-after-setTimeout.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-stop-profiling-after-setTimeout.html.
-        * fast/profiler/stop-then-function-call.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-stop-then-function-call.html.
-        * fast/profiler/throw-exception-from-eval.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-throw-exception-from-eval.html.
-        * fast/profiler/two-execution-contexts.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-two-execution-contexts.html.
-        * fast/profiler/user-defined-function-calls-built-in-functions.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-user-defined-function-calls-built-in-functions.html.
-        * fast/profiler/window-dot-eval.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-window-dot-eval.html.
+        * fast/profiler/resources/other-frame.html: Copied from ../CyberCore/manual-tests/inspector/resources/other-frame.html.
+        * fast/profiler/resources/other-window.html: Copied from ../CyberCore/manual-tests/inspector/resources/other-window.html.
+        * fast/profiler/resources/profiler-test-JS-resources.js: Copied from ../CyberCore/manual-tests/inspector/resources/profiler-test-JS-resources.js.
+        * fast/profiler/simple-event-call.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-simple-event-call.html.
+        * fast/profiler/simple-no-level-change.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-simple-no-level-change.html.
+        * fast/profiler/start-and-stop-profiler-multiple-times.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-start-and-stop-profiler-multiple-times.html.
+        * fast/profiler/start-and-stop-profiling-in-the-same-function.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-start-and-stop-profiling-in-the-same-function.html.
+        * fast/profiler/start-but-dont-stop-profiling.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-start-but-dont-stop-profiling.html.
+        * fast/profiler/stop-profiling-after-setTimeout.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-stop-profiling-after-setTimeout.html.
+        * fast/profiler/stop-then-function-call.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-stop-then-function-call.html.
+        * fast/profiler/throw-exception-from-eval.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-throw-exception-from-eval.html.
+        * fast/profiler/two-execution-contexts.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-two-execution-contexts.html.
+        * fast/profiler/user-defined-function-calls-built-in-functions.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-user-defined-function-calls-built-in-functions.html.
+        * fast/profiler/window-dot-eval.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-window-dot-eval.html.
 
 2008-10-23  Kevin McCullough  <kmccullough@apple.com>
 
@@ -20460,50 +20460,50 @@
         * platform/mac/Skipped: Skipping until the new files are in place.
         * platform/win/Skipped:
         * fast/profiler: Added.
-        * fast/profiler/anonymous-event-handler.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-anonymous-event-handler.html.
-        * fast/profiler/anonymous-function-called-from-different-contexts.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-anonymous-function-called-from-different-contexts.html.
-        * fast/profiler/anonymous-function-calls-built-in-functions.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-anonymous-function-calls-built-in-functions.html.
-        * fast/profiler/anonymous-function-calls-eval.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-anonymous-function-calls-eval.html.
-        * fast/profiler/apply.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-apply.html.
-        * fast/profiler/built-in-function-calls-anonymous.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-built-in-function-calls-anonymous.html.
-        * fast/profiler/built-in-function-calls-user-defined-function.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-built-in-function-calls-user-defined-function.html.
-        * fast/profiler/call-nodelist-as-function.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-call-nodelist-as-function.html.
-        * fast/profiler/calling-the-function-that-started-the-profiler-from-another-scope.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-calling-the-function-that-started-the-profiler-from-another-scope.html.
-        * fast/profiler/compare-multiple-profiles.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-compare-multiple-profiles.html.
-        * fast/profiler/constructor.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-constructor.html.
-        * fast/profiler/dead-time.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-dead-time.html.
-        * fast/profiler/deep-recursion.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-deep-recursion.html.
-        * fast/profiler/document-dot-write.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-document-dot-write.html.
-        * fast/profiler/event-handler.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-event-handler.html.
-        * fast/profiler/execution-context-and-eval-on-same-line.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-execution-context-and-eval-on-same-line.html.
-        * fast/profiler/heavy-view.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-heavy-view.html.
-        * fast/profiler/inline-event-handler.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-inline-event-handler.html.
-        * fast/profiler/multiple-and-different-scoped-anonymous-function-calls.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-multiple-and-different-scoped-anonymous-function-calls.html.
-        * fast/profiler/multiple-and-different-scoped-function-calls.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-multiple-and-different-scoped-function-calls.html.
-        * fast/profiler/multiple-frames.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-multiple-frames.html.
-        * fast/profiler/multiple-windows.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-multiple-windows.html.
-        * fast/profiler/nested-anonymous-functon.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-nested-anonymous-functon.html.
-        * fast/profiler/nested-start-and-stop-profiler.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-nested-start-and-stop-profiler.html.
-        * fast/profiler/no-execution-context.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-no-execution-context.html.
-        * fast/profiler/one-execution-context.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-one-execution-context.html.
-        * fast/profiler/profile-calls-in-included-file.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-profile-calls-in-included-file.html.
-        * fast/profiler/profiling-from-a-nested-location-but-stop-profiling-outside-the-nesting.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-profiling-from-a-nested-location-but-stop-profiling-outside-the-nesting.html.
-        * fast/profiler/profiling-from-a-nested-location.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-profiling-from-a-nested-location.html.
+        * fast/profiler/anonymous-event-handler.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-anonymous-event-handler.html.
+        * fast/profiler/anonymous-function-called-from-different-contexts.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-anonymous-function-called-from-different-contexts.html.
+        * fast/profiler/anonymous-function-calls-built-in-functions.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-anonymous-function-calls-built-in-functions.html.
+        * fast/profiler/anonymous-function-calls-eval.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-anonymous-function-calls-eval.html.
+        * fast/profiler/apply.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-apply.html.
+        * fast/profiler/built-in-function-calls-anonymous.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-built-in-function-calls-anonymous.html.
+        * fast/profiler/built-in-function-calls-user-defined-function.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-built-in-function-calls-user-defined-function.html.
+        * fast/profiler/call-nodelist-as-function.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-call-nodelist-as-function.html.
+        * fast/profiler/calling-the-function-that-started-the-profiler-from-another-scope.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-calling-the-function-that-started-the-profiler-from-another-scope.html.
+        * fast/profiler/compare-multiple-profiles.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-compare-multiple-profiles.html.
+        * fast/profiler/constructor.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-constructor.html.
+        * fast/profiler/dead-time.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-dead-time.html.
+        * fast/profiler/deep-recursion.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-deep-recursion.html.
+        * fast/profiler/document-dot-write.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-document-dot-write.html.
+        * fast/profiler/event-handler.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-event-handler.html.
+        * fast/profiler/execution-context-and-eval-on-same-line.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-execution-context-and-eval-on-same-line.html.
+        * fast/profiler/heavy-view.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-heavy-view.html.
+        * fast/profiler/inline-event-handler.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-inline-event-handler.html.
+        * fast/profiler/multiple-and-different-scoped-anonymous-function-calls.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-multiple-and-different-scoped-anonymous-function-calls.html.
+        * fast/profiler/multiple-and-different-scoped-function-calls.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-multiple-and-different-scoped-function-calls.html.
+        * fast/profiler/multiple-frames.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-multiple-frames.html.
+        * fast/profiler/multiple-windows.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-multiple-windows.html.
+        * fast/profiler/nested-anonymous-functon.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-nested-anonymous-functon.html.
+        * fast/profiler/nested-start-and-stop-profiler.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-nested-start-and-stop-profiler.html.
+        * fast/profiler/no-execution-context.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-no-execution-context.html.
+        * fast/profiler/one-execution-context.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-one-execution-context.html.
+        * fast/profiler/profile-calls-in-included-file.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-profile-calls-in-included-file.html.
+        * fast/profiler/profiling-from-a-nested-location-but-stop-profiling-outside-the-nesting.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-profiling-from-a-nested-location-but-stop-profiling-outside-the-nesting.html.
+        * fast/profiler/profiling-from-a-nested-location.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-profiling-from-a-nested-location.html.
         * fast/profiler/resources: Added.
-        * fast/profiler/resources/other-frame.html: Copied from ../WebCore/manual-tests/inspector/resources/other-frame.html.
-        * fast/profiler/resources/other-window.html: Copied from ../WebCore/manual-tests/inspector/resources/other-window.html.
-        * fast/profiler/resources/profiler-test-JS-resources.js: Copied from ../WebCore/manual-tests/inspector/resources/profiler-test-JS-resources.js.
-        * fast/profiler/simple-event-call.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-simple-event-call.html.
-        * fast/profiler/simple-no-level-change.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-simple-no-level-change.html.
-        * fast/profiler/start-and-stop-profiler-multiple-times.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-start-and-stop-profiler-multiple-times.html.
-        * fast/profiler/start-and-stop-profiling-in-the-same-function.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-start-and-stop-profiling-in-the-same-function.html.
-        * fast/profiler/start-but-dont-stop-profiling.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-start-but-dont-stop-profiling.html.
-        * fast/profiler/stop-profiling-after-setTimeout.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-stop-profiling-after-setTimeout.html.
-        * fast/profiler/stop-then-function-call.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-stop-then-function-call.html.
-        * fast/profiler/throw-exception-from-eval.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-throw-exception-from-eval.html.
-        * fast/profiler/two-execution-contexts.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-two-execution-contexts.html.
-        * fast/profiler/user-defined-function-calls-built-in-functions.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-user-defined-function-calls-built-in-functions.html.
-        * fast/profiler/window-dot-eval.html: Copied from ../WebCore/manual-tests/inspector/profiler-test-window-dot-eval.html.
+        * fast/profiler/resources/other-frame.html: Copied from ../CyberCore/manual-tests/inspector/resources/other-frame.html.
+        * fast/profiler/resources/other-window.html: Copied from ../CyberCore/manual-tests/inspector/resources/other-window.html.
+        * fast/profiler/resources/profiler-test-JS-resources.js: Copied from ../CyberCore/manual-tests/inspector/resources/profiler-test-JS-resources.js.
+        * fast/profiler/simple-event-call.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-simple-event-call.html.
+        * fast/profiler/simple-no-level-change.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-simple-no-level-change.html.
+        * fast/profiler/start-and-stop-profiler-multiple-times.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-start-and-stop-profiler-multiple-times.html.
+        * fast/profiler/start-and-stop-profiling-in-the-same-function.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-start-and-stop-profiling-in-the-same-function.html.
+        * fast/profiler/start-but-dont-stop-profiling.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-start-but-dont-stop-profiling.html.
+        * fast/profiler/stop-profiling-after-setTimeout.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-stop-profiling-after-setTimeout.html.
+        * fast/profiler/stop-then-function-call.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-stop-then-function-call.html.
+        * fast/profiler/throw-exception-from-eval.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-throw-exception-from-eval.html.
+        * fast/profiler/two-execution-contexts.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-two-execution-contexts.html.
+        * fast/profiler/user-defined-function-calls-built-in-functions.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-user-defined-function-calls-built-in-functions.html.
+        * fast/profiler/window-dot-eval.html: Copied from ../CyberCore/manual-tests/inspector/profiler-test-window-dot-eval.html.
 
 2008-10-23  Alexey Proskuryakov  <ap@webkit.org>
 
@@ -22843,7 +22843,7 @@
 
         Reviewed by Darin Adler.
 
-        - test for <rdar://problem/6255862> domfuzz: null deref in WebCore::HTMLParser::handleResidualStyleCloseTagAcrossBlocks(WebCore::HTMLStackElem*)
+        - test for <rdar://problem/6255862> domfuzz: null deref in CyberCore::HTMLParser::handleResidualStyleCloseTagAcrossBlocks(CyberCore::HTMLStackElem*)
 
         * fast/parser/residual-style-close-across-removed-block-expected.txt: Added.
         * fast/parser/residual-style-close-across-removed-block.html: Added.
@@ -23628,7 +23628,7 @@
 
         It is failing on the build bots, and intermittently on local systems, for no apparent reason.  The test itself is
         flawed in that its attempts to trigger and detect garbage collection are very dependent on implementation details
-        of JavaScriptCore.  Fixing the test is tracked by <https://bugs.webkit.org/show_bug.cgi?id=20871>.
+        of CyberScriptCore.  Fixing the test is tracked by <https://bugs.webkit.org/show_bug.cgi?id=20871>.
 
         * fast/js/garbage-collect-after-string-appends.html: Removed.
         * fast/js/garbage-collect-after-string-appends.html-disabled: Copied from fast/js/garbage-collect-after-string-appends.html.
@@ -23830,7 +23830,7 @@
         
         <rdar://problem/6163988> 
         https://bugs.webkit.org/show_bug.cgi?id=20457
-        Canvas: createPattern crashes WebKit in WTF::RefPtr<WebCore::Image>::operator!() const + 9 with a 1D pattern
+        Canvas: createPattern crashes CyberKit in WTF::RefPtr<CyberCore::Image>::operator!() const + 9 with a 1D pattern
         
         Add test for createPattern where the canvas passed in has a zero height/width.
         
@@ -24233,7 +24233,7 @@
         Reviewed by Dave Hyatt.
 
         http://bugs.webkit.org/show_bug.cgi?id=20594
-        Tests the WebKitCSSKeyframeRule and WebKitCSSKeyframesRule
+        Tests the CyberKitCSSKeyframeRule and CyberKitCSSKeyframesRule
         interfaces.
 
         * css3/keyframes-rule.html: Added.
@@ -24381,7 +24381,7 @@
         Reviewed by Sam Weinig.
 
         https://bugs.webkit.org/show_bug.cgi?id=20571
-        Add a bunch of tests for WebKitTransitionEndEvents.
+        Add a bunch of tests for CyberKitTransitionEndEvents.
 
         * transitions/end-event-helpers.js: Added.
         * transitions/interrupted-all-transition-expected.txt:
@@ -24487,7 +24487,7 @@
 
         Reviewed by Dave Hyatt
 
-        Various WebKitCSSTransformValue-related fixes
+        Various CyberKitCSSTransformValue-related fixes
         https://bugs.webkit.org/show_bug.cgi?id=20562
 
         * css3/transform-value-types.html: Added.
@@ -24572,7 +24572,7 @@
 
         Reviewed by Darin Adler.
 
-        Test for <rdar://problem/6176924> CrashTracer: [USER] 4 crashes in Safari at com.apple.WebCore: WebCore::RenderTableSection::numColumns
+        Test for <rdar://problem/6176924> CrashTracer: [USER] 4 crashes in Safari at com.matthewbenedict.CyberCore: CyberCore::RenderTableSection::numColumns
 
         * accessibility/table-notbody.html: Added.
 
@@ -24694,7 +24694,7 @@
 
         Reviewed by Jon Honeycutt and Alexey Proskuryakov.
 
-        - test for <rdar://problem/6162701> WebKit should correct Geeza Pro's font metrics
+        - test for <rdar://problem/6162701> CyberKit should correct Geeza Pro's font metrics
 
         * platform/mac/fast/text/international/Geeza-Pro-vertical-metrics-adjustment-expected.checksum: Added.
         * platform/mac/fast/text/international/Geeza-Pro-vertical-metrics-adjustment-expected.png: Added.

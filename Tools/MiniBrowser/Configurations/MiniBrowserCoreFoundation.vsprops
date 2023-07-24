@@ -6,6 +6,6 @@
 	>
 	<Tool
 		Name="VCLinkerTool"
-		AdditionalDependencies="shlwapi.lib WebKit$(WebKitDLLConfigSuffix).lib CoreFoundation$(LibraryConfigSuffix).lib CFNetwork$(LibraryConfigSuffix).lib"
+		AdditionalDependencies="shlwapi.lib CyberKit$(CyberKitDLLConfigSuffix).lib CoreFoundation$(LibraryConfigSuffix).lib CFNetwork$(LibraryConfigSuffix).lib"
 	/>
 </VisualStudioPropertySheet>

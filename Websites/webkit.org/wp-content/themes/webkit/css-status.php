@@ -30,7 +30,7 @@ function xhrPromise(url) {
 }
 
 var origin = new URL("<?php echo strpos(WP_HOST, "webkit.org") !== false ? "https://svn.webkit.org" : WP_HOME; ?>/");
-var loadCSSProperties = xhrPromise(new URL("/repository/webkit/trunk/Source/WebCore/css/CSSProperties.json", origin));
+var loadCSSProperties = xhrPromise(new URL("/repository/webkit/trunk/Source/CyberCore/css/CSSProperties.json", origin));
 
 </script>
 

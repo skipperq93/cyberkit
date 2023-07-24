@@ -31,7 +31,7 @@
 #if !PLATFORM(IOS_FAMILY)
 
 #import <AppKit/AppKit.h>
-#import <WebKit/WebTypesInternal.h>
+#import <CyberKit/WebTypesInternal.h>
 
 @interface DumpRenderTreePasteboard : NSPasteboard
 - (NSInteger)declareType:(NSString *)type owner:(id)newOwner;

@@ -11,7 +11,7 @@ if (window.testRunner) {
 }
 
 if (window.internals) {
-    if (UIHelper.isIOSFamily() || !UIHelper.isWebKit2())
+    if (UIHelper.isIOSFamily() || !UIHelper.isCyberKit2())
         internals.setContinuousSpellCheckingEnabled(true);
     else {
         internals.settings.setUnifiedTextCheckerEnabled(true);

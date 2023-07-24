@@ -1,7 +1,7 @@
 #include? "../../../../../Internal/Configurations/HaveInternalSDK.xcconfig"
 #include? "<DEVELOPER_DIR>/AppleInternal/XcodeConfig/PlatformSupport.xcconfig"
 #include "SDKVariant.xcconfig"
-#include "WebKitTargetConditionals.xcconfig"
+#include "CyberKitTargetConditionals.xcconfig"
 
 CODE_SIGN_IDENTITY = -;
 
@@ -79,7 +79,7 @@ TARGET_MAC_OS_X_VERSION_MAJOR_10_14 = 101400
 TARGET_MAC_OS_X_VERSION_MAJOR_10_15 = 101500
 
 NORMAL_WEBCORE_FRAMEWORKS_DIR = $(SYSTEM_LIBRARY_DIR)/PrivateFrameworks;
-NORMAL_WEBCORE_FRAMEWORKS_DIR[sdk=macosx*] = $(SYSTEM_LIBRARY_DIR)/Frameworks/WebKit.framework/Versions/A/Frameworks;
+NORMAL_WEBCORE_FRAMEWORKS_DIR[sdk=macosx*] = $(SYSTEM_LIBRARY_DIR)/Frameworks/CyberKit.framework/Versions/A/Frameworks;
 
 ANGLE_INSTALL_PATH_PREFIX = $(ANGLE_INSTALL_PATH_PREFIX_DEPLOYMENT_$(DEPLOYMENT_LOCATION));
 ANGLE_INSTALL_PATH_PREFIX_DEPLOYMENT_YES = $(ANGLE_INSTALL_PATH_PREFIX_DEPLOYMENT_YES_USE_ALTERNATE_$(WK_USE_ALTERNATE_FRAMEWORKS_DIR));

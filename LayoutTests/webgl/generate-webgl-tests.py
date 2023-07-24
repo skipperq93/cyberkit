@@ -33,7 +33,7 @@
 #
 #   cd ~/temp
 #   git clone git://github.com/KhronosGroup/WebGL.git
-#   cd ~/WebKit/LayoutTests/webgl
+#   cd ~/CyberKit/LayoutTests/webgl
 #   python generate-webgl-tests.py -w ~/temp/WebGL/sdk/tests -e
 #
 # Now check run the LayoutTests, update TestExpectations and check in the

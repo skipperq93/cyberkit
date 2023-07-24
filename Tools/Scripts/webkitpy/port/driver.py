@@ -129,7 +129,7 @@ class DriverPostTestOutput(object):
 
 
 class Driver(object):
-    """object for running test(s) using DumpRenderTree/WebKitTestRunner."""
+    """object for running test(s) using DumpRenderTree/CyberKitTestRunner."""
 
     def __init__(self, port, worker_number, pixel_tests, no_timeout=False):
         """Initialize a Driver to subsequently run tests.
@@ -149,7 +149,7 @@ class Driver(object):
         self._driver_user_directory_suffix = None
         self._driver_user_cache_directory = None
 
-        # WebKitTestRunner can report back subprocess crashes by printing
+        # CyberKitTestRunner can report back subprocess crashes by printing
         # "#CRASHED - PROCESSNAME".  Since those can happen at any time and ServerProcess
         # won't be aware of them (since the actual tool didn't crash, just a subprocess)
         # we record the crashed subprocess name here.
@@ -321,7 +321,7 @@ class Driver(object):
     HTTP_DIR = "http/tests/"
     HTTP_LOCAL_DIR = "http/tests/local/"
     WEBKIT_SPECIFIC_WEB_PLATFORM_TEST_SUBDIR = "http/wpt/"
-    WEBKIT_WEB_PLATFORM_TEST_SERVER_ROUTE = "WebKit/"
+    WEBKIT_WEB_PLATFORM_TEST_SERVER_ROUTE = "CyberKit/"
 
     def is_http_test(self, test_name):
         return test_name.startswith(self.HTTP_DIR) and not test_name.startswith(self.HTTP_LOCAL_DIR)
@@ -442,7 +442,7 @@ class Driver(object):
         environment['__XPC_JSC_useKernTCSM'] = environment['JSC_useKernTCSM']
 
         if sys.platform.startswith('linux'):
-            # Currently on WebKit2, there is no API for setting the application cache directory.
+            # Currently on CyberKit2, there is no API for setting the application cache directory.
             # Each worker should have it's own and it should be cleaned afterwards.
             # Set it to inside the temporary folder by prepending XDG_CACHE_HOME with DRIVER_TEMPDIR.
             environment['XDG_CACHE_HOME'] = self._port.host.filesystem.join(str(self._driver_tempdir), 'appcache')

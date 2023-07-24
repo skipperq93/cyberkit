@@ -3,8 +3,8 @@ set(WEBKIT_MAC_VERSION 609.1.6)
 set(MACOSX_FRAMEWORK_BUNDLE_VERSION 609.1.6+)
 
 WEBKIT_OPTION_BEGIN()
-# Private options shared with other WebKit ports. Add options here only if
-# we need a value different from the default defined in WebKitFeatures.cmake.
+# Private options shared with other CyberKit ports. Add options here only if
+# we need a value different from the default defined in CyberKitFeatures.cmake.
 # FIXME: Many of these defaults differ from the XCode build.
 WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_OVERFLOW_SCROLLING_TOUCH PRIVATE ON)
 WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_API_TESTS PRIVATE ON)
@@ -112,9 +112,9 @@ set(ENABLE_GRAPHICS_CONTEXT_GL ON)
 set(ENABLE_WEBKIT_LEGACY ON)
 set(ENABLE_WEBKIT ON)
 
-set(JavaScriptCore_LIBRARY_TYPE SHARED)
-set(WebCore_LIBRARY_TYPE SHARED)
-set(WebCoreTestSupport_LIBRARY_TYPE SHARED)
+set(CyberScriptCore_LIBRARY_TYPE SHARED)
+set(CyberCore_LIBRARY_TYPE SHARED)
+set(CyberCoreTestSupport_LIBRARY_TYPE SHARED)
 
 find_package(ICU 60.2 REQUIRED COMPONENTS data i18n uc)
 find_package(LibXml2 2.8.0 REQUIRED)

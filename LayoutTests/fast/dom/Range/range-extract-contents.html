@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <body>
-<div id="test">hello world<span style="font-weight: bold;">WebKit</span><em><script>var i=0;</script><b><code>This</code> is</u></b> a <tt>test <wbr>of <blockquote>Range's extractContents.</blockquote></tt></em><q><dfn>This</dfn></q><!-- test --> <header><h3>test</header> also works in Firefox.</h3></div>
+<div id="test">hello world<span style="font-weight: bold;">CyberKit</span><em><script>var i=0;</script><b><code>This</code> is</u></b> a <tt>test <wbr>of <blockquote>Range's extractContents.</blockquote></tt></em><q><dfn>This</dfn></q><!-- test --> <header><h3>test</header> also works in Firefox.</h3></div>
 <div id="expectations">
     <div id="test_empty"></div>
     <div id="test_text">hello world</div>
     <div id="test_substring">llo</div>
     <div id="test_text_with_start_tag">hello world<span style="font-weight: bold;"></span></div>
-    <div id="test_text_and_span">hello world<span style="font-weight: bold;">WebKit</span></div>
-    <div id="test_span_b"><span style="font-weight: bold;">WebKit</span><em><script>var i=0;</script><b></b></em></div>
+    <div id="test_text_and_span">hello world<span style="font-weight: bold;">CyberKit</span></div>
+    <div id="test_span_b"><span style="font-weight: bold;">CyberKit</span><em><script>var i=0;</script><b></b></em></div>
     <div id="test_code_blockquote"><b><code>This</code> is</u></b> a <tt>test <wbr>of <blockquote>Range's extractContents.</blockquote></tt></div>
     <div id="test_wbr_blockquote"><wbr>of <blockquote>Range's extractContents.</blockquote></div>
     <div id="test_q_header"><q><dfn>This</dfn></q><!-- test --> <header><h3>test</h3></header></div>

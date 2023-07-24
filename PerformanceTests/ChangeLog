@@ -24,7 +24,7 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -40,11 +40,11 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebCore/PAL:
+    Source/CyberCore/PAL:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -52,11 +52,11 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebKitLegacy/mac:
+    Source/CyberKitLegacy/mac:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -70,10 +70,10 @@
     * DumpRenderTree/mac/Configurations/DebugRelease.xcconfig:
     * ImageDiff/cg/Configurations/DebugRelease.xcconfig:
     * MiniBrowser/Configurations/DebugRelease.xcconfig:
-    * TestWebKitAPI/Configurations/DebugRelease.xcconfig:
+    * TestCyberKitAPI/Configurations/DebugRelease.xcconfig:
     * WebEditingTester/Configurations/DebugRelease.xcconfig:
-    * WebKitTestRunner/Configurations/DebugRelease.xcconfig:
-    * lldb/lldbWebKitTester/Configurations/DebugRelease.xcconfig:
+    * CyberKitTestRunner/Configurations/DebugRelease.xcconfig:
+    * lldb/lldbCyberKitTester/Configurations/DebugRelease.xcconfig:
     
     git-svn-id: https://svn.webkit.org/repository/webkit/trunk@268371 268f45cc-cd09-0410-ab3c-d52691b4dbfc
 
@@ -107,7 +107,7 @@
     Reviewed by Darin Adler.
     
     Due to a bug in Xcode (rdar://70185899), Xcode 12.0 and Xcode 12.1 Beta incorrectly includes the
-    minor release number in MAC_OS_X_VERSION_MAJOR, which causes Debug and Release builds of WebKit
+    minor release number in MAC_OS_X_VERSION_MAJOR, which causes Debug and Release builds of CyberKit
     to be misconfigured when building on macOS Big Sur SUs, leading to webpages failing to load.
     
     To work around the Xcode bug, when the MAC_OS_X_VERSION_MAJOR includes the minor version number,
@@ -124,7 +124,7 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -140,11 +140,11 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebCore/PAL:
+    Source/CyberCore/PAL:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -152,11 +152,11 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebKitLegacy/mac:
+    Source/CyberKitLegacy/mac:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -170,10 +170,10 @@
     * DumpRenderTree/mac/Configurations/DebugRelease.xcconfig:
     * ImageDiff/cg/Configurations/DebugRelease.xcconfig:
     * MiniBrowser/Configurations/DebugRelease.xcconfig:
-    * TestWebKitAPI/Configurations/DebugRelease.xcconfig:
+    * TestCyberKitAPI/Configurations/DebugRelease.xcconfig:
     * WebEditingTester/Configurations/DebugRelease.xcconfig:
-    * WebKitTestRunner/Configurations/DebugRelease.xcconfig:
-    * lldb/lldbWebKitTester/Configurations/DebugRelease.xcconfig:
+    * CyberKitTestRunner/Configurations/DebugRelease.xcconfig:
+    * lldb/lldbCyberKitTester/Configurations/DebugRelease.xcconfig:
     
     git-svn-id: https://svn.webkit.org/repository/webkit/trunk@268353 268f45cc-cd09-0410-ab3c-d52691b4dbfc
 
@@ -187,7 +187,7 @@
             Reviewed by Darin Adler.
 
             Due to a bug in Xcode (rdar://70185899), Xcode 12.0 and Xcode 12.1 Beta incorrectly includes the
-            minor release number in MAC_OS_X_VERSION_MAJOR, which causes Debug and Release builds of WebKit
+            minor release number in MAC_OS_X_VERSION_MAJOR, which causes Debug and Release builds of CyberKit
             to be misconfigured when building on macOS Big Sur SUs, leading to webpages failing to load.
 
             To work around the Xcode bug, when the MAC_OS_X_VERSION_MAJOR includes the minor version number,
@@ -216,8 +216,8 @@
     * ContentExtensionTester/Configurations/Base.xcconfig: Updated to same idiom used elsewhere.
     * DumpRenderTree/mac/Configurations/Base.xcconfig: Ditto.
     * ImageDiff/cg/Configurations/Base.xcconfig: Ditto.
-    * WebKitTestRunner/Configurations/Base.xcconfig: Ditto.
-    * lldb/lldbWebKitTester/Configurations/Base.xcconfig: Ditto.
+    * CyberKitTestRunner/Configurations/Base.xcconfig: Ditto.
+    * lldb/lldbCyberKitTester/Configurations/Base.xcconfig: Ditto.
     
     * Scripts/webkitpy/common/config/contributors.json: Added contributor Luming Yin, an engineer who works on Safari at
     Apple who has been contributing build fixes like these.
@@ -311,7 +311,7 @@
 
         Reviewed by Saam Barati.
 
-        APIBench is a new benchmark suite to measure the performance of the JavaScriptCore API. It has 4 benchmarks:
+        APIBench is a new benchmark suite to measure the performance of the CyberScriptCore API. It has 4 benchmarks:
         - RichardsJS: This is imported from Octane and used as a reference so we know how fast the pure JS implementation runs.
         - RichardsSwift: a Swift port of the benchmark, also used as reference for how fast the pure Swift implementation is.
         - RichardsMostlyJS: As the name suggests, mostly the same the as the JS benchmark, but here the WorkerTask
@@ -321,13 +321,13 @@
 
         The benchmark can be built and run using the api-bench script, as following:
 
-        PerformanceTests/APIBench/api-bench WebKitBuild/Release
+        PerformanceTests/APIBench/api-bench CyberKitBuild/Release
 
         By default, it will build each of the benchmarks and run 5 iterations.
         The score is calculated as 5000 / geomean([avg of RichardsMostlySwift, avg of RichardsMostlyJS]).
         The script prints the average for the references and tests and the final score:
 
-        Results for /Volumes/Data/wk2/OpenSource/WebKitBuild/Release (5 iterations)
+        Results for /Volumes/Data/wk2/OpenSource/CyberKitBuild/Release (5 iterations)
         ================================================================================
 
         References:
@@ -524,7 +524,7 @@
         Reviewed by Ryosuke Niwa.
 
         Having this test around can be confusing since it contains old versions
-        of many WebKit source files, which will show up when searching the source
+        of many CyberKit source files, which will show up when searching the source
         tree. And since we're not using it, we don't need to keep a copy of it
         in the tip of tree in the repository.
 
@@ -623,13 +623,13 @@
 
 2020-03-26  Saam Barati  <sbarati@apple.com>
 
-        Make it so RAMification can be run with python 3 and 2 and that it recognizes the new JavaScriptCore.framework directory structure
+        Make it so RAMification can be run with python 3 and 2 and that it recognizes the new CyberScriptCore.framework directory structure
         https://bugs.webkit.org/show_bug.cgi?id=209636
 
         Reviewed by Yusuke Suzuki.
 
-        - JavaScriptCore builds now put the jsc shell under JavaScriptCore.framework/Helpers/jsc,
-          not JavaScriptCore.framework/Resources/jsc
+        - CyberScriptCore builds now put the jsc shell under CyberScriptCore.framework/Helpers/jsc,
+          not CyberScriptCore.framework/Resources/jsc
         - It's also helpful to be able to run RAMification with python3.7 and 2.7,
           since there are some contexts where 3.7 is all we have.
 
@@ -1890,7 +1890,7 @@
 
 2018-07-19  Ben Richards  <benton_richards@apple.com>
 
-        Add benchmark for WebKit process launch times
+        Add benchmark for CyberKit process launch times
         https://bugs.webkit.org/show_bug.cgi?id=186414
 
         Reviewed by Ryosuke Niwa.
@@ -2314,7 +2314,7 @@
 
 2018-02-01  Geoffrey Garen  <ggaren@apple.com>
 
-        Make MallocBench easier for non-WebKit engineers to run
+        Make MallocBench easier for non-CyberKit engineers to run
         https://bugs.webkit.org/show_bug.cgi?id=182415
 
         Reviewed by Saam Barati.
@@ -2326,7 +2326,7 @@
 
         * MallocBench/run-malloc-benchmarks: Specify the path to MallocBench
         and libmbmalloc explicitly, rather than computing them implicitly
-        using webkitdirs. Non-WebKit folks don't have the directory structure
+        using webkitdirs. Non-CyberKit folks don't have the directory structure
         required by webkitdirs.
 
         Remove Linux-specific and cmake-specific behaviors because we only

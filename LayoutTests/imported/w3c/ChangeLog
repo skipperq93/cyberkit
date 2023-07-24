@@ -50,7 +50,7 @@
     
     * web-platform-tests/webrtc/idlharness.https.window-expected.txt:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Expose RTCPeerConnection.onicecandidateerror and use it for wrong STUN/TURN server URLs.
     For that matter, add RTCPeerConnectionIceErrorEvent as per spec with a slight change to the init directory to keep the same terminology between event and init dictionary.
@@ -62,19 +62,19 @@
     * DerivedSources-output.xcfilelist:
     * DerivedSources.make:
     * Modules/mediastream/RTCPeerConnection.cpp:
-    (WebCore::RTCPeerConnection::iceServersFromConfiguration):
-    (WebCore::iceServersFromConfiguration): Deleted.
+    (CyberCore::RTCPeerConnection::iceServersFromConfiguration):
+    (CyberCore::iceServersFromConfiguration): Deleted.
     * Modules/mediastream/RTCPeerConnection.h:
     * Modules/mediastream/RTCPeerConnection.idl:
     * Modules/mediastream/RTCPeerConnectionIceErrorEvent.cpp: Added.
-    (WebCore::RTCPeerConnectionIceErrorEvent::create):
-    (WebCore::RTCPeerConnectionIceErrorEvent::RTCPeerConnectionIceErrorEvent):
-    (WebCore::RTCPeerConnectionIceErrorEvent::eventInterface const):
+    (CyberCore::RTCPeerConnectionIceErrorEvent::create):
+    (CyberCore::RTCPeerConnectionIceErrorEvent::RTCPeerConnectionIceErrorEvent):
+    (CyberCore::RTCPeerConnectionIceErrorEvent::eventInterface const):
     * Modules/mediastream/RTCPeerConnectionIceErrorEvent.h: Added.
     * Modules/mediastream/RTCPeerConnectionIceErrorEvent.idl: Added.
     * Sources.txt:
-    * WebCore.xcodeproj/project.pbxproj:
-    * bindings/js/WebCoreBuiltinNames.h:
+    * CyberCore.xcodeproj/project.pbxproj:
+    * bindings/js/CyberCoreBuiltinNames.h:
     * dom/EventNames.h:
     * dom/EventNames.in:
     
@@ -167,7 +167,7 @@
     
     * LayoutTests/imported/w3c/web-platform-tests/webrtc/RTCRtpReceiver-getSynchronizationSources.https-expected.txt:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Updated expected results in LayoutTests/imported/w3c/web-platform-tests/webrtc/RTCRtpReceiver-getSynchronizationSources.https-expected.txt.
     
@@ -176,7 +176,7 @@
     * Modules/mediastream/RTCRtpSynchronizationSource.idl:
     Minor modification to ensure JSRTCRtpSynchronizationSource.cpp gets regenerated.
     * Modules/mediastream/libwebrtc/LibWebRTCRtpReceiverBackend.cpp:
-    (WebCore::fillRTCRtpContributingSource):
+    (CyberCore::fillRTCRtpContributingSource):
     
     git-svn-id: https://svn.webkit.org/repository/webkit/trunk@266052 268f45cc-cd09-0410-ab3c-d52691b4dbfc
 
@@ -205,7 +205,7 @@
     
     * web-platform-tests/mediacapture-record/MediaRecorder-mimetype-expected.txt:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Instead of setting mime type right away, set it just before firing start event as per spec.
     This will allow in the future to populate exact codec parameters if proven useful.
@@ -213,24 +213,24 @@
     Covered by rebased and updated tests.
     
     * Modules/mediarecorder/MediaRecorder.cpp:
-    (WebCore::MediaRecorder::create):
-    (WebCore::MediaRecorder::startRecording):
+    (CyberCore::MediaRecorder::create):
+    (CyberCore::MediaRecorder::startRecording):
     * platform/mediarecorder/MediaRecorderPrivate.h:
-    (WebCore::MediaRecorderPrivate::startRecording):
+    (CyberCore::MediaRecorderPrivate::startRecording):
     * platform/mediarecorder/MediaRecorderPrivateAVFImpl.h:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Update code to pass mimeType as part of startRecording callback.
     
     * GPUProcess/webrtc/RemoteMediaRecorder.h:
-    (WebKit::RemoteMediaRecorder::mimeType const):
+    (CyberKit::RemoteMediaRecorder::mimeType const):
     * GPUProcess/webrtc/RemoteMediaRecorderManager.cpp:
-    (WebKit::RemoteMediaRecorderManager::createRecorder):
+    (CyberKit::RemoteMediaRecorderManager::createRecorder):
     * GPUProcess/webrtc/RemoteMediaRecorderManager.h:
     * GPUProcess/webrtc/RemoteMediaRecorderManager.messages.in:
     * WebProcess/GPU/webrtc/MediaRecorderPrivate.cpp:
-    (WebKit::MediaRecorderPrivate::startRecording):
+    (CyberKit::MediaRecorderPrivate::startRecording):
     * WebProcess/GPU/webrtc/MediaRecorderPrivate.h:
     
     LayoutTests:
@@ -269,7 +269,7 @@
     * web-platform-tests/mediacapture-record/passthrough/MediaRecorder-passthrough.https.html:
     Remove JS console log error line.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     <rdar://problem/69767695>
     
@@ -283,26 +283,26 @@
     Test: http/wpt/mediarecorder/mimeType.html
     
     * Modules/mediarecorder/MediaRecorder.cpp:
-    (WebCore::MediaRecorder::isTypeSupported):
-    (WebCore::MediaRecorder::create):
+    (CyberCore::MediaRecorder::isTypeSupported):
+    (CyberCore::MediaRecorder::create):
     * Modules/mediarecorder/MediaRecorder.h:
     * Modules/mediarecorder/MediaRecorder.idl:
     * Modules/mediarecorder/MediaRecorderProvider.cpp:
-    (WebCore::MediaRecorderProvider::isSupported):
+    (CyberCore::MediaRecorderProvider::isSupported):
     * Modules/mediarecorder/MediaRecorderProvider.h:
     * platform/mediarecorder/MediaRecorderPrivate.h:
     * platform/mediarecorder/MediaRecorderPrivateAVFImpl.cpp:
-    (WebCore::MediaRecorderPrivateAVFImpl::mimeType const):
+    (CyberCore::MediaRecorderPrivateAVFImpl::mimeType const):
     * platform/mediarecorder/MediaRecorderPrivateAVFImpl.h:
     * platform/mediarecorder/MediaRecorderPrivateMock.cpp:
-    (WebCore::MediaRecorderPrivateMock::mimeType const):
+    (CyberCore::MediaRecorderPrivateMock::mimeType const):
     * platform/mediarecorder/MediaRecorderPrivateMock.h:
     * platform/mediarecorder/cocoa/MediaRecorderPrivateWriterCocoa.h:
     * platform/mediarecorder/cocoa/MediaRecorderPrivateWriterCocoa.mm:
-    (WebCore::MediaRecorderPrivateWriter::mimeType const):
+    (CyberCore::MediaRecorderPrivateWriter::mimeType const):
     * platform/mediastream/MediaStreamPrivate.h:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     <rdar://problem/69767695>
     
@@ -312,13 +312,13 @@
     Instead, compute it on WebProcess side.
     
     * GPUProcess/webrtc/RemoteMediaRecorder.cpp:
-    (WebKit::RemoteMediaRecorder::fetchData):
+    (CyberKit::RemoteMediaRecorder::fetchData):
     * GPUProcess/webrtc/RemoteMediaRecorder.h:
     * GPUProcess/webrtc/RemoteMediaRecorder.messages.in:
     * WebProcess/GPU/webrtc/MediaRecorderPrivate.cpp:
-    (WebKit::MediaRecorderPrivate::MediaRecorderPrivate):
-    (WebKit::MediaRecorderPrivate::fetchData):
-    (WebKit::MediaRecorderPrivate::mimeType const):
+    (CyberKit::MediaRecorderPrivate::MediaRecorderPrivate):
+    (CyberKit::MediaRecorderPrivate::fetchData):
+    (CyberKit::MediaRecorderPrivate::mimeType const):
     * WebProcess/GPU/webrtc/MediaRecorderPrivate.h:
     
     LayoutTests:
@@ -397,25 +397,25 @@
     * web-platform-tests/url/urlencoded-parser.any.worker-expected.txt:
     * web-platform-tests/service-workers/service-worker/fetch-event-respond-with-custom-response.https-expected.txt:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Covered by many newly passing WPT tests, for most of which Safari was the only failing browser.
     
     * Modules/fetch/FetchBody.cpp:
-    (WebCore::FetchBody::formData):
-    (WebCore::FetchBody::consume):
-    (WebCore::FetchBody::consumeFormData):
+    (CyberCore::FetchBody::formData):
+    (CyberCore::FetchBody::consume):
+    (CyberCore::FetchBody::consumeFormData):
     * Modules/fetch/FetchBody.h:
     * Modules/fetch/FetchBodyConsumer.cpp:
-    (WebCore::formDataFromData):
-    (WebCore::resolveWithTypeAndData):
-    (WebCore::FetchBodyConsumer::resolve):
+    (CyberCore::formDataFromData):
+    (CyberCore::resolveWithTypeAndData):
+    (CyberCore::FetchBodyConsumer::resolve):
     * Modules/fetch/FetchBodyConsumer.h:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * WebProcess/Storage/WebServiceWorkerFetchTaskClient.cpp:
-    (WebKit::WebServiceWorkerFetchTaskClient::didReceiveFormDataAndFinish):
+    (CyberKit::WebServiceWorkerFetchTaskClient::didReceiveFormDataAndFinish):
     Add a fast path that allows non-blob FormData responses from service workers to not hang.
     This part is covered by this layout test:
     imported/w3c/web-platform-tests/service-workers/service-worker/fetch-event-respond-with-custom-response.https.html
@@ -1165,7 +1165,7 @@
         (xr_debug):
         (async requestSkipAnimationFrame):
         (async loadChromiumResources):
-        (setupWebKitWebXRTestAPI):
+        (setupCyberKitWebXRTestAPI):
         (xr_promise_test): Deleted.
         (async xr_session_promise_test): Deleted.
         * web-platform-tests/webxr/w3c-import.log:
@@ -1936,7 +1936,7 @@
         Reviewed by Chris Dumez.
 
        Re-baselined existing tests. Fails on catching sharedBuffer being passed in, but currently
-        WebKit does not support sharedBuffer implementation.
+        CyberKit does not support sharedBuffer implementation.
 
         * web-platform-tests/webaudio/idlharness.https.window-expected.txt:
         * web-platform-tests/webaudio/the-audio-api/the-audiobuffer-interface/audiobuffer-copy-channel-expected.txt:
@@ -1975,7 +1975,7 @@
 
 2020-07-28  Chris Dumez  <cdumez@apple.com>
 
-        [EventSource] WebKit fails to UTF-8 encode the Last-Event-ID HTTP header value
+        [EventSource] CyberKit fails to UTF-8 encode the Last-Event-ID HTTP header value
         https://bugs.webkit.org/show_bug.cgi?id=214860
 
         Reviewed by Alex Christensen and Darin Adler.
@@ -12044,7 +12044,7 @@
 
 2020-06-09  Sergio Villar Senin  <svillar@igalia.com>
 
-        [css-flexbox] WebKit mistakenly lets pointer events (click/hover/etc) pass through flex items, if they have negative margin
+        [css-flexbox] CyberKit mistakenly lets pointer events (click/hover/etc) pass through flex items, if they have negative margin
         https://bugs.webkit.org/show_bug.cgi?id=185771
 
         Reviewed by Javier Fernandez.
@@ -18048,7 +18048,7 @@
         Unreviewed, reverting r262335.
         https://bugs.webkit.org/show_bug.cgi?id=212571
 
-        Triggered assertions in WebKit1
+        Triggered assertions in CyberKit1
 
         Reverted changeset:
 
@@ -21474,7 +21474,7 @@
 
         The code in webxr_utils.js had some engine detecting code that was not
         working, and thus was unconditionally loading Chromium-only resources when
-        running tests with other engines (as WebKit). I fixed it upstream in
+        running tests with other engines (as CyberKit). I fixed it upstream in
         https://github.com/web-platform-tests/wpt/pull/23200 and now I'm importing it
         along with a recent fix in webxr_test_constants.js.
 
@@ -21713,13 +21713,13 @@
 
 2020-04-21  Sergio Villar Senin  <svillar@igalia.com>
 
-        Import latest changes from web-platform-test/webxr/resources to enable testing in WebKit
+        Import latest changes from web-platform-test/webxr/resources to enable testing in CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=210788
 
         Reviewed by Žan Doberšek.
 
         We landed in wpt new code in webxr_utils.js to map internal.xrTest to
-        navigator.xr.test to be able to run WebXR WPT in WebKit. Import those changes
+        navigator.xr.test to be able to run WebXR WPT in CyberKit. Import those changes
         from upstream in order to be able to run the tests.
 
         Apart from that we take the chance to import the latest fixes to the
@@ -21729,7 +21729,7 @@
         * web-platform-tests/webxr/resources/webxr_test_constants_fake_world.js:
         (createFakeWorld): Ditto.
         * web-platform-tests/webxr/resources/webxr_util.js: Map internals.xrTest 
-        to navigator.xr.test for WebKit browsers.
+        to navigator.xr.test for CyberKit browsers.
         (xr_debug): Updated.
         (async xr_session_promise_test): Ditto.
         (xr_promise_test): Deleted.

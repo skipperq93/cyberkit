@@ -72,12 +72,12 @@ if ($productDir) {
     $productDir = $ENV{BUILT_PRODUCTS_DIR} || productDir();
 }
 
-if (!isIOSWebKit() && !$osxVersion &&!isAnyWindows()) {
+if (!isIOSCyberKit() && !$osxVersion &&!isAnyWindows()) {
     $osxVersion = `sw_vers -productVersion | cut -d. -f-2`;
     chomp($osxVersion);
 }
 
-chdirWebKit();
+chdirCyberKit();
 
 sub executeRanlib($)
 {
@@ -85,7 +85,7 @@ sub executeRanlib($)
     my @args;
     push @args, ("-sdk", xcodeSDK()) if xcodeSDK();
     push @args, "ranlib";
-    push @args, "-no_warning_for_no_symbols" if isIOSWebKit();
+    push @args, "-no_warning_for_no_symbols" if isIOSCyberKit();
     system("xcrun", @args, $library) == 0 or die;
 }
 

@@ -1,0 +1,17 @@
+{
+global:
+  jsc_*;
+  webkit_*;
+  extern "C++" {
+    "bmalloc::PerThreadStorage<bmalloc::PerHeapKind<bmalloc::Cache> >::s_didInitialize";
+    "bmalloc::PerThreadStorage<bmalloc::PerHeapKind<bmalloc::Cache> >::s_key";
+    "bmalloc::vmPageSize()::cached";
+    "CyberKit::NetworkProcessMain(int, char**)";
+    "CyberKit::PluginProcessMain(int, char**)";
+    "CyberKit::CyberKitExtensionManager::initialize(CyberKit::InjectedBundle*, API::Object*)";
+    "CyberKit::CyberKitExtensionManager::singleton()";
+    "CyberKit::WebProcessMain(int, char**)";
+  };
+local:
+  *;
+};

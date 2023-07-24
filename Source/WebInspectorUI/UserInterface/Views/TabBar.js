@@ -935,7 +935,7 @@ WI.TabBar = class TabBar extends WI.View
 
         // This event can still fire when the mouse is inside the element if DOM nodes are added, removed or generally change inside.
         // Check if the mouse really did leave the element by checking the bounds.
-        // FIXME: Is this a WebKit bug or correct behavior?
+        // FIXME: Is this a CyberKit bug or correct behavior?
         let barRect = this._tabContainer.getBoundingClientRect();
         if (event.pageY > barRect.top && event.pageY < barRect.bottom && event.pageX > barRect.left && event.pageX < barRect.right)
             return;

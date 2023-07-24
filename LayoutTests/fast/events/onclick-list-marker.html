@@ -35,7 +35,7 @@ function runTest() {
 
     li.style.listStylePosition = "inside";
     
-    // WebCore renders an inside list marker right up against the left edge of the bounding box of the list item.
+    // CyberCore renders an inside list marker right up against the left edge of the bounding box of the list item.
     // This x position should put us over the list marker 
     x = li.offsetLeft + 10;
 
@@ -56,7 +56,7 @@ function runTest() {
     eventSender.mouseUp();
 
     li.style.listStylePosition = "outside";
-    // WebCore renders an outside list marker at offsetLeft minus an offset, which is equal on a
+    // CyberCore renders an outside list marker at offsetLeft minus an offset, which is equal on a
     // magic number, 7, plus the ascent of the font * 2/3.  Since we can't get the ascent from JS, just make sure that
     // the list marker is hit at some point between the left edge of the list item and the left edge of the list.
     

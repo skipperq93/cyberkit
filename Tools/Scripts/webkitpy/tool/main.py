@@ -41,7 +41,7 @@ from webkitpy.tool.multicommandtool import MultiCommandTool
 from webkitpy.tool import commands
 
 
-class WebKitPatch(MultiCommandTool, Host):
+class CyberKitPatch(MultiCommandTool, Host):
     global_options = [
         make_option("-v", "--verbose", action="store_true", dest="verbose", default=False, help="enable all logging"),
         make_option("-d", "--directory", action="append", dest="patch_directories", default=[], help="Directory to look at for changed files"),

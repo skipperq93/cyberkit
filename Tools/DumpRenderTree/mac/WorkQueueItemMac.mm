@@ -30,12 +30,12 @@
 #import "DumpRenderTree.h"
 #import "WorkQueueItem.h"
 
-#import <JavaScriptCore/JSStringRef.h>
-#import <JavaScriptCore/JSStringRefCF.h>
-#import <WebKit/WebBackForwardList.h>
-#import <WebKit/WebFrame.h>
-#import <WebKit/WebScriptObject.h>
-#import <WebKit/WebView.h>
+#import <CyberScriptCore/JSStringRef.h>
+#import <CyberScriptCore/JSStringRefCF.h>
+#import <CyberKit/WebBackForwardList.h>
+#import <CyberKit/WebFrame.h>
+#import <CyberKit/WebScriptObject.h>
+#import <CyberKit/WebView.h>
 #import <wtf/RetainPtr.h>
 
 bool LoadItem::invoke() const

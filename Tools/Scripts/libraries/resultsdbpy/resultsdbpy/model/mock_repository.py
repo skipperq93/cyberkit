@@ -28,7 +28,7 @@ import xmltodict
 
 from collections import defaultdict
 from resultsdbpy.controller.commit import Commit
-from resultsdbpy.model.repository import StashRepository, SVNRepository, WebKitRepository
+from resultsdbpy.model.repository import StashRepository, SVNRepository, CyberKitRepository
 
 
 class MockRequest(object):
@@ -235,7 +235,7 @@ class MockSVNRepository(_SVNMock, SVNRepository):
 
     @staticmethod
     def webkit(redis=None):
-        result = MockWebKitRepository(redis=redis)
+        result = MockCyberKitRepository(redis=redis)
         result.add_commit(Commit(
             repository_id=result.name, branch='trunk', id=236544,
             timestamp=1538052408, order=0,
@@ -286,13 +286,13 @@ class MockSVNRepository(_SVNMock, SVNRepository):
         SVNRepository.__init__(self, url=url, **kwargs)
 
 
-class MockWebKitRepository(_SVNMock, WebKitRepository):
+class MockCyberKitRepository(_SVNMock, CyberKitRepository):
 
     CHANGELOG_URL_RE = re.compile(r'(?P<branch>trunk|branches\/.+)\/(?P<path>.+)\/\?p=(?P<revision>[0-9]+)')
 
     def __init__(self, **kwargs):
         _SVNMock.__init__(self, name='webkit')
-        WebKitRepository.__init__(self, **kwargs)
+        CyberKitRepository.__init__(self, **kwargs)
 
     def request(self, url, method='GET', **kwargs):
         if not url.startswith(self.url):
@@ -307,7 +307,7 @@ class MockWebKitRepository(_SVNMock, WebKitRepository):
         if not match:
             return _SVNMock.request(self, url, method=method, **kwargs)
 
-        if match.group('path') not in WebKitRepository.CHANGELOGS:
+        if match.group('path') not in CyberKitRepository.CHANGELOGS:
             return MockRequest(status_code=404)
         if match.group('path') not in ('ChangeLog', 'Tools/ChangeLog'):
             return MockRequest(status_code=200)

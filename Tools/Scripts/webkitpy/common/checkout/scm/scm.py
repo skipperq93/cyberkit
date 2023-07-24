@@ -217,7 +217,7 @@ class SCM:
     def discard_untracked_files(self, discard_ignored_files=False, keep_webkitbuild_directory=False):
         for filename in self.untracked_files(discard_ignored_files):
             if self._filesystem.isdir(filename):
-                if keep_webkitbuild_directory and filename == "WebKitBuild":
+                if keep_webkitbuild_directory and filename == "CyberKitBuild":
                     continue
                 self._filesystem.rmtree(filename)
             else:

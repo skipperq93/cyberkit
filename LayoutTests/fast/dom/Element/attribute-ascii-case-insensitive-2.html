@@ -22,7 +22,7 @@ function testAttributeOnTarget(distinctNames) {
 
         for (var name of names) {
             shouldBeTrue('document.getElementById("target").hasAttribute("' + name + '")');
-            shouldBeEqualToString('document.getElementById("target").getAttribute("' + name + '")', 'WebKit!');
+            shouldBeEqualToString('document.getElementById("target").getAttribute("' + name + '")', 'CyberKit!');
         }
     }
 }
@@ -30,7 +30,7 @@ function testAttributeOnTarget(distinctNames) {
 function testParsedAttribute(distinctNames) {
     var testCaseString = '<div id="target" ';
     for (var name of distinctNames) {
-        testCaseString += ' ' + name + '="WebKit!"';
+        testCaseString += ' ' + name + '="CyberKit!"';
     }
     testCaseString += '</div>';
 
@@ -43,7 +43,7 @@ function testAttributeFromDOMApis(distinctNames) {
     var newElement = document.createElement('div');
     newElement.setAttribute('id', 'target');
     for (var name of distinctNames) {
-        newElement.setAttribute(name, "WebKit!");
+        newElement.setAttribute(name, "CyberKit!");
     }
     testContainer.appendChild(newElement);
     testAttributeOnTarget(distinctNames);

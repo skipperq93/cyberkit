@@ -1,0 +1,57 @@
+/*
+ * Copyright (C) 2012 Igalia S.L.
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Library General Public
+ * License as published by the Free Software Foundation; either
+ * version 2 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Library General Public License for more details.
+ *
+ * You should have received a copy of the GNU Library General Public License
+ * along with this library; see the file COPYING.LIB.  If not, write to
+ * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
+ */
+
+#pragma once
+
+#include "CyberKitAuthenticationRequest.h"
+#include "CyberKitWebViewDialog.h"
+#include <gtk/gtk.h>
+
+enum CredentialStorageMode {
+    AllowPersistentStorage, // The user is asked whether to store credential information.
+    DisallowPersistentStorage // Credential information is only kept in the session.
+};
+
+G_BEGIN_DECLS
+
+#define WEBKIT_TYPE_AUTHENTICATION_DIALOG            (webkit_authentication_dialog_get_type())
+#define WEBKIT_AUTHENTICATION_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_AUTHENTICATION_DIALOG, CyberKitAuthenticationDialog))
+#define WEBKIT_IS_AUTHENTICATION_DIALOG(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_AUTHENTICATION_DIALOG))
+#define WEBKIT_AUTHENTICATION_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_AUTHENTICATION_DIALOG, CyberKitAuthenticationDialogClass))
+#define WEBKIT_IS_AUTHENTICATION_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_AUTHENTICATION_DIALOG))
+#define WEBKIT_AUTHENTICATION_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_AUTHENTICATION_DIALOG, CyberKitAuthenticationDialogClass))
+
+typedef struct _CyberKitAuthenticationDialog        CyberKitAuthenticationDialog;
+typedef struct _CyberKitAuthenticationDialogClass   CyberKitAuthenticationDialogClass;
+typedef struct _CyberKitAuthenticationDialogPrivate CyberKitAuthenticationDialogPrivate;
+
+struct _CyberKitAuthenticationDialog {
+    CyberKitWebViewDialog parent;
+
+    CyberKitAuthenticationDialogPrivate* priv;
+};
+
+struct _CyberKitAuthenticationDialogClass {
+    CyberKitWebViewDialogClass parentClass;
+};
+
+GType webkit_authentication_dialog_get_type();
+GtkWidget* webkitAuthenticationDialogNew(CyberKitAuthenticationRequest*, CredentialStorageMode);
+
+G_END_DECLS

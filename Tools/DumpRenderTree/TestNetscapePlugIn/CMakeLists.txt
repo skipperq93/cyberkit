@@ -37,13 +37,13 @@ set(TestNetscapePlugIn_PRIVATE_INCLUDE_DIRECTORIES
 )
 
 set(TestNetscapePlugIn_LIBRARIES
-    WebKit::WTF
+    CyberKit::WTF
 )
 
-# The ForwardingHeaders directory contains np*.h which are copied from WebCore
-# so depend on the WebKit::WebCore target when building
-set(TestNetscapePlugIn_DEPENDENCIES WebKit::WebCore)
-list(APPEND TestNetscapePlugIn_PRIVATE_INCLUDE_DIRECTORIES ${WebCore_PRIVATE_FRAMEWORK_HEADERS_DIR})
+# The ForwardingHeaders directory contains np*.h which are copied from CyberCore
+# so depend on the CyberKit::CyberCore target when building
+set(TestNetscapePlugIn_DEPENDENCIES CyberKit::CyberCore)
+list(APPEND TestNetscapePlugIn_PRIVATE_INCLUDE_DIRECTORIES ${CyberCore_PRIVATE_FRAMEWORK_HEADERS_DIR})
 
 WEBKIT_FRAMEWORK_DECLARE(TestNetscapePlugIn)
 WEBKIT_INCLUDE_CONFIG_FILES_IF_EXISTS()

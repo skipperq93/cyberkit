@@ -322,4 +322,4 @@ void MemoryPressureHandler::setDispatchQueue(dispatch_queue_t queue)
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

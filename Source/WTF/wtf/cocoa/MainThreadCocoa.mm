@@ -41,7 +41,7 @@
 #import <wtf/Threading.h>
 
 #if USE(WEB_THREAD)
-#import <wtf/ios/WebCoreThread.h>
+#import <wtf/ios/CyberCoreThread.h>
 #endif
 
 #define LOG_CHANNEL_PREFIX Log
@@ -65,16 +65,16 @@ static Thread* s_webThread;
 void initializeMainThreadPlatform()
 {
     if (!pthread_main_np())
-        RELEASE_LOG_FAULT(Threading, "WebKit Threading Violation - initial use of WebKit from a secondary thread.");
+        RELEASE_LOG_FAULT(Threading, "CyberKit Threading Violation - initial use of CyberKit from a secondary thread.");
     ASSERT(pthread_main_np());
 }
 
 void dispatchAsyncOnMainThreadWithWebThreadLockIfNeeded(void (^block)())
 {
 #if USE(WEB_THREAD)
-    if (WebCoreWebThreadIsEnabled && WebCoreWebThreadIsEnabled()) {
+    if (CyberCoreWebThreadIsEnabled && CyberCoreWebThreadIsEnabled()) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            WebCoreWebThreadLock();
+            CyberCoreWebThreadLock();
             block();
         });
         return;
@@ -86,8 +86,8 @@ void dispatchAsyncOnMainThreadWithWebThreadLockIfNeeded(void (^block)())
 void callOnWebThreadOrDispatchAsyncOnMainThread(void (^block)())
 {
 #if USE(WEB_THREAD)
-    if (WebCoreWebThreadIsEnabled && WebCoreWebThreadIsEnabled()) {
-        WebCoreWebThreadRun(block);
+    if (CyberCoreWebThreadIsEnabled && CyberCoreWebThreadIsEnabled()) {
+        CyberCoreWebThreadRun(block);
         return;
     }
 #endif
@@ -98,7 +98,7 @@ void callOnWebThreadOrDispatchAsyncOnMainThread(void (^block)())
 
 static bool webThreadIsUninitializedOrLockedOrDisabled()
 {
-    return !WebCoreWebThreadIsLockedOrDisabled || WebCoreWebThreadIsLockedOrDisabled();
+    return !CyberCoreWebThreadIsLockedOrDisabled || CyberCoreWebThreadIsLockedOrDisabled();
 }
 
 bool isMainThread()

@@ -15,14 +15,14 @@ letters &#x05d0;&#x05d1;&#x05d2;&#x05d3; in the end should be in boldface
 abcd &#x05d0;&#x05d1;&#x05d2;&#x05d3;
 <b>abcd &#x05d0;&#x05d1;&#x05d2;&#x05d3;</b>
 </p>
-<!-- Courier exists but doesn't include Hebrew; WebKit falls back to
+<!-- Courier exists but doesn't include Hebrew; CyberKit falls back to
 Helvetica and Helvetica Bold for Hebrew, but then ATSUI falls back to
 Lucida Grande (not bold) -->
 <p style="font-family:'Courier';">
 abcd &#x05d0;&#x05d1;&#x05d2;&#x05d3;
 <b>abcd &#x05d0;&#x05d1;&#x05d2;&#x05d3;</b>
 </p>
-<!-- noSuchFamilyForSure doesn't exist; WebKit falls back to Helvetica
+<!-- noSuchFamilyForSure doesn't exist; CyberKit falls back to Helvetica
 and Helvetica Bold for both Roman and Hebrew, but then ATSUI falls back to
 Lucida Grande (not bold) for Hebrew -->
 <p style="font-family:'noSuchFamilyForSure';">

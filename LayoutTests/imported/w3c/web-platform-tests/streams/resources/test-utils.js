@@ -54,7 +54,7 @@ self.garbageCollect = () => {
     // Exposed in SpiderMonkey shell as well
     self.gc();
   } else if (self.GCController) {
-    // Present in some WebKit development environments
+    // Present in some CyberKit development environments
     GCController.collect();
   } else {
     /* eslint-disable no-console */

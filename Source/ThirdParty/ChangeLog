@@ -24,7 +24,7 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -40,11 +40,11 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebCore/PAL:
+    Source/CyberCore/PAL:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -52,11 +52,11 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebKitLegacy/mac:
+    Source/CyberKitLegacy/mac:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -70,10 +70,10 @@
     * DumpRenderTree/mac/Configurations/DebugRelease.xcconfig:
     * ImageDiff/cg/Configurations/DebugRelease.xcconfig:
     * MiniBrowser/Configurations/DebugRelease.xcconfig:
-    * TestWebKitAPI/Configurations/DebugRelease.xcconfig:
+    * TestCyberKitAPI/Configurations/DebugRelease.xcconfig:
     * WebEditingTester/Configurations/DebugRelease.xcconfig:
-    * WebKitTestRunner/Configurations/DebugRelease.xcconfig:
-    * lldb/lldbWebKitTester/Configurations/DebugRelease.xcconfig:
+    * CyberKitTestRunner/Configurations/DebugRelease.xcconfig:
+    * lldb/lldbCyberKitTester/Configurations/DebugRelease.xcconfig:
     
     git-svn-id: https://svn.webkit.org/repository/webkit/trunk@268371 268f45cc-cd09-0410-ab3c-d52691b4dbfc
 
@@ -106,7 +106,7 @@
     Reviewed by Darin Adler.
     
     Due to a bug in Xcode (rdar://70185899), Xcode 12.0 and Xcode 12.1 Beta incorrectly includes the
-    minor release number in MAC_OS_X_VERSION_MAJOR, which causes Debug and Release builds of WebKit
+    minor release number in MAC_OS_X_VERSION_MAJOR, which causes Debug and Release builds of CyberKit
     to be misconfigured when building on macOS Big Sur SUs, leading to webpages failing to load.
     
     To work around the Xcode bug, when the MAC_OS_X_VERSION_MAJOR includes the minor version number,
@@ -123,7 +123,7 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -139,11 +139,11 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebCore/PAL:
+    Source/CyberCore/PAL:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -151,11 +151,11 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebKitLegacy/mac:
+    Source/CyberKitLegacy/mac:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -169,10 +169,10 @@
     * DumpRenderTree/mac/Configurations/DebugRelease.xcconfig:
     * ImageDiff/cg/Configurations/DebugRelease.xcconfig:
     * MiniBrowser/Configurations/DebugRelease.xcconfig:
-    * TestWebKitAPI/Configurations/DebugRelease.xcconfig:
+    * TestCyberKitAPI/Configurations/DebugRelease.xcconfig:
     * WebEditingTester/Configurations/DebugRelease.xcconfig:
-    * WebKitTestRunner/Configurations/DebugRelease.xcconfig:
-    * lldb/lldbWebKitTester/Configurations/DebugRelease.xcconfig:
+    * CyberKitTestRunner/Configurations/DebugRelease.xcconfig:
+    * lldb/lldbCyberKitTester/Configurations/DebugRelease.xcconfig:
     
     git-svn-id: https://svn.webkit.org/repository/webkit/trunk@268353 268f45cc-cd09-0410-ab3c-d52691b4dbfc
 
@@ -186,7 +186,7 @@
             Reviewed by Darin Adler.
 
             Due to a bug in Xcode (rdar://70185899), Xcode 12.0 and Xcode 12.1 Beta incorrectly includes the
-            minor release number in MAC_OS_X_VERSION_MAJOR, which causes Debug and Release builds of WebKit
+            minor release number in MAC_OS_X_VERSION_MAJOR, which causes Debug and Release builds of CyberKit
             to be misconfigured when building on macOS Big Sur SUs, leading to webpages failing to load.
 
             To work around the Xcode bug, when the MAC_OS_X_VERSION_MAJOR includes the minor version number,
@@ -218,7 +218,7 @@
 
 2020-06-30  Andy Estes  <aestes@apple.com>
 
-        [Xcode] Enable the "My Mac (Mac Catalyst)" destination in WebKit Xcode projects
+        [Xcode] Enable the "My Mac (Mac Catalyst)" destination in CyberKit Xcode projects
         https://bugs.webkit.org/show_bug.cgi?id=213740
 
         Reviewed by Darin Adler.
@@ -339,7 +339,7 @@
 
         Reviewed by Alexey Proskuryakov.
 
-        A number of targets in WebKit have 'tvos' and 'tvsimulator' in
+        A number of targets in CyberKit have 'tvos' and 'tvsimulator' in
         SUPPORTED_PLATFORMS. The correct values are 'appletvos' and
         'appletvsimulator'. These should be updated to the correct ones as the
         wrong values prevent the tvOS run destination from being usable in the
@@ -367,7 +367,7 @@
 
 2019-11-01  Tim Horton  <timothy_horton@apple.com>
 
-        macCatalyst: Get TestWebKitAPI building
+        macCatalyst: Get TestCyberKitAPI building
         https://bugs.webkit.org/show_bug.cgi?id=203728
 
         Reviewed by Alexey Proskuryakov.
@@ -424,7 +424,7 @@
 
 2018-10-30  Don Olmstead  <don.olmstead@sony.com>
 
-        [PlayStation] Enable JavaScriptCore
+        [PlayStation] Enable CyberScriptCore
         https://bugs.webkit.org/show_bug.cgi?id=191072
 
         Reviewed by Brent Fulgham.
@@ -459,7 +459,7 @@
 
         Allows a port to configure options within gtest for its platform.
         The library type can be set otherwise it defaults to shared. Also the
-        compile definitions are propogated to TestWebKitAPI through a global
+        compile definitions are propogated to TestCyberKitAPI through a global
         property.
 
         * gtest/CMakeLists.txt:
@@ -506,7 +506,7 @@
         Sync the end of xdg_mime_get_mime_type_for_file() with _xdg_mime_cache_get_mime_type_for_file()
         to avoid a memory issue.
 
-        I'm pretty sure this code is never executed by either Chromium or WebKit, but I'm not
+        I'm pretty sure this code is never executed by either Chromium or CyberKit, but I'm not
         comfortable with leaving it broken.
 
         * xdgmime/README.webkit:
@@ -520,7 +520,7 @@
 
         Reviewed by Daniel Bates.
 
-        We have an off-by-one error here in some code that was added for WebKit. (This is not an
+        We have an off-by-one error here in some code that was added for CyberKit. (This is not an
         issue with upstream xdgmime.)
 
         No new tests. This problem is caught by TestDownloads, but only when running with ASan
@@ -1253,7 +1253,7 @@
 
 2018-02-06  Don Olmstead  <don.olmstead@sony.com>
 
-        Remove WebCore/ForwardingHeaders directory
+        Remove CyberCore/ForwardingHeaders directory
         https://bugs.webkit.org/show_bug.cgi?id=182347
 
         Reviewed by Keith Miller.
@@ -1329,7 +1329,7 @@
         * openvr/LICENSE: Added.
         * openvr/README.md: Added.
         * openvr/README.webkit: Added. Includes specifics changes made to the original library to
-        accommodate it to the WebKit build system.
+        accommodate it to the CyberKit build system.
         * openvr/Toolchain-clang.cmake: Added.
         * openvr/headers/openvr.h: Added.
         (vr::ButtonMaskFromId):
@@ -1804,7 +1804,7 @@
 
 2017-12-14  David Kilzer  <ddkilzer@apple.com>
 
-        Enable -Wstrict-prototypes for WebKit
+        Enable -Wstrict-prototypes for CyberKit
         <https://webkit.org/b/180757>
         <rdar://problem/36024132>
 
@@ -2001,7 +2001,7 @@
 
 2017-07-17  Michael Catanzaro  <mcatanzaro@igalia.com>
 
-        [CMake] Macros in WebKitMacros.cmake should be prefixed with WEBKIT_ namespace
+        [CMake] Macros in CyberKitMacros.cmake should be prefixed with WEBKIT_ namespace
         https://bugs.webkit.org/show_bug.cgi?id=174547
 
         Reviewed by Alex Christensen.
@@ -2149,20 +2149,20 @@
 
         * libwebrtc/CMakeLists.txt: Added (Generated by Tools/Scripts/generate-libwebrtc-cmake using project.json as input).
         * libwebrtc/Makefile: Added.
-        * libwebrtc/WebKit/project.json: Added (Generated by libwebrtc build system).
-        * libwebrtc/WebKit/rtc_sdk_framework_objc_info_plist.plist: Added.
+        * libwebrtc/CyberKit/project.json: Added (Generated by libwebrtc build system).
+        * libwebrtc/CyberKit/rtc_sdk_framework_objc_info_plist.plist: Added.
         * libwebrtc/libwebrtc.xcodeproj/project.pbxproj: Added.
 
 2016-12-10  Konstantin Tokarev  <annulen@yandex.ru>
 
-        [cmake] Include WTF, JSC, and WebCore headers automatically to targers using them
+        [cmake] Include WTF, JSC, and CyberCore headers automatically to targers using them
         https://bugs.webkit.org/show_bug.cgi?id=165686
 
         Reviewed by Michael Catanzaro.
 
         This change reduces duplication of include path lists between modules,
         and reduces future need for fixes like r209605 (broken build because of
-        WebCore header suddenly becoming used in WebKit2).
+        CyberCore header suddenly becoming used in CyberKit2).
 
         * gtest/CMakeLists.txt:
 
@@ -2476,7 +2476,7 @@
 
 2015-08-10  Alex Christensen  <achristensen@webkit.org>
 
-        Build TestWebKitAPI with CMake on Windows
+        Build TestCyberKitAPI with CMake on Windows
         https://bugs.webkit.org/show_bug.cgi?id=147851
 
         Reviewed by Chris Dumez.
@@ -2551,7 +2551,7 @@
 
 2014-12-09  David Kilzer  <ddkilzer@apple.com>
 
-        Switch from using PLATFORM_NAME to SDK selectors in ANGLE, bmalloc, gtest, JavaScriptCore, WTF
+        Switch from using PLATFORM_NAME to SDK selectors in ANGLE, bmalloc, gtest, CyberScriptCore, WTF
         <http://webkit.org/b/139212>
 
         Reviewed by Joseph Pecoraro.
@@ -2572,7 +2572,7 @@
         [Win] Unreviewed build fix.
 
         * gtest/msvc/gtest-md.vcxproj: Make sure we use static linking for gtest on
-        normal debug build to match the rest of WebKit.
+        normal debug build to match the rest of CyberKit.
 
 2014-09-09  Benjamin Poulain  <bpoulain@apple.com>
 
@@ -2800,7 +2800,7 @@
 
 2013-12-13  Brent Fulgham  <bfulgham@apple.com>
 
-        [Win] Switch WebKit solution to Visual Studio 2013
+        [Win] Switch CyberKit solution to Visual Studio 2013
         https://bugs.webkit.org/show_bug.cgi?id=125192
 
         Reviewed by Anders Carlsson.
@@ -2833,7 +2833,7 @@
 
 2013-10-10  Mark Rowe  <mrowe@apple.com>
 
-        <rdar://problem/13341666> WebKit should always build against an SDK.
+        <rdar://problem/13341666> CyberKit should always build against an SDK.
 
         Have all projects default to building against the OS X Internal SDK for the Production
         configuration. For the Debug and Release configurations, look for UseInternalSDK.xcconfig
@@ -2950,7 +2950,7 @@
 
 2013-06-18  Roger Fong  <roger_fong@apple.com>
 
-        Replace tools32 folder with tools and update WebKit Windows solution accordingly.
+        Replace tools32 folder with tools and update CyberKit Windows solution accordingly.
         <rdar://problem/14118143>.
 
         Rubberstamped by Brent Fulgham.
@@ -2984,7 +2984,7 @@
 
 2013-04-09  Benjamin Poulain  <bpoulain@apple.com>
 
-        Remove the WebKit copy of GLU and the file using it
+        Remove the CyberKit copy of GLU and the file using it
         https://bugs.webkit.org/show_bug.cgi?id=114249
 
         Reviewed by Darin Adler.
@@ -3118,7 +3118,7 @@
 
 2013-02-05  Simon Hausmann  <simon.hausmann@digia.com>
 
-        [Qt] Compile WTF tests of TestWebKitAPI
+        [Qt] Compile WTF tests of TestCyberKitAPI
         https://bugs.webkit.org/show_bug.cgi?id=108935
 
         Reviewed by Kenneth Rohde Christiansen.
@@ -3234,7 +3234,7 @@
 
 2012-04-26  Carlos Garcia Campos  <cgarcia@igalia.com>
 
-        [GTK] Build and run TestWebKitAPI WebKit2 unit tests
+        [GTK] Build and run TestCyberKitAPI CyberKit2 unit tests
         https://bugs.webkit.org/show_bug.cgi?id=84446
 
         Reviewed by Philippe Normand.
@@ -3245,7 +3245,7 @@
 
 2012-04-24  Carlos Garcia Campos  <cgarcia@igalia.com>
 
-        [GTK] Build and run TestWebKitAPI unit tests
+        [GTK] Build and run TestCyberKitAPI unit tests
         https://bugs.webkit.org/show_bug.cgi?id=84325
 
         Reviewed by Philippe Normand.
@@ -3285,7 +3285,7 @@
         Rubber-stamped by Jon Honeycutt and Eric Seidel.
 
         * gtest/msvc/gtest-md.vcproj:
-        Add the new JavaScriptCore include directory to the include path.
+        Add the new CyberScriptCore include directory to the include path.
 
 2012-02-21  Sam Weinig  <sam@webkit.org>
 
@@ -3314,12 +3314,12 @@
         Reviewed by David Kilzer.
 
         * gtest/xcode/Config/ProductionProject.xcconfig: Ensure that the staged frameworks path
-        is in the framework search path when USE_STAGING_INSTALL_PATH is set. Look for the WebCore
+        is in the framework search path when USE_STAGING_INSTALL_PATH is set. Look for the CyberCore
         framework in the staged frameworks directory when USE_STAGING_INSTALL_PATH is set.
 
 2012-01-06  Anders Carlsson  <andersca@apple.com>
 
-        Make JavaScriptCore.framework a reference and put it in a Frameworks group
+        Make CyberScriptCore.framework a reference and put it in a Frameworks group
         https://bugs.webkit.org/show_bug.cgi?id=75740
 
         Reviewed by Mark Rowe.
@@ -3348,7 +3348,7 @@
 
 2012-01-04  David Kilzer  <ddkilzer@apple.com>
 
-        TestWebKitAPI has issues due to FastMalloc incompatibility
+        TestCyberKitAPI has issues due to FastMalloc incompatibility
         <http://webkit.org/b/66521>
         <rdar://problem/10607911>
 
@@ -3357,9 +3357,9 @@
         Original patch by Dmitry Lomov <dslomov@google.com>.
 
         This patch ensures that gtest uses the FastMalloc new and delete
-        operators that are defined in JavaScriptCore.
+        operators that are defined in CyberScriptCore.
 
-        * gtest/README.WebKit: Update with project changes.
+        * gtest/README.CyberKit: Update with project changes.
         * gtest/include/gtest/internal/gtest-port.h: Import necessary
         headers to use FastMalloc in gtest.
         * gtest/msvc/gtest-md.vcproj: Add include directories to find
@@ -3375,7 +3375,7 @@
         WEBCORE_PRIVATE_HEADERS_DIR for Release builds.
         * gtest/xcode/gtest.xcodeproj/project.pbxproj:
         - Remove local HEADER_SEARCH_PATHS definitions.
-        - Link to JavaScriptCore.framework when building
+        - Link to CyberScriptCore.framework when building
           gtest.framework.
 
 2012-01-03  David Kilzer  <ddkilzer@apple.com>
@@ -3385,7 +3385,7 @@
 
         Reviewed by Adam Roben.
 
-        * gtest/README.WebKit: Updated.
+        * gtest/README.CyberKit: Updated.
         * gtest/xcode/Config/ProductionProject.xcconfig: Added.
         * gtest/xcode/gtest.xcodeproj/project.pbxproj:
         - Added Production configuration based on Release configuration.
@@ -3407,7 +3407,7 @@
 
         Fix build when GCC 4.2 is not installed.
 
-        * gtest/xcode/Config/CompilerVersion.xcconfig: Copied from Source/WebCore/Configurations/CompilerVersion.xcconfig.
+        * gtest/xcode/Config/CompilerVersion.xcconfig: Copied from Source/CyberCore/Configurations/CompilerVersion.xcconfig.
         * gtest/xcode/Config/General.xcconfig:
         Use the same compiler version as other projects do.
 
@@ -3420,7 +3420,7 @@
         Broke the Mac build by not building gtest.framework anymore
         (Requested by andersca on #webkit).
 
-        * gtest/README.WebKit:
+        * gtest/README.CyberKit:
         * gtest/include/gtest/internal/gtest-port.h:
         * gtest/msvc/gtest-md.vcproj:
         * gtest/xcode/Config/General.xcconfig:
@@ -3428,16 +3428,16 @@
 
 2011-08-18  Dmitry Lomov  <dslomov@google.com>
 
-        TestWebKitAPI breaks on Windows due to fast malloc incompatibility.
+        TestCyberKitAPI breaks on Windows due to fast malloc incompatibility.
         https://bugs.webkit.org/show_bug.cgi?id=66521
 
-        This patch ensures that gtest uses new and delete operators that are defined in JavaScriptCore.
+        This patch ensures that gtest uses new and delete operators that are defined in CyberScriptCore.
 
         Reviewed by David Levin.
 
         * gtest/include/gtest/internal/gtest-port.h:
         * gtest/msvc/gtest-md.vcproj:
-        * gtest/README.WebKit:
+        * gtest/README.CyberKit:
         * gtest/xcode/Config/General.xcconfig:
         * gtest/xcode/gtest.xcodeproj/project.pbxproj:
 
@@ -3458,7 +3458,7 @@
 2011-08-03  Dmitry Lomov  <dslomov@google.com>
 
         https://bugs.webkit.org/show_bug.cgi?id=61812
-        TestWebKitApi breaks in release mode due to gtest incompatibility with fast malloc
+        TestCyberKitApi breaks in release mode due to gtest incompatibility with fast malloc
 
         Disable fast malloc for offending class (::std::strstream) in gtest.
         This looks like the most non-intrusive solution.
@@ -3495,7 +3495,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=61365
 
         Restore the glu sources closer to the original version on oss.sgi.com
-        by removing the WebKit-specific include paths, restoring the include
+        by removing the CyberKit-specific include paths, restoring the include
         order, and renaming the glu* functions via #defines rather than in
         the source.
 
@@ -3526,7 +3526,7 @@
         * glu/libtess/tess.c:
         * glu/libtess/tess.h:
         * glu/libtess/tessmono.c:
-        Remove WebKit-specific include paths, and internal_ prefixes from glu
+        Remove CyberKit-specific include paths, and internal_ prefixes from glu
         entry points.  Restore include order to original source order.
 
 2011-05-19  Evan Martin  <evan@chromium.org>

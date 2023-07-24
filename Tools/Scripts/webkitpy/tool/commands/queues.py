@@ -105,7 +105,7 @@ class AbstractQueue(Command, QueueEngineDelegate):
             if (response != "yes"):
                 _log.error("User declined.")
                 sys.exit(1)
-        _log.info("Running WebKit %s." % self.name)
+        _log.info("Running CyberKit %s." % self.name)
 
     def stop_work_queue(self, reason):
         pass

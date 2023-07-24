@@ -76,7 +76,7 @@ class PerfalizerTask(PatchAnalysisTask):
 
         head_revision = self._tool.scm().head_svn_revision()
 
-        self._logger('Building WebKit at r%s without the patch' % head_revision)
+        self._logger('Building CyberKit at r%s without the patch' % head_revision)
         if not self._build_without_patch():
             return False
 
@@ -88,7 +88,7 @@ class PerfalizerTask(PatchAnalysisTask):
             self._logger('Failed to copy the build product from %s to %s' % (self._build_directory, self._build_directory_without_patch))
             return False
 
-        self._logger('Building WebKit at r%s with the patch' % head_revision)
+        self._logger('Building CyberKit at r%s with the patch' % head_revision)
         if not self._apply() or not self._build():
             return False
 

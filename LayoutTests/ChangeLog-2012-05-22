@@ -197,7 +197,7 @@
 
 2012-05-22  Zan Dobersek  <zandobersek@gmail.com>
 
-        [Gtk][LayoutTests] Repaint the complete WebKitWebView before dumping pixel results
+        [Gtk][LayoutTests] Repaint the complete CyberKitWebView before dumping pixel results
         https://bugs.webkit.org/show_bug.cgi?id=86284
 
         Unreviewed, removing test expectations for tests that should pass now
@@ -241,7 +241,7 @@
 
 2012-05-22  Nikolas Zimmermann  <nzimmermann@rim.com>
 
-        Crash in WebCore::SVGTextLayoutAttributesBuilder::fillCharacterDataMap
+        Crash in CyberCore::SVGTextLayoutAttributesBuilder::fillCharacterDataMap
         https://bugs.webkit.org/show_bug.cgi?id=86781
 
         Reviewed by Rob Buis.
@@ -259,7 +259,7 @@
 
 2012-05-22  Nikolas Zimmermann  <nzimmermann@rim.com>
 
-        Crash in WebCore::RenderSVGContainer::paint
+        Crash in CyberCore::RenderSVGContainer::paint
         https://bugs.webkit.org/show_bug.cgi?id=86392
 
         Reviewed by Rob Buis.
@@ -7586,7 +7586,7 @@
 
 2012-05-18  Ryosuke Niwa  <rniwa@webkit.org>
 
-        WebKit erroneously add 1px padding in input elements
+        CyberKit erroneously add 1px padding in input elements
         https://bugs.webkit.org/show_bug.cgi?id=86784
 
         Reviewed by Kent Tamura.
@@ -8192,7 +8192,7 @@
 2012-05-18  MORITA Hajime  <morrita@google.com>
 
         https://bugs.webkit.org/show_bug.cgi?id=85515
-        Stale frame in WebCore::SpellChecker::didCheckSucceeded
+        Stale frame in CyberCore::SpellChecker::didCheckSucceeded
 
         Reviewed by Ryosuke Niwa.
 
@@ -8948,7 +8948,7 @@
 
 2012-05-17  Ryosuke Niwa  <rniwa@webkit.org>
 
-        WebKit erroneously add 1px padding in input elements
+        CyberKit erroneously add 1px padding in input elements
         https://bugs.webkit.org/show_bug.cgi?id=86784
 
         Reviewed by Kent Tamura.
@@ -9357,7 +9357,7 @@
         Reviewed by Ryosuke Niwa.
 
         * platform/qt/Skipped: Unskipped. Note that it is still skipped for wk2 because
-        setEditingBehavior is not implemented for WebKitTestRunner yet.
+        setEditingBehavior is not implemented for CyberKitTestRunner yet.
 
 2012-05-17  Raphael Kubo da Costa  <rakuco@webkit.org>
 
@@ -9371,7 +9371,7 @@
 
 2012-05-17  Dan Bernstein  <mitz@apple.com>
 
-        REGRESSION (r117428): WebKit API/SPI was removed
+        REGRESSION (r117428): CyberKit API/SPI was removed
         https://bugs.webkit.org/show_bug.cgi?id=86748
 
         Reverted r117428.
@@ -10627,7 +10627,7 @@
 
 2012-05-16  Keishi Hattori  <keishi@webkit.org>
 
-        [chromium] Add WebKit API to access inner text value of input element
+        [chromium] Add CyberKit API to access inner text value of input element
         https://bugs.webkit.org/show_bug.cgi?id=85353
 
         Reviewed by Kent Tamura.
@@ -11100,7 +11100,7 @@
 
 2012-05-15  Robert Hogan  <robert@webkit.org>
 
-        Heap-use-after-free in WebCore::RenderBlock::layoutRunsAndFloats
+        Heap-use-after-free in CyberCore::RenderBlock::layoutRunsAndFloats
         https://bugs.webkit.org/show_bug.cgi?id=86206
 
         Reviewed by Abhishek Arya.
@@ -11993,7 +11993,7 @@
 
 2012-05-14  Takashi Sakamoto  <tasak@google.com>
 
-        Crash in WebCore::RenderObject::repaint
+        Crash in CyberCore::RenderObject::repaint
         https://bugs.webkit.org/show_bug.cgi?id=86162
 
         Reviewed by Abhishek Arya.
@@ -12558,7 +12558,7 @@
 
 2012-05-13  Mike Lawther  <mikelawther@chromium.org>
 
-        Heap-use-after-free in WTF::HashMap<int, WTF::RefPtr<WebCore::CalculationValue>, WTF::IntHash<unsigned int>, WTF::HashTrait
+        Heap-use-after-free in WTF::HashMap<int, WTF::RefPtr<CyberCore::CalculationValue>, WTF::IntHash<unsigned int>, WTF::HashTrait
         https://bugs.webkit.org/show_bug.cgi?id=85195
 
         Reviewed by Darin Adler.
@@ -13940,7 +13940,7 @@
 
 2012-05-11  David Barton  <dbarton@mathscribe.com>
 
-        use after free in WebCore::RenderObject::document
+        use after free in CyberCore::RenderObject::document
         https://bugs.webkit.org/show_bug.cgi?id=84891
 
         Reviewed by Julien Chaffraix.
@@ -14784,7 +14784,7 @@
 
 2012-05-10  MORITA Hajime  <morrita@google.com>
 
-        WebKit should support tab-size.
+        CyberKit should support tab-size.
         https://bugs.webkit.org/show_bug.cgi?id=52994
 
         Reviewed by Simon Fraser.
@@ -15419,13 +15419,13 @@
 
 2012-05-09  Takashi Sakamoto  <tasak@google.com>
 
-        Crash in WebCore::RenderBoxModelObject::paddingLeft
+        Crash in CyberCore::RenderBoxModelObject::paddingLeft
         https://bugs.webkit.org/show_bug.cgi?id=83889
 
         Reviewed by Abhishek Arya.
 
         As just invoking layoutTestController.display() invokes scrollbar's
-        WebCore::RenderScrollbarPart::paintIntoRect(), adding display() after
+        CyberCore::RenderScrollbarPart::paintIntoRect(), adding display() after
         invoking layoutTestController.dumpAsText().
 
         * scrollbars/scrollbar-percent-padding-crash.html: Added.
@@ -17178,12 +17178,12 @@
 
 2012-05-07  Alexis Menard  <alexis.menard@openbossa.org>
 
-        [Qt] Enable fullscreen api layout tests on WebKit2.
+        [Qt] Enable fullscreen api layout tests on CyberKit2.
         https://bugs.webkit.org/show_bug.cgi?id=85616
 
         Reviewed by Csaba Osztrogonác.
 
-        http://trac.webkit.org/changeset/116089 implements the fullscreen API for WebKit2,
+        http://trac.webkit.org/changeset/116089 implements the fullscreen API for CyberKit2,
         we can now unskip the related tests.
 
         * platform/qt-4.8/Skipped:
@@ -17988,14 +17988,14 @@
 
 2012-05-04  Christophe Dumez  <christophe.dumez@intel.com>
 
-        [EFL] LayoutTestController does not support overriding WebKitLoadSiteIconsKey
+        [EFL] LayoutTestController does not support overriding CyberKitLoadSiteIconsKey
         https://bugs.webkit.org/show_bug.cgi?id=85171
 
         Reviewed by Andreas Kling.
 
         Unskip http/tests/misc/favicon-loads-with-icon-loading-override.html
         now that EFL's LayoutTestController support overriding
-        WebKitLoadSiteIconsKey.
+        CyberKitLoadSiteIconsKey.
 
         * platform/efl/Skipped:
 
@@ -19786,7 +19786,7 @@
 
 2012-05-02  Eric Carlson  <eric.carlson@apple.com>
 
-        Crash in WebCore::TextTrackList::remove
+        Crash in CyberCore::TextTrackList::remove
         https://bugs.webkit.org/show_bug.cgi?id=85095
 
         Reviewed by Maciej Stachowiak.
@@ -20420,7 +20420,7 @@
 
 2012-05-02  Ryosuke Niwa  <rniwa@webkit.org>
 
-        NULL ptr in WebCore::AppendNodeCommand::AppendNodeCommand
+        NULL ptr in CyberCore::AppendNodeCommand::AppendNodeCommand
         https://bugs.webkit.org/show_bug.cgi?id=75843
 
         Reviewed by Tony Chang.
@@ -20832,7 +20832,7 @@
 
 2012-05-01  Ryosuke Niwa  <rniwa@webkit.org>
 
-        Skip the test added by r115724 on WebKit2 and Qt because drag and drop isn't supported by DRT
+        Skip the test added by r115724 on CyberKit2 and Qt because drag and drop isn't supported by DRT
         on those platforms.
 
         * platform/qt/Skipped:
@@ -21095,7 +21095,7 @@
 
         Reviewed by Hajime Morita.
 
-        Add a regression test since the said bug appears to have been fixed on ToT WebKit.
+        Add a regression test since the said bug appears to have been fixed on ToT CyberKit.
 
         * editing/pasteboard/drag-drop-url-with-style-expected.txt: Added.
         * editing/pasteboard/drag-drop-url-with-style.html: Added.
@@ -21227,7 +21227,7 @@
 
 2012-04-30  Ryosuke Niwa  <rniwa@webkit.org>
 
-        NULL ptr in WebCore::Range::getBorderAndTextQuads
+        NULL ptr in CyberCore::Range::getBorderAndTextQuads
         https://bugs.webkit.org/show_bug.cgi?id=77218
 
         Reviewed by Eric Seidel.
@@ -21313,11 +21313,11 @@
 
         * fast/js/constructor-length.html:
         * platform/mac/fast/js/constructor-length-expected.txt:
-        Remove WebKitBlobBuilder from this test, as it is not exposed on all platforms,
+        Remove CyberKitBlobBuilder from this test, as it is not exposed on all platforms,
         and add Blob, which is.
 
         * platform/mac/Skipped:
-        Skip fast/files/blob-builder-crash.html, since we no longer support WebKitBlobBuilder.
+        Skip fast/files/blob-builder-crash.html, since we no longer support CyberKitBlobBuilder.
 
 2012-04-30  Mark Hahnenberg  <mhahnenberg@apple.com>
 
@@ -21585,7 +21585,7 @@
 
 2012-04-28  Zan Dobersek  <zandobersek@gmail.com>
 
-        Unreviewed, removing a Mac WebKit2-specific test result for
+        Unreviewed, removing a Mac CyberKit2-specific test result for
         http/tests/xmlviewer/dumpAsText/frames.html that is not required
         anymore after changes in r115572.
 
@@ -22651,7 +22651,7 @@
 
 2012-04-26  Jeffrey Pfau  <jpfau@apple.com>
 
-        Invalid cast in WebCore::HTMLCollection::isAcceptableElement
+        Invalid cast in CyberCore::HTMLCollection::isAcceptableElement
         https://bugs.webkit.org/show_bug.cgi?id=84626
 
         Reviewed by Darin Adler.
@@ -22663,12 +22663,12 @@
 
 2012-04-26  Benjamin Poulain  <bpoulain@apple.com>
 
-        Skip the new ObjC tests for WebKit2
+        Skip the new ObjC tests for CyberKit2
 
         Reviewed by Andreas Kling.
 
-        WebKitTestRunner doesn't have objCController, the new tests for
-        the Objective-C bindings should be skipped on WebKit2.
+        CyberKitTestRunner doesn't have objCController, the new tests for
+        the Objective-C bindings should be skipped on CyberKit2.
 
         * platform/wk2/Skipped:
 
@@ -24725,7 +24725,7 @@
 
 2012-04-24  Yael Aharon  <yael.aharon@nokia.com>
 
-        [Qt] Move notification icon download out of WebCore
+        [Qt] Move notification icon download out of CyberCore
         https://bugs.webkit.org/show_bug.cgi?id=80700
 
         Reviewed by Jian Li.
@@ -24842,7 +24842,7 @@
 
 2012-04-24  Rob Buis  <rbuis@rim.com>
 
-        REGRESSION (r115083-r115087): 6 tests failing on Lion Release (WebKit2 Tests)
+        REGRESSION (r115083-r115087): 6 tests failing on Lion Release (CyberKit2 Tests)
         https://bugs.webkit.org/show_bug.cgi?id=84783
 
         Reviewed by Dirk Schulze.
@@ -24922,7 +24922,7 @@
 
 2012-04-24  Rob Buis  <rbuis@rim.com>
 
-        REGRESSION (r115083-r115087): 6 tests failing on Lion Release (WebKit2 Tests)
+        REGRESSION (r115083-r115087): 6 tests failing on Lion Release (CyberKit2 Tests)
         https://bugs.webkit.org/show_bug.cgi?id=84783
 
         Reviewed by Andreas Kling.
@@ -25330,7 +25330,7 @@
 
 2012-04-24  Florin Malita  <fmalita@google.com>
 
-        WebCore::EventTarget::addEventListener crash
+        CyberCore::EventTarget::addEventListener crash
         https://bugs.webkit.org/show_bug.cgi?id=84171
 
         Reviewed by Nikolas Zimmermann.

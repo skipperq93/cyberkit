@@ -16,7 +16,7 @@ e = document.getElementById('test');
 style = e.style;
 computedStyle = window.getComputedStyle(e, null);
 
-// This function checks the return value of computedStyle.transition and verifies WebKit can parse it.
+// This function checks the return value of computedStyle.transition and verifies CyberKit can parse it.
 function checkTransitionShorthandValue() {
     var before = computedStyle.getPropertyValue('transition');
     e.style.transition = '';

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-<p>This tests dynamically mutating the slot value. WebKit should not crash.</p>
+<p>This tests dynamically mutating the slot value. CyberKit should not crash.</p>
 <outer-host style="display: block; -webkit-column-count: 2;"><inner-host style="display: block;"><div id="mutateThis">?<section style="column-span: all;"></section></div></inner-host></outer-host>
 <script>
 
@@ -19,7 +19,7 @@ mutateThis.slot = "f";
 outerHost.getBoundingClientRect();
 mutateThis.innerText = "";
 
-document.write('PASS - WebKit did not crash');
+document.write('PASS - CyberKit did not crash');
 
 </script>
 </body>

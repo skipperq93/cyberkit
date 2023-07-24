@@ -1,0 +1,345 @@
+/* This file is part of the CyberKit open source project.
+   
+   This library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Library General Public
+   License as published by the Free Software Foundation; either
+   version 2 of the License, or (at your option) any later version.
+
+   This library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Library General Public License for more details.
+
+   You should have received a copy of the GNU Library General Public License
+   along with this library; see the file COPYING.LIB.  If not, write to
+   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+   Boston, MA 02110-1301, USA.
+*/
+
+#ifndef webkitdomdefines_h
+#define webkitdomdefines_h
+
+#include <glib.h>
+
+#ifdef G_OS_WIN32
+    #ifdef BUILDING_WEBKIT
+        #define WEBKIT_API __declspec(dllexport)
+    #else
+        #define WEBKIT_API __declspec(dllimport)
+    #endif
+#else
+    #define WEBKIT_API __attribute__((visibility("default")))
+#endif
+
+#define WEBKIT_DEPRECATED WEBKIT_API G_DEPRECATED
+#define WEBKIT_DEPRECATED_FOR(f) WEBKIT_API G_DEPRECATED_FOR(f)
+
+#ifndef WEBKIT_API
+    #define WEBKIT_API
+#endif
+typedef struct _CyberKitDOMAttr CyberKitDOMAttr;
+typedef struct _CyberKitDOMAttrClass CyberKitDOMAttrClass;
+
+typedef struct _CyberKitDOMBlob CyberKitDOMBlob;
+typedef struct _CyberKitDOMBlobClass CyberKitDOMBlobClass;
+
+typedef struct _CyberKitDOMCDATASection CyberKitDOMCDATASection;
+typedef struct _CyberKitDOMCDATASectionClass CyberKitDOMCDATASectionClass;
+
+typedef struct _CyberKitDOMCSSRule CyberKitDOMCSSRule;
+typedef struct _CyberKitDOMCSSRuleClass CyberKitDOMCSSRuleClass;
+
+typedef struct _CyberKitDOMCSSRuleList CyberKitDOMCSSRuleList;
+typedef struct _CyberKitDOMCSSRuleListClass CyberKitDOMCSSRuleListClass;
+
+typedef struct _CyberKitDOMCSSStyleDeclaration CyberKitDOMCSSStyleDeclaration;
+typedef struct _CyberKitDOMCSSStyleDeclarationClass CyberKitDOMCSSStyleDeclarationClass;
+
+typedef struct _CyberKitDOMCSSStyleSheet CyberKitDOMCSSStyleSheet;
+typedef struct _CyberKitDOMCSSStyleSheetClass CyberKitDOMCSSStyleSheetClass;
+
+typedef struct _CyberKitDOMCSSValue CyberKitDOMCSSValue;
+typedef struct _CyberKitDOMCSSValueClass CyberKitDOMCSSValueClass;
+
+typedef struct _CyberKitDOMCharacterData CyberKitDOMCharacterData;
+typedef struct _CyberKitDOMCharacterDataClass CyberKitDOMCharacterDataClass;
+
+typedef struct _CyberKitDOMClientRect CyberKitDOMClientRect;
+typedef struct _CyberKitDOMClientRectClass CyberKitDOMClientRectClass;
+
+typedef struct _CyberKitDOMClientRectList CyberKitDOMClientRectList;
+typedef struct _CyberKitDOMClientRectListClass CyberKitDOMClientRectListClass;
+
+typedef struct _CyberKitDOMComment CyberKitDOMComment;
+typedef struct _CyberKitDOMCommentClass CyberKitDOMCommentClass;
+
+typedef struct _CyberKitDOMDOMImplementation CyberKitDOMDOMImplementation;
+typedef struct _CyberKitDOMDOMImplementationClass CyberKitDOMDOMImplementationClass;
+
+typedef struct _CyberKitDOMDOMWindow CyberKitDOMDOMWindow;
+typedef struct _CyberKitDOMDOMWindowClass CyberKitDOMDOMWindowClass;
+
+typedef struct _CyberKitDOMDocument CyberKitDOMDocument;
+typedef struct _CyberKitDOMDocumentClass CyberKitDOMDocumentClass;
+
+typedef struct _CyberKitDOMDocumentFragment CyberKitDOMDocumentFragment;
+typedef struct _CyberKitDOMDocumentFragmentClass CyberKitDOMDocumentFragmentClass;
+
+typedef struct _CyberKitDOMDocumentType CyberKitDOMDocumentType;
+typedef struct _CyberKitDOMDocumentTypeClass CyberKitDOMDocumentTypeClass;
+
+typedef struct _CyberKitDOMElement CyberKitDOMElement;
+typedef struct _CyberKitDOMElementClass CyberKitDOMElementClass;
+
+typedef struct _CyberKitDOMEvent CyberKitDOMEvent;
+typedef struct _CyberKitDOMEventClass CyberKitDOMEventClass;
+
+typedef struct _CyberKitDOMEventTarget CyberKitDOMEventTarget;
+typedef struct _CyberKitDOMEventTargetIface CyberKitDOMEventTargetIface;
+
+typedef struct _CyberKitDOMFile CyberKitDOMFile;
+typedef struct _CyberKitDOMFileClass CyberKitDOMFileClass;
+
+typedef struct _CyberKitDOMFileList CyberKitDOMFileList;
+typedef struct _CyberKitDOMFileListClass CyberKitDOMFileListClass;
+
+typedef struct _CyberKitDOMHTMLAnchorElement CyberKitDOMHTMLAnchorElement;
+typedef struct _CyberKitDOMHTMLAnchorElementClass CyberKitDOMHTMLAnchorElementClass;
+
+typedef struct _CyberKitDOMHTMLAppletElement CyberKitDOMHTMLAppletElement;
+typedef struct _CyberKitDOMHTMLAppletElementClass CyberKitDOMHTMLAppletElementClass;
+
+typedef struct _CyberKitDOMHTMLAreaElement CyberKitDOMHTMLAreaElement;
+typedef struct _CyberKitDOMHTMLAreaElementClass CyberKitDOMHTMLAreaElementClass;
+
+typedef struct _CyberKitDOMHTMLBRElement CyberKitDOMHTMLBRElement;
+typedef struct _CyberKitDOMHTMLBRElementClass CyberKitDOMHTMLBRElementClass;
+
+typedef struct _CyberKitDOMHTMLBaseElement CyberKitDOMHTMLBaseElement;
+typedef struct _CyberKitDOMHTMLBaseElementClass CyberKitDOMHTMLBaseElementClass;
+
+typedef struct _CyberKitDOMHTMLBodyElement CyberKitDOMHTMLBodyElement;
+typedef struct _CyberKitDOMHTMLBodyElementClass CyberKitDOMHTMLBodyElementClass;
+
+typedef struct _CyberKitDOMHTMLButtonElement CyberKitDOMHTMLButtonElement;
+typedef struct _CyberKitDOMHTMLButtonElementClass CyberKitDOMHTMLButtonElementClass;
+
+typedef struct _CyberKitDOMHTMLCanvasElement CyberKitDOMHTMLCanvasElement;
+typedef struct _CyberKitDOMHTMLCanvasElementClass CyberKitDOMHTMLCanvasElementClass;
+
+typedef struct _CyberKitDOMHTMLCollection CyberKitDOMHTMLCollection;
+typedef struct _CyberKitDOMHTMLCollectionClass CyberKitDOMHTMLCollectionClass;
+
+typedef struct _CyberKitDOMHTMLDListElement CyberKitDOMHTMLDListElement;
+typedef struct _CyberKitDOMHTMLDListElementClass CyberKitDOMHTMLDListElementClass;
+
+typedef struct _CyberKitDOMHTMLDirectoryElement CyberKitDOMHTMLDirectoryElement;
+typedef struct _CyberKitDOMHTMLDirectoryElementClass CyberKitDOMHTMLDirectoryElementClass;
+
+typedef struct _CyberKitDOMHTMLDivElement CyberKitDOMHTMLDivElement;
+typedef struct _CyberKitDOMHTMLDivElementClass CyberKitDOMHTMLDivElementClass;
+
+typedef struct _CyberKitDOMHTMLDocument CyberKitDOMHTMLDocument;
+typedef struct _CyberKitDOMHTMLDocumentClass CyberKitDOMHTMLDocumentClass;
+
+typedef struct _CyberKitDOMHTMLElement CyberKitDOMHTMLElement;
+typedef struct _CyberKitDOMHTMLElementClass CyberKitDOMHTMLElementClass;
+
+typedef struct _CyberKitDOMHTMLEmbedElement CyberKitDOMHTMLEmbedElement;
+typedef struct _CyberKitDOMHTMLEmbedElementClass CyberKitDOMHTMLEmbedElementClass;
+
+typedef struct _CyberKitDOMHTMLFieldSetElement CyberKitDOMHTMLFieldSetElement;
+typedef struct _CyberKitDOMHTMLFieldSetElementClass CyberKitDOMHTMLFieldSetElementClass;
+
+typedef struct _CyberKitDOMHTMLFontElement CyberKitDOMHTMLFontElement;
+typedef struct _CyberKitDOMHTMLFontElementClass CyberKitDOMHTMLFontElementClass;
+
+typedef struct _CyberKitDOMHTMLFormElement CyberKitDOMHTMLFormElement;
+typedef struct _CyberKitDOMHTMLFormElementClass CyberKitDOMHTMLFormElementClass;
+
+typedef struct _CyberKitDOMHTMLFrameElement CyberKitDOMHTMLFrameElement;
+typedef struct _CyberKitDOMHTMLFrameElementClass CyberKitDOMHTMLFrameElementClass;
+
+typedef struct _CyberKitDOMHTMLFrameSetElement CyberKitDOMHTMLFrameSetElement;
+typedef struct _CyberKitDOMHTMLFrameSetElementClass CyberKitDOMHTMLFrameSetElementClass;
+
+typedef struct _CyberKitDOMHTMLHRElement CyberKitDOMHTMLHRElement;
+typedef struct _CyberKitDOMHTMLHRElementClass CyberKitDOMHTMLHRElementClass;
+
+typedef struct _CyberKitDOMHTMLHeadElement CyberKitDOMHTMLHeadElement;
+typedef struct _CyberKitDOMHTMLHeadElementClass CyberKitDOMHTMLHeadElementClass;
+
+typedef struct _CyberKitDOMHTMLHeadingElement CyberKitDOMHTMLHeadingElement;
+typedef struct _CyberKitDOMHTMLHeadingElementClass CyberKitDOMHTMLHeadingElementClass;
+
+typedef struct _CyberKitDOMHTMLHtmlElement CyberKitDOMHTMLHtmlElement;
+typedef struct _CyberKitDOMHTMLHtmlElementClass CyberKitDOMHTMLHtmlElementClass;
+
+typedef struct _CyberKitDOMHTMLIFrameElement CyberKitDOMHTMLIFrameElement;
+typedef struct _CyberKitDOMHTMLIFrameElementClass CyberKitDOMHTMLIFrameElementClass;
+
+typedef struct _CyberKitDOMHTMLImageElement CyberKitDOMHTMLImageElement;
+typedef struct _CyberKitDOMHTMLImageElementClass CyberKitDOMHTMLImageElementClass;
+
+typedef struct _CyberKitDOMHTMLInputElement CyberKitDOMHTMLInputElement;
+typedef struct _CyberKitDOMHTMLInputElementClass CyberKitDOMHTMLInputElementClass;
+
+typedef struct _CyberKitDOMHTMLLIElement CyberKitDOMHTMLLIElement;
+typedef struct _CyberKitDOMHTMLLIElementClass CyberKitDOMHTMLLIElementClass;
+
+typedef struct _CyberKitDOMHTMLLabelElement CyberKitDOMHTMLLabelElement;
+typedef struct _CyberKitDOMHTMLLabelElementClass CyberKitDOMHTMLLabelElementClass;
+
+typedef struct _CyberKitDOMHTMLLegendElement CyberKitDOMHTMLLegendElement;
+typedef struct _CyberKitDOMHTMLLegendElementClass CyberKitDOMHTMLLegendElementClass;
+
+typedef struct _CyberKitDOMHTMLLinkElement CyberKitDOMHTMLLinkElement;
+typedef struct _CyberKitDOMHTMLLinkElementClass CyberKitDOMHTMLLinkElementClass;
+
+typedef struct _CyberKitDOMHTMLMapElement CyberKitDOMHTMLMapElement;
+typedef struct _CyberKitDOMHTMLMapElementClass CyberKitDOMHTMLMapElementClass;
+
+typedef struct _CyberKitDOMHTMLMarqueeElement CyberKitDOMHTMLMarqueeElement;
+typedef struct _CyberKitDOMHTMLMarqueeElementClass CyberKitDOMHTMLMarqueeElementClass;
+
+typedef struct _CyberKitDOMHTMLMenuElement CyberKitDOMHTMLMenuElement;
+typedef struct _CyberKitDOMHTMLMenuElementClass CyberKitDOMHTMLMenuElementClass;
+
+typedef struct _CyberKitDOMHTMLMetaElement CyberKitDOMHTMLMetaElement;
+typedef struct _CyberKitDOMHTMLMetaElementClass CyberKitDOMHTMLMetaElementClass;
+
+typedef struct _CyberKitDOMHTMLModElement CyberKitDOMHTMLModElement;
+typedef struct _CyberKitDOMHTMLModElementClass CyberKitDOMHTMLModElementClass;
+
+typedef struct _CyberKitDOMHTMLOListElement CyberKitDOMHTMLOListElement;
+typedef struct _CyberKitDOMHTMLOListElementClass CyberKitDOMHTMLOListElementClass;
+
+typedef struct _CyberKitDOMHTMLObjectElement CyberKitDOMHTMLObjectElement;
+typedef struct _CyberKitDOMHTMLObjectElementClass CyberKitDOMHTMLObjectElementClass;
+
+typedef struct _CyberKitDOMHTMLOptGroupElement CyberKitDOMHTMLOptGroupElement;
+typedef struct _CyberKitDOMHTMLOptGroupElementClass CyberKitDOMHTMLOptGroupElementClass;
+
+typedef struct _CyberKitDOMHTMLOptionElement CyberKitDOMHTMLOptionElement;
+typedef struct _CyberKitDOMHTMLOptionElementClass CyberKitDOMHTMLOptionElementClass;
+
+typedef struct _CyberKitDOMHTMLOptionsCollection CyberKitDOMHTMLOptionsCollection;
+typedef struct _CyberKitDOMHTMLOptionsCollectionClass CyberKitDOMHTMLOptionsCollectionClass;
+
+typedef struct _CyberKitDOMHTMLParagraphElement CyberKitDOMHTMLParagraphElement;
+typedef struct _CyberKitDOMHTMLParagraphElementClass CyberKitDOMHTMLParagraphElementClass;
+
+typedef struct _CyberKitDOMHTMLParamElement CyberKitDOMHTMLParamElement;
+typedef struct _CyberKitDOMHTMLParamElementClass CyberKitDOMHTMLParamElementClass;
+
+typedef struct _CyberKitDOMHTMLPreElement CyberKitDOMHTMLPreElement;
+typedef struct _CyberKitDOMHTMLPreElementClass CyberKitDOMHTMLPreElementClass;
+
+typedef struct _CyberKitDOMHTMLQuoteElement CyberKitDOMHTMLQuoteElement;
+typedef struct _CyberKitDOMHTMLQuoteElementClass CyberKitDOMHTMLQuoteElementClass;
+
+typedef struct _CyberKitDOMHTMLScriptElement CyberKitDOMHTMLScriptElement;
+typedef struct _CyberKitDOMHTMLScriptElementClass CyberKitDOMHTMLScriptElementClass;
+
+typedef struct _CyberKitDOMHTMLSelectElement CyberKitDOMHTMLSelectElement;
+typedef struct _CyberKitDOMHTMLSelectElementClass CyberKitDOMHTMLSelectElementClass;
+
+typedef struct _CyberKitDOMHTMLStyleElement CyberKitDOMHTMLStyleElement;
+typedef struct _CyberKitDOMHTMLStyleElementClass CyberKitDOMHTMLStyleElementClass;
+
+typedef struct _CyberKitDOMHTMLTableCaptionElement CyberKitDOMHTMLTableCaptionElement;
+typedef struct _CyberKitDOMHTMLTableCaptionElementClass CyberKitDOMHTMLTableCaptionElementClass;
+
+typedef struct _CyberKitDOMHTMLTableCellElement CyberKitDOMHTMLTableCellElement;
+typedef struct _CyberKitDOMHTMLTableCellElementClass CyberKitDOMHTMLTableCellElementClass;
+
+typedef struct _CyberKitDOMHTMLTableColElement CyberKitDOMHTMLTableColElement;
+typedef struct _CyberKitDOMHTMLTableColElementClass CyberKitDOMHTMLTableColElementClass;
+
+typedef struct _CyberKitDOMHTMLTableElement CyberKitDOMHTMLTableElement;
+typedef struct _CyberKitDOMHTMLTableElementClass CyberKitDOMHTMLTableElementClass;
+
+typedef struct _CyberKitDOMHTMLTableRowElement CyberKitDOMHTMLTableRowElement;
+typedef struct _CyberKitDOMHTMLTableRowElementClass CyberKitDOMHTMLTableRowElementClass;
+
+typedef struct _CyberKitDOMHTMLTableSectionElement CyberKitDOMHTMLTableSectionElement;
+typedef struct _CyberKitDOMHTMLTableSectionElementClass CyberKitDOMHTMLTableSectionElementClass;
+
+typedef struct _CyberKitDOMHTMLTextAreaElement CyberKitDOMHTMLTextAreaElement;
+typedef struct _CyberKitDOMHTMLTextAreaElementClass CyberKitDOMHTMLTextAreaElementClass;
+
+typedef struct _CyberKitDOMHTMLTitleElement CyberKitDOMHTMLTitleElement;
+typedef struct _CyberKitDOMHTMLTitleElementClass CyberKitDOMHTMLTitleElementClass;
+
+typedef struct _CyberKitDOMHTMLUListElement CyberKitDOMHTMLUListElement;
+typedef struct _CyberKitDOMHTMLUListElementClass CyberKitDOMHTMLUListElementClass;
+
+typedef struct _CyberKitDOMKeyboardEvent CyberKitDOMKeyboardEvent;
+typedef struct _CyberKitDOMKeyboardEventClass CyberKitDOMKeyboardEventClass;
+
+typedef struct _CyberKitDOMMediaList CyberKitDOMMediaList;
+typedef struct _CyberKitDOMMediaListClass CyberKitDOMMediaListClass;
+
+typedef struct _CyberKitDOMMouseEvent CyberKitDOMMouseEvent;
+typedef struct _CyberKitDOMMouseEventClass CyberKitDOMMouseEventClass;
+
+typedef struct _CyberKitDOMNamedNodeMap CyberKitDOMNamedNodeMap;
+typedef struct _CyberKitDOMNamedNodeMapClass CyberKitDOMNamedNodeMapClass;
+
+typedef struct _CyberKitDOMNode CyberKitDOMNode;
+typedef struct _CyberKitDOMNodeClass CyberKitDOMNodeClass;
+
+typedef struct _CyberKitDOMNodeFilter CyberKitDOMNodeFilter;
+typedef struct _CyberKitDOMNodeFilterIface CyberKitDOMNodeFilterIface;
+
+typedef struct _CyberKitDOMNodeIterator CyberKitDOMNodeIterator;
+typedef struct _CyberKitDOMNodeIteratorClass CyberKitDOMNodeIteratorClass;
+
+typedef struct _CyberKitDOMNodeList CyberKitDOMNodeList;
+typedef struct _CyberKitDOMNodeListClass CyberKitDOMNodeListClass;
+
+typedef struct _CyberKitDOMObject CyberKitDOMObject;
+typedef struct _CyberKitDOMObjectClass CyberKitDOMObjectClass;
+
+typedef struct _CyberKitDOMProcessingInstruction CyberKitDOMProcessingInstruction;
+typedef struct _CyberKitDOMProcessingInstructionClass CyberKitDOMProcessingInstructionClass;
+
+typedef struct _CyberKitDOMRange CyberKitDOMRange;
+typedef struct _CyberKitDOMRangeClass CyberKitDOMRangeClass;
+
+typedef struct _CyberKitDOMDOMSelection CyberKitDOMDOMSelection;
+typedef struct _CyberKitDOMDOMSelectionClass CyberKitDOMDOMSelectionClass;
+
+typedef struct _CyberKitDOMStyleSheet CyberKitDOMStyleSheet;
+typedef struct _CyberKitDOMStyleSheetClass CyberKitDOMStyleSheetClass;
+
+typedef struct _CyberKitDOMStyleSheetList CyberKitDOMStyleSheetList;
+typedef struct _CyberKitDOMStyleSheetListClass CyberKitDOMStyleSheetListClass;
+
+typedef struct _CyberKitDOMText CyberKitDOMText;
+typedef struct _CyberKitDOMTextClass CyberKitDOMTextClass;
+
+typedef struct _CyberKitDOMDOMTokenList CyberKitDOMDOMTokenList;
+typedef struct _CyberKitDOMDOMTokenListClass CyberKitDOMDOMTokenListClass;
+
+typedef struct _CyberKitDOMTreeWalker CyberKitDOMTreeWalker;
+typedef struct _CyberKitDOMTreeWalkerClass CyberKitDOMTreeWalkerClass;
+
+typedef struct _CyberKitDOMUIEvent CyberKitDOMUIEvent;
+typedef struct _CyberKitDOMUIEventClass CyberKitDOMUIEventClass;
+
+typedef struct _CyberKitDOMWheelEvent CyberKitDOMWheelEvent;
+typedef struct _CyberKitDOMWheelEventClass CyberKitDOMWheelEventClass;
+
+typedef struct _CyberKitDOMXPathExpression CyberKitDOMXPathExpression;
+typedef struct _CyberKitDOMXPathExpressionClass CyberKitDOMXPathExpressionClass;
+
+typedef struct _CyberKitDOMXPathNSResolver CyberKitDOMXPathNSResolver;
+typedef struct _CyberKitDOMXPathNSResolverIface CyberKitDOMXPathNSResolverIface;
+
+typedef struct _CyberKitDOMXPathResult CyberKitDOMXPathResult;
+typedef struct _CyberKitDOMXPathResultClass CyberKitDOMXPathResultClass;
+
+#include <webkitdom/webkitdomautocleanups.h>
+
+#endif

@@ -20,13 +20,13 @@ function collectGarbage() {
         gc();
     else if (window.$vm)
         window.$vm.gc();
-    // $vm is exposed in WebKit's MiniBrowser with the following environment variables set:
+    // $vm is exposed in CyberKit's MiniBrowser with the following environment variables set:
     //   export JSC_useDollarVM=1
     //   export __XPC_JSC_useDollarVM=1
 }
 
 // FIXME: HTMLCanvasElement.getContext("gpu") no longer exists in the
-// WebGPU spec. When WebKit is updated to track the current spec, this
+// WebGPU spec. When CyberKit is updated to track the current spec, this
 // test and the bindings should be updated to honor the spec's
 // guarantees about preserving expando properties on various
 // interfaces.

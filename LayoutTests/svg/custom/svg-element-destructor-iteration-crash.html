@@ -12,7 +12,7 @@
             location.hash = "#" + (parseInt(location.hash.slice(1)) + 1).toString();
           setTimeout(function(){ location.reload() }, 0);
         } else {
-          document.body.innerText = 'PASS: WebKit did not crash in Asan or assert in Debug.';
+          document.body.innerText = 'PASS: CyberKit did not crash in Asan or assert in Debug.';
           if (window.testRunner)
             testRunner.notifyDone();
         }

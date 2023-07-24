@@ -138,7 +138,7 @@ WI.SourceCode = class SourceCode extends WI.Object
         if (!WI.DebuggerManager.supportsBlackboxingScripts())
             return false;
         let contentIdentifier = this.contentIdentifier;
-        return contentIdentifier && !isWebKitInjectedScript(contentIdentifier);
+        return contentIdentifier && !isCyberKitInjectedScript(contentIdentifier);
     }
 
     get sourceMaps()

@@ -207,7 +207,7 @@
 # Mathematical baseline is 0.375em above alphabetic
 # Hanging baseline      is 0.500em above alphabetic
 
-# WebKit doesn't block onload on font loads, so we try to make it a bit more reliable
+# CyberKit doesn't block onload on font loads, so we try to make it a bit more reliable
 # by waiting with step_timeout after load before drawing
 
 - name: 2d.text.draw.fill.maxWidth.fontface
@@ -274,7 +274,7 @@
 
 - name: 2d.text.draw.fontface.repeat
   desc: Draw with the font immediately, then wait a bit until and draw again. (This
-    crashes some version of WebKit.)
+    crashes some version of CyberKit.)
   testing:
   - 2d.text.font.fontface
   fonts:

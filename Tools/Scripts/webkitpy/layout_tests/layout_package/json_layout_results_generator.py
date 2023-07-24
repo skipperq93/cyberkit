@@ -77,7 +77,7 @@ class JSONLayoutResultsGenerator(json_results_generator.JSONResultsGenerator):
     def _get_path_relative_to_layout_test_root(self, test):
         """Returns the path of the test relative to the layout test root.
         For example, for:
-          src/third_party/WebKit/LayoutTests/fast/forms/foo.html
+          src/third_party/CyberKit/LayoutTests/fast/forms/foo.html
         We would return
           fast/forms/foo.html
         """

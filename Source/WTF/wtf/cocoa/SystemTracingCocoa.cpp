@@ -39,7 +39,7 @@ bool WTFSignpostsEnabled()
         // Signposts may contain sensitive info that we don't want to emit to logd except when
         // profiling (such as URLs). To guard against accidental leakage, only enable them on Apple
         // internal builds when an environment variable is set.
-        if (os_variant_allows_internal_security_policies("com.apple.WebKit"))
+        if (os_variant_allows_internal_security_policies("com.matthewbenedict.CyberKit"))
             enabled = !strcmp(getenv("WEBKIT_SIGNPOSTS_ENABLED") ?: "0", "1");
     });
 
@@ -52,7 +52,7 @@ os_log_t WTFSignpostLogHandle()
     static os_log_t handle;
 
     dispatch_once(&once, ^{
-        handle = os_log_create("com.apple.WebKit", "Signposts");
+        handle = os_log_create("com.matthewbenedict.CyberKit", "Signposts");
     });
 
     return handle;

@@ -71,7 +71,7 @@ void Config::permanentlyFreeze()
     result = mprotect(&WebConfig::g_config, ConfigSizeToProtect, PROT_READ);
 #elif OS(WINDOWS)
     // FIXME: Implement equivalent, maybe with VirtualProtect.
-    // Also need to fix WebKitTestRunner.
+    // Also need to fix CyberKitTestRunner.
 #endif
     RELEASE_ASSERT(!result);
     RELEASE_ASSERT(g_wtfConfig.isPermanentlyFrozen);

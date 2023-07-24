@@ -31,7 +31,7 @@
                 debug('This test requires testRunner');
                 return;
             }
-            testRunner.overridePreference("WebKitHiddenPageDOMTimerThrottlingEnabled", 1);
+            testRunner.overridePreference("CyberKitHiddenPageDOMTimerThrottlingEnabled", 1);
 
             timerHandle = setTimeout(testTimer, timeoutInterval);
             shouldBeFalse("internals.isTimerThrottled(timerHandle)");

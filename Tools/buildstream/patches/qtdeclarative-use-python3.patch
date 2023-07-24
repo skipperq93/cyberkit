@@ -32,7 +32,7 @@ index 0e63ac2ce..7a30ab64e 100644
 +retgen.commands = python3 $$retgen.script > ${QMAKE_FILE_OUT}
  QMAKE_EXTRA_COMPILERS += retgen
  
- # Taken from WebKit/Tools/qmake/mkspecs/features/unix/default_post.prf
+ # Taken from CyberKit/Tools/qmake/mkspecs/features/unix/default_post.prf
 diff --git a/src/3rdparty/masm/yarr/create_regex_tables b/src/3rdparty/masm/yarr/create_regex_tables
 index 4c3dbbe3f..d13084d6c 100644
 --- a/src/3rdparty/masm/yarr/create_regex_tables

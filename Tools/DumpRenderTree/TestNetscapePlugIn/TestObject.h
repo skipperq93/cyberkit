@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebKit/npapi.h>
-#include <WebKit/npruntime.h>
+#include <CyberKit/npapi.h>
+#include <CyberKit/npruntime.h>
 
 NPClass* getTestClass(void);
 int getTestObjectCount();

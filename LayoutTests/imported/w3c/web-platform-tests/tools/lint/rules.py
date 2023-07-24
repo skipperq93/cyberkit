@@ -448,7 +448,7 @@ class LayoutTestsRegexp(Regexp):
     pattern = br"(eventSender|testRunner|internals)\."
     name = "LAYOUTTESTS APIS"
     file_extensions = [".html", ".htm", ".js", ".xht", ".xhtml", ".svg"]
-    description = "eventSender/testRunner/internals used; these are LayoutTests-specific APIs (WebKit/Blink)"
+    description = "eventSender/testRunner/internals used; these are LayoutTests-specific APIs (CyberKit/Blink)"
 
 
 class MissingDepsRegexp(Regexp):

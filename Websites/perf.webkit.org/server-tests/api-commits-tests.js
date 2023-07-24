@@ -15,21 +15,21 @@ describe("/api/commits/", function () {
         "slavePassword": "somePassword",
         "commits": [
             {
-                "repository": "WebKit",
+                "repository": "CyberKit",
                 "revision": "210948",
                 "time": "2017-01-20T02:52:34.577Z",
                 "author": {"name": "Zalan Bujtas", "account": "zalan@apple.com"},
                 "message": "a message",
             },
             {
-                "repository": "WebKit",
+                "repository": "CyberKit",
                 "revision": "210949",
                 "time": "2017-01-20T03:23:50.645Z",
                 "author": {"name": "Chris Dumez", "account": "cdumez@apple.com"},
                 "message": "some message",
             },
             {
-                "repository": "WebKit",
+                "repository": "CyberKit",
                 "previousCommit": "210949",
                 "revision": "210950",
                 "time": "2017-01-20T03:49:37.887Z",
@@ -44,14 +44,14 @@ describe("/api/commits/", function () {
         "slavePassword": "somePassword",
         "commits": [
             {
-                "repository": "WebKit",
+                "repository": "CyberKit",
                 "revision": "21094",
                 "time": "2017-01-20T02:52:34.577Z",
                 "author": {"name": "Zalan Bujtas", "account": "zalan@apple.com"},
                 "message": "a message",
             },
             {
-                "repository": "WebKit",
+                "repository": "CyberKit",
                 "revision": "210949",
                 "time": "2017-01-20T03:23:50.645Z",
                 "author": {"name": "Chris Dumez", "account": "cdumez@apple.com"},
@@ -110,7 +110,7 @@ describe("/api/commits/", function () {
         "platform": "some platform",
         "tests": {"Speedometer-2": {"metrics": {"Score": {"current": [[100]]}}}},
         "revisions": {
-            "WebKit": {
+            "CyberKit": {
                 "timestamp": "2017-01-20T02:52:34.577Z",
                 "revision": "210948"
             }
@@ -133,7 +133,7 @@ describe("/api/commits/", function () {
 
     describe('/api/commits/<repository>/', () => {
         it("should return RepositoryNotFound when there are no matching repository", () => {
-            return TestServer.remoteAPI().getJSON('/api/commits/WebKit').then((response) => {
+            return TestServer.remoteAPI().getJSON('/api/commits/CyberKit').then((response) => {
                 assert.equal(response['status'], 'RepositoryNotFound');
             });
         });
@@ -141,10 +141,10 @@ describe("/api/commits/", function () {
         it("should return an empty result when there are no reported commits", () => {
             const db = TestServer.database();
             return Promise.all([
-                db.insert('repositories', {'id': 1, 'name': 'WebKit'}),
+                db.insert('repositories', {'id': 1, 'name': 'CyberKit'}),
                 db.insert('commits', {'repository': 1, 'revision': '210950', 'time': '2017-01-20T03:49:37.887Z'})
             ]).then(() => {
-                return TestServer.remoteAPI().getJSON('/api/commits/WebKit');
+                return TestServer.remoteAPI().getJSON('/api/commits/CyberKit');
             }).then((response) => {
                 assert.equal(response['status'], 'OK');
                 assert.deepEqual(response['commits'], []);
@@ -156,7 +156,7 @@ describe("/api/commits/", function () {
                 return TestServer.remoteAPI().postJSON('/api/report-commits/', subversionCommits);
             }).then(function (response) {
                 assert.equal(response['status'], 'OK');
-                return TestServer.remoteAPI().getJSON('/api/commits/WebKit/');
+                return TestServer.remoteAPI().getJSON('/api/commits/CyberKit/');
             }).then(function (result) {
                 assert.equal(result['status'], 'OK');
 
@@ -193,14 +193,14 @@ describe("/api/commits/", function () {
 
     describe('/api/commits/<repository>/oldest', () => {
         it("should return RepositoryNotFound when there are no matching repository", () => {
-            return TestServer.remoteAPI().getJSON('/api/commits/WebKit/oldest').then((response) => {
+            return TestServer.remoteAPI().getJSON('/api/commits/CyberKit/oldest').then((response) => {
                 assert.equal(response['status'], 'RepositoryNotFound');
             });
         });
 
         it("should return an empty results when there are no commits", () => {
-            return TestServer.database().insert('repositories', {'id': 1, 'name': 'WebKit'}).then(() => {
-                return TestServer.remoteAPI().getJSON('/api/commits/WebKit/oldest');
+            return TestServer.database().insert('repositories', {'id': 1, 'name': 'CyberKit'}).then(() => {
+                return TestServer.remoteAPI().getJSON('/api/commits/CyberKit/oldest');
             }).then((response) => {
                 assert.equal(response['status'], 'OK');
                 assert.deepEqual(response['commits'], []);
@@ -212,7 +212,7 @@ describe("/api/commits/", function () {
             return addSlaveForReport(subversionCommits).then(() => {
                 return remote.postJSONWithStatus('/api/report-commits/', subversionCommits);
             }).then(() => {
-                return remote.getJSON('/api/commits/WebKit/oldest');
+                return remote.getJSON('/api/commits/CyberKit/oldest');
             }).then(function (result) {
                 assert.equal(result['status'], 'OK');
                 assert.equal(result['commits'].length, 1);
@@ -236,14 +236,14 @@ describe("/api/commits/", function () {
 
     describe('/api/commits/<repository>/latest', () => {
         it("should return RepositoryNotFound when there are no matching repository", () => {
-            return TestServer.remoteAPI().getJSON('/api/commits/WebKit/latest').then((response) => {
+            return TestServer.remoteAPI().getJSON('/api/commits/CyberKit/latest').then((response) => {
                 assert.equal(response['status'], 'RepositoryNotFound');
             });
         });
 
         it("should return an empty results when there are no commits", () => {
-            return TestServer.database().insert('repositories', {'id': 1, 'name': 'WebKit'}).then(() => {
-                return TestServer.remoteAPI().getJSON('/api/commits/WebKit/latest');
+            return TestServer.database().insert('repositories', {'id': 1, 'name': 'CyberKit'}).then(() => {
+                return TestServer.remoteAPI().getJSON('/api/commits/CyberKit/latest');
             }).then((response) => {
                 assert.equal(response['status'], 'OK');
                 assert.deepEqual(response['commits'], []);
@@ -255,7 +255,7 @@ describe("/api/commits/", function () {
             return addSlaveForReport(subversionCommits).then(() => {
                 return remote.postJSONWithStatus('/api/report-commits/', subversionCommits);
             }).then(() => {
-                return remote.getJSON('/api/commits/WebKit/latest');
+                return remote.getJSON('/api/commits/CyberKit/latest');
             }).then(function (result) {
                 assert.equal(result['status'], 'OK');
                 assert.equal(result['commits'].length, 1);
@@ -294,14 +294,14 @@ describe("/api/commits/", function () {
 
             assert(test_metrics[0].id != tests[0].id);
 
-            const response = await remote.getJSON(`/api/commits/WebKit/latest?platform=${platforms[0].id}`);
+            const response = await remote.getJSON(`/api/commits/CyberKit/latest?platform=${platforms[0].id}`);
             assert(response.commits.length);
         });
     });
 
     describe('/api/commits/<repository>/last-reported', () => {
         it("should return RepositoryNotFound when there are no matching repository", () => {
-            return TestServer.remoteAPI().getJSON('/api/commits/WebKit/last-reported').then((response) => {
+            return TestServer.remoteAPI().getJSON('/api/commits/CyberKit/last-reported').then((response) => {
                 assert.equal(response['status'], 'RepositoryNotFound');
             });
         });
@@ -309,10 +309,10 @@ describe("/api/commits/", function () {
         it("should return an empty result when there are no reported commits", () => {
             const db = TestServer.database();
             return Promise.all([
-                db.insert('repositories', {'id': 1, 'name': 'WebKit'}),
+                db.insert('repositories', {'id': 1, 'name': 'CyberKit'}),
                 db.insert('commits', {'repository': 1, 'revision': '210950', 'time': '2017-01-20T03:49:37.887Z'})
             ]).then(() => {
-                return TestServer.remoteAPI().getJSON('/api/commits/WebKit/last-reported');
+                return TestServer.remoteAPI().getJSON('/api/commits/CyberKit/last-reported');
             }).then((response) => {
                 assert.equal(response['status'], 'OK');
                 assert.deepEqual(response['commits'], []);
@@ -320,8 +320,8 @@ describe("/api/commits/", function () {
         });
 
         it("should return an empty results when there are no reported commits", () => {
-            return TestServer.database().insert('repositories', {'id': 1, 'name': 'WebKit'}).then(() => {
-                return TestServer.remoteAPI().getJSON('/api/commits/WebKit/last-reported');
+            return TestServer.database().insert('repositories', {'id': 1, 'name': 'CyberKit'}).then(() => {
+                return TestServer.remoteAPI().getJSON('/api/commits/CyberKit/last-reported');
             }).then((response) => {
                 assert.equal(response['status'], 'OK');
                 assert.deepEqual(response['commits'], []);
@@ -333,12 +333,12 @@ describe("/api/commits/", function () {
             const remote = TestServer.remoteAPI();
             return Promise.all([
                 addSlaveForReport(subversionCommits),
-                db.insert('repositories', {'id': 1, 'name': 'WebKit'}),
+                db.insert('repositories', {'id': 1, 'name': 'CyberKit'}),
                 db.insert('commits', {'repository': 1, 'revision': notYetReportedCommit.revision, 'time': notYetReportedCommit.time}),
             ]).then(() => {
                 return remote.postJSONWithStatus('/api/report-commits/', subversionCommits);
             }).then(() => {
-                return remote.getJSON('/api/commits/WebKit/last-reported');
+                return remote.getJSON('/api/commits/CyberKit/last-reported');
             }).then(function (result) {
                 assert.equal(result['status'], 'OK');
                 assert.equal(result['commits'].length, 1);
@@ -403,7 +403,7 @@ describe("/api/commits/", function () {
 
     describe('/api/commits/<repository>/<commit>', () => {
         it("should return RepositoryNotFound when there are no matching repository", () => {
-            return TestServer.remoteAPI().getJSON('/api/commits/WebKit/210949').then((response) => {
+            return TestServer.remoteAPI().getJSON('/api/commits/CyberKit/210949').then((response) => {
                 assert.equal(response['status'], 'RepositoryNotFound');
             });
         });
@@ -411,10 +411,10 @@ describe("/api/commits/", function () {
         it("should return UnknownCommit when one of the specified commit does not exist in the database", () => {
             const db = TestServer.database();
             return Promise.all([
-                db.insert('repositories', {'id': 1, 'name': 'WebKit'}),
+                db.insert('repositories', {'id': 1, 'name': 'CyberKit'}),
                 db.insert('commits', {'repository': 1, 'revision': '210950', 'time': '2017-01-20T03:49:37.887Z'})
             ]).then(() => {
-                return TestServer.remoteAPI().getJSON('/api/commits/WebKit/210949');
+                return TestServer.remoteAPI().getJSON('/api/commits/CyberKit/210949');
             }).then((response) => {
                 assert.equal(response['status'], 'UnknownCommit');
             });
@@ -423,10 +423,10 @@ describe("/api/commits/", function () {
         it("should return the commit even if it had not been reported", () => {
             const db = TestServer.database();
             return Promise.all([
-                db.insert('repositories', {'id': 1, 'name': 'WebKit'}),
+                db.insert('repositories', {'id': 1, 'name': 'CyberKit'}),
                 db.insert('commits', {'repository': 1, 'revision': '210950', 'time': '2017-01-20T03:49:37.887Z'})
             ]).then(() => {
-                return TestServer.remoteAPI().getJSON('/api/commits/WebKit/210950');
+                return TestServer.remoteAPI().getJSON('/api/commits/CyberKit/210950');
             }).then((result) => {
                 assert.equal(result['status'], 'OK');
                 assert.equal(result['commits'].length, 1);
@@ -445,7 +445,7 @@ describe("/api/commits/", function () {
             return addSlaveForReport(subversionCommits).then(() => {
                 return remote.postJSONWithStatus('/api/report-commits/', subversionCommits);
             }).then(() => {
-                return remote.getJSON('/api/commits/WebKit/210949');
+                return remote.getJSON('/api/commits/CyberKit/210949');
             }).then((result) => {
                 assert.equal(result['status'], 'OK');
                 assert.deepEqual(result['commits'].length, 1);
@@ -457,7 +457,7 @@ describe("/api/commits/", function () {
             const remote = TestServer.remoteAPI();
             await addSlaveForReport(subversionCommits);
             await remote.postJSONWithStatus('/api/report-commits/', subversionCommits);
-            const result = await remote.getJSON('/api/commits/WebKit/210949?prefix-match=false');
+            const result = await remote.getJSON('/api/commits/CyberKit/210949?prefix-match=false');
             assert.equal(result['status'], 'OK');
             assert.deepEqual(result['commits'].length, 1);
             assertCommitIsSameAsOneSubmitted(result['commits'][0], subversionCommits['commits'][1]);
@@ -467,7 +467,7 @@ describe("/api/commits/", function () {
             const remote = TestServer.remoteAPI();
             await addSlaveForReport(subversionCommits);
             await remote.postJSONWithStatus('/api/report-commits/', subversionCommits);
-            const result = await remote.getJSON('/api/commits/WebKit/210949?prefix-match=true');
+            const result = await remote.getJSON('/api/commits/CyberKit/210949?prefix-match=true');
             assert.equal(result['status'], 'OK');
             assert.deepEqual(result['commits'].length, 1);
             assertCommitIsSameAsOneSubmitted(result['commits'][0], subversionCommits['commits'][1]);
@@ -477,7 +477,7 @@ describe("/api/commits/", function () {
             const remote = TestServer.remoteAPI();
             await addSlaveForReport(subversionCommits);
             await remote.postJSONWithStatus('/api/report-commits/', subversionCommits);
-            const result = await remote.getJSON('/api/commits/WebKit/21094?prefix-match=true');
+            const result = await remote.getJSON('/api/commits/CyberKit/21094?prefix-match=true');
             assert.equal(result['status'], 'AmbiguousRevisionPrefix');
         });
 
@@ -485,7 +485,7 @@ describe("/api/commits/", function () {
             const remote = TestServer.remoteAPI();
             await addSlaveForReport(commitsOnePrefixOfTheOther);
             await remote.postJSONWithStatus('/api/report-commits/', commitsOnePrefixOfTheOther);
-            const result = await remote.getJSON('/api/commits/WebKit/21094?prefix-match=true');
+            const result = await remote.getJSON('/api/commits/CyberKit/21094?prefix-match=true');
             assert.equal(result['status'], 'OK');
             assert.deepEqual(result['commits'].length, 1);
             assertCommitIsSameAsOneSubmitted(result['commits'][0], commitsOnePrefixOfTheOther['commits'][0]);
@@ -495,7 +495,7 @@ describe("/api/commits/", function () {
             const remote = TestServer.remoteAPI();
             await addSlaveForReport(subversionCommits);
             await remote.postJSONWithStatus('/api/report-commits/', subversionCommits);
-            const result = await remote.getJSON('/api/commits/WebKit/21090?prefix-match=true');
+            const result = await remote.getJSON('/api/commits/CyberKit/21090?prefix-match=true');
             assert.equal(result['status'], 'UnknownCommit');
         });
 
@@ -503,7 +503,7 @@ describe("/api/commits/", function () {
             const remote = TestServer.remoteAPI();
             await addSlaveForReport(subversionCommits);
             await remote.postJSONWithStatus('/api/report-commits/', subversionCommits);
-            const result = await remote.getJSON('/api/commits/WebKit/r21095?prefix-match=true');
+            const result = await remote.getJSON('/api/commits/CyberKit/r21095?prefix-match=true');
             assert.equal(result['status'], 'UnknownCommit');
         });
 
@@ -531,7 +531,7 @@ describe("/api/commits/", function () {
             const db = TestServer.database();
             return Promise.all([
                 db.insert('repositories', {'id': 1, 'name': 'macOS'}),
-                db.insert('repositories', {'id': 2, 'name': 'WebKit', 'owner': 1}),
+                db.insert('repositories', {'id': 2, 'name': 'CyberKit', 'owner': 1}),
                 db.insert('commits', {'id': 1, 'repository': 1, 'revision': '10.12 16A323', order: 1, 'reported': true}),
                 db.insert('commits', {'id': 2, 'repository': 2, 'revision': '210950', 'reported': true}),
                 db.insert('commit_ownerships', {'owner': 1, 'owned': 2})
@@ -552,7 +552,7 @@ describe("/api/commits/", function () {
             const db = TestServer.database();
             return Promise.all([
                 db.insert('repositories', {'id': 1, 'name': 'macOS'}),
-                db.insert('repositories', {'id': 2, 'name': 'WebKit'}),
+                db.insert('repositories', {'id': 2, 'name': 'CyberKit'}),
                 db.insert('commits', {'id': 1, 'repository': 1, 'revision': '10.12 16A323', order: 1, 'reported': true}),
                 db.insert('commits', {'id': 2, 'repository': 2, 'revision': '210950', 'reported': true})
             ]).then(() => {
@@ -567,7 +567,7 @@ describe("/api/commits/", function () {
             const db = TestServer.database();
             return Promise.all([
                 db.insert('repositories', {'id': 1, 'name': 'macOS'}),
-                db.insert('repositories', {'id': 2, 'name': 'WebKit'}),
+                db.insert('repositories', {'id': 2, 'name': 'CyberKit'}),
                 db.insert('commits', {'id': 1, 'repository': 1, 'revision': '10.12 16A323', order: 1, 'reported': true}),
                 db.insert('commits', {'id': 2, 'repository': 2, 'revision': '210950', 'reported': true})
             ]).then(() => {
@@ -581,7 +581,7 @@ describe("/api/commits/", function () {
 
     describe('/api/commits/<repository>/?precedingRevision=<commit-1>&lastRevision=<commit-2>', () => {
         it("should return RepositoryNotFound when there are no matching repository", () => {
-            return TestServer.remoteAPI().getJSON('/api/commits/WebKit/?from=210900&to=211000').then((response) => {
+            return TestServer.remoteAPI().getJSON('/api/commits/CyberKit/?from=210900&to=211000').then((response) => {
                 assert.equal(response['status'], 'RepositoryNotFound');
             });
         });
@@ -589,10 +589,10 @@ describe("/api/commits/", function () {
         it("should return UnknownCommit when one of the specified commit does not exist in the database", () => {
             const db = TestServer.database();
             return Promise.all([
-                db.insert('repositories', {'id': 1, 'name': 'WebKit'}),
+                db.insert('repositories', {'id': 1, 'name': 'CyberKit'}),
                 db.insert('commits', {'repository': 1, 'revision': '210950', 'time': '2017-01-20T03:49:37.887Z'})
             ]).then(() => {
-                return TestServer.remoteAPI().getJSON('/api/commits/WebKit/?precedingRevision=210900&lastRevision=211000');
+                return TestServer.remoteAPI().getJSON('/api/commits/CyberKit/?precedingRevision=210900&lastRevision=211000');
             }).then((response) => {
                 assert.equal(response['status'], 'UnknownCommit');
             });
@@ -601,11 +601,11 @@ describe("/api/commits/", function () {
         it("should return an empty result when commits in the specified range have not been reported", () => {
             const db = TestServer.database();
             return Promise.all([
-                db.insert('repositories', {'id': 1, 'name': 'WebKit'}),
+                db.insert('repositories', {'id': 1, 'name': 'CyberKit'}),
                 db.insert('commits', {'repository': 1, 'revision': '210949', 'time': '2017-01-20T03:23:50.645Z'}),
                 db.insert('commits', {'repository': 1, 'revision': '210950', 'time': '2017-01-20T03:49:37.887Z'}),
             ]).then(() => {
-                return TestServer.remoteAPI().getJSON('/api/commits/WebKit/?precedingRevision=210949&lastRevision=210950');
+                return TestServer.remoteAPI().getJSON('/api/commits/CyberKit/?precedingRevision=210949&lastRevision=210950');
             }).then((response) => {
                 assert.equal(response['status'], 'OK');
                 assert.deepEqual(response['commits'], []);
@@ -615,11 +615,11 @@ describe("/api/commits/", function () {
         it("should return InvalidCommitRange when the specified range is backwards", () => {
             const db = TestServer.database();
             return Promise.all([
-                db.insert('repositories', {'id': 1, 'name': 'WebKit'}),
+                db.insert('repositories', {'id': 1, 'name': 'CyberKit'}),
                 db.insert('commits', {'repository': 1, 'revision': '210949', 'time': '2017-01-20T03:23:50.645Z'}),
                 db.insert('commits', {'repository': 1, 'revision': '210950', 'time': '2017-01-20T03:49:37.887Z'}),
             ]).then(() => {
-                return TestServer.remoteAPI().getJSON('/api/commits/WebKit/?precedingRevision=210950&lastRevision=210949');
+                return TestServer.remoteAPI().getJSON('/api/commits/CyberKit/?precedingRevision=210950&lastRevision=210949');
             }).then((response) => {
                 assert.equal(response['status'], 'InvalidCommitRange');
             });
@@ -701,12 +701,12 @@ describe("/api/commits/", function () {
         it("should return reported commits in the specified range", () => {
             const db = TestServer.database();
             return Promise.all([
-                db.insert('repositories', {'id': 1, 'name': 'WebKit'}),
+                db.insert('repositories', {'id': 1, 'name': 'CyberKit'}),
                 db.insert('commits', {'repository': 1, 'revision': '210948', 'time': '2017-01-20T02:52:34.577Z', 'reported': true}),
                 db.insert('commits', {'repository': 1, 'revision': '210949', 'time': '2017-01-20T03:23:50.645Z', 'reported': true}),
                 db.insert('commits', {'repository': 1, 'revision': '210950', 'time': '2017-01-20T03:49:37.887Z', 'reported': true}),
             ]).then(() => {
-                return TestServer.remoteAPI().getJSON('/api/commits/WebKit/?precedingRevision=210948&lastRevision=210950');
+                return TestServer.remoteAPI().getJSON('/api/commits/CyberKit/?precedingRevision=210948&lastRevision=210950');
             }).then((result) => {
                 assert.equal(result['status'], 'OK');
                 assert.deepEqual(result['commits'].length, 2);
@@ -731,7 +731,7 @@ describe("/api/commits/", function () {
             const db = TestServer.database();
             const remote = TestServer.remoteAPI();
             return Promise.all([
-                db.insert('repositories', {'id': 1, 'name': 'WebKit'}),
+                db.insert('repositories', {'id': 1, 'name': 'CyberKit'}),
                 db.insert('commits', {'repository': 1, 'revision': '210947', 'time': '2017-01-20T02:38:45.485Z', 'reported': false}),
                 db.insert('commits', {'repository': 1, 'revision': '210948', 'time': '2017-01-20T02:52:34.577Z', 'reported': false}),
                 db.insert('commits', {'repository': 1, 'revision': '210949', 'time': '2017-01-20T03:23:50.645Z', 'reported': false}),
@@ -741,7 +741,7 @@ describe("/api/commits/", function () {
             }).then(() => {
                 return remote.postJSONWithStatus('/api/report-commits/', subversionCommits);
             }).then(() => {
-                return remote.getJSON('/api/commits/WebKit/?precedingRevision=210947&lastRevision=210949');
+                return remote.getJSON('/api/commits/CyberKit/?precedingRevision=210947&lastRevision=210949');
             }).then((result) => {
                 assert.equal(result['status'], 'OK');
                 assert.deepEqual(result['commits'].length, 2);

@@ -27,7 +27,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Script to run the WebKit Open Source Project JavaScriptCore tests (adapted from Mozilla),
+# Script to run the CyberKit Open Source Project CyberScriptCore tests (adapted from Mozilla),
 # as well as other tests: testapi on Mac and LayoutTests/js.
 
 use strict;
@@ -251,7 +251,7 @@ Usage: $programName [options] [options to pass to build system]
 
   --[no-]fail-fast              Stop this script when a test family reports an error or failure (default: $failFastDefault)
   --[no-]force-collectContinuously Enable the collectContinuously mode even if it was disabled on this platform.
-  --[no-]copy                   Copy (or don't copy) the JavaScriptCore build product before testing (default: $copyJSCDefault)
+  --[no-]copy                   Copy (or don't copy) the CyberScriptCore build product before testing (default: $copyJSCDefault)
   --[no-]coverage               Enable (or disable) LLVM Source-based Code Coverage instrumentation for the test run (default: $coverageDefault).
   --coverage-dir=               Output path for LLVM Source-based Code Coverage instrumentation (default: a temporary directory).
   --json-output=                Create a file at specified path, listing failed stress tests in JSON format.
@@ -419,7 +419,7 @@ sub configurationForUpload()
             $version = winVersion();
             $versionName = "Win$version->{major}";
         }
-    } elsif (isAppleMacWebKit()) {
+    } elsif (isAppleMacCyberKit()) {
         $platform = 'mac';
         chomp($model = `/usr/sbin/sysctl -n hw.model`);
         if (!$version) {
@@ -514,12 +514,12 @@ if (defined $archs) {
 } else {
     # Fallback is x86_64, which we replace with the native architecture if the native architecture is in the provided build
     $archs = "x86_64";
-    $archs = nativeArchitecture($nativeTarget, $nativePort) if (!isAppleMacWebKit() || index($archsInBuild, nativeArchitecture($nativeTarget, $nativePort)) != -1);
+    $archs = nativeArchitecture($nativeTarget, $nativePort) if (!isAppleMacCyberKit() || index($archsInBuild, nativeArchitecture($nativeTarget, $nativePort)) != -1);
 }
 
 # For running tests, arm64e should map to arm64
 $archs = "arm64" if $archs eq "arm64e";
-if ($archs ne nativeArchitecture($nativeTarget, $nativePort) && (nativeArchitecture($nativeTarget, $nativePort) ne "arm64" || !isAppleMacWebKit())) {
+if ($archs ne nativeArchitecture($nativeTarget, $nativePort) && (nativeArchitecture($nativeTarget, $nativePort) ne "arm64" || !isAppleMacCyberKit())) {
     die "Cannot run tests with $archs on this machine";
 }
 
@@ -530,7 +530,7 @@ if (defined($jsonFileName)) {
 }
 
 if (!defined($root) && $buildJSC) {
-    chdirWebKit();
+    chdirCyberKit();
 
     push(@buildArgs, argumentsForConfiguration());
 
@@ -574,7 +574,7 @@ $ENV{DYLD_FRAMEWORK_PATH} = $productDir;
 $ENV{JSCTEST_timeout} = 120 unless $ENV{JSCTEST_timeout}; # Set a 120 second timeout on all jsc tests (if environment variable not defined already).
 $ENV{JSCTEST_hardTimeout} = 300 unless $ENV{JSCTEST_hardTimeout}; # Set a 300 second hard timeout on all jsc tests (if environment variable not defined already). If the test does not finish after 300 seconds from soft-timeout, we terminate the shell.
 $ENV{TZ}="US/Pacific"; # Some tests fail if the time zone is not set to US/Pacific (<https://webkit.org/b/136363>)
-setPathForRunningWebKitApp(\%ENV) if isCygwin();
+setPathForRunningCyberKitApp(\%ENV) if isCygwin();
 
 my $startTime = time();
 my $endTime = $startTime;
@@ -588,7 +588,7 @@ sub testPath {
 sub runTest {
     my ($testName, $jsonTestStatusName) = @_;
 
-    chdirWebKit();
+    chdirCyberKit();
     chdir($productDir) or die "Failed to switch directory to '$productDir'\n";
     my @command = (testPath($productDir, $testName));
     unshift @command, ("xcrun", "-sdk", xcodeSDK(), "sim") if willUseIOSSimulatorSDK();
@@ -671,7 +671,7 @@ sub generateHTMLFromProfdata
     my @command;
     push @command, "xcrun";
     push @command, ("-sdk", xcodeSDK()) if xcodeSDK();
-    push @command, "llvm-cov", "show", builtDylibPathForName("JavaScriptCore"), "--format=html", "--instr-profile=" . $profdataPath, "--output-dir=" . $htmlDir;
+    push @command, "llvm-cov", "show", builtDylibPathForName("CyberScriptCore"), "--format=html", "--instr-profile=" . $profdataPath, "--output-dir=" . $htmlDir;
     system(@command);
 
     print "HTML report is in file://$htmlDir/index.html\n";
@@ -690,8 +690,8 @@ if ($runTestDFG) { runTest("testdfg", "allDFGTestsPassed") }
 if ($runTestAPI) { runTest("testapi", "allApiTestsPassed") }
 
 
-# Find JavaScriptCore directory
-chdirWebKit();
+# Find CyberScriptCore directory
+chdirCyberKit();
 
 runJSCStressTests();
 reportTestFailures();

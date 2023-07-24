@@ -37,7 +37,7 @@ from webkitpy.common.config.urls import ewsserver_default_host
 from webkitpy.common.host import Host
 from webkitpy.common.net.bugzilla import bugzilla
 from webkitpy.common.net.layouttestresults import LayoutTestResults
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 from webkitpy.layout_tests.controllers.test_result_writer import TestResultWriter
 from webkitpy.layout_tests.models import test_expectations
 
@@ -85,7 +85,7 @@ class TestExpectationUpdater(object):
         self.filesystem = self.host.filesystem
         self.bot_filter_name = bot_filter_name
         self.unzip = unzip if unzip else lambda content: zipfile.ZipFile(io.BytesIO(content))
-        self.layout_test_repository = WebKitFinder(self.filesystem).path_from_webkit_base("LayoutTests")
+        self.layout_test_repository = CyberKitFinder(self.filesystem).path_from_webkit_base("LayoutTests")
         if is_bug_id:
             bug_info = attachment_fetcher.fetch_bug(bugzilla_id)
             attachments = [attachments for attachments in bug_info.attachments(include_obsolete=False) if attachments.is_patch()]

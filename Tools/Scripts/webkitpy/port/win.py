@@ -110,7 +110,7 @@ class WinPort(ApplePort):
         # This is a hack (which dates back to ORWT).
         # Windows does not have an EDITING DELEGATE, so we strip any EDITING DELEGATE
         # messages to make more of the tests pass.
-        # It's possible more of the ports might want this and this could move down into WebKitPort.
+        # It's possible more of the ports might want this and this could move down into CyberKitPort.
         delegate_regexp = re.compile("^EDITING DELEGATE: .*?\n", re.MULTILINE)
         expected_text = delegate_regexp.sub("", expected_text)
         actual_text = delegate_regexp.sub("", actual_text)
@@ -202,7 +202,7 @@ class WinPort(ApplePort):
     def _path_to_default_image_diff(self):
         return self._build_path('ImageDiff.exe')
 
-    API_TEST_BINARY_NAMES = ['TestWTF.exe', 'TestWebCore.exe', 'TestWebKitLegacy.exe']
+    API_TEST_BINARY_NAMES = ['TestWTF.exe', 'TestCyberCore.exe', 'TestCyberKitLegacy.exe']
 
     def path_to_api_test_binaries(self):
         return {binary.split('.')[0]: self._build_path(binary) for binary in self.API_TEST_BINARY_NAMES}

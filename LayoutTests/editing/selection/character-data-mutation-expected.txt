@@ -1,15 +1,15 @@
-This test ensures WebKit adjusts or clears the selection when either the start or the end container was modified.
+This test ensures CyberKit adjusts or clears the selection when either the start or the end container was modified.
 
 Base is first:
 PASS: Removing the parent of startContainer moved the offset from 2 to 0
 PASS: Replacing nodeValue of startContainer moved the offset from 2 to 0
 PASS: Replacing nodeValue of endContainer moved the offset from 3 to 0
-PASS: Appending " WebKit" to startContainer did not move selection
-PASS: Appending " WebKit" to endContainer did not move selection
-PASS: Inserting " WebKit" to startContainer before the end point did not move selection
-PASS: Inserting " WebKit" to endContainer before the end point moved the offset from 3 to 10
-PASS: Inserting " WebKit" to startContainer after the end point did not move selection
-PASS: Inserting " WebKit" to endContainer after the end point did not move selection
+PASS: Appending " CyberKit" to startContainer did not move selection
+PASS: Appending " CyberKit" to endContainer did not move selection
+PASS: Inserting " CyberKit" to startContainer before the end point did not move selection
+PASS: Inserting " CyberKit" to endContainer before the end point moved the offset from 3 to 10
+PASS: Inserting " CyberKit" to startContainer after the end point did not move selection
+PASS: Inserting " CyberKit" to endContainer after the end point did not move selection
 PASS: Removing text in startContainer containing the end point moved the offset from 2 to 1
 PASS: Removing text in endContainer containing the end point moved the offset from 3 to 1
 PASS: Removing text in startContainer containing the start point moved the offset from 2 to 0
@@ -33,12 +33,12 @@ Extent is first:
 PASS: Removing the parent of startContainer moved the offset from 2 to 0
 PASS: Replacing nodeValue of startContainer moved the offset from 2 to 0
 PASS: Replacing nodeValue of endContainer moved the offset from 3 to 0
-PASS: Appending " WebKit" to startContainer did not move selection
-PASS: Appending " WebKit" to endContainer did not move selection
-PASS: Inserting " WebKit" to startContainer before the end point did not move selection
-PASS: Inserting " WebKit" to endContainer before the end point moved the offset from 3 to 10
-PASS: Inserting " WebKit" to startContainer after the end point did not move selection
-PASS: Inserting " WebKit" to endContainer after the end point did not move selection
+PASS: Appending " CyberKit" to startContainer did not move selection
+PASS: Appending " CyberKit" to endContainer did not move selection
+PASS: Inserting " CyberKit" to startContainer before the end point did not move selection
+PASS: Inserting " CyberKit" to endContainer before the end point moved the offset from 3 to 10
+PASS: Inserting " CyberKit" to startContainer after the end point did not move selection
+PASS: Inserting " CyberKit" to endContainer after the end point did not move selection
 PASS: Removing text in startContainer containing the end point moved the offset from 2 to 1
 PASS: Removing text in endContainer containing the end point moved the offset from 3 to 1
 PASS: Removing text in startContainer containing the start point moved the offset from 2 to 0

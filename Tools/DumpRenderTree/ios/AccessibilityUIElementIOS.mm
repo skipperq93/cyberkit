@@ -30,10 +30,10 @@
 #import "AccessibilityCommonMac.h"
 #import "AccessibilityNotificationHandler.h"
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JSStringRefCF.h>
-#import <WebCore/TextGranularity.h>
-#import <WebKit/WebFrame.h>
-#import <WebKit/WebHTMLView.h>
+#import <CyberScriptCore/JSStringRefCF.h>
+#import <CyberCore/TextGranularity.h>
+#import <CyberKit/WebFrame.h>
+#import <CyberKit/WebHTMLView.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Vector.h>
 
@@ -62,7 +62,7 @@ AccessibilityUIElement::AccessibilityUIElement(id element)
 - (NSString *)selectionRangeString;
 - (BOOL)accessibilityInsertText:(NSString *)text;
 - (CGPoint)accessibilityClickPoint;
-- (void)accessibilityModifySelection:(WebCore::TextGranularity)granularity increase:(BOOL)increase;
+- (void)accessibilityModifySelection:(CyberCore::TextGranularity)granularity increase:(BOOL)increase;
 - (void)accessibilitySetPostedNotificationCallback:(AXPostedNotificationCallback)function withContext:(void*)context;
 - (CGFloat)_accessibilityMinValue;
 - (CGFloat)_accessibilityMaxValue;
@@ -351,12 +351,12 @@ AccessibilityUIElement AccessibilityUIElement::disclosedByRow()
 
 void AccessibilityUIElement::increaseTextSelection()
 {
-    [m_element accessibilityModifySelection:WebCore::TextGranularity::CharacterGranularity increase:YES];
+    [m_element accessibilityModifySelection:CyberCore::TextGranularity::CharacterGranularity increase:YES];
 }
 
 void AccessibilityUIElement::decreaseTextSelection()
 {
-    [m_element accessibilityModifySelection:WebCore::TextGranularity::CharacterGranularity increase:NO];    
+    [m_element accessibilityModifySelection:CyberCore::TextGranularity::CharacterGranularity increase:NO];    
 }
 
 JSRetainPtr<JSStringRef> AccessibilityUIElement::speakAs()

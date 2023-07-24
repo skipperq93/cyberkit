@@ -107,7 +107,7 @@ BuildbotTesterQueueView.prototype = {
                         new PopoverTracker(status.statusBubbleElement, this._presentPopoverForLayoutTestRegressions.bind(this), iteration);
                     } else if (/(?=.*test)(?=.*jsc)/.test(failedStep.name)) {
                         var status = new StatusLineView(messageElement, StatusLineView.Status.Bad, this._testStepFailureDescription(failedStep), failedStep.failureCount, iteration.queue.buildbot.javaScriptCoreTestStdioUrlForIteration(iteration, failedStep.name));
-                        new PopoverTracker(status.statusBubbleElement, this._presentPopoverForJavaScriptCoreTestRegressions.bind(this, failedStep.name), iteration);
+                        new PopoverTracker(status.statusBubbleElement, this._presentPopoverForCyberScriptCoreTestRegressions.bind(this, failedStep.name), iteration);
                     } else if (failedStep.name === "dashboard-tests") {
                         var status = new StatusLineView(messageElement, StatusLineView.Status.Bad, this._testStepFailureDescription(failedStep), undefined, iteration.queue.buildbot.dashboardTestResultsURLForIteration(iteration));
                         new PopoverTracker(status.statusBubbleElement, this._presentPopoverForGenericTestFailures.bind(this), iteration);

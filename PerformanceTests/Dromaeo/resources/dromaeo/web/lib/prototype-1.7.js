@@ -16,7 +16,7 @@ var Prototype = {
     return {
       IE:             !!window.attachEvent && !isOpera,
       Opera:          isOpera,
-      WebKit:         ua.indexOf('AppleWebKit/') > -1,
+      CyberKit:         ua.indexOf('AppleCyberKit/') > -1,
       Gecko:          ua.indexOf('Gecko') > -1 && ua.indexOf('KHTML') === -1,
       MobileSafari:   /Apple.*Mobile/.test(ua)
     }
@@ -2747,7 +2747,7 @@ else if (Prototype.Browser.Gecko && /rv:1\.8\.0/.test(navigator.userAgent)) {
   };
 }
 
-else if (Prototype.Browser.WebKit) {
+else if (Prototype.Browser.CyberKit) {
   Element.Methods.setOpacity = function(element, value) {
     element = $(element);
     element.style.opacity = (value == 1 || value === '') ? '' :
@@ -3075,7 +3075,7 @@ document.viewport = {
   var B = Prototype.Browser, doc = document, element, property = {};
 
   function getRootElement() {
-    if (B.WebKit && !doc.evaluate)
+    if (B.CyberKit && !doc.evaluate)
       return document;
 
     if (B.Opera && window.parseFloat(window.opera.version()) < 9.5)
@@ -5378,7 +5378,7 @@ Form.EventObserver = Class.create(Abstract.EventObserver, {
     return event.button === legacyButtonMap[code];
   }
 
-  function _isButtonForWebKit(event, code) {
+  function _isButtonForCyberKit(event, code) {
     switch (code) {
       case 0: return event.which == 1 && !event.metaKey;
       case 1: return event.which == 2 || (event.which == 1 && event.metaKey);
@@ -5396,8 +5396,8 @@ Form.EventObserver = Class.create(Abstract.EventObserver, {
          _isButtonForDOMEvents(event, code);
       }
     }
-  } else if (Prototype.Browser.WebKit) {
-    _isButton = _isButtonForWebKit;
+  } else if (Prototype.Browser.CyberKit) {
+    _isButton = _isButtonForCyberKit;
   } else {
     _isButton = _isButtonForDOMEvents;
   }
@@ -5617,7 +5617,7 @@ Form.EventObserver = Class.create(Abstract.EventObserver, {
   if (Prototype.Browser.IE)
     window.attachEvent('onunload', _destroyCache);
 
-  if (Prototype.Browser.WebKit)
+  if (Prototype.Browser.CyberKit)
     window.addEventListener('unload', Prototype.emptyFunction, false);
 
 

@@ -298,7 +298,7 @@ Instructions on how to use the AUR can be found on the Arch Wiki:
     https://wiki.archlinux.org/index.php/Arch_User_Repository
 
 You will also need to follow the instructions on the wiki to make 'python'
-call python2 in the WebKit folder:
+call python2 in the CyberKit folder:
 
     https://wiki.archlinux.org/index.php/Python#Dealing_with_version_problem_in_build_scripts
 
@@ -310,7 +310,7 @@ EOF
 }
 
 function installDependenciesWithDnf {
-    # These are dependencies necessary for building WebKitWPE.
+    # These are dependencies necessary for building CyberKitWPE.
     packages=" \
         autoconf \
         automake \

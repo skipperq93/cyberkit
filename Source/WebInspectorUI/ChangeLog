@@ -12,12 +12,12 @@
     styling, which relied on this value to know what OS version it was running on in order to
     know which styles to use.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     * inspector/InspectorFrontendHost.idl:
     * inspector/InspectorFrontendHost.h:
     * inspector/InspectorFrontendHost.cpp:
-    (WebCore::InspectorFrontendHost::platformVersionName const): Added.
+    (CyberCore::InspectorFrontendHost::platformVersionName const): Added.
     Derive a lowercased kekab-cased platform version name from `__MAC_OS_X_VERSION_MIN_REQUIRED`.
     
     Source/WebInspectorUI:
@@ -99,7 +99,7 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -115,11 +115,11 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebCore/PAL:
+    Source/CyberCore/PAL:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -127,11 +127,11 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebKitLegacy/mac:
+    Source/CyberKitLegacy/mac:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -145,10 +145,10 @@
     * DumpRenderTree/mac/Configurations/DebugRelease.xcconfig:
     * ImageDiff/cg/Configurations/DebugRelease.xcconfig:
     * MiniBrowser/Configurations/DebugRelease.xcconfig:
-    * TestWebKitAPI/Configurations/DebugRelease.xcconfig:
+    * TestCyberKitAPI/Configurations/DebugRelease.xcconfig:
     * WebEditingTester/Configurations/DebugRelease.xcconfig:
-    * WebKitTestRunner/Configurations/DebugRelease.xcconfig:
-    * lldb/lldbWebKitTester/Configurations/DebugRelease.xcconfig:
+    * CyberKitTestRunner/Configurations/DebugRelease.xcconfig:
+    * lldb/lldbCyberKitTester/Configurations/DebugRelease.xcconfig:
     
     git-svn-id: https://svn.webkit.org/repository/webkit/trunk@268371 268f45cc-cd09-0410-ab3c-d52691b4dbfc
 
@@ -181,7 +181,7 @@
     Reviewed by Darin Adler.
     
     Due to a bug in Xcode (rdar://70185899), Xcode 12.0 and Xcode 12.1 Beta incorrectly includes the
-    minor release number in MAC_OS_X_VERSION_MAJOR, which causes Debug and Release builds of WebKit
+    minor release number in MAC_OS_X_VERSION_MAJOR, which causes Debug and Release builds of CyberKit
     to be misconfigured when building on macOS Big Sur SUs, leading to webpages failing to load.
     
     To work around the Xcode bug, when the MAC_OS_X_VERSION_MAJOR includes the minor version number,
@@ -198,7 +198,7 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -214,11 +214,11 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebCore/PAL:
+    Source/CyberCore/PAL:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -226,11 +226,11 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebKitLegacy/mac:
+    Source/CyberKitLegacy/mac:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -244,10 +244,10 @@
     * DumpRenderTree/mac/Configurations/DebugRelease.xcconfig:
     * ImageDiff/cg/Configurations/DebugRelease.xcconfig:
     * MiniBrowser/Configurations/DebugRelease.xcconfig:
-    * TestWebKitAPI/Configurations/DebugRelease.xcconfig:
+    * TestCyberKitAPI/Configurations/DebugRelease.xcconfig:
     * WebEditingTester/Configurations/DebugRelease.xcconfig:
-    * WebKitTestRunner/Configurations/DebugRelease.xcconfig:
-    * lldb/lldbWebKitTester/Configurations/DebugRelease.xcconfig:
+    * CyberKitTestRunner/Configurations/DebugRelease.xcconfig:
+    * lldb/lldbCyberKitTester/Configurations/DebugRelease.xcconfig:
     
     git-svn-id: https://svn.webkit.org/repository/webkit/trunk@268353 268f45cc-cd09-0410-ab3c-d52691b4dbfc
 
@@ -261,7 +261,7 @@
             Reviewed by Darin Adler.
 
             Due to a bug in Xcode (rdar://70185899), Xcode 12.0 and Xcode 12.1 Beta incorrectly includes the
-            minor release number in MAC_OS_X_VERSION_MAJOR, which causes Debug and Release builds of WebKit
+            minor release number in MAC_OS_X_VERSION_MAJOR, which causes Debug and Release builds of CyberKit
             to be misconfigured when building on macOS Big Sur SUs, leading to webpages failing to load.
 
             To work around the Xcode bug, when the MAC_OS_X_VERSION_MAJOR includes the minor version number,
@@ -283,7 +283,7 @@
     Patch by Luming Yin <luming_yin@apple.com> on 2020-10-11
     Reviewed by Darin Adler.
     
-    To ensure successful Mac Catalyst WebKit builds, strip the patch version from
+    To ensure successful Mac Catalyst CyberKit builds, strip the patch version from
     TARGET_MAC_OS_X_VERSION_MAJOR by using two `base:`s on MACOSX_DEPLOYMENT_TARGET.
     
     * Configurations/Base.xcconfig:
@@ -299,7 +299,7 @@
 
             Reviewed by Darin Adler.
 
-            To ensure successful Mac Catalyst WebKit builds, strip the patch version from
+            To ensure successful Mac Catalyst CyberKit builds, strip the patch version from
             TARGET_MAC_OS_X_VERSION_MAJOR by using two `base:`s on MACOSX_DEPLOYMENT_TARGET.
 
             * Configurations/Base.xcconfig:
@@ -360,11 +360,11 @@
     then none of the docking navigation items will be updated. This makes it so that the
     docking navigation items are hidden when docking becomes unavailable while undocked.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * UIProcess/Inspector/WebInspectorProxy.cpp:
-    (WebKit::WebInspectorProxy::attach):
-    (WebKit::WebInspectorProxy::attachAvailabilityChanged):
+    (CyberKit::WebInspectorProxy::attach):
+    (CyberKit::WebInspectorProxy::attachAvailabilityChanged):
     If Web Inspector is already attached, it can re-attach with a different configuration.
     
     
@@ -507,9 +507,9 @@
     Reviewed by Devin Rousso.
     
     r251254 promoted the selection area into a layer on top the the tree outline item.
-    Combined with the existing WebKit bug (https://webkit.org/b/213501), it introduced the regression.
+    Combined with the existing CyberKit bug (https://webkit.org/b/213501), it introduced the regression.
     
-    This patch is largely a workaround for the WebKit bug.
+    This patch is largely a workaround for the CyberKit bug.
     
     Revert r251254 and instead change the background color of the shadow DOM items from
     the semi-transparent gray to black (white in the dark mode) with 5% transparency, which
@@ -539,9 +539,9 @@
             Reviewed by Devin Rousso.
 
             r251254 promoted the selection area into a layer on top the the tree outline item.
-            Combined with the existing WebKit bug (https://webkit.org/b/213501), it introduced the regression.
+            Combined with the existing CyberKit bug (https://webkit.org/b/213501), it introduced the regression.
 
-            This patch is largely a workaround for the WebKit bug.
+            This patch is largely a workaround for the CyberKit bug.
 
             Revert r251254 and instead change the background color of the shadow DOM items from
             the semi-transparent gray to black (white in the dark mode) with 5% transparency, which
@@ -842,7 +842,7 @@
         * Configurations/Base.xcconfig:
         * Configurations/DebugRelease.xcconfig:
         * Configurations/Version.xcconfig:
-        * Configurations/WebKitTargetConditionals.xcconfig:
+        * Configurations/CyberKitTargetConditionals.xcconfig:
 
 2020-08-04  Nikita Vasilyev  <nvasilyev@apple.com>
 
@@ -1226,7 +1226,7 @@
         * Configurations/Base.xcconfig:
         * Configurations/DebugRelease.xcconfig:
         * Configurations/Version.xcconfig:
-        * Configurations/WebKitTargetConditionals.xcconfig:
+        * Configurations/CyberKitTargetConditionals.xcconfig:
 
 2020-07-22  Brian Burg  <bburg@apple.com>
 
@@ -1460,7 +1460,7 @@
 
 2020-06-30  Andy Estes  <aestes@apple.com>
 
-        [Xcode] Enable the "My Mac (Mac Catalyst)" destination in WebKit Xcode projects
+        [Xcode] Enable the "My Mac (Mac Catalyst)" destination in CyberKit Xcode projects
         https://bugs.webkit.org/show_bug.cgi?id=213740
 
         Reviewed by Darin Adler.
@@ -1582,7 +1582,7 @@
         Reviewed by Alexey Proskuryakov.
 
         * Configurations/DebugRelease.xcconfig:
-        * Configurations/WebKitTargetConditionals.xcconfig:
+        * Configurations/CyberKitTargetConditionals.xcconfig:
 
 2020-06-18  Devin Rousso  <drousso@apple.com>
 
@@ -2603,7 +2603,7 @@
 
 2020-04-30  Devin Rousso  <drousso@apple.com>
 
-        WebKit.WebContent process crashes when web developer tools are opened in Safari
+        CyberKit.WebContent process crashes when web developer tools are opened in Safari
         https://bugs.webkit.org/show_bug.cgi?id=210794
         <rdar://problem/62214651>
 
@@ -4149,7 +4149,7 @@
 
         In the case of remote inspection, the frontend is told that docking is not available before
         it is even shown (via `InspectorFrontendAPI.setDockingUnavailable`). Additionally, the
-        backend (`WebKit::RemoteWebInspectorUI`) never tells the frontend what dock side it actually
+        backend (`CyberKit::RemoteWebInspectorUI`) never tells the frontend what dock side it actually
         is (via `InspectorFrontendAPI.setDockSide`), as there would be no point, given that docking
         is unavailable, meaning that the frontend must be undocked.
 
@@ -5406,7 +5406,7 @@
         (WI.SourcesNavigationSidebarPanel.prototype._addStyleSheet):
         (WI.SourcesNavigationSidebarPanel.prototype._addScript):
         * UserInterface/Base/Utilities.js:
-        (isWebKitExtensionScheme): Deleted.
+        (isCyberKitExtensionScheme): Deleted.
         * .eslintrc:
         Use `WI.BrowserManager.prototype.isExtensionScheme` instead of the global function.
 
@@ -7146,7 +7146,7 @@
 
         Reviewed by Alexey Proskuryakov.
 
-        A number of targets in WebKit have 'tvos' and 'tvsimulator' in
+        A number of targets in CyberKit have 'tvos' and 'tvsimulator' in
         SUPPORTED_PLATFORMS. The correct values are 'appletvos' and
         'appletvsimulator'. These should be updated to the correct ones as the
         wrong values prevent the tvOS run destination from being usable in the
@@ -7322,7 +7322,7 @@
 
 2020-01-16  David Kilzer  <ddkilzer@apple.com>
 
-        Enable -Wconditional-uninitialized in WebInspectorUI, WebKitLegacy, WebKit projects
+        Enable -Wconditional-uninitialized in WebInspectorUI, CyberKitLegacy, CyberKit projects
         <https://webkit.org/b/206270>
         <rdar://problem/58589767>
 
@@ -7377,7 +7377,7 @@
         Reviewed by Brian Burg.
 
         * UserInterface/Base/Utilities.js:
-        (isWebKitExtensionScheme): Added.
+        (isCyberKitExtensionScheme): Added.
         * UserInterface/Models/CSSStyleSheet.js:
         (WI.CSSStyleSheet.prototype.get injected):
         * .eslintrc:
@@ -10611,7 +10611,7 @@
 
 2019-10-18  Devin Rousso  <drousso@apple.com>
 
-        Web Inspector: Elements: allow WebKit engineers to edit UserAgent shadow trees
+        Web Inspector: Elements: allow CyberKit engineers to edit UserAgent shadow trees
         https://bugs.webkit.org/show_bug.cgi?id=203159
 
         Reviewed by Brian Burg.
@@ -10718,11 +10718,11 @@
         Reviewed by Joseph Pecoraro.
 
         `InspectorBackend.domains.${domain}` isn't a truly valid way to feature check, as it
-        indicates what's supported by the WebKit framework underlying whatever's currently being
+        indicates what's supported by the CyberKit framework underlying whatever's currently being
         inspected, not what the current inspection target supports.
 
         As an example, inspecting an iOS `JSContext` will still show `InspectorBackend.domains.DOM`
-        as the `DOMAgent` is supported by WebKit, even though `JSContext`s have no concept of the
+        as the `DOMAgent` is supported by CyberKit, even though `JSContext`s have no concept of the
         DOM. In this example, however, `window.DOMAgent` would NOT exist, as the `availability`
         check for the `DOM` domain wouldn't pass, meaning that the agent never gets connected.
 
@@ -10762,9 +10762,9 @@
 
         Debuggable Types:
          - JavaScript (JSC::JSGlobalObject)
-         - Page (WebCore::Page)
-         - ServiceWorker (WebCore::ServiceWorkerThreadProxy)
-         - WebPage (WebKit::WebPageProxy)
+         - Page (CyberCore::Page)
+         - ServiceWorker (CyberCore::ServiceWorkerThreadProxy)
+         - WebPage (CyberKit::WebPageProxy)
 
         Target Types:
          - JavaScript (direct connection)
@@ -10908,8 +10908,8 @@
         * UserInterface/Views/WorkerTreeElement.js:
         Replace all instances of `window.DomainAgent` with `target.DomainAgent`, where `target` is
         either derived from an associated model object or `WI.assumingMainTarget()`.
-        Split the `WI.DebuggableType.Web` debuggable type into `WI.DebuggableType.Page` (WebCore::Page)
-        and `WI.DebuggableType.WebPage` (WebKit::WebPageProxy).
+        Split the `WI.DebuggableType.Web` debuggable type into `WI.DebuggableType.Page` (CyberCore::Page)
+        and `WI.DebuggableType.WebPage` (CyberKit::WebPageProxy).
 
         * UserInterface/Protocol/Legacy/*:
         * Versions/*:
@@ -12753,7 +12753,7 @@
 
         * UserInterface/Base/URLUtilities.js:
         (parseURL):
-        Avoid uncaught exceptions with the URL constructor for common WebKit internal sourceURL strings.
+        Avoid uncaught exceptions with the URL constructor for common CyberKit internal sourceURL strings.
         
         (WI.urlWithoutFragment):
         Strip a fragment from a URL.
@@ -13330,13 +13330,13 @@
 
         Reviewed by Darin Adler.
 
-        Remove symbols in WebKitTargetConditionals.xcconfig related to macOS
+        Remove symbols in CyberKitTargetConditionals.xcconfig related to macOS
         10.13, including WK_MACOS_1013 and WK_MACOS_BEFORE_1013, and suffixes
         like _MACOS_SINCE_1013.
 
         Also added some macOS target numbers.
 
-        * Configurations/WebKitTargetConditionals.xcconfig:
+        * Configurations/CyberKitTargetConditionals.xcconfig:
 
 2019-08-29  Joseph Pecoraro  <pecoraro@apple.com>
 
@@ -14679,7 +14679,7 @@
 
         Reviewed by Joseph Pecoraro.
 
-        WK1 inspector sends messages to the frontend using `WebCore::InspectorClient::doDispatchMessageOnFrontendPage`,
+        WK1 inspector sends messages to the frontend using `CyberCore::InspectorClient::doDispatchMessageOnFrontendPage`,
         which does not do any sort of queueing to wait until the frontend is loaded (`InspectorFrontendHost.loaded()`).
 
         Now that we are sending messages immediately, we should always queue.
@@ -14888,19 +14888,19 @@
 
 2019-08-07  Devin Rousso  <drousso@apple.com>
 
-        Web Inspector: Settings: add an Engineering pane to expose useful settings for other WebKit engineers
+        Web Inspector: Settings: add an Engineering pane to expose useful settings for other CyberKit engineers
         https://bugs.webkit.org/show_bug.cgi?id=200492
 
         Reviewed by Joseph Pecoraro.
 
-        Other WebKit engineers might find being able to see internal objects or pause in internal
+        Other CyberKit engineers might find being able to see internal objects or pause in internal
         scripts useful, so we should allow them to do so without having to enable Web Inspector's
         debug "mode".
 
         A new "Engineering" pane is added to the Settings Tab:
          - Debugging
-            - Show WebKit-internal scripts
-            - Pause in WebKit-internal scripts
+            - Show CyberKit-internal scripts
+            - Pause in CyberKit-internal scripts
          - Heap Snapshot
             - Show Internal Objects
             - Show Private Symbols

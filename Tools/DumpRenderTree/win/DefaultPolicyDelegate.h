@@ -26,7 +26,7 @@
 #ifndef DefaultPolicyDelegate_h
 #define DefaultPolicyDelegate_h
 
-#include <WebKitLegacy/WebKit.h>
+#include <CyberKitLegacy/CyberKit.h>
 
 class DefaultPolicyDelegate final : public IWebPolicyDelegate {
 public:

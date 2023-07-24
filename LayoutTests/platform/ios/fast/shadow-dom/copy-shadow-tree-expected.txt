@@ -18,7 +18,7 @@ layer at (0,0) size 800x148
               text run at (41,1) width 45: "world "
             RenderInline {SPAN} at (0,0) size 55x19
               RenderText {#text} at (85,1) size 55x19
-                text run at (85,1) width 55: "WebKit"
+                text run at (85,1) width 55: "CyberKit"
         RenderText {#text} at (139,1) size 5x19
           text run at (139,1) width 5: " "
         RenderInline {I} at (0,0) size 35x19

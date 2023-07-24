@@ -1,5 +1,5 @@
 This tests re-parenting a child of the document fragment during an insertion so as to create a circular node tree.
-WebKit should detect this case and throw HierarchyRequestError.
+CyberKit should detect this case and throw HierarchyRequestError.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

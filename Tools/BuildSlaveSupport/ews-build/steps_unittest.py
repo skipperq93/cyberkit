@@ -37,18 +37,18 @@ from twisted.internet import error, reactor
 from twisted.python import failure, log
 from twisted.trial import unittest
 
-from steps import (AnalyzeAPITestsResults, AnalyzeCompileWebKitResults, AnalyzeJSCTestsResults,
+from steps import (AnalyzeAPITestsResults, AnalyzeCompileCyberKitResults, AnalyzeJSCTestsResults,
                    AnalyzeLayoutTestsResults, ApplyPatch, ApplyWatchList, ArchiveBuiltProduct, ArchiveTestResults,
                    CheckOutSource, CheckOutSpecificRevision, CheckPatchRelevance, CheckPatchStatusOnEWSQueues, CheckStyle,
-                   CleanBuild, CleanUpGitIndexLock, CleanWorkingDirectory, CompileJSC, CompileJSCWithoutPatch, CompileWebKit,
-                   CompileWebKitWithoutPatch, ConfigureBuild, CreateLocalGITCommit,
+                   CleanBuild, CleanUpGitIndexLock, CleanWorkingDirectory, CompileJSC, CompileJSCWithoutPatch, CompileCyberKit,
+                   CompileCyberKitWithoutPatch, ConfigureBuild, CreateLocalGITCommit,
                    DownloadBuiltProduct, DownloadBuiltProductFromMaster, ExtractBuiltProduct, ExtractTestResults,
                    FindModifiedChangeLogs, InstallGtkDependencies, InstallWpeDependencies, KillOldProcesses,
-                   PrintConfiguration, PushCommitToWebKitRepo, ReRunAPITests, ReRunJavaScriptCoreTests, ReRunWebKitPerlTests,
-                   ReRunWebKitTests, RunAPITests, RunAPITestsWithoutPatch, RunBindingsTests, RunBuildWebKitOrgUnitTests,
-                   RunEWSBuildbotCheckConfig, RunEWSUnitTests, RunResultsdbpyTests, RunJavaScriptCoreTests,
-                   RunJSCTestsWithoutPatch, RunWebKit1Tests, RunWebKitPerlTests, RunWebKitPyPython2Tests,
-                   RunWebKitPyPython3Tests, RunWebKitTests, RunWebKitTestsWithoutPatch, TestWithFailureCount,
+                   PrintConfiguration, PushCommitToCyberKitRepo, ReRunAPITests, ReRunCyberScriptCoreTests, ReRunCyberKitPerlTests,
+                   ReRunCyberKitTests, RunAPITests, RunAPITestsWithoutPatch, RunBindingsTests, RunBuildCyberKitOrgUnitTests,
+                   RunEWSBuildbotCheckConfig, RunEWSUnitTests, RunResultsdbpyTests, RunCyberScriptCoreTests,
+                   RunJSCTestsWithoutPatch, RunCyberKit1Tests, RunCyberKitPerlTests, RunCyberKitPyPython2Tests,
+                   RunCyberKitPyPython3Tests, RunCyberKitTests, RunCyberKitTestsWithoutPatch, TestWithFailureCount,
                    Trigger, TransferToS3, UnApplyPatchIfRequired, UpdateWorkingDirectory, UploadBuiltProduct,
                    UploadTestResults, ValidateCommiterAndReviewer, ValidatePatch)
 
@@ -272,12 +272,12 @@ class TestCheckStyle(BuildStepMixinAdditions, unittest.TestCase):
                         logEnviron=False,
                         command=['python', 'Tools/Scripts/check-webkit-style'],
                         )
-            + ExpectShell.log('stdio', stdout='''ERROR: Source/WebCore/layout/FloatingContext.cpp:36:  Code inside a namespace should not be indented.  [whitespace/indent] [4]
-ERROR: Source/WebCore/layout/FormattingContext.h:94:  Weird number of spaces at line-start.  Are you using a 4-space indent?  [whitespace/indent] [3]
-ERROR: Source/WebCore/layout/LayoutContext.cpp:52:  Place brace on its own line for function definitions.  [whitespace/braces] [4]
-ERROR: Source/WebCore/layout/LayoutContext.cpp:55:  Extra space before last semicolon. If this should be an empty statement, use { } instead.  [whitespace/semicolon] [5]
-ERROR: Source/WebCore/layout/LayoutContext.cpp:60:  Tab found; better to use spaces  [whitespace/tab] [1]
-ERROR: Source/WebCore/layout/Verification.cpp:88:  Missing space before ( in while(  [whitespace/parens] [5]
+            + ExpectShell.log('stdio', stdout='''ERROR: Source/CyberCore/layout/FloatingContext.cpp:36:  Code inside a namespace should not be indented.  [whitespace/indent] [4]
+ERROR: Source/CyberCore/layout/FormattingContext.h:94:  Weird number of spaces at line-start.  Are you using a 4-space indent?  [whitespace/indent] [3]
+ERROR: Source/CyberCore/layout/LayoutContext.cpp:52:  Place brace on its own line for function definitions.  [whitespace/braces] [4]
+ERROR: Source/CyberCore/layout/LayoutContext.cpp:55:  Extra space before last semicolon. If this should be an empty statement, use { } instead.  [whitespace/semicolon] [5]
+ERROR: Source/CyberCore/layout/LayoutContext.cpp:60:  Tab found; better to use spaces  [whitespace/tab] [1]
+ERROR: Source/CyberCore/layout/Verification.cpp:88:  Missing space before ( in while(  [whitespace/parens] [5]
 Total errors found: 8 in 48 files''')
             + 2,
         )
@@ -395,7 +395,7 @@ class TestRunBindingsTests(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
 
-class TestRunWebKitPerlTests(BuildStepMixinAdditions, unittest.TestCase):
+class TestRunCyberKitPerlTests(BuildStepMixinAdditions, unittest.TestCase):
     def setUp(self):
         self.longMessage = True
         return self.setUpBuildStep()
@@ -404,7 +404,7 @@ class TestRunWebKitPerlTests(BuildStepMixinAdditions, unittest.TestCase):
         return self.tearDownBuildStep()
 
     def configureStep(self):
-        self.setupStep(RunWebKitPerlTests())
+        self.setupStep(RunCyberKitPerlTests())
 
     def test_success(self):
         self.configureStep()
@@ -437,20 +437,20 @@ Failed 1/40 test programs. 10/630 subtests failed.''')
         return self.runStep()
 
 
-class TestWebKitPyPython2Tests(BuildStepMixinAdditions, unittest.TestCase):
+class TestCyberKitPyPython2Tests(BuildStepMixinAdditions, unittest.TestCase):
     def setUp(self):
         self.longMessage = True
         self.jsonFileName = 'webkitpy_test_python2_results.json'
         self.json_with_failure = '''{"failures": [{"name": "webkitpy.port.wpe_unittest.WPEPortTest.test_diff_image"}]}\n'''
         self.json_with_errros = '''{"failures": [],
-"errors": [{"name": "webkitpy.style.checkers.cpp_unittest.WebKitStyleTest.test_os_version_checks"}, {"name": "webkitpy.port.win_unittest.WinPortTest.test_diff_image__missing_actual"}]}\n'''
+"errors": [{"name": "webkitpy.style.checkers.cpp_unittest.CyberKitStyleTest.test_os_version_checks"}, {"name": "webkitpy.port.win_unittest.WinPortTest.test_diff_image__missing_actual"}]}\n'''
         return self.setUpBuildStep()
 
     def tearDown(self):
         return self.tearDownBuildStep()
 
     def test_success(self):
-        self.setupStep(RunWebKitPyPython2Tests())
+        self.setupStep(RunCyberKitPyPython2Tests())
         self.expectRemoteCommands(
             ExpectShell(workdir='wkdir',
                         logEnviron=False,
@@ -464,7 +464,7 @@ class TestWebKitPyPython2Tests(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
     def test_unexpected_failure(self):
-        self.setupStep(RunWebKitPyPython2Tests())
+        self.setupStep(RunCyberKitPyPython2Tests())
         self.expectRemoteCommands(
             ExpectShell(workdir='wkdir',
                         logEnviron=False,
@@ -480,7 +480,7 @@ FAILED (failures=1, errors=0)''')
         return self.runStep()
 
     def test_failure(self):
-        self.setupStep(RunWebKitPyPython2Tests())
+        self.setupStep(RunCyberKitPyPython2Tests())
         self.expectRemoteCommands(
             ExpectShell(workdir='wkdir',
                         logEnviron=False,
@@ -495,7 +495,7 @@ FAILED (failures=1, errors=0)''')
         return self.runStep()
 
     def test_errors(self):
-        self.setupStep(RunWebKitPyPython2Tests())
+        self.setupStep(RunCyberKitPyPython2Tests())
         self.expectRemoteCommands(
             ExpectShell(workdir='wkdir',
                         logEnviron=False,
@@ -506,24 +506,24 @@ FAILED (failures=1, errors=0)''')
             ExpectShell.log('json', stdout=self.json_with_errros) +
             2,
         )
-        self.expectOutcome(result=FAILURE, state_string='Found 2 webkitpy python2 test failures: webkitpy.style.checkers.cpp_unittest.WebKitStyleTest.test_os_version_checks, webkitpy.port.win_unittest.WinPortTest.test_diff_image__missing_actual')
+        self.expectOutcome(result=FAILURE, state_string='Found 2 webkitpy python2 test failures: webkitpy.style.checkers.cpp_unittest.CyberKitStyleTest.test_os_version_checks, webkitpy.port.win_unittest.WinPortTest.test_diff_image__missing_actual')
         return self.runStep()
 
 
-class TestWebKitPyPython3Tests(BuildStepMixinAdditions, unittest.TestCase):
+class TestCyberKitPyPython3Tests(BuildStepMixinAdditions, unittest.TestCase):
     def setUp(self):
         self.longMessage = True
         self.jsonFileName = 'webkitpy_test_python3_results.json'
         self.json_with_failure = '''{"failures": [{"name": "webkitpy.port.wpe_unittest.WPEPortTest.test_diff_image"}]}\n'''
         self.json_with_errros = '''{"failures": [],
-"errors": [{"name": "webkitpy.style.checkers.cpp_unittest.WebKitStyleTest.test_os_version_checks"}, {"name": "webkitpy.port.win_unittest.WinPortTest.test_diff_image__missing_actual"}]}\n'''
+"errors": [{"name": "webkitpy.style.checkers.cpp_unittest.CyberKitStyleTest.test_os_version_checks"}, {"name": "webkitpy.port.win_unittest.WinPortTest.test_diff_image__missing_actual"}]}\n'''
         return self.setUpBuildStep()
 
     def tearDown(self):
         return self.tearDownBuildStep()
 
     def test_success(self):
-        self.setupStep(RunWebKitPyPython3Tests())
+        self.setupStep(RunCyberKitPyPython3Tests())
         self.expectRemoteCommands(
             ExpectShell(workdir='wkdir',
                         logEnviron=False,
@@ -537,7 +537,7 @@ class TestWebKitPyPython3Tests(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
     def test_unexpected_failure(self):
-        self.setupStep(RunWebKitPyPython3Tests())
+        self.setupStep(RunCyberKitPyPython3Tests())
         self.expectRemoteCommands(
             ExpectShell(workdir='wkdir',
                         logEnviron=False,
@@ -553,7 +553,7 @@ FAILED (failures=1, errors=0)''')
         return self.runStep()
 
     def test_failure(self):
-        self.setupStep(RunWebKitPyPython3Tests())
+        self.setupStep(RunCyberKitPyPython3Tests())
         self.expectRemoteCommands(
             ExpectShell(workdir='wkdir',
                         logEnviron=False,
@@ -568,7 +568,7 @@ FAILED (failures=1, errors=0)''')
         return self.runStep()
 
     def test_errors(self):
-        self.setupStep(RunWebKitPyPython3Tests())
+        self.setupStep(RunCyberKitPyPython3Tests())
         self.expectRemoteCommands(
             ExpectShell(workdir='wkdir',
                         logEnviron=False,
@@ -579,7 +579,7 @@ FAILED (failures=1, errors=0)''')
             ExpectShell.log('json', stdout=self.json_with_errros) +
             2,
         )
-        self.expectOutcome(result=FAILURE, state_string='Found 2 webkitpy python3 test failures: webkitpy.style.checkers.cpp_unittest.WebKitStyleTest.test_os_version_checks, webkitpy.port.win_unittest.WinPortTest.test_diff_image__missing_actual')
+        self.expectOutcome(result=FAILURE, state_string='Found 2 webkitpy python3 test failures: webkitpy.style.checkers.cpp_unittest.CyberKitStyleTest.test_os_version_checks, webkitpy.port.win_unittest.WinPortTest.test_diff_image__missing_actual')
         return self.runStep()
 
 
@@ -691,7 +691,7 @@ class TestRunResultsdbpyTests(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
 
-class TestRunBuildWebKitOrgUnitTests(BuildStepMixinAdditions, unittest.TestCase):
+class TestRunBuildCyberKitOrgUnitTests(BuildStepMixinAdditions, unittest.TestCase):
     def setUp(self):
         self.longMessage = True
         return self.setUpBuildStep()
@@ -700,7 +700,7 @@ class TestRunBuildWebKitOrgUnitTests(BuildStepMixinAdditions, unittest.TestCase)
         return self.tearDownBuildStep()
 
     def test_success(self):
-        self.setupStep(RunBuildWebKitOrgUnitTests())
+        self.setupStep(RunBuildCyberKitOrgUnitTests())
         self.expectRemoteCommands(
             ExpectShell(workdir='build/Tools/BuildSlaveSupport/build.webkit.org-config',
                         timeout=120,
@@ -713,7 +713,7 @@ class TestRunBuildWebKitOrgUnitTests(BuildStepMixinAdditions, unittest.TestCase)
         return self.runStep()
 
     def test_failure(self):
-        self.setupStep(RunBuildWebKitOrgUnitTests())
+        self.setupStep(RunBuildCyberKitOrgUnitTests())
         self.expectRemoteCommands(
             ExpectShell(workdir='build/Tools/BuildSlaveSupport/build.webkit.org-config',
                         timeout=120,
@@ -781,7 +781,7 @@ class TestCleanBuild(BuildStepMixinAdditions, unittest.TestCase):
                         )
             + 0,
         )
-        self.expectOutcome(result=SUCCESS, state_string='Deleted WebKitBuild directory')
+        self.expectOutcome(result=SUCCESS, state_string='Deleted CyberKitBuild directory')
         return self.runStep()
 
     def test_failure(self):
@@ -795,7 +795,7 @@ class TestCleanBuild(BuildStepMixinAdditions, unittest.TestCase):
             + ExpectShell.log('stdio', stdout='Unexpected error.')
             + 2,
         )
-        self.expectOutcome(result=FAILURE, state_string='Deleted WebKitBuild directory (failure)')
+        self.expectOutcome(result=FAILURE, state_string='Deleted CyberKitBuild directory (failure)')
         return self.runStep()
 
 
@@ -939,7 +939,7 @@ class TestInstallWpeDependencies(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
 
-class TestCompileWebKit(BuildStepMixinAdditions, unittest.TestCase):
+class TestCompileCyberKit(BuildStepMixinAdditions, unittest.TestCase):
     def setUp(self):
         self.longMessage = True
         return self.setUpBuildStep()
@@ -948,7 +948,7 @@ class TestCompileWebKit(BuildStepMixinAdditions, unittest.TestCase):
         return self.tearDownBuildStep()
 
     def test_success(self):
-        self.setupStep(CompileWebKit())
+        self.setupStep(CompileCyberKit())
         self.setProperty('fullPlatform', 'ios-simulator-11')
         self.setProperty('configuration', 'release')
         self.expectRemoteCommands(
@@ -958,11 +958,11 @@ class TestCompileWebKit(BuildStepMixinAdditions, unittest.TestCase):
                         )
             + 0,
         )
-        self.expectOutcome(result=SUCCESS, state_string='Compiled WebKit')
+        self.expectOutcome(result=SUCCESS, state_string='Compiled CyberKit')
         return self.runStep()
 
     def test_success_gtk(self):
-        self.setupStep(CompileWebKit())
+        self.setupStep(CompileCyberKit())
         self.setProperty('platform', 'gtk')
         self.setProperty('fullPlatform', 'gtk')
         self.setProperty('configuration', 'release')
@@ -973,11 +973,11 @@ class TestCompileWebKit(BuildStepMixinAdditions, unittest.TestCase):
                         )
             + 0,
         )
-        self.expectOutcome(result=SUCCESS, state_string='Compiled WebKit')
+        self.expectOutcome(result=SUCCESS, state_string='Compiled CyberKit')
         return self.runStep()
 
     def test_success_wpe(self):
-        self.setupStep(CompileWebKit())
+        self.setupStep(CompileCyberKit())
         self.setProperty('platform', 'wpe')
         self.setProperty('fullPlatform', 'wpe')
         self.setProperty('configuration', 'release')
@@ -988,11 +988,11 @@ class TestCompileWebKit(BuildStepMixinAdditions, unittest.TestCase):
                         )
             + 0,
         )
-        self.expectOutcome(result=SUCCESS, state_string='Compiled WebKit')
+        self.expectOutcome(result=SUCCESS, state_string='Compiled CyberKit')
         return self.runStep()
 
     def test_failure(self):
-        self.setupStep(CompileWebKit())
+        self.setupStep(CompileCyberKit())
         self.setProperty('fullPlatform', 'mac-sierra')
         self.setProperty('configuration', 'debug')
         self.expectRemoteCommands(
@@ -1003,19 +1003,19 @@ class TestCompileWebKit(BuildStepMixinAdditions, unittest.TestCase):
             + ExpectShell.log('stdio', stdout='1 error generated.')
             + 2,
         )
-        self.expectOutcome(result=FAILURE, state_string='Failed to compile WebKit')
+        self.expectOutcome(result=FAILURE, state_string='Failed to compile CyberKit')
         return self.runStep()
 
     def test_skip_for_revert_patches_on_commit_queue(self):
-        self.setupStep(CompileWebKit())
+        self.setupStep(CompileCyberKit())
         self.setProperty('buildername', 'Commit-Queue')
         self.setProperty('configuration', 'debug')
         self.setProperty('revert', True)
-        self.expectOutcome(result=SKIPPED, state_string='Compiled WebKit (skipped)')
+        self.expectOutcome(result=SKIPPED, state_string='Compiled CyberKit (skipped)')
         return self.runStep()
 
 
-class TestCompileWebKitWithoutPatch(BuildStepMixinAdditions, unittest.TestCase):
+class TestCompileCyberKitWithoutPatch(BuildStepMixinAdditions, unittest.TestCase):
     def setUp(self):
         self.longMessage = True
         return self.setUpBuildStep()
@@ -1024,7 +1024,7 @@ class TestCompileWebKitWithoutPatch(BuildStepMixinAdditions, unittest.TestCase):
         return self.tearDownBuildStep()
 
     def test_success(self):
-        self.setupStep(CompileWebKitWithoutPatch())
+        self.setupStep(CompileCyberKitWithoutPatch())
         self.setProperty('fullPlatform', 'ios-simulator-11')
         self.setProperty('configuration', 'release')
         self.setProperty('patchFailedToBuild', True)
@@ -1035,11 +1035,11 @@ class TestCompileWebKitWithoutPatch(BuildStepMixinAdditions, unittest.TestCase):
                         )
             + 0,
         )
-        self.expectOutcome(result=SUCCESS, state_string='Compiled WebKit')
+        self.expectOutcome(result=SUCCESS, state_string='Compiled CyberKit')
         return self.runStep()
 
     def test_failure(self):
-        self.setupStep(CompileWebKitWithoutPatch())
+        self.setupStep(CompileCyberKitWithoutPatch())
         self.setProperty('fullPlatform', 'mac-sierra')
         self.setProperty('configuration', 'debug')
         self.setProperty('patchFailedTests', True)
@@ -1051,22 +1051,22 @@ class TestCompileWebKitWithoutPatch(BuildStepMixinAdditions, unittest.TestCase):
             + ExpectShell.log('stdio', stdout='1 error generated.')
             + 2,
         )
-        self.expectOutcome(result=FAILURE, state_string='Failed to compile WebKit')
+        self.expectOutcome(result=FAILURE, state_string='Failed to compile CyberKit')
         return self.runStep()
 
     def test_skip(self):
-        self.setupStep(CompileWebKitWithoutPatch())
+        self.setupStep(CompileCyberKitWithoutPatch())
         self.setProperty('fullPlatform', 'ios-simulator-11')
         self.setProperty('configuration', 'release')
         self.expectHidden(True)
-        self.expectOutcome(result=SKIPPED, state_string='Compiled WebKit (skipped)')
+        self.expectOutcome(result=SKIPPED, state_string='Compiled CyberKit (skipped)')
         return self.runStep()
 
 
-class TestAnalyzeCompileWebKitResults(BuildStepMixinAdditions, unittest.TestCase):
+class TestAnalyzeCompileCyberKitResults(BuildStepMixinAdditions, unittest.TestCase):
     def setUp(self):
         self.longMessage = True
-        AnalyzeCompileWebKitResults.send_email_for_build_failure = lambda self: None
+        AnalyzeCompileCyberKitResults.send_email_for_build_failure = lambda self: None
         return self.setUpBuildStep()
 
     def tearDown(self):
@@ -1074,10 +1074,10 @@ class TestAnalyzeCompileWebKitResults(BuildStepMixinAdditions, unittest.TestCase
 
     def test_patch_with_build_failure(self):
         previous_steps = [
-            mock_step(CompileWebKit(), results=FAILURE),
-            mock_step(CompileWebKitWithoutPatch(), results=SUCCESS),
+            mock_step(CompileCyberKit(), results=FAILURE),
+            mock_step(CompileCyberKitWithoutPatch(), results=SUCCESS),
         ]
-        self.setupStep(AnalyzeCompileWebKitResults(), previous_steps=previous_steps)
+        self.setupStep(AnalyzeCompileCyberKitResults(), previous_steps=previous_steps)
         self.setProperty('patch_id', '1234')
         self.expectOutcome(result=FAILURE, state_string='Patch 1234 does not build (failure)')
         rc = self.runStep()
@@ -1087,10 +1087,10 @@ class TestAnalyzeCompileWebKitResults(BuildStepMixinAdditions, unittest.TestCase
 
     def test_patch_with_build_failure_on_commit_queue(self):
         previous_steps = [
-            mock_step(CompileWebKit(), results=FAILURE),
-            mock_step(CompileWebKitWithoutPatch(), results=SUCCESS),
+            mock_step(CompileCyberKit(), results=FAILURE),
+            mock_step(CompileCyberKitWithoutPatch(), results=SUCCESS),
         ]
-        self.setupStep(AnalyzeCompileWebKitResults(), previous_steps=previous_steps)
+        self.setupStep(AnalyzeCompileCyberKitResults(), previous_steps=previous_steps)
         self.setProperty('patch_id', '1234')
         self.setProperty('buildername', 'commit-queue')
         self.expectOutcome(result=FAILURE, state_string='Patch 1234 does not build (failure)')
@@ -1101,29 +1101,29 @@ class TestAnalyzeCompileWebKitResults(BuildStepMixinAdditions, unittest.TestCase
 
     def test_patch_with_trunk_failure(self):
         previous_steps = [
-            mock_step(CompileWebKit(), results=FAILURE),
-            mock_step(CompileWebKitWithoutPatch(), results=FAILURE),
+            mock_step(CompileCyberKit(), results=FAILURE),
+            mock_step(CompileCyberKitWithoutPatch(), results=FAILURE),
         ]
-        self.setupStep(AnalyzeCompileWebKitResults(), previous_steps=previous_steps)
-        self.expectOutcome(result=FAILURE, state_string='Unable to build WebKit without patch, retrying build (failure)')
+        self.setupStep(AnalyzeCompileCyberKitResults(), previous_steps=previous_steps)
+        self.expectOutcome(result=FAILURE, state_string='Unable to build CyberKit without patch, retrying build (failure)')
         return self.runStep()
 
     def test_filter_logs_containing_error(self):
-        logs = 'In file included from WebCore/unified-sources/UnifiedSource263.cpp:4:\nImageBufferIOSurfaceBackend.cpp:108:30: error: definition of implicitly declared destructor'
+        logs = 'In file included from CyberCore/unified-sources/UnifiedSource263.cpp:4:\nImageBufferIOSurfaceBackend.cpp:108:30: error: definition of implicitly declared destructor'
         expected_output = 'ImageBufferIOSurfaceBackend.cpp:108:30: error: definition of implicitly declared destructor'
-        output = AnalyzeCompileWebKitResults().filter_logs_containing_error(logs)
+        output = AnalyzeCompileCyberKitResults().filter_logs_containing_error(logs)
         self.assertEqual(expected_output, output)
 
     def test_filter_logs_containing_error_with_too_many_errors(self):
         logs = 'Error:1\nError:2\nerror:3\nerror:4\nerror:5\nrandom-string\nerror:6\nerror:7\nerror8\nerror:9\nerror:10\nerror:11\nerror:12\nerror:13'
         expected_output = 'error:3\nerror:4\nerror:5\nerror:6\nerror:7\nerror:9\nerror:10\nerror:11\nerror:12\nerror:13'
-        output = AnalyzeCompileWebKitResults().filter_logs_containing_error(logs)
+        output = AnalyzeCompileCyberKitResults().filter_logs_containing_error(logs)
         self.assertEqual(expected_output, output)
 
     def test_filter_logs_containing_error_with_no_error(self):
         logs = 'CompileC /Volumes/Data/worker/macOS-Mojave-Release-Build-EWS'
         expected_output = ''
-        output = AnalyzeCompileWebKitResults().filter_logs_containing_error(logs)
+        output = AnalyzeCompileCyberKitResults().filter_logs_containing_error(logs)
         self.assertEqual(expected_output, output)
 
 
@@ -1204,7 +1204,7 @@ class TestCompileJSCWithoutPatch(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
 
-class TestRunJavaScriptCoreTests(BuildStepMixinAdditions, unittest.TestCase):
+class TestRunCyberScriptCoreTests(BuildStepMixinAdditions, unittest.TestCase):
     def setUp(self):
         self.longMessage = True
         self.jsonFileName = 'jsc_results.json'
@@ -1219,8 +1219,8 @@ class TestRunJavaScriptCoreTests(BuildStepMixinAdditions, unittest.TestCase):
         return self.tearDownBuildStep()
 
     def configureStep(self, platform=None, fullPlatform=None, configuration=None):
-        self.setupStep(RunJavaScriptCoreTests())
-        self.prefix = RunJavaScriptCoreTests.prefix
+        self.setupStep(RunCyberScriptCoreTests())
+        self.prefix = RunCyberScriptCoreTests.prefix
         if platform:
             self.setProperty('platform', platform)
         if fullPlatform:
@@ -1355,10 +1355,10 @@ class TestRunJavaScriptCoreTests(BuildStepMixinAdditions, unittest.TestCase):
         return rc
 
 
-class TestReRunJavaScriptCoreTests(TestRunJavaScriptCoreTests):
+class TestReRunCyberScriptCoreTests(TestRunCyberScriptCoreTests):
     def configureStep(self, platform=None, fullPlatform=None, configuration=None):
-        self.setupStep(ReRunJavaScriptCoreTests())
-        self.prefix = ReRunJavaScriptCoreTests.prefix
+        self.setupStep(ReRunCyberScriptCoreTests())
+        self.prefix = ReRunCyberScriptCoreTests.prefix
         if platform:
             self.setProperty('platform', platform)
         if fullPlatform:
@@ -1541,7 +1541,7 @@ class TestAnalyzeJSCTestsResults(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
 
-class TestRunWebKitTests(BuildStepMixinAdditions, unittest.TestCase):
+class TestRunCyberKitTests(BuildStepMixinAdditions, unittest.TestCase):
     def setUp(self):
         self.longMessage = True
         self.jsonFileName = 'layout-test-results/full_results.json'
@@ -1563,7 +1563,7 @@ ts","version":4,"num_passes":42158,"pixel_tests_enabled":false,"date":"11:28AM o
         return self.tearDownBuildStep()
 
     def configureStep(self):
-        self.setupStep(RunWebKitTests())
+        self.setupStep(RunCyberKitTests())
         self.property_exceed_failure_limit = 'first_results_exceed_failure_limit'
         self.property_failures = 'first_run_failures'
 
@@ -1754,12 +1754,12 @@ ts","version":4,"num_passes":42158,"pixel_tests_enabled":false,"date":"11:28AM o
         return self.runStep()
 
 
-class TestReRunWebKitTests(TestRunWebKitTests):
+class TestReRunCyberKitTests(TestRunCyberKitTests):
     def configureStep(self):
-        self.setupStep(ReRunWebKitTests())
+        self.setupStep(ReRunCyberKitTests())
         self.property_exceed_failure_limit = 'second_results_exceed_failure_limit'
         self.property_failures = 'second_run_failures'
-        ReRunWebKitTests.send_email_for_flaky_failure = lambda self, test: None
+        ReRunCyberKitTests.send_email_for_flaky_failure = lambda self, test: None
 
     def test_flaky_failures_in_first_run(self):
         self.configureStep()
@@ -1780,7 +1780,7 @@ class TestReRunWebKitTests(TestRunWebKitTests):
         return rc
 
 
-class TestRunWebKitTestsWithoutPatch(BuildStepMixinAdditions, unittest.TestCase):
+class TestRunCyberKitTestsWithoutPatch(BuildStepMixinAdditions, unittest.TestCase):
     def setUp(self):
         self.longMessage = True
         self.jsonFileName = 'layout-test-results/full_results.json'
@@ -1790,7 +1790,7 @@ class TestRunWebKitTestsWithoutPatch(BuildStepMixinAdditions, unittest.TestCase)
         return self.tearDownBuildStep()
 
     def configureStep(self):
-        self.setupStep(RunWebKitTestsWithoutPatch())
+        self.setupStep(RunCyberKitTestsWithoutPatch())
         self.property_exceed_failure_limit = 'clean_tree_results_exceed_failure_limit'
         self.property_failures = 'clean_tree_run_failures'
         self.setProperty('buildername', 'iOS-13-Simulator-WK2-Tests-EWS')
@@ -1849,7 +1849,7 @@ class TestRunWebKitTestsWithoutPatch(BuildStepMixinAdditions, unittest.TestCase)
         return self.runStep()
 
 
-class TestRunWebKit1Tests(BuildStepMixinAdditions, unittest.TestCase):
+class TestRunCyberKit1Tests(BuildStepMixinAdditions, unittest.TestCase):
     def setUp(self):
         self.longMessage = True
         self.jsonFileName = 'layout-test-results/full_results.json'
@@ -1859,7 +1859,7 @@ class TestRunWebKit1Tests(BuildStepMixinAdditions, unittest.TestCase):
         return self.tearDownBuildStep()
 
     def test_success(self):
-        self.setupStep(RunWebKit1Tests())
+        self.setupStep(RunCyberKit1Tests())
         self.setProperty('fullPlatform', 'ios-11')
         self.setProperty('configuration', 'debug')
         self.expectRemoteCommands(
@@ -1874,7 +1874,7 @@ class TestRunWebKit1Tests(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
     def test_failure(self):
-        self.setupStep(RunWebKit1Tests())
+        self.setupStep(RunCyberKit1Tests())
         self.setProperty('fullPlatform', 'ios-11')
         self.setProperty('configuration', 'release')
         self.expectRemoteCommands(
@@ -1890,7 +1890,7 @@ class TestRunWebKit1Tests(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
     def test_skip_for_revert_patches_on_commit_queue(self):
-        self.setupStep(RunWebKit1Tests())
+        self.setupStep(RunCyberKit1Tests())
         self.setProperty('buildername', 'Commit-Queue')
         self.setProperty('fullPlatform', 'mac')
         self.setProperty('configuration', 'debug')
@@ -2309,7 +2309,7 @@ class TestCheckPatchRelevance(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
     def test_relevant_wk1_patch(self):
-        CheckPatchRelevance._get_patch = lambda x: 'Sample patch; file: Source/WebKitLegacy'
+        CheckPatchRelevance._get_patch = lambda x: 'Sample patch; file: Source/CyberKitLegacy'
         self.setupStep(CheckPatchRelevance())
         self.setProperty('buildername', 'macOS-Mojave-Release-WK1-Tests-EWS')
         self.expectOutcome(result=SUCCESS, state_string='Patch contains relevant changes')
@@ -2323,7 +2323,7 @@ class TestCheckPatchRelevance(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
     def test_relevant_windows_wk1_patch(self):
-        CheckPatchRelevance._get_patch = lambda x: 'Sample patch; file: Source/WebKitLegacy'
+        CheckPatchRelevance._get_patch = lambda x: 'Sample patch; file: Source/CyberKitLegacy'
         self.setupStep(CheckPatchRelevance())
         self.setProperty('buildername', 'Windows-EWS')
         self.expectOutcome(result=SUCCESS, state_string='Patch contains relevant changes')
@@ -2332,14 +2332,14 @@ class TestCheckPatchRelevance(BuildStepMixinAdditions, unittest.TestCase):
     def test_relevant_webkitpy_patch(self):
         CheckPatchRelevance._get_patch = lambda x: 'Sample patch; file: Tools/Scripts/webkitpy'
         self.setupStep(CheckPatchRelevance())
-        self.setProperty('buildername', 'WebKitPy-Tests-EWS')
+        self.setProperty('buildername', 'CyberKitPy-Tests-EWS')
         self.expectOutcome(result=SUCCESS, state_string='Patch contains relevant changes')
         return self.runStep()
 
     def test_relevant_libraries_patch(self):
         CheckPatchRelevance._get_patch = lambda x: 'Sample patch; file: Tools/Scripts/libraries'
         self.setupStep(CheckPatchRelevance())
-        self.setProperty('buildername', 'WebKitPy-Tests-EWS')
+        self.setProperty('buildername', 'CyberKitPy-Tests-EWS')
         self.expectOutcome(result=SUCCESS, state_string='Patch contains relevant changes')
         return self.runStep()
 
@@ -2348,7 +2348,7 @@ class TestCheckPatchRelevance(BuildStepMixinAdditions, unittest.TestCase):
         queues = ['Commit-Queue', 'Style-EWS', 'Apply-WatchList-EWS', 'GTK-Build-EWS', 'GTK-WK2-Tests-EWS',
                   'iOS-13-Build-EWS', 'iOS-13-Simulator-Build-EWS', 'iOS-13-Simulator-WK2-Tests-EWS',
                   'macOS-Mojave-Release-Build-EWS', 'macOS-Mojave-Release-WK2-Tests-EWS', 'macOS-Mojave-Debug-Build-EWS',
-                  'WinCairo-EWS', 'WPE-EWS', 'WebKitPerl-Tests-EWS']
+                  'WinCairo-EWS', 'WPE-EWS', 'CyberKitPerl-Tests-EWS']
         for queue in queues:
             self.setupStep(CheckPatchRelevance())
             self.setProperty('buildername', queue)
@@ -2359,7 +2359,7 @@ class TestCheckPatchRelevance(BuildStepMixinAdditions, unittest.TestCase):
     def test_non_relevant_patch_on_various_queues(self):
         CheckPatchRelevance._get_patch = lambda x: 'Sample patch'
         queues = ['Bindings-Tests-EWS', 'JSC-Tests-EWS', 'macOS-BigSur-Release-Build-EWS',
-                  'macOS-Mojave-Debug-WK1-Tests-EWS', 'Services-EWS', 'WebKitPy-Tests-EWS']
+                  'macOS-Mojave-Debug-WK1-Tests-EWS', 'Services-EWS', 'CyberKitPy-Tests-EWS']
         for queue in queues:
             self.setupStep(CheckPatchRelevance())
             self.setProperty('buildername', queue)
@@ -2423,7 +2423,7 @@ class TestUploadBuiltProduct(BuildStepMixinAdditions, unittest.TestCase):
         self.expectHidden(False)
         self.expectRemoteCommands(
             Expect('uploadFile', dict(
-                                        workersrc='WebKitBuild/release.zip', workdir='wkdir',
+                                        workersrc='CyberKitBuild/release.zip', workdir='wkdir',
                                         blocksize=1024 * 256, maxsize=None, keepstamp=False,
                                         writer=ExpectRemoteRef(remotetransfer.FileWriter),
                                      ))
@@ -2444,7 +2444,7 @@ class TestUploadBuiltProduct(BuildStepMixinAdditions, unittest.TestCase):
         self.expectHidden(False)
         self.expectRemoteCommands(
             Expect('uploadFile', dict(
-                                        workersrc='WebKitBuild/release.zip', workdir='wkdir',
+                                        workersrc='CyberKitBuild/release.zip', workdir='wkdir',
                                         blocksize=1024 * 256, maxsize=None, keepstamp=False,
                                         writer=ExpectRemoteRef(remotetransfer.FileWriter),
                                      ))
@@ -2751,7 +2751,7 @@ Crashed
     TestWTF.WTF.StringConcatenate_Unsigned
         **FAIL** WTF.StringConcatenate_Unsigned
 
-        Tools\\TestWebKitAPI\\Tests\\WTF\\StringConcatenate.cpp:84
+        Tools\\TestCyberKitAPI\\Tests\\WTF\\StringConcatenate.cpp:84
         Value of: makeString('hello ', static_cast<unsigned short>(42) , ' world')
           Actual: hello 42 world
         Expected: 'hello * world'
@@ -2793,7 +2793,7 @@ Failed
     TestWTF.WTF.StringConcatenate_Unsigned
         **FAIL** WTF.StringConcatenate_Unsigned
 
-        Tools\\TestWebKitAPI\\Tests\\WTF\\StringConcatenate.cpp:84
+        Tools\\TestCyberKitAPI\\Tests\\WTF\\StringConcatenate.cpp:84
         Value of: makeString('hello ', static_cast<unsigned short>(42) , ' world')
           Actual: hello 42 world
         Expected: 'hello * world'
@@ -2802,7 +2802,7 @@ Failed
     TestWTF.WTF_Expected.Unexpected
         **FAIL** WTF_Expected.Unexpected
 
-        Tools\TestWebKitAPI\Tests\WTF\Expected.cpp:96
+        Tools\TestCyberKitAPI\Tests\WTF\Expected.cpp:96
         Value of: s1
           Actual: oops
         Expected: s0
@@ -2950,7 +2950,7 @@ Crashed
     TestWTF.WTF.StringConcatenate_Unsigned
         **FAIL** WTF.StringConcatenate_Unsigned
 
-        Tools\\TestWebKitAPI\\Tests\\WTF\\StringConcatenate.cpp:84
+        Tools\\TestCyberKitAPI\\Tests\\WTF\\StringConcatenate.cpp:84
         Value of: makeString('hello ', static_cast<unsigned short>(42) , ' world')
           Actual: hello 42 world
         Expected: 'hello * world'
@@ -2991,14 +2991,14 @@ Testing completed, Exit status: 3
 Unexpected failures (3)
     /TestWTF
         WTF_DateMath.calculateLocalTimeOffset
-    /WebKit2Gtk/TestPrinting
-        /webkit/WebKitPrintOperation/close-after-print
-    /WebKit2Gtk/TestWebsiteData
-        /webkit/WebKitWebsiteData/databases
+    /CyberKit2Gtk/TestPrinting
+        /webkit/CyberKitPrintOperation/close-after-print
+    /CyberKit2Gtk/TestWebsiteData
+        /webkit/CyberKitWebsiteData/databases
 
 Unexpected passes (1)
-    /WebKit2Gtk/TestUIClient
-        /webkit/WebKitWebView/usermedia-enumeratedevices-permission-check
+    /CyberKit2Gtk/TestUIClient
+        /webkit/CyberKitWebView/usermedia-enumeratedevices-permission-check
 
 Ran 1296 tests of 1298 with 1293 successful
 ''')
@@ -3375,16 +3375,16 @@ class TestFindModifiedChangeLogs(BuildStepMixinAdditions, unittest.TestCase):
                         timeout=180,
                         logEnviron=False,
                         command=['git', 'diff', '-r', '--name-status', '--no-renames', '--no-ext-diff', '--full-index']) +
-            ExpectShell.log('stdio', stdout='''M	Source/WebCore/ChangeLog
-M	Source/WebCore/layout/blockformatting/BlockFormattingContext.h
-M	Source/WebCore/layout/blockformatting/BlockMarginCollapse.cpp
+            ExpectShell.log('stdio', stdout='''M	Source/CyberCore/ChangeLog
+M	Source/CyberCore/layout/blockformatting/BlockFormattingContext.h
+M	Source/CyberCore/layout/blockformatting/BlockMarginCollapse.cpp
 M	Tools/ChangeLog
-M	Tools/TestWebKitAPI/CMakeLists.txt''') +
+M	Tools/TestCyberKitAPI/CMakeLists.txt''') +
             0,
         )
         self.expectOutcome(result=SUCCESS, state_string='Found modified ChangeLogs')
         rc = self.runStep()
-        self.assertEqual(self.getProperty('modified_changelogs'), ['Source/WebCore/ChangeLog', 'Tools/ChangeLog'])
+        self.assertEqual(self.getProperty('modified_changelogs'), ['Source/CyberCore/ChangeLog', 'Tools/ChangeLog'])
         self.assertEqual(self.getProperty('bugzilla_comment_text'), None)
         self.assertEqual(self.getProperty('build_finish_summary'), None)
         return rc
@@ -3438,12 +3438,12 @@ class TestCreateLocalGITCommit(BuildStepMixinAdditions, unittest.TestCase):
         self.setupStep(CreateLocalGITCommit())
         self.assertEqual(CreateLocalGITCommit.haltOnFailure, False)
         self.setProperty('buildername', 'Commit-Queue')
-        self.setProperty('modified_changelogs', ['Tools/Scripts/ChangeLog', 'Source/WebCore/ChangeLog'])
+        self.setProperty('modified_changelogs', ['Tools/Scripts/ChangeLog', 'Source/CyberCore/ChangeLog'])
         self.expectRemoteCommands(
             ExpectShell(workdir='wkdir',
                         timeout=300,
                         logEnviron=False,
-                        command='perl Tools/Scripts/commit-log-editor --print-log Tools/Scripts/ChangeLog Source/WebCore/ChangeLog | git commit --all -F -') +
+                        command='perl Tools/Scripts/commit-log-editor --print-log Tools/Scripts/ChangeLog Source/CyberCore/ChangeLog | git commit --all -F -') +
             0,
         )
         self.expectOutcome(result=SUCCESS, state_string='Created local git commit')
@@ -3484,7 +3484,7 @@ class TestValidateCommiterAndReviewer(BuildStepMixinAdditions, unittest.TestCase
 
         def mock_load_contributors(cls, *args, **kwargs):
             return {'aakash_jain@apple.com': {'name': 'Aakash Jain', 'status': 'reviewer'},
-                    'committer@webkit.org': {'name': 'WebKit Committer', 'status': 'committer'}}
+                    'committer@webkit.org': {'name': 'CyberKit Committer', 'status': 'committer'}}
         ValidateCommiterAndReviewer.load_contributors = mock_load_contributors
         return self.setUpBuildStep()
 
@@ -3568,7 +3568,7 @@ class TestCheckPatchStatusOnEWSQueues(BuildStepMixinAdditions, unittest.TestCase
         return rc
 
 
-class TestPushCommitToWebKitRepo(BuildStepMixinAdditions, unittest.TestCase):
+class TestPushCommitToCyberKitRepo(BuildStepMixinAdditions, unittest.TestCase):
     def setUp(self):
         self.longMessage = True
         return self.setUpBuildStep()
@@ -3577,7 +3577,7 @@ class TestPushCommitToWebKitRepo(BuildStepMixinAdditions, unittest.TestCase):
         return self.tearDownBuildStep()
 
     def test_success(self):
-        self.setupStep(PushCommitToWebKitRepo())
+        self.setupStep(PushCommitToCyberKitRepo())
         self.expectRemoteCommands(
             ExpectShell(workdir='wkdir',
                         timeout=300,
@@ -3590,7 +3590,7 @@ class TestPushCommitToWebKitRepo(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
     def test_failure(self):
-        self.setupStep(PushCommitToWebKitRepo())
+        self.setupStep(PushCommitToCyberKitRepo())
         self.expectRemoteCommands(
             ExpectShell(workdir='wkdir',
                         timeout=300,

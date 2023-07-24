@@ -12,8 +12,8 @@ add_definitions(-DBPLATFORM_PLAYSTATION=1)
 add_definitions(-DSCE_LIBC_DISABLE_CPP14_HEADER_WARNING= -DSCE_LIBC_DISABLE_CPP17_HEADER_WARNING=)
 
 set(ENABLE_API_TESTS ON CACHE BOOL "Build API Tests")
-set(ENABLE_WEBCORE ON CACHE BOOL "Build WebCore")
-set(ENABLE_WEBKIT ON CACHE BOOL "Build WebKit")
+set(ENABLE_WEBCORE ON CACHE BOOL "Build CyberCore")
+set(ENABLE_WEBKIT ON CACHE BOOL "Build CyberKit")
 set(ENABLE_WEBKIT_LEGACY OFF)
 set(ENABLE_WEBINSPECTORUI OFF)
 
@@ -99,7 +99,7 @@ if (NOT WEBKIT_LIBRARIES_DIR)
     if (DEFINED ENV{WEBKIT_LIBRARIES})
         set(WEBKIT_LIBRARIES_DIR "$ENV{WEBKIT_LIBRARIES}" CACHE PATH "Path to PlayStationRequirements")
     else ()
-        set(WEBKIT_LIBRARIES_DIR "${CMAKE_SOURCE_DIR}/WebKitLibraries/playstation" CACHE PATH "Path to PlayStationRequirements")
+        set(WEBKIT_LIBRARIES_DIR "${CMAKE_SOURCE_DIR}/CyberKitLibraries/playstation" CACHE PATH "Path to PlayStationRequirements")
     endif ()
 endif ()
 
@@ -107,7 +107,7 @@ list(APPEND CMAKE_PREFIX_PATH ${WEBKIT_LIBRARIES_DIR})
 
 find_library(C_STD_LIBRARY c)
 find_library(KERNEL_LIBRARY kernel)
-find_package(WebKitRequirements REQUIRED
+find_package(CyberKitRequirements REQUIRED
     COMPONENTS
         JPEG
         LibPSL
@@ -166,41 +166,41 @@ SET_AND_EXPOSE_TO_BUILD(USE_TILED_BACKING_STORE ON)
 # Override headers directories
 set(ANGLE_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/ANGLE/Headers)
 set(WTF_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/WTF/Headers)
-set(JavaScriptCore_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/JavaScriptCore/Headers)
-set(JavaScriptCore_PRIVATE_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/JavaScriptCore/PrivateHeaders)
+set(CyberScriptCore_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/CyberScriptCore/Headers)
+set(CyberScriptCore_PRIVATE_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/CyberScriptCore/PrivateHeaders)
 set(PAL_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/PAL/Headers)
-set(WebCore_PRIVATE_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/WebCore/PrivateHeaders)
-set(WebKitLegacy_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/WebKitLegacy/Headers)
-set(WebKit_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/WebKit/Headers)
-set(WebKit_PRIVATE_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/WebKit/PrivateHeaders)
+set(CyberCore_PRIVATE_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/CyberCore/PrivateHeaders)
+set(CyberKitLegacy_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/CyberKitLegacy/Headers)
+set(CyberKit_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/CyberKit/Headers)
+set(CyberKit_PRIVATE_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/CyberKit/PrivateHeaders)
 
 # Override derived sources directories
 set(WTF_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/WTF/DerivedSources)
-set(JavaScriptCore_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/JavaScriptCore/DerivedSources)
-set(WebCore_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/WebCore/DerivedSources)
-set(WebKitLegacy_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/WebKitLegacy/DerivedSources)
-set(WebKit_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/WebKit/DerivedSources)
+set(CyberScriptCore_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/CyberScriptCore/DerivedSources)
+set(CyberCore_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/CyberCore/DerivedSources)
+set(CyberKitLegacy_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/CyberKitLegacy/DerivedSources)
+set(CyberKit_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/CyberKit/DerivedSources)
 
 # Override scripts directories
 set(WTF_SCRIPTS_DIR ${CMAKE_BINARY_DIR}/WTF/Scripts)
-set(JavaScriptCore_SCRIPTS_DIR ${CMAKE_BINARY_DIR}/JavaScriptCore/Scripts)
+set(CyberScriptCore_SCRIPTS_DIR ${CMAKE_BINARY_DIR}/CyberScriptCore/Scripts)
 
-# Create a shared JavaScriptCore with WTF and bmalloc exposed through it.
+# Create a shared CyberScriptCore with WTF and bmalloc exposed through it.
 #
 # Use OBJECT libraries for bmalloc and WTF. This is the modern CMake way to emulate
 # the behavior of --whole-archive. If this is not done then all the exports will
 # not be exposed.
 set(bmalloc_LIBRARY_TYPE OBJECT)
 set(WTF_LIBRARY_TYPE OBJECT)
-set(JavaScriptCore_LIBRARY_TYPE SHARED)
+set(CyberScriptCore_LIBRARY_TYPE SHARED)
 
-# Create a shared WebKit
+# Create a shared CyberKit
 #
-# Use OBJECT libraries for PAL and WebCore. The size of a libWebCore.a is too much
+# Use OBJECT libraries for PAL and CyberCore. The size of a libCyberCore.a is too much
 # for ranlib.
 set(PAL_LIBRARY_TYPE OBJECT)
-set(WebCore_LIBRARY_TYPE OBJECT)
-set(WebKit_LIBRARY_TYPE SHARED)
+set(CyberCore_LIBRARY_TYPE OBJECT)
+set(CyberKit_LIBRARY_TYPE SHARED)
 
 # Enable multi process builds for Visual Studio
 if (NOT ${CMAKE_GENERATOR} MATCHES "Ninja")

@@ -47,7 +47,7 @@ struct _BrowserSearchBoxClass {
 
 GType browser_search_box_get_type(void);
 
-GtkWidget *browser_search_box_new(WebKitWebView *);
+GtkWidget *browser_search_box_new(CyberKitWebView *);
 GtkEntry *browser_search_box_get_entry(BrowserSearchBox *);
 
 G_END_DECLS

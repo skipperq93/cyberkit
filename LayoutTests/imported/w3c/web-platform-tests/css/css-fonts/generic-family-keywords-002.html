@@ -32,7 +32,7 @@
   function runTests() {
     let ahem = document.getElementById('ahem');
     let ahem_expected_width = ahem.offsetWidth;
-    let families = kGenericFontFamilyKeywords.map(keyword => `-webkit-${keyword}`).concat(kWebKitPrefixKeywords);
+    let families = kGenericFontFamilyKeywords.map(keyword => `-webkit-${keyword}`).concat(kCyberKitPrefixKeywords);
     families.forEach(name => {
       test(function() {
       assert_equals(SetFontFamilyAndMeasure(name), ahem_expected_width);

@@ -1,7 +1,7 @@
 <html>
 <head>
 <script>
-// Setting WebKitDisplayImagesKey is asynchronous, so using queueReload and setInterval to check when the setting actually take effect.
+// Setting CyberKitDisplayImagesKey is asynchronous, so using queueReload and setInterval to check when the setting actually take effect.
 
 var intervalId;
 var imageOnloadFired = 0;
@@ -9,7 +9,7 @@ var imageOnloadFired = 0;
 if (window.testRunner) {
     testRunner.dumpAsText();
     window.internals.settings.setImagesEnabled(true);
-    testRunner.overridePreference('WebKitDisplayImagesKey', 0);
+    testRunner.overridePreference('CyberKitDisplayImagesKey', 0);
     testRunner.queueReload();
 }
 
@@ -21,7 +21,7 @@ function runTest()
         return;
     }
 
-    testRunner.overridePreference('WebKitDisplayImagesKey', 1);
+    testRunner.overridePreference('CyberKitDisplayImagesKey', 1);
     document.getElementById('result').innerHTML = 'FAILURE: Image should reload in-place when DispalyImage is changes from unset to set';
     testRunner.waitUntilDone();
     intervalId = window.setInterval(runTestRest, 10);

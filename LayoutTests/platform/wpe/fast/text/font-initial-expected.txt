@@ -12,7 +12,7 @@ layer at (0,0) size 800x600
               text run at (53,0) width 301: "http://bugs.webkit.org/show_bug.cgi?id=12039"
           RenderText {#text} at (354,0) size 319x17
             text run at (354,0) width 4: " "
-            text run at (358,0) width 315: "Assertion failure in WebCore::Font::primaryFont"
+            text run at (358,0) width 315: "Assertion failure in CyberCore::Font::primaryFont"
         RenderText {#text} at (673,0) size 4x17
           text run at (673,0) width 4: "."
       RenderBlock (anonymous) at (0,34) size 784x18

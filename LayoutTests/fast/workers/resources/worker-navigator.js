@@ -15,11 +15,11 @@ worker.postMessage("eval navigator");
 // NavigatorID
 worker.postMessage("eval navigator.appCodeName === 'Mozilla'");
 worker.postMessage("eval navigator.appName === 'Netscape'");
-worker.postMessage("eval navigator.appVersion.indexOf('WebKit') != 0");
+worker.postMessage("eval navigator.appVersion.indexOf('CyberKit') != 0");
 worker.postMessage("eval typeof navigator.platform == 'string'");
 worker.postMessage("eval navigator.product === 'Gecko'");
 worker.postMessage("eval navigator.productSub === undefined");
-worker.postMessage("eval navigator.userAgent.indexOf('WebKit') != 0");
+worker.postMessage("eval navigator.userAgent.indexOf('CyberKit') != 0");
 worker.postMessage("eval navigator.vendor === undefined");
 worker.postMessage("eval navigator.vendorSub === undefined");
 

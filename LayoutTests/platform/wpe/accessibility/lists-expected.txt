@@ -27,7 +27,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:list, tag:ul, toolkit:WPEWebKit
+AXPlatformAttributes: computed-role:list, tag:ul, toolkit:WPECyberKit
 ------------
 AXRole: AXList
 AXParent: AXWebArea
@@ -45,7 +45,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:list, tag:ol, toolkit:WPEWebKit
+AXPlatformAttributes: computed-role:list, tag:ol, toolkit:WPECyberKit
 ------------
 AXRole: AXDescriptionList
 AXParent: AXWebArea
@@ -63,7 +63,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: tag:dl, toolkit:WPEWebKit
+AXPlatformAttributes: tag:dl, toolkit:WPECyberKit
 ------------
 AXRole: AXSection
 AXParent: AXWebArea
@@ -82,7 +82,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: toolkit:WPEWebKit
+AXPlatformAttributes: toolkit:WPECyberKit
 ------------
 
 
@@ -103,7 +103,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:listitem, tag:li, toolkit:WPEWebKit
+AXPlatformAttributes: computed-role:listitem, tag:li, toolkit:WPECyberKit
 ------------
 AXRole: AXListItem
 AXParent: AXList
@@ -122,7 +122,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:listitem, tag:li, toolkit:WPEWebKit
+AXPlatformAttributes: computed-role:listitem, tag:li, toolkit:WPECyberKit
 ------------
 
 
@@ -143,7 +143,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:listitem, tag:li, toolkit:WPEWebKit
+AXPlatformAttributes: computed-role:listitem, tag:li, toolkit:WPECyberKit
 ------------
 AXRole: AXListItem
 AXParent: AXList
@@ -162,7 +162,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:listitem, tag:li, toolkit:WPEWebKit
+AXPlatformAttributes: computed-role:listitem, tag:li, toolkit:WPECyberKit
 ------------
 
 
@@ -183,7 +183,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: tag:dt, toolkit:WPEWebKit
+AXPlatformAttributes: tag:dt, toolkit:WPECyberKit
 ------------
 AXRole: AXDescriptionValue
 AXParent: AXDescriptionList
@@ -202,7 +202,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: tag:dd, toolkit:WPEWebKit
+AXPlatformAttributes: tag:dd, toolkit:WPECyberKit
 ------------
 AXRole: AXDescriptionTerm
 AXParent: AXDescriptionList
@@ -221,7 +221,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: tag:dt, toolkit:WPEWebKit
+AXPlatformAttributes: tag:dt, toolkit:WPECyberKit
 ------------
 AXRole: AXDescriptionValue
 AXParent: AXDescriptionList
@@ -240,7 +240,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: tag:dd, toolkit:WPEWebKit
+AXPlatformAttributes: tag:dd, toolkit:WPECyberKit
 ------------
 AXRole: AXDescriptionValue
 AXParent: AXDescriptionList
@@ -259,7 +259,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: tag:dd, toolkit:WPEWebKit
+AXPlatformAttributes: tag:dd, toolkit:WPECyberKit
 ------------
 
 

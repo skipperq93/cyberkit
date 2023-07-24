@@ -1,6 +1,6 @@
 <?php
     header("Content-Security-Policy-Report-Only: script-src 'nonce-dummy' 'nonce-dump-as-text'");
-    header("X-WebKit-CSP: script-src 'nonce-dump-as-text'; report-uri ../resources/save-report.php?test=/security/contentSecurityPolicy/1.1/scriptnonce-blocked-by-legacy-enforced-policy-and-allowed-by-report-policy.php");
+    header("X-CyberKit-CSP: script-src 'nonce-dump-as-text'; report-uri ../resources/save-report.php?test=/security/contentSecurityPolicy/1.1/scriptnonce-blocked-by-legacy-enforced-policy-and-allowed-by-report-policy.php");
 ?>
 <!DOCTYPE html>
 <html>

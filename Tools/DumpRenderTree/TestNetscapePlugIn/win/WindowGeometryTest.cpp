@@ -37,7 +37,7 @@ WindowGeometryTest::WindowGeometryTest(NPP npp, const string& identifier)
 
 void WindowGeometryTest::startTest()
 {
-    // In WebKit1, our window's window region will be set immediately. In WebKit2, it won't be set
+    // In CyberKit1, our window's window region will be set immediately. In CyberKit2, it won't be set
     // until the UI process paints. Since the UI process will also show our window when it paints,
     // we can detect when the paint occurs (and thus when our window region should be set) by
     // starting with our plugin element hidden, then making it visible and waiting for a
@@ -49,7 +49,7 @@ void WindowGeometryTest::startTest()
     // when our window is made visible. So we temporarily show the test harness window during this test.
     showTestHarnessWindowIfNeeded();
 
-    // Make our window visible. (In WebKit2, this won't take effect immediately.)
+    // Make our window visible. (In CyberKit2, this won't take effect immediately.)
     executeScript("document.getElementsByTagName('embed')[0].style.visibility = 'visible';");
 
     // We trigger a UI process paint after a slight delay to ensure that the UI process has

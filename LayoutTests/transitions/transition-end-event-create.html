@@ -7,7 +7,7 @@
 <div id="console"></div>
 <script>
 
-description("Test dynamic creation of WebKitTransitionEnd event.");
+description("Test dynamic creation of CyberKitTransitionEnd event.");
 
 if (document.createEvent)
     testPassed("document.createEvent exists");
@@ -15,16 +15,16 @@ else
     testFailed("document.createEvent missing");
 
 debug("");
-debug("Test creation of WebKitTransitionEvent");
+debug("Test creation of CyberKitTransitionEvent");
 
-var ev = new WebKitTransitionEvent("");
+var ev = new CyberKitTransitionEvent("");
 
 shouldBe("typeof(ev)", "'object'");
 shouldBe("ev.propertyName", "''");
 shouldBe("ev.elapsedTime", "0.0");
 
 debug("");
-debug("Create a MouseEvent and make sure it doesn't have the WebKitTransitionEnd event properties");
+debug("Create a MouseEvent and make sure it doesn't have the CyberKitTransitionEnd event properties");
 
 ev = document.createEvent("MouseEvent");
 

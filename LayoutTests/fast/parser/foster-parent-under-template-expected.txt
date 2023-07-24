@@ -1,4 +1,4 @@
-This tests running the foster parent algorithm under a template element. WebKit should not hit any debug assertions.
+This tests running the foster parent algorithm under a template element. CyberKit should not hit any debug assertions.
 | "
 "
 | <template>

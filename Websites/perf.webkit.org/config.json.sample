@@ -1,5 +1,5 @@
 {
-    "siteTitle": "WebKit Performance Dashboard",
+    "siteTitle": "CyberKit Performance Dashboard",
     "debug": true,
     "jsonCacheMaxAge": 600,
     "dataDirectory": "public/data/",

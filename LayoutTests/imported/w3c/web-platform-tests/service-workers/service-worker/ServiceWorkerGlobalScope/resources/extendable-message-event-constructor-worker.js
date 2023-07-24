@@ -12,7 +12,7 @@ function createEvent(initializer) {
 
 // These test cases are mostly copied from the following file in the Chromium
 // project (as of commit 848ad70823991e0f12b437d789943a4ab24d65bb):
-// third_party/WebKit/LayoutTests/fast/events/constructors/message-event-constructor.html
+// third_party/CyberKit/LayoutTests/fast/events/constructors/message-event-constructor.html
 
 test(function() {
   assert_false(createEvent().bubbles);

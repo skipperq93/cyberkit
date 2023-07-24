@@ -1177,7 +1177,7 @@ static int ExecDeathTestChildMain(void* child_arg) {
   // unsafe.  Since execve() doesn't search the PATH, the user must
   // invoke the test program via a valid path that contains at least
   // one path separator.
-  // We have replaced execve() with execv() for WebKit to avoid using
+  // We have replaced execve() with execv() for CyberKit to avoid using
   // environ. It should be safe because execv() is just a simple wrapper
   // of execve().
   execv(args->argv[0], args->argv);

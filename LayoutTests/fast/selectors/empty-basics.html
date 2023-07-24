@@ -42,7 +42,7 @@ for (var i = 0; i < 10; ++i)
 var commentsAndEmptyTextnodes = document.getElementById("comments-and-empty-textnodes");
 for (var i = 0; i < 10; ++i) {
     commentsAndEmptyTextnodes.appendChild(document.createTextNode(""));
-    commentsAndEmptyTextnodes.appendChild(document.createComment("WebKit!"));
+    commentsAndEmptyTextnodes.appendChild(document.createComment("CyberKit!"));
 }
 
 shouldBe('document.querySelectorAll("testcase:empty").length', '4');

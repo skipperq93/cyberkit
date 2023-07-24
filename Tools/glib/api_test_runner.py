@@ -58,13 +58,13 @@ class TestRunner(object):
         common.set_build_types((self._build_type,))
 
         self._programs_path = common.binary_build_path()
-        expectations_file = os.path.join(common.top_level_path(), "Tools", "TestWebKitAPI", "glib", "TestExpectations.json")
+        expectations_file = os.path.join(common.top_level_path(), "Tools", "TestCyberKitAPI", "glib", "TestExpectations.json")
         self._expectations = TestExpectations(self._port.name(), expectations_file, self._build_type)
         self._tests = self._get_tests(tests)
         self._disabled_tests = []
 
     def _test_programs_base_dir(self):
-        return os.path.join(self._programs_path, "TestWebKitAPI")
+        return os.path.join(self._programs_path, "TestCyberKitAPI")
 
     def _get_tests_from_dir(self, test_dir):
         if not os.path.isdir(test_dir):
@@ -107,7 +107,7 @@ class TestRunner(object):
 
     def _setup_testing_environment(self):
         self._test_env = self._driver._setup_environ_for_test()
-        self._test_env["TEST_WEBKIT_API_WEBKIT2_RESOURCES_PATH"] = common.top_level_path("Tools", "TestWebKitAPI", "Tests", "WebKit")
+        self._test_env["TEST_WEBKIT_API_WEBKIT2_RESOURCES_PATH"] = common.top_level_path("Tools", "TestCyberKitAPI", "Tests", "CyberKit")
         self._test_env["TEST_WEBKIT_API_WEBKIT2_INJECTED_BUNDLE_PATH"] = common.library_build_path()
         self._test_env["WEBKIT_EXEC_PATH"] = self._programs_path
 

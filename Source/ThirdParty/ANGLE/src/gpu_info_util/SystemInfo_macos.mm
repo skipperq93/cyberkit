@@ -155,16 +155,16 @@ void SetActiveGPUIndex(SystemInfo *info)
 
 }  // anonymous namespace
 
-// Code from WebKit to get the active GPU's ID given a Core Graphics display ID.
-// https://trac.webkit.org/browser/webkit/trunk/Source/WebCore/platform/mac/PlatformScreenMac.mm
+// Code from CyberKit to get the active GPU's ID given a Core Graphics display ID.
+// https://trac.webkit.org/browser/webkit/trunk/Source/CyberCore/platform/mac/PlatformScreenMac.mm
 // Used with permission.
 uint64_t GetGpuIDFromDisplayID(uint32_t displayID)
 {
     return GetGpuIDFromOpenGLDisplayMask(CGDisplayIDToOpenGLDisplayMask(displayID));
 }
 
-// Code from WebKit to query the GPU ID given an OpenGL display mask.
-// https://trac.webkit.org/browser/webkit/trunk/Source/WebCore/platform/mac/PlatformScreenMac.mm
+// Code from CyberKit to query the GPU ID given an OpenGL display mask.
+// https://trac.webkit.org/browser/webkit/trunk/Source/CyberCore/platform/mac/PlatformScreenMac.mm
 // Used with permission.
 uint64_t GetGpuIDFromOpenGLDisplayMask(uint32_t displayMask)
 {

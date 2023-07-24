@@ -1,11 +1,11 @@
 function isGtk()
 {
-    return navigator.userAgent.includes("WebKitTestRunnerGTK");
+    return navigator.userAgent.includes("CyberKitTestRunnerGTK");
 }
 
 function isEfl()
 {
-    return navigator.userAgent.includes("WebKitTestRunnerEFL");
+    return navigator.userAgent.includes("CyberKitTestRunnerEFL");
 }
 
 function videoCanvasPixelComparisonTolerance()

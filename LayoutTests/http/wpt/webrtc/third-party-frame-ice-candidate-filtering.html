@@ -37,9 +37,9 @@ var host = get_host_info();
 var frame1, frame2, frame2b, frame3;
 promise_test(async (test) => {
     frame1 = await withFrame("resources/third-party-frame-ice-candidate-filtering-iframe.html");
-    frame2 = await withFrame(host.HTTP_REMOTE_ORIGIN + "/WebKit/webrtc/resources/third-party-frame-ice-candidate-filtering-iframe.html");
-    frame2b = await withFrame(host.HTTP_REMOTE_ORIGIN + "/WebKit/webrtc/resources/third-party-frame-ice-candidate-filtering-iframe.html");
-    frame3 = await withFrame(host.HTTP_REMOTE_ORIGIN_WITH_DIFFERENT_PORT + "/WebKit/webrtc/resources/third-party-frame-ice-candidate-filtering-iframe.html");
+    frame2 = await withFrame(host.HTTP_REMOTE_ORIGIN + "/CyberKit/webrtc/resources/third-party-frame-ice-candidate-filtering-iframe.html");
+    frame2b = await withFrame(host.HTTP_REMOTE_ORIGIN + "/CyberKit/webrtc/resources/third-party-frame-ice-candidate-filtering-iframe.html");
+    frame3 = await withFrame(host.HTTP_REMOTE_ORIGIN_WITH_DIFFERENT_PORT + "/CyberKit/webrtc/resources/third-party-frame-ice-candidate-filtering-iframe.html");
 }, "Setup test");
 
 promise_test(async (test) => {

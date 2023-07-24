@@ -143,7 +143,7 @@ function runLeakTest(testFunctionName, underlyingClassName)
 function startTest()
 {
     if (!window.internals || !internals.numberOfLiveNodes) {
-        testFailed('Test requires windows.internals, so must be run inside WebKitTestRunner');
+        testFailed('Test requires windows.internals, so must be run inside CyberKitTestRunner');
         return;
     }
 

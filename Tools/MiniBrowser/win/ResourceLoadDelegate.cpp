@@ -26,9 +26,9 @@
 #include "ResourceLoadDelegate.h"
 
 #include "Common.h"
-#include "WebKitLegacyBrowserWindow.h"
-#include <WebCore/COMPtr.h>
-#include <WebKitLegacy/WebKitCOMAPI.h>
+#include "CyberKitLegacyBrowserWindow.h"
+#include <CyberCore/COMPtr.h>
+#include <CyberKitLegacy/CyberKitCOMAPI.h>
 #include <comip.h>
 #include <commctrl.h>
 #include <commdlg.h>
@@ -92,7 +92,7 @@ HRESULT ResourceLoadDelegate::didReceiveAuthenticationChallenge(_In_opt_ IWebVie
 
     if (auto credential = askCredential(m_client->hwnd(), std::wstring(realm))) {
         COMPtr<IWebURLCredential> wkCredential;
-        if (FAILED(WebKitCreateInstance(CLSID_WebURLCredential, 0, IID_IWebURLCredential, (void**)&wkCredential)))
+        if (FAILED(CyberKitCreateInstance(CLSID_WebURLCredential, 0, IID_IWebURLCredential, (void**)&wkCredential)))
             return E_FAIL;
         wkCredential->initWithUser(_bstr_t(credential->username.c_str()), _bstr_t(credential->password.c_str()), WebURLCredentialPersistenceForSession);
 

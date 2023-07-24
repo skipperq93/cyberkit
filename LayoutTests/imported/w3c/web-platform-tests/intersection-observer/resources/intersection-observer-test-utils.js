@@ -29,7 +29,7 @@
 // generated), and the delivery of these events varies between engines, making
 // this tricky to test in a non-flaky way.
 //
-// In particular, in WebKit, requestAnimationFrame and the generation of
+// In particular, in CyberKit, requestAnimationFrame and the generation of
 // a display frame are two separate tasks, so a step_timeout called within
 // requestAnimationFrame can fire before a display frame is generated.
 //

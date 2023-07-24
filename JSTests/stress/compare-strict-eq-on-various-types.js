@@ -10,7 +10,7 @@ noInline(opaqueKitString);
 let someObject = new Object;
 let validInputTestCases = [
     "undefined",
-    "Symbol(\"WebKit\")",
+    "Symbol(\"CyberKit\")",
     "null",
     "true",
     "false",
@@ -21,9 +21,9 @@ let validInputTestCases = [
     "-42",
     "Math.PI",
     "NaN",
-    "\"WebKit\"",
+    "\"CyberKit\"",
     "\"Web\" + opaqueKitString()",
-    "new String(\"WebKit\")",
+    "new String(\"CyberKit\")",
     "someObject",
     "validInputTestCases",
 ];
@@ -134,7 +134,7 @@ noInline(opaqueStrictNotEqualAllTypesToString);
 noOSRExitFuzzing(opaqueStrictNotEqualAllTypesToString);
 
 function testStringToAllCompare() {
-    const leftStringIndex = leftCases.indexOf("WebKit");
+    const leftStringIndex = leftCases.indexOf("CyberKit");
     for (let i = 0; i < 1e3; ++i) {
         for (let rightCaseIndex = 0; rightCaseIndex < rightCases.length; ++rightCaseIndex) {
             let rightCase = rightCases[rightCaseIndex];
@@ -149,7 +149,7 @@ function testStringToAllCompare() {
         }
     }
 
-    const rightStringIndex = leftCases.lastIndexOf("WebKit");
+    const rightStringIndex = leftCases.lastIndexOf("CyberKit");
     for (let i = 0; i < 1e3; ++i) {
         for (let leftCaseIndex = 0; leftCaseIndex < leftCases.length; ++leftCaseIndex) {
             let leftCase = leftCases[leftCaseIndex];

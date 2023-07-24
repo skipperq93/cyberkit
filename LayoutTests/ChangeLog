@@ -7,7 +7,7 @@
     
     Reviewed by Daniel Bates.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Nested flexboxes with column direction were not computing correctly min-size:auto because
     we were explicitly preventing them from doing so in the code. Implemented the required bits to
@@ -23,16 +23,16 @@
     Inspired by Blink's crrev.com/c/1641510, crrev.com/c/1269995 & crrev.com/c/1786297 by <cbiesinger@chromium.org>
     
     * rendering/RenderFlexibleBox.cpp:
-    (WebCore::RenderFlexibleBox::shouldApplyMinSizeAutoForChild const): Refactored from
+    (CyberCore::RenderFlexibleBox::shouldApplyMinSizeAutoForChild const): Refactored from
     RenderFlexibleBox::adjustChildSizeForMinAndMax.
-    (WebCore::RenderFlexibleBox::mainAxisLengthIsDefinite const): Additional case for column flows.
-    (WebCore::RenderFlexibleBox::layoutFlexItems): Reset m_hasDefiniteHeight to Unknown after calling
+    (CyberCore::RenderFlexibleBox::mainAxisLengthIsDefinite const): Additional case for column flows.
+    (CyberCore::RenderFlexibleBox::layoutFlexItems): Reset m_hasDefiniteHeight to Unknown after calling
     constructFlexItem() because the latter might set now an override containing block height which basically
     potentially makes any cached size value incorrect.
-    (WebCore::RenderFlexibleBox::adjustChildSizeForMinAndMax): Directly call shouldApplyMinSizeAutoForChild().
-    (WebCore::RenderFlexibleBox::constructFlexItem): Set an indefinite override containing block size for
+    (CyberCore::RenderFlexibleBox::adjustChildSizeForMinAndMax): Directly call shouldApplyMinSizeAutoForChild().
+    (CyberCore::RenderFlexibleBox::constructFlexItem): Set an indefinite override containing block size for
     children with percentage sizes so that they're resolved as auto.
-    (WebCore::RenderFlexibleBox::childHasIntrinsicMainAxisSize const): Return true for those cases where the
+    (CyberCore::RenderFlexibleBox::childHasIntrinsicMainAxisSize const): Return true for those cases where the
     main axis length is indefinite and also when shouldApplyMinSizeAutoForChild().
     * rendering/RenderFlexibleBox.h:
     
@@ -80,7 +80,7 @@
     
     * web-platform-tests/webrtc/idlharness.https.window-expected.txt:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Expose RTCPeerConnection.onicecandidateerror and use it for wrong STUN/TURN server URLs.
     For that matter, add RTCPeerConnectionIceErrorEvent as per spec with a slight change to the init directory to keep the same terminology between event and init dictionary.
@@ -92,19 +92,19 @@
     * DerivedSources-output.xcfilelist:
     * DerivedSources.make:
     * Modules/mediastream/RTCPeerConnection.cpp:
-    (WebCore::RTCPeerConnection::iceServersFromConfiguration):
-    (WebCore::iceServersFromConfiguration): Deleted.
+    (CyberCore::RTCPeerConnection::iceServersFromConfiguration):
+    (CyberCore::iceServersFromConfiguration): Deleted.
     * Modules/mediastream/RTCPeerConnection.h:
     * Modules/mediastream/RTCPeerConnection.idl:
     * Modules/mediastream/RTCPeerConnectionIceErrorEvent.cpp: Added.
-    (WebCore::RTCPeerConnectionIceErrorEvent::create):
-    (WebCore::RTCPeerConnectionIceErrorEvent::RTCPeerConnectionIceErrorEvent):
-    (WebCore::RTCPeerConnectionIceErrorEvent::eventInterface const):
+    (CyberCore::RTCPeerConnectionIceErrorEvent::create):
+    (CyberCore::RTCPeerConnectionIceErrorEvent::RTCPeerConnectionIceErrorEvent):
+    (CyberCore::RTCPeerConnectionIceErrorEvent::eventInterface const):
     * Modules/mediastream/RTCPeerConnectionIceErrorEvent.h: Added.
     * Modules/mediastream/RTCPeerConnectionIceErrorEvent.idl: Added.
     * Sources.txt:
-    * WebCore.xcodeproj/project.pbxproj:
-    * bindings/js/WebCoreBuiltinNames.h:
+    * CyberCore.xcodeproj/project.pbxproj:
+    * bindings/js/CyberCoreBuiltinNames.h:
     * dom/EventNames.h:
     * dom/EventNames.in:
     
@@ -181,7 +181,7 @@
     
     Reviewed by Geoffrey Garen.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     An iframe with `sandbox=allow-top-navigation-by-user-activation` can navigate the top frame when the user
     interacts with an frame from another origin. This is not strict enough and does not match the behavior of
@@ -197,13 +197,13 @@
     Test: http/tests/security/block-top-level-navigations-by-sandboxed-iframe-with-propagated-user-gesture.html
     
     * dom/Document.cpp:
-    (WebCore::Document::canNavigateInternal):
+    (CyberCore::Document::canNavigateInternal):
     * dom/UserGestureIndicator.cpp:
-    (WebCore::UserGestureToken::UserGestureToken):
-    (WebCore::UserGestureToken::isValidForDocument const):
-    (WebCore::UserGestureIndicator::processingUserGesture):
+    (CyberCore::UserGestureToken::UserGestureToken):
+    (CyberCore::UserGestureToken::isValidForDocument const):
+    (CyberCore::UserGestureIndicator::processingUserGesture):
     * dom/UserGestureIndicator.h:
-    (WebCore::UserGestureToken::create):
+    (CyberCore::UserGestureToken::create):
     
     LayoutTests:
     
@@ -240,7 +240,7 @@
     
     Reviewed by Geoffrey Garen.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Block suspicious top level navigations by iframes even if sandbox=allow-top-navigation is specified,
     when the parent of the sandboxed iframe is not first-party.
@@ -248,7 +248,7 @@
     Test: http/tests/security/block-top-level-navigations-by-third-party-sandboxed-iframe.html
     
     * dom/Document.cpp:
-    (WebCore::Document::isNavigationBlockedByThirdPartyIFrameRedirectBlocking):
+    (CyberCore::Document::isNavigationBlockedByThirdPartyIFrameRedirectBlocking):
     
     LayoutTests:
     
@@ -285,7 +285,7 @@
     
     Reviewed by Zalan Bujtas.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: fast/dom/focus-rem-style-update.html
     
@@ -295,7 +295,7 @@
     then changes but during the resulting style update we use this cached value, failing to re-resolve ‘rem’.
     
     * style/StyleTreeResolver.cpp:
-    (WebCore::Style::TreeResolver::resolveElement):
+    (CyberCore::Style::TreeResolver::resolveElement):
     
     Invalidate matched declarations cache also when there is no existing document element style.
     
@@ -327,7 +327,7 @@
     
     Reviewed by Eric Carlson.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: media/media-source/media-source-trackid-change.html
     
@@ -338,13 +338,13 @@
     TrackBuffer.
     
     * Modules/mediasource/SourceBuffer.cpp:
-    (WebCore::SourceBuffer::sourceBufferPrivateDidReceiveInitializationSegment):
+    (CyberCore::SourceBuffer::sourceBufferPrivateDidReceiveInitializationSegment):
     * html/track/AudioTrack.cpp:
-    (WebCore::AudioTrack::setPrivate):
+    (CyberCore::AudioTrack::setPrivate):
     * html/track/InbandTextTrack.cpp:
-    (WebCore::InbandTextTrack::setPrivate):
+    (CyberCore::InbandTextTrack::setPrivate):
     * html/track/VideoTrack.cpp:
-    (WebCore::VideoTrack::setPrivate):
+    (CyberCore::VideoTrack::setPrivate):
     
     LayoutTests:
     
@@ -376,7 +376,7 @@
     Patch by Kimmo Kinnunen <kkinnunen@apple.com> on 2020-10-27
     Reviewed by Dean Jackson.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Refactoring r268386 changed the behavior so that a new WebGL drawing
     buffer would be created when CA would be using the oldest IOSurface
@@ -405,10 +405,10 @@
     
     Test: fast/canvas/webgl/webgl-clear-composited-notshowing.html
     
-    * WebCore.xcodeproj/project.pbxproj:
+    * CyberCore.xcodeproj/project.pbxproj:
     * platform/graphics/cocoa/GraphicsContextGLOpenGLCocoa.mm:
-    (WebCore::GraphicsContextGLOpenGL::GraphicsContextGLOpenGL):
-    (WebCore::GraphicsContextGLOpenGL::prepareForDisplay):
+    (CyberCore::GraphicsContextGLOpenGL::GraphicsContextGLOpenGL):
+    (CyberCore::GraphicsContextGLOpenGL::prepareForDisplay):
     * platform/graphics/cocoa/WebGLLayer.h:
     * platform/graphics/cocoa/WebGLLayer.mm:
     (-[WebGLLayer initWithDevicePixelRatio:contentsOpaque:]):
@@ -468,7 +468,7 @@
     * Source/third_party/libwebm/webm_parser/src/master_parser.cc:
     * Source/third_party/libwebm/webm_parser/src/webm_parser.cc:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: media/media-source/media-source-webm-init-inside-segment.html
     
@@ -496,25 +496,25 @@
     
     * platform/graphics/avfoundation/objc/SourceBufferParserAVFObjC.h:
     * platform/graphics/avfoundation/objc/SourceBufferParserAVFObjC.mm:
-    (WebCore::SourceBufferParserAVFObjC::setLogger):
+    (CyberCore::SourceBufferParserAVFObjC::setLogger):
     * platform/graphics/avfoundation/objc/SourceBufferPrivateAVFObjC.mm:
-    (WebCore::SourceBufferPrivateAVFObjC::SourceBufferPrivateAVFObjC):
+    (CyberCore::SourceBufferPrivateAVFObjC::SourceBufferPrivateAVFObjC):
     * platform/graphics/cocoa/SourceBufferParser.h:
     * platform/graphics/cocoa/SourceBufferParserWebM.cpp:
     (WTF::LogArgument<webm::Id>::toString):
-    (WTF::LogArgument<WebCore::SourceBufferParserWebM::State>::toString):
-    (WebCore::logChannel):
-    (WebCore::logClassName):
-    (WebCore::SourceBufferParserWebM::appendData):
-    (WebCore::SourceBufferParserWebM::resetParserState):
-    (WebCore::SourceBufferParserWebM::invalidate):
-    (WebCore::SourceBufferParserWebM::setLogger):
-    (WebCore::SourceBufferParserWebM::OnElementBegin):
-    (WebCore::SourceBufferParserWebM::OnElementEnd):
-    (WebCore::SourceBufferParserWebM::OnEbml):
-    (WebCore::SourceBufferParserWebM::OnSegmentBegin):
-    (WebCore::SourceBufferParserWebM::OnInfo):
-    (WebCore::SourceBufferParserWebM::OnTrackEntry):
+    (WTF::LogArgument<CyberCore::SourceBufferParserWebM::State>::toString):
+    (CyberCore::logChannel):
+    (CyberCore::logClassName):
+    (CyberCore::SourceBufferParserWebM::appendData):
+    (CyberCore::SourceBufferParserWebM::resetParserState):
+    (CyberCore::SourceBufferParserWebM::invalidate):
+    (CyberCore::SourceBufferParserWebM::setLogger):
+    (CyberCore::SourceBufferParserWebM::OnElementBegin):
+    (CyberCore::SourceBufferParserWebM::OnElementEnd):
+    (CyberCore::SourceBufferParserWebM::OnEbml):
+    (CyberCore::SourceBufferParserWebM::OnSegmentBegin):
+    (CyberCore::SourceBufferParserWebM::OnInfo):
+    (CyberCore::SourceBufferParserWebM::OnTrackEntry):
     * platform/graphics/cocoa/SourceBufferParserWebM.h:
     
     LayoutTests:
@@ -551,14 +551,14 @@
     
     Reviewed by Eric Carlson.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     We do not have good OS support when capturing audio in a WebProcess for a backgrounded application.
     Until we have proper support, it seems best to mute audio capture when being backgrounded.
     Manually tested.
     
     * platform/mediastream/mac/RealtimeMediaSourceCenterMac.mm:
-    (WebCore::RealtimeMediaSourceCenter::shouldInterruptAudioOnPageVisibilityChange):
+    (CyberCore::RealtimeMediaSourceCenter::shouldInterruptAudioOnPageVisibilityChange):
     
     LayoutTests:
     
@@ -601,7 +601,7 @@
     
     Reviewed by Brent Fulgham.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     This old field was used in an unreleased old attestation statement format and is not used by
     the final attestation statement format that will be added to the spec:
@@ -612,7 +612,7 @@
     Covered by existing tests.
     
     * UIProcess/WebAuthentication/Cocoa/LocalAuthenticator.mm:
-    (WebKit::LocalAuthenticator::continueMakeCredentialAfterAttested):
+    (CyberKit::LocalAuthenticator::continueMakeCredentialAfterAttested):
     
     LayoutTests:
     
@@ -635,7 +635,7 @@
 
         Cherry-pick r266909. rdar://problem/69101091
 
-    Source/WebCore:
+    Source/CyberCore:
     Text replacements at the beginning of a second line are replaced too early
     https://bugs.webkit.org/show_bug.cgi?id=216327
     <rdar://problem/68170353>
@@ -651,10 +651,10 @@
     Test: editing/spelling/text-replacement-first-word-second-line.html
     
     * editing/Editor.cpp:
-    (WebCore::Editor::markAndReplaceFor):
+    (CyberCore::Editor::markAndReplaceFor):
     * editing/TextCheckingHelper.cpp:
-    (WebCore::TextCheckingParagraph::automaticReplacementStart const):
-    (WebCore::TextCheckingParagraph::automaticReplacementLength const):
+    (CyberCore::TextCheckingParagraph::automaticReplacementStart const):
+    (CyberCore::TextCheckingParagraph::automaticReplacementLength const):
     * editing/TextCheckingHelper.h:
     
     LayoutTests:
@@ -688,37 +688,37 @@
     
     Reviewed by Alex Christensen.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: fast/replaced/pdf-as-embed-with-no-mime-type-is-not-blank.html
     
-    If plugins are enabled, we'll always let the request go through, and WebKit will
+    If plugins are enabled, we'll always let the request go through, and CyberKit will
     guess that files with PDFPlugin-handled extensions should instantiate PDFPlugin,
     even if no other plugins are available.
     
     However, if plugins are disabled, requestPlugin() will early return if the explicitly
     specified MIME type is not handled by an application plugin (even though the downstream
-    WebKit code would have happily instantiated an application plugin for us).
+    CyberKit code would have happily instantiated an application plugin for us).
     
     Application plugins shouldn't depend on the plugin enablement setting.
     To fix this, have SubframeLoader guess the MIME type if not explicitly specified
-    (matching WebKit's behavior), and allow the request if it matches an application plugin.
+    (matching CyberKit's behavior), and allow the request if it matches an application plugin.
     
     * loader/SubframeLoader.cpp:
-    (WebCore::findPluginMIMETypeFromURL):
+    (CyberCore::findPluginMIMETypeFromURL):
     Improve this previously logging-only function to use the lastPathComponent
     of the URL instead of randomly looking at the end of the URL, to ignore
     query strings and fragments when looking for the file extension.
     
-    (WebCore::FrameLoader::SubframeLoader::requestPlugin):
+    (CyberCore::FrameLoader::SubframeLoader::requestPlugin):
     Make use of findPluginMIMETypeFromURL to guess the MIME type if it's not
     explicitly specified. If the guessed MIME type is one that is handled
-    by application plugins, allow the request to go out to WebKit (which
+    by application plugins, allow the request to go out to CyberKit (which
     may then instantiate a PDFPlugin, for example).
     
-    (WebCore::logPluginRequest):
-    (WebCore::FrameLoader::SubframeLoader::requestObject):
-    (WebCore::FrameLoader::SubframeLoader::createJavaAppletWidget):
+    (CyberCore::logPluginRequest):
+    (CyberCore::FrameLoader::SubframeLoader::requestObject):
+    (CyberCore::FrameLoader::SubframeLoader::createJavaAppletWidget):
     Pass the URL instead of stringifying it, so we can lastPathComponent as above.
     
     LayoutTests:
@@ -751,7 +751,7 @@
     
     Reviewed by Chris Fleizach.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: accessibility/aria-modal.html.
     
@@ -760,14 +760,14 @@
     <div class="popover" role="dialog" aria-modal="true">
     
     with style visible and a display value different from none. This makes
-    WebCore/accessibility to treat it as if the dialog were always visible,
+    CyberCore/accessibility to treat it as if the dialog were always visible,
     and thus do not convey the content of the page outside the dialog to
     VoiceOver. The author controls the visibility of the dialog using the
     style opacity. This patch adds the check for the opacity to determine
     whether an element is visible or not.
     
     * accessibility/AXObjectCache.cpp:
-    (WebCore::AXObjectCache::isNodeVisible const):
+    (CyberCore::AXObjectCache::isNodeVisible const):
     
     LayoutTests:
     
@@ -804,7 +804,7 @@
     
     Reviewed by Eric Carlson.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     If track is muted, replace it by either silence (audio buffer filled with zeros) or black frames.
     MediaRecorderPrivate will keep track of whether the selected track should be muted.
@@ -813,24 +813,24 @@
     Test: http/wpt/mediarecorder/mute-tracks.html
     
     * Modules/mediarecorder/MediaRecorder.cpp:
-    (WebCore::MediaRecorder::trackMutedChanged):
-    (WebCore::MediaRecorder::trackEnabledChanged):
+    (CyberCore::MediaRecorder::trackMutedChanged):
+    (CyberCore::MediaRecorder::trackEnabledChanged):
     * Modules/mediarecorder/MediaRecorder.h:
     * platform/audio/cocoa/WebAudioBufferList.cpp:
-    (WebCore::WebAudioBufferList::zeroFlatBuffer):
+    (CyberCore::WebAudioBufferList::zeroFlatBuffer):
     * platform/audio/cocoa/WebAudioBufferList.h:
     * platform/mediarecorder/MediaRecorderPrivate.cpp:
-    (WebCore::MediaRecorderPrivate::selectTracks):
-    (WebCore::MediaRecorderPrivate::checkTrackState):
+    (CyberCore::MediaRecorderPrivate::selectTracks):
+    (CyberCore::MediaRecorderPrivate::checkTrackState):
     * platform/mediarecorder/MediaRecorderPrivate.h:
-    (WebCore::MediaRecorderPrivate::trackMutedChanged):
-    (WebCore::MediaRecorderPrivate::trackEnabledChanged):
-    (WebCore::MediaRecorderPrivate::shouldMuteAudio const):
-    (WebCore::MediaRecorderPrivate::shouldMuteVideo const):
+    (CyberCore::MediaRecorderPrivate::trackMutedChanged):
+    (CyberCore::MediaRecorderPrivate::trackEnabledChanged):
+    (CyberCore::MediaRecorderPrivate::shouldMuteAudio const):
+    (CyberCore::MediaRecorderPrivate::shouldMuteVideo const):
     * platform/mediarecorder/MediaRecorderPrivateAVFImpl.cpp:
-    (WebCore::MediaRecorderPrivateAVFImpl::create):
-    (WebCore::MediaRecorderPrivateAVFImpl::videoSampleAvailable):
-    (WebCore::MediaRecorderPrivateAVFImpl::audioSamplesAvailable):
+    (CyberCore::MediaRecorderPrivateAVFImpl::create):
+    (CyberCore::MediaRecorderPrivateAVFImpl::videoSampleAvailable):
+    (CyberCore::MediaRecorderPrivateAVFImpl::audioSamplesAvailable):
     * platform/mediarecorder/MediaRecorderPrivateAVFImpl.h:
     
     LayoutTests:
@@ -861,13 +861,13 @@
     
     Reviewed by Eric Carlson.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     No change of behavior, include SPI header instead of private SDK header.
     
     * platform/mediarecorder/cocoa/MediaRecorderPrivateWriterCocoa.mm:
     
-    Source/WebCore/PAL:
+    Source/CyberCore/PAL:
     
     * PAL.xcodeproj/project.pbxproj:
     * pal/spi/cocoa/AVAssetWriterSPI.h: Added.
@@ -915,7 +915,7 @@
     
     Reviewed by Darin Adler.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     When fetchData is called while an existing fetchData is inflight, enqueue the callback in a deque.
     When the inflight fetchData completes, call the enqueued callbacks in order with a null blob.
@@ -925,16 +925,16 @@
     Covered by updated http/wpt/mediarecorder/MediaRecorder-dataavailable.html.
     
     * Modules/mediarecorder/MediaRecorder.cpp:
-    (WebCore::MediaRecorder::stopRecording):
-    (WebCore::MediaRecorder::requestData):
+    (CyberCore::MediaRecorder::stopRecording):
+    (CyberCore::MediaRecorder::requestData):
     Do not enable the timer if MediaRecorder is not active as a small optimization.
-    (WebCore::MediaRecorder::fetchData):
+    (CyberCore::MediaRecorder::fetchData):
     * Modules/mediarecorder/MediaRecorder.h:
     * platform/mediarecorder/MediaRecorderPrivateMock.cpp:
-    (WebCore::MediaRecorderPrivateMock::fetchData):
+    (CyberCore::MediaRecorderPrivateMock::fetchData):
     * platform/mediarecorder/MediaRecorderPrivateMock.h:
     * platform/mediarecorder/cocoa/MediaRecorderPrivateWriterCocoa.mm:
-    (WebCore::MediaRecorderPrivateWriter::flushCompressedSampleBuffers):
+    (CyberCore::MediaRecorderPrivateWriter::flushCompressedSampleBuffers):
     
     LayoutTests:
     
@@ -1003,7 +1003,7 @@
     
     * web-platform-tests/mediacapture-record/MediaRecorder-mimetype-expected.txt:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Instead of setting mime type right away, set it just before firing start event as per spec.
     This will allow in the future to populate exact codec parameters if proven useful.
@@ -1011,24 +1011,24 @@
     Covered by rebased and updated tests.
     
     * Modules/mediarecorder/MediaRecorder.cpp:
-    (WebCore::MediaRecorder::create):
-    (WebCore::MediaRecorder::startRecording):
+    (CyberCore::MediaRecorder::create):
+    (CyberCore::MediaRecorder::startRecording):
     * platform/mediarecorder/MediaRecorderPrivate.h:
-    (WebCore::MediaRecorderPrivate::startRecording):
+    (CyberCore::MediaRecorderPrivate::startRecording):
     * platform/mediarecorder/MediaRecorderPrivateAVFImpl.h:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Update code to pass mimeType as part of startRecording callback.
     
     * GPUProcess/webrtc/RemoteMediaRecorder.h:
-    (WebKit::RemoteMediaRecorder::mimeType const):
+    (CyberKit::RemoteMediaRecorder::mimeType const):
     * GPUProcess/webrtc/RemoteMediaRecorderManager.cpp:
-    (WebKit::RemoteMediaRecorderManager::createRecorder):
+    (CyberKit::RemoteMediaRecorderManager::createRecorder):
     * GPUProcess/webrtc/RemoteMediaRecorderManager.h:
     * GPUProcess/webrtc/RemoteMediaRecorderManager.messages.in:
     * WebProcess/GPU/webrtc/MediaRecorderPrivate.cpp:
-    (WebKit::MediaRecorderPrivate::startRecording):
+    (CyberKit::MediaRecorderPrivate::startRecording):
     * WebProcess/GPU/webrtc/MediaRecorderPrivate.h:
     
     LayoutTests:
@@ -1062,16 +1062,16 @@
     
     Reviewed by Eric Carlson.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     When setting the bitrate provided by the web app fails, we now use default bit rate values that are expected to work properly.
     Covered by updated tests.
     
     * platform/mediarecorder/cocoa/AudioSampleBufferCompressor.h:
     * platform/mediarecorder/cocoa/AudioSampleBufferCompressor.mm:
-    (WebCore::AudioSampleBufferCompressor::setBitsPerSecond):
-    (WebCore::AudioSampleBufferCompressor::defaultOutputBitRate const):
-    (WebCore::AudioSampleBufferCompressor::initAudioConverterForSourceFormatDescription):
+    (CyberCore::AudioSampleBufferCompressor::setBitsPerSecond):
+    (CyberCore::AudioSampleBufferCompressor::defaultOutputBitRate const):
+    (CyberCore::AudioSampleBufferCompressor::initAudioConverterForSourceFormatDescription):
     
     LayoutTests:
     
@@ -1111,7 +1111,7 @@
     * web-platform-tests/mediacapture-record/passthrough/MediaRecorder-passthrough.https.html:
     Remove JS console log error line.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     <rdar://problem/69767695>
     
@@ -1125,26 +1125,26 @@
     Test: http/wpt/mediarecorder/mimeType.html
     
     * Modules/mediarecorder/MediaRecorder.cpp:
-    (WebCore::MediaRecorder::isTypeSupported):
-    (WebCore::MediaRecorder::create):
+    (CyberCore::MediaRecorder::isTypeSupported):
+    (CyberCore::MediaRecorder::create):
     * Modules/mediarecorder/MediaRecorder.h:
     * Modules/mediarecorder/MediaRecorder.idl:
     * Modules/mediarecorder/MediaRecorderProvider.cpp:
-    (WebCore::MediaRecorderProvider::isSupported):
+    (CyberCore::MediaRecorderProvider::isSupported):
     * Modules/mediarecorder/MediaRecorderProvider.h:
     * platform/mediarecorder/MediaRecorderPrivate.h:
     * platform/mediarecorder/MediaRecorderPrivateAVFImpl.cpp:
-    (WebCore::MediaRecorderPrivateAVFImpl::mimeType const):
+    (CyberCore::MediaRecorderPrivateAVFImpl::mimeType const):
     * platform/mediarecorder/MediaRecorderPrivateAVFImpl.h:
     * platform/mediarecorder/MediaRecorderPrivateMock.cpp:
-    (WebCore::MediaRecorderPrivateMock::mimeType const):
+    (CyberCore::MediaRecorderPrivateMock::mimeType const):
     * platform/mediarecorder/MediaRecorderPrivateMock.h:
     * platform/mediarecorder/cocoa/MediaRecorderPrivateWriterCocoa.h:
     * platform/mediarecorder/cocoa/MediaRecorderPrivateWriterCocoa.mm:
-    (WebCore::MediaRecorderPrivateWriter::mimeType const):
+    (CyberCore::MediaRecorderPrivateWriter::mimeType const):
     * platform/mediastream/MediaStreamPrivate.h:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     <rdar://problem/69767695>
     
@@ -1154,13 +1154,13 @@
     Instead, compute it on WebProcess side.
     
     * GPUProcess/webrtc/RemoteMediaRecorder.cpp:
-    (WebKit::RemoteMediaRecorder::fetchData):
+    (CyberKit::RemoteMediaRecorder::fetchData):
     * GPUProcess/webrtc/RemoteMediaRecorder.h:
     * GPUProcess/webrtc/RemoteMediaRecorder.messages.in:
     * WebProcess/GPU/webrtc/MediaRecorderPrivate.cpp:
-    (WebKit::MediaRecorderPrivate::MediaRecorderPrivate):
-    (WebKit::MediaRecorderPrivate::fetchData):
-    (WebKit::MediaRecorderPrivate::mimeType const):
+    (CyberKit::MediaRecorderPrivate::MediaRecorderPrivate):
+    (CyberKit::MediaRecorderPrivate::fetchData):
+    (CyberKit::MediaRecorderPrivate::mimeType const):
     * WebProcess/GPU/webrtc/MediaRecorderPrivate.h:
     
     LayoutTests:
@@ -1192,7 +1192,7 @@
     
     Reviewed by Eric Carlson.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Update MediaRecorderPrivateWriterCocoa to pass a MediaSample down to handle rotation.
     Set AVAssetWriterInput transform according the first MediaSample rotation value.
@@ -1200,15 +1200,15 @@
     Test: http/wpt/mediarecorder/video-rotation.html
     
     * platform/mediarecorder/MediaRecorderPrivateAVFImpl.cpp:
-    (WebCore::MediaRecorderPrivateAVFImpl::videoSampleAvailable):
+    (CyberCore::MediaRecorderPrivateAVFImpl::videoSampleAvailable):
     * platform/mediarecorder/cocoa/MediaRecorderPrivateWriterCocoa.h:
     * platform/mediarecorder/cocoa/MediaRecorderPrivateWriterCocoa.mm:
-    (WebCore::MediaRecorderPrivateWriter::appendVideoSampleBuffer):
+    (CyberCore::MediaRecorderPrivateWriter::appendVideoSampleBuffer):
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * GPUProcess/webrtc/RemoteMediaRecorder.cpp:
-    (WebKit::RemoteMediaRecorder::videoSampleAvailable):
+    (CyberKit::RemoteMediaRecorder::videoSampleAvailable):
     
     LayoutTests:
     
@@ -1254,7 +1254,7 @@
     
     Reviewed by Zalan Bujtas.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Moved functions that return quads and rectangles out of Range into RenderObject.
     We could find another home for them, but for now they make sense as static member
@@ -1267,83 +1267,83 @@
     - Changed the "use selection height" boolean to a BoundingRectBehavior flag.
     
     * accessibility/AccessibilityRenderObject.cpp:
-    (WebCore::boundsForRects): Call unionRect(RenderObject::absoluteTextRects) instead
+    (CyberCore::boundsForRects): Call unionRect(RenderObject::absoluteTextRects) instead
     of Range::absoluteBoundingBox.
     
     * dom/DocumentMarkerController.cpp:
-    (WebCore::updateRenderedRectsForMarker): Instead of passing "true", pass
+    (CyberCore::updateRenderedRectsForMarker): Instead of passing "true", pass
     "RenderObject::BoundingRectBehavior::UseSelectionHeight".
     
     * dom/Range.cpp:
-    (WebCore::Range::absoluteBoundingBox const): Deleted.
-    (WebCore::Range::absoluteRectsForRangeInText const): Deleted.
-    (WebCore::Range::absoluteTextRects const): Deleted.
-    (WebCore::Range::getClientRects const): Call RenderObject::clientBorderAndTextRects.
-    (WebCore::Range::getBoundingClientRect const): Call
+    (CyberCore::Range::absoluteBoundingBox const): Deleted.
+    (CyberCore::Range::absoluteRectsForRangeInText const): Deleted.
+    (CyberCore::Range::absoluteTextRects const): Deleted.
+    (CyberCore::Range::getClientRects const): Call RenderObject::clientBorderAndTextRects.
+    (CyberCore::Range::getBoundingClientRect const): Call
     unionRect(RenderObject::clientBorderAndTextRects).
-    (WebCore::Range::borderAndTextRects const): Deleted.
-    (WebCore::Range::boundingRect const): Deleted.
-    (WebCore::Range::absoluteBoundingRect const): Deleted.
+    (CyberCore::Range::borderAndTextRects const): Deleted.
+    (CyberCore::Range::boundingRect const): Deleted.
+    (CyberCore::Range::absoluteBoundingRect const): Deleted.
     * dom/Range.h: Updated for above.
     
     * dom/SimpleRange.cpp:
-    (WebCore::IntersectingNodeIterator::IntersectingNodeIterator): Fix bug affecting
+    (CyberCore::IntersectingNodeIterator::IntersectingNodeIterator): Fix bug affecting
     empty ranges by calling enforceEndInvariant.
-    (WebCore::IntersectingNodeIterator::advance): Refactor to call enforceEndInvariant.
-    (WebCore::IntersectingNodeIterator::advanceSkippingChildren): Ditto.
-    (WebCore::IntersectingNodeIterator::enforceEndInvariant): Added.
+    (CyberCore::IntersectingNodeIterator::advance): Refactor to call enforceEndInvariant.
+    (CyberCore::IntersectingNodeIterator::advanceSkippingChildren): Ditto.
+    (CyberCore::IntersectingNodeIterator::enforceEndInvariant): Added.
     * dom/SimpleRange.h: Added enforceEndInvariant.
     
     * editing/FrameSelection.cpp:
-    (WebCore::FrameSelection::getClippedVisibleTextRectangles const): Instead of
+    (CyberCore::FrameSelection::getClippedVisibleTextRectangles const): Instead of
     passing a useSelectionHeight boolean, pass BoundingRectBehavior.
     
     * page/TextIndicator.cpp:
-    (WebCore::absoluteBoundingRectForRange): Call
+    (CyberCore::absoluteBoundingRectForRange): Call
     unionRectIgnoringZeroRects(RenderObject::absoluteBorderAndTextRects).
-    (WebCore::initializeIndicator): Call RenderObject::absoluteTextRects.
+    (CyberCore::initializeIndicator): Call RenderObject::absoluteTextRects.
     
     * platform/graphics/GeometryUtilities.cpp:
-    (WebCore::unionRectIgnoringZeroRects): Added.
+    (CyberCore::unionRectIgnoringZeroRects): Added.
     * platform/graphics/GeometryUtilities.h: Updated for above.
     
     * rendering/RenderLineBreak.h: Marked a lot of functions final.
     Added a default value for the absoluteQuads out argument.
     
     * rendering/RenderObject.cpp:
-    (WebCore::RenderObject::addPDFURLRect): Tweaked code style a bit.
-    (WebCore::RenderObject::absoluteTextQuads): Replaced boolean useSelectionHeight
+    (CyberCore::RenderObject::addPDFURLRect): Tweaked code style a bit.
+    (CyberCore::RenderObject::absoluteTextQuads): Replaced boolean useSelectionHeight
     argument with a BoundingRectBehavior argument. Also added a downcast so the
     call to RenderLineBreak::absoluteQuads is a non-virtual function call.
-    (WebCore::absoluteRectsForRangeInText): Added.
-    (WebCore::RenderObject::absoluteTextRects): Replaced boolean useSelectionHeight
+    (CyberCore::absoluteRectsForRangeInText): Added.
+    (CyberCore::RenderObject::absoluteTextRects): Replaced boolean useSelectionHeight
     argument with a BoundingRectBehavior argument.
-    (WebCore::nodeBefore): Added.
-    (WebCore::borderAndTextRects): Added.
-    (WebCore::RenderObject::absoluteBorderAndTextRects): Added.
-    (WebCore::RenderObject::clientBorderAndTextRects): Added.
+    (CyberCore::nodeBefore): Added.
+    (CyberCore::borderAndTextRects): Added.
+    (CyberCore::RenderObject::absoluteBorderAndTextRects): Added.
+    (CyberCore::RenderObject::clientBorderAndTextRects): Added.
     * rendering/RenderObject.h: Updated for above.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * WebProcess/InjectedBundle/DOM/InjectedBundleRangeHandle.cpp:
-    (WebKit::InjectedBundleRangeHandle::boundingRectInWindowCoordinates const):
+    (CyberKit::InjectedBundleRangeHandle::boundingRectInWindowCoordinates const):
     Call unionRectIgnoringZeroRects(RenderObject::absoluteBorderAndTextRects).
-    (WebKit::InjectedBundleRangeHandle::renderedImage): Call
+    (CyberKit::InjectedBundleRangeHandle::renderedImage): Call
     unionRectIgnoringZeroRects(RenderObject::absoluteBorderAndTextRects).
     
     * WebProcess/WebPage/ios/WebPageIOS.mm:
-    (WebKit::WebPage::requestEvasionRectsAboveSelection): Call
+    (CyberKit::WebPage::requestEvasionRectsAboveSelection): Call
     unionRect(RenderObject::absoluteTextRects).
-    (WebKit::WebPage::requestDocumentEditingContext): Call
+    (CyberKit::WebPage::requestDocumentEditingContext): Call
     unionRect(RenderObject::absoluteTextRects).
     
-    Source/WebKitLegacy/mac:
+    Source/CyberKitLegacy/mac:
     
     * DOM/DOM.mm:
     (-[DOMRange boundingBox]): Call unionRect(RenderObject::absoluteTextRects).
     
-    Source/WebKitLegacy/win:
+    Source/CyberKitLegacy/win:
     
     * AccessibleTextImpl.cpp:
     (AccessibleText::scrollSubstringTo): Call
@@ -1387,7 +1387,7 @@
     
         Reviewed by Antti Koivisto.
     
-        Source/WebCore:
+        Source/CyberCore:
     
         On clickpay.com, the field in the login form that contains the text "Password" is actually a plain text input,
         referred to by the site's script as the "null text input". The page adds a focus event listener to this null
@@ -1422,15 +1422,15 @@
         Test: fast/forms/programmatic-focus-after-display.html
     
         * dom/Element.cpp:
-        (WebCore::Element::invalidateStyle):
-        (WebCore::Element::resolveComputedStyle):
-        (WebCore::Element::isVisibleWithoutResolvingFullStyle const):
+        (CyberCore::Element::invalidateStyle):
+        (CyberCore::Element::resolveComputedStyle):
+        (CyberCore::Element::isVisibleWithoutResolvingFullStyle const):
         * dom/Node.h:
-        (WebCore::Node::setHasValidStyle):
+        (CyberCore::Node::setHasValidStyle):
     
         LayoutTests:
     
-        Add a new layout test to verify that the bug does not occur. See WebCore/ChangeLog for more details.
+        Add a new layout test to verify that the bug does not occur. See CyberCore/ChangeLog for more details.
     
         * fast/forms/programmatic-focus-after-display-expected.txt: Added.
         * fast/forms/programmatic-focus-after-display.html: Added.
@@ -1449,7 +1449,7 @@
 
         Reviewed by Antti Koivisto.
 
-        Source/WebCore:
+        Source/CyberCore:
 
         On clickpay.com, the field in the login form that contains the text "Password" is actually a plain text input,
         referred to by the site's script as the "null text input". The page adds a focus event listener to this null
@@ -1484,15 +1484,15 @@
         Test: fast/forms/programmatic-focus-after-display.html
 
         * dom/Element.cpp:
-        (WebCore::Element::invalidateStyle):
-        (WebCore::Element::resolveComputedStyle):
-        (WebCore::Element::isVisibleWithoutResolvingFullStyle const):
+        (CyberCore::Element::invalidateStyle):
+        (CyberCore::Element::resolveComputedStyle):
+        (CyberCore::Element::isVisibleWithoutResolvingFullStyle const):
         * dom/Node.h:
-        (WebCore::Node::setHasValidStyle):
+        (CyberCore::Node::setHasValidStyle):
 
         LayoutTests:
 
-        Add a new layout test to verify that the bug does not occur. See WebCore/ChangeLog for more details.
+        Add a new layout test to verify that the bug does not occur. See CyberCore/ChangeLog for more details.
 
         * fast/forms/programmatic-focus-after-display-expected.txt: Added.
         * fast/forms/programmatic-focus-after-display.html: Added.
@@ -1507,7 +1507,7 @@
 
                 Reviewed by Antti Koivisto.
 
-                Add a new layout test to verify that the bug does not occur. See WebCore/ChangeLog for more details.
+                Add a new layout test to verify that the bug does not occur. See CyberCore/ChangeLog for more details.
 
                 * fast/forms/programmatic-focus-after-display-expected.txt: Added.
                 * fast/forms/programmatic-focus-after-display.html: Added.
@@ -1531,7 +1531,7 @@
     
     Reviewed by Darin Adler.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Covered by new API tests.
     
@@ -1551,8 +1551,8 @@
     
     Tools:
     
-    * TestWebKitAPI/Tests/WebCore/CtapRequestTest.cpp:
-    (TestWebKitAPI::TEST):
+    * TestCyberKitAPI/Tests/CyberCore/CtapRequestTest.cpp:
+    (TestCyberKitAPI::TEST):
     
     LayoutTests:
     
@@ -1587,14 +1587,14 @@
     
     Reviewed by Tim Horton.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Avoid hash lookups with zero nodeIDs.
     
     * WebProcess/WebPage/RemoteLayerTree/RemoteScrollingCoordinator.mm:
-    (WebKit::RemoteScrollingCoordinator::isRubberBandInProgress const):
-    (WebKit::RemoteScrollingCoordinator::isUserScrollInProgress const):
-    (WebKit::RemoteScrollingCoordinator::isScrollSnapInProgress const):
+    (CyberKit::RemoteScrollingCoordinator::isRubberBandInProgress const):
+    (CyberKit::RemoteScrollingCoordinator::isUserScrollInProgress const):
+    (CyberKit::RemoteScrollingCoordinator::isScrollSnapInProgress const):
     
     LayoutTests:
     
@@ -1622,19 +1622,19 @@
     
     Reviewed by Eric Carlson.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: http/wpt/fetch/blob-range.html
     
     * platform/network/BlobResourceHandle.cpp:
-    (WebCore::BlobResourceHandle::readDataAsync):
+    (CyberCore::BlobResourceHandle::readDataAsync):
     
-    Source/WebKit:
+    Source/CyberKit:
     
     Test: http/wpt/fetch/blob-range.html
     
     * NetworkProcess/NetworkDataTaskBlob.cpp:
-    (WebKit::NetworkDataTaskBlob::readData):
+    (CyberKit::NetworkDataTaskBlob::readData):
     readData can be re-entrant so we need to reset m_currentItemReadSize before consuming data.
     
     LayoutTests:
@@ -1665,7 +1665,7 @@
     <rdar://problem/67018073>
     
     Reviewed by Zalan Bujtas.
-    Source/WebCore:
+    Source/CyberCore:
     
     The content in question had a z-order layer tree like this:
     
@@ -1694,7 +1694,7 @@
     Test: compositing/scrolling/async-overflow-scrolling/nested-scrollers-backing-attachment.html
     
     * rendering/RenderLayer.cpp:
-    (WebCore::RenderLayer::scrollTo):
+    (CyberCore::RenderLayer::scrollTo):
     
     LayoutTests:
     
@@ -1725,7 +1725,7 @@
     
     Reviewed by Antti Koivisto.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     The scrollbar and scroll corner layers need event regions and scrollingNodeIDs so that
     we hit-test them via CA layers and find the right scrolling node.
@@ -1733,10 +1733,10 @@
     Test: fast/scrolling/mac/mousewheel-over-scrollbar.html
     
     * rendering/RenderLayerBacking.cpp:
-    (WebCore::RenderLayerBacking::updateAfterDescendants):
-    (WebCore::RenderLayerBacking::updateEventRegion):
-    (WebCore::RenderLayerBacking::detachFromScrollingCoordinator):
-    (WebCore::RenderLayerBacking::setScrollingNodeIDForRole):
+    (CyberCore::RenderLayerBacking::updateAfterDescendants):
+    (CyberCore::RenderLayerBacking::updateEventRegion):
+    (CyberCore::RenderLayerBacking::detachFromScrollingCoordinator):
+    (CyberCore::RenderLayerBacking::setScrollingNodeIDForRole):
     
     LayoutTests:
     
@@ -1777,7 +1777,7 @@
     
     Reviewed by Antti Koivisto.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     When both async overflow scroll and overlay scrollbars are enabled, it's possible for
     composited layers that are later in z-order than the overflow to overlap the scrollbars
@@ -1815,28 +1815,28 @@
            compositing/scrolling/async-overflow-scrolling/transform-change-scrollbar-position.html
     
     * rendering/LayerAncestorClippingStack.cpp:
-    (WebCore::LayerAncestorClippingStack::compositedClipData const):
+    (CyberCore::LayerAncestorClippingStack::compositedClipData const):
     * rendering/LayerAncestorClippingStack.h:
     * rendering/RenderLayerBacking.cpp:
-    (WebCore::RenderLayerBacking::updateConfiguration):
-    (WebCore::RenderLayerBacking::updateGeometry):
-    (WebCore::RenderLayerBacking::adjustOverflowControlsPositionRelativeToAncestor):
-    (WebCore::RenderLayerBacking::updateInternalHierarchy):
-    (WebCore::RenderLayerBacking::updateAncestorClippingStack):
-    (WebCore::RenderLayerBacking::ensureOverflowControlsHostLayerAncestorClippingStack):
-    (WebCore::RenderLayerBacking::ensureClippingStackLayers):
-    (WebCore::RenderLayerBacking::removeClippingStackLayers):
-    (WebCore::RenderLayerBacking::connectClippingStackLayers):
-    (WebCore::RenderLayerBacking::updateClippingStackLayerGeometry):
-    (WebCore::RenderLayerBacking::updateAncestorClipping):
-    (WebCore::RenderLayerBacking::offsetRelativeToRendererOriginForDescendantLayers const):
+    (CyberCore::RenderLayerBacking::updateConfiguration):
+    (CyberCore::RenderLayerBacking::updateGeometry):
+    (CyberCore::RenderLayerBacking::adjustOverflowControlsPositionRelativeToAncestor):
+    (CyberCore::RenderLayerBacking::updateInternalHierarchy):
+    (CyberCore::RenderLayerBacking::updateAncestorClippingStack):
+    (CyberCore::RenderLayerBacking::ensureOverflowControlsHostLayerAncestorClippingStack):
+    (CyberCore::RenderLayerBacking::ensureClippingStackLayers):
+    (CyberCore::RenderLayerBacking::removeClippingStackLayers):
+    (CyberCore::RenderLayerBacking::connectClippingStackLayers):
+    (CyberCore::RenderLayerBacking::updateClippingStackLayerGeometry):
+    (CyberCore::RenderLayerBacking::updateAncestorClipping):
+    (CyberCore::RenderLayerBacking::offsetRelativeToRendererOriginForDescendantLayers const):
     * rendering/RenderLayerBacking.h:
     * rendering/RenderLayerCompositor.cpp:
-    (WebCore::RenderLayerCompositor::UpdateBackingTraversalState::UpdateBackingTraversalState):
-    (WebCore::RenderLayerCompositor::UpdateBackingTraversalState::stateForDescendants const):
-    (WebCore::RenderLayerCompositor::updateBackingAndHierarchy):
-    (WebCore::RenderLayerCompositor::adjustOverflowScrollbarContainerLayers):
-    (WebCore::RenderLayerCompositor::updateScrollingNodeForScrollingProxyRole):
+    (CyberCore::RenderLayerCompositor::UpdateBackingTraversalState::UpdateBackingTraversalState):
+    (CyberCore::RenderLayerCompositor::UpdateBackingTraversalState::stateForDescendants const):
+    (CyberCore::RenderLayerCompositor::updateBackingAndHierarchy):
+    (CyberCore::RenderLayerCompositor::adjustOverflowScrollbarContainerLayers):
+    (CyberCore::RenderLayerCompositor::updateScrollingNodeForScrollingProxyRole):
     * rendering/RenderLayerCompositor.h:
     
     LayoutTests:
@@ -1921,7 +1921,7 @@
     
     Reviewed by Myles C. Maxfield.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Second take at this.
     
@@ -1968,18 +1968,18 @@
     http/tests/security/navigate-when-restoring-cached-page.html
     
     * css/CSSFontSelector.cpp:
-    (WebCore::CSSFontSelector::CSSFontSelector):
-    (WebCore::CSSFontSelector::clearDocument):
-    (WebCore::CSSFontSelector::beginLoadingFontSoon):
-    (WebCore::CSSFontSelector::suspendFontLoadingTimer):
-    (WebCore::CSSFontSelector::fontLoadingTimerFired):
-    (WebCore::CSSFontSelector::stop):
-    (WebCore::CSSFontSelector::suspend):
-    (WebCore::CSSFontSelector::resume):
-    (WebCore::CSSFontSelector::beginLoadTimerFired): Deleted.
+    (CyberCore::CSSFontSelector::CSSFontSelector):
+    (CyberCore::CSSFontSelector::clearDocument):
+    (CyberCore::CSSFontSelector::beginLoadingFontSoon):
+    (CyberCore::CSSFontSelector::suspendFontLoadingTimer):
+    (CyberCore::CSSFontSelector::fontLoadingTimerFired):
+    (CyberCore::CSSFontSelector::stop):
+    (CyberCore::CSSFontSelector::suspend):
+    (CyberCore::CSSFontSelector::resume):
+    (CyberCore::CSSFontSelector::beginLoadTimerFired): Deleted.
     * css/CSSFontSelector.h:
     * loader/DocumentLoader.cpp:
-    (WebCore::DocumentLoader::stopLoading):
+    (CyberCore::DocumentLoader::stopLoading):
     
     LayoutTests:
     
@@ -2279,7 +2279,7 @@
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     We fixed seeking for animations with a reversed playback rate in r261637, the fix for bug 204717,
     but only looked at the animation's playback rate. However, an animation can also play in reverse
@@ -2289,7 +2289,7 @@
     Test: webanimations/accelerated-animation-easing-and-direction-update.html
     
     * platform/graphics/ca/GraphicsLayerCA.cpp:
-    (WebCore::GraphicsLayerCA::animationCanBeAccelerated const):
+    (CyberCore::GraphicsLayerCA::animationCanBeAccelerated const):
     
     LayoutTests:
     
@@ -2329,7 +2329,7 @@
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Stop accelerated animations if the timing function has changed in a way that makes it so that it should
     no longer play accelerated, but otherwise simply update their timing properties such that may keep
@@ -2339,9 +2339,9 @@
           webanimations/accelerated-animation-easing-update-steps-after-pause.html
     
     * animation/KeyframeEffect.cpp:
-    (WebCore::KeyframeEffect::canBeAccelerated const):
-    (WebCore::KeyframeEffect::updateAcceleratedActions):
-    (WebCore::KeyframeEffect::animationDidChangeTimingProperties):
+    (CyberCore::KeyframeEffect::canBeAccelerated const):
+    (CyberCore::KeyframeEffect::updateAcceleratedActions):
+    (CyberCore::KeyframeEffect::animationDidChangeTimingProperties):
     * animation/KeyframeEffect.h:
     
     LayoutTests:
@@ -2382,7 +2382,7 @@
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Tests: fast/scrolling/mac/event-region-subscroller-frame.html
            fast/scrolling/mac/event-region-subscroller-overflow.html
@@ -2390,31 +2390,31 @@
     Unless the page uses features like touch-action we don't need event regions for plain main frame scrolling.
     
     * page/scrolling/AsyncScrollingCoordinator.cpp:
-    (WebCore::AsyncScrollingCoordinator::hasSubscrollers const):
+    (CyberCore::AsyncScrollingCoordinator::hasSubscrollers const):
     * page/scrolling/AsyncScrollingCoordinator.h:
     * page/scrolling/ScrollingCoordinator.h:
-    (WebCore::ScrollingCoordinator::hasSubscrollers const):
+    (CyberCore::ScrollingCoordinator::hasSubscrollers const):
     * page/scrolling/ScrollingStateScrollingNode.cpp:
-    (WebCore::ScrollingStateScrollingNode::ScrollingStateScrollingNode):
-    (WebCore::ScrollingStateScrollingNode::~ScrollingStateScrollingNode):
+    (CyberCore::ScrollingStateScrollingNode::ScrollingStateScrollingNode):
+    (CyberCore::ScrollingStateScrollingNode::~ScrollingStateScrollingNode):
     * page/scrolling/ScrollingStateTree.h:
-    (WebCore::ScrollingStateTree::scrollingNodeCount const):
-    (WebCore::ScrollingStateTree::scrollingNodeAdded):
-    (WebCore::ScrollingStateTree::scrollingNodeRemoved):
+    (CyberCore::ScrollingStateTree::scrollingNodeCount const):
+    (CyberCore::ScrollingStateTree::scrollingNodeAdded):
+    (CyberCore::ScrollingStateTree::scrollingNodeRemoved):
     
     Count scrolling nodes in the state tree. It is updated during updateCompositingLayers, before event region generation.
     
     * rendering/RenderLayerBacking.cpp:
-    (WebCore::RenderLayerBacking::maintainsEventRegion const):
+    (CyberCore::RenderLayerBacking::maintainsEventRegion const):
     
     Don't maintain event region if there are no subscrollers and none of the other reasons were hit.
     
     * rendering/RenderLayerCompositor.cpp:
-    (WebCore::RenderLayerCompositor::updateCompositingLayers):
+    (CyberCore::RenderLayerCompositor::updateCompositingLayers):
     
     Invalidate event regions if a subscroller appears.
     
-    (WebCore::RenderLayerCompositor::invalidateEventRegionForAllFrames):
+    (CyberCore::RenderLayerCompositor::invalidateEventRegionForAllFrames):
     * rendering/RenderLayerCompositor.h:
     
     LayoutTests:
@@ -2486,12 +2486,12 @@
     
     Reviewed by Antoine Quint.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Step timing functions with transforms try and fail to start accelerated which causes them to repeatedly schedule unnecessary rendering updates.
     
     * animation/KeyframeEffect.cpp:
-    (WebCore::KeyframeEffect::updateAcceleratedActions):
+    (CyberCore::KeyframeEffect::updateAcceleratedActions):
     
     Step timing functions are never accelerated so don't bother trying to start them in accelerated state.
     This is similar to treatmeant of unaccelerated properties.
@@ -2523,7 +2523,7 @@
     
     Reviewed by Darin Adler.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: http/tests/media/hls/hls-hdr-switch.html
     
@@ -2534,7 +2534,7 @@
     HDR mode will correctly be applied if it changes after the AVPlayer has been created, but not initially.
     
     * platform/graphics/MediaPlayer.cpp:
-    (WebCore::MediaPlayer::setPreferredDynamicRangeMode):
+    (CyberCore::MediaPlayer::setPreferredDynamicRangeMode):
     
     LayoutTests:
     
@@ -2572,14 +2572,14 @@
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Ensure we repaint before disconnecting from the backing provider layer.
     
     Test: compositing/animation/repaint-after-clearing-shared-backing.html
     
     * rendering/RenderLayerCompositor.cpp:
-    (WebCore::RenderLayerCompositor::updateBacking):
+    (CyberCore::RenderLayerCompositor::updateBacking):
     
     LayoutTests:
     
@@ -2611,14 +2611,14 @@
     Patch by Said Abou-Hallawa <sabouhallawa@apple.com> on 2020-09-10
     Reviewed by Tim Horton.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Remove the extra 'one' we used to add to the GIF loopCount since it is
     now added by the underlying frameworks. But make sure we are compatible
     with the older versions of macOS and iOS.
     
     * platform/graphics/cg/ImageDecoderCG.cpp:
-    (WebCore::ImageDecoderCG::repetitionCount const):
+    (CyberCore::ImageDecoderCG::repetitionCount const):
     
     Source/WTF:
     
@@ -2673,12 +2673,12 @@
     
     Tools:
     
-    In r266844, we adopted an API which would cause audio decoding to be supressed when a media element is initially muted. WebKitTestRunner
-    calls a WebKit SPI to artificially mute all media elements within the page (because listening to LayoutTest beeps and boops is annoying)
+    In r266844, we adopted an API which would cause audio decoding to be supressed when a media element is initially muted. CyberKitTestRunner
+    calls a CyberKit SPI to artificially mute all media elements within the page (because listening to LayoutTest beeps and boops is annoying)
     which causes this code path to be hit for all media elements. Rather than muting the page, WKTR should do the same as DRT, and set the
     output volume to zero.
     
-    * WebKitTestRunner/TestController.cpp:
+    * CyberKitTestRunner/TestController.cpp:
     (WTR::TestController::resetStateToConsistentValues):
     
     LayoutTests:
@@ -2806,14 +2806,14 @@
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Move the repaintIncludingDescendants() calls to repaintBeforeStyleChange() to avoid redundant repaints on the same renderer.
     
     * rendering/RenderElement.cpp:
-    (WebCore::RenderElement::repaintBeforeStyleChange):
+    (CyberCore::RenderElement::repaintBeforeStyleChange):
     * rendering/RenderLayerModelObject.cpp:
-    (WebCore::RenderLayerModelObject::styleWillChange):
+    (CyberCore::RenderLayerModelObject::styleWillChange):
     
     LayoutTests:
     
@@ -2844,13 +2844,13 @@
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     If we issue a repaint in ::styleWillChange, we should not need to re-issue it again in RenderElement::setStyle (see r266803 for details).
     
     * rendering/RenderElement.cpp:
-    (WebCore::RenderElement::repaintBeforeStyleChange):
-    (WebCore::RenderElement::setStyle):
+    (CyberCore::RenderElement::repaintBeforeStyleChange):
+    (CyberCore::RenderElement::setStyle):
     * rendering/RenderElement.h:
     
     LayoutTests:
@@ -2910,7 +2910,7 @@
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     RenderElement::styleWillChange is a virtual function. This function is called whenever the associated RenderStyle changes.
     The subclass implementation (e.g. RenderBox::styleWillChange) calls the parent class to make sure the style change is covered properly.
@@ -2923,15 +2923,15 @@
     This patch moves all the style-will-change-requires-repaint logic to one single function so that we can limit the number of repaints.
     
     * rendering/RenderBox.cpp:
-    (WebCore::RenderBox::styleWillChange):
+    (CyberCore::RenderBox::styleWillChange):
     * rendering/RenderElement.cpp:
-    (WebCore::RenderElement::issueRepaintBeforeStyleChange):
-    (WebCore::RenderElement::initializeStyle):
-    (WebCore::RenderElement::setStyle):
-    (WebCore::RenderElement::styleWillChange):
+    (CyberCore::RenderElement::issueRepaintBeforeStyleChange):
+    (CyberCore::RenderElement::initializeStyle):
+    (CyberCore::RenderElement::setStyle):
+    (CyberCore::RenderElement::styleWillChange):
     * rendering/RenderElement.h:
     * rendering/RenderLayerModelObject.cpp:
-    (WebCore::RenderLayerModelObject::styleWillChange):
+    (CyberCore::RenderLayerModelObject::styleWillChange):
     
     LayoutTests:
     
@@ -2990,25 +2990,25 @@
     
     Reviewed by Wenson Hsieh.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: fast/attachment/attachment-thumbnail-preserves-aspect-ratio.html
     
     * html/HTMLAttachmentElement.idl:
     * testing/Internals.cpp:
-    (WebCore::Internals::attachmentThumbnailInfo):
+    (CyberCore::Internals::attachmentThumbnailInfo):
     * testing/Internals.h:
     * testing/Internals.idl:
     Expose the attachment thumbnail size via Internals.
     
     * rendering/RenderThemeIOS.mm:
-    (WebCore::RenderAttachmentInfo::RenderAttachmentInfo):
+    (CyberCore::RenderAttachmentInfo::RenderAttachmentInfo):
     Allow the thumbnail aspect ratio to vary, instead of assuming it is always square.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * UIProcess/Cocoa/WebPageProxyCocoa.mm:
-    (WebKit::convertPlatformImageToBitmap):
+    (CyberKit::convertPlatformImageToBitmap):
     Propagate an image of the same aspect ratio that QuickLook provided,
     instead of squishing it to square.
     
@@ -3023,11 +3023,11 @@
     * TestRunnerShared/UIScriptContext/Bindings/UIScriptController.idl:
     * TestRunnerShared/UIScriptContext/UIScriptController.h:
     (WTR::UIScriptController::insertAttachmentForFilePath):
-    * WebKitTestRunner/TestController.cpp:
+    * CyberKitTestRunner/TestController.cpp:
     (WTR::TestController::currentTestURL const):
-    * WebKitTestRunner/TestController.h:
-    * WebKitTestRunner/cocoa/UIScriptControllerCocoa.h:
-    * WebKitTestRunner/cocoa/UIScriptControllerCocoa.mm:
+    * CyberKitTestRunner/TestController.h:
+    * CyberKitTestRunner/cocoa/UIScriptControllerCocoa.h:
+    * CyberKitTestRunner/cocoa/UIScriptControllerCocoa.mm:
     (WTR::UIScriptControllerCocoa::insertAttachmentForFilePath):
     Make it possible to insert an attachment wrapping a file on disk
     via UIScriptController.
@@ -3151,14 +3151,14 @@
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: fast/animation/request-animation-frame-unique-timestamp.html
     
     Ensure that the page only sees increasing timestamps in requestAnimationFrame() callbacks.
     
     * dom/ScriptedAnimationController.cpp:
-    (WebCore::ScriptedAnimationController::shouldRescheduleRequestAnimationFrame const):
+    (CyberCore::ScriptedAnimationController::shouldRescheduleRequestAnimationFrame const):
     
     LayoutTests:
     
@@ -3288,7 +3288,7 @@
     
     Reviewed by Darin Adler.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     The new approach to compositing WebGL caused a slowdown in some
     canvas performance tests. They were notifying the Document
@@ -3303,41 +3303,41 @@
            fast/canvas/webgl/move-canvas-in-document.html
     
     * dom/Document.cpp:
-    (WebCore::Document::prepareCanvasesForDisplayIfNeeded): Leave a FIXME
+    (CyberCore::Document::prepareCanvasesForDisplayIfNeeded): Leave a FIXME
     indicating that we should try to avoid the copyToVector if we
     can ensure that the prepareForDisplay call will not mutate the HashSet.
     
     * html/CanvasBase.cpp: Remove some copyToVector calls. It should be
     fine to iterate over the HashSet for these notification functions.
-    (WebCore::CanvasBase::notifyObserversCanvasChanged):
-    (WebCore::CanvasBase::notifyObserversCanvasResized):
+    (CyberCore::CanvasBase::notifyObserversCanvasChanged):
+    (CyberCore::CanvasBase::notifyObserversCanvasResized):
     
     * html/HTMLCanvasElement.cpp:
-    (WebCore::HTMLCanvasElement::HTMLCanvasElement): Don't add the Document as
+    (CyberCore::HTMLCanvasElement::HTMLCanvasElement): Don't add the Document as
     a canvas observer. Wait until we know it is a context that needs observing.
-    (WebCore::HTMLCanvasElement::createContextWebGL): Now we can add it as an
+    (CyberCore::HTMLCanvasElement::createContextWebGL): Now we can add it as an
     observer.
-    (WebCore::HTMLCanvasElement::didMoveToNewDocument): Swap observation to the new
+    (CyberCore::HTMLCanvasElement::didMoveToNewDocument): Swap observation to the new
     Document.
-    (WebCore::HTMLCanvasElement::insertedIntoAncestor): Ditto, but also be aware that
+    (CyberCore::HTMLCanvasElement::insertedIntoAncestor): Ditto, but also be aware that
     we might be in a "dirty" state, and thus need to immediately tell the new
     document that the canvas needs preparation.
-    (WebCore::HTMLCanvasElement::removedFromAncestor): Remove the observer.
-    (WebCore::HTMLCanvasElement::needsPreparationForDisplay): Use a virtual function
+    (CyberCore::HTMLCanvasElement::removedFromAncestor): Remove the observer.
+    (CyberCore::HTMLCanvasElement::needsPreparationForDisplay): Use a virtual function
     on the context instead of checking the type.
-    (WebCore::HTMLCanvasElement::prepareForDisplay): Ditto.
+    (CyberCore::HTMLCanvasElement::prepareForDisplay): Ditto.
     
     * html/canvas/CanvasRenderingContext.h: New virtual functions to avoid type checking
     in HTMLCanvasElement.
-    (WebCore::CanvasRenderingContext::compositingResultsNeedUpdating const):
-    (WebCore::CanvasRenderingContext::needsPreparationForDisplay const):
-    (WebCore::CanvasRenderingContext::prepareForDisplay):
+    (CyberCore::CanvasRenderingContext::compositingResultsNeedUpdating const):
+    (CyberCore::CanvasRenderingContext::needsPreparationForDisplay const):
+    (CyberCore::CanvasRenderingContext::prepareForDisplay):
     
     * html/canvas/WebGLRenderingContextBase.cpp: Implementations of the virtual functions
     that tell HTMLCanvasElement that it needs to prepareForDisplay.
-    (WebCore::WebGLRenderingContextBase::markContextChanged):
-    (WebCore::WebGLRenderingContextBase::markContextChangedAndNotifyCanvasObserver):
-    (WebCore::WebGLRenderingContextBase::didComposite):
+    (CyberCore::WebGLRenderingContextBase::markContextChanged):
+    (CyberCore::WebGLRenderingContextBase::markContextChangedAndNotifyCanvasObserver):
+    (CyberCore::WebGLRenderingContextBase::didComposite):
     * html/canvas/WebGLRenderingContextBase.h:
     
     LayoutTests:
@@ -3372,7 +3372,7 @@
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     We are currently painting event region for the box background to the foreground layer, which can cause
     foreground layer to wrongly catch scroll events. Similarly we are unnecessarily painting foreground for
@@ -3387,20 +3387,20 @@
     This should be reconciled at some point.
     
     * rendering/RenderBlock.cpp:
-    (WebCore::RenderBlock::paintContents):
+    (CyberCore::RenderBlock::paintContents):
     
     Add the background flag when painting contents as the descendant backgrounds are part of the layer foreground.
     
-    (WebCore::RenderBlock::paintObject):
+    (CyberCore::RenderBlock::paintObject):
     
     Respect the new flags.
     
     * rendering/RenderLayer.cpp:
-    (WebCore::RenderLayer::paintLayerContents):
+    (CyberCore::RenderLayer::paintLayerContents):
     
     Setup the flags based on what we are supposed to be painting on this layer.
     
-    (WebCore::RenderLayer::collectEventRegionForFragments):
+    (CyberCore::RenderLayer::collectEventRegionForFragments):
     
     Flag filtering moves to paintLayerContents.
     
@@ -3438,7 +3438,7 @@
     <rdar://problem/68034716>
     
     Reviewed by Tim Horton.
-    Source/WebCore:
+    Source/CyberCore:
     
     In r266262 ScrollingTreeLatchingController started to consult the "last handled wheel event"
     time when deciding whether to use the latched node, but we didn't update this timestamp when
@@ -3447,7 +3447,7 @@
     Test: fast/scrolling/latching/latched-scroll-into-nonfast-region.html
     
     * page/scrolling/ScrollingTree.cpp:
-    (WebCore::ScrollingTree::handleWheelEvent):
+    (CyberCore::ScrollingTree::handleWheelEvent):
     
     LayoutTests:
     
@@ -3478,7 +3478,7 @@
     
     Reviewed by Eric Carlson.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Address a crash and a backward-compatibility issue on https://magenta.github.io/lofi-player/.
     
@@ -3489,7 +3489,7 @@
     * Modules/webaudio/OscillatorNode.idl:
     Even after fixing the crash, the game would fail to load because it expected
     window.OscillatorNode to exist. When we started working on modern Web Audio,
-    we renamed the non-standard oscillator node to WebKitOscillatorNode and
+    we renamed the non-standard oscillator node to CyberKitOscillatorNode and
     added a new standards compliant OscillatorNode behind a runtime flag (off
     by default). As a result, window.OscillatorNode no longer existed on Big Sur,
     which is not backward compatible. To address the issue, we now expose
@@ -3499,7 +3499,7 @@
     for these interfaces.
     
     * Modules/webaudio/BaseAudioContext.cpp:
-    (WebCore::BaseAudioContext::startRendering):
+    (CyberCore::BaseAudioContext::startRendering):
     Make sure we call lazyInitialize() before we start offline rendering.
     The context may not be initialized yet if no audio nodes were created
     for this context. This is similar to what is done in our modern Web
@@ -3540,7 +3540,7 @@
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     While computing the scrollable overflow for inflow positioned (or transformed) renderers, we need to take their paint geometry into
     account so that scrolling matches their final positions.
@@ -3559,7 +3559,7 @@
     Test: fast/css/scrollable-overflow-with-sticky-positioning.html
     
     * rendering/RenderBox.cpp:
-    (WebCore::RenderBox::layoutOverflowRectForPropagation const):
+    (CyberCore::RenderBox::layoutOverflowRectForPropagation const):
     
     LayoutTests:
     
@@ -3590,7 +3590,7 @@
     
     Reviewed by Darin Adler.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Tests: fast/web-share/canShare-with-files-feature-disabled.html
            fast/web-share/share-with-files-feature-disabled.html
@@ -3599,17 +3599,17 @@
     consulted anywhere in the implementation.
     
     * page/Navigator.cpp:
-    (WebCore::Navigator::canShare):
+    (CyberCore::Navigator::canShare):
     Rewrite canShare to be a bit more readable, and also to consult the Level 2 feature flag.
     
-    (WebCore::Navigator::share):
+    (CyberCore::Navigator::share):
     Since canShare (per the spec) will return true if we have files and other content,
     even if files are not shareable, check the feature flag again before loading the files.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * UIProcess/WebPageProxy.cpp:
-    (WebKit::WebPageProxy::showShareSheet):
+    (CyberKit::WebPageProxy::showShareSheet):
     If the Web Content process sends us files, but the Level 2 feature flag is disabled,
     something fishy is happening, so fire a MESSAGE_CHECK.
     
@@ -3648,21 +3648,21 @@
     
     Reviewed by Wenson Hsieh.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: fast/web-share/share-disallows-file-urls.html
     
     * page/Navigator.cpp:
-    (WebCore::shareableURLForShareData):
-    (WebCore::Navigator::canShare):
-    (WebCore::Navigator::share):
+    (CyberCore::shareableURLForShareData):
+    (CyberCore::Navigator::canShare):
+    (CyberCore::Navigator::share):
     Factor out the code to complete and check the scheme of the URL.
     Make canShare() return NO and share() fail for non-HTTP(S) or data: URLs.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * UIProcess/WebPageProxy.cpp:
-    (WebKit::WebPageProxy::showShareSheet):
+    (CyberKit::WebPageProxy::showShareSheet):
     Ensure that only HTTP family or data: URLs are shared.
     
     LayoutTests:
@@ -3703,7 +3703,7 @@
     <rdar://problem/67430532>
     
     Reviewed by Tim Horton.
-    Source/WebCore:
+    Source/CyberCore:
     
     There are two parts to this fix. First, findEnclosingScrollableContainer() needs
     to use the same vertical-biasing delta fixup that we use in other places, to bias towards
@@ -3718,23 +3718,23 @@
     Test: fast/scrolling/mac/horizontal-overflow-trapping-small-deltas.html
     
     * page/FrameView.cpp:
-    (WebCore::FrameView::wheelEvent):
+    (CyberCore::FrameView::wheelEvent):
     * page/mac/EventHandlerMac.mm:
-    (WebCore::findEnclosingScrollableContainer):
+    (CyberCore::findEnclosingScrollableContainer):
     * page/scrolling/ScrollingCoordinator.h:
-    (WebCore::ScrollingCoordinator::handleWheelEvent):
+    (CyberCore::ScrollingCoordinator::handleWheelEvent):
     * page/scrolling/ScrollingTree.cpp:
-    (WebCore::ScrollingTree::handleWheelEvent):
-    (WebCore::ScrollingTree::handleWheelEventWithNode):
+    (CyberCore::ScrollingTree::handleWheelEvent):
+    (CyberCore::ScrollingTree::handleWheelEventWithNode):
     * page/scrolling/ScrollingTree.h:
     * page/scrolling/ThreadedScrollingTree.cpp:
-    (WebCore::ThreadedScrollingTree::handleWheelEventAfterMainThread):
+    (CyberCore::ThreadedScrollingTree::handleWheelEventAfterMainThread):
     * page/scrolling/ThreadedScrollingTree.h:
     * page/scrolling/mac/ScrollingCoordinatorMac.h:
     * page/scrolling/mac/ScrollingCoordinatorMac.mm:
-    (WebCore::ScrollingCoordinatorMac::handleWheelEvent):
+    (CyberCore::ScrollingCoordinatorMac::handleWheelEvent):
     * page/scrolling/nicosia/ScrollingCoordinatorNicosia.cpp:
-    (WebCore::ScrollingCoordinatorNicosia::handleWheelEvent):
+    (CyberCore::ScrollingCoordinatorNicosia::handleWheelEvent):
     * page/scrolling/nicosia/ScrollingCoordinatorNicosia.h:
     
     LayoutTests:
@@ -3779,7 +3779,7 @@
 
     Scrolling on select element doesn't work after scrolling the page
     https://bugs.webkit.org/show_bug.cgi?id=215900
-    Source/WebCore:
+    Source/CyberCore:
     
     <rdar://problem/67766032>
     
@@ -3791,9 +3791,9 @@
     Test: fast/scrolling/latching/latching-stuck-to-main-page.html
     
     * page/scrolling/ScrollingTreeLatchingController.cpp:
-    (WebCore::ScrollingTreeLatchingController::receivedWheelEvent):
-    (WebCore::ScrollingTreeLatchingController::latchedNodeForEvent const):
-    (WebCore::ScrollingTreeLatchingController::latchedNodeIsRelevant const):
+    (CyberCore::ScrollingTreeLatchingController::receivedWheelEvent):
+    (CyberCore::ScrollingTreeLatchingController::latchedNodeForEvent const):
+    (CyberCore::ScrollingTreeLatchingController::latchedNodeIsRelevant const):
     * page/scrolling/ScrollingTreeLatchingController.h:
     
     LayoutTests:
@@ -3826,7 +3826,7 @@
     
     Reviewed by Tim Horton.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     While reverting the replaced string in `Editor::changeBackToReplacedString`, it's possible for text replacement
     (`Editor::replaceSelectionWithText`) to cause the text checking paragraph range to become orphaned (if for no
@@ -3843,12 +3843,12 @@
     
     * editing/Editor.h:
     * editing/TextCheckingHelper.cpp:
-    (WebCore::expandToParagraphBoundary):
+    (CyberCore::expandToParagraphBoundary):
     
     See above for more details.
     
     * testing/Internals.cpp:
-    (WebCore::Internals::changeBackToReplacedString):
+    (CyberCore::Internals::changeBackToReplacedString):
     * testing/Internals.h:
     * testing/Internals.idl:
     
@@ -3887,14 +3887,14 @@
     
     Reviewed by Eric Carlson.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: media/video-as-img-output-pts.html
     
     Use CMSampleBufferGetOutputPresentationTimeStamp() for sample PTS.
     
     * platform/graphics/avfoundation/objc/ImageDecoderAVFObjC.mm:
-    (WebCore::ImageDecoderAVFObjC::storeSampleBuffer):
+    (CyberCore::ImageDecoderAVFObjC::storeSampleBuffer):
     
     LayoutTests:
     
@@ -3926,7 +3926,7 @@
     
     Reviewed by Darin Adler.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: fast/canvas/webgl/compositing-without-drawing.html
     
@@ -3941,7 +3941,7 @@
     when we are not bound to the default (canvas) framebuffer.
     
     * html/canvas/WebGLRenderingContextBase.cpp:
-    (WebCore::WebGLRenderingContextBase::markContextChangedAndNotifyCanvasObserver): Only
+    (CyberCore::WebGLRenderingContextBase::markContextChangedAndNotifyCanvasObserver): Only
     mark if we're rendering to the default framebuffer.
     
     LayoutTests:
@@ -3977,7 +3977,7 @@
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: webanimations/accelerated-css-transition-with-easing-y-axis-above-1.html
     
@@ -4006,9 +4006,9 @@
     workaround at this time for this case and this is covered by bug 215918.
     
     * animation/KeyframeEffect.cpp:
-    (WebCore::KeyframeEffect::backingAnimationForCompositedRenderer const):
+    (CyberCore::KeyframeEffect::backingAnimationForCompositedRenderer const):
     * platform/graphics/ca/GraphicsLayerCA.cpp:
-    (WebCore::GraphicsLayerCA::createTransformAnimationsFromKeyframes):
+    (CyberCore::GraphicsLayerCA::createTransformAnimationsFromKeyframes):
     
     LayoutTests:
     
@@ -4046,7 +4046,7 @@
     
     Reviewed by Simon Fraser.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Test: webanimations/accelerated-css-animation-with-easing.html
     
@@ -4070,16 +4070,16 @@
     GraphicsLayerCA to use it to determine the timing function when building keyframes.
     
     * animation/KeyframeEffect.cpp:
-    (WebCore::KeyframeEffect::backingAnimationForCompositedRenderer const): Always generate an Animation
+    (CyberCore::KeyframeEffect::backingAnimationForCompositedRenderer const): Always generate an Animation
     object based on the effect's properties, also setting the new defaultTimingFunctionForKeyframes in the
     case of a CSS Animation object.
     * platform/animation/Animation.h:
-    (WebCore::Animation::defaultTimingFunctionForKeyframes const):
-    (WebCore::Animation::setDefaultTimingFunctionForKeyframes):
+    (CyberCore::Animation::defaultTimingFunctionForKeyframes const):
+    (CyberCore::Animation::setDefaultTimingFunctionForKeyframes):
     * platform/graphics/ca/GraphicsLayerCA.cpp:
-    (WebCore::animationHasStepsTimingFunction): Use the optional defaultTimingFunctionForKeyframes to determine
+    (CyberCore::animationHasStepsTimingFunction): Use the optional defaultTimingFunctionForKeyframes to determine
     whether a keyframe uses a steps timing function.
-    (WebCore::GraphicsLayerCA::timingFunctionForAnimationValue): Use the optional defaultTimingFunctionForKeyframes
+    (CyberCore::GraphicsLayerCA::timingFunctionForAnimationValue): Use the optional defaultTimingFunctionForKeyframes
     to determine the timing function for a keyframe.
     
     LayoutTests:
@@ -4116,7 +4116,7 @@
     
     Reviewed by Darin Adler.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     When a font reports itself to be monospace, we use this as a
     signal that we can perform width computations by assuming all
@@ -4138,7 +4138,7 @@
            fast/text/font-monospaced-lie.html
     
     * rendering/RenderText.cpp:
-    (WebCore::RenderText::widthFromCache const):
+    (CyberCore::RenderText::widthFromCache const):
     
     LayoutTests:
     
@@ -4185,7 +4185,7 @@
     
     Reviewed by Ryosuke Niwa.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     r265908 added support for Blob::arrayBuffer() / Blob::text() which are asynchronous operations
     returning promises. The crash is due to the fact that the Blob's JS wrapper may get garbage
@@ -4198,123 +4198,123 @@
     Test: fast/files/blob-text-gc.html
     
     * Modules/async-clipboard/Clipboard.cpp:
-    (WebCore::Clipboard::getType):
+    (CyberCore::Clipboard::getType):
     * Modules/async-clipboard/ClipboardImageReader.h:
-    (WebCore::ClipboardImageReader::ClipboardImageReader):
+    (CyberCore::ClipboardImageReader::ClipboardImageReader):
     * Modules/async-clipboard/ClipboardItem.cpp:
-    (WebCore::ClipboardItem::blobFromString):
+    (CyberCore::ClipboardItem::blobFromString):
     * Modules/async-clipboard/ClipboardItem.h:
     * Modules/async-clipboard/ClipboardItemBindingsDataSource.cpp:
-    (WebCore::ClipboardItemBindingsDataSource::getType):
+    (CyberCore::ClipboardItemBindingsDataSource::getType):
     * Modules/async-clipboard/ios/ClipboardImageReaderIOS.mm:
-    (WebCore::ClipboardImageReader::readBuffer):
+    (CyberCore::ClipboardImageReader::readBuffer):
     * Modules/async-clipboard/mac/ClipboardImageReaderMac.mm:
-    (WebCore::ClipboardImageReader::readBuffer):
+    (CyberCore::ClipboardImageReader::readBuffer):
     * Modules/entriesapi/DOMFileSystem.cpp:
-    (WebCore::DOMFileSystem::getFile):
+    (CyberCore::DOMFileSystem::getFile):
     * Modules/entriesapi/DOMFileSystem.h:
     * Modules/entriesapi/FileSystemFileEntry.cpp:
-    (WebCore::FileSystemFileEntry::file):
+    (CyberCore::FileSystemFileEntry::file):
     * Modules/entriesapi/FileSystemFileEntry.h:
     * Modules/entriesapi/FileSystemFileEntry.idl:
     * Modules/fetch/FetchBody.cpp:
-    (WebCore::FetchBody::fromFormData):
+    (CyberCore::FetchBody::fromFormData):
     * Modules/fetch/FetchBody.h:
     * Modules/fetch/FetchBodyConsumer.cpp:
-    (WebCore::blobFromData):
-    (WebCore::packageFormData):
-    (WebCore::resolveWithTypeAndData):
-    (WebCore::FetchBodyConsumer::resolve):
-    (WebCore::FetchBodyConsumer::takeAsBlob):
+    (CyberCore::blobFromData):
+    (CyberCore::packageFormData):
+    (CyberCore::resolveWithTypeAndData):
+    (CyberCore::FetchBodyConsumer::resolve):
+    (CyberCore::FetchBodyConsumer::takeAsBlob):
     * Modules/fetch/FetchBodyConsumer.h:
     * Modules/fetch/FetchBodyOwner.cpp:
-    (WebCore::FetchBodyOwner::blob):
+    (CyberCore::FetchBodyOwner::blob):
     * Modules/mediarecorder/MediaRecorder.cpp:
-    (WebCore::MediaRecorder::stopRecording):
-    (WebCore::MediaRecorder::requestData):
+    (CyberCore::MediaRecorder::stopRecording):
+    (CyberCore::MediaRecorder::requestData):
     * Modules/mediastream/RTCDataChannel.cpp:
-    (WebCore::RTCDataChannel::didReceiveRawData):
+    (CyberCore::RTCDataChannel::didReceiveRawData):
     * Modules/websockets/WebSocket.cpp:
-    (WebCore::WebSocket::didReceiveBinaryData):
+    (CyberCore::WebSocket::didReceiveBinaryData):
     * Modules/websockets/WorkerThreadableWebSocketChannel.cpp:
-    (WebCore::WorkerThreadableWebSocketChannel::Bridge::send):
+    (CyberCore::WorkerThreadableWebSocketChannel::Bridge::send):
     * bindings/js/SerializedScriptValue.cpp:
-    (WebCore::CloneDeserializer::readFile):
-    (WebCore::CloneDeserializer::readTerminal):
+    (CyberCore::CloneDeserializer::readFile):
+    (CyberCore::CloneDeserializer::readTerminal):
     * dom/DataTransfer.cpp:
-    (WebCore::DataTransfer::updateFileList):
-    (WebCore::DataTransfer::items):
-    (WebCore::DataTransfer::filesFromPasteboardAndItemList const):
-    (WebCore::DataTransfer::files const):
+    (CyberCore::DataTransfer::updateFileList):
+    (CyberCore::DataTransfer::items):
+    (CyberCore::DataTransfer::filesFromPasteboardAndItemList const):
+    (CyberCore::DataTransfer::files const):
     * dom/DataTransfer.h:
     * dom/DataTransfer.idl:
     * dom/DataTransferItemList.cpp:
-    (WebCore::DataTransferItemList::DataTransferItemList):
-    (WebCore::DataTransferItemList::remove):
-    (WebCore::DataTransferItemList::clear):
-    (WebCore::DataTransferItemList::ensureItems const):
-    (WebCore::DataTransferItemList::document const):
+    (CyberCore::DataTransferItemList::DataTransferItemList):
+    (CyberCore::DataTransferItemList::remove):
+    (CyberCore::DataTransferItemList::clear):
+    (CyberCore::DataTransferItemList::ensureItems const):
+    (CyberCore::DataTransferItemList::document const):
     * dom/DataTransferItemList.h:
     * dom/DataTransferItemList.idl:
-    * editing/WebCorePasteboardFileReader.cpp:
-    (WebCore::WebCorePasteboardFileReader::readFilename):
-    (WebCore::WebCorePasteboardFileReader::readBuffer):
-    * editing/WebCorePasteboardFileReader.h:
+    * editing/CyberCorePasteboardFileReader.cpp:
+    (CyberCore::CyberCorePasteboardFileReader::readFilename):
+    (CyberCore::CyberCorePasteboardFileReader::readBuffer):
+    * editing/CyberCorePasteboardFileReader.h:
     * editing/cocoa/WebContentReaderCocoa.mm:
-    (WebCore::createFragmentForImageAttachment):
-    (WebCore::replaceRichContentWithAttachments):
-    (WebCore::createFragmentAndAddResources):
-    (WebCore::sanitizeMarkupWithArchive):
-    (WebCore::WebContentReader::readImage):
-    (WebCore::attachmentForFilePath):
-    (WebCore::attachmentForData):
+    (CyberCore::createFragmentForImageAttachment):
+    (CyberCore::replaceRichContentWithAttachments):
+    (CyberCore::createFragmentAndAddResources):
+    (CyberCore::sanitizeMarkupWithArchive):
+    (CyberCore::WebContentReader::readImage):
+    (CyberCore::attachmentForFilePath):
+    (CyberCore::attachmentForData):
     * editing/markup.cpp:
-    (WebCore::restoreAttachmentElementsInFragment):
+    (CyberCore::restoreAttachmentElementsInFragment):
     * fileapi/Blob.cpp:
-    (WebCore::Blob::Blob):
-    (WebCore::Blob::loadBlob):
-    (WebCore::Blob::activeDOMObjectName const):
+    (CyberCore::Blob::Blob):
+    (CyberCore::Blob::loadBlob):
+    (CyberCore::Blob::activeDOMObjectName const):
     * fileapi/Blob.h:
-    (WebCore::Blob::create):
-    (WebCore::Blob::deserialize):
-    (WebCore::Blob::slice const):
+    (CyberCore::Blob::create):
+    (CyberCore::Blob::deserialize):
+    (CyberCore::Blob::slice const):
     * fileapi/Blob.idl:
     * fileapi/File.cpp:
-    (WebCore::File::createWithRelativePath):
-    (WebCore::File::create):
-    (WebCore::File::File):
-    (WebCore::File::activeDOMObjectName const):
+    (CyberCore::File::createWithRelativePath):
+    (CyberCore::File::create):
+    (CyberCore::File::File):
+    (CyberCore::File::activeDOMObjectName const):
     * fileapi/File.h:
     * fileapi/File.idl:
     * html/DOMFormData.cpp:
-    (WebCore::DOMFormData::createFileEntry):
+    (CyberCore::DOMFormData::createFileEntry):
     * html/DirectoryFileListCreator.cpp:
-    (WebCore::FileInformation::isolatedCopy const):
-    (WebCore::appendDirectoryFiles):
-    (WebCore::gatherFileInformation):
-    (WebCore::toFileList):
-    (WebCore::DirectoryFileListCreator::start):
+    (CyberCore::FileInformation::isolatedCopy const):
+    (CyberCore::appendDirectoryFiles):
+    (CyberCore::gatherFileInformation):
+    (CyberCore::toFileList):
+    (CyberCore::DirectoryFileListCreator::start):
     * html/DirectoryFileListCreator.h:
     * html/FileInputType.cpp:
-    (WebCore::FileInputType::appendFormData const):
-    (WebCore::FileInputType::filesChosen):
+    (CyberCore::FileInputType::appendFormData const):
+    (CyberCore::FileInputType::filesChosen):
     * html/HTMLAttachmentElement.cpp:
-    (WebCore::HTMLAttachmentElement::updateEnclosingImageWithData):
+    (CyberCore::HTMLAttachmentElement::updateEnclosingImageWithData):
     * html/HTMLCanvasElement.cpp:
-    (WebCore::HTMLCanvasElement::toBlob):
+    (CyberCore::HTMLCanvasElement::toBlob):
     * testing/Internals.cpp:
-    (WebCore::Internals::createFile):
+    (CyberCore::Internals::createFile):
     * testing/ServiceWorkerInternals.cpp:
-    (WebCore::ServiceWorkerInternals::createOpaqueWithBlobBodyResponse):
+    (CyberCore::ServiceWorkerInternals::createOpaqueWithBlobBodyResponse):
     * workers/service/context/ServiceWorkerFetch.cpp:
-    (WebCore::ServiceWorkerFetch::dispatchFetchEvent):
+    (CyberCore::ServiceWorkerFetch::dispatchFetchEvent):
     * xml/XMLHttpRequest.cpp:
-    (WebCore::XMLHttpRequest::createResponseBlob):
+    (CyberCore::XMLHttpRequest::createResponseBlob):
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * WebProcess/Automation/WebAutomationSessionProxy.cpp:
-    (WebKit::WebAutomationSessionProxy::setFilesForInputFileUpload):
+    (CyberKit::WebAutomationSessionProxy::setFilesForInputFileUpload):
     
     LayoutTests:
     
@@ -4498,8 +4498,8 @@
 
         Reviewed by Alex Christensen.
 
-        http/tests/websocket/tests/hybi/client-close.html is not running consistently between Firefox, Chrome, WebKit legacy WebSocket and WebKit NSURLSession WebSocket.
-        Add another test that uses an explicit close code that runs consistently between Firefox, Chrome and WebKit legacy WebSocket.
+        http/tests/websocket/tests/hybi/client-close.html is not running consistently between Firefox, Chrome, CyberKit legacy WebSocket and CyberKit NSURLSession WebSocket.
+        Add another test that uses an explicit close code that runs consistently between Firefox, Chrome and CyberKit legacy WebSocket.
 
         * http/tests/websocket/tests/hybi/client-close-2-expected.txt: Added.
         * http/tests/websocket/tests/hybi/client-close-2.html: Added.
@@ -4706,7 +4706,7 @@
 
 2020-08-18  Ryosuke Niwa  <rniwa@webkit.org>
 
-        REGRESSION(r265092): delegatesFocus causes WebKit to crash
+        REGRESSION(r265092): delegatesFocus causes CyberKit to crash
         https://bugs.webkit.org/show_bug.cgi?id=215622
 
         Reviewed by Youenn Fablet.
@@ -5091,7 +5091,7 @@
 
 2020-08-17  Hector Lopez  <hector_i_lopez@apple.com>
 
-        ASSERTION FAILURE: WebKit::AuthenticationManager::initializeConnection(IPC::Connection *)_block_invoke
+        ASSERTION FAILURE: CyberKit::AuthenticationManager::initializeConnection(IPC::Connection *)_block_invoke
         https://bugs.webkit.org/show_bug.cgi?id=215025
 
         Unreviewed test gardening.
@@ -5642,7 +5642,7 @@
 
 2020-08-13  Carlos Garcia Campos  <cgarcia@igalia.com>
 
-        Crash in WebCore::StyledMarkupAccumulator::traverseNodesForSerialization
+        Crash in CyberCore::StyledMarkupAccumulator::traverseNodesForSerialization
         https://bugs.webkit.org/show_bug.cgi?id=199224
 
         Reviewed by Michael Catanzaro.
@@ -5680,7 +5680,7 @@
 
 2020-08-13  Darin Adler  <darin@apple.com>
 
-        Migrate some Apple internal Mac expectations here into WebKit sources
+        Migrate some Apple internal Mac expectations here into CyberKit sources
         https://bugs.webkit.org/show_bug.cgi?id=215459
 
         Reviewed by Jonathan Bedard.
@@ -6810,7 +6810,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
         [GLIB] Unreviewed test gardening. Emit new baselines after r265403.
 
-        Some result values of tests failing are different in the WebKitGTK/WPE
+        Some result values of tests failing are different in the CyberKitGTK/WPE
         ports, which makes the tests fail. However the total number of tests
         passing and failing is the same as in the general baseline.
 
@@ -6932,7 +6932,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-08-07  Wenson Hsieh  <wenson_hsieh@apple.com>
 
-        [macOS] It should be possible to override spellchecking results in WebKitTestRunner
+        [macOS] It should be possible to override spellchecking results in CyberKitTestRunner
         https://bugs.webkit.org/show_bug.cgi?id=215290
 
         Reviewed by Devin Rousso.
@@ -6945,8 +6945,8 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
         * editing/spelling/text-replacement-after-typing-to-word.html:
 
-        Adopt `UIHelper.setSpellCheckerResults`. This allows us to enable the test on macOS WebKit2, since the only
-        thing that prevented it from working before was the ability to `setSpellCheckerResults` in WebKit2.
+        Adopt `UIHelper.setSpellCheckerResults`. This allows us to enable the test on macOS CyberKit2, since the only
+        thing that prevented it from working before was the ability to `setSpellCheckerResults` in CyberKit2.
 
         * platform/mac-wk2/TestExpectations:
         * resources/ui-helper.js:
@@ -7703,7 +7703,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-08-04  Chris Dumez  <cdumez@apple.com>
 
-        Move non standard AudioBufferSourceNode API to new WebKitAudioBufferSourceNode interface
+        Move non standard AudioBufferSourceNode API to new CyberKitAudioBufferSourceNode interface
         https://bugs.webkit.org/show_bug.cgi?id=215106
 
         Reviewed by Eric Carlson.
@@ -8686,7 +8686,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
         * imported/blink/http/tests/security/contentSecurityPolicy/object-src-applet-code-expected.txt: Removed.
         * imported/blink/http/tests/security/contentSecurityPolicy/object-src-applet-code.html: Removed.
         These are identical duplicates of tests in the same named directories outside "imported/blink".
-        Maybe imported by Blink from WebKit and then back?
+        Maybe imported by Blink from CyberKit and then back?
 
         * imported/blink/img_border_percent-expected.xhtml: Removed.
         * imported/blink/img_border_percent.xhtml: Removed.
@@ -8949,7 +8949,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
         Reviewed by Wenson Hsieh.
 
         Add a test that triggers a long press gesture on an <img> and checks a single "pointerdown" event
-        was dispatched. Prior to the WebCore change in this patch, two events would be dispatched.
+        was dispatched. Prior to the CyberCore change in this patch, two events would be dispatched.
 
         * pointerevents/ios/long-press-yields-single-pointerdown-event-expected.txt: Added.
         * pointerevents/ios/long-press-yields-single-pointerdown-event.html: Added.
@@ -8965,7 +8965,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-07-29  Kate Cheney  <katherine_cheney@apple.com>
 
-        Migrate App-Bound Domains code from WebKit Additions
+        Migrate App-Bound Domains code from CyberKit Additions
         https://bugs.webkit.org/show_bug.cgi?id=214889
         <rdar://problem/66075857>
 
@@ -9039,7 +9039,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
         Reverted changeset:
 
-        "Migrate App-Bound Domains code from WebKit Additions"
+        "Migrate App-Bound Domains code from CyberKit Additions"
         https://bugs.webkit.org/show_bug.cgi?id=214889
         https://trac.webkit.org/changeset/265018
 
@@ -9055,7 +9055,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-07-28  Chris Dumez  <cdumez@apple.com>
 
-        Move non standard OscillatorNode API to new WebKitOscillatorNode interface
+        Move non standard OscillatorNode API to new CyberKitOscillatorNode interface
         https://bugs.webkit.org/show_bug.cgi?id=214902
 
         Reviewed by Darin Adler.
@@ -9094,7 +9094,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-07-28  Kate Cheney  <katherine_cheney@apple.com>
 
-        Migrate App-Bound Domains code from WebKit Additions
+        Migrate App-Bound Domains code from CyberKit Additions
         https://bugs.webkit.org/show_bug.cgi?id=214889
         <rdar://problem/66075857>
 
@@ -9204,7 +9204,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
         Reviewed by Dean Jackson.
 
-        WebKit's snapshot of the WebGL 2.0.0 conformance suite was taken
+        CyberKit's snapshot of the WebGL 2.0.0 conformance suite was taken
         in 2018, before the suite was finalized. Since then many bug fixes
         were made to the tests. This new snapshot was taken by running the
         conformance suite importing script:
@@ -9996,7 +9996,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-07-27  Dean Jackson  <dino@apple.com>
 
-        Repeatable WebContent crash: WebCore::jsWebGLRenderingContextPrototypeFunctionGetError
+        Repeatable WebContent crash: CyberCore::jsWebGLRenderingContextPrototypeFunctionGetError
         https://bugs.webkit.org/show_bug.cgi?id=214814
         rdar://59290537
 
@@ -10479,7 +10479,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
         * resources/ui-helper.js:
         (window.UIHelper.setShareSheetCompletesImmediatelyWithResolution): Deleted.
         Update existing layout test so stop calling UIHelper.setShareSheetCompletesImmediatelyWithResolution() now that it
-        is the default in WebKitTestRunner.
+        is the default in CyberKitTestRunner.
 
         * platform/ios/TestExpectations:
         Unskip test that is no longer timing out.
@@ -10646,7 +10646,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-07-23  Yusuke Suzuki  <ysuzuki@apple.com>
 
-        Add exception check for WebCore createRejectedPromiseWithTypeError
+        Add exception check for CyberCore createRejectedPromiseWithTypeError
         https://bugs.webkit.org/show_bug.cgi?id=214680
         <rdar://problem/65925490>
 
@@ -11223,7 +11223,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
         * editing/execCommand/typing-should-not-trigger-scrolling-when-selection-is-visible.html: Added.
         * platform/mac-wk1/TestExpectations:
 
-        Mark the test as failing in WebKit1 for now, which will require some additional work.
+        Mark the test as failing in CyberKit1 for now, which will require some additional work.
 
 2020-07-20  Hector Lopez  <hector_i_lopez@apple.com>
 
@@ -12847,7 +12847,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
         a delay of at least 10ms.
 
         * TestExpectations:
-        The added delay code is only present in WebKit, not WebKitLegacy.
+        The added delay code is only present in CyberKit, not CyberKitLegacy.
         Additionally, web sockets behave differently on Windows, so this test
         should be skipped on all platforms and only enabled for mac and ios wk2.
 
@@ -12907,8 +12907,8 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
         [WinCairo] Unreviewed test gardening
 
-        Windows WebKit1 doesn't check lines with "EDITING DELEGATE:" (Bug 64471).
-        Rebasedlined with WinCairo WebKit2's results.
+        Windows CyberKit1 doesn't check lines with "EDITING DELEGATE:" (Bug 64471).
+        Rebasedlined with WinCairo CyberKit2's results.
 
         * platform/wincairo/editing/execCommand/findString-2-expected.txt:
         * platform/wincairo/editing/selection/6476-expected.txt:
@@ -13561,16 +13561,16 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-07-07  Sam Weinig  <weinig@apple.com>
 
-        Enabled testing of date/time input types for WebKit2 macOS
+        Enabled testing of date/time input types for CyberKit2 macOS
         https://bugs.webkit.org/show_bug.cgi?id=214044
 
         Reviewed by Chris Dumez.
 
         * platform/mac-wk1/TestExpectations:
         * platform/mac/TestExpectations:
-        Move skipping of date/time input types to WebKit1 specific TestExpectations
-        to allow for testing on WebKit2. If this goes well, we can look into enabling
-        them for WebKit1 as well.
+        Move skipping of date/time input types to CyberKit1 specific TestExpectations
+        to allow for testing on CyberKit2. If this goes well, we can look into enabling
+        them for CyberKit1 as well.
 
         * platform/mac-wk2/accessibility/roles-exposed-expected.txt:
         * platform/mac-wk2/fast/forms/datalist: Added.
@@ -14531,7 +14531,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
         Reviewed by Simon Fraser.
 
         Add some tests to ensure the new setting works and the feature can be disabled. Note
-        that the setting is enabled by default to keep the current behavior. See the WebCore
+        that the setting is enabled by default to keep the current behavior. See the CyberCore
         ChangeLog entry for more details.
 
         Update existings tests that need the editable region enabled to enable it now that it must
@@ -15051,7 +15051,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
         the last two test cases fail. Let's add a glib baseline with a Pass
         expectation with a link to the bug discussing the main expectation.
 
-        The added baseline mirrors the current WebKitGTK results from wpt.fyi,
+        The added baseline mirrors the current CyberKitGTK results from wpt.fyi,
         with the two cookie failures.
 
         * platform/glib/TestExpectations:
@@ -16267,7 +16267,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-06-19  Jason Lawrence  <lawrence.j@apple.com>
 
-        Mac wk2 Debug] webaudio/biquad-bandpass.html is flaky crashing with alert WTFCrash - WebCore::WebKitAudioContext::~WebKitAudioContext() + 654 (WebKitAudioContext.cpp:209).
+        Mac wk2 Debug] webaudio/biquad-bandpass.html is flaky crashing with alert WTFCrash - CyberCore::CyberKitAudioContext::~CyberKitAudioContext() + 654 (CyberKitAudioContext.cpp:209).
         https://bugs.webkit.org/show_bug.cgi?id=213375
 
         Unreviewed test gardening.
@@ -16426,7 +16426,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
         Reviewed by Darin Adler.
 
-        This test races a zero-delay GC timer against WebCore releasing its last
+        This test races a zero-delay GC timer against CyberCore releasing its last
         reference to a WebGPU canvas. Flaky!
 
         Make GC deterministic by continually retrying GC until the Web
@@ -16555,7 +16555,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-06-17  Keith Miller  <keith_miller@apple.com>
 
-        WebKitTestRunner should not crash on alert with invalid utf16 strings
+        CyberKitTestRunner should not crash on alert with invalid utf16 strings
         https://bugs.webkit.org/show_bug.cgi?id=213269
 
         Reviewed by Simon Fraser.
@@ -16689,7 +16689,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-06-16  Dean Jackson  <dino@apple.com>
 
-        REGRESSION (r262643): DumpRenderTree at com.apple.WebCore: WebCore::Document::prepareCanvasesForDisplayIfNeeded
+        REGRESSION (r262643): DumpRenderTree at com.matthewbenedict.CyberCore: CyberCore::Document::prepareCanvasesForDisplayIfNeeded
         https://bugs.webkit.org/show_bug.cgi?id=213221
         rdar://64260400
 
@@ -17644,7 +17644,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-06-14  Pinki Gyanchandani  <pgyanchandani@apple.com>
 
-        Release Assert @ WebCore::RenderTreeBuilder::RenderTreeBuilder
+        Release Assert @ CyberCore::RenderTreeBuilder::RenderTreeBuilder
         https://bugs.webkit.org/show_bug.cgi?id=212714
 
         Reviewed by Geoffrey Garen.
@@ -17910,7 +17910,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
         Reverted changeset:
 
         "Release Assert @
-        WebCore::RenderTreeBuilder::RenderTreeBuilder"
+        CyberCore::RenderTreeBuilder::RenderTreeBuilder"
         https://bugs.webkit.org/show_bug.cgi?id=212714
         https://trac.webkit.org/changeset/262909
 
@@ -17959,7 +17959,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-06-11  Pinki Gyanchandani  <pgyanchandani@apple.com>
 
-        Release Assert @ WebCore::RenderTreeBuilder::RenderTreeBuilder
+        Release Assert @ CyberCore::RenderTreeBuilder::RenderTreeBuilder
         https://bugs.webkit.org/show_bug.cgi?id=212714
 
         Reviewed by Geoffrey Garen.
@@ -18249,7 +18249,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
         Unreviewed, reverting r262791.
 
-        WinCairo WebKit1 is crashing.
+        WinCairo CyberKit1 is crashing.
 
         Reverted changeset:
 
@@ -18403,7 +18403,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
         Reviewed by Manuel Rego Casasnovas.
 
-        The imported tests fail only for WebKitGtk+ platform.
+        The imported tests fail only for CyberKitGtk+ platform.
 
         * platform/gtk/TestExpectations: Added Failure entries,
 
@@ -18913,7 +18913,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
         Reverted changeset:
 
         "Release Assert @
-        WebCore::RenderTreeBuilder::RenderTreeBuilder"
+        CyberCore::RenderTreeBuilder::RenderTreeBuilder"
         https://bugs.webkit.org/show_bug.cgi?id=212714
         https://trac.webkit.org/changeset/262524
 
@@ -18926,7 +18926,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
         Reviewed by Eric Carlson.
 
         Make this test wait a frame before calling notifyDone. This is required at the
-        moment because calling notifyDone in WebKit1 sidesteps the normal painting logic and
+        moment because calling notifyDone in CyberKit1 sidesteps the normal painting logic and
         forces compositing to happen, and thus will produce incorrect results for WebGL if
         we're already in the middle of the rendering loop (e.g. inside a requestAnimationFrame
         that has touched pixels).
@@ -19343,7 +19343,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-06-03  Pinki Gyanchandani  <pgyanchandani@apple.com>
 
-        Release Assert @ WebCore::RenderTreeBuilder::RenderTreeBuilder
+        Release Assert @ CyberCore::RenderTreeBuilder::RenderTreeBuilder
         https://bugs.webkit.org/show_bug.cgi?id=212714
 
         Reviewed by Geoffrey Garen.
@@ -19372,7 +19372,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
         Previously, if you long pressed on editable content, the selection assistant would be triggered
         in the wrong mode and you could not modify or interact with the selection. With changes and
-        refactors that have happened in UIKit and WebKit, the selection can be interacted with
+        refactors that have happened in UIKit and CyberKit, the selection can be interacted with
         correctly inside of an editable area. We should now allow and test for this behavior.
 
         * fast/events/touch/ios/long-press-on-editable-expected.txt:
@@ -19385,7 +19385,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
         Reviewed by Jer Noble.
 
-        Enable the mock video presentation mode of the WebKitTestRunner in the test,
+        Enable the mock video presentation mode of the CyberKitTestRunner in the test,
         and only request a video element to change its video presentation mode after
         the previous change is completed.
 
@@ -19488,7 +19488,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-06-02  Yusuke Suzuki  <ysuzuki@apple.com>
 
-        ASSERTION FAILED: isCell() under WebCore::JSDOMConstructor seen with webaudio/the-audio-api/the-audiocontext-interface/audiocontextoptions.html
+        ASSERTION FAILED: isCell() under CyberCore::JSDOMConstructor seen with webaudio/the-audio-api/the-audiocontext-interface/audiocontextoptions.html
         https://bugs.webkit.org/show_bug.cgi?id=212650
 
         Reviewed by Mark Lam.
@@ -19543,7 +19543,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-06-02  Ryan Haddad  <ryanhaddad@apple.com>
 
-        ASSERTION FAILED: isCell() under WebCore::JSDOMConstructor seen with webaudio/the-audio-api/the-audiocontext-interface/audiocontextoptions.html
+        ASSERTION FAILED: isCell() under CyberCore::JSDOMConstructor seen with webaudio/the-audio-api/the-audiocontext-interface/audiocontextoptions.html
         https://bugs.webkit.org/show_bug.cgi?id=212650
 
         Unreviewed test gardening.
@@ -19552,7 +19552,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-06-02  Ryan Haddad  <ryanhaddad@apple.com>
 
-        ASSERTION FAILED: isCell() under WebCore::JSDOMConstructor seen with webaudio/the-audio-api/the-audiocontext-interface/audiocontextoptions.html
+        ASSERTION FAILED: isCell() under CyberCore::JSDOMConstructor seen with webaudio/the-audio-api/the-audiocontext-interface/audiocontextoptions.html
         https://bugs.webkit.org/show_bug.cgi?id=212650
 
         Unreviewed test gardening.
@@ -19584,7 +19584,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
         Reviewed by Eric Carlson.
 
-        Enable the mock video presentation mode in WebKitTestRunner and
+        Enable the mock video presentation mode in CyberKitTestRunner and
         only request a video element to enter/exit fullscreen/picture-in-picture when
         the element is ready to do so (by checking the attribute webkitDisplayingFullscreen).
 
@@ -19848,7 +19848,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
         Unreviewed, reverting r262335.
         https://bugs.webkit.org/show_bug.cgi?id=212571
 
-        Triggered assertions in WebKit1
+        Triggered assertions in CyberKit1
 
         Reverted changeset:
 
@@ -20583,7 +20583,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-05-26  Kate Cheney  <katherine_cheney@apple.com>
 
-        REGRESSION: [ iOS wk2 Debug ] multiple fast/text/international/system-language tests are flaky crashing - WTFCrashWithInfo - WebKit::ResourceLoadStatisticsDatabaseStore::openAndUpdateSchemaIfNecessary()
+        REGRESSION: [ iOS wk2 Debug ] multiple fast/text/international/system-language tests are flaky crashing - WTFCrashWithInfo - CyberKit::ResourceLoadStatisticsDatabaseStore::openAndUpdateSchemaIfNecessary()
         https://bugs.webkit.org/show_bug.cgi?id=211958
         <rdar://problem/63275549>
 
@@ -21119,7 +21119,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-05-22  Zalan Bujtas  <zalan@apple.com>
 
-        Nullptr deref in WebCore::RenderTreeBuilder::Block::attachIgnoringContinuation when parent and beforeChild are siblings
+        Nullptr deref in CyberCore::RenderTreeBuilder::Block::attachIgnoringContinuation when parent and beforeChild are siblings
         https://bugs.webkit.org/show_bug.cgi?id=212116
         <rdar://problem/62993844>
 
@@ -21617,7 +21617,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-05-21  Pinki Gyanchandani  <pgyanchandani@apple.com>
 
-        Null Ptr Deref @ WebCore::ResourceResponse::platformLazyInit
+        Null Ptr Deref @ CyberCore::ResourceResponse::platformLazyInit
         https://bugs.webkit.org/show_bug.cgi?id=212224
 
         Reviewed by Geoffrey Garen.
@@ -22345,7 +22345,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-05-19  Kate Cheney  <katherine_cheney@apple.com>
 
-        Revert WebKitTestRunner to reset ITP to the memory store between all tests.
+        Revert CyberKitTestRunner to reset ITP to the memory store between all tests.
         https://bugs.webkit.org/show_bug.cgi?id=212094
         <rdar://problem/63405806>
 
@@ -23011,7 +23011,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-05-18  Pinki Gyanchandani  <pgyanchandani@apple.com>
 
-        Null Ptr Deref @ WebCore::CSSValue::classType
+        Null Ptr Deref @ CyberCore::CSSValue::classType
         https://bugs.webkit.org/show_bug.cgi?id=212036
 
         Reviewed by Geoffrey Garen.
@@ -23381,7 +23381,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-05-15  Jack Lee  <shihchieh_lee@apple.com>
 
-        Nullptr crash in WebCore::Node::treeScope() when processing nested list insertion commands.
+        Nullptr crash in CyberCore::Node::treeScope() when processing nested list insertion commands.
         https://bugs.webkit.org/show_bug.cgi?id=211964
         <rdar://problem/63224871>
 
@@ -23485,7 +23485,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-05-15  Jason Lawrence  <lawrence.j@apple.com>
 
-        REGRESSION: [ iOS wk2 Debug ] multiple fast/text/international/system-language tests are flaky crashing - WTFCrashWithInfo - WebKit::ResourceLoadStatisticsDatabaseStore::openAndUpdateSchemaIfNecessary()
+        REGRESSION: [ iOS wk2 Debug ] multiple fast/text/international/system-language tests are flaky crashing - WTFCrashWithInfo - CyberKit::ResourceLoadStatisticsDatabaseStore::openAndUpdateSchemaIfNecessary()
         https://bugs.webkit.org/show_bug.cgi?id=211958
 
         Unreviewed test gardening.
@@ -28404,7 +28404,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-05-13  Kate Cheney  <katherine_cheney@apple.com>
 
-        SHOULD NEVER BE REACHED in WebKit::ResourceLoadStatisticsDatabaseStore::openAndUpdateSchemaIfNecessary
+        SHOULD NEVER BE REACHED in CyberKit::ResourceLoadStatisticsDatabaseStore::openAndUpdateSchemaIfNecessary
         https://bugs.webkit.org/show_bug.cgi?id=211637
         <rdar://problem/63031185>
 
@@ -30309,15 +30309,15 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
         Reviewed by Saam Barati.
 
         LayoutTests have several tests which attempt to ensure that document is not leaked. But they are broken since these tests are not correctly
-        handling conservative GC of JavaScriptCore. These tests are taking a following approach.
+        handling conservative GC of CyberScriptCore. These tests are taking a following approach.
 
             1. Allocate *one* iframe doing something inside it.
             2. Remove iframe from the parent document to make it released.
             3. Repeatedly invoke GC and test whether (1)'s document gets collected.
 
-        This is not the right approach. Since JavaScriptCore has conservative GC, it is easily possible that (1)'s pointer value remains in some of
-        conservative roots: CPU registers, stack etc. And JavaScriptCore conservative GC scans it and keeps it alive. The above approach makes the
-        test super flaky and any unrelated changes in JavaScriptCore and C compiler can make this test failed.
+        This is not the right approach. Since CyberScriptCore has conservative GC, it is easily possible that (1)'s pointer value remains in some of
+        conservative roots: CPU registers, stack etc. And CyberScriptCore conservative GC scans it and keeps it alive. The above approach makes the
+        test super flaky and any unrelated changes in CyberScriptCore and C compiler can make this test failed.
 
         This is not a problem in practice. Web pages are executing various kind of code and they clobber conservative roots. However, tests in
         LayoutTests are too simple to keep it alive accidentally.
@@ -30480,7 +30480,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-05-07  Pinki Gyanchandani  <pgyanchandani@apple.com>
 
-        SIGILL @ WebCore::Shape::createRasterShape -- DOS ASAN
+        SIGILL @ CyberCore::Shape::createRasterShape -- DOS ASAN
         https://bugs.webkit.org/show_bug.cgi?id=211539
 
         Reviewed by Geoffrey Garen.
@@ -31048,7 +31048,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-05-05  Peng Liu  <peng.liu6@apple.com>
 
-        Update WebKitTestRunner to support running multiple video fullscreen and Picture-in-Picture tests simultaneously
+        Update CyberKitTestRunner to support running multiple video fullscreen and Picture-in-Picture tests simultaneously
         https://bugs.webkit.org/show_bug.cgi?id=203723
 
         Reviewed by Jer Noble.
@@ -31928,7 +31928,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-04-30  Devin Rousso  <drousso@apple.com>
 
-        WebKit.WebContent process crashes when web developer tools are opened in Safari
+        CyberKit.WebContent process crashes when web developer tools are opened in Safari
         https://bugs.webkit.org/show_bug.cgi?id=210794
         <rdar://problem/62214651>
 
@@ -32209,7 +32209,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
         * platform/win/TestExpectations:
         * platform/mac-wk1/TestExpectations:
-                Disable paint timing for WebKit1.
+                Disable paint timing for CyberKit1.
 
         * TestExpectations:
                 Disable of the WPT tests.
@@ -32464,7 +32464,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-04-27  Alicia Boya García  <aboya@igalia.com>
 
-        [GStreamer] Rework WebKitWebSrc threading
+        [GStreamer] Rework CyberKitWebSrc threading
         https://bugs.webkit.org/show_bug.cgi?id=209811
 
         Reviewed by Xabier Rodriguez-Calvar.
@@ -33207,7 +33207,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-04-21  Darin Adler  <darin@apple.com>
 
-        [Mac] Enable color well tests on modern WebKit
+        [Mac] Enable color well tests on modern CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=210810
 
         Reviewed by Alexey Proskuryakov.
@@ -33216,7 +33216,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
         test fast/css/pseudo-visited-background-color-on-input.html.
         After doing some research, I found that we have tests of color well
         that are still disabled on Mac even though we have implemented it
-        now, just not for legacy WebKit.
+        now, just not for legacy CyberKit.
 
         Looking at history I see these tests have been passing consistently
         on bots. So changed their expectations to Pass, and also un-skipped
@@ -33229,7 +33229,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
         that we should not run because we don't have color wells enabled.
 
         * platform/mac-wk2/TestExpectations: Moved expectations here
-        for color well tests that still don't work in modern WebKit because we
+        for color well tests that still don't work in modern CyberKit because we
         need more support for dragging tests.
 
         * platform/mac/TestExpectations: Moved the expections *from* here.
@@ -33525,7 +33525,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
             1. This test was previously *effectively* skipped because it is including BigInt syntax. This test immediately throws SyntaxError. So nothing in this test was executed before.
             2. Now JSC supports BigInt syntax. Then, this test is now executed finally. And crash happens when deserializaing DOMMatrixReadOnly.
-            3. This is because DOMMatrixReadOnly requires JSDOMGlobalObject since DOMMatrixReadOnly is WebCore object, not JSC object.
+            3. This is because DOMMatrixReadOnly requires JSDOMGlobalObject since DOMMatrixReadOnly is CyberCore object, not JSC object.
             4. However, IDBSerializationContext.cpp is using plain JSGlobalObject. This is not correct since it is JSC JSGlobalObject and it does not include DOMMatrix implementations.
             5. So, nothing is related to BigInt here.
 
@@ -33598,13 +33598,13 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-04-18  Daniel Bates  <dabates@apple.com>
 
-        Add a test to ensure WebKit::mayContainEditableElementsInRect() returns true if the document element is editable
+        Add a test to ensure CyberKit::mayContainEditableElementsInRect() returns true if the document element is editable
         https://bugs.webkit.org/show_bug.cgi?id=210560
 
         Reviewed by Simon Fraser.
 
         If the document element is marked editable then all child elements are editable.
-        Add a test to ensure that WebKit::mayContainEditableElementsInRect() returns true
+        Add a test to ensure that CyberKit::mayContainEditableElementsInRect() returns true
         for such a page.
 
         * editing/editable-region/hit-test-editable-document-element-expected.txt: Added.
@@ -33832,7 +33832,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-04-16  Jack Lee  <shihchieh_lee@apple.com>
 
-        ASSERTION FAILED: candidate.isCandidate() in WebCore::canonicalizeCandidate
+        ASSERTION FAILED: candidate.isCandidate() in CyberCore::canonicalizeCandidate
         https://bugs.webkit.org/show_bug.cgi?id=130844
         <rdar://59535009>
 
@@ -34340,7 +34340,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
         reference SVGs.
 
         This is mainly useful for developing webkit.org/b/90738, to ease
-        comparison of the SVG PoC branch with vanilla WebKit. In future we
+        comparison of the SVG PoC branch with vanilla CyberKit. In future we
         should rather convert more and more tests to reftests instead of
         relying on pixel tests - which SVG does for many features right now.
 
@@ -34610,7 +34610,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
 2020-04-13  Jason Lawrence  <lawrence.j@apple.com>
 
-        REGRESSION: [ Mac wk2 ] WebKit::ViewGestureController::handleSwipeGesture(WebKit::WebBackForwardListItem*, double, WebKit::ViewGestureController::SwipeDirection) -  flaky crashes.
+        REGRESSION: [ Mac wk2 ] CyberKit::ViewGestureController::handleSwipeGesture(CyberKit::WebBackForwardListItem*, double, CyberKit::ViewGestureController::SwipeDirection) -  flaky crashes.
         https://bugs.webkit.org/show_bug.cgi?id=210433
 
         Unreviewed test gardening.
@@ -36530,7 +36530,7 @@ m/io    s/fast/text/international/system-language/navigator-language/navigator-l
 
         Reviewed by Daniel Bates.
 
-        Convert these tests from verifying the (now removed) X-WebKit-CSP
+        Convert these tests from verifying the (now removed) X-CyberKit-CSP
         header to the modern Content-Security-Policy header.  Since we
         don't have equivalent tests for the modern CSP header and it's not
         very useful to have tons of tests for a feature we no longer

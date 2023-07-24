@@ -36,10 +36,10 @@ set(MiniBrowser_SYSTEM_INCLUDE_DIRECTORIES
 
 set(MiniBrowser_PRIVATE_LIBRARIES
     ${GLIB_LIBRARIES}
-    ${JavaScriptCore_LIBRARY_NAME}
+    ${CyberScriptCore_LIBRARY_NAME}
     ${LIBSOUP_LIBRARIES}
     GTK::GTK
-    WebKit::WebKit
+    CyberKit::CyberKit
 )
 
 set(MiniBrowser_DEPENDENCIES

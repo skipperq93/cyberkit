@@ -21,7 +21,7 @@ typedef void *EAGLContextObj;
 struct __IOSurface;
 typedef __IOSurface *IOSurfaceRef;
 
-// WebKit's build process requires that every Objective-C class name has the prefix "Web".
+// CyberKit's build process requires that every Objective-C class name has the prefix "Web".
 @class WebSwapLayerEAGL;
 
 namespace rx

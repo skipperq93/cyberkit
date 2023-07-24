@@ -12,6 +12,6 @@ var kGenericFontFamilyKeywords = ["serif",
                                   "ui-monospace",
                                   "ui-rounded"];
 
-var kWebKitPrefixKeywords = ["-webkit-body",
+var kCyberKitPrefixKeywords = ["-webkit-body",
                              "-webkit-standard",
                              "-webkit-pictograph"];

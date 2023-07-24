@@ -26,13 +26,13 @@
 #ifndef ResourceLoadDelegate_h
 #define ResourceLoadDelegate_h
 
-#include <WebKitLegacy/WebKit.h>
+#include <CyberKitLegacy/CyberKit.h>
 
-class WebKitLegacyBrowserWindow;
+class CyberKitLegacyBrowserWindow;
 
 class ResourceLoadDelegate : public IWebResourceLoadDelegate {
 public:
-    ResourceLoadDelegate(WebKitLegacyBrowserWindow* client)
+    ResourceLoadDelegate(CyberKitLegacyBrowserWindow* client)
         : m_client(client) { }
 
     // IUnknown
@@ -53,7 +53,7 @@ public:
 
 private:
     ULONG m_refCount { 0 };
-    WebKitLegacyBrowserWindow* m_client;
+    CyberKitLegacyBrowserWindow* m_client;
 };
 
 #endif // ResourceLoadDelegate

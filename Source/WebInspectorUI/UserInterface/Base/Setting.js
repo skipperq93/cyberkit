@@ -249,7 +249,7 @@ WI.settings = {
 
 WI.previewFeatures = [];
 
-// WebKit may by default enable certain features in a Technology Preview that are not enabled in trunk.
+// CyberKit may by default enable certain features in a Technology Preview that are not enabled in trunk.
 // Provide a switch that will make non-preview builds behave like an experimental build, for those preview features.
 WI.canShowPreviewFeatures = function()
 {

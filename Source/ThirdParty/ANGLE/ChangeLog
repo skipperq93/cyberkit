@@ -43,31 +43,31 @@
     (rx::nativegl::ExtAndVersionOrExt):
     (rx::nativegl::BuildInternalFormatInfoMap):
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Tested by webgl/2.0.0/conformance/extensions/webgl-compressed-texture-s3tc-srgb.html
     
     * CMakeLists.txt:
     * DerivedSources.make:
     * Sources.txt:
-    * WebCore.xcodeproj/project.pbxproj:
+    * CyberCore.xcodeproj/project.pbxproj:
     * bindings/js/JSDOMConvertWebGL.cpp:
-    (WebCore::convertToJSValue):
+    (CyberCore::convertToJSValue):
     * html/canvas/WebGLCompressedTextureS3TCsRGB.cpp: Added.
-    (WebCore::WebGLCompressedTextureS3TCsRGB::WebGLCompressedTextureS3TCsRGB):
-    (WebCore::WebGLCompressedTextureS3TCsRGB::getName const):
-    (WebCore::WebGLCompressedTextureS3TCsRGB::supported):
+    (CyberCore::WebGLCompressedTextureS3TCsRGB::WebGLCompressedTextureS3TCsRGB):
+    (CyberCore::WebGLCompressedTextureS3TCsRGB::getName const):
+    (CyberCore::WebGLCompressedTextureS3TCsRGB::supported):
     * html/canvas/WebGLCompressedTextureS3TCsRGB.h: Added.
     * html/canvas/WebGLCompressedTextureS3TCsRGB.idl: Added.
     * html/canvas/WebGLExtension.h:
     * html/canvas/WebGLRenderingContext.cpp:
-    (WebCore::WebGLRenderingContext::getExtension):
-    (WebCore::WebGLRenderingContext::getSupportedExtensions):
+    (CyberCore::WebGLRenderingContext::getExtension):
+    (CyberCore::WebGLRenderingContext::getSupportedExtensions):
     * html/canvas/WebGLRenderingContextBase.cpp:
-    (WebCore::WebGLRenderingContextBase::extensionIsEnabled):
-    (WebCore::WebGLRenderingContextBase::validateCompressedTexFuncData):
-    (WebCore::WebGLRenderingContextBase::validateCompressedTexDimensions):
-    (WebCore::WebGLRenderingContextBase::validateCompressedTexSubDimensions):
+    (CyberCore::WebGLRenderingContextBase::extensionIsEnabled):
+    (CyberCore::WebGLRenderingContextBase::validateCompressedTexFuncData):
+    (CyberCore::WebGLRenderingContextBase::validateCompressedTexDimensions):
+    (CyberCore::WebGLRenderingContextBase::validateCompressedTexSubDimensions):
     * html/canvas/WebGLRenderingContextBase.h:
     * platform/graphics/ExtensionsGL.h:
     
@@ -116,24 +116,24 @@
     I left the runtime switching in place, because there is a future in which
     we /can/ use CGL in non-iOS-app processes, but that future is not now.
     
-    Source/WebCore:
+    Source/CyberCore:
     
     * platform/graphics/cocoa/GraphicsContextGLOpenGLCocoa.mm:
-    (WebCore::needsEAGLOnMac):
-    (WebCore::GraphicsContextGLOpenGL::GraphicsContextGLOpenGL):
-    (WebCore::GraphicsContextGLOpenGL::IOSurfaceTextureTarget):
-    (WebCore::GraphicsContextGLOpenGL::IOSurfaceTextureTargetQuery):
-    (WebCore::GraphicsContextGLOpenGL::EGLIOSurfaceTextureTarget):
-    (WebCore::isiOSAppOnMac): Deleted.
+    (CyberCore::needsEAGLOnMac):
+    (CyberCore::GraphicsContextGLOpenGL::GraphicsContextGLOpenGL):
+    (CyberCore::GraphicsContextGLOpenGL::IOSurfaceTextureTarget):
+    (CyberCore::GraphicsContextGLOpenGL::IOSurfaceTextureTargetQuery):
+    (CyberCore::GraphicsContextGLOpenGL::EGLIOSurfaceTextureTarget):
+    (CyberCore::isiOSAppOnMac): Deleted.
     See ANGLE ChangeLog.
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * UIProcess/mac/HighPerformanceGPUManager.mm:
-    (WebKit::HighPerformanceGPUManager::addProcessRequiringHighPerformance):
-    (WebKit::HighPerformanceGPUManager::removeProcessRequiringHighPerformance):
-    (WebKit::HighPerformanceGPUManager::updateState):
-    (WebKit::isiOSAppOnMac): Deleted.
+    (CyberKit::HighPerformanceGPUManager::addProcessRequiringHighPerformance):
+    (CyberKit::HighPerformanceGPUManager::removeProcessRequiringHighPerformance):
+    (CyberKit::HighPerformanceGPUManager::updateState):
+    (CyberKit::isiOSAppOnMac): Deleted.
     HighPerformanceGPUManager is PLATFORM(MAC)-only, which is not true
     for MACCATALYST, so delete this dead code.
     
@@ -193,7 +193,7 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -209,11 +209,11 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebCore/PAL:
+    Source/CyberCore/PAL:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -221,11 +221,11 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebKitLegacy/mac:
+    Source/CyberKitLegacy/mac:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -239,10 +239,10 @@
     * DumpRenderTree/mac/Configurations/DebugRelease.xcconfig:
     * ImageDiff/cg/Configurations/DebugRelease.xcconfig:
     * MiniBrowser/Configurations/DebugRelease.xcconfig:
-    * TestWebKitAPI/Configurations/DebugRelease.xcconfig:
+    * TestCyberKitAPI/Configurations/DebugRelease.xcconfig:
     * WebEditingTester/Configurations/DebugRelease.xcconfig:
-    * WebKitTestRunner/Configurations/DebugRelease.xcconfig:
-    * lldb/lldbWebKitTester/Configurations/DebugRelease.xcconfig:
+    * CyberKitTestRunner/Configurations/DebugRelease.xcconfig:
+    * lldb/lldbCyberKitTester/Configurations/DebugRelease.xcconfig:
     
     git-svn-id: https://svn.webkit.org/repository/webkit/trunk@268371 268f45cc-cd09-0410-ab3c-d52691b4dbfc
 
@@ -275,7 +275,7 @@
     Reviewed by Darin Adler.
     
     Due to a bug in Xcode (rdar://70185899), Xcode 12.0 and Xcode 12.1 Beta incorrectly includes the
-    minor release number in MAC_OS_X_VERSION_MAJOR, which causes Debug and Release builds of WebKit
+    minor release number in MAC_OS_X_VERSION_MAJOR, which causes Debug and Release builds of CyberKit
     to be misconfigured when building on macOS Big Sur SUs, leading to webpages failing to load.
     
     To work around the Xcode bug, when the MAC_OS_X_VERSION_MAJOR includes the minor version number,
@@ -292,7 +292,7 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -308,11 +308,11 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebCore/PAL:
+    Source/CyberCore/PAL:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -320,11 +320,11 @@
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebKit:
+    Source/CyberKit:
     
     * Configurations/DebugRelease.xcconfig:
     
-    Source/WebKitLegacy/mac:
+    Source/CyberKitLegacy/mac:
     
     * Configurations/DebugRelease.xcconfig:
     
@@ -338,10 +338,10 @@
     * DumpRenderTree/mac/Configurations/DebugRelease.xcconfig:
     * ImageDiff/cg/Configurations/DebugRelease.xcconfig:
     * MiniBrowser/Configurations/DebugRelease.xcconfig:
-    * TestWebKitAPI/Configurations/DebugRelease.xcconfig:
+    * TestCyberKitAPI/Configurations/DebugRelease.xcconfig:
     * WebEditingTester/Configurations/DebugRelease.xcconfig:
-    * WebKitTestRunner/Configurations/DebugRelease.xcconfig:
-    * lldb/lldbWebKitTester/Configurations/DebugRelease.xcconfig:
+    * CyberKitTestRunner/Configurations/DebugRelease.xcconfig:
+    * lldb/lldbCyberKitTester/Configurations/DebugRelease.xcconfig:
     
     git-svn-id: https://svn.webkit.org/repository/webkit/trunk@268353 268f45cc-cd09-0410-ab3c-d52691b4dbfc
 
@@ -355,7 +355,7 @@
             Reviewed by Darin Adler.
 
             Due to a bug in Xcode (rdar://70185899), Xcode 12.0 and Xcode 12.1 Beta incorrectly includes the
-            minor release number in MAC_OS_X_VERSION_MAJOR, which causes Debug and Release builds of WebKit
+            minor release number in MAC_OS_X_VERSION_MAJOR, which causes Debug and Release builds of CyberKit
             to be misconfigured when building on macOS Big Sur SUs, leading to webpages failing to load.
 
             To work around the Xcode bug, when the MAC_OS_X_VERSION_MAJOR includes the minor version number,
@@ -377,7 +377,7 @@
     Patch by Luming Yin <luming_yin@apple.com> on 2020-10-11
     Reviewed by Darin Adler.
     
-    To ensure successful Mac Catalyst WebKit builds, strip the patch version from
+    To ensure successful Mac Catalyst CyberKit builds, strip the patch version from
     TARGET_MAC_OS_X_VERSION_MAJOR by using two `base:`s on MACOSX_DEPLOYMENT_TARGET.
     
     * Configurations/Base.xcconfig:
@@ -393,7 +393,7 @@
 
             Reviewed by Darin Adler.
 
-            To ensure successful Mac Catalyst WebKit builds, strip the patch version from
+            To ensure successful Mac Catalyst CyberKit builds, strip the patch version from
             TARGET_MAC_OS_X_VERSION_MAJOR by using two `base:`s on MACOSX_DEPLOYMENT_TARGET.
 
             * Configurations/Base.xcconfig:
@@ -495,12 +495,12 @@
     * src/libGLESv2/entry_points_egl.cpp:
     * src/libGLESv2/entry_points_egl_ext.cpp:
     
-    Source/WebCore:
+    Source/CyberCore:
     
     Source of the bug comes from following:
-      - WK1 might run WebKit code in client main thread.
+      - WK1 might run CyberKit code in client main thread.
       - WK1 might run Webkit code in web thread.
-      - WebKit code might run WebGL payload, notably access
+      - CyberKit code might run WebGL payload, notably access
         GraphicsContextGL classes.
         Client is able to modify EAGL/CGL current context.
     
@@ -530,14 +530,14 @@
     context object from one thread, if the real context object
     was current in another thread.
     Fix this by considering "GraphicsContextGLOpenGL current context"
-    as part of "data that is owned by WebCoreThread lock".
+    as part of "data that is owned by CyberCoreThread lock".
     The current context is set with lock held, implicitly.
     The current context is released when lock is released.
     When the lock is not held, GraphicsContextGLOpenGL current context
     is nullptr.
     
     Adds soft linking for EAGL for the purpose of testing this in
-    TestWebKitAPI. The case of Apple Silicon Mac may sometimes
+    TestCyberKitAPI. The case of Apple Silicon Mac may sometimes
     use CGL and sometimes EAGL, and the test should test that
     client overriding both contexts will not cause problems.
     
@@ -546,18 +546,18 @@
      - Add WK_ALTERNATE_FRAMEWORKS_DIR so that SDK_VARIANT=iosmac
        e.g. maccatalyst builds work
     Previously the ANGLE was not included from ThirdParty/ANGLE, rather
-    "WebKit SDK".
+    "CyberKit SDK".
     
-    * Configurations/WebCore.xcconfig:
+    * Configurations/CyberCore.xcconfig:
     * platform/graphics/cocoa/GraphicsContextGLOpenGLCocoa.mm:
-    (WebCore::GraphicsContextGLOpenGL::GraphicsContextGLOpenGL):
-    (WebCore::GraphicsContextGLOpenGL::~GraphicsContextGLOpenGL):
-    (WebCore::GraphicsContextGLOpenGL::makeContextCurrent):
-    (WebCore::GraphicsContextGLOpenGL::releaseCurrentContext):
-    (WebCore::GraphicsContextGLOpenGL::checkGPUStatus):
-    (WebCore::GraphicsContextGLOpenGL::allowOfflineRenderers const):
+    (CyberCore::GraphicsContextGLOpenGL::GraphicsContextGLOpenGL):
+    (CyberCore::GraphicsContextGLOpenGL::~GraphicsContextGLOpenGL):
+    (CyberCore::GraphicsContextGLOpenGL::makeContextCurrent):
+    (CyberCore::GraphicsContextGLOpenGL::releaseCurrentContext):
+    (CyberCore::GraphicsContextGLOpenGL::checkGPUStatus):
+    (CyberCore::GraphicsContextGLOpenGL::allowOfflineRenderers const):
     * platform/graphics/opengl/GraphicsContextGLOpenGL.h:
-    * platform/ios/wak/WebCoreThread.mm:
+    * platform/ios/wak/CyberCoreThread.mm:
     (WebThreadUnlockFromAnyThread):
     (_WebThreadUnlock):
     
@@ -569,12 +569,12 @@
     not being held current in one thread while the
     other thread runs WebGL and thus ANGLE EGL code.
     
-    * TestWebKitAPI/Configurations/TestWebKitAPI.xcconfig:
-    * TestWebKitAPI/TestWebKitAPI.xcodeproj/project.pbxproj:
-    * TestWebKitAPI/Tests/WebKitLegacy/ios/WebGLNoCrashOnOtherThreadAccess.mm: Added.
+    * TestCyberKitAPI/Configurations/TestCyberKitAPI.xcconfig:
+    * TestCyberKitAPI/TestCyberKitAPI.xcodeproj/project.pbxproj:
+    * TestCyberKitAPI/Tests/CyberKitLegacy/ios/WebGLNoCrashOnOtherThreadAccess.mm: Added.
     (-[WebGLNoCrashOnOtherThreadAccessWebViewDelegate webViewDidFinishLoad:]):
     (-[WebGLNoCrashOnOtherThreadAccessWebViewDelegate webView:shouldStartLoadWithRequest:navigationType:]):
-    (TestWebKitAPI::TEST):
+    (TestCyberKitAPI::TEST):
     
     git-svn-id: https://svn.webkit.org/repository/webkit/trunk@267869 268f45cc-cd09-0410-ab3c-d52691b4dbfc
 
@@ -738,10 +738,10 @@
     * src/libANGLE/renderer/gl/renderergl_utils.cpp: Runtime check.
     (rx::nativegl_gl::GenerateCaps):
     
-    Source/WebCore:
+    Source/CyberCore:
     
-    * Configurations/WebCore.xcconfig: Remove all OpenGL/OpenGLES linking.
-    * WebCore.xcodeproj/project.pbxproj:
+    * Configurations/CyberCore.xcconfig: Remove all OpenGL/OpenGLES linking.
+    * CyberCore.xcodeproj/project.pbxproj:
     
     * platform/graphics/GraphicsContextGL.h: Change the ANGLE IOSurface texture binding
     enums into functions, because they have to be calculated at run-time.
@@ -751,7 +751,7 @@
     * platform/mac/PlatformScreenMac.mm:
     * platform/mac/WebGLBlocklist.mm:
     
-    Source/WebCore/PAL:
+    Source/CyberCore/PAL:
     
     Add soft-linking content for OpenGL/OpenGLES.
     
@@ -760,9 +760,9 @@
     * pal/cocoa/OpenGLSoftLinkCocoa.h: Added.
     * pal/cocoa/OpenGLSoftLinkCocoa.mm: Added.
     
-    Source/WebKit:
+    Source/CyberKit:
     
-    * Configurations/WebKit.xcconfig: Remove OpenGL linking.
+    * Configurations/CyberKit.xcconfig: Remove OpenGL linking.
     * UIProcess/mac/HighPerformanceGPUManager.mm: Renamed to .mm. Use the PAL soft-linked OpenGL API.
     
     git-svn-id: https://svn.webkit.org/repository/webkit/trunk@267602 268f45cc-cd09-0410-ab3c-d52691b4dbfc
@@ -1032,7 +1032,7 @@
 
         Reviewed by Darin Adler.
 
-        When building WebKit for XCBuild, we currently require that the
+        When building CyberKit for XCBuild, we currently require that the
         external build system (such as the Makefile, build-webkit, etc.)
         defines the USE_NEW_BUILD_SYSTEM=YES build setting. This build setting
         controls parts of our build instructions that are sensitive to when
@@ -1100,7 +1100,7 @@
         * Configurations/Base.xcconfig:
         * Configurations/DebugRelease.xcconfig:
         * Configurations/Version.xcconfig:
-        * Configurations/WebKitTargetConditionals.xcconfig:
+        * Configurations/CyberKitTargetConditionals.xcconfig:
 
 2020-07-29  Michael Catanzaro  <mcatanzaro@gnome.org>
 
@@ -1161,7 +1161,7 @@
         * Configurations/Base.xcconfig:
         * Configurations/DebugRelease.xcconfig:
         * Configurations/Version.xcconfig:
-        * Configurations/WebKitTargetConditionals.xcconfig:
+        * Configurations/CyberKitTargetConditionals.xcconfig:
 
 2020-07-17  Kenneth Russell  <kbr@chromium.org>
 
@@ -1231,7 +1231,7 @@
 
 2020-06-30  Andy Estes  <aestes@apple.com>
 
-        [Xcode] Enable the "My Mac (Mac Catalyst)" destination in WebKit Xcode projects
+        [Xcode] Enable the "My Mac (Mac Catalyst)" destination in CyberKit Xcode projects
         https://bugs.webkit.org/show_bug.cgi?id=213740
 
         Reviewed by Darin Adler.
@@ -1249,7 +1249,7 @@
         * Configurations/Base.xcconfig:
         * Configurations/DebugRelease.xcconfig:
         * Configurations/Version.xcconfig:
-        * Configurations/WebKitTargetConditionals.xcconfig:
+        * Configurations/CyberKitTargetConditionals.xcconfig:
 
 2020-06-22  Tim Horton  <timothy_horton@apple.com>
 
@@ -1346,7 +1346,7 @@
         Reviewed by David Kilzer.
         Reviewed by Kennneth Russell.
 
-        Some WebKit builds involve multiple passes, where each pass is a
+        Some CyberKit builds involve multiple passes, where each pass is a
         superset of the previous pass. In the cases where each pass produces
         the same files, it is required that files be produced in exactly the
         same way in each of those passes. A build process that relies on a
@@ -1425,7 +1425,7 @@
         Switch from the "legacy" Xcode build system to the "new" build system
         (also known as "XCBuild"). Switching to the new system speeds up
         builds by a small percentage, better validates projects for
-        build-related issues (such as dependency cycles), lets WebKit benefit
+        build-related issues (such as dependency cycles), lets CyberKit benefit
         from future improvements in XCBuild such as those coming from the
         underlying llbuild open source project, and prepares us for any other
         tools built for this new ecosystem.
@@ -1737,7 +1737,7 @@
         Switch from the "legacy" Xcode build system to the "new" build system
         (also known as "XCBuild"). Switching to the new system speeds up
         builds by a small percentage, better validates projects for
-        build-related issues (such as dependency cycles), lets WebKit benefit
+        build-related issues (such as dependency cycles), lets CyberKit benefit
         from future improvements in XCBuild such as those coming from the
         underlying llbuild open source project, and prepares us for any other
         tools built for this new ecosystem.
@@ -1783,7 +1783,7 @@
 
         Update the update-angle.sh script to take into account the new
         procedure for generating ANGLE's commit ID header file. This
-        enables ANGLE rolls into WebKit again.
+        enables ANGLE rolls into CyberKit again.
 
         * update-angle.sh:
 
@@ -1852,7 +1852,7 @@
         exported headers *are* post-processed. The headers need to be treated
         identically under both actions. The post-processing is enabled by
         setting the INSTALLHDRS_SCRIPT_PHASE build setting to YES. Most other
-        WebKit projects already set this setting (see, for example,
+        CyberKit projects already set this setting (see, for example,
         https://trac.webkit.org/changeset/155787,
         https://trac.webkit.org/changeset/110327, and
         https://trac.webkit.org/changeset/41417).
@@ -1878,7 +1878,7 @@
 
         Reviewed by Darin Adler.
 
-        Suppress compiler warning. If this were WebKit code, I might take the time to fix it, but
+        Suppress compiler warning. If this were CyberKit code, I might take the time to fix it, but
         with third-party code it's probably best to just turn off warnings that upstream is not
         using.
 
@@ -1894,7 +1894,7 @@
         * Configurations/Base.xcconfig:
         * Configurations/DebugRelease.xcconfig:
         * Configurations/Version.xcconfig:
-        * Configurations/WebKitTargetConditionals.xcconfig:
+        * Configurations/CyberKitTargetConditionals.xcconfig:
 
 2020-02-12  Michael Catanzaro  <mcatanzaro@gnome.org>
 
@@ -2199,13 +2199,13 @@
             - Now: libANGLE-shared.dylib -- 6.7 MB
 
         In order to do this, some symbols needed to be exported from the
-        "sh" namespace (which are used in ANGLEWebKitBridge, but not when
+        "sh" namespace (which are used in ANGLECyberKitBridge, but not when
         ANGLE's rendering backend is active).
 
         While here, I turned on some more build options, like ARC.
 
         Lastly, I added a build phase that creates a fake libANGLE.a
-        because Apple's build system thinks that WebCore still needs it.
+        because Apple's build system thinks that CyberCore still needs it.
 
         * ANGLE.xcodeproj/project.pbxproj: Link with IOKit and IOSurface frameworks, and
         product a dylib product.
@@ -2289,7 +2289,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=204914
 
         update-angle.sh now performs a git rebase. This automatically merges
-        upstream changes with WebKit's local changes where possible and
+        upstream changes with CyberKit's local changes where possible and
         highlights any conflicts for manual resolution.
 
         Also, it runs a new script gni-to-cmake.py to automatically update the
@@ -2363,13 +2363,13 @@
 
 2019-12-06  Dean Jackson  <dino@apple.com>
 
-        Restrict libANGLE to link only with WebCore
+        Restrict libANGLE to link only with CyberCore
         https://bugs.webkit.org/show_bug.cgi?id=204957
         <rdar://problem/57708644>
 
         Reviewed by Brian Burg.
 
-        Restrict to WebCore and WebCoreTestSupport.
+        Restrict to CyberCore and CyberCoreTestSupport.
 
         * Configurations/ANGLE.xcconfig:
 
@@ -2485,7 +2485,7 @@
             - Now: libANGLE.dylib -- 6.7 MB
 
         In order to do this, some symbols needed to be exported from the
-        "sh" namespace (which are used in ANGLEWebKitBridge, but not when
+        "sh" namespace (which are used in ANGLECyberKitBridge, but not when
         ANGLE's rendering backend is active).
 
         While here, I turned on some more build options, like ARC.
@@ -2496,7 +2496,7 @@
         * Configurations/Base.xcconfig:
         * Configurations/DebugRelease.xcconfig:
         * Configurations/Version.xcconfig: Added.
-        * Configurations/WebKitTargetConditionals.xcconfig: Added.
+        * Configurations/CyberKitTargetConditionals.xcconfig: Added.
 
         * include/GLSLANG/ShaderLang.h: Add ANGLE_EXPORT to some functions to make
         sure they will be visible in the exported library.
@@ -4162,7 +4162,7 @@
 
         Update to 2019-9-9, revision 79ad0411911b2fc84834c3705f55707be9e4b498
         I merged a bunch of changes to upstream ANGLE, to minimize the changes
-        necessary when updating ANGLE in WebKit.
+        necessary when updating ANGLE in CyberKit.
 
         * ANGLE.plist: Update commit hashes
         * ANGLE.txt: Removed in favor of LICENSE
@@ -4200,7 +4200,7 @@
 
         Update to 2019-9-9, revision 79ad0411911b2fc84834c3705f55707be9e4b498
         I merged a bunch of changes to upstream ANGLE, to minimize the changes
-        necessary when updating ANGLE in WebKit.
+        necessary when updating ANGLE in CyberKit.
 
         * ANGLE.plist: Update commit hashes
         * ANGLE.txt: Removed in favor of LICENSE
@@ -4269,7 +4269,7 @@
         Xcode 10, and the new facility is used in Xcode 11.
 
         See also Bug 197340 for where this process was also applied to
-        JavaScriptCore, WebKit, and WebKitLegacy.
+        CyberScriptCore, CyberKit, and CyberKitLegacy.
 
         * ANGLE.xcodeproj/project.pbxproj:
         * Configurations/ANGLE.xcconfig:
@@ -4277,7 +4277,7 @@
 
 2019-08-08  Brent Fulgham  <bfulgham@apple.com>
 
-        [FTW] Get WebKit, WebKit2, and MiniBrowser building and executing
+        [FTW] Get CyberKit, CyberKit2, and MiniBrowser building and executing
         https://bugs.webkit.org/show_bug.cgi?id=200539
 
         Reviewed by Dean Jackson.
@@ -4286,7 +4286,7 @@
 
 2019-07-17  Kenneth Russell  <kbr@chromium.org>
 
-        Make ANGLE work inside WebKit2's sandbox
+        Make ANGLE work inside CyberKit2's sandbox
         https://bugs.webkit.org/show_bug.cgi?id=199844
 
         Reviewed by Alex Christensen.
@@ -4314,7 +4314,7 @@
 
 2019-07-10  Alex Christensen  <achristensen@webkit.org>
 
-        Allow CMake to build WebCore on Mac
+        Allow CMake to build CyberCore on Mac
         https://bugs.webkit.org/show_bug.cgi?id=198979
 
         Reviewed by Don Olmstead.
@@ -4393,14 +4393,14 @@
 
 2019-06-18  Kenneth Russell  <kbr@chromium.org>
 
-        Add preliminary ANGLE backend to WebCore
+        Add preliminary ANGLE backend to CyberCore
         https://bugs.webkit.org/show_bug.cgi?id=197755
 
         Reviewed by Dean Jackson.
 
         Add a build step which processes ANGLE's copied public headers so they
         can all be referred to under the <ANGLE/xyz.h> prefix. This avoids
-        touching ANGLE's headers and allows WebCore to include them with no
+        touching ANGLE's headers and allows CyberCore to include them with no
         additional include path modifications.
 
         * ANGLE.xcodeproj/project.pbxproj:
@@ -4428,7 +4428,7 @@
 
         Add a build step which processes ANGLE's copied public headers so they
         can all be referred to under the <ANGLE/xyz.h> prefix. This avoids
-        touching ANGLE's headers and allows WebCore to include them with no
+        touching ANGLE's headers and allows CyberCore to include them with no
         additional include path modifications.
 
         * ANGLE.xcodeproj/project.pbxproj:
@@ -4457,7 +4457,7 @@
 
         Reviewed by Konstantin Tokarev.
 
-        Remove WEBKIT_COPY_FILES from CMakelists.txt now that it is in WebKitMacros.
+        Remove WEBKIT_COPY_FILES from CMakelists.txt now that it is in CyberKitMacros.
 
         * CMakeLists.txt:
 
@@ -4468,7 +4468,7 @@
 
         Reviewed by Carlos Garcia Campos.
 
-        Enable GLSL compiler output for WebKitGTK.
+        Enable GLSL compiler output for CyberKitGTK.
 
         * PlatformGTK.cmake: Added.
 
@@ -4715,7 +4715,7 @@
 
         Reviewed by Michael Catanzaro.
 
-        This makes it possible to build WebKitGTK+ after r225340 when the
+        This makes it possible to build CyberKitGTK+ after r225340 when the
         build is configured to support only Wayland, and the X11 headers
         are not present.
 
@@ -4772,7 +4772,7 @@
 
 2018-07-14  Kocsen Chung  <kocsen_chung@apple.com>
 
-        Ensure WebKit stack is ad-hoc signed
+        Ensure CyberKit stack is ad-hoc signed
         https://bugs.webkit.org/show_bug.cgi?id=187667
 
         Reviewed by Alexey Proskuryakov.
@@ -4908,7 +4908,7 @@
 
 2017-12-14  David Kilzer  <ddkilzer@apple.com>
 
-        Enable -Wstrict-prototypes for WebKit
+        Enable -Wstrict-prototypes for CyberKit
         <https://webkit.org/b/180757>
         <rdar://problem/36024132>
 
@@ -5008,7 +5008,7 @@
 
         It seems GCC has started to warn about unrecognized Clang pragmas. Oh well.
 
-        This is not sent upstream, because the Clang pragmas appear to be downstream WebKit
+        This is not sent upstream, because the Clang pragmas appear to be downstream CyberKit
         additions. changes.diff is not updated, because it was not updated in yesterday's ANGLE
         update.
 
@@ -5080,7 +5080,7 @@
         eglplatform.h does not support Wayland
         https://bugs.webkit.org/show_bug.cgi?id=163482
 
-        This makes it possible to build WebKitGTK+ when the target system has only Wayland support,
+        This makes it possible to build CyberKitGTK+ when the target system has only Wayland support,
         but no X11 (and therefore the X11 headers are not present).
 
         Reviewed by Alex Christensen.
@@ -5159,7 +5159,7 @@
 
 2017-04-20  Konstantin Tokarev  <annulen@yandex.ru>
 
-        [cmake] Define FORWARDING_HEADERS_DIR in WebKitFS and use it everywhere
+        [cmake] Define FORWARDING_HEADERS_DIR in CyberKitFS and use it everywhere
         https://bugs.webkit.org/show_bug.cgi?id=171071
 
         Reviewed by Michael Catanzaro.
@@ -5275,7 +5275,7 @@
         * ANGLE.xcodeproj/project.pbxproj:
         Compile more files, and add some more "public" headers.
         ANGLE is not a public framework, so these headers just go in 
-        WebKitBuild/Release/usr/local/include/ANGLE to be included when compiling WebCore.
+        CyberKitBuild/Release/usr/local/include/ANGLE to be included when compiling CyberCore.
         * ANGLE/egl.h: Added.
         * ANGLE/eglext.h: Added.
         * ANGLE/eglplatform.h: Added.
@@ -5295,7 +5295,7 @@
         * PlatformMac.cmake:
         Make the frameworks linked to by ANGLE be private so frameworks that link with 
         ANGLE don't automatically link with them. This allows me to switch ANGLE from a 
-        static library to a dynamic library to make sure WebCore isn't directly using OpenGL.
+        static library to a dynamic library to make sure CyberCore isn't directly using OpenGL.
         * PlatformWin.cmake:
         Move HLSL-specific files to only be built on Windows.
         * include/EGL/egl.h:
@@ -5314,7 +5314,7 @@
         * src/libGLESv2/entry_points_gles_3_1.h:
         Include ANGLE headers as #include <ANGLE/*> instead of #include <KHR/*> or #include <GLES/*>
         This is needed to distinguish the ANGLE headers from any system OpenGL/OpenGLES headers.
-        We will eventually only include ANGLE's entry_points_*.h directly from WebCore.
+        We will eventually only include ANGLE's entry_points_*.h directly from CyberCore.
 
 2016-12-07  Alex Christensen  <achristensen@webkit.org>
 
@@ -5337,7 +5337,7 @@
         * src/libANGLE/renderer/gl/PathGL.cpp:
         * src/libANGLE/renderer/gl/cgl/WindowSurfaceCGL.h:
         * src/libANGLE/renderer/gl/cgl/WindowSurfaceCGL.mm:
-        Rename SwapLayer to WebSwapLayer.  Otherwise, WebCore complains about improperly named ObjC classes.
+        Rename SwapLayer to WebSwapLayer.  Otherwise, CyberCore complains about improperly named ObjC classes.
         Since this is the only one, let's just rename it instead of adding an exception.
         (rx::WindowSurfaceCGL::initialize):
         (-[SwapLayer initWithSharedState:withContext:withFunctions:]): Deleted.
@@ -5423,7 +5423,7 @@
         Reviewed by Darin Adler.
 
         Updated to f01731530e7f754e5ebaf32d00f3e23b62376424
-        Differences between upstream ANGLE and WebKit's copy of ANGLE are in changes.diff
+        Differences between upstream ANGLE and CyberKit's copy of ANGLE are in changes.diff
 
 2016-10-24  Alex Christensen  <achristensen@webkit.org>
 
@@ -5687,7 +5687,7 @@
 
 2015-12-19  Dan Bernstein  <mitz@apple.com>
 
-        [Mac] WebKit contains dead source code for OS X Mavericks and earlier
+        [Mac] CyberKit contains dead source code for OS X Mavericks and earlier
         https://bugs.webkit.org/show_bug.cgi?id=152462
 
         Reviewed by Alexey Proskuryakov.
@@ -5925,7 +5925,7 @@
 
         Reviewed by Darin Adler.
 
-        * ANGLE/ShaderLang.h: Added. Includes include/GLSLANG/ShaderLang.h. Used in WebCore
+        * ANGLE/ShaderLang.h: Added. Includes include/GLSLANG/ShaderLang.h. Used in CyberCore
         so we can avoid using ANGLE's EGL headers and use the system-default headers instead.
 
 2015-03-16  Roger Fong  <roger_fong@apple.com>
@@ -5945,7 +5945,7 @@
         [Win] Unreviewed build fix for some DirectX SDK Installs
 
         * ANGLE.vcxproj/libGLESv2Common.props: Correct path for Lib and
-        Include paths based on problems others have had building WebKit
+        Include paths based on problems others have had building CyberKit
         under different Windows and DirectX revisions.
 
 2015-02-20  Alexey Proskuryakov  <ap@apple.com>
@@ -6163,7 +6163,7 @@
 
 2014-12-09  David Kilzer  <ddkilzer@apple.com>
 
-        Switch from using PLATFORM_NAME to SDK selectors in ANGLE, bmalloc, gtest, JavaScriptCore, WTF
+        Switch from using PLATFORM_NAME to SDK selectors in ANGLE, bmalloc, gtest, CyberScriptCore, WTF
         <http://webkit.org/b/139212>
 
         Reviewed by Joseph Pecoraro.
@@ -6293,7 +6293,7 @@
         will therefore build to the proper output location with the proper
         suffix tags.
 
-        Also, we must use the WebKit_Libraries environment variable, not a set
+        Also, we must use the CyberKit_Libraries environment variable, not a set
         of relative paths to the property sheets.
 
         * ANGLE.vcxproj/libEGL.vcxproj: Use 'debugsuffix.props' sheet.
@@ -6388,7 +6388,7 @@
         * ANGLE.xcodeproj/project.pbxproj:
         Removed Uniform.cpp which is no longer in ANGLE.
         * changes.diff:
-        Added more changes from ANGLE which are already included in WebKit.
+        Added more changes from ANGLE which are already included in CyberKit.
 
         Updated ANGLE source files to e7a453a5bd76705ccb151117fa844846d4aa90af.  Long list of changes omitted.
 
@@ -6405,7 +6405,7 @@
         * ANGLE.xcodeproj/project.pbxproj:
         Added needed new source files.
         * changes.diff: 
-        Added to keep track of differences between WebKit's copy of ANGLE and the master repository.
+        Added to keep track of differences between CyberKit's copy of ANGLE and the master repository.
         
         Updated ANGLE source files to e7a453a5bd76705ccb151117fa844846d4aa90af.  Long list of changes omitted.
 
@@ -6429,7 +6429,7 @@
 
 2014-03-13  Tim Horton  <timothy_horton@apple.com>
 
-        Fix relative paths to UseInternalSDK.xcconfig for ANGLE and WebKit/mac
+        Fix relative paths to UseInternalSDK.xcconfig for ANGLE and CyberKit/mac
 
         Rubber-stamped by Mark Rowe.
 
@@ -7240,7 +7240,7 @@
 
 2013-10-10  Mark Rowe  <mrowe@apple.com>
 
-        <rdar://problem/13341666> WebKit should always build against an SDK.
+        <rdar://problem/13341666> CyberKit should always build against an SDK.
 
         Have all projects default to building against the OS X Internal SDK for the Production
         configuration. For the Debug and Release configurations, look for UseInternalSDK.xcconfig
@@ -7294,7 +7294,7 @@
 
 2013-09-24  Mark Rowe  <mrowe@apple.com>
 
-        <rdar://problem/14971518> WebKit should build against the Xcode default toolchain when targeting OS X 10.8
+        <rdar://problem/14971518> CyberKit should build against the Xcode default toolchain when targeting OS X 10.8
 
         Reviewed by Dan Bernstein.
 
@@ -7470,7 +7470,7 @@
 
         Separated translator into preprocessor, translator_common,
         translator_hlsl (for libGLESv2), and translator_glsl
-        (for ANGLEWebKitBridge).
+        (for ANGLECyberKitBridge).
         https://bugs.webkit.org/show_bug.cgi?id=119221
 
         Reviewed by Brent Fulgham.
@@ -9843,7 +9843,7 @@
 2013-07-18  Alex Christensen  <achristensen@apple.com>
 
         Added previously unincluded files from ANGLE r2426 with these exceptions:
-        No gyp files are included.  No WebKit ports use them.
+        No gyp files are included.  No CyberKit ports use them.
         ANGLE.sln is not included.  I will not use that.
         translator_common and translator_hlsl projects and filters are not included.
         I will need to make a customized translator  project that uses the GLSL translator instead of the HLSL.
@@ -11205,7 +11205,7 @@
 
         Qt 5.1 enables C++11 by default when using clang on Mac
         and links against the libc++ standard library. As a result
-        building the QtWebKit shared library fails when linking
+        building the QtCyberKit shared library fails when linking
         agains the ANGLE intermediate static library because libc++
         misses some symbols needed by ANGLE.
         Disable C++11 for the ANGLE intermediate library to fix the build.
@@ -11241,7 +11241,7 @@
 
 2013-03-20  Zan Dobersek  <zdobersek@igalia.com>
 
-        [GTK] Build ANGLE sources into a separate library from libWebCore.la
+        [GTK] Build ANGLE sources into a separate library from libCyberCore.la
         https://bugs.webkit.org/show_bug.cgi?id=112778
 
         Reviewed by Martin Robinson.
@@ -11308,7 +11308,7 @@
         1) r139758 build fix for -Wshorten-64-to-32
         2) r139665 build fix for uninitialized variables
 
-        After this roll, WebKit side ANGLE is the same as upstream ANGLE r1833, except:
+        After this roll, CyberKit side ANGLE is the same as upstream ANGLE r1833, except:
         1) include/GLSLANG/ShaderLang.h, where "KHR" is removed from include path.
 
         With this roll, we have EXT_draw_buffers support.
@@ -11539,7 +11539,7 @@
 
 2013-01-14  Dean Jackson  <dino@apple.com>
 
-        [ANGLE] Update ANGLE in WebKit
+        [ANGLE] Update ANGLE in CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=106274
 
         Unreviewed attempted build fix.
@@ -11551,7 +11551,7 @@
 
 2013-01-14  Max Vujovic  <mvujovic@adobe.com>
 
-        [ANGLE] Update ANGLE in WebKit
+        [ANGLE] Update ANGLE in CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=106274
 
         Reviewed by Dean Jackson.
@@ -11560,8 +11560,8 @@
 
         ANGLE parsers were generated with Bison 2.3.
 
-        Additionally, perform the following changes to WebKit's ANGLE build system. Note that these
-        changes only apply to WebKit's copy of ANGLE, and do not need to be upstreamed to ANGLE.
+        Additionally, perform the following changes to CyberKit's ANGLE build system. Note that these
+        changes only apply to CyberKit's copy of ANGLE, and do not need to be upstreamed to ANGLE.
         (a) Remove all files in the libEGL and libGLESv2 directories because nobody is using them. 
             Add a README in each directory to explain why their contents are not copied over from
             ANGLE. This simplifies updating ANGLE in the future.
@@ -12043,7 +12043,7 @@
 
 2012-10-29  Anders Carlsson  <andersca@apple.com>
 
-        Build WebKit as C++11 on Mac
+        Build CyberKit as C++11 on Mac
         https://bugs.webkit.org/show_bug.cgi?id=100720
 
         Reviewed by Daniel Bates.
@@ -12258,7 +12258,7 @@
 
 2012-07-17  Max Vujovic  <mvujovic@adobe.com>
 
-        Update ANGLE in WebKit
+        Update ANGLE in CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=89039
 
         Reviewed by Dean Jackson and Mark Rowe.
@@ -13192,13 +13192,13 @@
 
 2012-03-26  Dean Jackson  <dino@apple.com>
 
-        Update ANGLE in WebKit
+        Update ANGLE in CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=81717
 
         Reviewed by Kenneth Russell.
 
         Update angleproject to r1009. Synced the source directory
-        between the angle repository and WebKit. Ran the OS X Lion
+        between the angle repository and CyberKit. Ran the OS X Lion
         version of Bison over the glslang.l input which generates
         a slightly different output than angle provided.
 
@@ -13663,7 +13663,7 @@
 
 2012-01-06  Chris Marrin  <cmarrin@apple.com>
 
-        Update ANGLE in WebKit tree
+        Update ANGLE in CyberKit tree
         https://bugs.webkit.org/show_bug.cgi?id=75753
 
         Reviewed by Simon Fraser.
@@ -14947,7 +14947,7 @@
 
         Reviewed by Kenneth Russell.
 
-        Updating ANGLE in WebKit to r533.
+        Updating ANGLE in CyberKit to r533.
         https://bugs.webkit.org/show_bug.cgi?id=47194
 
         * ANGLE.xcodeproj/project.pbxproj:
@@ -16038,10 +16038,10 @@
 
         Unreviewed.
 
-        Got rid of link errors in WebCore.
+        Got rid of link errors in CyberCore.
 
         Changed GCC_INLINES_ARE_PRIVATE_EXTERN to YES and
-        GCC_SYMBOLS_PRIVATE_EXTERN to NO to match WebCore
+        GCC_SYMBOLS_PRIVATE_EXTERN to NO to match CyberCore
         flags.
 
         * ANGLE.xcodeproj/project.pbxproj:
@@ -16053,7 +16053,7 @@
         Update ANGLE to r352
         https://bugs.webkit.org/show_bug.cgi?id=43500
 
-        Updated ANGLE to r352 (July 26, 2010). Built WebKit to test.
+        Updated ANGLE to r352 (July 26, 2010). Built CyberKit to test.
 
         * include/GLSLANG/ShaderLang.h:
         * src/compiler/Initialize.cpp:
@@ -16126,6 +16126,6 @@
 
         Reviewed by Adele Peterson.
 
-        Add ANGLE library to WebKit. From the repository (http://angleproject.googlecode.com) as of July 22.
+        Add ANGLE library to CyberKit. From the repository (http://angleproject.googlecode.com) as of July 22.
         https://bugs.webkit.org/show_bug.cgi?id=42789
 

@@ -4,7 +4,7 @@
 # 2. Intentional unit test errors, false positives
 # in our own code, or leaks that are so trivial they are not worth fixing.
 #
-# 3. Suppressions for real WebKit bugs that are not yet fixed.
+# 3. Suppressions for real CyberKit bugs that are not yet fixed.
 # These should all be in webkit's bug tracking system
 # Periodically we should sweep this file and the bug tracker clean by
 # running overnight and removing outdated bugs/suppressions.
@@ -441,7 +441,7 @@
    fun:malloc
    fun:_cairo_image_surface_create_for_pixman_image
    fun:_cairo_image_surface_create_with_pixman_format
-   fun:_ZN7WebCore21copyCairoImageSurfaceEP14_cairo_surface
+   fun:_ZN7CyberCore21copyCairoImageSurfaceEP14_cairo_surface
 }
 
 
@@ -452,23 +452,23 @@
 {
    # According to dglazkov, these are one-time leaks and intentional.
    # They may go away if the change to move these off the heap lands.
-   WebCore::SVGNames::init (Intentional)
+   CyberCore::SVGNames::init (Intentional)
    Memcheck:Leak
    ...
-   fun:_ZN7WebCore8SVGNames4initEv
+   fun:_ZN7CyberCore8SVGNames4initEv
 }
 
 {
    # This is an on demand initialization which is done and then intentionally
    # kept around (not freed) while the process is running.
-   WebCore::XMLNames::init (Intentional)
+   CyberCore::XMLNames::init (Intentional)
    Memcheck:Leak
    ...
-   fun:_ZN7WebCore8XMLNames4initEv
+   fun:_ZN7CyberCore8XMLNames4initEv
 }
 
 {
-   # This is WebKit wide theading initialization which is intentionally kept
+   # This is CyberKit wide theading initialization which is intentionally kept
    # around (not freed) while the process is running.
    WTF::ThreadIdentifierData::initialize() (Intentional)
    Memcheck:Leak
@@ -477,7 +477,7 @@
 }
 
 {
-   # This is WebKit wide theading initialization which is intentionally kept
+   # This is CyberKit wide theading initialization which is intentionally kept
    # around (not freed) while the process is running.
    WTF::ThreadData (Intentional)
    Memcheck:Leak
@@ -517,12 +517,12 @@
    fun:malloc
    fun:g_malloc
    fun:g_slice_alloc
-   fun:_ZN6WebKit14DOMObjectCache3putEPvS1_
+   fun:_ZN6CyberKit14DOMObjectCache3putEPvS1_
    fun:_ZL33webkit_dom_dom_window_constructormjP22_GObjectConstructParam
    fun:g_object_newv
    fun:g_object_new_valist
    fun:g_object_new
-   fun:_ZN6WebKit13wrapDOMWindowEPN7WebCore9DOMWindowE
+   fun:_ZN6CyberKit13wrapDOMWindowEPN7CyberCore9DOMWindowE
    fun:webkit_dom_document_get_default_view
  }
 
@@ -557,7 +557,7 @@
    fun:g_object_new
    fun:atk_relation_new
    fun:atk_relation_set_add_relation_by_type
-   fun:_ZL31setAtkRelationSetFromCoreObjectPN7WebCore19AccessibilityObjectEP15_AtkRelationSet
+   fun:_ZL31setAtkRelationSetFromCoreObjectPN7CyberCore19AccessibilityObjectEP15_AtkRelationSet
    fun:_ZL30webkitAccessibleRefRelationSetP10_AtkObject
    fun:_ZN22AccessibilityUIElement14titleUIElementEv
 }
@@ -584,13 +584,13 @@
 
 {
    # Leak PluginObject in exceptional circumstances https://bugs.webkit.org/show_bug.cgi?id=118528
-   WebCore::PluginView::start()
+   CyberCore::PluginView::start()
    Memcheck:Leak
    fun:malloc
    fun:_ZL14pluginAllocateP4_NPPP7NPClass
    fun:_NPN_CreateObject
    fun:NPP_New
-   fun:_ZN7WebCore10PluginView5startEv
+   fun:_ZN7CyberCore10PluginView5startEv
 }
 
 {
@@ -598,28 +598,28 @@
    fun:malloc
    fun:_ZN3WTF10fastMallocEm
    fun:_ZN3WTF10fastStrDupEPKc
-   fun:_ZN7WebCore12TextCodecICU14registerCodecsEPFvPKcPFN3WTF10PassOwnPtrINS_9TextCodecEEERKNS_12TextEncodingEPKvESB_E
+   fun:_ZN7CyberCore12TextCodecICU14registerCodecsEPFvPKcPFN3WTF10PassOwnPtrINS_9TextCodecEEERKNS_12TextEncodingEPKvESB_E
 }
 
 {
-   # DumpRenderTree WebKitWebView is leaked
+   # DumpRenderTree CyberKitWebView is leaked
    webViewCreate
    Memcheck:Leak
    fun:malloc
    fun:g_malloc
    fun:g_slice_alloc
    fun:g_slist_prepend
-   fun:_ZL13webViewCreateP14_WebKitWebViewP15_WebKitWebFrame
+   fun:_ZL13webViewCreateP14_CyberKitWebViewP15_CyberKitWebFrame
    fun:webkit_marshal_OBJECT__OBJECT
    fun:g_closure_invoke
    fun:signal_emit_unlocked_R
    fun:g_signal_emit_valist
    fun:g_signal_emit_by_name
-   fun:_ZN6WebKit12ChromeClient12createWindowEPN7WebCore5FrameERKNS1_16FrameLoadRequestERKNS1_14WindowFeaturesERKNS1_16NavigationActionE
-   fun:_ZNK7WebCore6Chrome12createWindowEPNS_5FrameERKNS_16FrameLoadRequestERKNS_14WindowFeaturesERKNS_16NavigationActionE
-   fun:_ZN7WebCore12createWindowEPNS_5FrameES1_RKNS_16FrameLoadRequestERKNS_14WindowFeaturesERb
-   fun:_ZN7WebCore9DOMWindow12createWindowERKN3WTF6StringERKNS1_12AtomicStringERKNS_14WindowFeaturesEPS0_PNS_5FrameESD_PFvSB_PvESE_
-   fun:_ZN7WebCore9DOMWindow4openERKN3WTF6StringERKNS1_12AtomicStringES4_PS0_S8_
-   fun:_ZN7WebCore11JSDOMWindow4openEPN3JSC9ExecStateE
-   fun:_ZN7WebCore32jsDOMWindowPrototypeFunctionOpenEPN3JSC9ExecStateE
+   fun:_ZN6CyberKit12ChromeClient12createWindowEPN7CyberCore5FrameERKNS1_16FrameLoadRequestERKNS1_14WindowFeaturesERKNS1_16NavigationActionE
+   fun:_ZNK7CyberCore6Chrome12createWindowEPNS_5FrameERKNS_16FrameLoadRequestERKNS_14WindowFeaturesERKNS_16NavigationActionE
+   fun:_ZN7CyberCore12createWindowEPNS_5FrameES1_RKNS_16FrameLoadRequestERKNS_14WindowFeaturesERb
+   fun:_ZN7CyberCore9DOMWindow12createWindowERKN3WTF6StringERKNS1_12AtomicStringERKNS_14WindowFeaturesEPS0_PNS_5FrameESD_PFvSB_PvESE_
+   fun:_ZN7CyberCore9DOMWindow4openERKN3WTF6StringERKNS1_12AtomicStringES4_PS0_S8_
+   fun:_ZN7CyberCore11JSDOMWindow4openEPN3JSC9ExecStateE
+   fun:_ZN7CyberCore32jsDOMWindowPrototypeFunctionOpenEPN3JSC9ExecStateE
  }

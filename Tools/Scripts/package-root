@@ -31,7 +31,7 @@ use Getopt::Long qw(:config pass_through);
 use lib $FindBin::Bin;
 use webkitdirs;
 
-chdirWebKit();
+chdirCyberKit();
 
 my $showHelp = 0;
 
@@ -71,8 +71,8 @@ usage() if $showHelp;
 
 setConfiguration();
 
-my @privateFrameworks = qw(WebCore WebKitLegacy WebKit2);
-my @publicFrameworks = qw(JavaScriptCore WebKit);
+my @privateFrameworks = qw(CyberCore CyberKitLegacy CyberKit2);
+my @publicFrameworks = qw(CyberScriptCore CyberKit);
 my $privateInstallPath = "/System/Library/PrivateFrameworks";
 my $publicInstallPath = "/System/Library/Frameworks";
 
@@ -92,7 +92,7 @@ system 'mkdir', '-p', $stagingPublicPath;
 foreach my $framework (@privateFrameworks) {
     print "Copying Private $framework from $productDir ...\n";
     system 'cp', '-LpR', $productDir . "/$framework.framework", "$stagingPrivatePath/";
-    die "Check to see that you have built $framework for $configuration-$platform" if $? and $framework ne 'WebKit2';
+    die "Check to see that you have built $framework for $configuration-$platform" if $? and $framework ne 'CyberKit2';
 }
 
 foreach my $framework (@publicFrameworks) {
@@ -107,7 +107,7 @@ chdir $stagingRoot;
 print "Creating compressed archive ...\n";
 system 'ditto', '-cz', $stagingRoot, $tempArchiveName;
 
-chdirWebKit();
+chdirCyberKit();
 my $moved = move($tempArchiveName, $archivePath);
 
 if ($moved) {

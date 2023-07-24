@@ -43,11 +43,11 @@ def main(args):
     scm.discard_working_directory_changes()
 
     if args.keep_jhbuild_directory:
-        # Clean everything inside WebKitBuild, except the JHBuild directories.
+        # Clean everything inside CyberKitBuild, except the JHBuild directories.
         scm.discard_untracked_files(discard_ignored_files=True, keep_webkitbuild_directory=True)
-        if fs.isdir("WebKitBuild"):
-            for build_dir in fs.listdir("WebKitBuild"):
-                build_path = fs.join("WebKitBuild", build_dir)
+        if fs.isdir("CyberKitBuild"):
+            for build_dir in fs.listdir("CyberKitBuild"):
+                build_path = fs.join("CyberKitBuild", build_dir)
                 if fs.isdir(build_path):
                     if build_dir not in ["DependenciesGTK", "DependenciesWPE"]:
                         fs.rmtree(build_path)
@@ -58,7 +58,7 @@ def main(args):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Clean WebKit")
+    parser = argparse.ArgumentParser(description="Clean CyberKit")
     parser.add_argument("--keep-jhbuild-directory", action="store_true",
                         help="Don't wipe the JHBuild build directories.")
 

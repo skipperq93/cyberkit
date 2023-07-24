@@ -388,8 +388,8 @@
         * server-tests/privileged-api-upload-file-tests.js: Fix unit tests by setting'requires_build' field to be true when updating commit_set_item which has a patch..
         * server-tests/resources/mock-data.js: Added mock build requests with commit sets contain owned commits.
         (MockData.jscRepositoryId): Returns id for JavaScriptsCore repository.
-        (MockData.addMockConfiguration): Added mock JavaScriptCore and owned JavaScriptCore repositories and commits associated with them.
-        (MockData.ownedJSCRepositoryId): Added a JavaScriptCore repository with WebKit as owner.
+        (MockData.addMockConfiguration): Added mock CyberScriptCore and owned CyberScriptCore repositories and commits associated with them.
+        (MockData.ownedJSCRepositoryId): Added a CyberScriptCore repository with CyberKit as owner.
         (MockData.addMockConfiguration): Added mock data for test cases those require a commit with a owner commit.
         (MockData.addTestGroupWithOwnedCommits): Added mock data for analysis tasks, the build requires of which contains owned commits.
         (MockData.set addAnotherTriggerable): Added another triggerable which has mac, webkit and javascript core repositories as triggerable repository group.
@@ -569,7 +569,7 @@
 
         * public/v3/components/test-group-revision-table.js:
         (TestGroupRevisionTable.prototype._renderTable): Find the set of repositories for which a patch is applied.
-        Show build products for all commit sets for such a repository since when WebKit is built with a patch in
+        Show build products for all commit sets for such a repository since when CyberKit is built with a patch in
         one configuration, the other configuration also needs to be built for consistency.
         (TestGroupRevisionTable.prototype._buildCommitCell): Added the hyperlink for build products.
         (TestGroupRevisionTable.prototype._buildFileInfo): Takes a string to override the file's label. Since all
@@ -720,9 +720,9 @@
         Reviewed by Chris Dumez.
 
         When a commit set doesn't have a patch specified, don't create a request to build. For example, when we're comparing
-        WebKit in the system to WebKit with a patch, there is nothing to build for the first commit set.
+        CyberKit in the system to CyberKit with a patch, there is nothing to build for the first commit set.
 
-        However, when conducting an A/B testing, it's advisible to compare WebKit built with and without a patch on a single
+        However, when conducting an A/B testing, it's advisible to compare CyberKit built with and without a patch on a single
         machine with the same version of Xcode, etc... For this reason, we still create a request to build for a commit set
         if there is another commit set with a patch which uses the same repository group.
 
@@ -757,7 +757,7 @@
         (createSampleBuildRequestWithPatch): Added.
 
         * unit-tests/resources/mock-v3-models.js:
-        (MockModels.inject): Made "ios-svn-webkit" accept a WebKit patch and roots to allow new testing.
+        (MockModels.inject): Made "ios-svn-webkit" accept a CyberKit patch and roots to allow new testing.
 
 2017-05-30  Ryosuke Niwa  <rniwa@webkit.org>
 
@@ -811,7 +811,7 @@
         * public/v3/components/instant-file-uploader.js:
         (InstantFileUploader.prototype.clear): Added.
         (InstantFileUploader.prototype.didConstructShadowTree): Added event handlers for dragover & drop events to
-        allow specifying a patch and root using drag & drop. Unfortunately, this still doesn't work in WebKit due to
+        allow specifying a patch and root using drag & drop. Unfortunately, this still doesn't work in CyberKit due to
         a bug in our shadow DOM implementation.
         (InstantFileUploader.prototype._didFileInputChange):
         (InstantFileUploader.prototype._uploadFiles): Extracted from _didFileInputChange.
@@ -1299,7 +1299,7 @@
         Furthermore, the syncing script's configuration have been updated to use a dictionary of repository names to
         an options dictionary instead of an array of repositories names. For now, the only supported option is
         acceptsPatch but will be extended when we add the support for rolling back system components.
-        e.g. {"WebKit": {acceptsPatch: true}, "macOS": {}} instead of ["WebKit", "macOS"]
+        e.g. {"CyberKit": {acceptsPatch: true}, "macOS": {}} instead of ["CyberKit", "macOS"]
 
         On the UI side, InstantFileUploader has been changed to accept only one file by default, and added a new method
         allowMultipleFiles() to allow multiple files to be selected for custom roots. Also replaced the input element
@@ -1508,7 +1508,7 @@
         * public/privileged-api/create-test-group.php:
         * server-tests/resources/mock-data.js:
         (MockData.addMockData):
-        (MockData.addMockTestGroupWithGitWebKit):
+        (MockData.addMockTestGroupWithGitCyberKit):
         * tools/js/database.js:
 
 2017-04-21  Ryosuke Niwa  <rniwa@webkit.org>
@@ -1916,8 +1916,8 @@
         defaults to the first repository group if there is none. This allows the set of repositories to be specified to
         more or less persist across different triggerables. For example, if iOS platforms and Mac platforms use two
         distinct triggerables , and both triggerables have two repository groups: one that only specify the OS and the
-        other that specifies both teh OS and WebKit revision, then this code allows the choice the user had made to
-        specify either just the OS or the OS and WebKit will be preserved when the user switches from an iOS platform
+        other that specifies both teh OS and CyberKit revision, then this code allows the choice the user had made to
+        specify either just the OS or the OS and CyberKit will be preserved when the user switches from an iOS platform
         to a Mac platform.
         (CustomAnalysisTaskConfigurator.prototype._updateCommitSetMap): Added. Create a commit set map, the format that
         TestGroup.createWithTask accepts given "baseline" and "comparison" commit sets. Pretend "comparison" is not set
@@ -2159,8 +2159,8 @@
         defaults to the first repository group if there is none. This allows the set of repositories to be specified to
         more or less persist across different triggerables. For example, if iOS platforms and Mac platforms use two
         distinct triggerables , and both triggerables have two repository groups: one that only specify the OS and the
-        other that specifies both teh OS and WebKit revision, then this code allows the choice the user had made to
-        specify either just the OS or the OS and WebKit will be preserved when the user switches from an iOS platform
+        other that specifies both teh OS and CyberKit revision, then this code allows the choice the user had made to
+        specify either just the OS or the OS and CyberKit will be preserved when the user switches from an iOS platform
         to a Mac platform.
         (CustomAnalysisTaskConfigurator.prototype._updateCommitSetMap): Added. Create a commit set map, the format that
         TestGroup.createWithTask accepts given "baseline" and "comparison" commit sets. Pretend "comparison" is not set
@@ -2347,8 +2347,8 @@
         ```js
         "repositoryGroups": {
             "webkit-svn": {
-                "repositories": ["WebKit", "macOS"],
-                "properties": {"os": "<macOS>", "wk": "<WebKit>"}
+                "repositories": ["CyberKit", "macOS"],
+                "properties": {"os": "<macOS>", "wk": "<CyberKit>"}
             }
         }
         ```
@@ -2391,7 +2391,7 @@
         Use that to set the repository group in each new build request. 
         (commit_sets_from_revision_sets): Use RepositoryGroupFinder to find the right repository group.
         (ensure_commit_sets): Ditto. There is no need to find a repository group for each commit set here since its
-        argument is keyed by the repository name. e.g. {"WebKit": [123, 456], "macOS": ["16A323", "16A323"]}
+        argument is keyed by the repository name. e.g. {"CyberKit": [123, 456], "macOS": ["16A323", "16A323"]}
 
         * public/v3/models/build-request.js:
         (BuildRequest):
@@ -2427,7 +2427,7 @@
         (MockData.addMockData): Create repository groups as needed. Renamed the "OS X" repository to "macOS" since some
         tests were using the latter, and now we need mock data to be consistent across tests due to stricter checks.
         (MockData.addEmptyTriggerable): Added. Used in api-update-triggerable.js.
-        (MockData.addMockTestGroupWithGitWebKit): Added. Used in api-build-requests-tests.js.
+        (MockData.addMockTestGroupWithGitCyberKit): Added. Used in api-build-requests-tests.js.
         (MockData.addAnotherMockTestGroup): Cleanup.
         (MockData.mockTestSyncConfigWithSingleBuilder): Updated the mock configuration per code changes.
         (MockData.mockTestSyncConfigWithTwoBuilders): Ditto.
@@ -2475,7 +2475,7 @@
         (sampleiOSConfigWithExpansions): Ditto.
         (smallConfiguration): Ditto. Now returns the entire configuration instead of a single builder configuration.
         Various test cases have been updated to reflect this.
-        (createSampleBuildRequest): Removed the git hash of WebKit to match the repository groups listed in the mock
+        (createSampleBuildRequest): Removed the git hash of CyberKit to match the repository groups listed in the mock
         configurations. The git hash was there to test "rootOptions", which this patch removed.
         (samplePendingBuild): Removed "root_dict" from the list of properties. This was used to test "rootsExcluding"
         which, again, this patch removed.
@@ -8481,7 +8481,7 @@
 
         In a very early version of the perf dashboard, we had the ability to define a custom aggregator
         in an admin page. In practice, nobody used or needed this feature so we got rid of it even before
-        the dashboard was landed into WebKit repository. This patch cleans up that mess.
+        the dashboard was landed into CyberKit repository. This patch cleans up that mess.
 
         * run-tests.js:
         (main): Added the filtering capability.
@@ -8731,8 +8731,8 @@
         root set in each test group which didn't find a matching measurement set point. There is a little
         subtlety that some A/B testing may specify revisions for a subset of repositories and/or some A/B
         testing results may appear as if it goes back in time with respect to other A/B testing results.
-        For example, consider creating two A/B test groups for WebKit changes and OS changes separately.
-        There could be no coherent linearization of those two A/B testing in which both WebKit and OS
+        For example, consider creating two A/B test groups for CyberKit changes and OS changes separately.
+        There could be no coherent linearization of those two A/B testing in which both CyberKit and OS
         versions move forward.
 
         (AnalysisResultsViewer.RootSetInTestGroup): Added. Represents a pair (test group, root set) since
@@ -9209,7 +9209,7 @@
 
         * public/v3/pages/chart-pane-status-view.js: Added.
         (ChartPaneStatusView): A subclass of ChartStatusView used in the charts page. In addition to the current value,
-        comparison to baseline/target, it shows the list of repository revisions (e.g. WebKit revision, OS version).
+        comparison to baseline/target, it shows the list of repository revisions (e.g. CyberKit revision, OS version).
 
         * public/v3/pages/chart-pane.js: Added.
         (ChartPane): A component a pane in the charts page. Each pane has the overview chart and the main chart. The zooming
@@ -9245,7 +9245,7 @@
         (main): Bundles js files together and minifies them by jsmin.py for the v3 UI. Without this script, we're forced to
         download 44 JS files or making each JS file contain multiple classes.
 
-        * tools/jsmin.py: Copied from WebInspector / JavaScriptCore code.
+        * tools/jsmin.py: Copied from WebInspector / CyberScriptCore code.
 
 2015-12-15  Ryosuke Niwa  <rniwa@webkit.org>
 
@@ -9641,13 +9641,13 @@
 
         [
             {
-                "name": "WebKit",
+                "name": "CyberKit",
                 "url": "http://svn.webkit.org/repository/webkit",
                 "username": "webkitten",
                 "password": "webkitten's password",
                 "trustCertificate": true,
                 "accountNameFinderScript":
-                    ["python", "/Volumes/Data/WebKit/Tools/Scripts/webkit-patch", "find-users"]
+                    ["python", "/Volumes/Data/CyberKit/Tools/Scripts/webkit-patch", "find-users"]
             },
             ...
         ]
@@ -10142,7 +10142,7 @@
 
         * init-database.sql: Removed the constraint that each bug tracker should appear exactly once for
         a given analysis task since it's perfectly reasonable for a given task to be associated with
-        multiple WebKit bugs.
+        multiple CyberKit bugs.
 
         * public/privileged-api/associate-bug.php:
         (main): Only remove the bug specified by newly added bugToDelete instead of implicitly deleting
@@ -10179,7 +10179,7 @@
         the revision number as well as the commit time.
         * tools/sync-with-buildbot.py:
         (schedule_request): Removed "replacement" which was a superfluous copy of "roots". Use "revision" values
-        when the JSON configuration refers to "root". This is necessary in buildbot instances that require WebKit
+        when the JSON configuration refers to "root". This is necessary in buildbot instances that require CyberKit
         revision to be specified on its own field instead of it being a JSON that contains "revision" and "time".
 
 2015-05-19  Ryosuke Niwa  <rniwa@webkit.org>
@@ -10308,7 +10308,7 @@
         (RunsData.prototype._timeSeriesByTimeInternal): Added secondaryTime to sort points when commit
         times are identical.
         (TimeSeries): When commit times are identical, order points based on build time. This is needed
-        for when we trigger two builds at two different OS versions with the same WebKit revision since
+        for when we trigger two builds at two different OS versions with the same CyberKit revision since
         OS versions don't change the commit times.
         (TimeSeries.prototype.findPointByIndex): Added.
         (TimeSeries.prototype.rawValues): Added.
@@ -10626,8 +10626,8 @@
         * tools/sync-with-buildbot.py:
         (find_request_updates):
         (schedule_request): iOS builders take a JSON that contains the list of roots. Generate this JSON when
-        a dictionary of the form {rootsExcluding: ["WebKit"]} is specified. Also replaced the way we refer to
-        a revision from $-based text replacements to an explicit dictionary of the form {root: "WebKit"}.
+        a dictionary of the form {rootsExcluding: ["CyberKit"]} is specified. Also replaced the way we refer to
+        a revision from $-based text replacements to an explicit dictionary of the form {root: "CyberKit"}.
         (request_id_from_build): Don't hard code the parameter name here. Retrieve the name from the config.
 
 2015-04-03  Ryosuke Niwa  <rniwa@webkit.org>
@@ -11007,7 +11007,7 @@
         This change required the creation of App.TestGroupPane as well as its methods.
         4. Show a box plot for each root set configuration as well as each build request. This change required
         App.BoxPlotComponent.
-        5. Show revisions of each repository (e.g. WebKit) for each root set and build request.
+        5. Show revisions of each repository (e.g. CyberKit) for each root set and build request.
 
         * public/api/build-requests.php:
         (main): Update per the rename of BuildRequestsFetcher::root_sets to BuildRequestsFetcher::root_sets_by_id.
@@ -11808,8 +11808,8 @@
         (main):
         (commit_sets_from_root_sets): Given a dictionary of repository names to a pair of revisions
         for sets A and B respectively, returns a pair of arrays, each of which contains the corresponding
-        set of "commits" for sets A and B respectively. e.g. {"WebKit": [1, 2], "Safari": [3, 4]} will
-        result in [[WebKit commit at r1, Safari commit at r3], [WebKit commit at r2, Safari commit at r4]].
+        set of "commits" for sets A and B respectively. e.g. {"CyberKit": [1, 2], "Safari": [3, 4]} will
+        result in [[CyberKit commit at r1, Safari commit at r3], [CyberKit commit at r2, Safari commit at r4]].
 
         * public/v2/analysis.js:
         (App.AnalysisTask.testGroups): Takes arguments so that set('testGroups') will invalidate the cache.
@@ -11852,7 +11852,7 @@
                 "builder": "Trunk Syrah Production Perf AB Tests",
                 "arguments": {
                     "forcescheduler": "force-mac-mavericks-release-perf",
-                    "webkit_revision": "$WebKit",
+                    "webkit_revision": "$CyberKit",
                     "jobid": "$buildRequest"
                 }
             }
@@ -12769,7 +12769,7 @@
 
         The helper script to submit commit logs can be used as follows:
 
-        python ./tools/pull-svn.py "WebKit" https://svn.webkit.org/repository/webkit/ https://perf.webkit.org
+        python ./tools/pull-svn.py "CyberKit" https://svn.webkit.org/repository/webkit/ https://perf.webkit.org
             feeder-slave feeder-slave-password 60 "webkit-patch find-users"
 
         The above command will pull the subversion server at https://svn.webkit.org/repository/webkit/ every 60 seconds
@@ -12848,7 +12848,7 @@
 
         Add the instruction to copy php.ini to enable the Postgres extension in PHP.
 
-        Also use perf.webkit.org as the directory name instead of WebKitPerfMonitor.
+        Also use perf.webkit.org as the directory name instead of CyberKitPerfMonitor.
 
         Finally, init-database.sql is no longer located inside database directory.
 
@@ -12968,7 +12968,7 @@
 
 2014-04-03  Ryosuke Niwa  <rniwa@webkit.org>
 
-        WebKitPerfMonitor: There should be a way to add all metrics of a suite without also adding subtests
+        CyberKitPerfMonitor: There should be a way to add all metrics of a suite without also adding subtests
         https://bugs.webkit.org/show_bug.cgi?id=131157
 
         Reviewed by Andreas Kling.
@@ -12983,7 +12983,7 @@
 
 2014-04-03  Ryosuke Niwa  <rniwa@webkit.org>
 
-        WebKitPerfMonitor: Tooltips cannot be pinned after using browser's back button
+        CyberKitPerfMonitor: Tooltips cannot be pinned after using browser's back button
         https://bugs.webkit.org/show_bug.cgi?id=131155
 
         Reviewed by Andreas Kling.
@@ -13002,7 +13002,7 @@
 
 2014-04-03  Ryosuke Niwa  <rniwa@webkit.org>
 
-        WebKitPerfMonitor: Tooltips can be cut off at the top
+        CyberKitPerfMonitor: Tooltips can be cut off at the top
         https://bugs.webkit.org/show_bug.cgi?id=130960
 
         Reviewed by Andreas Kling.
@@ -13021,7 +13021,7 @@
 
 2014-04-03  Ryosuke Niwa  <rniwa@webkit.org>
 
-        WebKitPerfMonitor: Y-axis adjustment is too aggressive
+        CyberKitPerfMonitor: Y-axis adjustment is too aggressive
         https://bugs.webkit.org/show_bug.cgi?id=130937
 
         Reviewed by Andreas Kling.
@@ -13067,7 +13067,7 @@
 
 2014-03-30  Ryosuke Niwa  <rniwa@webkit.org>
 
-        WebKitPerfMonitor: Sometimes text inside panes overlap
+        CyberKitPerfMonitor: Sometimes text inside panes overlap
         https://bugs.webkit.org/show_bug.cgi?id=130956
 
         Reviewed by Gyuyoung Kim.
@@ -13097,7 +13097,7 @@
 
 2014-03-30  Ryosuke Niwa  <rniwa@webkit.org>
 
-        WebKitPerfMonitor: Header and number-of-days slider takes up too much space
+        CyberKitPerfMonitor: Header and number-of-days slider takes up too much space
         https://bugs.webkit.org/show_bug.cgi?id=130957
 
         Reviewed by Gyuyoung Kim.
@@ -13582,7 +13582,7 @@
         we can have
         "metrics": {"Time": { "aggregators" : ["Arithmetic"], "current": [300, 310, 320, 330] }}
 
-        This allows single JSON generated by run-perf-tests in WebKit to be shared between the perf
+        This allows single JSON generated by run-perf-tests in CyberKit to be shared between the perf
         dashboard and the generated results page, which doesn't know how to aggregate values.
 
         We need to keep the support for the old format because all other existing performance tests
@@ -13901,9 +13901,9 @@
 
         Reviewed by Remy Demarest.
 
-        In WebKit land, we're going to use multiple instances of DumpRenderTree or WebKitTestRunner to amortize
+        In CyberKit land, we're going to use multiple instances of DumpRenderTree or CyberKitTestRunner to amortize
         the runtime environment variances to get more stable results. And it's desirable to keep track of
-        the instance of DumpRenderTree or WebKitTestRunner used to generate each iteration value.
+        the instance of DumpRenderTree or CyberKitTestRunner used to generate each iteration value.
 
         This patch introduces "iteration groups" to keep track of this extra information.
 
@@ -14104,9 +14104,9 @@
         Made the list of bug trackers configurable. Namely, each bug tracker can be added in
         admin/bug-trackers.php and can be associated with multiple repositories.
 
-        The association between bug trackers and repositories (such as WebKit, Safari, etc...) are used
+        The association between bug trackers and repositories (such as CyberKit, Safari, etc...) are used
         to determine the set of bug trackers to show for a given set of blame lists.
-        e.g. if a test regressed due to a change in Safari, then we don't want to show WebKit Bugzilla as
+        e.g. if a test regressed due to a change in Safari, then we don't want to show CyberKit Bugzilla as
         a place to file bugs against the regression.
 F
         * database/init-database.sql: Added bug_trackers and tracker_repositories.
@@ -14379,14 +14379,14 @@ F
 
         Rubber-stamped by Simon Fraser.
 
-        This patch adds hyperlinks to file new bugs on Radar and WebKit Bugzilla. Because we want to include information
+        This patch adds hyperlinks to file new bugs on Radar and CyberKit Bugzilla. Because we want to include information
         such as the degree of progression or regression and the regression ranges when filing new bugs, broke various
         label() functions into smaller pieces to be used in both generating tooltips and the hyperlinks.
 
         * public/index.html:
         (.buildLabelWithLinks): Extracted from TestBuild.label.
         (.showTooltipWithResults): Extracted from Tooltip.show. Also added the code to generate hyperlinks to file new bugs
-        on Radar and WebKit Bugzilla.
+        on Radar and CyberKit Bugzilla.
         * public/js/helper-classes.js:
         (PerfTestResult.metric): Replaced test() as runs.test() no longer exists.
         (PerfTestResult.isBetterThan): Added.
@@ -14729,7 +14729,7 @@ F
         (getIdOrCreateBuildWithRevisions):
         (ensureBuildIdAndRevisions): Obtains a build id given a builder name, a build number, and a build time
         if one already exists. If not, then inserts a new build and corresponding revisions information (e.g.
-        build 123 may contain WebKit revision r456789). We don't retrieve rows for revisions since we don't use
+        build 123 may contain CyberKit revision r456789). We don't retrieve rows for revisions since we don't use
         it elsewhere.
         (insertRun): Insert new rows into "test_runs" and "run_iterations" tables, thereby recording the new
         test results all in a single transaction. This allows us to keep the database consistent in that either

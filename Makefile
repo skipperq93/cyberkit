@@ -1,4 +1,4 @@
-MODULES = WebKitLibraries Source Tools
+MODULES = CyberKitLibraries Source Tools
 
 all:
 	@for dir in $(MODULES); do ${MAKE} $@ -C $$dir; exit_status=$$?; \

@@ -62,7 +62,7 @@ RunLoop::RunLoop()
 
     m_source = adoptGRef(g_source_new(&runLoopSourceFunctions, sizeof(GSource)));
     g_source_set_priority(m_source.get(), RunLoopSourcePriority::RunLoopDispatcher);
-    g_source_set_name(m_source.get(), "[WebKit] RunLoop work");
+    g_source_set_name(m_source.get(), "[CyberKit] RunLoop work");
     g_source_set_can_recurse(m_source.get(), TRUE);
     g_source_set_callback(m_source.get(), [](gpointer userData) -> gboolean {
         static_cast<RunLoop*>(userData)->performWork();
@@ -134,7 +134,7 @@ RunLoop::TimerBase::TimerBase(RunLoop& runLoop)
     , m_source(adoptGRef(g_source_new(&runLoopSourceFunctions, sizeof(GSource))))
 {
     g_source_set_priority(m_source.get(), RunLoopSourcePriority::RunLoopTimer);
-    g_source_set_name(m_source.get(), "[WebKit] RunLoop::Timer work");
+    g_source_set_name(m_source.get(), "[CyberKit] RunLoop::Timer work");
     g_source_set_callback(m_source.get(), [](gpointer userData) -> gboolean {
         // fired() executes the user's callback. It may destroy timer,
         // so we must check if the source is still active afterwards

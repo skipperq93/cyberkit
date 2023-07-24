@@ -14,7 +14,7 @@ from .process import cast_env
 __all__ = ["SeleniumServer", "ChromeDriverServer", "CWTChromeDriverServer",
            "EdgeChromiumDriverServer", "OperaDriverServer", "GeckoDriverServer",
            "InternetExplorerDriverServer", "EdgeDriverServer",
-           "ServoDriverServer", "WebKitDriverServer", "WebDriverServer"]
+           "ServoDriverServer", "CyberKitDriverServer", "WebDriverServer"]
 
 
 class WebDriverServer(object):
@@ -231,7 +231,7 @@ class ServoDriverServer(WebDriverServer):
         return command
 
 
-class WebKitDriverServer(WebDriverServer):
+class CyberKitDriverServer(WebDriverServer):
     def __init__(self, logger, binary=None, port=None, args=None):
         WebDriverServer.__init__(self, logger, binary, port=port, args=args)
 

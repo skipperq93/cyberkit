@@ -28,8 +28,8 @@
 
 #pragma once
 
-#include <JavaScriptCore/JSRetainPtr.h>
-#include <JavaScriptCore/JSBase.h>
+#include <CyberScriptCore/JSRetainPtr.h>
+#include <CyberScriptCore/JSBase.h>
 
 class WorkQueueItem {
 public:

@@ -326,7 +326,7 @@ WI.CPUTimelineView = class CPUTimelineView extends WI.TimelineView
         this.addSubview(this._mainThreadUsageView);
         this._threadsDetailsElement.appendChild(this._mainThreadUsageView.element);
 
-        this._webkitThreadUsageView = new WI.CPUUsageView(WI.UIString("WebKit Threads"));
+        this._webkitThreadUsageView = new WI.CPUUsageView(WI.UIString("CyberKit Threads"));
         this.addSubview(this._webkitThreadUsageView);
         this._threadsDetailsElement.appendChild(this._webkitThreadUsageView.element);
 
@@ -1151,7 +1151,7 @@ WI.CPUTimelineView = class CPUTimelineView extends WI.TimelineView
         // Script Samples: [ ------, Script, Script, Script, ------ ]
         // Layout Samples: [ ------, Script, Layout, Script, ------ ]
         //
-        // The undefined samples are considered Idle, but in actuality WebKit
+        // The undefined samples are considered Idle, but in actuality CyberKit
         // may have been doing some work (such as hit testing / inspector protocol)
         // that is not included it in generic Timeline data. This just works with
         // with the data available to the frontend and is quite accurate for most

@@ -1,8 +1,8 @@
-# These are the layout test expectations for the glib-based ports: WebKitGTK and WPE.
+# These are the layout test expectations for the glib-based ports: CyberKitGTK and WPE.
 #
 # This file is used to track common expectations to both ports.
 #
-# The bots of WebKitGTK+/WPE running layout tests (GTK Release Test, GTK Debug Test,
+# The bots of CyberKitGTK+/WPE running layout tests (GTK Release Test, GTK Debug Test,
 # GTK Release Wayland Test, WPE Release Test, and WPE Debug Test)
 # are currently running on Debian 10 (Buster) x86_64.
 #

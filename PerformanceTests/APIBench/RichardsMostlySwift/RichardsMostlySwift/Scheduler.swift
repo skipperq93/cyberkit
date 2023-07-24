@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import JavaScriptCore
+import CyberScriptCore
 
 @objc protocol SchedulerExports : JSExport {
     func waitCurrent() -> Task?

@@ -57,7 +57,7 @@ if ($showHelp or not $result) {
 
 checkRequiredSystemConfig();
 setConfiguration();
-chdirWebKit();
+chdirCyberKit();
 
 my @xcodeOptions = ("-target", "ImageDiff");
 push @xcodeOptions, XcodeOptions();

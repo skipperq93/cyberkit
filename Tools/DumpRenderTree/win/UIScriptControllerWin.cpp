@@ -28,8 +28,8 @@
 
 #include "DumpRenderTreeWin.h"
 #include "UIScriptContext.h"
-#include <WebCore/COMPtr.h>
-#include <WebKitLegacy/WebKit.h>
+#include <CyberCore/COMPtr.h>
+#include <CyberKitLegacy/CyberKit.h>
 
 namespace WTR {
 

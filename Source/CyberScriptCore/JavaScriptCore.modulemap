@@ -1,0 +1,8 @@
+framework module CyberScriptCore [extern_c] {
+  umbrella header "CyberScriptCore.h"
+
+  export *
+  module * {
+    export *
+  }
+}

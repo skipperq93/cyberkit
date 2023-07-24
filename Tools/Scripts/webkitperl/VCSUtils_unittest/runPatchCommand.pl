@@ -61,7 +61,7 @@ Index: $fileToPatch
 --- $fileToPatch	(revision 0)
 +++ $fileToPatch	(revision 0)
 @@ -0,0 +1,5 @@
-+This is a test file for WebKitTools/Scripts/VCSUtils_unittest.pl.
++This is a test file for CyberKitTools/Scripts/VCSUtils_unittest.pl.
 +This file should not have gotten created on your system.
 +If it did, some unit tests don't seem to be working quite right:
 +It would be great if you could file a bug report. Thanks!

@@ -35,18 +35,18 @@
 #endif
 
 #if ENABLE(WEBKIT)
-#include "WebKitBrowserWindow.h"
+#include "CyberKitBrowserWindow.h"
 #endif
 
 #if ENABLE(WEBKIT_LEGACY)
-#include "WebKitLegacyBrowserWindow.h"
+#include "CyberKitLegacyBrowserWindow.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 float deviceScaleFactorForWindow(HWND);
 }
 
-static const wchar_t* kMiniBrowserRegistryKey = L"Software\\WebKit\\MiniBrowser";
+static const wchar_t* kMiniBrowserRegistryKey = L"Software\\CyberKit\\MiniBrowser";
 
 static constexpr int kToolbarImageSize = 32;
 static constexpr int kToolbarURLBarIndex = 4;
@@ -177,7 +177,7 @@ void MainWindow::resizeToolbar(int parentWidth)
 
 void MainWindow::rescaleToolbar()
 {
-    const float scaleFactor = WebCore::deviceScaleFactorForWindow(m_hMainWnd);
+    const float scaleFactor = CyberCore::deviceScaleFactorForWindow(m_hMainWnd);
     const int scaledImageSize = kToolbarImageSize * scaleFactor;
 
     TBBUTTONINFO info { sizeof(TBBUTTONINFO), TBIF_BYINDEX | TBIF_SIZE };
@@ -310,7 +310,7 @@ LRESULT CALLBACK MainWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPA
 #if ENABLE(WEBKIT)
         case IDM_NEW_WEBKIT_WINDOW: {
             auto& newWindow = MainWindow::create().leakRef();
-            newWindow.init(WebKitBrowserWindow::create, hInst);
+            newWindow.init(CyberKitBrowserWindow::create, hInst);
             ShowWindow(newWindow.hwnd(), SW_SHOW);
             break;
         }
@@ -318,7 +318,7 @@ LRESULT CALLBACK MainWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPA
 #if ENABLE(WEBKIT_LEGACY)
         case IDM_NEW_WEBKITLEGACY_WINDOW: {
             auto& newWindow = MainWindow::create().leakRef();
-            newWindow.init(WebKitLegacyBrowserWindow::create, hInst);
+            newWindow.init(CyberKitLegacyBrowserWindow::create, hInst);
             ShowWindow(newWindow.hwnd(), SW_SHOW);
             break;
         }

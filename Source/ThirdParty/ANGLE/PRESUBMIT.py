@@ -321,7 +321,7 @@ def _CheckExportValidity(input_api, output_api):
 
 
 def _CheckTabsInSourceFiles(input_api, output_api):
-    """Forbids tab characters in source files due to a WebKit repo requirement. """
+    """Forbids tab characters in source files due to a CyberKit repo requirement. """
 
     def implementation_and_headers(f):
         return input_api.FilterSourceFile(
@@ -340,7 +340,7 @@ def _CheckTabsInSourceFiles(input_api, output_api):
                 'Tab characters in source files.',
                 items=sorted(files_with_tabs),
                 long_text=
-                'Tab characters are forbidden in ANGLE source files because WebKit\'s Subversion\n'
+                'Tab characters are forbidden in ANGLE source files because CyberKit\'s Subversion\n'
                 'repository does not allow tab characters in source files.\n'
                 'Please remove tab characters from these files.')
         ]

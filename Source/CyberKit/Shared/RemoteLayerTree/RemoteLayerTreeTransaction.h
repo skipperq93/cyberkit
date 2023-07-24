@@ -1,0 +1,375 @@
+/*
+ * Copyright (C) 2012-2020 Apple Inc. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS''
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+ * THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+#pragma once
+
+#include "DrawingAreaInfo.h"
+#include "DynamicViewportSizeUpdate.h"
+#include "EditorState.h"
+#include "GenericCallback.h"
+#include "PlatformCAAnimationRemote.h"
+#include "RemoteLayerBackingStore.h"
+#include "TransactionID.h"
+#include <CyberCore/Color.h>
+#include <CyberCore/FilterOperations.h>
+#include <CyberCore/FloatPoint3D.h>
+#include <CyberCore/FloatSize.h>
+#include <CyberCore/LayoutMilestone.h>
+#include <CyberCore/PlatformCALayer.h>
+#include <CyberCore/TransformationMatrix.h>
+#include <wtf/HashMap.h>
+#include <wtf/HashSet.h>
+#include <wtf/text/StringHash.h>
+#include <wtf/text/WTFString.h>
+
+namespace IPC {
+class Decoder;
+class Encoder;
+}
+
+namespace CyberKit {
+
+class RemoteLayerTreeTransaction {
+    WTF_MAKE_FAST_ALLOCATED;
+public:
+    enum LayerChange {
+        NameChanged                     = 1LLU << 1,
+        ChildrenChanged                 = 1LLU << 2,
+        PositionChanged                 = 1LLU << 3,
+        BoundsChanged                   = 1LLU << 4,
+        BackgroundColorChanged          = 1LLU << 5,
+        AnchorPointChanged              = 1LLU << 6,
+        BorderWidthChanged              = 1LLU << 7,
+        BorderColorChanged              = 1LLU << 8,
+        OpacityChanged                  = 1LLU << 9,
+        TransformChanged                = 1LLU << 10,
+        SublayerTransformChanged        = 1LLU << 11,
+        HiddenChanged                   = 1LLU << 12,
+        GeometryFlippedChanged          = 1LLU << 13,
+        DoubleSidedChanged              = 1LLU << 14,
+        MasksToBoundsChanged            = 1LLU << 15,
+        OpaqueChanged                   = 1LLU << 16,
+        ContentsHiddenChanged           = 1LLU << 17,
+        MaskLayerChanged                = 1LLU << 18,
+        ClonedContentsChanged           = 1LLU << 19,
+        ContentsRectChanged             = 1LLU << 20,
+        ContentsScaleChanged            = 1LLU << 21,
+        CornerRadiusChanged             = 1LLU << 22,
+        ShapeRoundedRectChanged         = 1LLU << 23,
+        ShapePathChanged                = 1LLU << 24,
+        MinificationFilterChanged       = 1LLU << 25,
+        MagnificationFilterChanged      = 1LLU << 26,
+        BlendModeChanged                = 1LLU << 27,
+        WindRuleChanged                 = 1LLU << 28,
+        SpeedChanged                    = 1LLU << 29,
+        TimeOffsetChanged               = 1LLU << 30,
+        BackingStoreChanged             = 1LLU << 31,
+        BackingStoreAttachmentChanged   = 1LLU << 32,
+        FiltersChanged                  = 1LLU << 33,
+        AnimationsChanged               = 1LLU << 34,
+        EdgeAntialiasingMaskChanged     = 1LLU << 35,
+        CustomAppearanceChanged         = 1LLU << 36,
+        UserInteractionEnabledChanged   = 1LLU << 37,
+        EventRegionChanged              = 1LLU << 38,
+    };
+
+    struct LayerCreationProperties {
+        WTF_MAKE_STRUCT_FAST_ALLOCATED;
+        LayerCreationProperties();
+
+        void encode(IPC::Encoder&) const;
+        static Optional<LayerCreationProperties> decode(IPC::Decoder&);
+
+        CyberCore::GraphicsLayer::PlatformLayerID layerID;
+        CyberCore::PlatformCALayer::LayerType type;
+
+        CyberCore::GraphicsLayer::EmbeddedViewID embeddedViewID;
+
+        uint32_t hostingContextID;
+        float hostingDeviceScaleFactor;
+    };
+
+    struct LayerProperties {
+        WTF_MAKE_STRUCT_FAST_ALLOCATED;
+        LayerProperties();
+        LayerProperties(const LayerProperties& other);
+
+        void encode(IPC::Encoder&) const;
+        static WARN_UNUSED_RETURN bool decode(IPC::Decoder&, LayerProperties&);
+
+        void notePropertiesChanged(OptionSet<LayerChange> changeFlags)
+        {
+            changedProperties.add(changeFlags);
+            everChangedProperties.add(changeFlags);
+        }
+
+        void resetChangedProperties()
+        {
+            changedProperties = { };
+        }
+
+        OptionSet<LayerChange> changedProperties;
+        OptionSet<LayerChange> everChangedProperties;
+
+        String name;
+        std::unique_ptr<CyberCore::TransformationMatrix> transform;
+        std::unique_ptr<CyberCore::TransformationMatrix> sublayerTransform;
+        std::unique_ptr<CyberCore::FloatRoundedRect> shapeRoundedRect;
+
+        Vector<CyberCore::GraphicsLayer::PlatformLayerID> children;
+
+        Vector<std::pair<String, PlatformCAAnimationRemote::Properties>> addedAnimations;
+        HashSet<String> keyPathsOfAnimationsToRemove;
+
+        CyberCore::FloatPoint3D position;
+        CyberCore::FloatPoint3D anchorPoint;
+        CyberCore::FloatRect bounds;
+        CyberCore::FloatRect contentsRect;
+        std::unique_ptr<RemoteLayerBackingStore> backingStore;
+        std::unique_ptr<CyberCore::FilterOperations> filters;
+        CyberCore::Path shapePath;
+        CyberCore::GraphicsLayer::PlatformLayerID maskLayerID;
+        CyberCore::GraphicsLayer::PlatformLayerID clonedLayerID;
+        double timeOffset;
+        float speed;
+        float contentsScale;
+        float cornerRadius;
+        float borderWidth;
+        float opacity;
+        CyberCore::Color backgroundColor;
+        CyberCore::Color borderColor;
+        unsigned edgeAntialiasingMask;
+        CyberCore::GraphicsLayer::CustomAppearance customAppearance;
+        CyberCore::PlatformCALayer::FilterType minificationFilter;
+        CyberCore::PlatformCALayer::FilterType magnificationFilter;
+        CyberCore::BlendMode blendMode;
+        CyberCore::WindRule windRule;
+        bool hidden;
+        bool backingStoreAttached;
+        bool geometryFlipped;
+        bool doubleSided;
+        bool masksToBounds;
+        bool opaque;
+        bool contentsHidden;
+        bool userInteractionEnabled;
+        CyberCore::EventRegion eventRegion;
+    };
+
+    explicit RemoteLayerTreeTransaction();
+    ~RemoteLayerTreeTransaction();
+    RemoteLayerTreeTransaction(RemoteLayerTreeTransaction&&);
+    RemoteLayerTreeTransaction& operator=(RemoteLayerTreeTransaction&&);
+
+    void encode(IPC::Encoder&) const;
+    static WARN_UNUSED_RETURN bool decode(IPC::Decoder&, RemoteLayerTreeTransaction&);
+
+    CyberCore::GraphicsLayer::PlatformLayerID rootLayerID() const { return m_rootLayerID; }
+    void setRootLayerID(CyberCore::GraphicsLayer::PlatformLayerID);
+    void layerPropertiesChanged(PlatformCALayerRemote&);
+    void setCreatedLayers(Vector<LayerCreationProperties>);
+    void setDestroyedLayerIDs(Vector<CyberCore::GraphicsLayer::PlatformLayerID>);
+    void setLayerIDsWithNewlyUnreachableBackingStore(Vector<CyberCore::GraphicsLayer::PlatformLayerID>);
+
+#if !defined(NDEBUG) || !LOG_DISABLED
+    String description() const;
+    void dump() const;
+#endif
+
+    typedef HashMap<CyberCore::GraphicsLayer::PlatformLayerID, std::unique_ptr<LayerProperties>> LayerPropertiesMap;
+
+    Vector<LayerCreationProperties> createdLayers() const { return m_createdLayers; }
+    Vector<CyberCore::GraphicsLayer::PlatformLayerID> destroyedLayers() const { return m_destroyedLayerIDs; }
+    Vector<CyberCore::GraphicsLayer::PlatformLayerID> layerIDsWithNewlyUnreachableBackingStore() const { return m_layerIDsWithNewlyUnreachableBackingStore; }
+
+    Vector<RefPtr<PlatformCALayerRemote>>& changedLayers() { return m_changedLayers; }
+
+    const LayerPropertiesMap& changedLayerProperties() const { return m_changedLayerProperties; }
+    LayerPropertiesMap& changedLayerProperties() { return m_changedLayerProperties; }
+
+    CyberCore::IntSize contentsSize() const { return m_contentsSize; }
+    void setContentsSize(const CyberCore::IntSize& size) { m_contentsSize = size; };
+
+    CyberCore::IntPoint scrollOrigin() const { return m_scrollOrigin; }
+    void setScrollOrigin(const CyberCore::IntPoint& origin) { m_scrollOrigin = origin; };
+
+    CyberCore::LayoutSize baseLayoutViewportSize() const { return m_baseLayoutViewportSize; }
+    void setBaseLayoutViewportSize(const CyberCore::LayoutSize& size) { m_baseLayoutViewportSize = size; };
+    
+    CyberCore::LayoutPoint minStableLayoutViewportOrigin() const { return m_minStableLayoutViewportOrigin; }
+    void setMinStableLayoutViewportOrigin(const CyberCore::LayoutPoint& point) { m_minStableLayoutViewportOrigin = point; };
+    
+    CyberCore::LayoutPoint maxStableLayoutViewportOrigin() const { return m_maxStableLayoutViewportOrigin; }
+    void setMaxStableLayoutViewportOrigin(const CyberCore::LayoutPoint& point) { m_maxStableLayoutViewportOrigin = point; };
+    
+    CyberCore::Color pageExtendedBackgroundColor() const { return m_pageExtendedBackgroundColor; }
+    void setPageExtendedBackgroundColor(CyberCore::Color color) { m_pageExtendedBackgroundColor = color; }
+
+    CyberCore::IntPoint scrollPosition() const { return m_scrollPosition; }
+    void setScrollPosition(CyberCore::IntPoint p) { m_scrollPosition = p; }
+
+    double pageScaleFactor() const { return m_pageScaleFactor; }
+    void setPageScaleFactor(double pageScaleFactor) { m_pageScaleFactor = pageScaleFactor; }
+
+    bool scaleWasSetByUIProcess() const { return m_scaleWasSetByUIProcess; }
+    void setScaleWasSetByUIProcess(bool scaleWasSetByUIProcess) { m_scaleWasSetByUIProcess = scaleWasSetByUIProcess; }
+    
+    uint64_t renderTreeSize() const { return m_renderTreeSize; }
+    void setRenderTreeSize(uint64_t renderTreeSize) { m_renderTreeSize = renderTreeSize; }
+
+    double minimumScaleFactor() const { return m_minimumScaleFactor; }
+    void setMinimumScaleFactor(double scale) { m_minimumScaleFactor = scale; }
+
+    double maximumScaleFactor() const { return m_maximumScaleFactor; }
+    void setMaximumScaleFactor(double scale) { m_maximumScaleFactor = scale; }
+
+    double initialScaleFactor() const { return m_initialScaleFactor; }
+    void setInitialScaleFactor(double scale) { m_initialScaleFactor = scale; }
+
+    double viewportMetaTagWidth() const { return m_viewportMetaTagWidth; }
+    void setViewportMetaTagWidth(double width) { m_viewportMetaTagWidth = width; }
+
+    bool viewportMetaTagWidthWasExplicit() const { return m_viewportMetaTagWidthWasExplicit; }
+    void setViewportMetaTagWidthWasExplicit(bool widthWasExplicit) { m_viewportMetaTagWidthWasExplicit = widthWasExplicit; }
+
+    bool viewportMetaTagCameFromImageDocument() const { return m_viewportMetaTagCameFromImageDocument; }
+    void setViewportMetaTagCameFromImageDocument(bool cameFromImageDocument) { m_viewportMetaTagCameFromImageDocument = cameFromImageDocument; }
+
+    bool isInStableState() const { return m_isInStableState; }
+    void setIsInStableState(bool isInStableState) { m_isInStableState = isInStableState; }
+
+    bool allowsUserScaling() const { return m_allowsUserScaling; }
+    void setAllowsUserScaling(bool allowsUserScaling) { m_allowsUserScaling = allowsUserScaling; }
+
+    bool avoidsUnsafeArea() const { return m_avoidsUnsafeArea; }
+    void setAvoidsUnsafeArea(bool avoidsUnsafeArea) { m_avoidsUnsafeArea = avoidsUnsafeArea; }
+
+    TransactionID transactionID() const { return m_transactionID; }
+    void setTransactionID(TransactionID transactionID) { m_transactionID = transactionID; }
+
+    ActivityStateChangeID activityStateChangeID() const { return m_activityStateChangeID; }
+    void setActivityStateChangeID(ActivityStateChangeID activityStateChangeID) { m_activityStateChangeID = activityStateChangeID; }
+
+    typedef CallbackID TransactionCallbackID;
+    const Vector<TransactionCallbackID>& callbackIDs() const { return m_callbackIDs; }
+    void setCallbackIDs(Vector<TransactionCallbackID>&& callbackIDs) { m_callbackIDs = WTFMove(callbackIDs); }
+
+    OptionSet<CyberCore::LayoutMilestone> newlyReachedPaintingMilestones() const { return m_newlyReachedPaintingMilestones; }
+    void setNewlyReachedPaintingMilestones(OptionSet<CyberCore::LayoutMilestone> milestones) { m_newlyReachedPaintingMilestones = milestones; }
+
+    bool hasEditorState() const { return !!m_editorState; }
+    const EditorState& editorState() const { return m_editorState.value(); }
+    void setEditorState(const EditorState& editorState) { m_editorState = editorState; }
+
+    Optional<DynamicViewportSizeUpdateID> dynamicViewportSizeUpdateID() const { return m_dynamicViewportSizeUpdateID; }
+    void setDynamicViewportSizeUpdateID(DynamicViewportSizeUpdateID resizeID) { m_dynamicViewportSizeUpdateID = resizeID; }
+    
+private:
+    CyberCore::GraphicsLayer::PlatformLayerID m_rootLayerID;
+    Vector<RefPtr<PlatformCALayerRemote>> m_changedLayers; // Only used in the Web process.
+    LayerPropertiesMap m_changedLayerProperties; // Only used in the UI process.
+
+    Vector<LayerCreationProperties> m_createdLayers;
+    Vector<CyberCore::GraphicsLayer::PlatformLayerID> m_destroyedLayerIDs;
+    Vector<CyberCore::GraphicsLayer::PlatformLayerID> m_videoLayerIDsPendingFullscreen;
+    Vector<CyberCore::GraphicsLayer::PlatformLayerID> m_layerIDsWithNewlyUnreachableBackingStore;
+
+    Vector<TransactionCallbackID> m_callbackIDs;
+
+    CyberCore::IntSize m_contentsSize;
+    CyberCore::IntPoint m_scrollOrigin;
+    CyberCore::LayoutSize m_baseLayoutViewportSize;
+    CyberCore::LayoutPoint m_minStableLayoutViewportOrigin;
+    CyberCore::LayoutPoint m_maxStableLayoutViewportOrigin;
+    CyberCore::IntPoint m_scrollPosition;
+    CyberCore::Color m_pageExtendedBackgroundColor;
+    double m_pageScaleFactor { 1 };
+    double m_minimumScaleFactor { 1 };
+    double m_maximumScaleFactor { 1 };
+    double m_initialScaleFactor { 1 };
+    double m_viewportMetaTagWidth { -1 };
+    uint64_t m_renderTreeSize { 0 };
+    TransactionID m_transactionID;
+    ActivityStateChangeID m_activityStateChangeID { ActivityStateChangeAsynchronous };
+    OptionSet<CyberCore::LayoutMilestone> m_newlyReachedPaintingMilestones;
+    bool m_scaleWasSetByUIProcess { false };
+    bool m_allowsUserScaling { false };
+    bool m_avoidsUnsafeArea { true };
+    bool m_viewportMetaTagWidthWasExplicit { false };
+    bool m_viewportMetaTagCameFromImageDocument { false };
+    bool m_isInStableState { false };
+
+    Optional<EditorState> m_editorState;
+    Optional<DynamicViewportSizeUpdateID> m_dynamicViewportSizeUpdateID;
+};
+
+} // namespace CyberKit
+
+namespace WTF {
+
+template<> struct EnumTraits<CyberKit::RemoteLayerTreeTransaction::LayerChange> {
+    using values = EnumValues<
+        CyberKit::RemoteLayerTreeTransaction::LayerChange,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::NameChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::ChildrenChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::PositionChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::BoundsChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::BackgroundColorChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::AnchorPointChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::BorderWidthChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::BorderColorChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::OpacityChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::TransformChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::SublayerTransformChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::HiddenChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::GeometryFlippedChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::DoubleSidedChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::MasksToBoundsChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::OpaqueChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::ContentsHiddenChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::MaskLayerChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::ClonedContentsChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::ContentsRectChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::ContentsScaleChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::CornerRadiusChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::ShapeRoundedRectChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::ShapePathChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::MinificationFilterChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::MagnificationFilterChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::BlendModeChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::WindRuleChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::SpeedChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::TimeOffsetChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::BackingStoreChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::BackingStoreAttachmentChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::FiltersChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::AnimationsChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::EdgeAntialiasingMaskChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::CustomAppearanceChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::UserInteractionEnabledChanged,
+        CyberKit::RemoteLayerTreeTransaction::LayerChange::EventRegionChanged
+    >;
+};
+
+} // namespace WTF

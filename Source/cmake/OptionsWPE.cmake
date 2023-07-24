@@ -41,7 +41,7 @@ SET_AND_EXPOSE_TO_BUILD(ENABLE_DEVELOPER_MODE ${DEVELOPER_MODE})
 
 include(GStreamerDefinitions)
 
-# Public options shared with other WebKit ports. Do not add any options here
+# Public options shared with other CyberKit ports. Do not add any options here
 # without approval from a WPE reviewer. There must be strong reason to support
 # changing the value of the option.
 WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_ACCELERATED_2D_CANVAS PUBLIC OFF)
@@ -52,8 +52,8 @@ WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_WEBDRIVER PUBLIC ON)
 WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_WEB_CRYPTO PUBLIC ON)
 WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_XSLT PUBLIC ON)
 
-# Private options shared with other WebKit ports. Add options here only if
-# we need a value different from the default defined in WebKitFeatures.cmake.
+# Private options shared with other CyberKit ports. Add options here only if
+# we need a value different from the default defined in CyberKitFeatures.cmake.
 # Changing these options is completely unsupported.
 WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_ASYNC_SCROLLING PRIVATE ON)
 WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_AUTOCAPITALIZE PRIVATE ON)
@@ -82,7 +82,7 @@ WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_WEBXR PRIVATE ${ENABLE_EXPERIMENTAL_FEAT
 
 # Public options specific to the WPE port. Do not add any options here unless
 # there is a strong reason we should support changing the value of the option,
-# and the option is not relevant to any other WebKit ports.
+# and the option is not relevant to any other CyberKit ports.
 WEBKIT_OPTION_DEFINE(ENABLE_GTKDOC "Whether or not to use generate gtkdoc." PUBLIC OFF)
 WEBKIT_OPTION_DEFINE(USE_OPENJPEG "Whether to enable support for JPEG2000 images." PUBLIC ON)
 WEBKIT_OPTION_DEFINE(USE_WOFF2 "Whether to enable support for WOFF2 Web Fonts." PUBLIC ON)

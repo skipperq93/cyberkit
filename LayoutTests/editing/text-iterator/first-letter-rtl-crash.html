@@ -7,7 +7,7 @@ body:first-letter { color: black; }
 
 function run() {
     document.execCommand('findString', false, '!ABC');
-    document.body.innerHTML = '<br>This test ensures WebKit does not crash when first-letter rule is applied to LTR letters that ' +
+    document.body.innerHTML = '<br>This test ensures CyberKit does not crash when first-letter rule is applied to LTR letters that ' +
     ' are not visually contiguous to each other.<br>PASS';
     if (window.testRunner)
         testRunner.dumpAsText();

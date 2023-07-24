@@ -29,7 +29,7 @@
 #pragma once
 
 #include "UIScriptContext.h"
-#include <JavaScriptCore/JSObjectRef.h>
+#include <CyberScriptCore/JSObjectRef.h>
 #include <map>
 #include <set>
 #include <string>

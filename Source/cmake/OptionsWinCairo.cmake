@@ -2,7 +2,7 @@ set(WTF_PLATFORM_WIN_CAIRO 1)
 
 include(OptionsWin)
 
-# TODO: Move this above OptionsWin when WebKitLegacy is deprecated
+# TODO: Move this above OptionsWin when CyberKitLegacy is deprecated
 set(ENABLE_WEBKIT ON)
 
 find_package(Cairo 1.15.12 REQUIRED)
@@ -65,25 +65,25 @@ add_definitions(-DNOCRYPT)
 # Override headers directories
 set(ANGLE_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/ANGLE/Headers)
 set(WTF_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/WTF/Headers)
-set(JavaScriptCore_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/JavaScriptCore/Headers)
-set(JavaScriptCore_PRIVATE_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/JavaScriptCore/PrivateHeaders)
+set(CyberScriptCore_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/CyberScriptCore/Headers)
+set(CyberScriptCore_PRIVATE_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/CyberScriptCore/PrivateHeaders)
 set(PAL_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/PAL/Headers)
-set(WebCore_PRIVATE_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/WebCore/PrivateHeaders)
-set(WebKitLegacy_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/WebKitLegacy/Headers)
-set(WebKit_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/WebKit/Headers)
-set(WebKit_PRIVATE_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/WebKit/PrivateHeaders)
+set(CyberCore_PRIVATE_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/CyberCore/PrivateHeaders)
+set(CyberKitLegacy_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/CyberKitLegacy/Headers)
+set(CyberKit_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/CyberKit/Headers)
+set(CyberKit_PRIVATE_FRAMEWORK_HEADERS_DIR ${CMAKE_BINARY_DIR}/CyberKit/PrivateHeaders)
 
 # Override derived sources directories
 set(WTF_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/WTF/DerivedSources)
-set(JavaScriptCore_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/JavaScriptCore/DerivedSources)
-set(WebCore_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/WebCore/DerivedSources)
-set(WebKitLegacy_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/WebKitLegacy/DerivedSources)
-set(WebKit_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/WebKit/DerivedSources)
+set(CyberScriptCore_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/CyberScriptCore/DerivedSources)
+set(CyberCore_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/CyberCore/DerivedSources)
+set(CyberKitLegacy_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/CyberKitLegacy/DerivedSources)
+set(CyberKit_DERIVED_SOURCES_DIR ${CMAKE_BINARY_DIR}/CyberKit/DerivedSources)
 
 # Override scripts directories
 set(WTF_SCRIPTS_DIR ${CMAKE_BINARY_DIR}/WTF/Scripts)
-set(JavaScriptCore_SCRIPTS_DIR ${CMAKE_BINARY_DIR}/JavaScriptCore/Scripts)
+set(CyberScriptCore_SCRIPTS_DIR ${CMAKE_BINARY_DIR}/CyberScriptCore/Scripts)
 
 # Override library types
-set(WebCore_LIBRARY_TYPE OBJECT)
-set(WebCoreTestSupport_LIBRARY_TYPE OBJECT)
+set(CyberCore_LIBRARY_TYPE OBJECT)
+set(CyberCoreTestSupport_LIBRARY_TYPE OBJECT)

@@ -15,7 +15,7 @@ Original content:
 |   <span>
 |     class="Apple-style-span"
 |     style="color: red; font-weight: bold;"
-|     "WebKit<#selection-focus>"
+|     "CyberKit<#selection-focus>"
 | "
 "
 
@@ -33,6 +33,6 @@ Pasted content:
 |   <span>
 |     class="Apple-style-span"
 |     style="color: red; font-weight: bold;"
-|     "WebKit"
+|     "CyberKit"
 | "
 "

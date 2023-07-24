@@ -30,8 +30,8 @@ PASS Math.clz32(Number.NEGATIVE_INFINITY) is 32
 PASS Math.clz32() is 32
 PASS Math.clz32(undefined) is 32
 PASS Math.clz32(null) is 32
-PASS Math.clz32("WebKit") is 32
-PASS Math.clz32(Symbol("WebKit")) threw exception TypeError: Cannot convert a symbol to a number.
+PASS Math.clz32("CyberKit") is 32
+PASS Math.clz32(Symbol("CyberKit")) threw exception TypeError: Cannot convert a symbol to a number.
 PASS Math.clz32({ webkit: "awesome" }) is 32
 PASS Math.clz32(objectConvertToString) is 25
 PASS Math.clz32(objectRecordToStringCall) is 28

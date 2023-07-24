@@ -431,9 +431,9 @@ WI.SettingsTabContentView = class SettingsTabContentView extends WI.TabContentVi
         engineeringSettingsView.addSeparator();
 
         let debuggingGroup = engineeringSettingsView.addGroup(WI.unlocalizedString("Debugging:"));
-        debuggingGroup.addSetting(WI.settings.engineeringShowInternalExecutionContexts, WI.unlocalizedString("Show WebKit-internal execution contexts"));
-        debuggingGroup.addSetting(WI.settings.engineeringShowInternalScripts, WI.unlocalizedString("Show WebKit-internal scripts"));
-        debuggingGroup.addSetting(WI.settings.engineeringPauseForInternalScripts, WI.unlocalizedString("Pause in WebKit-internal scripts"));
+        debuggingGroup.addSetting(WI.settings.engineeringShowInternalExecutionContexts, WI.unlocalizedString("Show CyberKit-internal execution contexts"));
+        debuggingGroup.addSetting(WI.settings.engineeringShowInternalScripts, WI.unlocalizedString("Show CyberKit-internal scripts"));
+        debuggingGroup.addSetting(WI.settings.engineeringPauseForInternalScripts, WI.unlocalizedString("Pause in CyberKit-internal scripts"));
 
         engineeringSettingsView.addSeparator();
 

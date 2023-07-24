@@ -1,10 +1,10 @@
-WPE is the reference WebKit port for embedded and low-consumption computer devices. It has been designed from the ground-up with performance, small footprint, accelerated content rendering, and simplicity of deployment in mind, bringing the excellence of the WebKit engine to countless platforms and target devices.
+WPE is the reference CyberKit port for embedded and low-consumption computer devices. It has been designed from the ground-up with performance, small footprint, accelerated content rendering, and simplicity of deployment in mind, bringing the excellence of the CyberKit engine to countless platforms and target devices.
 
 In times where embedded devices power endless ad-hoc applications in a diverse range of industries and the Web continues to establish itself as one of the most popular application development frameworks for developers, WPE closes this gap and serves as a foundation over which embedders can build rich applications that run entirely on the Web.
 
 ## Design goals
 
-The design goals that set WPE apart from other ports of WebKit and other engines are:
+The design goals that set WPE apart from other ports of CyberKit and other engines are:
 
 * **To provide a no-frills, straight to the point, web runtime   for embedded devices.**
 
@@ -16,7 +16,7 @@ The design goals that set WPE apart from other ports of WebKit and other engines
 
 * **To keep up with Web standards and to continuously work in ensuring compliance.**
 
-  By its complete upstream integration, WPE can leverage the work on Web standards that goes into the WebKit project. Additionally, the WPE team is committed to ensure that new specifications are implemented in WPE with our goals in mind.
+  By its complete upstream integration, WPE can leverage the work on Web standards that goes into the CyberKit project. Additionally, the WPE team is committed to ensure that new specifications are implemented in WPE with our goals in mind.
 
 * **To use hardware acceleration wherever its advantageous: WebGL, accelerated canvas, CSS 3D transforms, video playback.**
 
@@ -39,7 +39,7 @@ Because of the extensive growth of multimedia in the embedded sector, WPE has a 
 
 ## How to get WPE?
 
-WPE is an upstream WebKit port, which means that you can just [get it the usual way](https://webkit.org/getting-the-code/). You can build the code following the instructions in the [WPE Wiki page](https://trac.webkit.org/wiki/WPE).
+WPE is an upstream CyberKit port, which means that you can just [get it the usual way](https://webkit.org/getting-the-code/). You can build the code following the instructions in the [WPE Wiki page](https://trac.webkit.org/wiki/WPE).
 
 The WPE team is making periodic releases and these are available at <https://wpewebkit.org/>.
 
@@ -47,6 +47,6 @@ The WPE team is making periodic releases and these are available at <https://wpe
 
 The WPE port has a mailing list where development and general questions can be addressed. You can subscribe at [https://lists.webkit.org/mailman/listinfo/webkit-wpe](https://lists.webkit.org/mailman/listinfo/webkit-wpe).
 
-You can report issues, bugs, and file feature requests in WebKit Bugzilla, under the WebKit WPE component: [http://bugs.webkit.org](http://bugs.webkit.org/). You can follow the instructions in [https://webkit.org/reporting-bugs/](https://webkit.org/reporting-bugs/).
+You can report issues, bugs, and file feature requests in CyberKit Bugzilla, under the CyberKit WPE component: [http://bugs.webkit.org](http://bugs.webkit.org/). You can follow the instructions in [https://webkit.org/reporting-bugs/](https://webkit.org/reporting-bugs/).
 
 If you want to submit code, you can follow the instructions at [https://webkit.org/getting-started/](https://webkit.org/getting-started/).

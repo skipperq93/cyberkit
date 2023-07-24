@@ -30,9 +30,9 @@
 #include "TextInputController.h"
 
 #include "DumpRenderTree.h"
-#include <JavaScriptCore/JSStringRefBSTR.h>
-#include <WebCore/COMPtr.h>
-#include <WebKitLegacy/WebKit.h>
+#include <CyberScriptCore/JSStringRefBSTR.h>
+#include <CyberCore/COMPtr.h>
+#include <CyberKitLegacy/CyberKit.h>
 #include <comutil.h>
 #include <string>
 

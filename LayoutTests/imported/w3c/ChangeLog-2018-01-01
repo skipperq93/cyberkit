@@ -627,7 +627,7 @@
 
         Reviewed by Darin Adler.
 
-        Update test expectation. It will now work better if "WebKit built-in PDF"
+        Update test expectation. It will now work better if "CyberKit built-in PDF"
         is not present or not the only available plugin.
 
         * web-platform-tests/html/webappapis/system-state-and-capabilities/the-navigator-object/navigator-pluginarray-expected.txt:
@@ -1088,7 +1088,7 @@
 
         This patch imports the MathML WPT tests and remove the corresponding unmaintained copies
         from LayoutTests/imported/mathml-in-html5/. The only exception is for MathML tests testing
-        OpenType MATH parameters: They require Web fonts and do not work well in WebKit without
+        OpenType MATH parameters: They require Web fonts and do not work well in CyberKit without
         some tweaks because of bug 174030. For now, we only move the web fonts required by the tests
         and keep running the legacy versions.
 
@@ -2348,7 +2348,7 @@
 
 2017-11-03  Antti Koivisto  <antti@apple.com>
 
-        Crash in WebCore::RenderStyle::overflowX with display:contents
+        Crash in CyberCore::RenderStyle::overflowX with display:contents
         https://bugs.webkit.org/show_bug.cgi?id=178857
         <rdar://problem/35201120>
 
@@ -2992,7 +2992,7 @@
 
         Reviewed by Darin Adler.
 
-        Rebaseline test which behave differently now in WebKit2 due to WKTR's injected bundle
+        Rebaseline test which behave differently now in CyberKit2 due to WKTR's injected bundle
         using PassThrough policy for new windows. The new result is identical to what you
         would get when you open the test in Safari so I think this is a good thing.
 
@@ -4689,8 +4689,8 @@
 
         Reviewed by Youenn Fablet.
 
-        * web-platform-tests/WebKit/README.txt: Added.
-        Touch a file in a "WebKit" directory so that a "WebKit" link shows up
+        * web-platform-tests/CyberKit/README.txt: Added.
+        Touch a file in a "CyberKit" directory so that a "CyberKit" link shows up
         on the default <http://localhost:8800> listing page.
 
 2017-09-09  Sam Weinig  <sam@webkit.org>
@@ -5723,7 +5723,7 @@
 
 2017-08-04  Brady Eidson  <beidson@apple.com>
 
-        Enable ServiceWorkers at runtime for WebKitTestRunner.
+        Enable ServiceWorkers at runtime for CyberKitTestRunner.
         https://bugs.webkit.org/show_bug.cgi?id=175174
 
         Reviewed by Youenn Fablet.
@@ -6317,7 +6317,7 @@
         Reviewed by Youenn Fablet.
 
         We update two W3C tests to remove the setting of the Chromium-specific preference
-        WebKitAllowDisplayingInsecureContent. This update also fixes the link to the
+        CyberKitAllowDisplayingInsecureContent. This update also fixes the link to the
         get-host-info.sub.js resource.
 
         * web-platform-tests/service-workers/service-worker/fetch-mixed-content-to-inscope.https.html:
@@ -11365,7 +11365,7 @@
         Most checks are now passing. The few remaining failures seem to be due to our
         parsing of the input CSS string now matching the specification. This behavior
         is not new to this patch as I re-used exactly the same logic as for
-        WebKitCSSMatrix's parsing of the input string.
+        CyberKitCSSMatrix's parsing of the input string.
 
         * web-platform-tests/css/geometry-1/DOMMatrix-002-expected.txt:
         * web-platform-tests/css/geometry-1/DOMMatrix-003-expected.txt:
@@ -11381,9 +11381,9 @@
         Fails differently now that we support DOMMatrix. The test goes further but still
         fails because DOMPoint.matrixTransform() is not implemented.
 
-        * web-platform-tests/css/geometry-1/WebKitCSSMatrix-expected.txt:
+        * web-platform-tests/css/geometry-1/CyberKitCSSMatrix-expected.txt:
         One more check is passing now that we implement DOMMatrix. The remaining failure is
-        due to WebKitCSSMatrix not being an alias to DOMMatrix yet. I'd rather do this in a
+        due to CyberKitCSSMatrix not being an alias to DOMMatrix yet. I'd rather do this in a
         follow-up.
 
         * web-platform-tests/css/geometry-1/historical-expected.txt:
@@ -11397,9 +11397,9 @@
 
         * web-platform-tests/css/geometry-1/DOMMatrix-stringifier-expected.txt: Added.
         * web-platform-tests/css/geometry-1/DOMMatrix-stringifier.html: Added.
-        Import new test from upstream. The WebKitCSSMatrix failures are due to our
-        WebKitCSSMatrix implementation not complying with the standard. As per the
-        standard, WebKitCSSMatrix is supposed to become an alias to DOMMatrix. If we
+        Import new test from upstream. The CyberKitCSSMatrix failures are due to our
+        CyberKitCSSMatrix implementation not complying with the standard. As per the
+        standard, CyberKitCSSMatrix is supposed to become an alias to DOMMatrix. If we
         do this aliasing (in a follow-up), then those tests will start passing.
 
         * web-platform-tests/css/geometry-1/support/dommatrix-test-util.js: Added.
@@ -11455,11 +11455,11 @@
         * web-platform-tests/css/geometry-1/DOMRect-001-expected.txt: Added.
         * web-platform-tests/css/geometry-1/DOMRect-001.html: Added.
         * web-platform-tests/css/geometry-1/OWNERS: Added.
-        * web-platform-tests/css/geometry-1/WebKitCSSMatrix-expected.txt: Added.
-        * web-platform-tests/css/geometry-1/WebKitCSSMatrix.html: Added.
-        * web-platform-tests/css/geometry-1/WebKitCSSMatrix.worker-expected.txt: Added.
-        * web-platform-tests/css/geometry-1/WebKitCSSMatrix.worker.html: Added.
-        * web-platform-tests/css/geometry-1/WebKitCSSMatrix.worker.js: Added.
+        * web-platform-tests/css/geometry-1/CyberKitCSSMatrix-expected.txt: Added.
+        * web-platform-tests/css/geometry-1/CyberKitCSSMatrix.html: Added.
+        * web-platform-tests/css/geometry-1/CyberKitCSSMatrix.worker-expected.txt: Added.
+        * web-platform-tests/css/geometry-1/CyberKitCSSMatrix.worker.html: Added.
+        * web-platform-tests/css/geometry-1/CyberKitCSSMatrix.worker.js: Added.
         (test):
         * web-platform-tests/css/geometry-1/historical-expected.txt: Added.
         * web-platform-tests/css/geometry-1/historical.html: Added.
@@ -11510,7 +11510,7 @@
         The issue has been fixed in WPT repo:
         https://github.com/w3c/web-platform-tests/pull/5786
 
-        This patch is importing the changes so we can close this bug on WebKit.
+        This patch is importing the changes so we can close this bug on CyberKit.
 
         * web-platform-tests/css/selectors4/focus-within-006-expected.html:
         * web-platform-tests/css/selectors4/focus-within-006.html:
@@ -11805,7 +11805,7 @@
 
         Reviewed by Youenn Fablet.
 
-        WebKit doesn't create multiple PerformanceResourceTiming entries for
+        CyberKit doesn't create multiple PerformanceResourceTiming entries for
         loads that use the same CachedResource. However for revalidation
         requests, which may happen for cached entries, we will send new
         network requests. These tests cover whether revalidation requests
@@ -12050,7 +12050,7 @@
         * web-platform-tests/html/browsers/the-window-object/window-indexed-properties-strict.html:
         * web-platform-tests/html/browsers/the-window-object/window-indexed-properties.html:
 
-2017-04-26  WebKit Contributor  <webkitcontrib@gmail.com>
+2017-04-26  CyberKit Contributor  <webkitcontrib@gmail.com>
 
         Response.blob() does not set the content-type based on the header value.
         https://bugs.webkit.org/show_bug.cgi?id=170849
@@ -14484,7 +14484,7 @@
 
 2017-03-22  Chris Dumez  <cdumez@apple.com>
 
-        WebKit should disallow beforeunload alerts from web pages users have never interacted with
+        CyberKit should disallow beforeunload alerts from web pages users have never interacted with
         https://bugs.webkit.org/show_bug.cgi?id=169936
         <rdar://problem/23798897>
 
@@ -18653,7 +18653,7 @@
 
 2016-12-12  Darin Adler  <darin@apple.com>
 
-        Remove bindings generation support for legacy WebCore::Dictionary
+        Remove bindings generation support for legacy CyberCore::Dictionary
         https://bugs.webkit.org/show_bug.cgi?id=165762
 
         Reviewed by Sam Weinig.

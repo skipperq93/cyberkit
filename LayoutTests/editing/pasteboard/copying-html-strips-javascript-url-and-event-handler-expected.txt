@@ -1,4 +1,4 @@
-This tests copying and pasting a markup with an event handler and a javascript URL. WebKit should strip them away upon copy.
+This tests copying and pasting a markup with an event handler and a javascript URL. CyberKit should strip them away upon copy.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

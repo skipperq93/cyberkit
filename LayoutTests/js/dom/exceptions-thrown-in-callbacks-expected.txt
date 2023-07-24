@@ -3,4 +3,4 @@ CONSOLE MESSAGE: PASS: toString called on exception value thrown from event hand
 CONSOLE MESSAGE: PASS: toString called on exception value thrown from sql transaction callback
 CONSOLE MESSAGE: PASS: toString called on exception value thrown from sql error callback
 CONSOLE MESSAGE: PASS: toString called on exception value thrown from timer
-This test ensures that exceptions are handled correctly by the various callback mechanisms present in WebCore.
+This test ensures that exceptions are handled correctly by the various callback mechanisms present in CyberCore.

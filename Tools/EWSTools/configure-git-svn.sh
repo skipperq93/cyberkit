@@ -34,7 +34,7 @@ QUEUE_TYPE=$1
 CWD="$(pwd)"
 cd /mnt/git/webkit-$QUEUE_TYPE
 
-# These commands come from the WebKit wiki: http://trac.webkit.org/wiki/UsingGitWithWebKit
+# These commands come from the CyberKit wiki: http://trac.webkit.org/wiki/UsingGitWithCyberKit
 git svn init --prefix=origin/ -T trunk http://svn.webkit.org/repository/webkit
 git config --replace svn-remote.svn.fetch trunk:refs/remotes/origin/master
 git svn fetch --local

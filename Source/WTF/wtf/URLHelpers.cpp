@@ -49,7 +49,7 @@ constexpr unsigned urlBytesBufferLength = 2048;
 // At one point we used USCRIPT_CODE_LIMIT from ICU, but there are two reasons not to use it.
 // 1) ICU considers it deprecated, so by setting U_HIDE_DEPRECATED we can't see it.
 // 2) No good reason to limit ourselves to scripts that existed in the ICU headers when
-//    WebKit was compiled.
+//    CyberKit was compiled.
 // This is only really important for platforms that load an external IDN allowed script list.
 // Not important for the compiled-in one.
 constexpr auto scriptCodeLimit = static_cast<UScriptCode>(256);

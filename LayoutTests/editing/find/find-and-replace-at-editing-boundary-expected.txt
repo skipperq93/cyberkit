@@ -1,4 +1,4 @@
-Verifies that find and replace ignores matches that span editing boundaries. This test requires WebKitTestRunner.
+Verifies that find and replace ignores matches that span editing boundaries. This test requires CyberKitTestRunner.
 
 After replacing 'apple' with 'pear':
 | "

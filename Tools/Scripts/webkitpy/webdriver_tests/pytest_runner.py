@@ -28,7 +28,7 @@ import sys
 import tempfile
 
 from webkitpy.common.system.filesystem import FileSystem
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 import webkitpy.thirdparty.autoinstalled.pytest
 import webkitpy.thirdparty.autoinstalled.pytest_timeout
 import pytest
@@ -152,7 +152,7 @@ class TestExpectationsMarker(object):
         self._expectations = expectations
         self._timeout = timeout
         self._ignore_param = ignore_param
-        self._base_dir = WebKitFinder(FileSystem()).path_from_webkit_base('WebDriverTests')
+        self._base_dir = CyberKitFinder(FileSystem()).path_from_webkit_base('WebDriverTests')
 
     def pytest_collection_modifyitems(self, session, config, items):
         for item in items:

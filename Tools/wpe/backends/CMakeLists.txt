@@ -11,7 +11,7 @@ set(WPEToolingBackends_SOURCES
     ${DERIVED_SOURCES_WPETOOLINGBACKENDS_DIR}/xdg-shell-unstable-v6-protocol.c
     ${TOOLS_DIR}/wpe/backends/HeadlessViewBackend.cpp
     ${TOOLS_DIR}/wpe/backends/ViewBackend.cpp
-    ${TOOLS_DIR}/wpe/backends/WebKitAccessibleApplication.cpp
+    ${TOOLS_DIR}/wpe/backends/CyberKitAccessibleApplication.cpp
     ${TOOLS_DIR}/wpe/backends/WindowViewBackend.cpp
 )
 

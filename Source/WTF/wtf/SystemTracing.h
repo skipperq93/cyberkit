@@ -50,7 +50,7 @@ enum TracePointCode {
     DumpJITMemoryStart,
     DumpJITMemoryStop,
 
-    WebCoreRange = 5000,
+    CyberCoreRange = 5000,
     MainResourceLoadDidStartProvisional,
     MainResourceLoadDidEnd,
     SubresourceLoadWillStart,
@@ -95,11 +95,11 @@ enum TracePointCode {
     ScrollingThreadDisplayDidRefreshStart,
     ScrollingThreadDisplayDidRefreshEnd,
 
-    WebKitRange = 10000,
+    CyberKitRange = 10000,
     WebHTMLViewPaintStart,
     WebHTMLViewPaintEnd,
 
-    WebKit2Range = 12000,
+    CyberKit2Range = 12000,
     BackingStoreFlushStart,
     BackingStoreFlushEnd,
     BuildTransactionStart,

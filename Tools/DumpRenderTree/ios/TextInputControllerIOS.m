@@ -31,8 +31,8 @@
 // FIXME: <rdar://problem/5106287> Only partial support for TextInputController has been implemented on iOS so far. We need to finish the implementation
 // here to bring it up to parity with the Mac version (see TextInputControllerMac.m), and then reenable skipped iOS tests that use TextInputController.
 
-#import <WebKit/WebFramePrivate.h>
-#import <WebKit/WebKitLegacy.h>
+#import <CyberKit/WebFramePrivate.h>
+#import <CyberKit/CyberKitLegacy.h>
 
 @implementation TextInputController
 

@@ -321,7 +321,7 @@ class MainTest(unittest.TestCase):
         self._test_run_with_json_output(runner, port.host.filesystem, upload_succeeds=True)
         self.assertEqual(self._load_output_json(runner), [{
             "buildTime": "2013-02-08T15:19:37.460000", "tests": self._event_target_wrapper_and_inspector_results,
-            "revisions": {"WebKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}}])
+            "revisions": {"CyberKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}}])
 
         filesystem = port.host.filesystem
         self.assertTrue(filesystem.isfile(runner._output_json_path()))
@@ -334,14 +334,14 @@ class MainTest(unittest.TestCase):
         self.assertEqual(self._load_output_json(runner), [{
             "buildTime": "2013-02-08T15:19:37.460000", "description": "some description",
             "tests": self._event_target_wrapper_and_inspector_results,
-            "revisions": {"WebKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}}])
+            "revisions": {"CyberKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}}])
 
     def create_runner_and_setup_results_template(self, args=[]):
         runner, port = self.create_runner(args)
         filesystem = port.host.filesystem
         filesystem.write_text_file(runner._base_path + '/resources/results-template.html',
-            'BEGIN<script src="%AbsolutePathToWebKitTrunk%/some.js"></script>'
-            '<script src="%AbsolutePathToWebKitTrunk%/other.js"></script><script>%PeformanceTestsResultsJSON%</script>END')
+            'BEGIN<script src="%AbsolutePathToCyberKitTrunk%/some.js"></script>'
+            '<script src="%AbsolutePathToCyberKitTrunk%/other.js"></script><script>%PeformanceTestsResultsJSON%</script>END')
         filesystem.write_text_file(runner._base_path + '/Dromaeo/resources/dromaeo/web/lib/jquery-1.6.4.js', 'jquery content')
         return runner, port
 
@@ -364,7 +364,7 @@ class MainTest(unittest.TestCase):
 
         self.assertEqual(self._load_output_json(runner), [{
             "buildTime": "2013-02-08T15:19:37.460000", "tests": self._event_target_wrapper_and_inspector_results,
-            "revisions": {"WebKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}}])
+            "revisions": {"CyberKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}}])
 
         self.assertTrue(filesystem.isfile(output_json_path))
         self.assertTrue(filesystem.isfile(results_page_path))
@@ -380,7 +380,7 @@ class MainTest(unittest.TestCase):
 
         self.assertEqual(self._load_output_json(runner), [{"previous": "results"}, {
             "buildTime": "2013-02-08T15:19:37.460000", "tests": self._event_target_wrapper_and_inspector_results,
-            "revisions": {"WebKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}}])
+            "revisions": {"CyberKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}}])
         self.assertTrue(filesystem.isfile(filesystem.splitext(output_json_path)[0] + '.html'))
 
     def test_run_respects_reset_results(self):
@@ -394,7 +394,7 @@ class MainTest(unittest.TestCase):
 
         self.assertEqual(self._load_output_json(runner), [{
             "buildTime": "2013-02-08T15:19:37.460000", "tests": self._event_target_wrapper_and_inspector_results,
-            "revisions": {"WebKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}}])
+            "revisions": {"CyberKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}}])
         self.assertTrue(filesystem.isfile(filesystem.splitext(output_json_path)[0] + '.html'))
         pass
 
@@ -406,7 +406,7 @@ class MainTest(unittest.TestCase):
         self._test_run_with_json_output(runner, filesystem, results_shown=False)
 
         expected_entry = {"buildTime": "2013-02-08T15:19:37.460000", "tests": self._event_target_wrapper_and_inspector_results,
-            "revisions": {"WebKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}}
+            "revisions": {"CyberKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}}
 
         self.maxDiff = None
         self.assertEqual(runner._output_json_path(), '/mock-checkout/output.json')
@@ -453,7 +453,7 @@ class MainTest(unittest.TestCase):
         self._test_run_with_json_output(runner, port.host.filesystem, upload_succeeds=True)
         self.assertEqual(self._load_output_json(runner), [{
             "buildTime": "2013-02-08T15:19:37.460000", "tests": self._event_target_wrapper_and_inspector_results,
-            "revisions": {"WebKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}, "builderKey": "value"}])
+            "revisions": {"CyberKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}, "builderKey": "value"}])
 
     def test_run_with_bad_slave_config_json(self):
         runner, port = self.create_runner_and_setup_results_template(args=['--output-json-path=/mock-checkout/output.json',
@@ -505,7 +505,7 @@ class MainTest(unittest.TestCase):
         self.assertEqual(output['buildTime'], '2013-02-08T15:19:37.460000')
         self.assertEqual(output['builderName'], 'builder1')
         self.assertEqual(output['builderKey'], 'value1')
-        self.assertEqual(output['revisions'], {'WebKit': {'revision': '5678', 'timestamp': '2013-02-01 08:48:05 +0000'}})
+        self.assertEqual(output['revisions'], {'CyberKit': {'revision': '5678', 'timestamp': '2013-02-01 08:48:05 +0000'}})
         self.assertEqual(list(output['tests'].keys()), ['Bindings', 'Parser'])
         self.assertEqual(sorted(output['tests']['Bindings'].keys()), ['tests', 'url'])
         self.assertEqual(output['tests']['Bindings']['url'], 'https://trac.webkit.org/browser/trunk/PerformanceTests/Bindings')
@@ -521,19 +521,19 @@ class MainTest(unittest.TestCase):
         self.assertEqual(self._load_output_json(runner), [
             {"buildTime": "2013-02-08T15:19:37.460000",
             "tests": self._event_target_wrapper_and_inspector_results,
-            "revisions": {"WebKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}},
+            "revisions": {"CyberKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}},
             {"buildTime": "2013-02-08T15:19:37.460000",
             "tests": self._event_target_wrapper_and_inspector_results,
-            "revisions": {"WebKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}},
+            "revisions": {"CyberKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}},
             {"buildTime": "2013-02-08T15:19:37.460000",
             "tests": self._event_target_wrapper_and_inspector_results,
-            "revisions": {"WebKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}},
+            "revisions": {"CyberKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}},
             {"buildTime": "2013-02-08T15:19:37.460000",
             "tests": self._event_target_wrapper_and_inspector_results,
-            "revisions": {"WebKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}},
+            "revisions": {"CyberKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}},
             {"buildTime": "2013-02-08T15:19:37.460000",
             "tests": self._event_target_wrapper_and_inspector_results,
-            "revisions": {"WebKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}}])
+            "revisions": {"CyberKit": {"timestamp": "2013-02-01 08:48:05 +0000", "revision": "5678"}}}])
 
     def test_run_with_test_runner_count(self):
         runner, port = self.create_runner_and_setup_results_template(args=['--output-json-path=/mock-checkout/output.json',

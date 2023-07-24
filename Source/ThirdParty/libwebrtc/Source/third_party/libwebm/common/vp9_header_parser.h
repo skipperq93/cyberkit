@@ -69,7 +69,7 @@ class Vp9HeaderParser {
   int column_tiles() const { return column_tiles_; }
   int frame_parallel_mode() const { return frame_parallel_mode_; }
 
-  // WebKit Additions:
+  // CyberKit Additions:
   int color_range() const { return color_range_; }
   int subsampling_x() const { return subsampling_x_; }
   int subsampling_y() const { return subsampling_y_; }

@@ -36,7 +36,7 @@
         "opera": "11.60"
     };
 
-    /* Since Chrome doesn't use the same JS engine as WebKit, it actually has
+    /* Since Chrome doesn't use the same JS engine as CyberKit, it actually has
      * different dependencies */
     var rchrome = /Chrome[\/]([\w.]+)/;
     var match = rchrome.exec(navigator.userAgent);
@@ -48,7 +48,7 @@
 
     var browserName = {
         "mozilla": "Mozilla",
-        "webkit": "WebKit",
+        "webkit": "CyberKit",
         "v8": "Chrome",
         "msie": "Microsoft Internet Explorer",
         "opera": "Opera"

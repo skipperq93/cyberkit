@@ -31,8 +31,8 @@ list(APPEND DumpRenderTree_PRIVATE_INCLUDE_DIRECTORIES
 list(APPEND DumpRenderTree_LIBRARIES
     Comsuppw
     Oleacc
-    WebKitLegacy
-    WebKitLegacyGUID
+    CyberKitLegacy
+    CyberKitLegacyGUID
 )
 
 if (${WTF_PLATFORM_WIN_CAIRO})
@@ -41,7 +41,7 @@ if (${WTF_PLATFORM_WIN_CAIRO})
         ${DumpRenderTree_DIR}/cairo
     )
     list(APPEND DumpRenderTree_LIBRARIES
-        $<TARGET_OBJECTS:WebCoreTestSupport>
+        $<TARGET_OBJECTS:CyberCoreTestSupport>
         Cairo::Cairo
     )
     list(APPEND DumpRenderTree_SOURCES

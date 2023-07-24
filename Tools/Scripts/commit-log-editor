@@ -179,7 +179,7 @@ exec (@editor, @ARGV) if $existingLog && $keepExistingLog;
 my $first = 1;
 open NEWLOG, ">$log.edit" or die;
 if (isGit() && @changeLogs == 0) {
-    # populate git commit message with WebKit-format ChangeLog entries unless explicitly disabled
+    # populate git commit message with CyberKit-format ChangeLog entries unless explicitly disabled
     my $branch = gitBranch();
     chomp(my $webkitGenerateCommitMessage = `git config --bool branch.$branch.webkitGenerateCommitMessage`);
     if ($webkitGenerateCommitMessage eq "") {

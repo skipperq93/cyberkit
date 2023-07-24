@@ -13,7 +13,7 @@ if (window.testRunner) {
 var shouldTest = !!window.location.hash;
 async function doTest()
 {
-    var iframe = await with_iframe("http://127.0.0.1:8801/WebKit/service-workers/resources/third-party-registration-frame.html");
+    var iframe = await with_iframe("http://127.0.0.1:8801/CyberKit/service-workers/resources/third-party-registration-frame.html");
     var result = await new Promise((resolve) => {
         window.onmessage = (e) => {
             resolve(e.data);
@@ -28,7 +28,7 @@ async function doTest()
         return;
     }
     iframe.remove();
-    window.location = "http://localhost:8801/WebKit/service-workers/third-party-registration.html#second";
+    window.location = "http://localhost:8801/CyberKit/service-workers/third-party-registration.html#second";
 }
 doTest();
 

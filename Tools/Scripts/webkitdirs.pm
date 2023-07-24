@@ -27,7 +27,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Module to share code to get to WebKit directories.
+# Module to share code to get to CyberKit directories.
 
 use strict;
 use version;
@@ -64,7 +64,7 @@ BEGIN {
        &archCommandLineArgumentsForRestrictedEnvironmentVariables
        &availableXcodeSDKs
        &baseProductDir
-       &chdirWebKit
+       &chdirCyberKit
        &checkFrameworks
        &cmakeArgsFromFeatures
        &currentSVNRevision
@@ -75,16 +75,16 @@ BEGIN {
        &nmPath
        &passedConfiguration
        &prependToEnvironmentVariableList
-       &printHelpAndExitForRunAndDebugWebKitAppIfNeeded
+       &printHelpAndExitForRunAndDebugCyberKitAppIfNeeded
        &productDir
-       &runIOSWebKitApp
-       &runMacWebKitApp
+       &runIOSCyberKitApp
+       &runMacCyberKitApp
        &safariPath
        &sdkDirectory
        &sdkPlatformDirectory
        &setConfiguration
-       &setupMacWebKitEnvironment
-       &setupUnixWebKitEnvironment
+       &setupMacCyberKitEnvironment
+       &setupUnixCyberKitEnvironment
        &sharedCommandLineOptions
        &sharedCommandLineOptionsUsage
        &shouldUseFlatpak
@@ -116,11 +116,11 @@ use constant {
     Unknown     => "Unknown"
 };
 
-use constant USE_OPEN_COMMAND => 1; # Used in runMacWebKitApp().
+use constant USE_OPEN_COMMAND => 1; # Used in runMacCyberKitApp().
 use constant DO_NOT_USE_OPEN_COMMAND => 2;
 use constant SIMULATOR_DEVICE_STATE_SHUTDOWN => "Shutdown";
 use constant SIMULATOR_DEVICE_STATE_BOOTED => "Booted";
-use constant SIMULATOR_DEVICE_SUFFIX_FOR_WEBKIT_DEVELOPMENT  => "For WebKit Development";
+use constant SIMULATOR_DEVICE_SUFFIX_FOR_WEBKIT_DEVELOPMENT  => "For CyberKit Development";
 
 # See table "Certificate types and names" on <https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingCertificates/MaintainingCertificates.html#//apple_ref/doc/uid/TP40012582-CH31-SW41>.
 use constant IOS_DEVELOPMENT_CERTIFICATE_NAME_PREFIX => "iPhone Developer: ";
@@ -197,9 +197,9 @@ sub determineSourceDir
     $sourceDir = $FindBin::Bin;
     $sourceDir =~ s|/+$||; # Remove trailing '/' as we would die later
 
-    # walks up path checking each directory to see if it is the main WebKit project dir, 
-    # defined by containing Sources, WebCore, and JavaScriptCore.
-    until ((-d File::Spec->catdir($sourceDir, "Source") && -d File::Spec->catdir($sourceDir, "Source", "WebCore") && -d File::Spec->catdir($sourceDir, "Source", "JavaScriptCore")) || (-d File::Spec->catdir($sourceDir, "Internal") && -d File::Spec->catdir($sourceDir, "OpenSource")))
+    # walks up path checking each directory to see if it is the main CyberKit project dir, 
+    # defined by containing Sources, CyberCore, and CyberScriptCore.
+    until ((-d File::Spec->catdir($sourceDir, "Source") && -d File::Spec->catdir($sourceDir, "Source", "CyberCore") && -d File::Spec->catdir($sourceDir, "Source", "CyberScriptCore")) || (-d File::Spec->catdir($sourceDir, "Internal") && -d File::Spec->catdir($sourceDir, "OpenSource")))
     {
         if ($sourceDir !~ s|/[^/]+$||) {
             die "Could not find top level webkit directory above source directory using FindBin.\n";
@@ -259,7 +259,7 @@ sub determineBaseProductDir
     my $indexDataStoreDir;
     $baseProductDir = $ENV{"WEBKIT_OUTPUTDIR"};
 
-    if (!defined($baseProductDir) and isAppleCocoaWebKit()) {
+    if (!defined($baseProductDir) and isAppleCocoaCyberKit()) {
         # Silently remove ~/Library/Preferences/xcodebuild.plist which can
         # cause build failure. The presence of
         # ~/Library/Preferences/xcodebuild.plist can prevent xcodebuild from
@@ -294,7 +294,7 @@ sub determineBaseProductDir
     }
 
     if (!defined($baseProductDir)) { # Port-specific checks failed, use default
-        $baseProductDir = File::Spec->catdir($sourceDir, "WebKitBuild");
+        $baseProductDir = File::Spec->catdir($sourceDir, "CyberKitBuild");
     }
 
     if (isGit() && isGitBranchBuild()) {
@@ -302,7 +302,7 @@ sub determineBaseProductDir
         $baseProductDir = "$baseProductDir/$branch";
     }
 
-    if (isAppleCocoaWebKit()) {
+    if (isAppleCocoaCyberKit()) {
         $baseProductDir =~ s|^\Q$(SRCROOT)/..\E$|$sourceDir|;
         $baseProductDir =~ s|^\Q$(SRCROOT)/../|$sourceDir/|;
         $baseProductDir =~ s|^~/|$ENV{HOME}/|;
@@ -368,7 +368,7 @@ sub determineNativeArchitecture(;$$)
     $output = "x86_64" if (not defined $output);
 
     # FIXME: Remove this when <rdar://problem/64208532> is resolved
-    if (isAppleCocoaWebKit() && $output ne "x86_64") {
+    if (isAppleCocoaCyberKit() && $output ne "x86_64") {
         $output = "arm64";
     }
 
@@ -382,14 +382,14 @@ sub determineArchitecture
 
     determineBaseProductDir();
     $architecture = nativeArchitecture();
-    if (isAppleCocoaWebKit() && $architecture eq "arm64") {
+    if (isAppleCocoaCyberKit() && $architecture eq "arm64") {
         determineXcodeSDK();
         if ($xcodeSDK eq "macosx.internal") {
             $architecture = "arm64e";
         }
     }
 
-    if (isAppleCocoaWebKit()) {
+    if (isAppleCocoaCyberKit()) {
         determineXcodeSDK();
         if (open ARCHITECTURE, "$baseProductDir/Architecture") {
             $architecture = <ARCHITECTURE>;
@@ -523,14 +523,14 @@ sub jscPath($)
         $jscName .= ".exe";
     }
     return "$productDir/$jscName" if -e "$productDir/$jscName";
-    return "$productDir/JavaScriptCore.framework/Helpers/$jscName";
+    return "$productDir/CyberScriptCore.framework/Helpers/$jscName";
 }
 
 sub argumentsForConfiguration()
 {
     determineConfiguration();
     determineArchitecture();
-    if (isAppleCocoaWebKit()) {
+    if (isAppleCocoaCyberKit()) {
         determineXcodeSDK();
     }
 
@@ -776,7 +776,7 @@ sub usesPerConfigurationBuildDirectory
     # autotool builds (non build-webkit). In this case and if
     # WEBKIT_OUTPUTDIR exist, use that as our configuration dir. This will
     # allows us to run run-webkit-tests without using build-webkit.
-    return ($ENV{"WEBKIT_OUTPUTDIR"} && isGtk()) || isAppleWinWebKit() || isFTW();
+    return ($ENV{"WEBKIT_OUTPUTDIR"} && isGtk()) || isAppleWinCyberKit() || isFTW();
 }
 
 sub determineConfigurationProductDir
@@ -784,7 +784,7 @@ sub determineConfigurationProductDir
     return if defined $configurationProductDir;
     determineBaseProductDir();
     determineConfiguration();
-    if (isAppleWinWebKit() || isWinCairo() || isPlayStation() || isFTW()) {
+    if (isAppleWinCyberKit() || isWinCairo() || isPlayStation() || isFTW()) {
         $configurationProductDir = File::Spec->catdir($baseProductDir, $configuration);
     } else {
         if (usesPerConfigurationBuildDirectory()) {
@@ -795,7 +795,7 @@ sub determineConfigurationProductDir
             } else {
                 $configurationProductDir = "$baseProductDir/$configuration";
             }
-            $configurationProductDir .= "-" . xcodeSDKPlatformName() if isEmbeddedWebKit() || isMacCatalystWebKit();
+            $configurationProductDir .= "-" . xcodeSDKPlatformName() if isEmbeddedCyberKit() || isMacCatalystCyberKit();
         }
     }
 }
@@ -816,7 +816,7 @@ sub determineCurrentSVNRevision
 }
 
 
-sub chdirWebKit
+sub chdirCyberKit
 {
     determineSourceDir();
     chdir $sourceDir or die;
@@ -864,10 +864,10 @@ sub jscProductDir
 sub architecturesForProducts
 {
     # Most ports don't have emulation, assume that the user gave us an accurate architecture
-    if (!isAppleCocoaWebKit()) {
+    if (!isAppleCocoaCyberKit()) {
         return architecture();
     }
-    my $webkitBinary = File::Spec->catdir(executableProductDir(), "JavaScriptCore.framework", "JavaScriptCore");
+    my $webkitBinary = File::Spec->catdir(executableProductDir(), "CyberScriptCore.framework", "CyberScriptCore");
     my $architectures = `/usr/bin/lipo -archs $webkitBinary`;
     chomp($architectures);
     return $architectures;
@@ -1055,7 +1055,7 @@ sub determinePassedArchitecture
 
     $passedArchitecture = undef;
     if (shouldBuild32Bit()) {
-        if (isAppleCocoaWebKit()) {
+        if (isAppleCocoaCyberKit()) {
             # PLATFORM_IOS: Don't run `arch` command inside Simulator environment
             local %ENV = %ENV;
             delete $ENV{DYLD_ROOT_PATH};
@@ -1114,7 +1114,7 @@ sub setArchitecture
 # Locate Safari.
 sub safariPath
 {
-    die "Safari path is only relevant on Apple Mac platform\n" unless isAppleMacWebKit();
+    die "Safari path is only relevant on Apple Mac platform\n" unless isAppleMacCyberKit();
 
     my $safariPath;
 
@@ -1131,7 +1131,7 @@ sub safariPath
     if ($safariBundle) {
         $safariPath = "$safariBundle/Contents/MacOS/Safari";
     } else {
-        $safariPath = "/Applications/Safari.app/Contents/MacOS/SafariForWebKitDevelopment";
+        $safariPath = "/Applications/Safari.app/Contents/MacOS/SafariForCyberKitDevelopment";
     }
 
     die "Can't find executable at $safariPath.\n" if !-x $safariPath;
@@ -1148,7 +1148,7 @@ sub builtDylibPathForName
         my @apiVersions = ("4.0", "5.0");
         for my $apiVersion (@apiVersions) {
             my $libraryPath;
-            if ($libraryName eq "JavaScriptCore") {
+            if ($libraryName eq "CyberScriptCore") {
                 $libraryPath = "$configurationProductDir/lib/libjavascriptcoregtk-$apiVersion$extension";
             } else {
                 $libraryPath = "$configurationProductDir/lib/libwebkit2gtk-$apiVersion$extension";
@@ -1160,32 +1160,32 @@ sub builtDylibPathForName
 
         return "";
     }
-    if (isIOSWebKit()) {
+    if (isIOSCyberKit()) {
         return "$configurationProductDir/$libraryName.framework/$libraryName";
     }
-    if (isAppleCocoaWebKit()) {
+    if (isAppleCocoaCyberKit()) {
         return "$configurationProductDir/$libraryName.framework/Versions/A/$libraryName";
     }
-    if (isAppleWinWebKit() || isFTW()) {
-        if ($libraryName eq "JavaScriptCore") {
+    if (isAppleWinCyberKit() || isFTW()) {
+        if ($libraryName eq "CyberScriptCore") {
             return "$baseProductDir/lib/$libraryName.lib";
         } else {
             return "$baseProductDir/$libraryName.intermediate/$configuration/$libraryName.intermediate/$libraryName.lib";
         }
     }
     if (isWPE()) {
-        return "$configurationProductDir/lib/libWPEWebKit-1.0.so";
+        return "$configurationProductDir/lib/libWPECyberKit-1.0.so";
     }
 
     die "Unsupported platform, can't determine built library locations.\nTry `build-webkit --help` for more information.\n";
 }
 
 # Check to see that all the frameworks are built.
-sub checkFrameworks # FIXME: This is a poor name since only the Mac calls built WebCore a Framework.
+sub checkFrameworks # FIXME: This is a poor name since only the Mac calls built CyberCore a Framework.
 {
     return if isAnyWindows();
-    my @frameworks = ("JavaScriptCore", "WebCore");
-    push(@frameworks, "WebKit") if isAppleCocoaWebKit(); # FIXME: This seems wrong, all ports should have a WebKit these days.
+    my @frameworks = ("CyberScriptCore", "CyberCore");
+    push(@frameworks, "CyberKit") if isAppleCocoaCyberKit(); # FIXME: This seems wrong, all ports should have a CyberKit these days.
     for my $framework (@frameworks) {
         my $path = builtDylibPathForName($framework);
         die "Can't find built framework at \"$path\".\n" unless -e $path;
@@ -1331,7 +1331,7 @@ sub determinePortName()
                 --jsc-only
                 --wpe
             );
-            die "Please specify which WebKit port to build using one of the following options:"
+            die "Please specify which CyberKit port to build using one of the following options:"
                 . "\n\t$portsChoice\n";
         }
 
@@ -1530,47 +1530,47 @@ sub isCrossCompilation()
     return 0;
 }
 
-sub isIOSWebKit()
+sub isIOSCyberKit()
 {
     return portName() eq iOS;
 }
 
-sub isTVOSWebKit()
+sub isTVOSCyberKit()
 {
     return portName() eq tvOS;
 }
 
-sub isWatchOSWebKit()
+sub isWatchOSCyberKit()
 {
     return portName() eq watchOS;
 }
 
-sub isEmbeddedWebKit()
+sub isEmbeddedCyberKit()
 {
-    return isIOSWebKit() || isTVOSWebKit() || isWatchOSWebKit();
+    return isIOSCyberKit() || isTVOSCyberKit() || isWatchOSCyberKit();
 }
 
-sub isAppleWebKit()
+sub isAppleCyberKit()
 {
-    return isAppleCocoaWebKit() || isAppleWinWebKit();
+    return isAppleCocoaCyberKit() || isAppleWinCyberKit();
 }
 
-sub isAppleMacWebKit()
+sub isAppleMacCyberKit()
 {
     return portName() eq Mac;
 }
 
-sub isMacCatalystWebKit()
+sub isMacCatalystCyberKit()
 {
     return portName() eq MacCatalyst;
 }
 
-sub isAppleCocoaWebKit()
+sub isAppleCocoaCyberKit()
 {
-    return isAppleMacWebKit() || isEmbeddedWebKit() || isMacCatalystWebKit();
+    return isAppleMacCyberKit() || isEmbeddedCyberKit() || isMacCatalystCyberKit();
 }
 
-sub isAppleWinWebKit()
+sub isAppleWinCyberKit()
 {
     return portName() eq AppleWin;
 }
@@ -1664,7 +1664,7 @@ sub determineNmPath()
 {
     return if $nmPath;
 
-    if (isAppleCocoaWebKit()) {
+    if (isAppleCocoaCyberKit()) {
         $nmPath = `xcrun -find nm`;
         chomp $nmPath;
     }
@@ -1713,7 +1713,7 @@ sub determineIOSVersion()
 {
     return if $iosVersion;
 
-    if (!isIOSWebKit()) {
+    if (!isIOSCyberKit()) {
         $iosVersion = -1;
         return;
     }
@@ -1816,7 +1816,7 @@ sub launcherPath()
             return "Tools/Scripts/run-minibrowser";
         }
         return "$relativeScriptsPath/run-minibrowser";
-    } elsif (isAppleWebKit()) {
+    } elsif (isAppleCyberKit()) {
         return "$relativeScriptsPath/run-safari";
     }
 }
@@ -1825,9 +1825,9 @@ sub launcherName()
 {
     if (isGtk() || isWPE()) {
         return "MiniBrowser";
-    } elsif (isAppleMacWebKit()) {
+    } elsif (isAppleMacCyberKit()) {
         return "Safari";
-    } elsif (isAppleWinWebKit() || isFTW()) {
+    } elsif (isAppleWinCyberKit() || isFTW()) {
         return "MiniBrowser";
     }
 }
@@ -1838,14 +1838,14 @@ sub checkRequiredSystemConfig
         chomp(my $productVersion = `sw_vers -productVersion`);
         if (eval "v$productVersion" lt v10.10.5) {
             print "*************************************************************\n";
-            print "OS X Yosemite v10.10.5 or later is required to build WebKit.\n";
+            print "OS X Yosemite v10.10.5 or later is required to build CyberKit.\n";
             print "You have " . $productVersion . ", thus the build will most likely fail.\n";
             print "*************************************************************\n";
         }
         determineXcodeVersion();
         if (eval "v$xcodeVersion" lt v7.0) {
             print "*************************************************************\n";
-            print "Xcode 7.0 or later is required to build WebKit.\n";
+            print "Xcode 7.0 or later is required to build CyberKit.\n";
             print "You have an earlier version of Xcode, thus the build will\n";
             print "most likely fail. The latest Xcode is available from the App Store.\n";
             print "*************************************************************\n";
@@ -1873,12 +1873,12 @@ sub windowsSourceSourceDir()
 
 sub windowsLibrariesDir()
 {
-    return File::Spec->catdir(windowsSourceDir(), "WebKitLibraries", "win");
+    return File::Spec->catdir(windowsSourceDir(), "CyberKitLibraries", "win");
 }
 
 sub windowsOutputDir()
 {
-    return File::Spec->catdir(windowsSourceDir(), "WebKitBuild");
+    return File::Spec->catdir(windowsSourceDir(), "CyberKitBuild");
 }
 
 sub fontExists($)
@@ -1893,7 +1893,7 @@ sub checkInstalledTools()
 {
     # environment variables. Avoid until this is corrected.
     my $pythonVer = `python --version 2>&1`;
-    die "You must have Python installed to build WebKit.\n" if ($?);
+    die "You must have Python installed to build CyberKit.\n" if ($?);
 
     # cURL 7.34.0 has a bug that prevents authentication with opensource.apple.com (and other things using SSL3).
     my $curlVer = `curl --version 2> NUL`;
@@ -1925,12 +1925,12 @@ sub checkInstalledTools()
         print "*************************************************************\n";
     }
 
-    print "Installed tools are correct for the WebKit build.\n";
+    print "Installed tools are correct for the CyberKit build.\n";
 }
 
 sub setupAppleWinEnv()
 {
-    return unless isAppleWinWebKit() || isFTW();
+    return unless isAppleWinCyberKit() || isFTW();
 
     checkInstalledTools();
 
@@ -1970,14 +1970,14 @@ sub setupAppleWinEnv()
         }
     } else {
         if (!defined $ENV{'WEBKIT_LIBRARIES'} || !$ENV{'WEBKIT_LIBRARIES'}) {
-            print "Warning: You must set the 'WebKit_Libraries' environment variable\n";
-            print "         to be able build WebKit from within Visual Studio 2017 and newer.\n";
-            print "         Make sure that 'WebKit_Libraries' points to the\n";
-            print "         'WebKitLibraries/win' directory, not the 'WebKitLibraries/' directory.\n\n";
+            print "Warning: You must set the 'CyberKit_Libraries' environment variable\n";
+            print "         to be able build CyberKit from within Visual Studio 2017 and newer.\n";
+            print "         Make sure that 'CyberKit_Libraries' points to the\n";
+            print "         'CyberKitLibraries/win' directory, not the 'CyberKitLibraries/' directory.\n\n";
         }
         if (!defined $ENV{'WEBKIT_OUTPUTDIR'} || !$ENV{'WEBKIT_OUTPUTDIR'}) {
-            print "Warning: You must set the 'WebKit_OutputDir' environment variable\n";
-            print "         to be able build WebKit from within Visual Studio 2017 and newer.\n\n";
+            print "Warning: You must set the 'CyberKit_OutputDir' environment variable\n";
+            print "         to be able build CyberKit from within Visual Studio 2017 and newer.\n\n";
         }
         if (!defined $ENV{'MSBUILDDISABLENODEREUSE'} || !$ENV{'MSBUILDDISABLENODEREUSE'}) {
             print "Warning: You should set the 'MSBUILDDISABLENODEREUSE' environment variable to '1'\n";
@@ -1987,7 +1987,7 @@ sub setupAppleWinEnv()
     # FIXME (125180): Remove the following temporary 64-bit support once official support is available.
     if (isWin64() and !$ENV{'WEBKIT_64_SUPPORT'}) {
         print "Warning: You must set the 'WEBKIT_64_SUPPORT' environment variable\n";
-        print "         to be able run WebKit or JavaScriptCore tests.\n\n";
+        print "         to be able run CyberKit or CyberScriptCore tests.\n\n";
     }
 }
 
@@ -2004,7 +2004,7 @@ sub setupCygwinEnv()
     # FIXME (125180): Remove the following temporary 64-bit support once official support is available.
     print "WEBKIT_64_SUPPORT is set to: ", $ENV{"WEBKIT_64_SUPPORT"}, "\n" if isWin64();
 
-    # We will actually use MSBuild to build WebKit, but we need to find the Visual Studio install (above) to make
+    # We will actually use MSBuild to build CyberKit, but we need to find the Visual Studio install (above) to make
     # sure we use the right options.
     $msBuildPath = msBuildPath();
     if (! -e $msBuildPath) {
@@ -2028,8 +2028,8 @@ sub buildXCodeProject($$@)
 
     chomp($ENV{DSYMUTIL_NUM_THREADS} = `sysctl -n hw.activecpu`);
 
-    # lldbWebKitTester won't work with the wrong CLANG_DEBUG_INFORMATION_LEVEL, so always use the default for that project
-    if ($project eq "lldbWebKitTester") {
+    # lldbCyberKitTester won't work with the wrong CLANG_DEBUG_INFORMATION_LEVEL, so always use the default for that project
+    if ($project eq "lldbCyberKitTester") {
         my $index = 0;
         while ($index < scalar(@extraOptions)) {
             if ($extraOptions[$index] =~ /CLANG_DEBUG_INFORMATION_LEVEL=/) {
@@ -2240,7 +2240,7 @@ sub wrapperPrefixIfNeeded()
     if (isAnyWindows() || isJSCOnly() || isPlayStation()) {
         return ();
     }
-    if (isAppleCocoaWebKit()) {
+    if (isAppleCocoaCyberKit()) {
         return ("xcrun");
     }
 
@@ -2376,7 +2376,7 @@ sub canUseNinja(@)
         return 0;
     }
 
-    if (isAppleCocoaWebKit()) {
+    if (isAppleCocoaCyberKit()) {
         my $devnull = File::Spec->devnull();
         if (exitStatus(system("xcrun -find ninja >$devnull 2>&1")) == 0) {
             return 1;
@@ -2400,7 +2400,7 @@ sub cmakeGeneratedBuildfile(@)
     if ($willUseNinja) {
         return File::Spec->catfile(baseProductDir(), configuration(), "build.ninja")
     } elsif (isAnyWindows()) {
-        return File::Spec->catfile(baseProductDir(), configuration(), "WebKit.sln")
+        return File::Spec->catfile(baseProductDir(), configuration(), "CyberKit.sln")
     } else {
         return File::Spec->catfile(baseProductDir(), configuration(), "Makefile")
     }
@@ -2587,7 +2587,7 @@ sub determineIsCMakeBuild()
 
 sub isCMakeBuild()
 {
-    return 1 unless isAppleCocoaWebKit();
+    return 1 unless isAppleCocoaCyberKit();
     determineIsCMakeBuild();
     return $isCMakeBuild;
 }
@@ -2625,23 +2625,23 @@ sub appleApplicationSupportPath
     return $unixPath;
 }
 
-sub setPathForRunningWebKitApp
+sub setPathForRunningCyberKitApp
 {
     my ($env) = @_;
 
     if (isAnyWindows()) {
         my $productBinaryDir = executableProductDir();
-        if (isAppleWinWebKit() || isFTW()) {
+        if (isAppleWinCyberKit() || isFTW()) {
             $env->{PATH} = join(':', $productBinaryDir, appleApplicationSupportPath(), $env->{PATH} || "");
         } elsif (isWinCairo()) {
-            my $winCairoBin = sourceDir() . "/WebKitLibraries/win/" . (isWin64() ? "bin64/" : "bin32/");
+            my $winCairoBin = sourceDir() . "/CyberKitLibraries/win/" . (isWin64() ? "bin64/" : "bin32/");
             my $gstreamerBin = isWin64() ? $ENV{"GSTREAMER_1_0_ROOT_X86_64"} . "bin" : $ENV{"GSTREAMER_1_0_ROOT_X86"} . "bin";
             $env->{PATH} = join(':', $productBinaryDir, $winCairoBin, $gstreamerBin, $env->{PATH} || "");
         }
     }
 }
 
-sub printHelpAndExitForRunAndDebugWebKitAppIfNeeded
+sub printHelpAndExitForRunAndDebugCyberKitAppIfNeeded
 {
     return unless checkForArgumentAndRemoveFromARGV("--help");
 
@@ -2664,7 +2664,7 @@ EOF
     exit(1);
 }
 
-sub argumentsForRunAndDebugMacWebKitApp()
+sub argumentsForRunAndDebugMacCyberKitApp()
 {
     my @args = ();
     if (checkForArgumentAndRemoveFromARGV("--no-saved-state")) {
@@ -2686,7 +2686,7 @@ sub argumentsForRunAndDebugMacWebKitApp()
     return @args;
 }
 
-sub setupMacWebKitEnvironment($)
+sub setupMacCyberKitEnvironment($)
 {
     my ($dyldFrameworkPath) = @_;
 
@@ -2701,7 +2701,7 @@ sub setupMacWebKitEnvironment($)
     setUpGuardMallocIfNeeded();
 }
 
-sub setupUnixWebKitEnvironment($)
+sub setupUnixCyberKitEnvironment($)
 {
     my ($productDir) = @_;
 
@@ -2709,7 +2709,7 @@ sub setupUnixWebKitEnvironment($)
     $ENV{TEST_RUNNER_TEST_PLUGIN_PATH} = File::Spec->catdir($productDir, "lib", "plugins");
 }
 
-sub setupIOSWebKitEnvironment($)
+sub setupIOSCyberKitEnvironment($)
 {
     my ($dyldFrameworkPath) = @_;
     $dyldFrameworkPath = File::Spec->rel2abs($dyldFrameworkPath);
@@ -2741,7 +2741,7 @@ sub mobileSafariBundle()
     determineConfigurationProductDir();
 
     # Use MobileSafari.app in product directory if present.
-    if (isIOSWebKit() && -d "$configurationProductDir/MobileSafari.app") {
+    if (isIOSCyberKit() && -d "$configurationProductDir/MobileSafari.app") {
         return "$configurationProductDir/MobileSafari.app";
     }
     return installedMobileSafariBundle();
@@ -2926,7 +2926,7 @@ sub isSimulatorDeviceBooted($)
     return $device && $device->{state} eq SIMULATOR_DEVICE_STATE_BOOTED;
 }
 
-sub runIOSWebKitAppInSimulator($;$)
+sub runIOSCyberKitAppInSimulator($;$)
 {
     my ($appBundle, $simulatorOptions) = @_;
     my $productDir = productDir();
@@ -2972,7 +2972,7 @@ sub runIOSWebKitAppInSimulator($;$)
     %simulatorENV = %{$simulatorOptions->{applicationEnvironment}} if $simulatorOptions->{applicationEnvironment};
     {
         local %ENV; # Shadow global-scope %ENV so that changes to it will not be seen outside of this scope.
-        setupIOSWebKitEnvironment($productDir);
+        setupIOSCyberKitEnvironment($productDir);
         %simulatorENV = %ENV;
     }
     my $applicationArguments = \@ARGV;
@@ -2983,18 +2983,18 @@ sub runIOSWebKitAppInSimulator($;$)
         $ENV{"SIMCTL_CHILD_$key"} = $simulatorENV{$key};
     }
 
-    print "Starting $appDisplayName with DYLD_FRAMEWORK_PATH set to point to built WebKit in $productDir.\n";
+    print "Starting $appDisplayName with DYLD_FRAMEWORK_PATH set to point to built CyberKit in $productDir.\n";
     return exitStatus(system("xcrun", "--sdk", "iphonesimulator", "simctl", "launch", $simulatedDeviceUDID, $appIdentifier, @$applicationArguments));
 }
 
-sub runIOSWebKitApp($)
+sub runIOSCyberKitApp($)
 {
     my ($appBundle) = @_;
     if (willUseIOSDeviceSDK()) {
         die "Only running Safari in iOS Simulator is supported now.";
     }
     if (willUseIOSSimulatorSDK()) {
-        return runIOSWebKitAppInSimulator($appBundle);
+        return runIOSCyberKitAppInSimulator($appBundle);
     }
     die "Not using an iOS SDK."
 }
@@ -3010,25 +3010,25 @@ sub archCommandLineArgumentsForRestrictedEnvironmentVariables()
     return @arguments;
 }
 
-sub runMacWebKitApp($;$)
+sub runMacCyberKitApp($;$)
 {
     my ($appPath, $useOpenCommand) = @_;
     my $productDir = productDir();
-    print "Starting @{[basename($appPath)]} with DYLD_FRAMEWORK_PATH set to point to built WebKit in $productDir.\n";
+    print "Starting @{[basename($appPath)]} with DYLD_FRAMEWORK_PATH set to point to built CyberKit in $productDir.\n";
 
     local %ENV = %ENV;
-    setupMacWebKitEnvironment($productDir);
+    setupMacCyberKitEnvironment($productDir);
 
     if (defined($useOpenCommand) && $useOpenCommand == USE_OPEN_COMMAND) {
-        return system("open", "-W", "-a", $appPath, "--args", argumentsForRunAndDebugMacWebKitApp());
+        return system("open", "-W", "-a", $appPath, "--args", argumentsForRunAndDebugMacCyberKitApp());
     }
     if (architecture()) {
-        return system "arch", "-" . architecture(), archCommandLineArgumentsForRestrictedEnvironmentVariables(), $appPath, argumentsForRunAndDebugMacWebKitApp();
+        return system "arch", "-" . architecture(), archCommandLineArgumentsForRestrictedEnvironmentVariables(), $appPath, argumentsForRunAndDebugMacCyberKitApp();
     }
-    return system { $appPath } $appPath, argumentsForRunAndDebugMacWebKitApp();
+    return system { $appPath } $appPath, argumentsForRunAndDebugMacCyberKitApp();
 }
 
-sub execMacWebKitAppForDebugging($)
+sub execMacCyberKitAppForDebugging($)
 {
     my ($appPath) = @_;
     my $architectureSwitch = "--arch";
@@ -3039,11 +3039,11 @@ sub execMacWebKitAppForDebugging($)
     die "Can't find the lldb executable.\n" unless -x $debuggerPath;
 
     my $productDir = productDir();
-    setupMacWebKitEnvironment($productDir);
+    setupMacCyberKitEnvironment($productDir);
 
     my @architectureFlags = ($architectureSwitch, architecture());
-    print "Starting @{[basename($appPath)]} under lldb with DYLD_FRAMEWORK_PATH set to point to built WebKit in $productDir.\n";
-    exec { $debuggerPath } $debuggerPath, @architectureFlags, $argumentsSeparator, $appPath, argumentsForRunAndDebugMacWebKitApp() or die;
+    print "Starting @{[basename($appPath)]} under lldb with DYLD_FRAMEWORK_PATH set to point to built CyberKit in $productDir.\n";
+    exec { $debuggerPath } $debuggerPath, @architectureFlags, $argumentsSeparator, $appPath, argumentsForRunAndDebugMacCyberKitApp() or die;
 }
 
 sub execUnixAppForDebugging($)
@@ -3055,20 +3055,20 @@ sub execUnixAppForDebugging($)
     die "Can't find the gdb executable.\n" unless -x $debuggerPath;
 
     my $productDir = productDir();
-    setupUnixWebKitEnvironment($productDir);
+    setupUnixCyberKitEnvironment($productDir);
 
     my @cmdline = wrapperPrefixIfNeeded();
     push @cmdline, $debuggerPath, "--args", $appPath;
 
-    print "Starting @{[basename($appPath)]} under gdb with build WebKit in $productDir.\n";
+    print "Starting @{[basename($appPath)]} under gdb with build CyberKit in $productDir.\n";
     exec @cmdline, @ARGV or die;
 }
 
 sub debugSafari
 {
-    if (isAppleMacWebKit()) {
+    if (isAppleMacCyberKit()) {
         checkFrameworks();
-        execMacWebKitAppForDebugging(safariPath());
+        execMacCyberKitAppForDebugging(safariPath());
     }
 
     return 1; # Unsupported platform; can't debug Safari on this platform.
@@ -3076,15 +3076,15 @@ sub debugSafari
 
 sub runSafari
 {
-    if (isIOSWebKit()) {
-        return runIOSWebKitApp(mobileSafariBundle());
+    if (isIOSCyberKit()) {
+        return runIOSCyberKitApp(mobileSafariBundle());
     }
 
-    if (isAppleMacWebKit()) {
-        return runMacWebKitApp(safariPath());
+    if (isAppleMacCyberKit()) {
+        return runMacCyberKitApp(safariPath());
     }
 
-    if (isAppleWinWebKit() || isFTW()) {
+    if (isAppleWinCyberKit() || isFTW()) {
         my $result;
         my $webKitLauncherPath = File::Spec->catfile(executableProductDir(), "MiniBrowser.exe");
         return system { $webKitLauncherPath } $webKitLauncherPath, @ARGV;
@@ -3095,10 +3095,10 @@ sub runSafari
 
 sub runMiniBrowser
 {
-    if (isAppleMacWebKit()) {
-        return runMacWebKitApp(File::Spec->catfile(productDir(), "MiniBrowser.app", "Contents", "MacOS", "MiniBrowser"));
+    if (isAppleMacCyberKit()) {
+        return runMacCyberKitApp(File::Spec->catfile(productDir(), "MiniBrowser.app", "Contents", "MacOS", "MiniBrowser"));
     }
-    if (isAppleWinWebKit() || isFTW()) {
+    if (isAppleWinCyberKit() || isFTW()) {
         my $webKitLauncherPath = File::Spec->catfile(executableProductDir(), "MiniBrowser.exe");
         return system { $webKitLauncherPath } $webKitLauncherPath, @ARGV;
     }
@@ -3107,28 +3107,28 @@ sub runMiniBrowser
 
 sub debugMiniBrowser
 {
-    if (isAppleMacWebKit()) {
-        execMacWebKitAppForDebugging(File::Spec->catfile(productDir(), "MiniBrowser.app", "Contents", "MacOS", "MiniBrowser"));
+    if (isAppleMacCyberKit()) {
+        execMacCyberKitAppForDebugging(File::Spec->catfile(productDir(), "MiniBrowser.app", "Contents", "MacOS", "MiniBrowser"));
     }
     
     return 1;
 }
 
-sub runWebKitTestRunner
+sub runCyberKitTestRunner
 {
-    if (isAppleMacWebKit()) {
-        return runMacWebKitApp(File::Spec->catfile(productDir(), "WebKitTestRunner"));
+    if (isAppleMacCyberKit()) {
+        return runMacCyberKitApp(File::Spec->catfile(productDir(), "CyberKitTestRunner"));
     }
 
     return 1;
 }
 
-sub debugWebKitTestRunner
+sub debugCyberKitTestRunner
 {
-    if (isAppleMacWebKit()) {
-        execMacWebKitAppForDebugging(File::Spec->catfile(productDir(), "WebKitTestRunner"));
+    if (isAppleMacCyberKit()) {
+        execMacCyberKitAppForDebugging(File::Spec->catfile(productDir(), "CyberKitTestRunner"));
     } elsif (isGtk() or isWPE()) {
-        execUnixAppForDebugging(File::Spec->catfile(productDir(), "bin", "WebKitTestRunner"));
+        execUnixAppForDebugging(File::Spec->catfile(productDir(), "bin", "CyberKitTestRunner"));
     }
 
     return 1;

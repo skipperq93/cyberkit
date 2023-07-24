@@ -30,7 +30,7 @@ from webkitpy.port import factory
 
 class GardenOMatic(AbstractRebaseliningCommand):
     name = "garden-o-matic"
-    help_text = "Command for gardening the WebKit tree."
+    help_text = "Command for gardening the CyberKit tree."
 
     # REVIEW: Reset the option here because globbing isn't useful for us, but apparently
     # it's useful for other rebaselining commands because use_globs=True is set in parent.

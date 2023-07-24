@@ -1,4 +1,4 @@
-This test checks if WebKit can find a charset defined in an HTTP-EQUIV meta after the HEAD.
+This test checks if CyberKit can find a charset defined in an HTTP-EQUIV meta after the HEAD.
 
 The first letter should look like a Latin "C" here:
 

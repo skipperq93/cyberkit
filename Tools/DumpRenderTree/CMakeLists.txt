@@ -1,15 +1,15 @@
 set(DumpRenderTree_DIR "${TOOLS_DIR}/DumpRenderTree")
 set(DumpRenderTree_BINDINGS_DIR "${TOOLS_DIR}/DumpRenderTree/Bindings")
-set(WebKitTestRunner_SHARED_DIR "${TOOLS_DIR}/TestRunnerShared/")
-set(WebKitTestRunner_UISCRIPTCONTEXT_DIR "${TOOLS_DIR}/TestRunnerShared/UIScriptContext")
+set(CyberKitTestRunner_SHARED_DIR "${TOOLS_DIR}/TestRunnerShared/")
+set(CyberKitTestRunner_UISCRIPTCONTEXT_DIR "${TOOLS_DIR}/TestRunnerShared/UIScriptContext")
 
 file(MAKE_DIRECTORY ${DumpRenderTree_DERIVED_SOURCES_DIR})
 
 set(DumpRenderTree_SOURCES
-    ${WebKitTestRunner_SHARED_DIR}/Bindings/JSWrapper.cpp
+    ${CyberKitTestRunner_SHARED_DIR}/Bindings/JSWrapper.cpp
 
-    ${WebKitTestRunner_UISCRIPTCONTEXT_DIR}/UIScriptContext.cpp
-    ${WebKitTestRunner_UISCRIPTCONTEXT_DIR}/UIScriptControllerShared.cpp
+    ${CyberKitTestRunner_UISCRIPTCONTEXT_DIR}/UIScriptContext.cpp
+    ${CyberKitTestRunner_UISCRIPTCONTEXT_DIR}/UIScriptControllerShared.cpp
 
     AccessibilityController.cpp
     AccessibilityTextMarker.cpp
@@ -26,26 +26,26 @@ set(DumpRenderTree_SOURCES
 )
 
 set(DumpRenderTree_LIBRARIES
-    WebKit::WebCoreTestSupport
-    WebKit::JavaScriptCore
+    CyberKit::CyberCoreTestSupport
+    CyberKit::CyberScriptCore
 )
 
 set(DumpRenderTree_PRIVATE_INCLUDE_DIRECTORIES
     ${CMAKE_BINARY_DIR}
     ${DumpRenderTree_DERIVED_SOURCES_DIR}
     ${DumpRenderTree_DIR}
-    ${WebKitTestRunner_SHARED_DIR}/Bindings
-    ${WebKitTestRunner_UISCRIPTCONTEXT_DIR}
+    ${CyberKitTestRunner_SHARED_DIR}/Bindings
+    ${CyberKitTestRunner_UISCRIPTCONTEXT_DIR}
 )
 
 list(APPEND DumpRenderTree_PRIVATE_INCLUDE_DIRECTORIES
     ${PAL_FRAMEWORK_HEADERS_DIR}
-    ${WebCore_PRIVATE_FRAMEWORK_HEADERS_DIR}
-    ${WebKitLegacy_FRAMEWORK_HEADERS_DIR}
+    ${CyberCore_PRIVATE_FRAMEWORK_HEADERS_DIR}
+    ${CyberKitLegacy_FRAMEWORK_HEADERS_DIR}
 )
 
 set(DumpRenderTree_IDL_FILES
-    "${WebKitTestRunner_UISCRIPTCONTEXT_DIR}/Bindings/UIScriptController.idl"
+    "${CyberKitTestRunner_UISCRIPTCONTEXT_DIR}/Bindings/UIScriptController.idl"
 )
 
 GENERATE_BINDINGS(DumpRenderTreeBindings

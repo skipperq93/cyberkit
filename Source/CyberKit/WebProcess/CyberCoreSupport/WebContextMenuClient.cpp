@@ -1,0 +1,105 @@
+/*
+ * Copyright (C) 2010 Apple Inc. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS''
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+ * THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+#include "config.h"
+#include "WebContextMenuClient.h"
+
+#if ENABLE(CONTEXT_MENUS)
+
+#include "WebContextMenu.h"
+#include "WebPage.h"
+#include <CyberCore/Editor.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameLoader.h>
+#include <CyberCore/NotImplemented.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/UserGestureIndicator.h>
+
+namespace CyberKit {
+
+void WebContextMenuClient::contextMenuDestroyed()
+{
+    delete this;
+}
+
+void WebContextMenuClient::downloadURL(const URL&)
+{
+    // This is handled in the UI process.
+    ASSERT_NOT_REACHED();
+}
+
+#if !PLATFORM(COCOA)
+
+void WebContextMenuClient::searchWithGoogle(const CyberCore::Frame* frame)
+{
+    auto page = frame->page();
+    if (!page)
+        return;
+
+    auto searchString = frame->editor().selectedText();
+    searchString.stripWhiteSpace();
+    searchString = encodeWithURLEscapeSequences(searchString);
+    searchString.replace("%20"_s, "+"_s);
+    auto searchURL = URL { { }, "https://www.google.com/search?q=" + searchString + "&ie=UTF-8&oe=UTF-8" };
+
+    CyberCore::UserGestureIndicator indicator { CyberCore::ProcessingUserGesture };
+    page->mainFrame().loader().changeLocation(searchURL, { }, nullptr, CyberCore::LockHistory::No, CyberCore::LockBackForwardList::No, CyberCore::ReferrerPolicy::EmptyString, CyberCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow);
+}
+
+void WebContextMenuClient::lookUpInDictionary(CyberCore::Frame*)
+{
+    notImplemented();
+}
+
+bool WebContextMenuClient::isSpeaking()
+{
+    notImplemented();
+    return false;
+}
+
+void WebContextMenuClient::speak(const String&)
+{
+    notImplemented();
+}
+
+void WebContextMenuClient::stopSpeaking()
+{
+    notImplemented();
+}
+
+#endif
+
+#if USE(ACCESSIBILITY_CONTEXT_MENUS)
+
+void WebContextMenuClient::showContextMenu()
+{
+    m_page->contextMenu()->show();
+}
+
+#endif
+
+} // namespace CyberKit
+
+#endif // ENABLE(CONTEXT_MENUS)

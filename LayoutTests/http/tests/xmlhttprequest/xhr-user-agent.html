@@ -13,7 +13,7 @@ onload = () => {
     syncXHR.send("");
     shouldBe("syncXHR.status", "200");
     syncXHRUserAgent = syncXHR.responseText;
-    shouldBeTrue("syncXHRUserAgent.includes('AppleWebKit/')");
+    shouldBeTrue("syncXHRUserAgent.includes('AppleCyberKit/')");
    
     debug("");
     asyncXHR = new XMLHttpRequest();
@@ -21,7 +21,7 @@ onload = () => {
         debug("* Asynchronous XHR");
         shouldBe("asyncXHR.status", "200");
         asyncXHRUserAgent = asyncXHR.responseText;
-        shouldBeTrue("asyncXHRUserAgent.includes('AppleWebKit/')");
+        shouldBeTrue("asyncXHRUserAgent.includes('AppleCyberKit/')");
         debug("");
         shouldBeTrue("syncXHRUserAgent === asyncXHRUserAgent");
         debug("");

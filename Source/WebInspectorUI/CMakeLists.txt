@@ -1,4 +1,4 @@
-include(WebKitCommon)
+include(CyberKitCommon)
 
 set_property(DIRECTORY . PROPERTY FOLDER "WebInspectorUI")
 
@@ -35,8 +35,8 @@ set(InspectorResourceScripts
     ${WEBINSPECTORUI_DIR}/Scripts/copy-user-interface-resources.pl
     ${WEBINSPECTORUI_DIR}/Scripts/fix-worker-imports-for-optimized-builds.pl
     ${WEBINSPECTORUI_DIR}/Scripts/remove-console-asserts.pl
-    ${JavaScriptCore_SCRIPTS_DIR}/cssmin.py
-    ${JavaScriptCore_SCRIPTS_DIR}/jsmin.py
+    ${CyberScriptCore_SCRIPTS_DIR}/cssmin.py
+    ${CyberScriptCore_SCRIPTS_DIR}/jsmin.py
 )
 
 set(WebInspectorUI_RESOURCES_DIR "${WebInspectorUI_DERIVED_SOURCES_DIR}/InspectorResources")
@@ -44,14 +44,14 @@ set(WebInspectorUI_LOCALIZED_STRINGS_DIR "${WebInspectorUI_RESOURCES_DIR}/WebIns
 
 WEBKIT_INCLUDE_CONFIG_FILES_IF_EXISTS()
 
-# DerivedSources/JavaScriptCore/inspector/InspectorBackendCommands.js is
+# DerivedSources/CyberScriptCore/inspector/InspectorBackendCommands.js is
 # expected in DerivedSources/WebInspectorUI/UserInterface/Protocol/.
 add_custom_command(
     OUTPUT ${WebInspectorUI_DERIVED_SOURCES_DIR}/UserInterface/Protocol/InspectorBackendCommands.js
-    DEPENDS JavaScriptCore
+    DEPENDS CyberScriptCore
             InspectorBackendCommands
-            ${JavaScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorBackendCommands.js
-    COMMAND ${CMAKE_COMMAND} -E copy ${JavaScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorBackendCommands.js ${WebInspectorUI_DERIVED_SOURCES_DIR}/UserInterface/Protocol/InspectorBackendCommands.js
+            ${CyberScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorBackendCommands.js
+    COMMAND ${CMAKE_COMMAND} -E copy ${CyberScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorBackendCommands.js ${WebInspectorUI_DERIVED_SOURCES_DIR}/UserInterface/Protocol/InspectorBackendCommands.js
     VERBATIM
 )
 
@@ -75,8 +75,8 @@ add_custom_command(
     DEPENDS ${InspectorFilesDependencies}
             ${InspectorResourceScripts}
             ${WebInspectorUI_DERIVED_SOURCES_DIR}/UserInterface/Protocol/InspectorBackendCommands.js
-    COMMAND ${CMAKE_COMMAND} -E copy ${WebInspectorUI_DERIVED_SOURCES_DIR}/UserInterface/Protocol/InspectorBackendCommands.js ${JavaScriptCore_SCRIPTS_DIR}/InspectorBackendCommands.js
-    COMMAND ${CMAKE_COMMAND} -E env "DERIVED_SOURCES_DIR=${WebInspectorUI_DERIVED_SOURCES_DIR}" "SRCROOT=${WEBINSPECTORUI_DIR}" "JAVASCRIPTCORE_PRIVATE_HEADERS_DIR=${JavaScriptCore_SCRIPTS_DIR}" "TARGET_BUILD_DIR=${WebInspectorUI_RESOURCES_DIR}" "UNLOCALIZED_RESOURCES_FOLDER_PATH=WebInspectorUI" "COMBINE_INSPECTOR_RESOURCES=${COMBINE_INSPECTOR_RESOURCES}" "COMBINE_TEST_RESOURCES=${COMBINE_TEST_RESOURCES}" PYTHON=${PYTHON_EXECUTABLE} ${PERL_EXECUTABLE} ${WEBINSPECTORUI_DIR}/Scripts/copy-user-interface-resources.pl
+    COMMAND ${CMAKE_COMMAND} -E copy ${WebInspectorUI_DERIVED_SOURCES_DIR}/UserInterface/Protocol/InspectorBackendCommands.js ${CyberScriptCore_SCRIPTS_DIR}/InspectorBackendCommands.js
+    COMMAND ${CMAKE_COMMAND} -E env "DERIVED_SOURCES_DIR=${WebInspectorUI_DERIVED_SOURCES_DIR}" "SRCROOT=${WEBINSPECTORUI_DIR}" "JAVASCRIPTCORE_PRIVATE_HEADERS_DIR=${CyberScriptCore_SCRIPTS_DIR}" "TARGET_BUILD_DIR=${WebInspectorUI_RESOURCES_DIR}" "UNLOCALIZED_RESOURCES_FOLDER_PATH=WebInspectorUI" "COMBINE_INSPECTOR_RESOURCES=${COMBINE_INSPECTOR_RESOURCES}" "COMBINE_TEST_RESOURCES=${COMBINE_TEST_RESOURCES}" PYTHON=${PYTHON_EXECUTABLE} ${PERL_EXECUTABLE} ${WEBINSPECTORUI_DIR}/Scripts/copy-user-interface-resources.pl
     COMMAND ${CMAKE_COMMAND} -E make_directory ${WebInspectorUI_LOCALIZED_STRINGS_DIR}
     COMMAND ${CMAKE_COMMAND} -E copy "${WEBINSPECTORUI_DIR}/Localizations/en.lproj/localizedStrings.js" ${WebInspectorUI_LOCALIZED_STRINGS_DIR}/localizedStrings.js
     COMMAND ${CMAKE_COMMAND} -E touch ${CMAKE_BINARY_DIR}/inspector-resources.stamp

@@ -521,7 +521,7 @@ set(WTF_LIBRARIES
 )
 
 if (NOT USE_SYSTEM_MALLOC)
-    list(APPEND WTF_LIBRARIES WebKit::bmalloc)
+    list(APPEND WTF_LIBRARIES CyberKit::bmalloc)
 endif ()
 
 list(APPEND WTF_LIBRARIES

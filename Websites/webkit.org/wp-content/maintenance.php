@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>WebKit</title>
+    <title>CyberKit</title>
 
     <style>
     html {

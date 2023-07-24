@@ -1,2 +1,2 @@
 if (window.testRunner)
-  testRunner.overridePreference("WebKitHyperlinkAuditingEnabled", 1);
+  testRunner.overridePreference("CyberKitHyperlinkAuditingEnabled", 1);

@@ -41,7 +41,7 @@
 	<key>CFPlugInUnloadFunction</key>
 	<string></string>
 	<key>WebPluginDescription</key>
-	<string>Simple Netscape plug-in that handles test content for WebKit</string>
+	<string>Simple Netscape plug-in that handles test content for CyberKit</string>
 	<key>WebPluginMIMETypes</key>
 	<dict>
 		<key>image/png</key>
@@ -64,6 +64,6 @@
 		</dict>
 	</dict>
 	<key>WebPluginName</key>
-	<string>WebKit Test PlugIn</string>
+	<string>CyberKit Test PlugIn</string>
 </dict>
 </plist>

@@ -58,7 +58,7 @@ describe('CustomizableTestGroupFormTests', () => {
     it('Changing the value in revision editor should update corresponding commitSet as long as the repository of that row does not have owner', async () => {
         const context = new BrowsingContext();
         const customizableTestGroupForm = await createCustomizableTestGroupFormWithContext(context);
-        const repository = context.symbols.Repository.ensureSingleton(1, {name: 'WebKit'});
+        const repository = context.symbols.Repository.ensureSingleton(1, {name: 'CyberKit'});
 
         const commitA = cloneObject(commitObjectA);
         const commitB = cloneObject(commitObjectB);
@@ -105,7 +105,7 @@ describe('CustomizableTestGroupFormTests', () => {
     it('should allow user to only provide prefix of a commit as long as the commit is unique in the repository', async () => {
         const context = new BrowsingContext();
         const customizableTestGroupForm = await createCustomizableTestGroupFormWithContext(context);
-        const repository = context.symbols.Repository.ensureSingleton(1, {name: 'WebKit'});
+        const repository = context.symbols.Repository.ensureSingleton(1, {name: 'CyberKit'});
 
         const commitA = cloneObject(commitObjectA);
         const commitB = cloneObject(commitObjectB);
@@ -157,7 +157,7 @@ describe('CustomizableTestGroupFormTests', () => {
     it('should use the commit set map when customize button is clicked as the behavior of radio buttons', async () => {
         const context = new BrowsingContext();
         const customizableTestGroupForm = await createCustomizableTestGroupFormWithContext(context);
-        const repository = context.symbols.Repository.ensureSingleton(1, {name: 'WebKit'});
+        const repository = context.symbols.Repository.ensureSingleton(1, {name: 'CyberKit'});
 
         const commitA = cloneObject(commitObjectA);
         const commitB = cloneObject(commitObjectB);

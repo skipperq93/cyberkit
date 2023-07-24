@@ -605,18 +605,18 @@
       "workernames": ["ews151", "webkit-misc"]
     },
     {
-      "name": "WebKitPy-Tests-EWS",
+      "name": "CyberKitPy-Tests-EWS",
       "shortname": "webkitpy",
       "icon": "testOnly",
-      "factory": "WebKitPyFactory",
+      "factory": "CyberKitPyFactory",
       "platform": "*",
       "workernames": ["ews151", "webkit-misc"]
     },
     {
-      "name": "WebKitPerl-Tests-EWS",
+      "name": "CyberKitPerl-Tests-EWS",
       "shortname": "webkitperl",
       "icon": "testOnly",
-      "factory": "WebKitPerlFactory",
+      "factory": "CyberKitPerlFactory",
       "platform": "*",
       "workernames": ["ews151", "webkit-misc"]
     },
@@ -676,7 +676,7 @@
                        "macOS-Apple-Silicon-Big-Sur-Release-Build-EWS", "macOS-Mojave-Debug-Build-EWS", "macOS-Mojave-Release-Build-EWS",
                        "Services-EWS", "Style-EWS",
                        "tvOS-13-Build-EWS", "tvOS-13-Simulator-Build-EWS", "watchOS-6-Build-EWS", "watchOS-6-Simulator-Build-EWS",
-                       "WPE-EWS", "WebKitPerl-Tests-EWS", "WebKitPy-Tests-EWS", "WinCairo-EWS", "Windows-EWS"]
+                       "WPE-EWS", "CyberKitPerl-Tests-EWS", "CyberKitPy-Tests-EWS", "WinCairo-EWS", "Windows-EWS"]
     },
     {
       "type": "Try_Userpass",

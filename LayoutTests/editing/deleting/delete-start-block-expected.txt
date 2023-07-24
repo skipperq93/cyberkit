@@ -1,4 +1,4 @@
-This tests removing the start block. WebKit should not crash.
+This tests removing the start block. CyberKit should not crash.
 | <div>
 |   <br>
 | <#selection-caret>

@@ -113,7 +113,7 @@ class TestTestsFactory(TestCase):
         ])
 
     def test_webkitperl_factory(self):
-        factory = factories.WebKitPerlFactory(platform='*', configuration=None, architectures=None)
+        factory = factories.CyberKitPerlFactory(platform='*', configuration=None, architectures=None)
         self.assertBuildSteps(factory.steps, [
             _BuildStepFactory(steps.ConfigureBuild, platform='*', configuration=None, architectures=None, buildOnly=False, triggers=None, remotes=None, additionalArguments=None),
             _BuildStepFactory(steps.ValidatePatch),
@@ -121,11 +121,11 @@ class TestTestsFactory(TestCase):
             _BuildStepFactory(steps.CheckOutSource),
             _BuildStepFactory(steps.CheckOutSpecificRevision),
             _BuildStepFactory(steps.ApplyPatch),
-            _BuildStepFactory(steps.RunWebKitPerlTests),
+            _BuildStepFactory(steps.RunCyberKitPerlTests),
         ])
 
     def test_webkitpy_factory(self):
-        factory = factories.WebKitPyFactory(platform='*', configuration=None, architectures=None)
+        factory = factories.CyberKitPyFactory(platform='*', configuration=None, architectures=None)
         self.assertBuildSteps(factory.steps, [
             _BuildStepFactory(steps.ConfigureBuild, platform='*', configuration=None, architectures=None, buildOnly=False, triggers=None, remotes=None, additionalArguments=None),
             _BuildStepFactory(steps.CheckPatchRelevance),
@@ -134,8 +134,8 @@ class TestTestsFactory(TestCase):
             _BuildStepFactory(steps.CheckOutSource),
             _BuildStepFactory(steps.CheckOutSpecificRevision),
             _BuildStepFactory(steps.ApplyPatch),
-            _BuildStepFactory(steps.RunWebKitPyPython2Tests),
-            _BuildStepFactory(steps.RunWebKitPyPython3Tests),
+            _BuildStepFactory(steps.RunCyberKitPyPython2Tests),
+            _BuildStepFactory(steps.RunCyberKitPyPython3Tests),
             _BuildStepFactory(steps.SetBuildSummary),
         ])
 
@@ -152,7 +152,7 @@ class TestTestsFactory(TestCase):
             _BuildStepFactory(steps.RunEWSUnitTests),
             _BuildStepFactory(steps.RunEWSBuildbotCheckConfig),
             _BuildStepFactory(steps.RunResultsdbpyTests),
-            _BuildStepFactory(steps.RunBuildWebKitOrgUnitTests),
+            _BuildStepFactory(steps.RunBuildCyberKitOrgUnitTests),
         ])
 
 
@@ -167,7 +167,7 @@ class TestBuildFactory(TestCase):
             _BuildStepFactory(steps.CheckOutSpecificRevision),
             _BuildStepFactory(steps.ApplyPatch),
             _BuildStepFactory(steps.KillOldProcesses),
-            _BuildStepFactory(steps.CompileWebKit, skipUpload=False),
+            _BuildStepFactory(steps.CompileCyberKit, skipUpload=False),
         ])
 
     def test_macos_build_factory(self):
@@ -180,7 +180,7 @@ class TestBuildFactory(TestCase):
             _BuildStepFactory(steps.CheckOutSpecificRevision),
             _BuildStepFactory(steps.ApplyPatch),
             _BuildStepFactory(steps.KillOldProcesses),
-            _BuildStepFactory(steps.CompileWebKit, skipUpload=False),
+            _BuildStepFactory(steps.CompileCyberKit, skipUpload=False),
         ])
 
     def test_macos_build_only_factory(self):
@@ -194,7 +194,7 @@ class TestBuildFactory(TestCase):
             _BuildStepFactory(steps.CheckOutSpecificRevision),
             _BuildStepFactory(steps.ApplyPatch),
             _BuildStepFactory(steps.KillOldProcesses),
-            _BuildStepFactory(steps.CompileWebKit, skipUpload=True),
+            _BuildStepFactory(steps.CompileCyberKit, skipUpload=True),
         ])
 
     def test_ios_build_factory(self):
@@ -207,7 +207,7 @@ class TestBuildFactory(TestCase):
             _BuildStepFactory(steps.CheckOutSpecificRevision),
             _BuildStepFactory(steps.ApplyPatch),
             _BuildStepFactory(steps.KillOldProcesses),
-            _BuildStepFactory(steps.CompileWebKit, skipUpload=False),
+            _BuildStepFactory(steps.CompileCyberKit, skipUpload=False),
         ])
 
     def test_ios_embedded_build_factory(self):
@@ -220,7 +220,7 @@ class TestBuildFactory(TestCase):
             _BuildStepFactory(steps.CheckOutSpecificRevision),
             _BuildStepFactory(steps.ApplyPatch),
             _BuildStepFactory(steps.KillOldProcesses),
-            _BuildStepFactory(steps.CompileWebKit, skipUpload=True),
+            _BuildStepFactory(steps.CompileCyberKit, skipUpload=True),
         ])
 
     def test_watchos_build_factory(self):
@@ -233,7 +233,7 @@ class TestBuildFactory(TestCase):
             _BuildStepFactory(steps.CheckOutSpecificRevision),
             _BuildStepFactory(steps.ApplyPatch),
             _BuildStepFactory(steps.KillOldProcesses),
-            _BuildStepFactory(steps.CompileWebKit, skipUpload=True),
+            _BuildStepFactory(steps.CompileCyberKit, skipUpload=True),
         ])
 
     def test_tvos_build_factory(self):
@@ -246,7 +246,7 @@ class TestBuildFactory(TestCase):
             _BuildStepFactory(steps.CheckOutSpecificRevision),
             _BuildStepFactory(steps.ApplyPatch),
             _BuildStepFactory(steps.KillOldProcesses),
-            _BuildStepFactory(steps.CompileWebKit, skipUpload=True),
+            _BuildStepFactory(steps.CompileCyberKit, skipUpload=True),
         ])
 
     def test_gtk_build_factory(self):
@@ -260,7 +260,7 @@ class TestBuildFactory(TestCase):
             _BuildStepFactory(steps.ApplyPatch),
             _BuildStepFactory(steps.KillOldProcesses),
             _BuildStepFactory(steps.InstallGtkDependencies),
-            _BuildStepFactory(steps.CompileWebKit, skipUpload=False),
+            _BuildStepFactory(steps.CompileCyberKit, skipUpload=False),
         ])
 
     def test_wpe_factory(self):
@@ -274,7 +274,7 @@ class TestBuildFactory(TestCase):
             _BuildStepFactory(steps.ApplyPatch),
             _BuildStepFactory(steps.KillOldProcesses),
             _BuildStepFactory(steps.InstallWpeDependencies),
-            _BuildStepFactory(steps.CompileWebKit, skipUpload=True),
+            _BuildStepFactory(steps.CompileCyberKit, skipUpload=True),
         ])
 
     def test_wincairo_factory(self):
@@ -287,7 +287,7 @@ class TestBuildFactory(TestCase):
             _BuildStepFactory(steps.CheckOutSpecificRevision),
             _BuildStepFactory(steps.ApplyPatch),
             _BuildStepFactory(steps.KillOldProcesses),
-            _BuildStepFactory(steps.CompileWebKit, skipUpload=True),
+            _BuildStepFactory(steps.CompileCyberKit, skipUpload=True),
         ])
 
     def test_jsc_mipsel_factory(self):
@@ -331,9 +331,9 @@ class TestBuildAndTestsFactory(TestCase):
             _BuildStepFactory(steps.CheckOutSpecificRevision),
             _BuildStepFactory(steps.ApplyPatch),
             _BuildStepFactory(steps.KillOldProcesses),
-            _BuildStepFactory(steps.CompileWebKit, skipUpload=True),
+            _BuildStepFactory(steps.CompileCyberKit, skipUpload=True),
             _BuildStepFactory(steps.ValidatePatch, verifyBugClosed=False, addURLs=False),
-            _BuildStepFactory(steps.RunWebKit1Tests),
+            _BuildStepFactory(steps.RunCyberKit1Tests),
             _BuildStepFactory(steps.SetBuildSummary),
         ])
 
@@ -352,17 +352,17 @@ class TestCommitQueueFactory(TestCase):
             _BuildStepFactory(steps.ValidateChangeLogAndReviewer),
             _BuildStepFactory(steps.FindModifiedChangeLogs),
             _BuildStepFactory(steps.KillOldProcesses),
-            _BuildStepFactory(steps.CompileWebKit, skipUpload=True),
+            _BuildStepFactory(steps.CompileCyberKit, skipUpload=True),
             _BuildStepFactory(steps.KillOldProcesses),
             _BuildStepFactory(steps.ValidatePatch, addURLs=False, verifycqplus=True),
             _BuildStepFactory(steps.CheckPatchStatusOnEWSQueues),
-            _BuildStepFactory(steps.RunWebKitTests),
+            _BuildStepFactory(steps.RunCyberKitTests),
             _BuildStepFactory(steps.ValidatePatch, addURLs=False, verifycqplus=True),
             _BuildStepFactory(steps.CheckOutSource),
             _BuildStepFactory(steps.UpdateWorkingDirectory),
             _BuildStepFactory(steps.ApplyPatch),
             _BuildStepFactory(steps.CreateLocalGITCommit),
-            _BuildStepFactory(steps.PushCommitToWebKitRepo),
+            _BuildStepFactory(steps.PushCommitToCyberKitRepo),
             _BuildStepFactory(steps.SetBuildSummary),
         ])
 
@@ -382,7 +382,7 @@ class TestLayoutTestsFactory(TestCase):
             _BuildStepFactory(steps.ExtractBuiltProduct),
             _BuildStepFactory(steps.WaitForCrashCollection),
             _BuildStepFactory(steps.KillOldProcesses),
-            _BuildStepFactory(steps.RunWebKit1Tests),
+            _BuildStepFactory(steps.RunCyberKit1Tests),
             _BuildStepFactory(steps.TriggerCrashLogSubmission),
             _BuildStepFactory(steps.SetBuildSummary),
         ])
@@ -401,7 +401,7 @@ class TestLayoutTestsFactory(TestCase):
             _BuildStepFactory(steps.ExtractBuiltProduct),
             _BuildStepFactory(steps.WaitForCrashCollection),
             _BuildStepFactory(steps.KillOldProcesses),
-            _BuildStepFactory(steps.RunWebKit1Tests),
+            _BuildStepFactory(steps.RunCyberKit1Tests),
             _BuildStepFactory(steps.TriggerCrashLogSubmission),
             _BuildStepFactory(steps.SetBuildSummary),
         ])
@@ -419,7 +419,7 @@ class TestLayoutTestsFactory(TestCase):
             _BuildStepFactory(steps.ExtractBuiltProduct),
             _BuildStepFactory(steps.WaitForCrashCollection),
             _BuildStepFactory(steps.KillOldProcesses),
-            _BuildStepFactory(steps.RunWebKitTests),
+            _BuildStepFactory(steps.RunCyberKitTests),
             _BuildStepFactory(steps.TriggerCrashLogSubmission),
             _BuildStepFactory(steps.SetBuildSummary),
         ])
@@ -437,7 +437,7 @@ class TestLayoutTestsFactory(TestCase):
             _BuildStepFactory(steps.ExtractBuiltProduct),
             _BuildStepFactory(steps.WaitForCrashCollection),
             _BuildStepFactory(steps.KillOldProcesses),
-            _BuildStepFactory(steps.RunWebKitTests),
+            _BuildStepFactory(steps.RunCyberKitTests),
             _BuildStepFactory(steps.TriggerCrashLogSubmission),
             _BuildStepFactory(steps.SetBuildSummary),
         ])
@@ -455,7 +455,7 @@ class TestLayoutTestsFactory(TestCase):
             _BuildStepFactory(steps.DownloadBuiltProduct),
             _BuildStepFactory(steps.ExtractBuiltProduct),
             _BuildStepFactory(steps.KillOldProcesses),
-            _BuildStepFactory(steps.RunWebKitTests),
+            _BuildStepFactory(steps.RunCyberKitTests),
             _BuildStepFactory(steps.SetBuildSummary),
         ])
 
@@ -534,7 +534,7 @@ class TestJSCTestsFactory(TestCase):
             _BuildStepFactory(steps.DownloadBuiltProduct),
             _BuildStepFactory(steps.ExtractBuiltProduct),
             _BuildStepFactory(steps.KillOldProcesses),
-            _BuildStepFactory(steps.RunJavaScriptCoreTests),
+            _BuildStepFactory(steps.RunCyberScriptCoreTests),
         ])
 
     def test_jsc_armv7_factory(self):
@@ -550,5 +550,5 @@ class TestJSCTestsFactory(TestCase):
             _BuildStepFactory(steps.DownloadBuiltProduct),
             _BuildStepFactory(steps.ExtractBuiltProduct),
             _BuildStepFactory(steps.KillOldProcesses),
-            _BuildStepFactory(steps.RunJavaScriptCoreTests),
+            _BuildStepFactory(steps.RunCyberScriptCoreTests),
         ])

@@ -14,7 +14,7 @@
 
         Reviewed by Darin Adler.
 
-        When building WebKit for XCBuild, we currently require that the
+        When building CyberKit for XCBuild, we currently require that the
         external build system (such as the Makefile, build-webkit, etc.)
         defines the USE_NEW_BUILD_SYSTEM=YES build setting. This build setting
         controls parts of our build instructions that are sensitive to when
@@ -74,7 +74,7 @@
         Reviewed by Megan Gardner.
 
         * Source/cmake/OptionsFTW.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2020-07-15  Carlos Garcia Campos  <cgarcia@igalia.com>
 
@@ -185,7 +185,7 @@
         * Source/cmake/FindOpenCDM.cmake: Added.
         * Source/cmake/OptionsGTK.cmake:
         * Source/cmake/OptionsWPE.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2020-07-08  Carlos Garcia Campos  <cgarcia@igalia.com>
 
@@ -221,9 +221,9 @@
 
         Reviewed by Don Olmstead.
 
-        * Source/cmake/WebKitCommon.cmake: Removed call to SET_CONFIGURATION_FOR_UNIFIED_SOURCE_LISTS.
-        * Source/cmake/WebKitFeatures.cmake: Removed SET_CONFIGURATION_FOR_UNIFIED_SOURCE_LISTS.
-        * Source/cmake/WebKitMacros.cmake: Removed use of "--feature-flags" when invoking the
+        * Source/cmake/CyberKitCommon.cmake: Removed call to SET_CONFIGURATION_FOR_UNIFIED_SOURCE_LISTS.
+        * Source/cmake/CyberKitFeatures.cmake: Removed SET_CONFIGURATION_FOR_UNIFIED_SOURCE_LISTS.
+        * Source/cmake/CyberKitMacros.cmake: Removed use of "--feature-flags" when invoking the
         generate-unified-source-bundles.rb, which also means no longer depending on the
         UNIFIED_SOURCE_LIST_ENABLED_FEATURES variable, which was set by the
         SET_CONFIGURATION_FOR_UNIFIED_SOURCE_LISTS function.
@@ -242,7 +242,7 @@
         ports so now seems like as good a time as any to remove it.
 
         * Source/cmake/OptionsWin.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
         * Source/cmake/tools/vsprops/FeatureDefines.props:
         * Source/cmake/tools/vsprops/FeatureDefinesCairo.props:
 
@@ -277,7 +277,7 @@
 
         Reviewed by Darin Adler.
 
-        * WebKit.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings:
+        * CyberKit.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings:
 
 2020-06-29  Guowei Yang  <guowei_yang@apple.com>
 
@@ -289,7 +289,7 @@
         Preparing to implement CoreImage backed filter rendering
         Needs Compiler guards and experimental feature guard.
 
-        * Source/cmake/WebKitFeatures.cmake: added definition of 
+        * Source/cmake/CyberKitFeatures.cmake: added definition of 
           CoreImage-accelerated filter rendering feature flag, 
           ENABLE_CORE_IMAGE_ACCELERATED_FILTER_RENDER
 
@@ -303,7 +303,7 @@
         * Source/cmake/OptionsFTW.cmake:
         * Source/cmake/OptionsMac.cmake:
         * Source/cmake/OptionsWin.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
         * Source/cmake/tools/vsprops/FeatureDefines.props:
 
 2020-06-25  Diego Pino Garcia  <dpino@igalia.com>
@@ -323,13 +323,13 @@
 
 2020-06-22  Saam Barati  <sbarati@apple.com>
 
-        Allow building JavaScriptCore Mac+arm64 in public SDK build
+        Allow building CyberScriptCore Mac+arm64 in public SDK build
         https://bugs.webkit.org/show_bug.cgi?id=213472
 
         Reviewed by Sam Weinig.
 
         * Source/cmake/OptionsFTW.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2020-06-18  Tim Horton  <timothy_horton@apple.com>
 
@@ -339,7 +339,7 @@
         Reviewed by Dan Bernstein.
 
         * Makefile.shared:
-        This hack from r203348 is no longer needed, because WebKit cannot be built for 32-bit anymore.
+        This hack from r203348 is no longer needed, because CyberKit cannot be built for 32-bit anymore.
 
 2020-06-17  Michael Catanzaro  <mcatanzaro@gnome.org>
 
@@ -366,7 +366,7 @@
         as have the system know it exists for building
         the shared system cache.
 
-        * WebKit.xcworkspace/xcshareddata/xcschemes/All Source.xcscheme:
+        * CyberKit.xcworkspace/xcshareddata/xcschemes/All Source.xcscheme:
 
 2020-06-12  Adrian Perez de Castro  <aperez@igalia.com>
 
@@ -402,7 +402,7 @@
         * Source/cmake/OptionsFTW.cmake:
         * Source/cmake/OptionsMac.cmake:
         * Source/cmake/OptionsWin.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
         * Source/cmake/tools/vsprops/FeatureDefines.props:
         * Source/cmake/tools/vsprops/FeatureDefinesCairo.props:
 
@@ -418,7 +418,7 @@
 
         * Source/cmake/OptionsFTW.cmake:
         * Source/cmake/OptionsMac.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2020-06-04  Mark Lam  <mark.lam@apple.com>
 
@@ -428,7 +428,7 @@
         Reviewed by Yusuke Suzuki.
 
         Doing so would force a lot of unnecessary code changes and make patches hard to
-        review.  It is common WebKit practice to not make unrelated changes in patches.
+        review.  It is common CyberKit practice to not make unrelated changes in patches.
 
         * .editorconfig:
 
@@ -448,7 +448,7 @@
 
         * Source/cmake/OptionsFTW.cmake:
         * Source/cmake/OptionsMac.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2020-06-02  Yoshiaki JITSUKAWA  <yoshiaki.jitsukawa@sony.com>
 
@@ -477,7 +477,7 @@
 
         * Source/cmake/OptionsFTW.cmake:
         * Source/cmake/OptionsMac.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2020-05-29  Keith Rollin  <krollin@apple.com>
 
@@ -492,7 +492,7 @@
         off the use of XCBuild by default.
 
         * Makefile.shared:
-        * WebKit.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings:
+        * CyberKit.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings:
 
 2020-05-27  Kenneth Russell  <kbr@chromium.org>
 
@@ -503,7 +503,7 @@
 
         Accept Xcode's suggested upgrade to use the new build system.
 
-        * WebKit.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings:
+        * CyberKit.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings:
 
 2020-05-27  ChangSeok Oh  <changseok@webkit.org>
 
@@ -542,10 +542,10 @@
         be enabled by passing a semicolon separated list to CMake through the ANALYZERS
         option.
 
-        * Source/cmake/WebKitCommon.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
-        * Source/cmake/WebKitMacros.cmake:
-        * Source/cmake/WebKitStaticAnalysis.cmake: Added.
+        * Source/cmake/CyberKitCommon.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
+        * Source/cmake/CyberKitMacros.cmake:
+        * Source/cmake/CyberKitStaticAnalysis.cmake: Added.
 
 2020-05-26  Keith Rollin  <krollin@apple.com>
 
@@ -558,7 +558,7 @@
         Switch from the "legacy" Xcode build system to the "new" build system
         (also known as "XCBuild"). Switching to the new system speeds up
         builds by a small percentage, better validates projects for
-        build-related issues (such as dependency cycles), lets WebKit benefit
+        build-related issues (such as dependency cycles), lets CyberKit benefit
         from future improvements in XCBuild such as those coming from the
         underlying llbuild open source project, and prepares us for any other
         tools built for this new ecosystem.
@@ -578,7 +578,7 @@
           and to no longer treat the default as using the old build system.
 
         * Makefile.shared:
-        * WebKit.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings:
+        * CyberKit.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings:
 
 2020-05-22  Yoshiaki JITSUKAWA  <yoshiaki.jitsukawa@sony.com>
 
@@ -591,12 +591,12 @@
 
 2020-05-21  Yoshiaki Jitsukawa  <yoshiaki.jitsukawa@sony.com>
 
-        [PlayStation] Add minimal WKView API to enable TestWebKitAPI
+        [PlayStation] Add minimal WKView API to enable TestCyberKitAPI
         https://bugs.webkit.org/show_bug.cgi?id=211868
 
         Reviewed by Alex Christensen.
 
-        Enable TestWebKitAPI
+        Enable TestCyberKitAPI
 
         * Source/cmake/OptionsPlayStation.cmake:
         Disable FullScreen API and ContextMenus.
@@ -652,7 +652,7 @@
         * Source/cmake/OptionsMac.cmake:
         * Source/cmake/OptionsPlayStation.cmake:
         * Source/cmake/OptionsWPE.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2020-05-09  Don Olmstead  <don.olmstead@sony.com>
 
@@ -718,7 +718,7 @@
 
         Use correct target namespace.
 
-        * Source/cmake/target/WebCore.cmake:
+        * Source/cmake/target/CyberCore.cmake:
 
 2020-05-01  Don Olmstead  <don.olmstead@sony.com>
 
@@ -746,10 +746,10 @@
 
         Reviewed by Don Olmstead.
 
-        Enable GPUProcess compilation in WebKitGTK as an experimental
+        Enable GPUProcess compilation in CyberKitGTK as an experimental
         feature
 
-        * Source/cmake/OptionsGTK.cmake: sort alphabetically WebKit
+        * Source/cmake/OptionsGTK.cmake: sort alphabetically CyberKit
         options for GTK port and enable GPU_PROCESS if experimental
         features option is enabled.
 
@@ -827,7 +827,7 @@
 
 2020-04-26  Yoshiaki Jitsukawa  <yoshiaki.jitsukawa@sony.com>
 
-        [PlayStation] Enable TestWTF and TestWebCore
+        [PlayStation] Enable TestWTF and TestCyberCore
         https://bugs.webkit.org/show_bug.cgi?id=208849
 
         Reviewed by Don Olmstead.
@@ -897,14 +897,14 @@
 
 2020-04-22  Don Olmstead  <don.olmstead@sony.com>
 
-        [CMake] Use WEBKIT_EXECUTABLE in WebKitTestRunner
+        [CMake] Use WEBKIT_EXECUTABLE in CyberKitTestRunner
         https://bugs.webkit.org/show_bug.cgi?id=210132
 
         Reviewed by Adrian Perez de Castro.
 
-        Add a WebKitTestRunner derived sources directory.
+        Add a CyberKitTestRunner derived sources directory.
 
-        * Source/cmake/WebKitFS.cmake:
+        * Source/cmake/CyberKitFS.cmake:
 
 2020-04-21  Adrian Perez de Castro  <aperez@igalia.com>
 
@@ -931,14 +931,14 @@
 
 2020-04-17  Don Olmstead  <don.olmstead@sony.com>
 
-        [CMake] Add WebKit::WebCore target
+        [CMake] Add CyberKit::CyberCore target
         https://bugs.webkit.org/show_bug.cgi?id=210445
 
         Reviewed by Michael Catanzaro.
 
         Add a target file for internal Apple Windows builds.
 
-        * Source/cmake/target/WebCore.cmake: Added.
+        * Source/cmake/target/CyberCore.cmake: Added.
 
 2020-04-16  Carlos Garcia Campos  <cgarcia@igalia.com>
 
@@ -966,7 +966,7 @@
 
         Reviewed by Carlos Garcia Campos.
 
-        Do the bare minimum changes to build against GTK4 and produce a WebKit port library with a
+        Do the bare minimum changes to build against GTK4 and produce a CyberKit port library with a
         different name than GTK3 builds. Note that this does not attempt to make the built artifacts
         parallel-installable yet, though at least the main library, headers, and the pkg-config .pc
         file should be safe to install. The final names for built artifacts for GTK4 builds may
@@ -984,7 +984,7 @@
 
         Reviewed by Žan Doberšek.
 
-        * Source/cmake/WebKitCCache.cmake: Check for sccache if one of its
+        * Source/cmake/CyberKitCCache.cmake: Check for sccache if one of its
         environment variables has been set as well, otherwise the local
         disk cache would be used, if WEBKIT_USE_SCCACHE is set to 1.
 
@@ -998,7 +998,7 @@
         * Source/cmake/OptionsFTW.cmake:
         * Source/cmake/OptionsMac.cmake:
         * Source/cmake/OptionsWin.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
         * Source/cmake/tools/vsprops/FeatureDefines.props:
         * Source/cmake/tools/vsprops/FeatureDefinesCairo.props:
 
@@ -1036,7 +1036,7 @@
         Switch from the "legacy" Xcode build system to the "new" build system
         (also known as "XCBuild"). Switching to the new system speeds up
         builds by a small percentage, better validates projects for
-        build-related issues (such as dependency cycles), lets WebKit benefit
+        build-related issues (such as dependency cycles), lets CyberKit benefit
         from future improvements in XCBuild such as those coming from the
         underlying llbuild open source project, and prepares us for any other
         tools built for this new ecosystem.
@@ -1056,7 +1056,7 @@
           and to no longer treat the default as using the old build system.
 
         * Makefile.shared:
-        * WebKit.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings:
+        * CyberKit.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings:
 
 2020-04-08  Philippe Normand  <pnormand@igalia.com>
 
@@ -1101,7 +1101,7 @@
 
         Add a DumpRenderTree derived sources directory.
 
-        * Source/cmake/WebKitFS.cmake:
+        * Source/cmake/CyberKitFS.cmake:
 
 2020-04-06  Ross Kirsling  <ross.kirsling@sony.com>
 
@@ -1131,11 +1131,11 @@
 
         Add a MiniBrowser derived sources directory.
 
-        * Source/cmake/WebKitFS.cmake:
+        * Source/cmake/CyberKitFS.cmake:
 
 2020-04-05  Don Olmstead  <don.olmstead@sony.com>
 
-        [CMake] Add WebKit::WebKit target
+        [CMake] Add CyberKit::CyberKit target
         https://bugs.webkit.org/show_bug.cgi?id=210033
 
         Reviewed by Fujii Hironori.
@@ -1171,13 +1171,13 @@
 
 2020-04-01  Don Olmstead  <don.olmstead@sony.com>
 
-        [PlayStation] Use OBJECT libraries for WebCore and PAL
+        [PlayStation] Use OBJECT libraries for CyberCore and PAL
         https://bugs.webkit.org/show_bug.cgi?id=209835
 
         Reviewed by Ross Kirsling.
 
-        When compiling WebCore in debug mode ranlib was having issues with the size of
-        libWebCore.a. This is similar to what happened with Visual Studio and WinCairo.
+        When compiling CyberCore in debug mode ranlib was having issues with the size of
+        libCyberCore.a. This is similar to what happened with Visual Studio and WinCairo.
 
         Additionally hidden visibility defaults are added for the port.
 
@@ -1200,7 +1200,7 @@
 
         Reviewed by Fujii Hironori.
 
-        Remove /experimental:newLambdaProcessor since WebKit is no longer able to build
+        Remove /experimental:newLambdaProcessor since CyberKit is no longer able to build
         with this setting as of Visual Studio 16.5.0.
 
         * Source/cmake/OptionsMSVC.cmake:
@@ -1212,7 +1212,7 @@
 
         Reviewed by Ross Kirsling.
 
-        * Source/cmake/WebKitMacros.cmake (WEBKIT_EXECUTABLE): Added /manifestdependency linkder option if WIN32.
+        * Source/cmake/CyberKitMacros.cmake (WEBKIT_EXECUTABLE): Added /manifestdependency linkder option if WIN32.
 
 2020-03-26  Commit Queue  <commit-queue@webkit.org>
 
@@ -1239,7 +1239,7 @@
         clang-cl doesn't support #pragma comment(linker, "/manifestdependency ..").
         Use an linker option instead.
 
-        * Source/cmake/WebKitMacros.cmake (WEBKIT_EXECUTABLE): Added -manifestdependency linkder option if WIN32.
+        * Source/cmake/CyberKitMacros.cmake (WEBKIT_EXECUTABLE): Added -manifestdependency linkder option if WIN32.
 
 2020-03-23  Michael Catanzaro  <mcatanzaro@gnome.org>
 
@@ -1299,7 +1299,7 @@
         be sent to the Systemd Journal. To retrieve media logs for
         instance, this command can be used:
 
-        $ journalctl WEBKIT_SUBSYSTEM=WebKitGTK WEBKIT_CHANNEL=Media
+        $ journalctl WEBKIT_SUBSYSTEM=CyberKitGTK WEBKIT_CHANNEL=Media
 
         * Source/cmake/FindSystemd.cmake: Added.
         * Source/cmake/OptionsGTK.cmake:
@@ -1307,7 +1307,7 @@
 
 2020-03-16  Keith Rollin  <krollin@apple.com>
 
-        Remove support for WebKitSystemInterface
+        Remove support for CyberKitSystemInterface
         https://bugs.webkit.org/show_bug.cgi?id=208894
         <rdar://problem/60297590>
 
@@ -1338,7 +1338,7 @@
         * Source/cmake/FindOpenXR.cmake: Added.
         * Source/cmake/OptionsWPE.cmake: Added mandatory OpenXR dependency if
         WEBXR is enabled exposing USE_OPENXR to the build.
-        * Source/cmake/WebKitFeatures.cmake: Added ENABLE_WEBXR.
+        * Source/cmake/CyberKitFeatures.cmake: Added ENABLE_WEBXR.
         * Source/cmake/tools/vsprops/FeatureDefines.props: Ditto.
         * Source/cmake/tools/vsprops/FeatureDefinesCairo.props: Ditto.
 
@@ -1352,7 +1352,7 @@
         Change the warning when ccache is not installed to a status message. We shouldn't be
         printing warnings except when there is an actual problem.
 
-        * Source/cmake/WebKitCCache.cmake:
+        * Source/cmake/CyberKitCCache.cmake:
 
 2020-03-13  Konstantin Tokarev  <annulen@yandex.ru>
 
@@ -1427,7 +1427,7 @@
         Sync feature defines with the FeatureDefines.xcconfig files present in the
         repository.
 
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2020-03-09  Don Olmstead  <don.olmstead@sony.com>
 
@@ -1445,7 +1445,7 @@
         * Source/cmake/OptionsFTW.cmake:
         * Source/cmake/OptionsMac.cmake:
         * Source/cmake/OptionsWin.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2020-03-09  Antoine Quint  <graouts@apple.com>
 
@@ -1458,7 +1458,7 @@
         * Source/cmake/OptionsGTK.cmake:
         * Source/cmake/OptionsMac.cmake:
         * Source/cmake/OptionsWPE.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2020-03-03  Fujii Hironori  <fujii.hironori@gmail.com>
 
@@ -1516,7 +1516,7 @@
 
         The fix is to wrap the output variables in the quotes when unboxing them in the if.
 
-        * Source/cmake/WebKitCCache.cmake:
+        * Source/cmake/CyberKitCCache.cmake:
 
 2020-02-27  Per Arne Vollan  <pvollan@apple.com>
 
@@ -1527,17 +1527,17 @@
 
         Set framework headers directory for AppleWin build.
 
-        * Source/cmake/target/TargetJavaScriptCore.cmake:
+        * Source/cmake/target/TargetCyberScriptCore.cmake:
         * Source/cmake/target/TargetWTF.cmake:
 
 2020-02-27  Don Olmstead  <don.olmstead@sony.com>
 
-        [CMake] Add WebKit::PAL target
+        [CMake] Add CyberKit::PAL target
         https://bugs.webkit.org/show_bug.cgi?id=198493
 
         Reviewed by Michael Catanzaro.
 
-        Define WebKit::PAL target for Apple internal Windows builds.
+        Define CyberKit::PAL target for Apple internal Windows builds.
 
         * Source/cmake/target/PAL.cmake: Added.
 
@@ -1550,7 +1550,7 @@
 
         Add a MiniBrowser derived sources directory.
 
-        * Source/cmake/WebKitFS.cmake:
+        * Source/cmake/CyberKitFS.cmake:
 
 2020-02-27  Adrian Perez de Castro  <aperez@igalia.com>
 
@@ -1599,7 +1599,7 @@
 
         Reviewed by Don Olmstead.
 
-        icu.cmake is removed in r256731. Use find_package + ICU since WebKit offers find_package implementation
+        icu.cmake is removed in r256731. Use find_package + ICU since CyberKit offers find_package implementation
         which can find appropriate system-installed ICU.
 
         * Source/cmake/OptionsFTW.cmake:
@@ -1628,7 +1628,7 @@
         set the ccache compiler prefix. Also export CCACHE_SLOPPINESS=time_macros if its not
         defined to other thing on the environment and add a some logging of related messages.
 
-        * Source/cmake/WebKitCCache.cmake:
+        * Source/cmake/CyberKitCCache.cmake:
 
 2020-02-20  Don Olmstead  <don.olmstead@sony.com>
 
@@ -1673,7 +1673,7 @@
         sccache is added, enabled when the WEBKIT_USE_SCCACHE environment
         variable is set to YES.
 
-        * Source/cmake/WebKitCCache.cmake:
+        * Source/cmake/CyberKitCCache.cmake:
 
 2020-02-17  Don Olmstead  <don.olmstead@sony.com>
 
@@ -1682,14 +1682,14 @@
 
         Reviewed by Darin Adler.
 
-        Add WebKitFindPackage.cmake which wraps CMake's find_package to provide targets
+        Add CyberKitFindPackage.cmake which wraps CMake's find_package to provide targets
         for common libraries.
 
         Rationale:
         1. There are a number of libraries which are found using CMake's internal Find modules
            that contain targets but not all of them are available in the minimum version of
            CMake we support, 3.10.
-        2. Updating to CMake 3.12 or higher is not possible due to the WebKit GTK's support
+        2. Updating to CMake 3.12 or higher is not possible due to the CyberKit GTK's support
            policy. It looks like the next time we can bump the version is spring 2021.
         3. Apple builds, both Mac and Windows, have libraries that won't be found using the
            stock CMake modules. AppleWin also has internal builds where all libraries have
@@ -1706,8 +1706,8 @@
 
         * Source/cmake/OptionsAppleWin.cmake:
         * Source/cmake/OptionsPlayStation.cmake:
-        * Source/cmake/WebKitCommon.cmake:
-        * Source/cmake/WebKitFindPackage.cmake: Added.
+        * Source/cmake/CyberKitCommon.cmake:
+        * Source/cmake/CyberKitFindPackage.cmake: Added.
         * Source/cmake/target/icu.cmake: Removed.
 
 2020-02-14  Don Olmstead  <don.olmstead@sony.com>
@@ -1731,7 +1731,7 @@
         -Wno-noexcept-type is a C++-specific flag that should not be passed to the C compiler. This
         causes a warning spam in GCC 10.
 
-        * Source/cmake/WebKitCompilerFlags.cmake:
+        * Source/cmake/CyberKitCompilerFlags.cmake:
 
 2020-02-10  Enrique Ocaña González  <eocanha@igalia.com>
 
@@ -1752,20 +1752,20 @@
 
 2020-02-05  Don Olmstead  <don.olmstead@sony.com>
 
-        [PlayStation] Build a shared JavaScriptCore
+        [PlayStation] Build a shared CyberScriptCore
         https://bugs.webkit.org/show_bug.cgi?id=198446
 
         Reviewed by Fujii Hironori.
 
         Compile bmalloc and WTF as OBJECT libraries that are then linked into a shared
-        JavaScriptCore. Using OBJECT libraries is a modern CMake way to have the behavior
+        CyberScriptCore. Using OBJECT libraries is a modern CMake way to have the behavior
         of --whole-archive.
 
         * Source/cmake/OptionsPlayStation.cmake:
 
 2020-02-04  Don Olmstead  <don.olmstead@sony.com>
 
-        [PlayStation] Enable TestWebKit
+        [PlayStation] Enable TestCyberKit
         https://bugs.webkit.org/show_bug.cgi?id=207211
 
         Reviewed by Ross Kirsling.
@@ -1791,13 +1791,13 @@
 
         Reviewed by Konstantin Tokarev.
 
-        WebKit needs OpenJPEG 2.2.0 or later versions, but it is possible for a
+        CyberKit needs OpenJPEG 2.2.0 or later versions, but it is possible for a
         system to have both OpenJPEG 1 and OpenJPEG 2 installed. However, some
         distributions do not put OpenJPEG 1 under a versioned directory and
         put its header file directly under /usr/include or /usr/local/include.
         Since CMake prefers its prefixes to paths given in HINTS, it is possible
         that openjpeg.h from OpenJPEG 1 is found before the one from OpenJPEG 2,
-        causing WebKit to fail to build because of using the wrong header file.
+        causing CyberKit to fail to build because of using the wrong header file.
 
         Resolve the problem by checking opj_config.h instead of openjpeg.h.
         OpenJPEG 1.5 does not have opj_config.h, so only OpenJPEG 2 can be
@@ -1813,12 +1813,12 @@
 
         Reviewed by Konstantin Tokarev.
 
-        Use _PRIVATE_LIBRARIES to when creating a WebKit target to specify privately linked
-        libraries. This fits with the current conventions in WebKit for CMake libraries and
+        Use _PRIVATE_LIBRARIES to when creating a CyberKit target to specify privately linked
+        libraries. This fits with the current conventions in CyberKit for CMake libraries and
         prevents appending to _LIBRARIES with a visibility modifier which likely has
         unintended consequences.
 
-        * Source/cmake/WebKitMacros.cmake:
+        * Source/cmake/CyberKitMacros.cmake:
 
 2020-01-30  Ross Kirsling  <ross.kirsling@sony.com>
 
@@ -1919,7 +1919,7 @@
 
         * Source/cmake/OptionsFTW.cmake:
         * Source/cmake/OptionsMac.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2020-01-20  Adrian Perez de Castro  <aperez@igalia.com>
 
@@ -1929,13 +1929,13 @@
 
 2020-01-16  Don Olmstead  <don.olmstead@sony.com>
 
-        [PlayStation] Enable WebKit
+        [PlayStation] Enable CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=205965
 
         Reviewed by Ross Kirsling.
 
-        Turn on build WebKit for the PlayStation port. Temporarily turn off API tests
-        until the WebKit tests are added.
+        Turn on build CyberKit for the PlayStation port. Temporarily turn off API tests
+        until the CyberKit tests are added.
 
         * Source/cmake/OptionsPlayStation.cmake:
 
@@ -1967,12 +1967,12 @@
         Reviewed by Brent Fulgham.
 
         This patch has been created by don.olmstead@sony.com and pvollan@apple.com. Add target files for WTF and
-        JavaScriptCore. Also, to make sure headers are copied to the forwarding headers directory, add the CMake
+        CyberScriptCore. Also, to make sure headers are copied to the forwarding headers directory, add the CMake
         keywork ALL when adding custom target for copying files.
 
-        * Source/cmake/TargetJavaScriptCore.cmake: Added.
+        * Source/cmake/TargetCyberScriptCore.cmake: Added.
         * Source/cmake/TargetWTF.cmake: Added.
-        * Source/cmake/WebKitMacros.cmake:
+        * Source/cmake/CyberKitMacros.cmake:
 
 2020-01-10  Dean Jackson  <dino@apple.com>
 
@@ -2072,7 +2072,7 @@
 
         * Source/cmake/OptionsGTK.cmake:
         * Source/cmake/OptionsWPE.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2020-01-06  Yoshiaki Jitsukawa  <yoshiaki.jitsukawa@sony.com>
 
@@ -2085,7 +2085,7 @@
 
         Find HarfBuzz::ICU component to fix cmake errors.
 
-        Make the WebCore and WebKit builds optional.
+        Make the CyberCore and CyberKit builds optional.
 
         * Source/cmake/OptionsPlayStation.cmake:
 
@@ -2132,28 +2132,28 @@
 
 2020-01-03  Simon Fraser  <simon.fraser@apple.com>
 
-        Add some shared schemes to the WebKit.xcworkspace
+        Add some shared schemes to the CyberKit.xcworkspace
         https://bugs.webkit.org/show_bug.cgi?id=205698
 
         Reviewed by Tim Horton.
 
-        Make WebKit.xcworkspace show the following schemes by default:
+        Make CyberKit.xcworkspace show the following schemes by default:
             All Source
             All Tools
             WTF
-            JavaScriptCore
-            WebCore
-            WebKit
-            WebKitLegacy
+            CyberScriptCore
+            CyberCore
+            CyberKit
+            CyberKitLegacy
             DumpRenderTree
-            WebKitTestRunner
-            TestWebKitAPI
+            CyberKitTestRunner
+            TestCyberKitAPI
             MiniBrowser
             MobileMiniBrowser.
             
         Also remove the MobileMiniBrowserUITests scheme.
 
-        * WebKit.xcworkspace/xcshareddata/xcschemes/All Source.xcscheme:
+        * CyberKit.xcworkspace/xcshareddata/xcschemes/All Source.xcscheme:
 
 2019-12-22  Jeff Miller  <jeffm@apple.com>
 
@@ -2195,7 +2195,7 @@
         
         Let Xcode have its way with the workspace file, after the libANGLE rename.
 
-        * WebKit.xcworkspace/xcshareddata/xcschemes/All Source.xcscheme:
+        * CyberKit.xcworkspace/xcshareddata/xcschemes/All Source.xcscheme:
 
 2019-12-12  Don Olmstead  <don.olmstead@sony.com>
 
@@ -2273,7 +2273,7 @@
 
         * Source/cmake/OptionsFTW.cmake:
         * Source/cmake/OptionsMac.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2019-11-27  Alejandro G. Castro  <alex@igalia.com>
 
@@ -2347,21 +2347,21 @@
 
 2019-11-05  Fujii Hironori  <Hironori.Fujii@sony.com>
 
-        [Win][CMake] Build WebCore as an OBJECT library for WinCairo port
+        [Win][CMake] Build CyberCore as an OBJECT library for WinCairo port
         https://bugs.webkit.org/show_bug.cgi?id=203663
 
         Reviewed by Ross Kirsling.
 
-        WebCore is using __declspec(dllexport) to export symbols, but it
+        CyberCore is using __declspec(dllexport) to export symbols, but it
         is built as a static library rather than a DLL. If any symbols in
-        an object file aren't referenced from WebKit.dll, they won't be
-        included in WebKit.dll.
+        an object file aren't referenced from CyberKit.dll, they won't be
+        included in CyberKit.dll.
 
         This issue can be solved either by using OBJECT library for
-        WebCore or using /WHOLEARCHIVE:WebCore.lib for WebKit.
+        CyberCore or using /WHOLEARCHIVE:CyberCore.lib for CyberKit.
 
         This change takes OBJECT library approach becuase it doesn't
-        generate unnecessary static libs (WebCore.lib) and it's already
+        generate unnecessary static libs (CyberCore.lib) and it's already
         used for non-unified source builds for the library size issue (Bug
         196866 Comment 4).
 
@@ -2370,7 +2370,7 @@
         well with makesafeseh.obj.
 
         * Source/cmake/OptionsWin.cmake: Removed code overriding library types.
-        * Source/cmake/OptionsWinCairo.cmake: Use OBJECT library types for WebCore and WebCoreTestSupport.
+        * Source/cmake/OptionsWinCairo.cmake: Use OBJECT library types for CyberCore and CyberCoreTestSupport.
 
 2019-11-02  Devin Rousso  <drousso@apple.com>
 
@@ -2383,12 +2383,12 @@
         Original patch by Matt Baker <mattbaker@apple.com>.
 
         * Source/cmake/OptionsMac.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
         Add `ENABLE_INSPECTOR_TELEMETRY`, which is only enabled for macOS.
 
 2019-11-01  Tim Horton  <timothy_horton@apple.com>
 
-        macCatalyst: Get TestWebKitAPI building
+        macCatalyst: Get TestCyberKitAPI building
         https://bugs.webkit.org/show_bug.cgi?id=203728
 
         Reviewed by Alexey Proskuryakov.
@@ -2404,11 +2404,11 @@
         Rubber-stamped by Tim Horton.
 
         * Source/cmake/OptionsMac.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2019-10-31  Alex Christensen  <achristensen@webkit.org>
 
-        CMake build should make WebKit framework able to be used by Safari
+        CMake build should make CyberKit framework able to be used by Safari
         https://bugs.webkit.org/show_bug.cgi?id=203685
 
         Rubber-stamped by Tim Horton.
@@ -2445,7 +2445,7 @@
 
         * Source/cmake/OptionsGTK.cmake:
         * Source/cmake/OptionsWPE.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2019-10-22  Carlos Garcia Campos  <cgarcia@igalia.com>
 
@@ -2468,7 +2468,7 @@
 
 2019-10-21  Alicia Boya García  <aboya@igalia.com>
 
-        [MSE][GStreamer] Revert WebKitMediaSrc rework temporarily
+        [MSE][GStreamer] Revert CyberKitMediaSrc rework temporarily
         https://bugs.webkit.org/show_bug.cgi?id=203078
 
         Reviewed by Carlos Garcia Campos.
@@ -2509,7 +2509,7 @@
 
 2019-10-02  Alex Christensen  <achristensen@webkit.org>
 
-        CMake-built WebKit.framework should launch XPC services successfully
+        CMake-built CyberKit.framework should launch XPC services successfully
         https://bugs.webkit.org/show_bug.cgi?id=202490
 
         Rubber-stamped by Tim Horton.
@@ -2528,7 +2528,7 @@
         * Source/cmake/OptionsFTW.cmake:
         * Source/cmake/OptionsPlayStation.cmake:
         * Source/cmake/OptionsWin.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2019-10-02  Zan Dobersek  <zdobersek@igalia.com>
 
@@ -2647,18 +2647,18 @@
 
 2019-08-16  Ross Kirsling  <ross.kirsling@sony.com>
 
-        [Win] WebCoreTestSupport is too big to link
+        [Win] CyberCoreTestSupport is too big to link
         https://bugs.webkit.org/show_bug.cgi?id=200820
 
         Reviewed by Don Olmstead.
 
         * Source/cmake/OptionsWin.cmake:
-        As with WebCore itself, build WebCoreTestSupport as an object library when unified builds are disabled
+        As with CyberCore itself, build CyberCoreTestSupport as an object library when unified builds are disabled
         (and we haven't explicitly asked to build it as a shared library).
 
 2019-08-08  Brent Fulgham  <bfulgham@apple.com>
 
-        [FTW] Get WebKit, WebKit2, and MiniBrowser building and executing
+        [FTW] Get CyberKit, CyberKit2, and MiniBrowser building and executing
         https://bugs.webkit.org/show_bug.cgi?id=200539
         <rdar://problem/54082550>
 
@@ -2690,7 +2690,7 @@
 
         Reviewed by Michael Catanzaro.
 
-        Although WebKitCompilerFlags.cmake adds "-Wl,--no-undefined" to
+        Although CyberKitCompilerFlags.cmake adds "-Wl,--no-undefined" to
         CMAKE_SHARED_LINKER_FLAGS, it wasn't effective because
         OptionsCommon.cmake inadvertently override the value with
         CMAKE_EXE_LINKER_FLAGS as:
@@ -2731,7 +2731,7 @@
         Reviewed by Konstantin Tokarev.
 
         * Source/cmake/OptionsWPE.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2019-07-10  Carlos Alberto Lopez Perez  <clopez@igalia.com>
 
@@ -2749,11 +2749,11 @@
         * Source/cmake/OptionsFTW.cmake: Enable the feature.
         * Source/cmake/OptionsMac.cmake: Use the new default.
         * Source/cmake/OptionsWin.cmake: Enable for WinCairo only.
-        * Source/cmake/WebKitFeatures.cmake: Enable it Globally
+        * Source/cmake/CyberKitFeatures.cmake: Enable it Globally
 
 2019-06-28  Brent Fulgham  <bfulgham@apple.com>
 
-        [FTW] Build WebCore
+        [FTW] Build CyberCore
         https://bugs.webkit.org/show_bug.cgi?id=199199
 
         Reviewed by Don Olmstead.
@@ -2778,13 +2778,13 @@
         * Source/cmake/OptionsGTK.cmake:
         * Source/cmake/OptionsPlayStation.cmake:
         * Source/cmake/OptionsWin.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
         * Source/cmake/tools/vsprops/FeatureDefines.props:
         * Source/cmake/tools/vsprops/FeatureDefinesCairo.props:
 
 2019-06-27  Don Olmstead  <don.olmstead@sony.com>
 
-        [FTW] Build JavaScriptCore
+        [FTW] Build CyberScriptCore
         https://bugs.webkit.org/show_bug.cgi?id=199254
 
         Reviewed by Brent Fulgham.
@@ -2823,11 +2823,11 @@
 
         * Source/cmake/OptionsCommon.cmake:
         * Source/cmake/OptionsMSVC.cmake:
-        * Source/cmake/WebKitCompilerFlags.cmake:
+        * Source/cmake/CyberKitCompilerFlags.cmake:
 
 2019-06-25  Michael Catanzaro  <mcatanzaro@igalia.com>
 
-        Fully rename WebKitGTK+ -> WebKitGTK everywhere
+        Fully rename CyberKitGTK+ -> CyberKitGTK everywhere
         https://bugs.webkit.org/show_bug.cgi?id=199159
 
         Reviewed by Carlos Garcia Campos.
@@ -2930,7 +2930,7 @@
         Reviewed by Ryosuke Niwa.
 
         * Source/cmake/OptionsMac.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2019-06-10  Philippe Normand  <pnormand@igalia.com>
 
@@ -2972,24 +2972,24 @@
 
         Reviewed by Konstantin Tokarev.
 
-        Add a macro to help create the WebKit::targets in CMake.
+        Add a macro to help create the CyberKit::targets in CMake.
 
         * CMakeLists.txt:
-        * Source/cmake/WebKitMacros.cmake:
+        * Source/cmake/CyberKitMacros.cmake:
 
 2019-05-29  Don Olmstead  <don.olmstead@sony.com>
 
-        Remove ENABLE definitions from WebKit config files
+        Remove ENABLE definitions from CyberKit config files
         https://bugs.webkit.org/show_bug.cgi?id=197858
 
         Reviewed by Simon Fraser.
 
-        Add ENABLE flags into WebKitFeatures.cmake and set the values for GTK and WPE according
+        Add ENABLE flags into CyberKitFeatures.cmake and set the values for GTK and WPE according
         to what was present in the config files.
 
         * Source/cmake/OptionsGTK.cmake:
         * Source/cmake/OptionsWPE.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2019-05-27  Carlos Garcia Campos  <cgarcia@igalia.com>
 
@@ -3017,11 +3017,11 @@
 
         Reviewed by Konstantin Tokarev.
 
-        Add WEBKIT_COPY_FILES to WebKitMacros so it is available to all CMake code. Add
+        Add WEBKIT_COPY_FILES to CyberKitMacros so it is available to all CMake code. Add
         bmalloc_FRAMEWORK_HEADERS_DIR for specifying the location to copy bmalloc headers to.
 
-        * Source/cmake/WebKitFS.cmake:
-        * Source/cmake/WebKitMacros.cmake:
+        * Source/cmake/CyberKitFS.cmake:
+        * Source/cmake/CyberKitMacros.cmake:
 
 2019-05-21  Don Olmstead  <don.olmstead@sony.com>
 
@@ -3063,7 +3063,7 @@
 
         Reviewed by Michael Catanzaro.
 
-        Update CMake minimum required to 3.7. 3.7 has a FindICU module so the WebKit one
+        Update CMake minimum required to 3.7. 3.7 has a FindICU module so the CyberKit one
         is removed. For non-Apple ports this just requires adding individual components of
         ICU to find_package(ICU). For Apple ports the module does not work so the targets
         created in FindICU are mirrored in target/icu.cmake.
@@ -3088,7 +3088,7 @@
         Reviewed by Carlos Garcia Campos.
 
         * Source/cmake/DetectSSE2.cmake: Added.
-        * Source/cmake/WebKitCompilerFlags.cmake: Detect SSE2 support and
+        * Source/cmake/CyberKitCompilerFlags.cmake: Detect SSE2 support and
         add SSE2 to the global compiler flags.
 
 2019-05-08  Don Olmstead  <don.olmstead@sony.com>
@@ -3123,7 +3123,7 @@
         Also update build-webkit and the makefiles with the foundation for
         automatically using XCBuild when the conditions allow it. This latter
         facility is currently turned off until Xcode fully supports building
-        WebKit with XCBuild.
+        CyberKit with XCBuild.
 
         * Makefile.shared:
 
@@ -3179,7 +3179,7 @@
         Add support to use ld.lld to build with LTO.
 
         * Source/cmake/OptionsCommon.cmake:
-        * Source/cmake/WebKitCompilerFlags.cmake:
+        * Source/cmake/CyberKitCompilerFlags.cmake:
 
 2019-05-02  Don Olmstead  <don.olmstead@sony.com>
 
@@ -3196,7 +3196,7 @@
         This opens the macro up for use by third party libraries and for copying other files
         to a destination.
 
-        * Source/cmake/WebKitMacros.cmake:
+        * Source/cmake/CyberKitMacros.cmake:
 
 2019-05-01  Stephan Szabo  <stephan.szabo@sony.com>
 
@@ -3230,7 +3230,7 @@
 
         Calls to add_dependencies were not happening.
 
-        * Source/cmake/WebKitMacros.cmake:
+        * Source/cmake/CyberKitMacros.cmake:
 
 2019-04-29  Basuke Suzuki  <Basuke.Suzuki@sony.com>
 
@@ -3267,7 +3267,7 @@
         Add WEBKIT_WRAP_EXECUTABLE macro to support Windows targets which use a DLLLauncherMain to
         launch the executable.
 
-        * Source/cmake/WebKitMacros.cmake:
+        * Source/cmake/CyberKitMacros.cmake:
 
 2019-04-25  Fujii Hironori  <Hironori.Fujii@sony.com>
 
@@ -3302,7 +3302,7 @@
         Reviewed by Darin Adler.
 
         * Source/cmake/OptionsMSVC.cmake:
-        * Source/cmake/WebKitCompilerFlags.cmake:
+        * Source/cmake/CyberKitCompilerFlags.cmake:
 
 2019-04-24  Carlos Garcia Campos  <cgarcia@igalia.com>
 
@@ -3317,24 +3317,24 @@
 
 2019-04-23  Don Olmstead  <don.olmstead@sony.com>
 
-        [CMake][Win] Use target oriented design for WebKit
+        [CMake][Win] Use target oriented design for CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=197173
 
         Reviewed by Alex Christensen.
 
-        Override WebKit_DERIVED_SOUCES_DIR within WinCairo in support of a target
+        Override CyberKit_DERIVED_SOUCES_DIR within WinCairo in support of a target
         oriented design.
 
         * Source/cmake/OptionsWinCairo.cmake:
 
 2019-04-20  Don Olmstead  <don.olmstead@sony.com>
 
-        [CMake][Win] Use target oriented design for WebKitLegacy
+        [CMake][Win] Use target oriented design for CyberKitLegacy
         https://bugs.webkit.org/show_bug.cgi?id=197112
 
         Reviewed by Konstantin Tokarev.
 
-        Override WebKitLegacy_DERIVED_SOURCES_DIR within WinCairo in support of a target
+        Override CyberKitLegacy_DERIVED_SOURCES_DIR within WinCairo in support of a target
         oriented design.
 
         * Source/cmake/OptionsWinCairo.cmake:
@@ -3347,12 +3347,12 @@
         Reviewed by Fujii Hironori.
 
         * Source/cmake/OptionsWin.cmake:
-        Build WebCore as an object library when unified builds are disabled
+        Build CyberCore as an object library when unified builds are disabled
         (and we haven't explicitly asked to build it as a shared library).
         This is necessary for two reasons:
-        - Non-unified WebCore.lib is too large for the MSVC linker to create (>4GB).
-        - Some WebCore object files are not actually used, but DumpRenderTree and TestRunnerInjectedBundle
-          still expect that their symbols will be re-exported via WebKit[Legacy].
+        - Non-unified CyberCore.lib is too large for the MSVC linker to create (>4GB).
+        - Some CyberCore object files are not actually used, but DumpRenderTree and TestRunnerInjectedBundle
+          still expect that their symbols will be re-exported via CyberKit[Legacy].
 
 2019-04-17  Jer Noble  <jer.noble@apple.com>
 
@@ -3370,44 +3370,44 @@
 
         Reviewed by Konstantin Tokarev.
 
-        Define WTF_SCRIPTS_DIR in WebKitFS.cmake and use that within the WEBKIT_COMPUTE_SOURCES
+        Define WTF_SCRIPTS_DIR in CyberKitFS.cmake and use that within the WEBKIT_COMPUTE_SOURCES
         macro. This allows it to be overridden by a port such as the AppleWin internal build.
 
         * Source/cmake/OptionsAppleWin.cmake:
         * Source/cmake/OptionsWinCairo.cmake:
-        * Source/cmake/WebKitFS.cmake:
-        * Source/cmake/WebKitMacros.cmake:
+        * Source/cmake/CyberKitFS.cmake:
+        * Source/cmake/CyberKitMacros.cmake:
 
 2019-04-15  Don Olmstead  <don.olmstead@sony.com>
 
-        [CMake] WebCore derived sources should only be referenced inside WebCore
+        [CMake] CyberCore derived sources should only be referenced inside CyberCore
         https://bugs.webkit.org/show_bug.cgi?id=196904
 
         Reviewed by Konstantin Tokarev.
 
-        Override WebCore_DERIVED_SOURCES_DIR for WinCairo.
+        Override CyberCore_DERIVED_SOURCES_DIR for WinCairo.
 
         * Source/cmake/OptionsWinCairo.cmake:
 
 2019-04-14  Don Olmstead  <don.olmstead@sony.com>
 
-        [CMake] JavaScriptCore derived sources should only be referenced inside JavaScriptCore
+        [CMake] CyberScriptCore derived sources should only be referenced inside CyberScriptCore
         https://bugs.webkit.org/show_bug.cgi?id=196742
 
         Reviewed by Konstantin Tokarev.
 
-        Migrate to using JavaScriptCore_DERIVED_SOURCES_DIR instead of DERIVED_SOURCES_JAVASCRIPTCORE_DIR
-        to support moving the JavaScriptCore derived sources outside of a shared directory.
+        Migrate to using CyberScriptCore_DERIVED_SOURCES_DIR instead of DERIVED_SOURCES_JAVASCRIPTCORE_DIR
+        to support moving the CyberScriptCore derived sources outside of a shared directory.
         This is in support of the target oriented design refactoring.
 
         WinCairo is explicitly overriding the value as a canary for this setup.
 
-        Also move JavaScriptCore_SCRIPTS_DIR to WebKitFS to remove logic setting it in other projects.
+        Also move CyberScriptCore_SCRIPTS_DIR to CyberKitFS to remove logic setting it in other projects.
 
         * Source/PlatformWin.cmake:
         * Source/cmake/OptionsAppleWin.cmake:
         * Source/cmake/OptionsWinCairo.cmake:
-        * Source/cmake/WebKitFS.cmake:
+        * Source/cmake/CyberKitFS.cmake:
 
 2019-04-10  Michael Catanzaro  <mcatanzaro@igalia.com>
 
@@ -3431,11 +3431,11 @@
         WEBKIT_COMPUTE_SOURCES is using ${DERIVED_SOURCES_DIR} directly. Instead it should
         rely on the directory specified by the target.
 
-        * Source/cmake/WebKitFS.cmake:
+        * Source/cmake/CyberKitFS.cmake:
         Add variables that can be expanded within CMake to the derived sources directory for
         a target.
 
-        * Source/cmake/WebKitMacros.cmake:
+        * Source/cmake/CyberKitMacros.cmake:
         Use variable expansion rather than ${DERIVED_SOURCES_DIR} to determine the target's
         derived sources directory.
 
@@ -3447,7 +3447,7 @@
         Reviewed by Konstantin Tokarev.
 
         * Source/cmake/OptionsWinCairo.cmake:
-        * Source/cmake/WebKitFS.cmake:
+        * Source/cmake/CyberKitFS.cmake:
 
 2019-04-09  Don Olmstead  <don.olmstead@sony.com>
 
@@ -3479,8 +3479,8 @@
         towards making all CMake ports behave like this.
 
         * Source/cmake/OptionsWinCairo.cmake:
-        * Source/cmake/WebKitFS.cmake:
-        * Source/cmake/WebKitMacros.cmake:
+        * Source/cmake/CyberKitFS.cmake:
+        * Source/cmake/CyberKitMacros.cmake:
 
 2019-04-08  Xan Lopez  <xan@igalia.com>
 
@@ -3518,7 +3518,7 @@
         This file is added here to support AppleWin internal builds which invoke CMake on
         each directory.
 
-        * Source/cmake/WebKitFS.cmake:
+        * Source/cmake/CyberKitFS.cmake:
         * Source/cmake/frameworks/WTF.cmake: Added.
 
 2019-04-03  Myles C. Maxfield  <mmaxfield@apple.com>
@@ -3530,7 +3530,7 @@
 
         This CSS property is nonstandard and not used.
 
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2019-04-02  Fujii Hironori  <Hironori.Fujii@sony.com>
 
@@ -3548,7 +3548,7 @@
         remove the DERIVED_SOURCE_DIRECTORIES parameter. And list all
         generated headers explicitly which need to be copied.
 
-        * Source/cmake/WebKitMacros.cmake: Removed
+        * Source/cmake/CyberKitMacros.cmake: Removed
         DERIVED_SOURCE_DIRECTORIES parameter of
         WEBKIT_MAKE_FORWARDING_HEADERS. Accept absolute paths for FILES
         parameter.
@@ -3560,10 +3560,10 @@
 
         Reviewed by Darin Adler.
 
-        The parameter was only for WebCore/ForwardingHeaders which was
+        The parameter was only for CyberCore/ForwardingHeaders which was
         removed in Bug 182347.
 
-        * Source/cmake/WebKitMacros.cmake: Remove unused EXTRA_DIRECTORIES parameter.
+        * Source/cmake/CyberKitMacros.cmake: Remove unused EXTRA_DIRECTORIES parameter.
 
 2019-04-01  Stephan Szabo  <stephan.szabo@sony.com>
 
@@ -3586,7 +3586,7 @@
         Reviewed by Dean Jackson.
 
         * Source/cmake/OptionsMac.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
         * Source/cmake/tools/vsprops/FeatureDefines.props:
         * Source/cmake/tools/vsprops/FeatureDefinesCairo.props:
 
@@ -3599,7 +3599,7 @@
 
         Add ENABLE_RESIZE_OBSERVER.
 
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2019-03-25  Adrian Perez de Castro  <aperez@igalia.com>
 
@@ -3663,7 +3663,7 @@
 
         * Source/cmake/OptionsMac.cmake:
         * Source/cmake/OptionsWin.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
         * Source/cmake/tools/vsprops/FeatureDefines.props:
         * Source/cmake/tools/vsprops/FeatureDefinesCairo.props:
 
@@ -3683,7 +3683,7 @@
         Building WinCairo with sanitizers enabled also needs CLANG_LIB_PATH set to the clang compiler runtime library folder.
         e.g. pass `--cmakeargs="-DCLANG_LIB_PATH=\"C:\Program Files\LLVM\lib\clang\7.0.1\lib\windows\""` to build-webkit
 
-        * Source/cmake/WebKitCompilerFlags.cmake:
+        * Source/cmake/CyberKitCompilerFlags.cmake:
 
 2019-03-18  Adrian Perez de Castro  <aperez@igalia.com>
 
@@ -3829,7 +3829,7 @@
 
         Disable warnings for changes to the ABI with GCC 7.1.
 
-        * Source/cmake/WebKitCompilerFlags.cmake:
+        * Source/cmake/CyberKitCompilerFlags.cmake:
 
 2019-02-25  Adrian Perez de Castro  <aperez@igalia.com>
 
@@ -3898,7 +3898,7 @@
 
         * Source/cmake/OptionsGTK.cmake: Enable CONTENT_EXTENSIONS by default.
         * Source/cmake/OptionsWPE.cmake: Ditto.
-        * Source/cmake/WebKitFeatures.cmake: Add a private CONTENT_EXTENSIONS option.
+        * Source/cmake/CyberKitFeatures.cmake: Add a private CONTENT_EXTENSIONS option.
 
 2019-02-07  Miguel Gomez  <magomez@igalia.com>
 
@@ -3933,7 +3933,7 @@
 
         Use baseline JIT by default on MIPS.
 
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2019-01-24  Carlos Garcia Campos  <cgarcia@igalia.com>
 
@@ -4018,21 +4018,21 @@
 
         Reviewed by Michael Catanzaro.
 
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-12-30  Yusuke Suzuki  <yusukesuzuki@slowstart.org>
 
-        gperf is only used in WebCore
+        gperf is only used in CyberCore
         https://bugs.webkit.org/show_bug.cgi?id=193061
 
         Reviewed by Don Olmstead.
 
-        gperf is only used in WebCore. So if the port does not have WebCore,
+        gperf is only used in CyberCore. So if the port does not have CyberCore,
         it is not necessary. For example, JSCOnly port does not require it.
         This patch removes gperf dependency in these ports by checking
         ENABLE_WEBCORE.
 
-        * Source/cmake/WebKitCommon.cmake:
+        * Source/cmake/CyberKitCommon.cmake:
 
 2018-12-28  Yusuke Suzuki  <yusukesuzuki@slowstart.org>
 
@@ -4041,12 +4041,12 @@
 
         Reviewed by Don Olmstead.
 
-        This patch adds ENABLE_UNIFIED_BUILDS option to cmake ports, which allows us to disable Unified Builds in WebKit.
+        This patch adds ENABLE_UNIFIED_BUILDS option to cmake ports, which allows us to disable Unified Builds in CyberKit.
         This makes `compile_commands.json` sane when the unified builds is disabled, and various tools can use this
         compilation database. For example, YouCompleteMe completion server can use it.
 
-        * Source/cmake/WebKitFeatures.cmake:
-        * Source/cmake/WebKitMacros.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
+        * Source/cmake/CyberKitMacros.cmake:
 
 2018-12-27  Alex Christensen  <achristensen@webkit.org>
 
@@ -4111,12 +4111,12 @@
 
 2018-12-10  Don Olmstead  <don.olmstead@sony.com>
 
-        [CMake] Add ENABLE_RESOURCE_LOAD_STATISTICS to WebKitFeatures.cmake
+        [CMake] Add ENABLE_RESOURCE_LOAD_STATISTICS to CyberKitFeatures.cmake
         https://bugs.webkit.org/show_bug.cgi?id=192574
 
         Reviewed by Michael Catanzaro.
 
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-12-10  Ross Kirsling  <ross.kirsling@sony.com>
 
@@ -4143,7 +4143,7 @@
 
 2018-12-06  Carlos Eduardo Ramalho  <cadubentzen@gmail.com>
 
-        REGRESSION(r231043): [GTK] Undefined references to WebCore::LayerRepresentation::* with -DENABLE_OPENGL=OFF builds
+        REGRESSION(r231043): [GTK] Undefined references to CyberCore::LayerRepresentation::* with -DENABLE_OPENGL=OFF builds
         https://bugs.webkit.org/show_bug.cgi?id=191997
 
         Reviewed by Philippe Normand.
@@ -4154,12 +4154,12 @@
 
 2018-12-05  Don Olmstead  <don.olmstead@sony.com>
 
-        [PlayStation] Enable WebCore
+        [PlayStation] Enable CyberCore
         https://bugs.webkit.org/show_bug.cgi?id=192384
 
         Reviewed by Brent Fulgham.
 
-        Adds CMake options for building WebCore on PlayStation.
+        Adds CMake options for building CyberCore on PlayStation.
 
         * Source/cmake/FindLibPSL.cmake:
         * Source/cmake/FindNghttp2.cmake: Copied from Source/cmake/FindWPE.cmake.
@@ -4175,7 +4175,7 @@
         Reviewed by Michael Catanzaro.
 
         Add gtk-doc to WPE port. This patch tries to reuse as much code from
-        WebKitGTK+ as possible.
+        CyberKitGTK+ as possible.
 
         * Source/PlatformGTK.cmake: include GtkDoc.cmake instead of defining macro.
         * Source/PlatformWPE.cmake: Added documentation generation.
@@ -4189,22 +4189,22 @@
 
         Reviewed by Michael Catanzaro.
 
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-12-01  Don Olmstead  <don.olmstead@sony.com>
 
-        Cleanup WebKit Features
+        Cleanup CyberKit Features
         https://bugs.webkit.org/show_bug.cgi?id=192262
 
         Reviewed by Michael Catanzaro.
 
-        Removes unused ENABLE flags from the listing in WebKitFeatures.cmake
+        Removes unused ENABLE flags from the listing in CyberKitFeatures.cmake
         and any other associated code. Synced the options in FeatureList.pm to
         the feature listing. Sorts the ENABLE flags.
 
         * Source/cmake/OptionsMac.cmake:
         * Source/cmake/OptionsWin.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
         * Source/cmake/tools/vsprops/FeatureDefines.props:
         * Source/cmake/tools/vsprops/FeatureDefinesCairo.props:
 
@@ -4218,7 +4218,7 @@
         * Source/cmake/OptionsGTK.cmake:
         * Source/cmake/OptionsWPE.cmake:
         * Source/cmake/OptionsWin.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-11-28  Michael Catanzaro  <mcatanzaro@igalia.com>
 
@@ -4229,7 +4229,7 @@
 
         Time for part #2! This change was defeated for GTK and WPE by the code that makes the
         options public. We have three options: (a) duplicate the architecture check currently in
-        WebKitFeatures.cmake in both OptionsGTK.cmake and OptionsWPE.cmake, (b) rely on the result
+        CyberKitFeatures.cmake in both OptionsGTK.cmake and OptionsWPE.cmake, (b) rely on the result
         of that check in OptionsGTK.cmake and OptionsWPE.cmake by using ENABLE_JIT_DEFAULT and
         USE_SYSTEM_MALLOC_DEFAULT, a fragile encapsulation violation, or (c) just make the options
         private. They have been public up until now because they needed to be turned off on
@@ -4237,7 +4237,7 @@
         whitelisted architectures, so they shouldn't be needed anymore.
 
         Note we have to hide ENABLE_SAMPLING_PROFILER as well, since it needs to match the value of
-        ENABLE_JIT. Again, this is handled properly in WebKitFeatures.cmake, and defeated here in
+        ENABLE_JIT. Again, this is handled properly in CyberKitFeatures.cmake, and defeated here in
         OptionsGTK.cmake. (This is not a problem for WPE.)
 
         * Source/cmake/OptionsGTK.cmake:
@@ -4256,7 +4256,7 @@
         * Source/cmake/OptionsGTK.cmake: Removed ENABLE_ACCESSIBILITY.
         * Source/cmake/OptionsWPE.cmake: Ditto.
         * Source/cmake/OptionsWin.cmake: Ditto.
-        * Source/cmake/WebKitFeatures.cmake: Ditto.
+        * Source/cmake/CyberKitFeatures.cmake: Ditto.
 
 2018-11-26  Alberto Garcia  <berto@igalia.com>
 
@@ -4268,7 +4268,7 @@
 
         Reviewed by Michael Catanzaro.
 
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-11-22  Carlos Garcia Campos  <cgarcia@igalia.com>
 
@@ -4286,11 +4286,11 @@
         Enable JIT by default on ARMv7/Linux after it was disabled with
         recent bytcode format change.
 
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-11-16  Don Olmstead  <don.olmstead@sony.com>
 
-        Add USE(LIBWPE) to WebCore
+        Add USE(LIBWPE) to CyberCore
         https://bugs.webkit.org/show_bug.cgi?id=191401
 
         Reviewed by Michael Catanzaro.
@@ -4310,7 +4310,7 @@
 
 2018-11-12  Takashi Komori  <Takashi.Komori@sony.com>
 
-        Resurrect WebKitTestRunner for Windows port
+        Resurrect CyberKitTestRunner for Windows port
         https://bugs.webkit.org/show_bug.cgi?id=189257
 
         Reviewed by Fujii Hironori.
@@ -4339,7 +4339,7 @@
         forced on all 32-bit platforms. Now enable LLInt again on
         ARMv7-Thumb2/Linux by default.
 
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-11-05  Michael Catanzaro  <mcatanzaro@igalia.com>
 
@@ -4368,12 +4368,12 @@
 
 2018-10-30  Don Olmstead  <don.olmstead@sony.com>
 
-        [PlayStation] Enable JavaScriptCore
+        [PlayStation] Enable CyberScriptCore
         https://bugs.webkit.org/show_bug.cgi?id=191072
 
         Reviewed by Brent Fulgham.
 
-        Add support for building the PlayStation port through JavaScriptCore.
+        Add support for building the PlayStation port through CyberScriptCore.
 
         * CMakeLists.txt:
         * Source/cmake/OptionsPlayStation.cmake: Added.
@@ -4388,7 +4388,7 @@
 
         Disable JIT by default on 32-bit platforms
 
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-10-27  Charlie Turner  <cturner@igalia.com>
 
@@ -4397,7 +4397,7 @@
 
         Unreviewed build update.
 
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-10-27  Charlie Turner  <cturner@igalia.com>
 
@@ -4435,7 +4435,7 @@
 
         Disable JIT by default on 32-bit platforms
 
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-10-25  Michael Catanzaro  <mcatanzaro@igalia.com>
 
@@ -4462,7 +4462,7 @@
         same effect in both compilers, -Wall and -Wextra should be
         speficied before all -Wno-* options.
 
-        * Source/cmake/WebKitCompilerFlags.cmake: Put -Wall and -Wextra
+        * Source/cmake/CyberKitCompilerFlags.cmake: Put -Wall and -Wextra
         options before all -Wno-* options.
         * Source/cmake/OptionsMSVC.cmake: Prepend /W4 option, instead of
         just replacing /W3 option.
@@ -4516,7 +4516,7 @@
 
         * Source/cmake/FindLibseccomp.cmake: Added.
         * Source/cmake/OptionsGTK.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-10-14  Yusuke Suzuki  <yusukesuzuki@slowstart.org>
 
@@ -4525,7 +4525,7 @@
 
         Reviewed by Saam Barati.
 
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-10-08  Justin Fan  <justin_fan@apple.com>
 
@@ -4534,7 +4534,7 @@
 
         Reviewed by Dean Jackson.
 
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-10-02  Philippe Normand  <pnormand@igalia.com>
 
@@ -4568,7 +4568,7 @@
 
         Reviewed by Michael Catanzaro.
 
-        * Source/cmake/WebKitCommon.cmake: Set Python_ADDITIONAL_VERSIONS
+        * Source/cmake/CyberKitCommon.cmake: Set Python_ADDITIONAL_VERSIONS
         to 3, so that a python3 binary will be found.
 
 2018-09-28  Yusuke Suzuki  <yusukesuzuki@slowstart.org>
@@ -4590,7 +4590,7 @@
         ENABLE_SAMPLING_PROFILER does not depend on ENABLE_JIT now since it can be
         used with LLInt ASM interpreter.
 
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-09-21  Mike Gorse  <mgorse@suse.com>
 
@@ -4599,7 +4599,7 @@
 
         Reviewed by Michael Catanzaro.
 
-        * Source/cmake/WebKitCommon.cmake: Allow python 3.
+        * Source/cmake/CyberKitCommon.cmake: Allow python 3.
 
 2018-09-20  Carlos Garcia Campos  <cgarcia@igalia.com>
 
@@ -4619,8 +4619,8 @@
 
         Removed a couple of empty directories left behind after r235892.
 
-        * WPEWebCore: Removed.
-        * downstream-WebCore: Removed.
+        * WPECyberCore: Removed.
+        * downstream-CyberCore: Removed.
 
 2018-09-10  Tim Horton  <timothy_horton@apple.com>
 
@@ -4659,8 +4659,8 @@
 
         * Source/cmake/OptionsAppleWin.cmake:
         * Source/cmake/OptionsWin.cmake:
-        * Source/cmake/WebKitCommon.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitCommon.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-08-28  Don Olmstead  <don.olmstead@sony.com>
 
@@ -4683,7 +4683,7 @@
         Reviewed by Wenson Hsieh.
 
         * Source/cmake/OptionsMac.cmake: Removed ENABLE_INPUT_TYPE_COLOR_POPOVER.
-        * Source/cmake/WebKitFeatures.cmake: Removed ENABLE_INPUT_TYPE_COLOR_POPOVER.
+        * Source/cmake/CyberKitFeatures.cmake: Removed ENABLE_INPUT_TYPE_COLOR_POPOVER.
 
 2018-08-27  Keith Rollin  <krollin@apple.com>
 
@@ -4693,7 +4693,7 @@
 
         Reviewed by Dan Bernstein.
 
-        Add support for building WebKit with LTO (Link Time Optimization) on
+        Add support for building CyberKit with LTO (Link Time Optimization) on
         macOS and iOS. Both variations are supported: "full" (which performs
         all the optimizations it can regardless of the cost) and "thin" (which
         sacrifices some optimizations in order to recover build time and
@@ -4706,14 +4706,14 @@
         - When using `make` from the command line, include
           WK_LTO_MODE={none,thin,full}. For example, `make WK_LTO_MODE=full
           release`. As when specifying debug/release, the LTO configuration
-          information is written to the WebKitBuild directory and is used as
+          information is written to the CyberKitBuild directory and is used as
           the default on the next build if a new setting is not specified.
 
         - When using `build-webkit`, include --lto-mode={none,thin,full} on
           the command line. For example, `build-webkit --lto-mode=full ...`.
 
         - When using Xcode, create a configuration file called
-          LocalOverrides.xcconfig at the root level of your WebKit checkout
+          LocalOverrides.xcconfig at the root level of your CyberKit checkout
           directory. Include within it a line that says:
 
             WK_LTO_MODE={none,thin,full}
@@ -4760,14 +4760,14 @@
 
 2018-08-26  Michael Catanzaro  <mcatanzaro@igalia.com>
 
-        [CMake] Remove stale comment from WebKitFeatures.cmake
+        [CMake] Remove stale comment from CyberKitFeatures.cmake
         https://bugs.webkit.org/show_bug.cgi?id=188918
 
         Reviewed by Fujii Hironori.
 
-        This comment at the top of WebKitFeatures.cmake is no longer accurate because feature defaults are no longer defined in FeatureList.pm (thank goodness!)
+        This comment at the top of CyberKitFeatures.cmake is no longer accurate because feature defaults are no longer defined in FeatureList.pm (thank goodness!)
 
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-08-23  Don Olmstead  <don.olmstead@sony.com>
 
@@ -4779,7 +4779,7 @@
         Make sure the variable's value is sent to SET_AND_EXPOSE_TO_BUILD
         within the WEBKIT_CHECK_HAVE_* macros.
 
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-08-23  Don Olmstead  <don.olmstead@sony.com>
 
@@ -4849,7 +4849,7 @@
 
         Reviewed by Konstantin Tokarev.
 
-        * Source/cmake/WebKitCompilerFlags.cmake:
+        * Source/cmake/CyberKitCompilerFlags.cmake:
 
 2018-07-30  Thibault Saunier  <tsaunier@igalia.com>
 
@@ -4875,7 +4875,7 @@
         Reviewed by Michael Catanzaro.
 
         * Source/cmake/OptionsJSCOnly.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-07-24  Thibault Saunier  <tsaunier@igalia.com>
 
@@ -4915,7 +4915,7 @@
         are ready to switch over XCode at the same time, to ensure we don't wind up with divergent
         behavior for std::optional.
 
-        * Source/cmake/WebKitCompilerFlags.cmake:
+        * Source/cmake/CyberKitCompilerFlags.cmake:
 
 2018-07-16  Ryosuke Niwa  <rniwa@webkit.org>
 
@@ -4933,7 +4933,7 @@
 
         Reviewed by Michael Catanzaro.
 
-        * Source/cmake/WebKitCommon.cmake: Set the maximum number of
+        * Source/cmake/CyberKitCommon.cmake: Set the maximum number of
         concurrent link processes using job pools (four for release builds,
         two otherwise) to avoid running out of memory during builds.
 
@@ -4945,7 +4945,7 @@
 
 2018-06-30  Adam Barth  <abarth@webkit.org>
 
-        Port JavaScriptCore to OS(FUCHSIA)
+        Port CyberScriptCore to OS(FUCHSIA)
         https://bugs.webkit.org/show_bug.cgi?id=187223
 
         Reviewed by Daniel Bates.
@@ -4961,7 +4961,7 @@
 
         * Source/cmake/OptionsJSCOnly.cmake:
         Don't forget to set -DUCHAR_TYPE=wchar_t for ICU on Windows.
-        Use bin64/lib64 on Windows (for consistency with full WebKit build).
+        Use bin64/lib64 on Windows (for consistency with full CyberKit build).
 
 2018-06-28  Adam Barth  <abarth@webkit.org>
 
@@ -5011,7 +5011,7 @@
         Fedora, we have to manually disable these when building for s390x, ppc64, and ppc64le. But
         it's really easy to do the right thing automatically, so we might as well.
 
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-06-13  Thibault Saunier  <tsaunier@igalia.com>
 
@@ -5067,7 +5067,7 @@
 
 2018-06-11  Michael Saboff  <msaboff@apple.com>
 
-        JavaScriptCore: Disable 32-bit JIT on Windows
+        CyberScriptCore: Disable 32-bit JIT on Windows
         https://bugs.webkit.org/show_bug.cgi?id=185989
 
         Reviewed by Mark Lam.
@@ -5093,13 +5093,13 @@
 
         Reviewed by Alexey Proskuryakov.
 
-        * WebKit.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings: Use the Legacy Build System.
+        * CyberKit.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings: Use the Legacy Build System.
 
 2018-06-06  Dan Bernstein  <mitz@apple.com>
 
         Check in a file created by the Xcode 10 beta.
 
-        * WebKit.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist: Added.
+        * CyberKit.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist: Added.
 
 2018-05-28  Carlos Garcia Campos  <cgarcia@igalia.com>
 
@@ -5121,10 +5121,10 @@
 
         Reviewed by Michael Catanzaro.
 
-        * Source/cmake/WebKitCompilerFlags.cmake:
+        * Source/cmake/CyberKitCompilerFlags.cmake:
         Move the test to detect whether we need to link against libatomic
-        to a common CMake file so it can be used from both JavaScriptCore
-        and WebKit.
+        to a common CMake file so it can be used from both CyberScriptCore
+        and CyberKit.
 
 2018-05-22  Michael Catanzaro  <mcatanzaro@igalia.com>
 
@@ -5141,7 +5141,7 @@
 
 2018-05-21  Fujii Hironori  <Hironori.Fujii@sony.com>
 
-        [WinCairo] Enable WebKit build by default
+        [WinCairo] Enable CyberKit build by default
         https://bugs.webkit.org/show_bug.cgi?id=185141
 
         Reviewed by Per Arne Vollan.
@@ -5166,7 +5166,7 @@
         Reviewed by Žan Doberšek.
 
         Remove the CMake option to disable this option for WPE.
-        This feature gets enabled now via Source/cmake/WebKitFeatures.cmake
+        This feature gets enabled now via Source/cmake/CyberKitFeatures.cmake
 
         * Source/cmake/OptionsWPE.cmake:
 
@@ -5189,7 +5189,7 @@
         Add flag for NumberFormat formatToParts.
 
         * Source/cmake/OptionsJSCOnly.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-05-14  Yusuke Suzuki  <utatane.tea@gmail.com>
 
@@ -5216,10 +5216,10 @@
         -lpthread, fixing the 64-bit RISC-V build of the GTK+ port due to
         missing atomic primitives.
 
-        * Source/cmake/WebKitCompilerFlags.cmake:
+        * Source/cmake/CyberKitCompilerFlags.cmake:
         Move the test to detect whether we need to link against libatomic
-        to a common CMake file so it can be used from both JavaScriptCore
-        and WebKit.
+        to a common CMake file so it can be used from both CyberScriptCore
+        and CyberKit.
 
 2018-05-14  Zan Dobersek  <zdobersek@igalia.com>
 
@@ -5228,7 +5228,7 @@
 
         Reviewed by Michael Catanzaro.
 
-        * Source/cmake/WebKitCompilerFlags.cmake: Fall back to the -std=c++1z
+        * Source/cmake/CyberKitCompilerFlags.cmake: Fall back to the -std=c++1z
         compiler flag if -std=c++17 is not supported. If that flag is not
         supported either, bail with an error message.
 
@@ -5294,7 +5294,7 @@
 
 2018-05-07  Don Olmstead  <don.olmstead@sony.com>
 
-        [WinCairo] Disable plugin api when building modern WebKit
+        [WinCairo] Disable plugin api when building modern CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=185312
 
         Reviewed by Michael Catanzaro.
@@ -5324,7 +5324,7 @@
 
         Reviewed by Yusuke Suzuki and JF Bastien.
 
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-04-30  JF Bastien  <jfbastien@apple.com>
 
@@ -5333,7 +5333,7 @@
 
         Reviewed by Alex Christensen.
 
-        As discussed here [0] let's move WebKit to a subset of C++17. We
+        As discussed here [0] let's move CyberKit to a subset of C++17. We
         now require GCC 6 [1] which means that, according to [2] we can
         use the following C++17 language features (I removed some
         uninteresting ones):
@@ -5362,7 +5362,7 @@
           [2]: https://en.cppreference.com/w/cpp/compiler_support
           [3]: https://github.com/tvaneerd/cpp17_in_TTs/blob/master/ALL_IN_ONE.md
 
-        * Source/cmake/WebKitCompilerFlags.cmake:
+        * Source/cmake/CyberKitCompilerFlags.cmake:
 
 2018-04-29  Michael Catanzaro  <mcatanzaro@igalia.com>
 
@@ -5395,7 +5395,7 @@
 
         Added Intl.PluralRules feature flag.
 
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-04-26  Zan Dobersek  <zdobersek@igalia.com>
 
@@ -5518,12 +5518,12 @@
 
         Reviewed by Carlos Garcia Campos.
 
-        * Source/cmake/WebKitFeatures.cmake: Add the ENABLE_CSS_ANIMATIONS_LEVEL_2
+        * Source/cmake/CyberKitFeatures.cmake: Add the ENABLE_CSS_ANIMATIONS_LEVEL_2
         feature define. Follow Cocoa ports and enable it by default.
 
 2018-04-15  Michael Catanzaro  <mcatanzaro@igalia.com>
 
-        [WPE] Install files needed for WebKitWebExtensions
+        [WPE] Install files needed for CyberKitWebExtensions
         https://bugs.webkit.org/show_bug.cgi?id=179915
 
         Reviewed by Žan Doberšek.
@@ -5580,15 +5580,15 @@
 
 2018-04-08  Fujii Hironori  <Hironori.Fujii@sony.com>
 
-        [CMake] WebKit should link to WebCore as a PRIVATE library if WebCore is a static library
+        [CMake] CyberKit should link to CyberCore as a PRIVATE library if CyberCore is a static library
         https://bugs.webkit.org/show_bug.cgi?id=184127
 
         Reviewed by Konstantin Tokarev.
 
-        Building TestWebKitLib on Windows causes a linkage error of
-        multiply defined symbols because TestWebKitLib links to
-        both WebCore and WebKit. TestWebKitLib explicitly links only with
-        WebKit, But, WebCore is propagated because WebKit links WebCore as
+        Building TestCyberKitLib on Windows causes a linkage error of
+        multiply defined symbols because TestCyberKitLib links to
+        both CyberCore and CyberKit. TestCyberKitLib explicitly links only with
+        CyberKit, But, CyberCore is propagated because CyberKit links CyberCore as
         public.
 
         * Source/cmake/OptionsGTK.cmake (ADD_WHOLE_ARCHIVE_TO_LIBRARIES):
@@ -5606,7 +5606,7 @@
 
 2018-04-02  Per Arne Vollan  <pvollan@apple.com>
 
-        Remove references to internal version of WebKitQuartzCoreAdditions in CMake files.
+        Remove references to internal version of CyberKitQuartzCoreAdditions in CMake files.
         https://bugs.webkit.org/show_bug.cgi?id=184246
         <rdar://problem/39116563>
 
@@ -5666,7 +5666,7 @@
 
 2018-03-21  Carlos Garcia Campos  <cgarcia@igalia.com>
 
-        [GTK][WPE] Initial implementation of JavaScriptCore glib bindings
+        [GTK][WPE] Initial implementation of CyberScriptCore glib bindings
         https://bugs.webkit.org/show_bug.cgi?id=164061
 
         Reviewed by Michael Catanzaro.
@@ -5696,7 +5696,7 @@
         Remove the LINK_PREFETCH build time flag.
 
         * Source/cmake/OptionsWin.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
         * Source/cmake/tools/vsprops/FeatureDefines.props:
         * Source/cmake/tools/vsprops/FeatureDefinesCairo.props:
 
@@ -5712,19 +5712,19 @@
 
 2018-03-12  Carlos Garcia Campos  <cgarcia@igalia.com>
 
-        Unreviewed. Fix library version of JavaScriptCoreGTK.
+        Unreviewed. Fix library version of CyberScriptCoreGTK.
 
         * Source/cmake/OptionsGTK.cmake:
 
 2018-03-09  Carlos Garcia Campos  <cgarcia@igalia.com>
 
-        Unreviewed. Bump WebKitGTK+ version to 2.21.0.
+        Unreviewed. Bump CyberKitGTK+ version to 2.21.0.
 
         * Source/cmake/OptionsGTK.cmake:
 
 2018-03-08  Tim Horton  <timothy_horton@apple.com>
 
-        Add a way to not build libwebrtc when building WebKit via Makefiles
+        Add a way to not build libwebrtc when building CyberKit via Makefiles
         https://bugs.webkit.org/show_bug.cgi?id=183437
         <rdar://problem/38254840>
 
@@ -5739,7 +5739,7 @@
 
         Reviewed by Konstantin Tokarev.
 
-        * Source/cmake/WebKitMacros.cmake:
+        * Source/cmake/CyberKitMacros.cmake:
 
 2018-03-02  Don Olmstead  <don.olmstead@sony.com>
 
@@ -5761,7 +5761,7 @@
 
 2018-02-26  Yousuke Kimoto  <yousuke.kimoto@sony.com>
 
-        [WinCairo] WebKit2_C.h should be included for TestWebKit
+        [WinCairo] CyberKit2_C.h should be included for TestCyberKit
         https://bugs.webkit.org/show_bug.cgi?id=182682
 
         Reviewed by Yusuke Suzuki.
@@ -5790,7 +5790,7 @@
         Reviewed by Michael Catanzaro.
 
         * Source/cmake/OptionsCommon.cmake:
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-02-21  Don Olmstead  <don.olmstead@sony.com>
 
@@ -5844,7 +5844,7 @@
 
         Reviewed by Michael Catanzaro.
 
-        * Source/cmake/WebKitFeatures.cmake: Enable the
+        * Source/cmake/CyberKitFeatures.cmake: Enable the
         VIDEO_USES_ELEMENT_FULLSCREEN feature on CMake ports.
 
 2018-02-16  Dean Jackson  <dino@apple.com>
@@ -5861,7 +5861,7 @@
 
 2018-02-09  Ross Kirsling  <ross.kirsling@sony.com>
 
-        Simplify .gitignore's WebKitLibraries/win section.
+        Simplify .gitignore's CyberKitLibraries/win section.
         https://bugs.webkit.org/show_bug.cgi?id=182618
 
         Reviewed by Per Arne Vollan.
@@ -5896,11 +5896,11 @@
 
         This is tested and works fine.
 
-        * Source/cmake/WebKitCompilerFlags.cmake:
+        * Source/cmake/CyberKitCompilerFlags.cmake:
 
 2018-02-05  Yousuke Kimoto  <yousuke.kimoto@sony.com>
 
-        [WinCairo] Refine WebKitLegacy and WebKit build for wincairo
+        [WinCairo] Refine CyberKitLegacy and CyberKit build for wincairo
         https://bugs.webkit.org/show_bug.cgi?id=182478
 
         Reviewed by Alex Christensen.
@@ -5915,7 +5915,7 @@
 
         I failed to properly test a last-minute change.
 
-        * Source/cmake/WebKitCompilerFlags.cmake:
+        * Source/cmake/CyberKitCompilerFlags.cmake:
 
 2018-02-05  Michael Catanzaro  <mcatanzaro@igalia.com>
 
@@ -5925,7 +5925,7 @@
         Reviewed by Konstantin Tokarev.
 
         * Source/cmake/OptionsGTK.cmake:
-        * Source/cmake/WebKitCompilerFlags.cmake:
+        * Source/cmake/CyberKitCompilerFlags.cmake:
 
 2018-01-31  Michael Catanzaro  <mcatanzaro@igalia.com>
 
@@ -5954,12 +5954,12 @@
 
 2018-01-30  Basuke Suzuki  <Basuke.Suzuki@sony.com>
 
-        [WinCairo] Fix forwarding header conflict of WebKit on WinCairo
+        [WinCairo] Fix forwarding header conflict of CyberKit on WinCairo
         https://bugs.webkit.org/show_bug.cgi?id=177202
 
         Reviewed by Alex Christensen.
 
-        * Source/cmake/WebKitMacros.cmake:
+        * Source/cmake/CyberKitMacros.cmake:
 
 2018-01-29  Jiewen Tan  <jiewen_tan@apple.com>
 
@@ -5969,7 +5969,7 @@
 
         Reviewed by Brent Fulgham.
 
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
         * Source/cmake/tools/vsprops/FeatureDefines.props:
         * Source/cmake/tools/vsprops/FeatureDefinesCairo.props:
 
@@ -5986,13 +5986,13 @@
 
 2018-01-18  Dan Bernstein  <mitz@apple.com>
 
-        [Xcode] Shared schemes in the WebKit workspace still have build pre-actions that invoke copy-webkitlibraries-to-product-directory
+        [Xcode] Shared schemes in the CyberKit workspace still have build pre-actions that invoke copy-webkitlibraries-to-product-directory
         https://bugs.webkit.org/show_bug.cgi?id=181784
 
         Reviewed by Anders Carlsson.
 
-        * WebKit.xcworkspace/xcshareddata/xcschemes/All Source.xcscheme: Remove the build pre-action.
-        * WebKit.xcworkspace/xcshareddata/xcschemes/All Tools.xcscheme: Ditto.
+        * CyberKit.xcworkspace/xcshareddata/xcschemes/All Source.xcscheme: Remove the build pre-action.
+        * CyberKit.xcworkspace/xcshareddata/xcschemes/All Tools.xcscheme: Ditto.
 
 2018-01-17  Michael Catanzaro  <mcatanzaro@igalia.com>
 
@@ -6003,7 +6003,7 @@
 
         Only modify the system include directories of the target passed to WEBKIT_FRAMEWORK.
 
-        * Source/cmake/WebKitMacros.cmake:
+        * Source/cmake/CyberKitMacros.cmake:
 
 2018-01-17  Carlos Garcia Campos  <cgarcia@igalia.com>
 
@@ -6025,7 +6025,7 @@
         know how to fix.
 
         * Source/cmake/OptionsGTK.cmake:
-        * Source/cmake/WebKitCompilerFlags.cmake:
+        * Source/cmake/CyberKitCompilerFlags.cmake:
 
 2018-01-11  Keith Miller  <keith_miller@apple.com>
 
@@ -6034,16 +6034,16 @@
 
         Reviewed by Simon Fraser.
 
-        * Source/cmake/WebKitFeatures.cmake:
+        * Source/cmake/CyberKitFeatures.cmake:
 
 2018-01-10  Per Arne Vollan  <pvollan@apple.com>
 
-        [Win] WebKitLegacy should be a dll, not a static library.
+        [Win] CyberKitLegacy should be a dll, not a static library.
         https://bugs.webkit.org/show_bug.cgi?id=181500
 
         Reviewed by Alex Christensen.
 
-        Set WebKitLegacy library type to shared.
+        Set CyberKitLegacy library type to shared.
 
         * Source/cmake/OptionsWin.cmake:
 
@@ -6070,7 +6070,7 @@
         DerivedSources. This command copies files unconditionally, then
         introduced unnecessary recompilations.
 
-        * Source/cmake/WebKitMacros.cmake: Use copy_if_different instead of copy.
+        * Source/cmake/CyberKitMacros.cmake: Use copy_if_different instead of copy.
 
 2018-01-03  Ting-Wei Lan  <lantw44@gmail.com>
 

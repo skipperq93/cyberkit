@@ -1,10 +1,10 @@
-from ..webdriver_server import WebKitDriverServer
+from ..webdriver_server import CyberKitDriverServer
 from .base import WdspecExecutor, WebDriverProtocol
 
 
-class WebKitDriverProtocol(WebDriverProtocol):
-    server_cls = WebKitDriverServer
+class CyberKitDriverProtocol(WebDriverProtocol):
+    server_cls = CyberKitDriverServer
 
 
-class WebKitDriverWdspecExecutor(WdspecExecutor):
-    protocol_cls = WebKitDriverProtocol
+class CyberKitDriverWdspecExecutor(WdspecExecutor):
+    protocol_cls = CyberKitDriverProtocol

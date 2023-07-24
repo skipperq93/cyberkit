@@ -29,7 +29,7 @@ index 09083551612..ac8660354ca 100644
    // one path separator.
 -  execve(args->argv[0], args->argv, GetEnviron());
 -  DeathTestAbort(std::string("execve(") + args->argv[0] + ", ...) in " +
-+  // We have replaced execve() with execv() for WebKit to avoid using
++  // We have replaced execve() with execv() for CyberKit to avoid using
 +  // environ. It should be safe because execv() is just a simple wrapper
 +  // of execve().
 +  execv(args->argv[0], args->argv);

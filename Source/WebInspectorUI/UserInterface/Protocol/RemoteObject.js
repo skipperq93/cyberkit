@@ -573,7 +573,7 @@ WI.RemoteObject = class RemoteObject
             var location = response.location;
             var sourceCode = WI.debuggerManager.scriptForIdentifier(location.scriptId, this._target);
 
-            if (!sourceCode || (!WI.settings.engineeringShowInternalScripts.value && isWebKitInternalScript(sourceCode.sourceURL))) {
+            if (!sourceCode || (!WI.settings.engineeringShowInternalScripts.value && isCyberKitInternalScript(sourceCode.sourceURL))) {
                 result.resolve(WI.RemoteObject.SourceCodeLocationPromise.NoSourceFound);
                 return;
             }

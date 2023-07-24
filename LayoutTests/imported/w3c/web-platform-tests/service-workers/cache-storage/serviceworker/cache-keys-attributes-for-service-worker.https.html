@@ -50,7 +50,7 @@ promise_test(async (t) => {
       assert_equals(frame.contentDocument.body.textContent,
                     'original: false, stored: false');
       // Use step_timeout(0) to ensure the history entry is created for Blink
-      // and WebKit. See https://bugs.webkit.org/show_bug.cgi?id=42861.
+      // and CyberKit. See https://bugs.webkit.org/show_bug.cgi?id=42861.
       await wait(0);
       await new Promise((resolve) => {
         frame.onload = resolve;

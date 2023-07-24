@@ -97,15 +97,15 @@ class DownloadCommandsTest(CommandsTest):
         return options
 
     def test_build(self):
-        expected_logs = "Updating working directory\nBuilding WebKit\n"
+        expected_logs = "Updating working directory\nBuilding CyberKit\n"
         self.assert_execute_outputs(Build(), [], options=self._default_options(), expected_logs=expected_logs)
 
     def test_build_and_test(self):
         expected_logs = """Updating working directory
-Building WebKit
+Building CyberKit
 Running Python unit tests
 Running Perl unit tests
-Running JavaScriptCore tests
+Running CyberScriptCore tests
 Running run-webkit-tests
 """
         self.assert_execute_outputs(BuildAndTest(), [], options=self._default_options(), expected_logs=expected_logs)
@@ -142,10 +142,10 @@ Message2."
         self.assert_execute_outputs(ApplyWatchList(), [10000], options=self._default_options(), expected_logs=expected_logs, tool=MockTool(log_executive=True))
 
     def test_land(self):
-        expected_logs = """Building WebKit
+        expected_logs = """Building CyberKit
 Running Python unit tests
 Running Perl unit tests
-Running JavaScriptCore tests
+Running CyberScriptCore tests
 Running run-webkit-tests
 Committed r49824: <https://trac.webkit.org/changeset/49824>
 Updating bug 50000
@@ -164,13 +164,13 @@ MOCK run_and_throw_if_fail: ['mock-check-webkit-style', '--git-commit', 'MOCK gi
 MOCK run_command: ['ruby', '-I', '/mock-checkout/Websites/bugs.webkit.org/PrettyPatch', '/mock-checkout/Websites/bugs.webkit.org/PrettyPatch/prettify.rb'], cwd=None, input=Patch1
 MOCK: user.open_url: file://...
 Was that diff correct?
-Building WebKit
+Building CyberKit
 MOCK run_and_throw_if_fail: ['mock-build-webkit', 'ARCHS=MOCK ARCH'], cwd=/mock-checkout, env={'MOCK_ENVIRON_COPY': '1', 'TERM': 'dumb'}
 Running Python unit tests
 MOCK run_and_throw_if_fail: ['mock-test-webkitpy'], cwd=/mock-checkout
 Running Perl unit tests
 MOCK run_and_throw_if_fail: ['mock-test-webkitperl'], cwd=/mock-checkout
-Running JavaScriptCore tests
+Running CyberScriptCore tests
 MOCK run_and_throw_if_fail: ['mock-run-javacriptcore-tests'], cwd=/mock-checkout
 Running run-webkit-tests
 MOCK run_and_throw_if_fail: ['mock-run-webkit-tests', '--quiet'], cwd=/mock-checkout
@@ -185,10 +185,10 @@ No bug id provided.
         self.assert_execute_outputs(LandCowboy(), [50000], options=self._default_options(), expected_logs=expected_logs, tool=mock_tool)
 
     def test_land_red_builders(self):
-        expected_logs = """Building WebKit
+        expected_logs = """Building CyberKit
 Running Python unit tests
 Running Perl unit tests
-Running JavaScriptCore tests
+Running CyberScriptCore tests
 Running run-webkit-tests
 Committed r49824: <https://trac.webkit.org/changeset/49824>
 Updating bug 50000
@@ -207,7 +207,7 @@ MOCK run_and_throw_if_fail: ['mock-check-webkit-style', '--git-commit', 'MOCK gi
         self.assert_execute_outputs(CheckStyle(), [10000], options=self._default_options(), expected_logs=expected_logs, tool=MockTool(log_executive=True))
 
     def test_build_attachment(self):
-        expected_logs = "Processing 1 patch from 1 bug.\nUpdating working directory\nProcessing patch 10000 from bug 50000.\nBuilding WebKit\n"
+        expected_logs = "Processing 1 patch from 1 bug.\nUpdating working directory\nProcessing patch 10000 from bug 50000.\nBuilding CyberKit\n"
         self.assert_execute_outputs(BuildAttachment(), [10000], options=self._default_options(), expected_logs=expected_logs)
 
     def test_land_attachment(self):
@@ -215,10 +215,10 @@ MOCK run_and_throw_if_fail: ['mock-check-webkit-style', '--git-commit', 'MOCK gi
         expected_logs = """Processing 1 patch from 1 bug.
 Updating working directory
 Processing patch 10000 from bug 50000.
-Building WebKit
+Building CyberKit
 Running Python unit tests
 Running Perl unit tests
-Running JavaScriptCore tests
+Running CyberScriptCore tests
 Running run-webkit-tests
 Committed r49824: <https://trac.webkit.org/changeset/49824>
 Not closing bug 50000 as attachment 10000 has review=+.  Assuming there are more patches to land from this bug.
@@ -231,19 +231,19 @@ Not closing bug 50000 as attachment 10000 has review=+.  Assuming there are more
 Processing 2 patches from 1 bug.
 Updating working directory
 Processing patch 10000 from bug 50000.
-Building WebKit
+Building CyberKit
 Running Python unit tests
 Running Perl unit tests
-Running JavaScriptCore tests
+Running CyberScriptCore tests
 Running run-webkit-tests
 Committed r49824: <https://trac.webkit.org/changeset/49824>
 Not closing bug 50000 as attachment 10000 has review=+.  Assuming there are more patches to land from this bug.
 Updating working directory
 Processing patch 10001 from bug 50000.
-Building WebKit
+Building CyberKit
 Running Python unit tests
 Running Perl unit tests
-Running JavaScriptCore tests
+Running CyberScriptCore tests
 Running run-webkit-tests
 Committed r49824: <https://trac.webkit.org/changeset/49824>
 Not closing bug 50000 as attachment 10000 has review=+.  Assuming there are more patches to land from this bug.
@@ -256,19 +256,19 @@ Not closing bug 50000 as attachment 10000 has review=+.  Assuming there are more
 Processing 2 patches from 1 bug.
 Updating working directory
 Processing patch 10000 from bug 50000.
-Building WebKit
+Building CyberKit
 Running Python unit tests
 Running Perl unit tests
-Running JavaScriptCore tests
+Running CyberScriptCore tests
 Running run-webkit-tests
 Committed r49824: <https://trac.webkit.org/changeset/49824>
 Not closing bug 50000 as attachment 10000 has review=+.  Assuming there are more patches to land from this bug.
 Updating working directory
 Processing patch 10001 from bug 50000.
-Building WebKit
+Building CyberKit
 Running Python unit tests
 Running Perl unit tests
-Running JavaScriptCore tests
+Running CyberScriptCore tests
 Running run-webkit-tests
 Committed r49824: <https://trac.webkit.org/changeset/49824>
 Not closing bug 50000 as attachment 10000 has review=+.  Assuming there are more patches to land from this bug.
@@ -416,7 +416,7 @@ where ATTACHMENT_ID is the ID of this attachment.
 Updating working directory
 MOCK: user.open_url: file://...
 Was that diff correct?
-Building WebKit
+Building CyberKit
 Committed r49824: <https://trac.webkit.org/changeset/49824>
 MOCK reopen_bug 50000 with comment 'Reverted r852 for reason:
 
@@ -435,7 +435,7 @@ Preparing revert for bug 50005.
 Updating working directory
 MOCK: user.open_url: file://...
 Was that diff correct?
-Building WebKit
+Building CyberKit
 Committed r49824: <https://trac.webkit.org/changeset/49824>
 MOCK reopen_bug 50000 with comment 'Reverted r852 and r963 for reason:
 
@@ -457,7 +457,7 @@ Preparing revert for bug 50004.
 Updating working directory
 MOCK: user.open_url: file://...
 Was that diff correct?
-Building WebKit
+Building CyberKit
 Committed r49824: <https://trac.webkit.org/changeset/49824>
 MOCK reopen_bug 50000 with comment 'Reverted r852, r963, and r3001 for reason:
 
@@ -484,7 +484,7 @@ Unable to parse bug number from diff.
 Updating working directory
 MOCK: user.open_url: file://...
 Was that diff correct?
-Building WebKit
+Building CyberKit
 Committed r49824: <https://trac.webkit.org/changeset/49824>
 MOCK reopen_bug 50000 with comment 'Reverted r852, r963, and r999 for reason:
 

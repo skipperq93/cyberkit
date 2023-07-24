@@ -1,6 +1,6 @@
 set_property(DIRECTORY . PROPERTY FOLDER "WebDriver")
 
-include(WebKitCommon)
+include(CyberKitCommon)
 
 set(WebDriver_PRIVATE_INCLUDE_DIRECTORIES
     "${CMAKE_BINARY_DIR}"
@@ -18,7 +18,7 @@ set(WebDriver_SOURCES
 )
 
 set(WebDriver_LIBRARIES
-    WebKit::WTF
+    CyberKit::WTF
 )
 
 set(WebDriver_SCRIPTS
@@ -42,7 +42,7 @@ list(APPEND WebDriver_SOURCES ${DERIVED_SOURCES_WEBDRIVER_DIR}/WebDriverAtoms.cp
 
 WEBKIT_EXECUTABLE_DECLARE(WebDriver)
 
-add_dependencies(WebDriver JavaScriptCoreSharedScripts)
+add_dependencies(WebDriver CyberScriptCoreSharedScripts)
 
 WEBKIT_INCLUDE_CONFIG_FILES_IF_EXISTS()
 

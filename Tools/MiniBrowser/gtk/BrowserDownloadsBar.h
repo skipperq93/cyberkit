@@ -46,7 +46,7 @@ typedef struct _BrowserDownloadsBarClass   BrowserDownloadsBarClass;
 GType browser_downloads_bar_get_type(void);
 
 GtkWidget *browser_downloads_bar_new(void);
-void browser_downloads_bar_add_download(BrowserDownloadsBar *, WebKitDownload *);
+void browser_downloads_bar_add_download(BrowserDownloadsBar *, CyberKitDownload *);
 
 G_END_DECLS
 

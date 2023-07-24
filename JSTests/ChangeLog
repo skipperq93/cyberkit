@@ -12,7 +12,7 @@
     
     * stress/jsimmutablebutterfly-get-must-return-double-boxed-value.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     We are using JSImmutableButterfly::get in AI to constant fold GetByVal,
     but we were failing to always return a boxed double value for double loads.
@@ -51,7 +51,7 @@
     * stress/has-static-property-property-condition-needs-to-check-if-structure-has-property.js: Added.
     (foo):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     The CustomFunctionEquivalence PropertyCondition would only return false to
     isStillValidAssumingImpurePropertyWatchpoint if the Structure's static
@@ -116,7 +116,7 @@
     * stress/out-of-bounds-sane-chain-need-their-own-heap-location.js: Added.
     (foo):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     There is code in local CSE that does some basic bounds check elimination
     for PutByVal. It does this analysis by seeing if a particular heap location
@@ -164,7 +164,7 @@
     
     * stress/unshift-and-concurrent-access.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     When unshifting / shifting butterfly, we need to move property storage values too.
     If property storage values are moved while concurrent JIT compiler is accessing it, it could include garbage value.
@@ -215,7 +215,7 @@
     * stress/dont-assume-bytecode-operand-is-uint32.js: Added.
     (async foo):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     The slow path for enumerator_generic_pname was assuming that its input index operand
     would always be a UInt32 JSValue boxed as int32. However, this assumption isn't true
@@ -266,7 +266,7 @@
     * stress/resources/value-of-module.js: Added.
     (export.valueOf):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     While StructureRareData::cacheSpecialPropertySlow caches properties, the way it takes is incomplete.
     It is not checking Structure's cacheability. We were caching miss condition even if structure is !propertyAccessesAreCacheableForAbsence.
@@ -341,7 +341,7 @@
     (shouldBe):
     (object.__proto__.valueOf):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     When toPrimitive is called, we need to look-up three properties at most to perform operation. And these special properties do not have caching mechanism at all.
     We found that Speedometer2/EmberJS-Debug-TodoMVC is using very much time for this property look-up. We should have caching mechanism in StructureRareData, which
@@ -352,15 +352,15 @@
     
     This patch improved Speedometer2/EmberJS-Debug-TodoMVC by 10%.
     
-    * JavaScriptCore.xcodeproj/project.pbxproj:
+    * CyberScriptCore.xcodeproj/project.pbxproj:
     * Sources.txt:
     * bytecode/Watchpoint.cpp:
     * bytecode/Watchpoint.h:
-    * runtime/CachedSpecialPropertyAdaptiveStructureWatchpoint.cpp: Renamed from Source/JavaScriptCore/runtime/ObjectToStringAdaptiveStructureWatchpoint.cpp.
+    * runtime/CachedSpecialPropertyAdaptiveStructureWatchpoint.cpp: Renamed from Source/CyberScriptCore/runtime/ObjectToStringAdaptiveStructureWatchpoint.cpp.
     (JSC::CachedSpecialPropertyAdaptiveStructureWatchpoint::CachedSpecialPropertyAdaptiveStructureWatchpoint):
     (JSC::CachedSpecialPropertyAdaptiveStructureWatchpoint::install):
     (JSC::CachedSpecialPropertyAdaptiveStructureWatchpoint::fireInternal):
-    * runtime/CachedSpecialPropertyAdaptiveStructureWatchpoint.h: Renamed from Source/JavaScriptCore/runtime/ObjectToStringAdaptiveStructureWatchpoint.h.
+    * runtime/CachedSpecialPropertyAdaptiveStructureWatchpoint.h: Renamed from Source/CyberScriptCore/runtime/ObjectToStringAdaptiveStructureWatchpoint.h.
     * runtime/JSGlobalObject.cpp:
     (JSC::JSGlobalObject::init):
     (JSC::JSGlobalObject::visitChildren):
@@ -455,7 +455,7 @@
     (overrideFunction.o.customFunction):
     (overrideFunction):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     Changed the ASSERT to an if statement.  This checks to see if, the likely newly changed,
     property is still a custom getter setter before caching its access as such.
@@ -494,7 +494,7 @@
     * stress/ftl-entry-osr-exit-has-nullptr-node.js: Added.
     (foo):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     While we are using m_node->origin, m_node can be nullptr (at the entry of the FTL function).
     m_origin is always pointing appropriate origin. We should use it instead.
@@ -677,7 +677,7 @@
     * stress/string-localeCompare.js:
     (data.sort):
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     The idea behind this change is the following: ICU Collator's comparison is too slow. We should have fast path for ASCII strings when we know this equals to ICU Collator's result.
     The problem is that even for ASCII strings, collation is super complicated!
@@ -744,7 +744,7 @@
     
     * stress/oob-sane-chain-double-constant-fold-to-PNaN.js: Added.
     
-    Source/JavaScriptCore:
+    Source/CyberScriptCore:
     
     GetByVals of the form { OutOfBoundsSaneChain, Double } where there are no
     BytecodeUsesAsOther return PNaN for holes and OOB accesses, not jsUndefined().
@@ -1136,7 +1136,7 @@
 
 2020-07-28  Mark Lam  <mark.lam@apple.com>
 
-        ASSERTION FAILED: isSymbol() in Source/JavaScriptCore/runtime/JSCell.cpp(188)
+        ASSERTION FAILED: isSymbol() in Source/CyberScriptCore/runtime/JSCell.cpp(188)
         https://bugs.webkit.org/show_bug.cgi?id=214837
 
         Reviewed by Darin Adler.
@@ -1758,7 +1758,7 @@
 
         The second change is to prohibit "bare-name" specifiers in our
         CLI's module loader. This matches pretty much all other module
-        loaders, including WebCore and our Obj-C API.
+        loaders, including CyberCore and our Obj-C API.
 
         * modules/aliased-names.js:
         * modules/aliasing/drink.js:
@@ -5534,7 +5534,7 @@
 
 2020-04-19  Ross Kirsling  <ross.kirsling@sony.com>
 
-        [ECMA-402] Intl.RelativeTimeFormat missing in WebKit
+        [ECMA-402] Intl.RelativeTimeFormat missing in CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=209770
 
         Reviewed by Darin Adler.
@@ -5792,7 +5792,7 @@
 
 2020-04-15  Ross Kirsling  <ross.kirsling@sony.com>
 
-        [ECMA-402] Fix Intl.DateTimeFormat patterns and fields in WebKit
+        [ECMA-402] Fix Intl.DateTimeFormat patterns and fields in CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=209783
 
         Reviewed by Keith Miller.
@@ -5863,7 +5863,7 @@
 
 2020-04-12  Ross Kirsling  <ross.kirsling@sony.com>
 
-        [ECMA-402] WebKit Intl does not allow calendar and numberingSystem options
+        [ECMA-402] CyberKit Intl does not allow calendar and numberingSystem options
         https://bugs.webkit.org/show_bug.cgi?id=209784
 
         Reviewed by Myles C. Maxfield.
@@ -6248,7 +6248,7 @@
 
         Reviewed by Yusuke Suzuki.
 
-        Intl doesn't depend on WebCore, so these tests shouldn't be layout tests.
+        Intl doesn't depend on CyberCore, so these tests shouldn't be layout tests.
         (They do, however, require one method to be added to $vm.)
 
         Since LayoutTests/js has its own test harness, I've also migrated each test case to use simpler assertions.
@@ -15833,7 +15833,7 @@
 
 2019-02-15  Michael Saboff  <msaboff@apple.com>
 
-        RELEASE_ASSERT at com.apple.JavaScriptCore: JSC::jsSubstringOfResolved
+        RELEASE_ASSERT at com.matthewbenedict.CyberScriptCore: JSC::jsSubstringOfResolved
         https://bugs.webkit.org/show_bug.cgi?id=194558
 
         Reviewed by Saam Barati.
@@ -16286,7 +16286,7 @@
 
         Reviewed by Saam Barati and Keith Miller.
 
-        Under the heavy load (like, compiling WebKit), AI in this code can broaden type information after the 1st run.
+        Under the heavy load (like, compiling CyberKit), AI in this code can broaden type information after the 1st run.
         Then, GetByVal(String) crashed.
 
         * stress/string-get-by-val-lowering.js: Added.

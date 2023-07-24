@@ -12,7 +12,7 @@
 <p id="description"></p>
 <div id="console"></div>
 <script>
-description("This test ensures that WebKit doesn't crash when the document.createTouchList API is called with non-Touch parameters");
+description("This test ensures that CyberKit doesn't crash when the document.createTouchList API is called with non-Touch parameters");
 
 shouldThrow('document.createTouchList(document).item(0)');
 shouldThrow('document.createTouchList({"a":1}).item(0)');

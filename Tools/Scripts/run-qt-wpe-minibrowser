@@ -39,7 +39,7 @@ my $configuration = passedConfiguration();
 my $productDir = productDir();
 
 if ($configuration) {
-    $libPath = File::Spec->catfile(sourceDir(), "WebKitBuild", "$configuration", "lib", "qt5", "qml");
+    $libPath = File::Spec->catfile(sourceDir(), "CyberKitBuild", "$configuration", "lib", "qt5", "qml");
     $ENV{"QML2_IMPORT_PATH"} = "$libPath";
 }
 

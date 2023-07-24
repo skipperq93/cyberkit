@@ -49,7 +49,7 @@ class ArrayBase;
 class Object;
 class ObjectBase;
 
-// FIXME: unify this JSON parser with JSONParse in JavaScriptCore.
+// FIXME: unify this JSON parser with JSONParse in CyberScriptCore.
 class WTF_EXPORT_PRIVATE Value : public RefCounted<Value> {
 public:
     static constexpr int maxDepth = 1000;

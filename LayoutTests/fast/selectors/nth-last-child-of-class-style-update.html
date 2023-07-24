@@ -50,14 +50,14 @@ function appendElement(tagName, className)
     withoutRenderer.appendChild(newElement.cloneNode());
 }
 
-function removeWebKitClassFromElementsOfClass(className)
+function removeCyberKitClassFromElementsOfClass(className)
 {
     var allElementsToUpdate = document.querySelectorAll('.' + className);
     for (var i = 0; i < allElementsToUpdate.length; ++i)
         allElementsToUpdate[i].classList.remove("webkit");
 }
 
-function addWebKitClassToElementsOfClass(className)
+function addCyberKitClassToElementsOfClass(className)
 {
     var allElementsToUpdate = document.querySelectorAll('.' + className);
     for (var i = 0; i < allElementsToUpdate.length; ++i)
@@ -76,23 +76,23 @@ debug("Initial state.");
 testColor(["element_1"]);
 
 debug("Removing the .webkit class from the fifth element, nothing should match.");
-removeWebKitClassFromElementsOfClass("element_5");
+removeCyberKitClassFromElementsOfClass("element_5");
 testColor([]);
 
 debug("Adding it back, we should be back to the original state.");
-addWebKitClassToElementsOfClass("element_5");
+addCyberKitClassToElementsOfClass("element_5");
 testColor(["element_1"]);
 
 debug("Removing the .webkit class from the third element, nothing should match.");
-removeWebKitClassFromElementsOfClass("element_3");
+removeCyberKitClassFromElementsOfClass("element_3");
 testColor([]);
 
 debug("Adding it back, we should be back to the original state.");
-addWebKitClassToElementsOfClass("element_3");
+addCyberKitClassToElementsOfClass("element_3");
 testColor(["element_1"]);
 
 debug("Removing the .webkit class from the second element, nothing should match.");
-removeWebKitClassFromElementsOfClass("element_2");
+removeCyberKitClassFromElementsOfClass("element_2");
 testColor([]);
 
 debug("Appending we should have a match again, skipping 2.");
@@ -100,7 +100,7 @@ appendElement("target", "element_6")
 testColor(["element_1"]);
 
 debug("Adding the .webkit class back on 2, we should now match 2 elements.");
-addWebKitClassToElementsOfClass("element_2");
+addCyberKitClassToElementsOfClass("element_2");
 testColor(["element_1", "element_2"]);
 
 debug("Removing the element we added should put us back in the initial state.");
@@ -129,7 +129,7 @@ removeElementsOfClass("element_-2");
 testColor(["element_1", "element_2", "element_3", "element_4"]);
 
 debug("Removing the class from one of the &lt;nottarget&gt;, 4 should no longer match.");
-removeWebKitClassFromElementsOfClass("element_-1");
+removeCyberKitClassFromElementsOfClass("element_-1");
 testColor(["element_1", "element_2", "element_3"]);
 
 debug("Removing one of the &lt;notarget&gt;, 3 should no longer match.");
@@ -137,7 +137,7 @@ removeElementsOfClass("element_-3");
 testColor(["element_1", "element_2"]);
 
 debug("Removing the class from one of the &lt;target&gt;, 2 should no longer match.");
-removeWebKitClassFromElementsOfClass("element_3");
+removeCyberKitClassFromElementsOfClass("element_3");
 testColor(["element_1"]);
 
 debug("Removing one of the &lt;target&gt;, nothing should match.");

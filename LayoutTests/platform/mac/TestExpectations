@@ -1,4 +1,4 @@
-# These are the layout test expectations for Apple's Mac port of WebKit.
+# These are the layout test expectations for Apple's Mac port of CyberKit.
 #
 # See http://trac.webkit.org/wiki/TestExpectations for more information on this file.
 
@@ -75,7 +75,7 @@ accessibility/multiselect-list-reports-active-option.html
 accessibility/aria-listbox-clear-selection-crash.html
 accessibility/listbox-clear-selection.html
 
-# Need to implement this in plugins code in WebKit
+# Need to implement this in plugins code in CyberKit
 plugins/reloadplugins-and-pages.html
 
 # These tests require touch support
@@ -401,10 +401,10 @@ plugins/nested-plugin-objects.html [ WontFix ]
 plugins/netscape-destroy-plugin-script-objects.html [ WontFix ]
 plugins/open-and-close-window-with-plugin.html [ WontFix ]
 
-# WebKit1 OOP plug-ins: No support for getting the form value.
+# CyberKit1 OOP plug-ins: No support for getting the form value.
 plugins/form-value.html
 
-# WebKit1 OOP plug-ins: Exceptions aren't thrown on invoke failure.
+# CyberKit1 OOP plug-ins: Exceptions aren't thrown on invoke failure.
 plugins/npruntime/invoke-failure.html
 
 # CSS image-resolution is not yet enabled.
@@ -550,7 +550,7 @@ webkit.org/b/112176 fast/css/sticky/inline-sticky.html [ ImageOnlyFailure Pass ]
 webkit.org/b/112176 fast/css/sticky/sticky-both-sides.html [ ImageOnlyFailure Pass ]
 # Once the bug 112176 is fixed, potentially restore the following test expectations.
 
-# WebKit1-only
+# CyberKit1-only
 webkit.org/b/103857 fast/events/mouse-cursor-change.html [ Failure ]
 
 webkit.org/b/116245 canvas/philip/tests/2d.text.draw.fontface.notinpage.html [ Pass Failure ]
@@ -791,7 +791,7 @@ webkit.org/b/103926 media/track/opera/track/webvtt/rendering/adhoc/cue_font_size
 webkit.org/b/103926 media/track/opera/track/webvtt/rendering/adhoc/voice_with_evil_timestamp.html [ Skip ]
 
 # WebVTT tests don't work because they need more than a 800x600 snapshot.
-# They are also flakily failing on WebKit2, as snapshot sometimes has a black rectangle for video element instead of white one.
+# They are also flakily failing on CyberKit2, as snapshot sometimes has a black rectangle for video element instead of white one.
 webkit.org/b/131476 media/track/w3c/track/webvtt [ Skip ]
 
 # VTTRegion height doesn't adjust when cue font size changes.
@@ -1962,10 +1962,10 @@ imported/w3c/web-platform-tests/WebCryptoAPI/generateKey/failures_AES-CBC.https.
 # <rdar://problem/60780398> REGRESSION: (258729?) imported/w3c/web-platform-tests/websockets/opening-handshake/003.html is failing.
 imported/w3c/web-platform-tests/websockets/opening-handshake/003.html [ Failure ]
 
-# In-App Browser Privacy requires functions that are currently in WebKitAdditions.
+# In-App Browser Privacy requires functions that are currently in CyberKitAdditions.
 http/tests/in-app-browser-privacy/ [ Skip ]
 
-# <rdar://problem/61062109> ASSERTION FAILED: m_wrapper @ WebCore::JSEventListener::ensureJSFunction(WebCore::ScriptExecutionContext&) const
+# <rdar://problem/61062109> ASSERTION FAILED: m_wrapper @ CyberCore::JSEventListener::ensureJSFunction(CyberCore::ScriptExecutionContext&) const
 imported/w3c/web-platform-tests/IndexedDB/request_bubble-and-capture.htm [ Pass Crash ]
 
 # <rdar://problem/61264058> [ iOS and Mac with Guard-Malloc and wk2 or Stress-GC ] imported/w3c/web-platform-tests/css/css-sizing/percentage-height-in-flexbox.html is flaky failing.
@@ -2042,13 +2042,13 @@ imported/w3c/web-platform-tests/media-source/mediasource-changetype-play-without
 # <rdar://problem/61733642> [ wk2 ] http/tests/security/window-opened-from-sandboxed-iframe-should-inherit-sandbox.html is flaky failing.
 [ Mojave ] http/tests/security/window-opened-from-sandboxed-iframe-should-inherit-sandbox.html [ Pass Failure ]
 
-# <rdar://problem/61066929> [ Stress GC ] flaky JSC::ExceptionScope::assertNoException crash under WebCore::ReadableStreamDefaultController
+# <rdar://problem/61066929> [ Stress GC ] flaky JSC::ExceptionScope::assertNoException crash under CyberCore::ReadableStreamDefaultController
 [ Mojave ] imported/w3c/web-platform-tests/fetch/api/basic/stream-safe-creation.any.html [ Pass Crash ]
 
-# <rdar://problem/61851850> REGRESSION: [ Stress GC ] (JavaScriptCore): ASSERTION FAILED: callback - WebCore::JSMutationCallback::handleEvent(WebCore::MutationObserve
+# <rdar://problem/61851850> REGRESSION: [ Stress GC ] (CyberScriptCore): ASSERTION FAILED: callback - CyberCore::JSMutationCallback::handleEvent(CyberCore::MutationObserve
 [ Mojave ] fast/dom/MutationObserver/disconnect-observer-while-mutation-records-are-enqueued-crash.html [ Pass Crash ]
 
-# <rdar://problem/62317723> [ Guard-Malloc ] imported/w3c/web-platform-tests/remote-playback/watch-availability-initial-callback.html is flaky crashing with 'WebCore::HTMLMediaElement::remoteHasAvailabilityCallbacksChanged()' alert.
+# <rdar://problem/62317723> [ Guard-Malloc ] imported/w3c/web-platform-tests/remote-playback/watch-availability-initial-callback.html is flaky crashing with 'CyberCore::HTMLMediaElement::remoteHasAvailabilityCallbacksChanged()' alert.
 [ Mojave ] imported/w3c/web-platform-tests/remote-playback/watch-availability-initial-callback.html [ Pass Crash ]
 
 # <rdar://problem/56961499> Many webGPU test fail on production and crash on Debug

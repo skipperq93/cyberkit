@@ -1,4 +1,4 @@
-Test WebKit logging configuration and console display.
+Test CyberKit logging configuration and console display.
 
 
 

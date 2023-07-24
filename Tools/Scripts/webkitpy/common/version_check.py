@@ -30,5 +30,5 @@ from __future__ import print_function
 import sys
 
 if sys.version < '2.7' or sys.version >= '2.8':
-    print("Unsupported Python version: WebKit only supports 2.7.x, and you're running %s." % sys.version.split()[0], file=sys.stderr)
+    print("Unsupported Python version: CyberKit only supports 2.7.x, and you're running %s." % sys.version.split()[0], file=sys.stderr)
     sys.exit(1)

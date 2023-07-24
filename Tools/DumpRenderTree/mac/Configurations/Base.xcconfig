@@ -34,10 +34,10 @@ WK_TARGET_TVOS_VERSION_MAJOR = $(TVOS_DEPLOYMENT_TARGET:base);
 WK_TARGET_WATCHOS_VERSION_MAJOR = $(WATCHOS_DEPLOYMENT_TARGET:base);
 
 WK_PRIVATE_FRAMEWORKS_DIR = $(WK_PRIVATE_FRAMEWORKS_DIR_$(USE_INTERNAL_SDK));
-WK_PRIVATE_FRAMEWORKS_DIR_[sdk=macos*] = $(PROJECT_DIR)/../../WebKitLibraries/WebKitPrivateFrameworkStubs/Mac/$(TARGET_MAC_OS_X_VERSION_MAJOR);
-WK_PRIVATE_FRAMEWORKS_DIR_[sdk=iphone*] = $(PROJECT_DIR)/../../WebKitLibraries/WebKitPrivateFrameworkStubs/iOS/$(WK_TARGET_IOS_VERSION_MAJOR);
-WK_PRIVATE_FRAMEWORKS_DIR_[sdk=appletv*] = $(PROJECT_DIR)/../../WebKitLibraries/WebKitPrivateFrameworkStubs/appletvos/$(WK_TARGET_TVOS_VERSION_MAJOR);
-WK_PRIVATE_FRAMEWORKS_DIR_[sdk=watch*] = $(PROJECT_DIR)/../../WebKitLibraries/WebKitPrivateFrameworkStubs/watchos/$(WK_TARGET_WATCHOS_VERSION_MAJOR);
+WK_PRIVATE_FRAMEWORKS_DIR_[sdk=macos*] = $(PROJECT_DIR)/../../CyberKitLibraries/CyberKitPrivateFrameworkStubs/Mac/$(TARGET_MAC_OS_X_VERSION_MAJOR);
+WK_PRIVATE_FRAMEWORKS_DIR_[sdk=iphone*] = $(PROJECT_DIR)/../../CyberKitLibraries/CyberKitPrivateFrameworkStubs/iOS/$(WK_TARGET_IOS_VERSION_MAJOR);
+WK_PRIVATE_FRAMEWORKS_DIR_[sdk=appletv*] = $(PROJECT_DIR)/../../CyberKitLibraries/CyberKitPrivateFrameworkStubs/appletvos/$(WK_TARGET_TVOS_VERSION_MAJOR);
+WK_PRIVATE_FRAMEWORKS_DIR_[sdk=watch*] = $(PROJECT_DIR)/../../CyberKitLibraries/CyberKitPrivateFrameworkStubs/watchos/$(WK_TARGET_WATCHOS_VERSION_MAJOR);
 
 FRAMEWORK_SEARCH_PATHS = $(WK_PRIVATE_FRAMEWORKS_DIR);
 
@@ -101,13 +101,13 @@ TARGET_MAC_OS_X_VERSION_MAJOR_10_15 = 101500
 SDKROOT = macosx.internal;
 
 PRODUCTION_FRAMEWORKS_DIR[sdk=embedded*] = $(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks;
-PRODUCTION_FRAMEWORKS_DIR[sdk=macosx*] = $(SDKROOT)$(NEXT_ROOT)$(SYSTEM_LIBRARY_DIR)/Frameworks/WebKit.framework/Versions/A/Frameworks;
+PRODUCTION_FRAMEWORKS_DIR[sdk=macosx*] = $(SDKROOT)$(NEXT_ROOT)$(SYSTEM_LIBRARY_DIR)/Frameworks/CyberKit.framework/Versions/A/Frameworks;
 
 WEBCORE_PRIVATE_HEADERS_DIR = $(WEBCORE_PRIVATE_HEADERS_DIR_$(CONFIGURATION));
 WEBCORE_PRIVATE_HEADERS_DIR_Release = $(WEBCORE_PRIVATE_HEADERS_DIR_engineering);
 WEBCORE_PRIVATE_HEADERS_DIR_Debug = $(WEBCORE_PRIVATE_HEADERS_DIR_engineering);
-WEBCORE_PRIVATE_HEADERS_DIR_Production = $(PRODUCTION_FRAMEWORKS_DIR)/WebCore.framework/PrivateHeaders;
-WEBCORE_PRIVATE_HEADERS_DIR_engineering = $(BUILT_PRODUCTS_DIR)/WebCore.framework/PrivateHeaders;
+WEBCORE_PRIVATE_HEADERS_DIR_Production = $(PRODUCTION_FRAMEWORKS_DIR)/CyberCore.framework/PrivateHeaders;
+WEBCORE_PRIVATE_HEADERS_DIR_engineering = $(BUILT_PRODUCTS_DIR)/CyberCore.framework/PrivateHeaders;
 
 AD_HOC_CODE_SIGNING_ALLOWED = YES;
 CODE_SIGN_IDENTITY = -;
@@ -118,8 +118,8 @@ SUPPORTS_MACCATALYST = YES;
 OTHER_CFLAGS = $(inherited) -isystem $(SDKROOT)/System/Library/Frameworks/System.framework/PrivateHeaders;
 OTHER_CPLUSPLUSFLAGS = $(inherited) -isystem $(SDKROOT)/System/Library/Frameworks/System.framework/PrivateHeaders;
 
-WEBKIT_FRAMEWORK_RESOURCES_PATH = WebKit.framework;
-WEBKIT_FRAMEWORK_RESOURCES_PATH[sdk=macosx*] = WebKit.framework/Versions/A/Resources;
+WEBKIT_FRAMEWORK_RESOURCES_PATH = CyberKit.framework;
+WEBKIT_FRAMEWORK_RESOURCES_PATH[sdk=macosx*] = CyberKit.framework/Versions/A/Resources;
 
 WK_COCOA_TOUCH = $(WK_COCOA_TOUCH_$(WK_PLATFORM_NAME));
 WK_COCOA_TOUCH_iphoneos = cocoatouch;
@@ -130,6 +130,6 @@ WK_COCOA_TOUCH_watchsimulator = cocoatouch;
 WK_COCOA_TOUCH_appletvos = cocoatouch;
 WK_COCOA_TOUCH_appletvsimulator = cocoatouch;
 
-HEADER_SEARCH_PATHS = $(BUILT_PRODUCTS_DIR)/usr/local/include $(BUILT_PRODUCTS_DIR)/WebCoreTestSupport ForwardingHeaders $(HEADER_SEARCH_PATHS_$(WK_COCOA_TOUCH));
-HEADER_SEARCH_PATHS_ = mac/InternalHeaders $(NEXT_ROOT)/usr/local/include/WebCoreTestSupport;
-HEADER_SEARCH_PATHS_cocoatouch = $(SDKROOT)/usr/local/include $(SDKROOT)/usr/local/include/WebCoreTestSupport $(SRCROOT)/../../Source/WebKit/Platform/spi/ios;
+HEADER_SEARCH_PATHS = $(BUILT_PRODUCTS_DIR)/usr/local/include $(BUILT_PRODUCTS_DIR)/CyberCoreTestSupport ForwardingHeaders $(HEADER_SEARCH_PATHS_$(WK_COCOA_TOUCH));
+HEADER_SEARCH_PATHS_ = mac/InternalHeaders $(NEXT_ROOT)/usr/local/include/CyberCoreTestSupport;
+HEADER_SEARCH_PATHS_cocoatouch = $(SDKROOT)/usr/local/include $(SDKROOT)/usr/local/include/CyberCoreTestSupport $(SRCROOT)/../../Source/CyberKit/Platform/spi/ios;

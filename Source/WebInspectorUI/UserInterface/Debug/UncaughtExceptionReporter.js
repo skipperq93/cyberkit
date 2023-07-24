@@ -262,7 +262,7 @@ ${topLevelItems.join("\n")}
 
     let encodedBugTitle = encodeURIComponent(`Uncaught Exception: ${firstException.message}`);
     let encodedInspectedURL = encodeURIComponent(inspectedPageURL || "http://");
-    let prefilledBugReportLink = `https://bugs.webkit.org/enter_bug.cgi?alias=&assigned_to=webkit-unassigned%40lists.webkit.org&attach_text=&blocked=&bug_file_loc=${encodedInspectedURL}&bug_severity=Normal&bug_status=NEW&comment=${encodedBugDescription}&component=Web%20Inspector&contenttypeentry=&contenttypemethod=autodetect&contenttypeselection=text%2Fplain&data=&dependson=&description=&flag_type-1=X&flag_type-3=X&form_name=enter_bug&keywords=&op_sys=All&priority=P2&product=WebKit&rep_platform=All&short_desc=${encodedBugTitle}`;
+    let prefilledBugReportLink = `https://bugs.webkit.org/enter_bug.cgi?alias=&assigned_to=webkit-unassigned%40lists.webkit.org&attach_text=&blocked=&bug_file_loc=${encodedInspectedURL}&bug_severity=Normal&bug_status=NEW&comment=${encodedBugDescription}&component=Web%20Inspector&contenttypeentry=&contenttypemethod=autodetect&contenttypeselection=text%2Fplain&data=&dependson=&description=&flag_type-1=X&flag_type-3=X&form_name=enter_bug&keywords=&op_sys=All&priority=P2&product=CyberKit&rep_platform=All&short_desc=${encodedBugTitle}`;
     let detailsForHTML = formattedErrorDetails.map((line) => `<li>${insertWordBreakCharacters(line)}</li>`).join("\n");
 
     let dismissOptionHTML = !loadCompleted ? "" : `<dt>A frivolous exception will not stop me!</dt>
@@ -278,7 +278,7 @@ ${topLevelItems.join("\n")}
     </h1>
     <dl>
         <dd>Usually, this is caused by a syntax error while modifying the Web Inspector
-        UI, or running an updated frontend with out-of-date WebKit build.</dt>
+        UI, or running an updated frontend with out-of-date CyberKit build.</dt>
         <dt>I didn't do anything...?</dt>
         <dd><a href="${prefilledBugReportLink}" id="uncaught-exception-bug-report-link" class="bypass-event-blocking">Click to file a bug</a> as this is likely a Web Inspector bug.</dd>
         <dt>Oops, can I try again?</dt>

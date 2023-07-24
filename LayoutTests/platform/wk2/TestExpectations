@@ -27,7 +27,7 @@
 #
 
 # This file should contain entries for expectations that are generic
-# to any port running the WebKit2 variant (--webkit-test-runner)
+# to any port running the CyberKit2 variant (--webkit-test-runner)
 
 ###### This file has four sections. When adding new tests, make sure to
 ###### add to the right section:
@@ -35,8 +35,8 @@
 ### (1) Classified failures with bug reports
 ### (2) Classified failures without bug reports (yet)
 ### (3) Unclassified failures
-### (4) Features that are not supported in WebKit2 and likely never will be
-### (5) Progressions, expected successes that are expected failures in WebKit1.
+### (4) Features that are not supported in CyberKit2 and likely never will be
+### (5) Progressions, expected successes that are expected failures in CyberKit1.
 
 
 ########################################
@@ -57,7 +57,7 @@ webkit.org/b/58183 editing/execCommand/convert-style-elements-to-spans.html [ Pa
 # This test has been skipped for a long time. Temporarily marking as flaky to see what bots think.
 webkit.org/b/60648 fast/frames/flattening/frameset-flattening-subframesets.html [ Pass Failure ]
 
-# WebKitTestRunner needs overridePreference for non-boolean values
+# CyberKitTestRunner needs overridePreference for non-boolean values
 # (zero-font-size.html passes because overridePreference does not work)
 webkit.org/b/42197 fast/harness/override-preferences-2.html [ Failure ]
 webkit.org/b/42197 fast/text/zero-font-size.html [ Pass ]
@@ -68,7 +68,7 @@ webkit.org/b/82665 http/tests/webarchive/test-css-url-encoding-utf-8.html [ Skip
 webkit.org/b/82665 webarchive/test-css-url-resources-in-stylesheets.html [ Skip ]
 webkit.org/b/82665 webarchive/test-css-url-resources-inline-styles.html [ Skip ]
 
-# WebKitTestRunner needs textInputController
+# CyberKitTestRunner needs textInputController
 # <https://bugs.webkit.org/show_bug.cgi?id=42337>
 editing/input/setting-input-value-cancel-ime-composition.html
 svg/text/caret-in-svg-text.xhtml
@@ -89,7 +89,7 @@ platform/mac/fast/text/attributed-substring-from-range.html
 platform/mac/fast/text/justified-text-rect.html
 
 # https://bugs.webkit.org/show_bug.cgi?id=115274
-# testRunner.setPrivateBrowsingEnabled_DEPRECATED() doesn't work with NetworkProcess and is WebKitLegacy only.
+# testRunner.setPrivateBrowsingEnabled_DEPRECATED() doesn't work with NetworkProcess and is CyberKitLegacy only.
 http/tests/security/appcache-switching-private-browsing.html [ Skip ]
 http/tests/security/cookies/first-party-cookie-allow-xslt.xml [ Skip ]
 http/tests/security/cookies/third-party-cookie-blocking-xslt.xml [ Skip ]
@@ -100,10 +100,10 @@ http/tests/security/storage-blocking-strengthened-private-browsing-plugin.html [
 plugins/private-browsing-mode-2.html [ Skip ]
 storage/websql/private-browsing-noread-nowrite.html [ Skip ]
 
-# [WebKit2] WebKitTestRunner doesn't support emulating pressing a tab key during IME composition
+# [CyberKit2] CyberKitTestRunner doesn't support emulating pressing a tab key during IME composition
 webkit.org/b/188428 editing/input/press-tab-during-ime-composition.html
 
-# WebKitTestRunner needs testRunner.setMainFrameIsFirstResponder
+# CyberKitTestRunner needs testRunner.setMainFrameIsFirstResponder
 # <https://bugs.webkit.org/show_bug.cgi?id=42685>
 editing/selection/caret-and-focus-ring.html
 editing/selection/designmode-no-caret.html
@@ -111,32 +111,32 @@ editing/selection/selection-background.html
 fast/dom/Window/window-onFocus.html
 platform/mac/scrollbars/key-window-not-first-responder.html
 
-# WebKitTestRunner needs testRunner.encodeHostName
+# CyberKitTestRunner needs testRunner.encodeHostName
 # <https://bugs.webkit.org/show_bug.cgi?id=42686>
 fast/encoding/idn-security.html
 
-# WebKitTestRunner needs testRunner.abortModal
+# CyberKitTestRunner needs testRunner.abortModal
 # <https://bugs.webkit.org/show_bug.cgi?id=69548>
 fast/events/show-modal-dialog-onblur-onfocus.html
 fast/events/beforeunload-showModalDialog.html
 fast/events/pagehide-showModalDialog.html
 fast/events/unload-showModalDialog.html
 
-# WebKitTestRunner needs testRunner.setWillSendRequestClearHeader
+# CyberKitTestRunner needs testRunner.setWillSendRequestClearHeader
 # <https://bugs.webkit.org/show_bug.cgi?id=42699>
 http/tests/security/no-referrer.html
 
-# WebKitTestRunner needs testRunner.setDomainRelaxationForbiddenForURLScheme
+# CyberKitTestRunner needs testRunner.setDomainRelaxationForbiddenForURLScheme
 # <https://bugs.webkit.org/show_bug.cgi?id=42700>
 http/tests/security/setDomainRelaxationForbiddenForURLScheme.html
 
-# WebKitTestRunner needs testRunner.removeAllVisitedLinks
+# CyberKitTestRunner needs testRunner.removeAllVisitedLinks
 http/tests/globalhistory/history-delegate-basic-visited-links.html
 
-# WebKit2 passes the wrong source URL for client redirects
+# CyberKit2 passes the wrong source URL for client redirects
 http/tests/globalhistory/history-delegate-basic-refresh-redirect.html
 
-# transitions/default-timing-function.html failing on WebKit2 since it was added
+# transitions/default-timing-function.html failing on CyberKit2 since it was added
 # <https://bugs.webkit.org/show_bug.cgi?id=56531>
 transitions/default-timing-function.html
 
@@ -156,7 +156,7 @@ http/tests/cache/history-only-cached-subresource-loads-max-age-https.html
 # https://bugs.webkit.org/show_bug.cgi?id=40361
 editing/text-iterator/findString-selection-disabled.html
 
-# WebKitTestRunner needs to implement testRunner.closeIdleLocalStorageDatabases().
+# CyberKitTestRunner needs to implement testRunner.closeIdleLocalStorageDatabases().
 # https://bugs.webkit.org/show_bug.cgi?id=103861
 storage/domstorage/localstorage/close-idle-localstorage-databases-immediately.html
 
@@ -180,7 +180,7 @@ http/tests/appcache/decide-navigation-policy-after-delay.html [ Pass ]
 webkit.org/b/154681 storage/indexeddb/database-odd-names.html
 webkit.org/b/154681 storage/indexeddb/odd-strings.html
 
-# WKTR does not support overriding WebKitUsesPageCachePreferenceKey.
+# WKTR does not support overriding CyberKitUsesPageCachePreferenceKey.
 # https://bugs.webkit.org/show_bug.cgi?id=114153
 fast/harness/use-page-cache.html
 
@@ -210,7 +210,7 @@ http/tests/download/default-encoding.html
 http/tests/download/inherited-encoding-form-submission-result.html
 http/tests/download/inherited-encoding.html
 
-# Incomplete-image tests fail in WebKitTestRunner
+# Incomplete-image tests fail in CyberKitTestRunner
 # https://bugs.webkit.org/show_bug.cgi?id=186613
 http/tests/images/loading-image-border.html
 http/tests/images/loading-image-no-border.html
@@ -222,14 +222,14 @@ http/tests/images/loading-image-no-border.html
 ########################################
 ### START OF (2) Classified failures without bug reports (yet)
 
-# WebKitTestRunner needs testRunner.shouldPaintBrokenImage
+# CyberKitTestRunner needs testRunner.shouldPaintBrokenImage
 fast/images/support-broken-image-delegate.html
 
-# WebKitTestRunner needs testRunner.dumpSourceAsWebArchive
+# CyberKitTestRunner needs testRunner.dumpSourceAsWebArchive
 webarchive/doctype.html
 webarchive/archive-empty-frame-source.html
 
-# WebKitTestRunner needs testRunner.setIconDatabaseEnabled
+# CyberKitTestRunner needs testRunner.setIconDatabaseEnabled
 webkit.org/b/115809 webarchive/test-link-rel-icon.html
 webkit.org/b/115809 http/tests/misc/favicon-loads-with-images-disabled.html
 webkit.org/b/115809 http/tests/misc/favicon-loads-with-icon-loading-override.html
@@ -237,36 +237,36 @@ webkit.org/b/115809 http/tests/misc/link-rel-icon-beforeload.html
 webkit.org/b/115809 http/tests/security/contentSecurityPolicy/allow-favicon.html
 webkit.org/b/115809 http/tests/security/contentSecurityPolicy/block-favicon.html
 
-# WebKitTestRunner should dump text/plain content as text
+# CyberKitTestRunner should dump text/plain content as text
 http/tests/incremental/slow-utf8-text.pl
 
-# WebKitTestRunner needs plainText.plainText
+# CyberKitTestRunner needs plainText.plainText
 editing/text-iterator/basic-iteration.html
 
-# WebKitTestRunner needs testRunner.setNewWindowsCopyBackForwardList
+# CyberKitTestRunner needs testRunner.setNewWindowsCopyBackForwardList
 fast/loader/crash-copying-backforwardlist.html
 
-# WebKitTestRunner needs testRunner.authenticateSession
+# CyberKitTestRunner needs testRunner.authenticateSession
 http/tests/xmlhttprequest/cross-origin-authorization-with-embedder.html
 
-# WebKitTestRunner needs testRunner.addDisallowedURL
+# CyberKitTestRunner needs testRunner.addDisallowedURL
 plugins/get-url-that-the-resource-load-delegate-will-disallow.html
 
-# WebKitTestRunner needs testRunner.pageProperty
+# CyberKitTestRunner needs testRunner.pageProperty
 printing/page-rule-selection.html
 
-# WebKitTestRunner needs testRunner.dumpUserGestureInFrameLoadCallbacks
+# CyberKitTestRunner needs testRunner.dumpUserGestureInFrameLoadCallbacks
 fast/frames/location-redirect-user-gesture.html
 fast/frames/meta-refresh-user-gesture.html
 
-# WebKitTestRunner needs testRunner.addURLToRedirect
+# CyberKitTestRunner needs testRunner.addURLToRedirect
 http/tests/loading/cross-origin-XHR-willLoadRequest.html
 
-# WebKit2 needs showModalDialog
+# CyberKit2 needs showModalDialog
 fast/events/scroll-event-during-modal-dialog.html
 fast/harness/show-modal-dialog.html
 
-# WebKit2 needs to support synchronous creation of about:blank/data:url frames
+# CyberKit2 needs to support synchronous creation of about:blank/data:url frames
 fast/dom/HTMLDocument/hasFocus.html
 fast/frames/sandboxed-iframe-navigation-targetlink.html
 fast/loader/about-blank-hash-kept.html
@@ -276,7 +276,7 @@ http/tests/security/cross-frame-access-location-get-override.html
 http/tests/security/javascriptURL/xss-ALLOWED-to-javascript-url-sub-frame-2-level.html
 
 # These tests use Flash, which is not a good idea, because it is not installed on all machines that run tests.
-# WebKitTestRunner detects attempts to use Flash, and raises an assertion.
+# CyberKitTestRunner detects attempts to use Flash, and raises an assertion.
 fast/loader/sandboxed-plugin-crash.html [ Skip ]
 plugins/hidden-iframe-with-swf-plugin.html [ Skip ]
 plugins/plugin-document-load-prevented-userscript.html [ Skip ]
@@ -291,7 +291,7 @@ plugins/get-url-with-blank-target.html
 # requires video.buffered to be able to return multiple timeranges
 http/tests/media/video-buffered.html
 
-# WebKit2 needs Java support
+# CyberKit2 needs Java support
 dom/html/level2/html/HTMLAppletElement01.html
 dom/html/level2/html/HTMLAppletElement02.html
 dom/html/level2/html/HTMLAppletElement03.html
@@ -314,7 +314,7 @@ editing/selection/selection-applet.html
 fast/replaced/applet-disabled-positioned.html
 fast/replaced/applet-rendering-java-disabled.html
 
-# WebKitTestRunner needs testRunner.displayInvalidatedRegion
+# CyberKitTestRunner needs testRunner.displayInvalidatedRegion
 compositing/plugins/invalidate_rect.html
 plugins/windowless_plugin_paint_test.html
 
@@ -448,13 +448,13 @@ plugins/set-status.html
 # Causes subsequent plugin tests to fail, time out or crash
 plugins/destroy-on-setwindow.html
 
-# New history tests added in r76205 fail on WebKit2 (perhaps the change
-# as coded doesn't affect both processes for WebKit2)
+# New history tests added in r76205 fail on CyberKit2 (perhaps the change
+# as coded doesn't affect both processes for CyberKit2)
 fast/history/history-replace-updates-current-item.html
 http/tests/navigation/redirect-on-back-updates-history-item.html
 http/tests/navigation/redirect-on-reload-updates-history-item.html
 
-# Newly added test fails in WebKit2 for mysterious reasons
+# Newly added test fails in CyberKit2 for mysterious reasons
 webkit.org/b/158703 userscripts/window-onerror-for-isolated-world-1.html [ Skip ]
 webkit.org/b/158703 userscripts/window-onerror-for-isolated-world-2.html [ Skip ]
 webkit.org/b/158703 userscripts/window-onerror-for-isolated-world-3.html [ Skip ]
@@ -465,7 +465,7 @@ transitions/color-transition-all.html
 transitions/min-max-width-height-transitions.html
 transitions/text-indent-transition.html
 
-# These storage tests fail in WebKit2 on the bot, but not running locally
+# These storage tests fail in CyberKit2 on the bot, but not running locally
 storage/websql/multiple-databases-garbage-collection.html
 
 # Mysterious failure after enabling paste tests
@@ -502,7 +502,7 @@ fast/preloader/document-write-2.html [ Pass Failure ]
 ########################################
 
 ########################################
-### START OF (4) Features that are not supported in WebKit2 and likely never will be
+### START OF (4) Features that are not supported in CyberKit2 and likely never will be
 
 # Plug-ins are disallowed from evaluating JavaScript from NPP_Destroy().
 plugins/attach-during-destroy.html [ WontFix ]
@@ -526,7 +526,7 @@ http/tests/security/http-0.9/image-on-HTTP-0.9-default-port-page-allowed.html
 http/tests/security/http-0.9/image-on-HTTP-0.9-page-blocked.html
 http/tests/security/http-0.9/sandbox-should-not-persist-on-navigation.html
 
-# WebKitTestRunner doesn't have appleScriptController
+# CyberKitTestRunner doesn't have appleScriptController
 platform/mac/fast/AppleScript/001.html
 platform/mac/fast/AppleScript/array.html
 platform/mac/fast/AppleScript/date.html
@@ -536,7 +536,7 @@ loader/load-defer.html [ Skip ]
 loader/load-defer-resume-crash.html [ Skip ]
 loader/navigation-while-deferring-loads.html [ Skip ]
 
-# WebKitTestRunner doesn't have objCController
+# CyberKitTestRunner doesn't have objCController
 platform/mac/fast/dom/objc-wrapper-identity.html
 platform/mac/fast/dom/wrapper-classes-objc.html
 platform/mac/fast/dom/wrapper-round-tripping.html
@@ -554,21 +554,21 @@ platform/mac/plugins/root-object-premature-delete-crash.html
 platform/mac/plugins/undefined-property-crash.html
 platform/mac/plugins/webScriptObject-exception-deadlock.html
 
-# WebKitTestRunner doesn't have objCPlugin
+# CyberKitTestRunner doesn't have objCPlugin
 editing/mac/pasteboard/5583362.html [ Skip ]
 platform/mac/plugins/jsobjc-dom-wrappers.html
 platform/mac/plugins/jsobjc-simple.html
 platform/mac/plugins/throw-on-dealloc.html
 
-# WebKitTestRunner doesn't have objCPlugin
+# CyberKitTestRunner doesn't have objCPlugin
 # (but these tests sound like things we may want to test another way)
 editing/pasteboard/paste-RTFD.html
 editing/pasteboard/paste-TIFF.html
 
-# WebKitTestRunner doesn't have eventSender.enableDOMUIEventLogging
+# CyberKitTestRunner doesn't have eventSender.enableDOMUIEventLogging
 platform/mac/fast/events/objc-event-api.html
 
-# WebKitTestRunner needs an implementation of eventSender.beginDragWithFiles
+# CyberKitTestRunner needs an implementation of eventSender.beginDragWithFiles
 # https://bugs.webkit.org/show_bug.cgi?id=64285
 editing/pasteboard/datatransfer-items-drop-plaintext-file.html
 editing/pasteboard/datatransfer-types-dropping-text-file.html
@@ -660,10 +660,10 @@ security/contentSecurityPolicy/video-with-blob-url-allowed-by-media-src-star.htm
 fast/forms/file/entries-api/image-no-transcode-drag-drop.html
 fast/forms/file/entries-api/image-transcode-drag-drop.html
 
-# WebKitTestRunner doesn't have eventSender.fireKeyboardEventsToElement
+# CyberKitTestRunner doesn't have eventSender.fireKeyboardEventsToElement
 platform/mac/fast/events/objc-keyboard-event-creation.html
 
-# WebKit2 does not (should not?) support setting WebKitUsePreHTML5ParserQuirks
+# CyberKit2 does not (should not?) support setting CyberKitUsePreHTML5ParserQuirks
 # in its WebPreferences implementation.
 fast/parser/pre-html5-parser-quirks.html
 
@@ -674,23 +674,23 @@ fast/events/drag-display-none-element.html
 # Skip tests in fast/text/shaping
 fast/text/shaping
 
-# WebKitTestRunner testRunner.setPrivateBrowsingEnabled_DEPRECATED() doesn't work with NetworkProcess.
+# CyberKitTestRunner testRunner.setPrivateBrowsingEnabled_DEPRECATED() doesn't work with NetworkProcess.
 # We explicitly Skip the following tests instead of marking them as Failure because some of these tests will naturally pass
 # as a consequence of testRunner.setPrivateBrowsingEnabled_DEPRECATED() effectively being a no-op as of the time of writing (07/08/2015).
 webkit.org/b/115274 http/tests/security/contentSecurityPolicy/report-cross-origin-no-cookies-when-private-browsing-toggled.php [ Skip ]
 webkit.org/b/115274 http/tests/security/contentSecurityPolicy/report-same-origin-no-cookies-when-private-browsing-toggled.php [ Skip ]
 
-### END OF (4) Features that are not supported in WebKit2 and likely never will be
+### END OF (4) Features that are not supported in CyberKit2 and likely never will be
 ########################################
 
 ########################################
-### START OF (5) Progressions, expected successes that are expected failures in WebKit1.
+### START OF (5) Progressions, expected successes that are expected failures in CyberKit1.
 
-# DumpRenderTree does not allow GIFs to animate, thus animated GIF tests don't work in WebKit1.
+# DumpRenderTree does not allow GIFs to animate, thus animated GIF tests don't work in CyberKit1.
 fast/images/animated-gif-no-layout.html [ Pass ]
 fast/images/gif-loop-count.html [ Pass ]
 
-# Only relevant for WebKit2
+# Only relevant for CyberKit2
 http/tests/storage/storage-map-leaking.html [ Pass ]
 
 # DumpRenderTree does not implement setWillSendRequestHTTPBody
@@ -701,7 +701,7 @@ imported/w3c/web-platform-tests/fetch/api/request/request-cache-only-if-cached.h
 
 printing/printing-events.html [ Pass ]
 
-# Resource Load Statistics are only supported in WebKit2.
+# Resource Load Statistics are only supported in CyberKit2.
 http/tests/resourceLoadStatistics/prevalent-resource-with-user-interaction.html [ Pass ]
 http/tests/resourceLoadStatistics/non-prevalent-resource-with-user-interaction.html [ Pass ]
 http/tests/resourceLoadStatistics/non-prevalent-resource-without-user-interaction.html [ Pass ]
@@ -755,7 +755,7 @@ http/tests/resourceLoadStatistics/cap-cache-max-age-for-prevalent-resource.html 
 # This feature is currently disabled by default and unfinished <rdar://problem/38925077>.
 http/tests/navigation/process-swap-window-open.html [ Skip ]
 
-# Cross-Origin-Resource-Policy response header is only implemented in WebKit2.
+# Cross-Origin-Resource-Policy response header is only implemented in CyberKit2.
 http/wpt/cross-origin-resource-policy/ [ Pass ]
 
 http/tests/navigation/useragent-reload.php [ Pass ]
@@ -766,25 +766,25 @@ fast/forms/call-text-did-change-in-text-field-when-typing.html [ Pass ]
 
 http/tests/adClickAttribution [ Pass ]
 
-# User interaction is a WebKit2 concept.
+# User interaction is a CyberKit2 concept.
 inspector/debugger/evaluateOnCallFrame-emulateUserGesture-userIsInteracting.html [ Pass ]
 inspector/runtime/evaluate-emulateUserGesture-userIsInteracting.html [ Pass ]
 inspector/runtime/callFunctionOn-emulateUserGesture-userIsInteracting.html [ Pass ]
 
-# Target domain is only present in WebKit2.
+# Target domain is only present in CyberKit2.
 http/tests/inspector/target [ Pass ]
 
 # ITP and AdClickAttribution are WK2 only.
 inspector/page/overrideSetting-AdClickAttributionDebugModeEnabled.html [ Pass ]
 inspector/page/overrideSetting-ITPDebugModeEnabled.html [ Pass ]
 
-# Highlighting marked text ranges from layout tests is only supported in WebKit2.
+# Highlighting marked text ranges from layout tests is only supported in CyberKit2.
 editing/input/composition-highlights.html [ Pass ]
 
 # Tests a setting behind the ENABLE_FULLSCREEN_API flag, which is WK2-only
 media/video-supports-fullscreen.html [ Pass ]
 
-### END OF (5) Progressions, expected successes that are expected failures in WebKit1.
+### END OF (5) Progressions, expected successes that are expected failures in CyberKit1.
 ########################################
 
 ###### This file has four sections. When adding new tests, make sure to
@@ -793,8 +793,8 @@ media/video-supports-fullscreen.html [ Pass ]
 ### (1) Classified failures with bug reports
 ### (2) Classified failures without bug reports (yet)
 ### (3) Unclassified failures
-### (4) Features that are not supported in WebKit2 and likely never will be
-### (5) Progressions, expected successes that are expected failures in WebKit1.
+### (4) Features that are not supported in CyberKit2 and likely never will be
+### (5) Progressions, expected successes that are expected failures in CyberKit1.
 
 webkit.org/b/168092 media/track/track-cues-sorted-before-dispatch.html [ Pass Failure ]
 
@@ -808,11 +808,11 @@ webkit.org/b/186406 compositing/iframes/display-none-subframe.html [ Pass Failur
 
 webkit.org/b/187766 http/wpt/service-workers/update-service-worker.https.html [ Pass Failure Timeout ]
 
-# Newly imported test that is flaky on WebKit2 only.
+# Newly imported test that is flaky on CyberKit2 only.
 imported/w3c/web-platform-tests/html/browsers/the-window-object/apis-for-creating-and-navigating-browsing-contexts-by-name/no_window_open_when_term_nesting_level_nonzero.window.html [ Pass Failure ]
 
 # Closed port web socket delays are only supported on wk2.
 http/tests/websocket/tests/hybi/closed-port-delay.html [ Pass ]
 
-# WebKit2 only.
+# CyberKit2 only.
 js/throw-large-string-oom.html [ Pass ]

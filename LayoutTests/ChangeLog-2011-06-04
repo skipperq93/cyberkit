@@ -5,7 +5,7 @@
         [Qt] Enable passing File API tests
         https://bugs.webkit.org/show_bug.cgi?id=62020
 
-        File API has been enabled for QtWebKit in r74115,
+        File API has been enabled for QtCyberKit in r74115,
         let's also enable the passing related tests.
 
         * platform/qt/Skipped:
@@ -27,7 +27,7 @@
 
         Reviewed by Beth Dakin.
 
-        Crash in WebCore::RenderMathMLSubSup::baselinePosition()
+        Crash in CyberCore::RenderMathMLSubSup::baselinePosition()
         https://bugs.webkit.org/show_bug.cgi?id=57897
 
         Added simple test that hits the relevant code.
@@ -921,7 +921,7 @@
         REGRESSION: inline style is lost when deleting line break between paragraphs with same style
         https://bugs.webkit.org/show_bug.cgi?id=61899
 
-        Added a regression test to ensure WebKit preserves font family for a paragraph being merged
+        Added a regression test to ensure CyberKit preserves font family for a paragraph being merged
         to the previous paragraph when deleting a line break between two paragraphs with the same style.
 
         * editing/deleting/delete-line-break-between-paragraphs-with-same-style-expected.txt: Added.
@@ -934,7 +934,7 @@
         REGRESSION: Text selection broken for text with line-height applied
         https://bugs.webkit.org/show_bug.cgi?id=54929
 
-        Added a test to ensure WebKit can place caret in text with a line-height smaller than
+        Added a test to ensure CyberKit can place caret in text with a line-height smaller than
         the height of the text.
 
         * editing/selection/hit-test-on-text-with-line-height-expected.txt: Added.
@@ -1034,7 +1034,7 @@
         http://trac.webkit.org/changeset/87926
         https://bugs.webkit.org/show_bug.cgi?id=60313
 
-        Fails to find WebCoreTestSupport.dylib on bots.
+        Fails to find CyberCoreTestSupport.dylib on bots.
 
         * fast/dom/Window/script-tests/window-property-descriptors.js:
         * fast/dom/Window/window-properties.html:
@@ -1121,7 +1121,7 @@
 
 2011-06-02  Jessie Berlin  <jberlin@apple.com>
 
-        WebKitTestRunner needs an implementation of eventSender.
+        CyberKitTestRunner needs an implementation of eventSender.
         https://bugs.webkit.org/show_bug.cgi?id=42194
 
         Add editing/pasteboard/copy-standalone-image-crash.html to the mac-wk2 skipped list to get
@@ -1145,7 +1145,7 @@
 
 2011-06-02  Jessie Berlin  <jberlin@apple.com>
 
-        WebKitTestRunner needs an implementation of setTextDirection.
+        CyberKitTestRunner needs an implementation of setTextDirection.
         https://bugs.webkit.org/show_bug.cgi?id=61931
         
         Add fast/html/set-text-direction.html to the mac-wk2 skipped list to get the bots green.
@@ -2274,8 +2274,8 @@
         and using width: auto / height: auto on the <object> that hosts the SVG document. Take percentage sizes of the outermost
         SVGs width/height attributes into account when determining the intrinsic size of the <object>.
 
-        Added several other testcases demonstrating several scenarios. All tests work exactly the same in WebKit and Firefox now.
-        The *on-target-svg-absolute.xhtml tests look equal to WebKit/FF but Opera fails them, likely a relict of the different
+        Added several other testcases demonstrating several scenarios. All tests work exactly the same in CyberKit and Firefox now.
+        The *on-target-svg-absolute.xhtml tests look equal to CyberKit/FF but Opera fails them, likely a relict of the different
         interpretation of the intrinsic size of a SVG document in SVG Tiny 1.2.
 
         * platform/mac/svg/custom/object-sizing-height-50p-on-target-svg-absolute-expected.png: Added.
@@ -2767,7 +2767,7 @@
 
         Reviewed by Hajime Morita.
 
-        Using jQuery to show/hide IMG elements crashes WebKit
+        Using jQuery to show/hide IMG elements crashes CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=31721
 
         * editing/pasteboard/copy-standalone-image-crash-expected.txt: Added.
@@ -3148,7 +3148,7 @@
 
         Not reviewed, this just adds a new test.
 
-        WebKit fails WICD SVG background image tests
+        CyberKit fails WICD SVG background image tests
         https://bugs.webkit.org/show_bug.cgi?id=16481
 
         Add two WICD SVG background image tests, which pass just fine.
@@ -3439,7 +3439,7 @@
         Incorrect handling of percentage values for width/height on embedded elements
         https://bugs.webkit.org/show_bug.cgi?id=14793
 
-        WebKit fails some WICD 1.0 core test cases
+        CyberKit fails some WICD 1.0 core test cases
         https://bugs.webkit.org/show_bug.cgi?id=15836 (partially fixed, all 'rightsizing' tests are fixed)
 
         CSS 2.1: Support replaced elements with relative intrinsic sizes
@@ -3638,7 +3638,7 @@
 
         Unreviewed.
 
-        WebKit2 does not support eventSender.
+        CyberKit2 does not support eventSender.
 
         * platform/mac-wk2/Skipped:
 
@@ -3920,7 +3920,7 @@
 
         Reviewed by Kent Tamura.
 
-        WebCore::HTMLSummaryElement::isMainSummary crashes
+        CyberCore::HTMLSummaryElement::isMainSummary crashes
         https://bugs.webkit.org/show_bug.cgi?id=61511
 
         * fast/html/details-summary-document-child-expected.txt: Added.
@@ -4404,10 +4404,10 @@
 
         Reviewed by Andreas Kling.
 
-        WebKitTestRunner needs layoutTestController.setAuthorAndUserStylesEnabled
+        CyberKitTestRunner needs layoutTestController.setAuthorAndUserStylesEnabled
         https://bugs.webkit.org/show_bug.cgi?id=42676
 
-        Implemented layoutTestController.setAuthorAndUserStylesEnabled for WebKitTestRunner.
+        Implemented layoutTestController.setAuthorAndUserStylesEnabled for CyberKitTestRunner.
 
         * platform/mac-wk2/Skipped:
         * platform/qt-wk2/Skipped:
@@ -4541,7 +4541,7 @@
 
         Reviewed by Enrica Casucci.
 
-        WebKit duplicates styles from css rules on copy and paste
+        CyberKit duplicates styles from css rules on copy and paste
         https://bugs.webkit.org/show_bug.cgi?id=61466
 
         Added a test to ensure Webkit does not leave redundant inline style declarations after paste.
@@ -4685,7 +4685,7 @@
         [Qt] Remove test cases related to layoutTestController.dumpBackForwardList from qt-wk2/Skipped
         https://bugs.webkit.org/show_bug.cgi?id=61462
 
-        WebKitTestRunner already support layoutTestController.dumpBackForwardList from r70723.
+        CyberKitTestRunner already support layoutTestController.dumpBackForwardList from r70723.
 
         * platform/qt-wk2/Skipped:
 
@@ -4875,7 +4875,7 @@
 
         Reviewed by Simon Hausmann.
 
-        WebKitTestRunner needs layoutTestController.setPrivateBrowsingEnabled
+        CyberKitTestRunner needs layoutTestController.setPrivateBrowsingEnabled
         https://bugs.webkit.org/show_bug.cgi?id=42697
 
         * platform/mac-wk2/Skipped:
@@ -4943,7 +4943,7 @@
 
 2011-05-25  Jon Honeycutt  <jhoneycutt@apple.com>
 
-        REGRESSION (WebKit2): Crash in Flash on USA Today photo gallery
+        REGRESSION (CyberKit2): Crash in Flash on USA Today photo gallery
         https://bugs.webkit.org/show_bug.cgi?id=61428
         <rdar://problem/9457006>
 
@@ -5046,7 +5046,7 @@
 
         Reviewed by Eric Seidel.
 
-        WebKit does not handle missing filter elements correctly
+        CyberKit does not handle missing filter elements correctly
         https://bugs.webkit.org/show_bug.cgi?id=12569
 
         Updated improved pixel test result and add new SVG1.1 SE test and results.
@@ -5131,10 +5131,10 @@
 
         Reviewed by Antonio Gomes.
 
-        [Qt] QtWebKit crashes when dragging not loaded images
+        [Qt] QtCyberKit crashes when dragging not loaded images
         https://bugs.webkit.org/show_bug.cgi?id=61314
 
-        Checks if WebKit crashes when dragging an image not yet loaded.
+        Checks if CyberKit crashes when dragging an image not yet loaded.
 
         * http/tests/misc/drag-not-loaded-image-expected.txt: Added.
         * http/tests/misc/drag-not-loaded-image.html: Added.
@@ -5613,8 +5613,8 @@
 
 2011-05-24  Ryosuke Niwa  <rniwa@webkit.org>
 
-        Skip fast/events/scroll-in-scaled-page-with-overflow-hidden.html on Mac WebKit2
-        since WebKitTestRunner doesn't implement eventSender.mouseScrollBy yet (bug 42194).
+        Skip fast/events/scroll-in-scaled-page-with-overflow-hidden.html on Mac CyberKit2
+        since CyberKitTestRunner doesn't implement eventSender.mouseScrollBy yet (bug 42194).
 
         * platform/mac-wk2/Skipped:
 
@@ -5636,7 +5636,7 @@
 2011-05-24  Ryosuke Niwa  <rniwa@webkit.org>
 
         Skip fast/events/selectstart-by-double-triple-clicks.html and selectstart-by-drag.html
-        on Mac WebKit 2 per the bug 42194.
+        on Mac CyberKit 2 per the bug 42194.
 
         * platform/mac-wk2/Skipped:
 
@@ -5661,7 +5661,7 @@
         Undo gets broken in contenteditable area when a text field's value is set by script
         https://bugs.webkit.org/show_bug.cgi?id=61340
 
-        Added a test to ensure WebKit does not clear undo stack when setting the value of input or textarea.
+        Added a test to ensure CyberKit does not clear undo stack when setting the value of input or textarea.
 
         * editing/undo/undo-after-setting-value-expected.txt: Added.
         * editing/undo/undo-after-setting-value.html: Added.
@@ -5707,7 +5707,7 @@
 
         Reviewed by Adam Barth.
 
-        Adding MHTML reading support to WebCore.
+        Adding MHTML reading support to CyberCore.
         https://bugs.webkit.org/show_bug.cgi?id=7168
 
         * mhtml/frame_0.html_original: Added.
@@ -5762,12 +5762,12 @@
         Test that we don't crash when a JS wrapper for an NPObject is destroyed after its plugin is unloaded
 
         Test for <http://webkit.org/b/61316> <rdar://problem/9489824> Crash in deallocateNPObject
-        when reloading yahoo.com webarchive in WebKit2
+        when reloading yahoo.com webarchive in CyberKit2
 
         and
 
         <http://webkit.org/b/61317> <rdar://problem/9489829> Crash in _NPN_DeallocateObject when
-        reloading yahoo.com webarchive in WebKit1
+        reloading yahoo.com webarchive in CyberKit1
 
         Reviewed by Oliver Hunt.
 
@@ -6003,7 +6003,7 @@
 
         Reviewed by Darin Adler.
 
-        Test for: Crash from null pointer dereference below WebCore::StorageAreaImpl::setItem()
+        Test for: Crash from null pointer dereference below CyberCore::StorageAreaImpl::setItem()
         https://bugs.webkit.org/show_bug.cgi?id=57140
         <rdar://problem/9191214>
 
@@ -6109,13 +6109,13 @@
 
         Reviewed by Enrica Casucci.
 
-        REGRESSION(r84311): WebKit copies too much styles when copying
+        REGRESSION(r84311): CyberKit copies too much styles when copying
         https://bugs.webkit.org/show_bug.cgi?id=60914
 
-        Added a test to ensure WebKit does not clone hierarchy to preserve background color.
+        Added a test to ensure CyberKit does not clone hierarchy to preserve background color.
 
         Also renamed editing/pasteboard/do-not-copy-body-color.html to do-no-clone-unnecessary-styles.html
-        and updated the description to match new behavior. While this test ensures WebKit does not copy
+        and updated the description to match new behavior. While this test ensures CyberKit does not copy
         body's background color when it's not fully selected, this isn't a necessary requirement for us
         not to duplicate borders so new expected result is correct.
 
@@ -6160,10 +6160,10 @@
 
         Reviewed by Darin Adler.
 
-        WebKitTestRunner needs layoutTestController.setJavaScriptCanAccessClipboard
+        CyberKitTestRunner needs layoutTestController.setJavaScriptCanAccessClipboard
         https://bugs.webkit.org/show_bug.cgi?id=42669
 
-        Unskip test case due to the implementation setJavaScriptCanAccessClipboard in WebKitTestRunner.
+        Unskip test case due to the implementation setJavaScriptCanAccessClipboard in CyberKitTestRunner.
 
         * platform/mac-wk2/Skipped:
         * platform/qt-wk2/Skipped:
@@ -6677,7 +6677,7 @@
 
         Reviewed by Eric Carlson.
 
-        WebKit2: fix failing fullscreen/full-screen-remove* tests.
+        CyberKit2: fix failing fullscreen/full-screen-remove* tests.
         https://bugs.webkit.org/show_bug.cgi?id=61027
 
         * platform/mac-wk2/Skipped: Unskip most fullscreen/ tests.
@@ -6949,7 +6949,7 @@
 
         Reviewed by Darin Adler.
 
-        REGRESSION (r70748): WebKit cannot play videos created by Podcast Producer.
+        REGRESSION (r70748): CyberKit cannot play videos created by Podcast Producer.
         https://bugs.webkit.org/show_bug.cgi?id=61229
         
         Test that an object element with a non-empty classid, a valid MIME
@@ -7030,7 +7030,7 @@
         Wrap copied contents by one style span instead of two
         https://bugs.webkit.org/show_bug.cgi?id=60988
 
-        Rebaselined tests due to the change in how WebKit preserves style in copy and paste.
+        Rebaselined tests due to the change in how CyberKit preserves style in copy and paste.
 
         * editing/pasteboard/4930986-2-expected.txt: Whitespace change.
         * editing/pasteboard/5065605-expected.txt: No longer adds redundant inline style declaration.
@@ -7090,10 +7090,10 @@
 
         Reviewed by Sam Weinig.
 
-        WebKitTestRunner needs layoutTestController.pauseTransitionAtTimeOnElementWithId
+        CyberKitTestRunner needs layoutTestController.pauseTransitionAtTimeOnElementWithId
         https://bugs.webkit.org/show_bug.cgi?id=42550
         
-        REGRESSION (r84961): transitions/transition-timing-function.html failing on SnowLeopard Intel Release (WebKit2 Tests)
+        REGRESSION (r84961): transitions/transition-timing-function.html failing on SnowLeopard Intel Release (CyberKit2 Tests)
         https://bugs.webkit.org/show_bug.cgi?id=59865
         
         Unskip transition tests that rely on the pause API, and remove a line which refers
@@ -7494,12 +7494,12 @@
 
         Reviewed by Darin Adler.
 
-        REGRESSION (r83322): Many crashes in Mail.app in WebCore::Node::nodeIndex
+        REGRESSION (r83322): Many crashes in Mail.app in CyberCore::Node::nodeIndex
         https://bugs.webkit.org/show_bug.cgi?id=61012
 
-        Added a test to ensure WebKit does not crash when inserting a content immediately after
+        Added a test to ensure CyberKit does not crash when inserting a content immediately after
         a styled element inside a Mail blockquote. Regrettably the expected result is incorrect,
-        but it matches the behavior of WebKit before r83322.
+        but it matches the behavior of CyberKit before r83322.
 
         * editing/pasteboard/5065605-expected.txt: Reintroduced redundant style spans.
         * editing/pasteboard/paste-text-011-expected.txt: Ditto.
@@ -8032,7 +8032,7 @@
         Remove mac-wk2 expected failure results for a plugins test that I fixed in r86456
 
         Fixes <http://webkit.org/b/57456> <rdar://problem/9209331>
-        plugins/embed-prefers-plugins-for-images.html failing on SnowLeopard Intel Release (WebKit2
+        plugins/embed-prefers-plugins-for-images.html failing on SnowLeopard Intel Release (CyberKit2
         Tests)
 
         * platform/mac-wk2/plugins/embed-prefers-plugins-for-images-expected.txt: Removed.
@@ -8468,7 +8468,7 @@
 
         Reviewed by Darin Fisher.
 
-        Make WebKit expose extra touch information
+        Make CyberKit expose extra touch information
         https://bugs.webkit.org/show_bug.cgi?id=59030
 
         * fast/events/touch/document-create-touch-expected.txt:
@@ -8573,7 +8573,7 @@
 
 2011-05-17  Jessie Berlin  <jberlin@apple.com>
 
-        WebKit2 needs layoutTestController.overridePreference.
+        CyberKit2 needs layoutTestController.overridePreference.
         https://bugs.webkit.org/show_bug.cgi?id=42197
 
         Add fast/images/animated-gif-restored-from-bfcache.html to the mac-wk2 Skipped list to get
@@ -8868,7 +8868,7 @@
 
 2011-05-16  Adam Barth  <abarth@webkit.org>
 
-        cross-frame-access-call.html fails after WebKit r74449
+        cross-frame-access-call.html fails after CyberKit r74449
         http://code.google.com/p/chromium/issues/detail?id=67767
 
         These tests aren't really failing.  They just have different results
@@ -9076,7 +9076,7 @@
 
         Remove the failing mac-wk2 expected results for online-fallback-layering.html, since it now
         appears to be passing on the SL WK2 bots:
-        http://build.webkit.org/results/SnowLeopard%20Intel%20Release%20(WebKit2%20Tests)/r86545%20(11698)/http/tests/appcache/online-fallback-layering-pretty-diff.html
+        http://build.webkit.org/results/SnowLeopard%20Intel%20Release%20(CyberKit2%20Tests)/r86545%20(11698)/http/tests/appcache/online-fallback-layering-pretty-diff.html
 
         * platform/mac-wk2/http/tests/appcache/online-fallback-layering-expected.txt: Removed.
 
@@ -9546,7 +9546,7 @@
         click event shouldn't fire when the target is ever removed in mouseup
         https://bugs.webkit.org/show_bug.cgi?id=60600
 
-        Added tests to ensure WebKit does not fire click event when the target node
+        Added tests to ensure CyberKit does not fire click event when the target node
         is removed in mouseup event.
 
         * fast/events/remove-target-in-mouseup-deep-expected.txt: Added.
@@ -10089,11 +10089,11 @@
 
         Reviewed by Darin Adler.
 
-        WebKit inserts base, link, meta, style, and title elements into an editable region
+        CyberKit inserts base, link, meta, style, and title elements into an editable region
         when pasting table cells from Excel
         https://bugs.webkit.org/show_bug.cgi?id=60644
 
-        Added a test to ensure WebKit strips the said elements prior to inserting HTML.
+        Added a test to ensure CyberKit strips the said elements prior to inserting HTML.
 
         * editing/pasteboard/paste-head-contents-expected.txt: Added.
         * editing/pasteboard/paste-head-contents.html: Added.
@@ -10378,7 +10378,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=60555
         <rdar://problem/9373915>
 
-        See WebCore/ChangeLog for detail.
+        See CyberCore/ChangeLog for detail.
 
         * platform/mac-leopard/Skipped:
         * platform/mac-snowleopard/Skipped:
@@ -10425,7 +10425,7 @@
 
         Test what happens when a plugin makes a targeted javascript: request
 
-        Test for <http://webkit.org/b/60568> <rdar://problem/8610657> REGRESSION (WebKit2): Flash
+        Test for <http://webkit.org/b/60568> <rdar://problem/8610657> REGRESSION (CyberKit2): Flash
         plugin doesn't appear on a hanes.com page
 
         Reviewed by Anders Carlsson.
@@ -10435,7 +10435,7 @@
         (startTest): Tell the plugin to make two targeted javascript: requests. One calls a function
         with a return value, the other calls a function with no return value.
         (finishTest): Check that both functions were called, and that we either didn't get an
-        NPP_URLNotify call (like in Mozilla, WebKit1, and WebKit2), or got an NPP_URLNotify call
+        NPP_URLNotify call (like in Mozilla, CyberKit1, and CyberKit2), or got an NPP_URLNotify call
         with NPRES_DONE (like in Chrome).
 
 2011-05-11  Kenji Imasaki  <imasaki@chromium.org>
@@ -10450,7 +10450,7 @@
 
 2011-05-11  Jessie Berlin  <jberlin@apple.com>
 
-        [SnowLeopard WebKit2 Tests] fast/frames/flattening/frameset-flattening-subframesets.html
+        [SnowLeopard CyberKit2 Tests] fast/frames/flattening/frameset-flattening-subframesets.html
         flakey.
         https://bugs.webkit.org/show_bug.cgi?id=60648
 
@@ -10536,7 +10536,7 @@
 
 2011-05-11  Jessie Berlin  <jberlin@apple.com>
 
-        WebKitTestRunner needs layoutTestController.originsWithLocalStorage.
+        CyberKitTestRunner needs layoutTestController.originsWithLocalStorage.
 
         Add two more storage tracker tests (added in r86205) to the mac-wk2 Skipped list to get the
         bots green.
@@ -10558,7 +10558,7 @@
 
 2011-05-11  Kent Tamura  <tkent@chromium.org>
 
-        The tests added by r86224 don't work on WebKit2/mac.
+        The tests added by r86224 don't work on CyberKit2/mac.
 
         * platform/mac-wk2/Skipped:
 
@@ -10642,7 +10642,7 @@
 
         Reviewed by David Levin.
 
-        LayoutTest demonstrating that filesystem: URLs are not cached in WebKit
+        LayoutTest demonstrating that filesystem: URLs are not cached in CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=58854
 
         Regression test for http://crbug.com/79539.
@@ -10728,12 +10728,12 @@
 
 2011-05-10  Adam Roben  <aroben@apple.com>
 
-        Update some plugin tests to work with WebKit2's asynchronous windowed plugin positioning on Windows
+        Update some plugin tests to work with CyberKit2's asynchronous windowed plugin positioning on Windows
 
         Fixes <http://webkit.org/b/60442> <rdar://problem/9403200> REGRESSION (r85795):
         platform/win/plugins/window-geometry-initialized-before-set-window.html and
         platform/win/plugins/window-region-is-set-to-clip-rect.html failing on Windows 7 Release
-        (WebKit2 Tests)
+        (CyberKit2 Tests)
 
         Reviewed by Anders Carlsson.
 
@@ -11512,7 +11512,7 @@
 
 2011-05-07  Jessie Berlin  <jberlin@apple.com>
 
-        [Windows WebKit2 Release Tests]
+        [Windows CyberKit2 Release Tests]
         platform/win/plugins/window-geometry-initialized-before-set-window.html and
         platform/win/plugins/window-region-is-set-to-clip-rect.html failing since r85795.
         https://bugs.webkit.org/show_bug.cgi?id=60442
@@ -11524,7 +11524,7 @@
 
 2011-05-07  Jessie Berlin  <jberlin@apple.com>
 
-        WebKitTestRunner needs layoutTestController.setPopupBlockingEnabled
+        CyberKitTestRunner needs layoutTestController.setPopupBlockingEnabled
 
         Add another test (fast/events/popup-blocked-from-mousemove.html) to the mac-wk2 Skipped list
         to get the bots green.
@@ -11545,7 +11545,7 @@
 
 2011-05-07  Jessie Berlin  <jberlin@apple.com>
 
-        [WebKit2] editing/selection/select-across-readonly-input-{1-5}.html failing since
+        [CyberKit2] editing/selection/select-across-readonly-input-{1-5}.html failing since
         introduction in r85669.
         https://bugs.webkit.org/show_bug.cgi?id=60272
 
@@ -11873,10 +11873,10 @@
         Add a test that shows that windowed plugins with visibility:hidden do not appear on screen
 
         I could only figure out how to make this a pixel test. Note that the pixel test doesn't pass
-        in WebKit2 due to <http://webkit.org/b/58050>, but I verified it works correctly in
+        in CyberKit2 due to <http://webkit.org/b/58050>, but I verified it works correctly in
         MiniBrowser.
 
-        Test for <http://webkit.org/b/60285> REGRESSION (WebKit2): A white rectangle covers up
+        Test for <http://webkit.org/b/60285> REGRESSION (CyberKit2): A white rectangle covers up
         important UI elements when composing a new message at mail.yahoo.com with BrowserPlus!
         plug-in installed
 
@@ -12727,7 +12727,7 @@
 
         Reviewed by Anders Carlsson.
 
-        WebKit2 flashes if entering and exiting compositing rapidly
+        CyberKit2 flashes if entering and exiting compositing rapidly
         https://bugs.webkit.org/show_bug.cgi?id=60198
         
         Testcase that toggles compositing 10 times and should not flash or assert.
@@ -12770,7 +12770,7 @@
 
         Reviewed by Kenneth Rohde Christiansen.
 
-        [Qt] Qt WebKit updates view on HTTP 204 response
+        [Qt] Qt CyberKit updates view on HTTP 204 response
         https://bugs.webkit.org/show_bug.cgi?id=42529
 
         Responses which have status code equal to 204 should be ignored.
@@ -13172,10 +13172,10 @@
 
         Reviewed by Darin Adler.
 
-        WebKit allows selection that crosses the shadow boundary of a readonly input element
+        CyberKit allows selection that crosses the shadow boundary of a readonly input element
         https://bugs.webkit.org/show_bug.cgi?id=60000
 
-        Added pixel tests to ensure WebKit doesn't create a selection that spans across
+        Added pixel tests to ensure CyberKit doesn't create a selection that spans across
         the shadow DOM boundary of a readonly input element. Also rebaselined a test that
         previously exhibited this behavior.
 
@@ -14091,7 +14091,7 @@
         for more details.
 
         * fast/events/onblur-remove-expected.txt: Added; expected failure results.
-        * fast/events/onblur-remove.html: Copied from Source/WebCore/manual-tests/onblur-remove.html.
+        * fast/events/onblur-remove.html: Copied from Source/CyberCore/manual-tests/onblur-remove.html.
 
 2011-05-02  Martin Robinson  <mrobinson@igalia.com>
 
@@ -14404,7 +14404,7 @@
         which is now skipped, was causing this one to fail!)
 
         Fixes <http://webkit.org/b/56528> <rdar://problem/9147568> REGRESSION (r80846):
-        animations/animation-controller-drt-api.html failing in WebKit2
+        animations/animation-controller-drt-api.html failing in CyberKit2
 
         * platform/mac-wk2/animations/animation-controller-drt-api-expected.txt: Removed.
 
@@ -14488,7 +14488,7 @@
 
 2011-04-29  Sam Weinig  <sam@webkit.org>
 
-        Add tests using layoutTestController.setPrivateBrowsingEnabled to the WebKit2
+        Add tests using layoutTestController.setPrivateBrowsingEnabled to the CyberKit2
         skipped list. Covered by https://bugs.webkit.org/show_bug.cgi?id=59857
 
         * platform/mac-wk2/Skipped:
@@ -14695,10 +14695,10 @@
 
         Reviewed by Simon Fraser.
 
-        Add ENABLE macro for WebKitAnimation
+        Add ENABLE macro for CyberKitAnimation
         https://bugs.webkit.org/show_bug.cgi?id=59729
 
-        Now that the WebKit Animation API is disabled by
+        Now that the CyberKit Animation API is disabled by
         default, skip the existing test.
 
         * platform/chromium/test_expectations.txt:
@@ -14768,7 +14768,7 @@
 
 2011-04-29  Jessie Berlin  <jberlin@apple.com>
 
-        WebKit2 needs layoutTestController.overridePreference.
+        CyberKit2 needs layoutTestController.overridePreference.
         https://bugs.webkit.org/show_bug.cgi?id=42197
 
         Add http/tests/inspector/network/ping.html, which uses overridePreference, to the mac-wk2
@@ -16611,7 +16611,7 @@
 
         Reviewed by Laszlo Gombos.
 
-        WebKitTestRunner needs layoutTestController.addOriginAccessWhitelistEntry
+        CyberKitTestRunner needs layoutTestController.addOriginAccessWhitelistEntry
         https://bugs.webkit.org/show_bug.cgi?id=42544
 
         Unskip passed tests and place failing tests for other reasons to other sections.
@@ -17045,7 +17045,7 @@
 
         Not reviewed.
 
-        Add fast/loader/file-protocol-fragment.html to WebKit2 skip list
+        Add fast/loader/file-protocol-fragment.html to CyberKit2 skip list
         (uses layoutTestController.dumpResourceLoadCallbacks).
 
         * platform/mac-wk2/Skipped:
@@ -17793,7 +17793,7 @@
 
 2011-04-25  Jessie Berlin  <jberlin@webkit.org>
 
-        [Snow Leopard Intel WebKit2 Release Tests] editing/undo/undo-iframe-location-change.html and
+        [Snow Leopard Intel CyberKit2 Release Tests] editing/undo/undo-iframe-location-change.html and
         compositing/iframes/invisible-nested-iframe-show.html failing since r84037.
         https://bugs.webkit.org/show_bug.cgi?id=58990
 
@@ -18020,7 +18020,7 @@
 
         Unreviewed.
 
-        REGRESSION (r80812): window.print();window.close() doesn't work in WebKit2
+        REGRESSION (r80812): window.print();window.close() doesn't work in CyberKit2
         https://bugs.webkit.org/show_bug.cgi?id=59241
         <rdar://problem/9150861>
 
@@ -18084,7 +18084,7 @@
 
         Reviewed by Kenneth Rohde Christiansen.
 
-        WebKitTestRunner needs layoutTestController.setFrameFlatteningEnabled
+        CyberKitTestRunner needs layoutTestController.setFrameFlatteningEnabled
         https://bugs.webkit.org/show_bug.cgi?id=42536
 
         Unskip passed tests.
@@ -18751,7 +18751,7 @@
 
         Reviewed by Beth Dakin.
 
-        WebKit is erroneously modifying the DOM; adding 'aria-selected' to tables
+        CyberKit is erroneously modifying the DOM; adding 'aria-selected' to tables
         https://bugs.webkit.org/show_bug.cgi?id=59140
 
         * accessibility/aria-combobox.html:
@@ -19339,7 +19339,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=59042
 
         * platform/qt-wk2/Skipped: Add fast/images/animated-gif-restored-from-bfcache.html,
-        because WebKit2 since it doesn't implement layoutTestController.overridePreference().
+        because CyberKit2 since it doesn't implement layoutTestController.overridePreference().
 
 2011-04-21  Philippe Normand  <pnormand@igalia.com>
 
@@ -19564,8 +19564,8 @@
         * fast/images/animated-gif-restored-from-bfcache-expected.txt: Added.
         * fast/images/animated-gif-restored-from-bfcache.html: Added.
         * fast/images/resources/animated-10color.gif: Added.
-        * platform/mac-wk2/Skipped: Sadly, this test for a WebKit2-specific fix
-        has to be skipped for now on WebKit2 since it doesn't implement
+        * platform/mac-wk2/Skipped: Sadly, this test for a CyberKit2-specific fix
+        has to be skipped for now on CyberKit2 since it doesn't implement
         layoutTestController.overridePreference().
 
 2011-04-20  Dimitri Glazkov  <dglazkov@chromium.org>
@@ -19835,8 +19835,8 @@
 
         Add Windows 7 SP1 baselines for some SVG tests that progressed in SP1
 
-        These baselines were previously thought to be WebKit2-specific. However, it turned out that
-        the WebKit2 bots had Windows 7 SP1 installed, while the WebKit1 bots just had Windows 7
+        These baselines were previously thought to be CyberKit2-specific. However, it turned out that
+        the CyberKit2 bots had Windows 7 SP1 installed, while the CyberKit1 bots just had Windows 7
         installed, and that was the crucial difference. So this patch reclassifies the new baselines
         as being SP1 vs. not-SP1, rather than WK2 vs. WK1. I also added pixel results.
 
@@ -19925,7 +19925,7 @@
 
 2011-04-20  Jessie Berlin  <jberlin@apple.com>
 
-        [Snow Leopard Intel WebKit2 Release Tests] editing/execCommand/convert-style-elements-to-spans.html
+        [Snow Leopard Intel CyberKit2 Release Tests] editing/execCommand/convert-style-elements-to-spans.html
         flakey.
         https://bugs.webkit.org/show_bug.cgi?id=58183
 
@@ -19954,7 +19954,7 @@
 
 2011-04-20  Jessie Berlin  <jberlin@apple.com>
 
-        WebKit2 needs layoutTestController.overridePreference
+        CyberKit2 needs layoutTestController.overridePreference
         https://bugs.webkit.org/show_bug.cgi?id=42197
 
         Add another test that uses layoutTestController.overridePreference
@@ -20643,7 +20643,7 @@
 
 2011-04-19  Ryosuke Niwa  <rniwa@webkit.org>
 
-        Skip the test added by r84270 on WebKit2 since it uses eventSender.
+        Skip the test added by r84270 on CyberKit2 since it uses eventSender.
 
         * platform/mac-wk2/Skipped:
 
@@ -21042,10 +21042,10 @@
         Prefix from:
         - window.requestFileSystem to window.webkitRequestFileSystem
         - window.resolveLocalFileSystemURL to window.webkitResolveLocalFileSystemURL
-        - window.Flags to window.WebKitFlags
+        - window.Flags to window.CyberKitFlags
         - WorkerContext.requestFileSystem to WorkerContext.webkitRequestFileSystem
         - WorkerContext.resolveLocalFileSystemURL to WorkerContext.webkitResolveLocalFileSystemURL
-        - WorkerContext.Flags to WorkerContext.WebKitFlags
+        - WorkerContext.Flags to WorkerContext.CyberKitFlags
 
         * fast/dom/script-tests/prototype-inheritance.js:
         * fast/filesystem/flags-passing-expected.txt:
@@ -21190,7 +21190,7 @@
 
 2011-04-18  Jessie Berlin  <jberlin@apple.com>
 
-        WebKitTestRunner needs a more-complete implementation of eventSender.
+        CyberKitTestRunner needs a more-complete implementation of eventSender.
         https://bugs.webkit.org/show_bug.cgi?id=42194
 
         Skip fullscreen/full-screen-cancel.html (which uses eventSender.keyDown) in the WK2 tests.
@@ -21201,7 +21201,7 @@
 
         Reviewed by Sam Weinig.
 
-        WebKit2: WKTR should support WebKit2 full screen APIs
+        CyberKit2: WKTR should support CyberKit2 full screen APIs
         https://bugs.webkit.org/show_bug.cgi?id=56318
 
         WKTR does not support the eventSender.keyDown() method, so use mouseDown()
@@ -21302,7 +21302,7 @@
 
         Reviewed by Eric Seidel.
 
-        WebKitTestRunner needs layoutTestController.pathToLocalResource
+        CyberKitTestRunner needs layoutTestController.pathToLocalResource
         https://bugs.webkit.org/show_bug.cgi?id=42541
 
         Unskip passed tests.
@@ -21738,7 +21738,7 @@
         since Firefox supports the unprefixed property now. This avoids the problem where
         -moz-border-radius and -webkit-border-radius had different behaviors when given two values.
 
-        Also unprefix box-sizing for WebKit, and add a -moz prefixed version for Firefox.
+        Also unprefix box-sizing for CyberKit, and add a -moz prefixed version for Firefox.
 
         Add a test that compares the behavior of -webkit-border-radius and border-radius with
         two values.
@@ -22905,7 +22905,7 @@
 2011-04-14  Andy Estes  <aestes@apple.com>
 
         Add a comment with the bugzilla URL that tracks implementing
-        layoutTestController.setPluginsEnabled() in WebKitTestRunner.
+        layoutTestController.setPluginsEnabled() in CyberKitTestRunner.
 
         * platform/mac-wk2/Skipped:
 
@@ -23870,7 +23870,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=58323
 
         Got rid of unnecessary JS from composited-subframe.html. This was mistakenly left in from previous experiments.
-        Also moved pixel results to be platform specific. These are for Mac WebKit and WebKit2. There are color diffs
+        Also moved pixel results to be platform specific. These are for Mac CyberKit and CyberKit2. There are color diffs
         between the two platforms, so I will make them all platform specific.
 
         * compositing/framesets/composited-frame-alignment-expected.checksum: Removed.
@@ -23937,7 +23937,7 @@
 2011-04-13  Jessie Berlin  <jberlin@apple.com>
 
         http/tests/inspector/extensions-resources-redirect.html and
-        inspector/extensions/extensions-resources.html sometimes fail on Windows 7 Release (WebKit2
+        inspector/extensions/extensions-resources.html sometimes fail on Windows 7 Release (CyberKit2
         Tests).
         https://bugs.webkit.org/show_bug.cgi?id=57491
 
@@ -24285,7 +24285,7 @@
 
         Added http/tests/misc/favicon-loads-with-icon-loading-override.html
         to mac-wk2 skipped list because resource load callbacks aren't implemented
-        in WebKitTestRunner.
+        in CyberKitTestRunner.
 
         * platform/mac-wk2/Skipped:
 
@@ -24433,7 +24433,7 @@
 
 2011-04-12  Jessie Berlin  <jberlin@apple.com>
 
-        [WebKit2 Release Tests] fast/dom/StyleSheet/detached-stylesheet-without-wrapper.html flakey
+        [CyberKit2 Release Tests] fast/dom/StyleSheet/detached-stylesheet-without-wrapper.html flakey
         https://bugs.webkit.org/show_bug.cgi?id=58337
 
         Skip the test to get the bots green.
@@ -24672,7 +24672,7 @@
 
         Rubber-stamped by Csaba Osztrogonác.
 
-        Skip a test on WebKit2 that depends on layoutTestController.setGeolocationPermission.
+        Skip a test on CyberKit2 that depends on layoutTestController.setGeolocationPermission.
 
         * platform/mac-wk2/Skipped:
         * platform/qt-wk2/Skipped:
@@ -24721,7 +24721,7 @@
 
         Reviewed by Oliver Hunt.
 
-        Callable objects created via JavaScriptCore API cannot be used as Geolocation callbacks
+        Callable objects created via CyberScriptCore API cannot be used as Geolocation callbacks
         https://bugs.webkit.org/show_bug.cgi?id=40012
 
         Covered by fast/dom/Geolocation/argument-types.html
@@ -24795,7 +24795,7 @@
         [chromium] Crash in WebViewImpl::caretOrSelectionBounds
         https://bugs.webkit.org/show_bug.cgi?id=58269
 
-        Added a test to ensure WebKit does not crash when selecting over a file input element.
+        Added a test to ensure CyberKit does not crash when selecting over a file input element.
         While the bug was specific to Chromium port, the test will be run on all ports because
         all other ports should not crash either.
 
@@ -25031,7 +25031,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=58241
         <rdar://problem/9264736>
 
-        See WebCore/ChangeLog for detail.
+        See CyberCore/ChangeLog for detail.
 
         * platform/mac-leopard/Skipped:
         * platform/mac-snowleopard/Skipped:
@@ -25081,7 +25081,7 @@
 
 2011-04-11  Jessie Berlin  <jberlin@apple.com>
 
-        [Snow Leopard WebKit2 Release Tests] inspector/styles/styles-add-blank-property.html flakey.
+        [Snow Leopard CyberKit2 Release Tests] inspector/styles/styles-add-blank-property.html flakey.
         https://bugs.webkit.org/show_bug.cgi?id=57638
 
         Skip inspector/styles/styles-add-blank-property.html to get the bots green.
@@ -25377,7 +25377,7 @@
 
 2011-04-10  Jessie Berlin  <jberlin@apple.com>
 
-        WebKitTestRunner needs a more-complete implementation of eventSender
+        CyberKitTestRunner needs a more-complete implementation of eventSender
         https://bugs.webkit.org/show_bug.cgi?id=42194
 
         Add another test that depends on eventSender.keyDown (fast/dom/hidden-iframe-no-focus.html
@@ -25688,7 +25688,7 @@
         http://trac.webkit.org/changeset/83295
         https://bugs.webkit.org/show_bug.cgi?id=58144
 
-        Broke 4 tests in QtWebKit (Requested by tonikitoo on #webkit).
+        Broke 4 tests in QtCyberKit (Requested by tonikitoo on #webkit).
 
         * platform/qt/Skipped:
 
@@ -25705,7 +25705,7 @@
 
         Test that NPP_SetWindow is passed a null window handle during plugin destruction on non-Mac platforms
 
-        Test for <http://webkit.org/b/47009> WebKit2 needs to call NPP_SetWindow when destroying a
+        Test for <http://webkit.org/b/47009> CyberKit2 needs to call NPP_SetWindow when destroying a
         plugin
 
         Reviewed by Anders Carlsson.
@@ -26046,7 +26046,7 @@
         REGRESSION (r46914, r48764): When typing in Mail, line wrapping frequently occurs in the middle of words
         https://bugs.webkit.org/show_bug.cgi?id=57872
 
-        Added tests to ensure WebKit inserts a paragraph separator properly around tab span.
+        Added tests to ensure CyberKit inserts a paragraph separator properly around tab span.
 
         * editing/inserting/insert-div-021-expected.txt: No longer duplicates span[id="test"] incorrectly.
         * editing/inserting/insert-paragraph-after-tab-span-and-text-expected.txt: Added.
@@ -26116,7 +26116,7 @@
 
         Reviewed by Eric Seidel.
 
-        Test for Bug 51465 - chrome.dll!WebCore::RenderLayer::currentTransform
+        Test for Bug 51465 - chrome.dll!CyberCore::RenderLayer::currentTransform
         ReadAV@NULL (8968fc97874fa23b6799ff8f09c142e4)
 
         Forgot to add them to the original patch.
@@ -26158,7 +26158,7 @@
 
         Unreviewed. Updated comment in skipped list to
         include the bug that tracks the changes required
-        in WebKitTestRunner.
+        in CyberKitTestRunner.
 
         * platform/win-wk2/Skipped:
 
@@ -26317,7 +26317,7 @@
 
         Reviewed by Darin Adler.
 
-        WebKitTestRunner needs layoutTestController.isPageBoxVisible
+        CyberKitTestRunner needs layoutTestController.isPageBoxVisible
         https://bugs.webkit.org/show_bug.cgi?id=42695
 
         Unskip passed tests.
@@ -26329,7 +26329,7 @@
 
         Reviewed by Oliver Hunt.
 
-        REGRESSION(WebKit2): execCommand('undo') doesn't work (Mac).
+        REGRESSION(CyberKit2): execCommand('undo') doesn't work (Mac).
         https://bugs.webkit.org/show_bug.cgi?id=58055
         <rdar://problem/8862023>
 
@@ -26347,7 +26347,7 @@
 
 2011-04-07  Jessie Berlin  <jberlin@apple.com>
 
-        [WebKit2 Tests] fast/events/select-element.html failing since introduction in r83096
+        [CyberKit2 Tests] fast/events/select-element.html failing since introduction in r83096
         https://bugs.webkit.org/show_bug.cgi?id=58059
 
         Adding this test to the mac-wk2 skipped list to get the bots green.
@@ -26472,7 +26472,7 @@
         REGRESSION (r46914, r48764): When typing in Mail, line wrapping frequently occurs in the middle of words
         https://bugs.webkit.org/show_bug.cgi?id=57872
 
-        Added a test insert a paragraph separator and text around tab spans. WebKit should not apply the tab span's
+        Added a test insert a paragraph separator and text around tab spans. CyberKit should not apply the tab span's
         style to the paragraph separator or the text.
 
         * editing/inserting/insert-paragraph-separator-tab-span-expected.txt: Added.
@@ -26530,7 +26530,7 @@
 
 2011-04-07  Kent Tamura  <tkent@chromium.org>
 
-        Skip platform/mac/fast/forms/input-appearance-spinbutton-up.html on Mac WebKit2.
+        Skip platform/mac/fast/forms/input-appearance-spinbutton-up.html on Mac CyberKit2.
         https://bugs.webkit.org/show_bug.cgi?id=56298
 
         * platform/mac-wk2/Skipped:
@@ -26665,7 +26665,7 @@
 
         Reviewed by Darin Adler.
 
-        WebKitTestRunner needs layoutTestController.pageSizeAndMarginsInPixels
+        CyberKitTestRunner needs layoutTestController.pageSizeAndMarginsInPixels
         https://bugs.webkit.org/show_bug.cgi?id=57984
 
         Unskip passed tests.
@@ -26989,7 +26989,7 @@
 
         Reviewed by Darin Adler.
 
-        WebKitTestRunner needs layoutTestController.pageNumberForElementById
+        CyberKitTestRunner needs layoutTestController.pageNumberForElementById
         https://bugs.webkit.org/show_bug.cgi?id=42329
 
         Unskip passed tests.
@@ -27074,7 +27074,7 @@
         REGRESSION (r46914, r48764): When typing in Mail, line wrapping frequently occurs in the middle of words
         https://bugs.webkit.org/show_bug.cgi?id=57872
 
-        Added a test insert a paragraph separator and text around tab spans. WebKit should not apply the tab span's
+        Added a test insert a paragraph separator and text around tab spans. CyberKit should not apply the tab span's
         style to the paragraph separator or the text.
 
         * editing/inserting/insert-paragraph-separator-tab-span-expected.txt: Added.
@@ -27707,7 +27707,7 @@
 
         Reviewed by Darin Adler.
 
-        WebKitTestRunner needs layoutTestController.numberOfPages
+        CyberKitTestRunner needs layoutTestController.numberOfPages
         https://bugs.webkit.org/show_bug.cgi?id=42694
 
         Unskip passed tests.
@@ -28336,7 +28336,7 @@
 
         Reviewed by Darin Adler.
 
-        WebKitTestRunner needs layoutTestController.setAllowFileAccessFromFileURLs
+        CyberKitTestRunner needs layoutTestController.setAllowFileAccessFromFileURLs
         https://bugs.webkit.org/show_bug.cgi?id=57572
 
         Unskip passed tests.
@@ -28359,7 +28359,7 @@
 
         https://bugs.webkit.org/show_bug.cgi?id=55969
         Add a test that verifies history scroll position is restored
-        when WebKit goes forward from an unreachable URL error page.
+        when CyberKit goes forward from an unreachable URL error page.
         (Error page handling is only supported by Qt DRT.)
 
         * platform/qt/fast/history/back-to-unreachable-url-then-forward-expected.txt: Added.
@@ -28376,7 +28376,7 @@
 
 2011-04-04  Jessie Berlin  <jberlin@apple.com>
 
-        [Windows 7 WebKit2 Release Tests] 6 tests failing since being removed from the mac-wk2
+        [Windows 7 CyberKit2 Release Tests] 6 tests failing since being removed from the mac-wk2
         skipped list in r82625.
         https://bugs.webkit.org/show_bug.cgi?id=57705
 
@@ -29177,9 +29177,9 @@
         editing commands shouldn't run when there's no body
         https://bugs.webkit.org/show_bug.cgi?id=56771
 
-        Added tests to ensure WebKit does not crash when attempted to execute editing commands
-        in an empty document. Also added a test to ensure WebKit does not crash when InsertImage
-        is executed with selection endpoints being document. WebKit should ignore such attempts
+        Added tests to ensure CyberKit does not crash when attempted to execute editing commands
+        in an empty document. Also added a test to ensure CyberKit does not crash when InsertImage
+        is executed with selection endpoints being document. CyberKit should ignore such attempts
         and should not crash.
 
         * editing/editability/empty-document-delete-expected.txt: Added.
@@ -29580,7 +29580,7 @@
 
 2011-04-01  Dimitri Glazkov  <dglazkov@chromium.org>
 
-        Skip the test landed in r82758, since WebKitTestRunner doesn't implement
+        Skip the test landed in r82758, since CyberKitTestRunner doesn't implement
         displayInvalidatedRegion.
 
         * platform/mac-wk2/Skipped: Skipped the test.
@@ -30171,7 +30171,7 @@
 
         Reviewed by Darin Adler.
 
-        WebKitTestRunner needs layoutTestController.setDatabaseQuota
+        CyberKitTestRunner needs layoutTestController.setDatabaseQuota
         https://bugs.webkit.org/show_bug.cgi?id=57568
 
         Update tests.
@@ -30395,7 +30395,7 @@
 
 2011-03-31  Adam Barth  <abarth@webkit.org>
 
-        Add two more preloader tests to the WebKit2 Skipped list.
+        Add two more preloader tests to the CyberKit2 Skipped list.
 
         * platform/mac-wk2/Skipped:
 
@@ -30486,7 +30486,7 @@
 
         Reviewed by Darin Adler.
 
-        WebKitTestRunner needs layoutTestController.clearAllDatabases
+        CyberKitTestRunner needs layoutTestController.clearAllDatabases
         https://bugs.webkit.org/show_bug.cgi?id=42540
 
         Remove passed tests.
@@ -30614,7 +30614,7 @@
 
         Reviewed by Darin Adler.
 
-        WebKitTestRunner needs layoutTestController.setAllowUniversalAccessFromFileURLs
+        CyberKitTestRunner needs layoutTestController.setAllowUniversalAccessFromFileURLs
         https://bugs.webkit.org/show_bug.cgi?id=42692
 
         Unskip passed tests.
@@ -30654,7 +30654,7 @@
 
         Reviewed by Sam Weinig.
 
-        Implement mouseDown, mouseUp, and mouseMoveTo in WebKitTestRunner
+        Implement mouseDown, mouseUp, and mouseMoveTo in CyberKitTestRunner
         https://bugs.webkit.org/show_bug.cgi?id=57573
 
         * platform/mac-wk2/Skipped: Removed now-passing tests. Resorted
@@ -33087,13 +33087,13 @@
 
         Reviewed by Dan Bernstein.
 
-        [Snow Leopard WebKit2 Release Tests] fast/images/move-image-to-new-document.html timing out since r82087
+        [Snow Leopard CyberKit2 Release Tests] fast/images/move-image-to-new-document.html timing out since r82087
         https://bugs.webkit.org/show_bug.cgi?id=57347
 
         * fast/images/script-tests/move-image-to-new-document.js: Disable
         plug-ins so that the embed portion of the test gets the expected image
         loading behavior on bots with QuickTime installed.
-        * platform/mac-wk2/Skipped: Skip the test in WebKit2 since it doesn't
+        * platform/mac-wk2/Skipped: Skip the test in CyberKit2 since it doesn't
         implement setPluginsEnabled().
 
 2011-03-29  Adam Barth  <abarth@webkit.org>
@@ -33937,9 +33937,9 @@
 
 2011-03-29  Adam Roben  <aroben@apple.com>
 
-        Add passing results for a test that passes in WebKit2 but not WebKit1
+        Add passing results for a test that passes in CyberKit2 but not CyberKit1
 
-        The WebKit1 failure is tracked by <http://webkit.org/b/57334>.
+        The CyberKit1 failure is tracked by <http://webkit.org/b/57334>.
 
         * platform/win-wk2/http/tests/uri/username-with-no-hostname-expected.txt: Added.
 
@@ -33976,7 +33976,7 @@
 
 2011-03-29  Jessie Berlin  <jberlin@apple.com>
 
-        [Snow Leopard WebKit2 Release Tests] fast/images/move-image-to-new-document.html timing out
+        [Snow Leopard CyberKit2 Release Tests] fast/images/move-image-to-new-document.html timing out
         since r82087.
         https://bugs.webkit.org/show_bug.cgi?id=57347
 
@@ -34276,7 +34276,7 @@
 
         Reviewed by Darin Adler.
 
-        getComputedStyle counterIncrement crash @ WebCore::counterToCSSValue
+        getComputedStyle counterIncrement crash @ CyberCore::counterToCSSValue
         https://bugs.webkit.org/show_bug.cgi?id=57266
 
         Add test for getComputedStyle(...).counterIncrement without a counter.
@@ -34530,11 +34530,11 @@
 
 2011-03-28  Jessie Berlin  <jberlin@apple.com>
 
-        REGRESSION: http/tests/inspector/console-resource-errors.html failing on WebKit2.
+        REGRESSION: http/tests/inspector/console-resource-errors.html failing on CyberKit2.
         https://bugs.webkit.org/show_bug.cgi?id=56539
 
         Unreviewed, remove the platform-specific failing results to get the bots green.
-        The test appears to be working in WebKit after r82106 and r82017.
+        The test appears to be working in CyberKit after r82106 and r82017.
 
         * platform/mac-wk2/http/tests/inspector/console-resource-errors-expected.txt: Removed.
 
@@ -34829,7 +34829,7 @@
 
         Reviewed by Eric Seidel.
 
-        WebKit's behavior for text-align inherit differs from other browsers
+        CyberKit's behavior for text-align inherit differs from other browsers
         https://bugs.webkit.org/show_bug.cgi?id=56377
 
         Added test more cases to text-align, which already has some tests for text-align: start and text-align: end.
@@ -35039,7 +35039,7 @@
 
 2011-03-26  Martin Robinson  <mrobinson@igalia.com>
 
-        [GTK] layoutTestController.overridePreference("WebKitDefaultFontSize"...) does not take into account screen DPI
+        [GTK] layoutTestController.overridePreference("CyberKitDefaultFontSize"...) does not take into account screen DPI
         https://bugs.webkit.org/show_bug.cgi?id=57160
 
         Skip failing test. This bug was uncovered by r82033.
@@ -35373,7 +35373,7 @@
 
 2011-03-25  Andy Estes  <aestes@apple.com>
 
-        LayoutTestController.setPluginsEnabled() isn't implemented in WebKit2,
+        LayoutTestController.setPluginsEnabled() isn't implemented in CyberKit2,
         and that is now required for fast/images/embed-image.html.
 
         * platform/mac-wk2/Skipped: Skip fast/images/embed-image.html
@@ -35623,7 +35623,7 @@
 
 2011-03-25  Dimitri Glazkov  <dglazkov@chromium.org>
 
-        Skip the test added in r81970 on WebKit2, because its harness doesn't
+        Skip the test added in r81970 on CyberKit2, because its harness doesn't
         yet support printing hooks.
 
         * platform/mac-wk2/Skipped: Added printing/page-count-layout-overflow.html.
@@ -36068,7 +36068,7 @@
 
 2011-03-24  Adam Roben  <aroben@apple.com>
 
-        Add Windows WebKit2 results for fast/css/pseudo-any.html
+        Add Windows CyberKit2 results for fast/css/pseudo-any.html
 
         This test passes on Windows but fails on Mac. <http://webkit.org/b/56988> tracks the Mac
         failure.
@@ -36213,8 +36213,8 @@
 
 2011-03-23  Ojan Vafai  <ojan@chromium.org>
 
-        Add failing result for WebKit2. All tests that require
-        focus fail on WebKit2. See https://bugs.webkit.org/show_bug.cgi?id=56988.
+        Add failing result for CyberKit2. All tests that require
+        focus fail on CyberKit2. See https://bugs.webkit.org/show_bug.cgi?id=56988.
 
         * platform/mac-wk2/fast/css/pseudo-any-expected.txt: Added.
 
@@ -36277,7 +36277,7 @@
         https://bugs.webkit.org/show_bug.cgi?id=56055
         <rdar://problem/8947463>
 
-        Please see WebCore/ChangeLog for detail.
+        Please see CyberCore/ChangeLog for detail.
 
         * platform/mac-wk2/Skipped: Enable autocorrection tests for WK2.
 
@@ -36424,8 +36424,8 @@
 
 2011-03-23  Brian Weinstein  <bweinstein@apple.com>
 
-        Skip plugins/change-widget-and-click-crash.html on WebKit2, because
-        WebKit2 doesn't have an implementation of eventSender yet.
+        Skip plugins/change-widget-and-click-crash.html on CyberKit2, because
+        CyberKit2 doesn't have an implementation of eventSender yet.
 
         * platform/mac-wk2/Skipped:
 
@@ -37746,7 +37746,7 @@
 
         Reviewed by James Robinson.
 
-        bug 56052: percentages are incorrectly rounded in WebKit
+        bug 56052: percentages are incorrectly rounded in CyberKit
         https://bugs.webkit.org/show_bug.cgi?id=56052
 
         * platform/mac/fast/css/percentage-non-integer-expected.txt:
@@ -38003,7 +38003,7 @@
 
         Reviewed by Eric Seidel.
 
-        Test for Bug 51465 - chrome.dll!WebCore::RenderLayer::currentTransform
+        Test for Bug 51465 - chrome.dll!CyberCore::RenderLayer::currentTransform
         ReadAV@NULL (8968fc97874fa23b6799ff8f09c142e4)
 
         * fast/css/webkit-empty-transform-preserve3d-crash-expected.txt: Added.
@@ -38047,9 +38047,9 @@
 
 2011-03-20  Sam Weinig  <sam@webkit.org>
 
-        Add http/tests/appcache/origin-delete.html to the Skipped list for WebKit2,
+        Add http/tests/appcache/origin-delete.html to the Skipped list for CyberKit2,
         since layoutTestController.clearAllApplicationCaches is not yet implemented
-        by WebKitTestRunner.
+        by CyberKitTestRunner.
 
         * platform/mac-wk2/Skipped:
 
@@ -38333,7 +38333,7 @@
 
 2011-03-18  Jessie Berlin  <jberlin@apple.com>
 
-        [WebKit2 Windows Release Tests] media tests crashing in QuickTime on apple-windows-8.
+        [CyberKit2 Windows Release Tests] media tests crashing in QuickTime on apple-windows-8.
         https://bugs.webkit.org/show_bug.cgi?id=56653
 
         Unreviewed, skipping media/video-load-readyState.html since that has been crashing
@@ -38713,7 +38713,7 @@
 
 2011-03-18  Jessie Berlin  <jberlin@apple.com>
 
-        inspector/console/command-line-api.html timing out on Windows 7 Release (WebKit2 Tests).
+        inspector/console/command-line-api.html timing out on Windows 7 Release (CyberKit2 Tests).
         https://bugs.webkit.org/show_bug.cgi?id=56633
 
         Unreviewed, skip command-line-api-inspect.html instead of command-line-api.html, since the
@@ -38735,12 +38735,12 @@
 
 2011-03-18  Jessie Berlin  <jberlin@apple.com>
 
-        Two inspector tests failing due to SECURITY_ERR exceptions on Windows 7 Release (WebKit2
+        Two inspector tests failing due to SECURITY_ERR exceptions on Windows 7 Release (CyberKit2
         Tests).
         https://bugs.webkit.org/show_bug.cgi?id=56632
 
         Unreviewed, landing expected failing results in order to get the Windows 7 Release
-        WebKit2 bots green.
+        CyberKit2 bots green.
 
         * platform/win-wk2/http: Added.
         * platform/win-wk2/http/tests: Added.
@@ -38861,7 +38861,7 @@
 
 2011-03-18  Adam Roben  <aroben@apple.com>
 
-        Add Windows WebKit2 expected failure results for a media test
+        Add Windows CyberKit2 expected failure results for a media test
 
         The failure is tracked by <http://webkit.org/b/56636>.
 
@@ -38869,7 +38869,7 @@
 
 2011-03-18  Adam Roben  <aroben@apple.com>
 
-        Skip some timing out tests in WebKit2 on Windows
+        Skip some timing out tests in CyberKit2 on Windows
 
         Tracked by <http://webkit.org/b/56633> and <http://webkit.org/b/56634>.
 
@@ -38878,7 +38878,7 @@
 
 2011-03-18  Adam Roben  <aroben@apple.com>
 
-        Add expected failure results for WebKit2 tests failing on Windows due to font differences
+        Add expected failure results for CyberKit2 tests failing on Windows due to font differences
 
         <http://webkit.org/b/56617> tracks the failures.
 
@@ -38893,7 +38893,7 @@
 
 2011-03-18  Adam Roben  <aroben@apple.com>
 
-        Skip a test in that is probably causing the next test to crash in WebKit2
+        Skip a test in that is probably causing the next test to crash in CyberKit2
 
         <http://webkit.org/b/55780> tracks the failure.
 
@@ -39096,7 +39096,7 @@
 
 2011-03-17  Adam Roben  <aroben@apple.com>
 
-        Skip some flaky tests on the SnowLeopard WebKit2 bot
+        Skip some flaky tests on the SnowLeopard CyberKit2 bot
 
         Tracked by <http://webkit.org/b/56530> and <http://webkit.org/b/56584>.
 
@@ -39132,14 +39132,14 @@
         Assert that editing does not ignore position's anchorNode if position is an offset in anchor
         https://bugs.webkit.org/show_bug.cgi?id=56027
 
-        Added a test to ensure WebKit lets users edit contents inside a button element properly.
+        Added a test to ensure CyberKit lets users edit contents inside a button element properly.
 
         * editing/execCommand/button-expected.txt: Added.
         * editing/execCommand/button.html: Added.
 
 2011-03-17  Adam Roben  <aroben@apple.com>
 
-        Skip three tests that fail on one Windows WebKit2 slave but not the other
+        Skip three tests that fail on one Windows CyberKit2 slave but not the other
 
         The failures are tracked by <http://webkit.org/b/56550>.
 
@@ -39343,7 +39343,7 @@
 
         Reviewed by Adam Roben.
 
-        Add transitions/default-timing-function.html to the SnowLeopard WebKit2 Skipped list.
+        Add transitions/default-timing-function.html to the SnowLeopard CyberKit2 Skipped list.
         https://bugs.webkit.org/show_bug.cgi?id=56531
 
         * platform/mac-wk2/Skipped:
@@ -39397,7 +39397,7 @@
 
         Reviewed by Adam Roben; Dictated, but not read, by Adam Roben.
 
-        Adding new results for some failing tests on the SnowLeopard WebKit2 Tester.
+        Adding new results for some failing tests on the SnowLeopard CyberKit2 Tester.
 
         The following bugs were filed to track these issues:
             https://bugs.webkit.org/show_bug.cgi?id=56528
@@ -40405,7 +40405,7 @@
         Crash in ReplaceSelectionCommand::doApply when inserting a node under a document node
         https://bugs.webkit.org/show_bug.cgi?id=56372
 
-        Added a test to ensure WebKit does not crash when appending a node to a document
+        Added a test to ensure CyberKit does not crash when appending a node to a document
         that has only two nested iframes.
 
         * editing/execCommand/append-node-under-document-expected.txt: Added.
@@ -41105,7 +41105,7 @@
 
         Reviewed by Darin Adler.
 
-        REGRESSION (WebKit2): keygen element doesn't work
+        REGRESSION (CyberKit2): keygen element doesn't work
         https://bugs.webkit.org/show_bug.cgi?id=56402
         <rdar://problem/9006545>
 
@@ -41438,7 +41438,7 @@
 
 2011-03-15  Adam Roben  <aroben@apple.com>
 
-        Update WebKit2 Skipped file for some new tests that rely on unimplemented features
+        Update CyberKit2 Skipped file for some new tests that rely on unimplemented features
 
         * platform/mac-wk2/Skipped:
 
@@ -41718,7 +41718,7 @@
 
 2011-03-14  David Levin  <levin@chromium.org>
 
-        Upstream test expectations from the chromium repository to WebKit.
+        Upstream test expectations from the chromium repository to CyberKit.
 
         * platform/chromium/test_expectations.txt:
 
@@ -42999,7 +42999,7 @@
 
         Fix prototype-inheritance-expected result due to two changes:
           http://src.chromium.org/viewvc/chrome?view=rev&revision=77888 removed "google"
-          http://trac.webkit.org/changeset/80846 added WebKitAnimation/WebKitAnimationList
+          http://trac.webkit.org/changeset/80846 added CyberKitAnimation/CyberKitAnimationList
 
         * platform/chromium/fast/dom/prototype-inheritance-expected.txt:
 
@@ -43049,7 +43049,7 @@
 
         Reviewed and landed by Brady Eidson.
 
-        Add WebKit1 API to view and delete local storage
+        Add CyberKit1 API to view and delete local storage
         https://bugs.webkit.org/show_bug.cgi?id=51878
 
         * platform/chromium/test_expectations.txt:
@@ -43367,8 +43367,8 @@
         https://bugs.webkit.org/show_bug.cgi?id=54151
         Implement an API to play/pause/scrub animations
 
-        This is Part 1. Adds the new WebKitAnimation and WebKitAnimationList
-        APIs, exposed via Element.getWebKitAnimations(). This first pass
+        This is Part 1. Adds the new CyberKitAnimation and CyberKitAnimationList
+        APIs, exposed via Element.getCyberKitAnimations(). This first pass
         is read-only. One new layout test that examines animation
         properties. Update existing layout tests for the new interfaces
         on Window.
@@ -43585,7 +43585,7 @@
 
         Reviewed by Darin Adler.
 
-        Fix navigation menus on a bunch of sites in WebKit.
+        Fix navigation menus on a bunch of sites in CyberKit.
         https://bugs.webkit.org/show_bug.cgi?id=52535
 
         Add test to make sure that offsetLeft matches FF/IE for a relatively
@@ -44014,7 +44014,7 @@
         Unable to paste in input[type="text"] with last-child selector
         https://bugs.webkit.org/show_bug.cgi?id=50736
 
-        Added regressions tests since this bug no longer reproduces on TOT WebKit.
+        Added regressions tests since this bug no longer reproduces on TOT CyberKit.
 
         * editing/input/div-first-child-rule-input-expected.txt: Added.
         * editing/input/div-first-child-rule-input.html: Added.
@@ -45161,7 +45161,7 @@
         This test suite is imported from https://github.com/jquery/jquery.  I
         tried to make as few changes as possible in case we want to merge with
         upstream in the future.  The test suite was original licensed under the
-        MIT license, which is compatible with WebKit's license.
+        MIT license, which is compatible with CyberKit's license.
 
         * jquery: Added.
 

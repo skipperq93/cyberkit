@@ -90,7 +90,7 @@ if (${WTF_PLATFORM_WIN_CAIRO})
     WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_WEBDRIVER PRIVATE ${ENABLE_EXPERIMENTAL_FEATURES})
     WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_WEB_CRYPTO PRIVATE ${ENABLE_EXPERIMENTAL_FEATURES})
 
-    # FIXME: Implement plugin process on Modern WebKit. https://bugs.webkit.org/show_bug.cgi?id=185313
+    # FIXME: Implement plugin process on Modern CyberKit. https://bugs.webkit.org/show_bug.cgi?id=185313
     WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_NETSCAPE_PLUGIN_API PRIVATE OFF)
 else ()
     WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_CSS_COMPOSITING PUBLIC OFF)
@@ -114,7 +114,7 @@ if (NOT WEBKIT_LIBRARIES_DIR)
     if (DEFINED ENV{WEBKIT_LIBRARIES})
         file(TO_CMAKE_PATH "$ENV{WEBKIT_LIBRARIES}" WEBKIT_LIBRARIES_DIR)
     else ()
-        file(TO_CMAKE_PATH "${CMAKE_SOURCE_DIR}/WebKitLibraries/win" WEBKIT_LIBRARIES_DIR)
+        file(TO_CMAKE_PATH "${CMAKE_SOURCE_DIR}/CyberKitLibraries/win" WEBKIT_LIBRARIES_DIR)
     endif ()
 endif ()
 
@@ -155,10 +155,10 @@ if (MSVC)
 endif ()
 
 set(PORT Win)
-set(JavaScriptCore_LIBRARY_TYPE SHARED)
+set(CyberScriptCore_LIBRARY_TYPE SHARED)
 set(WTF_LIBRARY_TYPE SHARED)
 set(PAL_LIBRARY_TYPE STATIC)
-set(WebKitLegacy_LIBRARY_TYPE SHARED)
+set(CyberKitLegacy_LIBRARY_TYPE SHARED)
 
 # If <winsock2.h> is not included before <windows.h> redefinition errors occur
 # unless _WINSOCKAPI_ is defined before <windows.h> is included

@@ -28,10 +28,10 @@
 #include "stdafx.h"
 #include "WebDownloadDelegate.h"
 
-#include "WebKitLegacyBrowserWindow.h"
+#include "CyberKitLegacyBrowserWindow.h"
 #include <shlobj.h>
 
-WebDownloadDelegate::WebDownloadDelegate(WebKitLegacyBrowserWindow& client)
+WebDownloadDelegate::WebDownloadDelegate(CyberKitLegacyBrowserWindow& client)
     : m_client(client)
 {
 }

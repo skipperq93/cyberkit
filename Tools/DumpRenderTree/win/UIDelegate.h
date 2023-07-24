@@ -29,8 +29,8 @@
 #ifndef UIDelegate_h
 #define UIDelegate_h
 
-#include <WebCore/COMPtr.h>
-#include <WebKitLegacy/WebKit.h>
+#include <CyberCore/COMPtr.h>
+#include <CyberKitLegacy/CyberKit.h>
 #include <windef.h>
 
 class DRTUndoManager;

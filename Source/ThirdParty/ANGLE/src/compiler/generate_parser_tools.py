@@ -88,7 +88,7 @@ def run_flex(basename):
 
         patched = output.replace(patch_in, patch_out)
 
-    # Remove all tab characters from output. WebKit does not allow any tab characters in source
+    # Remove all tab characters from output. CyberKit does not allow any tab characters in source
     # files.
     patched = patched.replace('\t', '    ')
 

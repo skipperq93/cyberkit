@@ -1,4 +1,4 @@
-# These are the layout test expectations for the GTK port of WebKit.
+# These are the layout test expectations for the GTK port of CyberKit.
 #
 #
 # If you get different test results than the bots for some tests
@@ -7,7 +7,7 @@
 # If doing that fixes the issue, it means we need to identify the library
 # that is causing the difference on the results, and add it to the JHBuild.
 #
-# The bots of WebKitGTK+ running layout tests (Release Test, Debug Test, Release Wayland Tests)
+# The bots of CyberKitGTK+ running layout tests (Release Test, Debug Test, Release Wayland Tests)
 # are currently running on Debian 9 (Stretch) x86_64.
 #
 #
@@ -75,7 +75,7 @@ webkit.org/b/177940 workers/wasm-hashset-many-2.html [ Crash Slow ]
 # This list is divided into two parts:
 # a. Tests that we never expect to pass, because they use features we likely
 #    will never implement (Mac-only features, for instance).
-# b. Missing WebCore/WebKit features that we'll want someday.
+# b. Missing CyberCore/CyberKit features that we'll want someday.
 
 # 3. TESTS CRASHING
 # Please open a bug for each test crashing with any important information.
@@ -98,7 +98,7 @@ webkit.org/b/177940 workers/wasm-hashset-many-2.html [ Crash Slow ]
 # These tests are essentially marked as flaky, but are noted as failing only on specific architecture.
 #
 # 8. WEBKIT2 REGRESSIONS
-# Tests that are now failing because of the switch to WebKit2, probably misssing some
+# Tests that are now failing because of the switch to CyberKit2, probably misssing some
 # test harness support.
 #
 # 9. TESTS FAILING
@@ -142,7 +142,7 @@ webkit.org/b/98925 fast/viewport/viewport-legacy-ordering-6.html [ Skip ]
 webkit.org/b/98925 fast/viewport/viewport-legacy-xhtmlmp-remove-and-add.html [ Skip ]
 webkit.org/b/98925 fast/viewport/viewport-legacy-xhtmlmp.html [ Skip ]
 
-# WebKitGTK+ uses different keyboard accelerators than Safari (via Chromium).
+# CyberKitGTK+ uses different keyboard accelerators than Safari (via Chromium).
 fast/events/option-tab.html [ WontFix Failure ]
 
 # These tests expect a TIFF decoder (via Chromium).
@@ -264,7 +264,7 @@ webkit.org/b/210498 media/media-source/media-source-sequence-timestamps.html [ P
 webkit.org/b/175876 imported/w3c/web-platform-tests/media-source/mediasource-endofstream-invaliderror.html [ Pass Crash ]
 webkit.org/b/210486 imported/w3c/web-platform-tests/media-source/mediasource-correct-frames-after-reappend.html [ Failure Crash Pass ]
 
-# There is an oggdemux bug that deadlocks WebKit: https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/issues/639
+# There is an oggdemux bug that deadlocks CyberKit: https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/issues/639
 imported/w3c/web-platform-tests/html/semantics/embedded-content/the-video-element/video_timeupdate_on_seek.html [ Timeout Failure Crash ]
 
 # CSS filters related failures
@@ -704,7 +704,7 @@ webkit.org/b/146724 fast/text/word-break-keep-all.html [ ImageOnlyFailure ]
 # This tests fail since the upgrade of GTK to 3.16 and Cairo to 1.14 on the JHBuild
 webkit.org/b/146731 fast/backgrounds/hidpi-background-image-contain-cover-scale-needs-more-precision.html [ ImageOnlyFailure Timeout ]
 
-# WebKitGTK+ doesn't have killring support.
+# CyberKitGTK+ doesn't have killring support.
 webkit.org/b/152379 editing/pasteboard/emacs-killring-alternating-append-prepend.html [ Failure ]
 webkit.org/b/152379 editing/pasteboard/emacs-killring-backward-delete-prepend.html [ Failure ]
 
@@ -1242,7 +1242,7 @@ webkit.org/b/196799 imported/blink/fast/css/first-letter-crash-document-disposal
 
 webkit.org/b/120839 animations/cross-fade-background-image.html [ ImageOnlyFailure Crash ]
 
-# Known issues that were fixed by the WebKitMediaSrc rework that is now reverted.
+# Known issues that were fixed by the CyberKitMediaSrc rework that is now reverted.
 webkit.org/b/203078 imported/w3c/web-platform-tests/media-source/mediasource-seek-beyond-duration.html [ Failure Crash ]
 webkit.org/b/203078 imported/w3c/web-platform-tests/media-source/mediasource-replay.html [ Failure Crash ]
 
@@ -2442,9 +2442,9 @@ webkit.org/b/83560 fast/events/drop-with-file-paths.html [ Failure Pass ]
 # 8. WEBKIT2 REGRESSIONS
 #////////////////////////////////////////////////////////////////////////////////////////
 #
-# [GTK] Drag and drop can't be tested with WebKitTestRunner
+# [GTK] Drag and drop can't be tested with CyberKitTestRunner
 # https://bugs.webkit.org/show_bug.cgi?id=157179
-# Implement EditingCallbacks deletegates in the WebKitTestRunner
+# Implement EditingCallbacks deletegates in the CyberKitTestRunner
 webkit.org/b/157179 editing/pasteboard/4947130.html [ Failure ]
 webkit.org/b/157179 editing/pasteboard/dataTransfer-setData-getData.html [ Failure Timeout ]
 webkit.org/b/157179 editing/pasteboard/drag-and-drop-image-contenteditable.html [ Failure Timeout ]
@@ -2501,10 +2501,10 @@ webkit.org/b/157179 fast/events/ondragenter.html [ Failure ]
 webkit.org/b/157179 fast/events/drag-customData.html  [ Timeout ]
 webkit.org/b/157179 fast/events/drag-and-drop-autoscroll-inner-frame.html [ Timeout ]
 
-# WebKit2 testRunner.setEditingBehaviour appears broken sometimes.
+# CyberKit2 testRunner.setEditingBehaviour appears broken sometimes.
 webkit.org/b/144764 [ Release ] editing/selection/move-by-word-visually-mac.html [ Failure ]
 
-# WebKit2 needs textInputController.selectedRange
+# CyberKit2 needs textInputController.selectedRange
 Bug(GTK) editing/selection/mixed-editability-10.html [ Failure ]
 
 # Implement testRunner.numberOfPendingGeolocationPermissionRequests()
@@ -2518,7 +2518,7 @@ webkit.org/b/78290 fast/dom/MutationObserver/end-of-task-delivery.html [ Pass Fa
 # http://webkit.org/b/93980
 webkit.org/b/93980 http/tests/appcache/load-from-appcache-defer-resume-crash.html [ Failure ]
 
-# WebKitTestRunner needs a more-complete implementation of eventSender
+# CyberKitTestRunner needs a more-complete implementation of eventSender
 # https://bugs.webkit.org/show_bug.cgi?id=42194
 webkit.org/b/42194 fast/events/5056619.html [ Failure ]
 webkit.org/b/42194 http/tests/security/drag-drop-same-unique-origin.html [ Failure ]
@@ -2654,7 +2654,7 @@ webkit.org/b/182352 http/tests/misc/bubble-drag-events.html [ Failure ]
 # Dragging images and links results in a DataTransfer object containing a non-empty files array
 webkit.org/b/52094 editing/pasteboard/files-during-page-drags.html [ Failure ]
 
-# Expose title direction in WebKit API
+# Expose title direction in CyberKit API
 webkit.org/b/58845 fast/dom/title-directionality.html [ Failure ]
 webkit.org/b/58845 fast/dom/title-directionality-removeChild.html [ Failure ]
 
@@ -3466,7 +3466,7 @@ webkit.org/b/202745 fast/css/invalidation-errors-2.html [ Failure ]
 
 webkit.org/b/202750 http/tests/download/anchor-download-attribute-content-disposition-no-extension-text-plain.html [ Failure ]
 
-# Known issues that were fixed by the WebKitMediaSrc rework that is now reverted.
+# Known issues that were fixed by the CyberKitMediaSrc rework that is now reverted.
 webkit.org/b/203078 imported/w3c/web-platform-tests/media-source/mediasource-config-change-mp4-v-framesize.html [ Pass Failure ]
 
 # Bug in iOS, probably will require a baseline once it's fixed.

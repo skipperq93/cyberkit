@@ -27,7 +27,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <WebKit/WebView.h>
+#import <CyberKit/WebView.h>
 
 @interface NavigationController : NSObject
 {

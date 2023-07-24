@@ -2,7 +2,7 @@ Tests that a second attribution conversion with lower priority does not replace 
 
 
 Converted Ad Click Attributions:
-WebCore::AdClickAttribution 1
+CyberCore::AdClickAttribution 1
 Source: 127.0.0.1
 Destination: localhost
 Campaign ID: 3

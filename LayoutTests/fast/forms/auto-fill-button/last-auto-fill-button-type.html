@@ -6,10 +6,10 @@
 <body>
 <input type="text" id="input">
 <script>
-description("This tests that querying for the last auto fill button type works. This test must be run in WebKitTestRunner or DumpRenderTree.");
+description("This tests that querying for the last auto fill button type works. This test must be run in CyberKitTestRunner or DumpRenderTree.");
 
 if (!window.internals)
-    testFailed("Must be run in WebKitTestRunner or DumpRenderTree");
+    testFailed("Must be run in CyberKitTestRunner or DumpRenderTree");
 else {
     var inputElement = document.getElementById("input");
     shouldBeEqualToString("internals.autoFillButtonType(inputElement)", "None");

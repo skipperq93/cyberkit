@@ -43,7 +43,7 @@ extern PolicyDelegate* policyDelegate;
 
 extern HWND webViewWindow;
 
-#include <WebCore/COMPtr.h>
+#include <CyberCore/COMPtr.h>
 #include <string>
 #include <wtf/HashMap.h>
 #include <wtf/Vector.h>

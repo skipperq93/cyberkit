@@ -19,11 +19,11 @@ set(MiniBrowser_SYSTEM_INCLUDE_DIRECTORIES
 
 set(MiniBrowser_PRIVATE_LIBRARIES
     ${ATK_LIBRARIES}
-    ${JavaScriptCore_LIBRARY_NAME}
+    ${CyberScriptCore_LIBRARY_NAME}
     ${WPEBACKEND_FDO_LIBRARIES}
     WPE::libwpe
     WPEToolingBackends
-    WebKit::WebKit
+    CyberKit::CyberKit
 )
 
 if (DEVELOPER_MODE)

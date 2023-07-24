@@ -81,15 +81,15 @@ git-svn-id: https://svn.webkit.org/repository/webkit/trunk@95219 268f45cc-cd09-0
 Author: commit-queue@webkit.org <commit-queue@webkit.org@268f45cc-cd09-0410-ab3c-d52691b4dbfc>
 Date:   2009-09-15 14:08:42 +0000
 
-Let TestWebKitAPI work for chromium
+Let TestCyberKitAPI work for chromium
 https://bugs.webkit.org/show_bug.cgi?id=67756
 
 Patch by Xianzhu Wang <wangxianzhu@chromium.org> on 2011-09-15
 Reviewed by Sam Weinig.
 
-Source/WebKit/chromium:
+Source/CyberKit/chromium:
 
-* WebKit.gyp:
+* CyberKit.gyp:
 
 git-svn-id: https://svn.webkit.org/repository/webkit/trunk@95188 268f45cc-cd09-0410-ab3c-d52691b4dbfc
 """

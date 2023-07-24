@@ -83,13 +83,13 @@
   debug("");
   debug("Test CSSMatrix");
   shouldBeEqualToString("circle.style.webkitTransform", "scale(2, 2) translate(10px, 10px)");
-  shouldBeEqualToString("dumpMatrix(new WebKitCSSMatrix(circle.style.webkitTransform))", "[2.0 0.0 0.0 2.0 20.0 20.0]");
+  shouldBeEqualToString("dumpMatrix(new CyberKitCSSMatrix(circle.style.webkitTransform))", "[2.0 0.0 0.0 2.0 20.0 20.0]");
   shouldBeEqualToString("rect.style.webkitTransform", "translate(100px) rotate(45deg)");
-  shouldBeEqualToString("dumpMatrix(new WebKitCSSMatrix(rect.style.webkitTransform))", "[0.7 0.7 -0.7 0.7 100.0 0.0]");
+  shouldBeEqualToString("dumpMatrix(new CyberKitCSSMatrix(rect.style.webkitTransform))", "[0.7 0.7 -0.7 0.7 100.0 0.0]");
 
   debug("");
-  shouldBe("dumpMatrix(new WebKitCSSMatrix(circle.style.webkitTransform))", "dumpMatrix(circle.getCTM())");
-  shouldBe("dumpMatrix(new WebKitCSSMatrix(rect.style.webkitTransform))", "dumpMatrix(rect.getCTM())");
+  shouldBe("dumpMatrix(new CyberKitCSSMatrix(circle.style.webkitTransform))", "dumpMatrix(circle.getCTM())");
+  shouldBe("dumpMatrix(new CyberKitCSSMatrix(rect.style.webkitTransform))", "dumpMatrix(rect.getCTM())");
 
   debug("");
   successfullyParsed = true;
