@@ -5012,6 +5012,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 31CDFDEE24917F8900486F27 /* ANGLE-dynamic.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				ENABLE_BITCODE = NO;
 			};
 			name = Debug;
 		};
@@ -5019,6 +5021,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 31CDFDEE24917F8900486F27 /* ANGLE-dynamic.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				ENABLE_BITCODE = NO;
 			};
 			name = Release;
 		};
@@ -5026,6 +5030,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 31CDFDEE24917F8900486F27 /* ANGLE-dynamic.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				ENABLE_BITCODE = NO;
 			};
 			name = Production;
 		};

@@ -42,9 +42,7 @@ ApplePaySetupFeatureType ApplePaySetupFeature::type() const
     switch ([m_feature type]) {
     case PKPaymentSetupFeatureTypeApplePay:
         return ApplePaySetupFeatureType::ApplePay;
-        ALLOW_DEPRECATED_DECLARATIONS_BEGIN
-    case PKPaymentSetupFeatureTypeApplePay_X:
-        ALLOW_DEPRECATED_DECLARATIONS_END
+    case PKPaymentSetupFeatureTypeAppleCard:
         return ApplePaySetupFeatureType::AppleCard;
     }
 }

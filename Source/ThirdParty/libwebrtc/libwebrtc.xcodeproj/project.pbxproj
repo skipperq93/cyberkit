@@ -19879,6 +19879,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 41F77D1E215BE4AD00E72967 /* yasm.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -19890,6 +19891,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 41F77D1E215BE4AD00E72967 /* yasm.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 			};
 			name = Release;
 		};
@@ -19897,6 +19899,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 41F77D1E215BE4AD00E72967 /* yasm.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 			};
 			name = Production;
 		};
@@ -20140,6 +20143,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5D7C59C51208C68B001C873E /* libwebrtc.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
@@ -20190,6 +20194,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5D7C59C51208C68B001C873E /* libwebrtc.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
@@ -20202,6 +20207,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5D7C59C51208C68B001C873E /* libwebrtc.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",

@@ -126,6 +126,8 @@ typedef struct IOSurfaceAcceleratorCompletion {
 
 IOReturn IOSurfaceAcceleratorTransformSurface(IOSurfaceAcceleratorRef, IOSurfaceRef sourceBuffer, IOSurfaceRef destinationBuffer, CFDictionaryRef options, void* pCropRectangles, IOSurfaceAcceleratorCompletion* pCompletion, void* pSwap, uint32_t* pCommandID);
 
+void IOSurfaceSetValue(IOSurfaceRef buffer, CFStringRef key, CFTypeRef value);
+
 WTF_EXTERN_C_END
 
 #endif // USE(APPLE_INTERNAL_SDK)
