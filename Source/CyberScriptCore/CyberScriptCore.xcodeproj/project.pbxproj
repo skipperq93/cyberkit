@@ -11807,6 +11807,7 @@
 			baseConfigurationReference = 1C9051430BA9E8A70081E9D0 /* CyberScriptCore.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberScriptCore;
 			};
@@ -11817,6 +11818,7 @@
 			baseConfigurationReference = 1C9051430BA9E8A70081E9D0 /* CyberScriptCore.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberScriptCore;
 			};
@@ -11828,6 +11830,7 @@
 			buildSettings = {
 				BUILD_VARIANTS = normal;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberScriptCore;
 			};
@@ -12286,6 +12289,7 @@
 			baseConfigurationReference = 1C9051430BA9E8A70081E9D0 /* CyberScriptCore.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberScriptCore;
 			};

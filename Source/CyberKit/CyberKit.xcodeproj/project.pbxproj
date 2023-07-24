@@ -13342,6 +13342,7 @@
 			baseConfigurationReference = BCB86F4B116AAACD00CE20B7 /* CyberKit.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
 				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit;
@@ -13353,6 +13354,7 @@
 			baseConfigurationReference = BCB86F4B116AAACD00CE20B7 /* CyberKit.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
 				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit;
@@ -13562,6 +13564,7 @@
 			baseConfigurationReference = BCB86F4B116AAACD00CE20B7 /* CyberKit.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
 				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit;

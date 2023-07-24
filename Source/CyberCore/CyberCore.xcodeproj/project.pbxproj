@@ -35664,6 +35664,7 @@
 			baseConfigurationReference = 1CDD45E50BA9C84600F90147 /* CyberCore.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				ENABLE_BITCODE = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberCore;
@@ -35675,6 +35676,7 @@
 			baseConfigurationReference = 1CDD45E50BA9C84600F90147 /* CyberCore.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberCore;
 			};
@@ -35686,6 +35688,7 @@
 			buildSettings = {
 				BUILD_VARIANTS = normal;
 				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberCore;
 			};
@@ -35725,6 +35728,8 @@
 			baseConfigurationReference = 4181707D1386EDF20057AAA4 /* CyberCoreTestSupport.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 			};
 			name = Debug;
 		};
@@ -35733,6 +35738,8 @@
 			baseConfigurationReference = 4181707D1386EDF20057AAA4 /* CyberCoreTestSupport.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 			};
 			name = Release;
 		};
@@ -35741,6 +35748,8 @@
 			baseConfigurationReference = 4181707D1386EDF20057AAA4 /* CyberCoreTestSupport.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 			};
 			name = Production;
 		};
@@ -35845,6 +35854,8 @@
 			baseConfigurationReference = E1BA66F21742BDCC00C20251 /* CyberCoreTestShim.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 			};
 			name = Debug;
 		};
@@ -35853,6 +35864,8 @@
 			baseConfigurationReference = E1BA66F21742BDCC00C20251 /* CyberCoreTestShim.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 			};
 			name = Release;
 		};
@@ -35861,6 +35874,8 @@
 			baseConfigurationReference = E1BA66F21742BDCC00C20251 /* CyberCoreTestShim.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 			};
 			name = Production;
 		};

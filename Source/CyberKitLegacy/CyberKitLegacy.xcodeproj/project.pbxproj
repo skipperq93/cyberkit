@@ -3613,7 +3613,9 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				DEBUG_DEFINES = "$(DEBUG_DEFINES_debug) ENABLE_WEBKIT_UNSET_DYLD_FRAMEWORK_PATH";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				ENABLE_BITCODE = NO;
 				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKitLegacy;
 			};
@@ -3625,7 +3627,9 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				DEBUG_DEFINES = "$(DEBUG_DEFINES_$(CURRENT_VARIANT)) ENABLE_WEBKIT_UNSET_DYLD_FRAMEWORK_PATH";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				ENABLE_BITCODE = NO;
 				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKitLegacy;
 			};
@@ -3637,7 +3641,9 @@
 			buildSettings = {
 				BUILD_VARIANTS = normal;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				ENABLE_BITCODE = NO;
 				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKitLegacy;
 			};
