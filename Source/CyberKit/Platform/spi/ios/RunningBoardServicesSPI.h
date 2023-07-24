@@ -40,6 +40,7 @@ extern const NSTimeInterval RBSProcessTimeLimitationNone;
 #endif
 
 #else
+#if HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -141,4 +142,5 @@ typedef void (^RBSProcessUpdateHandler)(RBSProcessMonitor *monitor, RBSProcessHa
 
 NS_ASSUME_NONNULL_END
 
+#endif
 #endif

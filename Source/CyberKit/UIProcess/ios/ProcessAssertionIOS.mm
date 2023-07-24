@@ -50,7 +50,11 @@ static const Seconds releaseBackgroundTaskAfterExpirationDelay { 2_s };
 
 static bool processHasActiveRunTimeLimitation()
 {
+#if HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
     return [RBSProcessHandle currentProcess].activeLimitations.runTime != RBSProcessTimeLimitationNone;
+#else
+    return false;
+#endif
 }
 
 @interface WKProcessAssertionBackgroundTaskManager
@@ -226,8 +230,10 @@ static bool processHasActiveRunTimeLimitation()
 
 - (void)_handleBackgroundTaskExpiration
 {
+#if HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
     auto remainingTime = [RBSProcessHandle currentProcess].activeLimitations.runTime;
     RELEASE_LOG(ProcessSuspension, "WKProcessAssertionBackgroundTaskManager: Background task expired while holding CyberKit ProcessAssertion (isMainThread: %d, remainingTime: %g).", RunLoop::isMain(), remainingTime);
+#endif
 
     callOnMainRunLoopAndWait([self] {
         [self _handleBackgroundTaskExpirationOnMainThread];
@@ -237,7 +243,7 @@ static bool processHasActiveRunTimeLimitation()
 - (void)_handleBackgroundTaskExpirationOnMainThread
 {
     ASSERT(RunLoop::isMain());
-
+#if HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
     auto remainingTime = [RBSProcessHandle currentProcess].activeLimitations.runTime;
     RELEASE_LOG(ProcessSuspension, "WKProcessAssertionBackgroundTaskManager: _handleBackgroundTaskExpirationOnMainThread (remainingTime: %g).", remainingTime);
 
@@ -251,7 +257,7 @@ static bool processHasActiveRunTimeLimitation()
         });
         return;
     }
-
+#endif
     [self _notifyAssertionsOfImminentSuspension];
     [self _scheduleReleaseTask];
 }
@@ -279,7 +285,12 @@ static bool processHasActiveRunTimeLimitation()
 
 typedef void(^RBSAssertionInvalidationCallbackType)();
 
-@interface WKRBSAssertionDelegate : NSObject<RBSAssertionObserving>
+@interface WKRBSAssertionDelegate :
+#if HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
+NSObject<RBSAssertionObserving>
+#else
+NSObject
+#endif
 @property (copy) RBSAssertionInvalidationCallbackType invalidationCallback;
 @end
 
@@ -398,7 +409,7 @@ ProcessAssertion::ProcessAssertion(pid_t pid, const String& reason, ProcessAsser
         };
         return;
     }
-#endif // !HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
+#else // !HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
 
     ASSERT(runningBoardAssertionName);
     if (!pid) {
@@ -426,6 +437,7 @@ ProcessAssertion::ProcessAssertion(pid_t pid, const String& reason, ProcessAsser
         });
     } else
         RELEASE_LOG(ProcessSuspension, "%p - ProcessAssertion: Successfully took RBS %{public}@ assertion '%{public}s' for process with PID %d", this, runningBoardAssertionName, reason.utf8().data(), pid);
+#endif
 }
 
 ProcessAssertion::~ProcessAssertion()
@@ -458,10 +470,10 @@ void ProcessAssertion::processAssertionWasInvalidated()
 
 bool ProcessAssertion::isValid() const
 {
+#if HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
     if (m_rbsAssertion)
         return m_rbsAssertion.get().valid;
-
-#if !HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
+#else
     if (m_bksAssertion)
         return m_bksAssertion.get().valid;
 #endif
