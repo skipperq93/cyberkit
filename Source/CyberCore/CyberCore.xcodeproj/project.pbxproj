@@ -34448,11 +34448,14 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				ENABLE_BITCODE = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberCore;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_SWIFT_SYMBOLS = NO;
 			};
 			name = Debug;
 		};
@@ -34462,11 +34465,14 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				ENABLE_BITCODE = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberCore;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_SWIFT_SYMBOLS = NO;
 			};
 			name = Release;
 		};
@@ -34477,11 +34483,14 @@
 				BUILD_VARIANTS = normal;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				ENABLE_BITCODE = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberCore;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_SWIFT_SYMBOLS = NO;
 			};
 			name = Production;
 		};
@@ -34489,11 +34498,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1CDD45E40BA9C84600F90147 /* DebugRelease.xcconfig */;
 			buildSettings = {
+				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = "$(DEAD_CODE_STRIPPING_debug)";
 				DEBUG_DEFINES = "$(DEBUG_DEFINES_debug)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_OPTIMIZATION_LEVEL = "$(GCC_OPTIMIZATION_LEVEL_debug)";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				STRIP_INSTALLED_PRODUCT = "$(STRIP_INSTALLED_PRODUCT_debug)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_STYLE = debugging;
 			};
 			name = Debug;
 		};
@@ -34501,8 +34513,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1CDD45E40BA9C84600F90147 /* DebugRelease.xcconfig */;
 			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_STYLE = debugging;
 			};
 			name = Release;
 		};
@@ -34510,7 +34525,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1CDD45E60BA9C84600F90147 /* Base.xcconfig */;
 			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_STYLE = debugging;
 			};
 			name = Production;
 		};

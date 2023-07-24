@@ -12425,6 +12425,8 @@
 				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_SWIFT_SYMBOLS = NO;
 			};
 			name = Debug;
 		};
@@ -12440,6 +12442,8 @@
 				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_SWIFT_SYMBOLS = NO;
 			};
 			name = Release;
 		};
@@ -12448,8 +12452,11 @@
 			baseConfigurationReference = 1A4F976B100E7B6600637A18 /* DebugRelease.xcconfig */;
 			buildSettings = {
 				DEBUG_DEFINES = "$(DEBUG_DEFINES_debug)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = "$(GCC_OPTIMIZATION_LEVEL_debug)";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				STRIP_STYLE = debugging;
 			};
 			name = Debug;
 		};
@@ -12457,7 +12464,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1A4F976B100E7B6600637A18 /* DebugRelease.xcconfig */;
 			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				STRIP_STYLE = debugging;
 			};
 			name = Release;
 		};
@@ -12627,7 +12637,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1A4F976A100E7B6600637A18 /* Base.xcconfig */;
 			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				STRIP_STYLE = debugging;
 			};
 			name = Production;
 		};
@@ -12651,6 +12664,8 @@
 				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_SWIFT_SYMBOLS = NO;
 			};
 			name = Production;
 		};

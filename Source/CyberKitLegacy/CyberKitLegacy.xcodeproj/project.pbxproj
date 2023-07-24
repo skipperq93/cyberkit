@@ -3621,6 +3621,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
 				DEBUG_DEFINES = "$(DEBUG_DEFINES_debug) ENABLE_WEBKIT_UNSET_DYLD_FRAMEWORK_PATH";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
@@ -3628,6 +3629,8 @@
 				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKitLegacy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_SWIFT_SYMBOLS = NO;
 			};
 			name = Debug;
 		};
@@ -3637,6 +3640,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
 				DEBUG_DEFINES = "$(DEBUG_DEFINES_$(CURRENT_VARIANT)) ENABLE_WEBKIT_UNSET_DYLD_FRAMEWORK_PATH";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
@@ -3644,6 +3648,8 @@
 				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKitLegacy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_SWIFT_SYMBOLS = NO;
 			};
 			name = Release;
 		};
@@ -3654,12 +3660,15 @@
 				BUILD_VARIANTS = normal;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				ENABLE_BITCODE = NO;
 				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKitLegacy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_SWIFT_SYMBOLS = NO;
 			};
 			name = Production;
 		};
@@ -3668,10 +3677,13 @@
 			baseConfigurationReference = 1C904FD40BA9DD0F0081E9D0 /* DebugRelease.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				COPY_PHASE_STRIP = NO;
 				DEBUG_DEFINES = "$(DEBUG_DEFINES_debug)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_OPTIMIZATION_LEVEL = "$(GCC_OPTIMIZATION_LEVEL_debug)";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				STRIP_INSTALLED_PRODUCT = "$(STRIP_INSTALLED_PRODUCT_debug)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_STYLE = debugging;
 			};
 			name = Debug;
 		};
@@ -3680,8 +3692,11 @@
 			baseConfigurationReference = 1C904FD40BA9DD0F0081E9D0 /* DebugRelease.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_STYLE = debugging;
 			};
 			name = Release;
 		};
@@ -3690,7 +3705,11 @@
 			baseConfigurationReference = 1C904FD50BA9DD0F0081E9D0 /* Base.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_STYLE = debugging;
 			};
 			name = Production;
 		};

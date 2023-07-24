@@ -17,6 +17,8 @@
 		4832A9182A6BDDE00055132A /* CyberKitLegacy.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4832A9162A6BDDE00055132A /* CyberKitLegacy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4832A91A2A6BDDE60055132A /* CyberScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4832A9192A6BDDE60055132A /* CyberScriptCore.framework */; };
 		4832A91B2A6BDDE60055132A /* CyberScriptCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4832A9192A6BDDE60055132A /* CyberScriptCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		484AC65F2A6D5D770037E2CB /* libwebrtc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 484AC65E2A6D5D770037E2CB /* libwebrtc.dylib */; };
+		484AC6602A6D5D770037E2CB /* libwebrtc.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 484AC65E2A6D5D770037E2CB /* libwebrtc.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		CD1DAF971D709E3600017CF0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1DAF961D709E3600017CF0 /* main.m */; };
 		CD1DAFA51D709E3600017CF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD1DAFA31D709E3600017CF0 /* LaunchScreen.storyboard */; };
 		CD1DAFB01D709E3600017CF0 /* MobileMiniBrowserUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1DAFAF1D709E3600017CF0 /* MobileMiniBrowserUITests.m */; };
@@ -61,6 +63,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				4832A91B2A6BDDE60055132A /* CyberScriptCore.framework in Embed Frameworks */,
+				484AC6602A6D5D770037E2CB /* libwebrtc.dylib in Embed Frameworks */,
 				CD498B431D76348000681FA7 /* MobileMiniBrowser.framework in Embed Frameworks */,
 				4832A9122A6BDDD60055132A /* CyberKit.framework in Embed Frameworks */,
 				4832A9182A6BDDE00055132A /* CyberKitLegacy.framework in Embed Frameworks */,
@@ -78,6 +81,7 @@
 		4832A9132A6BDDDB0055132A /* CyberCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4832A9162A6BDDE00055132A /* CyberKitLegacy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberKitLegacy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4832A9192A6BDDE60055132A /* CyberScriptCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberScriptCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		484AC65E2A6D5D770037E2CB /* libwebrtc.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libwebrtc.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1B89B97221E028700EB4CEA /* SDKVariant.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SDKVariant.xcconfig; path = Configurations/SDKVariant.xcconfig; sourceTree = "<group>"; };
 		CD1DAF921D709E3600017CF0 /* MobileMiniBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileMiniBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD1DAF961D709E3600017CF0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4832A91A2A6BDDE60055132A /* CyberScriptCore.framework in Frameworks */,
+				484AC65F2A6D5D770037E2CB /* libwebrtc.dylib in Frameworks */,
 				CD498B421D76348000681FA7 /* MobileMiniBrowser.framework in Frameworks */,
 				4832A9112A6BDDD60055132A /* CyberKit.framework in Frameworks */,
 				4832A9172A6BDDE00055132A /* CyberKitLegacy.framework in Frameworks */,
@@ -181,6 +186,7 @@
 		CD1DAFC01D70E12D00017CF0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				484AC65E2A6D5D770037E2CB /* libwebrtc.dylib */,
 				4832A9192A6BDDE60055132A /* CyberScriptCore.framework */,
 				4832A9162A6BDDE00055132A /* CyberKitLegacy.framework */,
 				4832A9132A6BDDDB0055132A /* CyberCore.framework */,
@@ -471,6 +477,7 @@
 			buildSettings = {
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				SDKROOT = iphoneos;
+				STRIP_STYLE = debugging;
 			};
 			name = Debug;
 		};
@@ -480,6 +487,7 @@
 			buildSettings = {
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				SDKROOT = iphoneos;
+				STRIP_STYLE = debugging;
 			};
 			name = Release;
 		};
