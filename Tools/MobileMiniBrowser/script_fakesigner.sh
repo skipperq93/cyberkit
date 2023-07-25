@@ -38,7 +38,7 @@ cd Payload
 rm -rf $app/Frameworks/CyberKit.framework/XPCServices && mkdir $app/Frameworks/CyberKit.framework/XPCServices
 cp -R ../*.xpc $app/Frameworks/CyberKit.framework/XPCServices
 ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.Networking.xpc
-ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.Plugin.32.xpc
+ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.GPU.xpc
 ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.Plugin.64.xpc
 ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.WebContent.Development.xpc
 ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.WebContent.xpc
@@ -54,7 +54,7 @@ cp $SCRIPT_DIR/script_fakesigner.entitlements .
 echo "[1/12] Fakesigning com.matthewbenedict.CyberKit.Networking.xpc"
 ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.Networking.xpc"
 echo "[2/12] Fakesigning com.matthewbenedict.CyberKit.WebContent.CaptivePortal.xpc"
-ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.Plugin.32.xpc"
+ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.GPU.xpc"
 echo "[3/12] Fakesigning com.matthewbenedict.CyberKit.WebContent.Crashy.xpc"
 ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.Plugin.64.xpc"
 echo "[4/12] Fakesigning com.matthewbenedict.CyberKit.WebContent.Development.xpc"

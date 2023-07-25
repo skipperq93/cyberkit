@@ -139,6 +139,8 @@
 #import <UIKit/NSItemProvider+UIKitAdditions.h>
 #endif
 
+#import <wtf/SoftLinking.h>
+
 #if HAVE(LINK_PREVIEW)
 typedef NS_ENUM(NSInteger, UIPreviewItemType) {
     UIPreviewItemTypeNone,
@@ -1421,10 +1423,10 @@ extern const NSString *UIPreviewDataDDContext;
 extern const NSString *UIPreviewDataAttachmentList;
 extern const NSString *UIPreviewDataAttachmentIndex;
 
-#if __IPHONE_OS_VERSION_MAX_ALLOWED < 130000
-extern NSString * const UIPreviewDataAttachmentListSourceIsManaged;
-#else
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
 extern NSString * const UIPreviewDataAttachmentListIsContentManaged;
+#else
+SOFT_LINK_CONSTANT_FOR_HEADER(CyberKit, UIKit, UIPreviewDataAttachmentListSourceIsManaged, NSString *)
 #endif
 
 UIEdgeInsets UIEdgeInsetsAdd(UIEdgeInsets lhs, UIEdgeInsets rhs, UIRectEdge);

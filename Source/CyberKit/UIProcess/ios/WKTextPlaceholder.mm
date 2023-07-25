@@ -26,7 +26,7 @@
 #import "config.h"
 #import "WKTextPlaceholder.h"
 
-#if PLATFORM(IOS_FAMILY)
+#if PLATFORM(IOS_FAMILY) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
 
 #import "WKTextSelectionRect.h"
 #import <CyberCore/ElementContext.h>

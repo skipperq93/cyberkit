@@ -110,6 +110,7 @@ ApplicationStateTracker::ApplicationStateTracker(UIView *view, SEL didEnterBackg
         m_isInBackground = window.windowScene.activationState == UISceneActivationStateBackground || window.windowScene.activationState == UISceneActivationStateUnattached;
         RELEASE_LOG(ViewState, "%p - ApplicationStateTracker::ApplicationStateTracker(): m_isInBackground: %d", this, m_isInBackground);
 
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
         m_didEnterBackgroundObserver = [notificationCenter addObserverForName:UISceneDidEnterBackgroundNotification object:nil queue:nil usingBlock:[this](NSNotification *notification) {
             if (notification.object == [[m_view window] windowScene]) {
                 RELEASE_LOG(ViewState, "%p - ApplicationStateTracker: UISceneDidEnterBackground", this);
@@ -131,6 +132,7 @@ ApplicationStateTracker::ApplicationStateTracker(UIView *view, SEL didEnterBackg
         m_didCompleteSnapshotSequenceObserver = [notificationCenter addObserverForName:_UISceneDidCompleteSystemSnapshotSequence object:nil queue:nil usingBlock:[this](NSNotification *notification) {
             didCompleteSnapshotSequence();
         }];
+#endif
         break;
     }
 

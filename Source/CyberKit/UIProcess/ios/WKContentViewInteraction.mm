@@ -173,6 +173,11 @@
 
 #import <pal/ios/ManagedConfigurationSoftLink.h>
 
+#if (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 130000)
+SOFT_LINK_FRAMEWORK_FOR_SOURCE(CyberKit, UIKit)
+SOFT_LINK_CONSTANT_FOR_SOURCE(CyberKit, UIKit, UIPreviewDataAttachmentListSourceIsManaged, NSString *)
+#endif
+
 #if HAVE(LINK_PREVIEW) && USE(UICONTEXTMENU)
 static NSString * const webkitShowLinkPreviewsPreferenceKey = @"CyberKitShowLinkPreviews";
 #endif
@@ -7965,6 +7970,7 @@ static CyberKit::DocumentEditingContextRequest toWebRequest(UIWKDocumentRequest 
 
 #endif
 
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
 - (void)insertTextPlaceholderWithSize:(CGSize)size completionHandler:(void (^)(UITextPlaceholder *))completionHandler
 {
     _page->insertTextPlaceholder(CyberCore::IntSize { size }, [weakSelf = WeakObjCPtr<WKContentView>(self), completionHandler = makeBlockPtr(completionHandler)](const Optional<CyberCore::ElementContext>& placeholder) {
@@ -7987,6 +7993,7 @@ static CyberKit::DocumentEditingContextRequest toWebRequest(UIWKDocumentRequest 
     else
         completionHandler();
 }
+#endif
 
 static Vector<CyberCore::IntSize> sizesOfPlaceholderElementsToInsertWhenDroppingItems(NSArray<NSItemProvider *> *itemProviders)
 {
@@ -9851,7 +9858,11 @@ static UIMenu *menuFromLegacyPreviewOrDefaultActions(UIViewController *previewVi
             else
                 dataForPreview[UIPreviewDataAttachmentList] = [uiDelegate _attachmentListForWebView:self.webView];
             dataForPreview[UIPreviewDataAttachmentIndex] = [NSNumber numberWithUnsignedInteger:index];
+            #if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
             dataForPreview[UIPreviewDataAttachmentListIsContentManaged] = [NSNumber numberWithBool:sourceIsManaged];
+            #else
+            dataForPreview[CyberKit::get_UIKit_UIPreviewDataAttachmentListSourceIsManaged()] = [NSNumber numberWithBool:sourceIsManaged];
+            #endif
         }
     }
 
