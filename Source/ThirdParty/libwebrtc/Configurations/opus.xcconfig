@@ -21,6 +21,7 @@ EXCLUDED_SOURCE_FILE_NAMES[sdk=iphonesimulator*] = *_sse.c *_sse4_1.c x86_silk_m
 EXCLUDED_SOURCE_FILE_NAMES[sdk=macosx*] = $(EXCLUDED_SOURCE_FILE_NAMES_$(WK_IS_CATALYST));
 EXCLUDED_SOURCE_FILE_NAMES_YES = *_sse4_1.c x86_silk_map.c;
 EXCLUDED_SOURCE_FILE_NAMES[arch=arm64*] = *_sse.c *_sse2.c *_sse4_1.c x86_silk_map.c;
+EXCLUDED_SOURCE_FILE_NAMES[arch=armv7*] = *_sse.c *_sse2.c *_sse4_1.c x86_silk_map.c;
 
 // The iOS Simulator and Catalyst can't use SSE4 intrinsics, but macOS can.
 SSE4_FLAG[sdk=macosx*] = $(SSE4_FLAG_$(WK_IS_CATALYST))

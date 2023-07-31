@@ -25352,6 +25352,14 @@
 				CLANG_X86_VECTOR_INSTRUCTIONS = default;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"$(inherited)",
+					"$(WK_FIXME_WARNING_CFLAGS)",
+					"-Wexit-time-destructors",
+					"-Wglobal-constructors",
+					"-Wthread-safety",
+					"-Wno-absolute-value",
+				);
 			};
 			name = Debug;
 		};
@@ -25363,6 +25371,14 @@
 				CLANG_X86_VECTOR_INSTRUCTIONS = default;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"$(inherited)",
+					"$(WK_FIXME_WARNING_CFLAGS)",
+					"-Wexit-time-destructors",
+					"-Wglobal-constructors",
+					"-Wthread-safety",
+					"-Wno-absolute-value",
+				);
 			};
 			name = Release;
 		};
@@ -25374,6 +25390,14 @@
 				CLANG_X86_VECTOR_INSTRUCTIONS = default;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"$(inherited)",
+					"$(WK_FIXME_WARNING_CFLAGS)",
+					"-Wexit-time-destructors",
+					"-Wglobal-constructors",
+					"-Wthread-safety",
+					"-Wno-absolute-value",
+				);
 			};
 			name = Production;
 		};

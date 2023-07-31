@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -220,8 +220,8 @@
 			isa = PBXGroup;
 			children = (
 				1C2D0E02296A455C00BE33A3 /* libdav1d.a */,
-				1C2D0E06296A455C00BE33A3 /* libdav1d_bitdepth_16.a */,
 				1C2D0E04296A455C00BE33A3 /* libdav1d_bitdepth_8.a */,
+				1C2D0E06296A455C00BE33A3 /* libdav1d_bitdepth_16.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -676,7 +676,7 @@
 				};
 			};
 			buildConfigurationList = 1C4FAE8A28FC83DC00FFE212 /* Build configuration list for PBXProject "libavif" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -764,6 +764,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C4FAF4428FC855100FFE212 /* DebugRelease.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
 		};
@@ -771,6 +772,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C4FAF4428FC855100FFE212 /* DebugRelease.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
 		};
@@ -792,6 +794,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C4FAF4228FC854300FFE212 /* Base.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Production;
 		};
