@@ -14,7 +14,7 @@ CyberKit is a backport of WebKit to older iOS.
 * [safari-7616.1.7-branch](https://github.com/UInt2048/CyberKit/tree/safari-7616.1.7-branch): 24 March 2023 - 11 May 2023
     * _Diverged 19 March 2023; built in Xcode 14.2 before [fa2170c](https://github.com/UInt2048/CyberKit/commit/fa2170c3604b4ccacbc4f2475f91c0638ac7a2a0) (committed 7 April 2023), 14.3 starting with fa2170c_
 * [safari-7616.1.12-branch](https://github.com/UInt2048/CyberKit/tree/safari-7616.1.12-branch): 11 May 2023 - present
-    * _Diverged 22 April 2023; built in Xcode 14.3_
+    * _Diverged 22 April 2023; built in Xcode 14.3 before [688c678](https://github.com/UInt2048/CyberKit/commit/688c678f5a3204926f6e005f75f23433bf565153) (committed 31 July 2023), 13.7 starting with 688c678_
 
 ## Reference Implementations
 * [safari-607-branch](https://github.com/UInt2048/CyberKit/tree/safari-607-branch): 19 May 2023 - 21 July 2023
@@ -32,6 +32,11 @@ If building yourself, you may wish to use the version of Xcode used at the time 
 Ensure to run `Tools/Scripts/configure-xcode-for-embedded-development` before 1st build or any time you reinstall/update Xcode or its SDKs.
 
 You will build the "Everything up to CyberKit" target then the appropriate app.
+
+### iOS 10 SDK Modifications
+CoreImage.framework:
+* In CoreImageDefines.h, change the line `#define COREIMAGE_SUPPORTS_IOSURFACE 1` to `#define COREIMAGE_SUPPORTS_IOSURFACE 0`
+* In CIImageProcessor.h, wrap the IOSurface includes with `#if COREIMAGE_SUPPORTS_IOSURFACE`
 
 ### Development Environment Notes
 
