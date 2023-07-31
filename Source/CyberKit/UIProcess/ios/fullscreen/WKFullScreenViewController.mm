@@ -212,17 +212,21 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 - (void)setSupportedOrientations:(UIInterfaceOrientationMask)supportedOrientations
 {
     _supportedOrientations = supportedOrientations;
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MAX_ALLOWED >= 160000
     if (@available(iOS 16.0, *)) {
         [self setNeedsUpdateOfSupportedInterfaceOrientations];
     }
+#endif
 }
 
 - (void)resetSupportedOrientations
 {
     _supportedOrientations = std::nullopt;
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MAX_ALLOWED >= 160000
     if (@available(iOS 16.0, *)) {
         [self setNeedsUpdateOfSupportedInterfaceOrientations];
     }
+#endif
 }
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations

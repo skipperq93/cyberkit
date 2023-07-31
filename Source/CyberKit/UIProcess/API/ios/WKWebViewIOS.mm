@@ -1197,7 +1197,7 @@ static void addOverlayEventRegions(CyberCore::PlatformLayerIdentifier layerID, c
 
 - (RefPtr<CyberKit::ViewSnapshot>)_takeViewSnapshot
 {
-#if HAVE(CORE_ANIMATION_RENDER_SERVER) && 0
+#if HAVE(CORE_ANIMATION_RENDER_SERVER)
     float deviceScale = CyberCore::screenScaleFactor();
     CyberCore::FloatSize snapshotSize(self.bounds.size);
     snapshotSize.scale(deviceScale);
