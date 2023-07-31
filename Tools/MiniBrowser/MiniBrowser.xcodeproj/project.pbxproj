@@ -299,7 +299,7 @@
 			baseConfigurationReference = BCA8CBDE11E578A000812FB7 /* DebugRelease.xcconfig */;
 			buildSettings = {
 				GCC_OPTIMIZATION_LEVEL = 0;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
 		};
@@ -307,7 +307,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BCA8CBDE11E578A000812FB7 /* DebugRelease.xcconfig */;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
 		};
