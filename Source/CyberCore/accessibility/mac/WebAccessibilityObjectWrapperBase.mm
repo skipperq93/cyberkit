@@ -550,7 +550,7 @@ NSRange makeNSRange(std::optional<SimpleRange> range)
     if (!scope->contains(range->start.container.ptr()) || !scope->contains(range->end.container.ptr()))
         return NSMakeRange(NSNotFound, 0);
 
-    return NSMakeRange(characterCount({ { *scope, 0 }, range->start }), characterCount(*range));
+    return NSMakeRange((unsigned)characterCount({ { *scope, 0 }, range->start }), (unsigned)characterCount(*range));
 }
 
 std::optional<SimpleRange> makeDOMRange(Document* document, NSRange range)

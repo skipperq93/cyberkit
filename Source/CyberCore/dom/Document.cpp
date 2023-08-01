@@ -4033,7 +4033,7 @@ void Document::processMetaHttpEquiv(const String& equiv, const AtomString& conte
                 requestIdentifier = frameLoader.activeDocumentLoader()->mainResourceLoader()->identifier();
 
             String message = "The X-Frame-Option '" + content + "' supplied in a <meta> element was ignored. X-Frame-Options may only be provided by an HTTP header sent with the document.";
-            addConsoleMessage(MessageSource::Security, MessageLevel::Error, message, requestIdentifier.toUInt64());
+            addConsoleMessage(MessageSource::Security, MessageLevel::Error, message, (unsigned long)requestIdentifier.toUInt64());
         }
         break;
 

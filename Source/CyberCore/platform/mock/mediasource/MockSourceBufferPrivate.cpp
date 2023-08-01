@@ -153,7 +153,7 @@ void MockSourceBufferPrivate::appendInternal(Ref<SharedBuffer>&& data)
             didReceiveSample(sampleBox);
         } else
             parsingSucceeded = false;
-        m_inputBuffer.remove(0, boxLength);
+        m_inputBuffer.remove(0, (size_t)boxLength);
     }
 
     SourceBufferPrivate::appendCompleted(parsingSucceeded, m_mediaSource->isEnded());

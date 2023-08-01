@@ -45,7 +45,7 @@ Ref<SpeechRecognitionResultList> SpeechRecognitionResultList::create(Vector<Ref<
 
 SpeechRecognitionResult* SpeechRecognitionResultList::item(uint64_t index) const
 {
-    return (index < m_list.size()) ? m_list[index].ptr() : nullptr;
+    return (index < m_list.size()) ? m_list[(size_t)index].ptr() : nullptr;
 }
 
 void SpeechRecognitionResultList::add(SpeechRecognitionResult& result)

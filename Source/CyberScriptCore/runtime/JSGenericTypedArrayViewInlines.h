@@ -386,7 +386,7 @@ bool JSGenericTypedArrayView<Adaptor>::setFromArrayLike(JSGlobalObject* globalOb
 
     JSValue sourceLengthValue = source->get(globalObject, vm.propertyNames->length);
     RETURN_IF_EXCEPTION(scope, { });
-    size_t sourceLength = sourceLengthValue.toLength(globalObject);
+    size_t sourceLength = (size_t)sourceLengthValue.toLength(globalObject);
     RETURN_IF_EXCEPTION(scope, { });
 
     if (offset > MAX_ARRAY_BUFFER_SIZE || !isSumSmallerThanOrEqual(sourceLength, offset, targetLength)) {

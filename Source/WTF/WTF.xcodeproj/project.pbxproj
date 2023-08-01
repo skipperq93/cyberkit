@@ -24624,6 +24624,25 @@
 				);
 				PRODUCT_NAME = unicode;
 				TAPI_EXTRA_PRIVATE_HEADERS = "$SRCROOT/icu/unicode/common $SRCROOT/icu/unicode/data $SRCROOT/icu/unicode/i18n $SRCROOT/icu/unicode/io $SRCROOT/icu/unicode/stubdata $SRCROOT/icu/unicode/common/unicode $SRCROOT/icu/unicode/data/unicode $SRCROOT/icu/unicode/i18n/unicode $SRCROOT/icu/unicode/io/unicode $SRCROOT/icu/unicode/stubdata/unicode";
+				WARNING_CFLAGS = (
+					"$(inherited)",
+					"-Wcast-qual",
+					"-Wchar-subscripts",
+					"-Wextra-tokens",
+					"-Winit-self",
+					"-Wmissing-noreturn",
+					"-Wpacked",
+					"-Wpointer-arith",
+					"-Wredundant-decls",
+					"-Wwrite-strings",
+					"-Wexit-time-destructors",
+					"-Wglobal-constructors",
+					"-Wtautological-compare",
+					"-Wimplicit-fallthrough",
+					"-Wvla",
+					"-Wliteral-conversion",
+					"-Wthread-safety",
+				);
 			};
 			name = Debug;
 		};
@@ -24657,6 +24676,25 @@
 				);
 				PRODUCT_NAME = unicode;
 				TAPI_EXTRA_PRIVATE_HEADERS = "$SRCROOT/icu/unicode/common $SRCROOT/icu/unicode/data $SRCROOT/icu/unicode/i18n $SRCROOT/icu/unicode/io $SRCROOT/icu/unicode/stubdata $SRCROOT/icu/unicode/common/unicode $SRCROOT/icu/unicode/data/unicode $SRCROOT/icu/unicode/i18n/unicode $SRCROOT/icu/unicode/io/unicode $SRCROOT/icu/unicode/stubdata/unicode";
+				WARNING_CFLAGS = (
+					"$(inherited)",
+					"-Wcast-qual",
+					"-Wchar-subscripts",
+					"-Wextra-tokens",
+					"-Winit-self",
+					"-Wmissing-noreturn",
+					"-Wpacked",
+					"-Wpointer-arith",
+					"-Wredundant-decls",
+					"-Wwrite-strings",
+					"-Wexit-time-destructors",
+					"-Wglobal-constructors",
+					"-Wtautological-compare",
+					"-Wimplicit-fallthrough",
+					"-Wvla",
+					"-Wliteral-conversion",
+					"-Wthread-safety",
+				);
 			};
 			name = Release;
 		};
@@ -24690,6 +24728,25 @@
 				);
 				PRODUCT_NAME = unicode;
 				TAPI_EXTRA_PRIVATE_HEADERS = "$SRCROOT/icu/unicode/common $SRCROOT/icu/unicode/data $SRCROOT/icu/unicode/i18n $SRCROOT/icu/unicode/io $SRCROOT/icu/unicode/stubdata $SRCROOT/icu/unicode/common/unicode $SRCROOT/icu/unicode/data/unicode $SRCROOT/icu/unicode/i18n/unicode $SRCROOT/icu/unicode/io/unicode $SRCROOT/icu/unicode/stubdata/unicode";
+				WARNING_CFLAGS = (
+					"$(inherited)",
+					"-Wcast-qual",
+					"-Wchar-subscripts",
+					"-Wextra-tokens",
+					"-Winit-self",
+					"-Wmissing-noreturn",
+					"-Wpacked",
+					"-Wpointer-arith",
+					"-Wredundant-decls",
+					"-Wwrite-strings",
+					"-Wexit-time-destructors",
+					"-Wglobal-constructors",
+					"-Wtautological-compare",
+					"-Wimplicit-fallthrough",
+					"-Wvla",
+					"-Wliteral-conversion",
+					"-Wthread-safety",
+				);
 			};
 			name = Production;
 		};

@@ -1278,7 +1278,7 @@ void SourceBuffer::reportExtraMemoryAllocated(uint64_t extraMemory)
     JSC::JSLockHolder lock(scriptExecutionContext()->vm());
     // FIXME: Adopt reportExtraMemoryVisited, and switch to reportExtraMemoryAllocated.
     // https://bugs.webkit.org/show_bug.cgi?id=142595
-    scriptExecutionContext()->vm().heap.deprecatedReportExtraMemory(extraMemoryCostDelta);
+    scriptExecutionContext()->vm().heap.deprecatedReportExtraMemory((size_t)extraMemoryCostDelta);
 }
 
 void SourceBuffer::bufferedSamplesForTrackId(const AtomString& trackID, CompletionHandler<void(Vector<String>&&)>&& completionHandler)
@@ -1385,7 +1385,7 @@ void SourceBuffer::setMediaSourceEnded(bool isEnded)
 
 size_t SourceBuffer::memoryCost() const
 {
-    return sizeof(SourceBuffer) + m_extraMemoryCost;
+    return (size_t)(sizeof(SourceBuffer) + m_extraMemoryCost);
 }
 
 CyberCoreOpaqueRoot SourceBuffer::opaqueRoot()

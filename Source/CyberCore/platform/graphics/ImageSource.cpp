@@ -281,7 +281,7 @@ void ImageSource::cachePlatformImageAtIndex(PlatformImagePtr&& platformImage, si
     decodedSizeDecreased(frame.clear());
 
     // Do not cache the NativeImage if adding its frameByes to the MemoryCache will cause numerical overflow.
-    size_t frameBytes = size().unclampedArea() * sizeof(uint32_t);
+    size_t frameBytes = (size_t)(size().unclampedArea() * sizeof(uint32_t));
     if (!isInBounds<unsigned>(frameBytes + decodedSize()))
         return;
 

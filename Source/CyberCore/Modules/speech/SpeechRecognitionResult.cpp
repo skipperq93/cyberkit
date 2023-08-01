@@ -45,7 +45,7 @@ SpeechRecognitionResult::SpeechRecognitionResult(Vector<Ref<SpeechRecognitionAlt
 
 SpeechRecognitionAlternative* SpeechRecognitionResult::item(uint64_t index) const
 {
-    return (index < m_alternatives.size()) ? m_alternatives[index].ptr() : nullptr;
+    return (index < m_alternatives.size()) ? m_alternatives[(size_t)index].ptr() : nullptr;
 }
 
 } // namespace CyberCore

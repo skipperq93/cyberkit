@@ -405,7 +405,7 @@ ExceptionOr<void> WebSocket::send(Blob& binaryData)
         m_bufferedAmountAfterClose = saturateAdd(m_bufferedAmountAfterClose, getFramingOverhead(payloadSize));
         return { };
     }
-    m_bufferedAmount = saturateAdd(m_bufferedAmount, binaryData.size());
+    m_bufferedAmount = saturateAdd(m_bufferedAmount, (unsigned)binaryData.size());
     ASSERT(m_channel);
     m_channel->send(binaryData);
     return { };

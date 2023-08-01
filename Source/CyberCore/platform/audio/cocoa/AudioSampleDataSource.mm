@@ -129,7 +129,7 @@ void AudioSampleDataSource::pushSamplesInternal(const AudioBufferList& bufferLis
     int64_t offset = 0;
     const AudioBufferList* sampleBufferList;
 
-    if (m_converter.updateBufferedAmount(m_lastBufferedAmount, sampleCount)) {
+    if (m_converter.updateBufferedAmount((size_t)m_lastBufferedAmount, sampleCount)) {
         m_scratchBuffer->reset();
         m_converter.convert(bufferList, *m_scratchBuffer, sampleCount);
         auto expectedSampleCount = sampleCount * m_outputDescription->sampleRate() / m_inputDescription->sampleRate();
@@ -214,7 +214,7 @@ bool AudioSampleDataSource::pullSamples(AudioBufferList& buffer, size_t sampleCo
 
     uint64_t buffered = endFrame - startFrame;
     if (m_shouldComputeOutputSampleOffset) {
-        auto minimumBuffer = std::max<size_t>(m_waitToStartForPushCount * m_lastPushedSampleCount, m_converter.regularBufferSize());
+        auto minimumBuffer = std::max<size_t>((size_t)(m_waitToStartForPushCount * m_lastPushedSampleCount), m_converter.regularBufferSize());
         if (buffered < minimumBuffer) {
             // We wait for one chunk of value before starting to play.
             if (mode != AudioSampleDataSource::Mix)

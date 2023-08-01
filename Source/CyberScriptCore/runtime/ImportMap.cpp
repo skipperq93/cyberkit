@@ -66,7 +66,7 @@ Expected<URL, String> ImportMap::resolveImportMatch(const String& normalizedSpec
         if (matched) {
             if (matched->isNull())
                 return makeUnexpected("speficier is blocked"_s);
-            auto afterPrefix = normalizedSpecifier.substring(length);
+            auto afterPrefix = normalizedSpecifier.substring((unsigned int)length);
             ASSERT(matched->string().endsWith('/'));
             URL url { matched.value(), afterPrefix };
             if (!url.isValid())

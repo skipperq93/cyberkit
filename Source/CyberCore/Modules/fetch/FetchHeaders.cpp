@@ -312,7 +312,7 @@ std::optional<KeyValuePair<String, String>> FetchHeaders::Iterator::next()
         } else
             m_setCookieIndex = 0;
 
-        m_updateCounter = m_headers->m_updateCounter;
+        m_updateCounter = (size_t)m_headers->m_updateCounter;
     }
     while (m_currentIndex < m_keys.size()) {
         auto key = m_keys[m_currentIndex];

@@ -66,9 +66,9 @@ public:
     {
         auto& markerController = textNode.document().markers();
         for (auto& alternative : m_alternatives) {
-            DocumentMarker::DictationData data { alternative.context, textToBeInserted.substring(alternative.range.location, alternative.range.length) };
-            markerController.addMarker(textNode, alternative.range.location + offsetOfInsertion, alternative.range.length, DocumentMarker::DictationAlternatives, WTFMove(data));
-            markerController.addMarker(textNode, alternative.range.location + offsetOfInsertion, alternative.range.length, DocumentMarker::SpellCheckingExemption);
+            DocumentMarker::DictationData data { alternative.context, textToBeInserted.substring((unsigned)alternative.range.location, (unsigned)alternative.range.length) };
+            markerController.addMarker(textNode, (unsigned)(alternative.range.location + offsetOfInsertion), (unsigned)alternative.range.length, DocumentMarker::DictationAlternatives, WTFMove(data));
+            markerController.addMarker(textNode, (unsigned)(alternative.range.location + offsetOfInsertion), (unsigned)alternative.range.length, DocumentMarker::SpellCheckingExemption);
         }
     }
 

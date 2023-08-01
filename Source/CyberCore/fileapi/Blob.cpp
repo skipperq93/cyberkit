@@ -198,7 +198,7 @@ Blob::Blob(DeserializationContructor, ScriptExecutionContext* context, const URL
     : ActiveDOMObject(context)
     , m_type(normalizedContentType(type))
     , m_size(size)
-    , m_memoryCost(memoryCost)
+    , m_memoryCost((size_t)memoryCost)
     , m_internalURL(BlobURL::createInternalURL())
     , m_topOrigin(context ? context->topOrigin().data() : SecurityOriginData::createOpaque())
 {
@@ -211,7 +211,7 @@ Blob::Blob(DeserializationContructor, ScriptExecutionContext* context, const URL
 Blob::Blob(ScriptExecutionContext* context, const URL& srcURL, long long start, long long end, unsigned long long memoryCost, const String& type)
     : ActiveDOMObject(context)
     , m_type(normalizedContentType(type))
-    , m_memoryCost(memoryCost)
+    , m_memoryCost((size_t)memoryCost)
     , m_internalURL(BlobURL::createInternalURL())
     , m_topOrigin(context ? context->topOrigin().data() : SecurityOriginData::createOpaque())
     // m_size is not necessarily equal to end - start so we do not initialize it here.

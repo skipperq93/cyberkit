@@ -85,14 +85,14 @@ void DisplayList::Iterator::updateCurrentItem()
             return;
         }
 
-        auto itemSizeInBuffer = roundUpToMultipleOf<alignof(uint64_t)>(dataLength) + sizeOfTypeAndDataLength;
+        auto itemSizeInBuffer = roundUpToMultipleOf<alignof(uint64_t)>((size_t)dataLength) + sizeOfTypeAndDataLength;
         if (UNLIKELY(remainingCapacityInBuffer < itemSizeInBuffer)) {
             m_isValid = false;
             return;
         }
 
         auto* startOfData = m_cursor + sizeOfTypeAndDataLength;
-        auto decodedItemHandle = client->decodeItem(startOfData, dataLength, itemType, m_currentBufferForItem);
+        auto decodedItemHandle = client->decodeItem(startOfData, (size_t)dataLength, itemType, m_currentBufferForItem);
         if (UNLIKELY(!decodedItemHandle)) {
             m_isValid = false;
             return;

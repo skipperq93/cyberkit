@@ -70,9 +70,9 @@ void TextMarkerData::initializeAXIDs(AXObjectCache& cache, Node* node)
 {
     memset(static_cast<void*>(this), 0, sizeof(*this));
 
-    treeID = cache.treeID().toUInt64();
+    treeID = (unsigned)cache.treeID().toUInt64();
     if (RefPtr object = cache.getOrCreate(node))
-        objectID = object->objectID().toUInt64();
+        objectID = (unsigned)object->objectID().toUInt64();
 }
 
 AXTextMarker::AXTextMarker(const VisiblePosition& visiblePosition)

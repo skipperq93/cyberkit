@@ -36,16 +36,18 @@
 
 namespace CyberCore {
 
-static RetainPtr<CIContext> sharedCIContext()
-{
-    static NeverDestroyed<RetainPtr<CIContext>> ciContext = [CIContext contextWithOptions:@{ kCIContextWorkingColorSpace: bridge_id_cast(adoptCF(CGColorSpaceCreateWithName(kCGColorSpaceSRGB))).get() }];
-    return ciContext;
-}
-
 void FilterImage::setCIImage(RetainPtr<CIImage>&& ciImage)
 {
     ASSERT(ciImage);
     m_ciImage = WTFMove(ciImage);
+}
+
+#if HAVE(IOSURFACE)
+// IOSurface isn't required for this static function, but it isn't used otherwise
+static RetainPtr<CIContext> sharedCIContext()
+{
+    static NeverDestroyed<RetainPtr<CIContext>> ciContext = [CIContext contextWithOptions:@{ kCIContextWorkingColorSpace: bridge_id_cast(adoptCF(CGColorSpaceCreateWithName(kCGColorSpaceSRGB))).get() }];
+    return ciContext;
 }
 
 ImageBuffer* FilterImage::imageBufferFromCIImage()
@@ -64,6 +66,7 @@ ImageBuffer* FilterImage::imageBufferFromCIImage()
 
     return m_imageBuffer.get();
 }
+#endif
 
 } // namespace CyberCore
 

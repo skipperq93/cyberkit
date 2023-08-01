@@ -40,7 +40,9 @@
 #import "ProcessIdentity.h"
 #import "RuntimeApplicationChecks.h"
 #import <CoreGraphics/CGBitmapContext.h>
+#if HAVE(IOSURFACE)
 #import <Metal/Metal.h>
+#endif
 #import <pal/spi/cg/CoreGraphicsSPI.h>
 #import <pal/spi/cocoa/MetalSPI.h>
 #import <wtf/BlockObjCExceptions.h>
@@ -108,6 +110,7 @@ static bool checkVolatileContextSupportIfDeviceExists(EGLDisplay display, const 
 
 static bool platformSupportsMetal()
 {
+#if HAVE(IOSURFACE)
     auto device = adoptNS(MTLCreateSystemDefaultDevice());
 
     if (device) {
@@ -119,7 +122,7 @@ static bool platformSupportsMetal()
         return true;
 #endif
     }
-
+#endif
     return false;
 }
 
@@ -239,14 +242,18 @@ GraphicsContextGLCocoa::GraphicsContextGLCocoa(GraphicsContextGLAttributes&& cre
 
 GraphicsContextGLCocoa::~GraphicsContextGLCocoa() = default;
 
+#if HAVE(IOSURFACE)
 IOSurface* GraphicsContextGLCocoa::displayBuffer()
 {
     return m_swapChain.displayBuffer().surface.get();
 }
+#endif
 
 void GraphicsContextGLCocoa::markDisplayBufferInUse()
 {
+#if HAVE(IOSURFACE)
     return m_swapChain.markDisplayBufferInUse();
+#endif
 }
 
 bool GraphicsContextGLCocoa::platformInitializeContext()
@@ -482,6 +489,7 @@ GraphicsContextGLANGLE::~GraphicsContextGLANGLE()
         for (auto& fence : m_frameCompletionFences)
             fence.abandon();
     }
+#if HAVE(IOSURFACE)
     if (m_displayBufferPbuffer)
         EGL_DestroySurface(m_displayObj, m_displayBufferPbuffer);
     auto recycledBuffer = m_swapChain.recycleBuffer();
@@ -490,6 +498,7 @@ GraphicsContextGLANGLE::~GraphicsContextGLANGLE()
     auto contentsHandle = m_swapChain.detachClient();
     if (contentsHandle)
         EGL_DestroySurface(m_displayObj, contentsHandle);
+#endif
     if (m_contextObj) {
         makeCurrent(m_displayObj, EGL_NO_CONTEXT);
         EGL_DestroyContext(m_displayObj, m_contextObj);
@@ -504,8 +513,10 @@ bool GraphicsContextGLANGLE::makeContextCurrent()
         return false;
     // If there is no drawing buffer, we failed to allocate one during preparing for display.
     // The exception is the case when the context is used before reshaping.
+#if HAVE(IOSURFACE)
     if (!m_displayBufferBacking && !getInternalFramebufferSize().isEmpty())
         return false;
+#endif
     if (currentContext == this)
         return true;
     // Calling MakeCurrent is important to set volatile platform context. See initializeEGLDisplay().
@@ -554,6 +565,7 @@ bool GraphicsContextGLCocoa::reshapeDisplayBufferBacking()
 {
     ASSERT(!getInternalFramebufferSize().isEmpty());
     // Reset the current backbuffer now before allocating a new one in order to slightly reduce memory pressure.
+#if HAVE(IOSURFACE)
     if (m_displayBufferBacking) {
         m_displayBufferBacking.reset();
         EGL_ReleaseTexImage(m_displayObj, m_displayBufferPbuffer, EGL_BACK_BUFFER);
@@ -565,6 +577,7 @@ bool GraphicsContextGLCocoa::reshapeDisplayBufferBacking()
     if (recycledBuffer.handle)
         EGL_DestroySurface(m_displayObj, recycledBuffer.handle);
     recycledBuffer.surface.reset();
+#endif
     return allocateAndBindDisplayBufferBacking();
 }
 
@@ -582,6 +595,7 @@ void GraphicsContextGLCocoa::setDrawingBufferColorSpace(const DestinationColorSp
 
 bool GraphicsContextGLCocoa::allocateAndBindDisplayBufferBacking()
 {
+#if HAVE(IOSURFACE)
     ASSERT(!getInternalFramebufferSize().isEmpty());
     auto backing = IOSurface::create(nullptr, getInternalFramebufferSize(), m_drawingBufferColorSpace, IOSurface::Name::GraphicsContextGL);
     if (!backing)
@@ -607,8 +621,12 @@ bool GraphicsContextGLCocoa::allocateAndBindDisplayBufferBacking()
     if (!pbuffer)
         return false;
     return bindDisplayBufferBacking(WTFMove(backing), pbuffer);
+#else
+    return false;
+#endif
 }
 
+#if HAVE(IOSURFACE)
 bool GraphicsContextGLCocoa::bindDisplayBufferBacking(std::unique_ptr<IOSurface> backing, void* pbuffer)
 {
     GCGLenum textureTarget = drawingBufferTextureTarget();
@@ -622,6 +640,7 @@ bool GraphicsContextGLCocoa::bindDisplayBufferBacking(std::unique_ptr<IOSurface>
     m_displayBufferBacking = WTFMove(backing);
     return true;
 }
+#endif
 
 bool GraphicsContextGLANGLE::makeCurrent(GCGLDisplay display, GCGLContext context)
 {
@@ -629,6 +648,7 @@ bool GraphicsContextGLANGLE::makeCurrent(GCGLDisplay display, GCGLContext contex
     return EGL_MakeCurrent(display, EGL_NO_SURFACE, EGL_NO_SURFACE, context);
 }
 
+#if HAVE(IOSURFACE)
 void* GraphicsContextGLCocoa::createPbufferAndAttachIOSurface(GCGLenum target, PbufferAttachmentUsage usage, GCGLenum internalFormat, GCGLsizei width, GCGLsizei height, GCGLenum type, IOSurfaceRef surface, GCGLuint plane)
 {
     if (target != GraphicsContextGLANGLE::drawingBufferTextureTarget()) {
@@ -651,6 +671,7 @@ void GraphicsContextGLCocoa::destroyPbufferAndDetachIOSurface(void* handle)
 {
     CyberCore::destroyPbufferAndDetachIOSurface(m_displayObj, handle);
 }
+#endif
 
 #if !PLATFORM(IOS_FAMILY_SIMULATOR) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
 GraphicsContextGLCocoa::IOSurfaceTextureAttachment GraphicsContextGLCocoa::attachIOSurfaceToSharedTexture(GCGLenum target, IOSurface* surface)
@@ -759,13 +780,16 @@ void GraphicsContextGLCocoa::prepareForDisplay()
     // The IOSurface will be used from other graphics subsystem, so flush GL commands.
     GL_Flush();
 
+#if HAVE(IOSURFACE)
     auto recycledBuffer = m_swapChain.recycleBuffer();
 
     EGL_ReleaseTexImage(m_displayObj, m_displayBufferPbuffer, EGL_BACK_BUFFER);
     m_swapChain.present({ WTFMove(m_displayBufferBacking), m_displayBufferPbuffer });
     m_displayBufferPbuffer = EGL_NO_SURFACE;
+#endif
 
     bool hasNewBacking = false;
+#if HAVE(IOSURFACE)
     if (recycledBuffer.surface && recycledBuffer.surface->size() == getInternalFramebufferSize() && recycledBuffer.surface->colorSpace() == m_drawingBufferColorSpace) {
         hasNewBacking = bindDisplayBufferBacking(WTFMove(recycledBuffer.surface), recycledBuffer.handle);
         recycledBuffer.handle = nullptr;
@@ -773,6 +797,7 @@ void GraphicsContextGLCocoa::prepareForDisplay()
     recycledBuffer.surface.reset();
     if (recycledBuffer.handle)
         EGL_DestroySurface(m_displayObj, recycledBuffer.handle);
+#endif
 
     // Error will be handled by next call to makeContextCurrent() which will notice lack of display buffer.
     if (!hasNewBacking)
@@ -798,6 +823,7 @@ GraphicsContextGLCV* GraphicsContextGLCocoa::asCV()
 
 RefPtr<PixelBuffer> GraphicsContextGLANGLE::readCompositedResults()
 {
+#if HAVE(IOSURFACE)
     auto& displayBuffer = m_swapChain.displayBuffer();
     if (!displayBuffer.surface || !displayBuffer.handle)
         return nullptr;
@@ -825,11 +851,15 @@ RefPtr<PixelBuffer> GraphicsContextGLANGLE::readCompositedResults()
     EGLBoolean releaseOk = EGL_ReleaseTexImage(m_displayObj, displayBuffer.handle, EGL_BACK_BUFFER);
     ASSERT_UNUSED(releaseOk, releaseOk);
     return result;
+#else
+    return nullptr;
+#endif
 }
 
 #if ENABLE(MEDIA_STREAM) || ENABLE(WEB_CODECS)
 RefPtr<VideoFrame> GraphicsContextGLCocoa::paintCompositedResultsToVideoFrame()
 {
+#if HAVE(IOSURFACE)
     auto &displayBuffer = m_swapChain.displayBuffer();
     if (!displayBuffer.surface || !displayBuffer.handle)
         return nullptr;
@@ -849,6 +879,9 @@ RefPtr<VideoFrame> GraphicsContextGLCocoa::paintCompositedResultsToVideoFrame()
     if (m_resourceOwner)
         setOwnershipIdentityForCVPixelBuffer(mediaSamplePixelBuffer.get(), m_resourceOwner);
     return VideoFrameCV::create({ }, false, VideoFrame::Rotation::None, WTFMove(mediaSamplePixelBuffer));
+#else
+    return nullptr;
+#endif
 }
 #endif
 
@@ -891,7 +924,7 @@ void GraphicsContextGLCocoa::withDrawingBufferAsNativeImage(Function<void(Native
 {
     if (!makeContextCurrent())
         return;
-
+#if HAVE(IOSURFACE)
     if (!m_displayBufferBacking
         || m_displayBufferBacking->size() != getInternalFramebufferSize())
         return;
@@ -926,10 +959,14 @@ void GraphicsContextGLCocoa::withDrawingBufferAsNativeImage(Function<void(Native
 
     CGImageSetCachingFlags(drawingImage->platformImage().get(), kCGImageCachingTransient);
     func(*drawingImage);
+#else
+    UNUSED_PARAM(func);
+#endif
 }
 
 void GraphicsContextGLCocoa::withDisplayBufferAsNativeImage(Function<void(NativeImage&)> func)
 {
+#if HAVE(IOSURFACE)
     auto& displayBuffer = m_swapChain.displayBuffer();
     if (!displayBuffer.surface || !displayBuffer.handle)
         return;
@@ -962,6 +999,9 @@ void GraphicsContextGLCocoa::withDisplayBufferAsNativeImage(Function<void(Native
 
     CGImageSetCachingFlags(displayImage->platformImage().get(), kCGImageCachingTransient);
     func(*displayImage);
+#else
+    UNUSED_PARAM(func);
+#endif
 }
 
 }

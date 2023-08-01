@@ -990,7 +990,7 @@ int indexForVisiblePosition(const VisiblePosition& visiblePosition, RefPtr<Conta
     }
 
     auto range = *makeSimpleRange(makeBoundaryPointBeforeNodeContents(*scope), position);
-    return characterCount(range, TextIteratorBehavior::EmitsCharactersBetweenAllVisiblePositions);
+    return (int)characterCount(range, TextIteratorBehavior::EmitsCharactersBetweenAllVisiblePositions);
 }
 
 // FIXME: Merge this function with the one above.
@@ -1000,7 +1000,7 @@ int indexForVisiblePosition(Node& node, const VisiblePosition& visiblePosition, 
         return 0;
 
     auto range = makeSimpleRange(makeBoundaryPointBeforeNodeContents(node), visiblePosition);
-    return range ? characterCount(*range, behaviors) : 0;
+    return range ? (int)characterCount(*range, behaviors) : 0;
 }
 
 VisiblePosition visiblePositionForPositionWithOffset(const VisiblePosition& position, int offset)

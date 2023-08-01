@@ -1836,7 +1836,8 @@ std::ptrdiff_t distanceBetweenPositions(const VisiblePosition& a, const VisibleP
 {
     if (a.isNull() || b.isNull())
         return 0;
-    return a < b ? -characterCount(*makeSimpleRange(a, b)) : characterCount(*makeSimpleRange(b, a));
+    uint64_t ret = a < b ? -characterCount(*makeSimpleRange(a, b)) : characterCount(*makeSimpleRange(b, a));
+    return static_cast<std::ptrdiff_t>(ret);
 }
 
 void charactersAroundPosition(const VisiblePosition& position, UChar32& oneAfter, UChar32& oneBefore, UChar32& twoBefore)

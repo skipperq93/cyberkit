@@ -128,7 +128,7 @@ static size_t appendActionBytecodeSize(uint64_t action)
     auto flags = static_cast<ResourceFlags>((action & ActionFlagMask) >> 32);
     return sizeof(DFABytecodeInstruction)
         + (flags ? toSizeT(bytecodeFlagsSize(flags)) : 0)
-        + toSizeT(bytecodeActionSize(action));
+        + toSizeT(bytecodeActionSize((uint32_t)action));
 }
 
 static void appendVariableLengthUnsignedInteger(Vector<DFABytecode>& bytecode, uint32_t integer)
@@ -144,7 +144,7 @@ static void appendVariableLengthUnsignedInteger(Vector<DFABytecode>& bytecode, u
 
 void DFABytecodeCompiler::emitAppendAction(uint64_t action)
 {
-    uint32_t actionWithoutFlags = action;
+    uint32_t actionWithoutFlags = (uint32_t)action;
     auto actionSize = bytecodeActionSize(actionWithoutFlags);
     
     // High bits are used to store flags. See compileRuleList.

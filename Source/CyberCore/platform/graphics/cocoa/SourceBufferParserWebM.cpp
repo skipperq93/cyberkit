@@ -1032,7 +1032,7 @@ webm::Status WebMParser::TrackData::readFrameData(webm::Reader& reader, const we
 
     while (*bytesRemaining) {
         uint64_t bytesRead;
-        auto status = static_cast<WebMParser::SegmentReader&>(reader).ReadInto(*bytesRemaining, m_currentBlockBuffer, &bytesRead);
+        auto status = static_cast<WebMParser::SegmentReader&>(reader).ReadInto((size_t)*bytesRemaining, m_currentBlockBuffer, &bytesRead);
         *bytesRemaining -= bytesRead;
         m_partialBytesRead += bytesRead;
 
@@ -1046,7 +1046,7 @@ webm::Status WebMParser::TrackData::readFrameData(webm::Reader& reader, const we
 
     m_completeBlockBuffer = m_currentBlockBuffer.take();
     if (m_useByteRange)
-        m_completeFrameData = MediaSample::ByteRange { metadata.position, metadata.size };
+        m_completeFrameData = MediaSample::ByteRange { (size_t)metadata.position, (size_t)metadata.size };
     else
         m_completeFrameData = Ref { *m_completeBlockBuffer };
 
@@ -1078,7 +1078,7 @@ webm::Status WebMParser::VideoTrackData::consumeFrameData(webm::Reader& reader, 
         return status;
 
     constexpr size_t maxHeaderSize = 32; // The maximum length of a VP9 uncompressed header is 144 bits and 11 bytes for VP8. Round high.
-    size_t segmentHeaderLength = std::min<size_t>(maxHeaderSize, metadata.size);
+    size_t segmentHeaderLength = std::min<size_t>(maxHeaderSize, (size_t)metadata.size);
     auto contiguousBuffer = contiguousCompleteBlockBuffer(0, segmentHeaderLength);
     if (!contiguousBuffer) {
         PARSER_LOG_ERROR_IF_POSSIBLE("VideoTrackData::consumeFrameData failed to create contiguous data block");

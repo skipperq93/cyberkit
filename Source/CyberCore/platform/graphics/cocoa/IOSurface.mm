@@ -46,6 +46,8 @@
 #import "CoreVideoSoftLink.h"
 #import <pal/cg/CoreGraphicsSoftLink.h>
 
+#if HAVE(IOSURFACE)
+
 namespace CyberCore {
 
 static auto surfaceNameToNSString(IOSurface::Name name)
@@ -726,3 +728,5 @@ TextStream& operator<<(TextStream& ts, const IOSurface& surface)
 }
 
 } // namespace CyberCore
+
+#endif

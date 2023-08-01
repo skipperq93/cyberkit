@@ -242,7 +242,7 @@ size_t CryptoAlgorithmAES_CTR::CounterBlockHelper::countToOverflowSaturating() c
     }
 
     static_assert(sizeof(size_t) <= sizeof(uint64_t));
-    return countMinusOne.m_lo + 1;
+    return (size_t)(countMinusOne.m_lo + 1);
 }
 
 Vector<uint8_t> CryptoAlgorithmAES_CTR::CounterBlockHelper::counterVectorAfterOverflow() const

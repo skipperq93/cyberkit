@@ -58,8 +58,8 @@ struct TextMarkerData {
         unsigned charStart = 0, unsigned charOffset = 0, bool ignoredParam = false)
     {
         memset(static_cast<void*>(this), 0, sizeof(*this));
-        treeID = axTreeID.toUInt64();
-        objectID = axObjectID.toUInt64();
+        treeID = (unsigned)axTreeID.toUInt64();
+        objectID = (unsigned)axObjectID.toUInt64();
         node = nodeParam;
         offset = offsetParam;
         anchorType = anchorTypeParam;

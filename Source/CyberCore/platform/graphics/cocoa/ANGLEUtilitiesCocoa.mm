@@ -30,7 +30,9 @@
 #include "ANGLEHeaders.h"
 #include "ANGLEUtilities.h"
 #include "Logging.h"
+#if HAVE(IOSURFACE)
 #include <Metal/Metal.h>
+#endif
 #include <pal/spi/cocoa/MetalSPI.h>
 #include <wtf/darwin/WeakLinking.h>
 
@@ -45,6 +47,7 @@ bool platformIsANGLEAvailable()
     return EGL_Initialize != NULL; // NOLINT
 }
 
+#if HAVE(IOSURFACE)
 void* createPbufferAndAttachIOSurface(GCGLDisplay display, GCGLConfig config, GCGLenum target, GCGLint usageHint, GCGLenum internalFormat, GCGLsizei width, GCGLsizei height, GCGLenum type, IOSurfaceRef surface, GCGLuint plane)
 {
     auto eglTextureTarget = target == GL_TEXTURE_RECTANGLE_ANGLE ? EGL_TEXTURE_RECTANGLE_ANGLE : EGL_TEXTURE_2D;
@@ -93,7 +96,7 @@ RetainPtr<MTLSharedEvent> newSharedEventWithMachPort(EGLDisplay display, mach_po
 
     return adoptNS([(id<MTLDeviceSPI>)mtlDevice newSharedEventWithMachPort:machPort]);
 }
-
+#endif
 }
 
 #endif

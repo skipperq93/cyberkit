@@ -239,12 +239,18 @@ const DestinationColorSpace& GraphicsContextCG::colorSpace() const
     RetainPtr<CGColorSpaceRef> colorSpace;
 
     // FIXME: Need to handle kCGContextTypePDF.
-    if (CGContextGetType(context) == kCGContextTypeIOSurface)
-        colorSpace = CGIOSurfaceContextGetColorSpace(context);
-    else if (CGContextGetType(context) == kCGContextTypeBitmap)
-        colorSpace = CGBitmapContextGetColorSpace(context);
-    else
-        colorSpace = adoptCF(CGContextCopyDeviceColorSpace(context));
+    switch (CGContextGetType(context)) {
+#if HAVE(IOSURFACE)
+        case kCGContextTypeIOSurface:
+            colorSpace = CGIOSurfaceContextGetColorSpace(context);
+            break;
+#endif
+        case kCGContextTypeBitmap:
+            colorSpace = CGBitmapContextGetColorSpace(context);
+            break;
+        default:
+            colorSpace = adoptCF(CGContextCopyDeviceColorSpace(context));
+    }
 
     // FIXME: Need to ASSERT(colorSpace). For now fall back to sRGB if colorSpace is nil.
     m_colorSpace = colorSpace ? DestinationColorSpace(colorSpace) : DestinationColorSpace::SRGB();

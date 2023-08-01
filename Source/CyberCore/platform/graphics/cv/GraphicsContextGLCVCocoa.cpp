@@ -144,6 +144,8 @@ enum class TransferFunctionCV {
     kITU_R_2020,
 };
 
+// These functions are unused without IOSurface
+#if HAVE(IOSURFACE)
 static PixelRange pixelRangeFromPixelFormat(OSType pixelFormat)
 {
     switch (pixelFormat) {
@@ -192,6 +194,7 @@ static TransferFunctionCV transferFunctionFromString(CFStringRef string)
         return TransferFunctionCV::kITU_R_2020;
     return TransferFunctionCV::Unknown;
 }
+#endif
 
 struct GLfloatColor {
     union {
@@ -320,6 +323,8 @@ constexpr GLfloatColor YCbCrMatrix::operator*(const GLfloatColor& color) const
     );
 }
 
+// This function is unused without IOSurface
+#if HAVE(IOSURFACE)
 static const GLfloat* YCbCrToRGBMatrixForRangeAndTransferFunction(PixelRange range, TransferFunctionCV transferFunction)
 {
     using MapKey = std::pair<PixelRange, TransferFunctionCV>;
@@ -445,6 +450,7 @@ static const GLfloat* YCbCrToRGBMatrixForRangeAndTransferFunction(PixelRange ran
     ASSERT(iterator != matrices.get().end());
     return iterator->second;
 }
+#endif
 
 inline bool GraphicsContextGLCVCocoa::TextureContent::operator==(const TextureContent& other) const
 {
@@ -613,6 +619,7 @@ bool GraphicsContextGLCVCocoa::copyVideoSampleToTexture(const VideoFrameCV& vide
     if (!surface)
         return false;
 
+#if HAVE(IOSURFACE)
     auto orientation = videoFrame.orientation();
     TextureContent content { reinterpret_cast<intptr_t>(surface), IOSurfaceGetSeed(surface), level, internalFormat, format, type, unpackFlipY, orientation };
     auto it = m_knownContent.find(outputTexture);
@@ -621,6 +628,7 @@ bool GraphicsContextGLCVCocoa::copyVideoSampleToTexture(const VideoFrameCV& vide
         // image hasn't been modified since the last time it was copied, this is a no-op.
         return true;
     }
+#endif
     if (!m_context || !GraphicsContextGLCocoa::makeCurrent(m_display, m_context))
         return false;
 
@@ -701,6 +709,7 @@ bool GraphicsContextGLCVCocoa::copyVideoSampleToTexture(const VideoFrameCV& vide
     GL_BindTexture(GL_TEXTURE_2D, 0);
 
     // Bind and set up the textures for the video source.
+#if HAVE(IOSURFACE)
     auto yPlaneWidth = IOSurfaceGetWidthOfPlane(surface, 0);
     auto yPlaneHeight = IOSurfaceGetHeightOfPlane(surface, 0);
     auto uvPlaneWidth = IOSurfaceGetWidthOfPlane(surface, 1);
@@ -764,6 +773,10 @@ bool GraphicsContextGLCVCocoa::copyVideoSampleToTexture(const VideoFrameCV& vide
     m_knownContent.set(outputTexture, content);
     autoClearTextureOnError.release();
     return true;
+#else
+    UNUSED_PARAM(flipX);
+    return false;
+#endif
 }
 
 void GraphicsContextGLCVCocoa::invalidateKnownTextureContent(GCGLuint texture)

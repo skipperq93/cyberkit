@@ -438,7 +438,7 @@ protected:
     GCGLContext m_contextObj { nullptr };
     GCGLConfig m_configObj { nullptr };
 
-#if PLATFORM(COCOA)
+#if PLATFORM(COCOA) && HAVE(IOSURFACE)
     // FIXME: Move these to GraphicsContextGLCocoa.
     GraphicsContextGLIOSurfaceSwapChain m_swapChain;
     // Backing store for the the buffer which is eventually used for display.

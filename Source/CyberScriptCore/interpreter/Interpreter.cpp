@@ -203,7 +203,7 @@ unsigned sizeOfVarargs(JSGlobalObject* globalObject, JSValue arguments, uint32_t
         length = jsCast<ScopedArguments*>(cell)->length(globalObject);
         break;
     case ClonedArgumentsType:
-        length = jsCast<ClonedArguments*>(cell)->length(globalObject);
+        length = (unsigned int)jsCast<ClonedArguments*>(cell)->length(globalObject);
         break;
     case JSImmutableButterflyType:
         length = jsCast<JSImmutableButterfly*>(cell)->length();

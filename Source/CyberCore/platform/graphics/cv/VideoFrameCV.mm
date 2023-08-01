@@ -195,7 +195,7 @@ static void copyPlane(uint8_t* destination, const uint8_t* source, uint64_t sour
     uint64_t destinationOffset = spanPlaneLayout.destinationOffset;
     uint64_t rowBytes = spanPlaneLayout.sourceWidthBytes;
     for (size_t cptr = 0; cptr < spanPlaneLayout.sourceHeight; ++cptr) {
-        copyRow(destination + destinationOffset, source + sourceOffset, rowBytes);
+        copyRow(destination + destinationOffset, source + sourceOffset, static_cast<unsigned long>(rowBytes));
         sourceOffset += sourceStride;
         destinationOffset += spanPlaneLayout.destinationStride;
     }

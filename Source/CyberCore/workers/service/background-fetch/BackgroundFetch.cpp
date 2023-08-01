@@ -278,7 +278,7 @@ void BackgroundFetch::Record::complete(const CreateLoaderCallback& createLoaderC
 {
     ASSERT(!m_loader);
 
-    m_loader = createLoaderCallback(*this, m_request, m_responseDataSize, m_fetch->m_origin);
+    m_loader = createLoaderCallback(*this, m_request, (unsigned long)m_responseDataSize, m_fetch->m_origin);
     if (!m_loader)
         abort();
 }
@@ -356,7 +356,7 @@ void BackgroundFetch::Record::didReceiveResponse(ResourceResponse&& response)
 {
     bool shouldClearResponseBody = false;
     if (response.httpStatusCode() == 206) {
-        if (!validatePartialResponse(m_responseDataSize, response, m_response)) {
+        if (!validatePartialResponse((size_t)m_responseDataSize, response, m_response)) {
             didFinish(ResourceError { String { }, 0, response.url(), "Validation of partial response failed"_s, ResourceError::Type::AccessControl });
             return;
         }
@@ -549,7 +549,7 @@ std::unique_ptr<BackgroundFetch> BackgroundFetch::createFromStore(Span<const uin
         return nullptr;
 
     Vector<Ref<Record>> records;
-    records.reserveInitialCapacity(*recordSize);
+    records.reserveInitialCapacity((size_t)*recordSize);
 
     for (uint64_t index = 0; index < *recordSize; ++index) {
         std::optional<CyberCore::ResourceRequest> internalRequest;
@@ -590,7 +590,7 @@ std::unique_ptr<BackgroundFetch> BackgroundFetch::createFromStore(Span<const uin
         if (!isCompleted)
             return nullptr;
 
-        auto record = Record::create(*fetch, { WTFMove(*internalRequest), WTFMove(options), *requestHeadersGuard, WTFMove(*httpHeaders), WTFMove(*referrer), WTFMove(*responseHeaders) }, index);
+        auto record = Record::create(*fetch, { WTFMove(*internalRequest), WTFMove(options), *requestHeadersGuard, WTFMove(*httpHeaders), WTFMove(*referrer), WTFMove(*responseHeaders) }, (size_t)index);
         if (*isCompleted)
             record->setAsCompleted();
         records.uncheckedAppend(WTFMove(record));

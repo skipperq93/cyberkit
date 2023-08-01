@@ -26,6 +26,7 @@
 #include "config.h"
 #include "GraphicsContextGLIOSurfaceSwapChain.h"
 
+#if HAVE(IOSURFACE)
 #if ENABLE(WEBGL) && PLATFORM(COCOA)
 
 namespace CyberCore {
@@ -70,4 +71,5 @@ void GraphicsContextGLIOSurfaceSwapChain::present(Buffer&& buffer)
 
 }
 
+#endif
 #endif

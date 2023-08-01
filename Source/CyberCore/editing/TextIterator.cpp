@@ -2473,8 +2473,8 @@ SimpleRange resolveCharacterRange(const SimpleRange& scope, CharacterRange range
         auto boundary = [&] (uint64_t targetLocation) -> BoundaryPoint {
             if (is<Text>(textRunRange.start.container)) {
                 ASSERT(targetLocation - location <= downcast<Text>(textRunRange.start.container.get()).length());
-                unsigned offset = textRunRange.start.offset + targetLocation - location;
-                return { textRunRange.start.container.copyRef(), offset };
+                uint64_t offset = textRunRange.start.offset + targetLocation - location;
+                return { textRunRange.start.container.copyRef(), (unsigned)offset };
             }
             return targetLocation == location ? textRunRange.start : textRunRange.end;
         };
@@ -2582,12 +2582,12 @@ static SimpleRange rangeForMatch(const SimpleRange& range, FindOptions options, 
 
     CharacterIterator it(range, findIteratorOptions(options));
 
-    it.advance(match.location);
+    it.advance((int)match.location);
     if (it.atEnd())
         return noMatchResult();
     auto start = it.range().start;
 
-    it.advance(match.length - 1);
+    it.advance((int)(match.length - 1));
     if (it.atEnd())
         return noMatchResult();
 

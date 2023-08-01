@@ -111,7 +111,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)callbackWithTranscriptions:(NSArray<SFTranscription *> *)transcriptions isFinal:(BOOL)isFinal
 {
     Vector<CyberCore::SpeechRecognitionAlternativeData> alternatives;
-    alternatives.reserveInitialCapacity(_maxAlternatives);
+    alternatives.reserveInitialCapacity((unsigned long)_maxAlternatives);
     for (SFTranscription* transcription in transcriptions) {
         // FIXME: <rdar://73629573> get confidence of SFTranscription when possible.
         double maxConfidence = 0.0;

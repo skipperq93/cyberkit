@@ -26,7 +26,9 @@
 #import "config.h"
 #import "GPUPrewarming.h"
 
+#if PLATFORM(MAC)
 #import <Metal/Metal.h>
+#endif
 
 namespace CyberCore {
 

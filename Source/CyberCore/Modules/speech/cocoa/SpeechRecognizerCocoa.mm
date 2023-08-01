@@ -48,7 +48,13 @@ void SpeechRecognizer::dataCaptured(const MediaTime&, const PlatformAudioData& d
 bool SpeechRecognizer::startRecognition(bool mockSpeechRecognitionEnabled, SpeechRecognitionConnectionClientIdentifier identifier, const String& localeIdentifier, bool continuous, bool interimResults, uint64_t alternatives)
 {
     auto taskClass = mockSpeechRecognitionEnabled ? [WebSpeechRecognizerTaskMock class] : [WebSpeechRecognizerTask class];
-    m_task = adoptNS([[taskClass alloc] initWithIdentifier:identifier locale:localeIdentifier doMultipleRecognitions:continuous reportInterimResults:interimResults maxAlternatives:alternatives delegateCallback:[weakThis = WeakPtr { *this }](const CyberCore::SpeechRecognitionUpdate& update) {
+    m_task = adoptNS([[taskClass alloc]
+                      initWithIdentifier:identifier
+                      locale:localeIdentifier
+                      doMultipleRecognitions:continuous
+                      reportInterimResults:interimResults
+                      maxAlternatives:(unsigned long)alternatives
+                      delegateCallback:[weakThis = WeakPtr { *this }](const CyberCore::SpeechRecognitionUpdate& update) {
         if (weakThis)
             weakThis->m_delegateCallback(update);
     }]);

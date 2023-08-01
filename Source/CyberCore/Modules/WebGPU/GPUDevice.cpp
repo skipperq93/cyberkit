@@ -134,7 +134,7 @@ Ref<GPUBuffer> GPUDevice::createBuffer(const GPUBufferDescriptor& bufferDescript
     auto bufferSize = bufferDescriptor.size;
     auto usage = bufferDescriptor.usage;
     auto mappedAtCreation = bufferDescriptor.mappedAtCreation;
-    return GPUBuffer::create(m_backing->createBuffer(bufferDescriptor.convertToBacking()), bufferSize, usage, mappedAtCreation);
+    return GPUBuffer::create(m_backing->createBuffer(bufferDescriptor.convertToBacking()), (size_t)bufferSize, usage, mappedAtCreation);
 }
 
 Ref<GPUTexture> GPUDevice::createTexture(const GPUTextureDescriptor& textureDescriptor)

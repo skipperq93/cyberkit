@@ -183,7 +183,7 @@ int LibWebRTCVPXInternalVideoEncoder::initialize(LibWebRTCVPXVideoEncoder::Type 
     m_isInitialized = true;
 
     webrtc::VideoBitrateAllocation allocation;
-    allocation.SetBitrate(0, 0, config.bitRate ? config.bitRate : 3 * config.width * config.height);
+    allocation.SetBitrate(0, 0, config.bitRate ? (unsigned)config.bitRate : static_cast<unsigned>(3 * config.width * config.height));
     m_internalEncoder->SetRates({ allocation, config.frameRate ? config.frameRate : 30.0 });
 
     m_internalEncoder->RegisterEncodeCompleteCallback(this);
@@ -204,7 +204,7 @@ void LibWebRTCVPXInternalVideoEncoder::encode(VideoEncoder::RawFrame&& rawFrame,
     auto frameBuffer = webrtc::pixelBufferToFrame(rawFrame.frame->pixelBuffer());
 
     if (m_width != static_cast<size_t>(frameBuffer->width()) || m_height != static_cast<size_t>(frameBuffer->height()))
-        frameBuffer = frameBuffer->Scale(m_width, m_height);
+        frameBuffer = frameBuffer->Scale((int)m_width, (int)m_height);
 
     webrtc::VideoFrame frame { frameBuffer, webrtc::kVideoRotation_0, rawFrame.timestamp };
     auto error = m_internalEncoder->Encode(frame, &frameTypes);

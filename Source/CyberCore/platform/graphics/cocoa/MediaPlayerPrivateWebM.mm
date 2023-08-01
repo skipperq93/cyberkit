@@ -414,10 +414,12 @@ bool MediaPlayerPrivateWebM::updateLastPixelBuffer()
 
     m_lastPixelBuffer = WTFMove(newPixelBuffer);
 
+#if HAVE(IOSURFACE)
     if (m_resourceOwner) {
         if (auto surface = CVPixelBufferGetIOSurface(m_lastPixelBuffer.get()))
             IOSurface::setOwnershipIdentity(surface, m_resourceOwner);
     }
+#endif
 
     return true;
 }
@@ -1122,10 +1124,10 @@ void MediaPlayerPrivateWebM::append(SharedBuffer& buffer)
         weakThis->didParseInitializationData(WTFMove(segment));
     });
 
-    m_parser->setDidEncounterErrorDuringParsingCallback([weakThis = WeakPtr { *this }, abortCalled = m_abortCalled.load()] (int32_t errorCode) {
+    m_parser->setDidEncounterErrorDuringParsingCallback([weakThis = WeakPtr { *this }, abortCalled = m_abortCalled.load()] (uint64_t errorCode) {
         if (!weakThis || abortCalled != weakThis->m_abortCalled)
             return;
-        weakThis->didEncounterErrorDuringParsing(errorCode);
+        weakThis->didEncounterErrorDuringParsing((int)errorCode);
     });
 
     m_parser->setDidProvideMediaDataCallback([weakThis = WeakPtr { *this }, abortCalled = m_abortCalled.load()] (Ref<MediaSampleAVFObjC>&& sample, uint64_t trackId, const String& mediaType) {
@@ -1491,7 +1493,7 @@ void MediaPlayerPrivateWebM::checkNewVideoFrameMetadata(CMTime currentTime)
     VideoFrameMetadata metadata;
     metadata.width = m_naturalSize.width();
     metadata.height = m_naturalSize.height();
-    metadata.presentedFrames = ++m_sampleCount;
+    metadata.presentedFrames = static_cast<unsigned>(++m_sampleCount);
     metadata.presentationTime = PAL::CMTimeGetSeconds(currentTime);
 
     m_videoFrameMetadata = metadata;

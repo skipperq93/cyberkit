@@ -1700,7 +1700,7 @@ double MediaPlayerPrivateAVFoundationObjC::effectiveRate() const
 
 double MediaPlayerPrivateAVFoundationObjC::seekableTimeRangesLastModifiedTime() const
 {
-#if PLATFORM(MAC) || PLATFORM(IOS) || PLATFORM(MACCATALYST)
+#if PLATFORM(MAC) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000) || PLATFORM(MACCATALYST)
     if (!m_cachedSeekableTimeRangesLastModifiedTime)
         m_cachedSeekableTimeRangesLastModifiedTime = [m_avPlayerItem seekableTimeRangesLastModifiedTime];
     return *m_cachedSeekableTimeRangesLastModifiedTime;
@@ -2705,10 +2705,12 @@ bool MediaPlayerPrivateAVFoundationObjC::updateLastPixelBuffer()
     if (m_lastPixelBuffer && m_imageRotationSession)
         m_lastPixelBuffer = m_imageRotationSession->rotate(m_lastPixelBuffer.get());
 
+#if HAVE(IOSURFACE)
     if (m_resourceOwner && m_lastPixelBuffer) {
         if (auto surface = CVPixelBufferGetIOSurface(m_lastPixelBuffer.get()))
             IOSurface::setOwnershipIdentity(surface, m_resourceOwner);
     }
+#endif
 
     m_lastImage = nullptr;
     return true;
@@ -4029,7 +4031,11 @@ NSArray* playerKVOProperties()
         auto seekableTimeRanges = RetainPtr<NSArray> { newValue };
 
         m_backgroundQueue->dispatch([seekableTimeRanges = WTFMove(seekableTimeRanges), playerItem = RetainPtr<AVPlayerItem> { object }, queueTaskOnEventLoopWithPlayer] () mutable {
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
             auto seekableTimeRangesLastModifiedTime = [playerItem seekableTimeRangesLastModifiedTime];
+#else
+            auto seekableTimeRangesLastModifiedTime = 0;
+#endif
             auto liveUpdateInterval = [playerItem liveUpdateInterval];
             queueTaskOnEventLoopWithPlayer([seekableTimeRanges = WTFMove(seekableTimeRanges), seekableTimeRangesLastModifiedTime, liveUpdateInterval] (auto& player) mutable {
                 player.seekableTimeRangesDidChange(WTFMove(seekableTimeRanges), seekableTimeRangesLastModifiedTime, liveUpdateInterval);

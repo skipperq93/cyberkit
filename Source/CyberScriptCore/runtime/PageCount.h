@@ -74,14 +74,14 @@ public:
     static PageCount fromBytes(uint64_t bytes)
     {
         RELEASE_ASSERT(bytes % pageSize == 0);
-        uint32_t numPages = bytes / pageSize;
+        uint32_t numPages = (unsigned int)bytes / pageSize;
         RELEASE_ASSERT(PageCount::isValid(numPages));
         return PageCount(numPages);
     }
 
     static PageCount fromBytesWithRoundUp(uint64_t bytes)
     {
-        return fromBytes(roundUpToMultipleOf<pageSize>(bytes));
+        return fromBytes(roundUpToMultipleOf<pageSize>((unsigned long)bytes));
     }
 
     static PageCount max()

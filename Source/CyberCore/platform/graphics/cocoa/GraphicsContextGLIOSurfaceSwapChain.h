@@ -25,6 +25,7 @@
 
 #pragma once
 
+#if HAVE(IOSURFACE)
 #if ENABLE(WEBGL) && PLATFORM(COCOA)
 
 #include "IOSurface.h"
@@ -83,4 +84,5 @@ protected:
 
 }
 
+#endif
 #endif

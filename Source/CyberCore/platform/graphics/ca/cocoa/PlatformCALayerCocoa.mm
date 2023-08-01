@@ -794,7 +794,11 @@ void PlatformCALayerCocoa::setDelegatedContentsFinishedEvent(const PlatformCALay
 
 void PlatformCALayerCocoa::setDelegatedContents(const PlatformCALayerInProcessDelegatedContents& contents)
 {
+#if HAVE(IOSURFACE)
     setContents(contents.surface.asLayerContents());
+#else
+    UNUSED_PARAM(contents);
+#endif
     // FIXME: m_delegatedContentsFinishedIdentifier = contents.finishedIdentifier;
 }
 

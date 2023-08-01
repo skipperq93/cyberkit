@@ -39,7 +39,9 @@
 #include "RealtimeVideoUtilities.h"
 #include "Timer.h"
 #include "VideoFrame.h"
+#if HAVE(IOSURFACE)
 #include <IOSurface/IOSurfaceRef.h>
+#endif
 #include <pal/avfoundation/MediaTimeAVFoundation.h>
 #include <pal/spi/cf/CoreAudioSPI.h>
 #include <pal/spi/cg/CoreGraphicsSPI.h>
@@ -231,6 +233,7 @@ void DisplayCaptureSourceCocoa::updateFrameSize()
 
 void DisplayCaptureSourceCocoa::emitFrame()
 {
+#if HAVE(IOSURFACE)
     if (muted())
         return;
 
@@ -303,6 +306,7 @@ void DisplayCaptureSourceCocoa::emitFrame()
     VideoFrameTimeMetadata metadata;
     metadata.captureTime = MonotonicTime::now().secondsSinceEpoch();
     videoFrameAvailable(*videoFrame.get(), metadata);
+#endif
 }
 
 void DisplayCaptureSourceCocoa::capturerConfigurationChanged()

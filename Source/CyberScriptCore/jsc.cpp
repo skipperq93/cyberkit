@@ -3195,8 +3195,10 @@ int main(int argc, char** argv)
 
     // Let the kernel kill us when OOM
     {
+#if __has_include(<libproc.h>)
         int retval = proc_setpcontrol(PC_KILL);
         ASSERT_UNUSED(retval, !retval);
+#endif
     }
 #endif
 

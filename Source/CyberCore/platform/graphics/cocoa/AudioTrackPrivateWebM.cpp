@@ -82,7 +82,7 @@ AtomString AudioTrackPrivateWebM::language() const
 int AudioTrackPrivateWebM::trackIndex() const
 {
     if (m_track.track_number.is_present())
-        return m_track.track_number.value();
+        return (int)m_track.track_number.value();
     return 0;
 }
 

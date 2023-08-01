@@ -394,7 +394,7 @@ std::optional<size_t> AudioFileReader::decodeWebMData(AudioBufferList& bufferLis
             }
             totalDecodedFrames += numFrames;
             if (leadingTrim > 0) {
-                UInt32 toTrim = std::min(leadingTrim, numFrames);
+                UInt32 toTrim = std::min((UInt32)leadingTrim, numFrames);
                 for (UInt32 i = 0; i < outFormat.mChannelsPerFrame; i++)
                     memmove(decodedBufferList->mBuffers[i].mData, static_cast<float*>(decodedBufferList->mBuffers[i].mData) + toTrim, (numFrames - toTrim) * sizeof(float));
                 leadingTrim -= toTrim;
@@ -448,7 +448,7 @@ ssize_t AudioFileReader::numberOfFrames() const
             return -1;
         }
 
-        return numberOfFramesIn64;
+        return (ssize_t)numberOfFramesIn64;
     }
 #if ENABLE(MEDIA_SOURCE)
     if (m_webmData->m_samples.isEmpty()) {
@@ -486,7 +486,7 @@ ssize_t AudioFileReader::numberOfFrames() const
             numberOfFramesIn64 += fpp;
         }
     }
-    return numberOfFramesIn64;
+    return (ssize_t)numberOfFramesIn64;
 #else
     return 0;
 #endif

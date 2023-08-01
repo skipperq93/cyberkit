@@ -32,7 +32,9 @@
 OBJC_PROTOCOL(MTLSharedEvent);
 
 namespace CyberCore {
+#if HAVE(IOSURFACE)
 class IOSurface;
+#endif
 
 namespace Detail {
 enum PlatformCALayerDelegatedContentsIdentifier { };
@@ -54,7 +56,9 @@ struct PlatformCALayerDelegatedContents {
 
 struct PlatformCALayerInProcessDelegatedContents {
     using FinishedIdentifier = PlatformCALayerDelegatedContents::FinishedIdentifier;
-    const CyberCore::IOSurface& surface; 
+#if HAVE(IOSURFACE)
+    const CyberCore::IOSurface& surface;
+#endif
     FinishedIdentifier finishedIdentifier;
 };
 

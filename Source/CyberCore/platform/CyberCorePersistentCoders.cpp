@@ -364,7 +364,7 @@ static std::optional<RetainPtr<CFDataRef>> decodeCFData(Decoder& decoder)
     if (!pointer)
         return std::nullopt;
 
-    return adoptCF(CFDataCreate(nullptr, pointer, *size));
+    return adoptCF(CFDataCreate(nullptr, pointer, (CFIndex)*size));
 }
 
 static void encodeSecTrustRef(Encoder& encoder, SecTrustRef trust)

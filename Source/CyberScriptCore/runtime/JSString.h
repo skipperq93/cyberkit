@@ -1033,9 +1033,9 @@ ALWAYS_INLINE JSString* jsStringWithCache(VM& vm, const String& s)
     if (!length)
         return jsEmptyString(vm);
 
-    auto& stringImpl = *s.impl();
+    WTF::StringImpl& stringImpl = *s.impl();
     if (length == 1) {
-        if (auto c = stringImpl[0]; c <= maxSingleCharacterString)
+        if (auto c = stringImpl[0u]; c <= maxSingleCharacterString)
             return vm.smallStrings.singleCharacterString(c);
     }
 

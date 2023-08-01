@@ -28,7 +28,7 @@
 #import <Metal/MTLTexture_Private.h>
 #import <Metal/MetalPrivate.h>
 
-#else
+#elif HAVE(IOSURFACE)
 
 #import <Foundation/NSObject.h>
 

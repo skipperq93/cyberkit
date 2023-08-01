@@ -78,7 +78,7 @@ Vector<MachSendRight> CompositorIntegrationImpl::recreateRenderBuffers(int width
         CFDictionaryAddValue(options.get(), kIOSurfaceBytesPerElement, toCFNumber(bytesPerElement).get());
         CFDictionaryAddValue(options.get(), kIOSurfaceBytesPerRow, toCFNumber(bytesPerRow).get());
         CFDictionaryAddValue(options.get(), kIOSurfaceAllocSize, toCFNumber(totalBytes).get());
-#if PLATFORM(IOS_FAMILY)
+#if PLATFORM(IOS_FAMILY) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000)
         CFDictionaryAddValue(options.get(), kIOSurfaceCacheMode, toCFNumber(kIOMapWriteCombineCache).get());
 #endif
         CFDictionaryAddValue(options.get(), kIOSurfaceElementHeight, toCFNumber(1).get());

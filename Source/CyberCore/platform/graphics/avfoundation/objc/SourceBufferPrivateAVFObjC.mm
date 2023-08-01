@@ -588,11 +588,11 @@ void SourceBufferPrivateAVFObjC::appendInternal(Ref<SharedBuffer>&& data)
         weakThis->didParseInitializationData(WTFMove(segment));
     });
 
-    m_parser->setDidEncounterErrorDuringParsingCallback([weakThis = WeakPtr { *this }] (int32_t errorCode) {
+    m_parser->setDidEncounterErrorDuringParsingCallback([weakThis = WeakPtr { *this }] (uint64_t errorCode) {
         ASSERT(isMainThread());
         if (!weakThis)
             return;
-        weakThis->didEncounterErrorDuringParsing(errorCode);
+        weakThis->didEncounterErrorDuringParsing((int)errorCode);
     });
 
     m_parser->setDidProvideMediaDataCallback([weakThis = WeakPtr { *this }] (Ref<MediaSampleAVFObjC>&& sample, uint64_t trackId, const String& mediaType) {

@@ -261,7 +261,7 @@ RTCRtpSFrameTransformer::TransformResult RTCRtpSFrameTransformer::decryptFrame(S
 
     // Compute signature
     auto* transmittedSignature = frameData + frameSize - m_authenticationSize;
-    auto signature = computeEncryptedDataSignature(iv, frameData, header->size, frameData + header->size, frameSize  - m_authenticationSize - header->size, m_authenticationKey);
+    auto signature = computeEncryptedDataSignature(iv, frameData, header->size, frameData + header->size, (size_t)(frameSize  - m_authenticationSize - header->size), m_authenticationKey);
     for (size_t cptr = 0; cptr < m_authenticationSize; ++cptr) {
         if (signature[cptr] != transmittedSignature[cptr]) {
             // FIXME: We should try ratcheting.
@@ -271,7 +271,7 @@ RTCRtpSFrameTransformer::TransformResult RTCRtpSFrameTransformer::decryptFrame(S
 
     // Decrypt data
     auto dataSize = frameSize - header->size - m_authenticationSize;
-    auto result = decryptData(frameData + header->size, dataSize, iv, m_encryptionKey);
+    auto result = decryptData(frameData + header->size, (size_t)dataSize, iv, m_encryptionKey);
 
     if (result.hasException())
         return makeUnexpected(ErrorInformation { Error::Other, result.exception().message(), 0 });
@@ -303,7 +303,7 @@ RTCRtpSFrameTransformer::TransformResult RTCRtpSFrameTransformer::encryptFrame(S
 
     auto iv = computeIV(m_counter, m_saltKey);
 
-    transformedData.resize(prefixBuffer.size + frameSize + MaxHeaderSize + m_authenticationSize);
+    transformedData.resize((size_t)(prefixBuffer.size + frameSize + MaxHeaderSize + m_authenticationSize));
 
     if (prefixBuffer.data)
         std::memcpy(transformedData.data(), prefixBuffer.data, prefixBuffer.size);
@@ -321,7 +321,7 @@ RTCRtpSFrameTransformer::TransformResult RTCRtpSFrameTransformer::encryptFrame(S
     writeUInt64(newDataPointer + headerSize, m_counter, counterLength);
     headerSize += counterLength;
 
-    transformedData.resize(prefixBuffer.size + frameSize + headerSize + m_authenticationSize);
+    transformedData.resize((size_t)(prefixBuffer.size + frameSize + headerSize + m_authenticationSize));
 
     // Fill encrypted data
     auto encryptedData = encryptData(frameData, frameSize, iv, m_encryptionKey);
@@ -333,7 +333,7 @@ RTCRtpSFrameTransformer::TransformResult RTCRtpSFrameTransformer::encryptFrame(S
 
     // Fill signature
     auto signature = computeEncryptedDataSignature(iv, newDataPointer, headerSize, newDataPointer + headerSize, frameSize, m_authenticationKey);
-    std::memcpy(newDataPointer + frameSize + headerSize, signature.data(), m_authenticationSize);
+    std::memcpy(newDataPointer + frameSize + headerSize, signature.data(), (size_t)m_authenticationSize);
 
     if (m_compatibilityMode == CompatibilityMode::H264)
         toRbsp(transformedData, prefixBuffer.size);

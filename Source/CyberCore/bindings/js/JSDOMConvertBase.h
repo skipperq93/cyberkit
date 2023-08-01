@@ -127,7 +127,10 @@ template<typename T>
 struct JSConverterOverloader<T, false, false> {
     template<typename U> static JSC::JSValue convert(JSC::JSGlobalObject&, U&& value)
     {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshorten-64-to-32"
         return JSConverter<T>::convert(std::forward<U>(value));
+#pragma clang diagnostic pop
     }
 
     template<typename U> static JSC::JSValue convert(JSC::JSGlobalObject&, JSDOMGlobalObject&, U&& value)

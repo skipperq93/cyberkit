@@ -78,7 +78,8 @@ void ContentExtension::compileGlobalDisplayNoneStyleSheet()
     
     auto serializedActions = m_compiledExtension->serializedActions();
 
-    auto inGlobalDisplayNoneStyleSheet = [&](const uint32_t location) {
+    auto inGlobalDisplayNoneStyleSheet = [&](const uint64_t loc) {
+        const uint32_t location = (const uint32_t)loc;
         RELEASE_ASSERT(location < serializedActions.size());
         return location < firstIgnorePreviousRules && serializedActions[location] == WTF::alternativeIndexV<CSSDisplayNoneSelectorAction, ActionData>;
     };
@@ -88,7 +89,7 @@ void ContentExtension::compileGlobalDisplayNoneStyleSheet()
         if (inGlobalDisplayNoneStyleSheet(universalActionLocation)) {
             if (!css.isEmpty())
                 css.append(',');
-            auto action = DeserializedAction::deserialize(serializedActions, universalActionLocation);
+            auto action = DeserializedAction::deserialize(serializedActions, (unsigned)universalActionLocation);
             ASSERT(std::holds_alternative<CSSDisplayNoneSelectorAction>(action.data()));
             if (auto* actionData = std::get_if<CSSDisplayNoneSelectorAction>(&action.data()))
                 css.append(actionData->string);

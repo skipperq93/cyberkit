@@ -69,8 +69,8 @@ constexpr CharacterRange::CharacterRange(CFRange range)
 
 constexpr CharacterRange::operator CFRange() const
 {
-    CFIndex locationCF = location;
-    CFIndex lengthCF = length;
+    CFIndex locationCF = (CFIndex)location;
+    CFIndex lengthCF = (CFIndex)length;
     return { locationCF, lengthCF };
 }
 
@@ -86,8 +86,8 @@ constexpr CharacterRange::CharacterRange(NSRange range)
 
 constexpr CharacterRange::operator NSRange() const
 {
-    NSUInteger locationNS = location;
-    NSUInteger lengthNS = length;
+    NSUInteger locationNS = (unsigned)location;
+    NSUInteger lengthNS = (unsigned)length;
     return { locationNS, lengthNS };
 }
 

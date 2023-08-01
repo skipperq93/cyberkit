@@ -29,6 +29,7 @@
 
 #include "GraphicsTypesGL.h"
 
+#if HAVE(IOSURFACE)
 typedef struct __IOSurface *IOSurfaceRef;
 OBJC_PROTOCOL(MTLSharedEvent);
 
@@ -41,5 +42,6 @@ void destroyPbufferAndDetachIOSurface(GCGLDisplay, void* handle);
 
 RetainPtr<MTLSharedEvent> newSharedEventWithMachPort(GCGLDisplay, mach_port_t);
 }
+#endif
 
 #endif

@@ -167,9 +167,14 @@ RetainPtr<CGColorSpaceRef> createCGColorSpaceForCVPixelBuffer(CVPixelBufferRef b
 
 void setOwnershipIdentityForCVPixelBuffer(CVPixelBufferRef pixelBuffer, const ProcessIdentity& owner)
 {
+#if HAVE(IOSURFACE)
     auto surface = CVPixelBufferGetIOSurface(pixelBuffer);
     ASSERT(surface);
     IOSurface::setOwnershipIdentity(surface, owner);
+#else
+    (void)pixelBuffer;
+    (void)owner;
+#endif
 }
 
 RetainPtr<CVPixelBufferRef> createBlackPixelBuffer(size_t width, size_t height, bool shouldUseIOSurface)

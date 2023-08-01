@@ -56,9 +56,11 @@ public:
 
     void display(PlatformCALayer& layer) final
     {
+#if HAVE(IOSURFACE)
         if (m_displayBuffer)
             layer.setDelegatedContents({ *m_displayBuffer, { } });
         else
+#endif
             layer.clearContents();
     }
 
@@ -67,6 +69,7 @@ public:
         return GraphicsLayer::CompositingCoordinatesOrientation::BottomUp;
     }
 
+#if HAVE(IOSURFACE)
     void setDisplayBuffer(IOSurface* displayBuffer)
     {
         if (!displayBuffer) {
@@ -77,6 +80,7 @@ public:
             return;
         m_displayBuffer = IOSurface::createFromSurface(displayBuffer->surface(), { });
     }
+#endif
 
 private:
     DisplayBufferDisplayDelegate(bool isOpaque, float contentsScale)
@@ -85,7 +89,9 @@ private:
     {
     }
 
+#if HAVE(IOSURFACE)
     std::unique_ptr<IOSurface> m_displayBuffer;
+#endif
     const float m_contentsScale;
     const bool m_isOpaque;
 };
@@ -135,7 +141,9 @@ WebProcessGraphicsContextGLCocoa::~WebProcessGraphicsContextGLCocoa()
 void WebProcessGraphicsContextGLCocoa::prepareForDisplay()
 {
     GraphicsContextGLCocoa::prepareForDisplay();
-    m_layerContentsDisplayDelegate->setDisplayBuffer(displayBuffer());
+#if HAVE(IOSURFACE)
+	m_layerContentsDisplayDelegate->setDisplayBuffer(displayBuffer());
+#endif
 }
 
 #if PLATFORM(MAC)

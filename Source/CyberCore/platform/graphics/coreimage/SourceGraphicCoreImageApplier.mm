@@ -45,9 +45,11 @@ bool SourceGraphicCoreImageApplier::apply(const Filter&, const FilterImageVector
         return false;
 
     RetainPtr<CIImage> image;
+#if HAVE(IOSURFACE)
     if (is<IOSurfaceImageBuffer>(*sourceImage))
         image = [CIImage imageWithIOSurface:downcast<IOSurfaceImageBuffer>(*sourceImage).surface().surface()];
     else
+#endif
         image = [CIImage imageWithCGImage:sourceImage->copyNativeImage()->platformImage().get()];
 
     if (!image)

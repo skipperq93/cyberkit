@@ -122,8 +122,11 @@ protected:
     } while (false)
 
 #define RELEASE_AND_RETURN(scope__, expression__) do { \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wshorten-64-to-32\"") \
         scope__.release(); \
         return expression__; \
+_Pragma("clang diagnostic pop") \
     } while (false)
 
 } // namespace JSC

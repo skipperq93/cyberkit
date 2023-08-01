@@ -47,13 +47,13 @@ std::optional<ParsedRequestRange> ParsedRequestRange::parse(StringView input)
     auto optionalBegin = parseInteger<uint64_t>(beginString);
     if (!optionalBegin)
         return std::nullopt;
-    begin = *optionalBegin;
+    begin = (size_t)*optionalBegin;
 
     auto endString = input.substring(dashPosition + 1);
     auto optionalEnd = parseInteger<uint64_t>(endString);
     if (!optionalEnd)
         return std::nullopt;
-    end = *optionalEnd;
+    end = (size_t)*optionalEnd;
 
     if (begin > end)
         return std::nullopt;

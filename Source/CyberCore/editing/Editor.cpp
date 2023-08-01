@@ -2921,7 +2921,7 @@ void Editor::markAndReplaceFor(const SpellCheckRequest& request, const Vector<Te
             Position caretPosition = m_document.selection().selection().end();
             selectionOffset = paragraph.offsetTo(caretPosition).releaseReturnValue();
             restoreSelectionAfterChange = true;
-            if (selectionOffset > 0 && selectionOffset <= paragraph.text().length() && isAmbiguousBoundaryCharacter(paragraph.text()[selectionOffset - 1]))
+            if (selectionOffset > 0 && selectionOffset <= paragraph.text().length() && isAmbiguousBoundaryCharacter(paragraph.text()[(unsigned)(selectionOffset - 1)]))
                 useAmbiguousBoundaryOffset = true;
         }
     }

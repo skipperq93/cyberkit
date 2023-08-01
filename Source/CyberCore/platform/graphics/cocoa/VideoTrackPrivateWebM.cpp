@@ -84,7 +84,7 @@ AtomString VideoTrackPrivateWebM::language() const
 int VideoTrackPrivateWebM::trackIndex() const
 {
     if (m_track.track_number.is_present())
-        return m_track.track_number.value();
+        return (int)m_track.track_number.value();
     return 0;
 }
 
@@ -112,10 +112,10 @@ uint32_t VideoTrackPrivateWebM::width() const
 
     auto& video = m_track.video.value();
     if (video.display_width.is_present())
-        return video.display_width.value();
+        return (uint32_t)video.display_width.value();
 
     if (video.pixel_width.is_present())
-        return video.pixel_width.value();
+        return (uint32_t)video.pixel_width.value();
 
     return 0;
 }
@@ -127,10 +127,10 @@ uint32_t VideoTrackPrivateWebM::height() const
 
     auto& video = m_track.video.value();
     if (video.display_height.is_present())
-        return video.display_height.value();
+        return (uint32_t)video.display_height.value();
 
     if (video.pixel_height.is_present())
-        return video.pixel_height.value();
+        return (uint32_t)video.pixel_height.value();
 
     return 0;
 }

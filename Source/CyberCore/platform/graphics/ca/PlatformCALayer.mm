@@ -192,12 +192,16 @@ void PlatformCALayer::setDelegatedContentsFinishedEvent(const PlatformCALayerDel
 
 void PlatformCALayer::setDelegatedContents(const PlatformCALayerDelegatedContents& contents)
 {
+#if HAVE(IOSURFACE)
     auto surface = CyberCore::IOSurface::createFromSendRight(contents.surface.copySendRight());
     if (!surface) {
         clearContents();
         return;
     }
     setDelegatedContents({ *surface, contents.finishedIdentifier });
+#else
+    UNUSED_PARAM(contents);
+#endif
 }
 
 void PlatformCALayer::setDelegatedContentsFinishedEvent(const PlatformCALayerInProcessDelegatedContentsFinishedEvent&)
@@ -207,7 +211,11 @@ void PlatformCALayer::setDelegatedContentsFinishedEvent(const PlatformCALayerInP
 
 void PlatformCALayer::setDelegatedContents(const PlatformCALayerInProcessDelegatedContents& contents)
 {
+#if HAVE(IOSURFACE)
     setDelegatedContents({ contents.surface.createSendRight(), contents.finishedIdentifier });
+#else
+    UNUSED_PARAM(contents);
+#endif
 }
 
 #if ENABLE(THREADED_ANIMATION_RESOLUTION)

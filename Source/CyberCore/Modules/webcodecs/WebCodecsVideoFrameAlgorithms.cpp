@@ -215,8 +215,8 @@ ExceptionOr<CombinedPlaneLayout> computeLayoutAndAllocationSize(const DOMRectIni
             if (layout.value()[i].stride < computedLayout.sourceWidthBytes)
                 return Exception { TypeError, "layout stride is invalid"_s };
 
-            computedLayout.destinationOffset = layout.value()[i].offset;
-            computedLayout.destinationStride = layout.value()[i].stride;
+            computedLayout.destinationOffset = (size_t)layout.value()[i].offset;
+            computedLayout.destinationStride = (size_t)layout.value()[i].stride;
         } else {
             computedLayout.destinationOffset = minAllocationSize;
             computedLayout.destinationStride = computedLayout.sourceWidthBytes;

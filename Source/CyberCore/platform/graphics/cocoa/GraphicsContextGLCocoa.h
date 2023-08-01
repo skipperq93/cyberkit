@@ -55,7 +55,9 @@ class WEBCORE_EXPORT GraphicsContextGLCocoa : public GraphicsContextGLANGLE {
 public:
     static RefPtr<GraphicsContextGLCocoa> create(CyberCore::GraphicsContextGLAttributes&&, ProcessIdentity&& resourceOwner);
     ~GraphicsContextGLCocoa();
+#if HAVE(IOSURFACE)
     IOSurface* displayBuffer();
+#endif
     void markDisplayBufferInUse();
 
     enum class PbufferAttachmentUsage { Read, Write, ReadWrite };
@@ -107,7 +109,9 @@ protected:
     void invalidateKnownTextureContent(GCGLuint) final;
     bool reshapeDisplayBufferBacking() final;
     bool allocateAndBindDisplayBufferBacking();
+#if HAVE(IOSURFACE)
     bool bindDisplayBufferBacking(std::unique_ptr<IOSurface> backing, void* pbuffer);
+#endif
 
     ProcessIdentity m_resourceOwner;
     DestinationColorSpace m_drawingBufferColorSpace;

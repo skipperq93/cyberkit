@@ -57,7 +57,7 @@ static RetainPtr<CMFormatDescriptionRef> createAudioFormatDescription(const Audi
     UInt32 size = sizeof(asbd);
     auto error = PAL::AudioFormatGetProperty(kAudioFormatProperty_FormatInfo, info.cookieData->size(), info.cookieData->data(), &size, &asbd);
     if (error) {
-        RELEASE_LOG_ERROR(Media, "createAudioFormatDescription failed with error %d (%.4s)", error, (char *)&error);
+        RELEASE_LOG_ERROR(Media, "createAudioFormatDescription failed with error %d (%.4s)", (int)error, (char *)&error);
         return nullptr;
     }
 

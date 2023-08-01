@@ -154,9 +154,9 @@ void PointerCaptureController::elementWasRemovedSlow(Element& element)
             // at the document.
             ASSERT(isInBounds<PointerID>(pointerId));
             auto pointerType = capturingData->pointerType;
-            releasePointerCapture(&element, pointerId);
+            releasePointerCapture(&element, (int)pointerId);
             // FIXME: Spec doesn't specify which task source to use.
-            element.document().queueTaskToDispatchEvent(TaskSource::UserInteraction, PointerEvent::create(eventNames().lostpointercaptureEvent, pointerId, pointerType));
+            element.document().queueTaskToDispatchEvent(TaskSource::UserInteraction, PointerEvent::create(eventNames().lostpointercaptureEvent, (int)pointerId, pointerType));
             return;
         }
     }

@@ -1145,7 +1145,7 @@ std::optional<VideoFrameMetadata> MediaPlayerPrivateMediaStreamAVFObjC::videoFra
     VideoFrameMetadata metadata;
     metadata.width = m_videoFrameSize.width();
     metadata.height = m_videoFrameSize.height();
-    metadata.presentedFrames = m_sampleCount;
+    metadata.presentedFrames = (unsigned)m_sampleCount;
     metadata.presentationTime = m_presentationTime.seconds();
     metadata.expectedDisplayTime = m_presentationTime.seconds();
     metadata.processingDuration = m_sampleMetadata.processingDuration;

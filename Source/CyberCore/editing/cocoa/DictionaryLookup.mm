@@ -276,7 +276,7 @@ std::optional<std::tuple<SimpleRange, NSDictionary *>> DictionaryLookup::rangeFo
 
     auto lengthToSelectionStart = characterCount(*makeSimpleRange(paragraphStart, selectionStart));
     auto selectionCharacterCount = characterCount(*makeSimpleRange(selectionStart, selectionEnd));
-    NSRange rangeToPass = NSMakeRange(lengthToSelectionStart, selectionCharacterCount);
+    NSRange rangeToPass = NSMakeRange((unsigned)lengthToSelectionStart, (unsigned)selectionCharacterCount);
 
     auto fullCharacterRange = *makeSimpleRange(paragraphStart, paragraphEnd);
     String itemString = plainText(fullCharacterRange);
@@ -327,9 +327,9 @@ std::optional<std::tuple<SimpleRange, NSDictionary *>> DictionaryLookup::rangeAt
         if (!fullCharacterRange)
             return std::nullopt;
 
-        selectionRange = NSMakeRange(characterCount(*makeSimpleRange(fullCharacterRange->start, selectionStart)),
-            characterCount(*makeSimpleRange(selectionStart, selectionEnd)));
-        hitIndex = characterCount(*makeSimpleRange(fullCharacterRange->start, position));
+        selectionRange = NSMakeRange((unsigned)characterCount(*makeSimpleRange(fullCharacterRange->start, selectionStart)),
+                        (unsigned)characterCount(*makeSimpleRange(selectionStart, selectionEnd)));
+        hitIndex = (unsigned)characterCount(*makeSimpleRange(fullCharacterRange->start, position));
     } else {
         VisibleSelection selectionAccountingForLineRules { position };
         selectionAccountingForLineRules.expandUsingGranularity(TextGranularity::WordGranularity);
@@ -341,7 +341,7 @@ std::optional<std::tuple<SimpleRange, NSDictionary *>> DictionaryLookup::rangeAt
             return std::nullopt;
 
         selectionRange = NSMakeRange(NSNotFound, 0);
-        hitIndex = characterCount(*makeSimpleRange(fullCharacterRange->start, position));
+        hitIndex = (unsigned)characterCount(*makeSimpleRange(fullCharacterRange->start, position));
     }
 
     NSRange selectedRange = [PAL::getRVSelectionClass() revealRangeAtIndex:hitIndex selectedRanges:@[[NSValue valueWithRange:selectionRange]] shouldUpdateSelection:nil];
@@ -360,6 +360,7 @@ std::optional<std::tuple<SimpleRange, NSDictionary *>> DictionaryLookup::rangeAt
     
 }
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
 static void expandSelectionByCharacters(PDFSelection *selection, NSInteger numberOfCharactersToExpand, NSInteger& charactersAddedBeforeStart, NSInteger& charactersAddedAfterEnd)
 {
     BEGIN_BLOCK_OBJC_EXCEPTIONS
@@ -416,6 +417,7 @@ std::tuple<NSString *, NSDictionary *> DictionaryLookup::stringForPDFSelection(P
 
     return { @"", nil };
 }
+#endif
 
 static WKRevealController showPopupOrCreateAnimationController(bool createAnimationController, const DictionaryPopupInfo& dictionaryPopupInfo, CocoaView *view, const WTF::Function<void(TextIndicator&)>& textIndicatorInstallationCallback, const WTF::Function<FloatRect(FloatRect)>& rootViewToViewConversionCallback, WTF::Function<void()>&& clearTextIndicator)
 {

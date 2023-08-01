@@ -89,7 +89,7 @@ FloatPoint FilterImage::mappedAbsolutePoint(const FloatPoint& point) const
 
 ImageBuffer* FilterImage::imageBuffer()
 {
-#if USE(CORE_IMAGE)
+#if USE(CORE_IMAGE) && HAVE(IOSURFACE)
     if (m_ciImage)
         return imageBufferFromCIImage();
 #endif

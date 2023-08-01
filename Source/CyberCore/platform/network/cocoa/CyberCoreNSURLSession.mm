@@ -507,7 +507,7 @@ NS_ASSUME_NONNULL_END
     if (_invalidated)
         return nil;
 
-    auto task = adoptNS([[CyberCoreNSURLSessionDataTask alloc] initWithSession:self identifier:++_nextTaskIdentifier request:request]);
+    auto task = adoptNS([[CyberCoreNSURLSessionDataTask alloc] initWithSession:self identifier:static_cast<unsigned>(++_nextTaskIdentifier) request:request]);
     {
         Locker<Lock> locker(_dataTasksLock);
         _dataTasks.add(task.get());

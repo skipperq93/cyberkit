@@ -41,7 +41,9 @@ struct RTCH265FrameDecodeParams {
 static void overrideColorSpaceAttachments(CVImageBufferRef imageBuffer) {
   CVBufferRemoveAttachment(imageBuffer, kCVImageBufferCGColorSpaceKey);
   CVBufferSetAttachment(imageBuffer, kCVImageBufferColorPrimariesKey, kCVImageBufferColorPrimaries_ITU_R_709_2, kCVAttachmentMode_ShouldPropagate);
+#if !TARGET_OS_IPHONE || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
   CVBufferSetAttachment(imageBuffer, kCVImageBufferTransferFunctionKey, kCVImageBufferTransferFunction_sRGB, kCVAttachmentMode_ShouldPropagate);
+#endif
   CVBufferSetAttachment(imageBuffer, kCVImageBufferYCbCrMatrixKey, kCVImageBufferYCbCrMatrix_ITU_R_709_2, kCVAttachmentMode_ShouldPropagate);
   CVBufferSetAttachment(imageBuffer, (CFStringRef)@"ColorInfoGuessedBy", (CFStringRef)@"RTCVideoDecoderH265", kCVAttachmentMode_ShouldPropagate);
 }
@@ -172,11 +174,14 @@ CMSampleBufferRef H265BufferToCMSampleBuffer(const uint8_t* buffer, size_t buffe
     sampleBuffer = H265BufferToCMSampleBuffer(data, size, _videoFormat);
     if (!sampleBuffer)
       return WEBRTC_VIDEO_CODEC_ERROR;
-  } else if (!webrtc::H265AnnexBBufferToCMSampleBuffer(
+  }
+#if !TARGET_OS_IPHONE || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
+  else if (!webrtc::H265AnnexBBufferToCMSampleBuffer(
           (uint8_t*)data, size,
           _videoFormat, &sampleBuffer)) {
     return WEBRTC_VIDEO_CODEC_ERROR;
   }
+#endif
   RTC_DCHECK(sampleBuffer);
   VTDecodeFrameFlags decodeFlags =
       kVTDecodeFrame_EnableAsynchronousDecompression;

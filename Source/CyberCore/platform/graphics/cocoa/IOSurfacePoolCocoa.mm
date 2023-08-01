@@ -28,6 +28,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+#if HAVE(IOSURFACE)
 namespace CyberCore {
 
 void IOSurfacePool::platformGarbageCollectNow()
@@ -41,3 +42,4 @@ void IOSurfacePool::platformGarbageCollectNow()
 }
 
 }
+#endif

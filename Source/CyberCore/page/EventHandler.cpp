@@ -681,8 +681,8 @@ bool EventHandler::handleMousePressEventSingleClick(const MouseEventWithHitTestR
             // was created right-to-left
             Position start = newSelection.start();
             Position end = newSelection.end();
-            int distanceToStart = textDistance(start, pos);
-            int distanceToEnd = textDistance(pos, end);
+            uint64_t distanceToStart = textDistance(start, pos);
+            uint64_t distanceToEnd = textDistance(pos, end);
             if (distanceToStart <= distanceToEnd)
                 newSelection = VisibleSelection(end, pos);
             else

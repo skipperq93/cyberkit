@@ -70,7 +70,7 @@ JSImmutableButterfly* JSImmutableButterfly::createFromClonedArguments(JSGlobalOb
     VM& vm = globalObject->vm();
     auto scope = DECLARE_THROW_SCOPE(vm);
 
-    unsigned length = arguments->length(globalObject); // This must be side-effect free, and it is ensured by ClonedArguments::isIteratorProtocolFastAndNonObservable.
+    unsigned length = (unsigned)arguments->length(globalObject); // This must be side-effect free, and it is ensured by ClonedArguments::isIteratorProtocolFastAndNonObservable.
     unsigned vectorLength = arguments->getVectorLength();
     RETURN_IF_EXCEPTION(scope, nullptr);
 

@@ -85,7 +85,7 @@ private:
 
     ImageBuffer* imageBufferFromPixelBuffer();
 
-#if USE(CORE_IMAGE)
+#if USE(CORE_IMAGE) && HAVE(IOSURFACE)
     ImageBuffer* imageBufferFromCIImage();
 #endif
 

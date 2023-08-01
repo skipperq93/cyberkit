@@ -210,7 +210,7 @@ inline JSObject* constructGenericTypedArrayViewWithArguments(JSGlobalObject* glo
         else {
             JSValue value = lengthSlot.getValue(globalObject, vm.propertyNames->length);
             RETURN_IF_EXCEPTION(scope, nullptr);
-            length = value.toLength(globalObject);
+            length = (size_t)value.toLength(globalObject);
             RETURN_IF_EXCEPTION(scope, nullptr);
         }
 

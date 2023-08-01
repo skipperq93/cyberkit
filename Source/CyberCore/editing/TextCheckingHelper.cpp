@@ -344,7 +344,7 @@ auto TextCheckingHelper::findFirstMisspelledWordOrUngrammaticalPhrase(bool check
                     if (result.type == TextCheckingType::Spelling && result.range.location >= currentStartOffset && result.range.location + result.range.length <= currentEndOffset) {
                         ASSERT(result.range.length > 0);
                         spellingLocation = result.range.location;
-                        misspelledWord = paragraphString.substring(result.range.location, result.range.length);
+                        misspelledWord = paragraphString.substring((unsigned)result.range.location, (unsigned)result.range.length);
                         ASSERT(misspelledWord.length());
                         break;
                     }
@@ -366,7 +366,7 @@ auto TextCheckingHelper::findFirstMisspelledWordOrUngrammaticalPhrase(bool check
                         if (foundGrammar) {
                             grammarPhraseLocation = result.range.location;
                             grammarDetail = result.details[grammarDetailIndex];
-                            badGrammarPhrase = paragraphString.substring(result.range.location, result.range.length);
+                            badGrammarPhrase = paragraphString.substring((unsigned)result.range.location, (unsigned)result.range.length);
                             ASSERT(badGrammarPhrase.length());
                         }
                     }
@@ -458,7 +458,7 @@ auto TextCheckingHelper::findUngrammaticalPhrases(Operation operation) const -> 
         Vector<GrammarDetail> grammarDetails;
         int badGrammarPhraseLocation = -1;
         int badGrammarPhraseLength = 0;
-        m_client.textChecker()->checkGrammarOfString(paragraph.text().substring(startOffset), grammarDetails, &badGrammarPhraseLocation, &badGrammarPhraseLength);
+        m_client.textChecker()->checkGrammarOfString(paragraph.text().substring((unsigned)startOffset), grammarDetails, &badGrammarPhraseLocation, &badGrammarPhraseLength);
         
         if (!badGrammarPhraseLength) {
             ASSERT(badGrammarPhraseLocation == -1);
@@ -538,7 +538,7 @@ TextCheckingGuesses TextCheckingHelper::guessesForMisspelledWordOrUngrammaticalP
             for (auto& detail : result.details) {
                 ASSERT(detail.range.length > 0);
                 if (paragraph.checkingRangeMatches({ result.range.location + detail.range.location, detail.range.length })) {
-                    String badGrammarPhrase = paragraph.text().substring(result.range.location, result.range.length).toString();
+                    String badGrammarPhrase = paragraph.text().substring((unsigned)result.range.location, (unsigned)result.range.length).toString();
                     ASSERT(badGrammarPhrase.length());
                     m_client.updateSpellingUIWithGrammarString(badGrammarPhrase, detail);
                     return { WTFMove(detail.guesses), false, true };

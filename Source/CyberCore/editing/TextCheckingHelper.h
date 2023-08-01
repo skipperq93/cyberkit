@@ -52,7 +52,7 @@ public:
     uint64_t checkingStart() const;
     uint64_t checkingEnd() const;
     uint64_t checkingLength() const;
-    StringView checkingSubstring() const { return text().substring(checkingStart(), checkingLength()); }
+    StringView checkingSubstring() const { return text().substring((unsigned)checkingStart(), (unsigned)checkingLength()); }
 
     uint64_t automaticReplacementStart() const;
     uint64_t automaticReplacementLength() const;

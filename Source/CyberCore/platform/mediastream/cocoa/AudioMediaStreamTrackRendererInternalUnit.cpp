@@ -125,7 +125,7 @@ void LocalAudioMediaStreamTrackRendererInternalUnit::start()
 
     m_sampleTime = 0;
     if (auto error = PAL::AudioOutputUnitStart(m_remoteIOUnit)) {
-        RELEASE_LOG_ERROR(WebRTC, "AudioMediaStreamTrackRendererInternalUnit::start AudioOutputUnitStart failed, error = %d", error);
+        RELEASE_LOG_ERROR(WebRTC, "AudioMediaStreamTrackRendererInternalUnit::start AudioOutputUnitStart failed, error = %d", (int)error);
         PAL::AudioComponentInstanceDispose(m_remoteIOUnit);
         m_remoteIOUnit = nullptr;
         return;
@@ -173,7 +173,7 @@ void LocalAudioMediaStreamTrackRendererInternalUnit::createAudioUnitIfNeeded()
 
     auto error = PAL::AudioComponentInstanceNew(ioComponent, &remoteIOUnit);
     if (error) {
-        RELEASE_LOG_ERROR(WebRTC, "AudioMediaStreamTrackRendererInternalUnit::createAudioUnit unable to open vpio unit, error = %d", error);
+        RELEASE_LOG_ERROR(WebRTC, "AudioMediaStreamTrackRendererInternalUnit::createAudioUnit unable to open vpio unit, error = %d", (int)error);
         return;
     }
 
@@ -181,7 +181,7 @@ void LocalAudioMediaStreamTrackRendererInternalUnit::createAudioUnitIfNeeded()
     UInt32 param = 1;
     error = PAL::AudioUnitSetProperty(remoteIOUnit, kAudioOutputUnitProperty_EnableIO, kAudioUnitScope_Output, 0, &param, sizeof(param));
     if (error) {
-        RELEASE_LOG_ERROR(WebRTC, "AudioMediaStreamTrackRendererInternalUnit::createAudioUnit unable to enable vpio unit output, error = %d", error);
+        RELEASE_LOG_ERROR(WebRTC, "AudioMediaStreamTrackRendererInternalUnit::createAudioUnit unable to enable vpio unit output, error = %d", (int)error);
         return;
     }
 #endif
@@ -199,7 +199,7 @@ void LocalAudioMediaStreamTrackRendererInternalUnit::createAudioUnitIfNeeded()
     AURenderCallbackStruct callback = { LocalAudioMediaStreamTrackRendererInternalUnit::renderingCallback, this };
     error = PAL::AudioUnitSetProperty(remoteIOUnit, kAudioUnitProperty_SetRenderCallback, kAudioUnitScope_Global, 0, &callback, sizeof(callback));
     if (error) {
-        RELEASE_LOG_ERROR(WebRTC, "AudioMediaStreamTrackRendererInternalUnit::createAudioUnit unable to set vpio unit speaker proc, error = %d", error);
+        RELEASE_LOG_ERROR(WebRTC, "AudioMediaStreamTrackRendererInternalUnit::createAudioUnit unable to set vpio unit speaker proc, error = %d", (int)error);
         return;
     }
 
@@ -208,7 +208,7 @@ void LocalAudioMediaStreamTrackRendererInternalUnit::createAudioUnitIfNeeded()
         UInt32 size = sizeof(outputDescription);
         error  = PAL::AudioUnitGetProperty(remoteIOUnit, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Input, 0, &outputDescription, &size);
         if (error) {
-            RELEASE_LOG_ERROR(WebRTC, "AudioMediaStreamTrackRendererInternalUnit::createAudioUnit unable to get input stream format, error = %d", error);
+            RELEASE_LOG_ERROR(WebRTC, "AudioMediaStreamTrackRendererInternalUnit::createAudioUnit unable to get input stream format, error = %d", (int)error);
             return;
         }
 
@@ -217,13 +217,13 @@ void LocalAudioMediaStreamTrackRendererInternalUnit::createAudioUnitIfNeeded()
     }
     error = PAL::AudioUnitSetProperty(remoteIOUnit, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Input, 0, &m_outputDescription->streamDescription(), sizeof(m_outputDescription->streamDescription()));
     if (error) {
-        RELEASE_LOG_ERROR(WebRTC, "AudioMediaStreamTrackRendererInternalUnit::createAudioUnit unable to set input stream format, error = %d", error);
+        RELEASE_LOG_ERROR(WebRTC, "AudioMediaStreamTrackRendererInternalUnit::createAudioUnit unable to set input stream format, error = %d", (int)error);
         return;
     }
 
     error = PAL::AudioUnitInitialize(remoteIOUnit);
     if (error) {
-        RELEASE_LOG_ERROR(WebRTC, "AudioMediaStreamTrackRendererInternalUnit::createAudioUnit AudioUnitInitialize() failed, error = %d", error);
+        RELEASE_LOG_ERROR(WebRTC, "AudioMediaStreamTrackRendererInternalUnit::createAudioUnit AudioUnitInitialize() failed, error = %d", (int)error);
         return;
     }
     m_remoteIOUnit = remoteIOUnit;
