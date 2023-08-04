@@ -7,6 +7,13 @@
 #ifndef LIBANGLE_RENDERER_GL_EAGL_IOSURFACESURFACEEAGL_H_
 #define LIBANGLE_RENDERER_GL_EAGL_IOSURFACESURFACEEAGL_H_
 
+#if !TARGET_OS_IOS || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
+#define HAVE_IOSURFACE 1
+#else
+#define HAVE_IOSURFACE 0
+#endif
+
+#if HAVE_IOSURFACE
 #include "libANGLE/renderer/gl/SurfaceGL.h"
 #include "libANGLE/renderer/gl/eagl/DisplayEAGL.h"
 
@@ -96,5 +103,5 @@ class IOSurfaceSurfaceEAGL : public SurfaceGL
 };
 
 }  // namespace rx
-
+#endif
 #endif  // LIBANGLE_RENDERER_GL_EAGL_IOSURFACESURFACEEAGL_H_

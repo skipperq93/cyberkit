@@ -9,7 +9,7 @@
 
 #import "common/platform.h"
 
-#if defined(ANGLE_ENABLE_EAGL)
+#if defined(ANGLE_ENABLE_EAGL) && HAVE_IOSURFACE
 
 #    import "libANGLE/renderer/gl/eagl/IOSurfaceSurfaceEAGL.h"
 

@@ -164,6 +164,7 @@ SurfaceImpl *DisplayEAGL::createPbufferSurface(const egl::SurfaceState &state,
     return new PbufferSurfaceEAGL(state, mRenderer.get(), width, height);
 }
 
+#if HAVE_IOSURFACE
 SurfaceImpl *DisplayEAGL::createPbufferFromClientBuffer(const egl::SurfaceState &state,
                                                         EGLenum buftype,
                                                         EGLClientBuffer clientBuffer,
@@ -172,6 +173,7 @@ SurfaceImpl *DisplayEAGL::createPbufferFromClientBuffer(const egl::SurfaceState 
     ASSERT(buftype == EGL_IOSURFACE_ANGLE);
     return new IOSurfaceSurfaceEAGL(state, mRenderer.get(), mContext, clientBuffer, attribs);
 }
+#endif
 
 SurfaceImpl *DisplayEAGL::createPixmapSurface(const egl::SurfaceState &state,
                                               NativePixmapType nativePixmap,
