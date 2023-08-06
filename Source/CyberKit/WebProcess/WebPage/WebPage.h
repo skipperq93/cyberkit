@@ -1878,10 +1878,12 @@ private:
 
     void windowAndViewFramesChanged(const CyberCore::FloatRect& windowFrameInScreenCoordinates, const CyberCore::FloatRect& windowFrameInUnflippedScreenCoordinates, const CyberCore::FloatRect& viewFrameInWindowCoordinates, const CyberCore::FloatPoint& accessibilityViewCoordinates);
 
-    RetainPtr<PDFDocument> pdfDocumentForPrintingFrame(CyberCore::LocalFrame*);
     void computePagesForPrintingPDFDocument(CyberCore::FrameIdentifier, const PrintInfo&, Vector<CyberCore::IntRect>& resultPageRects);
+#if HAVE(PDFKIT)
+    RetainPtr<PDFDocument> pdfDocumentForPrintingFrame(CyberCore::LocalFrame*);
     void drawPDFDocument(CGContextRef, PDFDocument *, const PrintInfo&, const CyberCore::IntRect&);
     void drawPagesToPDFFromPDFDocument(CGContextRef, PDFDocument *, const PrintInfo&, uint32_t first, uint32_t count);
+#endif
 #endif
 
     void endPrintingImmediately();

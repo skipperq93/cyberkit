@@ -1197,7 +1197,7 @@ static void addOverlayEventRegions(CyberCore::PlatformLayerIdentifier layerID, c
 
 - (RefPtr<CyberKit::ViewSnapshot>)_takeViewSnapshot
 {
-#if HAVE(CORE_ANIMATION_RENDER_SERVER)
+#if HAVE(CORE_ANIMATION_RENDER_SERVER) && HAVE(IOSURFACE)
     float deviceScale = CyberCore::screenScaleFactor();
     CyberCore::FloatSize snapshotSize(self.bounds.size);
     snapshotSize.scale(deviceScale);
@@ -3804,7 +3804,7 @@ static bool isLockdownModeWarningNeeded()
         return;
     }
 
-#if HAVE(CORE_ANIMATION_RENDER_SERVER)
+#if HAVE(CORE_ANIMATION_RENDER_SERVER) && HAVE(IOSURFACE)
     // If we are parented and not hidden, and thus won't incur a significant penalty from paging in tiles, snapshot the view hierarchy directly.
     NSString *displayName = self.window.screen.displayConfiguration.name;
     if (displayName && !self.window.hidden) {
@@ -3950,8 +3950,10 @@ static std::optional<CyberCore::ViewportArguments> viewportArgumentsFromDictiona
     if (_page->backForwardList().currentItem() == &item._item)
         _page->recordNavigationSnapshot(*_page->backForwardList().currentItem());
 
+#if HAVE(IOSURFACE)
     if (auto* viewSnapshot = item._item.snapshot())
         return viewSnapshot->asLayerContents();
+#endif
 
     return nil;
 }

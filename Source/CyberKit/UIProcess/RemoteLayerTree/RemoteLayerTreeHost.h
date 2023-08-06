@@ -75,7 +75,9 @@ public:
 
     // Turn all CAMachPort objects in layer contents into actual IOSurfaces.
     // This avoids keeping an outstanding InUse reference when suspended.
+#if HAVE(IOSURFACE)
     void mapAllIOSurfaceBackingStore();
+#endif
 
     CALayer *layerWithIDForTesting(CyberCore::PlatformLayerIdentifier) const;
 

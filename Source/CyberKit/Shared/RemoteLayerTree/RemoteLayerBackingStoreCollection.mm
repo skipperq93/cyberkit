@@ -255,8 +255,10 @@ void RemoteLayerBackingStoreCollection::scheduleVolatilityTimer()
 RefPtr<CyberCore::ImageBuffer> RemoteLayerBackingStoreCollection::allocateBufferForBackingStore(const RemoteLayerBackingStore& backingStore)
 {
     switch (backingStore.type()) {
+#if HAVE(IOSURFACE)
     case RemoteLayerBackingStore::Type::IOSurface:
         return CyberCore::ImageBuffer::create<AcceleratedImageBufferShareableMappedBackend>(backingStore.size(), backingStore.scale(), backingStore.colorSpace(), backingStore.pixelFormat(), CyberCore::RenderingPurpose::LayerBacking, { nullptr, &CyberCore::IOSurfacePool::sharedPool() });
+#endif
     case RemoteLayerBackingStore::Type::Bitmap:
         return CyberCore::ImageBuffer::create<UnacceleratedImageBufferShareableBackend>(backingStore.size(), backingStore.scale(), backingStore.colorSpace(), backingStore.pixelFormat(), CyberCore::RenderingPurpose::LayerBacking, { });
     }

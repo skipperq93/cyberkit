@@ -263,7 +263,11 @@ void PlatformCALayerRemote::updateBackingStore()
     ASSERT(m_properties.backingStoreAttached);
 
     RemoteLayerBackingStore::Parameters parameters;
+#if HAVE(IOSURFACE)
     parameters.type = m_acceleratesDrawing ? RemoteLayerBackingStore::Type::IOSurface : RemoteLayerBackingStore::Type::Bitmap;
+#else
+    parameters.type = RemoteLayerBackingStore::Type::Bitmap;
+#endif
     parameters.size = m_properties.bounds.size();
 
 #if PLATFORM(IOS_FAMILY)

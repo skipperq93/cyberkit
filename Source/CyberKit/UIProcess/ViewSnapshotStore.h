@@ -64,10 +64,10 @@ public:
 
     ~ViewSnapshot();
 
+#if HAVE(IOSURFACE)
     void clearImage();
     bool hasImage() const;
 
-#if HAVE(IOSURFACE)
     id asLayerContents();
     RetainPtr<CGImageRef> asImageForTesting();
 #endif

@@ -290,10 +290,12 @@ egl::Error DisplayEAGL::validateClientBuffer(const egl::Config *configuration,
 {
     ASSERT(buftype == EGL_IOSURFACE_ANGLE);
 
+#if HAVE_IOSURFACE
     if (!IOSurfaceSurfaceEAGL::validateAttributes(clientBuffer, attribs))
     {
         return egl::EglBadAttribute();
     }
+#endif
 
     return egl::NoError();
 }

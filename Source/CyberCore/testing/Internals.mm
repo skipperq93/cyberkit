@@ -47,7 +47,7 @@
 #import <pal/spi/mac/NSScrollerImpSPI.h>
 #endif
 
-#if PLATFORM(COCOA)
+#if PLATFORM(COCOA) && HAVE(IOSURFACE)
 #import <Metal/Metal.h>
 #endif
 #import <pal/spi/cocoa/NSAccessibilitySPI.h>
@@ -218,6 +218,7 @@ bool Internals::hasSandboxIOKitOpenAccessToClass(const String& process, const St
 #if ENABLE(WEBGL) && PLATFORM(COCOA)
 bool Internals::platformSupportsMetal(bool isWebGL2)
 {
+#if HAVE(IOSURFACE)
     auto device = adoptNS(MTLCreateSystemDefaultDevice());
 
     UNUSED_PARAM(isWebGL2);
@@ -231,6 +232,9 @@ bool Internals::platformSupportsMetal(bool isWebGL2)
         return true;
 #endif
     }
+#else
+    UNUSED_PARAM(isWebGL2);
+#endif
 
     return false;
 }

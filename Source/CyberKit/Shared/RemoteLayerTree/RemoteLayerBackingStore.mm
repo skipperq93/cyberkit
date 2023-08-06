@@ -165,7 +165,11 @@ void RemoteLayerBackingStore::encode(IPC::Encoder& encoder) const
     // and stored in m_bufferHandle. http://webkit.org/b/234169
     std::optional<ImageBufferBackendHandle> handle;
     if (m_contentsBufferHandle) {
+#if HAVE(IOSURFACE)
         ASSERT(m_parameters.type == Type::IOSurface);
+#else
+        ASSERT(false);
+#endif
         handle = m_contentsBufferHandle;
     } else if (m_frontBuffer.imageBuffer)
         handle = handleFromBuffer(*m_frontBuffer.imageBuffer);
@@ -273,6 +277,7 @@ SetNonVolatileResult RemoteLayerBackingStore::swapToValidFrontBuffer()
 {
     ASSERT(!WebProcess::singleton().shouldUseRemoteRenderingFor(RenderingPurpose::DOM));
 
+#if HAVE(IOSURFACE)
     // Sometimes, we can get two swaps ahead of the render server.
     // If we're using shared IOSurfaces, we must wait to modify
     // a surface until it no longer has outstanding clients.
@@ -287,6 +292,7 @@ SetNonVolatileResult RemoteLayerBackingStore::swapToValidFrontBuffer()
                 m_backBuffer.discard();
         }
     }
+#endif
 
 #if ENABLE(CG_DISPLAY_LIST_BACKED_IMAGE_BUFFER)
     if (m_displayListBuffer)
@@ -629,16 +635,24 @@ RetainPtr<id> RemoteLayerBackingStoreProperties::layerContentsBufferFromBackendH
         [&] (MachSendRight& machSendRight) {
             switch (contentsType) {
             case RemoteLayerBackingStoreProperties::LayerContentsType::IOSurface: {
+#if HAVE(IOSURFACE)
                 auto surface = CyberCore::IOSurface::createFromSendRight(WTFMove(machSendRight));
                 contents = surface ? surface->asLayerContents() : nil;
+#else
+                contents = nil;
+#endif
                 break;
             }
             case RemoteLayerBackingStoreProperties::LayerContentsType::CAMachPort:
                 contents = bridge_id_cast(adoptCF(CAMachPortCreate(machSendRight.leakSendRight())));
                 break;
             case RemoteLayerBackingStoreProperties::LayerContentsType::CachedIOSurface:
+#if HAVE(IOSURFACE)
                 auto surface = CyberCore::IOSurface::createFromSendRight(WTFMove(machSendRight));
                 contents = surface ? surface->asCAIOSurfaceLayerContents() : nil;
+#else
+                contents = nil;
+#endif
                 break;
             }
         }
@@ -750,6 +764,7 @@ SetNonVolatileResult RemoteLayerBackingStore::setBufferNonVolatile(Buffer& buffe
 
 bool RemoteLayerBackingStore::setBufferVolatile(BufferType bufferType)
 {
+#if HAVE(IOSURFACE)
     if (m_parameters.type != Type::IOSurface)
         return true;
 
@@ -763,16 +778,23 @@ bool RemoteLayerBackingStore::setBufferVolatile(BufferType bufferType)
     case BufferType::SecondaryBack:
         return setBufferVolatile(m_secondaryBackBuffer);
     }
+#else
+    UNUSED_PARAM(bufferType);
+#endif
 
     return true;
 }
 
 SetNonVolatileResult RemoteLayerBackingStore::setFrontBufferNonVolatile()
 {
+#if HAVE(IOSURFACE)
     if (m_parameters.type != Type::IOSurface)
         return SetNonVolatileResult::Valid;
 
     return setBufferNonVolatile(m_frontBuffer);
+#else
+    return SetNonVolatileResult::Valid;
+#endif
 }
 
 RefPtr<ImageBuffer> RemoteLayerBackingStore::bufferForType(BufferType bufferType) const

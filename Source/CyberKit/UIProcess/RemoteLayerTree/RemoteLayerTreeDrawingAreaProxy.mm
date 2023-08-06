@@ -56,9 +56,11 @@ RemoteLayerTreeDrawingAreaProxy::RemoteLayerTreeDrawingAreaProxy(WebPageProxy& p
     : DrawingAreaProxy(DrawingAreaType::RemoteLayerTree, pageProxy)
     , m_remoteLayerTreeHost(makeUnique<RemoteLayerTreeHost>(*this))
 {
+#if HAVE(IOSURFACE)
     // We don't want to pool surfaces in the UI process.
     // FIXME: We should do this somewhere else.
     IOSurfacePool::sharedPool().setPoolSize(0);
+#endif
 
     startReceivingRemoteLayerTreeDrawingAreaProxyMessages(processProxy);
 
@@ -458,7 +460,9 @@ void RemoteLayerTreeDrawingAreaProxy::hideContentUntilAnyUpdate()
 
 void RemoteLayerTreeDrawingAreaProxy::prepareForAppSuspension()
 {
+#if HAVE(IOSURFACE)
     m_remoteLayerTreeHost->mapAllIOSurfaceBackingStore();
+#endif
 }
 
 bool RemoteLayerTreeDrawingAreaProxy::hasVisibleContent() const
@@ -473,8 +477,10 @@ CALayer *RemoteLayerTreeDrawingAreaProxy::layerWithIDForTesting(CyberCore::Platf
 
 void RemoteLayerTreeDrawingAreaProxy::windowKindDidChange()
 {
+#if HAVE(IOSURFACE)
     if (m_webPageProxy.windowKind() == WindowKind::InProcessSnapshotting)
         m_remoteLayerTreeHost->mapAllIOSurfaceBackingStore();
+#endif
 }
 
 void RemoteLayerTreeDrawingAreaProxy::minimumSizeForAutoLayoutDidChange()

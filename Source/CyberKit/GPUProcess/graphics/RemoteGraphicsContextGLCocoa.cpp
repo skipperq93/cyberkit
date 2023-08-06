@@ -122,11 +122,13 @@ void RemoteGraphicsContextGLCocoa::prepareForDisplay(CompletionHandler<void(WTF:
     assertIsCurrent(workQueue());
     m_context->prepareForDisplay();
     MachSendRight sendRight;
+#if HAVE(IOSURFACE)
     CyberCore::IOSurface* displayBuffer = m_context->displayBuffer();
     if (displayBuffer) {
         m_context->markDisplayBufferInUse();
         sendRight = displayBuffer->createSendRight();
     }
+#endif
     completionHandler(WTFMove(sendRight));
 }
 

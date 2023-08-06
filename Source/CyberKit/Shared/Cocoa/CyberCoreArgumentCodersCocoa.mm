@@ -731,10 +731,12 @@ void ArgumentCoder<RetainPtr<CVPixelBufferRef>>::encode(Encoder& encoder, const 
 {
     // Use IOSurface as the means to transfer CVPixelBufferRef.
     MachSendRight sendRight;
+#if HAVE(IOSURFACE)
     if (pixelBuffer) {
         if (auto surface = CyberCore::CVPixelBufferGetIOSurface(pixelBuffer.get()))
             sendRight = MachSendRight::adopt(IOSurfaceCreateMachPort(surface));
     }
+#endif
     encoder << WTFMove(sendRight);
 }
 
@@ -745,6 +747,7 @@ std::optional<RetainPtr<CVPixelBufferRef>> ArgumentCoder<RetainPtr<CVPixelBuffer
     if (!sendRight)
         return std::nullopt;
     RetainPtr<CVPixelBufferRef> pixelBuffer;
+#if HAVE(IOSURFACE)
     if (!*sendRight)
         return pixelBuffer;
     {
@@ -757,6 +760,7 @@ std::optional<RetainPtr<CVPixelBufferRef>> ArgumentCoder<RetainPtr<CVPixelBuffer
             return std::nullopt;
         pixelBuffer = adoptCF(rawBuffer);
     }
+#endif
     return pixelBuffer;
 }
 

@@ -58,14 +58,18 @@ void ViewSnapshotStore::didAddImageToSnapshot(ViewSnapshot& snapshot)
 {
     bool isNewEntry = m_snapshotsWithImages.add(&snapshot).isNewEntry;
     ASSERT_UNUSED(isNewEntry, isNewEntry);
+#if HAVE(IOSURFACE)
     m_snapshotCacheSize += snapshot.estimatedImageSizeInBytes();
+#endif
 }
 
 void ViewSnapshotStore::willRemoveImageFromSnapshot(ViewSnapshot& snapshot)
 {
     bool removed = m_snapshotsWithImages.remove(&snapshot);
     ASSERT_UNUSED(removed, removed);
+#if HAVE(IOSURFACE)
     m_snapshotCacheSize -= snapshot.estimatedImageSizeInBytes();
+#endif
 }
 
 void ViewSnapshotStore::pruneSnapshots(WebPageProxy& webPageProxy)
@@ -77,7 +81,9 @@ void ViewSnapshotStore::pruneSnapshots(WebPageProxy& webPageProxy)
 
     // FIXME: We have enough information to do smarter-than-LRU eviction (making use of the back-forward lists, etc.)
 
+#if HAVE(IOSURFACE)
     m_snapshotsWithImages.first()->clearImage();
+#endif
 }
 
 void ViewSnapshotStore::recordSnapshot(WebPageProxy& webPageProxy, WebBackForwardListItem& item)
@@ -107,23 +113,29 @@ void ViewSnapshotStore::recordSnapshot(WebPageProxy& webPageProxy, WebBackForwar
 
 void ViewSnapshotStore::discardSnapshotImages()
 {
+#if HAVE(IOSURFACE)
     while (!m_snapshotsWithImages.isEmpty())
         m_snapshotsWithImages.first()->clearImage();
+#endif
 }
 
 void ViewSnapshotStore::discardSnapshotImagesForOrigin(const CyberCore::SecurityOriginData& origin)
 {
+#if HAVE(IOSURFACE)
     for (auto it = m_snapshotsWithImages.begin(); it != m_snapshotsWithImages.end();) {
         auto viewSnapshot = *it;
         ++it;
         if (viewSnapshot->origin() == origin)
             viewSnapshot->clearImage();
     }
+#endif
 }
 
 ViewSnapshot::~ViewSnapshot()
 {
+#if HAVE(IOSURFACE)
     clearImage();
+#endif
 }
 
 } // namespace CyberKit

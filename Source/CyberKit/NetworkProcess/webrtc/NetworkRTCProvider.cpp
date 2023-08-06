@@ -145,7 +145,7 @@ void NetworkRTCProvider::createSocket(LibWebRTCSocketIdentifier identifier, std:
 {
     ASSERT(m_rtcNetworkThread.IsCurrent());
     if (!socket) {
-        RTC_RELEASE_LOG_ERROR("createSocket with %lu sockets is unable to create a new socket", m_sockets.size());
+        RTC_RELEASE_LOG_ERROR("createSocket with %lu sockets is unable to create a new socket", (unsigned long)m_sockets.size());
         connection->send(Messages::LibWebRTCNetwork::SignalClose(identifier, 1), 0);
         return;
     }
@@ -276,7 +276,7 @@ void NetworkRTCProvider::addSocket(LibWebRTCSocketIdentifier identifier, std::un
     ASSERT(socket);
     m_sockets.emplace(identifier, WTFMove(socket));
 
-    RTC_RELEASE_LOG("new socket %" PRIu64 ", total socket number is %lu", identifier.toUInt64(), m_sockets.size());
+    RTC_RELEASE_LOG("new socket %" PRIu64 ", total socket number is %lu", identifier.toUInt64(), (unsigned long)m_sockets.size());
     if (m_sockets.size() > maxSockets) {
         auto socketIdentifierToClose = m_sockets.begin()->first;
         RTC_RELEASE_LOG_ERROR("too many sockets, closing %" PRIu64, socketIdentifierToClose.toUInt64());

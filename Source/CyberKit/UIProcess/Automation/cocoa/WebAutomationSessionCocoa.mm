@@ -67,11 +67,15 @@ std::optional<String> WebAutomationSession::platformGetBase64EncodedPNGData(cons
 
 std::optional<String> WebAutomationSession::platformGetBase64EncodedPNGData(const ViewSnapshot& snapshot)
 {
+#if HAVE(IOSURFACE)
     auto* snapshotSurface = snapshot.surface();
     if (!snapshotSurface)
         return std::nullopt;
     auto context = snapshotSurface->createPlatformContext();
     return getBase64EncodedPNGData(snapshotSurface->createImage(context.get()));
+#else
+    return std::nullopt;
+#endif
 }
 
 std::optional<String> WebAutomationSession::platformGenerateLocalFilePathForRemoteFile(const String& remoteFilePath, const String& base64EncodedFileContents)

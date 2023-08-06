@@ -222,8 +222,13 @@ void ViewGestureController::beginSwipeGesture(_UINavigationInteractiveTransition
         BOOL shouldRestoreScrollPosition = targetItem->pageState().mainFrameState.shouldRestoreScrollPosition;
         CyberCore::IntPoint currentScrollPosition = CyberCore::roundedIntPoint(m_webPageProxy.viewScrollPosition());
 
+#if HAVE(IOSURFACE)
         if (snapshot->hasImage() && snapshot->size() == swipeLayerSizeInDeviceCoordinates && deviceScaleFactor == snapshot->deviceScaleFactor() && (shouldRestoreScrollPosition || (currentScrollPosition == snapshot->viewScrollPosition())))
             [m_snapshotView layer].contents = snapshot->asLayerContents();
+#else
+        UNUSED_PARAM(shouldRestoreScrollPosition);
+        UNUSED_PARAM(currentScrollPosition);
+#endif
         CyberCore::Color coreColor = snapshot->backgroundColor();
         if (coreColor.isValid())
             backgroundColor = cocoaColor(coreColor);

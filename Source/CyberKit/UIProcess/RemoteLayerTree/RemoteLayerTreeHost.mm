@@ -451,6 +451,7 @@ void RemoteLayerTreeHost::detachRootLayer()
     m_rootNode = nullptr;
 }
 
+#if HAVE(IOSURFACE)
 static void recursivelyMapIOSurfaceBackingStore(CALayer *layer)
 {
     if (layer.contents && CFGetTypeID((__bridge CFTypeRef)layer.contents) == CAMachPortGetTypeID()) {
@@ -467,6 +468,7 @@ void RemoteLayerTreeHost::mapAllIOSurfaceBackingStore()
 {
     recursivelyMapIOSurfaceBackingStore(rootLayer());
 }
+#endif
 
 } // namespace CyberKit
 

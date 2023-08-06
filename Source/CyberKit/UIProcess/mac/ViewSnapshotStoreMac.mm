@@ -34,6 +34,7 @@
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #endif
 
+#if HAVE(IOSURFACE)
 namespace CyberKit {
 
 Ref<ViewSnapshot> ViewSnapshot::create(std::unique_ptr<CyberCore::IOSurface> surface)
@@ -111,3 +112,4 @@ RetainPtr<CGImageRef> ViewSnapshot::asImageForTesting()
 }
 
 } // namespace CyberKit
+#endif

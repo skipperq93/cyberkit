@@ -71,8 +71,10 @@ public:
     ~RemoteLayerBackingStore();
 
     enum class Type : bool {
-        IOSurface,
-        Bitmap
+#if HAVE(IOSURFACE)
+        IOSurface = false,
+#endif
+        Bitmap = true
     };
 
 #if ENABLE(CG_DISPLAY_LIST_BACKED_IMAGE_BUFFER)

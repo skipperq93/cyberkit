@@ -68,8 +68,10 @@
 
 - (CGImageRef)_copySnapshotForTesting
 {
+#if HAVE(IOSURFACE)
     if (auto snapshot = _item->snapshot())
         return snapshot->asImageForTesting().leakRef();
+#endif
     return nullptr;
 }
 

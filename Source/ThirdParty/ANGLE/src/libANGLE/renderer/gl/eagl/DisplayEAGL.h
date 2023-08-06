@@ -45,10 +45,12 @@ class DisplayEAGL : public DisplayGL
                                      const egl::AttributeMap &attribs) override;
     SurfaceImpl *createPbufferSurface(const egl::SurfaceState &state,
                                       const egl::AttributeMap &attribs) override;
+#if HAVE_IOSURFACE
     SurfaceImpl *createPbufferFromClientBuffer(const egl::SurfaceState &state,
                                                EGLenum buftype,
                                                EGLClientBuffer clientBuffer,
                                                const egl::AttributeMap &attribs) override;
+#endif
     SurfaceImpl *createPixmapSurface(const egl::SurfaceState &state,
                                      NativePixmapType nativePixmap,
                                      const egl::AttributeMap &attribs) override;

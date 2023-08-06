@@ -132,10 +132,14 @@ std::optional<SharedVideoFrame::Buffer> SharedVideoFrameWriter::writeBuffer(CVPi
     if (!pixelBuffer)
         return { };
 
+#if HAVE(IOSURFACE)
     if (canUseIOSurface) {
         if (auto surface = CVPixelBufferGetIOSurface(pixelBuffer))
             return MachSendRight::adopt(IOSurfaceCreateMachPort(surface));
     }
+#else
+    UNUSED_PARAM(canUseIOSurface);
+#endif
 
     auto scope = makeScopeExit([this] { signalInCaseOfError(); });
 
@@ -256,12 +260,16 @@ RetainPtr<CVPixelBufferRef> SharedVideoFrameReader::readBuffer(SharedVideoFrame:
         ASSERT(sample->pixelBuffer());
         return sample->pixelBuffer();
     } , [](MachSendRight&& sendRight) -> RetainPtr<CVPixelBufferRef> {
+#if HAVE(IOSURFACE)
         auto surface = CyberCore::IOSurface::createFromSendRight(WTFMove(sendRight));
         if (!surface) {
             RELEASE_LOG_ERROR(WebRTC, "SharedVideoFrameReader::readBuffer no surface");
             return nullptr;
         }
         return CyberCore::createCVPixelBuffer(surface->surface()).value_or(nullptr);
+#else
+        return nullptr;
+#endif
     }, [this](std::nullptr_t representation) -> RetainPtr<CVPixelBufferRef> {
         return readBufferFromSharedMemory();
     }, [this](IntSize size) -> RetainPtr<CVPixelBufferRef> {

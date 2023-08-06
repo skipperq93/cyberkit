@@ -98,6 +98,7 @@ void RemoteMediaPlayerProxy::mediaPlayerOnNewVideoFrameMetadata(VideoFrameMetada
 
 void RemoteMediaPlayerProxy::nativeImageForCurrentTime(CompletionHandler<void(std::optional<WTF::MachSendRight>&&, CyberCore::DestinationColorSpace)>&& completionHandler)
 {
+#if HAVE(IOSURFACE)
     if (!m_player) {
         completionHandler(std::nullopt, DestinationColorSpace::SRGB());
         return;
@@ -122,6 +123,9 @@ void RemoteMediaPlayerProxy::nativeImageForCurrentTime(CompletionHandler<void(st
     }
 
     completionHandler(surface->createSendRight(), nativeImage->colorSpace());
+#else
+    completionHandler(std::nullopt, DestinationColorSpace::SRGB());
+#endif
 }
 
 void RemoteMediaPlayerProxy::colorSpace(CompletionHandler<void(CyberCore::DestinationColorSpace)>&& completionHandler)

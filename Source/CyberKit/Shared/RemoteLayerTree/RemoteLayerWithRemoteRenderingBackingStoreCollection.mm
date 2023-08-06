@@ -102,7 +102,11 @@ void RemoteLayerWithRemoteRenderingBackingStoreCollection::prepareBackingStoresF
 
 RefPtr<CyberCore::ImageBuffer> RemoteLayerWithRemoteRenderingBackingStoreCollection::allocateBufferForBackingStore(const RemoteLayerBackingStore& backingStore)
 {
+#if HAVE(IOSURFACE)
     auto renderingMode = backingStore.type() == RemoteLayerBackingStore::Type::IOSurface ? CyberCore::RenderingMode::Accelerated : CyberCore::RenderingMode::Unaccelerated;
+#else
+    auto renderingMode = CyberCore::RenderingMode::Unaccelerated;
+#endif
     return remoteRenderingBackendProxy().createImageBuffer(backingStore.size(), renderingMode, CyberCore::RenderingPurpose::LayerBacking, backingStore.scale(), backingStore.colorSpace(), backingStore.pixelFormat());
 }
 

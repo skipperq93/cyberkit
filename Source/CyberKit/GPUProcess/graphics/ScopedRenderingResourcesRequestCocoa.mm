@@ -28,7 +28,9 @@
 
 #if PLATFORM(COCOA)
 
+#if HAVE(IOSURFACE)
 #import <Metal/Metal.h>
+#endif
 #import <objc/NSObjCRuntime.h>
 #import <pal/spi/cocoa/MetalSPI.h>
 #import <wtf/BlockObjCExceptions.h>
@@ -36,8 +38,10 @@
 #import <wtf/RunLoop.h>
 #import <wtf/Seconds.h>
 
+#if HAVE(IOSURFACE)
 OBJC_PROTOCOL(MTLDevice);
 OBJC_PROTOCOL(MTLDeviceSPI);
+#endif
 
 namespace CyberKit {
 
@@ -64,7 +68,7 @@ void ScopedRenderingResourcesRequest::freeRenderingResources()
         if ([device respondsToSelector:@selector(_purgeDevice)])
             [(_MTLDevice *)device _purgeDevice];
     }
-#else
+#elif HAVE(IOSURFACE)
     RetainPtr<MTLDevice> devicePtr = adoptNS(MTLCreateSystemDefaultDevice());
     if ([devicePtr.get() respondsToSelector:@selector(_purgeDevice)])
         [(_MTLDevice *)devicePtr.get() _purgeDevice];
