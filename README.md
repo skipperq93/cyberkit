@@ -35,7 +35,7 @@ You will build the "Everything up to CyberKit" target then the appropriate app.
 
 ### iOS 10 SDK Modifications
 CoreImage.framework:
-* In CoreImageDefines.h, change the line `#define COREIMAGE_SUPPORTS_IOSURFACE 1` to `#define COREIMAGE_SUPPORTS_IOSURFACE 0`
+* ~~In CoreImageDefines.h, change the line `#define COREIMAGE_SUPPORTS_IOSURFACE 1` to `#define COREIMAGE_SUPPORTS_IOSURFACE 0`~~
 * In CIImageProcessor.h, wrap the IOSurface includes with `#if COREIMAGE_SUPPORTS_IOSURFACE`
 
 ### Development Environment Notes
