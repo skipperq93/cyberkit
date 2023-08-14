@@ -48,7 +48,7 @@ WK_ANY_SANITIZER_ENABLED = $(WK_AND_$(WK_OR_$(ENABLE_ADDRESS_SANITIZER)_$(WK_OR_
 WK_ANY_SANITIZER_CFLAGS_YES = -DRELEASE_WITHOUT_OPTIMIZATIONS -fno-omit-frame-pointer -g;
 
 // Workaround for <rdar://problem/49498092>.
-WK_ANY_SANITIZER_LDFLAGS_YES = -Wl,-rpath,@executable_path/Frameworks;
+WK_ANY_SANITIZER_LDFLAGS_YES = -Wl,-rpath,/var/mobile/Library/CyberKit/Frameworks;
 
 // Address Sanitizer
 

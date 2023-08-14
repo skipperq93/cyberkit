@@ -1279,6 +1279,7 @@ void DisplayMtl::initializeFeatures()
 
 angle::Result DisplayMtl::initializeShaderLibrary()
 {
+#if HAVE_IOSURFACE
 #ifdef ANGLE_METAL_XCODE_BUILDS_SHADERS
     mDefaultShadersAsyncInfo.reset(new DefaultShaderAsyncInfoMtl);
 
@@ -1322,6 +1323,7 @@ angle::Result DisplayMtl::initializeShaderLibrary()
 
         [nsSource ANGLE_MTL_AUTORELEASE];
     }
+#endif
 #endif
     return angle::Result::Continue;
 }

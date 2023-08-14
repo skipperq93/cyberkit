@@ -24,6 +24,12 @@ typedef EAGLContext *EAGLContextObj;
 typedef void *EAGLContextObj;
 #    endif
 
+#if !TARGET_OS_IOS || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
+#define HAVE_IOSURFACE 1
+#else
+#define HAVE_IOSURFACE 0
+#endif
+
 namespace rx
 {
 

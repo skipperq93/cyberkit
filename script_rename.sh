@@ -1,4 +1,5 @@
 #!/bin/zsh
+# brew install gnu-sed rename
 
 # Rename contents of files
 echo $'(1/16) Replacing \u004A\u0061\u0076\u0061ScriptCore'
