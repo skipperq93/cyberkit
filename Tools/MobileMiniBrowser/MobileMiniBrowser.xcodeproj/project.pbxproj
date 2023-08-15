@@ -459,7 +459,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n$SRCROOT/script_fakesigner.sh mobileminibrowser+10 $(CYBERKIT_FRAMEWORK_VERSION)\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n$SRCROOT/script_fakesigner.sh mobileminibrowser+$CYBERKIT_DEPLOYMENT_TARGET $CYBERKIT_FRAMEWORK_VERSION\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -536,7 +536,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD4DEEE31D78C6FF00625986 /* DebugRelease.xcconfig */;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = $CYBERKIT_DEPLOYMENT_TARGET;
 			};
 			name = Debug;
 		};
@@ -544,7 +544,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD4DEEE31D78C6FF00625986 /* DebugRelease.xcconfig */;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = $CYBERKIT_DEPLOYMENT_TARGET;
 			};
 			name = Release;
 		};
@@ -560,7 +560,7 @@
 				INFOPLIST_FILE = MobileMiniBrowser/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"/var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION)",
+					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.ios.Fennec;
 				PRODUCT_NAME = MobileMiniBrowser;
@@ -582,7 +582,7 @@
 				INFOPLIST_FILE = MobileMiniBrowser/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"/var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION)",
+					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.ios.Fennec;
 				PRODUCT_NAME = MobileMiniBrowser;
@@ -598,7 +598,7 @@
 				INFOPLIST_FILE = MobileMiniBrowserUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"/var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION)",
+					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.webkit.MobileMiniBrowserUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -612,7 +612,7 @@
 				INFOPLIST_FILE = MobileMiniBrowserUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"/var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION)",
+					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.webkit.MobileMiniBrowserUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -634,7 +634,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"/var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION)",
+					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.webkit.MobileMiniBrowserFramework;
 				PRODUCT_NAME = MobileMiniBrowser;
@@ -658,7 +658,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"/var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION)",
+					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.webkit.MobileMiniBrowserFramework;
 				PRODUCT_NAME = MobileMiniBrowser;

@@ -1050,7 +1050,7 @@
 		5C1F0595216437B30039302C /* URLCF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5C1F0594216437B30039302C /* URLCF.cpp */; };
 		5C6552C029423F85008CD0F3 /* ThreadSafeWeakHashSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6552BF29423F85008CD0F3 /* ThreadSafeWeakHashSet.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		5CB8CB6D28C16CB700539906 /* ArgumentCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CB8CB6C28C16CB700539906 /* ArgumentCoder.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		5CC0EE7521629F1900A1A842 /* URLParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5CC0EE7321629F1900A1A842 /* URLParser.cpp */; };
+		5CC0EE7521629F1900A1A842 /* URLParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5CC0EE7321629F1900A1A842 /* URLParser.cpp */; settings = {COMPILER_FLAGS = "-D\"CYBERKIT_FRAMEWORK_VERSION=\\\"$(CYBERKIT_FRAMEWORK_VERSION)\"\\\""; }; };
 		5CC0EE7621629F1900A1A842 /* URL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5CC0EE7421629F1900A1A842 /* URL.cpp */; };
 		5CC0EE892162BC2200A1A842 /* URLCocoa.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5CC0EE862162BC2200A1A842 /* URLCocoa.mm */; };
 		5CC0EE8A2162BC2200A1A842 /* NSURLExtras.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5CC0EE882162BC2200A1A842 /* NSURLExtras.mm */; };
@@ -24553,7 +24553,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5D247B7014689C4700E78B76 /* DebugRelease.xcconfig */;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = $CYBERKIT_DEPLOYMENT_TARGET;
 			};
 			name = Debug;
 		};
@@ -24561,7 +24561,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5D247B7014689C4700E78B76 /* DebugRelease.xcconfig */;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = $CYBERKIT_DEPLOYMENT_TARGET;
 			};
 			name = Release;
 		};
@@ -24583,7 +24583,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5D247B6E14689C4700E78B76 /* Base.xcconfig */;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = $CYBERKIT_DEPLOYMENT_TARGET;
 			};
 			name = Production;
 		};

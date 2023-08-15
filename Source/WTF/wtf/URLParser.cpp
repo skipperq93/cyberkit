@@ -2949,8 +2949,12 @@ const UIDNA& URLParser::internationalDomainNameTranscoder()
     static UIDNA* encoder;
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [] {
-        auto CYBERKIT_FRAMEWORK_VERSION = "0.0.9-alpha";
-        u_setDataDirectory("/var/mobile/Library/CyberKit/Frameworks/" + CYBERKIT_FRAMEWORK_VERSION + "/CyberKit.framework/XPCServices");
+#ifdef CYBERKIT_FRAMEWORK_VERSION
+        std::string path = "/var/mobile/Library/CyberKit/Frameworks/" + std::string(CYBERKIT_FRAMEWORK_VERSION) + "/CyberKit.framework/XPCServices";
+        u_setDataDirectory(path.c_str());
+#else
+#error CYBERKIT_FRAMEWORK_VERSION not defined
+#endif
         UErrorCode error = U_ZERO_ERROR;
         encoder = uidna_openUTS46(UIDNA_CHECK_BIDI | UIDNA_CHECK_CONTEXTJ | UIDNA_NONTRANSITIONAL_TO_UNICODE | UIDNA_NONTRANSITIONAL_TO_ASCII, &error);
         if (UNLIKELY(U_FAILURE(error)))
