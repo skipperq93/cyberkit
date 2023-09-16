@@ -285,7 +285,7 @@ Optional<AuthenticatorGetInfoResponse> readCTAPGetInfoResponse(const Vector<uint
         if (!it->second.isUnsigned())
             return WTF::nullopt;
 
-        response.setMaxMsgSize(it->second.getUnsigned());
+        response.setMaxMsgSize(static_cast<const uint32_t>(it->second.getUnsigned()));
     }
 
     it = responseMap.find(CBOR(6));

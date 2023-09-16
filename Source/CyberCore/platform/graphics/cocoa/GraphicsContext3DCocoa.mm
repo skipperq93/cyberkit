@@ -52,7 +52,9 @@
 #if USE(OPENGL_ES)
 #import <OpenGLES/EAGL.h>
 #import <OpenGLES/EAGLDrawable.h>
+#if HAVE(IOSURFACE)
 #import <OpenGLES/EAGLIOSurface.h>
+#endif
 #import <OpenGLES/ES2/glext.h>
 #import <QuartzCore/QuartzCore.h>
 #import <pal/spi/ios/OpenGLESSPI.h>
@@ -565,7 +567,7 @@ bool GraphicsContext3D::texImageIOSurface2D(GC3Denum target, GC3Denum internalFo
 {
 #if USE(OPENGL)
     return kCGLNoError == CGLTexImageIOSurface2D(platformGraphicsContext3D(), target, internalFormat, width, height, format, type, surface, plane);
-#elif USE(OPENGL_ES) && !PLATFORM(IOS_FAMILY_SIMULATOR)
+#elif USE(OPENGL_ES) && HAVE(IOSURFACE)
     return [platformGraphicsContext3D() texImageIOSurface:surface target:target internalFormat:internalFormat width:width height:height format:format type:type plane:plane];
 #else
     UNUSED_PARAM(target);

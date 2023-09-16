@@ -72,7 +72,9 @@ public:
     FloatSize videoDimensions() const override { return m_videoDimensions; }
     bool hasVideo() const override { return m_hasVideo; }
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
     WEBCORE_EXPORT void requestRouteSharingPolicyAndContextUID(CompletionHandler<void(RouteSharingPolicy, String)>&&) override;
+#endif
 
 protected:
     WEBCORE_EXPORT VideoFullscreenModelVideoElement();

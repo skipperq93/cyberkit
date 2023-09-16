@@ -184,7 +184,9 @@ protected:
     WTF::Function<void(bool)> m_prepareToInlineCallback;
     RunLoop::Timer<VideoFullscreenInterfaceAVKit> m_watchdogTimer;
     FloatRect m_inlineRect;
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
     RouteSharingPolicy m_routeSharingPolicy { RouteSharingPolicy::Default };
+#endif
     String m_routingContextUID;
     bool m_allowsPictureInPicturePlayback { false };
     bool m_wirelessVideoPlaybackDisabled { true };

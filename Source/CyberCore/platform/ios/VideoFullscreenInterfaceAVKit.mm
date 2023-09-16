@@ -775,6 +775,7 @@ void VideoFullscreenInterfaceAVKit::setVideoFullscreenModel(VideoFullscreenModel
 
     if (m_videoFullscreenModel) {
         m_videoFullscreenModel->addClient(*this);
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
         m_videoFullscreenModel->requestRouteSharingPolicyAndContextUID([this, protectedThis = makeRefPtr(this)] (RouteSharingPolicy policy, String contextUID) {
             m_routeSharingPolicy = policy;
             m_routingContextUID = contextUID;
@@ -782,6 +783,7 @@ void VideoFullscreenInterfaceAVKit::setVideoFullscreenModel(VideoFullscreenModel
             if (m_playerViewController && !m_routingContextUID.isEmpty())
                 [m_playerViewController setCyberKitOverrideRouteSharingPolicy:(NSUInteger)m_routeSharingPolicy routingContextUID:m_routingContextUID];
         });
+#endif
     }
 
     hasVideoChanged(m_videoFullscreenModel ? m_videoFullscreenModel->hasVideo() : false);
@@ -1250,8 +1252,10 @@ void VideoFullscreenInterfaceAVKit::doSetup()
     [m_playerViewController setDelegate:m_playerViewControllerDelegate.get()];
     [m_playerViewController setAllowsPictureInPicturePlayback:m_allowsPictureInPicturePlayback];
     [playerController() setPictureInPicturePossible:m_allowsPictureInPicturePlayback];
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
     if (!m_routingContextUID.isEmpty())
         [m_playerViewController setCyberKitOverrideRouteSharingPolicy:(NSUInteger)m_routeSharingPolicy routingContextUID:m_routingContextUID];
+#endif
 
 #if PLATFORM(WATCHOS)
     m_viewController = videoFullscreenModel() ? videoFullscreenModel()->createVideoFullscreenViewController(m_playerViewController.get().avPlayerViewController) : nil;
