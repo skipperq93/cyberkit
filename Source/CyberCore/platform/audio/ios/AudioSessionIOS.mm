@@ -112,7 +112,9 @@ void AudioSession::setCategory(CategoryType newCategory)
     NSString *categoryString;
     NSString *categoryMode = AVAudioSessionModeDefault;
     AVAudioSessionCategoryOptions options = 0;
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
     AVAudioSessionRouteSharingPolicy policy = AVAudioSessionRouteSharingPolicyDefault;
+#endif
 
     switch (newCategory) {
     case AmbientSound:
@@ -123,7 +125,9 @@ void AudioSession::setCategory(CategoryType newCategory)
         break;
     case MediaPlayback:
         categoryString = AVAudioSessionCategoryPlayback;
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
         policy = AVAudioSessionRouteSharingPolicyLongForm;
+#endif
         break;
     case RecordAudio:
         categoryString = AVAudioSessionCategoryRecord;
@@ -142,7 +146,15 @@ void AudioSession::setCategory(CategoryType newCategory)
     }
 
     NSError *error = nil;
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
     [[AVAudioSession sharedInstance] setCategory:categoryString mode:categoryMode routeSharingPolicy:policy options:options error:&error];
+#else
+    [[AVAudioSession sharedInstance] setCategory:categoryString withOptions:options error:&error];
+#if !PLATFORM(IOS_FAMILY_SIMULATOR) && !PLATFORM(IOSMAC)
+    ASSERT(!error);
+#endif
+    [[AVAudioSession sharedInstance] setMode:categoryMode error:&error];
+#endif
 #if !PLATFORM(IOS_FAMILY_SIMULATOR) && !PLATFORM(IOSMAC)
     ASSERT(!error);
 #endif
@@ -166,6 +178,7 @@ AudioSession::CategoryType AudioSession::category() const
     return None;
 }
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
 RouteSharingPolicy AudioSession::routeSharingPolicy() const
 {
     static_assert(static_cast<size_t>(RouteSharingPolicy::Default) == static_cast<size_t>(AVAudioSessionRouteSharingPolicyDefault), "RouteSharingPolicy::Default is not AVAudioSessionRouteSharingPolicyDefault as expected");
@@ -176,6 +189,7 @@ RouteSharingPolicy AudioSession::routeSharingPolicy() const
     ASSERT(static_cast<RouteSharingPolicy>(policy) <= RouteSharingPolicy::Independent);
     return static_cast<RouteSharingPolicy>(policy);
 }
+#endif
 
 String AudioSession::routingContextUID() const
 {

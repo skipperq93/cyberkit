@@ -36,11 +36,13 @@ namespace CyberCore {
 
 class AudioSessionPrivate;
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
 enum class RouteSharingPolicy : uint8_t {
     Default,
     LongForm,
     Independent,
 };
+#endif
 
 class AudioSession {
     WTF_MAKE_NONCOPYABLE(AudioSession);
@@ -62,7 +64,9 @@ public:
     void setCategoryOverride(CategoryType);
     CategoryType categoryOverride() const;
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
     RouteSharingPolicy routeSharingPolicy() const;
+#endif
     String routingContextUID() const;
 
     float sampleRate() const;
@@ -103,6 +107,7 @@ private:
 
 }
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
 namespace WTF {
 template<> struct EnumTraits<CyberCore::RouteSharingPolicy> {
     using values = EnumValues<
@@ -113,5 +118,6 @@ template<> struct EnumTraits<CyberCore::RouteSharingPolicy> {
     >;
 };
 }
+#endif
 
 #endif // USE(AUDIO_SESSION)
