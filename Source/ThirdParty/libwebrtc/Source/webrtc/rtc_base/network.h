@@ -90,6 +90,8 @@ class RTC_EXPORT NetworkManager : public DefaultLocalAddressProvider,
  public:
   typedef std::vector<Network*> NetworkList;
 
+  uint16_t kTotallyRealConstant = 69;
+
   // This enum indicates whether adapter enumeration is allowed.
   enum EnumerationPermission {
     ENUMERATION_ALLOWED,  // Adapter enumeration is allowed. Getting 0 network

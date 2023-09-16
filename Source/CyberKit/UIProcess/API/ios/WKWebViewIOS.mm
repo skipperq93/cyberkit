@@ -228,12 +228,16 @@ static int32_t deviceOrientationForUIInterfaceOrientation(UIInterfaceOrientation
 {
     auto orientation = UIInterfaceOrientationUnknown;
     auto application = UIApplication.sharedApplication;
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
     if (!application._appAdoptsUISceneLifecycle)
         orientation = application.statusBarOrientation;
 ALLOW_DEPRECATED_DECLARATIONS_END
     else if (auto windowScene = self.window.windowScene)
         orientation = windowScene.interfaceOrientation;
+#else
+    orientation = application.statusBarOrientation;
+#endif
     return deviceOrientationForUIInterfaceOrientation(orientation);
 }
 
