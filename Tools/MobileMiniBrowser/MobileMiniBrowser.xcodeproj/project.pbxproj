@@ -408,7 +408,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n$SRCROOT/script_fakesigner.sh mobileminibrowser+10 $(CYBERKIT_FRAMEWORK_VERSION)\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n$SRCROOT/script_fakesigner.sh mobileminibrowser+$CYBERKIT_DEPLOYMENT_TARGET $CYBERKIT_FRAMEWORK_VERSION\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -478,7 +478,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD4DEEE31D78C6FF00625986 /* DebugRelease.xcconfig */;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = "$(CYBERKIT_DEPLOYMENT_TARGET)";
 			};
 			name = Debug;
 		};
@@ -486,7 +486,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD4DEEE31D78C6FF00625986 /* DebugRelease.xcconfig */;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = "$(CYBERKIT_DEPLOYMENT_TARGET)";
 			};
 			name = Release;
 		};
@@ -500,7 +500,7 @@
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = MobileMiniBrowser/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) /var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks /var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.ios.Fennec;
 				PRODUCT_NAME = MobileMiniBrowser;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -519,7 +519,7 @@
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = MobileMiniBrowser/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) /var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks /var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.ios.Fennec;
 				PRODUCT_NAME = MobileMiniBrowser;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -532,7 +532,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = MobileMiniBrowserUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) /var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks /var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.webkit.MobileMiniBrowserUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_TARGET_NAME = MobileMiniBrowser;
@@ -543,7 +543,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = MobileMiniBrowserUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) /var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks /var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.webkit.MobileMiniBrowserUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_TARGET_NAME = MobileMiniBrowser;
@@ -562,7 +562,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = MobileMiniBrowser/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) /var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks /var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.webkit.MobileMiniBrowserFramework;
 				PRODUCT_NAME = MobileMiniBrowser;
 				SDKROOT = iphoneos;
@@ -584,7 +584,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = MobileMiniBrowser/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) /var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks /var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.webkit.MobileMiniBrowserFramework;
 				PRODUCT_NAME = MobileMiniBrowser;
 				SDKROOT = iphoneos;

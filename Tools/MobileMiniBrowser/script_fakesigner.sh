@@ -98,7 +98,7 @@ fi
 echo "[*] Creating DEB..."
 DEBIAN_FILES=$SCRIPT_DIR/resources/$DIR_NAME
 CYBERKIT_FRAMEWORK_VERSION=$2
-EXTERNAL_FRAMEWORK_PATH=/var/mobile/Library/CyberKit/Frameworks/$CYBERKIT_FRAMEWORK_VERSION
+EXTERNAL_FRAMEWORK_PATH=$DIR_NAME/var/mobile/Library/CyberKit/Frameworks/$CYBERKIT_FRAMEWORK_VERSION
 echo "[*] Detected framework version:" $CYBERKIT_FRAMEWORK_VERSION
 
 mv Payload $APPLICATION_PATH
@@ -112,7 +112,13 @@ mkdir $DIR_NAME/var
 mkdir $DIR_NAME/var/mobile
 mkdir $DIR_NAME/var/mobile/Library
 mkdir $DIR_NAME/var/mobile/Library/CyberKit
-mv $APPLICATION_PATH/$app/Frameworks $DIR_NAME$EXTERNAL_FRAMEWORK_PATH
+mkdir $DIR_NAME/var/mobile/Library/CyberKit/Frameworks
+mkdir $EXTERNAL_FRAMEWORK_PATH
+mv $APPLICATION_PATH/$app/Frameworks/CyberCore.framework $EXTERNAL_FRAMEWORK_PATH/CyberCore.framework
+mv $APPLICATION_PATH/$app/Frameworks/CyberKit.framework $EXTERNAL_FRAMEWORK_PATH/CyberKit.framework
+mv $APPLICATION_PATH/$app/Frameworks/CyberKitLegacy.framework $EXTERNAL_FRAMEWORK_PATH/CyberKitLegacy.framework
+mv $APPLICATION_PATH/$app/Frameworks/CyberScriptCore.framework $EXTERNAL_FRAMEWORK_PATH/CyberScriptCore.framework
+mv $APPLICATION_PATH/$app/Frameworks/libwebrtc.dylib $EXTERNAL_FRAMEWORK_PATH/libwebrtc.dylib
 
 if [[ "$DIR_NAME" == *"+10"* ]]; then
 	echo "[*] Forcing gzip compression for legacy iOS"
@@ -123,7 +129,11 @@ else
 fi
 
 echo "[*] Returning frameworks"
-mv $DIR_NAME$EXTERNAL_FRAMEWORK_PATH $APPLICATION_PATH/$app
+mv $EXTERNAL_FRAMEWORK_PATH/CyberCore.framework $APPLICATION_PATH/$app/Frameworks/CyberCore.framework
+mv $EXTERNAL_FRAMEWORK_PATH/CyberKit.framework $APPLICATION_PATH/$app/Frameworks/CyberKit.framework
+mv $EXTERNAL_FRAMEWORK_PATH/CyberKitLegacy.framework $APPLICATION_PATH/$app/Frameworks/CyberKitLegacy.framework
+mv $EXTERNAL_FRAMEWORK_PATH/CyberScriptCore.framework $APPLICATION_PATH/$app/Frameworks/CyberScriptCore.framework
+mv $EXTERNAL_FRAMEWORK_PATH/libwebrtc.dylib $APPLICATION_PATH/$app/Frameworks/libwebrtc.dylib
 
 mv $APPLICATION_PATH Payload
 rm -rf $DIR_NAME

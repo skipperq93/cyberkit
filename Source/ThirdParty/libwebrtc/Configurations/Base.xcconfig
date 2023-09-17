@@ -1,4 +1,5 @@
 #include? "../../../../../Internal/Configurations/HaveInternalSDK.xcconfig"
+#include "../../../../Configurations/Version.xcconfig"
 
 CODE_SIGN_IDENTITY = -;
 
