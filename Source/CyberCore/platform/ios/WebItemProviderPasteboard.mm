@@ -26,7 +26,7 @@
 #include "config.h"
 #import "WebItemProviderPasteboard.h"
 
-#if (ENABLE(DATA_INTERACTION) || PLATFORM(IOSMAC)) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000)
+#if ENABLE(DATA_INTERACTION) || PLATFORM(IOSMAC)
 
 #import <Foundation/NSItemProvider.h>
 #import <Foundation/NSProgress.h>
