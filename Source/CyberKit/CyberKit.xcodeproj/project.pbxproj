@@ -10114,11 +10114,11 @@
 						ProvisioningStyle = Automatic;
 					};
 					BC3DE46515A91763008D26FC = {
-						DevelopmentTeam = SJ87WGCZM7;
+						DevelopmentTeam = 25LZ6Y5YHM;
 						ProvisioningStyle = Automatic;
 					};
 					BC8283B016B4BF7700A278FE = {
-						DevelopmentTeam = SJ87WGCZM7;
+						DevelopmentTeam = 25LZ6Y5YHM;
 						ProvisioningStyle = Automatic;
 					};
 					BC8283F816B4FDDE00A278FE = {
@@ -10126,7 +10126,7 @@
 						ProvisioningStyle = Automatic;
 					};
 					BC82841E16B4FDF600A278FE = {
-						DevelopmentTeam = SJ87WGCZM7;
+						DevelopmentTeam = 25LZ6Y5YHM;
 						ProvisioningStyle = Automatic;
 					};
 					E1AC2E2720F7B94C00B0897D = {
@@ -11468,7 +11468,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				DEVELOPMENT_TEAM = 25LZ6Y5YHM;
 				ENABLE_BITCODE = NO;
 				ENABLE_HARDENED_RUNTIME = NO;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -11511,7 +11511,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				DEVELOPMENT_TEAM = 25LZ6Y5YHM;
 				ENABLE_BITCODE = NO;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
@@ -11590,7 +11590,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				DEVELOPMENT_TEAM = 25LZ6Y5YHM;
 				ENABLE_BITCODE = NO;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
