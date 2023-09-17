@@ -22,7 +22,7 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
 
 #include "FeatureDefines.xcconfig"
-#include "Version.xcconfig"
+#include "../../../../Configurations/Version.xcconfig"
 
 EXCLUDED_SOURCE_FILE_NAMES = $(EXCLUDED_SOURCE_FILE_NAMES_$(WK_COCOA_TOUCH));
 EXCLUDED_SOURCE_FILE_NAMES_cocoatouch = *.defs *.xib *.pdf *.tiff CarbonUtils.* CarbonWindowAdapter.* CarbonWindowContentView.* CarbonWindowFrame.* HIViewAdapter.* HIWebView.* OutlookQuirksUserScript.js PopupMenuMac.* SearchPopupMenuMac.* WebClipView.* WebDashboardRegion.* WebDynamicScrollBarsView.* WebIconDatabase.* WebInspectorClient.* WebJavaScriptTextInputPanel.* WebNSEventExtras.* WebNSPasteboardExtras.* WebNSWindowExtras.* WebPanelAuthenticationHandler.* WebPluginsPrivate.* WebStringTruncator.* WebTextCompletionController.*;
@@ -63,7 +63,7 @@ INSTALL_PATH = $(INSTALL_PATH_COCOA_TOUCH_$(WK_IS_COCOA_TOUCH));
 INSTALL_PATH_COCOA_TOUCH_YES = $(WK_ALTERNATE_WEBKIT_SDK_PATH)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks;
 INSTALL_PATH_COCOA_TOUCH_NO = $(WEBKIT_LEGACY_FRAMEWORKS_DIR);
 
-DYLIB_INSTALL_NAME_BASE = @executable_path/Frameworks;
+DYLIB_INSTALL_NAME_BASE = /var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION);
 
 INSTALLHDRS_COPY_PHASE = YES;
 INSTALLHDRS_SCRIPT_PHASE = YES;

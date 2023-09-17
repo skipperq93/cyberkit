@@ -33,7 +33,7 @@ SKIP_INSTALL_ = YES;
 SKIP_INSTALL_NO = YES;
 SKIP_INSTALL_YES = NO;
 
-DYLIB_INSTALL_NAME_BASE = @executable_path/Frameworks;
+DYLIB_INSTALL_NAME_BASE = /var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION);
 
 PRODUCT_NAME = CyberCoreTestShim;
 EXECUTABLE_PREFIX = lib;
