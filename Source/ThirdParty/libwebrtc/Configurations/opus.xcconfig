@@ -1,4 +1,4 @@
-#include "CyberKitTargetConditionals.xcconfig"
+#include "../../../../Configurations/CyberKitTargetConditionals.xcconfig"
 
 PRODUCT_NAME = opus;
 

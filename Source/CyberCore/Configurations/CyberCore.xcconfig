@@ -21,7 +21,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
 
-#include "FeatureDefines.xcconfig"
+#include "../../../Configurations/FeatureDefines.xcconfig"
 #include "../../../Configurations/Version.xcconfig"
 
 GCC_PREFIX_HEADER = CyberCorePrefix.h;
@@ -122,15 +122,19 @@ WK_SYSTEM_PREVIEW_LDFLAGS_iphonesimulator = -framework CoreImage;
 WK_URL_FORMATTING_LDFLAGS = $(WK_URL_FORMATTING_LDFLAGS_$(WK_HAVE_URL_FORMATTING));
 WK_URL_FORMATTING_LDFLAGS_YES = -framework URLFormatting;
 
-// FIXME: Reduce the number of allowable_clients <rdar://problem/31823969>
-OTHER_LDFLAGS = $(inherited) $(WK_RELOCATABLE_FRAMEWORK_LDFLAGS) $(WK_UNDEFINED_SYMBOLS_LDFLAGS) -lsqlite3 -lobjc -lANGLE -allowable_client CyberCoreTestSupport -allowable_client CyberKitLegacy -force_load $(BUILT_PRODUCTS_DIR)/libPAL.a -framework CFNetwork -framework CoreAudio -framework CoreGraphics -framework CoreText -framework Foundation -framework ImageIO -framework Metal $(OTHER_LDFLAGS_PLATFORM_$(WK_COCOA_TOUCH)) $(OTHER_LDFLAGS_PLATFORM_$(WK_PLATFORM_NAME)) $(WK_APPKIT_LDFLAGS) $(WK_APPSUPPORT_LDFLAGS) $(WK_AUDIO_UNIT_LDFLAGS) $(WK_CARBON_LDFLAGS) $(WK_CORE_UI_LDFLAGS) $(WK_DATA_DETECTORS_CORE_LDFLAGS) $(WK_GRAPHICS_SERVICES_LDFLAGS) $(WK_IOSURFACE_LDFLAGS) $(WK_LIBWEBRTC_LDFLAGS) $(WK_MOBILE_CORE_SERVICES_LDFLAGS) $(WK_MOBILE_GESTALT_LDFLAGS) $(WK_OPENGL_LDFLAGS) $(WK_SYSTEM_CONFIGURATION_LDFLAGS) $(WK_SYSTEM_PREVIEW_LDFLAGS) $(WK_URL_FORMATTING_LDFLAGS);
-
 OTHER_LDFLAGS_PLATFORM_cocoatouch = -allowable_client CyberKit -allowable_client iTunesU -allowable_client Casablanca -allowable_client Remote -allowable_client TVBooks -allowable_client DumpRenderTree -allowable_client CyberKitTestRunner -allowable_client TestCyberKitAPI -allowable_client MobileMiniBrowser;
 OTHER_LDFLAGS_PLATFORM_macosx = -sub_library libobjc -umbrella CyberKit;
 
-WK_UNDEFINED_SYMBOLS_LDFLAGS[sdk=macosx*] = $(WK_UNDEFINED_SYMBOLS_LDFLAGS$(WK_MACOS_1013));
+WK_UNDEFINED_SYMBOLS_LDFLAGS = $(WK_UNDEFINED_SYMBOLS_LDFLAGS_$(WK_PLATFORM_NAME));
+WK_UNDEFINED_SYMBOLS_LDFLAGS_iphoneos = $(WK_UNDEFINED_SYMBOLS_LDFLAGS$(WK_IOS_11));
+WK_UNDEFINED_SYMBOLS_LDFLAGS_iphonesimulator = $(WK_UNDEFINED_SYMBOLS_LDFLAGS$(WK_IOS_11));
+WK_UNDEFINED_SYMBOLS_LDFLAGS_IOS_BEFORE_11 = -Wl,-U,_CTFontCreatePhysicalFontForCharactersWithLanguage;
+WK_UNDEFINED_SYMBOLS_LDFLAGS_macosx = $(WK_UNDEFINED_SYMBOLS_LDFLAGS$(WK_MACOS_1013));
 WK_UNDEFINED_SYMBOLS_LDFLAGS_MACOS_BEFORE_1013 = -Wl,-U,_CTFontCreatePhysicalFontForCharactersWithLanguage;
 WK_UNDEFINED_SYMBOLS_LDFLAGS_MACOS_BEFORE_1013[sdk=macosx10.12*] =;
+
+// FIXME: Reduce the number of allowable_clients <rdar://problem/31823969>
+OTHER_LDFLAGS = $(inherited) $(WK_RELOCATABLE_FRAMEWORK_LDFLAGS) $(WK_UNDEFINED_SYMBOLS_LDFLAGS) -lsqlite3 -lobjc -lANGLE -allowable_client CyberCoreTestSupport -allowable_client CyberKitLegacy -force_load $(BUILT_PRODUCTS_DIR)/libPAL.a -framework CFNetwork -framework CoreAudio -framework CoreGraphics -framework CoreText -framework Foundation -framework ImageIO -framework Metal $(OTHER_LDFLAGS_PLATFORM_$(WK_COCOA_TOUCH)) $(OTHER_LDFLAGS_PLATFORM_$(WK_PLATFORM_NAME)) $(WK_APPKIT_LDFLAGS) $(WK_APPSUPPORT_LDFLAGS) $(WK_AUDIO_UNIT_LDFLAGS) $(WK_CARBON_LDFLAGS) $(WK_CORE_UI_LDFLAGS) $(WK_DATA_DETECTORS_CORE_LDFLAGS) $(WK_GRAPHICS_SERVICES_LDFLAGS) $(WK_IOSURFACE_LDFLAGS) $(WK_LIBWEBRTC_LDFLAGS) $(WK_MOBILE_CORE_SERVICES_LDFLAGS) $(WK_MOBILE_GESTALT_LDFLAGS) $(WK_OPENGL_LDFLAGS) $(WK_SYSTEM_CONFIGURATION_LDFLAGS) $(WK_SYSTEM_PREVIEW_LDFLAGS) $(WK_URL_FORMATTING_LDFLAGS);
 
 SECTORDER_FLAGS = $(SECTORDER_FLAGS_$(CONFIGURATION));
 SECTORDER_FLAGS_Production[sdk=iphoneos*] = -Wl,-order_file,$(SDKROOT)/AppleInternal/OrderFiles/CyberCore.order;
