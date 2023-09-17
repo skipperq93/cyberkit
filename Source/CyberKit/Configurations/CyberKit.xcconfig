@@ -33,7 +33,8 @@ MODULEMAP_FILE_cocoatouch = Modules/iOS.modulemap;
 MODULEMAP_FILE_ = Modules/OSX.modulemap;
 
 INSTALL_PATH = $(WEBKIT_FRAMEWORKS_DIR);
-DYLIB_INSTALL_NAME_BASE = /var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION);
+DYLIB_INSTALL_NAME_BASE[sdk=iphoneos*] = /var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION);
+DYLIB_INSTALL_NAME_BASE[sdk=iphonesimulator*] = @executable_path/Frameworks;
 
 LIBRARY_SEARCH_PATHS = $(inherited) "$(LIBWEBRTC_LIBRARY_DIR)";
 

@@ -47,7 +47,8 @@ OTHER_CPLUSPLUSFLAGS = $(inherited) --system-header-prefix=unicode/;
 HEADER_SEARCH_PATHS = "${BUILT_PRODUCTS_DIR}/DerivedSources/CyberScriptCore" $(HEADER_SEARCH_PATHS);
 INFOPLIST_FILE = Info.plist;
 INSTALL_PATH = $(JAVASCRIPTCORE_FRAMEWORKS_DIR);
-DYLIB_INSTALL_NAME_BASE = /var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION);
+DYLIB_INSTALL_NAME_BASE[sdk=iphoneos*] = /var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION);
+DYLIB_INSTALL_NAME_BASE[sdk=iphonesimulator*] = @executable_path/Frameworks;
 PRODUCT_NAME = CyberScriptCore;
 PRODUCT_BUNDLE_IDENTIFIER = com.apple.$(PRODUCT_NAME:rfc1034identifier);
 
