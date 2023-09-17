@@ -162,7 +162,9 @@ enum class CompositingPolicy : uint8_t {
 
 enum class CanWrap : bool;
 enum class DidWrap : bool;
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
 enum class RouteSharingPolicy : uint8_t;
+#endif
 enum class ShouldTreatAsContinuingLoad : bool;
 
 class Page : public Supplementable<Page> {
@@ -613,7 +615,11 @@ public:
 #if ENABLE(WIRELESS_PLAYBACK_TARGET)
     void addPlaybackTargetPickerClient(uint64_t);
     void removePlaybackTargetPickerClient(uint64_t);
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
     void showPlaybackTargetPicker(uint64_t, const IntPoint&, bool, RouteSharingPolicy, const String&);
+#else
+    void showPlaybackTargetPicker(uint64_t, const IntPoint&, bool);
+#endif
     void playbackTargetPickerClientStateDidChange(uint64_t, MediaProducer::MediaStateFlags);
     WEBCORE_EXPORT void setMockMediaPlaybackTargetPickerEnabled(bool);
     WEBCORE_EXPORT void setMockMediaPlaybackTargetPickerState(const String&, MediaPlaybackTargetContext::State);

@@ -153,7 +153,9 @@ protected:
     void setVideoLayerGravityEnum(uint64_t contextId, unsigned gravity);
     void fullscreenModeChanged(uint64_t contextId, CyberCore::HTMLMediaElementEnums::VideoFullscreenMode);
     void fullscreenMayReturnToInline(uint64_t contextId, bool isPageVisible);
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
     void requestRouteSharingPolicyAndContextUID(uint64_t contextId, Messages::VideoFullscreenManager::RequestRouteSharingPolicyAndContextUID::AsyncReply&&);
+#endif
 
     WebPage* m_page;
     Ref<PlaybackSessionManager> m_playbackSessionManager;

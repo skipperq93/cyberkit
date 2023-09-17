@@ -132,7 +132,9 @@ public:
     void applicationDidBecomeActive();
     bool isVisible() const;
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
     void requestRouteSharingPolicyAndContextUID(uint64_t contextId, CompletionHandler<void(CyberCore::RouteSharingPolicy, String)>&&);
+#endif
 
 #if ENABLE(VIDEO_PRESENTATION_MODE)
     bool isPlayingVideoInEnhancedFullscreen() const;

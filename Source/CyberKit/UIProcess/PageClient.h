@@ -80,7 +80,9 @@ class Region;
 class TextIndicator;
 class WebMediaSessionManager;
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
 enum class RouteSharingPolicy : uint8_t;
+#endif
 enum class ScrollbarStyle;
 enum class TextIndicatorWindowLifetime : uint8_t;
 enum class TextIndicatorWindowDismissalAnimation : uint8_t;
@@ -375,7 +377,11 @@ public:
     virtual bool interpretKeyEvent(const NativeWebKeyboardEvent&, bool isCharEvent) = 0;
     virtual void positionInformationDidChange(const InteractionInformationAtPosition&) = 0;
     virtual void saveImageToLibrary(Ref<CyberCore::SharedBuffer>&&) = 0;
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
     virtual void showPlaybackTargetPicker(bool hasVideo, const CyberCore::IntRect& elementRect, CyberCore::RouteSharingPolicy, const String&) = 0;
+#else
+    virtual void showPlaybackTargetPicker(bool hasVideo, const CyberCore::IntRect& elementRect) = 0;
+#endif
     virtual void disableDoubleTapGesturesDuringTapIfNecessary(uint64_t requestID) = 0;
     virtual double minimumZoomScale() const = 0;
     virtual CyberCore::FloatRect documentRect() const = 0;

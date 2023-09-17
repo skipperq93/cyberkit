@@ -1764,7 +1764,11 @@ private:
     void autocorrectionContextCallback(const String& beforeText, const String& markedText, const String& selectedText, const String& afterText, uint64_t location, uint64_t length, CallbackID);
     void selectionContextCallback(const String& selectedText, const String& beforeText, const String& afterText, CallbackID);
     void interpretKeyEvent(const EditorState&, bool isCharEvent, bool& handled);
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
     void showPlaybackTargetPicker(bool hasVideo, const CyberCore::IntRect& elementRect, CyberCore::RouteSharingPolicy, const String&);
+#else
+    void showPlaybackTargetPicker(bool hasVideo, const CyberCore::IntRect& elementRect);
+#endif
     void selectionRectsCallback(const Vector<CyberCore::SelectionRect>&, CallbackID);
 
     void updateStringForFind(const String&);

@@ -193,7 +193,12 @@ messages -> WebPageProxy {
     InterpretKeyEvent(struct CyberKit::EditorState state, bool isCharEvent) -> (bool handled) LegacySync
     DidReceivePositionInformation(struct CyberKit::InteractionInformationAtPosition information)
     SaveImageToLibrary(CyberKit::SharedMemory::Handle handle, uint64_t size)
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
     ShowPlaybackTargetPicker(bool hasVideo, CyberCore::IntRect elementRect, enum:uint8_t CyberCore::RouteSharingPolicy policy, String routingContextUID)
+#endif
+#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 110000
+    ShowPlaybackTargetPicker(bool hasVideo, CyberCore::IntRect elementRect)
+#endif
     CommitPotentialTapFailed()
     DidNotHandleTapAsClick(CyberCore::IntPoint point)
     DidCompleteSyntheticClick()

@@ -91,7 +91,11 @@ private:
 
     void webAppOrientationsUpdated() final;
     void focusedElementChanged(CyberCore::Element*) final;
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
     void showPlaybackTargetPicker(bool hasVideo, CyberCore::RouteSharingPolicy, const String&) final;
+#else
+    void showPlaybackTargetPicker(bool hasVideo) final;
+#endif
     RefPtr<CyberCore::Icon> createIconForFiles(const Vector<String>& filenames) final;
 
 #if ENABLE(ORIENTATION_EVENTS)

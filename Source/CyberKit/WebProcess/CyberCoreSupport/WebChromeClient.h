@@ -175,7 +175,11 @@ private:
     void removeScrollingLayer(CyberCore::Node*, PlatformLayer* scrollingLayer, PlatformLayer* contentsLayer) final;
 
     void webAppOrientationsUpdated() final;
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
     void showPlaybackTargetPicker(bool hasVideo, CyberCore::RouteSharingPolicy, const String&) final;
+#else
+    void showPlaybackTargetPicker(bool hasVideo) final;
+#endif
 
     Seconds eventThrottlingDelay() final;
 
