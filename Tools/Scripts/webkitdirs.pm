@@ -47,6 +47,11 @@ use POSIX;
 use Time::HiRes qw(usleep);
 use VCSUtils;
 
+unless (defined(&decode_json)) {
+    eval "use JSON::XS;";
+    eval "use JSON::PP;" if $@;
+}
+
 BEGIN {
    use Exporter   ();
    our ($VERSION, @ISA, @EXPORT, @EXPORT_OK, %EXPORT_TAGS);
@@ -1479,27 +1484,35 @@ sub isAppleWinCyberKit()
     return portName() eq AppleWin;
 }
 
-sub iOSSimulatorDevicesPath
+sub simulatorDeviceFromJSON
 {
-    return "$ENV{HOME}/Library/Developer/CoreSimulator/Devices";
+    my $runtime = shift;
+    my $jsonDevice = shift;
+
+    return {
+        "UDID" => $jsonDevice->{udid},
+        "name" => $jsonDevice->{name},
+        "runtime" => $runtime,
+        "state" => $jsonDevice->{state},
+        "deviceType" => $jsonDevice->{deviceTypeIdentifier}
+    };
 }
 
 sub iOSSimulatorDevices
 {
-    eval "require Foundation";
-    my $devicesPath = iOSSimulatorDevicesPath();
-    opendir(DEVICES, $devicesPath);
-    my @udids = grep {
-        $_ =~ m/^[0-9A-F]{8}-([0-9A-F]{4}-){3}[0-9A-F]{12}$/;
-    } readdir(DEVICES);
-    close(DEVICES);
+    my $output = `xcrun simctl list devices --json`;
+    my $runtimes = decode_json($output)->{devices};
+    if (!$runtimes) {
+        die "No simulator devices found";
+    }
 
-    # FIXME: We should parse the device.plist file ourself and map the dictionary keys in it to known
-    #        dictionary keys so as to decouple our representation of the plist from the actual structure
-    #        of the plist, which may change.
-    my @devices = map {
-        Foundation::perlRefFromObjectRef(NSDictionary->dictionaryWithContentsOfFile_("$devicesPath/$_/device.plist"));
-    } @udids;
+    my @devices = ();
+    while ((my $runtime, my $devicesForRuntime) = each %$runtimes) {
+        foreach my $jsonDevice (@$devicesForRuntime) {
+            next if $jsonDevice->{availabilityError};
+            push @devices, simulatorDeviceFromJSON($runtime, $jsonDevice);
+        }
+    }
 
     return @devices;
 }
@@ -2630,22 +2643,23 @@ sub iosSimulatorDeviceByName($)
 sub iosSimulatorDeviceByUDID($)
 {
     my ($simulatedDeviceUDID) = @_;
-    my $devicePlistPath = File::Spec->catfile(iOSSimulatorDevicesPath(), $simulatedDeviceUDID, "device.plist");
-    if (!-f $devicePlistPath) {
-        return;
+
+    my $output = `xcrun simctl list devices $simulatedDeviceUDID --json`;
+    my $runtimes = decode_json($output)->{devices};
+
+    while ((my $runtime, my $devicesForRuntime) = each %$runtimes) {
+        next if not @$devicesForRuntime;
+        die "Multiple devices found for UDID $simulatedDeviceUDID: $output" if scalar(@$devicesForRuntime) > 1;
+        return simulatorDeviceFromJSON($runtime, @$devicesForRuntime[0]);        
     }
-    # FIXME: We should parse the device.plist file ourself and map the dictionary keys in it to known
-    #        dictionary keys so as to decouple our representation of the plist from the actual structure
-    #        of the plist, which may change.
-    eval "require Foundation";
-    return Foundation::perlRefFromObjectRef(NSDictionary->dictionaryWithContentsOfFile_($devicePlistPath));
+    return undef;
 }
 
 sub iosSimulatorRuntime()
 {
     my $xcodeSDKVersion = xcodeSDKVersion();
     $xcodeSDKVersion =~ s/\./-/;
-    return "com.apple.CoreSimulator.SimRuntime.iOS-$xcodeSDKVersion";
+    return "com.apple.CoreSimulator.SimRuntime.iOS-10-3";
 }
 
 sub findOrCreateSimulatorForIOSDevice($)
@@ -2654,11 +2668,11 @@ sub findOrCreateSimulatorForIOSDevice($)
     my $simulatorName;
     my $simulatorDeviceType;
     if (architecture() eq "x86_64") {
-        $simulatorName = "iPhone SE " . $simulatorNameSuffix;
-        $simulatorDeviceType = "com.apple.CoreSimulator.SimDeviceType.iPhone-SE";
+        $simulatorName = "iPhone 5s " . $simulatorNameSuffix;
+        $simulatorDeviceType = "com.apple.CoreSimulator.SimDeviceType.iPhone-5s";
     } else {
-        $simulatorName = "iPhone 5 " . $simulatorNameSuffix;
-        $simulatorDeviceType = "com.apple.CoreSimulator.SimDeviceType.iPhone-5";
+        $simulatorName = "iPhone 5s " . $simulatorNameSuffix;
+        $simulatorDeviceType = "com.apple.CoreSimulator.SimDeviceType.iPhone-5s";
     }
     my $simulatedDevice = iosSimulatorDeviceByName($simulatorName);
     return $simulatedDevice if $simulatedDevice;

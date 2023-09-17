@@ -31,7 +31,7 @@
 
 // Set any ENABLE_FEATURE_NAME macro to an empty string to disable that feature.
 
-#include "../../../Configurations/CyberKitTargetConditionals.xcconfig"
+#include "CyberKitTargetConditionals.xcconfig"
 
 ENABLE_3D_TRANSFORMS = ENABLE_3D_TRANSFORMS;
 

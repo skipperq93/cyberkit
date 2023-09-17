@@ -3785,7 +3785,9 @@ static NSString *contentTypeFromFieldName(CyberCore::AutofillFieldName fieldName
     case CyberCore::AutofillFieldName::URL:
         return UITextContentTypeURL;
     case CyberCore::AutofillFieldName::Username:
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
         return UITextContentTypeUsername;
+#endif
     case CyberCore::AutofillFieldName::None:
     case CyberCore::AutofillFieldName::NewPassword:
     case CyberCore::AutofillFieldName::CurrentPassword:
