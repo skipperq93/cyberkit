@@ -5191,7 +5191,11 @@ static const double minimumFocusedElementAreaForSuppressingSelectionAssistant = 
     [inputDelegate setSuggestions:nil];
 }
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
 - (void)_showPlaybackTargetPicker:(BOOL)hasVideo fromRect:(const CyberCore::IntRect&)elementRect routeSharingPolicy:(CyberCore::RouteSharingPolicy)routeSharingPolicy routingContextUID:(NSString *)routingContextUID
+#else
+- (void)_showPlaybackTargetPicker:(BOOL)hasVideo fromRect:(const CyberCore::IntRect&)elementRect
+#endif
 {
 #if ENABLE(AIRPLAY_PICKER)
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000 && !PLATFORM(WATCHOS) && !PLATFORM(APPLETV)
