@@ -465,6 +465,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.webkit.MobileMiniBrowser;
 				PRODUCT_NAME = MobileMiniBrowser;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -477,6 +478,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.webkit.MobileMiniBrowser;
 				PRODUCT_NAME = MobileMiniBrowser;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -487,6 +489,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks /var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.webkit.MobileMiniBrowserUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				TEST_TARGET_NAME = MobileMiniBrowser;
 			};
 			name = Debug;
@@ -498,6 +501,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks /var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.webkit.MobileMiniBrowserUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				TEST_TARGET_NAME = MobileMiniBrowser;
 			};
 			name = Release;
@@ -516,6 +520,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks /var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.webkit.MobileMiniBrowserFramework;
 				PRODUCT_NAME = MobileMiniBrowser;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -536,6 +541,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks /var/mobile/Library/CyberKit/Frameworks/$(CYBERKIT_FRAMEWORK_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.webkit.MobileMiniBrowserFramework;
 				PRODUCT_NAME = MobileMiniBrowser;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
