@@ -1003,7 +1003,7 @@ static const NSTimeInterval kAnimationDuration = 0.2;
     CGPoint translation = [_interactivePanDismissGestureRecognizer translationInView:_fullscreenViewController.get().view];
     CGPoint velocity = [_interactivePanDismissGestureRecognizer velocityInView:_fullscreenViewController.get().view];
     CGFloat progress = translation.y / (_fullscreenViewController.get().view.bounds.size.height / 2);
-    progress = std::min(1., std::max(0., progress));
+    progress = std::min<CGFloat>(1., std::max<CGFloat>(0., progress));
 
     if (_interactivePanDismissGestureRecognizer.get().state == UIGestureRecognizerStateEnded) {
         _inInteractiveDismiss = false;
@@ -1027,7 +1027,7 @@ static const NSTimeInterval kAnimationDuration = 0.2;
 
     CGFloat scale = [_interactivePinchDismissGestureRecognizer scale];
     CGFloat velocity = [_interactivePinchDismissGestureRecognizer velocity];
-    CGFloat progress = std::min(1., std::max(0., 1 - scale));
+    CGFloat progress = std::min<CGFloat>(1., std::max<CGFloat>(0., 1 - scale));
 
     CGPoint translation = CGPointZero;
     auto panState = [_interactivePanDismissGestureRecognizer state];

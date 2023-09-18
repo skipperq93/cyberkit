@@ -2876,11 +2876,13 @@ static WebCore::FloatPoint constrainContentOffset(WebCore::FloatPoint contentOff
     _hasScheduledVisibleRectUpdate = YES;
     _timeOfRequestForVisibleContentRectUpdate = MonotonicTime::now();
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
     CATransactionPhase transactionPhase = [CATransaction currentPhase];
     if (transactionPhase == kCATransactionPhaseNull || transactionPhase == kCATransactionPhasePreLayout) {
         [self _addUpdateVisibleContentRectPreCommitHandler];
         return;
     }
+#endif
 
     dispatch_async(dispatch_get_main_queue(), [retainedSelf = retainPtr(self)] {
         WKWebView *webView = retainedSelf.get();
@@ -3202,12 +3204,14 @@ static int32_t activeOrientation(WKWebView *webView)
     [self _keyboardChangedWithInfo:notification.userInfo adjustScrollView:YES];
 }
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 120000
 static void hardwareKeyboardAvailabilityChangedCallback(CFNotificationCenterRef, void* observer, CFStringRef, const void*, CFDictionaryRef)
 {
     ASSERT(observer);
     WKWebView *webView = (__bridge WKWebView *)observer;
     webView._page->hardwareKeyboardAvailabilityChanged();
 }
+#endif
 
 - (void)_windowDidRotate:(NSNotification *)notification
 {

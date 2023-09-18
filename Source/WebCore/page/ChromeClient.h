@@ -106,7 +106,9 @@ struct ShareDataWithParsedURL;
 struct ViewportArguments;
 struct WindowFeatures;
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
 enum class RouteSharingPolicy : uint8_t;
+#endif
 
 class WEBCORE_EXPORT ChromeClient {
 public:
@@ -268,7 +270,11 @@ public:
     virtual void removeScrollingLayer(Node*, PlatformLayer* scrollingLayer, PlatformLayer* contentsLayer) = 0;
 
     virtual void webAppOrientationsUpdated() = 0;
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
     virtual void showPlaybackTargetPicker(bool hasVideo, RouteSharingPolicy, const String&) = 0;
+#else
+    virtual void showPlaybackTargetPicker(bool hasVideo) = 0;
+#endif
 #endif
 
 #if ENABLE(ORIENTATION_EVENTS)

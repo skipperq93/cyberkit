@@ -182,7 +182,11 @@ class EmptyChromeClient : public ChromeClient {
     void removeScrollingLayer(Node*, PlatformLayer*, PlatformLayer*) final { }
 
     void webAppOrientationsUpdated() final { };
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
     void showPlaybackTargetPicker(bool, RouteSharingPolicy, const String&) final { };
+#else
+    void showPlaybackTargetPicker(bool) final { };
+#endif
 #endif // PLATFORM(IOS_FAMILY)
 
 #if ENABLE(ORIENTATION_EVENTS)

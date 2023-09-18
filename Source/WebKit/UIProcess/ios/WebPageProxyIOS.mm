@@ -1007,9 +1007,17 @@ void WebPageProxy::setRemoteLayerTreeRootNode(RemoteLayerTreeNode* rootNode)
     m_frozenRemoteLayerTreeHost = nullptr;
 }
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
 void WebPageProxy::showPlaybackTargetPicker(bool hasVideo, const IntRect& elementRect, WebCore::RouteSharingPolicy policy, const String& contextUID)
+#else
+void WebPageProxy::showPlaybackTargetPicker(bool hasVideo, const IntRect& elementRect)
+#endif
 {
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
     pageClient().showPlaybackTargetPicker(hasVideo, elementRect, policy, contextUID);
+#else
+    pageClient().showPlaybackTargetPicker(hasVideo, elementRect);
+#endif
 }
 
 void WebPageProxy::commitPotentialTapFailed()

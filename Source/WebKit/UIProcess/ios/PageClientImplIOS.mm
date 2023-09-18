@@ -542,9 +542,17 @@ void PageClientImpl::didReceiveEditorStateUpdateAfterFocus()
     [m_contentView _didReceiveEditorStateUpdateAfterFocus];
 }
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
 void PageClientImpl::showPlaybackTargetPicker(bool hasVideo, const IntRect& elementRect, WebCore::RouteSharingPolicy policy, const String& contextUID)
+#else
+void PageClientImpl::showPlaybackTargetPicker(bool hasVideo, const IntRect& elementRect)
+#endif
 {
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
     [m_contentView _showPlaybackTargetPicker:hasVideo fromRect:elementRect routeSharingPolicy:policy routingContextUID:contextUID];
+#else
+    [m_contentView _showPlaybackTargetPicker:hasVideo fromRect:elementRect];
+#endif
 }
 
 bool PageClientImpl::handleRunOpenPanel(WebPageProxy*, WebFrameProxy*, API::OpenPanelParameters* parameters, WebOpenPanelResultListenerProxy* listener)

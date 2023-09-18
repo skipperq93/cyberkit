@@ -205,7 +205,9 @@ template<typename> class ExceptionOr;
 enum CollectionType;
 enum class ShouldOpenExternalURLsPolicy : uint8_t;
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
 enum class RouteSharingPolicy : uint8_t;
+#endif
 
 using PlatformDisplayID = uint32_t;
 
@@ -1388,7 +1390,11 @@ public:
 #if ENABLE(WIRELESS_PLAYBACK_TARGET)
     void addPlaybackTargetPickerClient(MediaPlaybackTargetClient&);
     void removePlaybackTargetPickerClient(MediaPlaybackTargetClient&);
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
     void showPlaybackTargetPicker(MediaPlaybackTargetClient&, bool, RouteSharingPolicy, const String&);
+#else
+    void showPlaybackTargetPicker(MediaPlaybackTargetClient&, bool);
+#endif
     void playbackTargetPickerClientStateDidChange(MediaPlaybackTargetClient&, MediaProducer::MediaStateFlags);
 
     void setPlaybackTarget(uint64_t, Ref<MediaPlaybackTarget>&&);
