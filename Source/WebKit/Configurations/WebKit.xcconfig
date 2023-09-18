@@ -145,7 +145,11 @@ REEXPORTED_FRAMEWORK_NAMES[sdk=macosx*] = $(inherited) WebCore;
 
 // FIXME: Remove -reexport_install_name once rdar://problem/30820233 is fixed.
 OTHER_TAPI_FLAGS = $(OTHER_TAPI_FLAGS_$(WK_COCOA_TOUCH));
+<<<<<<< HEAD:Source/WebKit/Configurations/WebKit.xcconfig
 OTHER_TAPI_FLAGS_cocoatouch = $(inherited) -reexport_install_name $(WK_ALTERNATE_WEBKIT_SDK_PATH)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks/WebKitLegacy.framework/WebKitLegacy -extra-private-header $(SRCROOT)/Platform/ExtraPrivateSymbolsForTAPI.h -extra-public-header $(SRCROOT)/Platform/ExtraPublicSymbolsForTAPI.h -exclude-private-header $(BUILT_PRODUCTS_DIR)/$(PRIVATE_HEADERS_FOLDER_PATH)/NSURLDownloadSPI.h;
+=======
+OTHER_TAPI_FLAGS_cocoatouch = $(inherited) -reexport_install_name $(DYLIB_INSTALL_NAME_BASE)/CyberKitLegacy.framework/CyberKitLegacy -extra-private-header $(SRCROOT)/Platform/ExtraPrivateSymbolsForTAPI.h -extra-public-header $(SRCROOT)/Platform/ExtraPublicSymbolsForTAPI.h -exclude-private-header $(BUILT_PRODUCTS_DIR)/$(PRIVATE_HEADERS_FOLDER_PATH)/NSURLDownloadSPI.h;
+>>>>>>> 4b37b53e24d1... Independent data directory configuration:Source/CyberKit/Configurations/CyberKit.xcconfig
 
 SECTORDER_FLAGS = $(SECTORDER_FLAGS_$(CONFIGURATION));
 SECTORDER_FLAGS_Production[sdk=iphoneos*] = -Wl,-order_file,$(SDKROOT)/AppleInternal/OrderFiles/WebKit.order;

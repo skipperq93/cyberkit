@@ -22,7 +22,7 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
 
 #include "FeatureDefines.xcconfig"
-#include "Version.xcconfig"
+#include "../../../Configurations/Version.xcconfig"
 
 DEFINES_MODULE = $(DEFINES_MODULE_$(WK_PLATFORM_NAME))
 DEFINES_MODULE_iosmac = YES;

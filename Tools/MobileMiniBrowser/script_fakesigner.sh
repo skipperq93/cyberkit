@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Check initial conditions
 if [[ $EUID -eq 0 ]]; then
   echo "[!] Please don't run this script as root!"
@@ -13,9 +15,8 @@ else
     if brew ls --versions ldid > /dev/null; then
       echo "[§] Found ldid"
     else
-      echo "[!] ldid not found!"
-      echo "[!] Please install ldid with the following command"
-      echo "[!] brew install ldid"
+      echo "[§] Attempting to install script dependencies"
+      brew install ldid gnu-sed dpkg
     fi
 fi
 
@@ -82,26 +83,48 @@ rm script_fakesigner.entitlements
 cd ..
 rm *.deb
 DIR_NAME=$1
-DEBIAN_FILES=$SCRIPT_DIR/resources/$DIR_NAME
-if [[ "$DIR_NAME" == *"+"* ]]; then
-    APPLICATION_PATH=$DIR_NAME/Applications
+mkdir $DIR_NAME
+if [[ "$DIR_NAME" != *"+"* ]]; then
+	echo "[*] Using rootless application path"
+	APPLICATION_PATH=$DIR_NAME/var/jb/Applications
+	mkdir $DIR_NAME/var
+    mkdir $DIR_NAME/var/jb
 else
-    APPLICATION_PATH=$DIR_NAME/var/jb/Applications
+	echo "[*] Using rootful application path"
+    APPLICATION_PATH=$DIR_NAME/Applications
 fi
 
 # Package into DEB
 echo "[*] Creating DEB..."
-mkdir $DIR_NAME
-if [[ "$DIR_NAME" != *"+"* ]]; then
-    mkdir $DIR_NAME/var
-    mkdir $DIR_NAME/var/jb
-fi
+DEBIAN_FILES=$SCRIPT_DIR/resources/$DIR_NAME
+CYBERKIT_FRAMEWORK_VERSION=$2
+EXTERNAL_FRAMEWORK_PATH=/var/mobile/Library/CyberKit/Frameworks/$CYBERKIT_FRAMEWORK_VERSION
+echo "[*] Detected framework version:" $CYBERKIT_FRAMEWORK_VERSION
+
 mv Payload $APPLICATION_PATH
 mkdir $DIR_NAME/DEBIAN
 cp $DEBIAN_FILES/control $DIR_NAME/DEBIAN
 cp $DEBIAN_FILES/postinst $DIR_NAME/DEBIAN
-find . -name ".DS_Store" -delete && \
-dpkg-deb -b $DIR_NAME && dpkg-name $DIR_NAME.deb
+find . -name ".DS_Store" -delete
+
+echo "[*] Relocating frameworks"
+mkdir $DIR_NAME/var
+mkdir $DIR_NAME/var/mobile
+mkdir $DIR_NAME/var/mobile/Library
+mkdir $DIR_NAME/var/mobile/Library/CyberKit
+mv $APPLICATION_PATH/$app/Frameworks $DIR_NAME$EXTERNAL_FRAMEWORK_PATH
+
+if [[ "$DIR_NAME" == *"+10"* ]]; then
+	echo "[*] Forcing gzip compression for legacy iOS"
+	dpkg-deb -Zgzip --build $DIR_NAME && dpkg-name $DIR_NAME.deb
+else
+	echo "[*] Using default compression for non-legacy iOS"
+	dpkg-deb -b $DIR_NAME && dpkg-name $DIR_NAME.deb
+fi
+
+echo "[*] Returning frameworks"
+mv $DIR_NAME$EXTERNAL_FRAMEWORK_PATH $APPLICATION_PATH/$app
+
 mv $APPLICATION_PATH Payload
 rm -rf $DIR_NAME
 

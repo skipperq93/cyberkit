@@ -1,4 +1,4 @@
-#include "Version.xcconfig"
+#include "../../../../Configurations/Version.xcconfig"
 
 PRODUCT_NAME = libwebrtc;
 

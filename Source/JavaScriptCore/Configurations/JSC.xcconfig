@@ -22,7 +22,7 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
 
 #include "FeatureDefines.xcconfig"
-#include "Version.xcconfig"
+#include "../../../Configurations/Version.xcconfig"
 
 INSTALL_PATH = $(JAVASCRIPTCORE_FRAMEWORKS_DIR)/$(JAVASCRIPTCORE_RESOURCES_DIR);
 
