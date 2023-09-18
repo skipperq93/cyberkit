@@ -90,9 +90,9 @@ static Cookie::SameSitePolicy coreSameSitePolicy(NSHTTPCookieStringPolicy _Nulla
     if (!policy)
         return Cookie::SameSitePolicy::None;
     ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
-    if ([policy isEqualToString:NSHTTPCookieSameSiteLax])
+    if ([policy isEqualToString:@"lax"])
         return Cookie::SameSitePolicy::Lax;
-    if ([policy isEqualToString:NSHTTPCookieSameSiteStrict])
+    if ([policy isEqualToString:@"strict"])
         return Cookie::SameSitePolicy::Strict;
     ALLOW_NEW_API_WITHOUT_GUARDS_END
     ASSERT_NOT_REACHED();
@@ -106,9 +106,9 @@ static NSHTTPCookieStringPolicy _Nullable nsSameSitePolicy(Cookie::SameSitePolic
         return nil;
     ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
     case Cookie::SameSitePolicy::Lax:
-        return NSHTTPCookieSameSiteLax;
+        return @"lax";
     case Cookie::SameSitePolicy::Strict:
-        return NSHTTPCookieSameSiteStrict;
+        return @"strict";
     ALLOW_NEW_API_WITHOUT_GUARDS_END
     }
 }
