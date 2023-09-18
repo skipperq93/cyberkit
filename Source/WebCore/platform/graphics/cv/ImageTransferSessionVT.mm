@@ -39,6 +39,7 @@
 #endif
 
 #import "CoreVideoSoftLink.h"
+#import "VideoToolboxSoftLink.h"
 
 namespace WebCore {
 using namespace PAL;

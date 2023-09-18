@@ -15314,6 +15314,7 @@
 				TargetAttributes = {
 					41F77D15215BE45E00E72967 = {
 						CreatedOnToolsVersion = 10.0;
+						DevelopmentTeam = SJ87WGCZM7;
 						ProvisioningStyle = Manual;
 					};
 					5C63F6611E414AB6002CA531 = {
@@ -17451,6 +17452,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 41F77D1E215BE4AD00E72967 /* yasm.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -17462,6 +17465,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 41F77D1E215BE4AD00E72967 /* yasm.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
 			};
 			name = Release;
 		};
@@ -17469,6 +17474,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 41F77D1E215BE4AD00E72967 /* yasm.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
 			};
 			name = Production;
 		};
@@ -17720,6 +17727,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5D7C59C51208C68B001C873E /* libwebrtc.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
@@ -17750,6 +17758,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5D7C59C51208C68B001C873E /* libwebrtc.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
@@ -17762,6 +17771,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5D7C59C51208C68B001C873E /* libwebrtc.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
