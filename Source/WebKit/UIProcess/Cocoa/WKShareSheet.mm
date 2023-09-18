@@ -77,7 +77,7 @@
     
     if (data.url) {
         NSURL *url = (NSURL *)data.url.value();
-#if PLATFORM(IOS_FAMILY)
+#if PLATFORM(IOS_FAMILY) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000)
         if (!data.shareData.title.isEmpty())
             url._title = data.shareData.title;
 #endif
