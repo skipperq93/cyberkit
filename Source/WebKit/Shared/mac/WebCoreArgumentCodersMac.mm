@@ -47,7 +47,6 @@
 #import <pal/spi/mac/AVFoundationSPI.h>
 #import <wtf/SoftLinking.h>
 
-SOFT_LINK_FRAMEWORK_OPTIONAL(AVFoundation)
 SOFT_LINK_CLASS(AVFoundation, AVOutputContext)
 #endif
 
