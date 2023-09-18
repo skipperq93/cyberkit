@@ -32082,7 +32082,6 @@
 				LastUpgradeCheck = 1000;
 				TargetAttributes = {
 					93F198A508245E59001E9ABC = {
-						DevelopmentTeam = SJ87WGCZM7;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -33264,10 +33263,10 @@
 			baseConfigurationReference = 1CDD45E50BA9C84600F90147 /* CyberCore.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				LD_DYLIB_ALLOWABLE_CLIENTS = "";
 				MODULEMAP_PRIVATE_FILE = "";
@@ -33282,9 +33281,9 @@
 			baseConfigurationReference = 1CDD45E50BA9C84600F90147 /* CyberCore.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				LD_DYLIB_ALLOWABLE_CLIENTS = "";
 				MODULEMAP_PRIVATE_FILE = "";
@@ -33300,9 +33299,9 @@
 			buildSettings = {
 				BUILD_VARIANTS = normal;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				LD_DYLIB_ALLOWABLE_CLIENTS = "";
 				MODULEMAP_PRIVATE_FILE = "";
