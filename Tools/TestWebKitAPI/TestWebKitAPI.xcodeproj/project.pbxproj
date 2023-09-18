@@ -4527,7 +4527,7 @@
 			buildSettings = {
 				DEBUG_DEFINES = "$(DEBUG_DEFINES_debug)";
 				GCC_OPTIMIZATION_LEVEL = 0;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = "$(CYBERKIT_DEPLOYMENT_TARGET)";
 			};
 			name = Debug;
 		};
@@ -4535,7 +4535,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BC90957F12554CF900083756 /* DebugRelease.xcconfig */;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = "$(CYBERKIT_DEPLOYMENT_TARGET)";
 			};
 			name = Release;
 		};
