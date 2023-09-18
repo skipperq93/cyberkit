@@ -1140,7 +1140,7 @@ ifeq ($(PLATFORM_FEATURE_DEFINES),)
 ifeq ($(OS), Windows_NT)
 PLATFORM_FEATURE_DEFINES = $(WEBKIT_LIBRARIES)/tools/vsprops/FeatureDefines.props
 else
-PLATFORM_FEATURE_DEFINES = $(SRCROOT)/Configurations/FeatureDefines.xcconfig
+PLATFORM_FEATURE_DEFINES = ../../Configurations/FeatureDefines.xcconfig
 endif
 endif
 

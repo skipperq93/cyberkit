@@ -234,6 +234,7 @@
 				CD1DAF8F1D709E3600017CF0 /* Frameworks */,
 				CD1DAF901D709E3600017CF0 /* Resources */,
 				CD498B231D76341700681FA7 /* Embed Frameworks */,
+				4892AF1E2AB8B35E0063C8BD /* Fakesign */,
 			);
 			buildRules = (
 			);
@@ -357,7 +358,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		48D5EE002A4A750500FEC60C /* Fakesign */ = {
+		4892AF1E2AB8B35E0063C8BD /* Fakesign */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

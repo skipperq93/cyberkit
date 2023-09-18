@@ -27,7 +27,7 @@
  */
 
 #import "config.h"
-#import "ResourceResponse.h"
+#import "WebCoreURLResponse.h"
 
 #import "MIMETypeRegistry.h"
 #import "UTIUtilities.h"

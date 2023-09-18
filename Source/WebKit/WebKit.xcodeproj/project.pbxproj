@@ -10260,7 +10260,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "if [[ ${WK_PLATFORM_NAME} != \"iphoneos\" ]]; then\n    exit 0;\nfi\n\nif [[ ! -d \"${INSTALL_ROOT}/${SYSTEM_LIBRARY_DIR}/PrivateFrameworks\" ]]; then\n    mkdir -p \"${INSTALL_ROOT}/${SYSTEM_LIBRARY_DIR}/PrivateFrameworks\"\nfi\n\nln -s -h -f ../Frameworks/WebKit.framework \"${INSTALL_ROOT}/${SYSTEM_LIBRARY_DIR}/PrivateFrameworks/WebKit.framework\"";
+			shellScript = "if [[ ${WK_PLATFORM_NAME} != \"iphoneos\" ]]; then\n    exit 0;\nfi\n\nif [[ ! -d \"${INSTALL_ROOT}/${SYSTEM_LIBRARY_DIR}/PrivateFrameworks\" ]]; then\n    mkdir -p \"${INSTALL_ROOT}/${SYSTEM_LIBRARY_DIR}/PrivateFrameworks\"\nfi\n\nln -s -h -f ../Frameworks/WebKit.framework \"${INSTALL_ROOT}/${SYSTEM_LIBRARY_DIR}/PrivateFrameworks/WebKit.framework\"\n";
 		};
 		1A6280C81919956B006AD9F9 /* Migrate WebKitLegacy Headers */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -11288,7 +11288,9 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.WebKit;
 			};
 			name = Debug;
 		};
@@ -11298,7 +11300,9 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.WebKit;
 			};
 			name = Release;
 		};
@@ -11427,7 +11431,9 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
 				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.WebKit;
 			};
 			name = Production;
 		};
