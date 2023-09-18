@@ -3375,13 +3375,11 @@
 			compilerSpec = com.apple.compilers.proxy.script;
 			filePatterns = asm;
 			fileType = sourcecode.asm.asm;
-			inputFiles = (
-			);
 			isEditable = 1;
 			outputFiles = (
 				"${OBJECT_FILE_DIR_normal}/${CURRENT_ARCH}/${INPUT_FILE_BASE}.o",
 			);
-			script = "${BUILT_PRODUCTS_DIR}/yasm -fmacho64 -I ${SRCROOT}/Source/third_party/libvpx/source/config -I ${SRCROOT}/Source/third_party/libvpx/source/config/mac/x64 -I ${SRCROOT}/Source/third_party/libvpx/source/libvpx -o ${OBJECT_FILE_DIR_normal}/${CURRENT_ARCH}/${INPUT_FILE_BASE}.o ${INPUT_FILE_DIR}/${INPUT_FILE_BASE}.asm\n";
+			script = "DYLD_ROOT_PATH=/Applications/Xcode10.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot ${BUILT_PRODUCTS_DIR}/yasm -fmacho64 -I ${SRCROOT}/Source/third_party/libvpx/source/config -I ${SRCROOT}/Source/third_party/libvpx/source/config/mac/x64 -I ${SRCROOT}/Source/third_party/libvpx/source/libvpx -o ${OBJECT_FILE_DIR_normal}/${CURRENT_ARCH}/${INPUT_FILE_BASE}.o ${INPUT_FILE_DIR}/${INPUT_FILE_BASE}.asm\n";
 		};
 /* End PBXBuildRule section */
 
@@ -3657,7 +3655,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		37119A8120CCB6DD002C6DC9 /* WebKitTargetConditionals.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = WebKitTargetConditionals.xcconfig; sourceTree = "<group>"; };
 		4100CDE521CACFD000F9B87D /* LPC_fit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = LPC_fit.c; path = silk/LPC_fit.c; sourceTree = "<group>"; };
 		4100CDE821CAD03300F9B87D /* vq_sse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vq_sse.h; path = x86/vq_sse.h; sourceTree = "<group>"; };
 		4100CDEB21CAD1F500F9B87D /* pitch_sse4_1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pitch_sse4_1.c; path = x86/pitch_sse4_1.c; sourceTree = "<group>"; };
@@ -13552,7 +13549,6 @@
 				5C08848A1E4A978C00403995 /* libyuv.xcconfig */,
 				5C4B4A8F1E42C431002651C8 /* opus.xcconfig */,
 				5C11A0331E4576A9004F0987 /* usrsctp.xcconfig */,
-				37119A8120CCB6DD002C6DC9 /* WebKitTargetConditionals.xcconfig */,
 				41F77D1E215BE4AD00E72967 /* yasm.xcconfig */,
 			);
 			path = Configurations;

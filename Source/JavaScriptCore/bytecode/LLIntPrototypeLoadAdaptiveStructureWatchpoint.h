@@ -33,10 +33,14 @@ namespace JSC {
 
 class LLIntPrototypeLoadAdaptiveStructureWatchpoint : public Watchpoint {
 public:
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdefaulted-function-deleted"
+#endif
     LLIntPrototypeLoadAdaptiveStructureWatchpoint() = default;
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
 #pragma clang diagnostic pop
+#endif
     LLIntPrototypeLoadAdaptiveStructureWatchpoint(const ObjectPropertyCondition&, OpGetById::Metadata&);
 
     void install(VM&);

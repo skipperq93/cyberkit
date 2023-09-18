@@ -131,7 +131,11 @@ OTHER_LDFLAGS = $(inherited) $(WK_RELOCATABLE_FRAMEWORK_LDFLAGS) $(WK_UNDEFINED_
 OTHER_LDFLAGS_PLATFORM_cocoatouch = -allowable_client WebKit -allowable_client iTunesU -allowable_client Casablanca -allowable_client Remote -allowable_client TVBooks -allowable_client DumpRenderTree -allowable_client WebKitTestRunner -allowable_client TestWebKitAPI;
 OTHER_LDFLAGS_PLATFORM_macosx = -sub_library libobjc -umbrella WebKit;
 
-WK_UNDEFINED_SYMBOLS_LDFLAGS[sdk=macosx*] = $(WK_UNDEFINED_SYMBOLS_LDFLAGS$(WK_MACOS_1013));
+WK_UNDEFINED_SYMBOLS_LDFLAGS = $(WK_UNDEFINED_SYMBOLS_LDFLAGS_$(WK_PLATFORM_NAME));
+WK_UNDEFINED_SYMBOLS_LDFLAGS_iphoneos = $(WK_UNDEFINED_SYMBOLS_LDFLAGS$(WK_IOS_11));
+WK_UNDEFINED_SYMBOLS_LDFLAGS_iphonesimulator = $(WK_UNDEFINED_SYMBOLS_LDFLAGS$(WK_IOS_11));
+WK_UNDEFINED_SYMBOLS_LDFLAGS_IOS_BEFORE_11 = -Wl,-U,_CTFontCreatePhysicalFontForCharactersWithLanguage;
+WK_UNDEFINED_SYMBOLS_LDFLAGS_macosx = $(WK_UNDEFINED_SYMBOLS_LDFLAGS$(WK_MACOS_1013));
 WK_UNDEFINED_SYMBOLS_LDFLAGS_MACOS_BEFORE_1013 = -Wl,-U,_CTFontCreatePhysicalFontForCharactersWithLanguage;
 WK_UNDEFINED_SYMBOLS_LDFLAGS_MACOS_BEFORE_1013[sdk=macosx10.12*] =;
 

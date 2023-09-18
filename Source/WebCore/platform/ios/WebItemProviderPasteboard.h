@@ -25,7 +25,7 @@
 
 #import <WebCore/AbstractPasteboard.h>
 
-#if TARGET_OS_IPHONE && __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
+#if TARGET_OS_IOS && __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
 
 struct CGSize;
 

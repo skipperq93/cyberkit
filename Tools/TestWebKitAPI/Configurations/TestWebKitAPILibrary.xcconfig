@@ -23,7 +23,7 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#include "FeatureDefines.xcconfig"
+#include "../../../Configurations/FeatureDefines.xcconfig"
 
 PRODUCT_NAME = TestWebKitAPI;
 SKIP_INSTALL = YES;
