@@ -3785,7 +3785,9 @@ static NSString *contentTypeFromFieldName(WebCore::AutofillFieldName fieldName)
     case WebCore::AutofillFieldName::URL:
         return UITextContentTypeURL;
     case WebCore::AutofillFieldName::Username:
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
         return UITextContentTypeUsername;
+#endif
     case WebCore::AutofillFieldName::None:
     case WebCore::AutofillFieldName::NewPassword:
     case WebCore::AutofillFieldName::CurrentPassword:

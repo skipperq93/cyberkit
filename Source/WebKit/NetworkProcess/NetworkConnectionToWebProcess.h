@@ -198,10 +198,14 @@ private:
     void resetOriginAccessWhitelists();
 
     struct ResourceNetworkActivityTracker {
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdefaulted-function-deleted"
+#endif
         ResourceNetworkActivityTracker() = default;
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
 #pragma clang diagnostic pop
+#endif
         ResourceNetworkActivityTracker(const ResourceNetworkActivityTracker&) = default;
         ResourceNetworkActivityTracker(ResourceNetworkActivityTracker&&) = default;
         ResourceNetworkActivityTracker(uint64_t pageID)

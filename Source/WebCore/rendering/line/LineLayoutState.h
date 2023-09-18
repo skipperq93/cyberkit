@@ -54,10 +54,14 @@ public:
     void adjustRect(const LayoutRect& rect) { m_rect = rect; }
 
 private:
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdefaulted-function-deleted"
+#endif
     FloatWithRect() = default;
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
 #pragma clang diagnostic pop
+#endif
     
     FloatWithRect(RenderBox& renderer)
         : m_renderer(renderer)
