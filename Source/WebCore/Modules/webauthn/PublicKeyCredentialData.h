@@ -107,7 +107,7 @@ Optional<PublicKeyCredentialData> PublicKeyCredentialData::decode(Decoder& decod
     if (!rawIdLength)
         return WTF::nullopt;
 
-    result.rawId = ArrayBuffer::create(rawIdLength.value(), sizeof(uint8_t));
+    result.rawId = ArrayBuffer::create(static_cast<uint8_t>(rawIdLength.value()), sizeof(uint8_t));
     if (!decoder.decodeFixedLengthData(reinterpret_cast<uint8_t*>(result.rawId->data()), rawIdLength.value(), 1))
         return WTF::nullopt;
 
@@ -123,7 +123,7 @@ Optional<PublicKeyCredentialData> PublicKeyCredentialData::decode(Decoder& decod
         if (!attestationObjectLength)
             return WTF::nullopt;
 
-        result.attestationObject = ArrayBuffer::create(attestationObjectLength.value(), sizeof(uint8_t));
+        result.attestationObject = ArrayBuffer::create(static_cast<uint8_t>(attestationObjectLength.value()), sizeof(uint8_t));
         if (!decoder.decodeFixedLengthData(reinterpret_cast<uint8_t*>(result.attestationObject->data()), attestationObjectLength.value(), 1))
             return WTF::nullopt;
 
@@ -135,7 +135,7 @@ Optional<PublicKeyCredentialData> PublicKeyCredentialData::decode(Decoder& decod
     if (!authenticatorDataLength)
         return WTF::nullopt;
 
-    result.authenticatorData = ArrayBuffer::create(authenticatorDataLength.value(), sizeof(uint8_t));
+    result.authenticatorData = ArrayBuffer::create(static_cast<uint8_t>(authenticatorDataLength.value()), sizeof(uint8_t));
     if (!decoder.decodeFixedLengthData(reinterpret_cast<uint8_t*>(result.authenticatorData->data()), authenticatorDataLength.value(), 1))
         return WTF::nullopt;
 
@@ -144,7 +144,7 @@ Optional<PublicKeyCredentialData> PublicKeyCredentialData::decode(Decoder& decod
     if (!signatureLength)
         return WTF::nullopt;
 
-    result.signature = ArrayBuffer::create(signatureLength.value(), sizeof(uint8_t));
+    result.signature = ArrayBuffer::create(static_cast<uint8_t>(signatureLength.value()), sizeof(uint8_t));
     if (!decoder.decodeFixedLengthData(reinterpret_cast<uint8_t*>(result.signature->data()), signatureLength.value(), 1))
         return WTF::nullopt;
 
@@ -160,7 +160,7 @@ Optional<PublicKeyCredentialData> PublicKeyCredentialData::decode(Decoder& decod
     if (!userHandleLength)
         return WTF::nullopt;
 
-    result.userHandle = ArrayBuffer::create(userHandleLength.value(), sizeof(uint8_t));
+    result.userHandle = ArrayBuffer::create(static_cast<uint8_t>(userHandleLength.value()), sizeof(uint8_t));
     if (!decoder.decodeFixedLengthData(reinterpret_cast<uint8_t*>(result.userHandle->data()), userHandleLength.value(), 1))
         return WTF::nullopt;
 

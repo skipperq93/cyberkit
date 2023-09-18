@@ -187,11 +187,13 @@ void VideoFullscreenModelVideoElement::fullscreenModeChanged(HTMLMediaElementEnu
         m_videoElement->fullscreenModeChanged(videoFullscreenMode);
 }
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
 void VideoFullscreenModelVideoElement::requestRouteSharingPolicyAndContextUID(CompletionHandler<void(RouteSharingPolicy, String)>&& completionHandler)
 {
     auto& session = AudioSession::sharedSession();
     completionHandler(session.routeSharingPolicy(), session.routingContextUID());
 }
+#endif
 
 void VideoFullscreenModelVideoElement::addClient(VideoFullscreenModelClient& client)
 {

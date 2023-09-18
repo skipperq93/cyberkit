@@ -75,7 +75,7 @@ RetainPtr<CVPixelBufferRef> RealtimeOutgoingVideoSourceCocoa::rotatePixelBuffer(
         VTImageRotationSessionRef rawRotationSession = nullptr;
         auto status = VTImageRotationSessionCreate(kCFAllocatorDefault, rotation, &rawRotationSession);
         if (status != noErr) {
-            RELEASE_LOG(MediaStream, "RealtimeOutgoingVideoSourceCocoa::rotatePixelBuffer failed creating a rotation session with error %d", status);
+            RELEASE_LOG(MediaStream, "RealtimeOutgoingVideoSourceCocoa::rotatePixelBuffer failed creating a rotation session with error %ld", status);
             return nullptr;
         }
 

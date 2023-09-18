@@ -573,8 +573,10 @@ void MediaElementSession::showPlaybackTargetPicker()
     }
 #endif
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
     auto& audioSession = AudioSession::sharedSession();
     document.showPlaybackTargetPicker(*this, is<HTMLVideoElement>(m_element), audioSession.routeSharingPolicy(), audioSession.routingContextUID());
+#endif
 }
 
 bool MediaElementSession::hasWirelessPlaybackTargets() const

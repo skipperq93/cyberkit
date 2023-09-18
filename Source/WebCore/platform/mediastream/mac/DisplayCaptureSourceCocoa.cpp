@@ -155,7 +155,7 @@ IntSize DisplayCaptureSourceCocoa::frameSize() const
 
 void DisplayCaptureSourceCocoa::emitFrame()
 {
-#if PLATFORM(COCOA) && !PLATFORM(IOS_FAMILY_SIMULATOR)
+#if PLATFORM(COCOA) && HAVE(IOSURFACE)
     if (muted())
         return;
 

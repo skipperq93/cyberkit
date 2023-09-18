@@ -463,7 +463,11 @@ static NSString *normalizedStringWithAppKitCompatibilityMapping(NSString *charac
 
 + (WebEventFlags)modifierFlags
 {
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 120000
     return GSEventIsHardwareKeyboardAttached() ? GSKeyboardGetModifierState([UIApplication sharedApplication]._hardwareKeyboard) : 0;
+#else
+    return 0;
+#endif
 }
 
 @end
