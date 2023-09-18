@@ -3375,6 +3375,8 @@
 			compilerSpec = com.apple.compilers.proxy.script;
 			filePatterns = asm;
 			fileType = sourcecode.asm.asm;
+			inputFiles = (
+			);
 			isEditable = 1;
 			outputFiles = (
 				"${OBJECT_FILE_DIR_normal}/${CURRENT_ARCH}/${INPUT_FILE_BASE}.o",
@@ -17710,6 +17712,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5D7C59C61208C68B001C873E /* Base.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Production;
 		};
@@ -17731,6 +17734,7 @@
 			baseConfigurationReference = 5D7C59C71208C68B001C873E /* DebugRelease.xcconfig */;
 			buildSettings = {
 				GCC_OPTIMIZATION_LEVEL = 0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Debug;
 		};
@@ -17738,6 +17742,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5D7C59C71208C68B001C873E /* DebugRelease.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Release;
 		};

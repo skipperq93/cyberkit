@@ -7637,8 +7637,6 @@
 		458FE4071589DF0B005609E6 /* RenderSearchField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderSearchField.cpp; sourceTree = "<group>"; };
 		458FE4081589DF0B005609E6 /* RenderSearchField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderSearchField.h; sourceTree = "<group>"; };
 		45FEA5CD156DDE8C00654101 /* Decimal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Decimal.cpp; sourceTree = "<group>"; };
-		466907F62346686200EFEFF0 /* SuspendableTaskQueue.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SuspendableTaskQueue.cpp; sourceTree = "<group>"; };
-		466907F82346686200EFEFF0 /* SuspendableTaskQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuspendableTaskQueue.h; sourceTree = "<group>"; };
 		45FEA5CE156DDE8C00654101 /* Decimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decimal.h; sourceTree = "<group>"; };
 		460BB6131D0A1BEC00221812 /* Base64Utilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Base64Utilities.cpp; sourceTree = "<group>"; };
 		460BB6141D0A1BEC00221812 /* Base64Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Utilities.h; sourceTree = "<group>"; };
@@ -7652,6 +7650,8 @@
 		463EB6211B8789CB0096ED51 /* TagCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCollection.h; sourceTree = "<group>"; };
 		4642404520EAF0ED00B29FD2 /* DatabaseManagerCocoa.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DatabaseManagerCocoa.mm; sourceTree = "<group>"; };
 		465A8E781C8A24CE00E7D3E4 /* RuntimeApplicationChecksCocoa.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RuntimeApplicationChecksCocoa.mm; sourceTree = "<group>"; };
+		466907F62346686200EFEFF0 /* SuspendableTaskQueue.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SuspendableTaskQueue.cpp; sourceTree = "<group>"; };
+		466907F82346686200EFEFF0 /* SuspendableTaskQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuspendableTaskQueue.h; sourceTree = "<group>"; };
 		466DC6AB1EDE021D00746224 /* JSDOMRectList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JSDOMRectList.cpp; sourceTree = "<group>"; };
 		466ED8D21EDE0135005E43F6 /* JSDOMRectList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDOMRectList.h; sourceTree = "<group>"; };
 		4671E0631D67A57B00C6B497 /* CanvasPath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CanvasPath.cpp; sourceTree = "<group>"; };
@@ -32084,7 +32084,6 @@
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 1000;
 			};
@@ -33289,6 +33288,7 @@
 				DEAD_CODE_STRIPPING = "$(DEAD_CODE_STRIPPING_debug)";
 				DEBUG_DEFINES = "$(DEBUG_DEFINES_debug)";
 				GCC_OPTIMIZATION_LEVEL = "$(GCC_OPTIMIZATION_LEVEL_debug)";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				STRIP_INSTALLED_PRODUCT = "$(STRIP_INSTALLED_PRODUCT_debug)";
 			};
 			name = Debug;
@@ -33297,6 +33297,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1CDD45E40BA9C84600F90147 /* DebugRelease.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				STRIP_INSTALLED_PRODUCT = NO;
 			};
 			name = Release;
@@ -33305,6 +33306,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1CDD45E60BA9C84600F90147 /* Base.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Production;
 		};
