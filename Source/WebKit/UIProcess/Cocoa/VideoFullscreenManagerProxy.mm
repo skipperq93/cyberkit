@@ -276,6 +276,7 @@ void VideoFullscreenModelContext::fullscreenMayReturnToInline()
         m_manager->fullscreenMayReturnToInline(m_contextId);
 }
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
 void VideoFullscreenModelContext::requestRouteSharingPolicyAndContextUID(CompletionHandler<void(WebCore::RouteSharingPolicy, String)>&& completionHandler)
 {
     if (m_manager)
@@ -283,6 +284,7 @@ void VideoFullscreenModelContext::requestRouteSharingPolicyAndContextUID(Complet
     else
         completionHandler(WebCore::RouteSharingPolicy::Default, emptyString());
 }
+#endif
 
 void VideoFullscreenModelContext::willEnterPictureInPicture()
 {

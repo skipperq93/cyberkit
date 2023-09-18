@@ -95,7 +95,9 @@ private:
     void failedToEnterPictureInPicture() final;
     void willExitPictureInPicture() final;
     void didExitPictureInPicture() final;
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
     void requestRouteSharingPolicyAndContextUID(CompletionHandler<void(WebCore::RouteSharingPolicy, String)>&&) final;
+#endif
 
     // VideoFullscreenChangeObserver
     void requestUpdateInlineRect() final;

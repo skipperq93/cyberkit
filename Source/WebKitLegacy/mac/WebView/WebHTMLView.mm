@@ -817,6 +817,7 @@ static CachedImageClient& promisedDataClient()
 #if PLATFORM(IOS_FAMILY)
 static NSString * const WebMarkedTextUpdatedNotification = @"WebMarkedTextUpdated";
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 120000
 static void hardwareKeyboardAvailabilityChangedCallback(CFNotificationCenterRef, void* observer, CFStringRef, const void*, CFDictionaryRef)
 {
     ASSERT(observer);
@@ -826,6 +827,7 @@ static void hardwareKeyboardAvailabilityChangedCallback(CFNotificationCenterRef,
             coreFrame->eventHandler().capsLockStateMayHaveChanged();
     });
 }
+#endif
 #endif
 
 @interface WebHTMLView (WebHTMLViewFileInternal)
@@ -2622,7 +2624,9 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     [[NSNotificationCenter defaultCenter] 
             addObserver:self selector:@selector(markedTextUpdate:) 
                    name:WebMarkedTextUpdatedNotification object:nil];
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 120000
     CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), (__bridge const void *)(self), hardwareKeyboardAvailabilityChangedCallback, (CFStringRef)[NSString stringWithUTF8String:kGSEventHardwareKeyboardAvailabilityChangedNotification], nullptr, CFNotificationSuspensionBehaviorCoalesce);
+#endif
 #endif
 
 #if PLATFORM(MAC)
@@ -2639,7 +2643,9 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
 #if PLATFORM(IOS_FAMILY)
     [[NSNotificationCenter defaultCenter] removeObserver:self name:WebMarkedTextUpdatedNotification object:nil];
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 120000
     CFNotificationCenterRemoveObserver(CFNotificationCenterGetDarwinNotifyCenter(), (__bridge const void *)(self), (CFStringRef)[NSString stringWithUTF8String:kGSEventHardwareKeyboardAvailabilityChangedNotification], nullptr);
+#endif
 #endif
 
     // We can't assert that close has already been called because
