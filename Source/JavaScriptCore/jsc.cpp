@@ -141,6 +141,10 @@
 #include <arm/arch.h>
 #endif
 
+#if OS(DARWIN) && PLATFORM(MAC)
+#include <libproc.h>
+#endif
+
 #if OS(DARWIN)
 #include <wtf/spi/darwin/ProcessMemoryFootprint.h>
 #elif OS(LINUX)
@@ -3194,10 +3198,12 @@ int main(int argc, char** argv)
     fegetenv( &env );
     env.__fpscr &= ~0x01000000u;
     fesetenv( &env );
+#endif
 
+#if OS(DARWIN) && PLATFORM(MAC)
     // Let the kernel kill us when OOM
     {
-        int retval = proc_setpcontrol(PC_KILL);
+        int retval = proc_setpcontrol(PROC_SETPC_TERMINATE);
         ASSERT_UNUSED(retval, !retval);
     }
 #endif
