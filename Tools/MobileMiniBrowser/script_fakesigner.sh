@@ -26,12 +26,12 @@ rm -rf $SCRIPT_DIR/../../CyberKitBuild/Debug-iphoneos/Payload
 ipa=$SCRIPT_DIR/../../CyberKitBuild/Debug-iphoneos/MobileMiniBrowser.app
 if [[ $ipa == *.ipa ]]; then
 echo [*] unpacking..
-cd $(dirname $ipa)
+cd $(dirname $ipa) || exit 1
 unzip "$ipa"
 cd Payload
 app=$(ls -1 -d *.app)
 elif [[ $ipa == *.app ]]; then
-cd $(dirname $ipa)
+cd $(dirname $ipa) || exit 1
 mkdir Payload
 cp -R $ipa $(dirname $ipa)/Payload
 app=$(ls -1 -d *.app)
@@ -94,23 +94,28 @@ rm script_fakesigner.entitlements
 cd ..
 rm *.deb
 DIR_NAME=$1
+CYBERKIT_FRAMEWORK_VERSION=$2
+CONST_FRAMEWORK_PATH=var/mobile/Library/CyberKit/Frameworks/$CYBERKIT_FRAMEWORK_VERSION
+EXTERNAL_FRAMEWORK_PATH=$DIR_NAME/$CONST_FRAMEWORK_PATH
+echo "[*] Detected framework version:" $CYBERKIT_FRAMEWORK_VERSION
 mkdir $DIR_NAME
 if [[ "$DIR_NAME" != *"+"* ]]; then
 	echo "[*] Using rootless application path"
 	APPLICATION_PATH=$DIR_NAME/var/jb/Applications
 	mkdir $DIR_NAME/var
     mkdir $DIR_NAME/var/jb
+	# Get location of EXTERNAL_FRAMEWORK_PATH from $APPLICATION_PATH/$app/Frameworks
+	RELATIVE_FRAMEWORK_PATH=../../../../../$CONST_FRAMEWORK_PATH
 else
 	echo "[*] Using rootful application path"
     APPLICATION_PATH=$DIR_NAME/Applications
+    # Get location of EXTERNAL_FRAMEWORK_PATH from $APPLICATION_PATH/$app/Frameworks
+	RELATIVE_FRAMEWORK_PATH=../../../$CONST_FRAMEWORK_PATH
 fi
 
 # Package into DEB
 echo "[*] Creating DEB..."
 DEBIAN_FILES=$SCRIPT_DIR/resources/$DIR_NAME
-CYBERKIT_FRAMEWORK_VERSION=$2
-EXTERNAL_FRAMEWORK_PATH=$DIR_NAME/var/mobile/Library/CyberKit/Frameworks/$CYBERKIT_FRAMEWORK_VERSION
-echo "[*] Detected framework version:" $CYBERKIT_FRAMEWORK_VERSION
 
 mv Payload $APPLICATION_PATH
 mkdir $DIR_NAME/DEBIAN
@@ -125,14 +130,26 @@ mkdir $DIR_NAME/var/mobile/Library
 mkdir $DIR_NAME/var/mobile/Library/CyberKit
 mkdir $DIR_NAME/var/mobile/Library/CyberKit/Frameworks
 mkdir $EXTERNAL_FRAMEWORK_PATH
-mv $APPLICATION_PATH/$app/Frameworks/CyberCore.framework $EXTERNAL_FRAMEWORK_PATH/CyberCore.framework
-mv $APPLICATION_PATH/$app/Frameworks/CyberKit.framework $EXTERNAL_FRAMEWORK_PATH/CyberKit.framework
-mv $APPLICATION_PATH/$app/Frameworks/CyberKitLegacy.framework $EXTERNAL_FRAMEWORK_PATH/CyberKitLegacy.framework
-mv $APPLICATION_PATH/$app/Frameworks/CyberScriptCore.framework $EXTERNAL_FRAMEWORK_PATH/CyberScriptCore.framework
-mv $APPLICATION_PATH/$app/Frameworks/libANGLE-shared.dylib $EXTERNAL_FRAMEWORK_PATH/libANGLE-shared.dylib
-mv $APPLICATION_PATH/$app/Frameworks/libwebrtc.dylib $EXTERNAL_FRAMEWORK_PATH/libwebrtc.dylib
+INTERNAL_FRAMEWORK_PATH=$APPLICATION_PATH/$app/Frameworks
 
-if [[ "$DIR_NAME" == *"+10"* ]]; then
+# Move frameworks to $EXTERNAL_FRAMEWORK_PATH
+mv $INTERNAL_FRAMEWORK_PATH/CyberCore.framework $EXTERNAL_FRAMEWORK_PATH/CyberCore.framework
+mv $INTERNAL_FRAMEWORK_PATH/CyberKit.framework $EXTERNAL_FRAMEWORK_PATH/CyberKit.framework
+mv $INTERNAL_FRAMEWORK_PATH/CyberKitLegacy.framework $EXTERNAL_FRAMEWORK_PATH/CyberKitLegacy.framework
+mv $INTERNAL_FRAMEWORK_PATH/CyberScriptCore.framework $EXTERNAL_FRAMEWORK_PATH/CyberScriptCore.framework
+mv $INTERNAL_FRAMEWORK_PATH/libANGLE-shared.dylib $EXTERNAL_FRAMEWORK_PATH/libANGLE-shared.dylib
+mv $INTERNAL_FRAMEWORK_PATH/libwebrtc.dylib $EXTERNAL_FRAMEWORK_PATH/libwebrtc.dylib
+
+# Add hard links in $INTERNAL_FRAMEWORK_PATH to shut up sandbox
+ln -s $RELATIVE_FRAMEWORK_PATH/CyberCore.framework $INTERNAL_FRAMEWORK_PATH
+ln -s $RELATIVE_FRAMEWORK_PATH/CyberKit.framework $INTERNAL_FRAMEWORK_PATH
+ln -s $RELATIVE_FRAMEWORK_PATH/CyberKitLegacy.framework $INTERNAL_FRAMEWORK_PATH
+ln -s $RELATIVE_FRAMEWORK_PATH/CyberScriptCore.framework $INTERNAL_FRAMEWORK_PATH
+ln -s $RELATIVE_FRAMEWORK_PATH/libANGLE-shared.dylib $INTERNAL_FRAMEWORK_PATH
+ln -s $RELATIVE_FRAMEWORK_PATH/libwebrtc.dylib $INTERNAL_FRAMEWORK_PATH
+
+# Legacy iOS can't use xz compression, although it compresses better
+if [[ "$DIR_NAME" == *"+"* ]] && [[ ${DIR_NAME#*+} -le 10 ]]; then
 	echo "[*] Forcing gzip compression for legacy iOS"
 	dpkg-deb -Zgzip --build $DIR_NAME && dpkg-name $DIR_NAME.deb
 else
@@ -141,12 +158,21 @@ else
 fi
 
 echo "[*] Returning frameworks"
-mv $EXTERNAL_FRAMEWORK_PATH/CyberCore.framework $APPLICATION_PATH/$app/Frameworks/CyberCore.framework
-mv $EXTERNAL_FRAMEWORK_PATH/CyberKit.framework $APPLICATION_PATH/$app/Frameworks/CyberKit.framework
-mv $EXTERNAL_FRAMEWORK_PATH/CyberKitLegacy.framework $APPLICATION_PATH/$app/Frameworks/CyberKitLegacy.framework
-mv $EXTERNAL_FRAMEWORK_PATH/CyberScriptCore.framework $APPLICATION_PATH/$app/Frameworks/CyberScriptCore.framework
-mv $EXTERNAL_FRAMEWORK_PATH/libANGLE-shared.dylib $APPLICATION_PATH/$app/Frameworks/libANGLE-shared.dylib
-mv $EXTERNAL_FRAMEWORK_PATH/libwebrtc.dylib $APPLICATION_PATH/$app/Frameworks/libwebrtc.dylib
+# Get rid of the symlinks
+rm $INTERNAL_FRAMEWORK_PATH/CyberCore.framework
+rm $INTERNAL_FRAMEWORK_PATH/CyberKit.framework
+rm $INTERNAL_FRAMEWORK_PATH/CyberKitLegacy.framework
+rm $INTERNAL_FRAMEWORK_PATH/CyberScriptCore.framework
+rm $INTERNAL_FRAMEWORK_PATH/libANGLE-shared.dylib
+rm $INTERNAL_FRAMEWORK_PATH/libwebrtc.dylib
+
+# Put frameworks back in original location
+mv $EXTERNAL_FRAMEWORK_PATH/CyberCore.framework $INTERNAL_FRAMEWORK_PATH/CyberCore.framework
+mv $EXTERNAL_FRAMEWORK_PATH/CyberKit.framework $INTERNAL_FRAMEWORK_PATH/CyberKit.framework
+mv $EXTERNAL_FRAMEWORK_PATH/CyberKitLegacy.framework $INTERNAL_FRAMEWORK_PATH/CyberKitLegacy.framework
+mv $EXTERNAL_FRAMEWORK_PATH/CyberScriptCore.framework $INTERNAL_FRAMEWORK_PATH/CyberScriptCore.framework
+mv $EXTERNAL_FRAMEWORK_PATH/libANGLE-shared.dylib $INTERNAL_FRAMEWORK_PATH/libANGLE-shared.dylib
+mv $EXTERNAL_FRAMEWORK_PATH/libwebrtc.dylib $INTERNAL_FRAMEWORK_PATH/libwebrtc.dylib
 
 mv $APPLICATION_PATH Payload
 rm -rf $DIR_NAME
