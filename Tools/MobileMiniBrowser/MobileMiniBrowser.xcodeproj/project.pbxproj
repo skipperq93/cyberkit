@@ -638,6 +638,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.webkit.MobileMiniBrowserFramework;
 				PRODUCT_NAME = MobileMiniBrowser;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -662,6 +663,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.webkit.MobileMiniBrowserFramework;
 				PRODUCT_NAME = MobileMiniBrowser;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
