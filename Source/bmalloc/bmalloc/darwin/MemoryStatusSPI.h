@@ -42,19 +42,18 @@ typedef struct memorystatus_memlimit_properties {
     uint32_t memlimit_inactive_attr;
 } memorystatus_memlimit_properties_t;
 
-typedef struct memorystatus_priority_entry {
-    pid_t pid;
-    int32_t priority;
+typedef struct memorystatus_priority_properties {
+    int32_t  priority;
     uint64_t user_data;
-    int32_t limit;    /* MB */
-    uint32_t state;
-} memorystatus_priority_entry_t;
+} memorystatus_priority_properties_t;
 
+#define JETSAM_PRIORITY_FOREGROUND_SUPPORT 9
+
+#define MEMORYSTATUS_CMD_SET_PRIORITY_PROPERTIES 2
 #define MEMORYSTATUS_CMD_SET_MEMLIMIT_PROPERTIES 7
 #define MEMORYSTATUS_CMD_GET_MEMLIMIT_PROPERTIES 8
 #define MEMORYSTATUS_CMD_SET_PROCESS_IS_FREEZABLE 18
 #define MEMORYSTATUS_CMD_GET_PROCESS_IS_FREEZABLE 19
-#define MEMORYSTATUS_CMD_GRP_SET_PROPERTIES 100
 
 }
 #endif // __has_include(<System/sys/kern_memorystatus.h>)

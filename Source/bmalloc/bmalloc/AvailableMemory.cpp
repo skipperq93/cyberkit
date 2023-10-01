@@ -92,25 +92,26 @@ static size_t memorySizeAccordingToKernel()
 static size_t jetsamLimit()
 {
     memorystatus_memlimit_properties_t properties;
+    memorystatus_priority_properties_t priority;
     pid_t pid = getpid();
     
     // Use our privilege to change jetsam limit at the last second
-    memorystatus_memlimit_properties_t spoof;
-    memset(&spoof, 0, sizeof(memorystatus_memlimit_properties));
-    spoof.memlimit_active = 840;
-    spoof.memlimit_inactive = 840;
-    if (memorystatus_control(MEMORYSTATUS_CMD_SET_MEMLIMIT_PROPERTIES, pid, 0, &spoof, sizeof(spoof)) == -1) {
+    memset(&properties, 0, sizeof(memorystatus_memlimit_properties_t));
+    memset(&priority, 0, sizeof(memorystatus_priority_properties_t));
+    properties.memlimit_active = 840;
+    properties.memlimit_inactive = 840;
+    priority.priority = JETSAM_PRIORITY_FOREGROUND_SUPPORT;
+
+    if (memorystatus_control(MEMORYSTATUS_CMD_SET_MEMLIMIT_PROPERTIES, pid, 0, &properties, sizeof(properties))) {
+        abort();
+    }
+
+    if (memorystatus_control(MEMORYSTATUS_CMD_SET_PRIORITY_PROPERTIES, pid, 0, &priority, sizeof(priority))) {
         abort();
     }
     
-    memorystatus_priority_entry_t prior;
-    memset(&prior, 0, sizeof(memorystatus_priority_entry_t));
-    prior.pid = pid;
-    prior.priority = 9;
-    if (memorystatus_control(MEMORYSTATUS_CMD_GRP_SET_PROPERTIES, 0, 0, &prior, sizeof(memorystatus_priority_entry_t)) == -1) {
-        abort();
-    }
-    
+    // Get jetsam limit from system
+    memset(&properties, 0, sizeof(memorystatus_memlimit_properties));
     if (memorystatus_control(MEMORYSTATUS_CMD_GET_MEMLIMIT_PROPERTIES, pid, 0, &properties, sizeof(properties))) {
         // return 840 * bmalloc::MB;
         abort();
