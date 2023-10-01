@@ -2950,7 +2950,7 @@ const UIDNA& URLParser::internationalDomainNameTranscoder()
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [] {
 #ifdef CYBERKIT_FRAMEWORK_VERSION
-        std::string path = "/var/mobile/Library/CyberKit/Frameworks/" + std::string(CYBERKIT_FRAMEWORK_VERSION) + "/CyberKit.framework/XPCServices";
+        std::string path = "/var/mobile/Library/CyberKit/Frameworks/" + std::string(CYBERKIT_FRAMEWORK_VERSION);
         u_setDataDirectory(path.c_str());
 #else
 #error CYBERKIT_FRAMEWORK_VERSION not defined

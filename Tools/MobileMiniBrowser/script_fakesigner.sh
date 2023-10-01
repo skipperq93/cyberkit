@@ -36,12 +36,12 @@ mkdir Payload
 cp -R $ipa $(dirname $ipa)/Payload
 app=$(ls -1 -d *.app)
 cd Payload
-rm -rf $app/Frameworks/CyberKit.framework/XPCServices && mkdir $app/Frameworks/CyberKit.framework/XPCServices
+r m -rf $app/Frameworks/CyberKit.framework/XPCServices && mkdir $app/Frameworks/CyberKit.framework/XPCServices
 rm -rf $app/Frameworks/CyberKit.framework/Daemons && mkdir $app/Frameworks/CyberKit.framework/Daemons
 cp -R ../*.xpc $app/Frameworks/CyberKit.framework/XPCServices
 cp ../adattributiond $app/Frameworks/CyberKit.framework/Daemons
 cp ../webpushd $app/Frameworks/CyberKit.framework/Daemons
-cp ../../../Source/WTF/icu/unicode/data/out/*.dat $app/Frameworks/CyberKit.framework/XPCServices
+cp ../../../Source/WTF/icu/unicode/data/out/*.dat $app/Frameworks
 ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.GPU.xpc
 ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.Networking.xpc
 ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.WebContent.CaptivePortal.xpc
@@ -133,20 +133,21 @@ mkdir $EXTERNAL_FRAMEWORK_PATH
 INTERNAL_FRAMEWORK_PATH=$APPLICATION_PATH/$app/Frameworks
 
 # Move frameworks to $EXTERNAL_FRAMEWORK_PATH
-mv $INTERNAL_FRAMEWORK_PATH/CyberCore.framework $EXTERNAL_FRAMEWORK_PATH/CyberCore.framework
-mv $INTERNAL_FRAMEWORK_PATH/CyberKit.framework $EXTERNAL_FRAMEWORK_PATH/CyberKit.framework
-mv $INTERNAL_FRAMEWORK_PATH/CyberKitLegacy.framework $EXTERNAL_FRAMEWORK_PATH/CyberKitLegacy.framework
-mv $INTERNAL_FRAMEWORK_PATH/CyberScriptCore.framework $EXTERNAL_FRAMEWORK_PATH/CyberScriptCore.framework
-mv $INTERNAL_FRAMEWORK_PATH/libANGLE-shared.dylib $EXTERNAL_FRAMEWORK_PATH/libANGLE-shared.dylib
-mv $INTERNAL_FRAMEWORK_PATH/libwebrtc.dylib $EXTERNAL_FRAMEWORK_PATH/libwebrtc.dylib
+mv $INTERNAL_FRAMEWORK_PATH/*.dat $EXTERNAL_FRAMEWORK_PATH
+#mv $INTERNAL_FRAMEWORK_PATH/CyberCore.framework $EXTERNAL_FRAMEWORK_PATH/CyberCore.framework
+#mv $INTERNAL_FRAMEWORK_PATH/CyberKit.framework $EXTERNAL_FRAMEWORK_PATH/CyberKit.framework
+#mv $INTERNAL_FRAMEWORK_PATH/CyberKitLegacy.framework $EXTERNAL_FRAMEWORK_PATH/CyberKitLegacy.framework
+#mv $INTERNAL_FRAMEWORK_PATH/CyberScriptCore.framework $EXTERNAL_FRAMEWORK_PATH/CyberScriptCore.framework
+#mv $INTERNAL_FRAMEWORK_PATH/libANGLE-shared.dylib $EXTERNAL_FRAMEWORK_PATH/libANGLE-shared.dylib
+#mv $INTERNAL_FRAMEWORK_PATH/libwebrtc.dylib $EXTERNAL_FRAMEWORK_PATH/libwebrtc.dylib
 
 # Add hard links in $INTERNAL_FRAMEWORK_PATH to shut up sandbox
-ln -s $RELATIVE_FRAMEWORK_PATH/CyberCore.framework $INTERNAL_FRAMEWORK_PATH
-ln -s $RELATIVE_FRAMEWORK_PATH/CyberKit.framework $INTERNAL_FRAMEWORK_PATH
-ln -s $RELATIVE_FRAMEWORK_PATH/CyberKitLegacy.framework $INTERNAL_FRAMEWORK_PATH
-ln -s $RELATIVE_FRAMEWORK_PATH/CyberScriptCore.framework $INTERNAL_FRAMEWORK_PATH
-ln -s $RELATIVE_FRAMEWORK_PATH/libANGLE-shared.dylib $INTERNAL_FRAMEWORK_PATH
-ln -s $RELATIVE_FRAMEWORK_PATH/libwebrtc.dylib $INTERNAL_FRAMEWORK_PATH
+#ln -s $RELATIVE_FRAMEWORK_PATH/CyberCore.framework $INTERNAL_FRAMEWORK_PATH
+#ln -s $RELATIVE_FRAMEWORK_PATH/CyberKit.framework $INTERNAL_FRAMEWORK_PATH
+#ln -s $RELATIVE_FRAMEWORK_PATH/CyberKitLegacy.framework $INTERNAL_FRAMEWORK_PATH
+#ln -s $RELATIVE_FRAMEWORK_PATH/CyberScriptCore.framework $INTERNAL_FRAMEWORK_PATH
+#ln -s $RELATIVE_FRAMEWORK_PATH/libANGLE-shared.dylib $INTERNAL_FRAMEWORK_PATH
+#ln -s $RELATIVE_FRAMEWORK_PATH/libwebrtc.dylib $INTERNAL_FRAMEWORK_PATH
 
 # Legacy iOS can't use xz compression, although it compresses better
 if [[ "$DIR_NAME" == *"+"* ]] && [[ ${DIR_NAME#*+} -le 10 ]]; then
@@ -159,20 +160,21 @@ fi
 
 echo "[*] Returning frameworks"
 # Get rid of the symlinks
-rm $INTERNAL_FRAMEWORK_PATH/CyberCore.framework
-rm $INTERNAL_FRAMEWORK_PATH/CyberKit.framework
-rm $INTERNAL_FRAMEWORK_PATH/CyberKitLegacy.framework
-rm $INTERNAL_FRAMEWORK_PATH/CyberScriptCore.framework
-rm $INTERNAL_FRAMEWORK_PATH/libANGLE-shared.dylib
-rm $INTERNAL_FRAMEWORK_PATH/libwebrtc.dylib
+#rm $INTERNAL_FRAMEWORK_PATH/CyberCore.framework
+#rm $INTERNAL_FRAMEWORK_PATH/CyberKit.framework
+#rm $INTERNAL_FRAMEWORK_PATH/CyberKitLegacy.framework
+#rm $INTERNAL_FRAMEWORK_PATH/CyberScriptCore.framework
+#rm $INTERNAL_FRAMEWORK_PATH/libANGLE-shared.dylib
+#rm $INTERNAL_FRAMEWORK_PATH/libwebrtc.dylib
 
 # Put frameworks back in original location
-mv $EXTERNAL_FRAMEWORK_PATH/CyberCore.framework $INTERNAL_FRAMEWORK_PATH/CyberCore.framework
-mv $EXTERNAL_FRAMEWORK_PATH/CyberKit.framework $INTERNAL_FRAMEWORK_PATH/CyberKit.framework
-mv $EXTERNAL_FRAMEWORK_PATH/CyberKitLegacy.framework $INTERNAL_FRAMEWORK_PATH/CyberKitLegacy.framework
-mv $EXTERNAL_FRAMEWORK_PATH/CyberScriptCore.framework $INTERNAL_FRAMEWORK_PATH/CyberScriptCore.framework
-mv $EXTERNAL_FRAMEWORK_PATH/libANGLE-shared.dylib $INTERNAL_FRAMEWORK_PATH/libANGLE-shared.dylib
-mv $EXTERNAL_FRAMEWORK_PATH/libwebrtc.dylib $INTERNAL_FRAMEWORK_PATH/libwebrtc.dylib
+mv $EXTERNAL_FRAMEWORK_PATH/*.dat $INTERNAL_FRAMEWORK_PATH
+#mv $EXTERNAL_FRAMEWORK_PATH/CyberCore.framework $INTERNAL_FRAMEWORK_PATH/CyberCore.framework
+#mv $EXTERNAL_FRAMEWORK_PATH/CyberKit.framework $INTERNAL_FRAMEWORK_PATH/CyberKit.framework
+#mv $EXTERNAL_FRAMEWORK_PATH/CyberKitLegacy.framework $INTERNAL_FRAMEWORK_PATH/CyberKitLegacy.framework
+#mv $EXTERNAL_FRAMEWORK_PATH/CyberScriptCore.framework $INTERNAL_FRAMEWORK_PATH/CyberScriptCore.framework
+#mv $EXTERNAL_FRAMEWORK_PATH/libANGLE-shared.dylib $INTERNAL_FRAMEWORK_PATH/libANGLE-shared.dylib
+#mv $EXTERNAL_FRAMEWORK_PATH/libwebrtc.dylib $INTERNAL_FRAMEWORK_PATH/libwebrtc.dylib
 
 mv $APPLICATION_PATH Payload
 rm -rf $DIR_NAME
