@@ -42,6 +42,7 @@
 #import <wtf/spi/cocoa/OSLogSPI.h>
 #import <wtf/spi/darwin/SandboxSPI.h>
 #import <wtf/spi/darwin/XPCSPI.h>
+#import <bmalloc/AvailableMemory.h>
 
 namespace CyberKit {
 
@@ -114,6 +115,7 @@ static void initializeLogd(bool disableLogging)
 
 static void XPCServiceEventHandler(xpc_connection_t peer)
 {
+    bmalloc::jetsamConfiguration(getpid());
     // u_setDataDirectory used to be called here
     OSObjectPtr<xpc_connection_t> retainedPeerConnection(peer);
 

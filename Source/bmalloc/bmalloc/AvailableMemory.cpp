@@ -26,9 +26,6 @@
 #include "AvailableMemory.h"
 
 #include "Environment.h"
-#if BPLATFORM(IOS_FAMILY)
-#include "MemoryStatusSPI.h"
-#endif
 #include "PerProcess.h"
 #include "Scavenger.h"
 #include "Sizes.h"
@@ -91,31 +88,7 @@ static size_t memorySizeAccordingToKernel()
 #if BPLATFORM(IOS_FAMILY)
 static size_t jetsamLimit()
 {
-    memorystatus_memlimit_properties_t properties;
-    memorystatus_priority_properties_t priority;
-    pid_t pid = getpid();
-    
-    // Use our privilege to change jetsam limit at the last second
-    memset(&properties, 0, sizeof(memorystatus_memlimit_properties_t));
-    memset(&priority, 0, sizeof(memorystatus_priority_properties_t));
-    properties.memlimit_active = 840;
-    properties.memlimit_inactive = 840;
-    priority.priority = JETSAM_PRIORITY_FOREGROUND_SUPPORT;
-
-    if (memorystatus_control(MEMORYSTATUS_CMD_SET_MEMLIMIT_PROPERTIES, pid, 0, &properties, sizeof(properties))) {
-        abort();
-    }
-
-    if (memorystatus_control(MEMORYSTATUS_CMD_SET_PRIORITY_PROPERTIES, pid, 0, &priority, sizeof(priority))) {
-        abort();
-    }
-    
-    // Get jetsam limit from system
-    memset(&properties, 0, sizeof(memorystatus_memlimit_properties));
-    if (memorystatus_control(MEMORYSTATUS_CMD_GET_MEMLIMIT_PROPERTIES, pid, 0, &properties, sizeof(properties))) {
-        // return 840 * bmalloc::MB;
-        abort();
-    }
+    auto properties = jetsamConfiguration(getpid());
     if (properties.memlimit_active < 0)
         return std::numeric_limits<size_t>::max();
     return static_cast<size_t>(properties.memlimit_active) * bmalloc::MB;
