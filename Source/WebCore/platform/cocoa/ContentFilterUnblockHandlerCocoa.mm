@@ -98,7 +98,10 @@ RetainPtr<WebFilterEvaluator> ContentFilterUnblockHandler::unpackWebFilterEvalua
     NSError *error { nil };
     NSSet<Class> *classes = [NSSet setWithObjects:getWebFilterEvaluatorClass(), NSNumber.class, NSURL.class, NSString.class, NSMutableString.class, nil];
     NSData *data = [NSData dataWithBytesNoCopy:vector.data() length:vector.size() freeWhenDone:NO];
-    return [NSKeyedUnarchiver _strictlyUnarchivedObjectOfClasses:classes fromData:data error:&error];
+    if ([NSKeyedUnarchiver respondsToSelector:@selector(_strictlyUnarchivedObjectOfClasses:fromData:error:)])
+        return [NSKeyedUnarchiver _strictlyUnarchivedObjectOfClasses:classes fromData:data error:&error];
+    else
+        return [NSKeyedUnarchiver unarchivedObjectOfClasses:classes fromData:data error:&error];
 }
 #endif
 
