@@ -413,7 +413,7 @@ const BKSProcessAssertionFlags foregroundTabFlags = (BKSProcessAssertionPreventT
 static BKSProcessAssertionFlags flagsForAssertionType(ProcessAssertionType assertionType)
 {
     switch (assertionType) {
-    case ProcessAssertionType::Suspended:
+    case ProcessAssertionType::NearSuspended:
         return suspendedTabFlags;
     case ProcessAssertionType::Background:
     case ProcessAssertionType::UnboundedNetworking:
@@ -432,7 +432,7 @@ static BKSProcessAssertionFlags flagsForAssertionType(ProcessAssertionType asser
 static BKSProcessAssertionReason toBKSProcessAssertionReason(ProcessAssertionType assertionType)
 {
     switch (assertionType) {
-    case ProcessAssertionType::Suspended:
+    case ProcessAssertionType::NearSuspended:
     case ProcessAssertionType::Background:
     case ProcessAssertionType::Foreground:
         return BKSProcessAssertionReasonExtension;
