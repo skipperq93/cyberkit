@@ -82,10 +82,12 @@ void GPUProcess::dispatchSimulatedNotificationsForPreferenceChange(const String&
 void GPUProcess::ensureAVCaptureServerConnection()
 {
     RELEASE_LOG(WebRTC, "GPUProcess::ensureAVCaptureServerConnection: Entering.");
+#if HAVE(AVSAMPLEBUFFERVIDEOOUTPUT)
     if ([PAL::getAVCaptureDeviceClass() respondsToSelector:@selector(ensureServerConnection)]) {
         RELEASE_LOG(WebRTC, "GPUProcess::ensureAVCaptureServerConnection: Calling [AVCaptureDevice ensureServerConnection]");
         [PAL::getAVCaptureDeviceClass() ensureServerConnection];
     }
+#endif
 }
 #endif
 

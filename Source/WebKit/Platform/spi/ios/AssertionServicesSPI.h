@@ -72,6 +72,7 @@ enum {
     BKSProcessAssertionReasonMediaPlayback = 1,
     BKSProcessAssertionReasonFinishTask = 4,
     BKSProcessAssertionReasonExtension = 13,
+    BKSProcessAssertionReasonTransientWakeup = 10002,
     BKSProcessAssertionReasonFinishTaskUnbounded = 10004,
 };
 typedef uint32_t BKSProcessAssertionReason;
