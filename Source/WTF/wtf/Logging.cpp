@@ -39,4 +39,4 @@ DEFINE_LOG_CHANNEL(SuspendableWorkQueue, LOG_CHANNEL_WEBKIT_SUBSYSTEM);
 
 #endif // !LOG_DISABLED || !RELEASE_LOG_DISABLED
 
-} // namespace WebCore
+} // namespace CyberCore

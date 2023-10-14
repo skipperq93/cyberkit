@@ -1,4 +1,4 @@
-This test verifies that scrolling while there is a selection in a fixed position container does not unselect text in a focused native text field. This test requires WebKitTestRunner.
+This test verifies that scrolling while there is a selection in a fixed position container does not unselect text in a focused native text field. This test requires CyberKitTestRunner.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

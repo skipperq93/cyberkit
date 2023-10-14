@@ -59,7 +59,7 @@ WI.HARBuilder = class HARBuilder
     static creator()
     {
         return {
-            name: "WebKit Web Inspector",
+            name: "CyberKit Web Inspector",
             version: "1.0",
         };
     }
@@ -106,7 +106,7 @@ WI.HARBuilder = class HARBuilder
         if (resource.remoteAddress) {
             entry.serverIPAddress = HARBuilder.ipAddress(resource.remoteAddress);
 
-            // WebKit Custom Field `_serverPort`.
+            // CyberKit Custom Field `_serverPort`.
             if (entry.serverIPAddress)
                 entry._serverPort = HARBuilder.port(resource.remoteAddress);
         }
@@ -117,7 +117,7 @@ WI.HARBuilder = class HARBuilder
         if (resource.responseSource !== WI.Resource.ResponseSource.Unknown)
             entry._fetchType = HARBuilder.fetchType(resource.responseSource);
 
-        // WebKit Custom Field `_priority`.
+        // CyberKit Custom Field `_priority`.
         if (resource.priority !== WI.Resource.NetworkPriority.Unknown)
             entry._priority = HARBuilder.priority(resource.priority);
 

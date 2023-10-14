@@ -22,7 +22,7 @@ function loaded() {
 
 function failed() {
     var result = document.getElementById('result');
-    // Report 'FAIL' if WebCore didn't report onError on broken image.
+    // Report 'FAIL' if CyberCore didn't report onError on broken image.
     result.innerHTML = "FAIL";
     if (window.testRunner) {
         testRunner.setShouldPaintBrokenImage(true);
@@ -31,7 +31,7 @@ function failed() {
 }
 </script>
 <body>
-Radar 8610908 - Add a resource delegate method to query if WebCore should paint the broken image.
+Radar 8610908 - Add a resource delegate method to query if CyberCore should paint the broken image.
 <div id='img'>
 <img id="broken" onError="loaded()" onLoad="failed()" src="resources/broken-image-with-invalid-format.png">
 </div>

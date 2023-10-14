@@ -43,7 +43,7 @@ HINSTANCE hInst;
 POINT s_windowPosition = { 100, 100 };
 SIZE s_windowSize = { 500, 200 };
 
-namespace WebCore {
+namespace CyberCore {
 float deviceScaleFactorForWindow(HWND);
 }
 
@@ -53,7 +53,7 @@ void computeFullDesktopFrame()
     if (!::SystemParametersInfo(SPI_GETWORKAREA, 0, static_cast<void*>(&desktop), 0))
         return;
 
-    float scaleFactor = WebCore::deviceScaleFactorForWindow(nullptr);
+    float scaleFactor = CyberCore::deviceScaleFactorForWindow(nullptr);
 
     s_windowPosition.x = 0;
     s_windowPosition.y = 0;

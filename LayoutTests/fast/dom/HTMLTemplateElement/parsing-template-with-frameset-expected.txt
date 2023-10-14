@@ -1,1 +1,1 @@
-This tests parsing a template element with a frameset element. WebKit should not hit an assertion.
+This tests parsing a template element with a frameset element. CyberKit should not hit an assertion.

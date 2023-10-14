@@ -1,4 +1,4 @@
-This page is a test case for Bug 51905. WebKit should not crash when this page is loaded.
+This page is a test case for Bug 51905. CyberKit should not crash when this page is loaded.
 
 PASS
 

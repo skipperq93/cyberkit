@@ -57,7 +57,7 @@ class GitHub(Base, mocks.Requests):
         from datetime import datetime, timedelta
         return datetime.utcfromtimestamp(timestamp - timedelta(hours=7).seconds).strftime('%Y-%m-%dT%H:%M:%SZ')
 
-    def __init__(self, hostname='github.example.com/WebKit/WebKit', users=None, issues=None, environment=None, projects=None, labels=None):
+    def __init__(self, hostname='github.example.com/CyberKit/CyberKit', users=None, issues=None, environment=None, projects=None, labels=None):
         hostname, repo = hostname.split('/', 1)
         self.api_remote = 'api.{hostname}/repos/{repo}'.format(hostname=hostname, repo=repo)
 

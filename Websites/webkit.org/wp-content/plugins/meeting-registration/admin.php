@@ -40,11 +40,11 @@
 </style>
 <div class="wrap">
 
-    <h1>WebKit Contributors Meeting Registrations</h1>
+    <h1>CyberKit Contributors Meeting Registrations</h1>
     <h2><?php esc_html_e($current_meeting_term->name); ?></h2>
 
     <div class="tablenav top">
-        <a href="<?php echo admin_url('admin.php?page=' . WebKit_Meeting_Registration::ADMIN_PAGE_SLUG . '&download=csv'); ?>" class="button action">Download</a>
+        <a href="<?php echo admin_url('admin.php?page=' . CyberKit_Meeting_Registration::ADMIN_PAGE_SLUG . '&download=csv'); ?>" class="button action">Download</a>
         <div class="tablenav-pages">
             <span class="displaying-num"><?php echo esc_html("$total $registration_label"); ?></span>
         </div>
@@ -69,7 +69,7 @@
         <tbody>
         <?php
             foreach ($posts_array as $entry):
-                $registration = WebKit_Meeting_Registration::full_registration($entry);
+                $registration = CyberKit_Meeting_Registration::full_registration($entry);
         ?>
         <tr>
             <th class="check-column"><input type="checkbox" name="delete[]" value="<?php echo esc_attr($registration->id); ?>"></th>
@@ -92,7 +92,7 @@
             <input type="submit" id="delete-button" name="delete_button" value="Delete" class="button button-secondary">
         </div>
         <div class="alignright actions">
-                <input type="hidden" name="page" value="<?php echo esc_attr(WebKit_Meeting_Registration::ADMIN_PAGE_SLUG); ?>">
+                <input type="hidden" name="page" value="<?php echo esc_attr(CyberKit_Meeting_Registration::ADMIN_PAGE_SLUG); ?>">
             <span id="new-meeting-form">
                 <label for="meeting-title-input">Meeting Title: </label>
                 <input type="text" name="meeting_title" id="meeting-title-input" value="" size="26">
@@ -100,7 +100,7 @@
                 <input id="new-meeting-cancel-button" type="button" name="" value="Cancel" class="button cancel">
             </span>
             <input id="new-meeting-button" type="button" name="" value="New Meeting" class="button">
-            <?php if (WebKit_Meeting_Registration::$registration_state === "open"): ?>
+            <?php if (CyberKit_Meeting_Registration::$registration_state === "open"): ?>
                 <input type="submit" name="toggle_registration" value="Close Registration" class="button">
             <?php else: ?>
                 <input type="submit" name="toggle_registration" value="Open Registration" class="button">

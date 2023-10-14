@@ -47,7 +47,7 @@ def read_lines(fd: int):
 def main(args: list) -> int:
     tmpdir = tempfile.gettempdir()
     source_root = os.path.normpath(os.path.abspath(os.path.join(scriptdir, '../../')))
-    build_root = os.path.join(source_root, 'WebKitBuild')
+    build_root = os.path.join(source_root, 'CyberKitBuild')
     bind_mounts = {
         "/app/webkit":  source_root,
         # Access to /run/host is required by the crash log reporter.

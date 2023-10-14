@@ -401,7 +401,7 @@ WI.GradientSliderKnob = class GradientSliderKnob extends WI.Object
         if (!this._detaching && Math.abs(event.pageY - this._startMouseY) > 50) {
             this._detaching = this.delegate && typeof this.delegate.knobCanDetach === "function" && this.delegate.knobCanDetach(this);
             if (this._detaching && this.delegate && typeof this.delegate.knobWillDetach === "function") {
-                var translationFromParentToBody = window.webkitConvertPointFromNodeToPage(this.element.parentNode, new WebKitPoint(0, 0));
+                var translationFromParentToBody = window.webkitConvertPointFromNodeToPage(this.element.parentNode, new CyberKitPoint(0, 0));
                 this._startMouseX -= translationFromParentToBody.x;
                 this._startMouseY -= translationFromParentToBody.y;
                 document.body.appendChild(this.element);

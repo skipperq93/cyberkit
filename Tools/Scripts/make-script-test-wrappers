@@ -56,7 +56,7 @@ if (!$result || $showHelp) {
 setConfiguration();
 my $productDir = productDir();
 
-chdirWebKit();
+chdirCyberKit();
 
 my @templates = findTemplateFiles(@ARGV);
 
@@ -75,7 +75,7 @@ for my $tfile (@templates) {
 
     print "${tpath}\n";
 
-    chdirWebKit();
+    chdirCyberKit();
     chdir($tpath);
 
     my @files;

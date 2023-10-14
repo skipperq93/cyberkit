@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: WebKit Surveys
+Plugin Name: CyberKit Surveys
 Description: Create surveys to include on pages or posts
 Version:     1.0
 Author:      Jonathan Davis
@@ -9,7 +9,7 @@ Author URI:  http://webkit.org
 
 defined('WPINC') || header('HTTP/1.1 403') & exit; // Prevent direct access
 
-class WebKit_Survey {
+class CyberKit_Survey {
     
     static $responded = false;   // Track when a user has responded
     static $post_update = false; // Track when the host post/page is updated
@@ -23,7 +23,7 @@ class WebKit_Survey {
     }
 
     public static function register_shortcodes() {
-        add_shortcode('survey', ['WebKit_Survey', 'survey_shortcode']);
+        add_shortcode('survey', ['CyberKit_Survey', 'survey_shortcode']);
     }
     
     public function process_survey($post_id, $post_after, $post_before) {
@@ -67,7 +67,7 @@ class WebKit_Survey {
         foreach ( $screens as $screen ) {
             add_meta_box(
                 'webkit_survey',
-                'WebKit Survey',
+                'CyberKit Survey',
                 [__CLASS__, 'admin_box'],
                 $screen
             );
@@ -210,4 +210,4 @@ class WebKit_Survey {
     }
 }
 
-WebKit_Survey::init();
+CyberKit_Survey::init();

@@ -1,4 +1,4 @@
-Test for WebKitBug 139390
+Test for CyberKitBug 139390
 
 A block level element inserted into an inline element should be properly displayed in a multicol element.
 

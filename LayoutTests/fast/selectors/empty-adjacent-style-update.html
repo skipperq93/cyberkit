@@ -32,8 +32,8 @@ shouldBeEqualToString('getComputedStyle(document.getElementById("target-with-ren
 shouldBeEqualToString('getComputedStyle(document.getElementById("target-without-renderer")).backgroundColor', 'rgb(1, 2, 3)');
 
 debug("Adding a comment does not change the :empty state.");
-testCaseWithRender.appendChild(document.createComment("WebKit!"));
-testCaseWithoutRenderer.appendChild(document.createComment("WebKit!"));
+testCaseWithRender.appendChild(document.createComment("CyberKit!"));
+testCaseWithoutRenderer.appendChild(document.createComment("CyberKit!"));
 shouldBeEqualToString('getComputedStyle(document.getElementById("target-with-renderer")).backgroundColor', 'rgb(1, 2, 3)');
 shouldBeEqualToString('getComputedStyle(document.getElementById("target-without-renderer")).backgroundColor', 'rgb(1, 2, 3)');
 
@@ -58,8 +58,8 @@ shouldBeEqualToString('getComputedStyle(document.getElementById("target-with-ren
 shouldBeEqualToString('getComputedStyle(document.getElementById("target-without-renderer")).backgroundColor', 'rgb(1, 2, 3)');
 
 debug("Adding a non empty text node makes the state non empty.");
-testCaseWithRender.appendChild(document.createTextNode('WebKit!'));
-testCaseWithoutRenderer.appendChild(document.createTextNode('WebKit!'));
+testCaseWithRender.appendChild(document.createTextNode('CyberKit!'));
+testCaseWithoutRenderer.appendChild(document.createTextNode('CyberKit!'));
 shouldBeEqualToString('getComputedStyle(document.getElementById("target-with-renderer")).backgroundColor', 'rgb(255, 255, 255)');
 shouldBeEqualToString('getComputedStyle(document.getElementById("target-without-renderer")).backgroundColor', 'rgb(255, 255, 255)');
 

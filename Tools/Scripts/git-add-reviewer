@@ -68,7 +68,7 @@ my $usage = <<EOF;
 Usage: $programName -i|--interactive upstream
        $programName commit-ish reviewer
 
-Adds a reviewer to a git commit in a repository with WebKit-style commit logs
+Adds a reviewer to a git commit in a repository with CyberKit-style commit logs
 and ChangeLogs.
 
 When run in interactive mode, `upstream` specifies the commit after which

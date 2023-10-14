@@ -26,7 +26,7 @@ promise_test(async t => {
     });
     observer.observe({entryTypes: ['resource']});
 
-    const frame = await with_iframe("http://127.0.0.1:8800/WebKit/resource-timing/resources/server-timing.py");
+    const frame = await with_iframe("http://127.0.0.1:8800/CyberKit/resource-timing/resources/server-timing.py");
 
     const result = await promise;
     const entries = result.getEntries();

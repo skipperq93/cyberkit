@@ -31,7 +31,7 @@ if ARGV.size != 1 || ARGV[0].include?("-h")
   exit 1
 end
 
-JAVASCRIPTCORE_PATH = File.expand_path File.join(File.dirname(__FILE__), "..", "..", "JavaScriptCore")
+JAVASCRIPTCORE_PATH = File.expand_path File.join(File.dirname(__FILE__), "..", "..", "CyberScriptCore")
 WEB_INSPECTOR_PATH = File.expand_path File.join(File.dirname(__FILE__), "..")
 COPY_USER_INTERFACE_RESOURCES_PATH = File.join WEB_INSPECTOR_PATH, "Scripts", "copy-user-interface-resources.pl"
 

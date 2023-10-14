@@ -31,18 +31,18 @@
 #include "TestRunner.h"
 
 #include "JSBasics.h"
-#include "WebCoreTestSupport.h"
+#include "CyberCoreTestSupport.h"
 #include "WorkQueue.h"
 #include "WorkQueueItem.h"
-#include <JavaScriptCore/APICast.h>
-#include <JavaScriptCore/ArrayBufferView.h>
-#include <JavaScriptCore/HeapInlines.h>
-#include <JavaScriptCore/JSArrayBufferView.h>
-#include <JavaScriptCore/JSCTestRunnerUtils.h>
-#include <JavaScriptCore/JSGlobalObjectInlines.h>
-#include <JavaScriptCore/TypedArrayInlines.h>
-#include <JavaScriptCore/VMInlines.h>
-#include <WebCore/LogInitialization.h>
+#include <CyberScriptCore/APICast.h>
+#include <CyberScriptCore/ArrayBufferView.h>
+#include <CyberScriptCore/HeapInlines.h>
+#include <CyberScriptCore/JSArrayBufferView.h>
+#include <CyberScriptCore/JSCTestRunnerUtils.h>
+#include <CyberScriptCore/JSGlobalObjectInlines.h>
+#include <CyberScriptCore/TypedArrayInlines.h>
+#include <CyberScriptCore/VMInlines.h>
+#include <CyberCore/LogInitialization.h>
 #include <cstring>
 #include <locale.h>
 #include <stdio.h>
@@ -57,7 +57,7 @@
 #include <wtf/text/WTFString.h>
 
 #if PLATFORM(IOS_FAMILY)
-#include <WebCore/WebCoreThreadRun.h>
+#include <CyberCore/CyberCoreThreadRun.h>
 #include <wtf/BlockPtr.h>
 #endif
 
@@ -2241,7 +2241,7 @@ void TestRunner::setAccummulateLogsForChannel(JSStringRef channel)
     auto buffer = makeUniqueArray<char>(maxLength + 1);
     JSStringGetUTF8CString(channel, buffer.get(), maxLength + 1);
 
-    WebCoreTestSupport::setLogChannelToAccumulate(String::fromLatin1(buffer.get()));
+    CyberCoreTestSupport::setLogChannelToAccumulate(String::fromLatin1(buffer.get()));
 }
 
 using CallbackMap = WTF::HashMap<unsigned, JSObjectRef>;
@@ -2339,12 +2339,12 @@ void TestRunner::uiScriptDidComplete(const String& result, unsigned callbackID)
 
 void TestRunner::setAllowsAnySSLCertificate(bool allowsAnySSLCertificate)
 {
-    WebCoreTestSupport::setAllowsAnySSLCertificate(allowsAnySSLCertificate);
+    CyberCoreTestSupport::setAllowsAnySSLCertificate(allowsAnySSLCertificate);
 }
 
 bool TestRunner::allowsAnySSLCertificate()
 {
-    return WebCoreTestSupport::allowsAnySSLCertificate();
+    return CyberCoreTestSupport::allowsAnySSLCertificate();
 }
 
 void TestRunner::setOpenPanelFiles(JSContextRef context, JSValueRef filesValue)

@@ -16,7 +16,7 @@ function createAnalysisTask(name, webkitRevisions = ["191622", "191623"])
         "buildTag": "124",
         "buildTime": "2015-10-27T15:34:51",
         "revisions": {
-            "WebKit": {
+            "CyberKit": {
                 "revision": webkitRevisions[0],
                 "timestamp": '2015-10-27T11:36:56.878473Z',
             },
@@ -45,7 +45,7 @@ function createAnalysisTask(name, webkitRevisions = ["191622", "191623"])
         "buildTag": "125",
         "buildTime": "2015-10-27T17:27:41",
         "revisions": {
-            "WebKit": {
+            "CyberKit": {
                 "revision": webkitRevisions[1],
                 "timestamp": '2015-10-27T16:38:10.768995Z',
             },
@@ -176,7 +176,7 @@ describe('/privileged-api/create-test-group', function () {
     });
 
     it('should return "InvalidTask" when there is no matching task', () => {
-        return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: 1, repetitionCount: 1, commitSets: {'WebKit': []}}).then((content) => {
+        return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: 1, repetitionCount: 1, commitSets: {'CyberKit': []}}).then((content) => {
             assert(false, 'should never be reached');
         }, (error) => {
             assert.strictEqual(error, 'InvalidTask');
@@ -184,7 +184,7 @@ describe('/privileged-api/create-test-group', function () {
     });
 
     it('should return "InvalidRepetitionCount" when repetitionCount is not a valid integer', () => {
-        return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: 1, repetitionCount: 'foo', commitSets: {'WebKit': []}}).then((content) => {
+        return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: 1, repetitionCount: 'foo', commitSets: {'CyberKit': []}}).then((content) => {
             assert(false, 'should never be reached');
         }, (error) => {
             assert.strictEqual(error, 'InvalidRepetitionCount');
@@ -192,7 +192,7 @@ describe('/privileged-api/create-test-group', function () {
     });
 
     it('should return "InvalidRepetitionCount" when repetitionCount is a negative integer', () => {
-        return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: 1, repetitionCount: -5, commitSets: {'WebKit': []}}).then((content) => {
+        return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: 1, repetitionCount: -5, commitSets: {'CyberKit': []}}).then((content) => {
             assert(false, 'should never be reached');
         }, (error) => {
             assert.strictEqual(error, 'InvalidRepetitionCount');
@@ -200,7 +200,7 @@ describe('/privileged-api/create-test-group', function () {
     });
 
     it('should return "InvalidTask" when there is no matching task', () => {
-        return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: 1, commitSets: {'WebKit': []}}).then((content) => {
+        return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: 1, commitSets: {'CyberKit': []}}).then((content) => {
             assert(false, 'should never be reached');
         }, (error) => {
             assert.strictEqual(error, 'InvalidTask');
@@ -209,7 +209,7 @@ describe('/privileged-api/create-test-group', function () {
 
     it('should return "TriggerableNotFoundForTask" when there is no matching triggerable', () => {
         return createAnalysisTask('some task').then((taskId) => {
-            return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, commitSets: {'WebKit': []}}).then((content) => {
+            return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, commitSets: {'CyberKit': []}}).then((content) => {
                 assert(false, 'should never be reached');
             }, (error) => {
                 assert.strictEqual(error, 'TriggerableNotFoundForTask');
@@ -219,7 +219,7 @@ describe('/privileged-api/create-test-group', function () {
 
     it('should return "InvalidCommitSets" when each repository specifies zero revisions', () => {
         return addTriggerableAndCreateTask('some task').then((taskId) => {
-            return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, commitSets: {'WebKit': []}}).then((content) => {
+            return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, commitSets: {'CyberKit': []}}).then((content) => {
                 assert(false, 'should never be reached');
             }, (error) => {
                 assert.strictEqual(error, 'InvalidCommitSets');
@@ -229,7 +229,7 @@ describe('/privileged-api/create-test-group', function () {
 
     it('should return "InvalidRevisionSets" when a revision set is empty', () => {
         return addTriggerableAndCreateTask('some task').then((taskId) => {
-            const webkit = Repository.all().find((repository) => repository.name() == 'WebKit');
+            const webkit = Repository.all().find((repository) => repository.name() == 'CyberKit');
             return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, revisionSets: [{[webkit.id()]: {revision: '191622'}}, {}]}).then((content) => {
                 assert(false, 'should never be reached');
             }, (error) => {
@@ -240,7 +240,7 @@ describe('/privileged-api/create-test-group', function () {
 
     it('should return "InvalidRevisionSets" when the number of revision sets is less than two', () => {
         return addTriggerableAndCreateTask('some task').then((taskId) => {
-            const webkit = Repository.all().find((repository) => repository.name() == 'WebKit');
+            const webkit = Repository.all().find((repository) => repository.name() == 'CyberKit');
             return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, revisionSets: [{[webkit.id()]: {revision: '191622'}}]}).then((content) => {
                 assert(false, 'should never be reached');
             }, (error) => {
@@ -261,7 +261,7 @@ describe('/privileged-api/create-test-group', function () {
 
     it('should return "RevisionNotFound" when commit sets contains an invalid revision', () => {
         return addTriggerableAndCreateTask('some task').then((taskId) => {
-            return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, commitSets: {'WebKit': ['1']}}).then((content) => {
+            return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, commitSets: {'CyberKit': ['1']}}).then((content) => {
                 assert(false, 'should never be reached');
             }, (error) => {
                 assert.strictEqual(error, 'RevisionNotFound');
@@ -271,7 +271,7 @@ describe('/privileged-api/create-test-group', function () {
 
     it('should return "RevisionNotFound" when revision sets contains an invalid revision', () => {
         return addTriggerableAndCreateTask('some task').then((taskId) => {
-            const webkit = Repository.all().find((repository) => repository.name() == 'WebKit');
+            const webkit = Repository.all().find((repository) => repository.name() == 'CyberKit');
             const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '1a'}}];
             return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, revisionSets}).then((content) => {
                 assert(false, 'should never be reached');
@@ -283,7 +283,7 @@ describe('/privileged-api/create-test-group', function () {
 
     it('should return "AmbiguousRevision" when there are multiple commits that match the specified revision string', () => {
         return addTriggerableAndCreateTask('some task', ['2ceda45d3cd63cde58d0dbf5767714e03d902e43', '2c71a8ddc1f661663ccfd1a29c633ba57e879533']).then((taskId) => {
-            const webkit = Repository.all().find((repository) => repository.name() == 'WebKit');
+            const webkit = Repository.all().find((repository) => repository.name() == 'CyberKit');
             const revisionSets = [{[webkit.id()]: {revision: '2ceda'}}, {[webkit.id()]: {revision: '2c'}}];
             return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, revisionSets}).then((content) => {
                 assert(false, 'should never be reached');
@@ -295,7 +295,7 @@ describe('/privileged-api/create-test-group', function () {
 
     it('should return "RevisionNotFound" when the end of a Git hash is specified', () => {
         return addTriggerableAndCreateTask('some task', ['2ceda45d3cd63cde58d0dbf5767714e03d902e43', '5471a8ddc1f661663ccfd1a29c633ba57e879533']).then((taskId) => {
-            const webkit = Repository.all().find((repository) => repository.name() == 'WebKit');
+            const webkit = Repository.all().find((repository) => repository.name() == 'CyberKit');
             const revisionSets = [{[webkit.id()]: {revision: '2ceda45d3cd63cde58d0dbf5767714e03d902e43'}}, {[webkit.id()]: {revision: '57e879533'}}];
             return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, revisionSets}).then((content) => {
                 assert(false, 'should never be reached');
@@ -307,7 +307,7 @@ describe('/privileged-api/create-test-group', function () {
 
     it('should return "InvalidUploadedFile" when revision sets contains an invalid file ID', () => {
         return addTriggerableAndCreateTask('some task').then((taskId) => {
-            const webkit = Repository.all().find((repository) => repository.name() == 'WebKit');
+            const webkit = Repository.all().find((repository) => repository.name() == 'CyberKit');
             const revisionSets = [{[webkit.id()]: {revision: '191622'}, 'customRoots': ['1']}, {[webkit.id()]: {revision: '1'}}];
             return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, revisionSets}).then((content) => {
                 assert(false, 'should never be reached');
@@ -319,7 +319,7 @@ describe('/privileged-api/create-test-group', function () {
 
     it('should return "InvalidRepository" when a revision set uses a repository name instead of a repository id', () => {
         return addTriggerableAndCreateTask('some task').then((taskId) => {
-            const revisionSets = [{'WebKit': {revision: '191622'}}, {}];
+            const revisionSets = [{'CyberKit': {revision: '191622'}}, {}];
             return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, revisionSets}).then((content) => {
                 assert(false, 'should never be reached');
             }, (error) => {
@@ -330,7 +330,7 @@ describe('/privileged-api/create-test-group', function () {
 
     it('should return "InvalidCommitSets" when commit sets contains an inconsistent number of revisions', () => {
         return addTriggerableAndCreateTask('some task').then((taskId) => {
-            return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, commitSets: {'WebKit': ['191622', '191623'], 'macOS': ['15A284']}}).then((content) => {
+            return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, commitSets: {'CyberKit': ['191622', '191623'], 'macOS': ['15A284']}}).then((content) => {
                 assert(false, 'should never be reached');
             }, (error) => {
                 assert.strictEqual(error, 'InvalidCommitSets');
@@ -340,7 +340,7 @@ describe('/privileged-api/create-test-group', function () {
 
     it('should return "DuplicateTestGroupName" when there is already a test group of the same name', () => {
         return addTriggerableAndCreateTask('some task').then((taskId) => {
-            const commitSets = {'WebKit': ['191622', '191623']};
+            const commitSets = {'CyberKit': ['191622', '191623']};
             return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, commitSets}).then((content) => {
                 assert(content['testGroupId']);
                 return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, commitSets});
@@ -355,9 +355,9 @@ describe('/privileged-api/create-test-group', function () {
     it('should return "InvalidOwnerRevision" when commit ownership is not valid', () => {
         let taskId;
         return addTriggerableAndCreateTask('some task').then((id) => taskId = id).then(() => {
-            const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+            const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
             const macos = Repository.all().filter((repository) => repository.name() == 'macOS')[0];
-            const ownedJSC = Repository.all().filter((repository) => repository.name() == 'JavaScriptCore' && repository.ownerId())[0];
+            const ownedJSC = Repository.all().filter((repository) => repository.name() == 'CyberScriptCore' && repository.ownerId())[0];
             const revisionSets = [{[webkit.id()]: {revision: '191622'}, [macos.id()]: {revision: '15A284'}, [ownedJSC.id()]: {revision: 'owned-jsc-6161', ownerRevision: '191621'}},
                 {[webkit.id()]: {revision: '191622'}, [macos.id()]: {revision: '15A284'}, [ownedJSC.id()]: {revision: 'owned-jsc-9191', ownerRevision: '191622'}}];
             return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, repetitionCount: 2, revisionSets});
@@ -371,9 +371,9 @@ describe('/privileged-api/create-test-group', function () {
     it('should return "InvalidCommitOwnership" when commit ownership is not valid', () => {
         let taskId;
         return addTriggerableAndCreateTask('some task').then((id) => taskId = id).then(() => {
-            const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+            const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
             const macos = Repository.all().filter((repository) => repository.name() == 'macOS')[0];
-            const ownedJSC = Repository.all().filter((repository) => repository.name() == 'JavaScriptCore' && repository.ownerId())[0];
+            const ownedJSC = Repository.all().filter((repository) => repository.name() == 'CyberScriptCore' && repository.ownerId())[0];
             const revisionSets = [{[webkit.id()]: {revision: '191622'}, [macos.id()]: {revision: '15A284'}, [ownedJSC.id()]: {revision: 'owned-jsc-6161', ownerRevision: '191622'}},
                 {[webkit.id()]: {revision: '191622'}, [macos.id()]: {revision: '15A284'}, [ownedJSC.id()]: {revision: 'owned-jsc-9191', ownerRevision: '191622'}}];
             return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, repetitionCount: 2, revisionSets});
@@ -388,9 +388,9 @@ describe('/privileged-api/create-test-group', function () {
         let taskId;
         let groupId;
         return addTriggerableAndCreateTask('some task').then((id) => taskId = id).then(() => {
-            const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+            const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
             const macos = Repository.all().filter((repository) => repository.name() == 'macOS')[0];
-            const ownedJSC = Repository.all().filter((repository) => repository.name() == 'JavaScriptCore' && repository.ownerId())[0];
+            const ownedJSC = Repository.all().filter((repository) => repository.name() == 'CyberScriptCore' && repository.ownerId())[0];
             const revisionSets = [{[webkit.id()]: {revision: '191622'}, [macos.id()]: {revision: '15A284'}, [ownedJSC.id()]: {revision: 'owned-jsc-6161', ownerRevision: '191622'}},
                 {[webkit.id()]: {revision: '191622'}, [macos.id()]: {revision: '15A284'}, [ownedJSC.id()]: {revision: 'owned-jsc-9191', ownerRevision: '192736'}}];
             return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, repetitionCount: 1, revisionSets});
@@ -435,9 +435,9 @@ describe('/privileged-api/create-test-group', function () {
         let taskId;
         let groupId;
         return addTriggerableAndCreateTask('some task').then((id) => taskId = id).then(() => {
-            const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+            const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
             const macos = Repository.all().filter((repository) => repository.name() == 'macOS')[0];
-            const jsc = Repository.all().filter((repository) => repository.name() == 'JavaScriptCore' && repository.ownerId())[0];
+            const jsc = Repository.all().filter((repository) => repository.name() == 'CyberScriptCore' && repository.ownerId())[0];
             const revisionSets = [{[webkit.id()]: {revision: '191622'}, [macos.id()]: {revision: '15A284'}, [jsc.id()]: {revision: 'owned-jsc-6161', ownerRevision: '191622'}},
                 {[macos.id()]: {revision: '15A284'}, [jsc.id()]: {revision: 'owned-jsc-9191', ownerRevision: '192736'}}];
             return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, repetitionCount: 1, revisionSets});
@@ -480,7 +480,7 @@ describe('/privileged-api/create-test-group', function () {
     it('should create a test group from commitSets with the repetition count of one when repetitionCount is omitted', () => {
         return addTriggerableAndCreateTask('some task').then((taskId) => {
             let insertedGroupId;
-            return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, commitSets: {'macOS': ['15A284', '15A284'], 'WebKit': ['191622', '191623']}}).then((content) => {
+            return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, commitSets: {'macOS': ['15A284', '15A284'], 'CyberKit': ['191622', '191623']}}).then((content) => {
                 insertedGroupId = content['testGroupId'];
                 return TestGroup.fetchForTask(taskId, true);
             }).then((testGroups) => {
@@ -551,7 +551,7 @@ describe('/privileged-api/create-test-group', function () {
         return addTriggerableAndCreateTask('some task').then((taskId) => {
             let insertedGroupId;
             return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, repetitionCount: 2,
-                commitSets: {'WebKit': ['191622', '191623'], 'macOS': ['15A284', '15A284']}}).then((content) => {
+                commitSets: {'CyberKit': ['191622', '191623'], 'macOS': ['15A284', '15A284']}}).then((content) => {
                 insertedGroupId = content['testGroupId'];
                 return TestGroup.fetchForTask(taskId, true);
             }).then((testGroups) => {
@@ -562,7 +562,7 @@ describe('/privileged-api/create-test-group', function () {
                 assert.ok(!group.needsNotification());
                 const requests = group.buildRequests();
                 assert.strictEqual(requests.length, 4);
-                const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+                const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
                 const macos = Repository.all().filter((repository) => repository.name() == 'macOS')[0];
 
                 const set0 = requests[0].commitSet();
@@ -679,7 +679,7 @@ describe('/privileged-api/create-test-group', function () {
     it('should create a test group with a custom root', () => {
         return addTriggerableAndCreateTask('some task').then((taskId) => {
             let insertedGroupId;
-            const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+            const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
             const macos = Repository.all().filter((repository) => repository.name() == 'macOS')[0];
             let uploadedFile;
             return TemporaryFile.makeTemporaryFile('some.dat', 'some content').then((stream) => {
@@ -727,7 +727,7 @@ describe('/privileged-api/create-test-group', function () {
         let insertedGroupId;
         let uploadedFile;
         return addTriggerableAndCreateTask('some task').then((id) => taskId = id).then(() => {
-            webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+            webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
             macos = Repository.all().filter((repository) => repository.name() == 'macOS')[0];
             return TemporaryFile.makeTemporaryFile('some.dat', 'some content');
         }).then((stream) => {
@@ -797,9 +797,9 @@ describe('/privileged-api/create-test-group', function () {
         let macos;
         let insertedGroupId;
         return addTriggerableAndCreateTask('some task').then((id) => taskId = id).then(() => {
-            webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+            webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
             macos = Repository.all().filter((repository) => repository.name() == 'macOS')[0];
-            jsc = Repository.all().filter((repository) => repository.name() == 'JavaScriptCore')[0];
+            jsc = Repository.all().filter((repository) => repository.name() == 'CyberScriptCore')[0];
             const revisionSets = [{[webkit.id()]: {revision: '191622'}, [macos.id()]: {revision: '15A284'}},
                 {[webkit.id()]: {revision: '192736'}, [macos.id()]: {revision: '15A284'}, [jsc.id()]: {revision: 'owned-jsc-9191', ownerRevision: '192736'}}];
             return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, repetitionCount: 2, revisionSets});
@@ -872,9 +872,9 @@ describe('/privileged-api/create-test-group', function () {
         let macos;
         let insertedGroupId;
         return addTriggerableAndCreateTask('some task').then((id) => taskId = id).then(() => {
-            webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+            webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
             macos = Repository.all().filter((repository) => repository.name() == 'macOS')[0];
-            jsc = Repository.all().filter((repository) => repository.name() == 'JavaScriptCore')[0];
+            jsc = Repository.all().filter((repository) => repository.name() == 'CyberScriptCore')[0];
             const revisionSets = [{[webkit.id()]: {revision: '191622'}, [macos.id()]: {revision: '15A284'}, [jsc.id()]: {revision: 'owned-jsc-6161', ownerRevision: '191622'}},
                 {[webkit.id()]: {revision: '192736'}, [macos.id()]: {revision: '15A284'}, [jsc.id()]: {revision: 'owned-jsc-9191', ownerRevision: '192736'}}];
             return PrivilegedAPI.sendRequest('create-test-group', {name: 'test', task: taskId, repetitionCount: 2, revisionSets});
@@ -949,9 +949,9 @@ describe('/privileged-api/create-test-group', function () {
         let insertedGroupId;
         let uploadedFile;
         return addTriggerableAndCreateTask('some task').then((id) => taskId = id).then(() => {
-            webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+            webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
             macos = Repository.all().filter((repository) => repository.name() == 'macOS')[0];
-            jsc = Repository.all().filter((repository) => repository.name() == 'JavaScriptCore')[0];
+            jsc = Repository.all().filter((repository) => repository.name() == 'CyberScriptCore')[0];
             return TemporaryFile.makeTemporaryFile('some.dat', 'some content');
         }).then((stream) => {
             return PrivilegedAPI.sendRequest('upload-file', {newFile: stream}, {useFormData: true});
@@ -1042,10 +1042,10 @@ describe('/privileged-api/create-test-group', function () {
         return addTriggerableAndCreateTask('some task').then((id) => taskId = id).then(() => {
             return MockData.addAnotherTriggerable(TestServer.database());
         }).then(() => {
-            webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+            webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
             macos = Repository.all().filter((repository) => repository.name() == 'macOS')[0];
-            jsc = Repository.all().filter((repository) => repository.name() == 'JavaScriptCore' && !repository.ownerId())[0];
-            ownedJSC = Repository.all().filter((repository) => repository.name() == 'JavaScriptCore' && repository.ownerId())[0];
+            jsc = Repository.all().filter((repository) => repository.name() == 'CyberScriptCore' && !repository.ownerId())[0];
+            ownedJSC = Repository.all().filter((repository) => repository.name() == 'CyberScriptCore' && repository.ownerId())[0];
             return TemporaryFile.makeTemporaryFile('some.dat', 'some content');
         }).then((stream) => {
             return PrivilegedAPI.sendRequest('upload-file', {newFile: stream}, {useFormData: true});
@@ -1141,7 +1141,7 @@ describe('/privileged-api/create-test-group', function () {
         let insertedGroupId;
         let uploadedFile;
         return addTriggerableAndCreateTask('some task').then((id) => taskId = id).then(() => {
-            webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+            webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
             macos = Repository.all().filter((repository) => repository.name() == 'macOS')[0];
             return TemporaryFile.makeTemporaryFile('some.dat', 'some content');
         }).then((stream) => {
@@ -1205,7 +1205,7 @@ describe('/privileged-api/create-test-group', function () {
         let macos;
         let uploadedFile;
         return addTriggerableAndCreateTask('some task').then((id) => taskId = id).then(() => {
-            webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+            webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
             macos = Repository.all().filter((repository) => repository.name() == 'macOS')[0];
             return TemporaryFile.makeTemporaryFile('some.dat', 'some content');
         }).then((stream) => {
@@ -1225,7 +1225,7 @@ describe('/privileged-api/create-test-group', function () {
 
     it('should create a test group with an analysis task with needs-notification flag set', async () => {
         await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
         let result = await PrivilegedAPI.sendRequest('create-test-group',
             {name: 'test', taskName: 'other task', platform: MockData.somePlatformId(), test: MockData.someTestId(), needsNotification: true, revisionSets});
@@ -1254,7 +1254,7 @@ describe('/privileged-api/create-test-group', function () {
 
     it('should be able to create a test group with needs-notification flag unset', async () => {
         await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
         let result = await PrivilegedAPI.sendRequest('create-test-group',
             {name: 'test', taskName: 'other task', platform: MockData.somePlatformId(), test: MockData.someTestId(), needsNotification: false, revisionSets});
@@ -1287,7 +1287,7 @@ describe('/privileged-api/create-test-group', function () {
         let webkit;
         let test = MockData.someTestId();
         return addTriggerableAndCreateTask('some task').then(() => {
-            webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+            webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
             const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
             return PrivilegedAPI.sendRequest('create-test-group',
                 {name: 'test1', taskName: 'other task', platform: MockData.somePlatformId(), test, revisionSets});
@@ -1341,7 +1341,7 @@ describe('/privileged-api/create-test-group', function () {
 
     it('should create a sequential test group with an analysis task', async () => {
         await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
         let result = await PrivilegedAPI.sendRequest('create-test-group',
             {name: 'test', taskName: 'other task', platform: MockData.somePlatformId(), test: MockData.someTestId(),
@@ -1381,7 +1381,7 @@ describe('/privileged-api/create-test-group', function () {
 
     it('should create an alternating test group with an analysis task', async () => {
         await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
         let result = await PrivilegedAPI.sendRequest('create-test-group',
             {name: 'test', taskName: 'other task', platform: MockData.somePlatformId(), test: MockData.someTestId(),
@@ -1427,7 +1427,7 @@ describe('/privileged-api/create-test-group', function () {
         assert.strictEqual(analysisTask.name(), 'some task');
         assert.strictEqual(testGroups.length, 0);
 
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
         let result = await PrivilegedAPI.sendRequest('create-test-group',
             {name: 'test', task: taskId, platform: MockData.somePlatformId(), test: MockData.someTestId(),
@@ -1467,7 +1467,7 @@ describe('/privileged-api/create-test-group', function () {
 
     it('should reject with "InvalidRepetitionType" if repetition type is not "alternating", "sequential", or "paired-parallel"', async () => {
         await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
 
         await assertThrows('InvalidRepetitionType', () => {
@@ -1479,7 +1479,7 @@ describe('/privileged-api/create-test-group', function () {
 
     it('should reject with "UnsupportedRepetitionTypeForTriggerable" if repetition type is "paired-parallel" but triggerable configuration only supports "sequential" and "alternating"', async () => {
         await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
 
         await assertThrows('UnsupportedRepetitionTypeForTriggerable', () => {
@@ -1491,7 +1491,7 @@ describe('/privileged-api/create-test-group', function () {
 
     it('should reject with "InvalidRepetitionType" when creating a test group with a bad repetition type for an existing analysis task', async () => {
         const taskId = await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
 
         await assertThrows('InvalidRepetitionType', () => {

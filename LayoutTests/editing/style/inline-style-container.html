@@ -7,7 +7,7 @@
 <p id="description"></p>
 <div id="console"></div>
 <script>
-description('Test to make sure WebKit adds style to the appropriate container.');
+description('Test to make sure CyberKit adds style to the appropriate container.');
 
 var testContainer = document.createElement("div");
 testContainer.contentEditable = true;
@@ -48,8 +48,8 @@ testSingleToggle("bold", null,
 testSingleToggle("bold", null,
     '<i>hello</i> <b contenteditable="false">world</b>',
     '<b><i>hello</i> </b><b contenteditable="false">world</b>');
-testSingleToggle("strikeThrough", null, '<i>hello</i> <b><strike>world</strike></b> WebKit', '<strike><i>hello</i> <b>world</b> WebKit</strike>');
-testSingleToggle("strikeThrough", null, '<b><i>hello <strike>world</strike></i> WebKit</b>', '<b><strike><i>hello world</i> WebKit</strike></b>');
+testSingleToggle("strikeThrough", null, '<i>hello</i> <b><strike>world</strike></b> CyberKit', '<strike><i>hello</i> <b>world</b> CyberKit</strike>');
+testSingleToggle("strikeThrough", null, '<b><i>hello <strike>world</strike></i> CyberKit</b>', '<b><strike><i>hello world</i> CyberKit</strike></b>');
 
 debug('')
 debug('styleWithCSS = true')

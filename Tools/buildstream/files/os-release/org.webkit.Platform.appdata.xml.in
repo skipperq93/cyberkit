@@ -5,8 +5,8 @@
   <metadata_license>CC0</metadata_license>
   <!-- FIXME -->
   <project_license>LGPL-2.1+</project_license>
-  <name>WebKit Platform (__SDK_BRANCH__)</name>
-  <summary>Shared libraries used by WebKit Developer SDK</summary>
+  <name>CyberKit Platform (__SDK_BRANCH__)</name>
+  <summary>Shared libraries used by CyberKit Developer SDK</summary>
   <releases>
     <release version="__RUNTIME_VERSION__" date="__RUNTIME_VERSION_DATE__"/>
   </releases>

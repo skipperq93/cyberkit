@@ -5,7 +5,7 @@
 </head>
 <body>
 <script language="javascript" type="text/javascript">
-description('Test that WebKit changes the dir attribute and sends an input event when we change the text direction.');
+description('Test that CyberKit changes the dir attribute and sends an input event when we change the text direction.');
 
 // The string used for storing the expected text direction when we receive an input event.
 var expected = '';
@@ -25,7 +25,7 @@ textarea.oninput = function() {
     shouldBe('expected', 'textarea.dir');
     sentInputEvent = true;
 
-    // When we change the direction to ltr, we remove this element to verify WebKit
+    // When we change the direction to ltr, we remove this element to verify CyberKit
     // continue running without crashes.
     if (expected == 'ltr')
         removeChildAndForceGC(textarea);
@@ -38,7 +38,7 @@ input.oninput = function() {
     shouldBe('expected', 'input.dir');
     sentInputEvent = true;
 
-    // When we change the direction to ltr, we remove this element to verify WebKit
+    // When we change the direction to ltr, we remove this element to verify CyberKit
     // continue running without crashes.
     if (expected == 'ltr')
         removeChildAndForceGC(input);
@@ -53,7 +53,7 @@ testRunner.setTextDirection('rtl');
 shouldBeTrue('sentInputEvent');
 
 // Change the text direction of the textarea element to LTR.
-// This also removes the element to verify WebKit works without crashes.
+// This also removes the element to verify CyberKit works without crashes.
 expected = 'ltr';
 sentInputEvent = false;
 textarea.focus();
@@ -68,7 +68,7 @@ testRunner.setTextDirection('rtl');
 shouldBeTrue('sentInputEvent');
 
 // Change the text direction of the input element to LTR.
-// This also removes the element to verify WebKit works without crashes.
+// This also removes the element to verify CyberKit works without crashes.
 expected = 'ltr';
 sentInputEvent = false;
 input.focus();

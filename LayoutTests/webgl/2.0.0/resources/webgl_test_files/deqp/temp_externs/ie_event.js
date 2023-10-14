@@ -33,7 +33,7 @@ Event.prototype.altLeft;
 Event.prototype.Banner;
 
 /**
- * A ClipboardData on IE, but a DataTransfer on WebKit.
+ * A ClipboardData on IE, but a DataTransfer on CyberKit.
  * @see http://msdn.microsoft.com/en-us/library/ms535220.aspx
  * @type {(ClipboardData|undefined)}
  */

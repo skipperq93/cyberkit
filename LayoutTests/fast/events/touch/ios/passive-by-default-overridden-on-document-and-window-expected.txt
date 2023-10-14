@@ -1,4 +1,4 @@
-This test verifies that active touchstart and touchend event listeners can be added to document, window, documentElement, and body. This test requires WebKitTestRunner.
+This test verifies that active touchstart and touchend event listeners can be added to document, window, documentElement, and body. This test requires CyberKitTestRunner.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

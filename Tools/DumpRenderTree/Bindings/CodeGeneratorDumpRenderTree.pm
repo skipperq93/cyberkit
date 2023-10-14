@@ -227,7 +227,7 @@ sub _generateImplementationFile
 EOF
 
     push(@contents, <<EOF);
-#include <JavaScriptCore/JSRetainPtr.h>
+#include <CyberScriptCore/JSRetainPtr.h>
 #include <wtf/GetPtr.h>
 
 namespace WTR {

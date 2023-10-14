@@ -1,4 +1,4 @@
-This test makes sure that installing a font causes a style recalc. The test only runs in DumpRenderTree/WebKitTestRunner. It passes if the text above is rendered as black boxes (aka in Ahem).
+This test makes sure that installing a font causes a style recalc. The test only runs in DumpRenderTree/CyberKitTestRunner. It passes if the text above is rendered as black boxes (aka in Ahem).
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

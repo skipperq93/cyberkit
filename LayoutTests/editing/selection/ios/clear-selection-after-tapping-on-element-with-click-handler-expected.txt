@@ -1,4 +1,4 @@
-This test verifies that the DOM selection is dismissed when tapping on an element that listens to click events. To manually test, select 'WebKit' and tap on the red square. The selection should be dismissed, and the output area should indicate that no text is selected.
+This test verifies that the DOM selection is dismissed when tapping on an element that listens to click events. To manually test, select 'CyberKit' and tap on the red square. The selection should be dismissed, and the output area should indicate that no text is selected.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 
@@ -8,5 +8,5 @@ PASS getSelection().type is "Caret"
 PASS successfullyParsed is true
 
 TEST COMPLETE
-WebKit
+CyberKit
 The selected text is: ""

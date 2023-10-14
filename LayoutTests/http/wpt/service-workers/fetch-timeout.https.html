@@ -29,7 +29,7 @@ promise_test(async (test) => {
     if (window.testRunner)
         testRunner.setServiceWorkerFetchTimeout(1);
 
-     const response = await iframe.contentWindow.fetch("/WebKit/service-workers/resources/lengthy-pass.py?delay=0.5");
+     const response = await iframe.contentWindow.fetch("/CyberKit/service-workers/resources/lengthy-pass.py?delay=0.5");
      const text = await response.text();
      assert_equals(text, "document.body.innerHTML = 'PASS'");
      iframe.remove(); 

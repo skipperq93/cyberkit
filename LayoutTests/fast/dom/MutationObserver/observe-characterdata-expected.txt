@@ -1,4 +1,4 @@
-Test WebKitMutationObserver.observe on CharacterData nodes
+Test CyberKitMutationObserver.observe on CharacterData nodes
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

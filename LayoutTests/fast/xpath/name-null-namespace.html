@@ -8,7 +8,7 @@ if (window.testRunner)
 var strXML = '<doc><record/><record/><record/><record/><record foo="a-a"/></doc>';
 var doc = (new DOMParser()).parseFromString(strXML, "text/xml");
 
-// This matches in both Firefox and WebKit, which indicates that 
+// This matches in both Firefox and CyberKit, which indicates that 
 // XPathEvaluator does not normalize the document.
 doc.firstChild.childNodes[0].setAttributeNS("bar", "foo", "-a-");
 

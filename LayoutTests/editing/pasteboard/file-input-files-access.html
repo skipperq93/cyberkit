@@ -49,7 +49,7 @@ function filesShouldBe(filesArray)
 function draggingPathsShouldResultInFiles(pathsArray, filesArray)
 {
     dragFilesOntoInput(pathsArray);
-    // WebKit seems to always take the first file in the dragged list as .value:
+    // CyberKit seems to always take the first file in the dragged list as .value:
     shouldBeEqualToString("fileInput.value", filesArray[0] ? "C:\\fakepath\\" + filesArray[0]['name'] : '');
     filesShouldBe(filesArray);
 }

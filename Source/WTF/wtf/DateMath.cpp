@@ -693,7 +693,7 @@ double parseES5DateFromNullTerminatedCharacters(const char* dateString, bool& is
     return ymdhmsToMilliseconds(year, month, day, hours, minutes, seconds, milliseconds) - (timeZoneSeconds * msPerSecond);
 }
 
-// Odd case where 'exec' is allowed to be 0, to accomodate a caller in WebCore.
+// Odd case where 'exec' is allowed to be 0, to accomodate a caller in CyberCore.
 double parseDateFromNullTerminatedCharacters(const char* dateString, bool& isLocalTime)
 {
     isLocalTime = true;
@@ -990,7 +990,7 @@ double parseDateFromNullTerminatedCharacters(const char* dateString, bool& isLoc
         year = yearValue;
     } else {
         // We select 2000 as default value. This is because of the following reasons.
-        // 1. Year 2000 was used for the initial value of the variable `year`. While it won't be posed to users in WebKit,
+        // 1. Year 2000 was used for the initial value of the variable `year`. While it won't be posed to users in CyberKit,
         //    V8 used this 2000 as its default value. (As of April 2017, V8 is using the year 2001 and Spider Monkey is
         //    not doing this kind of fallback.)
         // 2. It is a leap year. When using `new Date("Feb 29")`, we assume that people want to save month and day.

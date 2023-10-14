@@ -7,13 +7,13 @@ let testCases = [
     // Strings.
     ['""', NaN, NaN, 1, 1],
     ['new String()', NaN, NaN, 1, 1],
-    ['"WebKit!"', NaN, NaN, NaN, NaN],
+    ['"CyberKit!"', NaN, NaN, NaN, NaN],
 
     // Objects.
     ['{ }', NaN, NaN, NaN, NaN],
     ['{ foo: 1 }', NaN, NaN, NaN, NaN],
     ['{ toString: function() { return ""; } }', NaN, NaN, 1, 1],
-    ['{ toString: function() { return "WebKit"; } }', NaN, NaN, NaN, NaN],
+    ['{ toString: function() { return "CyberKit"; } }', NaN, NaN, NaN, NaN],
 
     // Others.
     ['null', NaN, NaN, 1, 1],

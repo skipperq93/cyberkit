@@ -1,6 +1,6 @@
 This tests mouseenter and mouseleave events inside a shadow tree.
 To manually test, move the mouse cursor vertically across "hello, world" below.
-WebKit must generate mouseenter and mouseleve events exactly once on host (as well as hostParent, continer, and target).
+CyberKit must generate mouseenter and mouseleve events exactly once on host (as well as hostParent, continer, and target).
 
 
 ==Entering target==

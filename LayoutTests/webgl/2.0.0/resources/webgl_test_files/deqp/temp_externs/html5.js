@@ -379,25 +379,25 @@ CanvasRenderingContext2D.prototype.putImageData = function(imagedata, dx, dy,
     opt_dirtyX, opt_dirtyY, opt_dirtyWidth, opt_dirtyHeight) {};
 
 /**
- * Note: WebKit only
+ * Note: CyberKit only
  * @param {number|string=} opt_a
  * @param {number=} opt_b
  * @param {number=} opt_c
  * @param {number=} opt_d
  * @param {number=} opt_e
- * @see http://developer.apple.com/library/safari/#documentation/appleapplications/reference/WebKitDOMRef/CanvasRenderingContext2D_idl/Classes/CanvasRenderingContext2D/index.html
+ * @see http://developer.apple.com/library/safari/#documentation/appleapplications/reference/CyberKitDOMRef/CanvasRenderingContext2D_idl/Classes/CanvasRenderingContext2D/index.html
  * @return {undefined}
  */
 CanvasRenderingContext2D.prototype.setFillColor;
 
 /**
- * Note: WebKit only
+ * Note: CyberKit only
  * @param {number|string=} opt_a
  * @param {number=} opt_b
  * @param {number=} opt_c
  * @param {number=} opt_d
  * @param {number=} opt_e
- * @see http://developer.apple.com/library/safari/#documentation/appleapplications/reference/WebKitDOMRef/CanvasRenderingContext2D_idl/Classes/CanvasRenderingContext2D/index.html
+ * @see http://developer.apple.com/library/safari/#documentation/appleapplications/reference/CyberKitDOMRef/CanvasRenderingContext2D_idl/Classes/CanvasRenderingContext2D/index.html
  * @return {undefined}
  */
 CanvasRenderingContext2D.prototype.setStrokeColor;
@@ -1553,7 +1553,7 @@ function HTMLAudioElement() {}
  * @constructor
  * @extends {HTMLMediaElement}
  * The webkit-prefixed attributes are defined in
- * https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/core/html/HTMLVideoElement.idl
+ * https://code.google.com/p/chromium/codesearch#chromium/src/third_party/CyberKit/Source/core/html/HTMLVideoElement.idl
  */
 function HTMLVideoElement() {}
 
@@ -1760,7 +1760,7 @@ MessageEvent.prototype.initMessageEventNS = function(namespaceURI, typeArg,
  * HTML5 DataTransfer class.
  *
  * We say that this extends ClipboardData, because Event.prototype.clipboardData
- * is a DataTransfer on WebKit but a ClipboardData on IE. The interfaces are so
+ * is a DataTransfer on CyberKit but a ClipboardData on IE. The interfaces are so
  * similar that it's easier to merge them.
  *
  * @see http://www.w3.org/TR/2011/WD-html5-20110113/dnd.html
@@ -2801,7 +2801,7 @@ MutationObserver.prototype.disconnect = function() {};
 /**
  * @type {function(new:MutationObserver, function(Array.<MutationRecord>))}
  */
-Window.prototype.WebKitMutationObserver;
+Window.prototype.CyberKitMutationObserver;
 
 /**
  * @type {function(new:MutationObserver, function(Array.<MutationRecord>))}

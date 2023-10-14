@@ -5,9 +5,9 @@ window.UIHelper = class UIHelper {
         return testRunner.isIOSFamily;
     }
 
-    static isWebKit2()
+    static isCyberKit2()
     {
-        return testRunner.isWebKit2;
+        return testRunner.isCyberKit2;
     }
 
     static doubleClickAt(x, y)
@@ -205,7 +205,7 @@ window.UIHelper = class UIHelper {
     {
         console.assert(this.isIOSFamily());
 
-        if (!this.isWebKit2()) {
+        if (!this.isCyberKit2()) {
             console.assert(!modifiers || !modifiers.length);
             eventSender.addTouchPoint(x, y);
             eventSender.touchStart();
@@ -240,7 +240,7 @@ window.UIHelper = class UIHelper {
     {
         console.assert(this.isIOSFamily());
 
-        if (!this.isWebKit2()) {
+        if (!this.isCyberKit2()) {
             eventSender.addTouchPoint(x, y);
             eventSender.touchStart();
             eventSender.releaseTouchPoint(0);
@@ -264,7 +264,7 @@ window.UIHelper = class UIHelper {
     {
         console.assert(this.isIOSFamily());
 
-        if (!this.isWebKit2()) {
+        if (!this.isCyberKit2()) {
             // FIXME: Add a sleep in here.
             eventSender.addTouchPoint(x, y);
             eventSender.touchStart();
@@ -284,7 +284,7 @@ window.UIHelper = class UIHelper {
     {
         console.assert(this.isIOSFamily());
 
-        if (!this.isWebKit2()) {
+        if (!this.isCyberKit2()) {
             // FIXME: Add a sleep in here.
             eventSender.addTouchPoint(x, y);
             eventSender.touchStart();
@@ -311,7 +311,7 @@ window.UIHelper = class UIHelper {
     {
         console.assert(this.isIOSFamily());
 
-        if (!this.isWebKit2()) {
+        if (!this.isCyberKit2()) {
             eventSender.addTouchPoint(x, y);
             eventSender.touchStart();
             eventSender.releaseTouchPoint(0);
@@ -335,7 +335,7 @@ window.UIHelper = class UIHelper {
 
     static activateAt(x, y, modifiers=[])
     {
-        if (!this.isWebKit2() || !this.isIOSFamily()) {
+        if (!this.isCyberKit2() || !this.isIOSFamily()) {
             eventSender.mouseMoveTo(x, y);
             eventSender.mouseDown(0, modifiers);
             eventSender.mouseUp(0, modifiers);
@@ -398,7 +398,7 @@ window.UIHelper = class UIHelper {
 
     static rawKeyDown(key, modifiers=[])
     {
-        if (!this.isWebKit2() || !this.isIOSFamily()) {
+        if (!this.isCyberKit2() || !this.isIOSFamily()) {
             eventSender.rawKeyDown(key, modifiers);
             return Promise.resolve();
         }
@@ -410,7 +410,7 @@ window.UIHelper = class UIHelper {
 
     static rawKeyUp(key, modifiers=[])
     {
-        if (!this.isWebKit2() || !this.isIOSFamily()) {
+        if (!this.isCyberKit2() || !this.isIOSFamily()) {
             eventSender.rawKeyUp(key, modifiers);
             return Promise.resolve();
         }
@@ -422,7 +422,7 @@ window.UIHelper = class UIHelper {
 
     static keyDown(key, modifiers=[])
     {
-        if (!this.isWebKit2() || !this.isIOSFamily()) {
+        if (!this.isCyberKit2() || !this.isIOSFamily()) {
             eventSender.keyDown(key, modifiers);
             return Promise.resolve();
         }
@@ -468,7 +468,7 @@ window.UIHelper = class UIHelper {
 
     static ensurePresentationUpdate()
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return UIHelper.renderingUpdate();
 
         return new Promise(resolve => {
@@ -481,7 +481,7 @@ window.UIHelper = class UIHelper {
 
     static ensureStablePresentationUpdate()
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return UIHelper.renderingUpdate();
 
         return new Promise(resolve => {
@@ -498,7 +498,7 @@ window.UIHelper = class UIHelper {
         const x = boundingRect.x + 5;
         const y = boundingRect.y + 5;
 
-        if (!this.isWebKit2()) {
+        if (!this.isCyberKit2()) {
             testRunner.display();
             return Promise.resolve();
         }
@@ -518,7 +518,7 @@ window.UIHelper = class UIHelper {
 
     static scrollTo(x, y, unconstrained)
     {
-        if (!this.isWebKit2()) {
+        if (!this.isCyberKit2()) {
             window.scrollTo(x, y);
             return Promise.resolve();
         }
@@ -536,7 +536,7 @@ window.UIHelper = class UIHelper {
     
     static immediateScrollTo(x, y, unconstrained)
     {
-        if (!this.isWebKit2()) {
+        if (!this.isCyberKit2()) {
             window.scrollTo(x, y);
             return Promise.resolve();
         }
@@ -549,7 +549,7 @@ window.UIHelper = class UIHelper {
 
     static immediateUnstableScrollTo(x, y, unconstrained)
     {
-        if (!this.isWebKit2()) {
+        if (!this.isCyberKit2()) {
             window.scrollTo(x, y);
             return Promise.resolve();
         }
@@ -563,7 +563,7 @@ window.UIHelper = class UIHelper {
 
     static immediateScrollElementAtContentPointToOffset(x, y, scrollX, scrollY, scrollUpdatesDisabled = false)
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -575,7 +575,7 @@ window.UIHelper = class UIHelper {
 
     static ensureVisibleContentRectUpdate()
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -599,7 +599,7 @@ window.UIHelper = class UIHelper {
 
     static async activateAndWaitForInputSessionAt(x, y)
     {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return this.activateAt(x, y);
 
         if (testRunner.isKeyboardImmediatelyAvailable) {
@@ -633,7 +633,7 @@ window.UIHelper = class UIHelper {
 
     static waitForInputSessionToDismiss()
     {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -667,7 +667,7 @@ window.UIHelper = class UIHelper {
 
     static activateFormControl(element)
     {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return this.activateElement(element);
 
         const x = element.offsetLeft + element.offsetWidth / 2;
@@ -686,7 +686,7 @@ window.UIHelper = class UIHelper {
 
     static dismissFormAccessoryView()
     {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -728,7 +728,7 @@ window.UIHelper = class UIHelper {
 
     static deactivateFormControl(element)
     {
-        if (!this.isWebKit2() || !this.isIOSFamily()) {
+        if (!this.isCyberKit2() || !this.isIOSFamily()) {
             element.blur();
             return Promise.resolve();
         }
@@ -745,7 +745,7 @@ window.UIHelper = class UIHelper {
 
     static waitForPopoverToPresent()
     {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -761,7 +761,7 @@ window.UIHelper = class UIHelper {
 
     static waitForPopoverToDismiss()
     {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -777,7 +777,7 @@ window.UIHelper = class UIHelper {
 
     static waitForContextMenuToShow()
     {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -793,7 +793,7 @@ window.UIHelper = class UIHelper {
 
     static waitForContextMenuToHide()
     {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -809,7 +809,7 @@ window.UIHelper = class UIHelper {
 
     static dismissMenu()
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -819,7 +819,7 @@ window.UIHelper = class UIHelper {
 
     static waitForKeyboardToShow()
     {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -835,7 +835,7 @@ window.UIHelper = class UIHelper {
 
     static waitForKeyboardToHide()
     {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -852,7 +852,7 @@ window.UIHelper = class UIHelper {
     static scrollbarState(scroller, isVertical)
     {
         var internalFunctions = scroller ? scroller.ownerDocument.defaultView.internals : internals;
-        if (!this.isWebKit2() || this.isIOSFamily())
+        if (!this.isCyberKit2() || this.isIOSFamily())
             return Promise.resolve();
 
         if (internals.isUsingUISideCompositing() && scroller.nodeName != "SELECT") {
@@ -882,7 +882,7 @@ window.UIHelper = class UIHelper {
 
     static getUICaretViewRect()
     {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -898,7 +898,7 @@ window.UIHelper = class UIHelper {
 
     static getUISelectionViewRects()
     {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -914,7 +914,7 @@ window.UIHelper = class UIHelper {
 
     static getSelectionStartGrabberViewRect()
     {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -930,7 +930,7 @@ window.UIHelper = class UIHelper {
 
     static getSelectionEndGrabberViewRect()
     {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -1079,7 +1079,7 @@ window.UIHelper = class UIHelper {
 
     static dismissFilePicker()
     {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return Promise.resolve();
 
         const script = `uiController.dismissFilePicker(() => {
@@ -1090,7 +1090,7 @@ window.UIHelper = class UIHelper {
 
     static filePickerAcceptedTypeIdentifiers()
     {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -1169,7 +1169,7 @@ window.UIHelper = class UIHelper {
 
     static typeCharacter(characterString)
     {
-        if (!this.isWebKit2() || !this.isIOSFamily()) {
+        if (!this.isCyberKit2() || !this.isIOSFamily()) {
             eventSender.keyDown(characterString);
             return;
         }
@@ -1181,7 +1181,7 @@ window.UIHelper = class UIHelper {
 
     static applyAutocorrection(newText, oldText)
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return;
 
         const [escapedNewText, escapedOldText] = [newText.replace(/`/g, "\\`"), oldText.replace(/`/g, "\\`")];
@@ -1191,7 +1191,7 @@ window.UIHelper = class UIHelper {
 
     static inputViewBounds()
     {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -1205,7 +1205,7 @@ window.UIHelper = class UIHelper {
 
     static calendarType()
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -1221,7 +1221,7 @@ window.UIHelper = class UIHelper {
 
     static setDefaultCalendarType(calendarIdentifier, localeIdentifier)
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => testRunner.runUIScript(`uiController.setDefaultCalendarType('${calendarIdentifier}', '${localeIdentifier}')`, resolve));
@@ -1230,7 +1230,7 @@ window.UIHelper = class UIHelper {
 
     static setViewScale(scale)
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => testRunner.runUIScript(`uiController.setViewScale(${scale})`, resolve));
@@ -1238,21 +1238,21 @@ window.UIHelper = class UIHelper {
 
     static setScrollViewKeyboardAvoidanceEnabled(enabled)
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => testRunner.runUIScript(`uiController.setScrollViewKeyboardAvoidanceEnabled(${enabled})`, resolve));
     }
 
     static presentFindNavigator() {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return Promise.resolve();
 
         return new Promise(resolve => testRunner.runUIScript(`uiController.presentFindNavigator()`, resolve));
     }
 
     static dismissFindNavigator() {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return Promise.resolve();
 
         return new Promise(resolve => testRunner.runUIScript(`uiController.dismissFindNavigator()`, resolve));
@@ -1260,7 +1260,7 @@ window.UIHelper = class UIHelper {
 
     static resignFirstResponder()
     {
-        if (!this.isWebKit2()) {
+        if (!this.isCyberKit2()) {
             testRunner.setMainFrameIsFirstResponder(false);
             return Promise.resolve();
         }
@@ -1270,7 +1270,7 @@ window.UIHelper = class UIHelper {
 
     static becomeFirstResponder()
     {
-        if (!this.isWebKit2()) {
+        if (!this.isCyberKit2()) {
             testRunner.setMainFrameIsFirstResponder(true);
             return Promise.resolve();
         }
@@ -1280,7 +1280,7 @@ window.UIHelper = class UIHelper {
 
     static removeViewFromWindow()
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => testRunner.runUIScript(`uiController.removeViewFromWindow()`, resolve));
@@ -1288,7 +1288,7 @@ window.UIHelper = class UIHelper {
 
     static addViewToWindow()
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => testRunner.runUIScript(`uiController.addViewToWindow()`, resolve));
@@ -1296,7 +1296,7 @@ window.UIHelper = class UIHelper {
 
     static minimumZoomScale()
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -1308,7 +1308,7 @@ window.UIHelper = class UIHelper {
 
     static stylusTapAt(x, y, modifiers=[])
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise((resolve) => {
@@ -1321,7 +1321,7 @@ window.UIHelper = class UIHelper {
 
     static attachmentInfo(attachmentIdentifier)
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -1335,7 +1335,7 @@ window.UIHelper = class UIHelper {
 
     static insertAttachmentForFilePath(path, contentType)
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -1348,7 +1348,7 @@ window.UIHelper = class UIHelper {
 
     static setMinimumEffectiveWidth(effectiveWidth)
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => testRunner.runUIScript(`uiController.setMinimumEffectiveWidth(${effectiveWidth})`, resolve));
@@ -1356,7 +1356,7 @@ window.UIHelper = class UIHelper {
 
     static setAllowsViewportShrinkToFit(allows)
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => testRunner.runUIScript(`uiController.setAllowsViewportShrinkToFit(${allows})`, resolve));
@@ -1364,7 +1364,7 @@ window.UIHelper = class UIHelper {
 
     static setKeyboardInputModeIdentifier(identifier)
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         const escapedIdentifier = identifier.replace(/`/g, "\\`");
@@ -1385,7 +1385,7 @@ window.UIHelper = class UIHelper {
 
     static adjustedContentInset()
     {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -1395,7 +1395,7 @@ window.UIHelper = class UIHelper {
 
     static undoAndRedoLabels()
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         const script = "JSON.stringify([uiController.lastUndoLabel, uiController.firstRedoLabel])";
@@ -1584,7 +1584,7 @@ window.UIHelper = class UIHelper {
 
     static rotateDevice(orientationName, animatedResize = false)
     {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -1598,7 +1598,7 @@ window.UIHelper = class UIHelper {
 
     static getScrollingTree()
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve('');
 
         if (window.internals.haveScrollingTree())
@@ -1613,7 +1613,7 @@ window.UIHelper = class UIHelper {
 
     static getUIViewTree()
     {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -1625,7 +1625,7 @@ window.UIHelper = class UIHelper {
 
     static getCALayerTree()
     {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -1637,7 +1637,7 @@ window.UIHelper = class UIHelper {
 
     static dragFromPointToPoint(fromX, fromY, toX, toY, duration)
     {
-        if (!this.isWebKit2() || !this.isIOSFamily()) {
+        if (!this.isCyberKit2() || !this.isIOSFamily()) {
             eventSender.mouseMoveTo(fromX, fromY);
             eventSender.mouseDown();
             eventSender.leapForward(duration * 1000);
@@ -1826,7 +1826,7 @@ window.UIHelper = class UIHelper {
 
     static async activateElementAfterInstallingTapGestureOnWindow(element)
     {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return activateElement(element);
 
         const x = element.offsetLeft + element.offsetWidth / 2;
@@ -1847,7 +1847,7 @@ window.UIHelper = class UIHelper {
 
     static mayContainEditableElementsInRect(x, y, width, height)
     {
-        if (!this.isWebKit2() || !this.isIOSFamily())
+        if (!this.isCyberKit2() || !this.isIOSFamily())
             return Promise.resolve(false);
 
         return new Promise(resolve => {
@@ -1882,7 +1882,7 @@ window.UIHelper = class UIHelper {
 
     static waitForContactPickerToShow()
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => {
@@ -1898,7 +1898,7 @@ window.UIHelper = class UIHelper {
 
     static waitForContactPickerToHide()
     {
-        if (!this.isWebKit2())
+        if (!this.isCyberKit2())
             return Promise.resolve();
 
         return new Promise(resolve => {

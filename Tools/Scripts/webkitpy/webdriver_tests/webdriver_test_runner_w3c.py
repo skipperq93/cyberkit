@@ -23,7 +23,7 @@
 import logging
 import os
 
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 from webkitpy.webdriver_tests.webdriver_w3c_executor import WebDriverW3CExecutor
 from webkitpy.webdriver_tests.webdriver_test_result import WebDriverTestResult
 from webkitpy.webdriver_tests.webdriver_w3c_web_server import WebDriverW3CWebServer
@@ -39,7 +39,7 @@ class WebDriverTestRunnerW3C(object):
         self._env = env
         self._expectations = expectations
         self._results = []
-        self._tests_dir = WebKitFinder(self._port.host.filesystem).path_from_webkit_base('WebDriverTests')
+        self._tests_dir = CyberKitFinder(self._port.host.filesystem).path_from_webkit_base('WebDriverTests')
 
         self._server = WebDriverW3CWebServer(self._port)
 

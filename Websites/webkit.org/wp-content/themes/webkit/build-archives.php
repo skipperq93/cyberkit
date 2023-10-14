@@ -3,9 +3,9 @@
  * Template Name: Build Archives
  **/
 
-WebKitBuildArchives::object();
+CyberKitBuildArchives::object();
 
-class WebKitBuildArchives {
+class CyberKitBuildArchives {
 
     private static $object = null;
 
@@ -55,7 +55,7 @@ class WebKitBuildArchives {
         return $latest;
     }
 
-} // class WebKitBuildArchives
+} // class CyberKitBuildArchives
 
 add_action('wp_head', function() { ?>
     <script type="text/javascript">
@@ -110,13 +110,13 @@ add_action('wp_head', function() {
 });
 
 add_filter('the_content', function ($content) {
-    $API = WebKitBuildArchives::object();
+    $API = CyberKitBuildArchives::object();
 
     $error_markup = '<div class="note"><h2>Error</h2> <p>There was an problem loading the build archives data.</p></div>';
 
     $archives = array();
     $tabs = '<nav class="tabnav"><ul class="tabnav-items">';
-    foreach (WebKitBuildArchives::$platforms as $platform => $label) {
+    foreach (CyberKitBuildArchives::$platforms as $platform => $label) {
         $platform_latest = $API->get_latest($platform);
         if (!empty($platform_latest)) {
             $archives = array_merge($archives, $platform_latest);

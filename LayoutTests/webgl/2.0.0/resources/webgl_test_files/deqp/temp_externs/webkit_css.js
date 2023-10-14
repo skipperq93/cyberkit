@@ -15,13 +15,13 @@
  */
 
 /**
- * @fileoverview Definitions for WebKit's custom CSS properties. Copied from:
+ * @fileoverview Definitions for CyberKit's custom CSS properties. Copied from:
  * {@link
- * http://trac.webkit.org/browser/trunk/Source/WebCore/css/CSSPropertyNames.in}
+ * http://trac.webkit.org/browser/trunk/Source/CyberCore/css/CSSPropertyNames.in}
  *
  * If you make changes to this file, notice that every property appears
  * twice: once as an uppercase name and once as a lowercase name.
- * WebKit allows both. The uppercase version is preferred.
+ * CyberKit allows both. The uppercase version is preferred.
  *
  * @externs
  * @author nicksantos@google.com (Nick Santos)
@@ -233,7 +233,7 @@ CSSProperties.prototype.WebkitMatchNearestMailBlockquoteColor;
 /** @type {string} */ CSSProperties.prototype.WebkitWrapThrough;
 /** @type {string} */ CSSProperties.prototype.WebkitWritingMode;
 
-// WebKit also adds bindings for the lowercase versions of these properties.
+// CyberKit also adds bindings for the lowercase versions of these properties.
 // The uppercase version is preferred.
 
 /** @type {string} */ CSSProperties.prototype.webkitAlignContent;
@@ -447,10 +447,10 @@ CSSProperties.prototype.webkitMatchNearestMailBlockquoteColor;
  * @param {number} x
  * @param {number} y
  */
-function WebKitPoint(x, y) {}
+function CyberKitPoint(x, y) {}
 
 /** @type {number} */
-WebKitPoint.prototype.x;
+CyberKitPoint.prototype.x;
 
 /** @type {number} */
-WebKitPoint.prototype.y;
+CyberKitPoint.prototype.y;

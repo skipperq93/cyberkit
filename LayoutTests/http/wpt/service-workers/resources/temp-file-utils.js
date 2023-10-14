@@ -1,7 +1,7 @@
 function createTempFile(fileName, fileData)
 {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/WebKit/service-workers/resources/write-temp-file.py?filename=" + fileName + "&data=" + fileData, false);
+    xhr.open("POST", "/CyberKit/service-workers/resources/write-temp-file.py?filename=" + fileName + "&data=" + fileData, false);
     xhr.send();
     if (xhr.status != 200) {
         testFailed("Unexpected response status received: " + xhr.status);
@@ -20,13 +20,13 @@ function createTempFile(fileName, fileData)
 function touchTempFile(fileName)
 {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/WebKit/service-workers/resources/touch-temp-file.py?filename=" + fileName, false);
+    xhr.open("POST", "/CyberKit/service-workers/resources/touch-temp-file.py?filename=" + fileName, false);
     xhr.send();
 }
 
 function removeTempFile(fileName)
 {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/WebKit/service-workers/resources/reset-temp-file.py?filename=" + fileName, false);
+    xhr.open("POST", "/CyberKit/service-workers/resources/reset-temp-file.py?filename=" + fileName, false);
     xhr.send();
 }

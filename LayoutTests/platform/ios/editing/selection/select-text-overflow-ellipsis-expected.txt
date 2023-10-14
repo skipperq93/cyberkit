@@ -8,7 +8,7 @@ layer at (0,0) size 800x600
           text run at (0,0) width 67: "Test for "
         RenderInline {A} at (0,0) size 152x22 [color=#0000EE]
           RenderText {#text} at (66,0) size 152x22
-            text run at (66,0) width 152: "WebKit bug 29968"
+            text run at (66,0) width 152: "CyberKit bug 29968"
         RenderText {#text} at (217,0) size 561x22
           text run at (217,0) width 561: ": Selecting text with text-overflow ellipsis should not show cut off text"
 layer at (8,50) size 95x20 scrollWidth 124

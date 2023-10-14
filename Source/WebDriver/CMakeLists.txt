@@ -62,7 +62,7 @@ list(APPEND WebDriver_SOURCES ${WebDriver_DERIVED_SOURCES_DIR}/WebDriverAtoms.cp
 
 WEBKIT_EXECUTABLE_DECLARE(WebDriver)
 
-add_dependencies(WebDriver JavaScriptCoreSharedScripts)
+add_dependencies(WebDriver CyberScriptCoreSharedScripts)
 
 WEBKIT_INCLUDE_CONFIG_FILES_IF_EXISTS()
 

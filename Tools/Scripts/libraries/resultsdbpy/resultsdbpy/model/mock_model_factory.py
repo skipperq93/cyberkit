@@ -28,7 +28,7 @@ import time
 from resultsdbpy.controller.configuration import Configuration
 from resultsdbpy.model.configuration_context_unittest import ConfigurationContextTest
 from resultsdbpy.model.model import Model
-from resultsdbpy.model.repository import StashRepository, WebKitRepository
+from resultsdbpy.model.repository import StashRepository, CyberKitRepository
 
 from webkitscmpy import mocks, Commit
 
@@ -69,7 +69,7 @@ class MockModelFactory(object):
     @contextlib.contextmanager
     def webkit(cls):
         svn = mocks.remote.Svn(remote='svn.webkit.org/repository/webkit')
-        github = mocks.remote.GitHub(remote='github.com/WebKit/WebKit', git_svn=True)
+        github = mocks.remote.GitHub(remote='github.com/CyberKit/CyberKit', git_svn=True)
         github.commits = {}
 
         for branch, commits in svn.commits.items():
@@ -110,7 +110,7 @@ class MockModelFactory(object):
             cassandra=cassandra,
             repositories=[
                 StashRepository('https://bitbucket.example.com/projects/SAFARI/repos/safari'),
-                WebKitRepository(),
+                CyberKitRepository(),
             ],
             default_ttl_seconds=time.time() - oldest_commit + Model.TTL_WEEK,
             archive_ttl_seconds=time.time() - oldest_commit + Model.TTL_WEEK,

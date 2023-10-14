@@ -1,5 +1,5 @@
 This tests inserting the parent of a template element into its content document fragment
-after adopting the document fragment to another document. WebKit should throw HierarchyRequestError
+after adopting the document fragment to another document. CyberKit should throw HierarchyRequestError
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

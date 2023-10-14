@@ -8,7 +8,7 @@ layer at (0,0) size 800x2131
           text run at (0,1) width 180: "Anchor Lock"
       RenderBlock {P} at (0,59) size 784x41
         RenderText {#text} at (0,0) size 753x39
-          text run at (0,0) width 753: "This tests WebKit's ability to lock to an anchor and maintain focus on it as images are loaded above and below it. The"
+          text run at (0,0) width 753: "This tests CyberKit's ability to lock to an anchor and maintain focus on it as images are loaded above and below it. The"
           text run at (0,20) width 376: "Anchor text should be visible and this message should not."
       RenderBlock {P} at (0,115) size 784x201
         RenderImage {IMG} at (0,0) size 200x200

@@ -1,4 +1,4 @@
-This test verifies that the selection changes when initially focusing an editable web view by tapping, if the WebKit client unconditionally allows programmatic focus to show the keyboard. To manually test, tap the red square above and verify that the selection is set
+This test verifies that the selection changes when initially focusing an editable web view by tapping, if the CyberKit client unconditionally allows programmatic focus to show the keyboard. To manually test, tap the red square above and verify that the selection is set
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

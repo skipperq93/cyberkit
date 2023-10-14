@@ -56,7 +56,7 @@ Blob.prototype.type;
 Blob.prototype.slice = function(start, length) {};
 
 /**
- * This replaces Blob.slice in Chrome since WebKit revision 84005.
+ * This replaces Blob.slice in Chrome since CyberKit revision 84005.
  * @see http://lists.w3.org/Archives/Public/public-webapps/2011AprJun/0222.html
  * @param {number} start
  * @param {number} end
@@ -98,11 +98,11 @@ BlobBuilder.prototype.append = function(data, endings) {};
 BlobBuilder.prototype.getBlob = function(contentType) {};
 
 /**
- * This has replaced BlobBuilder in Chrome since WebKit revision 84008.
+ * This has replaced BlobBuilder in Chrome since CyberKit revision 84008.
  * @see http://lists.w3.org/Archives/Public/public-webapps/2011AprJun/0222.html
  * @constructor
  */
-function WebKitBlobBuilder() {}
+function CyberKitBlobBuilder() {}
 
 /**
  * @see http://www.w3.org/TR/file-writer-api/#widl-BlobBuilder-append0
@@ -111,14 +111,14 @@ function WebKitBlobBuilder() {}
  * @param {string|Blob|ArrayBuffer} data
  * @param {string=} endings
  */
-WebKitBlobBuilder.prototype.append = function(data, endings) {};
+CyberKitBlobBuilder.prototype.append = function(data, endings) {};
 
 /**
  * @see http://www.w3.org/TR/file-writer-api/#widl-BlobBuilder-getBlob
  * @param {string=} contentType
  * @return {!Blob}
  */
-WebKitBlobBuilder.prototype.getBlob = function(contentType) {};
+CyberKitBlobBuilder.prototype.getBlob = function(contentType) {};
 
 
 /**
@@ -768,7 +768,7 @@ Window.prototype.resolveLocalFileSystemURI = function(uri, successCallback,
     errorCallback) {}
 
 /**
- * This has replaced requestFileSystem in Chrome since WebKit revision 84224.
+ * This has replaced requestFileSystem in Chrome since CyberKit revision 84224.
  * @see http://www.w3.org/TR/file-system-api/#widl-LocalFileSystem-requestFileSystem
  * @param {number} type
  * @param {number} size
@@ -778,7 +778,7 @@ Window.prototype.resolveLocalFileSystemURI = function(uri, successCallback,
 function webkitRequestFileSystem(type, size, successCallback, errorCallback) {}
 
 /**
- * This has replaced requestFileSystem in Chrome since WebKit revision 84224.
+ * This has replaced requestFileSystem in Chrome since CyberKit revision 84224.
  * @see http://www.w3.org/TR/file-system-api/#widl-LocalFileSystem-requestFileSystem
  * @param {number} type
  * @param {number} size
@@ -789,7 +789,7 @@ Window.prototype.webkitRequestFileSystem = function(type, size, successCallback,
     errorCallback) {};
 
 /**
- * This has replaced resolveLocalFileSystemURI in Chrome since WebKit revision
+ * This has replaced resolveLocalFileSystemURI in Chrome since CyberKit revision
  * 84224.
  * @see http://www.w3.org/TR/file-system-api/#widl-LocalFileSystem-resolveLocalFileSystemURI
  * @param {string} uri
@@ -799,7 +799,7 @@ Window.prototype.webkitRequestFileSystem = function(type, size, successCallback,
 function webkitResolveLocalFileSystemURI(uri, successCallback, errorCallback) {}
 
 /**
- * This has replaced resolveLocalFileSystemURI in Chrome since WebKit revision
+ * This has replaced resolveLocalFileSystemURI in Chrome since CyberKit revision
  * 84224.
  * @see http://www.w3.org/TR/file-system-api/#widl-LocalFileSystem-resolveLocalFileSystemURI
  * @param {string} uri
@@ -872,7 +872,7 @@ URL.createObjectURL = function(obj) {};
 URL.revokeObjectURL = function(url) {};
 
 /**
- * This has been replaced by URL in Chrome since WebKit revision 75739.
+ * This has been replaced by URL in Chrome since CyberKit revision 75739.
  * @constructor
  * @param {string} urlString
  * @param {string=} opt_base

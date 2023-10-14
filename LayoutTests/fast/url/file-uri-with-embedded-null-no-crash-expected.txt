@@ -1,4 +1,4 @@
-Tests that attempting to ping an invalid file URI doesn't crash WebKit.
+Tests that attempting to ping an invalid file URI doesn't crash CyberKit.
 
 Click Me
 The test passes if it does not crash.

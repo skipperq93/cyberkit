@@ -20,7 +20,7 @@ if username and password:
 
 else:
     sys.stdout.write(
-        'WWW-Authenticate: Basic realm="WebKit test re-login"\r\n'
+        'WWW-Authenticate: Basic realm="CyberKit test re-login"\r\n'
         'status: 401\r\n'
         '\r\n'
         'Authentication canceled'

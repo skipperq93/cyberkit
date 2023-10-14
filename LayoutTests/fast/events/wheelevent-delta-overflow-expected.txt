@@ -46,12 +46,12 @@ PASS wheelEvent.deltaX is 2147483649
 PASS wheelEvent.deltaY is 2147483649
 
 wheelEvent = document.createEvent('wheelevent')
-wheelEvent.initWebKitWheelEvent(-2147483648, -2147483648)
+wheelEvent.initCyberKitWheelEvent(-2147483648, -2147483648)
 PASS wheelEvent.deltaX is 2147483648
 PASS wheelEvent.deltaY is 2147483648
 
 wheelEvent = document.createEvent('wheelevent')
-wheelEvent.initWebKitWheelEvent(2147483647, 2147483647)
+wheelEvent.initCyberKitWheelEvent(2147483647, 2147483647)
 PASS wheelEvent.deltaX is -2147483647
 PASS wheelEvent.deltaY is -2147483647
 PASS successfullyParsed is true

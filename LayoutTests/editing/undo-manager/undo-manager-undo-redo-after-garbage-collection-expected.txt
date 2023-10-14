@@ -1,5 +1,5 @@
 After redo
-Verifies that undo and redo callback handlers survive garbage collection. This test requires WebKitTestRunner.
+Verifies that undo and redo callback handlers survive garbage collection. This test requires CyberKitTestRunner.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

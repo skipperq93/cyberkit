@@ -21,30 +21,30 @@ shouldBeEqualToString("[Math.PI, Math.E, 6.626].join('')", "3.1415926535897932.7
 shouldBeEqualToString("[Math.PI, Math.E, 6.626].join('柰')", "3.141592653589793柰2.718281828459045柰6.626");
 
 debug("Contiguous Array");
-shouldBeEqualToString("[1, 'WebKit', { toString: () => { return 'IsIncredible'} }].join()", "1,WebKit,IsIncredible");
-shouldBeEqualToString("[1, 'WebKit', { toString: () => { return 'IsIncredible'} }].join('')", "1WebKitIsIncredible");
-shouldBeEqualToString("[1, 'WebKit', { toString: () => { return 'IsIncredible'} }].join('柰')", "1柰WebKit柰IsIncredible");
+shouldBeEqualToString("[1, 'CyberKit', { toString: () => { return 'IsIncredible'} }].join()", "1,CyberKit,IsIncredible");
+shouldBeEqualToString("[1, 'CyberKit', { toString: () => { return 'IsIncredible'} }].join('')", "1CyberKitIsIncredible");
+shouldBeEqualToString("[1, 'CyberKit', { toString: () => { return 'IsIncredible'} }].join('柰')", "1柰CyberKit柰IsIncredible");
 
 debug("Sparse Array");
 var smallSparseArray = new Array;
 smallSparseArray[-1] = "Oops";
-smallSparseArray[0] = "WebKit";
+smallSparseArray[0] = "CyberKit";
 smallSparseArray[42] = 15;
-shouldBeEqualToString("smallSparseArray.join()", "WebKit,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,15");
-shouldBeEqualToString("smallSparseArray.join('')", "WebKit15");
-shouldBeEqualToString("smallSparseArray.join('柰')", "WebKit柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰15");
+shouldBeEqualToString("smallSparseArray.join()", "CyberKit,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,15");
+shouldBeEqualToString("smallSparseArray.join('')", "CyberKit15");
+shouldBeEqualToString("smallSparseArray.join('柰')", "CyberKit柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰柰15");
 
 var largeSparseArray1 = new Array;
 largeSparseArray1[100001] = 42;
-largeSparseArray1[0] = "WebKit";
+largeSparseArray1[0] = "CyberKit";
 largeSparseArray1[Number.MAX_SAFE_INTEGER] = { valueOf: () => { return 'IsCool'} };
-shouldBeEqualToString("largeSparseArray1.join('')", "WebKit42");
+shouldBeEqualToString("largeSparseArray1.join('')", "CyberKit42");
 
 var largeSparseArray2 = new Array;
 largeSparseArray2[100001] = 42;
-largeSparseArray2[42] = "WebKit";
+largeSparseArray2[42] = "CyberKit";
 largeSparseArray2[1024] = "";
-shouldBeEqualToString("largeSparseArray2.join('')", "WebKit42");
+shouldBeEqualToString("largeSparseArray2.join('')", "CyberKit42");
 
 debug("Out of memory");
 // 4194303 * 4096 > Max String Length.
@@ -60,11 +60,11 @@ var lengthObject = {
     valueOf: () => { callSequence.push("length.valueOf"); return 2; }
 };
 var index0Object = {
-    toString: () => { callSequence.push("index0.toString"); return "WebKit0"; },
+    toString: () => { callSequence.push("index0.toString"); return "CyberKit0"; },
     valueOf: () => { callSequence.push("index0.valueOf"); return "FAIL!"; }
 };
 var index1Object = {
-    toString: () => { callSequence.push("index0.toString"); return "WebKit1"; },
+    toString: () => { callSequence.push("index0.toString"); return "CyberKit1"; },
     valueOf: () => { callSequence.push("index0.valueOf"); return "FAIL!"; }
 };
 var calleeObject = {
@@ -79,7 +79,7 @@ var separatorObject = {
     valueOf: () => { callSequence.push("separator.valueOf"); return "FAIL!"; }
 };
 
-shouldBeEqualToString("Array.prototype.join.call(calleeObject, separatorObject)", "WebKit0柰WebKit1");
+shouldBeEqualToString("Array.prototype.join.call(calleeObject, separatorObject)", "CyberKit0柰CyberKit1");
 shouldBeEqualToString("callSequence.join(', ')", "calle.length, length.valueOf, separator.toString, calle.get 0, index0.toString, calle.get 1, index0.toString");
 
 

@@ -22,7 +22,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# fix-blink-patch -- fixes paths of a Blink commit so they match up with WebKit
+# fix-blink-patch -- fixes paths of a Blink commit so they match up with CyberKit
 
 use strict;
 use warnings;
@@ -43,8 +43,8 @@ if (!$getOptionsResult || $showHelp) {
 }
 
 while (my $line = <>) {
-    $line =~ s#([ab]/| )Source/core/#$1Source/WebCore/#mg;
-    $line =~ s#([ab]/| )Source/bindings/#$1Source/WebCore/bindings/#mg;
+    $line =~ s#([ab]/| )Source/core/#$1Source/CyberCore/#mg;
+    $line =~ s#([ab]/| )Source/bindings/#$1Source/CyberCore/bindings/#mg;
     print $line;
 }
 

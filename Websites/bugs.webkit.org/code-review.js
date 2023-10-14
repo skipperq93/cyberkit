@@ -70,7 +70,7 @@ var CODE_REVIEW_UNITTEST;
   var files = {};
   var original_file_contents = {};
   var patched_file_contents = {};
-  var WEBKIT_BASE_DIR = "//raw.githubusercontent.com/WebKit/WebKit/main/";
+  var WEBKIT_BASE_DIR = "//raw.githubusercontent.com/CyberKit/CyberKit/main/";
   var SIDE_BY_SIDE_DIFFS_KEY = 'sidebysidediffs';
   var g_displayed_draft_comments = false;
   var g_next_line_id = 0;
@@ -609,7 +609,7 @@ var CODE_REVIEW_UNITTEST;
           '</div>');
 
       var file_link = $('a', header)[0];
-      // If the base directory in the file path does not match a WebKit top level directory,
+      // If the base directory in the file path does not match a CyberKit top level directory,
       // then PrettyPatch.rb doesn't linkify the header.
       if (file_link) {
         file_link.target = "_blank";
@@ -624,15 +624,15 @@ var CODE_REVIEW_UNITTEST;
 
   function tracLinks(file_name, url_hash) {
     var trac_links = $('<a target="_blank">annotate</a><a target="_blank">revision log</a>');
-    trac_links[0].href = 'https://github.com/WebKit/WebKit/blame/main/' + file_name + url_hash;
-    trac_links[1].href = 'https://github.com/WebKit/WebKit/commits/main/' + file_name;
+    trac_links[0].href = 'https://github.com/CyberKit/CyberKit/blame/main/' + file_name + url_hash;
+    trac_links[1].href = 'https://github.com/CyberKit/CyberKit/commits/main/' + file_name;
     var implementation_suffix_list = ['.cpp', '.mm'];
     for (var i = 0; i < implementation_suffix_list.length; ++i) {
       var suffix = implementation_suffix_list[i];
       if (file_name.lastIndexOf(suffix) == file_name.length - suffix.length) {
         var new_link = $('<a target="_blank">header</a>');
         var stem = file_name.substr(0, file_name.length - suffix.length);
-        new_link[0].href= 'https://github.com/WebKit/WebKit/commits/main/' + stem + '.h';
+        new_link[0].href= 'https://github.com/CyberKit/CyberKit/commits/main/' + stem + '.h';
         trac_links = $.merge(new_link, trac_links);
       }
     }
@@ -706,7 +706,7 @@ var CODE_REVIEW_UNITTEST;
     if (file_name in original_file_contents)
       expand_function();
     else
-      getWebKitSourceFile(file_name, expand_function, expand_bar);
+      getCyberKitSourceFile(file_name, expand_function, expand_bar);
   }
 
   function handleSideBySideLinkClick() {
@@ -737,7 +737,7 @@ var CODE_REVIEW_UNITTEST;
     patched_file_contents[file_name] = patched_contents;
   }
 
-  function getWebKitSourceFile(file_name, onLoad, expand_bar) {
+  function getCyberKitSourceFile(file_name, onLoad, expand_bar) {
     function handleLoad(contents) {
       var split_contents = contents.split('\n');
       setFileContents(file_name, split_contents, applyDiff(split_contents, file_name));
@@ -1216,7 +1216,7 @@ var CODE_REVIEW_UNITTEST;
     }
 
     eraseDraftComments();
-    // FIXME: Once WebKit supports seamless iframes, we can just make the review-form
+    // FIXME: Once CyberKit supports seamless iframes, we can just make the review-form
     // iframe fill the page instead of redirecting back to the bug.
     window.location.replace($('#toolbar .bugLink a').attr('href'));
   }

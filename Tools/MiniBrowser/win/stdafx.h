@@ -59,8 +59,8 @@
 #include <wininet.h>
 #include <wtf/Platform.h>
 
-#include <JavaScriptCore/JSExportMacros.h>
-#include <WebCore/PlatformExportMacros.h>
+#include <CyberScriptCore/JSExportMacros.h>
+#include <CyberCore/PlatformExportMacros.h>
 
 #if 0
 // Visual Studio Leak Detection

@@ -1,5 +1,5 @@
 var MediaSourceTest = {};
-var mediaSource = new WebKitMediaSource();
+var mediaSource = new CyberKitMediaSource();
 
 MediaSourceTest.SegmentHelper = function(segmentInfo, fullDuration)
 {

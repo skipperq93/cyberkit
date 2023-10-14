@@ -51,7 +51,7 @@ enum RunLoopSourcePriority {
     // Memory pressure monitor.
     MemoryPressureHandlerTimer = -100,
 
-    // WebCore timers.
+    // CyberCore timers.
     MainThreadSharedTimer = 100,
 
     // Used for timers that discard resources like backing store, buffers, etc.

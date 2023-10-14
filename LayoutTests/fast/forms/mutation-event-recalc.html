@@ -116,7 +116,7 @@ optgroup.replaceChild(new Option("new", "new", false, false), optgroup.lastChild
 testInfo = [11, 2, 1, "new"];
 checkSelect();
 
-/* WebKit cannot add options right into a group via HTMLSelectElement.add().
+/* CyberKit cannot add options right into a group via HTMLSelectElement.add().
    See <https://bugs.webkit.org/show_bug.cgi?id=24606>.
 testInfo = [12, 3, 0, "0"];
 select.add(new Option("0", "0", false, false), optgroup.firstChild);

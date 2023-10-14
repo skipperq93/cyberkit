@@ -11,7 +11,7 @@ PASS Object.getOwnPropertyDescriptor(String.prototype, 'normalize').configurable
 PASS Object.getOwnPropertyDescriptor(String.prototype, 'normalize').enumerable is false
 PASS Object.getOwnPropertyDescriptor(String.prototype, 'normalize').writable is true
 Invokes ToString on the argument.
-PASS String.prototype.normalize.call(listener) is "WebKit"
+PASS String.prototype.normalize.call(listener) is "CyberKit"
 PASS listener.callCount is 1
 PASS successfullyParsed is true
 

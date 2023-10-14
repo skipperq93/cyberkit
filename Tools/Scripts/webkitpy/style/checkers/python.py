@@ -21,7 +21,7 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-"""Supports checking WebKit style in Python files."""
+"""Supports checking CyberKit style in Python files."""
 
 import re
 import sys
@@ -29,7 +29,7 @@ import sys
 from webkitcorepy import StringIO
 
 from webkitpy.common.system.filesystem import FileSystem
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 from webkitpy.style.checkers.inclusive_language import InclusiveLanguageChecker
 
 import pycodestyle
@@ -109,7 +109,7 @@ class Pylinter(object):
     ]
 
     def __init__(self):
-        self._pylintrc = WebKitFinder(FileSystem()).path_from_webkit_base('Tools', 'Scripts', 'webkitpy', 'pylintrc')
+        self._pylintrc = CyberKitFinder(FileSystem()).path_from_webkit_base('Tools', 'Scripts', 'webkitpy', 'pylintrc')
 
     def run(self, argv):
         output = _FilteredStringIO(self.FALSE_POSITIVES)

@@ -27,8 +27,8 @@
 #include "cmakeconfig.h"
 #endif
 #include "MainWindow.h"
-#include <JavaScriptCore/JSRemoteInspectorServer.h>
-#include <WebKit/WKRunLoop.h>
+#include <CyberScriptCore/JSRemoteInspectorServer.h>
+#include <CyberKit/WKRunLoop.h>
 #include <dlfcn.h>
 #include <toolkitten/Application.h>
 
@@ -50,7 +50,7 @@ static void loadLibraryOrExit(const char* name)
 __attribute__((constructor(110)))
 static void initialize()
 {
-    loadLibraryOrExit("PosixWebKit");
+    loadLibraryOrExit("PosixCyberKit");
 
     loadLibraryOrExit(ICU_LOAD_AT);
     loadLibraryOrExit(PNG_LOAD_AT);
@@ -65,7 +65,7 @@ static void initialize()
     loadLibraryOrExit(HarfBuzz_LOAD_AT);
     loadLibraryOrExit(Cairo_LOAD_AT);
     loadLibraryOrExit(ToolKitten_LOAD_AT);
-    loadLibraryOrExit(WebKitRequirements_LOAD_AT);
+    loadLibraryOrExit(CyberKitRequirements_LOAD_AT);
 #if defined(LibPSL_LOAD_AT)
     loadLibraryOrExit(LibPSL_LOAD_AT);
 #endif
@@ -73,9 +73,9 @@ static void initialize()
     loadLibraryOrExit(WPE_LOAD_AT);
 #endif
 #if !(defined(ENABLE_STATIC_JSC) && ENABLE_STATIC_JSC)
-    loadLibraryOrExit("libJavaScriptCore");
+    loadLibraryOrExit("libCyberScriptCore");
 #endif
-    loadLibraryOrExit("libWebKit");
+    loadLibraryOrExit("libCyberKit");
 
 #if defined (USE_WPE_BACKEND_PLAYSTATION) && USE_WPE_BACKEND_PLAYSTATION
     wpe_playstation_process_provider_register_backend();

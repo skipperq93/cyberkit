@@ -105,7 +105,7 @@ class RunsGenerator {
     }
 
     private static function parse_revisions_array($postgres_array) {
-        // e.g. {"(WebKit,131456,\"2012-10-16 14:53:00\")","(Chromium,162004,)"}
+        // e.g. {"(CyberKit,131456,\"2012-10-16 14:53:00\")","(Chromium,162004,)"}
         $outer_array = json_decode('[' . trim($postgres_array, '{}') . ']');
         $revisions = array();
         foreach ($outer_array as $item) {

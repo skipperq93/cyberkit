@@ -26,7 +26,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-# WebKit's python module for holding information on a commit
+# CyberKit's python module for holding information on a commit
 
 from webkitpy.common.config import urls
 from webkitpy.common.config.committers import CommitterList

@@ -13,10 +13,10 @@
 </head>
 <body>
     <div style="display:none" id="test-root">
-        <div data-attribute="WebKit-É" multiple="WEBKIT-é" id="target1"></div>
-        <div data-attribute="webkit-É" multiple="WebKit-é" id="target2"></div>
+        <div data-attribute="CyberKit-É" multiple="WEBKIT-é" id="target1"></div>
+        <div data-attribute="webkit-É" multiple="CyberKit-é" id="target2"></div>
         <div data-attribute="WEBKIT-É" multiple="Webkit-é" id="target3"></div>
-        <div data-attribute="WebKit-é" multiple="webkit-É" id="target4"></div>
+        <div data-attribute="CyberKit-é" multiple="webkit-É" id="target4"></div>
         <div data-attribute="webkit-é" multiple="webKit-É" id="target5"></div>
     </div>
 </body>
@@ -51,27 +51,27 @@ function testSelector(selector, expectedIds) {
 
 var testCases = [
     // Regular attribute matching is case sensitive.
-    ['[data-attribute=WebKit-É]', [1]],
+    ['[data-attribute=CyberKit-É]', [1]],
     ['[data-attribute=webkit-É]', [2]],
     ['[data-attribute=WEBKIT-É]', [3]],
-    ['[data-attribute=WebKit-é]', [4]],
+    ['[data-attribute=CyberKit-é]', [4]],
     ['[data-attribute=webkit-é]', [5]],
 
     // Same selectors with the case-insensitivie flag.
-    ['[data-attribute=WebKit-É i]', [1, 2, 3]],
+    ['[data-attribute=CyberKit-É i]', [1, 2, 3]],
     ['[data-attribute=webkit-É i]', [1, 2, 3]],
     ['[data-attribute=WEBKIT-É i]', [1, 2, 3]],
-    ['[data-attribute=WebKit-é i]', [4, 5]],
+    ['[data-attribute=CyberKit-é i]', [4, 5]],
     ['[data-attribute=webkit-é i]', [4, 5]],
 
     // "multiple" is one of those weird legacy exception: it is always case insensitive in HTML.
     ['[multiple=WEBKIT-é]', [1, 2, 3]],
-    ['[multiple=WebKit-é]', [1, 2, 3]],
+    ['[multiple=CyberKit-é]', [1, 2, 3]],
     ['[multiple=Webkit-é]', [1, 2, 3]],
     ['[multiple=webkit-É]', [4, 5]],
     ['[multiple=webKit-É]', [4, 5]],
     ['[multiple=WEBKIT-é i]', [1, 2, 3]],
-    ['[multiple=WebKit-é i]', [1, 2, 3]],
+    ['[multiple=CyberKit-é i]', [1, 2, 3]],
     ['[multiple=Webkit-é i]', [1, 2, 3]],
     ['[multiple=webkit-É i]', [4, 5]],
     ['[multiple=webKit-É i]', [4, 5]],

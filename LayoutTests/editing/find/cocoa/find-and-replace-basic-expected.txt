@@ -1,4 +1,4 @@
-Verifies that find and replace can be used to replace words in an editable area. This test requires WebKitTestRunner.
+Verifies that find and replace can be used to replace words in an editable area. This test requires CyberKitTestRunner.
 
 After replacing 'orange' with 'apricot':
 | "\n        "

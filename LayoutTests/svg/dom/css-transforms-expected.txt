@@ -27,12 +27,12 @@ PASS dumpMatrix(rect.getTransformToElement(rect)) is "[1.0 0.0 0.0 1.0 0.0 0.0]"
 
 Test CSSMatrix
 PASS circle.style.webkitTransform is "scale(2, 2) translate(10px, 10px)"
-PASS dumpMatrix(new WebKitCSSMatrix(circle.style.webkitTransform)) is "[2.0 0.0 0.0 2.0 20.0 20.0]"
+PASS dumpMatrix(new CyberKitCSSMatrix(circle.style.webkitTransform)) is "[2.0 0.0 0.0 2.0 20.0 20.0]"
 PASS rect.style.webkitTransform is "translate(100px) rotate(45deg)"
-PASS dumpMatrix(new WebKitCSSMatrix(rect.style.webkitTransform)) is "[0.7 0.7 -0.7 0.7 100.0 0.0]"
+PASS dumpMatrix(new CyberKitCSSMatrix(rect.style.webkitTransform)) is "[0.7 0.7 -0.7 0.7 100.0 0.0]"
 
-PASS dumpMatrix(new WebKitCSSMatrix(circle.style.webkitTransform)) is dumpMatrix(circle.getCTM())
-PASS dumpMatrix(new WebKitCSSMatrix(rect.style.webkitTransform)) is dumpMatrix(rect.getCTM())
+PASS dumpMatrix(new CyberKitCSSMatrix(circle.style.webkitTransform)) is dumpMatrix(circle.getCTM())
+PASS dumpMatrix(new CyberKitCSSMatrix(rect.style.webkitTransform)) is dumpMatrix(rect.getCTM())
 
 PASS successfullyParsed is true
 

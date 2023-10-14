@@ -13,7 +13,7 @@ body {
 </head>
 <body style="color: rgb(51, 51, 51); " contenteditable="true">
 <ul>
-<li>hello, world <a href="http://www.webkit.org/">WebKit</a></li>
+<li>hello, world <a href="http://www.webkit.org/">CyberKit</a></li>
 <li>Copied content</li>
 </ul>
 <script src="../../resources/dump-as-markup.js"></script>
@@ -28,7 +28,7 @@ document.execCommand('Paste', false, null);
 while (script = document.querySelector('script'))
     script.parentNode.removeChild(script);
 
-Markup.description('This test copies and pastes content inside a body with background and text-decoration properties. WebKit should not nest body.');
+Markup.description('This test copies and pastes content inside a body with background and text-decoration properties. CyberKit should not nest body.');
 Markup.dump(document.body);
 
 </script>

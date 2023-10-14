@@ -24,7 +24,7 @@ import json
 import logging
 import os
 
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 from webkitpy.common.test_expectations import TestExpectations
 from webkitpy.webdriver_tests.webdriver_driver import create_driver
 from webkitpy.webdriver_tests.webdriver_test_runner_selenium import WebDriverTestRunnerSelenium
@@ -52,7 +52,7 @@ class WebDriverTestRunner(object):
         _log.info('Browser: %s' % (driver.browser_name()))
 
         _log.info('Parsing expectations')
-        self._tests_dir = WebKitFinder(self._port.host.filesystem).path_from_webkit_base('WebDriverTests')
+        self._tests_dir = CyberKitFinder(self._port.host.filesystem).path_from_webkit_base('WebDriverTests')
         expectations_file = os.path.join(self._tests_dir, 'TestExpectations.json')
         build_type = 'Debug' if self._port.get_option('debug') else 'Release'
         self._expectations = TestExpectations(self._port.name(), expectations_file, build_type)

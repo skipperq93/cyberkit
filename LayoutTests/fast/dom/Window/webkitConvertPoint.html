@@ -67,7 +67,7 @@
             debug("");
             debug(name);
             var node = document.getElementById(id);
-            p = webkitConvertPointFromNodeToPage(node, new WebKitPoint(0, 0));
+            p = webkitConvertPointFromNodeToPage(node, new CyberKitPoint(0, 0));
             x = Math.round(p.x);
             y = Math.round(p.y);
             shouldBe('x', x1+"");
@@ -84,7 +84,7 @@
             shouldBe('x', '0');
             shouldBe('y', '0');
             
-            p = webkitConvertPointFromNodeToPage(node, new WebKitPoint(5, 40));
+            p = webkitConvertPointFromNodeToPage(node, new CyberKitPoint(5, 40));
             x = Math.round(p.x);
             y = Math.round(p.y);
             if (x == -0)
@@ -113,9 +113,9 @@
             description("This test exercises the webkitConvertPointFromNodeToPage() function");
             
             debug("Test parameter passing - should not crash");
-            shouldThrow("webkitConvertPointFromNodeToPage(new WebKitPoint(0, 0))");
+            shouldThrow("webkitConvertPointFromNodeToPage(new CyberKitPoint(0, 0))");
             debug("");
-            point = webkitConvertPointFromNodeToPage(null, new WebKitPoint(0, 0));
+            point = webkitConvertPointFromNodeToPage(null, new CyberKitPoint(0, 0));
             if (point == null)
                 testPassed("null parameter test a");
             else

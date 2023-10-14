@@ -29,7 +29,7 @@ namespace WTF {
 
 #if USE(APPLE_INTERNAL_SDK)
 
-#include <WebKitAdditions/ExperimentalFeatureNameAdditions.h>
+#include <CyberKitAdditions/ExperimentalFeatureNameAdditions.h>
 
 #endif
 

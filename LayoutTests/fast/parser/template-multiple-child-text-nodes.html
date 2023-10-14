@@ -9,7 +9,7 @@ for (character of "<template>hello</template>")
 for (character of "<template><div></div>world<div></div></template>")
     document.write(character);
 
-description('This tests inserting multiple text tokens inside a template element. WebKit should create a single contiguous text node.');
+description('This tests inserting multiple text tokens inside a template element. CyberKit should create a single contiguous text node.');
 
 const templates = Array.from(document.querySelectorAll('template'));
 shouldBeEqualToString('templates[0].content.firstChild.data', 'hello');

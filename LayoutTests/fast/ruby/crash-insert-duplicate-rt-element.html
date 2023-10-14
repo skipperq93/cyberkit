@@ -11,7 +11,7 @@ function runTest() {
     document.querySelector('ruby').prepend(document.createElement("rt"));
     document.body.getBoundingClientRect();
 
-    document.body.innerHTML = `<p>This tests inserting a duplicate rt element into ruby. WebKit should not crash.<br>PASS.</p>`;
+    document.body.innerHTML = `<p>This tests inserting a duplicate rt element into ruby. CyberKit should not crash.<br>PASS.</p>`;
 
     if (window.testRunner)
         testRunner.notifyDone();

@@ -28,15 +28,15 @@ function TestRelatedBugForm(tester) {
 
     this._tester = tester;
 
-    this.component = WebKitBugzilla.Component.ToolsTests;
+    this.component = CyberKitBugzilla.Component.ToolsTests;
     this.keywords = [
-        WebKitBugzilla.Keyword.LayoutTestFailure,
-        WebKitBugzilla.Keyword.MakingBotsRed,
+        CyberKitBugzilla.Keyword.LayoutTestFailure,
+        CyberKitBugzilla.Keyword.MakingBotsRed,
     ].join(', ');
     this.operatingSystem = this._computeOperatingSystem();
     this.platform = this._computePlatform();
-    this.product = WebKitBugzilla.Product.WebKit;
-    this.version = WebKitBugzilla.Version.Nightly;
+    this.product = CyberKitBugzilla.Product.CyberKit;
+    this.version = CyberKitBugzilla.Version.Nightly;
 }
 
 TestRelatedBugForm.prototype = {
@@ -49,21 +49,21 @@ TestRelatedBugForm.prototype = {
 
     _computeOperatingSystem: function() {
         if (/Windows 7/.test(this._tester.name))
-            return WebKitBugzilla.OperatingSystem.Windows7;
+            return CyberKitBugzilla.OperatingSystem.Windows7;
         if (/Windows XP/.test(this._tester.name))
-            return WebKitBugzilla.OperatingSystem.WindowsXP;
+            return CyberKitBugzilla.OperatingSystem.WindowsXP;
         if (/SnowLeopard/.test(this._tester.name))
-            return WebKitBugzilla.OperatingSystem.SnowLeopard;
+            return CyberKitBugzilla.OperatingSystem.SnowLeopard;
         if (/Leopard/.test(this._tester.name))
-            return WebKitBugzilla.OperatingSystem.Leopard;
+            return CyberKitBugzilla.OperatingSystem.Leopard;
         return '';
     },
 
     _computePlatform: function() {
         if (/Windows/.test(this._tester.name))
-            return WebKitBugzilla.Platform.PC;
+            return CyberKitBugzilla.Platform.PC;
         if (/Leopard/.test(this._tester.name))
-            return WebKitBugzilla.Platform.Macintosh;
+            return CyberKitBugzilla.Platform.Macintosh;
         return '';
     },
 };

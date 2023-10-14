@@ -8,7 +8,7 @@ def main(request, response):
     response.writer.write_content("//" + str(random.random()) + "\n")
     response.writer.write_content("function doFetch(event)\n")
     response.writer.write_content("{\n")
-    response.writer.write_content("    event.respondWith(fetch('/WebKit/service-workers/resources/lengthy-pass.py?delay=0.5'));\n")
+    response.writer.write_content("    event.respondWith(fetch('/CyberKit/service-workers/resources/lengthy-pass.py?delay=0.5'));\n")
     response.writer.write_content("}\n")
     response.writer.write_content("self.addEventListener('fetch', doFetch);\n")
 

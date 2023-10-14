@@ -81,7 +81,7 @@ endif ()
 if (NOT GIDocgen_EXE)
     message(${_GIDocgen_MSGLEVEL}
         "Could not find gi-docgen. If your system does not provide a package "
-        "the following commands can be used to install it inside the WebKit "
+        "the following commands can be used to install it inside the CyberKit "
         "source tree, where it will be found automatically:\n"
         "  virtualenv gi-docgen ${CMAKE_SOURCE_DIR}/gi-docgen\n"
         "  ${CMAKE_SOURCE_DIR}/gi-docgen/bin/pip install gi-docgen\n"

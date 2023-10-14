@@ -12,10 +12,10 @@
 promise_test(async () => {
     if (window.internals) {
         internals.grantUniversalAccess();
-        internals.disableCORSForURL("http://localhost/WebKit/fetch/resources/echo-origin-cors-disabled.py");
+        internals.disableCORSForURL("http://localhost/CyberKit/fetch/resources/echo-origin-cors-disabled.py");
     }
 
-    const response = await fetch("http://localhost:8800/WebKit/fetch/resources/echo-origin-cors-disabled.py?test-for-cors-disabled", {
+    const response = await fetch("http://localhost:8800/CyberKit/fetch/resources/echo-origin-cors-disabled.py?test-for-cors-disabled", {
         "referrer": "https://example.com/",
         "body": "",
         "method": "POST",

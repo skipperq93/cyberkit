@@ -156,7 +156,7 @@ void Config::permanentlyFreeze()
     result = mprotect(&WebConfig::g_config, ConfigSizeToProtect, PROT_READ);
 #elif OS(WINDOWS)
     // FIXME: Implement equivalent, maybe with VirtualProtect.
-    // Also need to fix WebKitTestRunner.
+    // Also need to fix CyberKitTestRunner.
 
     // Note: the Windows port also currently does not support a unified Config
     // record, which is needed for the current form of the freezing feature to

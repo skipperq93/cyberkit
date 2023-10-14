@@ -76,7 +76,7 @@ TestPage.closeTest = window.closeTest = function()
 TestPage.runTest = window.runTest = function()
 {
     if (!window.testRunner) {
-        console.error("This test must be run via DumpRenderTree or WebKitTestRunner.");
+        console.error("This test must be run via DumpRenderTree or CyberKitTestRunner.");
         return;
     }
 

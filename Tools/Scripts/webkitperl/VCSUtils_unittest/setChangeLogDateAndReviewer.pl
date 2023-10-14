@@ -40,9 +40,9 @@ Subject: [PATCH]
 
 Reviewed by NOBODY (OOPS!).
 
-diff --git a/WebCore/ChangeLog b/WebCore/ChangeLog
---- a/WebCore/ChangeLog
-+++ b/WebCore/ChangeLog
+diff --git a/CyberCore/ChangeLog b/CyberCore/ChangeLog
+--- a/CyberCore/ChangeLog
++++ b/CyberCore/ChangeLog
 @@ -1,3 +1,15 @@
 +2010-05-08  Chris Jerdonek  <cjerdonek@webkit.org>
 +
@@ -57,9 +57,9 @@ Subject: [PATCH]
 
 Reviewed by NOBODY (OOPS!).
 
-diff --git a/WebCore/ChangeLog b/WebCore/ChangeLog
---- a/WebCore/ChangeLog
-+++ b/WebCore/ChangeLog
+diff --git a/CyberCore/ChangeLog b/CyberCore/ChangeLog
+--- a/CyberCore/ChangeLog
++++ b/CyberCore/ChangeLog
 @@ -1,3 +1,15 @@
 +2010-05-09  Chris Jerdonek  <cjerdonek@webkit.org>
 +
@@ -79,9 +79,9 @@ Subject: [PATCH]
 
 Reviewed by NOBODY (OOPS!).
 
-diff --git a/WebCore/ChangeLog b/WebCore/ChangeLog
---- a/WebCore/ChangeLog
-+++ b/WebCore/ChangeLog
+diff --git a/CyberCore/ChangeLog b/CyberCore/ChangeLog
+--- a/CyberCore/ChangeLog
++++ b/CyberCore/ChangeLog
 @@ -1,3 +1,15 @@
 +2010-05-08  Chris Jerdonek  <cjerdonek@webkit.org>
 +
@@ -96,9 +96,9 @@ Subject: [PATCH]
 
 Reviewed by NOBODY (OOPS!).
 
-diff --git a/WebCore/ChangeLog b/WebCore/ChangeLog
---- a/WebCore/ChangeLog
-+++ b/WebCore/ChangeLog
+diff --git a/CyberCore/ChangeLog b/CyberCore/ChangeLog
+--- a/CyberCore/ChangeLog
++++ b/CyberCore/ChangeLog
 @@ -1,3 +1,15 @@
 +2010-05-09  Chris Jerdonek  <cjerdonek@webkit.org>
 +

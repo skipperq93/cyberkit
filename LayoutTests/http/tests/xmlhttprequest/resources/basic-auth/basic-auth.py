@@ -19,7 +19,7 @@ if os.environ.get('HTTP_AUTHORIZATION'):
         sys.exit(0)
 
 sys.stdout.write(
-    'WWW-Authenticate: Basic realm="WebKit Test Realm"\r\n'
+    'WWW-Authenticate: Basic realm="CyberKit Test Realm"\r\n'
     'status: 401\r\n'
     '\r\n'
     'Authentication canceled'

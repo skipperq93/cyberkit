@@ -10,7 +10,7 @@ print <<EOF;
 </head>
 <body>
 <h1> Link to
-<a href="http://webkit.org">WebKit's</a> site.
+<a href="http://webkit.org">CyberKit's</a> site.
 </h1>
 </body>
 </html>

@@ -4,7 +4,7 @@ import sys
 
 sys.stdout.write(
     'Content-Security-Policy-Report-Only: script-src \'nonce-that-is-not-equal-to-dummy\' \'nonce-dump-as-text\'; report-uri ../resources/save-report.py?test=/security/contentSecurityPolicy/1.1/scriptnonce-allowed-by-legacy-enforced-policy-and-blocked-by-report-policy.py\r\n'
-    'X-WebKit-CSP: script-src \'nonce-dummy\' \'nonce-dump-as-text\'\r\n'
+    'X-CyberKit-CSP: script-src \'nonce-dummy\' \'nonce-dump-as-text\'\r\n'
     'Content-Type: text/html\r\n\r\n'
     '<!DOCTYPE html>\n'
     '<html>\n'

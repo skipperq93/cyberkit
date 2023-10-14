@@ -40,7 +40,7 @@ class WatchTest(darwin_testcase.DarwinTest):
         return port
 
     def test_driver_name(self):
-        self.assertEqual(self.make_port().driver_name(), 'WebKitTestRunnerApp.app')
+        self.assertEqual(self.make_port().driver_name(), 'CyberKitTestRunnerApp.app')
 
     def test_baseline_searchpath(self):
         search_path = self.make_port().default_baseline_search_path()

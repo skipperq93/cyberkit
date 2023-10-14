@@ -22,7 +22,7 @@ p.importStylesheet(xsl);
 var ownerDocument = document.implementation.createDocument("", "", null);
 var f = p.transformToFragment(xml, ownerDocument);
 
-// Firefox throws an exception here, while WebKit doesn't:
+// Firefox throws an exception here, while CyberKit doesn't:
 // "An attempt was made to create or change an object in a way which is incorrect with regard to namespaces."
 ownerDocument = document.implementation.createDocument("", null, null);
 f = p.transformToFragment(xml, ownerDocument);

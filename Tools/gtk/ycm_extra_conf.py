@@ -20,7 +20,7 @@ import os
 import sys
 import ycm_core
 
-# It's very likely that this script is a symlink somewhere in the WebKit directory,
+# It's very likely that this script is a symlink somewhere in the CyberKit directory,
 # so we try to find the actual script location so that we can locate the tools
 # directory.
 original_file = __file__[:-1] if __file__.endswith(".pyc") else __file__
@@ -121,7 +121,7 @@ def FlagsForFile(filename, **kwargs):
 
     build_path = os.path.normpath(get_build_path())
     if not build_path:
-        print("Could not find WebKit build path.")
+        print("Could not find CyberKit build path.")
         return result
 
     database = ycm_core.CompilationDatabase(build_path)

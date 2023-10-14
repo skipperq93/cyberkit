@@ -36,7 +36,7 @@ import time
 from webkitcorepy import string_utils
 
 from webkitpy.common.system.executive import ScriptError
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 
 
 class GDBCrashLogGenerator(object):
@@ -51,7 +51,7 @@ class GDBCrashLogGenerator(object):
         self._executive = executive
         self._port_name = port_name
         self._configuration = configuration
-        self._webkit_finder = WebKitFinder(filesystem)
+        self._webkit_finder = CyberKitFinder(filesystem)
 
     def _get_gdb_output(self, coredump_path):
         process_name = self._filesystem.join(os.path.dirname(str(self._path_to_driver())), self.name)

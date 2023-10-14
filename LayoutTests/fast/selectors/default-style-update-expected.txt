@@ -91,7 +91,7 @@ PASS elementsMatchingDefaultSelector() is ["button3", "input2", "input6", "input
 Setting input7 as unchecked
 PASS elementsStyledWithDefaultSelector() is ["button3", "input2", "input6", "input7", "input9", "input11", "option2", "option4"]
 PASS elementsMatchingDefaultSelector() is ["button3", "input2", "input6", "input7", "input9", "input11", "option2", "option4"]
-Setting input7's checked attribute to 'WebKit'
+Setting input7's checked attribute to 'CyberKit'
 PASS elementsStyledWithDefaultSelector() is ["button3", "input2", "input6", "input7", "input9", "input11", "option2", "option4"]
 PASS elementsMatchingDefaultSelector() is ["button3", "input2", "input6", "input7", "input9", "input11", "option2", "option4"]
 Removing input7's checked attribute
@@ -113,7 +113,7 @@ PASS elementsMatchingDefaultSelector() is ["button3", "input2", "input8", "input
 Setting input9 as unchecked
 PASS elementsStyledWithDefaultSelector() is ["button3", "input2", "input8", "input9", "input11", "option2", "option4"]
 PASS elementsMatchingDefaultSelector() is ["button3", "input2", "input8", "input9", "input11", "option2", "option4"]
-Setting input9's checked attribute to 'WebKit'
+Setting input9's checked attribute to 'CyberKit'
 PASS elementsStyledWithDefaultSelector() is ["button3", "input2", "input8", "input9", "input11", "option2", "option4"]
 PASS elementsMatchingDefaultSelector() is ["button3", "input2", "input8", "input9", "input11", "option2", "option4"]
 Removing input9's checked attribute

@@ -1,6 +1,6 @@
 description(
 "This test checks that parentheses are preserved when significant, and not added where inappropriate. " +
-"We need this test because the JavaScriptCore parser removes all parentheses and the serializer then adds them back."
+"We need this test because the CyberScriptCore parser removes all parentheses and the serializer then adds them back."
 );
 
 function compileAndSerialize(expression)

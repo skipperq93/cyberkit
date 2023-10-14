@@ -12,9 +12,9 @@ target::before {
     <div id="initial">
         <target>No attribute</target>
 
-        <target CamelCase="WebKit!">CamelCase initial attribute</target>
-        <target camelcase="WebKit!">camelcase initial attribute</target>
-        <target CAMELCASE="WebKit!">CAMELCASE initial attribute</target>
+        <target CamelCase="CyberKit!">CamelCase initial attribute</target>
+        <target camelcase="CyberKit!">camelcase initial attribute</target>
+        <target CAMELCASE="CyberKit!">CAMELCASE initial attribute</target>
     </div>
     <div id="dynamic">
         <target>No attribute</target>
@@ -29,9 +29,9 @@ window.addEventListener("load", function() {
     forcedLayout = document.documentElement.offsetTop;
 
     var allDynamicTargets = document.querySelectorAll("#dynamic>target");
-    allDynamicTargets[1].setAttribute("CamelCase", "WebKit!");
-    allDynamicTargets[2].setAttribute("camelcase", "WebKit!");
-    allDynamicTargets[3].setAttribute("CAMELCASE", "WebKit!");
+    allDynamicTargets[1].setAttribute("CamelCase", "CyberKit!");
+    allDynamicTargets[2].setAttribute("camelcase", "CyberKit!");
+    allDynamicTargets[3].setAttribute("CAMELCASE", "CyberKit!");
 });
 </script>
 </html>

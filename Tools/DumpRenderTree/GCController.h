@@ -28,7 +28,7 @@
 
 #pragma once
 
-#include <JavaScriptCore/JSRetainPtr.h>
+#include <CyberScriptCore/JSRetainPtr.h>
 #include <wtf/FastMalloc.h>
 
 class GCController {

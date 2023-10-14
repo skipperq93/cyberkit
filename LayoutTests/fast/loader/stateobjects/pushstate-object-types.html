@@ -29,7 +29,7 @@ function runTest()
     history.pushState(new Object, "Object entry");
     history.pushState(document.createElement("canvas").getContext("2d").createImageData(10,10), "ImageData entry");
 
-/* The following are not yet well enough supported in WebKit to meaningfully test here:
+/* The following are not yet well enough supported in CyberKit to meaningfully test here:
 history.pushState([Blob], "Blob entry");
 history.pushState([File], "File entry");
 history.pushState([FileList], "FileList entry");

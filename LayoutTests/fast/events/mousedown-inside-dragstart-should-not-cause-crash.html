@@ -4,7 +4,7 @@
 <p id="description">
 This tests pressing a mouse button down inside a dragstart event.<br>
 This happens when a user sets a breakpoint of a dragstart event handler in Inspector,
-and clicks somewhere on the page while the script is paused at the breakpoint. WebKit should not crash.
+and clicks somewhere on the page while the script is paused at the breakpoint. CyberKit should not crash.
 </p>
 <div id="container"><span id="target" draggable="true" ondragstart="onDragStart()">drag me</span></div>
 <script>
@@ -29,7 +29,7 @@ else {
     eventSender.mouseMoveTo(500, 500);
     eventSender.mouseUp();
 
-    document.getElementById('container').textContent = called ? 'PASS - mouse up and down inside a dragstart did not crash WebKit'
+    document.getElementById('container').textContent = called ? 'PASS - mouse up and down inside a dragstart did not crash CyberKit'
         : 'FAIL - dragstart was never fired.';
 }
 

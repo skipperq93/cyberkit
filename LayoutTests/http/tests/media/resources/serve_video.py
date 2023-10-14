@@ -45,7 +45,7 @@ settings = {
     'mediaDirectory': media_directory,
     'mimeType': query.get('type', [''])[0],
     'radioGenre': 'Rock',
-    'radioName': 'WebKit Test Radio',
+    'radioName': 'CyberKit Test Radio',
     'radioUrl': radio_url,
     'setContentLength': query.get('content-length', ['yes'])[0],
     'setIcyData': query.get('icy-data', ['no'])[0],
@@ -83,7 +83,7 @@ def answering():
 
         sys.stdout.write(
             'icy-notice1: <BR>This stream requires a shoutcast/icecast compatible player.<BR>\r\n'
-            'icy-notice2: WebKit Stream Test<BR>\r\n'
+            'icy-notice2: CyberKit Stream Test<BR>\r\n'
             'icy-name: {name}\r\n'
             'icy-genre: {genre}\r\n'
             'icy-url: {url}\r\n'

@@ -25,10 +25,10 @@ function withFrame(url)
                 let metaURLs = JSON.parse(ev.data);
                 assert_equals(metaURLs.length, 4);
                 // We are reusing Response#url from ServiceWorker directly without considering fragment propagation.
-                assert_equals(metaURLs[0], `https://localhost:9443/WebKit/service-workers/resources/module-meta-url.js#fragment`);
-                assert_equals(metaURLs[1], `https://localhost:9443/WebKit/service-workers/resources/module-meta-url.js#fragment`);
-                assert_equals(metaURLs[2], `https://localhost:9443/WebKit/service-workers/resources/module-meta-url.js#fragment`);
-                assert_equals(metaURLs[3], `https://localhost:9443/WebKit/service-workers/resources/module-meta-url.js#fragment`);
+                assert_equals(metaURLs[0], `https://localhost:9443/CyberKit/service-workers/resources/module-meta-url.js#fragment`);
+                assert_equals(metaURLs[1], `https://localhost:9443/CyberKit/service-workers/resources/module-meta-url.js#fragment`);
+                assert_equals(metaURLs[2], `https://localhost:9443/CyberKit/service-workers/resources/module-meta-url.js#fragment`);
+                assert_equals(metaURLs[3], `https://localhost:9443/CyberKit/service-workers/resources/module-meta-url.js#fragment`);
                 next();
             } catch (error) {
                 reject(error);

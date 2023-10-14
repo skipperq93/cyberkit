@@ -99,7 +99,7 @@ def parse_args(args):
                              help='Save test results as JSON to file'),
     ]))
 
-    option_group_definitions.append(('WebKit Options', [
+    option_group_definitions.append(('CyberKit Options', [
         optparse.make_option('-g', '--guard-malloc', action='store_true', default=False,
                              help='Enable Guard Malloc (OS X only)'),
         optparse.make_option('--root', action='store',
@@ -109,14 +109,14 @@ def parse_args(args):
     option_group_definitions.append(('Testing Options', [
         optparse.make_option('--wtf-only', action='store_const', const='TestWTF', dest='api_binary',
                              help='Only build, check and run TestWTF'),
-        optparse.make_option('--webkit-only', action='store_const', const='TestWebKitAPI', dest='api_binary',
-                             help='Only check and run TestWebKitAPI'),
+        optparse.make_option('--webkit-only', action='store_const', const='TestCyberKitAPI', dest='api_binary',
+                             help='Only check and run TestCyberKitAPI'),
         optparse.make_option('--ipc-only', action='store_const', const='TestIPC', dest='api_binary',
                              help='Only check and run TestIPC (Darwin ports only)'),
-        optparse.make_option('--web-core-only', action='store_const', const='TestWebCore', dest='api_binary',
-                             help='Only check and run TestWebCore.exe (Windows only)'),
-        optparse.make_option('--webkit-legacy-only', action='store_const', const='TestWebKitLegacy', dest='api_binary',
-                             help='Only check and run TestWebKitLegacy.exe (Windows only)'),
+        optparse.make_option('--web-core-only', action='store_const', const='TestCyberCore', dest='api_binary',
+                             help='Only check and run TestCyberCore.exe (Windows only)'),
+        optparse.make_option('--webkit-legacy-only', action='store_const', const='TestCyberKitLegacy', dest='api_binary',
+                             help='Only check and run TestCyberKitLegacy.exe (Windows only)'),
         optparse.make_option('--wgsl-only', action='store_const', const='TestWGSL', dest='api_binary',
                              help='Only check and run TestWGSL (Darwin ports only)'),
         optparse.make_option('-d', '--dump', action='store_true', default=False,
@@ -146,9 +146,9 @@ def parse_args(args):
                              help='Passes that environment variable to the tests (--additional-env-var=NAME=VALUE)'),
 
         optparse.make_option('--remote-layer-tree', action='store_true', default=False,
-                             help='Use the remote layer tree drawing model (macOS WebKit2 only)'),
+                             help='Use the remote layer tree drawing model (macOS CyberKit2 only)'),
         optparse.make_option('--no-remote-layer-tree', action='store_true', default=False,
-                             help='Disable the remote layer tree drawing model (macOS WebKit2 only)'),
+                             help='Disable the remote layer tree drawing model (macOS CyberKit2 only)'),
         optparse.make_option('--use-gpu-process', action='store_true', default=False,
                              help='Enable GPU process DOM rendering'),
         optparse.make_option('--no-use-gpu-process', action='store_true', default=False,

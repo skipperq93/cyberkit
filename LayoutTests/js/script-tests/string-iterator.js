@@ -13,7 +13,7 @@ shouldBeTrue("Object.getOwnPropertyDescriptor(String.prototype, Symbol.iterator)
 shouldBeFalse("String.prototype[Symbol.iterator]() === String.prototype[Symbol.iterator]()");
 
 debug("Iterating a simple string.");
-let iterator = "WebKit"[Symbol.iterator]();
+let iterator = "CyberKit"[Symbol.iterator]();
 
 let next = iterator.next();
 shouldBeEqualToString("next.value", "W");

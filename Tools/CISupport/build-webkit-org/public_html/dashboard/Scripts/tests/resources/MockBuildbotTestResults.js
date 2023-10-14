@@ -28,7 +28,7 @@ MockBuildbotTestResults = function() {};
 MockBuildbotTestResults.prototype = {
     constructor: MockBuildbotTestResults,
 
-    addJavaScriptCoreTestFailures: function(data)
+    addCyberScriptCoreTestFailures: function(data)
     {
          this.regressions = data.stressTestFailures;
     },

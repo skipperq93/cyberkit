@@ -4,7 +4,7 @@ from .base import (NullBrowser,  # noqa: F401
                    certificate_domain_list,
                    get_timeout_multiplier,  # noqa: F401
                    maybe_add_args)
-from .webkit import WebKitBrowser
+from .webkit import CyberKitBrowser
 from ..executors import executor_kwargs as base_executor_kwargs
 from ..executors.base import WdspecExecutor  # noqa: F401
 from ..executors.executorwebdriver import (WebDriverTestharnessExecutor,  # noqa: F401
@@ -13,7 +13,7 @@ from ..executors.executorwebdriver import (WebDriverTestharnessExecutor,  # noqa
 
 __wptrunner__ = {"product": "webkitgtk_minibrowser",
                  "check_args": "check_args",
-                 "browser": "WebKitGTKMiniBrowser",
+                 "browser": "CyberKitGTKMiniBrowser",
                  "browser_kwargs": "browser_kwargs",
                  "executor": {"testharness": "WebDriverTestharnessExecutor",
                               "reftest": "WebDriverRefTestExecutor",
@@ -78,5 +78,5 @@ def run_info_extras(**kwargs):
     return {"webkit_port": "gtk"}
 
 
-class WebKitGTKMiniBrowser(WebKitBrowser):
+class CyberKitGTKMiniBrowser(CyberKitBrowser):
     pass

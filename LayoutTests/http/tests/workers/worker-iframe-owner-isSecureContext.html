@@ -7,7 +7,7 @@ description("Tests that a worker's isSecureContext flag relies on the owner's to
 jsTestIsAsync = true;
 
 // We need to explicitly mark the context as insecure, even though it has a HTTP URL. The reason is that '127.0.0.1'
-// host is treated as secure by default. Sadly, WebKitTestRunner only supports running tests over secure hosts at the
+// host is treated as secure by default. Sadly, CyberKitTestRunner only supports running tests over secure hosts at the
 // moment.
 if (window.internals)
     internals.markContextAsInsecure();

@@ -1,8 +1,8 @@
-diff --git a/WebKit/SourcesCGL-mm.mm b/WebKit/SourcesCGL-mm.mm
+diff --git a/CyberKit/SourcesCGL-mm.mm b/CyberKit/SourcesCGL-mm.mm
 new file mode 100644
 index 0000000000000000000000000000000000000000..9c879aa6e4320ece9d065edcf7e9f9558180ce55
 --- /dev/null
-+++ b/WebKit/SourcesCGL-mm.mm
++++ b/CyberKit/SourcesCGL-mm.mm
 @@ -0,0 +1,31 @@
 +/*
 + * Copyright (C) 2023 Apple Inc. All rights reserved.
@@ -35,11 +35,11 @@ index 0000000000000000000000000000000000000000..9c879aa6e4320ece9d065edcf7e9f955
 +#import "libANGLE/renderer/gl/cgl/DisplayCGL.mm"
 +#import "libANGLE/renderer/gl/cgl/WindowSurfaceCGL.mm"
 +#endif
-diff --git a/WebKit/SourcesCGL.cpp b/WebKit/SourcesCGL.cpp
+diff --git a/CyberKit/SourcesCGL.cpp b/CyberKit/SourcesCGL.cpp
 new file mode 100644
 index 0000000000000000000000000000000000000000..a03046c2f9f0857870b8454332300070a23aad43
 --- /dev/null
-+++ b/WebKit/SourcesCGL.cpp
++++ b/CyberKit/SourcesCGL.cpp
 @@ -0,0 +1,35 @@
 +/*
 + * Copyright (C) 2023 Apple Inc. All rights reserved.
@@ -76,11 +76,11 @@ index 0000000000000000000000000000000000000000..a03046c2f9f0857870b8454332300070
 +#include "libANGLE/renderer/gl/cgl/IOSurfaceSurfaceCGL.cpp"
 +#include "common/gl/cgl/FunctionsCGL.cpp"
 +#endif
-diff --git a/WebKit/SourcesEAGL.cpp b/WebKit/SourcesEAGL.cpp
+diff --git a/CyberKit/SourcesEAGL.cpp b/CyberKit/SourcesEAGL.cpp
 new file mode 100644
 index 0000000000000000000000000000000000000000..0416a5886c9b7c7917e8da9570ff2e64f52a4f9f
 --- /dev/null
-+++ b/WebKit/SourcesEAGL.cpp
++++ b/CyberKit/SourcesEAGL.cpp
 @@ -0,0 +1,33 @@
 +/*
 + * Copyright (C) 2023 Apple Inc. All rights reserved.
@@ -115,11 +115,11 @@ index 0000000000000000000000000000000000000000..0416a5886c9b7c7917e8da9570ff2e64
 +#include "libANGLE/renderer/gl/eagl/PbufferSurfaceEAGL.cpp"
 +#include "libANGLE/renderer/gl/eagl/RendererEAGL.cpp"
 +#endif
-diff --git a/WebKit/SourcesEAGL1-mm.mm b/WebKit/SourcesEAGL1-mm.mm
+diff --git a/CyberKit/SourcesEAGL1-mm.mm b/CyberKit/SourcesEAGL1-mm.mm
 new file mode 100644
 index 0000000000000000000000000000000000000000..f9d49b42577306302fbc91e39b56c91713da3aaa
 --- /dev/null
-+++ b/WebKit/SourcesEAGL1-mm.mm
++++ b/CyberKit/SourcesEAGL1-mm.mm
 @@ -0,0 +1,32 @@
 +/*
 + * Copyright (C) 2023 Apple Inc. All rights reserved.
@@ -153,11 +153,11 @@ index 0000000000000000000000000000000000000000..f9d49b42577306302fbc91e39b56c917
 +#import "libANGLE/renderer/gl/eagl/IOSurfaceSurfaceEAGL.mm"
 +#import "libANGLE/renderer/gl/eagl/WindowSurfaceEAGL.mm"
 +#endif
-diff --git a/WebKit/SourcesEAGL2-mm.mm b/WebKit/SourcesEAGL2-mm.mm
+diff --git a/CyberKit/SourcesEAGL2-mm.mm b/CyberKit/SourcesEAGL2-mm.mm
 new file mode 100644
 index 0000000000000000000000000000000000000000..c2264459a02d65518f000bb1b4b4d1d357345dff
 --- /dev/null
-+++ b/WebKit/SourcesEAGL2-mm.mm
++++ b/CyberKit/SourcesEAGL2-mm.mm
 @@ -0,0 +1,30 @@
 +/*
 + * Copyright (C) 2023 Apple Inc. All rights reserved.
@@ -189,11 +189,11 @@ index 0000000000000000000000000000000000000000..c2264459a02d65518f000bb1b4b4d1d3
 +#if ANGLE_ENABLE_EAGL
 +#import "libANGLE/renderer/gl/eagl/FunctionsEAGL.mm"
 +#endif
-diff --git a/WebKit/SourcesGL.cpp b/WebKit/SourcesGL.cpp
+diff --git a/CyberKit/SourcesGL.cpp b/CyberKit/SourcesGL.cpp
 new file mode 100644
 index 0000000000000000000000000000000000000000..0412a766f115841dfa9532d5c0cdf48db2177bbe
 --- /dev/null
-+++ b/WebKit/SourcesGL.cpp
++++ b/CyberKit/SourcesGL.cpp
 @@ -0,0 +1,37 @@
 +/*
 + * Copyright (C) 2023 Apple Inc. All rights reserved.
@@ -233,11 +233,11 @@ index 0000000000000000000000000000000000000000..0412a766f115841dfa9532d5c0cdf48d
 +#include "compiler/translator/tree_ops/gl/RegenerateStructNames.cpp"
 +#endif
 \ No newline at end of file
-diff --git a/WebKit/SourcesPlatform-mm.mm b/WebKit/SourcesPlatform-mm.mm
+diff --git a/CyberKit/SourcesPlatform-mm.mm b/CyberKit/SourcesPlatform-mm.mm
 new file mode 100644
 index 0000000000000000000000000000000000000000..78ca284de371cb97b3a22be96ee2a50d4cce8270
 --- /dev/null
-+++ b/WebKit/SourcesPlatform-mm.mm
++++ b/CyberKit/SourcesPlatform-mm.mm
 @@ -0,0 +1,30 @@
 +/*
 + * Copyright (C) 2023 Apple Inc. All rights reserved.
@@ -269,11 +269,11 @@ index 0000000000000000000000000000000000000000..78ca284de371cb97b3a22be96ee2a50d
 +#if ANGLE_PLATFORM_MACOS || ANGLE_PLATFORM_MACCATALYST
 +#include "gpu_info_util/SystemInfo_macos.mm"
 +#endif
-diff --git a/WebKit/SourcesPlatform.cpp b/WebKit/SourcesPlatform.cpp
+diff --git a/CyberKit/SourcesPlatform.cpp b/CyberKit/SourcesPlatform.cpp
 new file mode 100644
 index 0000000000000000000000000000000000000000..8b96dc01357fa9a2bdc54e5ddb3bbfd4c3162e5d
 --- /dev/null
-+++ b/WebKit/SourcesPlatform.cpp
++++ b/CyberKit/SourcesPlatform.cpp
 @@ -0,0 +1,30 @@
 +/*
 + * Copyright (C) 2023 Apple Inc. All rights reserved.
@@ -738,7 +738,7 @@ index 3eaa9a64e79af26faa786102ece3f0bdea84d090..2ecf7b40bd5a2edc3fd9d69841e266b6
  //
  // mtl_resource_spi.h:
 -//    Used to set Metal resource ownership identity with SPI.
--//    Purposefully empty header file. Actual implementation will be hosted in WebKit.
+-//    Purposefully empty header file. Actual implementation will be hosted in CyberKit.
 +//    Used to set Metal resource ownership identity with SPI
  //
 +

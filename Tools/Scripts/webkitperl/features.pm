@@ -40,7 +40,7 @@ BEGIN {
    our ($VERSION, @ISA, @EXPORT, @EXPORT_OK, %EXPORT_TAGS);
    $VERSION     = 1.00;
    @ISA         = qw(Exporter);
-   @EXPORT      = qw(&checkWebCoreFeatureSupport);
+   @EXPORT      = qw(&checkCyberCoreFeatureSupport);
    %EXPORT_TAGS = ( );
    @EXPORT_OK   = ();
 }
@@ -72,7 +72,7 @@ sub hasFeature($$)
         "MathML" => "MathMLElement",
         "SVG" => "SVGDefsElement", # We used to look for SVGElement but isSVGElement exists (and would match) in --no-svg builds.
         "Accelerated Compositing" => "GraphicsLayer",
-        "3D Rendering" => "WebCoreHas3DRendering",
+        "3D Rendering" => "CyberCoreHas3DRendering",
         "3D Canvas" => "WebGLShader",
         "MHTML" => "MHTMLArchive"
     );
@@ -81,10 +81,10 @@ sub hasFeature($$)
     return libraryContainsSymbol($path, $symbolName);
 }
 
-sub checkWebCoreFeatureSupport($$)
+sub checkCyberCoreFeatureSupport($$)
 {
     my ($feature, $required) = @_;
-    my $libraryName = "WebCore";
+    my $libraryName = "CyberCore";
     my $path = builtDylibPathForName($libraryName);
     my $hasFeature = hasFeature($feature, $path);
     if ($required && !$hasFeature) {

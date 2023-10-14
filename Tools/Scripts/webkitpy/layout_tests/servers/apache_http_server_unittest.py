@@ -45,7 +45,7 @@ class TestLayoutTestApacheHttpd(unittest.TestCase):
             return
 
         def fake_pid(_):
-            host.filesystem.write_text_file('/tmp/WebKit/httpd.pid', '42')
+            host.filesystem.write_text_file('/tmp/CyberKit/httpd.pid', '42')
             return True
 
         host = MockHost()

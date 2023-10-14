@@ -1,4 +1,4 @@
-This test ensures WebKit does not crash when pasting content immediately after an inline style element.
+This test ensures CyberKit does not crash when pasting content immediately after an inline style element.
 This test exhibits a bug. The inserted content should be on a separate line but it is not.
 | <blockquote>
 |   type="cite"

@@ -7,7 +7,7 @@ if (DEVELOPER_MODE)
 endif ()
 
 if (ENABLE_API_TESTS)
-    add_subdirectory(TestWebKitAPI/glib)
+    add_subdirectory(TestCyberKitAPI/glib)
 endif ()
 
 if (ENABLE_MINIBROWSER)
@@ -65,5 +65,5 @@ if (ENABLE_COG)
         BUILD_COMMAND
             meson compile -C <BINARY_DIR>
         INSTALL_COMMAND "")
-    ExternalProject_Add_StepDependencies(cog build WebKit)
+    ExternalProject_Add_StepDependencies(cog build CyberKit)
 endif ()

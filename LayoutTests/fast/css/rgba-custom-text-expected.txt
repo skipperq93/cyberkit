@@ -1,4 +1,4 @@
-Tests the CSS custom text implementation for rgba(). Note that WebKit internally stores alpha as an 8 bit value, and that 255 * 0.2 = 51 exactly. So 0.2 is able to be stored with no rounding.
+Tests the CSS custom text implementation for rgba(). Note that CyberKit internally stores alpha as an 8 bit value, and that 255 * 0.2 = 51 exactly. So 0.2 is able to be stored with no rounding.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

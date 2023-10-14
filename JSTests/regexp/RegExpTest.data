@@ -1,4 +1,4 @@
-# Test data file for JavaScriptCore::RegExp functional test.
+# Test data file for CyberScriptCore::RegExp functional test.
 # The format of this file is:
 # # comment line
 # /{pattern}/{flags}

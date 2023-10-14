@@ -46,7 +46,7 @@ promise_test(async (test) => {
     const resultPromise = new Promise(resolve => channel.port2.onmessage = (event) => resolve(event.data));
 
     // Cross-origin iframe that will redirect to iframe that will be controlled by registered service worker.
-    const framePromise = withFrame("https://127.0.0.1:9443/WebKit/service-workers/resources/navigation-iframe-site-frame.html");
+    const framePromise = withFrame("https://127.0.0.1:9443/CyberKit/service-workers/resources/navigation-iframe-site-frame.html");
 
     assert_equals(await resultPromise, "PASS");
     const frame = await framePromise;
@@ -57,7 +57,7 @@ promise_test(async (test) => {
     const resultPromise = new Promise(resolve => channel.port2.onmessage = (event) => resolve(event.data));
 
     // Cross-origin iframe that will redirect to iframe that will be controlled by registered service worker through POST.
-    const framePromise = withFrame("https://127.0.0.1:9443/WebKit/service-workers/resources/navigation-iframe-site-frame.html?post");
+    const framePromise = withFrame("https://127.0.0.1:9443/CyberKit/service-workers/resources/navigation-iframe-site-frame.html?post");
 
     assert_equals(await resultPromise, "PASS");
     const frame = await framePromise;

@@ -34,7 +34,7 @@ class GitHub(bmocks.GitHub):
     top = None
 
     def __init__(
-        self, remote='github.example.com/WebKit/WebKit', datafile=None,
+        self, remote='github.example.com/CyberKit/CyberKit', datafile=None,
         default_branch='main', git_svn=False, environment=None,
         releases=None, issues=None, projects=None, labels=None,
     ):

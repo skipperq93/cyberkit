@@ -29,9 +29,9 @@
 #import "EditingOperations.h"
 #import "WK1WebDocumentController.h"
 #import "WK2WebDocumentController.h"
-#import <WebKit/WKBrowsingContextController.h>
+#import <CyberKit/WKBrowsingContextController.h>
 
-static NSString * const UseWebKit2ByDefaultPreferenceKey = @"UseWebKit2ByDefault";
+static NSString * const UseCyberKit2ByDefaultPreferenceKey = @"UseCyberKit2ByDefault";
 
 @implementation WebEditingAppDelegate {
     Class _openingDocumentController;
@@ -61,9 +61,9 @@ static NSString * const UseWebKit2ByDefaultPreferenceKey = @"UseWebKit2ByDefault
 
     if (sender == self)
         controllerClass = self._defaultWebDocumentControllerClass;
-    else if (sender == _newWebKit2EditorItem)
+    else if (sender == _newCyberKit2EditorItem)
         controllerClass = [WK2WebDocumentController class];
-    else if (sender == _newWebKit1EditorItem)
+    else if (sender == _newCyberKit1EditorItem)
         controllerClass = [WK1WebDocumentController class];
     
     WebDocumentController *controller = [[controllerClass alloc] init];
@@ -122,18 +122,18 @@ static NSString * const UseWebKit2ByDefaultPreferenceKey = @"UseWebKit2ByDefault
 
 - (Class)_defaultWebDocumentControllerClass
 {
-    return self.useWebKit2ByDefault ? [WK2WebDocumentController class] : [WK1WebDocumentController class];
+    return self.useCyberKit2ByDefault ? [WK2WebDocumentController class] : [WK1WebDocumentController class];
 }
 
-- (BOOL)useWebKit2ByDefault
+- (BOOL)useCyberKit2ByDefault
 {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:UseWebKit2ByDefaultPreferenceKey];
+    return [[NSUserDefaults standardUserDefaults] boolForKey:UseCyberKit2ByDefaultPreferenceKey];
 }
 
-- (IBAction)toggleUseWebKit2ByDefault:(id)sender
+- (IBAction)toggleUseCyberKit2ByDefault:(id)sender
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:![defaults boolForKey:UseWebKit2ByDefaultPreferenceKey] forKey:UseWebKit2ByDefaultPreferenceKey];
+    [defaults setBool:![defaults boolForKey:UseCyberKit2ByDefaultPreferenceKey] forKey:UseCyberKit2ByDefaultPreferenceKey];
     [self _updateNewWindowKeyEquivalents];
 }
 
@@ -141,18 +141,18 @@ static NSString * const UseWebKit2ByDefaultPreferenceKey = @"UseWebKit2ByDefault
 {
     SEL action = [menuItem action];
     
-    if (action == @selector(toggleUseWebKit2ByDefault:))
-        [menuItem setState:[self useWebKit2ByDefault] ? NSOnState : NSOffState];
+    if (action == @selector(toggleUseCyberKit2ByDefault:))
+        [menuItem setState:[self useCyberKit2ByDefault] ? NSOnState : NSOffState];
     
     return YES;
 }
 
-- (void)_openDocumentWithWebKit1:(id)sender
+- (void)_openDocumentWithCyberKit1:(id)sender
 {
     _openingDocumentController = [WK1WebDocumentController class];
 }
 
-- (void)_openDocumentWithWebKit2:(id)sender
+- (void)_openDocumentWithCyberKit2:(id)sender
 {
     _openingDocumentController = [WK2WebDocumentController class];
 }
@@ -168,12 +168,12 @@ static NSString * const UseWebKit2ByDefaultPreferenceKey = @"UseWebKit2ByDefault
     openPanelAccessoryView.autorecalculatesCellSize = YES;
     openPanelAccessoryView.autosizesCells = YES;
     NSArray *cells = openPanelAccessoryView.cells;
-    [[cells objectAtIndex:0] setTitle:@"Open with WebKit1"];
-    [[cells objectAtIndex:0] setAction:@selector(_openDocumentWithWebKit1:)];
-    [[cells objectAtIndex:0] setState:!self.useWebKit2ByDefault];
-    [[cells objectAtIndex:1] setTitle:@"Open with WebKit2"];
-    [[cells objectAtIndex:1] setAction:@selector(_openDocumentWithWebKit2:)];
-    [[cells objectAtIndex:1] setState:self.useWebKit2ByDefault];
+    [[cells objectAtIndex:0] setTitle:@"Open with CyberKit1"];
+    [[cells objectAtIndex:0] setAction:@selector(_openDocumentWithCyberKit1:)];
+    [[cells objectAtIndex:0] setState:!self.useCyberKit2ByDefault];
+    [[cells objectAtIndex:1] setTitle:@"Open with CyberKit2"];
+    [[cells objectAtIndex:1] setAction:@selector(_openDocumentWithCyberKit2:)];
+    [[cells objectAtIndex:1] setState:self.useCyberKit2ByDefault];
     [openPanelAccessoryView sizeToFit];
 
     NSOpenPanel *panel = [NSOpenPanel openPanel];
@@ -201,12 +201,12 @@ static NSString * const UseWebKit2ByDefaultPreferenceKey = @"UseWebKit2ByDefault
 
 - (void)_updateNewWindowKeyEquivalents
 {
-    if (self.useWebKit2ByDefault) {
-        [_newWebKit1EditorItem setKeyEquivalentModifierMask:NSEventModifierFlagCommand | NSEventModifierFlagOption];
-        [_newWebKit2EditorItem setKeyEquivalentModifierMask:NSEventModifierFlagCommand];
+    if (self.useCyberKit2ByDefault) {
+        [_newCyberKit1EditorItem setKeyEquivalentModifierMask:NSEventModifierFlagCommand | NSEventModifierFlagOption];
+        [_newCyberKit2EditorItem setKeyEquivalentModifierMask:NSEventModifierFlagCommand];
     } else {
-        [_newWebKit1EditorItem setKeyEquivalentModifierMask:NSEventModifierFlagCommand];
-        [_newWebKit2EditorItem setKeyEquivalentModifierMask:NSEventModifierFlagCommand | NSEventModifierFlagOption];
+        [_newCyberKit1EditorItem setKeyEquivalentModifierMask:NSEventModifierFlagCommand];
+        [_newCyberKit2EditorItem setKeyEquivalentModifierMask:NSEventModifierFlagCommand | NSEventModifierFlagOption];
     }
 }
 

@@ -1,4 +1,4 @@
-This test ensures WebKit uses shorthand notations for cssText; most of what was originally in this test is now covered by Web Platform Tests
+This test ensures CyberKit uses shorthand notations for cssText; most of what was originally in this test is now covered by Web Platform Tests
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

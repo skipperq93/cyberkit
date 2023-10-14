@@ -1,6 +1,6 @@
 description(
 
-"This test checks that JavaScriptCore does not crash when uwinding the stack that includes a host function."
+"This test checks that CyberScriptCore does not crash when uwinding the stack that includes a host function."
 
 );
 

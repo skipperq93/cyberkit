@@ -1,0 +1,31 @@
+# This is a list of every header CyberKitLegacy "re-exports" from CyberCore, to
+# correspond with reexported symbols. It is read by 
+# the "Migrate CyberCore Headers" script phase, which postprocesses these headers
+# and writes them into the appropriate headers directory.
+
+# In CyberKit, some headers have different visibilities per-platform, which is
+# not supported in Xcode and is why this script is necessary. In CyberKitLegacy,
+# all migrated headers go to the $(PRIVATE_HEADERS_FOLDER_PATH), but this
+# script is kept for consistency.
+
+# The script matches each line of input to the corresponding line in
+# MigratedHeaders-output.xcfilelist, so the order of file names must match.
+
+$(WEBCORE_PRIVATE_HEADERS_DIR)/AbstractPasteboard.h
+$(WEBCORE_PRIVATE_HEADERS_DIR)/KeyEventCodesIOS.h
+$(WEBCORE_PRIVATE_HEADERS_DIR)/WAKAppKitStubs.h
+$(WEBCORE_PRIVATE_HEADERS_DIR)/WAKResponder.h
+$(WEBCORE_PRIVATE_HEADERS_DIR)/WAKView.h
+$(WEBCORE_PRIVATE_HEADERS_DIR)/WAKWindow.h
+$(WEBCORE_PRIVATE_HEADERS_DIR)/CyberCoreThread.h
+$(WEBCORE_PRIVATE_HEADERS_DIR)/CyberCoreThreadMessage.h
+$(WEBCORE_PRIVATE_HEADERS_DIR)/CyberCoreThreadRun.h
+$(WEBCORE_PRIVATE_HEADERS_DIR)/WebEvent.h
+$(WEBCORE_PRIVATE_HEADERS_DIR)/WebEventRegion.h
+$(WEBCORE_PRIVATE_HEADERS_DIR)/WebItemProviderPasteboard.h
+$(WEBCORE_PRIVATE_HEADERS_DIR)/CyberKitAvailability.h
+$(WEBCORE_PRIVATE_HEADERS_DIR)/WebScriptObject.h
+$(WEBCORE_PRIVATE_HEADERS_DIR)/WKContentObservation.h
+$(WEBCORE_PRIVATE_HEADERS_DIR)/WKGraphics.h
+$(WEBCORE_PRIVATE_HEADERS_DIR)/WKTypes.h
+

@@ -31,11 +31,11 @@
 
 #import "DumpRenderTree.h"
 #import "TestRunner.h"
-#import <WebKit/DOMElement.h>
-#import <WebKit/WebDataSource.h>
-#import <WebKit/WebFrame.h>
-#import <WebKit/WebPolicyDelegate.h>
-#import <WebKit/WebView.h>
+#import <CyberKit/DOMElement.h>
+#import <CyberKit/WebDataSource.h>
+#import <CyberKit/WebFrame.h>
+#import <CyberKit/WebPolicyDelegate.h>
+#import <CyberKit/WebView.h>
 
 @interface NSURL (DRTExtras)
 - (NSString *)_drt_descriptionSuitableForTestResult;

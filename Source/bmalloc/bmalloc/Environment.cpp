@@ -59,9 +59,9 @@ int malloc_engaged_nano(void);
 
 namespace bmalloc {
 
-static bool isWebKitMallocForceEnabled()
+static bool isCyberKitMallocForceEnabled()
 {
-    const char* value = getenv("WebKitMallocForceEnabled");
+    const char* value = getenv("CyberKitMallocForceEnabled");
     return value ? atoi(value) : false;
 }
 
@@ -162,7 +162,7 @@ Environment::Environment(const LockHolder&)
     : m_isDebugHeapEnabled(computeIsDebugHeapEnabled())
 {
 #if BUSE(LIBPAS)
-    const char* statusReporter = getenv("WebKitPasStatusReporter");
+    const char* statusReporter = getenv("CyberKitPasStatusReporter");
     if (statusReporter) {
         unsigned enabled;
         if (sscanf(statusReporter, "%u", &enabled) == 1)
@@ -173,7 +173,7 @@ Environment::Environment(const LockHolder&)
 
 bool Environment::computeIsDebugHeapEnabled()
 {
-    if (isWebKitMallocForceEnabled())
+    if (isCyberKitMallocForceEnabled())
         return false;
     if (isMallocEnvironmentVariableImplyingSystemMallocSet())
         return true;

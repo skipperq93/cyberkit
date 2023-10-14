@@ -1,0 +1,12 @@
+Test constructor for CyberKitCSSMatrix. <rdar://problem/6481690>
+
+On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
+
+
+PASS CyberKitCSSMatrix.prototype.toString.call(new CyberKitCSSMatrix) is 'matrix(1, 0, 0, 1, 0, 0)'
+PASS CyberKitCSSMatrix.prototype.toString.call(new CyberKitCSSMatrix(new CyberKitCSSMatrix)) is 'matrix(1, 0, 0, 1, 0, 0)'
+PASS CyberKitCSSMatrix.prototype.toString.call(new CyberKitCSSMatrix('matrix3d(1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000)')) is 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)'
+PASS successfullyParsed is true
+
+TEST COMPLETE
+

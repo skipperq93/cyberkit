@@ -1,7 +1,7 @@
 <html>
 <body>
 <p>Tests for <a href="https://bugs.webkit.org/show_bug.cgi?id=47753">bug 47753</a>: 
-REGRESSION(r69850) Loading apple.com/startpage in WebKit on Windows gets a bad request.</p>
+REGRESSION(r69850) Loading apple.com/startpage in CyberKit on Windows gets a bad request.</p>
 <script>
     if (window.testRunner)
         testRunner.dumpAsText();
@@ -9,7 +9,7 @@ REGRESSION(r69850) Loading apple.com/startpage in WebKit on Windows gets a bad r
     var userAgent = navigator.userAgent;
 
     document.write("User Agent should contain Mozilla: " + (userAgent.indexOf("Mozilla") >= 0) + "<br>");
-    document.write("User Agent should contain AppleWebKit: " + (userAgent.indexOf("AppleWebKit") >= 0) + "<br>");
+    document.write("User Agent should contain AppleCyberKit: " + (userAgent.indexOf("AppleCyberKit") >= 0) + "<br>");
     document.write("User Agent should contain KHTML, like Gecko: " + (userAgent.indexOf("KHTML, like Gecko") >= 0));
 </script>
 </body>

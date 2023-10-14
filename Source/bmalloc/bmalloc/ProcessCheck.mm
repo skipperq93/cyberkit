@@ -39,7 +39,7 @@ bool gigacageEnabledForProcess()
 
     @autoreleasepool {
         if (NSString *appName = [[NSBundle mainBundle] bundleIdentifier]) {
-            bool isWebProcess = [appName hasPrefix:@"com.apple.WebKit.WebContent"];
+            bool isWebProcess = [appName hasPrefix:@"com.matthewbenedict.CyberKit.WebContent"];
             return isWebProcess;
         }
 
@@ -57,18 +57,18 @@ bool gigacageEnabledForProcess()
 
 bool shouldAllowMiniMode()
 {
-    // Mini mode is mainly meant for constraining memory usage in bursty daemons that use JavaScriptCore.
+    // Mini mode is mainly meant for constraining memory usage in bursty daemons that use CyberScriptCore.
     // It's also contributed to power regressions when enabled for large application processes and in the
-    // WebKit XPC services. So we disable mini mode for those processes.
+    // CyberKit XPC services. So we disable mini mode for those processes.
     bool isApplication = false;
-    bool isWebKitProcess = false;
+    bool isCyberKitProcess = false;
     if (const char* serviceName = getenv("XPC_SERVICE_NAME")) {
         static constexpr char appPrefix[] = "application.";
-        static constexpr char webKitPrefix[] = "com.apple.WebKit.";
+        static constexpr char webKitPrefix[] = "com.matthewbenedict.CyberKit.";
         isApplication = !strncmp(serviceName, appPrefix, sizeof(appPrefix) - 1);
-        isWebKitProcess = !strncmp(serviceName, webKitPrefix, sizeof(webKitPrefix) - 1);
+        isCyberKitProcess = !strncmp(serviceName, webKitPrefix, sizeof(webKitPrefix) - 1);
     }
-    return !isApplication && !isWebKitProcess;
+    return !isApplication && !isCyberKitProcess;
 }
 
 #if BPLATFORM(IOS_FAMILY)
@@ -82,7 +82,7 @@ bool shouldProcessUnconditionallyUseBmalloc()
                 auto contains = [&] (NSString *string) {
                     return [appName rangeOfString:string options:NSCaseInsensitiveSearch].location != NSNotFound;
                 };
-                result = contains(@"com.apple.WebKit") || contains(@"safari");
+                result = contains(@"com.matthewbenedict.CyberKit") || contains(@"safari");
             } else {
                 NSString *processName = [[NSProcessInfo processInfo] processName];
                 result = [processName isEqualToString:@"jsc"]

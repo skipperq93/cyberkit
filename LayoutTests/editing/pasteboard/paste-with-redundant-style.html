@@ -13,11 +13,11 @@ em { text-decoration: underline; font-style: none; }
 document.getElementById('test').focus();
 document.execCommand('insertHTML', false,
     '<em style="font-style: none; text-decoration: underline; font-weight: bold;"><span style="color: black;">hello world</span></em><br>'
-    + '<span style="font-weight: bold;"><span class="Apple-style-span" style="font-weight: bold;">WebKit</span></span><br>'
+    + '<span style="font-weight: bold;"><span class="Apple-style-span" style="font-weight: bold;">CyberKit</span></span><br>'
     + '<em><span style="font-style: italic;">rocks</span></em>');
 
 Markup.description('This tests pasting content with redundant inline style.\n'
-    + 'You should not see any inline styles other than font-weight: bold and there should be exactly one span around WebKit.');
+    + 'You should not see any inline styles other than font-weight: bold and there should be exactly one span around CyberKit.');
 Markup.dump('test');
 
 </script>

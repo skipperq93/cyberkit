@@ -28,7 +28,7 @@ int main()
 
 ```cpp
 // Document.h
-namespace WebCore {
+namespace CyberCore {
 
 class Document {
     Document();
@@ -44,10 +44,10 @@ class OtherDocument {
 
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 // Document.cpp
-namespace WebCore {
+namespace CyberCore {
 
 Document::Document()
 {
@@ -63,27 +63,27 @@ OtherDocument::OtherDocument()
 
 } // namespace NestedNamespace
 
-} // namespace WebCore
+} // namespace CyberCore
 ```
 
 ###### Right:
 
 ```cpp
 // PrivateClickMeasurementDatabase.h
-namespace WebKit::PCM {
+namespace CyberKit::PCM {
 
 class Database {
     ...
 };
 
-} // namespace WebKit::PCM
+} // namespace CyberKit::PCM
 ```
 
 ###### Wrong:
 
 ```cpp
 // Document.h
-namespace WebCore {
+namespace CyberCore {
 
     class Document {
         Document();
@@ -94,17 +94,17 @@ namespace WebCore {
     ...
     }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 // Document.cpp
-namespace WebCore {
+namespace CyberCore {
 
     Document::Document()
     {
         ...
     }
 
-} // namespace WebCore
+} // namespace CyberCore
 ```
 
 [](#indentation-case-label) A case label should line up with its switch statement. The case statement is indented.
@@ -464,7 +464,7 @@ class MyClass {
     ...
 };
 
-namespace WebCore {
+namespace CyberCore {
     ...
 }
 
@@ -1218,12 +1218,12 @@ using WTF::PlacementNewAdopt;
 ```cpp
 // HTMLBaseElement.cpp
 
-namespace WebCore {
+namespace CyberCore {
 
   std::swap(a, b);
   c = std::numeric_limits<int>::max()
 
-} // namespace WebCore
+} // namespace CyberCore
 ```
 
 ###### Wrong:
@@ -1233,11 +1233,11 @@ namespace WebCore {
 
 using std::swap;
 
-namespace WebCore {
+namespace CyberCore {
 
   swap(a, b);
 
-} // namespace WebCore
+} // namespace CyberCore
 ```
 
 ###### Wrong:
@@ -1247,11 +1247,11 @@ namespace WebCore {
 
 using namespace std;
 
-namespace WebCore {
+namespace CyberCore {
 
   swap(a, b);
 
-} // namespace WebCore
+} // namespace CyberCore
 ```
 
 [](#using-nested-namespaces) In implementation files, if a "using namespace" statement is for a nested namespace whose parent namespace is defined in the file, put the statement inside that namespace definition.
@@ -1261,11 +1261,11 @@ namespace WebCore {
 ```cpp
 // HTMLBaseElement.cpp
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
-} // namespace WebCore
+} // namespace CyberCore
 ```
 
 ###### Wrong:
@@ -1273,11 +1273,11 @@ using namespace HTMLNames;
 ```cpp
 // HTMLBaseElement.cpp
 
-using namespace WebCore::HTMLNames;
+using namespace CyberCore::HTMLNames;
 
-namespace WebCore {
+namespace CyberCore {
 
-} // namespace WebCore
+} // namespace CyberCore
 ```
 
 [](#using-position) In implementation files, put all "using namespace" statements inside namespace definitions.
@@ -1287,11 +1287,11 @@ namespace WebCore {
 ```cpp
 // HTMLSelectElement.cpp
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace other;
 
-} // namespace WebCore
+} // namespace CyberCore
 ```
 
 ###### Wrong:
@@ -1301,9 +1301,9 @@ using namespace other;
 
 using namespace other;
 
-namespace WebCore {
+namespace CyberCore {
 
-} // namespace WebCore
+} // namespace CyberCore
 ```
 
 ### Types
@@ -1452,7 +1452,7 @@ public:
     /// ...
 
     // Messages
-    void didReceiveRemoteCommand(WebCore::PlatformMediaSession::RemoteControlCommandType, const WebCore::PlatformMediaSession::RemoteCommandArgument&);
+    void didReceiveRemoteCommand(CyberCore::PlatformMediaSession::RemoteControlCommandType, const CyberCore::PlatformMediaSession::RemoteCommandArgument&);
     void didInitialize(std::optional<GPUProcessConnectionInfo>&&);
 
     // ...

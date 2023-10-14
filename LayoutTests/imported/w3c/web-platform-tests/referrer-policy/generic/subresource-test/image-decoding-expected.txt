@@ -10,7 +10,7 @@ http://127.0.0.1:8800/common/security-features/subresource/image.py?cache_destro
   "accept-encoding": "gzip, deflate",
   "host": "127.0.0.1:8800",
   "accept": "image/png,image/svg+xml,image/*;q=0.8,video/*;q=0.8,*/*;q=0.5",
-  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/605.1.15 (KHTML, like Gecko)",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleCyberKit/605.1.15 (KHTML, like Gecko)",
   "connection": "keep-alive",
   "referer": "http://localhost:8800/referrer-policy/generic/subresource-test/image-decoding.html"
 }

@@ -1,10 +1,10 @@
 To manually test this, drag the text into the contenteditable, and then into the textarea. Observe the output. You should see a pair of insertFromDrop events dispatched on richDestination followed by another pair of insertFromDrop events dispatched on plainDestination.
 
-WebKit
-WebKit
+CyberKit
+CyberKit
 
-(richDestination): type=beforeinput, inputType=insertFromDrop, data="null" dataTransfer={rich:WebKit plain:WebKit}
-(richDestination): type=input, inputType=insertFromDrop, data="null" dataTransfer={rich:WebKit plain:WebKit}
-(plainDestination): type=beforeinput, inputType=insertFromDrop, data="WebKit" dataTransfer=(null)
-(plainDestination): type=input, inputType=insertFromDrop, data="WebKit" dataTransfer=(null)
+(richDestination): type=beforeinput, inputType=insertFromDrop, data="null" dataTransfer={rich:CyberKit plain:CyberKit}
+(richDestination): type=input, inputType=insertFromDrop, data="null" dataTransfer={rich:CyberKit plain:CyberKit}
+(plainDestination): type=beforeinput, inputType=insertFromDrop, data="CyberKit" dataTransfer=(null)
+(plainDestination): type=input, inputType=insertFromDrop, data="CyberKit" dataTransfer=(null)
 

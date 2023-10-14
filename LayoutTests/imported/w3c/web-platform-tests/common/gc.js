@@ -26,7 +26,7 @@ self.garbageCollect = async () => {
     return self.gc();
   }
 
-  // Present in some WebKit development environments
+  // Present in some CyberKit development environments
   if (self.GCController) {
     return GCController.collect();
   }

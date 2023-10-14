@@ -7,7 +7,7 @@ PASS window.matchMedia("(any-hover:)").matches is false
 PASS document.styleSheets[1].cssRules[0].media.length is 1
 PASS window.matchMedia("(any-hover: )").matches is false
 PASS document.styleSheets[1].cssRules[0].media.length is 1
-PASS window.matchMedia("(any-hover: WebKit)").matches is false
+PASS window.matchMedia("(any-hover: CyberKit)").matches is false
 PASS document.styleSheets[1].cssRules[0].media.length is 1
 PASS window.matchMedia("(any-hover: fine)").matches is false
 PASS document.styleSheets[1].cssRules[0].media.length is 1

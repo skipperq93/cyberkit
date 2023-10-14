@@ -5,7 +5,7 @@ def main(request, response):
     """
     Returns cookie name and path from query params in a Set-Cookie header.
     e.g.
-    > GET /WebKit/service-workers/resources/set-cookie.py?name=match-slash&path=%2F HTTP/1.1
+    > GET /CyberKit/service-workers/resources/set-cookie.py?name=match-slash&path=%2F HTTP/1.1
     > Host: localhost:8000
     > User-Agent: curl/7.43.0
     > Accept: */*

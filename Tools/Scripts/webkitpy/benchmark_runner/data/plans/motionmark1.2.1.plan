@@ -2,7 +2,7 @@
     "timeout": 1800,
     "count": 1,
     "local_git_archive": "PerformanceTests/MotionMark@86daf4fcece9d2dafe67ef0de1e23bda72b56378",
-    "github_source": "https://github.com/WebKit/WebKit/tree/86daf4fcece9d2dafe67ef0de1e23bda72b56378/PerformanceTests/MotionMark",
+    "github_source": "https://github.com/CyberKit/CyberKit/tree/86daf4fcece9d2dafe67ef0de1e23bda72b56378/PerformanceTests/MotionMark",
     "webserver_benchmark_patch": "data/patches/webserver/MotionMark.patch",
     "webdriver_benchmark_patch": "data/patches/webdriver/MotionMark.patch",
     "entry_point": "index.html",
@@ -11,7 +11,7 @@
     },
     "output_file": "motionmark.result",
     "github_subtree": {
-        "url": "https://api.github.com/repos/WebKit/WebKit/git/trees/23431f74c4e13875561a7778e9d98628d4293ea0",
+        "url": "https://api.github.com/repos/CyberKit/CyberKit/git/trees/23431f74c4e13875561a7778e9d98628d4293ea0",
         "truncated": false,
         "tree": [
             {"path": "about.html", "mode": "100644", "type": "blob"},

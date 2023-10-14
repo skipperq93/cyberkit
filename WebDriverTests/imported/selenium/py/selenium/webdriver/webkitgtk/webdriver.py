@@ -27,21 +27,21 @@ from .options import Options
 
 class WebDriver(RemoteWebDriver):
     """
-    Controls the WebKitGTKDriver and allows you to drive the browser.
+    Controls the CyberKitGTKDriver and allows you to drive the browser.
     """
 
-    def __init__(self, executable_path="WebKitWebDriver", port=0, options=None,
+    def __init__(self, executable_path="CyberKitWebDriver", port=0, options=None,
                  desired_capabilities=None,
                  service_log_path=None, keep_alive=False):
         """
-        Creates a new instance of the WebKitGTK driver.
+        Creates a new instance of the CyberKitGTK driver.
 
-        Starts the service and then creates new instance of WebKitGTK Driver.
+        Starts the service and then creates new instance of CyberKitGTK Driver.
 
         :Args:
          - executable_path : path to the executable. If the default is used it assumes the executable is in the $PATH.
          - port : port you would like the service to run, if left as 0, a free port will be found.
-         - options : an instance of WebKitGTKOptions
+         - options : an instance of CyberKitGTKOptions
          - desired_capabilities : Dictionary object with desired capabilities
          - service_log_path : Path to write service stdout and stderr output.
          - keep_alive : Whether to configure RemoteConnection to use HTTP keep-alive.
@@ -67,8 +67,8 @@ class WebDriver(RemoteWebDriver):
 
     def quit(self):
         """
-        Closes the browser and shuts down the WebKitGTKDriver executable
-        that is started when starting the WebKitGTKDriver
+        Closes the browser and shuts down the CyberKitGTKDriver executable
+        that is started when starting the CyberKitGTKDriver
         """
         try:
             RemoteWebDriver.quit(self)

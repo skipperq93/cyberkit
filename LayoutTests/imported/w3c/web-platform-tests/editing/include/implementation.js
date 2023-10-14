@@ -4585,7 +4585,7 @@ function deleteSelection(flags) {
         // object's Selection."
         //
         // Here and in a few other places, we check rangeCount to work around a
-        // WebKit bug: it will sometimes incorrectly remove ranges from the
+        // CyberKit bug: it will sometimes incorrectly remove ranges from the
         // selection if nodes are removed, so collapseToStart() will throw.
         // This will break everything if we're using an actual selection, but
         // if getActiveRange() is really just returning globalRange and that's
@@ -5540,7 +5540,7 @@ function outdentNode(node) {
         node.style.padding = "";
         node.style.border = "";
         if (node.getAttribute("style") == ""
-        // Crazy WebKit bug: https://bugs.webkit.org/show_bug.cgi?id=68551
+        // Crazy CyberKit bug: https://bugs.webkit.org/show_bug.cgi?id=68551
         || node.getAttribute("style") == "border-width: initial; border-color: initial; ") {
             node.removeAttribute("style");
         }
@@ -7914,7 +7914,7 @@ commands.inserttext = {
             // "Call extend(node, offset + 1) on the context object's
             // Selection."
             //
-            // Work around WebKit bug: the extend() can throw if the text we're
+            // Work around CyberKit bug: the extend() can throw if the text we're
             // adding is trailing whitespace.
             try { getSelection().extend(node, offset + 1); } catch(e) {}
             getActiveRange().setEnd(node, offset + 1);
@@ -7965,7 +7965,7 @@ commands.inserttext = {
 
         // "Call collapseToEnd() on the context object's Selection."
         //
-        // Work around WebKit bug: sometimes it blows up the selection and
+        // Work around CyberKit bug: sometimes it blows up the selection and
         // throws, which we don't want.
         try { getSelection().collapseToEnd(); } catch(e) {}
         getActiveRange().collapse(false);

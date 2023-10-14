@@ -27,7 +27,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-"""Checks WebKit style for the watchlist file."""
+"""Checks CyberKit style for the watchlist file."""
 
 
 from webkitpy.common.watchlist.watchlistparser import WatchListParser

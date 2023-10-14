@@ -1,5 +1,5 @@
 function checkForPreload(url, shouldPreload) {
-    var result = "This test should run in the WebKitTestRunner.";
+    var result = "This test should run in the CyberKitTestRunner.";
     if (window.internals) {
         var preloaded = internals.isPreloaded(url);
         if ((shouldPreload && preloaded) || (!shouldPreload && !preloaded))

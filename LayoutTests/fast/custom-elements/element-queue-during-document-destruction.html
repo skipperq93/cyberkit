@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <body>
-<p>This tests removing an iframe with a custom element inside a callback. WebKit should not hit assertions.<br>
-WebKit should not hit any assertions.</p>
+<p>This tests removing an iframe with a custom element inside a callback. CyberKit should not hit assertions.<br>
+CyberKit should not hit any assertions.</p>
 <script>
 
 customElements.define('test-element', class extends HTMLElement {
@@ -34,7 +34,7 @@ else {
     testRunner.dumpAsText();
     insertIframe();
     document.createElement('test-element').id = 'bar';
-    document.write(`<p>PASS. WebKit did not hit any assertions.</p>`);
+    document.write(`<p>PASS. CyberKit did not hit any assertions.</p>`);
 }
 
 </script>

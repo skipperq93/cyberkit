@@ -101,7 +101,7 @@ class TestFailure(object):
         return hash(self.__class__.__name__)
 
     def driver_needs_restart(self):
-        """Returns True if we should kill DumpRenderTree/WebKitTestRunner before the next test."""
+        """Returns True if we should kill DumpRenderTree/CyberKitTestRunner before the next test."""
         return False
 
     def write_failure(self, writer, driver_output, expected_driver_output, port):

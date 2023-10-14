@@ -39,16 +39,16 @@ import argparse
 parser = argparse.ArgumentParser(description='Generate compile_commands.json', 
             usage="""
                   make r EXPORT_COMPILE_COMMANDS=YES
-                  generate-compile-commands WebKitBuild/Release
+                  generate-compile-commands CyberKitBuild/Release
 
                   https://trac.webkit.org/wiki/Clangd
                   """)
 
-parser.add_argument('built_products_dir', metavar='built-products-dir', help='path to the build directory containing generated compile commands (ex: WebKitBuild/Release)')
+parser.add_argument('built_products_dir', metavar='built-products-dir', help='path to the build directory containing generated compile commands (ex: CyberKitBuild/Release)')
 parser.add_argument('--delete-invalid', action='store_true', help='Delete any invalid json file')
 opts = parser.parse_args()
 
-# Change to the root of WebKit Directory
+# Change to the root of CyberKit Directory
 file_dir = os.path.dirname(os.path.realpath(__file__))
 base_dir = file_dir + "/../../"
 os.chdir(base_dir)
@@ -58,7 +58,7 @@ compile_commands_dir = opts.built_products_dir + "/compile_commands/"
 
 if not os.path.exists(compile_commands_dir):
     print("Please specify the build directory with compile_commands.")
-    print("Example: generate-compile-commands WebKitBuild/Release")
+    print("Example: generate-compile-commands CyberKitBuild/Release")
     exit(1)
 
 # Generate compile_commands.json

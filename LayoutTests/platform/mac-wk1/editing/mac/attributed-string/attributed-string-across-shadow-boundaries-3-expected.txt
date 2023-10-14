@@ -1,5 +1,5 @@
 Input:
-<span id="host"><#shadow-start>hello <slot></slot><#shadow-end><#start>world WebKit</span> rocks<#end>
+<span id="host"><#shadow-start>hello <slot></slot><#shadow-end><#start>world CyberKit</span> rocks<#end>
 
 Output:
 NSParagraphStyle:
@@ -24,7 +24,7 @@ Alignment 4
     TighteningForTruncation: YES
     HeaderLevel: 0 LineBreakStrategy 0 PresentationIntents (
 ) ListIntentOrdinal 0 CodeBlockIntentLanguageHint ''
-[world WebKit]
+[world CyberKit]
     NSFont: Times-Roman 16.00 pt.
     NSKern: 0pt
     NSStrokeColor: #000000 (sRGB)

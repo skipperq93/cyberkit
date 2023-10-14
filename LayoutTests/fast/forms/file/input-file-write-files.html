@@ -24,7 +24,7 @@ if (window.testRunner) {
     shouldBeEqualToString("file1.files.item(0).name", "foo.txt");
 
     // From current W3C spec, files attribute should be read only,
-    // but WebKit implement it to be writable intentionally.
+    // but CyberKit implement it to be writable intentionally.
     // See: https://bugs.webkit.org/show_bug.cgi?id=87154#c15
     file1.files = file2.files;
     shouldBe("file1.files.length", "1");

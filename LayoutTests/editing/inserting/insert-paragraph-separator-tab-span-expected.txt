@@ -1,4 +1,4 @@
-This test ensures WebKit avoids cloning Apple tab span when inserting a paragraph separator.
+This test ensures CyberKit avoids cloning Apple tab span when inserting a paragraph separator.
 Only tab should be inside a Apple tab span in the following tests.
 
 last visible position:
@@ -7,12 +7,12 @@ last visible position:
 |   style="white-space:pre"
 |   "	"
 | <div>
-|   "hello world WebKit <#selection-caret>"
+|   "hello world CyberKit <#selection-caret>"
 
 first visible position:
 | <div>
 |   <br>
-| "hello world WebKit <#selection-caret>"
+| "hello world CyberKit <#selection-caret>"
 | <span>
 |   class="Apple-tab-span"
 |   style="white-space:pre"
@@ -21,7 +21,7 @@ first visible position:
 before tab span:
 | "hi, "
 | <div>
-|   "hello world WebKit <#selection-caret>"
+|   "hello world CyberKit <#selection-caret>"
 |   <span>
 |     class="Apple-tab-span"
 |     style="white-space:pre"
@@ -35,4 +35,4 @@ after tab span:
 |   style="white-space:pre"
 |   "	"
 | <div>
-|   "hello world WebKit <#selection-caret>rocks"
+|   "hello world CyberKit <#selection-caret>rocks"

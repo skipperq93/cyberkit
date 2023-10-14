@@ -1,0 +1,112 @@
+# Copyright (C) 2023 Apple Inc. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1.  Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+# 2.  Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in the
+#     documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+headers: "NetworkResourceLoadParameters.h"
+
+enum class CyberKit::PreconnectOnly : bool;
+
+class CyberKit::NetworkLoadParameters {
+    CyberKit::WebPageProxyIdentifier webPageProxyID;
+    CyberCore::PageIdentifier webPageID;
+    CyberCore::FrameIdentifier webFrameID;
+    RefPtr<CyberCore::SecurityOrigin> topOrigin;
+    RefPtr<CyberCore::SecurityOrigin> sourceOrigin;
+    WTF::ProcessID parentPID;
+#if HAVE(AUDIT_TOKEN)
+    [NotSerialized] std::optional<audit_token_t> networkProcessAuditToken;
+#endif
+    CyberCore::ResourceRequest request;
+    
+    CyberCore::ContentSniffingPolicy contentSniffingPolicy;
+    CyberCore::ContentEncodingSniffingPolicy contentEncodingSniffingPolicy;
+    CyberCore::StoredCredentialsPolicy storedCredentialsPolicy;
+    CyberCore::ClientCredentialPolicy clientCredentialPolicy;
+    
+    bool shouldClearReferrerOnHTTPSToHTTPRedirect;
+    bool needsCertificateInfo;
+    bool isMainFrameNavigation;
+    bool isMainResourceNavigationForAnyFrame;
+    CyberCore::ShouldRelaxThirdPartyCookieBlocking shouldRelaxThirdPartyCookieBlocking;
+    [NotSerialized] Vector<RefPtr<CyberCore::BlobDataFileReference>> blobFileReferences;
+    CyberKit::PreconnectOnly shouldPreconnectOnly;
+    [NotSerialized] std::optional<CyberKit::NetworkActivityTracker> networkActivityTracker;
+    std::optional<CyberKit::NavigatingToAppBoundDomain> isNavigatingToAppBoundDomain;
+    bool hadMainFrameMainResourcePrivateRelayed;
+    bool allowPrivacyProxy;
+    OptionSet<CyberCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy;
+}
+
+class CyberKit::NetworkResourceLoadParameters : CyberKit::NetworkLoadParameters {
+    CyberCore::ResourceLoaderIdentifier identifier;
+    
+    RefPtr<CyberCore::FormData> request.httpBody();
+    std::optional<Vector<CyberKit::SandboxExtension::Handle>> sandboxExtensionsIfHttpBody();
+
+    std::optional<CyberKit::SandboxExtension::Handle> sandboxExtensionIflocalFile();
+
+    Seconds maximumBufferingTime;
+    
+    CyberCore::FetchOptions options;
+    std::optional<CyberCore::ContentSecurityPolicyResponseHeaders> cspResponseHeaders;
+    URL parentFrameURL;
+    URL frameURL;
+    CyberCore::CrossOriginEmbedderPolicy parentCrossOriginEmbedderPolicy;
+    CyberCore::CrossOriginEmbedderPolicy crossOriginEmbedderPolicy;
+    CyberCore::HTTPHeaderMap originalRequestHeaders;
+    
+    bool shouldRestrictHTTPResponseAccess;
+    
+    CyberCore::PreflightPolicy preflightPolicy;
+    
+    bool shouldEnableCrossOriginResourcePolicy;
+    
+    Vector<RefPtr<CyberCore::SecurityOrigin>> frameAncestorOrigins;
+    bool pageHasResourceLoadClient;
+    std::optional<CyberCore::FrameIdentifier> parentFrameID;
+    bool crossOriginAccessControlCheckEnabled;
+    
+    URL documentURL;
+
+    bool isCrossOriginOpenerPolicyEnabled;
+    bool isClearSiteDataHeaderEnabled;
+    bool isDisplayingInitialEmptyDocument;
+    CyberCore::SandboxFlags effectiveSandboxFlags;
+    URL openerURL;
+    CyberCore::CrossOriginOpenerPolicy sourceCrossOriginOpenerPolicy;
+    
+    uint64_t navigationID;
+    std::optional<CyberCore::NavigationRequester> navigationRequester;
+    
+#if ENABLE(SERVICE_WORKER)
+    CyberCore::ServiceWorkersMode serviceWorkersMode;
+    std::optional<CyberCore::ServiceWorkerRegistrationIdentifier> serviceWorkerRegistrationIdentifier;
+    OptionSet<CyberCore::HTTPHeadersToKeepFromCleaning> httpHeadersToKeep;
+    std::optional<CyberCore::FetchIdentifier> navigationPreloadIdentifier;
+#endif
+
+#if ENABLE(CONTENT_EXTENSIONS)
+    URL mainDocumentURL;
+    std::optional<CyberKit::UserContentControllerIdentifier> userContentControllerIdentifier;
+#endif
+
+    bool linkPreconnectEarlyHintsEnabled;
+};

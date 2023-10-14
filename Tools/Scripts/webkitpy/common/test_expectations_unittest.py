@@ -100,17 +100,17 @@ class ExpectationsTest(unittest.TestCase):
 {
     "TestCookieManager": {
         "subtests": {
-            "/webkit2/WebKitCookieManager/persistent-storage": {
+            "/webkit2/CyberKitCookieManager/persistent-storage": {
                 "expected": {"gtk": {"status": ["FAIL", "PASS"], "bug": "1234"}}
             }
         }
     },
-    "TestWebKit": {
+    "TestCyberKit": {
         "subtests": {
-            "WebKit.MouseMoveAfterCrash": {
+            "CyberKit.MouseMoveAfterCrash": {
                 "expected": {"all": {"status": ["CRASH", "PASS"], "bug": "1234"}}
             },
-            "WebKit.WKConnection": {
+            "CyberKit.WKConnection": {
                 "expected": {"wpe": {"status": ["FAIL", "TIMEOUT"], "bug": "1234"}}
             }
         }
@@ -121,23 +121,23 @@ class ExpectationsTest(unittest.TestCase):
 {
     "TestCookieManager": {
         "subtests": {
-            "/webkit2/WebKitCookieManager/persistent-storage": {
+            "/webkit2/CyberKitCookieManager/persistent-storage": {
                 "expected": {"all": {"status": ["FAIL"], "bug": "1234"}}
             }
         }
     },
-    "TestWebKit": {
+    "TestCyberKit": {
         "subtests": {
-            "WebKit.MouseMoveAfterCrash": {
+            "CyberKit.MouseMoveAfterCrash": {
                 "expected": {"all@Debug": {"status": ["CRASH"], "bug": "1234"}}
             },
-            "WebKit.WKConnection": {
+            "CyberKit.WKConnection": {
                 "expected": {"gtk@Release": {"status": ["FAIL"], "bug": "1234"},
                              "gtk@Debug": {"status": ["CRASH"], "bug": "1234"}}
             }
         }
     },
-    "TestWebCore": {
+    "TestCyberCore": {
         "expected": {"all@Debug": {"status": ["CRASH"]}},
         "subtests": {
             "ComplexTextControllerTest.InitialAdvanceWithLeftRunInRTL": {
@@ -152,7 +152,7 @@ class ExpectationsTest(unittest.TestCase):
         "expected": {"all@Release": {"status": ["SKIP"]},
                      "wpe@Debug": {"status": ["SKIP"]}},
         "subtests": {
-            "/webkit2/WebKitWebView/editable/editable": {
+            "/webkit2/CyberKitWebView/editable/editable": {
                 "expected": {"gtk": {"status": ["FAIL"], "bug": "1234"}}
             }
         }
@@ -164,17 +164,17 @@ class ExpectationsTest(unittest.TestCase):
     "TestCookieManager": {
         "expected": {"all": {"slow": true}},
         "subtests": {
-            "/webkit2/WebKitCookieManager/persistent-storage": {
+            "/webkit2/CyberKitCookieManager/persistent-storage": {
                 "expected": {"wpe": {"status": ["FAIL"], "slow": false, "bug": "1234"}}
             }
         }
     },
-    "TestWebKit": {
+    "TestCyberKit": {
         "subtests": {
-            "WebKit.MouseMoveAfterCrash": {
+            "CyberKit.MouseMoveAfterCrash": {
                 "expected": {"all": {"status": ["FAIL"], "slow": true, "bug": "1234"}}
             },
-            "WebKit.WKConnection": {
+            "CyberKit.WKConnection": {
                 "expected": {"gtk": {"status": ["CRASH"], "bug": "1234"}}
             }
         }
@@ -240,67 +240,67 @@ class ExpectationsTest(unittest.TestCase):
 
     def test_flaky(self):
         self.expectations = MockTestExpectations('gtk', self.FLAKY)
-        self.assert_exp('TestCookieManager', '/webkit2/WebKitCookieManager/persistent-storage', 'PASS')
-        self.assert_exp('TestCookieManager', '/webkit2/WebKitCookieManager/persistent-storage', 'FAIL')
-        self.assert_exp('TestWebKit', 'WebKit.MouseMoveAfterCrash', 'CRASH')
-        self.assert_exp('TestWebKit', 'WebKit.MouseMoveAfterCrash', 'PASS')
-        self.assert_exp('TestWebKit', 'WebKit.WKConnection', 'PASS')
-        self.assert_not_exp('TestWebKit', 'WebKit.WKConnection', 'FAIL')
-        self.assert_not_exp('TestWebKit', 'WebKit.WKConnection', 'TIMEOUT')
+        self.assert_exp('TestCookieManager', '/webkit2/CyberKitCookieManager/persistent-storage', 'PASS')
+        self.assert_exp('TestCookieManager', '/webkit2/CyberKitCookieManager/persistent-storage', 'FAIL')
+        self.assert_exp('TestCyberKit', 'CyberKit.MouseMoveAfterCrash', 'CRASH')
+        self.assert_exp('TestCyberKit', 'CyberKit.MouseMoveAfterCrash', 'PASS')
+        self.assert_exp('TestCyberKit', 'CyberKit.WKConnection', 'PASS')
+        self.assert_not_exp('TestCyberKit', 'CyberKit.WKConnection', 'FAIL')
+        self.assert_not_exp('TestCyberKit', 'CyberKit.WKConnection', 'TIMEOUT')
 
         self.expectations = MockTestExpectations('wpe', self.FLAKY)
-        self.assert_exp('TestCookieManager', '/webkit2/WebKitCookieManager/persistent-storage', 'PASS')
-        self.assert_not_exp('TestCookieManager', '/webkit2/WebKitCookieManager/persistent-storage', 'FAIL')
-        self.assert_exp('TestWebKit', 'WebKit.MouseMoveAfterCrash', 'CRASH')
-        self.assert_exp('TestWebKit', 'WebKit.MouseMoveAfterCrash', 'PASS')
-        self.assert_exp('TestWebKit', 'WebKit.WKConnection', 'FAIL')
-        self.assert_exp('TestWebKit', 'WebKit.WKConnection', 'TIMEOUT')
+        self.assert_exp('TestCookieManager', '/webkit2/CyberKitCookieManager/persistent-storage', 'PASS')
+        self.assert_not_exp('TestCookieManager', '/webkit2/CyberKitCookieManager/persistent-storage', 'FAIL')
+        self.assert_exp('TestCyberKit', 'CyberKit.MouseMoveAfterCrash', 'CRASH')
+        self.assert_exp('TestCyberKit', 'CyberKit.MouseMoveAfterCrash', 'PASS')
+        self.assert_exp('TestCyberKit', 'CyberKit.WKConnection', 'FAIL')
+        self.assert_exp('TestCyberKit', 'CyberKit.WKConnection', 'TIMEOUT')
 
     def test_build_type(self):
         self.expectations = MockTestExpectations('gtk', self.BUILD_TYPE, 'Debug')
-        self.assert_exp('TestCookieManager', '/webkit2/WebKitCookieManager/persistent-storage', 'FAIL')
-        self.assert_exp('TestWebKit', 'WebKit.MouseMoveAfterCrash', 'CRASH')
-        self.assert_exp('TestWebKit', 'WebKit.WKConnection', 'CRASH')
-        self.assert_exp('TestWebCore', 'ComplexTextControllerTest.InitialAdvanceWithLeftRunInRTL', 'PASS')
-        self.assert_exp('TestWebCore', 'FileMonitorTest.DetectChange', 'CRASH')
-        self.assert_exp('TestWebCore', 'FileSystemTest.MappingMissingFile', 'CRASH')
+        self.assert_exp('TestCookieManager', '/webkit2/CyberKitCookieManager/persistent-storage', 'FAIL')
+        self.assert_exp('TestCyberKit', 'CyberKit.MouseMoveAfterCrash', 'CRASH')
+        self.assert_exp('TestCyberKit', 'CyberKit.WKConnection', 'CRASH')
+        self.assert_exp('TestCyberCore', 'ComplexTextControllerTest.InitialAdvanceWithLeftRunInRTL', 'PASS')
+        self.assert_exp('TestCyberCore', 'FileMonitorTest.DetectChange', 'CRASH')
+        self.assert_exp('TestCyberCore', 'FileSystemTest.MappingMissingFile', 'CRASH')
         self.assert_skip('TestWebViewEditor', None, False)
-        self.assert_skip('TestWebViewEditor', '/webkit2/WebKitWebView/editable/editable', False)
-        self.assert_exp('TestWebViewEditor', '/webkit2/WebKitWebView/editable/editable', 'FAIL')
+        self.assert_skip('TestWebViewEditor', '/webkit2/CyberKitWebView/editable/editable', False)
+        self.assert_exp('TestWebViewEditor', '/webkit2/CyberKitWebView/editable/editable', 'FAIL')
 
         self.expectations = MockTestExpectations('gtk', self.BUILD_TYPE, 'Release')
-        self.assert_exp('TestCookieManager', '/webkit2/WebKitCookieManager/persistent-storage', 'FAIL')
-        self.assert_exp('TestWebKit', 'WebKit.MouseMoveAfterCrash', 'PASS')
-        self.assert_exp('TestWebKit', 'WebKit.WKConnection', 'FAIL')
-        self.assert_exp('TestWebCore', 'ComplexTextControllerTest.InitialAdvanceWithLeftRunInRTL', 'PASS')
-        self.assert_exp('TestWebCore', 'FileMonitorTest.DetectChange', 'FAIL')
-        self.assert_exp('TestWebCore', 'FileSystemTest.MappingMissingFile', 'PASS')
+        self.assert_exp('TestCookieManager', '/webkit2/CyberKitCookieManager/persistent-storage', 'FAIL')
+        self.assert_exp('TestCyberKit', 'CyberKit.MouseMoveAfterCrash', 'PASS')
+        self.assert_exp('TestCyberKit', 'CyberKit.WKConnection', 'FAIL')
+        self.assert_exp('TestCyberCore', 'ComplexTextControllerTest.InitialAdvanceWithLeftRunInRTL', 'PASS')
+        self.assert_exp('TestCyberCore', 'FileMonitorTest.DetectChange', 'FAIL')
+        self.assert_exp('TestCyberCore', 'FileSystemTest.MappingMissingFile', 'PASS')
         self.assert_skip('TestWebViewEditor', None, True)
-        self.assert_skip('TestWebViewEditor', '/webkit2/WebKitWebView/editable/editable', True)
+        self.assert_skip('TestWebViewEditor', '/webkit2/CyberKitWebView/editable/editable', True)
 
         self.expectations = MockTestExpectations('wpe', self.BUILD_TYPE, 'Release')
         self.assert_skip('TestWebViewEditor', None, True)
-        self.assert_skip('TestWebViewEditor', '/webkit2/WebKitWebView/editable/editable', True)
+        self.assert_skip('TestWebViewEditor', '/webkit2/CyberKitWebView/editable/editable', True)
 
         self.expectations = MockTestExpectations('wpe', self.BUILD_TYPE, 'Debug')
         self.assert_skip('TestWebViewEditor', None, True)
-        self.assert_skip('TestWebViewEditor', '/webkit2/WebKitWebView/editable/editable', True)
+        self.assert_skip('TestWebViewEditor', '/webkit2/CyberKitWebView/editable/editable', True)
 
     def test_slow(self):
         self.expectations = MockTestExpectations('gtk', self.SLOW)
-        self.assert_slow('TestCookieManager', '/webkit2/WebKitCookieManager/basic', True)
-        self.assert_slow('TestCookieManager', '/webkit2/WebKitCookieManager/persistent-storage', True)
-        self.assert_slow('TestWebKit', 'WebKit.WKView', False)
-        self.assert_slow('TestWebKit', 'WebKit.MouseMoveAfterCrash', True)
-        self.assert_exp('TestWebKit', 'WebKit.MouseMoveAfterCrash', 'FAIL')
-        self.assert_slow('TestWebKit', 'WebKit.WKConnection', False)
+        self.assert_slow('TestCookieManager', '/webkit2/CyberKitCookieManager/basic', True)
+        self.assert_slow('TestCookieManager', '/webkit2/CyberKitCookieManager/persistent-storage', True)
+        self.assert_slow('TestCyberKit', 'CyberKit.WKView', False)
+        self.assert_slow('TestCyberKit', 'CyberKit.MouseMoveAfterCrash', True)
+        self.assert_exp('TestCyberKit', 'CyberKit.MouseMoveAfterCrash', 'FAIL')
+        self.assert_slow('TestCyberKit', 'CyberKit.WKConnection', False)
 
         self.expectations = MockTestExpectations('wpe', self.SLOW)
-        self.assert_slow('TestCookieManager', '/webkit2/WebKitCookieManager/basic', True)
-        self.assert_slow('TestCookieManager', '/webkit2/WebKitCookieManager/persistent-storage', False)
-        self.assert_slow('TestWebKit', 'WebKit.WKView', False)
-        self.assert_slow('TestWebKit', 'WebKit.MouseMoveAfterCrash', True)
-        self.assert_slow('TestWebKit', 'WebKit.WKConnection', False)
+        self.assert_slow('TestCookieManager', '/webkit2/CyberKitCookieManager/basic', True)
+        self.assert_slow('TestCookieManager', '/webkit2/CyberKitCookieManager/persistent-storage', False)
+        self.assert_slow('TestCyberKit', 'CyberKit.WKView', False)
+        self.assert_slow('TestCyberKit', 'CyberKit.MouseMoveAfterCrash', True)
+        self.assert_slow('TestCyberKit', 'CyberKit.WKConnection', False)
 
     def test_repeated_keys(self):
         self.assertRaises(ValueError, lambda: MockTestExpectations('gtk', self.REPEATED_KEYS))

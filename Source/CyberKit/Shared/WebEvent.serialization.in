@@ -1,0 +1,200 @@
+# Copyright (C) 2022 Apple Inc. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1.  Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+# 2.  Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in the
+#     documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+[OptionSet] enum class CyberKit::WebEventModifier : uint8_t {
+    ShiftKey,
+    ControlKey,
+    AltKey,
+    MetaKey,
+    CapsLockKey
+};
+
+class CyberKit::WebEvent {
+    CyberKit::WebEventType type();
+    OptionSet<CyberKit::WebEventModifier> modifiers();
+    WallTime timestamp();
+    UUID authorizationToken();
+};
+
+enum class CyberKit::WebEventType : int8_t {
+    NoType,
+    MouseDown,
+    MouseUp,
+    MouseMove,
+    MouseForceChanged,
+    MouseForceDown,
+    MouseForceUp,
+    Wheel,
+    KeyDown,
+    KeyUp,
+    RawKeyDown,
+    Char,
+#if ENABLE(TOUCH_EVENTS)
+    TouchStart,
+    TouchMove,
+    TouchEnd,
+    TouchCancel,
+#endif
+#if ENABLE(MAC_GESTURE_EVENTS)
+    GestureStart,
+    GestureChange,
+    GestureEnd,
+#endif
+};
+
+class CyberKit::WebKeyboardEvent : CyberKit::WebEvent {
+    String text();
+#if !PLATFORM(GTK) && !USE(LIBWPE)
+    String unmodifiedText();
+#endif
+    String key();
+    String code();
+    String keyIdentifier();
+    int32_t windowsVirtualKeyCode();
+    int32_t nativeVirtualKeyCode();
+#if !PLATFORM(GTK) && !USE(LIBWPE)
+    int32_t macCharCode();
+#endif
+#if USE(APPKIT) || PLATFORM(IOS_FAMILY) || PLATFORM(GTK) || USE(LIBWPE)
+    bool handledByInputMethod();
+#endif
+#if PLATFORM(GTK) || USE(LIBWPE)
+    std::optional<Vector<CyberCore::CompositionUnderline>> preeditUnderlines();
+    std::optional<CyberKit::EditingRange> preeditSelectionRange();
+#endif
+#if USE(APPKIT)
+    Vector<CyberCore::KeypressCommand> commands();
+#endif
+#if !USE(APPKIT) && PLATFORM(GTK)
+    Vector<String> commands();
+#endif
+    bool isAutoRepeat();
+    bool isKeypad();
+#if !PLATFORM(GTK) && !USE(LIBWPE)
+    bool isSystemKey();
+#endif
+};
+
+
+#if ENABLE(TOUCH_EVENTS)
+class CyberKit::WebTouchEvent : CyberKit::WebEvent {
+    Vector<CyberKit::WebPlatformTouchPoint> touchPoints();
+#if PLATFORM(IOS_FAMILY)
+    CyberCore::IntPoint position();
+    bool isPotentialTap();
+    bool isGesture();
+    float gestureScale();
+    float gestureRotation();
+    bool canPreventNativeGestures();
+#endif
+};
+#endif // ENABLE(TOUCH_EVENTS)
+
+[CustomHeader] enum class CyberKit::WebMouseEventButton : int32_t {
+    LeftButton,
+    MiddleButton,
+    RightButton,
+    NoButton
+};
+
+[CustomHeader] enum class CyberKit::WebMouseEventSyntheticClickType : uint32_t {
+    NoTap,
+    OneFingerTap,
+    TwoFingerTap
+};
+
+class CyberKit::WebMouseEvent : CyberKit::WebEvent {
+    CyberKit::WebMouseEventButton button();
+    unsigned short buttons();
+    CyberCore::IntPoint position();
+    CyberCore::IntPoint globalPosition();
+    float deltaX();
+    float deltaY();
+    float deltaZ();
+    int32_t clickCount();
+    double force();
+    CyberKit::WebMouseEventSyntheticClickType syntheticClickType();
+#if PLATFORM(MAC)
+    int32_t eventNumber();
+    int32_t menuTypeForEvent();;
+#endif
+#if !PLATFORM(MAC) && PLATFORM(GTK)
+    CyberCore::PlatformMouseEvent::IsTouch isTouchEvent();
+#endif
+#if !PLATFORM(MAC)
+    CyberCore::PointerID pointerId();
+    String pointerType();
+#endif
+    CyberKit::GestureWasCancelled gestureWasCancelled();
+}
+
+#if ENABLE(MAC_GESTURE_EVENTS)
+class CyberKit::WebGestureEvent : CyberKit::WebEvent {
+    CyberCore::IntPoint position();
+    float gestureScale();
+    float gestureRotation();
+};
+#endif
+
+[Nested] enum class CyberKit::WebWheelEvent::Granularity : uint8_t {
+    ScrollByPageWheelEvent,
+    ScrollByPixelWheelEvent
+};
+
+[Nested] enum class CyberKit::WebWheelEvent::Phase : uint32_t {
+    PhaseNone,
+    PhaseBegan,
+    PhaseStationary,
+    PhaseChanged,
+    PhaseEnded,
+    PhaseCancelled,
+    PhaseMayBegin,
+};
+
+[Nested] enum class CyberKit::WebWheelEvent::MomentumEndType : uint8_t {
+    Unknown,
+    Interrupted,
+    Natural,
+};
+
+class CyberKit::WebWheelEvent : CyberKit::WebEvent {
+    CyberCore::IntPoint position();
+    CyberCore::IntPoint globalPosition();
+    CyberCore::FloatSize delta();
+    CyberCore::FloatSize wheelTicks();
+    CyberKit::WebWheelEvent::Granularity granularity();
+#if PLATFORM(COCOA)
+    bool directionInvertedFromDevice();
+#endif
+#if PLATFORM(COCOA) || PLATFORM(GTK) || USE(LIBWPE)
+    CyberKit::WebWheelEvent::Phase phase();
+    CyberKit::WebWheelEvent::Phase momentumPhase();
+    bool hasPreciseScrollingDeltas();
+#endif
+#if PLATFORM(COCOA)
+    uint32_t scrollCount();
+    CyberCore::FloatSize unacceleratedScrollingDelta();
+    WallTime ioHIDEventTimestamp();
+    std::optional<CyberCore::FloatSize> rawPlatformDelta();
+    CyberKit::WebWheelEvent::MomentumEndType momentumEndType();
+#endif
+};

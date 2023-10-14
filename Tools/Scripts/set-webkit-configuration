@@ -99,7 +99,7 @@ if (!$architecture) {
 }
 
 my $baseProductDir = baseProductDir();
-if (isAppleCocoaWebKit() && !isCMakeBuild()) {
+if (isAppleCocoaCyberKit() && !isCMakeBuild()) {
     markBaseProductDirectoryAsCreatedByXcodeBuildSystem();
     if ($workspace) {
         open WORKSPACE, ">", "$baseProductDir/Workspace";

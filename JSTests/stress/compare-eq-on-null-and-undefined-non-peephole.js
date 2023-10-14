@@ -37,7 +37,7 @@ function testUseForMath() {
         if (value != 8)
             throw "Failed useForMath(undefined, null, true), value = " + value + " with i = " + i;
 
-        var value = useForMath(undefined, null, "WebKit!");
+        var value = useForMath(undefined, null, "CyberKit!");
         if (value != 8)
             throw "Failed useForMath(undefined, null, true), value = " + value + " with i = " + i;
     }

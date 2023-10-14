@@ -4,8 +4,8 @@
 <script src="../../resources/js-test-pre.js"></script>
 </head>
 <body>
-<p id="description">This test ensures WebKit returns correct values for HTMLInputElement.lastChangeWasUserEdit and
-HTMLTextAreaElement.lastChangeWasUserEdit, which are exposed via WebKit API.</p>
+<p id="description">This test ensures CyberKit returns correct values for HTMLInputElement.lastChangeWasUserEdit and
+HTMLTextAreaElement.lastChangeWasUserEdit, which are exposed via CyberKit API.</p>
 <div id="console"></div>
 <input type="text"><textarea></textarea>
 <script>
@@ -28,7 +28,7 @@ function runTest(element) {
     shouldBeTrue('document.execCommand("InsertText", false, " world"); internals.wasLastChangeUserEdit(textField)');
 
     shouldBeTrue('textField.style.display = "none"; internals.wasLastChangeUserEdit(textField)');
-    shouldBeFalse('textField.value = "WebKit"; internals.wasLastChangeUserEdit(textField)');
+    shouldBeFalse('textField.value = "CyberKit"; internals.wasLastChangeUserEdit(textField)');
     shouldBeFalse('textField.style.display = null; internals.wasLastChangeUserEdit(textField)');
 
     textField.focus();
@@ -41,9 +41,9 @@ function runTest(element) {
         textField.focus();
         textField.selectionStart = textField.value.length;
         textField.selectionEnd = textField.selectionStart;
-        shouldBeTrue('document.execCommand("InsertText", false, "\\nWebKit rocks"); internals.wasLastChangeUserEdit(textField)');
+        shouldBeTrue('document.execCommand("InsertText", false, "\\nCyberKit rocks"); internals.wasLastChangeUserEdit(textField)');
 
-        shouldBeFalse('textField.innerText = " WebKit "; internals.wasLastChangeUserEdit(textField)');
+        shouldBeFalse('textField.innerText = " CyberKit "; internals.wasLastChangeUserEdit(textField)');
     }
 
     textField.parentNode.removeChild(textField);

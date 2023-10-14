@@ -6,7 +6,7 @@
     <script>
         function runTest()
         {
-            description("Verifies that the wrapper for Document's UndoManager remains consistent across GC passes. This test must be run using WebKitTestRunner.");
+            description("Verifies that the wrapper for Document's UndoManager remains consistent across GC passes. This test must be run using CyberKitTestRunner.");
             document.undoManager.foo = "bar";
             if (window.GCController)
                 GCController.collect();

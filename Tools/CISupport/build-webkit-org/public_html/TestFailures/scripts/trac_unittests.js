@@ -39,7 +39,7 @@ var kExampleCommitDataXML =
     '    <language>en-US</language>\n\n' +
     '    <generator>Trac 0.11.7</generator>\n\n' +
     '    <image>\n\n' +
-    '      <title>WebKit</title>\n\n' +
+    '      <title>CyberKit</title>\n\n' +
     '      <url>http://trac.webkit.org/chrome/site/icon.png</url>\n\n' +
     '      <link>http://trac.webkit.org/log/trunk?rev=92362</link>\n\n' +
     '    </image>\n\n' +
@@ -61,12 +61,12 @@ var kExampleCommitDataXML =
     '&lt;/p&gt;\n\n' +
     '&lt;p&gt;\n\n' +
     '* css/CSSPrimitiveValueMappings.h:\n\n' +
-    '(WebCore::CSSPrimitiveValue::CSSPrimitiveValue):\n\n' +
+    '(CyberCore::CSSPrimitiveValue::CSSPrimitiveValue):\n\n' +
     'Implement cast from EBoxSizing.\n' +
-    '(WebCore::CSSPrimitiveValue::operator EBoxSizing):\n' +
+    '(CyberCore::CSSPrimitiveValue::operator EBoxSizing):\n' +
     'Implement cast to EBoxSizing.\n' +
     '* css/CSSStyleSelector.cpp:\n' +
-    '(WebCore::CSSStyleSelector::applyProperty):\n' +
+    '(CyberCore::CSSStyleSelector::applyProperty):\n' +
     'Use appropriate macro to simplify code using cast.\n' +
     '&lt;/p&gt;\n' +
     '</description>\n' +
@@ -91,7 +91,7 @@ var kExampleCommitDataXML =
     'for the implementation of EventSender.scalePageBy(f, x, y).\n' +
     '&lt;/p&gt;\n' +
     '&lt;p&gt;\n' +
-    'Source/WebKit/chromium:\n' +
+    'Source/CyberKit/chromium:\n' +
     '&lt;/p&gt;\n' +
     '&lt;p&gt;\n' +
     'Tests: compositing/scaling/tiled-layer-recursion.html\n' +
@@ -109,7 +109,7 @@ var kExampleCommitDataXML =
     '&lt;p&gt;\n' +
     '* public/WebView.h:\n' +
     '* src/WebViewImpl.cpp:\n' +
-    '(WebKit::WebViewImpl::scalePage): A wrapper method for scalePage() in WebCore.\n' +
+    '(CyberKit::WebViewImpl::scalePage): A wrapper method for scalePage() in CyberCore.\n' +
     '* src/WebViewImpl.h:\n' +
     '&lt;/p&gt;\n' +
     '&lt;p&gt;\n' +
@@ -191,7 +191,7 @@ var kExampleCommitDataXML =
     '&lt;/p&gt;\n' +
     '&lt;p&gt;\n' +
     '* platform/graphics/opengl/TextureMapperGL.cpp:\n' +
-    '(WebCore::BitmapTextureGL::bind):\n' +
+    '(CyberCore::BitmapTextureGL::bind):\n' +
     '&lt;/p&gt;\n' +
     '</description>\n' +
     '      <category>Log</category>\n' +
@@ -218,17 +218,17 @@ var kExampleCommitDataXML =
     '* dom/Event.cpp:\n' +
     '* dom/Event.h:\n' +
     '* dom/EventDispatcher.cpp:\n' +
-    '(WebCore::EventDispatcher::dispatchEvent):\n' +
+    '(CyberCore::EventDispatcher::dispatchEvent):\n' +
     '* dom/EventDispatcher.h:\n' +
     '* dom/KeyboardEvent.cpp:\n' +
     '* dom/KeyboardEvent.h:\n' +
     '* dom/MouseEvent.cpp:\n' +
     '* dom/MouseEvent.h:\n' +
     '* dom/Node.cpp:\n' +
-    '(WebCore::Node::dispatchEvent):\n' +
-    '(WebCore::Node::dispatchKeyEvent):\n' +
-    '(WebCore::Node::dispatchMouseEvent):\n' +
-    '(WebCore::Node::dispatchWheelEvent):\n' +
+    '(CyberCore::Node::dispatchEvent):\n' +
+    '(CyberCore::Node::dispatchKeyEvent):\n' +
+    '(CyberCore::Node::dispatchMouseEvent):\n' +
+    '(CyberCore::Node::dispatchWheelEvent):\n' +
     '* dom/WheelEvent.cpp:\n' +
     '* dom/WheelEvent.h:\n' +
     '&lt;/p&gt;\n' +

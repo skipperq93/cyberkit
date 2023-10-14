@@ -50,9 +50,9 @@
     {
       var matrixDiv = document.getElementById('matrixed');
       
-      var firstMatrix = new WebKitCSSMatrix(document.getElementById('box1').style.webkitTransform);
-      var secondMatrix = new WebKitCSSMatrix(document.getElementById('box2').style.webkitTransform);
-      var thirdMatrix = new WebKitCSSMatrix(document.getElementById('box3').style.webkitTransform);
+      var firstMatrix = new CyberKitCSSMatrix(document.getElementById('box1').style.webkitTransform);
+      var secondMatrix = new CyberKitCSSMatrix(document.getElementById('box2').style.webkitTransform);
+      var thirdMatrix = new CyberKitCSSMatrix(document.getElementById('box3').style.webkitTransform);
       
       var finalMatrix = firstMatrix.multiply(secondMatrix);
       finalMatrix = finalMatrix.multiply(thirdMatrix);

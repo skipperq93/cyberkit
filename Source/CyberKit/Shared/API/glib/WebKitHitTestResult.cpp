@@ -1,0 +1,468 @@
+/*
+ * Copyright (C) 2012 Igalia S.L.
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Library General Public
+ * License as published by the Free Software Foundation; either
+ * version 2 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Library General Public License for more details.
+ *
+ * You should have received a copy of the GNU Library General Public License
+ * along with this library; see the file COPYING.LIB.  If not, write to
+ * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
+ */
+
+#include "config.h"
+#include "CyberKitHitTestResult.h"
+
+#include "WebHitTestResultData.h"
+#include "CyberKitHitTestResultPrivate.h"
+#include <glib/gi18n-lib.h>
+#include <wtf/glib/WTFGType.h>
+#include <wtf/text/CString.h>
+
+using namespace CyberKit;
+
+/**
+ * CyberKitHitTestResult:
+ * @See_also: #CyberKitWebView
+ *
+ * Result of a Hit Test.
+ *
+ * A Hit Test is an operation to get context information about a given
+ * point in a #CyberKitWebView. #CyberKitHitTestResult represents the
+ * result of a Hit Test. It provides context information about what is
+ * at the coordinates of the Hit Test, such as if there's a link,
+ * an image or a media.
+ *
+ * You can get the context of the HitTestResult with
+ * webkit_hit_test_result_get_context() that returns a bitmask of
+ * #CyberKitHitTestResultContext flags. You can also use
+ * webkit_hit_test_result_context_is_link(), webkit_hit_test_result_context_is_image() and
+ * webkit_hit_test_result_context_is_media() to determine whether there's
+ * a link, image or a media element at the coordinates of the Hit Test.
+ * Note that it's possible that several #CyberKitHitTestResultContext flags
+ * are active at the same time, for example if there's a link containing an image.
+ *
+ * When the mouse is moved over a #CyberKitWebView a Hit Test is performed
+ * for the mouse coordinates and #CyberKitWebView::mouse-target-changed
+ * signal is emitted with a #CyberKitHitTestResult.
+ */
+
+enum {
+    PROP_0,
+
+    PROP_CONTEXT,
+    PROP_LINK_URI,
+    PROP_LINK_TITLE,
+    PROP_LINK_LABEL,
+    PROP_IMAGE_URI,
+    PROP_MEDIA_URI
+};
+
+struct _CyberKitHitTestResultPrivate {
+    unsigned int context;
+    CString linkURI;
+    CString linkTitle;
+    CString linkLabel;
+    CString imageURI;
+    CString mediaURI;
+};
+
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitHitTestResult, webkit_hit_test_result, G_TYPE_OBJECT, GObject)
+
+static void webkitHitTestResultGetProperty(GObject* object, guint propId, GValue* value, GParamSpec* paramSpec)
+{
+    CyberKitHitTestResult* hitTestResult = WEBKIT_HIT_TEST_RESULT(object);
+
+    switch (propId) {
+    case PROP_CONTEXT:
+        g_value_set_uint(value, webkit_hit_test_result_get_context(hitTestResult));
+        break;
+    case PROP_LINK_URI:
+        g_value_set_string(value, webkit_hit_test_result_get_link_uri(hitTestResult));
+        break;
+    case PROP_LINK_TITLE:
+        g_value_set_string(value, webkit_hit_test_result_get_link_title(hitTestResult));
+        break;
+    case PROP_LINK_LABEL:
+        g_value_set_string(value, webkit_hit_test_result_get_link_label(hitTestResult));
+        break;
+    case PROP_IMAGE_URI:
+        g_value_set_string(value, webkit_hit_test_result_get_image_uri(hitTestResult));
+        break;
+    case PROP_MEDIA_URI:
+        g_value_set_string(value, webkit_hit_test_result_get_media_uri(hitTestResult));
+        break;
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, propId, paramSpec);
+    }
+}
+
+static void webkitHitTestResultSetProperty(GObject* object, guint propId, const GValue* value, GParamSpec* paramSpec)
+{
+    CyberKitHitTestResult* hitTestResult = WEBKIT_HIT_TEST_RESULT(object);
+
+    switch (propId) {
+    case PROP_CONTEXT:
+        hitTestResult->priv->context = g_value_get_uint(value);
+        break;
+    case PROP_LINK_URI:
+        hitTestResult->priv->linkURI = g_value_get_string(value);
+        break;
+    case PROP_LINK_TITLE:
+        hitTestResult->priv->linkTitle = g_value_get_string(value);
+        break;
+    case PROP_LINK_LABEL:
+        hitTestResult->priv->linkLabel = g_value_get_string(value);
+        break;
+    case PROP_IMAGE_URI:
+        hitTestResult->priv->imageURI = g_value_get_string(value);
+        break;
+    case PROP_MEDIA_URI:
+        hitTestResult->priv->mediaURI = g_value_get_string(value);
+        break;
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, propId, paramSpec);
+    }
+}
+
+static void webkit_hit_test_result_class_init(CyberKitHitTestResultClass* hitTestResultClass)
+{
+    GObjectClass* objectClass = G_OBJECT_CLASS(hitTestResultClass);
+    objectClass->get_property = webkitHitTestResultGetProperty;
+    objectClass->set_property = webkitHitTestResultSetProperty;
+
+    GParamFlags paramFlags = static_cast<GParamFlags>(WEBKIT_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
+
+    /**
+     * CyberKitHitTestResult:context:
+     *
+     * Bitmask of #CyberKitHitTestResultContext flags representing
+     * the context of the #CyberKitHitTestResult.
+     */
+    g_object_class_install_property(objectClass,
+                                    PROP_CONTEXT,
+                                    g_param_spec_uint("context",
+                                                      nullptr, nullptr,
+                                                      0, G_MAXUINT, 0,
+                                                      paramFlags));
+
+    /**
+     * CyberKitHitTestResult:link-uri:
+     *
+     * The URI of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
+     * is present in #CyberKitHitTestResult:context
+     */
+    g_object_class_install_property(objectClass,
+                                    PROP_LINK_URI,
+                                    g_param_spec_string("link-uri",
+                                                        nullptr, nullptr,
+                                                        0,
+                                                        paramFlags));
+    /**
+     * CyberKitHitTestResult:link-title:
+     *
+     * The title of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
+     * is present in #CyberKitHitTestResult:context
+     */
+    g_object_class_install_property(objectClass,
+                                    PROP_LINK_TITLE,
+                                    g_param_spec_string("link-title",
+                                                        nullptr, nullptr,
+                                                        0,
+                                                        paramFlags));
+    /**
+     * CyberKitHitTestResult:link-label:
+     *
+     * The label of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
+     * is present in #CyberKitHitTestResult:context
+     */
+    g_object_class_install_property(objectClass,
+                                    PROP_LINK_LABEL,
+                                    g_param_spec_string("link-label",
+                                                        nullptr, nullptr,
+                                                        0,
+                                                        paramFlags));
+    /**
+     * CyberKitHitTestResult:image-uri:
+     *
+     * The URI of the image if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE
+     * is present in #CyberKitHitTestResult:context
+     */
+    g_object_class_install_property(objectClass,
+                                    PROP_IMAGE_URI,
+                                    g_param_spec_string("image-uri",
+                                                        nullptr, nullptr,
+                                                        0,
+                                                        paramFlags));
+    /**
+     * CyberKitHitTestResult:media-uri:
+     *
+     * The URI of the media if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_MEDIA
+     * is present in #CyberKitHitTestResult:context
+     */
+    g_object_class_install_property(objectClass,
+                                    PROP_MEDIA_URI,
+                                    g_param_spec_string("media-uri",
+                                                        nullptr, nullptr,
+                                                        0,
+                                                        paramFlags));
+}
+
+CyberKitHitTestResult* webkitHitTestResultCreate(const WebHitTestResultData& hitTestResult)
+{
+    unsigned context = WEBKIT_HIT_TEST_RESULT_CONTEXT_DOCUMENT;
+
+    if (!hitTestResult.absoluteLinkURL.isEmpty())
+        context |= WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK;
+
+    if (!hitTestResult.absoluteImageURL.isEmpty())
+        context |= WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE;
+
+    if (!hitTestResult.absoluteMediaURL.isEmpty())
+        context |= WEBKIT_HIT_TEST_RESULT_CONTEXT_MEDIA;
+
+    if (hitTestResult.isContentEditable)
+        context |= WEBKIT_HIT_TEST_RESULT_CONTEXT_EDITABLE;
+
+    if (hitTestResult.isScrollbar != WebHitTestResultData::IsScrollbar::No)
+        context |= WEBKIT_HIT_TEST_RESULT_CONTEXT_SCROLLBAR;
+
+    if (hitTestResult.isSelected)
+        context |= WEBKIT_HIT_TEST_RESULT_CONTEXT_SELECTION;
+
+    return WEBKIT_HIT_TEST_RESULT(g_object_new(WEBKIT_TYPE_HIT_TEST_RESULT,
+        "context", context,
+        "link-uri", context & WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK ? hitTestResult.absoluteLinkURL.utf8().data() : nullptr,
+        "image-uri", context & WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE ? hitTestResult.absoluteImageURL.utf8().data() : nullptr,
+        "media-uri", context & WEBKIT_HIT_TEST_RESULT_CONTEXT_MEDIA ? hitTestResult.absoluteMediaURL.utf8().data() : nullptr,
+        "link-title", !hitTestResult.linkTitle.isEmpty() ? hitTestResult.linkTitle.utf8().data() : nullptr,
+        "link-label", !hitTestResult.linkLabel.isEmpty() ? hitTestResult.linkLabel.utf8().data() : nullptr,
+        nullptr));
+}
+
+static bool stringIsEqualToCString(const String& string, const CString& cString)
+{
+    return ((string.isEmpty() && cString.isNull()) || (string.utf8() == cString));
+}
+
+bool webkitHitTestResultCompare(CyberKitHitTestResult* hitTestResult, const WebHitTestResultData& webHitTestResult)
+{
+    CyberKitHitTestResultPrivate* priv = hitTestResult->priv;
+    bool isScrollbar = webHitTestResult.isScrollbar != WebHitTestResultData::IsScrollbar::No;
+    return webHitTestResult.isContentEditable == webkit_hit_test_result_context_is_editable(hitTestResult)
+        && isScrollbar == webkit_hit_test_result_context_is_scrollbar(hitTestResult)
+        && webHitTestResult.isSelected == webkit_hit_test_result_context_is_selection(hitTestResult)
+        && stringIsEqualToCString(webHitTestResult.absoluteLinkURL, priv->linkURI)
+        && stringIsEqualToCString(webHitTestResult.linkTitle, priv->linkTitle)
+        && stringIsEqualToCString(webHitTestResult.linkLabel, priv->linkLabel)
+        && stringIsEqualToCString(webHitTestResult.absoluteImageURL, priv->imageURI)
+        && stringIsEqualToCString(webHitTestResult.absoluteMediaURL, priv->mediaURI);
+}
+
+/**
+ * webkit_hit_test_result_get_context:
+ * @hit_test_result: a #CyberKitHitTestResult
+ *
+ * Gets the value of the #CyberKitHitTestResult:context property.
+ *
+ * Returns: a bitmask of #CyberKitHitTestResultContext flags
+ */
+guint webkit_hit_test_result_get_context(CyberKitHitTestResult* hitTestResult)
+{
+    g_return_val_if_fail(WEBKIT_IS_HIT_TEST_RESULT(hitTestResult), 0);
+
+    return hitTestResult->priv->context;
+}
+
+/**
+ * webkit_hit_test_result_context_is_link:
+ * @hit_test_result: a #CyberKitHitTestResult
+ *
+ * Gets whether %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK flag is present in
+ * #CyberKitHitTestResult:context.
+ *
+ * Returns: %TRUE if there's a link element in the coordinates of the Hit Test,
+ *    or %FALSE otherwise
+ */
+gboolean webkit_hit_test_result_context_is_link(CyberKitHitTestResult* hitTestResult)
+{
+    g_return_val_if_fail(WEBKIT_IS_HIT_TEST_RESULT(hitTestResult), FALSE);
+
+    return hitTestResult->priv->context & WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK;
+}
+
+/**
+ * webkit_hit_test_result_context_is_image:
+ * @hit_test_result: a #CyberKitHitTestResult
+ *
+ * Gets whether %WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE flag is present in
+ * #CyberKitHitTestResult:context.
+ *
+ * Returns: %TRUE if there's an image element in the coordinates of the Hit Test,
+ *    or %FALSE otherwise
+ */
+gboolean webkit_hit_test_result_context_is_image(CyberKitHitTestResult* hitTestResult)
+{
+    g_return_val_if_fail(WEBKIT_IS_HIT_TEST_RESULT(hitTestResult), FALSE);
+
+    return hitTestResult->priv->context & WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE;
+}
+
+/**
+ * webkit_hit_test_result_context_is_media:
+ * @hit_test_result: a #CyberKitHitTestResult
+ *
+ * Gets whether %WEBKIT_HIT_TEST_RESULT_CONTEXT_MEDIA flag is present in
+ * #CyberKitHitTestResult:context.
+ *
+ * Returns: %TRUE if there's a media element in the coordinates of the Hit Test,
+ *    or %FALSE otherwise
+ */
+gboolean webkit_hit_test_result_context_is_media(CyberKitHitTestResult* hitTestResult)
+{
+    g_return_val_if_fail(WEBKIT_IS_HIT_TEST_RESULT(hitTestResult), FALSE);
+
+    return hitTestResult->priv->context & WEBKIT_HIT_TEST_RESULT_CONTEXT_MEDIA;
+}
+
+/**
+ * webkit_hit_test_result_context_is_editable:
+ * @hit_test_result: a #CyberKitHitTestResult
+ *
+ * Gets whether %WEBKIT_HIT_TEST_RESULT_CONTEXT_EDITABLE flag is present in
+ * #CyberKitHitTestResult:context.
+ *
+ * Returns: %TRUE if there's an editable element at the coordinates of the @hit_test_result,
+ *    or %FALSE otherwise
+ */
+gboolean webkit_hit_test_result_context_is_editable(CyberKitHitTestResult* hitTestResult)
+{
+    g_return_val_if_fail(WEBKIT_IS_HIT_TEST_RESULT(hitTestResult), FALSE);
+
+    return hitTestResult->priv->context & WEBKIT_HIT_TEST_RESULT_CONTEXT_EDITABLE;
+}
+
+/**
+ * webkit_hit_test_result_context_is_selection:
+ * @hit_test_result: a #CyberKitHitTestResult
+ *
+ * Gets whether %WEBKIT_HIT_TEST_RESULT_CONTEXT_SELECTION flag is present in
+ * #CyberKitHitTestResult:context.
+ *
+ * Returns: %TRUE if there's a selected element at the coordinates of the @hit_test_result,
+ *    or %FALSE otherwise
+ *
+ * Since: 2.8
+ */
+gboolean webkit_hit_test_result_context_is_selection(CyberKitHitTestResult* hitTestResult)
+{
+    g_return_val_if_fail(WEBKIT_IS_HIT_TEST_RESULT(hitTestResult), FALSE);
+
+    return hitTestResult->priv->context & WEBKIT_HIT_TEST_RESULT_CONTEXT_SELECTION;
+}
+
+/**
+ * webkit_hit_test_result_get_link_uri:
+ * @hit_test_result: a #CyberKitHitTestResult
+ *
+ * Gets the value of the #CyberKitHitTestResult:link-uri property.
+ *
+ * Returns: the URI of the link element in the coordinates of the Hit Test,
+ *    or %NULL if there isn't a link element in @hit_test_result context
+ */
+const gchar* webkit_hit_test_result_get_link_uri(CyberKitHitTestResult* hitTestResult)
+{
+    g_return_val_if_fail(WEBKIT_IS_HIT_TEST_RESULT(hitTestResult), 0);
+
+    return hitTestResult->priv->linkURI.data();
+}
+
+/**
+ * webkit_hit_test_result_get_link_title:
+ * @hit_test_result: a #CyberKitHitTestResult
+ *
+ * Gets the value of the #CyberKitHitTestResult:link-title property.
+ *
+ * Returns: the title of the link element in the coordinates of the Hit Test,
+ *    or %NULL if there isn't a link element in @hit_test_result context or the
+ *    link element doesn't have a title
+ */
+const gchar* webkit_hit_test_result_get_link_title(CyberKitHitTestResult* hitTestResult)
+{
+    g_return_val_if_fail(WEBKIT_IS_HIT_TEST_RESULT(hitTestResult), 0);
+
+    return hitTestResult->priv->linkTitle.data();
+}
+
+/**
+ * webkit_hit_test_result_get_link_label:
+ * @hit_test_result: a #CyberKitHitTestResult
+ *
+ * Gets the value of the #CyberKitHitTestResult:link-label property.
+ *
+ * Returns: the label of the link element in the coordinates of the Hit Test,
+ *    or %NULL if there isn't a link element in @hit_test_result context or the
+ *    link element doesn't have a label
+ */
+const gchar* webkit_hit_test_result_get_link_label(CyberKitHitTestResult* hitTestResult)
+{
+    g_return_val_if_fail(WEBKIT_IS_HIT_TEST_RESULT(hitTestResult), 0);
+
+    return hitTestResult->priv->linkLabel.data();
+}
+
+/**
+ * webkit_hit_test_result_get_image_uri:
+ * @hit_test_result: a #CyberKitHitTestResult
+ *
+ * Gets the value of the #CyberKitHitTestResult:image-uri property.
+ *
+ * Returns: the URI of the image element in the coordinates of the Hit Test,
+ *    or %NULL if there isn't an image element in @hit_test_result context
+ */
+const gchar* webkit_hit_test_result_get_image_uri(CyberKitHitTestResult* hitTestResult)
+{
+    g_return_val_if_fail(WEBKIT_IS_HIT_TEST_RESULT(hitTestResult), 0);
+
+    return hitTestResult->priv->imageURI.data();
+}
+
+/**
+ * webkit_hit_test_result_get_media_uri:
+ * @hit_test_result: a #CyberKitHitTestResult
+ *
+ * Gets the value of the #CyberKitHitTestResult:media-uri property.
+ *
+ * Returns: the URI of the media element in the coordinates of the Hit Test,
+ *    or %NULL if there isn't a media element in @hit_test_result context
+ */
+const gchar* webkit_hit_test_result_get_media_uri(CyberKitHitTestResult* hitTestResult)
+{
+    g_return_val_if_fail(WEBKIT_IS_HIT_TEST_RESULT(hitTestResult), 0);
+
+    return hitTestResult->priv->mediaURI.data();
+}
+
+/**
+ * webkit_hit_test_result_context_is_scrollbar:
+ * @hit_test_result: a #CyberKitHitTestResult
+ *
+ * Gets whether %WEBKIT_HIT_TEST_RESULT_CONTEXT_SCROLLBAR flag is present in
+ * #CyberKitHitTestResult:context.
+ *
+ * Returns: %TRUE if there's a scrollbar element at the coordinates of the @hit_test_result,
+ *    or %FALSE otherwise
+ */
+gboolean webkit_hit_test_result_context_is_scrollbar(CyberKitHitTestResult* hitTestResult)
+{
+    g_return_val_if_fail(WEBKIT_IS_HIT_TEST_RESULT(hitTestResult), FALSE);
+
+    return hitTestResult->priv->context & WEBKIT_HIT_TEST_RESULT_CONTEXT_SCROLLBAR;
+}

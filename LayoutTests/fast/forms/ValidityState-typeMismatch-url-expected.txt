@@ -13,7 +13,7 @@ PASS http://[::7f00:0001]/ is a correct valid url.
 PASS http://[1::2:3]/ is a correct valid url.
 PASS http://[0000:0::ffff:10.0.0.1]/ is a correct valid url.
 PASS http://a is a correct valid url.
-PASS http://www.google.com/search?rls=en&q=WebKit&ie=UTF-8&oe=UTF-8 is a correct valid url.
+PASS http://www.google.com/search?rls=en&q=CyberKit&ie=UTF-8&oe=UTF-8 is a correct valid url.
 PASS ftp://ftp.myhost.com is a correct valid url.
 PASS ssh://ssh.myhost.com is a correct valid url.
 PASS mailto:tkent@chromium.org is a correct valid url.

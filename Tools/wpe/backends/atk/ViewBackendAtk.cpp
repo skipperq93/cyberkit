@@ -27,7 +27,7 @@
 
 #if defined(ENABLE_ACCESSIBILITY) && ENABLE_ACCESSIBILITY
 
-#include "WebKitAccessibleApplication.h"
+#include "CyberKitAccessibleApplication.h"
 #include <atk-bridge.h>
 #include <atk/atk.h>
 #include <glib.h>
@@ -143,7 +143,7 @@ void ViewBackend::initializeAccessibility()
     };
 
     atkUtilClass->get_toolkit_name = []() -> const gchar* {
-        return "WPEWebKit";
+        return "WPECyberKit";
     };
 
     atkUtilClass->get_toolkit_version = []() -> const gchar* {

@@ -21,7 +21,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 from resultsdbpy.model.mock_model_factory import MockModelFactory
-from resultsdbpy.model.repository import StashRepository, WebKitRepository
+from resultsdbpy.model.repository import StashRepository, CyberKitRepository
 from resultsdbpy.model.wait_for_docker_test_case import WaitForDockerTestCase
 
 
@@ -29,7 +29,7 @@ class RepositoryTest(WaitForDockerTestCase):
 
     def test_svn(self):
         with MockModelFactory.webkit():
-            svn_repo = WebKitRepository()
+            svn_repo = CyberKitRepository()
             self.assertTrue('webkit', svn_repo.key)
             commit = svn_repo.commit(revision=6)
             self.assertEqual(commit.uuid, 160163990000)
@@ -38,7 +38,7 @@ class RepositoryTest(WaitForDockerTestCase):
 
     def test_ref_svn(self):
         with MockModelFactory.webkit():
-            svn_repo = WebKitRepository()
+            svn_repo = CyberKitRepository()
             commit = svn_repo.commit(ref=7)
             self.assertEqual(commit.uuid, 160164090000)
             self.assertEqual(commit.message, '7th commit')

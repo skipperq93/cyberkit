@@ -49,7 +49,7 @@ sub build_flatpak_args
     }
 
     if (!exists($args->{"--jsc"})) {
-       $args->{"--jsc"} = "/app/webkit/WebKitBuild/$type/bin/jsc";
+       $args->{"--jsc"} = "/app/webkit/CyberKitBuild/$type/bin/jsc";
     }
     return %$args;
 }

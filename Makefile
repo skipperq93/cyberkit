@@ -4,7 +4,7 @@ endif
 
 ifneq ($(USE_WORKSPACE),NO)
 
-SCHEME = Everything up to WebKit + Tools
+SCHEME = Everything up to CyberKit + Tools
 SCRIPTS_PATH = Tools/Scripts
 include Makefile.shared
 

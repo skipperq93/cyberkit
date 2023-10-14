@@ -9,7 +9,7 @@ http://127.0.0.1:8800/common/security-features/subresource/script.py:
   "accept-encoding": "gzip, deflate",
   "connection": "keep-alive",
   "accept": "*/*",
-  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/605.1.15 (KHTML, like Gecko)",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleCyberKit/605.1.15 (KHTML, like Gecko)",
   "host": "127.0.0.1:8800",
   "referer": "http://localhost:8800/referrer-policy/generic/subresource-test/script-messaging.html"
 }

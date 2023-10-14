@@ -1,5 +1,5 @@
 //@ runDefault("--jitPolicyScale=0")
-// Run with for i in {1..1000}; do echo $i && VM=/path/to/WebKit/WebKitBuild/Debug/ && DYLD_FRAMEWORK_PATH=$VM $VM/jsc --useDollarVM=1 --jitPolicyScale=0 type-for-get-by-val-can-be-widen-after-ai.js ; done
+// Run with for i in {1..1000}; do echo $i && VM=/path/to/CyberKit/CyberKitBuild/Debug/ && DYLD_FRAMEWORK_PATH=$VM $VM/jsc --useDollarVM=1 --jitPolicyScale=0 type-for-get-by-val-can-be-widen-after-ai.js ; done
 
 function Hello(y) {
   this.y = y;

@@ -1,0 +1,130 @@
+/* This file is part of the CyberKit open source project.
+   
+   This library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Library General Public
+   License as published by the Free Software Foundation; either
+   version 2 of the License, or (at your option) any later version.
+
+   This library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Library General Public License for more details.
+
+   You should have received a copy of the GNU Library General Public License
+   along with this library; see the file COPYING.LIB.  If not, write to
+   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+   Boston, MA 02110-1301, USA.
+*/
+
+#ifndef webkitdomautocleanups_h
+#define webkitdomautocleanups_h
+
+#include <glib-object.h>
+
+#ifdef G_DEFINE_AUTOPTR_CLEANUP_FUNC
+#ifndef __GI_SCANNER__
+
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMAttr, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMBlob, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMCDATASection, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMCSSRule, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMCSSRuleList, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMCSSStyleDeclaration, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMCSSStyleSheet, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMCSSValue, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMCharacterData, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMClientRect, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMClientRectList, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMComment, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMDOMImplementation, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMDOMWindow, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMDocument, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMDocumentFragment, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMDocumentType, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMEvent, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMEventTarget, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMFile, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMFileList, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLAnchorElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLAppletElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLAreaElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLBRElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLBaseElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLBodyElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLButtonElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLCanvasElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLCollection, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLDListElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLDirectoryElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLDivElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLDocument, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLEmbedElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLFieldSetElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLFontElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLFormElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLFrameElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLFrameSetElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLHRElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLHeadElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLHeadingElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLHtmlElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLIFrameElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLImageElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLInputElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLLIElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLLabelElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLLegendElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLLinkElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLMapElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLMarqueeElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLMenuElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLMetaElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLModElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLOListElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLObjectElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLOptGroupElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLOptionElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLOptionsCollection, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLParagraphElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLParamElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLPreElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLQuoteElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLScriptElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLSelectElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLStyleElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLTableCaptionElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLTableCellElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLTableColElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLTableElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLTableRowElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLTableSectionElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLTextAreaElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLTitleElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMHTMLUListElement, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMKeyboardEvent, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMMediaList, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMMouseEvent, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMNamedNodeMap, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMNode, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMNodeFilter, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMNodeIterator, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMNodeList, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMObject, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMProcessingInstruction, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMRange, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMStyleSheet, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMStyleSheetList, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMText, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMTreeWalker, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMUIEvent, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMWheelEvent, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMXPathExpression, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMXPathNSResolver, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitDOMXPathResult, g_object_unref)
+
+#endif
+#endif
+
+#endif

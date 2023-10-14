@@ -32,7 +32,7 @@
             function snapshot()
             {
                 var boxComputedStyle = window.getComputedStyle(document.getElementById('box'));
-                var matrix = new WebKitCSSMatrix(boxComputedStyle.webkitTransform);
+                var matrix = new CyberKitCSSMatrix(boxComputedStyle.webkitTransform);
 
                 // "d" component (scaleY) should be negative.
                 if (matrix["d"] > 0)

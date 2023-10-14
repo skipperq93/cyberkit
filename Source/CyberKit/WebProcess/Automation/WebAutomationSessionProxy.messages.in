@@ -1,0 +1,46 @@
+# Copyright (C) 2016-2019 Apple Inc. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1.  Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+# 2.  Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in the
+#     documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+messages -> WebAutomationSessionProxy NotRefCounted {
+    EvaluateJavaScriptFunction(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String function, Vector<String> arguments, bool expectsImplicitCallbackArgument, std::optional<double> callbackTimeout, uint64_t callbackID)
+
+    ResolveChildFrameWithOrdinal(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, uint32_t ordinal) -> (std::optional<String> errorType, std::optional<CyberCore::FrameIdentifier> frameID)
+    ResolveChildFrameWithNodeHandle(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String nodeHandle) -> (std::optional<String> errorType, std::optional<CyberCore::FrameIdentifier> frameID)
+    ResolveChildFrameWithName(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String name) -> (std::optional<String> errorType, std::optional<CyberCore::FrameIdentifier> frameID)
+    ResolveParentFrame(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID) -> (std::optional<String> errorType, std::optional<CyberCore::FrameIdentifier> frameID)
+
+    ComputeElementLayout(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String nodeHandle, bool scrollIntoViewIfNeeded, enum:uint8_t CyberKit::CoordinateSystem coordinateSystem) -> (std::optional<String> errorType, CyberCore::FloatRect rect, std::optional<CyberCore::IntPoint> inViewCenterPoint, bool isObscured)
+
+    GetComputedRole(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String nodeHandle) -> (std::optional<String> role, std::optional<String> errorType)
+    GetComputedLabel(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String nodeHandle) -> (std::optional<String> role, std::optional<String> errorType)
+
+    SelectOptionElement(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String nodeHandle) -> (std::optional<String> errorType)
+
+    SetFilesForInputFileUpload(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String nodeHandle, Vector<String> filenames) -> (std::optional<String> errorType)
+
+    TakeScreenshot(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String nodeHandle, bool scrollIntoViewIfNeeded, bool clipToViewport, uint64_t callbackID)
+
+    SnapshotRectForScreenshot(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String nodeHandle, bool scrollIntoViewIfNeeded, bool clipToViewport) -> (std::optional<String> errorType, CyberCore::IntRect rect)
+
+    GetCookiesForFrame(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID) -> (std::optional<String> errorType, Vector<CyberCore::Cookie> cookies)
+    DeleteCookie(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String cookieName) -> (std::optional<String> errorType)
+}

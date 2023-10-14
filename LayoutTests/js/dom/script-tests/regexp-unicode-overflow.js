@@ -1,5 +1,5 @@
 description(
-'This test checks for a regression against <a href="rdar://problem/5271937"> REGRESSION: Apparent WebKit JavaScript memory smasher when submitting comment to iWeb site (crashes in kjs_pcre_compile2)</a>. If it fails, it may crash.'
+'This test checks for a regression against <a href="rdar://problem/5271937"> REGRESSION: Apparent CyberKit JavaScript memory smasher when submitting comment to iWeb site (crashes in kjs_pcre_compile2)</a>. If it fails, it may crash.'
 );
 
 //For some reason this needed to be done by a function call.

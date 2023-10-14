@@ -1,35 +1,35 @@
-This test ensures WebKit does not ignore the content of hr, datagrid, and object with child nodes.
+This test ensures CyberKit does not ignore the content of hr, datagrid, and object with child nodes.
 
 "world" and only "world" should be bolded in each element below:
 | <hr>
 |   "hello "
 |   <b>
 |     "world"
-|   " WebKit"
+|   " CyberKit"
 | <datagrid>
 |   "hello "
 |   <b>
 |     "world"
-|   " WebKit"
+|   " CyberKit"
 | <object>
 |   "hello <#selection-anchor>"
 |   <b>
 |     "world<#selection-focus>"
-|   " WebKit"
+|   " CyberKit"
 
 The result below should be identical to the result above:
 | <hr>
 |   "hello "
 |   <b>
 |     "world"
-|   " WebKit"
+|   " CyberKit"
 | <datagrid>
 |   "hello "
 |   <b>
 |     "world"
-|   " WebKit"
+|   " CyberKit"
 | <object>
 |   "hello "
 |   <b>
 |     "world"
-|   " WebKit"
+|   " CyberKit"

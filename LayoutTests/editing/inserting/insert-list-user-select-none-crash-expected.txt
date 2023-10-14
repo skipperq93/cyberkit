@@ -1,1 +1,1 @@
-Tests inserting list in paragraphs that have userSelect:none elements. The test passes if WebKit doesn't crash or hit an ssertion.
+Tests inserting list in paragraphs that have userSelect:none elements. The test passes if CyberKit doesn't crash or hit an ssertion.

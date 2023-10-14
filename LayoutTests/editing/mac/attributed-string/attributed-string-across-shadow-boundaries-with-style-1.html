@@ -6,7 +6,7 @@
 <script>
 
 const shadowRoot = host.attachShadow({mode: 'open'});
-shadowRoot.innerHTML = '<slot style="color: blue;"></slot> WebKit';
+shadowRoot.innerHTML = '<slot style="color: blue;"></slot> CyberKit';
 
 if (window.testRunner)
     dumpAttributedString(container, container, 0, shadowRoot.lastChild, shadowRoot.lastChild.data.indexOf('Kit'));

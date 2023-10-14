@@ -28,8 +28,8 @@
 OTHER_LDFLAGS[sdk=macosx*] = $(inherited) -framework Carbon -framework Cocoa -framework OpenGL -framework IOKit;
 STRIP_STYLE = debugging;
 
-WEBKIT_FRAMEWORK_RESOURCES_PATH = WebKit.framework;
-WEBKIT_FRAMEWORK_RESOURCES_PATH[sdk=macosx*] = WebKit.framework/Versions/A/Resources;
+WEBKIT_FRAMEWORK_RESOURCES_PATH = CyberKit.framework;
+WEBKIT_FRAMEWORK_RESOURCES_PATH[sdk=macosx*] = CyberKit.framework/Versions/A/Resources;
 
 INSTALL_PATH = $(INSTALL_PATH_$(CONFIGURATION))
 INSTALL_PATH_Release = $(INSTALL_PATH);

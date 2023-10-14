@@ -1,6 +1,6 @@
 # resultsdbpy
 
-Large projects (like [WebKit](https://webkit.org)) often have 10's of thousands of tests running on dozens of platforms. Making sense of results from theses tests is difficult. resultsdbpy aims to make visualizing, processing and storing those results easier.
+Large projects (like [CyberKit](https://webkit.org)) often have 10's of thousands of tests running on dozens of platforms. Making sense of results from theses tests is difficult. resultsdbpy aims to make visualizing, processing and storing those results easier.
 
 ## Requirements
 
@@ -23,7 +23,7 @@ from flask import Flask, request
 from resultsdbpy.controller.api_routes import APIRoutes
 from resultsdbpy.model.mock_cassandra_context import MockCassandraContext
 from resultsdbpy.model.model import Model
-from resultsdbpy.model.repository import WebKitRepository
+from resultsdbpy.model.repository import CyberKitRepository
 from resultsdbpy.view.view_routes import ViewRoutes
 
 # By default, Cassandra forbids schema management
@@ -39,7 +39,7 @@ cassandra=MockCassandraContext(
 model = Model(
 	redis=FakeStrictRedis(),                 # An in-memory Redis database for testing
 	cassandra=cassandra,
-	repositories=[WebKitRepository()],       # This should be replaced with a class for your project's repository
+	repositories=[CyberKitRepository()],       # This should be replaced with a class for your project's repository
 	default_ttl_seconds=Model.TTL_WEEK * 4,  # Retain 4 weeks of results
 	async_processing=False,                  # Processing asynchronously requires instantiating worker processes
 )
@@ -47,7 +47,7 @@ model = Model(
 app = Flask(__name__)
 api_routes = APIRoutes(model=model, import_name=__name__)
 view_routes = ViewRoutes(
-    title='WebKit Results Database',
+    title='CyberKit Results Database',
     model=model, controller=api_routes, import_name=__name__,
 )
 

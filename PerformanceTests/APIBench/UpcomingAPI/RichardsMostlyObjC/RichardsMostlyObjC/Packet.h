@@ -26,7 +26,7 @@
 #import "Device.h"
 
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

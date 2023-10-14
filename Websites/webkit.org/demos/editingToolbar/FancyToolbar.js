@@ -81,7 +81,7 @@ function FancyToolbar(iframe)
     iframe.contentDocument.addEventListener("focus", function(event) { toolbar.show() }, false);
     iframe.contentDocument.addEventListener("blur", function(event) { toolbar.hide() }, false);
 
-    // WebKit sends the blur and focus events on the frame's window object
+    // CyberKit sends the blur and focus events on the frame's window object
     iframe.contentDocument.defaultView.addEventListener("focus", function(event) { toolbar.show() }, false);
     iframe.contentDocument.defaultView.addEventListener("blur", function(event) { toolbar.hide() }, false);
 }

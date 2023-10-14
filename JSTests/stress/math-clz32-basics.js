@@ -50,9 +50,9 @@ function verifyMathClz32OnIntegerWithOtherTypes()
     if (clzString != 26)
         throw "mathClz32OnInteger(\"42\") = " + clzString;
 
-    var clzString = mathClz32OnInteger("WebKit");
+    var clzString = mathClz32OnInteger("CyberKit");
     if (clzString != 32)
-        throw "mathClz32OnInteger(\"WebKit\") = " + clzString;
+        throw "mathClz32OnInteger(\"CyberKit\") = " + clzString;
 
     var clzMinusZero = mathClz32OnInteger(-0);
     if (clzMinusZero != 32)
@@ -120,9 +120,9 @@ function verifyMathClz32OnDoublesWithOtherTypes()
     if (clzString != 26)
         throw "mathClz32OnDouble(\"42\") = " + clzString;
 
-    var clzString = mathClz32OnDouble("WebKit");
+    var clzString = mathClz32OnDouble("CyberKit");
     if (clzString != 32)
-        throw "mathClz32OnDouble(\"WebKit\") = " + clzString;
+        throw "mathClz32OnDouble(\"CyberKit\") = " + clzString;
 
     var clzMinusZero = mathClz32OnDouble({});
     if (clzMinusZero != 32)

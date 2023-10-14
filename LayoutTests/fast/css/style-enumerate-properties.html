@@ -70,7 +70,7 @@
         shouldBeTrue(`group2.some(property => property.startsWith("Epub"))`);
         shouldBeTrue(`group2.every(property => !property.includes("-"))`);
 
-        // Group 3 - WebKit Case
+        // Group 3 - CyberKit Case
         let group3Clone = [...group3];
         group3Clone.sort();
         shouldBe("group3", "group3Clone");

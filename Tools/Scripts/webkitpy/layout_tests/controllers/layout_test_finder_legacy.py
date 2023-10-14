@@ -47,7 +47,7 @@ _skipped_filename_patterns = set([
     # Special case for WebSocket tooling.
     r'.*_wsh.py',
 
-    # The WebKit1 bot sometimes creates these files during the course of testing.
+    # The CyberKit1 bot sometimes creates these files during the course of testing.
     # https://webkit.org/b/208477
     r'boot\.xml',
     r'root\.xml'

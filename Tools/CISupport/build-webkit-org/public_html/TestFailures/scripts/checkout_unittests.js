@@ -55,11 +55,11 @@ test("rebaseline", 3, function() {
 
     simulator.runTest(function() {
         checkout.rebaseline([{
-            'builderName': 'WebKit Linux',
+            'builderName': 'CyberKit Linux',
             'testName': 'another/test.svg',
             'failureTypeList': ['IMAGE'],
         }, {
-            'builderName': 'WebKit Mac10.6',
+            'builderName': 'CyberKit Mac10.6',
             'testName': 'another/test.svg',
             'failureTypeList': ['IMAGE', 'TEXT', 'IMAGE+TEXT'],
         }, {
@@ -79,8 +79,8 @@ test("rebaseline", 3, function() {
         ["/rebaselineall",
          JSON.stringify({
              "another/test.svg": {
-                 "WebKit Linux": ["png"], 
-                 "WebKit Mac10.6": ["png","txt"]},
+                 "CyberKit Linux": ["png"], 
+                 "CyberKit Mac10.6": ["png","txt"]},
              "fast/test.html": {
                  "Webkit Win7": ["txt","png"]
              }})]

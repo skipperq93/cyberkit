@@ -1,6 +1,6 @@
 promise_test(() => fetch("resources/IdnaTestV2.json").then(res => res.json()).then(runTests), "Loading data…");
 
-// Performance impact of this seems negligible (performance.now() diff in WebKit went from 48 to 52)
+// Performance impact of this seems negligible (performance.now() diff in CyberKit went from 48 to 52)
 // and there was a preference to let more non-ASCII hit the parser.
 function encodeHostEndingCodePoints(input) {
   let output = "";

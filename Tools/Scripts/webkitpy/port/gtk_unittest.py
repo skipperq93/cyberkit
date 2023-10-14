@@ -138,4 +138,4 @@ class GtkPortTest(port_testcase.PortTestCase):
                                '/mock-checkout/LayoutTests/platform/wk2/TestExpectations',
                                '/mock-checkout/LayoutTests/platform/glib/TestExpectations',
                                '/mock-checkout/LayoutTests/platform/gtk/TestExpectations'])
-            self.assertEqual(captured.root.log.getvalue(), 'Multiple WebKit2GTK libraries found. Skipping GTK4 detection.\n')
+            self.assertEqual(captured.root.log.getvalue(), 'Multiple CyberKit2GTK libraries found. Skipping GTK4 detection.\n')

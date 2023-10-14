@@ -26,10 +26,10 @@
 #include "stdafx.h"
 
 #include "Common2.h"
-#include <WebKit/WKBundle.h>
-#include <WebKit/WKBundleFramePrivate.h>
-#include <WebKit/WKBundlePage.h>
-#include <WebKit/WKBundlePrivate.h>
+#include <CyberKit/WKBundle.h>
+#include <CyberKit/WKBundleFramePrivate.h>
+#include <CyberKit/WKBundlePage.h>
+#include <CyberKit/WKBundlePrivate.h>
 
 void didReceiveMessageToPage(WKBundleRef bundle, WKBundlePageRef page, WKStringRef messageName, WKTypeRef messageBody, const void* clientInfo)
 {
