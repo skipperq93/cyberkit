@@ -26,6 +26,10 @@
 #import "config.h"
 #import "ApplicationStateTracker.h"
 
+#if !HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
+#import "AssertionServicesSPI.h"
+#endif
+
 #if PLATFORM(IOS_FAMILY)
 
 #import "EndowmentStateTracker.h"
@@ -85,6 +89,18 @@ ApplicationType applicationType(UIWindow *window)
     return ApplicationType::Application;
 }
 
+#if !HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
+static bool isBackgroundState(BKSApplicationState state) {
+    switch (state) {
+        case BKSApplicationStateBackgroundRunning:
+        case BKSApplicationStateBackgroundTaskSuspended:
+            return true;
+        default:
+            return false;
+    }
+}
+#endif
+
 ApplicationStateTracker::ApplicationStateTracker(UIView *view, SEL didEnterBackgroundSelector, SEL didFinishSnapshottingAfterEnteringBackgroundSelector, SEL willEnterForegroundSelector, SEL willBeginSnapshotSequenceSelector, SEL didCompleteSnapshotSequenceSelector)
     : m_view(view)
     , m_didEnterBackgroundSelector(didEnterBackgroundSelector)
@@ -118,9 +134,9 @@ ApplicationStateTracker::ApplicationStateTracker(UIView *view, SEL didEnterBackg
 
     switch (applicationType(window)) {
     case ApplicationType::Application: {
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
         m_isInBackground = window.windowScene.activationState == UISceneActivationStateBackground || window.windowScene.activationState == UISceneActivationStateUnattached;
         RELEASE_LOG(ViewState, "%p - ApplicationStateTracker::ApplicationStateTracker(): m_isInBackground=%d", this, m_isInBackground);
-#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
         m_didEnterBackgroundObserver = [notificationCenter addObserverForName:UISceneDidEnterBackgroundNotification object:nil queue:nil usingBlock:[this](NSNotification *notification) {
             if (notification.object == [[m_view window] windowScene]) {
                 RELEASE_LOG(ViewState, "%p - ApplicationStateTracker: UISceneDidEnterBackground", this);
@@ -165,6 +181,10 @@ ApplicationStateTracker::ApplicationStateTracker(UIView *view, SEL didEnterBackg
         ASSERT(applicationPID);
 #if HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
         m_isInBackground = !EndowmentStateTracker::isApplicationForeground(applicationPID);
+#else
+        auto applicationStateMonitor = adoptNS([[BKSApplicationStateMonitor alloc] init]);
+        m_isInBackground = isBackgroundState([applicationStateMonitor mostElevatedApplicationStateForPID:applicationPID]);
+        [applicationStateMonitor invalidate];
 #endif
 
         // Workaround for <rdar://problem/34028921>. If the host application is StoreKitUIService then it is also a ViewService
@@ -195,6 +215,12 @@ ApplicationStateTracker::ApplicationStateTracker(UIView *view, SEL didEnterBackg
 ApplicationStateTracker::~ApplicationStateTracker()
 {
     RELEASE_LOG(ViewState, "%p - ~ApplicationStateTracker", this);
+#if !HAVE(RUNNINGBOARD_VISIBLITY_ASSERTIONS)
+    if (m_applicationStateMonitor) {
+        [m_applicationStateMonitor invalidate];
+        return;
+    }
+#endif
 
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter removeObserver:m_didEnterBackgroundObserver];
