@@ -387,6 +387,7 @@ static NSString *runningBoardNameForAssertionType(ProcessAssertionType assertion
         return @"BoostedJetsam";
     }
 #else
+    UNUSED_PARAM(assertionType);
     return nil;
 #endif
 }
@@ -409,6 +410,8 @@ static BKSProcessAssertionFlags flagsForAssertionType(ProcessAssertionType asser
     case ProcessAssertionType::MediaPlayback:
         return foregroundTabFlags;
     case ProcessAssertionType::FinishTaskInterruptable:
+    case ProcessAssertionType::BoostedJetsam:
+        ASSERT_NOT_REACHED();
         return 0;
     }
 }
@@ -425,6 +428,8 @@ static BKSProcessAssertionReason toBKSProcessAssertionReason(ProcessAssertionTyp
     case ProcessAssertionType::MediaPlayback:
         return BKSProcessAssertionReasonMediaPlayback;
     case ProcessAssertionType::FinishTaskInterruptable:
+    case ProcessAssertionType::BoostedJetsam:
+        ASSERT_NOT_REACHED();
         return 0;
     }
 }
