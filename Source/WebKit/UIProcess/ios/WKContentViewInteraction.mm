@@ -10488,7 +10488,14 @@ static BOOL applicationIsKnownToIgnoreMouseEvents(const char* &warningVersion)
 
     if (self.webView._editable) {
         if (_positionInformation.shouldNotUseIBeamInEditableContent)
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
             return [UIPointerStyle systemPointerStyle];
+#else
+        {
+            UITargetedPreview* p = [[UITargetedPreview alloc] initWithView:interaction.view];
+            return [UIPointerStyle styleWithEffect:[UIPointerEffect effectWithPreview:p] shape:nil];
+        }
+#endif
         return iBeamCursor();
     }
 
@@ -10496,13 +10503,27 @@ static BOOL applicationIsKnownToIgnoreMouseEvents(const char* &warningVersion)
         WebCore::Cursor::Type cursorType = _positionInformation.cursor->type();
 
         if (cursorType == WebCore::Cursor::Hand)
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
             return [UIPointerStyle systemPointerStyle];
+#else
+        {
+            UITargetedPreview* p = [[UITargetedPreview alloc] initWithView:interaction.view];
+            return [UIPointerStyle styleWithEffect:[UIPointerEffect effectWithPreview:p] shape:nil];
+        }
+#endif
 
         if (cursorType == WebCore::Cursor::IBeam && _positionInformation.lineCaretExtent.contains(_positionInformation.request.point))
             return iBeamCursor();
     }
 
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
     return [UIPointerStyle systemPointerStyle];
+#else
+    {
+        UITargetedPreview* p = [[UITargetedPreview alloc] initWithView:interaction.view];
+        return [UIPointerStyle styleWithEffect:[UIPointerEffect effectWithPreview:p] shape:nil];
+    }
+#endif
 }
 
 #endif // HAVE(UI_POINTER_INTERACTION)
@@ -11437,7 +11458,9 @@ static BOOL shouldUseMachineReadableCodeMenuFromImageAnalysisResult(CocoaImageAn
 
 - (void)captureTextFromCameraForWebView:(id)sender
 {
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
     [super captureTextFromCamera:sender];
+#endif
 }
 
 #endif // ENABLE(IMAGE_ANALYSIS)

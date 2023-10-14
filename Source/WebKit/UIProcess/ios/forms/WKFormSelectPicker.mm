@@ -595,7 +595,12 @@ ALLOW_DEPRECATED_DECLARATIONS_END
         currentIndex++;
     }
 
-    return [UIMenu menuWithTitle:@"" image:nil identifier:nil options:(UIMenuOptionsSingleSelection | (UIMenuOptions)UIMenuOptionsPrivateRemoveLineLimitForChildren) children:items];
+    UIMenuOptions o = (UIMenuOptions)UIMenuOptionsPrivateRemoveLineLimitForChildren;
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
+    o |= UIMenuOptionsSingleSelection;
+#endif
+
+    return [UIMenu menuWithTitle:@"" image:nil identifier:nil options:o children:items];
 }
 
 - (UIAction *)actionForOptionItem:(const OptionItem&)option withIndex:(NSInteger)optionIndex

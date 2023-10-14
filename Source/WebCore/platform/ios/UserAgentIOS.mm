@@ -61,7 +61,7 @@ ASCIILiteral osNameForUserAgent()
     return "iPhone OS"_s;
 }
 
-#if !USE(STATIC_IPAD_USER_AGENT_VALUE)
+#ifndef CYBERKIT_DEPLOYMENT_TARGET
 static StringView deviceNameForUserAgent()
 {
     if (isClassic()) {
@@ -88,12 +88,12 @@ String standardUserAgentWithApplicationName(const String& applicationName, const
     auto separator = applicationName.isEmpty() ? "" : " ";
 
     if (type == UserAgentType::Desktop)
-        return makeString("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko)", separator, applicationName);
+        return makeString("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15");
 
-#if USE(STATIC_IPAD_USER_AGENT_VALUE)
+#ifdef CYBERKIT_DEPLOYMENT_TARGET
     UNUSED_PARAM(userAgentOSVersion);
     UNUSED_PARAM(separator);
-    return makeString("Mozilla/5.0 (iPad; CPU OS 16_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Mobile/15E148 Safari/604.1");
+    return makeString("Mozilla/5.0 (iPad; CPU OS 17_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1");
 #else
     // FIXME: We should deprecate and remove this override; see https://bugs.webkit.org/show_bug.cgi?id=217927 for details.
     if (auto override = dynamic_cf_cast<CFStringRef>(adoptCF(CFPreferencesCopyAppValue(CFSTR("UserAgent"), CFSTR("com.apple.WebFoundation")))))
