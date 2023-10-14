@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <icuSystemParams type="icu4c">
+    <param name="copyright"> Copyright (C) 2016 and later: Unicode, Inc. and others. License & terms of use: http://www.unicode.org/copyright.html </param>
+    <param name="product">icu4c</param>
+    <param name="product.full">International Components for Unicode for C/C++</param>
+    <param name="version">73.1</param>
+    <param name="version.unicode">15.0</param>
+    <param name="platform.number">3500</param>
+    <param name="platform.type">Darwin</param>
+    <param name="locale.default">en_US_POSIX</param>
+    <param name="locale.default.bcp47">en-US-u-va-posix</param>
+    <param name="converter.default">UTF-8</param>
+    <param name="icudata.name">icudt73l</param>
+    <param name="icudata.path">../../data/out/build/icudt73l</param>
+    <param name="cldr.version">43.0</param>
+    <param name="tz.version">2023c</param>
+    <param name="tz.default">America/Chicago</param>
+    <param name="cpu.bits">64</param>
+    <param name="cpu.big_endian">0</param>
+    <param name="os.wchar_width">4</param>
+    <param name="os.charset_family">0</param>
+    <param name="os.host">x86_64-apple-darwin22.4.0</param>
+    <param name="build.build">x86_64-apple-darwin22.4.0</param>
+    <param name="build.cc">clang</param>
+    <param name="build.cxx">clang++</param>
+    <param name="uconfig.internal_digitlist">1</param>
+    <param name="uconfig.have_parseallinput">1</param>
+ </icuSystemParams>
