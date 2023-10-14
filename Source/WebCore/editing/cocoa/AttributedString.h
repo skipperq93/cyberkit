@@ -52,7 +52,12 @@
 #define PlatformImageClass              PAL::getUIImageClass()
 #define PlatformNSColorClass            getNSColorClass()
 #define PlatformNSParagraphStyle        PAL::getNSParagraphStyleClass()
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
 #define PlatformNSPresentationIntent    PAL::getNSPresentationIntentClass()
+#define CyberPresentationIntent         NSPresentationIntent
+#else
+#define PlatformNSPresentationIntent    CyberPresentationIntent.class
+#endif
 #define PlatformNSShadow                PAL::getNSShadowClass()
 #define PlatformNSTextAttachment        getNSTextAttachmentClass()
 #define PlatformNSTextList              getNSTextListClass()
@@ -65,10 +70,25 @@ OBJC_CLASS NSAttributedString;
 OBJC_CLASS NSDate;
 OBJC_CLASS NSDictionary;
 OBJC_CLASS NSParagraphStyle;
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
 OBJC_CLASS NSPresentationIntent;
+#else
+OBJC_CLASS CyberPresentationIntent;
+#endif
 OBJC_CLASS NSShadow;
 OBJC_CLASS NSTextAttachment;
 OBJC_CLASS PlatformColor;
+
+#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000 && defined(__OBJC__)
+WEBCORE_EXPORT @interface CyberPresentationIntent : NSObject
+@property(readonly) NSInteger identity;
+@property(readonly, nullable, strong) CyberPresentationIntent *parentIntent;
++ (CyberPresentationIntent *_Nonnull)blockQuoteIntentWithIdentity:(NSInteger)identity
+                                    nestedInsideIntent:(CyberPresentationIntent *_Nullable)parent;
+- (CyberPresentationIntent *_Nonnull) initWithIdentity:(NSInteger)identity
+                                       parentIntent:(CyberPresentationIntent *_Nullable)parent;
+@end
+#endif
 
 namespace WebCore {
 
@@ -88,7 +108,7 @@ struct WEBCORE_EXPORT AttributedString {
             Vector<String>,
             Vector<double>,
             RetainPtr<NSParagraphStyle>,
-            RetainPtr<NSPresentationIntent>,
+            RetainPtr<CyberPresentationIntent>,
             RetainPtr<NSTextAttachment>,
             RetainPtr<NSShadow>,
             RetainPtr<NSDate>,
