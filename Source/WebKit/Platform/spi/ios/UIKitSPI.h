@@ -169,6 +169,8 @@
 #import <UIKit/NSItemProvider+UIKitAdditions.h>
 #endif
 
+#import <wtf/SoftLinking.h>
+
 typedef NS_ENUM(NSInteger, _UIDataOwner) {
     _UIDataOwnerUndefined,
     _UIDataOwnerUser,
@@ -233,7 +235,9 @@ WTF_EXTERN_C_END
 - (void)_enqueueHIDEvent:(IOHIDEventRef)event;
 - (void)_handleHIDEvent:(IOHIDEventRef)event;
 - (void)handleKeyUIEvent:(UIEvent *)event;
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
 - (BOOL)_appAdoptsUISceneLifecycle;
+#endif
 @end
 
 @interface UIColor ()
@@ -894,8 +898,10 @@ typedef NS_ENUM(NSInteger, UIWKGestureType) {
 - (void)_cancelLongPressGestureRecognizer;
 
 @optional
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
 - (void)insertTextPlaceholderWithSize:(CGSize)size completionHandler:(void (^)(UITextPlaceholder *))completionHandler;
 - (void)removeTextPlaceholder:(UITextPlaceholder *)placeholder willInsertText:(BOOL)willInsertText completionHandler:(void (^)(void))completionHandler;
+#endif
 
 - (void)clearSelection;
 - (void)replaceDictatedText:(NSString *)oldText withText:(NSString *)newText;
@@ -1700,10 +1706,10 @@ extern const NSString *UIPreviewDataDDContext;
 extern const NSString *UIPreviewDataAttachmentList;
 extern const NSString *UIPreviewDataAttachmentIndex;
 
-#if __IPHONE_OS_VERSION_MAX_ALLOWED < 130000
-extern NSString * const UIPreviewDataAttachmentListSourceIsManaged;
-#else
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
 extern NSString * const UIPreviewDataAttachmentListIsContentManaged;
+#else
+SOFT_LINK_CONSTANT_FOR_HEADER(CyberKit, UIKit, UIPreviewDataAttachmentListSourceIsManaged, NSString *)
 #endif
 
 UIEdgeInsets UIEdgeInsetsAdd(UIEdgeInsets lhs, UIEdgeInsets rhs, UIRectEdge);
