@@ -37,9 +37,9 @@ namespace CyberKit {
 LaunchServicesDatabaseObserver::LaunchServicesDatabaseObserver(NetworkProcess&)
 {
 #if HAVE(LSDATABASECONTEXT) && !HAVE(SYSTEM_CONTENT_LS_DATABASE)
-    if (![LSDatabaseContext.sharedDatabaseContext respondsToSelector:@selector(addDatabaseChangeObserver4CyberKit:)])
+    if (![LSDatabaseContext.sharedDatabaseContext respondsToSelector:@selector(addDatabaseChangeObserver4WebKit:)])
             return;
-    m_observer = [LSDatabaseContext.sharedDatabaseContext addDatabaseChangeObserver4CyberKit:^(xpc_object_t change) {
+    m_observer = [LSDatabaseContext.sharedDatabaseContext addDatabaseChangeObserver4WebKit:^(xpc_object_t change) {
         auto message = adoptOSObject(xpc_dictionary_create(nullptr, nullptr, 0));
         xpc_dictionary_set_string(message.get(), XPCEndpoint::xpcMessageNameKey, LaunchServicesDatabaseXPCConstants::xpcUpdateLaunchServicesDatabaseMessageName);
         xpc_dictionary_set_value(message.get(), LaunchServicesDatabaseXPCConstants::xpcLaunchServicesDatabaseKey, change);
@@ -77,14 +77,14 @@ void LaunchServicesDatabaseObserver::startObserving(OSObjectPtr<xpc_connection_t
 
     }).get()];
 #elif HAVE(LSDATABASECONTEXT)
-    if (![LSDatabaseContext.sharedDatabaseContext respondsToSelector:@selector(addDatabaseChangeObserver4CyberKit:)]) {
+    if (![LSDatabaseContext.sharedDatabaseContext respondsToSelector:@selector(addDatabaseChangeObserver4WebKit:)]) {
         auto message = adoptOSObject(xpc_dictionary_create(nullptr, nullptr, 0));
         xpc_dictionary_set_string(message.get(), XPCEndpoint::xpcMessageNameKey, LaunchServicesDatabaseXPCConstants::xpcUpdateLaunchServicesDatabaseMessageName);
         xpc_connection_send_message(connection.get(), message.get());
         return;
     }
     
-    RetainPtr<id> observer = [LSDatabaseContext.sharedDatabaseContext addDatabaseChangeObserver4CyberKit:^(xpc_object_t change) {
+    RetainPtr<id> observer = [LSDatabaseContext.sharedDatabaseContext addDatabaseChangeObserver4WebKit:^(xpc_object_t change) {
         auto message = adoptOSObject(xpc_dictionary_create(nullptr, nullptr, 0));
         xpc_dictionary_set_string(message.get(), XPCEndpoint::xpcMessageNameKey, LaunchServicesDatabaseXPCConstants::xpcUpdateLaunchServicesDatabaseMessageName);
         xpc_dictionary_set_value(message.get(), LaunchServicesDatabaseXPCConstants::xpcLaunchServicesDatabaseKey, change);
