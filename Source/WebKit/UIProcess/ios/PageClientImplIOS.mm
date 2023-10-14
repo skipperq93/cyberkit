@@ -157,16 +157,37 @@ bool PageClientImpl::isViewVisible()
 
 bool PageClientImpl::canTakeForegroundAssertions()
 {
+#if HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
     if (EndowmentStateTracker::singleton().isVisible()) {
         // If the application is visible according to the UIKit visibility endowment then we can take
         // foreground assertions. Note that for view services, the visibility endownment from the host
         // application gets propagated to the view service.
         return true;
     }
-
     // If there is no run time limitation, then it means that the process is allowed to run for an extended
     // period of time in the background (e.g. a daemon) and we let such processes take foreground assertions.
     return [RBSProcessHandle currentProcess].activeLimitations.runTime == RBSProcessTimeLimitationNone;
+#else
+    if (applicationType([m_webView window]) == ApplicationType::Application) {
+            ASSERT(!_UIApplicationIsExtension());
+            return [[UIApplication sharedApplication] applicationState] != UIApplicationStateBackground;
+        }
+
+        // Complex code path for extensions and view services.
+        UIViewController *serviceViewController = nil;
+        for (UIView *view = m_webView.get().get(); view; view = view.superview) {
+            UIViewController *viewController = [UIViewController viewControllerForView:view];
+            if (viewController._hostProcessIdentifier) {
+                serviceViewController = viewController;
+                break;
+            }
+        }
+        ASSERT(serviceViewController);
+        pid_t applicationPID = serviceViewController._hostProcessIdentifier;
+        ASSERT(applicationPID);
+
+    return true;
+#endif
 }
 
 bool PageClientImpl::isViewInWindow()

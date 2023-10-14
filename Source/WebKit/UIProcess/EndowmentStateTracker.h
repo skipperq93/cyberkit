@@ -25,7 +25,7 @@
 
 #pragma once
 
-#if PLATFORM(IOS_FAMILY)
+#if HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
 
 #import <wtf/RetainPtr.h>
 #import <wtf/WeakHashSet.h>

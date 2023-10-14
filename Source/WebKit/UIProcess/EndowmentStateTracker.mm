@@ -26,7 +26,7 @@
 #include "config.h"
 #include "EndowmentStateTracker.h"
 
-#if PLATFORM(IOS_FAMILY)
+#if HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
 
 #import "Logging.h"
 #import "RunningBoardServicesSPI.h"
