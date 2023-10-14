@@ -89,22 +89,35 @@ echo "[15/15] Fakesigning MobileMiniBrowser"
 ldid -S"script_fakesigner.entitlements" "$app/${app:0:${#app}-4}"
 rm script_fakesigner.entitlements
 
-# Package into DEB
+# Setup for DEB packaging
 cd ..
 rm *.deb
-mkdir com.matthewbenedict.mobileminibrowser
-mv Payload com.matthewbenedict.mobileminibrowser/Applications
-mkdir com.matthewbenedict.mobileminibrowser/DEBIAN
-cp $SCRIPT_DIR/control com.matthewbenedict.mobileminibrowser/DEBIAN
-cp $SCRIPT_DIR/postinst com.matthewbenedict.mobileminibrowser/DEBIAN
+DIR_NAME=$1
+DEBIAN_FILES=$SCRIPT_DIR/resources/$DIR_NAME
+if [[ "$DIR_NAME" == *"+"* ]]; then
+    APPLICATION_PATH=$DIR_NAME/Applications
+else
+    APPLICATION_PATH=$DIR_NAME/var/jb/Applications
+fi
+
+# Package into DEB
+echo "[*] Creating DEB..."
+mkdir $DIR_NAME
+if [[ "$DIR_NAME" != *"+"* ]]; then
+    mkdir $DIR_NAME/var
+    mkdir $DIR_NAME/var/jb
+fi
+mv Payload $APPLICATION_PATH
+mkdir $DIR_NAME/DEBIAN
+cp $DEBIAN_FILES/control $DIR_NAME/DEBIAN
+cp $DEBIAN_FILES/postinst $DIR_NAME/DEBIAN
 find . -name ".DS_Store" -delete && \
-dpkg-deb -b com.matthewbenedict.mobileminibrowser && \
-dpkg-name com.matthewbenedict.mobileminibrowser.deb
-mv com.matthewbenedict.mobileminibrowser/Applications Payload
-rm -rf com.matthewbenedict.mobileminibrowser
+dpkg-deb -b $DIR_NAME && dpkg-name $DIR_NAME.deb
+mv $APPLICATION_PATH Payload
+rm -rf $DIR_NAME
 
 # Package into IPA
-echo "[*] packaging.."
+echo "[*] Creating IPA..."
 rm -f "$ipa.ipa" || true
 zip -r -y "$ipa.ipa" Payload
 echo "[*] Created $ipa.ipa"
