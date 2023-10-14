@@ -36,7 +36,9 @@
 #include "sdk/objc/Framework/Classes/VideoToolbox/nalu_rewriter.h"
 #include "system_wrappers/include/clock.h"
 
+#if HAVE_VTB_REQUIREDLOWLATENCY
 VT_EXPORT const CFStringRef kVTVideoEncoderSpecification_RequiredLowLatency;
+#endif
 
 @interface RTCVideoEncoderH265 ()
 
@@ -419,8 +421,10 @@ void compressionOutputCallback(void* encoder,
       nullptr,  // use default compressed data allocator
       compressionOutputCallback, nullptr, &_compressionSession);
   if (status != noErr) {
+#if HAVE_VTB_REQUIREDLOWLATENCY
     if (encoder_specs)
       CFDictionaryRemoveValue(encoder_specs, kVTVideoEncoderSpecification_RequiredLowLatency);
+#endif
     status = VTCompressionSessionCreate(
         nullptr,  // use default allocator
         _width, _height, kCMVideoCodecType_HEVC,
