@@ -46,6 +46,7 @@ static constexpr uint32_t maxUInt32Limit()
 
 static HardwareCapabilities::BaseCapabilities baseCapabilities(id<MTLDevice> device)
 {
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
     id<MTLCounterSet> timestampCounterSet = nil;
     id<MTLCounterSet> statisticCounterSet = nil;
 
@@ -74,6 +75,16 @@ static HardwareCapabilities::BaseCapabilities baseCapabilities(id<MTLDevice> dev
         false, // To be filled in by the caller.
         counterSamplingAPI,
     };
+#else
+    return {
+        [device argumentBuffersSupport],
+        false, // To be filled in by the caller.
+        nil,
+        nil,
+        false, // To be filled in by the caller.
+        HardwareCapabilities::BaseCapabilities::CounterSamplingAPI::StageBoundary
+    };
+#endif
 }
 
 static Vector<WGPUFeatureName> baseFeatures(id<MTLDevice> device, const HardwareCapabilities::BaseCapabilities& baseCapabilities)
