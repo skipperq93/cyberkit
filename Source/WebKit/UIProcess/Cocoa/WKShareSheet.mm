@@ -28,6 +28,12 @@
 
 #if PLATFORM(COCOA) && !PLATFORM(WATCHOS) && !PLATFORM(APPLETV)
 
+#if HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
+#import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
+#else
+#import <MobileCoreServices/MobileCoreServices.h>
+#endif
+
 #import "WKWebViewInternal.h"
 #import "WebPageProxy.h"
 #import <WebCore/RuntimeApplicationChecks.h>
@@ -45,7 +51,6 @@
 #import "LinkPresentationSPI.h"
 #import "UIKitSPI.h"
 #import "WKContentViewInteraction.h"
-#import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
 #else
 #import <pal/spi/mac/NSSharingServicePickerSPI.h>
 #endif
@@ -98,11 +103,19 @@ SOFT_LINK_CLASS(LinkPresentation, LPMetadataProvider)
         return typeIdentifier;
 
     if (NSString *pathExtension = [_url pathExtension]) {
+#if HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
         if (UTType *type = [UTType typeWithFilenameExtension:pathExtension])
             return type.identifier;
+#else
+        static CFStringRef kUTTagClassFilenameExtension;
+        CFStringRef fileExtension = (__bridge CFStringRef)[_url pathExtension];
+        CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension, nullptr);
+        if (UTI != NULL)
+            return (__bridge NSString*) UTI;
+#endif
     }
 
-    return UTTypeData.identifier;
+    return @"public.data";
 }
 
 - (LPLinkMetadata *)activityViewControllerLinkMetadata:(UIActivityViewController *)activityViewController

@@ -299,7 +299,7 @@ void requestBackgroundRemoval(CGImageRef image, CompletionHandler<void(CGImageRe
     }
 
     // FIXME (rdar://88834023): We should find a way to avoid this extra transcoding.
-    auto tiffData = transcode(image, (__bridge CFStringRef)UTTypeTIFF.identifier);
+    auto tiffData = transcode(image, (__bridge CFStringRef)@"public.tiff");
     if (![tiffData length]) {
         completion(nullptr);
         return;
