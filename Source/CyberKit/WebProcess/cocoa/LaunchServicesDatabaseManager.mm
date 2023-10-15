@@ -52,7 +52,7 @@ void LaunchServicesDatabaseManager::handleEvent(xpc_object_t message)
         RELEASE_LOG(Loading, "Received Launch Services database %p", database);
 
         if (database)
-            [LSDatabaseContext.sharedDatabaseContext observeDatabaseChange4CyberKit:database];
+            [LSDatabaseContext.sharedDatabaseContext observeDatabaseChange4WebKit:database];
 #endif
         m_semaphore.signal();
         m_hasReceivedLaunchServicesDatabase = true;

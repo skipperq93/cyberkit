@@ -245,7 +245,6 @@ static void softlinkDataDetectorsFrameworks()
 #endif // PLATFORM(IOS_FAMILY)
 #endif // ENABLE(DATA_DETECTION)
 }
-#endif
 
 void WebProcess::platformInitializeWebProcess(WebProcessCreationParameters& parameters)
 {
