@@ -605,6 +605,12 @@ typedef NS_ENUM(NSUInteger, UIScrollPhase) {
 - (CGSize)_legacy_sizeWithFont:(UIFont *)font minFontSize:(CGFloat)minFontSize actualFontSize:(CGFloat *)actualFontSize forWidth:(CGFloat)width lineBreakMode:(NSLineBreakMode)lineBreakMode;
 @end
 
+@interface UIGestureRecognizer ()
+#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 130400
+@property (nonatomic, readonly) UIKeyModifierFlags _modifierFlags;
+#endif
+@end
+
 @interface UITableView ()
 @property (nonatomic, getter=_sectionContentInsetFollowsLayoutMargins, setter=_setSectionContentInsetFollowsLayoutMargins:) BOOL sectionContentInsetFollowsLayoutMargins;
 @end
