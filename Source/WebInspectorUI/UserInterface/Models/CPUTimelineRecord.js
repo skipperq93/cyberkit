@@ -51,7 +51,7 @@ WI.CPUTimelineRecord = class CPUTimelineRecord extends WI.TimelineRecord
                 continue;
             }
 
-            if (thread.type === InspectorBackend.Enum.CPUProfiler.ThreadInfoType.WebKit) {
+            if (thread.type === InspectorBackend.Enum.CPUProfiler.ThreadInfoType.CyberKit) {
                 if (thread.targetId) {
                     if (!this._workersData)
                         this._workersData = [];

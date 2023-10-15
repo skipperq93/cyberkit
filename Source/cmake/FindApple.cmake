@@ -172,10 +172,10 @@ if ("SarfariTheme" IN_LIST Apple_FIND_COMPONENTS)
     )
 endif ()
 
-if ("WebKitQuartzCoreAdditions" IN_LIST Apple_FIND_COMPONENTS)
-    _FIND_APPLE_FRAMEWORK(WebKitQuartzCoreAdditions
-        HEADER WebKitQuartzCoreAdditions/WebKitQuartzCoreAdditionsBase.h
-        LIBRARY_NAMES WebKitQuartzCoreAdditions${DEBUG_SUFFIX}
+if ("CyberKitQuartzCoreAdditions" IN_LIST Apple_FIND_COMPONENTS)
+    _FIND_APPLE_FRAMEWORK(CyberKitQuartzCoreAdditions
+        HEADER CyberKitQuartzCoreAdditions/CyberKitQuartzCoreAdditionsBase.h
+        LIBRARY_NAMES CyberKitQuartzCoreAdditions${DEBUG_SUFFIX}
     )
 endif ()
 

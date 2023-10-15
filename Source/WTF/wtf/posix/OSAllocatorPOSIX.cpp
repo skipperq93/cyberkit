@@ -33,7 +33,7 @@
 #include <wtf/PageBlock.h>
 
 #if ENABLE(JIT_CAGE)
-#include <WebKitAdditions/JITCageAdditions.h>
+#include <CyberKitAdditions/JITCageAdditions.h>
 #else // ENABLE(JIT_CAGE)
 #if OS(DARWIN)
 #define MAP_EXECUTABLE_FOR_JIT MAP_JIT

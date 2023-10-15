@@ -40,7 +40,7 @@
 #include "sdk/objc/components/video_codec/nalu_rewriter.h"
 #include "third_party/libyuv/include/libyuv/convert_from.h"
 
-#include "sdk/WebKit/WebKitUtilities.h"
+#include "sdk/CyberKit/CyberKitUtilities.h"
 
 #import <dlfcn.h>
 #import <objc/runtime.h>

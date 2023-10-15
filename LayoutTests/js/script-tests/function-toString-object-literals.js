@@ -1,6 +1,6 @@
 description(
 "This test checks that object literals are serialized properly. " +
-"It's needed in part because JavaScriptCore converts numeric property names to string and back."
+"It's needed in part because CyberScriptCore converts numeric property names to string and back."
 );
 
 function compileAndSerialize(expression)

@@ -575,7 +575,7 @@ class AutoInstall(object):
         if not isinstance(local, bool):
             raise ValueError('Expected local to be bool, not {}'.format(type(local)))
 
-        # If inside the WebKit checkout, a local library is likely checked in at Tools/Scripts/libraries.
+        # If inside the CyberKit checkout, a local library is likely checked in at Tools/Scripts/libraries.
         # When we detect such a library, we should not register it to be auto-installed
         if local:
             if package.name == 'autoinstalled':

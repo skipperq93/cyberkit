@@ -38,7 +38,7 @@ from webkitpy.port.win import WinPort
 def make_mock_crash_report_darwin(process_name, pid):
     return """Crash log may not start with Process line
 Process:         {process_name} [{pid}]
-Path:            /Volumes/Data/worker/snowleopard-intel-release-tests/build/WebKitBuild/Release/{process_name}
+Path:            /Volumes/Data/worker/snowleopard-intel-release-tests/build/CyberKitBuild/Release/{process_name}
 Identifier:      {process_name}
 Version:         ??? (???)
 Code Type:       X86-64 (Native)
@@ -58,8 +58,8 @@ Exception Codes: 0x0000000000000002, 0x0000000000000000
 Crashed Thread:  0
 
 Dyld Error Message:
-  Library not loaded: /Volumes/Data/WebKit-Worker/snowleopard-intel-release/build/WebKitBuild/Release/WebCore.framework/Versions/A/WebCore
-  Referenced from: /Volumes/Data/worker/snowleopard-intel-release/build/WebKitBuild/Release/WebKit.framework/Versions/A/WebKit
+  Library not loaded: /Volumes/Data/CyberKit-Worker/snowleopard-intel-release/build/CyberKitBuild/Release/CyberCore.framework/Versions/A/CyberCore
+  Referenced from: /Volumes/Data/worker/snowleopard-intel-release/build/CyberKitBuild/Release/CyberKit.framework/Versions/A/CyberKit
   Reason: image not found
 
 Binary Images:
@@ -134,9 +134,9 @@ Binary Images:
 
 
 def make_mock_crash_report_win(process_name, pid):
-    return """Opened log file 'C:\\Projects\\WebKit\\OpenSource\\WebKitBuild\\Release\bin32\\layout-test-results\\CrashLog_1d58_2013-06-03_12-21-20-110.txt'
-0:000> .srcpath "C:\\Projects\\WebKit\\OpenSource"
-Source search path is: C:\\Projects\\WebKit\\OpenSource
+    return """Opened log file 'C:\\Projects\\CyberKit\\OpenSource\\CyberKitBuild\\Release\bin32\\layout-test-results\\CrashLog_1d58_2013-06-03_12-21-20-110.txt'
+0:000> .srcpath "C:\\Projects\\CyberKit\\OpenSource"
+Source search path is: C:\\Projects\\CyberKit\\OpenSource
 0:000> !analyze -vv
 *******************************************************************************
 *                                                                             *
@@ -144,16 +144,16 @@ Source search path is: C:\\Projects\\WebKit\\OpenSource
 *                                                                             *
 *******************************************************************************
 
-*** ERROR: Symbol file could not be found.  Defaulted to export symbols for C:\\Projects\\WebKit\\OpenSource\\WebKitBuild\\Release\bin32\\libdispatch.dll -
+*** ERROR: Symbol file could not be found.  Defaulted to export symbols for C:\\Projects\\CyberKit\\OpenSource\\CyberKitBuild\\Release\bin32\\libdispatch.dll -
 *** ERROR: Symbol file could not be found.  Defaulted to export symbols for C:\\Windows\\SYSTEM32\atiumdag.dll -
 
 FAULTING_IP:
-JavaScriptCore!JSC::JSActivation::getOwnPropertySlot+0 [c:\\projects\\webkit\\opensource\\source\\javascriptcore\runtime\\jsactivation.cpp @ 146]
+CyberScriptCore!JSC::JSActivation::getOwnPropertySlot+0 [c:\\projects\\webkit\\opensource\\source\\javascriptcore\runtime\\jsactivation.cpp @ 146]
 01e3d070 55              push    ebp
 
 EXCEPTION_RECORD:  00092cc8 -- (.exr 0x92cc8)
 .exr 0x92cc8
-ExceptionAddress: 01e3d070 (JavaScriptCore!JSC::JSActivation::getOwnPropertySlot)
+ExceptionAddress: 01e3d070 (CyberScriptCore!JSC::JSActivation::getOwnPropertySlot)
    ExceptionCode: c00000fd (Stack overflow)
   ExceptionFlags: 00000000
 NumberParameters: 2
@@ -170,7 +170,7 @@ EXCEPTION_PARAMETER2:  00090000
 READ_ADDRESS:  00090000
 
 FOLLOWUP_IP:
-JavaScriptCore!JSC::JSActivation::getOwnPropertySlot+0 [c:\\projects\\webkit\\opensource\\source\\javascriptcore\runtime\\jsactivation.cpp @ 146]
+CyberScriptCore!JSC::JSActivation::getOwnPropertySlot+0 [c:\\projects\\webkit\\opensource\\source\\javascriptcore\runtime\\jsactivation.cpp @ 146]
 01e3d070 55              push    ebp
 
 WATSON_BKT_PROCSTAMP:  51a8f979
@@ -193,7 +193,7 @@ CONTEXT:  00092d18 -- (.cxr 0x92d18)
 eax=01e3d070 ebx=000930bc ecx=7fe03ed0 edx=0751e168 esi=07a7ff98 edi=0791ff78
 eip=01e3d070 esp=00093000 ebp=0009306c iopl=0         nv up ei ng nz ac po cy
 cs=0023  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00210293
-JavaScriptCore!JSC::JSActivation::getOwnPropertySlot:
+CyberScriptCore!JSC::JSActivation::getOwnPropertySlot:
 01e3d070 55              push    ebp
 .cxr
 Resetting default scope
@@ -208,7 +208,7 @@ THREAD_ATTRIBUTES:
     Global     Thread_Count: [19]
     Global     PageSize: [4096]
     Global     ModList_SHA1_Hash: [aacef4e7e83b9bddc9cd0cc094dac88d531ea4a3]
-    Global     CommandLine: [C:\\Projects\\WebKit\\OpenSource\\WebKitBuild\\Release\bin32\\{process_name} -]
+    Global     CommandLine: [C:\\Projects\\CyberKit\\OpenSource\\CyberKitBuild\\Release\bin32\\{process_name} -]
     Global     Desktop_Name: [Winsta0\\Default]
     Global     ProcessName: [{process_name}]
     Global     Debugger_CPU_Architecture: [X86]
@@ -250,15 +250,15 @@ SYMBOL_NAME:  javascriptcore!JSC::JSActivation::getOwnPropertySlot+92ffc
 
 FOLLOWUP_NAME:  MachineOwner
 
-MODULE_NAME: JavaScriptCore
+MODULE_NAME: CyberScriptCore
 
-IMAGE_NAME:  JavaScriptCore.dll
+IMAGE_NAME:  CyberScriptCore.dll
 
 DEBUG_FLR_IMAGE_TIMESTAMP:  51ace473
 
 STACK_COMMAND:  .cxr 00092D18 ; kb ; dps 93000 ; kb
 
-FAILURE_BUCKET_ID:  STACK_OVERFLOW_c0000005_JavaScriptCore.dll!JSC::JSActivation::getOwnPropertySlot
+FAILURE_BUCKET_ID:  STACK_OVERFLOW_c0000005_CyberScriptCore.dll!JSC::JSActivation::getOwnPropertySlot
 
 BUCKET_ID:  APPLICATION_FAULT_STACK_OVERFLOW_INVALID_POINTER_READ_javascriptcore!JSC::JSActivation::getOwnPropertySlot+92ffc
 
@@ -285,10 +285,10 @@ Followup: MachineOwner
 0b 00092be8 77e52e43 ntdll!ExecuteHandler2+0x26
 0c 00092cb0 77e52cbb ntdll!ExecuteHandler+0x24
 0d 00092cb0 01e3d070 ntdll!KiUserExceptionDispatcher+0xf
-0e 00092ffc 01e67d25 JavaScriptCore!JSC::JSActivation::getOwnPropertySlot(class JSC::JSCell * cell = 0x07a7ff98, class JSC::ExecState * exec = 0x0751e168, class JSC::PropertyName propertyName = class JSC::PropertyName, class JSC::PropertySlot * slot = 0x000930bc) [c:\\projects\\webkit\\opensource\\source\\javascriptcore\runtime\\jsactivation.cpp @ 146]
-0f 0009306c 01e68837 JavaScriptCore!JSC::JSScope::resolveContainingScopeInternal<1,2>(class JSC::ExecState * callFrame = 0x0751e168, class JSC::Identifier * identifier = 0x7fe0ebc0, class JSC::PropertySlot * slot = 0x7fe03ed0, class WTF::Vector<JSC::ResolveOperation,0,WTF::CrashOnOverflow> * operations = 0x7fda16c0, struct JSC::PutToBaseOperation * putToBaseOperation = 0x00000000, bool __formal = false)+0x205 [c:\\projects\\webkit\\opensource\\source\\javascriptcore\runtime\\jsscope.cpp @ 247]
-10 00093090 01e65860 JavaScriptCore!JSC::JSScope::resolveContainingScope<1>(class JSC::ExecState * callFrame = 0x0751e168, class JSC::Identifier * identifier = 0x7fe0ebc0, class JSC::PropertySlot * slot = 0x000930bc, class WTF::Vector<JSC::ResolveOperation,0,WTF::CrashOnOverflow> * operations = 0x7fda16c0, struct JSC::PutToBaseOperation * putToBaseOperation = 0x00000000, bool isStrict = false)+0x27 [c:\\projects\\webkit\\opensource\\source\\javascriptcore\runtime\\jsscope.cpp @ 427]
-11 00093104 01dceeff JavaScriptCore!JSC::JSScope::resolve(class JSC::ExecState * callFrame = 0x0751e168, class JSC::Identifier * identifier = 0x7fe0ebc0, class WTF::Vector<JSC::ResolveOperation,0,WTF::CrashOnOverflow> * operations = 0x7fda16c0)+0xc0 [c:\\projects\\webkit\\opensource\\source\\javascriptcore\runtime\\jsscope.cpp @ 447]
+0e 00092ffc 01e67d25 CyberScriptCore!JSC::JSActivation::getOwnPropertySlot(class JSC::JSCell * cell = 0x07a7ff98, class JSC::ExecState * exec = 0x0751e168, class JSC::PropertyName propertyName = class JSC::PropertyName, class JSC::PropertySlot * slot = 0x000930bc) [c:\\projects\\webkit\\opensource\\source\\javascriptcore\runtime\\jsactivation.cpp @ 146]
+0f 0009306c 01e68837 CyberScriptCore!JSC::JSScope::resolveContainingScopeInternal<1,2>(class JSC::ExecState * callFrame = 0x0751e168, class JSC::Identifier * identifier = 0x7fe0ebc0, class JSC::PropertySlot * slot = 0x7fe03ed0, class WTF::Vector<JSC::ResolveOperation,0,WTF::CrashOnOverflow> * operations = 0x7fda16c0, struct JSC::PutToBaseOperation * putToBaseOperation = 0x00000000, bool __formal = false)+0x205 [c:\\projects\\webkit\\opensource\\source\\javascriptcore\runtime\\jsscope.cpp @ 247]
+10 00093090 01e65860 CyberScriptCore!JSC::JSScope::resolveContainingScope<1>(class JSC::ExecState * callFrame = 0x0751e168, class JSC::Identifier * identifier = 0x7fe0ebc0, class JSC::PropertySlot * slot = 0x000930bc, class WTF::Vector<JSC::ResolveOperation,0,WTF::CrashOnOverflow> * operations = 0x7fda16c0, struct JSC::PutToBaseOperation * putToBaseOperation = 0x00000000, bool isStrict = false)+0x27 [c:\\projects\\webkit\\opensource\\source\\javascriptcore\runtime\\jsscope.cpp @ 427]
+11 00093104 01dceeff CyberScriptCore!JSC::JSScope::resolve(class JSC::ExecState * callFrame = 0x0751e168, class JSC::Identifier * identifier = 0x7fe0ebc0, class WTF::Vector<JSC::ResolveOperation,0,WTF::CrashOnOverflow> * operations = 0x7fda16c0)+0xc0 [c:\\projects\\webkit\\opensource\\source\\javascriptcore\runtime\\jsscope.cpp @ 447]
 
 0:000> q
 quit:

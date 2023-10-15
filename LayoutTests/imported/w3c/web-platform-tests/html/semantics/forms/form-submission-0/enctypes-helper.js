@@ -33,7 +33,7 @@
 
 (() => {
   // Using echo-content-escaped.py rather than
-  // /fetch/api/resources/echo-content.py to work around WebKit not
+  // /fetch/api/resources/echo-content.py to work around CyberKit not
   // percent-encoding \x00, which causes the response to be detected as
   // a binary file and served as a download.
   const ACTION_URL = "/FileAPI/file/resources/echo-content-escaped.py";

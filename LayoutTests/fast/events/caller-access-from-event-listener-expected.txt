@@ -1,3 +1,3 @@
-This test verifies that WebKit doesn't crash when accessing the 'caller' property from inside an event listener.
+This test verifies that CyberKit doesn't crash when accessing the 'caller' property from inside an event listener.
 
-PASS: WebKit didn't crash.
+PASS: CyberKit didn't crash.

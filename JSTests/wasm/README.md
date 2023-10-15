@@ -4,7 +4,7 @@
 manipulate WebAssembly representations and binaries. At its core is `wasm.json`,
 a JSON decription of the WebAssembly format and other interesting facts about
 WebAssembly as used by the Webkit project (such as the names of associated
-JavaScriptCore B3 opcodes).
+CyberScriptCore B3 opcodes).
 
 `wasmjs` requires modern JavaScript features such as ES6 modules, which is
 acceptable because WebAssembly is itself contemporary to these other features.
@@ -91,7 +91,7 @@ All tests can be executed using:
 JSSHELL=/path/to/my/js-shell test.sh
 ```
 
-They can also be executed by using WebKit's `run-javascriptcore-tests` tool:
+They can also be executed by using CyberKit's `run-javascriptcore-tests` tool:
 
 ```bash
 ./Tools/Scripts/run-javascriptcore-tests --release --filter wasm -arch x86_64

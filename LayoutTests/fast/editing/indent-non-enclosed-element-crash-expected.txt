@@ -1,2 +1,2 @@
-Tests indenting a non-enclosed element. The test passes if WebKit doesn't crash or hit an assertion.
+Tests indenting a non-enclosed element. The test passes if CyberKit doesn't crash or hit an assertion.
 

@@ -31,7 +31,7 @@
 		CD836D001E43BDB4009F8091 /* DebugRelease.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DebugRelease.xcconfig; sourceTree = "<group>"; };
 		CDB099DD1E4308470039E198 /* MediaTime */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MediaTime; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDB099E01E4308470039E198 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../../../Testcases/MediaTimeTestcase/MediaTime/main.cpp; sourceTree = "<group>"; };
-		CDB099E81E4308700039E198 /* libWTF.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWTF.a; path = ../../WebKit.git/OpenSource/WebKitBuild/Debug/libWTF.a; sourceTree = "<group>"; };
+		CDB099E81E4308700039E198 /* libWTF.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWTF.a; path = ../../CyberKit.git/OpenSource/CyberKitBuild/Debug/libWTF.a; sourceTree = "<group>"; };
 		CDB099EA1E430B250039E198 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		CDB099EC1E430B440039E198 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CDB099EE1E430B550039E198 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };

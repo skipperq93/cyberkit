@@ -5,7 +5,7 @@ function createRevalidationURL({tao, crossOrigin}) {
     let date = encodeURIComponent(new Date(2000, 1, 1).toGMTString());
     let params = `content=${content}&mimeType=${mimeType}&date=${date}&tao=${tao ? true : false}`;
 
-    const path = "WebKit/resource-timing/resources/rt-revalidation-response.py";
+    const path = "CyberKit/resource-timing/resources/rt-revalidation-response.py";
     if (crossOrigin)
         return crossOriginURL(`${token}&${params}`, path);
     return location.origin + `/${path}?${token}&${params}`;

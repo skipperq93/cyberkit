@@ -39,7 +39,7 @@
 // Enable depth testing and blending with a blend func of (SRC_ALPHA, ONE_MINUS_SRC_ALPHA)
 //
 // A console function is added to the context: console(string). This can be replaced
-// by the caller. By default, it maps to the window.console() function on WebKit and to
+// by the caller. By default, it maps to the window.console() function on CyberKit and to
 // an empty function on other browsers.
 //
 function initWebGL(canvasName, vshader, fshader, attribs, clearColor, clearDepth)

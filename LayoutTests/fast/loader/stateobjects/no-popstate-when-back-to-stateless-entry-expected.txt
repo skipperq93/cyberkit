@@ -1,4 +1,4 @@
-No popstate event should be fired when WebKit navigates back to a stateless history entry.
+No popstate event should be fired when CyberKit navigates back to a stateless history entry.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

@@ -1,4 +1,4 @@
-# These are the layout test expectations for the WPE port of WebKit.
+# These are the layout test expectations for the WPE port of CyberKit.
 #
 # See http://trac.webkit.org/wiki/TestExpectations for more information on this file.
 #
@@ -475,7 +475,7 @@ imported/w3c/web-platform-tests/xhr/xmlhttprequest-timeout-worker-overridesexpir
 # This list is divided into two parts:
 # a. Tests that we never expect to pass, because they use features we likely
 #    will never implement (Mac-only features, for instance).
-# b. Missing WebCore/WebKit features that we'll want someday.
+# b. Missing CyberCore/CyberKit features that we'll want someday.
 
 # 3. UNRESOLVED TESTS
 # These are test groups that we haven't yet unskipped, analyzed and then
@@ -567,7 +567,7 @@ fast/loader/plain-text-document-dark-mode.html [ Pass ]
 # Tests below are copied from wk2 expectations, because we've marked
 #  as passing the whole fast/events directory.
 
-# WebKitTestRunner needs testRunner.abortModal
+# CyberKitTestRunner needs testRunner.abortModal
 # <https://bugs.webkit.org/show_bug.cgi?id=69548>
 fast/events/beforeunload-showModalDialog.html
 fast/events/pagehide-showModalDialog.html
@@ -575,7 +575,7 @@ fast/events/scroll-event-during-modal-dialog.html
 fast/events/show-modal-dialog-onblur-onfocus.html
 fast/events/unload-showModalDialog.html
 
-# WebKitTestRunner needs an implementation of eventSender.beginDragWithFiles
+# CyberKitTestRunner needs an implementation of eventSender.beginDragWithFiles
 # https://bugs.webkit.org/show_bug.cgi?id=64285
 fast/events/data-transfer-files-attribute-identity.html
 fast/events/drag-file-crash.html
@@ -588,11 +588,11 @@ fast/events/input-element-display-none-in-dragleave-crash.html
 fast/events/only-valid-drop-targets-receive-file-drop.html
 fast/events/prevent-drag-to-navigate.html
 
-# WebKitTestRunner needs textInputController
+# CyberKitTestRunner needs textInputController
 # <https://bugs.webkit.org/show_bug.cgi?id=42337>
 fast/events/ime-composition-events-001.html
 
-# testRunner.setWindowIsKey() has no effect on the web process side in WebKit2
+# testRunner.setWindowIsKey() has no effect on the web process side in CyberKit2
 webkit.org/b/183144 fast/dom/Window/window-focus-self.html
 webkit.org/b/183144 fast/events/blur-focus-window-should-blur-focus-element.html
 webkit.org/b/183144 fast/selectors/querySelector-window-inactive.html

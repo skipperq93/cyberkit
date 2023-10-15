@@ -24,7 +24,7 @@
             for (var i = 0; i < 10000; ++i)
                 array[i] = new Object();
 
-            // Remove the plugin and wait for a little bit to ensure it has been unloaded (WebKit1
+            // Remove the plugin and wait for a little bit to ensure it has been unloaded (CyberKit1
             // on Windows unloads plugins after a delay).
             body.removeChild(plugin);
             setTimeout(finishTest, 250);
@@ -45,7 +45,7 @@
     </script>
 </head>
 <body>
-    <p>This test will only work in DumpRenderTree/WebKitTestRunner.</p>
+    <p>This test will only work in DumpRenderTree/CyberKitTestRunner.</p>
     <embed type="application/x-webkit-test-netscape">
 </body>
 </html>

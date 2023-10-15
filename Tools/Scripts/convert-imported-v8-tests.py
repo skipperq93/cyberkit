@@ -23,7 +23,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# This tool aids with the importing of V8 test files into WebKit.
+# This tool aids with the importing of V8 test files into CyberKit.
 # It performs most of the common substitutions.
 
 import argparse
@@ -97,7 +97,7 @@ rules = [
 def parse_args():
     global header
 
-    parser = argparse.ArgumentParser(description='Process V8 test files for inclusion in WebKit.',
+    parser = argparse.ArgumentParser(description='Process V8 test files for inclusion in CyberKit.',
                                      usage='%(prog)s [-f] [-v] [-h <header-string>] (-s <source-file> -d <dest-file> | -l <file-with-list-of-source-files> [-o <output-dir>] [-S <source-dir>] )')
     parser.add_argument('-s', '--source', default=None, type=Path, dest='source_file_name', required=False,
                         help='source file to convert')

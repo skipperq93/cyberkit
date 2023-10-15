@@ -16,7 +16,7 @@
 
 /**
  * @fileoverview Definitions for all the extensions over W3C's
- *  event specification by WebKit. This file depends on w3c_event.js.
+ *  event specification by CyberKit. This file depends on w3c_event.js.
  *  All the provided definitions have been type annotated
  *
  * @externs
@@ -31,18 +31,18 @@ Event.prototype.wheelDeltaY;
 /**
  * @constructor
  * @extends {Event}
- * @see http://developer.apple.com/library/safari/documentation/AudioVideo/Reference/WebKitAnimationEventClassReference/WebKitAnimationEvent/WebKitAnimationEvent.html
+ * @see http://developer.apple.com/library/safari/documentation/AudioVideo/Reference/CyberKitAnimationEventClassReference/CyberKitAnimationEvent/CyberKitAnimationEvent.html
  */
-function WebKitAnimationEvent() {}
+function CyberKitAnimationEvent() {}
 
 /**
  * @type {string}
  * @const
  */
-WebKitAnimationEvent.prototype.animationName;
+CyberKitAnimationEvent.prototype.animationName;
 
 /**
  * @type {number}
  * @const
  */
-WebKitAnimationEvent.prototype.elapsedTime;
+CyberKitAnimationEvent.prototype.elapsedTime;

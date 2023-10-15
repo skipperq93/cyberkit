@@ -26,8 +26,8 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WebNotification.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebNotification.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/HashMap.h>
 #import <wtf/HashSet.h>
 #import <wtf/RetainPtr.h>

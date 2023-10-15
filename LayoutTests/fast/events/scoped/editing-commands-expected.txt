@@ -1,4 +1,4 @@
-This test ensures WebKit does not fire DOM mutation events while execCommand is in progress.
+This test ensures CyberKit does not fire DOM mutation events while execCommand is in progress.
 
 PASS: execCommand('BackColor', false, 'blue')
 PASS: execCommand('CreateLink', false, 'about:blank')

@@ -1,22 +1,22 @@
-# Yocto-based cross-build support on WebKit build scripts
+# Yocto-based cross-build support on CyberKit build scripts
 
-This documents how the cross-build support on the WebKit build scripts works for Yocto-based targets.
+This documents how the cross-build support on the CyberKit build scripts works for Yocto-based targets.
 
 ## The script 'cross-toolchain-helper'
 
 The script ```cross-toolchain-helper``` is the one responsible for building the cross-toolchain and the images
-for any supported target. The other WebKit scripts that support cross-building (like build-webkit) end calling
+for any supported target. The other CyberKit scripts that support cross-building (like build-webkit) end calling
 this ```cross-toolchain-helper``` script to integrate with it.
 
 This script also allows to start a development shell for the target.
 
-For more info run: ```${WebKitDirectory}/Tools/Scripts/cross-toolchain-helper --help``` and also read the
+For more info run: ```${CyberKitDirectory}/Tools/Scripts/cross-toolchain-helper --help``` and also read the
 documenation and examples below
 
 ### The targets.conf file
 
 This script can build a cross-toolchain (a Yocto SDK) and a image for a specific board.
-The boards supported are defined on the file ```${WebKitDirectory}/Tools/yocto/targets.conf```
+The boards supported are defined on the file ```${CyberKitDirectory}/Tools/yocto/targets.conf```
 
 This configuration file defined the boards (targets) supported in a windows-ini-file-like
 (python-configparser) syntax.
@@ -28,12 +28,12 @@ The script ```cross-toolchain-helper``` will parse this file and it will do the 
 3. Build the Yocto SDK for the target ```image_basename``` and unpack the SDK built.
 4. Build the Yocto image ```image_basename```
 
-For more info see the file ```${WebKitDirectory}/Tools/yocto/targets.conf```
+For more info see the file ```${CyberKitDirectory}/Tools/yocto/targets.conf```
 
 
-### Integration with WebKit tooling script
+### Integration with CyberKit tooling script
 
-The support for cross-building is integrated with the following WebKit scripts:
+The support for cross-building is integrated with the following CyberKit scripts:
 
 	- Tools/Scripts/update-webkitwpe-libs
 	- Tools/Scripts/update-webkitgtk-libs
@@ -69,13 +69,13 @@ A cross-aware debugger is also enabled, you can invoke it with: ```$GDB```
 
 
 ```
-user@workstation(WKCrossDevShell:rpi3-32bits-mesa): ~/WebKit $ env | grep -P '^(CC|CXX|LD|AR|GDB|.*WEBKIT.*)='
+user@workstation(WKCrossDevShell:rpi3-32bits-mesa): ~/CyberKit $ env | grep -P '^(CC|CXX|LD|AR|GDB|.*WEBKIT.*)='
 BUILD_WEBKIT_ARGS=--no-fatal-warnings --cmakeargs="-DENABLE_WPE_QT_API=OFF -DENABLE_THUNDER=OFF -DENABLE_DOCUMENTATION=OFF -DENABLE_INTROSPECTION=OFF -DWPE_COG_PLATFORMS=drm,headless,wayland"
 GDB=arm-poky-linux-gnueabi-gdb
-CXX=arm-poky-linux-gnueabi-g++ -mthumb -mfpu=neon-vfpv4 -mfloat-abi=hard -mcpu=cortex-a7 --sysroot=/home/igalia/webkit/WebKitBuild/CrossToolChains/rpi3-32bits-mesa/build/toolchain/sysroots/cortexa7t2hf-neon-vfpv4-poky-linux-gnueabi
-LD=arm-poky-linux-gnueabi-ld  --sysroot=/home/igalia/webkit/WebKitBuild/CrossToolChains/rpi3-32bits-mesa/build/toolchain/sysroots/cortexa7t2hf-neon-vfpv4-poky-linux-gnueabi
+CXX=arm-poky-linux-gnueabi-g++ -mthumb -mfpu=neon-vfpv4 -mfloat-abi=hard -mcpu=cortex-a7 --sysroot=/home/igalia/webkit/CyberKitBuild/CrossToolChains/rpi3-32bits-mesa/build/toolchain/sysroots/cortexa7t2hf-neon-vfpv4-poky-linux-gnueabi
+LD=arm-poky-linux-gnueabi-ld  --sysroot=/home/igalia/webkit/CyberKitBuild/CrossToolChains/rpi3-32bits-mesa/build/toolchain/sysroots/cortexa7t2hf-neon-vfpv4-poky-linux-gnueabi
 AR=arm-poky-linux-gnueabi-ar
-CC=arm-poky-linux-gnueabi-gcc -mthumb -mfpu=neon-vfpv4 -mfloat-abi=hard -mcpu=cortex-a7 --sysroot=/home/igalia/webkit/WebKitBuild/CrossToolChains/rpi3-32bits-mesa/build/toolchain/sysroots/cortexa7t2hf-neon-vfpv4-poky-linux-gnueabi
+CC=arm-poky-linux-gnueabi-gcc -mthumb -mfpu=neon-vfpv4 -mfloat-abi=hard -mcpu=cortex-a7 --sysroot=/home/igalia/webkit/CyberKitBuild/CrossToolChains/rpi3-32bits-mesa/build/toolchain/sysroots/cortexa7t2hf-neon-vfpv4-poky-linux-gnueabi
 WEBKIT_CROSS_TARGET=rpi3-32bits-mesa
 ```
 
@@ -99,7 +99,7 @@ are developing with this you will end having to rebuild the toolchains and
 images from scratch usually.
 
 A trick to speed up the whole rebuild process is to store the yocto sstate
-and download caches outside of the WebKitBuild directory, so they can be
+and download caches outside of the CyberKitBuild directory, so they can be
 reused between different builds.
 
 To enable that, add this lines to your ```~/.bashrc``` file
@@ -127,7 +127,7 @@ to have very fast rebuilds (see above).
 ### Disabling export default environment
 
 The script ```cross-toolchain-helper``` will automatically export several environment variables
-defined in file ```${WebKitDirectory}/Tools/yocto/targets.conf``` for the given target.
+defined in file ```${CyberKitDirectory}/Tools/yocto/targets.conf``` for the given target.
 This environment variables are usually used to change the default build parameters for the
 script ```build-webkit```
 
@@ -139,7 +139,7 @@ or you can set the environment variable ```WEBKIT_CROSS_EXPORT_ENV=0```
 
 This is an example on how to build and run WPE for development on the RPi:
 
-### Build the base image, flash the board and clone the WebKit repo
+### Build the base image, flash the board and clone the CyberKit repo
 
 1. Build the image that will be flashed on the board:
 
@@ -153,7 +153,7 @@ user@workstation $ Tools/Scripts/cross-toolchain-helper --cross-target=rpi3-32bi
 
 ```
 user@workstation $ Tools/Scripts/cross-toolchain-helper --cross-target=rpi3-32bits-mesa --build-image
-cross-toolchain-helper INFO: Image already built at: /home/igalia/webkit/WebKitBuild/CrossToolChains/rpi3-32bits-mesa/build/image/core-image-webkit-dev-ci-tools-tests.wic.bz2
+cross-toolchain-helper INFO: Image already built at: /home/igalia/webkit/CyberKitBuild/CrossToolChains/rpi3-32bits-mesa/build/image/core-image-webkit-dev-ci-tools-tests.wic.bz2
 ```
 
 3. Flash a SDCard with this image
@@ -189,7 +189,7 @@ user@workstation $ sudo resize2fs /dev/mmcblk0p2
 # Insert SDCard, boot RPi and obtain the IP address asigned via DHCP
 # NOTE: password for root is empty (no auth required)
 user@workstation $ ssh root@192.168.X.Y
-root@raspberrypi3:~# git clone https://github.com/WebKit/WebKit.git --depth 1
+root@raspberrypi3:~# git clone https://github.com/CyberKit/CyberKit.git --depth 1
 ````
 
 ### Build WPE for the target board
@@ -200,7 +200,7 @@ root@raspberrypi3:~# git clone https://github.com/WebKit/WebKit.git --depth 1
 user@workstation $ Tools/Scripts/build-webkit --wpe --release --cross-target=rpi3-32bits-mesa
 ```
 
-2. The build will be stored in a per-target directory: ```WebKitBuild/WPE/Release_rpi3-32bits-mesa```
+2. The build will be stored in a per-target directory: ```CyberKitBuild/WPE/Release_rpi3-32bits-mesa```
 
 This allows to build simultaneously for different targets (and for your host system)
 from the same checkout.
@@ -214,7 +214,7 @@ Tools/CISupport/built-product-archive --platform=wpe --release --cross-target=rp
 4. Copy release.zip to the board
 
 ```
-scp WebKitBuild/release.zip root@192.168.X.Y:
+scp CyberKitBuild/release.zip root@192.168.X.Y:
 ```
 
 
@@ -226,13 +226,13 @@ scp WebKitBuild/release.zip root@192.168.X.Y:
 # cd to the webkit checkout in the board and copy release.zip inside the build directory
 user@workstation $ ssh root@192.168.X.Y
 
-root@raspberrypi3:~# cd WebKit/
-root@raspberrypi3:~/WebKit# mkdir WebKitBuild
-root@raspberrypi3:~/WebKit# cp ~/release.zip WebKitBuild/
+root@raspberrypi3:~# cd CyberKit/
+root@raspberrypi3:~/CyberKit# mkdir CyberKitBuild
+root@raspberrypi3:~/CyberKit# cp ~/release.zip CyberKitBuild/
 
-root@raspberrypi3:~/WebKit# Tools/CISupport/built-product-archive --platform=wpe --release extract
-Extracting: /home/root/WebKit/WebKitBuild/Release
-Archive:  /home/root/WebKit/WebKitBuild/release.zip
+root@raspberrypi3:~/CyberKit# Tools/CISupport/built-product-archive --platform=wpe --release extract
+Extracting: /home/root/CyberKit/CyberKitBuild/Release
+Archive:  /home/root/CyberKit/CyberKitBuild/release.zip
 [....]
 ```
 
@@ -241,28 +241,28 @@ Archive:  /home/root/WebKit/WebKitBuild/release.zip
 ```
 # [Example 1]: Run Cog over the framebuffer with KMS/DRM
 # first: ensure weston is stopped
-root@raspberrypi3:~/WebKit# systemctl stop weston
+root@raspberrypi3:~/CyberKit# systemctl stop weston
 # Run cog with platform plugin 'drm'
-root@raspberrypi3:~/WebKit# Tools/Scripts/run-minibrowser --wpe -P drm
+root@raspberrypi3:~/CyberKit# Tools/Scripts/run-minibrowser --wpe -P drm
 
 # [Example 2]: Run Cog inside Weston/Wayland
 # first: start weston
-root@raspberrypi3:~/WebKit# systemctl start weston
+root@raspberrypi3:~/CyberKit# systemctl start weston
 # define and export the required environment variables
-root@raspberrypi3:~/WebKit# source <(strings /proc/$(pidof weston-desktop-shell)/environ | grep -P '(XDG_RUNTIME_DIR|WAYLAND_DISPLAY)')
-root@raspberrypi3:~/WebKit# export XDG_RUNTIME_DIR
-root@raspberrypi3:~/WebKit# export WAYLAND_DISPLAY
+root@raspberrypi3:~/CyberKit# source <(strings /proc/$(pidof weston-desktop-shell)/environ | grep -P '(XDG_RUNTIME_DIR|WAYLAND_DISPLAY)')
+root@raspberrypi3:~/CyberKit# export XDG_RUNTIME_DIR
+root@raspberrypi3:~/CyberKit# export WAYLAND_DISPLAY
 # Run cog with platform plugin 'wl'
-root@raspberrypi3:~/WebKit# Tools/Scripts/run-minibrowser --wpe -P wl
+root@raspberrypi3:~/CyberKit# Tools/Scripts/run-minibrowser --wpe -P wl
 
 
 # [Example 3]: Run layout tests
-root@raspberrypi3:~/WebKit# Tools/Scripts/run-webkit-tests --debug-rwt-logging --no-build --wpe --release fast/css
+root@raspberrypi3:~/CyberKit# Tools/Scripts/run-webkit-tests --debug-rwt-logging --no-build --wpe --release fast/css
 
 # Note: the board may be not powerful enough or have not enough ram.
 # If you see issues with tests crashing or timing out try to lower the
 # number of parallel tests and raise the timeout value for the tests.
 # [Example 4]: Run layout tests with one worker:
-root@raspberrypi3:~/WebKit# export NUMBER_OF_PROCESSORS=1
-root@raspberrypi3:~/WebKit# Tools/Scripts/run-webkit-tests --debug-rwt-logging --no-build --wpe --release fast/css
+root@raspberrypi3:~/CyberKit# export NUMBER_OF_PROCESSORS=1
+root@raspberrypi3:~/CyberKit# Tools/Scripts/run-webkit-tests --debug-rwt-logging --no-build --wpe --release fast/css
 ```

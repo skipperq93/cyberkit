@@ -7,7 +7,7 @@ Basic tests for HAR.
   "log": {
     "version": "1.2",
     "creator": {
-      "name": "WebKit Web Inspector",
+      "name": "CyberKit Web Inspector",
       "version": "<filtered>"
     },
     "pages": [
@@ -27,7 +27,7 @@ Basic tests for HAR.
   "log": {
     "version": "1.2",
     "creator": {
-      "name": "WebKit Web Inspector",
+      "name": "CyberKit Web Inspector",
       "version": "<filtered>"
     },
     "pages": [

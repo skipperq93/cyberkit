@@ -10,7 +10,7 @@
 </div>
 
 <div id="content2">
-<acronym title="WebKit2">WK2</acronym>
+<acronym title="CyberKit2">WK2</acronym>
 </div>
 
 <table border=1>
@@ -36,7 +36,7 @@
 
         content = accessibilityController.accessibleElementById("content2");
         var acronym = content.childAtIndex(0);
-        shouldBe("acronym.stringAttributeValue('AXExpandedTextValue')", "'WebKit2'");
+        shouldBe("acronym.stringAttributeValue('AXExpandedTextValue')", "'CyberKit2'");
         markerRange = content.textMarkerRangeForElement(content);
         shouldBeTrue("content.attributedStringForTextMarkerRangeContainsAttribute('AXExpandedTextValue', markerRange)");
 

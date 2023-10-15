@@ -1,4 +1,4 @@
-# These are the layout test expectations for Apple's iOS port of WebKit2.
+# These are the layout test expectations for Apple's iOS port of CyberKit2.
 #
 # See http://trac.webkit.org/wiki/TestExpectations for more information on this file.
 
@@ -807,7 +807,7 @@ editing/unsupported-content/table-type-before.html [ Failure Pass ]
 # iOS-specific tests that fail:
 platform/ios/ios/storage/domstorage/5mb-quota-expected.txt [ Failure ]
 
-# iOS-specific tests that time out or fail in WebKitTestRunner due to missing DRT-specific functionality:
+# iOS-specific tests that time out or fail in CyberKitTestRunner due to missing DRT-specific functionality:
 platform/ios/ios/fast/coordinates/touch-event-zoomed.html
 platform/ios/ios/fast/coordinates/touch-event.html
 

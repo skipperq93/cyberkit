@@ -31,9 +31,9 @@
 #include "URLBar.h"
 #include "WebViewWindow.h"
 #include <KeyboardCodes.h>
-#include <WebKit/WKPage.h>
-#include <WebKit/WKString.h>
-#include <WebKit/WKWebsiteDataStoreRef.h>
+#include <CyberKit/WKPage.h>
+#include <CyberKit/WKString.h>
+#include <CyberKit/WKWebsiteDataStoreRef.h>
 #include <sstream>
 #include <toolkitten/Application.h>
 #include <vector>

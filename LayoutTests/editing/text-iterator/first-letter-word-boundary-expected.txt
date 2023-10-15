@@ -1,4 +1,4 @@
-This tests moving caret around a word with a first-letter rule. WebKit should not crash. This test also demonstrates a bug that word position is incorrectly reported.
+This tests moving caret around a word with a first-letter rule. CyberKit should not crash. This test also demonstrates a bug that word position is incorrectly reported.
 
  hello world'
 white-space: normal;

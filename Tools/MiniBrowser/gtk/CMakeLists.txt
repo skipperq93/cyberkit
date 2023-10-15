@@ -22,7 +22,7 @@ set(MiniBrowser_SOURCES
 set(MiniBrowser_PRIVATE_INCLUDE_DIRECTORIES
     ${CMAKE_BINARY_DIR}
     ${MiniBrowser_DERIVED_SOURCES_DIR}
-    ${WebKitGTK_FRAMEWORK_HEADERS_DIR}
+    ${CyberKitGTK_FRAMEWORK_HEADERS_DIR}
     ${CMAKE_SOURCE_DIR}/Source
 )
 
@@ -33,10 +33,10 @@ set(MiniBrowser_SYSTEM_INCLUDE_DIRECTORIES
 
 set(MiniBrowser_PRIVATE_LIBRARIES
     ${GLIB_LIBRARIES}
-    ${JavaScriptCore_LIBRARY_NAME}
+    ${CyberScriptCore_LIBRARY_NAME}
     ${LIBSOUP_LIBRARIES}
     GTK::GTK
-    WebKit::WebKit
+    CyberKit::CyberKit
 )
 
 set(MiniBrowser_DEPENDENCIES

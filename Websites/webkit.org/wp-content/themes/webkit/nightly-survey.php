@@ -3,7 +3,7 @@
  * Template Name: Nightly Survey
  **/
 
-$Survey = new WebKit_Nightly_Survey();
+$Survey = new CyberKit_Nightly_Survey();
 $Survey->process();
 
 get_header();
@@ -157,17 +157,17 @@ get_header();
             <h1><?php the_title(); ?></h1>
 
             <div class="bodycopy">
-                <?php if (WebKit_Nightly_Survey::responded()): ?>
+                <?php if (CyberKit_Nightly_Survey::responded()): ?>
                     <?php the_content(''); ?>
                     <nav class="navigation pagination">
-                        <a href="/nightly/start" class="page-numbers next-post">Return<span>to the WebKit Start Page</span></a>
+                        <a href="/nightly/start" class="page-numbers next-post">Return<span>to the CyberKit Start Page</span></a>
                     </nav>
                 <?php else: ?>
                 <form name="webkit-nightly-survey" action="" method="POST">
                 <?php
-                echo WebKit_Nightly_Survey::form_nonce();
+                echo CyberKit_Nightly_Survey::form_nonce();
 
-                $Survey = WebKit_Nightly_Survey::survey();
+                $Survey = CyberKit_Nightly_Survey::survey();
                 foreach ($Survey as $id => $SurveyQuestion) {
                     echo "<h3>$SurveyQuestion->question</h3>";
 

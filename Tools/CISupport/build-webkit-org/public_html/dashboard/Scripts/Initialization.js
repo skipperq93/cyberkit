@@ -24,7 +24,7 @@
  */
 
 var settings = new Settings;
-var buildbots = [ new WebKitBuildbot ];
+var buildbots = [ new CyberKitBuildbot ];
 Dashboard.Repository.OpenSource.commits = new Commits("https://commits.webkit.org/");
 Dashboard.Repository.OpenSource.trac = new Trac("https://trac.webkit.org/");
 if (typeof Bugzilla !== "undefined")

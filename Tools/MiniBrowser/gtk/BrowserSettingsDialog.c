@@ -55,7 +55,7 @@ struct _BrowserSettingsDialog {
 
     GtkWidget *stack;
     GtkWidget *settingsList;
-    WebKitSettings *settings;
+    CyberKitSettings *settings;
 };
 
 struct _BrowserSettingsDialogClass {
@@ -64,7 +64,7 @@ struct _BrowserSettingsDialogClass {
 
 G_DEFINE_TYPE(BrowserSettingsDialog, browser_settings_dialog, GTK_TYPE_DIALOG)
 
-static const char *hardwareAccelerationPolicyToString(WebKitHardwareAccelerationPolicy policy)
+static const char *hardwareAccelerationPolicyToString(CyberKitHardwareAccelerationPolicy policy)
 {
     switch (policy) {
     case WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS:
@@ -124,7 +124,7 @@ static void cellRendererChanged(GtkCellRenderer *renderer, const char *path, con
 
 static void featureTreeViewRowActivated(GtkTreeView *tree, GtkTreePath *path, GtkTreeViewColumn *column, BrowserSettingsDialog *dialog)
 {
-    g_autoptr(WebKitFeature) feature = NULL;
+    g_autoptr(CyberKitFeature) feature = NULL;
     GtkTreeModel *model = gtk_tree_view_get_model(tree);
     GtkTreeIter iter;
     gtk_tree_model_get_iter(model, &iter, path);
@@ -165,7 +165,7 @@ static void browserSettingsDialogSetProperty(GObject *object, guint propId, cons
 
 static void featureTreeViewRenderEnabledData(GtkTreeViewColumn *column, GtkCellRenderer *renderer, GtkTreeModel *model, GtkTreeIter *iter, gpointer data)
 {
-    g_autoptr(WebKitFeature) feature = NULL;
+    g_autoptr(CyberKitFeature) feature = NULL;
     gtk_tree_model_get(model, iter, FEATURES_LIST_COLUMN_FEATURE, &feature, -1);
     gtk_cell_renderer_toggle_set_active(GTK_CELL_RENDERER_TOGGLE(renderer),
                                         webkit_settings_get_feature_enabled(data, feature));
@@ -173,7 +173,7 @@ static void featureTreeViewRenderEnabledData(GtkTreeViewColumn *column, GtkCellR
 
 static void featureTreeViewRenderStatusData(GtkTreeViewColumn *column, GtkCellRenderer *renderer, GtkTreeModel *model, GtkTreeIter *iter, gpointer data)
 {
-    g_autoptr(WebKitFeature) feature = NULL;
+    g_autoptr(CyberKitFeature) feature = NULL;
     gtk_tree_model_get(model, iter, FEATURES_LIST_COLUMN_FEATURE, &feature, -1);
     g_autoptr(GEnumClass) enumClass = g_type_class_ref(WEBKIT_TYPE_FEATURE_STATUS);
     g_object_set(renderer,
@@ -184,7 +184,7 @@ static void featureTreeViewRenderStatusData(GtkTreeViewColumn *column, GtkCellRe
 
 static void featureTreeViewRenderCategoryData(GtkTreeViewColumn *column, GtkCellRenderer *renderer, GtkTreeModel *model, GtkTreeIter *iter, gpointer data)
 {
-    g_autoptr(WebKitFeature) feature = NULL;
+    g_autoptr(CyberKitFeature) feature = NULL;
     gtk_tree_model_get(model, iter, FEATURES_LIST_COLUMN_FEATURE, &feature, -1);
     g_object_set(renderer,
                  "markup", NULL,
@@ -194,7 +194,7 @@ static void featureTreeViewRenderCategoryData(GtkTreeViewColumn *column, GtkCell
 
 static gboolean featureTreeViewSearchMatchSubstring(GtkTreeModel *model, gint column, const char *key, GtkTreeIter *iter, gpointer data)
 {
-    g_autoptr(WebKitFeature) feature = NULL;
+    g_autoptr(CyberKitFeature) feature = NULL;
     gtk_tree_model_get(model, iter, FEATURES_LIST_COLUMN_FEATURE, &feature, -1);
 
     if (g_str_match_string(key, webkit_feature_get_name(feature), TRUE))
@@ -206,14 +206,14 @@ static gboolean featureTreeViewSearchMatchSubstring(GtkTreeModel *model, gint co
     return !g_str_match_string(key, webkit_feature_get_details(feature), TRUE);
 }
 
-static GtkWidget* createFeatureTreeView(BrowserSettingsDialog *dialog, WebKitFeatureList *featureList)
+static GtkWidget* createFeatureTreeView(BrowserSettingsDialog *dialog, CyberKitFeatureList *featureList)
 {
     g_autoptr(GtkListStore) model = gtk_list_store_new(FEATURES_LIST_N_COLUMNS,
                                                        G_TYPE_STRING,  /* name */
                                                        G_TYPE_STRING,  /* details */
                                                        WEBKIT_TYPE_FEATURE);
     for (gsize i = 0; i < webkit_feature_list_get_length(featureList); i++) {
-        WebKitFeature *feature = webkit_feature_list_get(featureList, i);
+        CyberKitFeature *feature = webkit_feature_list_get(featureList, i);
         g_autofree char *featureName = webkit_feature_get_name(feature)
             ? g_markup_escape_text(webkit_feature_get_name(feature), -1)
             : g_strdup(webkit_feature_get_identifier(feature));
@@ -295,7 +295,7 @@ static void browser_settings_dialog_init(BrowserSettingsDialog *dialog)
 #if !GTK_CHECK_VERSION(3, 98, 5)
     gtk_window_set_type_hint(GTK_WINDOW(dialog), GDK_WINDOW_TYPE_HINT_DIALOG);
 #endif
-    gtk_window_set_title(GTK_WINDOW(dialog), "WebKit Settings");
+    gtk_window_set_title(GTK_WINDOW(dialog), "CyberKit Settings");
     gtk_window_set_destroy_with_parent(GTK_WINDOW(dialog), TRUE);
 
     /* Settings list */
@@ -324,7 +324,7 @@ static void browserSettingsDialogConstructed(GObject *object)
     G_OBJECT_CLASS(browser_settings_dialog_parent_class)->constructed(object);
 
     BrowserSettingsDialog *dialog = BROWSER_SETTINGS_DIALOG(object);
-    WebKitSettings *settings = dialog->settings;
+    CyberKitSettings *settings = dialog->settings;
 
     /* Settings */
     GtkListStore *model = gtk_list_store_new(SETTINGS_LIST_N_COLUMNS, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING,
@@ -426,7 +426,7 @@ static void browser_settings_dialog_class_init(BrowserSettingsDialogClass *klass
                                                         G_PARAM_WRITABLE | G_PARAM_CONSTRUCT_ONLY));
 }
 
-GtkWidget *browser_settings_dialog_new(WebKitSettings *settings)
+GtkWidget *browser_settings_dialog_new(CyberKitSettings *settings)
 {
     g_return_val_if_fail(WEBKIT_IS_SETTINGS(settings), NULL);
 

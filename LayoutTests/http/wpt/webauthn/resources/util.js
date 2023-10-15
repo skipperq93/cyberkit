@@ -144,7 +144,7 @@ const testAssertionMessageApduBase64 =
 const testCcidNoUidBase64 = "aIE=";
 const testCcidValidUidBase64 = "CH+d1ZAA";
 
-const RESOURCES_DIR = "/WebKit/webauthn/resources/";
+const RESOURCES_DIR = "/CyberKit/webauthn/resources/";
 
 function asciiToUint8Array(str)
 {

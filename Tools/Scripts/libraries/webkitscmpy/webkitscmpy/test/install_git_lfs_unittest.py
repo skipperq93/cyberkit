@@ -47,7 +47,7 @@ class TestInstallGitLFS(testing.PathTestCase):
     def test_remote_git(self):
         with OutputCapture() as captured, mocks.remote.GitHub():
             self.assertEqual(1, program.main(
-                args=('-C', 'https://github.example.com/WebKit/WebKit', 'install-git-lfs'),
+                args=('-C', 'https://github.example.com/CyberKit/CyberKit', 'install-git-lfs'),
                 path=self.path,
             ))
         self.assertEqual(captured.stderr.getvalue(), 'Cannot install `git lfs` from a remote repository\n')

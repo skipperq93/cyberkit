@@ -27,14 +27,14 @@
 
 @interface WebEditingAppDelegate : NSObject <NSApplicationDelegate> {
     NSMutableSet *_webDocuments;
-    IBOutlet NSMenuItem *_newWebKit1EditorItem;
-    IBOutlet NSMenuItem *_newWebKit2EditorItem;
+    IBOutlet NSMenuItem *_newCyberKit1EditorItem;
+    IBOutlet NSMenuItem *_newCyberKit2EditorItem;
     IBOutlet NSPanel *_operationsPanel;
 }
 
 - (IBAction)newEditor:(id)sender;
 - (IBAction)showOperations:(id)sender;
-- (IBAction)toggleUseWebKit2ByDefault:(id)sender;
+- (IBAction)toggleUseCyberKit2ByDefault:(id)sender;
 
 - (IBAction)performTextFinderAction:(id)sender;
 

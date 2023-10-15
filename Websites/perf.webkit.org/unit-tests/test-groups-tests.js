@@ -430,22 +430,22 @@ describe('TestGroup', function () {
             assert.equal(secondSet, buildRequests[3].commitSet());
 
             assert.equal(firstSet.revisionForRepository(MockModels.webkit), '191622');
-            var firstWebKitCommit = firstSet.commitForRepository(MockModels.webkit);
-            assert.ok(firstWebKitCommit instanceof CommitLog);
-            assert.ok(firstWebKitCommit, buildRequests[2].commitSet().commitForRepository(MockModels.webkit));
-            assert.ok(firstWebKitCommit.repository(), MockModels.webkit);
-            assert.ok(firstWebKitCommit.revision(), '191622');
-            assert.ok(firstWebKitCommit.time() instanceof Date);
-            assert.ok(+firstWebKitCommit.time(), 1445945816878);
+            var firstCyberKitCommit = firstSet.commitForRepository(MockModels.webkit);
+            assert.ok(firstCyberKitCommit instanceof CommitLog);
+            assert.ok(firstCyberKitCommit, buildRequests[2].commitSet().commitForRepository(MockModels.webkit));
+            assert.ok(firstCyberKitCommit.repository(), MockModels.webkit);
+            assert.ok(firstCyberKitCommit.revision(), '191622');
+            assert.ok(firstCyberKitCommit.time() instanceof Date);
+            assert.ok(+firstCyberKitCommit.time(), 1445945816878);
 
             assert.equal(secondSet.revisionForRepository(MockModels.webkit), '192736');
-            var secondWebKitCommit = secondSet.commitForRepository(MockModels.webkit);
-            assert.ok(secondWebKitCommit instanceof CommitLog);
-            assert.ok(secondWebKitCommit, buildRequests[3].commitSet().commitForRepository(MockModels.webkit));
-            assert.ok(secondWebKitCommit.repository(), MockModels.webkit);
-            assert.ok(secondWebKitCommit.revision(), '192736');
-            assert.ok(secondWebKitCommit.time() instanceof Date);
-            assert.ok(+secondWebKitCommit.time(), 1445945816878);
+            var secondCyberKitCommit = secondSet.commitForRepository(MockModels.webkit);
+            assert.ok(secondCyberKitCommit instanceof CommitLog);
+            assert.ok(secondCyberKitCommit, buildRequests[3].commitSet().commitForRepository(MockModels.webkit));
+            assert.ok(secondCyberKitCommit.repository(), MockModels.webkit);
+            assert.ok(secondCyberKitCommit.revision(), '192736');
+            assert.ok(secondCyberKitCommit.time() instanceof Date);
+            assert.ok(+secondCyberKitCommit.time(), 1445945816878);
 
             assert.equal(firstSet.revisionForRepository(MockModels.osx), '10.11 15A284');
             var osxCommit = firstSet.commitForRepository(MockModels.osx);

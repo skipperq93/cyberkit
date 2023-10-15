@@ -16,7 +16,7 @@
 
 const waitForAnimationCommit = async (animation) => {
     await animation.ready;
-    if (!UIHelper.isWebKit2()) {
+    if (!UIHelper.isCyberKit2()) {
         await UIHelper.renderingUpdate();
         await UIHelper.renderingUpdate();
     } else

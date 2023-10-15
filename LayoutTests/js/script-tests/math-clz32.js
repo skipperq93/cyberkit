@@ -34,8 +34,8 @@ shouldBe('Math.clz32(Number.NEGATIVE_INFINITY)', '32');
 shouldBe('Math.clz32()', '32');
 shouldBe('Math.clz32(undefined)', '32');
 shouldBe('Math.clz32(null)', '32');
-shouldBe('Math.clz32("WebKit")', '32');
-shouldThrow('Math.clz32(Symbol("WebKit"))');
+shouldBe('Math.clz32("CyberKit")', '32');
+shouldThrow('Math.clz32(Symbol("CyberKit"))');
 shouldBe('Math.clz32({ webkit: "awesome" })', '32');
 
 // Type conversion.

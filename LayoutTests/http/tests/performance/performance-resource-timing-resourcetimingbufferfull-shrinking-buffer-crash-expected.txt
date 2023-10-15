@@ -1,5 +1,5 @@
 This tests clearing the resource timing buffer during a resourcetimingbufferfull event.
-WebKit should not hit a release assertion.
+CyberKit should not hit a release assertion.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

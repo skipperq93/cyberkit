@@ -94,7 +94,7 @@ WI.DebuggerManager = class DebuggerManager extends WI.Object
 
         this._activeCallFrame = null;
 
-        this._internalWebKitScripts = [];
+        this._internalCyberKitScripts = [];
         this._targetDebuggerDataMap = new Map;
 
         // Used to detect deleted probe actions.
@@ -526,7 +526,7 @@ WI.DebuggerManager = class DebuggerManager extends WI.Object
                     continue;
                 if (!WI.settings.debugShowConsoleEvaluations.value && isWebInspectorConsoleEvaluationScript(script.sourceURL))
                     continue;
-                if (!WI.settings.engineeringShowInternalScripts.value && isWebKitInternalScript(script.sourceURL))
+                if (!WI.settings.engineeringShowInternalScripts.value && isCyberKitInternalScript(script.sourceURL))
                     continue;
                 knownScripts.push(script);
             }
@@ -558,7 +558,7 @@ WI.DebuggerManager = class DebuggerManager extends WI.Object
         console.assert(DebuggerManager.supportsBlackboxingScripts());
         console.assert(sourceCode instanceof WI.SourceCode);
         console.assert(sourceCode.contentIdentifier);
-        console.assert(!isWebKitInjectedScript(sourceCode.contentIdentifier));
+        console.assert(!isCyberKitInjectedScript(sourceCode.contentIdentifier));
         console.assert(shouldBlackbox !== ((this.blackboxDataForSourceCode(sourceCode) || {}).type === DebuggerManager.BlackboxType.URL));
 
         this._blackboxedURLsSetting.value.toggleIncludes(sourceCode.contentIdentifier, shouldBlackbox);
@@ -954,7 +954,7 @@ WI.DebuggerManager = class DebuggerManager extends WI.Object
 
         WI.Script.resetUniqueDisplayNameNumbers(target);
 
-        this._internalWebKitScripts = [];
+        this._internalCyberKitScripts = [];
         this._targetDebuggerDataMap.clear();
 
         this._ignoreBreakpointDisplayLocationDidChangeEvent = true;
@@ -1000,7 +1000,7 @@ WI.DebuggerManager = class DebuggerManager extends WI.Object
                 continue;
 
             // Exclude the case where the call frame is in the inspector code.
-            if (!WI.settings.engineeringShowInternalScripts.value && isWebKitInternalScript(sourceCodeLocation.sourceCode.sourceURL))
+            if (!WI.settings.engineeringShowInternalScripts.value && isCyberKitInternalScript(sourceCodeLocation.sourceCode.sourceURL))
                 continue;
 
             let scopeChain = this._scopeChainFromPayload(target, callFramePayload.scopeChain);
@@ -1074,7 +1074,7 @@ WI.DebuggerManager = class DebuggerManager extends WI.Object
             return;
         }
 
-        if (!WI.settings.engineeringShowInternalScripts.value && isWebKitInternalScript(sourceURL))
+        if (!WI.settings.engineeringShowInternalScripts.value && isCyberKitInternalScript(sourceURL))
             return;
 
         let range = new WI.TextRange(startLine, startColumn, endLine, endColumn);
@@ -1102,8 +1102,8 @@ WI.DebuggerManager = class DebuggerManager extends WI.Object
             }
         }
 
-        if (isWebKitInternalScript(script.sourceURL)) {
-            this._internalWebKitScripts.push(script);
+        if (isCyberKitInternalScript(script.sourceURL)) {
+            this._internalCyberKitScripts.push(script);
             if (!WI.settings.engineeringShowInternalScripts.value)
                 return;
         }
@@ -1611,7 +1611,7 @@ WI.DebuggerManager = class DebuggerManager extends WI.Object
     _handleEngineeringShowInternalScriptsSettingChanged(event)
     {
         let eventType = WI.settings.engineeringShowInternalScripts.value ? WI.DebuggerManager.Event.ScriptAdded : WI.DebuggerManager.Event.ScriptRemoved;
-        for (let script of this._internalWebKitScripts)
+        for (let script of this._internalCyberKitScripts)
             this.dispatchEventToListeners(eventType, {script});
     }
 

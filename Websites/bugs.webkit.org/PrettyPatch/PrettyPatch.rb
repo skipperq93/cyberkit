@@ -108,7 +108,7 @@ private
 
     SMALLEST_EQUAL_OPERATION = 3
 
-    OPENSOURCE_GITHUB_URL = "https://github.com/WebKit/WebKit/blob/main/"
+    OPENSOURCE_GITHUB_URL = "https://github.com/CyberKit/CyberKit/blob/main/"
 
     OPENSOURCE_DIRS = Set.new %w[
         Examples
@@ -116,7 +116,7 @@ private
         PerformanceTests
         Source
         Tools
-        WebKitLibraries
+        CyberKitLibraries
         Websites
     ]
 
@@ -881,7 +881,7 @@ END
         end
 
         def self.get_github_uri(repository_path)
-            "https://raw.githubusercontent.com/WebKit/WebKit/main/" + (repository_path)
+            "https://raw.githubusercontent.com/CyberKit/CyberKit/main/" + (repository_path)
         end
 
         def self.get_new_temp_filepath_and_name

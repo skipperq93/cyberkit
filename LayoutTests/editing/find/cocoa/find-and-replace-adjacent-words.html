@@ -11,7 +11,7 @@ function reset() {
     editor.textContent = "appleappleapple";
 }
 
-Markup.description("Verifies that find and replace can be used to replace adjacent words in an editable area. This test requires WebKitTestRunner.");
+Markup.description("Verifies that find and replace can be used to replace adjacent words in an editable area. This test requires CyberKitTestRunner.");
 
 testRunner.findStringMatchesInPage("apple", []);
 testRunner.replaceFindMatchesAtIndices([0, 1, 2], "", false);

@@ -45,7 +45,7 @@ setup(
         'Topic :: Software Development :: Version Control :: Git',
     ],
     keywords='git hook mirror webkit',
-    url='https://github.com/WebKit/WebKit/tree/main/Tools/Scripts/libraries/reporelaypy',
+    url='https://github.com/CyberKit/CyberKit/tree/main/Tools/Scripts/libraries/reporelaypy',
     author='Jonathan Bedard',
     author_email='jbedard@apple.com',
     license='Modified BSD',

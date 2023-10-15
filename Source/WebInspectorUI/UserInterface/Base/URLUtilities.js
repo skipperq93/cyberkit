@@ -110,7 +110,7 @@ function parseURL(url)
     }
 
     // Internal sourceURLs will fail in URL constructor anyways.
-    if (isWebKitInternalScript(url))
+    if (isCyberKitInternalScript(url))
         return result;
 
     let parsed = null;

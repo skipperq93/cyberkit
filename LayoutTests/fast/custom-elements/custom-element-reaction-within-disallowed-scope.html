@@ -18,14 +18,14 @@ function startTest() {
 function continueTest() {
     iframe.src = 'custom-element-reaction-within-disallowed-scope.html#target';
     document.getElementById('result').textContent = didChange
-        ? 'PASS - WebKit did not hit an assertion'
+        ? 'PASS - CyberKit did not hit an assertion'
         : 'FAIL - The code to trigger a custom element reaction never ran';
     if (window.testRunner)
         testRunner.notifyDone();
 }
 
 if (top == self) {
-    document.write('<p>This tests enqueuing a custom element reaction inside an API with CEReaction=NotNeeded. WebKit should not hit a debug assertion.</p>');
+    document.write('<p>This tests enqueuing a custom element reaction inside an API with CEReaction=NotNeeded. CyberKit should not hit a debug assertion.</p>');
     window.onload = startTest;
 } else {
     document.write('<p><a id="target" href="#">child target</a></p>');

@@ -6,7 +6,7 @@ function navigate()
 {
     if (location.hash == "") {
         if (window.layoutTestController) {
-            layoutTestController.overridePreference("WebKitUsesPageCachePreferenceKey", 1);
+            layoutTestController.overridePreference("CyberKitUsesPageCachePreferenceKey", 1);
             layoutTestController.waitUntilDone();
         }
 

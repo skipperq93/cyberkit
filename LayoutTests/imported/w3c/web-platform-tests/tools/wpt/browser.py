@@ -1858,8 +1858,8 @@ class Sauce(Browser):
         return None
 
 
-class WebKit(Browser):
-    """WebKit-specific interface."""
+class CyberKit(Browser):
+    """CyberKit-specific interface."""
 
     product = "webkit"
     requirements = None
@@ -1883,7 +1883,7 @@ class WebKit(Browser):
         return None
 
 
-class WebKitGTKMiniBrowser(WebKit):
+class CyberKitGTKMiniBrowser(CyberKit):
 
 
     def _get_osidversion(self):
@@ -1908,7 +1908,7 @@ class WebKitGTKMiniBrowser(WebKit):
             response = get(base_download_dir + "LAST-IS")
         except requests.exceptions.HTTPError as e:
             if e.response.status_code == 404:
-                raise RuntimeError("Can't find a WebKitGTK MiniBrowser %s bundle for %s at %s"
+                raise RuntimeError("Can't find a CyberKitGTK MiniBrowser %s bundle for %s at %s"
                                    % (channel, self._get_osidversion(), base_dowload_uri))
             raise
 
@@ -1919,7 +1919,7 @@ class WebKitGTKMiniBrowser(WebKit):
             dest = self._get_browser_binary_dir(None, channel)
         bundle_file_path = os.path.join(dest, bundle_filename)
 
-        self.logger.info("Downloading WebKitGTK MiniBrowser bundle from %s" % bundle_url)
+        self.logger.info("Downloading CyberKitGTK MiniBrowser bundle from %s" % bundle_url)
         with open(bundle_file_path, "w+b") as f:
             get_download_to_descriptor(f, bundle_url)
 
@@ -1930,7 +1930,7 @@ class WebKitGTKMiniBrowser(WebKit):
 
         if bundle_expected_hash != bundle_computed_hash:
             self.logger.error("Calculated SHA256 hash is %s but was expecting %s" % (bundle_computed_hash,bundle_expected_hash))
-            raise RuntimeError("The WebKitGTK MiniBrowser bundle at %s has incorrect SHA256 hash." % bundle_file_path)
+            raise RuntimeError("The CyberKitGTK MiniBrowser bundle at %s has incorrect SHA256 hash." % bundle_file_path)
         return bundle_file_path
 
     def install(self, dest=None, channel=None, prompt=True):
@@ -1962,7 +1962,7 @@ class WebKitGTKMiniBrowser(WebKit):
         os.remove(bundle_path)
         install_ok_file = os.path.join(bundle_uncompress_directory, ".installation-ok")
         open(install_ok_file, "w").close()  # touch
-        self.logger.info("WebKitGTK MiniBrowser bundle for channel %s installed." % channel)
+        self.logger.info("CyberKitGTK MiniBrowser bundle for channel %s installed." % channel)
         return minibrowser_path
 
     def _find_executable_in_channel_bundle(self, binary, venv_path=None, channel=None):
@@ -1994,21 +1994,21 @@ class WebKitGTKMiniBrowser(WebKit):
         return find_executable("MiniBrowser", os.pathsep.join(libexecpaths))
 
     def find_webdriver(self, venv_path=None, channel=None):
-        webdriver_path = self._find_executable_in_channel_bundle("WebKitWebDriver", venv_path, channel)
+        webdriver_path = self._find_executable_in_channel_bundle("CyberKitWebDriver", venv_path, channel)
         if not webdriver_path:
-            webdriver_path = find_executable("WebKitWebDriver")
+            webdriver_path = find_executable("CyberKitWebDriver")
         return webdriver_path
 
     def version(self, binary=None, webdriver_binary=None):
         if binary is None:
             return None
-        try:  # WebKitGTK MiniBrowser before 2.26.0 doesn't support --version
+        try:  # CyberKitGTK MiniBrowser before 2.26.0 doesn't support --version
             output = call(binary, "--version").strip()
         except subprocess.CalledProcessError:
             return None
-        # Example output: "WebKitGTK 2.26.1"
+        # Example output: "CyberKitGTK 2.26.1"
         if output:
-            m = re.match(r"WebKitGTK (.+)", output)
+            m = re.match(r"CyberKitGTK (.+)", output)
             if not m:
                 self.logger.warning("Failed to extract version from: %s" % output)
                 return None
@@ -2032,7 +2032,7 @@ class Epiphany(Browser):
         return find_executable("epiphany")
 
     def find_webdriver(self, venv_path=None, channel=None):
-        return find_executable("WebKitWebDriver")
+        return find_executable("CyberKitWebDriver")
 
     def install_webdriver(self, dest=None, channel=None, browser_binary=None):
         raise NotImplementedError

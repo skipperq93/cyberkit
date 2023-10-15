@@ -102,7 +102,7 @@ function doTests(sourceTests, descFn, testFn) {
 // receives no arguments.  useSelection tells us whether the Range should be
 // added to a Selection and the Selection tested to ensure that the mutation
 // affects user selections as well as other ranges; every test is run with this
-// both false and true, because when it's set to true WebKit and Opera fail all
+// both false and true, because when it's set to true CyberKit and Opera fail all
 // tests' sanity checks, which is unhelpful.  The last four parameters just
 // tell us what range to build.
 function doTest(callback, useSelection, startContainer, startOffset, endContainer, endOffset) {

@@ -38,7 +38,7 @@ describe('CustomAnalysisTaskConfigurator', () => {
             ],
             lastModifiedByMetric: Date.now(),
         });
-        const repository = context.symbols.Repository.ensureSingleton(1, {name: 'WebKit'});
+        const repository = context.symbols.Repository.ensureSingleton(1, {name: 'CyberKit'});
         const triggerableRepositoryGroup = new context.symbols.TriggerableRepositoryGroup(1, {repositories: [{repository}]});
         new context.symbols.Triggerable(1, {
             name: 'test-triggerable',
@@ -122,7 +122,7 @@ describe('CustomAnalysisTaskConfigurator', () => {
             ],
             lastModifiedByMetric: Date.now(),
         });
-        const repository = context.symbols.Repository.ensureSingleton(1, {name: 'WebKit'});
+        const repository = context.symbols.Repository.ensureSingleton(1, {name: 'CyberKit'});
         const triggerableRepositoryGroup = new context.symbols.TriggerableRepositoryGroup(1, {repositories: [{repository}]});
         new context.symbols.Triggerable(1, {
             name: 'test-triggerable',
@@ -173,7 +173,7 @@ describe('CustomAnalysisTaskConfigurator', () => {
         const customAnalysisTaskConfigurator = await createCustomAnalysisTaskConfiguratorWithContext(context);
 
         await waitForComponentsToRender(context);
-        const repository = context.symbols.Repository.ensureSingleton(1, {name: 'WebKit'});
+        const repository = context.symbols.Repository.ensureSingleton(1, {name: 'CyberKit'});
         const commitSet = new context.symbols.CustomCommitSet;
         commitSet.setRevisionForRepository(repository, '210948', null);
         customAnalysisTaskConfigurator._commitSetMap = {'Baseline': commitSet, 'Comparison': null};
@@ -214,7 +214,7 @@ describe('CustomAnalysisTaskConfigurator', () => {
             ],
             lastModifiedByMetric: Date.now(),
         });
-        const repository = context.symbols.Repository.ensureSingleton(1, {name: 'WebKit'});
+        const repository = context.symbols.Repository.ensureSingleton(1, {name: 'CyberKit'});
         const triggerableRepositoryGroup = new context.symbols.TriggerableRepositoryGroup(1, {repositories: [{repository}]});
         new context.symbols.Triggerable(1, {
             name: 'test-triggerable',
@@ -294,7 +294,7 @@ describe('CustomAnalysisTaskConfigurator', () => {
             ],
             lastModifiedByMetric: Date.now(),
         });
-        const repository = context.symbols.Repository.ensureSingleton(1, {name: 'WebKit'});
+        const repository = context.symbols.Repository.ensureSingleton(1, {name: 'CyberKit'});
         const triggerableRepositoryGroup = new context.symbols.TriggerableRepositoryGroup(1, {name: 'test-triggerable', repositories: [{repository}]});
         new context.symbols.Triggerable(1, {
             name: 'test-triggerable',
@@ -356,7 +356,7 @@ describe('CustomAnalysisTaskConfigurator', () => {
             ],
             lastModifiedByMetric: Date.now(),
         });
-        const repository = context.symbols.Repository.ensureSingleton(1, {name: 'WebKit'});
+        const repository = context.symbols.Repository.ensureSingleton(1, {name: 'CyberKit'});
         const triggerableRepositoryGroup = new context.symbols.TriggerableRepositoryGroup(1, {repositories: [{repository}]});
         new context.symbols.Triggerable(1, {
             name: 'test-triggerable',

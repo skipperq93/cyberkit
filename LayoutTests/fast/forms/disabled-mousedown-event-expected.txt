@@ -1,4 +1,4 @@
-This test ensures WebKit fires mousedown event on a disabled input element.
+This test ensures CyberKit fires mousedown event on a disabled input element.
 
 
 PASS

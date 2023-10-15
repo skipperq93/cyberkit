@@ -168,7 +168,7 @@ def test_eventSender():
             assert errors == [("PARSE-FAILED", "Unable to parse file", filename, 1)]
         else:
             assert errors == [('LAYOUTTESTS APIS',
-                               'eventSender/testRunner/internals used; these are LayoutTests-specific APIs (WebKit/Blink)',
+                               'eventSender/testRunner/internals used; these are LayoutTests-specific APIs (CyberKit/Blink)',
                                filename,
                                1)]
 
@@ -183,7 +183,7 @@ def test_testRunner():
             assert errors == [("PARSE-FAILED", "Unable to parse file", filename, 1)]
         else:
             assert errors == [('LAYOUTTESTS APIS',
-                               'eventSender/testRunner/internals used; these are LayoutTests-specific APIs (WebKit/Blink)',
+                               'eventSender/testRunner/internals used; these are LayoutTests-specific APIs (CyberKit/Blink)',
                                filename,
                                1)]
 
@@ -198,7 +198,7 @@ def test_internals():
             assert errors == [("PARSE-FAILED", "Unable to parse file", filename, 1)]
         else:
             assert errors == [('LAYOUTTESTS APIS',
-                               'eventSender/testRunner/internals used; these are LayoutTests-specific APIs (WebKit/Blink)',
+                               'eventSender/testRunner/internals used; these are LayoutTests-specific APIs (CyberKit/Blink)',
                                filename,
                                1)]
 

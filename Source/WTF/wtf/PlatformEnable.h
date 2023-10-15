@@ -72,8 +72,8 @@
 
 /* ==== Platform additions: additions to PlatformEnable.h from outside the main repository ==== */
 
-#if USE(APPLE_INTERNAL_SDK) && __has_include(<WebKitAdditions/AdditionalFeatureDefines.h>)
-#include <WebKitAdditions/AdditionalFeatureDefines.h>
+#if USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/AdditionalFeatureDefines.h>)
+#include <CyberKitAdditions/AdditionalFeatureDefines.h>
 #endif
 
 
@@ -732,7 +732,7 @@
 /* The SamplingProfiler is the probabilistic and low-overhead profiler used by
  * JSC to measure where time is spent inside a JavaScript program.
  * In configurations other than Windows and Darwin, because layout of mcontext_t depends on standard libraries (like glibc),
- * sampling profiler is enabled if WebKit uses pthreads and glibc. */
+ * sampling profiler is enabled if CyberKit uses pthreads and glibc. */
 #if !defined(ENABLE_SAMPLING_PROFILER) && (!ENABLE(C_LOOP) && (OS(WINDOWS) || HAVE(MACHINE_CONTEXT)))
 #define ENABLE_SAMPLING_PROFILER 1
 #endif

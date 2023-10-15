@@ -9,7 +9,7 @@
         {
             "name": "release",
             "hidden": true,
-            "binaryDir": "WebKitBuild/Release",
+            "binaryDir": "CyberKitBuild/Release",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": {
                     "type": "STRING",
@@ -20,7 +20,7 @@
         {
             "name": "debug",
             "hidden": true,
-            "binaryDir": "WebKitBuild/Debug",
+            "binaryDir": "CyberKitBuild/Debug",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": {
                     "type": "STRING",

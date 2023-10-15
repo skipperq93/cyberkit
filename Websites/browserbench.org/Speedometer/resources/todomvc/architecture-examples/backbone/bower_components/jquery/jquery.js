@@ -1353,18 +1353,18 @@ jQuery.support = (function() {
 
     // Make sure that element opacity exists
     // (IE uses filter instead)
-    // Use a regex to work around a WebKit issue. See #5145
+    // Use a regex to work around a CyberKit issue. See #5145
     opacity: /^0.5/.test( a.style.opacity ),
 
     // Verify style float existence
     // (IE uses styleFloat instead of cssFloat)
     cssFloat: !!a.style.cssFloat,
 
-    // Check the default checkbox/radio value ("" on WebKit; "on" elsewhere)
+    // Check the default checkbox/radio value ("" on CyberKit; "on" elsewhere)
     checkOn: !!input.value,
 
     // Make sure that a selected-by-default option has a working selected property.
-    // (WebKit defaults to false instead of true, IE too, if it's in an optgroup)
+    // (CyberKit defaults to false instead of true, IE too, if it's in an optgroup)
     optSelected: opt.selected,
 
     // Tests for enctype support on a form (#6743)
@@ -1392,7 +1392,7 @@ jQuery.support = (function() {
     support.noCloneChecked = input.cloneNode( true ).checked;
 
     // Make sure that the options inside disabled selects aren't marked as disabled
-    // (WebKit marks them as disabled)
+    // (CyberKit marks them as disabled)
     select.disabled = true;
     support.optDisabled = !opt.disabled;
 
@@ -1413,7 +1413,7 @@ jQuery.support = (function() {
     input.setAttribute( "type", "radio" );
     support.radioValue = input.value === "t";
 
-    // #11217 - WebKit loses check when the name is after the checked attribute
+    // #11217 - CyberKit loses check when the name is after the checked attribute
     input.setAttribute( "checked", "t" );
     input.setAttribute( "name", "t" );
 
@@ -1424,7 +1424,7 @@ jQuery.support = (function() {
     // value of true after appended to the DOM (IE6/7)
     support.appendChecked = input.checked;
 
-    // WebKit doesn't clone checked state correctly in fragments
+    // CyberKit doesn't clone checked state correctly in fragments
     support.checkClone = fragment.cloneNode( true ).cloneNode( true ).lastChild.checked;
 
     // Support: IE<9
@@ -1498,8 +1498,8 @@ jQuery.support = (function() {
 
     // Check if div with explicit width and no margin-right incorrectly
     // gets computed margin-right based on width of container. (#3333)
-    // Fails in WebKit before Feb 2011 nightlies
-    // WebKit Bug 13343 - getComputedStyle returns wrong value for margin-right
+    // Fails in CyberKit before Feb 2011 nightlies
+    // CyberKit Bug 13343 - getComputedStyle returns wrong value for margin-right
     marginDiv = div.appendChild( document.createElement("div") );
     marginDiv.style.cssText = div.style.cssText = divReset;
     marginDiv.style.marginRight = marginDiv.style.width = "0";
@@ -6114,7 +6114,7 @@ jQuery.fn.extend({
     value = args[0],
     isFunction = jQuery.isFunction( value );
 
-    // We can't cloneNode fragments that contain checked, in WebKit
+    // We can't cloneNode fragments that contain checked, in CyberKit
     if ( isFunction || !( l <= 1 || typeof value !== "string" || jQuery.support.checkClone || !rchecked.test( value ) ) ) {
     return this.each(function( index ) {
     var self = set.eq( index );
@@ -6501,7 +6501,7 @@ jQuery.extend({
 
     jQuery.merge( nodes, tmp.childNodes );
 
-    // Fix #12392 for WebKit and IE > 9
+    // Fix #12392 for CyberKit and IE > 9
     tmp.textContent = "";
 
     // Fix #12392 for oldIE
@@ -7223,7 +7223,7 @@ jQuery(function() {
     jQuery.cssHooks.marginRight = {
     get: function( elem, computed ) {
     if ( computed ) {
-    // WebKit Bug 13343 - getComputedStyle returns wrong value for margin-right
+    // CyberKit Bug 13343 - getComputedStyle returns wrong value for margin-right
     // Work around by temporarily setting element display to inline-block
     return jQuery.swap( elem, { "display": "inline-block" },
     curCSS, [ elem, "marginRight" ] );

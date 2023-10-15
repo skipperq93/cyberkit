@@ -8,7 +8,7 @@ if (window.testRunner) {
 
 function crash() {
     document.designMode = "on";
-    var textNode = document.body.appendChild(document.createTextNode("PASS. WebKit didn't crash."));
+    var textNode = document.body.appendChild(document.createTextNode("PASS. CyberKit didn't crash."));
     var range = document.createRange();
     range.setStart(textNode, 0);
     document.addEventListener("DOMNodeInserted", function () {

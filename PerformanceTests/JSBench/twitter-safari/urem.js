@@ -1157,7 +1157,7 @@ f989148965_429.returns.push(o5);
 // undefined
 o5 = null;
 // 1149
-o2.userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/536.29.13 (KHTML, like Gecko) Version/6.0.4 Safari/536.29.13";
+o2.userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleCyberKit/536.29.13 (KHTML, like Gecko) Version/6.0.4 Safari/536.29.13";
 // undefined
 o2 = null;
 // 1150

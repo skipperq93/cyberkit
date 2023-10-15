@@ -54,7 +54,7 @@ static memory_reader_t * setup_memory_reader(crash_reporter_memory_reader_t crm_
 }
 
 
-// This function will be called when a process crashes containing the JavaScriptCore framework.
+// This function will be called when a process crashes containing the CyberScriptCore framework.
 // The goal is to determine if the crash was caused by a PGM allocation, and if so whether the crash
 // was a UAF or OOB crash. These details will forwarded back to the Crash Reporter API, which will
 // add the information to the local crash log.

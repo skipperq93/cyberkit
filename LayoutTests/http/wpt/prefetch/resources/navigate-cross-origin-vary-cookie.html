@@ -9,12 +9,12 @@
   async function test() {
     var link = document.createElement("link");
     link.rel = "prefetch";
-    link.href = get_host_info().HTTP_REMOTE_ORIGIN + "/WebKit/prefetch/resources/main-resource-cross-origin-vary-cookie.py";
+    link.href = get_host_info().HTTP_REMOTE_ORIGIN + "/CyberKit/prefetch/resources/main-resource-cross-origin-vary-cookie.py";
     document.body.appendChild(link);
 
-    await fetch(get_host_info().HTTP_REMOTE_ORIGIN + "/WebKit/prefetch/resources/main-resource-cross-origin-set-cookie.py", { "credentials": "include" });
+    await fetch(get_host_info().HTTP_REMOTE_ORIGIN + "/CyberKit/prefetch/resources/main-resource-cross-origin-set-cookie.py", { "credentials": "include" });
 
-    window.location = get_host_info().HTTP_REMOTE_ORIGIN + "/WebKit/prefetch/resources/main-resource-cross-origin-vary-cookie.py";
+    window.location = get_host_info().HTTP_REMOTE_ORIGIN + "/CyberKit/prefetch/resources/main-resource-cross-origin-vary-cookie.py";
   }
 </script>
 </body>

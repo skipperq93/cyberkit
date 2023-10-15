@@ -63,7 +63,7 @@ def check_source_file(source_file, checkout_root, platform_headers):
 host = Host()
 host.initialize_scm()
 checkout_root = host.scm().checkout_root
-platform_dir = os.path.join(checkout_root, "Source", "WebCore", "platform")
+platform_dir = os.path.join(checkout_root, "Source", "CyberCore", "platform")
 platform_headers = get_platform_headers(platform_dir)
 
 layering_violations_count = 0

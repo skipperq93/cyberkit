@@ -1,4 +1,4 @@
-This test ensures WebKit takes paddings and borders into account when moving vertically.
+This test ensures CyberKit takes paddings and borders into account when moving vertically.
 
 test 1
 PASS selectWord() is "left2"

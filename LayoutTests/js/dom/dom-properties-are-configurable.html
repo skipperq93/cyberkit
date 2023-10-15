@@ -10,10 +10,10 @@
     shouldBeTrue('Object.getOwnPropertyDescriptor(HTMLElement.prototype, "innerText").configurable');
     shouldBeTrue('Object.getOwnPropertyDescriptor(window, "onhashchange").configurable');
     shouldBe('HTMLElement.prototype.__defineGetter__("innerText", function() { return "NO!" });', 'undefined');
-    shouldBe('window.__defineGetter__("onhashchange", function() { return "WebKit!" });', 'undefined');
+    shouldBe('window.__defineGetter__("onhashchange", function() { return "CyberKit!" });', 'undefined');
     shouldBeEqualToString('HTMLElement.prototype.innerText', 'NO!');
     shouldBeEqualToString('document.documentElement.innerText', 'NO!');
-    shouldBeEqualToString('window.onhashchange', 'WebKit!');
+    shouldBeEqualToString('window.onhashchange', 'CyberKit!');
 </script>
 <script src="../../resources/js-test-post.js"></script>
 </body>

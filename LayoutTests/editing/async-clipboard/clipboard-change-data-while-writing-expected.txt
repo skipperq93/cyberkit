@@ -1,4 +1,4 @@
-This test verifies that if platform pasteboard contents are changed immediately after calling Clipboard.write(), the promise should be rejected. This test needs to be run in WebKitTestRunner or DumpRenderTree.
+This test verifies that if platform pasteboard contents are changed immediately after calling Clipboard.write(), the promise should be rejected. This test needs to be run in CyberKitTestRunner or DumpRenderTree.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

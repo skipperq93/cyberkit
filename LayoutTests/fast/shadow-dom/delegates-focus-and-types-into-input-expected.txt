@@ -1,4 +1,4 @@
-This tests delegating focus in a shadow tree to an input element. WebKit should move the selection as well as the focus
+This tests delegating focus in a shadow tree to an input element. CyberKit should move the selection as well as the focus
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

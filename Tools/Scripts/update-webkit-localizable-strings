@@ -34,16 +34,16 @@ use FindBin;
 use lib $FindBin::Bin;
 use webkitdirs;
 
-# WebKit and WebKit2 strings go into WebCore's Localizable.strings.
-my @webKitDirectoriesToScan = ("Source/WebCore", "Source/WebKitLegacy/mac", "Source/WebKitLegacy/win", "Source/WebKit", "--skip", "Source/WebCore/icu", "--skip", "Source/WebKitLegacy/mac/icu");
+# CyberKit and CyberKit2 strings go into CyberCore's Localizable.strings.
+my @webKitDirectoriesToScan = ("Source/CyberCore", "Source/CyberKitLegacy/mac", "Source/CyberKitLegacy/win", "Source/CyberKit", "--skip", "Source/CyberCore/icu", "--skip", "Source/CyberKitLegacy/mac/icu");
 my @webInspectorUIDirectoriesToScan = ("Source/WebInspectorUI/UserInterface");
 
-my $webCoreFileToUpdate = "Source/WebCore/en.lproj/Localizable.strings";
+my $webCoreFileToUpdate = "Source/CyberCore/en.lproj/Localizable.strings";
 my $webInspectorUIFileToUpdate = "Source/WebInspectorUI/Localizations/en.lproj/localizedStrings.js";
 
 @ARGV == 0 or die "Usage: " . basename($0) . "\n";
 
-chdirWebKit();
+chdirCyberKit();
 
-system "Source/WebCore/Scripts/extract-localizable-strings.pl", $webCoreFileToUpdate, @webKitDirectoriesToScan;
+system "Source/CyberCore/Scripts/extract-localizable-strings.pl", $webCoreFileToUpdate, @webKitDirectoriesToScan;
 system "Tools/Scripts/extract-localizable-js-strings", "--utf8", $webInspectorUIFileToUpdate, @webInspectorUIDirectoriesToScan;

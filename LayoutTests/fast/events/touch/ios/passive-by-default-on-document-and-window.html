@@ -53,7 +53,7 @@ async function runTest()
     }, false);
 
     if (window.testRunner && testRunner.runUIScript) {
-        description("This test verifies that touchstart and touchend event listeners are passive by default on document, window, documentElement, and body. This test requires WebKitTestRunner.");
+        description("This test verifies that touchstart and touchend event listeners are passive by default on document, window, documentElement, and body. This test requires CyberKitTestRunner.");
         await UIHelper.dragFromPointToPoint(50, 250, 50, 30, 0.1);
         await new Promise(resolve => shouldBecomeEqual("touchEndEventCount", "4", resolve));
         finishJSTest();

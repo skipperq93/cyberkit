@@ -53,7 +53,7 @@ if (typeof testsJsLibraryOnly == "undefined" || !testsJsLibraryOnly) {
 
     // Feature-test whether the browser wraps at <wbr> or not, and set word-wrap:
     // break-word where necessary if not.  (IE and Opera don't wrap, Gecko and
-    // WebKit do.)  word-wrap: break-word will break anywhere at all, so it looks
+    // CyberKit do.)  word-wrap: break-word will break anywhere at all, so it looks
     // significantly uglier.
     //@{
     (function() {
@@ -1787,7 +1787,7 @@ var tests = {
         '<p>[foo<p style="margin-left: 40px">bar<p>baz]<p>extra',
         '<p style="margin-left: 40px">foo<p>[bar]<p style="margin-left: 40px">baz<p>extra',
 
-        // WebKit:
+        // CyberKit:
         '<blockquote class="webkit-indent-blockquote" style="margin: 0 0 0 40px; border: none; padding: 0px"><p>foo[bar]</p><p>baz</p></blockquote><p>extra',
         '<blockquote class="webkit-indent-blockquote" style="margin: 0 0 0 40px; border: none; padding: 0px"><p>foo[bar</p><p>b]az</p></blockquote><p>extra',
         '<blockquote class="webkit-indent-blockquote" style="margin: 0 0 0 40px; border: none; padding: 0px"><p>foo[bar]</p></blockquote><p>baz</p><p>extra',
@@ -3416,7 +3416,7 @@ var tests = {
         '<p style="margin-left: 40px">foo[bar]</p><p>baz</p><p>extra',
         '<p style="margin-left: 40px">foo[bar</p><p>b]az</p><p>extra',
 
-        // WebKit:
+        // CyberKit:
         '<blockquote class="webkit-indent-blockquote" style="margin: 0 0 0 40px; border: none; padding: 0px;"><p>foo[bar]</p><p>baz</p></blockquote><p>extra',
         '<blockquote class="webkit-indent-blockquote" style="margin: 0 0 0 40px; border: none; padding: 0px;"><p>foo[bar</p><p>b]az</p></blockquote><p>extra',
         '<blockquote class="webkit-indent-blockquote" style="margin: 0 0 0 40px; border: none; padding: 0px;"><p>foo[bar]</p></blockquote><p>baz</p><p>extra',
@@ -5408,7 +5408,7 @@ function setSelection(startNode, startOffset, endNode, endOffset) {
         getSelection().removeAllRanges();
         getSelection().addRange(range);
     } else if ("extend" in getSelection()) {
-        // WebKit behaves unreasonably for collapse(), so do that manually.
+        // CyberKit behaves unreasonably for collapse(), so do that manually.
         /*
         var range = document.createRange();
         range.setStart(startNode, startOffset);
@@ -5520,7 +5520,7 @@ function normalizeSerializedStyle(wrapper) {
             .replace(/: /g, ":")
             // Gecko likes "transparent"
             .replace(/transparent/g, "rgba(0, 0, 0, 0)")
-            // WebKit likes to look overly precise
+            // CyberKit likes to look overly precise
             .replace(/, 0.496094\)/g, ", 0.5)")
             // Gecko converts anything with full alpha to "transparent" which
             // then becomes "rgba(0, 0, 0, 0)", so we have to make other

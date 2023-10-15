@@ -55,7 +55,7 @@ class NoAction(argparse.Action):
 class LldbTester(Tester):
 
     def parse_args(self):
-        parser = argparse.ArgumentParser(description='A script which tests WebKit\'s lldb macros and integration')
+        parser = argparse.ArgumentParser(description='A script which tests CyberKit\'s lldb macros and integration')
         parser.add_argument('--build', '--no-build',
                             dest='build', action=NoAction,
                             default=None, help='Enable or disable calling build-lldbwebkittester before running the test (enabled by default). This will build the lldb test runner, bmalloc and WTF.')
@@ -100,7 +100,7 @@ class LldbTester(Tester):
         self.upload_style = configuration_to_use.lower()
 
         if (not self._options.root and self._options.build is None) or self._options.build:
-            self.printer.write_update('Building lldbWebKitTester ...')
+            self.printer.write_update('Building lldbCyberKitTester ...')
             build_lldbwebkittester = self.finder.filesystem.join(webkit_root, 'Tools', 'Scripts', 'build-lldbwebkittester')
             try:
                 host.executive.run_and_throw_if_fail(
@@ -111,9 +111,9 @@ class LldbTester(Tester):
                 _log.error(e.message_with_output(output_limit=None))
                 return False
 
-        os.environ['LLDB_WEBKIT_TESTER_EXECUTABLE'] = str(self.finder.filesystem.join(config.build_directory(configuration_to_use), 'lldbWebKitTester'))
+        os.environ['LLDB_WEBKIT_TESTER_EXECUTABLE'] = str(self.finder.filesystem.join(config.build_directory(configuration_to_use), 'lldbCyberKitTester'))
         if not self.finder.filesystem.exists(os.environ['LLDB_WEBKIT_TESTER_EXECUTABLE']):
-            _log.error('Failed to find lldbWebKitTester.')
+            _log.error('Failed to find lldbCyberKitTester.')
             return False
 
         return self._run_tests(names)

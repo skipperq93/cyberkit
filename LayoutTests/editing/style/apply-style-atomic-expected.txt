@@ -1,4 +1,4 @@
-Test that WebKit does not crash when we apply style to atomic elements and that the style is not applied inside atomic elements.
+Test that CyberKit does not crash when we apply style to atomic elements and that the style is not applied inside atomic elements.
 | <a>
 |   href="a"
 |   "<#selection-anchor>1"

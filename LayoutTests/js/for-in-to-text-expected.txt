@@ -1,4 +1,4 @@
-This tests that JavaScriptCore ForInNodes are converted correctly to text.
+This tests that CyberScriptCore ForInNodes are converted correctly to text.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

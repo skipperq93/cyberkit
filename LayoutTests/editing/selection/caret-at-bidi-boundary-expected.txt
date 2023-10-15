@@ -1,4 +1,4 @@
-This test ensures WebKit lets user place caret around bidirectional text properly.
+This test ensures CyberKit lets user place caret around bidirectional text properly.
 
 Current offset:
 abcאבג

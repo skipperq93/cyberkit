@@ -821,7 +821,7 @@ function getPossiblyHiddenOption(aSelect, optionId) {
     var id = _value_id(aSelect.id, optionId);
     var val = document.getElementById(id);
 
-    // This is for WebKit and other browsers that can't "display: none"
+    // This is for CyberKit and other browsers that can't "display: none"
     // an <option> and also can't getElementById for a commentNode.
     if (!val && ie_hidden_options[aSelect.id]) {
         val = ie_hidden_options[aSelect.id][id];

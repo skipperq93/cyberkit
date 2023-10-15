@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import JavaScriptCore
+import CyberScriptCore
 
 class WorkerTask : Task {
     private var js : JSValue

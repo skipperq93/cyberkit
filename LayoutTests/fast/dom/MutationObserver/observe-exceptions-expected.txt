@@ -1,4 +1,4 @@
-Test that WebKitMutationObserver.observe throws exceptions appropriately
+Test that CyberKitMutationObserver.observe throws exceptions appropriately
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

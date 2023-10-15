@@ -1,0 +1,13 @@
+Test constructor for CyberKitPoint. <rdar://problem/6481690>
+
+On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
+
+
+PASS CyberKitPoint.prototype.toString.call(new CyberKitPoint) is '[object CyberKitPoint]'
+PASS CyberKitPoint.prototype.toString.call(new CyberKitPoint(0)) is '[object CyberKitPoint]'
+PASS CyberKitPoint.prototype.toString.call(new CyberKitPoint(1, 1)) is '[object CyberKitPoint]'
+PASS CyberKitPoint.prototype.toString.call(new CyberKitPoint(1, 2, 3)) is '[object CyberKitPoint]'
+PASS successfullyParsed is true
+
+TEST COMPLETE
+

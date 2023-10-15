@@ -181,9 +181,9 @@ end
 def usage
     puts "run-jsc-stress-tests -j <shell path> <collections path> [<collections path> ...]"
     puts
-    puts "--jsc                (-j)   Path to JavaScriptCore build product. This option is required."
-    puts "--no-copy                   Do not copy the JavaScriptCore build product before testing."
-    puts "                            --jsc specifies an already present JavaScriptCore to test."
+    puts "--jsc                (-j)   Path to CyberScriptCore build product. This option is required."
+    puts "--no-copy                   Do not copy the CyberScriptCore build product before testing."
+    puts "                            --jsc specifies an already present CyberScriptCore to test."
     puts "--memory-limited            Indicate that we are targeting the test for a memory limited device."
     puts "                            Skip tests tagged with //@skip if $memoryLimited"
     puts "--no-jit                    Do not run JIT specific tests."
@@ -193,12 +193,12 @@ def usage
     puts "--verbose            (-v)   Print more things while running."
     puts "--run-bundle                Runs a bundle previously created by run-jsc-stress-tests."
     puts "--tarball [fileName]        Creates a tarball of the final bundle.  Use name if supplied for tar file."
-    puts "--arch                      Specify architecture instead of determining from JavaScriptCore build."
+    puts "--arch                      Specify architecture instead of determining from CyberScriptCore build."
     puts "--force-architecture        Override the architecture to run tests with."
     puts "                            e.g. x86, x86_64, arm."
     puts "--ldd                       Use alternate ldd"
     puts "--artifact-exec-wrapper     Wrapper for executing a build artifact"
-    puts "--os                        Specify os instead of determining from JavaScriptCore build."
+    puts "--os                        Specify os instead of determining from CyberScriptCore build."
     puts "                            e.g. darwin, linux & windows."
     puts "--shell-runner              Uses the shell-based test runner instead of the default make-based runner."
     puts "                            In general the shell runner is slower than the make runner."
@@ -419,7 +419,7 @@ unless jscArg
 
     output = output[0]
     jscArg = Pathname.new(output).join("jsc")
-    jscArg = Pathname.new(output).join("JavaScriptCore.framework", "Helpers", "jsc") if !File.file?(jscArg)
+    jscArg = Pathname.new(output).join("CyberScriptCore.framework", "Helpers", "jsc") if !File.file?(jscArg)
     jscArg = Pathname.new(output).join("bin", "jsc") if !File.file?(jscArg) # Support CMake build.
     if !File.file?(jscArg)
         $stderr.puts "Error: must specify --jsc <path>"
@@ -438,7 +438,7 @@ end
 $progressMeter = ($verbosity == 0 and $stdout.tty? and $remoteHosts.length <= 1)
 
 if $bundle
-    $jscPath = $bundle + ".vm" + "JavaScriptCore.framework" + "Helpers" + "jsc"
+    $jscPath = $bundle + ".vm" + "CyberScriptCore.framework" + "Helpers" + "jsc"
     $outputDir = $bundle
 end
 
@@ -751,12 +751,12 @@ $runlist = []
 
 def frameworkFromJSCPath(jscPath)
     parentDirectory = jscPath.dirname
-    if (parentDirectory.basename.to_s == "Resources" or parentDirectory.basename.to_s == "Helpers") and parentDirectory.dirname.basename.to_s == "JavaScriptCore.framework"
+    if (parentDirectory.basename.to_s == "Resources" or parentDirectory.basename.to_s == "Helpers") and parentDirectory.dirname.basename.to_s == "CyberScriptCore.framework"
         parentDirectory.dirname
     elsif $hostOS == "playstation"
         jscPath.dirname
     elsif parentDirectory.basename.to_s =~ /^Debug/ or parentDirectory.basename.to_s =~ /^Release/
-        jscPath.dirname + "JavaScriptCore.framework"
+        jscPath.dirname + "CyberScriptCore.framework"
     else
         $stderr.puts "Warning: cannot identify JSC framework, doing generic VM copy."
         nil
@@ -2481,7 +2481,7 @@ def prepareBundle
         FileUtils.mkdir_p vmDir
         
         frameworkPath = frameworkFromJSCPath($jscPath)
-        destinationFrameworkPath = Pathname.new(".vm") + "JavaScriptCore.framework"
+        destinationFrameworkPath = Pathname.new(".vm") + "CyberScriptCore.framework"
         $jscPath = destinationFrameworkPath + "Helpers" + "jsc"
         $testingFrameworkPath = Pathname.new("..") + destinationFrameworkPath
 
@@ -2493,8 +2493,8 @@ def prepareBundle
             originalJSCDir = File.dirname(originalJSCPath)
             source = [originalJSCPath] + [originalJSCDir + "/jscLib.dll"]
 
-            # Check for and copy JavaScriptCore.dll and WTF.dll for dynamic builds
-            javaScriptCoreDLLPath = File.join(originalJSCDir, "JavaScriptCore.dll")
+            # Check for and copy CyberScriptCore.dll and WTF.dll for dynamic builds
+            javaScriptCoreDLLPath = File.join(originalJSCDir, "CyberScriptCore.dll")
             wtfDLLPath = File.join(originalJSCDir, "WTF.dll")
             if (File.exists?(javaScriptCoreDLLPath))
                 source = source + [javaScriptCoreDLLPath]

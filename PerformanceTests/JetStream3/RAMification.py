@@ -73,15 +73,15 @@ def frameworkPathFromExecutablePath(execPath):
     if not os.path.abspath(execPath):
         execPath = os.path.isabs(execPath)
 
-    pathMatch = re.match("(.*?/WebKitBuild/(Release|Debug)+)/([a-zA-Z]+)$", execPath)
+    pathMatch = re.match("(.*?/CyberKitBuild/(Release|Debug)+)/([a-zA-Z]+)$", execPath)
     if pathMatch:
         return pathMatch.group(1)
 
-    pathMatch = re.match("(.*?)/JavaScriptCore.framework/Resources/([a-zA-Z]+)$", execPath)
+    pathMatch = re.match("(.*?)/CyberScriptCore.framework/Resources/([a-zA-Z]+)$", execPath)
     if pathMatch:
         return pathMatch.group(1)
 
-    pathMatch = re.match("(.*?)/JavaScriptCore.framework/Helpers/([a-zA-Z]+)$", execPath)
+    pathMatch = re.match("(.*?)/CyberScriptCore.framework/Helpers/([a-zA-Z]+)$", execPath)
     if pathMatch:
         return pathMatch.group(1)
 
@@ -89,7 +89,7 @@ def frameworkPathFromExecutablePath(execPath):
     if pathMatch:
         return pathMatch.group(1)
 
-    pathMatch = re.match("(.*?)/JavaScriptCore.framework/(.*?)/Resources/([a-zA-Z]+)$", execPath)
+    pathMatch = re.match("(.*?)/CyberScriptCore.framework/(.*?)/Resources/([a-zA-Z]+)$", execPath)
     if pathMatch:
         return pathMatch.group(1)
 

@@ -28,7 +28,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Update script for WebKit Open Source Project.
+# Update script for CyberKit Open Source Project.
 
 use strict;
 use warnings;
@@ -44,7 +44,7 @@ use webkitdirs;
 my $quiet = '';
 my $showHelp;
 
-chdirWebKit();
+chdirCyberKit();
 
 my $getOptionsResult = GetOptions(
     'h|help'  => \$showHelp,

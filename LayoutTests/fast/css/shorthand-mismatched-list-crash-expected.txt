@@ -1,4 +1,4 @@
-Test for WebKit bug 31559: Crash with mismatched lists and shorthands.
+Test for CyberKit bug 31559: Crash with mismatched lists and shorthands.
 
 PASS para.style.webkitTransition is "width 1s, left 1s, 1s"
 PASS para.style.webkitTransition is "width 1s, left 1s, top"

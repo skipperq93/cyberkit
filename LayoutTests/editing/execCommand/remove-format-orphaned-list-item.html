@@ -2,10 +2,10 @@
 <html>
 <body>
 <script src="../../resources/dump-as-markup.js"></script>
-<div id="test" contenteditable><ul><li>hello</li><li>world</li>WebKit</ul></div>
+<div id="test" contenteditable><ul><li>hello</li><li>world</li>CyberKit</ul></div>
 <script>
 
-Markup.description('This tests RemoveFormant command on an orphaned list item following non-orphaned list items. WebKit used to remove non-orphaned list items ("hello world"). You should see "hello world WebKit" below.');
+Markup.description('This tests RemoveFormant command on an orphaned list item following non-orphaned list items. CyberKit used to remove non-orphaned list items ("hello world"). You should see "hello world CyberKit" below.');
 var text = document.getElementById('test').lastChild.lastChild;
 var range = document.createRange();
 range.setStart(text, 0);

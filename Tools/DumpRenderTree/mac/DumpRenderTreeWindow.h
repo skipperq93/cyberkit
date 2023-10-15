@@ -32,7 +32,7 @@
 #import <AppKit/AppKit.h>
 #else
 #import "UIKitSPI.h"
-#import <WebKit/WAKWindow.h>
+#import <CyberKit/WAKWindow.h>
 #endif
 
 @class WebView;

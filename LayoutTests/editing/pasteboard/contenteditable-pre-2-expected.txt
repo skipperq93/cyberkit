@@ -1,5 +1,5 @@
-This test copies and pastes content inside pre that is an editing host. WebKit should not clone pre.
-To manually test, cut and paste "hello\nworld" WebKit should not nest pre (no red borders).
+This test copies and pastes content inside pre that is an editing host. CyberKit should not clone pre.
+To manually test, cut and paste "hello\nworld" CyberKit should not nest pre (no red borders).
 
 Before cut paste:
 | <pre>

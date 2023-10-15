@@ -63,7 +63,7 @@ shouldThrow("doc.evaluate('\"monty\"/anaconda', doc.documentElement, null, XPath
 shouldThrow("doc.evaluate('/doc/string(item[@id = 2])/@id', doc.documentElement, null, XPathResult.ANY_TYPE, null)");
 shouldThrow("doc.evaluate('(1)[1]', doc.documentElement, null, XPathResult.ANY_TYPE, null)");
 
-// Added for WebKit.
+// Added for CyberKit.
 test(doc, doc.documentElement, '(1)', 1);
 test(doc, doc.documentElement, '((1 + 1))', 2);
 

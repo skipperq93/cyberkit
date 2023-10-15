@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 PACKAGES=(
-    # These are dependencies necessary for building WebKitGTK/WPE.
+    # These are dependencies necessary for building CyberKitGTK/WPE.
     alsa-lib-devel
     at-spi2-atk-devel
     atk-devel

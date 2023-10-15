@@ -34,7 +34,7 @@ import ews.config as config
 _log = logging.getLogger(__name__)
 
 GITHUB_URL = 'https://github.com/'
-GITHUB_PROJECTS = ['WebKit/WebKit', 'apple/WebKit', 'WebKit/WebKit-security']
+GITHUB_PROJECTS = ['CyberKit/CyberKit', 'apple/CyberKit', 'CyberKit/CyberKit-security']
 
 
 class GitHub(object):

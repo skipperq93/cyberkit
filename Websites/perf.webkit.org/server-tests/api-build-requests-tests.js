@@ -641,10 +641,10 @@ describe('/api/build-requests', function () {
             assert.strictEqual(content['commits'][0].repository, 'macOS');
             assert.strictEqual(content['commits'][0].revision, '10.11 15A284');
             assert.strictEqual(parseInt(content['commits'][1].id), 93116);
-            assert.strictEqual(content['commits'][1].repository, 'WebKit');
+            assert.strictEqual(content['commits'][1].repository, 'CyberKit');
             assert.strictEqual(content['commits'][1].revision, '191622');
             assert.strictEqual(parseInt(content['commits'][2].id), 96336);
-            assert.strictEqual(content['commits'][2].repository, 'WebKit');
+            assert.strictEqual(content['commits'][2].repository, 'CyberKit');
             assert.strictEqual(content['commits'][2].revision, '192736');
 
             assert.strictEqual(content['buildRequests'].length, 4);
@@ -740,10 +740,10 @@ describe('/api/build-requests', function () {
             assert.strictEqual(osx.name(), 'macOS');
 
             const webkit = Repository.findById(11);
-            assert.strictEqual(webkit.name(), 'WebKit');
+            assert.strictEqual(webkit.name(), 'CyberKit');
 
             const jsc = Repository.findById(213);
-            assert.strictEqual(jsc.name(), 'JavaScriptCore');
+            assert.strictEqual(jsc.name(), 'CyberScriptCore');
 
             const firstCommitSet = buildRequests[0].commitSet();
             assert.strictEqual(buildRequests[2].commitSet(), firstCommitSet);
@@ -765,13 +765,13 @@ describe('/api/build-requests', function () {
             assert.strictEqual(osxCommit.revision(), '10.11 15A284');
             assert.strictEqual(osxCommit, secondCommitSet.commitForRepository(osx));
 
-            const firstWebKitCommit = firstCommitSet.commitForRepository(webkit);
-            assert.strictEqual(firstWebKitCommit.revision(), '191622');
-            assert.strictEqual(+firstWebKitCommit.time(), 1445945816878);
+            const firstCyberKitCommit = firstCommitSet.commitForRepository(webkit);
+            assert.strictEqual(firstCyberKitCommit.revision(), '191622');
+            assert.strictEqual(+firstCyberKitCommit.time(), 1445945816878);
 
-            const secondWebKitCommit = secondCommitSet.commitForRepository(webkit);
-            assert.strictEqual(secondWebKitCommit.revision(), '192736');
-            assert.strictEqual(+secondWebKitCommit.time(), 1448225325650);
+            const secondCyberKitCommit = secondCommitSet.commitForRepository(webkit);
+            assert.strictEqual(secondCyberKitCommit.revision(), '192736');
+            assert.strictEqual(+secondCyberKitCommit.time(), 1448225325650);
 
             const firstSJCCommit = firstCommitSet.commitForRepository(jsc);
             assert.strictEqual(firstSJCCommit.revision(), 'owned-jsc-6161');
@@ -812,10 +812,10 @@ describe('/api/build-requests', function () {
         assert.strictEqual(osx.name(), 'macOS');
 
         const webkit = Repository.findById(11);
-        assert.strictEqual(webkit.name(), 'WebKit');
+        assert.strictEqual(webkit.name(), 'CyberKit');
 
         const jsc = Repository.findById(213);
-        assert.strictEqual(jsc.name(), 'JavaScriptCore');
+        assert.strictEqual(jsc.name(), 'CyberScriptCore');
 
         const commitSet = buildRequest.commitSet();
 
@@ -889,7 +889,7 @@ describe('/api/build-requests', function () {
             assert.strictEqual(osx.name(), 'macOS');
 
             let webkit = Repository.findById(11);
-            assert.strictEqual(webkit.name(), 'WebKit');
+            assert.strictEqual(webkit.name(), 'CyberKit');
 
             let firstCommitSet = buildRequests[0].commitSet();
             assert.strictEqual(buildRequests[2].commitSet(), firstCommitSet);
@@ -907,13 +907,13 @@ describe('/api/build-requests', function () {
             assert.strictEqual(osxCommit.revision(), '10.11 15A284');
             assert.strictEqual(osxCommit, secondCommitSet.commitForRepository(osx));
 
-            let firstWebKitCommit = firstCommitSet.commitForRepository(webkit);
-            assert.strictEqual(firstWebKitCommit.revision(), '191622');
-            assert.strictEqual(+firstWebKitCommit.time(), 1445945816878);
+            let firstCyberKitCommit = firstCommitSet.commitForRepository(webkit);
+            assert.strictEqual(firstCyberKitCommit.revision(), '191622');
+            assert.strictEqual(+firstCyberKitCommit.time(), 1445945816878);
 
-            let secondWebKitCommit = secondCommitSet.commitForRepository(webkit);
-            assert.strictEqual(secondWebKitCommit.revision(), '192736');
-            assert.strictEqual(+secondWebKitCommit.time(), 1448225325650);
+            let secondCyberKitCommit = secondCommitSet.commitForRepository(webkit);
+            assert.strictEqual(secondCyberKitCommit.revision(), '192736');
+            assert.strictEqual(+secondCyberKitCommit.time(), 1448225325650);
         });
     });
 
@@ -1021,7 +1021,7 @@ describe('/api/build-requests', function () {
         const db = TestServer.database();
         let groups;
         return MockData.addMockData(db).then(() => {
-            return MockData.addMockTestGroupWithGitWebKit(db);
+            return MockData.addMockTestGroupWithGitCyberKit(db);
         }).then(() => {
             return Manifest.fetch();
         }).then(() => {

@@ -108,7 +108,7 @@ function hc_noderemovechild() {
       childList = rootNode.childNodes;
 
 //
-//  WebKit modification: 9-October-2005
+//  CyberKit modification: 9-October-2005
 //
 //  Added the next two lines of code to remove first employee as
 //  documented rather than removing the body element.

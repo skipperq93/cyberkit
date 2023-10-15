@@ -191,7 +191,7 @@ for (let i = 0; i < 1e3; ++i) {
     result = opaqueDivBy4(null);
     if (result !== 0)
         throw "Failed opaqueDivBy4(null)";
-    result = opaqueDivBySafeMaxMinusOne("WebKit!");
+    result = opaqueDivBySafeMaxMinusOne("CyberKit!");
     if (result === result)
         throw "Failed opaqueDivBy4(null)";
     result = opaqueDivBySafeMin("");

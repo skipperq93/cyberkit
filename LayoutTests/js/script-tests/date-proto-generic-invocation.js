@@ -9,7 +9,7 @@ var functionNames = [
         "Date.prototype.toLocaleString",
         "Date.prototype.toLocaleDateString",
         "Date.prototype.toLocaleTimeString",
-//        "Date.prototype.valueOf",           --> This line seems to confuse JavaScriptCore
+//        "Date.prototype.valueOf",           --> This line seems to confuse CyberScriptCore
         "Date.prototype.getTime",
         "Date.prototype.getYear",
         "Date.prototype.getFullYear",

@@ -7,7 +7,7 @@
 # and loading the cross-compilation settings from CMAKE_TOOLCHAIN_FILE.
 
 cmake_minimum_required(VERSION 3.16)
-project(WebKit)
+project(CyberKit)
 
 # Remove this cmake_policy() after upgrading cmake_minimum_required() to 3.20.
 if (${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.20")
@@ -18,7 +18,7 @@ endif ()
 # Common configuration
 #------------------------------------------------------------------------------
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/Source/cmake")
-include(WebKitCommon)
+include(CyberKitCommon)
 
 # -----------------------------------------------------------------------------
 # Enable API unit tests and create a target for the test runner

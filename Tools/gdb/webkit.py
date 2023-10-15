@@ -26,7 +26,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-"""GDB support for WebKit types.
+"""GDB support for CyberKit types.
 
 Add this to your gdb by amending your ~/.gdbinit as follows:
   python
@@ -166,8 +166,8 @@ class JSCJSStringPrinter(StringPrinter):
         return WTFStringPrinter(self.val['m_value']).to_string()
 
 
-class WebCoreLayoutUnitPrinter:
-    "Print a WebCore::LayoutUnit"
+class CyberCoreLayoutUnitPrinter:
+    "Print a CyberCore::LayoutUnit"
     def __init__(self, val):
         self.val = val
 
@@ -175,29 +175,29 @@ class WebCoreLayoutUnitPrinter:
         return "%gpx (%d)" % (self.val['m_value'] / 64.0, self.val['m_value'])
 
 
-class WebCoreLayoutSizePrinter:
-    "Print a WebCore::LayoutSize"
+class CyberCoreLayoutSizePrinter:
+    "Print a CyberCore::LayoutSize"
     def __init__(self, val):
         self.val = val
 
     def to_string(self):
-        return 'LayoutSize(%s, %s)' % (WebCoreLayoutUnitPrinter(self.val['m_width']).to_string(), WebCoreLayoutUnitPrinter(self.val['m_height']).to_string())
+        return 'LayoutSize(%s, %s)' % (CyberCoreLayoutUnitPrinter(self.val['m_width']).to_string(), CyberCoreLayoutUnitPrinter(self.val['m_height']).to_string())
 
 
-class WebCoreLayoutPointPrinter:
-    "Print a WebCore::LayoutPoint"
+class CyberCoreLayoutPointPrinter:
+    "Print a CyberCore::LayoutPoint"
     def __init__(self, val):
         self.val = val
 
     def to_string(self):
-        return 'LayoutPoint(%s, %s)' % (WebCoreLayoutUnitPrinter(self.val['m_x']).to_string(), WebCoreLayoutUnitPrinter(self.val['m_y']).to_string())
+        return 'LayoutPoint(%s, %s)' % (CyberCoreLayoutUnitPrinter(self.val['m_x']).to_string(), CyberCoreLayoutUnitPrinter(self.val['m_y']).to_string())
 
 
-class WebCoreQualifiedNamePrinter(StringPrinter):
-    "Print a WebCore::QualifiedName"
+class CyberCoreQualifiedNamePrinter(StringPrinter):
+    "Print a CyberCore::QualifiedName"
 
     def __init__(self, val):
-        super(WebCoreQualifiedNamePrinter, self).__init__(val)
+        super(CyberCoreQualifiedNamePrinter, self).__init__(val)
         self.prefix_length = 0
         self.length = 0
         if self.val['m_impl']['m_ptr']:
@@ -301,10 +301,10 @@ def add_pretty_printers():
         (re.compile("^WTF::CString$"), WTFCStringPrinter),
         (re.compile("^WTF::String$"), WTFStringPrinter),
         (re.compile("^WTF::StringImpl$"), WTFStringImplPrinter),
-        (re.compile("^WebCore::LayoutUnit$"), WebCoreLayoutUnitPrinter),
-        (re.compile("^WebCore::LayoutPoint$"), WebCoreLayoutPointPrinter),
-        (re.compile("^WebCore::LayoutSize$"), WebCoreLayoutSizePrinter),
-        (re.compile("^WebCore::QualifiedName$"), WebCoreQualifiedNamePrinter),
+        (re.compile("^CyberCore::LayoutUnit$"), CyberCoreLayoutUnitPrinter),
+        (re.compile("^CyberCore::LayoutPoint$"), CyberCoreLayoutPointPrinter),
+        (re.compile("^CyberCore::LayoutSize$"), CyberCoreLayoutSizePrinter),
+        (re.compile("^CyberCore::QualifiedName$"), CyberCoreQualifiedNamePrinter),
         (re.compile("^JSC::Identifier$"), JSCIdentifierPrinter),
         (re.compile("^JSC::JSString$"), JSCJSStringPrinter),
     )
@@ -336,7 +336,7 @@ add_pretty_printers()
 
 
 class PrintPathToRootCommand(gdb.Command):
-    """Command for printing WebKit Node trees.
+    """Command for printing CyberKit Node trees.
 
     Usage: printpathtoroot variable_name"""
 
@@ -346,8 +346,8 @@ class PrintPathToRootCommand(gdb.Command):
             gdb.COMPLETE_NONE)
 
     def invoke(self, arg, from_tty):
-        element_type = gdb.lookup_type('WebCore::Element')
-        node_type = gdb.lookup_type('WebCore::Node')
+        element_type = gdb.lookup_type('CyberCore::Element')
+        node_type = gdb.lookup_type('CyberCore::Node')
         frame = gdb.selected_frame()
         try:
             val = gdb.Frame.read_var(frame, arg)

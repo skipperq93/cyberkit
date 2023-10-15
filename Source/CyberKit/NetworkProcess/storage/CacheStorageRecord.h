@@ -1,0 +1,95 @@
+/*
+ * Copyright (C) 2022 Apple Inc. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS''
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+ * THE POSSIBILITY OF SUCH DAMAGE.
+ */
+#pragma once
+
+#include "NetworkCacheKey.h"
+#include <CyberCore/DOMCacheEngine.h>
+#include <CyberCore/HTTPParsers.h>
+#include <CyberCore/ResourceResponse.h>
+
+namespace CyberKit {
+
+struct CacheStorageRecordInformation {
+    void updateVaryHeaders(const CyberCore::ResourceRequest& request, const CyberCore::ResourceResponse::CrossThreadData& response)
+    {
+        auto varyValue = response.httpHeaderFields.get(CyberCore::HTTPHeaderName::Vary);
+        if (varyValue.isNull() || response.tainting == CyberCore::ResourceResponse::Tainting::Opaque || response.tainting == CyberCore::ResourceResponse::Tainting::Opaqueredirect) {
+            hasVaryStar = false;
+            varyHeaders = { };
+            return;
+        }
+
+        varyValue.split(',', [&](StringView view) {
+            if (!hasVaryStar && CyberCore::stripLeadingAndTrailingHTTPSpaces(view) == "*"_s)
+                hasVaryStar = true;
+            varyHeaders.add(view.toString(), request.httpHeaderField(view));
+        });
+
+        if (hasVaryStar)
+            varyHeaders = { };
+    }
+
+    NetworkCache::Key key;
+    double insertionTime { 0 };
+    uint64_t identifier { 0 };
+    uint64_t updateResponseCounter { 0 };
+    uint64_t size { 0 };
+    URL url;
+    bool hasVaryStar { false };
+    HashMap<String, String> varyHeaders;
+};
+
+struct CacheStorageRecord {
+    WTF_MAKE_STRUCT_FAST_ALLOCATED;
+    CacheStorageRecord(const CacheStorageRecord&) = delete;
+    CacheStorageRecord& operator=(const CacheStorageRecord&) = delete;
+    CacheStorageRecord() = default;
+    CacheStorageRecord(CacheStorageRecord&&) = default;
+    CacheStorageRecord& operator=(CacheStorageRecord&&) = default;
+    CacheStorageRecord(const CacheStorageRecordInformation& info, CyberCore::FetchHeaders::Guard requestHeadersGuard, const CyberCore::ResourceRequest& request, CyberCore::FetchOptions options, const String& referrer, CyberCore::FetchHeaders::Guard responseHeadersGuard, CyberCore::ResourceResponse::CrossThreadData&& responseData, uint64_t responseBodySize, CyberCore::DOMCacheEngine::ResponseBody&& responseBody)
+        : info(info)
+        , requestHeadersGuard(requestHeadersGuard)
+        , request(request)
+        , options(options)
+        , referrer(referrer)
+        , responseHeadersGuard(responseHeadersGuard)
+        , responseData(WTFMove(responseData))
+        , responseBodySize(responseBodySize)
+        , responseBody(WTFMove(responseBody))
+    {
+    }
+
+    CacheStorageRecordInformation info;
+    CyberCore::FetchHeaders::Guard requestHeadersGuard;
+    CyberCore::ResourceRequest request;
+    CyberCore::FetchOptions options;
+    String referrer;
+    CyberCore::FetchHeaders::Guard responseHeadersGuard;
+    CyberCore::ResourceResponse::CrossThreadData responseData;
+    uint64_t responseBodySize;
+    CyberCore::DOMCacheEngine::ResponseBody responseBody;
+};
+
+}

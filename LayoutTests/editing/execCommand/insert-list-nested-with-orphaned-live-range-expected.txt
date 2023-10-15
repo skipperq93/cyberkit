@@ -7,7 +7,7 @@ This tests hang when listifying nested lists with an orphaned list child in betw
 |   "\n    world\n    "
 |   <ol>
 |     <li>
-|       "WebKit"
+|       "CyberKit"
 |     <li>
 |       "rocks"
 |     "\n        "

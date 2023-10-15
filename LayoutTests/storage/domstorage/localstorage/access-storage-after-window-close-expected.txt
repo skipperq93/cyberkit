@@ -1,2 +1,2 @@
-Test that WebKit does not crash when accessing localStorage after calling window.close().
+Test that CyberKit does not crash when accessing localStorage after calling window.close().
 

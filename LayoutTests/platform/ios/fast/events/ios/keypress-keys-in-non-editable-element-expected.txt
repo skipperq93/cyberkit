@@ -1,4 +1,4 @@
-This tests that DOM keypress events are dispatched to a non-editable <body> on iOS when pressing special keys on a hardware keyboard. This test can only be run in DumpRenderTree/WebKitTestRunner.
+This tests that DOM keypress events are dispatched to a non-editable <body> on iOS when pressing special keys on a hardware keyboard. This test can only be run in DumpRenderTree/CyberKitTestRunner.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

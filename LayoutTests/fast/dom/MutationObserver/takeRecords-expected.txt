@@ -1,4 +1,4 @@
-Testing WebKitMutationObserver.takeRecords
+Testing CyberKitMutationObserver.takeRecords
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

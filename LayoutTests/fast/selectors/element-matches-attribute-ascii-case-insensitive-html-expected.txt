@@ -19,22 +19,22 @@ PASS document.querySelectorAll('[id^=target]')[0].matches('[data-æØå]') is fa
 PASS document.querySelectorAll('[id^=target]')[1].matches('[data-æØå]') is false
 PASS document.querySelectorAll('[id^=target]')[2].matches('[data-æØå]') is false
 PASS document.querySelectorAll('[id^=target]')[3].matches('[data-æØå]') is false
-PASS document.querySelectorAll('[id^=target]')[0].matches('[Data-æøå="WebKit!"]') is true
-PASS document.querySelectorAll('[id^=target]')[1].matches('[Data-æøå="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[2].matches('[Data-æøå="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[3].matches('[Data-æøå="WebKit!"]') is true
-PASS document.querySelectorAll('[id^=target]')[0].matches('[Data-Æøå="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[1].matches('[Data-Æøå="WebKit!"]') is true
-PASS document.querySelectorAll('[id^=target]')[2].matches('[Data-Æøå="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[3].matches('[Data-Æøå="WebKit!"]') is true
-PASS document.querySelectorAll('[id^=target]')[0].matches('[Data-ÆØÅ="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[1].matches('[Data-ÆØÅ="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[2].matches('[Data-ÆØÅ="WebKit!"]') is true
-PASS document.querySelectorAll('[id^=target]')[3].matches('[Data-ÆØÅ="WebKit!"]') is true
-PASS document.querySelectorAll('[id^=target]')[0].matches('[Data-æØå="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[1].matches('[Data-æØå="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[2].matches('[Data-æØå="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[3].matches('[Data-æØå="WebKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[0].matches('[Data-æøå="CyberKit!"]') is true
+PASS document.querySelectorAll('[id^=target]')[1].matches('[Data-æøå="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[2].matches('[Data-æøå="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[3].matches('[Data-æøå="CyberKit!"]') is true
+PASS document.querySelectorAll('[id^=target]')[0].matches('[Data-Æøå="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[1].matches('[Data-Æøå="CyberKit!"]') is true
+PASS document.querySelectorAll('[id^=target]')[2].matches('[Data-Æøå="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[3].matches('[Data-Æøå="CyberKit!"]') is true
+PASS document.querySelectorAll('[id^=target]')[0].matches('[Data-ÆØÅ="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[1].matches('[Data-ÆØÅ="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[2].matches('[Data-ÆØÅ="CyberKit!"]') is true
+PASS document.querySelectorAll('[id^=target]')[3].matches('[Data-ÆØÅ="CyberKit!"]') is true
+PASS document.querySelectorAll('[id^=target]')[0].matches('[Data-æØå="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[1].matches('[Data-æØå="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[2].matches('[Data-æØå="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[3].matches('[Data-æØå="CyberKit!"]') is false
 PASS document.querySelectorAll('[id^=target]')[0].matches('[DATA-æøå^="Web"]') is true
 PASS document.querySelectorAll('[id^=target]')[1].matches('[DATA-æøå^="Web"]') is false
 PASS document.querySelectorAll('[id^=target]')[2].matches('[DATA-æøå^="Web"]') is false
@@ -67,22 +67,22 @@ PASS document.querySelectorAll('[id^=target]')[0].matches(':root :is(body, html)
 PASS document.querySelectorAll('[id^=target]')[1].matches(':root :is(body, html) [data-æØå]') is false
 PASS document.querySelectorAll('[id^=target]')[2].matches(':root :is(body, html) [data-æØå]') is false
 PASS document.querySelectorAll('[id^=target]')[3].matches(':root :is(body, html) [data-æØå]') is false
-PASS document.querySelectorAll('[id^=target]')[0].matches(':root :is(body, html) [Data-æøå="WebKit!"]') is true
-PASS document.querySelectorAll('[id^=target]')[1].matches(':root :is(body, html) [Data-æøå="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[2].matches(':root :is(body, html) [Data-æøå="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[3].matches(':root :is(body, html) [Data-æøå="WebKit!"]') is true
-PASS document.querySelectorAll('[id^=target]')[0].matches(':root :is(body, html) [Data-Æøå="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[1].matches(':root :is(body, html) [Data-Æøå="WebKit!"]') is true
-PASS document.querySelectorAll('[id^=target]')[2].matches(':root :is(body, html) [Data-Æøå="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[3].matches(':root :is(body, html) [Data-Æøå="WebKit!"]') is true
-PASS document.querySelectorAll('[id^=target]')[0].matches(':root :is(body, html) [Data-ÆØÅ="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[1].matches(':root :is(body, html) [Data-ÆØÅ="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[2].matches(':root :is(body, html) [Data-ÆØÅ="WebKit!"]') is true
-PASS document.querySelectorAll('[id^=target]')[3].matches(':root :is(body, html) [Data-ÆØÅ="WebKit!"]') is true
-PASS document.querySelectorAll('[id^=target]')[0].matches(':root :is(body, html) [Data-æØå="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[1].matches(':root :is(body, html) [Data-æØå="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[2].matches(':root :is(body, html) [Data-æØå="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[3].matches(':root :is(body, html) [Data-æØå="WebKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[0].matches(':root :is(body, html) [Data-æøå="CyberKit!"]') is true
+PASS document.querySelectorAll('[id^=target]')[1].matches(':root :is(body, html) [Data-æøå="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[2].matches(':root :is(body, html) [Data-æøå="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[3].matches(':root :is(body, html) [Data-æøå="CyberKit!"]') is true
+PASS document.querySelectorAll('[id^=target]')[0].matches(':root :is(body, html) [Data-Æøå="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[1].matches(':root :is(body, html) [Data-Æøå="CyberKit!"]') is true
+PASS document.querySelectorAll('[id^=target]')[2].matches(':root :is(body, html) [Data-Æøå="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[3].matches(':root :is(body, html) [Data-Æøå="CyberKit!"]') is true
+PASS document.querySelectorAll('[id^=target]')[0].matches(':root :is(body, html) [Data-ÆØÅ="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[1].matches(':root :is(body, html) [Data-ÆØÅ="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[2].matches(':root :is(body, html) [Data-ÆØÅ="CyberKit!"]') is true
+PASS document.querySelectorAll('[id^=target]')[3].matches(':root :is(body, html) [Data-ÆØÅ="CyberKit!"]') is true
+PASS document.querySelectorAll('[id^=target]')[0].matches(':root :is(body, html) [Data-æØå="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[1].matches(':root :is(body, html) [Data-æØå="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[2].matches(':root :is(body, html) [Data-æØå="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[3].matches(':root :is(body, html) [Data-æØå="CyberKit!"]') is false
 PASS document.querySelectorAll('[id^=target]')[0].matches(':root :is(body, html) [DATA-æøå^="Web"]') is true
 PASS document.querySelectorAll('[id^=target]')[1].matches(':root :is(body, html) [DATA-æøå^="Web"]') is false
 PASS document.querySelectorAll('[id^=target]')[2].matches(':root :is(body, html) [DATA-æøå^="Web"]') is false
@@ -115,22 +115,22 @@ PASS document.querySelectorAll('[id^=target]')[0].matches(':root :matches(body, 
 PASS document.querySelectorAll('[id^=target]')[1].matches(':root :matches(body, html) [data-æØå]') is false
 PASS document.querySelectorAll('[id^=target]')[2].matches(':root :matches(body, html) [data-æØå]') is false
 PASS document.querySelectorAll('[id^=target]')[3].matches(':root :matches(body, html) [data-æØå]') is false
-PASS document.querySelectorAll('[id^=target]')[0].matches(':root :matches(body, html) [Data-æøå="WebKit!"]') is true
-PASS document.querySelectorAll('[id^=target]')[1].matches(':root :matches(body, html) [Data-æøå="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[2].matches(':root :matches(body, html) [Data-æøå="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[3].matches(':root :matches(body, html) [Data-æøå="WebKit!"]') is true
-PASS document.querySelectorAll('[id^=target]')[0].matches(':root :matches(body, html) [Data-Æøå="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[1].matches(':root :matches(body, html) [Data-Æøå="WebKit!"]') is true
-PASS document.querySelectorAll('[id^=target]')[2].matches(':root :matches(body, html) [Data-Æøå="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[3].matches(':root :matches(body, html) [Data-Æøå="WebKit!"]') is true
-PASS document.querySelectorAll('[id^=target]')[0].matches(':root :matches(body, html) [Data-ÆØÅ="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[1].matches(':root :matches(body, html) [Data-ÆØÅ="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[2].matches(':root :matches(body, html) [Data-ÆØÅ="WebKit!"]') is true
-PASS document.querySelectorAll('[id^=target]')[3].matches(':root :matches(body, html) [Data-ÆØÅ="WebKit!"]') is true
-PASS document.querySelectorAll('[id^=target]')[0].matches(':root :matches(body, html) [Data-æØå="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[1].matches(':root :matches(body, html) [Data-æØå="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[2].matches(':root :matches(body, html) [Data-æØå="WebKit!"]') is false
-PASS document.querySelectorAll('[id^=target]')[3].matches(':root :matches(body, html) [Data-æØå="WebKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[0].matches(':root :matches(body, html) [Data-æøå="CyberKit!"]') is true
+PASS document.querySelectorAll('[id^=target]')[1].matches(':root :matches(body, html) [Data-æøå="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[2].matches(':root :matches(body, html) [Data-æøå="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[3].matches(':root :matches(body, html) [Data-æøå="CyberKit!"]') is true
+PASS document.querySelectorAll('[id^=target]')[0].matches(':root :matches(body, html) [Data-Æøå="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[1].matches(':root :matches(body, html) [Data-Æøå="CyberKit!"]') is true
+PASS document.querySelectorAll('[id^=target]')[2].matches(':root :matches(body, html) [Data-Æøå="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[3].matches(':root :matches(body, html) [Data-Æøå="CyberKit!"]') is true
+PASS document.querySelectorAll('[id^=target]')[0].matches(':root :matches(body, html) [Data-ÆØÅ="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[1].matches(':root :matches(body, html) [Data-ÆØÅ="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[2].matches(':root :matches(body, html) [Data-ÆØÅ="CyberKit!"]') is true
+PASS document.querySelectorAll('[id^=target]')[3].matches(':root :matches(body, html) [Data-ÆØÅ="CyberKit!"]') is true
+PASS document.querySelectorAll('[id^=target]')[0].matches(':root :matches(body, html) [Data-æØå="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[1].matches(':root :matches(body, html) [Data-æØå="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[2].matches(':root :matches(body, html) [Data-æØå="CyberKit!"]') is false
+PASS document.querySelectorAll('[id^=target]')[3].matches(':root :matches(body, html) [Data-æØå="CyberKit!"]') is false
 PASS document.querySelectorAll('[id^=target]')[0].matches(':root :matches(body, html) [DATA-æøå^="Web"]') is true
 PASS document.querySelectorAll('[id^=target]')[1].matches(':root :matches(body, html) [DATA-æøå^="Web"]') is false
 PASS document.querySelectorAll('[id^=target]')[2].matches(':root :matches(body, html) [DATA-æøå^="Web"]') is false

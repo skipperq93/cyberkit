@@ -5,7 +5,7 @@
         <script src="../../resources/js-test.js"></script>
         <script>
         addEventListener("load", () => {
-            description("Verifies that UndoManager.addItem() throws JavaScript exceptions. This test requires WebKitTestRunner.");
+            description("Verifies that UndoManager.addItem() throws JavaScript exceptions. This test requires CyberKitTestRunner.");
 
             item = new UndoItem({ label: '', undo: () => debug("Performed undo."), redo: () => debug("Performed redo.") });
 

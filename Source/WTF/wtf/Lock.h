@@ -32,7 +32,7 @@
 #include <wtf/Seconds.h>
 #include <wtf/ThreadSafetyAnalysis.h>
 
-namespace TestWebKitAPI {
+namespace TestCyberKitAPI {
 struct LockInspector;
 }
 
@@ -121,7 +121,7 @@ public:
     }
 
 private:
-    friend struct TestWebKitAPI::LockInspector;
+    friend struct TestCyberKitAPI::LockInspector;
     
     static constexpr uint8_t isHeldBit = 1;
     static constexpr uint8_t hasParkedBit = 2;

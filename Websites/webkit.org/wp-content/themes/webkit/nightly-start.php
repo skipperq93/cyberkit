@@ -178,7 +178,7 @@ header {
     z-index: 1;
 }
 
-<?php if (WebKit_Nightly_Survey::responded()): ?>#nightly h3 { display: none; }<?php endif; ?>
+<?php if (CyberKit_Nightly_Survey::responded()): ?>#nightly h3 { display: none; }<?php endif; ?>
 
 #icons-sprite {
     display: none;

@@ -2,7 +2,7 @@
 
 Generally, new author-facing features should be implemented behind **runtime flags**. Initially, such flags should be disabled on trunk. As work on a feature matures, its flag may be enabled on trunk. Eventually, runtime flags guarding widely deployed, stable features should be removed.
 
-The following criteria define when runtime flags should be enabled or disabled **on trunk**. This policy is not intended to embody or communicate a feature release policy for any particular WebKit port or product which embeds WebKit. It is the responsibility of each port to determine if or when runtime flags should be enabled or disabled for release. Ports are encouraged to document any additional criteria they may use.
+The following criteria define when runtime flags should be enabled or disabled **on trunk**. This policy is not intended to embody or communicate a feature release policy for any particular CyberKit port or product which embeds CyberKit. It is the responsibility of each port to determine if or when runtime flags should be enabled or disabled for release. Ports are encouraged to document any additional criteria they may use.
 
 In some cases, compile time flags should be used in addition to or instead of runtime flags:
 
@@ -28,7 +28,7 @@ Later, a runtime flag may be **enabled on trunk**:
 
 Eventually, a runtime flag may be removed and the feature made **always on**:
 
-* When most or all major ports of WebKit are shipping the feature and none plan to turn it off.
+* When most or all major ports of CyberKit are shipping the feature and none plan to turn it off.
 
 ### Naming
 

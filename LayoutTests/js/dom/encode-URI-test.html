@@ -60,7 +60,7 @@ function encodedCharacter(c)
 {
     // UTF-8 is what Gecko does, but not what WinIE 6 does.
     // It makes much more sense, though, to produce encodings that actually work in URLs.
-    // So for JavaScriptCore, we want to match Gecko on this, WinIE on most other things.
+    // So for CyberScriptCore, we want to match Gecko on this, WinIE on most other things.
 
     // Instead of writing a JavaScript implementation of UTF-8 escaping, just do some specific cases here.
     switch (c) {

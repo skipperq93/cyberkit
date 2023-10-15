@@ -50,9 +50,9 @@ function verifyNumberIsNaNOnIntegerWithOtherTypes()
     if (value)
         throw "numberIsNaNOnInteger(\"42\") = " + value;
 
-    var value = numberIsNaNOnInteger("WebKit");
+    var value = numberIsNaNOnInteger("CyberKit");
     if (value)
-        throw "numberIsNaNOnInteger(\"WebKit\") = " + value;
+        throw "numberIsNaNOnInteger(\"CyberKit\") = " + value;
 
     var value = numberIsNaNOnInteger(-0);
     if (value)
@@ -120,9 +120,9 @@ function verifyNumberIsNaNOnDoublesWithOtherTypes()
     if (value)
         throw "numberIsNaNOnDouble(\"42\") = " + value;
 
-    var value = numberIsNaNOnDouble("WebKit");
+    var value = numberIsNaNOnDouble("CyberKit");
     if (value)
-        throw "numberIsNaNOnDouble(\"WebKit\") = " + value;
+        throw "numberIsNaNOnDouble(\"CyberKit\") = " + value;
 
     var value = numberIsNaNOnDouble({});
     if (value)

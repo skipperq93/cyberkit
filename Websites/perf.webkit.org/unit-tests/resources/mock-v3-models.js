@@ -20,13 +20,13 @@ var MockModels = {
 
             MockModels.osx = Repository.ensureSingleton(9, {name: 'OS X'});
             MockModels.ios = Repository.ensureSingleton(22, {name: 'iOS'});
-            MockModels.webkit = Repository.ensureSingleton(11, {name: 'WebKit', url: 'http://trac.webkit.org/changeset/$1'});
-            MockModels.ownedWebkit = Repository.ensureSingleton(191, {name: 'WebKit', url: 'http://trac.webkit.org/changeset/$1', owner: 9});
+            MockModels.webkit = Repository.ensureSingleton(11, {name: 'CyberKit', url: 'http://trac.webkit.org/changeset/$1'});
+            MockModels.ownedWebkit = Repository.ensureSingleton(191, {name: 'CyberKit', url: 'http://trac.webkit.org/changeset/$1', owner: 9});
             MockModels.sharedRepository = Repository.ensureSingleton(16, {name: 'Shared'});
             MockModels.ownerRepository = Repository.ensureSingleton(111, {name: 'Owner Repository'});
             MockModels.ownedRepository = Repository.ensureSingleton(112, {name: 'Owned Repository', owner: 111});
-            MockModels.webkitGit = Repository.ensureSingleton(17, {name: 'WebKit-Git', blameUrl: 'https://commits.webkit.org/compare/$1...$2'});
-            MockModels.builder = new Builder(176, {name: 'WebKit Perf Builder', buildUrl: 'http://build.webkit.org/builders/$builderName/$buildTag'});
+            MockModels.webkitGit = Repository.ensureSingleton(17, {name: 'CyberKit-Git', blameUrl: 'https://commits.webkit.org/compare/$1...$2'});
+            MockModels.builder = new Builder(176, {name: 'CyberKit Perf Builder', buildUrl: 'http://build.webkit.org/builders/$builderName/$buildTag'});
 
             MockModels.someTest = Test.ensureSingleton(1, {name: 'Some test'});
             MockModels.someMetric = Metric.ensureSingleton(2884, {name: 'Some metric', test: MockModels.someTest});

@@ -73,7 +73,7 @@ Element.prototype.matchesSelector = function(selectors, refNodes) {};
 Element.prototype.mozMatchesSelector = function(selectors) {};
 
 /**
- * @see http://developer.apple.com/library/safari/documentation/WebKit/Reference/ElementClassRef/Element/Element.html
+ * @see http://developer.apple.com/library/safari/documentation/CyberKit/Reference/ElementClassRef/Element/Element.html
  * @param {string} selectors
  * @return {boolean}
  */

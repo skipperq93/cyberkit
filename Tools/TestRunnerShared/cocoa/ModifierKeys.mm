@@ -26,12 +26,12 @@
 #import "config.h"
 #import "ModifierKeys.h"
 
-#import <WebKit/WebKitLegacy.h>
+#import <CyberKit/CyberKitLegacy.h>
 #import <wtf/Vector.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebKit/KeyEventCodesIOS.h>
-#import <WebKit/WebEvent.h>
+#import <CyberKit/KeyEventCodesIOS.h>
+#import <CyberKit/WebEvent.h>
 #endif
 
 struct KeyMappingEntry {

@@ -50,8 +50,8 @@ function createTestForm(testerName) {
 test('component and keywords are set', 2, function() {
     var form = createTestForm('Windows 7 Release (Tests)');
 
-    equal(form.component, WebKitBugzilla.Component.ToolsTests);
-    deepEqual(form.keywords.split(', '), [WebKitBugzilla.Keyword.LayoutTestFailure, WebKitBugzilla.Keyword.MakingBotsRed]);
+    equal(form.component, CyberKitBugzilla.Component.ToolsTests);
+    deepEqual(form.keywords.split(', '), [CyberKitBugzilla.Keyword.LayoutTestFailure, CyberKitBugzilla.Keyword.MakingBotsRed]);
 });
 
 const testers = {
@@ -60,20 +60,20 @@ const testers = {
         platform: '',
     },
     'Leopard Intel Release (Tests)': {
-        operatingSystem: WebKitBugzilla.OperatingSystem.Leopard,
-        platform: WebKitBugzilla.Platform.Macintosh,
+        operatingSystem: CyberKitBugzilla.OperatingSystem.Leopard,
+        platform: CyberKitBugzilla.Platform.Macintosh,
     },
     'SnowLeopard Intel Release (Tests)': {
-        operatingSystem: WebKitBugzilla.OperatingSystem.SnowLeopard,
-        platform: WebKitBugzilla.Platform.Macintosh,
+        operatingSystem: CyberKitBugzilla.OperatingSystem.SnowLeopard,
+        platform: CyberKitBugzilla.Platform.Macintosh,
     },
     'Windows 7 Release (Tests)': {
-        operatingSystem: WebKitBugzilla.OperatingSystem.Windows7,
-        platform: WebKitBugzilla.Platform.PC,
+        operatingSystem: CyberKitBugzilla.OperatingSystem.Windows7,
+        platform: CyberKitBugzilla.Platform.PC,
     },
     'Windows XP Debug (Tests)': {
-        operatingSystem: WebKitBugzilla.OperatingSystem.WindowsXP,
-        platform: WebKitBugzilla.Platform.PC,
+        operatingSystem: CyberKitBugzilla.OperatingSystem.WindowsXP,
+        platform: CyberKitBugzilla.Platform.PC,
     },
 };
 

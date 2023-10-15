@@ -497,7 +497,7 @@ class TestLandGitHub(testing.PathTestCase):
         ) as remote, mocks.local.Svn(), repository(
             self.path, has_oops=True,
             remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ):
             self.assertEqual(0, program.main(
                 args=('land', '-v'),
@@ -517,7 +517,7 @@ class TestLandGitHub(testing.PathTestCase):
                 'Checking if PR already exists...',
                 'PR #1 found.',
                 'Checking PR labels for active labels...',
-                "Updating 'main' on 'https://github.example.com/Contributor/WebKit'",
+                "Updating 'main' on 'https://github.example.com/Contributor/CyberKit'",
                 "Pushing 'eng/example' to 'fork'...",
                 "Creating 'eng/example-1' as a reference branch",
                 "Updating pull-request for 'eng/example'...",
@@ -528,7 +528,7 @@ class TestLandGitHub(testing.PathTestCase):
         self.assertEqual(
             captured.stdout.getvalue(),
             "Updated 'PR 1 | To Be Committed'!\n"
-            "https://github.example.com/WebKit/WebKit/pull/1\n"
+            "https://github.example.com/CyberKit/CyberKit/pull/1\n"
             "Added 'merge-queue' to 'PR 1 | To Be Committed', change is in the queue to be landed\n",
         )
 
@@ -544,7 +544,7 @@ class TestLandGitHub(testing.PathTestCase):
             self.path, has_oops=True,
             issue_url='{}/show_bug.cgi?id=1'.format(self.BUGZILLA),
             remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ), patch('webkitbugspy.Tracker._trackers', [bugzilla.Tracker(self.BUGZILLA)]), bmocks.Bugzilla(
             self.BUGZILLA.split('://')[-1],
             issues=bmocks.ISSUES,
@@ -571,7 +571,7 @@ class TestLandGitHub(testing.PathTestCase):
                 'Checking if PR already exists...',
                 'PR #1 found.',
                 'Checking PR labels for active labels...',
-                "Updating 'main' on 'https://github.example.com/Contributor/WebKit'",
+                "Updating 'main' on 'https://github.example.com/Contributor/CyberKit'",
                 "Pushing 'eng/example' to 'fork'...",
                 "Creating 'eng/example-1' as a reference branch",
                 "Updating pull-request for 'eng/example'...",
@@ -584,7 +584,7 @@ class TestLandGitHub(testing.PathTestCase):
         self.assertEqual(
             captured.stdout.getvalue(),
             "Updated 'PR 1 | To Be Committed'!\n"
-            "https://github.example.com/WebKit/WebKit/pull/1\n"
+            "https://github.example.com/CyberKit/CyberKit/pull/1\n"
             "Added 'merge-queue' to 'PR 1 | To Be Committed', change is in the queue to be landed\n",
         )
 

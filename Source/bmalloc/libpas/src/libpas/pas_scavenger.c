@@ -174,7 +174,7 @@ static void* scavenger_thread_main(void* arg)
 
 #if PAS_OS(DARWIN) || PAS_PLATFORM(PLAYSTATION)
 #if PAS_BMALLOC
-    pthread_setname_np("JavaScriptCore libpas scavenger");
+    pthread_setname_np("CyberScriptCore libpas scavenger");
 #else
     pthread_setname_np("libpas scavenger");
 #endif

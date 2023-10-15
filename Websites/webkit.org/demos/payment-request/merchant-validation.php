@@ -31,7 +31,7 @@ if (!defined('MERCHANT_IDENTITY_KEY_PASS'))
     define('MERCHANT_IDENTITY_KEY_PASS', '');
 
 if (!defined('DISPLAY_NAME'))
-    define('DISPLAY_NAME', 'WebKit.org Demo');
+    define('DISPLAY_NAME', 'CyberKit.org Demo');
 
 if (!defined('MERCHANT_IDENTIFIER'))
     define('MERCHANT_IDENTIFIER', openssl_x509_parse(file_get_contents( MERCHANT_IDENTITY_CERTIFICATE ))['subject']['UID'] );

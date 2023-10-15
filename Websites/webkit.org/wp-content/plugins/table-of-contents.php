@@ -1,15 +1,15 @@
 <?php
 /*
-Plugin Name: WebKit Table of Contents
+Plugin Name: CyberKit Table of Contents
 Plugin URI: http://webkit.org
 Description: Builds a table of contents with navigation anchors from headings
 Version: 1.0
 Author: Jonathan Davis
 */
 
-WebKitTableOfContents::init();
+CyberKitTableOfContents::init();
 
-class WebKitTableOfContents {
+class CyberKitTableOfContents {
 
     private static $supported_post_types = array('page', 'web_inspector_page');
     private static $editing = false;
@@ -17,8 +17,8 @@ class WebKitTableOfContents {
     private static $attr_regex = '\{((?:[ ]*[#.][-_:a-zA-Z0-9]+){1,})[ ]*\}';
 
     public function init() {
-        add_filter( 'wp_insert_post_data', array( 'WebKitTableOfContents', 'wp_insert_post_data' ), 20, 2 );
-        add_action( 'wp_insert_post', array( 'WebKitTableOfContents', 'wp_insert_post' ) );
+        add_filter( 'wp_insert_post_data', array( 'CyberKitTableOfContents', 'wp_insert_post_data' ), 20, 2 );
+        add_action( 'wp_insert_post', array( 'CyberKitTableOfContents', 'wp_insert_post' ) );
     }
     
     public static function tocEnabled ($post_type) {
@@ -34,7 +34,7 @@ class WebKitTableOfContents {
 
     public static function hasIndex() {
         $toc = get_post_meta( get_the_ID(), 'toc', true );
-        array_walk($toc, array('WebKitTableOfContents', 'filterIndex'));
+        array_walk($toc, array('CyberKitTableOfContents', 'filterIndex'));
         return ( ! empty(self::$toc) && count(self::$toc) > 2 );
     }
 
@@ -105,7 +105,7 @@ class WebKitTableOfContents {
         $markup = preg_replace_callback('{
                 ^<h([1-6])[^>]*>(.+?)<\/h[1-6]>* # HTML tags
             }xm',
-            array('WebKitTableOfContents', 'index'),
+            array('CyberKitTableOfContents', 'index'),
             $content
         );
 

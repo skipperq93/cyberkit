@@ -2,7 +2,7 @@
 <html>
 <body>
 <p>This tests deleting the composition text does not result in a crash.<br>
-To manually test, type in the box below using input method (e.g. Japanese or Chinese). WebKit on iOS should not crash.</p>
+To manually test, type in the box below using input method (e.g. Japanese or Chinese). CyberKit on iOS should not crash.</p>
 <div id="editor" style="border: solid 2px blue; padding: 5px;" contenteditable></div>
 <div id="result"></div>
 <script src="../../resources/js-test.js"></script>
@@ -22,7 +22,7 @@ async function runTest() {
         await UIHelper.ensurePresentationUpdate();
         editor.firstChild.data = '';
         await UIHelper.ensurePositionInformationUpdateForElement(editor);
-        result.textContent = 'PASS - WebKit did not crash';
+        result.textContent = 'PASS - CyberKit did not crash';
     }
     testRunner.notifyDone();
 }

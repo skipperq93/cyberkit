@@ -34,9 +34,9 @@
 #import "AccessibilityCommonMac.h"
 #import "AccessibilityUIElement.h"
 #import "DumpRenderTree.h"
-#import <JavaScriptCore/JSRetainPtr.h>
-#import <JavaScriptCore/JSStringRefCF.h>
-#import <WebKit/WebFrame.h>
+#import <CyberScriptCore/JSRetainPtr.h>
+#import <CyberScriptCore/JSStringRefCF.h>
+#import <CyberKit/WebFrame.h>
 #import <objc/runtime.h>
 
 @interface NSObject (WebAccessibilityObjectWrapperAdditions)

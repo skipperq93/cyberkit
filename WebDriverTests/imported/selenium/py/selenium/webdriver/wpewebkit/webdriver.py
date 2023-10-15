@@ -27,21 +27,21 @@ from .service import Service
 
 class WebDriver(RemoteWebDriver):
     """
-    Controls the WPEWebKitDriver and allows you to drive the browser.
+    Controls the WPECyberKitDriver and allows you to drive the browser.
     """
 
     def __init__(self, executable_path="WPEWebDriver", port=0, options=None,
                  desired_capabilities=DesiredCapabilities.WPEWEBKIT,
                  service_log_path=None):
         """
-        Creates a new instance of the WPEWebKit driver.
+        Creates a new instance of the WPECyberKit driver.
 
-        Starts the service and then creates new instance of WPEWebKit Driver.
+        Starts the service and then creates new instance of WPECyberKit Driver.
 
         :Args:
          - executable_path : path to the executable. If the default is used it assumes the executable is in the $PATH.
          - port : port you would like the service to run, if left as 0, a free port will be found.
-         - options : an instance of WPEWebKitOptions
+         - options : an instance of WPECyberKitOptions
          - desired_capabilities : Dictionary object with desired capabilities
          - service_log_path : Path to write service stdout and stderr output.
         """
@@ -61,8 +61,8 @@ class WebDriver(RemoteWebDriver):
 
     def quit(self):
         """
-        Closes the browser and shuts down the WPEWebKitDriver executable
-        that is started when starting the WPEWebKitDriver
+        Closes the browser and shuts down the WPECyberKitDriver executable
+        that is started when starting the WPECyberKitDriver
         """
         try:
             RemoteWebDriver.quit(self)

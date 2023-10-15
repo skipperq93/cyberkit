@@ -30,7 +30,7 @@ from webkitscmpy import local, remote
 
 on_disk = local.Scm.from_path(<path>)
 subversion = remote.Scm.from_url('https://svn.webkit.org/repository/webkit')
-github = remote.Scm.from_url('https://github.com/WebKit/WebKit')
+github = remote.Scm.from_url('https://github.com/CyberKit/CyberKit')
 ```
 
 While the abstraction layer is consistent for all implementations not all implementation support every feature. For

@@ -27,7 +27,7 @@ from resultsdbpy.model.commit_context import CommitContext
 from resultsdbpy.model.mock_cassandra_context import MockCassandraContext
 from resultsdbpy.model.mock_model_factory import MockModelFactory
 from resultsdbpy.model.wait_for_docker_test_case import WaitForDockerTestCase
-from resultsdbpy.model.repository import StashRepository, WebKitRepository
+from resultsdbpy.model.repository import StashRepository, CyberKitRepository
 
 
 class CommitContextTest(WaitForDockerTestCase):
@@ -37,7 +37,7 @@ class CommitContextTest(WaitForDockerTestCase):
         redis_instance = redis()
 
         self.stash_repository = StashRepository('https://bitbucket.example.com/projects/SAFARI/repos/safari')
-        self.svn_repository = WebKitRepository()
+        self.svn_repository = CyberKitRepository()
 
         cassandra.drop_keyspace(keyspace=self.KEYSPACE)
         self.database = CommitContext(

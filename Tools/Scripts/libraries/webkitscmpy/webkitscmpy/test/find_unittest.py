@@ -82,7 +82,7 @@ class TestFind(testing.PathTestCase):
     def test_basic_github_remote(self):
         with OutputCapture() as captured, mocks.remote.GitHub():
             self.assertEqual(0, program.main(
-                args=('-C', 'https://github.example.com/WebKit/WebKit', 'find', 'bae5d1e90999', '-q'),
+                args=('-C', 'https://github.example.com/CyberKit/CyberKit', 'find', 'bae5d1e90999', '-q'),
                 path=self.path,
             ))
         self.assertEqual(captured.stdout.getvalue(), '4@main | bae5d1e90999 | 8th commit\n')
@@ -393,7 +393,7 @@ Identifier: 3@trunk
     def test_scope_github_remote(self):
         with OutputCapture() as captured, mocks.remote.GitHub():
             self.assertEqual(1, program.main(
-                args=('-C', 'https://github.example.com/WebKit/WebKit', 'find', '1@main..HEAD', '--scope', 'some/dir'),
+                args=('-C', 'https://github.example.com/CyberKit/CyberKit', 'find', '1@main..HEAD', '--scope', 'some/dir'),
                 path=self.path,
             ))
         self.assertEqual(captured.stdout.getvalue(), '')

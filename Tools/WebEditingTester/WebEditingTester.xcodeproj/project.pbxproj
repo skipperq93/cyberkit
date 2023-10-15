@@ -16,7 +16,7 @@
 		C558CDB51A92D6900059A907 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C558CDB41A92D6900059A907 /* main.m */; };
 		C558CDB81A92D6900059A907 /* WebDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = C558CDB71A92D6900059A907 /* WebDocumentController.m */; };
 		C59F9B971A93C8E00041A959 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59F9B961A93C8E00041A959 /* Cocoa.framework */; };
-		C59F9B991A93C8E90041A959 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59F9B981A93C8E90041A959 /* WebKit.framework */; };
+		C59F9B991A93C8E90041A959 /* CyberKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59F9B981A93C8E90041A959 /* CyberKit.framework */; };
 		C59F9B9F1A93CB630041A959 /* WK1WebDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59F9B9C1A93CB630041A959 /* WK1WebDocumentController.m */; };
 		C59F9BA01A93CB630041A959 /* WK2WebDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59F9B9E1A93CB630041A959 /* WK2WebDocumentController.m */; };
 /* End PBXBuildFile section */
@@ -40,7 +40,7 @@
 		C558CDB61A92D6900059A907 /* WebDocumentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebDocumentController.h; sourceTree = "<group>"; };
 		C558CDB71A92D6900059A907 /* WebDocumentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebDocumentController.m; sourceTree = "<group>"; };
 		C59F9B961A93C8E00041A959 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		C59F9B981A93C8E90041A959 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		C59F9B981A93C8E90041A959 /* CyberKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CyberKit.framework; path = System/Library/Frameworks/CyberKit.framework; sourceTree = SDKROOT; };
 		C59F9B9B1A93CB630041A959 /* WK1WebDocumentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WK1WebDocumentController.h; sourceTree = "<group>"; };
 		C59F9B9C1A93CB630041A959 /* WK1WebDocumentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WK1WebDocumentController.m; sourceTree = "<group>"; };
 		C59F9B9D1A93CB630041A959 /* WK2WebDocumentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WK2WebDocumentController.h; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C59F9B971A93C8E00041A959 /* Cocoa.framework in Frameworks */,
-				C59F9B991A93C8E90041A959 /* WebKit.framework in Frameworks */,
+				C59F9B991A93C8E90041A959 /* CyberKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,7 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				C59F9B961A93C8E00041A959 /* Cocoa.framework */,
-				C59F9B981A93C8E90041A959 /* WebKit.framework */,
+				C59F9B981A93C8E90041A959 /* CyberKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

@@ -67,7 +67,7 @@ def main(
     loggers = [logging.getLogger(), webkitcorepy_log,  webkitbugspy_log, log] + (loggers or [])
 
     parser = argparse.ArgumentParser(
-        description='Custom git tooling from the WebKit team to interact with a ' +
+        description='Custom git tooling from the CyberKit team to interact with a ' +
                     'repository using identifiers',
     )
     arguments.LoggingGroup(

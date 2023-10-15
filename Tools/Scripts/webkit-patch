@@ -39,7 +39,7 @@ import sys
 import codecs
 
 from webkitpy.common.system.logutils import configure_logging
-from webkitpy.tool.main import WebKitPatch
+from webkitpy.tool.main import CyberKitPatch
 from webkitcorepy import string_utils, unicode
 
 # If our str type isn't unicode, we need to standardize output format
@@ -72,7 +72,7 @@ def main():
     else:
         logging_level = logging.INFO
     configure_logging(logging_level=logging_level)
-    WebKitPatch(os.path.abspath(__file__)).main()
+    CyberKitPatch(os.path.abspath(__file__)).main()
 
 
 if __name__ == "__main__":

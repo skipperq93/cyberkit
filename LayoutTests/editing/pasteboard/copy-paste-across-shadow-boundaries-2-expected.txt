@@ -8,8 +8,8 @@ pasted html:
 |     style="display: contents;"
 |     "world"
 |   " "
-|   "WebKit"
+|   "CyberKit"
 | " rocks<#selection-caret>"
 
 text/plain:
-| "world WebKit rocks"
+| "world CyberKit rocks"

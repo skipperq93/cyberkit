@@ -55,11 +55,11 @@ if ($showHelp or not $result) {
    exit 1;
 }
 
-setArchitecture("x86_64 arm64") if isAppleMacWebKit();
+setArchitecture("x86_64 arm64") if isAppleMacCyberKit();
 
 checkRequiredSystemConfig();
 setConfiguration();
-chdirWebKit();
+chdirCyberKit();
 
 # ImageDiff is not part of any workspace.
 overrideConfiguredXcodeWorkspace("");

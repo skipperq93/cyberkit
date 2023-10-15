@@ -1,4 +1,4 @@
 This tests detaching a frame while clicking on an anchor element with ping attribute in the frame.
-WebKit should not crash.
+CyberKit should not crash.
 
-PASS. WebKit did not crash.
+PASS. CyberKit did not crash.

@@ -1,5 +1,5 @@
 This tests moving the focus from a descendent of a slot element to an element which appears later in the tree order.
-WebKit should focus each input element in the order of their number
+CyberKit should focus each input element in the order of their number
 
 1
 2

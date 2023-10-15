@@ -46,10 +46,10 @@ def main():
 					"testapi_debug.exe", 
 					"VcBuildHelper.exe", 
 					"wdiff.exe", 
-					"WebKit2WebProcess.exe", 
-					"WebKit2WebProcess_debug.exe", 
-					"WebKitTestRunner.exe", 
-					"WebKitTestRunner_debug.exe"]
+					"CyberKit2WebProcess.exe", 
+					"CyberKit2WebProcess_debug.exe", 
+					"CyberKitTestRunner.exe", 
+					"CyberKitTestRunner_debug.exe"]
 					
     for task in tasksToKill:
         os.system("taskkill /t /f /im " + task)

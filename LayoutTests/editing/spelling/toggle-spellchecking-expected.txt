@@ -1,4 +1,4 @@
-This test verifies that enabling or disabling platform spell checking preferences influences the presence of spelling markers in the document. Requires WebKitTestRunner.
+This test verifies that enabling or disabling platform spell checking preferences influences the presence of spelling markers in the document. Requires CyberKitTestRunner.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

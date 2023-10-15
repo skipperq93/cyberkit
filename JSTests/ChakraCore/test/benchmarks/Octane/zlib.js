@@ -1428,7 +1428,7 @@ gins.forEach(function(a){!l&&a.canHandle(B)&&(a.handle(c,B,h,function(){g&& g()\
 ;Wa("cp "+B)}),l=n)});l||h(c)}Module.preloadPlugins||(Module.preloadPlugins=[])\
 ;if(!Sb&&!v){Sb=n;try{new Blob,Tb=n}catch(A){Tb=t,console.log("warning: no blob\
  constructor, cannot create blobs with mimetypes")}Ub="undefined"!=typeof MozBl\
-obBuilder?MozBlobBuilder:"undefined"!=typeof WebKitBlobBuilder?WebKitBlobBuilde\
+obBuilder?MozBlobBuilder:"undefined"!=typeof CyberKitBlobBuilder?CyberKitBlobBuilde\
 r:!Tb?console.log("warning: no BlobBuilder"):r;Vb="undefined"!=typeof window?wi\
 ndow.URL?window.URL:window.webkitURL:console.log("warning: cannot create object\
  URLs");Module.preloadPlugins.push({canHandle:function(a){return!Module.W&& /\

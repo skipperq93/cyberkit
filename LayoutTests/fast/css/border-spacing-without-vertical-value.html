@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <body>
 <p>This tests obtaining the value of "border-spacing" property without setting -webkit-border-vertical-spacing.
-WebKit should not crash and we should get null.</p>
+CyberKit should not crash and we should get null.</p>
 <script type="text/javascript">
 
 if (window.testRunner)
@@ -12,8 +12,8 @@ a.setAttribute("style", "-webkit-border-horizontal-spacing: 1px;");
 
 var borderSpacing = a.style.getPropertyValue('border-spacing');
 if (borderSpacing !== "")
-    document.write('FAIL. WebKit didn\'t crash but got "' + borderSpacing + '" but expected "".');
+    document.write('FAIL. CyberKit didn\'t crash but got "' + borderSpacing + '" but expected "".');
 else
-    document.write("PASS. WebKit didn't crash.");
+    document.write("PASS. CyberKit didn't crash.");
 
 </script>

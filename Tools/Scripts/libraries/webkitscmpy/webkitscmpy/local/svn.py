@@ -452,7 +452,7 @@ class Svn(Scm):
             raise ValueError("Provided 'branch_point' does not match branch point of specified branch")
 
         # Determine the commit message for a commit. Note that in Subversion, this will always result in a network call
-        # and is one of the major reasons the WebKit project uses ChangeLogs.
+        # and is one of the major reasons the CyberKit project uses ChangeLogs.
         if branch == self.default_branch or '/' in branch:
             branch_arg = '^/{}'.format(branch)
         else:

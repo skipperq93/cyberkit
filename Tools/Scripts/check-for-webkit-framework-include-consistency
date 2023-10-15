@@ -65,18 +65,18 @@ def resolve_include(header, included_header, permitted_types)
 
   framework, included_header_name = [$1, $2]
 
-  # Ignore includes that aren't related to other WebKit headers.
+  # Ignore includes that aren't related to other CyberKit headers.
   return unless framework =~ /^Web/
   
-  # A header of any type including a WebCore header is a recipe for disaster.
-  if framework == "WebCore"
+  # A header of any type including a CyberCore header is a recipe for disaster.
+  if framework == "CyberCore"
     print_error "#{header} included #{included_header}!"
     return
   end
 
   # iOS we want to keep the WAK headers private, even if a public header includes them,
   # so we are going to not show warnings for WAK headers.
-  return if (framework == "WebKitLegacy") and included_header_name =~ /^WAK/
+  return if (framework == "CyberKitLegacy") and included_header_name =~ /^WAK/
 
   header_type = $HEADER_NAMES_TO_TYPE[included_header_name]
 

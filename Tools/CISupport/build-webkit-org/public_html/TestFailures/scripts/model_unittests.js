@@ -39,7 +39,7 @@ var kExampleCommitDataXML =
     '    <language>en-US</language>\n\n' +
     '    <generator>Trac 0.11.7</generator>\n\n' +
     '    <image>\n\n' +
-    '      <title>WebKit</title>\n\n' +
+    '      <title>CyberKit</title>\n\n' +
     '      <url>http://trac.webkit.org/chrome/site/icon.png</url>\n\n' +
     '      <link>http://trac.webkit.org/log/trunk?rev=92362</link>\n\n' +
     '    </image>\n\n' +
@@ -66,17 +66,17 @@ var kExampleCommitDataXML =
     '* dom/Event.cpp:\n' +
     '* dom/Event.h:\n' +
     '* dom/EventDispatcher.cpp:\n' +
-    '(WebCore::EventDispatcher::dispatchEvent):\n' +
+    '(CyberCore::EventDispatcher::dispatchEvent):\n' +
     '* dom/EventDispatcher.h:\n' +
     '* dom/KeyboardEvent.cpp:\n' +
     '* dom/KeyboardEvent.h:\n' +
     '* dom/MouseEvent.cpp:\n' +
     '* dom/MouseEvent.h:\n' +
     '* dom/Node.cpp:\n' +
-    '(WebCore::Node::dispatchEvent):\n' +
-    '(WebCore::Node::dispatchKeyEvent):\n' +
-    '(WebCore::Node::dispatchMouseEvent):\n' +
-    '(WebCore::Node::dispatchWheelEvent):\n' +
+    '(CyberCore::Node::dispatchEvent):\n' +
+    '(CyberCore::Node::dispatchKeyEvent):\n' +
+    '(CyberCore::Node::dispatchMouseEvent):\n' +
+    '(CyberCore::Node::dispatchWheelEvent):\n' +
     '* dom/WheelEvent.cpp:\n' +
     '* dom/WheelEvent.h:\n' +
     '&lt;/p&gt;\n' +
@@ -100,12 +100,12 @@ var kExampleCommitDataXML =
     '&lt;/p&gt;\n\n' +
     '&lt;p&gt;\n\n' +
     '* css/CSSPrimitiveValueMappings.h:\n\n' +
-    '(WebCore::CSSPrimitiveValue::CSSPrimitiveValue):\n\n' +
+    '(CyberCore::CSSPrimitiveValue::CSSPrimitiveValue):\n\n' +
     'Implement cast from EBoxSizing.\n' +
-    '(WebCore::CSSPrimitiveValue::operator EBoxSizing):\n' +
+    '(CyberCore::CSSPrimitiveValue::operator EBoxSizing):\n' +
     'Implement cast to EBoxSizing.\n' +
     '* css/CSSStyleSelector.cpp:\n' +
-    '(WebCore::CSSStyleSelector::applyProperty):\n' +
+    '(CyberCore::CSSStyleSelector::applyProperty):\n' +
     'Use appropriate macro to simplify code using cast.\n' +
     '&lt;/p&gt;\n' +
     '</description>\n' +

@@ -5,11 +5,11 @@ On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE
 
 * Synchronous XHR
 PASS syncXHR.status is 200
-PASS syncXHRUserAgent.includes('AppleWebKit/') is true
+PASS syncXHRUserAgent.includes('AppleCyberKit/') is true
 
 * Asynchronous XHR
 PASS asyncXHR.status is 200
-PASS asyncXHRUserAgent.includes('AppleWebKit/') is true
+PASS asyncXHRUserAgent.includes('AppleCyberKit/') is true
 
 PASS syncXHRUserAgent === asyncXHRUserAgent is true
 

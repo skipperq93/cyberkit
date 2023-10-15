@@ -4,7 +4,7 @@
 <script src="../../../resources/js-test.js"></script>
 <script>
 
-description('This tests disconnecting a MutationObserver while a mutation record is enqueued. WebKit should not crash.');
+description('This tests disconnecting a MutationObserver while a mutation record is enqueued. CyberKit should not crash.');
 
 if (!window.GCController)
     testFailed('This test requires GCController');
@@ -33,7 +33,7 @@ else {
     }
 
     window.onload = () => {
-        testPassed('WebKit did not crash');
+        testPassed('CyberKit did not crash');
         finishJSTest();
     }
 }

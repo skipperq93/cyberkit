@@ -143,18 +143,18 @@ _unit_test_config = {}
 
 _NO_CONFIG_H_PATH_PATTERNS = [
     '^Source/bmalloc/',
-    '^Source/WebKitLegacy/',
+    '^Source/CyberKitLegacy/',
 ]
 
 _EXPORT_MACRO_SPEC = {
     'BEXPORT': 'Source/bmalloc',
-    'JS_EXPORT': 'Source/JavaScriptCore/API',
-    'JS_EXPORT_PRIVATE': 'Source/JavaScriptCore',
-    'PAL_EXPORT': 'Source/WebCore/PAL',
-    'WEBCORE_TESTSUPPORT_EXPORT': 'Source/WebCore/testing',
+    'JS_EXPORT': 'Source/CyberScriptCore/API',
+    'JS_EXPORT_PRIVATE': 'Source/CyberScriptCore',
+    'PAL_EXPORT': 'Source/CyberCore/PAL',
+    'WEBCORE_TESTSUPPORT_EXPORT': 'Source/CyberCore/testing',
     # Excludes PAL and testing directories
-    'WEBCORE_EXPORT': 'Source/WebCore/(?!(PAL|testing))',
-    'WK_EXPORT': 'Source/WebKit',
+    'WEBCORE_EXPORT': 'Source/CyberCore/(?!(PAL|testing))',
+    'WK_EXPORT': 'Source/CyberKit',
     'WTF_EXPORT_PRIVATE': 'Source/WTF',
 }
 
@@ -290,16 +290,16 @@ class _IncludeState(dict):
     _SOFT_LINK_SECTION = 4
 
     _TYPE_NAMES = {
-        _CONFIG_HEADER: 'WebCore config.h',
+        _CONFIG_HEADER: 'CyberCore config.h',
         _PRIMARY_HEADER: 'header this file implements',
         _OTHER_HEADER: 'other header',
         _SOFT_LINK_HEADER: '*SoftLink.h header',
         _MOC_HEADER: 'moc file',
-        _WEBKIT_ADDITIONS_HEADER: 'WebKitAdditions header',
+        _WEBKIT_ADDITIONS_HEADER: 'CyberKitAdditions header',
         }
     _SECTION_NAMES = {
         _INITIAL_SECTION: "... nothing.",
-        _CONFIG_SECTION: "WebCore config.h.",
+        _CONFIG_SECTION: "CyberCore config.h.",
         _PRIMARY_SECTION: 'a header this file implements.',
         _OTHER_SECTION: 'other header.',
         _SOFT_LINK_SECTION: 'soft-link header section.',
@@ -337,7 +337,7 @@ class _IncludeState(dict):
 
         """
         if header_type == _CONFIG_HEADER and file_is_header:
-            return 'Header file should not contain WebCore config.h.'
+            return 'Header file should not contain CyberCore config.h.'
         if header_type == _PRIMARY_HEADER and file_is_header:
             return 'Header file should not contain itself.'
         if header_type == _MOC_HEADER:
@@ -2786,10 +2786,10 @@ def check_callonmainthread(filename, clean_lines, line_number, file_state, error
     line = clean_lines.elided[line_number]  # Get rid of comments and strings.
     using_callonmainthread = search(r'\bcallOnMainThread\s*\(', line)
     if using_callonmainthread:
-        error(line_number, 'runtime/callonmainthread', 4, "Use 'callOnMainRunLoop()' instead of 'callOnMainThread()' in Source/WebKit.")
+        error(line_number, 'runtime/callonmainthread', 4, "Use 'callOnMainRunLoop()' instead of 'callOnMainThread()' in Source/CyberKit.")
     using_callonmainthreadandwait = search(r'\bcallOnMainThreadAndWait\s*\(', line)
     if using_callonmainthreadandwait:
-        error(line_number, 'runtime/callonmainthread', 4, "Use 'callOnMainRunLoopAndWait()' instead of 'callOnMainThreadAndWait()' in Source/WebKit.")
+        error(line_number, 'runtime/callonmainthread', 4, "Use 'callOnMainRunLoopAndWait()' instead of 'callOnMainThreadAndWait()' in Source/CyberKit.")
 
 
 def check_ismainthread(filename, clean_lines, line_number, file_state, error):
@@ -2812,7 +2812,7 @@ def check_ismainthread(filename, clean_lines, line_number, file_state, error):
     if not using_ismainthread:
         return
 
-    error(line_number, 'runtime/ismainthread', 4, "Use 'isMainRunLoop()' instead of 'isMainThread()' in Source/WebKit.")
+    error(line_number, 'runtime/ismainthread', 4, "Use 'isMainRunLoop()' instead of 'isMainThread()' in Source/CyberKit.")
 
 
 def check_wtf_make_span(clean_lines, line_number, file_state, error):
@@ -3617,14 +3617,14 @@ def _classify_include(filename, include, is_system, include_state):
       _OTHER_HEADER
     """
 
-    if 'WebKitAdditions/' in include:
+    if 'CyberKitAdditions/' in include:
         return _WEBKIT_ADDITIONS_HEADER
 
     # If it is a system header we know it is classified as _OTHER_HEADER.
     if is_system and not include.startswith('public/') and not include.startswith('wtf/') and not include.endswith('SoftLink.h'):
         return _OTHER_HEADER
 
-    # If the include is named config.h then this is WebCore/config.h.
+    # If the include is named config.h then this is CyberCore/config.h.
     if include == "config.h":
         return _CONFIG_HEADER
 
@@ -3680,11 +3680,11 @@ def _does_primary_header_exist(filename):
 
 
 def _is_javascriptcore_file(filename):
-    return filename.startswith('Source/JavaScriptCore/')
+    return filename.startswith('Source/CyberScriptCore/')
 
 
 def _is_webkit2_file(filename):
-    return filename.startswith('Source/WebKit/')
+    return filename.startswith('Source/CyberKit/')
 
 
 def check_include_line(filename, file_extension, clean_lines, line_number, include_state, error):
@@ -3717,11 +3717,11 @@ def check_include_line(filename, file_extension, clean_lines, line_number, inclu
     include = matched.group(2)
     is_system = (matched.group(1) == '<')
 
-    # FIXME: Remove once JavaScriptCore builds with ARC enabled (Bug 221117).
+    # FIXME: Remove once CyberScriptCore builds with ARC enabled (Bug 221117).
     if _is_javascriptcore_file(filename) and include == 'wtf/BlockPtr.h':
         error(line_number, 'security/javascriptcore_wtf_blockptr', 5,
               'Replace WTF::BlockPtr with WTF::Function. '
-              'WTF::BlockPtr is not safe to use until JavaScriptCore builds with ARC enabled.')
+              'WTF::BlockPtr is not safe to use until CyberScriptCore builds with ARC enabled.')
 
     # Look for any of the stream classes that are part of standard C++.
     if match(r'(f|ind|io|i|o|parse|pf|stdio|str|)?stream$', include):
@@ -3926,11 +3926,11 @@ def check_language(filename, clean_lines, line_number, file_extension, include_s
                 'Please replace ASSERT_WITH_SECURITY_IMPLICATION() with '
                 'RELEASE_ASSERT_WITH_SECURITY_IMPLICATION().')
 
-    # FIXME: Remove once JavaScriptCore builds with ARC enabled (Bug 221117).
+    # FIXME: Remove once CyberScriptCore builds with ARC enabled (Bug 221117).
     if _is_javascriptcore_file(filename) and search(r'\b(WTF::)?BlockPtr\s*<', line):
         error(line_number, 'security/javascriptcore_wtf_blockptr', 5,
               'Replace WTF::BlockPtr with WTF::Function. '
-              'WTF::BlockPtr is not safe to use until JavaScriptCore builds with ARC enabled.')
+              'WTF::BlockPtr is not safe to use until CyberScriptCore builds with ARC enabled.')
 
     # Check if some verboten C functions are being used.
     if search(r'\bsprintf\b', line):
@@ -4093,7 +4093,7 @@ def check_language(filename, clean_lines, line_number, file_extension, include_s
     # Check that we're not using static_cast<Text*>.
     if search(r'\bstatic_cast<Text\*>', line):
         error(line_number, 'readability/check', 4,
-              'Consider using toText helper function in WebCore/dom/Text.h '
+              'Consider using toText helper function in CyberCore/dom/Text.h '
               'instead of static_cast<Text*>')
 
 

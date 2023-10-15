@@ -25,8 +25,8 @@
 
 #import "WorkerTask.h"
 
-#import <JavaScriptCore/JSLockRefPrivate.h>
-#import <JavaScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/JSLockRefPrivate.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 
 @implementation WorkerTask {
     JSValue *_js;

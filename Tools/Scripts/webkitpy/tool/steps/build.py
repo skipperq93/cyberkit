@@ -64,7 +64,7 @@ class Build(AbstractStep):
     def run(self, state):
         if not self._options.build:
             return
-        _log.info("Building WebKit")
+        _log.info("Building CyberKit")
 
         group = self._options.group
 

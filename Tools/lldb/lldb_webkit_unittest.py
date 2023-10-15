@@ -57,9 +57,9 @@ class LLDBDebugSession(object):
         cls.sbDebugger = lldb.SBDebugger.Create()
         cls.sbDebugger.SetAsync(False)
 
-        cls.lldbWebKitTesterExecutable = str(os.environ['LLDB_WEBKIT_TESTER_EXECUTABLE'])
+        cls.lldbCyberKitTesterExecutable = str(os.environ['LLDB_WEBKIT_TESTER_EXECUTABLE'])
 
-        cls.sbTarget = cls.sbDebugger.CreateTarget(cls.lldbWebKitTesterExecutable)
+        cls.sbTarget = cls.sbDebugger.CreateTarget(cls.lldbCyberKitTesterExecutable)
         assert cls.sbTarget
         cls.sbTarget.BreakpointCreateByName(BREAK_FOR_TESTING_FUNCTION_NAME, cls.sbTarget.GetExecutable().GetFilename())
 

@@ -375,7 +375,7 @@ class EditorTestUtils {
           .replace(/: /g, ":")
           // Gecko likes "transparent"
           .replace(/transparent/g, "rgba(0, 0, 0, 0)")
-          // WebKit likes to look overly precise
+          // CyberKit likes to look overly precise
           .replace(/, 0.496094\)/g, ", 0.5)")
           // Gecko converts anything with full alpha to "transparent" which
           // then becomes "rgba(0, 0, 0, 0)", so we have to make other

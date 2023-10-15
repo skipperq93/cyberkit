@@ -30,7 +30,7 @@ function xhrPromise(url) {
 }
 
 var origin = new URL("https://raw.githubusercontent.com/");
-var loadCSSProperties = xhrPromise(new URL("/WebKit/WebKit/main/Source/WebCore/css/CSSProperties.json", origin));
+var loadCSSProperties = xhrPromise(new URL("/CyberKit/CyberKit/main/Source/CyberCore/css/CSSProperties.json", origin));
 
 </script>
 

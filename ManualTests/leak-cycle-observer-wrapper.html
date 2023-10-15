@@ -10,7 +10,7 @@
         testRunner.dumpAsText();
 
     function leak() {
-        var observer = new WebKitMutationObserver(function() { observer.disconnect(); });
+        var observer = new CyberKitMutationObserver(function() { observer.disconnect(); });
     }
 
     for (i=0; i < 1000; i++) leak();

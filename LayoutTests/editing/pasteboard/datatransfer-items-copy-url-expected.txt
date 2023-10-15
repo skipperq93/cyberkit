@@ -21,14 +21,14 @@ PASS firstItem.getAsFile() is null
 PASS firstItem.getAsString(checkContent(2, "https://webkit.org/")) is undefined
 PASS clipboardData.getData("url") is "https://webkit.org/"
 PASS clipboardData.getData("text/plain") is ""
-PASS secondItem = clipboardData.items.add("WebKit", "text/PLAIN"); clipboardData.items.length is 2
+PASS secondItem = clipboardData.items.add("CyberKit", "text/PLAIN"); clipboardData.items.length is 2
 PASS clipboardData.items[1] is secondItem
 PASS secondItem.kind is "string"
 PASS secondItem.type is "text/plain"
 PASS secondItem.getAsFile() is null
-PASS secondItem.getAsString(checkContent(3, "WebKit")) is undefined
+PASS secondItem.getAsString(checkContent(3, "CyberKit")) is undefined
 PASS clipboardData.getData("url") is "https://webkit.org/"
-PASS clipboardData.getData("TEXT/plain") is "WebKit"
+PASS clipboardData.getData("TEXT/plain") is "CyberKit"
 PASS clipboardData.setData("text/plain", "some text"); clipboardData.items.length is 2
 PASS clipboardData.items[0] is firstItem
 PASS firstItem.kind is "string"
@@ -40,7 +40,7 @@ PASS newSecondItem.type is "text/plain"
 PASS newSecondItem.getAsString(checkContent(5, "some text")) is undefined
 PASS actualContent1 is "rock"
 PASS actualContent2 is "https://webkit.org/"
-PASS actualContent3 is "WebKit"
+PASS actualContent3 is "CyberKit"
 PASS actualContent4 is "https://webkit.org/"
 PASS actualContent5 is "some text"
 PASS successfullyParsed is true

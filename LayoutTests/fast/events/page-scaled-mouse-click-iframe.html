@@ -39,7 +39,7 @@ function clearEventLog() {
 
 function sendEvents(button) {
     if (!window.eventSender) {
-        debug("This test requires the EventSender API (provided by, for example, DumpRenderTree or WebKitTestRunner). Click on the blue rect with the left mouse button to log the mouse coordinates.")
+        debug("This test requires the EventSender API (provided by, for example, DumpRenderTree or CyberKitTestRunner). Click on the blue rect with the left mouse button to log the mouse coordinates.")
         return;
     }
     eventSender.mouseDown(button);

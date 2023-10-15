@@ -279,7 +279,7 @@ ui.results.TestSelector = base.extends('div', {
 
         var cancelResize = function(event) { this._is_resizing = false; }.bind(this);
         this.addEventListener('mouseup', cancelResize);
-        // FIXME: Use addEventListener once WebKit adds support for mouseleave/mouseenter.
+        // FIXME: Use addEventListener once CyberKit adds support for mouseleave/mouseenter.
         $(window).bind('mouseleave', cancelResize);
 
         this.addEventListener('mousemove', function(event) {

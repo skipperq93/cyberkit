@@ -30,20 +30,20 @@ function testList(toggleCommand, initialContents, expectedContents)
 
 debug('Select all nodes\n');
 
-testList("InsertOrderedList", '<ul><ul><li>hello</li><li>world</li><li>WebKit</li></ul></ul>', '<ul><ol><li>hello</li><li>world</li><li>WebKit</li></ol></ul>');
+testList("InsertOrderedList", '<ul><ul><li>hello</li><li>world</li><li>CyberKit</li></ul></ul>', '<ul><ol><li>hello</li><li>world</li><li>CyberKit</li></ol></ul>');
 testList("InsertOrderedList", '<ul><ul><li>hello</li></ul><ul><li>world</li></ul></ul>', '<ul><ol><li>hello</li><li>world</li></ol></ul>');
-testList("InsertOrderedList", '<ul><ul><li>hello</li><li>world</li></ul></ul><ul><li>WebKit</li></ul>', '<ul><ol><li>hello</li><li>world</li></ol></ul><ol><li>WebKit</li></ol>');
-testList("InsertUnorderedList", '<ol><ol><li>hello</li><li>world</li><li>WebKit</li></ol></ol>', '<ol><ul><li>hello</li><li>world</li><li>WebKit</li></ul></ol>');
+testList("InsertOrderedList", '<ul><ul><li>hello</li><li>world</li></ul></ul><ul><li>CyberKit</li></ul>', '<ul><ol><li>hello</li><li>world</li></ol></ul><ol><li>CyberKit</li></ol>');
+testList("InsertUnorderedList", '<ol><ol><li>hello</li><li>world</li><li>CyberKit</li></ol></ol>', '<ol><ul><li>hello</li><li>world</li><li>CyberKit</li></ul></ol>');
 testList("InsertUnorderedList", '<ol><ol><li>hello</li></ol><ol><li>world</li></ol></ol>', '<ol><ul><li>hello</li><li>world</li></ul></ol>');
-testList("InsertUnorderedList", '<ol><ol><li>hello</li><li>world</li></ol></ol><ol><li>WebKit</li></ol>', '<ol><ul><li>hello</li><li>world</li></ul></ol><ul><li>WebKit</li></ul>');
+testList("InsertUnorderedList", '<ol><ol><li>hello</li><li>world</li></ol></ol><ol><li>CyberKit</li></ol>', '<ol><ul><li>hello</li><li>world</li></ul></ol><ul><li>CyberKit</li></ul>');
 
 debug('Select #test\n');
-testList("InsertOrderedList", '<ul><ul id="test"><li>hello</li><li>world</li></ul><ol><li>WebKit</li></ol></ul>', '<ul><ol><li>hello</li><li>world</li><li>WebKit</li></ol></ul>');
-testList("InsertOrderedList", '<ul><ol><li>hello</li></ol><ul id="test"><li>world</li></ul><ol><li>WebKit</li></ol></ul>', '<ul><ol><li>hello</li><li>world</li><li>WebKit</li></ol></ul>');
-testList("InsertOrderedList", '<ul><ul id="test"><li>hello</li></ul>world<ol><li>WebKit</li></ol></ul>', '<ul><ol><li>hello</li></ol>world<ol><li>WebKit</li></ol></ul>');
-testList("InsertUnorderedList", '<ol><ol id="test"><li>hello</li><li>world</li></ol><ul><li>WebKit</li></ul></ol>', '<ol><ul><li>hello</li><li>world</li><li>WebKit</li></ul></ol>');
-testList("InsertUnorderedList", '<ol><ul><li>hello</li></ul><ol id="test"><li>world</li></ol><ul><li>WebKit</li></ul></ol>', '<ol><ul><li>hello</li><li>world</li><li>WebKit</li></ul></ol>');
-testList("InsertUnorderedList", '<ol><ol id="test"><li>hello</li></ol>world<ul><li>WebKit</li></ul></ol>', '<ol><ul><li>hello</li></ul>world<ul><li>WebKit</li></ul></ol>');
+testList("InsertOrderedList", '<ul><ul id="test"><li>hello</li><li>world</li></ul><ol><li>CyberKit</li></ol></ul>', '<ul><ol><li>hello</li><li>world</li><li>CyberKit</li></ol></ul>');
+testList("InsertOrderedList", '<ul><ol><li>hello</li></ol><ul id="test"><li>world</li></ul><ol><li>CyberKit</li></ol></ul>', '<ul><ol><li>hello</li><li>world</li><li>CyberKit</li></ol></ul>');
+testList("InsertOrderedList", '<ul><ul id="test"><li>hello</li></ul>world<ol><li>CyberKit</li></ol></ul>', '<ul><ol><li>hello</li></ol>world<ol><li>CyberKit</li></ol></ul>');
+testList("InsertUnorderedList", '<ol><ol id="test"><li>hello</li><li>world</li></ol><ul><li>CyberKit</li></ul></ol>', '<ol><ul><li>hello</li><li>world</li><li>CyberKit</li></ul></ol>');
+testList("InsertUnorderedList", '<ol><ul><li>hello</li></ul><ol id="test"><li>world</li></ol><ul><li>CyberKit</li></ul></ol>', '<ol><ul><li>hello</li><li>world</li><li>CyberKit</li></ul></ol>');
+testList("InsertUnorderedList", '<ol><ol id="test"><li>hello</li></ol>world<ul><li>CyberKit</li></ul></ol>', '<ol><ul><li>hello</li></ul>world<ul><li>CyberKit</li></ul></ol>');
 
 document.body.removeChild(testContainer);
 

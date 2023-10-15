@@ -1,15 +1,15 @@
 <?php
 /*
 Plugin Name: Sync Nightly Builds
-Description: Updates WebKit nightly build information
+Description: Updates CyberKit nightly build information
 Version:     1.0
 Author:      Jonathan Davis
 Author URI:  http://webkit.org
 */
 
-SyncWebKitNightlyBuilds::object();
+SyncCyberKitNightlyBuilds::object();
 
-class SyncWebKitNightlyBuilds {
+class SyncCyberKitNightlyBuilds {
 
     private static $object = null;
 
@@ -173,4 +173,4 @@ class SyncWebKitNightlyBuilds {
         return $target > $older && $target < $newer;
     }
 
-} // end class SyncWebKitNightlyBuilds
+} // end class SyncCyberKitNightlyBuilds

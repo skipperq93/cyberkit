@@ -326,7 +326,7 @@ class LayoutTestFinderTests(unittest.TestCase, TestCaseMixin):
         path = finder._port.layout_tests_dir() + "/web-platform-tests/variant_test.any.html"
 
         finder._filesystem.maybe_make_directory(finder._filesystem.dirname(path))
-        finder._filesystem.write_text_file(path, """<!-- This file is required for WebKit test infrastructure to run the templated test -->
+        finder._filesystem.write_text_file(path, """<!-- This file is required for CyberKit test infrastructure to run the templated test -->
 <!-- META: variant=?1-10 -->
 <!-- META: variant=?11-20 -->
         """)

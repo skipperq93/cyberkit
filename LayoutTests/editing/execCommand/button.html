@@ -6,11 +6,11 @@
 <script>
 
 Markup.description('This tests ensures contents inside a button element is properly editable.\n'
-+ 'You should see "hello, world WebKit" inside the button and "world" should be bolded.');
++ 'You should see "hello, world CyberKit" inside the button and "world" should be bolded.');
 
 var button = document.getElementsByTagName('button')[0];
 window.getSelection().setPosition(button, 1);
-document.execCommand('InsertText', false, ', world WebKit');
+document.execCommand('InsertText', false, ', world CyberKit');
 window.getSelection().modify('move', 'backward', 'word');
 window.getSelection().modify('move', 'backward', 'word');
 window.getSelection().modify('extend', 'forward', 'word');

@@ -1,4 +1,4 @@
-This test ensures that WebKit doesn't crash when the document.createTouchList API is called with non-Touch parameters
+This test ensures that CyberKit doesn't crash when the document.createTouchList API is called with non-Touch parameters
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

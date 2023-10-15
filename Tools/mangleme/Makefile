@@ -3,11 +3,11 @@
 # --------------
 # Copyright (C) 2004 by Michal Zalewski <lcamtuf@coredump.cx>
 #
-# Makefile adapted for WebKit project.
+# Makefile adapted for CyberKit project.
 
 CC = gcc
 CFLAGS = -Wall -O3 -fomit-frame-pointer -funroll-loops
-OUTDIR = ../../WebKitBuild/mangleme
+OUTDIR = ../../CyberKitBuild/mangleme
 
 all: $(OUTDIR)/mangle.cgi $(OUTDIR)/remangle.cgi
 

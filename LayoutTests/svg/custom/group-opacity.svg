@@ -26,7 +26,7 @@
     </g>
 
     <!--
-      was wrong in WebKit, should render as preceding example
+      was wrong in CyberKit, should render as preceding example
       as "opacity" is not equivalent to "stroke-opacity"
       and "fill-opacity" combined
     -->
@@ -35,7 +35,7 @@
           opacity="0.5" />
 
     <!--
-      was wrong in WebKit, "fill-opacity" and "stroke-opacity"
+      was wrong in CyberKit, "fill-opacity" and "stroke-opacity"
       are not taken into account for gradient fills and strokes
      -->
     <rect x="345" width="100" height="100"
@@ -43,7 +43,7 @@
           fill-opacity="0.5" stroke-opacity="0.5" />
 
     <!--
-      was wrong in WebKit, same bug as rect #2
+      was wrong in CyberKit, same bug as rect #2
      -->
     <rect x="460" width="100" height="100"
           fill="url(#gradient_fill)" stroke="url(#stroke_fill)" stroke-width="10"

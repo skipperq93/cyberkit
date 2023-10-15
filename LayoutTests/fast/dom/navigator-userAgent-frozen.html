@@ -3,16 +3,16 @@
 <head>
 <script src="../../resources/js-test.js"></script>
 <script>
-description("Confirm WebKit does not report versions above the frozen maximums.");
+description("Confirm CyberKit does not report versions above the frozen maximums.");
 </script>
 </head>
 <body>
 <script>
 function testVersion(userAgent)
 {
-    var start = userAgent.indexOf("AppleWebKit/");
+    var start = userAgent.indexOf("AppleCyberKit/");
     if (start < 0) {
-        testFailed("User agent did not contain WebKit version.");
+        testFailed("User agent did not contain CyberKit version.");
         return;
     }
 

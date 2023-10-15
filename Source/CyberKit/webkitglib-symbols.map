@@ -1,0 +1,14 @@
+{
+global:
+  jsc_*;
+  webkit_*;
+  extern "C++" {
+    "CyberKit::GPUProcessMain(int, char**)";
+    "CyberKit::NetworkProcessMain(int, char**)";
+    "CyberKit::WebProcessExtensionManager::initialize(CyberKit::InjectedBundle*, API::Object*)";
+    "CyberKit::WebProcessExtensionManager::singleton()";
+    "CyberKit::WebProcessMain(int, char**)";
+  };
+local:
+  *;
+};

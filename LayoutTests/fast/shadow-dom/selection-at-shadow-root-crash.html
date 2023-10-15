@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <body>
 <p>This tests copying an image which is a direct child of a shadow root.
-To manually test, copy the image by pressing command / control + c. WebKit should not crash or hit an assertion.
+To manually test, copy the image by pressing command / control + c. CyberKit should not crash or hit an assertion.
 </p>
 <pre id="result"></pre>
 <script>
@@ -19,7 +19,7 @@ document.body.appendChild(host);
 function runTest() {
     window.getSelection().selectAllChildren(root);
     document.execCommand('copy', null, false);
-    document.getElementById('result').textContent = 'PASS - WebKit did not crash';
+    document.getElementById('result').textContent = 'PASS - CyberKit did not crash';
 
     if (testRunner)
         testRunner.notifyDone();

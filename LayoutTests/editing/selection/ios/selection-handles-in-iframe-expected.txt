@@ -2,7 +2,7 @@ selectionchange: 'M'
 selectionchange: 'M '
 selectionchange: 'M M'
 
-Verifies that the user can select text in an iframe by dragging selection handles. This test is best run under WebKitTestRunner.
+Verifies that the user can select text in an iframe by dragging selection handles. This test is best run under CyberKitTestRunner.
 
 To manually run the test, select "M" in the iframe above and drag the selection handles.
 

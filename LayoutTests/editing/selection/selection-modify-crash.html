@@ -19,7 +19,7 @@ function test()
 
     var selection = window.getSelection();
     selection.addRange(staleRange);
-    selection.modify("extend", "forward", "documentboundary"); // WebKit crashed here.
+    selection.modify("extend", "forward", "documentboundary"); // CyberKit crashed here.
 
     // Recreate the HTML element to show 'PASS'.
     document.appendChild(document.createElement('html'));

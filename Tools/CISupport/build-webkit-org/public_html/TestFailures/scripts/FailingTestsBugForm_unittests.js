@@ -50,7 +50,7 @@ function createTestForm(testerName, failingBuildName, passingBuildName, failingT
 test('keywords are set', 1, function() {
     var form = createTestForm('Windows 7 Release (Tests)', 'r10 (5)', 'r8 (2)', ['css1/basic/class_as_selector.html']);
 
-    deepEqual(form.keywords.split(', '), [WebKitBugzilla.Keyword.LayoutTestFailure, WebKitBugzilla.Keyword.MakingBotsRed, WebKitBugzilla.Keyword.Regression]);
+    deepEqual(form.keywords.split(', '), [CyberKitBugzilla.Keyword.LayoutTestFailure, CyberKitBugzilla.Keyword.MakingBotsRed, CyberKitBugzilla.Keyword.Regression]);
 });
 
 const testCases = [

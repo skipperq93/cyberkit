@@ -235,7 +235,7 @@ ViewController.prototype = {
         var aside = document.createElement('aside');
         aside.appendChild(document.createTextNode('Something not working? Have an idea to improve this page? '));
         var queryParameters = {
-            product: 'WebKit',
+            product: 'CyberKit',
             component: 'Tools / Tests',
             version: '528+ (Nightly build)',
             bug_file_loc: location.href,

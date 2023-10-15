@@ -17,7 +17,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:table, tag:table, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:table, tag:table, toolkit:CyberKitGtk
 
 asdf	asdf
 asdf	asdf
@@ -40,7 +40,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:table, tag:table, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:table, tag:table, toolkit:CyberKitGtk
 
 asdf	asdf
 
@@ -63,7 +63,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: tag:td, toolkit:WebKitGtk
+AXPlatformAttributes: tag:td, toolkit:CyberKitGtk
 
 asdf	asdf
 
@@ -85,7 +85,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:table, tag:table, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:table, tag:table, toolkit:CyberKitGtk
 
 asdf	asdf
 
@@ -107,7 +107,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:table, tag:table, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:table, tag:table, toolkit:CyberKitGtk
 
 asdf	asdf
 
@@ -129,7 +129,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:table, tag:table, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:table, tag:table, toolkit:CyberKitGtk
 
 asdf	asdf
 asdf	asdf
@@ -152,7 +152,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:table, tag:table, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:table, tag:table, toolkit:CyberKitGtk
 
 asdf	asdf
 
@@ -175,7 +175,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: tag:td, toolkit:WebKitGtk
+AXPlatformAttributes: tag:td, toolkit:CyberKitGtk
 
 asdf	asdf
 
@@ -198,7 +198,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: tag:td, toolkit:WebKitGtk
+AXPlatformAttributes: tag:td, toolkit:CyberKitGtk
 
 asdf	asdf
 
@@ -220,7 +220,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:table, tag:table, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:table, tag:table, toolkit:CyberKitGtk
 
 asdf	asdf
 
@@ -243,7 +243,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: tag:td, toolkit:WebKitGtk
+AXPlatformAttributes: tag:td, toolkit:CyberKitGtk
 
 Contributions
 
@@ -266,7 +266,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: html-id:nmb, tag:td, toolkit:WebKitGtk
+AXPlatformAttributes: html-id:nmb, tag:td, toolkit:CyberKitGtk
 
 Politics
 Decision '08
@@ -295,7 +295,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:table, tag:table, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:table, tag:table, toolkit:CyberKitGtk
 
 asdf	asdf
 
@@ -317,7 +317,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:table, tag:table, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:table, tag:table, toolkit:CyberKitGtk
 
 asdf	asdf
 asdf	asdf
@@ -341,7 +341,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: tag:td, toolkit:WebKitGtk
+AXPlatformAttributes: tag:td, toolkit:CyberKitGtk
 
 asdf	asdf
 asdf	asdf
@@ -364,7 +364,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:table, tag:table, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:table, tag:table, toolkit:CyberKitGtk
 
 asdf	asdf
 asdf
@@ -388,7 +388,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:table, tag:table, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:table, tag:table, toolkit:CyberKitGtk
 
 asdf	asdf
 asdf
@@ -412,7 +412,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:table, tag:table, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:table, tag:table, toolkit:CyberKitGtk
 
 asdf	asdf
 asdf	asdf
@@ -435,7 +435,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:table, tag:table, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:table, tag:table, toolkit:CyberKitGtk
 
 asdf
 asdf
@@ -480,7 +480,7 @@ AXEnabled: 1
 AXExpanded: 0
 AXRequired: 0
 AXChecked: 0
-AXPlatformAttributes: computed-role:table, toolkit:WebKitGtk
+AXPlatformAttributes: computed-role:table, toolkit:CyberKitGtk
 
 head	head2
 asdf	asdf

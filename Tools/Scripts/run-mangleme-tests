@@ -59,11 +59,11 @@ GetOptions(
 setConfiguration();
 my $productDir = productDir();
 
-chdirWebKit();
+chdirCyberKit();
 
 checkFrameworks();
 
-mkdir "WebKitBuild/mangleme";
+mkdir "CyberKitBuild/mangleme";
 (system "/usr/bin/make", "-C", "Tools/mangleme") == 0 or die;
 
 my $httpdOpen = 0;
@@ -75,7 +75,7 @@ if ($downloadTest) {
 } else {
     runSafariWithMangleme();
     print "Last generated tests:\n";
-    system "grep 'Mangle attempt' /tmp/WebKit/error_log.txt | tail -n -5 | awk ' {print \$4}'";
+    system "grep 'Mangle attempt' /tmp/CyberKit/error_log.txt | tail -n -5 | awk ' {print \$4}'";
 }
 
 closeHTTPD();
@@ -90,7 +90,7 @@ sub runSafariWithMangleme()
         $redirectTo = "http://127.0.0.1:$httpdPort/mangle.cgi";
     }
 
-    open REDIRECT_HTML, ">", "/tmp/WebKit/redirect.html" or die;
+    open REDIRECT_HTML, ">", "/tmp/CyberKit/redirect.html" or die;
     print REDIRECT_HTML "<html>\n";
     print REDIRECT_HTML "    <head>\n";
     print REDIRECT_HTML "        <meta http-equiv=\"refresh\" content=\"1;URL=$redirectTo\" />\n";
@@ -105,17 +105,17 @@ sub runSafariWithMangleme()
     
     local %ENV;
     $ENV{DYLD_INSERT_LIBRARIES} = "/usr/lib/libgmalloc.dylib" if $guardMalloc;
-    system "Tools/Scripts/run-safari", "-NSOpen", "/tmp/WebKit/redirect.html";
+    system "Tools/Scripts/run-safari", "-NSOpen", "/tmp/CyberKit/redirect.html";
 }
 
 sub openHTTPDIfNeeded()
 {
     return if $httpdOpen;
 
-    mkdir "/tmp/WebKit";
+    mkdir "/tmp/CyberKit";
     
-    if (-f "/tmp/WebKit/httpd.pid") {
-        my $oldPid = `cat /tmp/WebKit/httpd.pid`;
+    if (-f "/tmp/CyberKit/httpd.pid") {
+        my $oldPid = `cat /tmp/CyberKit/httpd.pid`;
         chomp $oldPid;
         if (0 != kill 0, $oldPid) {
             print "\nhttpd is already running: pid $oldPid, killing...\n";
@@ -132,7 +132,7 @@ sub openHTTPDIfNeeded()
     }
     
     my $testDirectory = getcwd() . "/LayoutTests";
-    my $manglemeDirectory = getcwd() . "/WebKitBuild/mangleme";
+    my $manglemeDirectory = getcwd() . "/CyberKitBuild/mangleme";
     my $httpdPath = "/usr/sbin/httpd";
     my $httpdConfig = "$testDirectory/http/conf/httpd.conf";
     $httpdConfig = "$testDirectory/http/conf/apache2-httpd.conf" if `$httpdPath -v` =~ m|Apache/2|;
@@ -146,8 +146,8 @@ sub openHTTPDIfNeeded()
         "-C", "DocumentRoot \"$documentRoot\"",
         "-C", "Listen $listen",
         "-c", "TypesConfig \"$typesConfig\"",
-        "-c", "CustomLog \"/tmp/WebKit/access_log.txt\" common",
-        "-c", "ErrorLog \"/tmp/WebKit/error_log.txt\"",
+        "-c", "CustomLog \"/tmp/CyberKit/access_log.txt\" common",
+        "-c", "ErrorLog \"/tmp/CyberKit/error_log.txt\"",
         "-c", "SSLCertificateFile \"$sslCertificate\"",
         # Apache wouldn't run CGIs with permissions==700 otherwise
         "-c", "User \"#$<\"");
@@ -170,7 +170,7 @@ sub closeHTTPD()
     close HTTPDIN;
     close HTTPDOUT;
 
-    kill 15, `cat /tmp/WebKit/httpd.pid` if -f "/tmp/WebKit/httpd.pid";
+    kill 15, `cat /tmp/CyberKit/httpd.pid` if -f "/tmp/CyberKit/httpd.pid";
 
     $httpdOpen = 0;
 }

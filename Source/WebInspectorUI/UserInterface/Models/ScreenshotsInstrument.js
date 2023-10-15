@@ -36,7 +36,7 @@ WI.ScreenshotsInstrument = class ScreenshotsInstrument extends WI.Instrument
 
     static supported()
     {
-        // FIXME: <webkit.org/b/251113> Screenshots timeline does not capture screenshots for changes in WebKitLegacy.
+        // FIXME: <webkit.org/b/251113> Screenshots timeline does not capture screenshots for changes in CyberKitLegacy.
         if (WI.sharedApp.debuggableType === WI.DebuggableType.Page)
             return false;
 

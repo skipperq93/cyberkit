@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <JavaScriptCore/JSObjectRef.h>
+#include <CyberScriptCore/JSObjectRef.h>
 
 #if PLATFORM(COCOA)
 #define SUPPORTS_AX_TEXTMARKERS 1

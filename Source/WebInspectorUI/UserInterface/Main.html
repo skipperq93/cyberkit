@@ -27,7 +27,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <!--
-        Note that some WebKit ports may set custom 'frame-src', 'img-src', and 'connect-src' directives via HTTP response header.
+        Note that some CyberKit ports may set custom 'frame-src', 'img-src', and 'connect-src' directives via HTTP response header.
         The combined CSP policy requires a request to be allowed by both directive lists, so 'default-src' is omitted.
     -->
     <meta http-equiv="Content-Security-Policy" content="media-src * blob:; font-src * blob:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' data:; object-src 'none'">
@@ -281,7 +281,7 @@
     <link rel="stylesheet" href="Debug/UncaughtExceptionReporter.css">
     <link rel="stylesheet" href="Debug/DebugContentView.css">
 
-    <link rel="stylesheet" href="WebKitAdditions/WebInspectorUI/WebInspectorUIAdditions.css">
+    <link rel="stylesheet" href="CyberKitAdditions/WebInspectorUI/WebInspectorUIAdditions.css">
 
     <script src="Debug/UncaughtExceptionReporter.js"></script>
 
@@ -989,7 +989,7 @@
 
     <script src="NonMinified/DefaultAudits.js"></script>
 
-    <script src="WebKitAdditions/WebInspectorUI/WebInspectorUIAdditions.js"></script>
+    <script src="CyberKitAdditions/WebInspectorUI/WebInspectorUIAdditions.js"></script>
 
     <script>
         WI.sharedApp = new WI.AppController;

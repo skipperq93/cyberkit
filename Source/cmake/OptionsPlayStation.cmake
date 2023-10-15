@@ -25,7 +25,7 @@ if (NOT WEBKIT_LIBRARIES_DIR)
     if (DEFINED ENV{WEBKIT_LIBRARIES})
         set(WEBKIT_LIBRARIES_DIR "$ENV{WEBKIT_LIBRARIES}" CACHE PATH "Path to PlayStationRequirements")
     else ()
-        set(WEBKIT_LIBRARIES_DIR "${CMAKE_SOURCE_DIR}/WebKitLibraries/playstation" CACHE PATH "Path to PlayStationRequirements")
+        set(WEBKIT_LIBRARIES_DIR "${CMAKE_SOURCE_DIR}/CyberKitLibraries/playstation" CACHE PATH "Path to PlayStationRequirements")
     endif ()
 endif ()
 
@@ -45,8 +45,8 @@ set(USE_WPE_BACKEND_PLAYSTATION OFF)
 set(PlayStationModule_TARGETS ICU::uc)
 
 if (ENABLE_WEBCORE)
-    set(WebKitRequirements_COMPONENTS WebKitResources)
-    set(WebKitRequirements_OPTIONAL_COMPONENTS
+    set(CyberKitRequirements_COMPONENTS CyberKitResources)
+    set(CyberKitRequirements_OPTIONAL_COMPONENTS
         JPEG
         LibPSL
         LibXml2
@@ -66,21 +66,21 @@ if (ENABLE_WEBCORE)
         set(ProcessLauncher_LIBRARY WPE::PlayStation)
         list(APPEND PlayStationModule_TARGETS WPE::PlayStation)
     else ()
-        set(ProcessLauncher_LIBRARY WebKitRequirements::ProcessLauncher)
-        list(APPEND WebKitRequirements_COMPONENTS
+        set(ProcessLauncher_LIBRARY CyberKitRequirements::ProcessLauncher)
+        list(APPEND CyberKitRequirements_COMPONENTS
             ProcessLauncher
             libwpe
         )
     endif ()
 
-    find_package(WebKitRequirements
-        REQUIRED COMPONENTS ${WebKitRequirements_COMPONENTS}
-        OPTIONAL_COMPONENTS ${WebKitRequirements_OPTIONAL_COMPONENTS}
+    find_package(CyberKitRequirements
+        REQUIRED COMPONENTS ${CyberKitRequirements_COMPONENTS}
+        OPTIONAL_COMPONENTS ${CyberKitRequirements_OPTIONAL_COMPONENTS}
     )
 
     set(Brotli_NAMES SceVshBrotli ${Brotli_NAMES})
     set(Brotli_DEC_NAMES ${Brotli_NAMES} ${Brotli_DEC_NAMES})
-    set(Cairo_NAMES SceCairoForWebKit ${Cairo_NAMES})
+    set(Cairo_NAMES SceCairoForCyberKit ${Cairo_NAMES})
     set(HarfBuzz_NAMES SceVshHarfbuzz ${HarfBuzz_NAMES})
     set(HarfBuzz_ICU_NAMES ${HarfBuzz_NAMES} ${HarfBuzz_ICU_NAMES})
     # The OpenGL ES implementation is in the same library as the EGL implementation
@@ -106,7 +106,7 @@ if (ENABLE_WEBCORE)
         HarfBuzz::HarfBuzz
         OpenSSL::SSL
         PNG::PNG
-        WebKitRequirements::WebKitResources
+        CyberKitRequirements::CyberKitResources
     )
 
     if (NOT TARGET JPEG::JPEG)
@@ -297,7 +297,7 @@ if (ENABLE_MINIBROWSER)
     endif ()
 endif ()
 
-# Create a shared JavaScriptCore with WTF and bmalloc exposed through it.
+# Create a shared CyberScriptCore with WTF and bmalloc exposed through it.
 #
 # Use OBJECT libraries for bmalloc and WTF. This is the modern CMake way to emulate
 # the behavior of --whole-archive. If this is not done then all the exports will
@@ -306,18 +306,18 @@ set(bmalloc_LIBRARY_TYPE OBJECT)
 set(WTF_LIBRARY_TYPE OBJECT)
 
 if (ENABLE_STATIC_JSC)
-    set(JavaScriptCore_LIBRARY_TYPE OBJECT)
+    set(CyberScriptCore_LIBRARY_TYPE OBJECT)
 else ()
-    set(JavaScriptCore_LIBRARY_TYPE SHARED)
+    set(CyberScriptCore_LIBRARY_TYPE SHARED)
 endif ()
 
-# Create a shared WebKit
+# Create a shared CyberKit
 #
-# Use OBJECT libraries for PAL and WebCore. The size of a libWebCore.a is too much
+# Use OBJECT libraries for PAL and CyberCore. The size of a libCyberCore.a is too much
 # for ranlib.
 set(PAL_LIBRARY_TYPE OBJECT)
-set(WebCore_LIBRARY_TYPE OBJECT)
-set(WebKit_LIBRARY_TYPE SHARED)
+set(CyberCore_LIBRARY_TYPE OBJECT)
+set(CyberKit_LIBRARY_TYPE SHARED)
 
 # Enable multi process builds for Visual Studio
 if (NOT ${CMAKE_GENERATOR} MATCHES "Ninja")

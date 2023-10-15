@@ -38,25 +38,25 @@
 #import "DumpRenderTreeFileDraggingSource.h"
 #import "DumpRenderTreePasteboard.h"
 #import "ModifierKeys.h"
-#import "WebCoreTestSupport.h"
-#import <WebKit/DOMPrivate.h>
-#import <WebKit/WebViewPrivate.h>
+#import "CyberCoreTestSupport.h"
+#import <CyberKit/DOMPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <functional>
 #import <wtf/NeverDestroyed.h>
 #import <wtf/RetainPtr.h>
 
 #if !PLATFORM(IOS_FAMILY)
 #import <Carbon/Carbon.h> // for GetCurrentEventTime()
-#import <WebKit/WebHTMLView.h>
-#import <WebKit/WebHTMLViewPrivate.h>
+#import <CyberKit/WebHTMLView.h>
+#import <CyberKit/WebHTMLViewPrivate.h>
 #import <objc/runtime.h>
 #endif
 
 #if PLATFORM(IOS_FAMILY)
 #import <UIKit/UIKit.h>
-#import <WebKit/KeyEventCodesIOS.h>
-#import <WebKit/WAKWindow.h>
-#import <WebKit/WebEvent.h>
+#import <CyberKit/KeyEventCodesIOS.h>
+#import <CyberKit/WAKWindow.h>
+#import <CyberKit/WebEvent.h>
 #import <pal/spi/ios/GraphicsServicesSPI.h> // for GSCurrentEventTimestamp()
 #endif
 
@@ -136,7 +136,7 @@ static RetainPtr<NSMutableArray>& savedMouseEvents()
 
 #if !PLATFORM(IOS_FAMILY)
 @interface WebView (WebViewInternalForTesting)
-- (WebCore::LocalFrame*)_mainCoreFrame;
+- (CyberCore::LocalFrame*)_mainCoreFrame;
 @end
 #endif
 
@@ -1299,7 +1299,7 @@ static NSUInteger swizzledEventPressedMouseButtons()
     @catch(NSException *) {
     }
 
-    WebCoreTestSupport::monitorWheelEvents(*frame, resetLatching);
+    CyberCoreTestSupport::monitorWheelEvents(*frame, resetLatching);
 #endif
 }
 
@@ -1315,7 +1315,7 @@ static NSUInteger swizzledEventPressedMouseButtons()
         return;
 
     JSGlobalContextRef globalContext = [mainFrame globalContext];
-    WebCoreTestSupport::setWheelEventMonitorTestCallbackAndStartMonitoring(_sentWheelPhaseEndOrCancel, _sentMomentumPhaseEnd, *frame, globalContext, jsCallbackFunction);
+    CyberCoreTestSupport::setWheelEventMonitorTestCallbackAndStartMonitoring(_sentWheelPhaseEndOrCancel, _sentMomentumPhaseEnd, *frame, globalContext, jsCallbackFunction);
 #endif
 }
 

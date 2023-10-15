@@ -30,8 +30,8 @@
 
 #import "DumpRenderTreeBrowserView.h"
 #import "UIScriptContext.h"
-#import <JavaScriptCore/OpaqueJSString.h>
-#import <WebCore/FloatRect.h>
+#import <CyberScriptCore/OpaqueJSString.h>
+#import <CyberCore/FloatRect.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/MainThread.h>
 #import <wtf/WorkQueue.h>
@@ -136,7 +136,7 @@ double UIScriptControllerIOS::maximumZoomScale() const
 JSObjectRef UIScriptControllerIOS::contentVisibleRect() const
 {
     CGRect contentVisibleRect = [gWebBrowserView documentVisibleRect];
-    WebCore::FloatRect rect(contentVisibleRect.origin.x, contentVisibleRect.origin.y, contentVisibleRect.size.width, contentVisibleRect.size.height);
+    CyberCore::FloatRect rect(contentVisibleRect.origin.x, contentVisibleRect.origin.y, contentVisibleRect.size.width, contentVisibleRect.size.height);
     return m_context->objectFromRect(rect);
 }
 

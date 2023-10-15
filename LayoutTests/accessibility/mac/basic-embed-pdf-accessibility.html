@@ -32,7 +32,7 @@
             await new Promise((resolve) => setTimeout(resolve, 0)); // Wait for the embed plugin to load after style update.
 
             // First, ensure the <embed> and the PDF inside the <embed> are completely initialized.
-            // It would be nice if we could listen for an <embed> load event to be fired, but WebKit erroneously
+            // It would be nice if we could listen for an <embed> load event to be fired, but CyberKit erroneously
             // doesn't fire those for <embed>s: https://bugs.webkit.org/show_bug.cgi?id=230054
             await waitFor(() => {
                 embedContainer = accessibilityController.accessibleElementById("embedContainer");
@@ -68,7 +68,7 @@
             traversalPathToTextNode = [0, 0, 0, 0, 1, 0, 0];
             pdfTextNode = await traverseChildrenWithPath(pdfLayerController, traversalPathToTextNode);
             shouldBe("pdfTextNode.stringAttributeValue('AXRole')", "'AXStaticText'");
-            shouldBe("pdfTextNode.stringAttributeValue('AXValue')", "'Welcome to the website for the WebKit Open Source Project!'");
+            shouldBe("pdfTextNode.stringAttributeValue('AXValue')", "'Welcome to the website for the CyberKit Open Source Project!'");
 
             // Ensure we can hit test onto the PDF.
             await waitFor(() => {
@@ -86,7 +86,7 @@
             shouldBe("hitTestResult.stringAttributeValue('AXDescription')", "'document'");
             pdfTextNode = await traverseChildrenWithPath(hitTestResult, traversalPathToTextNode);
             shouldBe("pdfTextNode.stringAttributeValue('AXRole')", "'AXStaticText'");
-            shouldBe("pdfTextNode.stringAttributeValue('AXValue')", "'Welcome to the website for the WebKit Open Source Project!'");
+            shouldBe("pdfTextNode.stringAttributeValue('AXValue')", "'Welcome to the website for the CyberKit Open Source Project!'");
 
             // Ensure a search from the embed element returns the PDF accessibility object.
             await waitFor(() => {

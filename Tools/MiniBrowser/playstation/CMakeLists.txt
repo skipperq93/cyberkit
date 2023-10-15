@@ -20,7 +20,7 @@ set(MiniBrowser_LIBRARIES
     ${KERNEL_LIBRARY}
     ${TOOLKIT_LIBRARY}
 )
-set(MiniBrowser_FRAMEWORKS WebKit)
+set(MiniBrowser_FRAMEWORKS CyberKit)
 
 WEBKIT_EXECUTABLE_DECLARE(MiniBrowser)
 WEBKIT_EXECUTABLE(MiniBrowser)

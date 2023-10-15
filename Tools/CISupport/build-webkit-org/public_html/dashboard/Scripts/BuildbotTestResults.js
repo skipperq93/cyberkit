@@ -182,7 +182,7 @@ BuildbotTestResults.prototype = {
         console.assert(data.num_missing >= this.testsWithMissingResults.length);
     },
 
-    addJavaScriptCoreTestFailures: function(data)
+    addCyberScriptCoreTestFailures: function(data)
     {
         this.regressions = data.stressTestFailures;
     },

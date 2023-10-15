@@ -1,13 +1,13 @@
 function isGtk()
 {
-    // Set in Tools/WebKitTestRunner/gtk/TestControllerGTK.cpp.
-    return navigator.userAgent.includes("WebKitTestRunnerGTK");
+    // Set in Tools/CyberKitTestRunner/gtk/TestControllerGTK.cpp.
+    return navigator.userAgent.includes("CyberKitTestRunnerGTK");
 }
 
 function isWPE()
 {
-    // Set in Tools/WebKitTestRunner/wpe/TestControllerWPE.cpp.
-    return navigator.userAgent.includes("WebKitTestRunnerWPE");
+    // Set in Tools/CyberKitTestRunner/wpe/TestControllerWPE.cpp.
+    return navigator.userAgent.includes("CyberKitTestRunnerWPE");
 }
 
 function videoCanvasPixelComparisonTolerance()

@@ -187,9 +187,9 @@ class BundleCreator(object):
         self._compression_type = compression_type
         self._tmpdir = None
         self._wrapper_scripts = []
-        self._port_binary_preffix = 'WebKit' if self._platform == 'gtk' else 'WPE'
+        self._port_binary_preffix = 'CyberKit' if self._platform == 'gtk' else 'WPE'
         wk_build_path = os.environ['WEBKIT_OUTPUTDIR'] if 'WEBKIT_OUTPUTDIR' in os.environ else \
-                        os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'WebKitBuild'))
+                        os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'CyberKitBuild'))
         self._buildpath = os.path.join(wk_build_path, self._configuration.capitalize())
         self._dlopenwrap_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), 'webkitpy', 'binary_bundling', 'dlopenwrap'))
         if not os.path.isdir(self._dlopenwrap_dir):
@@ -229,10 +229,10 @@ class BundleCreator(object):
         readme_file = os.path.join(self._tmpdir, 'README.txt')
         with open(readme_file, 'w') as readme_handle:
             readme_handle.write('Bundle details:\n')
-            readme_handle.write('  - WebKit Platform: %s\n' % self._platform.upper())
+            readme_handle.write('  - CyberKit Platform: %s\n' % self._platform.upper())
             readme_handle.write('  - Configuration: %s\n' % self._configuration.capitalize())
             if self._revision:
-                readme_handle.write('  - WebKit Revision: %s\n' % self._revision)
+                readme_handle.write('  - CyberKit Revision: %s\n' % self._revision)
             readme_handle.write('  - Bundle type: %s\n' % self._bundle_type)
             if self._buildername:
                 readme_handle.write('  - Builder name: %s\n' % self._buildername)
@@ -362,7 +362,7 @@ class BundleCreator(object):
                 if os.path.isfile(binary) and os.access(binary, os.X_OK):
                     webkit_binaries.append(binary)
         if len(webkit_binaries) < 2:
-            raise RuntimeError('Could not find required WebKit Process binaries. Check if you are passing the right platform value.')
+            raise RuntimeError('Could not find required CyberKit Process binaries. Check if you are passing the right platform value.')
         return webkit_binaries
 
     def _get_webkit_lib(self, name):
@@ -655,7 +655,7 @@ class BundleCreator(object):
         # We only want to separate the libraries in lib and sys/lib for MiniBrowser and 'all' bundles
         self._bundler.set_use_sys_lib_directory('MiniBrowser' in self._bundle_binaries)
         if bundle_binary == 'MiniBrowser':
-            # bunddle WebKit libraries
+            # bunddle CyberKit libraries
             objects_to_copy.extend(self._get_webkit_binaries())
             objects_to_copy.append(self._get_webkit_lib('InjectedBundle'))
             if self._platform == 'wpe':
@@ -882,7 +882,7 @@ def main():
     configuration.add_argument('--debug', action='store_const', const='debug', dest='configuration')
     configuration.add_argument('--release', action='store_const', const='release', dest='configuration')
     parser.add_argument('--platform', dest='platform', choices=['gtk', 'wpe'], required=True,
-                        help='The WebKit port to generate the bundle')
+                        help='The CyberKit port to generate the bundle')
     parser.add_argument('--bundle', dest='bundle_binary', choices=['jsc', 'MiniBrowser', 'all'], required=True,
                         help='Select what main binary should be included in the bundle')
     parser.add_argument('--syslibs', dest='syslibs', choices=['bundle-all', 'generate-install-script'], default='generate-install-script',

@@ -28,7 +28,7 @@ function continueTest() {
 if (window.internals) {
     internals.setMediaElementRestrictions(video, "OverrideUserGestureRequirementForMainContent");
 } else
-    description.innerHTML += '<br>This test requries OverrideUserGestureRequirementForMainContent. Manually set this setting or use WebKitTestRunner.';
+    description.innerHTML += '<br>This test requries OverrideUserGestureRequirementForMainContent. Manually set this setting or use CyberKitTestRunner.';
 
 const videoURL = findMediaFile("video", "content/test");
 const iframe = document.createElement('iframe');

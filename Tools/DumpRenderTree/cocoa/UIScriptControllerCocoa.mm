@@ -30,7 +30,7 @@
 
 #import "DumpRenderTree.h"
 #import "UIScriptContext.h"
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 
 namespace WTR {
 

@@ -1,0 +1,78 @@
+/*
+ * Copyright (C) 2021 Igalia S.L.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS''
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+ * THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+#pragma once
+
+#include "APIObject.h"
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/MediaKeySystemRequest.h>
+#include <CyberCore/MediaKeySystemRequestIdentifier.h>
+#include <wtf/Vector.h>
+#include <wtf/WeakPtr.h>
+#include <wtf/text/WTFString.h>
+
+namespace CyberCore {
+class SecurityOrigin;
+}
+
+namespace CyberKit {
+
+class MediaKeySystemPermissionRequestManagerProxy;
+
+class MediaKeySystemPermissionRequestProxy : public RefCounted<MediaKeySystemPermissionRequestProxy> {
+public:
+    static Ref<MediaKeySystemPermissionRequestProxy> create(MediaKeySystemPermissionRequestManagerProxy& manager, CyberCore::MediaKeySystemRequestIdentifier mediaKeySystemID, CyberCore::FrameIdentifier mainFrameID, CyberCore::FrameIdentifier frameID, Ref<CyberCore::SecurityOrigin>&& topLevelDocumentOrigin, const String& keySystem)
+    {
+        return adoptRef(*new MediaKeySystemPermissionRequestProxy(manager, mediaKeySystemID, mainFrameID, frameID, WTFMove(topLevelDocumentOrigin), keySystem));
+    }
+
+    void allow();
+    void deny();
+
+    void invalidate();
+
+    CyberCore::MediaKeySystemRequestIdentifier mediaKeySystemID() const { return m_mediaKeySystemID; }
+    CyberCore::FrameIdentifier mainFrameID() const { return m_mainFrameID; }
+    CyberCore::FrameIdentifier frameID() const { return m_frameID; }
+
+    CyberCore::SecurityOrigin& topLevelDocumentSecurityOrigin() { return m_topLevelDocumentSecurityOrigin.get(); }
+    const CyberCore::SecurityOrigin& topLevelDocumentSecurityOrigin() const { return m_topLevelDocumentSecurityOrigin.get(); }
+
+    const String& keySystem() const { return m_keySystem; }
+
+    void doDefaultAction();
+
+private:
+    MediaKeySystemPermissionRequestProxy(MediaKeySystemPermissionRequestManagerProxy&, CyberCore::MediaKeySystemRequestIdentifier, CyberCore::FrameIdentifier mainFrameID, CyberCore::FrameIdentifier, Ref<CyberCore::SecurityOrigin>&& topLevelDocumentOrigin, const String& keySystem);
+
+    WeakPtr<MediaKeySystemPermissionRequestManagerProxy> m_manager;
+    CyberCore::MediaKeySystemRequestIdentifier m_mediaKeySystemID;
+    CyberCore::FrameIdentifier m_mainFrameID;
+    CyberCore::FrameIdentifier m_frameID;
+    Ref<CyberCore::SecurityOrigin> m_topLevelDocumentSecurityOrigin;
+    String m_keySystem;
+};
+
+} // namespace CyberKit

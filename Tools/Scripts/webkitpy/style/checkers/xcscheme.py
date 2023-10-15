@@ -54,10 +54,10 @@ class XcodeSchemeChecker:
         # into prefixes, which are the path to the directory containing the
         # SCHEME.
 
-        'WebKit.xcworkspace/xcshareddata/xcschemes/': (
-            ('Everything up to WebKit + Tools.xcscheme', '>=', 'Everything up to WebKit.xcscheme'),
-            ('Everything up to WebKit + Tools.xcscheme', '>=', 'All WebKit Tools.xcscheme'),
-            ('Everything up to WebKit + Tools.xcscheme', '==', ('Everything up to WebKit.xcscheme', 'All WebKit Tools.xcscheme')),
+        'CyberKit.xcworkspace/xcshareddata/xcschemes/': (
+            ('Everything up to CyberKit + Tools.xcscheme', '>=', 'Everything up to CyberKit.xcscheme'),
+            ('Everything up to CyberKit + Tools.xcscheme', '>=', 'All CyberKit Tools.xcscheme'),
+            ('Everything up to CyberKit + Tools.xcscheme', '==', ('Everything up to CyberKit.xcscheme', 'All CyberKit Tools.xcscheme')),
         ),
     }
 

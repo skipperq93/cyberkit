@@ -1,5 +1,5 @@
 This tests copying and pasting text does not result in nested style elements such as b, em, and font.
-To manually test, copy and paste "hello world" below. WebKit should not nest b, i, u, and font.
+To manually test, copy and paste "hello world" below. CyberKit should not nest b, i, u, and font.
 
 Before copy-paste:
 | <b>

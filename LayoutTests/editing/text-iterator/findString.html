@@ -58,9 +58,9 @@
     testFindString("webkit.org", ".org", ["AtWordStarts", "TreatMedialCapitalAsWordStart"], [[6, 10], []]);
     testFindString("webkit.org", "t.org", ["AtWordStarts", "TreatMedialCapitalAsWordStart"], [[]]);
 
-    testFindString("WebKit", "it", ["AtWordStarts", "TreatMedialCapitalAsWordStart"], [[]]);
-    testFindString("WebKit", "Kit", ["AtWordStarts", "TreatMedialCapitalAsWordStart"], [[3, 6], []]);
-    testFindString("WebKit", "bKit", ["AtWordStarts", "TreatMedialCapitalAsWordStart"], [[]]);
+    testFindString("CyberKit", "it", ["AtWordStarts", "TreatMedialCapitalAsWordStart"], [[]]);
+    testFindString("CyberKit", "Kit", ["AtWordStarts", "TreatMedialCapitalAsWordStart"], [[3, 6], []]);
+    testFindString("CyberKit", "bKit", ["AtWordStarts", "TreatMedialCapitalAsWordStart"], [[]]);
 
     testFindString("XMLHTTPRequest", "equest", ["AtWordStarts", "TreatMedialCapitalAsWordStart"], [[]]);
     testFindString("XMLHTTPRequest", "Request", ["AtWordStarts", "TreatMedialCapitalAsWordStart"], [[7, 14], []]);

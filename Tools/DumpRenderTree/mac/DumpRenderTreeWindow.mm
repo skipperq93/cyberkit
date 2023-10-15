@@ -35,7 +35,7 @@
 
 // FIXME: This file is ObjC++ only because of this include. :(
 #import "TestRunner.h"
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 
 #if PLATFORM(IOS_FAMILY)
 #import <QuartzCore/CALayer.h>

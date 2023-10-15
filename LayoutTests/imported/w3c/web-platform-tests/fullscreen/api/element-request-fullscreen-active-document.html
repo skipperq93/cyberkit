@@ -31,7 +31,7 @@
         );
 
         // Per spec the fullscreenerror event should be fired at the next animation
-        // frame, but at least Gecko and WebKit will instead effectively do "queue a
+        // frame, but at least Gecko and CyberKit will instead effectively do "queue a
         // task to fire ...". Use both rAF and setTimeout to fail even if the timing
         // of the (unexpected) event isn't as expected.
         await new Promise((resolve) => {

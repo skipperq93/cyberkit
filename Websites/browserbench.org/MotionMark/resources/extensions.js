@@ -102,7 +102,7 @@ Utilities =
         var prefix = prefixes[1];
 
         // Have 'O' before 'Moz' in the string so it is matched first.
-        var dom = ('WebKit|O|Moz|MS').match(new RegExp(prefix, 'i'))[0];
+        var dom = ('CyberKit|O|Moz|MS').match(new RegExp(prefix, 'i'))[0];
 
         // Return all the required prefixes.
         return {

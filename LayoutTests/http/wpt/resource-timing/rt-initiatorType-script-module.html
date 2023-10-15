@@ -15,11 +15,11 @@
 promise_test(function(t) {
     return observeResources(2).then(([moduleEntry, subModuleEntry]) => {
         checkResourceTimingEntryType(moduleEntry, {
-            name: location.origin + "/WebKit/resource-timing/resources/rt-module.js",
+            name: location.origin + "/CyberKit/resource-timing/resources/rt-module.js",
             initiatorType: "script",
         });
         checkResourceTimingEntryType(subModuleEntry, {
-            name: location.origin + "/WebKit/resource-timing/resources/rt-sub-module.js",
+            name: location.origin + "/CyberKit/resource-timing/resources/rt-sub-module.js",
             initiatorType: "script",
         });
         checkResourceTimingEntryTiming(moduleEntry);

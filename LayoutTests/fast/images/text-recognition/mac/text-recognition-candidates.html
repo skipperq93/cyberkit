@@ -18,7 +18,7 @@ function mouseOverElement(element) {
     eventSender.mouseMoveTo(bounds.left + bounds.width / 2, bounds.top + bounds.height / 2);
 }
 
-description("Verifies that Live Text does not trigger for images in editable content. This test requires WebKitTestRunner/DumpRenderTree.");
+description("Verifies that Live Text does not trigger for images in editable content. This test requires CyberKitTestRunner/DumpRenderTree.");
 addEventListener("load", () => {
     if (!window.internals || !window.eventSender)
         return;

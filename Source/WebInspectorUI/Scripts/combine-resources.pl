@@ -122,7 +122,7 @@ sub stripIncludedFilesMatchingPattern($)
     $headContents =~ s/$whitespaceConsumingTagPattern//gi;
 }
 
-my $inputDirectoryPattern = "(?!WebKitAdditions\/)(?!External\/)(?!Workers\/)(?!NonMinified\/)[^\"]*";
+my $inputDirectoryPattern = "(?!CyberKitAdditions\/)(?!External\/)(?!Workers\/)(?!NonMinified\/)[^\"]*";
 if ($inputDirectory) {
     if ($inputScriptName) {
         $inputDirectoryPattern = $inputDirectory . "\/" . $inputScriptName;
