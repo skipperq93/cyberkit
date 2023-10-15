@@ -466,7 +466,7 @@
 #define HAVE_CFNETWORK_METRICS_APIS_V4 1
 #endif
 
-#if PLATFORM(COCOA) || (defined(USE_CURL) && USE_CURL)
+#if (PLATFORM(MAC) && __MAC_OS_X_VERSION_MIN_REQUIRED >= 110000) || (PLATFORM(IOS_FAMILY) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000) || (defined(USE_CURL) && USE_CURL)
 #define HAVE_ALTERNATIVE_SERVICE 1
 #endif
 
@@ -1114,7 +1114,7 @@
 #define HAVE_AVSAMPLEBUFFERVIDEOOUTPUT 1
 #endif
 
-#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000
+#if (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000) || PLATFORM(VISION)
 #define HAVE_PHOTOS_UI 1
 // FIXME (102246762): Remove this have (and make it true everywhere) when possible.
 #if __has_include(<PhotosUICore/PXActivityProgressController.h>)

@@ -103,7 +103,11 @@ FontPlatformData FontPlatformData::create(const Attributes& data, const FontCust
 
 bool isSystemFont(CTFontRef font)
 {
+#if HAVE(CTFONTISSYSTEMUIFONT)
     return CTFontIsSystemUIFont(font);
+#else
+    return CTFontDescriptorIsSystemUIFont(adoptCF(CTFontCopyFontDescriptor(font)).get());
+#endif
 }
 
 CTFontRef FontPlatformData::registeredFont() const

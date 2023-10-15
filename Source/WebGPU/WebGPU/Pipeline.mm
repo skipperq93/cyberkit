@@ -101,8 +101,8 @@ id<MTLFunction> createFunction(id<MTLLibrary> library, const WGSL::Reflection::E
 #if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
     auto functionDescriptor = [MTLFunctionDescriptor new];
     functionDescriptor.name = entryPointInformation.mangledName;
-    if (compute.constantCount) {
-        auto constantValues = createConstantValues(compute.constantCount, compute.constants, entryPointInformation);
+    if (constantCount) {
+        auto constantValues = createConstantValues(constantCount, constants, entryPointInformation);
         if (!constantValues)
             return nullptr;
         functionDescriptor.constantValues = constantValues;
@@ -112,10 +112,8 @@ id<MTLFunction> createFunction(id<MTLLibrary> library, const WGSL::Reflection::E
     if (error)
         WTFLogAlways("Function creation error: %@", error);
 #else
-    UNUSED_PARAM(compute);
-    if (/* DISABLES CODE */ (0)) {
-        createConstantValues(compute.constantCount, compute.constants, entryPointInformation);
-    }
+    UNUSED_PARAM(constantCount);
+    UNUSED_PARAM(constants);
     id<MTLFunction> function = [library newFunctionWithName:entryPointInformation.mangledName];
 #endif
     function.label = label;
