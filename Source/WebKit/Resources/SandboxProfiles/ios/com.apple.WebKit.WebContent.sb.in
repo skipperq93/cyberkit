@@ -1407,7 +1407,9 @@
         mach_vm_remap_external
         semaphore_create
         semaphore_destroy
+#if HAVE(TASK_IDENTITY_TOKEN)
         task_create_identity_token
+#endif
         task_get_special_port_from_user
         task_info_from_user
         task_restartable_ranges_synchronize

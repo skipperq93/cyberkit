@@ -3201,10 +3201,9 @@ static bool isLockdownModeWarningNeeded()
 
 @implementation WKWebView (WKPrivateIOS)
 
-#if !PLATFORM(WATCHOS) && !PLATFORM(APPLETV)
+#if HAVE(UI_EVENT_ATTRIBUTION)
 - (void)_setUIEventAttribution:(UIEventAttribution *)attribution
 {
-#if HAVE(UI_EVENT_ATTRIBUTION)
     if (attribution) {
         WebCore::PrivateClickMeasurement measurement(
             WebCore::PrivateClickMeasurement::SourceID(attribution.sourceIdentifier),
@@ -3217,7 +3216,6 @@ static bool isLockdownModeWarningNeeded()
         _page->setPrivateClickMeasurement(WTFMove(measurement), attribution.sourceDescription, attribution.purchaser);
     } else
         _page->setPrivateClickMeasurement(std::nullopt);
-#endif
 }
 
 - (UIEventAttribution *)_uiEventAttribution
@@ -3242,7 +3240,6 @@ static bool isLockdownModeWarningNeeded()
 
 - (void)_setEphemeralUIEventAttribution:(UIEventAttribution *)attribution forApplicationWithBundleID:(NSString *)bundleID
 {
-#if HAVE(UI_EVENT_ATTRIBUTION)
     if (attribution) {
         WebCore::PrivateClickMeasurement measurement(
             WebCore::PrivateClickMeasurement::SourceID(attribution.sourceIdentifier),
@@ -3255,7 +3252,6 @@ static bool isLockdownModeWarningNeeded()
         _page->setPrivateClickMeasurement(WTFMove(measurement), attribution.sourceDescription, attribution.purchaser);
     } else
         _page->setPrivateClickMeasurement(std::nullopt);
-#endif
 }
 
 - (UIEventAttribution *)_ephemeralUIEventAttribution
@@ -3263,7 +3259,7 @@ static bool isLockdownModeWarningNeeded()
     return self._uiEventAttribution;
 }
 
-#endif // !PLATFORM(WATCHOS) && !PLATFORM(APPLETV)
+#endif // HAVE(UI_EVENT_ATTRIBUTION)
 
 - (CGRect)_contentVisibleRect
 {

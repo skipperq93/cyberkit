@@ -144,8 +144,8 @@
 #        endif
 #    endif
 #    // Identify Metal API >= what shipped on macOS Catalina.
-#    if (ANGLE_PLATFORM_MACOS && __MAC_OS_X_VERSION_MAX_ALLOWED >= 101500) || \
-        (ANGLE_PLATFORM_IOS_FAMILY && __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000)
+#    if (ANGLE_PLATFORM_MACOS && __MAC_OS_X_VERSION_MIN_REQUIRED >= 101500) || \
+        (ANGLE_PLATFORM_IOS_FAMILY && __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
 #        define ANGLE_WITH_MODERN_METAL_API 1
 #    endif
 #endif

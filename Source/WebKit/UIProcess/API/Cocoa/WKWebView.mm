@@ -1515,14 +1515,12 @@ inline OptionSet<WebKit::FindOptions> toFindOptions(WKFindConfiguration *configu
 #endif
 }
 
+#if HAVE(UIFINDINTERACTION)
 - (UIFindInteraction *)findInteraction
 {
-#if HAVE(UIFINDINTERACTION)
     return _findInteraction.get();
-#else
-    return nil;
-#endif
 }
+#endif
 
 #endif // !PLATFORM(WATCHOS) && !PLATFORM(APPLETV)
 
