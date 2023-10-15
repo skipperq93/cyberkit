@@ -93,7 +93,9 @@ CertificateInfo ResourceResponse::platformCertificateInfo(Span<const std::byte> 
 #if HAVE(SEC_TRUST_SET_CLIENT_AUDIT_TOKEN)
     if (trust && auditToken.size()) {
         auto data = adoptCF(CFDataCreate(nullptr, reinterpret_cast<const uint8_t*>(auditToken.data()), auditToken.size()));
+#if HAVE(SEC_TRUST_COPY_CERTIFICATE_CHAIN)
         SecTrustSetClientAuditToken(trust, data.get());
+#endif
     }
 #else
     UNUSED_PARAM(auditToken);

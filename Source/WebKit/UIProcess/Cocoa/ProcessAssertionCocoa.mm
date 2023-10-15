@@ -424,8 +424,7 @@ static BKSProcessAssertionFlags flagsForAssertionType(ProcessAssertionType asser
     case ProcessAssertionType::FinishTaskInterruptable:
         return backgroundTabFlags;
     case ProcessAssertionType::BoostedJetsam:
-        ASSERT_NOT_REACHED();
-        return 0;
+        return foregroundTabFlags;
     }
 }
 
@@ -443,8 +442,7 @@ static BKSProcessAssertionReason toBKSProcessAssertionReason(ProcessAssertionTyp
     case ProcessAssertionType::FinishTaskInterruptable:
         return BKSProcessAssertionReasonFinishTask;
     case ProcessAssertionType::BoostedJetsam:
-        ASSERT_NOT_REACHED();
-        return 0;
+        return BKSProcessAssertionReasonTransientWakeup;
     }
 }
 #else

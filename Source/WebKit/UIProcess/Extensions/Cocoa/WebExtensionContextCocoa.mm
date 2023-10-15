@@ -1357,8 +1357,13 @@ void WebExtensionContext::queueStartupAndInstallEventsForExtensionIfNecessary()
 
 void WebExtensionContext::loadBackgroundPageListenersFromStorage()
 {
+    NSSet<Class> *classes = [NSSet setWithObjects:NSCountedSet.class, NSNumber.class, nil];
     NSData *listenersData = [m_state objectForKey:backgroundContentEventListenersKey];
-    NSCountedSet *savedListeners = [NSKeyedUnarchiver _strictlyUnarchivedObjectOfClasses:[NSSet setWithObjects:NSCountedSet.class, NSNumber.class, nil] fromData:listenersData error:nil];
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
+    NSCountedSet *savedListeners = [NSKeyedUnarchiver _strictlyUnarchivedObjectOfClasses:classes fromData:listenersData error:nil];
+#else
+    NSCountedSet *savedListeners = [NSKeyedUnarchiver unarchivedObjectOfClasses:classes fromData:listenersData error:nil];
+#endif
 
     m_backgroundContentEventListeners.clear();
     for (NSNumber *entry in savedListeners)

@@ -45,10 +45,12 @@
 - (void)mousePointerDevicesDidDisconnect:(NSSet<BKSMousePointerDevice *> *)mousePointerDevices;
 @end
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130400
 @interface BKSMousePointerService : NSObject
 + (BKSMousePointerService *)sharedInstance;
 - (id<BSInvalidatable>)addPointerDeviceObserver:(id<BKSMousePointerDeviceObserver>)observer;
 @end
+#endif
 
 #endif // USE(APPLE_INTERNAL_SDK)
 
