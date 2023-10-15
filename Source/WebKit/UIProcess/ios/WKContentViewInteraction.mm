@@ -100,7 +100,9 @@
 #import <CoreText/CTFont.h>
 #import <CoreText/CTFontDescriptor.h>
 #import <MobileCoreServices/UTCoreTypes.h>
+#if HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
 #import <UniformTypeIdentifiers/UTCoreTypes.h>
+#endif
 #import <WebCore/AppHighlight.h>
 #import <WebCore/ColorCocoa.h>
 #import <WebCore/ColorSerialization.h>
