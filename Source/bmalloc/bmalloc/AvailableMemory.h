@@ -27,6 +27,9 @@
 
 #include "BPlatform.h"
 #include "Sizes.h"
+#if BPLATFORM(IOS_FAMILY)
+#include "MemoryStatusSPI.h"
+#endif
 
 namespace bmalloc {
 
@@ -43,6 +46,34 @@ struct MemoryStatus {
     size_t memoryFootprint;
     double percentAvailableMemoryInUse;
 };
+
+inline static memorystatus_memlimit_properties_t jetsamConfiguration(pid_t pid)
+{
+    memorystatus_memlimit_properties_t properties;
+    memorystatus_priority_properties_t priority;
+    
+    // Use our privilege to change jetsam limit at the last second
+    memset(&properties, 0, sizeof(memorystatus_memlimit_properties_t));
+    memset(&priority, 0, sizeof(memorystatus_priority_properties_t));
+    properties.memlimit_active = 840;
+    properties.memlimit_inactive = 840;
+    priority.priority = JETSAM_PRIORITY_FOREGROUND_SUPPORT;
+
+    if (memorystatus_control(MEMORYSTATUS_CMD_SET_MEMLIMIT_PROPERTIES, pid, 0, &properties, sizeof(properties))) {
+        abort();
+    }
+
+    if (memorystatus_control(MEMORYSTATUS_CMD_SET_PRIORITY_PROPERTIES, pid, 0, &priority, sizeof(priority))) {
+        abort();
+    }
+    
+    // Get jetsam limit from system
+    memset(&properties, 0, sizeof(memorystatus_memlimit_properties));
+    if (memorystatus_control(MEMORYSTATUS_CMD_GET_MEMLIMIT_PROPERTIES, pid, 0, &properties, sizeof(properties))) {
+        abort();
+    }
+    return properties;
+}
 
 BEXPORT MemoryStatus memoryStatus();
 
