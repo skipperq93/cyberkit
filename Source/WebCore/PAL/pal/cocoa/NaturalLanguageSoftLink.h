@@ -25,8 +25,10 @@
 
 #pragma once
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 120000
 #import <NaturalLanguage/NaturalLanguage.h>
 #import <wtf/SoftLinking.h>
 
 SOFT_LINK_FRAMEWORK_FOR_HEADER(PAL, NaturalLanguage)
 SOFT_LINK_CLASS_FOR_HEADER(PAL, NLTokenizer)
+#endif

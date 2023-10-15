@@ -37,6 +37,29 @@
 #import "UIFoundationSoftLink.h"
 #endif
 
+#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
+@implementation CyberPresentationIntent
+- (CyberPresentationIntent *_Nonnull) initWithIdentity:(NSInteger)identity
+                                       parentIntent:(CyberPresentationIntent *_Nullable)parent {
+    self = [super init];
+
+    if ( self ) {
+        self->_identity = identity;
+        self->_parentIntent = parent;
+    }
+
+    return self;
+}
+
++ (CyberPresentationIntent *_Nonnull)blockQuoteIntentWithIdentity:(NSInteger)identity
+                                            nestedInsideIntent:(CyberPresentationIntent *_Nullable)parent {
+    return [[CyberPresentationIntent alloc] initWithIdentity:identity parentIntent:parent];
+}
+@end
+
+NSString *_Nonnull const NSPresentationIntentAttributeName = @"CyberPresentationIntent";
+#endif
+
 namespace WebCore {
 
 AttributedString::AttributedString() = default;
@@ -131,7 +154,7 @@ RetainPtr<NSAttributedString> AttributedString::nsAttributedString() const
     return result;
 }
 
-static std::optional<AttributedString::AttributeValue> extractArray(NSArray *array)
+static std::optional<AttributedString::AttributeValue> extractArray(NSArray *_Nonnull array)
 {
     size_t arrayLength = array.count;
     if (!arrayLength)
@@ -163,7 +186,7 @@ static std::optional<AttributedString::AttributeValue> extractArray(NSArray *arr
     return std::nullopt;
 }
 
-static std::optional<AttributedString::AttributeValue> extractValue(id value)
+static std::optional<AttributedString::AttributeValue> extractValue(id _Nonnull value)
 {
     if (auto* number = dynamic_objc_cast<NSNumber>(value))
         return { { { number.doubleValue } } };
@@ -193,7 +216,7 @@ static std::optional<AttributedString::AttributeValue> extractValue(id value)
     return std::nullopt;
 }
 
-static HashMap<String, AttributedString::AttributeValue> extractDictionary(NSDictionary *dictionary)
+static HashMap<String, AttributedString::AttributeValue> extractDictionary(NSDictionary *_Nonnull dictionary)
 {
     __block HashMap<String, AttributedString::AttributeValue> result;
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *) {
