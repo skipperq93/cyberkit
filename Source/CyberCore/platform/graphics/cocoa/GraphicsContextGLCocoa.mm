@@ -679,7 +679,7 @@ void GraphicsContextGLCocoa::destroyPbufferAndDetachIOSurface(void* handle)
     CyberCore::destroyPbufferAndDetachIOSurface(m_displayObj, handle);
 }
 
-#if !PLATFORM(IOS_FAMILY_SIMULATOR)
+#if !PLATFORM(IOS_FAMILY_SIMULATOR) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000) && 0
 static std::optional<GraphicsContextGL::ExternalImageAttachResult> createAndBindSharedTextureToExternalImage(GCGLDisplay platformDisplay, GCGLenum target, MTLSharedTextureHandle* handle)
 {
     EGLDeviceEXT eglDevice = EGL_NO_DEVICE_EXT;
@@ -729,7 +729,7 @@ std::optional<GraphicsContextGL::ExternalImageAttachResult> GraphicsContextGLCoc
 
 std::optional<GraphicsContextGL::ExternalImageAttachResult> GraphicsContextGLCocoa::createAndBindExternalImage(GCGLenum target, ExternalImageSource source)
 {
-#if PLATFORM(IOS_FAMILY_SIMULATOR)
+#if PLATFORM(IOS_FAMILY_SIMULATOR) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 130000) || 1
     // MTLSharedTexture is unsupported on simulator
     UNUSED_VARIABLE(target);
     UNUSED_VARIABLE(source);

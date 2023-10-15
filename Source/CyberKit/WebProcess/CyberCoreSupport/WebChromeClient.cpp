@@ -1678,7 +1678,7 @@ void WebChromeClient::abortApplePayAMSUISession()
 #if USE(SYSTEM_PREVIEW)
 void WebChromeClient::handleSystemPreview(const URL& url, const SystemPreviewInfo& systemPreviewInfo)
 {
-    m_page.send(Messages::WebPageProxy::HandleSystemPreview(WTFMove(url), WTFMove(systemPreviewInfo)));
+    m_page.send(Messages::WebPageProxy::HandleSystemPreview(WTFMove(const_cast<URL&>(url)), WTFMove(const_cast<SystemPreviewInfo&>(systemPreviewInfo))));
 }
 #endif
 
