@@ -69,9 +69,7 @@ RetainPtr<CFArrayRef> minimizedLanguagesFromLanguages(CFArrayRef languages)
         return languages;
     }
 
-ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
     return (__bridge CFArrayRef)[NSLocale minimizedLanguagesFromLanguages:(__bridge NSArray<NSString *> *)languages];
-ALLOW_NEW_API_WITHOUT_GUARDS_END
 }
 
 void overrideUserPreferredLanguages(const Vector<String>& override)
