@@ -45,7 +45,9 @@
 #import <dlfcn.h>
 #import <objc/runtime.h>
 
+#if HAVE_VTB_REQUIREDLOWLATENCY
 VT_EXPORT const CFStringRef kVTVideoEncoderSpecification_RequiredLowLatency;
+#endif
 VT_EXPORT const CFStringRef kVTVideoEncoderSpecification_Usage;
 VT_EXPORT const CFStringRef kVTCompressionPropertyKey_Usage;
 

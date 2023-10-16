@@ -337,7 +337,7 @@ Ref<RenderPassEncoder> CommandEncoder::beginRenderPass(const WGPURenderPassDescr
         // buffer instead of from where it's supposed to be.
         //
         // When rdar://91371495 is fixed, we can delete this indirection, and put the data directly where it's supposed to go.
-
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
         MTLCounterSampleBufferDescriptor *counterSampleBufferDescriptor = [MTLCounterSampleBufferDescriptor new];
         counterSampleBufferDescriptor.counterSet = m_device->baseCapabilities().timestampCounterSet;
         counterSampleBufferDescriptor.label = @"Dummy render pass timestamp counter sample buffer";
@@ -345,14 +345,16 @@ Ref<RenderPassEncoder> CommandEncoder::beginRenderPass(const WGPURenderPassDescr
         counterSampleBufferDescriptor.sampleCount = 4;
         auto counterSampleBuffer = [m_device->device() newCounterSampleBufferWithDescriptor:counterSampleBufferDescriptor error:nil];
         // FIXME: We should probably do something sensible if the counter sample buffer failed to be created.
+        mtlDescriptor.sampleBufferAttachments[0].sampleBuffer = counterSampleBuffer;
         auto dummyQuerySet = QuerySet::create(counterSampleBuffer, 4, WGPUQueryType_Timestamp, m_device);
-
+#else
+        auto dummyQuerySet = QuerySet::createInvalid(m_device);
+#endif
         const auto startVertexIndex = 0;
         const auto endVertexIndex = 1;
         const auto startFragmentIndex = 2;
         const auto endFragmentIndex = 3;
 
-        mtlDescriptor.sampleBufferAttachments[0].sampleBuffer = counterSampleBuffer;
         // FIXME: Specifying all 4 of these is somewhat wasteful, because we may not actually need them all.
         // However, actually need to specify all of them, because of rdar://91372549.
         // When rdar://91372549 is fixed, we'll be able to do a pre-pass over descriptor.timestampWrites to see which of these is actually necessary.
