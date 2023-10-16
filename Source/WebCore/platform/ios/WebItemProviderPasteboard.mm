@@ -738,8 +738,14 @@ ALLOW_DEPRECATED_DECLARATIONS_END
         suggestedName = fallbackName;
 
     auto urlExtension = url.pathExtension;
-    if (!urlExtension.length)
+    if (!urlExtension.length) {
+#if HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
         urlExtension = [UTType typeWithIdentifier:typeIdentifier].preferredFilenameExtension;
+#else
+        static CFStringRef kUTTagClassFilenameExtension;
+        urlExtension = (NSString *)UTTypeCopyPreferredTagWithClass((__bridge CFStringRef)typeIdentifier, kUTTagClassFilenameExtension);
+#endif
+    }
 
     if (urlExtension.length && [suggestedName.pathExtension caseInsensitiveCompare:urlExtension] != NSOrderedSame && !isFolder)
         suggestedName = [suggestedName stringByAppendingPathExtension:urlExtension];
