@@ -28,6 +28,10 @@
 
 #if PLATFORM(IOS_FAMILY)
 
+#if !HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
+#import "AssertionServicesSPI.h"
+#endif
+
 #import "APIData.h"
 #import "ApplicationStateTracker.h"
 #import "DataReference.h"
@@ -197,7 +201,10 @@ bool PageClientImpl::canTakeForegroundAssertions()
         pid_t applicationPID = serviceViewController._hostProcessIdentifier;
         ASSERT(applicationPID);
 
-    return true;
+    auto applicationStateMonitor = adoptNS([[BKSApplicationStateMonitor alloc] init]);
+    auto applicationState = [applicationStateMonitor mostElevatedApplicationStateForPID:applicationPID];
+    [applicationStateMonitor invalidate];
+    return applicationState != BKSApplicationStateBackgroundRunning && applicationState != BKSApplicationStateBackgroundTaskSuspended;
 #endif
 }
 
