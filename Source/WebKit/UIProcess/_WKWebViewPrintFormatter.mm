@@ -89,8 +89,10 @@
 
 - (CGPDFDocumentRef)_printedDocument
 {
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000
     if (self.requiresMainThread)
         return _printedDocument.get();
+#endif
 
     Locker locker { _printLock };
     return _printedDocument.get();
@@ -98,10 +100,12 @@
 
 - (void)_setPrintedDocument:(CGPDFDocumentRef)printedDocument
 {
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000
     if (self.requiresMainThread) {
         _printedDocument = printedDocument;
         return;
     }
+#endif
 
     Locker locker { _printLock };
     _printedDocument = printedDocument;
@@ -110,8 +114,10 @@
 
 - (CGImageRef)_printPreviewImage
 {
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000
     if (self.requiresMainThread)
         return _printPreviewImage.get();
+#endif
 
     Locker locker { _printLock };
     return _printPreviewImage.get();
@@ -119,10 +125,12 @@
 
 - (void)_setPrintPreviewImage:(CGImageRef)printPreviewImage
 {
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000
     if (self.requiresMainThread) {
         _printPreviewImage = printPreviewImage;
         return;
     }
+#endif
 
     Locker locker { _printLock };
     _printPreviewImage = printPreviewImage;

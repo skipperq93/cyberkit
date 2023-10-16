@@ -2,6 +2,7 @@
 *.pbxuser
 *.perspective*
 *.pyc
+*.resolved
 .DS_Store
 .directory
 /WebKitBuild/

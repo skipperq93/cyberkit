@@ -87,8 +87,13 @@ RetainPtr<CTFontRef> SystemFontDatabaseCoreText::createTextStyleFont(const Casca
     auto descriptor = adoptCF(CTFontDescriptorCreateWithTextStyle(parameters.fontName.string().createCFString().get(), contentSizeCategory(), localeString.get()));
     // FIXME: Use createFontByApplyingWeightWidthItalicsAndFallbackBehavior().
     CTFontSymbolicTraits traits = (parameters.weight >= kCTFontWeightSemibold ? kCTFontTraitBold : 0)
+#if HAVE(LEVEL_2_SYSTEM_FONT_WIDTH_VALUES)
         | (parameters.width >= kCTFontWidthSemiExpanded ? kCTFontTraitExpanded : 0)
         | (parameters.width <= kCTFontWidthSemiCondensed ? kCTFontTraitCondensed : 0)
+#else
+        | (parameters.width >= kCTFontWidthExpanded ? kCTFontTraitExpanded : 0)
+        | (parameters.width <= kCTFontWidthCondensed ? kCTFontTraitCondensed : 0)
+#endif
         | (parameters.italic ? kCTFontTraitItalic : 0);
     if (traits)
         descriptor = adoptCF(CTFontDescriptorCreateCopyWithSymbolicTraits(descriptor.get(), traits, traits));
