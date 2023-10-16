@@ -3590,6 +3590,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C904FD20BA9DD0F0081E9D0 /* WebKitLegacy.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKitLegacy;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -3597,6 +3602,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C904FD20BA9DD0F0081E9D0 /* WebKitLegacy.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKitLegacy;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -3604,6 +3614,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C904FD20BA9DD0F0081E9D0 /* WebKitLegacy.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKitLegacy;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Production;
 		};
