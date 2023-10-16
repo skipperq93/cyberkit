@@ -38,6 +38,7 @@
 		4825DA512ADAD97900328641 /* libANGLE-shared.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4825DA4F2ADAD97900328641 /* libANGLE-shared.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		4825DA532ADAD98400328641 /* libwebrtc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4825DA522ADAD98400328641 /* libwebrtc.dylib */; };
 		4825DA542ADAD98400328641 /* libwebrtc.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4825DA522ADAD98400328641 /* libwebrtc.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		4807BE1F29F6E5AA00D5A88A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4807BE1E29F6E5AA00D5A88A /* Assets.xcassets */; };
 		CD1DAF971D709E3600017CF0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1DAF961D709E3600017CF0 /* main.m */; };
 		CD1DAFA51D709E3600017CF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD1DAFA31D709E3600017CF0 /* LaunchScreen.storyboard */; };
 		CD1DAFB01D709E3600017CF0 /* MobileMiniBrowserUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1DAFAF1D709E3600017CF0 /* MobileMiniBrowserUITests.m */; };
@@ -115,6 +116,7 @@
 		4825DA4C2ADAD96D00328641 /* WebKitLegacy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WebKitLegacy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4825DA4F2ADAD97900328641 /* libANGLE-shared.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = "libANGLE-shared.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4825DA522ADAD98400328641 /* libwebrtc.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libwebrtc.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		4807BE1E29F6E5AA00D5A88A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD1DAF921D709E3600017CF0 /* MobileMiniBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileMiniBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD1DAF961D709E3600017CF0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CD1DAF981D709E3600017CF0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		CD1DAF891D709E3600017CF0 = {
 			isa = PBXGroup;
 			children = (
+				4807BE1E29F6E5AA00D5A88A /* Assets.xcassets */,
 				CD4DEEE11D78C6F400625986 /* Configurations */,
 				CD1DAFC01D70E12D00017CF0 /* Frameworks */,
 				CD1DAF941D709E3600017CF0 /* MobileMiniBrowser App */,
@@ -305,6 +308,7 @@
 				CD1DAF8F1D709E3600017CF0 /* Frameworks */,
 				CD1DAF901D709E3600017CF0 /* Resources */,
 				CD498B231D76341700681FA7 /* Embed Frameworks */,
+				48BC581F29F7349400080749 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -403,6 +407,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4807BE1F29F6E5AA00D5A88A /* Assets.xcassets in Resources */,
 				CD1DAFA51D709E3600017CF0 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,6 +434,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		48BC581F29F7349400080749 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n$SRCROOT/script_fakesigner.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CD1DAF8E1D709E3600017CF0 /* Sources */ = {
