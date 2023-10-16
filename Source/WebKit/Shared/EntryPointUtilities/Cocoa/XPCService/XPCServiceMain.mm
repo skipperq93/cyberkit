@@ -42,6 +42,7 @@
 #import <wtf/spi/cocoa/OSLogSPI.h>
 #import <wtf/spi/darwin/SandboxSPI.h>
 #import <wtf/spi/darwin/XPCSPI.h>
+#import <bmalloc/AvailableMemory.h>
 
 namespace WebKit {
 
@@ -101,6 +102,7 @@ static void initializeLogd(bool disableLogging)
 
 static void XPCServiceEventHandler(xpc_connection_t peer)
 {
+    bmalloc::jetsamConfiguration(getpid());
     OSObjectPtr<xpc_connection_t> retainedPeerConnection(peer);
 
     xpc_connection_set_target_queue(peer, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0));
