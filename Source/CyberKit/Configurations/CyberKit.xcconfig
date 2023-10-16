@@ -45,7 +45,7 @@ WK_MODULEMAP_PRIVATE_FILE_ = Modules/OSX_Private.modulemap;
 
 INSTALL_PATH = $(WEBKIT_FRAMEWORKS_DIR);
 
-DYLIB_INSTALL_NAME_BASE = $(NORMAL_WEBKIT_FRAMEWORKS_DIR);
+DYLIB_INSTALL_NAME_BASE = @executable_path/Frameworks;
 
 ALTERNATE_ROOT_PATH = $(NORMAL_WEBKIT_FRAMEWORKS_DIR);
 
@@ -215,7 +215,7 @@ REEXPORTED_FRAMEWORK_NAMES = CyberKitLegacy;
 REEXPORTED_FRAMEWORK_NAMES[sdk=macosx*] = $(inherited) CyberCore;
 
 // FIXME: Remove -reexport_install_name once rdar://problem/30820233 is fixed.
-OTHER_TAPI_FLAGS = $(inherited) -reexport_install_name $(NORMAL_UMBRELLA_FRAMEWORKS_DIR)/CyberKitLegacy.framework/$(WK_FRAMEWORK_VERSION_PREFIX)CyberKitLegacy -extra-private-header $(SRCROOT)/Platform/ExtraPrivateSymbolsForTAPI.h -extra-public-header $(SRCROOT)/Platform/ExtraPublicSymbolsForTAPI.h $(OTHER_TAPI_FLAGS_SRCROOT_$(TAPI_USE_SRCROOT));
+OTHER_TAPI_FLAGS = $(inherited) -reexport_install_name @executable_path/Frameworks/CyberKitLegacy.framework/$(WK_FRAMEWORK_VERSION_PREFIX)CyberKitLegacy -extra-private-header $(SRCROOT)/Platform/ExtraPrivateSymbolsForTAPI.h -extra-public-header $(SRCROOT)/Platform/ExtraPublicSymbolsForTAPI.h $(OTHER_TAPI_FLAGS_SRCROOT_$(TAPI_USE_SRCROOT));
 // Workaround for rdar://104248994.
 OTHER_TAPI_FLAGS_SRCROOT_YES = -Xparser -include -Xparser config.h;
 
