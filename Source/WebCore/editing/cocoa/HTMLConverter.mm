@@ -262,7 +262,7 @@ private:
     RetainPtr<NSMutableAttributedString> _attrStr;
     RetainPtr<NSMutableDictionary> _documentAttrs;
     RetainPtr<NSURL> _baseURL;
-    RetainPtr<NSPresentationIntent> _topPresentationIntent;
+    RetainPtr<CyberPresentationIntent> _topPresentationIntent;
     NSInteger _topPresentationIntentIdentity;
     RetainPtr<NSMutableArray> _textLists;
     RetainPtr<NSMutableArray> _textBlocks;
@@ -1584,7 +1584,7 @@ void HTMLConverter::_processHeadElement(Element& element)
 
 void HTMLConverter::_enterBlockquote()
 {
-    _topPresentationIntent = [NSPresentationIntent blockQuoteIntentWithIdentity:++_topPresentationIntentIdentity nestedInsideIntent:_topPresentationIntent.get()];
+    _topPresentationIntent = [CyberPresentationIntent blockQuoteIntentWithIdentity:++_topPresentationIntentIdentity nestedInsideIntent:_topPresentationIntent.get()];
 }
 
 void HTMLConverter::_exitBlockquote()

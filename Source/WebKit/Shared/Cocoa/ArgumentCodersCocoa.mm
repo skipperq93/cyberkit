@@ -702,7 +702,7 @@ static bool shouldEnableStrictMode(Decoder& decoder, NSArray<Class> *allowedClas
         return haveStrictDecodableNSTextTable() && strictSecureDecodingForAllObjCEnabled();
 
     // rdar://109121874
-    if ([allowedClasses containsObject:NSPresentationIntent.class])
+    if ([allowedClasses containsObject:PlatformNSPresentationIntent])
         return strictSecureDecodingForAllObjCEnabled();
 
     // rdar://107553194, Don't reintroduce rdar://108339450

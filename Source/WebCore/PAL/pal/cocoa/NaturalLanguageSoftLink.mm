@@ -23,6 +23,8 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#import <wtf/Platform.h>
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 120000
 #import "config.h"
 
 #import <NaturalLanguage/NaturalLanguage.h>
@@ -30,3 +32,4 @@
 
 SOFT_LINK_FRAMEWORK_FOR_SOURCE_WITH_EXPORT(PAL, NaturalLanguage, PAL_EXPORT)
 SOFT_LINK_CLASS_FOR_SOURCE_WITH_EXPORT(PAL, NaturalLanguage, NLTokenizer, PAL_EXPORT)
+#endif
