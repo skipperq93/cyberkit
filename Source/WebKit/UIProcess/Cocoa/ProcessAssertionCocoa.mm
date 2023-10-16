@@ -127,7 +127,11 @@ static bool processHasActiveRunTimeLimitation()
     }];
 
     [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidEnterBackgroundNotification object:[UIApplication sharedApplication] queue:nil usingBlock:^(NSNotification *) {
+#if HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
         if (![self _hasBackgroundTask])
+#else
+        if (_backgroundTask == UIBackgroundTaskInvalid)
+#endif
             WebKit::WebProcessPool::notifyProcessPoolsApplicationIsAboutToSuspend();
     }];
 
@@ -197,7 +201,11 @@ static bool processHasActiveRunTimeLimitation()
 
 - (void)_updateBackgroundTask
 {
+#if HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
     if (!_assertionsNeedingBackgroundTask.isEmptyIgnoringNullReferences() && (![self _hasBackgroundTask] || _backgroundTaskWasInvalidated)) {
+#else
+    if (!_assertionsNeedingBackgroundTask.isEmptyIgnoringNullReferences() && (_backgroundTask == UIBackgroundTaskInvalid || _backgroundTaskWasInvalidated)) {
+#endif
         if (processHasActiveRunTimeLimitation()) {
             RELEASE_LOG(ProcessSuspension, "%p - WKProcessAssertionBackgroundTaskManager: Ignored request to start a new background task because RunningBoard has already started the expiration timer", self);
             return;
@@ -278,7 +286,11 @@ static bool processHasActiveRunTimeLimitation()
 
 - (void)_releaseBackgroundTask
 {
+#if HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
     if (![self _hasBackgroundTask])
+#else
+    if (_backgroundTask == UIBackgroundTaskInvalid)
+#endif
         return;
 
     RELEASE_LOG(ProcessSuspension, "%p - WKProcessAssertionBackgroundTaskManager: endBackgroundTask", self);
@@ -410,6 +422,7 @@ static BKSProcessAssertionFlags flagsForAssertionType(ProcessAssertionType asser
     case ProcessAssertionType::MediaPlayback:
         return foregroundTabFlags;
     case ProcessAssertionType::FinishTaskInterruptable:
+        return backgroundTabFlags;
     case ProcessAssertionType::BoostedJetsam:
         return foregroundTabFlags;
     }
@@ -427,6 +440,7 @@ static BKSProcessAssertionReason toBKSProcessAssertionReason(ProcessAssertionTyp
     case ProcessAssertionType::MediaPlayback:
         return BKSProcessAssertionReasonMediaPlayback;
     case ProcessAssertionType::FinishTaskInterruptable:
+        return BKSProcessAssertionReasonFinishTask;
     case ProcessAssertionType::BoostedJetsam:
         return BKSProcessAssertionReasonTransientWakeup;
     }
