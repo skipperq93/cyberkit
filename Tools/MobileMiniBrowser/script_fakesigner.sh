@@ -88,14 +88,8 @@ echo "[15/15] Fakesigning MobileMiniBrowser"
 ldid -S"script_fakesigner.entitlements" "$app/${app:0:${#app}-4}"
 rm script_fakesigner.entitlements
 
-# Package into IPA
-cd ..
-echo "[*] packaging.."
-rm -f "$ipa.zip" || true
-zip -r -y "$ipa.zip" Payload
-echo "[*] Created $ipa.zip"
-
 # Package into DEB
+cd ..
 rm *.deb
 mkdir com.matthewbenedict.mobileminibrowser
 mv Payload com.matthewbenedict.mobileminibrowser/Applications
@@ -107,3 +101,9 @@ dpkg-deb -b com.matthewbenedict.mobileminibrowser && \
 dpkg-name com.matthewbenedict.mobileminibrowser.deb
 mv com.matthewbenedict.mobileminibrowser/Applications Payload
 rm -rf com.matthewbenedict.mobileminibrowser
+
+# Package into IPA
+echo "[*] packaging.."
+rm -f "$ipa.ipa" || true
+zip -r -y "$ipa.ipa" Payload
+echo "[*] Created $ipa.ipa"
