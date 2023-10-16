@@ -3,7 +3,7 @@
 source "$(dirname "$0")/../glib/dependencies/pacman"
 
 PACKAGES+=(
-    # These are dependencies necessary for building WebKitGTK.
+    # These are dependencies necessary for building CyberKitGTK.
     atk
     enchant
     faad2

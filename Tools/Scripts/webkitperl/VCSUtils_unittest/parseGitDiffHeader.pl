@@ -625,10 +625,10 @@ END
     # svn-apply rejected https://bug-111042-attachments.webkit.org/attachment.cgi?id=190663
     diffName => "Modified file which have space characters in path. svn-apply rejected attachment #190663.",
     inputText => <<'END',
-diff --git a/WebKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme b/WebKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme
+diff --git a/CyberKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme b/CyberKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme
 index 72d60effb9bbba0520e520ec3c1aa43f348c6997..b7924b96d5978c1ad1053dca7e554023235d9a16 100644
---- a/WebKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme
-+++ b/WebKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme
+--- a/CyberKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme
++++ b/CyberKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme
 @@ -161,7 +161,7 @@
        <EnvironmentVariables>
           <EnvironmentVariable
@@ -642,12 +642,12 @@ END
     expectedReturn => [
 {
     svnConvertedText => <<"END",
-Index: WebKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme
+Index: CyberKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme
 index 72d60effb9bbba0520e520ec3c1aa43f348c6997..b7924b96d5978c1ad1053dca7e554023235d9a16 100644
---- WebKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme\t(revision 0)
-+++ WebKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme\t(working copy)
+--- CyberKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme\t(revision 0)
++++ CyberKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme\t(working copy)
 END
-    indexPath => "WebKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme",
+    indexPath => "CyberKit.xcworkspace/xcshareddata/xcschemes/All Source (target WebProcess).xcscheme",
 },
 "@@ -161,7 +161,7 @@\n"],
     expectedNextLine => "       <EnvironmentVariables>\n",

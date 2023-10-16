@@ -131,8 +131,8 @@ for my $filename (@ARGV) {
                 } else {
                     $line =~ s/DOM:://;
                     $line =~ s/khtml:://;
-                    $line =~ s/namespace DOM/namespace WebCore/;
-                    $line =~ s/namespace khtml/namespace WebCore/;
+                    $line =~ s/namespace DOM/namespace CyberCore/;
+                    $line =~ s/namespace khtml/namespace CyberCore/;
                     
                     if ($line =~ /^(.*?\s+)?(\*|&)?(\w+)::(~)?\w+\s*\(/) {
                         $insideMemberFunction = 1;

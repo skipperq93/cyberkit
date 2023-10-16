@@ -16,7 +16,7 @@ jsTestIsAsync = true;
 addEventListener("load", async () => {
     description(`This test verifies that after relinquishing focus by pressing shift-tab and then
         becoming first responder in an editable web view, we'll begin an input session. This test
-        requires WebKitTestRunner; to test manually, use the iOS Mail app.`);
+        requires CyberKitTestRunner; to test manually, use the iOS Mail app.`);
 
     await UIHelper.setWebViewEditable(true);
     await UIHelper.activateElementAndWaitForInputSession(document.body);

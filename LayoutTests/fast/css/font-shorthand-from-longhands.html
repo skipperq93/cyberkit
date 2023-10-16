@@ -25,7 +25,7 @@ var e = document.getElementById('test');
 var style = e.style;
 var computedStyle = window.getComputedStyle(e, null);
 
-// This function checks the return value of style.font and verifies WebKit can parse it.
+// This function checks the return value of style.font and verifies CyberKit can parse it.
 function checkFontStyleValue() {
     var before = e.style.getPropertyValue('font');
     e.style.font = '';

@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import JavaScriptCore
+import CyberScriptCore
 
 /**
  * A simple package of data that is manipulated by the tasks.  The exact layout

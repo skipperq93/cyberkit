@@ -10,7 +10,7 @@ try {
         if (!db)
             alert("Failed to open the database on disk.  This is probably because the version was bad or there is not enough space left in this domain's quota");
     } else
-        alert("Couldn't open the database.  Please try with a WebKit nightly with this feature enabled");
+        alert("Couldn't open the database.  Please try with a CyberKit nightly with this feature enabled");
 } catch(err) { }
 
 function loaded()
@@ -19,9 +19,9 @@ function loaded()
         tx.executeSql("SELECT COUNT(*) FROM WebkitStickyNotes", [], function(result) {
             loadNotes();
         }, function(tx, error) {
-            tx.executeSql("CREATE TABLE WebKitStickyNotes (id REAL UNIQUE, note TEXT)", [], function(result) { 
-                tx.executeSql("INSERT INTO WebKitStickyNotes (id, note) VALUES (?, ?)", [1, 'Text'], function(result) { 
-                    tx.executeSql("INSERT INTO WebKitStickyNotes (id, note) VALUES (?, ?)", [2, 'More Text'], function(result) { 
+            tx.executeSql("CREATE TABLE CyberKitStickyNotes (id REAL UNIQUE, note TEXT)", [], function(result) { 
+                tx.executeSql("INSERT INTO CyberKitStickyNotes (id, note) VALUES (?, ?)", [1, 'Text'], function(result) { 
+                    tx.executeSql("INSERT INTO CyberKitStickyNotes (id, note) VALUES (?, ?)", [2, 'More Text'], function(result) { 
                         loadNotes(); 
                     });
                 });
@@ -33,7 +33,7 @@ function loaded()
 function loadNotes()
 {
     db.transaction(function(tx) {
-        tx.executeSql("SELECT id, note FROM WebKitStickyNotes", [], function(tx, result) {
+        tx.executeSql("SELECT id, note FROM CyberKitStickyNotes", [], function(tx, result) {
             loadNotes();
         }, function(tx, error) {
             alert('Failed to retrieve notes from database - ' + error.message);

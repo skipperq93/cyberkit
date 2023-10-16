@@ -120,7 +120,7 @@ static const malloc_introspection_t zoneIntrospect = {
 Zone::Zone(const LockHolder&)
 {
     malloc_zone_t::size = &bmalloc::zoneSize;
-    malloc_zone_t::zone_name = "WebKit Malloc";
+    malloc_zone_t::zone_name = "CyberKit Malloc";
     malloc_zone_t::introspect = const_cast<malloc_introspection_t*>(&bmalloc::zoneIntrospect);
     malloc_zone_t::version = 4;
     malloc_zone_register(this);

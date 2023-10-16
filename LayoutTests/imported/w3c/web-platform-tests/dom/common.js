@@ -1074,7 +1074,7 @@ function getDomExceptionName(e) {
  */
 function rangeFromEndpoints(endpoints) {
     // If we just use document instead of the ownerDocument of endpoints[0],
-    // WebKit will throw on setStart/setEnd.  This is a WebKit bug, but it's in
+    // CyberKit will throw on setStart/setEnd.  This is a CyberKit bug, but it's in
     // range, not selection, so we don't want to fail anything for it.
     var range = ownerDocument(endpoints[0]).createRange();
     range.setStart(endpoints[0], endpoints[1]);

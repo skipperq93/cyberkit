@@ -59,7 +59,7 @@
 #if defined(_MSC_VER)
 #define BCOMPILER_MSVC 1
 #if _MSC_VER < 1910
-#error "Please use a newer version of Visual Studio. WebKit requires VS2017 or newer to compile."
+#error "Please use a newer version of Visual Studio. CyberKit requires VS2017 or newer to compile."
 #endif
 #endif
 

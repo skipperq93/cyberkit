@@ -48,15 +48,15 @@ function testCallbacks(tx)
 {
 	executeStatement(tx, "CREATE TABLE Results (Key TEXT, Value TEXT);", "CREATE TABLE");
 
-	// Create a temporary table with the same schema as __WebKitDatabaseInfoTable__ and populate it with a valid version.
+	// Create a temporary table with the same schema as __CyberKitDatabaseInfoTable__ and populate it with a valid version.
 	executeStatement(tx, "CREATE TEMPORARY TABLE TempTable (key TEXT NOT NULL ON CONFLICT FAIL UNIQUE ON CONFLICT REPLACE, value TEXT NOT NULL ON CONFLICT FAIL);", "CREATE TEMP TABLE");
-	executeStatement(tx, "INSERT INTO TempTable VALUES ('WebKitDatabaseVersionKey','1.0');", "INSERT IN TEMP TABLE");
+	executeStatement(tx, "INSERT INTO TempTable VALUES ('CyberKitDatabaseVersionKey','1.0');", "INSERT IN TEMP TABLE");
 
     // Set up a trigger to capture changes to the table we just created.
 	executeStatement(tx, "CREATE TRIGGER TempTrigger BEFORE INSERT ON TempTable BEGIN INSERT INTO Results VALUES (NEW.key, NEW.value); END;", "CREATE TRIGGER");
 	
 	// Try to spoof that table as the info table.
-	executeStatement(tx, "ALTER TABLE TempTable RENAME TO __WebKitDatabaseInfoTable__;", "ALTER TO INFO TABLE");
+	executeStatement(tx, "ALTER TABLE TempTable RENAME TO __CyberKitDatabaseInfoTable__;", "ALTER TO INFO TABLE");
 }
 
 function testStep1(db)
@@ -76,7 +76,7 @@ function testStep1(db)
 function testStep2(db)
 {
     // At this point there's a temporary table named the same as the internal info table.
-    // WebKit should not use it.
+    // CyberKit should not use it.
     db.changeVersion('1.0', '2.0', null, function(error) {
         log("Failed to change DB version - " + error.message);
     }, 

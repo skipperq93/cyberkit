@@ -1,7 +1,7 @@
 window.onload = function ()
 {
     if (!window.internals) {
-        console.log("This test must be run in DumpRenderTree or WebKitTestRunner.");
+        console.log("This test must be run in DumpRenderTree or CyberKitTestRunner.");
         return;
     }
     let inputElements = document.getElementsByTagName("input");

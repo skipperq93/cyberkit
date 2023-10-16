@@ -1,4 +1,4 @@
-This logs DOM keydown, keyup, keypress events that are dispatched when pressing key commands of the form Command + Shift + X. Must be run in WebKitTestRunner.
+This logs DOM keydown, keyup, keypress events that are dispatched when pressing key commands of the form Command + Shift + X. Must be run in CyberKitTestRunner.
 
 
 Test Command + Shift + a:

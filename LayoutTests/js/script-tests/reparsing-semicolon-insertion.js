@@ -3,8 +3,8 @@ description(
 );
 
 // According to the ECMA spec, these should all be syntax errors. However, the
-// pre-existing behaviour of JavaScriptCore has always been to accept them. If
-// JavaScriptCore is changed so that these are syntax errors in the future, then
+// pre-existing behaviour of CyberScriptCore has always been to accept them. If
+// CyberScriptCore is changed so that these are syntax errors in the future, then
 // this test can simply be changed to reflect that.
 
 // It is important that the closing braces be on the same line as the commas, so

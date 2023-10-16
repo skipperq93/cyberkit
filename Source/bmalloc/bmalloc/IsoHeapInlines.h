@@ -119,7 +119,7 @@ auto IsoHeap<Type>::impl() -> IsoHeapImpl<Config>&
 public: \
     static ::bmalloc::api::IsoHeap<isoType>& bisoHeap() \
     { \
-        static ::bmalloc::api::IsoHeap<isoType> heap("WebKit_"#isoType); \
+        static ::bmalloc::api::IsoHeap<isoType> heap("CyberKit_"#isoType); \
         return heap; \
     } \
     \
@@ -152,7 +152,7 @@ private: \
 #define MAKE_BISO_MALLOCED_IMPL(isoType) \
 ::bmalloc::api::IsoHeap<isoType>& isoType::bisoHeap() \
 { \
-    static ::bmalloc::api::IsoHeap<isoType> heap("WebKit "#isoType); \
+    static ::bmalloc::api::IsoHeap<isoType> heap("CyberKit "#isoType); \
     return heap; \
 } \
 \
@@ -178,7 +178,7 @@ struct MakeBisoMallocedImplMacroSemicolonifier##isoType { }
 template<> \
 ::bmalloc::api::IsoHeap<isoType>& isoType::bisoHeap() \
 { \
-    static ::bmalloc::api::IsoHeap<isoType> heap("WebKit_"#isoType); \
+    static ::bmalloc::api::IsoHeap<isoType> heap("CyberKit_"#isoType); \
     return heap; \
 } \
 \

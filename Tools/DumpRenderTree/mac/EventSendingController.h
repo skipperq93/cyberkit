@@ -27,7 +27,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <WebKit/WebKitLegacy.h>
+#import <CyberKit/CyberKitLegacy.h>
 
 @interface EventSendingController : NSObject <DOMEventListener>
 {

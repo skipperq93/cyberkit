@@ -8,13 +8,13 @@
 </head>
 <body>
 <script>
-var url = "/WebKit/service-workers/resources/service-worker-iframe-preload-after-response-script.py";
+var url = "/CyberKit/service-workers/resources/service-worker-iframe-preload-after-response-script.py";
 
 promise_test(async (test) => {
-    let registration = await navigator.serviceWorker.register("/WebKit/service-workers/service-worker-iframe-preload-after-response-worker.js", { scope : url });
+    let registration = await navigator.serviceWorker.register("/CyberKit/service-workers/service-worker-iframe-preload-after-response-worker.js", { scope : url });
     if (!registration.installing) {
         registration.unregister();
-        registration = await navigator.serviceWorker.register("/WebKit/service-workers/service-worker-iframe-preload-after-response-worker.js", { scope : url });
+        registration = await navigator.serviceWorker.register("/CyberKit/service-workers/service-worker-iframe-preload-after-response-worker.js", { scope : url });
     }
     const activeWorker = registration.installing;
 

@@ -1,5 +1,5 @@
 Input:
-<#start><div style="font-style: italic" id="host1"><#shadow-start><slot style="color: blue;"></slot> world<#shadow-end><b>hello</b></div><div id="host2"><#shadow-start><u>WebKit <#end><slot></slot></u><#shadow-end>rocks</div>
+<#start><div style="font-style: italic" id="host1"><#shadow-start><slot style="color: blue;"></slot> world<#shadow-end><b>hello</b></div><div id="host2"><#shadow-start><u>CyberKit <#end><slot></slot></u><#shadow-end>rocks</div>
 
 Output:
 NSParagraphStyle:
@@ -35,7 +35,7 @@ Alignment 4
     NSKern: 0pt
     NSStrokeColor: #000000 (sRGB)
     NSStrokeWidth: 0
-[WebKit ]
+[CyberKit ]
     NSFont: Times-Roman 16.00 pt.
     NSKern: 0pt
     NSStrokeColor: #000000 (sRGB)

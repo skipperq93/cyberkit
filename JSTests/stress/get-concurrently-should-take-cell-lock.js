@@ -1,8 +1,8 @@
 /*
-diff --git a/Source/JavaScriptCore/dfg/DFGGraph.cpp b/Source/JavaScriptCore/dfg/DFGGraph.cpp
+diff --git a/Source/CyberScriptCore/dfg/DFGGraph.cpp b/Source/CyberScriptCore/dfg/DFGGraph.cpp
 index 07aed18ca1b4..157a836cf50e 100644
---- a/Source/JavaScriptCore/dfg/DFGGraph.cpp
-+++ b/Source/JavaScriptCore/dfg/DFGGraph.cpp
+--- a/Source/CyberScriptCore/dfg/DFGGraph.cpp
++++ b/Source/CyberScriptCore/dfg/DFGGraph.cpp
 @@ -25,6 +25,7 @@
  
  #include "config.h"
@@ -22,10 +22,10 @@ index 07aed18ca1b4..157a836cf50e 100644
  
      return object->getDirectConcurrently(structure, offset);
  }
-diff --git a/Source/JavaScriptCore/runtime/JSArray.cpp b/Source/JavaScriptCore/runtime/JSArray.cpp
+diff --git a/Source/CyberScriptCore/runtime/JSArray.cpp b/Source/CyberScriptCore/runtime/JSArray.cpp
 index 7b8907517f9e..f18e5b3a9e0c 100644
---- a/Source/JavaScriptCore/runtime/JSArray.cpp
-+++ b/Source/JavaScriptCore/runtime/JSArray.cpp
+--- a/Source/CyberScriptCore/runtime/JSArray.cpp
++++ b/Source/CyberScriptCore/runtime/JSArray.cpp
 @@ -1033,6 +1033,9 @@ bool JSArray::unshiftCountWithArrayStorage(JSGlobalObject* globalObject, unsigne
          Structure* structure = this->structure();
          ConcurrentJSLocker structureLock(structure->lock());

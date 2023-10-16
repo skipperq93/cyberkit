@@ -3,13 +3,13 @@
 <body>
 <div id="container">
 <button onclick="runTest()">Copy</button>
-<div id="source" contenteditable><a href="javascript:dangerousCode()">hello</a>, <b onmouseover="dangerousCode()">world</b>. WebKit</div>
+<div id="source" contenteditable><a href="javascript:dangerousCode()">hello</a>, <b onmouseover="dangerousCode()">world</b>. CyberKit</div>
 <div id="destination" onpaste="doPaste(event)" contenteditable>Paste here</div>
 </div>
 <script src="../../resources/js-test-pre.js"></script>
 <script>
 
-description('This tests copying and pasting a markup with an event handler and a javascript URL. WebKit should strip them away upon copy.');
+description('This tests copying and pasting a markup with an event handler and a javascript URL. CyberKit should strip them away upon copy.');
 jsTestIsAsync = true;
 
 function dangerousCode() { }

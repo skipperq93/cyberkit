@@ -1,7 +1,7 @@
 import unittest
 import bisect
 from .bug_description import translate_selected_dots_to_bug_title_and_description
-from .bugzilla import WebKitBugzilla
+from .bugzilla import CyberKitBugzilla
 
 MOCK_COMMITS = {
     'webkit': {
@@ -90,7 +90,7 @@ class MockCommitContext(object):
 class TestBugDescription(unittest.TestCase):
 
     def setUp(self):
-        self.bugzilla = WebKitBugzilla()
+        self.bugzilla = CyberKitBugzilla()
         self.bugzilla.set_commit_context(MockCommitContext(MOCK_COMMITS))
         return super().setUp()
 
@@ -158,4 +158,4 @@ class TestBugDescription(unittest.TestCase):
         }
 
         res = self.bugzilla.create_bug(mock_data)
-        self.assertEqual(res['url'], 'https://bugs.webkit.org/enter_bug.cgi?product=WebKit&component=New%20Bugs&version=WebKit%20Nightly%20Build&short_desc=http/tests/paymentrequest/updateWith-shippingOptions.https.html ERROR%20on%20Monterey%20E%28Macmini8%2C1%29&comment=Hardware%3A%20%20%20%20%20%09Macmini8%2C1%0AArchitecture%3A%20%09x86_64%0AOS%3A%20%20%20%20%20%20%20%20%20%20%20%09Monterey%20E%0AStyle%3A%20%20%20%20%20%20%20%20%09debug%0AFlavor%20%20%20%20%20%20%20%20%09wk2%0ASDK%3A%20%20%20%20%20%20%20%20%20%20%09None%0A-----------------------------%0AMost%20recent%20failures%3A%0A247348%40main%3A%20https%3A//trac.webkit.org/changeset/289926/webkit%0A-----------------------------')
+        self.assertEqual(res['url'], 'https://bugs.webkit.org/enter_bug.cgi?product=CyberKit&component=New%20Bugs&version=CyberKit%20Nightly%20Build&short_desc=http/tests/paymentrequest/updateWith-shippingOptions.https.html ERROR%20on%20Monterey%20E%28Macmini8%2C1%29&comment=Hardware%3A%20%20%20%20%20%09Macmini8%2C1%0AArchitecture%3A%20%09x86_64%0AOS%3A%20%20%20%20%20%20%20%20%20%20%20%09Monterey%20E%0AStyle%3A%20%20%20%20%20%20%20%20%09debug%0AFlavor%20%20%20%20%20%20%20%20%09wk2%0ASDK%3A%20%20%20%20%20%20%20%20%20%20%09None%0A-----------------------------%0AMost%20recent%20failures%3A%0A247348%40main%3A%20https%3A//trac.webkit.org/changeset/289926/webkit%0A-----------------------------')

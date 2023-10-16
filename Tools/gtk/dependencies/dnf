@@ -4,7 +4,7 @@ source "$(dirname "$0")/../glib/dependencies/dnf"
 
 # NOTE: This appends the list in glib/dependencies/dnf
 PACKAGES+=(
-    # These are dependencies necessary for building WebKitGTK.
+    # These are dependencies necessary for building CyberKitGTK.
     
     enchant-devel
     geoclue2-devel

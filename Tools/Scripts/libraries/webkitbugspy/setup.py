@@ -43,7 +43,7 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     keywords='python unicode',
-    url='https://github.com/WebKit/WebKit/tree/main/Tools/Scripts/libraries/webkitbugspy',
+    url='https://github.com/CyberKit/CyberKit/tree/main/Tools/Scripts/libraries/webkitbugspy',
     author='Jonathan Bedard',
     author_email='jbedard@apple.com',
     license='Modified BSD',

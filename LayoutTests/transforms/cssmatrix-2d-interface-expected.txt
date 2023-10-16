@@ -5,12 +5,12 @@ On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE
 
 CSSMatrix constructors
 PASS m is non-null.
-PASS new WebKitCSSMatrix() is non-null.
-PASS new WebKitCSSMatrix(m) is non-null.
-PASS new WebKitCSSMatrix("matrix(1, 0, 0, 1, 0, 0)") is non-null.
-PASS new WebKitCSSMatrix("") is non-null.
-PASS new WebKitCSSMatrix("none") is non-null.
-PASS new WebKitCSSMatrix("   none   ") is non-null.
+PASS new CyberKitCSSMatrix() is non-null.
+PASS new CyberKitCSSMatrix(m) is non-null.
+PASS new CyberKitCSSMatrix("matrix(1, 0, 0, 1, 0, 0)") is non-null.
+PASS new CyberKitCSSMatrix("") is non-null.
+PASS new CyberKitCSSMatrix("none") is non-null.
+PASS new CyberKitCSSMatrix("   none   ") is non-null.
 
 Test toString
 PASS a[0] is "matrix"
@@ -23,7 +23,7 @@ PASS parseFloat(a3[0]) is 0
 PASS a3[1] is ""
 
 Test bad input to string constructor
-PASS new WebKitCSSMatrix("banana") threw exception SyntaxError: The string did not match the expected pattern..
+PASS new CyberKitCSSMatrix("banana") threw exception SyntaxError: The string did not match the expected pattern..
 
 Test attributes on default matrix
 PASS m.a is 1

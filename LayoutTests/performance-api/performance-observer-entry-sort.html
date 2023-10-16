@@ -52,7 +52,7 @@ let observer = new PerformanceObserver((list) => {
     shouldBeEqualToString(`list.getEntries()[7].entryType`, "mark");
     shouldBeEqualToString(`list.getEntries()[7].name`, "mark3");
 
-    // WebKit wants a stable sort based matching user expectations.
+    // CyberKit wants a stable sort based matching user expectations.
     // The spec is currently imprecise here.
     // <https://github.com/w3c/performance-timeline/issues/67>
     shouldBeEqualToString(`list.getEntries()[0].name`, "measure1");

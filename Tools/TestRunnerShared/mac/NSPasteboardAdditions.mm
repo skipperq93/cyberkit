@@ -29,7 +29,7 @@
 #if PLATFORM(MAC)
 
 #import <CoreServices/CoreServices.h>
-#import <WebCore/LegacyNSPasteboardTypes.h>
+#import <CyberCore/LegacyNSPasteboardTypes.h>
 #import <wtf/RetainPtr.h>
 
 @implementation NSPasteboard (TestRunnerAdditions)
@@ -41,31 +41,31 @@
             type = legacyType.bridgingAutorelease();
     }
 
-    if ([type isEqualToString:WebCore::legacyStringPasteboardType()])
+    if ([type isEqualToString:CyberCore::legacyStringPasteboardType()])
         return NSPasteboardTypeString;
 
-    if ([type isEqualToString:WebCore::legacyHTMLPasteboardType()])
+    if ([type isEqualToString:CyberCore::legacyHTMLPasteboardType()])
         return NSPasteboardTypeHTML;
 
-    if ([type isEqualToString:WebCore::legacyTIFFPasteboardType()])
+    if ([type isEqualToString:CyberCore::legacyTIFFPasteboardType()])
         return NSPasteboardTypeTIFF;
 
-    if ([type isEqualToString:WebCore::legacyURLPasteboardType()])
+    if ([type isEqualToString:CyberCore::legacyURLPasteboardType()])
         return NSPasteboardTypeURL;
 
-    if ([type isEqualToString:WebCore::legacyPDFPasteboardType()])
+    if ([type isEqualToString:CyberCore::legacyPDFPasteboardType()])
         return NSPasteboardTypePDF;
 
-    if ([type isEqualToString:WebCore::legacyRTFDPasteboardType()])
+    if ([type isEqualToString:CyberCore::legacyRTFDPasteboardType()])
         return NSPasteboardTypeRTFD;
 
-    if ([type isEqualToString:WebCore::legacyRTFPasteboardType()])
+    if ([type isEqualToString:CyberCore::legacyRTFPasteboardType()])
         return NSPasteboardTypeRTF;
 
-    if ([type isEqualToString:WebCore::legacyColorPasteboardType()])
+    if ([type isEqualToString:CyberCore::legacyColorPasteboardType()])
         return NSPasteboardTypeColor;
 
-    if ([type isEqualToString:WebCore::legacyFontPasteboardType()])
+    if ([type isEqualToString:CyberCore::legacyFontPasteboardType()])
         return NSPasteboardTypeFont;
 
     return type;

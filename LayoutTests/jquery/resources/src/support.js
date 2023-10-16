@@ -42,7 +42,7 @@
 
 		// Make sure that element opacity exists
 		// (IE uses filter instead)
-		// Use a regex to work around a WebKit issue. See #5145
+		// Use a regex to work around a CyberKit issue. See #5145
 		opacity: /^0.55$/.test( a.style.opacity ),
 
 		// Verify style float existence
@@ -51,11 +51,11 @@
 
 		// Make sure that if no value is specified for a checkbox
 		// that it defaults to "on".
-		// (WebKit defaults to "" instead)
+		// (CyberKit defaults to "" instead)
 		checkOn: input.value === "on",
 
 		// Make sure that a selected-by-default option has a working selected property.
-		// (WebKit defaults to false instead of true, IE too, if it's in an optgroup)
+		// (CyberKit defaults to false instead of true, IE too, if it's in an optgroup)
 		optSelected: opt.selected,
 
 		// Will be defined later
@@ -74,7 +74,7 @@
 	jQuery.support.noCloneChecked = input.cloneNode( true ).checked;
 
 	// Make sure that the options inside disabled selects aren't marked as disabled
-	// (WebKit marks them as diabled)
+	// (CyberKit marks them as diabled)
 	select.disabled = true;
 	jQuery.support.optDisabled = !opt.disabled;
 
@@ -134,7 +134,7 @@
 	var fragment = document.createDocumentFragment();
 	fragment.appendChild( div.firstChild );
 
-	// WebKit doesn't clone checked state correctly in fragments
+	// CyberKit doesn't clone checked state correctly in fragments
 	jQuery.support.checkClone = fragment.cloneNode(true).cloneNode(true).lastChild.checked;
 
 	// Figure out if the W3C box model works as expected

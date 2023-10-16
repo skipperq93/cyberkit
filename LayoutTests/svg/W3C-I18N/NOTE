@@ -22,6 +22,6 @@ This property specifies the base writing direction of text and the direction of 
 
 The main difference is that <text x="10" y="10" direction="rtl">foo bar</text> defines the start of a new text chunk
 and thus the direction property is taken into account, whereas in SVG 1.1 the direction property would be ignored
-unless you explicitely set unicode-bidi to embed/bidi-override. This is now handled properly in WebKit, as it's easy to make both 1.1/1.2 mode work for us.
+unless you explicitely set unicode-bidi to embed/bidi-override. This is now handled properly in CyberKit, as it's easy to make both 1.1/1.2 mode work for us.
 
 2) http://www.w3.org/International/tests/svg/test-direction-alignment-0

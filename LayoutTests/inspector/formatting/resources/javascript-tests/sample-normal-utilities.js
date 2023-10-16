@@ -1186,7 +1186,7 @@ function isWebInspectorInternalScript(url)
     return url === "__WebInspectorInternal__";
 }
 
-function isWebKitInternalScript(url)
+function isCyberKitInternalScript(url)
 {
     return url && url.startsWith("__Web") && url.endsWith("__");
 }

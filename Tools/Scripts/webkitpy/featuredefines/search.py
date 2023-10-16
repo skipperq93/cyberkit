@@ -80,20 +80,20 @@ class FeatureDefinesSearch(object):
         return [
             os.path.join(root, "Source", "WTF"),
             os.path.join(root, "Source", "WebDriver"),
-            os.path.join(root, "Source", "WebCore"),
-            os.path.join(root, "Source", "WebKit"),
-            os.path.join(root, "Source", "WebKitLegacy"),
-            os.path.join(root, "Source", "JavaScriptCore"),
+            os.path.join(root, "Source", "CyberCore"),
+            os.path.join(root, "Source", "CyberKit"),
+            os.path.join(root, "Source", "CyberKitLegacy"),
+            os.path.join(root, "Source", "CyberScriptCore"),
             os.path.join(root, "Tools"),
         ]
 
 
 class FeatureDefinesCMake(FeatureDefinesSearch):
-    """ Find feature defines in WebKitFeatures.cmake. """
+    """ Find feature defines in CyberKitFeatures.cmake. """
 
     def search(self, root, macro='ENABLE'):
         matcher = cmake_options_matcher(macro)
-        path = os.path.join(root, "Source", "cmake", "WebKitFeatures.cmake")
+        path = os.path.join(root, "Source", "cmake", "CyberKitFeatures.cmake")
 
         # Look in port definitions
         self._search_directory(matcher, os.path.join(root, "Source", "cmake"), ["Options*.cmake"])

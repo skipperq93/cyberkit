@@ -29,8 +29,8 @@ import os
 from webkitpy.common.system.systemhost import SystemHost
 
 FEATURE_DEFINE_FILES = [
-    "Source/WebCore/Configurations/FeatureDefines.xcconfig",
-    "Source/WebKit/Configurations/FeatureDefines.xcconfig",
+    "Source/CyberCore/Configurations/FeatureDefines.xcconfig",
+    "Source/CyberKit/Configurations/FeatureDefines.xcconfig",
 ]
 
 

@@ -1075,7 +1075,7 @@ class CapturedStream {
     // _CS_DARWIN_USER_TEMP_DIR (as well as _CS_DARWIN_USER_CACHE_DIR) is not
     // documented in the confstr() man page at
     // https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man3/confstr.3.html#//apple_ref/doc/man/3/confstr
-    // but are still available, according to the WebKit patches at
+    // but are still available, according to the CyberKit patches at
     // https://trac.webkit.org/changeset/262004/webkit
     // https://trac.webkit.org/changeset/263705/webkit
     //

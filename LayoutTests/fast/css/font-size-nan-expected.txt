@@ -1,2 +1,2 @@
-PASS: WebKit doesn't crash.
+PASS: CyberKit doesn't crash.
 

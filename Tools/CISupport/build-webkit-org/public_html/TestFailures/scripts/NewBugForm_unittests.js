@@ -33,7 +33,7 @@ const testFormData = {
     keywords: { formName: 'keywords', value: 'Qt, PlatformOnly' },
     operatingSystem: { formName: 'op_sys', value: 'Windows 7' },
     platform: { formName: 'rep_platform', value: 'PC' },
-    product: { formName: 'product', value: 'WebKit' },
+    product: { formName: 'product', value: 'CyberKit' },
     title: { formName: 'short_desc', value: 'This is a bug title' },
     url: { formName: 'bug_file_loc', value: 'http://example.com/path?query=foo#anchor' },
     version: { formName: 'version', value: '528+ (Nightly Build)' },

@@ -4,7 +4,7 @@ endif
 
 ifneq ($(USE_WORKSPACE),NO)
 
-SCHEME = Everything up to WebKit + Tools
+SCHEME = Everything up to CyberKit + Tools
 SCRIPTS_PATH = Tools/Scripts
 include Makefile.shared
 
@@ -44,6 +44,6 @@ clean:
 installsrc:
 	$(build_target_for_each_module)
 	ditto Configurations "$(SRCROOT)/Configurations"
-	ditto WebKitLibraries/DownlevelFrameworkStubs "$(SRCROOT)/WebKitLibraries/DownlevelFrameworkStubs"
+	ditto CyberKitLibraries/DownlevelFrameworkStubs "$(SRCROOT)/CyberKitLibraries/DownlevelFrameworkStubs"
 
 endif # USE_WORKSPACE

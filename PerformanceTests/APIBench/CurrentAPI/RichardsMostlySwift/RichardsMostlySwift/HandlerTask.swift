@@ -24,7 +24,7 @@
 */
 
 import Foundation
-import JavaScriptCore
+import CyberScriptCore
 
 /**
  * A task that manipulates work packets and then suspends itself.

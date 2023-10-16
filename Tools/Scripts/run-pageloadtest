@@ -27,7 +27,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Script to run the WebKit Open Source Project page load tests (PLTs).
+# Script to run the CyberKit Open Source Project page load tests (PLTs).
 
 # Run all the tests passed in on the command line.
 
@@ -69,7 +69,7 @@ my $safariResourcePath = File::Spec->catdir(dirname(dirname($safariExecutablePat
 # Check to see that all the frameworks are built.
 checkFrameworks();
 
-chdirWebKit();
+chdirCyberKit();
 
 if ($testName eq 'svg') {
     my $suiteFile = "PerformanceTests/PageLoad/$testName/$testName.pltsuite";
@@ -85,8 +85,8 @@ setConfiguration();
 my $productDir = productDir();
 
 # Set up DYLD_FRAMEWORK_PATH to point to the product directory.
-print "Starting Safari with DYLD_FRAMEWORK_PATH set to point to built WebKit in $productDir.\n";
-setupMacWebKitEnvironment($productDir);
+print "Starting Safari with DYLD_FRAMEWORK_PATH set to point to built CyberKit in $productDir.\n";
+setupMacCyberKitEnvironment($productDir);
 
 my @testCommands = ('activate');
 # Autovicki would clear history, we skip that here as this is likely an active user account

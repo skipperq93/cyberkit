@@ -1,4 +1,4 @@
-include(WebKitDist)
+include(CyberKitDist)
 
 add_subdirectory(${WEBCORE_DIR}/platform/gtk/po)
 

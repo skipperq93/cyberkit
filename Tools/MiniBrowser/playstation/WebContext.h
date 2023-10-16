@@ -25,10 +25,10 @@
 
 #pragma once
 
-#include <WebKit/WKContext.h>
-#include <WebKit/WKPageConfigurationRef.h>
-#include <WebKit/WKPageGroup.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKContext.h>
+#include <CyberKit/WKPageConfigurationRef.h>
+#include <CyberKit/WKPageGroup.h>
+#include <CyberKit/WKRetainPtr.h>
 #include <list>
 
 class WebViewWindow;

@@ -25,7 +25,7 @@
 
 #import <AppKit/AppKit.h>
 #import <Foundation/Foundation.h>
-#import <WebKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 
 @interface TestRunner : NSObject
 

@@ -3481,7 +3481,7 @@ jQuery.acceptData = function( owner ) {
 
 function Data() {
     // Support: Android < 4,
-    // Old WebKit does not have Object.preventExtensions/freeze method,
+    // Old CyberKit does not have Object.preventExtensions/freeze method,
     // return new empty object instead with no [[set]] accessor
     Object.defineProperty( this.cache = {}, 0, {
         get: function() {
@@ -3974,11 +3974,11 @@ var rcheckableType = (/^(?:checkbox|radio)$/i);
     var fragment = document.createDocumentFragment(),
         div = fragment.appendChild( document.createElement( "div" ) );
 
-    // #11217 - WebKit loses check when the name is after the checked attribute
+    // #11217 - CyberKit loses check when the name is after the checked attribute
     div.innerHTML = "<input type='radio' checked='checked' name='t'/>";
 
     // Support: Safari 5.1, iOS 5.1, Android 4.x, Android 2.3
-    // old WebKit doesn't clone checked state correctly in fragments
+    // old CyberKit doesn't clone checked state correctly in fragments
     support.checkClone = div.cloneNode( true ).cloneNode( true ).lastChild.checked;
 
     // Make sure textarea (and checkbox) defaultValue is properly cloned
@@ -4505,7 +4505,7 @@ jQuery.event = {
             event[ prop ] = originalEvent[ prop ];
         }
 
-        // Support: Cordova 2.5 (WebKit) (#13255)
+        // Support: Cordova 2.5 (CyberKit) (#13255)
         // All events should have a target; Cordova deviceready doesn't
         if ( !event.target ) {
             event.target = document;
@@ -5024,7 +5024,7 @@ jQuery.extend({
 
                 // Add nodes directly
                 if ( jQuery.type( elem ) === "object" ) {
-                    // Support: QtWebKit
+                    // Support: QtCyberKit
                     // jQuery.merge because push.apply(_, arraylike) throws
                     jQuery.merge( nodes, elem.nodeType ? [ elem ] : elem );
 
@@ -5047,7 +5047,7 @@ jQuery.extend({
                         tmp = tmp.lastChild;
                     }
 
-                    // Support: QtWebKit
+                    // Support: QtCyberKit
                     // jQuery.merge because push.apply(_, arraylike) throws
                     jQuery.merge( nodes, tmp.childNodes );
 
@@ -5300,7 +5300,7 @@ jQuery.fn.extend({
             value = args[ 0 ],
             isFunction = jQuery.isFunction( value );
 
-        // We can't cloneNode fragments that contain checked, in WebKit
+        // We can't cloneNode fragments that contain checked, in CyberKit
         if ( isFunction ||
                 ( l > 1 && typeof value === "string" &&
                     !support.checkClone && rchecked.test( value ) ) ) {
@@ -5335,7 +5335,7 @@ jQuery.fn.extend({
 
                         // Keep references to cloned scripts for later restoration
                         if ( hasScripts ) {
-                            // Support: QtWebKit
+                            // Support: QtCyberKit
                             // jQuery.merge because push.apply(_, arraylike) throws
                             jQuery.merge( scripts, getAll( node, "script" ) );
                         }
@@ -5392,7 +5392,7 @@ jQuery.each({
             elems = i === last ? this : this.clone( true );
             jQuery( insert[ i ] )[ original ]( elems );
 
-            // Support: QtWebKit
+            // Support: QtCyberKit
             // .get() because push.apply(_, arraylike) throws
             push.apply( ret, elems.get() );
         }
@@ -5593,7 +5593,7 @@ function addGetHookIf( conditionFn, hookFn ) {
                 // Support: Android 2.3
                 // Check if div with explicit width and no margin-right incorrectly
                 // gets computed margin-right based on width of container. (#3333)
-                // WebKit Bug 13343 - getComputedStyle returns wrong value for margin-right
+                // CyberKit Bug 13343 - getComputedStyle returns wrong value for margin-right
                 // This support function is only executed once so no memoizing is needed.
                 var ret,
                     marginDiv = div.appendChild( document.createElement( "div" ) );
@@ -5989,7 +5989,7 @@ jQuery.each([ "height", "width" ], function( i, name ) {
 jQuery.cssHooks.marginRight = addGetHookIf( support.reliableMarginRight,
     function( elem, computed ) {
         if ( computed ) {
-            // WebKit Bug 13343 - getComputedStyle returns wrong value for margin-right
+            // CyberKit Bug 13343 - getComputedStyle returns wrong value for margin-right
             // Work around by temporarily setting element display to inline-block
             return jQuery.swap( elem, { "display": "inline-block" },
                 curCSS, [ elem, "marginRight" ] );
@@ -6829,7 +6829,7 @@ jQuery.fn.delay = function( time, type ) {
     input.type = "checkbox";
 
     // Support: iOS 5.1, Android 4.x, Android 2.3
-    // Check the default checkbox/radio value ("" on old WebKit; "on" elsewhere)
+    // Check the default checkbox/radio value ("" on old CyberKit; "on" elsewhere)
     support.checkOn = input.value !== "";
 
     // Must access the parent to make an option select properly
@@ -6837,7 +6837,7 @@ jQuery.fn.delay = function( time, type ) {
     support.optSelected = opt.selected;
 
     // Make sure that the options inside disabled selects aren't marked as disabled
-    // (WebKit marks them as disabled)
+    // (CyberKit marks them as disabled)
     select.disabled = true;
     support.optDisabled = !opt.disabled;
 

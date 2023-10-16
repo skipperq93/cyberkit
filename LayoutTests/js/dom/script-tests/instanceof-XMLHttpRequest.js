@@ -15,11 +15,11 @@ shouldBeFalse("(new Array()) instanceof Image");
 shouldBeTrue("(new Option()) instanceof Option");
 shouldBeFalse("(new Array()) instanceof Option");
 
-shouldBeTrue("(new WebKitCSSMatrix()) instanceof WebKitCSSMatrix");
-shouldBeFalse("(new Array()) instanceof WebKitCSSMatrix");
+shouldBeTrue("(new CyberKitCSSMatrix()) instanceof CyberKitCSSMatrix");
+shouldBeFalse("(new Array()) instanceof CyberKitCSSMatrix");
 
-shouldBeTrue("(new WebKitPoint()) instanceof WebKitPoint");
-shouldBeFalse("(new Array()) instanceof WebKitPoint");
+shouldBeTrue("(new CyberKitPoint()) instanceof CyberKitPoint");
+shouldBeFalse("(new Array()) instanceof CyberKitPoint");
 
 shouldBeTrue("(new Worker('instanceof-operator-dummy-worker.js')) instanceof Worker");
 shouldBeFalse("(new Array()) instanceof Worker");

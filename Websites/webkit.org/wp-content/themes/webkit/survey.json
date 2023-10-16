@@ -1,7 +1,7 @@
 {
     "survey":[
         {
-            "question":"How often do you use WebKit Nightly builds?",
+            "question":"How often do you use CyberKit Nightly builds?",
             "responses":[
                 "It’s my default browser",
                 "Once a day",
@@ -10,19 +10,19 @@
             ]
         },
         {
-            "question":"How do you use WebKit Nightly builds?",
+            "question":"How do you use CyberKit Nightly builds?",
             "responses":[
-                "Testing and verifying bugs or fixes for the WebKit team",
-                "Testing new features to provide feedback to the WebKit team",
-                "Finding new bugs in WebKit",
-                "Finding new features in WebKit",
+                "Testing and verifying bugs or fixes for the CyberKit team",
+                "Testing new features to provide feedback to the CyberKit team",
+                "Finding new bugs in CyberKit",
+                "Finding new features in CyberKit",
                 "Other:"
             ]
         },
         {
             "question":"What type of development work do you do?",
             "responses":[
-                "I'm a WebKit developer",
+                "I'm a CyberKit developer",
                 "I'm a web developer",
                 "I contribute to Web Standards",
                 "I do iOS development",

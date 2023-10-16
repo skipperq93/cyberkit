@@ -21,7 +21,7 @@ Original content:
 |       style="-webkit-line-break: after-white-space; "
 |       <font>
 |         face="Verdana"
-|         "WebKit"
+|         "CyberKit"
 |   "\n"
 
 Pasted content:
@@ -32,4 +32,4 @@ Pasted content:
 |   style="font-family: Helvetica;"
 | <font>
 |   face="Verdana"
-|   "worldWebKit<#selection-caret>"
+|   "worldCyberKit<#selection-caret>"

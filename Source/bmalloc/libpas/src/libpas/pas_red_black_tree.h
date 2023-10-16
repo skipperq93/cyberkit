@@ -26,7 +26,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-/* This code is based on WebKit's wtf/RedBlackTree.h. */
+/* This code is based on CyberKit's wtf/RedBlackTree.h. */
 
 #ifndef PAS_RED_BLACK_TREE_H
 #define PAS_RED_BLACK_TREE_H

@@ -1,3 +1,3 @@
 
-PASS Historical CSS features must be removed: WebKitAnimationEvent
+PASS Historical CSS features must be removed: CyberKitAnimationEvent
 

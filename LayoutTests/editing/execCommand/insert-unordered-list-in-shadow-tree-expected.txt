@@ -1,4 +1,4 @@
-This tests inserting an ordered list inside a shadow tree. WebKit should not hang.
+This tests inserting an ordered list inside a shadow tree. CyberKit should not hang.
 
 Before:
 | <div>

@@ -37,14 +37,14 @@ function copy(event)
     shouldBeEqualToString('clipboardData.getData("url")', 'https://webkit.org/');
     shouldBeEqualToString('clipboardData.getData("text/plain")', '');
 
-    shouldBe('secondItem = clipboardData.items.add("WebKit", "text/PLAIN"); clipboardData.items.length', '2');
+    shouldBe('secondItem = clipboardData.items.add("CyberKit", "text/PLAIN"); clipboardData.items.length', '2');
     shouldBe('clipboardData.items[1]', 'secondItem');
     shouldBeEqualToString('secondItem.kind', 'string');
     shouldBeEqualToString('secondItem.type', 'text/plain');
     shouldBe('secondItem.getAsFile()', 'null');
-    shouldBe('secondItem.getAsString(checkContent(3, "WebKit"))', 'undefined');
+    shouldBe('secondItem.getAsString(checkContent(3, "CyberKit"))', 'undefined');
     shouldBeEqualToString('clipboardData.getData("url")', 'https://webkit.org/');
-    shouldBeEqualToString('clipboardData.getData("TEXT/plain")', 'WebKit');
+    shouldBeEqualToString('clipboardData.getData("TEXT/plain")', 'CyberKit');
 
     shouldBe('clipboardData.setData("text/plain", "some text"); clipboardData.items.length', '2');
     shouldBe('clipboardData.items[0]', 'firstItem');

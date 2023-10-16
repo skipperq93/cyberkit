@@ -22,7 +22,7 @@
 
         var node = document.getElementById('test');
         node.style.webkitTransform = 'translate(50px, 60px)';
-        var p = webkitConvertPointFromNodeToPage(node, new WebKitPoint(0, 0));
+        var p = webkitConvertPointFromNodeToPage(node, new CyberKitPoint(0, 0));
         x = Math.round(p.x);
         y = Math.round(p.y);
         shouldBe('x', 60 + "");

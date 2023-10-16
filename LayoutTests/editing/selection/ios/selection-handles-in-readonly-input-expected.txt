@@ -7,4 +7,4 @@ To manually test, double-tap to select the word "aa", drag the selection end han
 
 "aa" should remain selected.
 
-This test is best run under WebKitTestRunner.
+This test is best run under CyberKitTestRunner.

@@ -25,7 +25,7 @@
 
 #import "WorkerTask.h"
 
-#import <JavaScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 
 @implementation WorkerTask {
     JSValue *_js;

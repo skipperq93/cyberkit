@@ -16,10 +16,10 @@
 # under the License.
 
 from .safari.webdriver import WebDriver as Safari  # noqa
-from .webkitgtk.webdriver import WebDriver as WebKitGTK  # noqa
-from .webkitgtk.options import Options as WebKitGTKOptions  # noqa
-from .wpewebkit.webdriver import WebDriver as WPEWebKit  # noqa
-from .wpewebkit.options import Options as WPEWebKitOptions  # noqa
+from .webkitgtk.webdriver import WebDriver as CyberKitGTK  # noqa
+from .webkitgtk.options import Options as CyberKitGTKOptions  # noqa
+from .wpewebkit.webdriver import WebDriver as WPECyberKit  # noqa
+from .wpewebkit.options import Options as WPECyberKitOptions  # noqa
 from .remote.webdriver import WebDriver as Remote  # noqa
 from .common.desired_capabilities import DesiredCapabilities  # noqa
 from .common.action_chains import ActionChains  # noqa

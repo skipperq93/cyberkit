@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WebKit.h>
+#import <CyberKit/CyberKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

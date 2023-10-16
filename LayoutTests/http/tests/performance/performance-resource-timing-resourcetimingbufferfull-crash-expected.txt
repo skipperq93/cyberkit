@@ -1,5 +1,5 @@
 This tests causing resource timing buffer to be full during a style recalc.
-WebKit should not hit a release assertion by dispatching an event synchronously.
+CyberKit should not hit a release assertion by dispatching an event synchronously.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

@@ -3,7 +3,7 @@
 source "$(dirname "$0")/../glib/dependencies/apt"
 
 PACKAGES+=(
-    # These are dependencies necessary for building WebKitGTK.
+    # These are dependencies necessary for building CyberKitGTK.
     geoclue-2.0
     gnome-common
     libedit-dev

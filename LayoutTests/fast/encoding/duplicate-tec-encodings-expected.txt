@@ -3,7 +3,7 @@ This test verifies that encodings that used to be supported by TEC on macOS are 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 
 
-The following encoding names are supported by WebKit cross-platform, but some may be removed at a later time.
+The following encoding names are supported by CyberKit cross-platform, but some may be removed at a later time.
 PASS new TextDecoder("iso-8859-10").encoding is "iso-8859-10"
 PASS new TextDecoder("iso8859101992").encoding is "iso-8859-10"
 PASS new TextDecoder("isoir157").encoding is "iso-8859-10"

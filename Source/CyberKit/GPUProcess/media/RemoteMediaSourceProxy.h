@@ -1,0 +1,110 @@
+/*
+ * Copyright (C) 2020 Apple Inc. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS''
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+ * THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+#pragma once
+
+#if ENABLE(GPU_PROCESS) && ENABLE(MEDIA_SOURCE)
+
+#include "MessageReceiver.h"
+#include "RemoteMediaSourceIdentifier.h"
+#include "RemoteSourceBufferProxy.h"
+#include <CyberCore/MediaSourcePrivate.h>
+#include <CyberCore/MediaSourcePrivateClient.h>
+#include <wtf/MediaTime.h>
+#include <wtf/RefCounted.h>
+#include <wtf/WeakPtr.h>
+
+namespace IPC {
+class Connection;
+class Decoder;
+}
+
+namespace CyberCore {
+class ContentType;
+class MediaSourcePrivate;
+class PlatformTimeRanges;
+}
+
+namespace CyberKit {
+
+class GPUConnectionToWebProcess;
+class RemoteMediaPlayerProxy;
+
+class RemoteMediaSourceProxy final
+    : public RefCounted<RemoteMediaSourceProxy>
+    , public CyberCore::MediaSourcePrivateClient
+    , private IPC::MessageReceiver {
+    WTF_MAKE_FAST_ALLOCATED;
+public:
+    RemoteMediaSourceProxy(GPUConnectionToWebProcess&, RemoteMediaSourceIdentifier, bool webMParserEnabled, RemoteMediaPlayerProxy&);
+    virtual ~RemoteMediaSourceProxy();
+
+    // MediaSourcePrivateClient overrides
+    void setPrivateAndOpen(Ref<CyberCore::MediaSourcePrivate>&&) final;
+    MediaTime duration() const final;
+    const CyberCore::PlatformTimeRanges& buffered() const final;
+    void seekToTime(const MediaTime&) final;
+    void monitorSourceBuffers() final;
+
+#if !RELEASE_LOG_DISABLED
+    void setLogIdentifier(const void*) final;
+#endif
+
+    void failedToCreateRenderer(RendererType) final;
+
+    void shutdown();
+
+private:
+    // IPC::MessageReceiver
+    void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
+    bool didReceiveSyncMessage(IPC::Connection&, IPC::Decoder&, UniqueRef<IPC::Encoder>&) final;
+
+    using AddSourceBufferCallback = CompletionHandler<void(CyberCore::MediaSourcePrivate::AddStatus, std::optional<RemoteSourceBufferIdentifier>)>;
+    void addSourceBuffer(const CyberCore::ContentType&, AddSourceBufferCallback&&);
+    void durationChanged(const MediaTime&);
+    void bufferedChanged(CyberCore::PlatformTimeRanges&&);
+    void markEndOfStream(CyberCore::MediaSourcePrivate::EndOfStreamStatus);
+    void unmarkEndOfStream();
+    void setReadyState(CyberCore::MediaPlayerEnums::ReadyState);
+    void setIsSeeking(bool);
+    void waitForSeekCompleted();
+    void seekCompleted();
+    void setTimeFudgeFactor(const MediaTime&);
+
+    WeakPtr<GPUConnectionToWebProcess> m_connectionToWebProcess;
+    RemoteMediaSourceIdentifier m_identifier;
+    bool m_webMParserEnabled { false };
+    RefPtr<CyberCore::MediaSourcePrivate> m_private;
+    WeakPtr<RemoteMediaPlayerProxy> m_remoteMediaPlayerProxy;
+
+    MediaTime m_duration;
+    CyberCore::PlatformTimeRanges m_buffered;
+
+    Vector<RefPtr<RemoteSourceBufferProxy>> m_sourceBuffers;
+};
+
+} // namespace CyberKit
+
+#endif // ENABLE(GPU_PROCESS) && ENABLE(MEDIA_SOURCE)

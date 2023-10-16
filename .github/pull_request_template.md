@@ -2,11 +2,11 @@
 
 ## File a Bug
 
-All changes should be associated with a bug. The WebKit project is currently using [Bugzilla](https://bugs.webkit.org) as our bug tracker. Note that multiple changes may be associated with a single bug.
+All changes should be associated with a bug. The CyberKit project is currently using [Bugzilla](https://bugs.webkit.org) as our bug tracker. Note that multiple changes may be associated with a single bug.
 
 ## Provided Tooling
 
-The WebKit Project strongly recommends contributors use [`Tools/Scripts/git-webkit`](https://github.com/WebKit/WebKit/tree/main/Tools/Scripts/git-webkit) to generate pull requests. See [Setup](https://github.com/WebKit/WebKit/wiki/Contributing#setup) and [Contributing Code](https://github.com/WebKit/WebKit/wiki/Contributing#contributing-code) for how to do this.
+The CyberKit Project strongly recommends contributors use [`Tools/Scripts/git-webkit`](https://github.com/CyberKit/CyberKit/tree/main/Tools/Scripts/git-webkit) to generate pull requests. See [Setup](https://github.com/CyberKit/CyberKit/wiki/Contributing#setup) and [Contributing Code](https://github.com/CyberKit/CyberKit/wiki/Contributing#contributing-code) for how to do this.
 
 ## Template
 

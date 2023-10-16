@@ -196,6 +196,6 @@ generateTestFor(mathvariant="auto", mathml=False)
 
 # Generate mathml/relations/css-styling/mathvariant-* tests.
 # TODO: Remove these tests from WPT and move them back to internal repos of
-# WebKit and Mozilla. See https://github.com/w3c/mathml-core/issues/182
+# CyberKit and Mozilla. See https://github.com/w3c/mathml-core/issues/182
 for mathvariant in mathvariantTransforms:
     generateTestFor(mathvariant, mathml=True)

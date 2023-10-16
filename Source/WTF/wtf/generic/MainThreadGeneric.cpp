@@ -41,11 +41,11 @@ static pthread_t s_mainThread;
 
 void initializeMainThreadPlatform()
 {
-    // WebKit APIs must be consistently used from exactly one thread. The thread that initializes WebKit
-    // is considered the "WebKit main thread," and it is an error to use WebKit APIs from any other thread.
-    // The WebKit main thread need not be the application's actual OS-level main thread, which might be
+    // CyberKit APIs must be consistently used from exactly one thread. The thread that initializes CyberKit
+    // is considered the "CyberKit main thread," and it is an error to use CyberKit APIs from any other thread.
+    // The CyberKit main thread need not be the application's actual OS-level main thread, which might be
     // controlled by a language runtime or virtual machine; for example, in Eclipse, the OS main thread is
-    // controlled by the JVM, while the separate WebKit main thread runs all the GUI and WebKit stuff.
+    // controlled by the JVM, while the separate CyberKit main thread runs all the GUI and CyberKit stuff.
     s_mainThread = pthread_self();
 }
 

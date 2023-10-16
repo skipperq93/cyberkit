@@ -3,7 +3,7 @@
 //
 // Chromium is pretty close execution-wise, but it parses javascript: URLs incorrectly.
 // Gecko navigates to non-string return values of the result of executing a javascript: URL.
-// WebKit executes javascript: URLs too early and has a harness error due to URL parsing.
+// CyberKit executes javascript: URLs too early and has a harness error due to URL parsing.
 //
 // The expectations below should match the HTML and URL standards.
 [

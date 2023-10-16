@@ -1,4 +1,4 @@
-This test passes if WebKit doesn't crash trying to compute whether the elements on this page should be ignored.
+This test passes if CyberKit doesn't crash trying to compute whether the elements on this page should be ignored.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

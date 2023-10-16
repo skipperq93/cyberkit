@@ -1,4 +1,4 @@
-This tests that WebKit can obtain form value from plugins
+This tests that CyberKit can obtain form value from plugins
 
 
 form values: "plugin=Plugin+form+value"

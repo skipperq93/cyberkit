@@ -4,7 +4,7 @@
 <p>This tests that changing selection in an iframe does not fire selectionchange event in the parent document and vice versa.</p>
 <div id="container">
 <iframe id="child" src="about:blank"></iframe>
-<div id="parent">WebKit rocks</div>
+<div id="parent">CyberKit rocks</div>
 </div>
 <ul id="console">
 </ul>
@@ -44,7 +44,7 @@ tests = [
                 range.setEnd(parent.firstChild, 12);
                 selectionOfParent.removeAllRanges();
                 selectionOfParent.addRange(range);
-                return '"rocks" of "WebKit rocks" in the parent';
+                return '"rocks" of "CyberKit rocks" in the parent';
             },
         expected: 'parent, parent',
         alt_expected: 'parent',

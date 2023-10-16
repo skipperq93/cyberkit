@@ -1,4 +1,4 @@
-Test case for bug 17403: WebKit Creates Invalid Xhtml Links with Ajax
+Test case for bug 17403: CyberKit Creates Invalid Xhtml Links with Ajax
 
 You should see the sentence: 'Should be &: &' (without the quotes)
 

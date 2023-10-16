@@ -91,8 +91,8 @@ function isModifierKey(e) {
     }
     // Windows, Command or Meta key.
     if (e.keyCode == 224 // Right/Left: Gecko
-        || e.keyCode == 91    // Left: WebKit/Blink
-        || e.keyCode == 93    // Right: WebKit/Blink
+        || e.keyCode == 91    // Left: CyberKit/Blink
+        || e.keyCode == 93    // Right: CyberKit/Blink
         ) {
         return true;
     }

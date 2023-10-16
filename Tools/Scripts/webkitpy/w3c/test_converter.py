@@ -32,7 +32,7 @@ import re
 import sys
 
 from webkitpy.common.host import Host
-from webkitpy.common.webkit_finder import WebKitFinder
+from webkitpy.common.webkit_finder import CyberKitFinder
 
 if sys.version_info > (3, 0):
     from html.parser import HTMLParser
@@ -68,7 +68,7 @@ class _W3CTestConverter(HTMLParser):
 
         self._host = host
         self._filesystem = self._host.filesystem
-        self._webkit_root = WebKitFinder(self._filesystem).webkit_base()
+        self._webkit_root = CyberKitFinder(self._filesystem).webkit_base()
 
         self.converted_data = []
         self.converted_properties = []
@@ -80,9 +80,9 @@ class _W3CTestConverter(HTMLParser):
         self.webkit_test_runner_options = webkit_test_runner_options
         self.has_started = False
 
-        # These settings might vary between WebKit and Blink
-        css_property_file = self.path_from_webkit_root('Source', 'WebCore', 'css', 'CSSProperties.json')
-        css_property_value_file = self.path_from_webkit_root('Source', 'WebCore', 'css', 'CSSValueKeywords.in')
+        # These settings might vary between CyberKit and Blink
+        css_property_file = self.path_from_webkit_root('Source', 'CyberCore', 'css', 'CSSProperties.json')
+        css_property_value_file = self.path_from_webkit_root('Source', 'CyberCore', 'css', 'CSSValueKeywords.in')
 
         self.prefixed_properties = self.read_webkit_prefixed_css_property_list(css_property_file)
         prop_regex = r'([\s{]|^)(' + "|".join(prop.replace('-webkit-', '') for prop in self.prefixed_properties) + r')(\s+:|:)'

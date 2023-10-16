@@ -1,5 +1,5 @@
-This test ensures WebKit does not skip paragraphs when determining the insertion position for paste.
-You should see "hello world<caret> WebKit" below.
+This test ensures CyberKit does not skip paragraphs when determining the insertion position for paste.
+You should see "hello world<caret> CyberKit" below.
 
 Initial markup:
 | "\n"
@@ -19,7 +19,7 @@ Initial markup:
 |     <span>
 |       class="Apple-style-span"
 |       style="font-family: 'courier new', monospace;"
-|       " WebKit"
+|       " CyberKit"
 | "\n"
 
 After inserting " world":
@@ -40,10 +40,10 @@ After inserting " world":
 |     <span>
 |       class="Apple-style-span"
 |       style="font-family: 'courier new', monospace;"
-|       " WebKit"
+|       " CyberKit"
 | "\n"
 
-After deleting line break before " WebKit":
+After deleting line break before " CyberKit":
 | "\n"
 | <font>
 |   class="Apple-style-span"
@@ -61,5 +61,5 @@ After deleting line break before " WebKit":
 |     <span>
 |       class="Apple-style-span"
 |       style="font-family: 'courier new', monospace;"
-|       " WebKit"
+|       " CyberKit"
 | "\n"

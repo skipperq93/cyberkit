@@ -32,8 +32,8 @@ shouldBe('plainTextWithBackwardsTextIterator("<div>hello</div><div>world</div>")
 
 debug('');
 
-shouldBe('plainTextWithTextIterator("<div><b>h</b>ello <span>world</span></div>WebKit")', '"hello world\\nWebKit"');
-shouldBe('plainTextWithBackwardsTextIterator("<div><b>h</b>ello <span>world</span></div>WebKit")', '"\\nhello world\\nWebKit"');
+shouldBe('plainTextWithTextIterator("<div><b>h</b>ello <span>world</span></div>CyberKit")', '"hello world\\nCyberKit"');
+shouldBe('plainTextWithBackwardsTextIterator("<div><b>h</b>ello <span>world</span></div>CyberKit")', '"\\nhello world\\nCyberKit"');
 
 debug('');
 
@@ -42,8 +42,8 @@ shouldBe('plainTextWithBackwardsTextIterator("hello<br>world<br>")', '"hello\\nw
 
 debug('');
 
-shouldBe('plainTextWithTextIterator("<ul><li>hello<li>world</ul>WebKit")', '"hello\\nworld\\nWebKit"');
-shouldBe('plainTextWithBackwardsTextIterator("<ul><li>hello<li>world</ul>WebKit")', '"\\n\\nhello\\nworld\\nWebKit"');
+shouldBe('plainTextWithTextIterator("<ul><li>hello<li>world</ul>CyberKit")', '"hello\\nworld\\nCyberKit"');
+shouldBe('plainTextWithBackwardsTextIterator("<ul><li>hello<li>world</ul>CyberKit")', '"\\n\\nhello\\nworld\\nCyberKit"');
 
 debug('');
 

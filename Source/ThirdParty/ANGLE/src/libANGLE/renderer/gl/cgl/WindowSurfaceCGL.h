@@ -18,10 +18,10 @@ struct __IOSurface;
 typedef __IOSurface *IOSurfaceRef;
 
 #ifdef ANGLE_OUTSIDE_WEBKIT
-// Avoid collisions with the system's WebKit.framework.
+// Avoid collisions with the system's CyberKit.framework.
 @class ANGLESwapCGLLayer;
 #else
-// WebKit's build process requires that every Objective-C class name has the prefix "Web".
+// CyberKit's build process requires that every Objective-C class name has the prefix "Web".
 @class WebSwapCGLLayer;
 #endif
 

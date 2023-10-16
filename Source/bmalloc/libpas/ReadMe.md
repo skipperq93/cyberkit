@@ -1,9 +1,9 @@
 # libpas - Phil's Awesome System
 
 Libpas is a configurable memory allocator toolkit designed to enable adoption
-of isoheaps. Currently, libpas' main client is WebKit's bmalloc project, where
+of isoheaps. Currently, libpas' main client is CyberKit's bmalloc project, where
 it's used as a replacement for all of bmalloc's functionality (bmalloc::api,
-IsoHeap<>, and Gigacage). Libpas' jit_heap API is also used by WebKit's
+IsoHeap<>, and Gigacage). Libpas' jit_heap API is also used by CyberKit's
 ExecutableAllocator.
 
 
@@ -11,7 +11,7 @@ ExecutableAllocator.
 
 This section describes how to build libpas standalone. You'll be doing this a
 lot when making changes to libpas. It's wise to run libpas' tests before
-trying out your change in any larger system (like WebKit) since libpas tests
+trying out your change in any larger system (like CyberKit) since libpas tests
 are great at catching bugs. If libpas passes its own tests then basic browsing
 will seem to work. In production, libpas gets built as part of some other
 project (like bmalloc), which just pulls all of libpas' files into that
@@ -69,7 +69,7 @@ exposes a bunch of different memory allocators, with different configurations
 ranging from sensible to deranged, without overriding malloc and friends. For
 production use, libpas is meant to be built as part of some larger malloc
 project; for example, when libpas sees the PAS_BMALLOC macro, it will provide
-everything that WebKit's bmalloc library needs to create an allocator.
+everything that CyberKit's bmalloc library needs to create an allocator.
 
 Libpas' toolkit of allocators has three building blocks:
 

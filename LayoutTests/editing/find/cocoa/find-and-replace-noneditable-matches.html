@@ -25,7 +25,7 @@
     </div>
 </body>
 <script>
-Markup.description("Verifies that find and replace does not change matches in noneditable content. This test requires WebKitTestRunner.");
+Markup.description("Verifies that find and replace does not change matches in noneditable content. This test requires CyberKitTestRunner.");
 testRunner.findStringMatchesInPage("eta", []);
 testRunner.replaceFindMatchesAtIndices([0, 1, 2, 3, 4], "_eta_", false);
 Markup.dump("editor", "After replacing 'eta' with '_eta_'");

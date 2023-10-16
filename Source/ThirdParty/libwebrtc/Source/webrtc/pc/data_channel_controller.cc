@@ -332,7 +332,7 @@ DataChannelController::InternalCreateDataChannelWithProxy(
           // If the transport is ready to send because the initial channel
           // ready signal may have been sent before the DataChannel creation.
           // This has to be done async because the upper layer objects (e.g.
-          // Chrome glue and WebKit) are not wired up properly until after
+          // Chrome glue and CyberKit) are not wired up properly until after
           // `InternalCreateDataChannelWithProxy` returns.
           network_thread()->PostTask([channel = channel.value()] {
             if (channel->state() != DataChannelInterface::DataState::kClosed)

@@ -59,7 +59,7 @@ XMLHttpRequest should be an EventTarget.</p>
     req.open("GET", "resources/reply.xml", false);
     req.send("");
 
-    // WebKit doesn't remove event listeners when re-opening a request, unlike Mozilla.
+    // CyberKit doesn't remove event listeners when re-opening a request, unlike Mozilla.
     req.open("GET", "resources/reply.xml", false);
     req.send("");
 

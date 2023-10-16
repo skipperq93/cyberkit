@@ -27,7 +27,7 @@ function treeAsString(node) {
 }
 
 function doctypeNodeName(iframeDocument) {
-    // WebKit returns "html" (matching the specified name of the doctype source)
+    // CyberKit returns "html" (matching the specified name of the doctype source)
     // Gecko returns "HTML" and IE "#comment"
     // We don't care for this test, so we use this hack.
     return iframeDocument.firstChild.nodeName;

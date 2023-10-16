@@ -30,7 +30,7 @@ async function removeSubframeAndClearMemoryCache() {
         internals.clearMemoryCache();
 }
 
-description("This test verifies that the load event is dispatched for a subframe that is allowed by content filters, in the case where the data for the subframe resource request comes from the disk cache. This test requires WebKitTestRunner.");
+description("This test verifies that the load event is dispatched for a subframe that is allowed by content filters, in the case where the data for the subframe resource request comes from the disk cache. This test requires CyberKitTestRunner.");
 
 addEventListener("load", async () => {
     for (let frameNumber = 1; frameNumber <= 5; ++frameNumber) {

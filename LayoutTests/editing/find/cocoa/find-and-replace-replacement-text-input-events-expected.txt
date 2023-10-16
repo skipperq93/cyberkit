@@ -1,4 +1,4 @@
-Verifies that find and replace fires input events of type "insertReplacementText". This test requires WebKitTestRunner.
+Verifies that find and replace fires input events of type "insertReplacementText". This test requires CyberKitTestRunner.
 
 Pineapple
 

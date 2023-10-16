@@ -307,7 +307,7 @@ Suites.push({
                 contentWindow.$(subject).text('Hello');
                 message.focus();
                 contentWindow.$(message).trigger('keydown');
-                contentWindow.$(message).text('Hello,\n\nThis is a test message.\n\n- WebKitten');
+                contentWindow.$(message).text('Hello,\n\nThis is a test message.\n\n- CyberKitten');
                 contentDocument.getElementById('send_composed').click();
             }
         }),

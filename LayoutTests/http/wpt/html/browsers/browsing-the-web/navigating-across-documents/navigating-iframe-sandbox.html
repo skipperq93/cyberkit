@@ -11,7 +11,7 @@ promise_test(async t => {
     myframe1.src = "resources/frame-posting-messages.html";
     assert_equals(await promise, "hello");
 
-    myframe1.contentWindow.location = "http://127.0.0.1:8800/WebKit/html/browsers/browsing-the-web/navigating-across-documents/resources/only-same-origin-allowed.py";
+    myframe1.contentWindow.location = "http://127.0.0.1:8800/CyberKit/html/browsers/browsing-the-web/navigating-across-documents/resources/only-same-origin-allowed.py";
     await new Promise(resolve => setTimeout(resolve, 200));
 
     // Navigation is blocked, previous document should be replaced with an error document

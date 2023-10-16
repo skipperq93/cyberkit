@@ -1,14 +1,14 @@
-# WebKitGTK MiniBrowser
+# CyberKitGTK MiniBrowser
 
 
-To be able to run tests with the WebKitGTK MiniBrowser you need the
+To be able to run tests with the CyberKitGTK MiniBrowser you need the
 following packages installed:
 
 * Fedora: `webkit2gtk3-devel`
 * Debian or Ubuntu: `webkit2gtk-driver`
 
 
-The WebKitGTK MiniBrowser is not installed on the default binary path.
+The CyberKitGTK MiniBrowser is not installed on the default binary path.
 The `wpt` script will try to automatically locate it, but if you need
 to run it manually you can find it on any of this paths:
 

@@ -4,7 +4,7 @@ from .base import (NullBrowser,  # noqa: F401
                    certificate_domain_list,
                    get_timeout_multiplier,  # noqa: F401
                    maybe_add_args)
-from .webkit import WebKitBrowser  # noqa: F401
+from .webkit import CyberKitBrowser  # noqa: F401
 from ..executors import executor_kwargs as base_executor_kwargs
 from ..executors.base import WdspecExecutor  # noqa: F401
 from ..executors.executorwebdriver import (WebDriverTestharnessExecutor,  # noqa: F401
@@ -13,7 +13,7 @@ from ..executors.executorwebdriver import (WebDriverTestharnessExecutor,  # noqa
 
 __wptrunner__ = {"product": "epiphany",
                  "check_args": "check_args",
-                 "browser": {None: "WebKitBrowser",
+                 "browser": {None: "CyberKitBrowser",
                              "wdspec": "NullBrowser"},
                  "browser_kwargs": "browser_kwargs",
                  "executor": {"testharness": "WebDriverTestharnessExecutor",

@@ -1,8 +1,8 @@
   var compatibilityMode;
   if (navigator.userAgent.includes("Chrome")) {
     compatibilityMode = "Chrome";
-  } else if (navigator.userAgent.includes("WebKit")) {
-    compatibilityMode = "WebKit";
+  } else if (navigator.userAgent.includes("CyberKit")) {
+    compatibilityMode = "CyberKit";
   } else {
     compatibilityMode = "Gecko";
   }
@@ -63,7 +63,7 @@
     if ("window" in self) {
       if (compatibilityMode == "Chrome") {
         assert_equals(navigator.vendor, "Google Inc.");
-      } else if (compatibilityMode == "WebKit") {
+      } else if (compatibilityMode == "CyberKit") {
         assert_equals(navigator.vendor, "Apple Computer, Inc.");
       } else {
         assert_equals(navigator.vendor, "");

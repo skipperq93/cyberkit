@@ -16,7 +16,7 @@ layer at (0,0) size 800x600
             text run at (400,0) width 60: "bug 7739"
         RenderText {#text} at (460,0) size 769x39
           text run at (460,0) width 309: ": REGRESSION: Assertion failure loading acid2"
-          text run at (0,20) width 298: "test in -[WebCoreFrameBridge installInFrame:]"
+          text run at (0,20) width 298: "test in -[CyberCoreFrameBridge installInFrame:]"
       RenderBlock {P} at (0,56) size 784x40
         RenderText {#text} at (0,0) size 774x39
           text run at (0,0) width 163: "Here is an invalid iframe. "

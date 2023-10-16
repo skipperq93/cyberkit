@@ -31,7 +31,7 @@ promise_test(async (test) => {
         });
     });
 
-    const link = get_host_info().HTTPS_REMOTE_ORIGIN +  "/WebKit/service-workers/resources/loading-subresources.css";
+    const link = get_host_info().HTTPS_REMOTE_ORIGIN +  "/CyberKit/service-workers/resources/loading-subresources.css";
     const iframe = await with_iframe(scope + "?" + link);
     assert_true(!!iframe.contentWindow.navigator.serviceWorker.controller);
 

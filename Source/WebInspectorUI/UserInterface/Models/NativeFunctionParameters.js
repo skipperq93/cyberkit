@@ -219,7 +219,7 @@ WI.NativeConstructorFunctionParameters = {
         __proto__: null,
     },
 
-    WebKitMediaKeysConstructor: {
+    CyberKitMediaKeysConstructor: {
         isTypeSupported: "keySystem, [type]",
         __proto__: null,
     },
@@ -2003,7 +2003,7 @@ WI.NativePrototypeFunctionParameters = {
         __proto__: null,
     },
 
-    WebKitCSSMatrix: {
+    CyberKitCSSMatrix: {
         multiply: "[secondMatrix]",
         rotate: "[rotX], [rotY], [rotZ]",
         rotateAxisAngle: "[x], [y], [z], [angle]",
@@ -2015,28 +2015,28 @@ WI.NativePrototypeFunctionParameters = {
         __proto__: null,
     },
 
-    WebKitMediaKeySession: {
+    CyberKitMediaKeySession: {
         update: "key",
         __proto__: null,
     },
 
-    WebKitMediaKeys: {
+    CyberKitMediaKeys: {
         createSession: "[type], [initData]",
         __proto__: null,
     },
 
-    WebKitNamedFlow: {
+    CyberKitNamedFlow: {
         getRegionsByContent: "contentNode",
         __proto__: null,
     },
 
-    WebKitNamedFlowCollection: {
+    CyberKitNamedFlowCollection: {
         item: "index",
         namedItem: "name",
         __proto__: null,
     },
 
-    WebKitSubtleCrypto: {
+    CyberKitSubtleCrypto: {
         decrypt: "algorithm, key, data",
         digest: "algorithm, data",
         encrypt: "algorithm, key, data",
@@ -2057,7 +2057,7 @@ WI.NativePrototypeFunctionParameters = {
     },
 
     WheelEvent: {
-        initWebKitWheelEvent: "[wheelDeltaX], [wheelDeltaY], [view], [screenX], [screenY], [clientX], [clientY], [ctrlKey], [altKey], [shiftKey], [metaKey]",
+        initCyberKitWheelEvent: "[wheelDeltaX], [wheelDeltaY], [view], [screenX], [screenY], [clientX], [clientY], [ctrlKey], [altKey], [shiftKey], [metaKey]",
         __proto__: null,
     },
 

@@ -40,7 +40,7 @@ except ImportError:
         raise
 
 class GtkTestRunner(TestRunner):
-    TestRunner.TEST_TARGETS = [ "WebKitGTK", "TestWebKit", "TestJSC", "TestWTF", "TestWebCore", "TestJavaScriptCore" ]
+    TestRunner.TEST_TARGETS = [ "CyberKitGTK", "TestCyberKit", "TestJSC", "TestWTF", "TestCyberCore", "TestCyberScriptCore" ]
 
     def __init__(self, options, tests=[]):
         super(GtkTestRunner, self).__init__("gtk", options, tests)
@@ -71,17 +71,17 @@ class GtkTestRunner(TestRunner):
 
         # If we cannot start the accessibility daemons, we can just skip the accessibility tests.
         if not self._ensure_accessibility_service_is_running():
-            print("Could not start accessibility bus, so disabling TestWebKitAccessibility")
-            self._disabled_tests.append("WebKitGTK/TestWebKitAccessibility")
+            print("Could not start accessibility bus, so disabling TestCyberKitAccessibility")
+            self._disabled_tests.append("CyberKitGTK/TestCyberKitAccessibility")
 
     def _tear_down_testing_environment(self):
         super(GtkTestRunner, self)._tear_down_testing_environment()
 
     def is_glib_test(self, test_program):
-        return os.path.basename(os.path.dirname(test_program)) in ["WebKitGTK"] or os.path.basename(test_program) in ["TestJSC"]
+        return os.path.basename(os.path.dirname(test_program)) in ["CyberKitGTK"] or os.path.basename(test_program) in ["TestJSC"]
 
     def is_google_test(self, test_program):
-        return os.path.basename(test_program) in ["TestWebKit", "TestWTF", "TestWebCore", "TestJavaScriptCore"]
+        return os.path.basename(test_program) in ["TestCyberKit", "TestWTF", "TestCyberCore", "TestCyberScriptCore"]
 
     def is_qt_test(self, test_program):
         return False

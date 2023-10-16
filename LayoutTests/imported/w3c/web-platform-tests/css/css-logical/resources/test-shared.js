@@ -69,7 +69,7 @@ export const writingModes = [
     block: "horizontal", inline: "vertical" },
 ];
 
-// Check if logical properties work well in WebKit non-standard
+// Check if logical properties work well in CyberKit non-standard
 // '-webkit-writing-mode: horizontal-bt' mode
 if (CSS.supports("-webkit-writing-mode", "horizontal-bt")) {
   writingModes.push (

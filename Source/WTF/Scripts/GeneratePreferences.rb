@@ -39,7 +39,7 @@ optparse = OptionParser.new do |opts|
 
   opts.separator ""
 
-  opts.on("--frontend input", "frontend to generate preferences for (WebKit, WebKitLegacy)") { |frontend| options[:frontend] = frontend }
+  opts.on("--frontend input", "frontend to generate preferences for (CyberKit, CyberKitLegacy)") { |frontend| options[:frontend] = frontend }
   opts.on("--template input", "template to use for generation (may be specified multiple times)") { |template| options[:templates] << template }
   opts.on("--outputDir output", "directory to generate file in (default: cwd)") { |outputDir| options[:outputDirectory] = outputDir }
   opts.on("-h", "--help", "show this help message") { puts opts; exit 1 }
@@ -100,11 +100,11 @@ class Preference
     @category = opts["category"] || "none"
     @defaultsOverridable = opts["defaultsOverridable"] || false
     @humanReadableName = (opts["humanReadableName"] || "")
-    if not humanReadableName.start_with? "WebKitAdditions"
+    if not humanReadableName.start_with? "CyberKitAdditions"
         @humanReadableName = '"' + humanReadableName + '"'
     end
     @humanReadableDescription = (opts["humanReadableDescription"] || "")
-    if not humanReadableDescription.start_with? "WebKitAdditions"
+    if not humanReadableDescription.start_with? "CyberKitAdditions"
         @humanReadableDescription = '"' + humanReadableDescription + '"'
     end
     @getter = opts["getter"]
@@ -170,13 +170,13 @@ class Preference
       end
   end
 
-  # WebKitLegacy specific helpers.
+  # CyberKitLegacy specific helpers.
 
   def preferenceKey
     if @opts["webKitLegacyPreferenceKey"]
       @opts["webKitLegacyPreferenceKey"]
     else
-      "WebKit#{@name}"
+      "CyberKit#{@name}"
     end
   end
 
@@ -224,7 +224,7 @@ class Preference
     %w{ developer testable preview stable }.include? @status
   end
 
-  # Features which should only be presented in WebKit development contexts.
+  # Features which should only be presented in CyberKit development contexts.
   def internal?
     %w{ unstable internal }.include? @status
   end
@@ -272,7 +272,7 @@ class Preferences
 
     if parsedPreferences
       parsedPreferences.each do |name, options|
-        webcoreSettingOnly = !options["webcoreBinding"] && options["defaultValue"].keys == ["WebCore"]
+        webcoreSettingOnly = !options["webcoreBinding"] && options["defaultValue"].keys == ["CyberCore"]
         status = options["status"]
         if !STATUSES.include?(status)
           reject.call "Preference #{name}'s status \"#{status}\" is not one of the known statuses: #{STATUSES}"
@@ -281,9 +281,9 @@ class Preferences
 
         if %w{ unstable internal developer testable preview stable }.include?(status)
           reject.call "Preference #{name} has no humanReadableName, which is required." if !options["humanReadableName"]
-          reject.call "Preference #{name} is visible in client UI and has a default value bound to WebCore::Settings, so it must have default values for all frontends" if webcoreSettingOnly
+          reject.call "Preference #{name} is visible in client UI and has a default value bound to CyberCore::Settings, so it must have default values for all frontends" if webcoreSettingOnly
           next if failed
-        elsif webcoreSettingOnly and @frontend != "WebCore"
+        elsif webcoreSettingOnly and @frontend != "CyberCore"
           next
         end
 

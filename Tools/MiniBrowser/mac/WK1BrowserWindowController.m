@@ -27,13 +27,13 @@
 
 #import "AppDelegate.h"
 #import "SettingsController.h"
-#import <WebKit/WebInspector.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/WebNSURLExtras.h>
-#import <WebKit/WebPreferences.h>
-#import <WebKit/WebPreferencesPrivate.h>
-#import <WebKit/WebPreferenceKeysPrivate.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebInspector.h>
+#import <CyberKit/CyberKit.h>
+#import <CyberKit/WebNSURLExtras.h>
+#import <CyberKit/WebPreferences.h>
+#import <CyberKit/WebPreferencesPrivate.h>
+#import <CyberKit/WebPreferenceKeysPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 
 @interface WK1BrowserWindowController () <WebFrameLoadDelegate, WebPolicyDelegate, WebResourceLoadDelegate, WebUIDelegate>
 @end
@@ -336,7 +336,7 @@ static BOOL areEssentiallyEqual(double a, double b)
     preferences.mockCaptureDevicesEnabled = settings.useMockCaptureDevices;
 
     preferences.serviceControlsEnabled = settings.dataDetectorsEnabled;
-    // There is no WebKitLegacy API on macOS for telephone number detection.
+    // There is no CyberKitLegacy API on macOS for telephone number detection.
 
     _webView._useSystemAppearance = settings.useSystemAppearance;
 

@@ -21,7 +21,7 @@ for (let i = 0; i < 1e6; ++i) {
 // Make it OSR Exit.
 if (simpleArith({ valueOf: function() { return 5; }}) !== 6)
     throw "Failed simpleArith({ toValue: function() { return 5; }}";
-if (simpleArith("WebKit!") !== 1)
+if (simpleArith("CyberKit!") !== 1)
     throw "Failed simpleArith({ toValue: function() { return 5; }}";
 
 

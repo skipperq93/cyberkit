@@ -24,7 +24,7 @@
 */
 
 import Foundation
-import JavaScriptCore
+import CyberScriptCore
 
 enum Priority : Int {
     case Idle = 0

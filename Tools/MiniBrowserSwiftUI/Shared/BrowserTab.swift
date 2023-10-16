@@ -24,7 +24,7 @@
  */
 
 import SwiftUI
-import _WebKit_SwiftUI
+import _CyberKit_SwiftUI
 
 struct BrowserTab : View {
     @StateObject private var state = WebViewState(initialURL: URL(string: "https://webkit.org/")!)

@@ -23,7 +23,7 @@
         finishedWriting = false;
 
         async function runTest() {
-            description("This test verifies that if platform pasteboard contents are changed immediately after calling Clipboard.write(), the promise should be rejected. This test needs to be run in WebKitTestRunner or DumpRenderTree.");
+            description("This test verifies that if platform pasteboard contents are changed immediately after calling Clipboard.write(), the promise should be rejected. This test needs to be run in CyberKitTestRunner or DumpRenderTree.");
 
             const copyButton = document.getElementById("copy");
             copyButton.addEventListener("click", async event => {

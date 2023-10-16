@@ -42,7 +42,7 @@ shouldBe('setValueAsNumberAndGetValue(1, 2)', '"0001-02"');
 shouldBe('setValueAsNumberAndGetValue(275760, 9)', '"275760-09"');
 shouldBe('setValueAsNumberAndGetValue(275760, 10)', '""');
 
-// Date.UTC() of V8 throws an exception for the following value though JavaScriptCore doesn't.
+// Date.UTC() of V8 throws an exception for the following value though CyberScriptCore doesn't.
 // shouldBe('setValueAsNumberAndGetValue(275760, 8, 14)', '"275760-09"');
 
 debug('Tests to set invalid values to valueAsNumber:');

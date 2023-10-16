@@ -27,14 +27,14 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-"""Generates WebKit WebGL layout tests from the Khronos WebGL conformance tests
+"""Generates CyberKit WebGL layout tests from the Khronos WebGL conformance tests
 
  To use this, get a copy of the WebGL conformance tests then run this script
  eg.
    cd ~/temp
    git clone git://github.com/KhronosGroup/WebGL.git
    mkdir backup
-   mv ~/WebKit/LayoutTests/{http/,}webgl/{1.0.x,2.0.y,resources/webgl_test_files} backup
+   mv ~/CyberKit/LayoutTests/{http/,}webgl/{1.0.x,2.0.y,resources/webgl_test_files} backup
    update-webgl-conformance-tests -c ~/temp/WebGL
    run-webkit-tests --debug --webgl --order=random webgl
    run-webkit-tests --release --webgl --order=random webgl

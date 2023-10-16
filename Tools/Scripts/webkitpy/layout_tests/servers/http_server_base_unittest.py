@@ -64,13 +64,13 @@ class TestHttpServerBase(unittest.TestCase):
 
         data = [
             ['/media-resources', 'media'],
-            ['/modern-media-controls', '../Source/WebCore/Modules/modern-media-controls'],
+            ['/modern-media-controls', '../Source/CyberCore/Modules/modern-media-controls'],
             ['/resources/testharness.css', 'resources/testharness.css'],
         ]
 
         expected = [
             ('/media-resources', '/test.checkout/LayoutTests/media'),
-            ('/modern-media-controls', '/test.checkout/LayoutTests/../Source/WebCore/Modules/modern-media-controls'),
+            ('/modern-media-controls', '/test.checkout/LayoutTests/../Source/CyberCore/Modules/modern-media-controls'),
             ('/resources/testharness.css', '/test.checkout/LayoutTests/resources/testharness.css'),
         ]
 

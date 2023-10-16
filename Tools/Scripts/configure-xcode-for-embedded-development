@@ -252,7 +252,7 @@ def do_copy(source_path, dest_path):
 #
 # Note that we don't need to be too particular about this. We only need to
 # link; we don't need to run. This allows us to simply specify the full set of
-# architectures for which WebKit is built, regardless of whether the associated
+# architectures for which CyberKit is built, regardless of whether the associated
 # library/framework was actually built for all those architectures.
 
 def patch_tbd_architecture(framework_path):
@@ -338,7 +338,7 @@ def copy_missing_frameworks(source_sdk, dest_sdk):
             patch_tbd_architecture(dest_framework_path)
 
 
-# Some functions that WebKit needs to call are marked as "unavailable" on the
+# Some functions that CyberKit needs to call are marked as "unavailable" on the
 # embedded platforms. Create a stub header that will nullify the effect of the
 # annotations on those functions. Note that there's no guarantee that the
 # resulting product can run -- we just want to build.

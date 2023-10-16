@@ -47,7 +47,7 @@ debug("Initial state is without placehoder.");
 testBackgroundColor(false);
 
 debug("Adding a valid placeholder matches.");
-setAttribute("placeholder", "WebKit!");
+setAttribute("placeholder", "CyberKit!");
 testBackgroundColor(true);
 
 debug("Using an invalid placeholder value does not match.");
@@ -55,7 +55,7 @@ setAttribute("placeholder", "\n");
 testBackgroundColor(false);
 
 debug("Adding back a placehoder and an empty value. An empty value does not prevent matching.");
-setAttribute("placeholder", "WebKit!");
+setAttribute("placeholder", "CyberKit!");
 inputCaseWithRenderer.value = "";
 textareaCaseWithRenderer.appendChild(document.createTextNode(""));
 inputCaseWithoutRenderer.value = "";
@@ -101,7 +101,7 @@ textareaCaseWithoutRenderer.appendChild(document.createTextNode("Foobar"));
 testBackgroundColor(false);
 
 debug("Adding back the placeholder, the value is still there so we cannot match yet.");
-setAttribute("placeholder", "WebKit!");
+setAttribute("placeholder", "CyberKit!");
 testBackgroundColor(false);
 
 debug("Removing the value. A placeholder was added while the value was up, we should get the style now.");

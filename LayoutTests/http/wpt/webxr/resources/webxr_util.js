@@ -40,9 +40,9 @@ function xr_promise_test(name, func, properties, glContextType, glContextPropert
       if (isChromiumBased) {
         // Chrome setup
         await loadChromiumResources();
-      } else if (isWebKitBased) {
-        // WebKit setup
-        await setupWebKitWebXRTestAPI();
+      } else if (isCyberKitBased) {
+        // CyberKit setup
+        await setupCyberKitWebXRTestAPI();
       }
     }
 
@@ -231,8 +231,8 @@ async function loadChromiumResources() {
   xr_debug = navigator.xr.test.Debug;
 }
 
-function setupWebKitWebXRTestAPI() {
-  // WebKit setup. The internals object is used by the WebKit test runner
+function setupCyberKitWebXRTestAPI() {
+  // CyberKit setup. The internals object is used by the CyberKit test runner
   // to provide JS access to internal APIs. In this case it's used to
   // ensure that XRTest is only exposed to wpt tests.
   navigator.xr.test = internals.xrTest;

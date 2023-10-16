@@ -7,7 +7,7 @@ index d3a144a4..b4bdc466 100644
      length -= n_hw;
  
 +  // Enforce the use of /dev/urandom for testing of the libgcrypt-based
-+  // Web Crypto implementation testing in WebKit.
++  // Web Crypto implementation testing in CyberKit.
 +  // DO NOT USE THIS PATCH OUTSIDE OF TESTING ENVIRONMENTS.
 +  level = 0;
 +

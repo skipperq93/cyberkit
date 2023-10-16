@@ -28,7 +28,7 @@ function testCloneRange(rangeEndpoints) {
 
   // Have to account for Ranges involving Documents!  We could just create
   // the Range from the current document unconditionally, but some browsers
-  // (WebKit) don't implement setStart() and setEnd() per spec and will throw
+  // (CyberKit) don't implement setStart() and setEnd() per spec and will throw
   // spurious exceptions at the time of this writing.  No need to mask other
   // bugs.
   var ownerDoc = rangeEndpoints[0].nodeType == Node.DOCUMENT_NODE

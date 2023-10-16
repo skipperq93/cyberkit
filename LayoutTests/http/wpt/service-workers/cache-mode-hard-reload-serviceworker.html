@@ -8,7 +8,7 @@
 </div>
 <div id="testElement"></div>
 <script>
-var scope = "/WebKit/service-workers/cache-mode-hard-reload-serviceworker.html";
+var scope = "/CyberKit/service-workers/cache-mode-hard-reload-serviceworker.html";
 
 if (window.testRunner) {
     testRunner.dumpAsText();
@@ -88,20 +88,20 @@ onload = () => {
 
 function validateResult(result)
 {
-    if (result.url === "http://localhost:8800/WebKit/service-workers/cache-mode-hard-reload-serviceworker.html")
+    if (result.url === "http://localhost:8800/CyberKit/service-workers/cache-mode-hard-reload-serviceworker.html")
         return result.cache === "reload";
-    if (result.url === "http://localhost:8800/WebKit/service-workers/resources/cache-mode-hard-reload-serviceworker.py?first-script-static")
+    if (result.url === "http://localhost:8800/CyberKit/service-workers/resources/cache-mode-hard-reload-serviceworker.py?first-script-static")
         return result.cache === "reload";
-    if (result.url === "http://localhost:8800/WebKit/service-workers/resources/cache-mode-hard-reload-serviceworker.py?second-script-dynamic")
+    if (result.url === "http://localhost:8800/CyberKit/service-workers/resources/cache-mode-hard-reload-serviceworker.py?second-script-dynamic")
         return result.cache === "reload";
-    if (result.url === "http://localhost:8800/WebKit/service-workers/resources/cache-mode-hard-reload-serviceworker.py?third-script-async")
+    if (result.url === "http://localhost:8800/CyberKit/service-workers/resources/cache-mode-hard-reload-serviceworker.py?third-script-async")
         return result.cache === "reload";
 
-    if (result.url === "http://localhost:8800/WebKit/service-workers/resources/cache-mode-hard-reload-serviceworker.py?fourth-script-during-onload")
+    if (result.url === "http://localhost:8800/CyberKit/service-workers/resources/cache-mode-hard-reload-serviceworker.py?fourth-script-during-onload")
         return result.cache === "reload";
-    if (result.url === "http://localhost:8800/WebKit/service-workers/resources/cache-mode-hard-reload-serviceworker.py?fifth-script-just-after-onload")
+    if (result.url === "http://localhost:8800/CyberKit/service-workers/resources/cache-mode-hard-reload-serviceworker.py?fifth-script-just-after-onload")
         return result.cache === "reload";
-    if (result.url === "http://localhost:8800/WebKit/service-workers/resources/cache-mode-hard-reload-serviceworker.py?sixth-script-async")
+    if (result.url === "http://localhost:8800/CyberKit/service-workers/resources/cache-mode-hard-reload-serviceworker.py?sixth-script-async")
         return result.cache === "reload";
 
 }

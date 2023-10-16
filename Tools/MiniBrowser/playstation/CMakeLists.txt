@@ -20,11 +20,11 @@ set(MiniBrowser_LIBRARIES
     ${KERNEL_LIBRARY}
     ${TOOLKIT_LIBRARY}
 )
-set(MiniBrowser_FRAMEWORKS WebKit)
+set(MiniBrowser_FRAMEWORKS CyberKit)
 
 if (USE_WPE_BACKEND_PLAYSTATION)
     set(MiniBrowser_DEFINITIONS USE_WPE_BACKEND_PLAYSTATION)
-    list(APPEND MiniBrowser_LIBRARIES WebKit::WPEToolingBackends)
+    list(APPEND MiniBrowser_LIBRARIES CyberKit::WPEToolingBackends)
 endif ()
 
 WEBKIT_EXECUTABLE_DECLARE(MiniBrowser)

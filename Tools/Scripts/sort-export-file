@@ -68,9 +68,9 @@ if (!scalar @ARGV) {
     my $currentDirectory = cwd();
     $prefix =~ s|^\Q$currentDirectory\E/||;
     @ARGV = (
-        $prefix . "WebCore/WebCore.exp.in",
-        $prefix . "WebKit/mac/WebKit.exp",
-        $prefix . "WebKit/mac/WebKit.mac.exp",
+        $prefix . "CyberCore/CyberCore.exp.in",
+        $prefix . "CyberKit/mac/CyberKit.exp",
+        $prefix . "CyberKit/mac/CyberKit.mac.exp",
     );
 }
 

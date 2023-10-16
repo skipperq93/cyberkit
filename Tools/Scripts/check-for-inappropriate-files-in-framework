@@ -28,18 +28,18 @@ project_name = ENV['PRODUCT_NAME'] or throw "Unable to find PRODUCT_NAME in the 
 is_shallow_bundle = (ENV['SHALLOW_BUNDLE'] || "NO").upcase == "YES"
 
 $INAPPROPRIATE_FILES = {
-  "JavaScriptCore" => {
+  "CyberScriptCore" => {
     "Headers" => ["*.tmp"],
     "Resources" => ["*.txt", "*.in", "*.idl", "*.h"],
   },
-  "WebCore" => {
+  "CyberCore" => {
     "Resources" => ["*.txt", "*.in", "*.idl", "*.h"],
   },
-  "WebKitLegacy" => {
+  "CyberKitLegacy" => {
     "PrivateHeaders" => ["*.tmp"],
     "Resources" => ["*.txt", "*.in", "*.idl", "*.h"],
   },
-  "WebKit" => {
+  "CyberKit" => {
     "Headers" => ["*.tmp"],
     "Resources" => ["*.txt", "*.in", "*.idl", "*.h"],
   },

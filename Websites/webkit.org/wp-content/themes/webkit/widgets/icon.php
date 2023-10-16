@@ -1,6 +1,6 @@
 <?php
 /**
- * WebKitPostTileWidget class
+ * CyberKitPostTileWidget class
  * A WordPress widget to show an icon tile on the home page
  **/
 
@@ -8,7 +8,7 @@ defined('WPINC') || header('HTTP/1.1 403') & exit; // Prevent direct access
 
 if ( ! class_exists('WP_Widget') ) return;
 
-class WebKitIconTileWidget extends WP_Widget {
+class CyberKitIconTileWidget extends WP_Widget {
 
     function __construct() {
         parent::WP_Widget(false,
@@ -71,6 +71,6 @@ class WebKitIconTileWidget extends WP_Widget {
         <?php
     }
 
-} // END class WebKitIconTileWidget
+} // END class CyberKitIconTileWidget
 
-register_widget('WebKitIconTileWidget');
+register_widget('CyberKitIconTileWidget');

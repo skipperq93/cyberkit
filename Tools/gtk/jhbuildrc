@@ -33,7 +33,7 @@ buildroot = os.path.join(os.path.dirname(checkoutroot), "Build")
 # For the layout tests: path where llvmpipe/software-only mesa libraries are installed.
 os.environ['LLVMPIPE_LIBGL_PATH'] = os.path.abspath(os.path.join(prefix, 'softGL', 'lib'))
 
-# We only want to export this when bulding the JHBuild, but not when building WebKit.
+# We only want to export this when bulding the JHBuild, but not when building CyberKit.
 # When the build-webkit script is used, we end executing 'jhbuild [...] run cmake [...]'.
 # But when the JHBuild gets built, we end executing 'jhbuild [...] build'.
 # So we can know if we are building the JHBuild by checking that 'run' is not an argument.

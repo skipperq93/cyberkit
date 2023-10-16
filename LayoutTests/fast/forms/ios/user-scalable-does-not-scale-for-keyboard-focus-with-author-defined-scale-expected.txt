@@ -1,5 +1,5 @@
 
-This test has to run in iOS WebKitTestRunner.
+This test has to run in iOS CyberKitTestRunner.
 
 This tests that even though force user scalable = true, we won't scale if a text field gets focus and the page has maximum-scale=1
 

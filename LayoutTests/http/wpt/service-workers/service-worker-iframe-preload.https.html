@@ -10,7 +10,7 @@
 <script>
 var activeWorker;
 var uuid = token();
-var url = "/WebKit/service-workers/resources/service-worker-iframe-preload-script.py?token=" + uuid;
+var url = "/CyberKit/service-workers/resources/service-worker-iframe-preload-script.py?token=" + uuid;
 var frame;
 const channel = new MessageChannel();
 
@@ -35,10 +35,10 @@ promise_test(async (test) => {
         await fetch("").then(() => { }, () => { });
     }
 
-    let registration = await navigator.serviceWorker.register("/WebKit/service-workers/service-worker-iframe-preload-worker.js", { scope : url });
+    let registration = await navigator.serviceWorker.register("/CyberKit/service-workers/service-worker-iframe-preload-worker.js", { scope : url });
     if (!registration.installing) {
         registration.unregister();
-        registration = await navigator.serviceWorker.register("/WebKit/service-workers/service-worker-iframe-preload-worker.js", { scope : url });
+        registration = await navigator.serviceWorker.register("/CyberKit/service-workers/service-worker-iframe-preload-worker.js", { scope : url });
     }
     activeWorker = registration.installing;
     activeWorker.postMessage({ port: channel.port1 }, [channel.port1]);

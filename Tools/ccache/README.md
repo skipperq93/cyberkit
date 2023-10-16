@@ -5,7 +5,7 @@
 
 # Configuring ccache
 
-The maximum cache size is 5GB by default, but a WebKit Debug build can require 20GB or more:
+The maximum cache size is 5GB by default, but a CyberKit Debug build can require 20GB or more:
 
 - ```ccache --max-size=20G```
 

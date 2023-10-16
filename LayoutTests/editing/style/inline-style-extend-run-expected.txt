@@ -1,20 +1,20 @@
-Test to make sure WebKit adds just one element when applying inline style and removes redundant styled elements.
+Test to make sure CyberKit adds just one element when applying inline style and removes redundant styled elements.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 
 
-PASS fontSize(4) on all of "hello <font size="4">world</font> WebKit" yields "<font size="4">hello world WebKit</font>"
-PASS fontName(Arial) on all of "hello <b><font face="Arial">world</font></b> WebKit" yields "<font face="Arial">hello <b>world</b> WebKit</font>"
-PASS italic(null) on all of "hello <u><i title="message">world </i><i>WebKit</i></u>" yields "<i>hello <u><span title="message">world </span>WebKit</u></i>"
-PASS bold(null) on all of "hello <i><b>world</b> WebKit</i>" yields "<b>hello <i>world WebKit</i></b>"
-PASS bold(null) on all of "hello <i><b class="test">world</b> WebKit</i>" yields "<b>hello <i><span class="test">world</span> WebKit</i></b>"
-PASS bold(null) on all of "hello <b contenteditable="false">world</b> <b>WebKit </b><u><b>rocks</b></u>" yields "<b>hello </b><b contenteditable="false">world</b><b> WebKit <u>rocks</u></b>"
-PASS strikeThrough(null) on all of "hello <b>world <strike>WebKit</strike></b>" yields "<strike>hello <b>world WebKit</b></strike>"
-PASS strikeThrough(null) on all of "hello <i><strike>world</strike></i><b><strike>WebKit</strike></b> rocks" yields "<strike>hello <i>world</i><b>WebKit</b> rocks</strike>"
-PASS strikeThrough(null) on all of "hello <i><strike>world</strike></i> WebKit <b><strike>rocks</strike></b>" yields "<strike>hello <i>world</i> WebKit <b>rocks</b></strike>"
-PASS bold(null) on all of "hello<div><i>world</i> <b>WebKit</b></div><div>rocks</div>" yields "<b>hello</b><div><b><i>world</i> WebKit</b></div><div><b>rocks</b></div>"
-PASS bold(null) on all of "hello<br style="display: block;"><i><b>world</b></i><br><b>WebKit</b>" yields "<b>hello<br style="display: block;"><i>world</i><br>WebKit</b>"
-PASS bold(null) on all of "hello<p><b>world</b> <i><b>W</b>ebKit</i></p><b>rocks</b>" yields "<b>hello</b><p><b>world <i>WebKit</i></b></p><b>rocks</b>"
+PASS fontSize(4) on all of "hello <font size="4">world</font> CyberKit" yields "<font size="4">hello world CyberKit</font>"
+PASS fontName(Arial) on all of "hello <b><font face="Arial">world</font></b> CyberKit" yields "<font face="Arial">hello <b>world</b> CyberKit</font>"
+PASS italic(null) on all of "hello <u><i title="message">world </i><i>CyberKit</i></u>" yields "<i>hello <u><span title="message">world </span>CyberKit</u></i>"
+PASS bold(null) on all of "hello <i><b>world</b> CyberKit</i>" yields "<b>hello <i>world CyberKit</i></b>"
+PASS bold(null) on all of "hello <i><b class="test">world</b> CyberKit</i>" yields "<b>hello <i><span class="test">world</span> CyberKit</i></b>"
+PASS bold(null) on all of "hello <b contenteditable="false">world</b> <b>CyberKit </b><u><b>rocks</b></u>" yields "<b>hello </b><b contenteditable="false">world</b><b> CyberKit <u>rocks</u></b>"
+PASS strikeThrough(null) on all of "hello <b>world <strike>CyberKit</strike></b>" yields "<strike>hello <b>world CyberKit</b></strike>"
+PASS strikeThrough(null) on all of "hello <i><strike>world</strike></i><b><strike>CyberKit</strike></b> rocks" yields "<strike>hello <i>world</i><b>CyberKit</b> rocks</strike>"
+PASS strikeThrough(null) on all of "hello <i><strike>world</strike></i> CyberKit <b><strike>rocks</strike></b>" yields "<strike>hello <i>world</i> CyberKit <b>rocks</b></strike>"
+PASS bold(null) on all of "hello<div><i>world</i> <b>CyberKit</b></div><div>rocks</div>" yields "<b>hello</b><div><b><i>world</i> CyberKit</b></div><div><b>rocks</b></div>"
+PASS bold(null) on all of "hello<br style="display: block;"><i><b>world</b></i><br><b>CyberKit</b>" yields "<b>hello<br style="display: block;"><i>world</i><br>CyberKit</b>"
+PASS bold(null) on all of "hello<p><b>world</b> <i><b>W</b>ebKit</i></p><b>rocks</b>" yields "<b>hello</b><p><b>world <i>CyberKit</i></b></p><b>rocks</b>"
 PASS successfullyParsed is true
 
 TEST COMPLETE

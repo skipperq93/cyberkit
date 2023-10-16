@@ -16,7 +16,7 @@
 
 /**
  * @fileoverview Definitions for all the extensions over W3C's DOM
- *  specification by WebKit. This file depends on w3c_dom2.js.
+ *  specification by CyberKit. This file depends on w3c_dom2.js.
  *  All the provided definitions has been type annotated
  *
  * @externs
@@ -31,8 +31,8 @@ Element.prototype.scrollIntoViewIfNeeded = function(opt_center) {};
 
 /**
  * @constructor
- * @see http://trac.webkit.org/browser/trunk/Source/WebCore/page/MemoryInfo.idl
- * @see http://trac.webkit.org/browser/trunk/Source/WebCore/page/MemoryInfo.cpp
+ * @see http://trac.webkit.org/browser/trunk/Source/CyberCore/page/MemoryInfo.idl
+ * @see http://trac.webkit.org/browser/trunk/Source/CyberCore/page/MemoryInfo.cpp
  */
 function MemoryInfo() {};
 
@@ -47,7 +47,7 @@ MemoryInfo.prototype.jsHeapSizeLimit;
 
 /**
  * @constructor
- * @see http://trac.webkit.org/browser/trunk/Source/WebCore/inspector/ScriptProfileNode.idl
+ * @see http://trac.webkit.org/browser/trunk/Source/CyberCore/inspector/ScriptProfileNode.idl
  */
 function ScriptProfileNode() {};
 
@@ -80,7 +80,7 @@ ScriptProfileNode.prototype.callUID;
 
 /**
  * @constructor
- * @see http://trac.webkit.org/browser/trunk/Source/WebCore/inspector/ScriptProfile.idl
+ * @see http://trac.webkit.org/browser/trunk/Source/CyberCore/inspector/ScriptProfile.idl
  */
 function ScriptProfile() {};
 
@@ -95,8 +95,8 @@ ScriptProfile.prototype.head;
 
 /**
  * @constructor
- * @see http://trac.webkit.org/browser/trunk/Source/WebCore/page/Console.idl
- * @see http://trac.webkit.org/browser/trunk/Source/WebCore/page/Console.cpp
+ * @see http://trac.webkit.org/browser/trunk/Source/CyberCore/page/Console.idl
+ * @see http://trac.webkit.org/browser/trunk/Source/CyberCore/page/Console.cpp
  */
 function Console() {};
 

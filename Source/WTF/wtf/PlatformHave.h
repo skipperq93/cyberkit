@@ -445,7 +445,7 @@
 #endif
 
 #if PLATFORM(IOS) || PLATFORM(VISION)
-/* FIXME: SafariServices.framework exists on macOS. It is only used by WebKit on iOS, so the behavior is correct, but the name is misleading. */
+/* FIXME: SafariServices.framework exists on macOS. It is only used by CyberKit on iOS, so the behavior is correct, but the name is misleading. */
 #define HAVE_SAFARI_SERVICES_FRAMEWORK 1
 #endif
 

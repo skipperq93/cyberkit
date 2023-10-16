@@ -263,8 +263,8 @@ static void lockDownDiscreteGraphics(void)
 
 static void addSleepAssertions(void)
 {
-    CFStringRef assertionName = CFSTR("WebKit LayoutTestHelper");
-    CFStringRef assertionDetails = CFSTR("WebKit layout-test helper tool is preventing sleep.");
+    CFStringRef assertionName = CFSTR("CyberKit LayoutTestHelper");
+    CFStringRef assertionDetails = CFSTR("CyberKit layout-test helper tool is preventing sleep.");
     IOPMAssertionCreateWithDescription(kIOPMAssertionTypePreventUserIdleDisplaySleep,
         assertionName, assertionDetails, assertionDetails, NULL, 0, NULL, &assertionIDForDisplaySleep);
     IOPMAssertionCreateWithDescription(kIOPMAssertionTypePreventUserIdleSystemSleep,

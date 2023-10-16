@@ -70,10 +70,10 @@ PASS Array.from(set) is ['zero', 'one', 'two']
 
 "this" is a constructor
 -------
-PASS Array.from.call(CustomConstructor, ['WebKit']).constructor is CustomConstructor
-PASS Object.getPrototypeOf(Array.from.call(CustomConstructor, ['WebKit'])) is CustomConstructor.prototype
-PASS Array.from.call(nonConstructor, ['WebKit']).length is 1
-PASS Array.from.call(nonConstructor, ['WebKit'])[0] is "WebKit"
+PASS Array.from.call(CustomConstructor, ['CyberKit']).constructor is CustomConstructor
+PASS Object.getPrototypeOf(Array.from.call(CustomConstructor, ['CyberKit'])) is CustomConstructor.prototype
+PASS Array.from.call(nonConstructor, ['CyberKit']).length is 1
+PASS Array.from.call(nonConstructor, ['CyberKit'])[0] is "CyberKit"
 PASS Array.from.call(CustomConstructor, nonIterable).constructor is CustomConstructor
 PASS Object.getPrototypeOf(Array.from.call(CustomConstructor, nonIterable)) is CustomConstructor.prototype
 PASS Array.from.call(nonConstructor, nonIterable).length is 2
@@ -82,10 +82,10 @@ PASS Array.from.call(nonConstructor, nonIterable)[1] is 2
 
 "this" is not a constructor
 -------
-PASS Array.from.call(nonConstructor, ['WebKit']).constructor is Array
-PASS Object.getPrototypeOf(Array.from.call(nonConstructor, ['WebKit'])) is Array.prototype
-PASS Array.from.call(nonConstructor, ['WebKit']).length is 1
-PASS Array.from.call(nonConstructor, ['WebKit'])[0] is "WebKit"
+PASS Array.from.call(nonConstructor, ['CyberKit']).constructor is Array
+PASS Object.getPrototypeOf(Array.from.call(nonConstructor, ['CyberKit'])) is Array.prototype
+PASS Array.from.call(nonConstructor, ['CyberKit']).length is 1
+PASS Array.from.call(nonConstructor, ['CyberKit'])[0] is "CyberKit"
 PASS nonConstructorWasCalled is false
 PASS Array.from.call(nonConstructor, nonIterable).constructor is Array
 PASS Object.getPrototypeOf(Array.from.call(nonConstructor, nonIterable)) is Array.prototype

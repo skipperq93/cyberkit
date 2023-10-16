@@ -14,5 +14,5 @@ var attr3 = doc2.adoptNode(attr2);
 var doc3 = document.implementation.createHTMLDocument('Doc 3');
 var attr4 = doc3.adoptNode(attr3);
 
-alert("Tests adopting two Attr nodes of the same qualified name. WebKit shouldn't crash or assert.");
+alert("Tests adopting two Attr nodes of the same qualified name. CyberKit shouldn't crash or assert.");
 </script>

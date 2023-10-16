@@ -770,7 +770,7 @@ promise_test(async (t) => {
     assert_equals(frame.contentDocument.body.textContent,
                   'method = GET, isReloadNavigation = false');
     // Use step_timeout(0) to ensure the history entry is created for Blink
-    // and WebKit. See https://bugs.webkit.org/show_bug.cgi?id=42861.
+    // and CyberKit. See https://bugs.webkit.org/show_bug.cgi?id=42861.
     await wait(0);
     await new Promise((resolve) => {
       frame.addEventListener('load', resolve);
@@ -804,7 +804,7 @@ promise_test(async (t) => {
     assert_equals(frame.contentDocument.body.textContent,
                   'method = GET, isHistoryNavigation = false');
     // Use step_timeout(0) to ensure the history entry is created for Blink
-    // and WebKit. See https://bugs.webkit.org/show_bug.cgi?id=42861.
+    // and CyberKit. See https://bugs.webkit.org/show_bug.cgi?id=42861.
     await wait(0);
     await new Promise((resolve) => {
       frame.addEventListener('load', resolve);
@@ -826,7 +826,7 @@ promise_test(async (t) => {
     t.add_cleanup(() => { frame.remove(); });
     assert_equals(frame.contentDocument.body.textContent, "Here's a simple html file.\n");
     // Use step_timeout(0) to ensure the history entry is created for Blink
-    // and WebKit. See https://bugs.webkit.org/show_bug.cgi?id=42861.
+    // and CyberKit. See https://bugs.webkit.org/show_bug.cgi?id=42861.
     await wait(0);
     await new Promise((resolve) => {
       frame.addEventListener('load', resolve);
@@ -853,7 +853,7 @@ promise_test(async (t) => {
     t.add_cleanup(() => { frame.remove(); });
     assert_equals(frame.contentDocument.body.textContent, "Here's a simple html file.\n");
     // Use step_timeout(0) to ensure the history entry is created for Blink
-    // and WebKit. See https://bugs.webkit.org/show_bug.cgi?id=42861.
+    // and CyberKit. See https://bugs.webkit.org/show_bug.cgi?id=42861.
     await wait(0);
     await new Promise((resolve) => {
       frame.addEventListener('load', resolve);
@@ -886,7 +886,7 @@ promise_test(async (t) => {
     t.add_cleanup(() => { frame.remove(); });
     assert_equals(frame.contentDocument.body.textContent, "Here's a simple html file.\n");
     // Use step_timeout(0) to ensure the history entry is created for Blink
-    // and WebKit. See https://bugs.webkit.org/show_bug.cgi?id=42861.
+    // and CyberKit. See https://bugs.webkit.org/show_bug.cgi?id=42861.
     await wait(0);
     await new Promise((resolve) => {
       frame.addEventListener('load', resolve);
@@ -922,7 +922,7 @@ promise_test(async (t) => {
     assert_equals(frame.contentDocument.body.textContent,
                   'method = GET, isHistoryNavigation = false');
     // Use step_timeout(0) to ensure the history entry is created for Blink
-    // and WebKit. See https://bugs.webkit.org/show_bug.cgi?id=42861.
+    // and CyberKit. See https://bugs.webkit.org/show_bug.cgi?id=42861.
     await wait(0);
     await new Promise((resolve) => {
       frame.addEventListener('load', resolve);
@@ -951,7 +951,7 @@ promise_test(async (t) => {
     t.add_cleanup(() => { frame.remove(); });
     assert_equals(frame.contentDocument.body.textContent, "Here's a simple html file.\n");
     // Use step_timeout(0) to ensure the history entry is created for Blink
-    // and WebKit. See https://bugs.webkit.org/show_bug.cgi?id=42861.
+    // and CyberKit. See https://bugs.webkit.org/show_bug.cgi?id=42861.
     await wait(0);
     await new Promise((resolve) => {
       frame.addEventListener('load', resolve);
@@ -996,7 +996,7 @@ promise_test(async (t) => {
     assert_equals(frame.contentDocument.body.textContent,
                   'method = POST, isHistoryNavigation = false');
     // Use step_timeout(0) to ensure the history entry is created for Blink
-    // and WebKit. See https://bugs.webkit.org/show_bug.cgi?id=42861.
+    // and CyberKit. See https://bugs.webkit.org/show_bug.cgi?id=42861.
     await wait(0);
     await new Promise((resolve) => {
       frame.addEventListener('load', resolve);

@@ -30,12 +30,12 @@ function testInherited(parentValue) {
     var childDiv = document.createElement("div");
     parentDiv.appendChild(childDiv);
 
-    var childWebKitFlowComputedValue = getComputedStyle(childDiv).getPropertyValue("-webkit-line-snap");
+    var childCyberKitFlowComputedValue = getComputedStyle(childDiv).getPropertyValue("-webkit-line-snap");
 
     parentDiv.removeChild(childDiv);
     document.body.removeChild(parentDiv);
 
-    return childWebKitFlowComputedValue;
+    return childCyberKitFlowComputedValue;
 }
 
 shouldBeEqualToString('test("-webkit-line-snap: none")', "none");

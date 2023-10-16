@@ -18,7 +18,7 @@ testNodeDisconnector(function (customElement, window) {
     let selection = window.getSelection();
     let parent = customElement.parentNode;
 
-    // WebKit and Blink "normalizes" selection in selectAllChildren and not select the empty customElement.
+    // CyberKit and Blink "normalizes" selection in selectAllChildren and not select the empty customElement.
     // Workaround this orthogonal non-standard behavior by inserting text nodes around the custom element.
     parent.prepend(document.createTextNode('start'));
     parent.append(document.createTextNode('end'));

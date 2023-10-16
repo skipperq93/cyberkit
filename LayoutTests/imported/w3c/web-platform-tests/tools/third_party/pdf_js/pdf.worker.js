@@ -4799,7 +4799,7 @@ var global = __w_pdfjs_require__(12);
 
 var macrotask = __w_pdfjs_require__(95).set;
 
-var Observer = global.MutationObserver || global.WebKitMutationObserver;
+var Observer = global.MutationObserver || global.CyberKitMutationObserver;
 var process = global.process;
 var Promise = global.Promise;
 var isNode = __w_pdfjs_require__(36)(process) == 'process';

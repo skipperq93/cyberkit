@@ -25,7 +25,7 @@
 #include? "<DEVELOPER_DIR>/AppleInternal/XcodeConfig/PlatformSupport.xcconfig"
 #include "Sanitizers.xcconfig"
 #include "SDKVariant.xcconfig"
-#include "WebKitProjectPaths.xcconfig"
+#include "CyberKitProjectPaths.xcconfig"
 
 // Prefix Definitions
 //

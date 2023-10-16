@@ -19,7 +19,7 @@ html, body {
 
     async function runTest()
     {
-        description("This test verifies that it is possible to select text when link previews are disabled using WebKit API. This test requires WebKitTestRunner, since it exercises web view API to disable link previews.");
+        description("This test verifies that it is possible to select text when link previews are disabled using CyberKit API. This test requires CyberKitTestRunner, since it exercises web view API to disable link previews.");
 
         await UIHelper.longPressElement(target);
         shouldBeEqualToString("getSelection().toString()", "Testing");

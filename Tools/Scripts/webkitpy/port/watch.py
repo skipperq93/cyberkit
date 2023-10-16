@@ -48,7 +48,7 @@ class WatchPort(DevicePort):
     def driver_name(self):
         if self.get_option('driver_name'):
             return self.get_option('driver_name')
-        return 'WebKitTestRunnerApp.app'
+        return 'CyberKitTestRunnerApp.app'
 
     def version_name(self):
         if self._os_version is None:

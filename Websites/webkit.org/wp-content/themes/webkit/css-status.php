@@ -30,7 +30,7 @@ function xhrPromise(url) {
 }
 
 var origin = new URL("https://raw.githubusercontent.com/");
-var loadCSSProperties = xhrPromise(new URL("/WebKit/WebKit/main/Source/WebCore/css/CSSProperties.json", origin));
+var loadCSSProperties = xhrPromise(new URL("/CyberKit/CyberKit/main/Source/CyberCore/css/CSSProperties.json", origin));
 
 </script>
 
@@ -677,7 +677,7 @@ h3 a[name], .admin-bar h3 a[name] {
                 <template id="success-template">
                     <ul class="properties" id="properties-container"></ul>
 
-                    <p>Cannot find something? Standards positions can be found on <a href="https://github.com/WebKit/standards-positions">this Github repository</a>. For questions, feel free to contact the <a href="https://lists.webkit.org/mailman/listinfo/webkit-help">webkit-help</a> mailing list.</p>
+                    <p>Cannot find something? Standards positions can be found on <a href="https://github.com/CyberKit/standards-positions">this Github repository</a>. For questions, feel free to contact the <a href="https://lists.webkit.org/mailman/listinfo/webkit-help">webkit-help</a> mailing list.</p>
                     <p>You can also <a href="/contributing-code/">contribute to features</a> directly, the entire project is Open Source. To report bugs on existing features or check existing bug reports, see <a href="https://bugs.webkit.org">https://bugs.webkit.org</a>.</p>
                 </template>
 

@@ -26,7 +26,7 @@
 #import "TabViewController.h"
 
 #import "WebViewController.h"
-#import <WebKit/WKWebView.h>
+#import <CyberKit/WKWebView.h>
 
 void *ContentSizeContext = &ContentSizeContext;
 

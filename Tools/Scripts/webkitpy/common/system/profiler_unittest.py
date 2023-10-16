@@ -73,30 +73,30 @@ Total: 3770 samples
       76   2.0%   2.0%      104   2.8% lookup (inline)
       60   1.6%   3.6%       60   1.6% FL_SetPrevious (inline)
       56   1.5%   5.1%       56   1.5% MaskPtr (inline)
-      51   1.4%   6.4%      222   5.9% WebCore::HTMLTokenizer::nextToken
+      51   1.4%   6.4%      222   5.9% CyberCore::HTMLTokenizer::nextToken
       42   1.1%   7.6%       47   1.2% WTF::Vector::shrinkCapacity
       35   0.9%   8.5%       35   0.9% WTF::RefPtr::get (inline)
       33   0.9%   9.4%       43   1.1% append (inline)
       29   0.8%  10.1%       67   1.8% WTF::StringImpl::deref (inline)
       29   0.8%  10.9%      100   2.7% add (inline)
-      28   0.7%  11.6%       28   0.7% WebCore::QualifiedName::localName (inline)
-      25   0.7%  12.3%       27   0.7% WebCore::Private::addChildNodesToDeletionQueue
+      28   0.7%  11.6%       28   0.7% CyberCore::QualifiedName::localName (inline)
+      25   0.7%  12.3%       27   0.7% CyberCore::Private::addChildNodesToDeletionQueue
       24   0.6%  12.9%       24   0.6% __memcpy_ssse3_back
       23   0.6%  13.6%       23   0.6% intHash (inline)
       23   0.6%  14.2%       76   2.0% tcmalloc::FL_Next
       23   0.6%  14.8%       95   2.5% tcmalloc::FL_Push
-      22   0.6%  15.4%       22   0.6% WebCore::MarkupTokenizerBase::InputStreamPreprocessor::peek (inline)
+      22   0.6%  15.4%       22   0.6% CyberCore::MarkupTokenizerBase::InputStreamPreprocessor::peek (inline)
 """
         expected_first_ten_lines = """      76   2.0%   2.0%      104   2.8% lookup (inline)
       60   1.6%   3.6%       60   1.6% FL_SetPrevious (inline)
       56   1.5%   5.1%       56   1.5% MaskPtr (inline)
-      51   1.4%   6.4%      222   5.9% WebCore::HTMLTokenizer::nextToken
+      51   1.4%   6.4%      222   5.9% CyberCore::HTMLTokenizer::nextToken
       42   1.1%   7.6%       47   1.2% WTF::Vector::shrinkCapacity
       35   0.9%   8.5%       35   0.9% WTF::RefPtr::get (inline)
       33   0.9%   9.4%       43   1.1% append (inline)
       29   0.8%  10.1%       67   1.8% WTF::StringImpl::deref (inline)
       29   0.8%  10.9%      100   2.7% add (inline)
-      28   0.7%  11.6%       28   0.7% WebCore::QualifiedName::localName (inline)
+      28   0.7%  11.6%       28   0.7% CyberCore::QualifiedName::localName (inline)
 """
         host = MockSystemHost()
         profiler = GooglePProf(host, '/bin/executable', '/tmp/output')

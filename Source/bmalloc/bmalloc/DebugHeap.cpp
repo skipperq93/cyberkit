@@ -63,7 +63,7 @@ DebugHeap::DebugHeap(const LockHolder&)
 {
     if (!shouldUseDefaultMallocZone()) {
         m_zone = malloc_create_zone(0, 0);
-        malloc_set_zone_name(m_zone, "WebKit Using System Malloc");
+        malloc_set_zone_name(m_zone, "CyberKit Using System Malloc");
     }
 }
 

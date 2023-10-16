@@ -675,9 +675,9 @@ class ServoWebDriver(Servo):
     browser_cls = browser.ServoWebDriver
 
 
-class WebKit(BrowserSetup):
+class CyberKit(BrowserSetup):
     name = "webkit"
-    browser_cls = browser.WebKit
+    browser_cls = browser.CyberKit
 
     def install(self, channel=None):
         raise NotImplementedError
@@ -686,9 +686,9 @@ class WebKit(BrowserSetup):
         pass
 
 
-class WebKitGTKMiniBrowser(BrowserSetup):
+class CyberKitGTKMiniBrowser(BrowserSetup):
     name = "webkitgtk_minibrowser"
-    browser_cls = browser.WebKitGTKMiniBrowser
+    browser_cls = browser.CyberKitGTKMiniBrowser
 
     def install(self, channel=None):
         if self.prompt_install(self.name):
@@ -708,7 +708,7 @@ class WebKitGTKMiniBrowser(BrowserSetup):
                 venv_path=self.venv.path, channel=kwargs["browser_channel"])
 
             if webdriver_binary is None:
-                raise WptrunError("Unable to find WebKitWebDriver in PATH")
+                raise WptrunError("Unable to find CyberKitWebDriver in PATH")
             kwargs["webdriver_binary"] = webdriver_binary
 
 
@@ -731,7 +731,7 @@ class Epiphany(BrowserSetup):
             webdriver_binary = self.browser.find_webdriver()
 
             if webdriver_binary is None:
-                raise WptrunError("Unable to find WebKitWebDriver in PATH")
+                raise WptrunError("Unable to find CyberKitWebDriver in PATH")
             kwargs["webdriver_binary"] = webdriver_binary
 
 
@@ -754,8 +754,8 @@ product_setup = {
     "servodriver": ServoWebDriver,
     "sauce": Sauce,
     "opera": Opera,
-    "webkit": WebKit,
-    "webkitgtk_minibrowser": WebKitGTKMiniBrowser,
+    "webkit": CyberKit,
+    "webkitgtk_minibrowser": CyberKitGTKMiniBrowser,
     "epiphany": Epiphany,
 }
 

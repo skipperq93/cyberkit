@@ -26,7 +26,7 @@ shouldBe("path.getPathSegAtLength(5)", "1");
 shouldBe("path.getPathSegAtLength(6)", "2");
 shouldBe("path.getPathSegAtLength(10)", "2");
 shouldBe("path.getPathSegAtLength(11)", "3");
-// WebKit/Opera/FF all return the last path segment if the distance exceeds the actual path length:
+// CyberKit/Opera/FF all return the last path segment if the distance exceeds the actual path length:
 shouldBe("path.getPathSegAtLength(16)", "3");
 shouldBe("path.getPathSegAtLength(20)", "3");
 shouldBe("path.getPathSegAtLength(24)", "3");

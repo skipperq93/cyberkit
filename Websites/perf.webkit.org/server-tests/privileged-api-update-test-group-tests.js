@@ -14,7 +14,7 @@ async function createAnalysisTask(name, webkitRevisions = ["191622", "191623"])
         "buildTag": "124",
         "buildTime": "2015-10-27T15:34:51",
         "revisions": {
-            "WebKit": {
+            "CyberKit": {
                 "revision": webkitRevisions[0],
                 "timestamp": '2015-10-27T11:36:56.878473Z',
             },
@@ -43,7 +43,7 @@ async function createAnalysisTask(name, webkitRevisions = ["191622", "191623"])
         "buildTag": "125",
         "buildTime": "2015-10-27T17:27:41",
         "revisions": {
-            "WebKit": {
+            "CyberKit": {
                 "revision": webkitRevisions[1],
                 "timestamp": '2015-10-27T16:38:10.768995Z',
             },
@@ -158,7 +158,7 @@ describe('/privileged-api/update-test-group', function(){
 
     it('should be able to update "needs_notification" field to false', async () => {
         await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
         let result = await PrivilegedAPI.sendRequest('create-test-group',
             {name: 'test', taskName: 'other task', platform: MockData.somePlatformId(), test: MockData.someTestId(), needsNotification: true, revisionSets});
@@ -183,7 +183,7 @@ describe('/privileged-api/update-test-group', function(){
 
     it('should be able to update "needs_notification" field to true', async () => {
         await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
         let result = await PrivilegedAPI.sendRequest('create-test-group',
             {name: 'test', taskName: 'other task', platform: MockData.somePlatformId(), test: MockData.someTestId(), needsNotification: false, revisionSets});
@@ -207,7 +207,7 @@ describe('/privileged-api/update-test-group', function(){
 
     it('should create a test group with "may_need_more_requests" field defaults to false', async () => {
         await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
         const result = await PrivilegedAPI.sendRequest('create-test-group',
             {name: 'test', taskName: 'other task', platform: MockData.somePlatformId(), test: MockData.someTestId(), needsNotification: false, revisionSets});
@@ -224,7 +224,7 @@ describe('/privileged-api/update-test-group', function(){
 
     it('should be able to update "may_need_more_requests" field to true and false', async () => {
         await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
         const result = await PrivilegedAPI.sendRequest('create-test-group',
             {name: 'test', taskName: 'other task', platform: MockData.somePlatformId(), test: MockData.someTestId(), needsNotification: false, revisionSets});
@@ -251,7 +251,7 @@ describe('/privileged-api/update-test-group', function(){
 
     it('should clear "may_need_more_requests" when hiding a test group', async () => {
         await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
         const result = await PrivilegedAPI.sendRequest('create-test-group',
             {name: 'test', taskName: 'other task', platform: MockData.somePlatformId(), test: MockData.someTestId(), needsNotification: false, revisionSets});
@@ -279,7 +279,7 @@ describe('/privileged-api/update-test-group', function(){
 
     it('should be able to cancel an alternating test group and clear the "may need more requests" flag', async () => {
         await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
         const result = await PrivilegedAPI.sendRequest('create-test-group',
             {name: 'test', taskName: 'other task', platform: MockData.somePlatformId(),
@@ -320,7 +320,7 @@ describe('/privileged-api/update-test-group', function(){
 
     it('should be able to cancel a sequential test group and clear the "may need more requests" flag', async () => {
         await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
         const result = await PrivilegedAPI.sendRequest('create-test-group',
             {name: 'test', taskName: 'other task', platform: MockData.somePlatformId(),

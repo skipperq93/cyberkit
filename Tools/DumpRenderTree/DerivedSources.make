@@ -52,19 +52,19 @@ UICONTEXT_INTERFACES = \
 #
 
 SCRIPTS = \
-    $(WebCoreScripts)/CodeGenerator.pm \
+    $(CyberCoreScripts)/CodeGenerator.pm \
     $(DumpRenderTree)/Bindings/CodeGeneratorDumpRenderTree.pm \
-    $(WebCoreScripts)/IDLParser.pm \
-    $(WebCoreScripts)/generate-bindings.pl \
+    $(CyberCoreScripts)/IDLParser.pm \
+    $(CyberCoreScripts)/generate-bindings.pl \
 #
 
-IDL_ATTRIBUTES_FILE = $(WebCoreScripts)/IDLAttributes.json
+IDL_ATTRIBUTES_FILE = $(CyberCoreScripts)/IDLAttributes.json
 
 .PHONY : all
 
 JS%.h JS%.cpp : %.idl $(SCRIPTS) $(IDL_ATTRIBUTES_FILE) $(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
 	@echo Generating bindings for $*...
-	$(PERL) -I $(WebCoreScripts) -I $(UISCRIPTCONTEXT_DIR) -I $(DumpRenderTree)/Bindings $(WebCoreScripts)/generate-bindings.pl --defines "$(FEATURE_AND_PLATFORM_DEFINES)" --include $(UISCRIPTCONTEXT_DIR) --outputDir . --generator DumpRenderTree --idlAttributesFile $(IDL_ATTRIBUTES_FILE) $<
+	$(PERL) -I $(CyberCoreScripts) -I $(UISCRIPTCONTEXT_DIR) -I $(DumpRenderTree)/Bindings $(CyberCoreScripts)/generate-bindings.pl --defines "$(FEATURE_AND_PLATFORM_DEFINES)" --include $(UISCRIPTCONTEXT_DIR) --outputDir . --generator DumpRenderTree --idlAttributesFile $(IDL_ATTRIBUTES_FILE) $<
 
 all : \
     $(UICONTEXT_INTERFACES:%=JS%.h) \
@@ -73,11 +73,11 @@ all : \
 
 
 WEB_PREFERENCES_GENERATED_FILES = \
-    TestOptionsGeneratedWebKitLegacyKeyMapping.cpp \
+    TestOptionsGeneratedCyberKitLegacyKeyMapping.cpp \
     TestOptionsGeneratedKeys.h \
 #
 
 all : $(WEB_PREFERENCES_GENERATED_FILES)
 
 $(WEB_PREFERENCES_GENERATED_FILES) : % : %.erb $(WTF_BUILD_SCRIPTS_DIR)/GeneratePreferences.rb $(WTF_BUILD_SCRIPTS_DIR)/Preferences/UnifiedWebPreferences.yaml
-	$(RUBY) $(WTF_BUILD_SCRIPTS_DIR)/GeneratePreferences.rb --frontend WebKitLegacy --template $< $(WTF_BUILD_SCRIPTS_DIR)/Preferences/UnifiedWebPreferences.yaml
+	$(RUBY) $(WTF_BUILD_SCRIPTS_DIR)/GeneratePreferences.rb --frontend CyberKitLegacy --template $< $(WTF_BUILD_SCRIPTS_DIR)/Preferences/UnifiedWebPreferences.yaml

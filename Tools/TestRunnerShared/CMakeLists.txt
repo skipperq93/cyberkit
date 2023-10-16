@@ -15,15 +15,15 @@ set(TestRunnerShared_SOURCES
     UIScriptContext/UIScriptControllerShared.cpp
 )
 
-set(TestRunnerShared_LIBRARIES WebKit::WebCoreTestSupport)
+set(TestRunnerShared_LIBRARIES CyberKit::CyberCoreTestSupport)
 set(TestRunnerShared_FRAMEWORKS
-    JavaScriptCore
+    CyberScriptCore
     PAL
     WTF
-    WebCore
+    CyberCore
 )
 if (NOT USE_SYSTEM_MALLOC)
-    list(APPEND WebKitTestRunner_FRAMEWORKS bmalloc)
+    list(APPEND CyberKitTestRunner_FRAMEWORKS bmalloc)
 endif ()
 
 set(TestRunnerShared_PRIVATE_INCLUDE_DIRECTORIES

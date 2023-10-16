@@ -22,7 +22,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-"""Supports checking WebKit style in png files."""
+"""Supports checking CyberKit style in png files."""
 
 import os
 import re

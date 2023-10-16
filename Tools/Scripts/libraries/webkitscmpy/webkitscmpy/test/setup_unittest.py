@@ -62,7 +62,7 @@ class TestSetup(testing.PathTestCase):
 
         self.assertEqual(
             captured.stdout.getvalue(),
-            "Create a private fork of 'WebKit/WebKit' named 'WebKit' belonging to 'username' ([Yes]/No): \n"
+            "Create a private fork of 'CyberKit/CyberKit' named 'CyberKit' belonging to 'username' ([Yes]/No): \n"
             'Setup succeeded!\n',
         )
         self.assertEqual(captured.stderr.getvalue(), '')
@@ -70,10 +70,10 @@ class TestSetup(testing.PathTestCase):
             captured.root.log.getvalue(),
             '''Saving GitHub credentials in system credential store...
 GitHub credentials saved via Keyring!
-https://github.example.com/WebKit/WebKit is public, enabling secret scanning on fork
+https://github.example.com/CyberKit/CyberKit is public, enabling secret scanning on fork
 Verifying user owned fork...
-Created a private fork of 'WebKit' belonging to 'username'!
-Enabled secret scanning on https://github.example.com/username/WebKit!
+Created a private fork of 'CyberKit' belonging to 'username'!
+Enabled secret scanning on https://github.example.com/username/CyberKit!
 ''',
         )
 
@@ -99,7 +99,7 @@ Enabled secret scanning on https://github.example.com/username/WebKit!
         self.assertEqual(
             captured.stdout.getvalue(),
             'For detailed information about the options configured by this script, please see:\n'
-            'https://github.com/WebKit/WebKit/wiki/Git-Config#Configuration-Options\n\n\n'
+            'https://github.com/CyberKit/CyberKit/wiki/Git-Config#Configuration-Options\n\n\n'
             'Setup succeeded!\n',
         )
         self.assertEqual(captured.stderr.getvalue(), '')
@@ -126,7 +126,7 @@ Set git editor to 'SVN_LOG_EDITOR' for this repository
             mocks.local.Git(self.path, remote='https://{}.git'.format(remote.remote)) as repo, \
             wkmocks.Environment(EMAIL_ADDRESS='', SVN_LOG_EDITOR=''):
 
-            self.assertEqual('https://github.example.com/WebKit/WebKit.git', local.Git(self.path).url())
+            self.assertEqual('https://github.example.com/CyberKit/CyberKit.git', local.Git(self.path).url())
 
             self.assertEqual(0, program.main(
                 args=('setup', '-v', '-a'),
@@ -138,13 +138,13 @@ Set git editor to 'SVN_LOG_EDITOR' for this repository
             self.assertEqual('Committer', config.get('user.name', ''))
             self.assertEqual('committer@webkit.org', config.get('user.email', ''))
             self.assertEqual('!f()', config.get('credential.https://github.example.com.helper', '').split()[0])
-            self.assertEqual('https://github.example.com/WebKit/WebKit.git', local.Git(self.path).url())
+            self.assertEqual('https://github.example.com/CyberKit/CyberKit.git', local.Git(self.path).url())
 
         programs = ['default'] + [p.name for p in Editor.programs()]
         self.assertEqual(
             captured.stdout.getvalue(),
             '''For detailed information about the options configured by this script, please see:
-https://github.com/WebKit/WebKit/wiki/Git-Config#Configuration-Options
+https://github.com/CyberKit/CyberKit/wiki/Git-Config#Configuration-Options
 Would you like to open this URL in your browser? ([Yes]/No): 
 
 
@@ -160,7 +160,7 @@ a pull request branch? ([when-user-owned]/disabled/always/never):
 Pick a commit message editor for this repository:
     {}
 : 
-Create a private fork of 'WebKit/WebKit' named 'WebKit' belonging to 'username' ([Yes]/No): 
+Create a private fork of 'CyberKit/CyberKit' named 'CyberKit' belonging to 'username' ([Yes]/No): 
 Setup succeeded!
 '''.format('\n    '.join([
             '{}) {}'.format(
@@ -184,10 +184,10 @@ Setting git editor for {repository}...
 Using the default git editor for this repository
 Saving GitHub credentials in system credential store...
 GitHub credentials saved via Keyring!
-https://github.example.com/WebKit/WebKit is public, enabling secret scanning on fork
+https://github.example.com/CyberKit/CyberKit is public, enabling secret scanning on fork
 Verifying user owned fork...
-Created a private fork of 'WebKit' belonging to 'username'!
-Enabled secret scanning on https://github.example.com/username/WebKit!
+Created a private fork of 'CyberKit' belonging to 'username'!
+Enabled secret scanning on https://github.example.com/username/CyberKit!
 Adding forked remote as 'fork'...
 Added remote 'fork'
 Fetching 'fork'

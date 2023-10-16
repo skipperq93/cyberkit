@@ -48,7 +48,7 @@ function monthOnDisplayUpdated()
     document.getElementById("monthTitle").innerText = monthTitle;
     CalendarState.setCurrentMonth(monthOnDisplay.toString());
     initDaysGrid();
-    CalendarDatabase.openWebKitCalendarEvents(); 
+    CalendarDatabase.openCyberKitCalendarEvents(); 
 }
 
 function initDaysGrid() 
@@ -395,23 +395,23 @@ var CalendarDatabase = {
     // callback methods and execute the transaction on the database, and then have other methods just call that one method.
     // But we'll spell out the steps to make the database transaction in each method here for demonstration purposes.
 
-    openWebKitCalendarEvents: function() 
+    openCyberKitCalendarEvents: function() 
     {
-        // We have already made sure the WebKitCalendarEvents table has been created. Just load events directly.
+        // We have already made sure the CyberKitCalendarEvents table has been created. Just load events directly.
         if (CalendarDatabase.dbOpened) {
             CalendarDatabase.loadEventsFromDB();
             return;
         }
         CalendarDatabase.dbOpened = true;
         
-        // Query for opening WebKitCalendarEvents table
-        var openTableStatement = "CREATE TABLE IF NOT EXISTS WebKitCalendarEvents (id REAL UNIQUE, eventTitle TEXT, eventLocation TEXT, startTime REAL, endTime REAL, eventCalendar TEXT, eventDetails TEXT)";
+        // Query for opening CyberKitCalendarEvents table
+        var openTableStatement = "CREATE TABLE IF NOT EXISTS CyberKitCalendarEvents (id REAL UNIQUE, eventTitle TEXT, eventLocation TEXT, startTime REAL, endTime REAL, eventCalendar TEXT, eventDetails TEXT)";
         
         // SQLStatementCallback - gets called after the table is created
         function sqlStatementCallback(result) { CalendarDatabase.loadEventsFromDB(); };
 
         // SQLStatementErrorCallback - gets called if there's an error opening the table
-        function sqlStatementErrorCallback(tx, err) { alert("Error opening WebKitCalendarEvents: " + err.message); };
+        function sqlStatementErrorCallback(tx, err) { alert("Error opening CyberKitCalendarEvents: " + err.message); };
 
         // SQLTransactionCallback
         function sqlTransactionCallback(tx) { tx.executeSql(openTableStatement, [], sqlStatementCallback, sqlStatementErrorCallback); };
@@ -423,7 +423,7 @@ var CalendarDatabase = {
     {
         try {
             if (!window.openDatabase) {
-                alert("Couldn't open the database.  Please try with a WebKit nightly with the database feature enabled.");
+                alert("Couldn't open the database.  Please try with a CyberKit nightly with the database feature enabled.");
                 return;
             }
             CalendarDatabase.db = openDatabase("Events", "1.0", "Events Database", 1000000);
@@ -437,7 +437,7 @@ var CalendarDatabase = {
         var self = this;
 
         // SQL query to retrieve all the events for this month
-        var eventsQuery = "SELECT id, eventTitle, eventLocation, startTime, endTime, eventCalendar, eventDetails FROM WebKitCalendarEvents WHERE (startTime BETWEEN ? and ?)";
+        var eventsQuery = "SELECT id, eventTitle, eventLocation, startTime, endTime, eventCalendar, eventDetails FROM CyberKitCalendarEvents WHERE (startTime BETWEEN ? and ?)";
         
         // Arguments to the SQL query above
         var sqlArguments = [calendarStartTime, calendarEndTime];
@@ -457,7 +457,7 @@ var CalendarDatabase = {
     saveAsNewEventToDB: function(calendarEvent) 
     {
         // SQL statement to insert new event into the database table
-        var insertEventStatement = "INSERT INTO WebKitCalendarEvents(id, eventTitle, eventLocation, startTime, endTime, eventCalendar, eventDetails) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        var insertEventStatement = "INSERT INTO CyberKitCalendarEvents(id, eventTitle, eventLocation, startTime, endTime, eventCalendar, eventDetails) VALUES (?, ?, ?, ?, ?, ?, ?)";
         
         // Arguments to the SQL statement above
         var sqlArguments = [calendarEvent.id, calendarEvent.title, calendarEvent.location, calendarEvent.from.getTime(), calendarEvent.to.getTime(), calendarEvent.calendar, calendarEvent.details];
@@ -470,7 +470,7 @@ var CalendarDatabase = {
 
     saveEventToDB: function(calendarEvent) {
         // SQL statement to update an event in the database table
-        var updateEventStatement = "UPDATE WebKitCalendarEvents SET eventTitle = ?, eventLocation = ?, startTime = ?, endTime = ?, eventCalendar = ?, eventDetails = ? WHERE id = ?";
+        var updateEventStatement = "UPDATE CyberKitCalendarEvents SET eventTitle = ?, eventLocation = ?, startTime = ?, endTime = ?, eventCalendar = ?, eventDetails = ? WHERE id = ?";
         
         // Arguments to the SQL statement above
         var sqlArguments = [calendarEvent.title, calendarEvent.location, calendarEvent.from.getTime(), calendarEvent.to.getTime(), calendarEvent.calendar, calendarEvent.details, calendarEvent.id];
@@ -484,7 +484,7 @@ var CalendarDatabase = {
     deleteEventFromDB: function(calendarEvent) 
     {
         // SQL statement to delete an event from the database table
-        var deleteEventStatement = "DELETE FROM WebKitCalendarEvents WHERE id = ?";
+        var deleteEventStatement = "DELETE FROM CyberKitCalendarEvents WHERE id = ?";
         
         // Arguments to the SQL statement above
         var sqlArguments = [calendarEvent.id];
@@ -499,7 +499,7 @@ var CalendarDatabase = {
         var self = this;
 
         // SQL query to search for events with keyword
-        var searchEventQuery = "SELECT id, eventTitle, eventLocation, startTime, endTime, eventCalendar, eventDetails FROM WebKitCalendarEvents WHERE eventTitle LIKE ? OR eventDetails LIKE ? OR eventLocation LIKE ?";
+        var searchEventQuery = "SELECT id, eventTitle, eventLocation, startTime, endTime, eventCalendar, eventDetails FROM CyberKitCalendarEvents WHERE eventTitle LIKE ? OR eventDetails LIKE ? OR eventLocation LIKE ?";
         
         // Arguments to the SQL query
         var sqlArguments = [query, query, query];
@@ -521,7 +521,7 @@ var CalendarDatabase = {
         var self = this;
 
         // SQL query to retrieve all the events for this month
-        var eventsQuery = "SELECT id, eventTitle, eventLocation, startTime, endTime, eventCalendar, eventDetails FROM WebKitCalendarEvents WHERE (startTime BETWEEN ? and ?) AND eventCalendar = ?";
+        var eventsQuery = "SELECT id, eventTitle, eventLocation, startTime, endTime, eventCalendar, eventDetails FROM CyberKitCalendarEvents WHERE (startTime BETWEEN ? and ?) AND eventCalendar = ?";
         
         // Arguments to the SQL query above
         var sqlArguments = [calendarStartTime, calendarEndTime, calendarType];

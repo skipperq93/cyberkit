@@ -1,1 +1,1 @@
-PASS: User-Agent header contains the string 'WebKit'.
+PASS: User-Agent header contains the string 'CyberKit'.

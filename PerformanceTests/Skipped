@@ -22,7 +22,7 @@ SVG/HereGear.html
 # Takes 22s on MacBookPro
 SVG/MtSaintHelens.html
 
-# Do not conform to WebKit perf test style
+# Do not conform to CyberKit perf test style
 SunSpider
 XSSAuditor
 JetStream

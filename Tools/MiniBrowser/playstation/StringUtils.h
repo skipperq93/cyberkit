@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebKit/WKString.h>
+#include <CyberKit/WKString.h>
 #include <string>
 #include <vector>
 

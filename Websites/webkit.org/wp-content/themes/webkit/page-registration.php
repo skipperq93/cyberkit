@@ -2,10 +2,10 @@
 if (class_exists('GitHubOAuthPlugin'))
     GitHubOAuthPlugin::request_auth();
 
-if (!class_exists('WebKit_Meeting_Registration'))
+if (!class_exists('CyberKit_Meeting_Registration'))
     return false;
 
-WebKit_Meeting_Registration::process();
+CyberKit_Meeting_Registration::process();
 
 get_header();
 ?>
@@ -30,11 +30,11 @@ get_header();
             <h1><?php the_title(); ?></h1>
             <div class="bodycopy">
                 <?php
-                $registration = WebKit_Meeting_Registration::full_registration();
+                $registration = CyberKit_Meeting_Registration::full_registration();
                 if (!empty($registration)):
                 ?>
                     <h3>You are registered!</h3>
-                    <p>Please take a moment to verify your email address is updated in the <a href="https://github.com/WebKit/WebKit/blob/main/metadata/contributors.json"><code>contributors.json</code></a> file.</p>
+                    <p>Please take a moment to verify your email address is updated in the <a href="https://github.com/CyberKit/CyberKit/blob/main/metadata/contributors.json"><code>contributors.json</code></a> file.</p>
                     <table>
                         <tr><td>Name</td><td><?php echo esc_html($registration->contributor_name); ?></td></tr>
                         <tr><td>Email</td><td><?php echo esc_html($registration->contributor_email); ?></td></tr>
@@ -53,7 +53,7 @@ get_header();
                     </table>
 
                     <nav class="navigation pagination">
-                        <a href="/meeting" class="page-numbers next-post">Return<span>to the WebKit Contributors Meeting page</span></a>
+                        <a href="/meeting" class="page-numbers next-post">Return<span>to the CyberKit Contributors Meeting page</span></a>
                     </nav>
                 <?php else: the_content(''); ?>
                 <?php endif; ?>

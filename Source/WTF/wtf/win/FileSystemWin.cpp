@@ -158,7 +158,7 @@ static String storageDirectory(DWORD pathIdentifier)
     buffer.shrink(wcslen(wcharFrom(buffer.data())));
     String directory = String::adopt(WTFMove(buffer));
 
-    directory = pathByAppendingComponent(directory, "Apple Computer\\WebKit"_s);
+    directory = pathByAppendingComponent(directory, "Apple Computer\\CyberKit"_s);
     if (!makeAllDirectories(directory))
         return String();
 

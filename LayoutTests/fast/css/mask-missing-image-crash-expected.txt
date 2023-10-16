@@ -1,4 +1,4 @@
-Test for rdar://problem/5959165: Crash in a number of iExploder tests in WebCore::CachedImage::notifyObservers.
+Test for rdar://problem/5959165: Crash in a number of iExploder tests in CyberCore::CachedImage::notifyObservers.
 
 Passed if the browser didn't crash.
 

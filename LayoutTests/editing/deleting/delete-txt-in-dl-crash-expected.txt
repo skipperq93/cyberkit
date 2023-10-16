@@ -1,1 +1,1 @@
-Tests deleting text in description list. The test passes if WebKit doesn't crash or hit an ssertion.
+Tests deleting text in description list. The test passes if CyberKit doesn't crash or hit an ssertion.

@@ -38,11 +38,11 @@ from webkitpy.common.system.filesystem import FileSystem
 def usesFlatpak():
     return not os.environ.get('WEBKIT_JHBUILD') or os.environ.get('WEBKIT_JHBUILD') == '0'
 
-def listWebKitBuildFiles(fs):
+def listCyberKitBuildFiles(fs):
     ret = []
-    if fs.isdir("WebKitBuild"):
-        for build_dir in fs.listdir("WebKitBuild"):
-            build_path = fs.join("WebKitBuild", build_dir)
+    if fs.isdir("CyberKitBuild"):
+        for build_dir in fs.listdir("CyberKitBuild"):
+            build_path = fs.join("CyberKitBuild", build_dir)
             ret.append(build_path)
     return ret
 
@@ -63,19 +63,19 @@ def main(args):
         scm.cleanup_and_optimize_local_repository()
 
     if args.keep_jhbuild_directory:
-        # Clean everything inside WebKitBuild, except the JHBuild directories.
+        # Clean everything inside CyberKitBuild, except the JHBuild directories.
         scm.discard_untracked_files(discard_ignored_files=True, keep_webkitbuild_directory=True)
-        if fs.isdir("WebKitBuild"):
-            files = listWebKitBuildFiles(fs)
+        if fs.isdir("CyberKitBuild"):
+            files = listCyberKitBuildFiles(fs)
             keepDirs = usesFlatpak() and ["Toolchains", "UserFlatpak"] or ["DependenciesGTK", "DependenciesWPE"]
-            files = [path for path in files if path[len("WebKitBuild/"):] not in keepDirs]
+            files = [path for path in files if path[len("CyberKitBuild/"):] not in keepDirs]
             removeFiles(fs, files)
     else:
         scm.discard_untracked_files(discard_ignored_files=True)
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Clean WebKit")
+    parser = argparse.ArgumentParser(description="Clean CyberKit")
     parser.add_argument("--keep-jhbuild-directory", action="store_true",
                         help="Don't wipe the JHBuild build directories.")
     parser.add_argument('--optimize-local-repository', action='store_true',

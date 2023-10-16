@@ -132,7 +132,7 @@ python3 Tools/CISupport/Shared/transfer-archive-via-sftp \
 	--user-name GTK-Linux-64-bit-Release-Build \
 	--ssh-key ~/key-for-uploads \
 	--remote-file test_upload_123.zip  \
-	WebKitBuild/release.zip
+	CyberKitBuild/release.zip
 ```
 
 If everything worked as expected the zip file should appear on the server at directory:
@@ -180,7 +180,7 @@ python3 Tools/CISupport/Shared/transfer-archive-via-sftp \
 	--user-name WithProperties("%(buildername)s") \
 	--remote-dir WithProperties("%(buildername)s") \
 	--remote-file WithProperties("%(archive_revision)s.zip") \
-	WithProperties("WebKitBuild/%(configuration)s.zip")
+	WithProperties("CyberKitBuild/%(configuration)s.zip")
 ```
 
 And the config file `remote-built-product-upload-config.json` that is stored in the bot

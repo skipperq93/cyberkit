@@ -2,6 +2,6 @@ PASS successfullyParsed is true
 
 TEST COMPLETE
 This tests deleting the composition text does not result in a crash.
-To manually test, type in the box below using input method (e.g. Japanese or Chinese). WebKit on iOS should not crash.
+To manually test, type in the box below using input method (e.g. Japanese or Chinese). CyberKit on iOS should not crash.
 
-PASS - WebKit did not crash
+PASS - CyberKit did not crash

@@ -9,8 +9,8 @@ layer at (0,0) size 800x600
           text run at (0,18) width 32: "drag."
       RenderBlock {P} at (0,52) size 784x36
         RenderText {#text} at (0,0) size 783x35
-          text run at (0,0) width 783: "To manually test, select text by a mouse drag starting in \"WebKit\" and ending in \"hello\". Selection should extend only in the"
-          text run at (0,18) width 239: "input element that contains \"WebKit\"."
+          text run at (0,0) width 783: "To manually test, select text by a mouse drag starting in \"CyberKit\" and ending in \"hello\". Selection should extend only in the"
+          text run at (0,18) width 239: "input element that contains \"CyberKit\"."
       RenderBlock {DIV} at (0,104) size 784x24
         RenderTextControl {INPUT} at (0,0) size 60x24 [bgcolor=#FFFFFF] [border: (2px inset #000000)]
         RenderText {#text} at (59,3) size 5x17
@@ -29,6 +29,6 @@ layer at (11,115) size 53x18
 layer at (115,115) size 53x18
   RenderBlock {DIV} at (3,3) size 54x18
     RenderText {#text} at (0,0) size 52x17
-      text run at (0,0) width 52: "WebKit"
+      text run at (0,0) width 52: "CyberKit"
 selection start: position 0 of child 0 {#text} of child 0 {DIV} of {#document-fragment} of child 5 {INPUT} of child 5 {DIV} of body
 selection end:   position 2 of child 0 {#text} of child 0 {DIV} of {#document-fragment} of child 5 {INPUT} of child 5 {DIV} of body

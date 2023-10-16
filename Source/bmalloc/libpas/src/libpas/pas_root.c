@@ -381,7 +381,7 @@ pas_root* pas_root_ensure_for_libmalloc_enumeration(void)
     pas_zero_memory(zone, sizeof(malloc_zone_t));
 
     zone->size = malloc_introspect_size;
-    zone->zone_name = "WebKit Malloc";
+    zone->zone_name = "CyberKit Malloc";
     zone->introspect = (malloc_introspection_t*)(uintptr_t)&malloc_introspect;
     zone->version = 4;
 
@@ -443,7 +443,7 @@ kern_return_t pas_root_visit_conservative_candidate_pointers_in_address_range(ta
     root = NULL;
     result = reader(task, (vm_address_t)((malloc_zone_t*)zone_address + 1), sizeof(pas_root), &pointer);
     if (result == KERN_SUCCESS) {
-        /* This function can be called with non libpas memory (WebKit System Malloc Zone). So in that case, let's make it NULL for now. */
+        /* This function can be called with non libpas memory (CyberKit System Malloc Zone). So in that case, let's make it NULL for now. */
         root = (pas_root*)pointer;
         if (root->magic != PAS_ROOT_MAGIC)
             root = NULL;

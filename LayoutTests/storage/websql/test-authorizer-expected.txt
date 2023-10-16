@@ -19,7 +19,7 @@ SQLITE_ALTER_TABLE statement succeeded.
 SQLITE_ALTER_TABLE statement succeeded.
 SQLITE_ALTER_INFO_TABLE statement failed: could not prepare statement (23 not authorized)
 SQLITE_ALTER_INFO_TABLE statement failed: could not prepare statement (23 not authorized)
-SQLITE_ALTER_INFO_TABLE statement failed: could not prepare statement (1 there is already another table or index with this name: __WebKitDatabaseInfoTable__)
+SQLITE_ALTER_INFO_TABLE statement failed: could not prepare statement (1 there is already another table or index with this name: __CyberKitDatabaseInfoTable__)
 SQLITE_TRANSACTION statement failed: could not prepare statement (23 not authorized)
 SQLITE_ATTACH statement failed: could not prepare statement (23 not authorized)
 SQLITE_DETACH statement failed: could not prepare statement (23 not authorized)
@@ -61,7 +61,7 @@ SQLITE_ALTER_TABLE statement failed: could not prepare statement (23 not authori
 SQLITE_ALTER_TABLE statement failed: could not prepare statement (1 no such table: TestTable)
 SQLITE_ALTER_INFO_TABLE statement failed: could not prepare statement (23 not authorized)
 SQLITE_ALTER_INFO_TABLE statement failed: could not prepare statement (23 not authorized)
-SQLITE_ALTER_INFO_TABLE statement failed: could not prepare statement (1 there is already another table or index with this name: __WebKitDatabaseInfoTable__)
+SQLITE_ALTER_INFO_TABLE statement failed: could not prepare statement (1 there is already another table or index with this name: __CyberKitDatabaseInfoTable__)
 SQLITE_TRANSACTION statement failed: could not prepare statement (23 not authorized)
 SQLITE_ATTACH statement failed: could not prepare statement (23 not authorized)
 SQLITE_DETACH statement failed: could not prepare statement (23 not authorized)

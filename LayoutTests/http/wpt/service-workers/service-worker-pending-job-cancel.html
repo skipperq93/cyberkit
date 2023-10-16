@@ -7,7 +7,7 @@
 <body>
 <script>
 promise_test(async (test) => {
-    const worker = new Worker("/WebKit/service-workers/service-worker-pending-job-cancel-worker.js");
+    const worker = new Worker("/CyberKit/service-workers/service-worker-pending-job-cancel-worker.js");
     await new Promise(resolve => worker.onmessage = resolve);
     worker.terminate();
 }, "Launch a worker and terminate it before its service worker job is finished");

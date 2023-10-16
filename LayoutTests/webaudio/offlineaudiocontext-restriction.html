@@ -26,7 +26,7 @@ function runTest() {
         context = new OfflineAudioContext(2, 1000, 44100);
 
     // It is not possible to set AudioContextRestrictions on an OfflineAudioContext since it
-    // does not subclass AudioContext / WebKitAudioContext.
+    // does not subclass AudioContext / CyberKitAudioContext.
     if (window.internals && window.webkitOfflineAudioContext)
         internals.setAudioContextRestrictions(context, 'RequireUserGestureForAudioStart');
 

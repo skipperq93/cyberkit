@@ -178,9 +178,9 @@ class ChangeLogCheckerTest(unittest.TestCase):
                              '2011-01-01  Patrick Gansterer  <paroga@paroga.com>\n'
                              '        Example bug\n'
                              '        https://bugs.webkit.org/show_bug.cgi?id=12345\n'
-                             '        * Source/WebKitLegacy/foo.cpp:    \n'
-                             '        * Source/WebKitLegacy/bar.cpp:\n'
-                             '        * Source/WebKitLegacy/foobar.cpp: Description\n')
+                             '        * Source/CyberKitLegacy/foo.cpp:    \n'
+                             '        * Source/CyberKitLegacy/bar.cpp:\n'
+                             '        * Source/CyberKitLegacy/foobar.cpp: Description\n')
 
     def test_unwanted_security_terms(self):
         self.assert_error(5, range(1, 20), 'changelog/unwantedsecurityterms',
@@ -229,9 +229,9 @@ class ChangeLogCheckerTest(unittest.TestCase):
                           '\n'
                           '        Several new tests added.\n'
                           '\n'
-                          '        * Source/WebKitLegacy/foo.cpp:    \n'
-                          '        * Source/WebKitLegacy/bar.cpp:\n'
-                          '        * Source/WebKitLegacy/foobar.cpp: Vulnerabilities fixed\n')
+                          '        * Source/CyberKitLegacy/foo.cpp:    \n'
+                          '        * Source/CyberKitLegacy/bar.cpp:\n'
+                          '        * Source/CyberKitLegacy/foobar.cpp: Vulnerabilities fixed\n')
         self.assert_error(5, range(1, 20), 'changelog/unwantedsecurityterms',
                           '2016-11-11 Bogus Person <bperson@example.com>\n'
                           '        ExampleBug with several security sensitive terms in change log\n'
@@ -241,6 +241,6 @@ class ChangeLogCheckerTest(unittest.TestCase):
                           '\n'
                           '        Several new tests added to check double free.\n'
                           '\n'
-                          '        * Source/WebKitLegacy/foo.cpp:    \n'
-                          '        * Source/WebKitLegacy/bar.cpp:\n'
-                          '        * Source/WebKitLegacy/foobar.cpp: memory CORRUPTION fixed\n')
+                          '        * Source/CyberKitLegacy/foo.cpp:    \n'
+                          '        * Source/CyberKitLegacy/bar.cpp:\n'
+                          '        * Source/CyberKitLegacy/foobar.cpp: memory CORRUPTION fixed\n')

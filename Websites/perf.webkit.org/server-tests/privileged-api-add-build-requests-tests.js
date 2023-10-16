@@ -14,7 +14,7 @@ async function createAnalysisTask(name, webkitRevisions = ["191622", "191623"])
         "buildTag": "124",
         "buildTime": "2015-10-27T15:34:51",
         "revisions": {
-            "WebKit": {
+            "CyberKit": {
                 "revision": webkitRevisions[0],
                 "timestamp": '2015-10-27T11:36:56.878473Z',
             },
@@ -43,7 +43,7 @@ async function createAnalysisTask(name, webkitRevisions = ["191622", "191623"])
         "buildTag": "125",
         "buildTime": "2015-10-27T17:27:41",
         "revisions": {
-            "WebKit": {
+            "CyberKit": {
                 "revision": webkitRevisions[1],
                 "timestamp": '2015-10-27T16:38:10.768995Z',
             },
@@ -136,7 +136,7 @@ describe('/privileged-api/add-build-requests', function() {
 
     it('should be able to add build requests to test group', async () => {
         await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
         let result = await PrivilegedAPI.sendRequest('create-test-group',
             {name: 'test', taskName: 'other task', platform: MockData.somePlatformId(), test: MockData.someTestId(),
@@ -170,7 +170,7 @@ describe('/privileged-api/add-build-requests', function() {
 
     it('should be able to add build requests with the same test parameter sets to a test group', async () => {
         await addTriggerableAndCreateTask('some task',  ["191622", "191623"], [[1, 2], [1, 2]]);
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
         const testParametersList = [{1: {value: true, file: null}, 2: {value: 'Xcode 14.3'}}, {2: {value: 'Xcode 14.3'}}];
         let result = await PrivilegedAPI.sendRequest('create-test-group',
@@ -259,7 +259,7 @@ describe('/privileged-api/add-build-requests', function() {
 
     it('should not be able to add build requests to a hidden test group', async () => {
         await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
         let result = await PrivilegedAPI.sendRequest('create-test-group',
             {name: 'test', taskName: 'other task', platform: MockData.somePlatformId(), test: MockData.someTestId(),
@@ -281,7 +281,7 @@ describe('/privileged-api/add-build-requests', function() {
 
     it('should reject with "CommitSetNotSupportedRepetitionType" when adding build requests for one commit set in an alternating test group', async () => {
         await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
         const result = await PrivilegedAPI.sendRequest('create-test-group', {
             name: 'test', taskName: 'other task', platform: MockData.somePlatformId(), test: MockData.someTestId(),
@@ -315,7 +315,7 @@ describe('/privileged-api/add-build-requests', function() {
 
     it('should be able to build requests for first commit set with order shifted in a sequential test group', async () => {
         await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
         const result = await PrivilegedAPI.sendRequest('create-test-group',
             {name: 'test', taskName: 'other task', platform: MockData.somePlatformId(), repetitionCount: 2,
@@ -356,7 +356,7 @@ describe('/privileged-api/add-build-requests', function() {
 
     it('should not modify the order of preceding build requests when adding new build requests in a sequential test group', async () => {
         await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
         const result = await PrivilegedAPI.sendRequest('create-test-group',
             {name: 'test', taskName: 'other task', platform: MockData.somePlatformId(), repetitionCount: 2,
@@ -397,7 +397,7 @@ describe('/privileged-api/add-build-requests', function() {
 
     it('should shift the order of following build requests when adding retry for a specific commit set in a sequential test group with 3 commit sets', async () => {
         await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}},
             {[webkit.id()]: {revision: '192736'}}];
         const result = await PrivilegedAPI.sendRequest('create-test-group',
@@ -443,7 +443,7 @@ describe('/privileged-api/add-build-requests', function() {
 
     it('should shift the order of build requests when adding retry for all commit sets in a sequential test group with 3 commit sets', async () => {
         await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}},
             {[webkit.id()]: {revision: '192736'}}];
         const result = await PrivilegedAPI.sendRequest('create-test-group',
@@ -489,7 +489,7 @@ describe('/privileged-api/add-build-requests', function() {
 
     it('should reject with "NoCommitSetInTestGroup" if commit set is not in a sequential test group', async () => {
         await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
         let result = await PrivilegedAPI.sendRequest('create-test-group',
             {name: 'test', taskName: 'other task', platform: MockData.somePlatformId(), test: MockData.someTestId(),
@@ -522,7 +522,7 @@ describe('/privileged-api/add-build-requests', function() {
 
     it('should reject with "InvalidCommitSet" if commit set id is not an integer for a sequential test group', async () => {
         await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
         let result = await PrivilegedAPI.sendRequest('create-test-group',
             {name: 'test', taskName: 'other task', platform: MockData.somePlatformId(), test: MockData.someTestId(),
@@ -550,7 +550,7 @@ describe('/privileged-api/add-build-requests', function() {
 
     it('should reject with "InvalidCommitSet" if commit set id is not an integer for an alternating test group', async () => {
         await addTriggerableAndCreateTask('some task');
-        const webkit = Repository.all().filter((repository) => repository.name() == 'WebKit')[0];
+        const webkit = Repository.all().filter((repository) => repository.name() == 'CyberKit')[0];
         const revisionSets = [{[webkit.id()]: {revision: '191622'}}, {[webkit.id()]: {revision: '191623'}}];
         let result = await PrivilegedAPI.sendRequest('create-test-group',
             {name: 'test', taskName: 'other task', platform: MockData.somePlatformId(), test: MockData.someTestId(),

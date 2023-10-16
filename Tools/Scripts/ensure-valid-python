@@ -63,7 +63,7 @@ HELP
 
     return 1 if $checkOnly;
 
-    print "Your Python version is insufficient to run WebKit's Python code.  Please update.\n";
+    print "Your Python version is insufficient to run CyberKit's Python code.  Please update.\n";
     print "See http://trac.webkit.org/wiki/PythonGuidelines for more info.\n";
     return 1;
 }

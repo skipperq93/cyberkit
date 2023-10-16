@@ -954,7 +954,7 @@ WI.Recording.Type = {
     CanvasWebGL2: "canvas-webgl2",
 };
 
-// Keep this in sync with WebCore::RecordingSwizzleType.
+// Keep this in sync with CyberCore::RecordingSwizzleType.
 WI.Recording.Swizzle = {
     None: 0,
     Number: 1,

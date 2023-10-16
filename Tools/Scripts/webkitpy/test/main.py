@@ -69,10 +69,10 @@ def main():
     if sys.version_info > (3, 0):
         tester.add_tree(os.path.join(_webkit_root, 'Tools', 'Scripts', 'libraries', 'reporelaypy'), 'reporelaypy')
 
-    # AppleWin is the only platform that does not support Modern WebKit
+    # AppleWin is the only platform that does not support Modern CyberKit
     # FIXME: Find a better way to detect this currently assuming cygwin means AppleWin
     if sys.platform != 'cygwin':
-        tester.add_tree(os.path.join(_webkit_root, 'Source', 'WebKit', 'Scripts'), 'webkit')
+        tester.add_tree(os.path.join(_webkit_root, 'Source', 'CyberKit', 'Scripts'), 'webkit')
 
     tester.skip(('webkitpy.common.checkout.scm.scm_unittest',), 'are really, really, slow', 31818)
     if sys.platform.startswith('win'):

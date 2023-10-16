@@ -1,4 +1,4 @@
-Test parsing of CSS URI tokens. Older versions of WebKit did some double processing of these, hence this test would have failed.
+Test parsing of CSS URI tokens. Older versions of CyberKit did some double processing of these, hence this test would have failed.
 
 SUCCESS
 

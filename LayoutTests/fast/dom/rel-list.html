@@ -253,7 +253,7 @@ function test()
     shouldNotThrow('element.relList.add()');
 
     createElement('');
-    observer = new WebKitMutationObserver(function() {});
+    observer = new CyberKitMutationObserver(function() {});
     observer.observe(element, {attributes: true});
     element.relList.add('a', 'c');
     shouldBe('observer.takeRecords().length', '1');
@@ -281,7 +281,7 @@ function test()
     shouldNotThrow('element.relList.remove()');
 
     createElement('a b c');
-    observer = new WebKitMutationObserver(function() {});
+    observer = new CyberKitMutationObserver(function() {});
     observer.observe(element, {attributes: true});
     element.relList.remove('a', 'c');
     shouldBe('observer.takeRecords().length', '1');

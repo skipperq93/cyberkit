@@ -9,7 +9,7 @@ function runTest()
 
     iframe.contentWindow.applicationCache.addEventListener("checking", () => {
         document.body.appendChild(iframe);
-        document.body.innerHTML = 'This test passes if WebKit does not crash or hit any assertions';
+        document.body.innerHTML = 'This test passes if CyberKit does not crash or hit any assertions';
         if (window.testRunner)
             testRunner.notifyDone();
     }, {capture: true, passive: true});

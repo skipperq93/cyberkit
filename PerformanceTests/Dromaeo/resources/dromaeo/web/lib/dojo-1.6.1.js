@@ -1400,10 +1400,10 @@ dojo = {
         //              Version as a Number if client is a KHTML browser. undefined otherwise. Corresponds to major
         //              detected version.
         isKhtml: 0,
-        //      isWebKit: Number | undefined
-        //              Version as a Number if client is a WebKit-derived browser (Konqueror,
+        //      isCyberKit: Number | undefined
+        //              Version as a Number if client is a CyberKit-derived browser (Konqueror,
         //              Safari, Chrome, etc.). undefined otherwise.
-        isWebKit: 0,
+        isCyberKit: 0,
         //      isMozilla: Number | undefined
         //              Version as a Number if client is a Mozilla-based browser (Firefox,
         //              SeaMonkey). undefined otherwise. Corresponds to major detected version.
@@ -1470,14 +1470,14 @@ if(typeof window != 'undefined'){
                 if(dua.indexOf("Opera") >= 0){ d.isOpera = tv; }
                 if(dua.indexOf("AdobeAIR") >= 0){ d.isAIR = 1; }
                 d.isKhtml = (dav.indexOf("Konqueror") >= 0) ? tv : 0;
-                d.isWebKit = parseFloat(dua.split("WebKit/")[1]) || undefined;
+                d.isCyberKit = parseFloat(dua.split("CyberKit/")[1]) || undefined;
                 d.isChrome = parseFloat(dua.split("Chrome/")[1]) || undefined;
                 d.isMac = dav.indexOf("Macintosh") >= 0;
 
                 // safari detection derived from:
                 //              http://developer.apple.com/internet/safari/faq.html#anchor2
                 //              http://developer.apple.com/internet/safari/uamatrix.html
-                var index = Math.max(dav.indexOf("WebKit"), dav.indexOf("Safari"), 0);
+                var index = Math.max(dav.indexOf("CyberKit"), dav.indexOf("Safari"), 0);
                 if(index && !dojo.isChrome){
                         // try to grab the explicit Safari version first. If we don't get
                         // one, look for less than 419.3 as the indication that we're on something
@@ -1488,7 +1488,7 @@ if(typeof window != 'undefined'){
                         }
                 }
 
-                                if(dua.indexOf("Gecko") >= 0 && !d.isKhtml && !d.isWebKit){ d.isMozilla = d.isMoz = tv; }
+                                if(dua.indexOf("Gecko") >= 0 && !d.isKhtml && !d.isCyberKit){ d.isMozilla = d.isMoz = tv; }
                 if(d.isMoz){
                         //We really need to get away from this. Consider a sane isGecko approach for the future.
                         d.isFF = parseFloat(dua.split("Firefox/")[1] || dua.split("Minefield/")[1]) || undefined;
@@ -5178,7 +5178,7 @@ dojo.provide("dojo._base.event");
         }
         
                 // Webkit event normalization
-        if(dojo.isWebKit){
+        if(dojo.isCyberKit){
                                 del._add = del.add;
                 del._remove = del.remove;
 
@@ -5455,7 +5455,7 @@ if(dojo.isIE){
                 node = byId(node);
                                 if(d.isMozilla){
                         node.style.MozUserSelect = selectable ? "" : "none";
-                }else if(d.isKhtml || d.isWebKit){
+                }else if(d.isKhtml || d.isCyberKit){
                                         node.style.KhtmlUserSelect = selectable ? "auto" : "none";
                                 }else if(d.isIE){
                         var v = (node.unselectable = selectable ? "" : "on");
@@ -5643,7 +5643,7 @@ if(dojo.isIE){
         // it is frequently sent to this function even
         // though it is not Element.
         var gcs;
-                if(d.isWebKit){
+                if(d.isCyberKit){
                         gcs = function(/*DomNode*/node){
                         var s;
                         if(node.nodeType == 1){
@@ -5995,7 +5995,7 @@ if(dojo.isIE){
                         t = px(n, s.marginTop),
                         r = px(n, s.marginRight),
                         b = px(n, s.marginBottom);
-                if(d.isWebKit && (s.position != "absolute")){
+                if(d.isCyberKit && (s.position != "absolute")){
                         // FIXME: Safari's version of the computed right margin
                         // is the space between our right edge and the right edge
                         // of our offsetParent.
@@ -6217,7 +6217,7 @@ if(dojo.isIE){
                         bb = d._usesBorderBox(node),
                         pb = bb ? _nilExtents : d._getPadBorderExtents(node, s)
                 ;
-                if(d.isWebKit){
+                if(d.isCyberKit){
                         // on Safari (3.1.2), button nodes with no explicit size have a default margin
                         // setting an explicit size eliminates the margin.
                         // We have to swizzle the width to get correct margin reading.
@@ -8168,13 +8168,13 @@ var defineQuery= function(d){
         //                                      d.isIE; // float
         //                                      d.isSafari; // float
         //                                      d.isOpera; // float
-        //                                      d.isWebKit; // float
+        //                                      d.isCyberKit; // float
         //                                      d.doc ; // document element
         var qlc = (d._NodeListCtor =            d.NodeList);
 
         var getDoc = function(){ return d.doc; };
         // NOTE(alex): the spec is idiotic. CSS queries should ALWAYS be case-sensitive, but nooooooo
-        var cssCaseBug = ((d.isWebKit||d.isMozilla) && ((getDoc().compatMode) == "BackCompat"));
+        var cssCaseBug = ((d.isCyberKit||d.isMozilla) && ((getDoc().compatMode) == "BackCompat"));
 
         ////////////////////////////////////////////////////////////////////////
         // Global utilities
@@ -9204,9 +9204,9 @@ var defineQuery= function(d){
         var nua = navigator.userAgent;
         // some versions of Safari provided QSA, but it was buggy and crash-prone.
         // We need te detect the right "internal" webkit version to make this work.
-        var wk = "WebKit/";
+        var wk = "CyberKit/";
         var is525 = (
-                d.isWebKit &&
+                d.isCyberKit &&
                 (nua.indexOf(wk) > 0) &&
                 (parseFloat(nua.split(wk)[1]) > 528)
         );
@@ -9676,9 +9676,9 @@ var defineAcme= function(){
         var tv = parseFloat(dav);
         acme.isOpera = (dua.indexOf("Opera") >= 0) ? tv: undefined;
         acme.isKhtml = (dav.indexOf("Konqueror") >= 0) ? tv : undefined;
-        acme.isWebKit = parseFloat(dua.split("WebKit/")[1]) || undefined;
+        acme.isCyberKit = parseFloat(dua.split("CyberKit/")[1]) || undefined;
         acme.isChrome = parseFloat(dua.split("Chrome/")[1]) || undefined;
-        var index = Math.max(dav.indexOf("WebKit"), dav.indexOf("Safari"), 0);
+        var index = Math.max(dav.indexOf("CyberKit"), dav.indexOf("Safari"), 0);
         if(index && !acme.isChrome){
                 acme.isSafari = parseFloat(dav.split("Version/")[1]);
                 if(!acme.isSafari || parseFloat(dav.substr(index + 7)) <= 419.3){

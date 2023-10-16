@@ -1,0 +1,111 @@
+/*
+ * Copyright (C) 2019 Igalia S.L.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS''
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+ * THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+#pragma once
+
+#include <CyberCore/AutocapitalizeTypes.h>
+#include <CyberCore/InputMode.h>
+#include <wtf/EnumTraits.h>
+#include <wtf/OptionSet.h>
+
+namespace IPC {
+class Decoder;
+class Encoder;
+}
+
+namespace CyberCore {
+class HTMLInputElement;
+}
+
+namespace CyberKit {
+
+struct InputMethodState {
+    enum class Purpose {
+        FreeForm,
+        Digits,
+        Number,
+        Phone,
+        Url,
+        Email,
+        Password
+    };
+
+    enum class Hint : uint8_t {
+        None = 0,
+        Spellcheck = 1 << 0,
+        Lowercase = 1 << 1,
+        UppercaseChars = 1 << 2,
+        UppercaseWords = 1 << 3,
+        UppercaseSentences = 1 << 4,
+        InhibitOnScreenKeyboard = 1 << 5
+    };
+
+    void setPurposeOrHintForInputMode(CyberCore::InputMode);
+    void setPurposeForInputElement(CyberCore::HTMLInputElement&);
+    void addHintsForAutocapitalizeType(CyberCore::AutocapitalizeType);
+
+    void encode(IPC::Encoder&) const;
+    static std::optional<InputMethodState> decode(IPC::Decoder&);
+
+    Purpose purpose { Purpose::FreeForm };
+    OptionSet<Hint> hints;
+};
+
+inline bool operator==(const InputMethodState& a, const InputMethodState& b)
+{
+    return a.purpose == b.purpose && a.hints == b.hints;
+}
+
+} // namespace CyberKit
+
+namespace WTF {
+
+template<> struct EnumTraits<CyberKit::InputMethodState::Hint> {
+    using values = EnumValues<
+        CyberKit::InputMethodState::Hint,
+        CyberKit::InputMethodState::Hint::None,
+        CyberKit::InputMethodState::Hint::Spellcheck,
+        CyberKit::InputMethodState::Hint::Lowercase,
+        CyberKit::InputMethodState::Hint::UppercaseChars,
+        CyberKit::InputMethodState::Hint::UppercaseWords,
+        CyberKit::InputMethodState::Hint::UppercaseSentences,
+        CyberKit::InputMethodState::Hint::InhibitOnScreenKeyboard
+    >;
+};
+
+template<> struct EnumTraits<CyberKit::InputMethodState::Purpose> {
+    using values = EnumValues<
+        CyberKit::InputMethodState::Purpose,
+        CyberKit::InputMethodState::Purpose::FreeForm,
+        CyberKit::InputMethodState::Purpose::Digits,
+        CyberKit::InputMethodState::Purpose::Number,
+        CyberKit::InputMethodState::Purpose::Phone,
+        CyberKit::InputMethodState::Purpose::Url,
+        CyberKit::InputMethodState::Purpose::Email,
+        CyberKit::InputMethodState::Purpose::Password
+    >;
+};
+
+} // namespace WTF

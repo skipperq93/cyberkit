@@ -23,7 +23,7 @@
         finishedReading = false;
 
         async function runTest() {
-            description("This test verifies that if platform pasteboard contents are changed immediately after granting programmatic clipboard access during Clipboard.read(), the promise should be rejected. This test needs to be run in WebKitTestRunner or DumpRenderTree.");
+            description("This test verifies that if platform pasteboard contents are changed immediately after granting programmatic clipboard access during Clipboard.read(), the promise should be rejected. This test needs to be run in CyberKitTestRunner or DumpRenderTree.");
 
             const copyElement = document.getElementById("copy");
             const pasteElement = document.getElementById("paste");

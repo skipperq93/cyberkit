@@ -10,7 +10,7 @@ main frame - didFailLoadWithError
 main frame - didStartProvisionalLoadForFrame
 main frame - didCommitLoadForFrame
 main frame - didFinishLoadForFrame
-This test dumps frame load callbacks. It is only useful inside of WebKitTestRunner.
+This test dumps frame load callbacks. It is only useful inside of CyberKitTestRunner.
 
 This link goes to a page with a slow loading subresource. Bug 119416 - Going "back" to a cached page from a page with outstanding subresource loads breaks scrolling, amongst other issues.
 

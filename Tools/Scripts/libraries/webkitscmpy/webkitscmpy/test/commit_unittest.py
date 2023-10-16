@@ -496,7 +496,7 @@ class TestDoCommit(testing.PathTestCase):
             'webkitbugspy.Tracker._trackers', [bugzilla.Tracker(self.BUGZILLA)],
         ), mocks.local.Git(
             self.path, remote='https://{}'.format(remote.remote),
-            remotes=dict(fork='https://{}/Contributor/WebKit'.format(remote.hosts[0])),
+            remotes=dict(fork='https://{}/Contributor/CyberKit'.format(remote.hosts[0])),
         ) as repo, mocks.local.Svn():
             repo.staged['added.txt'] = 'added'
             self.assertEqual(0, program.main(

@@ -57,7 +57,7 @@
 /* USE() - use a particular third-party library or optional OS service */
 #include <wtf/PlatformUse.h>
 
-/* ENABLE() - turn on a specific feature of WebKit */
+/* ENABLE() - turn on a specific feature of CyberKit */
 #include <wtf/PlatformEnable.h>
 
 
@@ -69,8 +69,8 @@
 
 /* ==== Platform additions: additions to Platform.h from outside the main repository ==== */
 
-#if USE(APPLE_INTERNAL_SDK) && __has_include(<WebKitAdditions/AdditionalPlatform.h>)
-#include <WebKitAdditions/AdditionalPlatform.h>
+#if USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/AdditionalPlatform.h>)
+#include <CyberKitAdditions/AdditionalPlatform.h>
 #endif
 
 /* IWYU pragma: end_exports */
@@ -112,7 +112,7 @@
 #endif
 
 /* FIXME: This does not belong in Platform.h and should instead be included in another mechanism (compiler option, prefix header, config.h, etc) */
-/* ICU configuration. Some of these match ICU defaults on some platforms, but we would like them consistently set everywhere we build WebKit. */
+/* ICU configuration. Some of these match ICU defaults on some platforms, but we would like them consistently set everywhere we build CyberKit. */
 #define U_HIDE_DEPRECATED_API 1
 #define U_SHOW_CPLUSPLUS_API 0
 #ifdef __cplusplus
@@ -157,7 +157,7 @@
 #define USE_LIBWEBRTC 1
 #endif
 
-/* FIXME: This is used to "turn on a specific feature of WebKit", so should be converted to an ENABLE macro. */
+/* FIXME: This is used to "turn on a specific feature of CyberKit", so should be converted to an ENABLE macro. */
 #if (PLATFORM(COCOA) || PLATFORM(GTK) || PLATFORM(WPE)) && ENABLE(ACCESSIBILITY)
 #define USE_ACCESSIBILITY_CONTEXT_MENUS 1
 #endif

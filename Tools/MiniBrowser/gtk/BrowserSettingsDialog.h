@@ -48,7 +48,7 @@ typedef struct _BrowserSettingsDialogClass   BrowserSettingsDialogClass;
 
 GType browser_settings_dialog_get_type(void);
 
-GtkWidget* browser_settings_dialog_new(WebKitSettings *settings);
+GtkWidget* browser_settings_dialog_new(CyberKitSettings *settings);
 
 G_END_DECLS
 

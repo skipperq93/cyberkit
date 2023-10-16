@@ -25,7 +25,7 @@ shouldBe("imgdata[7]", "0");
 
 ctx.strokeStyle = 'red';
 ctx.lineWidth = 100;
-// NOTE: This version of strokeRect() is WebKit-specific and not part of the standard API.
+// NOTE: This version of strokeRect() is CyberKit-specific and not part of the standard API.
 ctx.strokeRect(0, 0, 10, 10, 1);
 shouldBe("ctx.lineWidth", "100");
 
