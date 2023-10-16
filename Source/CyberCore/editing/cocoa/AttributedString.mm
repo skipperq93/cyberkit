@@ -37,29 +37,6 @@
 #import "UIFoundationSoftLink.h"
 #endif
 
-#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
-@implementation CyberPresentationIntent
-- (CyberPresentationIntent *_Nonnull) initWithIdentity:(NSInteger)identity
-                                       parentIntent:(CyberPresentationIntent *_Nullable)parent {
-    self = [super init];
-
-    if ( self ) {
-        self->_identity = identity;
-        self->_parentIntent = parent;
-    }
-
-    return self;
-}
-
-+ (CyberPresentationIntent *_Nonnull)blockQuoteIntentWithIdentity:(NSInteger)identity
-                                            nestedInsideIntent:(CyberPresentationIntent *_Nullable)parent {
-    return [[CyberPresentationIntent alloc] initWithIdentity:identity parentIntent:parent];
-}
-@end
-
-NSString *_Nonnull const NSPresentationIntentAttributeName = @"CyberPresentationIntent";
-#endif
-
 namespace CyberCore {
 
 AttributedString::AttributedString() = default;

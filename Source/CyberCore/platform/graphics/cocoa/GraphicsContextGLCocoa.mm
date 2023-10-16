@@ -664,7 +664,7 @@ void GraphicsContextGLCocoa::destroyPbufferAndDetachIOSurface(void* handle)
     CyberCore::destroyPbufferAndDetachIOSurface(m_displayObj, handle);
 }
 
-#if !PLATFORM(IOS_FAMILY_SIMULATOR)
+#if !PLATFORM(IOS_FAMILY_SIMULATOR) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000) && 0
 GraphicsContextGLCocoa::IOSurfaceTextureAttachment GraphicsContextGLCocoa::attachIOSurfaceToSharedTexture(GCGLenum target, IOSurface* surface)
 {
     constexpr EGLint emptyAttributes[] = { EGL_NONE };

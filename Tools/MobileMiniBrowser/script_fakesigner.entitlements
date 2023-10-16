@@ -109,12 +109,6 @@
 	<true/>
 	<key>com.apple.private.webkit.use-xpc-endpoint</key>
 	<true/>
-	<key>com.apple.QuartzCore.secure-mode</key>
-	<true/>
-	<key>com.apple.QuartzCore.webkit-end-points</key>
-	<true/>
-	<key>com.apple.QuartzCore.webkit-limited-types</key>
-	<true/>
 	<key>com.apple.rootless.storage.CyberKitWebContentSandbox</key>
 	<true/>
 	<key>com.apple.rootless.storage.CyberScriptCore</key>
@@ -206,6 +200,7 @@
 		<string>AGXDevice</string>
 		<string>AGXDeviceUserClient</string>
 		<string>AGXSharedUserClient</string>
+		<string>AppleJPEGDriverUserClient</string>
 		<string>AppleKeyStoreUserClient</string>
 		<string>AppleUpstreamUserClient</string>
 		<string>AppleAVDUserClient</string>

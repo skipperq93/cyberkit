@@ -60,16 +60,19 @@ inline static memorystatus_memlimit_properties_t jetsamConfiguration(pid_t pid)
     priority.priority = JETSAM_PRIORITY_FOREGROUND_SUPPORT;
 
     if (memorystatus_control(MEMORYSTATUS_CMD_SET_MEMLIMIT_PROPERTIES, pid, 0, &properties, sizeof(properties))) {
+        fprintf(stderr, "CyberKit crash: Failed to set memlimit properties for pid %d", pid);
         abort();
     }
 
     if (memorystatus_control(MEMORYSTATUS_CMD_SET_PRIORITY_PROPERTIES, pid, 0, &priority, sizeof(priority))) {
+        fprintf(stderr, "CyberKit crash: Failed to set priority properties for pid %d", pid);
         abort();
     }
     
     // Get jetsam limit from system
     memset(&properties, 0, sizeof(memorystatus_memlimit_properties));
     if (memorystatus_control(MEMORYSTATUS_CMD_GET_MEMLIMIT_PROPERTIES, pid, 0, &properties, sizeof(properties))) {
+        fprintf(stderr, "CyberKit crash: Failed to get memlimit properties for pid %d", pid);
         abort();
     }
     return properties;
