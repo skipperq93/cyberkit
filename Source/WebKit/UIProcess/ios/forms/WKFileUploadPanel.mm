@@ -44,7 +44,9 @@
 #import "WebOpenPanelResultListenerProxy.h"
 #import "WebPageProxy.h"
 #import <UIKit/UIDocumentPickerViewController.h>
+#if HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
 #import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
+#endif
 #import <WebCore/LocalizedStrings.h>
 #import <WebCore/MIMETypeRegistry.h>
 #import <wtf/MainThread.h>
