@@ -586,6 +586,7 @@ static void encodeSecureCodingInternal(Encoder& encoder, id <NSObject, NSSecureC
     encoder << (__bridge CFDataRef)[archiver encodedData];
 }
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
 #if ENABLE(DATA_DETECTION) || ENABLE(REVEAL)
 static bool haveSecureActionContext()
 {
@@ -730,6 +731,7 @@ static bool shouldEnableStrictMode(Decoder& decoder, NSArray<Class> *allowedClas
     ASSERT_NOT_REACHED();
     return true;
 }
+#endif
 
 static std::optional<RetainPtr<id>> decodeSecureCodingInternal(Decoder& decoder, NSArray<Class> *allowedClasses)
 {
@@ -758,8 +760,10 @@ static std::optional<RetainPtr<id>> decodeSecureCodingInternal(Decoder& decoder,
         [allowedClassSet addObject:NSMutableData.class];
     }
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
     if (shouldEnableStrictMode(decoder, allowedClasses))
         [unarchiver _enableStrictSecureDecodingMode];
+#endif
 
     if ([allowedClasses containsObject:NSParagraphStyle.class])
         [allowedClassSet addObject:NSMutableParagraphStyle.class];

@@ -64,8 +64,13 @@ RefPtr<FontCustomPlatformData> createFontCustomPlatformData(SharedBuffer& buffer
 {
     RetainPtr<CFDataRef> bufferData = buffer.createCFData();
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
     FPFontRef font = nullptr;
     auto array = adoptCF(FPFontCreateFontsFromData(bufferData.get()));
+#else
+    RetainPtr<CTFontDescriptorRef> fontDescriptor;
+    auto array = adoptCF(CTFontManagerCreateFontDescriptorsFromData(bufferData.get()));
+#endif
     if (!array)
         return nullptr;
     auto length = CFArrayGetCount(array.get());
@@ -74,15 +79,25 @@ RefPtr<FontCustomPlatformData> createFontCustomPlatformData(SharedBuffer& buffer
     if (!itemInCollection.isNull()) {
         if (auto desiredName = itemInCollection.createCFString()) {
             for (CFIndex i = 0; i < length; ++i) {
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
                 auto candidate = static_cast<FPFontRef>(CFArrayGetValueAtIndex(array.get(), i));
                 auto postScriptName = adoptCF(FPFontCopyPostScriptName(candidate));
+#else
+                auto candidate = static_cast<CTFontDescriptorRef>(CFArrayGetValueAtIndex(array.get(), i));
+                auto postScriptName = adoptCF(static_cast<CFStringRef>(CTFontDescriptorCopyAttribute(candidate, kCTFontNameAttribute)));
+#endif
                 if (CFStringCompare(postScriptName.get(), desiredName.get(), 0) == kCFCompareEqualTo) {
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
                     font = candidate;
+#else
+                    fontDescriptor = candidate;
+#endif
                     break;
                 }
             }
         }
     }
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
     if (!font)
         font = static_cast<FPFontRef>(CFArrayGetValueAtIndex(array.get(), 0));
 
@@ -97,6 +112,11 @@ RefPtr<FontCustomPlatformData> createFontCustomPlatformData(SharedBuffer& buffer
     auto protectedBuffer = SharedBuffer::create(extractedData.get());
 
     FontPlatformData::CreationData creationData = { WTFMove(protectedBuffer), itemInCollection };
+#else
+    if (!fontDescriptor)
+        fontDescriptor = static_cast<CTFontDescriptorRef>(CFArrayGetValueAtIndex(array.get(), 0));
+    FontPlatformData::CreationData creationData = { buffer, itemInCollection };
+#endif
     return adoptRef(new FontCustomPlatformData(fontDescriptor.get(), WTFMove(creationData)));
 }
 

@@ -171,7 +171,13 @@ id AuxiliaryProcess::decodePreferenceValue(const std::optional<String>& encodedV
         NSMutableData.class,
     nil];
     NSError *error { nil };
-    id result = [NSKeyedUnarchiver _strictlyUnarchivedObjectOfClasses:classes fromData:encodedData.get() error:&error];
+    id result;
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
+    if ([NSKeyedUnarchiver respondsToSelector:@selector(_strictlyUnarchivedObjectOfClasses:fromData:error:)])
+        result = [NSKeyedUnarchiver _strictlyUnarchivedObjectOfClasses:classes fromData:encodedData.get() error:&error];
+    else
+#endif
+        result = [NSKeyedUnarchiver unarchivedObjectOfClasses:classes fromData:encodedData.get() error:&error];
     ASSERT(!error);
     return result;
 }
