@@ -83,6 +83,11 @@ void GPUProcess::initializeSandbox(const AuxiliaryProcessInitializationParameter
     // Need to overide the default, because service has a different bundle ID.
     NSBundle *webKit2Bundle = [NSBundle bundleForClass:NSClassFromString(@"WKWebView")];
 
+#if defined(USE_VORBIS_AUDIOCOMPONENT_WORKAROUND)
+    // We need to initialize the Vorbis decoder before the sandbox gets setup; this is a one off action.
+    WebCore::registerVorbisDecoderIfNeeded();
+#endif
+
     sandboxParameters.setOverrideSandboxProfilePath([webKit2Bundle pathForResource:@"com.matthewbenedict.CyberKit.GPUProcess" ofType:@"sb"]);
 
     AuxiliaryProcess::initializeSandbox(parameters, sandboxParameters);

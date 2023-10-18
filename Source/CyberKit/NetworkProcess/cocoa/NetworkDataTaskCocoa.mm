@@ -286,9 +286,16 @@ NetworkDataTaskCocoa::NetworkDataTaskCocoa(NetworkSession& session, NetworkDataT
         ASSERT(!m_sessionWrapper->session.get().configuration.URLCredentialStorage);
         break;
     case CyberCore::StoredCredentialsPolicy::DoNotUse:
+#if HAVE(NSURLSESSION_EFFECTIVE_CONFIGURATION_OBJECT)
+        RetainPtr<NSURLSessionConfiguration> copiedConfiguration = m_sessionWrapper->session.get().configuration;
+        copiedConfiguration.get().URLCredentialStorage = nil;
+        auto effectiveConfiguration = adoptNS([[NSURLSessionEffectiveConfiguration alloc] _initWithConfiguration:copiedConfiguration.get()]);
+        [m_task _adoptEffectiveConfiguration:effectiveConfiguration.get()];
+#else
         RetainPtr<NSURLSessionConfiguration> effectiveConfiguration = m_sessionWrapper->session.get().configuration;
         effectiveConfiguration.get().URLCredentialStorage = nil;
         [m_task _adoptEffectiveConfiguration:effectiveConfiguration.get()];
+#endif
         break;
     };
 #endif

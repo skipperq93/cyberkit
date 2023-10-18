@@ -44,7 +44,11 @@ RetainPtr<CFURLStorageSessionRef> NetworkStorageSession::createCFStorageSessionF
         return nullptr;
 
     if (shouldDisableCFURLCache == ShouldDisableCFURLCache::Yes)
+#if HAVE(CFNETWORK_DISABLE_CACHE_SPI)
         _CFURLStorageSessionDisableCache(storageSession.get());
+#else
+        shouldDisableCFURLCache = ShouldDisableCFURLCache::No;
+#endif
 
     if (shouldDisableCFURLCache == ShouldDisableCFURLCache::No) {
         auto cache = adoptCF(_CFURLStorageSessionCopyCache(kCFAllocatorDefault, storageSession.get()));

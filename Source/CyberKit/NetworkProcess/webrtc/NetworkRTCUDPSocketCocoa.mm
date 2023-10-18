@@ -40,8 +40,10 @@
 #include <wtf/SoftLinking.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
+#if HAVE(NWPARAMETERS_TRACKER_API)
 SOFT_LINK_LIBRARY_OPTIONAL(libnetwork)
 SOFT_LINK_OPTIONAL(libnetwork, nw_parameters_allow_sharing_port_with_listener, void, __cdecl, (nw_parameters_t, nw_listener_t))
+#endif
 
 namespace CyberKit {
 
@@ -330,10 +332,12 @@ std::pair<RetainPtr<nw_connection_t>, Ref<NetworkRTCUDPSocketCocoaConnections::C
 
         // rdar://80176676: we workaround local loop port reuse by using 0 instead of m_address.port() when nw_parameters_allow_sharing_port_with_listener is not available.
         uint16_t port = 0;
+#if HAVE(NWPARAMETERS_TRACKER_API)
         if (nw_parameters_allow_sharing_port_with_listenerPtr()) {
             nw_parameters_allow_sharing_port_with_listenerPtr()(parameters.get(), m_nwListener.get());
             port = m_address.port();
         }
+#endif
         auto localEndpoint = adoptNS(nw_endpoint_create_host_with_numeric_port(hostAddress.c_str(), port));
         nw_parameters_set_local_endpoint(parameters.get(), localEndpoint.get());
     }

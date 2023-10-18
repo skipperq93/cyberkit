@@ -1449,6 +1449,7 @@ void MediaPlayerPrivateAVFoundationObjC::platformPause()
     setPlayerRate(0);
 }
 
+#if HAVE(AVSAMPLEBUFFERRENDERSYNCHRONIZER_RATEATHOSTTIME)
 bool MediaPlayerPrivateAVFoundationObjC::playAtHostTime(const MonotonicTime& hostTime)
 {
     if (!metaDataAvailable())
@@ -1474,6 +1475,7 @@ bool MediaPlayerPrivateAVFoundationObjC::pauseAtHostTime(const MonotonicTime& ho
 
     return true;
 }
+#endif
 
 bool MediaPlayerPrivateAVFoundationObjC::platformPaused() const
 {

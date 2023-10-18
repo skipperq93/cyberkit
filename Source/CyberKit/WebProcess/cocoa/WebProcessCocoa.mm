@@ -278,6 +278,7 @@ enum class VideoDecoderBehavior : uint8_t {
     EnableAVIF                  = 1 << 4,
 };
 
+#if HAVE(VIDEO_RESTRICTED_DECODING)
 static void setVideoDecoderBehaviors(OptionSet<VideoDecoderBehavior> videoDecoderBehavior)
 {
     if (!(PAL::isVideoToolboxFrameworkAvailable() && PAL::canLoad_VideoToolbox_VTRestrictVideoDecoders()))
@@ -887,6 +888,11 @@ void WebProcess::initializeSandbox(const AuxiliaryProcessInitializationParameter
 {
 #if PLATFORM(MAC) || PLATFORM(MACCATALYST)
     auto webKitBundle = [NSBundle bundleForClass:NSClassFromString(@"WKWebView")];
+
+#if defined(USE_VORBIS_AUDIOCOMPONENT_WORKAROUND)
+    // We need to initialize the Vorbis decoder before the sandbox gets setup; this is a one off action.
+    WebCore::registerVorbisDecoderIfNeeded();
+#endif
 
     sandboxParameters.setOverrideSandboxProfilePath(makeString(String([webKitBundle resourcePath]), "/com.apple.WebProcess.sb"));
 

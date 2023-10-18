@@ -80,7 +80,8 @@ OBJC_CLASS NSTextAttachment;
 OBJC_CLASS PlatformColor;
 
 #if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000 && defined(__OBJC__)
-WEBCORE_EXPORT @interface CyberPresentationIntent : NSObject
+WEBCORE_EXPORT @interface CyberPresentationIntent : NSObject <NSCopying, NSCoding, NSSecureCoding>
+@property(class, readonly) BOOL supportsSecureCoding;
 @property(readonly) NSInteger identity;
 @property(readonly, nullable, strong) CyberPresentationIntent *parentIntent;
 + (CyberPresentationIntent *_Nonnull)blockQuoteIntentWithIdentity:(NSInteger)identity

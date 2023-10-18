@@ -1693,7 +1693,7 @@ void WebChromeClient::abortApplePayAMSUISession()
 #if USE(SYSTEM_PREVIEW)
 void WebChromeClient::beginSystemPreview(const URL& url, const SystemPreviewInfo& systemPreviewInfo, CompletionHandler<void()>&& completionHandler)
 {
-    m_page.sendWithAsyncReply(Messages::WebPageProxy::BeginSystemPreview(WTFMove(url), WTFMove(systemPreviewInfo)), WTFMove(completionHandler));
+    m_page.sendWithAsyncReply(Messages::WebPageProxy::BeginSystemPreview(WTFMove(const_cast<URL&>(url)), WTFMove(const_cast<SystemPreviewInfo&>(systemPreviewInfo))), WTFMove(completionHandler));
 }
 #endif
 

@@ -192,14 +192,13 @@
 #import <pal/ios/QuickLookSoftLink.h>
 #import <pal/spi/ios/DataDetectorsUISoftLink.h>
 
-<<<<<<< HEAD
 #if HAVE(AUTOCORRECTION_ENHANCEMENTS)
 #define UIWKDocumentRequestAutocorrectedRanges (1 << 7)
-=======
+#endif
+
 #if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 130000
 SOFT_LINK_FRAMEWORK_FOR_SOURCE(CyberKit, UIKit)
 SOFT_LINK_CONSTANT_FOR_SOURCE(CyberKit, UIKit, UIPreviewDataAttachmentListSourceIsManaged, NSString *)
->>>>>>> aa62a3ff843e (iOS 12 fixes part 3)
 #endif
 
 #if HAVE(LINK_PREVIEW) && USE(UICONTEXTMENU)

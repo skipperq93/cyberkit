@@ -25,12 +25,12 @@ rm -rf $SCRIPT_DIR/../../CyberKitBuild/Debug-iphoneos/Payload
 ipa=$SCRIPT_DIR/../../CyberKitBuild/Debug-iphoneos/MobileMiniBrowser.app
 if [[ $ipa == *.ipa ]]; then
 echo [*] unpacking..
-cd $(dirname $ipa)
+cd $(dirname $ipa) || exit 1
 unzip "$ipa"
 cd Payload
 app=$(ls -1 -d *.app)
 elif [[ $ipa == *.app ]]; then
-cd $(dirname $ipa)
+cd $(dirname $ipa) || exit 1
 mkdir Payload
 cp -R $ipa $(dirname $ipa)/Payload
 app=$(ls -1 -d *.app)

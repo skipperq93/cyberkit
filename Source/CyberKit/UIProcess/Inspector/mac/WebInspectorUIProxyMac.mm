@@ -957,4 +957,11 @@ void WebInspectorUIProxy::applyForcedAppearance()
 
 } // namespace CyberKit
 
+#if HAVE(SAFARI_FOR_WEBKIT_DEVELOPMENT_REQUIRING_EXTRA_SYMBOLS)
+WK_EXPORT @interface WKWebInspectorProxyObjCAdapter : WKWebInspectorUIProxyObjCAdapter
+@end
+@implementation WKWebInspectorProxyObjCAdapter
+@end
+#endif
+
 #endif // PLATFORM(MAC)

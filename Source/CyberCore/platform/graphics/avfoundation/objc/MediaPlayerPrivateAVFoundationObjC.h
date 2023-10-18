@@ -349,11 +349,13 @@ private:
 
     bool currentMediaTimeIsBuffered() const;
 
+#if HAVE(AVSAMPLEBUFFERRENDERSYNCHRONIZER_RATEATHOSTTIME)
     bool supportsPlayAtHostTime() const final { return true; }
     bool supportsPauseAtHostTime() const final { return true; }
     bool playAtHostTime(const MonotonicTime&) final;
     bool pauseAtHostTime(const MonotonicTime&) final;
     bool haveBeenAskedToPaint() const { return m_haveBeenAskedToPaint; }
+#endif
 
     void startVideoFrameMetadataGathering() final;
     void stopVideoFrameMetadataGathering() final;

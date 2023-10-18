@@ -75,7 +75,10 @@ void setPermissionsOfConfigPage()
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [] {
         mach_vm_address_t addr = bitwise_cast<uintptr_t>(static_cast<void*>(WebConfig::g_config));
-        auto flags = VM_FLAGS_FIXED | VM_FLAGS_OVERWRITE | VM_FLAGS_PERMANENT;
+        auto flags = VM_FLAGS_FIXED | VM_FLAGS_OVERWRITE;
+#if HAVE(VM_FLAGS_PERMANENT)
+        flags |= VM_FLAGS_PERMANENT;
+#endif
 
         auto attemptVMMapping = [&] {
             return mach_vm_map(mach_task_self(), &addr, ConfigSizeToProtect, pageSize() - 1, flags, MEMORY_OBJECT_NULL, 0, false, VM_PROT_READ | VM_PROT_WRITE, VM_PROT_READ | VM_PROT_WRITE, VM_INHERIT_DEFAULT);
@@ -83,10 +86,12 @@ void setPermissionsOfConfigPage()
 
         auto result = attemptVMMapping();
 
+#if HAVE(VM_FLAGS_PERMANENT)
         if (result != KERN_SUCCESS) {
             flags &= ~VM_FLAGS_PERMANENT;
             result = attemptVMMapping();
         }
+#endif
 
         RELEASE_ASSERT(result == KERN_SUCCESS);
     });

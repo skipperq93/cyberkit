@@ -23,6 +23,7 @@
 /* Begin PBXBuildFile section */
 		457D0F7A29088D9000AE5914 /* SettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 457D0F7729088C9500AE5914 /* SettingsViewController.h */; };
 		45BE567C2908C74600FD7A95 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 457D0F7829088D4000AE5914 /* SettingsViewController.m */; };
+		4807BE1F29F6E5AA00D5A88A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4807BE1E29F6E5AA00D5A88A /* Assets.xcassets */; };
 		4825DA3D2ADAD93A00328641 /* CyberKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4825DA3C2ADAD93A00328641 /* CyberKit.framework */; };
 		4825DA412ADAD94A00328641 /* CyberScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4825DA402ADAD94A00328641 /* CyberScriptCore.framework */; };
 		4825DA422ADAD94A00328641 /* CyberScriptCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4825DA402ADAD94A00328641 /* CyberScriptCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -38,7 +39,6 @@
 		4825DA512ADAD97900328641 /* libANGLE-shared.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4825DA4F2ADAD97900328641 /* libANGLE-shared.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		4825DA532ADAD98400328641 /* libwebrtc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4825DA522ADAD98400328641 /* libwebrtc.dylib */; };
 		4825DA542ADAD98400328641 /* libwebrtc.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4825DA522ADAD98400328641 /* libwebrtc.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		4807BE1F29F6E5AA00D5A88A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4807BE1E29F6E5AA00D5A88A /* Assets.xcassets */; };
 		CD1DAF971D709E3600017CF0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1DAF961D709E3600017CF0 /* main.m */; };
 		CD1DAFA51D709E3600017CF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD1DAFA31D709E3600017CF0 /* LaunchScreen.storyboard */; };
 		CD1DAFB01D709E3600017CF0 /* MobileMiniBrowserUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1DAFAF1D709E3600017CF0 /* MobileMiniBrowserUITests.m */; };
@@ -108,6 +108,7 @@
 /* Begin PBXFileReference section */
 		457D0F7729088C9500AE5914 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		457D0F7829088D4000AE5914 /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		4807BE1E29F6E5AA00D5A88A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4825DA3C2ADAD93A00328641 /* CyberKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4825DA402ADAD94A00328641 /* CyberScriptCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberScriptCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4825DA432ADAD95600328641 /* CyberCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,7 +117,6 @@
 		4825DA4C2ADAD96D00328641 /* CyberKitLegacy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberKitLegacy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4825DA4F2ADAD97900328641 /* libANGLE-shared.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = "libANGLE-shared.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4825DA522ADAD98400328641 /* libwebrtc.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libwebrtc.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		4807BE1E29F6E5AA00D5A88A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD1DAF921D709E3600017CF0 /* MobileMiniBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileMiniBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD1DAF961D709E3600017CF0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CD1DAF981D709E3600017CF0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -557,6 +557,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.ios.Fennec;
 				PRODUCT_NAME = MobileMiniBrowser;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -577,6 +578,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.ios.Fennec;
 				PRODUCT_NAME = MobileMiniBrowser;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

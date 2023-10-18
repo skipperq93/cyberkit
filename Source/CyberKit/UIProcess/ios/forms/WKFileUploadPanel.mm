@@ -93,7 +93,7 @@ static inline UIImagePickerControllerCameraDevice cameraDeviceForMediaCaptureTyp
 static bool setContainsUTIThatConformsTo(NSSet<NSString *> *typeIdentifiers, NSString *conformToUTI)
 {
 #if HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
-    const UTType *conformToUTType = [UTType typeWithIdentifier:conformToUTI];
+    UTType *conformToUTType = [UTType typeWithIdentifier:conformToUTI];
     for (NSString *uti in typeIdentifiers) {
         if ([[UTType typeWithIdentifier:uti] conformsToType:conformToUTType])
 #else

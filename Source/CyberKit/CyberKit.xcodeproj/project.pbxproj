@@ -5412,7 +5412,7 @@
 		5C96003F28C02EAF00F2693B /* SerializedTypeInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SerializedTypeInfo.h; sourceTree = "<group>"; };
 		5C9C5C022430535800BB6740 /* UserContentControllerParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserContentControllerParameters.h; sourceTree = "<group>"; };
 		5C9C5C032430535800BB6740 /* UserContentControllerParameters.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserContentControllerParameters.cpp; sourceTree = "<group>"; };
-		5C9E0F972A577EC400FC2664 /* CyberKitPlatformGeneratedSerializers.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CyberKitPlatformGeneratedSerializers.mm; path = CyberKitPlatformGeneratedSerializers.mm; sourceTree = "<group>"; };
+		5C9E0F972A577EC400FC2664 /* CyberKitPlatformGeneratedSerializers.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CyberKitPlatformGeneratedSerializers.mm; sourceTree = "<group>"; };
 		5C9E56801DF7F05500C9EE33 /* WKWebsitePolicies.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WKWebsitePolicies.cpp; sourceTree = "<group>"; };
 		5C9E56811DF7F05500C9EE33 /* WKWebsitePolicies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebsitePolicies.h; sourceTree = "<group>"; };
 		5C9EF2E721F058F9003BDC56 /* NetworkStorageSessionProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkStorageSessionProvider.h; sourceTree = "<group>"; };
@@ -17738,6 +17738,7 @@
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -17751,6 +17752,7 @@
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -17803,6 +17805,7 @@
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.GPU;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -17815,6 +17818,7 @@
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.GPU;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -17822,6 +17826,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2D9FB22A237523FB0049F936 /* GPUService.xcconfig */;
 			buildSettings = {
+				SDKROOT = iphoneos;
 			};
 			name = Production;
 		};
@@ -17834,6 +17839,7 @@
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.WebContent.Development;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -17846,6 +17852,7 @@
 				DEVELOPMENT_TEAM = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.WebContent.Development;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -17853,6 +17860,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 372EBB4A2017E76000085064 /* WebContentService.Development.xcconfig */;
 			buildSettings = {
+				SDKROOT = iphoneos;
 			};
 			name = Production;
 		};
@@ -17984,6 +17992,7 @@
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 			};
 			name = Production;
 		};
@@ -18001,6 +18010,7 @@
 				MARKETING_VERSION = "615+";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.WebContent.Crashy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -18017,6 +18027,7 @@
 				MARKETING_VERSION = "615+";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.WebContent.Crashy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -18026,6 +18037,7 @@
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = "615.1.4+";
 				MARKETING_VERSION = "615+";
+				SDKROOT = iphoneos;
 			};
 			name = Production;
 		};
@@ -18038,6 +18050,7 @@
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.WebContent.CaptivePortal;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -18050,6 +18063,7 @@
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.WebContent.CaptivePortal;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -18057,6 +18071,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7A7E8DFA2748399300DCC97A /* WebContentService.CaptivePortal.xcconfig */;
 			buildSettings = {
+				SDKROOT = iphoneos;
 			};
 			name = Production;
 		};
@@ -18156,6 +18171,7 @@
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.WebContent;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -18168,6 +18184,7 @@
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.WebContent;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -18175,6 +18192,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BCACC40E16B0B8A800B6E092 /* WebContentService.xcconfig */;
 			buildSettings = {
+				SDKROOT = iphoneos;
 			};
 			name = Production;
 		};
@@ -18187,6 +18205,7 @@
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.Networking;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -18199,6 +18218,7 @@
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit.Networking;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -18206,6 +18226,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BC8283AB16B4BEAD00A278FE /* NetworkService.xcconfig */;
 			buildSettings = {
+				SDKROOT = iphoneos;
 			};
 			name = Production;
 		};

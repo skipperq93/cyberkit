@@ -75,6 +75,17 @@ IGNORE_WARNINGS_END
 @property (readonly) BOOL isLowConfidence;
 @end
 
+#if !HAVE(NSTEXTLIST_MARKER_FORMATS)
+@interface NSParagraphStyle ()
+- (NSArray *)textLists;
+@end
+
+@interface NSTextList : NSObject
+@property NSInteger startingItemNumber;
+@property (readonly, copy) NSString *markerFormat;
+@end
+#endif
+
 WTF_EXTERN_C_BEGIN
 
 void UIApplicationInitialize(void);

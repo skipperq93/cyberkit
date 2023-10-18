@@ -312,7 +312,7 @@
     || PLATFORM(VISION)
 #if USE(APPLE_INTERNAL_SDK)
 /* Always use the macro on internal builds */
-#define USE_PTHREAD_JIT_PERMISSIONS_API 0 
+#define USE_PTHREAD_JIT_PERMISSIONS_API 0
 #else
 #define USE_PTHREAD_JIT_PERMISSIONS_API 1
 #endif

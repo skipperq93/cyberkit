@@ -43,6 +43,7 @@
 #include <CyberCore/MediaPlayer.h>
 #include <CyberCore/NotImplemented.h>
 #include <CyberCore/SVGFilter.h>
+#include <CyberKit/Logging.h>
 #include <wtf/MathExtras.h>
 #include <wtf/text/TextStream.h>
 
