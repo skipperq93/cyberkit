@@ -102,7 +102,7 @@ static void initializeLogd(bool disableLogging)
 
 static void XPCServiceEventHandler(xpc_connection_t peer)
 {
-    bmalloc::jetsamConfiguration(getpid());
+    bmalloc::jetsamConfiguration(xpc_connection_get_pid(peer));
     u_setDataDirectory([[[[NSBundle mainBundle] bundlePath] stringByDeletingLastPathComponent] cStringUsingEncoding:NSUTF8StringEncoding]);
     OSObjectPtr<xpc_connection_t> retainedPeerConnection(peer);
 

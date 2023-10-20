@@ -5224,10 +5224,12 @@ static void logTextInteractionAssistantSelectionChange(const char* methodName, U
         return;
     }
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000
     if ([UIKeyboard usesInputSystemUI]) {
         completionHandler(WKAutocorrectionContext.emptyAutocorrectionContext);
         return;
     }
+#endif
 
     if ([self _disableAutomaticKeyboardUI]) {
         completionHandler(WKAutocorrectionContext.emptyAutocorrectionContext);
@@ -7293,8 +7295,10 @@ static RetainPtr<NSObject <WKFormPeripheral>> createInputPeripheralWithView(Cybe
             // fail. The second set of keyboard notifications contains the final keyboard height, and is the
             // one we should use for revealing the focused element.
             // See also: <rdar://111704216>.
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000
             if (!UIKeyboard.usesInputSystemUI)
                 return false;
+#endif
 
             auto keyboard = UIKeyboard.activeKeyboard;
             return keyboard && !keyboard.isMinimized;

@@ -30,6 +30,7 @@
 #if BPLATFORM(IOS_FAMILY)
 #include "MemoryStatusSPI.h"
 #endif
+#include <sys/syslog.h>
 
 namespace bmalloc {
 
@@ -59,22 +60,25 @@ inline static memorystatus_memlimit_properties_t jetsamConfiguration(pid_t pid)
     properties.memlimit_inactive = 840;
     priority.priority = JETSAM_PRIORITY_FOREGROUND_SUPPORT;
 
-    if (memorystatus_control(MEMORYSTATUS_CMD_SET_MEMLIMIT_PROPERTIES, pid, 0, &properties, sizeof(properties)) == -1) {
-        fprintf(stderr, "CyberKit crash: Failed to set memlimit properties for pid %d", pid);
+    int err;
+    if ((err = memorystatus_control(MEMORYSTATUS_CMD_SET_MEMLIMIT_PROPERTIES, pid, 0, &properties, sizeof(properties)))) {
+        syslog(LOG_ERR, "CyberKit crash: Failed to set memlimit properties for pid %d with error %d", pid, err);
         abort();
     }
 
-    if (memorystatus_control(MEMORYSTATUS_CMD_SET_PRIORITY_PROPERTIES, pid, 0, &priority, sizeof(priority)) == -1) {
-        fprintf(stderr, "CyberKit crash: Failed to set priority properties for pid %d", pid);
+    if ((err = memorystatus_control(MEMORYSTATUS_CMD_SET_PRIORITY_PROPERTIES, pid, 0, &priority, sizeof(priority)))) {
+        syslog(LOG_ERR, "CyberKit crash: Failed to set priority properties for pid %d with error %d", pid, err);
         abort();
     }
     
     // Get jetsam limit from system
     memset(&properties, 0, sizeof(memorystatus_memlimit_properties));
-    if (memorystatus_control(MEMORYSTATUS_CMD_GET_MEMLIMIT_PROPERTIES, pid, 0, &properties, sizeof(properties)) == -1) {
-        fprintf(stderr, "CyberKit crash: Failed to get memlimit properties for pid %d", pid);
+    if ((err = memorystatus_control(MEMORYSTATUS_CMD_GET_MEMLIMIT_PROPERTIES, pid, 0, &properties, sizeof(properties)))) {
+        syslog(LOG_ERR, "CyberKit crash: Failed to get memlimit properties for pid %d with error %d", pid, err);
         abort();
     }
+    
+    syslog(LOG_WARNING, "Found active limit %d and inactive limit %d", properties.memlimit_active, properties.memlimit_inactive);
     return properties;
 }
 

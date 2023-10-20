@@ -704,7 +704,7 @@ std::optional<GraphicsContextGL::EGLImageAttachResult> GraphicsContextGLCocoa::c
         return tex;
     },
     [&](EGLImageSourceMTLSharedTextureHandle&& sharedTexture) -> RetainPtr<id> {
-#if PLATFORM(IOS_FAMILY_SIMULATOR) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 130000) || 1
+#if PLATFORM(IOS_FAMILY_SIMULATOR) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 130000)
         UNUSED_VARIABLE(sharedTexture);
         ASSERT_NOT_REACHED();
         return { };

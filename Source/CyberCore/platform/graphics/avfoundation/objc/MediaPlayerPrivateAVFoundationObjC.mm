@@ -1963,7 +1963,11 @@ MediaPlayerPrivateAVFoundation::AssetStatus MediaPlayerPrivateAVFoundationObjC::
     }
 
     if (!m_cachedAssetIsHLS)
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
         m_cachedAssetIsHLS = [[m_avAsset variants] count] > 0;
+#else
+        m_cachedAssetIsHLS = false;
+#endif
 
     if (!m_cachedAssetIsPlayable)
         m_cachedAssetIsPlayable = [[m_avAsset valueForKey:@"playable"] boolValue] || containsDisabledTracks();
