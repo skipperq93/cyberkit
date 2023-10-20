@@ -73,9 +73,14 @@ DestinationColorSpace NativeImage::colorSpace() const
 void NativeImage::draw(GraphicsContext& context, const FloatSize& imageSize, const FloatRect& destinationRect, const FloatRect& sourceRect, const ImagePaintingOptions& options)
 {
     auto isHDRColorSpace = [](CGColorSpaceRef colorSpace) -> bool {
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
         return CGColorSpaceIsHDR(colorSpace);
 ALLOW_DEPRECATED_DECLARATIONS_END
+#else
+        UNUSED_PARAM(colorSpace);
+        return false;
+#endif
     };
 
     auto isHDRNativeImage = [&](const NativeImage& image) -> bool {
