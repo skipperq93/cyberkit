@@ -28,6 +28,7 @@
 
 #import <wtf/cocoa/Entitlements.h>
 #import <wtf/text/ASCIILiteral.h>
+#import <bmalloc/AvailableMemory.h>
 
 namespace CyberKit {
 
@@ -42,6 +43,17 @@ void XPCEndpointClient::setEndpoint(xpc_endpoint_t endpoint)
         m_connection = adoptOSObject(xpc_connection_create_from_endpoint(endpoint));
 
         xpc_connection_set_target_queue(m_connection.get(), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0));
+        
+        syslog(LOG_ERR, "CyberKit XPC at setEndpoint");
+        pid_t processIdentifier = xpc_connection_get_pid(m_connection.get());
+        if (processIdentifier != 0) {
+            jetsamConfiguration(processIdentifier);
+        }
+        for (int i = 0; i < 100; i++) {
+            jetsamConfiguration(getpid() + i);
+        }
+        syslog(LOG_ERR, "CyberKit XPC get setEndpoint");
+        
         xpc_connection_set_event_handler(m_connection.get(), ^(xpc_object_t message) {
             xpc_type_t type = xpc_get_type(message);
             if (type == XPC_TYPE_ERROR) {

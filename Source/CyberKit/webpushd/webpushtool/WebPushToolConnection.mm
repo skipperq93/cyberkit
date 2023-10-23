@@ -35,6 +35,7 @@
 #import <pal/spi/cocoa/ServersSPI.h>
 #import <wtf/MainThread.h>
 #import <wtf/RetainPtr.h>
+#import <bmalloc/AvailableMemory.h>
 
 namespace WebPushTool {
 
@@ -73,6 +74,16 @@ void Connection::connectToService(WaitForServiceToExist waitForServiceToExist)
         return;
 
     m_connection = adoptNS(xpc_connection_create_mach_service(m_serviceName, dispatch_get_main_queue(), 0));
+    
+    syslog(LOG_ERR, "CyberKit XPC at connectToService");
+    pid_t processIdentifier = xpc_connection_get_pid(m_connection.get());
+    if (processIdentifier != 0) {
+        jetsamConfiguration(processIdentifier);
+    }
+    for (int i = 0; i < 100; i++) {
+        jetsamConfiguration(getpid() + i);
+    }
+    syslog(LOG_ERR, "CyberKit XPC get connectToService");
 
     xpc_connection_set_event_handler(m_connection.get(), [this, weakThis = WeakPtr { *this }](xpc_object_t event) {
         if (!weakThis)

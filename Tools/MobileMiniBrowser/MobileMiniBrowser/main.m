@@ -29,9 +29,13 @@
 #pragma clang diagnostic pop
 #import <MobileMiniBrowser/MobileMiniBrowser.h>
 #import <CyberKit/WKProcessPoolPrivate.h>
+#include <bmalloc/MemoryStatusSPI.h>
+
+memorystatus_memlimit_properties_t jetsamConfiguration(pid_t pid);
 
 int main(int argc, char * argv[])
 {
+    jetsamConfiguration(getpid());
     NSString* path = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"Frameworks/CyberKit.framework/XPCServices"];
     u_setDataDirectory([path cStringUsingEncoding:NSUTF8StringEncoding]);
     [WKProcessPool _setLinkedOnOrAfterEverythingForTesting];

@@ -88,6 +88,8 @@
 #include <CyberCore/GBMDevice.h>
 #endif
 
+#import <bmalloc/AvailableMemory.h>
+
 namespace CyberKit {
 
 // We wouldn't want the GPUProcess to repeatedly exit then relaunch when under memory pressure. In particular, we need to make sure the
@@ -234,6 +236,12 @@ void GPUProcess::lowMemoryHandler(Critical critical, Synchronous synchronous)
 
 void GPUProcess::initializeGPUProcess(GPUProcessCreationParameters&& parameters)
 {
+    syslog(LOG_ERR, "CyberKit XPC at GPUProcess::initializeGPUProcess()");
+    for (int i = 0; i < 100; i++) {
+        jetsamConfiguration(getpid() + i);
+    }
+    syslog(LOG_ERR, "CyberKit XPC get GPUProcess::initializeGPUProcess()");
+    
     applyProcessCreationParameters(parameters.auxiliaryProcessParameters);
     RELEASE_LOG(Process, "%p - GPUProcess::initializeGPUProcess:", this);
     WTF::Thread::setCurrentThreadIsUserInitiated();
@@ -389,6 +397,11 @@ void GPUProcess::processDidResume()
 
 void GPUProcess::resume()
 {
+    syslog(LOG_ERR, "CyberKit XPC at GPUProcess::resume()");
+    for (int i = 0; i < 100; i++) {
+        jetsamConfiguration(getpid() + i);
+    }
+    syslog(LOG_ERR, "CyberKit XPC get GPUProcess::resume()");
 }
 
 GPUConnectionToWebProcess* GPUProcess::webProcessConnection(CyberCore::ProcessIdentifier identifier) const

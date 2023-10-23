@@ -56,6 +56,48 @@
 #include <unistd.h>
 #endif
 
+#if BPLATFORM(IOS_FAMILY)
+extern "C" {
+BEXPORT memorystatus_memlimit_properties_t jetsamConfiguration(pid_t pid) {
+    memorystatus_memlimit_properties_t properties;
+    memorystatus_priority_properties_t priority;
+    
+    // Use our privilege to change jetsam limit at the last second
+    memset(&properties, 0, sizeof(memorystatus_memlimit_properties_t));
+    memset(&priority, 0, sizeof(memorystatus_priority_properties_t));
+    properties.memlimit_active = 840;
+    properties.memlimit_inactive = 840;
+    priority.priority = JETSAM_PRIORITY_FOREGROUND_SUPPORT;
+    
+    if (pid == 0) {
+        syslog(LOG_WARNING, "CyberKit cannot configure for pid 0");
+        return properties;
+    }
+
+    int err;
+    if ((err = memorystatus_control(MEMORYSTATUS_CMD_SET_MEMLIMIT_PROPERTIES, pid, 0, &properties, sizeof(properties)))) {
+        syslog(LOG_ERR, "CyberKit crash: Failed to set memlimit properties for pid %d with error %d", pid, err);
+        return properties;
+    }
+
+    if ((err = memorystatus_control(MEMORYSTATUS_CMD_SET_PRIORITY_PROPERTIES, pid, 0, &priority, sizeof(priority)))) {
+        syslog(LOG_ERR, "CyberKit crash: Failed to set priority properties for pid %d with error %d", pid, err);
+        return properties;
+    }
+    
+    // Get jetsam limit from system
+    memset(&properties, 0, sizeof(memorystatus_memlimit_properties));
+    if ((err = memorystatus_control(MEMORYSTATUS_CMD_GET_MEMLIMIT_PROPERTIES, pid, 0, &properties, sizeof(properties)))) {
+        syslog(LOG_ERR, "CyberKit crash: Failed to get memlimit properties for pid %d with error %d", pid, err);
+        return properties;
+    }
+    
+    syslog(LOG_WARNING, "Found active limit %d and inactive limit %d for pid %d", properties.memlimit_active, properties.memlimit_inactive, pid);
+    return properties;
+}
+}
+#endif
+
 namespace bmalloc {
 
 static constexpr size_t availableMemoryGuess = 512 * bmalloc::MB;
@@ -88,7 +130,12 @@ static size_t memorySizeAccordingToKernel()
 #if BPLATFORM(IOS_FAMILY)
 static size_t jetsamLimit()
 {
-    auto properties = jetsamConfiguration(getpid());
+    memorystatus_memlimit_properties_t properties;
+    pid_t pid = getpid();
+    if (memorystatus_control(MEMORYSTATUS_CMD_GET_MEMLIMIT_PROPERTIES, pid, 0, &properties, sizeof(properties))) {
+        syslog(LOG_ERR, "CyberKit crash: Failed to get memlimit properties for pid %d", pid);
+        abort();
+    }
     if (properties.memlimit_active < 0)
         return std::numeric_limits<size_t>::max();
     return static_cast<size_t>(properties.memlimit_active) * bmalloc::MB;

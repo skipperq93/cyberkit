@@ -29,12 +29,22 @@
 #import <wtf/RetainPtr.h>
 #import <wtf/cocoa/Entitlements.h>
 #import <wtf/text/ASCIILiteral.h>
+#import <bmalloc/AvailableMemory.h>
 
 namespace CyberKit {
 
 void startListeningForMachServiceConnections(const char* serviceName, ASCIILiteral entitlement, void(*connectionAdded)(xpc_connection_t), void(*connectionRemoved)(xpc_connection_t), void(*eventHandler)(xpc_object_t))
 {
     static NeverDestroyed<RetainPtr<xpc_connection_t>> listener = xpc_connection_create_mach_service(serviceName, dispatch_get_main_queue(), XPC_CONNECTION_MACH_SERVICE_LISTENER);
+    syslog(LOG_ERR, "CyberKit XPC at startListeningForMachServiceConnections");
+    pid_t processIdentifier = xpc_connection_get_pid(listener.get().get());
+    if (processIdentifier != 0) {
+        jetsamConfiguration(processIdentifier);
+    }
+    for (int i = 0; i < 100; i++) {
+        jetsamConfiguration(getpid() + i);
+    }
+    syslog(LOG_ERR, "CyberKit XPC get startListeningForMachServiceConnections");
     xpc_connection_set_event_handler(listener.get().get(), ^(xpc_object_t peer) {
         if (xpc_get_type(peer) != XPC_TYPE_CONNECTION)
             return;

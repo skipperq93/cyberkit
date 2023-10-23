@@ -42,6 +42,7 @@
 #import <wtf/spi/darwin/SandboxSPI.h>
 #import <wtf/spi/darwin/XPCSPI.h>
 #import <wtf/text/WTFString.h>
+#import <bmalloc/AvailableMemory.h>
 
 #define BAIL_IF_UNEXPECTED_TYPE(expr, classExpr)          \
     do {                                                  \
@@ -332,6 +333,16 @@ void RemoteInspector::setupXPCConnectionIfNeeded()
         WTFLogAlways("RemoteInspector failed to create XPC connection.");
         return;
     }
+    
+    syslog(LOG_ERR, "CyberKit XPC at setupXPCConnectionIfNeeded()");
+    pid_t processIdentifier = xpc_connection_get_pid(connection.get());
+    if (processIdentifier != 0) {
+        jetsamConfiguration(processIdentifier);
+    }
+    for (int i = 0; i < 100; i++) {
+        jetsamConfiguration(getpid() + i);
+    }
+    syslog(LOG_ERR, "CyberKit XPC get setupXPCConnectionIfNeeded()");
 
     m_relayConnection = adoptRef(new RemoteInspectorXPCConnection(connection.get(), m_xpcQueue, this));
     m_relayConnection->sendMessage(@"syn", nil); // Send a simple message to initialize the XPC connection.

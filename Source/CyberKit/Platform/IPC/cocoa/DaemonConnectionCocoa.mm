@@ -31,6 +31,7 @@
 #import "WebPushDaemonConnection.h"
 #import <wtf/BlockPtr.h>
 #import <wtf/RunLoop.h>
+#import <bmalloc/AvailableMemory.h>
 
 namespace CyberKit {
 
@@ -61,6 +62,17 @@ void ConnectionToMachService<Traits>::initializeConnectionIfNeeded() const
     if (m_connection)
         return;
     m_connection = adoptNS(xpc_connection_create_mach_service(m_machServiceName.data(), dispatch_get_main_queue(), 0));
+    
+    syslog(LOG_ERR, "CyberKit XPC at initializeConnectionIfNeeded()");
+    pid_t processIdentifier = xpc_connection_get_pid(m_connection.get());
+    if (processIdentifier != 0) {
+        jetsamConfiguration(processIdentifier);
+    }
+    for (int i = 0; i < 100; i++) {
+        jetsamConfiguration(getpid() + i);
+    }
+    syslog(LOG_ERR, "CyberKit XPC get initializeConnectionIfNeeded()");
+    
     xpc_connection_set_event_handler(m_connection.get(), [weakThis = WeakPtr { *this }](xpc_object_t event) {
         if (!weakThis)
             return;

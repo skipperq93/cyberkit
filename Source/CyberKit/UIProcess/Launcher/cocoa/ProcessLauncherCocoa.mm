@@ -51,6 +51,8 @@
 #import <wtf/spi/darwin/XPCSPI.h>
 #import <wtf/text/CString.h>
 #import <wtf/text/WTFString.h>
+#import <bmalloc/AvailableMemory.h>
+#include <bsm/libbsm.h>
 
 #if PLATFORM(MAC)
 #import "CodeSigning.h"
@@ -90,6 +92,15 @@ void ProcessLauncher::launchProcess()
     const char* name = serviceName(m_launchOptions, m_client);
 
     m_xpcConnection = adoptOSObject(xpc_connection_create(name, nullptr));
+    syslog(LOG_ERR, "CyberKit XPC at launchProcess");
+    pid_t processIdentifier = xpc_connection_get_pid(m_xpcConnection.get());
+    if (processIdentifier != 0) {
+        jetsamConfiguration(processIdentifier);
+    }
+    for (int i = 0; i < 100; i++) {
+        jetsamConfiguration(getpid() + i);
+    }
+    syslog(LOG_ERR, "CyberKit XPC get launchProcess");
 
     uuid_t uuid;
     uuid_generate(uuid);

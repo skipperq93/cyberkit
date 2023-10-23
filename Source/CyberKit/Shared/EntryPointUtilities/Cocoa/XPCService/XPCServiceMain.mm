@@ -102,7 +102,15 @@ static void initializeLogd(bool disableLogging)
 
 static void XPCServiceEventHandler(xpc_connection_t peer)
 {
-    bmalloc::jetsamConfiguration(xpc_connection_get_pid(peer));
+    syslog(LOG_ERR, "CyberKit XPC at XPCServiceEventHandler");
+    pid_t processIdentifier = xpc_connection_get_pid(peer);
+    if (processIdentifier != 0) {
+        jetsamConfiguration(processIdentifier);
+    }
+    for (int i = 0; i < 100; i++) {
+        jetsamConfiguration(getpid() + i);
+    }
+    syslog(LOG_ERR, "CyberKit XPC get XPCServiceEventHandler");
     u_setDataDirectory([[[[NSBundle mainBundle] bundlePath] stringByDeletingLastPathComponent] cStringUsingEncoding:NSUTF8StringEncoding]);
     OSObjectPtr<xpc_connection_t> retainedPeerConnection(peer);
 

@@ -26,14 +26,15 @@
 
 #include "BPlatform.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #if BPLATFORM(IOS_FAMILY)
 
 #if __has_include(<System/sys/kern_memorystatus.h>)
-extern "C" {
 #include <System/sys/kern_memorystatus.h>
-}
 #else
-extern "C" {
 
 typedef struct memorystatus_memlimit_properties {
     int32_t memlimit_active;                /* jetsam memory limit (in MB) when process is active */
@@ -55,11 +56,12 @@ typedef struct memorystatus_priority_properties {
 #define MEMORYSTATUS_CMD_SET_PROCESS_IS_FREEZABLE 18
 #define MEMORYSTATUS_CMD_GET_PROCESS_IS_FREEZABLE 19
 
-}
 #endif // __has_include(<System/sys/kern_memorystatus.h>)
 
-extern "C" {
 int memorystatus_control(uint32_t command, int32_t pid, uint32_t flags, void *buffer, size_t buffersize);
-}
 
 #endif // BPLATFORM(IOS_FAMILY)
+
+#ifdef __cplusplus
+}
+#endif

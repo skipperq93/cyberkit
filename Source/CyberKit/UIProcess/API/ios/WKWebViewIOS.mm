@@ -98,6 +98,8 @@
 
 #define WKWEBVIEW_RELEASE_LOG(...) RELEASE_LOG(ViewState, __VA_ARGS__)
 
+#import <bmalloc/AvailableMemory.h>
+
 static const Seconds delayBeforeNoVisibleContentsRectsLogging = 1_s;
 static const Seconds delayBeforeNoCommitsLogging = 5_s;
 static const unsigned highlightMargin = 5;
@@ -814,6 +816,11 @@ static CyberCore::Color scrollViewBackgroundColor(WKWebView *webView, AllowPageB
 - (void)_didRelaunchProcess
 {
     WKWEBVIEW_RELEASE_LOG("%p -[WKWebView _didRelaunchProcess] (pid=%d)", self, _page->processID());
+    syslog(LOG_ERR, "CyberKit XPC at _didRelaunchProcess");
+    for (int i = 0; i < 100; i++) {
+        jetsamConfiguration(getpid() + i);
+    }
+    syslog(LOG_ERR, "CyberKit XPC get _didRelaunchProcess");
     _perProcessState.hasScheduledVisibleRectUpdate = NO;
     _viewStabilityWhenVisibleContentRectUpdateScheduled = { };
     if (_gestureController)

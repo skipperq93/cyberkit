@@ -28,6 +28,7 @@
 
 #import <wtf/cocoa/Entitlements.h>
 #import <wtf/text/ASCIILiteral.h>
+#import <bmalloc/AvailableMemory.h>
 
 #if PLATFORM(MAC)
 #import "CodeSigning.h"
@@ -43,6 +44,17 @@ XPCEndpoint::XPCEndpoint()
     m_endpoint = adoptOSObject(xpc_endpoint_create(m_connection.get()));
 
     xpc_connection_set_target_queue(m_connection.get(), dispatch_get_main_queue());
+    
+    syslog(LOG_ERR, "CyberKit XPC at XPCEndpoint()");
+    pid_t processIdentifier = xpc_connection_get_pid(m_connection.get());
+    if (processIdentifier != 0) {
+        jetsamConfiguration(processIdentifier);
+    }
+    for (int i = 0; i < 100; i++) {
+        jetsamConfiguration(getpid() + i);
+    }
+    syslog(LOG_ERR, "CyberKit XPC get XPCEndpoint()");
+    
     xpc_connection_set_event_handler(m_connection.get(), ^(xpc_object_t message) {
         xpc_type_t type = xpc_get_type(message);
 

@@ -32,6 +32,9 @@
 #import <wtf/WTFProcess.h>
 #import <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 
+#import <bmalloc/AvailableMemory.h>
+#include <bsm/libbsm.h>
+
 #if !USE(RUNNINGBOARD)
 #import <wtf/spi/darwin/XPCSPI.h>
 #endif

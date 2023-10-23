@@ -32,6 +32,10 @@
 #endif
 #include <sys/syslog.h>
 
+extern "C" {
+memorystatus_memlimit_properties_t jetsamConfiguration(pid_t pid);
+}
+
 namespace bmalloc {
 
 BEXPORT size_t availableMemory();
@@ -47,40 +51,6 @@ struct MemoryStatus {
     size_t memoryFootprint;
     double percentAvailableMemoryInUse;
 };
-
-inline static memorystatus_memlimit_properties_t jetsamConfiguration(pid_t pid)
-{
-    memorystatus_memlimit_properties_t properties;
-    memorystatus_priority_properties_t priority;
-    
-    // Use our privilege to change jetsam limit at the last second
-    memset(&properties, 0, sizeof(memorystatus_memlimit_properties_t));
-    memset(&priority, 0, sizeof(memorystatus_priority_properties_t));
-    properties.memlimit_active = 840;
-    properties.memlimit_inactive = 840;
-    priority.priority = JETSAM_PRIORITY_FOREGROUND_SUPPORT;
-
-    int err;
-    if ((err = memorystatus_control(MEMORYSTATUS_CMD_SET_MEMLIMIT_PROPERTIES, pid, 0, &properties, sizeof(properties)))) {
-        syslog(LOG_ERR, "CyberKit crash: Failed to set memlimit properties for pid %d with error %d", pid, err);
-        abort();
-    }
-
-    if ((err = memorystatus_control(MEMORYSTATUS_CMD_SET_PRIORITY_PROPERTIES, pid, 0, &priority, sizeof(priority)))) {
-        syslog(LOG_ERR, "CyberKit crash: Failed to set priority properties for pid %d with error %d", pid, err);
-        abort();
-    }
-    
-    // Get jetsam limit from system
-    memset(&properties, 0, sizeof(memorystatus_memlimit_properties));
-    if ((err = memorystatus_control(MEMORYSTATUS_CMD_GET_MEMLIMIT_PROPERTIES, pid, 0, &properties, sizeof(properties)))) {
-        syslog(LOG_ERR, "CyberKit crash: Failed to get memlimit properties for pid %d with error %d", pid, err);
-        abort();
-    }
-    
-    syslog(LOG_WARNING, "Found active limit %d and inactive limit %d", properties.memlimit_active, properties.memlimit_inactive);
-    return properties;
-}
 
 BEXPORT MemoryStatus memoryStatus();
 

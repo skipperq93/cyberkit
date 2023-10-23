@@ -35,6 +35,8 @@
 #include <mach/mach_traps.h>
 #endif
 
+#import <bmalloc/AvailableMemory.h>
+
 namespace CyberKit {
 
 ProcessLauncher::ProcessLauncher(Client* client, LaunchOptions&& launchOptions)
@@ -47,6 +49,15 @@ ProcessLauncher::ProcessLauncher(Client* client, LaunchOptions&& launchOptions)
 
 void ProcessLauncher::didFinishLaunchingProcess(ProcessID processIdentifier, IPC::Connection::Identifier identifier)
 {
+    syslog(LOG_ERR, "CyberKit XPC at didFinishLaunchingProcess");
+    if (processIdentifier != 0) {
+        jetsamConfiguration(processIdentifier);
+    }
+    for (int i = 0; i < 100; i++) {
+        jetsamConfiguration(getpid() + i);
+    }
+    syslog(LOG_ERR, "CyberKit XPC get didFinishLaunchingProcess");
+    
     tracePoint(ProcessLaunchEnd);
     m_processID = processIdentifier;
     m_isLaunching = false;

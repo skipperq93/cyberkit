@@ -34,6 +34,8 @@
 #import <wtf/cocoa/VectorCocoa.h>
 #import <wtf/text/WTFString.h>
 
+#import <bmalloc/AvailableMemory.h>
+
 namespace CyberKit {
 
 PageClientImplCocoa::PageClientImplCocoa(WKWebView *webView)
@@ -161,6 +163,11 @@ void PageClientImplCocoa::pageClosed()
 #if ENABLE(GPU_PROCESS)
 void PageClientImplCocoa::gpuProcessDidFinishLaunching()
 {
+    syslog(LOG_ERR, "CyberKit XPC at gpuProcessDidFinishLaunching");
+    for (int i = 0; i < 100; i++) {
+        jetsamConfiguration(getpid() + i);
+    }
+    syslog(LOG_ERR, "CyberKit XPC get gpuProcessDidFinishLaunching");
     [m_webView willChangeValueForKey:@"_gpuProcessIdentifier"];
     [m_webView didChangeValueForKey:@"_gpuProcessIdentifier"];
 }

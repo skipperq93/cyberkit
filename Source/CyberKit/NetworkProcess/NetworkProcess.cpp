@@ -124,6 +124,8 @@
 #include <CyberCore/CurlContext.h>
 #endif
 
+#import <bmalloc/AvailableMemory.h>
+
 namespace CyberKit {
 using namespace CyberCore;
 
@@ -303,6 +305,12 @@ void NetworkProcess::lowMemoryHandler(Critical critical)
 
 void NetworkProcess::initializeNetworkProcess(NetworkProcessCreationParameters&& parameters, CompletionHandler<void()>&& completionHandler)
 {
+    syslog(LOG_ERR, "CyberKit XPC at NetworkProcess::initializeNetworkProcess");
+    for (int i = 0; i < 100; i++) {
+        jetsamConfiguration(getpid() + i);
+    }
+    syslog(LOG_ERR, "CyberKit XPC get NetworkProcess::initializeNetworkProcess");
+    
     CompletionHandlerCallingScope callCompletionHandler(WTFMove(completionHandler));
 
     applyProcessCreationParameters(parameters.auxiliaryProcessParameters);
@@ -2280,6 +2288,12 @@ void NetworkProcess::applicationWillEnterForeground()
 
 void NetworkProcess::processDidResume(bool forForegroundActivity)
 {
+    syslog(LOG_ERR, "CyberKit XPC at NetworkProcess::processDidResume");
+    for (int i = 0; i < 100; i++) {
+        jetsamConfiguration(getpid() + i);
+    }
+    syslog(LOG_ERR, "CyberKit XPC get NetworkProcess::processDidResume");
+    
     RELEASE_LOG(ProcessSuspension, "%p - NetworkProcess::processDidResume() forForegroundActivity=%d", this, forForegroundActivity);
 
     m_isSuspended = false;
