@@ -2,6 +2,13 @@
 
 CyberKit is a backport of WebKit to older iOS.
 
+## Installation
+Please visit [the releases](https://github.com/UInt2048/CyberKit/releases).
+
+## Official OS support & FAQ
+
+Please visit the [CyberKit wiki](https://github.com/UInt2048/CyberKit/wiki).
+
 ## Development Branch History
 * [safari-7615.1.15-branch](https://github.com/UInt2048/CyberKit/tree/safari-7615.1.15-branch): 31 January 2023 - 24 February 2023
     * _Diverged 11 December 2022; built in Xcode 14.2_
@@ -46,40 +53,3 @@ CoreImage.framework:
 * The rename script requires `gnu-sed` and `rename`, which can be obtained using Homebrew.
 * Beginning with [fa2170c](https://github.com/UInt2048/CyberKit/commit/fa2170c3604b4ccacbc4f2475f91c0638ac7a2a0) [7 April 2023], Xcode 14.3 is used.
 * Before this, Xcode 14.2 was used.
-
-## Official OS Support
-Definitions:
-
-|  Symbol  | Definition
-| :------: | :-------
-| &#x2705; | Supported
-| &#x274e; | Partially supported (one installation method fails)
-| &#x2753; | Unknown behavior (please confirm)
-| &#x23f3; | Not supported (installation always succeeds, but CyberKit fails)
-| &#x23f0; | Not supported (installation exists, but never succeeds)
-| &#x274c; | Not supported
-| + | Rootful
-| - | Rootless
-
-This table only applies if you are jailbroken or have TrollStore.
-
-Please note that iOS and iPadOS are considered equivalent in CyberKit.
-
-Please note that your mileage may vary from the official values in the table. Please report any discrepancies.
-
-
-| Release Name |  iOS 11  |  iOS 12  |  iOS 13  |  iOS 14  | iOS 15+  | iOS 15-  | iOS 16+  | iOS 16-
-| :----------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------:
-| v0.0.1 alpha | &#x274c; | &#x274c; | &#x274c; | &#x2705; | &#x2705; | &#x23f0; | &#x2705; | &#x23f0;
-| v0.0.2 alpha | &#x274c; | &#x274c; | &#x274c; | &#x2705; | &#x2705; | &#x23f0; | &#x2705; | &#x23f0;
-| v0.0.3 alpha | &#x274c; | &#x274c; | &#x274c; | &#x2705; | &#x2705; | &#x23f0; | &#x2705; | &#x23f0;
-| v0.0.4 alpha | &#x274c; | &#x274c; | &#x274c; | &#x2705; | &#x2705; | &#x23f0; | &#x2705; | &#x23f0;
-| v0.0.5 alpha | &#x274c; | &#x274c; | &#x23f3; | &#x2705; | &#x2705; | &#x23f0; | &#x2705; | &#x23f0;
-| v0.0.6 alpha | &#x274c; | &#x274c; | &#x23f3; | &#x2705; | &#x2705; | &#x23f0; | &#x2705; | &#x23f0;
-| v0.0.7 alpha | &#x274c; | &#x23f3; | &#x23f3; | &#x2705; | &#x2705; | &#x23f0; | &#x2705; | &#x23f0;
-| v0.0.8 alpha | &#x274c; | &#x2705; | &#x2705; | &#x2705; | &#x2705; | &#x23f0; | &#x2705; | &#x23f0;
-| v0.0.9 alpha | &#x274c; | &#x2705; | &#x2705; | &#x2705; | &#x2705; | &#x2705; | &#x2705; | &#x2705;
-| (Dev branch) | &#x2753; | &#x2705; | &#x2705; | &#x2705; | &#x2705; | &#x2705; | &#x2705; | &#x2705;
-
-## Installation
-Please visit [the releases](https://github.com/UInt2048/CyberKit/releases).
