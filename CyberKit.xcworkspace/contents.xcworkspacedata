@@ -35,6 +35,9 @@
       location = "group:Source/CyberKitLegacy/CyberKitLegacy.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:_jetsam/_cyberkit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Source/CyberKit/CyberKit.xcodeproj">
    </FileRef>
    <FileRef

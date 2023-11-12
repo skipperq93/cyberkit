@@ -39,6 +39,8 @@
 		4825DA512ADAD97900328641 /* libANGLE-shared.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4825DA4F2ADAD97900328641 /* libANGLE-shared.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		4825DA532ADAD98400328641 /* libwebrtc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4825DA522ADAD98400328641 /* libwebrtc.dylib */; };
 		4825DA542ADAD98400328641 /* libwebrtc.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4825DA522ADAD98400328641 /* libwebrtc.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		4827307D2B018AE90092136C /* _cyberkit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4827307C2B018AE90092136C /* _cyberkit.dylib */; };
+		4827307E2B018AE90092136C /* _cyberkit.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4827307C2B018AE90092136C /* _cyberkit.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		CD1DAF971D709E3600017CF0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1DAF961D709E3600017CF0 /* main.m */; };
 		CD1DAFA51D709E3600017CF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD1DAFA31D709E3600017CF0 /* LaunchScreen.storyboard */; };
 		CD1DAFB01D709E3600017CF0 /* MobileMiniBrowserUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1DAFAF1D709E3600017CF0 /* MobileMiniBrowserUITests.m */; };
@@ -94,6 +96,7 @@
 				4825DA4B2ADAD96700328641 /* CyberKit.framework in Embed Frameworks */,
 				4825DA452ADAD95600328641 /* CyberCore.framework in Embed Frameworks */,
 				4825DA422ADAD94A00328641 /* CyberScriptCore.framework in Embed Frameworks */,
+				4827307E2B018AE90092136C /* _cyberkit.dylib in Embed Frameworks */,
 				4825DA4E2ADAD96E00328641 /* CyberKitLegacy.framework in Embed Frameworks */,
 				4825DA512ADAD97900328641 /* libANGLE-shared.dylib in Embed Frameworks */,
 				4825DA482ADAD95C00328641 /* WebGPU.framework in Embed Frameworks */,
@@ -117,6 +120,7 @@
 		4825DA4C2ADAD96D00328641 /* CyberKitLegacy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberKitLegacy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4825DA4F2ADAD97900328641 /* libANGLE-shared.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = "libANGLE-shared.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4825DA522ADAD98400328641 /* libwebrtc.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libwebrtc.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		4827307C2B018AE90092136C /* _cyberkit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _cyberkit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD1DAF921D709E3600017CF0 /* MobileMiniBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileMiniBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD1DAF961D709E3600017CF0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CD1DAF981D709E3600017CF0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 				4825DA4A2ADAD96700328641 /* CyberKit.framework in Frameworks */,
 				4825DA442ADAD95600328641 /* CyberCore.framework in Frameworks */,
 				4825DA412ADAD94A00328641 /* CyberScriptCore.framework in Frameworks */,
+				4827307D2B018AE90092136C /* _cyberkit.dylib in Frameworks */,
 				4825DA4D2ADAD96D00328641 /* CyberKitLegacy.framework in Frameworks */,
 				4825DA502ADAD97900328641 /* libANGLE-shared.dylib in Frameworks */,
 				4825DA472ADAD95C00328641 /* WebGPU.framework in Frameworks */,
@@ -227,6 +232,7 @@
 		CD1DAFC01D70E12D00017CF0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4827307C2B018AE90092136C /* _cyberkit.dylib */,
 				4825DA522ADAD98400328641 /* libwebrtc.dylib */,
 				4825DA4F2ADAD97900328641 /* libANGLE-shared.dylib */,
 				4825DA4C2ADAD96D00328641 /* CyberKitLegacy.framework */,

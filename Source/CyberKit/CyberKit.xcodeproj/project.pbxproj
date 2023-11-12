@@ -977,6 +977,12 @@
 		46EE3E8B2763FD2F0060C70F /* WebSharedWorkerServerConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 468386672763FAB100CF9182 /* WebSharedWorkerServerConnection.h */; };
 		46F38E8C2416E6730059375A /* RunningBoardServicesSPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 46F38E8B2416E66D0059375A /* RunningBoardServicesSPI.h */; };
 		46F9B26323526EF3006FE5FA /* WebBackForwardCacheEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 46F9B26223526ED0006FE5FA /* WebBackForwardCacheEntry.h */; };
+		482730662B01882D0092136C /* _cyberkit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 482730652B01882D0092136C /* _cyberkit.dylib */; };
+		4827306A2B0188390092136C /* _cyberkit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 482730692B0188390092136C /* _cyberkit.dylib */; };
+		4827306E2B0188430092136C /* _cyberkit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4827306D2B0188430092136C /* _cyberkit.dylib */; };
+		482730722B01884E0092136C /* _cyberkit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 482730712B01884E0092136C /* _cyberkit.dylib */; };
+		482730762B0188540092136C /* _cyberkit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 482730752B0188540092136C /* _cyberkit.dylib */; };
+		482730792B0188620092136C /* _cyberkit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 482730782B0188620092136C /* _cyberkit.dylib */; };
 		48704BB22A003A0A00B3F507 /* AssertionServicesSPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 48704BB12A003A0A00B3F507 /* AssertionServicesSPI.h */; };
 		48704BB52A003AB400B3F507 /* ProcessTaskStateObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 48704BB32A003AB300B3F507 /* ProcessTaskStateObserver.h */; };
 		48704BB62A003AB400B3F507 /* ProcessTaskStateObserver.mm in Sources */ = {isa = PBXBuildFile; fileRef = 48704BB42A003AB300B3F507 /* ProcessTaskStateObserver.mm */; };
@@ -4759,6 +4765,15 @@
 		46F38E8B2416E66D0059375A /* RunningBoardServicesSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunningBoardServicesSPI.h; sourceTree = "<group>"; };
 		46F9B26223526ED0006FE5FA /* WebBackForwardCacheEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebBackForwardCacheEntry.h; sourceTree = "<group>"; };
 		46FA2E752A04240300912BFE /* RemoteWorkerType.serialization.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = RemoteWorkerType.serialization.in; sourceTree = "<group>"; };
+		48120C062B018015003D19DC /* libcyberkit.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcyberkit.dylib; path = "../../_jetsam/Build/Products/Debug-iphoneos/libcyberkit.dylib"; sourceTree = "<group>"; };
+		48120C132B0180B3003D19DC /* _jetsam */ = {isa = PBXFileReference; lastKnownFileType = folder; name = _jetsam; path = ../../_jetsam; sourceTree = "<group>"; };
+		4814C2BF2B012A8200A315DF /* __CyberKitJetsam.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = __CyberKitJetsam.dylib; path = ../../jetsam/Library/MobileSubstrate/DynamicLibraries/__CyberKitJetsam.dylib; sourceTree = "<group>"; };
+		482730652B01882D0092136C /* _cyberkit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _cyberkit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		482730692B0188390092136C /* _cyberkit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _cyberkit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		4827306D2B0188430092136C /* _cyberkit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _cyberkit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		482730712B01884E0092136C /* _cyberkit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _cyberkit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		482730752B0188540092136C /* _cyberkit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _cyberkit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		482730782B0188620092136C /* _cyberkit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _cyberkit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		48704BB12A003A0A00B3F507 /* AssertionServicesSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssertionServicesSPI.h; sourceTree = "<group>"; };
 		48704BB32A003AB300B3F507 /* ProcessTaskStateObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessTaskStateObserver.h; sourceTree = "<group>"; };
 		48704BB42A003AB300B3F507 /* ProcessTaskStateObserver.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ProcessTaskStateObserver.mm; sourceTree = "<group>"; };
@@ -7289,6 +7304,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				482730792B0188620092136C /* _cyberkit.dylib in Frameworks */,
 				2D9FB21F237523830049F936 /* Foundation.framework in Frameworks */,
 				2D9FB220237523830049F936 /* CyberKit.framework in Frameworks */,
 			);
@@ -7298,6 +7314,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				482730722B01884E0092136C /* _cyberkit.dylib in Frameworks */,
 				372EBB3E2017E64300085064 /* Foundation.framework in Frameworks */,
 				372EBB3F2017E64300085064 /* CyberKit.framework in Frameworks */,
 			);
@@ -7329,6 +7346,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4827306E2B0188430092136C /* _cyberkit.dylib in Frameworks */,
 				650994D228C942B7006EE6DB /* Foundation.framework in Frameworks */,
 				650994D328C942B7006EE6DB /* CyberKit.framework in Frameworks */,
 			);
@@ -7338,6 +7356,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4827306A2B0188390092136C /* _cyberkit.dylib in Frameworks */,
 				7A7E8DEC2748392500DCC97A /* Foundation.framework in Frameworks */,
 				7A7E8DED2748392500DCC97A /* CyberKit.framework in Frameworks */,
 			);
@@ -7376,6 +7395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCAF362016CA28D600D4E9FC /* Foundation.framework in Frameworks */,
+				482730762B0188540092136C /* _cyberkit.dylib in Frameworks */,
 				BC8283DA16B4DB9300A278FE /* CyberKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -7384,6 +7404,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				482730662B01882D0092136C /* _cyberkit.dylib in Frameworks */,
 				BC9FA520160D3B430054DF9A /* Foundation.framework in Frameworks */,
 				BCAE9E08160C1C0700A33217 /* CyberKit.framework in Frameworks */,
 			);
@@ -11010,6 +11031,15 @@
 		5750F3292032D4E300389347 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				482730782B0188620092136C /* _cyberkit.dylib */,
+				482730752B0188540092136C /* _cyberkit.dylib */,
+				482730712B01884E0092136C /* _cyberkit.dylib */,
+				4827306D2B0188430092136C /* _cyberkit.dylib */,
+				482730692B0188390092136C /* _cyberkit.dylib */,
+				482730652B01882D0092136C /* _cyberkit.dylib */,
+				48120C132B0180B3003D19DC /* _jetsam */,
+				48120C062B018015003D19DC /* libcyberkit.dylib */,
+				4814C2BF2B012A8200A315DF /* __CyberKitJetsam.dylib */,
 				DDAB377528234B2100890546 /* AuthenticationServicesCore.framework */,
 				52A69BE9286CFFAC00893E8F /* CryptoTokenKit.framework */,
 				E34B110C27C46BC6006D2F2E /* libCyberCoreTestShim.dylib */,

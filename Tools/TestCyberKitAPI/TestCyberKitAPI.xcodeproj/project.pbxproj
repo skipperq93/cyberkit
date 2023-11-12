@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -6920,6 +6920,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BC90958012554CF900083756 /* TestCyberKitAPI.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
 			};
 			name = Debug;
 		};
@@ -6927,6 +6928,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BC90958012554CF900083756 /* TestCyberKitAPI.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
 			};
 			name = Release;
 		};
@@ -6950,6 +6952,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3A5DDADB28D15328004DA950 /* TestWGSL.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
 			};
 			name = Debug;
 		};
@@ -6957,6 +6960,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3A5DDADB28D15328004DA950 /* TestWGSL.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
 			};
 			name = Release;
 		};
@@ -6994,6 +6998,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7B9FC58628A2682E007570E7 /* TestIPC.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
 			};
 			name = Debug;
 		};
@@ -7001,6 +7006,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7B9FC58628A2682E007570E7 /* TestIPC.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
 			};
 			name = Release;
 		};
@@ -7022,6 +7028,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7C83E0261D0A5B8D00FEBCF3 /* TestWTF.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
 			};
 			name = Debug;
 		};
@@ -7029,6 +7036,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7C83E0261D0A5B8D00FEBCF3 /* TestWTF.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
 			};
 			name = Release;
 		};

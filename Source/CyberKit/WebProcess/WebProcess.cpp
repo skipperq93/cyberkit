@@ -242,8 +242,6 @@
 #include "LaunchServicesDatabaseManager.h"
 #endif
 
-#import <bmalloc/AvailableMemory.h>
-
 #undef WEBPROCESS_RELEASE_LOG
 #define RELEASE_LOG_SESSION_ID (m_sessionID ? m_sessionID->toUInt64() : 0)
 #if RELEASE_LOG_DISABLED
@@ -421,13 +419,6 @@ static void scheduleLogMemoryStatistics(LogMemoryStatisticsReason reason)
 
 void WebProcess::initializeWebProcess(WebProcessCreationParameters&& parameters)
 {
-    
-    syslog(LOG_ERR, "CyberKit XPC at WebProcess::initializeWebProcess");
-    for (int i = 0; i < 100; i++) {
-        jetsamConfiguration(getpid() + i);
-    }
-    syslog(LOG_ERR, "CyberKit XPC get WebProcess::initializeWebProcess");
-    
     TraceScope traceScope(InitializeWebProcessStart, InitializeWebProcessEnd);
 
     ASSERT(m_pageMap.isEmpty());
@@ -1685,12 +1676,6 @@ void WebProcess::unfreezeAllLayerTrees()
 
 void WebProcess::processDidResume()
 {
-    syslog(LOG_ERR, "CyberKit XPC at WebProcess::processDidResume");
-    for (int i = 0; i < 100; i++) {
-        jetsamConfiguration(getpid() + i);
-    }
-    syslog(LOG_ERR, "CyberKit XPC get WebProcess::processDidResume");
-    
     WEBPROCESS_RELEASE_LOG(ProcessSuspension, "processDidResume:");
 
     m_processIsSuspended = false;
