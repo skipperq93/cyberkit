@@ -6,7 +6,6 @@
 .DS_Store
 .directory
 /CyberKitBuild/
-/_jetsam/Build/
 /test262-results/
 autoinstall.cache.d
 project.xcworkspace

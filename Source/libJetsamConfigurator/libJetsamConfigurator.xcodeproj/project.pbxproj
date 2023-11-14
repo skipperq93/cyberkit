@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		48120BFD2B017AE5003D19DC /* Tweak.m in Sources */ = {isa = PBXBuildFile; fileRef = 48120BFC2B017AE4003D19DC /* Tweak.m */; };
+		48120BFD2B017AE5003D19DC /* JetsamConfigurator.m in Sources */ = {isa = PBXBuildFile; fileRef = 48120BFC2B017AE4003D19DC /* JetsamConfigurator.m */; };
+		4887FA522B02741B0047168B /* JetsamConfigurator.h in Headers */ = {isa = PBXBuildFile; fileRef = 4887FA512B02741B0047168B /* JetsamConfigurator.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		48120BF32B017ABB003D19DC /* _cyberkit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = _cyberkit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		48120BFC2B017AE4003D19DC /* Tweak.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweak.m; sourceTree = "<group>"; };
-		48120C002B017B9A003D19DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48120BF32B017ABB003D19DC /* _libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = _libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		48120BFC2B017AE4003D19DC /* JetsamConfigurator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JetsamConfigurator.m; sourceTree = "<group>"; };
+		4887FA512B02741B0047168B /* JetsamConfigurator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JetsamConfigurator.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,8 +31,8 @@
 		48120BEA2B017ABB003D19DC = {
 			isa = PBXGroup;
 			children = (
-				48120C002B017B9A003D19DC /* Info.plist */,
-				48120BFC2B017AE4003D19DC /* Tweak.m */,
+				4887FA512B02741B0047168B /* JetsamConfigurator.h */,
+				48120BFC2B017AE4003D19DC /* JetsamConfigurator.m */,
 				48120BF42B017ABB003D19DC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -39,7 +40,7 @@
 		48120BF42B017ABB003D19DC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				48120BF32B017ABB003D19DC /* _cyberkit.dylib */,
+				48120BF32B017ABB003D19DC /* _libJetsamConfigurator.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -51,15 +52,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4887FA522B02741B0047168B /* JetsamConfigurator.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		48120BF22B017ABB003D19DC /* _cyberkit */ = {
+		48120BF22B017ABB003D19DC /* _libJetsamConfigurator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 48120BF72B017ABB003D19DC /* Build configuration list for PBXNativeTarget "_cyberkit" */;
+			buildConfigurationList = 48120BF72B017ABB003D19DC /* Build configuration list for PBXNativeTarget "_libJetsamConfigurator" */;
 			buildPhases = (
 				48120BEF2B017ABB003D19DC /* Headers */,
 				48120BF02B017ABB003D19DC /* Sources */,
@@ -69,9 +71,9 @@
 			);
 			dependencies = (
 			);
-			name = _cyberkit;
+			name = _libJetsamConfigurator;
 			productName = cyberkit;
-			productReference = 48120BF32B017ABB003D19DC /* _cyberkit.dylib */;
+			productReference = 48120BF32B017ABB003D19DC /* _libJetsamConfigurator.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -88,7 +90,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 48120BEE2B017ABB003D19DC /* Build configuration list for PBXProject "_cyberkit" */;
+			buildConfigurationList = 48120BEE2B017ABB003D19DC /* Build configuration list for PBXProject "libJetsamConfigurator" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -101,7 +103,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				48120BF22B017ABB003D19DC /* _cyberkit */,
+				48120BF22B017ABB003D19DC /* _libJetsamConfigurator */,
 			);
 		};
 /* End PBXProject section */
@@ -111,7 +113,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48120BFD2B017AE5003D19DC /* Tweak.m in Sources */,
+				48120BFD2B017AE5003D19DC /* JetsamConfigurator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +270,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		48120BEE2B017ABB003D19DC /* Build configuration list for PBXProject "_cyberkit" */ = {
+		48120BEE2B017ABB003D19DC /* Build configuration list for PBXProject "libJetsamConfigurator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				48120BF52B017ABB003D19DC /* Debug */,
@@ -277,7 +279,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		48120BF72B017ABB003D19DC /* Build configuration list for PBXNativeTarget "_cyberkit" */ = {
+		48120BF72B017ABB003D19DC /* Build configuration list for PBXNativeTarget "_libJetsamConfigurator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				48120BF82B017ABB003D19DC /* Debug */,

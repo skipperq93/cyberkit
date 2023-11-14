@@ -27,14 +27,6 @@
 
 #include "BPlatform.h"
 #include "Sizes.h"
-#if BPLATFORM(IOS_FAMILY)
-#include "MemoryStatusSPI.h"
-#endif
-#include <sys/syslog.h>
-
-extern "C" {
-memorystatus_memlimit_properties_t jetsamConfiguration(pid_t pid);
-}
 
 namespace bmalloc {
 

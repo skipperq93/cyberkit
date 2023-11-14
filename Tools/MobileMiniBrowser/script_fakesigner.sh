@@ -55,8 +55,8 @@ fi
 cp $SCRIPT_DIR/script_fakesigner.entitlements .
 
 # Fakesign
-echo "[1/16] Fakesigning _cyberkit.dylib"
-ldid -S"script_fakesigner.entitlements" "$app/Frameworks/_cyberkit.dylib"
+echo "[1/16] Fakesigning _libJetsamConfigurator.dylib"
+ldid -S"script_fakesigner.entitlements" "$app/Frameworks/_libJetsamConfigurator.dylib"
 echo "[2/16] Fakesigning libANGLE-shared.dylib"
 ldid -S"script_fakesigner.entitlements" "$app/Frameworks/libANGLE-shared.dylib"
 echo "[3/16] Fakesigning libwebrtc.dylib"

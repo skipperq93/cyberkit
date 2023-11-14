@@ -977,15 +977,15 @@
 		46EE3E8B2763FD2F0060C70F /* WebSharedWorkerServerConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 468386672763FAB100CF9182 /* WebSharedWorkerServerConnection.h */; };
 		46F38E8C2416E6730059375A /* RunningBoardServicesSPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 46F38E8B2416E66D0059375A /* RunningBoardServicesSPI.h */; };
 		46F9B26323526EF3006FE5FA /* WebBackForwardCacheEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 46F9B26223526ED0006FE5FA /* WebBackForwardCacheEntry.h */; };
-		482730662B01882D0092136C /* _cyberkit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 482730652B01882D0092136C /* _cyberkit.dylib */; };
-		4827306A2B0188390092136C /* _cyberkit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 482730692B0188390092136C /* _cyberkit.dylib */; };
-		4827306E2B0188430092136C /* _cyberkit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4827306D2B0188430092136C /* _cyberkit.dylib */; };
-		482730722B01884E0092136C /* _cyberkit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 482730712B01884E0092136C /* _cyberkit.dylib */; };
-		482730762B0188540092136C /* _cyberkit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 482730752B0188540092136C /* _cyberkit.dylib */; };
-		482730792B0188620092136C /* _cyberkit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 482730782B0188620092136C /* _cyberkit.dylib */; };
 		48704BB22A003A0A00B3F507 /* AssertionServicesSPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 48704BB12A003A0A00B3F507 /* AssertionServicesSPI.h */; };
 		48704BB52A003AB400B3F507 /* ProcessTaskStateObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 48704BB32A003AB300B3F507 /* ProcessTaskStateObserver.h */; };
 		48704BB62A003AB400B3F507 /* ProcessTaskStateObserver.mm in Sources */ = {isa = PBXBuildFile; fileRef = 48704BB42A003AB300B3F507 /* ProcessTaskStateObserver.mm */; };
+		48B421172B02CE7C009B329B /* _libJetsamConfigurator.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B421162B02CE7C009B329B /* _libJetsamConfigurator.dylib */; };
+		48B4211B2B02CE8F009B329B /* _libJetsamConfigurator.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B4211A2B02CE8F009B329B /* _libJetsamConfigurator.dylib */; };
+		48B4211F2B02CEA1009B329B /* _libJetsamConfigurator.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B4211E2B02CEA1009B329B /* _libJetsamConfigurator.dylib */; };
+		48B421232B02CEB0009B329B /* _libJetsamConfigurator.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B421222B02CEB0009B329B /* _libJetsamConfigurator.dylib */; };
+		48B421272B02CEBC009B329B /* _libJetsamConfigurator.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B421262B02CEBC009B329B /* _libJetsamConfigurator.dylib */; };
+		48B4212B2B02CEC9009B329B /* _libJetsamConfigurator.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B4212A2B02CEC9009B329B /* _libJetsamConfigurator.dylib */; };
 		493102BD2683F3D0002BB885 /* AppPrivacyReport.h in Headers */ = {isa = PBXBuildFile; fileRef = 493102BC2683F3A5002BB885 /* AppPrivacyReport.h */; };
 		4955A6E628076D4D00BB91C4 /* ArrayReferenceTuple.h in Headers */ = {isa = PBXBuildFile; fileRef = 4955A6E528076D4C00BB91C4 /* ArrayReferenceTuple.h */; };
 		4973DF482422941F00E4C26A /* NavigatingToAppBoundDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = 4973DF472422941F00E4C26A /* NavigatingToAppBoundDomain.h */; };
@@ -4777,6 +4777,18 @@
 		48704BB12A003A0A00B3F507 /* AssertionServicesSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssertionServicesSPI.h; sourceTree = "<group>"; };
 		48704BB32A003AB300B3F507 /* ProcessTaskStateObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessTaskStateObserver.h; sourceTree = "<group>"; };
 		48704BB42A003AB300B3F507 /* ProcessTaskStateObserver.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ProcessTaskStateObserver.mm; sourceTree = "<group>"; };
+		4887FA392B0271A50047168B /* libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		4887FA3D2B0271B30047168B /* libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		4887FA412B0271C90047168B /* libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		4887FA452B0271DB0047168B /* libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		4887FA492B0271E70047168B /* libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		4887FA4D2B0271F30047168B /* libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		48B421162B02CE7C009B329B /* _libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		48B4211A2B02CE8F009B329B /* _libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		48B4211E2B02CEA1009B329B /* _libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		48B421222B02CEB0009B329B /* _libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		48B421262B02CEBC009B329B /* _libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		48B4212A2B02CEC9009B329B /* _libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		493102BC2683F3A5002BB885 /* AppPrivacyReport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppPrivacyReport.h; sourceTree = "<group>"; };
 		4955A6E528076D4C00BB91C4 /* ArrayReferenceTuple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayReferenceTuple.h; sourceTree = "<group>"; };
 		4973DF472422941F00E4C26A /* NavigatingToAppBoundDomain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigatingToAppBoundDomain.h; sourceTree = "<group>"; };
@@ -7304,8 +7316,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				482730792B0188620092136C /* _cyberkit.dylib in Frameworks */,
 				2D9FB21F237523830049F936 /* Foundation.framework in Frameworks */,
+				48B4212B2B02CEC9009B329B /* _libJetsamConfigurator.dylib in Frameworks */,
 				2D9FB220237523830049F936 /* CyberKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -7314,8 +7326,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				482730722B01884E0092136C /* _cyberkit.dylib in Frameworks */,
 				372EBB3E2017E64300085064 /* Foundation.framework in Frameworks */,
+				48B421232B02CEB0009B329B /* _libJetsamConfigurator.dylib in Frameworks */,
 				372EBB3F2017E64300085064 /* CyberKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -7346,8 +7358,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4827306E2B0188430092136C /* _cyberkit.dylib in Frameworks */,
 				650994D228C942B7006EE6DB /* Foundation.framework in Frameworks */,
+				48B4211F2B02CEA1009B329B /* _libJetsamConfigurator.dylib in Frameworks */,
 				650994D328C942B7006EE6DB /* CyberKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -7356,8 +7368,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4827306A2B0188390092136C /* _cyberkit.dylib in Frameworks */,
 				7A7E8DEC2748392500DCC97A /* Foundation.framework in Frameworks */,
+				48B4211B2B02CE8F009B329B /* _libJetsamConfigurator.dylib in Frameworks */,
 				7A7E8DED2748392500DCC97A /* CyberKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -7395,7 +7407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCAF362016CA28D600D4E9FC /* Foundation.framework in Frameworks */,
-				482730762B0188540092136C /* _cyberkit.dylib in Frameworks */,
+				48B421272B02CEBC009B329B /* _libJetsamConfigurator.dylib in Frameworks */,
 				BC8283DA16B4DB9300A278FE /* CyberKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -7404,8 +7416,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				482730662B01882D0092136C /* _cyberkit.dylib in Frameworks */,
 				BC9FA520160D3B430054DF9A /* Foundation.framework in Frameworks */,
+				48B421172B02CE7C009B329B /* _libJetsamConfigurator.dylib in Frameworks */,
 				BCAE9E08160C1C0700A33217 /* CyberKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -11031,6 +11043,18 @@
 		5750F3292032D4E300389347 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				48B4212A2B02CEC9009B329B /* _libJetsamConfigurator.dylib */,
+				48B421262B02CEBC009B329B /* _libJetsamConfigurator.dylib */,
+				48B421222B02CEB0009B329B /* _libJetsamConfigurator.dylib */,
+				48B4211E2B02CEA1009B329B /* _libJetsamConfigurator.dylib */,
+				48B4211A2B02CE8F009B329B /* _libJetsamConfigurator.dylib */,
+				48B421162B02CE7C009B329B /* _libJetsamConfigurator.dylib */,
+				4887FA4D2B0271F30047168B /* libJetsamConfigurator.dylib */,
+				4887FA492B0271E70047168B /* libJetsamConfigurator.dylib */,
+				4887FA452B0271DB0047168B /* libJetsamConfigurator.dylib */,
+				4887FA412B0271C90047168B /* libJetsamConfigurator.dylib */,
+				4887FA3D2B0271B30047168B /* libJetsamConfigurator.dylib */,
+				4887FA392B0271A50047168B /* libJetsamConfigurator.dylib */,
 				482730782B0188620092136C /* _cyberkit.dylib */,
 				482730752B0188540092136C /* _cyberkit.dylib */,
 				482730712B01884E0092136C /* _cyberkit.dylib */,
