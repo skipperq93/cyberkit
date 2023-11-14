@@ -49,6 +49,9 @@ template<const CFStringRef& colorSpaceNameGlobalConstant> static CGColorSpaceRef
 #if HAVE(CORE_GRAPHICS_CREATE_EXTENDED_COLOR_SPACE)
 template<const CFStringRef& colorSpaceNameGlobalConstant> static CGColorSpaceRef extendedNamedColorSpace()
 {
+#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
+    if (floor(kCFCoreFoundationVersionNumber) > kCFCoreFoundationVersionNumber_iOS_14_0) {
+#endif
     static NeverDestroyed<RetainPtr<CGColorSpaceRef>> colorSpace;
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [] {
@@ -56,6 +59,10 @@ template<const CFStringRef& colorSpaceNameGlobalConstant> static CGColorSpaceRef
         ASSERT(colorSpace.get());
     });
     return colorSpace.get().get();
+#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
+    }
+    return nullptr;
+#endif
 }
 #endif
 
