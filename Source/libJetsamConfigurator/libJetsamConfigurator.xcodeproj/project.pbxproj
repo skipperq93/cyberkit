@@ -15,6 +15,7 @@
 		48120BF32B017ABB003D19DC /* _libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = _libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		48120BFC2B017AE4003D19DC /* JetsamConfigurator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JetsamConfigurator.m; sourceTree = "<group>"; };
 		4887FA512B02741B0047168B /* JetsamConfigurator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JetsamConfigurator.h; sourceTree = "<group>"; };
+		48F600F42B13A3C8001CA592 /* JetsamConfigurator.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JetsamConfigurator.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +32,7 @@
 		48120BEA2B017ABB003D19DC = {
 			isa = PBXGroup;
 			children = (
+				48F600F42B13A3C8001CA592 /* JetsamConfigurator.xcconfig */,
 				4887FA512B02741B0047168B /* JetsamConfigurator.h */,
 				48120BFC2B017AE4003D19DC /* JetsamConfigurator.m */,
 				48120BF42B017ABB003D19DC /* Products */,
@@ -122,6 +124,7 @@
 /* Begin XCBuildConfiguration section */
 		48120BF52B017ABB003D19DC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48F600F42B13A3C8001CA592 /* JetsamConfigurator.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -170,6 +173,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = $CYBERKIT_DEPLOYMENT_TARGET;
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -180,6 +184,7 @@
 		};
 		48120BF62B017ABB003D19DC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48F600F42B13A3C8001CA592 /* JetsamConfigurator.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -222,6 +227,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = $CYBERKIT_DEPLOYMENT_TARGET;
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -231,6 +237,7 @@
 		};
 		48120BF82B017ABB003D19DC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48F600F42B13A3C8001CA592 /* JetsamConfigurator.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -240,7 +247,7 @@
 				EXECUTABLE_PREFIX = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				INSTALL_PATH = "@executable_path/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = $CYBERKIT_DEPLOYMENT_TARGET;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -250,6 +257,7 @@
 		};
 		48120BF92B017ABB003D19DC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48F600F42B13A3C8001CA592 /* JetsamConfigurator.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -259,7 +267,7 @@
 				EXECUTABLE_PREFIX = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				INSTALL_PATH = "@executable_path/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = $CYBERKIT_DEPLOYMENT_TARGET;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;

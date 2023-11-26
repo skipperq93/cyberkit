@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -78,7 +78,6 @@
 		4655743627F5FC4A002D5522 /* ASCIILiteralCocoa.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4655743527F5FC4A002D5522 /* ASCIILiteralCocoa.mm */; };
 		46BEB6EB22FFE24900269867 /* RefCounted.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46BEB6E922FFDDD500269867 /* RefCounted.cpp */; };
 		46E93049271F1205005BA6E5 /* SafeStrerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46E43647271F10AA00C88C90 /* SafeStrerror.cpp */; };
-		486993402A07F7CB005F8CD0 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 486969762A07F792005F8CD0 /* Makefile */; };
 		486993412A07F7CB005F8CD0 /* stubdata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486969772A07F792005F8CD0 /* stubdata.cpp */; };
 		486993422A07F7CB005F8CD0 /* stubdata.h in Headers */ = {isa = PBXBuildFile; fileRef = 486969782A07F792005F8CD0 /* stubdata.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		486993442A07F7CB005F8CD0 /* ustream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486969812A07F792005F8CD0 /* ustream.cpp */; };
@@ -87,7 +86,6 @@
 		486993472A07F7CB005F8CD0 /* ustream.h in Headers */ = {isa = PBXBuildFile; fileRef = 486969852A07F792005F8CD0 /* ustream.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		486993482A07F7CB005F8CD0 /* uprintf.h in Headers */ = {isa = PBXBuildFile; fileRef = 486969862A07F792005F8CD0 /* uprintf.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		486993492A07F7CB005F8CD0 /* ufile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486969872A07F792005F8CD0 /* ufile.cpp */; };
-		4869934A2A07F7CB005F8CD0 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 486969882A07F792005F8CD0 /* Makefile */; };
 		4869934B2A07F7CB005F8CD0 /* uscanf.h in Headers */ = {isa = PBXBuildFile; fileRef = 486969892A07F792005F8CD0 /* uscanf.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		4869934C2A07F7CB005F8CD0 /* ufile.h in Headers */ = {isa = PBXBuildFile; fileRef = 4869698A2A07F792005F8CD0 /* ufile.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		4869934D2A07F7CB005F8CD0 /* locbund.h in Headers */ = {isa = PBXBuildFile; fileRef = 4869698B2A07F792005F8CD0 /* locbund.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -299,7 +297,6 @@
 		486994A72A07F7D4005F8CD0 /* msvcres.h in Headers */ = {isa = PBXBuildFile; fileRef = 48696B892A07F793005F8CD0 /* msvcres.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		486994A82A07F7D4005F8CD0 /* utypeinfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 48696B8A2A07F793005F8CD0 /* utypeinfo.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		486994A92A07F7D4005F8CD0 /* icudataver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48696B8B2A07F793005F8CD0 /* icudataver.cpp */; };
-		486994AA2A07F7D4005F8CD0 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 48696B8C2A07F793005F8CD0 /* Makefile */; };
 		486994AB2A07F7D4005F8CD0 /* ucnv_cnv.h in Headers */ = {isa = PBXBuildFile; fileRef = 48696B8D2A07F793005F8CD0 /* ucnv_cnv.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		486994AC2A07F7D4005F8CD0 /* uenum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48696B8E2A07F793005F8CD0 /* uenum.cpp */; };
 		486994AD2A07F7D4005F8CD0 /* static_unicode_sets.h in Headers */ = {isa = PBXBuildFile; fileRef = 48696B8F2A07F793005F8CD0 /* static_unicode_sets.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -738,7 +735,6 @@
 		486996772A07F7DF005F8CD0 /* collationdatareader.h in Headers */ = {isa = PBXBuildFile; fileRef = 48696DB22A07F794005F8CD0 /* collationdatareader.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		486996782A07F7DF005F8CD0 /* double-conversion-utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 48696DB32A07F794005F8CD0 /* double-conversion-utils.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		486996792A07F7DF005F8CD0 /* number_patternmodifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 48696DB42A07F794005F8CD0 /* number_patternmodifier.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		4869967A2A07F7DF005F8CD0 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 48696DB52A07F794005F8CD0 /* Makefile */; };
 		4869967B2A07F7DF005F8CD0 /* number_fluent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48696DB62A07F794005F8CD0 /* number_fluent.cpp */; };
 		4869967C2A07F7DF005F8CD0 /* selfmtimpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 48696DB72A07F794005F8CD0 /* selfmtimpl.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		4869967D2A07F7DF005F8CD0 /* nfsubs.h in Headers */ = {isa = PBXBuildFile; fileRef = 48696DB82A07F794005F8CD0 /* nfsubs.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -1034,9 +1030,6 @@
 		4869979F2A07F7E7005F8CD0 /* rbtz.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48696EE02A07F795005F8CD0 /* rbtz.cpp */; };
 		486997A02A07F7E7005F8CD0 /* collationroot.h in Headers */ = {isa = PBXBuildFile; fileRef = 48696EE12A07F795005F8CD0 /* collationroot.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		486997A12A07F7E7005F8CD0 /* uni2name.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48696EE22A07F795005F8CD0 /* uni2name.cpp */; };
-		486997A22A07F7E8005F8CD0 /* icupkg.inc in Sources */ = {isa = PBXBuildFile; fileRef = 4869737B2A07F798005F8CD0 /* icupkg.inc */; };
-		486997A32A07F7E8005F8CD0 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 486986F92A07F7B4005F8CD0 /* Makefile */; };
-		486997A42A07F7E9005F8CD0 /* makedata.mak in Sources */ = {isa = PBXBuildFile; fileRef = 48698ED52A07F7BA005F8CD0 /* makedata.mak */; };
 		48FC3CB629FEB3CE0030D67F /* filesystem.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 48FC3CB529FEB3CE0030D67F /* filesystem.hpp */; };
 		50DE35F5215BB01500B979C7 /* ExternalStringImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50DE35F3215BB01500B979C7 /* ExternalStringImpl.cpp */; };
 		515F794E1CFC9F4A00CCED93 /* CrossThreadCopier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 515F794B1CFC9F4A00CCED93 /* CrossThreadCopier.cpp */; };
@@ -24135,7 +24128,6 @@
 				486996F62A07F7E3005F8CD0 /* dcfmtsym.cpp in Sources */,
 				486995542A07F7D8005F8CD0 /* characterproperties.cpp in Sources */,
 				486996ED2A07F7E2005F8CD0 /* numparse_affixes.cpp in Sources */,
-				486997A42A07F7E9005F8CD0 /* makedata.mak in Sources */,
 				486994AC2A07F7D4005F8CD0 /* uenum.cpp in Sources */,
 				4869977E2A07F7E6005F8CD0 /* vtzone.cpp in Sources */,
 				4869976E2A07F7E6005F8CD0 /* curramt.cpp in Sources */,
@@ -24261,7 +24253,6 @@
 				486994272A07F7D0005F8CD0 /* ucnv_u32.cpp in Sources */,
 				486995A02A07F7DA005F8CD0 /* uspoof_conf.cpp in Sources */,
 				486995032A07F7D6005F8CD0 /* uset.cpp in Sources */,
-				486997A22A07F7E8005F8CD0 /* icupkg.inc in Sources */,
 				486993E72A07F7CF005F8CD0 /* dictbe.cpp in Sources */,
 				486994A42A07F7D4005F8CD0 /* unistr_titlecase_brkiter.cpp in Sources */,
 				486996052A07F7DC005F8CD0 /* csdetect.cpp in Sources */,
@@ -24364,7 +24355,6 @@
 				486995682A07F7D8005F8CD0 /* ucnv_io.cpp in Sources */,
 				486994DF2A07F7D5005F8CD0 /* cmemory.cpp in Sources */,
 				486995B62A07F7DA005F8CD0 /* fmtable_cnv.cpp in Sources */,
-				4869934A2A07F7CB005F8CD0 /* Makefile in Sources */,
 				486994DB2A07F7D5005F8CD0 /* ulist.cpp in Sources */,
 				486996FF2A07F7E3005F8CD0 /* rbt_pars.cpp in Sources */,
 				486996EC2A07F7E2005F8CD0 /* number_simple.cpp in Sources */,
@@ -24419,7 +24409,6 @@
 				486997762A07F7E6005F8CD0 /* uspoof_impl.cpp in Sources */,
 				486994D92A07F7D5005F8CD0 /* stringpiece.cpp in Sources */,
 				4869957E2A07F7D9005F8CD0 /* locmap.cpp in Sources */,
-				486994AA2A07F7D4005F8CD0 /* Makefile in Sources */,
 				4869971F2A07F7E4005F8CD0 /* numparse_scientific.cpp in Sources */,
 				486995B42A07F7DA005F8CD0 /* collationruleparser.cpp in Sources */,
 				486997892A07F7E7005F8CD0 /* repattrn.cpp in Sources */,
@@ -24493,7 +24482,6 @@
 				486997502A07F7E5005F8CD0 /* csrmbcs.cpp in Sources */,
 				486993F22A07F7CF005F8CD0 /* ushape.cpp in Sources */,
 				486997212A07F7E4005F8CD0 /* dangical.cpp in Sources */,
-				4869967A2A07F7DF005F8CD0 /* Makefile in Sources */,
 				486993442A07F7CB005F8CD0 /* ustream.cpp in Sources */,
 				486995A72A07F7DA005F8CD0 /* decimfmt.cpp in Sources */,
 				486996B82A07F7E1005F8CD0 /* erarules.cpp in Sources */,
@@ -24520,7 +24508,6 @@
 				4869979D2A07F7E7005F8CD0 /* unum.cpp in Sources */,
 				486995472A07F7D8005F8CD0 /* uchar.cpp in Sources */,
 				486995D12A07F7DB005F8CD0 /* collationdatawriter.cpp in Sources */,
-				486993402A07F7CB005F8CD0 /* Makefile in Sources */,
 				486994F32A07F7D6005F8CD0 /* ucat.cpp in Sources */,
 				486997092A07F7E3005F8CD0 /* inputext.cpp in Sources */,
 				486993532A07F7CB005F8CD0 /* sscanf.cpp in Sources */,
@@ -24543,7 +24530,6 @@
 				486994262A07F7D0005F8CD0 /* propsvec.cpp in Sources */,
 				486995222A07F7D7005F8CD0 /* localematcher.cpp in Sources */,
 				486996DC2A07F7E2005F8CD0 /* numrange_fluent.cpp in Sources */,
-				486997A32A07F7E8005F8CD0 /* Makefile in Sources */,
 				486994A62A07F7D4005F8CD0 /* uloc_tag.cpp in Sources */,
 				4869979B2A07F7E7005F8CD0 /* tolowtrn.cpp in Sources */,
 				486995A52A07F7DA005F8CD0 /* pluralranges.cpp in Sources */,

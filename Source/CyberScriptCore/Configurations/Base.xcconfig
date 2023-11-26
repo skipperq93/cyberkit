@@ -131,7 +131,9 @@ WK_DEFAULT_GCC_OPTIMIZATION_LEVEL[config=Debug] = 0;
 STRIP_INSTALLED_PRODUCT = YES;
 STRIP_INSTALLED_PRODUCT[config=Debug] = NO;
 
-SDKROOT = macosx.internal;
+SDKROOT = $(SDKROOT_$(USE_INTERNAL_SDK));
+SDKROOT_ = macosx;
+SDKROOT_YES = macosx.internal;
 
 EXCLUDED_SOURCE_FILE_NAMES = libCyberKitAdditions.a libWTF.a
 

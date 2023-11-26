@@ -88,7 +88,9 @@ WK_DEFAULT_GCC_OPTIMIZATION_LEVEL[config=Debug] = 0;
 SUPPORTED_PLATFORMS = iphoneos iphonesimulator macosx appletvos appletvsimulator watchos watchsimulator;
 SUPPORTS_MACCATALYST = YES;
 
-SDKROOT = macosx.internal;
+SDKROOT = $(SDKROOT_$(USE_INTERNAL_SDK));
+SDKROOT_ = macosx;
+SDKROOT_YES = macosx.internal;
 
 EXCLUDED_SOURCE_FILE_NAMES = $(EXCLUDED_SOURCE_FILE_NAMES_$(WK_COCOA_TOUCH));
 EXCLUDED_SOURCE_FILE_NAMES_ = *IOS.h *IOS.cpp *IOS.mm;

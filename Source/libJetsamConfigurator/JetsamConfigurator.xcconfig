@@ -1,0 +1,11 @@
+//
+//  JetsamConfigurator.xcconfig
+//  libJetsamConfigurator
+//
+//  Created by Matthew Benedict on 2023/11/26.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "../../Configurations/DeploymentTarget.xcconfig"
