@@ -55,45 +55,43 @@ fi
 cp $SCRIPT_DIR/script_fakesigner.entitlements .
 
 # Fakesign
-echo "[1/16] Fakesigning _libJetsamConfigurator.dylib"
-ldid -S"script_fakesigner.entitlements" "$app/Frameworks/_libJetsamConfigurator.dylib"
-echo "[2/16] Fakesigning libANGLE-shared.dylib"
+echo "[1/15] Fakesigning libANGLE-shared.dylib"
 ldid -S"script_fakesigner.entitlements" "$app/Frameworks/libANGLE-shared.dylib"
-echo "[3/16] Fakesigning libwebrtc.dylib"
+echo "[2/15] Fakesigning libwebrtc.dylib"
 ldid -S"script_fakesigner.entitlements" "$app/Frameworks/libwebrtc.dylib"
 
-echo "[4/16] Fakesigning com.matthewbenedict.CyberKit.GPU.xpc"
+echo "[3/15] Fakesigning com.matthewbenedict.CyberKit.GPU.xpc"
 ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.GPU.xpc"
-echo "[5/16] Fakesigning com.matthewbenedict.CyberKit.Networking.xpc"
+echo "[4/15] Fakesigning com.matthewbenedict.CyberKit.Networking.xpc"
 ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.Networking.xpc"
-echo "[6/16] Fakesigning com.matthewbenedict.CyberKit.WebContent.CaptivePortal.xpc"
+echo "[5/15] Fakesigning com.matthewbenedict.CyberKit.WebContent.CaptivePortal.xpc"
 ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.WebContent.CaptivePortal.xpc"
-echo "[7/16] Fakesigning com.matthewbenedict.CyberKit.WebContent.Crashy.xpc"
+echo "[6/15] Fakesigning com.matthewbenedict.CyberKit.WebContent.Crashy.xpc"
 ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.WebContent.Crashy.xpc"
-echo "[8/16] Fakesigning com.matthewbenedict.CyberKit.WebContent.Development.xpc"
+echo "[7/15] Fakesigning com.matthewbenedict.CyberKit.WebContent.Development.xpc"
 ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.WebContent.Development.xpc"
-echo "[9/16] Fakesigning com.matthewbenedict.CyberKit.WebContent.xpc"
+echo "[8/15] Fakesigning com.matthewbenedict.CyberKit.WebContent.xpc"
 ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.WebContent.xpc"
 
-echo "[10/16] Fakesigning CyberCore.framework"
+echo "[9/15] Fakesigning CyberCore.framework"
 ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberCore.framework/CyberCore"
-echo "[11/16] Fakesigning CyberKit.framework"
+echo "[10/15] Fakesigning CyberKit.framework"
 ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberKit.framework/CyberKit"
-echo "[12/16] Fakesigning CyberKitLegacy.framework"
+echo "[11/15] Fakesigning CyberKitLegacy.framework"
 ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberKitLegacy.framework/CyberKitLegacy"
-echo "[13/16] Fakesigning CyberScriptCore.framework"
+echo "[12/15] Fakesigning CyberScriptCore.framework"
 ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberScriptCore.framework/CyberScriptCore"
-echo "[14/16] Fakesigning MobileMiniBrowser.framework"
+echo "[13/15] Fakesigning MobileMiniBrowser.framework"
 ldid -S"script_fakesigner.entitlements" "$app/Frameworks/MobileMiniBrowser.framework/MobileMiniBrowser"
-echo "[15/16] Fakesigning WebGPU.framework"
+echo "[14/15] Fakesigning WebGPU.framework"
 ldid -S"script_fakesigner.entitlements" "$app/Frameworks/WebGPU.framework/WebGPU"
-echo "[16/16] Fakesigning MobileMiniBrowser"
+echo "[15/15] Fakesigning MobileMiniBrowser"
 ldid -S"script_fakesigner.entitlements" "$app/${app:0:${#app}-4}"
 rm script_fakesigner.entitlements
 
 # Setup for DEB packaging
 cd ..
-rm *.deb
+rm -f *.deb || true
 DIR_NAME=$1
 if [[ "$DIR_NAME" == *"+"* ]]; then
     if [[ ${DIR_NAME#*+} -le 10 ]]; then
@@ -146,6 +144,6 @@ rm -rf $DIR_NAME
 # Package into IPA
 IPA_NAME=$(echo *.deb | sed 's/_[a-z].*//' | sed 's/\+\([0-9]\)/\1/' | sed 's/-\([0-9]\)/\1/')
 echo "[*] Creating IPA..."
-rm -f "$IPA_NAME.ipa" || true
-zip -r -y "$IPA_NAME.ipa" Payload
-echo "[*] Created $IPA_NAME.ipa"
+rm -f *.tipa || true
+zip -r -y "$IPA_NAME.tipa" Payload
+echo "[*] Created $IPA_NAME.tipa"

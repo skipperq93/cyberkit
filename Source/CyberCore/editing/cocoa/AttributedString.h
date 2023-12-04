@@ -53,7 +53,7 @@
 #define PlatformNSColorClass            getNSColorClass()
 #define PlatformNSParagraphStyle        PAL::getNSParagraphStyleClass()
 #if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
-#define PlatformNSPresentationIntent    PAL::getNSPresentationIntentClass()
+#define PlatformNSPresentationIntent    NSPresentationIntent.class
 #define CyberPresentationIntent         NSPresentationIntent
 #else
 #define PlatformNSPresentationIntent    CyberPresentationIntent.class

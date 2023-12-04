@@ -39,8 +39,6 @@
 		4825DA512ADAD97900328641 /* libANGLE-shared.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4825DA4F2ADAD97900328641 /* libANGLE-shared.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		4825DA532ADAD98400328641 /* libwebrtc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4825DA522ADAD98400328641 /* libwebrtc.dylib */; };
 		4825DA542ADAD98400328641 /* libwebrtc.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4825DA522ADAD98400328641 /* libwebrtc.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		48B4212F2B02CF0C009B329B /* _libJetsamConfigurator.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B4212E2B02CF0C009B329B /* _libJetsamConfigurator.dylib */; };
-		48B421302B02CF0C009B329B /* _libJetsamConfigurator.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48B4212E2B02CF0C009B329B /* _libJetsamConfigurator.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		CD1DAF971D709E3600017CF0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1DAF961D709E3600017CF0 /* main.m */; };
 		CD1DAFA51D709E3600017CF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD1DAFA31D709E3600017CF0 /* LaunchScreen.storyboard */; };
 		CD1DAFB01D709E3600017CF0 /* MobileMiniBrowserUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1DAFAF1D709E3600017CF0 /* MobileMiniBrowserUITests.m */; };
@@ -100,7 +98,6 @@
 				4825DA512ADAD97900328641 /* libANGLE-shared.dylib in Embed Frameworks */,
 				4825DA482ADAD95C00328641 /* WebGPU.framework in Embed Frameworks */,
 				CD498B431D76348000681FA7 /* MobileMiniBrowser.framework in Embed Frameworks */,
-				48B421302B02CF0C009B329B /* _libJetsamConfigurator.dylib in Embed Frameworks */,
 				4825DA542ADAD98400328641 /* libwebrtc.dylib in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -164,7 +161,6 @@
 				4825DA502ADAD97900328641 /* libANGLE-shared.dylib in Frameworks */,
 				4825DA472ADAD95C00328641 /* WebGPU.framework in Frameworks */,
 				CD498B421D76348000681FA7 /* MobileMiniBrowser.framework in Frameworks */,
-				48B4212F2B02CF0C009B329B /* _libJetsamConfigurator.dylib in Frameworks */,
 				4825DA532ADAD98400328641 /* libwebrtc.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -564,6 +560,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = $CYBERKIT_VERSION;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.ios.Fennec;
 				PRODUCT_NAME = MobileMiniBrowser;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -585,6 +582,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = $CYBERKIT_VERSION;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.ios.Fennec;
 				PRODUCT_NAME = MobileMiniBrowser;
 				PROVISIONING_PROFILE_SPECIFIER = "";

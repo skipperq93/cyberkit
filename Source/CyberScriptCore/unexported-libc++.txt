@@ -31,5 +31,6 @@ __Zd[la]*
 
 # ICU symbols to shut up compiler
 __ZN3icu*
+__ZNK3icu*
 __ZNKR3icu*
 __ZNO3icu*
