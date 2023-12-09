@@ -22,9 +22,9 @@ Please visit the [CyberKit wiki](https://github.com/UInt2048/CyberKit/wiki).
     * _Diverged 19 March 2023; built in Xcode 14.2 before [fa2170c](https://github.com/UInt2048/CyberKit/commit/fa2170c3604b4ccacbc4f2475f91c0638ac7a2a0) (committed 7 April 2023), 14.3 starting with fa2170c_
 * [safari-7616.1.12-branch](https://github.com/UInt2048/CyberKit/tree/safari-7616.1.12-branch): 11 May 2023 - 2 October 2023 (used in v0.0.7 alpha - v0.0.8 alpha)
     * _Diverged 22 April 2023; built in Xcode 14.3 before [688c678](https://github.com/UInt2048/CyberKit/commit/688c678f5a3204926f6e005f75f23433bf565153) (committed 31 July 2023), 13.7 starting with 688c678_
-* [safari-7616.1.27.211-branch](https://github.com/UInt2048/CyberKit/tree/safari-7616.1.27.211-branch): 2 October 2023 - TBD (not used in release)
+* [safari-7616.1.27.211-branch](https://github.com/UInt2048/CyberKit/tree/safari-7616.1.27.211-branch): 2 October 2023 - 9 December 2023 (not used in release)
    * _Diverged 7 July 2023; built in Xcode 13.7_
-* [safari-7617.1.4-branch](https://github.com/UInt2048/CyberKit/tree/safari-7617.1.4-branch): TBD (used in v0.0.9 alpha - present)
+* [safari-7617.1.4-branch](https://github.com/UInt2048/CyberKit/tree/safari-7617.1.4-branch): 9 December 2023 - present (used in v0.0.9 alpha - present)
    * _Diverged 6 August 2023; built in Xcode 13.7_
 
 ## Reference Implementations
