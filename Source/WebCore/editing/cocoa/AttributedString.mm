@@ -37,6 +37,29 @@
 #import "UIFoundationSoftLink.h"
 #endif
 
+#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
+@implementation CyberPresentationIntent
+- (CyberPresentationIntent *_Nonnull) initWithIdentity:(NSInteger)identity
+                                       parentIntent:(CyberPresentationIntent *_Nullable)parent {
+    self = [super init];
+
+    if ( self ) {
+        self->_identity = identity;
+        self->_parentIntent = parent;
+    }
+
+    return self;
+}
+
++ (CyberPresentationIntent *_Nonnull)blockQuoteIntentWithIdentity:(NSInteger)identity
+                                            nestedInsideIntent:(CyberPresentationIntent *_Nullable)parent {
+    return [[CyberPresentationIntent alloc] initWithIdentity:identity parentIntent:parent];
+}
+@end
+
+NSString *_Nonnull const NSPresentationIntentAttributeName = @"CyberPresentationIntent";
+#endif
+
 namespace WebCore {
 
 AttributedString::AttributedString() = default;
@@ -77,7 +100,7 @@ static RetainPtr<id> toNSObject(const AttributedString::AttributeValue& value)
         return (NSString *)value;
     }, [] (const RetainPtr<NSParagraphStyle>& value) -> RetainPtr<id> {
         return value;
-    }, [] (const RetainPtr<NSPresentationIntent>& value) -> RetainPtr<id> {
+    }, [] (const RetainPtr<CyberPresentationIntent>& value) -> RetainPtr<NSObject> {
         return value;
     }, [] (const URL& value) -> RetainPtr<id> {
         return (NSURL *)value;
@@ -135,7 +158,7 @@ RetainPtr<NSAttributedString> AttributedString::nsAttributedString() const
     return result;
 }
 
-static std::optional<AttributedString::AttributeValue> extractArray(NSArray *array)
+static std::optional<AttributedString::AttributeValue> extractArray(NSArray *_Nonnull array)
 {
     size_t arrayLength = array.count;
     if (!arrayLength)
@@ -167,7 +190,7 @@ static std::optional<AttributedString::AttributeValue> extractArray(NSArray *arr
     return std::nullopt;
 }
 
-static std::optional<AttributedString::AttributeValue> extractValue(id value)
+static std::optional<AttributedString::AttributeValue> extractValue(id _Nonnull value)
 {
     if (CFGetTypeID((CFTypeRef)value) == CGColorGetTypeID())
         return { { { RetainPtr<CGColorRef> { (CGColorRef) value } } } };
@@ -186,7 +209,7 @@ static std::optional<AttributedString::AttributeValue> extractValue(id value)
     if ([value isKindOfClass:PlatformNSParagraphStyle])
         return { { { RetainPtr { (NSParagraphStyle *)value } } } };
     if ([value isKindOfClass:PlatformNSPresentationIntent])
-        return { { { RetainPtr { (NSPresentationIntent *)value } } } };
+        return { { { RetainPtr { (CyberPresentationIntent *)value } } } };
     if ([value isKindOfClass:PlatformNSTextAttachment])
         return { { { RetainPtr { (NSTextAttachment *)value } } } };
     if ([value isKindOfClass:PlatformFontClass])
@@ -201,7 +224,7 @@ static std::optional<AttributedString::AttributeValue> extractValue(id value)
     return std::nullopt;
 }
 
-static HashMap<String, AttributedString::AttributeValue> extractDictionary(NSDictionary *dictionary)
+static HashMap<String, AttributedString::AttributeValue> extractDictionary(NSDictionary *_Nonnull dictionary)
 {
     __block HashMap<String, AttributedString::AttributeValue> result;
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *) {

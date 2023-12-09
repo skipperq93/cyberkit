@@ -57,8 +57,10 @@ SOFT_LINK_CONSTANT(UIFoundation, NSWritingDirectionAttributeName, NSString *)
 #define NSWritingDirectionAttributeName getNSWritingDirectionAttributeName()
 SOFT_LINK_CONSTANT(UIFoundation, NSParagraphStyleAttributeName, NSString *)
 #define NSParagraphStyleAttributeName getNSParagraphStyleAttributeName()
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
 SOFT_LINK_CONSTANT(UIFoundation, NSPresentationIntentAttributeName, NSString *)
 #define NSPresentationIntentAttributeName getNSPresentationIntentAttributeName()
+#endif
 SOFT_LINK_CONSTANT(UIFoundation, NSAttachmentAttributeName, NSString *)
 #define NSAttachmentAttributeName getNSAttachmentAttributeName()
 SOFT_LINK_CONSTANT(UIFoundation, NSLinkAttributeName, NSString *)
