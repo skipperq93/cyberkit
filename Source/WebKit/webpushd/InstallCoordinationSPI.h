@@ -58,8 +58,8 @@ typedef enum : NSUInteger {
 - (void)coordinatorShouldResume:(nonnull IXAppInstallCoordinator *)coordinator;
 - (void)coordinatorShouldPause:(nonnull IXAppInstallCoordinator *)coordinator;
 - (void)coordinator:(nonnull IXAppInstallCoordinator *)coordinator didUpdateProgress:(double)percentComplete forPhase:(IXCoordinatorProgressPhase)phase overallProgress:(double)overallProgress;
-- (void)coordinatorDidCompleteSuccessfully:(nonnull IXAppInstallCoordinator *)coordinator forApplicationRecord:(nullable LSApplicationRecord *)appRecord;
-- (void)coordinatorDidInstallPlaceholder:(nonnull IXAppInstallCoordinator *)coordinator forApplicationRecord:(nullable LSApplicationRecord *)placeholderRecord;
+- (void)coordinatorDidCompleteSuccessfully:(nonnull IXAppInstallCoordinator *)coordinator;
+- (void)coordinatorDidInstallPlaceholder:(nonnull IXAppInstallCoordinator *)coordinator;
 - (void)coordinator:(nonnull IXAppInstallCoordinator *)coordinator canceledWithReason:(nonnull NSError *)cancelReason client:(IXClientIdentifier)client;
 @end
 
