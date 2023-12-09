@@ -9,7 +9,7 @@
 	<key>CFBundleGetInfoString</key>
 	<string>${BUNDLE_VERSION}, Copyright 2003-2023 Apple Inc.</string>
 	<key>CFBundleIdentifier</key>
-	<string>${PRODUCT_BUNDLE_IDENTIFIER}</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
