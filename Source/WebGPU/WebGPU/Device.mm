@@ -85,6 +85,7 @@ private:
         if ([captureManager isCapturing])
             return;
 
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
         MTLCaptureDescriptor* captureDescriptor = [[MTLCaptureDescriptor alloc] init];
         captureDescriptor.captureObject = captureObject;
         captureDescriptor.destination = MTLCaptureDestinationGPUTraceDocument;
@@ -95,6 +96,9 @@ private:
             WTFLogAlways("Failed to start GPU frame capture at path %@, error %@", captureDescriptor.outputURL.absoluteString, error);
         else
             WTFLogAlways("Success starting GPU frame capture at path %@", captureDescriptor.outputURL.absoluteString);
+#else
+        [captureManager startCaptureWithDevice:captureObject];
+#endif
     }
 
     static bool captureFirstFrame;

@@ -92,7 +92,7 @@ static inline BOOL platformIsFullKeyboardAccessEnabled()
 #if PLATFORM(MAC)
     notificationCenter = [NSDistributedNotificationCenter defaultCenter];
     notitificationName = KeyboardUIModeDidChangeNotification;
-#elif PLATFORM(IOS_FAMILY)
+#elif PLATFORM(IOS_FAMILY) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
     notificationCenter = [NSNotificationCenter defaultCenter];
     notitificationName = (NSString *)kAXSFullKeyboardAccessEnabledNotification;
 #endif
