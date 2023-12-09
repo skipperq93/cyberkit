@@ -75,7 +75,7 @@ constexpr size_t maximumCageSizeReductionForSlide = hasCapacityToUseLargeGigacag
 
 // In Linux, if `vm.overcommit_memory = 2` is specified, mmap with large size can fail if it exceeds the size of RAM.
 // So we specify GIGACAGE_ALLOCATION_CAN_FAIL = 1.
-#if BOS(LINUX)
+#if BOS(LINUX) || BPLATFORM(IOS)
 #define GIGACAGE_ALLOCATION_CAN_FAIL 1
 #else
 #define GIGACAGE_ALLOCATION_CAN_FAIL 0
