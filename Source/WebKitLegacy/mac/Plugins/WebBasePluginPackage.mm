@@ -38,6 +38,7 @@
 #import <mach-o/fat.h>
 #import <mach-o/loader.h>
 #import <wtf/Assertions.h>
+#import <wtf/cf/TypeCastsCF.h>
 #import <wtf/MainThread.h>
 #import <wtf/RunLoop.h>
 #import <wtf/Vector.h>

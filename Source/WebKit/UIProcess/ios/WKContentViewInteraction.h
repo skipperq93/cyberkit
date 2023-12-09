@@ -170,6 +170,13 @@ typedef std::pair<WebKit::InteractionInformationRequest, InteractionInformationC
 #define FOR_EACH_FIND_WKCONTENTVIEW_ACTION(M)
 #endif
 
+#if (!TARGET_OS_IOS || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#define FOR_EACH_PASTE_AND_MATCH_STYLE(M) \
+    M(pasteAndMatchStyle)
+#else
+#define FOR_EACH_PASTE_AND_MATCH_STYLE(M)
+#endif
+
 #define FOR_EACH_WKCONTENTVIEW_ACTION(M) \
     FOR_EACH_INSERT_TEXT_FROM_CAMERA_WKCONTENTVIEW_ACTION(M) \
     FOR_EACH_FIND_WKCONTENTVIEW_ACTION(M) \
@@ -194,7 +201,7 @@ typedef std::pair<WebKit::InteractionInformationRequest, InteractionInformationC
     M(toggleUnderline) \
     M(increaseSize) \
     M(decreaseSize) \
-    M(pasteAndMatchStyle) \
+    FOR_EACH_PASTE_AND_MATCH_STYLE(M) \
     M(makeTextWritingDirectionNatural) \
     M(makeTextWritingDirectionLeftToRight) \
     M(makeTextWritingDirectionRightToLeft)

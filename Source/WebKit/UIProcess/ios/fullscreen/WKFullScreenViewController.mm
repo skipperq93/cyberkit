@@ -226,13 +226,17 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 - (void)setSupportedOrientations:(UIInterfaceOrientationMask)supportedOrientations
 {
     _supportedOrientations = supportedOrientations;
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000
     [self setNeedsUpdateOfSupportedInterfaceOrientations];
+#endif
 }
 
 - (void)resetSupportedOrientations
 {
     _supportedOrientations = std::nullopt;
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000
     [self setNeedsUpdateOfSupportedInterfaceOrientations];
+#endif
 }
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations
@@ -500,6 +504,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     [_cancelButton addTarget:self action:@selector(_cancelAction:) forControlEvents:UIControlEventTouchUpInside];
 
     if (alternateFullScreenControlDesignEnabled) {
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
         UIButtonConfiguration *cancelButtonConfiguration = [UIButtonConfiguration filledButtonConfiguration];
         // FIXME: this color specification should not be necessary.
         cancelButtonConfiguration.baseBackgroundColor = [UIColor colorWithWhite:1.0 alpha:0.15];
@@ -510,7 +515,8 @@ ALLOW_DEPRECATED_DECLARATIONS_END
         [_dimmingButton addTarget:self action:@selector(_toggleDimmingAction:) forControlEvents:UIControlEventTouchUpInside];
         [_dimmingButton setConfiguration:cancelButtonConfiguration];
 #endif
-
+#endif
+        
         _stackView = adoptNS([[UIStackView alloc] init]);
         [_stackView addArrangedSubview:_cancelButton.get()];
         [_stackView addArrangedSubview:_pipButton.get()];

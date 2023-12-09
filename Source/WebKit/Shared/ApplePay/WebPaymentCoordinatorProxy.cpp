@@ -178,7 +178,9 @@ void WebPaymentCoordinatorProxy::completeCouponCodeChange(std::optional<WebCore:
 
     MESSAGE_CHECK(m_state == State::CouponCodeChanged);
 
+#if ENABLE(APPLE_PAY_COUPON_CODE)
     platformCompleteCouponCodeChange(WTFMove(update));
+#endif
     m_state = State::Active;
 }
 

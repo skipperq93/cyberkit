@@ -39,6 +39,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import <CoreMedia/CoreMedia.h>
+#import <WebCore/PlatformImage.h>
 #import <ImageIO/ImageIO.h>
 #import <wtf/MathExtras.h>
 #import <wtf/RetainPtr.h>
