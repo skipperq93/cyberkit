@@ -48,6 +48,7 @@ Ref<QuerySet> Device::createQuerySet(const WGPUQuerySetDescriptor& descriptor)
             return QuerySet::createInvalid(*this);
 
         ASSERT(baseCapabilities().timestampCounterSet);
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
         MTLCounterSampleBufferDescriptor *descriptor = [MTLCounterSampleBufferDescriptor new];
         descriptor.counterSet = baseCapabilities().timestampCounterSet;
         descriptor.label = fromAPI(label);
@@ -55,6 +56,9 @@ Ref<QuerySet> Device::createQuerySet(const WGPUQuerySetDescriptor& descriptor)
         descriptor.sampleCount = count;
         auto timestampBuffer = [m_device newCounterSampleBufferWithDescriptor:descriptor error:nil];
         return timestampBuffer ? QuerySet::create(timestampBuffer, count, type, *this) : QuerySet::createInvalid(*this);
+#else
+        return QuerySet::createInvalid(*this);
+#endif
     }
     case WGPUQueryType_Occlusion: {
         auto buffer = safeCreateBuffer(sizeof(uint64_t) * count, MTLStorageModePrivate);
