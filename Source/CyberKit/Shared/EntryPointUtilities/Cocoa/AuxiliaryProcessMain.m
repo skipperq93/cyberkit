@@ -116,5 +116,7 @@ int main(int argc, const char** argv)
     void *handle = dlopen([cyberKitFramework cStringUsingEncoding:NSUTF8StringEncoding], RTLD_LAZY);
     int (*WKXPCServiceMain)(int, const char**) = dlsym(handle, "WKXPCServiceMain");
     
-    return WKXPCServiceMain(argc, argv);
+    int ret = WKXPCServiceMain(argc, argv);
+    dlclose(handle);
+    return ret;
 }

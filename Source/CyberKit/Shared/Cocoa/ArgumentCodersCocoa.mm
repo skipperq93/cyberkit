@@ -68,6 +68,10 @@
 #import <pal/mac/DataDetectorsSoftLink.h>
 #endif
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
+#import <dlfcn.h>
+#endif
+
 @interface WKSecureCodingArchivingDelegate : NSObject <NSKeyedArchiverDelegate, NSKeyedUnarchiverDelegate>
 @property (nonatomic, assign) BOOL rewriteMutableArray;
 @property (nonatomic, assign) BOOL rewriteMutableData;
@@ -76,7 +80,7 @@
 @property (nonatomic, assign) BOOL transformURLs;
 @end
 
-@interface WKSecureCodingURLWrapper : NSURL <NSSecureCoding>
+@interface _WKWKSecureCodingURLWrapper : NSURL <NSSecureCoding>
 - (instancetype)initWithURL:(NSURL *)wrappedURL;
 @property (nonatomic, readonly) NSURL * wrappedURL;
 @end
@@ -97,7 +101,7 @@
 - (id)archiver:(NSKeyedArchiver *)archiver willEncodeObject:(id)object
 {
     if (auto unwrappedURL = dynamic_objc_cast<NSURL>(object); unwrappedURL && transformURLs)
-        return adoptNS([[WKSecureCodingURLWrapper alloc] initWithURL:unwrappedURL]).autorelease();
+        return adoptNS([[_WKWKSecureCodingURLWrapper alloc] initWithURL:unwrappedURL]).autorelease();
 
     if (rewriteMutableArray) {
         if (auto mutableArray = dynamic_objc_cast<NSMutableArray>(object))
@@ -131,11 +135,22 @@
 - (id)unarchiver:(NSKeyedUnarchiver *)unarchiver didDecodeObject:(id) NS_RELEASES_ARGUMENT object NS_RETURNS_RETAINED
 {
     auto adoptedObject = adoptNS(object);
-    if (auto wrapper = dynamic_objc_cast<WKSecureCodingURLWrapper>(adoptedObject.get()))
+    if (auto wrapper = dynamic_objc_cast<_WKWKSecureCodingURLWrapper>(adoptedObject.get()))
         return retainPtr(wrapper.wrappedURL).leakRef();
 
     if (auto wrapper = dynamic_objc_cast<WKSecureCodingCGColorWrapper>(adoptedObject.get()))
         return static_cast<id>(retainPtr(wrapper.wrappedColor).leakRef());
+
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
+    // We need to handle the system version of the class
+    void *handle = dlopen("/System/Library/Frameworks/WebKit.framework/WebKit", RTLD_LAZY);
+    if ([adoptedObject.get() isKindOfClass:NSClassFromString(@"WKSecureCodingURLWrapper")]) {
+        id ret = retainPtr([adoptedObject.get() valueForKey:@"wrappedURL"]).leakRef();
+        dlclose(handle);
+        return ret;
+    }
+    dlclose(handle);
+#endif
 
     return adoptedObject.leakRef();
 }
@@ -155,7 +170,7 @@
 
 @end
 
-@implementation WKSecureCodingURLWrapper {
+@implementation _WKWKSecureCodingURLWrapper {
     RetainPtr<NSURL> m_wrappedURL;
 }
 
@@ -753,11 +768,17 @@ static std::optional<RetainPtr<id>> decodeSecureCodingInternal(Decoder& decoder,
 
     if ([allowedClasses containsObject:NSMutableURLRequest.class]
         || [allowedClasses containsObject:NSURLRequest.class]) {
-        [allowedClassSet addObject:WKSecureCodingURLWrapper.class];
+        [allowedClassSet addObject:_WKWKSecureCodingURLWrapper.class];
         [allowedClassSet addObject:NSMutableString.class];
         [allowedClassSet addObject:NSMutableArray.class];
         [allowedClassSet addObject:NSMutableDictionary.class];
         [allowedClassSet addObject:NSMutableData.class];
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
+        // We need to allow the system version of the class
+        void *handle = dlopen("/System/Library/Frameworks/WebKit.framework/WebKit", RTLD_LAZY);
+        [allowedClassSet addObject:NSClassFromString(@"WKSecureCodingURLWrapper")];
+        dlclose(handle);
+#endif
     }
 
 #if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
