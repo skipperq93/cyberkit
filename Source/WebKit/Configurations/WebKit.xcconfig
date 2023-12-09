@@ -74,7 +74,7 @@ WK_BACKBOARD_SERVICES_LDFLAGS = $(WK_BACKBOARD_SERVICES_LDFLAGS_$(WK_PLATFORM_NA
 WK_BACKBOARD_SERVICES_LDFLAGS_iphoneos = -framework BackBoardServices;
 WK_BACKBOARD_SERVICES_LDFLAGS_iphonesimulator = -framework BackBoardServices;
 
-WK_RUNNINGBOARD_SERVICES_LDFLAGS = -framework AssertionServices;
+WK_RUNNINGBOARD_SERVICES_LDFLAGS = -weak_framework AssertionServices -weak_framework RunningBoardServices;
 
 WK_CARBON_LDFLAGS = $(WK_CARBON_LDFLAGS_$(WK_PLATFORM_NAME));
 WK_CARBON_LDFLAGS_macosx = -framework Carbon;
