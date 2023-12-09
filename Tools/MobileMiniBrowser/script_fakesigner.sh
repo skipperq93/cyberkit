@@ -94,3 +94,16 @@ echo "[*] packaging.."
 rm -f "$ipa.zip" || true
 zip -r -y "$ipa.zip" Payload
 echo "[*] Created $ipa.zip"
+
+# Package into DEB
+rm *.deb
+mkdir com.matthewbenedict.mobileminibrowser
+mv Payload com.matthewbenedict.mobileminibrowser/Applications
+mkdir com.matthewbenedict.mobileminibrowser/DEBIAN
+cp $SCRIPT_DIR/control com.matthewbenedict.mobileminibrowser/DEBIAN
+cp $SCRIPT_DIR/postinst com.matthewbenedict.mobileminibrowser/DEBIAN
+find . -name ".DS_Store" -delete && \
+dpkg-deb -b com.matthewbenedict.mobileminibrowser && \
+dpkg-name com.matthewbenedict.mobileminibrowser.deb
+mv com.matthewbenedict.mobileminibrowser/Applications Payload
+rm -rf com.matthewbenedict.mobileminibrowser

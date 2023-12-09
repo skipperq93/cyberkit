@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Apple Inc. All rights reserved.
+ * Copyright (C) 2019 Apple Inc. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -25,26 +25,50 @@
 
 #pragma once
 
-#include <string>
-#include <wtf/Seconds.h>
-#include <wtf/StdFilesystem.h>
+#if PLATFORM(IOS_FAMILY)
 
-namespace WTR {
+#include <wtf/Lock.h>
+#include <wtf/RetainPtr.h>
+#include <wtf/ThreadSafeRefCounted.h>
 
-struct TestCommand {
-    std::string pathOrURL;
-    WTF::filesystem::path absolutePath;
-    std::string expectedPixelHash;
-    std::string selfComparisonHeader;
-    WTF::Seconds timeout;
-    bool shouldDumpPixels { false };
-    bool forceDumpPixels { false };
-    bool dumpJSConsoleLogInStdErr { false };
+OBJC_CLASS WKProcessTaskStateObserverDelegate;
+OBJC_CLASS BKSProcess;
+
+namespace WebKit {
+
+class ProcessTaskStateObserver : public ThreadSafeRefCounted<ProcessTaskStateObserver> {
+public:
+    class Client;
+
+    static Ref<ProcessTaskStateObserver> create(Client&);
+    ~ProcessTaskStateObserver();
+    
+    enum TaskState {
+        None,
+        Running,
+        Suspended,
+    };
+
+    class Client {
+    public:
+        virtual ~Client() = default;
+        virtual void processTaskStateDidChange(TaskState) = 0;
+    };
+
+    void invalidate();
+    TaskState taskState() const { return m_taskState; }
+
+private:
+    explicit ProcessTaskStateObserver(Client&);
+    void setTaskState(TaskState);
+
+    Client* m_client;
+    Lock m_clientLock;
+    TaskState m_taskState { None };
+    RetainPtr<BKSProcess> m_process;
+    RetainPtr<WKProcessTaskStateObserverDelegate> m_delegate;
 };
 
-TestCommand parseInputLine(const std::string& inputLine);
-
-WTF::filesystem::path testPath(const std::string& pathOrURL);
-std::string testURLString(const std::string& pathOrURL);
-
 }
+
+#endif // PLATFORM(IOS_FAMILY)
