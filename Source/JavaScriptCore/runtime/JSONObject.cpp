@@ -973,6 +973,7 @@ void FastStringifier::append(JSValue value)
     }
 
     if (value.isInt32()) {
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
         auto number = value.asInt32();
         constexpr unsigned maxInt32StringLength = 11; // -INT32_MIN, "-2147483648".
         if (UNLIKELY(!hasRemainingCapacity(maxInt32StringLength))) {
@@ -984,6 +985,17 @@ void FastStringifier::append(JSValue value)
         ASSERT(result.ec != std::errc::value_too_large);
         m_length += result.ptr - cursor;
         return;
+#else
+        auto number = value.asInt32();
+        auto length = lengthOfIntegerAsString(number);
+        if (UNLIKELY(!hasRemainingCapacity(length))) {
+            recordBufferFull();
+            return;
+        }
+        writeIntegerToBuffer(number, &m_buffer[m_length]);
+        m_length += length;
+        return;
+#endif
     }
 
     if (value.isDouble()) {
