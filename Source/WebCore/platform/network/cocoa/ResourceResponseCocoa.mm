@@ -92,7 +92,9 @@ CertificateInfo ResourceResponse::platformCertificateInfo(std::span<const std::b
 
     if (trust && auditToken.size()) {
         auto data = adoptCF(CFDataCreate(nullptr, reinterpret_cast<const uint8_t*>(auditToken.data()), auditToken.size()));
+#if HAVE(SEC_TRUST_COPY_CERTIFICATE_CHAIN)
         SecTrustSetClientAuditToken(trust, data.get());
+#endif
     }
 
     SecTrustResultType trustResultType;

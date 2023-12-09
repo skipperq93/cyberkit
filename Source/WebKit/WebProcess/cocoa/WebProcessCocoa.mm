@@ -311,6 +311,7 @@ static void setVideoDecoderBehaviors(OptionSet<VideoDecoderBehavior> videoDecode
 
     PAL::softLinkVideoToolboxVTRestrictVideoDecoders(flags, allowedCodecTypeList.data(), allowedCodecTypeList.size());
 }
+#endif
 
 void WebProcess::platformInitializeWebProcess(WebProcessCreationParameters& parameters)
 {
