@@ -79,7 +79,7 @@ ProcessTaskStateObserver::ProcessTaskStateObserver(Client& client)
     , m_delegate(adoptNS([[WKProcessTaskStateObserverDelegate alloc] init]))
 {
     RELEASE_LOG(ProcessSuspension, "%p - ProcessTaskStateObserver::ProcessTaskStateObserver(), m_process(%p)", this, m_process.get());
-    m_delegate.get().taskStateChangedCallback = [protectedThis = makeRefPtr(this)] (BKSProcessTaskState state) {
+    m_delegate.get().taskStateChangedCallback = [protectedThis = RefPtr { this }] (BKSProcessTaskState state) {
         protectedThis->setTaskState(toProcessTaskStateObserverTaskState(state));
     };
     m_process.get().delegate = m_delegate.get();

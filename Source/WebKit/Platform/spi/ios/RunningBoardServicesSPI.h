@@ -25,6 +25,7 @@
 
 #import <Foundation/Foundation.h>
 
+#if HAVE(RUNNINGBOARD_VISIBILITY_ASSERTIONS)
 #if USE(APPLE_INTERNAL_SDK)
 
 #import <RunningBoardServices/RunningBoardServices.h>
@@ -155,4 +156,5 @@ typedef NS_OPTIONS(NSUInteger, RBSProcessStateValues) {
 
 NS_ASSUME_NONNULL_END
 
+#endif
 #endif
