@@ -44,19 +44,6 @@ Ensure to run `Tools/Scripts/configure-xcode-for-embedded-development` before 1s
 
 You will build the "Everything up to CyberKit" target then the appropriate app.
 
-### SDK Modifications for iOS 10 support
-CoreImage.framework:
-* In CoreImageDefines.h, add before the final `#endif`:
-```
-#if defined(HAVE_IOSURFACE)
-#define COREIMAGE_SUPPORTS_IOSURFACE HAVE_IOSURFACE
-#endif
-```
-* In CIImageProcessor.h, wrap the IOSurface includes with `#if COREIMAGE_SUPPORTS_IOSURFACE`
-
-Metal.framework:
-* In MTLTexture.h and MTLDevice.h, wrap the IOSurface includes with `#if !defined(HAVE_IOSURFACE) || HAVE_IOSURFACE`
-
 ### Development Environment Notes
 
 * Development is performed on macOS using Xcode.
