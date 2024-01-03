@@ -42,6 +42,8 @@ If building yourself, you may wish to use the version of Xcode used at the time 
 
 Ensure to run `Tools/Scripts/configure-xcode-for-embedded-development` before 1st build or any time you reinstall/update Xcode or its SDKs.
 
+Beginning 2 January 2024, you can just [ad hoc sign](https://akemi.ai/?page/how2asu) with no changes to CyberKit itself which is especially convenient if you want to build in a macOS VM on Apple Silicon [where you can't sign in to your Apple ID](https://developer.apple.com/forums/thread/707682).
+
 You will build the "Everything up to CyberKit" target then the appropriate app.
 
 ### Development Environment Notes
