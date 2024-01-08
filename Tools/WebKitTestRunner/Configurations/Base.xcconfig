@@ -82,7 +82,9 @@ AD_HOC_CODE_SIGNING_ALLOWED = YES;
 SUPPORTED_PLATFORMS = iphoneos iphonesimulator macosx appletvos appletvsimulator watchos watchsimulator;
 SUPPORTS_MACCATALYST = YES;
 
-SDKROOT = macosx.internal;
+SDKROOT = $(SDKROOT_$(USE_INTERNAL_SDK));
+SDKROOT_ = macosx;
+SDKROOT_YES = macosx.internal;
 ADDITIONAL_SDKS = $(WK_ADDITIONAL_SDKS);
 
 FRAMEWORK_SEARCH_PATHS = $(inherited) $(WK_QUOTED_OVERRIDE_FRAMEWORKS_DIR) $(SDK_DIR)$(NORMAL_UMBRELLA_FRAMEWORKS_DIR);
