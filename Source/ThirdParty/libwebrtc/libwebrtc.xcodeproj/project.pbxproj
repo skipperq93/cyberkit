@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24852,7 +24852,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 41F77D1E215BE4AD00E72967 /* yasm.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -24867,7 +24867,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 41F77D1E215BE4AD00E72967 /* yasm.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -24878,7 +24878,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 41F77D1E215BE4AD00E72967 /* yasm.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -24981,7 +24981,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5D7C59C51208C68B001C873E /* libwebrtc.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				CODE_SIGN_IDENTITY = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
@@ -25080,7 +25080,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5D7C59C51208C68B001C873E /* libwebrtc.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				CODE_SIGN_IDENTITY = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
@@ -25122,7 +25122,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5D7C59C51208C68B001C873E /* libwebrtc.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development: uint2048@icloud.com (9ACBG9YARX)";
+				CODE_SIGN_IDENTITY = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",

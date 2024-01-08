@@ -1,10 +1,14 @@
+#!/bin/zsh
+
 # Check initial conditions
 if [[ $EUID -eq 0 ]]; then
     echo "[!] Please don't run this script as root!"
     exit
 fi
-if [[ $(command -v sudo -u brew) == "" ]]; then
+export PATH="/opt/homebrew/bin:$PATH"
+if [[ $(command -v brew) == "" ]]; then
     echo "[!] Homebrew not installed!"
+    echo "[!] PATH is $PATH"
     echo "[!] Please run the following command!"
     echo '[!] /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
     exit
@@ -14,7 +18,7 @@ else
         echo "[§] Found ldid"
     else
         echo "[§] Attempting to install script dependencies"
-        brew install ldid gnu-sed dpkg
+        brew install coreutils ldid gnu-sed dpkg
     fi
 fi
 
@@ -46,9 +50,6 @@ elif [[ $ipa == *.app ]]; then
     ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.WebContent.Crashy.xpc
     ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.WebContent.Development.xpc
     ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.WebContent.xpc
-    plutil -convert xml1 $app/Info.plist
-    gsed -i -e 's/com.matthewbenedict.ios.Fennec/com.matthewbenedict.MobileMiniBrowser/g' $app/Info.plist
-    plutil -convert binary1 $app/Info.plist
 else
     echo "[!] No .ipa file supplied!"
 fi
@@ -90,7 +91,7 @@ rm script_fakesigner.entitlements
 
 # Setup for DEB packaging
 cd ..
-rm *.deb
+rm -f *.deb || true
 DIR_NAME=$1
 if [[ "$DIR_NAME" == *"+"* ]]; then
     if [[ ${DIR_NAME#*+} -le 10 ]]; then
@@ -131,6 +132,7 @@ find . -name ".DS_Store" -delete
 
 if [[ "$DIR_NAME" == *"+"* ]] && [[ ${DIR_NAME#* } -le 10 ]]; then
     cp $SCRIPT_DIR/uicache/cyberuicache $APPLICATION_PATH
+    cp $SCRIPT_DIR/script_fakesigner.entitlements $APPLICATION_PATH
     cp $SCRIPT_DIR/uicache/.com.apple.mobile_container_manager.metadata.plist $APPLICATION_PATH
     echo "[*] Forcing gzip compression for legacy iOS"
     dpkg-deb -Zgzip --build $DIR_NAME && dpkg-name $DIR_NAME.deb
@@ -144,6 +146,6 @@ rm -rf $DIR_NAME
 # Package into IPA
 IPA_NAME=$(echo *.deb | sed 's/_[a-z].*//' | sed 's/\+\([0-9]\)/\1/' | sed 's/-\([0-9]\)/\1/')
 echo "[*] Creating IPA..."
-rm -f "$IPA_NAME.ipa" || true
+rm -f *.ipa || true
 zip -r -y "$IPA_NAME.ipa" Payload
 echo "[*] Created $IPA_NAME.ipa"
