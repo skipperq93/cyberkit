@@ -55,21 +55,33 @@ template<> struct CGColorSpaceMapping<ColorSpace::DisplayP3> { };
 
 #if HAVE(CORE_GRAPHICS_EXTENDED_ADOBE_RGB_1998_COLOR_SPACE)
 WEBCORE_EXPORT CGColorSpaceRef extendedAdobeRGB1998ColorSpaceRef();
-template<> struct CGColorSpaceMapping<ColorSpace::ExtendedA98RGB> { static CGColorSpaceRef colorSpace() { return extendedAdobeRGB1998ColorSpaceRef(); } };
+template<> struct CGColorSpaceMapping<ColorSpace::ExtendedA98RGB> {
+    static CGColorSpaceRef colorSpace() {
+        return extendedAdobeRGB1998ColorSpaceRef();
+    }
+};
 #else
 template<> struct CGColorSpaceMapping<ColorSpace::ExtendedA98RGB> { };
 #endif
 
 #if HAVE(CORE_GRAPHICS_EXTENDED_DISPLAY_P3_COLOR_SPACE)
 WEBCORE_EXPORT CGColorSpaceRef extendedDisplayP3ColorSpaceRef();
-template<> struct CGColorSpaceMapping<ColorSpace::ExtendedDisplayP3> { static CGColorSpaceRef colorSpace() { return extendedDisplayP3ColorSpaceRef(); } };
+template<> struct CGColorSpaceMapping<ColorSpace::ExtendedDisplayP3> {
+    static CGColorSpaceRef colorSpace() {
+        return extendedDisplayP3ColorSpaceRef();
+    }
+};
 #else
 template<> struct CGColorSpaceMapping<ColorSpace::ExtendedDisplayP3> { };
 #endif
 
 #if HAVE(CORE_GRAPHICS_EXTENDED_ITUR_2020_COLOR_SPACE)
 WEBCORE_EXPORT CGColorSpaceRef extendedITUR_2020ColorSpaceRef();
-template<> struct CGColorSpaceMapping<ColorSpace::ExtendedRec2020> { static CGColorSpaceRef colorSpace() { return extendedITUR_2020ColorSpaceRef(); } };
+template<> struct CGColorSpaceMapping<ColorSpace::ExtendedRec2020> {
+    static CGColorSpaceRef colorSpace() {
+        return extendedITUR_2020ColorSpaceRef();
+    }
+};
 #else
 template<> struct CGColorSpaceMapping<ColorSpace::ExtendedRec2020> { };
 #endif
@@ -83,7 +95,11 @@ template<> struct CGColorSpaceMapping<ColorSpace::ExtendedLinearSRGB> { };
 
 #if HAVE(CORE_GRAPHICS_EXTENDED_ROMMRGB_COLOR_SPACE)
 WEBCORE_EXPORT CGColorSpaceRef extendedROMMRGBColorSpaceRef();
-template<> struct CGColorSpaceMapping<ColorSpace::ExtendedProPhotoRGB> { static CGColorSpaceRef colorSpace() { return extendedROMMRGBColorSpaceRef(); } };
+template<> struct CGColorSpaceMapping<ColorSpace::ExtendedProPhotoRGB> {
+    static CGColorSpaceRef colorSpace() {
+        return extendedROMMRGBColorSpaceRef();
+    }
+};
 #else
 template<> struct CGColorSpaceMapping<ColorSpace::ExtendedProPhotoRGB> { };
 #endif
