@@ -360,6 +360,7 @@ std::optional<std::tuple<SimpleRange, NSDictionary *>> DictionaryLookup::rangeAt
     
 }
 
+#if HAVE(PDFKIT)
 static void expandSelectionByCharacters(PDFSelection *selection, NSInteger numberOfCharactersToExpand, NSInteger& charactersAddedBeforeStart, NSInteger& charactersAddedAfterEnd)
 {
     BEGIN_BLOCK_OBJC_EXCEPTIONS
@@ -416,6 +417,7 @@ std::tuple<NSString *, NSDictionary *> DictionaryLookup::stringForPDFSelection(P
 
     return { @"", nil };
 }
+#endif
 
 static WKRevealController showPopupOrCreateAnimationController(bool createAnimationController, const DictionaryPopupInfo& dictionaryPopupInfo, CocoaView *view, const WTF::Function<void(TextIndicator&)>& textIndicatorInstallationCallback, const WTF::Function<FloatRect(FloatRect)>& rootViewToViewConversionCallback, WTF::Function<void()>&& clearTextIndicator)
 {

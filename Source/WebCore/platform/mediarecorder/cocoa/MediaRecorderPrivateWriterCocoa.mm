@@ -331,7 +331,7 @@ static inline void appendEndsPreviousSampleDurationMarker(AVAssetWriterInput *as
     CMSampleBufferRef buffer = NULL;
     auto error = PAL::CMSampleBufferCreate(kCFAllocatorDefault, NULL, true, NULL, NULL, NULL, 0, 1, &timingInfo, 0, NULL, &buffer);
     if (error) {
-        RELEASE_LOG_ERROR(MediaStream, "MediaRecorderPrivateWriter appendEndsPreviousSampleDurationMarker failed CMSampleBufferCreate with %d", error);
+        RELEASE_LOG_ERROR(MediaStream, "MediaRecorderPrivateWriter appendEndsPreviousSampleDurationMarker failed CMSampleBufferCreate with %d", static_cast<int>(error));
         return;
     }
     auto sampleBuffer = adoptCF(buffer);

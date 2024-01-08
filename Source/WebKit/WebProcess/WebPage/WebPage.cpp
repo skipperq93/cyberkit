@@ -6122,7 +6122,7 @@ void WebPage::computePagesForPrintingImpl(FrameIdentifier frameID, const PrintIn
         auto computedPageSize = m_printContext->computedPageSize(FloatSize(printInfo.availablePaperWidth, printInfo.availablePaperHeight), printInfo.margin);
         resultTotalScaleFactorForPrinting = m_printContext->computeAutomaticScaleFactor(computedPageSize) * printInfo.pageSetupScaleFactor;
     }
-#if PLATFORM(COCOA)
+#if PLATFORM(COCOA) && HAVE(PDFKIT)
     else
         computePagesForPrintingPDFDocument(frameID, printInfo, resultPageRects);
 #endif // PLATFORM(COCOA)

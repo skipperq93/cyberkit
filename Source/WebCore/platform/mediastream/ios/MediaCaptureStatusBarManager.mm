@@ -84,7 +84,7 @@ using namespace WebCore;
     [m_coordinator setRegisteredStyleOverrides:overrides reply:^(NSError *error) {
         if (!error)
             return;
-        RELEASE_LOG_ERROR(WebRTC, "WebCoreMediaCaptureStatusBarHandler _acquireStatusBarOverride failed, code = %ld, description is '%s'", [error code], [error localizedDescription].UTF8String);
+        RELEASE_LOG_ERROR(WebRTC, "WebCoreMediaCaptureStatusBarHandler _acquireStatusBarOverride failed, code = %ld, description is '%s'", static_cast<long>([error code]), [error localizedDescription].UTF8String);
 
         callOnMainThread([self, strongSelf = retainPtr(self)] {
             if (m_manager)

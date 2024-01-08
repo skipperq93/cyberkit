@@ -238,7 +238,7 @@ void DragDropInteractionState::deliverDelayedDropPreview(UIView *contentView, UI
 void DragDropInteractionState::deliverDelayedDropPreview(UIView *contentView, CGRect unobscuredContentRect, NSArray<UIDragItem *> *items, const Vector<IntRect>& placeholderRects)
 {
     if (items.count != placeholderRects.size()) {
-        RELEASE_LOG(DragAndDrop, "Failed to animate image placeholders: number of drag items (%tu) does not match number of placeholders (%tu)", items.count, placeholderRects.size());
+        RELEASE_LOG(DragAndDrop, "Failed to animate image placeholders: number of drag items (%tu) does not match number of placeholders (%zu)", items.count, placeholderRects.size());
         clearAllDelayedItemPreviewProviders();
         return;
     }

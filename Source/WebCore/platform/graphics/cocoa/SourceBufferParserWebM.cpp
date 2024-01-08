@@ -1051,7 +1051,7 @@ webm::Status WebMParser::TrackData::readFrameData(webm::Reader& reader, const we
 
     m_completeBlockBuffer = m_currentBlockBuffer.take();
     if (m_useByteRange)
-        m_completeFrameData = MediaSample::ByteRange { metadata.position, metadata.size };
+        m_completeFrameData = MediaSample::ByteRange { static_cast<size_t>(metadata.position), static_cast<size_t>(metadata.size) };
     else
         m_completeFrameData = Ref { *m_completeBlockBuffer };
 
