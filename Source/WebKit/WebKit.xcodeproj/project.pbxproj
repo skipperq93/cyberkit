@@ -2320,6 +2320,48 @@
 			remoteGlobalIDString = C0CE72851247E66800BC0EC4;
 			remoteInfo = "Derived Sources";
 		};
+		4807610D2B271AA400891A81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = CyberKit;
+		};
+		4807610F2B271AB400891A81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = CyberKit;
+		};
+		480761112B271AB900891A81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = CyberKit;
+		};
+		480761132B271AC000891A81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = CyberKit;
+		};
+		480761152B271AC500891A81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = CyberKit;
+		};
+		480761172B271ACA00891A81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = CyberKit;
+		};
 		517B5F6C275B07C3002DC22D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
@@ -15496,6 +15538,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				480761182B271ACA00891A81 /* PBXTargetDependency */,
 				2D9FB217237523830049F936 /* PBXTargetDependency */,
 				A15797432582AE9B00528236 /* PBXTargetDependency */,
 			);
@@ -15519,6 +15562,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				480761142B271AC000891A81 /* PBXTargetDependency */,
 				E1AC2E3420F7B99E00B0897D /* PBXTargetDependency */,
 				A1EF36D12581F7A70090B02A /* PBXTargetDependency */,
 			);
@@ -15602,6 +15646,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				480761122B271AB900891A81 /* PBXTargetDependency */,
 				650994C828C942B7006EE6DB /* PBXTargetDependency */,
 				650994CC28C942B7006EE6DB /* PBXTargetDependency */,
 			);
@@ -15625,6 +15670,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				480761102B271AB400891A81 /* PBXTargetDependency */,
 				7A7E8DE22748392500DCC97A /* PBXTargetDependency */,
 				7A7E8DE62748392500DCC97A /* PBXTargetDependency */,
 			);
@@ -15734,6 +15780,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4807610E2B271AA400891A81 /* PBXTargetDependency */,
 				E1AC2E3220F7B99B00B0897D /* PBXTargetDependency */,
 				A1EF36D32581F7C50090B02A /* PBXTargetDependency */,
 			);
@@ -15757,6 +15804,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				480761162B271AC500891A81 /* PBXTargetDependency */,
 				E1AC2E3620F7B9A100B0897D /* PBXTargetDependency */,
 			);
 			name = Networking;
@@ -17433,6 +17481,36 @@
 			target = C0CE72851247E66800BC0EC4 /* Derived Sources */;
 			targetProxy = 37F7407812721F740093869B /* PBXContainerItemProxy */;
 		};
+		4807610E2B271AA400891A81 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC2EF4F0486A6940098B216 /* CyberKit */;
+			targetProxy = 4807610D2B271AA400891A81 /* PBXContainerItemProxy */;
+		};
+		480761102B271AB400891A81 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC2EF4F0486A6940098B216 /* CyberKit */;
+			targetProxy = 4807610F2B271AB400891A81 /* PBXContainerItemProxy */;
+		};
+		480761122B271AB900891A81 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC2EF4F0486A6940098B216 /* CyberKit */;
+			targetProxy = 480761112B271AB900891A81 /* PBXContainerItemProxy */;
+		};
+		480761142B271AC000891A81 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC2EF4F0486A6940098B216 /* CyberKit */;
+			targetProxy = 480761132B271AC000891A81 /* PBXContainerItemProxy */;
+		};
+		480761162B271AC500891A81 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC2EF4F0486A6940098B216 /* CyberKit */;
+			targetProxy = 480761152B271AC500891A81 /* PBXContainerItemProxy */;
+		};
+		480761182B271ACA00891A81 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC2EF4F0486A6940098B216 /* CyberKit */;
+			targetProxy = 480761172B271ACA00891A81 /* PBXContainerItemProxy */;
+		};
 		517B5F6D275B07C3002DC22D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 517B5F5A275A8D3E002DC22D /* webpushtool */;
@@ -17970,7 +18048,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 25LZ6Y5YHM;
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 			};
