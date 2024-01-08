@@ -24,6 +24,9 @@
 #include "Base.xcconfig"
 #include? "../../../../../LocalOverrides.xcconfig"
 
+ARCHS = $(ARCHS$(WK_IOS_11));
+ARCHS_IOS_BEFORE_11 = $(ARCHS_STANDARD_32_64_BIT);
+ARCHS_IOS_SINCE_11 = $(ARCHS_STANDARD);
 ONLY_ACTIVE_ARCH = YES;
 
 GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
