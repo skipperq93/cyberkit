@@ -1,9 +1,9 @@
 Package: com.matthewbenedict.mobileminibrowser+16
 Name: CyberKit MobileMiniBrowser (iOS 16 Rootful)
 Maintainer: UInt2048
-Version: 0.0.8-alpha
+Version: 0.0.9-alpha
 Section: Tweaks
-Provides: com.matthewbenedict.mobileminibrowser (= 0.0.8-alpha)
+Provides: com.matthewbenedict.mobileminibrowser (= 0.0.9-alpha)
 Conflicts: com.matthewbenedict.mobileminibrowser
 Replaces: com.matthewbenedict.mobileminibrowser
 Depends: firmware (>=16.0), firmware (<<17.0)
