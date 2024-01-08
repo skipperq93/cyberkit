@@ -285,7 +285,9 @@
 
 #if !defined(MUST_TAIL_CALL) && defined(__cplusplus) && defined(__has_cpp_attribute)
 #if __has_cpp_attribute(clang::musttail)
+#ifndef __arm__ // https://github.com/llvm/llvm-project/issues/73167
 #define MUST_TAIL_CALL [[clang::musttail]]
+#endif
 #endif
 #endif
 
