@@ -678,7 +678,7 @@ TEST(IPCTestingAPI, NSURLWithBaseURLInNSSecureCoding)
     auto allowedClassSet = adoptNS([NSMutableSet new]);
     [allowedClassSet addObject:NSDictionary.class];
     [allowedClassSet addObject:NSString.class];
-    [allowedClassSet addObject:NSClassFromString(@"WKSecureCodingURLWrapper")];
+    [allowedClassSet addObject:NSClassFromString(@"_WKWKSecureCodingURLWrapper")];
 
     NSDictionary *result = [unarchiver decodeObjectOfClasses:allowedClassSet.get() forKey:NSKeyedArchiveRootObjectKey];
 
