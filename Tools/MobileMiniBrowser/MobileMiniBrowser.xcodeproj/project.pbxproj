@@ -39,6 +39,8 @@
 		4825DA532ADAD98400328641 /* libwebrtc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4825DA522ADAD98400328641 /* libwebrtc.dylib */; };
 		4825DA542ADAD98400328641 /* libwebrtc.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4825DA522ADAD98400328641 /* libwebrtc.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		4807BE1F29F6E5AA00D5A88A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4807BE1E29F6E5AA00D5A88A /* Assets.xcassets */; };
+		487E515B2B4595D400D611AC /* MetalANGLE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487E515A2B4595D400D611AC /* MetalANGLE.framework */; };
+		487E515C2B4595D400D611AC /* MetalANGLE.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 487E515A2B4595D400D611AC /* MetalANGLE.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD1DAF971D709E3600017CF0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1DAF961D709E3600017CF0 /* main.m */; };
 		CD1DAFA51D709E3600017CF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD1DAFA31D709E3600017CF0 /* LaunchScreen.storyboard */; };
 		CD1DAFB01D709E3600017CF0 /* MobileMiniBrowserUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1DAFAF1D709E3600017CF0 /* MobileMiniBrowserUITests.m */; };
@@ -95,7 +97,7 @@
 				4825DA452ADAD95600328641 /* WebCore.framework in Embed Frameworks */,
 				4825DA422ADAD94A00328641 /* JavaScriptCore.framework in Embed Frameworks */,
 				4825DA4E2ADAD96E00328641 /* WebKitLegacy.framework in Embed Frameworks */,
-				4825DA512ADAD97900328641 /* libANGLE-shared.dylib in Embed Frameworks */,
+				487E515C2B4595D400D611AC /* MetalANGLE.framework in Embed Frameworks */,
 				4825DA482ADAD95C00328641 /* WebGPU.framework in Embed Frameworks */,
 				CD498B431D76348000681FA7 /* MobileMiniBrowser.framework in Embed Frameworks */,
 				4825DA542ADAD98400328641 /* libwebrtc.dylib in Embed Frameworks */,
@@ -117,6 +119,7 @@
 		4825DA4F2ADAD97900328641 /* libANGLE-shared.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = "libANGLE-shared.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4825DA522ADAD98400328641 /* libwebrtc.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libwebrtc.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		4807BE1E29F6E5AA00D5A88A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		487E515A2B4595D400D611AC /* MetalANGLE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MetalANGLE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD1DAF921D709E3600017CF0 /* MobileMiniBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileMiniBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD1DAF961D709E3600017CF0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CD1DAF981D709E3600017CF0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -155,7 +158,7 @@
 				4825DA442ADAD95600328641 /* WebCore.framework in Frameworks */,
 				4825DA412ADAD94A00328641 /* JavaScriptCore.framework in Frameworks */,
 				4825DA4D2ADAD96D00328641 /* WebKitLegacy.framework in Frameworks */,
-				4825DA502ADAD97900328641 /* libANGLE-shared.dylib in Frameworks */,
+				487E515B2B4595D400D611AC /* MetalANGLE.framework in Frameworks */,
 				4825DA472ADAD95C00328641 /* WebGPU.framework in Frameworks */,
 				CD498B421D76348000681FA7 /* MobileMiniBrowser.framework in Frameworks */,
 				4825DA532ADAD98400328641 /* libwebrtc.dylib in Frameworks */,
@@ -227,8 +230,8 @@
 		CD1DAFC01D70E12D00017CF0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				487E515A2B4595D400D611AC /* MetalANGLE.framework */,
 				4825DA522ADAD98400328641 /* libwebrtc.dylib */,
-				4825DA4F2ADAD97900328641 /* libANGLE-shared.dylib */,
 				4825DA4C2ADAD96D00328641 /* WebKitLegacy.framework */,
 				4825DA492ADAD96700328641 /* WebKit.framework */,
 				4825DA462ADAD95C00328641 /* WebGPU.framework */,
