@@ -358,12 +358,19 @@ void MediaPlayerPrivateMediaSourceAVFObjC::playInternal(std::optional<MonotonicT
     if (!shouldBePlaying())
         return;
 
-    if (hostTime) {
+#if HAVE(AVSAMPLEBUFFERRENDERSYNCHRONIZER_RATEATHOSTTIME)
+ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
+    if (hostTime && [m_synchronizer respondsToSelector:@selector(setRate:time:atHostTime:)]) {
         auto cmHostTime = PAL::CMClockMakeHostTimeFromSystemUnits(hostTime->toMachAbsoluteTime());
         ALWAYS_LOG(LOGIDENTIFIER, "setting rate to ", m_rate, " at host time ", PAL::CMTimeGetSeconds(cmHostTime));
         [m_synchronizer setRate:m_rate time:PAL::kCMTimeInvalid atHostTime:cmHostTime];
     } else
         [m_synchronizer setRate:m_rate];
+ALLOW_NEW_API_WITHOUT_GUARDS_END
+#else
+    UNUSED_PARAM(hostTime);
+    [m_synchronizer setRate:m_rate];
+#endif
 }
 
 void MediaPlayerPrivateMediaSourceAVFObjC::pause()
@@ -377,12 +384,18 @@ void MediaPlayerPrivateMediaSourceAVFObjC::pauseInternal(std::optional<Monotonic
     ALWAYS_LOG(LOGIDENTIFIER);
     m_playing = false;
 
-    if (hostTime) {
+#if HAVE(AVSAMPLEBUFFERRENDERSYNCHRONIZER_RATEATHOSTTIME)
+ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
+    if (hostTime && [m_synchronizer respondsToSelector:@selector(setRate:time:atHostTime:)]) {
         auto cmHostTime = PAL::CMClockMakeHostTimeFromSystemUnits(hostTime->toMachAbsoluteTime());
         ALWAYS_LOG(LOGIDENTIFIER, "setting rate to 0 at host time ", PAL::CMTimeGetSeconds(cmHostTime));
         [m_synchronizer setRate:0 time:PAL::kCMTimeInvalid atHostTime:cmHostTime];
     } else
         [m_synchronizer setRate:0];
+#else
+    UNUSED_PARAM(hostTime);
+    [m_synchronizer setRate:0];
+#endif
 }
 
 bool MediaPlayerPrivateMediaSourceAVFObjC::paused() const
@@ -488,6 +501,7 @@ bool MediaPlayerPrivateMediaSourceAVFObjC::setCurrentTimeDidChangeCallback(Media
     return true;
 }
 
+#if HAVE(AVSAMPLEBUFFERRENDERSYNCHRONIZER_RATEATHOSTTIME)
 bool MediaPlayerPrivateMediaSourceAVFObjC::playAtHostTime(const MonotonicTime& time)
 {
     ALWAYS_LOG(LOGIDENTIFIER);
@@ -501,6 +515,7 @@ bool MediaPlayerPrivateMediaSourceAVFObjC::pauseAtHostTime(const MonotonicTime& 
     pauseInternal(time);
     return true;
 }
+#endif
 
 MediaTime MediaPlayerPrivateMediaSourceAVFObjC::startTime() const
 {

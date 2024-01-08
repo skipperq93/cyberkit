@@ -26,6 +26,13 @@
 
 namespace WTF {
 
+#if HAVE(SAFARI_FOR_WEBKIT_DEVELOPMENT_REQUIRING_EXTRA_SYMBOLS)
+String::String(NSString *string)
+    : String(bridge_cast(string))
+{
+}
+#endif
+
 RetainPtr<id> makeNSArrayElement(const String& vectorElement)
 {
     return bridge_cast(vectorElement.createCFString());
