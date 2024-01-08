@@ -2362,6 +2362,34 @@
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = CyberKit;
 		};
+		4851EC9E2B4AE88700B054E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4851EC972B4AE88700B054E5 /* CyberKitSwiftOverlay.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7D20067522F2652E008DF640;
+			remoteInfo = CyberKitSwiftOverlay;
+		};
+		4851ECA02B4AE88700B054E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4851EC972B4AE88700B054E5 /* CyberKitSwiftOverlay.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7D20068722F26721008DF640;
+			remoteInfo = "CyberKitSwiftOverlay-maccatalyst";
+		};
+		4851ECA22B4AE88700B054E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4851EC972B4AE88700B054E5 /* CyberKitSwiftOverlay.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7D20070722F4EB72008DF640;
+			remoteInfo = CyberKitSwiftOverlayTests;
+		};
+		4851ECA42B4AE88700B054E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4851EC972B4AE88700B054E5 /* CyberKitSwiftOverlay.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7D20071622F4ECCA008DF640;
+			remoteInfo = "CyberKitSwiftOverlayTests-maccatalyst";
+		};
 		517B5F6C275B07C3002DC22D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
@@ -4738,6 +4766,7 @@
 		46F38E8B2416E66D0059375A /* RunningBoardServicesSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunningBoardServicesSPI.h; sourceTree = "<group>"; };
 		46F9B26223526ED0006FE5FA /* WebBackForwardCacheEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebBackForwardCacheEntry.h; sourceTree = "<group>"; };
 		46FA2E752A04240300912BFE /* RemoteWorkerType.serialization.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = RemoteWorkerType.serialization.in; sourceTree = "<group>"; };
+		4851EC972B4AE88700B054E5 /* CyberKitSwiftOverlay.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CyberKitSwiftOverlay.xcodeproj; path = SwiftOverlay/CyberKitSwiftOverlay.xcodeproj; sourceTree = "<group>"; };
 		48704BB12A003A0A00B3F507 /* AssertionServicesSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssertionServicesSPI.h; sourceTree = "<group>"; };
 		48704BB32A003AB300B3F507 /* ProcessTaskStateObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessTaskStateObserver.h; sourceTree = "<group>"; };
 		48704BB42A003AB300B3F507 /* ProcessTaskStateObserver.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ProcessTaskStateObserver.mm; sourceTree = "<group>"; };
@@ -7598,6 +7627,7 @@
 		0867D691FE84028FC02AAC07 /* WebKit2 */ = {
 			isa = PBXGroup;
 			children = (
+				4851EC972B4AE88700B054E5 /* CyberKitSwiftOverlay.xcodeproj */,
 				5C157A0A2717C9F100ED5280 /* webpushd */,
 				B396EA5512E0ED2D00F4FEB7 /* config.h */,
 				2D7DEBE021269D5F00B9F73C /* Sources.txt */,
@@ -10496,6 +10526,17 @@
 				469DE802273ECC5D00930276 /* ProcessLauncherCocoa.mm */,
 			);
 			path = cocoa;
+			sourceTree = "<group>";
+		};
+		4851EC982B4AE88700B054E5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4851EC9F2B4AE88700B054E5 /* libswiftCyberKit.dylib */,
+				4851ECA12B4AE88700B054E5 /* libswiftCyberKit.dylib */,
+				4851ECA32B4AE88700B054E5 /* CyberKitSwiftOverlayTests.xctest */,
+				4851ECA52B4AE88700B054E5 /* CyberKitSwiftOverlayTests-maccatalyst.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		4A410F4119AF7B27002EBAB5 /* MediaStream */ = {
@@ -15878,6 +15919,12 @@
 			mainGroup = 0867D691FE84028FC02AAC07 /* WebKit2 */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4851EC982B4AE88700B054E5 /* Products */;
+					ProjectRef = 4851EC972B4AE88700B054E5 /* CyberKitSwiftOverlay.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1A50DB38110A3C13000D3FE5 /* Framework, XPC Services, and daemons */,
@@ -15904,6 +15951,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		4851EC9F2B4AE88700B054E5 /* libswiftCyberKit.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libswiftCyberKit.dylib;
+			remoteRef = 4851EC9E2B4AE88700B054E5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4851ECA12B4AE88700B054E5 /* libswiftCyberKit.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libswiftCyberKit.dylib;
+			remoteRef = 4851ECA02B4AE88700B054E5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4851ECA32B4AE88700B054E5 /* CyberKitSwiftOverlayTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CyberKitSwiftOverlayTests.xctest;
+			remoteRef = 4851ECA22B4AE88700B054E5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4851ECA52B4AE88700B054E5 /* CyberKitSwiftOverlayTests-maccatalyst.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "CyberKitSwiftOverlayTests-maccatalyst.xctest";
+			remoteRef = 4851ECA42B4AE88700B054E5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2D9FB221237523830049F936 /* Resources */ = {
