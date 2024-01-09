@@ -193,14 +193,13 @@
 #import <pal/ios/QuickLookSoftLink.h>
 #import <pal/spi/ios/DataDetectorsUISoftLink.h>
 
-<<<<<<< HEAD
 #if HAVE(AUTOCORRECTION_ENHANCEMENTS)
 #define UIWKDocumentRequestAutocorrectedRanges (1 << 7)
-=======
+#endif
+
 #if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 130000
 SOFT_LINK_FRAMEWORK_FOR_SOURCE(CyberKit, UIKit)
 SOFT_LINK_CONSTANT_FOR_SOURCE(CyberKit, UIKit, UIPreviewDataAttachmentListSourceIsManaged, NSString *)
->>>>>>> aa62a3ff843e (iOS 12 fixes part 3)
 #endif
 
 #if HAVE(LINK_PREVIEW) && USE(UICONTEXTMENU)
@@ -1722,6 +1721,9 @@ typedef NS_ENUM(NSInteger, EndEditingReason) {
 
 - (void)cancelPointersForGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
 {
+    if (![_touchEventGestureRecognizer respondsToSelector:@selector(activeTouchesByIdentifier)])
+            return;
+
     NSMapTable<NSNumber *, UITouch *> *activeTouches = [_touchEventGestureRecognizer activeTouchesByIdentifier];
     for (NSNumber *touchIdentifier in activeTouches) {
         UITouch *touch = [activeTouches objectForKey:touchIdentifier];
@@ -1739,6 +1741,15 @@ typedef NS_ENUM(NSInteger, EndEditingReason) {
             return [touchIdentifier unsignedIntValue];
     }
     return std::nullopt;
+}
+
+inline static UIKeyModifierFlags gestureRecognizerModifierFlags(UIGestureRecognizer *recognizer)
+{
+#if HAVE(UI_GESTURE_RECOGNIZER_MODIFIER_FLAGS)
+    return recognizer.modifierFlags;
+#else
+    return [recognizer respondsToSelector:@selector(_modifierFlags)] ? [recognizer _modifierFlags] : 0;
+#endif
 }
 
 - (BOOL)_touchEventsMustRequireGestureRecognizerToFail:(UIGestureRecognizer *)gestureRecognizer
@@ -1784,7 +1795,7 @@ typedef NS_ENUM(NSInteger, EndEditingReason) {
     }
 
 #if ENABLE(TOUCH_EVENTS)
-    WebKit::NativeWebTouchEvent nativeWebTouchEvent { lastTouchEvent, gestureRecognizer.modifierFlags };
+    WebKit::NativeWebTouchEvent nativeWebTouchEvent { lastTouchEvent, gestureRecognizerModifierFlags(gestureRecognizer) };
     nativeWebTouchEvent.setCanPreventNativeGestures(_touchEventsCanPreventNativeGestures || [gestureRecognizer isDefaultPrevented]);
 
     [self _handleTouchActionsForTouchEvent:nativeWebTouchEvent];
@@ -3225,7 +3236,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
         break;
     case UIGestureRecognizerStateEnded:
         if (_longPressCanClick && _positionInformation.isElement) {
-            [self _attemptSyntheticClickAtLocation:startPoint modifierFlags:gestureRecognizer.modifierFlags];
+            [self _attemptSyntheticClickAtLocation:startPoint modifierFlags:gestureRecognizerModifierFlags(gestureRecognizer)];
             [self _finishInteraction];
         } else
             [self _cancelInteraction];
@@ -3242,14 +3253,14 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
 - (void)_doubleTapRecognizedForDoubleClick:(UITapGestureRecognizer *)gestureRecognizer
 {
-    _page->handleDoubleTapForDoubleClickAtPoint(WebCore::IntPoint([gestureRecognizer locationInView:self]), WebKit::webEventModifierFlags(gestureRecognizer.modifierFlags), _layerTreeTransactionIdAtLastInteractionStart);
+    _page->handleDoubleTapForDoubleClickAtPoint(WebCore::IntPoint([gestureRecognizer locationInView:self]), WebKit::webEventModifierFlags(gestureRecognizerModifierFlags(gestureRecognizer)), _layerTreeTransactionIdAtLastInteractionStart);
 }
 
 - (void)_twoFingerSingleTapGestureRecognized:(UITapGestureRecognizer *)gestureRecognizer
 {
     _isTapHighlightIDValid = YES;
     _isExpectingFastSingleTapCommit = YES;
-    _page->handleTwoFingerTapAtPoint(WebCore::roundedIntPoint([gestureRecognizer locationInView:self]), WebKit::webEventModifierFlags(gestureRecognizer.modifierFlags | UIKeyModifierCommand), [self nextTapIdentifier]);
+    _page->handleTwoFingerTapAtPoint(WebCore::roundedIntPoint([gestureRecognizer locationInView:self]), WebKit::webEventModifierFlags(gestureRecognizerModifierFlags(gestureRecognizer) | UIKeyModifierCommand), [self nextTapIdentifier]);
 }
 
 - (void)_longPressRecognized:(UILongPressGestureRecognizer *)gestureRecognizer
@@ -3402,7 +3413,7 @@ static void cancelPotentialTapIfNecessary(WKContentView* contentView)
         pointerId = [singleTapTouchIdentifier unsignedIntValue];
         _commitPotentialTapPointerId = pointerId;
     }
-    _page->commitPotentialTap(WebKit::webEventModifierFlags(gestureRecognizer.modifierFlags), _layerTreeTransactionIdAtLastInteractionStart, pointerId);
+    _page->commitPotentialTap(WebKit::webEventModifierFlags(gestureRecognizerModifierFlags(gestureRecognizer)), _layerTreeTransactionIdAtLastInteractionStart, pointerId);
 
     if (!_isExpectingFastSingleTapCommit)
         [self _finishInteraction];
@@ -3502,7 +3513,10 @@ static void cancelPotentialTapIfNecessary(WKContentView* contentView)
 
 - (void)_willStartScrollingOrZooming
 {
-    [_textInteractionAssistant willStartScrollingOrZooming];
+    if ([_textInteractionAssistant respondsToSelector:@selector(willStartScrollingOrZooming)])
+        [_textInteractionAssistant willStartScrollingOrZooming];
+    else
+        [_textInteractionAssistant willStartScrollingOverflow];
     _page->setIsScrollingOrZooming(true);
 
 #if HAVE(PEPPER_UI_CORE)
