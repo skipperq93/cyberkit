@@ -39,6 +39,30 @@
 
 #if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
 @implementation CyberPresentationIntent
+
++ (BOOL)supportsSecureCoding {
+  return YES;
+}
+
+- (CyberPresentationIntent *_Nullable)initWithCoder:(NSCoder *_Nonnull)coder {
+    NSInteger identity = [coder decodeIntegerForKey:@"identity"];
+    CyberPresentationIntent *parent = [coder decodeObjectOfClass:[CyberPresentationIntent class] forKey:@"parent"];
+    return [self initWithIdentity:identity parentIntent:parent];
+}
+
+- (void)encodeWithCoder:(NSCoder *_Nonnull)coder {
+    [coder encodeInteger:self->_identity forKey:@"identity"];
+    [coder encodeObject:self->_parentIntent forKey:@"parent"];
+}
+
+- (CyberPresentationIntent *_Nonnull) copyWithZone:(NSZone *_Nullable)zone {
+    if (self->_parentIntent == nullptr) {
+        return [[CyberPresentationIntent alloc] initWithIdentity:_identity parentIntent:nullptr];
+    } else {
+        return [[CyberPresentationIntent alloc] initWithIdentity:_identity parentIntent:[_parentIntent copyWithZone:nullptr]];
+    }
+}
+
 - (CyberPresentationIntent *_Nonnull) initWithIdentity:(NSInteger)identity
                                        parentIntent:(CyberPresentationIntent *_Nullable)parent {
     self = [super init];
@@ -100,7 +124,7 @@ static RetainPtr<id> toNSObject(const AttributedString::AttributeValue& value)
         return (NSString *)value;
     }, [] (const RetainPtr<NSParagraphStyle>& value) -> RetainPtr<id> {
         return value;
-    }, [] (const RetainPtr<CyberPresentationIntent>& value) -> RetainPtr<NSObject> {
+    }, [] (const RetainPtr<CyberPresentationIntent>& value) -> RetainPtr<id> {
         return value;
     }, [] (const URL& value) -> RetainPtr<id> {
         return (NSURL *)value;

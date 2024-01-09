@@ -264,7 +264,7 @@ AVCaptureDeviceManager::~AVCaptureDeviceManager()
 
 void AVCaptureDeviceManager::setUserPreferredCamera()
 {
-#if PLATFORM(IOS_FAMILY)
+#if PLATFORM(IOS_FAMILY) && __IPHONE_OS_VERSION_MAX_ALLOWED > 160000
     if ([PAL::getAVCaptureDeviceClass() respondsToSelector:@selector(setUserPreferredCamera:)]) {
         auto currentDevices = currentCameras();
         for (AVCaptureDevice *platformDevice in currentDevices.get()) {

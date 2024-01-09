@@ -36,6 +36,12 @@
 #import <pal/ios/UIKitSoftLink.h>
 #endif
 
+#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MAX_ALLOWED < 160000
+@interface NSMutableParagraphStyle ()
+-(void)setPresentationIntents:(NSArray *)arg1;
+@end
+#endif
+
 namespace WebCore {
 
 static NSString *cocoaTextListMarkerName(ListStyleType styleType, bool ordered)

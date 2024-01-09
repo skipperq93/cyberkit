@@ -728,7 +728,11 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 #if USE(UICONTEXTMENU)
     UIAction *optionAction = [self actionForOptionIndex:rowIndex];
     if (optionAction) {
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000
         [optionAction performWithSender:nil target:nil];
+#else
+        [optionAction _performWithTarget:nil];
+#endif
         [_view accessoryDone];
     }
 #endif

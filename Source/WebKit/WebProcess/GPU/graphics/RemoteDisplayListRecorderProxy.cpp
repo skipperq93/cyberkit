@@ -43,6 +43,7 @@
 #include <WebCore/MediaPlayer.h>
 #include <WebCore/NotImplemented.h>
 #include <WebCore/SVGFilter.h>
+#include <WebKit/Logging.h>
 #include <wtf/MathExtras.h>
 #include <wtf/text/TextStream.h>
 

@@ -557,6 +557,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.ios.Fennec;
 				PRODUCT_NAME = MobileMiniBrowser;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -577,6 +578,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.ios.Fennec;
 				PRODUCT_NAME = MobileMiniBrowser;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -109,10 +109,10 @@ WK_CLASS_AVAILABLE(macos(10.11), ios(9.0))
 */
 + (void)fetchAllDataStoreIdentifiers:(void(^)(NSArray<NSUUID *> *))completionHandler WK_SWIFT_ASYNC_NAME(getter:allDataStoreIdentifiers()) WK_API_AVAILABLE(macos(WK_MAC_TBA), ios(WK_IOS_TBA));
 
-#if ((TARGET_OS_OSX && __MAC_OS_X_VERSION_MAX_ALLOWED >= 140000) \
-    || ((TARGET_OS_IOS || TARGET_OS_MACCATALYST) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 170000) \
-    || (TARGET_OS_WATCH && __WATCH_OS_VERSION_MAX_ALLOWED >= 100000) \
-    || (TARGET_OS_TV && __TV_OS_VERSION_MAX_ALLOWED >= 170000))
+#if ((TARGET_OS_OSX && __MAC_OS_X_VERSION_MIN_REQUIRED >= 140000) \
+    || ((TARGET_OS_IOS || TARGET_OS_MACCATALYST) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 170000) \
+    || (TARGET_OS_WATCH && __WATCH_OS_VERSION_MIN_REQUIRED >= 100000) \
+    || (TARGET_OS_TV && __TV_OS_VERSION_MIN_REQUIRED >= 170000))
 /*! @abstract Gets or sets the proxy configurations to be used to override networking in all WKWebViews that use this WKWebsiteDataStore.
  @discussion Changing the proxy configurations might interupt current networking operations in any WKWebView that use this WKWebsiteDataStore,
  so it is encouraged to finish setting the proxy configurations before starting any page loads.
