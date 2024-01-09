@@ -15,6 +15,7 @@ WARNING_CFLAGS = -Wno-implicit-function-declaration -Wno-strict-prototypes;
 // FIXME: Enable x86 optimization
 HEADER_SEARCH_PATHS[arch=x86_64] = Source/third_party/libaom/source/config/linux/generic Source/third_party/libaom/source/libaom Source/third_party/libaom/source/config;
 HEADER_SEARCH_PATHS[arch=arm64*] = Source/third_party/libaom/source/config/ios/arm64 Source/third_party/libaom/source/libaom Source/third_party/libaom/source/config;
+HEADER_SEARCH_PATHS[arch=armv7*] = Source/third_party/libaom/source/config/ios/armv7 Source/third_party/libaom/source/libaom Source/third_party/libaom/source/config;
 
 INSTALL_PATH = $(INSTALL_PATH_PREFIX)$(WK_LIBRARY_INSTALL_PATH);
 PUBLIC_HEADERS_FOLDER_PATH = $(INSTALL_PATH_PREFIX)$(WK_LIBRARY_HEADERS_FOLDER_PATH)/libwebrtc;
@@ -32,6 +33,7 @@ X86_FILES = *_sse2.c *_ssse3.c *_sse4.c *_avx2.c *_avx2.cc *_avx.c *.asm
 EXCLUDED_SOURCE_FILE_NAMES[arch=x86_64] = $(ARM_FILES) $(EXCLUDED_SOURCE_FILE_NAMES_$(WK_IS_CATALYST));
 EXCLUDED_SOURCE_FILE_NAMES_YES = *_sse4.c *_avx.c;
 EXCLUDED_SOURCE_FILE_NAMES[arch=arm64*] = $(X86_FILES) *_mmx.c
+EXCLUDED_SOURCE_FILE_NAMES[arch=armv7*] = $(X86_FILES) *_mmx.c
 EXCLUDED_SOURCE_FILE_NAMES[sdk=iphonesimulator*][arch=x86_64] = $(ARM_FILES) $(X86_FILES)
 
 OTHER_LDFLAGS = $(inherited) $(SOURCE_VERSION_LDFLAGS);
