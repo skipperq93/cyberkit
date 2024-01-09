@@ -1715,7 +1715,7 @@ double MediaPlayerPrivateAVFoundationObjC::effectiveRate() const
 
 double MediaPlayerPrivateAVFoundationObjC::seekableTimeRangesLastModifiedTime() const
 {
-#if PLATFORM(MAC) || PLATFORM(IOS) || PLATFORM(MACCATALYST) || PLATFORM(VISION)
+#if PLATFORM(MAC) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000) || PLATFORM(MACCATALYST) || PLATFORM(VISION)
     if (!m_cachedSeekableTimeRangesLastModifiedTime)
         m_cachedSeekableTimeRangesLastModifiedTime = [m_avPlayerItem seekableTimeRangesLastModifiedTime];
     return *m_cachedSeekableTimeRangesLastModifiedTime;
@@ -4070,7 +4070,11 @@ NSArray* playerKVOProperties()
         auto seekableTimeRanges = RetainPtr<NSArray> { newValue };
 
         m_backgroundQueue->dispatch([seekableTimeRanges = WTFMove(seekableTimeRanges), playerItem = RetainPtr<AVPlayerItem> { object }, queueTaskOnEventLoopWithPlayer] () mutable {
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
             auto seekableTimeRangesLastModifiedTime = [playerItem seekableTimeRangesLastModifiedTime];
+#else
+            auto seekableTimeRangesLastModifiedTime = 0;
+#endif
             auto liveUpdateInterval = [playerItem liveUpdateInterval];
             queueTaskOnEventLoopWithPlayer([seekableTimeRanges = WTFMove(seekableTimeRanges), seekableTimeRangesLastModifiedTime, liveUpdateInterval] (auto& player) mutable {
                 player.seekableTimeRangesDidChange(WTFMove(seekableTimeRanges), seekableTimeRangesLastModifiedTime, liveUpdateInterval);

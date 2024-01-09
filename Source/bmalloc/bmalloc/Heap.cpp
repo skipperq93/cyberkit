@@ -105,7 +105,7 @@ BINLINE void Heap::adjustStat(size_t& value, std::ptrdiff_t amount)
 
 BINLINE void Heap::logStat(size_t value, std::ptrdiff_t amount, const char* label, const char* note)
 {
-    fprintf(stderr, "%s: %zu (%zd) %s\n", label, value, amount, note);
+    fprintf(stderr, "%s: %zu (%td) %s\n", label, value, amount, note);
 }
 
 BINLINE void Heap::adjustFreeableMemory(UniqueLockHolder&, std::ptrdiff_t amount, const char* note)

@@ -239,6 +239,11 @@ bool H265CMSampleBufferToAnnexBBuffer(
     return false;
   }
 
+#if TARGET_OS_IOS && __IPHONE_OS_VERSION_MIN_REQUIRED < 110000
+  (void)description;
+  RTC_LOG(LS_ERROR) << "Failed to get parameter set.";
+  return false;
+#else
   // Get parameter set information.
   int nalu_header_size = 0;
   size_t param_set_count = 0;
@@ -339,6 +344,7 @@ bool H265CMSampleBufferToAnnexBBuffer(
   CFRelease(contiguous_buffer);
 
   return true;
+#endif
 }
 
 bool H265AnnexBBufferToCMSampleBuffer(const uint8_t* annexb_buffer,
@@ -493,6 +499,11 @@ CMVideoFormatDescriptionRef CreateH265VideoFormatDescription(
 
   // Parse the SPS and PPS into a CMVideoFormatDescription.
   CMVideoFormatDescriptionRef description = nullptr;
+#if TARGET_OS_IOS && __IPHONE_OS_VERSION_MIN_REQUIRED < 110000
+  (void)description;
+  RTC_LOG(LS_ERROR) << "Failed to create video format description.";
+  return nullptr;
+#else
   OSStatus status = CMVideoFormatDescriptionCreateFromHEVCParameterSets(
       kCFAllocatorDefault, 3, param_set_ptrs, param_set_sizes, 4, nullptr,
       &description);
@@ -501,6 +512,7 @@ CMVideoFormatDescriptionRef CreateH265VideoFormatDescription(
     return nullptr;
   }
   return description;
+#endif
 }
 #endif
 

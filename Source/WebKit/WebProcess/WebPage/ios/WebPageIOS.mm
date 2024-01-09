@@ -666,6 +666,7 @@ void WebPage::shouldDelayWindowOrderingEvent(const WebKit::WebMouseEvent&, Compl
     completionHandler(false);
 }
 
+#if HAVE(PDFKIT)
 void WebPage::computePagesForPrintingPDFDocument(WebCore::FrameIdentifier, const PrintInfo&, Vector<IntRect>&)
 {
     notImplemented();
@@ -675,6 +676,7 @@ void WebPage::drawPagesToPDFFromPDFDocument(CGContextRef, PDFDocument *, const P
 {
     notImplemented();
 }
+#endif
 
 void WebPage::advanceToNextMisspelling(bool)
 {
@@ -1006,7 +1008,7 @@ void WebPage::insertDroppedImagePlaceholders(const Vector<IntSize>& imageSizes, 
 
     auto imagePlaceholderRange = m_page->dragController().droppedImagePlaceholderRange();
     if (placeholderRects.size() != imageSizes.size()) {
-        RELEASE_LOG(DragAndDrop, "Failed to insert dropped image placeholders: placeholder rect count (%tu) does not match image size count (%tu).", placeholderRects.size(), imageSizes.size());
+        RELEASE_LOG(DragAndDrop, "Failed to insert dropped image placeholders: placeholder rect count (%zu) does not match image size count (%zu).", placeholderRects.size(), imageSizes.size());
         reply({ }, std::nullopt);
         return;
     }

@@ -394,7 +394,7 @@ std::optional<size_t> AudioFileReader::decodeWebMData(AudioBufferList& bufferLis
             }
             totalDecodedFrames += numFrames;
             if (leadingTrim > 0) {
-                UInt32 toTrim = std::min(leadingTrim, numFrames);
+                UInt32 toTrim = std::min(static_cast<UInt32>(leadingTrim), numFrames);
                 for (UInt32 i = 0; i < outFormat.mChannelsPerFrame; i++)
                     memmove(decodedBufferList->mBuffers[i].mData, static_cast<float*>(decodedBufferList->mBuffers[i].mData) + toTrim, (numFrames - toTrim) * sizeof(float));
                 leadingTrim -= toTrim;

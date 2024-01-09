@@ -35,7 +35,8 @@ using namespace JSC;
 #ifdef __APPLE__
 kern_return_t PASReportCrashExtractResults(vm_address_t fault_address, mach_vm_address_t pas_dead_root, unsigned version, task_t task, pas_report_crash_pgm_report *report, crash_reporter_memory_reader_t crm_reader)
 {
-#if TARGET_OS_WATCH
+// Disable on armv7 since BENABLE_LIBPAS is 0
+#if TARGET_OS_WATCH || TARGET_CPU_ARM
     UNUSED_PARAM(fault_address);
     UNUSED_PARAM(pas_dead_root);
     UNUSED_PARAM(version);

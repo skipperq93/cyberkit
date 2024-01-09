@@ -145,6 +145,7 @@ CVPixelBufferRef CreatePixelBuffer(CVPixelBufferPoolRef pixel_buffer_pool) {
 
 // This is the callback function that VideoToolbox calls when encode is
 // complete. From inspection this happens on its own queue.
+#if !TARGET_OS_IOS || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
 void compressionOutputCallback(void* encoder,
                                void* params,
                                OSStatus status,
@@ -164,6 +165,7 @@ void compressionOutputCallback(void* encoder,
                                timestamp:encodeParams->timestamp
                                 rotation:encodeParams->rotation];
 }
+#endif
 }  // namespace
 
 @implementation RTCVideoEncoderH265 {
@@ -337,6 +339,11 @@ void compressionOutputCallback(void* encoder,
     frameProperties = CreateCFTypeDictionary(keys, values, 1);
   }
 
+#if TARGET_OS_IOS && __IPHONE_OS_VERSION_MIN_REQUIRED < 110000
+    (void)presentationTimeStamp;
+    RTC_LOG(LS_ERROR) << "Failed to encode frame";
+    return WEBRTC_VIDEO_CODEC_ERROR;
+#else
   std::unique_ptr<RTCFrameEncodeParams> encodeParams;
   encodeParams.reset(new RTCFrameEncodeParams(
       self, _width, _height, frame.timeStampNs / rtc::kNumNanosecsPerMillisec,
@@ -359,6 +366,7 @@ void compressionOutputCallback(void* encoder,
     return WEBRTC_VIDEO_CODEC_ERROR;
   }
   return WEBRTC_VIDEO_CODEC_OK;
+#endif
 }
 
 - (void)setCallback:(RTCVideoEncoderCallback)callback {
@@ -422,6 +430,12 @@ void compressionOutputCallback(void* encoder,
   if (_isLowLatencyEnabled)
     CFDictionarySetValue(encoder_specs, kVTVideoEncoderSpecification_RequiredLowLatency, kCFBooleanTrue);
 #endif
+#if TARGET_OS_IOS && __IPHONE_OS_VERSION_MIN_REQUIRED < 110000
+    (void)encoder_specs;
+    (void)sourceAttributes;
+    RTC_LOG(LS_ERROR) << "Failed to create compression session";
+    return WEBRTC_VIDEO_CODEC_ERROR;
+#else
   OSStatus status = VTCompressionSessionCreate(
       nullptr,  // use default allocator
       _width, _height, kCMVideoCodecType_HEVC,
@@ -468,6 +482,7 @@ void compressionOutputCallback(void* encoder,
 #endif
   [self configureCompressionSession];
   return WEBRTC_VIDEO_CODEC_OK;
+#endif
 }
 
 - (void)configureCompressionSession {

@@ -244,7 +244,7 @@ static NSString * const _WKARQLWebsiteURLParameterKey = @"ARQLWebsiteURLParamete
     UIViewController *presentingViewController = [self presentingViewController];
     if (presentingViewController) {
         if (_linkRect.isEmpty())
-            *contentRect = {CGPointZero, {presentingViewController.view.frame.size.width / 2.0, presentingViewController.view.frame.size.height / 2.0}};
+            *contentRect = {CGPointZero, {presentingViewController.view.frame.size.width / 2.0f, presentingViewController.view.frame.size.height / 2.0f}};
         else {
             WebCore::IntRect screenRect = _previewController->page().syncRootViewToScreen(_linkRect);
             *contentRect = { CGPointZero, { static_cast<CGFloat>(screenRect.width()), static_cast<CGFloat>(screenRect.height()) } };

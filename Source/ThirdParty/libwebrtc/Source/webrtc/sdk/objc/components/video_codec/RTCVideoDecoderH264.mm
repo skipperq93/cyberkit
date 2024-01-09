@@ -44,7 +44,9 @@ struct RTCFrameDecodeParams {
 static void overrideColorSpaceAttachments(CVImageBufferRef imageBuffer) {
   CVBufferRemoveAttachment(imageBuffer, kCVImageBufferCGColorSpaceKey);
   CVBufferSetAttachment(imageBuffer, kCVImageBufferColorPrimariesKey, kCVImageBufferColorPrimaries_ITU_R_709_2, kCVAttachmentMode_ShouldPropagate);
+#if !TARGET_OS_IPHONE || __IPHONE_OS_VERSION_MIN_REQUIRED >= 110000
   CVBufferSetAttachment(imageBuffer, kCVImageBufferTransferFunctionKey, kCVImageBufferTransferFunction_sRGB, kCVAttachmentMode_ShouldPropagate);
+#endif
   CVBufferSetAttachment(imageBuffer, kCVImageBufferYCbCrMatrixKey, kCVImageBufferYCbCrMatrix_ITU_R_709_2, kCVAttachmentMode_ShouldPropagate);
   CVBufferSetAttachment(imageBuffer, (CFStringRef)@"ColorInfoGuessedBy", (CFStringRef)@"RTCVideoDecoderH264", kCVAttachmentMode_ShouldPropagate);
 }
