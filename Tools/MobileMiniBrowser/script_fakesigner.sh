@@ -146,6 +146,6 @@ rm -rf $DIR_NAME
 # Package into IPA
 IPA_NAME=$(echo *.deb | sed 's/_[a-z].*//' | sed 's/\+\([0-9]\)/\1/' | sed 's/-\([0-9]\)/\1/')
 echo "[*] Creating IPA..."
-rm -f *.ipa || true
-zip -r -y "$IPA_NAME.ipa" Payload
-echo "[*] Created $IPA_NAME.ipa"
+rm -f *.tipa || true
+zip -r -y "$IPA_NAME.tipa" Payload
+echo "[*] Created $IPA_NAME.tipa"
