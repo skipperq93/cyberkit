@@ -1203,6 +1203,7 @@ static void addOverlayEventRegions(WebCore::PlatformLayerIdentifier layerID, con
 
 - (RefPtr<WebKit::ViewSnapshot>)_takeViewSnapshot
 {
+#if HAVE(CORE_ANIMATION_RENDER_SERVER)
     float deviceScale = WebCore::screenScaleFactor();
     WebCore::FloatSize snapshotSize(self.bounds.size);
     snapshotSize.scale(deviceScale);

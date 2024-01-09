@@ -5213,6 +5213,7 @@ static void logTextInteractionAssistantSelectionChange(const char* methodName, U
         return;
     }
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000
     // FIXME: We can remove this code and unconditionally ignore autocorrection context requests when
     // out-of-process keyboard is enabled, once rdar://111936621 is addressed; we'll also be able to
     // remove `EditorState::PostLayoutData::hasGrammarDocumentMarkers` then.
@@ -5225,6 +5226,7 @@ static void logTextInteractionAssistantSelectionChange(const char* methodName, U
         completionHandler(WKAutocorrectionContext.emptyAutocorrectionContext);
         return;
     }
+#endif
 
     if ([self _disableAutomaticKeyboardUI]) {
         completionHandler(WKAutocorrectionContext.emptyAutocorrectionContext);
@@ -7290,8 +7292,10 @@ static RetainPtr<NSObject <WKFormPeripheral>> createInputPeripheralWithView(WebK
             // fail. The second set of keyboard notifications contains the final keyboard height, and is the
             // one we should use for revealing the focused element.
             // See also: <rdar://111704216>.
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000
             if (!UIKeyboard.usesInputSystemUI)
                 return false;
+#endif
 
             auto keyboard = UIKeyboard.activeKeyboard;
             return keyboard && !keyboard.isMinimized;
