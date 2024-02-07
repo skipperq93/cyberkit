@@ -97,7 +97,7 @@
 	<true/>
 	<key>com.apple.private.tcc.manager.check-by-audit-token</key>
 	<array>
-		<string>kTCCServiceCyberKitIntelligentTrackingPrevention</string>
+		<string>kTCCServiceWebKitIntelligentTrackingPrevention</string>
 	</array>
 	<key>com.apple.private.verified-jit</key>
 	<true/>
@@ -113,9 +113,9 @@
 	<true/>
 	<key>com.apple.private.webkit.use-xpc-endpoint</key>
 	<true/>
-	<key>com.apple.rootless.storage.CyberKitWebContentSandbox</key>
+	<key>com.apple.rootless.storage.WebKitWebContentSandbox</key>
 	<true/>
-	<key>com.apple.rootless.storage.CyberScriptCore</key>
+	<key>com.apple.rootless.storage.JavaScriptCore</key>
 	<true/>
 	<key>com.apple.runningboard.assertions.webkit</key>
 	<true/>
@@ -177,7 +177,7 @@
 		<string>com.apple.nfcd.hwmanager</string>
 		<string>com.apple.ClipServices.clipserviced</string>
 		<string>com.apple.security.octagon</string>
-		<string>com.matthewbenedict.CyberKit.WebAuthn</string>
+		<string>com.apple.WebKit.WebAuthn</string>
 		<string>com.apple.appstorecomponentsd.xpc</string>
 		<string>com.apple.datamigrator</string>
 		<string>com.apple.online-auth-agent.xpc</string>
