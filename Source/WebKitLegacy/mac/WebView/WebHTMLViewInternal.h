@@ -30,7 +30,7 @@
 
 #import "WebHTMLViewPrivate.h"
 #import <wtf/NakedPtr.h>
-#import <CyberCore/ScrollTypes.h>
+#import <WebCore/ScrollTypes.h>
 
 @class CALayer;
 @class WebFrame;

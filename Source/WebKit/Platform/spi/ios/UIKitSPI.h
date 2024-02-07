@@ -1581,7 +1581,7 @@ extern const NSString *UIPreviewDataAttachmentIndex;
 #if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
 extern NSString * const UIPreviewDataAttachmentListIsContentManaged;
 #else
-SOFT_LINK_CONSTANT_FOR_HEADER(CyberKit, UIKit, UIPreviewDataAttachmentListSourceIsManaged, NSString *)
+SOFT_LINK_CONSTANT_FOR_HEADER(WebKit, UIKit, UIPreviewDataAttachmentListSourceIsManaged, NSString *)
 #endif
 
 UIEdgeInsets UIEdgeInsetsAdd(UIEdgeInsets lhs, UIEdgeInsets rhs, UIRectEdge);

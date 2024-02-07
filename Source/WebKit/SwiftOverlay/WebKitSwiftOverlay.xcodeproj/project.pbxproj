@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -508,6 +508,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B3A5D39523F790E100B17727 /* Base.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = $CYBERKIT_DEPLOYMENT_TARGET;
 			};
 			name = Debug;
 		};
@@ -515,6 +516,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B3A5D39523F790E100B17727 /* Base.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = $CYBERKIT_DEPLOYMENT_TARGET;
 			};
 			name = Release;
 		};

@@ -198,8 +198,8 @@
 #endif
 
 #if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 130000
-SOFT_LINK_FRAMEWORK_FOR_SOURCE(CyberKit, UIKit)
-SOFT_LINK_CONSTANT_FOR_SOURCE(CyberKit, UIKit, UIPreviewDataAttachmentListSourceIsManaged, NSString *)
+SOFT_LINK_FRAMEWORK_FOR_SOURCE(WebKit, UIKit)
+SOFT_LINK_CONSTANT_FOR_SOURCE(WebKit, UIKit, UIPreviewDataAttachmentListSourceIsManaged, NSString *)
 #endif
 
 #if HAVE(LINK_PREVIEW) && USE(UICONTEXTMENU)
@@ -11340,8 +11340,10 @@ static RetainPtr<NSItemProvider> createItemProvider(const WebKit::WebPageProxy& 
         WebCore::ElementContext elementContext = *information.hostImageOrVideoElementContext;
 
         auto requestForTextSelection = [strongSelf createImageAnalyzerRequest:VKAnalysisTypeText image:cgImage.get()];
+#if ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
         if (information.isPausedVideo)
             [requestForTextSelection setImageSource:VKImageAnalyzerRequestImageSourceVideoFrame];
+#endif
 
         if (information.elementContainsImageOverlay) {
             [strongSelf _completeImageAnalysisRequestForContextMenu:cgImage.get() requestIdentifier:requestIdentifier hasTextResults:YES];
@@ -11457,8 +11459,10 @@ static BOOL shouldUseMachineReadableCodeMenuFromImageAnalysisResult(CocoaImageAn
     });
 
     auto request = [self createImageAnalyzerRequest:VKAnalysisTypeVisualSearch | VKAnalysisTypeMachineReadableCode | VKAnalysisTypeAppClip image:image];
+#if ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
     if (_positionInformation.isPausedVideo)
         [request setImageSource:VKImageAnalyzerRequestImageSourceVideoFrame];
+#endif
 
     auto visualSearchAnalysisStartTime = MonotonicTime::now();
     [self.imageAnalyzer processRequest:request.get() progressHandler:nil completionHandler:[requestIdentifier = WTFMove(requestIdentifier), weakSelf, visualSearchAnalysisStartTime, aggregator = aggregator.copyRef(), data] (CocoaImageAnalysis *result, NSError *error) mutable {
@@ -11550,8 +11554,10 @@ static BOOL shouldUseMachineReadableCodeMenuFromImageAnalysisResult(CocoaImageAn
 
         auto visualSearchAnalysisStartTime = MonotonicTime::now();
         auto requestForContextMenu = [strongSelf createImageAnalyzerRequest:VKAnalysisTypeVisualSearch | VKAnalysisTypeMachineReadableCode | VKAnalysisTypeAppClip image:cgImage.get()];
+#if ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
         if (info.isPausedVideo)
             [requestForContextMenu setImageSource:VKImageAnalyzerRequestImageSourceVideoFrame];
+#endif
 
         [[strongSelf imageAnalyzer] processRequest:requestForContextMenu.get() progressHandler:nil completionHandler:[weakSelf, visualSearchAnalysisStartTime, aggregator = aggregator.copyRef(), data] (CocoaImageAnalysis *result, NSError *error) {
             auto strongSelf = weakSelf.get();
@@ -12995,7 +13001,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 #if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
             dataForPreview.get()[UIPreviewDataAttachmentListIsContentManaged] = [NSNumber numberWithBool:sourceIsManaged];
 #else
-            dataForPreview.get()[CyberKit::get_UIKit_UIPreviewDataAttachmentListSourceIsManaged()] = [NSNumber numberWithBool:sourceIsManaged];
+            dataForPreview.get()[WebKit::get_UIKit_UIPreviewDataAttachmentListSourceIsManaged()] = [NSNumber numberWithBool:sourceIsManaged];
 #endif
         }
     }

@@ -50,7 +50,7 @@ template<const CFStringRef& colorSpaceNameGlobalConstant> static CGColorSpaceRef
 template<const CFStringRef& colorSpaceNameGlobalConstant> static CGColorSpaceRef extendedNamedColorSpace()
 {
 #if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
-    if (CGColorSpaceCreateExtended != NULL) {
+    if (&CGColorSpaceCreateExtended != NULL) {
 #endif
     static NeverDestroyed<RetainPtr<CGColorSpaceRef>> colorSpace;
     static std::once_flag onceFlag;
@@ -96,7 +96,9 @@ CGColorSpaceRef extendedAdobeRGB1998ColorSpaceRef()
 CGColorSpaceRef extendedDisplayP3ColorSpaceRef()
 {
 #if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
+IGNORE_WARNINGS_BEGIN("tautological-pointer-compare")
     if (&kCGColorSpaceExtendedDisplayP3 != NULL) {
+IGNORE_WARNINGS_END
 #endif
     return namedColorSpace<kCGColorSpaceExtendedDisplayP3>();
 #if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
@@ -110,7 +112,9 @@ CGColorSpaceRef extendedDisplayP3ColorSpaceRef()
 CGColorSpaceRef extendedITUR_2020ColorSpaceRef()
 {
 #if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
+IGNORE_WARNINGS_BEGIN("tautological-pointer-compare")
     if (&kCGColorSpaceExtendedITUR_2020 != NULL) {
+IGNORE_WARNINGS_END
 #endif
     return namedColorSpace<kCGColorSpaceExtendedITUR_2020>();
 #if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000

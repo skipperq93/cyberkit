@@ -112,8 +112,8 @@ static void jetsamConfigurator(void) {
 
 int main(int argc, const char** argv)
 {
-    const NSString* cyberKitFramework = [[[[[NSBundle mainBundle] bundlePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"CyberKit"];
-    void *handle = dlopen([cyberKitFramework cStringUsingEncoding:NSUTF8StringEncoding], RTLD_LAZY);
+    const NSString* framework = [[[[[NSBundle mainBundle] bundlePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"WebKit"];
+    void *handle = dlopen([framework cStringUsingEncoding:NSUTF8StringEncoding], RTLD_LAZY);
     int (*WKXPCServiceMain)(int, const char**) = dlsym(handle, "WKXPCServiceMain");
     
     int ret = WKXPCServiceMain(argc, argv);

@@ -2362,6 +2362,34 @@
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = CyberKit;
 		};
+		486A09072B4C5D710091B368 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4851EC972B4AE88700B054E5 /* WebKitSwiftOverlay.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7D20067522F2652E008DF640;
+			remoteInfo = WebKitSwiftOverlay;
+		};
+		486A09092B4C5D710091B368 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4851EC972B4AE88700B054E5 /* WebKitSwiftOverlay.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7D20068722F26721008DF640;
+			remoteInfo = "WebKitSwiftOverlay-maccatalyst";
+		};
+		486A090B2B4C5D710091B368 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4851EC972B4AE88700B054E5 /* WebKitSwiftOverlay.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7D20070722F4EB72008DF640;
+			remoteInfo = WebKitSwiftOverlayTests;
+		};
+		486A090D2B4C5D710091B368 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4851EC972B4AE88700B054E5 /* WebKitSwiftOverlay.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7D20071622F4ECCA008DF640;
+			remoteInfo = "WebKitSwiftOverlayTests-maccatalyst";
+		};
 		517B5F6C275B07C3002DC22D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
@@ -4738,6 +4766,7 @@
 		46F38E8B2416E66D0059375A /* RunningBoardServicesSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunningBoardServicesSPI.h; sourceTree = "<group>"; };
 		46F9B26223526ED0006FE5FA /* WebBackForwardCacheEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebBackForwardCacheEntry.h; sourceTree = "<group>"; };
 		46FA2E752A04240300912BFE /* RemoteWorkerType.serialization.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = RemoteWorkerType.serialization.in; sourceTree = "<group>"; };
+		4851EC972B4AE88700B054E5 /* WebKitSwiftOverlay.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WebKitSwiftOverlay.xcodeproj; path = SwiftOverlay/WebKitSwiftOverlay.xcodeproj; sourceTree = "<group>"; };
 		48704BB12A003A0A00B3F507 /* AssertionServicesSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssertionServicesSPI.h; sourceTree = "<group>"; };
 		48704BB32A003AB300B3F507 /* ProcessTaskStateObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessTaskStateObserver.h; sourceTree = "<group>"; };
 		48704BB42A003AB300B3F507 /* ProcessTaskStateObserver.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ProcessTaskStateObserver.mm; sourceTree = "<group>"; };
@@ -7598,6 +7627,7 @@
 		0867D691FE84028FC02AAC07 /* WebKit2 */ = {
 			isa = PBXGroup;
 			children = (
+				4851EC972B4AE88700B054E5 /* WebKitSwiftOverlay.xcodeproj */,
 				5C157A0A2717C9F100ED5280 /* webpushd */,
 				B396EA5512E0ED2D00F4FEB7 /* config.h */,
 				2D7DEBE021269D5F00B9F73C /* Sources.txt */,
@@ -10496,6 +10526,17 @@
 				469DE802273ECC5D00930276 /* ProcessLauncherCocoa.mm */,
 			);
 			path = cocoa;
+			sourceTree = "<group>";
+		};
+		486A09012B4C5D710091B368 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				486A09082B4C5D710091B368 /* libswiftWebKit.dylib */,
+				486A090A2B4C5D710091B368 /* libswiftWebKit.dylib */,
+				486A090C2B4C5D710091B368 /* WebKitSwiftOverlayTests.xctest */,
+				486A090E2B4C5D710091B368 /* WebKitSwiftOverlayTests-maccatalyst.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		4A410F4119AF7B27002EBAB5 /* MediaStream */ = {
@@ -15878,6 +15919,12 @@
 			mainGroup = 0867D691FE84028FC02AAC07 /* WebKit2 */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 486A09012B4C5D710091B368 /* Products */;
+					ProjectRef = 4851EC972B4AE88700B054E5 /* WebKitSwiftOverlay.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1A50DB38110A3C13000D3FE5 /* Framework, XPC Services, and daemons */,
@@ -15904,6 +15951,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		486A09082B4C5D710091B368 /* libswiftWebKit.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libswiftWebKit.dylib;
+			remoteRef = 486A09072B4C5D710091B368 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		486A090A2B4C5D710091B368 /* libswiftWebKit.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libswiftWebKit.dylib;
+			remoteRef = 486A09092B4C5D710091B368 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		486A090C2B4C5D710091B368 /* WebKitSwiftOverlayTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = WebKitSwiftOverlayTests.xctest;
+			remoteRef = 486A090B2B4C5D710091B368 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		486A090E2B4C5D710091B368 /* WebKitSwiftOverlayTests-maccatalyst.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "WebKitSwiftOverlayTests-maccatalyst.xctest";
+			remoteRef = 486A090D2B4C5D710091B368 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2D9FB221237523830049F936 /* Resources */ = {
@@ -17480,32 +17558,32 @@
 		};
 		4807610E2B271AA400891A81 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8DC2EF4F0486A6940098B216 /* CyberKit */;
+			target = 8DC2EF4F0486A6940098B216 /* WebKit */;
 			targetProxy = 4807610D2B271AA400891A81 /* PBXContainerItemProxy */;
 		};
 		480761102B271AB400891A81 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8DC2EF4F0486A6940098B216 /* CyberKit */;
+			target = 8DC2EF4F0486A6940098B216 /* WebKit */;
 			targetProxy = 4807610F2B271AB400891A81 /* PBXContainerItemProxy */;
 		};
 		480761122B271AB900891A81 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8DC2EF4F0486A6940098B216 /* CyberKit */;
+			target = 8DC2EF4F0486A6940098B216 /* WebKit */;
 			targetProxy = 480761112B271AB900891A81 /* PBXContainerItemProxy */;
 		};
 		480761142B271AC000891A81 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8DC2EF4F0486A6940098B216 /* CyberKit */;
+			target = 8DC2EF4F0486A6940098B216 /* WebKit */;
 			targetProxy = 480761132B271AC000891A81 /* PBXContainerItemProxy */;
 		};
 		480761162B271AC500891A81 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8DC2EF4F0486A6940098B216 /* CyberKit */;
+			target = 8DC2EF4F0486A6940098B216 /* WebKit */;
 			targetProxy = 480761152B271AC500891A81 /* PBXContainerItemProxy */;
 		};
 		480761182B271ACA00891A81 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8DC2EF4F0486A6940098B216 /* CyberKit */;
+			target = 8DC2EF4F0486A6940098B216 /* WebKit */;
 			targetProxy = 480761172B271ACA00891A81 /* PBXContainerItemProxy */;
 		};
 		517B5F6D275B07C3002DC22D /* PBXTargetDependency */ = {
@@ -17696,7 +17774,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 			};
@@ -17710,7 +17787,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 			};
@@ -17958,7 +18034,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 			};

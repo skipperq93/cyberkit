@@ -24,8 +24,8 @@ fi
 
 # Prepare payload directory
 SCRIPT_DIR=$(realpath "$(dirname "${BASH_SOURCE[0]}")")
-rm -rf $SCRIPT_DIR/../../CyberKitBuild/Debug-iphoneos/Payload
-ipa=$SCRIPT_DIR/../../CyberKitBuild/Debug-iphoneos/MobileMiniBrowser.app
+rm -rf $SCRIPT_DIR/../../WebKitBuild/Debug-iphoneos/Payload
+ipa=$SCRIPT_DIR/../../WebKitBuild/Debug-iphoneos/MobileMiniBrowser.app
 if [[ $ipa == *.ipa ]]; then
     echo [*] unpacking..
     cd $(dirname $ipa) || exit 1
@@ -38,49 +38,62 @@ elif [[ $ipa == *.app ]]; then
     cp -R $ipa $(dirname $ipa)/Payload
     app=$(ls -1 -d *.app)
     cd Payload
-    rm -rf $app/Frameworks/CyberKit.framework/XPCServices && mkdir $app/Frameworks/CyberKit.framework/XPCServices
-    rm -rf $app/Frameworks/CyberKit.framework/Daemons && mkdir $app/Frameworks/CyberKit.framework/Daemons
-    cp -R ../*.xpc $app/Frameworks/CyberKit.framework/XPCServices
-    cp ../adattributiond $app/Frameworks/CyberKit.framework/Daemons
-    cp ../webpushd $app/Frameworks/CyberKit.framework/Daemons
-    cp ../../../Source/WTF/icu/unicode/data/out/*.dat $app/Frameworks/CyberKit.framework/XPCServices
-    ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.GPU.xpc
-    ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.Networking.xpc
-    ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.WebContent.CaptivePortal.xpc
-    ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.WebContent.Crashy.xpc
-    ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.WebContent.Development.xpc
-    ln -s ../../../../Frameworks $app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.WebContent.xpc
+
+    cp -R ../WebCore.framework $app/Frameworks
+    cp -R ../WebKit.framework $app/Frameworks
+    cp -R ../WebKitLegacy.framework $app/Frameworks
+    cp -R ../JavaScriptCore.framework $app/Frameworks
+    cp -R ../WebGPU.framework $app/Frameworks
+    cp -R ../libANGLE-shared.dylib $app/Frameworks
+    cp -R ../libwebrtc.dylib $app/Frameworks
+
+    rm -rf $app/Frameworks/WebKit.framework/XPCServices && mkdir $app/Frameworks/WebKit.framework/XPCServices
+    rm -rf $app/Frameworks/WebKit.framework/Daemons && mkdir $app/Frameworks/WebKit.framework/Daemons
+    cp -R ../*.xpc $app/Frameworks/WebKit.framework/XPCServices
+    cp ../adattributiond $app/Frameworks/WebKit.framework/Daemons
+    cp ../webpushd $app/Frameworks/WebKit.framework/Daemons
+    cp ../../../Source/WTF/icu/unicode/data/out/*.dat $app/Frameworks/WebKit.framework/XPCServices
+
+    ln -s ../../../../Frameworks $app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.GPU.xpc
+    ln -s ../../../../Frameworks $app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.Networking.xpc
+    ln -s ../../../../Frameworks $app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.WebContent.CaptivePortal.xpc
+    ln -s ../../../../Frameworks $app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.WebContent.Crashy.xpc
+    ln -s ../../../../Frameworks $app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.WebContent.Development.xpc
+    ln -s ../../../../Frameworks $app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.WebContent.xpc
+
+    install_name_tool -change /System/Library/Frameworks/WebKit.framework/WebKit @rpath/WebKit.framework/WebKit $app/MobileMiniBrowser
+    install_name_tool -change /System/Library/Frameworks/WebKit.framework/WebKit @rpath/WebKit.framework/WebKit $app/Frameworks/MobileMiniBrowser.framework/MobileMiniBrowser
 else
     echo "[!] No .ipa file supplied!"
 fi
 cp $SCRIPT_DIR/script_fakesigner.entitlements .
 
 # Fakesign
-echo "[1/15] Fakesigning com.matthewbenedict.CyberKit.GPU.xpc"
-ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.GPU.xpc"
-echo "[2/15] Fakesigning com.matthewbenedict.CyberKit.Networking.xpc"
-ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.Networking.xpc"
-echo "[3/15] Fakesigning com.matthewbenedict.CyberKit.WebContent.CaptivePortal.xpc"
-ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.WebContent.CaptivePortal.xpc"
-echo "[4/15] Fakesigning com.matthewbenedict.CyberKit.WebContent.Crashy.xpc"
-ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.WebContent.Crashy.xpc"
-echo "[5/15] Fakesigning com.matthewbenedict.CyberKit.WebContent.Development.xpc"
-ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.WebContent.Development.xpc"
-echo "[6/15] Fakesigning com.matthewbenedict.CyberKit.WebContent.xpc"
-ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberKit.framework/XPCServices/com.matthewbenedict.CyberKit.WebContent.xpc"
+echo "[1/15] Fakesigning com.apple.WebKit.GPU.xpc"
+ldid -S"script_fakesigner.entitlements" "$app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.GPU.xpc"
+echo "[2/15] Fakesigning com.apple.WebKit.Networking.xpc"
+ldid -S"script_fakesigner.entitlements" "$app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.Networking.xpc"
+echo "[3/15] Fakesigning com.apple.WebKit.WebContent.CaptivePortal.xpc"
+ldid -S"script_fakesigner.entitlements" "$app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.WebContent.CaptivePortal.xpc"
+echo "[4/15] Fakesigning com.apple.WebKit.WebContent.Crashy.xpc"
+ldid -S"script_fakesigner.entitlements" "$app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.WebContent.Crashy.xpc"
+echo "[5/15] Fakesigning com.apple.WebKit.WebContent.Development.xpc"
+ldid -S"script_fakesigner.entitlements" "$app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.WebContent.Development.xpc"
+echo "[6/15] Fakesigning com.apple.WebKit.WebContent.xpc"
+ldid -S"script_fakesigner.entitlements" "$app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.WebContent.xpc"
 echo "[7/15] Fakesigning libANGLE-shared.dylib"
 ldid -S"script_fakesigner.entitlements" "$app/Frameworks/libANGLE-shared.dylib"
 echo "[8/15] Fakesigning libwebrtc.dylib"
 ldid -S"script_fakesigner.entitlements" "$app/Frameworks/libwebrtc.dylib"
 
-echo "[9/15] Fakesigning CyberCore.framework"
-ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberCore.framework/CyberCore"
-echo "[10/15] Fakesigning CyberKit.framework"
-ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberKit.framework/CyberKit"
-echo "[11/15] Fakesigning CyberKitLegacy.framework"
-ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberKitLegacy.framework/CyberKitLegacy"
-echo "[12/15] Fakesigning CyberScriptCore.framework"
-ldid -S"script_fakesigner.entitlements" "$app/Frameworks/CyberScriptCore.framework/CyberScriptCore"
+echo "[9/15] Fakesigning WebCore.framework"
+ldid -S"script_fakesigner.entitlements" "$app/Frameworks/WebCore.framework/WebCore"
+echo "[10/15] Fakesigning WebKit.framework"
+ldid -S"script_fakesigner.entitlements" "$app/Frameworks/WebKit.framework/WebKit"
+echo "[11/15] Fakesigning WebKitLegacy.framework"
+ldid -S"script_fakesigner.entitlements" "$app/Frameworks/WebKitLegacy.framework/WebKitLegacy"
+echo "[12/15] Fakesigning JavaScriptCore.framework"
+ldid -S"script_fakesigner.entitlements" "$app/Frameworks/JavaScriptCore.framework/JavaScriptCore"
 echo "[13/15] Fakesigning MobileMiniBrowser.framework"
 ldid -S"script_fakesigner.entitlements" "$app/Frameworks/MobileMiniBrowser.framework/MobileMiniBrowser"
 echo "[14/15] Fakesigning WebGPU.framework"
@@ -95,11 +108,11 @@ rm -f *.deb || true
 DIR_NAME=$1
 if [[ "$DIR_NAME" == *"+"* ]]; then
     if [[ ${DIR_NAME#*+} -le 10 ]]; then
-        # We manually stash CyberKit on legacy iOS because it doesn't fit in the root partition
+        # We manually stash WebKit on legacy iOS because it doesn't fit in the root partition
         echo "[*] Using stashed application path"
         APPLICATION_PATH=$DIR_NAME/private/var/mobile/Containers/Bundle/Application/DEADBEEF-DEAD-BEEF-DEAD-BEEFC1B34800
     else
-        # Put CyberKit in the rootful application path
+        # Put WebKit in the rootful application path
         echo "[*] Using rootful application path"
         APPLICATION_PATH=$DIR_NAME/Applications
     fi
