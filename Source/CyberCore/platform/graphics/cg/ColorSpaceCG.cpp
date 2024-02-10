@@ -50,7 +50,7 @@ template<const CFStringRef& colorSpaceNameGlobalConstant> static CGColorSpaceRef
 template<const CFStringRef& colorSpaceNameGlobalConstant> static CGColorSpaceRef extendedNamedColorSpace()
 {
 #if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
-    if (floor(kCFCoreFoundationVersionNumber) > kCFCoreFoundationVersionNumber_iOS_14_0) {
+    if (CGColorSpaceCreateExtended != NULL) {
 #endif
     static NeverDestroyed<RetainPtr<CGColorSpaceRef>> colorSpace;
     static std::once_flag onceFlag;
@@ -95,14 +95,28 @@ CGColorSpaceRef extendedAdobeRGB1998ColorSpaceRef()
 #if HAVE(CORE_GRAPHICS_EXTENDED_DISPLAY_P3_COLOR_SPACE)
 CGColorSpaceRef extendedDisplayP3ColorSpaceRef()
 {
+#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
+    if (&kCGColorSpaceExtendedDisplayP3 != NULL) {
+#endif
     return namedColorSpace<kCGColorSpaceExtendedDisplayP3>();
+#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
+    }
+    return nullptr;
+#endif
 }
 #endif
 
 #if HAVE(CORE_GRAPHICS_EXTENDED_ITUR_2020_COLOR_SPACE)
 CGColorSpaceRef extendedITUR_2020ColorSpaceRef()
 {
+#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
+    if (&kCGColorSpaceExtendedITUR_2020 != NULL) {
+#endif
     return namedColorSpace<kCGColorSpaceExtendedITUR_2020>();
+#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
+    }
+    return nullptr;
+#endif
 }
 #endif
 
@@ -182,6 +196,8 @@ std::optional<ColorSpace> colorSpaceForCGColorSpace(CGColorSpaceRef colorSpace)
         return ColorSpace::LinearSRGB;
 #endif
 
+    if (colorSpace == nullptr)
+        return std::nullopt;
 
 #if HAVE(CORE_GRAPHICS_ADOBE_RGB_1998_COLOR_SPACE)
     if (CGColorSpaceEqualToColorSpace(colorSpace, adobeRGB1998ColorSpaceRef()))

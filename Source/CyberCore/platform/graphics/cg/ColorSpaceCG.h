@@ -60,13 +60,7 @@ template<> struct CGColorSpaceMapping<ColorSpace::DisplayP3> { };
 WEBCORE_EXPORT CGColorSpaceRef extendedAdobeRGB1998ColorSpaceRef();
 template<> struct CGColorSpaceMapping<ColorSpace::ExtendedA98RGB> {
     static CGColorSpaceRef colorSpace() {
-#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
-        if (floor(kCFCoreFoundationVersionNumber) > kCFCoreFoundationVersionNumber_iOS_14_0)
-#endif
         return extendedAdobeRGB1998ColorSpaceRef();
-#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
-        return nullptr;
-#endif
     }
 };
 #else
@@ -77,13 +71,7 @@ template<> struct CGColorSpaceMapping<ColorSpace::ExtendedA98RGB> { };
 WEBCORE_EXPORT CGColorSpaceRef extendedDisplayP3ColorSpaceRef();
 template<> struct CGColorSpaceMapping<ColorSpace::ExtendedDisplayP3> {
     static CGColorSpaceRef colorSpace() {
-#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
-        if (floor(kCFCoreFoundationVersionNumber) > kCFCoreFoundationVersionNumber_iOS_14_0)
-#endif
         return extendedDisplayP3ColorSpaceRef();
-#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
-        return nullptr;
-#endif
     }
 };
 #else
@@ -94,13 +82,7 @@ template<> struct CGColorSpaceMapping<ColorSpace::ExtendedDisplayP3> { };
 WEBCORE_EXPORT CGColorSpaceRef extendedITUR_2020ColorSpaceRef();
 template<> struct CGColorSpaceMapping<ColorSpace::ExtendedRec2020> {
     static CGColorSpaceRef colorSpace() {
-#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
-        if (floor(kCFCoreFoundationVersionNumber) > kCFCoreFoundationVersionNumber_iOS_14_0)
-#endif
         return extendedITUR_2020ColorSpaceRef();
-#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
-        return nullptr;
-#endif
     }
 };
 #else
@@ -118,13 +100,7 @@ template<> struct CGColorSpaceMapping<ColorSpace::ExtendedLinearSRGB> { };
 WEBCORE_EXPORT CGColorSpaceRef extendedROMMRGBColorSpaceRef();
 template<> struct CGColorSpaceMapping<ColorSpace::ExtendedProPhotoRGB> {
     static CGColorSpaceRef colorSpace() {
-#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
-        if (floor(kCFCoreFoundationVersionNumber) > kCFCoreFoundationVersionNumber_iOS_14_0)
-#endif
         return extendedROMMRGBColorSpaceRef();
-#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
-        return nullptr;
-#endif
     }
 };
 #else
