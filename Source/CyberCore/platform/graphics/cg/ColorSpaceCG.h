@@ -32,9 +32,6 @@
 
 WTF_DECLARE_CF_TYPE_TRAIT(CGColorSpace);
 
-#include <CoreFoundation/CoreFoundation.h>
-#define kCFCoreFoundationVersionNumber_iOS_14_0 1751.108
-
 namespace CyberCore {
 
 template<ColorSpace> struct CGColorSpaceMapping;

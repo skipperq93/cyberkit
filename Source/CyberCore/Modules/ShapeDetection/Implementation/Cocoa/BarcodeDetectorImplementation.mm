@@ -156,8 +156,12 @@ static RetainPtr<VNDetectBarcodesRequest> request()
 
 void BarcodeDetectorImpl::getSupportedFormats(CompletionHandler<void(Vector<BarcodeFormat>&&)>&& completionHandler)
 {
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
     NSError *error = nil;
     NSArray<VNBarcodeSymbology> *supportedSymbologies = [request() supportedSymbologiesAndReturnError:&error];
+#else
+    NSArray<VNBarcodeSymbology> *supportedSymbologies = VNDetectBarcodesRequest.supportedSymbologies;
+#endif
 
     BarcodeFormatSet barcodeFormatsSet;
     barcodeFormatsSet.reserveInitialCapacity(supportedSymbologies.count);

@@ -89,6 +89,8 @@ WEBCORE_EXPORT @interface CyberPresentationIntent : NSObject <NSCopying, NSCodin
 - (CyberPresentationIntent *_Nonnull) initWithIdentity:(NSInteger)identity
                                        parentIntent:(CyberPresentationIntent *_Nullable)parent;
 @end
+
+#define NSPresentationIntentAttributeName @"CyberPresentationIntent"
 #endif
 
 namespace CyberCore {

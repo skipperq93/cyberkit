@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25063,8 +25063,6 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"$(SOURCE_VERSION_LDFLAGS)",
-					"-weak_library",
-					/usr/lib/libSystem.B.dylib,
 				);
 				"OTHER_LDFLAGS[sdk=appletv*]" = (
 					"$(inherited)",
@@ -25081,8 +25079,6 @@
 					UIKit,
 					"-framework",
 					CoreGraphics,
-					"-weak_library",
-					/usr/lib/libSystem.B.dylib,
 				);
 				"OTHER_LDFLAGS[sdk=macosx*]" = (
 					"$(inherited)",

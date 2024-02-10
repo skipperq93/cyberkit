@@ -80,8 +80,6 @@
     return [[CyberPresentationIntent alloc] initWithIdentity:identity parentIntent:parent];
 }
 @end
-
-NSString *_Nonnull const NSPresentationIntentAttributeName = @"CyberPresentationIntent";
 #endif
 
 namespace CyberCore {

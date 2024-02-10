@@ -697,7 +697,9 @@ void GradientRendererCG::drawConicGradient(CGContextRef platformContext, CGPoint
 #if HAVE(CORE_GRAPHICS_CONIC_GRADIENTS)
     WTF::switchOn(m_strategy,
         [&] (Gradient& gradient) {
+            ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
             CGContextDrawConicGradient(platformContext, gradient.gradient.get(), center, angle);
+            ALLOW_NEW_API_WITHOUT_GUARDS_END
         },
         [&] (Shading& shading) {
             CGContextDrawShading(platformContext, adoptCF(CGShadingCreateConic(shading.colorSpace.get(), center, angle, shading.function.get())).get());

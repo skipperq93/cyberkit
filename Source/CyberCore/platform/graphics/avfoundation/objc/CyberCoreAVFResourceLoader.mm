@@ -362,8 +362,11 @@ void CyberCoreAVFResourceLoader::responseReceived(const ResourceResponse& respon
         // When the property is YES, AVAssetResourceLoader will request small data ranges over and over again
         // during the playback. For DataURLResourceMediaLoader, that means it needs to decode the URL repeatedly,
         // which is very inefficient for long URLs.
-        if (!m_dataURLMediaLoader && [contentInfo respondsToSelector:@selector(setEntireLengthAvailableOnDemand:)])
+        if (!m_dataURLMediaLoader && [contentInfo respondsToSelector:@selector(setEntireLengthAvailableOnDemand:)]) {
+            ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
             [contentInfo setEntireLengthAvailableOnDemand:YES];
+            ALLOW_NEW_API_WITHOUT_GUARDS_END
+        }
 
         if (![m_avRequest dataRequest]) {
             [m_avRequest finishLoading];
