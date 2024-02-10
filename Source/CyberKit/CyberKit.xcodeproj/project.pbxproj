@@ -2361,6 +2361,34 @@
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = CyberKit;
 		};
+		486A09072B4C5D710091B368 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4851EC972B4AE88700B054E5 /* CyberKitSwiftOverlay.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7D20067522F2652E008DF640;
+			remoteInfo = CyberKitSwiftOverlay;
+		};
+		486A09092B4C5D710091B368 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4851EC972B4AE88700B054E5 /* CyberKitSwiftOverlay.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7D20068722F26721008DF640;
+			remoteInfo = "CyberKitSwiftOverlay-maccatalyst";
+		};
+		486A090B2B4C5D710091B368 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4851EC972B4AE88700B054E5 /* CyberKitSwiftOverlay.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7D20070722F4EB72008DF640;
+			remoteInfo = CyberKitSwiftOverlayTests;
+		};
+		486A090D2B4C5D710091B368 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4851EC972B4AE88700B054E5 /* CyberKitSwiftOverlay.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7D20071622F4ECCA008DF640;
+			remoteInfo = "CyberKitSwiftOverlayTests-maccatalyst";
+		};
 		517B5F6C275B07C3002DC22D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
@@ -4741,30 +4769,10 @@
 		46F38E8B2416E66D0059375A /* RunningBoardServicesSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunningBoardServicesSPI.h; sourceTree = "<group>"; };
 		46F9B26223526ED0006FE5FA /* WebBackForwardCacheEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebBackForwardCacheEntry.h; sourceTree = "<group>"; };
 		46FA2E752A04240300912BFE /* RemoteWorkerType.serialization.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = RemoteWorkerType.serialization.in; sourceTree = "<group>"; };
-		48120C062B018015003D19DC /* libcyberkit.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcyberkit.dylib; path = "../../_jetsam/Build/Products/Debug-iphoneos/libcyberkit.dylib"; sourceTree = "<group>"; };
-		48120C132B0180B3003D19DC /* _jetsam */ = {isa = PBXFileReference; lastKnownFileType = folder; name = _jetsam; path = ../../_jetsam; sourceTree = "<group>"; };
-		4814C2BF2B012A8200A315DF /* __CyberKitJetsam.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = __CyberKitJetsam.dylib; path = ../../jetsam/Library/MobileSubstrate/DynamicLibraries/__CyberKitJetsam.dylib; sourceTree = "<group>"; };
-		482730652B01882D0092136C /* _cyberkit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _cyberkit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		482730692B0188390092136C /* _cyberkit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _cyberkit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		4827306D2B0188430092136C /* _cyberkit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _cyberkit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		482730712B01884E0092136C /* _cyberkit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _cyberkit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		482730752B0188540092136C /* _cyberkit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _cyberkit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		482730782B0188620092136C /* _cyberkit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _cyberkit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		4851EC972B4AE88700B054E5 /* CyberKitSwiftOverlay.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CyberKitSwiftOverlay.xcodeproj; path = SwiftOverlay/CyberKitSwiftOverlay.xcodeproj; sourceTree = "<group>"; };
 		48704BB12A003A0A00B3F507 /* AssertionServicesSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssertionServicesSPI.h; sourceTree = "<group>"; };
 		48704BB32A003AB300B3F507 /* ProcessTaskStateObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessTaskStateObserver.h; sourceTree = "<group>"; };
 		48704BB42A003AB300B3F507 /* ProcessTaskStateObserver.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ProcessTaskStateObserver.mm; sourceTree = "<group>"; };
-		4887FA392B0271A50047168B /* libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		4887FA3D2B0271B30047168B /* libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		4887FA412B0271C90047168B /* libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		4887FA452B0271DB0047168B /* libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		4887FA492B0271E70047168B /* libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		4887FA4D2B0271F30047168B /* libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		48B421162B02CE7C009B329B /* _libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		48B4211A2B02CE8F009B329B /* _libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		48B4211E2B02CEA1009B329B /* _libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		48B421222B02CEB0009B329B /* _libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		48B421262B02CEBC009B329B /* _libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		48B4212A2B02CEC9009B329B /* _libJetsamConfigurator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = _libJetsamConfigurator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		493102BC2683F3A5002BB885 /* AppPrivacyReport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppPrivacyReport.h; sourceTree = "<group>"; };
 		4955A6E528076D4C00BB91C4 /* ArrayReferenceTuple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayReferenceTuple.h; sourceTree = "<group>"; };
 		4973DF472422941F00E4C26A /* NavigatingToAppBoundDomain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigatingToAppBoundDomain.h; sourceTree = "<group>"; };
@@ -7618,6 +7626,7 @@
 		0867D691FE84028FC02AAC07 /* CyberKit2 */ = {
 			isa = PBXGroup;
 			children = (
+				4851EC972B4AE88700B054E5 /* CyberKitSwiftOverlay.xcodeproj */,
 				5C157A0A2717C9F100ED5280 /* webpushd */,
 				B396EA5512E0ED2D00F4FEB7 /* config.h */,
 				2D7DEBE021269D5F00B9F73C /* Sources.txt */,
@@ -10524,6 +10533,17 @@
 			path = cocoa;
 			sourceTree = "<group>";
 		};
+		486A09012B4C5D710091B368 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				486A09082B4C5D710091B368 /* libswiftCyberKit.dylib */,
+				486A090A2B4C5D710091B368 /* libswiftCyberKit.dylib */,
+				486A090C2B4C5D710091B368 /* CyberKitSwiftOverlayTests.xctest */,
+				486A090E2B4C5D710091B368 /* CyberKitSwiftOverlayTests-maccatalyst.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		4A410F4119AF7B27002EBAB5 /* MediaStream */ = {
 			isa = PBXGroup;
 			children = (
@@ -11001,27 +11021,6 @@
 		5750F3292032D4E300389347 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				48B4212A2B02CEC9009B329B /* _libJetsamConfigurator.dylib */,
-				48B421262B02CEBC009B329B /* _libJetsamConfigurator.dylib */,
-				48B421222B02CEB0009B329B /* _libJetsamConfigurator.dylib */,
-				48B4211E2B02CEA1009B329B /* _libJetsamConfigurator.dylib */,
-				48B4211A2B02CE8F009B329B /* _libJetsamConfigurator.dylib */,
-				48B421162B02CE7C009B329B /* _libJetsamConfigurator.dylib */,
-				4887FA4D2B0271F30047168B /* libJetsamConfigurator.dylib */,
-				4887FA492B0271E70047168B /* libJetsamConfigurator.dylib */,
-				4887FA452B0271DB0047168B /* libJetsamConfigurator.dylib */,
-				4887FA412B0271C90047168B /* libJetsamConfigurator.dylib */,
-				4887FA3D2B0271B30047168B /* libJetsamConfigurator.dylib */,
-				4887FA392B0271A50047168B /* libJetsamConfigurator.dylib */,
-				482730782B0188620092136C /* _cyberkit.dylib */,
-				482730752B0188540092136C /* _cyberkit.dylib */,
-				482730712B01884E0092136C /* _cyberkit.dylib */,
-				4827306D2B0188430092136C /* _cyberkit.dylib */,
-				482730692B0188390092136C /* _cyberkit.dylib */,
-				482730652B01882D0092136C /* _cyberkit.dylib */,
-				48120C132B0180B3003D19DC /* _jetsam */,
-				48120C062B018015003D19DC /* libcyberkit.dylib */,
-				4814C2BF2B012A8200A315DF /* __CyberKitJetsam.dylib */,
 				DDAB377528234B2100890546 /* AuthenticationServicesCore.framework */,
 				52A69BE9286CFFAC00893E8F /* CryptoTokenKit.framework */,
 				E34B110C27C46BC6006D2F2E /* libCyberCoreTestShim.dylib */,
@@ -15923,6 +15922,12 @@
 			mainGroup = 0867D691FE84028FC02AAC07 /* CyberKit2 */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 486A09012B4C5D710091B368 /* Products */;
+					ProjectRef = 4851EC972B4AE88700B054E5 /* CyberKitSwiftOverlay.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1A50DB38110A3C13000D3FE5 /* Framework, XPC Services, and daemons */,
@@ -15949,6 +15954,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		486A09082B4C5D710091B368 /* libswiftCyberKit.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libswiftCyberKit.dylib;
+			remoteRef = 486A09072B4C5D710091B368 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		486A090A2B4C5D710091B368 /* libswiftCyberKit.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libswiftCyberKit.dylib;
+			remoteRef = 486A09092B4C5D710091B368 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		486A090C2B4C5D710091B368 /* CyberKitSwiftOverlayTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CyberKitSwiftOverlayTests.xctest;
+			remoteRef = 486A090B2B4C5D710091B368 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		486A090E2B4C5D710091B368 /* CyberKitSwiftOverlayTests-maccatalyst.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "CyberKitSwiftOverlayTests-maccatalyst.xctest";
+			remoteRef = 486A090D2B4C5D710091B368 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2D9FB221237523830049F936 /* Resources */ = {
@@ -17742,7 +17778,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 			};
@@ -17756,7 +17791,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 			};
@@ -18004,7 +18038,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJ87WGCZM7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.CyberKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 			};

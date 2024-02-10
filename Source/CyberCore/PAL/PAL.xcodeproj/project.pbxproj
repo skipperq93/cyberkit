@@ -1622,6 +1622,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C09D05D1E31C77A00725F18 /* PAL.xcconfig */;
 			buildSettings = {
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -1629,6 +1630,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C09D05D1E31C77A00725F18 /* PAL.xcconfig */;
 			buildSettings = {
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -1644,6 +1646,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C09D05D1E31C77A00725F18 /* PAL.xcconfig */;
 			buildSettings = {
+				SDKROOT = iphoneos;
 			};
 			name = Production;
 		};
