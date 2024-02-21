@@ -187,7 +187,7 @@ constexpr MTLBarrierScope kBarrierScopeRenderTargets = MTLBarrierScopeRenderTarg
 constexpr MTLBarrierScope kBarrierScopeRenderTargets       = MTLBarrierScope(0);
 #endif
 
-#if defined(__IPHONE_13_0) || defined(__MAC_10_15)
+#if (TARGET_OS_IOS && __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000) || (TARGET_OS_OSX && __MAC_OS_X_VERSION_MIN_REQUIRED >= 101500)
 #    define ANGLE_MTL_SWIZZLE_AVAILABLE 1
 using TextureSwizzleChannels                   = MTLTextureSwizzleChannels;
 using BarrierScope                             = MTLBarrierScope;
@@ -197,6 +197,7 @@ constexpr MTLRenderStages kRenderStageFragment = MTLRenderStageFragment;
 #else
 #    define ANGLE_MTL_SWIZZLE_AVAILABLE 0
 using TextureSwizzleChannels                               = int;
+using BarrierScope                                         = int;
 using RenderStages                                         = int;
 constexpr RenderStages kRenderStageVertex                  = 1;
 constexpr RenderStages kRenderStageFragment                = 2;

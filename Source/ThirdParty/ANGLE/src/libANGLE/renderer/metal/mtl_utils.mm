@@ -1064,7 +1064,7 @@ MTLSamplerAddressMode GetSamplerAddressMode(GLenum wrap)
     {
         case GL_CLAMP_TO_EDGE:
             return MTLSamplerAddressModeClampToEdge;
-#if !ANGLE_PLATFORM_WATCHOS
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000 && !ANGLE_PLATFORM_WATCHOS
         case GL_MIRROR_CLAMP_TO_EDGE_EXT:
             return MTLSamplerAddressModeMirrorClampToEdge;
 #endif

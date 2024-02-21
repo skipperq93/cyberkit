@@ -1563,8 +1563,13 @@ void Format::init(const DisplayMtl *display, angle::FormatID intendedFormatId_)
 
         case angle::FormatID::D16_UNORM:
 
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             this->metalFormat    = MTLPixelFormatDepth16Unorm;
             this->actualFormatId = angle::FormatID::D16_UNORM;
+#else
+            this->metalFormat    = MTLPixelFormatDepth32Float;
+            this->actualFormatId = angle::FormatID::D32_FLOAT;
+#endif
             break;
 
         case angle::FormatID::EAC_R11G11_SNORM_BLOCK:
@@ -1719,7 +1724,7 @@ void Format::init(const DisplayMtl *display, angle::FormatID intendedFormatId_)
 
 #    if TARGET_OS_IOS
         case angle::FormatID::ASTC_10x10_UNORM_BLOCK:
-
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             if (display->supportsAppleGPUFamily(6))
             {
                 this->metalFormat    = MTLPixelFormatASTC_10x10_HDR;
@@ -1727,13 +1732,16 @@ void Format::init(const DisplayMtl *display, angle::FormatID intendedFormatId_)
             }
             else
             {
+#endif
                 this->metalFormat    = MTLPixelFormatASTC_10x10_LDR;
                 this->actualFormatId = angle::FormatID::ASTC_10x10_UNORM_BLOCK;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             }
+#endif
             break;
 
         case angle::FormatID::ASTC_10x5_UNORM_BLOCK:
-
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             if (display->supportsAppleGPUFamily(6))
             {
                 this->metalFormat    = MTLPixelFormatASTC_10x5_HDR;
@@ -1741,13 +1749,16 @@ void Format::init(const DisplayMtl *display, angle::FormatID intendedFormatId_)
             }
             else
             {
+#endif
                 this->metalFormat    = MTLPixelFormatASTC_10x5_LDR;
                 this->actualFormatId = angle::FormatID::ASTC_10x5_UNORM_BLOCK;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             }
+#endif
             break;
 
         case angle::FormatID::ASTC_10x6_UNORM_BLOCK:
-
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             if (display->supportsAppleGPUFamily(6))
             {
                 this->metalFormat    = MTLPixelFormatASTC_10x6_HDR;
@@ -1755,13 +1766,16 @@ void Format::init(const DisplayMtl *display, angle::FormatID intendedFormatId_)
             }
             else
             {
+#endif
                 this->metalFormat    = MTLPixelFormatASTC_10x6_LDR;
                 this->actualFormatId = angle::FormatID::ASTC_10x6_UNORM_BLOCK;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             }
+#endif
             break;
 
         case angle::FormatID::ASTC_10x8_UNORM_BLOCK:
-
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             if (display->supportsAppleGPUFamily(6))
             {
                 this->metalFormat    = MTLPixelFormatASTC_10x8_HDR;
@@ -1769,13 +1783,16 @@ void Format::init(const DisplayMtl *display, angle::FormatID intendedFormatId_)
             }
             else
             {
+#endif
                 this->metalFormat    = MTLPixelFormatASTC_10x8_LDR;
                 this->actualFormatId = angle::FormatID::ASTC_10x8_UNORM_BLOCK;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             }
+#endif
             break;
 
         case angle::FormatID::ASTC_12x10_UNORM_BLOCK:
-
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             if (display->supportsAppleGPUFamily(6))
             {
                 this->metalFormat    = MTLPixelFormatASTC_12x10_HDR;
@@ -1783,13 +1800,16 @@ void Format::init(const DisplayMtl *display, angle::FormatID intendedFormatId_)
             }
             else
             {
+#endif
                 this->metalFormat    = MTLPixelFormatASTC_12x10_LDR;
                 this->actualFormatId = angle::FormatID::ASTC_12x10_UNORM_BLOCK;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             }
+#endif
             break;
 
         case angle::FormatID::ASTC_12x12_UNORM_BLOCK:
-
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             if (display->supportsAppleGPUFamily(6))
             {
                 this->metalFormat    = MTLPixelFormatASTC_12x12_HDR;
@@ -1797,13 +1817,16 @@ void Format::init(const DisplayMtl *display, angle::FormatID intendedFormatId_)
             }
             else
             {
+#endif
                 this->metalFormat    = MTLPixelFormatASTC_12x12_LDR;
                 this->actualFormatId = angle::FormatID::ASTC_12x12_UNORM_BLOCK;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             }
+#endif
             break;
 
         case angle::FormatID::ASTC_4x4_UNORM_BLOCK:
-
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             if (display->supportsAppleGPUFamily(6))
             {
                 this->metalFormat    = MTLPixelFormatASTC_4x4_HDR;
@@ -1811,13 +1834,16 @@ void Format::init(const DisplayMtl *display, angle::FormatID intendedFormatId_)
             }
             else
             {
+#endif
                 this->metalFormat    = MTLPixelFormatASTC_4x4_LDR;
                 this->actualFormatId = angle::FormatID::ASTC_4x4_UNORM_BLOCK;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             }
+#endif
             break;
 
         case angle::FormatID::ASTC_5x4_UNORM_BLOCK:
-
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             if (display->supportsAppleGPUFamily(6))
             {
                 this->metalFormat    = MTLPixelFormatASTC_5x4_HDR;
@@ -1825,13 +1851,16 @@ void Format::init(const DisplayMtl *display, angle::FormatID intendedFormatId_)
             }
             else
             {
+#endif
                 this->metalFormat    = MTLPixelFormatASTC_5x4_LDR;
                 this->actualFormatId = angle::FormatID::ASTC_5x4_UNORM_BLOCK;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             }
+#endif
             break;
 
         case angle::FormatID::ASTC_5x5_UNORM_BLOCK:
-
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             if (display->supportsAppleGPUFamily(6))
             {
                 this->metalFormat    = MTLPixelFormatASTC_5x5_HDR;
@@ -1839,13 +1868,16 @@ void Format::init(const DisplayMtl *display, angle::FormatID intendedFormatId_)
             }
             else
             {
+#endif
                 this->metalFormat    = MTLPixelFormatASTC_5x5_LDR;
                 this->actualFormatId = angle::FormatID::ASTC_5x5_UNORM_BLOCK;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             }
+#endif
             break;
 
         case angle::FormatID::ASTC_6x5_UNORM_BLOCK:
-
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             if (display->supportsAppleGPUFamily(6))
             {
                 this->metalFormat    = MTLPixelFormatASTC_6x5_HDR;
@@ -1853,13 +1885,16 @@ void Format::init(const DisplayMtl *display, angle::FormatID intendedFormatId_)
             }
             else
             {
+#endif
                 this->metalFormat    = MTLPixelFormatASTC_6x5_LDR;
                 this->actualFormatId = angle::FormatID::ASTC_6x5_UNORM_BLOCK;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             }
+#endif
             break;
 
         case angle::FormatID::ASTC_6x6_UNORM_BLOCK:
-
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             if (display->supportsAppleGPUFamily(6))
             {
                 this->metalFormat    = MTLPixelFormatASTC_6x6_HDR;
@@ -1867,13 +1902,16 @@ void Format::init(const DisplayMtl *display, angle::FormatID intendedFormatId_)
             }
             else
             {
+#endif
                 this->metalFormat    = MTLPixelFormatASTC_6x6_LDR;
                 this->actualFormatId = angle::FormatID::ASTC_6x6_UNORM_BLOCK;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             }
+#endif
             break;
 
         case angle::FormatID::ASTC_8x5_UNORM_BLOCK:
-
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             if (display->supportsAppleGPUFamily(6))
             {
                 this->metalFormat    = MTLPixelFormatASTC_8x5_HDR;
@@ -1881,13 +1919,16 @@ void Format::init(const DisplayMtl *display, angle::FormatID intendedFormatId_)
             }
             else
             {
+#endif
                 this->metalFormat    = MTLPixelFormatASTC_8x5_LDR;
                 this->actualFormatId = angle::FormatID::ASTC_8x5_UNORM_BLOCK;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             }
+#endif
             break;
 
         case angle::FormatID::ASTC_8x6_UNORM_BLOCK:
-
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             if (display->supportsAppleGPUFamily(6))
             {
                 this->metalFormat    = MTLPixelFormatASTC_8x6_HDR;
@@ -1895,13 +1936,16 @@ void Format::init(const DisplayMtl *display, angle::FormatID intendedFormatId_)
             }
             else
             {
+#endif
                 this->metalFormat    = MTLPixelFormatASTC_8x6_LDR;
                 this->actualFormatId = angle::FormatID::ASTC_8x6_UNORM_BLOCK;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             }
+#endif
             break;
 
         case angle::FormatID::ASTC_8x8_UNORM_BLOCK:
-
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             if (display->supportsAppleGPUFamily(6))
             {
                 this->metalFormat    = MTLPixelFormatASTC_8x8_HDR;
@@ -1909,9 +1953,12 @@ void Format::init(const DisplayMtl *display, angle::FormatID intendedFormatId_)
             }
             else
             {
+#endif
                 this->metalFormat    = MTLPixelFormatASTC_8x8_LDR;
                 this->actualFormatId = angle::FormatID::ASTC_8x8_UNORM_BLOCK;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             }
+#endif
             break;
 
 #    elif TARGET_OS_TV || TARGET_OS_WATCH
@@ -4005,11 +4052,12 @@ void FormatTable::initNativeFormatCapsAutogen(const DisplayMtl *display)
                   /** resolve*/ display->supportsAppleGPUFamily(1),
                   /** colorRenderable*/ display->supportsAppleGPUFamily(1),
                   /** depthRenderable*/ false);
-
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
     setFormatCaps(MTLPixelFormatDepth16Unorm, /** filterable*/ true, /** writable*/ false,
                   /** blendable*/ false, /** multisample*/ true,
                   /** resolve*/ supportDepthAutoResolve, /** colorRenderable*/ false,
                   /** depthRenderable*/ true);
+#endif
 
     setFormatCaps(MTLPixelFormatEAC_R11Snorm, /** filterable*/ display->supportsAppleGPUFamily(1),
                   /** writable*/ false, /** blendable*/ false, /** multisample*/ false,
@@ -4106,7 +4154,7 @@ void FormatTable::initNativeFormatCapsAutogen(const DisplayMtl *display)
                   /** colorRenderable*/ display->supportsAppleGPUFamily(1),
                   /** depthRenderable*/ false);
 
-#    if TARGET_OS_IOS || TARGET_OS_OSX
+#    if (TARGET_OS_IOS && __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000) || TARGET_OS_OSX
     setFormatCaps(MTLPixelFormatASTC_10x10_HDR, /** filterable*/ display->supportsAppleGPUFamily(6),
                   /** writable*/ false, /** blendable*/ false, /** multisample*/ false,
                   /** resolve*/ false, /** colorRenderable*/ false, /** depthRenderable*/ false);
