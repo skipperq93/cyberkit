@@ -199,7 +199,9 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol PKPaymentAuthorizationControllerPrivateDelegate <NSObject>
 @optional
 - (void)paymentAuthorizationController:(PKPaymentAuthorizationController *)controller willFinishWithError:(NSError *)error;
+ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
 - (void)paymentAuthorizationController:(PKPaymentAuthorizationController *)controller didRequestMerchantSession:(void(^)(PKPaymentMerchantSession *, NSError *))sessionBlock;
+ALLOW_NEW_API_WITHOUT_GUARDS_END
 @end
 
 @class PKPaymentSetupRequest;
@@ -281,7 +283,9 @@ typedef NS_ENUM(NSInteger, PKPaymentSetupFeatureType) {
 - (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)controller willFinishWithError:(NSError *)error;
 
 @optional
+ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
 - (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)controller didRequestMerchantSession:(void(^)(PKPaymentMerchantSession *, NSError *))sessionBlock;
+ALLOW_NEW_API_WITHOUT_GUARDS_END
 @end
 
 @interface PKPaymentRequest ()

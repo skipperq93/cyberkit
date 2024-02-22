@@ -54,6 +54,7 @@ void TextDetectorImpl::detect(Ref<ImageBuffer>&& imageBuffer, CompletionHandler<
         return;
     }
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
     auto request = adoptNS([PAL::allocVNRecognizeTextRequestInstance() init]);
     configureRequestToUseCPUOrGPU(request.get());
 
@@ -77,6 +78,11 @@ void TextDetectorImpl::detect(Ref<ImageBuffer>&& imageBuffer, CompletionHandler<
     }
 
     completionHandler(WTFMove(results));
+#else
+    // It's a bit of work, but we can implement it if we want to using this tutorial:
+    // https://martinmitrevski.com/2017/10/19/text-recognition-using-vision-and-coreml/
+    CRASH();
+#endif
 }
 
 } // namespace CyberCore::ShapeDetection

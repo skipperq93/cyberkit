@@ -149,6 +149,7 @@ static bool indicatorWantsFadeIn(const CyberCore::TextIndicator& indicator)
     auto bounceLayers = adoptNS([[NSMutableArray alloc] init]);
 
     RetainPtr<CGColorRef> highlightColor;
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
     auto rimShadowColor = adoptCF(CGColorCreateGenericGray(0, 0.35));
     auto dropShadowColor = adoptCF(CGColorCreateGenericGray(0, 0.2));
     auto borderColor = adoptCF(CGColorCreateSRGB(0.96, 0.9, 0, 1));
@@ -156,6 +157,12 @@ static bool indicatorWantsFadeIn(const CyberCore::TextIndicator& indicator)
     highlightColor = [NSColor findHighlightColor].CGColor;
 #else
     highlightColor = adoptCF(CGColorCreateSRGB(.99, .89, 0.22, 1.0));
+#endif
+#else
+    auto rimShadowColor = adoptCF(CGColorCreate(CGColorSpaceCreateWithName(kCGColorSpaceGenericGrayGamma2_2), new CGFloat[] {0, 0.35}));
+    auto dropShadowColor = adoptCF(CGColorCreate(CGColorSpaceCreateWithName(kCGColorSpaceGenericGrayGamma2_2), new CGFloat[] {0, 0.2}));
+    auto borderColor = adoptCF(CGColorCreate(CGColorSpaceCreateWithName(kCGColorSpaceSRGB), new CGFloat[] {0.96, 0.9, 0, 1}));
+    highlightColor = adoptCF(CGColorCreate(CGColorSpaceCreateWithName(kCGColorSpaceSRGB), new CGFloat[] {.99, .89, 0.22, 1.0}));
 #endif
     
     auto textRectsInBoundingRectCoordinates = _textIndicator->textRectsInBoundingRectCoordinates();
