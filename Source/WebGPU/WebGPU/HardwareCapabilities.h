@@ -37,8 +37,10 @@ struct HardwareCapabilities {
     struct BaseCapabilities {
         MTLArgumentBuffersTier argumentBuffersTier { MTLArgumentBuffersTier1 };
         bool supportsNonPrivateDepthStencilTextures { false };
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000
         id<MTLCounterSet> timestampCounterSet { nil };
         id<MTLCounterSet> statisticCounterSet { nil };
+#endif
         // FIXME: canPresentRGB10A2PixelFormats isn't actually a _hardware_ capability,
         // as all hardware can render to this format. It's unclear whether this should
         // apply to _all_ PresentationContexts or just PresentationContextCoreAnimation.

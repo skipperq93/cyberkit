@@ -38,6 +38,7 @@ ComputePassEncoder::ComputePassEncoder(id<MTLComputeCommandEncoder> computeComma
     : m_computeCommandEncoder(computeCommandEncoder)
     , m_device(device)
 {
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000
     if (m_device->baseCapabilities().counterSamplingAPI == HardwareCapabilities::BaseCapabilities::CounterSamplingAPI::CommandBoundary) {
         for (uint32_t i = 0; i < descriptor.timestampWriteCount; ++i) {
             const auto& timestampWrite = descriptor.timestampWrites[i];
@@ -54,6 +55,9 @@ ComputePassEncoder::ComputePassEncoder(id<MTLComputeCommandEncoder> computeComma
             }
         }
     }
+#else
+    UNUSED_PARAM(descriptor);
+#endif
 }
 
 ComputePassEncoder::ComputePassEncoder(Device& device)
@@ -87,7 +91,11 @@ void ComputePassEncoder::endPass()
 {
     ASSERT(m_pendingTimestampWrites.isEmpty() || m_device->baseCapabilities().counterSamplingAPI == HardwareCapabilities::BaseCapabilities::CounterSamplingAPI::CommandBoundary);
     for (const auto& pendingTimestampWrite : m_pendingTimestampWrites)
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000
         [m_computeCommandEncoder sampleCountersInBuffer:pendingTimestampWrite.querySet->counterSampleBuffer() atSampleIndex:pendingTimestampWrite.queryIndex withBarrier:NO];
+#else
+        (void)pendingTimestampWrite;
+#endif
     m_pendingTimestampWrites.clear();
     [m_computeCommandEncoder endEncoding];
     m_computeCommandEncoder = nil;

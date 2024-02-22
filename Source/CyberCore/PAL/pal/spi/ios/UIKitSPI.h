@@ -195,9 +195,11 @@ typedef NS_ENUM(NSInteger, _UIDataOwner) {
 @interface UIAutoRotatingWindow : UIApplicationRotationFollowingWindow
 @end
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
 @interface UITextEffectsWindow : UIAutoRotatingWindow
 + (UITextEffectsWindow *)sharedTextEffectsWindowForWindowScene:(UIWindowScene *)windowScene;
 @end
+#endif
 
 #endif // USE(APPLE_INTERNAL_SDK)
 

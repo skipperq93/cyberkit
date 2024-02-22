@@ -47,10 +47,12 @@ public:
     {
         return adoptRef(*new QuerySet(visibilityBuffer, count, type, device));
     }
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000
     static Ref<QuerySet> create(id<MTLCounterSampleBuffer> counterSampleBuffer, uint32_t count, WGPUQueryType type, Device& device)
     {
         return adoptRef(*new QuerySet(counterSampleBuffer, count, type, device));
     }
+#endif
     static Ref<QuerySet> createInvalid(Device& device)
     {
         return adoptRef(*new QuerySet(device));
@@ -70,17 +72,23 @@ public:
     uint32_t count() const { return m_count; }
     WGPUQueryType type() const { return m_type; }
     id<MTLBuffer> visibilityBuffer() const { return m_visibilityBuffer; }
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000
     id<MTLCounterSampleBuffer> counterSampleBuffer() const { return m_timestampBuffer; }
+#endif
 
 private:
     QuerySet(id<MTLBuffer>, uint32_t, WGPUQueryType, Device&);
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000
     QuerySet(id<MTLCounterSampleBuffer>, uint32_t, WGPUQueryType, Device&);
+#endif
     QuerySet(Device&);
 
     const Ref<Device> m_device;
     // FIXME: Can we use a variant for these two resources?
     id<MTLBuffer> m_visibilityBuffer { nil };
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000
     id<MTLCounterSampleBuffer> m_timestampBuffer { nil };
+#endif
     uint32_t m_count { 0 };
     WGPUQueryType m_type { WGPUQueryType_Occlusion };
 

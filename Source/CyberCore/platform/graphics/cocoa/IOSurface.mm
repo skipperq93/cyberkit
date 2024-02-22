@@ -83,10 +83,12 @@ std::unique_ptr<IOSurface> IOSurface::create(IOSurfacePool* pool, IntSize size, 
     if (pool) {
         if (auto cachedSurface = pool->takeSurface(size, colorSpace, pixelFormat)) {
             LOG_WITH_STREAM(IOSurface, stream << "IOSurface::create took from pool: " << *cachedSurface);
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000
             if (cachedSurface->name() != name) {
                 IOSurfaceSetValue(cachedSurface->surface(), kIOSurfaceName, surfaceNameToNSString(name));
                 cachedSurface->setName(name);
             }
+#endif
             return cachedSurface;
         }
     }
@@ -170,6 +172,10 @@ static NSDictionary *optionsForBiplanarSurface(IntSize size, unsigned pixelForma
             (id)kIOSurfacePlaneSize: @(secondPlaneTotalBytes)
         }
     ];
+    
+#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 140000
+    UNUSED_PARAM(name);
+#endif
 
     return @{
         (id)kIOSurfaceWidth: @(width),
@@ -180,7 +186,9 @@ static NSDictionary *optionsForBiplanarSurface(IntSize size, unsigned pixelForma
         (id)kIOSurfaceCacheMode: @(kIOMapWriteCombineCache),
 #endif
         (id)kIOSurfacePlaneInfo: planeInfo,
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000
         (id)kIOSurfaceName: surfaceNameToNSString(name)
+#endif
     };
 }
 
@@ -197,6 +205,10 @@ static NSDictionary *optionsFor32BitSurface(IntSize size, unsigned pixelFormat, 
 
     size_t totalBytes = IOSurfaceAlignProperty(kIOSurfaceAllocSize, height * bytesPerRow);
     ASSERT(totalBytes);
+    
+#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 140000
+    UNUSED_PARAM(name);
+#endif
 
     return @{
         (id)kIOSurfaceWidth: @(width),
@@ -209,7 +221,9 @@ static NSDictionary *optionsFor32BitSurface(IntSize size, unsigned pixelFormat, 
         (id)kIOSurfaceCacheMode: @(kIOMapWriteCombineCache),
 #endif
         (id)kIOSurfaceElementHeight: @(1),
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000
         (id)kIOSurfaceName: surfaceNameToNSString(name)
+#endif
     };
 
 }

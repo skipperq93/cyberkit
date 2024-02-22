@@ -231,7 +231,11 @@ static MTLPixelFormat metalPixelFormat(CVPixelBufferRef pixelBuffer, size_t plan
         return MTLPixelFormatBGRA8Unorm;
 
     case kCVPixelFormatType_DepthFloat16:     /* IEEE754-2008 binary16 (half float), describing the depth (distance to an object) in meters */
+#if  __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
         return MTLPixelFormatDepth16Unorm;
+#else
+        return MTLPixelFormatDepth32Float;
+#endif
     case kCVPixelFormatType_DepthFloat32:     /* IEEE754-2008 binary32 float, describing the depth (distance to an object) in meters */
         return MTLPixelFormatDepth32Float;
 

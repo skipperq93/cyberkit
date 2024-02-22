@@ -1420,7 +1420,11 @@ MTLPixelFormat Texture::pixelFormat(WGPUTextureFormat textureFormat)
     case WGPUTextureFormat_Stencil8:
         return MTLPixelFormatStencil8;
     case WGPUTextureFormat_Depth16Unorm:
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
         return MTLPixelFormatDepth16Unorm;
+#else
+        return MTLPixelFormatDepth32Float;
+#endif
     case WGPUTextureFormat_Depth24Plus:
         return MTLPixelFormatDepth32Float;
     case WGPUTextureFormat_Depth24PlusStencil8:
@@ -1993,7 +1997,7 @@ Ref<Texture> Device::createTexture(const WGPUTextureDescriptor& descriptor)
         if (descriptor.size.depthOrArrayLayers > 1) {
             textureDescriptor.arrayLength = descriptor.size.depthOrArrayLayers;
             if (descriptor.sampleCount > 1) {
-#if PLATFORM(WATCHOS) || PLATFORM(APPLETV)
+#if PLATFORM(WATCHOS) || PLATFORM(APPLETV) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 140000)
                 return Texture::createInvalid(*this);
 #else
                 textureDescriptor.textureType = MTLTextureType2DMultisampleArray;
@@ -2298,7 +2302,7 @@ Ref<TextureView> Texture::createView(const WGPUTextureViewDescriptor& inputDescr
         break;
     case WGPUTextureViewDimension_2DArray:
         if (m_sampleCount > 1) {
-#if PLATFORM(WATCHOS) || PLATFORM(APPLETV)
+#if PLATFORM(WATCHOS) || PLATFORM(APPLETV) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 140000)
             return TextureView::createInvalid(m_device);
 #else
             textureType = MTLTextureType2DMultisampleArray;

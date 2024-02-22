@@ -79,8 +79,10 @@ static HardwareCapabilities::BaseCapabilities baseCapabilities(id<MTLDevice> dev
     return {
         [device argumentBuffersSupport],
         false, // To be filled in by the caller.
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
         nil,
         nil,
+#endif
         false, // To be filled in by the caller.
         HardwareCapabilities::BaseCapabilities::CounterSamplingAPI::StageBoundary
     };
@@ -94,11 +96,15 @@ static Vector<WGPUFeatureName> baseFeatures(id<MTLDevice> device, const Hardware
     features.append(WGPUFeatureName_DepthClipControl);
     features.append(WGPUFeatureName_Depth32FloatStencil8);
 
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
     if (baseCapabilities.timestampCounterSet)
         features.append(WGPUFeatureName_TimestampQuery);
 
     if (baseCapabilities.statisticCounterSet)
         features.append(WGPUFeatureName_PipelineStatisticsQuery);
+#else
+    UNUSED_PARAM(baseCapabilities);
+#endif
 
 #if PLATFORM(MAC)
     if (device.supportsBCTextureCompression)
@@ -282,7 +288,7 @@ static HardwareCapabilities apple5(id<MTLDevice> device)
     };
 }
 
-#if !PLATFORM(WATCHOS) && !PLATFORM(APPLETV)
+#if !PLATFORM(WATCHOS) && !PLATFORM(APPLETV) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
 static HardwareCapabilities apple6(id<MTLDevice> device)
 {
     auto baseCapabilities = WebGPU::baseCapabilities(device);
@@ -394,6 +400,7 @@ static HardwareCapabilities apple7(id<MTLDevice> device)
 }
 #endif
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
 static HardwareCapabilities mac2(id<MTLDevice> device)
 {
     auto baseCapabilities = WebGPU::baseCapabilities(device);
@@ -461,6 +468,7 @@ static HardwareCapabilities mac2(id<MTLDevice> device)
         baseCapabilities,
     };
 }
+#endif
 
 template <typename T>
 static T mergeMaximum(T previous, T next)
@@ -527,14 +535,18 @@ static Vector<WGPUFeatureName> mergeFeatures(const Vector<WGPUFeatureName>& prev
 static HardwareCapabilities::BaseCapabilities mergeBaseCapabilities(const HardwareCapabilities::BaseCapabilities& previous, const HardwareCapabilities::BaseCapabilities& next)
 {
     ASSERT(previous.argumentBuffersTier == next.argumentBuffersTier);
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
     ASSERT(!previous.timestampCounterSet || [previous.timestampCounterSet isEqual:next.timestampCounterSet]);
     ASSERT(!previous.statisticCounterSet || [previous.statisticCounterSet isEqual:next.statisticCounterSet]);
+#endif
     ASSERT(previous.counterSamplingAPI == next.counterSamplingAPI);
     return {
         previous.argumentBuffersTier,
         previous.supportsNonPrivateDepthStencilTextures || next.supportsNonPrivateDepthStencilTextures,
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
         previous.timestampCounterSet,
         previous.statisticCounterSet,
+#endif
         previous.canPresentRGB10A2PixelFormats || next.canPresentRGB10A2PixelFormats,
         previous.counterSamplingAPI,
     };
@@ -557,6 +569,7 @@ static std::optional<HardwareCapabilities> rawHardwareCapabilities(id<MTLDevice>
 
     // The feature set tables do not list limits for MTLGPUFamilyCommon1, MTLGPUFamilyCommon2, or MTLGPUFamilyCommon3.
     // MTLGPUFamilyApple1 and MTLGPUFamilyApple2 are not supported.
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
     if ([device supportsFamily:MTLGPUFamilyApple3])
         merge(apple3(device));
     if ([device supportsFamily:MTLGPUFamilyApple4])
@@ -572,6 +585,14 @@ static std::optional<HardwareCapabilities> rawHardwareCapabilities(id<MTLDevice>
     // MTLGPUFamilyMac1 is not supported (yet?).
     if ([device supportsFamily:MTLGPUFamilyMac2])
         merge(mac2(device));
+#else
+    if ([device supportsFeatureSet:MTLFeatureSet_iOS_GPUFamily3_v4])
+        merge(apple3(device));
+    if ([device supportsFeatureSet:MTLFeatureSet_iOS_GPUFamily4_v2])
+        merge(apple4(device));
+    if ([device supportsFeatureSet:MTLFeatureSet_iOS_GPUFamily5_v1])
+        merge(apple5(device));
+#endif
 
     if (result) {
         auto maxBufferLength = device.maxBufferLength;

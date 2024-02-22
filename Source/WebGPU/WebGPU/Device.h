@@ -119,7 +119,13 @@ public:
     void generateAnInternalError(String&& message);
 
     Instance& instance() const { return m_adapter->instance(); }
-    bool hasUnifiedMemory() const { return m_device.hasUnifiedMemory; }
+    bool hasUnifiedMemory() const {
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
+        return m_device.hasUnifiedMemory;
+#else
+        return false;
+#endif
+    }
 
     uint32_t maxBuffersPlusVertexBuffersForVertexStage() const;
     uint32_t vertexBufferIndexForBindGroup(uint32_t groupIndex) const;
@@ -131,7 +137,11 @@ private:
     struct ErrorScope;
     ErrorScope* currentErrorScope(WGPUErrorFilter);
     bool validatePopErrorScope() const;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
     id<MTLBuffer> safeCreateBuffer(NSUInteger length, MTLStorageMode, MTLCPUCacheMode = MTLCPUCacheModeDefaultCache, MTLHazardTrackingMode = MTLHazardTrackingModeDefault) const;
+#else
+    id<MTLBuffer> safeCreateBuffer(NSUInteger length, MTLStorageMode, MTLCPUCacheMode = MTLCPUCacheModeDefaultCache) const;
+#endif
     bool validateCreateTexture(const WGPUTextureDescriptor&, const Vector<WGPUTextureFormat>& viewFormats);
     bool validateCreateIOSurfaceBackedTexture(const WGPUTextureDescriptor&, const Vector<WGPUTextureFormat>& viewFormats, IOSurfaceRef backing);
 

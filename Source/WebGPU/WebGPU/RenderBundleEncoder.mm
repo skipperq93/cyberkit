@@ -42,7 +42,9 @@ Ref<RenderBundleEncoder> Device::createRenderBundleEncoder(const WGPURenderBundl
 
     MTLIndirectCommandBufferDescriptor *icbDescriptor = [MTLIndirectCommandBufferDescriptor new];
     icbDescriptor.inheritBuffers = NO;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
     icbDescriptor.inheritPipelineState = YES;
+#endif
 
     return RenderBundleEncoder::create(icbDescriptor, *this);
 }
@@ -248,7 +250,11 @@ void RenderBundleEncoder::setIndexBuffer(const Buffer& buffer, WGPUIndexFormat f
 void RenderBundleEncoder::setPipeline(const RenderPipeline& pipeline)
 {
     if (id<MTLIndirectRenderCommand> icbCommand = currentRenderCommand())
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
         [icbCommand setRenderPipelineState:pipeline.renderPipelineState()];
+#else
+        (void)icbCommand;
+#endif
     else {
         m_recordedCommands.append([&pipeline, protectedThis = Ref { *this }] {
             protectedThis->setPipeline(pipeline);

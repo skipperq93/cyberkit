@@ -42,6 +42,7 @@ RenderPassEncoder::RenderPassEncoder(id<MTLRenderCommandEncoder> renderCommandEn
     , m_depthReadOnly(depthReadOnly)
     , m_stencilReadOnly(stencilReadOnly)
 {
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000
     if (m_device->baseCapabilities().counterSamplingAPI == HardwareCapabilities::BaseCapabilities::CounterSamplingAPI::CommandBoundary) {
         for (uint32_t i = 0; i < descriptor.timestampWriteCount; ++i) {
             const auto& timestampWrite = descriptor.timestampWrites[i];
@@ -58,6 +59,9 @@ RenderPassEncoder::RenderPassEncoder(id<MTLRenderCommandEncoder> renderCommandEn
             }
         }
     }
+#else
+    UNUSED_PARAM(descriptor);
+#endif
 }
 
 RenderPassEncoder::RenderPassEncoder(Device& device)
@@ -120,12 +124,14 @@ void RenderPassEncoder::endOcclusionQuery()
 
 void RenderPassEncoder::endPass()
 {
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000
     ASSERT(m_pendingTimestampWrites.isEmpty() || m_device->baseCapabilities().counterSamplingAPI == HardwareCapabilities::BaseCapabilities::CounterSamplingAPI::CommandBoundary);
     for (const auto& pendingTimestampWrite : m_pendingTimestampWrites)
         [m_renderCommandEncoder sampleCountersInBuffer:pendingTimestampWrite.querySet->counterSampleBuffer() atSampleIndex:pendingTimestampWrite.queryIndex withBarrier:NO];
     m_pendingTimestampWrites.clear();
     [m_renderCommandEncoder endEncoding];
     m_renderCommandEncoder = nil;
+#endif
 }
 
 void RenderPassEncoder::endPipelineStatisticsQuery()
@@ -138,7 +144,11 @@ void RenderPassEncoder::executeBundles(Vector<std::reference_wrapper<const Rende
     for (auto& bundle : bundles) {
         const auto& renderBundle = bundle.get();
         for (const auto& resource : renderBundle.resources())
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
             [m_renderCommandEncoder useResources:&resource.mtlResources[0] count:resource.mtlResources.size() usage:resource.usage stages:resource.renderStages];
+#else
+            (void)resource; // just ignore the compiler error right now
+#endif
 
         id<MTLIndirectCommandBuffer> icb = renderBundle.indirectCommandBuffer();
         [m_renderCommandEncoder executeCommandsInBuffer:icb withRange:NSMakeRange(0, icb.size)];
@@ -200,9 +210,10 @@ void RenderPassEncoder::setBindGroup(uint32_t groupIndex, const BindGroup& group
 {
     UNUSED_PARAM(dynamicOffsetCount);
     UNUSED_PARAM(dynamicOffsets);
-
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
     for (const auto& resource : group.resources())
         [m_renderCommandEncoder useResources:&resource.mtlResources[0] count:resource.mtlResources.size() usage:resource.usage stages:resource.renderStages];
+#endif
 
     [m_renderCommandEncoder setVertexBuffer:group.vertexArgumentBuffer() offset:0 atIndex:m_device->vertexBufferIndexForBindGroup(groupIndex)];
     [m_renderCommandEncoder setFragmentBuffer:group.fragmentArgumentBuffer() offset:0 atIndex:groupIndex];

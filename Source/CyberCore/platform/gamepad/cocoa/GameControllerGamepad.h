@@ -67,6 +67,10 @@ private:
 #if HAVE(WIDE_GAMECONTROLLER_SUPPORT)
     std::unique_ptr<GameControllerHapticEngines> m_hapticEngines;
 #endif
+    
+#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 140000
+    bool m_hadButtonPresses { false };
+#endif
 };
 
 

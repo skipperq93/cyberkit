@@ -97,8 +97,10 @@ NS_ASSUME_NONNULL_BEGIN
     [_recognizer setDelegate:self];
 
     _request = adoptNS([PAL::allocSFSpeechAudioBufferRecognitionRequestInstance() init]);
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
     if ([_recognizer supportsOnDeviceRecognition])
         [_request setRequiresOnDeviceRecognition:YES];
+#endif
     [_request setShouldReportPartialResults:interimResults];
     [_request setTaskHint:SFSpeechRecognitionTaskHintDictation];
     [_request setDetectMultipleUtterances:YES];

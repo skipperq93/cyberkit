@@ -99,9 +99,14 @@ SOFT_LINK_CONSTANT(CoreLocation, kCLLocationAccuracyHundredMeters, double)
     [_locationManager setDesiredAccuracy:highAccuracyEnabled ? kCLLocationAccuracyBest : kCLLocationAccuracyHundredMeters];
 }
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000
 - (void)locationManagerDidChangeAuthorization:(CLLocationManager *)manager
 {
     auto status = [_locationManager authorizationStatus];
+#else
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+#endif
     if (_isWaitingForAuthorization) {
         switch (status) {
         case kCLAuthorizationStatusNotDetermined:

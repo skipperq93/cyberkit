@@ -73,7 +73,11 @@ void Adapter::getProperties(WGPUAdapterProperties& properties)
     properties.deviceID = 0;
     properties.name = m_device.name.UTF8String;
     properties.driverDescription = "";
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
     properties.adapterType = m_device.hasUnifiedMemory ? WGPUAdapterType_IntegratedGPU : WGPUAdapterType_DiscreteGPU;
+#else
+    properties.adapterType = WGPUAdapterType_DiscreteGPU;
+#endif
     properties.backendType = WGPUBackendType_Metal;
 }
 

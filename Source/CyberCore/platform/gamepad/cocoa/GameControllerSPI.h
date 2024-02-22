@@ -27,6 +27,7 @@
 
 #import <GameController/GCController.h>
 
+API_AVAILABLE(ios(14.0))
 typedef void (^GCPhysicalInputProfileThumbstickUserIntentHandler)(__kindof GCPhysicalInputProfile *profile, GCControllerElement *element);
 @interface GCPhysicalInputProfile ()
 -(void) setThumbstickUserIntentHandler:(GCPhysicalInputProfileThumbstickUserIntentHandler)handler;

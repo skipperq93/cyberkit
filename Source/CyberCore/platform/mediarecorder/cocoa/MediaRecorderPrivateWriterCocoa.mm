@@ -167,7 +167,9 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     }
 
     m_writerDelegate = adoptNS([[WebAVAssetWriterDelegate alloc] initWithWriter: *this]);
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000
     [m_writer setDelegate:m_writerDelegate.get()];
+#endif
 
     if (m_hasAudio) {
         m_audioCompressor = AudioSampleBufferCompressor::create(compressedAudioOutputBufferCallback, this);

@@ -600,7 +600,9 @@ void WebRunLoopEnableNested()
     if (!WebThreadIsCurrent())
         _WebRunLoopEnableNestedFromMainThread();
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000
     _CFRunLoopSetPerCalloutAutoreleasepoolEnabled(NO);
+#endif
 
     savedAutoreleasePoolMark = autoreleasePoolMark;
     autoreleasePoolMark = 0;
@@ -618,7 +620,9 @@ void WebRunLoopDisableNested()
     if (!WebThreadIsCurrent())
         _WebRunLoopDisableNestedFromMainThread();
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000
     _CFRunLoopSetPerCalloutAutoreleasepoolEnabled(YES);
+#endif
 
     autoreleasePoolMark = savedAutoreleasePoolMark;
     savedAutoreleasePoolMark = 0;
@@ -671,7 +675,11 @@ static void* RunWebThread(void*)
     webThreadReleaseSource() = adoptCF(CFRunLoopSourceCreate(nullptr, -1, &ReleaseSourceContext));
     CFRunLoopAddSource(webThreadRunLoop, webThreadReleaseSource().get(), kCFRunLoopDefaultMode);
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000
     perCalloutAutoreleasepoolEnabled = _CFRunLoopSetPerCalloutAutoreleasepoolEnabled(YES);
+#else
+    perCalloutAutoreleasepoolEnabled = NO;
+#endif
 
     {
         Locker locker { startupLock };

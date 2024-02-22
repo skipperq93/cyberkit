@@ -358,10 +358,15 @@ Ref<RenderPassEncoder> CommandEncoder::beginRenderPass(const WGPURenderPassDescr
         // FIXME: Specifying all 4 of these is somewhat wasteful, because we may not actually need them all.
         // However, actually need to specify all of them, because of rdar://91372549.
         // When rdar://91372549 is fixed, we'll be able to do a pre-pass over descriptor.timestampWrites to see which of these is actually necessary.
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000
         mtlDescriptor.sampleBufferAttachments[0].startOfVertexSampleIndex = startVertexIndex;
         mtlDescriptor.sampleBufferAttachments[0].endOfVertexSampleIndex = endVertexIndex;
         mtlDescriptor.sampleBufferAttachments[0].startOfFragmentSampleIndex = startFragmentIndex;
         mtlDescriptor.sampleBufferAttachments[0].endOfFragmentSampleIndex = endFragmentIndex;
+#else
+        UNUSED_PARAM(endVertexIndex);
+        UNUSED_PARAM(startFragmentIndex);
+#endif
 
         for (uint32_t i = 0; i < descriptor.timestampWriteCount; ++i) {
             const auto& timestampWrite = descriptor.timestampWrites[i];
@@ -1157,7 +1162,9 @@ void CommandEncoder::writeTimestamp(QuerySet& querySet, uint32_t queryIndex)
         break;
     case HardwareCapabilities::BaseCapabilities::CounterSamplingAPI::CommandBoundary:
         ensureBlitCommandEncoder();
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000
         [m_blitCommandEncoder sampleCountersInBuffer:querySet.counterSampleBuffer() atSampleIndex:queryIndex withBarrier:NO];
+#endif
         break;
     }
 }

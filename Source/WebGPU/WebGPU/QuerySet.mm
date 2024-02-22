@@ -47,8 +47,8 @@ Ref<QuerySet> Device::createQuerySet(const WGPUQuerySetDescriptor& descriptor)
         if (!std::binary_search(features().begin(), features().end(), WGPUFeatureName_TimestampQuery))
             return QuerySet::createInvalid(*this);
 
-        ASSERT(baseCapabilities().timestampCounterSet);
 #if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
+        ASSERT(baseCapabilities().timestampCounterSet);
         MTLCounterSampleBufferDescriptor *descriptor = [MTLCounterSampleBufferDescriptor new];
         descriptor.counterSet = baseCapabilities().timestampCounterSet;
         descriptor.label = fromAPI(label);
@@ -82,6 +82,7 @@ QuerySet::QuerySet(id<MTLBuffer> buffer, uint32_t count, WGPUQueryType type, Dev
 {
 }
 
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
 QuerySet::QuerySet(id<MTLCounterSampleBuffer> buffer, uint32_t count, WGPUQueryType type, Device& device)
     : m_device(device)
     , m_timestampBuffer(buffer)
@@ -91,6 +92,7 @@ QuerySet::QuerySet(id<MTLCounterSampleBuffer> buffer, uint32_t count, WGPUQueryT
     if (m_device->baseCapabilities().counterSamplingAPI == HardwareCapabilities::BaseCapabilities::CounterSamplingAPI::StageBoundary)
         m_overrideLocations = Vector<std::optional<OverrideLocation>>(m_count);
 }
+#endif
 
 QuerySet::QuerySet(Device& device)
     : m_device(device)
@@ -103,7 +105,9 @@ void QuerySet::destroy()
 {
     // https://gpuweb.github.io/gpuweb/#dom-gpuqueryset-destroy
     m_visibilityBuffer = nil;
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
     m_timestampBuffer = nil;
+#endif
     m_overrideLocations.clear();
 }
 
@@ -127,10 +131,16 @@ void QuerySet::encodeResolveCommands(id<MTLBlitCommandEncoder> commandEncoder, u
     if (!queryCount)
         return;
 
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
     auto encode = [&](id<MTLCounterSampleBuffer> counterSampleBuffer, uint32_t localFirstQuery, uint32_t localQueryCount) {
         ASSERT(localQueryCount);
         [commandEncoder resolveCounters:counterSampleBuffer inRange:NSMakeRange(localFirstQuery, localQueryCount) destinationBuffer:destination.buffer() destinationOffset:destinationOffset + sizeof(MTLCounterResultTimestamp) * (localFirstQuery - firstQuery)];
     };
+#else
+        UNUSED_PARAM(commandEncoder);
+        UNUSED_PARAM(destination);
+        UNUSED_PARAM(destinationOffset);
+#endif
 
     struct State {
         const QuerySet* querySet;
@@ -156,11 +166,17 @@ void QuerySet::encodeResolveCommands(id<MTLBlitCommandEncoder> commandEncoder, u
             state = currentState;
             continue;
         }
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
         encode(initialState.querySet->counterSampleBuffer(), initialState.index, i - lastBoundary);
+#endif
         initialState = currentState;
         lastBoundary = i;
     }
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
     encode(state.querySet->counterSampleBuffer(), initialState.index, firstQuery + queryCount - lastBoundary);
+#else
+    (void)lastBoundary;
+#endif
 }
 
 } // namespace WebGPU
