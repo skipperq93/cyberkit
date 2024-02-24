@@ -222,10 +222,12 @@ struct UIEdgeInsets;
 
 #if TARGET_OS_IOS
 // This needs to be removed once there is an API version to continue to do callbacks for image element context menus.
+ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
 - (void)_webView:(WKWebView *)webView contextMenuConfigurationForElement:(WKContextMenuElementInfo *)elementInfo completionHandler:(void(^)(UIContextMenuConfiguration *))completionHandler WK_API_AVAILABLE(ios(13.0));
 
 // These can be removed once there is an API version.
 - (void)_webView:(WKWebView *)webView contextMenuForElement:(WKContextMenuElementInfo *)elementInfo willCommitWithAnimator:(id<UIContextMenuInteractionCommitAnimating>)animator WK_API_AVAILABLE(ios(13.0));
+ALLOW_NEW_API_WITHOUT_GUARDS_END
 - (void)_webView:(WKWebView *)webView contextMenuWillPresentForElement:(WKContextMenuElementInfo *)elementInfo WK_API_AVAILABLE(ios(13.0));
 - (UIViewController *)_webView:(WKWebView *)webView contextMenuContentPreviewForElement:(WKContextMenuElementInfo *)elementInfo WK_API_AVAILABLE(ios(15.0));
 - (void)_webView:(WKWebView *)webView contextMenuDidEndForElement:(WKContextMenuElementInfo *)elementInfo WK_API_AVAILABLE(ios(13.0));

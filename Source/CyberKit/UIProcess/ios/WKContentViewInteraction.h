@@ -271,12 +271,14 @@ enum class ProceedWithTextSelectionInImage : bool { No, Yes };
 enum ImageAnalysisRequestIdentifierType { };
 using ImageAnalysisRequestIdentifier = ObjectIdentifier<ImageAnalysisRequestIdentifierType>;
 
+#if USE(UICONTEXTMENU)
 struct ImageAnalysisContextMenuActionData {
     bool hasSelectableText { false };
     bool hasVisualSearchResults { false };
     RetainPtr<CGImageRef> copySubjectResult;
     RetainPtr<UIMenu> machineReadableCodeMenu;
 };
+#endif
 
 } // namespace CyberKit
 
@@ -617,7 +619,9 @@ struct ImageAnalysisContextMenuActionData {
 
 - (void)scrollViewWillStartPanOrPinchGesture;
 
+#if USE(UICONTEXTMENU)
 - (void)buildMenuForWebViewWithBuilder:(id <UIMenuBuilder>)builder;
+#endif
 
 - (BOOL)canBecomeFirstResponderForWebView;
 - (BOOL)becomeFirstResponderForWebView;

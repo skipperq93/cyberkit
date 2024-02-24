@@ -72,7 +72,29 @@ NSString *NetworkTaskCocoa::lastRemoteIPAddress(NSURLSessionTask *task)
 {
     // FIXME (246428): In a future patch, this should adopt CFNetwork API that retrieves the original
     // IP address of the proxied response, rather than the proxy itself.
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
     return task._incompleteTaskMetrics.transactionMetrics.lastObject.remoteAddress;
+#else
+    // Code from https://stackoverflow.com/a/55133643/
+    if ([task respondsToSelector:NSSelectorFromString(@"_timingData")]) {
+        if (NSDictionary *timingData = [task performSelector:NSSelectorFromString(@"_timingData")]) {
+            return timingData[@"_kCFNTimingDataRemoteAddressAndPort"];
+        }
+    }
+    
+    // Code adapted from https://csresources.github.io/SystemProgrammingWiki/SystemProgramming/Networking,-Part-2:-Using-getaddrinfo/
+    struct addrinfo hints, *infoptr; // So no need to use memset global variables
+
+    int result = getaddrinfo([task.originalRequest.URL.host UTF8String], NULL, &hints, &infoptr);
+    if (result) { return nullptr; }
+
+    struct addrinfo *p = infoptr;
+    char host[256],service[256];
+    getnameinfo(p->ai_addr, p->ai_addrlen, host, sizeof(host), service, sizeof(service), NI_NUMERICHOST);
+    freeaddrinfo(infoptr);
+    return [[NSString alloc] initWithUTF8String:host];
+    
+#endif
 }
 
 CyberCore::RegistrableDomain NetworkTaskCocoa::lastCNAMEDomain(String cname)

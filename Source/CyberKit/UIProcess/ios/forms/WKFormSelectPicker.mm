@@ -784,6 +784,20 @@ static const CGFloat groupHeaderMargin = 16.0f;
 static const CGFloat groupHeaderLabelImageMargin = 4.0f;
 static const CGFloat groupHeaderCollapseButtonTransitionDuration = 0.3f;
 
+#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 130000
+static UIImage* createImageFromText(NSString *text, CGFloat _size, CGFloat fontSize) {
+    CGSize size = CGSizeMake(_size, _size);
+    UIGraphicsBeginImageContextWithOptions(size, YES, 0);
+    [[UIColor whiteColor] setFill];
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    UIRectFill(rect);
+    [text drawInRect:CGRectIntegral(rect) withAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:fontSize]}];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+#endif
+
 @implementation WKSelectPickerGroupHeaderView {
     RetainPtr<UILabel> _label;
     RetainPtr<UIImageView> _collapseIndicatorView;
@@ -811,9 +825,11 @@ static const CGFloat groupHeaderCollapseButtonTransitionDuration = 0.3f;
     [_label setLineBreakMode:NSLineBreakByTruncatingTail];
     [self addSubview:_label.get()];
 
-    _collapseIndicatorView = adoptNS([[UIImageView alloc] initWithImage:[UIImage systemImageNamed:@"chevron.down"]]);
 #if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
+    _collapseIndicatorView = adoptNS([[UIImageView alloc] initWithImage:[UIImage systemImageNamed:@"chevron.down"]]);
     [_collapseIndicatorView setPreferredSymbolConfiguration:[UIImageSymbolConfiguration configurationWithFont:WKSelectPickerGroupHeaderView.preferredFont scale:UIImageSymbolScaleSmall]];
+#else
+    _collapseIndicatorView = adoptNS([[UIImageView alloc] initWithImage:createImageFromText(@"\u2304", 20, 18)]);
 #endif
     [_collapseIndicatorView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
     [self addSubview:_collapseIndicatorView.get()];
@@ -915,11 +931,20 @@ static NSString *optionCellReuseIdentifier = @"WKSelectPickerTableViewCell";
 
     _contentView = view;
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
     _previousButton = adoptNS([[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"chevron.up"] style:UIBarButtonItemStylePlain target:self action:@selector(previous:)]);
+#else
+    _previousButton = adoptNS([[UIBarButtonItem alloc] initWithTitle:@"\u2303" style:UIBarButtonItemStylePlain target:self action:@selector(previous:)]);
+#endif
     auto nextPreviousSpacer = adoptNS([[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:NULL]);
     [nextPreviousSpacer setWidth:nextPreviousSpacerWidth];
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
     _nextButton = adoptNS([[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"chevron.down"] style:UIBarButtonItemStylePlain target:self action:@selector(next:)]);
     auto closeButton = adoptNS([[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemClose target:self action:@selector(close:)]);
+#else
+    _nextButton = adoptNS([[UIBarButtonItem alloc] initWithTitle:@"\u2304" style:UIBarButtonItemStylePlain target:self action:@selector(next:)]);
+    auto closeButton = adoptNS([[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(close:)]);
+#endif
 
     self.navigationItem.leftBarButtonItems = @[ _previousButton.get(), nextPreviousSpacer.get(), _nextButton.get() ];
     self.navigationItem.rightBarButtonItem = closeButton.get();
@@ -1109,11 +1134,23 @@ static NSString *optionCellReuseIdentifier = @"WKSelectPickerTableViewCell";
 #endif
 
     if (option->isSelected)
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
         [cell imageView].image = [UIImage systemImageNamed:@"checkmark.circle.fill"];
+#else
+        [cell imageView].image = createImageFromText(@"\u2611", 20, 18);
+#endif
     else if (option->disabled)
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
         [cell imageView].image = [[UIImage systemImageNamed:@"circle"] imageWithTintColor:UIColor.quaternaryLabelColor renderingMode:UIImageRenderingModeAlwaysOriginal];
+#else
+        [cell imageView].image = createImageFromText(@"\u26DD", 20, 18);
+#endif
     else
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
         [cell imageView].image = [[UIImage systemImageNamed:@"circle"] imageWithTintColor:UIColor.tertiaryLabelColor renderingMode:UIImageRenderingModeAlwaysOriginal];
+#else
+        [cell imageView].image = createImageFromText(@"\u2610", 20, 18);
+#endif
 
     return cell.autorelease();
 }
@@ -1131,9 +1168,17 @@ static NSString *optionCellReuseIdentifier = @"WKSelectPickerTableViewCell";
         return;
 
     if (!option->isSelected)
-        cell.imageView.image = [UIImage systemImageNamed:@"checkmark.circle.fill"];
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
+        [cell imageView].image = [UIImage systemImageNamed:@"checkmark.circle.fill"];
+#else
+        [cell imageView].image = createImageFromText(@"\u2611", 20, 18);
+#endif
     else
-        cell.imageView.image = [[UIImage systemImageNamed:@"circle"] imageWithTintColor:UIColor.tertiaryLabelColor renderingMode:UIImageRenderingModeAlwaysOriginal];
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
+        [cell imageView].image = [[UIImage systemImageNamed:@"circle"] imageWithTintColor:UIColor.tertiaryLabelColor renderingMode:UIImageRenderingModeAlwaysOriginal];
+#else
+        [cell imageView].image = createImageFromText(@"\u2610", 20, 18);
+#endif
 
     [_contentView updateFocusedElementSelectedIndex:[self findItemIndexAt:indexPath] allowsMultipleSelection:true];
     option->isSelected = !option->isSelected;
@@ -1205,7 +1250,11 @@ static NSString *optionCellReuseIdentifier = @"WKSelectPickerTableViewCell";
 - (void)configurePresentation
 {
     if (CyberKit::currentUserInterfaceIdiomIsSmallScreen()) {
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
         [[_navigationController navigationBar] setBarTintColor:UIColor.systemGroupedBackgroundColor];
+#else
+        [[_navigationController navigationBar] setBarTintColor:UIColor.groupTableViewBackgroundColor];
+#endif
 
         UIPresentationController *presentationController = [_navigationController presentationController];
         presentationController.delegate = self;

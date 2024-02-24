@@ -213,7 +213,10 @@ typedef NS_ENUM(NSInteger, WKDialogResult) {
  * Pass a valid UIContextMenuConfiguration to show a context menu, or pass nil to not show a context menu.
  */
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunguarded-availability-new"
 - (void)webView:(WKWebView *)webView contextMenuConfigurationForElement:(WKContextMenuElementInfo *)elementInfo completionHandler:(void (^)(UIContextMenuConfiguration * _Nullable configuration))completionHandler WK_SWIFT_ASYNC_NAME(webView(_:contextMenuConfigurationFor:)) WK_API_AVAILABLE(ios(13.0));
+#pragma clang diagnostic pop
 
 /**
  * @abstract Called when the context menu will be presented.
@@ -234,8 +237,10 @@ typedef NS_ENUM(NSInteger, WKDialogResult) {
  * @param animator The animator to use for the commit animation.
  */
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunguarded-availability-new"
 - (void)webView:(WKWebView *)webView contextMenuForElement:(WKContextMenuElementInfo *)elementInfo willCommitWithAnimator:(id <UIContextMenuInteractionCommitAnimating>)animator WK_API_AVAILABLE(ios(13.0));
-
+#pragma clang diagnostic pop
 /**
  * @abstract Called when the context menu ends, either by being dismissed or when a menu action is taken.
  *

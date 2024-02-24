@@ -407,10 +407,14 @@ void DragDropInteractionState::updatePreviewsForActiveDragSources()
                 UIURLDragPreviewView *previewView = [UIURLDragPreviewView viewWithTitle:title.get() URL:url.get()];
                 previewView.center = center;
                 auto parameters = adoptNS([[UIDragPreviewParameters alloc] initWithTextLineRects:@[ [NSValue valueWithCGRect:previewView.bounds] ]]);
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
                 [parameters setBackgroundColor:[UIColor colorWithDynamicProvider:[] (UITraitCollection *traitCollection) -> UIColor * {
                     CyberCore::LocalCurrentTraitCollection localCurrentTraitCollection(traitCollection);
                     return [UIColor.systemBackgroundColor resolvedColorWithTraitCollection:UITraitCollection.currentTraitCollection];
                 }]];
+#else
+                [parameters setBackgroundColor:UIColor.systemBackgroundColor];
+#endif
                 return adoptNS([[UIDragPreview alloc] initWithView:previewView parameters:parameters.get()]).autorelease();
             };
         }

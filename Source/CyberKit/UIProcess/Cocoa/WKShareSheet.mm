@@ -58,8 +58,10 @@
 #if PLATFORM(IOS_FAMILY)
 
 SOFT_LINK_FRAMEWORK(LinkPresentation)
+ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
 SOFT_LINK_CLASS(LinkPresentation, LPLinkMetadata)
 SOFT_LINK_CLASS(LinkPresentation, LPMetadataProvider)
+ALLOW_NEW_API_WITHOUT_GUARDS_END
 
 @interface WKShareSheetFileItemProvider : UIActivityItemProvider
 - (instancetype)initWithURL:(NSURL *)url;
@@ -67,7 +69,9 @@ SOFT_LINK_CLASS(LinkPresentation, LPMetadataProvider)
 
 @implementation WKShareSheetFileItemProvider {
     RetainPtr<NSURL> _url;
+ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
     RetainPtr<LPLinkMetadata> _headerMetadata;
+ALLOW_NEW_API_WITHOUT_GUARDS_END
 }
 
 - (instancetype)initWithURL:(NSURL *)url
@@ -114,7 +118,9 @@ SOFT_LINK_CLASS(LinkPresentation, LPMetadataProvider)
     return @"public.data";
 }
 
+ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
 - (LPLinkMetadata *)activityViewControllerLinkMetadata:(UIActivityViewController *)activityViewController
+ALLOW_NEW_API_WITHOUT_GUARDS_END
 {
     return _headerMetadata.get();
 }
@@ -127,7 +133,9 @@ SOFT_LINK_CLASS(LinkPresentation, LPMetadataProvider)
 
 @implementation WKShareSheetURLItemProvider {
     RetainPtr<NSURL> _url;
+ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
     RetainPtr<LPLinkMetadata> _metadata;
+ALLOW_NEW_API_WITHOUT_GUARDS_END
 }
 
 - (instancetype)initWithURL:(NSURL *)url
@@ -152,7 +160,9 @@ SOFT_LINK_CLASS(LinkPresentation, LPMetadataProvider)
     return _url.get();
 }
 
+ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
 - (LPLinkMetadata *)activityViewControllerLinkMetadata:(UIActivityViewController *)activityViewController
+ALLOW_NEW_API_WITHOUT_GUARDS_END
 {
     return _metadata.get();
 }

@@ -47,6 +47,7 @@ SOFT_LINK_CLASS(SafariServices, SSReadingList);
 
 typedef void (^WKElementActionHandlerInternal)(WKActionSheetAssistant *, _WKActivatedElementInfo *);
 
+ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
 static UIActionIdentifier const WKElementActionTypeCustomIdentifier = @"WKElementActionTypeCustom";
 static UIActionIdentifier const WKElementActionTypeOpenIdentifier = @"WKElementActionTypeOpen";
 static UIActionIdentifier const WKElementActionTypeCopyIdentifier = @"WKElementActionTypeCopy";
@@ -68,6 +69,7 @@ static UIActionIdentifier const WKElementActionPlayAllAnimationsIdentifier = @"W
 static UIActionIdentifier const WKElementActionPauseAllAnimationsIdentifier = @"WKElementActionPauseAllAnimations";
 static UIActionIdentifier const WKElementActionPlayAnimationIdentifier = @"WKElementActionPlayAnimation";
 static UIActionIdentifier const WKElementActionPauseAnimationIdentifier = @"WKElementActionPauseAnimation";
+ALLOW_NEW_API_WITHOUT_GUARDS_END
 
 static NSString * const webkitShowLinkPreviewsPreferenceKey = @"CyberKitShowLinkPreviews";
 static NSString * const webkitShowLinkPreviewsPreferenceChangedNotification = @"CyberKitShowLinkPreviewsPreferenceChanged";
@@ -397,6 +399,7 @@ static _WKElementActionType uiActionIdentifierToElementActionType(UIActionIdenti
     return nil;
 }
 
+ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
 + (_WKElementActionType)elementActionTypeForUIActionIdentifier:(UIActionIdentifier)identifier
 {
     return _WKElementActionTypeCustom;
@@ -406,6 +409,7 @@ static _WKElementActionType uiActionIdentifierToElementActionType(UIActionIdenti
 {
     return nil;
 }
+ALLOW_NEW_API_WITHOUT_GUARDS_END
 #endif // USE(UICONTEXTMENU)
 
 @end

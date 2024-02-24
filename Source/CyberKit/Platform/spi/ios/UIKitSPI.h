@@ -564,6 +564,7 @@ typedef enum {
 - (void)_zoomToCenter:(CGPoint)center scale:(CGFloat)scale duration:(CFTimeInterval)duration;
 - (double)_horizontalVelocity;
 - (double)_verticalVelocity;
+- (void)_flashScrollIndicatorsPersistingPreviousFlashes:(BOOL)persisting;
 - (void)_flashScrollIndicatorsForAxes:(UIAxis)axes persistingPreviousFlashes:(BOOL)persisting;
 @property (nonatomic, getter=isZoomEnabled) BOOL zoomEnabled;
 @property (nonatomic, readonly, getter=_isVerticalBouncing) BOOL isVerticalBouncing;
@@ -847,8 +848,10 @@ typedef NS_ENUM(NSInteger, UIWKGestureType) {
 @protocol UIContextMenuInteractionDelegate;
 @interface UITextInteractionAssistant (SPI)
 @property (nonatomic, readonly) UITextSelectionView *selectionView;
+#if USE(UICONTEXTMENU)
 @property (nonatomic, strong, readonly) UIContextMenuInteraction *contextMenuInteraction;
 @property (nonatomic, weak, readwrite) id<UIContextMenuInteractionDelegate> externalContextMenuInteractionDelegate;
+#endif
 @end
 
 @interface UIWKTextInteractionAssistant : UITextInteractionAssistant <UIResponderStandardEditActions>
@@ -1286,7 +1289,9 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
 @interface UITextEffectsWindow : UIAutoRotatingWindow
 + (UITextEffectsWindow *)sharedTextEffectsWindow;
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000)
 + (UITextEffectsWindow *)sharedTextEffectsWindowForWindowScene:(UIWindowScene *)windowScene;
+#endif
 @end
 
 @interface _UIVisualEffectLayerConfig : NSObject
@@ -1424,19 +1429,23 @@ typedef NS_ENUM(NSUInteger, UIMenuOptionsPrivate) {
 @property (nonatomic, assign, getter=_pausesPointerUpdatesWhilePanning, setter=_setPausesPointerUpdatesWhilePanning:) BOOL pausesPointerUpdatesWhilePanning;
 @end
 
-@protocol UIPointerInteractionDelegate_ForCyberKitOnly <UIPointerInteractionDelegate>
+#if HAVE(UI_POINTER_INTERACTION)
+@protocol UIPointerInteractionDelegate_ForWebKitOnly <UIPointerInteractionDelegate>
 @optional
 - (void)_pointerInteraction:(UIPointerInteraction *)interaction regionForRequest:(UIPointerRegionRequest *)request defaultRegion:(UIPointerRegion *)defaultRegion completion:(void(^)(UIPointerRegion *region))completion;
 @end
+#endif
 
 #if PLATFORM(WATCHOS)
 @interface UIStatusBar : UIView
 @end
 #endif
 
+#if HAVE(UISCENE)
 @interface UIScene ()
 @property (nonatomic, readonly) NSString *_sceneIdentifier;
 @end
+#endif
 
 #if HAVE(UIKIT_WITH_MOUSE_SUPPORT)
 @interface UITouch ()
@@ -1481,7 +1490,9 @@ typedef NS_ENUM(NSUInteger, _UIScrollDeviceCategory) {
 
 @interface UITextInteractionAssistant (IPI)
 @property (nonatomic, readonly) BOOL inGesture;
+ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
 @property (nonatomic, readonly) UITextInteraction *interactions;
+ALLOW_NEW_API_WITHOUT_GUARDS_END
 - (void)willStartScrollingOrZooming;
 - (void)didEndScrollingOrZooming;
 @end

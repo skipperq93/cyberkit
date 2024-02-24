@@ -57,11 +57,15 @@ static void clearGeolocationCache(CFNotificationCenterRef center, void *observer
 
 static bool appHasPreciseLocationPermission()
 {
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000
     auto locationManager = adoptNS([allocCLLocationManagerInstance() init]);
 
     CLAuthorizationStatus authStatus = [locationManager authorizationStatus];
     return (authStatus == kCLAuthorizationStatusAuthorizedAlways || authStatus == kCLAuthorizationStatusAuthorizedWhenInUse)
         && [locationManager accuracyAuthorization] == CLAccuracyAuthorizationFullAccuracy;
+#else
+    return true;
+#endif
 }
 
 static NSString *appDisplayName()

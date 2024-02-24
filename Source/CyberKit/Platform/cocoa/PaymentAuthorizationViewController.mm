@@ -98,10 +98,12 @@
 }
 
 ALLOW_DEPRECATED_IMPLEMENTATIONS_BEGIN
+ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
 - (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)controller didRequestMerchantSession:(void(^)(PKPaymentMerchantSession *, NSError *))completion
 {
     [self _didRequestMerchantSession:completion];
 }
+ALLOW_NEW_API_WITHOUT_GUARDS_END
 ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 
 @end

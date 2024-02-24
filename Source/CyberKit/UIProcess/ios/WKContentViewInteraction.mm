@@ -209,7 +209,7 @@ static NSString * const webkitShowLinkPreviewsPreferenceKey = @"CyberKitShowLink
 static NSString * const pointerRegionIdentifier = @"WKPointerRegion";
 static NSString * const editablePointerRegionIdentifier = @"WKEditablePointerRegion";
 
-@interface WKContentView (WKUIPointerInteractionDelegate) <UIPointerInteractionDelegate_ForCyberKitOnly>
+@interface WKContentView (WKUIPointerInteractionDelegate) <UIPointerInteractionDelegate_ForWebKitOnly>
 @end
 #endif
 
@@ -4427,7 +4427,11 @@ static UIPasteboard *pasteboardForAccessCategory(CyberCore::DOMPasteAccessCatego
 
     if (auto pasteHandler = WTFMove(_domPasteRequestHandler)) {
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
         [UIMenuController.sharedMenuController hideMenuFromView:self];
+#else
+        [UIMenuController.sharedMenuController setMenuVisible:false];
+#endif
 ALLOW_DEPRECATED_DECLARATIONS_END
         pasteHandler(response);
         return YES;
@@ -7480,7 +7484,11 @@ static BOOL allPasteboardItemOriginsMatchOrigin(UIPasteboard *pasteboard, const 
         menuControllerRect.inflate(interactionLocationMargin);
     }
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
     [UIMenuController.sharedMenuController showMenuFromView:self rect:menuControllerRect];
+#else
+    [UIMenuController.sharedMenuController setMenuVisible:true];
+#endif
 ALLOW_DEPRECATED_DECLARATIONS_END
 }
 
@@ -9424,7 +9432,11 @@ static NSArray<NSItemProvider *> *extractItemProvidersFromDropSession(id <UIDrop
 
 - (UIView *)textEffectsWindow
 {
+#if HAVE(UISCENE)
     return [UITextEffectsWindow sharedTextEffectsWindowForWindowScene:self.window.windowScene];
+#else
+    return [UITextEffectsWindow sharedTextEffectsWindow];
+#endif
 }
 
 - (NSDictionary *)_autofillContext
@@ -10337,6 +10349,7 @@ static Vector<CyberCore::IntSize> sizesOfPlaceholderElementsToInsertWhenDropping
 }
 #endif
 
+#if USE(UICONTEXTMENU)
 - (void)buildMenuForWebViewWithBuilder:(id <UIMenuBuilder>)builder
 {
 #if ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
@@ -10349,6 +10362,7 @@ static Vector<CyberCore::IntSize> sizesOfPlaceholderElementsToInsertWhenDropping
         [builder insertChildMenu:menu atEndOfMenuForIdentifier:UIMenuRoot];
 #endif
 }
+#endif
 
 #if USE(UICONTEXTMENU)
 - (UIMenu *)menuWithInlineAction:(NSString *)title image:(UIImage *)image identifier:(NSString *)identifier handler:(Function<void(WKContentView *)>&&)handler

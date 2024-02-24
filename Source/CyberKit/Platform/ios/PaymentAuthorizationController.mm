@@ -106,7 +106,9 @@
     [self _willFinishWithError:error];
 }
 
+ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
 - (void)paymentAuthorizationController:(PKPaymentAuthorizationController *)controller didRequestMerchantSession:(void(^)(PKPaymentMerchantSession *, NSError *))sessionBlock
+ALLOW_NEW_API_WITHOUT_GUARDS_END
 {
     [self _didRequestMerchantSession:sessionBlock];
 }

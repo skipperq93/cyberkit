@@ -576,6 +576,8 @@ static CyberCore::FloatPoint farthestPointInDirection(CyberCore::FloatPoint a, C
     return [_delegate keyboardScrollViewAnimator:self distanceForIncrement:increment inDirection:direction];
 }
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
+ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
 static UIAxis axesForDelta(CyberCore::FloatSize delta)
 {
     UIAxis axes = UIAxisNeither;
@@ -585,6 +587,8 @@ static UIAxis axesForDelta(CyberCore::FloatSize delta)
         axes = static_cast<UIAxis>(axes | UIAxisVertical);
     return axes;
 }
+ALLOW_NEW_API_WITHOUT_GUARDS_END
+#endif
 
 - (void)scrollToContentOffset:(CyberCore::FloatPoint)contentOffset animated:(BOOL)animated
 {
@@ -594,7 +598,11 @@ static UIAxis axesForDelta(CyberCore::FloatSize delta)
     if (_delegateRespondsToWillScroll)
         [_delegate keyboardScrollViewAnimatorWillScroll:self];
     [scrollView setContentOffset:contentOffset animated:animated];
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
     [scrollView _flashScrollIndicatorsForAxes:axesForDelta(CyberCore::FloatPoint(scrollView.contentOffset) - contentOffset) persistingPreviousFlashes:YES];
+#else
+    [scrollView _flashScrollIndicatorsPersistingPreviousFlashes:YES];
+#endif
 }
 
 - (void)scrollWithScrollToExtentAnimationTo:(CGPoint)offset

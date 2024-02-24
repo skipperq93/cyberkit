@@ -467,6 +467,20 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 #endif
 }
 
+#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 130000
+static UIImage* createImageFromText(NSString *text, CGFloat _size, CGFloat fontSize) {
+    CGSize size = CGSizeMake(_size, _size);
+    UIGraphicsBeginImageContextWithOptions(size, YES, 0);
+    [[UIColor whiteColor] setFill];
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    UIRectFill(rect);
+    [text drawInRect:CGRectIntegral(rect) withAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:fontSize]}];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+#endif
+
 #pragma mark - UIViewController Overrides
 
 - (void)loadView
@@ -479,7 +493,11 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     
     if (alternateFullScreenControlDesignEnabled) {
         buttonSize = CGSizeMake(38.0, 38.0);
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
         doneImage = [UIImage systemImageNamed:@"arrow.down.right.and.arrow.up.left"];
+#else
+        doneImage = createImageFromText(@"\u2921", 38, 36);
+#endif
         startPiPImage = nil;
         stopPiPImage = nil;
     } else {

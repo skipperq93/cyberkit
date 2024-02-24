@@ -220,7 +220,11 @@ ALLOW_DEPRECATED_DECLARATIONS_END
         return;
 
     CGRect presentationRect = [self _presentationRectForStyle:_currentPresentationStyle];
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
     BOOL wasPresentedViewControllerModal = [_presentedViewControllerWhileRotating isModalInPresentation];
+#else
+    BOOL wasPresentedViewControllerModal = [_presentedViewControllerWhileRotating isModalInPopover];
+#endif
 
     if (!CGRectIsEmpty(presentationRect) || wasPresentedViewControllerModal) {
         // Re-present the popover only if we are still pointing to content onscreen, or if we can't dismiss it without losing information.

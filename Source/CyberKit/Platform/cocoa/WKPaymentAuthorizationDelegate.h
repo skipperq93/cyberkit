@@ -38,7 +38,9 @@ namespace CyberKit {
 
 class PaymentAuthorizationPresenter;
 
+ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
 using DidRequestMerchantSessionCompletion = BlockPtr<void(PKPaymentMerchantSession *, NSError *)>;
+ALLOW_NEW_API_WITHOUT_GUARDS_END
 
 using DidAuthorizePaymentCompletion = BlockPtr<void(PKPaymentAuthorizationResult *)>;
 using DidSelectPaymentMethodCompletion = BlockPtr<void(PKPaymentRequestPaymentMethodUpdate *)>;
@@ -57,7 +59,9 @@ using DidChangeCouponCodeCompletion = BlockPtr<void(PKPaymentRequestCouponCodeUp
 
 - (instancetype)init NS_UNAVAILABLE;
 
+ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
 - (void)completeMerchantValidation:(PKPaymentMerchantSession *)session error:(NSError *)error;
+ALLOW_NEW_API_WITHOUT_GUARDS_END
 - (void)completePaymentMethodSelection:(PKPaymentRequestPaymentMethodUpdate *)paymentMethodUpdate;
 - (void)completePaymentSession:(PKPaymentAuthorizationStatus)status errors:(NSArray<NSError *> *)errors;
 #if HAVE(PASSKIT_PAYMENT_ORDER_DETAILS)

@@ -3028,6 +3028,7 @@ static CyberCore::UserInterfaceLayoutDirection toUserInterfaceLayoutDirection(UI
         _page->setUserInterfaceLayoutDirection(toUserInterfaceLayoutDirection(contentAttribute));
 }
 
+#if USE(UICONTEXTMENU)
 - (void)buildMenuWithBuilder:(id <UIMenuBuilder>)builder
 {
     if (self.usesStandardContentView)
@@ -3035,6 +3036,7 @@ static CyberCore::UserInterfaceLayoutDirection toUserInterfaceLayoutDirection(UI
 
     [super buildMenuWithBuilder:builder];
 }
+#endif
 
 - (BOOL)_shouldAvoidSecurityHeuristicScoreUpdates
 {

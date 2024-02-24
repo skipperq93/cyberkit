@@ -57,8 +57,10 @@ void WebScreenOrientationManagerProxy::webViewDidMoveToWindow()
 
 std::optional<CyberCore::Exception> WebScreenOrientationManagerProxy::platformShouldRejectLockRequest() const
 {
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
     if (UIApplication.sharedApplication.supportsMultipleScenes)
         return CyberCore::Exception { CyberCore::NotSupportedError, "Apps supporting multiple scenes (multitask) cannot lock their orientation"_s };
+#endif
     return std::nullopt;
 }
 

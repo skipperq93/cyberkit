@@ -115,7 +115,9 @@ void ArgumentCoder<CyberCore::PaymentMerchantSession>::encode(Encoder& encoder, 
 
 std::optional<CyberCore::PaymentMerchantSession> ArgumentCoder<CyberCore::PaymentMerchantSession>::decode(Decoder& decoder)
 {
+ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
     auto paymentMerchantSession = IPC::decode<PKPaymentMerchantSession>(decoder, PAL::getPKPaymentMerchantSessionClass());
+ALLOW_NEW_API_WITHOUT_GUARDS_END
     if (!paymentMerchantSession)
         return std::nullopt;
 

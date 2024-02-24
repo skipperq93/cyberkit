@@ -1152,7 +1152,11 @@ void PageClientImpl::requestScrollToRect(const FloatRect& targetRect, const Floa
 
 String PageClientImpl::sceneID()
 {
+#if HAVE(UISCENE)
     return [contentView() window].windowScene._sceneIdentifier;
+#else
+    return UIDevice.currentDevice.identifierForVendor.UUIDString;
+#endif
 }
 
 void PageClientImpl::beginTextRecognitionForFullscreenVideo(ShareableBitmap::Handle&& imageHandle, AVPlayerViewController *playerViewController)

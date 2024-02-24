@@ -1260,7 +1260,11 @@ void WebExtensionContext::loadBackgroundWebView()
     ASSERT(!m_backgroundWebView);
     m_backgroundWebView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:webViewConfiguration()];
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 130000
     m_lastBackgroundContentLoadDate = NSDate.now;
+#else
+    m_lastBackgroundContentLoadDate = [[NSDate alloc] init];
+#endif
 
     m_backgroundWebView.get().UIDelegate = m_delegate.get();
     m_backgroundWebView.get().navigationDelegate = m_delegate.get();

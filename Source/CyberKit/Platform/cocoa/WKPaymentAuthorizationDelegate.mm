@@ -56,7 +56,9 @@
 #endif
 }
 
+ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
 - (void)completeMerchantValidation:(PKPaymentMerchantSession *)session error:(NSError *)error
+ALLOW_NEW_API_WITHOUT_GUARDS_END
 {
     std::exchange(_didRequestMerchantSessionCompletion, nil)(session, error);
 }

@@ -33,7 +33,9 @@
 @class UIImage;
 
 typedef NSString *UIActionIdentifier;
+ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
 WK_EXTERN UIActionIdentifier const WKElementActionTypeToggleShowLinkPreviewsIdentifier;
+ALLOW_NEW_API_WITHOUT_GUARDS_END
 
 typedef void (^WKElementActionHandler)(_WKActivatedElementInfo *);
 typedef BOOL (^WKElementActionDismissalHandler)(void);
@@ -68,9 +70,11 @@ WK_CLASS_AVAILABLE(macos(10.10), ios(8.0))
 + (instancetype)elementActionWithType:(_WKElementActionType)type customTitle:(NSString *)title;
 + (instancetype)elementActionWithTitle:(NSString *)title actionHandler:(WKElementActionHandler)handler;
 
+ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
 + (UIImage *)imageForElementActionType:(_WKElementActionType)actionType WK_API_AVAILABLE(macos(10.15), ios(13.0));
 + (_WKElementActionType)elementActionTypeForUIActionIdentifier:(UIActionIdentifier)identifier WK_API_AVAILABLE(macos(10.15), ios(13.0));
 - (UIAction *)uiActionForElementInfo:(_WKActivatedElementInfo *)elementInfo;
+ALLOW_NEW_API_WITHOUT_GUARDS_END
 
 - (void)runActionWithElementInfo:(_WKActivatedElementInfo *)info WK_API_AVAILABLE(macos(10.15), ios(9.0));
 

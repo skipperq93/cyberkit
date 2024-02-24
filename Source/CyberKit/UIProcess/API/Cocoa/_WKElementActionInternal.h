@@ -30,7 +30,9 @@
 @class WKActionSheetAssistant;
 @class WKContentView;
 
+ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
 UIActionIdentifier elementActionTypeToUIActionIdentifier(_WKElementActionType);
+ALLOW_NEW_API_WITHOUT_GUARDS_END
 
 @interface _WKElementAction ()
 
