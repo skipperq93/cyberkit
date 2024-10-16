@@ -40,7 +40,7 @@ Please visit the [CyberKit wiki](https://github.com/UInt2048/CyberKit/wiki).
 ## Building from Source
 If building yourself, you may wish to use the version of Xcode used at the time to build the commit you are building.
 
-Ensure to run `Tools/Scripts/configure-xcode-for-embedded-development` before 1st build or any time you reinstall/update Xcode or its SDKs.
+On branches diverging before 1 May 2024 (that is, before `safari-7619.1.12-branch`, see WebKit#27941), you must run `Tools/Scripts/configure-xcode-for-embedded-development` before 1st build or any time you reinstall/update Xcode or its SDKs.
 
 Beginning 2 January 2024, you can just [ad hoc sign](https://akemi.ai/?page/how2asu) with no changes to CyberKit itself which is especially convenient if you want to build in a macOS VM on Apple Silicon [where you can't sign in to your Apple ID](https://developer.apple.com/forums/thread/707682).
 
