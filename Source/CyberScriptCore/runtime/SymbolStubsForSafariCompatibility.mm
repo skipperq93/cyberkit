@@ -28,7 +28,7 @@
 
 #if HAVE(SAFARI_FOR_WEBKIT_DEVELOPMENT_REQUIRING_EXTRA_SYMBOLS)
 
-// These linker symbols are needed to launch SafariForWebKitDevelopment on Catalina and Big Sur with an open source WebKit build.
+// These linker symbols are needed to launch SafariForCyberKitDevelopment on Catalina and Big Sur with an open source CyberKit build.
 // Remove them after rdar://problem/74245355 is fixed or after we release a Safari version that doesn't need them any more.
 
 namespace WTF {

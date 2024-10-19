@@ -23,7 +23,7 @@
 
 INFOPLIST_FILE = InjectedBundle-Info.plist;
 PRODUCT_NAME = InjectedBundleTestCyberKitAPI;
-PRODUCT_BUNDLE_IDENTIFIER = com.apple.$(PRODUCT_NAME:rfc1034identifier);
+PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.$(PRODUCT_NAME:rfc1034identifier);
 
 FRAMEWORK_AND_LIBRARY_LDFLAGS[sdk=embedded*] = -lobjc -framework UIKit;
 FRAMEWORK_AND_LIBRARY_LDFLAGS[sdk=macosx*] = -framework CyberScriptCore -framework CyberKit -framework CoreGraphics -framework Cocoa;

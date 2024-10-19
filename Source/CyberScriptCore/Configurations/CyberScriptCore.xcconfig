@@ -103,7 +103,7 @@ DYLIB_INSTALL_NAME_BASE = @executable_path/Frameworks;
 DYLIB_INSTALL_NAME_BASE_NO = @executable_path/Frameworks;
 DYLIB_INSTALL_NAME_BASE_YES = @executable_path/Frameworks;
 PRODUCT_NAME = CyberScriptCore;
-PRODUCT_BUNDLE_IDENTIFIER = com.apple.$(PRODUCT_NAME:rfc1034identifier);
+PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.$(PRODUCT_NAME:rfc1034identifier);
 
 ALTERNATE_ROOT_PATH = $(JAVASCRIPTCORE_FRAMEWORKS_DIR);
 
