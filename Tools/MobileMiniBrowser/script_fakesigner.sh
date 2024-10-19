@@ -1,11 +1,14 @@
-#!/bin/zsh
+#!/bin/bash
+
+# Make sure that Homebrew is in the PATH if it could be
+PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
 # Check initial conditions
 if [[ $EUID -eq 0 ]]; then
     echo "[!] Please don't run this script as root!"
     exit
 fi
-export PATH="/opt/homebrew/bin:$PATH"
+
 if [[ $(command -v brew) == "" ]]; then
     echo "[!] Homebrew not installed!"
     echo "[!] PATH is $PATH"
