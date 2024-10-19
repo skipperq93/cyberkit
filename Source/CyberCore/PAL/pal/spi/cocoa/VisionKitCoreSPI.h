@@ -130,6 +130,9 @@ typedef NS_ENUM(NSInteger, VKImageOrientation) {
 @interface VKImageAnalyzerRequest (VI)
 @property (nonatomic) NSURL *imageURL;
 @property (nonatomic) NSURL *pageURL;
+#if !ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
+@property (nonatomic) VKImageAnalyzerRequestImageSource imageSource;
+#endif
 @end
 
 @interface VKImageAnalyzer : NSObject
