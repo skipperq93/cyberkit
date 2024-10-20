@@ -1101,7 +1101,7 @@ void SourceBufferPrivateAVFObjC::outputObscuredDueToInsufficientExternalProtecti
 
     ERROR_LOG(LOGIDENTIFIER, obscured);
 
-    RetainPtr<NSError> error = [NSError errorWithDomain:@"com.apple.WebKit" code:'HDCP' userInfo:nil];
+    RetainPtr<NSError> error = [NSError errorWithDomain:@"com.matthewbenedict.WebKit" code:'HDCP' userInfo:nil];
     layerDidReceiveError(m_displayLayer.get(), error.get());
 }
 

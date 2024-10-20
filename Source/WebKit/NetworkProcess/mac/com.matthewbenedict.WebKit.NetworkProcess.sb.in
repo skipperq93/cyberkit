@@ -164,7 +164,7 @@
 
 (allow darwin-notification-post
     (notification-name
-        "com.apple.WebKit.mediaStreamingActivity"
+        "com.matthewbenedict.WebKit.mediaStreamingActivity"
         "com.apple.accessibility.AirPodsSpatialAudioLockToDeviceChanged"
         "com.apple.accessibility.cache.app.ax"
         "com.apple.accessibility.cache.ax"

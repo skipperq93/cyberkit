@@ -39,7 +39,7 @@ TEST(WebKit, MobileAssetSandboxCheck)
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 300, 300) configuration:configuration.get() addToWindow:YES]);
 
     auto sandboxAccess = [&] {
-        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToXPCServiceName('com.apple.WebKit.WebContent', 'com.apple.mobileassetd.v2')"].boolValue;
+        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToXPCServiceName('com.matthewbenedict.WebKit.WebContent', 'com.apple.mobileassetd.v2')"].boolValue;
     };
 
     ASSERT_FALSE(sandboxAccess());

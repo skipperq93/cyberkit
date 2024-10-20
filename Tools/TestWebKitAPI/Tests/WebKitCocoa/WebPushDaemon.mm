@@ -282,7 +282,7 @@ TEST(WebPushD, BasicCommunication)
         if ([nsMessage hasPrefix:@"[webpushtool "])
             return;
 
-        bool stringMatches = [nsMessage hasPrefix:@"[com.apple.WebKit.TestWebKitAPI"] || [nsMessage hasPrefix:@"[TestWebKitAPI"];
+        bool stringMatches = [nsMessage hasPrefix:@"[com.matthewbenedict.WebKit.TestWebKitAPI"] || [nsMessage hasPrefix:@"[TestWebKitAPI"];
         stringMatches = stringMatches && [nsMessage hasSuffix:@" Turned Debug Mode on"];
 
         EXPECT_TRUE(stringMatches);
@@ -609,7 +609,7 @@ public:
     {
         String scope = [m_url absoluteString];
         WebCore::PushSubscriptionSetIdentifier subscriptionSetIdentifier {
-            .bundleIdentifier = "com.apple.WebKit.TestWebKitAPI"_s,
+            .bundleIdentifier = "com.matthewbenedict.WebKit.TestWebKitAPI"_s,
             .pushPartition = m_pushPartition,
             .dataStoreIdentifier = m_dataStoreIdentifier
         };
@@ -821,11 +821,11 @@ TEST_F(WebPushDTest, SubscribeTest)
     std::sort(subscribed.begin(), subscribed.end(), lessThan);
 
     Vector<String> expected {
-        "com.apple.WebKit.TestWebKitAPI ds:0bf5053b-164c-4b7d-8179-832e6bf158df https://example.com/"_s,
-        "com.apple.WebKit.TestWebKitAPI ds:940e7729-738e-439f-a366-1a8719e23b2d https://example.com/"_s,
-        "com.apple.WebKit.TestWebKitAPI https://example.com/"_s,
-        "com.apple.WebKit.TestWebKitAPI part:testPartition ds:940e7729-738e-439f-a366-1a8719e23b2d https://example.com/"_s,
-        "com.apple.WebKit.TestWebKitAPI part:testPartition https://example.com/"_s
+        "com.matthewbenedict.WebKit.TestWebKitAPI ds:0bf5053b-164c-4b7d-8179-832e6bf158df https://example.com/"_s,
+        "com.matthewbenedict.WebKit.TestWebKitAPI ds:940e7729-738e-439f-a366-1a8719e23b2d https://example.com/"_s,
+        "com.matthewbenedict.WebKit.TestWebKitAPI https://example.com/"_s,
+        "com.matthewbenedict.WebKit.TestWebKitAPI part:testPartition ds:940e7729-738e-439f-a366-1a8719e23b2d https://example.com/"_s,
+        "com.matthewbenedict.WebKit.TestWebKitAPI part:testPartition https://example.com/"_s
     };
     ASSERT_EQ(subscribed, expected);
 

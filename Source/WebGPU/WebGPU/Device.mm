@@ -60,17 +60,17 @@ struct GPUFrameCapture {
 
     static void registerForFrameCapture(id<MTLDevice> captureObject)
     {
-        // Allow GPU frame capture "notifyutil -p com.apple.WebKit.WebGPU.CaptureFrame" when process is
+        // Allow GPU frame capture "notifyutil -p com.matthewbenedict.WebKit.WebGPU.CaptureFrame" when process is
         // run with __XPC_METAL_CAPTURE_ENABLED=1
         static std::once_flag onceFlag;
         std::call_once(onceFlag, [] {
             int captureFrameToken;
-            notify_register_dispatch("com.apple.WebKit.WebGPU.CaptureFrame", &captureFrameToken, dispatch_get_main_queue(), ^(int) {
+            notify_register_dispatch("com.matthewbenedict.WebKit.WebGPU.CaptureFrame", &captureFrameToken, dispatch_get_main_queue(), ^(int) {
                 enabled = true;
             });
 
             int captureFirstFrameToken;
-            notify_register_dispatch("com.apple.WebKit.WebGPU.ToggleCaptureFirstFrame", &captureFirstFrameToken, dispatch_get_main_queue(), ^(int) {
+            notify_register_dispatch("com.matthewbenedict.WebKit.WebGPU.ToggleCaptureFirstFrame", &captureFirstFrameToken, dispatch_get_main_queue(), ^(int) {
                 captureFirstFrame = !captureFirstFrame;
             });
         });

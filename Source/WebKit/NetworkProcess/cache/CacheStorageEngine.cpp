@@ -227,7 +227,7 @@ Engine::Engine(NetworkSession& networkSession, const String& rootPath)
     , m_rootPath(rootPath)
 {
     if (!m_rootPath.isNull())
-        m_ioQueue = WorkQueue::create("com.apple.WebKit.CacheStorageEngine.serial.default", WorkQueue::QOS::Default);
+        m_ioQueue = WorkQueue::create("com.matthewbenedict.WebKit.CacheStorageEngine.serial.default", WorkQueue::QOS::Default);
 }
 
 void Engine::open(const WebCore::ClientOrigin& origin, const String& cacheName, CacheIdentifierCallback&& callback)

@@ -33,7 +33,7 @@
 #import <wtf/NeverDestroyed.h>
 #import <wtf/RetainPtr.h>
 
-WebLocalizableStringsBundle WebKitLocalizableStringsBundle = { "com.apple.WebKit", 0 };
+WebLocalizableStringsBundle WebKitLocalizableStringsBundle = { "com.matthewbenedict.WebKit", 0 };
 
 NSString *WebLocalizedString(WebLocalizableStringsBundle *stringsBundle, const char *key)
 {

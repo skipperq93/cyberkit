@@ -54,12 +54,12 @@ elif [[ $ipa == *.app ]]; then
     cp ../webpushd $app/Frameworks/WebKit.framework/Daemons
     cp ../../../Source/WTF/icu/unicode/data/out/*.dat $app/Frameworks/WebKit.framework/XPCServices
 
-    ln -s ../../../../Frameworks $app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.GPU.xpc
-    ln -s ../../../../Frameworks $app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.Networking.xpc
-    ln -s ../../../../Frameworks $app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.WebContent.CaptivePortal.xpc
-    ln -s ../../../../Frameworks $app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.WebContent.Crashy.xpc
-    ln -s ../../../../Frameworks $app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.WebContent.Development.xpc
-    ln -s ../../../../Frameworks $app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.WebContent.xpc
+    ln -s ../../../../Frameworks $app/Frameworks/WebKit.framework/XPCServices/com.matthewbenedict.WebKit.GPU.xpc
+    ln -s ../../../../Frameworks $app/Frameworks/WebKit.framework/XPCServices/com.matthewbenedict.WebKit.Networking.xpc
+    ln -s ../../../../Frameworks $app/Frameworks/WebKit.framework/XPCServices/com.matthewbenedict.WebKit.WebContent.CaptivePortal.xpc
+    ln -s ../../../../Frameworks $app/Frameworks/WebKit.framework/XPCServices/com.matthewbenedict.WebKit.WebContent.Crashy.xpc
+    ln -s ../../../../Frameworks $app/Frameworks/WebKit.framework/XPCServices/com.matthewbenedict.WebKit.WebContent.Development.xpc
+    ln -s ../../../../Frameworks $app/Frameworks/WebKit.framework/XPCServices/com.matthewbenedict.WebKit.WebContent.xpc
 
     install_name_tool -change /System/Library/Frameworks/WebKit.framework/WebKit @rpath/WebKit.framework/WebKit $app/MobileMiniBrowser
     install_name_tool -change /System/Library/Frameworks/WebKit.framework/WebKit @rpath/WebKit.framework/WebKit $app/Frameworks/MobileMiniBrowser.framework/MobileMiniBrowser
@@ -69,18 +69,18 @@ fi
 cp $SCRIPT_DIR/script_fakesigner.entitlements .
 
 # Fakesign
-echo "[1/15] Fakesigning com.apple.WebKit.GPU.xpc"
-ldid -S"script_fakesigner.entitlements" "$app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.GPU.xpc"
-echo "[2/15] Fakesigning com.apple.WebKit.Networking.xpc"
-ldid -S"script_fakesigner.entitlements" "$app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.Networking.xpc"
-echo "[3/15] Fakesigning com.apple.WebKit.WebContent.CaptivePortal.xpc"
-ldid -S"script_fakesigner.entitlements" "$app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.WebContent.CaptivePortal.xpc"
-echo "[4/15] Fakesigning com.apple.WebKit.WebContent.Crashy.xpc"
-ldid -S"script_fakesigner.entitlements" "$app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.WebContent.Crashy.xpc"
-echo "[5/15] Fakesigning com.apple.WebKit.WebContent.Development.xpc"
-ldid -S"script_fakesigner.entitlements" "$app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.WebContent.Development.xpc"
-echo "[6/15] Fakesigning com.apple.WebKit.WebContent.xpc"
-ldid -S"script_fakesigner.entitlements" "$app/Frameworks/WebKit.framework/XPCServices/com.apple.WebKit.WebContent.xpc"
+echo "[1/15] Fakesigning com.matthewbenedict.WebKit.GPU.xpc"
+ldid -S"script_fakesigner.entitlements" "$app/Frameworks/WebKit.framework/XPCServices/com.matthewbenedict.WebKit.GPU.xpc"
+echo "[2/15] Fakesigning com.matthewbenedict.WebKit.Networking.xpc"
+ldid -S"script_fakesigner.entitlements" "$app/Frameworks/WebKit.framework/XPCServices/com.matthewbenedict.WebKit.Networking.xpc"
+echo "[3/15] Fakesigning com.matthewbenedict.WebKit.WebContent.CaptivePortal.xpc"
+ldid -S"script_fakesigner.entitlements" "$app/Frameworks/WebKit.framework/XPCServices/com.matthewbenedict.WebKit.WebContent.CaptivePortal.xpc"
+echo "[4/15] Fakesigning com.matthewbenedict.WebKit.WebContent.Crashy.xpc"
+ldid -S"script_fakesigner.entitlements" "$app/Frameworks/WebKit.framework/XPCServices/com.matthewbenedict.WebKit.WebContent.Crashy.xpc"
+echo "[5/15] Fakesigning com.matthewbenedict.WebKit.WebContent.Development.xpc"
+ldid -S"script_fakesigner.entitlements" "$app/Frameworks/WebKit.framework/XPCServices/com.matthewbenedict.WebKit.WebContent.Development.xpc"
+echo "[6/15] Fakesigning com.matthewbenedict.WebKit.WebContent.xpc"
+ldid -S"script_fakesigner.entitlements" "$app/Frameworks/WebKit.framework/XPCServices/com.matthewbenedict.WebKit.WebContent.xpc"
 echo "[7/15] Fakesigning libANGLE-shared.dylib"
 ldid -S"script_fakesigner.entitlements" "$app/Frameworks/libANGLE-shared.dylib"
 echo "[8/15] Fakesigning libwebrtc.dylib"

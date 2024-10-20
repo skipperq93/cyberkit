@@ -70,7 +70,7 @@ RemoteLayerTreeDrawingArea::RemoteLayerTreeDrawingArea(WebPage& webPage, const W
 {
     m_webPage.corePage()->settings().setForceCompositingMode(true);
 
-    m_commitQueue = adoptOSObject(dispatch_queue_create("com.apple.WebKit.WebContent.RemoteLayerTreeDrawingArea.CommitQueue", nullptr));
+    m_commitQueue = adoptOSObject(dispatch_queue_create("com.matthewbenedict.WebKit.WebContent.RemoteLayerTreeDrawingArea.CommitQueue", nullptr));
 
     if (auto viewExposedRect = parameters.viewExposedRect)
         setViewExposedRect(viewExposedRect);

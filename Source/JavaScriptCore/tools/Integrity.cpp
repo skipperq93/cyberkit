@@ -56,7 +56,7 @@ PrintStream& logFile()
         // We want to use OS_LOG_TYPE_ERROR because we want to guarantee that the log makes it into
         // the file system, and is not potentially stuck in some memory buffer. Integrity audit logs
         // are used for debugging error states. So, this is an appropriate use of OS_LOG_TYPE_ERROR.
-        s_file = OSLogPrintStream::open("com.apple.JavaScriptCore", "Integrity", OS_LOG_TYPE_ERROR).release();
+        s_file = OSLogPrintStream::open("com.matthewbenedict.JavaScriptCore", "Integrity", OS_LOG_TYPE_ERROR).release();
     });
     return *s_file;
 #else

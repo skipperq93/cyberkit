@@ -79,13 +79,13 @@ static void applySandbox()
 {
 #if PLATFORM(MAC)
     NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"WKWebView")];
-    auto profilePath = makeString(String([bundle resourcePath]), "/com.apple.WebKit.webpushd.mac.sb"_s);
+    auto profilePath = makeString(String([bundle resourcePath]), "/com.matthewbenedict.WebKit.webpushd.mac.sb"_s);
     if (FileSystem::fileExists(profilePath)) {
         AuxiliaryProcess::applySandboxProfileForDaemon(profilePath, "com.apple.webkit.webpushd"_s);
         return;
     }
 
-    auto oldProfilePath = makeString(String([bundle resourcePath]), "/com.apple.WebKit.webpushd.sb"_s);
+    auto oldProfilePath = makeString(String([bundle resourcePath]), "/com.matthewbenedict.WebKit.webpushd.sb"_s);
     AuxiliaryProcess::applySandboxProfileForDaemon(oldProfilePath, "com.apple.webkit.webpushd"_s);
 #endif
 }

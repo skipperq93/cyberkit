@@ -77,7 +77,7 @@ struct AssertionTestHolder {
         BinarySemaphore memberInitialized;
         BinarySemaphore threadInitialized;
 
-        thread = Thread::create("com.apple.WebKit.Test.ThreadThreadSafetyAnalysisAssertIsCurrentWorks", [&] {
+        thread = Thread::create("com.matthewbenedict.WebKit.Test.ThreadThreadSafetyAnalysisAssertIsCurrentWorks", [&] {
             memberInitialized.wait(); // Wait for `AssertionTestHolder::thread` assignment to complete.
             threadInitialized.signal();
 // Enable to see "writing variable 'counter' requires holding mutex 'thread' exclusively".

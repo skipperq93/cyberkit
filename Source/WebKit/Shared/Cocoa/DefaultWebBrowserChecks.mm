@@ -47,7 +47,7 @@ static bool isFullWebBrowserOrRunningTest(const String&);
 
 bool isRunningTest(const String& bundleID)
 {
-    return bundleID == "com.apple.WebKit.TestWebKitAPI"_s || bundleID == "com.apple.WebKit.WebKitTestRunner"_s || bundleID == "org.webkit.WebKitTestRunnerApp"_s;
+    return bundleID == "com.matthewbenedict.WebKit.TestWebKitAPI"_s || bundleID == "com.matthewbenedict.WebKit.WebKitTestRunner"_s || bundleID == "org.webkit.WebKitTestRunnerApp"_s;
 }
 
 std::span<const WebCore::RegistrableDomain> appBoundDomainsForTesting(const String& bundleID)
@@ -69,9 +69,9 @@ static bool isInWebKitChildProcess()
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-        isInSubProcess = [bundleIdentifier hasPrefix:@"com.apple.WebKit.WebContent"]
-            || [bundleIdentifier hasPrefix:@"com.apple.WebKit.Networking"]
-            || [bundleIdentifier hasPrefix:@"com.apple.WebKit.GPU"];
+        isInSubProcess = [bundleIdentifier hasPrefix:@"com.matthewbenedict.WebKit.WebContent"]
+            || [bundleIdentifier hasPrefix:@"com.matthewbenedict.WebKit.Networking"]
+            || [bundleIdentifier hasPrefix:@"com.matthewbenedict.WebKit.GPU"];
     });
 
     return isInSubProcess;
@@ -131,7 +131,7 @@ void determineTrackingPreventionState()
 
     bool appWasLinkedOnOrAfter = linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::SessionCleanupByDefault);
 
-    itpQueue() = WorkQueue::create("com.apple.WebKit.itpCheckQueue");
+    itpQueue() = WorkQueue::create("com.matthewbenedict.WebKit.itpCheckQueue");
     itpQueue()->dispatch([appWasLinkedOnOrAfter, bundleIdentifier = WebCore::applicationBundleIdentifier().isolatedCopy()] {
         currentTrackingPreventionState = determineTrackingPreventionStateInternal(appWasLinkedOnOrAfter, bundleIdentifier) ? TrackingPreventionState::Enabled : TrackingPreventionState::Disabled;
         RunLoop::main().dispatch([] {

@@ -1430,7 +1430,7 @@ static WebKit::AttributionOverrideTesting toAttributionOverrideTesting(_WKAttrib
 
 - (void)_setShouldRelaxThirdPartyCookieBlocking:(BOOL)relax
 {
-    bool allowed = WebCore::applicationBundleIdentifier() == "com.apple.WebKit.TestWebKitAPI"_s;
+    bool allowed = WebCore::applicationBundleIdentifier() == "com.matthewbenedict.WebKit.TestWebKitAPI"_s;
 #if PLATFORM(MAC)
     allowed = allowed || WebCore::MacApplication::isSafari();
 #elif PLATFORM(IOS_FAMILY)

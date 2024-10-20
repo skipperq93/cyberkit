@@ -44,7 +44,7 @@ bool createServerAndClientIdentifiers(HANDLE& serverIdentifier, HANDLE& clientId
     String pipeName;
 
     do {
-        pipeName = makeString("\\\\.\\pipe\\com.apple.WebKit.", hex(cryptographicallyRandomNumber<unsigned>()));
+        pipeName = makeString("\\\\.\\pipe\\com.matthewbenedict.WebKit.", hex(cryptographicallyRandomNumber<unsigned>()));
 
         serverIdentifier = ::CreateNamedPipe(pipeName.wideCharacters().data(),
             PIPE_ACCESS_DUPLEX | FILE_FLAG_FIRST_PIPE_INSTANCE | FILE_FLAG_OVERLAPPED,

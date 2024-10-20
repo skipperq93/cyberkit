@@ -110,7 +110,7 @@ static void initializeOffScreenTimerWindow()
     timerWindowHandle = CreateWindow(kTimerWindowClassName, 0, 0,
        CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, HWND_MESSAGE, 0, WebCore::instanceHandle(), 0);
 
-    timerFiredMessage = RegisterWindowMessage(L"com.apple.WebKit.TimerFired");
+    timerFiredMessage = RegisterWindowMessage(L"com.matthewbenedict.WebKit.TimerFired");
 }
 
 static void NTAPI queueTimerProc(PVOID, BOOLEAN)

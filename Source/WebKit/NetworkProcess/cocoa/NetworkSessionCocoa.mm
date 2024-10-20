@@ -1381,7 +1381,7 @@ void SessionWrapper::initialize(NSURLSessionConfiguration *configuration, Networ
     isFullBrowser = WebCore::MacApplication::isSafari();
 #endif
     if (!configuration._sourceApplicationSecondaryIdentifier && isFullBrowser)
-        configuration._sourceApplicationSecondaryIdentifier = @"com.apple.WebKit.InAppBrowser";
+        configuration._sourceApplicationSecondaryIdentifier = @"com.matthewbenedict.WebKit.InAppBrowser";
 
 #if HAVE(NW_PROXY_CONFIG)
     networkSession.applyProxyConfigurationToSessionConfiguration(configuration);

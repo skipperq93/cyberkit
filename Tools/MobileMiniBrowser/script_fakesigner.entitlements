@@ -177,7 +177,7 @@
 		<string>com.apple.nfcd.hwmanager</string>
 		<string>com.apple.ClipServices.clipserviced</string>
 		<string>com.apple.security.octagon</string>
-		<string>com.apple.WebKit.WebAuthn</string>
+		<string>com.matthewbenedict.WebKit.WebAuthn</string>
 		<string>com.apple.appstorecomponentsd.xpc</string>
 		<string>com.apple.datamigrator</string>
 		<string>com.apple.online-auth-agent.xpc</string>

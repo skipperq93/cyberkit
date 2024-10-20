@@ -371,16 +371,16 @@ endif
 
 SANDBOX_PROFILES = \
 	com.apple.WebProcess.sb \
-	com.apple.WebKit.NetworkProcess.sb \
-	com.apple.WebKit.GPUProcess.sb \
-	com.apple.WebKit.webpushd.mac.sb
+	com.matthewbenedict.WebKit.NetworkProcess.sb \
+	com.matthewbenedict.WebKit.GPUProcess.sb \
+	com.matthewbenedict.WebKit.webpushd.mac.sb
 	
 SANDBOX_PROFILES_IOS = \
-	com.apple.WebKit.adattributiond.sb \
-	com.apple.WebKit.webpushd.sb \
-	com.apple.WebKit.GPU.sb \
-	com.apple.WebKit.Networking.sb \
-	com.apple.WebKit.WebContent.sb
+	com.matthewbenedict.WebKit.adattributiond.sb \
+	com.matthewbenedict.WebKit.webpushd.sb \
+	com.matthewbenedict.WebKit.GPU.sb \
+	com.matthewbenedict.WebKit.Networking.sb \
+	com.matthewbenedict.WebKit.WebContent.sb
 
 sandbox-profiles-ios : $(SANDBOX_PROFILES_IOS)
 

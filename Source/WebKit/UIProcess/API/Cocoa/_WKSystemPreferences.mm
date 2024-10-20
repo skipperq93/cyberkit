@@ -33,7 +33,7 @@
 #import <pal/cocoa/LockdownModeSoftLink.h>
 #endif
 
-constexpr auto CaptivePortalConfigurationIgnoreFileName = @"com.apple.WebKit.cpmconfig_ignore";
+constexpr auto CaptivePortalConfigurationIgnoreFileName = @"com.matthewbenedict.WebKit.cpmconfig_ignore";
 
 @implementation _WKSystemPreferences
 

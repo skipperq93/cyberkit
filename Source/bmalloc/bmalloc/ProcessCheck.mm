@@ -39,7 +39,7 @@ bool gigacageEnabledForProcess()
 
     @autoreleasepool {
         if (NSString *appName = [[NSBundle mainBundle] bundleIdentifier]) {
-            bool isWebProcess = [appName hasPrefix:@"com.apple.WebKit.WebContent"];
+            bool isWebProcess = [appName hasPrefix:@"com.matthewbenedict.WebKit.WebContent"];
             return isWebProcess;
         }
 
@@ -64,7 +64,7 @@ bool shouldAllowMiniMode()
     bool isWebKitProcess = false;
     if (const char* serviceName = getenv("XPC_SERVICE_NAME")) {
         static constexpr char appPrefix[] = "application.";
-        static constexpr char webKitPrefix[] = "com.apple.WebKit.";
+        static constexpr char webKitPrefix[] = "com.matthewbenedict.WebKit.";
         isApplication = !strncmp(serviceName, appPrefix, sizeof(appPrefix) - 1);
         isWebKitProcess = !strncmp(serviceName, webKitPrefix, sizeof(webKitPrefix) - 1);
     }
@@ -82,7 +82,7 @@ bool shouldProcessUnconditionallyUseBmalloc()
                 auto contains = [&] (NSString *string) {
                     return [appName rangeOfString:string options:NSCaseInsensitiveSearch].location != NSNotFound;
                 };
-                result = contains(@"com.apple.WebKit") || contains(@"safari");
+                result = contains(@"com.matthewbenedict.WebKit") || contains(@"safari");
             } else {
                 NSString *processName = [[NSProcessInfo processInfo] processName];
                 result = [processName isEqualToString:@"jsc"]

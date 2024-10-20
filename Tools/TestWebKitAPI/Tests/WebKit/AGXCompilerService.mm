@@ -41,7 +41,7 @@ TEST(WebKit, IOKitOpenSandboxAccessForDeviceWithAGXCompilerService)
     [webView _setDeviceHasAGXCompilerServiceForTesting];
 
     auto sandboxAccess = [&] {
-        return [webView stringByEvaluatingJavaScript:@"window.internals.internals.hasSandboxIOKitOpenAccessToClass('com.apple.WebKit.WebContent', 'AGXCommandQueue')"].boolValue;
+        return [webView stringByEvaluatingJavaScript:@"window.internals.internals.hasSandboxIOKitOpenAccessToClass('com.matthewbenedict.WebKit.WebContent', 'AGXCommandQueue')"].boolValue;
     };
 
     ASSERT_TRUE(sandboxAccess());

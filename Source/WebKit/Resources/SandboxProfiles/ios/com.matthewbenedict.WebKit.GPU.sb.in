@@ -57,7 +57,7 @@
         "AppleTimePreferencesChangedNotification"
         "com.apple.CFPreferences._domainsChangedExternally"
         "com.apple.Metal.AGXEnableOSSignposts"
-        "com.apple.WebKit.LibraryPathDiagnostics"
+        "com.matthewbenedict.WebKit.LibraryPathDiagnostics"
         "com.apple.gpumemd.check_in_request"
         "com.apple.mobile.keybagd.user_changed"
         "com.apple.system.logging.prefschanged"

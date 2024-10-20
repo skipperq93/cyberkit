@@ -64,7 +64,7 @@ DYLIB_INSTALL_NAME_BASE = @executable_path/Frameworks;
 INSTALLHDRS_COPY_PHASE = YES;
 INSTALLHDRS_SCRIPT_PHASE = YES;
 PRODUCT_NAME = WebCore;
-PRODUCT_BUNDLE_IDENTIFIER = com.apple.$(PRODUCT_NAME:rfc1034identifier);
+PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.$(PRODUCT_NAME:rfc1034identifier);
 UNEXPORTED_SYMBOLS_FILE = Configurations/WebCore.unexp;
 
 ALTERNATE_ROOT_PATH[sdk=iphone*] = $(SYSTEM_LIBRARY_DIR)/PrivateFrameworks;

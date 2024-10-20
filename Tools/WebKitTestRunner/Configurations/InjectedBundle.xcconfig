@@ -26,7 +26,7 @@
 INFOPLIST_FILE = InjectedBundle-Info.plist;
 LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../..";
 PRODUCT_NAME = WebKitTestRunnerInjectedBundle;
-PRODUCT_BUNDLE_IDENTIFIER = com.apple.WebKitTestRunner.InjectedBundle;
+PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.WebKitTestRunner.InjectedBundle;
 
 SKIP_INSTALL = NO;
 

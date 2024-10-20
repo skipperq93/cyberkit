@@ -720,7 +720,7 @@ void Daemon::notifyClientPushMessageIsAvailable(const WebCore::PushSubscriptionS
     NSDictionary *options = @{
         FBSOpenApplicationOptionKeyActivateForEvent: @{ FBSActivateForEventOptionTypeBackgroundContentFetching: @{ } },
         FBSOpenApplicationOptionKeyPayloadURL : launchURL,
-        FBSOpenApplicationOptionKeyPayloadOptions : @{ UIApplicationLaunchOptionsSourceApplicationKey : @"com.apple.WebKit.webpushd" },
+        FBSOpenApplicationOptionKeyPayloadOptions : @{ UIApplicationLaunchOptionsSourceApplicationKey : @"com.matthewbenedict.WebKit.webpushd" },
     };
 
     _LSOpenConfiguration *configuration = [[_LSOpenConfiguration alloc] init];

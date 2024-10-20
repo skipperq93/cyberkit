@@ -57,14 +57,14 @@ void Page::platformInitialize()
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [] {
 #if ENABLE(TREE_DEBUGGING)
-        PAL::registerNotifyCallback("com.apple.WebKit.showRenderTree"_s, printRenderTreeForLiveDocuments);
-        PAL::registerNotifyCallback("com.apple.WebKit.showLayerTree"_s, printLayerTreeForLiveDocuments);
-        PAL::registerNotifyCallback("com.apple.WebKit.showGraphicsLayerTree"_s, printGraphicsLayerTreeForLiveDocuments);
-        PAL::registerNotifyCallback("com.apple.WebKit.showPaintOrderTree"_s, printPaintOrderTreeForLiveDocuments);
-        PAL::registerNotifyCallback("com.apple.WebKit.showLayoutTree"_s, Layout::printLayoutTreeForLiveDocuments);
+        PAL::registerNotifyCallback("com.matthewbenedict.WebKit.showRenderTree"_s, printRenderTreeForLiveDocuments);
+        PAL::registerNotifyCallback("com.matthewbenedict.WebKit.showLayerTree"_s, printLayerTreeForLiveDocuments);
+        PAL::registerNotifyCallback("com.matthewbenedict.WebKit.showGraphicsLayerTree"_s, printGraphicsLayerTreeForLiveDocuments);
+        PAL::registerNotifyCallback("com.matthewbenedict.WebKit.showPaintOrderTree"_s, printPaintOrderTreeForLiveDocuments);
+        PAL::registerNotifyCallback("com.matthewbenedict.WebKit.showLayoutTree"_s, Layout::printLayoutTreeForLiveDocuments);
 #endif // ENABLE(TREE_DEBUGGING)
 
-        PAL::registerNotifyCallback("com.apple.WebKit.showAllDocuments"_s, [] {
+        PAL::registerNotifyCallback("com.matthewbenedict.WebKit.showAllDocuments"_s, [] {
             unsigned numPages = 0;
             Page::forEachPage([&numPages](Page&) {
                 ++numPages;

@@ -40,7 +40,7 @@ TEST(WebKit, SyscallUnixSandboxCheck)
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 300, 300) configuration:configuration.get() addToWindow:YES]);
 
     auto sandboxAccess = [&](unsigned syscall) {
-        auto jsString = [NSString stringWithFormat:@"window.internals.hasSandboxUnixSyscallAccess('com.apple.WebKit.WebContent', %d)", syscall];
+        auto jsString = [NSString stringWithFormat:@"window.internals.hasSandboxUnixSyscallAccess('com.matthewbenedict.WebKit.WebContent', %d)", syscall];
         return [webView stringByEvaluatingJavaScript:jsString].boolValue;
     };
 

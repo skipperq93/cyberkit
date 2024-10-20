@@ -61,12 +61,12 @@ namespace WebKit {
 static const char* webContentServiceName(const ProcessLauncher::LaunchOptions& launchOptions, ProcessLauncher::Client* client)
 {
     if (launchOptions.extraInitializationData.get<HashTranslatorASCIILiteral>("is-webcontent-crashy"_s) == "1"_s)
-        return "com.apple.WebKit.WebContent.Crashy";
+        return "com.matthewbenedict.WebKit.WebContent.Crashy";
 
     if (client && client->shouldEnableLockdownMode())
-        return "com.apple.WebKit.WebContent.CaptivePortal";
+        return "com.matthewbenedict.WebKit.WebContent.CaptivePortal";
 
-    return launchOptions.nonValidInjectedCodeAllowed ? "com.apple.WebKit.WebContent.Development" : "com.apple.WebKit.WebContent";
+    return launchOptions.nonValidInjectedCodeAllowed ? "com.matthewbenedict.WebKit.WebContent.Development" : "com.matthewbenedict.WebKit.WebContent";
 }
 
 static const char* serviceName(const ProcessLauncher::LaunchOptions& launchOptions, ProcessLauncher::Client* client)
@@ -75,10 +75,10 @@ static const char* serviceName(const ProcessLauncher::LaunchOptions& launchOptio
     case ProcessLauncher::ProcessType::Web:
         return webContentServiceName(launchOptions, client);
     case ProcessLauncher::ProcessType::Network:
-        return "com.apple.WebKit.Networking";
+        return "com.matthewbenedict.WebKit.Networking";
 #if ENABLE(GPU_PROCESS)
     case ProcessLauncher::ProcessType::GPU:
-        return "com.apple.WebKit.GPU";
+        return "com.matthewbenedict.WebKit.GPU";
 #endif
     }
 }

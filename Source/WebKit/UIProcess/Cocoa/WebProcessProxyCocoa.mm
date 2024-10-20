@@ -78,7 +78,7 @@ static const Seconds unexpectedActivityDuration = 10_s;
 const MemoryCompactLookupOnlyRobinHoodHashSet<String>& WebProcessProxy::platformPathsWithAssumedReadAccess()
 {
     static NeverDestroyed<MemoryCompactLookupOnlyRobinHoodHashSet<String>> platformPathsWithAssumedReadAccess(std::initializer_list<String> {
-        [NSBundle bundleWithIdentifier:@"com.apple.WebCore"].resourcePath.stringByStandardizingPath,
+        [NSBundle bundleWithIdentifier:@"com.matthewbenedict.WebCore"].resourcePath.stringByStandardizingPath,
         [NSBundle bundleForClass:NSClassFromString(@"WKWebView")].resourcePath.stringByStandardizingPath
     });
 
@@ -315,7 +315,7 @@ bool WebProcessProxy::messageSourceIsValidWebContentProcess()
     // Confirm that the connection is from a WebContent process:
     auto [signingIdentifier, isPlatformBinary] = codeSigningIdentifierAndPlatformBinaryStatus(connection()->xpcConnection());
 
-    if (!isPlatformBinary || !signingIdentifier.startsWith("com.apple.WebKit.WebContent"_s)) {
+    if (!isPlatformBinary || !signingIdentifier.startsWith("com.matthewbenedict.WebKit.WebContent"_s)) {
         RELEASE_LOG_ERROR(Process, "Process is not an entitled WebContent process.");
         return false;
     }

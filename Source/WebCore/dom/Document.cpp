@@ -9404,7 +9404,7 @@ void Document::updateSleepDisablerIfNeeded()
 {
     MediaProducerMediaStateFlags activeVideoCaptureMask { MediaProducerMediaState::HasActiveVideoCaptureDevice, MediaProducerMediaState::HasActiveScreenCaptureDevice, MediaProducerMediaState::HasActiveWindowCaptureDevice };
     if (m_mediaState & activeVideoCaptureMask) {
-        m_sleepDisabler = makeUnique<SleepDisabler>("com.apple.WebCore: Document doing camera, screen or window capture"_s, PAL::SleepDisabler::Type::Display, pageID());
+        m_sleepDisabler = makeUnique<SleepDisabler>("com.matthewbenedict.WebCore: Document doing camera, screen or window capture"_s, PAL::SleepDisabler::Type::Display, pageID());
         return;
     }
     m_sleepDisabler = nullptr;

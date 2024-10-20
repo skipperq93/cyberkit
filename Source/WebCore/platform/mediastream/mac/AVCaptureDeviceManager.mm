@@ -248,7 +248,7 @@ AVCaptureDeviceManager& AVCaptureDeviceManager::singleton()
 AVCaptureDeviceManager::AVCaptureDeviceManager()
     : m_objcObserver(adoptNS([[WebCoreAVCaptureDeviceManagerObserver alloc] initWithCallback:this]))
     , m_avCaptureDeviceTypes(adoptNS(AVVideoCaptureSource::cameraCaptureDeviceTypes()))
-    , m_dispatchQueue(WorkQueue::create("com.apple.WebKit.AVCaptureDeviceManager"))
+    , m_dispatchQueue(WorkQueue::create("com.matthewbenedict.WebKit.AVCaptureDeviceManager"))
 {
 }
 

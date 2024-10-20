@@ -92,7 +92,7 @@ static inline IDBServer::IDBServer::StorageQuotaManagerSpaceRequester storageQuo
 }
 
 InProcessIDBServer::InProcessIDBServer(PAL::SessionID sessionID, const String& databaseDirectoryPath)
-    : m_queue(WorkQueue::create("com.apple.WebKit.IndexedDBServer"))
+    : m_queue(WorkQueue::create("com.matthewbenedict.WebKit.IndexedDBServer"))
 {
     ASSERT(isMainThread());
     m_connectionToServer = IDBClient::IDBConnectionToServer::create(*this);

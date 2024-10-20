@@ -115,7 +115,7 @@ static HashMap<PAL::SessionID, WebsiteDataStore*>& allDataStores()
 
 WorkQueue& WebsiteDataStore::websiteDataStoreIOQueue()
 {
-    static auto& queue = WorkQueue::create("com.apple.WebKit.WebsiteDataStoreIO").leakRef();
+    static auto& queue = WorkQueue::create("com.matthewbenedict.WebKit.WebsiteDataStoreIO").leakRef();
     return queue;
 }
 
@@ -143,7 +143,7 @@ WebsiteDataStore::WebsiteDataStore(Ref<WebsiteDataStoreConfiguration>&& configur
 #if ENABLE(TRACKING_PREVENTION)
     , m_trackingPreventionDebugMode(m_resolvedConfiguration->resourceLoadStatisticsDebugModeEnabled())
 #endif
-    , m_queue(WorkQueue::create("com.apple.WebKit.WebsiteDataStore"))
+    , m_queue(WorkQueue::create("com.matthewbenedict.WebKit.WebsiteDataStore"))
 #if ENABLE(WEB_AUTHN)
     , m_authenticatorManager(makeUniqueRef<AuthenticatorManager>())
 #endif

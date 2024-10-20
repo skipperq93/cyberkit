@@ -102,7 +102,7 @@ void WasmOpcodeCounter::registerDispatch()
     static std::once_flag registerFlag;
     std::call_once(registerFlag, [&]() {
         int pid = getpid();
-        const char* key = "com.apple.WebKit.wasm.op.stat";
+        const char* key = "com.matthewbenedict.WebKit.wasm.op.stat";
         dataLogF("<WASM.OP.STAT><%d> Registering callback for wasm opcode statistics.\n", pid);
         dataLogF("<WASM.OP.STAT><%d> Use `notifyutil -v -p %s` to dump statistics.\n", pid, key);
 

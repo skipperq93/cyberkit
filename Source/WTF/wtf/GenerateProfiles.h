@@ -53,7 +53,7 @@ ALWAYS_INLINE void registerProfileGenerationCallback(const char* name)
     std::call_once(registerFlag, [name] {
         int pid = getpid();
         WTFLogAlways("<WEBKIT_LLVM_PROFILE><%s><%d>: Registering callback for profile data.", name, pid);
-        WTFLogAlways("<WEBKIT_LLVM_PROFILE> To collect a profile: `notifyutil -p com.apple.WebKit.profiledata`");
+        WTFLogAlways("<WEBKIT_LLVM_PROFILE> To collect a profile: `notifyutil -p com.matthewbenedict.WebKit.profiledata`");
         WTFLogAlways("<WEBKIT_LLVM_PROFILE> To copy the output: `"
             R"HERE(log stream --style json --color none | perl -mFile::Basename -mFile::Copy -nle 'if (m/<WEBKIT_LLVM_PROFILE>.*<BEGIN>(.*)<END>/) { (my $l = $1) =~ s/\\\//\//g; my $b = File::Basename::basename($l); my $d = "./profiles/$b"; print "Moving $l to $d"; File::Copy::move($l, $d); }')HERE"
             "`.");
@@ -62,7 +62,7 @@ ALWAYS_INLINE void registerProfileGenerationCallback(const char* name)
         WTFLogAlways("<WEBKIT_LLVM_PROFILE><%s><%d>: We will dump the resulting profile to %s.", name, pid, profileFileBase->utf8().data());
 
         int token;
-        notify_register_dispatch("com.apple.WebKit.profiledata", &token, dispatch_get_main_queue(), ^(int) {
+        notify_register_dispatch("com.matthewbenedict.WebKit.profiledata", &token, dispatch_get_main_queue(), ^(int) {
             
             {
                 // Maybe we could use %t instead here, but this folder is permitted through the sandbox because of ANGLE.

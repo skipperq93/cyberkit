@@ -32,7 +32,7 @@ namespace WebCore {
 
 ASCIILiteral PasteboardCustomData::cocoaType()
 {
-    return "com.apple.WebKit.custom-pasteboard-data"_s;
+    return "com.matthewbenedict.WebKit.custom-pasteboard-data"_s;
 }
 
 } // namespace WebCore

@@ -78,7 +78,7 @@ static HashSet<WebsiteDataStore*>& dataStores()
 #if ENABLE(APP_BOUND_DOMAINS)
 static WorkQueue& appBoundDomainQueue()
 {
-    static auto& queue = WorkQueue::create("com.apple.WebKit.AppBoundDomains").leakRef();
+    static auto& queue = WorkQueue::create("com.matthewbenedict.WebKit.AppBoundDomains").leakRef();
     return queue;
 }
 static std::atomic<bool> hasInitializedAppBoundDomains = false;
@@ -88,7 +88,7 @@ static std::atomic<bool> keyExists = false;
 #if ENABLE(MANAGED_DOMAINS)
 static WorkQueue& managedDomainQueue()
 {
-    static auto& queue = WorkQueue::create("com.apple.WebKit.ManagedDomains").leakRef();
+    static auto& queue = WorkQueue::create("com.matthewbenedict.WebKit.ManagedDomains").leakRef();
     return queue;
 }
 static std::atomic<bool> hasInitializedManagedDomains = false;
@@ -916,7 +916,7 @@ String WebsiteDataStore::resolvedContainerCachesNetworkingDirectory()
         if (!isPersistent())
             m_resolvedContainerCachesNetworkingDirectory = emptyString();
         else {
-            auto directory = cacheDirectoryInContainerOrHomeDirectory("/Library/Caches/com.apple.WebKit.Networking/"_s);
+            auto directory = cacheDirectoryInContainerOrHomeDirectory("/Library/Caches/com.matthewbenedict.WebKit.Networking/"_s);
             m_resolvedContainerCachesNetworkingDirectory = resolveAndCreateReadWriteDirectoryForSandboxExtension(directory);
         }
     }
@@ -930,7 +930,7 @@ String WebsiteDataStore::resolvedContainerCachesWebContentDirectory()
         if (!isPersistent())
             m_resolvedContainerCachesWebContentDirectory = emptyString();
         else {
-            auto directory = cacheDirectoryInContainerOrHomeDirectory("/Library/Caches/com.apple.WebKit.WebContent/"_s);
+            auto directory = cacheDirectoryInContainerOrHomeDirectory("/Library/Caches/com.matthewbenedict.WebKit.WebContent/"_s);
             m_resolvedContainerCachesWebContentDirectory = resolveAndCreateReadWriteDirectoryForSandboxExtension(directory);
         }
     }

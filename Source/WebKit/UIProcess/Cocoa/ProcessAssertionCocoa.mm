@@ -221,7 +221,7 @@ static bool processHasActiveRunTimeLimitation()
         [_backgroundTask acquireWithInvalidationHandler:nil];
         RELEASE_LOG(ProcessSuspension, "WKProcessAssertionBackgroundTaskManager: Took a FinishTaskInterruptable assertion for own process");
 #else
-        _backgroundTask = [[UIApplication sharedApplication] beginBackgroundTaskWithName:@"com.apple.WebKit.ProcessAssertion" expirationHandler:^{
+        _backgroundTask = [[UIApplication sharedApplication] beginBackgroundTaskWithName:@"com.matthewbenedict.WebKit.ProcessAssertion" expirationHandler:^{
                    [self _handleBackgroundTaskExpiration];
                }];
 #endif

@@ -38,7 +38,7 @@
 #import <wtf/text/Base64.h>
 #import <wtf/text/StringBuilder.h>
 
-NSString *pushBundleAppManagementDomain = @"com.apple.WebKit.PushBundles";
+NSString *pushBundleAppManagementDomain = @"com.matthewbenedict.WebKit.PushBundles";
 
 @interface _WKAppInstallCoordinatorObserver : NSObject <IXAppInstallCoordinatorObserver>
 - (instancetype)initWithICAppBundle:(WebPushD::ICAppBundle&)icAppBundle;
@@ -136,7 +136,7 @@ static String bundlePrefixForHostAppIdentifier(const String& hostAppIdentifier)
     auto utf8Identifier = hostAppIdentifier.utf8();
     appDigest->addBytes(utf8Identifier.data(), utf8Identifier.length());
 
-    return makeString("com.apple.WebKit.PushBundle.", appDigest->toHexString(), ".");
+    return makeString("com.matthewbenedict.WebKit.PushBundle.", appDigest->toHexString(), ".");
 }
 
 static String bundleNameForOriginStringAndHostAppIdentifier(const String& originString, const String& hostAppIdentifier)

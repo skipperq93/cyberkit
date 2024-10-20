@@ -961,7 +961,7 @@ uint64_t Connection::installIncomingSyncMessageCallback(WTF::Function<void ()>&&
     m_nextIncomingSyncMessageCallbackID++;
 
     if (!m_incomingSyncMessageCallbackQueue)
-        m_incomingSyncMessageCallbackQueue = WorkQueue::create("com.apple.WebKit.IPC.IncomingSyncMessageCallbackQueue");
+        m_incomingSyncMessageCallbackQueue = WorkQueue::create("com.matthewbenedict.WebKit.IPC.IncomingSyncMessageCallbackQueue");
 
     m_incomingSyncMessageCallbacks.add(m_nextIncomingSyncMessageCallbackID, WTFMove(callback));
 

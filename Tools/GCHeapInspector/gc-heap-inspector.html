@@ -148,10 +148,10 @@
         <code>notifyutil -p org.WebKit.lowMemory</code>
         
         You can now inspect the list of live documents via:
-        <code>notifyutil -p com.apple.WebKit.showAllDocuments</code>
+        <code>notifyutil -p com.matthewbenedict.WebKit.showAllDocuments</code>
         
         which prints its output to the system log. If this lists documents other than the current page, you may have a leaked or abandoned Document. To see if the GC heap is referencing that Document, obtain a GC heap dump:
-        <code>notifyutil -p com.apple.WebKit.dumpGCHeap</code>
+        <code>notifyutil -p com.matthewbenedict.WebKit.dumpGCHeap</code>
         
         That command will generate a JSON file in /tmp (or equivalent); the file path is dumped to the system log. Drag that file onto the drop target in the top right (or use the ?filename= URL parameter).
         </p>

@@ -415,8 +415,8 @@ TEST(WKHTTPCookieStore, NonPersistent)
 
 TEST(WKHTTPCookieStore, Custom)
 {
-    NSURL *cookieStorageFile = [NSURL fileURLWithPath:[@"~/Library/WebKit/com.apple.WebKit.TestWebKitAPI/CustomWebsiteData/CookieStorage/Cookie.File" stringByExpandingTildeInPath] isDirectory:NO];
-    NSURL *idbPath = [NSURL fileURLWithPath:[@"~/Library/WebKit/com.apple.WebKit.TestWebKitAPI/CustomWebsiteData/IndexedDB/" stringByExpandingTildeInPath] isDirectory:YES];
+    NSURL *cookieStorageFile = [NSURL fileURLWithPath:[@"~/Library/WebKit/com.matthewbenedict.WebKit.TestWebKitAPI/CustomWebsiteData/CookieStorage/Cookie.File" stringByExpandingTildeInPath] isDirectory:NO];
+    NSURL *idbPath = [NSURL fileURLWithPath:[@"~/Library/WebKit/com.matthewbenedict.WebKit.TestWebKitAPI/CustomWebsiteData/IndexedDB/" stringByExpandingTildeInPath] isDirectory:YES];
 
     [[NSFileManager defaultManager] removeItemAtURL:cookieStorageFile error:nil];
     [[NSFileManager defaultManager] removeItemAtURL:idbPath error:nil];

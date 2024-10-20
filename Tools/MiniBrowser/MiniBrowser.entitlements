@@ -22,7 +22,7 @@
 	<array>
 		<string>com.apple.PIPAgent</string>
 		<string>com.apple.Safari.SafeBrowsing.Service</string>
-		<string>com.apple.WebKit.NetworkingDaemon</string>
+		<string>com.matthewbenedict.WebKit.NetworkingDaemon</string>
 	</array>
 	<key>com.apple.security.temporary-exception.sbpl</key>
 	<array>

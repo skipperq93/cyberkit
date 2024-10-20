@@ -38,7 +38,7 @@ class WebServerBenchmarkRunner(BenchmarkRunner):
             _log.info('Getting benchmark PGO profile results for {} and copying them to {}.'.format(test_url, self._pgo_profile_output_dir))
             copy_output = subprocess.Popen(r"""log stream --style json --color none | perl -mFile::Basename -mFile::Copy -nle 'if (m/<WEBKIT_LLVM_PROFILE>.*<BEGIN>(.*)<END>/) { (my $l = $1) =~ s/\\\//\//g; my $b = File::Basename::basename($l); my $d = """ + "\"" + self._pgo_profile_output_dir + """/$b"; print "Moving $l to $d"; File::Copy::move($l, $d); }'""", shell=True, bufsize=0, preexec_fn=os.setsid)
             time.sleep(1)
-            subprocess.call(['notifyutil', '-p', 'com.apple.WebKit.profiledata'])
+            subprocess.call(['notifyutil', '-p', 'com.matthewbenedict.WebKit.profiledata'])
             time.sleep(7)
             # We can kill the shell with kill(), but killing children is harder.
             os.killpg(os.getpgid(copy_output.pid), signal.SIGINT)
