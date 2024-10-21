@@ -2965,7 +2965,9 @@ const UIDNA& URLParser::internationalDomainNameTranscoder()
     static UIDNA* encoder;
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [] {
-        CFURLRef dir = CFURLCreateCopyAppendingPathComponent(nullptr, CFBundleCopyBundleURL(CFBundleGetMainBundle()), CFSTR("Frameworks/WebKit.framework/XPCServices"), true);
+        CFBundleRef webKitBundle = CFBundleGetBundleWithIdentifier(CFSTR("com.matthewbenedict.WebKit"));
+        CFURLRef bundleURL = CFBundleCopyBundleURL(webKitBundle);
+        CFURLRef dir = CFURLCreateCopyDeletingLastPathComponent(NULL, bundleURL);
         u_setDataDirectory(CFStringGetCStringPtr(CFURLGetString(dir), kCFStringEncodingUTF8));
 
         UErrorCode error = U_ZERO_ERROR;

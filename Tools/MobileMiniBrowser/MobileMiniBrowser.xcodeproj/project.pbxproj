@@ -404,7 +404,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n$SRCROOT/script_fakesigner.sh mobileminibrowser+$CYBERKIT_DEPLOYMENT_TARGET\n";
+			shellScript = "$SRCROOT/../Scripts/fakesign/script_fakesigner.sh mobileminibrowser+$CYBERKIT_DEPLOYMENT_TARGET $SRCROOT/../../WebKitBuild/Debug-iphoneos/MobileMiniBrowser.app $SRCROOT/../../WebKitBuild/Debug-iphoneos $SRCROOT\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
