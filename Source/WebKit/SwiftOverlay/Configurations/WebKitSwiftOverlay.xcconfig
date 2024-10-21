@@ -41,7 +41,7 @@ MODULE_VERSION = $(FULL_VERSION);
 
 // Disable code signing
 COPY_PHASE_STRIP = NO;
-CODE_SIGN_IDENTITY = -;
+CODE_SIGN_IDENTITY = Apple Development;
 CODE_SIGN_STYLE = Manual;
 
 // We need to run install-swiftmodules.sh during the installapi action.

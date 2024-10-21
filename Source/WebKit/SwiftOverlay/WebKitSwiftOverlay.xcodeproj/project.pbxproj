@@ -452,6 +452,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B3A5D39423F790E100B17727 /* WebKitSwiftOverlay.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
 			};
 			name = Debug;
 		};
@@ -459,6 +460,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B3A5D39423F790E100B17727 /* WebKitSwiftOverlay.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
 			};
 			name = Release;
 		};
