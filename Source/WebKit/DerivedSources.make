@@ -393,24 +393,24 @@ endif
 
 SANDBOX_PROFILES_WITHOUT_WEBPUSHD = \
 	com.apple.WebProcess.sb \
-	com.apple.WebKit.NetworkProcess.sb \
-	com.apple.WebKit.GPUProcess.sb
+	com.matthewbenedict.WebKit.NetworkProcess.sb \
+	com.matthewbenedict.WebKit.GPUProcess.sb
 
 ifeq ($(WK_RELOCATABLE_WEBPUSHD),YES)
 WEBPUSHD_SANDBOX_PROFILE = \
-	com.apple.WebKit.webpushd.relocatable.mac.sb
+	com.matthewbenedict.WebKit.webpushd.relocatable.mac.sb
 else
 WEBPUSHD_SANDBOX_PROFILE = \
-	com.apple.WebKit.webpushd.mac.sb
+	com.matthewbenedict.WebKit.webpushd.mac.sb
 endif
 
 SANDBOX_PROFILES_IOS = \
-	com.apple.WebKit.adattributiond.sb \
-	com.apple.WebKit.webpushd.sb \
-	com.apple.WebKit.GPU.sb \
-	com.apple.WebKit.Model.sb \
-	com.apple.WebKit.Networking.sb \
-	com.apple.WebKit.WebContent.sb
+	com.matthewbenedict.WebKit.adattributiond.sb \
+	com.matthewbenedict.WebKit.webpushd.sb \
+	com.matthewbenedict.WebKit.GPU.sb \
+	com.matthewbenedict.WebKit.Model.sb \
+	com.matthewbenedict.WebKit.Networking.sb \
+	com.matthewbenedict.WebKit.WebContent.sb
 
 sandbox-profiles-ios : $(SANDBOX_PROFILES_IOS)
 

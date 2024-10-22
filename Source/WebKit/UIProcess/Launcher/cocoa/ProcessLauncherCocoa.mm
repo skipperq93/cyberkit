@@ -80,14 +80,14 @@ static std::pair<ASCIILiteral, RetainPtr<NSString>> serviceNameAndIdentifier(Pro
     switch (processType) {
     case ProcessLauncher::ProcessType::Web: {
         if (client && client->shouldEnableLockdownMode())
-            return { "com.apple.WebKit.WebContent"_s, @"com.apple.WebKit.WebContent.CaptivePortal" };
-        return { "com.apple.WebKit.WebContent"_s, @"com.apple.WebKit.WebContent" };
+            return { "com.matthewbenedict.WebKit.WebContent"_s, @"com.matthewbenedict.WebKit.WebContent.CaptivePortal" };
+        return { "com.matthewbenedict.WebKit.WebContent"_s, @"com.matthewbenedict.WebKit.WebContent" };
     }
     case ProcessLauncher::ProcessType::Network:
-        return { "com.apple.WebKit.Networking"_s, @"com.apple.WebKit.Networking" };
+        return { "com.matthewbenedict.WebKit.Networking"_s, @"com.matthewbenedict.WebKit.Networking" };
 #if ENABLE(GPU_PROCESS)
     case ProcessLauncher::ProcessType::GPU:
-        return { "com.apple.WebKit.GPU"_s, @"com.apple.WebKit.GPU" };
+        return { "com.matthewbenedict.WebKit.GPU"_s, @"com.matthewbenedict.WebKit.GPU" };
 #endif
     }
 }
@@ -191,9 +191,9 @@ static void launchWithExtensionKit(ProcessLauncher& processLauncher, ProcessLaun
 static ASCIILiteral webContentServiceName(const ProcessLauncher::LaunchOptions& launchOptions, ProcessLauncher::Client* client)
 {
     if (client && client->shouldEnableLockdownMode())
-        return "com.apple.WebKit.WebContent.CaptivePortal"_s;
+        return "com.matthewbenedict.WebKit.WebContent.CaptivePortal"_s;
 
-    return launchOptions.nonValidInjectedCodeAllowed ? "com.apple.WebKit.WebContent.Development"_s : "com.apple.WebKit.WebContent"_s;
+    return launchOptions.nonValidInjectedCodeAllowed ? "com.matthewbenedict.WebKit.WebContent.Development"_s : "com.matthewbenedict.WebKit.WebContent"_s;
 }
 
 static ASCIILiteral serviceName(const ProcessLauncher::LaunchOptions& launchOptions, ProcessLauncher::Client* client)
@@ -202,14 +202,14 @@ static ASCIILiteral serviceName(const ProcessLauncher::LaunchOptions& launchOpti
     case ProcessLauncher::ProcessType::Web:
         return webContentServiceName(launchOptions, client);
     case ProcessLauncher::ProcessType::Network:
-        return "com.apple.WebKit.Networking"_s;
+        return "com.matthewbenedict.WebKit.Networking"_s;
 #if ENABLE(GPU_PROCESS)
     case ProcessLauncher::ProcessType::GPU:
-        return "com.apple.WebKit.GPU"_s;
+        return "com.matthewbenedict.WebKit.GPU"_s;
 #endif
 #if ENABLE(MODEL_PROCESS)
     case ProcessLauncher::ProcessType::Model:
-        return "com.apple.WebKit.Model"_s;
+        return "com.matthewbenedict.WebKit.Model"_s;
 #endif
     }
 }

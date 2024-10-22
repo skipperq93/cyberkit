@@ -6,8 +6,8 @@
 description('Test that the WebContent process has mach lookup access to frontboard and icon services when the attachment element is enabled');
 
 if (window.internals) {
-    shouldBeTrue("internals.hasSandboxMachLookupAccessToGlobalName('com.apple.WebKit.WebContent', 'com.apple.frontboard.systemappservices')");
-    shouldBeTrue("internals.hasSandboxMachLookupAccessToGlobalName('com.apple.WebKit.WebContent', 'com.apple.iconservices')");
+    shouldBeTrue("internals.hasSandboxMachLookupAccessToGlobalName('com.matthewbenedict.WebKit.WebContent', 'com.apple.frontboard.systemappservices')");
+    shouldBeTrue("internals.hasSandboxMachLookupAccessToGlobalName('com.matthewbenedict.WebKit.WebContent', 'com.apple.iconservices')");
 }
 </script>
 </head>

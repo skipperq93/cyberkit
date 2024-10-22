@@ -40,7 +40,7 @@
 
 namespace TestWebKitAPI {
 
-static const char *WebKitMediaStreamingActivity = "com.apple.WebKit.mediaStreamingActivity";
+static const char *WebKitMediaStreamingActivity = "com.matthewbenedict.WebKit.mediaStreamingActivity";
 
 TEST(WebKit, MSEHasMediaStreamingActivity)
 {

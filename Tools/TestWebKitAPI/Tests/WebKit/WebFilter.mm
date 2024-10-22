@@ -60,7 +60,7 @@ TEST(WebKit, WebFilterFeatureHasFrontboardServiceAccess)
     [webView synchronouslyLoadTestPageNamed:@"simple"];
 
     auto sandboxAccess = [&] {
-        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToGlobalName('com.apple.WebKit.WebContent', 'com.apple.frontboard.systemappservices')"].boolValue;
+        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToGlobalName('com.matthewbenedict.WebKit.WebContent', 'com.apple.frontboard.systemappservices')"].boolValue;
     };
 
     ASSERT_TRUE(sandboxAccess());

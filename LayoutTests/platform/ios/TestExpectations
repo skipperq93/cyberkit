@@ -3165,7 +3165,7 @@ fast/attachment/attachment-title-with-rtl.html [ ImageOnlyFailure ]
 
 fast/forms/textfield-no-linebreak.html [ ImageOnlyFailure ]
 
-# <rdar://problem/50892567> REGRESSION (iOS 13): CrashTracer: com.apple.WebKit.WebContent.Development at com.apple.WebKit: _ZN6WebKit19fallbackIconForFileEP5NSURL
+# <rdar://problem/50892567> REGRESSION (iOS 13): CrashTracer: com.matthewbenedict.WebKit.WebContent.Development at com.matthewbenedict.WebKit: _ZN6WebKit19fallbackIconForFileEP5NSURL
 fast/forms/file/file-reset-in-change-using-open-panel-with-icon.html [ Skip ]
 
 # <rdar://problem/51762717> 7 http/wpt/resource-timing/rt* tests are flaky failures on iOS 13 and Catalina bots
@@ -4494,7 +4494,7 @@ editing/caret/ios/caret-color-after-refocusing-input.html [ Timeout ]
 
 # rdar://107686490 (REGRESSION(261554@main?): [ iOS17 Simulator ] 8x editing/selection/ios tests are constant timeouts.)
 
-# rdar://104646153 ([ iOS17 ] Four flaky crashing test: com.apple.WebCore: WebCore::JSVMClientData::~JSVMClientData)
+# rdar://104646153 ([ iOS17 ] Four flaky crashing test: com.matthewbenedict.WebCore: WebCore::JSVMClientData::~JSVMClientData)
 imported/w3c/web-platform-tests/fetch/api/credentials/authentication-basic.any.serviceworker.html [ Pass Crash ]
 imported/w3c/web-platform-tests/webaudio/idlharness.https.window.html [ Pass Crash ]
 imported/w3c/web-platform-tests/webaudio/the-audio-api/the-audionode-interface/audionode-connect-method-chaining.html [ Pass Crash ]

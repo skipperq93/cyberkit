@@ -429,7 +429,7 @@ function ios_family_process_webcontent_shared_entitlements()
 if [[ "${PRODUCT_NAME}" != WebContentExtension && "${PRODUCT_NAME}" != WebContentCaptivePortalExtension ]]; then
     plistbuddy Add :com.apple.private.gpu-restricted bool YES
     plistbuddy Add :com.apple.private.pac.exception bool YES
-    plistbuddy Add :com.apple.private.sandbox.profile string com.apple.WebKit.WebContent
+    plistbuddy Add :com.apple.private.sandbox.profile string com.matthewbenedict.WebKit.WebContent
 fi
     plistbuddy add :com.apple.coreaudio.LoadDecodersInProcess bool YES
     plistbuddy add :com.apple.coreaudio.allow-vorbis-decode bool YES
@@ -507,7 +507,7 @@ function ios_family_process_gpu_entitlements()
 if [[ "${PRODUCT_NAME}" != GPUExtension ]]; then
     plistbuddy Add :com.apple.private.gpu-restricted bool YES
     plistbuddy Add :com.apple.private.pac.exception bool YES
-    plistbuddy Add :com.apple.private.sandbox.profile string com.apple.WebKit.GPU
+    plistbuddy Add :com.apple.private.sandbox.profile string com.matthewbenedict.WebKit.GPU
     plistbuddy Add :com.apple.private.coremedia.allow-fps-attachment bool YES
 fi
 
@@ -528,19 +528,19 @@ function ios_family_process_model_entitlements()
     plistbuddy Add :com.apple.private.memorystatus bool YES
     plistbuddy Add :com.apple.runningboard.assertions.webkit bool YES
     plistbuddy Add :com.apple.private.pac.exception bool YES
-    plistbuddy Add :com.apple.private.sandbox.profile string com.apple.WebKit.Model
+    plistbuddy Add :com.apple.private.sandbox.profile string com.matthewbenedict.WebKit.Model
     plistbuddy Add :com.apple.surfboard.application-service-client bool YES
     plistbuddy Add :com.apple.surfboard.shared-simulation-connection-request bool YES
 }
 
 function ios_family_process_adattributiond_entitlements()
 {
-    plistbuddy Add :com.apple.private.sandbox.profile string com.apple.WebKit.adattributiond
+    plistbuddy Add :com.apple.private.sandbox.profile string com.matthewbenedict.WebKit.adattributiond
 }
 
 function ios_family_process_webpushd_entitlements()
 {
-    plistbuddy Add :com.apple.private.sandbox.profile string com.apple.WebKit.webpushd
+    plistbuddy Add :com.apple.private.sandbox.profile string com.matthewbenedict.WebKit.webpushd
     plistbuddy Add :aps-connection-initiate bool YES
     plistbuddy Add :com.apple.private.launchservices.allowopenwithanyhandler bool YES
     plistbuddy Add :com.apple.springboard.opensensitiveurl bool YES
@@ -574,7 +574,7 @@ function ios_family_process_network_entitlements()
 
 if [[ "${PRODUCT_NAME}" != NetworkingExtension ]]; then
     plistbuddy Add :com.apple.private.pac.exception bool YES
-    plistbuddy Add :com.apple.private.sandbox.profile string com.apple.WebKit.Networking
+    plistbuddy Add :com.apple.private.sandbox.profile string com.matthewbenedict.WebKit.Networking
 fi
     plistbuddy Add :com.apple.symptom_analytics.configure bool YES
 
@@ -599,23 +599,23 @@ elif [[ "${WK_PLATFORM_NAME}" == macosx ]]
 then
     [[ "${RC_XBS}" != YES ]] && plistbuddy Add :com.apple.security.get-task-allow bool YES
 
-    if [[ "${PRODUCT_NAME}" == com.apple.WebKit.WebContent.Development ]]; then mac_process_webcontent_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.WebKit.WebContent ]]; then mac_process_webcontent_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.WebKit.WebContent.CaptivePortal ]]; then mac_process_webcontent_captiveportal_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.WebKit.Networking ]]; then mac_process_network_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.WebKit.GPU ]]; then mac_process_gpu_entitlements
+    if [[ "${PRODUCT_NAME}" == com.matthewbenedict.WebKit.WebContent.Development ]]; then mac_process_webcontent_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.WebKit.WebContent ]]; then mac_process_webcontent_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.WebKit.WebContent.CaptivePortal ]]; then mac_process_webcontent_captiveportal_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.WebKit.Networking ]]; then mac_process_network_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.WebKit.GPU ]]; then mac_process_gpu_entitlements
     elif [[ "${PRODUCT_NAME}" == webpushd ]]; then mac_process_webpushd_entitlements
     elif [[ "${PRODUCT_NAME}" != adattributiond ]]; then echo "Unsupported/unknown product: ${PRODUCT_NAME}"
     fi
 elif [[ "${WK_PLATFORM_NAME}" == maccatalyst || "${WK_PLATFORM_NAME}" == iosmac ]]
 then
-    [[ "${RC_XBS}" != YES && ( "${PRODUCT_NAME}" == com.apple.WebKit.WebContent.Development ) ]] && plistbuddy Add :com.apple.security.get-task-allow bool YES
+    [[ "${RC_XBS}" != YES && ( "${PRODUCT_NAME}" == com.matthewbenedict.WebKit.WebContent.Development ) ]] && plistbuddy Add :com.apple.security.get-task-allow bool YES
 
-    if [[ "${PRODUCT_NAME}" == com.apple.WebKit.WebContent.Development ]]; then maccatalyst_process_webcontent_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.WebKit.WebContent ]]; then maccatalyst_process_webcontent_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.WebKit.WebContent.CaptivePortal ]]; then maccatalyst_process_webcontent_captiveportal_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.WebKit.Networking ]]; then maccatalyst_process_network_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.WebKit.GPU ]]; then maccatalyst_process_gpu_entitlements
+    if [[ "${PRODUCT_NAME}" == com.matthewbenedict.WebKit.WebContent.Development ]]; then maccatalyst_process_webcontent_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.WebKit.WebContent ]]; then maccatalyst_process_webcontent_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.WebKit.WebContent.CaptivePortal ]]; then maccatalyst_process_webcontent_captiveportal_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.WebKit.Networking ]]; then maccatalyst_process_network_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.WebKit.GPU ]]; then maccatalyst_process_gpu_entitlements
     else echo "Unsupported/unknown product: ${PRODUCT_NAME}"
     fi
 elif [[ "${WK_PLATFORM_NAME}" == iphoneos ||
@@ -623,15 +623,15 @@ elif [[ "${WK_PLATFORM_NAME}" == iphoneos ||
         "${WK_PLATFORM_NAME}" == watchos ||
         "${WK_PLATFORM_NAME}" == xros ]]
 then
-    if [[ "${PRODUCT_NAME}" == com.apple.WebKit.WebContent.Development ]]; then true
-    elif [[ "${PRODUCT_NAME}" == com.apple.WebKit.WebContent ]]; then ios_family_process_webcontent_entitlements
+    if [[ "${PRODUCT_NAME}" == com.matthewbenedict.WebKit.WebContent.Development ]]; then true
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.WebKit.WebContent ]]; then ios_family_process_webcontent_entitlements
     elif [[ "${PRODUCT_NAME}" == WebContentExtension ]]; then ios_family_process_webcontent_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.WebKit.WebContent.CaptivePortal ]]; then ios_family_process_webcontent_captiveportal_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.WebKit.WebContent.CaptivePortal ]]; then ios_family_process_webcontent_captiveportal_entitlements
     elif [[ "${PRODUCT_NAME}" == WebContentCaptivePortalExtension ]]; then ios_family_process_webcontent_captiveportal_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.WebKit.Networking ]]; then ios_family_process_network_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.WebKit.Networking ]]; then ios_family_process_network_entitlements
     elif [[ "${PRODUCT_NAME}" == NetworkingExtension ]]; then ios_family_process_network_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.WebKit.GPU ]]; then ios_family_process_gpu_entitlements
-    elif [[ "${PRODUCT_NAME}" == com.apple.WebKit.Model ]]; then ios_family_process_model_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.WebKit.GPU ]]; then ios_family_process_gpu_entitlements
+    elif [[ "${PRODUCT_NAME}" == com.matthewbenedict.WebKit.Model ]]; then ios_family_process_model_entitlements
     elif [[ "${PRODUCT_NAME}" == GPUExtension ]]; then ios_family_process_gpu_entitlements
     elif [[ "${PRODUCT_NAME}" == adattributiond ]]; then
         ios_family_process_adattributiond_entitlements

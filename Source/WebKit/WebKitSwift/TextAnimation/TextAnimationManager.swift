@@ -18,7 +18,7 @@ import WebKitSwift
 
 @objc(WKSTextAnimationManager)
 @MainActor public final class TextAnimationManager: NSObject {
-    private static let logger = Logger(subsystem: "com.apple.WebKit", category: "TextAnimationType")
+    private static let logger = Logger(subsystem: "com.matthewbenedict.WebKit", category: "TextAnimationType")
     
     final class TextEffectChunk: UITextEffectTextChunk {
         public let uuid: UUID

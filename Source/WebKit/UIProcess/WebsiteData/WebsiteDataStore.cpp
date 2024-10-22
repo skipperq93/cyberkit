@@ -126,7 +126,7 @@ static String computeMediaKeyFile(const String& mediaKeyDirectory)
 
 WorkQueue& WebsiteDataStore::websiteDataStoreIOQueue()
 {
-    static auto& queue = WorkQueue::create("com.apple.WebKit.WebsiteDataStoreIO"_s).leakRef();
+    static auto& queue = WorkQueue::create("com.matthewbenedict.WebKit.WebsiteDataStoreIO"_s).leakRef();
     return queue;
 }
 
@@ -154,7 +154,7 @@ WebsiteDataStore::WebsiteDataStore(Ref<WebsiteDataStoreConfiguration>&& configur
     : m_sessionID(sessionID)
     , m_configuration(WTFMove(configuration))
     , m_trackingPreventionDebugMode(m_configuration->resourceLoadStatisticsDebugModeEnabled())
-    , m_queue(WorkQueue::create("com.apple.WebKit.WebsiteDataStore"_s))
+    , m_queue(WorkQueue::create("com.matthewbenedict.WebKit.WebsiteDataStore"_s))
 #if ENABLE(WEB_AUTHN)
     , m_authenticatorManager(makeUniqueRef<AuthenticatorManager>())
 #endif
@@ -490,7 +490,7 @@ void WebsiteDataStore::resolveDirectoriesAsynchronously()
     RELEASE_ASSERT(!m_hasDispatchedResolveDirectories);
     m_hasDispatchedResolveDirectories = true;
 
-    Ref resolveDirectoriesQueue = WorkQueue::create("com.apple.WebKit.WebsiteDataStore.resolveDirectories"_s, WorkQueue::QOS::UserInteractive);
+    Ref resolveDirectoriesQueue = WorkQueue::create("com.matthewbenedict.WebKit.WebsiteDataStore.resolveDirectories"_s, WorkQueue::QOS::UserInteractive);
     resolveDirectoriesQueue->dispatch([this, protectedThis = Ref { *this }, directories = crossThreadCopy(m_configuration->directories()), shouldExcludeCacheDirectories = !!m_configuration->identifier()]() mutable {
         FileSystem::Salt mediaKeysStorageSalt;
         resolveDirectories(directories, mediaKeysStorageSalt);

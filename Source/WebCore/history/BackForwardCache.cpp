@@ -310,7 +310,7 @@ BackForwardCache::BackForwardCache()
 {
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [] {
-        PAL::registerNotifyCallback("com.apple.WebKit.showBackForwardCache"_s, [] {
+        PAL::registerNotifyCallback("com.matthewbenedict.WebKit.showBackForwardCache"_s, [] {
             BackForwardCache::singleton().dump();
         });
     });

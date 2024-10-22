@@ -6867,7 +6867,7 @@ bool Internals::hasSandboxMachLookupAccessToGlobalName(const String& process, co
 {
 #if PLATFORM(COCOA)
     pid_t pid;
-    if (process == "com.apple.WebKit.WebContent"_s)
+    if (process == "com.matthewbenedict.WebKit.WebContent"_s)
         pid = getpid();
     else
         RELEASE_ASSERT_NOT_REACHED();
@@ -6884,7 +6884,7 @@ bool Internals::hasSandboxMachLookupAccessToXPCServiceName(const String& process
 {
 #if PLATFORM(COCOA)
     pid_t pid;
-    if (process == "com.apple.WebKit.WebContent"_s)
+    if (process == "com.matthewbenedict.WebKit.WebContent"_s)
         pid = getpid();
     else
         RELEASE_ASSERT_NOT_REACHED();
@@ -6900,7 +6900,7 @@ bool Internals::hasSandboxMachLookupAccessToXPCServiceName(const String& process
 bool Internals::hasSandboxUnixSyscallAccess(const String& process, unsigned syscall) const
 {
 #if PLATFORM(COCOA)
-    RELEASE_ASSERT(process == "com.apple.WebKit.WebContent"_s);
+    RELEASE_ASSERT(process == "com.matthewbenedict.WebKit.WebContent"_s);
     auto pid = getpid();
     return !sandbox_check(pid, "syscall-unix", static_cast<enum sandbox_filter_type>(SANDBOX_FILTER_SYSCALL_NUMBER | SANDBOX_CHECK_NO_REPORT), syscall);
 #else

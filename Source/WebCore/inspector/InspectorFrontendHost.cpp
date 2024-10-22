@@ -669,7 +669,7 @@ bool InspectorFrontendHost::engineeringSettingsAllowed()
     if (!m_frontendPage->settings().webInspectorEngineeringSettingsAllowed())
         return false;
 #if PLATFORM(COCOA)
-    static bool allowsInternalSecurityPolicies = os_variant_allows_internal_security_policies("com.apple.WebKit");
+    static bool allowsInternalSecurityPolicies = os_variant_allows_internal_security_policies("com.matthewbenedict.WebKit");
     if (!allowsInternalSecurityPolicies)
         return false;
 #endif

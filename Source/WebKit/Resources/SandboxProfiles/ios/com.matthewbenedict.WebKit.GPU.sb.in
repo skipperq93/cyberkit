@@ -57,7 +57,7 @@
         "AppleTimePreferencesChangedNotification"
         "com.apple.CFPreferences._domainsChangedExternally"
         "com.apple.Metal.AGXEnableOSSignposts"
-        "com.apple.WebKit.LibraryPathDiagnostics"
+        "com.matthewbenedict.WebKit.LibraryPathDiagnostics"
         "com.apple.gpumemd.check_in_request"
         "com.apple.mobile.keybagd.user_changed"
         "com.apple.system.logging.prefschanged"
@@ -1015,6 +1015,6 @@
         (apply subpath issue-extension-secondary-paths)))
 #endif
 
-#if __has_include(<WebKitAdditions/com.apple.WebKit.GPU.sb.in>)
-#include <WebKitAdditions/com.apple.WebKit.GPU.sb.in>
+#if __has_include(<WebKitAdditions/com.matthewbenedict.WebKit.GPU.sb.in>)
+#include <WebKitAdditions/com.matthewbenedict.WebKit.GPU.sb.in>
 #endif

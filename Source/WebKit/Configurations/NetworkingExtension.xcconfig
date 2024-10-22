@@ -25,7 +25,7 @@
 
 INFOPLIST_FILE = Shared/AuxiliaryProcessExtensions/NetworkingExtension-Info.plist;
 INFOPLIST_KEY_CFBundleDisplayName = NetworkingExtension;
-PRODUCT_BUNDLE_IDENTIFIER = com.apple.WebKit.Networking;
+PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.WebKit.Networking;
 EXECUTABLE_NAME = $(PRODUCT_BUNDLE_IDENTIFIER);
 PRODUCT_BUNDLE_NAME = NetworkingExtension;
 

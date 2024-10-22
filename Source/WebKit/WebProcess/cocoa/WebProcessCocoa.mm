@@ -611,7 +611,7 @@ void WebProcess::platformSetWebsiteDataStoreParameters(WebProcessDataStoreParame
 
     if (!parameters.javaScriptConfigurationDirectory.isEmpty()) {
         auto javaScriptConfigFile = makeString(parameters.javaScriptConfigurationDirectory, "/JSC.config"_s);
-        JSC::processConfigFile(javaScriptConfigFile.latin1().data(), "com.apple.WebKit.WebContent", m_uiProcessBundleIdentifier.latin1().data());
+        JSC::processConfigFile(javaScriptConfigFile.latin1().data(), "com.matthewbenedict.WebKit.WebContent", m_uiProcessBundleIdentifier.latin1().data());
     }
 }
 
@@ -1220,7 +1220,7 @@ void WebProcess::backlightLevelDidChange(float backlightLevel)
 void WebProcess::accessibilityPreferencesDidChange(const AccessibilityPreferences& preferences)
 {
 #if HAVE(PER_APP_ACCESSIBILITY_PREFERENCES)
-    auto appID = CFSTR("com.apple.WebKit.WebContent");
+    auto appID = CFSTR("com.matthewbenedict.WebKit.WebContent");
     auto reduceMotionEnabled = fromWebKitAXValueState(preferences.reduceMotionEnabled);
     if (_AXSReduceMotionEnabledApp(appID) != reduceMotionEnabled)
         _AXSSetReduceMotionEnabledApp(reduceMotionEnabled, appID);

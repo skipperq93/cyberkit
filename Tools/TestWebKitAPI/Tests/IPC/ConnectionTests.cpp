@@ -588,7 +588,7 @@ public:
     };
 
     AutoWorkQueue()
-        : m_workQueue(WorkQueueWithShutdown::create("com.apple.WebKit.Test.simple"_s))
+        : m_workQueue(WorkQueueWithShutdown::create("com.matthewbenedict.WebKit.Test.simple"_s))
     {
     }
 

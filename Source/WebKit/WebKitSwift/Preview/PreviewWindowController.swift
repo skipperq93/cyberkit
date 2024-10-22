@@ -31,7 +31,7 @@ import WebKitSwift
 
 @objc(WKSPreviewWindowController)
 public final class PreviewWindowController: NSObject {
-    private static let logger = Logger(subsystem: "com.apple.WebKit", category: "Fullscreen")
+    private static let logger = Logger(subsystem: "com.matthewbenedict.WebKit", category: "Fullscreen")
 
     private let item: PreviewItem
     private let previewConfiguration: PreviewApplication.PreviewConfiguration

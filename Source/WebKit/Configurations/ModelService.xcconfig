@@ -23,7 +23,7 @@
 
 #include "BaseXPCService.xcconfig"
 
-PRODUCT_NAME = com.apple.WebKit.Model;
+PRODUCT_NAME = com.matthewbenedict.WebKit.Model;
 PRODUCT_BUNDLE_IDENTIFIER = $(PRODUCT_NAME);
 INFOPLIST_FILE = ModelProcess/EntryPoint/Cocoa/XPCService/ModelService/Info-embedded.plist;
 

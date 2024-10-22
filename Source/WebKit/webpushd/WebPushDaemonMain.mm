@@ -88,10 +88,10 @@ static void applySandbox()
 {
 #if PLATFORM(MAC)
 #if ENABLE(RELOCATABLE_WEBPUSHD)
-    static ASCIILiteral profileName = "/com.apple.WebKit.webpushd.relocatable.mac.sb"_s;
+    static ASCIILiteral profileName = "/com.matthewbenedict.WebKit.webpushd.relocatable.mac.sb"_s;
     static ASCIILiteral userDirectorySuffix = "com.apple.webkit.webpushd.relocatable"_s;
 #else
-    static ASCIILiteral profileName = "/com.apple.WebKit.webpushd.mac.sb"_s;
+    static ASCIILiteral profileName = "/com.matthewbenedict.WebKit.webpushd.mac.sb"_s;
     static ASCIILiteral userDirectorySuffix = "com.apple.webkit.webpushd"_s;
 #endif
     NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"WKWebView")];
@@ -101,7 +101,7 @@ static void applySandbox()
         return;
     }
 
-    auto oldProfilePath = makeString(String([bundle resourcePath]), "/com.apple.WebKit.webpushd.sb"_s);
+    auto oldProfilePath = makeString(String([bundle resourcePath]), "/com.matthewbenedict.WebKit.webpushd.sb"_s);
     AuxiliaryProcess::applySandboxProfileForDaemon(oldProfilePath, "com.apple.webkit.webpushd"_s);
 #endif
 }

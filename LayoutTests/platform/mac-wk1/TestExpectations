@@ -2126,10 +2126,10 @@ webkit.org/b/215452 [ Debug ] imported/w3c/web-platform-tests/css/css-grid/grid-
 
 webkit.org/b/231103 imported/w3c/web-platform-tests/css/css-multicol/multicol-gap-percentage-001.html [ Pass Failure ]
 
-# <rdar://problem/30897457> [StressGC] ASSERTION FAILED: view in com.apple.WebCore: WebCore::Widget::getOuterView const + 132
+# <rdar://problem/30897457> [StressGC] ASSERTION FAILED: view in com.matthewbenedict.WebCore: WebCore::Widget::getOuterView const + 132
 [ HighSierra Debug ] fast/frames/insert-frame-unload-handler.html [ Skip ]
 
-# rdar://problem/52515114 REGRESSION: CrashTracer: com.apple.WebKit.WebContent.Development at com.apple.Photos: +[AVAssetCollection(Utilities) fragmentParamsFromURL:]
+# rdar://problem/52515114 REGRESSION: CrashTracer: com.matthewbenedict.WebKit.WebContent.Development at com.apple.Photos: +[AVAssetCollection(Utilities) fragmentParamsFromURL:]
 media/media-fragments/TC0034.html [ Pass Crash ]
 
 # <rdar://problem/62472844> [ Mac wk1 ] fast/dom/Window/window-open-self-disallow-close.html is flaky crashing and timing out.

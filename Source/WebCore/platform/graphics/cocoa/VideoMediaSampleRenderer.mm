@@ -123,7 +123,7 @@ void VideoMediaSampleRenderer::initializeDecompressionSession()
     m_decompressionSession->setErrorListener([weakThis = ThreadSafeWeakPtr { *this }, this](OSStatus status) {
         if (RefPtr protectedThis = weakThis.get()) {
             // Simulate AVSBDL decoding error.
-            RetainPtr error = [NSError errorWithDomain:@"com.apple.WebKit" code:status userInfo:nil];
+            RetainPtr error = [NSError errorWithDomain:@"com.matthewbenedict.WebKit" code:status userInfo:nil];
             NSDictionary *userInfoDict = @{ (__bridge NSString *)AVSampleBufferDisplayLayerFailedToDecodeNotificationErrorKey: (__bridge NSError *)error.get() };
             [NSNotificationCenter.defaultCenter postNotificationName:AVSampleBufferDisplayLayerFailedToDecodeNotification object:m_renderer.get() userInfo:userInfoDict];
             [NSNotificationCenter.defaultCenter postNotificationName:AVSampleBufferVideoRendererDidFailToDecodeNotification object:m_renderer.get() userInfo:userInfoDict];

@@ -1398,9 +1398,9 @@ ASCIILiteral TestController::webProcessName()
 {
     // FIXME: Find a way to not hardcode the process name.
 #if PLATFORM(IOS_FAMILY) && !PLATFORM(IOS_FAMILY_SIMULATOR)
-    return "com.apple.WebKit.WebContent"_s;
+    return "com.matthewbenedict.WebKit.WebContent"_s;
 #elif PLATFORM(COCOA)
-    return "com.apple.WebKit.WebContent.Development"_s;
+    return "com.matthewbenedict.WebKit.WebContent.Development"_s;
 #elif PLATFORM(GTK)
     return "WebKitWebProcess"_s;
 #elif PLATFORM(WPE)
@@ -1414,9 +1414,9 @@ ASCIILiteral TestController::networkProcessName()
 {
     // FIXME: Find a way to not hardcode the process name.
 #if PLATFORM(IOS_FAMILY) && !PLATFORM(IOS_FAMILY_SIMULATOR)
-    return "com.apple.WebKit.Networking"_s;
+    return "com.matthewbenedict.WebKit.Networking"_s;
 #elif PLATFORM(COCOA)
-    return "com.apple.WebKit.Networking.Development"_s;
+    return "com.matthewbenedict.WebKit.Networking.Development"_s;
 #elif PLATFORM(GTK)
     return "WebKitNetworkProcess"_s;
 #elif PLATFORM(WPE)
@@ -1430,9 +1430,9 @@ ASCIILiteral TestController::gpuProcessName()
 {
     // FIXME: Find a way to not hardcode the process name.
 #if PLATFORM(IOS_FAMILY) && !PLATFORM(IOS_FAMILY_SIMULATOR)
-    return "com.apple.WebKit.GPU"_s;
+    return "com.matthewbenedict.WebKit.GPU"_s;
 #elif PLATFORM(COCOA)
-    return "com.apple.WebKit.GPU.Development"_s;
+    return "com.matthewbenedict.WebKit.GPU.Development"_s;
 #else
     return "GPUProcess"_s;
 #endif

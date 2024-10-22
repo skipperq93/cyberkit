@@ -84,7 +84,7 @@ RunLoopMode JSGlobalObjectDebugger::runLoopMode()
     // FIXME: <rdar://problem/25972777>. On watchOS, in order for auto-attach to work,
     // we need to run in the default run loop mode otherwise we do not receive the XPC messages
     // necessary to setup the relay connection and negotiate an auto-attach debugger.
-    return CFSTR("com.apple.JavaScriptCore.remote-inspector-runloop-mode");
+    return CFSTR("com.matthewbenedict.JavaScriptCore.remote-inspector-runloop-mode");
 #else
     return DefaultRunLoopMode;
 #endif

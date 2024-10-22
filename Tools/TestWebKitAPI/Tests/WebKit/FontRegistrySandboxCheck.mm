@@ -42,7 +42,7 @@ TEST(WebKit, FontdSandboxCheck)
     auto webView = adoptNS([[TestWKWebView alloc] initWithFrame:NSMakeRect(0, 0, 300, 300) configuration:configuration.get() addToWindow:YES]);
 
     auto sandboxAccess = [&] {
-        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToXPCServiceName('com.apple.WebKit.WebContent', 'com.apple.fonts')"].boolValue;
+        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToXPCServiceName('com.matthewbenedict.WebKit.WebContent', 'com.apple.fonts')"].boolValue;
     };
 
 #if HAVE(STATIC_FONT_REGISTRY)

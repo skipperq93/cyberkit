@@ -37,7 +37,7 @@ id webCoreTextAttachmentMissingPlatformImage()
     static dispatch_once_t once;
 
     dispatch_once(&once, ^{
-        NSBundle *webCoreBundle = [NSBundle bundleWithIdentifier:@"com.apple.WebCore"];
+        NSBundle *webCoreBundle = [NSBundle bundleWithIdentifier:@"com.matthewbenedict.WebCore"];
 #if PLATFORM(IOS_FAMILY)
         id image = [PAL::getUIImageClass() imageNamed:@"missingImage" inBundle:webCoreBundle compatibleWithTraitCollection:nil];
 #else

@@ -455,7 +455,7 @@ std::optional<double> DataDetection::extractReferenceDate(NSDictionary *context)
 
 static WorkQueue& workQueue()
 {
-    static NeverDestroyed<Ref<WorkQueue>> queue(WorkQueue::create("com.apple.WebKit.DataDetection"_s));
+    static NeverDestroyed<Ref<WorkQueue>> queue(WorkQueue::create("com.matthewbenedict.WebKit.DataDetection"_s));
     return queue.get();
 }
 

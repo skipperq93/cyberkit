@@ -142,10 +142,10 @@ def main(user=None):
         "TestWebKitAPI Web Content",
         "TestWebKitAPI",
         "PluginProcess",
-        "com.apple.WebKit.Plugin.64",
-        "com.apple.WebKit.Plugin.32",
-        "com.apple.WebKit.PluginProcess",
-        "com.apple.WebKit.PluginProcess.Development"
+        "com.matthewbenedict.WebKit.Plugin.64",
+        "com.matthewbenedict.WebKit.Plugin.32",
+        "com.matthewbenedict.WebKit.PluginProcess",
+        "com.matthewbenedict.WebKit.PluginProcess.Development"
         "WebKitTestRunner Web Content",
         "WebKitTestRunner",
         "WebProcess",

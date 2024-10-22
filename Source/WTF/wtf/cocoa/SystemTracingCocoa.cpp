@@ -39,7 +39,7 @@ os_log_t WTFSignpostLogHandle()
     static os_log_t handle;
 
     dispatch_once(&once, ^{
-        handle = os_log_create("com.apple.WebKit", "Signposts");
+        handle = os_log_create("com.matthewbenedict.WebKit", "Signposts");
     });
 
     return handle;

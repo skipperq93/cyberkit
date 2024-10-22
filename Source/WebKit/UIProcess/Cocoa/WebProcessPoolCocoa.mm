@@ -330,13 +330,13 @@ void WebProcessPool::platformInitialize(NeedsGlobalStaticInitialization needsGlo
     [WKWebInspectorPreferenceObserver sharedInstance];
 #endif
 
-    PAL::registerNotifyCallback("com.apple.WebKit.logProcessState"_s, ^{
+    PAL::registerNotifyCallback("com.matthewbenedict.WebKit.logProcessState"_s, ^{
         for (const auto& pool : WebProcessPool::allProcessPools())
             logProcessPoolState(pool.get());
     });
 
 #if ENABLE(ADVANCED_PRIVACY_PROTECTIONS)
-    PAL::registerNotifyCallback("com.apple.WebKit.restrictedDomains"_s, ^{
+    PAL::registerNotifyCallback("com.matthewbenedict.WebKit.restrictedDomains"_s, ^{
         RestrictedOpenerDomainsController::shared();
     });
 #endif
@@ -450,13 +450,13 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 #endif
 
 #if PLATFORM(VISION)
-    auto metalDirectory = WebsiteDataStore::cacheDirectoryInContainerOrHomeDirectory("/Library/Caches/com.apple.WebKit.WebContent/com.apple.metal"_s);
+    auto metalDirectory = WebsiteDataStore::cacheDirectoryInContainerOrHomeDirectory("/Library/Caches/com.matthewbenedict.WebKit.WebContent/com.apple.metal"_s);
     if (auto metalDirectoryHandle = SandboxExtension::createHandleForReadWriteDirectory(metalDirectory))
         parameters.metalCacheDirectoryExtensionHandles.append(WTFMove(*metalDirectoryHandle));
-    auto metalFEDirectory = WebsiteDataStore::cacheDirectoryInContainerOrHomeDirectory("/Library/Caches/com.apple.WebKit.WebContent/com.apple.metalfe"_s);
+    auto metalFEDirectory = WebsiteDataStore::cacheDirectoryInContainerOrHomeDirectory("/Library/Caches/com.matthewbenedict.WebKit.WebContent/com.apple.metalfe"_s);
     if (auto metalFEDirectoryHandle = SandboxExtension::createHandleForReadWriteDirectory(metalFEDirectory))
         parameters.metalCacheDirectoryExtensionHandles.append(WTFMove(*metalFEDirectoryHandle));
-    auto gpuArchiverDirectory = WebsiteDataStore::cacheDirectoryInContainerOrHomeDirectory("/Library/Caches/com.apple.WebKit.WebContent/com.apple.gpuarchiver"_s);
+    auto gpuArchiverDirectory = WebsiteDataStore::cacheDirectoryInContainerOrHomeDirectory("/Library/Caches/com.matthewbenedict.WebKit.WebContent/com.apple.gpuarchiver"_s);
     if (auto gpuArchiverDirectoryHandle = SandboxExtension::createHandleForReadWriteDirectory(gpuArchiverDirectory))
         parameters.metalCacheDirectoryExtensionHandles.append(WTFMove(*gpuArchiverDirectoryHandle));
 #endif

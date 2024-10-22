@@ -54,7 +54,7 @@ static void dumpMetalCodeIfNeeded(StringBuilder& stringBuilder)
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [] {
         int dumpMetalCodeToken;
-        notify_register_dispatch("com.apple.WebKit.WebGPU.TogglePrintMetalCode", &dumpMetalCodeToken, dispatch_get_main_queue(), ^(int) {
+        notify_register_dispatch("com.matthewbenedict.WebKit.WebGPU.TogglePrintMetalCode", &dumpMetalCodeToken, dispatch_get_main_queue(), ^(int) {
             dumpMetalCode = !dumpMetalCode;
         });
     });

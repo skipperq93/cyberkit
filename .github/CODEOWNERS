@@ -138,9 +138,9 @@
 *ContentExtension* @b-weinstein @xeenon
 *InspectorExtension* @b-weinstein @xeenon
 *WebExtension* @b-weinstein @xeenon
-/Source/WebKit/GPUProcess/mac/com.apple.WebKit.GPUProcess.sb.in @brentfulgham @pvollan
+/Source/WebKit/GPUProcess/mac/com.matthewbenedict.WebKit.GPUProcess.sb.in @brentfulgham @pvollan
 /Source/WebKit/NetworkProcess @cdumez
-/Source/WebKit/NetworkProcess/mac/com.apple.WebKit.NetworkProcess.sb.in @brentfulgham @pvollan
+/Source/WebKit/NetworkProcess/mac/com.matthewbenedict.WebKit.NetworkProcess.sb.in @brentfulgham @pvollan
 /Source/WebKit/Platform @cdumez
 /Source/WebKit/Platform/*/Payment* @aprotyas
 /Source/WebKit/Resources/SandboxProfiles @brentfulgham @pvollan

@@ -429,7 +429,7 @@ MallocCallTracker& MallocCallTracker::singleton()
 MallocCallTracker::MallocCallTracker()
 {
     int token;
-    notify_register_dispatch("com.apple.WebKit.dumpUntrackedMallocs", &token, dispatch_get_main_queue(), ^(int) {
+    notify_register_dispatch("com.matthewbenedict.WebKit.dumpUntrackedMallocs", &token, dispatch_get_main_queue(), ^(int) {
         MallocCallTracker::singleton().dumpStats();
     });
 }

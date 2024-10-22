@@ -110,7 +110,7 @@ bool defaultWheelEventGesturesBecomeNonBlocking()
 bool defaultDisallowSyncXHRDuringPageDismissalEnabled()
 {
 #if PLATFORM(MAC) || PLATFORM(MACCATALYST)
-    if (CFPreferencesGetAppBooleanValue(CFSTR("allowDeprecatedSynchronousXMLHttpRequestDuringUnload"), CFSTR("com.apple.WebKit"), nullptr)) {
+    if (CFPreferencesGetAppBooleanValue(CFSTR("allowDeprecatedSynchronousXMLHttpRequestDuringUnload"), CFSTR("com.matthewbenedict.WebKit"), nullptr)) {
         WTFLogAlways("Allowing synchronous XHR during page unload due to managed preference");
         return false;
     }

@@ -138,7 +138,7 @@ static void callExitSoon(IPC::Connection*)
     // the process will exit forcibly.
     auto watchdogDelay = 10_s;
 
-    WorkQueue::create("com.apple.WebKit.NetworkProcess.WatchDogQueue"_s)->dispatchAfter(watchdogDelay, [] {
+    WorkQueue::create("com.matthewbenedict.WebKit.NetworkProcess.WatchDogQueue"_s)->dispatchAfter(watchdogDelay, [] {
         // We use _exit here since the watchdog callback is called from another thread and we don't want
         // global destructors or atexit handlers to be called from this thread while the main thread is busy
         // doing its thing.
@@ -1474,7 +1474,7 @@ bool NetworkProcess::privateClickMeasurementEnabled() const
 void NetworkProcess::notifyMediaStreamingActivity(bool activity)
 {
 #if PLATFORM(COCOA)
-    static constexpr auto notifyMediaStreamingName = "com.apple.WebKit.mediaStreamingActivity"_s;
+    static constexpr auto notifyMediaStreamingName = "com.matthewbenedict.WebKit.mediaStreamingActivity"_s;
 
     if (m_mediaStreamingActivitityToken == NOTIFY_TOKEN_INVALID) {
         auto status = notify_register_check(notifyMediaStreamingName, &m_mediaStreamingActivitityToken);

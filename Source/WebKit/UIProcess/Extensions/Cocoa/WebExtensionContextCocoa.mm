@@ -3306,7 +3306,7 @@ void WebExtensionContext::setBackgroundWebViewInspectionName(const String& name)
 
 static inline bool isNotRunningInTestRunner()
 {
-    return WebCore::applicationBundleIdentifier() != "com.apple.WebKit.TestWebKitAPI"_s;
+    return WebCore::applicationBundleIdentifier() != "com.matthewbenedict.WebKit.TestWebKitAPI"_s;
 }
 
 void WebExtensionContext::scheduleBackgroundContentToUnload()

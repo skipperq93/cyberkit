@@ -579,8 +579,8 @@ void PlatformPasteboard::write(const PasteboardURL& url)
     registerItemToPasteboard(representationsToRegister.get(), m_pasteboard.get());
 }
 
-static const char originKeyForTeamData[] = "com.apple.WebKit.drag-and-drop-team-data.origin";
-static const char customTypesKeyForTeamData[] = "com.apple.WebKit.drag-and-drop-team-data.custom-types";
+static const char originKeyForTeamData[] = "com.matthewbenedict.WebKit.drag-and-drop-team-data.origin";
+static const char customTypesKeyForTeamData[] = "com.matthewbenedict.WebKit.drag-and-drop-team-data.custom-types";
 
 Vector<String> PlatformPasteboard::typesSafeForDOMToReadAndWrite(const String& origin) const
 {

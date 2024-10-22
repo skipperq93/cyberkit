@@ -15,7 +15,7 @@ add_definitions(-iframework ${CARBON_LIBRARY}/Frameworks)
 add_definitions(-iframework ${APPLICATIONSERVICES_LIBRARY}/Versions/Current/Frameworks)
 add_definitions(-DWK_XPC_SERVICE_SUFFIX=".Development")
 
-set(MACOSX_FRAMEWORK_IDENTIFIER com.apple.WebKit)
+set(MACOSX_FRAMEWORK_IDENTIFIER com.matthewbenedict.WebKit)
 
 add_definitions(-iframework ${CORESERVICES_LIBRARY}/Versions/Current/Frameworks)
 
@@ -188,9 +188,9 @@ set(GPUProcess_SOURCES
 )
 
 # FIXME: These should not have Development in production builds.
-set(WebProcess_OUTPUT_NAME com.apple.WebKit.WebContent.Development)
-set(NetworkProcess_OUTPUT_NAME com.apple.WebKit.Networking.Development)
-set(GPUProcess_OUTPUT_NAME com.apple.WebKit.GPU.Development)
+set(WebProcess_OUTPUT_NAME com.matthewbenedict.WebKit.WebContent.Development)
+set(NetworkProcess_OUTPUT_NAME com.matthewbenedict.WebKit.Networking.Development)
+set(GPUProcess_OUTPUT_NAME com.matthewbenedict.WebKit.GPU.Development)
 
 set(WebProcess_INCLUDE_DIRECTORIES ${CMAKE_BINARY_DIR})
 set(NetworkProcess_INCLUDE_DIRECTORIES ${CMAKE_BINARY_DIR})
@@ -778,18 +778,18 @@ function(WEBKIT_DEFINE_XPC_SERVICES)
     endfunction()
 
     WEBKIT_XPC_SERVICE(WebProcess
-        "com.apple.WebKit.WebContent"
+        "com.matthewbenedict.WebKit.WebContent"
         ${WEBKIT_DIR}/WebProcess/EntryPoint/Cocoa/XPCService/WebContentService/Info-OSX.plist
         ${WebProcess_OUTPUT_NAME})
 
     WEBKIT_XPC_SERVICE(NetworkProcess
-        "com.apple.WebKit.Networking"
+        "com.matthewbenedict.WebKit.Networking"
         ${WEBKIT_DIR}/NetworkProcess/EntryPoint/Cocoa/XPCService/NetworkService/Info-OSX.plist
         ${NetworkProcess_OUTPUT_NAME})
 
     if (ENABLE_GPU_PROCESS)
         WEBKIT_XPC_SERVICE(GPUProcess
-            "com.apple.WebKit.GPU"
+            "com.matthewbenedict.WebKit.GPU"
             ${WEBKIT_DIR}/GPUProcess/EntryPoint/Cocoa/XPCService/GPUService/Info-OSX.plist
             ${GPUProcess_OUTPUT_NAME})
     endif ()
@@ -800,30 +800,30 @@ function(WEBKIT_DEFINE_XPC_SERVICES)
         VERBATIM)
     list(APPEND WebKit_SB_FILES ${WebKit_RESOURCES_DIR}/com.apple.WebProcess.sb)
 
-    add_custom_command(OUTPUT ${WebKit_RESOURCES_DIR}/com.apple.WebKit.NetworkProcess.sb COMMAND
-        grep -o "^[^;]*" ${WEBKIT_DIR}/NetworkProcess/mac/com.apple.WebKit.NetworkProcess.sb.in | clang -E -P -w -include wtf/Platform.h -I ${WTF_FRAMEWORK_HEADERS_DIR} -I ${bmalloc_FRAMEWORK_HEADERS_DIR} -I ${WEBKIT_DIR} - > ${WebKit_RESOURCES_DIR}/com.apple.WebKit.NetworkProcess.sb
+    add_custom_command(OUTPUT ${WebKit_RESOURCES_DIR}/com.matthewbenedict.WebKit.NetworkProcess.sb COMMAND
+        grep -o "^[^;]*" ${WEBKIT_DIR}/NetworkProcess/mac/com.matthewbenedict.WebKit.NetworkProcess.sb.in | clang -E -P -w -include wtf/Platform.h -I ${WTF_FRAMEWORK_HEADERS_DIR} -I ${bmalloc_FRAMEWORK_HEADERS_DIR} -I ${WEBKIT_DIR} - > ${WebKit_RESOURCES_DIR}/com.matthewbenedict.WebKit.NetworkProcess.sb
         VERBATIM)
-    list(APPEND WebKit_SB_FILES ${WebKit_RESOURCES_DIR}/com.apple.WebKit.NetworkProcess.sb)
+    list(APPEND WebKit_SB_FILES ${WebKit_RESOURCES_DIR}/com.matthewbenedict.WebKit.NetworkProcess.sb)
 
     if (ENABLE_GPU_PROCESS)
-        add_custom_command(OUTPUT ${WebKit_RESOURCES_DIR}/com.apple.WebKit.GPUProcess.sb COMMAND
-            grep -o "^[^;]*" ${WEBKIT_DIR}/GPUProcess/mac/com.apple.WebKit.GPUProcess.sb.in | clang -E -P -w -include wtf/Platform.h -I ${WTF_FRAMEWORK_HEADERS_DIR} -I ${bmalloc_FRAMEWORK_HEADERS_DIR} -I ${WEBKIT_DIR} - > ${WebKit_RESOURCES_DIR}/com.apple.WebKit.GPUProcess.sb
+        add_custom_command(OUTPUT ${WebKit_RESOURCES_DIR}/com.matthewbenedict.WebKit.GPUProcess.sb COMMAND
+            grep -o "^[^;]*" ${WEBKIT_DIR}/GPUProcess/mac/com.matthewbenedict.WebKit.GPUProcess.sb.in | clang -E -P -w -include wtf/Platform.h -I ${WTF_FRAMEWORK_HEADERS_DIR} -I ${bmalloc_FRAMEWORK_HEADERS_DIR} -I ${WEBKIT_DIR} - > ${WebKit_RESOURCES_DIR}/com.matthewbenedict.WebKit.GPUProcess.sb
             VERBATIM)
-        list(APPEND WebKit_SB_FILES ${WebKit_RESOURCES_DIR}/com.apple.WebKit.GPUProcess.sb)
+        list(APPEND WebKit_SB_FILES ${WebKit_RESOURCES_DIR}/com.matthewbenedict.WebKit.GPUProcess.sb)
     endif ()
     if (ENABLE_WEB_PUSH_NOTIFICATIONS)
-        add_custom_command(OUTPUT ${WebKit_RESOURCES_DIR}/com.apple.WebKit.webpushd.mac.sb COMMAND
-            grep -o "^[^;]*" ${WEBKIT_DIR}/webpushd/mac/com.apple.WebKit.webpushd.mac.sb.in | clang -E -P -w -include wtf/Platform.h -I ${WTF_FRAMEWORK_HEADERS_DIR} -I ${bmalloc_FRAMEWORK_HEADERS_DIR} -I ${WEBKIT_DIR} - > ${WebKit_RESOURCES_DIR}/com.apple.WebKit.webpushd.mac.sb
+        add_custom_command(OUTPUT ${WebKit_RESOURCES_DIR}/com.matthewbenedict.WebKit.webpushd.mac.sb COMMAND
+            grep -o "^[^;]*" ${WEBKIT_DIR}/webpushd/mac/com.matthewbenedict.WebKit.webpushd.mac.sb.in | clang -E -P -w -include wtf/Platform.h -I ${WTF_FRAMEWORK_HEADERS_DIR} -I ${bmalloc_FRAMEWORK_HEADERS_DIR} -I ${WEBKIT_DIR} - > ${WebKit_RESOURCES_DIR}/com.matthewbenedict.WebKit.webpushd.mac.sb
             VERBATIM)
-        list(APPEND WebKit_SB_FILES ${WebKit_RESOURCES_DIR}/com.apple.WebKit.webpushd.mac.sb)
+        list(APPEND WebKit_SB_FILES ${WebKit_RESOURCES_DIR}/com.matthewbenedict.WebKit.webpushd.mac.sb)
     endif ()
     add_custom_target(WebKitSandboxProfiles ALL DEPENDS ${WebKit_SB_FILES})
     add_dependencies(WebKit WebKitSandboxProfiles)
 
-    add_custom_command(OUTPUT ${WebKit_XPC_SERVICE_DIR}/com.apple.WebKit.WebContent.xpc/Contents/Resources/WebContentProcess.nib COMMAND
-        ibtool --compile ${WebKit_XPC_SERVICE_DIR}/com.apple.WebKit.WebContent.xpc/Contents/Resources/WebContentProcess.nib ${WEBKIT_DIR}/Resources/WebContentProcess.xib
+    add_custom_command(OUTPUT ${WebKit_XPC_SERVICE_DIR}/com.matthewbenedict.WebKit.WebContent.xpc/Contents/Resources/WebContentProcess.nib COMMAND
+        ibtool --compile ${WebKit_XPC_SERVICE_DIR}/com.matthewbenedict.WebKit.WebContent.xpc/Contents/Resources/WebContentProcess.nib ${WEBKIT_DIR}/Resources/WebContentProcess.xib
         VERBATIM)
-    add_custom_target(WebContentProcessNib ALL DEPENDS ${WebKit_XPC_SERVICE_DIR}/com.apple.WebKit.WebContent.xpc/Contents/Resources/WebContentProcess.nib)
+    add_custom_target(WebContentProcessNib ALL DEPENDS ${WebKit_XPC_SERVICE_DIR}/com.matthewbenedict.WebKit.WebContent.xpc/Contents/Resources/WebContentProcess.nib)
     add_dependencies(WebKit WebContentProcessNib)
 endfunction()
 

@@ -513,7 +513,7 @@ static bool canLoadFormatReader()
     // CoreMedia will only load the format reader plug-in when a user default
     // is set on Apple internal OSs. That means we cannot currently support WebM
     // in public SDK builds on customer OSs.
-    static bool allowsInternalSecurityPolicies = os_variant_allows_internal_security_policies("com.apple.WebKit");
+    static bool allowsInternalSecurityPolicies = os_variant_allows_internal_security_policies("com.matthewbenedict.WebKit");
     return allowsInternalSecurityPolicies;
 #endif // !USE(APPLE_INTERNAL_SDK)
 }

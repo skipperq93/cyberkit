@@ -31,7 +31,7 @@ import MarketplaceKit
 @objc(WKMarketplaceKit)
 @available(iOS 17.4, *)
 public final class MarketplaceKitWrapper : NSObject {
-    private static let logger = Logger(subsystem: "com.apple.WebKit", category: "Loading")
+    private static let logger = Logger(subsystem: "com.matthewbenedict.WebKit", category: "Loading")
 
     @objc
     @available(iOS 17.4, *)

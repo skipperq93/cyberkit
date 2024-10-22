@@ -1583,10 +1583,10 @@ imported/w3c/web-platform-tests/css/css-backgrounds/border-radius-clip-001.html 
 # rdar://107460135 ([UI-side compositing] svg/compositing/outermost-svg-with-border-padding.html fails)
 svg/compositing/outermost-svg-with-border-padding.html
 
-# rdar://103256284 (REGRESSION : [ GuardMalloc ] com.apple.WebCore: WebCore::RunLoopObserver::invalidate :: dyld config: DYLD_INSERT_LIBRARIES=libgmalloc.dylib DYLD_LIBRARY_PATH=buildToTest DYLD_FRAMEWORK_PATH=buildToTest)
+# rdar://103256284 (REGRESSION : [ GuardMalloc ] com.matthewbenedict.WebCore: WebCore::RunLoopObserver::invalidate :: dyld config: DYLD_INSERT_LIBRARIES=libgmalloc.dylib DYLD_LIBRARY_PATH=buildToTest DYLD_FRAMEWORK_PATH=buildToTest)
 imported/mozilla/svg/as-image/img-simple-6.html [ Crash ]
 
-# rdar://103101751 (REGRESSION (256738@main): [ GuardMalloc ] com.apple.WebCore: WebCore::DOMWrapperWorld::~DOMWrapperWorld)
+# rdar://103101751 (REGRESSION (256738@main): [ GuardMalloc ] com.matthewbenedict.WebCore: WebCore::DOMWrapperWorld::~DOMWrapperWorld)
 imported/w3c/web-platform-tests/fetch/api/abort/serviceworker-intercepted.https.html [ Pass Failure Crash ]
 
 # rdar://99153669 ([ iOS macOS ] 4X imported/w3c/web-platform-tests/html/cross-origin-opener-policy/(Layout tests) are flaky failures (244358))

@@ -32,7 +32,7 @@ import WebKitSwift
 import os
 
 private extension Logger {
-    static let linearMediaPlayer = Logger(subsystem: "com.apple.WebKit", category: "LinearMediaPlayer")
+    static let linearMediaPlayer = Logger(subsystem: "com.matthewbenedict.WebKit", category: "LinearMediaPlayer")
 }
 
 private class SwiftOnlyData: NSObject {

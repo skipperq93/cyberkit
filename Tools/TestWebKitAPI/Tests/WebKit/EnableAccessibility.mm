@@ -66,7 +66,7 @@ TEST(WebKit, AccessibilityHasPreferencesServiceAccess)
     [NSApp accessibilitySetEnhancedUserInterfaceAttribute:@(YES)];
 
     auto sandboxAccess = [&] {
-        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToGlobalName('com.apple.WebKit.WebContent', 'com.apple.cfprefsd.daemon')"].boolValue;
+        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToGlobalName('com.matthewbenedict.WebKit.WebContent', 'com.apple.cfprefsd.daemon')"].boolValue;
     };
 
     [webView synchronouslyLoadTestPageNamed:@"simple"];
@@ -93,7 +93,7 @@ TEST(WebKit, AccessibilityHasNoPreferencesServiceAccessWhenPostingNotification)
     [[NSNotificationCenter defaultCenter] postNotificationName:NSApplicationDidChangeAccessibilityEnhancedUserInterfaceNotification object:nil userInfo:nil];
 
     auto sandboxAccess = [&] {
-        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToGlobalName('com.apple.WebKit.WebContent', 'com.apple.cfprefsd.daemon')"].boolValue;
+        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToGlobalName('com.matthewbenedict.WebKit.WebContent', 'com.apple.cfprefsd.daemon')"].boolValue;
     };
 
     [webView synchronouslyLoadTestPageNamed:@"simple"];
@@ -115,7 +115,7 @@ TEST(WebKit, AccessibilityHasFrontboardServiceAccess)
     [[NSNotificationCenter defaultCenter] postNotificationName:NSApplicationDidChangeAccessibilityEnhancedUserInterfaceNotification object:nil userInfo:nil];
 
     auto sandboxAccess = [&] {
-        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToGlobalName('com.apple.WebKit.WebContent', 'com.apple.frontboard.systemappservices')"].boolValue;
+        return [webView stringByEvaluatingJavaScript:@"window.internals.hasSandboxMachLookupAccessToGlobalName('com.matthewbenedict.WebKit.WebContent', 'com.apple.frontboard.systemappservices')"].boolValue;
     };
 
     ASSERT_TRUE(sandboxAccess());

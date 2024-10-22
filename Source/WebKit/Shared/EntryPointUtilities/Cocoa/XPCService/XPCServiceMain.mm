@@ -185,20 +185,20 @@ void XPCServiceEventHandler(xpc_connection_t peer)
                 return;
             }
             CFStringRef entryPointFunctionName = nullptr;
-            if (!strncmp(serviceName, "com.apple.WebKit.WebContent", strlen("com.apple.WebKit.WebContent")))
+            if (!strncmp(serviceName, "com.matthewbenedict.WebKit.WebContent", strlen("com.matthewbenedict.WebKit.WebContent")))
                 entryPointFunctionName = CFSTR(STRINGIZE_VALUE_OF(WEBCONTENT_SERVICE_INITIALIZER));
-            else if (!strcmp(serviceName, "com.apple.WebKit.Networking"))
+            else if (!strcmp(serviceName, "com.matthewbenedict.WebKit.Networking"))
                 entryPointFunctionName = CFSTR(STRINGIZE_VALUE_OF(NETWORK_SERVICE_INITIALIZER));
-            else if (!strcmp(serviceName, "com.apple.WebKit.GPU"))
+            else if (!strcmp(serviceName, "com.matthewbenedict.WebKit.GPU"))
                 entryPointFunctionName = CFSTR(STRINGIZE_VALUE_OF(GPU_SERVICE_INITIALIZER));
-            else if (!strcmp(serviceName, "com.apple.WebKit.Model"))
+            else if (!strcmp(serviceName, "com.matthewbenedict.WebKit.Model"))
                 entryPointFunctionName = CFSTR(STRINGIZE_VALUE_OF(MODEL_SERVICE_INITIALIZER));
             else {
                 RELEASE_LOG_ERROR(IPC, "XPCServiceEventHandler: Unexpected 'service-name': %{public}s", serviceName);
                 return;
             }
 
-            CFBundleRef webKitBundle = CFBundleGetBundleWithIdentifier(CFSTR("com.apple.WebKit"));
+            CFBundleRef webKitBundle = CFBundleGetBundleWithIdentifier(CFSTR("com.matthewbenedict.WebKit"));
             typedef void (*InitializerFunction)(xpc_connection_t, xpc_object_t);
             InitializerFunction initializerFunctionPtr = reinterpret_cast<InitializerFunction>(CFBundleGetFunctionPointerForName(webKitBundle, entryPointFunctionName));
             if (!initializerFunctionPtr) {

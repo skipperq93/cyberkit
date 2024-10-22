@@ -52,7 +52,7 @@ static bool treatAsNonBrowser(const String& bundleID)
 
 bool isRunningTest(const String& bundleID)
 {
-    return bundleID == "com.apple.WebKit.TestWebKitAPI"_s || bundleID == "com.apple.WebKit.WebKitTestRunner"_s || bundleID == "org.webkit.WebKitTestRunnerApp"_s;
+    return bundleID == "com.matthewbenedict.WebKit.TestWebKitAPI"_s || bundleID == "com.matthewbenedict.WebKit.WebKitTestRunner"_s || bundleID == "org.webkit.WebKitTestRunnerApp"_s;
 }
 
 std::span<const WebCore::RegistrableDomain> appBoundDomainsForTesting(const String& bundleID)
@@ -81,11 +81,11 @@ static bool isInWebKitChildProcess()
             return;
 #endif // USE(EXTENSIONKIT)
         NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-        isInSubProcess = [bundleIdentifier hasPrefix:@"com.apple.WebKit.WebContent"]
-            || [bundleIdentifier hasPrefix:@"com.apple.WebKit.Networking"]
-            || [bundleIdentifier hasPrefix:@"com.apple.WebKit.GPU"];
+        isInSubProcess = [bundleIdentifier hasPrefix:@"com.matthewbenedict.WebKit.WebContent"]
+            || [bundleIdentifier hasPrefix:@"com.matthewbenedict.WebKit.Networking"]
+            || [bundleIdentifier hasPrefix:@"com.matthewbenedict.WebKit.GPU"];
 #if ENABLE(MODEL_PROCESS)
-        isInSubProcess = isInSubProcess || [bundleIdentifier hasPrefix:@"com.apple.WebKit.Model"];
+        isInSubProcess = isInSubProcess || [bundleIdentifier hasPrefix:@"com.matthewbenedict.WebKit.Model"];
 #endif // ENABLE(MODEL_PROCESS)
     });
 
@@ -146,7 +146,7 @@ void determineTrackingPreventionState()
 
     bool appWasLinkedOnOrAfter = linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::SessionCleanupByDefault);
 
-    itpQueue() = WorkQueue::create("com.apple.WebKit.itpCheckQueue"_s);
+    itpQueue() = WorkQueue::create("com.matthewbenedict.WebKit.itpCheckQueue"_s);
     itpQueue()->dispatch([appWasLinkedOnOrAfter, bundleIdentifier = WebCore::applicationBundleIdentifier().isolatedCopy()] {
         currentTrackingPreventionState = determineTrackingPreventionStateInternal(appWasLinkedOnOrAfter, bundleIdentifier) ? TrackingPreventionState::Enabled : TrackingPreventionState::Disabled;
         RunLoop::main().dispatch([] {

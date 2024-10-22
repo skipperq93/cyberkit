@@ -60,7 +60,7 @@ using namespace WebKit;
     _directory = [NSURL fileURLWithPath:directory];
     _useInMemoryDatabase = useInMemoryDatabase;
 
-    NSString *extensionDatabaseQueueName = [NSString stringWithFormat:@"com.apple.WebKit.WKWebExtensionSQLiteStore.%@", _uniqueIdentifier];
+    NSString *extensionDatabaseQueueName = [NSString stringWithFormat:@"com.matthewbenedict.WebKit.WKWebExtensionSQLiteStore.%@", _uniqueIdentifier];
     _databaseQueue = dispatch_queue_create([extensionDatabaseQueueName cStringUsingEncoding:NSUTF8StringEncoding], DISPATCH_QUEUE_SERIAL);
 
     return self;

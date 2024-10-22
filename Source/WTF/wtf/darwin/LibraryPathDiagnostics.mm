@@ -51,8 +51,8 @@
 
 namespace WTF {
 
-static char const * const notificationName = "com.apple.WebKit.LibraryPathDiagnostics";
-static char const * const loggingSubsystem = "com.apple.WebKit.LibraryPathDiagnostics";
+static char const * const notificationName = "com.matthewbenedict.WebKit.LibraryPathDiagnostics";
+static char const * const loggingSubsystem = "com.matthewbenedict.WebKit.LibraryPathDiagnostics";
 static char const * const loggingCategory = "LibraryPathDiagnostics";
 #if HAVE(DYLD_DLOPEN_IMAGE_HEADER_SPI)
 static char const * const libraryListEnvironmentVariableName = "LIBRARY_PATH_DIAGNOSTICS_LIBRARIES";

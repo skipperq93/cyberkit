@@ -856,7 +856,7 @@ void SourceBufferPrivateAVFObjC::outputObscuredDueToInsufficientExternalProtecti
 
     ERROR_LOG(LOGIDENTIFIER, obscured);
 
-    RetainPtr error = [NSError errorWithDomain:@"com.apple.WebKit" code:'HDCP' userInfo:nil];
+    RetainPtr error = [NSError errorWithDomain:@"com.matthewbenedict.WebKit" code:'HDCP' userInfo:nil];
     videoRendererDidReceiveError(m_videoRenderer ? m_videoRenderer->renderer() : nil, error.get());
 }
 

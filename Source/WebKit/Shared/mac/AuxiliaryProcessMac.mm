@@ -275,10 +275,10 @@ static String sandboxDirectory(WebCore::AuxiliaryProcessType processType, const 
     directory.append(parentDirectory);
     switch (processType) {
     case WebCore::AuxiliaryProcessType::WebContent:
-        directory.append("/com.apple.WebKit.WebContent.Sandbox"_s);
+        directory.append("/com.matthewbenedict.WebKit.WebContent.Sandbox"_s);
         break;
     case WebCore::AuxiliaryProcessType::Network:
-        directory.append("/com.apple.WebKit.Networking.Sandbox"_s);
+        directory.append("/com.matthewbenedict.WebKit.Networking.Sandbox"_s);
         break;
     case WebCore::AuxiliaryProcessType::Plugin:
         WTFLogAlways("sandboxDirectory: Unexpected Plugin process initialization.");
@@ -286,7 +286,7 @@ static String sandboxDirectory(WebCore::AuxiliaryProcessType processType, const 
         break;
 #if ENABLE(GPU_PROCESS)
     case WebCore::AuxiliaryProcessType::GPU:
-        directory.append("/com.apple.WebKit.GPU.Sandbox"_s);
+        directory.append("/com.matthewbenedict.WebKit.GPU.Sandbox"_s);
         break;
 #endif
     }

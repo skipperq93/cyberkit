@@ -84,7 +84,7 @@ void GPUProcess::initializeSandbox(const AuxiliaryProcessInitializationParameter
     // Need to overide the default, because service has a different bundle ID.
     NSBundle *webKit2Bundle = [NSBundle bundleForClass:NSClassFromString(@"WKWebView")];
 
-    sandboxParameters.setOverrideSandboxProfilePath([webKit2Bundle pathForResource:@"com.apple.WebKit.GPUProcess" ofType:@"sb"]);
+    sandboxParameters.setOverrideSandboxProfilePath([webKit2Bundle pathForResource:@"com.matthewbenedict.WebKit.GPUProcess" ofType:@"sb"]);
 
     AuxiliaryProcess::initializeSandbox(parameters, sandboxParameters);
 }

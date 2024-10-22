@@ -131,8 +131,8 @@
         "AppleTimePreferencesChangedNotification"
         "com.apple.CFPreferences._domainsChangedExternally"
         "com.apple.LaunchServices.database"
-        "com.apple.WebKit.Cache.dump"
-        "com.apple.WebKit.LibraryPathDiagnostics"
+        "com.matthewbenedict.WebKit.Cache.dump"
+        "com.matthewbenedict.WebKit.LibraryPathDiagnostics"
         "com.apple.analyticsd.running"
         "com.apple.mobile.keybagd.user_changed"
         "com.apple.mobile.usermanagerd.foregrounduser_changed"
@@ -382,8 +382,8 @@
     ;; <rdar://problem/46716068>
     (deny mach-lookup
            (with message "Create a radar and set it as a blocker to rdar://problem/48527566")
-           (xpc-service-name "com.apple.WebKit.Networking"
-                             "com.apple.WebKit.WebContent")
+           (xpc-service-name "com.matthewbenedict.WebKit.Networking"
+                             "com.matthewbenedict.WebKit.WebContent")
 ))
 
 (deny file-map-executable)

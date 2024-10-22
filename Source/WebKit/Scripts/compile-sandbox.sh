@@ -12,7 +12,7 @@ if [ -z "$(xcrun --sdk $SDK_NAME -f sbutil 2> /dev/null)" ]; then
 fi;
 
 if [[ $SDK_NAME =~ "iphone" || $SDK_NAME =~ "watch" || $SDK_NAME =~ "appletv" || $SDK_NAME =~ "xr" ]]; then
-    if [[ $SANDBOX_NAME == "com.apple.WebKit.adattributiond" || $SANDBOX_NAME == "com.apple.WebKit.webpushd" ]]; then
+    if [[ $SANDBOX_NAME == "com.matthewbenedict.WebKit.adattributiond" || $SANDBOX_NAME == "com.matthewbenedict.WebKit.webpushd" ]]; then
         if [ ! -e $SANDBOX_IMPORT_DIR ]; then
             exit 0;
         fi;
@@ -21,13 +21,13 @@ if [[ $SDK_NAME =~ "iphone" || $SDK_NAME =~ "watch" || $SDK_NAME =~ "appletv" ||
             exit 1;
         fi
     fi;
-    if [[ $SANDBOX_NAME == "com.apple.WebKit.GPU" || $SANDBOX_NAME == "com.apple.WebKit.Networking" || $SANDBOX_NAME == "com.apple.WebKit.WebContent" ]]; then
+    if [[ $SANDBOX_NAME == "com.matthewbenedict.WebKit.GPU" || $SANDBOX_NAME == "com.matthewbenedict.WebKit.Networking" || $SANDBOX_NAME == "com.matthewbenedict.WebKit.WebContent" ]]; then
         xcrun --sdk $SDK_NAME sbutil compile $SANDBOX_PATH > /dev/null;
         if [[ $? != 0 ]]; then
             exit 1;
         fi
     fi
-    if [[ $SDK_NAME =~ "xr" && $SANDBOX_NAME == "com.apple.WebKit.Model" ]]; then
+    if [[ $SDK_NAME =~ "xr" && $SANDBOX_NAME == "com.matthewbenedict.WebKit.Model" ]]; then
         xcrun --sdk $SDK_NAME sbutil compile $SANDBOX_PATH > /dev/null;
         if [[ $? != 0 ]]; then
             exit 1;
@@ -36,7 +36,7 @@ if [[ $SDK_NAME =~ "iphone" || $SDK_NAME =~ "watch" || $SDK_NAME =~ "appletv" ||
 fi;
 
 if [[ $SDK_NAME =~ "mac" ]]; then
-    if [[ $SANDBOX_NAME == "com.apple.WebKit.GPUProcess" || $SANDBOX_NAME == "com.apple.WebKit.NetworkProcess" || $SANDBOX_NAME == "com.apple.WebProcess" ]]; then
+    if [[ $SANDBOX_NAME == "com.matthewbenedict.WebKit.GPUProcess" || $SANDBOX_NAME == "com.matthewbenedict.WebKit.NetworkProcess" || $SANDBOX_NAME == "com.apple.WebProcess" ]]; then
         # Use the IMPORT_DIR of the build host.
         # That's acceptable for syntax check purposes, but will prevent adoption of
         # new rules in imports, e.g. when the build host runs an older macOS version.

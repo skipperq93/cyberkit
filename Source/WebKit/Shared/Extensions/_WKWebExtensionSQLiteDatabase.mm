@@ -35,7 +35,7 @@
 #import "_WKWebExtensionSQLiteHelpers.h"
 #import <sqlite3.h>
 
-NSString * const _WKWebExtensionSQLiteErrorDomain = @"com.apple.WebKit.SQLite";
+NSString * const _WKWebExtensionSQLiteErrorDomain = @"com.matthewbenedict.WebKit.SQLite";
 static NSString * const _WKWebExtensionSQLiteInMemoryDatabaseName = @"file::memory:";
 static NSString * const _WKWebExtensionSQLiteErrorMessageKey = @"Message";
 static NSString * const _WKWebExtensionSQLiteErrorSQLKey = @"SQL";

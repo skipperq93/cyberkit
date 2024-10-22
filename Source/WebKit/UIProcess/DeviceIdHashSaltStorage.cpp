@@ -69,7 +69,7 @@ void DeviceIdHashSaltStorage::completePendingHandler(CompletionHandler<void(Hash
 }
 
 DeviceIdHashSaltStorage::DeviceIdHashSaltStorage(const String& deviceIdHashSaltStorageDirectory)
-    : m_queue(WorkQueue::create("com.apple.WebKit.DeviceIdHashSaltStorage"_s))
+    : m_queue(WorkQueue::create("com.matthewbenedict.WebKit.DeviceIdHashSaltStorage"_s))
     , m_deviceIdHashSaltStorageDirectory(!deviceIdHashSaltStorageDirectory.isEmpty() ? FileSystem::pathByAppendingComponent(deviceIdHashSaltStorageDirectory, String::number(deviceIdHashSaltStorageVersion)) : String())
 {
     if (m_deviceIdHashSaltStorageDirectory.isEmpty()) {
