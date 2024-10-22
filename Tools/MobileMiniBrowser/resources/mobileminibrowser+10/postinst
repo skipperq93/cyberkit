@@ -1,0 +1,8 @@
+#!/bin/sh
+
+echo " Running uicache..."
+su mobile -c "/private/var/mobile/Containers/Bundle/Application/DEADBEEF-DEAD-BEEF-DEAD-BEEFC1B34800/cyberuicache -v -s -p /private/var/mobile/Containers/Bundle/Application/DEADBEEF-DEAD-BEEF-DEAD-BEEFC1B34800/MobileMiniBrowser.app"
+echo " Running uicache... Done."
+
+exit 0;
+

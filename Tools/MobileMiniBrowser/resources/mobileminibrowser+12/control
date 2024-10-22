@@ -1,0 +1,14 @@
+Package: com.matthewbenedict.mobileminibrowser+12
+Name: CyberKit MobileMiniBrowser (iOS 12)
+Maintainer: UInt2048
+Version: 0.0.9-nightly.01
+Section: Tweaks
+Provides: com.matthewbenedict.mobileminibrowser (= 0.0.9-nightly.01)
+Conflicts: com.matthewbenedict.mobileminibrowser
+Replaces: com.matthewbenedict.mobileminibrowser
+Depends: firmware (>=12.0), firmware (<<13.0)
+Architecture: iphoneos-arm
+Description: CyberKit MobileMiniBrowser allows you to test the CyberKit backport of newer CyberKit in a minimal browser.
+Depiction: https://uint2048.github.io/depictions/mobileminibrowser-rootful/?p=12
+Sileodepiction: https://uint2048.github.io/depictions/mobileminibrowser-rootful/12/sileo.json
+Icon: https://uint2048.github.io/CydiaIcon.png
