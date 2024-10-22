@@ -68,7 +68,7 @@ SWIFT_MODULE_INSTALL_PATH = $(INSTALL_PATH);
 // imported in apps that are deployable on OS versions that support them.
 // However, we can only generate module files for these; we can't emit binaries.
 // (All imported definitions will be unavailable on these older OS versions.)
-SWIFT_MODULE_ONLY_ARCHS = $(SWIFT_MODULE_ONLY_ARCHS_$(PLATFORM_NAME));
-SWIFT_MODULE_ONLY_ARCHS_iphoneos = armv7 armv7s;
-SWIFT_MODULE_ONLY_ARCHS_iphonesimulator = i386;
-SWIFT_MODULE_ONLY_IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+SWIFT_MODULE_ONLY_ARCHS = $(SWIFT_MODULE_ONLY_ARCHS_$(PLATFORM_NAME)_$(WK_IOS_BEFORE_11));
+SWIFT_MODULE_ONLY_ARCHS_iphoneos_YES = armv7 armv7s;
+SWIFT_MODULE_ONLY_ARCHS_iphonesimulator_YES = i386;
+SWIFT_MODULE_ONLY_IPHONEOS_DEPLOYMENT_TARGET = $CYBERKIT_DEPLOYMENT_TARGET;
