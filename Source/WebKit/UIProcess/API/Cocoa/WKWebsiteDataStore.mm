@@ -349,7 +349,9 @@ private:
 };
 
 @implementation WKWebsiteDataStore {
+#if HAVE(NW_PROXY_CONFIG)
     RetainPtr<NSArray> _proxyConfigurations;
+#endif
 }
 
 WK_OBJECT_DISABLE_DISABLE_KVC_IVAR_ACCESS;

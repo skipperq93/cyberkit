@@ -53,12 +53,20 @@ LocalCurrentTraitCollection::LocalCurrentTraitCollection(bool useDarkAppearance,
     // to return a useful set of traits in cases where it has not been explicitly set. Ideally, this
     // method should also take in a base, full-specified trait collection from the view hierarchy, to be
     // used when building the new trait collection.
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 170000
     RetainPtr combinedTraits = [m_savedTraitCollection traitCollectionByModifyingTraits:^(id<UIMutableTraits> traits) {
         traits.userInterfaceStyle = useDarkAppearance ? UIUserInterfaceStyleDark : UIUserInterfaceStyleLight;
         traits.userInterfaceLevel = useElevatedUserInterfaceLevel ? UIUserInterfaceLevelElevated : UIUserInterfaceLevelBase;
     }];
 
     [PAL::getUITraitCollectionClass() setCurrentTraitCollection:traitCollectionWithAdjustedIdiomForSystemColors(combinedTraits.get())];
+#else
+    auto userInterfaceStyleTrait = [PAL::getUITraitCollectionClass() traitCollectionWithUserInterfaceStyle:useDarkAppearance ? UIUserInterfaceStyleDark : UIUserInterfaceStyleLight];
+    auto backgroundLevelTrait = [PAL::getUITraitCollectionClass() traitCollectionWithUserInterfaceLevel:useElevatedUserInterfaceLevel ? UIUserInterfaceLevelElevated : UIUserInterfaceLevelBase];
+    auto newTraitCollection = traitCollectionWithAdjustedIdiomForSystemColors([PAL::getUITraitCollectionClass() traitCollectionWithTraitsFromCollections:@[ m_savedTraitCollection.get(), userInterfaceStyleTrait, backgroundLevelTrait ]]);
+
+    [PAL::getUITraitCollectionClass() setCurrentTraitCollection:newTraitCollection];
+#endif
 }
 
 LocalCurrentTraitCollection::LocalCurrentTraitCollection(UITraitCollection *traitCollection)

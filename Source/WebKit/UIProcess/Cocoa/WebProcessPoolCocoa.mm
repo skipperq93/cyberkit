@@ -335,9 +335,11 @@ void WebProcessPool::platformInitialize(NeedsGlobalStaticInitialization needsGlo
             logProcessPoolState(pool.get());
     });
 
+#if ENABLE(ADVANCED_PRIVACY_PROTECTIONS)
     PAL::registerNotifyCallback("com.apple.WebKit.restrictedDomains"_s, ^{
         RestrictedOpenerDomainsController::shared();
     });
+#endif
 
 }
 

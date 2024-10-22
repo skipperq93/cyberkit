@@ -121,6 +121,7 @@ import Foundation
     }
 }
 
+@available(iOS 17.0, macOS 12.0, *)
 @objc(WKTextExtractionRequest) class WKTextExtractionRequest: NSObject {
     @objc public let rectInWebView: CGRect
     private var completionHandler: ((WKTextExtractionItem?) -> Void)?

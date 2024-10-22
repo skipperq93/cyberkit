@@ -34,14 +34,19 @@ class WebContentProcessExtension : WKProcessExtension {
 }
 
 
-extension WebContentProcessExtension: WebContentExtension {
+extension WebContentProcessExtension {
     func handle(xpcConnection: xpc_connection_t) {
         handleNewConnection(xpcConnection)
     }
 
     override func lockdownSandbox(_ version: String) {
-        if (version == "1.0") {
-            self.applyRestrictedSandbox(revision: RestrictedSandboxRevision.revision1)
+        if #available(iOSApplicationExtension 17.4, *) {
+            if (version == "1.0") {
+                self.applyRestrictedSandbox(revision: RestrictedSandboxRevision.revision1)
+            }
         }
     }
 }
+
+@available(iOSApplicationExtension 17.4, *)
+extension WebContentProcessExtension: WebContentExtension {}
