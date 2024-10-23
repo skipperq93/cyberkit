@@ -87,6 +87,18 @@
 @property (nonatomic, assign) BOOL transformURLs;
 @end
 
+// WKSecureCodingURLWrapper wasn't added until about iOS 15
+// After that, we get XPC messages that use the system version
+// Objective-C is incapable of dealing with two classes of the same name,
+// so the only way we can work around it is renaming our class
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
+#define HAVE_SYSTEM_WKSECURECODINGURLWRAPPER 1
+#endif
+
+#if HAVE(SYSTEM_WKSECURECODINGURLWRAPPER)
+#define WKSecureCodingURLWrapper WKCyberKitSecureCodingURLWrapper
+#endif
+
 @interface WKSecureCodingURLWrapper : NSURL <NSSecureCoding>
 - (instancetype)initWithURL:(NSURL *)wrappedURL;
 @property (nonatomic, readonly) NSURL * wrappedURL;
@@ -142,8 +154,9 @@
 - (id)unarchiver:(NSKeyedUnarchiver *)unarchiver didDecodeObject:(id) NS_RELEASES_ARGUMENT object NS_RETURNS_RETAINED
 {
     auto adoptedObject = adoptNS(object);
-    if (auto wrapper = dynamic_objc_cast<WKSecureCodingURLWrapper>(adoptedObject.get()))
-        return retainPtr(wrapper.wrappedURL).leakRef();
+    // We know this is a WKSecureCodingURLWrapper, which one is not important
+    if (auto wrapper = dynamic_objc_cast<NSURL>(adoptedObject.get()))
+        return retainPtr([wrapper valueForKey:@"wrappedURL"]).leakRef();
 
     if (auto wrapper = dynamic_objc_cast<WKSecureCodingCGColorWrapper>(adoptedObject.get()))
         return static_cast<id>(retainPtr(wrapper.wrappedColor).leakRef());
@@ -591,6 +604,15 @@ template<> std::optional<RetainPtr<id>> decodeObjectDirectlyRequiringAllowedClas
         allowedClasses.add(NSMutableArray.class);
         allowedClasses.add(NSMutableDictionary.class);
         allowedClasses.add(NSMutableData.class);
+
+#if HAVE(SYSTEM_WKSECURECODINGURLWRAPPER)
+#undef WKSecureCodingURLWrapper
+        NSBundle *bundle = [[NSBundle alloc] initWithPath:@"/System/Library/Frameworks/WebKit.framework"];
+        [bundle load];
+        Class cls = [bundle classNamed:@"WKSecureCodingURLWrapper"];
+        allowedClasses.add(cls);
+        [bundle unload];
+#endif
     }
 
     if (allowedClasses.contains(NSParagraphStyle.class))
