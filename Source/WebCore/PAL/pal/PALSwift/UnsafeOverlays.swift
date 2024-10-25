@@ -149,6 +149,84 @@ extension P521.Signing.ECDSASignature {
     }
 }
 
+// The following fileprivate functions are modified from the implementation at https://github.com/apple/swift-crypto/blob/8fa345c2081cfbd4851dffff5dd5bed48efe6081/Sources/Crypto/Keys/EC/BoringSSL/NISTCurvesKeys_boring.swift#L384
+#if os(iOS) && WK_IOS_BEFORE_16
+fileprivate func readx963CompressedPublicNumbers(bytesPtr: UnsafeRawBufferPointer) throws -> (x: ArbitraryInteger, yBit: Bool) {
+    // The x9.63 compressed public key format is a discriminator byte (0x2 or 0x3) that signals which
+    // of the possible two Y values is being used, concatenated with the X point of the key.
+    let yBit: Bool
+    
+    switch bytesPtr.first {
+    case 0x03:
+        yBit = true
+    case 0x02:
+        yBit = false
+    default:
+        throw CryptoKitError.incorrectKeySize // This is the same error CryptoKit throws on Apple platforms.
+    }
+    
+    let xBytes: UnsafeRawBufferPointer = UnsafeRawBufferPointer(rebasing: bytesPtr.dropFirst())
+    
+    let xPointer: ArbitraryInteger = xBytes.withUnsafeBytes { (bytesPointer: UnsafeRawBufferPointer) -> ArbitraryInteger in
+        ArbitraryInteger_create(bytesPointer.baseAddress, bytesPointer.count).pointee
+    }
+    
+    return (x: xPointer, yBit: yBit)
+}
+
+fileprivate func setPublicKey(coordinateByteCount: Int, x: inout ArbitraryInteger, yBit: Bool) throws -> SpanConstUInt8 {
+    var groupPtr: OpaquePointer! = nil
+    switch coordinateByteCount {
+    case 32:
+        groupPtr = EC_group_p256()
+    case 48:
+        groupPtr = EC_group_p384()
+    case 72:
+        groupPtr = EC_group_p521()
+    default:
+        throw CryptoKitError.incorrectKeySize
+    }
+    
+    guard let key = EC_KEY_new(), EC_KEY_set_group(key, groupPtr) == 1 else {
+        throw CryptoKitError.unwrapFailure
+    }
+    
+    guard let point = EC_POINT_new(groupPtr) else {
+        throw CryptoKitError.unwrapFailure
+    }
+    defer {
+        // We either error, or EC_KEY_set_public_key dups the key,
+        // so we must always free.
+        EC_POINT_free(point)
+    }
+    let rc = EC_POINT_set_compressed_coordinates_GFp(groupPtr, point, x.getInteger(), yBit ? 1 : 0, nil)
+
+    guard rc == 1 else {
+        throw CryptoKitError.unwrapFailure
+    }
+
+    guard EC_KEY_set_public_key(key, point) == 1 else {
+        throw CryptoKitError.unwrapFailure
+    }
+    
+    return getx963Representation(key, groupPtr)
+}
+
+fileprivate func NISTCurve_init_compressed(coordinateByteCount: Int, withCompressed span: SpanConstUInt8) throws -> SpanConstUInt8 {
+    let bytes = Data.temporaryDataFromSpan(spanNoCopy: span)
+    let length = bytes.withUnsafeBytes { $0.count }
+    
+    guard length == coordinateByteCount + 1 else {
+        throw CryptoKitError.incorrectParameterSize
+    }
+    
+    return try bytes.withUnsafeBytes { buffer in
+        var tuple = try readx963CompressedPublicNumbers(bytesPtr: buffer)
+        return try setPublicKey(coordinateByteCount: coordinateByteCount, x: &tuple.x, yBit: tuple.yBit)
+    }
+}
+#endif
+
 extension P256.Signing.PublicKey {
     init(span: SpanConstUInt8) throws {
         if span.empty() {
@@ -160,8 +238,13 @@ extension P256.Signing.PublicKey {
         if spanCompressed.empty() {
             throw UnsafeErrors.emptySpan
         }
+#if os(iOS) && WK_IOS_BEFORE_16
+        let spanDecompressed = try NISTCurve_init_compressed(coordinateByteCount: 32, withCompressed: spanCompressed)
+        try self.init(span: spanDecompressed)
+#else
         try self.init(
             compressedRepresentation: Data.temporaryDataFromSpan(spanNoCopy: spanCompressed))
+#endif
     }
 }
 
@@ -176,8 +259,13 @@ extension P384.Signing.PublicKey {
         if spanCompressed.empty() {
             throw UnsafeErrors.emptySpan
         }
+#if os(iOS) && WK_IOS_BEFORE_16
+        let spanDecompressed = try NISTCurve_init_compressed(coordinateByteCount: 48, withCompressed: spanCompressed)
+        try self.init(span: spanDecompressed)
+#else
         try self.init(
             compressedRepresentation: Data.temporaryDataFromSpan(spanNoCopy: spanCompressed))
+#endif
     }
 }
 
@@ -192,8 +280,13 @@ extension P521.Signing.PublicKey {
         if spanCompressed.empty() {
             throw UnsafeErrors.emptySpan
         }
+#if os(iOS) && WK_IOS_BEFORE_16
+        let spanDecompressed = try NISTCurve_init_compressed(coordinateByteCount: 72, withCompressed: spanCompressed)
+        try self.init(span: spanDecompressed)
+#else
         try self.init(
             compressedRepresentation: Data.temporaryDataFromSpan(spanNoCopy: spanCompressed))
+#endif
     }
 }
 

@@ -262,9 +262,11 @@
 
 - (void)setExternalContextMenuInteractionDelegate:(id<UIContextMenuInteractionDelegate>)delegate
 {
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000
     [_textInteractionAssistant setExternalContextMenuInteractionDelegate:delegate];
 #if USE(BROWSERENGINEKIT)
     [_asyncTextInteraction setContextMenuInteractionDelegate:delegate];
+#endif
 #endif
 }
 

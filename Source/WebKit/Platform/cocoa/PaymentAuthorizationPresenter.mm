@@ -293,7 +293,7 @@ void PaymentAuthorizationPresenter::completePaymentMethodSelection(std::optional
 #if HAVE(PASSKIT_DEFAULT_SHIPPING_METHOD)
     [paymentMethodUpdate setAvailableShippingMethods:toPKShippingMethods(WTFMove(update->newShippingMethods))];
 #else
-    [paymentMethodUpdate setShippingMethods:createNSArray(WTFMove(update->newShippingMethods), [] (auto& method) {
+    [paymentMethodUpdate setShippingMethods:createNSArray(WTFMove(update->newShippingMethods), [] (auto&& method) {
         return toPKShippingMethod(method);
     }).get()];
 #endif
@@ -359,7 +359,7 @@ void PaymentAuthorizationPresenter::completeShippingContactSelection(std::option
 #if HAVE(PASSKIT_DEFAULT_SHIPPING_METHOD)
     [shippingContactUpdate setAvailableShippingMethods:toPKShippingMethods(WTFMove(update->newShippingMethods))];
 #else
-    [shippingContactUpdate setShippingMethods:createNSArray(WTFMove(update->newShippingMethods), [] (auto& method) {
+    [shippingContactUpdate setShippingMethods:createNSArray(WTFMove(update->newShippingMethods), [] (auto&& method) {
         return toPKShippingMethod(method);
     }).get()];
 #endif
@@ -394,7 +394,7 @@ void PaymentAuthorizationPresenter::completeShippingMethodSelection(std::optiona
 #if HAVE(PASSKIT_DEFAULT_SHIPPING_METHOD)
     [shippingMethodUpdate setAvailableShippingMethods:toPKShippingMethods(WTFMove(update->newShippingMethods))];
 #elif HAVE(PASSKIT_UPDATE_SHIPPING_METHODS_WHEN_CHANGING_SUMMARY_ITEMS)
-    [shippingMethodUpdate setShippingMethods:createNSArray(WTFMove(update->newShippingMethods), [] (auto& method) {
+    [shippingMethodUpdate setShippingMethods:createNSArray(WTFMove(update->newShippingMethods), [] (auto&& method) {
         return toPKShippingMethod(method);
     }).get()];
 #endif
@@ -432,7 +432,7 @@ void PaymentAuthorizationPresenter::completeCouponCodeChange(std::optional<WebCo
 #if HAVE(PASSKIT_DEFAULT_SHIPPING_METHOD)
     [couponCodeUpdate setAvailableShippingMethods:toPKShippingMethods(WTFMove(update->newShippingMethods))];
 #else
-    [couponCodeUpdate setShippingMethods:createNSArray(WTFMove(update->newShippingMethods), [] (auto& method) {
+    [couponCodeUpdate setShippingMethods:createNSArray(WTFMove(update->newShippingMethods), [] (auto&& method) {
         return toPKShippingMethod(method);
     }).get()];
 #endif
