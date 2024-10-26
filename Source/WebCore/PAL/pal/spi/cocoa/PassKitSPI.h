@@ -198,7 +198,9 @@ typedef NS_ENUM(NSUInteger, PKPaymentRequestAPIType) {
 @class PKPayment;
 @class PKPaymentToken;
 @class PKShippingMethod;
+#if HAVE(PASSKIT_SHIPPING_METHOD_DATE_COMPONENTS_RANGE)
 @class PKDateComponentsRange;
+#endif
 @class PKPaymentMethod;
 
 #if PLATFORM(IOS_FAMILY)

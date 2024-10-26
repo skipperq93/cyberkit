@@ -48,3 +48,8 @@ SDKROOT = $(SDKROOT_$(USE_INTERNAL_SDK));
 SDKROOT_ = macosx;
 SDKROOT_YES = macosx.internal;
 ADDITIONAL_SDKS = $(WK_ADDITIONAL_SDKS);
+
+// Necessary for iOS 13-14 back-deployment of Swift concurrency
+CACHE_LDFLAGS = $(CACHE_LDFLAGS$(WK_IOS_15));
+CACHE_LDFLAGS_IOS_BEFORE_15 = -lswiftCompatibilityConcurrency;
+OTHER_LDFLAGS = $(inherited) $(CACHE_LDFLAGS);

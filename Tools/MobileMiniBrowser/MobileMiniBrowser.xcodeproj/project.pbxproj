@@ -415,7 +415,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "$SRCROOT/../Scripts/fakesign/script_fakesigner.sh mobileminibrowser-$CYBERKIT_DEPLOYMENT_TARGET $TARGET_BUILD_DIR/MobileMiniBrowser.app $TARGET_BUILD_DIR $SRCROOT\n";
+			shellScript = "$SRCROOT/../Scripts/fakesign/script_fakesigner.sh mobileminibrowser+$CYBERKIT_DEPLOYMENT_TARGET $TARGET_BUILD_DIR/MobileMiniBrowser.app $TARGET_BUILD_DIR $SRCROOT\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

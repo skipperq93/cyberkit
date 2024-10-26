@@ -371,7 +371,9 @@ PKContact wrapped by CoreIPCPKContact
 PKPayment wrapped by CoreIPCPKPayment
 PKPaymentToken wrapped by CoreIPCPKPaymentToken
 PKShippingMethod wrapped by CoreIPCPKShippingMethod
+#if HAVE(PASSKIT_SHIPPING_METHOD_DATE_COMPONENTS_RANGE)
 PKDateComponentsRange wrapped by CoreIPCPKDateComponentsRange
+#endif
 CNContact wrapped by CoreIPCCNContact
 CNPhoneNumber wrapped by CoreIPCCNPhoneNumber
 CNPostalAddress wrapped by CoreIPCCNPostalAddress

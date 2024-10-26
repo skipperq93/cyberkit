@@ -56,7 +56,9 @@ OBJC_CLASS CNContact;
 OBJC_CLASS CNPhoneNumber;
 OBJC_CLASS CNPostalAddress;
 OBJC_CLASS PKContact;
+#if HAVE(PASSKIT_SHIPPING_METHOD_DATE_COMPONENTS_RANGE)
 OBJC_CLASS PKDateComponentsRange;
+#endif
 OBJC_CLASS PKPayment;
 OBJC_CLASS PKPaymentMerchantSession;
 OBJC_CLASS PKPaymentMethod;
@@ -133,7 +135,9 @@ template<> Class getClass<PKPaymentMerchantSession>();
 template<> Class getClass<PKPayment>();
 template<> Class getClass<PKPaymentToken>();
 template<> Class getClass<PKShippingMethod>();
+#if HAVE(PASSKIT_SHIPPING_METHOD_DATE_COMPONENTS_RANGE)
 template<> Class getClass<PKDateComponentsRange>();
+#endif
 template<> Class getClass<PKPaymentMethod>();
 template<> Class getClass<PKSecureElementPass>();
 #endif

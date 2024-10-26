@@ -73,6 +73,7 @@ public class AesGcm {
     }
 }
 
+@available(iOS 15.0, *)
 public class AesKw {
     public static func wrap(keyToWrap: SpanConstUInt8, using: SpanConstUInt8)
         -> CryptoOperationReturnValue

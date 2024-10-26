@@ -105,6 +105,7 @@ extension AES.GCM {
     }
 }
 
+@available(iOS 15.0, *)
 extension AES.KeyWrap {
     public static func unwrap(_ wrapped: SpanConstUInt8, using: SpanConstUInt8) throws
         -> SymmetricKey
@@ -188,11 +189,11 @@ fileprivate func setPublicKey(coordinateByteCount: Int, x: inout ArbitraryIntege
     }
     
     guard let key = EC_KEY_new(), EC_KEY_set_group(key, groupPtr) == 1 else {
-        throw CryptoKitError.unwrapFailure
+        throw CryptoKitError.incorrectParameterSize
     }
     
     guard let point = EC_POINT_new(groupPtr) else {
-        throw CryptoKitError.unwrapFailure
+        throw CryptoKitError.incorrectParameterSize
     }
     defer {
         // We either error, or EC_KEY_set_public_key dups the key,
@@ -202,11 +203,11 @@ fileprivate func setPublicKey(coordinateByteCount: Int, x: inout ArbitraryIntege
     let rc = EC_POINT_set_compressed_coordinates_GFp(groupPtr, point, x.getInteger(), yBit ? 1 : 0, nil)
 
     guard rc == 1 else {
-        throw CryptoKitError.unwrapFailure
+        throw CryptoKitError.incorrectParameterSize
     }
 
     guard EC_KEY_set_public_key(key, point) == 1 else {
-        throw CryptoKitError.unwrapFailure
+        throw CryptoKitError.incorrectParameterSize
     }
     
     return getx963Representation(key, groupPtr)

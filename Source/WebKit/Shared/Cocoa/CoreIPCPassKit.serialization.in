@@ -71,6 +71,7 @@ secure_coding_header: <pal/cocoa/PassKitSoftLink.h>
     retryNonce: String
 }
 
+#if HAVE(PASSKIT_SHIPPING_METHOD_DATE_COMPONENTS_RANGE)
 [WebKitSecureCodingClass=PAL::getPKShippingMethodClass(), SupportWKKeyedCoder, WebKitPlatform] webkit_secure_coding PKShippingMethod {
     label: String
     amount: Number
@@ -83,11 +84,26 @@ secure_coding_header: <pal/cocoa/PassKitSoftLink.h>
     detail: String
     dateComponentsRange: PKDateComponentsRange
 }
+#else
+[WebKitSecureCodingClass=PAL::getPKShippingMethodClass(), SupportWKKeyedCoder, WebKitPlatform] webkit_secure_coding PKShippingMethod {
+    label: String
+    amount: Number
+    type: Number
+    localizedTitle: String
+    localizedAmount: String
+    useDarkColor: Number
+    useLargeFont: Number
+    identifier: String
+    detail: String
+}
+#endif
 
+#if HAVE(PASSKIT_SHIPPING_METHOD_DATE_COMPONENTS_RANGE)
 [WebKitSecureCodingClass=PAL::getPKDateComponentsRangeClass(), SupportWKKeyedCoder, WebKitPlatform] webkit_secure_coding PKDateComponentsRange {
     startDateComponents: NSDateComponents
     endDateComponents: NSDateComponents
 }
+#endif
 
 additional_forward_declaration: OBJC_CLASS PKSecureElementPass
 [WebKitSecureCodingClass=PAL::getPKPaymentMethodClass(), SupportWKKeyedCoder, WebKitPlatform] webkit_secure_coding PKPaymentMethod {

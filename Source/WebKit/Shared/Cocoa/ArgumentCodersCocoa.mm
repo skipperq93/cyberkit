@@ -330,10 +330,12 @@ template<> Class getClass<PKShippingMethod>()
 {
     return PAL::getPKShippingMethodClass();
 }
+#if HAVE(PASSKIT_SHIPPING_METHOD_DATE_COMPONENTS_RANGE)
 template<> Class getClass<PKDateComponentsRange>()
 {
     return PAL::getPKDateComponentsRangeClass();
 }
+#endif
 template<> Class getClass<PKPaymentMethod>()
 {
     return PAL::getPKPaymentMethodClass();
