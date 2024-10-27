@@ -113,7 +113,10 @@ else
     fi
     # Copy ICU data and frameworks
     cp -R $webkit_build/JavaScriptCore.framework $webkit_build/Web*.framework $rpath
-    cp $webkit_build/../../Source/WTF/icu/unicode/data/out/*.dat $rpath
+    
+    icu_source=$webkit_build/../../Source/WTF/icu
+    #cp $icu_source/build.noindex/ios_arm64/data/out/tmp/*.dat $rpath
+    cp $icu_source/libunicode.dylib $rpath
     
     mkdir $rpath/WebCore.framework/Frameworks
     cp $webkit_build/libANGLE-shared.dylib $webkit_build/libwebrtc.dylib $rpath/WebCore.framework/Frameworks
@@ -156,6 +159,7 @@ system_paths=(
     /System/Library/PrivateFrameworks/WebGPU.framework/WebGPU
     /System/Library/Frameworks/WebKit.framework/Frameworks/libWebKitSwift.dylib
     /usr/lib/swift/libswiftWebKit.dylib
+    /usr/lib/libicucore.A.dylib
 )
 system_paths_len=${#system_paths[@]}
 
@@ -169,6 +173,7 @@ relative_paths=(
     @rpath/WebGPU.framework/WebGPU
     @rpath/WebKit.framework/Frameworks/libWebKitSwift.dylib
     @rpath/libswiftWebKit.dylib
+    @rpath/libunicode.dylib
 )
 relative_paths_len=${#relative_paths[@]}
 
