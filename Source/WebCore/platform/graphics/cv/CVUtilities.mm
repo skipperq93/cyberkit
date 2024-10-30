@@ -151,7 +151,7 @@ RetainPtr<CGColorSpaceRef> createCGColorSpaceForCVPixelBuffer(CVPixelBufferRef b
 #if HAVE(CVBUFFERCOPYATTACHMENTS)
     attachments = adoptCF(CVBufferCopyAttachments(buffer, kCVAttachmentMode_ShouldPropagate));
 #else
-    attachments = CVBufferGetAttachments(buffer, kCVAttachmentMode_ShouldPropagate);
+    attachments = adoptCF(CVBufferGetAttachments(buffer, kCVAttachmentMode_ShouldPropagate));
 #endif
     if (auto colorSpace = adoptCF(CVImageBufferCreateColorSpaceFromAttachments(attachments.get())))
         return colorSpace;

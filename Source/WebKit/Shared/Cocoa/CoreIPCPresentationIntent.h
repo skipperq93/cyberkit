@@ -30,6 +30,7 @@
 #include <wtf/ArgumentCoder.h>
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
+#include <WebCore/AttributedString.h>
 
 OBJC_CLASS NSPresentationIntent;
 

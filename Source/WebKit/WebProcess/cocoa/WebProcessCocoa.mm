@@ -570,7 +570,7 @@ void WebProcess::platformInitializeWebProcess(WebProcessCreationParameters& para
 
     disableURLSchemeCheckInDataDetectors();
 
-#if ENABLE(QUICKLOOK_SANDBOX_RESTRICTIONS)
+#if ENABLE(QUICKLOOK_SANDBOX_RESTRICTIONS) && HAVE(SANDBOX_STATE_FLAGS)
     if (auto auditToken = parentProcessConnection()->getAuditToken()) {
         bool parentCanSetStateFlags = WTF::hasEntitlementValueInArray(auditToken.value(), "com.apple.private.security.enable-state-flags"_s, "EnableQuickLookSandboxResources"_s);
         if (parentCanSetStateFlags) {

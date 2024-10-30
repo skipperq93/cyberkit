@@ -142,7 +142,11 @@ static simd::float4x3 colorSpaceConversionMatrixForPixelBuffer(CVPixelBufferRef 
 {
     auto format = CVPixelBufferGetPixelFormatType(pixelBuffer);
     auto range = pixelRangeFromPixelFormat(format);
+#if HAVE(CVBUFFERCOPYATTACHMENTS)
     auto transferFunction = transferFunctionFromString(adoptCF((CFStringRef)CVBufferCopyAttachment(pixelBuffer, kCVImageBufferYCbCrMatrixKey, nil)));
+#else
+    auto transferFunction = transferFunctionFromString(adoptCF((CFStringRef)CVBufferGetAttachment(pixelBuffer, kCVImageBufferYCbCrMatrixKey, nil)));
+#endif
 
     switch (transferFunction) {
     case TransferFunctionCV::kITU_R_709_2: {

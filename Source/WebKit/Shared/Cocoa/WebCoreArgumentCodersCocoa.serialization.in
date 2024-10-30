@@ -125,6 +125,10 @@ header: <WebCore/ResourceRequest.h>
 }
 using WebCore::AttributedString::TableBlockAndTableIDPair = std::pair<WebCore::AttributedStringTextTableBlockID, WebCore::AttributedStringTextTableID>
 
+#if !HAVE(NS_PRESENTATION_INTENT)
+header: <WebCore/AttributedString.h>
+#endif
+
 [Nested] struct WebCore::AttributedString::AttributeValue {
 #if ENABLE(MULTI_REPRESENTATION_HEIC)
     std::variant<double, String, URL, Ref<WebCore::Font>, Vector<String>, Vector<double>, WebCore::AttributedString::ParagraphStyleWithTableAndListIDs, RetainPtr<NSPresentationIntent>, RetainPtr<NSShadow>, RetainPtr<NSDate>, WebCore::AttributedString::ColorFromCGColor, WebCore::AttributedString::ColorFromPlatformColor, WebCore::MultiRepresentationHEICAttachmentData, WebCore::TextAttachmentFileWrapper, WebCore::TextAttachmentMissingImage> value;

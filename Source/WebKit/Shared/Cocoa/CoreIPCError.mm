@@ -27,6 +27,7 @@
 #import "CoreIPCError.h"
 
 #import <wtf/cocoa/TypeCastsCocoa.h>
+#import <WebCore/CertificateInfo.h>
 
 namespace WebKit {
 
@@ -150,7 +151,7 @@ CoreIPCError::CoreIPCError(NSError *nsError)
     if (!peerCertificateChain) {
         if (id candidatePeerTrust = [userInfo objectForKey:NSURLErrorFailingURLPeerTrustErrorKey]) {
             if (CFGetTypeID((__bridge CFTypeRef)candidatePeerTrust) == SecTrustGetTypeID())
-                peerCertificateChain = (__bridge NSArray *)adoptCF(SecTrustCopyCertificateChain((__bridge SecTrustRef)candidatePeerTrust)).autorelease();
+                peerCertificateChain = (__bridge NSArray *)WebCore::CertificateInfo::certificateChainFromSecTrust((__bridge SecTrustRef)candidatePeerTrust).autorelease();
         }
     }
 

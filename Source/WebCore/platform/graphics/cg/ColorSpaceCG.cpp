@@ -30,25 +30,32 @@
 
 #include <mutex>
 #include <pal/spi/cg/CoreGraphicsSPI.h>
+#include <pal/cg/CoreGraphicsSoftLink.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/RetainPtr.h>
 
 namespace WebCore {
 
-template<const CFStringRef& colorSpaceNameGlobalConstant> static CGColorSpaceRef namedColorSpace()
+static CGColorSpaceRef namedColorSpace(const CFStringRef& colorSpaceNameGlobalConstant)
 {
     static NeverDestroyed<RetainPtr<CGColorSpaceRef>> colorSpace;
     static std::once_flag onceFlag;
-    std::call_once(onceFlag, [] {
+    std::call_once(onceFlag, [&colorSpaceNameGlobalConstant] {
         colorSpace.get() = adoptCF(CGColorSpaceCreateWithName(colorSpaceNameGlobalConstant));
         ASSERT(colorSpace.get());
     });
     return colorSpace.get().get();
 }
 
+template<const CFStringRef& colorSpaceNameGlobalConstant> static inline CGColorSpaceRef namedColorSpace()
+{
+    return namedColorSpace(colorSpaceNameGlobalConstant);
+}
+
 #if HAVE(CORE_GRAPHICS_CREATE_EXTENDED_COLOR_SPACE)
 template<const CFStringRef& colorSpaceNameGlobalConstant> static CGColorSpaceRef extendedNamedColorSpace()
 {
+if (PAL::canLoad_CoreGraphics_CGColorSpaceCreateExtended()) {
     static NeverDestroyed<RetainPtr<CGColorSpaceRef>> colorSpace;
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [] {
@@ -56,6 +63,8 @@ template<const CFStringRef& colorSpaceNameGlobalConstant> static CGColorSpaceRef
         ASSERT(colorSpace.get());
     });
     return colorSpace.get().get();
+}
+return nullptr;
 }
 #endif
 
@@ -88,14 +97,20 @@ CGColorSpaceRef extendedAdobeRGB1998ColorSpaceRef()
 #if HAVE(CORE_GRAPHICS_EXTENDED_DISPLAY_P3_COLOR_SPACE)
 CGColorSpaceRef extendedDisplayP3ColorSpaceRef()
 {
-    return namedColorSpace<kCGColorSpaceExtendedDisplayP3>();
+    if (PAL::canLoad_CoreGraphics_kCGColorSpaceExtendedDisplayP3()) {
+        return namedColorSpace(kCGColorSpaceExtendedDisplayP3);
+    }
+    return nullptr;
 }
 #endif
 
 #if HAVE(CORE_GRAPHICS_EXTENDED_ITUR_2020_COLOR_SPACE)
 CGColorSpaceRef extendedITUR_2020ColorSpaceRef()
 {
-    return namedColorSpace<kCGColorSpaceExtendedITUR_2020>();
+    if (PAL::canLoad_CoreGraphics_kCGColorSpaceExtendedITUR_2020()) {
+        return namedColorSpace(kCGColorSpaceExtendedITUR_2020);
+    }
+    return nullptr;
 }
 #endif
 

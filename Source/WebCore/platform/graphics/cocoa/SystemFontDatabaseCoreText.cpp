@@ -212,15 +212,25 @@ static CGFloat mapWidth(FontSelectionValue width)
         FontSelectionValue input;
         CGFloat output;
     } piecewisePoints[] = {
+#if HAVE(LEVEL_3_SYSTEM_FONT_WIDTH_VALUES)
         {FontSelectionValue(37.5f), kCTFontWidthUltraCompressed},
         {FontSelectionValue(50), kCTFontWidthExtraCompressed}, // ultra condensed
+#endif
+#if HAVE(LEVEL_2_SYSTEM_FONT_WIDTH_VALUES)
         {FontSelectionValue(62.5f), kCTFontWidthExtraCondensed},
+#endif
         {FontSelectionValue(75), kCTFontWidthCondensed},
+#if HAVE(LEVEL_2_SYSTEM_FONT_WIDTH_VALUES)
         {FontSelectionValue(87.5f), kCTFontWidthSemiCondensed},
+#endif
         {FontSelectionValue(100), kCTFontWidthStandard},
+#if HAVE(LEVEL_2_SYSTEM_FONT_WIDTH_VALUES)
         {FontSelectionValue(112.5f), kCTFontWidthSemiExpanded},
+#endif
         {FontSelectionValue(125), kCTFontWidthExpanded},
+#if HAVE(LEVEL_3_SYSTEM_FONT_WIDTH_VALUES)
         {FontSelectionValue(150), kCTFontWidthExtraExpanded},
+#endif
     };
     for (size_t i = 0; i < std::size(piecewisePoints) - 1; ++i) {
         auto& previous = piecewisePoints[i];

@@ -40,4 +40,13 @@ SOFT_LINK_FUNCTION_FOR_HEADER(PAL, CoreGraphics, CGContextSetOwnerIdentity, void
 #define CGContextSetOwnerIdentity PAL::softLink_CoreGraphics_CGContextSetOwnerIdentity
 #endif
 
+SOFT_LINK_FUNCTION_MAY_FAIL_FOR_HEADER(PAL, CoreGraphics, CGColorSpaceCreateExtended, CGColorSpaceRef, (CGColorSpaceRef space), (space))
+#define CGColorSpaceCreateExtended PAL::softLink_CoreGraphics_CGColorSpaceCreateExtended
+
+SOFT_LINK_CONSTANT_MAY_FAIL_FOR_HEADER(PAL, CoreGraphics, kCGColorSpaceExtendedDisplayP3, CFStringRef)
+#define kCGColorSpaceExtendedDisplayP3 PAL::get_CoreGraphics_kCGColorSpaceExtendedDisplayP3()
+
+SOFT_LINK_CONSTANT_MAY_FAIL_FOR_HEADER(PAL, CoreGraphics, kCGColorSpaceExtendedITUR_2020, CFStringRef)
+#define kCGColorSpaceExtendedITUR_2020 PAL::get_CoreGraphics_kCGColorSpaceExtendedITUR_2020()
+
 #endif

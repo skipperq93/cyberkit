@@ -61,6 +61,7 @@ FontPlatformData FontCustomPlatformData::fontPlatformData(const FontDescription&
     return platformData;
 }
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
 static RetainPtr<CFDataRef> extractFontCustomPlatformData(SharedBuffer& buffer, const String& itemInCollection)
 {
     RetainPtr<CFDataRef> bufferData = buffer.createCFData();
@@ -91,9 +92,40 @@ static RetainPtr<CFDataRef> extractFontCustomPlatformData(SharedBuffer& buffer, 
     // This is a power optimization.
     return adoptCF(FPFontCopySFNTData(font));
 }
+#else
+static RetainPtr<CTFontDescriptorRef> createFontCustomPlatformData(SharedBuffer& buffer, const String& itemInCollection)
+{
+    RetainPtr<CFDataRef> bufferData = buffer.createCFData();
+
+    RetainPtr<CTFontDescriptorRef> fontDescriptor;
+    auto array = adoptCF(CTFontManagerCreateFontDescriptorsFromData(bufferData.get()));
+    if (!array)
+        return nullptr;
+    auto length = CFArrayGetCount(array.get());
+    if (length <= 0)
+        return nullptr;
+    if (!itemInCollection.isNull()) {
+        if (auto desiredName = itemInCollection.createCFString()) {
+            for (CFIndex i = 0; i < length; ++i) {
+                auto candidate = static_cast<CTFontDescriptorRef>(CFArrayGetValueAtIndex(array.get(), i));
+                auto postScriptName = adoptCF(static_cast<CFStringRef>(CTFontDescriptorCopyAttribute(candidate, kCTFontNameAttribute)));
+                if (CFStringCompare(postScriptName.get(), desiredName.get(), 0) == kCFCompareEqualTo) {
+                    fontDescriptor = candidate;
+                    break;
+                }
+            }
+        }
+    }
+    if (!fontDescriptor)
+        fontDescriptor = static_cast<CTFontDescriptorRef>(CFArrayGetValueAtIndex(array.get(), 0));
+
+    return fontDescriptor;
+}
+#endif
 
 RefPtr<FontCustomPlatformData> FontCustomPlatformData::create(SharedBuffer& buffer, const String& itemInCollection)
 {
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
     RetainPtr extractedData = extractFontCustomPlatformData(buffer, itemInCollection);
     if (!extractedData) {
         // Something is wrong with the font.
@@ -104,11 +136,17 @@ RefPtr<FontCustomPlatformData> FontCustomPlatformData::create(SharedBuffer& buff
     Ref bufferRef = SharedBuffer::create(extractedData.get());
 
     FontPlatformData::CreationData creationData = { WTFMove(bufferRef), itemInCollection };
+#else
+    RetainPtr fontDescriptor = createFontCustomPlatformData(buffer, itemInCollection);
+    FontPlatformData::CreationData creationData = { buffer, itemInCollection };
+#endif
+    
     return adoptRef(new FontCustomPlatformData(fontDescriptor.get(), WTFMove(creationData)));
 }
 
 RefPtr<FontCustomPlatformData> FontCustomPlatformData::createMemorySafe(SharedBuffer& buffer, const String& itemInCollection)
 {
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
     if (!PAL::canLoad_CoreText_CTFontManagerCreateMemorySafeFontDescriptorFromData())
         return nullptr;
 
@@ -123,6 +161,12 @@ RefPtr<FontCustomPlatformData> FontCustomPlatformData::createMemorySafe(SharedBu
 
     FontPlatformData::CreationData creationData = { WTFMove(bufferRef), itemInCollection };
     return adoptRef(new FontCustomPlatformData(fontDescriptor.get(), WTFMove(creationData)));
+#else
+    // We don't need to even check for CTFontManagerCreateMemorySafeFontDescriptorFromData if we don't even have FPFontCopySFNTData
+    UNUSED_PARAM(buffer);
+    UNUSED_PARAM(itemInCollection);
+    return nullptr;
+#endif
 }
 
 std::optional<Ref<FontCustomPlatformData>> FontCustomPlatformData::tryMakeFromSerializationData(FontCustomPlatformSerializedData&& data, bool shouldUseLockdownFontParser )

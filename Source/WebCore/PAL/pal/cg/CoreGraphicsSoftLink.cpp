@@ -39,4 +39,10 @@ SOFT_LINK_FRAMEWORK_FOR_SOURCE_WITH_EXPORT(PAL, CoreGraphics, PAL_EXPORT)
 SOFT_LINK_FUNCTION_FOR_SOURCE_WITH_EXPORT(PAL, CoreGraphics, CGContextSetOwnerIdentity, void, (CGContextRef context, task_id_token_t owner), (context, owner), PAL_EXPORT)
 #endif
 
+SOFT_LINK_FUNCTION_MAY_FAIL_FOR_SOURCE_WITH_EXPORT(PAL, CoreGraphics, CGColorSpaceCreateExtended, CGColorSpaceRef, (CGColorSpaceRef space), (space), PAL_EXPORT)
+
+SOFT_LINK_CONSTANT_MAY_FAIL_FOR_SOURCE_WITH_EXPORT(PAL, CoreGraphics, kCGColorSpaceExtendedDisplayP3, CFStringRef, PAL_EXPORT)
+
+SOFT_LINK_CONSTANT_MAY_FAIL_FOR_SOURCE_WITH_EXPORT(PAL, CoreGraphics, kCGColorSpaceExtendedITUR_2020, CFStringRef, PAL_EXPORT)
+
 #endif

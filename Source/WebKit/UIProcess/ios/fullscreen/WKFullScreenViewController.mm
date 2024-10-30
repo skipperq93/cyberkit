@@ -645,8 +645,10 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 #endif
 
     if (alternateFullScreenControlDesignEnabled) {
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
         UIButtonConfiguration *cancelButtonConfiguration = [UIButtonConfiguration filledButtonConfiguration];
         [_cancelButton setConfiguration:cancelButtonConfiguration];
+#endif
 
 #if PLATFORM(VISION)
         // FIXME: I think PLATFORM(VISION) is always true when `alternateFullScreenControlDesignEnabled` is true.

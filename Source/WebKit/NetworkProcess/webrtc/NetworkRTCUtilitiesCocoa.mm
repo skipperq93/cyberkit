@@ -58,8 +58,10 @@ void setNWParametersTrackerOptions(nw_parameters_t parameters, bool shouldBypass
 {
     if (shouldBypassRelay)
         nw_parameters_set_account_id(parameters, "com.apple.safari.peertopeer");
+#if HAVE(NWPARAMETERS_TRACKER_API)
     nw_parameters_set_is_third_party_web_content(parameters, !isFirstParty);
     nw_parameters_set_is_known_tracker(parameters, isKnownTracker);
+#endif
 }
 
 bool isKnownTracker(const WebCore::RegistrableDomain& domain)

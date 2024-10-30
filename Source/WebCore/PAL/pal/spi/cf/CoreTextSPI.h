@@ -216,16 +216,20 @@ extern const CGFloat kCTFontWeightBold;
 extern const CGFloat kCTFontWeightHeavy;
 extern const CGFloat kCTFontWeightBlack;
 
+#if HAVE(LEVEL_3_SYSTEM_FONT_WIDTH_VALUES)
 extern const CGFloat kCTFontWidthUltraCompressed;
 extern const CGFloat kCTFontWidthExtraCompressed;
 extern const CGFloat kCTFontWidthCompressed;
-extern const CGFloat kCTFontWidthExtraCondensed;
-extern const CGFloat kCTFontWidthCondensed;
-extern const CGFloat kCTFontWidthSemiCondensed;
-extern const CGFloat kCTFontWidthStandard;
-extern const CGFloat kCTFontWidthSemiExpanded;
-extern const CGFloat kCTFontWidthExpanded;
 extern const CGFloat kCTFontWidthExtraExpanded;
+#endif
+#if HAVE(LEVEL_2_SYSTEM_FONT_WIDTH_VALUES)
+extern const CGFloat kCTFontWidthExtraCondensed;
+extern const CGFloat kCTFontWidthSemiCondensed;
+extern const CGFloat kCTFontWidthSemiExpanded;
+#endif
+extern const CGFloat kCTFontWidthCondensed;
+extern const CGFloat kCTFontWidthStandard;
+extern const CGFloat kCTFontWidthExpanded;
 
 extern const CFStringRef kCTUIFontTextStyleTitle0;
 extern const CFStringRef kCTUIFontTextStyleTitle1;
@@ -243,6 +247,8 @@ CTFontDescriptorOptions CTFontDescriptorGetOptions(CTFontDescriptorRef);
 typedef const struct __FPFont* FPFontRef;
 CFArrayRef FPFontCreateFontsFromData(CFDataRef);
 CFStringRef FPFontCopyPostScriptName(FPFontRef);
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
 CFDataRef FPFontCopySFNTData(FPFontRef);
+#endif
 
 WTF_EXTERN_C_END

@@ -10,11 +10,15 @@
  */
 
 #include "helpers.h"
+#include <dlfcn.h>
 
 #include <string>
 
 #include "rtc_base/checks.h"
 #include "rtc_base/logging.h"
+
+SOFT_LINK_FRAMEWORK_FOR_SOURCE(, VideoToolbox)
+SOFT_LINK_CONSTANT_MAY_FAIL_FOR_SOURCE(, VideoToolbox, kVTCompressionPropertyKey_BaseLayerFrameRateFraction, CFStringRef)
 
 // Copies characters from a CFStringRef into a std::string.
 std::string CFStringToString(const CFStringRef cf_string) {

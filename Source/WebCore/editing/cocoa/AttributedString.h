@@ -55,7 +55,23 @@
 #define PlatformImageClass              PAL::getUIImageClass()
 #define PlatformNSColorClass            getNSColorClass()
 #define PlatformNSParagraphStyle        PAL::getNSParagraphStyleClass()
-#define PlatformNSPresentationIntent    PAL::getNSPresentationIntentClass()
+#if !HAVE(NS_PRESENTATION_INTENT)
+#define NSPresentationIntent            WebCorePresentationIntent
+#define NSPresentationIntentKind        WebCorePresentationIntentKind
+#define NSPresentationIntentKindParagraph WebCorePresentationIntentKindParagraph
+#define NSPresentationIntentKindHeader  WebCorePresentationIntentKindHeader
+#define NSPresentationIntentKindOrderedList WebCorePresentationIntentKindOrderedList
+#define NSPresentationIntentKindUnorderedList WebCorePresentationIntentKindUnorderedList
+#define NSPresentationIntentKindListItem WebCorePresentationIntentKindListItem
+#define NSPresentationIntentKindCodeBlock WebCorePresentationIntentKindCodeBlock
+#define NSPresentationIntentKindBlockQuote WebCorePresentationIntentKindBlockQuote
+#define NSPresentationIntentKindThematicBreak WebCorePresentationIntentKindThematicBreak
+#define NSPresentationIntentKindTable WebCorePresentationIntentKindTable
+#define NSPresentationIntentKindTableHeaderRow WebCorePresentationIntentKindTableHeaderRow
+#define NSPresentationIntentKindTableRow WebCorePresentationIntentKindTableRow
+#define NSPresentationIntentKindTableCell WebCorePresentationIntentKindTableCell
+#endif
+#define PlatformNSPresentationIntent    NSPresentationIntent.class
 #define PlatformNSShadow                PAL::getNSShadowClass()
 #define PlatformNSTextAttachment        getNSTextAttachmentClass()
 #define PlatformNSTextList              getNSTextListClass()
@@ -68,10 +84,89 @@ OBJC_CLASS NSAttributedString;
 OBJC_CLASS NSDate;
 OBJC_CLASS NSDictionary;
 OBJC_CLASS NSParagraphStyle;
-OBJC_CLASS NSPresentationIntent;
 OBJC_CLASS NSShadow;
 OBJC_CLASS NSTextAttachment;
 OBJC_CLASS PlatformColor;
+
+#if HAVE(NS_PRESENTATION_INTENT) || !defined(__OBJC__)
+OBJC_CLASS NSPresentationIntent;
+#else
+typedef NS_ENUM(NSInteger, NSPresentationIntentKind) {
+    NSPresentationIntentKindParagraph,
+    NSPresentationIntentKindHeader,
+    NSPresentationIntentKindOrderedList,
+    NSPresentationIntentKindUnorderedList,
+    NSPresentationIntentKindListItem,
+    NSPresentationIntentKindCodeBlock,
+    NSPresentationIntentKindBlockQuote,
+    NSPresentationIntentKindThematicBreak,
+    NSPresentationIntentKindTable,
+    NSPresentationIntentKindTableHeaderRow,
+    NSPresentationIntentKindTableRow,
+    NSPresentationIntentKindTableCell,
+};
+
+NS_ASSUME_NONNULL_BEGIN
+WEBCORE_EXPORT @interface NSPresentationIntent : NSObject <NSCopying, NSCoding, NSSecureCoding>
+@property(class, readonly) BOOL supportsSecureCoding;
+@property (readonly) NSPresentationIntentKind intentKind;
+@property(readonly, nullable, strong) NSPresentationIntent *parentIntent;
+
+/// An integer value which uniquely identifies this intent in the document. Identity disambiguates attributes which apply to contiguous text -- for example, two headers in a row with the same level. It can also be used to track the location in an attributed string of a particular part of a document, even after mutation.
+@property (readonly) NSInteger identity;
+
+/// If the intent is not a list, this value is 0.
+@property (readonly) NSInteger ordinal;
+
+/// If the intent is not a table, this value is `nil`.
+@property (nullable, readonly) NSArray<NSNumber *> *columnAlignments;
+
+/// If the intent is not a table, this value is 0.
+@property (readonly) NSInteger columnCount;
+
+/// If the intent is not a header, this value is 0.
+@property (readonly) NSInteger headerLevel;
+
+/// If the intent is not a code block, this value is `nil`.
+@property (readonly, nullable, copy) NSString *languageHint;
+
+/// The column to which this cell belongs (0-based). If the intent is not a cell, this value is 0.
+@property (readonly) NSInteger column;
+
+/// The row to which this cell belongs (0-based). If the intent is not a row, this value is 0. Header rows are always row 0. If the table has more rows, those start at row 1.
+@property (readonly) NSInteger row;
+
+/// The indentation level of this intent. Each nested list increases the indentation level by one; all elements within the same list (and not then nested into a child list intent) have the same indentation level.
+/// Text outside list intents has an indentation level of 0.
+@property (readonly) NSInteger indentationLevel;
+
++ (NSPresentationIntent *)paragraphIntentWithIdentity:(NSInteger)identity nestedInsideIntent:(nullable NSPresentationIntent *)parent;
++ (NSPresentationIntent *)headerIntentWithIdentity:(NSInteger)identity level:(NSInteger)level nestedInsideIntent:(nullable NSPresentationIntent *)parent;
++ (NSPresentationIntent *)codeBlockIntentWithIdentity:(NSInteger)identity languageHint:(nullable NSString *)languageHint nestedInsideIntent:(nullable NSPresentationIntent *)parent;
++ (NSPresentationIntent *)thematicBreakIntentWithIdentity:(NSInteger)identity nestedInsideIntent:(nullable NSPresentationIntent *)parent;
++ (NSPresentationIntent *)orderedListIntentWithIdentity:(NSInteger)identity nestedInsideIntent:(nullable NSPresentationIntent *)parent;
++ (NSPresentationIntent *)unorderedListIntentWithIdentity:(NSInteger)identity nestedInsideIntent:(nullable NSPresentationIntent *)parent;
++ (NSPresentationIntent *)listItemIntentWithIdentity:(NSInteger)identity ordinal:(NSInteger)ordinal nestedInsideIntent:(nullable NSPresentationIntent *)parent;
++ (NSPresentationIntent *)blockQuoteIntentWithIdentity:(NSInteger)identity nestedInsideIntent:(nullable NSPresentationIntent *)parent;
++ (NSPresentationIntent *)tableIntentWithIdentity:(NSInteger)identity columnCount:(NSInteger)columnCount alignments:(NSArray<NSNumber *> *)alignments nestedInsideIntent:(nullable NSPresentationIntent *)parent;
++ (NSPresentationIntent *)tableHeaderRowIntentWithIdentity:(NSInteger)identity nestedInsideIntent:(nullable NSPresentationIntent *)parent;
++ (NSPresentationIntent *)tableRowIntentWithIdentity:(NSInteger)identity row:(NSInteger)row nestedInsideIntent:(nullable NSPresentationIntent *)parent;
++ (NSPresentationIntent *)tableCellIntentWithIdentity:(NSInteger)identity column:(NSInteger)column nestedInsideIntent:(nullable NSPresentationIntent *)parent;
+
+- (NSPresentationIntent *) initWithIntentKind:(NSPresentationIntentKind) kind
+                                 parentIntent:(nullable NSPresentationIntent *) parent
+                                     identity:(NSInteger) identity
+                                      ordinal:(NSInteger) ordinal
+                             columnAlignments:(nullable NSArray<NSNumber *> *) alignments
+                                  columnCount:(NSInteger) columnCount
+                                  headerLevel:(NSInteger) headerLevel
+                                 languageHint:(nullable NSString *) languageHint
+                                       column:(NSInteger) column
+                                          row:(NSInteger) row
+                             indentationLevel:(NSInteger) indentationLevel;
+@end
+NS_ASSUME_NONNULL_END
+#endif
 
 namespace WebCore {
 

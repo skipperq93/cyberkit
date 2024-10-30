@@ -194,8 +194,13 @@ RetainPtr<CFURLStorageSessionRef> createPrivateStorageSession(CFStringRef identi
     if (!storageSession)
         return nullptr;
 
-    if (shouldDisableCFURLCache == NetworkStorageSession::ShouldDisableCFURLCache::Yes)
+    if (shouldDisableCFURLCache == NetworkStorageSession::ShouldDisableCFURLCache::Yes) {
+#if HAVE(CFNETWORK_DISABLE_CACHE_SPI)
         _CFURLStorageSessionDisableCache(storageSession.get());
+#else
+        shouldDisableCFURLCache = NetworkStorageSession::ShouldDisableCFURLCache::No;
+#endif
+    }
 
     // The private storage session should have the same properties as the default storage session,
     // with the exception that it should be in-memory only storage.

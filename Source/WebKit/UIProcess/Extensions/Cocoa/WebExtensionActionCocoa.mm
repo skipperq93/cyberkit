@@ -335,8 +335,15 @@ static void* kvoContext = &kvoContext;
 
 - (void)presentationController:(UIPresentationController *)presentationController prepareAdaptivePresentationController:(UIPresentationController *)adaptivePresentationController
 {
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
     if (auto *sheetPresentationController = dynamic_objc_cast<UISheetPresentationController>(adaptivePresentationController))
         [self _updateDetentForSheetPresentationController:sheetPresentationController];
+#else
+    if ([presentationController isKindOfClass:[_UISheetPresentationController class]]) {
+        _UISheetPresentationController *sheetPresentationController = (_UISheetPresentationController *)presentationController;
+        [self _updateDetentForSheetPresentationController:sheetPresentationController];
+    }
+#endif
 }
 
 - (UIViewController *)presentationController:(UIPresentationController *)presentationController viewControllerForAdaptivePresentationStyle:(UIModalPresentationStyle)style
@@ -371,7 +378,11 @@ static void* kvoContext = &kvoContext;
         return;
 
     BOOL wasPresentedAsSheet = _presentedAsSheet;
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
     _presentedAsSheet = [presentationController isKindOfClass:UISheetPresentationController.class];
+#else
+    _presentedAsSheet = [presentationController isKindOfClass:[_UISheetPresentationController class]];
+#endif
 
     if (_presentedAsSheet != wasPresentedAsSheet)
         [_popupWebView setNeedsLayout];
@@ -389,7 +400,11 @@ static void* kvoContext = &kvoContext;
             self.preferredContentSize = contentSize;
         }
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
         [self _updateDetentForSheetPresentationController:dynamic_objc_cast<UISheetPresentationController>(presentationController)];
+#else
+        [self _updateDetentForSheetPresentationController:(_UISheetPresentationController *)presentationController];
+#endif
     } else {
         CGSize boundsSize = _popupWebView.bounds.size;
         CGSize contentSize = _popupWebView.scrollView.contentSize;
@@ -405,15 +420,24 @@ static void* kvoContext = &kvoContext;
     }
 }
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
 - (void)_updateDetentForSheetPresentationController:(UISheetPresentationController *)sheetPresentationController
+#else
+- (void)_updateDetentForSheetPresentationController:(_UISheetPresentationController *)sheetPresentationController
+#endif
 {
     ASSERT(sheetPresentationController);
 
     // FIXME: rdar://74753245 - This should choose either medium or large based on the desired height of the content.
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
     sheetPresentationController.detents = @[ UISheetPresentationControllerDetent.mediumDetent, UISheetPresentationControllerDetent.largeDetent ];
-
     sheetPresentationController.prefersEdgeAttachedInCompactHeight = YES;
     sheetPresentationController.widthFollowsPreferredContentSizeWhenEdgeAttached = YES;
+#else
+    sheetPresentationController._detents = @[ _UISheetDetent._mediumDetent, _UISheetDetent._largeDetent ];
+    sheetPresentationController._widthFollowsPreferredContentSizeWhenBottomAttached = YES;
+    sheetPresentationController._wantsBottomAttachedInCompactHeight = YES;
+#endif
 }
 
 - (void)_dismissPopup

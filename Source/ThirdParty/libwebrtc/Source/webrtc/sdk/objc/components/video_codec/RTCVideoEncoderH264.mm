@@ -857,10 +857,14 @@ uint32_t computeFramerate(uint32_t proposedFramerate, uint32_t maxAllowedFramera
 #endif
   SetVTSessionProperty(_vtCompressionSession, kVTCompressionPropertyKey_ProfileLevel, ExtractProfile(*_profile_level_id));
   SetVTSessionProperty(_vtCompressionSession, kVTCompressionPropertyKey_AllowFrameReordering, false);
+#if TARGET_OS_IOS && __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000
+  if (kVTCompressionPropertyKey_ProfileLevel_Available) {
   if (_enableL1T2ScalabilityMode) {
     const double kL1T2Fraction = 0.5;
-    SetVTSessionProperty(_vtCompressionSession, kVTCompressionPropertyKey_BaseLayerFrameRateFraction, kL1T2Fraction);
+    SetVTSessionProperty(_vtCompressionSession, get_VideoToolbox_kVTCompressionPropertyKey_BaseLayerFrameRateFraction(), kL1T2Fraction);
   }
+  }
+#endif
 
   [self setEncoderBitrateBps:_targetBitrateBps frameRate:_encoderFrameRate];
   // TODO(tkchin): Look at entropy mode and colorspace matrices.

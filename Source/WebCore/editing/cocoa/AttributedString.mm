@@ -45,6 +45,286 @@
 #import "UIFoundationSoftLink.h"
 #endif
 
+#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED < 150000
+@implementation NSPresentationIntent
+
++ (BOOL)supportsSecureCoding {
+  return YES;
+}
+
+- (NSPresentationIntent *)initWithCoder:(NSCoder *)coder {
+    NSPresentationIntentKind kind = NSPresentationIntentKind([coder decodeIntegerForKey:@"intentKind"]);
+    NSPresentationIntent *parent = [coder decodeObjectOfClass:PlatformNSPresentationIntent forKey:@"parent"];
+    NSInteger identity = [coder decodeIntegerForKey:@"identity"];
+    NSInteger ordinal = [coder decodeIntegerForKey:@"ordinal"];
+    NSArray<NSNumber *> *alignments = [coder decodeObjectOfClass:NSArray.class forKey:@"alignments"];
+    NSInteger columnCount = [coder decodeIntegerForKey:@"columnCount"];
+    NSInteger headerLevel = [coder decodeIntegerForKey:@"headerLevel"];
+    NSString *languageHint = [coder decodeObjectOfClass:NSString.class forKey:@"languageHint"];
+    NSInteger column = [coder decodeIntegerForKey:@"column"];
+    NSInteger row = [coder decodeIntegerForKey:@"row"];
+    NSInteger indentationLevel = [coder decodeIntegerForKey:@"indentationLevel"];
+    return [self initWithIntentKind:kind
+                       parentIntent:parent
+                           identity:identity
+                            ordinal:ordinal
+                   columnAlignments:alignments
+                        columnCount:columnCount
+                        headerLevel:headerLevel
+                       languageHint:languageHint
+                             column:column
+                                row:row
+                   indentationLevel:indentationLevel];
+}
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeInteger:self->_intentKind forKey:@"intentKind"];
+    [coder encodeObject:self->_parentIntent forKey:@"parent"];
+    [coder encodeInteger:self->_identity forKey:@"identity"];
+    [coder encodeInteger:self->_ordinal forKey:@"ordinal"];
+    [coder encodeObject:self->_columnAlignments forKey:@"columnAlignments"];
+    [coder encodeInteger:self->_columnCount forKey:@"columnCount"];
+    [coder encodeInteger:self->_headerLevel forKey:@"headerLevel"];
+    [coder encodeObject:self->_languageHint forKey:@"languageHint"];
+    [coder encodeInteger:self->_column forKey:@"column"];
+    [coder encodeInteger:self->_row forKey:@"row"];
+    [coder encodeInteger:self->_indentationLevel forKey:@"indentationLevel"];
+}
+
+- (NSPresentationIntent *) copyWithZone:(NSZone *)zone {
+    if (self->_parentIntent == nullptr) {
+        return [[NSPresentationIntent alloc] initWithIntentKind:_intentKind
+                                                   parentIntent:nullptr
+                                                       identity:_identity
+                                                        ordinal:_ordinal
+                                               columnAlignments:_columnAlignments
+                                                    columnCount:_columnCount
+                                                    headerLevel:_headerLevel
+                                                   languageHint:_languageHint
+                                                         column:_column
+                                                            row:_row
+                                               indentationLevel:_indentationLevel];
+    } else {
+        return [[NSPresentationIntent alloc] initWithIntentKind:_intentKind
+                                                   parentIntent:[_parentIntent copyWithZone:zone]
+                                                       identity:_identity
+                                                        ordinal:_ordinal
+                                               columnAlignments:_columnAlignments
+                                                    columnCount:_columnCount
+                                                    headerLevel:_headerLevel
+                                                   languageHint:_languageHint
+                                                         column:_column
+                                                            row:_row
+                                               indentationLevel:_indentationLevel];
+    }
+}
+
+- (NSPresentationIntent *) initWithIntentKind:(NSPresentationIntentKind) kind
+                                 parentIntent:(NSPresentationIntent *) parent
+                                     identity:(NSInteger) identity
+                                      ordinal:(NSInteger) ordinal
+                             columnAlignments:(NSArray<NSNumber *> *) alignments
+                                  columnCount:(NSInteger) columnCount
+                                  headerLevel:(NSInteger) headerLevel
+                                 languageHint:(NSString *) languageHint
+                                       column:(NSInteger) column
+                                          row:(NSInteger) row
+                             indentationLevel:(NSInteger) indentationLevel
+{
+    self = [super init];
+
+    if ( self ) {
+        self->_intentKind = kind;
+        self->_parentIntent = parent;
+        self->_identity = identity;
+        self->_ordinal = ordinal;
+        self->_columnAlignments = alignments;
+        self->_columnCount = columnCount;
+        self->_headerLevel = headerLevel;
+        self->_languageHint = languageHint;
+        self->_column = column;
+        self->_row = row;
+        self->_indentationLevel = indentationLevel;
+    }
+
+    return self;
+}
+
+#define parentIndentationLevel(p) ((p) == nil ? -1 : (p).indentationLevel)
+
++ (NSPresentationIntent *)paragraphIntentWithIdentity:(NSInteger)identity nestedInsideIntent:(NSPresentationIntent *)parent {
+    return [[NSPresentationIntent alloc] initWithIntentKind:NSPresentationIntentKindParagraph
+                       parentIntent:parent
+                           identity:identity
+                            ordinal:0
+                   columnAlignments:nil
+                        columnCount:0
+                        headerLevel:0
+                       languageHint:nil
+                             column:0
+                                row:0
+                   indentationLevel:parentIndentationLevel(parent) + 1];
+}
+
++ (NSPresentationIntent *)headerIntentWithIdentity:(NSInteger)identity level:(NSInteger)level nestedInsideIntent:(NSPresentationIntent *)parent {
+    return [[NSPresentationIntent alloc] initWithIntentKind:NSPresentationIntentKindHeader
+                       parentIntent:parent
+                           identity:identity
+                            ordinal:0
+                   columnAlignments:nil
+                        columnCount:0
+                        headerLevel:level
+                       languageHint:nil
+                             column:0
+                                row:0
+                   indentationLevel:parentIndentationLevel(parent) + 1];
+}
+
++ (NSPresentationIntent *)codeBlockIntentWithIdentity:(NSInteger)identity languageHint:(NSString *)languageHint nestedInsideIntent:(NSPresentationIntent *)parent {
+    return [[NSPresentationIntent alloc] initWithIntentKind:NSPresentationIntentKindCodeBlock
+                       parentIntent:parent
+                           identity:identity
+                            ordinal:0
+                   columnAlignments:nil
+                        columnCount:0
+                        headerLevel:0
+                       languageHint:languageHint
+                             column:0
+                                row:0
+                   indentationLevel:parentIndentationLevel(parent) + 1];
+}
+
++ (NSPresentationIntent *)thematicBreakIntentWithIdentity:(NSInteger)identity nestedInsideIntent:(NSPresentationIntent *)parent {
+    return [[NSPresentationIntent alloc] initWithIntentKind:NSPresentationIntentKindThematicBreak
+                       parentIntent:parent
+                           identity:identity
+                            ordinal:0
+                   columnAlignments:nil
+                        columnCount:0
+                        headerLevel:0
+                       languageHint:nil
+                             column:0
+                                row:0
+                   indentationLevel:parentIndentationLevel(parent) + 1];
+}
+
++ (NSPresentationIntent *)orderedListIntentWithIdentity:(NSInteger)identity nestedInsideIntent:(NSPresentationIntent *)parent {
+    return [[NSPresentationIntent alloc] initWithIntentKind:NSPresentationIntentKindOrderedList
+                       parentIntent:parent
+                           identity:identity
+                            ordinal:0
+                   columnAlignments:nil
+                        columnCount:0
+                        headerLevel:0
+                       languageHint:nil
+                             column:0
+                                row:0
+                   indentationLevel:parentIndentationLevel(parent) + 1];
+}
+
++ (NSPresentationIntent *)unorderedListIntentWithIdentity:(NSInteger)identity nestedInsideIntent:(NSPresentationIntent *)parent {
+    return [[NSPresentationIntent alloc] initWithIntentKind:NSPresentationIntentKindUnorderedList
+                       parentIntent:parent
+                           identity:identity
+                            ordinal:0
+                   columnAlignments:nil
+                        columnCount:0
+                        headerLevel:0
+                       languageHint:nil
+                             column:0
+                                row:0
+                   indentationLevel:parentIndentationLevel(parent) + 1];
+}
+
++ (NSPresentationIntent *)listItemIntentWithIdentity:(NSInteger)identity ordinal:(NSInteger)ordinal nestedInsideIntent:(NSPresentationIntent *)parent {
+    return [[NSPresentationIntent alloc] initWithIntentKind:NSPresentationIntentKindListItem
+                       parentIntent:parent
+                           identity:identity
+                            ordinal:ordinal
+                   columnAlignments:nil
+                        columnCount:0
+                        headerLevel:0
+                       languageHint:nil
+                             column:0
+                                row:0
+                   indentationLevel:parentIndentationLevel(parent) + 1];
+}
+
++ (NSPresentationIntent *)blockQuoteIntentWithIdentity:(NSInteger)identity nestedInsideIntent:(NSPresentationIntent *)parent {
+    return [[NSPresentationIntent alloc] initWithIntentKind:NSPresentationIntentKindBlockQuote
+                       parentIntent:parent
+                           identity:identity
+                            ordinal:0
+                   columnAlignments:nil
+                        columnCount:0
+                        headerLevel:0
+                       languageHint:nil
+                             column:0
+                                row:0
+                   indentationLevel:parentIndentationLevel(parent) + 1];
+}
+
++ (NSPresentationIntent *)tableIntentWithIdentity:(NSInteger)identity columnCount:(NSInteger)columnCount alignments:(NSArray<NSNumber *> *)alignments nestedInsideIntent:(NSPresentationIntent *)parent {
+    return [[NSPresentationIntent alloc] initWithIntentKind:NSPresentationIntentKindTable
+                       parentIntent:parent
+                           identity:identity
+                            ordinal:0
+                   columnAlignments:alignments
+                        columnCount:columnCount
+                        headerLevel:0
+                       languageHint:nil
+                             column:0
+                                row:0
+                   indentationLevel:parentIndentationLevel(parent) + 1];
+}
+
++ (NSPresentationIntent *)tableHeaderRowIntentWithIdentity:(NSInteger)identity nestedInsideIntent:(NSPresentationIntent *)parent {
+    return [[NSPresentationIntent alloc] initWithIntentKind:NSPresentationIntentKindTableHeaderRow
+                       parentIntent:parent
+                           identity:identity
+                            ordinal:0
+                   columnAlignments:nil
+                        columnCount:0
+                        headerLevel:0
+                       languageHint:nil
+                             column:0
+                                row:0
+                   indentationLevel:parentIndentationLevel(parent) + 1];
+}
+
++ (NSPresentationIntent *)tableRowIntentWithIdentity:(NSInteger)identity row:(NSInteger)row nestedInsideIntent:(NSPresentationIntent *)parent {
+    return [[NSPresentationIntent alloc] initWithIntentKind:NSPresentationIntentKindTableRow
+                       parentIntent:parent
+                           identity:identity
+                            ordinal:0
+                   columnAlignments:nil
+                        columnCount:0
+                        headerLevel:0
+                       languageHint:nil
+                             column:0
+                                row:row
+                   indentationLevel:parentIndentationLevel(parent) + 1];
+}
+
++ (NSPresentationIntent *)tableCellIntentWithIdentity:(NSInteger)identity column:(NSInteger)column nestedInsideIntent:(NSPresentationIntent *)parent {
+    return [[NSPresentationIntent alloc] initWithIntentKind:NSPresentationIntentKindTableCell
+                       parentIntent:parent
+                           identity:identity
+                            ordinal:0
+                   columnAlignments:nil
+                        columnCount:0
+                        headerLevel:0
+                       languageHint:nil
+                             column:column
+                                row:0
+                   indentationLevel:parentIndentationLevel(parent) + 1];
+}
+@end
+
+NSString * const NSPresentationIntentAttributeName = @"PlatformNSPresentationIntent";
+#endif
+
+
 namespace WebCore {
 
 using IdentifierToTableMap = HashMap<AttributedString::TextTableID, NSTextTable *>;

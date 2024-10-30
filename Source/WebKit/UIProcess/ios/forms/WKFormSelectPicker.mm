@@ -36,7 +36,7 @@
 #import "WKFormSelectControl.h"
 #import "WKWebViewPrivateForTesting.h"
 #import "WebPageProxy.h"
-#import <UIKit/UIKit.h>
+#import "UIKitSPI.h"
 #import <WebCore/LocalizedStrings.h>
 #import <pal/system/ios/UserInterfaceIdiom.h>
 
@@ -1234,11 +1234,20 @@ ALLOW_DEPRECATED_DECLARATIONS_END
         UIPresentationController *presentationController = [_navigationController presentationController];
         presentationController.delegate = self;
 
+#if !PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
         if (auto sheetPresentationController = dynamic_objc_cast<UISheetPresentationController>(presentationController)) {
             sheetPresentationController.detents = @[UISheetPresentationControllerDetent.mediumDetent, UISheetPresentationControllerDetent.largeDetent];
             sheetPresentationController.widthFollowsPreferredContentSizeWhenEdgeAttached = YES;
             sheetPresentationController.prefersEdgeAttachedInCompactHeight = YES;
         }
+#else
+        if ([presentationController isKindOfClass:[_UISheetPresentationController class]]) {
+            _UISheetPresentationController *sheetPresentationController = (_UISheetPresentationController *)presentationController;
+            sheetPresentationController._detents = @[_UISheetDetent._mediumDetent, _UISheetDetent._largeDetent];
+            sheetPresentationController._widthFollowsPreferredContentSizeWhenBottomAttached = YES;
+            sheetPresentationController._wantsBottomAttachedInCompactHeight = YES;
+        }
+#endif
     } else {
         [_navigationController setModalPresentationStyle:UIModalPresentationPopover];
         [_navigationController setNavigationBarHidden:YES];
