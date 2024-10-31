@@ -113,7 +113,23 @@ static void jetsamConfigurator(void) {
     }
 }
 
+typedef int (*Main)(int, const char**, const char**, const char**);
 int main(int argc, const char** argv, const char**, const char** darwinEnvp)
 {
-    return WKXPCServiceMain(argc, argv, nullptr, darwinEnvp);
+    // Setup
+    CFURLRef bundle = CFBundleCopyBundleURL(CFBundleGetMainBundle());
+    CFURLRef xpcServices = CFURLCreateCopyDeletingLastPathComponent(kCFAllocatorDefault, bundle);
+    CFURLRef url = CFURLCreateCopyDeletingLastPathComponent(kCFAllocatorDefault, xpcServices);
+    CFBundleRef webKit = CFBundleCreate(kCFAllocatorDefault, url);
+    CFRelease(bundle);
+    CFRelease(xpcServices);
+    CFRelease(url);
+    
+    // Dynamically link and load main function
+    Main WKXPCServiceMain = (Main)CFBundleGetFunctionPointerForName(webKit, CFSTR("WKXPCServiceMain"));
+    if (WKXPCServiceMain == NULL)
+        abort();
+    int ret = WKXPCServiceMain(argc, argv, nullptr, darwinEnvp);
+    CFRelease(webKit);
+    return ret;
 }
