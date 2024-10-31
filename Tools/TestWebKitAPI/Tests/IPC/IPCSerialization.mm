@@ -440,7 +440,9 @@ struct ObjCHolderForTesting {
         RetainPtr<CNPostalAddress>,
         RetainPtr<NSDateComponents>,
         RetainPtr<PKContact>,
+#if HAVE(PASSKIT_SHIPPING_METHOD_DATE_COMPONENTS_RANGE)
         RetainPtr<PKDateComponentsRange>,
+#endif
         RetainPtr<PKPaymentMerchantSession>,
         RetainPtr<PKPaymentMethod>,
         RetainPtr<PKPaymentToken>,
@@ -625,7 +627,9 @@ inline bool operator==(const ObjCHolderForTesting& a, const ObjCHolderForTesting
 #if USE(PASSKIT)
         class_addMethod(PAL::getPKPaymentMethodClass(), @selector(isEqual:), (IMP)wkSecureCoding_isEqual, "v@:@");
         class_addMethod(PAL::getPKPaymentTokenClass(), @selector(isEqual:), (IMP)wkSecureCoding_isEqual, "v@:@");
+#if HAVE(PASSKIT_SHIPPING_METHOD_DATE_COMPONENTS_RANGE)
         class_addMethod(PAL::getPKDateComponentsRangeClass(), @selector(isEqual:), (IMP)wkSecureCoding_isEqual, "v@:@");
+#endif
         class_addMethod(PAL::getPKShippingMethodClass(), @selector(isEqual:), (IMP)wkSecureCoding_isEqual, "v@:@");
         class_addMethod(PAL::getPKPaymentClass(), @selector(isEqual:), (IMP)wkSecureCoding_isEqual, "v@:@");
 #endif

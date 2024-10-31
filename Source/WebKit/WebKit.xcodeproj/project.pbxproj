@@ -18459,6 +18459,8 @@
 		4157853721279CC600DD3800 /* Copy Custom WebContent Resources to Framework Private Headers */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
+			files = (
+			);
 			inputPaths = (
 				"$(WK_PROCESSED_XCENT_FILE)",
 				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",

@@ -51,5 +51,5 @@ ADDITIONAL_SDKS = $(WK_ADDITIONAL_SDKS);
 
 // Necessary for iOS 13-14 back-deployment of Swift concurrency
 CACHE_LDFLAGS = $(CACHE_LDFLAGS$(WK_IOS_15));
-CACHE_LDFLAGS_IOS_BEFORE_15 = -lswiftCompatibilityConcurrency;
+CACHE_LDFLAGS_IOS_BEFORE_15 = -lswiftCompatibilityConcurrency -Wl,-not_for_dyld_shared_cache;
 OTHER_LDFLAGS = $(inherited) $(CACHE_LDFLAGS);
