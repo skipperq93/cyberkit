@@ -1,0 +1,28 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on: [push]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    permissions: # Read more at : https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs
+      contents: write
+    name: Create Branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.1.4
+      - name: Create Branch
+        id: create_branch
+        uses: lablnet/create-branch-from-tag@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: "refs/tags/0.0.9-alpha"
+          owner: ${{ github.repository_owner }} # https://docs.github.com/en/actions/learn-github-actions/contexts#example-contents-of-the-github-context
+          repo: ${{ github.event.repository.name }} # https://www.reddit.com/r/github/comments/tjkj6f/get_repo_name_on_github_actions_without_owner/
