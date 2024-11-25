@@ -15,11 +15,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4.1.4
       - name: Create Branch
-        id: create_branch
-        uses: lablnet/create-branch-from-tag@v1
+        uses: peterjgrainger/action-create-branch@v2.2.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: "refs/tags/0.0.9-alpha"
-          owner: ${{ github.repository_owner }} # https://docs.github.com/en/actions/learn-github-actions/contexts#example-contents-of-the-github-context
-          repo: ${{ github.event.repository.name }} # https://www.reddit.com/r/github/comments/tjkj6f/get_repo_name_on_github_actions_without_owner/
+          branch: 'CST'
+          sha: '44a5ba60ecc71997f485623141f7e133cec2d1d6'
